@@ -1,0 +1,6 @@
+{
+  "dist": {
+    "repo": "git@github.com:solidfire/solidfire-sdk-java.git#gh-pages",
+    "beforeStageCommand": "cat front.yml ../README.md > index.md"
+  }
+}
