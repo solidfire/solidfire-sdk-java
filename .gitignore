@@ -1,0 +1,7 @@
+*~
+.metadata
+.cache
+.idea/
+*.iml
+
+.DS_Store
