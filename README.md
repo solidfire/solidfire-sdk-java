@@ -1,4 +1,6 @@
-# SolidFire Java SDK
+
+# SolidFire Java SDK <img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png"" height="50" width="50" >
+
 SolidFire Management API as a Java SDK
 
 ##Description
