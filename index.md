@@ -20,6 +20,7 @@ If you have any questions or comments about this product, contact <sdk@solidfire
 
 ##Download
 Download the latest JAR or grab via Maven:
+
 ```xml
 <dependency>
   <groupId>com.solidfire</groupId>
@@ -29,11 +30,13 @@ Download the latest JAR or grab via Maven:
 ```
 
 or SBT:
+
 ```scala
 libraryDependencies += "com.solidfire" % "element-api" % "1.0.0.47"
 ```
 
 or Gradle:
+
 ```groovy
 compile 'com.solidfire:element-api:1.0.0.47'
 ```
@@ -46,6 +49,7 @@ compile 'com.solidfire:element-api:1.0.0.47'
 [JavaDoc](https://solidfire.github.io/solidfire-sdk-java/latest/api/)
 ##Examples
 ###Examples of using the API (Java)
+
 ```java
 import com.solidfire.javautil.Optional;
 
@@ -79,6 +83,7 @@ public class ReadmeJavaExample {
 ```
 
 ###Examples of using the API (Scala)
+
 ```scala    
 // Import your Java Primitive Types
 import java.lang.Long
