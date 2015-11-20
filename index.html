@@ -1,23 +1,188 @@
----
-layout: default
----
 
-<div class="home">
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Solidfire-sdk-java by solidfire</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Solidfire-sdk-java</h1>
+      <h2 class="project-tagline">Initial wrapping of the SolidFire Management API as a Java SDK</h2>
+      <a href="https://github.com/solidfire/solidfire-sdk-java" class="btn">View on GitHub</a>
+      <a href="https://github.com/solidfire/solidfire-sdk-java/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/solidfire/solidfire-sdk-java/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-  <h1 class="page-heading">Posts</h1>
+    <section class="main-content">
+      <h1>
+<a id="solidfire-sdk-java" class="anchor" href="#solidfire-sdk-java" aria-hidden="true"><span class="octicon octicon-link"></span></a>solidfire-sdk-java</h1>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+<p>Initial wrapping of the SolidFire Management API as a Java SDK</p>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+<h2>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Description</h2>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+<p>The SolidFire Java SDK is a collection of software modules and libraries that facilitate integration and orchestration between proprietary systems and third-party applications. The Java SDK allows developers to deeply integrate SolidFire system API with their Java programming language. The SolidFire Java SDK reduces the amount of additional coding time required for integration.</p>
 
-</div>
+<h2>
+<a id="compatibility" class="anchor" href="#compatibility" aria-hidden="true"><span class="octicon octicon-link"></span></a>Compatibility</h2>
+
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Java</td>
+<td>7.0 &amp; 8.0</td>
+</tr>
+<tr>
+<td>SolidFire OS</td>
+<td>Element 7.x &amp; 8.x</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="getting-help" class="anchor" href="#getting-help" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Help</h2>
+
+<p>Contacting SolidFire SDK Support
+If you have any questions or comments about this product, contact <a href="mailto:sdk@solidfire.com">sdk@solidfire.com</a> or reach out to the developer community at <a href="http://developer.solidfire.com">developer.solidfire.com</a>. Your feedback helps us focus our efforts on new features and capabilities.</p>
+
+<h2>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download</h2>
+
+<p>Download the latest JAR or grab via Maven:</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">dependency</span>&gt;
+  &lt;<span class="pl-ent">groupId</span>&gt;com.solidfire&lt;/<span class="pl-ent">groupId</span>&gt;
+  &lt;<span class="pl-ent">artifactId</span>&gt;element-api&lt;/<span class="pl-ent">artifactId</span>&gt;
+  &lt;<span class="pl-ent">version</span>&gt;1.0.0.47&lt;/<span class="pl-ent">version</span>&gt;
+&lt;/<span class="pl-ent">dependency</span>&gt;</pre></div>
+
+<p>or SBT:</p>
+
+<div class="highlight highlight-source-scala"><pre>libraryDependencies <span class="pl-k">+</span><span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>com.solidfire<span class="pl-pds">"</span></span> <span class="pl-k">%</span> <span class="pl-s"><span class="pl-pds">"</span>element-api<span class="pl-pds">"</span></span> <span class="pl-k">%</span> <span class="pl-s"><span class="pl-pds">"</span>1.0.0.47<span class="pl-pds">"</span></span></pre></div>
+
+<p>or Gradle:</p>
+
+<div class="highlight highlight-source-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.solidfire:element-api:1.0.0.47<span class="pl-pds">'</span></span></pre></div>
+
+<h2>
+<a id="assembly" class="anchor" href="#assembly" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assembly</h2>
+
+<h3>
+<a id="limitations-with-certificate-signed-assembly-jar" class="anchor" href="#limitations-with-certificate-signed-assembly-jar" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations with Certificate Signed Assembly Jar</h3>
+
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
+
+<p><a href="https://solidfire.github.io/solidfire-sdk-java/latest/api/">JavaDoc</a></p>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<h3>
+<a id="examples-of-using-the-api-java" class="anchor" href="#examples-of-using-the-api-java" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples of using the API (Java)</h3>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">import</span> <span class="pl-smi">com.solidfire.javautil.Optional</span>;
+
+<span class="pl-c">// Import Optional common empty types (String, Long, &amp; Map)</span>
+<span class="pl-k">import static</span> <span class="pl-smi">com.solidfire.javautil.Optional.*</span>;
+
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">ReadmeJavaExample</span> {
+  <span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">main</span>(<span class="pl-k">String</span>[] <span class="pl-v">args</span> ) {
+    <span class="pl-c">// Create Connection to SF Cluster</span>
+    <span class="pl-smi">SolidFireElementIF</span> sf <span class="pl-k">=</span> <span class="pl-smi">SolidFireElement</span><span class="pl-k">.</span>create(<span class="pl-s"><span class="pl-pds">"</span>mvip<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>8.0<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>username<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>password<span class="pl-pds">"</span></span>);
+
+    <span class="pl-c">// Create some accounts</span>
+    <span class="pl-smi">AddAccountRequest</span> addAccountRequest <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">AddAccountRequest</span>(<span class="pl-s"><span class="pl-pds">"</span>username<span class="pl-pds">"</span></span>, <span class="pl-c1">EMPTY_STRING</span>, <span class="pl-c1">EMPTY_STRING</span>, <span class="pl-c1">EMPTY_MAP</span>);
+    <span class="pl-smi">Long</span> accountId <span class="pl-k">=</span> sf<span class="pl-k">.</span>addAccount(addAccountRequest)<span class="pl-k">.</span>getAccountID();
+
+    <span class="pl-c">// And a volume with default QoS</span>
+    <span class="pl-smi">CreateVolumeRequest</span> createVolumeRequest <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">CreateVolumeRequest</span>(<span class="pl-s"><span class="pl-pds">"</span>volumeName<span class="pl-pds">"</span></span>, accountId, <span class="pl-c1">1000000000l</span>, <span class="pl-c1">false</span>, <span class="pl-smi">Optional</span><span class="pl-k">.</span><span class="pl-k">&lt;</span><span class="pl-smi">QoS</span><span class="pl-k">&gt;</span>empty(), <span class="pl-c1">EMPTY_MAP</span>);
+    <span class="pl-smi">Long</span> volumeId <span class="pl-k">=</span> sf<span class="pl-k">.</span>createVolume(createVolumeRequest)<span class="pl-k">.</span>getVolumeID();
+
+    <span class="pl-c">// Lookup iqn for new volume</span>
+    <span class="pl-smi">String</span> iqn <span class="pl-k">=</span> sf<span class="pl-k">.</span>listVolumesForAccount(accountId, of(volumeId), of(<span class="pl-c1">1l</span>))<span class="pl-k">.</span>getVolumes()[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getIqn();
+
+    <span class="pl-c">// Change Min and Burst QoS while keeping Max and Burst Time the same</span>
+    <span class="pl-smi">QoS</span> qos <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">QoS</span>(of(<span class="pl-c1">5000l</span>), <span class="pl-c1">EMPTY_LONG</span>, of(<span class="pl-c1">30000l</span>), <span class="pl-c1">EMPTY_LONG</span> );
+
+    <span class="pl-c">// Modify the volume size and QoS</span>
+    <span class="pl-smi">ModifyVolumeRequest</span> modifyVolumeRequest <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ModifyVolumeRequest</span>(volumeId, <span class="pl-c1">EMPTY_LONG</span>, <span class="pl-c1">EMPTY_STRING</span>, <span class="pl-c1">EMPTY_STRING</span>, of(qos), of(<span class="pl-c1">2000000000l</span>), <span class="pl-c1">EMPTY_MAP</span>)
+    sf<span class="pl-k">.</span>modifyVolume(modifyVolumeRequest);
+  }
+}</pre></div>
+
+<h3>
+<a id="examples-of-using-the-api-scala" class="anchor" href="#examples-of-using-the-api-scala" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples of using the API (Scala)</h3>
+
+<div class="highlight highlight-source-scala"><pre><span class="pl-c">// Import your Java Primitive Types</span>
+<span class="pl-k">import</span> <span class="pl-v">java.lang.</span><span class="pl-v">Long</span>
+
+<span class="pl-k">import</span> <span class="pl-v">com.solidfire.javautil.Optional.</span>{ <span class="pl-v">empty</span> , <span class="pl-v">of</span> }
+
+<span class="pl-k">class</span> <span class="pl-en">ReadmeExample</span> {
+
+  <span class="pl-c">// Create Connection to SF Cluster</span>
+  <span class="pl-k">val</span> <span class="pl-en">sf</span> <span class="pl-k">=</span> <span class="pl-en">SolidFireElement</span>.create( <span class="pl-s"><span class="pl-pds">"</span>mvip<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>8.0<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>username<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>password<span class="pl-pds">"</span></span> )
+
+  <span class="pl-c">// Create some accounts</span>
+  <span class="pl-k">val</span> <span class="pl-en">addAccount</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">AddAccountRequest</span>( <span class="pl-s"><span class="pl-pds">"</span>username<span class="pl-pds">"</span></span>, empty[<span class="pl-k">String</span>], empty[<span class="pl-k">String</span>], empty( ) )
+  <span class="pl-k">val</span> <span class="pl-en">accountId</span> <span class="pl-k">=</span> sf.addAccount( addAccount  ).getAccountID
+
+  <span class="pl-c">// And a volume</span>
+  <span class="pl-k">val</span> <span class="pl-en">createVolume</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">CreateVolumeRequest</span>( <span class="pl-s"><span class="pl-pds">"</span>volumeName<span class="pl-pds">"</span></span>, accountId, <span class="pl-c1">1000000000l</span>, <span class="pl-c1">false</span>, empty[<span class="pl-en">QoS</span>], empty( ) )
+  <span class="pl-k">val</span> <span class="pl-en">volumeId</span> <span class="pl-k">=</span> sf.createVolume( createVolume ).getVolumeID
+
+  <span class="pl-c">// Lookup iqn for new volume</span>
+  <span class="pl-k">val</span> <span class="pl-en">iqn</span><span class="pl-k">:</span> <span class="pl-k">String</span> <span class="pl-k">=</span> sf.listVolumesForAccount( accountId, of( volumeId ), of( <span class="pl-c1">1l</span> ) ).getVolumes( )( <span class="pl-c1">0</span> ).getIqn
+
+  <span class="pl-c">// Change Min and Burst QoS while keeping Max and Burst Time the same</span>
+  <span class="pl-k">val</span> <span class="pl-en">qos</span><span class="pl-k">:</span> <span class="pl-en">QoS</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">QoS</span>( of( <span class="pl-c1">5000l</span> ), empty[<span class="pl-k">Long</span>], of( <span class="pl-c1">30000l</span> ), empty[<span class="pl-k">Long</span>] )
+
+  <span class="pl-c">// Modify the volume</span>
+  <span class="pl-k">val</span> <span class="pl-en">modifyVolume</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">ModifyVolumeRequest</span>( volumeId, empty[<span class="pl-k">Long</span>], empty[<span class="pl-k">String</span>], empty[<span class="pl-k">String</span>], of( qos ), of( <span class="pl-c1">2000000000l</span> ), empty( ) )
+  sf.modifyVolume( modifyVolume  )
+}</pre></div>
+
+<h2>
+<a id="roadmap" class="anchor" href="#roadmap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Roadmap</h2>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright © 2015 SolidFire, Inc. All rights reserved.</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions andlimitations under the License.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/solidfire/solidfire-sdk-java">Solidfire-sdk-java</a> is maintained by <a href="https://github.com/solidfire">solidfire</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
