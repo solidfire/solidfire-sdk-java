@@ -1,3 +1,6 @@
+---
+layout: index
+---
 
 # SolidFire Java SDK <img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png"" height="50" width="50" >
 
