@@ -94,7 +94,7 @@ public class ReadmeJavaExample {
     String iqn = sf.listVolumesForAccount(accountId, of(volumeId), of(1l)).getVolumes()[0].getIqn();
 
     // Change Min and Burst QoS while keeping Max and Burst Time the same
-    QoS qos = new QoS(of(5000l), EMPTY_LONG, of(30000l), EMPTY_LONG );
+    QoS qos = new QoS(of(5000l), EMPTY_LONG, of(30000l), EMPTY_LONG);
 
     // Modify the volume size and QoS
     ModifyVolumeRequest modifyVolumeRequest = new ModifyVolumeRequest(volumeId, EMPTY_LONG, 
@@ -111,30 +111,30 @@ public class ReadmeJavaExample {
 // Import your Java Primitive Types
 import java.lang.Long
 
-import com.solidfire.javautil.Optional.{ empty , of }
+import com.solidfire.javautil.Optional.{empty, of}
 
 class ReadmeExample {
 
   // Create Connection to SF Cluster
-  val sf = SolidFireElement.create( "mvip", "8.0", "username", "password" )
+  val sf = SolidFireElement.create("mvip", "8.0", "username", "password")
 
   // Create some accounts
-  val addAccount = new AddAccountRequest( "username", empty[String], empty[String], empty())
+  val addAccount = new AddAccountRequest("username", empty[String], empty[String], empty())
   val accountId = sf.addAccount(addAccount).getAccountID
 
   // And a volume
-  val createVolume = new CreateVolumeRequest( "volumeName", accountId, 1000000000l, false, empty[QoS], empty())
+  val createVolume = new CreateVolumeRequest("volumeName", accountId, 1000000000l, false, empty[QoS], empty())
   val volumeId = sf.createVolume(createVolume).getVolumeID
 
   // Lookup iqn for new volume
-  val iqn: String = sf.listVolumesForAccount( accountId, of(volumeId), of(1l)).getVolumes()(0).getIqn
+  val iqn: String = sf.listVolumesForAccount(accountId, of(volumeId), of(1l)).getVolumes()(0).getIqn
 
   // Change Min and Burst QoS while keeping Max and Burst Time the same
   val qos: QoS = new QoS(of(5000l), empty[Long], of(30000l), empty[Long])
 
   // Modify the volume
   val modifyVolume = new ModifyVolumeRequest(volumeId, empty[Long], empty[String], empty[String], 
-                                            of(qos), of( 2000000000l ), empty() )
+                                             of(qos), of( 2000000000l ), empty())
   sf.modifyVolume( modifyVolume  )
 }
 ```
