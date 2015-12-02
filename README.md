@@ -142,7 +142,7 @@ class ReadmeExample {
 ```
 
 ##Logback
-The SDK and the Assembly leverage the SLF4J API for logging with the logback-classic implementation.  An advantage to using the SLF4J interface is the avaialabitly of legacy logging framework bridges, for intecepting and consolidating all logging calls into a single log.
+The SDK and the Assembly leverage the [SLF4J API](http://www.slf4j.org/) for logging with the [logback-classi](http://logback.qos.ch/reasonsToSwitch.html)c implementation.  An advantage to using the SLF4J interface is the avaialabitly of legacy logging framework [bridges](http://www.slf4j.org/legacy.html), for intecepting and consolidating all logging calls into a single log.
 ###Tracing Request / Response calls in the log
 An example logback.xml: 
 ```xml
