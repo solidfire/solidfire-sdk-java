@@ -102,7 +102,7 @@ public class ReadmeJavaExample {
     ModifyVolumeRequest modifyVolumeRequest = new ModifyVolumeRequest(volumeId, EMPTY_LONG, 
                                                                       EMPTY_STRING, EMPTY_STRING, 
                                                                       of(qos), of(2000000000l),
-                                                                      EMPTY_MAP)
+                                                                      EMPTY_MAP);
     sf.modifyVolume(modifyVolumeRequest);
   }
 }
@@ -140,9 +140,36 @@ class ReadmeExample {
   sf.modifyVolume( modifyVolume  )
 }
 ```
-##Roadmap
 
-___TBD___
+##Logback
+The sdk and the assembly leverage the SLF4J API for logging with the logback-classic implementation.  The benifit to SLF4J interface is the avaialabitly of legacy logging framework bridges, for intecepting and consolidating all logging calls into a single log.
+###Tracing Request / Response calls in the log
+An example logback.xml: 
+```xml
+<configuration debug="true">
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.solidfire.element.api.SolidFireElement" level="DEBUG" />
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
+```
+
+##Roadmap
+| Version | Release Date      | Notes                                                          |
+| ------- | ----------------- | -------------------------------------------------------------- |
+| 1.0     | November 20, 2015 | Accounts, Volumes, VAG, Snapshots, and Group Stanpshot support |
+| 1.1     | ___TBD___         | Complete Nitorgen & Oxygen API Coverage                        |
+| 1.2     | ___TBD___         | Fluorine API Coverage                                          |
 
 ##License
 Copyright © 2015 SolidFire, Inc. All rights reserved.
