@@ -2,6 +2,7 @@
 layout: index
 ---
 
+
 # SolidFire Java SDK <img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png"" height="50" width="50" >
 
 SolidFire Management API as a Java SDK
@@ -41,7 +42,6 @@ or Gradle:
 ```groovy
 compile 'com.solidfire:element-api:1.0.0.53'
 ```
-
 ##Assembly Jar
 The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.0.0.53/solidfire-sdk-1.0.0.53.jar).  
 
@@ -73,7 +73,6 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 ##Examples
 ###Examples of using the API (Java)
-
 ```java
 import com.solidfire.javautil.Optional;
 
@@ -107,14 +106,13 @@ public class ReadmeJavaExample {
     ModifyVolumeRequest modifyVolumeRequest = new ModifyVolumeRequest(volumeId, EMPTY_LONG, 
                                                                       EMPTY_STRING, EMPTY_STRING, 
                                                                       of(qos), of(2000000000l),
-                                                                      EMPTY_MAP)
+                                                                      EMPTY_MAP);
     sf.modifyVolume(modifyVolumeRequest);
   }
 }
 ```
 
 ###Examples of using the API (Scala)
-
 ```scala    
 // Import your Java Primitive Types
 import java.lang.Long
@@ -146,9 +144,36 @@ class ReadmeExample {
   sf.modifyVolume( modifyVolume  )
 }
 ```
-##Roadmap
 
-___TBD___
+##Logback
+The sdk and the assembly leverage the SLF4J API for logging with the logback-classic implementation.  The benifit to SLF4J interface is the avaialabitly of legacy logging framework bridges, for intecepting and consolidating all logging calls into a single log.
+###Tracing Request / Response calls in the log
+An example logback.xml: 
+```xml
+<configuration debug="true">
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.solidfire.element.api.SolidFireElement" level="DEBUG" />
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
+```
+
+##Roadmap
+| Version | Release Date      | Notes                                                          |
+| ------- | ----------------- | -------------------------------------------------------------- |
+| 1.0     | November 20, 2015 | Accounts, Volumes, VAG, Snapshots, and Group Stanpshot support |
+| 1.1     | ___TBD___         | Complete Nitorgen & Oxygen API Coverage                        |
+| 1.2     | ___TBD___         | Fluorine API Coverage                                          |
 
 ##License
 Copyright © 2015 SolidFire, Inc. All rights reserved.
