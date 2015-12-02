@@ -10,7 +10,7 @@ fi
 set -e
 
 #clone `master' branch of the repository using encrypted GH_TOKEN for authentification
-git clone https://${GH_TOKEN}@github.com/solidfire/solidfire-sdk-java.git#gh-pages ../solidfire-sdk-java.gh-pages
+git clone -b  gh-pages https://${GH_TOKEN}@github.com/solidfire/solidfire-sdk-java.git ../solidfire-sdk-java.gh-pages
 
 # copy generated HTML site to `master' branch
 cat ../solidfire-sdk-java.gh-pages/front.yml ./README.md > ../solidfire-sdk-java.gh-pages/index.md
