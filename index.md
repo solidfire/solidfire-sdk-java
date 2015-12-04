@@ -175,7 +175,6 @@ An example logback.xml:
 | 1.0     | November 20, 2015 | Accounts, Volumes, Access Groups, Snapshots, and Group Snapshots |
 | 1.1     | ___TBD___         | Complete Nitorgen & Oxygen API Coverage                          |
 | 1.2     | ___TBD___         | Fluorine API Coverage                                            |
-| 1.3     | ___TBD___         | Neon API Coverage                                                |
 
 ##License
 Copyright © 2015 SolidFire, Inc. All rights reserved.
