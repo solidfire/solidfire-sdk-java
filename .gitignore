@@ -12,7 +12,6 @@ build
 .metadata
 .cache
 target
-generated
 .idea/
 *.iml
 .history
