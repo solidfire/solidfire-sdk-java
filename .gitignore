@@ -1,5 +1,5 @@
 *~
-*.swp
+:*.swp
 *.orig
 *.kdev4
 build
@@ -18,5 +18,3 @@ generated
 .history
 
 .DS_Store
-
-dev-test-resource.properties
