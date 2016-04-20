@@ -136,3 +136,11 @@ object Dependencies {
   lazy val mockito      = "org.mockito"     %  "mockito-all"     % Version.mockito     % "test"
   lazy val scalacheck   = "org.scalacheck"  %% "scalacheck"      % Version.scalacheck  % "test"
 }
+
+object SDKBuild extends Build {
+
+  lazy val root = Project(id = "solidfire-java-sdk",
+    base = file("."),
+    settings = Config.settings
+  )
+}

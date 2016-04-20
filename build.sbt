@@ -15,16 +15,6 @@ logLevel := Level.Info
 
 testOptions += Tests.Argument( TestFrameworks.JUnit, "-q", "-v" )
 
-lazy val elementApi = Project(
-  id = "element-api",
-  base = file( "." )
-).
-  settings( Config.settings: _* ).
-  settings(
-    description := "SolidFire SDK for interacting with an Element OS cluster."
-  )
-
-
 packageOptions in(Compile, packageBin) += Package.ManifestAttributes(
   java.util.jar.Attributes.Name.IMPLEMENTATION_VERSION -> version.value
 )
