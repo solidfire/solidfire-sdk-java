@@ -83,11 +83,12 @@ object Config {
     unmanagedSourceDirectories in Compile += baseDirectory.value / "src/generated/java",
     unmanagedSourceDirectories in Compile += baseDirectory.value / "src/generated/scala",
     libraryDependencies ++= Seq(
-      Dependencies.slf4jSimple,
+      Dependencies.slf4j,
       Dependencies.base64,
       Dependencies.gson,
       Dependencies.jodaTime,
       Dependencies.jodaConvert,
+      Dependencies.slf4jSimple,
       Dependencies.mockito,
       Dependencies.scalatest,
       Dependencies.scalacheck
@@ -130,7 +131,7 @@ object Dependencies {
   lazy val jodaTime       = "joda-time"                 %   "joda-time"       % Version.jodaTime
   lazy val jodaConvert    = "org.joda"                  %   "joda-convert"    % Version.jodaConvert
   lazy val slf4j          = "org.slf4j"                 %   "slf4j-api"       % Version.slf4j
-  lazy val slf4jSimple    = "org.slf4j"                 %   "slf4j-simple"    % Version.slf4j
+  lazy val slf4jSimple    = "org.slf4j"                 %   "slf4j-simple"    % Version.slf4j        % "test"
 
   lazy val scalatest    = "org.scalatest"   %% "scalatest"       % Version.scalatest   % "test"
   lazy val mockito      = "org.mockito"     %  "mockito-all"     % Version.mockito     % "test"
