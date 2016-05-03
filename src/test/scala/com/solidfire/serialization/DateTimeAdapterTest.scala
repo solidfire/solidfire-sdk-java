@@ -24,17 +24,17 @@ class DateTimeAdapterTest extends WordSpec with Matchers {
     }
     "encode a DateTime to ISO 8601 Zulu time" in {
       val input = new DateTime( 2012, 3, 14, 15, 9, 26, 535, DateTimeZone.UTC )
-      val output = gson.toJsonTree( input, classOf[DateTime] ).getAsJsonPrimitive( ).getAsString( )
+      val output = gson.toJsonTree( input, classOf[DateTime] ).getAsJsonPrimitive.getAsString
       output should be( "2012-03-14T15:09:26.535Z" )
     }
     "encode a non-UTC time into the equivalent UTC" in {
       val input = new DateTime( 2012, 3, 14, 20, 9, 26, 535, DateTimeZone.forOffsetHours( +5 ) )
-      val output = gson.toJsonTree( input, classOf[DateTime] ).getAsJsonPrimitive( ).getAsString( )
+      val output = gson.toJsonTree( input, classOf[DateTime] ).getAsJsonPrimitive.getAsString
       output should be( "2012-03-14T15:09:26.535Z" )
     }
     "encode a null time to `null`" in {
       val output = gson.toJsonTree( null, classOf[DateTime] )
-      output.isJsonNull( ) should be( true )
+      output.isJsonNull should be( true )
     }
   }
 }

@@ -35,6 +35,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.lang.String.format;
+
 import static com.solidfire.client.VersioningUtils.*;
 
 /**
@@ -161,8 +163,11 @@ public class ServiceBase {
 
         try {
             final JsonReader reader = new JsonReader(new StringReader(response));
+
             reader.setLenient(true);
+
             final JsonObject resultObj = gson.fromJson(reader, JsonObject.class);
+
             if (resultObj.has("error")) {
                 throw extractApiError(resultObj.get("error"));
             } else {
@@ -171,13 +176,13 @@ public class ServiceBase {
         } catch (ClassCastException e) {
             final Pattern pattern = Pattern.compile("<p> (.*?)</p>");
             final Matcher matcher = pattern.matcher(response);
-            while (matcher.find()) {
+            if (matcher.find()) {
                 throw new ApiServerException("Not Found", "404", matcher.group(1));
             }
-            throw new ApiException(response, e);
-        } catch (JsonSyntaxException e) {
+            throw new ApiException(format("There was a problem parsing the response from the server. ( response=%s )", response), e);
+        } catch (NullPointerException | JsonParseException e) {
             log.debug(response);
-            throw new ApiException(response, e);
+            throw new ApiException(format("There was a problem parsing the response from the server. ( response=%s )", response));
 
         }
     }

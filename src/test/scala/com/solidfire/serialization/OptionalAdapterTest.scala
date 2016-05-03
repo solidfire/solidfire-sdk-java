@@ -43,7 +43,7 @@ class OptionalAdapterTest extends WordSpec with Matchers {
     "decode a properly formatted Optional<String> with empty value" in {
       val input = "{\"optional\":\"\"}"
       val output = gson.fromJson( input, classOf[TestString] )
-      output.optional.isPresent( ) should be( false )
+      output.optional.isPresent should be( false )
     }
 
     "decode a properly formatted Optional<int>" in {
