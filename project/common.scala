@@ -113,11 +113,11 @@ object Version {
   val javaLanguage = "1.7"
   val javaTarget   = "1.7"
 
-  val base64         = "2.3.8"
-  val gson           = "2.3"
-  val jodaConvert    = "1.2"
-  val jodaTime       = "2.4"
-  val slf4j          = "1.6+"
+  val base64         = "2.3.9"
+  val gson           = "2.6.2"
+  val jodaConvert    = "1.8.1"
+  val jodaTime       = "2.9.3"
+  val slf4j          = "1.6.6"
 
   val scalatest     = "2.2.6"
   val junit         = "0.11"
