@@ -1,4 +1,4 @@
-name := "SolidFire-sdk-java"
+name := "solidFire-sdk-java"
 
 exportJars := false
 

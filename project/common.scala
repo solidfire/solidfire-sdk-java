@@ -1,4 +1,6 @@
 
+import com.typesafe.sbt.osgi.SbtOsgi
+import com.typesafe.sbt.osgi.SbtOsgi.autoImport._
 import sbt.Keys._
 import sbt._
 
@@ -140,8 +142,15 @@ object Dependencies {
 
 object SDKBuild extends Build {
 
-  lazy val root = Project(id = "solidfire-java-sdk",
+  lazy val elementApi = Project(id = "solidfire-java-sdk",
     base = file("."),
     settings = Config.settings
-  )
+  ).settings(
+    version := (version in ThisBuild).value,
+    description := "OSGi bundle for interfacing with the Public and Incubating SolidFire Element API.",
+    OsgiKeys.exportPackage := Seq("com.solidfire.client","com.solidfire.javautil","com.solidfire.serialization","com.solidfire.annotation","com.solidfire.element.api")
+  ).settings(
+    addArtifact(artifact in (Compile, OsgiKeys.bundle), OsgiKeys.bundle).settings: _*
+  ).enablePlugins( SbtOsgi )
+
 }
