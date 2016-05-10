@@ -86,10 +86,7 @@ object Config {
     unmanagedSourceDirectories in Compile += baseDirectory.value / "src/generated/scala",
     libraryDependencies ++= Seq(
       Dependencies.slf4j,
-      Dependencies.base64,
-      Dependencies.gson,
-      Dependencies.jodaTime,
-      Dependencies.jodaConvert,
+      Dependencies.jsvcgenClient,
       Dependencies.slf4jSimple,
       Dependencies.mockito,
       Dependencies.scalatest,
@@ -112,14 +109,11 @@ object Config {
 object Version {
   val solidfireSdks = "1.1.0.1-SNAPSHOT"
 
-  val javaLanguage = "1.7"
-  val javaTarget   = "1.7"
+  val javaLanguage  = "1.7"
+  val javaTarget    = "1.7"
 
-  val base64         = "2.3.9"
-  val gson           = "2.6.2"
-  val jodaConvert    = "1.8.1"
-  val jodaTime       = "2.9.3"
-  val slf4j          = "1.6.6"
+  val jsvcgenClient = "0.2.9-SNAPSHOT"
+  val slf4j         = "1.6.6"
 
   val scalatest     = "2.2.6"
   val junit         = "0.11"
@@ -128,16 +122,13 @@ object Version {
 }
 
 object Dependencies {
-  lazy val base64         = "net.iharder"               %   "base64"          % Version.base64
-  lazy val gson           = "com.google.code.gson"      %   "gson"            % Version.gson
-  lazy val jodaTime       = "joda-time"                 %   "joda-time"       % Version.jodaTime
-  lazy val jodaConvert    = "org.joda"                  %   "joda-convert"    % Version.jodaConvert
-  lazy val slf4j          = "org.slf4j"                 %   "slf4j-api"       % Version.slf4j
-  lazy val slf4jSimple    = "org.slf4j"                 %   "slf4j-simple"    % Version.slf4j        % "test"
+  lazy val jsvcgenClient  = "com.solidfire" % "jsvcgen-client-java" % Version.jsvcgenClient
+  lazy val slf4j          = "org.slf4j"     % "slf4j-api"           % Version.slf4j
 
-  lazy val scalatest    = "org.scalatest"   %% "scalatest"       % Version.scalatest   % "test"
-  lazy val mockito      = "org.mockito"     %  "mockito-all"     % Version.mockito     % "test"
-  lazy val scalacheck   = "org.scalacheck"  %% "scalacheck"      % Version.scalacheck  % "test"
+  lazy val slf4jSimple  = "org.slf4j"       %  "slf4j-simple"    % Version.slf4j        % "test"
+  lazy val scalatest    = "org.scalatest"   %% "scalatest"       % Version.scalatest    % "test"
+  lazy val mockito      = "org.mockito"     %  "mockito-all"     % Version.mockito      % "test"
+  lazy val scalacheck   = "org.scalacheck"  %% "scalacheck"      % Version.scalacheck   % "test"
 }
 
 object SDKBuild extends Build {

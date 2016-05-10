@@ -39,6 +39,6 @@ final class LogSplash {
         log.info("                                   ");
     }
 
-    public static final void logo() {
+    public static void logo() {
     }
 }
