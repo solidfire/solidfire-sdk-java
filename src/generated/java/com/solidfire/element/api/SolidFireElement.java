@@ -18,10 +18,9 @@
  */
 package com.solidfire.element.api;
 
-import com.solidfire.javautil.Optional;
-
-import com.solidfire.client.ApiException;
-import com.solidfire.javautil.Optional;
+import com.solidfire.jsvcgen.annotation.Since;
+import com.solidfire.jsvcgen.client.ApiException;
+import com.solidfire.jsvcgen.javautil.Optional;
 
 import java.net.URL;
 
@@ -31,9 +30,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.TreeMap;
 
-import com.solidfire.annotation.Since;
-
-import static com.solidfire.javautil.Optional.of;
+import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 
@@ -42,7 +39,7 @@ import static com.solidfire.javautil.Optional.of;
  **/
 
 public class SolidFireElement
-    extends com.solidfire.client.ServiceBase
+    extends com.solidfire.jsvcgen.client.ServiceBase
     implements SolidFireElementIF {
 
 
@@ -53,7 +50,7 @@ public class SolidFireElement
      * @param requestDispatcher  The class responsible for processing request/responses and
      *                           serialization/deserialization of the JSON payload
      */
-    public SolidFireElement(com.solidfire.client.RequestDispatcher requestDispatcher) {
+    public SolidFireElement(com.solidfire.jsvcgen.client.RequestDispatcher requestDispatcher) {
         super(requestDispatcher);
     }
 
@@ -70,7 +67,7 @@ public class SolidFireElement
     public static SolidFireElement create(String mvip, String apiVersion, String username, String password) {
         checkConnection(mvip, apiVersion, of(username), of(password), true);
         java.net.URL endpoint = toEndpoint(mvip, apiVersion);
-        return new SolidFireElement(new com.solidfire.client.HttpsRequestDispatcher(endpoint, username, password));
+        return new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint, username, password));
     }
 
     /**
@@ -84,7 +81,7 @@ public class SolidFireElement
     public static SolidFireElement create(String mvip, String apiVersion) {
         checkConnection(mvip, apiVersion, Optional.<String>empty(), Optional.<String>empty(), true);
         java.net.URL endpoint = toEndpoint(mvip, apiVersion);
-        return new SolidFireElement(new com.solidfire.client.HttpsRequestDispatcher(endpoint));
+        return new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint));
     }
 
     /**
@@ -100,7 +97,7 @@ public class SolidFireElement
     public static SolidFireElement createWithoutSecurity(String mvip, String apiVersion, String username, String password) {
         checkConnection(mvip, apiVersion, of(username), of(password), false);
         java.net.URL endpoint = toEndpoint(mvip, apiVersion);
-        return new SolidFireElement(new com.solidfire.client.HttpsRequestDispatcherWithoutSecurity(endpoint, username, password));
+        return new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcherWithoutSecurity(endpoint, username, password));
     }
 
     /**
@@ -114,7 +111,7 @@ public class SolidFireElement
     public static SolidFireElement createWithoutSecurity(String mvip, String apiVersion) {
         checkConnection(mvip, apiVersion, Optional.<String>empty(), Optional.<String>empty(), false);
         java.net.URL endpoint = toEndpoint(mvip, apiVersion);
-        return new SolidFireElement(new com.solidfire.client.HttpsRequestDispatcherWithoutSecurity(endpoint));
+        return new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcherWithoutSecurity(endpoint));
     }
 
     private static URL toEndpoint(String mvip, String apiVersion) {
@@ -138,13 +135,13 @@ public class SolidFireElement
         final SolidFireElement cluster;
 
         if (withSecurity && username.isPresent() && password.isPresent()) {
-            cluster = new SolidFireElement(new com.solidfire.client.HttpsRequestDispatcher(endpoint, username.get(), password.get()));
+            cluster = new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint, username.get(), password.get()));
         } else if (withSecurity && !username.isPresent() && !password.isPresent()) {
-            cluster = new SolidFireElement(new com.solidfire.client.HttpsRequestDispatcher(endpoint));
+            cluster = new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint));
         } else if (!withSecurity && username.isPresent() && password.isPresent()) {
-            cluster = new SolidFireElement(new com.solidfire.client.HttpsRequestDispatcher(endpoint, username.get(), password.get()));
+            cluster = new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint, username.get(), password.get()));
         } else if (!withSecurity && !username.isPresent() && !password.isPresent()) {
-            cluster = new SolidFireElement(new com.solidfire.client.HttpsRequestDispatcher(endpoint));
+            cluster = new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint));
         } else {
             throw new ApiException("Missing " + (!username.isPresent() ? "username" : "password") + "");
         }

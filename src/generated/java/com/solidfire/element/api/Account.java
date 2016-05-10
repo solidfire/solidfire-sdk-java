@@ -18,10 +18,9 @@
  */
 package com.solidfire.element.api;
 
-import com.solidfire.javautil.Optional;
-
-import com.solidfire.client.ApiException;
-import com.solidfire.javautil.Optional;
+import com.solidfire.jsvcgen.annotation.Since;
+import com.solidfire.jsvcgen.client.ApiException;
+import com.solidfire.jsvcgen.javautil.Optional;
 
 import java.net.URL;
 
@@ -31,9 +30,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.TreeMap;
 
-import com.solidfire.annotation.Since;
-
-import static com.solidfire.javautil.Optional.of;
+import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
