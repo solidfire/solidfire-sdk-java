@@ -216,6 +216,103 @@ public class SolidFireElement
     }
 
     @Override
+    public GetClusterCapacityResult getClusterCapacity(final GetClusterCapacityRequest request) {
+        return super.sendRequest("GetClusterCapacity", request, GetClusterCapacityRequest.class, GetClusterCapacityResult.class );
+    }
+
+
+    @Override
+    public GetClusterCapacityResult getClusterCapacity() {
+        return this.getClusterCapacity( new GetClusterCapacityRequest());
+    }
+
+    @Override
+    public GetClusterInfoResult getClusterInfo(final GetClusterInfoRequest request) {
+        return super.sendRequest("GetClusterInfo", request, GetClusterInfoRequest.class, GetClusterInfoResult.class );
+    }
+
+
+    @Override
+    public GetClusterInfoResult getClusterInfo() {
+        return this.getClusterInfo( new GetClusterInfoRequest());
+    }
+
+    @Override
+    public GetClusterVersionInfoResult getClusterVersionInfo(final GetClusterVersionInfoRequest request) {
+        return super.sendRequest("GetClusterVersionInfo", request, GetClusterVersionInfoRequest.class, GetClusterVersionInfoResult.class );
+    }
+
+
+    @Override
+    public GetClusterVersionInfoResult getClusterVersionInfo() {
+        return this.getClusterVersionInfo( new GetClusterVersionInfoRequest());
+    }
+
+    @Override
+    public GetLimitsResult getLimits(final GetLimitsRequest request) {
+        return super.sendRequest("GetLimits", request, GetLimitsRequest.class, GetLimitsResult.class );
+    }
+
+
+    @Override
+    public GetLimitsResult getLimits() {
+        return this.getLimits( new GetLimitsRequest());
+    }
+
+    @Override
+    public ListEventsResult listEvents(final ListEventsRequest request) {
+        return super.sendRequest("ListEvents", request, ListEventsRequest.class, ListEventsResult.class );
+    }
+
+    @Override
+    public ListClusterFaultsResult listClusterFaults(final ListClusterFaultsRequest request) {
+        return super.sendRequest("ListClusterFaults", request, ListClusterFaultsRequest.class, ListClusterFaultsResult.class );
+    }
+
+    @Override
+    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request) {
+        return super.sendRequest("ClearClusterFaults", request, ClearClusterFaultsRequest.class, ClearClusterFaultsResult.class );
+    }
+
+
+    @Override
+    public ClearClusterFaultsResult clearClusterFaults(Optional<String> faultTypes) {
+        return this.clearClusterFaults( new ClearClusterFaultsRequest(faultTypes));
+    }
+
+    @Override
+    public ListClusterAdminsResult listClusterAdmins(final ListClusterAdminsRequest request) {
+        return super.sendRequest("ListClusterAdmins", request, ListClusterAdminsRequest.class, ListClusterAdminsResult.class );
+    }
+
+
+    @Override
+    public ListClusterAdminsResult listClusterAdmins() {
+        return this.listClusterAdmins( new ListClusterAdminsRequest());
+    }
+
+    @Override
+    public AddClusterAdminResult addClusterAdmin(final AddClusterAdminRequest request) {
+        return super.sendRequest("AddClusterAdmin", request, AddClusterAdminRequest.class, AddClusterAdminResult.class );
+    }
+
+    @Override
+    public ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request) {
+        return super.sendRequest("ModifyClusterAdmin", request, ModifyClusterAdminRequest.class, ModifyClusterAdminResult.class );
+    }
+
+    @Override
+    public RemoveClusterAdminResult removeClusterAdmin(final RemoveClusterAdminRequest request) {
+        return super.sendRequest("RemoveClusterAdmin", request, RemoveClusterAdminRequest.class, RemoveClusterAdminResult.class );
+    }
+
+
+    @Override
+    public RemoveClusterAdminResult removeClusterAdmin(Long clusterAdminID) {
+        return this.removeClusterAdmin( new RemoveClusterAdminRequest(clusterAdminID));
+    }
+
+    @Override
     public GetAPIResult getAPI(final GetAPIRequest request) {
         return super.sendRequest("GetAPI", request, GetAPIRequest.class, GetAPIResult.class );
     }
@@ -224,6 +321,17 @@ public class SolidFireElement
     @Override
     public GetAPIResult getAPI() {
         return this.getAPI( new GetAPIRequest());
+    }
+
+    @Override
+    public GetCurrentClusterAdminResult getCurrentClusterAdmin(final GetCurrentClusterAdminRequest request) {
+        return super.sendRequest("GetCurrentClusterAdmin", request, GetCurrentClusterAdminRequest.class, GetCurrentClusterAdminResult.class );
+    }
+
+
+    @Override
+    public GetCurrentClusterAdminResult getCurrentClusterAdmin() {
+        return this.getCurrentClusterAdmin( new GetCurrentClusterAdminRequest());
     }
 
     @Override
@@ -391,6 +499,17 @@ public class SolidFireElement
     @Override
     public ListDeletedVolumesResult listDeletedVolumes() {
         return this.listDeletedVolumes( new ListDeletedVolumesRequest());
+    }
+
+    @Override
+    public ListISCSISessionsResult listISCSISessions(final ListISCSISessionsRequest request) {
+        return super.sendRequest("ListISCSISessions", request, ListISCSISessionsRequest.class, ListISCSISessionsResult.class );
+    }
+
+
+    @Override
+    public ListISCSISessionsResult listISCSISessions() {
+        return this.listISCSISessions( new ListISCSISessionsRequest());
     }
 
     @Override

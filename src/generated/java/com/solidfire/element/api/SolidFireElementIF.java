@@ -155,6 +155,181 @@ public interface SolidFireElementIF {
     RemoveAccountResult removeAccount(Long accountID);
 
     /**
+     * Return the high-level capacity measurements for an entire cluster.
+     * The fields returned from this method can be used to calculate the efficiency rates that are displayed in the Element User Interface.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetClusterCapacityRequest 
+     *  
+     * @return the response
+     **/
+    GetClusterCapacityResult getClusterCapacity(final GetClusterCapacityRequest request);
+
+
+    /**
+     * Convenience method for getClusterCapacity 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getClusterCapacity(GetClusterCapacityRequest) 
+     **/
+    GetClusterCapacityResult getClusterCapacity();
+
+    /**
+     * Return configuration information about the cluster.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetClusterInfoRequest 
+     *  
+     * @return the response
+     **/
+    GetClusterInfoResult getClusterInfo(final GetClusterInfoRequest request);
+
+
+    /**
+     * Convenience method for getClusterInfo 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getClusterInfo(GetClusterInfoRequest) 
+     **/
+    GetClusterInfoResult getClusterInfo();
+
+    /**
+     * Return information about the Element software version running on each node in the cluster.
+     * Information about the nodes that are currently in the process of upgrading software is also returned.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetClusterVersionInfoRequest 
+     *  
+     * @return the response
+     **/
+    GetClusterVersionInfoResult getClusterVersionInfo(final GetClusterVersionInfoRequest request);
+
+
+    /**
+     * Convenience method for getClusterVersionInfo 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getClusterVersionInfo(GetClusterVersionInfoRequest) 
+     **/
+    GetClusterVersionInfoResult getClusterVersionInfo();
+
+    /**
+     * Retrieves the limit values set by the API
+     *  
+     * @param request The request @see com.solidfire.element.api.GetLimitsRequest 
+     *  
+     * @return the response
+     **/
+    GetLimitsResult getLimits(final GetLimitsRequest request);
+
+
+    /**
+     * Convenience method for getLimits 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getLimits(GetLimitsRequest) 
+     **/
+    GetLimitsResult getLimits();
+
+    /**
+     * Returns events detected on the cluster, sorted from oldest to newest.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListEventsRequest 
+     *  
+     * @return the response
+     **/
+    ListEventsResult listEvents(final ListEventsRequest request);
+
+    /**
+     * Gets the list of cluster faults
+     *  
+     * @param request The request @see com.solidfire.element.api.ListClusterFaultsRequest 
+     *  
+     * @return the response
+     **/
+    ListClusterFaultsResult listClusterFaults(final ListClusterFaultsRequest request);
+
+    /**
+     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
+     *  
+     * @param request The request @see com.solidfire.element.api.ClearClusterFaultsRequest 
+     *  
+     * @return the response
+     **/
+    ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request);
+
+
+    /**
+     * Convenience method for clearClusterFaults 
+     *  
+     * @param faultTypes Determines the types of faults cleared:<br/>
+     *                   <b>current</b>: Faults that are currently detected and have not been resolved.<br/>
+     *                   <b>resolved</b>: Faults that were previously detected and resolved.<br/>
+     *                   <b>all</b>: Both current and resolved faults are cleared. The fault status can be determined by the &quot;resolved&quot; field of the fault object.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#clearClusterFaults(ClearClusterFaultsRequest) 
+     **/
+    ClearClusterFaultsResult clearClusterFaults(Optional<String> faultTypes);
+
+    /**
+     * ListClusterAdmins returns the list of all cluster administrators for the cluster. There can be several cluster administrators that have different levels of permissions. There can be only one primary cluster administrator in the system. The primary Cluster Admin is the administrator that was created when the cluster was created. LDAP administrators can also be created when setting up an LDAP system on the cluster.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListClusterAdminsRequest 
+     *  
+     * @return the response
+     **/
+    ListClusterAdminsResult listClusterAdmins(final ListClusterAdminsRequest request);
+
+
+    /**
+     * Convenience method for listClusterAdmins 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listClusterAdmins(ListClusterAdminsRequest) 
+     **/
+    ListClusterAdminsResult listClusterAdmins();
+
+    /**
+     * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
+     * <br/><br/>
+     * Each Cluster Admin can be restricted to a sub-set of the API. SolidFire recommends using multiple Cluster Admins for different users and applications. Each Cluster Admin should be given the minimal permissions necessary to reduce the potential impact of credential compromise.
+     *  
+     * @param request The request @see com.solidfire.element.api.AddClusterAdminRequest 
+     *  
+     * @return the response
+     **/
+    AddClusterAdminResult addClusterAdmin(final AddClusterAdminRequest request);
+
+    /**
+     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
+     *  
+     * @param request The request @see com.solidfire.element.api.ModifyClusterAdminRequest 
+     *  
+     * @return the response
+     **/
+    ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request);
+
+    /**
+     * RemoveClusterAdmin is used to remove a Cluster Admin. The &quot;admin&quot; Cluster Admin cannot be removed.
+     *  
+     * @param request The request @see com.solidfire.element.api.RemoveClusterAdminRequest 
+     *  
+     * @return the response
+     **/
+    RemoveClusterAdminResult removeClusterAdmin(final RemoveClusterAdminRequest request);
+
+
+    /**
+     * Convenience method for removeClusterAdmin 
+     *  
+     * @param clusterAdminID ClusterAdminID for the Cluster Admin to remove.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#removeClusterAdmin(RemoveClusterAdminRequest) 
+     **/
+    RemoveClusterAdminResult removeClusterAdmin(Long clusterAdminID);
+
+    /**
      * Retrieves the current version of the API and a list of all supported versions.
      *  
      * @param request The request @see com.solidfire.element.api.GetAPIRequest 
@@ -171,6 +346,24 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#getAPI(GetAPIRequest) 
      **/
     GetAPIResult getAPI();
+
+    /**
+     * GetCurrentClusterAdmin returns information for the current primary cluster administrator. The primary Cluster Admin was ncreated when the cluster was created.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetCurrentClusterAdminRequest 
+     *  
+     * @return the response
+     **/
+    GetCurrentClusterAdminResult getCurrentClusterAdmin(final GetCurrentClusterAdminRequest request);
+
+
+    /**
+     * Convenience method for getCurrentClusterAdmin 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getCurrentClusterAdmin(GetCurrentClusterAdminRequest) 
+     **/
+    GetCurrentClusterAdminResult getCurrentClusterAdmin();
 
     /**
      * Used to retrieve the result of asynchronous method calls.
@@ -565,6 +758,24 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#listDeletedVolumes(ListDeletedVolumesRequest) 
      **/
     ListDeletedVolumesResult listDeletedVolumes();
+
+    /**
+     * ListISCSISessions is used to return iSCSI connection information for volumes in the cluster.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListISCSISessionsRequest 
+     *  
+     * @return the response
+     **/
+    ListISCSISessionsResult listISCSISessions(final ListISCSISessionsRequest request);
+
+
+    /**
+     * Convenience method for listISCSISessions 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listISCSISessions(ListISCSISessionsRequest) 
+     **/
+    ListISCSISessionsResult listISCSISessions();
 
     /**
      * The ListVolumes method is used to return a list of volumes that are in a cluster.
