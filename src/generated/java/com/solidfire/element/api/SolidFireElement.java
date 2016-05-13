@@ -45,7 +45,7 @@ public class SolidFireElement
 
 
     /**
-     * Create a new instance of SolidFireElement with the provided requestDispatcher. You probably do not want to use
+     * Create a new instance of  SolidFireElement with the provided requestDispatcher. You probably do not want to use
      * this constructor directly -- it is easier to use the static create methods.
      * @param requestDispatcher  The class responsible for processing request/responses and
      *                           serialization/deserialization of the JSON payload
@@ -55,7 +55,7 @@ public class SolidFireElement
     }
 
     /**
-     * Create a new instance of SolidFireElement with a connection to the given MVIP and the appropriate username and
+     * Create a new instance of  SolidFireElement with a connection to the given MVIP and the appropriate username and
      * password.
      *
      * @param mvip       the management virtual IP (or hostname)
@@ -64,10 +64,27 @@ public class SolidFireElement
      * @param password   admin password
      * @return an instance of the SolidFire Element
      */
-    public static SolidFireElement create(String mvip, String apiVersion, String username, String password) {
+    public static  SolidFireElement create(String mvip, String apiVersion, String username, String password) {
         checkConnection(mvip, apiVersion, of(username), of(password), true);
-        java.net.URL endpoint = toEndpoint(mvip, apiVersion);
-        return new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint, username, password));
+        java.net.URL endpoint = toEndpoint(mvip, apiVersion, Optional.<Integer>empty());
+        return new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint, username, password));
+    }
+
+    /**
+     * Create a new instance of  SolidFireElement with a connection to the given MVIP with Port and the appropriate username and
+     * password.
+     *
+     * @param mvip       the management virtual IP (or hostname)
+     * @param port       the port to use
+     * @param apiVersion the version of the API services
+     * @param username   admin username
+     * @param password   admin password
+     * @return an instance of the SolidFire Element
+     */
+    public static  SolidFireElement create(String mvip, Integer port, String apiVersion, String username, String password) {
+        checkConnection(mvip, apiVersion, of(username), of(password), true);
+        java.net.URL endpoint = toEndpoint(mvip, apiVersion, Optional.of(port));
+        return new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint, username, password));
     }
 
     /**
@@ -78,14 +95,29 @@ public class SolidFireElement
      * @param apiVersion the version of the API services
      * @return an instance of the SolidFire Element
      */
-    public static SolidFireElement create(String mvip, String apiVersion) {
+    public static  SolidFireElement create(String mvip, String apiVersion) {
         checkConnection(mvip, apiVersion, Optional.<String>empty(), Optional.<String>empty(), true);
-        java.net.URL endpoint = toEndpoint(mvip, apiVersion);
-        return new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint));
+        java.net.URL endpoint = toEndpoint(mvip, apiVersion, Optional.<Integer>empty());
+        return new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint));
     }
 
     /**
-     * Create a new instance of SolidFireElement with a connection to the given MVIP and the appropriate username and
+     * Similar to the other create method, but do not use any form of authentication. This is only useful before the
+     * cluster has been created.
+     *
+     * @param mvip       the management virtual IP (or hostname)
+     * @param port       the port to use
+     * @param apiVersion the version of the API services
+     * @return an instance of the SolidFire Element
+     */
+    public static  SolidFireElement create(String mvip, Integer port, String apiVersion) {
+        checkConnection(mvip, apiVersion, Optional.<String>empty(), Optional.<String>empty(), true);
+        java.net.URL endpoint = toEndpoint(mvip, apiVersion, Optional.of(port));
+        return new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint));
+    }
+
+    /**
+     * Create a new instance of  SolidFireElement with a connection to the given MVIP and the appropriate username and
      * password.
      *
      * @param mvip       the management virtual IP (or hostname)
@@ -94,10 +126,27 @@ public class SolidFireElement
      * @param password   admin password
      * @return an instance of the SolidFire Element
      */
-    public static SolidFireElement createWithoutSecurity(String mvip, String apiVersion, String username, String password) {
+    public static  SolidFireElement createWithoutSecurity(String mvip, String apiVersion, String username, String password) {
         checkConnection(mvip, apiVersion, of(username), of(password), false);
-        java.net.URL endpoint = toEndpoint(mvip, apiVersion);
-        return new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcherWithoutSecurity(endpoint, username, password));
+        java.net.URL endpoint = toEndpoint(mvip, apiVersion, Optional.<Integer>empty());
+        return new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcherWithoutSecurity(endpoint, username, password));
+    }
+
+    /**
+     * Create a new instance of  SolidFireElement with a connection to the given MVIP and the appropriate username and
+     * password.
+     *
+     * @param mvip       the management virtual IP (or hostname)
+     * @param port       the port to use
+     * @param apiVersion the version of the API services
+     * @param username   admin username
+     * @param password   admin password
+     * @return an instance of the SolidFire Element
+     */
+    public static  SolidFireElement createWithoutSecurity(String mvip, Integer port, String apiVersion, String username, String password) {
+        checkConnection(mvip, apiVersion, of(username), of(password), false);
+        java.net.URL endpoint = toEndpoint(mvip, apiVersion, Optional.of(port));
+        return new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcherWithoutSecurity(endpoint, username, password));
     }
 
     /**
@@ -108,16 +157,35 @@ public class SolidFireElement
      * @param apiVersion the version of the API services
      * @return an instance of the SolidFire Element
      */
-    public static SolidFireElement createWithoutSecurity(String mvip, String apiVersion) {
+    public static  SolidFireElement createWithoutSecurity(String mvip, String apiVersion) {
         checkConnection(mvip, apiVersion, Optional.<String>empty(), Optional.<String>empty(), false);
-        java.net.URL endpoint = toEndpoint(mvip, apiVersion);
-        return new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcherWithoutSecurity(endpoint));
+        java.net.URL endpoint = toEndpoint(mvip, apiVersion, Optional.<Integer>empty());
+        return new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcherWithoutSecurity(endpoint));
     }
 
-    private static URL toEndpoint(String mvip, String apiVersion) {
+    /**
+     * Similar to the other create method, but do not use any form of authentication. This is only useful before the
+     * cluster has been created.
+     *
+     * @param mvip       the management virtual IP (or hostname)
+     * @param port       the port to use
+     * @param apiVersion the version of the API services
+     * @return an instance of the SolidFire Element
+     */
+    public static  SolidFireElement createWithoutSecurity(String mvip, Integer port, String apiVersion) {
+        checkConnection(mvip, apiVersion, Optional.<String>empty(), Optional.<String>empty(), false);
+        java.net.URL endpoint = toEndpoint(mvip, apiVersion, Optional.of(port));
+        return new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcherWithoutSecurity(endpoint));
+    }
+
+    private static URL toEndpoint(String mvip, String apiVersion, Optional<Integer> port) {
         try {
-            java.net.URL endpoint = new java.net.URL("https", mvip, "/json-rpc/" + apiVersion);
-            return endpoint;
+            if (port.isPresent()){
+                return new java.net.URL("https", mvip, port.get(), "/json-rpc/" + apiVersion);
+            }
+            else {
+                return new java.net.URL("https", mvip, "/json-rpc/" + apiVersion);
+            }
         } catch (java.net.MalformedURLException mue) {
             // Can't actually happen
             throw new RuntimeException(mue);
@@ -130,18 +198,18 @@ public class SolidFireElement
 
     private static double getCurrentVersion(String mvip, String apiVersion, Optional<String> username, Optional<String> password, boolean withSecurity) {
 
-        java.net.URL endpoint = toEndpoint(mvip, "0.0");
+        java.net.URL endpoint = toEndpoint(mvip, "0.0", Optional.<Integer>empty());
 
-        final SolidFireElement cluster;
+        final  SolidFireElement cluster;
 
         if (withSecurity && username.isPresent() && password.isPresent()) {
-            cluster = new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint, username.get(), password.get()));
+            cluster = new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint, username.get(), password.get()));
         } else if (withSecurity && !username.isPresent() && !password.isPresent()) {
-            cluster = new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint));
+            cluster = new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint));
         } else if (!withSecurity && username.isPresent() && password.isPresent()) {
-            cluster = new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint, username.get(), password.get()));
+            cluster = new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint, username.get(), password.get()));
         } else if (!withSecurity && !username.isPresent() && !password.isPresent()) {
-            cluster = new SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint));
+            cluster = new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint));
         } else {
             throw new ApiException("Missing " + (!username.isPresent() ? "username" : "password") + "");
         }
@@ -159,7 +227,6 @@ public class SolidFireElement
             throw new ApiException(e);
         }
     }
-
 
     @Override
     public AddAccountResult addAccount(final AddAccountRequest request) {
@@ -281,6 +348,17 @@ public class SolidFireElement
     }
 
     @Override
+    public GetClusterConfigResult getClusterConfig(final GetClusterConfigRequest request) {
+        return super.sendRequest("GetClusterConfig", request, GetClusterConfigRequest.class, GetClusterConfigResult.class );
+    }
+
+
+    @Override
+    public GetClusterConfigResult getClusterConfig() {
+        return this.getClusterConfig( new GetClusterConfigRequest());
+    }
+
+    @Override
     public ListClusterAdminsResult listClusterAdmins(final ListClusterAdminsRequest request) {
         return super.sendRequest("ListClusterAdmins", request, ListClusterAdminsRequest.class, ListClusterAdminsResult.class );
     }
@@ -310,6 +388,17 @@ public class SolidFireElement
     @Override
     public RemoveClusterAdminResult removeClusterAdmin(Long clusterAdminID) {
         return this.removeClusterAdmin( new RemoveClusterAdminRequest(clusterAdminID));
+    }
+
+    @Override
+    public SetClusterConfigResult setClusterConfig(final SetClusterConfigRequest request) {
+        return super.sendRequest("SetClusterConfig", request, SetClusterConfigRequest.class, SetClusterConfigResult.class );
+    }
+
+
+    @Override
+    public SetClusterConfigResult setClusterConfig(ClusterConfig cluster) {
+        return this.setClusterConfig( new SetClusterConfigRequest(cluster));
     }
 
     @Override
@@ -343,6 +432,94 @@ public class SolidFireElement
     @Override
     public GetAsyncResultResult getAsyncResult(Long asyncHandle) {
         return this.getAsyncResult( new GetAsyncResultRequest(asyncHandle));
+    }
+
+    @Override
+    public ListActiveNodesResult listActiveNodes(final ListActiveNodesRequest request) {
+        return super.sendRequest("ListActiveNodes", request, ListActiveNodesRequest.class, ListActiveNodesResult.class );
+    }
+
+
+    @Override
+    public ListActiveNodesResult listActiveNodes() {
+        return this.listActiveNodes( new ListActiveNodesRequest());
+    }
+
+    @Override
+    public ListAllNodesResult listAllNodes(final ListAllNodesRequest request) {
+        return super.sendRequest("ListAllNodes", request, ListAllNodesRequest.class, ListAllNodesResult.class );
+    }
+
+
+    @Override
+    public ListAllNodesResult listAllNodes() {
+        return this.listAllNodes( new ListAllNodesRequest());
+    }
+
+    @Override
+    public ListPendingNodesResult listPendingNodes(final ListPendingNodesRequest request) {
+        return super.sendRequest("ListPendingNodes", request, ListPendingNodesRequest.class, ListPendingNodesResult.class );
+    }
+
+
+    @Override
+    public ListPendingNodesResult listPendingNodes() {
+        return this.listPendingNodes( new ListPendingNodesRequest());
+    }
+
+    @Override
+    public AddNodesResult addNodes(final AddNodesRequest request) {
+        return super.sendRequest("AddNodes", request, AddNodesRequest.class, AddNodesResult.class );
+    }
+
+
+    @Override
+    public AddNodesResult addNodes(Long[] pendingNodes) {
+        return this.addNodes( new AddNodesRequest(pendingNodes));
+    }
+
+    @Override
+    public RemoveNodesResult removeNodes(final RemoveNodesRequest request) {
+        return super.sendRequest("RemoveNodes", request, RemoveNodesRequest.class, RemoveNodesResult.class );
+    }
+
+
+    @Override
+    public RemoveNodesResult removeNodes(Long[] nodes) {
+        return this.removeNodes( new RemoveNodesRequest(nodes));
+    }
+
+    @Override
+    public GetNetworkConfigResult getNetworkConfig(final GetNetworkConfigRequest request) {
+        return super.sendRequest("GetNetworkConfig", request, GetNetworkConfigRequest.class, GetNetworkConfigResult.class );
+    }
+
+
+    @Override
+    public GetNetworkConfigResult getNetworkConfig() {
+        return this.getNetworkConfig( new GetNetworkConfigRequest());
+    }
+
+    @Override
+    public SetNetworkConfigResult setNetworkConfig(final SetNetworkConfigRequest request) {
+        return super.sendRequest("SetNetworkConfig", request, SetNetworkConfigRequest.class, SetNetworkConfigResult.class );
+    }
+
+
+    @Override
+    public SetNetworkConfigResult setNetworkConfig(Network network) {
+        return this.setNetworkConfig( new SetNetworkConfigRequest(network));
+    }
+
+    @Override
+    public GetConfigResult getConfig(final GetConfigRequest request) {
+        return super.sendRequest("GetConfig", request, GetConfigRequest.class, GetConfigResult.class );
+    }
+
+
+    @Override
+    public GetConfigResult getConfig() {
+        return this.getConfig( new GetConfigRequest());
     }
 
     @Override
