@@ -166,7 +166,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
