@@ -93,12 +93,12 @@ public class ListGroupSnapshotsRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -106,18 +106,18 @@ public class ListGroupSnapshotsRequest implements Serializable {
 
         private Builder() { }
 
-        public ListGroupSnapshotsRequest toRequest() {
+        public ListGroupSnapshotsRequest build() {
             return new ListGroupSnapshotsRequest (
                          this.volumeID            );
         }
 
-        private ListGroupSnapshotsRequest.Builder fromRequest(final ListGroupSnapshotsRequest req) {
+        private ListGroupSnapshotsRequest.Builder buildFrom(final ListGroupSnapshotsRequest req) {
             this.volumeID = req.volumeID;
 
             return this;
         }
 
-        public ListGroupSnapshotsRequest.Builder withOptionalVolumeID(final Long volumeID) {
+        public ListGroupSnapshotsRequest.Builder optionalVolumeID(final Long volumeID) {
             this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
             return this;
         }

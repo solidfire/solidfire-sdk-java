@@ -91,12 +91,12 @@ public class AddNodesRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +104,18 @@ public class AddNodesRequest implements Serializable {
 
         private Builder() { }
 
-        public AddNodesRequest toRequest() {
+        public AddNodesRequest build() {
             return new AddNodesRequest (
                          this.pendingNodes            );
         }
 
-        private AddNodesRequest.Builder fromRequest(final AddNodesRequest req) {
+        private AddNodesRequest.Builder buildFrom(final AddNodesRequest req) {
             this.pendingNodes = req.pendingNodes;
 
             return this;
         }
 
-        public AddNodesRequest.Builder withPendingNodes(final Long[] pendingNodes) {
+        public AddNodesRequest.Builder pendingNodes(final Long[] pendingNodes) {
             this.pendingNodes = pendingNodes;
             return this;
         }

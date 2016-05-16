@@ -61,7 +61,6 @@ public class DeleteGroupSnapshotResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return this.getClass().hashCode();
     }
 

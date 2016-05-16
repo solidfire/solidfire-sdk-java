@@ -140,7 +140,6 @@ public class CreateGroupSnapshotRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumes, name, enableRemoteReplication, retention, attributes );
     }
 
@@ -167,12 +166,12 @@ public class CreateGroupSnapshotRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -184,7 +183,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
 
         private Builder() { }
 
-        public CreateGroupSnapshotRequest toRequest() {
+        public CreateGroupSnapshotRequest build() {
             return new CreateGroupSnapshotRequest (
                          this.volumes,
                          this.name,
@@ -193,7 +192,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
                          this.attributes            );
         }
 
-        private CreateGroupSnapshotRequest.Builder fromRequest(final CreateGroupSnapshotRequest req) {
+        private CreateGroupSnapshotRequest.Builder buildFrom(final CreateGroupSnapshotRequest req) {
             this.volumes = req.volumes;
             this.name = req.name;
             this.enableRemoteReplication = req.enableRemoteReplication;
@@ -203,27 +202,27 @@ public class CreateGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder withVolumes(final Long[] volumes) {
+        public CreateGroupSnapshotRequest.Builder volumes(final Long[] volumes) {
             this.volumes = volumes;
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder withOptionalName(final String name) {
+        public CreateGroupSnapshotRequest.Builder optionalName(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder withOptionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
+        public CreateGroupSnapshotRequest.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder withOptionalRetention(final String retention) {
+        public CreateGroupSnapshotRequest.Builder optionalRetention(final String retention) {
             this.retention = (retention == null) ? Optional.<String>empty() : Optional.of(retention);
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CreateGroupSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

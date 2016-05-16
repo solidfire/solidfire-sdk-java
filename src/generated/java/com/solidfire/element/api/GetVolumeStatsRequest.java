@@ -91,12 +91,12 @@ public class GetVolumeStatsRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +104,18 @@ public class GetVolumeStatsRequest implements Serializable {
 
         private Builder() { }
 
-        public GetVolumeStatsRequest toRequest() {
+        public GetVolumeStatsRequest build() {
             return new GetVolumeStatsRequest (
                          this.volumeID            );
         }
 
-        private GetVolumeStatsRequest.Builder fromRequest(final GetVolumeStatsRequest req) {
+        private GetVolumeStatsRequest.Builder buildFrom(final GetVolumeStatsRequest req) {
             this.volumeID = req.volumeID;
 
             return this;
         }
 
-        public GetVolumeStatsRequest.Builder withVolumeID(final Long volumeID) {
+        public GetVolumeStatsRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

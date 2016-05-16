@@ -133,7 +133,6 @@ public class CreateVolumeRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( name, accountID, totalSize, enable512e, qos, attributes );
     }
 
@@ -159,12 +158,12 @@ public class CreateVolumeRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -177,7 +176,7 @@ public class CreateVolumeRequest implements Serializable {
 
         private Builder() { }
 
-        public CreateVolumeRequest toRequest() {
+        public CreateVolumeRequest build() {
             return new CreateVolumeRequest (
                          this.name,
                          this.accountID,
@@ -187,7 +186,7 @@ public class CreateVolumeRequest implements Serializable {
                          this.attributes            );
         }
 
-        private CreateVolumeRequest.Builder fromRequest(final CreateVolumeRequest req) {
+        private CreateVolumeRequest.Builder buildFrom(final CreateVolumeRequest req) {
             this.name = req.name;
             this.accountID = req.accountID;
             this.totalSize = req.totalSize;
@@ -198,32 +197,32 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeRequest.Builder withName(final String name) {
+        public CreateVolumeRequest.Builder name(final String name) {
             this.name = name;
             return this;
         }
 
-        public CreateVolumeRequest.Builder withAccountID(final Long accountID) {
+        public CreateVolumeRequest.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }
 
-        public CreateVolumeRequest.Builder withTotalSize(final Long totalSize) {
+        public CreateVolumeRequest.Builder totalSize(final Long totalSize) {
             this.totalSize = totalSize;
             return this;
         }
 
-        public CreateVolumeRequest.Builder withEnable512e(final Boolean enable512e) {
+        public CreateVolumeRequest.Builder enable512e(final Boolean enable512e) {
             this.enable512e = enable512e;
             return this;
         }
 
-        public CreateVolumeRequest.Builder withOptionalQos(final QoS qos) {
+        public CreateVolumeRequest.Builder optionalQos(final QoS qos) {
             this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
         }
 
-        public CreateVolumeRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CreateVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

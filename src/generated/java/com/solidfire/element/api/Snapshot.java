@@ -295,7 +295,6 @@ public class Snapshot implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( snapshotID, volumeID, name, checksum, enableRemoteReplication, expirationReason, expirationTime, remoteStatuses, status, snapshotUUID, totalSize, groupID, groupSnapshotUUID, createTime, attributes );
     }
 

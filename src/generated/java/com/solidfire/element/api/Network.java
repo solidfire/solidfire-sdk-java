@@ -76,7 +76,6 @@ public class Network implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( bond10G, bond1G );
     }
 

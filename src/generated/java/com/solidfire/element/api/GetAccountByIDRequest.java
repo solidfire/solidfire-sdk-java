@@ -91,12 +91,12 @@ public class GetAccountByIDRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +104,18 @@ public class GetAccountByIDRequest implements Serializable {
 
         private Builder() { }
 
-        public GetAccountByIDRequest toRequest() {
+        public GetAccountByIDRequest build() {
             return new GetAccountByIDRequest (
                          this.accountID            );
         }
 
-        private GetAccountByIDRequest.Builder fromRequest(final GetAccountByIDRequest req) {
+        private GetAccountByIDRequest.Builder buildFrom(final GetAccountByIDRequest req) {
             this.accountID = req.accountID;
 
             return this;
         }
 
-        public GetAccountByIDRequest.Builder withAccountID(final Long accountID) {
+        public GetAccountByIDRequest.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }

@@ -251,7 +251,6 @@ public class NetworkConfig implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( Default, address, auto, bondDowndelay, bondFailOverMac, bondPrimaryReselect, bondLacpRate, bondMiimon, bondMode, bondSlaves, bondUpdelay, broadcast, dnsNameservers, dnsSearch, family, gateway, macAddress, macAddressPermanent, method, mtu, netmask, network, physical, routes, status, symmetricRouteRules, upAndRunning );
     }
 

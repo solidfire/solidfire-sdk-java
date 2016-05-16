@@ -76,7 +76,6 @@ public class Config implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( cluster, network );
     }
 

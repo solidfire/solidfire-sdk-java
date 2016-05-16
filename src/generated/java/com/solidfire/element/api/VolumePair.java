@@ -129,7 +129,6 @@ public class VolumePair implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( clusterPairID, remoteVolumeID, remoteSliceID, remoteVolumeName, volumePairUUID, remoteReplication );
     }
 

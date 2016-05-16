@@ -85,7 +85,6 @@ public class DeleteGroupSnapshotRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( groupSnapshotID, saveMembers );
     }
 
@@ -105,12 +104,12 @@ public class DeleteGroupSnapshotRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -119,25 +118,25 @@ public class DeleteGroupSnapshotRequest implements Serializable {
 
         private Builder() { }
 
-        public DeleteGroupSnapshotRequest toRequest() {
+        public DeleteGroupSnapshotRequest build() {
             return new DeleteGroupSnapshotRequest (
                          this.groupSnapshotID,
                          this.saveMembers            );
         }
 
-        private DeleteGroupSnapshotRequest.Builder fromRequest(final DeleteGroupSnapshotRequest req) {
+        private DeleteGroupSnapshotRequest.Builder buildFrom(final DeleteGroupSnapshotRequest req) {
             this.groupSnapshotID = req.groupSnapshotID;
             this.saveMembers = req.saveMembers;
 
             return this;
         }
 
-        public DeleteGroupSnapshotRequest.Builder withGroupSnapshotID(final Long groupSnapshotID) {
+        public DeleteGroupSnapshotRequest.Builder groupSnapshotID(final Long groupSnapshotID) {
             this.groupSnapshotID = groupSnapshotID;
             return this;
         }
 
-        public DeleteGroupSnapshotRequest.Builder withSaveMembers(final Boolean saveMembers) {
+        public DeleteGroupSnapshotRequest.Builder saveMembers(final Boolean saveMembers) {
             this.saveMembers = saveMembers;
             return this;
         }

@@ -213,7 +213,6 @@ public class Node implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( nodeID, associatedMasterServiceID, associatedFServiceID, fibreChannelTargetPortGroup, name, platformInfo, softwareVersion, cip, cipi, mip, mipi, sip, sipi, uuid, attributes );
     }
 

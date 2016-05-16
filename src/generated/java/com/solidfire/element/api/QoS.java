@@ -119,7 +119,6 @@ public class QoS implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( minIOPS, maxIOPS, burstIOPS, burstTime );
     }
 

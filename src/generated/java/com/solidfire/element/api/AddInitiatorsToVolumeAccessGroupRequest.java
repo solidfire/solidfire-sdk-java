@@ -84,7 +84,6 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeAccessGroupID, initiators );
     }
 
@@ -104,12 +103,12 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -118,25 +117,25 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
 
         private Builder() { }
 
-        public AddInitiatorsToVolumeAccessGroupRequest toRequest() {
+        public AddInitiatorsToVolumeAccessGroupRequest build() {
             return new AddInitiatorsToVolumeAccessGroupRequest (
                          this.volumeAccessGroupID,
                          this.initiators            );
         }
 
-        private AddInitiatorsToVolumeAccessGroupRequest.Builder fromRequest(final AddInitiatorsToVolumeAccessGroupRequest req) {
+        private AddInitiatorsToVolumeAccessGroupRequest.Builder buildFrom(final AddInitiatorsToVolumeAccessGroupRequest req) {
             this.volumeAccessGroupID = req.volumeAccessGroupID;
             this.initiators = req.initiators;
 
             return this;
         }
 
-        public AddInitiatorsToVolumeAccessGroupRequest.Builder withVolumeAccessGroupID(final Long volumeAccessGroupID) {
+        public AddInitiatorsToVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }
 
-        public AddInitiatorsToVolumeAccessGroupRequest.Builder withInitiators(final String[] initiators) {
+        public AddInitiatorsToVolumeAccessGroupRequest.Builder initiators(final String[] initiators) {
             this.initiators = initiators;
             return this;
         }

@@ -84,7 +84,6 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeAccessGroupID, initiators );
     }
 
@@ -104,12 +103,12 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -118,25 +117,25 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
 
         private Builder() { }
 
-        public RemoveInitiatorsFromVolumeAccessGroupRequest toRequest() {
+        public RemoveInitiatorsFromVolumeAccessGroupRequest build() {
             return new RemoveInitiatorsFromVolumeAccessGroupRequest (
                          this.volumeAccessGroupID,
                          this.initiators            );
         }
 
-        private RemoveInitiatorsFromVolumeAccessGroupRequest.Builder fromRequest(final RemoveInitiatorsFromVolumeAccessGroupRequest req) {
+        private RemoveInitiatorsFromVolumeAccessGroupRequest.Builder buildFrom(final RemoveInitiatorsFromVolumeAccessGroupRequest req) {
             this.volumeAccessGroupID = req.volumeAccessGroupID;
             this.initiators = req.initiators;
 
             return this;
         }
 
-        public RemoveInitiatorsFromVolumeAccessGroupRequest.Builder withVolumeAccessGroupID(final Long volumeAccessGroupID) {
+        public RemoveInitiatorsFromVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }
 
-        public RemoveInitiatorsFromVolumeAccessGroupRequest.Builder withInitiators(final String[] initiators) {
+        public RemoveInitiatorsFromVolumeAccessGroupRequest.Builder initiators(final String[] initiators) {
             this.initiators = initiators;
             return this;
         }

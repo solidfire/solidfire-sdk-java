@@ -80,7 +80,6 @@ public class GetVolumeEfficiencyRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeID, force );
     }
 
@@ -101,12 +100,12 @@ public class GetVolumeEfficiencyRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -115,25 +114,25 @@ public class GetVolumeEfficiencyRequest implements Serializable {
 
         private Builder() { }
 
-        public GetVolumeEfficiencyRequest toRequest() {
+        public GetVolumeEfficiencyRequest build() {
             return new GetVolumeEfficiencyRequest (
                          this.volumeID,
                          this.force            );
         }
 
-        private GetVolumeEfficiencyRequest.Builder fromRequest(final GetVolumeEfficiencyRequest req) {
+        private GetVolumeEfficiencyRequest.Builder buildFrom(final GetVolumeEfficiencyRequest req) {
             this.volumeID = req.volumeID;
             this.force = req.force;
 
             return this;
         }
 
-        public GetVolumeEfficiencyRequest.Builder withVolumeID(final Long volumeID) {
+        public GetVolumeEfficiencyRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public GetVolumeEfficiencyRequest.Builder withOptionalForce(final Boolean force) {
+        public GetVolumeEfficiencyRequest.Builder optionalForce(final Boolean force) {
             this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
             return this;
         }

@@ -194,7 +194,6 @@ public class PendingNode implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( pendingNodeID, assignedNodeID, name, compatible, platformInfo, cip, cipi, mip, mipi, sip, sipi, softwareVersion, uuid );
     }
 

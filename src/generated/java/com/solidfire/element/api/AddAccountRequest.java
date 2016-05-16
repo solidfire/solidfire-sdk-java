@@ -115,7 +115,6 @@ public class AddAccountRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( username, initiatorSecret, targetSecret, attributes );
     }
 
@@ -140,12 +139,12 @@ public class AddAccountRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -156,7 +155,7 @@ public class AddAccountRequest implements Serializable {
 
         private Builder() { }
 
-        public AddAccountRequest toRequest() {
+        public AddAccountRequest build() {
             return new AddAccountRequest (
                          this.username,
                          this.initiatorSecret,
@@ -164,7 +163,7 @@ public class AddAccountRequest implements Serializable {
                          this.attributes            );
         }
 
-        private AddAccountRequest.Builder fromRequest(final AddAccountRequest req) {
+        private AddAccountRequest.Builder buildFrom(final AddAccountRequest req) {
             this.username = req.username;
             this.initiatorSecret = req.initiatorSecret;
             this.targetSecret = req.targetSecret;
@@ -173,22 +172,22 @@ public class AddAccountRequest implements Serializable {
             return this;
         }
 
-        public AddAccountRequest.Builder withUsername(final String username) {
+        public AddAccountRequest.Builder username(final String username) {
             this.username = username;
             return this;
         }
 
-        public AddAccountRequest.Builder withOptionalInitiatorSecret(final String initiatorSecret) {
+        public AddAccountRequest.Builder optionalInitiatorSecret(final String initiatorSecret) {
             this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public AddAccountRequest.Builder withOptionalTargetSecret(final String targetSecret) {
+        public AddAccountRequest.Builder optionalTargetSecret(final String targetSecret) {
             this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : Optional.of(targetSecret);
             return this;
         }
 
-        public AddAccountRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public AddAccountRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

@@ -132,7 +132,6 @@ public class EventInfo implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( eventID, severity, eventInfoType, message, serviceID, nodeID, driveID, timeOfReport, timeOfPublish, details );
     }
 

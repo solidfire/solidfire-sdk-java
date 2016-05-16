@@ -91,12 +91,12 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +104,18 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
 
         private Builder() { }
 
-        public DeleteVolumeAccessGroupRequest toRequest() {
+        public DeleteVolumeAccessGroupRequest build() {
             return new DeleteVolumeAccessGroupRequest (
                          this.volumeAccessGroupID            );
         }
 
-        private DeleteVolumeAccessGroupRequest.Builder fromRequest(final DeleteVolumeAccessGroupRequest req) {
+        private DeleteVolumeAccessGroupRequest.Builder buildFrom(final DeleteVolumeAccessGroupRequest req) {
             this.volumeAccessGroupID = req.volumeAccessGroupID;
 
             return this;
         }
 
-        public DeleteVolumeAccessGroupRequest.Builder withVolumeAccessGroupID(final Long volumeAccessGroupID) {
+        public DeleteVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }

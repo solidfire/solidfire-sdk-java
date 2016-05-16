@@ -111,7 +111,6 @@ public class PhysicalAdapter implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( address, macAddress, macAddressPermanent, mtu, netmask, network, upAndRunning );
     }
 

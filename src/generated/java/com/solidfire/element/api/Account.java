@@ -140,7 +140,6 @@ public class Account implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( accountID, username, status, volumes, initiatorSecret, targetSecret, attributes );
     }
 

@@ -61,7 +61,6 @@ public class GetClusterInfoRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return this.getClass().hashCode();
     }
 

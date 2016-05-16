@@ -91,12 +91,12 @@ public class GetAsyncResultRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +104,18 @@ public class GetAsyncResultRequest implements Serializable {
 
         private Builder() { }
 
-        public GetAsyncResultRequest toRequest() {
+        public GetAsyncResultRequest build() {
             return new GetAsyncResultRequest (
                          this.asyncHandle            );
         }
 
-        private GetAsyncResultRequest.Builder fromRequest(final GetAsyncResultRequest req) {
+        private GetAsyncResultRequest.Builder buildFrom(final GetAsyncResultRequest req) {
             this.asyncHandle = req.asyncHandle;
 
             return this;
         }
 
-        public GetAsyncResultRequest.Builder withAsyncHandle(final Long asyncHandle) {
+        public GetAsyncResultRequest.Builder asyncHandle(final Long asyncHandle) {
             this.asyncHandle = asyncHandle;
             return this;
         }

@@ -113,7 +113,6 @@ public class VolumeAccessGroup implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeAccessGroupID, name, initiators, volumes );
     }
 

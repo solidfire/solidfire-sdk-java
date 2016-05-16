@@ -153,7 +153,6 @@ public class ClusterFaultInfo implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( severity, type, code, details, nodeHardwareFaultID, nodeID, serviceID, driveID, resolved, clusterFaultID, date, resolvedDate, data );
     }
 

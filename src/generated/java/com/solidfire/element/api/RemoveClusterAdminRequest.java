@@ -91,12 +91,12 @@ public class RemoveClusterAdminRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +104,18 @@ public class RemoveClusterAdminRequest implements Serializable {
 
         private Builder() { }
 
-        public RemoveClusterAdminRequest toRequest() {
+        public RemoveClusterAdminRequest build() {
             return new RemoveClusterAdminRequest (
                          this.clusterAdminID            );
         }
 
-        private RemoveClusterAdminRequest.Builder fromRequest(final RemoveClusterAdminRequest req) {
+        private RemoveClusterAdminRequest.Builder buildFrom(final RemoveClusterAdminRequest req) {
             this.clusterAdminID = req.clusterAdminID;
 
             return this;
         }
 
-        public RemoveClusterAdminRequest.Builder withClusterAdminID(final Long clusterAdminID) {
+        public RemoveClusterAdminRequest.Builder clusterAdminID(final Long clusterAdminID) {
             this.clusterAdminID = clusterAdminID;
             return this;
         }

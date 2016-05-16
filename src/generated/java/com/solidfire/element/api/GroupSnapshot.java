@@ -142,7 +142,6 @@ public class GroupSnapshot implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( groupSnapshotID, groupSnapshotUUID, members, name, createTime, status, attributes );
     }
 

@@ -76,7 +76,7 @@ public class ModifyVolumeResult implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) curve );
+        return Objects.hash( curve );
     }
 
 

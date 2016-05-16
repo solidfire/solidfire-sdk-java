@@ -87,7 +87,6 @@ public class CreateVolumeResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeID, curve );
     }
 

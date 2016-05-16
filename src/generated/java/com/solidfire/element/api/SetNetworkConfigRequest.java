@@ -91,12 +91,12 @@ public class SetNetworkConfigRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +104,18 @@ public class SetNetworkConfigRequest implements Serializable {
 
         private Builder() { }
 
-        public SetNetworkConfigRequest toRequest() {
+        public SetNetworkConfigRequest build() {
             return new SetNetworkConfigRequest (
                          this.network            );
         }
 
-        private SetNetworkConfigRequest.Builder fromRequest(final SetNetworkConfigRequest req) {
+        private SetNetworkConfigRequest.Builder buildFrom(final SetNetworkConfigRequest req) {
             this.network = req.network;
 
             return this;
         }
 
-        public SetNetworkConfigRequest.Builder withNetwork(final Network network) {
+        public SetNetworkConfigRequest.Builder network(final Network network) {
             this.network = network;
             return this;
         }

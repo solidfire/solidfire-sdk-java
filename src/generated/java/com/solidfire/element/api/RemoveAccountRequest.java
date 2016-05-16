@@ -91,12 +91,12 @@ public class RemoveAccountRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +104,18 @@ public class RemoveAccountRequest implements Serializable {
 
         private Builder() { }
 
-        public RemoveAccountRequest toRequest() {
+        public RemoveAccountRequest build() {
             return new RemoveAccountRequest (
                          this.accountID            );
         }
 
-        private RemoveAccountRequest.Builder fromRequest(final RemoveAccountRequest req) {
+        private RemoveAccountRequest.Builder buildFrom(final RemoveAccountRequest req) {
             this.accountID = req.accountID;
 
             return this;
         }
 
-        public RemoveAccountRequest.Builder withAccountID(final Long accountID) {
+        public RemoveAccountRequest.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }

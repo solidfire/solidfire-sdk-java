@@ -95,12 +95,12 @@ public class ClearClusterFaultsRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -108,18 +108,18 @@ public class ClearClusterFaultsRequest implements Serializable {
 
         private Builder() { }
 
-        public ClearClusterFaultsRequest toRequest() {
+        public ClearClusterFaultsRequest build() {
             return new ClearClusterFaultsRequest (
                          this.faultTypes            );
         }
 
-        private ClearClusterFaultsRequest.Builder fromRequest(final ClearClusterFaultsRequest req) {
+        private ClearClusterFaultsRequest.Builder buildFrom(final ClearClusterFaultsRequest req) {
             this.faultTypes = req.faultTypes;
 
             return this;
         }
 
-        public ClearClusterFaultsRequest.Builder withOptionalFaultTypes(final String faultTypes) {
+        public ClearClusterFaultsRequest.Builder optionalFaultTypes(final String faultTypes) {
             this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : Optional.of(faultTypes);
             return this;
         }

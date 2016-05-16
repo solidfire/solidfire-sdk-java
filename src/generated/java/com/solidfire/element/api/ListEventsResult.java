@@ -76,7 +76,6 @@ public class ListEventsResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( eventQueueType, events );
     }
 

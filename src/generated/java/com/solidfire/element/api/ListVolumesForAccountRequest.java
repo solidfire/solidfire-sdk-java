@@ -97,7 +97,6 @@ public class ListVolumesForAccountRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( accountID, startVolumeID, limit );
     }
 
@@ -120,12 +119,12 @@ public class ListVolumesForAccountRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -135,14 +134,14 @@ public class ListVolumesForAccountRequest implements Serializable {
 
         private Builder() { }
 
-        public ListVolumesForAccountRequest toRequest() {
+        public ListVolumesForAccountRequest build() {
             return new ListVolumesForAccountRequest (
                          this.accountID,
                          this.startVolumeID,
                          this.limit            );
         }
 
-        private ListVolumesForAccountRequest.Builder fromRequest(final ListVolumesForAccountRequest req) {
+        private ListVolumesForAccountRequest.Builder buildFrom(final ListVolumesForAccountRequest req) {
             this.accountID = req.accountID;
             this.startVolumeID = req.startVolumeID;
             this.limit = req.limit;
@@ -150,17 +149,17 @@ public class ListVolumesForAccountRequest implements Serializable {
             return this;
         }
 
-        public ListVolumesForAccountRequest.Builder withAccountID(final Long accountID) {
+        public ListVolumesForAccountRequest.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }
 
-        public ListVolumesForAccountRequest.Builder withOptionalStartVolumeID(final Long startVolumeID) {
+        public ListVolumesForAccountRequest.Builder optionalStartVolumeID(final Long startVolumeID) {
             this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : Optional.of(startVolumeID);
             return this;
         }
 
-        public ListVolumesForAccountRequest.Builder withOptionalLimit(final Long limit) {
+        public ListVolumesForAccountRequest.Builder optionalLimit(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }

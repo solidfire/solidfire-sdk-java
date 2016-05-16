@@ -141,7 +141,6 @@ public class GetVolumeEfficiencyResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( compression, deduplication, missingVolumes, thinProvisioning, timestamp );
     }
 

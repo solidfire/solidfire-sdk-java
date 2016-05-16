@@ -119,7 +119,6 @@ public class RollbackToSnapshotRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeID, snapshotID, saveCurrentState, name, attributes );
     }
 
@@ -144,12 +143,12 @@ public class RollbackToSnapshotRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -161,7 +160,7 @@ public class RollbackToSnapshotRequest implements Serializable {
 
         private Builder() { }
 
-        public RollbackToSnapshotRequest toRequest() {
+        public RollbackToSnapshotRequest build() {
             return new RollbackToSnapshotRequest (
                          this.volumeID,
                          this.snapshotID,
@@ -170,7 +169,7 @@ public class RollbackToSnapshotRequest implements Serializable {
                          this.attributes            );
         }
 
-        private RollbackToSnapshotRequest.Builder fromRequest(final RollbackToSnapshotRequest req) {
+        private RollbackToSnapshotRequest.Builder buildFrom(final RollbackToSnapshotRequest req) {
             this.volumeID = req.volumeID;
             this.snapshotID = req.snapshotID;
             this.saveCurrentState = req.saveCurrentState;
@@ -180,27 +179,27 @@ public class RollbackToSnapshotRequest implements Serializable {
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder withVolumeID(final Long volumeID) {
+        public RollbackToSnapshotRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder withSnapshotID(final Long snapshotID) {
+        public RollbackToSnapshotRequest.Builder snapshotID(final Long snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder withSaveCurrentState(final Boolean saveCurrentState) {
+        public RollbackToSnapshotRequest.Builder saveCurrentState(final Boolean saveCurrentState) {
             this.saveCurrentState = saveCurrentState;
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder withOptionalName(final String name) {
+        public RollbackToSnapshotRequest.Builder optionalName(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public RollbackToSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

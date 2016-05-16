@@ -106,7 +106,6 @@ public class Platform implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( nodeType, chassisType, cpuModel, nodeMemoryGB );
     }
 

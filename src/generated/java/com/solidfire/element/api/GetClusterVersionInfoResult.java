@@ -90,7 +90,6 @@ public class GetClusterVersionInfoResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( clusterAPIVersion, clusterVersion, clusterVersionInfo, softwareVersionInfo );
     }
 
