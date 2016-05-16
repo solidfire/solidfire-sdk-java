@@ -96,7 +96,7 @@ public class SetClusterConfigRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +104,18 @@ public class SetClusterConfigRequest implements Serializable {
 
         private Builder() { }
 
-        public SetClusterConfigRequest toRequest() {
+        public SetClusterConfigRequest build() {
             return new SetClusterConfigRequest (
                          this.cluster            );
         }
 
-        private SetClusterConfigRequest.Builder fromRequest(final SetClusterConfigRequest req) {
+        private SetClusterConfigRequest.Builder buildFrom(final SetClusterConfigRequest req) {
             this.cluster = req.cluster;
 
             return this;
         }
 
-        public SetClusterConfigRequest.Builder withCluster(final ClusterConfig cluster) {
+        public SetClusterConfigRequest.Builder cluster(final ClusterConfig cluster) {
             this.cluster = cluster;
             return this;
         }

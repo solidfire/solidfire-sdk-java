@@ -96,7 +96,7 @@ public class GetAccountByNameRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +104,18 @@ public class GetAccountByNameRequest implements Serializable {
 
         private Builder() { }
 
-        public GetAccountByNameRequest toRequest() {
+        public GetAccountByNameRequest build() {
             return new GetAccountByNameRequest (
                          this.username            );
         }
 
-        private GetAccountByNameRequest.Builder fromRequest(final GetAccountByNameRequest req) {
+        private GetAccountByNameRequest.Builder buildFrom(final GetAccountByNameRequest req) {
             this.username = req.username;
 
             return this;
         }
 
-        public GetAccountByNameRequest.Builder withUsername(final String username) {
+        public GetAccountByNameRequest.Builder username(final String username) {
             this.username = username;
             return this;
         }

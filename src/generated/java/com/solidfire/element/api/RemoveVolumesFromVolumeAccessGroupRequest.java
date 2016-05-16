@@ -84,7 +84,6 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeAccessGroupID, volumes );
     }
 
@@ -109,7 +108,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -118,25 +117,25 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
 
         private Builder() { }
 
-        public RemoveVolumesFromVolumeAccessGroupRequest toRequest() {
+        public RemoveVolumesFromVolumeAccessGroupRequest build() {
             return new RemoveVolumesFromVolumeAccessGroupRequest (
                          this.volumeAccessGroupID,
                          this.volumes            );
         }
 
-        private RemoveVolumesFromVolumeAccessGroupRequest.Builder fromRequest(final RemoveVolumesFromVolumeAccessGroupRequest req) {
+        private RemoveVolumesFromVolumeAccessGroupRequest.Builder buildFrom(final RemoveVolumesFromVolumeAccessGroupRequest req) {
             this.volumeAccessGroupID = req.volumeAccessGroupID;
             this.volumes = req.volumes;
 
             return this;
         }
 
-        public RemoveVolumesFromVolumeAccessGroupRequest.Builder withVolumeAccessGroupID(final Long volumeAccessGroupID) {
+        public RemoveVolumesFromVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }
 
-        public RemoveVolumesFromVolumeAccessGroupRequest.Builder withVolumes(final Long[] volumes) {
+        public RemoveVolumesFromVolumeAccessGroupRequest.Builder volumes(final Long[] volumes) {
             this.volumes = volumes;
             return this;
         }

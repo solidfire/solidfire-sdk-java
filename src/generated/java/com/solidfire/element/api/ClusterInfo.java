@@ -187,7 +187,6 @@ public class ClusterInfo implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( attributes, encryptionAtRestState, ensemble, mvip, mvipNodeID, name, repCount, state, svip, svipNodeID, uniqueID, uuid );
     }
 

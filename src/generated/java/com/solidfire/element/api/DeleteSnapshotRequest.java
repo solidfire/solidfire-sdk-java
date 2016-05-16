@@ -96,7 +96,7 @@ public class DeleteSnapshotRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +104,18 @@ public class DeleteSnapshotRequest implements Serializable {
 
         private Builder() { }
 
-        public DeleteSnapshotRequest toRequest() {
+        public DeleteSnapshotRequest build() {
             return new DeleteSnapshotRequest (
                          this.snapshotID            );
         }
 
-        private DeleteSnapshotRequest.Builder fromRequest(final DeleteSnapshotRequest req) {
+        private DeleteSnapshotRequest.Builder buildFrom(final DeleteSnapshotRequest req) {
             this.snapshotID = req.snapshotID;
 
             return this;
         }
 
-        public DeleteSnapshotRequest.Builder withSnapshotID(final Long snapshotID) {
+        public DeleteSnapshotRequest.Builder snapshotID(final Long snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }

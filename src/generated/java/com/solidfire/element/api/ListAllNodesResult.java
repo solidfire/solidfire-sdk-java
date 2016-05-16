@@ -76,7 +76,6 @@ public class ListAllNodesResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( nodes, pendingNodes );
     }
 

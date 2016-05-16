@@ -85,7 +85,6 @@ public class CreateSnapshotResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( snapshotID, checksum );
     }
 

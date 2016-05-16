@@ -94,7 +94,6 @@ public class ClusterAdmin implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( access, clusterAdminID, username, attributes );
     }
 

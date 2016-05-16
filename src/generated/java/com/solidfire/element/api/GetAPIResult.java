@@ -76,7 +76,6 @@ public class GetAPIResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( currentVersion, supportedVersions );
     }
 

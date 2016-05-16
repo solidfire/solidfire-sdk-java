@@ -95,7 +95,6 @@ public class MetadataHosts implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( deadSecondaries, liveSecondaries, primary );
     }
 

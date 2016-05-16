@@ -97,7 +97,6 @@ public class SoftwareVersionInfo implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( currentVersion, nodeID, packageName, pendingVersion, startTime );
     }
 

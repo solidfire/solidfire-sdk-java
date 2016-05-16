@@ -95,7 +95,6 @@ public class CloneVolumeResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( cloneID, volumeID, asyncHandle );
     }
 

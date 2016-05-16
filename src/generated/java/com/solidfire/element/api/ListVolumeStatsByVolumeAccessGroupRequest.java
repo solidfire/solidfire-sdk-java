@@ -98,7 +98,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -106,18 +106,18 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
 
         private Builder() { }
 
-        public ListVolumeStatsByVolumeAccessGroupRequest toRequest() {
+        public ListVolumeStatsByVolumeAccessGroupRequest build() {
             return new ListVolumeStatsByVolumeAccessGroupRequest (
                          this.volumeAccessGroups            );
         }
 
-        private ListVolumeStatsByVolumeAccessGroupRequest.Builder fromRequest(final ListVolumeStatsByVolumeAccessGroupRequest req) {
+        private ListVolumeStatsByVolumeAccessGroupRequest.Builder buildFrom(final ListVolumeStatsByVolumeAccessGroupRequest req) {
             this.volumeAccessGroups = req.volumeAccessGroups;
 
             return this;
         }
 
-        public ListVolumeStatsByVolumeAccessGroupRequest.Builder withOptionalVolumeAccessGroups(final Long[] volumeAccessGroups) {
+        public ListVolumeStatsByVolumeAccessGroupRequest.Builder optionalVolumeAccessGroups(final Long[] volumeAccessGroups) {
             this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroups);
             return this;
         }

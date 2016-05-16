@@ -125,7 +125,6 @@ public class VolumeQOS implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( minIOPS, maxIOPS, burstIOPS, burstTime, curve );
     }
 

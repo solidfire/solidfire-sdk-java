@@ -98,7 +98,7 @@ public class ListSnapshotsRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -106,18 +106,18 @@ public class ListSnapshotsRequest implements Serializable {
 
         private Builder() { }
 
-        public ListSnapshotsRequest toRequest() {
+        public ListSnapshotsRequest build() {
             return new ListSnapshotsRequest (
                          this.volumeID            );
         }
 
-        private ListSnapshotsRequest.Builder fromRequest(final ListSnapshotsRequest req) {
+        private ListSnapshotsRequest.Builder buildFrom(final ListSnapshotsRequest req) {
             this.volumeID = req.volumeID;
 
             return this;
         }
 
-        public ListSnapshotsRequest.Builder withOptionalVolumeID(final Long volumeID) {
+        public ListSnapshotsRequest.Builder optionalVolumeID(final Long volumeID) {
             this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
             return this;
         }

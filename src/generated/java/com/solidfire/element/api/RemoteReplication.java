@@ -143,7 +143,6 @@ public class RemoteReplication implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( mode, pauseLimit, remoteServiceID, resumeDetails, snapshotReplication, state, stateDetails );
     }
 

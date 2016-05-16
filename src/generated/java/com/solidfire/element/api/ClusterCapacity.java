@@ -378,7 +378,6 @@ public class ClusterCapacity implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( activeBlockSpace, activeSessions, averageIOPS, clusterRecentIOSize, currentIOPS, maxIOPS, maxOverProvisionableSpace, maxProvisionedSpace, maxUsedMetadataSpace, maxUsedSpace, nonZeroBlocks, peakActiveSessions, peakIOPS, provisionedSpace, snapshotNonZeroBlocks, timestamp, totalOps, uniqueBlocks, uniqueBlocksUsedSpace, usedMetadataSpace, usedMetadataSpaceInSnapshots, usedSpace, zeroBlocks );
     }
 

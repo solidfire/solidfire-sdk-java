@@ -96,7 +96,7 @@ public class RestoreDeletedVolumeRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +104,18 @@ public class RestoreDeletedVolumeRequest implements Serializable {
 
         private Builder() { }
 
-        public RestoreDeletedVolumeRequest toRequest() {
+        public RestoreDeletedVolumeRequest build() {
             return new RestoreDeletedVolumeRequest (
                          this.volumeID            );
         }
 
-        private RestoreDeletedVolumeRequest.Builder fromRequest(final RestoreDeletedVolumeRequest req) {
+        private RestoreDeletedVolumeRequest.Builder buildFrom(final RestoreDeletedVolumeRequest req) {
             this.volumeID = req.volumeID;
 
             return this;
         }
 
-        public RestoreDeletedVolumeRequest.Builder withVolumeID(final Long volumeID) {
+        public RestoreDeletedVolumeRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

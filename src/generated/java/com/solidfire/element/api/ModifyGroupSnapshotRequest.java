@@ -98,7 +98,6 @@ public class ModifyGroupSnapshotRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( groupSnapshotID, expirationTime, enableRemoteReplication );
     }
 
@@ -126,7 +125,7 @@ public class ModifyGroupSnapshotRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -136,14 +135,14 @@ public class ModifyGroupSnapshotRequest implements Serializable {
 
         private Builder() { }
 
-        public ModifyGroupSnapshotRequest toRequest() {
+        public ModifyGroupSnapshotRequest build() {
             return new ModifyGroupSnapshotRequest (
                          this.groupSnapshotID,
                          this.expirationTime,
                          this.enableRemoteReplication            );
         }
 
-        private ModifyGroupSnapshotRequest.Builder fromRequest(final ModifyGroupSnapshotRequest req) {
+        private ModifyGroupSnapshotRequest.Builder buildFrom(final ModifyGroupSnapshotRequest req) {
             this.groupSnapshotID = req.groupSnapshotID;
             this.expirationTime = req.expirationTime;
             this.enableRemoteReplication = req.enableRemoteReplication;
@@ -151,17 +150,17 @@ public class ModifyGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public ModifyGroupSnapshotRequest.Builder withGroupSnapshotID(final Long groupSnapshotID) {
+        public ModifyGroupSnapshotRequest.Builder groupSnapshotID(final Long groupSnapshotID) {
             this.groupSnapshotID = groupSnapshotID;
             return this;
         }
 
-        public ModifyGroupSnapshotRequest.Builder withOptionalExpirationTime(final String expirationTime) {
+        public ModifyGroupSnapshotRequest.Builder optionalExpirationTime(final String expirationTime) {
             this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : Optional.of(expirationTime);
             return this;
         }
 
-        public ModifyGroupSnapshotRequest.Builder withOptionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
+        public ModifyGroupSnapshotRequest.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
             return this;
         }

@@ -347,7 +347,6 @@ public class Volume implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeID, name, accountID, createTime, status, access, enable512e, iqn, scsiEUIDeviceID, scsiNAADeviceID, qos, volumeAccessGroups, volumePairs, deleteTime, purgeTime, sliceCount, totalSize, blockSize, virtualVolumeID, attributes );
     }
 

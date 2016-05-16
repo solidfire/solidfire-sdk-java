@@ -87,7 +87,6 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( startVolumeAccessGroupID, limit );
     }
 
@@ -114,7 +113,7 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -123,25 +122,25 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
 
         private Builder() { }
 
-        public ListVolumeAccessGroupsRequest toRequest() {
+        public ListVolumeAccessGroupsRequest build() {
             return new ListVolumeAccessGroupsRequest (
                          this.startVolumeAccessGroupID,
                          this.limit            );
         }
 
-        private ListVolumeAccessGroupsRequest.Builder fromRequest(final ListVolumeAccessGroupsRequest req) {
+        private ListVolumeAccessGroupsRequest.Builder buildFrom(final ListVolumeAccessGroupsRequest req) {
             this.startVolumeAccessGroupID = req.startVolumeAccessGroupID;
             this.limit = req.limit;
 
             return this;
         }
 
-        public ListVolumeAccessGroupsRequest.Builder withOptionalStartVolumeAccessGroupID(final Long startVolumeAccessGroupID) {
+        public ListVolumeAccessGroupsRequest.Builder optionalStartVolumeAccessGroupID(final Long startVolumeAccessGroupID) {
             this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<Long>empty() : Optional.of(startVolumeAccessGroupID);
             return this;
         }
 
-        public ListVolumeAccessGroupsRequest.Builder withOptionalLimit(final Long limit) {
+        public ListVolumeAccessGroupsRequest.Builder optionalLimit(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }

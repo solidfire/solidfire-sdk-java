@@ -83,7 +83,6 @@ public class ClusterVersionInfo implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( nodeID, nodeVersion, nodeInternalRevision );
     }
 

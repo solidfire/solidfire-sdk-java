@@ -87,7 +87,6 @@ public class ListAccountsRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( startAccountID, limit );
     }
 
@@ -114,7 +113,7 @@ public class ListAccountsRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -123,25 +122,25 @@ public class ListAccountsRequest implements Serializable {
 
         private Builder() { }
 
-        public ListAccountsRequest toRequest() {
+        public ListAccountsRequest build() {
             return new ListAccountsRequest (
                          this.startAccountID,
                          this.limit            );
         }
 
-        private ListAccountsRequest.Builder fromRequest(final ListAccountsRequest req) {
+        private ListAccountsRequest.Builder buildFrom(final ListAccountsRequest req) {
             this.startAccountID = req.startAccountID;
             this.limit = req.limit;
 
             return this;
         }
 
-        public ListAccountsRequest.Builder withOptionalStartAccountID(final Long startAccountID) {
+        public ListAccountsRequest.Builder optionalStartAccountID(final Long startAccountID) {
             this.startAccountID = (startAccountID == null) ? Optional.<Long>empty() : Optional.of(startAccountID);
             return this;
         }
 
-        public ListAccountsRequest.Builder withOptionalLimit(final Long limit) {
+        public ListAccountsRequest.Builder optionalLimit(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }

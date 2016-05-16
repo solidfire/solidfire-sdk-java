@@ -168,7 +168,6 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeAccessGroupID, virtualNetworkID, virtualNetworkTags, name, initiators, volumes, attributes );
     }
 
@@ -204,7 +203,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -218,7 +217,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
 
         private Builder() { }
 
-        public ModifyVolumeAccessGroupRequest toRequest() {
+        public ModifyVolumeAccessGroupRequest build() {
             return new ModifyVolumeAccessGroupRequest (
                          this.volumeAccessGroupID,
                          this.virtualNetworkID,
@@ -229,7 +228,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
                          this.attributes            );
         }
 
-        private ModifyVolumeAccessGroupRequest.Builder fromRequest(final ModifyVolumeAccessGroupRequest req) {
+        private ModifyVolumeAccessGroupRequest.Builder buildFrom(final ModifyVolumeAccessGroupRequest req) {
             this.volumeAccessGroupID = req.volumeAccessGroupID;
             this.virtualNetworkID = req.virtualNetworkID;
             this.virtualNetworkTags = req.virtualNetworkTags;
@@ -241,37 +240,37 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder withVolumeAccessGroupID(final Long volumeAccessGroupID) {
+        public ModifyVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder withOptionalVirtualNetworkID(final Long[] virtualNetworkID) {
+        public ModifyVolumeAccessGroupRequest.Builder optionalVirtualNetworkID(final Long[] virtualNetworkID) {
             this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder withOptionalVirtualNetworkTags(final Long[] virtualNetworkTags) {
+        public ModifyVolumeAccessGroupRequest.Builder optionalVirtualNetworkTags(final Long[] virtualNetworkTags) {
             this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkTags);
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder withOptionalName(final String name) {
+        public ModifyVolumeAccessGroupRequest.Builder optionalName(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder withOptionalInitiators(final String[] initiators) {
+        public ModifyVolumeAccessGroupRequest.Builder optionalInitiators(final String[] initiators) {
             this.initiators = (initiators == null) ? Optional.<String[]>empty() : Optional.of(initiators);
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder withOptionalVolumes(final Long[] volumes) {
+        public ModifyVolumeAccessGroupRequest.Builder optionalVolumes(final Long[] volumes) {
             this.volumes = (volumes == null) ? Optional.<Long[]>empty() : Optional.of(volumes);
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public ModifyVolumeAccessGroupRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

@@ -160,7 +160,6 @@ public class ClusterConfig implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( cipi, cluster, ensemble, mipi, name, nodeID, pendingNodeID, role, sipi, state );
     }
 

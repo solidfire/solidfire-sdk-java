@@ -61,7 +61,6 @@ public class ModifyGroupSnapshotResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return this.getClass().hashCode();
     }
 

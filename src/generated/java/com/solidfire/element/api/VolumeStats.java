@@ -363,7 +363,6 @@ public class VolumeStats implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( accountID, actualIOPS, asyncDelay, averageIOPSize, burstIOPSCredit, clientQueueDepth, desiredMetadataHosts, latencyUSec, metadataHosts, nonZeroBlocks, readBytes, readLatencyUSec, readOps, throttle, timestamp, totalLatencyUSec, unalignedReads, unalignedWrites, volumeAccessGroups, volumeID, volumeSize, volumeUtilization, writeBytes, writeLatencyUSec, writeOps, zeroBlocks );
     }
 

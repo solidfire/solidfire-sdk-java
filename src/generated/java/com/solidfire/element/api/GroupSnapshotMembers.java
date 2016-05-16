@@ -126,7 +126,6 @@ public class GroupSnapshotMembers implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeID, snapshotID, snapshotUUID, checksum );
     }
 

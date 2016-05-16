@@ -148,7 +148,6 @@ public class ModifyVolumeRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeID, accountID, access, setCreateTime, qos, totalSize, attributes );
     }
 
@@ -184,7 +183,7 @@ public class ModifyVolumeRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -198,7 +197,7 @@ public class ModifyVolumeRequest implements Serializable {
 
         private Builder() { }
 
-        public ModifyVolumeRequest toRequest() {
+        public ModifyVolumeRequest build() {
             return new ModifyVolumeRequest (
                          this.volumeID,
                          this.accountID,
@@ -209,7 +208,7 @@ public class ModifyVolumeRequest implements Serializable {
                          this.attributes            );
         }
 
-        private ModifyVolumeRequest.Builder fromRequest(final ModifyVolumeRequest req) {
+        private ModifyVolumeRequest.Builder buildFrom(final ModifyVolumeRequest req) {
             this.volumeID = req.volumeID;
             this.accountID = req.accountID;
             this.access = req.access;
@@ -221,37 +220,37 @@ public class ModifyVolumeRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumeRequest.Builder withVolumeID(final Long volumeID) {
+        public ModifyVolumeRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public ModifyVolumeRequest.Builder withOptionalAccountID(final Long accountID) {
+        public ModifyVolumeRequest.Builder optionalAccountID(final Long accountID) {
             this.accountID = (accountID == null) ? Optional.<Long>empty() : Optional.of(accountID);
             return this;
         }
 
-        public ModifyVolumeRequest.Builder withOptionalAccess(final String access) {
+        public ModifyVolumeRequest.Builder optionalAccess(final String access) {
             this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
             return this;
         }
 
-        public ModifyVolumeRequest.Builder withOptionalSetCreateTime(final String setCreateTime) {
+        public ModifyVolumeRequest.Builder optionalSetCreateTime(final String setCreateTime) {
             this.setCreateTime = (setCreateTime == null) ? Optional.<String>empty() : Optional.of(setCreateTime);
             return this;
         }
 
-        public ModifyVolumeRequest.Builder withOptionalQos(final QoS qos) {
+        public ModifyVolumeRequest.Builder optionalQos(final QoS qos) {
             this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
         }
 
-        public ModifyVolumeRequest.Builder withOptionalTotalSize(final Long totalSize) {
+        public ModifyVolumeRequest.Builder optionalTotalSize(final Long totalSize) {
             this.totalSize = (totalSize == null) ? Optional.<Long>empty() : Optional.of(totalSize);
             return this;
         }
 
-        public ModifyVolumeRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public ModifyVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

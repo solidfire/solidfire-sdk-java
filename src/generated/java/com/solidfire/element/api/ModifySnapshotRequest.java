@@ -98,7 +98,6 @@ public class ModifySnapshotRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( snapshotID, expirationTime, enableRemoteReplication );
     }
 
@@ -126,7 +125,7 @@ public class ModifySnapshotRequest implements Serializable {
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -136,14 +135,14 @@ public class ModifySnapshotRequest implements Serializable {
 
         private Builder() { }
 
-        public ModifySnapshotRequest toRequest() {
+        public ModifySnapshotRequest build() {
             return new ModifySnapshotRequest (
                          this.snapshotID,
                          this.expirationTime,
                          this.enableRemoteReplication            );
         }
 
-        private ModifySnapshotRequest.Builder fromRequest(final ModifySnapshotRequest req) {
+        private ModifySnapshotRequest.Builder buildFrom(final ModifySnapshotRequest req) {
             this.snapshotID = req.snapshotID;
             this.expirationTime = req.expirationTime;
             this.enableRemoteReplication = req.enableRemoteReplication;
@@ -151,17 +150,17 @@ public class ModifySnapshotRequest implements Serializable {
             return this;
         }
 
-        public ModifySnapshotRequest.Builder withSnapshotID(final Long snapshotID) {
+        public ModifySnapshotRequest.Builder snapshotID(final Long snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }
 
-        public ModifySnapshotRequest.Builder withOptionalExpirationTime(final String expirationTime) {
+        public ModifySnapshotRequest.Builder optionalExpirationTime(final String expirationTime) {
             this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : Optional.of(expirationTime);
             return this;
         }
 
-        public ModifySnapshotRequest.Builder withOptionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
+        public ModifySnapshotRequest.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
             return this;
         }
