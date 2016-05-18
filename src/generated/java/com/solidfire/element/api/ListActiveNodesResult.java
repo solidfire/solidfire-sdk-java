@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class ListActiveNodesResult implements Serializable {
 
     private static final long serialVersionUID = -253137248L;
 
-    private final Node[] nodes;
+    @SerializedName("nodes") private final Node[] nodes;
 
     /**
      * The object returned by the "ListActiveNodes" API Service call.

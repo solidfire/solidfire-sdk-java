@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,12 +41,12 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
 
     private static final long serialVersionUID = -1325323557L;
 
-    private final String name;
-    private final Optional<String[]> initiators;
-    private final Optional<Long[]> volumes;
-    private final Optional<Long[]> virtualNetworkID;
-    private final Optional<Long[]> virtualNetworkTags;
-    private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("name") private final String name;
+    @SerializedName("initiators") private final Optional<String[]> initiators;
+    @SerializedName("volumes") private final Optional<Long[]> volumes;
+    @SerializedName("virtualNetworkID") private final Optional<Long[]> virtualNetworkID;
+    @SerializedName("virtualNetworkTags") private final Optional<Long[]> virtualNetworkTags;
+    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "CreateVolumeAccessGroup" API Service call.
@@ -155,7 +156,6 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( name, initiators, volumes, virtualNetworkID, virtualNetworkTags, attributes );
     }
 
@@ -184,12 +184,12 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -202,7 +202,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
 
         private Builder() { }
 
-        public CreateVolumeAccessGroupRequest toRequest() {
+        public CreateVolumeAccessGroupRequest build() {
             return new CreateVolumeAccessGroupRequest (
                          this.name,
                          this.initiators,
@@ -212,7 +212,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
                          this.attributes            );
         }
 
-        private CreateVolumeAccessGroupRequest.Builder fromRequest(final CreateVolumeAccessGroupRequest req) {
+        private CreateVolumeAccessGroupRequest.Builder buildFrom(final CreateVolumeAccessGroupRequest req) {
             this.name = req.name;
             this.initiators = req.initiators;
             this.volumes = req.volumes;
@@ -223,32 +223,32 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder withName(final String name) {
+        public CreateVolumeAccessGroupRequest.Builder name(final String name) {
             this.name = name;
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder withOptionalInitiators(final String[] initiators) {
+        public CreateVolumeAccessGroupRequest.Builder optionalInitiators(final String[] initiators) {
             this.initiators = (initiators == null) ? Optional.<String[]>empty() : Optional.of(initiators);
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder withOptionalVolumes(final Long[] volumes) {
+        public CreateVolumeAccessGroupRequest.Builder optionalVolumes(final Long[] volumes) {
             this.volumes = (volumes == null) ? Optional.<Long[]>empty() : Optional.of(volumes);
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder withOptionalVirtualNetworkID(final Long[] virtualNetworkID) {
+        public CreateVolumeAccessGroupRequest.Builder optionalVirtualNetworkID(final Long[] virtualNetworkID) {
             this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder withOptionalVirtualNetworkTags(final Long[] virtualNetworkTags) {
+        public CreateVolumeAccessGroupRequest.Builder optionalVirtualNetworkTags(final Long[] virtualNetworkTags) {
             this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkTags);
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CreateVolumeAccessGroupRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

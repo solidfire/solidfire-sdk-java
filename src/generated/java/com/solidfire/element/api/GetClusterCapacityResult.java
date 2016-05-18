@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class GetClusterCapacityResult implements Serializable {
 
     private static final long serialVersionUID = 1302102495L;
 
-    private final ClusterCapacity clusterCapacity;
+    @SerializedName("clusterCapacity") private final ClusterCapacity clusterCapacity;
 
     /**
      * The object returned by the "GetClusterCapacity" API Service call.

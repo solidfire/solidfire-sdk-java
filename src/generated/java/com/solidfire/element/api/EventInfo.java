@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,16 +41,16 @@ public class EventInfo implements Serializable {
 
     private static final long serialVersionUID = 1733802303L;
 
-    private final Long eventID;
-    private final Long severity;
-    private final String eventInfoType;
-    private final String message;
-    private final Long serviceID;
-    private final Long nodeID;
-    private final Long driveID;
-    private final String timeOfReport;
-    private final String timeOfPublish;
-    private final Object details;
+    @SerializedName("eventID") private final Long eventID;
+    @SerializedName("severity") private final Long severity;
+    @SerializedName("eventInfoType") private final String eventInfoType;
+    @SerializedName("message") private final String message;
+    @SerializedName("serviceID") private final Long serviceID;
+    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("driveID") private final Long driveID;
+    @SerializedName("timeOfReport") private final String timeOfReport;
+    @SerializedName("timeOfPublish") private final String timeOfPublish;
+    @SerializedName("details") private final Object details;
 
     /**
      * 
@@ -132,7 +133,6 @@ public class EventInfo implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( eventID, severity, eventInfoType, message, serviceID, nodeID, driveID, timeOfReport, timeOfPublish, details );
     }
 

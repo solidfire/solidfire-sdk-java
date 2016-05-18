@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -39,7 +40,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 
 public class SolidFireElement
-    extends com.solidfire.jsvcgen.client.ServiceBase
+    extends com.solidfire.client.ElementServiceBase
     implements SolidFireElementIF {
 
 

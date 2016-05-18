@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,10 +41,10 @@ public class ListEventsRequest implements Serializable {
 
     private static final long serialVersionUID = -1417051194L;
 
-    private final Optional<Long> maxEvents;
-    private final Optional<Long> startEventID;
-    private final Optional<Long> endEventID;
-    private final Optional<String> eventQueueType;
+    @SerializedName("maxEvents") private final Optional<Long> maxEvents;
+    @SerializedName("startEventID") private final Optional<Long> startEventID;
+    @SerializedName("endEventID") private final Optional<Long> endEventID;
+    @SerializedName("eventQueueType") private final Optional<String> eventQueueType;
 
     /**
      * The Request object for the "ListEvents" API Service call.
@@ -90,7 +91,6 @@ public class ListEventsRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( maxEvents, startEventID, endEventID, eventQueueType );
     }
 
@@ -116,12 +116,12 @@ public class ListEventsRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -132,7 +132,7 @@ public class ListEventsRequest implements Serializable {
 
         private Builder() { }
 
-        public ListEventsRequest toRequest() {
+        public ListEventsRequest build() {
             return new ListEventsRequest (
                          this.maxEvents,
                          this.startEventID,
@@ -140,7 +140,7 @@ public class ListEventsRequest implements Serializable {
                          this.eventQueueType            );
         }
 
-        private ListEventsRequest.Builder fromRequest(final ListEventsRequest req) {
+        private ListEventsRequest.Builder buildFrom(final ListEventsRequest req) {
             this.maxEvents = req.maxEvents;
             this.startEventID = req.startEventID;
             this.endEventID = req.endEventID;
@@ -149,22 +149,22 @@ public class ListEventsRequest implements Serializable {
             return this;
         }
 
-        public ListEventsRequest.Builder withOptionalMaxEvents(final Long maxEvents) {
+        public ListEventsRequest.Builder optionalMaxEvents(final Long maxEvents) {
             this.maxEvents = (maxEvents == null) ? Optional.<Long>empty() : Optional.of(maxEvents);
             return this;
         }
 
-        public ListEventsRequest.Builder withOptionalStartEventID(final Long startEventID) {
+        public ListEventsRequest.Builder optionalStartEventID(final Long startEventID) {
             this.startEventID = (startEventID == null) ? Optional.<Long>empty() : Optional.of(startEventID);
             return this;
         }
 
-        public ListEventsRequest.Builder withOptionalEndEventID(final Long endEventID) {
+        public ListEventsRequest.Builder optionalEndEventID(final Long endEventID) {
             this.endEventID = (endEventID == null) ? Optional.<Long>empty() : Optional.of(endEventID);
             return this;
         }
 
-        public ListEventsRequest.Builder withOptionalEventQueueType(final String eventQueueType) {
+        public ListEventsRequest.Builder optionalEventQueueType(final String eventQueueType) {
             this.eventQueueType = (eventQueueType == null) ? Optional.<String>empty() : Optional.of(eventQueueType);
             return this;
         }

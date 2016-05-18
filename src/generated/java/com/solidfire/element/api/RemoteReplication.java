@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,13 +41,13 @@ public class RemoteReplication implements Serializable {
 
     private static final long serialVersionUID = -1757227169L;
 
-    private final String mode;
-    private final Long pauseLimit;
-    private final Long remoteServiceID;
-    private final String resumeDetails;
-    private final SnapshotReplication snapshotReplication;
-    private final String state;
-    private final String stateDetails;
+    @SerializedName("mode") private final String mode;
+    @SerializedName("pauseLimit") private final Long pauseLimit;
+    @SerializedName("remoteServiceID") private final Long remoteServiceID;
+    @SerializedName("resumeDetails") private final String resumeDetails;
+    @SerializedName("snapshotReplication") private final SnapshotReplication snapshotReplication;
+    @SerializedName("state") private final String state;
+    @SerializedName("stateDetails") private final String stateDetails;
 
     /**
      * Details on the volume replication.
@@ -143,7 +144,6 @@ public class RemoteReplication implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( mode, pauseLimit, remoteServiceID, resumeDetails, snapshotReplication, state, stateDetails );
     }
 

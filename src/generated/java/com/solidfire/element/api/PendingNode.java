@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,19 +41,19 @@ public class PendingNode implements Serializable {
 
     private static final long serialVersionUID = -829314366L;
 
-    private final Long pendingNodeID;
-    private final Long assignedNodeID;
-    private final String name;
-    private final Boolean compatible;
-    private final Platform platformInfo;
-    private final String cip;
-    private final String cipi;
-    private final String mip;
-    private final String mipi;
-    private final String sip;
-    private final String sipi;
-    private final String softwareVersion;
-    private final String uuid;
+    @SerializedName("pendingNodeID") private final Long pendingNodeID;
+    @SerializedName("AssignedNodeID") private final Long assignedNodeID;
+    @SerializedName("name") private final String name;
+    @SerializedName("compatible") private final Boolean compatible;
+    @SerializedName("platformInfo") private final Platform platformInfo;
+    @SerializedName("cip") private final String cip;
+    @SerializedName("cipi") private final String cipi;
+    @SerializedName("mip") private final String mip;
+    @SerializedName("mipi") private final String mipi;
+    @SerializedName("sip") private final String sip;
+    @SerializedName("sipi") private final String sipi;
+    @SerializedName("softwareVersion") private final String softwareVersion;
+    @SerializedName("uuid") private final String uuid;
 
     /**
      * A &quot;pending node&quot; is one that has not yet joined the cluster.
@@ -194,7 +195,6 @@ public class PendingNode implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( pendingNodeID, assignedNodeID, name, compatible, platformInfo, cip, cipi, mip, mipi, sip, sipi, softwareVersion, uuid );
     }
 

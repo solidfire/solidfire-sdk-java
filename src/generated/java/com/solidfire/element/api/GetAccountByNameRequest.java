@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class GetAccountByNameRequest implements Serializable {
 
     private static final long serialVersionUID = -1865201667L;
 
-    private final String username;
+    @SerializedName("username") private final String username;
 
     /**
      * The Request object for the "GetAccountByName" API Service call.
@@ -91,12 +92,12 @@ public class GetAccountByNameRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +105,18 @@ public class GetAccountByNameRequest implements Serializable {
 
         private Builder() { }
 
-        public GetAccountByNameRequest toRequest() {
+        public GetAccountByNameRequest build() {
             return new GetAccountByNameRequest (
                          this.username            );
         }
 
-        private GetAccountByNameRequest.Builder fromRequest(final GetAccountByNameRequest req) {
+        private GetAccountByNameRequest.Builder buildFrom(final GetAccountByNameRequest req) {
             this.username = req.username;
 
             return this;
         }
 
-        public GetAccountByNameRequest.Builder withUsername(final String username) {
+        public GetAccountByNameRequest.Builder username(final String username) {
             this.username = username;
             return this;
         }

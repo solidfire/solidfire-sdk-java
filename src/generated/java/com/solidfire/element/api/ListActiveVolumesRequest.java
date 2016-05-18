@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,8 +41,8 @@ public class ListActiveVolumesRequest implements Serializable {
 
     private static final long serialVersionUID = -1582754858L;
 
-    private final Optional<Long> startVolumeID;
-    private final Optional<Long> limit;
+    @SerializedName("startVolumeID") private final Optional<Long> startVolumeID;
+    @SerializedName("limit") private final Optional<Long> limit;
 
     /**
      * The Request object for the "ListActiveVolumes" API Service call.
@@ -86,7 +87,6 @@ public class ListActiveVolumesRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( startVolumeID, limit );
     }
 
@@ -108,12 +108,12 @@ public class ListActiveVolumesRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -122,25 +122,25 @@ public class ListActiveVolumesRequest implements Serializable {
 
         private Builder() { }
 
-        public ListActiveVolumesRequest toRequest() {
+        public ListActiveVolumesRequest build() {
             return new ListActiveVolumesRequest (
                          this.startVolumeID,
                          this.limit            );
         }
 
-        private ListActiveVolumesRequest.Builder fromRequest(final ListActiveVolumesRequest req) {
+        private ListActiveVolumesRequest.Builder buildFrom(final ListActiveVolumesRequest req) {
             this.startVolumeID = req.startVolumeID;
             this.limit = req.limit;
 
             return this;
         }
 
-        public ListActiveVolumesRequest.Builder withOptionalStartVolumeID(final Long startVolumeID) {
+        public ListActiveVolumesRequest.Builder optionalStartVolumeID(final Long startVolumeID) {
             this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : Optional.of(startVolumeID);
             return this;
         }
 
-        public ListActiveVolumesRequest.Builder withOptionalLimit(final Long limit) {
+        public ListActiveVolumesRequest.Builder optionalLimit(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }

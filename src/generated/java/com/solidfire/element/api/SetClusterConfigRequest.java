@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class SetClusterConfigRequest implements Serializable {
 
     private static final long serialVersionUID = 364694135L;
 
-    private final ClusterConfig cluster;
+    @SerializedName("cluster") private final ClusterConfig cluster;
 
     /**
      * The Request object for the "SetClusterConfig" API Service call.
@@ -91,12 +92,12 @@ public class SetClusterConfigRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +105,18 @@ public class SetClusterConfigRequest implements Serializable {
 
         private Builder() { }
 
-        public SetClusterConfigRequest toRequest() {
+        public SetClusterConfigRequest build() {
             return new SetClusterConfigRequest (
                          this.cluster            );
         }
 
-        private SetClusterConfigRequest.Builder fromRequest(final SetClusterConfigRequest req) {
+        private SetClusterConfigRequest.Builder buildFrom(final SetClusterConfigRequest req) {
             this.cluster = req.cluster;
 
             return this;
         }
 
-        public SetClusterConfigRequest.Builder withCluster(final ClusterConfig cluster) {
+        public SetClusterConfigRequest.Builder cluster(final ClusterConfig cluster) {
             this.cluster = cluster;
             return this;
         }

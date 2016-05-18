@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,10 +41,10 @@ public class ClusterAdmin implements Serializable {
 
     private static final long serialVersionUID = -1711157177L;
 
-    private final String[] access;
-    private final Long clusterAdminID;
-    private final String username;
-    private final java.util.Map<String, Object> attributes;
+    @SerializedName("access") private final String[] access;
+    @SerializedName("clusterAdminID") private final Long clusterAdminID;
+    @SerializedName("username") private final String username;
+    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
 
     /**
      * 
@@ -94,7 +95,6 @@ public class ClusterAdmin implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( access, clusterAdminID, username, attributes );
     }
 

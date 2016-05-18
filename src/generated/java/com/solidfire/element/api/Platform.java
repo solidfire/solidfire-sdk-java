@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,10 +41,10 @@ public class Platform implements Serializable {
 
     private static final long serialVersionUID = -101533838L;
 
-    private final String nodeType;
-    private final String chassisType;
-    private final String cpuModel;
-    private final Long nodeMemoryGB;
+    @SerializedName("nodeType") private final String nodeType;
+    @SerializedName("chassisType") private final String chassisType;
+    @SerializedName("cpuModel") private final String cpuModel;
+    @SerializedName("nodeMemoryGB") private final Long nodeMemoryGB;
 
     /**
      * 
@@ -106,7 +107,6 @@ public class Platform implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( nodeType, chassisType, cpuModel, nodeMemoryGB );
     }
 

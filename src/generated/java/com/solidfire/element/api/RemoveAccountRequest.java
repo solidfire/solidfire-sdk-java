@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class RemoveAccountRequest implements Serializable {
 
     private static final long serialVersionUID = -820575074L;
 
-    private final Long accountID;
+    @SerializedName("accountID") private final Long accountID;
 
     /**
      * The Request object for the "RemoveAccount" API Service call.
@@ -91,12 +92,12 @@ public class RemoveAccountRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +105,18 @@ public class RemoveAccountRequest implements Serializable {
 
         private Builder() { }
 
-        public RemoveAccountRequest toRequest() {
+        public RemoveAccountRequest build() {
             return new RemoveAccountRequest (
                          this.accountID            );
         }
 
-        private RemoveAccountRequest.Builder fromRequest(final RemoveAccountRequest req) {
+        private RemoveAccountRequest.Builder buildFrom(final RemoveAccountRequest req) {
             this.accountID = req.accountID;
 
             return this;
         }
 
-        public RemoveAccountRequest.Builder withAccountID(final Long accountID) {
+        public RemoveAccountRequest.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }

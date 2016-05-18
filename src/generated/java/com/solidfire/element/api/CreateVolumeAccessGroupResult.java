@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
 
     private static final long serialVersionUID = -514075346L;
 
-    private final Long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
 
     /**
      * The object returned by the "CreateVolumeAccessGroup" API Service call.

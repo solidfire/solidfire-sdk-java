@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,12 +41,12 @@ public class ModifyAccountRequest implements Serializable {
 
     private static final long serialVersionUID = -1292214246L;
 
-    private final Long accountID;
-    private final Optional<String> username;
-    private final Optional<String> status;
-    private final Optional<String> initiatorSecret;
-    private final Optional<String> targetSecret;
-    private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("username") private final Optional<String> username;
+    @SerializedName("status") private final Optional<String> status;
+    @SerializedName("initiatorSecret") private final Optional<String> initiatorSecret;
+    @SerializedName("targetSecret") private final Optional<String> targetSecret;
+    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "ModifyAccount" API Service call.
@@ -130,7 +131,6 @@ public class ModifyAccountRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( accountID, username, status, initiatorSecret, targetSecret, attributes );
     }
 
@@ -159,12 +159,12 @@ public class ModifyAccountRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -177,7 +177,7 @@ public class ModifyAccountRequest implements Serializable {
 
         private Builder() { }
 
-        public ModifyAccountRequest toRequest() {
+        public ModifyAccountRequest build() {
             return new ModifyAccountRequest (
                          this.accountID,
                          this.username,
@@ -187,7 +187,7 @@ public class ModifyAccountRequest implements Serializable {
                          this.attributes            );
         }
 
-        private ModifyAccountRequest.Builder fromRequest(final ModifyAccountRequest req) {
+        private ModifyAccountRequest.Builder buildFrom(final ModifyAccountRequest req) {
             this.accountID = req.accountID;
             this.username = req.username;
             this.status = req.status;
@@ -198,32 +198,32 @@ public class ModifyAccountRequest implements Serializable {
             return this;
         }
 
-        public ModifyAccountRequest.Builder withAccountID(final Long accountID) {
+        public ModifyAccountRequest.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }
 
-        public ModifyAccountRequest.Builder withOptionalUsername(final String username) {
+        public ModifyAccountRequest.Builder optionalUsername(final String username) {
             this.username = (username == null) ? Optional.<String>empty() : Optional.of(username);
             return this;
         }
 
-        public ModifyAccountRequest.Builder withOptionalStatus(final String status) {
+        public ModifyAccountRequest.Builder optionalStatus(final String status) {
             this.status = (status == null) ? Optional.<String>empty() : Optional.of(status);
             return this;
         }
 
-        public ModifyAccountRequest.Builder withOptionalInitiatorSecret(final String initiatorSecret) {
+        public ModifyAccountRequest.Builder optionalInitiatorSecret(final String initiatorSecret) {
             this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public ModifyAccountRequest.Builder withOptionalTargetSecret(final String targetSecret) {
+        public ModifyAccountRequest.Builder optionalTargetSecret(final String targetSecret) {
             this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : Optional.of(targetSecret);
             return this;
         }
 
-        public ModifyAccountRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public ModifyAccountRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

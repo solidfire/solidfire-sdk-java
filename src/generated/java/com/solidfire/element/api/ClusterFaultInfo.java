@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,19 +41,19 @@ public class ClusterFaultInfo implements Serializable {
 
     private static final long serialVersionUID = -807751610L;
 
-    private final String severity;
-    private final String type;
-    private final String code;
-    private final String details;
-    private final Long nodeHardwareFaultID;
-    private final Long nodeID;
-    private final Long serviceID;
-    private final Long driveID;
-    private final Boolean resolved;
-    private final Long clusterFaultID;
-    private final String date;
-    private final String resolvedDate;
-    private final Object data;
+    @SerializedName("severity") private final String severity;
+    @SerializedName("type") private final String type;
+    @SerializedName("code") private final String code;
+    @SerializedName("details") private final String details;
+    @SerializedName("nodeHardwareFaultID") private final Long nodeHardwareFaultID;
+    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("serviceID") private final Long serviceID;
+    @SerializedName("driveID") private final Long driveID;
+    @SerializedName("resolved") private final Boolean resolved;
+    @SerializedName("clusterFaultID") private final Long clusterFaultID;
+    @SerializedName("date") private final String date;
+    @SerializedName("resolvedDate") private final String resolvedDate;
+    @SerializedName("data") private final Object data;
 
     /**
      * 
@@ -153,7 +154,6 @@ public class ClusterFaultInfo implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( severity, type, code, details, nodeHardwareFaultID, nodeID, serviceID, driveID, resolved, clusterFaultID, date, resolvedDate, data );
     }
 

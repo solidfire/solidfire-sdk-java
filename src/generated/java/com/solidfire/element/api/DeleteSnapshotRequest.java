@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class DeleteSnapshotRequest implements Serializable {
 
     private static final long serialVersionUID = 1309910261L;
 
-    private final Long snapshotID;
+    @SerializedName("snapshotID") private final Long snapshotID;
 
     /**
      * The Request object for the "DeleteSnapshot" API Service call.
@@ -91,12 +92,12 @@ public class DeleteSnapshotRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +105,18 @@ public class DeleteSnapshotRequest implements Serializable {
 
         private Builder() { }
 
-        public DeleteSnapshotRequest toRequest() {
+        public DeleteSnapshotRequest build() {
             return new DeleteSnapshotRequest (
                          this.snapshotID            );
         }
 
-        private DeleteSnapshotRequest.Builder fromRequest(final DeleteSnapshotRequest req) {
+        private DeleteSnapshotRequest.Builder buildFrom(final DeleteSnapshotRequest req) {
             this.snapshotID = req.snapshotID;
 
             return this;
         }
 
-        public DeleteSnapshotRequest.Builder withSnapshotID(final Long snapshotID) {
+        public DeleteSnapshotRequest.Builder snapshotID(final Long snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class GetClusterConfigResult implements Serializable {
 
     private static final long serialVersionUID = 1919107704L;
 
-    private final ClusterConfig cluster;
+    @SerializedName("cluster") private final ClusterConfig cluster;
 
     /**
      * The object returned by the "GetClusterConfig" API Service call.

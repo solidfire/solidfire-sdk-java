@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class ListISCSISessionsResult implements Serializable {
 
     private static final long serialVersionUID = -2094068138L;
 
-    private final ISCSISession[] sessions;
+    @SerializedName("sessions") private final ISCSISession[] sessions;
 
     /**
      * The object returned by the "ListISCSISessions" API Service call.

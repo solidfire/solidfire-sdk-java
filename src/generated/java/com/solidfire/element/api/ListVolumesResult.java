@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class ListVolumesResult implements Serializable {
 
     private static final long serialVersionUID = -1162133552L;
 
-    private final Volume[] volumes;
+    @SerializedName("volumes") private final Volume[] volumes;
 
     /**
      * The object returned by the "ListVolumes" API Service call.

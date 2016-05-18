@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,10 +41,10 @@ public class ModifyClusterAdminRequest implements Serializable {
 
     private static final long serialVersionUID = -1663388854L;
 
-    private final Long clusterAdminID;
-    private final Optional<String> password;
-    private final Optional<String[]> access;
-    private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("clusterAdminID") private final Long clusterAdminID;
+    @SerializedName("password") private final Optional<String> password;
+    @SerializedName("access") private final Optional<String[]> access;
+    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "ModifyClusterAdmin" API Service call.
@@ -106,7 +107,6 @@ public class ModifyClusterAdminRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( clusterAdminID, password, access, attributes );
     }
 
@@ -131,12 +131,12 @@ public class ModifyClusterAdminRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -147,7 +147,7 @@ public class ModifyClusterAdminRequest implements Serializable {
 
         private Builder() { }
 
-        public ModifyClusterAdminRequest toRequest() {
+        public ModifyClusterAdminRequest build() {
             return new ModifyClusterAdminRequest (
                          this.clusterAdminID,
                          this.password,
@@ -155,7 +155,7 @@ public class ModifyClusterAdminRequest implements Serializable {
                          this.attributes            );
         }
 
-        private ModifyClusterAdminRequest.Builder fromRequest(final ModifyClusterAdminRequest req) {
+        private ModifyClusterAdminRequest.Builder buildFrom(final ModifyClusterAdminRequest req) {
             this.clusterAdminID = req.clusterAdminID;
             this.password = req.password;
             this.access = req.access;
@@ -164,22 +164,22 @@ public class ModifyClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder withClusterAdminID(final Long clusterAdminID) {
+        public ModifyClusterAdminRequest.Builder clusterAdminID(final Long clusterAdminID) {
             this.clusterAdminID = clusterAdminID;
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder withOptionalPassword(final String password) {
+        public ModifyClusterAdminRequest.Builder optionalPassword(final String password) {
             this.password = (password == null) ? Optional.<String>empty() : Optional.of(password);
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder withOptionalAccess(final String[] access) {
+        public ModifyClusterAdminRequest.Builder optionalAccess(final String[] access) {
             this.access = (access == null) ? Optional.<String[]>empty() : Optional.of(access);
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public ModifyClusterAdminRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

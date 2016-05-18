@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class ModifyVolumeResult implements Serializable {
 
     private static final long serialVersionUID = 1071511843L;
 
-    private final Optional<Object> curve;
+    @SerializedName("curve") private final Optional<Object> curve;
 
     /**
      * The object returned by the "ModifyVolume" API Service call.
@@ -76,7 +77,7 @@ public class ModifyVolumeResult implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) curve );
+        return Objects.hash( curve );
     }
 
 

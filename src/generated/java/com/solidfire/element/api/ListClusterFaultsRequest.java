@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,10 +41,10 @@ public class ListClusterFaultsRequest implements Serializable {
 
     private static final long serialVersionUID = 412506169L;
 
-    private final Optional<Boolean> exceptions;
-    private final Optional<Boolean> bestPractices;
-    private final Optional<Boolean> update;
-    private final Optional<String> faultTypes;
+    @SerializedName("exceptions") private final Optional<Boolean> exceptions;
+    @SerializedName("bestPractices") private final Optional<Boolean> bestPractices;
+    @SerializedName("update") private final Optional<Boolean> update;
+    @SerializedName("faultTypes") private final Optional<String> faultTypes;
 
     /**
      * The Request object for the "ListClusterFaults" API Service call.
@@ -90,7 +91,6 @@ public class ListClusterFaultsRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( exceptions, bestPractices, update, faultTypes );
     }
 
@@ -116,12 +116,12 @@ public class ListClusterFaultsRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -132,7 +132,7 @@ public class ListClusterFaultsRequest implements Serializable {
 
         private Builder() { }
 
-        public ListClusterFaultsRequest toRequest() {
+        public ListClusterFaultsRequest build() {
             return new ListClusterFaultsRequest (
                          this.exceptions,
                          this.bestPractices,
@@ -140,7 +140,7 @@ public class ListClusterFaultsRequest implements Serializable {
                          this.faultTypes            );
         }
 
-        private ListClusterFaultsRequest.Builder fromRequest(final ListClusterFaultsRequest req) {
+        private ListClusterFaultsRequest.Builder buildFrom(final ListClusterFaultsRequest req) {
             this.exceptions = req.exceptions;
             this.bestPractices = req.bestPractices;
             this.update = req.update;
@@ -149,22 +149,22 @@ public class ListClusterFaultsRequest implements Serializable {
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder withOptionalExceptions(final Boolean exceptions) {
+        public ListClusterFaultsRequest.Builder optionalExceptions(final Boolean exceptions) {
             this.exceptions = (exceptions == null) ? Optional.<Boolean>empty() : Optional.of(exceptions);
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder withOptionalBestPractices(final Boolean bestPractices) {
+        public ListClusterFaultsRequest.Builder optionalBestPractices(final Boolean bestPractices) {
             this.bestPractices = (bestPractices == null) ? Optional.<Boolean>empty() : Optional.of(bestPractices);
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder withOptionalUpdate(final Boolean update) {
+        public ListClusterFaultsRequest.Builder optionalUpdate(final Boolean update) {
             this.update = (update == null) ? Optional.<Boolean>empty() : Optional.of(update);
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder withOptionalFaultTypes(final String faultTypes) {
+        public ListClusterFaultsRequest.Builder optionalFaultTypes(final String faultTypes) {
             this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : Optional.of(faultTypes);
             return this;
         }

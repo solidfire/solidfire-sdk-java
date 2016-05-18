@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,10 +41,10 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
 
     private static final long serialVersionUID = -1610806504L;
 
-    private final Long groupSnapshotID;
-    private final Boolean saveCurrentState;
-    private final Optional<String> name;
-    private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
+    @SerializedName("saveCurrentState") private final Boolean saveCurrentState;
+    @SerializedName("name") private final Optional<String> name;
+    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "RollbackToGroupSnapshot" API Service call.
@@ -108,7 +109,6 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( groupSnapshotID, saveCurrentState, name, attributes );
     }
 
@@ -132,12 +132,12 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -148,7 +148,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
 
         private Builder() { }
 
-        public RollbackToGroupSnapshotRequest toRequest() {
+        public RollbackToGroupSnapshotRequest build() {
             return new RollbackToGroupSnapshotRequest (
                          this.groupSnapshotID,
                          this.saveCurrentState,
@@ -156,7 +156,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
                          this.attributes            );
         }
 
-        private RollbackToGroupSnapshotRequest.Builder fromRequest(final RollbackToGroupSnapshotRequest req) {
+        private RollbackToGroupSnapshotRequest.Builder buildFrom(final RollbackToGroupSnapshotRequest req) {
             this.groupSnapshotID = req.groupSnapshotID;
             this.saveCurrentState = req.saveCurrentState;
             this.name = req.name;
@@ -165,22 +165,22 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public RollbackToGroupSnapshotRequest.Builder withGroupSnapshotID(final Long groupSnapshotID) {
+        public RollbackToGroupSnapshotRequest.Builder groupSnapshotID(final Long groupSnapshotID) {
             this.groupSnapshotID = groupSnapshotID;
             return this;
         }
 
-        public RollbackToGroupSnapshotRequest.Builder withSaveCurrentState(final Boolean saveCurrentState) {
+        public RollbackToGroupSnapshotRequest.Builder saveCurrentState(final Boolean saveCurrentState) {
             this.saveCurrentState = saveCurrentState;
             return this;
         }
 
-        public RollbackToGroupSnapshotRequest.Builder withOptionalName(final String name) {
+        public RollbackToGroupSnapshotRequest.Builder optionalName(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public RollbackToGroupSnapshotRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public RollbackToGroupSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

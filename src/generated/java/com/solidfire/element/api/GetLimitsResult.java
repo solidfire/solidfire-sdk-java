@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,39 +41,39 @@ public class GetLimitsResult implements Serializable {
 
     private static final long serialVersionUID = 699867316L;
 
-    private final Long accountCountMax;
-    private final Long accountNameLengthMax;
-    private final Long accountNameLengthMin;
-    private final Long bulkVolumeJobsPerNodeMax;
-    private final Long bulkVolumeJobsPerVolumeMax;
-    private final Long cloneJobsPerVolumeMax;
-    private final Long clusterPairsCountMax;
-    private final Long initiatorNameLengthMax;
-    private final Long initiatorsPerVolumeAccessGroupCountMax;
-    private final Long secretLengthMax;
-    private final Long secretLengthMin;
-    private final Long snapshotNameLengthMax;
-    private final Long snapshotsPerVolumeMax;
-    private final Long volumeAccessGroupCountMax;
-    private final Long volumeAccessGroupLunMax;
-    private final Long volumeAccessGroupNameLengthMax;
-    private final Long volumeAccessGroupNameLengthMin;
-    private final Long volumeAccessGroupsPerInitiatorCountMax;
-    private final Long volumeAccessGroupsPerVolumeCountMax;
-    private final Long volumeBurstIOPSMax;
-    private final Long volumeBurstIOPSMin;
-    private final Long volumeCountMax;
-    private final Long volumeMaxIOPSMax;
-    private final Long volumeMaxIOPSMin;
-    private final Long volumeMinIOPSMax;
-    private final Long volumeMinIOPSMin;
-    private final Long volumeNameLengthMax;
-    private final Long volumeNameLengthMin;
-    private final Long volumeSizeMax;
-    private final Long volumeSizeMin;
-    private final Long volumesPerAccountCountMax;
-    private final Long volumesPerGroupSnapshotMax;
-    private final Long volumesPerVolumeAccessGroupCountMax;
+    @SerializedName("accountCountMax") private final Long accountCountMax;
+    @SerializedName("accountNameLengthMax") private final Long accountNameLengthMax;
+    @SerializedName("accountNameLengthMin") private final Long accountNameLengthMin;
+    @SerializedName("bulkVolumeJobsPerNodeMax") private final Long bulkVolumeJobsPerNodeMax;
+    @SerializedName("bulkVolumeJobsPerVolumeMax") private final Long bulkVolumeJobsPerVolumeMax;
+    @SerializedName("cloneJobsPerVolumeMax") private final Long cloneJobsPerVolumeMax;
+    @SerializedName("clusterPairsCountMax") private final Long clusterPairsCountMax;
+    @SerializedName("initiatorNameLengthMax") private final Long initiatorNameLengthMax;
+    @SerializedName("initiatorsPerVolumeAccessGroupCountMax") private final Long initiatorsPerVolumeAccessGroupCountMax;
+    @SerializedName("secretLengthMax") private final Long secretLengthMax;
+    @SerializedName("secretLengthMin") private final Long secretLengthMin;
+    @SerializedName("snapshotNameLengthMax") private final Long snapshotNameLengthMax;
+    @SerializedName("snapshotsPerVolumeMax") private final Long snapshotsPerVolumeMax;
+    @SerializedName("volumeAccessGroupCountMax") private final Long volumeAccessGroupCountMax;
+    @SerializedName("volumeAccessGroupLunMax") private final Long volumeAccessGroupLunMax;
+    @SerializedName("volumeAccessGroupNameLengthMax") private final Long volumeAccessGroupNameLengthMax;
+    @SerializedName("volumeAccessGroupNameLengthMin") private final Long volumeAccessGroupNameLengthMin;
+    @SerializedName("volumeAccessGroupsPerInitiatorCountMax") private final Long volumeAccessGroupsPerInitiatorCountMax;
+    @SerializedName("volumeAccessGroupsPerVolumeCountMax") private final Long volumeAccessGroupsPerVolumeCountMax;
+    @SerializedName("volumeBurstIOPSMax") private final Long volumeBurstIOPSMax;
+    @SerializedName("volumeBurstIOPSMin") private final Long volumeBurstIOPSMin;
+    @SerializedName("volumeCountMax") private final Long volumeCountMax;
+    @SerializedName("volumeMaxIOPSMax") private final Long volumeMaxIOPSMax;
+    @SerializedName("volumeMaxIOPSMin") private final Long volumeMaxIOPSMin;
+    @SerializedName("volumeMinIOPSMax") private final Long volumeMinIOPSMax;
+    @SerializedName("volumeMinIOPSMin") private final Long volumeMinIOPSMin;
+    @SerializedName("volumeNameLengthMax") private final Long volumeNameLengthMax;
+    @SerializedName("volumeNameLengthMin") private final Long volumeNameLengthMin;
+    @SerializedName("volumeSizeMax") private final Long volumeSizeMax;
+    @SerializedName("volumeSizeMin") private final Long volumeSizeMin;
+    @SerializedName("volumesPerAccountCountMax") private final Long volumesPerAccountCountMax;
+    @SerializedName("volumesPerGroupSnapshotMax") private final Long volumesPerGroupSnapshotMax;
+    @SerializedName("volumesPerVolumeAccessGroupCountMax") private final Long volumesPerVolumeAccessGroupCountMax;
 
     /**
      * Limits for the cluster
@@ -293,7 +294,6 @@ public class GetLimitsResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( accountCountMax, accountNameLengthMax, accountNameLengthMin, bulkVolumeJobsPerNodeMax, bulkVolumeJobsPerVolumeMax, cloneJobsPerVolumeMax, clusterPairsCountMax, initiatorNameLengthMax, initiatorsPerVolumeAccessGroupCountMax, secretLengthMax, secretLengthMin, snapshotNameLengthMax, snapshotsPerVolumeMax, volumeAccessGroupCountMax, volumeAccessGroupLunMax, volumeAccessGroupNameLengthMax, volumeAccessGroupNameLengthMin, volumeAccessGroupsPerInitiatorCountMax, volumeAccessGroupsPerVolumeCountMax, volumeBurstIOPSMax, volumeBurstIOPSMin, volumeCountMax, volumeMaxIOPSMax, volumeMaxIOPSMin, volumeMinIOPSMax, volumeMinIOPSMin, volumeNameLengthMax, volumeNameLengthMin, volumeSizeMax, volumeSizeMin, volumesPerAccountCountMax, volumesPerGroupSnapshotMax, volumesPerVolumeAccessGroupCountMax );
     }
 

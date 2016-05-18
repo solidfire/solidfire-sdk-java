@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,18 +41,18 @@ public class ClusterInfo implements Serializable {
 
     private static final long serialVersionUID = 1308956314L;
 
-    private final java.util.Map<String, Object> attributes;
-    private final String encryptionAtRestState;
-    private final String[] ensemble;
-    private final String mvip;
-    private final Long mvipNodeID;
-    private final String name;
-    private final Long repCount;
-    private final String state;
-    private final String svip;
-    private final Long svipNodeID;
-    private final String uniqueID;
-    private final String uuid;
+    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
+    @SerializedName("encryptionAtRestState") private final String encryptionAtRestState;
+    @SerializedName("ensemble") private final String[] ensemble;
+    @SerializedName("mvip") private final String mvip;
+    @SerializedName("mvipNodeID") private final Long mvipNodeID;
+    @SerializedName("name") private final String name;
+    @SerializedName("repCount") private final Long repCount;
+    @SerializedName("state") private final String state;
+    @SerializedName("svip") private final String svip;
+    @SerializedName("svipNodeID") private final Long svipNodeID;
+    @SerializedName("uniqueID") private final String uniqueID;
+    @SerializedName("uuid") private final String uuid;
 
     /**
      * Cluster Info object returns information the node uses to communicate with the cluster.
@@ -187,7 +188,6 @@ public class ClusterInfo implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( attributes, encryptionAtRestState, ensemble, mvip, mvipNodeID, name, repCount, state, svip, svipNodeID, uniqueID, uuid );
     }
 

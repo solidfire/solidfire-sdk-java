@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,9 +41,9 @@ public class ModifySnapshotRequest implements Serializable {
 
     private static final long serialVersionUID = 1133706379L;
 
-    private final Long snapshotID;
-    private final Optional<String> expirationTime;
-    private final Optional<Boolean> enableRemoteReplication;
+    @SerializedName("snapshotID") private final Long snapshotID;
+    @SerializedName("expirationTime") private final Optional<String> expirationTime;
+    @SerializedName("enableRemoteReplication") private final Optional<Boolean> enableRemoteReplication;
 
     /**
      * The Request object for the "ModifySnapshot" API Service call.
@@ -98,7 +99,6 @@ public class ModifySnapshotRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( snapshotID, expirationTime, enableRemoteReplication );
     }
 
@@ -121,12 +121,12 @@ public class ModifySnapshotRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -136,14 +136,14 @@ public class ModifySnapshotRequest implements Serializable {
 
         private Builder() { }
 
-        public ModifySnapshotRequest toRequest() {
+        public ModifySnapshotRequest build() {
             return new ModifySnapshotRequest (
                          this.snapshotID,
                          this.expirationTime,
                          this.enableRemoteReplication            );
         }
 
-        private ModifySnapshotRequest.Builder fromRequest(final ModifySnapshotRequest req) {
+        private ModifySnapshotRequest.Builder buildFrom(final ModifySnapshotRequest req) {
             this.snapshotID = req.snapshotID;
             this.expirationTime = req.expirationTime;
             this.enableRemoteReplication = req.enableRemoteReplication;
@@ -151,17 +151,17 @@ public class ModifySnapshotRequest implements Serializable {
             return this;
         }
 
-        public ModifySnapshotRequest.Builder withSnapshotID(final Long snapshotID) {
+        public ModifySnapshotRequest.Builder snapshotID(final Long snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }
 
-        public ModifySnapshotRequest.Builder withOptionalExpirationTime(final String expirationTime) {
+        public ModifySnapshotRequest.Builder optionalExpirationTime(final String expirationTime) {
             this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : Optional.of(expirationTime);
             return this;
         }
 
-        public ModifySnapshotRequest.Builder withOptionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
+        public ModifySnapshotRequest.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
             return this;
         }

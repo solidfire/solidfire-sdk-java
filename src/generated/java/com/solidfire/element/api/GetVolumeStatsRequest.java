@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class GetVolumeStatsRequest implements Serializable {
 
     private static final long serialVersionUID = -886640137L;
 
-    private final Long volumeID;
+    @SerializedName("volumeID") private final Long volumeID;
 
     /**
      * The Request object for the "GetVolumeStats" API Service call.
@@ -91,12 +92,12 @@ public class GetVolumeStatsRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +105,18 @@ public class GetVolumeStatsRequest implements Serializable {
 
         private Builder() { }
 
-        public GetVolumeStatsRequest toRequest() {
+        public GetVolumeStatsRequest build() {
             return new GetVolumeStatsRequest (
                          this.volumeID            );
         }
 
-        private GetVolumeStatsRequest.Builder fromRequest(final GetVolumeStatsRequest req) {
+        private GetVolumeStatsRequest.Builder buildFrom(final GetVolumeStatsRequest req) {
             this.volumeID = req.volumeID;
 
             return this;
         }
 
-        public GetVolumeStatsRequest.Builder withVolumeID(final Long volumeID) {
+        public GetVolumeStatsRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

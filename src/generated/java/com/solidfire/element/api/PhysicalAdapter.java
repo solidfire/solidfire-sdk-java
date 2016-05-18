@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,13 +41,13 @@ public class PhysicalAdapter implements Serializable {
 
     private static final long serialVersionUID = -1235345165L;
 
-    private final Optional<String> address;
-    private final Optional<String> macAddress;
-    private final Optional<String> macAddressPermanent;
-    private final Optional<String> mtu;
-    private final Optional<String> netmask;
-    private final Optional<String> network;
-    private final Optional<Boolean> upAndRunning;
+    @SerializedName("address") private final Optional<String> address;
+    @SerializedName("macAddress") private final Optional<String> macAddress;
+    @SerializedName("macAddressPermanent") private final Optional<String> macAddressPermanent;
+    @SerializedName("mtu") private final Optional<String> mtu;
+    @SerializedName("netmask") private final Optional<String> netmask;
+    @SerializedName("network") private final Optional<String> network;
+    @SerializedName("upAndRunning") private final Optional<Boolean> upAndRunning;
 
     /**
      * 
@@ -111,7 +112,6 @@ public class PhysicalAdapter implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( address, macAddress, macAddressPermanent, mtu, netmask, network, upAndRunning );
     }
 

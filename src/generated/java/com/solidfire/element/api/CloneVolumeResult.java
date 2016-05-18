@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,9 +41,9 @@ public class CloneVolumeResult implements Serializable {
 
     private static final long serialVersionUID = 1585488476L;
 
-    private final Long cloneID;
-    private final Long volumeID;
-    private final Long asyncHandle;
+    @SerializedName("cloneID") private final Long cloneID;
+    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("asyncHandle") private final Long asyncHandle;
 
     /**
      * The object returned by the "CloneVolume" API Service call.
@@ -95,7 +96,6 @@ public class CloneVolumeResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( cloneID, volumeID, asyncHandle );
     }
 

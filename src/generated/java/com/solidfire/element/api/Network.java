@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,8 +41,8 @@ public class Network implements Serializable {
 
     private static final long serialVersionUID = 785133507L;
 
-    private final Optional<NetworkConfig> bond10G;
-    private final Optional<NetworkConfig> bond1G;
+    @SerializedName("Bond10G") private final Optional<NetworkConfig> bond10G;
+    @SerializedName("Bond1G") private final Optional<NetworkConfig> bond1G;
 
     /**
      * 
@@ -76,7 +77,6 @@ public class Network implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( bond10G, bond1G );
     }
 

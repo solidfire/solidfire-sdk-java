@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,10 +41,10 @@ public class GroupSnapshotMembers implements Serializable {
 
     private static final long serialVersionUID = -1007473247L;
 
-    private final Long volumeID;
-    private final Long snapshotID;
-    private final String snapshotUUID;
-    private final String checksum;
+    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("snapshotID") private final Long snapshotID;
+    @SerializedName("SnapshotUUID") private final String snapshotUUID;
+    @SerializedName("checksum") private final String checksum;
 
     /**
      * List of checksum, volumeIDs and snapshotIDs for each member of the group.
@@ -126,7 +127,6 @@ public class GroupSnapshotMembers implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeID, snapshotID, snapshotUUID, checksum );
     }
 

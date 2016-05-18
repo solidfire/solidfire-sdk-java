@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class GetNetworkConfigResult implements Serializable {
 
     private static final long serialVersionUID = 2139662734L;
 
-    private final Network network;
+    @SerializedName("network") private final Network network;
 
     /**
      * The object returned by the "GetNetworkConfig" API Service call.

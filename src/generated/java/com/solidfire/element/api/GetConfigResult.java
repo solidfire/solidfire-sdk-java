@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class GetConfigResult implements Serializable {
 
     private static final long serialVersionUID = 1115724792L;
 
-    private final Config config;
+    @SerializedName("config") private final Config config;
 
     /**
      * The object returned by the "GetConfig" API Service call.

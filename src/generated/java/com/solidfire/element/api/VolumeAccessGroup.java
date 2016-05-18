@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,10 +41,10 @@ public class VolumeAccessGroup implements Serializable {
 
     private static final long serialVersionUID = 1947505380L;
 
-    private final Long volumeAccessGroupID;
-    private final String name;
-    private final String[] initiators;
-    private final Long[] volumes;
+    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
+    @SerializedName("name") private final String name;
+    @SerializedName("initiators") private final String[] initiators;
+    @SerializedName("volumes") private final Long[] volumes;
 
     /**
      * A volume access group is a useful way of grouping volumes and initiators together for ease of management.
@@ -113,7 +114,6 @@ public class VolumeAccessGroup implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeAccessGroupID, name, initiators, volumes );
     }
 

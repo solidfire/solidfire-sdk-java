@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,11 +41,11 @@ public class VolumeQOS implements Serializable {
 
     private static final long serialVersionUID = 881549954L;
 
-    private final Long minIOPS;
-    private final Long maxIOPS;
-    private final Long burstIOPS;
-    private final Long burstTime;
-    private final Object curve;
+    @SerializedName("minIOPS") private final Long minIOPS;
+    @SerializedName("maxIOPS") private final Long maxIOPS;
+    @SerializedName("burstIOPS") private final Long burstIOPS;
+    @SerializedName("burstTime") private final Long burstTime;
+    @SerializedName("curve") private final Object curve;
 
     /**
      * Quality of Service (QoS) Result values are used on SolidFire volumes to provision performance expectations.
@@ -125,7 +126,6 @@ public class VolumeQOS implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( minIOPS, maxIOPS, burstIOPS, burstTime, curve );
     }
 

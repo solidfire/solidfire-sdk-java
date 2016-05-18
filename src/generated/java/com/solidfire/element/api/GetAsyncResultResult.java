@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,8 +41,8 @@ public class GetAsyncResultResult implements Serializable {
 
     private static final long serialVersionUID = -1589662218L;
 
-    private final AsyncResult result;
-    private final String status;
+    @SerializedName("result") private final AsyncResult result;
+    @SerializedName("status") private final String status;
 
     /**
      * The object returned by the &quot;GetAsyncResult&quot; API Service call.
@@ -88,7 +89,6 @@ public class GetAsyncResultResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( result, status );
     }
 

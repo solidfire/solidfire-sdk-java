@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,8 +41,8 @@ public class ListEventsResult implements Serializable {
 
     private static final long serialVersionUID = 333684828L;
 
-    private final String eventQueueType;
-    private final EventInfo[] events;
+    @SerializedName("eventQueueType") private final String eventQueueType;
+    @SerializedName("events") private final EventInfo[] events;
 
     /**
      * The object returned by the "ListEvents" API Service call.
@@ -76,7 +77,6 @@ public class ListEventsResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( eventQueueType, events );
     }
 

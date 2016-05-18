@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,13 +41,13 @@ public class CloneVolumeRequest implements Serializable {
 
     private static final long serialVersionUID = -956856912L;
 
-    private final Long volumeID;
-    private final String name;
-    private final Optional<Long> newAccountID;
-    private final Optional<Long> newSize;
-    private final Optional<String> access;
-    private final Optional<Long> snapshotID;
-    private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("name") private final String name;
+    @SerializedName("newAccountID") private final Optional<Long> newAccountID;
+    @SerializedName("newSize") private final Optional<Long> newSize;
+    @SerializedName("access") private final Optional<String> access;
+    @SerializedName("snapshotID") private final Optional<Long> snapshotID;
+    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "CloneVolume" API Service call.
@@ -150,7 +151,6 @@ public class CloneVolumeRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeID, name, newAccountID, newSize, access, snapshotID, attributes );
     }
 
@@ -180,12 +180,12 @@ public class CloneVolumeRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -199,7 +199,7 @@ public class CloneVolumeRequest implements Serializable {
 
         private Builder() { }
 
-        public CloneVolumeRequest toRequest() {
+        public CloneVolumeRequest build() {
             return new CloneVolumeRequest (
                          this.volumeID,
                          this.name,
@@ -210,7 +210,7 @@ public class CloneVolumeRequest implements Serializable {
                          this.attributes            );
         }
 
-        private CloneVolumeRequest.Builder fromRequest(final CloneVolumeRequest req) {
+        private CloneVolumeRequest.Builder buildFrom(final CloneVolumeRequest req) {
             this.volumeID = req.volumeID;
             this.name = req.name;
             this.newAccountID = req.newAccountID;
@@ -222,37 +222,37 @@ public class CloneVolumeRequest implements Serializable {
             return this;
         }
 
-        public CloneVolumeRequest.Builder withVolumeID(final Long volumeID) {
+        public CloneVolumeRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public CloneVolumeRequest.Builder withName(final String name) {
+        public CloneVolumeRequest.Builder name(final String name) {
             this.name = name;
             return this;
         }
 
-        public CloneVolumeRequest.Builder withOptionalNewAccountID(final Long newAccountID) {
+        public CloneVolumeRequest.Builder optionalNewAccountID(final Long newAccountID) {
             this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
             return this;
         }
 
-        public CloneVolumeRequest.Builder withOptionalNewSize(final Long newSize) {
+        public CloneVolumeRequest.Builder optionalNewSize(final Long newSize) {
             this.newSize = (newSize == null) ? Optional.<Long>empty() : Optional.of(newSize);
             return this;
         }
 
-        public CloneVolumeRequest.Builder withOptionalAccess(final String access) {
+        public CloneVolumeRequest.Builder optionalAccess(final String access) {
             this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
             return this;
         }
 
-        public CloneVolumeRequest.Builder withOptionalSnapshotID(final Long snapshotID) {
+        public CloneVolumeRequest.Builder optionalSnapshotID(final Long snapshotID) {
             this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }
 
-        public CloneVolumeRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CloneVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

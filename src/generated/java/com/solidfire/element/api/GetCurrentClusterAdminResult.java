@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class GetCurrentClusterAdminResult implements Serializable {
 
     private static final long serialVersionUID = -1693804383L;
 
-    private final ClusterAdmin clusterAdmin;
+    @SerializedName("clusterAdmin") private final ClusterAdmin clusterAdmin;
 
     /**
      * The object returned by the "GetCurrentClusterAdmin" API Service call.

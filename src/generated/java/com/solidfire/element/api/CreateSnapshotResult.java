@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,8 +41,8 @@ public class CreateSnapshotResult implements Serializable {
 
     private static final long serialVersionUID = -1721184563L;
 
-    private final Long snapshotID;
-    private final String checksum;
+    @SerializedName("snapshotID") private final Long snapshotID;
+    @SerializedName("checksum") private final String checksum;
 
     /**
      * The object returned by the "CreateSnapshot" API Service call.
@@ -85,7 +86,6 @@ public class CreateSnapshotResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( snapshotID, checksum );
     }
 

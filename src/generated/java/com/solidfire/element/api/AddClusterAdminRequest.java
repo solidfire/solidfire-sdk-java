@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,10 +41,10 @@ public class AddClusterAdminRequest implements Serializable {
 
     private static final long serialVersionUID = 187990890L;
 
-    private final String username;
-    private final String password;
-    private final String[] access;
-    private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("username") private final String username;
+    @SerializedName("password") private final String password;
+    @SerializedName("access") private final String[] access;
+    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "AddClusterAdmin" API Service call.
@@ -106,7 +107,6 @@ public class AddClusterAdminRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( username, password, access, attributes );
     }
 
@@ -129,12 +129,12 @@ public class AddClusterAdminRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -145,7 +145,7 @@ public class AddClusterAdminRequest implements Serializable {
 
         private Builder() { }
 
-        public AddClusterAdminRequest toRequest() {
+        public AddClusterAdminRequest build() {
             return new AddClusterAdminRequest (
                          this.username,
                          this.password,
@@ -153,7 +153,7 @@ public class AddClusterAdminRequest implements Serializable {
                          this.attributes            );
         }
 
-        private AddClusterAdminRequest.Builder fromRequest(final AddClusterAdminRequest req) {
+        private AddClusterAdminRequest.Builder buildFrom(final AddClusterAdminRequest req) {
             this.username = req.username;
             this.password = req.password;
             this.access = req.access;
@@ -162,22 +162,22 @@ public class AddClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public AddClusterAdminRequest.Builder withUsername(final String username) {
+        public AddClusterAdminRequest.Builder username(final String username) {
             this.username = username;
             return this;
         }
 
-        public AddClusterAdminRequest.Builder withPassword(final String password) {
+        public AddClusterAdminRequest.Builder password(final String password) {
             this.password = password;
             return this;
         }
 
-        public AddClusterAdminRequest.Builder withAccess(final String[] access) {
+        public AddClusterAdminRequest.Builder access(final String[] access) {
             this.access = access;
             return this;
         }
 
-        public AddClusterAdminRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public AddClusterAdminRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

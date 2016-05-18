@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,21 +41,21 @@ public class Node implements Serializable {
 
     private static final long serialVersionUID = 1456687201L;
 
-    private final Long nodeID;
-    private final Long associatedMasterServiceID;
-    private final Long associatedFServiceID;
-    private final String fibreChannelTargetPortGroup;
-    private final String name;
-    private final Platform platformInfo;
-    private final String softwareVersion;
-    private final String cip;
-    private final String cipi;
-    private final String mip;
-    private final String mipi;
-    private final String sip;
-    private final String sipi;
-    private final String uuid;
-    private final java.util.Map<String, Object> attributes;
+    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("associatedMasterServiceID") private final Long associatedMasterServiceID;
+    @SerializedName("associatedFServiceID") private final Long associatedFServiceID;
+    @SerializedName("fibreChannelTargetPortGroup") private final String fibreChannelTargetPortGroup;
+    @SerializedName("name") private final String name;
+    @SerializedName("platformInfo") private final Platform platformInfo;
+    @SerializedName("softwareVersion") private final String softwareVersion;
+    @SerializedName("cip") private final String cip;
+    @SerializedName("cipi") private final String cipi;
+    @SerializedName("mip") private final String mip;
+    @SerializedName("mipi") private final String mipi;
+    @SerializedName("sip") private final String sip;
+    @SerializedName("sipi") private final String sipi;
+    @SerializedName("uuid") private final String uuid;
+    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
 
     /**
      * A node refers to an individual machine in a cluster.
@@ -213,7 +214,6 @@ public class Node implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( nodeID, associatedMasterServiceID, associatedFServiceID, fibreChannelTargetPortGroup, name, platformInfo, softwareVersion, cip, cipi, mip, mipi, sip, sipi, uuid, attributes );
     }
 

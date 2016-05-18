@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,9 +41,9 @@ public class ClusterVersionInfo implements Serializable {
 
     private static final long serialVersionUID = -1305118966L;
 
-    private final Long nodeID;
-    private final String nodeVersion;
-    private final String nodeInternalRevision;
+    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("nodeVersion") private final String nodeVersion;
+    @SerializedName("nodeInternalRevision") private final String nodeInternalRevision;
 
     /**
      * Version information for a node in the cluster.
@@ -83,7 +84,6 @@ public class ClusterVersionInfo implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( nodeID, nodeVersion, nodeInternalRevision );
     }
 

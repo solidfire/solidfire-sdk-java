@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,11 +41,11 @@ public class GetVolumeEfficiencyResult implements Serializable {
 
     private static final long serialVersionUID = -237066237L;
 
-    private final Double compression;
-    private final Double deduplication;
-    private final Long[] missingVolumes;
-    private final Double thinProvisioning;
-    private final String timestamp;
+    @SerializedName("compression") private final Double compression;
+    @SerializedName("deduplication") private final Double deduplication;
+    @SerializedName("missingVolumes") private final Long[] missingVolumes;
+    @SerializedName("thinProvisioning") private final Double thinProvisioning;
+    @SerializedName("timestamp") private final String timestamp;
 
     /**
      * The object returned by the "GetVolumeEfficiency" API Service call.
@@ -141,7 +142,6 @@ public class GetVolumeEfficiencyResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( compression, deduplication, missingVolumes, thinProvisioning, timestamp );
     }
 

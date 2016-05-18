@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,13 +41,13 @@ public class Account implements Serializable {
 
     private static final long serialVersionUID = -153016324L;
 
-    private final Long accountID;
-    private final String username;
-    private final String status;
-    private final Long[] volumes;
-    private final Optional<String> initiatorSecret;
-    private final Optional<String> targetSecret;
-    private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("username") private final String username;
+    @SerializedName("status") private final String status;
+    @SerializedName("volumes") private final Long[] volumes;
+    @SerializedName("initiatorSecret") private final Optional<String> initiatorSecret;
+    @SerializedName("targetSecret") private final Optional<String> targetSecret;
+    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The object containing information about an account.
@@ -140,7 +141,6 @@ public class Account implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( accountID, username, status, volumes, initiatorSecret, targetSecret, attributes );
     }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,12 +41,12 @@ public class CreateVolumeRequest implements Serializable {
 
     private static final long serialVersionUID = -512525822L;
 
-    private final String name;
-    private final Long accountID;
-    private final Long totalSize;
-    private final Boolean enable512e;
-    private final Optional<QoS> qos;
-    private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("name") private final String name;
+    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("totalSize") private final Long totalSize;
+    @SerializedName("enable512e") private final Boolean enable512e;
+    @SerializedName("qos") private final Optional<QoS> qos;
+    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "CreateVolume" API Service call.
@@ -133,7 +134,6 @@ public class CreateVolumeRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( name, accountID, totalSize, enable512e, qos, attributes );
     }
 
@@ -159,12 +159,12 @@ public class CreateVolumeRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -177,7 +177,7 @@ public class CreateVolumeRequest implements Serializable {
 
         private Builder() { }
 
-        public CreateVolumeRequest toRequest() {
+        public CreateVolumeRequest build() {
             return new CreateVolumeRequest (
                          this.name,
                          this.accountID,
@@ -187,7 +187,7 @@ public class CreateVolumeRequest implements Serializable {
                          this.attributes            );
         }
 
-        private CreateVolumeRequest.Builder fromRequest(final CreateVolumeRequest req) {
+        private CreateVolumeRequest.Builder buildFrom(final CreateVolumeRequest req) {
             this.name = req.name;
             this.accountID = req.accountID;
             this.totalSize = req.totalSize;
@@ -198,32 +198,32 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeRequest.Builder withName(final String name) {
+        public CreateVolumeRequest.Builder name(final String name) {
             this.name = name;
             return this;
         }
 
-        public CreateVolumeRequest.Builder withAccountID(final Long accountID) {
+        public CreateVolumeRequest.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }
 
-        public CreateVolumeRequest.Builder withTotalSize(final Long totalSize) {
+        public CreateVolumeRequest.Builder totalSize(final Long totalSize) {
             this.totalSize = totalSize;
             return this;
         }
 
-        public CreateVolumeRequest.Builder withEnable512e(final Boolean enable512e) {
+        public CreateVolumeRequest.Builder enable512e(final Boolean enable512e) {
             this.enable512e = enable512e;
             return this;
         }
 
-        public CreateVolumeRequest.Builder withOptionalQos(final QoS qos) {
+        public CreateVolumeRequest.Builder optionalQos(final QoS qos) {
             this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
         }
 
-        public CreateVolumeRequest.Builder withOptionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CreateVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

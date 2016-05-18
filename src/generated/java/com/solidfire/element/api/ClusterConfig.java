@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,16 +41,16 @@ public class ClusterConfig implements Serializable {
 
     private static final long serialVersionUID = 1903782929L;
 
-    private final String cipi;
-    private final String cluster;
-    private final String[] ensemble;
-    private final String mipi;
-    private final String name;
-    private final Optional<Long> nodeID;
-    private final Optional<Long> pendingNodeID;
-    private final String role;
-    private final String sipi;
-    private final String state;
+    @SerializedName("cipi") private final String cipi;
+    @SerializedName("cluster") private final String cluster;
+    @SerializedName("ensemble") private final String[] ensemble;
+    @SerializedName("mipi") private final String mipi;
+    @SerializedName("name") private final String name;
+    @SerializedName("nodeID") private final Optional<Long> nodeID;
+    @SerializedName("pendingNodeID") private final Optional<Long> pendingNodeID;
+    @SerializedName("role") private final String role;
+    @SerializedName("sipi") private final String sipi;
+    @SerializedName("state") private final String state;
 
     /**
      * Cluster Config object returns information the node uses to communicate with the cluster.
@@ -160,7 +161,6 @@ public class ClusterConfig implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( cipi, cluster, ensemble, mipi, name, nodeID, pendingNodeID, role, sipi, state );
     }
 

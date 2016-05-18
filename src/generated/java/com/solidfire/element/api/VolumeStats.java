@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,32 +41,32 @@ public class VolumeStats implements Serializable {
 
     private static final long serialVersionUID = 685872453L;
 
-    private final Long accountID;
-    private final Long actualIOPS;
-    private final Optional<String> asyncDelay;
-    private final Long averageIOPSize;
-    private final Long burstIOPSCredit;
-    private final Long clientQueueDepth;
-    private final MetadataHosts desiredMetadataHosts;
-    private final Long latencyUSec;
-    private final MetadataHosts metadataHosts;
-    private final Long nonZeroBlocks;
-    private final Long readBytes;
-    private final Long readLatencyUSec;
-    private final Long readOps;
-    private final Double throttle;
-    private final String timestamp;
-    private final Long totalLatencyUSec;
-    private final Long unalignedReads;
-    private final Long unalignedWrites;
-    private final Long[] volumeAccessGroups;
-    private final Long volumeID;
-    private final Long volumeSize;
-    private final Double volumeUtilization;
-    private final Long writeBytes;
-    private final Long writeLatencyUSec;
-    private final Long writeOps;
-    private final Long zeroBlocks;
+    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("actualIOPS") private final Long actualIOPS;
+    @SerializedName("asyncDelay") private final Optional<String> asyncDelay;
+    @SerializedName("averageIOPSize") private final Long averageIOPSize;
+    @SerializedName("burstIOPSCredit") private final Long burstIOPSCredit;
+    @SerializedName("clientQueueDepth") private final Long clientQueueDepth;
+    @SerializedName("desiredMetadataHosts") private final MetadataHosts desiredMetadataHosts;
+    @SerializedName("latencyUSec") private final Long latencyUSec;
+    @SerializedName("metadataHosts") private final MetadataHosts metadataHosts;
+    @SerializedName("nonZeroBlocks") private final Long nonZeroBlocks;
+    @SerializedName("readBytes") private final Long readBytes;
+    @SerializedName("readLatencyUSec") private final Long readLatencyUSec;
+    @SerializedName("readOps") private final Long readOps;
+    @SerializedName("throttle") private final Double throttle;
+    @SerializedName("timestamp") private final String timestamp;
+    @SerializedName("totalLatencyUSec") private final Long totalLatencyUSec;
+    @SerializedName("unalignedReads") private final Long unalignedReads;
+    @SerializedName("unalignedWrites") private final Long unalignedWrites;
+    @SerializedName("volumeAccessGroups") private final Long[] volumeAccessGroups;
+    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("volumeSize") private final Long volumeSize;
+    @SerializedName("volumeUtilization") private final Double volumeUtilization;
+    @SerializedName("writeBytes") private final Long writeBytes;
+    @SerializedName("writeLatencyUSec") private final Long writeLatencyUSec;
+    @SerializedName("writeOps") private final Long writeOps;
+    @SerializedName("zeroBlocks") private final Long zeroBlocks;
 
     /**
      * Contains statistical data for an individual volume.
@@ -363,7 +364,6 @@ public class VolumeStats implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( accountID, actualIOPS, asyncDelay, averageIOPSize, burstIOPSCredit, clientQueueDepth, desiredMetadataHosts, latencyUSec, metadataHosts, nonZeroBlocks, readBytes, readLatencyUSec, readOps, throttle, timestamp, totalLatencyUSec, unalignedReads, unalignedWrites, volumeAccessGroups, volumeID, volumeSize, volumeUtilization, writeBytes, writeLatencyUSec, writeOps, zeroBlocks );
     }
 

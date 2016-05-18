@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,13 +41,13 @@ public class GroupSnapshot implements Serializable {
 
     private static final long serialVersionUID = -430612536L;
 
-    private final Long groupSnapshotID;
-    private final String groupSnapshotUUID;
-    private final GroupSnapshotMembers[] members;
-    private final String name;
-    private final String createTime;
-    private final String status;
-    private final java.util.Map<String, Object> attributes;
+    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
+    @SerializedName("groupSnapshotUUID") private final String groupSnapshotUUID;
+    @SerializedName("members") private final GroupSnapshotMembers[] members;
+    @SerializedName("name") private final String name;
+    @SerializedName("createTime") private final String createTime;
+    @SerializedName("status") private final String status;
+    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
 
     /**
      * Group Snapshot object represents a point-in-time copy of a group of volumes.
@@ -142,7 +143,6 @@ public class GroupSnapshot implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( groupSnapshotID, groupSnapshotUUID, members, name, createTime, status, attributes );
     }
 

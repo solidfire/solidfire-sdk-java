@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,18 +41,18 @@ public class ISCSISession implements Serializable {
 
     private static final long serialVersionUID = 113665601L;
 
-    private final Long accountID;
-    private final String accountName;
-    private final Long driveID;
-    private final String initiatorIP;
-    private final String initiatorName;
-    private final Long nodeID;
-    private final Long serviceID;
-    private final Long sessionID;
-    private final String targetName;
-    private final String targetIP;
-    private final String virtualNetworkID;
-    private final Long volumeID;
+    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("accountName") private final String accountName;
+    @SerializedName("driveID") private final Long driveID;
+    @SerializedName("initiatorIP") private final String initiatorIP;
+    @SerializedName("initiatorName") private final String initiatorName;
+    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("serviceID") private final Long serviceID;
+    @SerializedName("sessionID") private final Long sessionID;
+    @SerializedName("targetName") private final String targetName;
+    @SerializedName("targetIP") private final String targetIP;
+    @SerializedName("virtualNetworkID") private final String virtualNetworkID;
+    @SerializedName("volumeID") private final Long volumeID;
 
     /**
      * 
@@ -146,7 +147,6 @@ public class ISCSISession implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( accountID, accountName, driveID, initiatorIP, initiatorName, nodeID, serviceID, sessionID, targetName, targetIP, virtualNetworkID, volumeID );
     }
 

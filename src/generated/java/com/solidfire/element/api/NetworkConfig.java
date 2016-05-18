@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,33 +41,33 @@ public class NetworkConfig implements Serializable {
 
     private static final long serialVersionUID = -1871865662L;
 
-    private final Optional<Boolean> Default;
-    private final Optional<String> address;
-    private final Optional<Boolean> auto;
-    private final Optional<Long> bondDowndelay;
-    private final Optional<String> bondFailOverMac;
-    private final Optional<String> bondPrimaryReselect;
-    private final Optional<String> bondLacpRate;
-    private final Optional<Long> bondMiimon;
-    private final Optional<String> bondMode;
-    private final Optional<String> bondSlaves;
-    private final Optional<Long> bondUpdelay;
-    private final Optional<String> broadcast;
-    private final Optional<String> dnsNameservers;
-    private final Optional<String> dnsSearch;
-    private final Optional<String> family;
-    private final Optional<String> gateway;
-    private final Optional<String> macAddress;
-    private final Optional<String> macAddressPermanent;
-    private final Optional<String> method;
-    private final Optional<String> mtu;
-    private final Optional<String> netmask;
-    private final Optional<String> network;
-    private final Optional<PhysicalAdapter> physical;
-    private final Optional<String[]> routes;
-    private final Optional<String> status;
-    private final Optional<String[]> symmetricRouteRules;
-    private final Optional<Boolean> upAndRunning;
+    @SerializedName("#default") private final Optional<Boolean> Default;
+    @SerializedName("address") private final Optional<String> address;
+    @SerializedName("auto") private final Optional<Boolean> auto;
+    @SerializedName("bond-downdelay") private final Optional<Long> bondDowndelay;
+    @SerializedName("bond-fail_over_mac") private final Optional<String> bondFailOverMac;
+    @SerializedName("bond-primary_reselect") private final Optional<String> bondPrimaryReselect;
+    @SerializedName("bond-lacp_rate") private final Optional<String> bondLacpRate;
+    @SerializedName("bond-miimon") private final Optional<Long> bondMiimon;
+    @SerializedName("bond-mode") private final Optional<String> bondMode;
+    @SerializedName("bond-slaves") private final Optional<String> bondSlaves;
+    @SerializedName("bond-updelay") private final Optional<Long> bondUpdelay;
+    @SerializedName("broadcast") private final Optional<String> broadcast;
+    @SerializedName("dns-nameservers") private final Optional<String> dnsNameservers;
+    @SerializedName("dns-search") private final Optional<String> dnsSearch;
+    @SerializedName("family") private final Optional<String> family;
+    @SerializedName("gateway") private final Optional<String> gateway;
+    @SerializedName("macAddress") private final Optional<String> macAddress;
+    @SerializedName("macAddressPermanent") private final Optional<String> macAddressPermanent;
+    @SerializedName("method") private final Optional<String> method;
+    @SerializedName("mtu") private final Optional<String> mtu;
+    @SerializedName("netmask") private final Optional<String> netmask;
+    @SerializedName("network") private final Optional<String> network;
+    @SerializedName("physical") private final Optional<PhysicalAdapter> physical;
+    @SerializedName("routes") private final Optional<String[]> routes;
+    @SerializedName("status") private final Optional<String> status;
+    @SerializedName("symmetricRouteRules") private final Optional<String[]> symmetricRouteRules;
+    @SerializedName("upAndRunning") private final Optional<Boolean> upAndRunning;
 
     /**
      * 
@@ -251,7 +252,6 @@ public class NetworkConfig implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( Default, address, auto, bondDowndelay, bondFailOverMac, bondPrimaryReselect, bondLacpRate, bondMiimon, bondMode, bondSlaves, bondUpdelay, broadcast, dnsNameservers, dnsSearch, family, gateway, macAddress, macAddressPermanent, method, mtu, netmask, network, physical, routes, status, symmetricRouteRules, upAndRunning );
     }
 

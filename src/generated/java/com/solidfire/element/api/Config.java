@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,8 +41,8 @@ public class Config implements Serializable {
 
     private static final long serialVersionUID = 1238983719L;
 
-    private final ClusterConfig cluster;
-    private final Network network;
+    @SerializedName("cluster") private final ClusterConfig cluster;
+    @SerializedName("network") private final Network network;
 
     /**
      * 
@@ -76,7 +77,6 @@ public class Config implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( cluster, network );
     }
 

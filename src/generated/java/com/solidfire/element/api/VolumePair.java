@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,12 +41,12 @@ public class VolumePair implements Serializable {
 
     private static final long serialVersionUID = 23799657L;
 
-    private final Long clusterPairID;
-    private final Long remoteVolumeID;
-    private final Long remoteSliceID;
-    private final String remoteVolumeName;
-    private final String volumePairUUID;
-    private final RemoteReplication remoteReplication;
+    @SerializedName("clusterPairID") private final Long clusterPairID;
+    @SerializedName("remoteVolumeID") private final Long remoteVolumeID;
+    @SerializedName("remoteSliceID") private final Long remoteSliceID;
+    @SerializedName("remoteVolumeName") private final String remoteVolumeName;
+    @SerializedName("volumePairUUID") private final String volumePairUUID;
+    @SerializedName("remoteReplication") private final RemoteReplication remoteReplication;
 
     /**
      * The Volume Pair Info is an object containing information about a volume that is paired on a remote cluster.
@@ -129,7 +130,6 @@ public class VolumePair implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( clusterPairID, remoteVolumeID, remoteSliceID, remoteVolumeName, volumePairUUID, remoteReplication );
     }
 

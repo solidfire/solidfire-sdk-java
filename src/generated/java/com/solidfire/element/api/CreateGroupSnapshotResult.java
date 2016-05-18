@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,8 +41,8 @@ public class CreateGroupSnapshotResult implements Serializable {
 
     private static final long serialVersionUID = -1863322416L;
 
-    private final Long groupSnapshotID;
-    private final GroupSnapshotMembers[] members;
+    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
+    @SerializedName("members") private final GroupSnapshotMembers[] members;
 
     /**
      * The object returned by the "CreateGroupSnapshot" API Service call.
@@ -84,7 +85,6 @@ public class CreateGroupSnapshotResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( groupSnapshotID, members );
     }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,9 +41,9 @@ public class MetadataHosts implements Serializable {
 
     private static final long serialVersionUID = -1399906185L;
 
-    private final Long[] deadSecondaries;
-    private final Long[] liveSecondaries;
-    private final Long primary;
+    @SerializedName("deadSecondaries") private final Long[] deadSecondaries;
+    @SerializedName("liveSecondaries") private final Long[] liveSecondaries;
+    @SerializedName("primary") private final Long primary;
 
     /**
      * The volume services on which the volume metadata resides.
@@ -95,7 +96,6 @@ public class MetadataHosts implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( deadSecondaries, liveSecondaries, primary );
     }
 

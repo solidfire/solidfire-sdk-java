@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class RemoveNodesRequest implements Serializable {
 
     private static final long serialVersionUID = 245470440L;
 
-    private final Long[] nodes;
+    @SerializedName("nodes") private final Long[] nodes;
 
     /**
      * The Request object for the "RemoveNodes" API Service call.
@@ -91,12 +92,12 @@ public class RemoveNodesRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -104,18 +105,18 @@ public class RemoveNodesRequest implements Serializable {
 
         private Builder() { }
 
-        public RemoveNodesRequest toRequest() {
+        public RemoveNodesRequest build() {
             return new RemoveNodesRequest (
                          this.nodes            );
         }
 
-        private RemoveNodesRequest.Builder fromRequest(final RemoveNodesRequest req) {
+        private RemoveNodesRequest.Builder buildFrom(final RemoveNodesRequest req) {
             this.nodes = req.nodes;
 
             return this;
         }
 
-        public RemoveNodesRequest.Builder withNodes(final Long[] nodes) {
+        public RemoveNodesRequest.Builder nodes(final Long[] nodes) {
             this.nodes = nodes;
             return this;
         }

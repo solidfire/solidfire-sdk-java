@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,8 +41,8 @@ public class SnapshotReplication implements Serializable {
 
     private static final long serialVersionUID = 813093357L;
 
-    private final String state;
-    private final String stateDetails;
+    @SerializedName("state") private final String state;
+    @SerializedName("stateDetails") private final String stateDetails;
 
     /**
      * 
@@ -84,7 +85,6 @@ public class SnapshotReplication implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( state, stateDetails );
     }
 

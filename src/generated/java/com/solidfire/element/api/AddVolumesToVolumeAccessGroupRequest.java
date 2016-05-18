@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,8 +41,8 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
 
     private static final long serialVersionUID = 1187472634L;
 
-    private final Long volumeAccessGroupID;
-    private final Long[] volumes;
+    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
+    @SerializedName("volumes") private final Long[] volumes;
 
     /**
      * The Request object for the "AddVolumesToVolumeAccessGroup" API Service call.
@@ -84,7 +85,6 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeAccessGroupID, volumes );
     }
 
@@ -104,12 +104,12 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
         return sb.toString();
     }
 
-    public static final Builder getBuilder() {
+    public static final Builder builder() {
         return new Builder();
     }
 
     public final Builder asBuilder() {
-        return new Builder().fromRequest(this);
+        return new Builder().buildFrom(this);
     }
 
     public static class Builder {
@@ -118,25 +118,25 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
 
         private Builder() { }
 
-        public AddVolumesToVolumeAccessGroupRequest toRequest() {
+        public AddVolumesToVolumeAccessGroupRequest build() {
             return new AddVolumesToVolumeAccessGroupRequest (
                          this.volumeAccessGroupID,
                          this.volumes            );
         }
 
-        private AddVolumesToVolumeAccessGroupRequest.Builder fromRequest(final AddVolumesToVolumeAccessGroupRequest req) {
+        private AddVolumesToVolumeAccessGroupRequest.Builder buildFrom(final AddVolumesToVolumeAccessGroupRequest req) {
             this.volumeAccessGroupID = req.volumeAccessGroupID;
             this.volumes = req.volumes;
 
             return this;
         }
 
-        public AddVolumesToVolumeAccessGroupRequest.Builder withVolumeAccessGroupID(final Long volumeAccessGroupID) {
+        public AddVolumesToVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }
 
-        public AddVolumesToVolumeAccessGroupRequest.Builder withVolumes(final Long[] volumes) {
+        public AddVolumesToVolumeAccessGroupRequest.Builder volumes(final Long[] volumes) {
             this.volumes = volumes;
             return this;
         }

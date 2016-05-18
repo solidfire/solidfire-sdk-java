@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class ListClusterFaultsResult implements Serializable {
 
     private static final long serialVersionUID = -1312824838L;
 
-    private final ClusterFaultInfo[] faults;
+    @SerializedName("faults") private final ClusterFaultInfo[] faults;
 
     /**
      * The object returned by the "ListClusterFaults" API Service call.

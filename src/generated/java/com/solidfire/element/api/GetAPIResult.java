@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,8 +41,8 @@ public class GetAPIResult implements Serializable {
 
     private static final long serialVersionUID = 327318878L;
 
-    private final Double currentVersion;
-    private final Double[] supportedVersions;
+    @SerializedName("currentVersion") private final Double currentVersion;
+    @SerializedName("supportedVersions") private final Double[] supportedVersions;
 
     /**
      * The object returned by the "GetAPI" API Service call.
@@ -76,7 +77,6 @@ public class GetAPIResult implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( currentVersion, supportedVersions );
     }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,11 +41,11 @@ public class SoftwareVersionInfo implements Serializable {
 
     private static final long serialVersionUID = 394663535L;
 
-    private final String currentVersion;
-    private final Long nodeID;
-    private final String packageName;
-    private final String pendingVersion;
-    private final String startTime;
+    @SerializedName("currentVersion") private final String currentVersion;
+    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("packageName") private final String packageName;
+    @SerializedName("pendingVersion") private final String pendingVersion;
+    @SerializedName("startTime") private final String startTime;
 
     /**
      * 
@@ -97,7 +98,6 @@ public class SoftwareVersionInfo implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( currentVersion, nodeID, packageName, pendingVersion, startTime );
     }
 

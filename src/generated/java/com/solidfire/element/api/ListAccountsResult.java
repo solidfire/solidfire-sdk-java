@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,7 +41,7 @@ public class ListAccountsResult implements Serializable {
 
     private static final long serialVersionUID = -1388780891L;
 
-    private final Account[] accounts;
+    @SerializedName("accounts") private final Account[] accounts;
 
     /**
      * The object returned by the "ListAccounts" API Service call.

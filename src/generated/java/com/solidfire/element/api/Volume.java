@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,26 +41,26 @@ public class Volume implements Serializable {
 
     private static final long serialVersionUID = -956816063L;
 
-    private final Long volumeID;
-    private final String name;
-    private final Long accountID;
-    private final String createTime;
-    private final String status;
-    private final String access;
-    private final Boolean enable512e;
-    private final String iqn;
-    private final String scsiEUIDeviceID;
-    private final String scsiNAADeviceID;
-    private final VolumeQOS qos;
-    private final Long[] volumeAccessGroups;
-    private final VolumePair[] volumePairs;
-    private final Optional<String> deleteTime;
-    private final Optional<String> purgeTime;
-    private final Long sliceCount;
-    private final Long totalSize;
-    private final Long blockSize;
-    private final String virtualVolumeID;
-    private final java.util.Map<String, Object> attributes;
+    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("name") private final String name;
+    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("createTime") private final String createTime;
+    @SerializedName("status") private final String status;
+    @SerializedName("access") private final String access;
+    @SerializedName("enable512e") private final Boolean enable512e;
+    @SerializedName("iqn") private final String iqn;
+    @SerializedName("scsiEUIDeviceID") private final String scsiEUIDeviceID;
+    @SerializedName("scsiNAADeviceID") private final String scsiNAADeviceID;
+    @SerializedName("qos") private final VolumeQOS qos;
+    @SerializedName("volumeAccessGroups") private final Long[] volumeAccessGroups;
+    @SerializedName("volumePairs") private final VolumePair[] volumePairs;
+    @SerializedName("deleteTime") private final Optional<String> deleteTime;
+    @SerializedName("purgeTime") private final Optional<String> purgeTime;
+    @SerializedName("sliceCount") private final Long sliceCount;
+    @SerializedName("totalSize") private final Long totalSize;
+    @SerializedName("blockSize") private final Long blockSize;
+    @SerializedName("virtualVolumeID") private final String virtualVolumeID;
+    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
 
     /**
      * Volumes Info is an object containing information about a volume.
@@ -347,7 +348,6 @@ public class Volume implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( volumeID, name, accountID, createTime, status, access, enable512e, iqn, scsiEUIDeviceID, scsiNAADeviceID, qos, volumeAccessGroups, volumePairs, deleteTime, purgeTime, sliceCount, totalSize, blockSize, virtualVolumeID, attributes );
     }
 

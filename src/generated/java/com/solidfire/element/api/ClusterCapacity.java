@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,29 +41,29 @@ public class ClusterCapacity implements Serializable {
 
     private static final long serialVersionUID = 521310811L;
 
-    private final Long activeBlockSpace;
-    private final Long activeSessions;
-    private final Long averageIOPS;
-    private final Long clusterRecentIOSize;
-    private final Long currentIOPS;
-    private final Long maxIOPS;
-    private final Long maxOverProvisionableSpace;
-    private final Long maxProvisionedSpace;
-    private final Long maxUsedMetadataSpace;
-    private final Long maxUsedSpace;
-    private final Long nonZeroBlocks;
-    private final Long peakActiveSessions;
-    private final Long peakIOPS;
-    private final Long provisionedSpace;
-    private final Long snapshotNonZeroBlocks;
-    private final String timestamp;
-    private final Long totalOps;
-    private final Long uniqueBlocks;
-    private final Long uniqueBlocksUsedSpace;
-    private final Long usedMetadataSpace;
-    private final Long usedMetadataSpaceInSnapshots;
-    private final Long usedSpace;
-    private final Long zeroBlocks;
+    @SerializedName("activeBlockSpace") private final Long activeBlockSpace;
+    @SerializedName("activeSessions") private final Long activeSessions;
+    @SerializedName("averageIOPS") private final Long averageIOPS;
+    @SerializedName("clusterRecentIOSize") private final Long clusterRecentIOSize;
+    @SerializedName("currentIOPS") private final Long currentIOPS;
+    @SerializedName("maxIOPS") private final Long maxIOPS;
+    @SerializedName("maxOverProvisionableSpace") private final Long maxOverProvisionableSpace;
+    @SerializedName("maxProvisionedSpace") private final Long maxProvisionedSpace;
+    @SerializedName("maxUsedMetadataSpace") private final Long maxUsedMetadataSpace;
+    @SerializedName("maxUsedSpace") private final Long maxUsedSpace;
+    @SerializedName("nonZeroBlocks") private final Long nonZeroBlocks;
+    @SerializedName("peakActiveSessions") private final Long peakActiveSessions;
+    @SerializedName("peakIOPS") private final Long peakIOPS;
+    @SerializedName("provisionedSpace") private final Long provisionedSpace;
+    @SerializedName("snapshotNonZeroBlocks") private final Long snapshotNonZeroBlocks;
+    @SerializedName("timestamp") private final String timestamp;
+    @SerializedName("totalOps") private final Long totalOps;
+    @SerializedName("uniqueBlocks") private final Long uniqueBlocks;
+    @SerializedName("uniqueBlocksUsedSpace") private final Long uniqueBlocksUsedSpace;
+    @SerializedName("usedMetadataSpace") private final Long usedMetadataSpace;
+    @SerializedName("usedMetadataSpaceInSnapshots") private final Long usedMetadataSpaceInSnapshots;
+    @SerializedName("usedSpace") private final Long usedSpace;
+    @SerializedName("zeroBlocks") private final Long zeroBlocks;
 
     /**
      * High level capacity measurements for the entire cluster.
@@ -378,7 +379,6 @@ public class ClusterCapacity implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( activeBlockSpace, activeSessions, averageIOPS, clusterRecentIOSize, currentIOPS, maxIOPS, maxOverProvisionableSpace, maxProvisionedSpace, maxUsedMetadataSpace, maxUsedSpace, nonZeroBlocks, peakActiveSessions, peakIOPS, provisionedSpace, snapshotNonZeroBlocks, timestamp, totalOps, uniqueBlocks, uniqueBlocksUsedSpace, usedMetadataSpace, usedMetadataSpaceInSnapshots, usedSpace, zeroBlocks );
     }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 import com.solidfire.jsvcgen.client.ApiException;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -40,21 +41,21 @@ public class Snapshot implements Serializable {
 
     private static final long serialVersionUID = -1940687876L;
 
-    private final Long snapshotID;
-    private final Long volumeID;
-    private final String name;
-    private final String checksum;
-    private final Boolean enableRemoteReplication;
-    private final String expirationReason;
-    private final String expirationTime;
-    private final String remoteStatuses;
-    private final String status;
-    private final String snapshotUUID;
-    private final Long totalSize;
-    private final Optional<Long> groupID;
-    private final String groupSnapshotUUID;
-    private final String createTime;
-    private final java.util.Map<String, Object> attributes;
+    @SerializedName("snapshotID") private final Long snapshotID;
+    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("name") private final String name;
+    @SerializedName("checksum") private final String checksum;
+    @SerializedName("enableRemoteReplication") private final Boolean enableRemoteReplication;
+    @SerializedName("expirationReason") private final String expirationReason;
+    @SerializedName("expirationTime") private final String expirationTime;
+    @SerializedName("remoteStatuses") private final String remoteStatuses;
+    @SerializedName("status") private final String status;
+    @SerializedName("SnapshotUUID") private final String snapshotUUID;
+    @SerializedName("totalSize") private final Long totalSize;
+    @SerializedName("groupID") private final Optional<Long> groupID;
+    @SerializedName("groupSnapshotUUID") private final String groupSnapshotUUID;
+    @SerializedName("createTime") private final String createTime;
+    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
 
     /**
      * Snapshots is an object containing information about each snapshot made for a volume.
@@ -295,7 +296,6 @@ public class Snapshot implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash( snapshotID, volumeID, name, checksum, enableRemoteReplication, expirationReason, expirationTime, remoteStatuses, status, snapshotUUID, totalSize, groupID, groupSnapshotUUID, createTime, attributes );
     }
 
