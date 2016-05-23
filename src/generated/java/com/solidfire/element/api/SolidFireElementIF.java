@@ -438,6 +438,89 @@ public interface SolidFireElementIF {
      **/
     GetAsyncResultResult getAsyncResult(Long asyncHandle);
 
+    /**
+     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster&#39;s data.
+     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as &quot;available&quot; and must be added via AddDrives before they can be utilized.
+     * Use the &quot;ListDrives&quot; method to display drives that are &quot;available&quot; to be added.
+     * When you add multiple drives, it is more efficient to add them in a single &quot;AddDrives&quot; method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
+     * <br/><br/>
+     * When you add a drive, the system automatically determines the &quot;type&quot; of drive it should be.
+     * <br/><br/>
+     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
+     * As the new drive(s) are syncing on the system, you can use the &quot;ListSyncJobs&quot; method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
+     *  
+     * @param request The request @see com.solidfire.element.api.AddDrivesRequest 
+     *  
+     * @return the response
+     **/
+    AddDrivesResult addDrives(final AddDrivesRequest request);
+
+
+    /**
+     * Convenience method for addDrives 
+     *  
+     * @param drives List of drives to add to the cluster.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#addDrives(AddDrivesRequest) 
+     **/
+    AddDrivesResult addDrives(NewDrive[] drives);
+
+    /**
+     * ListDrives allows you to retrieve the list of the drives that exist in the cluster&#39;s active nodes.
+     * This method returns drives that have been added as volume metadata or block drives as well as drives that have not been added and are available.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListDrivesRequest 
+     *  
+     * @return the response
+     **/
+    ListDrivesResult listDrives(final ListDrivesRequest request);
+
+
+    /**
+     * Convenience method for listDrives 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listDrives(ListDrivesRequest) 
+     **/
+    ListDrivesResult listDrives();
+
+    /**
+     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
+     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
+     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
+     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
+     * Use the &quot;GetAsyncResult&quot; method to check the status of the remove operation.
+     * <br/><br/>
+     * When removing multiple drives, use a single &quot;RemoveDrives&quot; method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
+     * <br/><br/>
+     * You can also remove drives with a &quot;failed&quot; status using &quot;RemoveDrives&quot;.
+     * When you remove a drive with a &quot;failed&quot; status it is not returned to an &quot;available&quot; or &quot;active&quot; status.
+     * The drive is unavailable for use in the cluster.
+     * <br/><br/>
+     * Use the &quot;ListDrives&quot; method to obtain the driveIDs for the drives you want to remove.
+     *  
+     * @param request The request @see com.solidfire.element.api.RemoveDrivesRequest 
+     *  
+     * @return the response
+     **/
+    AsyncHandleResult removeDrives(final RemoveDrivesRequest request);
+
+
+    /**
+     * Convenience method for removeDrives 
+     *  
+     * @param drives List of driveIDs to remove from the cluster.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#removeDrives(RemoveDrivesRequest) 
+     **/
+    AsyncHandleResult removeDrives(Long[] drives);
+
     ListActiveNodesResult listActiveNodes(final ListActiveNodesRequest request);
 
 

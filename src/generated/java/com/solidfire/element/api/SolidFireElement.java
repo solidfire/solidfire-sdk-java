@@ -436,6 +436,39 @@ public class SolidFireElement
     }
 
     @Override
+    public AddDrivesResult addDrives(final AddDrivesRequest request) {
+        return super.sendRequest("AddDrives", request, AddDrivesRequest.class, AddDrivesResult.class );
+    }
+
+
+    @Override
+    public AddDrivesResult addDrives(NewDrive[] drives) {
+        return this.addDrives( new AddDrivesRequest(drives));
+    }
+
+    @Override
+    public ListDrivesResult listDrives(final ListDrivesRequest request) {
+        return super.sendRequest("ListDrives", request, ListDrivesRequest.class, ListDrivesResult.class );
+    }
+
+
+    @Override
+    public ListDrivesResult listDrives() {
+        return this.listDrives( new ListDrivesRequest());
+    }
+
+    @Override
+    public AsyncHandleResult removeDrives(final RemoveDrivesRequest request) {
+        return super.sendRequest("RemoveDrives", request, RemoveDrivesRequest.class, AsyncHandleResult.class );
+    }
+
+
+    @Override
+    public AsyncHandleResult removeDrives(Long[] drives) {
+        return this.removeDrives( new RemoveDrivesRequest(drives));
+    }
+
+    @Override
     public ListActiveNodesResult listActiveNodes(final ListActiveNodesRequest request) {
         return super.sendRequest("ListActiveNodes", request, ListActiveNodesRequest.class, ListActiveNodesResult.class );
     }
