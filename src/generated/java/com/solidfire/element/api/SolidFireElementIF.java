@@ -410,6 +410,46 @@ public interface SolidFireElementIF {
     GetCurrentClusterAdminResult getCurrentClusterAdmin();
 
     /**
+     * The EnableEncryptionAtRest method is used to enable the Advanced Encryption Standard (AES) 256-bit encryption at rest on the cluster so that the cluster can manage the encryption key used for the drives on each node. This feature is not enabled by default. Enabling this operation allows the cluster to automatically manage encryption keys internally for the drives on each node in the cluster. Nodes do not store the keys to unlock drives and the keys are never passed over the network. Two nodes participating in a cluster are required to access the key to disable encryption on a drive. The encryption management does not affect performance or efficiency on the cluster. If an encryption-enabled drive or node is removed from the cluster with the API, all data is secure erased and any data left on the drive cannot be read or accessed.
+     * Enabling or disabling encryption should be performed when the cluster is running and in a healthy state. Encryption can be enabled or disabled at your discretion and can be performed as often as you need.
+     * <b>Note</b>: This process is asynchronous and returns a response before encryption is enabled. The GetClusterInfo method can be used to poll the system to see when the process has completed.
+     *  
+     * @param request The request @see com.solidfire.element.api.EnableEncryptionAtRestRequest 
+     *  
+     * @return the response
+     **/
+    EnableEncryptionAtRestResult enableEncryptionAtRest(final EnableEncryptionAtRestRequest request);
+
+
+    /**
+     * Convenience method for enableEncryptionAtRest 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#enableEncryptionAtRest(EnableEncryptionAtRestRequest) 
+     **/
+    EnableEncryptionAtRestResult enableEncryptionAtRest();
+
+    /**
+     * The DisableEncryptionAtRest method is used to remove the encryption that was previously applied to the cluster using the EnableEncryptionAtRest method.
+     * Enabling or disabling encryption should be performed when the cluster is running and in a healthy state. Encryption can be enabled or disabled at your discretion and can be performed as often as you need.
+     * <b>Note</b>: This process is asynchronous and returns a response before encryption is disabled. The GetClusterInfo method can be used to poll the system to see when the process has completed.
+     *  
+     * @param request The request @see com.solidfire.element.api.DisableEncryptionAtRestRequest 
+     *  
+     * @return the response
+     **/
+    DisableEncryptionAtRestResult disableEncryptionAtRest(final DisableEncryptionAtRestRequest request);
+
+
+    /**
+     * Convenience method for disableEncryptionAtRest 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#disableEncryptionAtRest(DisableEncryptionAtRestRequest) 
+     **/
+    DisableEncryptionAtRestResult disableEncryptionAtRest();
+
+    /**
      * Used to retrieve the result of asynchronous method calls.
      * Some method calls are long running and do not complete when the initial response is sent.
      * To obtain the result of the method call, polling with GetAsyncResult is required.
@@ -621,6 +661,31 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#getNetworkConfig(GetNetworkConfigRequest) 
      **/
     GetNetworkConfigResult getNetworkConfig();
+
+    /**
+     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
+     * <br/><br/>
+     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     *  
+     * @param request The request @see com.solidfire.element.api.SetConfigRequest 
+     *  
+     * @return the response
+     **/
+    SetConfigResult setConfig(final SetConfigRequest request);
+
+
+    /**
+     * Convenience method for setConfig 
+     *  
+     * @param config Objects that you want changed for the cluster interface settings.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#setConfig(SetConfigRequest) 
+     **/
+    SetConfigResult setConfig(Config config);
 
     /**
      * The &quot;SetNetworkConfig&quot; method is used to set the network configuration for a node. To see the states in which these objects can be modified, see &quot;Network Object for 1G and 10G Interfaces&quot; on page 109 of the Element API. To display the current network settings for a node, run the &quot;GetNetworkConfig&quot; method.
@@ -880,6 +945,74 @@ public interface SolidFireElementIF {
      **/
     @Since("7.0")
     CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request);
+
+    /**
+     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
+     * 
+     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListVirtualNetworksRequest 
+     *  
+     * @return the response
+     * @since 7.0 
+     **/
+    @Since("7.0")
+    ListVirtualNetworksResult listVirtualNetworks(final ListVirtualNetworksRequest request);
+
+    /**
+     * AddVirtualNetwork is used to add a new virtual network to a cluster configuration. When a virtual network is added, an interface for each node is created and each will require a virtual network IP address. The number of IP addresses specified as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. Virtual network addresses are bulk provisioned by SolidFire and assigned to individual nodes automatically. Virtual network addresses do not need to be assigned to nodes manually.
+     * 
+     * <b>Note:</b> The AddVirtualNetwork method is used only to create a new virtual network. If you want to make changes to a virtual network, please use the ModifyVirtualNetwork method.
+     *  
+     * @param request The request @see com.solidfire.element.api.AddVirtualNetworkRequest 
+     *  
+     * @return the response
+     * @since 7.0 
+     **/
+    @Since("7.0")
+    AddVirtualNetworkResult addVirtualNetwork(final AddVirtualNetworkRequest request);
+
+    /**
+     * ModifyVirtualNetwork is used to change various attributes of a VirtualNetwork object. This method can be used to add or remove address blocks, change the netmask IP, or modify the name or description of the virtual network.
+     * 
+     * <b>Note:</b> This method requires either the VirtualNetworkID or the VirtualNetworkTag as a parameter, but not both.
+     *  
+     * @param request The request @see com.solidfire.element.api.ModifyVirtualNetworkRequest 
+     *  
+     * @return the response
+     * @since 7.0 
+     **/
+    @Since("7.0")
+    AddVirtualNetworkResult modifyVirtualNetwork(final ModifyVirtualNetworkRequest request);
+
+    /**
+     * RemoveVirtualNetwork is used to remove a previously added virtual network.
+     * 
+     * <b>Note:</b> This method requires either the VirtualNetworkID of the VirtualNetworkTag as a parameter, but not both.
+     *  
+     * @param request The request @see com.solidfire.element.api.RemoveVirtualNetworkRequest 
+     *  
+     * @return the response
+     * @since 7.0 
+     **/
+    @Since("7.0")
+    RemoveVirtualNetworkResult removeVirtualNetwork(final RemoveVirtualNetworkRequest request);
+
+
+    /**
+     * Convenience method for removeVirtualNetwork 
+     *  
+     * @param virtualNetworkID Network ID that identifies the virtual network to remove.
+     *
+     * @param virtualNetworkTag Network Tag that identifies the virtual network to remove.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#removeVirtualNetwork(RemoveVirtualNetworkRequest) 
+     * @since 7.0 
+     **/
+    @Since("7.0")
+    RemoveVirtualNetworkResult removeVirtualNetwork(Optional<Long> virtualNetworkID, Optional<Long> virtualNetworkTag);
 
     /**
      * CloneVolume is used to create a copy of the volume.

@@ -425,6 +425,28 @@ public class SolidFireElement
     }
 
     @Override
+    public EnableEncryptionAtRestResult enableEncryptionAtRest(final EnableEncryptionAtRestRequest request) {
+        return super.sendRequest("EnableEncryptionAtRest", request, EnableEncryptionAtRestRequest.class, EnableEncryptionAtRestResult.class );
+    }
+
+
+    @Override
+    public EnableEncryptionAtRestResult enableEncryptionAtRest() {
+        return this.enableEncryptionAtRest( new EnableEncryptionAtRestRequest());
+    }
+
+    @Override
+    public DisableEncryptionAtRestResult disableEncryptionAtRest(final DisableEncryptionAtRestRequest request) {
+        return super.sendRequest("DisableEncryptionAtRest", request, DisableEncryptionAtRestRequest.class, DisableEncryptionAtRestResult.class );
+    }
+
+
+    @Override
+    public DisableEncryptionAtRestResult disableEncryptionAtRest() {
+        return this.disableEncryptionAtRest( new DisableEncryptionAtRestRequest());
+    }
+
+    @Override
     public GetAsyncResultResult getAsyncResult(final GetAsyncResultRequest request) {
         return super.sendRequest("GetAsyncResult", request, GetAsyncResultRequest.class, GetAsyncResultResult.class );
     }
@@ -532,6 +554,17 @@ public class SolidFireElement
     @Override
     public GetNetworkConfigResult getNetworkConfig() {
         return this.getNetworkConfig( new GetNetworkConfigRequest());
+    }
+
+    @Override
+    public SetConfigResult setConfig(final SetConfigRequest request) {
+        return super.sendRequest("SetConfig", request, SetConfigRequest.class, SetConfigResult.class );
+    }
+
+
+    @Override
+    public SetConfigResult setConfig(Config config) {
+        return this.setConfig( new SetConfigRequest(config));
     }
 
     @Override
@@ -645,6 +678,37 @@ public class SolidFireElement
     @Since("7.0")
     public CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request) {
         return super.sendRequest("RollbackToGroupSnapshot", request, RollbackToGroupSnapshotRequest.class, CreateGroupSnapshotResult.class );
+    }
+
+    @Override
+    @Since("7.0")
+    public ListVirtualNetworksResult listVirtualNetworks(final ListVirtualNetworksRequest request) {
+        return super.sendRequest("ListVirtualNetworks", request, ListVirtualNetworksRequest.class, ListVirtualNetworksResult.class );
+    }
+
+    @Override
+    @Since("7.0")
+    public AddVirtualNetworkResult addVirtualNetwork(final AddVirtualNetworkRequest request) {
+        return super.sendRequest("AddVirtualNetwork", request, AddVirtualNetworkRequest.class, AddVirtualNetworkResult.class );
+    }
+
+    @Override
+    @Since("7.0")
+    public AddVirtualNetworkResult modifyVirtualNetwork(final ModifyVirtualNetworkRequest request) {
+        return super.sendRequest("ModifyVirtualNetwork", request, ModifyVirtualNetworkRequest.class, AddVirtualNetworkResult.class );
+    }
+
+    @Override
+    @Since("7.0")
+    public RemoveVirtualNetworkResult removeVirtualNetwork(final RemoveVirtualNetworkRequest request) {
+        return super.sendRequest("RemoveVirtualNetwork", request, RemoveVirtualNetworkRequest.class, RemoveVirtualNetworkResult.class );
+    }
+
+
+    @Override
+    @Since("7.0")
+    public RemoveVirtualNetworkResult removeVirtualNetwork(Optional<Long> virtualNetworkID, Optional<Long> virtualNetworkTag) {
+        return this.removeVirtualNetwork( new RemoveVirtualNetworkRequest(virtualNetworkID, virtualNetworkTag));
     }
 
     @Override
