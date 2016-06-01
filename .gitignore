@@ -1,19 +1,7 @@
 *~
-:*.swp
-*.orig
-*.kdev4
-build
-.kdev*
-*.pyc
-.gradle
-.classpath
-.project
-.settings
 .metadata
 .cache
-target
 .idea/
 *.iml
-.history
 
 .DS_Store

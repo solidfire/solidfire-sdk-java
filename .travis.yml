@@ -2,8 +2,7 @@ language: ruby
 script: "./build.sh"
 branches:
   only:
-  - develop
-  - /^feature\/.*$/
+  - master
 rvm:
 - 2.1.2
 env:
