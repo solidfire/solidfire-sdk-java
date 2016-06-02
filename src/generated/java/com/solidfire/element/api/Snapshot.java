@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class Snapshot implements Serializable {
 
-    private static final long serialVersionUID = -1940687876L;
+    private static final long serialVersionUID = -1131558864L;
 
     @SerializedName("snapshotID") private final Long snapshotID;
     @SerializedName("volumeID") private final Long volumeID;
@@ -246,7 +246,7 @@ public class Snapshot implements Serializable {
 
     /**
      * The current &quot;members&quot; results contains information about each snapshot in the group.
-     * Each of these members will have a &quot;uuid&quot; parameter for the snapshot's UUID.
+     * Each of these members will have a &quot;uuid&quot; parameter for the snapshot&#39;s UUID.
      * @since 8.0 
      **/
 

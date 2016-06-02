@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class CreateSnapshotRequest implements Serializable {
 
-    private static final long serialVersionUID = -1314111670L;
+    private static final long serialVersionUID = -1494750176L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("snapshotID") private final Optional<Long> snapshotID;
@@ -97,7 +97,7 @@ public class CreateSnapshotRequest implements Serializable {
     /**
      * Unique ID of a snapshot from which the new snapshot is made.
      * The snapshotID passed must be a snapshot on the given volume.
-     * If a SnapshotID is not provided, a snapshot is created from the volume's active branch.
+     * If a SnapshotID is not provided, a snapshot is created from the volume&#39;s active branch.
      **/
     public Optional<Long> getSnapshotID() {
         return this.snapshotID;
