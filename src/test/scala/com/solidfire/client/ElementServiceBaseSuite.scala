@@ -6,7 +6,7 @@ import org.mockito.Mockito._
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
 
-import scala.util.Random.nextString
+import scala.util.Random.alphanumeric
 
 /**
   * Created by Jason Ryan Womack on 5/31/16.
@@ -54,12 +54,12 @@ class ElementServiceBaseSuite extends WordSpec with BeforeAndAfterAll with Mocki
     }
 
     "encode optionalInitiatorSecret" in {
-      modifyAccountRequest = ModifyAccountRequest.builder( ).accountID( 1L ).optionalInitiatorSecret( nextString(16) ).build( )
+      modifyAccountRequest = ModifyAccountRequest.builder( ).accountID( 1L ).optionalInitiatorSecret( alphanumeric.take( 16 ).mkString ).build( )
       _element.encodeRequest( "ModifyAccount", modifyAccountRequest, classOf[ModifyAccountRequest] ) should include(s""""initiatorSecret":"${modifyAccountRequest.getInitiatorSecret.get}"""" )
     }
 
     "encode optionalTargetSecret" in {
-      modifyAccountRequest = ModifyAccountRequest.builder( ).accountID( 1L ).optionalTargetSecret( nextString(16) ).build( )
+      modifyAccountRequest = ModifyAccountRequest.builder( ).accountID( 1L ).optionalTargetSecret( alphanumeric.take( 16 ).mkString ).build( )
       _element.encodeRequest( "ModifyAccount", modifyAccountRequest, classOf[ModifyAccountRequest] ) should include(s""""targetSecret":"${modifyAccountRequest.getTargetSecret.get}"""" )
     }
 
