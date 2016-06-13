@@ -208,9 +208,9 @@ public class SolidFireElement
         } else if (withSecurity && !username.isPresent() && !password.isPresent()) {
             cluster = new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint));
         } else if (!withSecurity && username.isPresent() && password.isPresent()) {
-            cluster = new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint, username.get(), password.get()));
+            cluster = new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcherWithoutSecurity(endpoint, username.get(), password.get()));
         } else if (!withSecurity && !username.isPresent() && !password.isPresent()) {
-            cluster = new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcher(endpoint));
+            cluster = new  SolidFireElement(new com.solidfire.jsvcgen.client.HttpsRequestDispatcherWithoutSecurity(endpoint));
         } else {
             throw new ApiException("Missing " + (!username.isPresent() ? "username" : "password") + "");
         }
