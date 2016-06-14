@@ -35,60 +35,34 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * The Request object for the "ListClusterPairs" API Service call.
  **/
-public class AddNodesResult implements Serializable {
+public class ListClusterPairsRequest implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = -1929595671L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * The Request object for the "ListClusterPairs" API Service call.
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
-        this.nodes = nodes;
+    public ListClusterPairsRequest() {
+
     }
 
-
-    /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
-     **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
-        
-
-        return Objects.deepEquals( nodes , that.nodes );
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return this.getClass().hashCode();
     }
 
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append( "{ " );
-
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
-        sb.append( " }" );
-
-        if(sb.lastIndexOf(", }") != -1)
-            sb.deleteCharAt(sb.lastIndexOf(", }"));
-
-        return sb.toString();
-    }
 }

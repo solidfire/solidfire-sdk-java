@@ -35,30 +35,48 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * 
  **/
-public class AddNodesResult implements Serializable {
+public class ResetDriveDetails implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = 1953157822L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("drive") private final String drive;
+    @SerializedName("returnCode") private final Long returnCode;
+    @SerializedName("stderr") private final String stderr;
+    @SerializedName("stdout") private final String stdout;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * 
+     * @param drive [required] Drive name
+     * @param returnCode [required] 
+     * @param stderr [required] 
+     * @param stdout [required] 
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
-        this.nodes = nodes;
+    public ResetDriveDetails(String drive, Long returnCode, String stderr, String stdout) {
+        this.drive = drive;
+        this.returnCode = returnCode;
+        this.stderr = stderr;
+        this.stdout = stdout;
     }
 
 
     /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * Drive name
      **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
+    public String getDrive() {
+        return this.drive;
+    }
+    public Long getReturnCode() {
+        return this.returnCode;
+    }
+    public String getStderr() {
+        return this.stderr;
+    }
+    public String getStdout() {
+        return this.stdout;
     }
 
     @Override
@@ -66,15 +84,18 @@ public class AddNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
+        ResetDriveDetails that = (ResetDriveDetails) o;
         
 
-        return Objects.deepEquals( nodes , that.nodes );
+        return Objects.equals( drive , that.drive )
+            && Objects.equals( returnCode , that.returnCode )
+            && Objects.equals( stderr , that.stderr )
+            && Objects.equals( stdout , that.stdout );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( drive, returnCode, stderr, stdout );
     }
 
 
@@ -83,7 +104,10 @@ public class AddNodesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" drive : ").append(drive).append(",");
+        sb.append(" returnCode : ").append(returnCode).append(",");
+        sb.append(" stderr : ").append(stderr).append(",");
+        sb.append(" stdout : ").append(stdout);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -35,29 +35,25 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * The object returned by the "ListDriveHardware" API Service call.
  **/
-public class AddNodesResult implements Serializable {
+public class ListDriveHardwareResult implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = -593672450L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("nodes") private final NodeDriveHardware[] nodes;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * The object returned by the "ListDriveHardware" API Service call.
+     * @param nodes [required] 
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
+    public ListDriveHardwareResult(NodeDriveHardware[] nodes) {
         this.nodes = nodes;
     }
 
-
-    /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
-     **/
-    public AddedNode[] getNodes() {
+    public NodeDriveHardware[] getNodes() {
         return this.nodes;
     }
 
@@ -66,7 +62,7 @@ public class AddNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
+        ListDriveHardwareResult that = (ListDriveHardwareResult) o;
         
 
         return Objects.deepEquals( nodes , that.nodes );

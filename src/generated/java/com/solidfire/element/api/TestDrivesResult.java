@@ -35,30 +35,26 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * The object returned by the "TestDrives" API Service call.
  **/
-public class AddNodesResult implements Serializable {
+public class TestDrivesResult implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = 1446348104L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("details") private final Object details;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * The object returned by the "TestDrives" API Service call.
+     * @param details [required] 
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
-        this.nodes = nodes;
+    public TestDrivesResult(Object details) {
+        this.details = details;
     }
 
-
-    /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
-     **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
+    public Object getDetails() {
+        return this.details;
     }
 
     @Override
@@ -66,15 +62,15 @@ public class AddNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
+        TestDrivesResult that = (TestDrivesResult) o;
         
 
-        return Objects.deepEquals( nodes , that.nodes );
+        return Objects.equals( details , that.details );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( details );
     }
 
 
@@ -83,7 +79,7 @@ public class AddNodesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" details : ").append(details);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

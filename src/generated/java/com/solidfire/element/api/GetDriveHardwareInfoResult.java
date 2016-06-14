@@ -35,30 +35,26 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * The object returned by the "GetDriveHardwareInfo" API Service call.
  **/
-public class AddNodesResult implements Serializable {
+public class GetDriveHardwareInfoResult implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = 887463239L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("driveHardwareInfo") private final DriveHardwareInfo driveHardwareInfo;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * The object returned by the "GetDriveHardwareInfo" API Service call.
+     * @param driveHardwareInfo [required] 
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
-        this.nodes = nodes;
+    public GetDriveHardwareInfoResult(DriveHardwareInfo driveHardwareInfo) {
+        this.driveHardwareInfo = driveHardwareInfo;
     }
 
-
-    /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
-     **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
+    public DriveHardwareInfo getDriveHardwareInfo() {
+        return this.driveHardwareInfo;
     }
 
     @Override
@@ -66,15 +62,15 @@ public class AddNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
+        GetDriveHardwareInfoResult that = (GetDriveHardwareInfoResult) o;
         
 
-        return Objects.deepEquals( nodes , that.nodes );
+        return Objects.equals( driveHardwareInfo , that.driveHardwareInfo );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( (Object) driveHardwareInfo );
     }
 
 
@@ -83,7 +79,7 @@ public class AddNodesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" driveHardwareInfo : ").append(driveHardwareInfo);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -360,6 +360,28 @@ public class SolidFireElement
     }
 
     @Override
+    public GetClusterFullThresholdResult getClusterFullThreshold(final GetClusterFullThresholdRequest request) {
+        return super.sendRequest("GetClusterFullThreshold", request, GetClusterFullThresholdRequest.class, GetClusterFullThresholdResult.class );
+    }
+
+
+    @Override
+    public GetClusterFullThresholdResult getClusterFullThreshold() {
+        return this.getClusterFullThreshold( new GetClusterFullThresholdRequest());
+    }
+
+    @Override
+    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(final ModifyClusterFullThresholdRequest request) {
+        return super.sendRequest("ModifyClusterFullThreshold", request, ModifyClusterFullThresholdRequest.class, ModifyClusterFullThresholdResult.class );
+    }
+
+
+    @Override
+    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(Optional<Long> stage2AwareThreshold, @Since("8.0") Optional<Long> stage3BlockThresholdPercent, Optional<Long> maxMetadataOverProvisionFactor) {
+        return this.modifyClusterFullThreshold( new ModifyClusterFullThresholdRequest(stage2AwareThreshold, stage3BlockThresholdPercent, maxMetadataOverProvisionFactor));
+    }
+
+    @Override
     public ListClusterAdminsResult listClusterAdmins(final ListClusterAdminsRequest request) {
         return super.sendRequest("ListClusterAdmins", request, ListClusterAdminsRequest.class, ListClusterAdminsResult.class );
     }
@@ -480,6 +502,72 @@ public class SolidFireElement
     }
 
     @Override
+    public GetDriveHardwareInfoResult getDriveHardwareInfo(final GetDriveHardwareInfoRequest request) {
+        return super.sendRequest("GetDriveHardwareInfo", request, GetDriveHardwareInfoRequest.class, GetDriveHardwareInfoResult.class );
+    }
+
+
+    @Override
+    public GetDriveHardwareInfoResult getDriveHardwareInfo(Long driveID) {
+        return this.getDriveHardwareInfo( new GetDriveHardwareInfoRequest(driveID));
+    }
+
+    @Override
+    public ListDriveHardwareResult listDriveHardware(final ListDriveHardwareRequest request) {
+        return super.sendRequest("ListDriveHardware", request, ListDriveHardwareRequest.class, ListDriveHardwareResult.class );
+    }
+
+
+    @Override
+    public ListDriveHardwareResult listDriveHardware(Boolean force) {
+        return this.listDriveHardware( new ListDriveHardwareRequest(force));
+    }
+
+    @Override
+    public ResetDrivesResult resetDrives(final ResetDrivesRequest request) {
+        return super.sendRequest("ResetDrives", request, ResetDrivesRequest.class, ResetDrivesResult.class );
+    }
+
+
+    @Override
+    public ResetDrivesResult resetDrives(String drives, Boolean force) {
+        return this.resetDrives( new ResetDrivesRequest(drives, force));
+    }
+
+    @Override
+    public TestDrivesResult testDrives(final TestDrivesRequest request) {
+        return super.sendRequest("TestDrives", request, TestDrivesRequest.class, TestDrivesResult.class );
+    }
+
+
+    @Override
+    public TestDrivesResult testDrives(Optional<Long> minutes, Boolean force) {
+        return this.testDrives( new TestDrivesRequest(minutes, force));
+    }
+
+    @Override
+    public GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request) {
+        return super.sendRequest("GetDriveStats", request, GetDriveStatsRequest.class, GetDriveStatsResult.class );
+    }
+
+
+    @Override
+    public GetDriveStatsResult getDriveStats(Long driveID) {
+        return this.getDriveStats( new GetDriveStatsRequest(driveID));
+    }
+
+    @Override
+    public AsyncHandleResult secureEraseDrives(final SecureEraseDrivesRequest request) {
+        return super.sendRequest("SecureEraseDrives", request, SecureEraseDrivesRequest.class, AsyncHandleResult.class );
+    }
+
+
+    @Override
+    public AsyncHandleResult secureEraseDrives(Long[] drives) {
+        return this.secureEraseDrives( new SecureEraseDrivesRequest(drives));
+    }
+
+    @Override
     public AsyncHandleResult removeDrives(final RemoveDrivesRequest request) {
         return super.sendRequest("RemoveDrives", request, RemoveDrivesRequest.class, AsyncHandleResult.class );
     }
@@ -587,6 +675,50 @@ public class SolidFireElement
     @Override
     public GetConfigResult getConfig() {
         return this.getConfig( new GetConfigRequest());
+    }
+
+    @Override
+    public ListClusterPairsResult listClusterPairs(final ListClusterPairsRequest request) {
+        return super.sendRequest("ListClusterPairs", request, ListClusterPairsRequest.class, ListClusterPairsResult.class );
+    }
+
+
+    @Override
+    public ListClusterPairsResult listClusterPairs() {
+        return this.listClusterPairs( new ListClusterPairsRequest());
+    }
+
+    @Override
+    public StartClusterPairingResult startClusterPairing(final StartClusterPairingRequest request) {
+        return super.sendRequest("StartClusterPairing", request, StartClusterPairingRequest.class, StartClusterPairingResult.class );
+    }
+
+
+    @Override
+    public StartClusterPairingResult startClusterPairing() {
+        return this.startClusterPairing( new StartClusterPairingRequest());
+    }
+
+    @Override
+    public CompleteClusterPairingResult completeClusterPairing(final CompleteClusterPairingRequest request) {
+        return super.sendRequest("CompleteClusterPairing", request, CompleteClusterPairingRequest.class, CompleteClusterPairingResult.class );
+    }
+
+
+    @Override
+    public CompleteClusterPairingResult completeClusterPairing(String clusterPairingKey) {
+        return this.completeClusterPairing( new CompleteClusterPairingRequest(clusterPairingKey));
+    }
+
+    @Override
+    public RemoveClusterPairResult removeClusterPair(final RemoveClusterPairRequest request) {
+        return super.sendRequest("RemoveClusterPair", request, RemoveClusterPairRequest.class, RemoveClusterPairResult.class );
+    }
+
+
+    @Override
+    public RemoveClusterPairResult removeClusterPair(Long clusterPairID) {
+        return this.removeClusterPair( new RemoveClusterPairRequest(clusterPairID));
     }
 
     @Override

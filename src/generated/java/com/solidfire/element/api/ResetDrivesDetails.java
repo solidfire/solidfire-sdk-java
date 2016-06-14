@@ -35,30 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * 
  **/
-public class AddNodesResult implements Serializable {
+public class ResetDrivesDetails implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = -1848497624L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("drives") private final ResetDriveDetails[] drives;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * 
+     * @param drives [required] Details of a single drive that is being reset.
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
-        this.nodes = nodes;
+    public ResetDrivesDetails(ResetDriveDetails[] drives) {
+        this.drives = drives;
     }
 
 
     /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * Details of a single drive that is being reset.
      **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
+    public ResetDriveDetails[] getDrives() {
+        return this.drives;
     }
 
     @Override
@@ -66,15 +66,15 @@ public class AddNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
+        ResetDrivesDetails that = (ResetDrivesDetails) o;
         
 
-        return Objects.deepEquals( nodes , that.nodes );
+        return Objects.deepEquals( drives , that.drives );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( (Object) drives );
     }
 
 
@@ -83,7 +83,7 @@ public class AddNodesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" drives : ").append(Arrays.toString(drives));
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
