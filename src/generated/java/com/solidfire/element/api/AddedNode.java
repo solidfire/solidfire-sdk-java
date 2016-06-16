@@ -35,30 +35,32 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * 
  **/
-public class AddNodesResult implements Serializable {
+public class AddedNode implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = -2102806828L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("pendingNodeID") private final Long pendingNodeID;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * 
+     * @param nodeID [required] 
+     * @param pendingNodeID [required] 
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
-        this.nodes = nodes;
+    public AddedNode(Long nodeID, Long pendingNodeID) {
+        this.nodeID = nodeID;
+        this.pendingNodeID = pendingNodeID;
     }
 
-
-    /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
-     **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
+    public Long getNodeID() {
+        return this.nodeID;
+    }
+    public Long getPendingNodeID() {
+        return this.pendingNodeID;
     }
 
     @Override
@@ -66,15 +68,16 @@ public class AddNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
+        AddedNode that = (AddedNode) o;
         
 
-        return Objects.deepEquals( nodes , that.nodes );
+        return Objects.equals( nodeID , that.nodeID )
+            && Objects.equals( pendingNodeID , that.pendingNodeID );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( nodeID, pendingNodeID );
     }
 
 
@@ -83,7 +86,8 @@ public class AddNodesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" nodeID : ").append(nodeID).append(",");
+        sb.append(" pendingNodeID : ").append(pendingNodeID);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

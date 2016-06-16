@@ -292,6 +292,49 @@ public interface SolidFireElementIF {
     GetClusterConfigResult getClusterConfig();
 
     /**
+     * GetClusterFullThreshold is used to view the stages set for cluster fullness levels. All levels are returned when this method is entered.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetClusterFullThresholdRequest 
+     *  
+     * @return the response
+     **/
+    GetClusterFullThresholdResult getClusterFullThreshold(final GetClusterFullThresholdRequest request);
+
+
+    /**
+     * Convenience method for getClusterFullThreshold 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getClusterFullThreshold(GetClusterFullThresholdRequest) 
+     **/
+    GetClusterFullThresholdResult getClusterFullThreshold();
+
+    /**
+     * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
+     *  
+     * @param request The request @see com.solidfire.element.api.ModifyClusterFullThresholdRequest 
+     *  
+     * @return the response
+     **/
+    ModifyClusterFullThresholdResult modifyClusterFullThreshold(final ModifyClusterFullThresholdRequest request);
+
+
+    /**
+     * Convenience method for modifyClusterFullThreshold 
+     *  
+     * @param stage2AwareThreshold Number of nodes worth of capacity remaining on the cluster that triggers a notification.
+     *
+     * @param stage3BlockThresholdPercent Percent below "Error" state to raise a cluster "Warning" alert.
+     *
+     * @param maxMetadataOverProvisionFactor A value representative of the number of times metadata space can be over provisioned relative to the amount of space available. For example, if there was enough metadata space to store 100 TiB of volumes and this number was set to 5, then 500 TiB worth of volumes could be created.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#modifyClusterFullThreshold(ModifyClusterFullThresholdRequest) 
+     **/
+    ModifyClusterFullThresholdResult modifyClusterFullThreshold(Optional<Long> stage2AwareThreshold, Optional<Long> stage3BlockThresholdPercent, Optional<Long> maxMetadataOverProvisionFactor);
+
+    /**
      * ListClusterAdmins returns the list of all cluster administrators for the cluster. There can be several cluster administrators that have different levels of permissions. There can be only one primary cluster administrator in the system. The primary Cluster Admin is the administrator that was created when the cluster was created. LDAP administrators can also be created when setting up an LDAP system on the cluster.
      *  
      * @param request The request @see com.solidfire.element.api.ListClusterAdminsRequest 
@@ -528,6 +571,145 @@ public interface SolidFireElementIF {
     ListDrivesResult listDrives();
 
     /**
+     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetDriveHardwareInfoRequest 
+     *  
+     * @return the response
+     **/
+    GetDriveHardwareInfoResult getDriveHardwareInfo(final GetDriveHardwareInfoRequest request);
+
+
+    /**
+     * Convenience method for getDriveHardwareInfo 
+     *  
+     * @param driveID DriveID for the drive information requested. DriveIDs can be obtained via the &quot;ListDrives&quot; method.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getDriveHardwareInfo(GetDriveHardwareInfoRequest) 
+     **/
+    GetDriveHardwareInfoResult getDriveHardwareInfo(Long driveID);
+
+    /**
+     * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListDriveHardwareRequest 
+     *  
+     * @return the response
+     **/
+    ListDriveHardwareResult listDriveHardware(final ListDriveHardwareRequest request);
+
+
+    /**
+     * Convenience method for listDriveHardware 
+     *  
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listDriveHardware(ListDriveHardwareRequest) 
+     **/
+    ListDriveHardwareResult listDriveHardware(Boolean force);
+
+    /**
+     * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     *  
+     * @param request The request @see com.solidfire.element.api.ResetDrivesRequest 
+     *  
+     * @return the response
+     **/
+    ResetDrivesResult resetDrives(final ResetDrivesRequest request);
+
+
+    /**
+     * Convenience method for resetDrives 
+     *  
+     * @param drives List of device names (not driveIDs) to reset.
+     *
+     * @param force The "force" parameter must be included on this method to successfully reset a drive.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#resetDrives(ResetDrivesRequest) 
+     **/
+    ResetDrivesResult resetDrives(String drives, Boolean force);
+
+    /**
+     * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
+     * <br/><br/>
+     * <b>Note</b>: This test takes approximately 10 minutes.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     *  
+     * @param request The request @see com.solidfire.element.api.TestDrivesRequest 
+     *  
+     * @return the response
+     **/
+    TestDrivesResult testDrives(final TestDrivesRequest request);
+
+
+    /**
+     * Convenience method for testDrives 
+     *  
+     * @param minutes The number of minutes to run the test can be specified.
+     *
+     * @param force The "force" parameter must be included on this method to successfully test the drives on the node.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#testDrives(TestDrivesRequest) 
+     **/
+    TestDrivesResult testDrives(Optional<Long> minutes, Boolean force);
+
+    /**
+     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
+     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetDriveStatsRequest 
+     *  
+     * @return the response
+     **/
+    GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request);
+
+
+    /**
+     * Convenience method for getDriveStats 
+     *  
+     * @param driveID Specifies the drive for which statistics are gathered.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getDriveStats(GetDriveStatsRequest) 
+     **/
+    GetDriveStatsResult getDriveStats(Long driveID);
+
+    /**
+     * SecureEraseDrives is used to remove any residual data from drives that have a status of &quot;available.&quot; For example, when replacing a drive at its end-of-life that contained sensitive data.
+     * It uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. The method may take up to two minutes to complete, so it is an asynchronous method.
+     * The GetAsyncResult method can be used to check on the status of the secure erase operation.
+     * <br/><br/>
+     * Use the &quot;ListDrives&quot; method to obtain the driveIDs for the drives you want to secure erase.
+     *  
+     * @param request The request @see com.solidfire.element.api.SecureEraseDrivesRequest 
+     *  
+     * @return the response
+     **/
+    AsyncHandleResult secureEraseDrives(final SecureEraseDrivesRequest request);
+
+
+    /**
+     * Convenience method for secureEraseDrives 
+     *  
+     * @param drives List of driveIDs to secure erase.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#secureEraseDrives(SecureEraseDrivesRequest) 
+     **/
+    AsyncHandleResult secureEraseDrives(Long[] drives);
+
+    /**
      * You can use RemoveDrives to proactively remove drives that are part of the cluster.
      * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
      * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
@@ -731,6 +913,87 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#getConfig(GetConfigRequest) 
      **/
     GetConfigResult getConfig();
+
+    /**
+     * ListClusterPairs allows you to list all of the clusters a cluster is paired with.
+     * This method returns information about active and pending cluster pairings, such as statistics about the current pairing as well as the connectivity and latency (in milliseconds) of the cluster pairing.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListClusterPairsRequest 
+     *  
+     * @return the response
+     **/
+    ListClusterPairsResult listClusterPairs(final ListClusterPairsRequest request);
+
+
+    /**
+     * Convenience method for listClusterPairs 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listClusterPairs(ListClusterPairsRequest) 
+     **/
+    ListClusterPairsResult listClusterPairs();
+
+    /**
+     * StartClusterPairing allows you to create an encoded key from a cluster that is used to pair with another cluster.
+     * The key created from this API method is used in the "CompleteClusterPairing" API method to establish a cluster pairing.
+     * You can pair a cluster with a maximum of four other SolidFire clusters.
+     *  
+     * @param request The request @see com.solidfire.element.api.StartClusterPairingRequest 
+     *  
+     * @return the response
+     **/
+    StartClusterPairingResult startClusterPairing(final StartClusterPairingRequest request);
+
+
+    /**
+     * Convenience method for startClusterPairing 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#startClusterPairing(StartClusterPairingRequest) 
+     **/
+    StartClusterPairingResult startClusterPairing();
+
+    /**
+     * The CompleteClusterPairing method is the second step in the cluster pairing process.
+     * Use this method with the encoded key received from the "StartClusterPairing" API method to complete the cluster pairing process.
+     *  
+     * @param request The request @see com.solidfire.element.api.CompleteClusterPairingRequest 
+     *  
+     * @return the response
+     **/
+    CompleteClusterPairingResult completeClusterPairing(final CompleteClusterPairingRequest request);
+
+
+    /**
+     * Convenience method for completeClusterPairing 
+     *  
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#completeClusterPairing(CompleteClusterPairingRequest) 
+     **/
+    CompleteClusterPairingResult completeClusterPairing(String clusterPairingKey);
+
+    /**
+     * You can use the RemoveClusterPair method to close the open connections between two paired clusters.<br/>
+     * <b>Note</b>: Before you remove a cluster pair, you must first remove all volume pairing to the clusters with the "RemoveVolumePair" API method.
+     *  
+     * @param request The request @see com.solidfire.element.api.RemoveClusterPairRequest 
+     *  
+     * @return the response
+     **/
+    RemoveClusterPairResult removeClusterPair(final RemoveClusterPairRequest request);
+
+
+    /**
+     * Convenience method for removeClusterPair 
+     *  
+     * @param clusterPairID Unique identifier used to pair two clusters.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#removeClusterPair(RemoveClusterPairRequest) 
+     **/
+    RemoveClusterPairResult removeClusterPair(Long clusterPairID);
 
     /**
      * CreateSnapshot is used to create a point-in-time copy of a volume.

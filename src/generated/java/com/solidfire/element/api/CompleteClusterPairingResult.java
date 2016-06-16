@@ -35,30 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * The object returned by the "CompleteClusterPairing" API Service call.
  **/
-public class AddNodesResult implements Serializable {
+public class CompleteClusterPairingResult implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = -1616162051L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("clusterPairID") private final Long clusterPairID;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * The object returned by the "CompleteClusterPairing" API Service call.
+     * @param clusterPairID [required] Unique identifier for the cluster pair.
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
-        this.nodes = nodes;
+    public CompleteClusterPairingResult(Long clusterPairID) {
+        this.clusterPairID = clusterPairID;
     }
 
 
     /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * Unique identifier for the cluster pair.
      **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
+    public Long getClusterPairID() {
+        return this.clusterPairID;
     }
 
     @Override
@@ -66,15 +66,15 @@ public class AddNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
+        CompleteClusterPairingResult that = (CompleteClusterPairingResult) o;
         
 
-        return Objects.deepEquals( nodes , that.nodes );
+        return Objects.equals( clusterPairID , that.clusterPairID );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( (Object) clusterPairID );
     }
 
 
@@ -83,7 +83,7 @@ public class AddNodesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" clusterPairID : ").append(clusterPairID);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

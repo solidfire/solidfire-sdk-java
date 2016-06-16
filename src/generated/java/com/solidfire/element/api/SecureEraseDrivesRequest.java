@@ -35,30 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * The Request object for the "SecureEraseDrives" API Service call.
  **/
-public class AddNodesResult implements Serializable {
+public class SecureEraseDrivesRequest implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = -163907311L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("drives") private final Long[] drives;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * The Request object for the "SecureEraseDrives" API Service call.
+     * @param drives [required] List of driveIDs to secure erase.
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
-        this.nodes = nodes;
+    public SecureEraseDrivesRequest(Long[] drives) {
+        this.drives = drives;
     }
 
 
     /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * List of driveIDs to secure erase.
      **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
+    public Long[] getDrives() {
+        return this.drives;
     }
 
     @Override
@@ -66,15 +66,15 @@ public class AddNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
+        SecureEraseDrivesRequest that = (SecureEraseDrivesRequest) o;
         
 
-        return Objects.deepEquals( nodes , that.nodes );
+        return Objects.deepEquals( drives , that.drives );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( (Object) drives );
     }
 
 
@@ -83,7 +83,7 @@ public class AddNodesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" drives : ").append(Arrays.toString(drives));
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -91,4 +91,36 @@ public class AddNodesResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long[] drives;
+
+        private Builder() { }
+
+        public SecureEraseDrivesRequest build() {
+            return new SecureEraseDrivesRequest (
+                         this.drives            );
+        }
+
+        private SecureEraseDrivesRequest.Builder buildFrom(final SecureEraseDrivesRequest req) {
+            this.drives = req.drives;
+
+            return this;
+        }
+
+        public SecureEraseDrivesRequest.Builder drives(final Long[] drives) {
+            this.drives = drives;
+            return this;
+        }
+
+    }
+
 }

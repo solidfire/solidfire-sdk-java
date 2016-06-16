@@ -35,30 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * The object returned by the "ResetDrives" API Service call.
  **/
-public class AddNodesResult implements Serializable {
+public class ResetDrivesResult implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = -510781497L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("details") private final ResetDrivesDetails details;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * The object returned by the "ResetDrives" API Service call.
+     * @param details [required] Details of drives that are being reset.
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
-        this.nodes = nodes;
+    public ResetDrivesResult(ResetDrivesDetails details) {
+        this.details = details;
     }
 
 
     /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * Details of drives that are being reset.
      **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
+    public ResetDrivesDetails getDetails() {
+        return this.details;
     }
 
     @Override
@@ -66,15 +66,15 @@ public class AddNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
+        ResetDrivesResult that = (ResetDrivesResult) o;
         
 
-        return Objects.deepEquals( nodes , that.nodes );
+        return Objects.equals( details , that.details );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( (Object) details );
     }
 
 
@@ -83,7 +83,7 @@ public class AddNodesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" details : ").append(details);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

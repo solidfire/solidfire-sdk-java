@@ -35,30 +35,40 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * The object returned by the "StartClusterPairing" API Service call.
  **/
-public class AddNodesResult implements Serializable {
+public class StartClusterPairingResult implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = -1770259800L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("clusterPairingKey") private final String clusterPairingKey;
+    @SerializedName("clusterPairID") private final Long clusterPairID;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * The object returned by the "StartClusterPairing" API Service call.
+     * @param clusterPairingKey [required] A string of characters that is used by the "CompleteClusterPairing" API method.
+     * @param clusterPairID [required] Unique identifier for the cluster pair.
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
-        this.nodes = nodes;
+    public StartClusterPairingResult(String clusterPairingKey, Long clusterPairID) {
+        this.clusterPairingKey = clusterPairingKey;
+        this.clusterPairID = clusterPairID;
     }
 
 
     /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * A string of characters that is used by the "CompleteClusterPairing" API method.
      **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
+    public String getClusterPairingKey() {
+        return this.clusterPairingKey;
+    }
+
+    /**
+     * Unique identifier for the cluster pair.
+     **/
+    public Long getClusterPairID() {
+        return this.clusterPairID;
     }
 
     @Override
@@ -66,15 +76,16 @@ public class AddNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
+        StartClusterPairingResult that = (StartClusterPairingResult) o;
         
 
-        return Objects.deepEquals( nodes , that.nodes );
+        return Objects.equals( clusterPairingKey , that.clusterPairingKey )
+            && Objects.equals( clusterPairID , that.clusterPairID );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( clusterPairingKey, clusterPairID );
     }
 
 
@@ -83,7 +94,8 @@ public class AddNodesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" clusterPairingKey : ").append(clusterPairingKey).append(",");
+        sb.append(" clusterPairID : ").append(clusterPairID);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

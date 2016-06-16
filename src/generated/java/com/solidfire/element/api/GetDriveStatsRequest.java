@@ -35,30 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * The Request object for the "GetDriveStats" API Service call.
  **/
-public class AddNodesResult implements Serializable {
+public class GetDriveStatsRequest implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = -994402897L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("driveID") private final Long driveID;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * The Request object for the "GetDriveStats" API Service call.
+     * @param driveID [required] Specifies the drive for which statistics are gathered.
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
-        this.nodes = nodes;
+    public GetDriveStatsRequest(Long driveID) {
+        this.driveID = driveID;
     }
 
 
     /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * Specifies the drive for which statistics are gathered.
      **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
+    public Long getDriveID() {
+        return this.driveID;
     }
 
     @Override
@@ -66,15 +66,15 @@ public class AddNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
+        GetDriveStatsRequest that = (GetDriveStatsRequest) o;
         
 
-        return Objects.deepEquals( nodes , that.nodes );
+        return Objects.equals( driveID , that.driveID );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( (Object) driveID );
     }
 
 
@@ -83,7 +83,7 @@ public class AddNodesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" driveID : ").append(driveID);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -91,4 +91,36 @@ public class AddNodesResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long driveID;
+
+        private Builder() { }
+
+        public GetDriveStatsRequest build() {
+            return new GetDriveStatsRequest (
+                         this.driveID            );
+        }
+
+        private GetDriveStatsRequest.Builder buildFrom(final GetDriveStatsRequest req) {
+            this.driveID = req.driveID;
+
+            return this;
+        }
+
+        public GetDriveStatsRequest.Builder driveID(final Long driveID) {
+            this.driveID = driveID;
+            return this;
+        }
+
+    }
+
 }

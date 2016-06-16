@@ -35,30 +35,26 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * The Request object for the "ListDriveHardware" API Service call.
  **/
-public class AddNodesResult implements Serializable {
+public class ListDriveHardwareRequest implements Serializable {
 
-    private static final long serialVersionUID = -1397707799L;
+    private static final long serialVersionUID = -1946368923L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("force") private final Boolean force;
 
     /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
+     * The Request object for the "ListDriveHardware" API Service call.
+     * @param force [required] 
      * @since 7.0
      **/
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
-        this.nodes = nodes;
+    public ListDriveHardwareRequest(Boolean force) {
+        this.force = force;
     }
 
-
-    /**
-     * An array of objects mapping the previous &quot;pendingNodeID&quot; to the &quot;nodeID&quot;.
-     **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
+    public Boolean getForce() {
+        return this.force;
     }
 
     @Override
@@ -66,15 +62,15 @@ public class AddNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddNodesResult that = (AddNodesResult) o;
+        ListDriveHardwareRequest that = (ListDriveHardwareRequest) o;
         
 
-        return Objects.deepEquals( nodes , that.nodes );
+        return Objects.equals( force , that.force );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( (Object) force );
     }
 
 
@@ -83,7 +79,7 @@ public class AddNodesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" force : ").append(force);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -91,4 +87,36 @@ public class AddNodesResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Boolean force;
+
+        private Builder() { }
+
+        public ListDriveHardwareRequest build() {
+            return new ListDriveHardwareRequest (
+                         this.force            );
+        }
+
+        private ListDriveHardwareRequest.Builder buildFrom(final ListDriveHardwareRequest req) {
+            this.force = req.force;
+
+            return this;
+        }
+
+        public ListDriveHardwareRequest.Builder force(final Boolean force) {
+            this.force = force;
+            return this;
+        }
+
+    }
+
 }
