@@ -41,9 +41,9 @@ public class VolumePair implements Serializable {
 
     private static final long serialVersionUID = 23799657L;
 
-    @SerializedName("clusterPairID") private final Long clusterPairID;
-    @SerializedName("remoteVolumeID") private final Long remoteVolumeID;
-    @SerializedName("remoteSliceID") private final Long remoteSliceID;
+    @SerializedName("clusterPairID") private final long clusterPairID;
+    @SerializedName("remoteVolumeID") private final long remoteVolumeID;
+    @SerializedName("remoteSliceID") private final long remoteSliceID;
     @SerializedName("remoteVolumeName") private final String remoteVolumeName;
     @SerializedName("volumePairUUID") private final String volumePairUUID;
     @SerializedName("remoteReplication") private final RemoteReplication remoteReplication;
@@ -60,7 +60,7 @@ public class VolumePair implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public VolumePair(Long clusterPairID, Long remoteVolumeID, Long remoteSliceID, String remoteVolumeName, String volumePairUUID, RemoteReplication remoteReplication) {
+    public VolumePair(long clusterPairID, long remoteVolumeID, long remoteSliceID, String remoteVolumeName, String volumePairUUID, RemoteReplication remoteReplication) {
         this.clusterPairID = clusterPairID;
         this.remoteVolumeName = remoteVolumeName;
         this.remoteVolumeID = remoteVolumeID;
@@ -73,21 +73,21 @@ public class VolumePair implements Serializable {
     /**
      * The remote cluster a volume is paired with.
      **/
-    public Long getClusterPairID() {
+    public long getClusterPairID() {
         return this.clusterPairID;
     }
 
     /**
      * The VolumeID on the remote cluster a volume is paired with.
      **/
-    public Long getRemoteVolumeID() {
+    public long getRemoteVolumeID() {
         return this.remoteVolumeID;
     }
 
     /**
      * The SliceID on the remote cluster a volume is paired with.
      **/
-    public Long getRemoteSliceID() {
+    public long getRemoteSliceID() {
         return this.remoteSliceID;
     }
 

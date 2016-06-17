@@ -41,7 +41,7 @@ public class AddVirtualNetworkResult implements Serializable {
 
     private static final long serialVersionUID = 542643154L;
 
-    @SerializedName("virtualNetworkID") private final Long virtualNetworkID;
+    @SerializedName("virtualNetworkID") private final long virtualNetworkID;
 
     /**
      * The object returned by the "AddVirtualNetwork" API Service call.
@@ -49,7 +49,7 @@ public class AddVirtualNetworkResult implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public AddVirtualNetworkResult(Long virtualNetworkID) {
+    public AddVirtualNetworkResult(long virtualNetworkID) {
         this.virtualNetworkID = virtualNetworkID;
     }
 
@@ -57,7 +57,7 @@ public class AddVirtualNetworkResult implements Serializable {
     /**
      * The virtual network ID of the new virtual network.
      **/
-    public Long getVirtualNetworkID() {
+    public long getVirtualNetworkID() {
         return this.virtualNetworkID;
     }
 

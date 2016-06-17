@@ -41,7 +41,7 @@ public class SecureEraseDrivesRequest implements Serializable {
 
     private static final long serialVersionUID = -163907311L;
 
-    @SerializedName("drives") private final Long[] drives;
+    @SerializedName("drives") private final long[] drives;
 
     /**
      * The Request object for the "SecureEraseDrives" API Service call.
@@ -49,7 +49,7 @@ public class SecureEraseDrivesRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public SecureEraseDrivesRequest(Long[] drives) {
+    public SecureEraseDrivesRequest(long[] drives) {
         this.drives = drives;
     }
 
@@ -57,7 +57,7 @@ public class SecureEraseDrivesRequest implements Serializable {
     /**
      * List of driveIDs to secure erase.
      **/
-    public Long[] getDrives() {
+    public long[] getDrives() {
         return this.drives;
     }
 
@@ -101,7 +101,7 @@ public class SecureEraseDrivesRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long[] drives;
+        private long[] drives;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class SecureEraseDrivesRequest implements Serializable {
             return this;
         }
 
-        public SecureEraseDrivesRequest.Builder drives(final Long[] drives) {
+        public SecureEraseDrivesRequest.Builder drives(final long[] drives) {
             this.drives = drives;
             return this;
         }

@@ -41,7 +41,7 @@ public class CreateVolumeResult implements Serializable {
 
     private static final long serialVersionUID = 493758881L;
 
-    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("volumeID") private final long volumeID;
     @SerializedName("curve") private final Optional<Object> curve;
 
     /**
@@ -51,7 +51,7 @@ public class CreateVolumeResult implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public CreateVolumeResult(Long volumeID, Optional<Object> curve) {
+    public CreateVolumeResult(long volumeID, Optional<Object> curve) {
         this.volumeID = volumeID;
         this.curve = (curve == null) ? Optional.<Object>empty() : curve;
     }
@@ -60,7 +60,7 @@ public class CreateVolumeResult implements Serializable {
     /**
      * VolumeID for the newly created volume.
      **/
-    public Long getVolumeID() {
+    public long getVolumeID() {
         return this.volumeID;
     }
 

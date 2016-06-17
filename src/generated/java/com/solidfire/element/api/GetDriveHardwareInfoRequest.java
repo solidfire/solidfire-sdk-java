@@ -41,7 +41,7 @@ public class GetDriveHardwareInfoRequest implements Serializable {
 
     private static final long serialVersionUID = -1595816663L;
 
-    @SerializedName("driveID") private final Long driveID;
+    @SerializedName("driveID") private final long driveID;
 
     /**
      * The Request object for the "GetDriveHardwareInfo" API Service call.
@@ -49,7 +49,7 @@ public class GetDriveHardwareInfoRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public GetDriveHardwareInfoRequest(Long driveID) {
+    public GetDriveHardwareInfoRequest(long driveID) {
         this.driveID = driveID;
     }
 
@@ -57,7 +57,7 @@ public class GetDriveHardwareInfoRequest implements Serializable {
     /**
      * DriveID for the drive information requested. DriveIDs can be obtained via the &quot;ListDrives&quot; method.
      **/
-    public Long getDriveID() {
+    public long getDriveID() {
         return this.driveID;
     }
 
@@ -101,7 +101,7 @@ public class GetDriveHardwareInfoRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long driveID;
+        private long driveID;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class GetDriveHardwareInfoRequest implements Serializable {
             return this;
         }
 
-        public GetDriveHardwareInfoRequest.Builder driveID(final Long driveID) {
+        public GetDriveHardwareInfoRequest.Builder driveID(final long driveID) {
             this.driveID = driveID;
             return this;
         }

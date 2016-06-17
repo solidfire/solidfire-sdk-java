@@ -42,8 +42,8 @@ public class RemoteReplication implements Serializable {
     private static final long serialVersionUID = -1757227169L;
 
     @SerializedName("mode") private final String mode;
-    @SerializedName("pauseLimit") private final Long pauseLimit;
-    @SerializedName("remoteServiceID") private final Long remoteServiceID;
+    @SerializedName("pauseLimit") private final long pauseLimit;
+    @SerializedName("remoteServiceID") private final long remoteServiceID;
     @SerializedName("resumeDetails") private final String resumeDetails;
     @SerializedName("snapshotReplication") private final SnapshotReplication snapshotReplication;
     @SerializedName("state") private final String state;
@@ -61,7 +61,7 @@ public class RemoteReplication implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public RemoteReplication(String mode, Long pauseLimit, Long remoteServiceID, String resumeDetails, SnapshotReplication snapshotReplication, String state, String stateDetails) {
+    public RemoteReplication(String mode, long pauseLimit, long remoteServiceID, String resumeDetails, SnapshotReplication snapshotReplication, String state, String stateDetails) {
         this.snapshotReplication = snapshotReplication;
         this.state = state;
         this.stateDetails = stateDetails;
@@ -86,14 +86,14 @@ public class RemoteReplication implements Serializable {
     /**
      * The number of occurring write ops before auto-pausing, on a per volume pair level.
      **/
-    public Long getPauseLimit() {
+    public long getPauseLimit() {
         return this.pauseLimit;
     }
 
     /**
      * The remote slice service ID.
      **/
-    public Long getRemoteServiceID() {
+    public long getRemoteServiceID() {
         return this.remoteServiceID;
     }
 

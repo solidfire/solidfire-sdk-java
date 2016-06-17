@@ -42,7 +42,7 @@ public class StartClusterPairingResult implements Serializable {
     private static final long serialVersionUID = -1770259800L;
 
     @SerializedName("clusterPairingKey") private final String clusterPairingKey;
-    @SerializedName("clusterPairID") private final Long clusterPairID;
+    @SerializedName("clusterPairID") private final long clusterPairID;
 
     /**
      * The object returned by the "StartClusterPairing" API Service call.
@@ -51,7 +51,7 @@ public class StartClusterPairingResult implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public StartClusterPairingResult(String clusterPairingKey, Long clusterPairID) {
+    public StartClusterPairingResult(String clusterPairingKey, long clusterPairID) {
         this.clusterPairingKey = clusterPairingKey;
         this.clusterPairID = clusterPairID;
     }
@@ -67,7 +67,7 @@ public class StartClusterPairingResult implements Serializable {
     /**
      * Unique identifier for the cluster pair.
      **/
-    public Long getClusterPairID() {
+    public long getClusterPairID() {
         return this.clusterPairID;
     }
 

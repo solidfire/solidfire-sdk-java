@@ -41,7 +41,7 @@ public class RestoreDeletedVolumeRequest implements Serializable {
 
     private static final long serialVersionUID = -59905119L;
 
-    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("volumeID") private final long volumeID;
 
     /**
      * The Request object for the "RestoreDeletedVolume" API Service call.
@@ -49,7 +49,7 @@ public class RestoreDeletedVolumeRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public RestoreDeletedVolumeRequest(Long volumeID) {
+    public RestoreDeletedVolumeRequest(long volumeID) {
         this.volumeID = volumeID;
     }
 
@@ -57,7 +57,7 @@ public class RestoreDeletedVolumeRequest implements Serializable {
     /**
      * RestoreDeletedVolume
      **/
-    public Long getVolumeID() {
+    public long getVolumeID() {
         return this.volumeID;
     }
 
@@ -101,7 +101,7 @@ public class RestoreDeletedVolumeRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeID;
+        private long volumeID;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class RestoreDeletedVolumeRequest implements Serializable {
             return this;
         }
 
-        public RestoreDeletedVolumeRequest.Builder volumeID(final Long volumeID) {
+        public RestoreDeletedVolumeRequest.Builder volumeID(final long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

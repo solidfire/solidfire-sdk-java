@@ -41,7 +41,7 @@ public class GetDriveStatsRequest implements Serializable {
 
     private static final long serialVersionUID = -994402897L;
 
-    @SerializedName("driveID") private final Long driveID;
+    @SerializedName("driveID") private final long driveID;
 
     /**
      * The Request object for the "GetDriveStats" API Service call.
@@ -49,7 +49,7 @@ public class GetDriveStatsRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public GetDriveStatsRequest(Long driveID) {
+    public GetDriveStatsRequest(long driveID) {
         this.driveID = driveID;
     }
 
@@ -57,7 +57,7 @@ public class GetDriveStatsRequest implements Serializable {
     /**
      * Specifies the drive for which statistics are gathered.
      **/
-    public Long getDriveID() {
+    public long getDriveID() {
         return this.driveID;
     }
 
@@ -101,7 +101,7 @@ public class GetDriveStatsRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long driveID;
+        private long driveID;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class GetDriveStatsRequest implements Serializable {
             return this;
         }
 
-        public GetDriveStatsRequest.Builder driveID(final Long driveID) {
+        public GetDriveStatsRequest.Builder driveID(final long driveID) {
             this.driveID = driveID;
             return this;
         }

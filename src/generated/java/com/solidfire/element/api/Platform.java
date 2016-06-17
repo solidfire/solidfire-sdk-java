@@ -44,7 +44,7 @@ public class Platform implements Serializable {
     @SerializedName("nodeType") private final String nodeType;
     @SerializedName("chassisType") private final String chassisType;
     @SerializedName("cpuModel") private final String cpuModel;
-    @SerializedName("nodeMemoryGB") private final Long nodeMemoryGB;
+    @SerializedName("nodeMemoryGB") private final long nodeMemoryGB;
 
     /**
      * 
@@ -55,7 +55,7 @@ public class Platform implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public Platform(String nodeType, String chassisType, String cpuModel, Long nodeMemoryGB) {
+    public Platform(String nodeType, String chassisType, String cpuModel, long nodeMemoryGB) {
         this.nodeType = nodeType;
         this.chassisType = chassisType;
         this.cpuModel = cpuModel;
@@ -87,7 +87,7 @@ public class Platform implements Serializable {
     /**
      * The amount of memory on this platform in GiB.
      **/
-    public Long getNodeMemoryGB() {
+    public long getNodeMemoryGB() {
         return this.nodeMemoryGB;
     }
 

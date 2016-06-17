@@ -42,31 +42,31 @@ public class DriveHardware implements Serializable {
     private static final long serialVersionUID = -1165736218L;
 
     @SerializedName("canonicalName") private final String canonicalName;
-    @SerializedName("connected") private final Boolean connected;
-    @SerializedName("dev") private final Long dev;
+    @SerializedName("connected") private final boolean connected;
+    @SerializedName("dev") private final long dev;
     @SerializedName("devPath") private final String devPath;
     @SerializedName("driveType") private final String driveType;
-    @SerializedName("lifeRemainingPercent") private final Long lifeRemainingPercent;
-    @SerializedName("lifetimeReadBytes") private final Long lifetimeReadBytes;
-    @SerializedName("lifetimeWriteBytes") private final Long lifetimeWriteBytes;
+    @SerializedName("lifeRemainingPercent") private final long lifeRemainingPercent;
+    @SerializedName("lifetimeReadBytes") private final long lifetimeReadBytes;
+    @SerializedName("lifetimeWriteBytes") private final long lifetimeWriteBytes;
     @SerializedName("name") private final String name;
     @SerializedName("path") private final String path;
     @SerializedName("pathLink") private final String pathLink;
-    @SerializedName("powerOnHours") private final Long powerOnHours;
+    @SerializedName("powerOnHours") private final long powerOnHours;
     @SerializedName("product") private final String product;
-    @SerializedName("reallocatedSectors") private final Long reallocatedSectors;
-    @SerializedName("reserveCapacityPercent") private final Long reserveCapacityPercent;
+    @SerializedName("reallocatedSectors") private final long reallocatedSectors;
+    @SerializedName("reserveCapacityPercent") private final long reserveCapacityPercent;
     @SerializedName("scsiCompatId") private final String scsiCompatId;
     @SerializedName("scsiState") private final String scsiState;
-    @SerializedName("securityAtMaximum") private final Boolean securityAtMaximum;
-    @SerializedName("securityEnabled") private final Boolean securityEnabled;
-    @SerializedName("securityFrozen") private final Boolean securityFrozen;
-    @SerializedName("securityLocked") private final Boolean securityLocked;
-    @SerializedName("securitySupported") private final Boolean securitySupported;
+    @SerializedName("securityAtMaximum") private final boolean securityAtMaximum;
+    @SerializedName("securityEnabled") private final boolean securityEnabled;
+    @SerializedName("securityFrozen") private final boolean securityFrozen;
+    @SerializedName("securityLocked") private final boolean securityLocked;
+    @SerializedName("securitySupported") private final boolean securitySupported;
     @SerializedName("serial") private final String serial;
-    @SerializedName("size") private final Long size;
-    @SerializedName("slot") private final Long slot;
-    @SerializedName("smartSsdWriteCapable") private final Boolean smartSsdWriteCapable;
+    @SerializedName("size") private final long size;
+    @SerializedName("slot") private final long slot;
+    @SerializedName("smartSsdWriteCapable") private final boolean smartSsdWriteCapable;
     @SerializedName("uuid") private final String uuid;
     @SerializedName("vendor") private final String vendor;
     @SerializedName("version") private final String version;
@@ -105,7 +105,7 @@ public class DriveHardware implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public DriveHardware(String canonicalName, Boolean connected, Long dev, String devPath, String driveType, Long lifeRemainingPercent, Long lifetimeReadBytes, Long lifetimeWriteBytes, String name, String path, String pathLink, Long powerOnHours, String product, Long reallocatedSectors, Long reserveCapacityPercent, String scsiCompatId, String scsiState, Boolean securityAtMaximum, Boolean securityEnabled, Boolean securityFrozen, Boolean securityLocked, Boolean securitySupported, String serial, Long size, Long slot, Boolean smartSsdWriteCapable, String uuid, String vendor, String version) {
+    public DriveHardware(String canonicalName, boolean connected, long dev, String devPath, String driveType, long lifeRemainingPercent, long lifetimeReadBytes, long lifetimeWriteBytes, String name, String path, String pathLink, long powerOnHours, String product, long reallocatedSectors, long reserveCapacityPercent, String scsiCompatId, String scsiState, boolean securityAtMaximum, boolean securityEnabled, boolean securityFrozen, boolean securityLocked, boolean securitySupported, String serial, long size, long slot, boolean smartSsdWriteCapable, String uuid, String vendor, String version) {
         this.serial = serial;
         this.name = name;
         this.securityLocked = securityLocked;
@@ -140,10 +140,10 @@ public class DriveHardware implements Serializable {
     public String getCanonicalName() {
         return this.canonicalName;
     }
-    public Boolean getConnected() {
+    public boolean getConnected() {
         return this.connected;
     }
-    public Long getDev() {
+    public long getDev() {
         return this.dev;
     }
     public String getDevPath() {
@@ -152,13 +152,13 @@ public class DriveHardware implements Serializable {
     public String getDriveType() {
         return this.driveType;
     }
-    public Long getLifeRemainingPercent() {
+    public long getLifeRemainingPercent() {
         return this.lifeRemainingPercent;
     }
-    public Long getLifetimeReadBytes() {
+    public long getLifetimeReadBytes() {
         return this.lifetimeReadBytes;
     }
-    public Long getLifetimeWriteBytes() {
+    public long getLifetimeWriteBytes() {
         return this.lifetimeWriteBytes;
     }
     public String getName() {
@@ -170,16 +170,16 @@ public class DriveHardware implements Serializable {
     public String getPathLink() {
         return this.pathLink;
     }
-    public Long getPowerOnHours() {
+    public long getPowerOnHours() {
         return this.powerOnHours;
     }
     public String getProduct() {
         return this.product;
     }
-    public Long getReallocatedSectors() {
+    public long getReallocatedSectors() {
         return this.reallocatedSectors;
     }
-    public Long getReserveCapacityPercent() {
+    public long getReserveCapacityPercent() {
         return this.reserveCapacityPercent;
     }
     public String getScsiCompatId() {
@@ -188,31 +188,31 @@ public class DriveHardware implements Serializable {
     public String getScsiState() {
         return this.scsiState;
     }
-    public Boolean getSecurityAtMaximum() {
+    public boolean getSecurityAtMaximum() {
         return this.securityAtMaximum;
     }
-    public Boolean getSecurityEnabled() {
+    public boolean getSecurityEnabled() {
         return this.securityEnabled;
     }
-    public Boolean getSecurityFrozen() {
+    public boolean getSecurityFrozen() {
         return this.securityFrozen;
     }
-    public Boolean getSecurityLocked() {
+    public boolean getSecurityLocked() {
         return this.securityLocked;
     }
-    public Boolean getSecuritySupported() {
+    public boolean getSecuritySupported() {
         return this.securitySupported;
     }
     public String getSerial() {
         return this.serial;
     }
-    public Long getSize() {
+    public long getSize() {
         return this.size;
     }
-    public Long getSlot() {
+    public long getSlot() {
         return this.slot;
     }
-    public Boolean getSmartSsdWriteCapable() {
+    public boolean getSmartSsdWriteCapable() {
         return this.smartSsdWriteCapable;
     }
     public String getUuid() {

@@ -41,7 +41,7 @@ public class ModifyVolumeRequest implements Serializable {
 
     private static final long serialVersionUID = -947472426L;
 
-    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("volumeID") private final long volumeID;
     @SerializedName("accountID") private final Optional<Long> accountID;
     @SerializedName("access") private final Optional<String> access;
     @SerializedName("setCreateTime") private final Optional<String> setCreateTime;
@@ -61,7 +61,7 @@ public class ModifyVolumeRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeRequest(Long volumeID, Optional<Long> accountID, Optional<String> access, Optional<String> setCreateTime, Optional<QoS> qos, Optional<Long> totalSize, Optional<java.util.Map<String, Object>> attributes) {
+    public ModifyVolumeRequest(long volumeID, Optional<Long> accountID, Optional<String> access, Optional<String> setCreateTime, Optional<QoS> qos, Optional<Long> totalSize, Optional<java.util.Map<String, Object>> attributes) {
         this.setCreateTime = (setCreateTime == null) ? Optional.<String>empty() : setCreateTime;
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
@@ -75,7 +75,7 @@ public class ModifyVolumeRequest implements Serializable {
     /**
      * VolumeID for the volume to be modified.
      **/
-    public Long getVolumeID() {
+    public long getVolumeID() {
         return this.volumeID;
     }
 
@@ -188,7 +188,7 @@ public class ModifyVolumeRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeID;
+        private long volumeID;
         private Optional<Long> accountID;
         private Optional<String> access;
         private Optional<String> setCreateTime;
@@ -221,7 +221,7 @@ public class ModifyVolumeRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumeRequest.Builder volumeID(final Long volumeID) {
+        public ModifyVolumeRequest.Builder volumeID(final long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

@@ -45,12 +45,12 @@ public class ClusterInfo implements Serializable {
     @SerializedName("encryptionAtRestState") private final String encryptionAtRestState;
     @SerializedName("ensemble") private final String[] ensemble;
     @SerializedName("mvip") private final String mvip;
-    @SerializedName("mvipNodeID") private final Long mvipNodeID;
+    @SerializedName("mvipNodeID") private final long mvipNodeID;
     @SerializedName("name") private final String name;
-    @SerializedName("repCount") private final Long repCount;
+    @SerializedName("repCount") private final long repCount;
     @SerializedName("state") private final String state;
     @SerializedName("svip") private final String svip;
-    @SerializedName("svipNodeID") private final Long svipNodeID;
+    @SerializedName("svipNodeID") private final long svipNodeID;
     @SerializedName("uniqueID") private final String uniqueID;
     @SerializedName("uuid") private final String uuid;
 
@@ -71,7 +71,7 @@ public class ClusterInfo implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ClusterInfo(java.util.Map<String, Object> attributes, String encryptionAtRestState, String[] ensemble, String mvip, Long mvipNodeID, String name, Long repCount, String state, String svip, Long svipNodeID, String uniqueID, String uuid) {
+    public ClusterInfo(java.util.Map<String, Object> attributes, String encryptionAtRestState, String[] ensemble, String mvip, long mvipNodeID, String name, long repCount, String state, String svip, long svipNodeID, String uniqueID, String uuid) {
         this.name = name;
         this.state = state;
         this.uuid = uuid;
@@ -118,7 +118,7 @@ public class ClusterInfo implements Serializable {
     /**
      * Node holding the master MVIP address
      **/
-    public Long getMvipNodeID() {
+    public long getMvipNodeID() {
         return this.mvipNodeID;
     }
 
@@ -133,7 +133,7 @@ public class ClusterInfo implements Serializable {
      * Number of replicas of each piece of data to store in the cluster.
      * Valid value is 2
      **/
-    public Long getRepCount() {
+    public long getRepCount() {
         return this.repCount;
     }
     public String getState() {
@@ -150,7 +150,7 @@ public class ClusterInfo implements Serializable {
     /**
      * Node holding the master SVIP address.
      **/
-    public Long getSvipNodeID() {
+    public long getSvipNodeID() {
         return this.svipNodeID;
     }
 

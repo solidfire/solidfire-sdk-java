@@ -41,18 +41,18 @@ public class ISCSISession implements Serializable {
 
     private static final long serialVersionUID = 113665601L;
 
-    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("accountID") private final long accountID;
     @SerializedName("accountName") private final String accountName;
-    @SerializedName("driveID") private final Long driveID;
+    @SerializedName("driveID") private final long driveID;
     @SerializedName("initiatorIP") private final String initiatorIP;
     @SerializedName("initiatorName") private final String initiatorName;
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("serviceID") private final Long serviceID;
-    @SerializedName("sessionID") private final Long sessionID;
+    @SerializedName("nodeID") private final long nodeID;
+    @SerializedName("serviceID") private final long serviceID;
+    @SerializedName("sessionID") private final long sessionID;
     @SerializedName("targetName") private final String targetName;
     @SerializedName("targetIP") private final String targetIP;
     @SerializedName("virtualNetworkID") private final String virtualNetworkID;
-    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("volumeID") private final long volumeID;
 
     /**
      * 
@@ -71,7 +71,7 @@ public class ISCSISession implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ISCSISession(Long accountID, String accountName, Long driveID, String initiatorIP, String initiatorName, Long nodeID, Long serviceID, Long sessionID, String targetName, String targetIP, String virtualNetworkID, Long volumeID) {
+    public ISCSISession(long accountID, String accountName, long driveID, String initiatorIP, String initiatorName, long nodeID, long serviceID, long sessionID, String targetName, String targetIP, String virtualNetworkID, long volumeID) {
         this.accountName = accountName;
         this.initiatorIP = initiatorIP;
         this.virtualNetworkID = virtualNetworkID;
@@ -86,13 +86,13 @@ public class ISCSISession implements Serializable {
         this.serviceID = serviceID;
     }
 
-    public Long getAccountID() {
+    public long getAccountID() {
         return this.accountID;
     }
     public String getAccountName() {
         return this.accountName;
     }
-    public Long getDriveID() {
+    public long getDriveID() {
         return this.driveID;
     }
     public String getInitiatorIP() {
@@ -101,13 +101,13 @@ public class ISCSISession implements Serializable {
     public String getInitiatorName() {
         return this.initiatorName;
     }
-    public Long getNodeID() {
+    public long getNodeID() {
         return this.nodeID;
     }
-    public Long getServiceID() {
+    public long getServiceID() {
         return this.serviceID;
     }
-    public Long getSessionID() {
+    public long getSessionID() {
         return this.sessionID;
     }
     public String getTargetName() {
@@ -119,7 +119,7 @@ public class ISCSISession implements Serializable {
     public String getVirtualNetworkID() {
         return this.virtualNetworkID;
     }
-    public Long getVolumeID() {
+    public long getVolumeID() {
         return this.volumeID;
     }
 

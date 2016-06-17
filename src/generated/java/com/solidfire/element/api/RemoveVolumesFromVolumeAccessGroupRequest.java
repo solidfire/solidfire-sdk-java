@@ -41,8 +41,8 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
 
     private static final long serialVersionUID = -303109118L;
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
-    @SerializedName("volumes") private final Long[] volumes;
+    @SerializedName("volumeAccessGroupID") private final long volumeAccessGroupID;
+    @SerializedName("volumes") private final long[] volumes;
 
     /**
      * The Request object for the "RemoveVolumesFromVolumeAccessGroup" API Service call.
@@ -51,7 +51,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public RemoveVolumesFromVolumeAccessGroupRequest(Long volumeAccessGroupID, Long[] volumes) {
+    public RemoveVolumesFromVolumeAccessGroupRequest(long volumeAccessGroupID, long[] volumes) {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.volumes = volumes;
     }
@@ -60,14 +60,14 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
     /**
      * The ID of the volume access group to modify.
      **/
-    public Long getVolumeAccessGroupID() {
+    public long getVolumeAccessGroupID() {
         return this.volumeAccessGroupID;
     }
 
     /**
      * List of volumes to remove from this volume access group.
      **/
-    public Long[] getVolumes() {
+    public long[] getVolumes() {
         return this.volumes;
     }
 
@@ -113,8 +113,8 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeAccessGroupID;
-        private Long[] volumes;
+        private long volumeAccessGroupID;
+        private long[] volumes;
 
         private Builder() { }
 
@@ -131,12 +131,12 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public RemoveVolumesFromVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
+        public RemoveVolumesFromVolumeAccessGroupRequest.Builder volumeAccessGroupID(final long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }
 
-        public RemoveVolumesFromVolumeAccessGroupRequest.Builder volumes(final Long[] volumes) {
+        public RemoveVolumesFromVolumeAccessGroupRequest.Builder volumes(final long[] volumes) {
             this.volumes = volumes;
             return this;
         }

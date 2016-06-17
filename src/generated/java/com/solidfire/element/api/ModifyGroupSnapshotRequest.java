@@ -41,7 +41,7 @@ public class ModifyGroupSnapshotRequest implements Serializable {
 
     private static final long serialVersionUID = 1879064500L;
 
-    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
+    @SerializedName("groupSnapshotID") private final long groupSnapshotID;
     @SerializedName("expirationTime") private final Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private final Optional<Boolean> enableRemoteReplication;
 
@@ -53,7 +53,7 @@ public class ModifyGroupSnapshotRequest implements Serializable {
      * @since 8.0
      **/
     @Since("8.0")
-    public ModifyGroupSnapshotRequest(Long groupSnapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication) {
+    public ModifyGroupSnapshotRequest(long groupSnapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication) {
         this.groupSnapshotID = groupSnapshotID;
         this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
@@ -63,7 +63,7 @@ public class ModifyGroupSnapshotRequest implements Serializable {
     /**
      * ID of the snapshot.
      **/
-    public Long getGroupSnapshotID() {
+    public long getGroupSnapshotID() {
         return this.groupSnapshotID;
     }
 
@@ -130,7 +130,7 @@ public class ModifyGroupSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long groupSnapshotID;
+        private long groupSnapshotID;
         private Optional<String> expirationTime;
         private Optional<Boolean> enableRemoteReplication;
 
@@ -151,7 +151,7 @@ public class ModifyGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public ModifyGroupSnapshotRequest.Builder groupSnapshotID(final Long groupSnapshotID) {
+        public ModifyGroupSnapshotRequest.Builder groupSnapshotID(final long groupSnapshotID) {
             this.groupSnapshotID = groupSnapshotID;
             return this;
         }

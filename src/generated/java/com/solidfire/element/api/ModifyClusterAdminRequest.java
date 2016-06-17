@@ -41,7 +41,7 @@ public class ModifyClusterAdminRequest implements Serializable {
 
     private static final long serialVersionUID = -1663388854L;
 
-    @SerializedName("clusterAdminID") private final Long clusterAdminID;
+    @SerializedName("clusterAdminID") private final long clusterAdminID;
     @SerializedName("password") private final Optional<String> password;
     @SerializedName("access") private final Optional<String[]> access;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
@@ -55,7 +55,7 @@ public class ModifyClusterAdminRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyClusterAdminRequest(Long clusterAdminID, Optional<String> password, Optional<String[]> access, Optional<java.util.Map<String, Object>> attributes) {
+    public ModifyClusterAdminRequest(long clusterAdminID, Optional<String> password, Optional<String[]> access, Optional<java.util.Map<String, Object>> attributes) {
         this.clusterAdminID = clusterAdminID;
         this.password = (password == null) ? Optional.<String>empty() : password;
         this.access = (access == null) ? Optional.<String[]>empty() : access;
@@ -66,7 +66,7 @@ public class ModifyClusterAdminRequest implements Serializable {
     /**
      * ClusterAdminID for the Cluster Admin or LDAP Cluster Admin to modify.
      **/
-    public Long getClusterAdminID() {
+    public long getClusterAdminID() {
         return this.clusterAdminID;
     }
 
@@ -140,7 +140,7 @@ public class ModifyClusterAdminRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long clusterAdminID;
+        private long clusterAdminID;
         private Optional<String> password;
         private Optional<String[]> access;
         private Optional<java.util.Map<String, Object>> attributes;
@@ -164,7 +164,7 @@ public class ModifyClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder clusterAdminID(final Long clusterAdminID) {
+        public ModifyClusterAdminRequest.Builder clusterAdminID(final long clusterAdminID) {
             this.clusterAdminID = clusterAdminID;
             return this;
         }

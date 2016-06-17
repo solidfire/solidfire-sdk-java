@@ -41,9 +41,9 @@ public class RollbackToSnapshotRequest implements Serializable {
 
     private static final long serialVersionUID = -517674510L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("snapshotID") private final Long snapshotID;
-    @SerializedName("saveCurrentState") private final Boolean saveCurrentState;
+    @SerializedName("volumeID") private final long volumeID;
+    @SerializedName("snapshotID") private final long snapshotID;
+    @SerializedName("saveCurrentState") private final boolean saveCurrentState;
     @SerializedName("name") private final Optional<String> name;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
@@ -57,7 +57,7 @@ public class RollbackToSnapshotRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public RollbackToSnapshotRequest(Long volumeID, Long snapshotID, Boolean saveCurrentState, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
+    public RollbackToSnapshotRequest(long volumeID, long snapshotID, boolean saveCurrentState, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
         this.saveCurrentState = saveCurrentState;
@@ -69,14 +69,14 @@ public class RollbackToSnapshotRequest implements Serializable {
     /**
      * VolumeID for the volume.
      **/
-    public Long getVolumeID() {
+    public long getVolumeID() {
         return this.volumeID;
     }
 
     /**
      * ID of a previously created snapshot on the given volume.
      **/
-    public Long getSnapshotID() {
+    public long getSnapshotID() {
         return this.snapshotID;
     }
 
@@ -84,7 +84,7 @@ public class RollbackToSnapshotRequest implements Serializable {
      * <br/><b>true</b>: The previous active volume image is kept.
      * <br/><b>false</b>: (default) The previous active volume image is deleted.
      **/
-    public Boolean getSaveCurrentState() {
+    public boolean getSaveCurrentState() {
         return this.saveCurrentState;
     }
 
@@ -153,9 +153,9 @@ public class RollbackToSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeID;
-        private Long snapshotID;
-        private Boolean saveCurrentState;
+        private long volumeID;
+        private long snapshotID;
+        private boolean saveCurrentState;
         private Optional<String> name;
         private Optional<java.util.Map<String, Object>> attributes;
 
@@ -180,17 +180,17 @@ public class RollbackToSnapshotRequest implements Serializable {
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder volumeID(final Long volumeID) {
+        public RollbackToSnapshotRequest.Builder volumeID(final long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder snapshotID(final Long snapshotID) {
+        public RollbackToSnapshotRequest.Builder snapshotID(final long snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder saveCurrentState(final Boolean saveCurrentState) {
+        public RollbackToSnapshotRequest.Builder saveCurrentState(final boolean saveCurrentState) {
             this.saveCurrentState = saveCurrentState;
             return this;
         }

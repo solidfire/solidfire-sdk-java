@@ -41,10 +41,10 @@ public class VolumeQOS implements Serializable {
 
     private static final long serialVersionUID = 881549954L;
 
-    @SerializedName("minIOPS") private final Long minIOPS;
-    @SerializedName("maxIOPS") private final Long maxIOPS;
-    @SerializedName("burstIOPS") private final Long burstIOPS;
-    @SerializedName("burstTime") private final Long burstTime;
+    @SerializedName("minIOPS") private final long minIOPS;
+    @SerializedName("maxIOPS") private final long maxIOPS;
+    @SerializedName("burstIOPS") private final long burstIOPS;
+    @SerializedName("burstTime") private final long burstTime;
     @SerializedName("curve") private final Object curve;
 
     /**
@@ -57,7 +57,7 @@ public class VolumeQOS implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public VolumeQOS(Long minIOPS, Long maxIOPS, Long burstIOPS, Long burstTime, Object curve) {
+    public VolumeQOS(long minIOPS, long maxIOPS, long burstIOPS, long burstTime, Object curve) {
         this.curve = curve;
         this.burstIOPS = burstIOPS;
         this.burstTime = burstTime;
@@ -71,14 +71,14 @@ public class VolumeQOS implements Serializable {
      * The allowed IOPS will only drop below this level if all volumes have been capped
      * at their min IOPS value and there is still insufficient performance capacity.
      **/
-    public Long getMinIOPS() {
+    public long getMinIOPS() {
         return this.minIOPS;
     }
 
     /**
      * Desired maximum 4KB IOPS allowed over an extended period of time.
      **/
-    public Long getMaxIOPS() {
+    public long getMaxIOPS() {
         return this.maxIOPS;
     }
 
@@ -86,7 +86,7 @@ public class VolumeQOS implements Serializable {
      * Maximum &quot;peak&quot; 4KB IOPS allowed for short periods of time.
      * Allows for bursts of I/O activity over the normal max IOPS value.
      **/
-    public Long getBurstIOPS() {
+    public long getBurstIOPS() {
         return this.burstIOPS;
     }
 
@@ -95,7 +95,7 @@ public class VolumeQOS implements Serializable {
      * The value returned is represented in time units of seconds.
      * <br/><b>Note</b>: this value is calculated by the system based on IOPS set for QoS.
      **/
-    public Long getBurstTime() {
+    public long getBurstTime() {
         return this.burstTime;
     }
 
