@@ -35,33 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * The Request object for the "GetNodeStats" API Service call.
  **/
-public class ModifyVolumeResult implements Serializable {
+public class GetNodeStatsRequest implements Serializable {
 
-    private static final long serialVersionUID = 1071511843L;
+    private static final long serialVersionUID = -721632605L;
 
-    @SerializedName("curve") private final Optional<java.util.Map<String, Object>> curve;
+    @SerializedName("nodeID") private final long nodeID;
 
     /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param curve (optional) The curve is a set of key-value pairs.
+     * The Request object for the "GetNodeStats" API Service call.
+     * @param nodeID [required] Specifies the node for which statistics are gathered.
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(Optional<java.util.Map<String, Object>> curve) {
-        this.curve = (curve == null) ? Optional.<java.util.Map<String, Object>>empty() : curve;
+    public GetNodeStatsRequest(long nodeID) {
+        this.nodeID = nodeID;
     }
 
 
     /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
+     * Specifies the node for which statistics are gathered.
      **/
-    public Optional<java.util.Map<String, Object>> getCurve() {
-        return this.curve;
+    public long getNodeID() {
+        return this.nodeID;
     }
 
     @Override
@@ -69,15 +66,15 @@ public class ModifyVolumeResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
+        GetNodeStatsRequest that = (GetNodeStatsRequest) o;
         
 
-        return Objects.equals( curve , that.curve );
+        return Objects.equals( nodeID , that.nodeID );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( curve );
+        return Objects.hash( (Object) nodeID );
     }
 
 
@@ -86,8 +83,7 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != curve && curve.isPresent())
-            sb.append(" curve : ").append(curve.get());
+        sb.append(" nodeID : ").append(nodeID);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -95,4 +91,36 @@ public class ModifyVolumeResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private long nodeID;
+
+        private Builder() { }
+
+        public GetNodeStatsRequest build() {
+            return new GetNodeStatsRequest (
+                         this.nodeID            );
+        }
+
+        private GetNodeStatsRequest.Builder buildFrom(final GetNodeStatsRequest req) {
+            this.nodeID = req.nodeID;
+
+            return this;
+        }
+
+        public GetNodeStatsRequest.Builder nodeID(final long nodeID) {
+            this.nodeID = nodeID;
+            return this;
+        }
+
+    }
+
 }

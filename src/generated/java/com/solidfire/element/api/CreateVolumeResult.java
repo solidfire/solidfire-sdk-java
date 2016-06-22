@@ -42,7 +42,7 @@ public class CreateVolumeResult implements Serializable {
     private static final long serialVersionUID = 493758881L;
 
     @SerializedName("volumeID") private final long volumeID;
-    @SerializedName("curve") private final Optional<Object> curve;
+    @SerializedName("curve") private final Optional<java.util.Map<String, Object>> curve;
 
     /**
      * The object returned by the "CreateVolume" API Service call.
@@ -51,9 +51,9 @@ public class CreateVolumeResult implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public CreateVolumeResult(long volumeID, Optional<Object> curve) {
+    public CreateVolumeResult(long volumeID, Optional<java.util.Map<String, Object>> curve) {
         this.volumeID = volumeID;
-        this.curve = (curve == null) ? Optional.<Object>empty() : curve;
+        this.curve = (curve == null) ? Optional.<java.util.Map<String, Object>>empty() : curve;
     }
 
 
@@ -70,7 +70,7 @@ public class CreateVolumeResult implements Serializable {
      * The values represent the cost performing an IOP at a specific I/O size.
      * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
      **/
-    public Optional<Object> getCurve() {
+    public Optional<java.util.Map<String, Object>> getCurve() {
         return this.curve;
     }
 

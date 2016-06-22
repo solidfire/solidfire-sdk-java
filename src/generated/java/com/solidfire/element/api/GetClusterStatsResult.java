@@ -35,33 +35,26 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * The object returned by the "GetClusterStats" API Service call.
  **/
-public class ModifyVolumeResult implements Serializable {
+public class GetClusterStatsResult implements Serializable {
 
-    private static final long serialVersionUID = 1071511843L;
+    private static final long serialVersionUID = -1994524354L;
 
-    @SerializedName("curve") private final Optional<java.util.Map<String, Object>> curve;
+    @SerializedName("clusterStats") private final ClusterStats clusterStats;
 
     /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param curve (optional) The curve is a set of key-value pairs.
+     * The object returned by the "GetClusterStats" API Service call.
+     * @param clusterStats [required] 
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(Optional<java.util.Map<String, Object>> curve) {
-        this.curve = (curve == null) ? Optional.<java.util.Map<String, Object>>empty() : curve;
+    public GetClusterStatsResult(ClusterStats clusterStats) {
+        this.clusterStats = clusterStats;
     }
 
-
-    /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
-     **/
-    public Optional<java.util.Map<String, Object>> getCurve() {
-        return this.curve;
+    public ClusterStats getClusterStats() {
+        return this.clusterStats;
     }
 
     @Override
@@ -69,15 +62,15 @@ public class ModifyVolumeResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
+        GetClusterStatsResult that = (GetClusterStatsResult) o;
         
 
-        return Objects.equals( curve , that.curve );
+        return Objects.equals( clusterStats , that.clusterStats );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( curve );
+        return Objects.hash( (Object) clusterStats );
     }
 
 
@@ -86,8 +79,7 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != curve && curve.isPresent())
-            sb.append(" curve : ").append(curve.get());
+        sb.append(" clusterStats : ").append(clusterStats);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

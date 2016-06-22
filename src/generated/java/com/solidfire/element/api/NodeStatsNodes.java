@@ -35,33 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * 
  **/
-public class ModifyVolumeResult implements Serializable {
+public class NodeStatsNodes implements Serializable {
 
-    private static final long serialVersionUID = 1071511843L;
+    private static final long serialVersionUID = -975829594L;
 
-    @SerializedName("curve") private final Optional<java.util.Map<String, Object>> curve;
+    @SerializedName("nodes") private final NodeStatsInfo[] nodes;
 
     /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param curve (optional) The curve is a set of key-value pairs.
+     * 
+     * @param nodes [required] Node activity information for a single node.
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(Optional<java.util.Map<String, Object>> curve) {
-        this.curve = (curve == null) ? Optional.<java.util.Map<String, Object>>empty() : curve;
+    public NodeStatsNodes(NodeStatsInfo[] nodes) {
+        this.nodes = nodes;
     }
 
 
     /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
+     * Node activity information for a single node.
      **/
-    public Optional<java.util.Map<String, Object>> getCurve() {
-        return this.curve;
+    public NodeStatsInfo[] getNodes() {
+        return this.nodes;
     }
 
     @Override
@@ -69,15 +66,15 @@ public class ModifyVolumeResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
+        NodeStatsNodes that = (NodeStatsNodes) o;
         
 
-        return Objects.equals( curve , that.curve );
+        return Objects.deepEquals( nodes , that.nodes );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( curve );
+        return Objects.hash( (Object) nodes );
     }
 
 
@@ -86,8 +83,7 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != curve && curve.isPresent())
-            sb.append(" curve : ").append(curve.get());
+        sb.append(" nodes : ").append(Arrays.toString(nodes));
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -35,56 +35,34 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "TestDrives" API Service call.
+ * The Request object for the "ListSchedules" API Service call.
  **/
-public class TestDrivesResult implements Serializable {
+public class ListSchedulesRequest implements Serializable {
 
-    private static final long serialVersionUID = -819399555L;
+    private static final long serialVersionUID = -43039686L;
 
-    @SerializedName("details") private final String details;
 
     /**
-     * The object returned by the "TestDrives" API Service call.
-     * @param details [required] 
-     * @since 7.0
+     * The Request object for the "ListSchedules" API Service call.
+     * @since 8.0
      **/
-    @Since("7.0")
-    public TestDrivesResult(String details) {
-        this.details = details;
+    @Since("8.0")
+    public ListSchedulesRequest() {
+
     }
 
-    public String getDetails() {
-        return this.details;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TestDrivesResult that = (TestDrivesResult) o;
-        
-
-        return Objects.equals( details , that.details );
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) details );
+        return this.getClass().hashCode();
     }
 
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append( "{ " );
-
-        sb.append(" details : ").append(details);
-        sb.append( " }" );
-
-        if(sb.lastIndexOf(", }") != -1)
-            sb.deleteCharAt(sb.lastIndexOf(", }"));
-
-        return sb.toString();
-    }
 }

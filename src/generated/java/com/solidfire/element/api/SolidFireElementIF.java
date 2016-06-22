@@ -156,6 +156,27 @@ public interface SolidFireElementIF {
     RemoveAccountResult removeAccount(long accountID);
 
     /**
+     * GetAccountEfficiency is used to retrieve information about a volume account. Only the account given as a parameter in this API method is used to compute the capacity.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetAccountEfficiencyRequest 
+     *  
+     * @return the response
+     **/
+    GetEfficiencyResult getAccountEfficiency(final GetAccountEfficiencyRequest request);
+
+
+    /**
+     * Convenience method for getAccountEfficiency 
+     *  
+     * @param accountID Specifies the volume account for which capacity is computed.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getAccountEfficiency(GetAccountEfficiencyRequest) 
+     **/
+    GetEfficiencyResult getAccountEfficiency(long accountID, Optional<Boolean> force);
+
+    /**
      * Return the high-level capacity measurements for an entire cluster.
      * The fields returned from this method can be used to calculate the efficiency rates that are displayed in the Element User Interface.
      *  
@@ -333,6 +354,24 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#modifyClusterFullThreshold(ModifyClusterFullThresholdRequest) 
      **/
     ModifyClusterFullThresholdResult modifyClusterFullThreshold(Optional<Long> stage2AwareThreshold, Optional<Long> stage3BlockThresholdPercent, Optional<Long> maxMetadataOverProvisionFactor);
+
+    /**
+     * GetClusterStats is used to return high-level activity measurements for the cluster. Values returned are cumulative from the creation of the cluster.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetClusterStatsRequest 
+     *  
+     * @return the response
+     **/
+    GetClusterStatsResult getClusterStats(final GetClusterStatsRequest request);
+
+
+    /**
+     * Convenience method for getClusterStats 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getClusterStats(GetClusterStatsRequest) 
+     **/
+    GetClusterStatsResult getClusterStats();
 
     /**
      * ListClusterAdmins returns the list of all cluster administrators for the cluster. There can be several cluster administrators that have different levels of permissions. There can be only one primary cluster administrator in the system. The primary Cluster Admin is the administrator that was created when the cluster was created. LDAP administrators can also be created when setting up an LDAP system on the cluster.
@@ -915,6 +954,45 @@ public interface SolidFireElementIF {
     GetConfigResult getConfig();
 
     /**
+     * GetNodeStats is used to return the high-level activity measurements for a single node.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetNodeStatsRequest 
+     *  
+     * @return the response
+     **/
+    GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request);
+
+
+    /**
+     * Convenience method for getNodeStats 
+     *  
+     * @param nodeID Specifies the node for which statistics are gathered.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getNodeStats(GetNodeStatsRequest) 
+     **/
+    GetNodeStatsResult getNodeStats(long nodeID);
+
+    /**
+     * ListNodeStats is used to return the high-level activity measurements for all nodes in a cluster.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListNodeStatsRequest 
+     *  
+     * @return the response
+     **/
+    ListNodeStatsResult listNodeStats(final ListNodeStatsRequest request);
+
+
+    /**
+     * Convenience method for listNodeStats 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listNodeStats(ListNodeStatsRequest) 
+     **/
+    ListNodeStatsResult listNodeStats();
+
+    /**
      * ListClusterPairs allows you to list all of the clusters a cluster is paired with.
      * This method returns information about active and pending cluster pairings, such as statistics about the current pairing as well as the connectivity and latency (in milliseconds) of the cluster pairing.
      *  
@@ -1208,6 +1286,79 @@ public interface SolidFireElementIF {
      **/
     @Since("7.0")
     CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request);
+
+    /**
+     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetScheduleRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    GetScheduleResult getSchedule(final GetScheduleRequest request);
+
+
+    /**
+     * Convenience method for getSchedule 
+     *  
+     * @param scheduleID Unique ID of the schedule or multiple schedules to display
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getSchedule(GetScheduleRequest) 
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    GetScheduleResult getSchedule(long scheduleID);
+
+    /**
+     * ListSchedule is used to return information about all scheduled snapshots that have been created.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListSchedulesRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    ListSchedulesResult listSchedules(final ListSchedulesRequest request);
+
+
+    /**
+     * Convenience method for listSchedules 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listSchedules(ListSchedulesRequest) 
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    ListSchedulesResult listSchedules();
+
+    /**
+     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.<br/>
+     * <br/>
+     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. <br/>
+     * <br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+     *  
+     * @param request The request @see com.solidfire.element.api.CreateScheduleRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    CreateScheduleResult createSchedule(final CreateScheduleRequest request);
+
+    /**
+     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.<br/>
+     *  
+     * @param request The request @see com.solidfire.element.api.ModifyScheduleRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request);
 
     /**
      * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
@@ -1776,5 +1927,26 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#removeVolumesFromVolumeAccessGroup(RemoveVolumesFromVolumeAccessGroupRequest) 
      **/
     ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(long volumeAccessGroupID, long[] volumes);
+
+    /**
+     * GetVolumeAccessGroupEfficiency is used to retrieve efficiency information about a volume access group. Only the volume access group provided as parameters in this API method is used to compute the capacity.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetVolumeAccessGroupEfficiencyRequest 
+     *  
+     * @return the response
+     **/
+    GetEfficiencyResult getVolumeAccessGroupEfficiency(final GetVolumeAccessGroupEfficiencyRequest request);
+
+
+    /**
+     * Convenience method for getVolumeAccessGroupEfficiency 
+     *  
+     * @param volumeAccessGroupID Specifies the volume access group for which capacity is computed.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getVolumeAccessGroupEfficiency(GetVolumeAccessGroupEfficiencyRequest) 
+     **/
+    GetEfficiencyResult getVolumeAccessGroupEfficiency(long volumeAccessGroupID);
 
 }

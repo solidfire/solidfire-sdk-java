@@ -53,7 +53,7 @@ public class ClusterFaultInfo implements Serializable {
     @SerializedName("clusterFaultID") private final long clusterFaultID;
     @SerializedName("date") private final String date;
     @SerializedName("resolvedDate") private final String resolvedDate;
-    @SerializedName("data") private final Object data;
+    @SerializedName("data") private final java.util.Map<String, Object> data;
 
     /**
      * 
@@ -73,7 +73,7 @@ public class ClusterFaultInfo implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ClusterFaultInfo(String severity, String type, String code, String details, long nodeHardwareFaultID, long nodeID, long serviceID, long driveID, boolean resolved, long clusterFaultID, String date, String resolvedDate, Object data) {
+    public ClusterFaultInfo(String severity, String type, String code, String details, long nodeHardwareFaultID, long nodeID, long serviceID, long driveID, boolean resolved, long clusterFaultID, String date, String resolvedDate, java.util.Map<String, Object> data) {
         this.clusterFaultID = clusterFaultID;
         this.nodeHardwareFaultID = nodeHardwareFaultID;
         this.data = data;
@@ -125,7 +125,7 @@ public class ClusterFaultInfo implements Serializable {
     public String getResolvedDate() {
         return this.resolvedDate;
     }
-    public Object getData() {
+    public java.util.Map<String, Object> getData() {
         return this.data;
     }
 

@@ -284,6 +284,17 @@ public class SolidFireElement
     }
 
     @Override
+    public GetEfficiencyResult getAccountEfficiency(final GetAccountEfficiencyRequest request) {
+        return super.sendRequest("GetAccountEfficiency", request, GetAccountEfficiencyRequest.class, GetEfficiencyResult.class );
+    }
+
+
+    @Override
+    public GetEfficiencyResult getAccountEfficiency(long accountID, Optional<Boolean> force) {
+        return this.getAccountEfficiency( new GetAccountEfficiencyRequest(accountID, force));
+    }
+
+    @Override
     public GetClusterCapacityResult getClusterCapacity(final GetClusterCapacityRequest request) {
         return super.sendRequest("GetClusterCapacity", request, GetClusterCapacityRequest.class, GetClusterCapacityResult.class );
     }
@@ -379,6 +390,17 @@ public class SolidFireElement
     @Override
     public ModifyClusterFullThresholdResult modifyClusterFullThreshold(Optional<Long> stage2AwareThreshold, @Since("8.0") Optional<Long> stage3BlockThresholdPercent, Optional<Long> maxMetadataOverProvisionFactor) {
         return this.modifyClusterFullThreshold( new ModifyClusterFullThresholdRequest(stage2AwareThreshold, stage3BlockThresholdPercent, maxMetadataOverProvisionFactor));
+    }
+
+    @Override
+    public GetClusterStatsResult getClusterStats(final GetClusterStatsRequest request) {
+        return super.sendRequest("GetClusterStats", request, GetClusterStatsRequest.class, GetClusterStatsResult.class );
+    }
+
+
+    @Override
+    public GetClusterStatsResult getClusterStats() {
+        return this.getClusterStats( new GetClusterStatsRequest());
     }
 
     @Override
@@ -678,6 +700,28 @@ public class SolidFireElement
     }
 
     @Override
+    public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request) {
+        return super.sendRequest("GetNodeStats", request, GetNodeStatsRequest.class, GetNodeStatsResult.class );
+    }
+
+
+    @Override
+    public GetNodeStatsResult getNodeStats(long nodeID) {
+        return this.getNodeStats( new GetNodeStatsRequest(nodeID));
+    }
+
+    @Override
+    public ListNodeStatsResult listNodeStats(final ListNodeStatsRequest request) {
+        return super.sendRequest("ListNodeStats", request, ListNodeStatsRequest.class, ListNodeStatsResult.class );
+    }
+
+
+    @Override
+    public ListNodeStatsResult listNodeStats() {
+        return this.listNodeStats( new ListNodeStatsRequest());
+    }
+
+    @Override
     public ListClusterPairsResult listClusterPairs(final ListClusterPairsRequest request) {
         return super.sendRequest("ListClusterPairs", request, ListClusterPairsRequest.class, ListClusterPairsResult.class );
     }
@@ -810,6 +854,44 @@ public class SolidFireElement
     @Since("7.0")
     public CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request) {
         return super.sendRequest("RollbackToGroupSnapshot", request, RollbackToGroupSnapshotRequest.class, CreateGroupSnapshotResult.class );
+    }
+
+    @Override
+    @Since("8.0")
+    public GetScheduleResult getSchedule(final GetScheduleRequest request) {
+        return super.sendRequest("GetSchedule", request, GetScheduleRequest.class, GetScheduleResult.class );
+    }
+
+
+    @Override
+    @Since("8.0")
+    public GetScheduleResult getSchedule(long scheduleID) {
+        return this.getSchedule( new GetScheduleRequest(scheduleID));
+    }
+
+    @Override
+    @Since("8.0")
+    public ListSchedulesResult listSchedules(final ListSchedulesRequest request) {
+        return super.sendRequest("ListSchedules", request, ListSchedulesRequest.class, ListSchedulesResult.class );
+    }
+
+
+    @Override
+    @Since("8.0")
+    public ListSchedulesResult listSchedules() {
+        return this.listSchedules( new ListSchedulesRequest());
+    }
+
+    @Override
+    @Since("8.0")
+    public CreateScheduleResult createSchedule(final CreateScheduleRequest request) {
+        return super.sendRequest("CreateSchedule", request, CreateScheduleRequest.class, CreateScheduleResult.class );
+    }
+
+    @Override
+    @Since("8.0")
+    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request) {
+        return super.sendRequest("ModifySchedule", request, ModifyScheduleRequest.class, ModifyScheduleResult.class );
     }
 
     @Override
@@ -1070,6 +1152,17 @@ public class SolidFireElement
     @Override
     public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(long volumeAccessGroupID, long[] volumes) {
         return this.removeVolumesFromVolumeAccessGroup( new RemoveVolumesFromVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
+    }
+
+    @Override
+    public GetEfficiencyResult getVolumeAccessGroupEfficiency(final GetVolumeAccessGroupEfficiencyRequest request) {
+        return super.sendRequest("GetVolumeAccessGroupEfficiency", request, GetVolumeAccessGroupEfficiencyRequest.class, GetEfficiencyResult.class );
+    }
+
+
+    @Override
+    public GetEfficiencyResult getVolumeAccessGroupEfficiency(long volumeAccessGroupID) {
+        return this.getVolumeAccessGroupEfficiency( new GetVolumeAccessGroupEfficiencyRequest(volumeAccessGroupID));
     }
 
 }

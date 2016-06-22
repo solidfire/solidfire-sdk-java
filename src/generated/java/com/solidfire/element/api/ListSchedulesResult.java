@@ -35,33 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * The object returned by the "ListSchedules" API Service call.
  **/
-public class ModifyVolumeResult implements Serializable {
+public class ListSchedulesResult implements Serializable {
 
-    private static final long serialVersionUID = 1071511843L;
+    private static final long serialVersionUID = -1882809253L;
 
-    @SerializedName("curve") private final Optional<java.util.Map<String, Object>> curve;
+    @SerializedName("schedules") private final Schedule[] schedules;
 
     /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param curve (optional) The curve is a set of key-value pairs.
+     * The object returned by the "ListSchedules" API Service call.
+     * @param schedules [required] The list of schedules currently on the cluster.
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(Optional<java.util.Map<String, Object>> curve) {
-        this.curve = (curve == null) ? Optional.<java.util.Map<String, Object>>empty() : curve;
+    public ListSchedulesResult(Schedule[] schedules) {
+        this.schedules = schedules;
     }
 
 
     /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
+     * The list of schedules currently on the cluster.
      **/
-    public Optional<java.util.Map<String, Object>> getCurve() {
-        return this.curve;
+    public Schedule[] getSchedules() {
+        return this.schedules;
     }
 
     @Override
@@ -69,15 +66,15 @@ public class ModifyVolumeResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
+        ListSchedulesResult that = (ListSchedulesResult) o;
         
 
-        return Objects.equals( curve , that.curve );
+        return Objects.deepEquals( schedules , that.schedules );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( curve );
+        return Objects.hash( (Object) schedules );
     }
 
 
@@ -86,8 +83,7 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != curve && curve.isPresent())
-            sb.append(" curve : ").append(curve.get());
+        sb.append(" schedules : ").append(Arrays.toString(schedules));
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class DriveHardware implements Serializable {
 
-    private static final long serialVersionUID = -1165736218L;
+    private static final long serialVersionUID = 604312258L;
 
     @SerializedName("canonicalName") private final String canonicalName;
     @SerializedName("connected") private final boolean connected;
@@ -66,7 +66,7 @@ public class DriveHardware implements Serializable {
     @SerializedName("serial") private final String serial;
     @SerializedName("size") private final long size;
     @SerializedName("slot") private final long slot;
-    @SerializedName("smartSsdWriteCapable") private final boolean smartSsdWriteCapable;
+    @SerializedName("smartSsdWriteCapable") private final Optional<Boolean> smartSsdWriteCapable;
     @SerializedName("uuid") private final String uuid;
     @SerializedName("vendor") private final String vendor;
     @SerializedName("version") private final String version;
@@ -98,14 +98,14 @@ public class DriveHardware implements Serializable {
      * @param serial [required] 
      * @param size [required] 
      * @param slot [required] 
-     * @param smartSsdWriteCapable [required] 
+     * @param smartSsdWriteCapable (optional) 
      * @param uuid [required] 
      * @param vendor [required] 
      * @param version [required] 
      * @since 7.0
      **/
     @Since("7.0")
-    public DriveHardware(String canonicalName, boolean connected, long dev, String devPath, String driveType, long lifeRemainingPercent, long lifetimeReadBytes, long lifetimeWriteBytes, String name, String path, String pathLink, long powerOnHours, String product, long reallocatedSectors, long reserveCapacityPercent, String scsiCompatId, String scsiState, boolean securityAtMaximum, boolean securityEnabled, boolean securityFrozen, boolean securityLocked, boolean securitySupported, String serial, long size, long slot, boolean smartSsdWriteCapable, String uuid, String vendor, String version) {
+    public DriveHardware(String canonicalName, boolean connected, long dev, String devPath, String driveType, long lifeRemainingPercent, long lifetimeReadBytes, long lifetimeWriteBytes, String name, String path, String pathLink, long powerOnHours, String product, long reallocatedSectors, long reserveCapacityPercent, String scsiCompatId, String scsiState, boolean securityAtMaximum, boolean securityEnabled, boolean securityFrozen, boolean securityLocked, boolean securitySupported, String serial, long size, long slot, Optional<Boolean> smartSsdWriteCapable, String uuid, String vendor, String version) {
         this.serial = serial;
         this.name = name;
         this.securityLocked = securityLocked;
@@ -126,7 +126,7 @@ public class DriveHardware implements Serializable {
         this.dev = dev;
         this.securityFrozen = securityFrozen;
         this.devPath = devPath;
-        this.smartSsdWriteCapable = smartSsdWriteCapable;
+        this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : smartSsdWriteCapable;
         this.connected = connected;
         this.reserveCapacityPercent = reserveCapacityPercent;
         this.vendor = vendor;
@@ -212,7 +212,7 @@ public class DriveHardware implements Serializable {
     public long getSlot() {
         return this.slot;
     }
-    public boolean getSmartSsdWriteCapable() {
+    public Optional<Boolean> getSmartSsdWriteCapable() {
         return this.smartSsdWriteCapable;
     }
     public String getUuid() {
@@ -300,7 +300,8 @@ public class DriveHardware implements Serializable {
         sb.append(" serial : ").append(serial).append(",");
         sb.append(" size : ").append(size).append(",");
         sb.append(" slot : ").append(slot).append(",");
-        sb.append(" smartSsdWriteCapable : ").append(smartSsdWriteCapable).append(",");
+        if(null != smartSsdWriteCapable && smartSsdWriteCapable.isPresent())
+            sb.append(" smartSsdWriteCapable : ").append(smartSsdWriteCapable.get()).append(",");
         sb.append(" uuid : ").append(uuid).append(",");
         sb.append(" vendor : ").append(vendor).append(",");
         sb.append(" version : ").append(version);
