@@ -41,8 +41,8 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
 
     private static final long serialVersionUID = -1610806504L;
 
-    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
-    @SerializedName("saveCurrentState") private final Boolean saveCurrentState;
+    @SerializedName("groupSnapshotID") private final long groupSnapshotID;
+    @SerializedName("saveCurrentState") private final boolean saveCurrentState;
     @SerializedName("name") private final Optional<String> name;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
@@ -55,7 +55,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public RollbackToGroupSnapshotRequest(Long groupSnapshotID, Boolean saveCurrentState, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
+    public RollbackToGroupSnapshotRequest(long groupSnapshotID, boolean saveCurrentState, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
         this.groupSnapshotID = groupSnapshotID;
         this.saveCurrentState = saveCurrentState;
         this.name = (name == null) ? Optional.<String>empty() : name;
@@ -66,7 +66,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
     /**
      * Unique ID of the group snapshot.
      **/
-    public Long getGroupSnapshotID() {
+    public long getGroupSnapshotID() {
         return this.groupSnapshotID;
     }
 
@@ -74,7 +74,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
      * <br/><b>true</b>: The previous active volume image is kept.
      * <br/><b>false</b>: (default) The previous active volume image is deleted.
      **/
-    public Boolean getSaveCurrentState() {
+    public boolean getSaveCurrentState() {
         return this.saveCurrentState;
     }
 
@@ -141,8 +141,8 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long groupSnapshotID;
-        private Boolean saveCurrentState;
+        private long groupSnapshotID;
+        private boolean saveCurrentState;
         private Optional<String> name;
         private Optional<java.util.Map<String, Object>> attributes;
 
@@ -165,12 +165,12 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public RollbackToGroupSnapshotRequest.Builder groupSnapshotID(final Long groupSnapshotID) {
+        public RollbackToGroupSnapshotRequest.Builder groupSnapshotID(final long groupSnapshotID) {
             this.groupSnapshotID = groupSnapshotID;
             return this;
         }
 
-        public RollbackToGroupSnapshotRequest.Builder saveCurrentState(final Boolean saveCurrentState) {
+        public RollbackToGroupSnapshotRequest.Builder saveCurrentState(final boolean saveCurrentState) {
             this.saveCurrentState = saveCurrentState;
             return this;
         }

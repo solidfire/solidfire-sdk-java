@@ -41,9 +41,9 @@ public class MetadataHosts implements Serializable {
 
     private static final long serialVersionUID = -1399906185L;
 
-    @SerializedName("deadSecondaries") private final Long[] deadSecondaries;
-    @SerializedName("liveSecondaries") private final Long[] liveSecondaries;
-    @SerializedName("primary") private final Long primary;
+    @SerializedName("deadSecondaries") private final long[] deadSecondaries;
+    @SerializedName("liveSecondaries") private final long[] liveSecondaries;
+    @SerializedName("primary") private final long primary;
 
     /**
      * The volume services on which the volume metadata resides.
@@ -53,7 +53,7 @@ public class MetadataHosts implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public MetadataHosts(Long[] deadSecondaries, Long[] liveSecondaries, Long primary) {
+    public MetadataHosts(long[] deadSecondaries, long[] liveSecondaries, long primary) {
         this.deadSecondaries = deadSecondaries;
         this.liveSecondaries = liveSecondaries;
         this.primary = primary;
@@ -63,21 +63,21 @@ public class MetadataHosts implements Serializable {
     /**
      * Secondary metadata (slice) services that are in a dead state.
      **/
-    public Long[] getDeadSecondaries() {
+    public long[] getDeadSecondaries() {
         return this.deadSecondaries;
     }
 
     /**
      * Secondary metadata (slice) services that are currently in a &quot;live&quot; state.
      **/
-    public Long[] getLiveSecondaries() {
+    public long[] getLiveSecondaries() {
         return this.liveSecondaries;
     }
 
     /**
      * The primary metadata (slice) services hosting the volume.
      **/
-    public Long getPrimary() {
+    public long getPrimary() {
         return this.primary;
     }
 

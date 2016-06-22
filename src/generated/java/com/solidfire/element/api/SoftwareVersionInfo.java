@@ -42,7 +42,7 @@ public class SoftwareVersionInfo implements Serializable {
     private static final long serialVersionUID = 394663535L;
 
     @SerializedName("currentVersion") private final String currentVersion;
-    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("nodeID") private final long nodeID;
     @SerializedName("packageName") private final String packageName;
     @SerializedName("pendingVersion") private final String pendingVersion;
     @SerializedName("startTime") private final String startTime;
@@ -57,7 +57,7 @@ public class SoftwareVersionInfo implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public SoftwareVersionInfo(String currentVersion, Long nodeID, String packageName, String pendingVersion, String startTime) {
+    public SoftwareVersionInfo(String currentVersion, long nodeID, String packageName, String pendingVersion, String startTime) {
         this.startTime = startTime;
         this.pendingVersion = pendingVersion;
         this.packageName = packageName;
@@ -68,7 +68,7 @@ public class SoftwareVersionInfo implements Serializable {
     public String getCurrentVersion() {
         return this.currentVersion;
     }
-    public Long getNodeID() {
+    public long getNodeID() {
         return this.nodeID;
     }
     public String getPackageName() {

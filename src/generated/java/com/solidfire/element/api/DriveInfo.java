@@ -41,11 +41,11 @@ public class DriveInfo implements Serializable {
 
     private static final long serialVersionUID = 1437117328L;
 
-    @SerializedName("capacity") private final Long capacity;
-    @SerializedName("driveID") private final Long driveID;
-    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("capacity") private final long capacity;
+    @SerializedName("driveID") private final long driveID;
+    @SerializedName("nodeID") private final long nodeID;
     @SerializedName("serial") private final String serial;
-    @SerializedName("slot") private final Long slot;
+    @SerializedName("slot") private final long slot;
     @SerializedName("status") private final String status;
     @SerializedName("type") private final String type;
     @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
@@ -63,7 +63,7 @@ public class DriveInfo implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public DriveInfo(Long capacity, Long driveID, Long nodeID, String serial, Long slot, String status, String type, java.util.Map<String, Object> attributes) {
+    public DriveInfo(long capacity, long driveID, long nodeID, String serial, long slot, String status, String type, java.util.Map<String, Object> attributes) {
         this.serial = serial;
         this.attributes = attributes;
         this.status = status;
@@ -78,21 +78,21 @@ public class DriveInfo implements Serializable {
     /**
      * Total capacity of the drive, in bytes.
      **/
-    public Long getCapacity() {
+    public long getCapacity() {
         return this.capacity;
     }
 
     /**
      * DriveID for this drive.
      **/
-    public Long getDriveID() {
+    public long getDriveID() {
         return this.driveID;
     }
 
     /**
      * NodeID where this drive is located.
      **/
-    public Long getNodeID() {
+    public long getNodeID() {
         return this.nodeID;
     }
 
@@ -106,7 +106,7 @@ public class DriveInfo implements Serializable {
     /**
      * Slot number in the server chassis where this drive is located, or -1 if SATADimm used for internal metadata drive.
      **/
-    public Long getSlot() {
+    public long getSlot() {
         return this.slot;
     }
     public String getStatus() {

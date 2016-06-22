@@ -41,7 +41,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
 
     private static final long serialVersionUID = -514075346L;
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private final long volumeAccessGroupID;
 
     /**
      * The object returned by the "CreateVolumeAccessGroup" API Service call.
@@ -49,7 +49,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public CreateVolumeAccessGroupResult(Long volumeAccessGroupID) {
+    public CreateVolumeAccessGroupResult(long volumeAccessGroupID) {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
@@ -57,7 +57,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
     /**
      * The ID for the newly-created volume access group.
      **/
-    public Long getVolumeAccessGroupID() {
+    public long getVolumeAccessGroupID() {
         return this.volumeAccessGroupID;
     }
 

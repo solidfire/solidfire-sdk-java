@@ -241,7 +241,7 @@ public class SolidFireElement
 
 
     @Override
-    public GetAccountResult getAccountByID(Long accountID) {
+    public GetAccountResult getAccountByID(long accountID) {
         return this.getAccountByID( new GetAccountByIDRequest(accountID));
     }
 
@@ -279,7 +279,7 @@ public class SolidFireElement
 
 
     @Override
-    public RemoveAccountResult removeAccount(Long accountID) {
+    public RemoveAccountResult removeAccount(long accountID) {
         return this.removeAccount( new RemoveAccountRequest(accountID));
     }
 
@@ -409,7 +409,7 @@ public class SolidFireElement
 
 
     @Override
-    public RemoveClusterAdminResult removeClusterAdmin(Long clusterAdminID) {
+    public RemoveClusterAdminResult removeClusterAdmin(long clusterAdminID) {
         return this.removeClusterAdmin( new RemoveClusterAdminRequest(clusterAdminID));
     }
 
@@ -475,7 +475,7 @@ public class SolidFireElement
 
 
     @Override
-    public GetAsyncResultResult getAsyncResult(Long asyncHandle) {
+    public GetAsyncResultResult getAsyncResult(long asyncHandle) {
         return this.getAsyncResult( new GetAsyncResultRequest(asyncHandle));
     }
 
@@ -508,7 +508,7 @@ public class SolidFireElement
 
 
     @Override
-    public GetDriveHardwareInfoResult getDriveHardwareInfo(Long driveID) {
+    public GetDriveHardwareInfoResult getDriveHardwareInfo(long driveID) {
         return this.getDriveHardwareInfo( new GetDriveHardwareInfoRequest(driveID));
     }
 
@@ -519,7 +519,7 @@ public class SolidFireElement
 
 
     @Override
-    public ListDriveHardwareResult listDriveHardware(Boolean force) {
+    public ListDriveHardwareResult listDriveHardware(boolean force) {
         return this.listDriveHardware( new ListDriveHardwareRequest(force));
     }
 
@@ -530,7 +530,7 @@ public class SolidFireElement
 
 
     @Override
-    public ResetDrivesResult resetDrives(String drives, Boolean force) {
+    public ResetDrivesResult resetDrives(String drives, boolean force) {
         return this.resetDrives( new ResetDrivesRequest(drives, force));
     }
 
@@ -541,7 +541,7 @@ public class SolidFireElement
 
 
     @Override
-    public TestDrivesResult testDrives(Optional<Long> minutes, Boolean force) {
+    public TestDrivesResult testDrives(Optional<Long> minutes, boolean force) {
         return this.testDrives( new TestDrivesRequest(minutes, force));
     }
 
@@ -552,7 +552,7 @@ public class SolidFireElement
 
 
     @Override
-    public GetDriveStatsResult getDriveStats(Long driveID) {
+    public GetDriveStatsResult getDriveStats(long driveID) {
         return this.getDriveStats( new GetDriveStatsRequest(driveID));
     }
 
@@ -563,7 +563,7 @@ public class SolidFireElement
 
 
     @Override
-    public AsyncHandleResult secureEraseDrives(Long[] drives) {
+    public AsyncHandleResult secureEraseDrives(long[] drives) {
         return this.secureEraseDrives( new SecureEraseDrivesRequest(drives));
     }
 
@@ -574,7 +574,7 @@ public class SolidFireElement
 
 
     @Override
-    public AsyncHandleResult removeDrives(Long[] drives) {
+    public AsyncHandleResult removeDrives(long[] drives) {
         return this.removeDrives( new RemoveDrivesRequest(drives));
     }
 
@@ -618,7 +618,7 @@ public class SolidFireElement
 
 
     @Override
-    public AddNodesResult addNodes(Long[] pendingNodes) {
+    public AddNodesResult addNodes(long[] pendingNodes) {
         return this.addNodes( new AddNodesRequest(pendingNodes));
     }
 
@@ -629,7 +629,7 @@ public class SolidFireElement
 
 
     @Override
-    public RemoveNodesResult removeNodes(Long[] nodes) {
+    public RemoveNodesResult removeNodes(long[] nodes) {
         return this.removeNodes( new RemoveNodesRequest(nodes));
     }
 
@@ -717,7 +717,7 @@ public class SolidFireElement
 
 
     @Override
-    public RemoveClusterPairResult removeClusterPair(Long clusterPairID) {
+    public RemoveClusterPairResult removeClusterPair(long clusterPairID) {
         return this.removeClusterPair( new RemoveClusterPairRequest(clusterPairID));
     }
 
@@ -733,7 +733,7 @@ public class SolidFireElement
 
 
     @Override
-    public DeleteSnapshotResult deleteSnapshot(Long snapshotID) {
+    public DeleteSnapshotResult deleteSnapshot(long snapshotID) {
         return this.deleteSnapshot( new DeleteSnapshotRequest(snapshotID));
     }
 
@@ -757,7 +757,7 @@ public class SolidFireElement
 
     @Override
     @Since("8.0")
-    public ModifySnapshotResult modifySnapshot(Long snapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication) {
+    public ModifySnapshotResult modifySnapshot(long snapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication) {
         return this.modifySnapshot( new ModifySnapshotRequest(snapshotID, expirationTime, enableRemoteReplication));
     }
 
@@ -778,7 +778,7 @@ public class SolidFireElement
 
 
     @Override
-    public DeleteGroupSnapshotResult deleteGroupSnapshot(Long groupSnapshotID, Boolean saveMembers) {
+    public DeleteGroupSnapshotResult deleteGroupSnapshot(long groupSnapshotID, boolean saveMembers) {
         return this.deleteGroupSnapshot( new DeleteGroupSnapshotRequest(groupSnapshotID, saveMembers));
     }
 
@@ -802,7 +802,7 @@ public class SolidFireElement
 
     @Override
     @Since("8.0")
-    public ModifyGroupSnapshotResult modifyGroupSnapshot(Long groupSnapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication) {
+    public ModifyGroupSnapshotResult modifyGroupSnapshot(long groupSnapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication) {
         return this.modifyGroupSnapshot( new ModifyGroupSnapshotRequest(groupSnapshotID, expirationTime, enableRemoteReplication));
     }
 
@@ -860,7 +860,7 @@ public class SolidFireElement
 
 
     @Override
-    public DeleteVolumeResult deleteVolume(Long volumeID) {
+    public DeleteVolumeResult deleteVolume(long volumeID) {
         return this.deleteVolume( new DeleteVolumeRequest(volumeID));
     }
 
@@ -871,7 +871,7 @@ public class SolidFireElement
 
 
     @Override
-    public GetVolumeStatsResult getVolumeStats(Long volumeID) {
+    public GetVolumeStatsResult getVolumeStats(long volumeID) {
         return this.getVolumeStats( new GetVolumeStatsRequest(volumeID));
     }
 
@@ -882,7 +882,7 @@ public class SolidFireElement
 
 
     @Override
-    public GetVolumeEfficiencyResult getVolumeEfficiency(Long volumeID, Optional<Boolean> force) {
+    public GetVolumeEfficiencyResult getVolumeEfficiency(long volumeID, Optional<Boolean> force) {
         return this.getVolumeEfficiency( new GetVolumeEfficiencyRequest(volumeID, force));
     }
 
@@ -932,7 +932,7 @@ public class SolidFireElement
 
 
     @Override
-    public ListVolumesForAccountResult listVolumesForAccount(Long accountID, Optional<Long> startVolumeID, Optional<Long> limit) {
+    public ListVolumesForAccountResult listVolumesForAccount(long accountID, Optional<Long> startVolumeID, Optional<Long> limit) {
         return this.listVolumesForAccount( new ListVolumesForAccountRequest(accountID, startVolumeID, limit));
     }
 
@@ -981,7 +981,7 @@ public class SolidFireElement
 
 
     @Override
-    public PurgeDeletedVolumeResult purgeDeletedVolume(Long volumeID) {
+    public PurgeDeletedVolumeResult purgeDeletedVolume(long volumeID) {
         return this.purgeDeletedVolume( new PurgeDeletedVolumeRequest(volumeID));
     }
 
@@ -992,7 +992,7 @@ public class SolidFireElement
 
 
     @Override
-    public RestoreDeletedVolumeResult restoreDeletedVolume(Long volumeID) {
+    public RestoreDeletedVolumeResult restoreDeletedVolume(long volumeID) {
         return this.restoreDeletedVolume( new RestoreDeletedVolumeRequest(volumeID));
     }
 
@@ -1019,7 +1019,7 @@ public class SolidFireElement
 
 
     @Override
-    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(Long volumeAccessGroupID) {
+    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(long volumeAccessGroupID) {
         return this.deleteVolumeAccessGroup( new DeleteVolumeAccessGroupRequest(volumeAccessGroupID));
     }
 
@@ -1035,7 +1035,7 @@ public class SolidFireElement
 
 
     @Override
-    public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(Long volumeAccessGroupID, String[] initiators) {
+    public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(long volumeAccessGroupID, String[] initiators) {
         return this.addInitiatorsToVolumeAccessGroup( new AddInitiatorsToVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
     }
 
@@ -1046,7 +1046,7 @@ public class SolidFireElement
 
 
     @Override
-    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(Long volumeAccessGroupID, String[] initiators) {
+    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(long volumeAccessGroupID, String[] initiators) {
         return this.removeInitiatorsFromVolumeAccessGroup( new RemoveInitiatorsFromVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
     }
 
@@ -1057,7 +1057,7 @@ public class SolidFireElement
 
 
     @Override
-    public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(Long volumeAccessGroupID, Long[] volumes) {
+    public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(long volumeAccessGroupID, long[] volumes) {
         return this.addVolumesToVolumeAccessGroup( new AddVolumesToVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
     }
 
@@ -1068,7 +1068,7 @@ public class SolidFireElement
 
 
     @Override
-    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(Long volumeAccessGroupID, Long[] volumes) {
+    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(long volumeAccessGroupID, long[] volumes) {
         return this.removeVolumesFromVolumeAccessGroup( new RemoveVolumesFromVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
     }
 

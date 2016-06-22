@@ -41,7 +41,7 @@ public class ListVolumesForAccountRequest implements Serializable {
 
     private static final long serialVersionUID = 1575937498L;
 
-    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("accountID") private final long accountID;
     @SerializedName("startVolumeID") private final Optional<Long> startVolumeID;
     @SerializedName("limit") private final Optional<Long> limit;
 
@@ -53,7 +53,7 @@ public class ListVolumesForAccountRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ListVolumesForAccountRequest(Long accountID, Optional<Long> startVolumeID, Optional<Long> limit) {
+    public ListVolumesForAccountRequest(long accountID, Optional<Long> startVolumeID, Optional<Long> limit) {
         this.accountID = accountID;
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
@@ -63,7 +63,7 @@ public class ListVolumesForAccountRequest implements Serializable {
     /**
      * The ID of the account to list the volumes for.
      **/
-    public Long getAccountID() {
+    public long getAccountID() {
         return this.accountID;
     }
 
@@ -129,7 +129,7 @@ public class ListVolumesForAccountRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long accountID;
+        private long accountID;
         private Optional<Long> startVolumeID;
         private Optional<Long> limit;
 
@@ -150,7 +150,7 @@ public class ListVolumesForAccountRequest implements Serializable {
             return this;
         }
 
-        public ListVolumesForAccountRequest.Builder accountID(final Long accountID) {
+        public ListVolumesForAccountRequest.Builder accountID(final long accountID) {
             this.accountID = accountID;
             return this;
         }

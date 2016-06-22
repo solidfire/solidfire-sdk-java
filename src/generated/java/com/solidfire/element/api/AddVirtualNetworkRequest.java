@@ -41,7 +41,7 @@ public class AddVirtualNetworkRequest implements Serializable {
 
     private static final long serialVersionUID = 1748913199L;
 
-    @SerializedName("virtualNetworkTag") private final Long virtualNetworkTag;
+    @SerializedName("virtualNetworkTag") private final long virtualNetworkTag;
     @SerializedName("name") private final String name;
     @SerializedName("addressBlocks") private final AddressBlock[] addressBlocks;
     @SerializedName("netmask") private final String netmask;
@@ -59,7 +59,7 @@ public class AddVirtualNetworkRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public AddVirtualNetworkRequest(Long virtualNetworkTag, String name, AddressBlock[] addressBlocks, String netmask, String svip, Optional<java.util.Map<String, Object>> attributes) {
+    public AddVirtualNetworkRequest(long virtualNetworkTag, String name, AddressBlock[] addressBlocks, String netmask, String svip, Optional<java.util.Map<String, Object>> attributes) {
         this.name = name;
         this.virtualNetworkTag = virtualNetworkTag;
         this.netmask = netmask;
@@ -72,7 +72,7 @@ public class AddVirtualNetworkRequest implements Serializable {
     /**
      * A unique virtual network (VLAN) tag. Supported values are 1 to 4095 (the number zero (0) is not supported).
      **/
-    public Long getVirtualNetworkTag() {
+    public long getVirtualNetworkTag() {
         return this.virtualNetworkTag;
     }
 
@@ -165,7 +165,7 @@ public class AddVirtualNetworkRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long virtualNetworkTag;
+        private long virtualNetworkTag;
         private String name;
         private AddressBlock[] addressBlocks;
         private String netmask;
@@ -195,7 +195,7 @@ public class AddVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public AddVirtualNetworkRequest.Builder virtualNetworkTag(final Long virtualNetworkTag) {
+        public AddVirtualNetworkRequest.Builder virtualNetworkTag(final long virtualNetworkTag) {
             this.virtualNetworkTag = virtualNetworkTag;
             return this;
         }

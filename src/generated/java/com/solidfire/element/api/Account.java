@@ -41,10 +41,10 @@ public class Account implements Serializable {
 
     private static final long serialVersionUID = -153016324L;
 
-    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("accountID") private final long accountID;
     @SerializedName("username") private final String username;
     @SerializedName("status") private final String status;
-    @SerializedName("volumes") private final Long[] volumes;
+    @SerializedName("volumes") private final long[] volumes;
     @SerializedName("initiatorSecret") private final Optional<String> initiatorSecret;
     @SerializedName("targetSecret") private final Optional<String> targetSecret;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
@@ -62,7 +62,7 @@ public class Account implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public Account(Long accountID, String username, String status, Long[] volumes, Optional<String> initiatorSecret, Optional<String> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
+    public Account(long accountID, String username, String status, long[] volumes, Optional<String> initiatorSecret, Optional<String> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : initiatorSecret;
         this.username = username;
         this.volumes = volumes;
@@ -76,7 +76,7 @@ public class Account implements Serializable {
     /**
      * Unique AccountID for the account.
      **/
-    public Long getAccountID() {
+    public long getAccountID() {
         return this.accountID;
     }
 
@@ -97,7 +97,7 @@ public class Account implements Serializable {
     /**
      * List of VolumeIDs for Volumes owned by this account.
      **/
-    public Long[] getVolumes() {
+    public long[] getVolumes() {
         return this.volumes;
     }
 

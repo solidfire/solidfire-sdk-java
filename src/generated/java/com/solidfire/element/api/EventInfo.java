@@ -41,13 +41,13 @@ public class EventInfo implements Serializable {
 
     private static final long serialVersionUID = 1733802303L;
 
-    @SerializedName("eventID") private final Long eventID;
-    @SerializedName("severity") private final Long severity;
+    @SerializedName("eventID") private final long eventID;
+    @SerializedName("severity") private final long severity;
     @SerializedName("eventInfoType") private final String eventInfoType;
     @SerializedName("message") private final String message;
-    @SerializedName("serviceID") private final Long serviceID;
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("driveID") private final Long driveID;
+    @SerializedName("serviceID") private final long serviceID;
+    @SerializedName("nodeID") private final long nodeID;
+    @SerializedName("driveID") private final long driveID;
     @SerializedName("timeOfReport") private final String timeOfReport;
     @SerializedName("timeOfPublish") private final String timeOfPublish;
     @SerializedName("details") private final Object details;
@@ -67,7 +67,7 @@ public class EventInfo implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public EventInfo(Long eventID, Long severity, String eventInfoType, String message, Long serviceID, Long nodeID, Long driveID, String timeOfReport, String timeOfPublish, Object details) {
+    public EventInfo(long eventID, long severity, String eventInfoType, String message, long serviceID, long nodeID, long driveID, String timeOfReport, String timeOfPublish, Object details) {
         this.eventID = eventID;
         this.timeOfReport = timeOfReport;
         this.details = details;
@@ -80,10 +80,10 @@ public class EventInfo implements Serializable {
         this.eventInfoType = eventInfoType;
     }
 
-    public Long getEventID() {
+    public long getEventID() {
         return this.eventID;
     }
-    public Long getSeverity() {
+    public long getSeverity() {
         return this.severity;
     }
     public String getEventInfoType() {
@@ -92,13 +92,13 @@ public class EventInfo implements Serializable {
     public String getMessage() {
         return this.message;
     }
-    public Long getServiceID() {
+    public long getServiceID() {
         return this.serviceID;
     }
-    public Long getNodeID() {
+    public long getNodeID() {
         return this.nodeID;
     }
-    public Long getDriveID() {
+    public long getDriveID() {
         return this.driveID;
     }
     public String getTimeOfReport() {

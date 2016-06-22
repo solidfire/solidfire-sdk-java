@@ -41,7 +41,7 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
 
     private static final long serialVersionUID = 1284793776L;
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private final long volumeAccessGroupID;
 
     /**
      * The Request object for the "DeleteVolumeAccessGroup" API Service call.
@@ -49,7 +49,7 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public DeleteVolumeAccessGroupRequest(Long volumeAccessGroupID) {
+    public DeleteVolumeAccessGroupRequest(long volumeAccessGroupID) {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
@@ -57,7 +57,7 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
     /**
      * The ID of the volume access group to delete.
      **/
-    public Long getVolumeAccessGroupID() {
+    public long getVolumeAccessGroupID() {
         return this.volumeAccessGroupID;
     }
 
@@ -101,7 +101,7 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeAccessGroupID;
+        private long volumeAccessGroupID;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public DeleteVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
+        public DeleteVolumeAccessGroupRequest.Builder volumeAccessGroupID(final long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }

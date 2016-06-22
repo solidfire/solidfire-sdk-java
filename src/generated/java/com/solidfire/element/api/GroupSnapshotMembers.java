@@ -41,8 +41,8 @@ public class GroupSnapshotMembers implements Serializable {
 
     private static final long serialVersionUID = -1007473247L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("snapshotID") private final Long snapshotID;
+    @SerializedName("volumeID") private final long volumeID;
+    @SerializedName("snapshotID") private final long snapshotID;
     @SerializedName("SnapshotUUID") private final String snapshotUUID;
     @SerializedName("checksum") private final String checksum;
 
@@ -54,7 +54,7 @@ public class GroupSnapshotMembers implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public GroupSnapshotMembers(Long volumeID, Long snapshotID, String checksum) {
+    public GroupSnapshotMembers(long volumeID, long snapshotID, String checksum) {
         this.volumeID = volumeID;
         this.snapshotID = snapshotID;
         this.snapshotUUID = null;
@@ -70,7 +70,7 @@ public class GroupSnapshotMembers implements Serializable {
      * @since 8.0
      **/
     @Since("8.0")
-    public GroupSnapshotMembers(Long volumeID, Long snapshotID, String snapshotUUID, String checksum) {
+    public GroupSnapshotMembers(long volumeID, long snapshotID, String snapshotUUID, String checksum) {
         this.volumeID = volumeID;
         this.snapshotID = snapshotID;
         this.snapshotUUID = snapshotUUID;
@@ -81,7 +81,7 @@ public class GroupSnapshotMembers implements Serializable {
     /**
      * The source volume ID for the snapshot.
      **/
-    public Long getVolumeID() {
+    public long getVolumeID() {
         return this.volumeID;
     }
 
@@ -89,7 +89,7 @@ public class GroupSnapshotMembers implements Serializable {
      * Unique ID of a snapshot from which the new snapshot is made.
      * The snapshotID passed must be a snapshot on the given volume.
      **/
-    public Long getSnapshotID() {
+    public long getSnapshotID() {
         return this.snapshotID;
     }
 

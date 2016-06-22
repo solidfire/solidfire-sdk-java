@@ -41,7 +41,7 @@ public class RemoveClusterPairRequest implements Serializable {
 
     private static final long serialVersionUID = 1684976798L;
 
-    @SerializedName("clusterPairID") private final Long clusterPairID;
+    @SerializedName("clusterPairID") private final long clusterPairID;
 
     /**
      * The Request object for the "RemoveClusterPair" API Service call.
@@ -49,7 +49,7 @@ public class RemoveClusterPairRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public RemoveClusterPairRequest(Long clusterPairID) {
+    public RemoveClusterPairRequest(long clusterPairID) {
         this.clusterPairID = clusterPairID;
     }
 
@@ -57,7 +57,7 @@ public class RemoveClusterPairRequest implements Serializable {
     /**
      * Unique identifier used to pair two clusters.
      **/
-    public Long getClusterPairID() {
+    public long getClusterPairID() {
         return this.clusterPairID;
     }
 
@@ -101,7 +101,7 @@ public class RemoveClusterPairRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long clusterPairID;
+        private long clusterPairID;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class RemoveClusterPairRequest implements Serializable {
             return this;
         }
 
-        public RemoveClusterPairRequest.Builder clusterPairID(final Long clusterPairID) {
+        public RemoveClusterPairRequest.Builder clusterPairID(final long clusterPairID) {
             this.clusterPairID = clusterPairID;
             return this;
         }

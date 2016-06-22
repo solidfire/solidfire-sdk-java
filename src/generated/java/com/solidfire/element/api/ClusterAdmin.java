@@ -42,7 +42,7 @@ public class ClusterAdmin implements Serializable {
     private static final long serialVersionUID = -1711157177L;
 
     @SerializedName("access") private final String[] access;
-    @SerializedName("clusterAdminID") private final Long clusterAdminID;
+    @SerializedName("clusterAdminID") private final long clusterAdminID;
     @SerializedName("username") private final String username;
     @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
 
@@ -55,7 +55,7 @@ public class ClusterAdmin implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ClusterAdmin(String[] access, Long clusterAdminID, String username, java.util.Map<String, Object> attributes) {
+    public ClusterAdmin(String[] access, long clusterAdminID, String username, java.util.Map<String, Object> attributes) {
         this.access = access;
         this.clusterAdminID = clusterAdminID;
         this.username = username;
@@ -65,7 +65,7 @@ public class ClusterAdmin implements Serializable {
     public String[] getAccess() {
         return this.access;
     }
-    public Long getClusterAdminID() {
+    public long getClusterAdminID() {
         return this.clusterAdminID;
     }
     public String getUsername() {

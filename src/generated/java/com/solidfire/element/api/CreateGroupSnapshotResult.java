@@ -41,7 +41,7 @@ public class CreateGroupSnapshotResult implements Serializable {
 
     private static final long serialVersionUID = -1863322416L;
 
-    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
+    @SerializedName("groupSnapshotID") private final long groupSnapshotID;
     @SerializedName("members") private final GroupSnapshotMembers[] members;
 
     /**
@@ -51,7 +51,7 @@ public class CreateGroupSnapshotResult implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public CreateGroupSnapshotResult(Long groupSnapshotID, GroupSnapshotMembers[] members) {
+    public CreateGroupSnapshotResult(long groupSnapshotID, GroupSnapshotMembers[] members) {
         this.groupSnapshotID = groupSnapshotID;
         this.members = members;
     }
@@ -60,7 +60,7 @@ public class CreateGroupSnapshotResult implements Serializable {
     /**
      * Unique ID of the new group snapshot.
      **/
-    public Long getGroupSnapshotID() {
+    public long getGroupSnapshotID() {
         return this.groupSnapshotID;
     }
 

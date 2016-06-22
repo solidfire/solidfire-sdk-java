@@ -41,7 +41,7 @@ public class PurgeDeletedVolumeRequest implements Serializable {
 
     private static final long serialVersionUID = 924828366L;
 
-    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("volumeID") private final long volumeID;
 
     /**
      * The Request object for the "PurgeDeletedVolume" API Service call.
@@ -49,7 +49,7 @@ public class PurgeDeletedVolumeRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public PurgeDeletedVolumeRequest(Long volumeID) {
+    public PurgeDeletedVolumeRequest(long volumeID) {
         this.volumeID = volumeID;
     }
 
@@ -57,7 +57,7 @@ public class PurgeDeletedVolumeRequest implements Serializable {
     /**
      * The ID of the volume to purge.
      **/
-    public Long getVolumeID() {
+    public long getVolumeID() {
         return this.volumeID;
     }
 
@@ -101,7 +101,7 @@ public class PurgeDeletedVolumeRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeID;
+        private long volumeID;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class PurgeDeletedVolumeRequest implements Serializable {
             return this;
         }
 
-        public PurgeDeletedVolumeRequest.Builder volumeID(final Long volumeID) {
+        public PurgeDeletedVolumeRequest.Builder volumeID(final long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

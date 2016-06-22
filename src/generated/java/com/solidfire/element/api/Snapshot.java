@@ -41,17 +41,17 @@ public class Snapshot implements Serializable {
 
     private static final long serialVersionUID = -1131558864L;
 
-    @SerializedName("snapshotID") private final Long snapshotID;
-    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("snapshotID") private final long snapshotID;
+    @SerializedName("volumeID") private final long volumeID;
     @SerializedName("name") private final String name;
     @SerializedName("checksum") private final String checksum;
-    @SerializedName("enableRemoteReplication") private final Boolean enableRemoteReplication;
+    @SerializedName("enableRemoteReplication") private final boolean enableRemoteReplication;
     @SerializedName("expirationReason") private final String expirationReason;
     @SerializedName("expirationTime") private final String expirationTime;
     @SerializedName("remoteStatuses") private final String remoteStatuses;
     @SerializedName("status") private final String status;
     @SerializedName("SnapshotUUID") private final String snapshotUUID;
-    @SerializedName("totalSize") private final Long totalSize;
+    @SerializedName("totalSize") private final long totalSize;
     @SerializedName("groupID") private final Optional<Long> groupID;
     @SerializedName("groupSnapshotUUID") private final String groupSnapshotUUID;
     @SerializedName("createTime") private final String createTime;
@@ -72,7 +72,7 @@ public class Snapshot implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public Snapshot(Long snapshotID, Long volumeID, String name, String checksum, String status, Long totalSize, Optional<Long> groupID, String createTime, java.util.Map<String, Object> attributes) {
+    public Snapshot(long snapshotID, long volumeID, String name, String checksum, String status, long totalSize, Optional<Long> groupID, String createTime, java.util.Map<String, Object> attributes) {
         this.name = name;
         this.remoteStatuses = null;
         this.expirationTime = null;
@@ -83,7 +83,7 @@ public class Snapshot implements Serializable {
         this.attributes = attributes;
         this.groupSnapshotUUID = null;
         this.checksum = checksum;
-        this.enableRemoteReplication = null;
+        this.enableRemoteReplication = false;
         this.status = status;
         this.volumeID = volumeID;
         this.snapshotID = snapshotID;
@@ -111,7 +111,7 @@ public class Snapshot implements Serializable {
      * @since 8.0
      **/
     @Since("8.0")
-    public Snapshot(Long snapshotID, Long volumeID, String name, String checksum, Boolean enableRemoteReplication, String expirationReason, String expirationTime, String remoteStatuses, String status, String snapshotUUID, Long totalSize, Optional<Long> groupID, String groupSnapshotUUID, String createTime, java.util.Map<String, Object> attributes) {
+    public Snapshot(long snapshotID, long volumeID, String name, String checksum, boolean enableRemoteReplication, String expirationReason, String expirationTime, String remoteStatuses, String status, String snapshotUUID, long totalSize, Optional<Long> groupID, String groupSnapshotUUID, String createTime, java.util.Map<String, Object> attributes) {
         this.name = name;
         this.remoteStatuses = remoteStatuses;
         this.expirationTime = expirationTime;
@@ -133,14 +133,14 @@ public class Snapshot implements Serializable {
     /**
      * Unique ID for this snapshot.
      **/
-    public Long getSnapshotID() {
+    public long getSnapshotID() {
         return this.snapshotID;
     }
 
     /**
      * The volume this snapshot was taken of.
      **/
-    public Long getVolumeID() {
+    public long getVolumeID() {
         return this.volumeID;
     }
 
@@ -166,7 +166,7 @@ public class Snapshot implements Serializable {
      **/
 
     @Since("8.0")
-    public Boolean getEnableRemoteReplication() {
+    public boolean getEnableRemoteReplication() {
         return this.enableRemoteReplication;
     }
 
@@ -232,7 +232,7 @@ public class Snapshot implements Serializable {
      * Total size of this snapshot in bytes.
      * It is equivalent to totalSize of the volume when this snapshot was taken.
      **/
-    public Long getTotalSize() {
+    public long getTotalSize() {
         return this.totalSize;
     }
 

@@ -41,7 +41,7 @@ public class ModifyAccountRequest implements Serializable {
 
     private static final long serialVersionUID = -1292214246L;
 
-    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("accountID") private final long accountID;
     @SerializedName("username") private final Optional<String> username;
     @SerializedName("status") private final Optional<String> status;
     @SerializedName("initiatorSecret") private final Optional<String> initiatorSecret;
@@ -59,7 +59,7 @@ public class ModifyAccountRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyAccountRequest(Long accountID, Optional<String> username, Optional<String> status, Optional<String> initiatorSecret, Optional<String> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
+    public ModifyAccountRequest(long accountID, Optional<String> username, Optional<String> status, Optional<String> initiatorSecret, Optional<String> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : initiatorSecret;
         this.username = (username == null) ? Optional.<String>empty() : username;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
@@ -72,7 +72,7 @@ public class ModifyAccountRequest implements Serializable {
     /**
      * AccountID for the account to modify.
      **/
-    public Long getAccountID() {
+    public long getAccountID() {
         return this.accountID;
     }
 
@@ -168,7 +168,7 @@ public class ModifyAccountRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long accountID;
+        private long accountID;
         private Optional<String> username;
         private Optional<String> status;
         private Optional<String> initiatorSecret;
@@ -198,7 +198,7 @@ public class ModifyAccountRequest implements Serializable {
             return this;
         }
 
-        public ModifyAccountRequest.Builder accountID(final Long accountID) {
+        public ModifyAccountRequest.Builder accountID(final long accountID) {
             this.accountID = accountID;
             return this;
         }
