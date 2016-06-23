@@ -50,7 +50,7 @@ public class EventInfo implements Serializable {
     @SerializedName("driveID") private final long driveID;
     @SerializedName("timeOfReport") private final String timeOfReport;
     @SerializedName("timeOfPublish") private final String timeOfPublish;
-    @SerializedName("details") private final java.util.Map<String, Object> details;
+    @SerializedName("details") private final Object details;
 
     /**
      * 
@@ -67,7 +67,7 @@ public class EventInfo implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public EventInfo(long eventID, long severity, String eventInfoType, String message, long serviceID, long nodeID, long driveID, String timeOfReport, String timeOfPublish, java.util.Map<String, Object> details) {
+    public EventInfo(long eventID, long severity, String eventInfoType, String message, long serviceID, long nodeID, long driveID, String timeOfReport, String timeOfPublish, Object details) {
         this.eventID = eventID;
         this.timeOfReport = timeOfReport;
         this.details = details;
@@ -107,7 +107,7 @@ public class EventInfo implements Serializable {
     public String getTimeOfPublish() {
         return this.timeOfPublish;
     }
-    public java.util.Map<String, Object> getDetails() {
+    public Object getDetails() {
         return this.details;
     }
 

@@ -59,7 +59,7 @@ public class VolumeStats implements Serializable {
     @SerializedName("totalLatencyUSec") private final long totalLatencyUSec;
     @SerializedName("unalignedReads") private final long unalignedReads;
     @SerializedName("unalignedWrites") private final long unalignedWrites;
-    @SerializedName("volumeAccessGroups") private final long[] volumeAccessGroups;
+    @SerializedName("volumeAccessGroups") private final Long[] volumeAccessGroups;
     @SerializedName("volumeID") private final long volumeID;
     @SerializedName("volumeSize") private final long volumeSize;
     @SerializedName("volumeUtilization") private final double volumeUtilization;
@@ -99,7 +99,7 @@ public class VolumeStats implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public VolumeStats(long accountID, long actualIOPS, Optional<String> asyncDelay, long averageIOPSize, long burstIOPSCredit, long clientQueueDepth, MetadataHosts desiredMetadataHosts, long latencyUSec, MetadataHosts metadataHosts, long nonZeroBlocks, long readBytes, long readLatencyUSec, long readOps, double throttle, String timestamp, long totalLatencyUSec, long unalignedReads, long unalignedWrites, long[] volumeAccessGroups, long volumeID, long volumeSize, double volumeUtilization, long writeBytes, long writeLatencyUSec, long writeOps, long zeroBlocks) {
+    public VolumeStats(long accountID, long actualIOPS, Optional<String> asyncDelay, long averageIOPSize, long burstIOPSCredit, long clientQueueDepth, MetadataHosts desiredMetadataHosts, long latencyUSec, MetadataHosts metadataHosts, long nonZeroBlocks, long readBytes, long readLatencyUSec, long readOps, double throttle, String timestamp, long totalLatencyUSec, long unalignedReads, long unalignedWrites, Long[] volumeAccessGroups, long volumeID, long volumeSize, double volumeUtilization, long writeBytes, long writeLatencyUSec, long writeOps, long zeroBlocks) {
         this.writeOps = writeOps;
         this.totalLatencyUSec = totalLatencyUSec;
         this.volumeAccessGroups = volumeAccessGroups;
@@ -268,7 +268,7 @@ public class VolumeStats implements Serializable {
     /**
      * List of volume access group(s) to which a volume belongs.
      **/
-    public long[] getVolumeAccessGroups() {
+    public Long[] getVolumeAccessGroups() {
         return this.volumeAccessGroups;
     }
 

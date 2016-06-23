@@ -45,7 +45,7 @@ public class GetEfficiencyResult implements Serializable {
     @SerializedName("deduplication") private final double deduplication;
     @SerializedName("thinProvisioning") private final double thinProvisioning;
     @SerializedName("timestamp") private final String timestamp;
-    @SerializedName("missingVolumes") private final long[] missingVolumes;
+    @SerializedName("missingVolumes") private final Long[] missingVolumes;
 
     /**
      * The object returned by the "GetEfficiency" API Service call.
@@ -57,7 +57,7 @@ public class GetEfficiencyResult implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public GetEfficiencyResult(double compression, double deduplication, double thinProvisioning, String timestamp, long[] missingVolumes) {
+    public GetEfficiencyResult(double compression, double deduplication, double thinProvisioning, String timestamp, Long[] missingVolumes) {
         this.timestamp = timestamp;
         this.compression = compression;
         this.thinProvisioning = thinProvisioning;
@@ -97,7 +97,7 @@ public class GetEfficiencyResult implements Serializable {
     /**
      * The volumes that could not be queried for efficiency data. Missing volumes can be caused by GC being less than hour old, temporary network loss or restarted services since the GC cycle.
      **/
-    public long[] getMissingVolumes() {
+    public Long[] getMissingVolumes() {
         return this.missingVolumes;
     }
 

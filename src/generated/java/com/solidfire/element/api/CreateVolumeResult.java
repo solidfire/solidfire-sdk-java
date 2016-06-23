@@ -39,21 +39,21 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class CreateVolumeResult implements Serializable {
 
-    private static final long serialVersionUID = 493758881L;
+    private static final long serialVersionUID = -373542667L;
 
     @SerializedName("volumeID") private final long volumeID;
-    @SerializedName("curve") private final Optional<java.util.Map<String, Object>> curve;
+    @SerializedName("curve") private final java.util.Map<String,Long> curve;
 
     /**
      * The object returned by the "CreateVolume" API Service call.
      * @param volumeID [required] VolumeID for the newly created volume.
-     * @param curve (optional) The curve is a set of key-value pairs.
+     * @param curve [required] The curve is a set of key-value pairs.
      * @since 7.0
      **/
     @Since("7.0")
-    public CreateVolumeResult(long volumeID, Optional<java.util.Map<String, Object>> curve) {
+    public CreateVolumeResult(long volumeID, java.util.Map<String,Long> curve) {
         this.volumeID = volumeID;
-        this.curve = (curve == null) ? Optional.<java.util.Map<String, Object>>empty() : curve;
+        this.curve = curve;
     }
 
 
@@ -70,7 +70,7 @@ public class CreateVolumeResult implements Serializable {
      * The values represent the cost performing an IOP at a specific I/O size.
      * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
      **/
-    public Optional<java.util.Map<String, Object>> getCurve() {
+    public java.util.Map<String,Long> getCurve() {
         return this.curve;
     }
 
@@ -98,8 +98,7 @@ public class CreateVolumeResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" volumeID : ").append(volumeID).append(",");
-        if(null != curve && curve.isPresent())
-            sb.append(" curve : ").append(curve.get());
+        sb.append(" curve : ").append(curve);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

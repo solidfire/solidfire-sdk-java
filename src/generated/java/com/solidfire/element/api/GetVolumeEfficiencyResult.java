@@ -43,7 +43,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
 
     @SerializedName("compression") private final double compression;
     @SerializedName("deduplication") private final double deduplication;
-    @SerializedName("missingVolumes") private final long[] missingVolumes;
+    @SerializedName("missingVolumes") private final Long[] missingVolumes;
     @SerializedName("thinProvisioning") private final double thinProvisioning;
     @SerializedName("timestamp") private final String timestamp;
 
@@ -74,7 +74,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * @since 8.0
      **/
     @Since("8.0")
-    public GetVolumeEfficiencyResult(double compression, double deduplication, long[] missingVolumes, double thinProvisioning, String timestamp) {
+    public GetVolumeEfficiencyResult(double compression, double deduplication, Long[] missingVolumes, double thinProvisioning, String timestamp) {
         this.timestamp = timestamp;
         this.compression = compression;
         this.thinProvisioning = thinProvisioning;
@@ -106,7 +106,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
      **/
 
     @Since("8.0")
-    public long[] getMissingVolumes() {
+    public Long[] getMissingVolumes() {
         return this.missingVolumes;
     }
 

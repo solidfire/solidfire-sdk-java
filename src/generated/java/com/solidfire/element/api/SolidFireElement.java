@@ -585,7 +585,7 @@ public class SolidFireElement
 
 
     @Override
-    public AsyncHandleResult secureEraseDrives(long[] drives) {
+    public AsyncHandleResult secureEraseDrives(Long[] drives) {
         return this.secureEraseDrives( new SecureEraseDrivesRequest(drives));
     }
 
@@ -596,7 +596,7 @@ public class SolidFireElement
 
 
     @Override
-    public AsyncHandleResult removeDrives(long[] drives) {
+    public AsyncHandleResult removeDrives(Long[] drives) {
         return this.removeDrives( new RemoveDrivesRequest(drives));
     }
 
@@ -640,7 +640,7 @@ public class SolidFireElement
 
 
     @Override
-    public AddNodesResult addNodes(long[] pendingNodes) {
+    public AddNodesResult addNodes(Long[] pendingNodes) {
         return this.addNodes( new AddNodesRequest(pendingNodes));
     }
 
@@ -651,7 +651,7 @@ public class SolidFireElement
 
 
     @Override
-    public RemoveNodesResult removeNodes(long[] nodes) {
+    public RemoveNodesResult removeNodes(Long[] nodes) {
         return this.removeNodes( new RemoveNodesRequest(nodes));
     }
 
@@ -1047,7 +1047,7 @@ public class SolidFireElement
 
 
     @Override
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(Optional<long[]> volumeAccessGroups) {
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(Optional<Long[]> volumeAccessGroups) {
         return this.listVolumeStatsByVolumeAccessGroup( new ListVolumeStatsByVolumeAccessGroupRequest(volumeAccessGroups));
     }
 
@@ -1139,7 +1139,7 @@ public class SolidFireElement
 
 
     @Override
-    public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(long volumeAccessGroupID, long[] volumes) {
+    public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(long volumeAccessGroupID, Long[] volumes) {
         return this.addVolumesToVolumeAccessGroup( new AddVolumesToVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
     }
 
@@ -1150,7 +1150,7 @@ public class SolidFireElement
 
 
     @Override
-    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(long volumeAccessGroupID, long[] volumes) {
+    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(long volumeAccessGroupID, Long[] volumes) {
         return this.removeVolumesFromVolumeAccessGroup( new RemoveVolumesFromVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
     }
 

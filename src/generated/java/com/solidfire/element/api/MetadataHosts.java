@@ -41,8 +41,8 @@ public class MetadataHosts implements Serializable {
 
     private static final long serialVersionUID = -1399906185L;
 
-    @SerializedName("deadSecondaries") private final long[] deadSecondaries;
-    @SerializedName("liveSecondaries") private final long[] liveSecondaries;
+    @SerializedName("deadSecondaries") private final Long[] deadSecondaries;
+    @SerializedName("liveSecondaries") private final Long[] liveSecondaries;
     @SerializedName("primary") private final long primary;
 
     /**
@@ -53,7 +53,7 @@ public class MetadataHosts implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public MetadataHosts(long[] deadSecondaries, long[] liveSecondaries, long primary) {
+    public MetadataHosts(Long[] deadSecondaries, Long[] liveSecondaries, long primary) {
         this.deadSecondaries = deadSecondaries;
         this.liveSecondaries = liveSecondaries;
         this.primary = primary;
@@ -63,14 +63,14 @@ public class MetadataHosts implements Serializable {
     /**
      * Secondary metadata (slice) services that are in a dead state.
      **/
-    public long[] getDeadSecondaries() {
+    public Long[] getDeadSecondaries() {
         return this.deadSecondaries;
     }
 
     /**
      * Secondary metadata (slice) services that are currently in a &quot;live&quot; state.
      **/
-    public long[] getLiveSecondaries() {
+    public Long[] getLiveSecondaries() {
         return this.liveSecondaries;
     }
 

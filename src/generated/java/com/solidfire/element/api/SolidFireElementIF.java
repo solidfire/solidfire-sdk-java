@@ -746,7 +746,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#secureEraseDrives(SecureEraseDrivesRequest) 
      **/
-    AsyncHandleResult secureEraseDrives(long[] drives);
+    AsyncHandleResult secureEraseDrives(Long[] drives);
 
     /**
      * You can use RemoveDrives to proactively remove drives that are part of the cluster.
@@ -780,7 +780,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#removeDrives(RemoveDrivesRequest) 
      **/
-    AsyncHandleResult removeDrives(long[] drives);
+    AsyncHandleResult removeDrives(Long[] drives);
 
     ListActiveNodesResult listActiveNodes(final ListActiveNodesRequest request);
 
@@ -838,7 +838,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#addNodes(AddNodesRequest) 
      **/
-    AddNodesResult addNodes(long[] pendingNodes);
+    AddNodesResult addNodes(Long[] pendingNodes);
 
     /**
      * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with &quot;RemoveDrives&quot; method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
@@ -861,7 +861,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#removeNodes(RemoveNodesRequest) 
      **/
-    RemoveNodesResult removeNodes(long[] nodes);
+    RemoveNodesResult removeNodes(Long[] nodes);
 
     /**
      * The GetNetworkConfig API method is used to display the network configuration information for a node.
@@ -1694,7 +1694,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#listVolumeStatsByVolumeAccessGroup(ListVolumeStatsByVolumeAccessGroupRequest) 
      **/
-    ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(Optional<long[]> volumeAccessGroups);
+    ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(Optional<Long[]> volumeAccessGroups);
 
     /**
      * ModifyVolume is used to modify settings on an existing volume.
@@ -1903,7 +1903,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#addVolumesToVolumeAccessGroup(AddVolumesToVolumeAccessGroupRequest) 
      **/
-    ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(long volumeAccessGroupID, long[] volumes);
+    ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(long volumeAccessGroupID, Long[] volumes);
 
     /**
      * Remove volumes from a volume access group.
@@ -1926,7 +1926,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#removeVolumesFromVolumeAccessGroup(RemoveVolumesFromVolumeAccessGroupRequest) 
      **/
-    ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(long volumeAccessGroupID, long[] volumes);
+    ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(long volumeAccessGroupID, Long[] volumes);
 
     /**
      * GetVolumeAccessGroupEfficiency is used to retrieve efficiency information about a volume access group. Only the volume access group provided as parameters in this API method is used to compute the capacity.

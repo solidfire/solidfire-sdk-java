@@ -42,7 +42,7 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
     private static final long serialVersionUID = 1187472634L;
 
     @SerializedName("volumeAccessGroupID") private final long volumeAccessGroupID;
-    @SerializedName("volumes") private final long[] volumes;
+    @SerializedName("volumes") private final Long[] volumes;
 
     /**
      * The Request object for the "AddVolumesToVolumeAccessGroup" API Service call.
@@ -51,7 +51,7 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public AddVolumesToVolumeAccessGroupRequest(long volumeAccessGroupID, long[] volumes) {
+    public AddVolumesToVolumeAccessGroupRequest(long volumeAccessGroupID, Long[] volumes) {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.volumes = volumes;
     }
@@ -67,7 +67,7 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
     /**
      * List of volumes to add to this volume access group.
      **/
-    public long[] getVolumes() {
+    public Long[] getVolumes() {
         return this.volumes;
     }
 
@@ -114,7 +114,7 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
 
     public static class Builder {
         private long volumeAccessGroupID;
-        private long[] volumes;
+        private Long[] volumes;
 
         private Builder() { }
 
@@ -136,7 +136,7 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public AddVolumesToVolumeAccessGroupRequest.Builder volumes(final long[] volumes) {
+        public AddVolumesToVolumeAccessGroupRequest.Builder volumes(final Long[] volumes) {
             this.volumes = volumes;
             return this;
         }

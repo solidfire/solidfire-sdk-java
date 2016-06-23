@@ -50,7 +50,7 @@ public class CreateScheduleRequest implements Serializable {
     @SerializedName("scheduleType") private final String scheduleType;
     @SerializedName("scheduleInfo") private final ScheduleInfo scheduleInfo;
     @SerializedName("startingDate") private final Optional<String> startingDate;
-    @SerializedName("monthdays") private final Optional<long[]> monthdays;
+    @SerializedName("monthdays") private final Optional<Long[]> monthdays;
     @SerializedName("weekdays") private final Optional<Weekday[]> weekdays;
 
     /**
@@ -69,9 +69,9 @@ public class CreateScheduleRequest implements Serializable {
      * @since 8.0
      **/
     @Since("8.0")
-    public CreateScheduleRequest(java.util.Map<String, Object> attributes, Optional<Long> hours, Optional<Long> minutes, Optional<Boolean> paused, Optional<Boolean> recurring, String scheduleName, String scheduleType, ScheduleInfo scheduleInfo, Optional<String> startingDate, Optional<long[]> monthdays, Optional<Weekday[]> weekdays) {
+    public CreateScheduleRequest(java.util.Map<String, Object> attributes, Optional<Long> hours, Optional<Long> minutes, Optional<Boolean> paused, Optional<Boolean> recurring, String scheduleName, String scheduleType, ScheduleInfo scheduleInfo, Optional<String> startingDate, Optional<Long[]> monthdays, Optional<Weekday[]> weekdays) {
         this.weekdays = (weekdays == null) ? Optional.<Weekday[]>empty() : weekdays;
-        this.monthdays = (monthdays == null) ? Optional.<long[]>empty() : monthdays;
+        this.monthdays = (monthdays == null) ? Optional.<Long[]>empty() : monthdays;
         this.scheduleInfo = scheduleInfo;
         this.attributes = attributes;
         this.recurring = (recurring == null) ? Optional.<Boolean>empty() : recurring;
@@ -164,7 +164,7 @@ public class CreateScheduleRequest implements Serializable {
      * The days of the month that a snapshot will be made. <br/>
      * Valid values: 1 - 31
      **/
-    public Optional<long[]> getMonthdays() {
+    public Optional<Long[]> getMonthdays() {
         return this.monthdays;
     }
 
@@ -254,7 +254,7 @@ public class CreateScheduleRequest implements Serializable {
         private String scheduleType;
         private ScheduleInfo scheduleInfo;
         private Optional<String> startingDate;
-        private Optional<long[]> monthdays;
+        private Optional<Long[]> monthdays;
         private Optional<Weekday[]> weekdays;
 
         private Builder() { }
@@ -335,8 +335,8 @@ public class CreateScheduleRequest implements Serializable {
             return this;
         }
 
-        public CreateScheduleRequest.Builder optionalMonthdays(final long[] monthdays) {
-            this.monthdays = (monthdays == null) ? Optional.<long[]>empty() : Optional.of(monthdays);
+        public CreateScheduleRequest.Builder optionalMonthdays(final Long[] monthdays) {
+            this.monthdays = (monthdays == null) ? Optional.<Long[]>empty() : Optional.of(monthdays);
             return this;
         }
 

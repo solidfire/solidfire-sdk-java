@@ -41,7 +41,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
 
     private static final long serialVersionUID = -1070252125L;
 
-    @SerializedName("volumes") private final long[] volumes;
+    @SerializedName("volumes") private final Long[] volumes;
     @SerializedName("name") private final Optional<String> name;
     @SerializedName("enableRemoteReplication") private final Optional<Boolean> enableRemoteReplication;
     @SerializedName("retention") private final Optional<String> retention;
@@ -55,7 +55,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public CreateGroupSnapshotRequest(long[] volumes, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
+    public CreateGroupSnapshotRequest(Long[] volumes, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.volumes = volumes;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
@@ -73,7 +73,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
      * @since 8.0
      **/
     @Since("8.0")
-    public CreateGroupSnapshotRequest(long[] volumes, Optional<String> name, Optional<Boolean> enableRemoteReplication, Optional<String> retention, Optional<java.util.Map<String, Object>> attributes) {
+    public CreateGroupSnapshotRequest(Long[] volumes, Optional<String> name, Optional<Boolean> enableRemoteReplication, Optional<String> retention, Optional<java.util.Map<String, Object>> attributes) {
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.volumes = volumes;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
@@ -85,7 +85,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
     /**
      * Unique ID of the volume image from which to copy.
      **/
-    public long[] getVolumes() {
+    public Long[] getVolumes() {
         return this.volumes;
     }
 
@@ -176,7 +176,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private long[] volumes;
+        private Long[] volumes;
         private Optional<String> name;
         private Optional<Boolean> enableRemoteReplication;
         private Optional<String> retention;
@@ -203,7 +203,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder volumes(final long[] volumes) {
+        public CreateGroupSnapshotRequest.Builder volumes(final Long[] volumes) {
             this.volumes = volumes;
             return this;
         }

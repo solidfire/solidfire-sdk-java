@@ -47,7 +47,7 @@ public class Schedule implements Serializable {
     @SerializedName("lastRunStatus") private final String lastRunStatus;
     @SerializedName("lastRunTimeStart") private final String lastRunTimeStart;
     @SerializedName("minutes") private final long minutes;
-    @SerializedName("monthdays") private final long[] monthdays;
+    @SerializedName("monthdays") private final Long[] monthdays;
     @SerializedName("paused") private final boolean paused;
     @SerializedName("recurring") private final boolean recurring;
     @SerializedName("runNextInterval") private final boolean runNextInterval;
@@ -81,7 +81,7 @@ public class Schedule implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public Schedule(java.util.Map<String, Object> attributes, boolean hasError, long hours, String lastRunStatus, String lastRunTimeStart, long minutes, long[] monthdays, boolean paused, boolean recurring, boolean runNextInterval, long scheduleID, ScheduleInfo scheduleInfo, String scheduleName, String scheduleType, String startingDate, boolean toBeDeleted, Weekday[] weekdays) {
+    public Schedule(java.util.Map<String, Object> attributes, boolean hasError, long hours, String lastRunStatus, String lastRunTimeStart, long minutes, Long[] monthdays, boolean paused, boolean recurring, boolean runNextInterval, long scheduleID, ScheduleInfo scheduleInfo, String scheduleName, String scheduleType, String startingDate, boolean toBeDeleted, Weekday[] weekdays) {
         this.weekdays = weekdays;
         this.scheduleID = scheduleID;
         this.lastRunStatus = lastRunStatus;
@@ -160,7 +160,7 @@ public class Schedule implements Serializable {
      * Shows the days of the month that the next snapshot will be created on.
      * Valid values are: 0 - 31
      **/
-    public long[] getMonthdays() {
+    public Long[] getMonthdays() {
         return this.monthdays;
     }
 

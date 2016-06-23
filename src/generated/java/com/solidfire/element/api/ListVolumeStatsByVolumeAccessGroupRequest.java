@@ -41,7 +41,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
 
     private static final long serialVersionUID = 1028973731L;
 
-    @SerializedName("volumeAccessGroups") private final Optional<long[]> volumeAccessGroups;
+    @SerializedName("volumeAccessGroups") private final Optional<Long[]> volumeAccessGroups;
 
     /**
      * The Request object for the "ListVolumeStatsByVolumeAccessGroup" API Service call.
@@ -49,8 +49,8 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ListVolumeStatsByVolumeAccessGroupRequest(Optional<long[]> volumeAccessGroups) {
-        this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<long[]>empty() : volumeAccessGroups;
+    public ListVolumeStatsByVolumeAccessGroupRequest(Optional<Long[]> volumeAccessGroups) {
+        this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
     }
 
 
@@ -58,7 +58,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
      * An array of VolumeAccessGroupIDs for which volume activity is returned.
      * If no VolumeAccessGroupID is specified, stats for all volume access groups is returned.
      **/
-    public Optional<long[]> getVolumeAccessGroups() {
+    public Optional<Long[]> getVolumeAccessGroups() {
         return this.volumeAccessGroups;
     }
 
@@ -103,7 +103,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<long[]> volumeAccessGroups;
+        private Optional<Long[]> volumeAccessGroups;
 
         private Builder() { }
 
@@ -118,8 +118,8 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public ListVolumeStatsByVolumeAccessGroupRequest.Builder optionalVolumeAccessGroups(final long[] volumeAccessGroups) {
-            this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<long[]>empty() : Optional.of(volumeAccessGroups);
+        public ListVolumeStatsByVolumeAccessGroupRequest.Builder optionalVolumeAccessGroups(final Long[] volumeAccessGroups) {
+            this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroups);
             return this;
         }
 

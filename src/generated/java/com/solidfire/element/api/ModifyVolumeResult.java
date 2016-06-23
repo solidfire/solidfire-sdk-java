@@ -39,18 +39,18 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ModifyVolumeResult implements Serializable {
 
-    private static final long serialVersionUID = 1071511843L;
+    private static final long serialVersionUID = -276108651L;
 
-    @SerializedName("curve") private final Optional<java.util.Map<String, Object>> curve;
+    @SerializedName("curve") private final java.util.Map<String,Long> curve;
 
     /**
      * The object returned by the "ModifyVolume" API Service call.
-     * @param curve (optional) The curve is a set of key-value pairs.
+     * @param curve [required] The curve is a set of key-value pairs.
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(Optional<java.util.Map<String, Object>> curve) {
-        this.curve = (curve == null) ? Optional.<java.util.Map<String, Object>>empty() : curve;
+    public ModifyVolumeResult(java.util.Map<String,Long> curve) {
+        this.curve = curve;
     }
 
 
@@ -60,7 +60,7 @@ public class ModifyVolumeResult implements Serializable {
      * The values represent the cost performing an IOP at a specific I/O size.
      * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
      **/
-    public Optional<java.util.Map<String, Object>> getCurve() {
+    public java.util.Map<String,Long> getCurve() {
         return this.curve;
     }
 
@@ -86,8 +86,7 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != curve && curve.isPresent())
-            sb.append(" curve : ").append(curve.get());
+        sb.append(" curve : ").append(curve);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -52,7 +52,7 @@ public class Volume implements Serializable {
     @SerializedName("scsiEUIDeviceID") private final String scsiEUIDeviceID;
     @SerializedName("scsiNAADeviceID") private final String scsiNAADeviceID;
     @SerializedName("qos") private final VolumeQOS qos;
-    @SerializedName("volumeAccessGroups") private final long[] volumeAccessGroups;
+    @SerializedName("volumeAccessGroups") private final Long[] volumeAccessGroups;
     @SerializedName("volumePairs") private final VolumePair[] volumePairs;
     @SerializedName("deleteTime") private final Optional<String> deleteTime;
     @SerializedName("purgeTime") private final Optional<String> purgeTime;
@@ -88,7 +88,7 @@ public class Volume implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public Volume(long volumeID, String name, long accountID, String createTime, String status, String access, boolean enable512e, String iqn, String scsiEUIDeviceID, String scsiNAADeviceID, VolumeQOS qos, long[] volumeAccessGroups, VolumePair[] volumePairs, Optional<String> deleteTime, Optional<String> purgeTime, long sliceCount, long totalSize, String virtualVolumeID, java.util.Map<String, Object> attributes) {
+    public Volume(long volumeID, String name, long accountID, String createTime, String status, String access, boolean enable512e, String iqn, String scsiEUIDeviceID, String scsiNAADeviceID, VolumeQOS qos, Long[] volumeAccessGroups, VolumePair[] volumePairs, Optional<String> deleteTime, Optional<String> purgeTime, long sliceCount, long totalSize, String virtualVolumeID, java.util.Map<String, Object> attributes) {
         this.name = name;
         this.volumeAccessGroups = volumeAccessGroups;
         this.createTime = createTime;
@@ -138,7 +138,7 @@ public class Volume implements Serializable {
      * @since 8.0
      **/
     @Since("8.0")
-    public Volume(long volumeID, String name, long accountID, String createTime, String status, String access, boolean enable512e, String iqn, String scsiEUIDeviceID, String scsiNAADeviceID, VolumeQOS qos, long[] volumeAccessGroups, VolumePair[] volumePairs, Optional<String> deleteTime, Optional<String> purgeTime, long sliceCount, long totalSize, long blockSize, String virtualVolumeID, java.util.Map<String, Object> attributes) {
+    public Volume(long volumeID, String name, long accountID, String createTime, String status, String access, boolean enable512e, String iqn, String scsiEUIDeviceID, String scsiNAADeviceID, VolumeQOS qos, Long[] volumeAccessGroups, VolumePair[] volumePairs, Optional<String> deleteTime, Optional<String> purgeTime, long sliceCount, long totalSize, long blockSize, String virtualVolumeID, java.util.Map<String, Object> attributes) {
         this.name = name;
         this.volumeAccessGroups = volumeAccessGroups;
         this.createTime = createTime;
@@ -248,7 +248,7 @@ public class Volume implements Serializable {
     /**
      * List of volume access groups to which a volume belongs.
      **/
-    public long[] getVolumeAccessGroups() {
+    public Long[] getVolumeAccessGroups() {
         return this.volumeAccessGroups;
     }
 
