@@ -1694,7 +1694,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#listVolumeStatsByVolumeAccessGroup(ListVolumeStatsByVolumeAccessGroupRequest) 
      **/
-    ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(Optional<Long[]> volumeAccessGroups);
+    ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(Optional<long[]> volumeAccessGroups);
 
     /**
      * ModifyVolume is used to modify settings on an existing volume.

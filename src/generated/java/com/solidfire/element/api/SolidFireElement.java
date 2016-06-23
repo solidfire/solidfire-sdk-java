@@ -1047,7 +1047,7 @@ public class SolidFireElement
 
 
     @Override
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(Optional<Long[]> volumeAccessGroups) {
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(Optional<long[]> volumeAccessGroups) {
         return this.listVolumeStatsByVolumeAccessGroup( new ListVolumeStatsByVolumeAccessGroupRequest(volumeAccessGroups));
     }
 

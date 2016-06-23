@@ -42,7 +42,7 @@ public class ScheduleInfo implements Serializable {
     private static final long serialVersionUID = 1734093909L;
 
     @SerializedName("volumeID") private final Optional<Long> volumeID;
-    @SerializedName("volumes") private final Optional<Long[]> volumes;
+    @SerializedName("volumes") private final Optional<long[]> volumes;
     @SerializedName("name") private final Optional<String> name;
     @SerializedName("enableRemoteReplication") private final Optional<Boolean> enableRemoteReplication;
     @SerializedName("retention") private final Optional<String> retention;
@@ -57,9 +57,9 @@ public class ScheduleInfo implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ScheduleInfo(Optional<Long> volumeID, Optional<Long[]> volumes, Optional<String> name, Optional<Boolean> enableRemoteReplication, Optional<String> retention) {
+    public ScheduleInfo(Optional<Long> volumeID, Optional<long[]> volumes, Optional<String> name, Optional<Boolean> enableRemoteReplication, Optional<String> retention) {
         this.name = (name == null) ? Optional.<String>empty() : name;
-        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+        this.volumes = (volumes == null) ? Optional.<long[]>empty() : volumes;
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
         this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
@@ -76,7 +76,7 @@ public class ScheduleInfo implements Serializable {
     /**
      * A list of volume IDs to be included in the group snapshot.
      **/
-    public Optional<Long[]> getVolumes() {
+    public Optional<long[]> getVolumes() {
         return this.volumes;
     }
 

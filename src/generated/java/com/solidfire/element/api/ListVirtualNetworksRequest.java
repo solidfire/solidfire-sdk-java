@@ -43,8 +43,8 @@ public class ListVirtualNetworksRequest implements Serializable {
 
     @SerializedName("virtualNetworkID") private final Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private final Optional<Long> virtualNetworkTag;
-    @SerializedName("virtualNetworkIDs") private final Optional<Long[]> virtualNetworkIDs;
-    @SerializedName("virtualNetworkTags") private final Optional<Long[]> virtualNetworkTags;
+    @SerializedName("virtualNetworkIDs") private final Optional<long[]> virtualNetworkIDs;
+    @SerializedName("virtualNetworkTags") private final Optional<long[]> virtualNetworkTags;
 
     /**
      * The Request object for the "ListVirtualNetworks" API Service call.
@@ -55,11 +55,11 @@ public class ListVirtualNetworksRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ListVirtualNetworksRequest(Optional<Long> virtualNetworkID, Optional<Long> virtualNetworkTag, Optional<Long[]> virtualNetworkIDs, Optional<Long[]> virtualNetworkTags) {
+    public ListVirtualNetworksRequest(Optional<Long> virtualNetworkID, Optional<Long> virtualNetworkTag, Optional<long[]> virtualNetworkIDs, Optional<long[]> virtualNetworkTags) {
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
         this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
-        this.virtualNetworkIDs = (virtualNetworkIDs == null) ? Optional.<Long[]>empty() : virtualNetworkIDs;
-        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
+        this.virtualNetworkIDs = (virtualNetworkIDs == null) ? Optional.<long[]>empty() : virtualNetworkIDs;
+        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<long[]>empty() : virtualNetworkTags;
     }
 
 
@@ -80,14 +80,14 @@ public class ListVirtualNetworksRequest implements Serializable {
     /**
      * NetworkIDs to include in the list.
      **/
-    public Optional<Long[]> getVirtualNetworkIDs() {
+    public Optional<long[]> getVirtualNetworkIDs() {
         return this.virtualNetworkIDs;
     }
 
     /**
      * Network Tags to include in the list.
      **/
-    public Optional<Long[]> getVirtualNetworkTags() {
+    public Optional<long[]> getVirtualNetworkTags() {
         return this.virtualNetworkTags;
     }
 
@@ -143,8 +143,8 @@ public class ListVirtualNetworksRequest implements Serializable {
     public static class Builder {
         private Optional<Long> virtualNetworkID;
         private Optional<Long> virtualNetworkTag;
-        private Optional<Long[]> virtualNetworkIDs;
-        private Optional<Long[]> virtualNetworkTags;
+        private Optional<long[]> virtualNetworkIDs;
+        private Optional<long[]> virtualNetworkTags;
 
         private Builder() { }
 
@@ -175,13 +175,13 @@ public class ListVirtualNetworksRequest implements Serializable {
             return this;
         }
 
-        public ListVirtualNetworksRequest.Builder optionalVirtualNetworkIDs(final Long[] virtualNetworkIDs) {
-            this.virtualNetworkIDs = (virtualNetworkIDs == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkIDs);
+        public ListVirtualNetworksRequest.Builder optionalVirtualNetworkIDs(final long[] virtualNetworkIDs) {
+            this.virtualNetworkIDs = (virtualNetworkIDs == null) ? Optional.<long[]>empty() : Optional.of(virtualNetworkIDs);
             return this;
         }
 
-        public ListVirtualNetworksRequest.Builder optionalVirtualNetworkTags(final Long[] virtualNetworkTags) {
-            this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkTags);
+        public ListVirtualNetworksRequest.Builder optionalVirtualNetworkTags(final long[] virtualNetworkTags) {
+            this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<long[]>empty() : Optional.of(virtualNetworkTags);
             return this;
         }
 
