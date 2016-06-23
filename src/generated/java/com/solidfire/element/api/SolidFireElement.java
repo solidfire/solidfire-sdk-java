@@ -895,6 +895,28 @@ public class SolidFireElement
     }
 
     @Override
+    public Object getRawStats(final GetRawStatsRequest request) {
+        return super.sendRequest("GetRawStats", request, GetRawStatsRequest.class, Object.class );
+    }
+
+
+    @Override
+    public Object getRawStats() {
+        return this.getRawStats( new GetRawStatsRequest());
+    }
+
+    @Override
+    public Object getCompleteStats(final GetCompleteStatsRequest request) {
+        return super.sendRequest("GetCompleteStats", request, GetCompleteStatsRequest.class, Object.class );
+    }
+
+
+    @Override
+    public Object getCompleteStats() {
+        return this.getCompleteStats( new GetCompleteStatsRequest());
+    }
+
+    @Override
     @Since("7.0")
     public ListVirtualNetworksResult listVirtualNetworks(final ListVirtualNetworksRequest request) {
         return super.sendRequest("ListVirtualNetworks", request, ListVirtualNetworksRequest.class, ListVirtualNetworksResult.class );

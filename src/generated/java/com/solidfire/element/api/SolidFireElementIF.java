@@ -1361,6 +1361,44 @@ public interface SolidFireElementIF {
     ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request);
 
     /**
+     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetRawStatsRequest 
+     *  
+     * @return the response
+     **/
+    Object getRawStats(final GetRawStatsRequest request);
+
+
+    /**
+     * Convenience method for getRawStats 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getRawStats(GetRawStatsRequest) 
+     **/
+    Object getRawStats();
+
+    /**
+     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetCompleteStatsRequest 
+     *  
+     * @return the response
+     **/
+    Object getCompleteStats(final GetCompleteStatsRequest request);
+
+
+    /**
+     * Convenience method for getCompleteStats 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getCompleteStats(GetCompleteStatsRequest) 
+     **/
+    Object getCompleteStats();
+
+    /**
      * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
      * 
      * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
