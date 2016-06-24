@@ -41,8 +41,8 @@ public class VirtualNetwork implements Serializable {
 
     private static final long serialVersionUID = 215117552L;
 
-    @SerializedName("virtualNetworkID") private final long virtualNetworkID;
-    @SerializedName("virtualNetworkTag") private final long virtualNetworkTag;
+    @SerializedName("virtualNetworkID") private final Long virtualNetworkID;
+    @SerializedName("virtualNetworkTag") private final Long virtualNetworkTag;
     @SerializedName("addressBlocks") private final AddressBlock[] addressBlocks;
     @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
     @SerializedName("name") private final String name;
@@ -61,7 +61,7 @@ public class VirtualNetwork implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public VirtualNetwork(long virtualNetworkID, long virtualNetworkTag, AddressBlock[] addressBlocks, java.util.Map<String, Object> attributes, String name, String netmask, String svip) {
+    public VirtualNetwork(Long virtualNetworkID, Long virtualNetworkTag, AddressBlock[] addressBlocks, java.util.Map<String, Object> attributes, String name, String netmask, String svip) {
         this.name = name;
         this.virtualNetworkTag = virtualNetworkTag;
         this.netmask = netmask;
@@ -75,14 +75,14 @@ public class VirtualNetwork implements Serializable {
     /**
      * SolidFire unique identifier for a virtual network.
      **/
-    public long getVirtualNetworkID() {
+    public Long getVirtualNetworkID() {
         return this.virtualNetworkID;
     }
 
     /**
      * VLAN Tag identifier.
      **/
-    public long getVirtualNetworkTag() {
+    public Long getVirtualNetworkTag() {
         return this.virtualNetworkTag;
     }
 

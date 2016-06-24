@@ -41,7 +41,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
 
     private static final long serialVersionUID = -303109118L;
 
-    @SerializedName("volumeAccessGroupID") private final long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
     @SerializedName("volumes") private final Long[] volumes;
 
     /**
@@ -51,7 +51,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public RemoveVolumesFromVolumeAccessGroupRequest(long volumeAccessGroupID, Long[] volumes) {
+    public RemoveVolumesFromVolumeAccessGroupRequest(Long volumeAccessGroupID, Long[] volumes) {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.volumes = volumes;
     }
@@ -60,7 +60,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
     /**
      * The ID of the volume access group to modify.
      **/
-    public long getVolumeAccessGroupID() {
+    public Long getVolumeAccessGroupID() {
         return this.volumeAccessGroupID;
     }
 
@@ -113,7 +113,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
     }
 
     public static class Builder {
-        private long volumeAccessGroupID;
+        private Long volumeAccessGroupID;
         private Long[] volumes;
 
         private Builder() { }
@@ -131,7 +131,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public RemoveVolumesFromVolumeAccessGroupRequest.Builder volumeAccessGroupID(final long volumeAccessGroupID) {
+        public RemoveVolumesFromVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }

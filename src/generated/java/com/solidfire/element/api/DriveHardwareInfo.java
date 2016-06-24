@@ -44,15 +44,15 @@ public class DriveHardwareInfo implements Serializable {
     @SerializedName("description") private final String description;
     @SerializedName("dev") private final String dev;
     @SerializedName("devpath") private final String devpath;
-    @SerializedName("driveSecurityAtMaximum") private final boolean driveSecurityAtMaximum;
-    @SerializedName("driveSecurityFrozen") private final boolean driveSecurityFrozen;
-    @SerializedName("driveSecurityLocked") private final boolean driveSecurityLocked;
+    @SerializedName("driveSecurityAtMaximum") private final Boolean driveSecurityAtMaximum;
+    @SerializedName("driveSecurityFrozen") private final Boolean driveSecurityFrozen;
+    @SerializedName("driveSecurityLocked") private final Boolean driveSecurityLocked;
     @SerializedName("logicalname") private final String logicalname;
     @SerializedName("product") private final String product;
-    @SerializedName("securityFeatureEnabled") private final boolean securityFeatureEnabled;
-    @SerializedName("securityFeatureSupported") private final boolean securityFeatureSupported;
+    @SerializedName("securityFeatureEnabled") private final Boolean securityFeatureEnabled;
+    @SerializedName("securityFeatureSupported") private final Boolean securityFeatureSupported;
     @SerializedName("serial") private final String serial;
-    @SerializedName("size") private final long size;
+    @SerializedName("size") private final Long size;
     @SerializedName("uuid") private final String uuid;
     @SerializedName("version") private final String version;
 
@@ -75,7 +75,7 @@ public class DriveHardwareInfo implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public DriveHardwareInfo(String description, String dev, String devpath, boolean driveSecurityAtMaximum, boolean driveSecurityFrozen, boolean driveSecurityLocked, String logicalname, String product, boolean securityFeatureEnabled, boolean securityFeatureSupported, String serial, long size, String uuid, String version) {
+    public DriveHardwareInfo(String description, String dev, String devpath, Boolean driveSecurityAtMaximum, Boolean driveSecurityFrozen, Boolean driveSecurityLocked, String logicalname, String product, Boolean securityFeatureEnabled, Boolean securityFeatureSupported, String serial, Long size, String uuid, String version) {
         this.serial = serial;
         this.size = size;
         this.description = description;
@@ -101,13 +101,13 @@ public class DriveHardwareInfo implements Serializable {
     public String getDevpath() {
         return this.devpath;
     }
-    public boolean getDriveSecurityAtMaximum() {
+    public Boolean getDriveSecurityAtMaximum() {
         return this.driveSecurityAtMaximum;
     }
-    public boolean getDriveSecurityFrozen() {
+    public Boolean getDriveSecurityFrozen() {
         return this.driveSecurityFrozen;
     }
-    public boolean getDriveSecurityLocked() {
+    public Boolean getDriveSecurityLocked() {
         return this.driveSecurityLocked;
     }
     public String getLogicalname() {
@@ -116,16 +116,16 @@ public class DriveHardwareInfo implements Serializable {
     public String getProduct() {
         return this.product;
     }
-    public boolean getSecurityFeatureEnabled() {
+    public Boolean getSecurityFeatureEnabled() {
         return this.securityFeatureEnabled;
     }
-    public boolean getSecurityFeatureSupported() {
+    public Boolean getSecurityFeatureSupported() {
         return this.securityFeatureSupported;
     }
     public String getSerial() {
         return this.serial;
     }
-    public long getSize() {
+    public Long getSize() {
         return this.size;
     }
     public String getUuid() {

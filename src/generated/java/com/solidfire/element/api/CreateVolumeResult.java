@@ -41,7 +41,7 @@ public class CreateVolumeResult implements Serializable {
 
     private static final long serialVersionUID = -373542667L;
 
-    @SerializedName("volumeID") private final long volumeID;
+    @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("curve") private final java.util.Map<String,Long> curve;
 
     /**
@@ -51,7 +51,7 @@ public class CreateVolumeResult implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public CreateVolumeResult(long volumeID, java.util.Map<String,Long> curve) {
+    public CreateVolumeResult(Long volumeID, java.util.Map<String,Long> curve) {
         this.volumeID = volumeID;
         this.curve = curve;
     }
@@ -60,7 +60,7 @@ public class CreateVolumeResult implements Serializable {
     /**
      * VolumeID for the newly created volume.
      **/
-    public long getVolumeID() {
+    public Long getVolumeID() {
         return this.volumeID;
     }
 

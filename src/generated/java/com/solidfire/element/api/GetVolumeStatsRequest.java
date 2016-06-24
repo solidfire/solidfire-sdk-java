@@ -41,7 +41,7 @@ public class GetVolumeStatsRequest implements Serializable {
 
     private static final long serialVersionUID = -886640137L;
 
-    @SerializedName("volumeID") private final long volumeID;
+    @SerializedName("volumeID") private final Long volumeID;
 
     /**
      * The Request object for the "GetVolumeStats" API Service call.
@@ -49,7 +49,7 @@ public class GetVolumeStatsRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public GetVolumeStatsRequest(long volumeID) {
+    public GetVolumeStatsRequest(Long volumeID) {
         this.volumeID = volumeID;
     }
 
@@ -57,7 +57,7 @@ public class GetVolumeStatsRequest implements Serializable {
     /**
      * Specifies the volume for which statistics is gathered.
      **/
-    public long getVolumeID() {
+    public Long getVolumeID() {
         return this.volumeID;
     }
 
@@ -101,7 +101,7 @@ public class GetVolumeStatsRequest implements Serializable {
     }
 
     public static class Builder {
-        private long volumeID;
+        private Long volumeID;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class GetVolumeStatsRequest implements Serializable {
             return this;
         }
 
-        public GetVolumeStatsRequest.Builder volumeID(final long volumeID) {
+        public GetVolumeStatsRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

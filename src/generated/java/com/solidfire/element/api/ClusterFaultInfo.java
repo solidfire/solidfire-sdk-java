@@ -45,12 +45,12 @@ public class ClusterFaultInfo implements Serializable {
     @SerializedName("type") private final String type;
     @SerializedName("code") private final String code;
     @SerializedName("details") private final String details;
-    @SerializedName("nodeHardwareFaultID") private final long nodeHardwareFaultID;
-    @SerializedName("nodeID") private final long nodeID;
-    @SerializedName("serviceID") private final long serviceID;
-    @SerializedName("driveID") private final long driveID;
-    @SerializedName("resolved") private final boolean resolved;
-    @SerializedName("clusterFaultID") private final long clusterFaultID;
+    @SerializedName("nodeHardwareFaultID") private final Long nodeHardwareFaultID;
+    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("serviceID") private final Long serviceID;
+    @SerializedName("driveID") private final Long driveID;
+    @SerializedName("resolved") private final Boolean resolved;
+    @SerializedName("clusterFaultID") private final Long clusterFaultID;
     @SerializedName("date") private final String date;
     @SerializedName("resolvedDate") private final String resolvedDate;
     @SerializedName("data") private final Object data;
@@ -73,7 +73,7 @@ public class ClusterFaultInfo implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ClusterFaultInfo(String severity, String type, String code, String details, long nodeHardwareFaultID, long nodeID, long serviceID, long driveID, boolean resolved, long clusterFaultID, String date, String resolvedDate, Object data) {
+    public ClusterFaultInfo(String severity, String type, String code, String details, Long nodeHardwareFaultID, Long nodeID, Long serviceID, Long driveID, Boolean resolved, Long clusterFaultID, String date, String resolvedDate, Object data) {
         this.clusterFaultID = clusterFaultID;
         this.nodeHardwareFaultID = nodeHardwareFaultID;
         this.data = data;
@@ -101,22 +101,22 @@ public class ClusterFaultInfo implements Serializable {
     public String getDetails() {
         return this.details;
     }
-    public long getNodeHardwareFaultID() {
+    public Long getNodeHardwareFaultID() {
         return this.nodeHardwareFaultID;
     }
-    public long getNodeID() {
+    public Long getNodeID() {
         return this.nodeID;
     }
-    public long getServiceID() {
+    public Long getServiceID() {
         return this.serviceID;
     }
-    public long getDriveID() {
+    public Long getDriveID() {
         return this.driveID;
     }
-    public boolean getResolved() {
+    public Boolean getResolved() {
         return this.resolved;
     }
-    public long getClusterFaultID() {
+    public Long getClusterFaultID() {
         return this.clusterFaultID;
     }
     public String getDate() {

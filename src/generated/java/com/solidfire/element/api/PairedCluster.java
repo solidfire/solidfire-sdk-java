@@ -42,9 +42,9 @@ public class PairedCluster implements Serializable {
     private static final long serialVersionUID = 1075756961L;
 
     @SerializedName("clusterName") private final String clusterName;
-    @SerializedName("clusterPairID") private final long clusterPairID;
+    @SerializedName("clusterPairID") private final Long clusterPairID;
     @SerializedName("clusterPairUUID") private final String clusterPairUUID;
-    @SerializedName("latency") private final long latency;
+    @SerializedName("latency") private final Long latency;
     @SerializedName("mvip") private final String mvip;
     @SerializedName("status") private final String status;
     @SerializedName("version") private final String version;
@@ -61,7 +61,7 @@ public class PairedCluster implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public PairedCluster(String clusterName, long clusterPairID, String clusterPairUUID, long latency, String mvip, String status, String version) {
+    public PairedCluster(String clusterName, Long clusterPairID, String clusterPairUUID, Long latency, String mvip, String status, String version) {
         this.clusterPairID = clusterPairID;
         this.mvip = mvip;
         this.latency = latency;
@@ -82,7 +82,7 @@ public class PairedCluster implements Serializable {
     /**
      * Unique ID given to each cluster in the pair.
      **/
-    public long getClusterPairID() {
+    public Long getClusterPairID() {
         return this.clusterPairID;
     }
 
@@ -96,7 +96,7 @@ public class PairedCluster implements Serializable {
     /**
      * Number, in milliseconds, of latency between clusters.
      **/
-    public long getLatency() {
+    public Long getLatency() {
         return this.latency;
     }
 

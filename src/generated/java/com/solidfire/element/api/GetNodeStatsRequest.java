@@ -41,7 +41,7 @@ public class GetNodeStatsRequest implements Serializable {
 
     private static final long serialVersionUID = -721632605L;
 
-    @SerializedName("nodeID") private final long nodeID;
+    @SerializedName("nodeID") private final Long nodeID;
 
     /**
      * The Request object for the "GetNodeStats" API Service call.
@@ -49,7 +49,7 @@ public class GetNodeStatsRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public GetNodeStatsRequest(long nodeID) {
+    public GetNodeStatsRequest(Long nodeID) {
         this.nodeID = nodeID;
     }
 
@@ -57,7 +57,7 @@ public class GetNodeStatsRequest implements Serializable {
     /**
      * Specifies the node for which statistics are gathered.
      **/
-    public long getNodeID() {
+    public Long getNodeID() {
         return this.nodeID;
     }
 
@@ -101,7 +101,7 @@ public class GetNodeStatsRequest implements Serializable {
     }
 
     public static class Builder {
-        private long nodeID;
+        private Long nodeID;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class GetNodeStatsRequest implements Serializable {
             return this;
         }
 
-        public GetNodeStatsRequest.Builder nodeID(final long nodeID) {
+        public GetNodeStatsRequest.Builder nodeID(final Long nodeID) {
             this.nodeID = nodeID;
             return this;
         }

@@ -41,7 +41,7 @@ public class CloneVolumeRequest implements Serializable {
 
     private static final long serialVersionUID = -956856912L;
 
-    @SerializedName("volumeID") private final long volumeID;
+    @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("name") private final String name;
     @SerializedName("newAccountID") private final Optional<Long> newAccountID;
     @SerializedName("newSize") private final Optional<Long> newSize;
@@ -61,7 +61,7 @@ public class CloneVolumeRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public CloneVolumeRequest(long volumeID, String name, Optional<Long> newAccountID, Optional<Long> newSize, Optional<String> access, Optional<Long> snapshotID, Optional<java.util.Map<String, Object>> attributes) {
+    public CloneVolumeRequest(Long volumeID, String name, Optional<Long> newAccountID, Optional<Long> newSize, Optional<String> access, Optional<Long> snapshotID, Optional<java.util.Map<String, Object>> attributes) {
         this.name = name;
         this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
         this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
@@ -75,7 +75,7 @@ public class CloneVolumeRequest implements Serializable {
     /**
      * The ID of the volume to clone.
      **/
-    public long getVolumeID() {
+    public Long getVolumeID() {
         return this.volumeID;
     }
 
@@ -189,7 +189,7 @@ public class CloneVolumeRequest implements Serializable {
     }
 
     public static class Builder {
-        private long volumeID;
+        private Long volumeID;
         private String name;
         private Optional<Long> newAccountID;
         private Optional<Long> newSize;
@@ -222,7 +222,7 @@ public class CloneVolumeRequest implements Serializable {
             return this;
         }
 
-        public CloneVolumeRequest.Builder volumeID(final long volumeID) {
+        public CloneVolumeRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

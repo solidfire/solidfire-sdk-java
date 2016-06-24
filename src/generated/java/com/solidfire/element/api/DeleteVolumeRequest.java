@@ -41,7 +41,7 @@ public class DeleteVolumeRequest implements Serializable {
 
     private static final long serialVersionUID = 1979521029L;
 
-    @SerializedName("volumeID") private final long volumeID;
+    @SerializedName("volumeID") private final Long volumeID;
 
     /**
      * The Request object for the "DeleteVolume" API Service call.
@@ -49,7 +49,7 @@ public class DeleteVolumeRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public DeleteVolumeRequest(long volumeID) {
+    public DeleteVolumeRequest(Long volumeID) {
         this.volumeID = volumeID;
     }
 
@@ -57,7 +57,7 @@ public class DeleteVolumeRequest implements Serializable {
     /**
      * The ID of the volume to delete.
      **/
-    public long getVolumeID() {
+    public Long getVolumeID() {
         return this.volumeID;
     }
 
@@ -101,7 +101,7 @@ public class DeleteVolumeRequest implements Serializable {
     }
 
     public static class Builder {
-        private long volumeID;
+        private Long volumeID;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class DeleteVolumeRequest implements Serializable {
             return this;
         }
 
-        public DeleteVolumeRequest.Builder volumeID(final long volumeID) {
+        public DeleteVolumeRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

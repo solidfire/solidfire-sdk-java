@@ -41,10 +41,10 @@ public class PendingNode implements Serializable {
 
     private static final long serialVersionUID = -829314366L;
 
-    @SerializedName("pendingNodeID") private final long pendingNodeID;
-    @SerializedName("AssignedNodeID") private final long assignedNodeID;
+    @SerializedName("pendingNodeID") private final Long pendingNodeID;
+    @SerializedName("AssignedNodeID") private final Long assignedNodeID;
     @SerializedName("name") private final String name;
-    @SerializedName("compatible") private final boolean compatible;
+    @SerializedName("compatible") private final Boolean compatible;
     @SerializedName("platformInfo") private final Platform platformInfo;
     @SerializedName("cip") private final String cip;
     @SerializedName("cipi") private final String cipi;
@@ -74,7 +74,7 @@ public class PendingNode implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public PendingNode(long pendingNodeID, long assignedNodeID, String name, boolean compatible, Platform platformInfo, String cip, String cipi, String mip, String mipi, String sip, String sipi, String softwareVersion, String uuid) {
+    public PendingNode(Long pendingNodeID, Long assignedNodeID, String name, Boolean compatible, Platform platformInfo, String cip, String cipi, String mip, String mipi, String sip, String sipi, String softwareVersion, String uuid) {
         this.name = name;
         this.sip = sip;
         this.cipi = cipi;
@@ -90,10 +90,10 @@ public class PendingNode implements Serializable {
         this.mipi = mipi;
     }
 
-    public long getPendingNodeID() {
+    public Long getPendingNodeID() {
         return this.pendingNodeID;
     }
-    public long getAssignedNodeID() {
+    public Long getAssignedNodeID() {
         return this.assignedNodeID;
     }
 
@@ -103,7 +103,7 @@ public class PendingNode implements Serializable {
     public String getName() {
         return this.name;
     }
-    public boolean getCompatible() {
+    public Boolean getCompatible() {
         return this.compatible;
     }
 

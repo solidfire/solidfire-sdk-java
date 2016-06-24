@@ -42,7 +42,7 @@ public class AddressBlock implements Serializable {
     private static final long serialVersionUID = 774405349L;
 
     @SerializedName("start") private final String start;
-    @SerializedName("size") private final long size;
+    @SerializedName("size") private final Long size;
 
     /**
      * Unique Range of IP addresses to include in the virtual network.
@@ -51,7 +51,7 @@ public class AddressBlock implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public AddressBlock(String start, long size) {
+    public AddressBlock(String start, Long size) {
         this.start = start;
         this.size = size;
     }
@@ -67,7 +67,7 @@ public class AddressBlock implements Serializable {
     /**
      * Number of IP addresses to include in the block.
      **/
-    public long getSize() {
+    public Long getSize() {
         return this.size;
     }
 

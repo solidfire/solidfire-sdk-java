@@ -41,7 +41,7 @@ public class GetVolumeEfficiencyRequest implements Serializable {
 
     private static final long serialVersionUID = 467440763L;
 
-    @SerializedName("volumeID") private final long volumeID;
+    @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("force") private final Optional<Boolean> force;
 
     /**
@@ -51,7 +51,7 @@ public class GetVolumeEfficiencyRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public GetVolumeEfficiencyRequest(long volumeID, Optional<Boolean> force) {
+    public GetVolumeEfficiencyRequest(Long volumeID, Optional<Boolean> force) {
         this.volumeID = volumeID;
         this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
@@ -60,7 +60,7 @@ public class GetVolumeEfficiencyRequest implements Serializable {
     /**
      * Specifies the volume for which capacity is computed.
      **/
-    public long getVolumeID() {
+    public Long getVolumeID() {
         return this.volumeID;
     }
     public Optional<Boolean> getForce() {
@@ -110,7 +110,7 @@ public class GetVolumeEfficiencyRequest implements Serializable {
     }
 
     public static class Builder {
-        private long volumeID;
+        private Long volumeID;
         private Optional<Boolean> force;
 
         private Builder() { }
@@ -128,7 +128,7 @@ public class GetVolumeEfficiencyRequest implements Serializable {
             return this;
         }
 
-        public GetVolumeEfficiencyRequest.Builder volumeID(final long volumeID) {
+        public GetVolumeEfficiencyRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

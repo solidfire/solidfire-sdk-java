@@ -41,7 +41,7 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
 
     private static final long serialVersionUID = -2119409487L;
 
-    @SerializedName("volumeAccessGroupID") private final long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
     @SerializedName("initiators") private final String[] initiators;
 
     /**
@@ -51,7 +51,7 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public AddInitiatorsToVolumeAccessGroupRequest(long volumeAccessGroupID, String[] initiators) {
+    public AddInitiatorsToVolumeAccessGroupRequest(Long volumeAccessGroupID, String[] initiators) {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.initiators = initiators;
     }
@@ -60,7 +60,7 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
     /**
      * The ID of the volume access group to modify.
      **/
-    public long getVolumeAccessGroupID() {
+    public Long getVolumeAccessGroupID() {
         return this.volumeAccessGroupID;
     }
 
@@ -113,7 +113,7 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
     }
 
     public static class Builder {
-        private long volumeAccessGroupID;
+        private Long volumeAccessGroupID;
         private String[] initiators;
 
         private Builder() { }
@@ -131,7 +131,7 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public AddInitiatorsToVolumeAccessGroupRequest.Builder volumeAccessGroupID(final long volumeAccessGroupID) {
+        public AddInitiatorsToVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }

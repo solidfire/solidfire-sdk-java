@@ -41,9 +41,9 @@ public class Node implements Serializable {
 
     private static final long serialVersionUID = 1456687201L;
 
-    @SerializedName("nodeID") private final long nodeID;
-    @SerializedName("associatedMasterServiceID") private final long associatedMasterServiceID;
-    @SerializedName("associatedFServiceID") private final long associatedFServiceID;
+    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("associatedMasterServiceID") private final Long associatedMasterServiceID;
+    @SerializedName("associatedFServiceID") private final Long associatedFServiceID;
     @SerializedName("fibreChannelTargetPortGroup") private final String fibreChannelTargetPortGroup;
     @SerializedName("name") private final String name;
     @SerializedName("platformInfo") private final Platform platformInfo;
@@ -79,7 +79,7 @@ public class Node implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public Node(long nodeID, long associatedMasterServiceID, long associatedFServiceID, String fibreChannelTargetPortGroup, String name, Platform platformInfo, String softwareVersion, String cip, String cipi, String mip, String mipi, String sip, String sipi, String uuid, java.util.Map<String, Object> attributes) {
+    public Node(Long nodeID, Long associatedMasterServiceID, Long associatedFServiceID, String fibreChannelTargetPortGroup, String name, Platform platformInfo, String softwareVersion, String cip, String cipi, String mip, String mipi, String sip, String sipi, String uuid, java.util.Map<String, Object> attributes) {
         this.name = name;
         this.sip = sip;
         this.cipi = cipi;
@@ -101,17 +101,17 @@ public class Node implements Serializable {
     /**
      * The unique identifier for this node.
      **/
-    public long getNodeID() {
+    public Long getNodeID() {
         return this.nodeID;
     }
 
     /**
      * The master service responsible for controlling other services on this node.
      **/
-    public long getAssociatedMasterServiceID() {
+    public Long getAssociatedMasterServiceID() {
         return this.associatedMasterServiceID;
     }
-    public long getAssociatedFServiceID() {
+    public Long getAssociatedFServiceID() {
         return this.associatedFServiceID;
     }
     public String getFibreChannelTargetPortGroup() {

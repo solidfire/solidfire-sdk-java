@@ -41,7 +41,7 @@ public class GroupSnapshot implements Serializable {
 
     private static final long serialVersionUID = -430612536L;
 
-    @SerializedName("groupSnapshotID") private final long groupSnapshotID;
+    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
     @SerializedName("groupSnapshotUUID") private final String groupSnapshotUUID;
     @SerializedName("members") private final GroupSnapshotMembers[] members;
     @SerializedName("name") private final String name;
@@ -61,7 +61,7 @@ public class GroupSnapshot implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public GroupSnapshot(long groupSnapshotID, String groupSnapshotUUID, GroupSnapshotMembers[] members, String name, String createTime, String status, java.util.Map<String, Object> attributes) {
+    public GroupSnapshot(Long groupSnapshotID, String groupSnapshotUUID, GroupSnapshotMembers[] members, String name, String createTime, String status, java.util.Map<String, Object> attributes) {
         this.name = name;
         this.createTime = createTime;
         this.attributes = attributes;
@@ -75,7 +75,7 @@ public class GroupSnapshot implements Serializable {
     /**
      * Unique ID of the new group snapshot.
      **/
-    public long getGroupSnapshotID() {
+    public Long getGroupSnapshotID() {
         return this.groupSnapshotID;
     }
 

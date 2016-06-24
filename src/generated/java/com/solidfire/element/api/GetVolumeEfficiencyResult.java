@@ -41,10 +41,10 @@ public class GetVolumeEfficiencyResult implements Serializable {
 
     private static final long serialVersionUID = -237066237L;
 
-    @SerializedName("compression") private final double compression;
-    @SerializedName("deduplication") private final double deduplication;
+    @SerializedName("compression") private final Double compression;
+    @SerializedName("deduplication") private final Double deduplication;
     @SerializedName("missingVolumes") private final Long[] missingVolumes;
-    @SerializedName("thinProvisioning") private final double thinProvisioning;
+    @SerializedName("thinProvisioning") private final Double thinProvisioning;
     @SerializedName("timestamp") private final String timestamp;
 
     /**
@@ -56,7 +56,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public GetVolumeEfficiencyResult(double compression, double deduplication, double thinProvisioning, String timestamp) {
+    public GetVolumeEfficiencyResult(Double compression, Double deduplication, Double thinProvisioning, String timestamp) {
         this.timestamp = timestamp;
         this.compression = compression;
         this.thinProvisioning = thinProvisioning;
@@ -74,7 +74,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * @since 8.0
      **/
     @Since("8.0")
-    public GetVolumeEfficiencyResult(double compression, double deduplication, Long[] missingVolumes, double thinProvisioning, String timestamp) {
+    public GetVolumeEfficiencyResult(Double compression, Double deduplication, Long[] missingVolumes, Double thinProvisioning, String timestamp) {
         this.timestamp = timestamp;
         this.compression = compression;
         this.thinProvisioning = thinProvisioning;
@@ -87,7 +87,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * The amount of space being saved by compressing data on a single volume.
      * Stated as a ratio where &quot;1&quot; means data has been stored without being compressed.
      **/
-    public double getCompression() {
+    public Double getCompression() {
         return this.compression;
     }
 
@@ -95,7 +95,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * The amount of space being saved on a single volume by not duplicating data.
      * Stated as a ratio.
      **/
-    public double getDeduplication() {
+    public Double getDeduplication() {
         return this.deduplication;
     }
 
@@ -114,7 +114,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * The ratio of space used to the amount of space allocated for storing data.
      * Stated as a ratio.
      **/
-    public double getThinProvisioning() {
+    public Double getThinProvisioning() {
         return this.thinProvisioning;
     }
 

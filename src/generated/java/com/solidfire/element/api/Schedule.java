@@ -42,21 +42,21 @@ public class Schedule implements Serializable {
     private static final long serialVersionUID = 1843503290L;
 
     @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
-    @SerializedName("hasError") private final boolean hasError;
-    @SerializedName("hours") private final long hours;
+    @SerializedName("hasError") private final Boolean hasError;
+    @SerializedName("hours") private final Long hours;
     @SerializedName("lastRunStatus") private final String lastRunStatus;
     @SerializedName("lastRunTimeStart") private final String lastRunTimeStart;
-    @SerializedName("minutes") private final long minutes;
+    @SerializedName("minutes") private final Long minutes;
     @SerializedName("monthdays") private final Long[] monthdays;
-    @SerializedName("paused") private final boolean paused;
-    @SerializedName("recurring") private final boolean recurring;
-    @SerializedName("runNextInterval") private final boolean runNextInterval;
-    @SerializedName("scheduleID") private final long scheduleID;
+    @SerializedName("paused") private final Boolean paused;
+    @SerializedName("recurring") private final Boolean recurring;
+    @SerializedName("runNextInterval") private final Boolean runNextInterval;
+    @SerializedName("scheduleID") private final Long scheduleID;
     @SerializedName("scheduleInfo") private final ScheduleInfo scheduleInfo;
     @SerializedName("scheduleName") private final String scheduleName;
     @SerializedName("scheduleType") private final String scheduleType;
     @SerializedName("startingDate") private final String startingDate;
-    @SerializedName("toBeDeleted") private final boolean toBeDeleted;
+    @SerializedName("toBeDeleted") private final Boolean toBeDeleted;
     @SerializedName("weekdays") private final Weekday[] weekdays;
 
     /**
@@ -81,7 +81,7 @@ public class Schedule implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public Schedule(java.util.Map<String, Object> attributes, boolean hasError, long hours, String lastRunStatus, String lastRunTimeStart, long minutes, Long[] monthdays, boolean paused, boolean recurring, boolean runNextInterval, long scheduleID, ScheduleInfo scheduleInfo, String scheduleName, String scheduleType, String startingDate, boolean toBeDeleted, Weekday[] weekdays) {
+    public Schedule(java.util.Map<String, Object> attributes, Boolean hasError, Long hours, String lastRunStatus, String lastRunTimeStart, Long minutes, Long[] monthdays, Boolean paused, Boolean recurring, Boolean runNextInterval, Long scheduleID, ScheduleInfo scheduleInfo, String scheduleName, String scheduleType, String startingDate, Boolean toBeDeleted, Weekday[] weekdays) {
         this.weekdays = weekdays;
         this.scheduleID = scheduleID;
         this.lastRunStatus = lastRunStatus;
@@ -116,7 +116,7 @@ public class Schedule implements Serializable {
     /**
      * Indicates whether or not the schedule has errors.
      **/
-    public boolean getHasError() {
+    public Boolean getHasError() {
         return this.hasError;
     }
 
@@ -124,7 +124,7 @@ public class Schedule implements Serializable {
      * Shows the hours that will elapse before the next snapshot is created.<br/>
      * Valid values are: 0 - 24
      **/
-    public long getHours() {
+    public Long getHours() {
         return this.hours;
     }
 
@@ -152,7 +152,7 @@ public class Schedule implements Serializable {
      * Shows the minutes that will elapse before the next snapshot is created.
      * Valid values are: 0 - 59
      **/
-    public long getMinutes() {
+    public Long getMinutes() {
         return this.minutes;
     }
 
@@ -167,28 +167,28 @@ public class Schedule implements Serializable {
     /**
      * Indicates whether or not the schedule is paused.
      **/
-    public boolean getPaused() {
+    public Boolean getPaused() {
         return this.paused;
     }
 
     /**
      * Indicates whether or not the schedule is recurring.
      **/
-    public boolean getRecurring() {
+    public Boolean getRecurring() {
         return this.recurring;
     }
 
     /**
      * Indicates whether or not the schedule will run the next time the scheduler is active. When set to "true", the schedule will run the next time the scheduler is active and then reset back to "false".
      **/
-    public boolean getRunNextInterval() {
+    public Boolean getRunNextInterval() {
         return this.runNextInterval;
     }
 
     /**
      * Unique ID of the schedule
      **/
-    public long getScheduleID() {
+    public Long getScheduleID() {
         return this.scheduleID;
     }
 
@@ -223,7 +223,7 @@ public class Schedule implements Serializable {
     /**
      * Indicates if the schedule is marked for deletion.
      **/
-    public boolean getToBeDeleted() {
+    public Boolean getToBeDeleted() {
         return this.toBeDeleted;
     }
 

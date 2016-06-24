@@ -42,9 +42,9 @@ public class CreateVolumeRequest implements Serializable {
     private static final long serialVersionUID = -512525822L;
 
     @SerializedName("name") private final String name;
-    @SerializedName("accountID") private final long accountID;
-    @SerializedName("totalSize") private final long totalSize;
-    @SerializedName("enable512e") private final boolean enable512e;
+    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("totalSize") private final Long totalSize;
+    @SerializedName("enable512e") private final Boolean enable512e;
     @SerializedName("qos") private final Optional<QoS> qos;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
@@ -59,7 +59,7 @@ public class CreateVolumeRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public CreateVolumeRequest(String name, long accountID, long totalSize, boolean enable512e, Optional<QoS> qos, Optional<java.util.Map<String, Object>> attributes) {
+    public CreateVolumeRequest(String name, Long accountID, Long totalSize, Boolean enable512e, Optional<QoS> qos, Optional<java.util.Map<String, Object>> attributes) {
         this.name = name;
         this.totalSize = totalSize;
         this.enable512e = enable512e;
@@ -81,21 +81,21 @@ public class CreateVolumeRequest implements Serializable {
     /**
      * AccountID for the owner of this volume.
      **/
-    public long getAccountID() {
+    public Long getAccountID() {
         return this.accountID;
     }
 
     /**
      * Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
      **/
-    public long getTotalSize() {
+    public Long getTotalSize() {
         return this.totalSize;
     }
 
     /**
      * Should the volume provides 512-byte sector emulation?
      **/
-    public boolean getEnable512e() {
+    public Boolean getEnable512e() {
         return this.enable512e;
     }
 
@@ -169,9 +169,9 @@ public class CreateVolumeRequest implements Serializable {
 
     public static class Builder {
         private String name;
-        private long accountID;
-        private long totalSize;
-        private boolean enable512e;
+        private Long accountID;
+        private Long totalSize;
+        private Boolean enable512e;
         private Optional<QoS> qos;
         private Optional<java.util.Map<String, Object>> attributes;
 
@@ -203,17 +203,17 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeRequest.Builder accountID(final long accountID) {
+        public CreateVolumeRequest.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }
 
-        public CreateVolumeRequest.Builder totalSize(final long totalSize) {
+        public CreateVolumeRequest.Builder totalSize(final Long totalSize) {
             this.totalSize = totalSize;
             return this;
         }
 
-        public CreateVolumeRequest.Builder enable512e(final boolean enable512e) {
+        public CreateVolumeRequest.Builder enable512e(final Boolean enable512e) {
             this.enable512e = enable512e;
             return this;
         }

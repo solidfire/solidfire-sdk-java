@@ -42,7 +42,7 @@ public class ResetDriveDetails implements Serializable {
     private static final long serialVersionUID = 1953157822L;
 
     @SerializedName("drive") private final String drive;
-    @SerializedName("returnCode") private final long returnCode;
+    @SerializedName("returnCode") private final Long returnCode;
     @SerializedName("stderr") private final String stderr;
     @SerializedName("stdout") private final String stdout;
 
@@ -55,7 +55,7 @@ public class ResetDriveDetails implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ResetDriveDetails(String drive, long returnCode, String stderr, String stdout) {
+    public ResetDriveDetails(String drive, Long returnCode, String stderr, String stdout) {
         this.drive = drive;
         this.returnCode = returnCode;
         this.stderr = stderr;
@@ -69,7 +69,7 @@ public class ResetDriveDetails implements Serializable {
     public String getDrive() {
         return this.drive;
     }
-    public long getReturnCode() {
+    public Long getReturnCode() {
         return this.returnCode;
     }
     public String getStderr() {

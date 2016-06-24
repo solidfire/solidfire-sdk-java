@@ -41,39 +41,39 @@ public class GetLimitsResult implements Serializable {
 
     private static final long serialVersionUID = 699867316L;
 
-    @SerializedName("accountCountMax") private final long accountCountMax;
-    @SerializedName("accountNameLengthMax") private final long accountNameLengthMax;
-    @SerializedName("accountNameLengthMin") private final long accountNameLengthMin;
-    @SerializedName("bulkVolumeJobsPerNodeMax") private final long bulkVolumeJobsPerNodeMax;
-    @SerializedName("bulkVolumeJobsPerVolumeMax") private final long bulkVolumeJobsPerVolumeMax;
-    @SerializedName("cloneJobsPerVolumeMax") private final long cloneJobsPerVolumeMax;
-    @SerializedName("clusterPairsCountMax") private final long clusterPairsCountMax;
-    @SerializedName("initiatorNameLengthMax") private final long initiatorNameLengthMax;
-    @SerializedName("initiatorsPerVolumeAccessGroupCountMax") private final long initiatorsPerVolumeAccessGroupCountMax;
-    @SerializedName("secretLengthMax") private final long secretLengthMax;
-    @SerializedName("secretLengthMin") private final long secretLengthMin;
-    @SerializedName("snapshotNameLengthMax") private final long snapshotNameLengthMax;
-    @SerializedName("snapshotsPerVolumeMax") private final long snapshotsPerVolumeMax;
-    @SerializedName("volumeAccessGroupCountMax") private final long volumeAccessGroupCountMax;
-    @SerializedName("volumeAccessGroupLunMax") private final long volumeAccessGroupLunMax;
-    @SerializedName("volumeAccessGroupNameLengthMax") private final long volumeAccessGroupNameLengthMax;
-    @SerializedName("volumeAccessGroupNameLengthMin") private final long volumeAccessGroupNameLengthMin;
-    @SerializedName("volumeAccessGroupsPerInitiatorCountMax") private final long volumeAccessGroupsPerInitiatorCountMax;
-    @SerializedName("volumeAccessGroupsPerVolumeCountMax") private final long volumeAccessGroupsPerVolumeCountMax;
-    @SerializedName("volumeBurstIOPSMax") private final long volumeBurstIOPSMax;
-    @SerializedName("volumeBurstIOPSMin") private final long volumeBurstIOPSMin;
-    @SerializedName("volumeCountMax") private final long volumeCountMax;
-    @SerializedName("volumeMaxIOPSMax") private final long volumeMaxIOPSMax;
-    @SerializedName("volumeMaxIOPSMin") private final long volumeMaxIOPSMin;
-    @SerializedName("volumeMinIOPSMax") private final long volumeMinIOPSMax;
-    @SerializedName("volumeMinIOPSMin") private final long volumeMinIOPSMin;
-    @SerializedName("volumeNameLengthMax") private final long volumeNameLengthMax;
-    @SerializedName("volumeNameLengthMin") private final long volumeNameLengthMin;
-    @SerializedName("volumeSizeMax") private final long volumeSizeMax;
-    @SerializedName("volumeSizeMin") private final long volumeSizeMin;
-    @SerializedName("volumesPerAccountCountMax") private final long volumesPerAccountCountMax;
-    @SerializedName("volumesPerGroupSnapshotMax") private final long volumesPerGroupSnapshotMax;
-    @SerializedName("volumesPerVolumeAccessGroupCountMax") private final long volumesPerVolumeAccessGroupCountMax;
+    @SerializedName("accountCountMax") private final Long accountCountMax;
+    @SerializedName("accountNameLengthMax") private final Long accountNameLengthMax;
+    @SerializedName("accountNameLengthMin") private final Long accountNameLengthMin;
+    @SerializedName("bulkVolumeJobsPerNodeMax") private final Long bulkVolumeJobsPerNodeMax;
+    @SerializedName("bulkVolumeJobsPerVolumeMax") private final Long bulkVolumeJobsPerVolumeMax;
+    @SerializedName("cloneJobsPerVolumeMax") private final Long cloneJobsPerVolumeMax;
+    @SerializedName("clusterPairsCountMax") private final Long clusterPairsCountMax;
+    @SerializedName("initiatorNameLengthMax") private final Long initiatorNameLengthMax;
+    @SerializedName("initiatorsPerVolumeAccessGroupCountMax") private final Long initiatorsPerVolumeAccessGroupCountMax;
+    @SerializedName("secretLengthMax") private final Long secretLengthMax;
+    @SerializedName("secretLengthMin") private final Long secretLengthMin;
+    @SerializedName("snapshotNameLengthMax") private final Long snapshotNameLengthMax;
+    @SerializedName("snapshotsPerVolumeMax") private final Long snapshotsPerVolumeMax;
+    @SerializedName("volumeAccessGroupCountMax") private final Long volumeAccessGroupCountMax;
+    @SerializedName("volumeAccessGroupLunMax") private final Long volumeAccessGroupLunMax;
+    @SerializedName("volumeAccessGroupNameLengthMax") private final Long volumeAccessGroupNameLengthMax;
+    @SerializedName("volumeAccessGroupNameLengthMin") private final Long volumeAccessGroupNameLengthMin;
+    @SerializedName("volumeAccessGroupsPerInitiatorCountMax") private final Long volumeAccessGroupsPerInitiatorCountMax;
+    @SerializedName("volumeAccessGroupsPerVolumeCountMax") private final Long volumeAccessGroupsPerVolumeCountMax;
+    @SerializedName("volumeBurstIOPSMax") private final Long volumeBurstIOPSMax;
+    @SerializedName("volumeBurstIOPSMin") private final Long volumeBurstIOPSMin;
+    @SerializedName("volumeCountMax") private final Long volumeCountMax;
+    @SerializedName("volumeMaxIOPSMax") private final Long volumeMaxIOPSMax;
+    @SerializedName("volumeMaxIOPSMin") private final Long volumeMaxIOPSMin;
+    @SerializedName("volumeMinIOPSMax") private final Long volumeMinIOPSMax;
+    @SerializedName("volumeMinIOPSMin") private final Long volumeMinIOPSMin;
+    @SerializedName("volumeNameLengthMax") private final Long volumeNameLengthMax;
+    @SerializedName("volumeNameLengthMin") private final Long volumeNameLengthMin;
+    @SerializedName("volumeSizeMax") private final Long volumeSizeMax;
+    @SerializedName("volumeSizeMin") private final Long volumeSizeMin;
+    @SerializedName("volumesPerAccountCountMax") private final Long volumesPerAccountCountMax;
+    @SerializedName("volumesPerGroupSnapshotMax") private final Long volumesPerGroupSnapshotMax;
+    @SerializedName("volumesPerVolumeAccessGroupCountMax") private final Long volumesPerVolumeAccessGroupCountMax;
 
     /**
      * Limits for the cluster
@@ -113,7 +113,7 @@ public class GetLimitsResult implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public GetLimitsResult(long accountCountMax, long accountNameLengthMax, long accountNameLengthMin, long bulkVolumeJobsPerNodeMax, long bulkVolumeJobsPerVolumeMax, long cloneJobsPerVolumeMax, long clusterPairsCountMax, long initiatorNameLengthMax, long initiatorsPerVolumeAccessGroupCountMax, long secretLengthMax, long secretLengthMin, long snapshotNameLengthMax, long snapshotsPerVolumeMax, long volumeAccessGroupCountMax, long volumeAccessGroupLunMax, long volumeAccessGroupNameLengthMax, long volumeAccessGroupNameLengthMin, long volumeAccessGroupsPerInitiatorCountMax, long volumeAccessGroupsPerVolumeCountMax, long volumeBurstIOPSMax, long volumeBurstIOPSMin, long volumeCountMax, long volumeMaxIOPSMax, long volumeMaxIOPSMin, long volumeMinIOPSMax, long volumeMinIOPSMin, long volumeNameLengthMax, long volumeNameLengthMin, long volumeSizeMax, long volumeSizeMin, long volumesPerAccountCountMax, long volumesPerGroupSnapshotMax, long volumesPerVolumeAccessGroupCountMax) {
+    public GetLimitsResult(Long accountCountMax, Long accountNameLengthMax, Long accountNameLengthMin, Long bulkVolumeJobsPerNodeMax, Long bulkVolumeJobsPerVolumeMax, Long cloneJobsPerVolumeMax, Long clusterPairsCountMax, Long initiatorNameLengthMax, Long initiatorsPerVolumeAccessGroupCountMax, Long secretLengthMax, Long secretLengthMin, Long snapshotNameLengthMax, Long snapshotsPerVolumeMax, Long volumeAccessGroupCountMax, Long volumeAccessGroupLunMax, Long volumeAccessGroupNameLengthMax, Long volumeAccessGroupNameLengthMin, Long volumeAccessGroupsPerInitiatorCountMax, Long volumeAccessGroupsPerVolumeCountMax, Long volumeBurstIOPSMax, Long volumeBurstIOPSMin, Long volumeCountMax, Long volumeMaxIOPSMax, Long volumeMaxIOPSMin, Long volumeMinIOPSMax, Long volumeMinIOPSMin, Long volumeNameLengthMax, Long volumeNameLengthMin, Long volumeSizeMax, Long volumeSizeMin, Long volumesPerAccountCountMax, Long volumesPerGroupSnapshotMax, Long volumesPerVolumeAccessGroupCountMax) {
         this.accountCountMax = accountCountMax;
         this.clusterPairsCountMax = clusterPairsCountMax;
         this.volumeAccessGroupLunMax = volumeAccessGroupLunMax;
@@ -149,103 +149,103 @@ public class GetLimitsResult implements Serializable {
         this.volumeNameLengthMax = volumeNameLengthMax;
     }
 
-    public long getAccountCountMax() {
+    public Long getAccountCountMax() {
         return this.accountCountMax;
     }
-    public long getAccountNameLengthMax() {
+    public Long getAccountNameLengthMax() {
         return this.accountNameLengthMax;
     }
-    public long getAccountNameLengthMin() {
+    public Long getAccountNameLengthMin() {
         return this.accountNameLengthMin;
     }
-    public long getBulkVolumeJobsPerNodeMax() {
+    public Long getBulkVolumeJobsPerNodeMax() {
         return this.bulkVolumeJobsPerNodeMax;
     }
-    public long getBulkVolumeJobsPerVolumeMax() {
+    public Long getBulkVolumeJobsPerVolumeMax() {
         return this.bulkVolumeJobsPerVolumeMax;
     }
-    public long getCloneJobsPerVolumeMax() {
+    public Long getCloneJobsPerVolumeMax() {
         return this.cloneJobsPerVolumeMax;
     }
-    public long getClusterPairsCountMax() {
+    public Long getClusterPairsCountMax() {
         return this.clusterPairsCountMax;
     }
-    public long getInitiatorNameLengthMax() {
+    public Long getInitiatorNameLengthMax() {
         return this.initiatorNameLengthMax;
     }
-    public long getInitiatorsPerVolumeAccessGroupCountMax() {
+    public Long getInitiatorsPerVolumeAccessGroupCountMax() {
         return this.initiatorsPerVolumeAccessGroupCountMax;
     }
-    public long getSecretLengthMax() {
+    public Long getSecretLengthMax() {
         return this.secretLengthMax;
     }
-    public long getSecretLengthMin() {
+    public Long getSecretLengthMin() {
         return this.secretLengthMin;
     }
-    public long getSnapshotNameLengthMax() {
+    public Long getSnapshotNameLengthMax() {
         return this.snapshotNameLengthMax;
     }
-    public long getSnapshotsPerVolumeMax() {
+    public Long getSnapshotsPerVolumeMax() {
         return this.snapshotsPerVolumeMax;
     }
-    public long getVolumeAccessGroupCountMax() {
+    public Long getVolumeAccessGroupCountMax() {
         return this.volumeAccessGroupCountMax;
     }
-    public long getVolumeAccessGroupLunMax() {
+    public Long getVolumeAccessGroupLunMax() {
         return this.volumeAccessGroupLunMax;
     }
-    public long getVolumeAccessGroupNameLengthMax() {
+    public Long getVolumeAccessGroupNameLengthMax() {
         return this.volumeAccessGroupNameLengthMax;
     }
-    public long getVolumeAccessGroupNameLengthMin() {
+    public Long getVolumeAccessGroupNameLengthMin() {
         return this.volumeAccessGroupNameLengthMin;
     }
-    public long getVolumeAccessGroupsPerInitiatorCountMax() {
+    public Long getVolumeAccessGroupsPerInitiatorCountMax() {
         return this.volumeAccessGroupsPerInitiatorCountMax;
     }
-    public long getVolumeAccessGroupsPerVolumeCountMax() {
+    public Long getVolumeAccessGroupsPerVolumeCountMax() {
         return this.volumeAccessGroupsPerVolumeCountMax;
     }
-    public long getVolumeBurstIOPSMax() {
+    public Long getVolumeBurstIOPSMax() {
         return this.volumeBurstIOPSMax;
     }
-    public long getVolumeBurstIOPSMin() {
+    public Long getVolumeBurstIOPSMin() {
         return this.volumeBurstIOPSMin;
     }
-    public long getVolumeCountMax() {
+    public Long getVolumeCountMax() {
         return this.volumeCountMax;
     }
-    public long getVolumeMaxIOPSMax() {
+    public Long getVolumeMaxIOPSMax() {
         return this.volumeMaxIOPSMax;
     }
-    public long getVolumeMaxIOPSMin() {
+    public Long getVolumeMaxIOPSMin() {
         return this.volumeMaxIOPSMin;
     }
-    public long getVolumeMinIOPSMax() {
+    public Long getVolumeMinIOPSMax() {
         return this.volumeMinIOPSMax;
     }
-    public long getVolumeMinIOPSMin() {
+    public Long getVolumeMinIOPSMin() {
         return this.volumeMinIOPSMin;
     }
-    public long getVolumeNameLengthMax() {
+    public Long getVolumeNameLengthMax() {
         return this.volumeNameLengthMax;
     }
-    public long getVolumeNameLengthMin() {
+    public Long getVolumeNameLengthMin() {
         return this.volumeNameLengthMin;
     }
-    public long getVolumeSizeMax() {
+    public Long getVolumeSizeMax() {
         return this.volumeSizeMax;
     }
-    public long getVolumeSizeMin() {
+    public Long getVolumeSizeMin() {
         return this.volumeSizeMin;
     }
-    public long getVolumesPerAccountCountMax() {
+    public Long getVolumesPerAccountCountMax() {
         return this.volumesPerAccountCountMax;
     }
-    public long getVolumesPerGroupSnapshotMax() {
+    public Long getVolumesPerGroupSnapshotMax() {
         return this.volumesPerGroupSnapshotMax;
     }
-    public long getVolumesPerVolumeAccessGroupCountMax() {
+    public Long getVolumesPerVolumeAccessGroupCountMax() {
         return this.volumesPerVolumeAccessGroupCountMax;
     }
 

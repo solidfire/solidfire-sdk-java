@@ -41,7 +41,7 @@ public class CreateSnapshotRequest implements Serializable {
 
     private static final long serialVersionUID = -1494750176L;
 
-    @SerializedName("volumeID") private final long volumeID;
+    @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("snapshotID") private final Optional<Long> snapshotID;
     @SerializedName("name") private final Optional<String> name;
     @SerializedName("enableRemoteReplication") private final Optional<Boolean> enableRemoteReplication;
@@ -57,7 +57,7 @@ public class CreateSnapshotRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public CreateSnapshotRequest(long volumeID, Optional<Long> snapshotID, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
+    public CreateSnapshotRequest(Long volumeID, Optional<Long> snapshotID, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
         this.retention = Optional.<String>empty();
@@ -77,7 +77,7 @@ public class CreateSnapshotRequest implements Serializable {
      * @since 8.0
      **/
     @Since("8.0")
-    public CreateSnapshotRequest(long volumeID, Optional<Long> snapshotID, Optional<String> name, Optional<Boolean> enableRemoteReplication, Optional<String> retention, Optional<java.util.Map<String, Object>> attributes) {
+    public CreateSnapshotRequest(Long volumeID, Optional<Long> snapshotID, Optional<String> name, Optional<Boolean> enableRemoteReplication, Optional<String> retention, Optional<java.util.Map<String, Object>> attributes) {
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
@@ -90,7 +90,7 @@ public class CreateSnapshotRequest implements Serializable {
     /**
      * ID of the volume image from which to copy.
      **/
-    public long getVolumeID() {
+    public Long getVolumeID() {
         return this.volumeID;
     }
 
@@ -193,7 +193,7 @@ public class CreateSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private long volumeID;
+        private Long volumeID;
         private Optional<Long> snapshotID;
         private Optional<String> name;
         private Optional<Boolean> enableRemoteReplication;
@@ -223,7 +223,7 @@ public class CreateSnapshotRequest implements Serializable {
             return this;
         }
 
-        public CreateSnapshotRequest.Builder volumeID(final long volumeID) {
+        public CreateSnapshotRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

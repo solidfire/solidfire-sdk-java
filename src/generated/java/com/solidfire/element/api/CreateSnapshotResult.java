@@ -41,7 +41,7 @@ public class CreateSnapshotResult implements Serializable {
 
     private static final long serialVersionUID = -1721184563L;
 
-    @SerializedName("snapshotID") private final long snapshotID;
+    @SerializedName("snapshotID") private final Long snapshotID;
     @SerializedName("checksum") private final String checksum;
 
     /**
@@ -51,7 +51,7 @@ public class CreateSnapshotResult implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public CreateSnapshotResult(long snapshotID, String checksum) {
+    public CreateSnapshotResult(Long snapshotID, String checksum) {
         this.snapshotID = snapshotID;
         this.checksum = checksum;
     }
@@ -60,7 +60,7 @@ public class CreateSnapshotResult implements Serializable {
     /**
      * ID of the newly-created snapshot.
      **/
-    public long getSnapshotID() {
+    public Long getSnapshotID() {
         return this.snapshotID;
     }
 

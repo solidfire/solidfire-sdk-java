@@ -41,7 +41,7 @@ public class ModifySnapshotRequest implements Serializable {
 
     private static final long serialVersionUID = 1133706379L;
 
-    @SerializedName("snapshotID") private final long snapshotID;
+    @SerializedName("snapshotID") private final Long snapshotID;
     @SerializedName("expirationTime") private final Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private final Optional<Boolean> enableRemoteReplication;
 
@@ -53,7 +53,7 @@ public class ModifySnapshotRequest implements Serializable {
      * @since 8.0
      **/
     @Since("8.0")
-    public ModifySnapshotRequest(long snapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication) {
+    public ModifySnapshotRequest(Long snapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication) {
         this.snapshotID = snapshotID;
         this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
@@ -63,7 +63,7 @@ public class ModifySnapshotRequest implements Serializable {
     /**
      * ID of the snapshot.
      **/
-    public long getSnapshotID() {
+    public Long getSnapshotID() {
         return this.snapshotID;
     }
 
@@ -130,7 +130,7 @@ public class ModifySnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private long snapshotID;
+        private Long snapshotID;
         private Optional<String> expirationTime;
         private Optional<Boolean> enableRemoteReplication;
 
@@ -151,7 +151,7 @@ public class ModifySnapshotRequest implements Serializable {
             return this;
         }
 
-        public ModifySnapshotRequest.Builder snapshotID(final long snapshotID) {
+        public ModifySnapshotRequest.Builder snapshotID(final Long snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }

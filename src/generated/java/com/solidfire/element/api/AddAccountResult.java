@@ -41,7 +41,7 @@ public class AddAccountResult implements Serializable {
 
     private static final long serialVersionUID = 1028708335L;
 
-    @SerializedName("accountID") private final long accountID;
+    @SerializedName("accountID") private final Long accountID;
 
     /**
      * The object returned by the "AddAccount" API Service call.
@@ -49,7 +49,7 @@ public class AddAccountResult implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public AddAccountResult(long accountID) {
+    public AddAccountResult(Long accountID) {
         this.accountID = accountID;
     }
 
@@ -57,7 +57,7 @@ public class AddAccountResult implements Serializable {
     /**
      * AccountID for the newly created Account.
      **/
-    public long getAccountID() {
+    public Long getAccountID() {
         return this.accountID;
     }
 

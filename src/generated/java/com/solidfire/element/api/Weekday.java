@@ -41,8 +41,8 @@ public class Weekday implements Serializable {
 
     private static final long serialVersionUID = -1262773075L;
 
-    @SerializedName("day") private final long day;
-    @SerializedName("offset") private final long offset;
+    @SerializedName("day") private final Long day;
+    @SerializedName("offset") private final Long offset;
 
     /**
      * 
@@ -51,15 +51,15 @@ public class Weekday implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public Weekday(long day, long offset) {
+    public Weekday(Long day, Long offset) {
         this.day = day;
         this.offset = offset;
     }
 
-    public long getDay() {
+    public Long getDay() {
         return this.day;
     }
-    public long getOffset() {
+    public Long getOffset() {
         return this.offset;
     }
 

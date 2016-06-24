@@ -41,7 +41,7 @@ public class GetAccountEfficiencyRequest implements Serializable {
 
     private static final long serialVersionUID = 706303110L;
 
-    @SerializedName("accountID") private final long accountID;
+    @SerializedName("accountID") private final Long accountID;
     @SerializedName("force") private final Optional<Boolean> force;
 
     /**
@@ -51,7 +51,7 @@ public class GetAccountEfficiencyRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public GetAccountEfficiencyRequest(long accountID, Optional<Boolean> force) {
+    public GetAccountEfficiencyRequest(Long accountID, Optional<Boolean> force) {
         this.accountID = accountID;
         this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
@@ -60,7 +60,7 @@ public class GetAccountEfficiencyRequest implements Serializable {
     /**
      * Specifies the volume account for which capacity is computed.
      **/
-    public long getAccountID() {
+    public Long getAccountID() {
         return this.accountID;
     }
     public Optional<Boolean> getForce() {
@@ -110,7 +110,7 @@ public class GetAccountEfficiencyRequest implements Serializable {
     }
 
     public static class Builder {
-        private long accountID;
+        private Long accountID;
         private Optional<Boolean> force;
 
         private Builder() { }
@@ -128,7 +128,7 @@ public class GetAccountEfficiencyRequest implements Serializable {
             return this;
         }
 
-        public GetAccountEfficiencyRequest.Builder accountID(final long accountID) {
+        public GetAccountEfficiencyRequest.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }

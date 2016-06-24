@@ -48,7 +48,7 @@ public class ModifyScheduleRequest implements Serializable {
     @SerializedName("paused") private final Optional<Boolean> paused;
     @SerializedName("recurring") private final Optional<Boolean> recurring;
     @SerializedName("runNextInterval") private final Optional<Boolean> runNextInterval;
-    @SerializedName("scheduleID") private final long scheduleID;
+    @SerializedName("scheduleID") private final Long scheduleID;
     @SerializedName("scheduleInfo") private final Optional<ScheduleInfo> scheduleInfo;
     @SerializedName("scheduleName") private final Optional<String> scheduleName;
     @SerializedName("scheduleType") private final Optional<String> scheduleType;
@@ -75,7 +75,7 @@ public class ModifyScheduleRequest implements Serializable {
      * @since 8.0
      **/
     @Since("8.0")
-    public ModifyScheduleRequest(Optional<java.util.Map<String, Object>> attributes, Optional<Long> hours, Optional<Long> minutes, Optional<Long[]> monthdays, Optional<Boolean> paused, Optional<Boolean> recurring, Optional<Boolean> runNextInterval, long scheduleID, Optional<ScheduleInfo> scheduleInfo, Optional<String> scheduleName, Optional<String> scheduleType, Optional<String> startingDate, Optional<Boolean> toBeDeleted, Optional<Weekday[]> weekdays) {
+    public ModifyScheduleRequest(Optional<java.util.Map<String, Object>> attributes, Optional<Long> hours, Optional<Long> minutes, Optional<Long[]> monthdays, Optional<Boolean> paused, Optional<Boolean> recurring, Optional<Boolean> runNextInterval, Long scheduleID, Optional<ScheduleInfo> scheduleInfo, Optional<String> scheduleName, Optional<String> scheduleType, Optional<String> startingDate, Optional<Boolean> toBeDeleted, Optional<Weekday[]> weekdays) {
         this.weekdays = (weekdays == null) ? Optional.<Weekday[]>empty() : weekdays;
         this.scheduleID = scheduleID;
         this.monthdays = (monthdays == null) ? Optional.<Long[]>empty() : monthdays;
@@ -152,7 +152,7 @@ public class ModifyScheduleRequest implements Serializable {
     /**
      * Unique ID of the schedule.
      **/
-    public long getScheduleID() {
+    public Long getScheduleID() {
         return this.scheduleID;
     }
 
@@ -289,7 +289,7 @@ public class ModifyScheduleRequest implements Serializable {
         private Optional<Boolean> paused;
         private Optional<Boolean> recurring;
         private Optional<Boolean> runNextInterval;
-        private long scheduleID;
+        private Long scheduleID;
         private Optional<ScheduleInfo> scheduleInfo;
         private Optional<String> scheduleName;
         private Optional<String> scheduleType;
@@ -371,7 +371,7 @@ public class ModifyScheduleRequest implements Serializable {
             return this;
         }
 
-        public ModifyScheduleRequest.Builder scheduleID(final long scheduleID) {
+        public ModifyScheduleRequest.Builder scheduleID(final Long scheduleID) {
             this.scheduleID = scheduleID;
             return this;
         }

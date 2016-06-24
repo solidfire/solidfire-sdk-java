@@ -41,7 +41,7 @@ public class GetScheduleRequest implements Serializable {
 
     private static final long serialVersionUID = 1359921537L;
 
-    @SerializedName("scheduleID") private final long scheduleID;
+    @SerializedName("scheduleID") private final Long scheduleID;
 
     /**
      * The Request object for the "GetSchedule" API Service call.
@@ -49,7 +49,7 @@ public class GetScheduleRequest implements Serializable {
      * @since 8.0
      **/
     @Since("8.0")
-    public GetScheduleRequest(long scheduleID) {
+    public GetScheduleRequest(Long scheduleID) {
         this.scheduleID = scheduleID;
     }
 
@@ -57,7 +57,7 @@ public class GetScheduleRequest implements Serializable {
     /**
      * Unique ID of the schedule or multiple schedules to display
      **/
-    public long getScheduleID() {
+    public Long getScheduleID() {
         return this.scheduleID;
     }
 
@@ -101,7 +101,7 @@ public class GetScheduleRequest implements Serializable {
     }
 
     public static class Builder {
-        private long scheduleID;
+        private Long scheduleID;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class GetScheduleRequest implements Serializable {
             return this;
         }
 
-        public GetScheduleRequest.Builder scheduleID(final long scheduleID) {
+        public GetScheduleRequest.Builder scheduleID(final Long scheduleID) {
             this.scheduleID = scheduleID;
             return this;
         }

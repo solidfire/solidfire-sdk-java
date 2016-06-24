@@ -41,7 +41,7 @@ public class VolumeAccessGroup implements Serializable {
 
     private static final long serialVersionUID = 1947505380L;
 
-    @SerializedName("volumeAccessGroupID") private final long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
     @SerializedName("name") private final String name;
     @SerializedName("initiators") private final String[] initiators;
     @SerializedName("volumes") private final Long[] volumes;
@@ -62,7 +62,7 @@ public class VolumeAccessGroup implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public VolumeAccessGroup(long volumeAccessGroupID, String name, String[] initiators, Long[] volumes) {
+    public VolumeAccessGroup(Long volumeAccessGroupID, String name, String[] initiators, Long[] volumes) {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.name = name;
         this.initiators = initiators;
@@ -73,7 +73,7 @@ public class VolumeAccessGroup implements Serializable {
     /**
      * Unique ID for this volume access group.
      **/
-    public long getVolumeAccessGroupID() {
+    public Long getVolumeAccessGroupID() {
         return this.volumeAccessGroupID;
     }
 

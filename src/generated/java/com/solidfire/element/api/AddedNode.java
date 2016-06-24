@@ -41,8 +41,8 @@ public class AddedNode implements Serializable {
 
     private static final long serialVersionUID = -2102806828L;
 
-    @SerializedName("nodeID") private final long nodeID;
-    @SerializedName("pendingNodeID") private final long pendingNodeID;
+    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("pendingNodeID") private final Long pendingNodeID;
 
     /**
      * 
@@ -51,15 +51,15 @@ public class AddedNode implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public AddedNode(long nodeID, long pendingNodeID) {
+    public AddedNode(Long nodeID, Long pendingNodeID) {
         this.nodeID = nodeID;
         this.pendingNodeID = pendingNodeID;
     }
 
-    public long getNodeID() {
+    public Long getNodeID() {
         return this.nodeID;
     }
-    public long getPendingNodeID() {
+    public Long getPendingNodeID() {
         return this.pendingNodeID;
     }
 

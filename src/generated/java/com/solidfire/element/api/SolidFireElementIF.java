@@ -71,7 +71,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#getAccountByID(GetAccountByIDRequest) 
      **/
-    GetAccountResult getAccountByID(long accountID);
+    GetAccountResult getAccountByID(Long accountID);
 
     /**
      * Returns details about an account, given its Username.
@@ -153,7 +153,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#removeAccount(RemoveAccountRequest) 
      **/
-    RemoveAccountResult removeAccount(long accountID);
+    RemoveAccountResult removeAccount(Long accountID);
 
     /**
      * GetAccountEfficiency is used to retrieve information about a volume account. Only the account given as a parameter in this API method is used to compute the capacity.
@@ -174,7 +174,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#getAccountEfficiency(GetAccountEfficiencyRequest) 
      **/
-    GetEfficiencyResult getAccountEfficiency(long accountID, Optional<Boolean> force);
+    GetEfficiencyResult getAccountEfficiency(Long accountID, Optional<Boolean> force);
 
     /**
      * Return the high-level capacity measurements for an entire cluster.
@@ -430,7 +430,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#removeClusterAdmin(RemoveClusterAdminRequest) 
      **/
-    RemoveClusterAdminResult removeClusterAdmin(long clusterAdminID);
+    RemoveClusterAdminResult removeClusterAdmin(Long clusterAdminID);
 
     /**
      * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
@@ -558,7 +558,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#getAsyncResult(GetAsyncResultRequest) 
      **/
-    GetAsyncResultResult getAsyncResult(long asyncHandle);
+    GetAsyncResultResult getAsyncResult(Long asyncHandle);
 
     /**
      * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster&#39;s data.
@@ -628,7 +628,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#getDriveHardwareInfo(GetDriveHardwareInfoRequest) 
      **/
-    GetDriveHardwareInfoResult getDriveHardwareInfo(long driveID);
+    GetDriveHardwareInfoResult getDriveHardwareInfo(Long driveID);
 
     /**
      * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
@@ -647,7 +647,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#listDriveHardware(ListDriveHardwareRequest) 
      **/
-    ListDriveHardwareResult listDriveHardware(boolean force);
+    ListDriveHardwareResult listDriveHardware(Boolean force);
 
     /**
      * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
@@ -672,7 +672,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#resetDrives(ResetDrivesRequest) 
      **/
-    ResetDrivesResult resetDrives(String drives, boolean force);
+    ResetDrivesResult resetDrives(String drives, Boolean force);
 
     /**
      * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
@@ -699,7 +699,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#testDrives(TestDrivesRequest) 
      **/
-    TestDrivesResult testDrives(Optional<Long> minutes, boolean force);
+    TestDrivesResult testDrives(Optional<Long> minutes, Boolean force);
 
     /**
      * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
@@ -721,7 +721,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#getDriveStats(GetDriveStatsRequest) 
      **/
-    GetDriveStatsResult getDriveStats(long driveID);
+    GetDriveStatsResult getDriveStats(Long driveID);
 
     /**
      * SecureEraseDrives is used to remove any residual data from drives that have a status of &quot;available.&quot; For example, when replacing a drive at its end-of-life that contained sensitive data.
@@ -972,7 +972,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#getNodeStats(GetNodeStatsRequest) 
      **/
-    GetNodeStatsResult getNodeStats(long nodeID);
+    GetNodeStatsResult getNodeStats(Long nodeID);
 
     /**
      * ListNodeStats is used to return the high-level activity measurements for all nodes in a cluster.
@@ -1071,7 +1071,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#removeClusterPair(RemoveClusterPairRequest) 
      **/
-    RemoveClusterPairResult removeClusterPair(long clusterPairID);
+    RemoveClusterPairResult removeClusterPair(Long clusterPairID);
 
     /**
      * CreateSnapshot is used to create a point-in-time copy of a volume.
@@ -1108,7 +1108,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#deleteSnapshot(DeleteSnapshotRequest) 
      **/
-    DeleteSnapshotResult deleteSnapshot(long snapshotID);
+    DeleteSnapshotResult deleteSnapshot(Long snapshotID);
 
     /**
      * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
@@ -1163,7 +1163,7 @@ public interface SolidFireElementIF {
      * @since 8.0 
      **/
     @Since("8.0")
-    ModifySnapshotResult modifySnapshot(long snapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication);
+    ModifySnapshotResult modifySnapshot(Long snapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication);
 
     /**
      * RollbackToSnapshot is used to make an existing snapshot the &quot;active&quot; volume image. This method creates a new 
@@ -1217,7 +1217,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#deleteGroupSnapshot(DeleteGroupSnapshotRequest) 
      **/
-    DeleteGroupSnapshotResult deleteGroupSnapshot(long groupSnapshotID, boolean saveMembers);
+    DeleteGroupSnapshotResult deleteGroupSnapshot(Long groupSnapshotID, Boolean saveMembers);
 
     /**
      * ListGroupSnapshots is used to return information about all group snapshots that have been created.
@@ -1271,7 +1271,7 @@ public interface SolidFireElementIF {
      * @since 8.0 
      **/
     @Since("8.0")
-    ModifyGroupSnapshotResult modifyGroupSnapshot(long groupSnapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication);
+    ModifyGroupSnapshotResult modifyGroupSnapshot(Long groupSnapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication);
 
     /**
      * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
@@ -1310,7 +1310,7 @@ public interface SolidFireElementIF {
      * @since 8.0 
      **/
     @Since("8.0")
-    GetScheduleResult getSchedule(long scheduleID);
+    GetScheduleResult getSchedule(Long scheduleID);
 
     /**
      * ListSchedule is used to return information about all scheduled snapshots that have been created.
@@ -1527,7 +1527,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#deleteVolume(DeleteVolumeRequest) 
      **/
-    DeleteVolumeResult deleteVolume(long volumeID);
+    DeleteVolumeResult deleteVolume(Long volumeID);
 
     /**
      * GetVolumeStats is used to retrieve high-level activity measurements for a single volume.
@@ -1549,7 +1549,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#getVolumeStats(GetVolumeStatsRequest) 
      **/
-    GetVolumeStatsResult getVolumeStats(long volumeID);
+    GetVolumeStatsResult getVolumeStats(Long volumeID);
 
     /**
      * GetVolumeEfficiency is used to retrieve information about a volume.
@@ -1571,7 +1571,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#getVolumeEfficiency(GetVolumeEfficiencyRequest) 
      **/
-    GetVolumeEfficiencyResult getVolumeEfficiency(long volumeID, Optional<Boolean> force);
+    GetVolumeEfficiencyResult getVolumeEfficiency(Long volumeID, Optional<Boolean> force);
 
     /**
      * ListActiveVolumes is used to return the list of active volumes currently in the system.
@@ -1672,7 +1672,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#listVolumesForAccount(ListVolumesForAccountRequest) 
      **/
-    ListVolumesForAccountResult listVolumesForAccount(long accountID, Optional<Long> startVolumeID, Optional<Long> limit);
+    ListVolumesForAccountResult listVolumesForAccount(Long accountID, Optional<Long> startVolumeID, Optional<Long> limit);
 
     /**
      * ListVolumeStatsByAccount returns high-level activity measurements for every account.
@@ -1772,7 +1772,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#purgeDeletedVolume(PurgeDeletedVolumeRequest) 
      **/
-    PurgeDeletedVolumeResult purgeDeletedVolume(long volumeID);
+    PurgeDeletedVolumeResult purgeDeletedVolume(Long volumeID);
 
     /**
      * RestoreDeletedVolume marks a deleted volume as active again.
@@ -1794,7 +1794,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#restoreDeletedVolume(RestoreDeletedVolumeRequest) 
      **/
-    RestoreDeletedVolumeResult restoreDeletedVolume(long volumeID);
+    RestoreDeletedVolumeResult restoreDeletedVolume(Long volumeID);
 
     /**
      * Creates a new volume access group.
@@ -1854,7 +1854,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#deleteVolumeAccessGroup(DeleteVolumeAccessGroupRequest) 
      **/
-    DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(long volumeAccessGroupID);
+    DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(Long volumeAccessGroupID);
 
     /**
      * Update initiators and add or remove volumes from a volume access group.
@@ -1895,7 +1895,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#addInitiatorsToVolumeAccessGroup(AddInitiatorsToVolumeAccessGroupRequest) 
      **/
-    ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(long volumeAccessGroupID, String[] initiators);
+    ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(Long volumeAccessGroupID, String[] initiators);
 
     /**
      * Remove initiators from a volume access group.
@@ -1918,7 +1918,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#removeInitiatorsFromVolumeAccessGroup(RemoveInitiatorsFromVolumeAccessGroupRequest) 
      **/
-    ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(long volumeAccessGroupID, String[] initiators);
+    ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(Long volumeAccessGroupID, String[] initiators);
 
     /**
      * Add volumes to a volume access group.
@@ -1941,7 +1941,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#addVolumesToVolumeAccessGroup(AddVolumesToVolumeAccessGroupRequest) 
      **/
-    ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(long volumeAccessGroupID, Long[] volumes);
+    ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(Long volumeAccessGroupID, Long[] volumes);
 
     /**
      * Remove volumes from a volume access group.
@@ -1964,7 +1964,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#removeVolumesFromVolumeAccessGroup(RemoveVolumesFromVolumeAccessGroupRequest) 
      **/
-    ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(long volumeAccessGroupID, Long[] volumes);
+    ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(Long volumeAccessGroupID, Long[] volumes);
 
     /**
      * GetVolumeAccessGroupEfficiency is used to retrieve efficiency information about a volume access group. Only the volume access group provided as parameters in this API method is used to compute the capacity.
@@ -1985,6 +1985,6 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#getVolumeAccessGroupEfficiency(GetVolumeAccessGroupEfficiencyRequest) 
      **/
-    GetEfficiencyResult getVolumeAccessGroupEfficiency(long volumeAccessGroupID);
+    GetEfficiencyResult getVolumeAccessGroupEfficiency(Long volumeAccessGroupID);
 
 }

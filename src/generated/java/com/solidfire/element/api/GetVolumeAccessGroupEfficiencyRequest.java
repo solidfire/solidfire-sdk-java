@@ -41,7 +41,7 @@ public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
 
     private static final long serialVersionUID = -807215357L;
 
-    @SerializedName("volumeAccessGroupID") private final long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
 
     /**
      * The Request object for the "GetVolumeAccessGroupEfficiency" API Service call.
@@ -49,7 +49,7 @@ public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public GetVolumeAccessGroupEfficiencyRequest(long volumeAccessGroupID) {
+    public GetVolumeAccessGroupEfficiencyRequest(Long volumeAccessGroupID) {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
@@ -57,7 +57,7 @@ public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
     /**
      * Specifies the volume access group for which capacity is computed.
      **/
-    public long getVolumeAccessGroupID() {
+    public Long getVolumeAccessGroupID() {
         return this.volumeAccessGroupID;
     }
 
@@ -101,7 +101,7 @@ public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
     }
 
     public static class Builder {
-        private long volumeAccessGroupID;
+        private Long volumeAccessGroupID;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
             return this;
         }
 
-        public GetVolumeAccessGroupEfficiencyRequest.Builder volumeAccessGroupID(final long volumeAccessGroupID) {
+        public GetVolumeAccessGroupEfficiencyRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }

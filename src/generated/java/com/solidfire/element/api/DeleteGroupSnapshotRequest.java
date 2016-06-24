@@ -41,8 +41,8 @@ public class DeleteGroupSnapshotRequest implements Serializable {
 
     private static final long serialVersionUID = -910251580L;
 
-    @SerializedName("groupSnapshotID") private final long groupSnapshotID;
-    @SerializedName("saveMembers") private final boolean saveMembers;
+    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
+    @SerializedName("saveMembers") private final Boolean saveMembers;
 
     /**
      * The Request object for the "DeleteGroupSnapshot" API Service call.
@@ -51,7 +51,7 @@ public class DeleteGroupSnapshotRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public DeleteGroupSnapshotRequest(long groupSnapshotID, boolean saveMembers) {
+    public DeleteGroupSnapshotRequest(Long groupSnapshotID, Boolean saveMembers) {
         this.groupSnapshotID = groupSnapshotID;
         this.saveMembers = saveMembers;
     }
@@ -60,7 +60,7 @@ public class DeleteGroupSnapshotRequest implements Serializable {
     /**
      * Unique ID of the group snapshot.
      **/
-    public long getGroupSnapshotID() {
+    public Long getGroupSnapshotID() {
         return this.groupSnapshotID;
     }
 
@@ -68,7 +68,7 @@ public class DeleteGroupSnapshotRequest implements Serializable {
      * <br/><b>true</b>: Snapshots are kept, but group association is removed.
      * <br/><b>false</b>: The group and snapshots are deleted.
      **/
-    public boolean getSaveMembers() {
+    public Boolean getSaveMembers() {
         return this.saveMembers;
     }
 
@@ -114,8 +114,8 @@ public class DeleteGroupSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private long groupSnapshotID;
-        private boolean saveMembers;
+        private Long groupSnapshotID;
+        private Boolean saveMembers;
 
         private Builder() { }
 
@@ -132,12 +132,12 @@ public class DeleteGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public DeleteGroupSnapshotRequest.Builder groupSnapshotID(final long groupSnapshotID) {
+        public DeleteGroupSnapshotRequest.Builder groupSnapshotID(final Long groupSnapshotID) {
             this.groupSnapshotID = groupSnapshotID;
             return this;
         }
 
-        public DeleteGroupSnapshotRequest.Builder saveMembers(final boolean saveMembers) {
+        public DeleteGroupSnapshotRequest.Builder saveMembers(final Boolean saveMembers) {
             this.saveMembers = saveMembers;
             return this;
         }

@@ -41,7 +41,7 @@ public class ListDriveHardwareRequest implements Serializable {
 
     private static final long serialVersionUID = -1946368923L;
 
-    @SerializedName("force") private final boolean force;
+    @SerializedName("force") private final Boolean force;
 
     /**
      * The Request object for the "ListDriveHardware" API Service call.
@@ -49,11 +49,11 @@ public class ListDriveHardwareRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ListDriveHardwareRequest(boolean force) {
+    public ListDriveHardwareRequest(Boolean force) {
         this.force = force;
     }
 
-    public boolean getForce() {
+    public Boolean getForce() {
         return this.force;
     }
 
@@ -97,7 +97,7 @@ public class ListDriveHardwareRequest implements Serializable {
     }
 
     public static class Builder {
-        private boolean force;
+        private Boolean force;
 
         private Builder() { }
 
@@ -112,7 +112,7 @@ public class ListDriveHardwareRequest implements Serializable {
             return this;
         }
 
-        public ListDriveHardwareRequest.Builder force(final boolean force) {
+        public ListDriveHardwareRequest.Builder force(final Boolean force) {
             this.force = force;
             return this;
         }

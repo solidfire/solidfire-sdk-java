@@ -42,7 +42,7 @@ public class TestDrivesRequest implements Serializable {
     private static final long serialVersionUID = -368803732L;
 
     @SerializedName("minutes") private final Optional<Long> minutes;
-    @SerializedName("force") private final boolean force;
+    @SerializedName("force") private final Boolean force;
 
     /**
      * The Request object for the "TestDrives" API Service call.
@@ -51,7 +51,7 @@ public class TestDrivesRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public TestDrivesRequest(Optional<Long> minutes, boolean force) {
+    public TestDrivesRequest(Optional<Long> minutes, Boolean force) {
         this.minutes = (minutes == null) ? Optional.<Long>empty() : minutes;
         this.force = force;
     }
@@ -67,7 +67,7 @@ public class TestDrivesRequest implements Serializable {
     /**
      * The "force" parameter must be included on this method to successfully test the drives on the node.
      **/
-    public boolean getForce() {
+    public Boolean getForce() {
         return this.force;
     }
 
@@ -115,7 +115,7 @@ public class TestDrivesRequest implements Serializable {
 
     public static class Builder {
         private Optional<Long> minutes;
-        private boolean force;
+        private Boolean force;
 
         private Builder() { }
 
@@ -137,7 +137,7 @@ public class TestDrivesRequest implements Serializable {
             return this;
         }
 
-        public TestDrivesRequest.Builder force(final boolean force) {
+        public TestDrivesRequest.Builder force(final Boolean force) {
             this.force = force;
             return this;
         }
