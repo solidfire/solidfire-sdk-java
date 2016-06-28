@@ -334,8 +334,8 @@ public class SolidFireElement
 
 
     @Override
-    public ModifyBackupTargetResult modifyBackupTarget(String name, Long backupTargetID, Optional<java.util.Map<String, Object>> attributes) {
-        return this.modifyBackupTarget( new ModifyBackupTargetRequest(name, backupTargetID, attributes));
+    public ModifyBackupTargetResult modifyBackupTarget(Long backupTargetID, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
+        return this.modifyBackupTarget( new ModifyBackupTargetRequest(backupTargetID, name, attributes));
     }
 
     @Override

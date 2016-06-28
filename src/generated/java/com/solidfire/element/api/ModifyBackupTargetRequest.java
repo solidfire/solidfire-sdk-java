@@ -39,39 +39,39 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ModifyBackupTargetRequest implements Serializable {
 
-    private static final long serialVersionUID = -1367380073L;
+    private static final long serialVersionUID = -1557039216L;
 
-    @SerializedName("name") private final String name;
     @SerializedName("backupTargetID") private final Long backupTargetID;
+    @SerializedName("name") private final Optional<String> name;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "ModifyBackupTarget" API Service call.
-     * @param name [required] Name for the backup target.
      * @param backupTargetID [required] Unique identifier assigned to the backup target.
+     * @param name (optional) Name for the backup target.
      * @param attributes (optional) List of Name/Value pairs in JSON object format.
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyBackupTargetRequest(String name, Long backupTargetID, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = name;
+    public ModifyBackupTargetRequest(Long backupTargetID, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
         this.backupTargetID = backupTargetID;
+        this.name = (name == null) ? Optional.<String>empty() : name;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
-
-    /**
-     * Name for the backup target.
-     **/
-    public String getName() {
-        return this.name;
-    }
 
     /**
      * Unique identifier assigned to the backup target.
      **/
     public Long getBackupTargetID() {
         return this.backupTargetID;
+    }
+
+    /**
+     * Name for the backup target.
+     **/
+    public Optional<String> getName() {
+        return this.name;
     }
 
     /**
@@ -89,14 +89,14 @@ public class ModifyBackupTargetRequest implements Serializable {
         ModifyBackupTargetRequest that = (ModifyBackupTargetRequest) o;
         
 
-        return Objects.equals( name , that.name )
-            && Objects.equals( backupTargetID , that.backupTargetID )
+        return Objects.equals( backupTargetID , that.backupTargetID )
+            && Objects.equals( name , that.name )
             && Objects.equals( attributes , that.attributes );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, backupTargetID, attributes );
+        return Objects.hash( backupTargetID, name, attributes );
     }
 
 
@@ -105,8 +105,9 @@ public class ModifyBackupTargetRequest implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" name : ").append(name).append(",");
         sb.append(" backupTargetID : ").append(backupTargetID).append(",");
+        if(null != name && name.isPresent())
+            sb.append(" name : ").append(name.get()).append(",");
         if(null != attributes && attributes.isPresent())
             sb.append(" attributes : ").append(attributes.get());
         sb.append( " }" );
@@ -126,34 +127,34 @@ public class ModifyBackupTargetRequest implements Serializable {
     }
 
     public static class Builder {
-        private String name;
         private Long backupTargetID;
+        private Optional<String> name;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
 
         public ModifyBackupTargetRequest build() {
             return new ModifyBackupTargetRequest (
-                         this.name,
                          this.backupTargetID,
+                         this.name,
                          this.attributes            );
         }
 
         private ModifyBackupTargetRequest.Builder buildFrom(final ModifyBackupTargetRequest req) {
-            this.name = req.name;
             this.backupTargetID = req.backupTargetID;
+            this.name = req.name;
             this.attributes = req.attributes;
 
             return this;
         }
 
-        public ModifyBackupTargetRequest.Builder name(final String name) {
-            this.name = name;
+        public ModifyBackupTargetRequest.Builder backupTargetID(final Long backupTargetID) {
+            this.backupTargetID = backupTargetID;
             return this;
         }
 
-        public ModifyBackupTargetRequest.Builder backupTargetID(final Long backupTargetID) {
-            this.backupTargetID = backupTargetID;
+        public ModifyBackupTargetRequest.Builder optionalName(final String name) {
+            this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 

@@ -251,9 +251,9 @@ public interface SolidFireElementIF {
     /**
      * Convenience method for modifyBackupTarget 
      *  
-     * @param name Name for the backup target.
-     *
      * @param backupTargetID Unique identifier assigned to the backup target.
+     *
+     * @param name Name for the backup target.
      *
      * @param attributes List of Name/Value pairs in JSON object format.
      *
@@ -261,7 +261,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#modifyBackupTarget(ModifyBackupTargetRequest) 
      **/
-    ModifyBackupTargetResult modifyBackupTarget(String name, Long backupTargetID, Optional<java.util.Map<String, Object>> attributes);
+    ModifyBackupTargetResult modifyBackupTarget(Long backupTargetID, Optional<String> name, Optional<java.util.Map<String, Object>> attributes);
 
     /**
      * RemoveBackupTarget allows you to delete backup targets.
