@@ -39,46 +39,26 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetBackupTargetResult implements Serializable {
 
-    private static final long serialVersionUID = 1911143793L;
+    private static final long serialVersionUID = 763353730L;
 
-    @SerializedName("name") private final String name;
-    @SerializedName("backupTargetID") private final Long backupTargetID;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("backupTarget") private final BackupTarget backupTarget;
 
     /**
      * The object returned by the "GetBackupTarget" API Service call.
-     * @param name [required] Name for the backup target.
-     * @param backupTargetID [required] Unique identifier assigned to the backup target.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
+     * @param backupTarget [required] Object returned for backup target.
      * @since 7.0
      **/
     @Since("7.0")
-    public GetBackupTargetResult(String name, Long backupTargetID, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = name;
-        this.backupTargetID = backupTargetID;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public GetBackupTargetResult(BackupTarget backupTarget) {
+        this.backupTarget = backupTarget;
     }
 
 
     /**
-     * Name for the backup target.
+     * Object returned for backup target.
      **/
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Unique identifier assigned to the backup target.
-     **/
-    public Long getBackupTargetID() {
-        return this.backupTargetID;
-    }
-
-    /**
-     * List of Name/Value pairs in JSON object format.
-     **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public BackupTarget getBackupTarget() {
+        return this.backupTarget;
     }
 
     @Override
@@ -89,14 +69,12 @@ public class GetBackupTargetResult implements Serializable {
         GetBackupTargetResult that = (GetBackupTargetResult) o;
         
 
-        return Objects.equals( name , that.name )
-            && Objects.equals( backupTargetID , that.backupTargetID )
-            && Objects.equals( attributes , that.attributes );
+        return Objects.equals( backupTarget , that.backupTarget );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, backupTargetID, attributes );
+        return Objects.hash( (Object) backupTarget );
     }
 
 
@@ -105,10 +83,7 @@ public class GetBackupTargetResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" backupTargetID : ").append(backupTargetID).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        sb.append(" backupTarget : ").append(backupTarget);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
