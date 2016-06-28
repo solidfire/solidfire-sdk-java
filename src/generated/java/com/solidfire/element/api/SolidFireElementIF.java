@@ -177,6 +177,114 @@ public interface SolidFireElementIF {
     GetEfficiencyResult getAccountEfficiency(Long accountID, Optional<Boolean> force);
 
     /**
+     * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
+     *  
+     * @param request The request @see com.solidfire.element.api.CreateBackupTargetRequest 
+     *  
+     * @return the response
+     **/
+    CreateBackupTargetResult createBackupTarget(final CreateBackupTargetRequest request);
+
+
+    /**
+     * Convenience method for createBackupTarget 
+     *  
+     * @param name Name for the backup target.
+     *
+     * @param attributes List of Name/Value pairs in JSON object format.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#createBackupTarget(CreateBackupTargetRequest) 
+     **/
+    CreateBackupTargetResult createBackupTarget(String name, Optional<java.util.Map<String, Object>> attributes);
+
+    /**
+     * GetBackupTarget allows you to return information about a specific backup target that has been created.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetBackupTargetRequest 
+     *  
+     * @return the response
+     **/
+    GetBackupTargetResult getBackupTarget(final GetBackupTargetRequest request);
+
+
+    /**
+     * Convenience method for getBackupTarget 
+     *  
+     * @param backupTargetID Unique identifier assigned to the backup target.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getBackupTarget(GetBackupTargetRequest) 
+     **/
+    GetBackupTargetResult getBackupTarget(Long backupTargetID);
+
+    /**
+     * You can use ListBackupTargets to retrieve information about all backup targets that have been created.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListBackupTargetsRequest 
+     *  
+     * @return the response
+     **/
+    ListBackupTargetsResult listBackupTargets(final ListBackupTargetsRequest request);
+
+
+    /**
+     * Convenience method for listBackupTargets 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listBackupTargets(ListBackupTargetsRequest) 
+     **/
+    ListBackupTargetsResult listBackupTargets();
+
+    /**
+     * ModifyBackupTarget is used to change attributes of a backup target.
+     *  
+     * @param request The request @see com.solidfire.element.api.ModifyBackupTargetRequest 
+     *  
+     * @return the response
+     **/
+    ModifyBackupTargetResult modifyBackupTarget(final ModifyBackupTargetRequest request);
+
+
+    /**
+     * Convenience method for modifyBackupTarget 
+     *  
+     * @param name Name for the backup target.
+     *
+     * @param backupTargetID Unique identifier assigned to the backup target.
+     *
+     * @param attributes List of Name/Value pairs in JSON object format.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#modifyBackupTarget(ModifyBackupTargetRequest) 
+     **/
+    ModifyBackupTargetResult modifyBackupTarget(String name, Long backupTargetID, Optional<java.util.Map<String, Object>> attributes);
+
+    /**
+     * RemoveBackupTarget allows you to delete backup targets.
+     *  
+     * @param request The request @see com.solidfire.element.api.RemoveBackupTargetRequest 
+     *  
+     * @return the response
+     **/
+    RemoveBackupTargetResult removeBackupTarget(final RemoveBackupTargetRequest request);
+
+
+    /**
+     * Convenience method for removeBackupTarget 
+     *  
+     * @param backupTargetID Unique target ID of the target to remove.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#removeBackupTarget(RemoveBackupTargetRequest) 
+     **/
+    RemoveBackupTargetResult removeBackupTarget(Long backupTargetID);
+
+    /**
      * Return the high-level capacity measurements for an entire cluster.
      * The fields returned from this method can be used to calculate the efficiency rates that are displayed in the Element User Interface.
      *  

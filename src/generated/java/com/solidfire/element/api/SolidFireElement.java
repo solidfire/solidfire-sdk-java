@@ -295,6 +295,61 @@ public class SolidFireElement
     }
 
     @Override
+    public CreateBackupTargetResult createBackupTarget(final CreateBackupTargetRequest request) {
+        return super.sendRequest("CreateBackupTarget", request, CreateBackupTargetRequest.class, CreateBackupTargetResult.class );
+    }
+
+
+    @Override
+    public CreateBackupTargetResult createBackupTarget(String name, Optional<java.util.Map<String, Object>> attributes) {
+        return this.createBackupTarget( new CreateBackupTargetRequest(name, attributes));
+    }
+
+    @Override
+    public GetBackupTargetResult getBackupTarget(final GetBackupTargetRequest request) {
+        return super.sendRequest("GetBackupTarget", request, GetBackupTargetRequest.class, GetBackupTargetResult.class );
+    }
+
+
+    @Override
+    public GetBackupTargetResult getBackupTarget(Long backupTargetID) {
+        return this.getBackupTarget( new GetBackupTargetRequest(backupTargetID));
+    }
+
+    @Override
+    public ListBackupTargetsResult listBackupTargets(final ListBackupTargetsRequest request) {
+        return super.sendRequest("ListBackupTargets", request, ListBackupTargetsRequest.class, ListBackupTargetsResult.class );
+    }
+
+
+    @Override
+    public ListBackupTargetsResult listBackupTargets() {
+        return this.listBackupTargets( new ListBackupTargetsRequest());
+    }
+
+    @Override
+    public ModifyBackupTargetResult modifyBackupTarget(final ModifyBackupTargetRequest request) {
+        return super.sendRequest("ModifyBackupTarget", request, ModifyBackupTargetRequest.class, ModifyBackupTargetResult.class );
+    }
+
+
+    @Override
+    public ModifyBackupTargetResult modifyBackupTarget(String name, Long backupTargetID, Optional<java.util.Map<String, Object>> attributes) {
+        return this.modifyBackupTarget( new ModifyBackupTargetRequest(name, backupTargetID, attributes));
+    }
+
+    @Override
+    public RemoveBackupTargetResult removeBackupTarget(final RemoveBackupTargetRequest request) {
+        return super.sendRequest("RemoveBackupTarget", request, RemoveBackupTargetRequest.class, RemoveBackupTargetResult.class );
+    }
+
+
+    @Override
+    public RemoveBackupTargetResult removeBackupTarget(Long backupTargetID) {
+        return this.removeBackupTarget( new RemoveBackupTargetRequest(backupTargetID));
+    }
+
+    @Override
     public GetClusterCapacityResult getClusterCapacity(final GetClusterCapacityRequest request) {
         return super.sendRequest("GetClusterCapacity", request, GetClusterCapacityRequest.class, GetClusterCapacityResult.class );
     }
