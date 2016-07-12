@@ -39,13 +39,13 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class VolumeQOS implements Serializable {
 
-    private static final long serialVersionUID = 1918973504L;
+    private static final long serialVersionUID = -705984942L;
 
     @SerializedName("minIOPS") private final Long minIOPS;
     @SerializedName("maxIOPS") private final Long maxIOPS;
     @SerializedName("burstIOPS") private final Long burstIOPS;
     @SerializedName("burstTime") private final Long burstTime;
-    @SerializedName("curve") private final java.util.Map<String,Long> curve;
+    @SerializedName("curve") private final TreeMap<String,Long> curve;
 
     /**
      * Quality of Service (QoS) Result values are used on SolidFire volumes to provision performance expectations.
@@ -57,7 +57,7 @@ public class VolumeQOS implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public VolumeQOS(Long minIOPS, Long maxIOPS, Long burstIOPS, Long burstTime, java.util.Map<String,Long> curve) {
+    public VolumeQOS(Long minIOPS, Long maxIOPS, Long burstIOPS, Long burstTime, TreeMap<String,Long> curve) {
         this.curve = curve;
         this.burstIOPS = burstIOPS;
         this.burstTime = burstTime;
@@ -105,7 +105,7 @@ public class VolumeQOS implements Serializable {
      * The values represent the cost performing an IOP at a specific I/O size.
      * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
      **/
-    public java.util.Map<String,Long> getCurve() {
+    public TreeMap<String,Long> getCurve() {
         return this.curve;
     }
 

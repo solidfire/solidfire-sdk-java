@@ -35,63 +35,34 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * The Request object for the "GetSnmpACL" API Service call.
  **/
-public class ModifyVolumeResult implements Serializable {
+public class GetSnmpACLRequest implements Serializable {
 
-    private static final long serialVersionUID = -495285012L;
-
-    @SerializedName("curve") private final TreeMap<String,Long> curve;
-
-    /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param curve [required] The curve is a set of key-value pairs.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ModifyVolumeResult(TreeMap<String,Long> curve) {
-        this.curve = curve;
-    }
+    private static final long serialVersionUID = -710779474L;
 
 
     /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
+     * The Request object for the "GetSnmpACL" API Service call.
+     * @since 8.0
      **/
-    public TreeMap<String,Long> getCurve() {
-        return this.curve;
+    @Since("8.0")
+    public GetSnmpACLRequest() {
+
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
-        
-
-        return Objects.equals( curve , that.curve );
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) curve );
+        return this.getClass().hashCode();
     }
 
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append( "{ " );
-
-        sb.append(" curve : ").append(curve);
-        sb.append( " }" );
-
-        if(sb.lastIndexOf(", }") != -1)
-            sb.deleteCharAt(sb.lastIndexOf(", }"));
-
-        return sb.toString();
-    }
 }

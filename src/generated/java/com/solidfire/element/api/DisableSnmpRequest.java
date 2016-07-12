@@ -35,63 +35,34 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * The Request object for the "DisableSnmp" API Service call.
  **/
-public class ModifyVolumeResult implements Serializable {
+public class DisableSnmpRequest implements Serializable {
 
-    private static final long serialVersionUID = -495285012L;
+    private static final long serialVersionUID = -893653981L;
 
-    @SerializedName("curve") private final TreeMap<String,Long> curve;
 
     /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param curve [required] The curve is a set of key-value pairs.
+     * The Request object for the "DisableSnmp" API Service call.
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(TreeMap<String,Long> curve) {
-        this.curve = curve;
+    public DisableSnmpRequest() {
+
     }
 
-
-    /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
-     **/
-    public TreeMap<String,Long> getCurve() {
-        return this.curve;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
-        
-
-        return Objects.equals( curve , that.curve );
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) curve );
+        return this.getClass().hashCode();
     }
 
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append( "{ " );
-
-        sb.append(" curve : ").append(curve);
-        sb.append( " }" );
-
-        if(sb.lastIndexOf(", }") != -1)
-            sb.deleteCharAt(sb.lastIndexOf(", }"));
-
-        return sb.toString();
-    }
 }

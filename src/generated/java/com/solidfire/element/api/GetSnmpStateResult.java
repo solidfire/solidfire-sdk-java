@@ -35,33 +35,40 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * The object returned by the "GetSnmpState" API Service call.
  **/
-public class ModifyVolumeResult implements Serializable {
+public class GetSnmpStateResult implements Serializable {
 
-    private static final long serialVersionUID = -495285012L;
+    private static final long serialVersionUID = -1172036688L;
 
-    @SerializedName("curve") private final TreeMap<String,Long> curve;
+    @SerializedName("enabled") private final Boolean enabled;
+    @SerializedName("snmpV3Enabled") private final Boolean snmpV3Enabled;
 
     /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param curve [required] The curve is a set of key-value pairs.
+     * The object returned by the "GetSnmpState" API Service call.
+     * @param enabled [required] If the nodes in the cluster are configured for SNMP.
+     * @param snmpV3Enabled [required] If the node in the cluster is configured for SNMP v3.
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(TreeMap<String,Long> curve) {
-        this.curve = curve;
+    public GetSnmpStateResult(Boolean enabled, Boolean snmpV3Enabled) {
+        this.enabled = enabled;
+        this.snmpV3Enabled = snmpV3Enabled;
     }
 
 
     /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
+     * If the nodes in the cluster are configured for SNMP.
      **/
-    public TreeMap<String,Long> getCurve() {
-        return this.curve;
+    public Boolean getEnabled() {
+        return this.enabled;
+    }
+
+    /**
+     * If the node in the cluster is configured for SNMP v3.
+     **/
+    public Boolean getSnmpV3Enabled() {
+        return this.snmpV3Enabled;
     }
 
     @Override
@@ -69,15 +76,16 @@ public class ModifyVolumeResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
+        GetSnmpStateResult that = (GetSnmpStateResult) o;
         
 
-        return Objects.equals( curve , that.curve );
+        return Objects.equals( enabled , that.enabled )
+            && Objects.equals( snmpV3Enabled , that.snmpV3Enabled );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) curve );
+        return Objects.hash( enabled, snmpV3Enabled );
     }
 
 
@@ -86,7 +94,8 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" curve : ").append(curve);
+        sb.append(" enabled : ").append(enabled).append(",");
+        sb.append(" snmpV3Enabled : ").append(snmpV3Enabled);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

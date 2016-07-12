@@ -502,6 +502,99 @@ public class SolidFireElement
     }
 
     @Override
+    @Since("8.0")
+    public GetSnmpACLResult getSnmpACL(final GetSnmpACLRequest request) {
+        return super.sendRequest("GetSnmpACL", request, GetSnmpACLRequest.class, GetSnmpACLResult.class );
+    }
+
+
+    @Override
+    @Since("8.0")
+    public GetSnmpACLResult getSnmpACL() {
+        return this.getSnmpACL( new GetSnmpACLRequest());
+    }
+
+    @Override
+    @Since("8.0")
+    public SetSnmpACLResult setSnmpACL(final SetSnmpACLRequest request) {
+        return super.sendRequest("SetSnmpACL", request, SetSnmpACLRequest.class, SetSnmpACLResult.class );
+    }
+
+
+    @Override
+    @Since("8.0")
+    public SetSnmpACLResult setSnmpACL(SnmpNetwork[] networks, SnmpV3UsmUser[] usmUsers) {
+        return this.setSnmpACL( new SetSnmpACLRequest(networks, usmUsers));
+    }
+
+    @Override
+    public GetSnmpTrapInfoResult getSnmpTrapInfo(final GetSnmpTrapInfoRequest request) {
+        return super.sendRequest("GetSnmpTrapInfo", request, GetSnmpTrapInfoRequest.class, GetSnmpTrapInfoResult.class );
+    }
+
+
+    @Override
+    public GetSnmpTrapInfoResult getSnmpTrapInfo() {
+        return this.getSnmpTrapInfo( new GetSnmpTrapInfoRequest());
+    }
+
+    @Override
+    public SetSnmpTrapInfoResult setSnmpTrapInfo(final SetSnmpTrapInfoRequest request) {
+        return super.sendRequest("SetSnmpTrapInfo", request, SetSnmpTrapInfoRequest.class, SetSnmpTrapInfoResult.class );
+    }
+
+    @Override
+    public EnableSnmpResult enableSnmp(final EnableSnmpRequest request) {
+        return super.sendRequest("EnableSnmp", request, EnableSnmpRequest.class, EnableSnmpResult.class );
+    }
+
+
+    @Override
+    public EnableSnmpResult enableSnmp(Boolean snmpV3Enabled) {
+        return this.enableSnmp( new EnableSnmpRequest(snmpV3Enabled));
+    }
+
+    @Override
+    public DisableSnmpResult disableSnmp(final DisableSnmpRequest request) {
+        return super.sendRequest("DisableSnmp", request, DisableSnmpRequest.class, DisableSnmpResult.class );
+    }
+
+
+    @Override
+    public DisableSnmpResult disableSnmp() {
+        return this.disableSnmp( new DisableSnmpRequest());
+    }
+
+    @Override
+    public GetSnmpInfoResult getSnmpInfo(final GetSnmpInfoRequest request) {
+        return super.sendRequest("GetSnmpInfo", request, GetSnmpInfoRequest.class, GetSnmpInfoResult.class );
+    }
+
+
+    @Override
+    public GetSnmpInfoResult getSnmpInfo() {
+        return this.getSnmpInfo( new GetSnmpInfoRequest());
+    }
+
+    @Override
+    public SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request) {
+        return super.sendRequest("SetSnmpInfo", request, SetSnmpInfoRequest.class, SetSnmpInfoResult.class );
+    }
+
+    @Override
+    @Since("8.0")
+    public GetSnmpStateResult getSnmpState(final GetSnmpStateRequest request) {
+        return super.sendRequest("GetSnmpState", request, GetSnmpStateRequest.class, GetSnmpStateResult.class );
+    }
+
+
+    @Override
+    @Since("8.0")
+    public GetSnmpStateResult getSnmpState() {
+        return this.getSnmpState( new GetSnmpStateRequest());
+    }
+
+    @Override
     public GetAPIResult getAPI(final GetAPIRequest request) {
         return super.sendRequest("GetAPI", request, GetAPIRequest.class, GetAPIResult.class );
     }
@@ -543,6 +636,17 @@ public class SolidFireElement
     @Override
     public DisableEncryptionAtRestResult disableEncryptionAtRest() {
         return this.disableEncryptionAtRest( new DisableEncryptionAtRestRequest());
+    }
+
+    @Override
+    public SnmpSendTestTrapsResult snmpSendTestTraps(final SnmpSendTestTrapsRequest request) {
+        return super.sendRequest("SnmpSendTestTraps", request, SnmpSendTestTrapsRequest.class, SnmpSendTestTrapsResult.class );
+    }
+
+
+    @Override
+    public SnmpSendTestTrapsResult snmpSendTestTraps(String status) {
+        return this.snmpSendTestTraps( new SnmpSendTestTrapsRequest(status));
     }
 
     @Override

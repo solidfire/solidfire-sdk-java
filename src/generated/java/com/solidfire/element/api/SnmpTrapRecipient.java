@@ -35,33 +35,50 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * 
  **/
-public class ModifyVolumeResult implements Serializable {
+public class SnmpTrapRecipient implements Serializable {
 
-    private static final long serialVersionUID = -495285012L;
+    private static final long serialVersionUID = 1079072076L;
 
-    @SerializedName("curve") private final TreeMap<String,Long> curve;
+    @SerializedName("host") private final String host;
+    @SerializedName("community") private final String community;
+    @SerializedName("port") private final Long port;
 
     /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param curve [required] The curve is a set of key-value pairs.
+     * 
+     * @param host [required] The IP address or host name of the target network management station.
+     * @param community [required] SNMP community string.
+     * @param port [required] The UDP port number on the host where the trap is to be sent. Valid range is 1 - 65535. 0 (zero) is not a valid port number. Default is 162.
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(TreeMap<String,Long> curve) {
-        this.curve = curve;
+    public SnmpTrapRecipient(String host, String community, Long port) {
+        this.host = host;
+        this.community = community;
+        this.port = port;
     }
 
 
     /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
+     * The IP address or host name of the target network management station.
      **/
-    public TreeMap<String,Long> getCurve() {
-        return this.curve;
+    public String getHost() {
+        return this.host;
+    }
+
+    /**
+     * SNMP community string.
+     **/
+    public String getCommunity() {
+        return this.community;
+    }
+
+    /**
+     * The UDP port number on the host where the trap is to be sent. Valid range is 1 - 65535. 0 (zero) is not a valid port number. Default is 162.
+     **/
+    public Long getPort() {
+        return this.port;
     }
 
     @Override
@@ -69,15 +86,17 @@ public class ModifyVolumeResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
+        SnmpTrapRecipient that = (SnmpTrapRecipient) o;
         
 
-        return Objects.equals( curve , that.curve );
+        return Objects.equals( host , that.host )
+            && Objects.equals( community , that.community )
+            && Objects.equals( port , that.port );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) curve );
+        return Objects.hash( host, community, port );
     }
 
 
@@ -86,7 +105,9 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" curve : ").append(curve);
+        sb.append(" host : ").append(host).append(",");
+        sb.append(" community : ").append(community).append(",");
+        sb.append(" port : ").append(port);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

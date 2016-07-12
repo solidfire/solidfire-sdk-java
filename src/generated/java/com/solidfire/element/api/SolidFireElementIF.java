@@ -564,6 +564,176 @@ public interface SolidFireElementIF {
     SetClusterConfigResult setClusterConfig(ClusterConfig cluster);
 
     /**
+     * GetSnmpACL is used to return the current SNMP access permissions on the cluster nodes.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetSnmpACLRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    GetSnmpACLResult getSnmpACL(final GetSnmpACLRequest request);
+
+
+    /**
+     * Convenience method for getSnmpACL 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getSnmpACL(GetSnmpACLRequest) 
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    GetSnmpACLResult getSnmpACL();
+
+    /**
+     * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all &quot;network&quot; or &quot;usmUsers&quot; values set with the older SetSnmpInfo.
+     *  
+     * @param request The request @see com.solidfire.element.api.SetSnmpACLRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    SetSnmpACLResult setSnmpACL(final SetSnmpACLRequest request);
+
+
+    /**
+     * Convenience method for setSnmpACL 
+     *  
+     * @param networks List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible &quot;networks&quot; values. REQUIRED if SNMP v# is disabled.
+     *
+     * @param usmUsers List of users and the type of access they have to the SNMP servers running on the cluster nodes. REQUIRED if SNMP v3 is enabled.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#setSnmpACL(SetSnmpACLRequest) 
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    SetSnmpACLResult setSnmpACL(SnmpNetwork[] networks, SnmpV3UsmUser[] usmUsers);
+
+    /**
+     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetSnmpTrapInfoRequest 
+     *  
+     * @return the response
+     **/
+    GetSnmpTrapInfoResult getSnmpTrapInfo(final GetSnmpTrapInfoRequest request);
+
+
+    /**
+     * Convenience method for getSnmpTrapInfo 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getSnmpTrapInfo(GetSnmpTrapInfoRequest) 
+     **/
+    GetSnmpTrapInfoResult getSnmpTrapInfo();
+
+    /**
+     * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
+     *  
+     * @param request The request @see com.solidfire.element.api.SetSnmpTrapInfoRequest 
+     *  
+     * @return the response
+     **/
+    SetSnmpTrapInfoResult setSnmpTrapInfo(final SetSnmpTrapInfoRequest request);
+
+    /**
+     * EnableSnmp is used to enable SNMP on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to EnableSnmp.
+     *  
+     * @param request The request @see com.solidfire.element.api.EnableSnmpRequest 
+     *  
+     * @return the response
+     **/
+    EnableSnmpResult enableSnmp(final EnableSnmpRequest request);
+
+
+    /**
+     * Convenience method for enableSnmp 
+     *  
+     * @param snmpV3Enabled If set to &quot;true&quot;, then SNMP v3 is enabled on each node in the cluster. If set to &quot;false&quot;, then SNMP v2 is enabled.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#enableSnmp(EnableSnmpRequest) 
+     **/
+    EnableSnmpResult enableSnmp(Boolean snmpV3Enabled);
+
+    /**
+     * DisableSnmp is used to disable SNMP on the cluster nodes.
+     *  
+     * @param request The request @see com.solidfire.element.api.DisableSnmpRequest 
+     *  
+     * @return the response
+     **/
+    DisableSnmpResult disableSnmp(final DisableSnmpRequest request);
+
+
+    /**
+     * Convenience method for disableSnmp 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#disableSnmp(DisableSnmpRequest) 
+     **/
+    DisableSnmpResult disableSnmp();
+
+    /**
+     * GetSnmpInfo is used to return the current simple network management protocol (SNMP) configuration information.
+     * <br/><br/>
+     * <b>Note</b>: GetSnmpInfo will be available for Element OS 8 and prior releases. It will be deprecated after Element OS 8. There are two new SNMP API methods that you should migrate over to. They are GetSnmpState and GetSnmpACL. Please see details in this document for their descriptions and usage.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetSnmpInfoRequest 
+     *  
+     * @return the response
+     **/
+    GetSnmpInfoResult getSnmpInfo(final GetSnmpInfoRequest request);
+
+
+    /**
+     * Convenience method for getSnmpInfo 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getSnmpInfo(GetSnmpInfoRequest) 
+     **/
+    GetSnmpInfoResult getSnmpInfo();
+
+    /**
+     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
+     * <br/><br/>
+     * <b>Note</b>: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
+     *  
+     * @param request The request @see com.solidfire.element.api.SetSnmpInfoRequest 
+     *  
+     * @return the response
+     **/
+    SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request);
+
+    /**
+     * GetSnmpState is used to return the current state of the SNMP feature.
+     * <br/><br/>
+     * <b>Note</b>: GetSnmpState is new for Element OS 8. Please use this method and SetSnmpACL to migrate your SNMP functionality in the future.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetSnmpStateRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    GetSnmpStateResult getSnmpState(final GetSnmpStateRequest request);
+
+
+    /**
+     * Convenience method for getSnmpState 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getSnmpState(GetSnmpStateRequest) 
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    GetSnmpStateResult getSnmpState();
+
+    /**
      * Retrieves the current version of the API and a list of all supported versions.
      *  
      * @param request The request @see com.solidfire.element.api.GetAPIRequest 
@@ -638,6 +808,11 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#disableEncryptionAtRest(DisableEncryptionAtRestRequest) 
      **/
     DisableEncryptionAtRestResult disableEncryptionAtRest();
+
+    SnmpSendTestTrapsResult snmpSendTestTraps(final SnmpSendTestTrapsRequest request);
+
+
+    SnmpSendTestTrapsResult snmpSendTestTraps(String status);
 
     /**
      * Used to retrieve the result of asynchronous method calls.

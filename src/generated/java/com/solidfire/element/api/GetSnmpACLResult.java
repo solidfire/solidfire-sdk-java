@@ -35,33 +35,40 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * The object returned by the "GetSnmpACL" API Service call.
  **/
-public class ModifyVolumeResult implements Serializable {
+public class GetSnmpACLResult implements Serializable {
 
-    private static final long serialVersionUID = -495285012L;
+    private static final long serialVersionUID = 1473501578L;
 
-    @SerializedName("curve") private final TreeMap<String,Long> curve;
+    @SerializedName("networks") private final SnmpNetwork[] networks;
+    @SerializedName("usmUsers") private final SnmpV3UsmUser[] usmUsers;
 
     /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param curve [required] The curve is a set of key-value pairs.
+     * The object returned by the "GetSnmpACL" API Service call.
+     * @param networks [required] List of networks and what type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is disabled.
+     * @param usmUsers [required] List of users and the type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is enabled.
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(TreeMap<String,Long> curve) {
-        this.curve = curve;
+    public GetSnmpACLResult(SnmpNetwork[] networks, SnmpV3UsmUser[] usmUsers) {
+        this.networks = networks;
+        this.usmUsers = usmUsers;
     }
 
 
     /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
+     * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is disabled.
      **/
-    public TreeMap<String,Long> getCurve() {
-        return this.curve;
+    public SnmpNetwork[] getNetworks() {
+        return this.networks;
+    }
+
+    /**
+     * List of users and the type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is enabled.
+     **/
+    public SnmpV3UsmUser[] getUsmUsers() {
+        return this.usmUsers;
     }
 
     @Override
@@ -69,15 +76,16 @@ public class ModifyVolumeResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
+        GetSnmpACLResult that = (GetSnmpACLResult) o;
         
 
-        return Objects.equals( curve , that.curve );
+        return Objects.deepEquals( networks , that.networks )
+            && Objects.deepEquals( usmUsers , that.usmUsers );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) curve );
+        return Objects.hash( networks, usmUsers );
     }
 
 
@@ -86,7 +94,8 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" curve : ").append(curve);
+        sb.append(" networks : ").append(Arrays.toString(networks)).append(",");
+        sb.append(" usmUsers : ").append(Arrays.toString(usmUsers));
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

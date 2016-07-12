@@ -35,33 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * The Request object for the "SnmpSendTestTraps" API Service call.
  **/
-public class ModifyVolumeResult implements Serializable {
+public class SnmpSendTestTrapsRequest implements Serializable {
 
-    private static final long serialVersionUID = -495285012L;
+    private static final long serialVersionUID = 313465905L;
 
-    @SerializedName("curve") private final TreeMap<String,Long> curve;
+    @SerializedName("status") private final String status;
 
     /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param curve [required] The curve is a set of key-value pairs.
+     * The Request object for the "SnmpSendTestTraps" API Service call.
+     * @param status [required] Status of the test.
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(TreeMap<String,Long> curve) {
-        this.curve = curve;
+    public SnmpSendTestTrapsRequest(String status) {
+        this.status = status;
     }
 
 
     /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
+     * Status of the test.
      **/
-    public TreeMap<String,Long> getCurve() {
-        return this.curve;
+    public String getStatus() {
+        return this.status;
     }
 
     @Override
@@ -69,15 +66,15 @@ public class ModifyVolumeResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
+        SnmpSendTestTrapsRequest that = (SnmpSendTestTrapsRequest) o;
         
 
-        return Objects.equals( curve , that.curve );
+        return Objects.equals( status , that.status );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) curve );
+        return Objects.hash( (Object) status );
     }
 
 
@@ -86,7 +83,7 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" curve : ").append(curve);
+        sb.append(" status : ").append(status);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -94,4 +91,36 @@ public class ModifyVolumeResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String status;
+
+        private Builder() { }
+
+        public SnmpSendTestTrapsRequest build() {
+            return new SnmpSendTestTrapsRequest (
+                         this.status            );
+        }
+
+        private SnmpSendTestTrapsRequest.Builder buildFrom(final SnmpSendTestTrapsRequest req) {
+            this.status = req.status;
+
+            return this;
+        }
+
+        public SnmpSendTestTrapsRequest.Builder status(final String status) {
+            this.status = status;
+            return this;
+        }
+
+    }
+
 }

@@ -35,33 +35,44 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * 
  **/
-public class ModifyVolumeResult implements Serializable {
+public class SnmpNetwork implements Serializable {
 
-    private static final long serialVersionUID = -495285012L;
+    private static final long serialVersionUID = -901085912L;
 
-    @SerializedName("curve") private final TreeMap<String,Long> curve;
+    @SerializedName("access") private final String access;
+    @SerializedName("cidr") private final Long cidr;
+    @SerializedName("community") private final String community;
+    @SerializedName("network") private final String network;
 
     /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param curve [required] The curve is a set of key-value pairs.
+     * 
+     * @param access [required] 
+     * @param cidr [required] 
+     * @param community [required] 
+     * @param network [required] 
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(TreeMap<String,Long> curve) {
-        this.curve = curve;
+    public SnmpNetwork(String access, Long cidr, String community, String network) {
+        this.access = access;
+        this.cidr = cidr;
+        this.community = community;
+        this.network = network;
     }
 
-
-    /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
-     **/
-    public TreeMap<String,Long> getCurve() {
-        return this.curve;
+    public String getAccess() {
+        return this.access;
+    }
+    public Long getCidr() {
+        return this.cidr;
+    }
+    public String getCommunity() {
+        return this.community;
+    }
+    public String getNetwork() {
+        return this.network;
     }
 
     @Override
@@ -69,15 +80,18 @@ public class ModifyVolumeResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
+        SnmpNetwork that = (SnmpNetwork) o;
         
 
-        return Objects.equals( curve , that.curve );
+        return Objects.equals( access , that.access )
+            && Objects.equals( cidr , that.cidr )
+            && Objects.equals( community , that.community )
+            && Objects.equals( network , that.network );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) curve );
+        return Objects.hash( access, cidr, community, network );
     }
 
 
@@ -86,7 +100,10 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" curve : ").append(curve);
+        sb.append(" access : ").append(access).append(",");
+        sb.append(" cidr : ").append(cidr).append(",");
+        sb.append(" community : ").append(community).append(",");
+        sb.append(" network : ").append(network);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

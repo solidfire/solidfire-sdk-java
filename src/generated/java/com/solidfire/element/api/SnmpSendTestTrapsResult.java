@@ -35,33 +35,26 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * The object returned by the "SnmpSendTestTraps" API Service call.
  **/
-public class ModifyVolumeResult implements Serializable {
+public class SnmpSendTestTrapsResult implements Serializable {
 
-    private static final long serialVersionUID = -495285012L;
+    private static final long serialVersionUID = -612076391L;
 
-    @SerializedName("curve") private final TreeMap<String,Long> curve;
+    @SerializedName("status") private final String status;
 
     /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param curve [required] The curve is a set of key-value pairs.
+     * The object returned by the "SnmpSendTestTraps" API Service call.
+     * @param status [required] 
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(TreeMap<String,Long> curve) {
-        this.curve = curve;
+    public SnmpSendTestTrapsResult(String status) {
+        this.status = status;
     }
 
-
-    /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
-     **/
-    public TreeMap<String,Long> getCurve() {
-        return this.curve;
+    public String getStatus() {
+        return this.status;
     }
 
     @Override
@@ -69,15 +62,15 @@ public class ModifyVolumeResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
+        SnmpSendTestTrapsResult that = (SnmpSendTestTrapsResult) o;
         
 
-        return Objects.equals( curve , that.curve );
+        return Objects.equals( status , that.status );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) curve );
+        return Objects.hash( (Object) status );
     }
 
 
@@ -86,7 +79,7 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" curve : ").append(curve);
+        sb.append(" status : ").append(status);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
