@@ -91,4 +91,36 @@ public class SetConfigResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Config config;
+
+        private Builder() { }
+
+        public SetConfigResult build() {
+            return new SetConfigResult (
+                         this.config            );
+        }
+
+        private SetConfigResult.Builder buildFrom(final SetConfigResult req) {
+            this.config = req.config;
+
+            return this;
+        }
+
+        public SetConfigResult.Builder config(final Config config) {
+            this.config = config;
+            return this;
+        }
+
+    }
+
 }

@@ -91,4 +91,36 @@ public class GetScheduleResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Schedule schedule;
+
+        private Builder() { }
+
+        public GetScheduleResult build() {
+            return new GetScheduleResult (
+                         this.schedule            );
+        }
+
+        private GetScheduleResult.Builder buildFrom(final GetScheduleResult req) {
+            this.schedule = req.schedule;
+
+            return this;
+        }
+
+        public GetScheduleResult.Builder schedule(final Schedule schedule) {
+            this.schedule = schedule;
+            return this;
+        }
+
+    }
+
 }

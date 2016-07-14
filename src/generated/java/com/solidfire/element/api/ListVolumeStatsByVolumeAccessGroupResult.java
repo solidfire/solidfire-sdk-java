@@ -92,4 +92,36 @@ public class ListVolumeStatsByVolumeAccessGroupResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private VolumeStats[] volumeStats;
+
+        private Builder() { }
+
+        public ListVolumeStatsByVolumeAccessGroupResult build() {
+            return new ListVolumeStatsByVolumeAccessGroupResult (
+                         this.volumeStats            );
+        }
+
+        private ListVolumeStatsByVolumeAccessGroupResult.Builder buildFrom(final ListVolumeStatsByVolumeAccessGroupResult req) {
+            this.volumeStats = req.volumeStats;
+
+            return this;
+        }
+
+        public ListVolumeStatsByVolumeAccessGroupResult.Builder volumeStats(final VolumeStats[] volumeStats) {
+            this.volumeStats = volumeStats;
+            return this;
+        }
+
+    }
+
 }

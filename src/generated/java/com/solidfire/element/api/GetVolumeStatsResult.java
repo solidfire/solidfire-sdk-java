@@ -91,4 +91,36 @@ public class GetVolumeStatsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private VolumeStats volumeStats;
+
+        private Builder() { }
+
+        public GetVolumeStatsResult build() {
+            return new GetVolumeStatsResult (
+                         this.volumeStats            );
+        }
+
+        private GetVolumeStatsResult.Builder buildFrom(final GetVolumeStatsResult req) {
+            this.volumeStats = req.volumeStats;
+
+            return this;
+        }
+
+        public GetVolumeStatsResult.Builder volumeStats(final VolumeStats volumeStats) {
+            this.volumeStats = volumeStats;
+            return this;
+        }
+
+    }
+
 }

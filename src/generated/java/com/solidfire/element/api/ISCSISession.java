@@ -175,4 +175,124 @@ public class ISCSISession implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long accountID;
+        private String accountName;
+        private Long driveID;
+        private String initiatorIP;
+        private String initiatorName;
+        private Long nodeID;
+        private Long serviceID;
+        private Long sessionID;
+        private String targetName;
+        private String targetIP;
+        private String virtualNetworkID;
+        private Long volumeID;
+
+        private Builder() { }
+
+        public ISCSISession build() {
+            return new ISCSISession (
+                         this.accountID,
+                         this.accountName,
+                         this.driveID,
+                         this.initiatorIP,
+                         this.initiatorName,
+                         this.nodeID,
+                         this.serviceID,
+                         this.sessionID,
+                         this.targetName,
+                         this.targetIP,
+                         this.virtualNetworkID,
+                         this.volumeID            );
+        }
+
+        private ISCSISession.Builder buildFrom(final ISCSISession req) {
+            this.accountID = req.accountID;
+            this.accountName = req.accountName;
+            this.driveID = req.driveID;
+            this.initiatorIP = req.initiatorIP;
+            this.initiatorName = req.initiatorName;
+            this.nodeID = req.nodeID;
+            this.serviceID = req.serviceID;
+            this.sessionID = req.sessionID;
+            this.targetName = req.targetName;
+            this.targetIP = req.targetIP;
+            this.virtualNetworkID = req.virtualNetworkID;
+            this.volumeID = req.volumeID;
+
+            return this;
+        }
+
+        public ISCSISession.Builder accountID(final Long accountID) {
+            this.accountID = accountID;
+            return this;
+        }
+
+        public ISCSISession.Builder accountName(final String accountName) {
+            this.accountName = accountName;
+            return this;
+        }
+
+        public ISCSISession.Builder driveID(final Long driveID) {
+            this.driveID = driveID;
+            return this;
+        }
+
+        public ISCSISession.Builder initiatorIP(final String initiatorIP) {
+            this.initiatorIP = initiatorIP;
+            return this;
+        }
+
+        public ISCSISession.Builder initiatorName(final String initiatorName) {
+            this.initiatorName = initiatorName;
+            return this;
+        }
+
+        public ISCSISession.Builder nodeID(final Long nodeID) {
+            this.nodeID = nodeID;
+            return this;
+        }
+
+        public ISCSISession.Builder serviceID(final Long serviceID) {
+            this.serviceID = serviceID;
+            return this;
+        }
+
+        public ISCSISession.Builder sessionID(final Long sessionID) {
+            this.sessionID = sessionID;
+            return this;
+        }
+
+        public ISCSISession.Builder targetName(final String targetName) {
+            this.targetName = targetName;
+            return this;
+        }
+
+        public ISCSISession.Builder targetIP(final String targetIP) {
+            this.targetIP = targetIP;
+            return this;
+        }
+
+        public ISCSISession.Builder virtualNetworkID(final String virtualNetworkID) {
+            this.virtualNetworkID = virtualNetworkID;
+            return this;
+        }
+
+        public ISCSISession.Builder volumeID(final Long volumeID) {
+            this.volumeID = volumeID;
+            return this;
+        }
+
+    }
+
 }

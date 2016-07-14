@@ -87,4 +87,36 @@ public class GetClusterStatsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private ClusterStats clusterStats;
+
+        private Builder() { }
+
+        public GetClusterStatsResult build() {
+            return new GetClusterStatsResult (
+                         this.clusterStats            );
+        }
+
+        private GetClusterStatsResult.Builder buildFrom(final GetClusterStatsResult req) {
+            this.clusterStats = req.clusterStats;
+
+            return this;
+        }
+
+        public GetClusterStatsResult.Builder clusterStats(final ClusterStats clusterStats) {
+            this.clusterStats = clusterStats;
+            return this;
+        }
+
+    }
+
 }

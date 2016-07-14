@@ -87,4 +87,36 @@ public class SetNetworkConfigResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Network network;
+
+        private Builder() { }
+
+        public SetNetworkConfigResult build() {
+            return new SetNetworkConfigResult (
+                         this.network            );
+        }
+
+        private SetNetworkConfigResult.Builder buildFrom(final SetNetworkConfigResult req) {
+            this.network = req.network;
+
+            return this;
+        }
+
+        public SetNetworkConfigResult.Builder network(final Network network) {
+            this.network = network;
+            return this;
+        }
+
+    }
+
 }

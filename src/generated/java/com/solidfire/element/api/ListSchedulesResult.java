@@ -91,4 +91,36 @@ public class ListSchedulesResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Schedule[] schedules;
+
+        private Builder() { }
+
+        public ListSchedulesResult build() {
+            return new ListSchedulesResult (
+                         this.schedules            );
+        }
+
+        private ListSchedulesResult.Builder buildFrom(final ListSchedulesResult req) {
+            this.schedules = req.schedules;
+
+            return this;
+        }
+
+        public ListSchedulesResult.Builder schedules(final Schedule[] schedules) {
+            this.schedules = schedules;
+            return this;
+        }
+
+    }
+
 }

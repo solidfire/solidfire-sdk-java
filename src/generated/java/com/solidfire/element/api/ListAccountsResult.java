@@ -91,4 +91,36 @@ public class ListAccountsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Account[] accounts;
+
+        private Builder() { }
+
+        public ListAccountsResult build() {
+            return new ListAccountsResult (
+                         this.accounts            );
+        }
+
+        private ListAccountsResult.Builder buildFrom(final ListAccountsResult req) {
+            this.accounts = req.accounts;
+
+            return this;
+        }
+
+        public ListAccountsResult.Builder accounts(final Account[] accounts) {
+            this.accounts = accounts;
+            return this;
+        }
+
+    }
+
 }

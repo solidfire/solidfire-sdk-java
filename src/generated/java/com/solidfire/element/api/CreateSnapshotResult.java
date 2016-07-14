@@ -104,4 +104,44 @@ public class CreateSnapshotResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long snapshotID;
+        private String checksum;
+
+        private Builder() { }
+
+        public CreateSnapshotResult build() {
+            return new CreateSnapshotResult (
+                         this.snapshotID,
+                         this.checksum            );
+        }
+
+        private CreateSnapshotResult.Builder buildFrom(final CreateSnapshotResult req) {
+            this.snapshotID = req.snapshotID;
+            this.checksum = req.checksum;
+
+            return this;
+        }
+
+        public CreateSnapshotResult.Builder snapshotID(final Long snapshotID) {
+            this.snapshotID = snapshotID;
+            return this;
+        }
+
+        public CreateSnapshotResult.Builder checksum(final String checksum) {
+            this.checksum = checksum;
+            return this;
+        }
+
+    }
+
 }

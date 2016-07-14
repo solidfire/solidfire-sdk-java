@@ -87,4 +87,36 @@ public class ListDriveHardwareResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private NodeDriveHardware[] nodes;
+
+        private Builder() { }
+
+        public ListDriveHardwareResult build() {
+            return new ListDriveHardwareResult (
+                         this.nodes            );
+        }
+
+        private ListDriveHardwareResult.Builder buildFrom(final ListDriveHardwareResult req) {
+            this.nodes = req.nodes;
+
+            return this;
+        }
+
+        public ListDriveHardwareResult.Builder nodes(final NodeDriveHardware[] nodes) {
+            this.nodes = nodes;
+            return this;
+        }
+
+    }
+
 }

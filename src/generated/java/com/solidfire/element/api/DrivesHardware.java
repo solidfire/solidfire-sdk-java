@@ -87,4 +87,36 @@ public class DrivesHardware implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private DriveHardware[] driveHardware;
+
+        private Builder() { }
+
+        public DrivesHardware build() {
+            return new DrivesHardware (
+                         this.driveHardware            );
+        }
+
+        private DrivesHardware.Builder buildFrom(final DrivesHardware req) {
+            this.driveHardware = req.driveHardware;
+
+            return this;
+        }
+
+        public DrivesHardware.Builder driveHardware(final DriveHardware[] driveHardware) {
+            this.driveHardware = driveHardware;
+            return this;
+        }
+
+    }
+
 }

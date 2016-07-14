@@ -119,4 +119,68 @@ public class SnmpV3UsmUser implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String access;
+        private String name;
+        private String password;
+        private String passphrase;
+        private String secLevel;
+
+        private Builder() { }
+
+        public SnmpV3UsmUser build() {
+            return new SnmpV3UsmUser (
+                         this.access,
+                         this.name,
+                         this.password,
+                         this.passphrase,
+                         this.secLevel            );
+        }
+
+        private SnmpV3UsmUser.Builder buildFrom(final SnmpV3UsmUser req) {
+            this.access = req.access;
+            this.name = req.name;
+            this.password = req.password;
+            this.passphrase = req.passphrase;
+            this.secLevel = req.secLevel;
+
+            return this;
+        }
+
+        public SnmpV3UsmUser.Builder access(final String access) {
+            this.access = access;
+            return this;
+        }
+
+        public SnmpV3UsmUser.Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public SnmpV3UsmUser.Builder password(final String password) {
+            this.password = password;
+            return this;
+        }
+
+        public SnmpV3UsmUser.Builder passphrase(final String passphrase) {
+            this.passphrase = passphrase;
+            return this;
+        }
+
+        public SnmpV3UsmUser.Builder secLevel(final String secLevel) {
+            this.secLevel = secLevel;
+            return this;
+        }
+
+    }
+
 }

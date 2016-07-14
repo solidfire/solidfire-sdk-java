@@ -94,4 +94,36 @@ public class ModifyVolumeResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private TreeMap<String,Long> curve;
+
+        private Builder() { }
+
+        public ModifyVolumeResult build() {
+            return new ModifyVolumeResult (
+                         this.curve            );
+        }
+
+        private ModifyVolumeResult.Builder buildFrom(final ModifyVolumeResult req) {
+            this.curve = req.curve;
+
+            return this;
+        }
+
+        public ModifyVolumeResult.Builder curve(final TreeMap<String,Long> curve) {
+            this.curve = curve;
+            return this;
+        }
+
+    }
+
 }

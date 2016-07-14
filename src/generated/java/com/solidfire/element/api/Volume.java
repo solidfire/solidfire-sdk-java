@@ -386,4 +386,188 @@ public class Volume implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long volumeID;
+        private String name;
+        private Long accountID;
+        private String createTime;
+        private String status;
+        private String access;
+        private Boolean enable512e;
+        private String iqn;
+        private String scsiEUIDeviceID;
+        private String scsiNAADeviceID;
+        private VolumeQOS qos;
+        private Long[] volumeAccessGroups;
+        private VolumePair[] volumePairs;
+        private Optional<String> deleteTime;
+        private Optional<String> purgeTime;
+        private Long sliceCount;
+        private Long totalSize;
+        private Long blockSize;
+        private String virtualVolumeID;
+        private java.util.Map<String, Object> attributes;
+
+        private Builder() { }
+
+        public Volume build() {
+            return new Volume (
+                         this.volumeID,
+                         this.name,
+                         this.accountID,
+                         this.createTime,
+                         this.status,
+                         this.access,
+                         this.enable512e,
+                         this.iqn,
+                         this.scsiEUIDeviceID,
+                         this.scsiNAADeviceID,
+                         this.qos,
+                         this.volumeAccessGroups,
+                         this.volumePairs,
+                         this.deleteTime,
+                         this.purgeTime,
+                         this.sliceCount,
+                         this.totalSize,
+                         this.blockSize,
+                         this.virtualVolumeID,
+                         this.attributes            );
+        }
+
+        private Volume.Builder buildFrom(final Volume req) {
+            this.volumeID = req.volumeID;
+            this.name = req.name;
+            this.accountID = req.accountID;
+            this.createTime = req.createTime;
+            this.status = req.status;
+            this.access = req.access;
+            this.enable512e = req.enable512e;
+            this.iqn = req.iqn;
+            this.scsiEUIDeviceID = req.scsiEUIDeviceID;
+            this.scsiNAADeviceID = req.scsiNAADeviceID;
+            this.qos = req.qos;
+            this.volumeAccessGroups = req.volumeAccessGroups;
+            this.volumePairs = req.volumePairs;
+            this.deleteTime = req.deleteTime;
+            this.purgeTime = req.purgeTime;
+            this.sliceCount = req.sliceCount;
+            this.totalSize = req.totalSize;
+            this.blockSize = req.blockSize;
+            this.virtualVolumeID = req.virtualVolumeID;
+            this.attributes = req.attributes;
+
+            return this;
+        }
+
+        public Volume.Builder volumeID(final Long volumeID) {
+            this.volumeID = volumeID;
+            return this;
+        }
+
+        public Volume.Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Volume.Builder accountID(final Long accountID) {
+            this.accountID = accountID;
+            return this;
+        }
+
+        public Volume.Builder createTime(final String createTime) {
+            this.createTime = createTime;
+            return this;
+        }
+
+        public Volume.Builder status(final String status) {
+            this.status = status;
+            return this;
+        }
+
+        public Volume.Builder access(final String access) {
+            this.access = access;
+            return this;
+        }
+
+        public Volume.Builder enable512e(final Boolean enable512e) {
+            this.enable512e = enable512e;
+            return this;
+        }
+
+        public Volume.Builder iqn(final String iqn) {
+            this.iqn = iqn;
+            return this;
+        }
+
+        public Volume.Builder scsiEUIDeviceID(final String scsiEUIDeviceID) {
+            this.scsiEUIDeviceID = scsiEUIDeviceID;
+            return this;
+        }
+
+        public Volume.Builder scsiNAADeviceID(final String scsiNAADeviceID) {
+            this.scsiNAADeviceID = scsiNAADeviceID;
+            return this;
+        }
+
+        public Volume.Builder qos(final VolumeQOS qos) {
+            this.qos = qos;
+            return this;
+        }
+
+        public Volume.Builder volumeAccessGroups(final Long[] volumeAccessGroups) {
+            this.volumeAccessGroups = volumeAccessGroups;
+            return this;
+        }
+
+        public Volume.Builder volumePairs(final VolumePair[] volumePairs) {
+            this.volumePairs = volumePairs;
+            return this;
+        }
+
+        public Volume.Builder optionalDeleteTime(final String deleteTime) {
+            this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : Optional.of(deleteTime);
+            return this;
+        }
+
+        public Volume.Builder optionalPurgeTime(final String purgeTime) {
+            this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : Optional.of(purgeTime);
+            return this;
+        }
+
+        public Volume.Builder sliceCount(final Long sliceCount) {
+            this.sliceCount = sliceCount;
+            return this;
+        }
+
+        public Volume.Builder totalSize(final Long totalSize) {
+            this.totalSize = totalSize;
+            return this;
+        }
+
+        public Volume.Builder blockSize(final Long blockSize) {
+            this.blockSize = blockSize;
+            return this;
+        }
+
+        public Volume.Builder virtualVolumeID(final String virtualVolumeID) {
+            this.virtualVolumeID = virtualVolumeID;
+            return this;
+        }
+
+        public Volume.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
+            return this;
+        }
+
+    }
+
 }

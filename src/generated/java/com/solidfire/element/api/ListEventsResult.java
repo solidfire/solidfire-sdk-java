@@ -95,4 +95,44 @@ public class ListEventsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String eventQueueType;
+        private EventInfo[] events;
+
+        private Builder() { }
+
+        public ListEventsResult build() {
+            return new ListEventsResult (
+                         this.eventQueueType,
+                         this.events            );
+        }
+
+        private ListEventsResult.Builder buildFrom(final ListEventsResult req) {
+            this.eventQueueType = req.eventQueueType;
+            this.events = req.events;
+
+            return this;
+        }
+
+        public ListEventsResult.Builder eventQueueType(final String eventQueueType) {
+            this.eventQueueType = eventQueueType;
+            return this;
+        }
+
+        public ListEventsResult.Builder events(final EventInfo[] events) {
+            this.events = events;
+            return this;
+        }
+
+    }
+
 }

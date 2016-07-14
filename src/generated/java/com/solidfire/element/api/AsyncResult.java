@@ -93,4 +93,36 @@ public class AsyncResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String message;
+
+        private Builder() { }
+
+        public AsyncResult build() {
+            return new AsyncResult (
+                         this.message            );
+        }
+
+        private AsyncResult.Builder buildFrom(final AsyncResult req) {
+            this.message = req.message;
+
+            return this;
+        }
+
+        public AsyncResult.Builder message(final String message) {
+            this.message = message;
+            return this;
+        }
+
+    }
+
 }

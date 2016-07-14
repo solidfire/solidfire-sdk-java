@@ -115,4 +115,52 @@ public class CloneVolumeResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long cloneID;
+        private Long volumeID;
+        private Long asyncHandle;
+
+        private Builder() { }
+
+        public CloneVolumeResult build() {
+            return new CloneVolumeResult (
+                         this.cloneID,
+                         this.volumeID,
+                         this.asyncHandle            );
+        }
+
+        private CloneVolumeResult.Builder buildFrom(final CloneVolumeResult req) {
+            this.cloneID = req.cloneID;
+            this.volumeID = req.volumeID;
+            this.asyncHandle = req.asyncHandle;
+
+            return this;
+        }
+
+        public CloneVolumeResult.Builder cloneID(final Long cloneID) {
+            this.cloneID = cloneID;
+            return this;
+        }
+
+        public CloneVolumeResult.Builder volumeID(final Long volumeID) {
+            this.volumeID = volumeID;
+            return this;
+        }
+
+        public CloneVolumeResult.Builder asyncHandle(final Long asyncHandle) {
+            this.asyncHandle = asyncHandle;
+            return this;
+        }
+
+    }
+
 }

@@ -144,4 +144,68 @@ public class ScheduleInfo implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Optional<Long> volumeID;
+        private Optional<Long[]> volumes;
+        private Optional<String> name;
+        private Optional<Boolean> enableRemoteReplication;
+        private Optional<String> retention;
+
+        private Builder() { }
+
+        public ScheduleInfo build() {
+            return new ScheduleInfo (
+                         this.volumeID,
+                         this.volumes,
+                         this.name,
+                         this.enableRemoteReplication,
+                         this.retention            );
+        }
+
+        private ScheduleInfo.Builder buildFrom(final ScheduleInfo req) {
+            this.volumeID = req.volumeID;
+            this.volumes = req.volumes;
+            this.name = req.name;
+            this.enableRemoteReplication = req.enableRemoteReplication;
+            this.retention = req.retention;
+
+            return this;
+        }
+
+        public ScheduleInfo.Builder optionalVolumeID(final Long volumeID) {
+            this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
+            return this;
+        }
+
+        public ScheduleInfo.Builder optionalVolumes(final Long[] volumes) {
+            this.volumes = (volumes == null) ? Optional.<Long[]>empty() : Optional.of(volumes);
+            return this;
+        }
+
+        public ScheduleInfo.Builder optionalName(final String name) {
+            this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
+            return this;
+        }
+
+        public ScheduleInfo.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
+            this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
+            return this;
+        }
+
+        public ScheduleInfo.Builder optionalRetention(final String retention) {
+            this.retention = (retention == null) ? Optional.<String>empty() : Optional.of(retention);
+            return this;
+        }
+
+    }
+
 }

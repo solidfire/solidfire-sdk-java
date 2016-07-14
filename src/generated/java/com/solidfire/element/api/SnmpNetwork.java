@@ -111,4 +111,60 @@ public class SnmpNetwork implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String access;
+        private Long cidr;
+        private String community;
+        private String network;
+
+        private Builder() { }
+
+        public SnmpNetwork build() {
+            return new SnmpNetwork (
+                         this.access,
+                         this.cidr,
+                         this.community,
+                         this.network            );
+        }
+
+        private SnmpNetwork.Builder buildFrom(final SnmpNetwork req) {
+            this.access = req.access;
+            this.cidr = req.cidr;
+            this.community = req.community;
+            this.network = req.network;
+
+            return this;
+        }
+
+        public SnmpNetwork.Builder access(final String access) {
+            this.access = access;
+            return this;
+        }
+
+        public SnmpNetwork.Builder cidr(final Long cidr) {
+            this.cidr = cidr;
+            return this;
+        }
+
+        public SnmpNetwork.Builder community(final String community) {
+            this.community = community;
+            return this;
+        }
+
+        public SnmpNetwork.Builder network(final String network) {
+            this.network = network;
+            return this;
+        }
+
+    }
+
 }

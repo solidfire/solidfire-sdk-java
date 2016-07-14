@@ -95,4 +95,44 @@ public class AddedNode implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long nodeID;
+        private Long pendingNodeID;
+
+        private Builder() { }
+
+        public AddedNode build() {
+            return new AddedNode (
+                         this.nodeID,
+                         this.pendingNodeID            );
+        }
+
+        private AddedNode.Builder buildFrom(final AddedNode req) {
+            this.nodeID = req.nodeID;
+            this.pendingNodeID = req.pendingNodeID;
+
+            return this;
+        }
+
+        public AddedNode.Builder nodeID(final Long nodeID) {
+            this.nodeID = nodeID;
+            return this;
+        }
+
+        public AddedNode.Builder pendingNodeID(final Long pendingNodeID) {
+            this.pendingNodeID = pendingNodeID;
+            return this;
+        }
+
+    }
+
 }

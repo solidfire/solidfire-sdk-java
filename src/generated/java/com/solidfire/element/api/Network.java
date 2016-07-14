@@ -97,4 +97,44 @@ public class Network implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Optional<NetworkConfig> bond10G;
+        private Optional<NetworkConfig> bond1G;
+
+        private Builder() { }
+
+        public Network build() {
+            return new Network (
+                         this.bond10G,
+                         this.bond1G            );
+        }
+
+        private Network.Builder buildFrom(final Network req) {
+            this.bond10G = req.bond10G;
+            this.bond1G = req.bond1G;
+
+            return this;
+        }
+
+        public Network.Builder optionalBond10G(final NetworkConfig bond10G) {
+            this.bond10G = (bond10G == null) ? Optional.<NetworkConfig>empty() : Optional.of(bond10G);
+            return this;
+        }
+
+        public Network.Builder optionalBond1G(final NetworkConfig bond1G) {
+            this.bond1G = (bond1G == null) ? Optional.<NetworkConfig>empty() : Optional.of(bond1G);
+            return this;
+        }
+
+    }
+
 }

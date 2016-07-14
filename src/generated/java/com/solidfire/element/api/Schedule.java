@@ -296,4 +296,164 @@ public class Schedule implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private java.util.Map<String, Object> attributes;
+        private Boolean hasError;
+        private Long hours;
+        private String lastRunStatus;
+        private String lastRunTimeStart;
+        private Long minutes;
+        private Long[] monthdays;
+        private Boolean paused;
+        private Boolean recurring;
+        private Boolean runNextInterval;
+        private Long scheduleID;
+        private ScheduleInfo scheduleInfo;
+        private String scheduleName;
+        private String scheduleType;
+        private String startingDate;
+        private Boolean toBeDeleted;
+        private Weekday[] weekdays;
+
+        private Builder() { }
+
+        public Schedule build() {
+            return new Schedule (
+                         this.attributes,
+                         this.hasError,
+                         this.hours,
+                         this.lastRunStatus,
+                         this.lastRunTimeStart,
+                         this.minutes,
+                         this.monthdays,
+                         this.paused,
+                         this.recurring,
+                         this.runNextInterval,
+                         this.scheduleID,
+                         this.scheduleInfo,
+                         this.scheduleName,
+                         this.scheduleType,
+                         this.startingDate,
+                         this.toBeDeleted,
+                         this.weekdays            );
+        }
+
+        private Schedule.Builder buildFrom(final Schedule req) {
+            this.attributes = req.attributes;
+            this.hasError = req.hasError;
+            this.hours = req.hours;
+            this.lastRunStatus = req.lastRunStatus;
+            this.lastRunTimeStart = req.lastRunTimeStart;
+            this.minutes = req.minutes;
+            this.monthdays = req.monthdays;
+            this.paused = req.paused;
+            this.recurring = req.recurring;
+            this.runNextInterval = req.runNextInterval;
+            this.scheduleID = req.scheduleID;
+            this.scheduleInfo = req.scheduleInfo;
+            this.scheduleName = req.scheduleName;
+            this.scheduleType = req.scheduleType;
+            this.startingDate = req.startingDate;
+            this.toBeDeleted = req.toBeDeleted;
+            this.weekdays = req.weekdays;
+
+            return this;
+        }
+
+        public Schedule.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
+            return this;
+        }
+
+        public Schedule.Builder hasError(final Boolean hasError) {
+            this.hasError = hasError;
+            return this;
+        }
+
+        public Schedule.Builder hours(final Long hours) {
+            this.hours = hours;
+            return this;
+        }
+
+        public Schedule.Builder lastRunStatus(final String lastRunStatus) {
+            this.lastRunStatus = lastRunStatus;
+            return this;
+        }
+
+        public Schedule.Builder lastRunTimeStart(final String lastRunTimeStart) {
+            this.lastRunTimeStart = lastRunTimeStart;
+            return this;
+        }
+
+        public Schedule.Builder minutes(final Long minutes) {
+            this.minutes = minutes;
+            return this;
+        }
+
+        public Schedule.Builder monthdays(final Long[] monthdays) {
+            this.monthdays = monthdays;
+            return this;
+        }
+
+        public Schedule.Builder paused(final Boolean paused) {
+            this.paused = paused;
+            return this;
+        }
+
+        public Schedule.Builder recurring(final Boolean recurring) {
+            this.recurring = recurring;
+            return this;
+        }
+
+        public Schedule.Builder runNextInterval(final Boolean runNextInterval) {
+            this.runNextInterval = runNextInterval;
+            return this;
+        }
+
+        public Schedule.Builder scheduleID(final Long scheduleID) {
+            this.scheduleID = scheduleID;
+            return this;
+        }
+
+        public Schedule.Builder scheduleInfo(final ScheduleInfo scheduleInfo) {
+            this.scheduleInfo = scheduleInfo;
+            return this;
+        }
+
+        public Schedule.Builder scheduleName(final String scheduleName) {
+            this.scheduleName = scheduleName;
+            return this;
+        }
+
+        public Schedule.Builder scheduleType(final String scheduleType) {
+            this.scheduleType = scheduleType;
+            return this;
+        }
+
+        public Schedule.Builder startingDate(final String startingDate) {
+            this.startingDate = startingDate;
+            return this;
+        }
+
+        public Schedule.Builder toBeDeleted(final Boolean toBeDeleted) {
+            this.toBeDeleted = toBeDeleted;
+            return this;
+        }
+
+        public Schedule.Builder weekdays(final Weekday[] weekdays) {
+            this.weekdays = weekdays;
+            return this;
+        }
+
+    }
+
 }

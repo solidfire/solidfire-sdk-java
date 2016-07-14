@@ -91,4 +91,36 @@ public class ResetDrivesDetails implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private ResetDriveDetails[] drives;
+
+        private Builder() { }
+
+        public ResetDrivesDetails build() {
+            return new ResetDrivesDetails (
+                         this.drives            );
+        }
+
+        private ResetDrivesDetails.Builder buildFrom(final ResetDrivesDetails req) {
+            this.drives = req.drives;
+
+            return this;
+        }
+
+        public ResetDrivesDetails.Builder drives(final ResetDriveDetails[] drives) {
+            this.drives = drives;
+            return this;
+        }
+
+    }
+
 }

@@ -407,4 +407,236 @@ public class VolumeStats implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long accountID;
+        private Long actualIOPS;
+        private Optional<String> asyncDelay;
+        private Long averageIOPSize;
+        private Long burstIOPSCredit;
+        private Long clientQueueDepth;
+        private MetadataHosts desiredMetadataHosts;
+        private Long latencyUSec;
+        private MetadataHosts metadataHosts;
+        private Long nonZeroBlocks;
+        private Long readBytes;
+        private Long readLatencyUSec;
+        private Long readOps;
+        private Double throttle;
+        private String timestamp;
+        private Long totalLatencyUSec;
+        private Long unalignedReads;
+        private Long unalignedWrites;
+        private Long[] volumeAccessGroups;
+        private Long volumeID;
+        private Long volumeSize;
+        private Double volumeUtilization;
+        private Long writeBytes;
+        private Long writeLatencyUSec;
+        private Long writeOps;
+        private Long zeroBlocks;
+
+        private Builder() { }
+
+        public VolumeStats build() {
+            return new VolumeStats (
+                         this.accountID,
+                         this.actualIOPS,
+                         this.asyncDelay,
+                         this.averageIOPSize,
+                         this.burstIOPSCredit,
+                         this.clientQueueDepth,
+                         this.desiredMetadataHosts,
+                         this.latencyUSec,
+                         this.metadataHosts,
+                         this.nonZeroBlocks,
+                         this.readBytes,
+                         this.readLatencyUSec,
+                         this.readOps,
+                         this.throttle,
+                         this.timestamp,
+                         this.totalLatencyUSec,
+                         this.unalignedReads,
+                         this.unalignedWrites,
+                         this.volumeAccessGroups,
+                         this.volumeID,
+                         this.volumeSize,
+                         this.volumeUtilization,
+                         this.writeBytes,
+                         this.writeLatencyUSec,
+                         this.writeOps,
+                         this.zeroBlocks            );
+        }
+
+        private VolumeStats.Builder buildFrom(final VolumeStats req) {
+            this.accountID = req.accountID;
+            this.actualIOPS = req.actualIOPS;
+            this.asyncDelay = req.asyncDelay;
+            this.averageIOPSize = req.averageIOPSize;
+            this.burstIOPSCredit = req.burstIOPSCredit;
+            this.clientQueueDepth = req.clientQueueDepth;
+            this.desiredMetadataHosts = req.desiredMetadataHosts;
+            this.latencyUSec = req.latencyUSec;
+            this.metadataHosts = req.metadataHosts;
+            this.nonZeroBlocks = req.nonZeroBlocks;
+            this.readBytes = req.readBytes;
+            this.readLatencyUSec = req.readLatencyUSec;
+            this.readOps = req.readOps;
+            this.throttle = req.throttle;
+            this.timestamp = req.timestamp;
+            this.totalLatencyUSec = req.totalLatencyUSec;
+            this.unalignedReads = req.unalignedReads;
+            this.unalignedWrites = req.unalignedWrites;
+            this.volumeAccessGroups = req.volumeAccessGroups;
+            this.volumeID = req.volumeID;
+            this.volumeSize = req.volumeSize;
+            this.volumeUtilization = req.volumeUtilization;
+            this.writeBytes = req.writeBytes;
+            this.writeLatencyUSec = req.writeLatencyUSec;
+            this.writeOps = req.writeOps;
+            this.zeroBlocks = req.zeroBlocks;
+
+            return this;
+        }
+
+        public VolumeStats.Builder accountID(final Long accountID) {
+            this.accountID = accountID;
+            return this;
+        }
+
+        public VolumeStats.Builder actualIOPS(final Long actualIOPS) {
+            this.actualIOPS = actualIOPS;
+            return this;
+        }
+
+        public VolumeStats.Builder optionalAsyncDelay(final String asyncDelay) {
+            this.asyncDelay = (asyncDelay == null) ? Optional.<String>empty() : Optional.of(asyncDelay);
+            return this;
+        }
+
+        public VolumeStats.Builder averageIOPSize(final Long averageIOPSize) {
+            this.averageIOPSize = averageIOPSize;
+            return this;
+        }
+
+        public VolumeStats.Builder burstIOPSCredit(final Long burstIOPSCredit) {
+            this.burstIOPSCredit = burstIOPSCredit;
+            return this;
+        }
+
+        public VolumeStats.Builder clientQueueDepth(final Long clientQueueDepth) {
+            this.clientQueueDepth = clientQueueDepth;
+            return this;
+        }
+
+        public VolumeStats.Builder desiredMetadataHosts(final MetadataHosts desiredMetadataHosts) {
+            this.desiredMetadataHosts = desiredMetadataHosts;
+            return this;
+        }
+
+        public VolumeStats.Builder latencyUSec(final Long latencyUSec) {
+            this.latencyUSec = latencyUSec;
+            return this;
+        }
+
+        public VolumeStats.Builder metadataHosts(final MetadataHosts metadataHosts) {
+            this.metadataHosts = metadataHosts;
+            return this;
+        }
+
+        public VolumeStats.Builder nonZeroBlocks(final Long nonZeroBlocks) {
+            this.nonZeroBlocks = nonZeroBlocks;
+            return this;
+        }
+
+        public VolumeStats.Builder readBytes(final Long readBytes) {
+            this.readBytes = readBytes;
+            return this;
+        }
+
+        public VolumeStats.Builder readLatencyUSec(final Long readLatencyUSec) {
+            this.readLatencyUSec = readLatencyUSec;
+            return this;
+        }
+
+        public VolumeStats.Builder readOps(final Long readOps) {
+            this.readOps = readOps;
+            return this;
+        }
+
+        public VolumeStats.Builder throttle(final Double throttle) {
+            this.throttle = throttle;
+            return this;
+        }
+
+        public VolumeStats.Builder timestamp(final String timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        public VolumeStats.Builder totalLatencyUSec(final Long totalLatencyUSec) {
+            this.totalLatencyUSec = totalLatencyUSec;
+            return this;
+        }
+
+        public VolumeStats.Builder unalignedReads(final Long unalignedReads) {
+            this.unalignedReads = unalignedReads;
+            return this;
+        }
+
+        public VolumeStats.Builder unalignedWrites(final Long unalignedWrites) {
+            this.unalignedWrites = unalignedWrites;
+            return this;
+        }
+
+        public VolumeStats.Builder volumeAccessGroups(final Long[] volumeAccessGroups) {
+            this.volumeAccessGroups = volumeAccessGroups;
+            return this;
+        }
+
+        public VolumeStats.Builder volumeID(final Long volumeID) {
+            this.volumeID = volumeID;
+            return this;
+        }
+
+        public VolumeStats.Builder volumeSize(final Long volumeSize) {
+            this.volumeSize = volumeSize;
+            return this;
+        }
+
+        public VolumeStats.Builder volumeUtilization(final Double volumeUtilization) {
+            this.volumeUtilization = volumeUtilization;
+            return this;
+        }
+
+        public VolumeStats.Builder writeBytes(final Long writeBytes) {
+            this.writeBytes = writeBytes;
+            return this;
+        }
+
+        public VolumeStats.Builder writeLatencyUSec(final Long writeLatencyUSec) {
+            this.writeLatencyUSec = writeLatencyUSec;
+            return this;
+        }
+
+        public VolumeStats.Builder writeOps(final Long writeOps) {
+            this.writeOps = writeOps;
+            return this;
+        }
+
+        public VolumeStats.Builder zeroBlocks(final Long zeroBlocks) {
+            this.zeroBlocks = zeroBlocks;
+            return this;
+        }
+
+    }
+
 }

@@ -91,4 +91,36 @@ public class ListBackupTargetsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private BackupTarget[] backupTargets;
+
+        private Builder() { }
+
+        public ListBackupTargetsResult build() {
+            return new ListBackupTargetsResult (
+                         this.backupTargets            );
+        }
+
+        private ListBackupTargetsResult.Builder buildFrom(final ListBackupTargetsResult req) {
+            this.backupTargets = req.backupTargets;
+
+            return this;
+        }
+
+        public ListBackupTargetsResult.Builder backupTargets(final BackupTarget[] backupTargets) {
+            this.backupTargets = backupTargets;
+            return this;
+        }
+
+    }
+
 }

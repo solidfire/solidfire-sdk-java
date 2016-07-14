@@ -159,4 +159,108 @@ public class EventInfo implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long eventID;
+        private Long severity;
+        private String eventInfoType;
+        private String message;
+        private Long serviceID;
+        private Long nodeID;
+        private Long driveID;
+        private String timeOfReport;
+        private String timeOfPublish;
+        private Object details;
+
+        private Builder() { }
+
+        public EventInfo build() {
+            return new EventInfo (
+                         this.eventID,
+                         this.severity,
+                         this.eventInfoType,
+                         this.message,
+                         this.serviceID,
+                         this.nodeID,
+                         this.driveID,
+                         this.timeOfReport,
+                         this.timeOfPublish,
+                         this.details            );
+        }
+
+        private EventInfo.Builder buildFrom(final EventInfo req) {
+            this.eventID = req.eventID;
+            this.severity = req.severity;
+            this.eventInfoType = req.eventInfoType;
+            this.message = req.message;
+            this.serviceID = req.serviceID;
+            this.nodeID = req.nodeID;
+            this.driveID = req.driveID;
+            this.timeOfReport = req.timeOfReport;
+            this.timeOfPublish = req.timeOfPublish;
+            this.details = req.details;
+
+            return this;
+        }
+
+        public EventInfo.Builder eventID(final Long eventID) {
+            this.eventID = eventID;
+            return this;
+        }
+
+        public EventInfo.Builder severity(final Long severity) {
+            this.severity = severity;
+            return this;
+        }
+
+        public EventInfo.Builder eventInfoType(final String eventInfoType) {
+            this.eventInfoType = eventInfoType;
+            return this;
+        }
+
+        public EventInfo.Builder message(final String message) {
+            this.message = message;
+            return this;
+        }
+
+        public EventInfo.Builder serviceID(final Long serviceID) {
+            this.serviceID = serviceID;
+            return this;
+        }
+
+        public EventInfo.Builder nodeID(final Long nodeID) {
+            this.nodeID = nodeID;
+            return this;
+        }
+
+        public EventInfo.Builder driveID(final Long driveID) {
+            this.driveID = driveID;
+            return this;
+        }
+
+        public EventInfo.Builder timeOfReport(final String timeOfReport) {
+            this.timeOfReport = timeOfReport;
+            return this;
+        }
+
+        public EventInfo.Builder timeOfPublish(final String timeOfPublish) {
+            this.timeOfPublish = timeOfPublish;
+            return this;
+        }
+
+        public EventInfo.Builder details(final Object details) {
+            this.details = details;
+            return this;
+        }
+
+    }
+
 }

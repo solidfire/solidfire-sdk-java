@@ -103,4 +103,52 @@ public class ClusterVersionInfo implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long nodeID;
+        private String nodeVersion;
+        private String nodeInternalRevision;
+
+        private Builder() { }
+
+        public ClusterVersionInfo build() {
+            return new ClusterVersionInfo (
+                         this.nodeID,
+                         this.nodeVersion,
+                         this.nodeInternalRevision            );
+        }
+
+        private ClusterVersionInfo.Builder buildFrom(final ClusterVersionInfo req) {
+            this.nodeID = req.nodeID;
+            this.nodeVersion = req.nodeVersion;
+            this.nodeInternalRevision = req.nodeInternalRevision;
+
+            return this;
+        }
+
+        public ClusterVersionInfo.Builder nodeID(final Long nodeID) {
+            this.nodeID = nodeID;
+            return this;
+        }
+
+        public ClusterVersionInfo.Builder nodeVersion(final String nodeVersion) {
+            this.nodeVersion = nodeVersion;
+            return this;
+        }
+
+        public ClusterVersionInfo.Builder nodeInternalRevision(final String nodeInternalRevision) {
+            this.nodeInternalRevision = nodeInternalRevision;
+            return this;
+        }
+
+    }
+
 }

@@ -231,1119 +231,1610 @@ public class SolidFireElement
 
     @Override
     public AddAccountResult addAccount(final AddAccountRequest request) {
-        return super.sendRequest("AddAccount", request, AddAccountRequest.class, AddAccountResult.class );
+        final AddAccountResult result = super.sendRequest( "AddAccount", request, AddAccountRequest.class, AddAccountResult.class );
+
+        return result;
     }
 
     @Override
     public GetAccountResult getAccountByID(final GetAccountByIDRequest request) {
-        return super.sendRequest("GetAccountByID", request, GetAccountByIDRequest.class, GetAccountResult.class );
+        final GetAccountResult result = super.sendRequest( "GetAccountByID", request, GetAccountByIDRequest.class, GetAccountResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetAccountResult getAccountByID(Long accountID) {
-        return this.getAccountByID( new GetAccountByIDRequest(accountID));
+        final GetAccountByIDRequest request = new GetAccountByIDRequest( accountID);
+        final GetAccountResult result = this.getAccountByID( request );
+
+        return result;
     }
 
     @Override
     public GetAccountResult getAccountByName(final GetAccountByNameRequest request) {
-        return super.sendRequest("GetAccountByName", request, GetAccountByNameRequest.class, GetAccountResult.class );
+        final GetAccountResult result = super.sendRequest( "GetAccountByName", request, GetAccountByNameRequest.class, GetAccountResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetAccountResult getAccountByName(String username) {
-        return this.getAccountByName( new GetAccountByNameRequest(username));
+        final GetAccountByNameRequest request = new GetAccountByNameRequest( username);
+        final GetAccountResult result = this.getAccountByName( request );
+
+        return result;
     }
 
     @Override
     public ListAccountsResult listAccounts(final ListAccountsRequest request) {
-        return super.sendRequest("ListAccounts", request, ListAccountsRequest.class, ListAccountsResult.class );
+        final ListAccountsResult result = super.sendRequest( "ListAccounts", request, ListAccountsRequest.class, ListAccountsResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListAccountsResult listAccounts(Optional<Long> startAccountID, Optional<Long> limit) {
-        return this.listAccounts( new ListAccountsRequest(startAccountID, limit));
+        final ListAccountsRequest request = new ListAccountsRequest( startAccountID, limit);
+        final ListAccountsResult result = this.listAccounts( request );
+
+        return result;
     }
 
     @Override
     public ModifyAccountResult modifyAccount(final ModifyAccountRequest request) {
-        return super.sendRequest("ModifyAccount", request, ModifyAccountRequest.class, ModifyAccountResult.class );
+        final ModifyAccountResult result = super.sendRequest( "ModifyAccount", request, ModifyAccountRequest.class, ModifyAccountResult.class );
+
+        return result;
     }
 
     @Override
     public RemoveAccountResult removeAccount(final RemoveAccountRequest request) {
-        return super.sendRequest("RemoveAccount", request, RemoveAccountRequest.class, RemoveAccountResult.class );
+        final RemoveAccountResult result = super.sendRequest( "RemoveAccount", request, RemoveAccountRequest.class, RemoveAccountResult.class );
+
+        return result;
     }
 
 
     @Override
     public RemoveAccountResult removeAccount(Long accountID) {
-        return this.removeAccount( new RemoveAccountRequest(accountID));
+        final RemoveAccountRequest request = new RemoveAccountRequest( accountID);
+        final RemoveAccountResult result = this.removeAccount( request );
+
+        return result;
     }
 
     @Override
     public GetEfficiencyResult getAccountEfficiency(final GetAccountEfficiencyRequest request) {
-        return super.sendRequest("GetAccountEfficiency", request, GetAccountEfficiencyRequest.class, GetEfficiencyResult.class );
+        final GetEfficiencyResult result = super.sendRequest( "GetAccountEfficiency", request, GetAccountEfficiencyRequest.class, GetEfficiencyResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetEfficiencyResult getAccountEfficiency(Long accountID, Optional<Boolean> force) {
-        return this.getAccountEfficiency( new GetAccountEfficiencyRequest(accountID, force));
+        final GetAccountEfficiencyRequest request = new GetAccountEfficiencyRequest( accountID, force);
+        final GetEfficiencyResult result = this.getAccountEfficiency( request );
+
+        return result;
     }
 
     @Override
     public CreateBackupTargetResult createBackupTarget(final CreateBackupTargetRequest request) {
-        return super.sendRequest("CreateBackupTarget", request, CreateBackupTargetRequest.class, CreateBackupTargetResult.class );
+        final CreateBackupTargetResult result = super.sendRequest( "CreateBackupTarget", request, CreateBackupTargetRequest.class, CreateBackupTargetResult.class );
+
+        return result;
     }
 
 
     @Override
     public CreateBackupTargetResult createBackupTarget(String name, Optional<java.util.Map<String, Object>> attributes) {
-        return this.createBackupTarget( new CreateBackupTargetRequest(name, attributes));
+        final CreateBackupTargetRequest request = new CreateBackupTargetRequest( name, attributes);
+        final CreateBackupTargetResult result = this.createBackupTarget( request );
+
+        return result;
     }
 
     @Override
     public GetBackupTargetResult getBackupTarget(final GetBackupTargetRequest request) {
-        return super.sendRequest("GetBackupTarget", request, GetBackupTargetRequest.class, GetBackupTargetResult.class );
+        final GetBackupTargetResult result = super.sendRequest( "GetBackupTarget", request, GetBackupTargetRequest.class, GetBackupTargetResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetBackupTargetResult getBackupTarget(Long backupTargetID) {
-        return this.getBackupTarget( new GetBackupTargetRequest(backupTargetID));
+        final GetBackupTargetRequest request = new GetBackupTargetRequest( backupTargetID);
+        final GetBackupTargetResult result = this.getBackupTarget( request );
+
+        return result;
     }
 
     @Override
     public ListBackupTargetsResult listBackupTargets(final ListBackupTargetsRequest request) {
-        return super.sendRequest("ListBackupTargets", request, ListBackupTargetsRequest.class, ListBackupTargetsResult.class );
+        final ListBackupTargetsResult result = super.sendRequest( "ListBackupTargets", request, ListBackupTargetsRequest.class, ListBackupTargetsResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListBackupTargetsResult listBackupTargets() {
-        return this.listBackupTargets( new ListBackupTargetsRequest());
+        final ListBackupTargetsRequest request = new ListBackupTargetsRequest( );
+        final ListBackupTargetsResult result = this.listBackupTargets( request );
+
+        return result;
     }
 
     @Override
     public ModifyBackupTargetResult modifyBackupTarget(final ModifyBackupTargetRequest request) {
-        return super.sendRequest("ModifyBackupTarget", request, ModifyBackupTargetRequest.class, ModifyBackupTargetResult.class );
+        final ModifyBackupTargetResult result = super.sendRequest( "ModifyBackupTarget", request, ModifyBackupTargetRequest.class, ModifyBackupTargetResult.class );
+
+        return result;
     }
 
 
     @Override
     public ModifyBackupTargetResult modifyBackupTarget(Long backupTargetID, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
-        return this.modifyBackupTarget( new ModifyBackupTargetRequest(backupTargetID, name, attributes));
+        final ModifyBackupTargetRequest request = new ModifyBackupTargetRequest( backupTargetID, name, attributes);
+        final ModifyBackupTargetResult result = this.modifyBackupTarget( request );
+
+        return result;
     }
 
     @Override
     public RemoveBackupTargetResult removeBackupTarget(final RemoveBackupTargetRequest request) {
-        return super.sendRequest("RemoveBackupTarget", request, RemoveBackupTargetRequest.class, RemoveBackupTargetResult.class );
+        final RemoveBackupTargetResult result = super.sendRequest( "RemoveBackupTarget", request, RemoveBackupTargetRequest.class, RemoveBackupTargetResult.class );
+
+        return result;
     }
 
 
     @Override
     public RemoveBackupTargetResult removeBackupTarget(Long backupTargetID) {
-        return this.removeBackupTarget( new RemoveBackupTargetRequest(backupTargetID));
+        final RemoveBackupTargetRequest request = new RemoveBackupTargetRequest( backupTargetID);
+        final RemoveBackupTargetResult result = this.removeBackupTarget( request );
+
+        return result;
     }
 
     @Override
     public GetClusterCapacityResult getClusterCapacity(final GetClusterCapacityRequest request) {
-        return super.sendRequest("GetClusterCapacity", request, GetClusterCapacityRequest.class, GetClusterCapacityResult.class );
+        final GetClusterCapacityResult result = super.sendRequest( "GetClusterCapacity", request, GetClusterCapacityRequest.class, GetClusterCapacityResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetClusterCapacityResult getClusterCapacity() {
-        return this.getClusterCapacity( new GetClusterCapacityRequest());
+        final GetClusterCapacityRequest request = new GetClusterCapacityRequest( );
+        final GetClusterCapacityResult result = this.getClusterCapacity( request );
+
+        return result;
     }
 
     @Override
     public GetClusterInfoResult getClusterInfo(final GetClusterInfoRequest request) {
-        return super.sendRequest("GetClusterInfo", request, GetClusterInfoRequest.class, GetClusterInfoResult.class );
+        final GetClusterInfoResult result = super.sendRequest( "GetClusterInfo", request, GetClusterInfoRequest.class, GetClusterInfoResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetClusterInfoResult getClusterInfo() {
-        return this.getClusterInfo( new GetClusterInfoRequest());
+        final GetClusterInfoRequest request = new GetClusterInfoRequest( );
+        final GetClusterInfoResult result = this.getClusterInfo( request );
+
+        return result;
     }
 
     @Override
     public GetClusterVersionInfoResult getClusterVersionInfo(final GetClusterVersionInfoRequest request) {
-        return super.sendRequest("GetClusterVersionInfo", request, GetClusterVersionInfoRequest.class, GetClusterVersionInfoResult.class );
+        final GetClusterVersionInfoResult result = super.sendRequest( "GetClusterVersionInfo", request, GetClusterVersionInfoRequest.class, GetClusterVersionInfoResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetClusterVersionInfoResult getClusterVersionInfo() {
-        return this.getClusterVersionInfo( new GetClusterVersionInfoRequest());
+        final GetClusterVersionInfoRequest request = new GetClusterVersionInfoRequest( );
+        final GetClusterVersionInfoResult result = this.getClusterVersionInfo( request );
+
+        return result;
     }
 
     @Override
     public GetLimitsResult getLimits(final GetLimitsRequest request) {
-        return super.sendRequest("GetLimits", request, GetLimitsRequest.class, GetLimitsResult.class );
+        final GetLimitsResult result = super.sendRequest( "GetLimits", request, GetLimitsRequest.class, GetLimitsResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetLimitsResult getLimits() {
-        return this.getLimits( new GetLimitsRequest());
+        final GetLimitsRequest request = new GetLimitsRequest( );
+        final GetLimitsResult result = this.getLimits( request );
+
+        return result;
     }
 
     @Override
     public ListEventsResult listEvents(final ListEventsRequest request) {
-        return super.sendRequest("ListEvents", request, ListEventsRequest.class, ListEventsResult.class );
+        final ListEventsResult result = super.sendRequest( "ListEvents", request, ListEventsRequest.class, ListEventsResult.class );
+
+        return result;
     }
 
     @Override
     public ListClusterFaultsResult listClusterFaults(final ListClusterFaultsRequest request) {
-        return super.sendRequest("ListClusterFaults", request, ListClusterFaultsRequest.class, ListClusterFaultsResult.class );
+        final ListClusterFaultsResult result = super.sendRequest( "ListClusterFaults", request, ListClusterFaultsRequest.class, ListClusterFaultsResult.class );
+
+        return result;
     }
 
     @Override
     public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request) {
-        return super.sendRequest("ClearClusterFaults", request, ClearClusterFaultsRequest.class, ClearClusterFaultsResult.class );
+        final ClearClusterFaultsResult result = super.sendRequest( "ClearClusterFaults", request, ClearClusterFaultsRequest.class, ClearClusterFaultsResult.class );
+
+        return result;
     }
 
 
     @Override
     public ClearClusterFaultsResult clearClusterFaults(Optional<String> faultTypes) {
-        return this.clearClusterFaults( new ClearClusterFaultsRequest(faultTypes));
+        final ClearClusterFaultsRequest request = new ClearClusterFaultsRequest( faultTypes);
+        final ClearClusterFaultsResult result = this.clearClusterFaults( request );
+
+        return result;
     }
 
     @Override
     public GetClusterConfigResult getClusterConfig(final GetClusterConfigRequest request) {
-        return super.sendRequest("GetClusterConfig", request, GetClusterConfigRequest.class, GetClusterConfigResult.class );
+        final GetClusterConfigResult result = super.sendRequest( "GetClusterConfig", request, GetClusterConfigRequest.class, GetClusterConfigResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetClusterConfigResult getClusterConfig() {
-        return this.getClusterConfig( new GetClusterConfigRequest());
+        final GetClusterConfigRequest request = new GetClusterConfigRequest( );
+        final GetClusterConfigResult result = this.getClusterConfig( request );
+
+        return result;
     }
 
     @Override
     public GetClusterFullThresholdResult getClusterFullThreshold(final GetClusterFullThresholdRequest request) {
-        return super.sendRequest("GetClusterFullThreshold", request, GetClusterFullThresholdRequest.class, GetClusterFullThresholdResult.class );
+        final GetClusterFullThresholdResult result = super.sendRequest( "GetClusterFullThreshold", request, GetClusterFullThresholdRequest.class, GetClusterFullThresholdResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetClusterFullThresholdResult getClusterFullThreshold() {
-        return this.getClusterFullThreshold( new GetClusterFullThresholdRequest());
+        final GetClusterFullThresholdRequest request = new GetClusterFullThresholdRequest( );
+        final GetClusterFullThresholdResult result = this.getClusterFullThreshold( request );
+
+        return result;
     }
 
     @Override
     public ModifyClusterFullThresholdResult modifyClusterFullThreshold(final ModifyClusterFullThresholdRequest request) {
-        return super.sendRequest("ModifyClusterFullThreshold", request, ModifyClusterFullThresholdRequest.class, ModifyClusterFullThresholdResult.class );
+        final ModifyClusterFullThresholdResult result = super.sendRequest( "ModifyClusterFullThreshold", request, ModifyClusterFullThresholdRequest.class, ModifyClusterFullThresholdResult.class );
+
+        return result;
     }
 
 
     @Override
     public ModifyClusterFullThresholdResult modifyClusterFullThreshold(Optional<Long> stage2AwareThreshold, @Since("8.0") Optional<Long> stage3BlockThresholdPercent, Optional<Long> maxMetadataOverProvisionFactor) {
-        return this.modifyClusterFullThreshold( new ModifyClusterFullThresholdRequest(stage2AwareThreshold, stage3BlockThresholdPercent, maxMetadataOverProvisionFactor));
+        final ModifyClusterFullThresholdRequest request = new ModifyClusterFullThresholdRequest( stage2AwareThreshold, stage3BlockThresholdPercent, maxMetadataOverProvisionFactor);
+        final ModifyClusterFullThresholdResult result = this.modifyClusterFullThreshold( request );
+
+        return result;
     }
 
     @Override
     public GetClusterStatsResult getClusterStats(final GetClusterStatsRequest request) {
-        return super.sendRequest("GetClusterStats", request, GetClusterStatsRequest.class, GetClusterStatsResult.class );
+        final GetClusterStatsResult result = super.sendRequest( "GetClusterStats", request, GetClusterStatsRequest.class, GetClusterStatsResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetClusterStatsResult getClusterStats() {
-        return this.getClusterStats( new GetClusterStatsRequest());
+        final GetClusterStatsRequest request = new GetClusterStatsRequest( );
+        final GetClusterStatsResult result = this.getClusterStats( request );
+
+        return result;
     }
 
     @Override
     public ListClusterAdminsResult listClusterAdmins(final ListClusterAdminsRequest request) {
-        return super.sendRequest("ListClusterAdmins", request, ListClusterAdminsRequest.class, ListClusterAdminsResult.class );
+        final ListClusterAdminsResult result = super.sendRequest( "ListClusterAdmins", request, ListClusterAdminsRequest.class, ListClusterAdminsResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListClusterAdminsResult listClusterAdmins() {
-        return this.listClusterAdmins( new ListClusterAdminsRequest());
+        final ListClusterAdminsRequest request = new ListClusterAdminsRequest( );
+        final ListClusterAdminsResult result = this.listClusterAdmins( request );
+
+        return result;
     }
 
     @Override
     public AddClusterAdminResult addClusterAdmin(final AddClusterAdminRequest request) {
-        return super.sendRequest("AddClusterAdmin", request, AddClusterAdminRequest.class, AddClusterAdminResult.class );
+        final AddClusterAdminResult result = super.sendRequest( "AddClusterAdmin", request, AddClusterAdminRequest.class, AddClusterAdminResult.class );
+
+        return result;
     }
 
     @Override
     public ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request) {
-        return super.sendRequest("ModifyClusterAdmin", request, ModifyClusterAdminRequest.class, ModifyClusterAdminResult.class );
+        final ModifyClusterAdminResult result = super.sendRequest( "ModifyClusterAdmin", request, ModifyClusterAdminRequest.class, ModifyClusterAdminResult.class );
+
+        return result;
     }
 
     @Override
     public RemoveClusterAdminResult removeClusterAdmin(final RemoveClusterAdminRequest request) {
-        return super.sendRequest("RemoveClusterAdmin", request, RemoveClusterAdminRequest.class, RemoveClusterAdminResult.class );
+        final RemoveClusterAdminResult result = super.sendRequest( "RemoveClusterAdmin", request, RemoveClusterAdminRequest.class, RemoveClusterAdminResult.class );
+
+        return result;
     }
 
 
     @Override
     public RemoveClusterAdminResult removeClusterAdmin(Long clusterAdminID) {
-        return this.removeClusterAdmin( new RemoveClusterAdminRequest(clusterAdminID));
+        final RemoveClusterAdminRequest request = new RemoveClusterAdminRequest( clusterAdminID);
+        final RemoveClusterAdminResult result = this.removeClusterAdmin( request );
+
+        return result;
     }
 
     @Override
     public SetClusterConfigResult setClusterConfig(final SetClusterConfigRequest request) {
-        return super.sendRequest("SetClusterConfig", request, SetClusterConfigRequest.class, SetClusterConfigResult.class );
+        final SetClusterConfigResult result = super.sendRequest( "SetClusterConfig", request, SetClusterConfigRequest.class, SetClusterConfigResult.class );
+
+        return result;
     }
 
 
     @Override
     public SetClusterConfigResult setClusterConfig(ClusterConfig cluster) {
-        return this.setClusterConfig( new SetClusterConfigRequest(cluster));
+        final SetClusterConfigRequest request = new SetClusterConfigRequest( cluster);
+        final SetClusterConfigResult result = this.setClusterConfig( request );
+
+        return result;
     }
 
     @Override
     @Since("8.0")
     public GetSnmpACLResult getSnmpACL(final GetSnmpACLRequest request) {
-        return super.sendRequest("GetSnmpACL", request, GetSnmpACLRequest.class, GetSnmpACLResult.class );
+        final GetSnmpACLResult result = super.sendRequest( "GetSnmpACL", request, GetSnmpACLRequest.class, GetSnmpACLResult.class );
+
+        return result;
     }
 
 
     @Override
     @Since("8.0")
     public GetSnmpACLResult getSnmpACL() {
-        return this.getSnmpACL( new GetSnmpACLRequest());
+        final GetSnmpACLRequest request = new GetSnmpACLRequest( );
+        final GetSnmpACLResult result = this.getSnmpACL( request );
+
+        return result;
     }
 
     @Override
     @Since("8.0")
     public SetSnmpACLResult setSnmpACL(final SetSnmpACLRequest request) {
-        return super.sendRequest("SetSnmpACL", request, SetSnmpACLRequest.class, SetSnmpACLResult.class );
+        final SetSnmpACLResult result = super.sendRequest( "SetSnmpACL", request, SetSnmpACLRequest.class, SetSnmpACLResult.class );
+
+        return result;
     }
 
 
     @Override
     @Since("8.0")
     public SetSnmpACLResult setSnmpACL(SnmpNetwork[] networks, SnmpV3UsmUser[] usmUsers) {
-        return this.setSnmpACL( new SetSnmpACLRequest(networks, usmUsers));
+        final SetSnmpACLRequest request = new SetSnmpACLRequest( networks, usmUsers);
+        final SetSnmpACLResult result = this.setSnmpACL( request );
+
+        return result;
     }
 
     @Override
     public GetSnmpTrapInfoResult getSnmpTrapInfo(final GetSnmpTrapInfoRequest request) {
-        return super.sendRequest("GetSnmpTrapInfo", request, GetSnmpTrapInfoRequest.class, GetSnmpTrapInfoResult.class );
+        final GetSnmpTrapInfoResult result = super.sendRequest( "GetSnmpTrapInfo", request, GetSnmpTrapInfoRequest.class, GetSnmpTrapInfoResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetSnmpTrapInfoResult getSnmpTrapInfo() {
-        return this.getSnmpTrapInfo( new GetSnmpTrapInfoRequest());
+        final GetSnmpTrapInfoRequest request = new GetSnmpTrapInfoRequest( );
+        final GetSnmpTrapInfoResult result = this.getSnmpTrapInfo( request );
+
+        return result;
     }
 
     @Override
     public SetSnmpTrapInfoResult setSnmpTrapInfo(final SetSnmpTrapInfoRequest request) {
-        return super.sendRequest("SetSnmpTrapInfo", request, SetSnmpTrapInfoRequest.class, SetSnmpTrapInfoResult.class );
+        final SetSnmpTrapInfoResult result = super.sendRequest( "SetSnmpTrapInfo", request, SetSnmpTrapInfoRequest.class, SetSnmpTrapInfoResult.class );
+
+        return result;
     }
 
     @Override
     public EnableSnmpResult enableSnmp(final EnableSnmpRequest request) {
-        return super.sendRequest("EnableSnmp", request, EnableSnmpRequest.class, EnableSnmpResult.class );
+        final EnableSnmpResult result = super.sendRequest( "EnableSnmp", request, EnableSnmpRequest.class, EnableSnmpResult.class );
+
+        return result;
     }
 
 
     @Override
     public EnableSnmpResult enableSnmp(Boolean snmpV3Enabled) {
-        return this.enableSnmp( new EnableSnmpRequest(snmpV3Enabled));
+        final EnableSnmpRequest request = new EnableSnmpRequest( snmpV3Enabled);
+        final EnableSnmpResult result = this.enableSnmp( request );
+
+        return result;
     }
 
     @Override
     public DisableSnmpResult disableSnmp(final DisableSnmpRequest request) {
-        return super.sendRequest("DisableSnmp", request, DisableSnmpRequest.class, DisableSnmpResult.class );
+        final DisableSnmpResult result = super.sendRequest( "DisableSnmp", request, DisableSnmpRequest.class, DisableSnmpResult.class );
+
+        return result;
     }
 
 
     @Override
     public DisableSnmpResult disableSnmp() {
-        return this.disableSnmp( new DisableSnmpRequest());
+        final DisableSnmpRequest request = new DisableSnmpRequest( );
+        final DisableSnmpResult result = this.disableSnmp( request );
+
+        return result;
     }
 
     @Override
     public GetSnmpInfoResult getSnmpInfo(final GetSnmpInfoRequest request) {
-        return super.sendRequest("GetSnmpInfo", request, GetSnmpInfoRequest.class, GetSnmpInfoResult.class );
+        final GetSnmpInfoResult result = super.sendRequest( "GetSnmpInfo", request, GetSnmpInfoRequest.class, GetSnmpInfoResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetSnmpInfoResult getSnmpInfo() {
-        return this.getSnmpInfo( new GetSnmpInfoRequest());
+        final GetSnmpInfoRequest request = new GetSnmpInfoRequest( );
+        final GetSnmpInfoResult result = this.getSnmpInfo( request );
+
+        return result;
     }
 
     @Override
     public SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request) {
-        return super.sendRequest("SetSnmpInfo", request, SetSnmpInfoRequest.class, SetSnmpInfoResult.class );
+        final SetSnmpInfoResult result = super.sendRequest( "SetSnmpInfo", request, SetSnmpInfoRequest.class, SetSnmpInfoResult.class );
+
+        return result;
     }
 
     @Override
     @Since("8.0")
     public GetSnmpStateResult getSnmpState(final GetSnmpStateRequest request) {
-        return super.sendRequest("GetSnmpState", request, GetSnmpStateRequest.class, GetSnmpStateResult.class );
+        final GetSnmpStateResult result = super.sendRequest( "GetSnmpState", request, GetSnmpStateRequest.class, GetSnmpStateResult.class );
+
+        return result;
     }
 
 
     @Override
     @Since("8.0")
     public GetSnmpStateResult getSnmpState() {
-        return this.getSnmpState( new GetSnmpStateRequest());
+        final GetSnmpStateRequest request = new GetSnmpStateRequest( );
+        final GetSnmpStateResult result = this.getSnmpState( request );
+
+        return result;
     }
 
     @Override
     public GetAPIResult getAPI(final GetAPIRequest request) {
-        return super.sendRequest("GetAPI", request, GetAPIRequest.class, GetAPIResult.class );
+        final GetAPIResult result = super.sendRequest( "GetAPI", request, GetAPIRequest.class, GetAPIResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetAPIResult getAPI() {
-        return this.getAPI( new GetAPIRequest());
+        final GetAPIRequest request = new GetAPIRequest( );
+        final GetAPIResult result = this.getAPI( request );
+
+        return result;
     }
 
     @Override
     public GetCurrentClusterAdminResult getCurrentClusterAdmin(final GetCurrentClusterAdminRequest request) {
-        return super.sendRequest("GetCurrentClusterAdmin", request, GetCurrentClusterAdminRequest.class, GetCurrentClusterAdminResult.class );
+        final GetCurrentClusterAdminResult result = super.sendRequest( "GetCurrentClusterAdmin", request, GetCurrentClusterAdminRequest.class, GetCurrentClusterAdminResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetCurrentClusterAdminResult getCurrentClusterAdmin() {
-        return this.getCurrentClusterAdmin( new GetCurrentClusterAdminRequest());
+        final GetCurrentClusterAdminRequest request = new GetCurrentClusterAdminRequest( );
+        final GetCurrentClusterAdminResult result = this.getCurrentClusterAdmin( request );
+
+        return result;
     }
 
     @Override
     public EnableEncryptionAtRestResult enableEncryptionAtRest(final EnableEncryptionAtRestRequest request) {
-        return super.sendRequest("EnableEncryptionAtRest", request, EnableEncryptionAtRestRequest.class, EnableEncryptionAtRestResult.class );
+        final EnableEncryptionAtRestResult result = super.sendRequest( "EnableEncryptionAtRest", request, EnableEncryptionAtRestRequest.class, EnableEncryptionAtRestResult.class );
+
+        return result;
     }
 
 
     @Override
     public EnableEncryptionAtRestResult enableEncryptionAtRest() {
-        return this.enableEncryptionAtRest( new EnableEncryptionAtRestRequest());
+        final EnableEncryptionAtRestRequest request = new EnableEncryptionAtRestRequest( );
+        final EnableEncryptionAtRestResult result = this.enableEncryptionAtRest( request );
+
+        return result;
     }
 
     @Override
     public DisableEncryptionAtRestResult disableEncryptionAtRest(final DisableEncryptionAtRestRequest request) {
-        return super.sendRequest("DisableEncryptionAtRest", request, DisableEncryptionAtRestRequest.class, DisableEncryptionAtRestResult.class );
+        final DisableEncryptionAtRestResult result = super.sendRequest( "DisableEncryptionAtRest", request, DisableEncryptionAtRestRequest.class, DisableEncryptionAtRestResult.class );
+
+        return result;
     }
 
 
     @Override
     public DisableEncryptionAtRestResult disableEncryptionAtRest() {
-        return this.disableEncryptionAtRest( new DisableEncryptionAtRestRequest());
+        final DisableEncryptionAtRestRequest request = new DisableEncryptionAtRestRequest( );
+        final DisableEncryptionAtRestResult result = this.disableEncryptionAtRest( request );
+
+        return result;
     }
 
     @Override
     public SnmpSendTestTrapsResult snmpSendTestTraps(final SnmpSendTestTrapsRequest request) {
-        return super.sendRequest("SnmpSendTestTraps", request, SnmpSendTestTrapsRequest.class, SnmpSendTestTrapsResult.class );
+        final SnmpSendTestTrapsResult result = super.sendRequest( "SnmpSendTestTraps", request, SnmpSendTestTrapsRequest.class, SnmpSendTestTrapsResult.class );
+
+        return result;
     }
 
 
     @Override
     public SnmpSendTestTrapsResult snmpSendTestTraps(String status) {
-        return this.snmpSendTestTraps( new SnmpSendTestTrapsRequest(status));
+        final SnmpSendTestTrapsRequest request = new SnmpSendTestTrapsRequest( status);
+        final SnmpSendTestTrapsResult result = this.snmpSendTestTraps( request );
+
+        return result;
     }
 
     @Override
     public GetAsyncResultResult getAsyncResult(final GetAsyncResultRequest request) {
-        return super.sendRequest("GetAsyncResult", request, GetAsyncResultRequest.class, GetAsyncResultResult.class );
+        final GetAsyncResultResult result = super.sendRequest( "GetAsyncResult", request, GetAsyncResultRequest.class, GetAsyncResultResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetAsyncResultResult getAsyncResult(Long asyncHandle) {
-        return this.getAsyncResult( new GetAsyncResultRequest(asyncHandle));
+        final GetAsyncResultRequest request = new GetAsyncResultRequest( asyncHandle);
+        final GetAsyncResultResult result = this.getAsyncResult( request );
+
+        return result;
     }
 
     @Override
     public AddDrivesResult addDrives(final AddDrivesRequest request) {
-        return super.sendRequest("AddDrives", request, AddDrivesRequest.class, AddDrivesResult.class );
+        final AddDrivesResult result = super.sendRequest( "AddDrives", request, AddDrivesRequest.class, AddDrivesResult.class );
+
+        return result;
     }
 
 
     @Override
     public AddDrivesResult addDrives(NewDrive[] drives) {
-        return this.addDrives( new AddDrivesRequest(drives));
+        final AddDrivesRequest request = new AddDrivesRequest( drives);
+        final AddDrivesResult result = this.addDrives( request );
+
+        return result;
     }
 
     @Override
     public ListDrivesResult listDrives(final ListDrivesRequest request) {
-        return super.sendRequest("ListDrives", request, ListDrivesRequest.class, ListDrivesResult.class );
+        final ListDrivesResult result = super.sendRequest( "ListDrives", request, ListDrivesRequest.class, ListDrivesResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListDrivesResult listDrives() {
-        return this.listDrives( new ListDrivesRequest());
+        final ListDrivesRequest request = new ListDrivesRequest( );
+        final ListDrivesResult result = this.listDrives( request );
+
+        return result;
     }
 
     @Override
     public GetDriveHardwareInfoResult getDriveHardwareInfo(final GetDriveHardwareInfoRequest request) {
-        return super.sendRequest("GetDriveHardwareInfo", request, GetDriveHardwareInfoRequest.class, GetDriveHardwareInfoResult.class );
+        final GetDriveHardwareInfoResult result = super.sendRequest( "GetDriveHardwareInfo", request, GetDriveHardwareInfoRequest.class, GetDriveHardwareInfoResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetDriveHardwareInfoResult getDriveHardwareInfo(Long driveID) {
-        return this.getDriveHardwareInfo( new GetDriveHardwareInfoRequest(driveID));
+        final GetDriveHardwareInfoRequest request = new GetDriveHardwareInfoRequest( driveID);
+        final GetDriveHardwareInfoResult result = this.getDriveHardwareInfo( request );
+
+        return result;
     }
 
     @Override
     public ListDriveHardwareResult listDriveHardware(final ListDriveHardwareRequest request) {
-        return super.sendRequest("ListDriveHardware", request, ListDriveHardwareRequest.class, ListDriveHardwareResult.class );
+        final ListDriveHardwareResult result = super.sendRequest( "ListDriveHardware", request, ListDriveHardwareRequest.class, ListDriveHardwareResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListDriveHardwareResult listDriveHardware(Boolean force) {
-        return this.listDriveHardware( new ListDriveHardwareRequest(force));
+        final ListDriveHardwareRequest request = new ListDriveHardwareRequest( force);
+        final ListDriveHardwareResult result = this.listDriveHardware( request );
+
+        return result;
     }
 
     @Override
     public ResetDrivesResult resetDrives(final ResetDrivesRequest request) {
-        return super.sendRequest("ResetDrives", request, ResetDrivesRequest.class, ResetDrivesResult.class );
+        final ResetDrivesResult result = super.sendRequest( "ResetDrives", request, ResetDrivesRequest.class, ResetDrivesResult.class );
+
+        return result;
     }
 
 
     @Override
     public ResetDrivesResult resetDrives(String drives, Boolean force) {
-        return this.resetDrives( new ResetDrivesRequest(drives, force));
+        final ResetDrivesRequest request = new ResetDrivesRequest( drives, force);
+        final ResetDrivesResult result = this.resetDrives( request );
+
+        return result;
     }
 
     @Override
     public TestDrivesResult testDrives(final TestDrivesRequest request) {
-        return super.sendRequest("TestDrives", request, TestDrivesRequest.class, TestDrivesResult.class );
+        final TestDrivesResult result = super.sendRequest( "TestDrives", request, TestDrivesRequest.class, TestDrivesResult.class );
+
+        return result;
     }
 
 
     @Override
     public TestDrivesResult testDrives(Optional<Long> minutes, Boolean force) {
-        return this.testDrives( new TestDrivesRequest(minutes, force));
+        final TestDrivesRequest request = new TestDrivesRequest( minutes, force);
+        final TestDrivesResult result = this.testDrives( request );
+
+        return result;
     }
 
     @Override
     public GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request) {
-        return super.sendRequest("GetDriveStats", request, GetDriveStatsRequest.class, GetDriveStatsResult.class );
+        final GetDriveStatsResult result = super.sendRequest( "GetDriveStats", request, GetDriveStatsRequest.class, GetDriveStatsResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetDriveStatsResult getDriveStats(Long driveID) {
-        return this.getDriveStats( new GetDriveStatsRequest(driveID));
+        final GetDriveStatsRequest request = new GetDriveStatsRequest( driveID);
+        final GetDriveStatsResult result = this.getDriveStats( request );
+
+        return result;
     }
 
     @Override
     public AsyncHandleResult secureEraseDrives(final SecureEraseDrivesRequest request) {
-        return super.sendRequest("SecureEraseDrives", request, SecureEraseDrivesRequest.class, AsyncHandleResult.class );
+        final AsyncHandleResult result = super.sendRequest( "SecureEraseDrives", request, SecureEraseDrivesRequest.class, AsyncHandleResult.class );
+
+        return result;
     }
 
 
     @Override
     public AsyncHandleResult secureEraseDrives(Long[] drives) {
-        return this.secureEraseDrives( new SecureEraseDrivesRequest(drives));
+        final SecureEraseDrivesRequest request = new SecureEraseDrivesRequest( drives);
+        final AsyncHandleResult result = this.secureEraseDrives( request );
+
+        return result;
     }
 
     @Override
     public AsyncHandleResult removeDrives(final RemoveDrivesRequest request) {
-        return super.sendRequest("RemoveDrives", request, RemoveDrivesRequest.class, AsyncHandleResult.class );
+        final AsyncHandleResult result = super.sendRequest( "RemoveDrives", request, RemoveDrivesRequest.class, AsyncHandleResult.class );
+
+        return result;
     }
 
 
     @Override
     public AsyncHandleResult removeDrives(Long[] drives) {
-        return this.removeDrives( new RemoveDrivesRequest(drives));
+        final RemoveDrivesRequest request = new RemoveDrivesRequest( drives);
+        final AsyncHandleResult result = this.removeDrives( request );
+
+        return result;
     }
 
     @Override
     public ListActiveNodesResult listActiveNodes(final ListActiveNodesRequest request) {
-        return super.sendRequest("ListActiveNodes", request, ListActiveNodesRequest.class, ListActiveNodesResult.class );
+        final ListActiveNodesResult result = super.sendRequest( "ListActiveNodes", request, ListActiveNodesRequest.class, ListActiveNodesResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListActiveNodesResult listActiveNodes() {
-        return this.listActiveNodes( new ListActiveNodesRequest());
+        final ListActiveNodesRequest request = new ListActiveNodesRequest( );
+        final ListActiveNodesResult result = this.listActiveNodes( request );
+
+        return result;
     }
 
     @Override
     public ListAllNodesResult listAllNodes(final ListAllNodesRequest request) {
-        return super.sendRequest("ListAllNodes", request, ListAllNodesRequest.class, ListAllNodesResult.class );
+        final ListAllNodesResult result = super.sendRequest( "ListAllNodes", request, ListAllNodesRequest.class, ListAllNodesResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListAllNodesResult listAllNodes() {
-        return this.listAllNodes( new ListAllNodesRequest());
+        final ListAllNodesRequest request = new ListAllNodesRequest( );
+        final ListAllNodesResult result = this.listAllNodes( request );
+
+        return result;
     }
 
     @Override
     public ListPendingNodesResult listPendingNodes(final ListPendingNodesRequest request) {
-        return super.sendRequest("ListPendingNodes", request, ListPendingNodesRequest.class, ListPendingNodesResult.class );
+        final ListPendingNodesResult result = super.sendRequest( "ListPendingNodes", request, ListPendingNodesRequest.class, ListPendingNodesResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListPendingNodesResult listPendingNodes() {
-        return this.listPendingNodes( new ListPendingNodesRequest());
+        final ListPendingNodesRequest request = new ListPendingNodesRequest( );
+        final ListPendingNodesResult result = this.listPendingNodes( request );
+
+        return result;
     }
 
     @Override
     public AddNodesResult addNodes(final AddNodesRequest request) {
-        return super.sendRequest("AddNodes", request, AddNodesRequest.class, AddNodesResult.class );
+        final AddNodesResult result = super.sendRequest( "AddNodes", request, AddNodesRequest.class, AddNodesResult.class );
+
+        return result;
     }
 
 
     @Override
     public AddNodesResult addNodes(Long[] pendingNodes) {
-        return this.addNodes( new AddNodesRequest(pendingNodes));
+        final AddNodesRequest request = new AddNodesRequest( pendingNodes);
+        final AddNodesResult result = this.addNodes( request );
+
+        return result;
     }
 
     @Override
     public RemoveNodesResult removeNodes(final RemoveNodesRequest request) {
-        return super.sendRequest("RemoveNodes", request, RemoveNodesRequest.class, RemoveNodesResult.class );
+        final RemoveNodesResult result = super.sendRequest( "RemoveNodes", request, RemoveNodesRequest.class, RemoveNodesResult.class );
+
+        return result;
     }
 
 
     @Override
     public RemoveNodesResult removeNodes(Long[] nodes) {
-        return this.removeNodes( new RemoveNodesRequest(nodes));
+        final RemoveNodesRequest request = new RemoveNodesRequest( nodes);
+        final RemoveNodesResult result = this.removeNodes( request );
+
+        return result;
     }
 
     @Override
     public GetNetworkConfigResult getNetworkConfig(final GetNetworkConfigRequest request) {
-        return super.sendRequest("GetNetworkConfig", request, GetNetworkConfigRequest.class, GetNetworkConfigResult.class );
+        final GetNetworkConfigResult result = super.sendRequest( "GetNetworkConfig", request, GetNetworkConfigRequest.class, GetNetworkConfigResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetNetworkConfigResult getNetworkConfig() {
-        return this.getNetworkConfig( new GetNetworkConfigRequest());
+        final GetNetworkConfigRequest request = new GetNetworkConfigRequest( );
+        final GetNetworkConfigResult result = this.getNetworkConfig( request );
+
+        return result;
     }
 
     @Override
     public SetConfigResult setConfig(final SetConfigRequest request) {
-        return super.sendRequest("SetConfig", request, SetConfigRequest.class, SetConfigResult.class );
+        final SetConfigResult result = super.sendRequest( "SetConfig", request, SetConfigRequest.class, SetConfigResult.class );
+
+        return result;
     }
 
 
     @Override
     public SetConfigResult setConfig(Config config) {
-        return this.setConfig( new SetConfigRequest(config));
+        final SetConfigRequest request = new SetConfigRequest( config);
+        final SetConfigResult result = this.setConfig( request );
+
+        return result;
     }
 
     @Override
     public SetNetworkConfigResult setNetworkConfig(final SetNetworkConfigRequest request) {
-        return super.sendRequest("SetNetworkConfig", request, SetNetworkConfigRequest.class, SetNetworkConfigResult.class );
+        final SetNetworkConfigResult result = super.sendRequest( "SetNetworkConfig", request, SetNetworkConfigRequest.class, SetNetworkConfigResult.class );
+
+        return result;
     }
 
 
     @Override
     public SetNetworkConfigResult setNetworkConfig(Network network) {
-        return this.setNetworkConfig( new SetNetworkConfigRequest(network));
+        final SetNetworkConfigRequest request = new SetNetworkConfigRequest( network);
+        final SetNetworkConfigResult result = this.setNetworkConfig( request );
+
+        return result;
     }
 
     @Override
     public GetConfigResult getConfig(final GetConfigRequest request) {
-        return super.sendRequest("GetConfig", request, GetConfigRequest.class, GetConfigResult.class );
+        final GetConfigResult result = super.sendRequest( "GetConfig", request, GetConfigRequest.class, GetConfigResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetConfigResult getConfig() {
-        return this.getConfig( new GetConfigRequest());
+        final GetConfigRequest request = new GetConfigRequest( );
+        final GetConfigResult result = this.getConfig( request );
+
+        return result;
     }
 
     @Override
     public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request) {
-        return super.sendRequest("GetNodeStats", request, GetNodeStatsRequest.class, GetNodeStatsResult.class );
+        final GetNodeStatsResult result = super.sendRequest( "GetNodeStats", request, GetNodeStatsRequest.class, GetNodeStatsResult.class );
+
+        return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(request, result);
     }
 
 
     @Override
     public GetNodeStatsResult getNodeStats(Long nodeID) {
-        return this.getNodeStats( new GetNodeStatsRequest(nodeID));
+        final GetNodeStatsRequest request = new GetNodeStatsRequest( nodeID);
+        final GetNodeStatsResult result = this.getNodeStats( request );
+
+        return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(request, result);
     }
 
     @Override
     public ListNodeStatsResult listNodeStats(final ListNodeStatsRequest request) {
-        return super.sendRequest("ListNodeStats", request, ListNodeStatsRequest.class, ListNodeStatsResult.class );
+        final ListNodeStatsResult result = super.sendRequest( "ListNodeStats", request, ListNodeStatsRequest.class, ListNodeStatsResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListNodeStatsResult listNodeStats() {
-        return this.listNodeStats( new ListNodeStatsRequest());
+        final ListNodeStatsRequest request = new ListNodeStatsRequest( );
+        final ListNodeStatsResult result = this.listNodeStats( request );
+
+        return result;
     }
 
     @Override
     public ListClusterPairsResult listClusterPairs(final ListClusterPairsRequest request) {
-        return super.sendRequest("ListClusterPairs", request, ListClusterPairsRequest.class, ListClusterPairsResult.class );
+        final ListClusterPairsResult result = super.sendRequest( "ListClusterPairs", request, ListClusterPairsRequest.class, ListClusterPairsResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListClusterPairsResult listClusterPairs() {
-        return this.listClusterPairs( new ListClusterPairsRequest());
+        final ListClusterPairsRequest request = new ListClusterPairsRequest( );
+        final ListClusterPairsResult result = this.listClusterPairs( request );
+
+        return result;
     }
 
     @Override
     public StartClusterPairingResult startClusterPairing(final StartClusterPairingRequest request) {
-        return super.sendRequest("StartClusterPairing", request, StartClusterPairingRequest.class, StartClusterPairingResult.class );
+        final StartClusterPairingResult result = super.sendRequest( "StartClusterPairing", request, StartClusterPairingRequest.class, StartClusterPairingResult.class );
+
+        return result;
     }
 
 
     @Override
     public StartClusterPairingResult startClusterPairing() {
-        return this.startClusterPairing( new StartClusterPairingRequest());
+        final StartClusterPairingRequest request = new StartClusterPairingRequest( );
+        final StartClusterPairingResult result = this.startClusterPairing( request );
+
+        return result;
     }
 
     @Override
     public CompleteClusterPairingResult completeClusterPairing(final CompleteClusterPairingRequest request) {
-        return super.sendRequest("CompleteClusterPairing", request, CompleteClusterPairingRequest.class, CompleteClusterPairingResult.class );
+        final CompleteClusterPairingResult result = super.sendRequest( "CompleteClusterPairing", request, CompleteClusterPairingRequest.class, CompleteClusterPairingResult.class );
+
+        return result;
     }
 
 
     @Override
     public CompleteClusterPairingResult completeClusterPairing(String clusterPairingKey) {
-        return this.completeClusterPairing( new CompleteClusterPairingRequest(clusterPairingKey));
+        final CompleteClusterPairingRequest request = new CompleteClusterPairingRequest( clusterPairingKey);
+        final CompleteClusterPairingResult result = this.completeClusterPairing( request );
+
+        return result;
     }
 
     @Override
     public RemoveClusterPairResult removeClusterPair(final RemoveClusterPairRequest request) {
-        return super.sendRequest("RemoveClusterPair", request, RemoveClusterPairRequest.class, RemoveClusterPairResult.class );
+        final RemoveClusterPairResult result = super.sendRequest( "RemoveClusterPair", request, RemoveClusterPairRequest.class, RemoveClusterPairResult.class );
+
+        return result;
     }
 
 
     @Override
     public RemoveClusterPairResult removeClusterPair(Long clusterPairID) {
-        return this.removeClusterPair( new RemoveClusterPairRequest(clusterPairID));
+        final RemoveClusterPairRequest request = new RemoveClusterPairRequest( clusterPairID);
+        final RemoveClusterPairResult result = this.removeClusterPair( request );
+
+        return result;
     }
 
     @Override
     public CreateSnapshotResult createSnapshot(final CreateSnapshotRequest request) {
-        return super.sendRequest("CreateSnapshot", request, CreateSnapshotRequest.class, CreateSnapshotResult.class );
+        final CreateSnapshotResult result = super.sendRequest( "CreateSnapshot", request, CreateSnapshotRequest.class, CreateSnapshotResult.class );
+
+        return result;
     }
 
     @Override
     public DeleteSnapshotResult deleteSnapshot(final DeleteSnapshotRequest request) {
-        return super.sendRequest("DeleteSnapshot", request, DeleteSnapshotRequest.class, DeleteSnapshotResult.class );
+        final DeleteSnapshotResult result = super.sendRequest( "DeleteSnapshot", request, DeleteSnapshotRequest.class, DeleteSnapshotResult.class );
+
+        return result;
     }
 
 
     @Override
     public DeleteSnapshotResult deleteSnapshot(Long snapshotID) {
-        return this.deleteSnapshot( new DeleteSnapshotRequest(snapshotID));
+        final DeleteSnapshotRequest request = new DeleteSnapshotRequest( snapshotID);
+        final DeleteSnapshotResult result = this.deleteSnapshot( request );
+
+        return result;
     }
 
     @Override
     public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request) {
-        return super.sendRequest("ListSnapshots", request, ListSnapshotsRequest.class, ListSnapshotsResult.class );
+        final ListSnapshotsResult result = super.sendRequest( "ListSnapshots", request, ListSnapshotsRequest.class, ListSnapshotsResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListSnapshotsResult listSnapshots(Optional<Long> volumeID) {
-        return this.listSnapshots( new ListSnapshotsRequest(volumeID));
+        final ListSnapshotsRequest request = new ListSnapshotsRequest( volumeID);
+        final ListSnapshotsResult result = this.listSnapshots( request );
+
+        return result;
     }
 
     @Override
     @Since("8.0")
     public ModifySnapshotResult modifySnapshot(final ModifySnapshotRequest request) {
-        return super.sendRequest("ModifySnapshot", request, ModifySnapshotRequest.class, ModifySnapshotResult.class );
+        final ModifySnapshotResult result = super.sendRequest( "ModifySnapshot", request, ModifySnapshotRequest.class, ModifySnapshotResult.class );
+
+        return result;
     }
 
 
     @Override
     @Since("8.0")
     public ModifySnapshotResult modifySnapshot(Long snapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication) {
-        return this.modifySnapshot( new ModifySnapshotRequest(snapshotID, expirationTime, enableRemoteReplication));
+        final ModifySnapshotRequest request = new ModifySnapshotRequest( snapshotID, expirationTime, enableRemoteReplication);
+        final ModifySnapshotResult result = this.modifySnapshot( request );
+
+        return result;
     }
 
     @Override
     public CreateSnapshotResult rollbackToSnapshot(final RollbackToSnapshotRequest request) {
-        return super.sendRequest("RollbackToSnapshot", request, RollbackToSnapshotRequest.class, CreateSnapshotResult.class );
+        final CreateSnapshotResult result = super.sendRequest( "RollbackToSnapshot", request, RollbackToSnapshotRequest.class, CreateSnapshotResult.class );
+
+        return result;
     }
 
     @Override
     public CreateGroupSnapshotResult createGroupSnapshot(final CreateGroupSnapshotRequest request) {
-        return super.sendRequest("CreateGroupSnapshot", request, CreateGroupSnapshotRequest.class, CreateGroupSnapshotResult.class );
+        final CreateGroupSnapshotResult result = super.sendRequest( "CreateGroupSnapshot", request, CreateGroupSnapshotRequest.class, CreateGroupSnapshotResult.class );
+
+        return result;
     }
 
     @Override
     public DeleteGroupSnapshotResult deleteGroupSnapshot(final DeleteGroupSnapshotRequest request) {
-        return super.sendRequest("DeleteGroupSnapshot", request, DeleteGroupSnapshotRequest.class, DeleteGroupSnapshotResult.class );
+        final DeleteGroupSnapshotResult result = super.sendRequest( "DeleteGroupSnapshot", request, DeleteGroupSnapshotRequest.class, DeleteGroupSnapshotResult.class );
+
+        return result;
     }
 
 
     @Override
     public DeleteGroupSnapshotResult deleteGroupSnapshot(Long groupSnapshotID, Boolean saveMembers) {
-        return this.deleteGroupSnapshot( new DeleteGroupSnapshotRequest(groupSnapshotID, saveMembers));
+        final DeleteGroupSnapshotRequest request = new DeleteGroupSnapshotRequest( groupSnapshotID, saveMembers);
+        final DeleteGroupSnapshotResult result = this.deleteGroupSnapshot( request );
+
+        return result;
     }
 
     @Override
     public ListGroupSnapshotsResult listGroupSnapshots(final ListGroupSnapshotsRequest request) {
-        return super.sendRequest("ListGroupSnapshots", request, ListGroupSnapshotsRequest.class, ListGroupSnapshotsResult.class );
+        final ListGroupSnapshotsResult result = super.sendRequest( "ListGroupSnapshots", request, ListGroupSnapshotsRequest.class, ListGroupSnapshotsResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListGroupSnapshotsResult listGroupSnapshots(Optional<Long> volumeID) {
-        return this.listGroupSnapshots( new ListGroupSnapshotsRequest(volumeID));
+        final ListGroupSnapshotsRequest request = new ListGroupSnapshotsRequest( volumeID);
+        final ListGroupSnapshotsResult result = this.listGroupSnapshots( request );
+
+        return result;
     }
 
     @Override
     @Since("8.0")
     public ModifyGroupSnapshotResult modifyGroupSnapshot(final ModifyGroupSnapshotRequest request) {
-        return super.sendRequest("ModifyGroupSnapshot", request, ModifyGroupSnapshotRequest.class, ModifyGroupSnapshotResult.class );
+        final ModifyGroupSnapshotResult result = super.sendRequest( "ModifyGroupSnapshot", request, ModifyGroupSnapshotRequest.class, ModifyGroupSnapshotResult.class );
+
+        return result;
     }
 
 
     @Override
     @Since("8.0")
     public ModifyGroupSnapshotResult modifyGroupSnapshot(Long groupSnapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication) {
-        return this.modifyGroupSnapshot( new ModifyGroupSnapshotRequest(groupSnapshotID, expirationTime, enableRemoteReplication));
+        final ModifyGroupSnapshotRequest request = new ModifyGroupSnapshotRequest( groupSnapshotID, expirationTime, enableRemoteReplication);
+        final ModifyGroupSnapshotResult result = this.modifyGroupSnapshot( request );
+
+        return result;
     }
 
     @Override
     @Since("7.0")
     public CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request) {
-        return super.sendRequest("RollbackToGroupSnapshot", request, RollbackToGroupSnapshotRequest.class, CreateGroupSnapshotResult.class );
+        final CreateGroupSnapshotResult result = super.sendRequest( "RollbackToGroupSnapshot", request, RollbackToGroupSnapshotRequest.class, CreateGroupSnapshotResult.class );
+
+        return result;
     }
 
     @Override
     @Since("8.0")
     public GetScheduleResult getSchedule(final GetScheduleRequest request) {
-        return super.sendRequest("GetSchedule", request, GetScheduleRequest.class, GetScheduleResult.class );
+        final GetScheduleResult result = super.sendRequest( "GetSchedule", request, GetScheduleRequest.class, GetScheduleResult.class );
+
+        return result;
     }
 
 
     @Override
     @Since("8.0")
     public GetScheduleResult getSchedule(Long scheduleID) {
-        return this.getSchedule( new GetScheduleRequest(scheduleID));
+        final GetScheduleRequest request = new GetScheduleRequest( scheduleID);
+        final GetScheduleResult result = this.getSchedule( request );
+
+        return result;
     }
 
     @Override
     @Since("8.0")
     public ListSchedulesResult listSchedules(final ListSchedulesRequest request) {
-        return super.sendRequest("ListSchedules", request, ListSchedulesRequest.class, ListSchedulesResult.class );
+        final ListSchedulesResult result = super.sendRequest( "ListSchedules", request, ListSchedulesRequest.class, ListSchedulesResult.class );
+
+        return result;
     }
 
 
     @Override
     @Since("8.0")
     public ListSchedulesResult listSchedules() {
-        return this.listSchedules( new ListSchedulesRequest());
+        final ListSchedulesRequest request = new ListSchedulesRequest( );
+        final ListSchedulesResult result = this.listSchedules( request );
+
+        return result;
     }
 
     @Override
     @Since("8.0")
     public CreateScheduleResult createSchedule(final CreateScheduleRequest request) {
-        return super.sendRequest("CreateSchedule", request, CreateScheduleRequest.class, CreateScheduleResult.class );
+        final CreateScheduleResult result = super.sendRequest( "CreateSchedule", request, CreateScheduleRequest.class, CreateScheduleResult.class );
+
+        return result;
     }
 
     @Override
     @Since("8.0")
     public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request) {
-        return super.sendRequest("ModifySchedule", request, ModifyScheduleRequest.class, ModifyScheduleResult.class );
+        final ModifyScheduleResult result = super.sendRequest( "ModifySchedule", request, ModifyScheduleRequest.class, ModifyScheduleResult.class );
+
+        return result;
     }
 
     @Override
     public Object getRawStats(final GetRawStatsRequest request) {
-        return super.sendRequest("GetRawStats", request, GetRawStatsRequest.class, Object.class );
+        final Object result = super.sendRequest( "GetRawStats", request, GetRawStatsRequest.class, Object.class );
+
+        return result;
     }
 
 
     @Override
     public Object getRawStats() {
-        return this.getRawStats( new GetRawStatsRequest());
+        final GetRawStatsRequest request = new GetRawStatsRequest( );
+        final Object result = this.getRawStats( request );
+
+        return result;
     }
 
     @Override
     public Object getCompleteStats(final GetCompleteStatsRequest request) {
-        return super.sendRequest("GetCompleteStats", request, GetCompleteStatsRequest.class, Object.class );
+        final Object result = super.sendRequest( "GetCompleteStats", request, GetCompleteStatsRequest.class, Object.class );
+
+        return result;
     }
 
 
     @Override
     public Object getCompleteStats() {
-        return this.getCompleteStats( new GetCompleteStatsRequest());
+        final GetCompleteStatsRequest request = new GetCompleteStatsRequest( );
+        final Object result = this.getCompleteStats( request );
+
+        return result;
     }
 
     @Override
     @Since("7.0")
     public ListVirtualNetworksResult listVirtualNetworks(final ListVirtualNetworksRequest request) {
-        return super.sendRequest("ListVirtualNetworks", request, ListVirtualNetworksRequest.class, ListVirtualNetworksResult.class );
+        final ListVirtualNetworksResult result = super.sendRequest( "ListVirtualNetworks", request, ListVirtualNetworksRequest.class, ListVirtualNetworksResult.class );
+
+        return result;
     }
 
     @Override
     @Since("7.0")
     public AddVirtualNetworkResult addVirtualNetwork(final AddVirtualNetworkRequest request) {
-        return super.sendRequest("AddVirtualNetwork", request, AddVirtualNetworkRequest.class, AddVirtualNetworkResult.class );
+        final AddVirtualNetworkResult result = super.sendRequest( "AddVirtualNetwork", request, AddVirtualNetworkRequest.class, AddVirtualNetworkResult.class );
+
+        return result;
     }
 
     @Override
     @Since("7.0")
     public AddVirtualNetworkResult modifyVirtualNetwork(final ModifyVirtualNetworkRequest request) {
-        return super.sendRequest("ModifyVirtualNetwork", request, ModifyVirtualNetworkRequest.class, AddVirtualNetworkResult.class );
+        final AddVirtualNetworkResult result = super.sendRequest( "ModifyVirtualNetwork", request, ModifyVirtualNetworkRequest.class, AddVirtualNetworkResult.class );
+
+        return result;
     }
 
     @Override
     @Since("7.0")
     public RemoveVirtualNetworkResult removeVirtualNetwork(final RemoveVirtualNetworkRequest request) {
-        return super.sendRequest("RemoveVirtualNetwork", request, RemoveVirtualNetworkRequest.class, RemoveVirtualNetworkResult.class );
+        final RemoveVirtualNetworkResult result = super.sendRequest( "RemoveVirtualNetwork", request, RemoveVirtualNetworkRequest.class, RemoveVirtualNetworkResult.class );
+
+        return result;
     }
 
 
     @Override
     @Since("7.0")
     public RemoveVirtualNetworkResult removeVirtualNetwork(Optional<Long> virtualNetworkID, Optional<Long> virtualNetworkTag) {
-        return this.removeVirtualNetwork( new RemoveVirtualNetworkRequest(virtualNetworkID, virtualNetworkTag));
+        final RemoveVirtualNetworkRequest request = new RemoveVirtualNetworkRequest( virtualNetworkID, virtualNetworkTag);
+        final RemoveVirtualNetworkResult result = this.removeVirtualNetwork( request );
+
+        return result;
     }
 
     @Override
     public CloneVolumeResult cloneVolume(final CloneVolumeRequest request) {
-        return super.sendRequest("CloneVolume", request, CloneVolumeRequest.class, CloneVolumeResult.class );
+        final CloneVolumeResult result = super.sendRequest( "CloneVolume", request, CloneVolumeRequest.class, CloneVolumeResult.class );
+
+        return result;
     }
 
     @Override
     public CreateVolumeResult createVolume(final CreateVolumeRequest request) {
-        return super.sendRequest("CreateVolume", request, CreateVolumeRequest.class, CreateVolumeResult.class );
+        final CreateVolumeResult result = super.sendRequest( "CreateVolume", request, CreateVolumeRequest.class, CreateVolumeResult.class );
+
+        return result;
     }
 
     @Override
     public DeleteVolumeResult deleteVolume(final DeleteVolumeRequest request) {
-        return super.sendRequest("DeleteVolume", request, DeleteVolumeRequest.class, DeleteVolumeResult.class );
+        final DeleteVolumeResult result = super.sendRequest( "DeleteVolume", request, DeleteVolumeRequest.class, DeleteVolumeResult.class );
+
+        return result;
     }
 
 
     @Override
     public DeleteVolumeResult deleteVolume(Long volumeID) {
-        return this.deleteVolume( new DeleteVolumeRequest(volumeID));
+        final DeleteVolumeRequest request = new DeleteVolumeRequest( volumeID);
+        final DeleteVolumeResult result = this.deleteVolume( request );
+
+        return result;
     }
 
     @Override
     public GetVolumeStatsResult getVolumeStats(final GetVolumeStatsRequest request) {
-        return super.sendRequest("GetVolumeStats", request, GetVolumeStatsRequest.class, GetVolumeStatsResult.class );
+        final GetVolumeStatsResult result = super.sendRequest( "GetVolumeStats", request, GetVolumeStatsRequest.class, GetVolumeStatsResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetVolumeStatsResult getVolumeStats(Long volumeID) {
-        return this.getVolumeStats( new GetVolumeStatsRequest(volumeID));
+        final GetVolumeStatsRequest request = new GetVolumeStatsRequest( volumeID);
+        final GetVolumeStatsResult result = this.getVolumeStats( request );
+
+        return result;
     }
 
     @Override
     public GetVolumeEfficiencyResult getVolumeEfficiency(final GetVolumeEfficiencyRequest request) {
-        return super.sendRequest("GetVolumeEfficiency", request, GetVolumeEfficiencyRequest.class, GetVolumeEfficiencyResult.class );
+        final GetVolumeEfficiencyResult result = super.sendRequest( "GetVolumeEfficiency", request, GetVolumeEfficiencyRequest.class, GetVolumeEfficiencyResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetVolumeEfficiencyResult getVolumeEfficiency(Long volumeID, Optional<Boolean> force) {
-        return this.getVolumeEfficiency( new GetVolumeEfficiencyRequest(volumeID, force));
+        final GetVolumeEfficiencyRequest request = new GetVolumeEfficiencyRequest( volumeID, force);
+        final GetVolumeEfficiencyResult result = this.getVolumeEfficiency( request );
+
+        return result;
     }
 
     @Override
     public ListActiveVolumesResult listActiveVolumes(final ListActiveVolumesRequest request) {
-        return super.sendRequest("ListActiveVolumes", request, ListActiveVolumesRequest.class, ListActiveVolumesResult.class );
+        final ListActiveVolumesResult result = super.sendRequest( "ListActiveVolumes", request, ListActiveVolumesRequest.class, ListActiveVolumesResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListActiveVolumesResult listActiveVolumes(Optional<Long> startVolumeID, Optional<Long> limit) {
-        return this.listActiveVolumes( new ListActiveVolumesRequest(startVolumeID, limit));
+        final ListActiveVolumesRequest request = new ListActiveVolumesRequest( startVolumeID, limit);
+        final ListActiveVolumesResult result = this.listActiveVolumes( request );
+
+        return result;
     }
 
     @Override
     public ListDeletedVolumesResult listDeletedVolumes(final ListDeletedVolumesRequest request) {
-        return super.sendRequest("ListDeletedVolumes", request, ListDeletedVolumesRequest.class, ListDeletedVolumesResult.class );
+        final ListDeletedVolumesResult result = super.sendRequest( "ListDeletedVolumes", request, ListDeletedVolumesRequest.class, ListDeletedVolumesResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListDeletedVolumesResult listDeletedVolumes() {
-        return this.listDeletedVolumes( new ListDeletedVolumesRequest());
+        final ListDeletedVolumesRequest request = new ListDeletedVolumesRequest( );
+        final ListDeletedVolumesResult result = this.listDeletedVolumes( request );
+
+        return result;
     }
 
     @Override
     public ListISCSISessionsResult listISCSISessions(final ListISCSISessionsRequest request) {
-        return super.sendRequest("ListISCSISessions", request, ListISCSISessionsRequest.class, ListISCSISessionsResult.class );
+        final ListISCSISessionsResult result = super.sendRequest( "ListISCSISessions", request, ListISCSISessionsRequest.class, ListISCSISessionsResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListISCSISessionsResult listISCSISessions() {
-        return this.listISCSISessions( new ListISCSISessionsRequest());
+        final ListISCSISessionsRequest request = new ListISCSISessionsRequest( );
+        final ListISCSISessionsResult result = this.listISCSISessions( request );
+
+        return result;
     }
 
     @Override
     @Since("8.0")
     public ListVolumesResult listVolumes(final ListVolumesRequest request) {
-        return super.sendRequest("ListVolumes", request, ListVolumesRequest.class, ListVolumesResult.class );
+        final ListVolumesResult result = super.sendRequest( "ListVolumes", request, ListVolumesRequest.class, ListVolumesResult.class );
+
+        return result;
     }
 
     @Override
     public ListVolumesForAccountResult listVolumesForAccount(final ListVolumesForAccountRequest request) {
-        return super.sendRequest("ListVolumesForAccount", request, ListVolumesForAccountRequest.class, ListVolumesForAccountResult.class );
+        final ListVolumesForAccountResult result = super.sendRequest( "ListVolumesForAccount", request, ListVolumesForAccountRequest.class, ListVolumesForAccountResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListVolumesForAccountResult listVolumesForAccount(Long accountID, Optional<Long> startVolumeID, Optional<Long> limit) {
-        return this.listVolumesForAccount( new ListVolumesForAccountRequest(accountID, startVolumeID, limit));
+        final ListVolumesForAccountRequest request = new ListVolumesForAccountRequest( accountID, startVolumeID, limit);
+        final ListVolumesForAccountResult result = this.listVolumesForAccount( request );
+
+        return result;
     }
 
     @Override
     public ListVolumeStatsByAccountResult listVolumeStatsByAccount(final ListVolumeStatsByAccountRequest request) {
-        return super.sendRequest("ListVolumeStatsByAccount", request, ListVolumeStatsByAccountRequest.class, ListVolumeStatsByAccountResult.class );
+        final ListVolumeStatsByAccountResult result = super.sendRequest( "ListVolumeStatsByAccount", request, ListVolumeStatsByAccountRequest.class, ListVolumeStatsByAccountResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListVolumeStatsByAccountResult listVolumeStatsByAccount() {
-        return this.listVolumeStatsByAccount( new ListVolumeStatsByAccountRequest());
+        final ListVolumeStatsByAccountRequest request = new ListVolumeStatsByAccountRequest( );
+        final ListVolumeStatsByAccountResult result = this.listVolumeStatsByAccount( request );
+
+        return result;
     }
 
     @Override
     public ListVolumeStatsByVolumeResult listVolumeStatsByVolume(final ListVolumeStatsByVolumeRequest request) {
-        return super.sendRequest("ListVolumeStatsByVolume", request, ListVolumeStatsByVolumeRequest.class, ListVolumeStatsByVolumeResult.class );
+        final ListVolumeStatsByVolumeResult result = super.sendRequest( "ListVolumeStatsByVolume", request, ListVolumeStatsByVolumeRequest.class, ListVolumeStatsByVolumeResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListVolumeStatsByVolumeResult listVolumeStatsByVolume() {
-        return this.listVolumeStatsByVolume( new ListVolumeStatsByVolumeRequest());
+        final ListVolumeStatsByVolumeRequest request = new ListVolumeStatsByVolumeRequest( );
+        final ListVolumeStatsByVolumeResult result = this.listVolumeStatsByVolume( request );
+
+        return result;
     }
 
     @Override
     public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request) {
-        return super.sendRequest("ListVolumeStatsByVolumeAccessGroup", request, ListVolumeStatsByVolumeAccessGroupRequest.class, ListVolumeStatsByVolumeAccessGroupResult.class );
+        final ListVolumeStatsByVolumeAccessGroupResult result = super.sendRequest( "ListVolumeStatsByVolumeAccessGroup", request, ListVolumeStatsByVolumeAccessGroupRequest.class, ListVolumeStatsByVolumeAccessGroupResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(Optional<Long[]> volumeAccessGroups) {
-        return this.listVolumeStatsByVolumeAccessGroup( new ListVolumeStatsByVolumeAccessGroupRequest(volumeAccessGroups));
+        final ListVolumeStatsByVolumeAccessGroupRequest request = new ListVolumeStatsByVolumeAccessGroupRequest( volumeAccessGroups);
+        final ListVolumeStatsByVolumeAccessGroupResult result = this.listVolumeStatsByVolumeAccessGroup( request );
+
+        return result;
     }
 
     @Override
     public ModifyVolumeResult modifyVolume(final ModifyVolumeRequest request) {
-        return super.sendRequest("ModifyVolume", request, ModifyVolumeRequest.class, ModifyVolumeResult.class );
+        final ModifyVolumeResult result = super.sendRequest( "ModifyVolume", request, ModifyVolumeRequest.class, ModifyVolumeResult.class );
+
+        return result;
     }
 
     @Override
     public PurgeDeletedVolumeResult purgeDeletedVolume(final PurgeDeletedVolumeRequest request) {
-        return super.sendRequest("PurgeDeletedVolume", request, PurgeDeletedVolumeRequest.class, PurgeDeletedVolumeResult.class );
+        final PurgeDeletedVolumeResult result = super.sendRequest( "PurgeDeletedVolume", request, PurgeDeletedVolumeRequest.class, PurgeDeletedVolumeResult.class );
+
+        return result;
     }
 
 
     @Override
     public PurgeDeletedVolumeResult purgeDeletedVolume(Long volumeID) {
-        return this.purgeDeletedVolume( new PurgeDeletedVolumeRequest(volumeID));
+        final PurgeDeletedVolumeRequest request = new PurgeDeletedVolumeRequest( volumeID);
+        final PurgeDeletedVolumeResult result = this.purgeDeletedVolume( request );
+
+        return result;
     }
 
     @Override
     public RestoreDeletedVolumeResult restoreDeletedVolume(final RestoreDeletedVolumeRequest request) {
-        return super.sendRequest("RestoreDeletedVolume", request, RestoreDeletedVolumeRequest.class, RestoreDeletedVolumeResult.class );
+        final RestoreDeletedVolumeResult result = super.sendRequest( "RestoreDeletedVolume", request, RestoreDeletedVolumeRequest.class, RestoreDeletedVolumeResult.class );
+
+        return result;
     }
 
 
     @Override
     public RestoreDeletedVolumeResult restoreDeletedVolume(Long volumeID) {
-        return this.restoreDeletedVolume( new RestoreDeletedVolumeRequest(volumeID));
+        final RestoreDeletedVolumeRequest request = new RestoreDeletedVolumeRequest( volumeID);
+        final RestoreDeletedVolumeResult result = this.restoreDeletedVolume( request );
+
+        return result;
     }
 
     @Override
     public CreateVolumeAccessGroupResult createVolumeAccessGroup(final CreateVolumeAccessGroupRequest request) {
-        return super.sendRequest("CreateVolumeAccessGroup", request, CreateVolumeAccessGroupRequest.class, CreateVolumeAccessGroupResult.class );
+        final CreateVolumeAccessGroupResult result = super.sendRequest( "CreateVolumeAccessGroup", request, CreateVolumeAccessGroupRequest.class, CreateVolumeAccessGroupResult.class );
+
+        return result;
     }
 
     @Override
     public ListVolumeAccessGroupsResult listVolumeAccessGroups(final ListVolumeAccessGroupsRequest request) {
-        return super.sendRequest("ListVolumeAccessGroups", request, ListVolumeAccessGroupsRequest.class, ListVolumeAccessGroupsResult.class );
+        final ListVolumeAccessGroupsResult result = super.sendRequest( "ListVolumeAccessGroups", request, ListVolumeAccessGroupsRequest.class, ListVolumeAccessGroupsResult.class );
+
+        return result;
     }
 
 
     @Override
     public ListVolumeAccessGroupsResult listVolumeAccessGroups(Optional<Long> startVolumeAccessGroupID, Optional<Long> limit) {
-        return this.listVolumeAccessGroups( new ListVolumeAccessGroupsRequest(startVolumeAccessGroupID, limit));
+        final ListVolumeAccessGroupsRequest request = new ListVolumeAccessGroupsRequest( startVolumeAccessGroupID, limit);
+        final ListVolumeAccessGroupsResult result = this.listVolumeAccessGroups( request );
+
+        return result;
     }
 
     @Override
     public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(final DeleteVolumeAccessGroupRequest request) {
-        return super.sendRequest("DeleteVolumeAccessGroup", request, DeleteVolumeAccessGroupRequest.class, DeleteVolumeAccessGroupResult.class );
+        final DeleteVolumeAccessGroupResult result = super.sendRequest( "DeleteVolumeAccessGroup", request, DeleteVolumeAccessGroupRequest.class, DeleteVolumeAccessGroupResult.class );
+
+        return result;
     }
 
 
     @Override
     public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(Long volumeAccessGroupID) {
-        return this.deleteVolumeAccessGroup( new DeleteVolumeAccessGroupRequest(volumeAccessGroupID));
+        final DeleteVolumeAccessGroupRequest request = new DeleteVolumeAccessGroupRequest( volumeAccessGroupID);
+        final DeleteVolumeAccessGroupResult result = this.deleteVolumeAccessGroup( request );
+
+        return result;
     }
 
     @Override
     public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(final ModifyVolumeAccessGroupRequest request) {
-        return super.sendRequest("ModifyVolumeAccessGroup", request, ModifyVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class );
+        final ModifyVolumeAccessGroupResult result = super.sendRequest( "ModifyVolumeAccessGroup", request, ModifyVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class );
+
+        return result;
     }
 
     @Override
     public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(final AddInitiatorsToVolumeAccessGroupRequest request) {
-        return super.sendRequest("AddInitiatorsToVolumeAccessGroup", request, AddInitiatorsToVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class );
+        final ModifyVolumeAccessGroupResult result = super.sendRequest( "AddInitiatorsToVolumeAccessGroup", request, AddInitiatorsToVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class );
+
+        return result;
     }
 
 
     @Override
     public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(Long volumeAccessGroupID, String[] initiators) {
-        return this.addInitiatorsToVolumeAccessGroup( new AddInitiatorsToVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
+        final AddInitiatorsToVolumeAccessGroupRequest request = new AddInitiatorsToVolumeAccessGroupRequest( volumeAccessGroupID, initiators);
+        final ModifyVolumeAccessGroupResult result = this.addInitiatorsToVolumeAccessGroup( request );
+
+        return result;
     }
 
     @Override
     public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(final RemoveInitiatorsFromVolumeAccessGroupRequest request) {
-        return super.sendRequest("RemoveInitiatorsFromVolumeAccessGroup", request, RemoveInitiatorsFromVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class );
+        final ModifyVolumeAccessGroupResult result = super.sendRequest( "RemoveInitiatorsFromVolumeAccessGroup", request, RemoveInitiatorsFromVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class );
+
+        return result;
     }
 
 
     @Override
     public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(Long volumeAccessGroupID, String[] initiators) {
-        return this.removeInitiatorsFromVolumeAccessGroup( new RemoveInitiatorsFromVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
+        final RemoveInitiatorsFromVolumeAccessGroupRequest request = new RemoveInitiatorsFromVolumeAccessGroupRequest( volumeAccessGroupID, initiators);
+        final ModifyVolumeAccessGroupResult result = this.removeInitiatorsFromVolumeAccessGroup( request );
+
+        return result;
     }
 
     @Override
     public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(final AddVolumesToVolumeAccessGroupRequest request) {
-        return super.sendRequest("AddVolumesToVolumeAccessGroup", request, AddVolumesToVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class );
+        final ModifyVolumeAccessGroupResult result = super.sendRequest( "AddVolumesToVolumeAccessGroup", request, AddVolumesToVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class );
+
+        return result;
     }
 
 
     @Override
     public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(Long volumeAccessGroupID, Long[] volumes) {
-        return this.addVolumesToVolumeAccessGroup( new AddVolumesToVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
+        final AddVolumesToVolumeAccessGroupRequest request = new AddVolumesToVolumeAccessGroupRequest( volumeAccessGroupID, volumes);
+        final ModifyVolumeAccessGroupResult result = this.addVolumesToVolumeAccessGroup( request );
+
+        return result;
     }
 
     @Override
     public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(final RemoveVolumesFromVolumeAccessGroupRequest request) {
-        return super.sendRequest("RemoveVolumesFromVolumeAccessGroup", request, RemoveVolumesFromVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class );
+        final ModifyVolumeAccessGroupResult result = super.sendRequest( "RemoveVolumesFromVolumeAccessGroup", request, RemoveVolumesFromVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class );
+
+        return result;
     }
 
 
     @Override
     public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(Long volumeAccessGroupID, Long[] volumes) {
-        return this.removeVolumesFromVolumeAccessGroup( new RemoveVolumesFromVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
+        final RemoveVolumesFromVolumeAccessGroupRequest request = new RemoveVolumesFromVolumeAccessGroupRequest( volumeAccessGroupID, volumes);
+        final ModifyVolumeAccessGroupResult result = this.removeVolumesFromVolumeAccessGroup( request );
+
+        return result;
     }
 
     @Override
     public GetEfficiencyResult getVolumeAccessGroupEfficiency(final GetVolumeAccessGroupEfficiencyRequest request) {
-        return super.sendRequest("GetVolumeAccessGroupEfficiency", request, GetVolumeAccessGroupEfficiencyRequest.class, GetEfficiencyResult.class );
+        final GetEfficiencyResult result = super.sendRequest( "GetVolumeAccessGroupEfficiency", request, GetVolumeAccessGroupEfficiencyRequest.class, GetEfficiencyResult.class );
+
+        return result;
     }
 
 
     @Override
     public GetEfficiencyResult getVolumeAccessGroupEfficiency(Long volumeAccessGroupID) {
-        return this.getVolumeAccessGroupEfficiency( new GetVolumeAccessGroupEfficiencyRequest(volumeAccessGroupID));
+        final GetVolumeAccessGroupEfficiencyRequest request = new GetVolumeAccessGroupEfficiencyRequest( volumeAccessGroupID);
+        final GetEfficiencyResult result = this.getVolumeAccessGroupEfficiency( request );
+
+        return result;
     }
 
 }

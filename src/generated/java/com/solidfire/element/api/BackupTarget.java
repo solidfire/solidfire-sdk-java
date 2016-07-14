@@ -116,4 +116,52 @@ public class BackupTarget implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String name;
+        private Long backupTargetID;
+        private Optional<java.util.Map<String, Object>> attributes;
+
+        private Builder() { }
+
+        public BackupTarget build() {
+            return new BackupTarget (
+                         this.name,
+                         this.backupTargetID,
+                         this.attributes            );
+        }
+
+        private BackupTarget.Builder buildFrom(final BackupTarget req) {
+            this.name = req.name;
+            this.backupTargetID = req.backupTargetID;
+            this.attributes = req.attributes;
+
+            return this;
+        }
+
+        public BackupTarget.Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public BackupTarget.Builder backupTargetID(final Long backupTargetID) {
+            this.backupTargetID = backupTargetID;
+            return this;
+        }
+
+        public BackupTarget.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+            return this;
+        }
+
+    }
+
 }

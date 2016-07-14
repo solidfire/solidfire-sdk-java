@@ -159,4 +159,84 @@ public class ClusterStats implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Double clusterUtilization;
+        private Long clientQueueDepth;
+        private Long readBytes;
+        private Long readOps;
+        private String timestamp;
+        private Long writeBytes;
+        private Long writeOps;
+
+        private Builder() { }
+
+        public ClusterStats build() {
+            return new ClusterStats (
+                         this.clusterUtilization,
+                         this.clientQueueDepth,
+                         this.readBytes,
+                         this.readOps,
+                         this.timestamp,
+                         this.writeBytes,
+                         this.writeOps            );
+        }
+
+        private ClusterStats.Builder buildFrom(final ClusterStats req) {
+            this.clusterUtilization = req.clusterUtilization;
+            this.clientQueueDepth = req.clientQueueDepth;
+            this.readBytes = req.readBytes;
+            this.readOps = req.readOps;
+            this.timestamp = req.timestamp;
+            this.writeBytes = req.writeBytes;
+            this.writeOps = req.writeOps;
+
+            return this;
+        }
+
+        public ClusterStats.Builder clusterUtilization(final Double clusterUtilization) {
+            this.clusterUtilization = clusterUtilization;
+            return this;
+        }
+
+        public ClusterStats.Builder clientQueueDepth(final Long clientQueueDepth) {
+            this.clientQueueDepth = clientQueueDepth;
+            return this;
+        }
+
+        public ClusterStats.Builder readBytes(final Long readBytes) {
+            this.readBytes = readBytes;
+            return this;
+        }
+
+        public ClusterStats.Builder readOps(final Long readOps) {
+            this.readOps = readOps;
+            return this;
+        }
+
+        public ClusterStats.Builder timestamp(final String timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        public ClusterStats.Builder writeBytes(final Long writeBytes) {
+            this.writeBytes = writeBytes;
+            return this;
+        }
+
+        public ClusterStats.Builder writeOps(final Long writeOps) {
+            this.writeOps = writeOps;
+            return this;
+        }
+
+    }
+
 }

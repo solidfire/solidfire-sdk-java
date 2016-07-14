@@ -103,4 +103,44 @@ public class CreateGroupSnapshotResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long groupSnapshotID;
+        private GroupSnapshotMembers[] members;
+
+        private Builder() { }
+
+        public CreateGroupSnapshotResult build() {
+            return new CreateGroupSnapshotResult (
+                         this.groupSnapshotID,
+                         this.members            );
+        }
+
+        private CreateGroupSnapshotResult.Builder buildFrom(final CreateGroupSnapshotResult req) {
+            this.groupSnapshotID = req.groupSnapshotID;
+            this.members = req.members;
+
+            return this;
+        }
+
+        public CreateGroupSnapshotResult.Builder groupSnapshotID(final Long groupSnapshotID) {
+            this.groupSnapshotID = groupSnapshotID;
+            return this;
+        }
+
+        public CreateGroupSnapshotResult.Builder members(final GroupSnapshotMembers[] members) {
+            this.members = members;
+            return this;
+        }
+
+    }
+
 }

@@ -87,4 +87,36 @@ public class GetClusterInfoResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private ClusterInfo clusterInfo;
+
+        private Builder() { }
+
+        public GetClusterInfoResult build() {
+            return new GetClusterInfoResult (
+                         this.clusterInfo            );
+        }
+
+        private GetClusterInfoResult.Builder buildFrom(final GetClusterInfoResult req) {
+            this.clusterInfo = req.clusterInfo;
+
+            return this;
+        }
+
+        public GetClusterInfoResult.Builder clusterInfo(final ClusterInfo clusterInfo) {
+            this.clusterInfo = clusterInfo;
+            return this;
+        }
+
+    }
+
 }

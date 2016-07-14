@@ -87,4 +87,36 @@ public class GetClusterCapacityResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private ClusterCapacity clusterCapacity;
+
+        private Builder() { }
+
+        public GetClusterCapacityResult build() {
+            return new GetClusterCapacityResult (
+                         this.clusterCapacity            );
+        }
+
+        private GetClusterCapacityResult.Builder buildFrom(final GetClusterCapacityResult req) {
+            this.clusterCapacity = req.clusterCapacity;
+
+            return this;
+        }
+
+        public GetClusterCapacityResult.Builder clusterCapacity(final ClusterCapacity clusterCapacity) {
+            this.clusterCapacity = clusterCapacity;
+            return this;
+        }
+
+    }
+
 }

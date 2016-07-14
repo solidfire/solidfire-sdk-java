@@ -167,4 +167,92 @@ public class DriveInfo implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long capacity;
+        private Long driveID;
+        private Long nodeID;
+        private String serial;
+        private Long slot;
+        private String status;
+        private String type;
+        private java.util.Map<String, Object> attributes;
+
+        private Builder() { }
+
+        public DriveInfo build() {
+            return new DriveInfo (
+                         this.capacity,
+                         this.driveID,
+                         this.nodeID,
+                         this.serial,
+                         this.slot,
+                         this.status,
+                         this.type,
+                         this.attributes            );
+        }
+
+        private DriveInfo.Builder buildFrom(final DriveInfo req) {
+            this.capacity = req.capacity;
+            this.driveID = req.driveID;
+            this.nodeID = req.nodeID;
+            this.serial = req.serial;
+            this.slot = req.slot;
+            this.status = req.status;
+            this.type = req.type;
+            this.attributes = req.attributes;
+
+            return this;
+        }
+
+        public DriveInfo.Builder capacity(final Long capacity) {
+            this.capacity = capacity;
+            return this;
+        }
+
+        public DriveInfo.Builder driveID(final Long driveID) {
+            this.driveID = driveID;
+            return this;
+        }
+
+        public DriveInfo.Builder nodeID(final Long nodeID) {
+            this.nodeID = nodeID;
+            return this;
+        }
+
+        public DriveInfo.Builder serial(final String serial) {
+            this.serial = serial;
+            return this;
+        }
+
+        public DriveInfo.Builder slot(final Long slot) {
+            this.slot = slot;
+            return this;
+        }
+
+        public DriveInfo.Builder status(final String status) {
+            this.status = status;
+            return this;
+        }
+
+        public DriveInfo.Builder type(final String type) {
+            this.type = type;
+            return this;
+        }
+
+        public DriveInfo.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
+            return this;
+        }
+
+    }
+
 }

@@ -87,4 +87,36 @@ public class ListClusterFaultsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private ClusterFaultInfo[] faults;
+
+        private Builder() { }
+
+        public ListClusterFaultsResult build() {
+            return new ListClusterFaultsResult (
+                         this.faults            );
+        }
+
+        private ListClusterFaultsResult.Builder buildFrom(final ListClusterFaultsResult req) {
+            this.faults = req.faults;
+
+            return this;
+        }
+
+        public ListClusterFaultsResult.Builder faults(final ClusterFaultInfo[] faults) {
+            this.faults = faults;
+            return this;
+        }
+
+    }
+
 }

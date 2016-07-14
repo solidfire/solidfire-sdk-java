@@ -107,4 +107,44 @@ public class GetAsyncResultResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private AsyncResult result;
+        private String status;
+
+        private Builder() { }
+
+        public GetAsyncResultResult build() {
+            return new GetAsyncResultResult (
+                         this.result,
+                         this.status            );
+        }
+
+        private GetAsyncResultResult.Builder buildFrom(final GetAsyncResultResult req) {
+            this.result = req.result;
+            this.status = req.status;
+
+            return this;
+        }
+
+        public GetAsyncResultResult.Builder result(final AsyncResult result) {
+            this.result = result;
+            return this;
+        }
+
+        public GetAsyncResultResult.Builder status(final String status) {
+            this.status = status;
+            return this;
+        }
+
+    }
+
 }

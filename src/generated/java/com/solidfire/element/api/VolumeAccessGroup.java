@@ -134,4 +134,60 @@ public class VolumeAccessGroup implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long volumeAccessGroupID;
+        private String name;
+        private String[] initiators;
+        private Long[] volumes;
+
+        private Builder() { }
+
+        public VolumeAccessGroup build() {
+            return new VolumeAccessGroup (
+                         this.volumeAccessGroupID,
+                         this.name,
+                         this.initiators,
+                         this.volumes            );
+        }
+
+        private VolumeAccessGroup.Builder buildFrom(final VolumeAccessGroup req) {
+            this.volumeAccessGroupID = req.volumeAccessGroupID;
+            this.name = req.name;
+            this.initiators = req.initiators;
+            this.volumes = req.volumes;
+
+            return this;
+        }
+
+        public VolumeAccessGroup.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
+            this.volumeAccessGroupID = volumeAccessGroupID;
+            return this;
+        }
+
+        public VolumeAccessGroup.Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public VolumeAccessGroup.Builder initiators(final String[] initiators) {
+            this.initiators = initiators;
+            return this;
+        }
+
+        public VolumeAccessGroup.Builder volumes(final Long[] volumes) {
+            this.volumes = volumes;
+            return this;
+        }
+
+    }
+
 }

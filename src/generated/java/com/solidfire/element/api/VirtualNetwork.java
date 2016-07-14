@@ -166,4 +166,84 @@ public class VirtualNetwork implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long virtualNetworkID;
+        private Long virtualNetworkTag;
+        private AddressBlock[] addressBlocks;
+        private java.util.Map<String, Object> attributes;
+        private String name;
+        private String netmask;
+        private String svip;
+
+        private Builder() { }
+
+        public VirtualNetwork build() {
+            return new VirtualNetwork (
+                         this.virtualNetworkID,
+                         this.virtualNetworkTag,
+                         this.addressBlocks,
+                         this.attributes,
+                         this.name,
+                         this.netmask,
+                         this.svip            );
+        }
+
+        private VirtualNetwork.Builder buildFrom(final VirtualNetwork req) {
+            this.virtualNetworkID = req.virtualNetworkID;
+            this.virtualNetworkTag = req.virtualNetworkTag;
+            this.addressBlocks = req.addressBlocks;
+            this.attributes = req.attributes;
+            this.name = req.name;
+            this.netmask = req.netmask;
+            this.svip = req.svip;
+
+            return this;
+        }
+
+        public VirtualNetwork.Builder virtualNetworkID(final Long virtualNetworkID) {
+            this.virtualNetworkID = virtualNetworkID;
+            return this;
+        }
+
+        public VirtualNetwork.Builder virtualNetworkTag(final Long virtualNetworkTag) {
+            this.virtualNetworkTag = virtualNetworkTag;
+            return this;
+        }
+
+        public VirtualNetwork.Builder addressBlocks(final AddressBlock[] addressBlocks) {
+            this.addressBlocks = addressBlocks;
+            return this;
+        }
+
+        public VirtualNetwork.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
+            return this;
+        }
+
+        public VirtualNetwork.Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public VirtualNetwork.Builder netmask(final String netmask) {
+            this.netmask = netmask;
+            return this;
+        }
+
+        public VirtualNetwork.Builder svip(final String svip) {
+            this.svip = svip;
+            return this;
+        }
+
+    }
+
 }

@@ -95,4 +95,44 @@ public class GetAPIResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Double currentVersion;
+        private Double[] supportedVersions;
+
+        private Builder() { }
+
+        public GetAPIResult build() {
+            return new GetAPIResult (
+                         this.currentVersion,
+                         this.supportedVersions            );
+        }
+
+        private GetAPIResult.Builder buildFrom(final GetAPIResult req) {
+            this.currentVersion = req.currentVersion;
+            this.supportedVersions = req.supportedVersions;
+
+            return this;
+        }
+
+        public GetAPIResult.Builder currentVersion(final Double currentVersion) {
+            this.currentVersion = currentVersion;
+            return this;
+        }
+
+        public GetAPIResult.Builder supportedVersions(final Double[] supportedVersions) {
+            this.supportedVersions = supportedVersions;
+            return this;
+        }
+
+    }
+
 }

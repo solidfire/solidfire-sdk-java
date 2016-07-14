@@ -87,4 +87,36 @@ public class GetDriveHardwareInfoResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private DriveHardwareInfo driveHardwareInfo;
+
+        private Builder() { }
+
+        public GetDriveHardwareInfoResult build() {
+            return new GetDriveHardwareInfoResult (
+                         this.driveHardwareInfo            );
+        }
+
+        private GetDriveHardwareInfoResult.Builder buildFrom(final GetDriveHardwareInfoResult req) {
+            this.driveHardwareInfo = req.driveHardwareInfo;
+
+            return this;
+        }
+
+        public GetDriveHardwareInfoResult.Builder driveHardwareInfo(final DriveHardwareInfo driveHardwareInfo) {
+            this.driveHardwareInfo = driveHardwareInfo;
+            return this;
+        }
+
+    }
+
 }

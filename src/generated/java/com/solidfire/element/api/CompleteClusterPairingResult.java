@@ -91,4 +91,36 @@ public class CompleteClusterPairingResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long clusterPairID;
+
+        private Builder() { }
+
+        public CompleteClusterPairingResult build() {
+            return new CompleteClusterPairingResult (
+                         this.clusterPairID            );
+        }
+
+        private CompleteClusterPairingResult.Builder buildFrom(final CompleteClusterPairingResult req) {
+            this.clusterPairID = req.clusterPairID;
+
+            return this;
+        }
+
+        public CompleteClusterPairingResult.Builder clusterPairID(final Long clusterPairID) {
+            this.clusterPairID = clusterPairID;
+            return this;
+        }
+
+    }
+
 }

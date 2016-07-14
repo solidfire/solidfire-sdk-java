@@ -91,4 +91,36 @@ public class ListDrivesResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private DriveInfo[] drives;
+
+        private Builder() { }
+
+        public ListDrivesResult build() {
+            return new ListDrivesResult (
+                         this.drives            );
+        }
+
+        private ListDrivesResult.Builder buildFrom(final ListDrivesResult req) {
+            this.drives = req.drives;
+
+            return this;
+        }
+
+        public ListDrivesResult.Builder drives(final DriveInfo[] drives) {
+            this.drives = drives;
+            return this;
+        }
+
+    }
+
 }

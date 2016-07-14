@@ -87,4 +87,36 @@ public class ListPendingNodesResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private PendingNode[] pendingNodes;
+
+        private Builder() { }
+
+        public ListPendingNodesResult build() {
+            return new ListPendingNodesResult (
+                         this.pendingNodes            );
+        }
+
+        private ListPendingNodesResult.Builder buildFrom(final ListPendingNodesResult req) {
+            this.pendingNodes = req.pendingNodes;
+
+            return this;
+        }
+
+        public ListPendingNodesResult.Builder pendingNodes(final PendingNode[] pendingNodes) {
+            this.pendingNodes = pendingNodes;
+            return this;
+        }
+
+    }
+
 }

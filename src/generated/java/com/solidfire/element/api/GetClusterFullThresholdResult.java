@@ -284,4 +284,164 @@ public class GetClusterFullThresholdResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String blockFullness;
+        private String fullness;
+        private Long maxMetadataOverProvisionFactor;
+        private String metadataFullness;
+        private Long sliceReserveUsedThresholdPct;
+        private Long stage2AwareThreshold;
+        private Long stage2BlockThresholdBytes;
+        private Long stage3BlockThresholdBytes;
+        private Long stage3BlockThresholdPercent;
+        private Long stage3LowThreshold;
+        private Long stage4CriticalThreshold;
+        private Long stage4BlockThresholdBytes;
+        private Long stage5BlockThresholdBytes;
+        private Long sumTotalClusterBytes;
+        private Long sumTotalMetadataClusterBytes;
+        private Long sumUsedClusterBytes;
+        private Long sumUsedMetadataClusterBytes;
+
+        private Builder() { }
+
+        public GetClusterFullThresholdResult build() {
+            return new GetClusterFullThresholdResult (
+                         this.blockFullness,
+                         this.fullness,
+                         this.maxMetadataOverProvisionFactor,
+                         this.metadataFullness,
+                         this.sliceReserveUsedThresholdPct,
+                         this.stage2AwareThreshold,
+                         this.stage2BlockThresholdBytes,
+                         this.stage3BlockThresholdBytes,
+                         this.stage3BlockThresholdPercent,
+                         this.stage3LowThreshold,
+                         this.stage4CriticalThreshold,
+                         this.stage4BlockThresholdBytes,
+                         this.stage5BlockThresholdBytes,
+                         this.sumTotalClusterBytes,
+                         this.sumTotalMetadataClusterBytes,
+                         this.sumUsedClusterBytes,
+                         this.sumUsedMetadataClusterBytes            );
+        }
+
+        private GetClusterFullThresholdResult.Builder buildFrom(final GetClusterFullThresholdResult req) {
+            this.blockFullness = req.blockFullness;
+            this.fullness = req.fullness;
+            this.maxMetadataOverProvisionFactor = req.maxMetadataOverProvisionFactor;
+            this.metadataFullness = req.metadataFullness;
+            this.sliceReserveUsedThresholdPct = req.sliceReserveUsedThresholdPct;
+            this.stage2AwareThreshold = req.stage2AwareThreshold;
+            this.stage2BlockThresholdBytes = req.stage2BlockThresholdBytes;
+            this.stage3BlockThresholdBytes = req.stage3BlockThresholdBytes;
+            this.stage3BlockThresholdPercent = req.stage3BlockThresholdPercent;
+            this.stage3LowThreshold = req.stage3LowThreshold;
+            this.stage4CriticalThreshold = req.stage4CriticalThreshold;
+            this.stage4BlockThresholdBytes = req.stage4BlockThresholdBytes;
+            this.stage5BlockThresholdBytes = req.stage5BlockThresholdBytes;
+            this.sumTotalClusterBytes = req.sumTotalClusterBytes;
+            this.sumTotalMetadataClusterBytes = req.sumTotalMetadataClusterBytes;
+            this.sumUsedClusterBytes = req.sumUsedClusterBytes;
+            this.sumUsedMetadataClusterBytes = req.sumUsedMetadataClusterBytes;
+
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder blockFullness(final String blockFullness) {
+            this.blockFullness = blockFullness;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder fullness(final String fullness) {
+            this.fullness = fullness;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder maxMetadataOverProvisionFactor(final Long maxMetadataOverProvisionFactor) {
+            this.maxMetadataOverProvisionFactor = maxMetadataOverProvisionFactor;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder metadataFullness(final String metadataFullness) {
+            this.metadataFullness = metadataFullness;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder sliceReserveUsedThresholdPct(final Long sliceReserveUsedThresholdPct) {
+            this.sliceReserveUsedThresholdPct = sliceReserveUsedThresholdPct;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder stage2AwareThreshold(final Long stage2AwareThreshold) {
+            this.stage2AwareThreshold = stage2AwareThreshold;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder stage2BlockThresholdBytes(final Long stage2BlockThresholdBytes) {
+            this.stage2BlockThresholdBytes = stage2BlockThresholdBytes;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder stage3BlockThresholdBytes(final Long stage3BlockThresholdBytes) {
+            this.stage3BlockThresholdBytes = stage3BlockThresholdBytes;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder stage3BlockThresholdPercent(final Long stage3BlockThresholdPercent) {
+            this.stage3BlockThresholdPercent = stage3BlockThresholdPercent;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder stage3LowThreshold(final Long stage3LowThreshold) {
+            this.stage3LowThreshold = stage3LowThreshold;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder stage4CriticalThreshold(final Long stage4CriticalThreshold) {
+            this.stage4CriticalThreshold = stage4CriticalThreshold;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder stage4BlockThresholdBytes(final Long stage4BlockThresholdBytes) {
+            this.stage4BlockThresholdBytes = stage4BlockThresholdBytes;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder stage5BlockThresholdBytes(final Long stage5BlockThresholdBytes) {
+            this.stage5BlockThresholdBytes = stage5BlockThresholdBytes;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder sumTotalClusterBytes(final Long sumTotalClusterBytes) {
+            this.sumTotalClusterBytes = sumTotalClusterBytes;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder sumTotalMetadataClusterBytes(final Long sumTotalMetadataClusterBytes) {
+            this.sumTotalMetadataClusterBytes = sumTotalMetadataClusterBytes;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder sumUsedClusterBytes(final Long sumUsedClusterBytes) {
+            this.sumUsedClusterBytes = sumUsedClusterBytes;
+            return this;
+        }
+
+        public GetClusterFullThresholdResult.Builder sumUsedMetadataClusterBytes(final Long sumUsedMetadataClusterBytes) {
+            this.sumUsedMetadataClusterBytes = sumUsedMetadataClusterBytes;
+            return this;
+        }
+
+    }
+
 }

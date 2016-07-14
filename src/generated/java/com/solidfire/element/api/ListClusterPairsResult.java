@@ -91,4 +91,36 @@ public class ListClusterPairsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private PairedCluster[] clusterPairs;
+
+        private Builder() { }
+
+        public ListClusterPairsResult build() {
+            return new ListClusterPairsResult (
+                         this.clusterPairs            );
+        }
+
+        private ListClusterPairsResult.Builder buildFrom(final ListClusterPairsResult req) {
+            this.clusterPairs = req.clusterPairs;
+
+            return this;
+        }
+
+        public ListClusterPairsResult.Builder clusterPairs(final PairedCluster[] clusterPairs) {
+            this.clusterPairs = clusterPairs;
+            return this;
+        }
+
+    }
+
 }

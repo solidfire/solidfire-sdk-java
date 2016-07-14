@@ -144,4 +144,60 @@ public class QoS implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Optional<Long> minIOPS;
+        private Optional<Long> maxIOPS;
+        private Optional<Long> burstIOPS;
+        private Optional<Long> burstTime;
+
+        private Builder() { }
+
+        public QoS build() {
+            return new QoS (
+                         this.minIOPS,
+                         this.maxIOPS,
+                         this.burstIOPS,
+                         this.burstTime            );
+        }
+
+        private QoS.Builder buildFrom(final QoS req) {
+            this.minIOPS = req.minIOPS;
+            this.maxIOPS = req.maxIOPS;
+            this.burstIOPS = req.burstIOPS;
+            this.burstTime = req.burstTime;
+
+            return this;
+        }
+
+        public QoS.Builder optionalMinIOPS(final Long minIOPS) {
+            this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : Optional.of(minIOPS);
+            return this;
+        }
+
+        public QoS.Builder optionalMaxIOPS(final Long maxIOPS) {
+            this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : Optional.of(maxIOPS);
+            return this;
+        }
+
+        public QoS.Builder optionalBurstIOPS(final Long burstIOPS) {
+            this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : Optional.of(burstIOPS);
+            return this;
+        }
+
+        public QoS.Builder optionalBurstTime(final Long burstTime) {
+            this.burstTime = (burstTime == null) ? Optional.<Long>empty() : Optional.of(burstTime);
+            return this;
+        }
+
+    }
+
 }

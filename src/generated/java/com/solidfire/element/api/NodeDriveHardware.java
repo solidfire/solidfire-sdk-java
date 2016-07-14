@@ -95,4 +95,44 @@ public class NodeDriveHardware implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long nodeID;
+        private DrivesHardware result;
+
+        private Builder() { }
+
+        public NodeDriveHardware build() {
+            return new NodeDriveHardware (
+                         this.nodeID,
+                         this.result            );
+        }
+
+        private NodeDriveHardware.Builder buildFrom(final NodeDriveHardware req) {
+            this.nodeID = req.nodeID;
+            this.result = req.result;
+
+            return this;
+        }
+
+        public NodeDriveHardware.Builder nodeID(final Long nodeID) {
+            this.nodeID = nodeID;
+            return this;
+        }
+
+        public NodeDriveHardware.Builder result(final DrivesHardware result) {
+            this.result = result;
+            return this;
+        }
+
+    }
+
 }
