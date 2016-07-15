@@ -418,4 +418,212 @@ public class ClusterCapacity implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long activeBlockSpace;
+        private Long activeSessions;
+        private Long averageIOPS;
+        private Long clusterRecentIOSize;
+        private Long currentIOPS;
+        private Long maxIOPS;
+        private Long maxOverProvisionableSpace;
+        private Long maxProvisionedSpace;
+        private Long maxUsedMetadataSpace;
+        private Long maxUsedSpace;
+        private Long nonZeroBlocks;
+        private Long peakActiveSessions;
+        private Long peakIOPS;
+        private Long provisionedSpace;
+        private Long snapshotNonZeroBlocks;
+        private String timestamp;
+        private Long totalOps;
+        private Long uniqueBlocks;
+        private Long uniqueBlocksUsedSpace;
+        private Long usedMetadataSpace;
+        private Long usedMetadataSpaceInSnapshots;
+        private Long usedSpace;
+        private Long zeroBlocks;
+
+        private Builder() { }
+
+        public ClusterCapacity build() {
+            return new ClusterCapacity (
+                         this.activeBlockSpace,
+                         this.activeSessions,
+                         this.averageIOPS,
+                         this.clusterRecentIOSize,
+                         this.currentIOPS,
+                         this.maxIOPS,
+                         this.maxOverProvisionableSpace,
+                         this.maxProvisionedSpace,
+                         this.maxUsedMetadataSpace,
+                         this.maxUsedSpace,
+                         this.nonZeroBlocks,
+                         this.peakActiveSessions,
+                         this.peakIOPS,
+                         this.provisionedSpace,
+                         this.snapshotNonZeroBlocks,
+                         this.timestamp,
+                         this.totalOps,
+                         this.uniqueBlocks,
+                         this.uniqueBlocksUsedSpace,
+                         this.usedMetadataSpace,
+                         this.usedMetadataSpaceInSnapshots,
+                         this.usedSpace,
+                         this.zeroBlocks            );
+        }
+
+        private ClusterCapacity.Builder buildFrom(final ClusterCapacity req) {
+            this.activeBlockSpace = req.activeBlockSpace;
+            this.activeSessions = req.activeSessions;
+            this.averageIOPS = req.averageIOPS;
+            this.clusterRecentIOSize = req.clusterRecentIOSize;
+            this.currentIOPS = req.currentIOPS;
+            this.maxIOPS = req.maxIOPS;
+            this.maxOverProvisionableSpace = req.maxOverProvisionableSpace;
+            this.maxProvisionedSpace = req.maxProvisionedSpace;
+            this.maxUsedMetadataSpace = req.maxUsedMetadataSpace;
+            this.maxUsedSpace = req.maxUsedSpace;
+            this.nonZeroBlocks = req.nonZeroBlocks;
+            this.peakActiveSessions = req.peakActiveSessions;
+            this.peakIOPS = req.peakIOPS;
+            this.provisionedSpace = req.provisionedSpace;
+            this.snapshotNonZeroBlocks = req.snapshotNonZeroBlocks;
+            this.timestamp = req.timestamp;
+            this.totalOps = req.totalOps;
+            this.uniqueBlocks = req.uniqueBlocks;
+            this.uniqueBlocksUsedSpace = req.uniqueBlocksUsedSpace;
+            this.usedMetadataSpace = req.usedMetadataSpace;
+            this.usedMetadataSpaceInSnapshots = req.usedMetadataSpaceInSnapshots;
+            this.usedSpace = req.usedSpace;
+            this.zeroBlocks = req.zeroBlocks;
+
+            return this;
+        }
+
+        public ClusterCapacity.Builder activeBlockSpace(final Long activeBlockSpace) {
+            this.activeBlockSpace = activeBlockSpace;
+            return this;
+        }
+
+        public ClusterCapacity.Builder activeSessions(final Long activeSessions) {
+            this.activeSessions = activeSessions;
+            return this;
+        }
+
+        public ClusterCapacity.Builder averageIOPS(final Long averageIOPS) {
+            this.averageIOPS = averageIOPS;
+            return this;
+        }
+
+        public ClusterCapacity.Builder clusterRecentIOSize(final Long clusterRecentIOSize) {
+            this.clusterRecentIOSize = clusterRecentIOSize;
+            return this;
+        }
+
+        public ClusterCapacity.Builder currentIOPS(final Long currentIOPS) {
+            this.currentIOPS = currentIOPS;
+            return this;
+        }
+
+        public ClusterCapacity.Builder maxIOPS(final Long maxIOPS) {
+            this.maxIOPS = maxIOPS;
+            return this;
+        }
+
+        public ClusterCapacity.Builder maxOverProvisionableSpace(final Long maxOverProvisionableSpace) {
+            this.maxOverProvisionableSpace = maxOverProvisionableSpace;
+            return this;
+        }
+
+        public ClusterCapacity.Builder maxProvisionedSpace(final Long maxProvisionedSpace) {
+            this.maxProvisionedSpace = maxProvisionedSpace;
+            return this;
+        }
+
+        public ClusterCapacity.Builder maxUsedMetadataSpace(final Long maxUsedMetadataSpace) {
+            this.maxUsedMetadataSpace = maxUsedMetadataSpace;
+            return this;
+        }
+
+        public ClusterCapacity.Builder maxUsedSpace(final Long maxUsedSpace) {
+            this.maxUsedSpace = maxUsedSpace;
+            return this;
+        }
+
+        public ClusterCapacity.Builder nonZeroBlocks(final Long nonZeroBlocks) {
+            this.nonZeroBlocks = nonZeroBlocks;
+            return this;
+        }
+
+        public ClusterCapacity.Builder peakActiveSessions(final Long peakActiveSessions) {
+            this.peakActiveSessions = peakActiveSessions;
+            return this;
+        }
+
+        public ClusterCapacity.Builder peakIOPS(final Long peakIOPS) {
+            this.peakIOPS = peakIOPS;
+            return this;
+        }
+
+        public ClusterCapacity.Builder provisionedSpace(final Long provisionedSpace) {
+            this.provisionedSpace = provisionedSpace;
+            return this;
+        }
+
+        public ClusterCapacity.Builder snapshotNonZeroBlocks(final Long snapshotNonZeroBlocks) {
+            this.snapshotNonZeroBlocks = snapshotNonZeroBlocks;
+            return this;
+        }
+
+        public ClusterCapacity.Builder timestamp(final String timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        public ClusterCapacity.Builder totalOps(final Long totalOps) {
+            this.totalOps = totalOps;
+            return this;
+        }
+
+        public ClusterCapacity.Builder uniqueBlocks(final Long uniqueBlocks) {
+            this.uniqueBlocks = uniqueBlocks;
+            return this;
+        }
+
+        public ClusterCapacity.Builder uniqueBlocksUsedSpace(final Long uniqueBlocksUsedSpace) {
+            this.uniqueBlocksUsedSpace = uniqueBlocksUsedSpace;
+            return this;
+        }
+
+        public ClusterCapacity.Builder usedMetadataSpace(final Long usedMetadataSpace) {
+            this.usedMetadataSpace = usedMetadataSpace;
+            return this;
+        }
+
+        public ClusterCapacity.Builder usedMetadataSpaceInSnapshots(final Long usedMetadataSpaceInSnapshots) {
+            this.usedMetadataSpaceInSnapshots = usedMetadataSpaceInSnapshots;
+            return this;
+        }
+
+        public ClusterCapacity.Builder usedSpace(final Long usedSpace) {
+            this.usedSpace = usedSpace;
+            return this;
+        }
+
+        public ClusterCapacity.Builder zeroBlocks(final Long zeroBlocks) {
+            this.zeroBlocks = zeroBlocks;
+            return this;
+        }
+
+    }
+
 }

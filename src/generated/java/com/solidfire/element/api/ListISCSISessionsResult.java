@@ -87,4 +87,36 @@ public class ListISCSISessionsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private ISCSISession[] sessions;
+
+        private Builder() { }
+
+        public ListISCSISessionsResult build() {
+            return new ListISCSISessionsResult (
+                         this.sessions            );
+        }
+
+        private ListISCSISessionsResult.Builder buildFrom(final ListISCSISessionsResult req) {
+            this.sessions = req.sessions;
+
+            return this;
+        }
+
+        public ListISCSISessionsResult.Builder sessions(final ISCSISession[] sessions) {
+            this.sessions = sessions;
+            return this;
+        }
+
+    }
+
 }

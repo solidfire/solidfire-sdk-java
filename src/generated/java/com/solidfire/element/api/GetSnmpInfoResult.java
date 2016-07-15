@@ -129,4 +129,60 @@ public class GetSnmpInfoResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private SnmpNetwork[] networks;
+        private Boolean enabled;
+        private Boolean snmpV3Enabled;
+        private SnmpV3UsmUser[] usmUsers;
+
+        private Builder() { }
+
+        public GetSnmpInfoResult build() {
+            return new GetSnmpInfoResult (
+                         this.networks,
+                         this.enabled,
+                         this.snmpV3Enabled,
+                         this.usmUsers            );
+        }
+
+        private GetSnmpInfoResult.Builder buildFrom(final GetSnmpInfoResult req) {
+            this.networks = req.networks;
+            this.enabled = req.enabled;
+            this.snmpV3Enabled = req.snmpV3Enabled;
+            this.usmUsers = req.usmUsers;
+
+            return this;
+        }
+
+        public GetSnmpInfoResult.Builder networks(final SnmpNetwork[] networks) {
+            this.networks = networks;
+            return this;
+        }
+
+        public GetSnmpInfoResult.Builder enabled(final Boolean enabled) {
+            this.enabled = enabled;
+            return this;
+        }
+
+        public GetSnmpInfoResult.Builder snmpV3Enabled(final Boolean snmpV3Enabled) {
+            this.snmpV3Enabled = snmpV3Enabled;
+            return this;
+        }
+
+        public GetSnmpInfoResult.Builder usmUsers(final SnmpV3UsmUser[] usmUsers) {
+            this.usmUsers = usmUsers;
+            return this;
+        }
+
+    }
+
 }

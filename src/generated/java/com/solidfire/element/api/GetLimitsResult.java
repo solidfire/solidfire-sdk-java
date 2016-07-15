@@ -343,4 +343,292 @@ public class GetLimitsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long accountCountMax;
+        private Long accountNameLengthMax;
+        private Long accountNameLengthMin;
+        private Long bulkVolumeJobsPerNodeMax;
+        private Long bulkVolumeJobsPerVolumeMax;
+        private Long cloneJobsPerVolumeMax;
+        private Long clusterPairsCountMax;
+        private Long initiatorNameLengthMax;
+        private Long initiatorsPerVolumeAccessGroupCountMax;
+        private Long secretLengthMax;
+        private Long secretLengthMin;
+        private Long snapshotNameLengthMax;
+        private Long snapshotsPerVolumeMax;
+        private Long volumeAccessGroupCountMax;
+        private Long volumeAccessGroupLunMax;
+        private Long volumeAccessGroupNameLengthMax;
+        private Long volumeAccessGroupNameLengthMin;
+        private Long volumeAccessGroupsPerInitiatorCountMax;
+        private Long volumeAccessGroupsPerVolumeCountMax;
+        private Long volumeBurstIOPSMax;
+        private Long volumeBurstIOPSMin;
+        private Long volumeCountMax;
+        private Long volumeMaxIOPSMax;
+        private Long volumeMaxIOPSMin;
+        private Long volumeMinIOPSMax;
+        private Long volumeMinIOPSMin;
+        private Long volumeNameLengthMax;
+        private Long volumeNameLengthMin;
+        private Long volumeSizeMax;
+        private Long volumeSizeMin;
+        private Long volumesPerAccountCountMax;
+        private Long volumesPerGroupSnapshotMax;
+        private Long volumesPerVolumeAccessGroupCountMax;
+
+        private Builder() { }
+
+        public GetLimitsResult build() {
+            return new GetLimitsResult (
+                         this.accountCountMax,
+                         this.accountNameLengthMax,
+                         this.accountNameLengthMin,
+                         this.bulkVolumeJobsPerNodeMax,
+                         this.bulkVolumeJobsPerVolumeMax,
+                         this.cloneJobsPerVolumeMax,
+                         this.clusterPairsCountMax,
+                         this.initiatorNameLengthMax,
+                         this.initiatorsPerVolumeAccessGroupCountMax,
+                         this.secretLengthMax,
+                         this.secretLengthMin,
+                         this.snapshotNameLengthMax,
+                         this.snapshotsPerVolumeMax,
+                         this.volumeAccessGroupCountMax,
+                         this.volumeAccessGroupLunMax,
+                         this.volumeAccessGroupNameLengthMax,
+                         this.volumeAccessGroupNameLengthMin,
+                         this.volumeAccessGroupsPerInitiatorCountMax,
+                         this.volumeAccessGroupsPerVolumeCountMax,
+                         this.volumeBurstIOPSMax,
+                         this.volumeBurstIOPSMin,
+                         this.volumeCountMax,
+                         this.volumeMaxIOPSMax,
+                         this.volumeMaxIOPSMin,
+                         this.volumeMinIOPSMax,
+                         this.volumeMinIOPSMin,
+                         this.volumeNameLengthMax,
+                         this.volumeNameLengthMin,
+                         this.volumeSizeMax,
+                         this.volumeSizeMin,
+                         this.volumesPerAccountCountMax,
+                         this.volumesPerGroupSnapshotMax,
+                         this.volumesPerVolumeAccessGroupCountMax            );
+        }
+
+        private GetLimitsResult.Builder buildFrom(final GetLimitsResult req) {
+            this.accountCountMax = req.accountCountMax;
+            this.accountNameLengthMax = req.accountNameLengthMax;
+            this.accountNameLengthMin = req.accountNameLengthMin;
+            this.bulkVolumeJobsPerNodeMax = req.bulkVolumeJobsPerNodeMax;
+            this.bulkVolumeJobsPerVolumeMax = req.bulkVolumeJobsPerVolumeMax;
+            this.cloneJobsPerVolumeMax = req.cloneJobsPerVolumeMax;
+            this.clusterPairsCountMax = req.clusterPairsCountMax;
+            this.initiatorNameLengthMax = req.initiatorNameLengthMax;
+            this.initiatorsPerVolumeAccessGroupCountMax = req.initiatorsPerVolumeAccessGroupCountMax;
+            this.secretLengthMax = req.secretLengthMax;
+            this.secretLengthMin = req.secretLengthMin;
+            this.snapshotNameLengthMax = req.snapshotNameLengthMax;
+            this.snapshotsPerVolumeMax = req.snapshotsPerVolumeMax;
+            this.volumeAccessGroupCountMax = req.volumeAccessGroupCountMax;
+            this.volumeAccessGroupLunMax = req.volumeAccessGroupLunMax;
+            this.volumeAccessGroupNameLengthMax = req.volumeAccessGroupNameLengthMax;
+            this.volumeAccessGroupNameLengthMin = req.volumeAccessGroupNameLengthMin;
+            this.volumeAccessGroupsPerInitiatorCountMax = req.volumeAccessGroupsPerInitiatorCountMax;
+            this.volumeAccessGroupsPerVolumeCountMax = req.volumeAccessGroupsPerVolumeCountMax;
+            this.volumeBurstIOPSMax = req.volumeBurstIOPSMax;
+            this.volumeBurstIOPSMin = req.volumeBurstIOPSMin;
+            this.volumeCountMax = req.volumeCountMax;
+            this.volumeMaxIOPSMax = req.volumeMaxIOPSMax;
+            this.volumeMaxIOPSMin = req.volumeMaxIOPSMin;
+            this.volumeMinIOPSMax = req.volumeMinIOPSMax;
+            this.volumeMinIOPSMin = req.volumeMinIOPSMin;
+            this.volumeNameLengthMax = req.volumeNameLengthMax;
+            this.volumeNameLengthMin = req.volumeNameLengthMin;
+            this.volumeSizeMax = req.volumeSizeMax;
+            this.volumeSizeMin = req.volumeSizeMin;
+            this.volumesPerAccountCountMax = req.volumesPerAccountCountMax;
+            this.volumesPerGroupSnapshotMax = req.volumesPerGroupSnapshotMax;
+            this.volumesPerVolumeAccessGroupCountMax = req.volumesPerVolumeAccessGroupCountMax;
+
+            return this;
+        }
+
+        public GetLimitsResult.Builder accountCountMax(final Long accountCountMax) {
+            this.accountCountMax = accountCountMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder accountNameLengthMax(final Long accountNameLengthMax) {
+            this.accountNameLengthMax = accountNameLengthMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder accountNameLengthMin(final Long accountNameLengthMin) {
+            this.accountNameLengthMin = accountNameLengthMin;
+            return this;
+        }
+
+        public GetLimitsResult.Builder bulkVolumeJobsPerNodeMax(final Long bulkVolumeJobsPerNodeMax) {
+            this.bulkVolumeJobsPerNodeMax = bulkVolumeJobsPerNodeMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder bulkVolumeJobsPerVolumeMax(final Long bulkVolumeJobsPerVolumeMax) {
+            this.bulkVolumeJobsPerVolumeMax = bulkVolumeJobsPerVolumeMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder cloneJobsPerVolumeMax(final Long cloneJobsPerVolumeMax) {
+            this.cloneJobsPerVolumeMax = cloneJobsPerVolumeMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder clusterPairsCountMax(final Long clusterPairsCountMax) {
+            this.clusterPairsCountMax = clusterPairsCountMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder initiatorNameLengthMax(final Long initiatorNameLengthMax) {
+            this.initiatorNameLengthMax = initiatorNameLengthMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder initiatorsPerVolumeAccessGroupCountMax(final Long initiatorsPerVolumeAccessGroupCountMax) {
+            this.initiatorsPerVolumeAccessGroupCountMax = initiatorsPerVolumeAccessGroupCountMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder secretLengthMax(final Long secretLengthMax) {
+            this.secretLengthMax = secretLengthMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder secretLengthMin(final Long secretLengthMin) {
+            this.secretLengthMin = secretLengthMin;
+            return this;
+        }
+
+        public GetLimitsResult.Builder snapshotNameLengthMax(final Long snapshotNameLengthMax) {
+            this.snapshotNameLengthMax = snapshotNameLengthMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder snapshotsPerVolumeMax(final Long snapshotsPerVolumeMax) {
+            this.snapshotsPerVolumeMax = snapshotsPerVolumeMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeAccessGroupCountMax(final Long volumeAccessGroupCountMax) {
+            this.volumeAccessGroupCountMax = volumeAccessGroupCountMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeAccessGroupLunMax(final Long volumeAccessGroupLunMax) {
+            this.volumeAccessGroupLunMax = volumeAccessGroupLunMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeAccessGroupNameLengthMax(final Long volumeAccessGroupNameLengthMax) {
+            this.volumeAccessGroupNameLengthMax = volumeAccessGroupNameLengthMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeAccessGroupNameLengthMin(final Long volumeAccessGroupNameLengthMin) {
+            this.volumeAccessGroupNameLengthMin = volumeAccessGroupNameLengthMin;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeAccessGroupsPerInitiatorCountMax(final Long volumeAccessGroupsPerInitiatorCountMax) {
+            this.volumeAccessGroupsPerInitiatorCountMax = volumeAccessGroupsPerInitiatorCountMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeAccessGroupsPerVolumeCountMax(final Long volumeAccessGroupsPerVolumeCountMax) {
+            this.volumeAccessGroupsPerVolumeCountMax = volumeAccessGroupsPerVolumeCountMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeBurstIOPSMax(final Long volumeBurstIOPSMax) {
+            this.volumeBurstIOPSMax = volumeBurstIOPSMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeBurstIOPSMin(final Long volumeBurstIOPSMin) {
+            this.volumeBurstIOPSMin = volumeBurstIOPSMin;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeCountMax(final Long volumeCountMax) {
+            this.volumeCountMax = volumeCountMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeMaxIOPSMax(final Long volumeMaxIOPSMax) {
+            this.volumeMaxIOPSMax = volumeMaxIOPSMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeMaxIOPSMin(final Long volumeMaxIOPSMin) {
+            this.volumeMaxIOPSMin = volumeMaxIOPSMin;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeMinIOPSMax(final Long volumeMinIOPSMax) {
+            this.volumeMinIOPSMax = volumeMinIOPSMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeMinIOPSMin(final Long volumeMinIOPSMin) {
+            this.volumeMinIOPSMin = volumeMinIOPSMin;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeNameLengthMax(final Long volumeNameLengthMax) {
+            this.volumeNameLengthMax = volumeNameLengthMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeNameLengthMin(final Long volumeNameLengthMin) {
+            this.volumeNameLengthMin = volumeNameLengthMin;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeSizeMax(final Long volumeSizeMax) {
+            this.volumeSizeMax = volumeSizeMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumeSizeMin(final Long volumeSizeMin) {
+            this.volumeSizeMin = volumeSizeMin;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumesPerAccountCountMax(final Long volumesPerAccountCountMax) {
+            this.volumesPerAccountCountMax = volumesPerAccountCountMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumesPerGroupSnapshotMax(final Long volumesPerGroupSnapshotMax) {
+            this.volumesPerGroupSnapshotMax = volumesPerGroupSnapshotMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder volumesPerVolumeAccessGroupCountMax(final Long volumesPerVolumeAccessGroupCountMax) {
+            this.volumesPerVolumeAccessGroupCountMax = volumesPerVolumeAccessGroupCountMax;
+            return this;
+        }
+
+    }
+
 }

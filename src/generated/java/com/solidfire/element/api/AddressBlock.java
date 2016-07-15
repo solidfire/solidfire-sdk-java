@@ -103,4 +103,44 @@ public class AddressBlock implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String start;
+        private Long size;
+
+        private Builder() { }
+
+        public AddressBlock build() {
+            return new AddressBlock (
+                         this.start,
+                         this.size            );
+        }
+
+        private AddressBlock.Builder buildFrom(final AddressBlock req) {
+            this.start = req.start;
+            this.size = req.size;
+
+            return this;
+        }
+
+        public AddressBlock.Builder start(final String start) {
+            this.start = start;
+            return this;
+        }
+
+        public AddressBlock.Builder size(final Long size) {
+            this.size = size;
+            return this;
+        }
+
+    }
+
 }

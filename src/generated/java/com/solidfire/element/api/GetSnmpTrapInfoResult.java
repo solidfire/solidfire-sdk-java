@@ -127,4 +127,60 @@ public class GetSnmpTrapInfoResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private SnmpTrapRecipient[] trapRecipients;
+        private Boolean clusterFaultTrapsEnabled;
+        private Boolean clusterFaultResolvedTrapsEnabled;
+        private Boolean clusterEventTrapsEnabled;
+
+        private Builder() { }
+
+        public GetSnmpTrapInfoResult build() {
+            return new GetSnmpTrapInfoResult (
+                         this.trapRecipients,
+                         this.clusterFaultTrapsEnabled,
+                         this.clusterFaultResolvedTrapsEnabled,
+                         this.clusterEventTrapsEnabled            );
+        }
+
+        private GetSnmpTrapInfoResult.Builder buildFrom(final GetSnmpTrapInfoResult req) {
+            this.trapRecipients = req.trapRecipients;
+            this.clusterFaultTrapsEnabled = req.clusterFaultTrapsEnabled;
+            this.clusterFaultResolvedTrapsEnabled = req.clusterFaultResolvedTrapsEnabled;
+            this.clusterEventTrapsEnabled = req.clusterEventTrapsEnabled;
+
+            return this;
+        }
+
+        public GetSnmpTrapInfoResult.Builder trapRecipients(final SnmpTrapRecipient[] trapRecipients) {
+            this.trapRecipients = trapRecipients;
+            return this;
+        }
+
+        public GetSnmpTrapInfoResult.Builder clusterFaultTrapsEnabled(final Boolean clusterFaultTrapsEnabled) {
+            this.clusterFaultTrapsEnabled = clusterFaultTrapsEnabled;
+            return this;
+        }
+
+        public GetSnmpTrapInfoResult.Builder clusterFaultResolvedTrapsEnabled(final Boolean clusterFaultResolvedTrapsEnabled) {
+            this.clusterFaultResolvedTrapsEnabled = clusterFaultResolvedTrapsEnabled;
+            return this;
+        }
+
+        public GetSnmpTrapInfoResult.Builder clusterEventTrapsEnabled(final Boolean clusterEventTrapsEnabled) {
+            this.clusterEventTrapsEnabled = clusterEventTrapsEnabled;
+            return this;
+        }
+
+    }
+
 }

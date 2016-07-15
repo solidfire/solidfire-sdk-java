@@ -87,4 +87,36 @@ public class SnmpSendTestTrapsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String status;
+
+        private Builder() { }
+
+        public SnmpSendTestTrapsResult build() {
+            return new SnmpSendTestTrapsResult (
+                         this.status            );
+        }
+
+        private SnmpSendTestTrapsResult.Builder buildFrom(final SnmpSendTestTrapsResult req) {
+            this.status = req.status;
+
+            return this;
+        }
+
+        public SnmpSendTestTrapsResult.Builder status(final String status) {
+            this.status = status;
+            return this;
+        }
+
+    }
+
 }

@@ -328,4 +328,148 @@ public class Snapshot implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long snapshotID;
+        private Long volumeID;
+        private String name;
+        private String checksum;
+        private Boolean enableRemoteReplication;
+        private String expirationReason;
+        private String expirationTime;
+        private String remoteStatuses;
+        private String status;
+        private String snapshotUUID;
+        private Long totalSize;
+        private Optional<Long> groupID;
+        private String groupSnapshotUUID;
+        private String createTime;
+        private java.util.Map<String, Object> attributes;
+
+        private Builder() { }
+
+        public Snapshot build() {
+            return new Snapshot (
+                         this.snapshotID,
+                         this.volumeID,
+                         this.name,
+                         this.checksum,
+                         this.enableRemoteReplication,
+                         this.expirationReason,
+                         this.expirationTime,
+                         this.remoteStatuses,
+                         this.status,
+                         this.snapshotUUID,
+                         this.totalSize,
+                         this.groupID,
+                         this.groupSnapshotUUID,
+                         this.createTime,
+                         this.attributes            );
+        }
+
+        private Snapshot.Builder buildFrom(final Snapshot req) {
+            this.snapshotID = req.snapshotID;
+            this.volumeID = req.volumeID;
+            this.name = req.name;
+            this.checksum = req.checksum;
+            this.enableRemoteReplication = req.enableRemoteReplication;
+            this.expirationReason = req.expirationReason;
+            this.expirationTime = req.expirationTime;
+            this.remoteStatuses = req.remoteStatuses;
+            this.status = req.status;
+            this.snapshotUUID = req.snapshotUUID;
+            this.totalSize = req.totalSize;
+            this.groupID = req.groupID;
+            this.groupSnapshotUUID = req.groupSnapshotUUID;
+            this.createTime = req.createTime;
+            this.attributes = req.attributes;
+
+            return this;
+        }
+
+        public Snapshot.Builder snapshotID(final Long snapshotID) {
+            this.snapshotID = snapshotID;
+            return this;
+        }
+
+        public Snapshot.Builder volumeID(final Long volumeID) {
+            this.volumeID = volumeID;
+            return this;
+        }
+
+        public Snapshot.Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Snapshot.Builder checksum(final String checksum) {
+            this.checksum = checksum;
+            return this;
+        }
+
+        public Snapshot.Builder enableRemoteReplication(final Boolean enableRemoteReplication) {
+            this.enableRemoteReplication = enableRemoteReplication;
+            return this;
+        }
+
+        public Snapshot.Builder expirationReason(final String expirationReason) {
+            this.expirationReason = expirationReason;
+            return this;
+        }
+
+        public Snapshot.Builder expirationTime(final String expirationTime) {
+            this.expirationTime = expirationTime;
+            return this;
+        }
+
+        public Snapshot.Builder remoteStatuses(final String remoteStatuses) {
+            this.remoteStatuses = remoteStatuses;
+            return this;
+        }
+
+        public Snapshot.Builder status(final String status) {
+            this.status = status;
+            return this;
+        }
+
+        public Snapshot.Builder SnapshotUUID(final String snapshotUUID) {
+            this.snapshotUUID = snapshotUUID;
+            return this;
+        }
+
+        public Snapshot.Builder totalSize(final Long totalSize) {
+            this.totalSize = totalSize;
+            return this;
+        }
+
+        public Snapshot.Builder optionalGroupID(final Long groupID) {
+            this.groupID = (groupID == null) ? Optional.<Long>empty() : Optional.of(groupID);
+            return this;
+        }
+
+        public Snapshot.Builder groupSnapshotUUID(final String groupSnapshotUUID) {
+            this.groupSnapshotUUID = groupSnapshotUUID;
+            return this;
+        }
+
+        public Snapshot.Builder createTime(final String createTime) {
+            this.createTime = createTime;
+            return this;
+        }
+
+        public Snapshot.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
+            return this;
+        }
+
+    }
+
 }

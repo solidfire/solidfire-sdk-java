@@ -119,4 +119,68 @@ public class SoftwareVersionInfo implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String currentVersion;
+        private Long nodeID;
+        private String packageName;
+        private String pendingVersion;
+        private String startTime;
+
+        private Builder() { }
+
+        public SoftwareVersionInfo build() {
+            return new SoftwareVersionInfo (
+                         this.currentVersion,
+                         this.nodeID,
+                         this.packageName,
+                         this.pendingVersion,
+                         this.startTime            );
+        }
+
+        private SoftwareVersionInfo.Builder buildFrom(final SoftwareVersionInfo req) {
+            this.currentVersion = req.currentVersion;
+            this.nodeID = req.nodeID;
+            this.packageName = req.packageName;
+            this.pendingVersion = req.pendingVersion;
+            this.startTime = req.startTime;
+
+            return this;
+        }
+
+        public SoftwareVersionInfo.Builder currentVersion(final String currentVersion) {
+            this.currentVersion = currentVersion;
+            return this;
+        }
+
+        public SoftwareVersionInfo.Builder nodeID(final Long nodeID) {
+            this.nodeID = nodeID;
+            return this;
+        }
+
+        public SoftwareVersionInfo.Builder packageName(final String packageName) {
+            this.packageName = packageName;
+            return this;
+        }
+
+        public SoftwareVersionInfo.Builder pendingVersion(final String pendingVersion) {
+            this.pendingVersion = pendingVersion;
+            return this;
+        }
+
+        public SoftwareVersionInfo.Builder startTime(final String startTime) {
+            this.startTime = startTime;
+            return this;
+        }
+
+    }
+
 }

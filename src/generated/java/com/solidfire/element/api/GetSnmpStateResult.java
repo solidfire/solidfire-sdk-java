@@ -103,4 +103,44 @@ public class GetSnmpStateResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Boolean enabled;
+        private Boolean snmpV3Enabled;
+
+        private Builder() { }
+
+        public GetSnmpStateResult build() {
+            return new GetSnmpStateResult (
+                         this.enabled,
+                         this.snmpV3Enabled            );
+        }
+
+        private GetSnmpStateResult.Builder buildFrom(final GetSnmpStateResult req) {
+            this.enabled = req.enabled;
+            this.snmpV3Enabled = req.snmpV3Enabled;
+
+            return this;
+        }
+
+        public GetSnmpStateResult.Builder enabled(final Boolean enabled) {
+            this.enabled = enabled;
+            return this;
+        }
+
+        public GetSnmpStateResult.Builder snmpV3Enabled(final Boolean snmpV3Enabled) {
+            this.snmpV3Enabled = snmpV3Enabled;
+            return this;
+        }
+
+    }
+
 }

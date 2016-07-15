@@ -115,4 +115,60 @@ public class ClusterAdmin implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String[] access;
+        private Long clusterAdminID;
+        private String username;
+        private java.util.Map<String, Object> attributes;
+
+        private Builder() { }
+
+        public ClusterAdmin build() {
+            return new ClusterAdmin (
+                         this.access,
+                         this.clusterAdminID,
+                         this.username,
+                         this.attributes            );
+        }
+
+        private ClusterAdmin.Builder buildFrom(final ClusterAdmin req) {
+            this.access = req.access;
+            this.clusterAdminID = req.clusterAdminID;
+            this.username = req.username;
+            this.attributes = req.attributes;
+
+            return this;
+        }
+
+        public ClusterAdmin.Builder access(final String[] access) {
+            this.access = access;
+            return this;
+        }
+
+        public ClusterAdmin.Builder clusterAdminID(final Long clusterAdminID) {
+            this.clusterAdminID = clusterAdminID;
+            return this;
+        }
+
+        public ClusterAdmin.Builder username(final String username) {
+            this.username = username;
+            return this;
+        }
+
+        public ClusterAdmin.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
+            return this;
+        }
+
+    }
+
 }

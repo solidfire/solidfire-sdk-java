@@ -219,4 +219,124 @@ public class NodeStatsInfo implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long cBytesIn;
+        private Long cBytesOut;
+        private Long cpu;
+        private Long mBytesIn;
+        private Long mBytesOut;
+        private Long networkUtilizationCluster;
+        private Long networkUtilizationStorage;
+        private Long nodeID;
+        private Long sBytesIn;
+        private Long sBytesOut;
+        private String timestamp;
+        private Long usedMemory;
+
+        private Builder() { }
+
+        public NodeStatsInfo build() {
+            return new NodeStatsInfo (
+                         this.cBytesIn,
+                         this.cBytesOut,
+                         this.cpu,
+                         this.mBytesIn,
+                         this.mBytesOut,
+                         this.networkUtilizationCluster,
+                         this.networkUtilizationStorage,
+                         this.nodeID,
+                         this.sBytesIn,
+                         this.sBytesOut,
+                         this.timestamp,
+                         this.usedMemory            );
+        }
+
+        private NodeStatsInfo.Builder buildFrom(final NodeStatsInfo req) {
+            this.cBytesIn = req.cBytesIn;
+            this.cBytesOut = req.cBytesOut;
+            this.cpu = req.cpu;
+            this.mBytesIn = req.mBytesIn;
+            this.mBytesOut = req.mBytesOut;
+            this.networkUtilizationCluster = req.networkUtilizationCluster;
+            this.networkUtilizationStorage = req.networkUtilizationStorage;
+            this.nodeID = req.nodeID;
+            this.sBytesIn = req.sBytesIn;
+            this.sBytesOut = req.sBytesOut;
+            this.timestamp = req.timestamp;
+            this.usedMemory = req.usedMemory;
+
+            return this;
+        }
+
+        public NodeStatsInfo.Builder cBytesIn(final Long cBytesIn) {
+            this.cBytesIn = cBytesIn;
+            return this;
+        }
+
+        public NodeStatsInfo.Builder cBytesOut(final Long cBytesOut) {
+            this.cBytesOut = cBytesOut;
+            return this;
+        }
+
+        public NodeStatsInfo.Builder cpu(final Long cpu) {
+            this.cpu = cpu;
+            return this;
+        }
+
+        public NodeStatsInfo.Builder mBytesIn(final Long mBytesIn) {
+            this.mBytesIn = mBytesIn;
+            return this;
+        }
+
+        public NodeStatsInfo.Builder mBytesOut(final Long mBytesOut) {
+            this.mBytesOut = mBytesOut;
+            return this;
+        }
+
+        public NodeStatsInfo.Builder networkUtilizationCluster(final Long networkUtilizationCluster) {
+            this.networkUtilizationCluster = networkUtilizationCluster;
+            return this;
+        }
+
+        public NodeStatsInfo.Builder networkUtilizationStorage(final Long networkUtilizationStorage) {
+            this.networkUtilizationStorage = networkUtilizationStorage;
+            return this;
+        }
+
+        public NodeStatsInfo.Builder nodeID(final Long nodeID) {
+            this.nodeID = nodeID;
+            return this;
+        }
+
+        public NodeStatsInfo.Builder sBytesIn(final Long sBytesIn) {
+            this.sBytesIn = sBytesIn;
+            return this;
+        }
+
+        public NodeStatsInfo.Builder sBytesOut(final Long sBytesOut) {
+            this.sBytesOut = sBytesOut;
+            return this;
+        }
+
+        public NodeStatsInfo.Builder timestamp(final String timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        public NodeStatsInfo.Builder usedMemory(final Long usedMemory) {
+            this.usedMemory = usedMemory;
+            return this;
+        }
+
+    }
+
 }

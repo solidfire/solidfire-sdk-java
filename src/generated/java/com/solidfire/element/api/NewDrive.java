@@ -91,4 +91,36 @@ public class NewDrive implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long driveID;
+
+        private Builder() { }
+
+        public NewDrive build() {
+            return new NewDrive (
+                         this.driveID            );
+        }
+
+        private NewDrive.Builder buildFrom(final NewDrive req) {
+            this.driveID = req.driveID;
+
+            return this;
+        }
+
+        public NewDrive.Builder driveID(final Long driveID) {
+            this.driveID = driveID;
+            return this;
+        }
+
+    }
+
 }

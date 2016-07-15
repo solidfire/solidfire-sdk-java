@@ -94,4 +94,36 @@ public class ListSnapshotsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Snapshot[] snapshots;
+
+        private Builder() { }
+
+        public ListSnapshotsResult build() {
+            return new ListSnapshotsResult (
+                         this.snapshots            );
+        }
+
+        private ListSnapshotsResult.Builder buildFrom(final ListSnapshotsResult req) {
+            this.snapshots = req.snapshots;
+
+            return this;
+        }
+
+        public ListSnapshotsResult.Builder snapshots(final Snapshot[] snapshots) {
+            this.snapshots = snapshots;
+            return this;
+        }
+
+    }
+
 }

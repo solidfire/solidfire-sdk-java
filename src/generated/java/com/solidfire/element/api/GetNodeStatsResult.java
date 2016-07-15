@@ -91,4 +91,36 @@ public class GetNodeStatsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private NodeStatsInfo nodeStats;
+
+        private Builder() { }
+
+        public GetNodeStatsResult build() {
+            return new GetNodeStatsResult (
+                         this.nodeStats            );
+        }
+
+        private GetNodeStatsResult.Builder buildFrom(final GetNodeStatsResult req) {
+            this.nodeStats = req.nodeStats;
+
+            return this;
+        }
+
+        public GetNodeStatsResult.Builder nodeStats(final NodeStatsInfo nodeStats) {
+            this.nodeStats = nodeStats;
+            return this;
+        }
+
+    }
+
 }

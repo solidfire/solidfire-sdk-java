@@ -91,4 +91,36 @@ public class ListDeletedVolumesResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Volume[] volumes;
+
+        private Builder() { }
+
+        public ListDeletedVolumesResult build() {
+            return new ListDeletedVolumesResult (
+                         this.volumes            );
+        }
+
+        private ListDeletedVolumesResult.Builder buildFrom(final ListDeletedVolumesResult req) {
+            this.volumes = req.volumes;
+
+            return this;
+        }
+
+        public ListDeletedVolumesResult.Builder volumes(final Volume[] volumes) {
+            this.volumes = volumes;
+            return this;
+        }
+
+    }
+
 }

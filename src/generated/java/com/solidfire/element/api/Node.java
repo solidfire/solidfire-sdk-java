@@ -245,4 +245,148 @@ public class Node implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long nodeID;
+        private Long associatedMasterServiceID;
+        private Long associatedFServiceID;
+        private String fibreChannelTargetPortGroup;
+        private String name;
+        private Platform platformInfo;
+        private String softwareVersion;
+        private String cip;
+        private String cipi;
+        private String mip;
+        private String mipi;
+        private String sip;
+        private String sipi;
+        private String uuid;
+        private java.util.Map<String, Object> attributes;
+
+        private Builder() { }
+
+        public Node build() {
+            return new Node (
+                         this.nodeID,
+                         this.associatedMasterServiceID,
+                         this.associatedFServiceID,
+                         this.fibreChannelTargetPortGroup,
+                         this.name,
+                         this.platformInfo,
+                         this.softwareVersion,
+                         this.cip,
+                         this.cipi,
+                         this.mip,
+                         this.mipi,
+                         this.sip,
+                         this.sipi,
+                         this.uuid,
+                         this.attributes            );
+        }
+
+        private Node.Builder buildFrom(final Node req) {
+            this.nodeID = req.nodeID;
+            this.associatedMasterServiceID = req.associatedMasterServiceID;
+            this.associatedFServiceID = req.associatedFServiceID;
+            this.fibreChannelTargetPortGroup = req.fibreChannelTargetPortGroup;
+            this.name = req.name;
+            this.platformInfo = req.platformInfo;
+            this.softwareVersion = req.softwareVersion;
+            this.cip = req.cip;
+            this.cipi = req.cipi;
+            this.mip = req.mip;
+            this.mipi = req.mipi;
+            this.sip = req.sip;
+            this.sipi = req.sipi;
+            this.uuid = req.uuid;
+            this.attributes = req.attributes;
+
+            return this;
+        }
+
+        public Node.Builder nodeID(final Long nodeID) {
+            this.nodeID = nodeID;
+            return this;
+        }
+
+        public Node.Builder associatedMasterServiceID(final Long associatedMasterServiceID) {
+            this.associatedMasterServiceID = associatedMasterServiceID;
+            return this;
+        }
+
+        public Node.Builder associatedFServiceID(final Long associatedFServiceID) {
+            this.associatedFServiceID = associatedFServiceID;
+            return this;
+        }
+
+        public Node.Builder fibreChannelTargetPortGroup(final String fibreChannelTargetPortGroup) {
+            this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
+            return this;
+        }
+
+        public Node.Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Node.Builder platformInfo(final Platform platformInfo) {
+            this.platformInfo = platformInfo;
+            return this;
+        }
+
+        public Node.Builder softwareVersion(final String softwareVersion) {
+            this.softwareVersion = softwareVersion;
+            return this;
+        }
+
+        public Node.Builder cip(final String cip) {
+            this.cip = cip;
+            return this;
+        }
+
+        public Node.Builder cipi(final String cipi) {
+            this.cipi = cipi;
+            return this;
+        }
+
+        public Node.Builder mip(final String mip) {
+            this.mip = mip;
+            return this;
+        }
+
+        public Node.Builder mipi(final String mipi) {
+            this.mipi = mipi;
+            return this;
+        }
+
+        public Node.Builder sip(final String sip) {
+            this.sip = sip;
+            return this;
+        }
+
+        public Node.Builder sipi(final String sipi) {
+            this.sipi = sipi;
+            return this;
+        }
+
+        public Node.Builder uuid(final String uuid) {
+            this.uuid = uuid;
+            return this;
+        }
+
+        public Node.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
+            return this;
+        }
+
+    }
+
 }

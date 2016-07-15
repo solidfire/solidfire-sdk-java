@@ -87,4 +87,36 @@ public class CreateScheduleResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long scheduleID;
+
+        private Builder() { }
+
+        public CreateScheduleResult build() {
+            return new CreateScheduleResult (
+                         this.scheduleID            );
+        }
+
+        private CreateScheduleResult.Builder buildFrom(final CreateScheduleResult req) {
+            this.scheduleID = req.scheduleID;
+
+            return this;
+        }
+
+        public CreateScheduleResult.Builder scheduleID(final Long scheduleID) {
+            this.scheduleID = scheduleID;
+            return this;
+        }
+
+    }
+
 }

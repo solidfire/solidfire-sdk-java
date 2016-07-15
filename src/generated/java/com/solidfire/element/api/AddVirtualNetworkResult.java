@@ -91,4 +91,36 @@ public class AddVirtualNetworkResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long virtualNetworkID;
+
+        private Builder() { }
+
+        public AddVirtualNetworkResult build() {
+            return new AddVirtualNetworkResult (
+                         this.virtualNetworkID            );
+        }
+
+        private AddVirtualNetworkResult.Builder buildFrom(final AddVirtualNetworkResult req) {
+            this.virtualNetworkID = req.virtualNetworkID;
+
+            return this;
+        }
+
+        public AddVirtualNetworkResult.Builder virtualNetworkID(final Long virtualNetworkID) {
+            this.virtualNetworkID = virtualNetworkID;
+            return this;
+        }
+
+    }
+
 }

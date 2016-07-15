@@ -91,4 +91,36 @@ public class ListVirtualNetworksResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private VirtualNetwork[] virtualNetworks;
+
+        private Builder() { }
+
+        public ListVirtualNetworksResult build() {
+            return new ListVirtualNetworksResult (
+                         this.virtualNetworks            );
+        }
+
+        private ListVirtualNetworksResult.Builder buildFrom(final ListVirtualNetworksResult req) {
+            this.virtualNetworks = req.virtualNetworks;
+
+            return this;
+        }
+
+        public ListVirtualNetworksResult.Builder virtualNetworks(final VirtualNetwork[] virtualNetworks) {
+            this.virtualNetworks = virtualNetworks;
+            return this;
+        }
+
+    }
+
 }

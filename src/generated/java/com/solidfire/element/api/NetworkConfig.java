@@ -322,4 +322,244 @@ public class NetworkConfig implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Optional<Boolean> Default;
+        private Optional<String> address;
+        private Optional<Boolean> auto;
+        private Optional<Long> bondDowndelay;
+        private Optional<String> bondFailOverMac;
+        private Optional<String> bondPrimaryReselect;
+        private Optional<String> bondLacpRate;
+        private Optional<Long> bondMiimon;
+        private Optional<String> bondMode;
+        private Optional<String> bondSlaves;
+        private Optional<Long> bondUpdelay;
+        private Optional<String> broadcast;
+        private Optional<String> dnsNameservers;
+        private Optional<String> dnsSearch;
+        private Optional<String> family;
+        private Optional<String> gateway;
+        private Optional<String> macAddress;
+        private Optional<String> macAddressPermanent;
+        private Optional<String> method;
+        private Optional<String> mtu;
+        private Optional<String> netmask;
+        private Optional<String> network;
+        private Optional<PhysicalAdapter> physical;
+        private Optional<String[]> routes;
+        private Optional<String> status;
+        private Optional<String[]> symmetricRouteRules;
+        private Optional<Boolean> upAndRunning;
+
+        private Builder() { }
+
+        public NetworkConfig build() {
+            return new NetworkConfig (
+                         this.Default,
+                         this.address,
+                         this.auto,
+                         this.bondDowndelay,
+                         this.bondFailOverMac,
+                         this.bondPrimaryReselect,
+                         this.bondLacpRate,
+                         this.bondMiimon,
+                         this.bondMode,
+                         this.bondSlaves,
+                         this.bondUpdelay,
+                         this.broadcast,
+                         this.dnsNameservers,
+                         this.dnsSearch,
+                         this.family,
+                         this.gateway,
+                         this.macAddress,
+                         this.macAddressPermanent,
+                         this.method,
+                         this.mtu,
+                         this.netmask,
+                         this.network,
+                         this.physical,
+                         this.routes,
+                         this.status,
+                         this.symmetricRouteRules,
+                         this.upAndRunning            );
+        }
+
+        private NetworkConfig.Builder buildFrom(final NetworkConfig req) {
+            this.Default = req.Default;
+            this.address = req.address;
+            this.auto = req.auto;
+            this.bondDowndelay = req.bondDowndelay;
+            this.bondFailOverMac = req.bondFailOverMac;
+            this.bondPrimaryReselect = req.bondPrimaryReselect;
+            this.bondLacpRate = req.bondLacpRate;
+            this.bondMiimon = req.bondMiimon;
+            this.bondMode = req.bondMode;
+            this.bondSlaves = req.bondSlaves;
+            this.bondUpdelay = req.bondUpdelay;
+            this.broadcast = req.broadcast;
+            this.dnsNameservers = req.dnsNameservers;
+            this.dnsSearch = req.dnsSearch;
+            this.family = req.family;
+            this.gateway = req.gateway;
+            this.macAddress = req.macAddress;
+            this.macAddressPermanent = req.macAddressPermanent;
+            this.method = req.method;
+            this.mtu = req.mtu;
+            this.netmask = req.netmask;
+            this.network = req.network;
+            this.physical = req.physical;
+            this.routes = req.routes;
+            this.status = req.status;
+            this.symmetricRouteRules = req.symmetricRouteRules;
+            this.upAndRunning = req.upAndRunning;
+
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalDefault(final Boolean Default) {
+            this.Default = (Default == null) ? Optional.<Boolean>empty() : Optional.of(Default);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalAddress(final String address) {
+            this.address = (address == null) ? Optional.<String>empty() : Optional.of(address);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalAuto(final Boolean auto) {
+            this.auto = (auto == null) ? Optional.<Boolean>empty() : Optional.of(auto);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalBondDowndelay(final Long bondDowndelay) {
+            this.bondDowndelay = (bondDowndelay == null) ? Optional.<Long>empty() : Optional.of(bondDowndelay);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalBondFailOverMac(final String bondFailOverMac) {
+            this.bondFailOverMac = (bondFailOverMac == null) ? Optional.<String>empty() : Optional.of(bondFailOverMac);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalBondPrimaryReselect(final String bondPrimaryReselect) {
+            this.bondPrimaryReselect = (bondPrimaryReselect == null) ? Optional.<String>empty() : Optional.of(bondPrimaryReselect);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalBondLacpRate(final String bondLacpRate) {
+            this.bondLacpRate = (bondLacpRate == null) ? Optional.<String>empty() : Optional.of(bondLacpRate);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalBondMiimon(final Long bondMiimon) {
+            this.bondMiimon = (bondMiimon == null) ? Optional.<Long>empty() : Optional.of(bondMiimon);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalBondMode(final String bondMode) {
+            this.bondMode = (bondMode == null) ? Optional.<String>empty() : Optional.of(bondMode);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalBondSlaves(final String bondSlaves) {
+            this.bondSlaves = (bondSlaves == null) ? Optional.<String>empty() : Optional.of(bondSlaves);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalBondUpdelay(final Long bondUpdelay) {
+            this.bondUpdelay = (bondUpdelay == null) ? Optional.<Long>empty() : Optional.of(bondUpdelay);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalBroadcast(final String broadcast) {
+            this.broadcast = (broadcast == null) ? Optional.<String>empty() : Optional.of(broadcast);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalDnsNameservers(final String dnsNameservers) {
+            this.dnsNameservers = (dnsNameservers == null) ? Optional.<String>empty() : Optional.of(dnsNameservers);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalDnsSearch(final String dnsSearch) {
+            this.dnsSearch = (dnsSearch == null) ? Optional.<String>empty() : Optional.of(dnsSearch);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalFamily(final String family) {
+            this.family = (family == null) ? Optional.<String>empty() : Optional.of(family);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalGateway(final String gateway) {
+            this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalMacAddress(final String macAddress) {
+            this.macAddress = (macAddress == null) ? Optional.<String>empty() : Optional.of(macAddress);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalMacAddressPermanent(final String macAddressPermanent) {
+            this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : Optional.of(macAddressPermanent);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalMethod(final String method) {
+            this.method = (method == null) ? Optional.<String>empty() : Optional.of(method);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalMtu(final String mtu) {
+            this.mtu = (mtu == null) ? Optional.<String>empty() : Optional.of(mtu);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalNetmask(final String netmask) {
+            this.netmask = (netmask == null) ? Optional.<String>empty() : Optional.of(netmask);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalNetwork(final String network) {
+            this.network = (network == null) ? Optional.<String>empty() : Optional.of(network);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalPhysical(final PhysicalAdapter physical) {
+            this.physical = (physical == null) ? Optional.<PhysicalAdapter>empty() : Optional.of(physical);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalRoutes(final String[] routes) {
+            this.routes = (routes == null) ? Optional.<String[]>empty() : Optional.of(routes);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalStatus(final String status) {
+            this.status = (status == null) ? Optional.<String>empty() : Optional.of(status);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalSymmetricRouteRules(final String[] symmetricRouteRules) {
+            this.symmetricRouteRules = (symmetricRouteRules == null) ? Optional.<String[]>empty() : Optional.of(symmetricRouteRules);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalUpAndRunning(final Boolean upAndRunning) {
+            this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : Optional.of(upAndRunning);
+            return this;
+        }
+
+    }
+
 }

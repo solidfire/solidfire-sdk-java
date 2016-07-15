@@ -115,4 +115,60 @@ public class ResetDriveDetails implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String drive;
+        private Long returnCode;
+        private String stderr;
+        private String stdout;
+
+        private Builder() { }
+
+        public ResetDriveDetails build() {
+            return new ResetDriveDetails (
+                         this.drive,
+                         this.returnCode,
+                         this.stderr,
+                         this.stdout            );
+        }
+
+        private ResetDriveDetails.Builder buildFrom(final ResetDriveDetails req) {
+            this.drive = req.drive;
+            this.returnCode = req.returnCode;
+            this.stderr = req.stderr;
+            this.stdout = req.stdout;
+
+            return this;
+        }
+
+        public ResetDriveDetails.Builder drive(final String drive) {
+            this.drive = drive;
+            return this;
+        }
+
+        public ResetDriveDetails.Builder returnCode(final Long returnCode) {
+            this.returnCode = returnCode;
+            return this;
+        }
+
+        public ResetDriveDetails.Builder stderr(final String stderr) {
+            this.stderr = stderr;
+            return this;
+        }
+
+        public ResetDriveDetails.Builder stdout(final String stdout) {
+            this.stdout = stdout;
+            return this;
+        }
+
+    }
+
 }

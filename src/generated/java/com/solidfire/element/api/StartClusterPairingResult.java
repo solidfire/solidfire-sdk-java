@@ -103,4 +103,44 @@ public class StartClusterPairingResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String clusterPairingKey;
+        private Long clusterPairID;
+
+        private Builder() { }
+
+        public StartClusterPairingResult build() {
+            return new StartClusterPairingResult (
+                         this.clusterPairingKey,
+                         this.clusterPairID            );
+        }
+
+        private StartClusterPairingResult.Builder buildFrom(final StartClusterPairingResult req) {
+            this.clusterPairingKey = req.clusterPairingKey;
+            this.clusterPairID = req.clusterPairID;
+
+            return this;
+        }
+
+        public StartClusterPairingResult.Builder clusterPairingKey(final String clusterPairingKey) {
+            this.clusterPairingKey = clusterPairingKey;
+            return this;
+        }
+
+        public StartClusterPairingResult.Builder clusterPairID(final Long clusterPairID) {
+            this.clusterPairID = clusterPairID;
+            return this;
+        }
+
+    }
+
 }

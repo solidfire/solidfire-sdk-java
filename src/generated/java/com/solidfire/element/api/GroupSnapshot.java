@@ -166,4 +166,84 @@ public class GroupSnapshot implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long groupSnapshotID;
+        private String groupSnapshotUUID;
+        private GroupSnapshotMembers[] members;
+        private String name;
+        private String createTime;
+        private String status;
+        private java.util.Map<String, Object> attributes;
+
+        private Builder() { }
+
+        public GroupSnapshot build() {
+            return new GroupSnapshot (
+                         this.groupSnapshotID,
+                         this.groupSnapshotUUID,
+                         this.members,
+                         this.name,
+                         this.createTime,
+                         this.status,
+                         this.attributes            );
+        }
+
+        private GroupSnapshot.Builder buildFrom(final GroupSnapshot req) {
+            this.groupSnapshotID = req.groupSnapshotID;
+            this.groupSnapshotUUID = req.groupSnapshotUUID;
+            this.members = req.members;
+            this.name = req.name;
+            this.createTime = req.createTime;
+            this.status = req.status;
+            this.attributes = req.attributes;
+
+            return this;
+        }
+
+        public GroupSnapshot.Builder groupSnapshotID(final Long groupSnapshotID) {
+            this.groupSnapshotID = groupSnapshotID;
+            return this;
+        }
+
+        public GroupSnapshot.Builder groupSnapshotUUID(final String groupSnapshotUUID) {
+            this.groupSnapshotUUID = groupSnapshotUUID;
+            return this;
+        }
+
+        public GroupSnapshot.Builder members(final GroupSnapshotMembers[] members) {
+            this.members = members;
+            return this;
+        }
+
+        public GroupSnapshot.Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public GroupSnapshot.Builder createTime(final String createTime) {
+            this.createTime = createTime;
+            return this;
+        }
+
+        public GroupSnapshot.Builder status(final String status) {
+            this.status = status;
+            return this;
+        }
+
+        public GroupSnapshot.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
+            return this;
+        }
+
+    }
+
 }

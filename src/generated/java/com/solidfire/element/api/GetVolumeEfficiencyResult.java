@@ -163,4 +163,68 @@ public class GetVolumeEfficiencyResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Double compression;
+        private Double deduplication;
+        private Long[] missingVolumes;
+        private Double thinProvisioning;
+        private String timestamp;
+
+        private Builder() { }
+
+        public GetVolumeEfficiencyResult build() {
+            return new GetVolumeEfficiencyResult (
+                         this.compression,
+                         this.deduplication,
+                         this.missingVolumes,
+                         this.thinProvisioning,
+                         this.timestamp            );
+        }
+
+        private GetVolumeEfficiencyResult.Builder buildFrom(final GetVolumeEfficiencyResult req) {
+            this.compression = req.compression;
+            this.deduplication = req.deduplication;
+            this.missingVolumes = req.missingVolumes;
+            this.thinProvisioning = req.thinProvisioning;
+            this.timestamp = req.timestamp;
+
+            return this;
+        }
+
+        public GetVolumeEfficiencyResult.Builder compression(final Double compression) {
+            this.compression = compression;
+            return this;
+        }
+
+        public GetVolumeEfficiencyResult.Builder deduplication(final Double deduplication) {
+            this.deduplication = deduplication;
+            return this;
+        }
+
+        public GetVolumeEfficiencyResult.Builder missingVolumes(final Long[] missingVolumes) {
+            this.missingVolumes = missingVolumes;
+            return this;
+        }
+
+        public GetVolumeEfficiencyResult.Builder thinProvisioning(final Double thinProvisioning) {
+            this.thinProvisioning = thinProvisioning;
+            return this;
+        }
+
+        public GetVolumeEfficiencyResult.Builder timestamp(final String timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+    }
+
 }

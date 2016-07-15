@@ -167,4 +167,84 @@ public class RemoteReplication implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String mode;
+        private Long pauseLimit;
+        private Long remoteServiceID;
+        private String resumeDetails;
+        private SnapshotReplication snapshotReplication;
+        private String state;
+        private String stateDetails;
+
+        private Builder() { }
+
+        public RemoteReplication build() {
+            return new RemoteReplication (
+                         this.mode,
+                         this.pauseLimit,
+                         this.remoteServiceID,
+                         this.resumeDetails,
+                         this.snapshotReplication,
+                         this.state,
+                         this.stateDetails            );
+        }
+
+        private RemoteReplication.Builder buildFrom(final RemoteReplication req) {
+            this.mode = req.mode;
+            this.pauseLimit = req.pauseLimit;
+            this.remoteServiceID = req.remoteServiceID;
+            this.resumeDetails = req.resumeDetails;
+            this.snapshotReplication = req.snapshotReplication;
+            this.state = req.state;
+            this.stateDetails = req.stateDetails;
+
+            return this;
+        }
+
+        public RemoteReplication.Builder mode(final String mode) {
+            this.mode = mode;
+            return this;
+        }
+
+        public RemoteReplication.Builder pauseLimit(final Long pauseLimit) {
+            this.pauseLimit = pauseLimit;
+            return this;
+        }
+
+        public RemoteReplication.Builder remoteServiceID(final Long remoteServiceID) {
+            this.remoteServiceID = remoteServiceID;
+            return this;
+        }
+
+        public RemoteReplication.Builder resumeDetails(final String resumeDetails) {
+            this.resumeDetails = resumeDetails;
+            return this;
+        }
+
+        public RemoteReplication.Builder snapshotReplication(final SnapshotReplication snapshotReplication) {
+            this.snapshotReplication = snapshotReplication;
+            return this;
+        }
+
+        public RemoteReplication.Builder state(final String state) {
+            this.state = state;
+            return this;
+        }
+
+        public RemoteReplication.Builder stateDetails(final String stateDetails) {
+            this.stateDetails = stateDetails;
+            return this;
+        }
+
+    }
+
 }

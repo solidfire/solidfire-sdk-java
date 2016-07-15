@@ -127,4 +127,60 @@ public class Platform implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String nodeType;
+        private String chassisType;
+        private String cpuModel;
+        private Long nodeMemoryGB;
+
+        private Builder() { }
+
+        public Platform build() {
+            return new Platform (
+                         this.nodeType,
+                         this.chassisType,
+                         this.cpuModel,
+                         this.nodeMemoryGB            );
+        }
+
+        private Platform.Builder buildFrom(final Platform req) {
+            this.nodeType = req.nodeType;
+            this.chassisType = req.chassisType;
+            this.cpuModel = req.cpuModel;
+            this.nodeMemoryGB = req.nodeMemoryGB;
+
+            return this;
+        }
+
+        public Platform.Builder nodeType(final String nodeType) {
+            this.nodeType = nodeType;
+            return this;
+        }
+
+        public Platform.Builder chassisType(final String chassisType) {
+            this.chassisType = chassisType;
+            return this;
+        }
+
+        public Platform.Builder cpuModel(final String cpuModel) {
+            this.cpuModel = cpuModel;
+            return this;
+        }
+
+        public Platform.Builder nodeMemoryGB(final Long nodeMemoryGB) {
+            this.nodeMemoryGB = nodeMemoryGB;
+            return this;
+        }
+
+    }
+
 }

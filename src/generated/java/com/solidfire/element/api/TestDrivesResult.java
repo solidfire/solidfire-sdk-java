@@ -87,4 +87,36 @@ public class TestDrivesResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String details;
+
+        private Builder() { }
+
+        public TestDrivesResult build() {
+            return new TestDrivesResult (
+                         this.details            );
+        }
+
+        private TestDrivesResult.Builder buildFrom(final TestDrivesResult req) {
+            this.details = req.details;
+
+            return this;
+        }
+
+        public TestDrivesResult.Builder details(final String details) {
+            this.details = details;
+            return this;
+        }
+
+    }
+
 }

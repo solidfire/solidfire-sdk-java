@@ -91,4 +91,36 @@ public class GetClusterConfigResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private ClusterConfig cluster;
+
+        private Builder() { }
+
+        public GetClusterConfigResult build() {
+            return new GetClusterConfigResult (
+                         this.cluster            );
+        }
+
+        private GetClusterConfigResult.Builder buildFrom(final GetClusterConfigResult req) {
+            this.cluster = req.cluster;
+
+            return this;
+        }
+
+        public GetClusterConfigResult.Builder cluster(final ClusterConfig cluster) {
+            this.cluster = cluster;
+            return this;
+        }
+
+    }
+
 }

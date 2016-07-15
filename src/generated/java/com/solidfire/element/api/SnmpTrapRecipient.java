@@ -115,4 +115,52 @@ public class SnmpTrapRecipient implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String host;
+        private String community;
+        private Long port;
+
+        private Builder() { }
+
+        public SnmpTrapRecipient build() {
+            return new SnmpTrapRecipient (
+                         this.host,
+                         this.community,
+                         this.port            );
+        }
+
+        private SnmpTrapRecipient.Builder buildFrom(final SnmpTrapRecipient req) {
+            this.host = req.host;
+            this.community = req.community;
+            this.port = req.port;
+
+            return this;
+        }
+
+        public SnmpTrapRecipient.Builder host(final String host) {
+            this.host = host;
+            return this;
+        }
+
+        public SnmpTrapRecipient.Builder community(final String community) {
+            this.community = community;
+            return this;
+        }
+
+        public SnmpTrapRecipient.Builder port(final Long port) {
+            this.port = port;
+            return this;
+        }
+
+    }
+
 }

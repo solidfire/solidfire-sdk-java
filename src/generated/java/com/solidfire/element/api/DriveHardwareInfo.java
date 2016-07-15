@@ -191,4 +191,140 @@ public class DriveHardwareInfo implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String description;
+        private String dev;
+        private String devpath;
+        private Boolean driveSecurityAtMaximum;
+        private Boolean driveSecurityFrozen;
+        private Boolean driveSecurityLocked;
+        private String logicalname;
+        private String product;
+        private Boolean securityFeatureEnabled;
+        private Boolean securityFeatureSupported;
+        private String serial;
+        private Long size;
+        private String uuid;
+        private String version;
+
+        private Builder() { }
+
+        public DriveHardwareInfo build() {
+            return new DriveHardwareInfo (
+                         this.description,
+                         this.dev,
+                         this.devpath,
+                         this.driveSecurityAtMaximum,
+                         this.driveSecurityFrozen,
+                         this.driveSecurityLocked,
+                         this.logicalname,
+                         this.product,
+                         this.securityFeatureEnabled,
+                         this.securityFeatureSupported,
+                         this.serial,
+                         this.size,
+                         this.uuid,
+                         this.version            );
+        }
+
+        private DriveHardwareInfo.Builder buildFrom(final DriveHardwareInfo req) {
+            this.description = req.description;
+            this.dev = req.dev;
+            this.devpath = req.devpath;
+            this.driveSecurityAtMaximum = req.driveSecurityAtMaximum;
+            this.driveSecurityFrozen = req.driveSecurityFrozen;
+            this.driveSecurityLocked = req.driveSecurityLocked;
+            this.logicalname = req.logicalname;
+            this.product = req.product;
+            this.securityFeatureEnabled = req.securityFeatureEnabled;
+            this.securityFeatureSupported = req.securityFeatureSupported;
+            this.serial = req.serial;
+            this.size = req.size;
+            this.uuid = req.uuid;
+            this.version = req.version;
+
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder description(final String description) {
+            this.description = description;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder dev(final String dev) {
+            this.dev = dev;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder devpath(final String devpath) {
+            this.devpath = devpath;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder driveSecurityAtMaximum(final Boolean driveSecurityAtMaximum) {
+            this.driveSecurityAtMaximum = driveSecurityAtMaximum;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder driveSecurityFrozen(final Boolean driveSecurityFrozen) {
+            this.driveSecurityFrozen = driveSecurityFrozen;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder driveSecurityLocked(final Boolean driveSecurityLocked) {
+            this.driveSecurityLocked = driveSecurityLocked;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder logicalname(final String logicalname) {
+            this.logicalname = logicalname;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder product(final String product) {
+            this.product = product;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder securityFeatureEnabled(final Boolean securityFeatureEnabled) {
+            this.securityFeatureEnabled = securityFeatureEnabled;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder securityFeatureSupported(final Boolean securityFeatureSupported) {
+            this.securityFeatureSupported = securityFeatureSupported;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder serial(final String serial) {
+            this.serial = serial;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder size(final Long size) {
+            this.size = size;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder uuid(final String uuid) {
+            this.uuid = uuid;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder version(final String version) {
+            this.version = version;
+            return this;
+        }
+
+    }
+
 }

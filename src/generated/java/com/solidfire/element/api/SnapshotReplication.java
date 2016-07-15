@@ -103,4 +103,44 @@ public class SnapshotReplication implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String state;
+        private String stateDetails;
+
+        private Builder() { }
+
+        public SnapshotReplication build() {
+            return new SnapshotReplication (
+                         this.state,
+                         this.stateDetails            );
+        }
+
+        private SnapshotReplication.Builder buildFrom(final SnapshotReplication req) {
+            this.state = req.state;
+            this.stateDetails = req.stateDetails;
+
+            return this;
+        }
+
+        public SnapshotReplication.Builder state(final String state) {
+            this.state = state;
+            return this;
+        }
+
+        public SnapshotReplication.Builder stateDetails(final String stateDetails) {
+            this.stateDetails = stateDetails;
+            return this;
+        }
+
+    }
+
 }

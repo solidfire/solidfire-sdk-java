@@ -312,4 +312,260 @@ public class DriveHardware implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String canonicalName;
+        private Boolean connected;
+        private Long dev;
+        private String devPath;
+        private String driveType;
+        private Long lifeRemainingPercent;
+        private Long lifetimeReadBytes;
+        private Long lifetimeWriteBytes;
+        private String name;
+        private String path;
+        private String pathLink;
+        private Long powerOnHours;
+        private String product;
+        private Long reallocatedSectors;
+        private Long reserveCapacityPercent;
+        private String scsiCompatId;
+        private String scsiState;
+        private Boolean securityAtMaximum;
+        private Boolean securityEnabled;
+        private Boolean securityFrozen;
+        private Boolean securityLocked;
+        private Boolean securitySupported;
+        private String serial;
+        private Long size;
+        private Long slot;
+        private Optional<Boolean> smartSsdWriteCapable;
+        private String uuid;
+        private String vendor;
+        private String version;
+
+        private Builder() { }
+
+        public DriveHardware build() {
+            return new DriveHardware (
+                         this.canonicalName,
+                         this.connected,
+                         this.dev,
+                         this.devPath,
+                         this.driveType,
+                         this.lifeRemainingPercent,
+                         this.lifetimeReadBytes,
+                         this.lifetimeWriteBytes,
+                         this.name,
+                         this.path,
+                         this.pathLink,
+                         this.powerOnHours,
+                         this.product,
+                         this.reallocatedSectors,
+                         this.reserveCapacityPercent,
+                         this.scsiCompatId,
+                         this.scsiState,
+                         this.securityAtMaximum,
+                         this.securityEnabled,
+                         this.securityFrozen,
+                         this.securityLocked,
+                         this.securitySupported,
+                         this.serial,
+                         this.size,
+                         this.slot,
+                         this.smartSsdWriteCapable,
+                         this.uuid,
+                         this.vendor,
+                         this.version            );
+        }
+
+        private DriveHardware.Builder buildFrom(final DriveHardware req) {
+            this.canonicalName = req.canonicalName;
+            this.connected = req.connected;
+            this.dev = req.dev;
+            this.devPath = req.devPath;
+            this.driveType = req.driveType;
+            this.lifeRemainingPercent = req.lifeRemainingPercent;
+            this.lifetimeReadBytes = req.lifetimeReadBytes;
+            this.lifetimeWriteBytes = req.lifetimeWriteBytes;
+            this.name = req.name;
+            this.path = req.path;
+            this.pathLink = req.pathLink;
+            this.powerOnHours = req.powerOnHours;
+            this.product = req.product;
+            this.reallocatedSectors = req.reallocatedSectors;
+            this.reserveCapacityPercent = req.reserveCapacityPercent;
+            this.scsiCompatId = req.scsiCompatId;
+            this.scsiState = req.scsiState;
+            this.securityAtMaximum = req.securityAtMaximum;
+            this.securityEnabled = req.securityEnabled;
+            this.securityFrozen = req.securityFrozen;
+            this.securityLocked = req.securityLocked;
+            this.securitySupported = req.securitySupported;
+            this.serial = req.serial;
+            this.size = req.size;
+            this.slot = req.slot;
+            this.smartSsdWriteCapable = req.smartSsdWriteCapable;
+            this.uuid = req.uuid;
+            this.vendor = req.vendor;
+            this.version = req.version;
+
+            return this;
+        }
+
+        public DriveHardware.Builder canonicalName(final String canonicalName) {
+            this.canonicalName = canonicalName;
+            return this;
+        }
+
+        public DriveHardware.Builder connected(final Boolean connected) {
+            this.connected = connected;
+            return this;
+        }
+
+        public DriveHardware.Builder dev(final Long dev) {
+            this.dev = dev;
+            return this;
+        }
+
+        public DriveHardware.Builder devPath(final String devPath) {
+            this.devPath = devPath;
+            return this;
+        }
+
+        public DriveHardware.Builder driveType(final String driveType) {
+            this.driveType = driveType;
+            return this;
+        }
+
+        public DriveHardware.Builder lifeRemainingPercent(final Long lifeRemainingPercent) {
+            this.lifeRemainingPercent = lifeRemainingPercent;
+            return this;
+        }
+
+        public DriveHardware.Builder lifetimeReadBytes(final Long lifetimeReadBytes) {
+            this.lifetimeReadBytes = lifetimeReadBytes;
+            return this;
+        }
+
+        public DriveHardware.Builder lifetimeWriteBytes(final Long lifetimeWriteBytes) {
+            this.lifetimeWriteBytes = lifetimeWriteBytes;
+            return this;
+        }
+
+        public DriveHardware.Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public DriveHardware.Builder path(final String path) {
+            this.path = path;
+            return this;
+        }
+
+        public DriveHardware.Builder pathLink(final String pathLink) {
+            this.pathLink = pathLink;
+            return this;
+        }
+
+        public DriveHardware.Builder powerOnHours(final Long powerOnHours) {
+            this.powerOnHours = powerOnHours;
+            return this;
+        }
+
+        public DriveHardware.Builder product(final String product) {
+            this.product = product;
+            return this;
+        }
+
+        public DriveHardware.Builder reallocatedSectors(final Long reallocatedSectors) {
+            this.reallocatedSectors = reallocatedSectors;
+            return this;
+        }
+
+        public DriveHardware.Builder reserveCapacityPercent(final Long reserveCapacityPercent) {
+            this.reserveCapacityPercent = reserveCapacityPercent;
+            return this;
+        }
+
+        public DriveHardware.Builder scsiCompatId(final String scsiCompatId) {
+            this.scsiCompatId = scsiCompatId;
+            return this;
+        }
+
+        public DriveHardware.Builder scsiState(final String scsiState) {
+            this.scsiState = scsiState;
+            return this;
+        }
+
+        public DriveHardware.Builder securityAtMaximum(final Boolean securityAtMaximum) {
+            this.securityAtMaximum = securityAtMaximum;
+            return this;
+        }
+
+        public DriveHardware.Builder securityEnabled(final Boolean securityEnabled) {
+            this.securityEnabled = securityEnabled;
+            return this;
+        }
+
+        public DriveHardware.Builder securityFrozen(final Boolean securityFrozen) {
+            this.securityFrozen = securityFrozen;
+            return this;
+        }
+
+        public DriveHardware.Builder securityLocked(final Boolean securityLocked) {
+            this.securityLocked = securityLocked;
+            return this;
+        }
+
+        public DriveHardware.Builder securitySupported(final Boolean securitySupported) {
+            this.securitySupported = securitySupported;
+            return this;
+        }
+
+        public DriveHardware.Builder serial(final String serial) {
+            this.serial = serial;
+            return this;
+        }
+
+        public DriveHardware.Builder size(final Long size) {
+            this.size = size;
+            return this;
+        }
+
+        public DriveHardware.Builder slot(final Long slot) {
+            this.slot = slot;
+            return this;
+        }
+
+        public DriveHardware.Builder optionalSmartSsdWriteCapable(final Boolean smartSsdWriteCapable) {
+            this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : Optional.of(smartSsdWriteCapable);
+            return this;
+        }
+
+        public DriveHardware.Builder uuid(final String uuid) {
+            this.uuid = uuid;
+            return this;
+        }
+
+        public DriveHardware.Builder vendor(final String vendor) {
+            this.vendor = vendor;
+            return this;
+        }
+
+        public DriveHardware.Builder version(final String version) {
+            this.version = version;
+            return this;
+        }
+
+    }
+
 }

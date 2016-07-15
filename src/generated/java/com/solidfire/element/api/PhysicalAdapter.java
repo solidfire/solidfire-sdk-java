@@ -142,4 +142,84 @@ public class PhysicalAdapter implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Optional<String> address;
+        private Optional<String> macAddress;
+        private Optional<String> macAddressPermanent;
+        private Optional<String> mtu;
+        private Optional<String> netmask;
+        private Optional<String> network;
+        private Optional<Boolean> upAndRunning;
+
+        private Builder() { }
+
+        public PhysicalAdapter build() {
+            return new PhysicalAdapter (
+                         this.address,
+                         this.macAddress,
+                         this.macAddressPermanent,
+                         this.mtu,
+                         this.netmask,
+                         this.network,
+                         this.upAndRunning            );
+        }
+
+        private PhysicalAdapter.Builder buildFrom(final PhysicalAdapter req) {
+            this.address = req.address;
+            this.macAddress = req.macAddress;
+            this.macAddressPermanent = req.macAddressPermanent;
+            this.mtu = req.mtu;
+            this.netmask = req.netmask;
+            this.network = req.network;
+            this.upAndRunning = req.upAndRunning;
+
+            return this;
+        }
+
+        public PhysicalAdapter.Builder optionalAddress(final String address) {
+            this.address = (address == null) ? Optional.<String>empty() : Optional.of(address);
+            return this;
+        }
+
+        public PhysicalAdapter.Builder optionalMacAddress(final String macAddress) {
+            this.macAddress = (macAddress == null) ? Optional.<String>empty() : Optional.of(macAddress);
+            return this;
+        }
+
+        public PhysicalAdapter.Builder optionalMacAddressPermanent(final String macAddressPermanent) {
+            this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : Optional.of(macAddressPermanent);
+            return this;
+        }
+
+        public PhysicalAdapter.Builder optionalMtu(final String mtu) {
+            this.mtu = (mtu == null) ? Optional.<String>empty() : Optional.of(mtu);
+            return this;
+        }
+
+        public PhysicalAdapter.Builder optionalNetmask(final String netmask) {
+            this.netmask = (netmask == null) ? Optional.<String>empty() : Optional.of(netmask);
+            return this;
+        }
+
+        public PhysicalAdapter.Builder optionalNetwork(final String network) {
+            this.network = (network == null) ? Optional.<String>empty() : Optional.of(network);
+            return this;
+        }
+
+        public PhysicalAdapter.Builder optionalUpAndRunning(final Boolean upAndRunning) {
+            this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : Optional.of(upAndRunning);
+            return this;
+        }
+
+    }
+
 }

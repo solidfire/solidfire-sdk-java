@@ -167,4 +167,84 @@ public class Account implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long accountID;
+        private String username;
+        private String status;
+        private Long[] volumes;
+        private Optional<String> initiatorSecret;
+        private Optional<String> targetSecret;
+        private Optional<java.util.Map<String, Object>> attributes;
+
+        private Builder() { }
+
+        public Account build() {
+            return new Account (
+                         this.accountID,
+                         this.username,
+                         this.status,
+                         this.volumes,
+                         this.initiatorSecret,
+                         this.targetSecret,
+                         this.attributes            );
+        }
+
+        private Account.Builder buildFrom(final Account req) {
+            this.accountID = req.accountID;
+            this.username = req.username;
+            this.status = req.status;
+            this.volumes = req.volumes;
+            this.initiatorSecret = req.initiatorSecret;
+            this.targetSecret = req.targetSecret;
+            this.attributes = req.attributes;
+
+            return this;
+        }
+
+        public Account.Builder accountID(final Long accountID) {
+            this.accountID = accountID;
+            return this;
+        }
+
+        public Account.Builder username(final String username) {
+            this.username = username;
+            return this;
+        }
+
+        public Account.Builder status(final String status) {
+            this.status = status;
+            return this;
+        }
+
+        public Account.Builder volumes(final Long[] volumes) {
+            this.volumes = volumes;
+            return this;
+        }
+
+        public Account.Builder optionalInitiatorSecret(final String initiatorSecret) {
+            this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : Optional.of(initiatorSecret);
+            return this;
+        }
+
+        public Account.Builder optionalTargetSecret(final String targetSecret) {
+            this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : Optional.of(targetSecret);
+            return this;
+        }
+
+        public Account.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+            return this;
+        }
+
+    }
+
 }

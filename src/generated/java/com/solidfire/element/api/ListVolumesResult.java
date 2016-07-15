@@ -91,4 +91,36 @@ public class ListVolumesResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Volume[] volumes;
+
+        private Builder() { }
+
+        public ListVolumesResult build() {
+            return new ListVolumesResult (
+                         this.volumes            );
+        }
+
+        private ListVolumesResult.Builder buildFrom(final ListVolumesResult req) {
+            this.volumes = req.volumes;
+
+            return this;
+        }
+
+        public ListVolumesResult.Builder volumes(final Volume[] volumes) {
+            this.volumes = volumes;
+            return this;
+        }
+
+    }
+
 }

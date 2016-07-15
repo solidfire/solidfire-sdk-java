@@ -91,4 +91,36 @@ public class NodeStatsNodes implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private NodeStatsInfo[] nodes;
+
+        private Builder() { }
+
+        public NodeStatsNodes build() {
+            return new NodeStatsNodes (
+                         this.nodes            );
+        }
+
+        private NodeStatsNodes.Builder buildFrom(final NodeStatsNodes req) {
+            this.nodes = req.nodes;
+
+            return this;
+        }
+
+        public NodeStatsNodes.Builder nodes(final NodeStatsInfo[] nodes) {
+            this.nodes = nodes;
+            return this;
+        }
+
+    }
+
 }

@@ -208,4 +208,156 @@ public class DriveStats implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long activeSessions;
+        private Long failedDieCount;
+        private Long lifeRemainingPercent;
+        private Long lifetimeReadBytes;
+        private Long lifetimeWriteBytes;
+        private Long powerOnHours;
+        private Long readBytes;
+        private Long readOps;
+        private Long reallocatedSectors;
+        private Long reserveCapacityPercent;
+        private String timestamp;
+        private Long totalCapacity;
+        private Optional<Long> usedCapacity;
+        private Long usedMemory;
+        private Long writeBytes;
+        private Long writeOps;
+
+        private Builder() { }
+
+        public DriveStats build() {
+            return new DriveStats (
+                         this.activeSessions,
+                         this.failedDieCount,
+                         this.lifeRemainingPercent,
+                         this.lifetimeReadBytes,
+                         this.lifetimeWriteBytes,
+                         this.powerOnHours,
+                         this.readBytes,
+                         this.readOps,
+                         this.reallocatedSectors,
+                         this.reserveCapacityPercent,
+                         this.timestamp,
+                         this.totalCapacity,
+                         this.usedCapacity,
+                         this.usedMemory,
+                         this.writeBytes,
+                         this.writeOps            );
+        }
+
+        private DriveStats.Builder buildFrom(final DriveStats req) {
+            this.activeSessions = req.activeSessions;
+            this.failedDieCount = req.failedDieCount;
+            this.lifeRemainingPercent = req.lifeRemainingPercent;
+            this.lifetimeReadBytes = req.lifetimeReadBytes;
+            this.lifetimeWriteBytes = req.lifetimeWriteBytes;
+            this.powerOnHours = req.powerOnHours;
+            this.readBytes = req.readBytes;
+            this.readOps = req.readOps;
+            this.reallocatedSectors = req.reallocatedSectors;
+            this.reserveCapacityPercent = req.reserveCapacityPercent;
+            this.timestamp = req.timestamp;
+            this.totalCapacity = req.totalCapacity;
+            this.usedCapacity = req.usedCapacity;
+            this.usedMemory = req.usedMemory;
+            this.writeBytes = req.writeBytes;
+            this.writeOps = req.writeOps;
+
+            return this;
+        }
+
+        public DriveStats.Builder activeSessions(final Long activeSessions) {
+            this.activeSessions = activeSessions;
+            return this;
+        }
+
+        public DriveStats.Builder failedDieCount(final Long failedDieCount) {
+            this.failedDieCount = failedDieCount;
+            return this;
+        }
+
+        public DriveStats.Builder lifeRemainingPercent(final Long lifeRemainingPercent) {
+            this.lifeRemainingPercent = lifeRemainingPercent;
+            return this;
+        }
+
+        public DriveStats.Builder lifetimeReadBytes(final Long lifetimeReadBytes) {
+            this.lifetimeReadBytes = lifetimeReadBytes;
+            return this;
+        }
+
+        public DriveStats.Builder lifetimeWriteBytes(final Long lifetimeWriteBytes) {
+            this.lifetimeWriteBytes = lifetimeWriteBytes;
+            return this;
+        }
+
+        public DriveStats.Builder powerOnHours(final Long powerOnHours) {
+            this.powerOnHours = powerOnHours;
+            return this;
+        }
+
+        public DriveStats.Builder readBytes(final Long readBytes) {
+            this.readBytes = readBytes;
+            return this;
+        }
+
+        public DriveStats.Builder readOps(final Long readOps) {
+            this.readOps = readOps;
+            return this;
+        }
+
+        public DriveStats.Builder reallocatedSectors(final Long reallocatedSectors) {
+            this.reallocatedSectors = reallocatedSectors;
+            return this;
+        }
+
+        public DriveStats.Builder reserveCapacityPercent(final Long reserveCapacityPercent) {
+            this.reserveCapacityPercent = reserveCapacityPercent;
+            return this;
+        }
+
+        public DriveStats.Builder timestamp(final String timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        public DriveStats.Builder totalCapacity(final Long totalCapacity) {
+            this.totalCapacity = totalCapacity;
+            return this;
+        }
+
+        public DriveStats.Builder optionalUsedCapacity(final Long usedCapacity) {
+            this.usedCapacity = (usedCapacity == null) ? Optional.<Long>empty() : Optional.of(usedCapacity);
+            return this;
+        }
+
+        public DriveStats.Builder usedMemory(final Long usedMemory) {
+            this.usedMemory = usedMemory;
+            return this;
+        }
+
+        public DriveStats.Builder writeBytes(final Long writeBytes) {
+            this.writeBytes = writeBytes;
+            return this;
+        }
+
+        public DriveStats.Builder writeOps(final Long writeOps) {
+            this.writeOps = writeOps;
+            return this;
+        }
+
+    }
+
 }

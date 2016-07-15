@@ -147,4 +147,60 @@ public class GroupSnapshotMembers implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long volumeID;
+        private Long snapshotID;
+        private String snapshotUUID;
+        private String checksum;
+
+        private Builder() { }
+
+        public GroupSnapshotMembers build() {
+            return new GroupSnapshotMembers (
+                         this.volumeID,
+                         this.snapshotID,
+                         this.snapshotUUID,
+                         this.checksum            );
+        }
+
+        private GroupSnapshotMembers.Builder buildFrom(final GroupSnapshotMembers req) {
+            this.volumeID = req.volumeID;
+            this.snapshotID = req.snapshotID;
+            this.snapshotUUID = req.snapshotUUID;
+            this.checksum = req.checksum;
+
+            return this;
+        }
+
+        public GroupSnapshotMembers.Builder volumeID(final Long volumeID) {
+            this.volumeID = volumeID;
+            return this;
+        }
+
+        public GroupSnapshotMembers.Builder snapshotID(final Long snapshotID) {
+            this.snapshotID = snapshotID;
+            return this;
+        }
+
+        public GroupSnapshotMembers.Builder SnapshotUUID(final String snapshotUUID) {
+            this.snapshotUUID = snapshotUUID;
+            return this;
+        }
+
+        public GroupSnapshotMembers.Builder checksum(final String checksum) {
+            this.checksum = checksum;
+            return this;
+        }
+
+    }
+
 }

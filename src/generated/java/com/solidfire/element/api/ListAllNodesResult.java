@@ -95,4 +95,44 @@ public class ListAllNodesResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Node[] nodes;
+        private PendingNode[] pendingNodes;
+
+        private Builder() { }
+
+        public ListAllNodesResult build() {
+            return new ListAllNodesResult (
+                         this.nodes,
+                         this.pendingNodes            );
+        }
+
+        private ListAllNodesResult.Builder buildFrom(final ListAllNodesResult req) {
+            this.nodes = req.nodes;
+            this.pendingNodes = req.pendingNodes;
+
+            return this;
+        }
+
+        public ListAllNodesResult.Builder nodes(final Node[] nodes) {
+            this.nodes = nodes;
+            return this;
+        }
+
+        public ListAllNodesResult.Builder pendingNodes(final PendingNode[] pendingNodes) {
+            this.pendingNodes = pendingNodes;
+            return this;
+        }
+
+    }
+
 }

@@ -189,4 +189,108 @@ public class ClusterConfig implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String cipi;
+        private String cluster;
+        private String[] ensemble;
+        private String mipi;
+        private String name;
+        private Optional<Long> nodeID;
+        private Optional<Long> pendingNodeID;
+        private String role;
+        private String sipi;
+        private String state;
+
+        private Builder() { }
+
+        public ClusterConfig build() {
+            return new ClusterConfig (
+                         this.cipi,
+                         this.cluster,
+                         this.ensemble,
+                         this.mipi,
+                         this.name,
+                         this.nodeID,
+                         this.pendingNodeID,
+                         this.role,
+                         this.sipi,
+                         this.state            );
+        }
+
+        private ClusterConfig.Builder buildFrom(final ClusterConfig req) {
+            this.cipi = req.cipi;
+            this.cluster = req.cluster;
+            this.ensemble = req.ensemble;
+            this.mipi = req.mipi;
+            this.name = req.name;
+            this.nodeID = req.nodeID;
+            this.pendingNodeID = req.pendingNodeID;
+            this.role = req.role;
+            this.sipi = req.sipi;
+            this.state = req.state;
+
+            return this;
+        }
+
+        public ClusterConfig.Builder cipi(final String cipi) {
+            this.cipi = cipi;
+            return this;
+        }
+
+        public ClusterConfig.Builder cluster(final String cluster) {
+            this.cluster = cluster;
+            return this;
+        }
+
+        public ClusterConfig.Builder ensemble(final String[] ensemble) {
+            this.ensemble = ensemble;
+            return this;
+        }
+
+        public ClusterConfig.Builder mipi(final String mipi) {
+            this.mipi = mipi;
+            return this;
+        }
+
+        public ClusterConfig.Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public ClusterConfig.Builder optionalNodeID(final Long nodeID) {
+            this.nodeID = (nodeID == null) ? Optional.<Long>empty() : Optional.of(nodeID);
+            return this;
+        }
+
+        public ClusterConfig.Builder optionalPendingNodeID(final Long pendingNodeID) {
+            this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : Optional.of(pendingNodeID);
+            return this;
+        }
+
+        public ClusterConfig.Builder role(final String role) {
+            this.role = role;
+            return this;
+        }
+
+        public ClusterConfig.Builder sipi(final String sipi) {
+            this.sipi = sipi;
+            return this;
+        }
+
+        public ClusterConfig.Builder state(final String state) {
+            this.state = state;
+            return this;
+        }
+
+    }
+
 }

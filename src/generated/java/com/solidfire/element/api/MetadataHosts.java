@@ -115,4 +115,52 @@ public class MetadataHosts implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long[] deadSecondaries;
+        private Long[] liveSecondaries;
+        private Long primary;
+
+        private Builder() { }
+
+        public MetadataHosts build() {
+            return new MetadataHosts (
+                         this.deadSecondaries,
+                         this.liveSecondaries,
+                         this.primary            );
+        }
+
+        private MetadataHosts.Builder buildFrom(final MetadataHosts req) {
+            this.deadSecondaries = req.deadSecondaries;
+            this.liveSecondaries = req.liveSecondaries;
+            this.primary = req.primary;
+
+            return this;
+        }
+
+        public MetadataHosts.Builder deadSecondaries(final Long[] deadSecondaries) {
+            this.deadSecondaries = deadSecondaries;
+            return this;
+        }
+
+        public MetadataHosts.Builder liveSecondaries(final Long[] liveSecondaries) {
+            this.liveSecondaries = liveSecondaries;
+            return this;
+        }
+
+        public MetadataHosts.Builder primary(final Long primary) {
+            this.primary = primary;
+            return this;
+        }
+
+    }
+
 }

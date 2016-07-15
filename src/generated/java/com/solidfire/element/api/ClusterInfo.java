@@ -216,4 +216,124 @@ public class ClusterInfo implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private java.util.Map<String, Object> attributes;
+        private String encryptionAtRestState;
+        private String[] ensemble;
+        private String mvip;
+        private Long mvipNodeID;
+        private String name;
+        private Long repCount;
+        private String state;
+        private String svip;
+        private Long svipNodeID;
+        private String uniqueID;
+        private String uuid;
+
+        private Builder() { }
+
+        public ClusterInfo build() {
+            return new ClusterInfo (
+                         this.attributes,
+                         this.encryptionAtRestState,
+                         this.ensemble,
+                         this.mvip,
+                         this.mvipNodeID,
+                         this.name,
+                         this.repCount,
+                         this.state,
+                         this.svip,
+                         this.svipNodeID,
+                         this.uniqueID,
+                         this.uuid            );
+        }
+
+        private ClusterInfo.Builder buildFrom(final ClusterInfo req) {
+            this.attributes = req.attributes;
+            this.encryptionAtRestState = req.encryptionAtRestState;
+            this.ensemble = req.ensemble;
+            this.mvip = req.mvip;
+            this.mvipNodeID = req.mvipNodeID;
+            this.name = req.name;
+            this.repCount = req.repCount;
+            this.state = req.state;
+            this.svip = req.svip;
+            this.svipNodeID = req.svipNodeID;
+            this.uniqueID = req.uniqueID;
+            this.uuid = req.uuid;
+
+            return this;
+        }
+
+        public ClusterInfo.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
+            return this;
+        }
+
+        public ClusterInfo.Builder encryptionAtRestState(final String encryptionAtRestState) {
+            this.encryptionAtRestState = encryptionAtRestState;
+            return this;
+        }
+
+        public ClusterInfo.Builder ensemble(final String[] ensemble) {
+            this.ensemble = ensemble;
+            return this;
+        }
+
+        public ClusterInfo.Builder mvip(final String mvip) {
+            this.mvip = mvip;
+            return this;
+        }
+
+        public ClusterInfo.Builder mvipNodeID(final Long mvipNodeID) {
+            this.mvipNodeID = mvipNodeID;
+            return this;
+        }
+
+        public ClusterInfo.Builder name(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public ClusterInfo.Builder repCount(final Long repCount) {
+            this.repCount = repCount;
+            return this;
+        }
+
+        public ClusterInfo.Builder state(final String state) {
+            this.state = state;
+            return this;
+        }
+
+        public ClusterInfo.Builder svip(final String svip) {
+            this.svip = svip;
+            return this;
+        }
+
+        public ClusterInfo.Builder svipNodeID(final Long svipNodeID) {
+            this.svipNodeID = svipNodeID;
+            return this;
+        }
+
+        public ClusterInfo.Builder uniqueID(final String uniqueID) {
+            this.uniqueID = uniqueID;
+            return this;
+        }
+
+        public ClusterInfo.Builder uuid(final String uuid) {
+            this.uuid = uuid;
+            return this;
+        }
+
+    }
+
 }

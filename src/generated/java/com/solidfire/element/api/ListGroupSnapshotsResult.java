@@ -91,4 +91,36 @@ public class ListGroupSnapshotsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private GroupSnapshot[] groupSnapshots;
+
+        private Builder() { }
+
+        public ListGroupSnapshotsResult build() {
+            return new ListGroupSnapshotsResult (
+                         this.groupSnapshots            );
+        }
+
+        private ListGroupSnapshotsResult.Builder buildFrom(final ListGroupSnapshotsResult req) {
+            this.groupSnapshots = req.groupSnapshots;
+
+            return this;
+        }
+
+        public ListGroupSnapshotsResult.Builder groupSnapshots(final GroupSnapshot[] groupSnapshots) {
+            this.groupSnapshots = groupSnapshots;
+            return this;
+        }
+
+    }
+
 }

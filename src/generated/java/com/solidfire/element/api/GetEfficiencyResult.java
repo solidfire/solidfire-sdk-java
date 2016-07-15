@@ -139,4 +139,68 @@ public class GetEfficiencyResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Double compression;
+        private Double deduplication;
+        private Double thinProvisioning;
+        private String timestamp;
+        private Long[] missingVolumes;
+
+        private Builder() { }
+
+        public GetEfficiencyResult build() {
+            return new GetEfficiencyResult (
+                         this.compression,
+                         this.deduplication,
+                         this.thinProvisioning,
+                         this.timestamp,
+                         this.missingVolumes            );
+        }
+
+        private GetEfficiencyResult.Builder buildFrom(final GetEfficiencyResult req) {
+            this.compression = req.compression;
+            this.deduplication = req.deduplication;
+            this.thinProvisioning = req.thinProvisioning;
+            this.timestamp = req.timestamp;
+            this.missingVolumes = req.missingVolumes;
+
+            return this;
+        }
+
+        public GetEfficiencyResult.Builder compression(final Double compression) {
+            this.compression = compression;
+            return this;
+        }
+
+        public GetEfficiencyResult.Builder deduplication(final Double deduplication) {
+            this.deduplication = deduplication;
+            return this;
+        }
+
+        public GetEfficiencyResult.Builder thinProvisioning(final Double thinProvisioning) {
+            this.thinProvisioning = thinProvisioning;
+            return this;
+        }
+
+        public GetEfficiencyResult.Builder timestamp(final String timestamp) {
+            this.timestamp = timestamp;
+            return this;
+        }
+
+        public GetEfficiencyResult.Builder missingVolumes(final Long[] missingVolumes) {
+            this.missingVolumes = missingVolumes;
+            return this;
+        }
+
+    }
+
 }

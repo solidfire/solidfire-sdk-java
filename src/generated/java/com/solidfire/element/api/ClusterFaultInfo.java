@@ -183,4 +183,132 @@ public class ClusterFaultInfo implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String severity;
+        private String type;
+        private String code;
+        private String details;
+        private Long nodeHardwareFaultID;
+        private Long nodeID;
+        private Long serviceID;
+        private Long driveID;
+        private Boolean resolved;
+        private Long clusterFaultID;
+        private String date;
+        private String resolvedDate;
+        private Object data;
+
+        private Builder() { }
+
+        public ClusterFaultInfo build() {
+            return new ClusterFaultInfo (
+                         this.severity,
+                         this.type,
+                         this.code,
+                         this.details,
+                         this.nodeHardwareFaultID,
+                         this.nodeID,
+                         this.serviceID,
+                         this.driveID,
+                         this.resolved,
+                         this.clusterFaultID,
+                         this.date,
+                         this.resolvedDate,
+                         this.data            );
+        }
+
+        private ClusterFaultInfo.Builder buildFrom(final ClusterFaultInfo req) {
+            this.severity = req.severity;
+            this.type = req.type;
+            this.code = req.code;
+            this.details = req.details;
+            this.nodeHardwareFaultID = req.nodeHardwareFaultID;
+            this.nodeID = req.nodeID;
+            this.serviceID = req.serviceID;
+            this.driveID = req.driveID;
+            this.resolved = req.resolved;
+            this.clusterFaultID = req.clusterFaultID;
+            this.date = req.date;
+            this.resolvedDate = req.resolvedDate;
+            this.data = req.data;
+
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder severity(final String severity) {
+            this.severity = severity;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder type(final String type) {
+            this.type = type;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder code(final String code) {
+            this.code = code;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder details(final String details) {
+            this.details = details;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder nodeHardwareFaultID(final Long nodeHardwareFaultID) {
+            this.nodeHardwareFaultID = nodeHardwareFaultID;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder nodeID(final Long nodeID) {
+            this.nodeID = nodeID;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder serviceID(final Long serviceID) {
+            this.serviceID = serviceID;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder driveID(final Long driveID) {
+            this.driveID = driveID;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder resolved(final Boolean resolved) {
+            this.resolved = resolved;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder clusterFaultID(final Long clusterFaultID) {
+            this.clusterFaultID = clusterFaultID;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder date(final String date) {
+            this.date = date;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder resolvedDate(final String resolvedDate) {
+            this.resolvedDate = resolvedDate;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder data(final Object data) {
+            this.data = data;
+            return this;
+        }
+
+    }
+
 }

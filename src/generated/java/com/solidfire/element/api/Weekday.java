@@ -95,4 +95,44 @@ public class Weekday implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long day;
+        private Long offset;
+
+        private Builder() { }
+
+        public Weekday build() {
+            return new Weekday (
+                         this.day,
+                         this.offset            );
+        }
+
+        private Weekday.Builder buildFrom(final Weekday req) {
+            this.day = req.day;
+            this.offset = req.offset;
+
+            return this;
+        }
+
+        public Weekday.Builder day(final Long day) {
+            this.day = day;
+            return this;
+        }
+
+        public Weekday.Builder offset(final Long offset) {
+            this.offset = offset;
+            return this;
+        }
+
+    }
+
 }

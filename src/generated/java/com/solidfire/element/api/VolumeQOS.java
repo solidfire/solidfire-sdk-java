@@ -147,4 +147,68 @@ public class VolumeQOS implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long minIOPS;
+        private Long maxIOPS;
+        private Long burstIOPS;
+        private Long burstTime;
+        private TreeMap<String,Long> curve;
+
+        private Builder() { }
+
+        public VolumeQOS build() {
+            return new VolumeQOS (
+                         this.minIOPS,
+                         this.maxIOPS,
+                         this.burstIOPS,
+                         this.burstTime,
+                         this.curve            );
+        }
+
+        private VolumeQOS.Builder buildFrom(final VolumeQOS req) {
+            this.minIOPS = req.minIOPS;
+            this.maxIOPS = req.maxIOPS;
+            this.burstIOPS = req.burstIOPS;
+            this.burstTime = req.burstTime;
+            this.curve = req.curve;
+
+            return this;
+        }
+
+        public VolumeQOS.Builder minIOPS(final Long minIOPS) {
+            this.minIOPS = minIOPS;
+            return this;
+        }
+
+        public VolumeQOS.Builder maxIOPS(final Long maxIOPS) {
+            this.maxIOPS = maxIOPS;
+            return this;
+        }
+
+        public VolumeQOS.Builder burstIOPS(final Long burstIOPS) {
+            this.burstIOPS = burstIOPS;
+            return this;
+        }
+
+        public VolumeQOS.Builder burstTime(final Long burstTime) {
+            this.burstTime = burstTime;
+            return this;
+        }
+
+        public VolumeQOS.Builder curve(final TreeMap<String,Long> curve) {
+            this.curve = curve;
+            return this;
+        }
+
+    }
+
 }

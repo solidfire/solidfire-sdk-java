@@ -91,4 +91,36 @@ public class GetCurrentClusterAdminResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private ClusterAdmin clusterAdmin;
+
+        private Builder() { }
+
+        public GetCurrentClusterAdminResult build() {
+            return new GetCurrentClusterAdminResult (
+                         this.clusterAdmin            );
+        }
+
+        private GetCurrentClusterAdminResult.Builder buildFrom(final GetCurrentClusterAdminResult req) {
+            this.clusterAdmin = req.clusterAdmin;
+
+            return this;
+        }
+
+        public GetCurrentClusterAdminResult.Builder clusterAdmin(final ClusterAdmin clusterAdmin) {
+            this.clusterAdmin = clusterAdmin;
+            return this;
+        }
+
+    }
+
 }

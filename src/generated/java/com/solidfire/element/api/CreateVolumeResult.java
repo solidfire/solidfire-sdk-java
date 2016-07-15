@@ -106,4 +106,44 @@ public class CreateVolumeResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long volumeID;
+        private TreeMap<String,Long> curve;
+
+        private Builder() { }
+
+        public CreateVolumeResult build() {
+            return new CreateVolumeResult (
+                         this.volumeID,
+                         this.curve            );
+        }
+
+        private CreateVolumeResult.Builder buildFrom(final CreateVolumeResult req) {
+            this.volumeID = req.volumeID;
+            this.curve = req.curve;
+
+            return this;
+        }
+
+        public CreateVolumeResult.Builder volumeID(final Long volumeID) {
+            this.volumeID = volumeID;
+            return this;
+        }
+
+        public CreateVolumeResult.Builder curve(final TreeMap<String,Long> curve) {
+            this.curve = curve;
+            return this;
+        }
+
+    }
+
 }

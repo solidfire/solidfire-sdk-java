@@ -111,4 +111,60 @@ public class GetClusterVersionInfoResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String clusterAPIVersion;
+        private String clusterVersion;
+        private ClusterVersionInfo[] clusterVersionInfo;
+        private SoftwareVersionInfo softwareVersionInfo;
+
+        private Builder() { }
+
+        public GetClusterVersionInfoResult build() {
+            return new GetClusterVersionInfoResult (
+                         this.clusterAPIVersion,
+                         this.clusterVersion,
+                         this.clusterVersionInfo,
+                         this.softwareVersionInfo            );
+        }
+
+        private GetClusterVersionInfoResult.Builder buildFrom(final GetClusterVersionInfoResult req) {
+            this.clusterAPIVersion = req.clusterAPIVersion;
+            this.clusterVersion = req.clusterVersion;
+            this.clusterVersionInfo = req.clusterVersionInfo;
+            this.softwareVersionInfo = req.softwareVersionInfo;
+
+            return this;
+        }
+
+        public GetClusterVersionInfoResult.Builder clusterAPIVersion(final String clusterAPIVersion) {
+            this.clusterAPIVersion = clusterAPIVersion;
+            return this;
+        }
+
+        public GetClusterVersionInfoResult.Builder clusterVersion(final String clusterVersion) {
+            this.clusterVersion = clusterVersion;
+            return this;
+        }
+
+        public GetClusterVersionInfoResult.Builder clusterVersionInfo(final ClusterVersionInfo[] clusterVersionInfo) {
+            this.clusterVersionInfo = clusterVersionInfo;
+            return this;
+        }
+
+        public GetClusterVersionInfoResult.Builder softwareVersionInfo(final SoftwareVersionInfo softwareVersionInfo) {
+            this.softwareVersionInfo = softwareVersionInfo;
+            return this;
+        }
+
+    }
+
 }

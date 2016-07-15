@@ -166,4 +166,84 @@ public class PairedCluster implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private String clusterName;
+        private Long clusterPairID;
+        private String clusterPairUUID;
+        private Long latency;
+        private String mvip;
+        private String status;
+        private String version;
+
+        private Builder() { }
+
+        public PairedCluster build() {
+            return new PairedCluster (
+                         this.clusterName,
+                         this.clusterPairID,
+                         this.clusterPairUUID,
+                         this.latency,
+                         this.mvip,
+                         this.status,
+                         this.version            );
+        }
+
+        private PairedCluster.Builder buildFrom(final PairedCluster req) {
+            this.clusterName = req.clusterName;
+            this.clusterPairID = req.clusterPairID;
+            this.clusterPairUUID = req.clusterPairUUID;
+            this.latency = req.latency;
+            this.mvip = req.mvip;
+            this.status = req.status;
+            this.version = req.version;
+
+            return this;
+        }
+
+        public PairedCluster.Builder clusterName(final String clusterName) {
+            this.clusterName = clusterName;
+            return this;
+        }
+
+        public PairedCluster.Builder clusterPairID(final Long clusterPairID) {
+            this.clusterPairID = clusterPairID;
+            return this;
+        }
+
+        public PairedCluster.Builder clusterPairUUID(final String clusterPairUUID) {
+            this.clusterPairUUID = clusterPairUUID;
+            return this;
+        }
+
+        public PairedCluster.Builder latency(final Long latency) {
+            this.latency = latency;
+            return this;
+        }
+
+        public PairedCluster.Builder mvip(final String mvip) {
+            this.mvip = mvip;
+            return this;
+        }
+
+        public PairedCluster.Builder status(final String status) {
+            this.status = status;
+            return this;
+        }
+
+        public PairedCluster.Builder version(final String version) {
+            this.version = version;
+            return this;
+        }
+
+    }
+
 }

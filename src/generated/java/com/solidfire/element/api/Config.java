@@ -95,4 +95,44 @@ public class Config implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private ClusterConfig cluster;
+        private Network network;
+
+        private Builder() { }
+
+        public Config build() {
+            return new Config (
+                         this.cluster,
+                         this.network            );
+        }
+
+        private Config.Builder buildFrom(final Config req) {
+            this.cluster = req.cluster;
+            this.network = req.network;
+
+            return this;
+        }
+
+        public Config.Builder cluster(final ClusterConfig cluster) {
+            this.cluster = cluster;
+            return this;
+        }
+
+        public Config.Builder network(final Network network) {
+            this.network = network;
+            return this;
+        }
+
+    }
+
 }

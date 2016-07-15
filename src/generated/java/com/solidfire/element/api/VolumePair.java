@@ -152,4 +152,76 @@ public class VolumePair implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long clusterPairID;
+        private Long remoteVolumeID;
+        private Long remoteSliceID;
+        private String remoteVolumeName;
+        private String volumePairUUID;
+        private RemoteReplication remoteReplication;
+
+        private Builder() { }
+
+        public VolumePair build() {
+            return new VolumePair (
+                         this.clusterPairID,
+                         this.remoteVolumeID,
+                         this.remoteSliceID,
+                         this.remoteVolumeName,
+                         this.volumePairUUID,
+                         this.remoteReplication            );
+        }
+
+        private VolumePair.Builder buildFrom(final VolumePair req) {
+            this.clusterPairID = req.clusterPairID;
+            this.remoteVolumeID = req.remoteVolumeID;
+            this.remoteSliceID = req.remoteSliceID;
+            this.remoteVolumeName = req.remoteVolumeName;
+            this.volumePairUUID = req.volumePairUUID;
+            this.remoteReplication = req.remoteReplication;
+
+            return this;
+        }
+
+        public VolumePair.Builder clusterPairID(final Long clusterPairID) {
+            this.clusterPairID = clusterPairID;
+            return this;
+        }
+
+        public VolumePair.Builder remoteVolumeID(final Long remoteVolumeID) {
+            this.remoteVolumeID = remoteVolumeID;
+            return this;
+        }
+
+        public VolumePair.Builder remoteSliceID(final Long remoteSliceID) {
+            this.remoteSliceID = remoteSliceID;
+            return this;
+        }
+
+        public VolumePair.Builder remoteVolumeName(final String remoteVolumeName) {
+            this.remoteVolumeName = remoteVolumeName;
+            return this;
+        }
+
+        public VolumePair.Builder volumePairUUID(final String volumePairUUID) {
+            this.volumePairUUID = volumePairUUID;
+            return this;
+        }
+
+        public VolumePair.Builder remoteReplication(final RemoteReplication remoteReplication) {
+            this.remoteReplication = remoteReplication;
+            return this;
+        }
+
+    }
+
 }

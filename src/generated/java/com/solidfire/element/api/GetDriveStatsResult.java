@@ -87,4 +87,36 @@ public class GetDriveStatsResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private DriveStats driveStats;
+
+        private Builder() { }
+
+        public GetDriveStatsResult build() {
+            return new GetDriveStatsResult (
+                         this.driveStats            );
+        }
+
+        private GetDriveStatsResult.Builder buildFrom(final GetDriveStatsResult req) {
+            this.driveStats = req.driveStats;
+
+            return this;
+        }
+
+        public GetDriveStatsResult.Builder driveStats(final DriveStats driveStats) {
+            this.driveStats = driveStats;
+            return this;
+        }
+
+    }
+
 }

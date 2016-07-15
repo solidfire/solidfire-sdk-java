@@ -87,4 +87,36 @@ public class GetNetworkConfigResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Network network;
+
+        private Builder() { }
+
+        public GetNetworkConfigResult build() {
+            return new GetNetworkConfigResult (
+                         this.network            );
+        }
+
+        private GetNetworkConfigResult.Builder buildFrom(final GetNetworkConfigResult req) {
+            this.network = req.network;
+
+            return this;
+        }
+
+        public GetNetworkConfigResult.Builder network(final Network network) {
+            this.network = network;
+            return this;
+        }
+
+    }
+
 }

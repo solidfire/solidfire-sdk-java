@@ -91,4 +91,36 @@ public class AddNodesResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private AddedNode[] nodes;
+
+        private Builder() { }
+
+        public AddNodesResult build() {
+            return new AddNodesResult (
+                         this.nodes            );
+        }
+
+        private AddNodesResult.Builder buildFrom(final AddNodesResult req) {
+            this.nodes = req.nodes;
+
+            return this;
+        }
+
+        public AddNodesResult.Builder nodes(final AddedNode[] nodes) {
+            this.nodes = nodes;
+            return this;
+        }
+
+    }
+
 }

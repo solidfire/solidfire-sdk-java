@@ -87,4 +87,36 @@ public class ListActiveNodesResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Node[] nodes;
+
+        private Builder() { }
+
+        public ListActiveNodesResult build() {
+            return new ListActiveNodesResult (
+                         this.nodes            );
+        }
+
+        private ListActiveNodesResult.Builder buildFrom(final ListActiveNodesResult req) {
+            this.nodes = req.nodes;
+
+            return this;
+        }
+
+        public ListActiveNodesResult.Builder nodes(final Node[] nodes) {
+            this.nodes = nodes;
+            return this;
+        }
+
+    }
+
 }

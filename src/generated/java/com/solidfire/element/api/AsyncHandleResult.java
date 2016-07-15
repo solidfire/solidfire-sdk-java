@@ -87,4 +87,36 @@ public class AsyncHandleResult implements Serializable {
 
         return sb.toString();
     }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Long asyncHandle;
+
+        private Builder() { }
+
+        public AsyncHandleResult build() {
+            return new AsyncHandleResult (
+                         this.asyncHandle            );
+        }
+
+        private AsyncHandleResult.Builder buildFrom(final AsyncHandleResult req) {
+            this.asyncHandle = req.asyncHandle;
+
+            return this;
+        }
+
+        public AsyncHandleResult.Builder asyncHandle(final Long asyncHandle) {
+            this.asyncHandle = asyncHandle;
+            return this;
+        }
+
+    }
+
 }
