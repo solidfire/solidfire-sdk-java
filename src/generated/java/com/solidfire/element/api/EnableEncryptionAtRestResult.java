@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class EnableEncryptionAtRestResult implements Serializable {
 
-    private static final long serialVersionUID = 491667785L;
+    private static final long serialVersionUID = 1372818584L;
 
 
     /**

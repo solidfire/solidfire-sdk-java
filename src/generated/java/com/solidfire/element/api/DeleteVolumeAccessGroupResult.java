@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class DeleteVolumeAccessGroupResult implements Serializable {
 
-    private static final long serialVersionUID = 878206484L;
+    private static final long serialVersionUID = -865396118L;
 
 
     /**

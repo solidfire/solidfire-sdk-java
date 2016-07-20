@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetNetworkConfigRequest implements Serializable {
 
-    private static final long serialVersionUID = -403961422L;
+    private static final long serialVersionUID = -1178744480L;
 
 
     /**

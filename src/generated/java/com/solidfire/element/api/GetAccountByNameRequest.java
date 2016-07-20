@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetAccountByNameRequest implements Serializable {
 
-    private static final long serialVersionUID = -1865201667L;
+    private static final long serialVersionUID = 341343743L;
 
     @SerializedName("username") private final String username;
 

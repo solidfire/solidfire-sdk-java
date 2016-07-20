@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AsyncHandleResult implements Serializable {
 
-    private static final long serialVersionUID = 1052569414L;
+    private static final long serialVersionUID = 800284355L;
 
     @SerializedName("asyncHandle") private final Long asyncHandle;
 

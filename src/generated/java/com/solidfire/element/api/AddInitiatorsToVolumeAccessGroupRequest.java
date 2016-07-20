@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
 
-    private static final long serialVersionUID = -2119409487L;
+    private static final long serialVersionUID = 1203528761L;
 
     @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
     @SerializedName("initiators") private final String[] initiators;

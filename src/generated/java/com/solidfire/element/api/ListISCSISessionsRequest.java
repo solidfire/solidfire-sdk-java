@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListISCSISessionsRequest implements Serializable {
 
-    private static final long serialVersionUID = -1631219809L;
+    private static final long serialVersionUID = -846037438L;
 
 
     /**

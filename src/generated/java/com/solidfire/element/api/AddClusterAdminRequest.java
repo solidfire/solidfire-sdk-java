@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AddClusterAdminRequest implements Serializable {
 
-    private static final long serialVersionUID = 187990890L;
+    private static final long serialVersionUID = -1908353574L;
 
     @SerializedName("username") private final String username;
     @SerializedName("password") private final String password;

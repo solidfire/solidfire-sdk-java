@@ -645,8 +645,8 @@ public class SolidFireElement
 
 
     @Override
-    public SnmpSendTestTrapsResult snmpSendTestTraps(String status) {
-        return this.snmpSendTestTraps( new SnmpSendTestTrapsRequest( status) );
+    public SnmpSendTestTrapsResult snmpSendTestTraps() {
+        return this.snmpSendTestTraps( new SnmpSendTestTrapsRequest( ) );
     }
 
     @Override
@@ -762,6 +762,45 @@ public class SolidFireElement
     @Override
     public AsyncHandleResult removeDrives(Long[] drives) {
         return this.removeDrives( new RemoveDrivesRequest( drives) );
+    }
+
+    @Override
+    @Since("8.0")
+    public ListFibreChannelPortInfoResult listFibreChannelPortInfo(final ListFibreChannelPortInfoRequest request) {
+        return super.sendRequest( "ListFibreChannelPortInfo", request, ListFibreChannelPortInfoRequest.class, ListFibreChannelPortInfoResult.class );
+    }
+
+
+    @Override
+    @Since("8.0")
+    public ListFibreChannelPortInfoResult listFibreChannelPortInfo() {
+        return this.listFibreChannelPortInfo( new ListFibreChannelPortInfoRequest( ) );
+    }
+
+    @Override
+    @Since("7.0")
+    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo(final ListNodeFibreChannelPortInfoRequest request) {
+        return super.sendRequest( "ListNodeFibreChannelPortInfo", request, ListNodeFibreChannelPortInfoRequest.class, ListNodeFibreChannelPortInfoResult.class );
+    }
+
+
+    @Override
+    @Since("7.0")
+    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo(Optional<Boolean> force) {
+        return this.listNodeFibreChannelPortInfo( new ListNodeFibreChannelPortInfoRequest( force) );
+    }
+
+    @Override
+    @Since("7.0")
+    public ListFibreChannelSessionsResult listFibreChannelSessions(final ListFibreChannelSessionsRequest request) {
+        return super.sendRequest( "ListFibreChannelSessions", request, ListFibreChannelSessionsRequest.class, ListFibreChannelSessionsResult.class );
+    }
+
+
+    @Override
+    @Since("7.0")
+    public ListFibreChannelSessionsResult listFibreChannelSessions() {
+        return this.listFibreChannelSessions( new ListFibreChannelSessionsRequest( ) );
     }
 
     @Override
@@ -1354,6 +1393,28 @@ public class SolidFireElement
     @Override
     public GetEfficiencyResult getVolumeAccessGroupEfficiency(Long volumeAccessGroupID) {
         return this.getVolumeAccessGroupEfficiency( new GetVolumeAccessGroupEfficiencyRequest( volumeAccessGroupID) );
+    }
+
+    @Override
+    public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(final GetVolumeAccessGroupLunAssignmentsRequest request) {
+        return super.sendRequest( "GetVolumeAccessGroupLunAssignments", request, GetVolumeAccessGroupLunAssignmentsRequest.class, GetVolumeAccessGroupLunAssignmentsResult.class );
+    }
+
+
+    @Override
+    public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(Long volumeAccessGroupID) {
+        return this.getVolumeAccessGroupLunAssignments( new GetVolumeAccessGroupLunAssignmentsRequest( volumeAccessGroupID) );
+    }
+
+    @Override
+    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(final ModifyVolumeAccessGroupLunAssignmentsRequest request) {
+        return super.sendRequest( "ModifyVolumeAccessGroupLunAssignments", request, ModifyVolumeAccessGroupLunAssignmentsRequest.class, ModifyVolumeAccessGroupLunAssignmentsResult.class );
+    }
+
+
+    @Override
+    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(Long volumeAccessGroupID, LunAssignment[] lunAssignments) {
+        return this.modifyVolumeAccessGroupLunAssignments( new ModifyVolumeAccessGroupLunAssignmentsRequest( volumeAccessGroupID, lunAssignments) );
     }
 
 }

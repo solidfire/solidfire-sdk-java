@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class VolumeAccessGroup implements Serializable {
 
-    private static final long serialVersionUID = 1947505380L;
+    private static final long serialVersionUID = 1068923883L;
 
     @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
     @SerializedName("name") private final String name;

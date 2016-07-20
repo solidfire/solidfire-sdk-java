@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class DisableSnmpResult implements Serializable {
 
-    private static final long serialVersionUID = 104310983L;
+    private static final long serialVersionUID = -1160228354L;
 
 
     /**

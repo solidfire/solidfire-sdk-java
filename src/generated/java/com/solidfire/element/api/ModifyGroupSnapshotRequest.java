@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ModifyGroupSnapshotRequest implements Serializable {
 
-    private static final long serialVersionUID = 1879064500L;
+    private static final long serialVersionUID = -1867485794L;
 
     @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
     @SerializedName("expirationTime") private final Optional<String> expirationTime;

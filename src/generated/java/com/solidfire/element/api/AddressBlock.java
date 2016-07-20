@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AddressBlock implements Serializable {
 
-    private static final long serialVersionUID = 774405349L;
+    private static final long serialVersionUID = 1573803467L;
 
     @SerializedName("start") private final String start;
     @SerializedName("size") private final Long size;

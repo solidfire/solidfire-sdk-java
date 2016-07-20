@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ResetDrivesResult implements Serializable {
 
-    private static final long serialVersionUID = -510781497L;
+    private static final long serialVersionUID = -57928497L;
 
     @SerializedName("details") private final ResetDrivesDetails details;
 

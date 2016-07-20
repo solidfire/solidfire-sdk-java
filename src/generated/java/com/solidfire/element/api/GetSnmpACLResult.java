@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetSnmpACLResult implements Serializable {
 
-    private static final long serialVersionUID = 1473501578L;
+    private static final long serialVersionUID = 1973207181L;
 
     @SerializedName("networks") private final SnmpNetwork[] networks;
     @SerializedName("usmUsers") private final SnmpV3UsmUser[] usmUsers;

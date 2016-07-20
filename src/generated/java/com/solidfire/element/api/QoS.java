@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class QoS implements Serializable {
 
-    private static final long serialVersionUID = -1729670674L;
+    private static final long serialVersionUID = 1378060894L;
 
     @SerializedName("minIOPS") private final Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private final Optional<Long> maxIOPS;

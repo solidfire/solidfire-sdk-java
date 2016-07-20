@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class CreateVolumeRequest implements Serializable {
 
-    private static final long serialVersionUID = -512525822L;
+    private static final long serialVersionUID = 578137121L;
 
     @SerializedName("name") private final String name;
     @SerializedName("accountID") private final Long accountID;

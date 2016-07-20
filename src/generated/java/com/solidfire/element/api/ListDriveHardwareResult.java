@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListDriveHardwareResult implements Serializable {
 
-    private static final long serialVersionUID = -593672450L;
+    private static final long serialVersionUID = -306924237L;
 
     @SerializedName("nodes") private final NodeDriveHardware[] nodes;
 

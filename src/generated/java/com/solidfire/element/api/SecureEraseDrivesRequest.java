@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class SecureEraseDrivesRequest implements Serializable {
 
-    private static final long serialVersionUID = -163907311L;
+    private static final long serialVersionUID = 1970679212L;
 
     @SerializedName("drives") private final Long[] drives;
 

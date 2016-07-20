@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AddAccountResult implements Serializable {
 
-    private static final long serialVersionUID = 1028708335L;
+    private static final long serialVersionUID = 927581418L;
 
     @SerializedName("accountID") private final Long accountID;
 

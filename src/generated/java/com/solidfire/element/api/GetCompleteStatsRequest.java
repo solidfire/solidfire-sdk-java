@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetCompleteStatsRequest implements Serializable {
 
-    private static final long serialVersionUID = 1012541852L;
+    private static final long serialVersionUID = 1522774214L;
 
 
     /**

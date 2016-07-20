@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class MetadataHosts implements Serializable {
 
-    private static final long serialVersionUID = -1399906185L;
+    private static final long serialVersionUID = -1834039358L;
 
     @SerializedName("deadSecondaries") private final Long[] deadSecondaries;
     @SerializedName("liveSecondaries") private final Long[] liveSecondaries;

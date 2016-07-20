@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ModifyScheduleResult implements Serializable {
 
-    private static final long serialVersionUID = 1731283057L;
+    private static final long serialVersionUID = 1080641244L;
 
     @SerializedName("schedule") private final Schedule schedule;
 

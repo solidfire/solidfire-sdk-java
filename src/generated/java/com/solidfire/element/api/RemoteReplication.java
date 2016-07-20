@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class RemoteReplication implements Serializable {
 
-    private static final long serialVersionUID = -1757227169L;
+    private static final long serialVersionUID = -820857963L;
 
     @SerializedName("mode") private final String mode;
     @SerializedName("pauseLimit") private final Long pauseLimit;

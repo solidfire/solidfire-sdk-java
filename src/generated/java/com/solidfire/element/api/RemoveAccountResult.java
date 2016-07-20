@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class RemoveAccountResult implements Serializable {
 
-    private static final long serialVersionUID = 1603544384L;
+    private static final long serialVersionUID = -299766897L;
 
 
     /**

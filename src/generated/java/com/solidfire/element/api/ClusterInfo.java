@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ClusterInfo implements Serializable {
 
-    private static final long serialVersionUID = 1308956314L;
+    private static final long serialVersionUID = -384771091L;
 
     @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
     @SerializedName("encryptionAtRestState") private final String encryptionAtRestState;

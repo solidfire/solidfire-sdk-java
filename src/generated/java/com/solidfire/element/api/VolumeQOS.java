@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class VolumeQOS implements Serializable {
 
-    private static final long serialVersionUID = -705984942L;
+    private static final long serialVersionUID = 37714977L;
 
     @SerializedName("minIOPS") private final Long minIOPS;
     @SerializedName("maxIOPS") private final Long maxIOPS;

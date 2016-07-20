@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListVirtualNetworksResult implements Serializable {
 
-    private static final long serialVersionUID = 2086288225L;
+    private static final long serialVersionUID = 1225836365L;
 
     @SerializedName("virtualNetworks") private final VirtualNetwork[] virtualNetworks;
 

@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetLimitsRequest implements Serializable {
 
-    private static final long serialVersionUID = 1690988767L;
+    private static final long serialVersionUID = -185012497L;
 
 
     /**

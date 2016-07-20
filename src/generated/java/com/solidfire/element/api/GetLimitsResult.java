@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetLimitsResult implements Serializable {
 
-    private static final long serialVersionUID = 699867316L;
+    private static final long serialVersionUID = 2081352986L;
 
     @SerializedName("accountCountMax") private final Long accountCountMax;
     @SerializedName("accountNameLengthMax") private final Long accountNameLengthMax;

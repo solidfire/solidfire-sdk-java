@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class DeleteGroupSnapshotRequest implements Serializable {
 
-    private static final long serialVersionUID = -910251580L;
+    private static final long serialVersionUID = 2145646659L;
 
     @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
     @SerializedName("saveMembers") private final Boolean saveMembers;

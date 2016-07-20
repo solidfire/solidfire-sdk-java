@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetAPIRequest implements Serializable {
 
-    private static final long serialVersionUID = 1433401270L;
+    private static final long serialVersionUID = -458592849L;
 
 
     /**

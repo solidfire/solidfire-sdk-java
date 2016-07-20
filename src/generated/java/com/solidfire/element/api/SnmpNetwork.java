@@ -35,11 +35,11 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * 
+ * The SNMP network object contains information about SNMP configuration for the cluster nodes. SNMP v3 is supported on SolidFire clusters.
  **/
 public class SnmpNetwork implements Serializable {
 
-    private static final long serialVersionUID = -901085912L;
+    private static final long serialVersionUID = 513789462L;
 
     @SerializedName("access") private final String access;
     @SerializedName("cidr") private final Long cidr;
@@ -47,11 +47,11 @@ public class SnmpNetwork implements Serializable {
     @SerializedName("network") private final String network;
 
     /**
-     * 
-     * @param access [required] 
-     * @param cidr [required] 
-     * @param community [required] 
-     * @param network [required] 
+     * The SNMP network object contains information about SNMP configuration for the cluster nodes. SNMP v3 is supported on SolidFire clusters.
+     * @param access [required] <b>ro</b>: read-only access.*
+     * @param cidr [required] A CIDR network mask. This network mask must be an integer greater than or equal to 0, and less than or equal to 32. It must also not be equal to 31.
+     * @param community [required] SNMP community string.
+     * @param network [required] This parameter along with the cidr variable is used to control which network the access and community string apply to. The special value of "default" is used to specify an entry that applies to all networks. The cidr mask is ignored when network value is either a host name or default.
      * @since 7.0
      **/
     @Since("7.0")
@@ -62,15 +62,34 @@ public class SnmpNetwork implements Serializable {
         this.network = network;
     }
 
+
+    /**
+     * <b>ro</b>: read-only access.*
+     * <b>rw</b>: for read-write access.
+     * <b>rosys</b>: for read-only access to a restricted set of system information
+     * *SolidFire recommends that all networks other than the default "localhost" be set to "ro" access, because all SolidFire MIB objects are read-only.
+     **/
     public String getAccess() {
         return this.access;
     }
+
+    /**
+     * A CIDR network mask. This network mask must be an integer greater than or equal to 0, and less than or equal to 32. It must also not be equal to 31.
+     **/
     public Long getCidr() {
         return this.cidr;
     }
+
+    /**
+     * SNMP community string.
+     **/
     public String getCommunity() {
         return this.community;
     }
+
+    /**
+     * This parameter along with the cidr variable is used to control which network the access and community string apply to. The special value of "default" is used to specify an entry that applies to all networks. The cidr mask is ignored when network value is either a host name or default.
+     **/
     public String getNetwork() {
         return this.network;
     }

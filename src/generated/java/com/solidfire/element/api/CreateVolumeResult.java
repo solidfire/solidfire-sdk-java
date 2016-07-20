@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class CreateVolumeResult implements Serializable {
 
-    private static final long serialVersionUID = -2105576453L;
+    private static final long serialVersionUID = -959363216L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("curve") private final TreeMap<String,Long> curve;

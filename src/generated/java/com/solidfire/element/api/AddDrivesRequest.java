@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AddDrivesRequest implements Serializable {
 
-    private static final long serialVersionUID = 2022781838L;
+    private static final long serialVersionUID = -1747850943L;
 
     @SerializedName("drives") private final NewDrive[] drives;
 

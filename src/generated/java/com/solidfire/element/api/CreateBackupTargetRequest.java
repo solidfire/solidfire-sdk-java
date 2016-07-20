@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class CreateBackupTargetRequest implements Serializable {
 
-    private static final long serialVersionUID = -146216122L;
+    private static final long serialVersionUID = -863845033L;
 
     @SerializedName("name") private final String name;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;

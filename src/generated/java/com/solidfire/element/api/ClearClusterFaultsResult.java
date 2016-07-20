@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ClearClusterFaultsResult implements Serializable {
 
-    private static final long serialVersionUID = -639734558L;
+    private static final long serialVersionUID = -1180797670L;
 
 
     /**

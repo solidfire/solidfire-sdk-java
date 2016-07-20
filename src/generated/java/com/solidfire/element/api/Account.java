@@ -39,14 +39,14 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class Account implements Serializable {
 
-    private static final long serialVersionUID = -153016324L;
+    private static final long serialVersionUID = -600328845L;
 
     @SerializedName("accountID") private final Long accountID;
     @SerializedName("username") private final String username;
     @SerializedName("status") private final String status;
     @SerializedName("volumes") private final Long[] volumes;
-    @SerializedName("initiatorSecret") private final Optional<String> initiatorSecret;
-    @SerializedName("targetSecret") private final Optional<String> targetSecret;
+    @SerializedName("initiatorSecret") private final Optional<CHAPSecret> initiatorSecret;
+    @SerializedName("targetSecret") private final Optional<CHAPSecret> targetSecret;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
@@ -62,14 +62,14 @@ public class Account implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public Account(Long accountID, String username, String status, Long[] volumes, Optional<String> initiatorSecret, Optional<String> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
-        this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : initiatorSecret;
+    public Account(Long accountID, String username, String status, Long[] volumes, Optional<CHAPSecret> initiatorSecret, Optional<CHAPSecret> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
         this.username = username;
         this.volumes = volumes;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
         this.accountID = accountID;
         this.status = status;
-        this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : targetSecret;
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
 
 
@@ -104,14 +104,14 @@ public class Account implements Serializable {
     /**
      * CHAP secret to use for the initiator.
      **/
-    public Optional<String> getInitiatorSecret() {
+    public Optional<CHAPSecret> getInitiatorSecret() {
         return this.initiatorSecret;
     }
 
     /**
      * CHAP secret to use for the target (mutual CHAP authentication).
      **/
-    public Optional<String> getTargetSecret() {
+    public Optional<CHAPSecret> getTargetSecret() {
         return this.targetSecret;
     }
 
@@ -181,8 +181,8 @@ public class Account implements Serializable {
         private String username;
         private String status;
         private Long[] volumes;
-        private Optional<String> initiatorSecret;
-        private Optional<String> targetSecret;
+        private Optional<CHAPSecret> initiatorSecret;
+        private Optional<CHAPSecret> targetSecret;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -230,13 +230,13 @@ public class Account implements Serializable {
             return this;
         }
 
-        public Account.Builder optionalInitiatorSecret(final String initiatorSecret) {
-            this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : Optional.of(initiatorSecret);
+        public Account.Builder optionalInitiatorSecret(final CHAPSecret initiatorSecret) {
+            this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public Account.Builder optionalTargetSecret(final String targetSecret) {
-            this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : Optional.of(targetSecret);
+        public Account.Builder optionalTargetSecret(final CHAPSecret targetSecret) {
+            this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
             return this;
         }
 

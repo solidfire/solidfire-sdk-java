@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class Network implements Serializable {
 
-    private static final long serialVersionUID = 785133507L;
+    private static final long serialVersionUID = -1797143993L;
 
     @SerializedName("Bond10G") private final Optional<NetworkConfig> bond10G;
     @SerializedName("Bond1G") private final Optional<NetworkConfig> bond1G;

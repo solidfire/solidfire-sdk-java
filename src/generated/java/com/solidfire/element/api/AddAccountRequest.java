@@ -39,11 +39,11 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AddAccountRequest implements Serializable {
 
-    private static final long serialVersionUID = 829158762L;
+    private static final long serialVersionUID = -1950524613L;
 
     @SerializedName("username") private final String username;
-    @SerializedName("initiatorSecret") private final Optional<String> initiatorSecret;
-    @SerializedName("targetSecret") private final Optional<String> targetSecret;
+    @SerializedName("initiatorSecret") private final Optional<CHAPSecret> initiatorSecret;
+    @SerializedName("targetSecret") private final Optional<CHAPSecret> targetSecret;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
@@ -55,10 +55,10 @@ public class AddAccountRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public AddAccountRequest(String username, Optional<String> initiatorSecret, Optional<String> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
+    public AddAccountRequest(String username, Optional<CHAPSecret> initiatorSecret, Optional<CHAPSecret> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
         this.username = username;
-        this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : initiatorSecret;
-        this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : targetSecret;
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
@@ -78,7 +78,7 @@ public class AddAccountRequest implements Serializable {
      * <br/><br/>
      * If not specified, a random secret is created.
      **/
-    public Optional<String> getInitiatorSecret() {
+    public Optional<CHAPSecret> getInitiatorSecret() {
         return this.initiatorSecret;
     }
 
@@ -89,7 +89,7 @@ public class AddAccountRequest implements Serializable {
      * <br/><br/>
      * If not specified, a random secret is created.
      **/
-    public Optional<String> getTargetSecret() {
+    public Optional<CHAPSecret> getTargetSecret() {
         return this.targetSecret;
     }
 
@@ -150,8 +150,8 @@ public class AddAccountRequest implements Serializable {
 
     public static class Builder {
         private String username;
-        private Optional<String> initiatorSecret;
-        private Optional<String> targetSecret;
+        private Optional<CHAPSecret> initiatorSecret;
+        private Optional<CHAPSecret> targetSecret;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -178,13 +178,13 @@ public class AddAccountRequest implements Serializable {
             return this;
         }
 
-        public AddAccountRequest.Builder optionalInitiatorSecret(final String initiatorSecret) {
-            this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : Optional.of(initiatorSecret);
+        public AddAccountRequest.Builder optionalInitiatorSecret(final CHAPSecret initiatorSecret) {
+            this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public AddAccountRequest.Builder optionalTargetSecret(final String targetSecret) {
-            this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : Optional.of(targetSecret);
+        public AddAccountRequest.Builder optionalTargetSecret(final CHAPSecret targetSecret) {
+            this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
             return this;
         }
 

@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class PhysicalAdapter implements Serializable {
 
-    private static final long serialVersionUID = -1235345165L;
+    private static final long serialVersionUID = -1051169665L;
 
     @SerializedName("address") private final Optional<String> address;
     @SerializedName("macAddress") private final Optional<String> macAddress;

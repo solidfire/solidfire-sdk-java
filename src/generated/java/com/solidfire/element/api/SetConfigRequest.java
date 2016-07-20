@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class SetConfigRequest implements Serializable {
 
-    private static final long serialVersionUID = 1694180805L;
+    private static final long serialVersionUID = -603685930L;
 
     @SerializedName("config") private final Config config;
 

@@ -809,10 +809,23 @@ public interface SolidFireElementIF {
      **/
     DisableEncryptionAtRestResult disableEncryptionAtRest();
 
+    /**
+     * SnmpSendTestTraps enables you to test SNMP functionality for a cluster. This method instructs the cluster to send test SNMP traps to the currently configured SNMP manager.
+     *  
+     * @param request The request @see com.solidfire.element.api.SnmpSendTestTrapsRequest 
+     *  
+     * @return the response
+     **/
     SnmpSendTestTrapsResult snmpSendTestTraps(final SnmpSendTestTrapsRequest request);
 
 
-    SnmpSendTestTrapsResult snmpSendTestTraps(String status);
+    /**
+     * Convenience method for snmpSendTestTraps 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#snmpSendTestTraps(SnmpSendTestTrapsRequest) 
+     **/
+    SnmpSendTestTrapsResult snmpSendTestTraps();
 
     /**
      * Used to retrieve the result of asynchronous method calls.
@@ -1064,6 +1077,75 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#removeDrives(RemoveDrivesRequest) 
      **/
     AsyncHandleResult removeDrives(Long[] drives);
+
+    /**
+     * The ListFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListFibreChannelPortInfoRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    ListFibreChannelPortInfoResult listFibreChannelPortInfo(final ListFibreChannelPortInfoRequest request);
+
+
+    /**
+     * Convenience method for listFibreChannelPortInfo 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listFibreChannelPortInfo(ListFibreChannelPortInfoRequest) 
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    ListFibreChannelPortInfoResult listFibreChannelPortInfo();
+
+    /**
+     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListNodeFibreChannelPortInfoRequest 
+     *  
+     * @return the response
+     * @since 7.0 
+     **/
+    @Since("7.0")
+    ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo(final ListNodeFibreChannelPortInfoRequest request);
+
+
+    /**
+     * Convenience method for listNodeFibreChannelPortInfo 
+     *  
+     * @param force Specify force=true to call method on all member nodes of the cluster.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listNodeFibreChannelPortInfo(ListNodeFibreChannelPortInfoRequest) 
+     * @since 7.0 
+     **/
+    @Since("7.0")
+    ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo(Optional<Boolean> force);
+
+    /**
+     * The ListFibreChannelSessions is used to return information about the active Fibre Channel sessions on a cluster.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListFibreChannelSessionsRequest 
+     *  
+     * @return the response
+     * @since 7.0 
+     **/
+    @Since("7.0")
+    ListFibreChannelSessionsResult listFibreChannelSessions(final ListFibreChannelSessionsRequest request);
+
+
+    /**
+     * Convenience method for listFibreChannelSessions 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listFibreChannelSessions(ListFibreChannelSessionsRequest) 
+     * @since 7.0 
+     **/
+    @Since("7.0")
+    ListFibreChannelSessionsResult listFibreChannelSessions();
 
     ListActiveNodesResult listActiveNodes(final ListActiveNodesRequest request);
 
@@ -1328,6 +1410,8 @@ public interface SolidFireElementIF {
     /**
      * Convenience method for completeClusterPairing 
      *  
+     * @param clusterPairingKey A string of characters that is returned from the StartClusterPairing API method.
+     *
      *  
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#completeClusterPairing(CompleteClusterPairingRequest) 
@@ -2269,5 +2353,55 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#getVolumeAccessGroupEfficiency(GetVolumeAccessGroupEfficiencyRequest) 
      **/
     GetEfficiencyResult getVolumeAccessGroupEfficiency(Long volumeAccessGroupID);
+
+    /**
+     * The GetVolumeAccessGroupLunAssignments is used to return information LUN mappings of a specified volume access group.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetVolumeAccessGroupLunAssignmentsRequest 
+     *  
+     * @return the response
+     **/
+    GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(final GetVolumeAccessGroupLunAssignmentsRequest request);
+
+
+    /**
+     * Convenience method for getVolumeAccessGroupLunAssignments 
+     *  
+     * @param volumeAccessGroupID Unique volume access group ID used to return information.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getVolumeAccessGroupLunAssignments(GetVolumeAccessGroupLunAssignmentsRequest) 
+     **/
+    GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(Long volumeAccessGroupID);
+
+    /**
+     * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
+     * <br/><br/>
+     * LUN assignment values must be unique for volumes in a volume access group. An exception will be seen if LUN assignments are duplicated in a volume access group. However, the same LUN values can be used again in different volume access groups.
+     * <br/><br/>
+     * <b>Note:</b> Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed. None of the specified LUN assignments will be modified if there is an exception.
+     * <br/><br/>
+     * <b>Caution:</b> If a LUN assignment is changed for a volume with active I/O, the I/O could be disrupted. Changes to the server configuration may be required in order to change volume LUN assignments.
+     *  
+     * @param request The request @see com.solidfire.element.api.ModifyVolumeAccessGroupLunAssignmentsRequest 
+     *  
+     * @return the response
+     **/
+    ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(final ModifyVolumeAccessGroupLunAssignmentsRequest request);
+
+
+    /**
+     * Convenience method for modifyVolumeAccessGroupLunAssignments 
+     *  
+     * @param volumeAccessGroupID Unique volume access group ID for which the LUN assignments will be modified.
+     *
+     * @param lunAssignments The volume IDs with new assigned LUN values.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#modifyVolumeAccessGroupLunAssignments(ModifyVolumeAccessGroupLunAssignmentsRequest) 
+     **/
+    ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(Long volumeAccessGroupID, LunAssignment[] lunAssignments);
 
 }

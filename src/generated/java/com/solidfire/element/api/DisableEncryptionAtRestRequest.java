@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class DisableEncryptionAtRestRequest implements Serializable {
 
-    private static final long serialVersionUID = -755843809L;
+    private static final long serialVersionUID = -2103934106L;
 
 
     /**

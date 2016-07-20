@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
 
-    private static final long serialVersionUID = -807215357L;
+    private static final long serialVersionUID = 1658040141L;
 
     @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
 

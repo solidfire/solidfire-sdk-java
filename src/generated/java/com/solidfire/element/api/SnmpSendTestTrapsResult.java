@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class SnmpSendTestTrapsResult implements Serializable {
 
-    private static final long serialVersionUID = -612076391L;
+    private static final long serialVersionUID = -1322919034L;
 
     @SerializedName("status") private final String status;
 

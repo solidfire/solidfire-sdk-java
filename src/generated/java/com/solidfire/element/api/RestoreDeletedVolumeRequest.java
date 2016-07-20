@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class RestoreDeletedVolumeRequest implements Serializable {
 
-    private static final long serialVersionUID = -59905119L;
+    private static final long serialVersionUID = 1037035887L;
 
     @SerializedName("volumeID") private final Long volumeID;
 

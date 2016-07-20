@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListVolumeStatsByVolumeResult implements Serializable {
 
-    private static final long serialVersionUID = -1291598418L;
+    private static final long serialVersionUID = -2100397620L;
 
     @SerializedName("volumeStats") private final VolumeStats[] volumeStats;
 

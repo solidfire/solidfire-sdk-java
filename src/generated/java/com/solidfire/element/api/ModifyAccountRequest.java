@@ -39,13 +39,13 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ModifyAccountRequest implements Serializable {
 
-    private static final long serialVersionUID = -1292214246L;
+    private static final long serialVersionUID = -894006608L;
 
     @SerializedName("accountID") private final Long accountID;
     @SerializedName("username") private final Optional<String> username;
     @SerializedName("status") private final Optional<String> status;
-    @SerializedName("initiatorSecret") private final Optional<String> initiatorSecret;
-    @SerializedName("targetSecret") private final Optional<String> targetSecret;
+    @SerializedName("initiatorSecret") private final Optional<CHAPSecret> initiatorSecret;
+    @SerializedName("targetSecret") private final Optional<CHAPSecret> targetSecret;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
@@ -59,13 +59,13 @@ public class ModifyAccountRequest implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyAccountRequest(Long accountID, Optional<String> username, Optional<String> status, Optional<String> initiatorSecret, Optional<String> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
-        this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : initiatorSecret;
+    public ModifyAccountRequest(Long accountID, Optional<String> username, Optional<String> status, Optional<CHAPSecret> initiatorSecret, Optional<CHAPSecret> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
         this.username = (username == null) ? Optional.<String>empty() : username;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
         this.accountID = accountID;
         this.status = (status == null) ? Optional.<String>empty() : status;
-        this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : targetSecret;
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
 
 
@@ -94,7 +94,7 @@ public class ModifyAccountRequest implements Serializable {
      * CHAP secret to use for the initiator.
      * Should be 12-16 characters long and impenetrable.
      **/
-    public Optional<String> getInitiatorSecret() {
+    public Optional<CHAPSecret> getInitiatorSecret() {
         return this.initiatorSecret;
     }
 
@@ -102,7 +102,7 @@ public class ModifyAccountRequest implements Serializable {
      * CHAP secret to use for the target (mutual CHAP authentication).
      * Should be 12-16 characters long and impenetrable.
      **/
-    public Optional<String> getTargetSecret() {
+    public Optional<CHAPSecret> getTargetSecret() {
         return this.targetSecret;
     }
 
@@ -171,8 +171,8 @@ public class ModifyAccountRequest implements Serializable {
         private Long accountID;
         private Optional<String> username;
         private Optional<String> status;
-        private Optional<String> initiatorSecret;
-        private Optional<String> targetSecret;
+        private Optional<CHAPSecret> initiatorSecret;
+        private Optional<CHAPSecret> targetSecret;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -213,13 +213,13 @@ public class ModifyAccountRequest implements Serializable {
             return this;
         }
 
-        public ModifyAccountRequest.Builder optionalInitiatorSecret(final String initiatorSecret) {
-            this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : Optional.of(initiatorSecret);
+        public ModifyAccountRequest.Builder optionalInitiatorSecret(final CHAPSecret initiatorSecret) {
+            this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public ModifyAccountRequest.Builder optionalTargetSecret(final String targetSecret) {
-            this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : Optional.of(targetSecret);
+        public ModifyAccountRequest.Builder optionalTargetSecret(final CHAPSecret targetSecret) {
+            this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
             return this;
         }
 

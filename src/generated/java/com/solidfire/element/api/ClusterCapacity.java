@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ClusterCapacity implements Serializable {
 
-    private static final long serialVersionUID = 521310811L;
+    private static final long serialVersionUID = 299409621L;
 
     @SerializedName("activeBlockSpace") private final Long activeBlockSpace;
     @SerializedName("activeSessions") private final Long activeSessions;

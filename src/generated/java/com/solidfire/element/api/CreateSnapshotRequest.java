@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class CreateSnapshotRequest implements Serializable {
 
-    private static final long serialVersionUID = -1494750176L;
+    private static final long serialVersionUID = 865615404L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("snapshotID") private final Optional<Long> snapshotID;

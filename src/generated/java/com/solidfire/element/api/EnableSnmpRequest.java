@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class EnableSnmpRequest implements Serializable {
 
-    private static final long serialVersionUID = -1467894786L;
+    private static final long serialVersionUID = 1106696787L;
 
     @SerializedName("snmpV3Enabled") private final Boolean snmpV3Enabled;
 

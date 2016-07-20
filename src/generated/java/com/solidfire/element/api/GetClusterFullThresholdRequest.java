@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetClusterFullThresholdRequest implements Serializable {
 
-    private static final long serialVersionUID = 1189351157L;
+    private static final long serialVersionUID = -1337692549L;
 
 
     /**

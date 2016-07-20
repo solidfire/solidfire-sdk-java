@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetVolumeEfficiencyResult implements Serializable {
 
-    private static final long serialVersionUID = -237066237L;
+    private static final long serialVersionUID = 526001109L;
 
     @SerializedName("compression") private final Double compression;
     @SerializedName("deduplication") private final Double deduplication;

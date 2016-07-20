@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class StartClusterPairingRequest implements Serializable {
 
-    private static final long serialVersionUID = 1911188166L;
+    private static final long serialVersionUID = 1027191421L;
 
 
     /**

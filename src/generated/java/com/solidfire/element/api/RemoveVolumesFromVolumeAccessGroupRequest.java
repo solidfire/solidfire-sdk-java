@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
 
-    private static final long serialVersionUID = -303109118L;
+    private static final long serialVersionUID = 764560929L;
 
     @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
     @SerializedName("volumes") private final Long[] volumes;

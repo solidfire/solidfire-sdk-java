@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ClusterStats implements Serializable {
 
-    private static final long serialVersionUID = 595507504L;
+    private static final long serialVersionUID = -1775385660L;
 
     @SerializedName("clusterUtilization") private final Double clusterUtilization;
     @SerializedName("clientQueueDepth") private final Long clientQueueDepth;

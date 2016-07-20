@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetClusterStatsResult implements Serializable {
 
-    private static final long serialVersionUID = -1994524354L;
+    private static final long serialVersionUID = -780957999L;
 
     @SerializedName("clusterStats") private final ClusterStats clusterStats;
 

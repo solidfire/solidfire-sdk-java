@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListDeletedVolumesRequest implements Serializable {
 
-    private static final long serialVersionUID = -1248884413L;
+    private static final long serialVersionUID = -1882432945L;
 
 
     /**

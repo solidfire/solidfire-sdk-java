@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class PurgeDeletedVolumeResult implements Serializable {
 
-    private static final long serialVersionUID = -1959410430L;
+    private static final long serialVersionUID = 1140626087L;
 
 
     /**

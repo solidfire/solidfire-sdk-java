@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class TestDrivesRequest implements Serializable {
 
-    private static final long serialVersionUID = -368803732L;
+    private static final long serialVersionUID = -519650936L;
 
     @SerializedName("minutes") private final Optional<Long> minutes;
     @SerializedName("force") private final Boolean force;

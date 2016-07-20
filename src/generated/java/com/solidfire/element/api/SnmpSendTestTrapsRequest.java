@@ -39,88 +39,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class SnmpSendTestTrapsRequest implements Serializable {
 
-    private static final long serialVersionUID = 313465905L;
+    private static final long serialVersionUID = 1368671196L;
 
-    @SerializedName("status") private final String status;
 
     /**
      * The Request object for the "SnmpSendTestTraps" API Service call.
-     * @param status [required] Status of the test.
      * @since 7.0
      **/
     @Since("7.0")
-    public SnmpSendTestTrapsRequest(String status) {
-        this.status = status;
+    public SnmpSendTestTrapsRequest() {
+
     }
 
-
-    /**
-     * Status of the test.
-     **/
-    public String getStatus() {
-        return this.status;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SnmpSendTestTrapsRequest that = (SnmpSendTestTrapsRequest) o;
-        
-
-        return Objects.equals( status , that.status );
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) status );
-    }
-
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append( "{ " );
-
-        sb.append(" status : ").append(status);
-        sb.append( " }" );
-
-        if(sb.lastIndexOf(", }") != -1)
-            sb.deleteCharAt(sb.lastIndexOf(", }"));
-
-        return sb.toString();
-    }
-
-    public static final Builder builder() {
-        return new Builder();
-    }
-
-    public final Builder asBuilder() {
-        return new Builder().buildFrom(this);
-    }
-
-    public static class Builder {
-        private String status;
-
-        private Builder() { }
-
-        public SnmpSendTestTrapsRequest build() {
-            return new SnmpSendTestTrapsRequest (
-                         this.status            );
-        }
-
-        private SnmpSendTestTrapsRequest.Builder buildFrom(final SnmpSendTestTrapsRequest req) {
-            this.status = req.status;
-
-            return this;
-        }
-
-        public SnmpSendTestTrapsRequest.Builder status(final String status) {
-            this.status = status;
-            return this;
-        }
-
+        return this.getClass().hashCode();
     }
 
 }

@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class DeleteSnapshotResult implements Serializable {
 
-    private static final long serialVersionUID = 932069378L;
+    private static final long serialVersionUID = -1024090944L;
 
 
     /**

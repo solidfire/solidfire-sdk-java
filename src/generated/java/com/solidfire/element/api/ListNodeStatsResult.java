@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListNodeStatsResult implements Serializable {
 
-    private static final long serialVersionUID = 195714084L;
+    private static final long serialVersionUID = 950366003L;
 
     @SerializedName("nodeStats") private final NodeStatsNodes nodeStats;
 

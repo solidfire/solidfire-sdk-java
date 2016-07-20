@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ModifyGroupSnapshotResult implements Serializable {
 
-    private static final long serialVersionUID = 169582476L;
+    private static final long serialVersionUID = 1781703587L;
 
 
     /**

@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class TestDrivesResult implements Serializable {
 
-    private static final long serialVersionUID = -819399555L;
+    private static final long serialVersionUID = -977981207L;
 
     @SerializedName("details") private final String details;
 

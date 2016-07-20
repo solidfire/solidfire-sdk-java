@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class RemoveNodesRequest implements Serializable {
 
-    private static final long serialVersionUID = 245470440L;
+    private static final long serialVersionUID = 2139461747L;
 
     @SerializedName("nodes") private final Long[] nodes;
 

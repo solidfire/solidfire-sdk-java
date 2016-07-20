@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListSchedulesRequest implements Serializable {
 
-    private static final long serialVersionUID = -43039686L;
+    private static final long serialVersionUID = 385635394L;
 
 
     /**

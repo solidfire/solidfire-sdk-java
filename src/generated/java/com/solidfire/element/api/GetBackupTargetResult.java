@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetBackupTargetResult implements Serializable {
 
-    private static final long serialVersionUID = 763353730L;
+    private static final long serialVersionUID = 1555120455L;
 
     @SerializedName("backupTarget") private final BackupTarget backupTarget;
 

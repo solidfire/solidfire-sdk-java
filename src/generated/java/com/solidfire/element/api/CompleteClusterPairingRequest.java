@@ -39,13 +39,13 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class CompleteClusterPairingRequest implements Serializable {
 
-    private static final long serialVersionUID = -298140918L;
+    private static final long serialVersionUID = 2135813812L;
 
     @SerializedName("clusterPairingKey") private final String clusterPairingKey;
 
     /**
      * The Request object for the "CompleteClusterPairing" API Service call.
-     * @param clusterPairingKey [required] 
+     * @param clusterPairingKey [required] A string of characters that is returned from the StartClusterPairing API method.
      * @since 7.0
      **/
     @Since("7.0")
@@ -53,6 +53,10 @@ public class CompleteClusterPairingRequest implements Serializable {
         this.clusterPairingKey = clusterPairingKey;
     }
 
+
+    /**
+     * A string of characters that is returned from the StartClusterPairing API method.
+     **/
     public String getClusterPairingKey() {
         return this.clusterPairingKey;
     }

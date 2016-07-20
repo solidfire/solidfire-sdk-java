@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListEventsResult implements Serializable {
 
-    private static final long serialVersionUID = 333684828L;
+    private static final long serialVersionUID = 1667095023L;
 
     @SerializedName("eventQueueType") private final String eventQueueType;
     @SerializedName("events") private final EventInfo[] events;
