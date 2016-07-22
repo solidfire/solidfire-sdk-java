@@ -145,10 +145,10 @@ public class ModifyAccountRequest implements Serializable {
             sb.append(" username : ").append(username.get()).append(",");
         if(null != status && status.isPresent())
             sb.append(" status : ").append(status.get()).append(",");
-        if(null != initiatorSecret && initiatorSecret.isPresent())
-            sb.append(" initiatorSecret : ").append(initiatorSecret.get()).append(",");
-        if(null != targetSecret && targetSecret.isPresent())
-            sb.append(" targetSecret : ").append(targetSecret.get()).append(",");
+        if(null != initiatorSecret)
+            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+        if(null != targetSecret)
+            sb.append(" targetSecret : ").append(targetSecret).append(",");
         if(null != attributes && attributes.isPresent())
             sb.append(" attributes : ").append(attributes.get());
         sb.append( " }" );
