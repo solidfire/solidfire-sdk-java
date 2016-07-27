@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "DeleteSnapshot" API Service call.
  **/
-public class DeleteSnapshotResult implements Serializable {
+public class DeleteSnapshotResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1024090944L;
+    private static final long serialVersionUID = 1808737383L;
 
 
     /**

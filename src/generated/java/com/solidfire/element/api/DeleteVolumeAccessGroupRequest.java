@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "DeleteVolumeAccessGroup" API Service call.
  **/
-public class DeleteVolumeAccessGroupRequest implements Serializable {
+public class DeleteVolumeAccessGroupRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 571131711L;
+    private static final long serialVersionUID = 1947438853L;
 
     @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
 

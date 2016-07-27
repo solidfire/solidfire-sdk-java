@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * A node refers to an individual machine in a cluster.
  **/
-public class Node implements Serializable {
+public class Node  implements Serializable  {
 
-    private static final long serialVersionUID = 2075261020L;
+    private static final long serialVersionUID = -2078668701L;
 
     @SerializedName("nodeID") private final Long nodeID;
     @SerializedName("associatedMasterServiceID") private final Long associatedMasterServiceID;

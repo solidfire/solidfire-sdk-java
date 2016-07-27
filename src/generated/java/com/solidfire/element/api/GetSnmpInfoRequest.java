@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "GetSnmpInfo" API Service call.
  **/
-public class GetSnmpInfoRequest implements Serializable {
+public class GetSnmpInfoRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1392182683L;
+    private static final long serialVersionUID = 683946690L;
 
 
     /**

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "GetClusterStats" API Service call.
  **/
-public class GetClusterStatsResult implements Serializable {
+public class GetClusterStatsResult  implements Serializable  {
 
-    private static final long serialVersionUID = -780957999L;
+    private static final long serialVersionUID = -1140569260L;
 
     @SerializedName("clusterStats") private final ClusterStats clusterStats;
 

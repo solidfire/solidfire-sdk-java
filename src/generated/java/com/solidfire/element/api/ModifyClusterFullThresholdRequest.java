@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ModifyClusterFullThreshold" API Service call.
  **/
-public class ModifyClusterFullThresholdRequest implements Serializable {
+public class ModifyClusterFullThresholdRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 2050543395L;
+    private static final long serialVersionUID = 1756428140L;
 
     @SerializedName("stage2AwareThreshold") private final Optional<Long> stage2AwareThreshold;
     @SerializedName("stage3BlockThresholdPercent") private final Optional<Long> stage3BlockThresholdPercent;

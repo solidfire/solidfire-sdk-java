@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * High level capacity measurements for the entire cluster.
  **/
-public class ClusterCapacity implements Serializable {
+public class ClusterCapacity  implements Serializable  {
 
-    private static final long serialVersionUID = 299409621L;
+    private static final long serialVersionUID = 21333276L;
 
     @SerializedName("activeBlockSpace") private final Long activeBlockSpace;
     @SerializedName("activeSessions") private final Long activeSessions;

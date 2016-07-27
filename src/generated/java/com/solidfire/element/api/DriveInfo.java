@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * 
  **/
-public class DriveInfo implements Serializable {
+public class DriveInfo  implements Serializable  {
 
-    private static final long serialVersionUID = 69482516L;
+    private static final long serialVersionUID = 1302055454L;
 
     @SerializedName("capacity") private final Long capacity;
     @SerializedName("driveID") private final Long driveID;

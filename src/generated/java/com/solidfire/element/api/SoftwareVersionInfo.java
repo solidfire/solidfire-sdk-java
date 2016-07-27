@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * 
  **/
-public class SoftwareVersionInfo implements Serializable {
+public class SoftwareVersionInfo  implements Serializable  {
 
-    private static final long serialVersionUID = -307831352L;
+    private static final long serialVersionUID = 193461099L;
 
     @SerializedName("currentVersion") private final String currentVersion;
     @SerializedName("nodeID") private final Long nodeID;

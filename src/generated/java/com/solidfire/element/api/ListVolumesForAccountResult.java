@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "ListVolumesForAccount" API Service call.
  **/
-public class ListVolumesForAccountResult implements Serializable {
+public class ListVolumesForAccountResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1760044692L;
+    private static final long serialVersionUID = 1159938776L;
 
     @SerializedName("volumes") private final Volume[] volumes;
 

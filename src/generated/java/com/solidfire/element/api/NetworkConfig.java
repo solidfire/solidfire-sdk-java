@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * 
  **/
-public class NetworkConfig implements Serializable {
+public class NetworkConfig  implements Serializable  {
 
-    private static final long serialVersionUID = 571704314L;
+    private static final long serialVersionUID = -1828621032L;
 
     @SerializedName("#default") private final Optional<Boolean> Default;
     @SerializedName("address") private final Optional<String> address;

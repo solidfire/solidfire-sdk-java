@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ListVolumeStatsByVolumeAccessGroup" API Service call.
  **/
-public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
+public class ListVolumeStatsByVolumeAccessGroupRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -2057730087L;
+    private static final long serialVersionUID = -992778893L;
 
     @SerializedName("volumeAccessGroups") private final Optional<Long[]> volumeAccessGroups;
 

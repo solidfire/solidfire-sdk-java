@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "AddNodes" API Service call.
  **/
-public class AddNodesRequest implements Serializable {
+public class AddNodesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -2133750210L;
+    private static final long serialVersionUID = 2058406478L;
 
     @SerializedName("pendingNodes") private final Long[] pendingNodes;
 

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The SNMP network object contains information about SNMP configuration for the cluster nodes. SNMP v3 is supported on SolidFire clusters.
  **/
-public class SnmpNetwork implements Serializable {
+public class SnmpNetwork  implements Serializable  {
 
-    private static final long serialVersionUID = 513789462L;
+    private static final long serialVersionUID = -1890405025L;
 
     @SerializedName("access") private final String access;
     @SerializedName("cidr") private final Long cidr;

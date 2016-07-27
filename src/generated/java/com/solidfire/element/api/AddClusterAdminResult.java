@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "AddClusterAdmin" API Service call.
  **/
-public class AddClusterAdminResult implements Serializable {
+public class AddClusterAdminResult  implements Serializable  {
 
-    private static final long serialVersionUID = -54095540L;
+    private static final long serialVersionUID = 223954745L;
 
     @SerializedName("clusterAdminID") private final Long clusterAdminID;
 

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Snapshots is an object containing information about each snapshot made for a volume.
  **/
-public class Snapshot implements Serializable {
+public class Snapshot  implements Serializable  {
 
-    private static final long serialVersionUID = 2121047841L;
+    private static final long serialVersionUID = -1297963942L;
 
     @SerializedName("snapshotID") private final Long snapshotID;
     @SerializedName("volumeID") private final Long volumeID;

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "AddDrives" API Service call.
  **/
-public class AddDrivesResult implements Serializable {
+public class AddDrivesResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1282843530L;
+    private static final long serialVersionUID = 839264286L;
 
 
     /**

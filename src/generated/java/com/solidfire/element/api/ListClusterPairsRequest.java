@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ListClusterPairs" API Service call.
  **/
-public class ListClusterPairsRequest implements Serializable {
+public class ListClusterPairsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1577399386L;
+    private static final long serialVersionUID = 1650668243L;
 
 
     /**

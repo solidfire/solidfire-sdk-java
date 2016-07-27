@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "RemoveClusterAdmin" API Service call.
  **/
-public class RemoveClusterAdminRequest implements Serializable {
+public class RemoveClusterAdminRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1056578352L;
+    private static final long serialVersionUID = -1898586412L;
 
     @SerializedName("clusterAdminID") private final Long clusterAdminID;
 

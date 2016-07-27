@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ListClusterAdmins" API Service call.
  **/
-public class ListClusterAdminsRequest implements Serializable {
+public class ListClusterAdminsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 973856597L;
+    private static final long serialVersionUID = -1430749497L;
 
 
     /**

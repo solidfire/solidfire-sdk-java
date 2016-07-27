@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "PurgeDeletedVolume" API Service call.
  **/
-public class PurgeDeletedVolumeResult implements Serializable {
+public class PurgeDeletedVolumeResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1140626087L;
+    private static final long serialVersionUID = -1717740149L;
 
 
     /**

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "DisableEncryptionAtRest" API Service call.
  **/
-public class DisableEncryptionAtRestRequest implements Serializable {
+public class DisableEncryptionAtRestRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -2103934106L;
+    private static final long serialVersionUID = -734956480L;
 
 
     /**

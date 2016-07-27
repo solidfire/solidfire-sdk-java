@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * 
  **/
-public class PairedCluster implements Serializable {
+public class PairedCluster  implements Serializable  {
 
-    private static final long serialVersionUID = -1689910887L;
+    private static final long serialVersionUID = -2109317578L;
 
     @SerializedName("clusterName") private final String clusterName;
     @SerializedName("clusterPairID") private final Long clusterPairID;

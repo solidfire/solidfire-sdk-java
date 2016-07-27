@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ListClusterFaults" API Service call.
  **/
-public class ListClusterFaultsRequest implements Serializable {
+public class ListClusterFaultsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 9305255L;
+    private static final long serialVersionUID = -766407781L;
 
     @SerializedName("exceptions") private final Optional<Boolean> exceptions;
     @SerializedName("bestPractices") private final Optional<Boolean> bestPractices;

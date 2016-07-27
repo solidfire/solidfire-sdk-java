@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "ListVirtualNetworks" API Service call.
  **/
-public class ListVirtualNetworksResult implements Serializable {
+public class ListVirtualNetworksResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1225836365L;
+    private static final long serialVersionUID = 1811344176L;
 
     @SerializedName("virtualNetworks") private final VirtualNetwork[] virtualNetworks;
 

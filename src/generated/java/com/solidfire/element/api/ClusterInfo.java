@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Cluster Info object returns information the node uses to communicate with the cluster.
  **/
-public class ClusterInfo implements Serializable {
+public class ClusterInfo  implements Serializable  {
 
-    private static final long serialVersionUID = -384771091L;
+    private static final long serialVersionUID = -2081258816L;
 
     @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
     @SerializedName("encryptionAtRestState") private final String encryptionAtRestState;

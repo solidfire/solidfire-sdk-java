@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Unique Range of IP addresses to include in the virtual network.
  **/
-public class AddressBlock implements Serializable {
+public class AddressBlock  implements Serializable  {
 
-    private static final long serialVersionUID = 1573803467L;
+    private static final long serialVersionUID = -867125400L;
 
     @SerializedName("start") private final String start;
     @SerializedName("size") private final Long size;

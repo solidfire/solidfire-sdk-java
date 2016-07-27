@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ListFibreChannelPortInfo" API Service call.
  **/
-public class ListFibreChannelPortInfoRequest implements Serializable {
+public class ListFibreChannelPortInfoRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 228741989L;
+    private static final long serialVersionUID = -1819488L;
 
 
     /**

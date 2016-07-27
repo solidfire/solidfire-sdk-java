@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The SNMP v3 usmUser object is used with the API method SetSnmpInfo to configure SNMP on the cluster.
  **/
-public class SnmpV3UsmUser implements Serializable {
+public class SnmpV3UsmUser  implements Serializable  {
 
-    private static final long serialVersionUID = 546995892L;
+    private static final long serialVersionUID = 1518161687L;
 
     @SerializedName("access") private final String access;
     @SerializedName("name") private final String name;

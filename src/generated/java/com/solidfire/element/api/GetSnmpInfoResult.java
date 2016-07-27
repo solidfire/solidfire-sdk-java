@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "GetSnmpInfo" API Service call.
  **/
-public class GetSnmpInfoResult implements Serializable {
+public class GetSnmpInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = 464790471L;
+    private static final long serialVersionUID = -1622974191L;
 
     @SerializedName("networks") private final SnmpNetwork[] networks;
     @SerializedName("enabled") private final Boolean enabled;

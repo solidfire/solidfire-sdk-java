@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "AddInitiatorsToVolumeAccessGroup" API Service call.
  **/
-public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
+public class AddInitiatorsToVolumeAccessGroupRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1203528761L;
+    private static final long serialVersionUID = -1973611011L;
 
     @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
     @SerializedName("initiators") private final String[] initiators;

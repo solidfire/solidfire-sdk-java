@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "RestoreDeletedVolume" API Service call.
  **/
-public class RestoreDeletedVolumeResult implements Serializable {
+public class RestoreDeletedVolumeResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1739088503L;
+    private static final long serialVersionUID = -1462743526L;
 
 
     /**

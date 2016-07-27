@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "SetNetworkConfig" API Service call.
  **/
-public class SetNetworkConfigResult implements Serializable {
+public class SetNetworkConfigResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1359483477L;
+    private static final long serialVersionUID = -1793624961L;
 
     @SerializedName("network") private final Network network;
 

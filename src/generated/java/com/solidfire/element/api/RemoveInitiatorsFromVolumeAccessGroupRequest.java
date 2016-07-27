@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "RemoveInitiatorsFromVolumeAccessGroup" API Service call.
  **/
-public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializable {
+public class RemoveInitiatorsFromVolumeAccessGroupRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1253832255L;
+    private static final long serialVersionUID = 1778422325L;
 
     @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
     @SerializedName("initiators") private final String[] initiators;

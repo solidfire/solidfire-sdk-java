@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ModifyVolume" API Service call.
  **/
-public class ModifyVolumeRequest implements Serializable {
+public class ModifyVolumeRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 207267245L;
+    private static final long serialVersionUID = -1029710751L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("accountID") private final Optional<Long> accountID;

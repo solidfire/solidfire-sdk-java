@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "SetSnmpACL" API Service call.
  **/
-public class SetSnmpACLResult implements Serializable {
+public class SetSnmpACLResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1291296135L;
+    private static final long serialVersionUID = 599491556L;
 
 
     /**

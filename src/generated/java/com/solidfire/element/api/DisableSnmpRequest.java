@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "DisableSnmp" API Service call.
  **/
-public class DisableSnmpRequest implements Serializable {
+public class DisableSnmpRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1817992965L;
+    private static final long serialVersionUID = -1887476844L;
 
 
     /**

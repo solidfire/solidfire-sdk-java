@@ -728,7 +728,7 @@ public class SolidFireElement
 
     @Override
     public GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request) {
-        final GetDriveStatsResult result = this.getDriveStats( request );
+        final GetDriveStatsResult result = super.sendRequest( "GetDriveStats", request, GetDriveStatsRequest.class, GetDriveStatsResult.class );
 
         return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStats(request, result);
     }
@@ -904,7 +904,7 @@ public class SolidFireElement
 
     @Override
     public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request) {
-        final GetNodeStatsResult result = this.getNodeStats( request );
+        final GetNodeStatsResult result = super.sendRequest( "GetNodeStats", request, GetNodeStatsRequest.class, GetNodeStatsResult.class );
 
         return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(request, result);
     }

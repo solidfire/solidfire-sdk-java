@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Details on the volume replication.
  **/
-public class RemoteReplication implements Serializable {
+public class RemoteReplication  implements Serializable  {
 
-    private static final long serialVersionUID = -820857963L;
+    private static final long serialVersionUID = 1815989745L;
 
     @SerializedName("mode") private final String mode;
     @SerializedName("pauseLimit") private final Long pauseLimit;

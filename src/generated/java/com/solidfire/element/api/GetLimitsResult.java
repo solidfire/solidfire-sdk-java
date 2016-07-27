@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Limits for the cluster
  **/
-public class GetLimitsResult implements Serializable {
+public class GetLimitsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 2081352986L;
+    private static final long serialVersionUID = -1900117130L;
 
     @SerializedName("accountCountMax") private final Long accountCountMax;
     @SerializedName("accountNameLengthMax") private final Long accountNameLengthMax;

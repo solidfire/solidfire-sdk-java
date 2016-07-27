@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ListFibreChannelSessions" API Service call.
  **/
-public class ListFibreChannelSessionsRequest implements Serializable {
+public class ListFibreChannelSessionsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1897019227L;
+    private static final long serialVersionUID = -1503833946L;
 
 
     /**

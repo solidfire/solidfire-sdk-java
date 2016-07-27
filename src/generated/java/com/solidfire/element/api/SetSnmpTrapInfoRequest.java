@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "SetSnmpTrapInfo" API Service call.
  **/
-public class SetSnmpTrapInfoRequest implements Serializable {
+public class SetSnmpTrapInfoRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 783759560L;
+    private static final long serialVersionUID = -1562724936L;
 
     @SerializedName("trapRecipients") private final SnmpTrapRecipient[] trapRecipients;
     @SerializedName("clusterFaultTrapsEnabled") private final Boolean clusterFaultTrapsEnabled;

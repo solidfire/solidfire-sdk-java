@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "SecureEraseDrives" API Service call.
  **/
-public class SecureEraseDrivesRequest implements Serializable {
+public class SecureEraseDrivesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1970679212L;
+    private static final long serialVersionUID = 1858921597L;
 
     @SerializedName("drives") private final Long[] drives;
 

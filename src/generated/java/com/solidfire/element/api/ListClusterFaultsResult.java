@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "ListClusterFaults" API Service call.
  **/
-public class ListClusterFaultsResult implements Serializable {
+public class ListClusterFaultsResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1095357612L;
+    private static final long serialVersionUID = 406675408L;
 
     @SerializedName("faults") private final ClusterFaultInfo[] faults;
 

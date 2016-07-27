@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "GetConfig" API Service call.
  **/
-public class GetConfigResult implements Serializable {
+public class GetConfigResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1727543643L;
+    private static final long serialVersionUID = -1801240221L;
 
     @SerializedName("config") private final Config config;
 

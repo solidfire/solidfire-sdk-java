@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Fibre Channel Node Port Info object returns information about all Fibre Channel ports on a node, or for one node in the cluster. The same information is returned for all ports or port information for one node. This information is returned with the API method ListNodeFibreChannelPortInfo (in the SolidFire API Guide).
  **/
-public class FibreChannelPortInfo implements Serializable {
+public class FibreChannelPortInfo  implements Serializable  {
 
-    private static final long serialVersionUID = 1150141484L;
+    private static final long serialVersionUID = -1981511491L;
 
     @SerializedName("firmware") private final String firmware;
     @SerializedName("hbaPort") private final Long hbaPort;

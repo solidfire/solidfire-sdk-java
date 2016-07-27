@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * 
  **/
-public class Weekday implements Serializable {
+public class Weekday  implements Serializable  {
 
-    private static final long serialVersionUID = -1486469851L;
+    private static final long serialVersionUID = -2101250842L;
 
     @SerializedName("day") private final Long day;
     @SerializedName("offset") private final Long offset;

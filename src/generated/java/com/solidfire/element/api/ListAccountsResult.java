@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "ListAccounts" API Service call.
  **/
-public class ListAccountsResult implements Serializable {
+public class ListAccountsResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1315730046L;
+    private static final long serialVersionUID = 635177114L;
 
     @SerializedName("accounts") private final Account[] accounts;
 

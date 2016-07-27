@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "RemoveAccount" API Service call.
  **/
-public class RemoveAccountResult implements Serializable {
+public class RemoveAccountResult  implements Serializable  {
 
-    private static final long serialVersionUID = -299766897L;
+    private static final long serialVersionUID = -1787226938L;
 
 
     /**

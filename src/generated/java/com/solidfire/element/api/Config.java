@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * 
  **/
-public class Config implements Serializable {
+public class Config  implements Serializable  {
 
-    private static final long serialVersionUID = 826439339L;
+    private static final long serialVersionUID = -742843429L;
 
     @SerializedName("cluster") private final ClusterConfig cluster;
     @SerializedName("network") private final Network network;

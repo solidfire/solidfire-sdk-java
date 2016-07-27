@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "ModifyVolume" API Service call.
  **/
-public class ModifyVolumeResult implements Serializable {
+public class ModifyVolumeResult  implements Serializable  {
 
-    private static final long serialVersionUID = 56364749L;
+    private static final long serialVersionUID = -1173734810L;
 
     @SerializedName("curve") private final TreeMap<String,Long> curve;
 

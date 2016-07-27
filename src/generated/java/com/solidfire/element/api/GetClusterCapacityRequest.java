@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "GetClusterCapacity" API Service call.
  **/
-public class GetClusterCapacityRequest implements Serializable {
+public class GetClusterCapacityRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1519057349L;
+    private static final long serialVersionUID = 2023146183L;
 
 
     /**

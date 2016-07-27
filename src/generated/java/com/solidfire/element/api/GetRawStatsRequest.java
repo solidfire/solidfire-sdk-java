@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "GetRawStats" API Service call.
  **/
-public class GetRawStatsRequest implements Serializable {
+public class GetRawStatsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1936213149L;
+    private static final long serialVersionUID = 870996772L;
 
 
     /**

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "RollbackToGroupSnapshot" API Service call.
  **/
-public class RollbackToGroupSnapshotRequest implements Serializable {
+public class RollbackToGroupSnapshotRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -912883636L;
+    private static final long serialVersionUID = -1623127956L;
 
     @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
     @SerializedName("saveCurrentState") private final Boolean saveCurrentState;

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * A volume access group is a useful way of grouping volumes and initiators together for ease of management.
  **/
-public class VolumeAccessGroup implements Serializable {
+public class VolumeAccessGroup  implements Serializable  {
 
-    private static final long serialVersionUID = 1068923883L;
+    private static final long serialVersionUID = 936271874L;
 
     @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
     @SerializedName("name") private final String name;

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ListActiveNodes" API Service call.
  **/
-public class ListActiveNodesRequest implements Serializable {
+public class ListActiveNodesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 639420657L;
+    private static final long serialVersionUID = -811000103L;
 
 
     /**
