@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * FibreChannelSession contains information about each Fibre Channel session that is visible to the cluster and what target ports it is visible on.
  **/
-public class FibreChannelSession implements Serializable {
+public class FibreChannelSession  implements Serializable  {
 
-    private static final long serialVersionUID = -420645209L;
+    private static final long serialVersionUID = -1073846206L;
 
     @SerializedName("initiatorWWPN") private final String initiatorWWPN;
     @SerializedName("nodeID") private final Long nodeID;

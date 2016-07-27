@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Quality of Service (QoS) Result values are used on SolidFire volumes to provision performance expectations.
  **/
-public class VolumeQOS implements Serializable {
+public class VolumeQOS  implements Serializable  {
 
-    private static final long serialVersionUID = 37714977L;
+    private static final long serialVersionUID = 1682977139L;
 
     @SerializedName("minIOPS") private final Long minIOPS;
     @SerializedName("maxIOPS") private final Long maxIOPS;

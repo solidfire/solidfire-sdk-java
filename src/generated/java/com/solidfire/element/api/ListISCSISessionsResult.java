@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "ListISCSISessions" API Service call.
  **/
-public class ListISCSISessionsResult implements Serializable {
+public class ListISCSISessionsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1369111692L;
+    private static final long serialVersionUID = 344505827L;
 
     @SerializedName("sessions") private final ISCSISession[] sessions;
 

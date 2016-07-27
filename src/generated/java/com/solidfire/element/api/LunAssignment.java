@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * VolumeID and Lun assignment.
  **/
-public class LunAssignment implements Serializable {
+public class LunAssignment  implements Serializable  {
 
-    private static final long serialVersionUID = -1420406840L;
+    private static final long serialVersionUID = 1196457034L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("lun") private final Long lun;

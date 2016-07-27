@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "TestDrives" API Service call.
  **/
-public class TestDrivesResult implements Serializable {
+public class TestDrivesResult  implements Serializable  {
 
-    private static final long serialVersionUID = -977981207L;
+    private static final long serialVersionUID = -496126034L;
 
     @SerializedName("details") private final String details;
 

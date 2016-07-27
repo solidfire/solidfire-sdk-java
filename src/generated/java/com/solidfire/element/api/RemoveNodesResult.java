@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "RemoveNodes" API Service call.
  **/
-public class RemoveNodesResult implements Serializable {
+public class RemoveNodesResult  implements Serializable  {
 
-    private static final long serialVersionUID = -2035051775L;
+    private static final long serialVersionUID = -1636421194L;
 
 
     /**

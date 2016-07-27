@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ListBackupTargets" API Service call.
  **/
-public class ListBackupTargetsRequest implements Serializable {
+public class ListBackupTargetsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 753292110L;
+    private static final long serialVersionUID = 393510565L;
 
 
     /**

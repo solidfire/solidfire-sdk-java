@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * List of checksum, volumeIDs and snapshotIDs for each member of the group.
  **/
-public class GroupSnapshotMembers implements Serializable {
+public class GroupSnapshotMembers  implements Serializable  {
 
-    private static final long serialVersionUID = -1393083931L;
+    private static final long serialVersionUID = -448803034L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("snapshotID") private final Long snapshotID;

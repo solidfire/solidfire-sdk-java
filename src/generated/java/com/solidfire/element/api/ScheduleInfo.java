@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * 
  **/
-public class ScheduleInfo implements Serializable {
+public class ScheduleInfo  implements Serializable  {
 
-    private static final long serialVersionUID = -439229032L;
+    private static final long serialVersionUID = -1935811007L;
 
     @SerializedName("volumeID") private final Optional<Long> volumeID;
     @SerializedName("volumes") private final Optional<Long[]> volumes;

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ClearClusterFaults" API Service call.
  **/
-public class ClearClusterFaultsRequest implements Serializable {
+public class ClearClusterFaultsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 2127368022L;
+    private static final long serialVersionUID = -1306931634L;
 
     @SerializedName("faultTypes") private final Optional<String> faultTypes;
 

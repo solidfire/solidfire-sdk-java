@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ListSnapshots" API Service call.
  **/
-public class ListSnapshotsRequest implements Serializable {
+public class ListSnapshotsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 942468373L;
+    private static final long serialVersionUID = -1058970254L;
 
     @SerializedName("volumeID") private final Optional<Long> volumeID;
 

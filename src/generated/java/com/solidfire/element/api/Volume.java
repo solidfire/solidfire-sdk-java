@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Volumes Info is an object containing information about a volume.
  **/
-public class Volume implements Serializable {
+public class Volume  implements Serializable  {
 
-    private static final long serialVersionUID = -1200473693L;
+    private static final long serialVersionUID = -1140192989L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("name") private final String name;

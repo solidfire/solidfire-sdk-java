@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ListActiveVolumes" API Service call.
  **/
-public class ListActiveVolumesRequest implements Serializable {
+public class ListActiveVolumesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1860103771L;
+    private static final long serialVersionUID = -1455059609L;
 
     @SerializedName("startVolumeID") private final Optional<Long> startVolumeID;
     @SerializedName("limit") private final Optional<Long> limit;

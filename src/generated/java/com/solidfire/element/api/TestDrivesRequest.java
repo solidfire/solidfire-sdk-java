@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "TestDrives" API Service call.
  **/
-public class TestDrivesRequest implements Serializable {
+public class TestDrivesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -519650936L;
+    private static final long serialVersionUID = -631481725L;
 
     @SerializedName("minutes") private final Optional<Long> minutes;
     @SerializedName("force") private final Boolean force;

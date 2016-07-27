@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * 
  **/
-public class AddedNode implements Serializable {
+public class AddedNode  implements Serializable  {
 
-    private static final long serialVersionUID = -1309868338L;
+    private static final long serialVersionUID = -457533113L;
 
     @SerializedName("nodeID") private final Long nodeID;
     @SerializedName("pendingNodeID") private final Long pendingNodeID;

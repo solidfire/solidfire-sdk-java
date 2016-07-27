@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Cluster Config object returns information the node uses to communicate with the cluster.
  **/
-public class ClusterConfig implements Serializable {
+public class ClusterConfig  implements Serializable  {
 
-    private static final long serialVersionUID = 1452665487L;
+    private static final long serialVersionUID = 35083451L;
 
     @SerializedName("cipi") private final String cipi;
     @SerializedName("cluster") private final String cluster;

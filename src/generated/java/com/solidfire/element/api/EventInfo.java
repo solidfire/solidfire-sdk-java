@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * 
  **/
-public class EventInfo implements Serializable {
+public class EventInfo  implements Serializable  {
 
-    private static final long serialVersionUID = 1638238257L;
+    private static final long serialVersionUID = -243936856L;
 
     @SerializedName("eventID") private final Long eventID;
     @SerializedName("severity") private final Long severity;

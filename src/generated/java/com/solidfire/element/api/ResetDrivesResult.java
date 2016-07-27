@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "ResetDrives" API Service call.
  **/
-public class ResetDrivesResult implements Serializable {
+public class ResetDrivesResult  implements Serializable  {
 
-    private static final long serialVersionUID = -57928497L;
+    private static final long serialVersionUID = -1738633984L;
 
     @SerializedName("details") private final ResetDrivesDetails details;
 

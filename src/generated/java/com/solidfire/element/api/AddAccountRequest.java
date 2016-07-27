@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "AddAccount" API Service call.
  **/
-public class AddAccountRequest implements Serializable {
+public class AddAccountRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1950524613L;
+    private static final long serialVersionUID = -1397665142L;
 
     @SerializedName("username") private final String username;
     @SerializedName("initiatorSecret") private final Optional<CHAPSecret> initiatorSecret;

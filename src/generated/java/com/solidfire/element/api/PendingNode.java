@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * A &quot;pending node&quot; is one that has not yet joined the cluster.
  **/
-public class PendingNode implements Serializable {
+public class PendingNode  implements Serializable  {
 
-    private static final long serialVersionUID = 681961249L;
+    private static final long serialVersionUID = 1843244214L;
 
     @SerializedName("pendingNodeID") private final Long pendingNodeID;
     @SerializedName("AssignedNodeID") private final Long assignedNodeID;

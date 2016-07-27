@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "CloneVolume" API Service call.
  **/
-public class CloneVolumeResult implements Serializable {
+public class CloneVolumeResult  implements Serializable  {
 
-    private static final long serialVersionUID = -536634864L;
+    private static final long serialVersionUID = -113869221L;
 
     @SerializedName("cloneID") private final Long cloneID;
     @SerializedName("volumeID") private final Long volumeID;

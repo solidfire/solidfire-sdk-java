@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "ListNodeStats" API Service call.
  **/
-public class ListNodeStatsResult implements Serializable {
+public class ListNodeStatsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 950366003L;
+    private static final long serialVersionUID = 1393950355L;
 
     @SerializedName("nodeStats") private final NodeStatsNodes nodeStats;
 

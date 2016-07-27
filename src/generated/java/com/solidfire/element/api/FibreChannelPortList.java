@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * List of all Fibre Channel ports.
  **/
-public class FibreChannelPortList implements Serializable {
+public class FibreChannelPortList  implements Serializable  {
 
-    private static final long serialVersionUID = -586042417L;
+    private static final long serialVersionUID = -1944190359L;
 
     @SerializedName("fibreChannelPorts") private final FibreChannelPortInfo[] fibreChannelPorts;
 

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Fibre channel port info results for a node.
  **/
-public class NodeFibreChannelPortInfoResult implements Serializable {
+public class NodeFibreChannelPortInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1852368333L;
+    private static final long serialVersionUID = -473622851L;
 
     @SerializedName("nodeID") private final Long nodeID;
     @SerializedName("result") private final FibreChannelPortList result;

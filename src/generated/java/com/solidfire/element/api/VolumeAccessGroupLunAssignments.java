@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * VolumeAccessGroup ID and Lun to be assigned to all volumes within it.
  **/
-public class VolumeAccessGroupLunAssignments implements Serializable {
+public class VolumeAccessGroupLunAssignments  implements Serializable  {
 
-    private static final long serialVersionUID = 1475474556L;
+    private static final long serialVersionUID = 568929847L;
 
     @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
     @SerializedName("lunAssignments") private final LunAssignment[] lunAssignments;

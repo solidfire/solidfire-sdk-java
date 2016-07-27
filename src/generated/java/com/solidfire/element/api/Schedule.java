@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Schedule is an object containing information about each schedule created to autonomously make a snapshot of a volume. The return object includes information for all schedules. If scheduleID is used to identify a specific schedule then only information for that scheduleID is returned. Schedules information is returned with the API method, see ListSchedules on the SolidFire API guide page 245.
  **/
-public class Schedule implements Serializable {
+public class Schedule  implements Serializable  {
 
-    private static final long serialVersionUID = -1155857436L;
+    private static final long serialVersionUID = 205995895L;
 
     @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
     @SerializedName("hasError") private final Boolean hasError;

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "GetCompleteStats" API Service call.
  **/
-public class GetCompleteStatsRequest implements Serializable {
+public class GetCompleteStatsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1522774214L;
+    private static final long serialVersionUID = -1591803160L;
 
 
     /**

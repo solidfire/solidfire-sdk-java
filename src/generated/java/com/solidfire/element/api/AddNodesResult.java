@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "AddNodes" API Service call.
  **/
-public class AddNodesResult implements Serializable {
+public class AddNodesResult  implements Serializable  {
 
-    private static final long serialVersionUID = 2015415947L;
+    private static final long serialVersionUID = -159622362L;
 
     @SerializedName("nodes") private final AddedNode[] nodes;
 

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "RemoveDrives" API Service call.
  **/
-public class RemoveDrivesRequest implements Serializable {
+public class RemoveDrivesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 631734448L;
+    private static final long serialVersionUID = -1421229161L;
 
     @SerializedName("drives") private final Long[] drives;
 

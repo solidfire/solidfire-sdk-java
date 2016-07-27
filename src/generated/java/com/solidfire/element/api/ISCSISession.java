@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * 
  **/
-public class ISCSISession implements Serializable {
+public class ISCSISession  implements Serializable  {
 
-    private static final long serialVersionUID = 1078934898L;
+    private static final long serialVersionUID = 1904990967L;
 
     @SerializedName("accountID") private final Long accountID;
     @SerializedName("accountName") private final String accountName;

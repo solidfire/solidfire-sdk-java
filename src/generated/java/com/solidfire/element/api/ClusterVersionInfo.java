@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Version information for a node in the cluster.
  **/
-public class ClusterVersionInfo implements Serializable {
+public class ClusterVersionInfo  implements Serializable  {
 
-    private static final long serialVersionUID = -909744960L;
+    private static final long serialVersionUID = 996139717L;
 
     @SerializedName("nodeID") private final Long nodeID;
     @SerializedName("nodeVersion") private final String nodeVersion;

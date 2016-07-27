@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "GetLimits" API Service call.
  **/
-public class GetLimitsRequest implements Serializable {
+public class GetLimitsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -185012497L;
+    private static final long serialVersionUID = 2045908154L;
 
 
     /**

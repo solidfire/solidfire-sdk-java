@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * 
  **/
-public class DriveStats implements Serializable {
+public class DriveStats  implements Serializable  {
 
-    private static final long serialVersionUID = 1663358933L;
+    private static final long serialVersionUID = 471126863L;
 
     @SerializedName("activeSessions") private final Long activeSessions;
     @SerializedName("failedDieCount") private final Long failedDieCount;

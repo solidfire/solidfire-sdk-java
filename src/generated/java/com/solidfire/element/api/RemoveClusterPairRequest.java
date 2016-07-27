@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "RemoveClusterPair" API Service call.
  **/
-public class RemoveClusterPairRequest implements Serializable {
+public class RemoveClusterPairRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1169829575L;
+    private static final long serialVersionUID = 1651052529L;
 
     @SerializedName("clusterPairID") private final Long clusterPairID;
 

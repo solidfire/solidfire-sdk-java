@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "ModifyClusterFullThreshold" API Service call.
  **/
-public class ModifyClusterFullThresholdResult implements Serializable {
+public class ModifyClusterFullThresholdResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1262146580L;
+    private static final long serialVersionUID = -1569049598L;
 
     @SerializedName("blockFullness") private final String blockFullness;
     @SerializedName("fullness") private final String fullness;

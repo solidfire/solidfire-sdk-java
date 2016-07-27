@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "RemoveVirtualNetwork" API Service call.
  **/
-public class RemoveVirtualNetworkResult implements Serializable {
+public class RemoveVirtualNetworkResult  implements Serializable  {
 
-    private static final long serialVersionUID = 333295814L;
+    private static final long serialVersionUID = 820980899L;
 
 
     /**

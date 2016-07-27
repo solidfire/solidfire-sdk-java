@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "ListEvents" API Service call.
  **/
-public class ListEventsResult implements Serializable {
+public class ListEventsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1667095023L;
+    private static final long serialVersionUID = 428743907L;
 
     @SerializedName("eventQueueType") private final String eventQueueType;
     @SerializedName("events") private final EventInfo[] events;

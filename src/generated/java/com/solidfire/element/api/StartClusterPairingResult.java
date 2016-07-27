@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "StartClusterPairing" API Service call.
  **/
-public class StartClusterPairingResult implements Serializable {
+public class StartClusterPairingResult  implements Serializable  {
 
-    private static final long serialVersionUID = -595181835L;
+    private static final long serialVersionUID = -81280284L;
 
     @SerializedName("clusterPairingKey") private final String clusterPairingKey;
     @SerializedName("clusterPairID") private final Long clusterPairID;

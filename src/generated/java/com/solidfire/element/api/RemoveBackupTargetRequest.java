@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "RemoveBackupTarget" API Service call.
  **/
-public class RemoveBackupTargetRequest implements Serializable {
+public class RemoveBackupTargetRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1108909201L;
+    private static final long serialVersionUID = 847459383L;
 
     @SerializedName("backupTargetID") private final Long backupTargetID;
 

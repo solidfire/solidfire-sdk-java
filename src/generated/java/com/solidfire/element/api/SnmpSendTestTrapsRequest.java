@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "SnmpSendTestTraps" API Service call.
  **/
-public class SnmpSendTestTrapsRequest implements Serializable {
+public class SnmpSendTestTrapsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1368671196L;
+    private static final long serialVersionUID = -52798872L;
 
 
     /**

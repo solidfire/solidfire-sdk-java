@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ListDriveHardware" API Service call.
  **/
-public class ListDriveHardwareRequest implements Serializable {
+public class ListDriveHardwareRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 515455520L;
+    private static final long serialVersionUID = -1977463252L;
 
     @SerializedName("force") private final Boolean force;
 

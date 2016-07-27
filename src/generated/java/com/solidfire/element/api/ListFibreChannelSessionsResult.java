@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Used to return information about the Fibre Channel sessions.
  **/
-public class ListFibreChannelSessionsResult implements Serializable {
+public class ListFibreChannelSessionsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1544379173L;
+    private static final long serialVersionUID = 1385337796L;
 
     @SerializedName("sessions") private final FibreChannelSession[] sessions;
 

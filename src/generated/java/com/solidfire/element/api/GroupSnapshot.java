@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Group Snapshot object represents a point-in-time copy of a group of volumes.
  **/
-public class GroupSnapshot implements Serializable {
+public class GroupSnapshot  implements Serializable  {
 
-    private static final long serialVersionUID = -1780141948L;
+    private static final long serialVersionUID = -2045239278L;
 
     @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
     @SerializedName("groupSnapshotUUID") private final String groupSnapshotUUID;

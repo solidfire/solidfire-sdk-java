@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "GetAccountByID" API Service call.
  **/
-public class GetAccountByIDRequest implements Serializable {
+public class GetAccountByIDRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1031489571L;
+    private static final long serialVersionUID = 1508999421L;
 
     @SerializedName("accountID") private final Long accountID;
 

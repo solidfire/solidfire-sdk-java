@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * 
  **/
-public class SnapshotReplication implements Serializable {
+public class SnapshotReplication  implements Serializable  {
 
-    private static final long serialVersionUID = -6110314L;
+    private static final long serialVersionUID = 2109559456L;
 
     @SerializedName("state") private final String state;
     @SerializedName("stateDetails") private final String stateDetails;

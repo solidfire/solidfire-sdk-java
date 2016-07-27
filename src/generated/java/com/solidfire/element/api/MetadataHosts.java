@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The volume services on which the volume metadata resides.
  **/
-public class MetadataHosts implements Serializable {
+public class MetadataHosts  implements Serializable  {
 
-    private static final long serialVersionUID = -1834039358L;
+    private static final long serialVersionUID = 1304169231L;
 
     @SerializedName("deadSecondaries") private final Long[] deadSecondaries;
     @SerializedName("liveSecondaries") private final Long[] liveSecondaries;

@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The wrapped object returned by the &quot;GetAsyncResult&quot; API Service call.
  **/
-public class AsyncResult implements Serializable {
+public class AsyncResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1821435640L;
+    private static final long serialVersionUID = -1632628708L;
 
     @SerializedName("message") private final String message;
 

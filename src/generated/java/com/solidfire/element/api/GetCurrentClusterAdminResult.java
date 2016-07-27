@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "GetCurrentClusterAdmin" API Service call.
  **/
-public class GetCurrentClusterAdminResult implements Serializable {
+public class GetCurrentClusterAdminResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1869435637L;
+    private static final long serialVersionUID = -1933572728L;
 
     @SerializedName("clusterAdmin") private final ClusterAdmin clusterAdmin;
 

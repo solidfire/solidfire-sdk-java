@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * ListFibreChannelPortInfoResult is used to return information about the Fibre Channel ports.
  **/
-public class ListFibreChannelPortInfoResult implements Serializable {
+public class ListFibreChannelPortInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1579166678L;
+    private static final long serialVersionUID = -201731339L;
 
     @SerializedName("fibreChannelPortInfo") private final TreeMap<String,FibreChannelPortInfoResult> fibreChannelPortInfo;
 

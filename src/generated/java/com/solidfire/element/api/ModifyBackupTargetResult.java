@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "ModifyBackupTarget" API Service call.
  **/
-public class ModifyBackupTargetResult implements Serializable {
+public class ModifyBackupTargetResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1354891809L;
+    private static final long serialVersionUID = 886814770L;
 
 
     /**

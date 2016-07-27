@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "ListPendingNodes" API Service call.
  **/
-public class ListPendingNodesRequest implements Serializable {
+public class ListPendingNodesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1326225463L;
+    private static final long serialVersionUID = 2020781530L;
 
 
     /**

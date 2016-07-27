@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Volume Pair Info is an object containing information about a volume that is paired on a remote cluster.
  **/
-public class VolumePair implements Serializable {
+public class VolumePair  implements Serializable  {
 
-    private static final long serialVersionUID = -2020611776L;
+    private static final long serialVersionUID = -1558129361L;
 
     @SerializedName("clusterPairID") private final Long clusterPairID;
     @SerializedName("remoteVolumeID") private final Long remoteVolumeID;

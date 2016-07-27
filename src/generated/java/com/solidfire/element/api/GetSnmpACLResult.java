@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "GetSnmpACL" API Service call.
  **/
-public class GetSnmpACLResult implements Serializable {
+public class GetSnmpACLResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1973207181L;
+    private static final long serialVersionUID = -1538058029L;
 
     @SerializedName("networks") private final SnmpNetwork[] networks;
     @SerializedName("usmUsers") private final SnmpV3UsmUser[] usmUsers;

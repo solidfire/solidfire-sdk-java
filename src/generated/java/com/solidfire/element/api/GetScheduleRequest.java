@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "GetSchedule" API Service call.
  **/
-public class GetScheduleRequest implements Serializable {
+public class GetScheduleRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -549224524L;
+    private static final long serialVersionUID = -381787192L;
 
     @SerializedName("scheduleID") private final Long scheduleID;
 

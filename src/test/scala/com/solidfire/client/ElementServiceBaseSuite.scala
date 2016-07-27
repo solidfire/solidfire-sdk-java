@@ -1,6 +1,6 @@
 package com.solidfire.client
 
-import com.solidfire.element.api.ModifyAccountRequest
+import com.solidfire.element.api.{CHAPSecret, ModifyAccountRequest}
 import com.solidfire.jsvcgen.client.RequestDispatcher
 import org.mockito.Mockito._
 import org.scalatest.mock.MockitoSugar
@@ -43,24 +43,24 @@ class ElementServiceBaseSuite extends WordSpec with BeforeAndAfterAll with Mocki
       _element.encodeRequest( "ModifyAccount", modifyAccountRequest, classOf[ModifyAccountRequest] ) should not include """"targetSecret""""
     }
 
-    "encode optionalInitiatorSecret of empty String as null" in {
-      modifyAccountRequest = ModifyAccountRequest.builder( ).accountID( 1L ).optionalInitiatorSecret( "" ).build( )
+    "encode optionalInitiatorSecret of autoGenerate CHAPSecret as null" in {
+      modifyAccountRequest = ModifyAccountRequest.builder( ).accountID( 1L ).optionalInitiatorSecret( CHAPSecret.autoGenerate() ).build( )
       _element.encodeRequest( "ModifyAccount", modifyAccountRequest, classOf[ModifyAccountRequest] ) should include(""""initiatorSecret":null""" )
     }
 
-    "encode optionalTargetSecret of empty String as null" in {
-      modifyAccountRequest = ModifyAccountRequest.builder( ).accountID( 1L ).optionalTargetSecret( "" ).build( )
+    "encode optionalTargetSecret of autoGenerate CHAPSecret as null" in {
+      modifyAccountRequest = ModifyAccountRequest.builder( ).accountID( 1L ).optionalTargetSecret( CHAPSecret.autoGenerate() ).build( )
       _element.encodeRequest( "ModifyAccount", modifyAccountRequest, classOf[ModifyAccountRequest] ) should include(""""targetSecret":null""" )
     }
 
     "encode optionalInitiatorSecret" in {
-      modifyAccountRequest = ModifyAccountRequest.builder( ).accountID( 1L ).optionalInitiatorSecret( alphanumeric.take( 16 ).mkString ).build( )
-      _element.encodeRequest( "ModifyAccount", modifyAccountRequest, classOf[ModifyAccountRequest] ) should include(s""""initiatorSecret":"${modifyAccountRequest.getInitiatorSecret.get}"""" )
+      modifyAccountRequest = ModifyAccountRequest.builder( ).accountID( 1L ).optionalInitiatorSecret( new CHAPSecret(alphanumeric.take( 16 ).mkString) ).build( )
+      _element.encodeRequest( "ModifyAccount", modifyAccountRequest, classOf[ModifyAccountRequest] ) should include(s""""initiatorSecret":"${modifyAccountRequest.getInitiatorSecret.get.getSecret}"""" )
     }
 
     "encode optionalTargetSecret" in {
-      modifyAccountRequest = ModifyAccountRequest.builder( ).accountID( 1L ).optionalTargetSecret( alphanumeric.take( 16 ).mkString ).build( )
-      _element.encodeRequest( "ModifyAccount", modifyAccountRequest, classOf[ModifyAccountRequest] ) should include(s""""targetSecret":"${modifyAccountRequest.getTargetSecret.get}"""" )
+      modifyAccountRequest = ModifyAccountRequest.builder( ).accountID( 1L ).optionalTargetSecret( new CHAPSecret(alphanumeric.take( 16 ).mkString) ).build( )
+      _element.encodeRequest( "ModifyAccount", modifyAccountRequest, classOf[ModifyAccountRequest] ) should include(s""""targetSecret":"${modifyAccountRequest.getTargetSecret.get.getSecret}"""" )
     }
 
   }

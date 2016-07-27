@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "GetDriveStats" API Service call.
  **/
-public class GetDriveStatsRequest implements Serializable {
+public class GetDriveStatsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1807299748L;
+    private static final long serialVersionUID = -436678466L;
 
     @SerializedName("driveID") private final Long driveID;
 

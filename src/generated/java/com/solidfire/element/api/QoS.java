@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.
  **/
-public class QoS implements Serializable {
+public class QoS  implements Serializable  {
 
-    private static final long serialVersionUID = 1378060894L;
+    private static final long serialVersionUID = -1734655448L;
 
     @SerializedName("minIOPS") private final Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private final Optional<Long> maxIOPS;

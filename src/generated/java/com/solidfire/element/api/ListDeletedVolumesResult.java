@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The object returned by the "ListDeletedVolumes" API Service call.
  **/
-public class ListDeletedVolumesResult implements Serializable {
+public class ListDeletedVolumesResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1893370628L;
+    private static final long serialVersionUID = 1165910947L;
 
     @SerializedName("volumes") private final Volume[] volumes;
 

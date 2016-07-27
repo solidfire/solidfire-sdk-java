@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "GetAccountEfficiency" API Service call.
  **/
-public class GetAccountEfficiencyRequest implements Serializable {
+public class GetAccountEfficiencyRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -142506174L;
+    private static final long serialVersionUID = 697692937L;
 
     @SerializedName("accountID") private final Long accountID;
     @SerializedName("force") private final Optional<Boolean> force;

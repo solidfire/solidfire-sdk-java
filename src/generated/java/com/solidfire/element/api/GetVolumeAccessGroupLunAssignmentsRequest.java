@@ -37,9 +37,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "GetVolumeAccessGroupLunAssignments" API Service call.
  **/
-public class GetVolumeAccessGroupLunAssignmentsRequest implements Serializable {
+public class GetVolumeAccessGroupLunAssignmentsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 583091273L;
+    private static final long serialVersionUID = 448043396L;
 
     @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
 
