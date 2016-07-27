@@ -22,8 +22,8 @@ import java.util.Objects;
 /**
  * Created by Jason Ryan Womack on 7/18/16.
  */
+@SuppressWarnings("serial")
 public class CHAPSecret implements Serializable {
-
 
     private final String secret;
 
@@ -63,6 +63,7 @@ public class CHAPSecret implements Serializable {
     }
 }
 
+@SuppressWarnings("serial")
 final class AutoGenerate extends CHAPSecret {
     private AutoGenerate() {
         super("AUTO-GENERATE-CHAP-SECRET");
