@@ -1147,6 +1147,121 @@ public interface SolidFireElementIF {
     @Since("7.0")
     ListFibreChannelSessionsResult listFibreChannelSessions();
 
+    /**
+     * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
+     * <br/><br/>
+     * An LDAP group that has been defined in Active Directory can also be added using this API method. The access level that is given to the group will be passed to the individual users in the LDAP group.
+     *  
+     * @param request The request @see com.solidfire.element.api.AddLdapClusterAdminRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    AddLdapClusterAdminResult addLdapClusterAdmin(final AddLdapClusterAdminRequest request);
+
+
+    /**
+     * Convenience method for addLdapClusterAdmin 
+     *  
+     * @param username The distinguished user name for the new LDAP cluster admin.
+     *
+     * @param access Controls which methods this Cluster Admin can use. For more details on the levels of access, see the Access Control appendix in the SolidFire API Reference.
+     *
+     * @param attributes List of Name/Value pairs in JSON object format.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#addLdapClusterAdmin(AddLdapClusterAdminRequest) 
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    AddLdapClusterAdminResult addLdapClusterAdmin(String username, String[] access, Optional<java.util.Map<String, Object>> attributes);
+
+    /**
+     * The TestLdapAuthentication is used to verify the currently enabled LDAP authentication configuration settings are correct. If the configuration settings are correct, the API call returns a list of the groups the tested user is a member of.
+     *  
+     * @param request The request @see com.solidfire.element.api.TestLdapAuthenticationRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    TestLdapAuthenticationResult testLdapAuthentication(final TestLdapAuthenticationRequest request);
+
+
+    /**
+     * Convenience method for testLdapAuthentication 
+     *  
+     * @param username The username to be tested.
+     *
+     * @param password The password for the username to be tester.
+     *
+     * @param ldapConfiguration An ldapConfiguration object to be tested. If this parameter is provided, the API call will test the provided configuration even if LDAP authentication is currently disabled.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#testLdapAuthentication(TestLdapAuthenticationRequest) 
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    TestLdapAuthenticationResult testLdapAuthentication(String username, String password, Optional<LdapConfiguration> ldapConfiguration);
+
+    /**
+     * The GetLdapConfiguration is used to get the LDAP configuration currently active on the cluster.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetLdapConfigurationRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    GetLdapConfigurationResult getLdapConfiguration(final GetLdapConfigurationRequest request);
+
+
+    /**
+     * Convenience method for getLdapConfiguration 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getLdapConfiguration(GetLdapConfigurationRequest) 
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    GetLdapConfigurationResult getLdapConfiguration();
+
+    /**
+     * The EnableLdapAuthentication method is used to configure an LDAP server connection to use for LDAP authentication to a SolidFire cluster. Users that are members on the LDAP server can then log in to a SolidFire storage system using their LDAP authentication userid and password.
+     *  
+     * @param request The request @see com.solidfire.element.api.EnableLdapAuthenticationRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    EnableLdapAuthenticationResult enableLdapAuthentication(final EnableLdapAuthenticationRequest request);
+
+    /**
+     * The DisableLdapAuthentication method is used disable LDAP authentication and remove all LDAP configuration settings. This call will not remove any configured cluster admin accounts (user or group). However, those cluster admin accounts will no longer be able to log in.
+     *  
+     * @param request The request @see com.solidfire.element.api.DisableLdapAuthenticationRequest 
+     *  
+     * @return the response
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    DisableLdapAuthenticationResult disableLdapAuthentication(final DisableLdapAuthenticationRequest request);
+
+
+    /**
+     * Convenience method for disableLdapAuthentication 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#disableLdapAuthentication(DisableLdapAuthenticationRequest) 
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    DisableLdapAuthenticationResult disableLdapAuthentication();
+
     ListActiveNodesResult listActiveNodes(final ListActiveNodesRequest request);
 
 

@@ -804,6 +804,64 @@ public class SolidFireElement
     }
 
     @Override
+    @Since("8.0")
+    public AddLdapClusterAdminResult addLdapClusterAdmin(final AddLdapClusterAdminRequest request) {
+        return super.sendRequest( "AddLdapClusterAdmin", request, AddLdapClusterAdminRequest.class, AddLdapClusterAdminResult.class );
+    }
+
+
+    @Override
+    @Since("8.0")
+    public AddLdapClusterAdminResult addLdapClusterAdmin(String username, String[] access, Optional<java.util.Map<String, Object>> attributes) {
+        return this.addLdapClusterAdmin( new AddLdapClusterAdminRequest( username, access, attributes) );
+    }
+
+    @Override
+    @Since("8.0")
+    public TestLdapAuthenticationResult testLdapAuthentication(final TestLdapAuthenticationRequest request) {
+        return super.sendRequest( "TestLdapAuthentication", request, TestLdapAuthenticationRequest.class, TestLdapAuthenticationResult.class );
+    }
+
+
+    @Override
+    @Since("8.0")
+    public TestLdapAuthenticationResult testLdapAuthentication(String username, String password, Optional<LdapConfiguration> ldapConfiguration) {
+        return this.testLdapAuthentication( new TestLdapAuthenticationRequest( username, password, ldapConfiguration) );
+    }
+
+    @Override
+    @Since("8.0")
+    public GetLdapConfigurationResult getLdapConfiguration(final GetLdapConfigurationRequest request) {
+        return super.sendRequest( "GetLdapConfiguration", request, GetLdapConfigurationRequest.class, GetLdapConfigurationResult.class );
+    }
+
+
+    @Override
+    @Since("8.0")
+    public GetLdapConfigurationResult getLdapConfiguration() {
+        return this.getLdapConfiguration( new GetLdapConfigurationRequest( ) );
+    }
+
+    @Override
+    @Since("8.0")
+    public EnableLdapAuthenticationResult enableLdapAuthentication(final EnableLdapAuthenticationRequest request) {
+        return super.sendRequest( "EnableLdapAuthentication", request, EnableLdapAuthenticationRequest.class, EnableLdapAuthenticationResult.class );
+    }
+
+    @Override
+    @Since("8.0")
+    public DisableLdapAuthenticationResult disableLdapAuthentication(final DisableLdapAuthenticationRequest request) {
+        return super.sendRequest( "DisableLdapAuthentication", request, DisableLdapAuthenticationRequest.class, DisableLdapAuthenticationResult.class );
+    }
+
+
+    @Override
+    @Since("8.0")
+    public DisableLdapAuthenticationResult disableLdapAuthentication() {
+        return this.disableLdapAuthentication( new DisableLdapAuthenticationRequest( ) );
+    }
+
+    @Override
     public ListActiveNodesResult listActiveNodes(final ListActiveNodesRequest request) {
         return super.sendRequest( "ListActiveNodes", request, ListActiveNodesRequest.class, ListActiveNodesResult.class );
     }
