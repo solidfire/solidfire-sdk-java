@@ -16,9 +16,7 @@
 
 package com.solidfire.serialization;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
+import com.google.gson.*;
 import com.solidfire.element.api.CHAPSecret;
 
 import java.lang.reflect.Type;
@@ -26,7 +24,7 @@ import java.lang.reflect.Type;
 /**
  * Handles serializing CHAPSecret objects.
  */
-public class CHAPSecretAdaptor implements JsonSerializer<CHAPSecret> {
+public class CHAPSecretAdaptor implements JsonSerializer<CHAPSecret>, JsonDeserializer<CHAPSecret> {
 
     /**
      * Gets the Class that this adapter serializes.
@@ -55,4 +53,8 @@ public class CHAPSecretAdaptor implements JsonSerializer<CHAPSecret> {
         return context.serialize(chapSecret.getSecret());
     }
 
+    @Override
+    public CHAPSecret deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        return new CHAPSecret(json.getAsString());
+    }
 }
