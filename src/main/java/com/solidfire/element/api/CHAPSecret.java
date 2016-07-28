@@ -16,6 +16,8 @@
 
 package com.solidfire.element.api;
 
+import com.solidfire.jsvcgen.javautil.Optional;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -60,6 +62,37 @@ public class CHAPSecret implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(secret);
+    }
+
+    public static final Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+
+    public static class Builder {
+
+        private String secret;
+
+        private Builder() { }
+
+        public CHAPSecret build() {
+            return new CHAPSecret (this.secret);
+        }
+
+        private CHAPSecret.Builder buildFrom(final CHAPSecret req) {
+            this.secret = req.secret;
+
+            return this;
+        }
+
+        public CHAPSecret.Builder secret(final String secret) {
+            this.secret = secret;
+            return this;
+        }
     }
 }
 
