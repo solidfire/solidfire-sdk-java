@@ -37,7 +37,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 /**
  * The Request object for the "AddAccount" API Service call.
  **/
-public class AddAccountRequest  implements Serializable, IAccountRequest {
+public class AddAccountRequest  implements Serializable , IAccountRequest {
 
     private static final long serialVersionUID = 461883202L;
 
@@ -106,7 +106,7 @@ public class AddAccountRequest  implements Serializable, IAccountRequest {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddAccountRequest that = (AddAccountRequest) o;
-
+        
 
         return Objects.equals( username , that.username )
             && Objects.equals( initiatorSecret , that.initiatorSecret )

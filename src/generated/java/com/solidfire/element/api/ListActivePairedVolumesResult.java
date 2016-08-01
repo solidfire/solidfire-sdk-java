@@ -35,30 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The Request object for the "CompleteClusterPairing" API Service call.
+ * The object returned by the "ListActivePairedVolumes" API Service call.
  **/
-public class CompleteClusterPairingRequest  implements Serializable  {
+public class ListActivePairedVolumesResult  implements Serializable  {
 
-    private static final long serialVersionUID = -100863443L;
+    private static final long serialVersionUID = 700738616L;
 
-    @SerializedName("clusterPairingKey") private final String clusterPairingKey;
+    @SerializedName("volumes") private final Volume[] volumes;
 
     /**
-     * The Request object for the "CompleteClusterPairing" API Service call.
-     * @param clusterPairingKey [required] A string of characters that is returned from the "StartClusterPairing" API method.
+     * The object returned by the "ListActivePairedVolumes" API Service call.
+     * @param volumes [required] Volume information for the paired volumes.
      * @since 7.0
      **/
     @Since("7.0")
-    public CompleteClusterPairingRequest(String clusterPairingKey) {
-        this.clusterPairingKey = clusterPairingKey;
+    public ListActivePairedVolumesResult(Volume[] volumes) {
+        this.volumes = volumes;
     }
 
 
     /**
-     * A string of characters that is returned from the "StartClusterPairing" API method.
+     * Volume information for the paired volumes.
      **/
-    public String getClusterPairingKey() {
-        return this.clusterPairingKey;
+    public Volume[] getVolumes() {
+        return this.volumes;
     }
 
     @Override
@@ -66,15 +66,15 @@ public class CompleteClusterPairingRequest  implements Serializable  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CompleteClusterPairingRequest that = (CompleteClusterPairingRequest) o;
+        ListActivePairedVolumesResult that = (ListActivePairedVolumesResult) o;
         
 
-        return Objects.equals( clusterPairingKey , that.clusterPairingKey );
+        return Objects.deepEquals( volumes , that.volumes );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) clusterPairingKey );
+        return Objects.hash( (Object) volumes );
     }
 
 
@@ -83,7 +83,7 @@ public class CompleteClusterPairingRequest  implements Serializable  {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" clusterPairingKey : ").append(clusterPairingKey);
+        sb.append(" volumes : ").append(Arrays.toString(volumes));
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -101,23 +101,23 @@ public class CompleteClusterPairingRequest  implements Serializable  {
     }
 
     public static class Builder {
-        private String clusterPairingKey;
+        private Volume[] volumes;
 
         private Builder() { }
 
-        public CompleteClusterPairingRequest build() {
-            return new CompleteClusterPairingRequest (
-                         this.clusterPairingKey            );
+        public ListActivePairedVolumesResult build() {
+            return new ListActivePairedVolumesResult (
+                         this.volumes            );
         }
 
-        private CompleteClusterPairingRequest.Builder buildFrom(final CompleteClusterPairingRequest req) {
-            this.clusterPairingKey = req.clusterPairingKey;
+        private ListActivePairedVolumesResult.Builder buildFrom(final ListActivePairedVolumesResult req) {
+            this.volumes = req.volumes;
 
             return this;
         }
 
-        public CompleteClusterPairingRequest.Builder clusterPairingKey(final String clusterPairingKey) {
-            this.clusterPairingKey = clusterPairingKey;
+        public ListActivePairedVolumesResult.Builder volumes(final Volume[] volumes) {
+            this.volumes = volumes;
             return this;
         }
 
