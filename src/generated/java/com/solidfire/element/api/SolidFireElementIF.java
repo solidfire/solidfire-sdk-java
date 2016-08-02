@@ -1473,7 +1473,7 @@ public interface SolidFireElementIF {
     ListNodeStatsResult listNodeStats();
 
     /**
-     * ListClusterPairs allows you to list all of the clusters a cluster is paired with.
+     * ListClusterPairs is used to list all of the clusters a cluster is paired with.
      * This method returns information about active and pending cluster pairings, such as statistics about the current pairing as well as the connectivity and latency (in milliseconds) of the cluster pairing.
      *  
      * @param request The request @see com.solidfire.element.api.ListClusterPairsRequest 
@@ -1492,7 +1492,26 @@ public interface SolidFireElementIF {
     ListClusterPairsResult listClusterPairs();
 
     /**
-     * StartClusterPairing allows you to create an encoded key from a cluster that is used to pair with another cluster.
+     * ListActivePairedVolumes is used to list all of the active volumes paired with a volume.
+     * Volumes listed in the return for this method include volumes with active and pending pairings.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListActivePairedVolumesRequest 
+     *  
+     * @return the response
+     **/
+    ListActivePairedVolumesResult listActivePairedVolumes(final ListActivePairedVolumesRequest request);
+
+
+    /**
+     * Convenience method for listActivePairedVolumes 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listActivePairedVolumes(ListActivePairedVolumesRequest) 
+     **/
+    ListActivePairedVolumesResult listActivePairedVolumes();
+
+    /**
+     * StartClusterPairing is used to create an encoded key from a cluster that is used to pair with another cluster.
      * The key created from this API method is used in the "CompleteClusterPairing" API method to establish a cluster pairing.
      * You can pair a cluster with a maximum of four other SolidFire clusters.
      *  
@@ -1512,6 +1531,34 @@ public interface SolidFireElementIF {
     StartClusterPairingResult startClusterPairing();
 
     /**
+     * StartVolumePairing is used to create an encoded key from a volume that is used to pair with another volume.
+     * The key that this method creates is used in the "CompleteVolumePairing" API method to establish a volume pairing.
+     *  
+     * @param request The request @see com.solidfire.element.api.StartVolumePairingRequest 
+     *  
+     * @return the response
+     **/
+    StartVolumePairingResult startVolumePairing(final StartVolumePairingRequest request);
+
+
+    /**
+     * Convenience method for startVolumePairing 
+     *  
+     * @param volumeID The ID of the volume on which to start the pairing process.
+     *
+     * @param mode The mode of the volume on which to start the pairing process. The mode can only be set if the volume is the source volume.<br/>
+     *             Possible values:<br/>
+     *             <b>Async</b>: (default if no mode parameter specified) Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.<br/>
+     *             <b>Sync</b>: Source acknowledges write when the data is stored locally and on the remote cluster.<br/>
+     *             <b>SnapshotsOnly</b>: Only snapshots created on the source cluster will be replicated. Active writes from the source volume will not be replicated.<br/>
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#startVolumePairing(StartVolumePairingRequest) 
+     **/
+    StartVolumePairingResult startVolumePairing(Long volumeID, Optional<String> mode);
+
+    /**
      * The CompleteClusterPairing method is the second step in the cluster pairing process.
      * Use this method with the encoded key received from the "StartClusterPairing" API method to complete the cluster pairing process.
      *  
@@ -1525,13 +1572,36 @@ public interface SolidFireElementIF {
     /**
      * Convenience method for completeClusterPairing 
      *  
-     * @param clusterPairingKey A string of characters that is returned from the StartClusterPairing API method.
+     * @param clusterPairingKey A string of characters that is returned from the "StartClusterPairing" API method.
      *
      *  
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#completeClusterPairing(CompleteClusterPairingRequest) 
      **/
     CompleteClusterPairingResult completeClusterPairing(String clusterPairingKey);
+
+    /**
+     * CompleteVolumePairing is used to complete the pairing of two volumes.
+     *  
+     * @param request The request @see com.solidfire.element.api.CompleteVolumePairingRequest 
+     *  
+     * @return the response
+     **/
+    CompleteVolumePairingResult completeVolumePairing(final CompleteVolumePairingRequest request);
+
+
+    /**
+     * Convenience method for completeVolumePairing 
+     *  
+     * @param volumePairingKey The key returned from the "StartVolumePairing" API method.
+     *
+     * @param volumeID The ID of volume on which to complete the pairing process.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#completeVolumePairing(CompleteVolumePairingRequest) 
+     **/
+    CompleteVolumePairingResult completeVolumePairing(String volumePairingKey, Long volumeID);
 
     /**
      * You can use the RemoveClusterPair method to close the open connections between two paired clusters.<br/>
@@ -1554,6 +1624,61 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#removeClusterPair(RemoveClusterPairRequest) 
      **/
     RemoveClusterPairResult removeClusterPair(Long clusterPairID);
+
+    /**
+     * RemoveVolumePair is used to remove the remote pairing between two volumes.
+     * When the volume pairing information is removed, data is no longer replicated to or from the volume.
+     * This method should be run on both the source and target volumes that are paired together.
+     *  
+     * @param request The request @see com.solidfire.element.api.RemoveVolumePairRequest 
+     *  
+     * @return the response
+     **/
+    RemoveVolumePairResult removeVolumePair(final RemoveVolumePairRequest request);
+
+
+    /**
+     * Convenience method for removeVolumePair 
+     *  
+     * @param volumeID ID of the volume on which to stop the replication process.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#removeVolumePair(RemoveVolumePairRequest) 
+     **/
+    RemoveVolumePairResult removeVolumePair(Long volumeID);
+
+    /**
+     * ModifyVolumePair is used to pause or restart replication between a pair of volumes.
+     *  
+     * @param request The request @see com.solidfire.element.api.ModifyVolumePairRequest 
+     *  
+     * @return the response
+     **/
+    ModifyVolumePairResult modifyVolumePair(final ModifyVolumePairRequest request);
+
+
+    /**
+     * Convenience method for modifyVolumePair 
+     *  
+     * @param volumeID Identification number of the volume to be modified.
+     *
+     * @param pausedManual Valid values that can be entered:<br/>
+     *                     <b>true</b>: to pause volume replication.<br/>
+     *                     <b>false</b>: to restart volume replication.<br/>
+     *                     If no value is specified, no change in replication is performed.
+     *
+     * @param mode Volume replication mode.<br/>
+     *             Possible values:<br/>
+     *             <b>Async</b>: Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.<br/>
+     *             <b>Sync</b>: The source acknowledges the write when the data is stored locally and on the remote cluster.<br/>
+     *             <b>SnapshotsOnly</b>: Only snapshots created on the source cluster will be replicated. Active writes from the source volume are not replicated.<br/>
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#modifyVolumePair(ModifyVolumePairRequest) 
+     **/
+    ModifyVolumePairResult modifyVolumePair(Long volumeID, Optional<Boolean> pausedManual, Optional<String> mode);
 
     /**
      * CreateSnapshot is used to create a point-in-time copy of a volume.

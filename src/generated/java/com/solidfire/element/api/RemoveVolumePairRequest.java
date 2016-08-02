@@ -35,30 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The Request object for the "CompleteClusterPairing" API Service call.
+ * The Request object for the "RemoveVolumePair" API Service call.
  **/
-public class CompleteClusterPairingRequest  implements Serializable  {
+public class RemoveVolumePairRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -100863443L;
+    private static final long serialVersionUID = -502731008L;
 
-    @SerializedName("clusterPairingKey") private final String clusterPairingKey;
+    @SerializedName("volumeID") private final Long volumeID;
 
     /**
-     * The Request object for the "CompleteClusterPairing" API Service call.
-     * @param clusterPairingKey [required] A string of characters that is returned from the "StartClusterPairing" API method.
+     * The Request object for the "RemoveVolumePair" API Service call.
+     * @param volumeID [required] ID of the volume on which to stop the replication process.
      * @since 7.0
      **/
     @Since("7.0")
-    public CompleteClusterPairingRequest(String clusterPairingKey) {
-        this.clusterPairingKey = clusterPairingKey;
+    public RemoveVolumePairRequest(Long volumeID) {
+        this.volumeID = volumeID;
     }
 
 
     /**
-     * A string of characters that is returned from the "StartClusterPairing" API method.
+     * ID of the volume on which to stop the replication process.
      **/
-    public String getClusterPairingKey() {
-        return this.clusterPairingKey;
+    public Long getVolumeID() {
+        return this.volumeID;
     }
 
     @Override
@@ -66,15 +66,15 @@ public class CompleteClusterPairingRequest  implements Serializable  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CompleteClusterPairingRequest that = (CompleteClusterPairingRequest) o;
+        RemoveVolumePairRequest that = (RemoveVolumePairRequest) o;
         
 
-        return Objects.equals( clusterPairingKey , that.clusterPairingKey );
+        return Objects.equals( volumeID , that.volumeID );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) clusterPairingKey );
+        return Objects.hash( (Object) volumeID );
     }
 
 
@@ -83,7 +83,7 @@ public class CompleteClusterPairingRequest  implements Serializable  {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" clusterPairingKey : ").append(clusterPairingKey);
+        sb.append(" volumeID : ").append(volumeID);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -101,23 +101,23 @@ public class CompleteClusterPairingRequest  implements Serializable  {
     }
 
     public static class Builder {
-        private String clusterPairingKey;
+        private Long volumeID;
 
         private Builder() { }
 
-        public CompleteClusterPairingRequest build() {
-            return new CompleteClusterPairingRequest (
-                         this.clusterPairingKey            );
+        public RemoveVolumePairRequest build() {
+            return new RemoveVolumePairRequest (
+                         this.volumeID            );
         }
 
-        private CompleteClusterPairingRequest.Builder buildFrom(final CompleteClusterPairingRequest req) {
-            this.clusterPairingKey = req.clusterPairingKey;
+        private RemoveVolumePairRequest.Builder buildFrom(final RemoveVolumePairRequest req) {
+            this.volumeID = req.volumeID;
 
             return this;
         }
 
-        public CompleteClusterPairingRequest.Builder clusterPairingKey(final String clusterPairingKey) {
-            this.clusterPairingKey = clusterPairingKey;
+        public RemoveVolumePairRequest.Builder volumeID(final Long volumeID) {
+            this.volumeID = volumeID;
             return this;
         }
 

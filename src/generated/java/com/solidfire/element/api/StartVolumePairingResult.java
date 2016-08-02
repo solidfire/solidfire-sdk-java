@@ -35,30 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The Request object for the "CompleteClusterPairing" API Service call.
+ * The object returned by the "StartVolumePairing" API Service call.
  **/
-public class CompleteClusterPairingRequest  implements Serializable  {
+public class StartVolumePairingResult  implements Serializable  {
 
-    private static final long serialVersionUID = -100863443L;
+    private static final long serialVersionUID = 783410121L;
 
-    @SerializedName("clusterPairingKey") private final String clusterPairingKey;
+    @SerializedName("volumePairingKey") private final String volumePairingKey;
 
     /**
-     * The Request object for the "CompleteClusterPairing" API Service call.
-     * @param clusterPairingKey [required] A string of characters that is returned from the "StartClusterPairing" API method.
+     * The object returned by the "StartVolumePairing" API Service call.
+     * @param volumePairingKey [required] A string of characters that is used by the "CompleteVolumePairing" API method.
      * @since 7.0
      **/
     @Since("7.0")
-    public CompleteClusterPairingRequest(String clusterPairingKey) {
-        this.clusterPairingKey = clusterPairingKey;
+    public StartVolumePairingResult(String volumePairingKey) {
+        this.volumePairingKey = volumePairingKey;
     }
 
 
     /**
-     * A string of characters that is returned from the "StartClusterPairing" API method.
+     * A string of characters that is used by the "CompleteVolumePairing" API method.
      **/
-    public String getClusterPairingKey() {
-        return this.clusterPairingKey;
+    public String getVolumePairingKey() {
+        return this.volumePairingKey;
     }
 
     @Override
@@ -66,15 +66,15 @@ public class CompleteClusterPairingRequest  implements Serializable  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CompleteClusterPairingRequest that = (CompleteClusterPairingRequest) o;
+        StartVolumePairingResult that = (StartVolumePairingResult) o;
         
 
-        return Objects.equals( clusterPairingKey , that.clusterPairingKey );
+        return Objects.equals( volumePairingKey , that.volumePairingKey );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) clusterPairingKey );
+        return Objects.hash( (Object) volumePairingKey );
     }
 
 
@@ -83,7 +83,7 @@ public class CompleteClusterPairingRequest  implements Serializable  {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" clusterPairingKey : ").append(clusterPairingKey);
+        sb.append(" volumePairingKey : ").append(volumePairingKey);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -101,23 +101,23 @@ public class CompleteClusterPairingRequest  implements Serializable  {
     }
 
     public static class Builder {
-        private String clusterPairingKey;
+        private String volumePairingKey;
 
         private Builder() { }
 
-        public CompleteClusterPairingRequest build() {
-            return new CompleteClusterPairingRequest (
-                         this.clusterPairingKey            );
+        public StartVolumePairingResult build() {
+            return new StartVolumePairingResult (
+                         this.volumePairingKey            );
         }
 
-        private CompleteClusterPairingRequest.Builder buildFrom(final CompleteClusterPairingRequest req) {
-            this.clusterPairingKey = req.clusterPairingKey;
+        private StartVolumePairingResult.Builder buildFrom(final StartVolumePairingResult req) {
+            this.volumePairingKey = req.volumePairingKey;
 
             return this;
         }
 
-        public CompleteClusterPairingRequest.Builder clusterPairingKey(final String clusterPairingKey) {
-            this.clusterPairingKey = clusterPairingKey;
+        public StartVolumePairingResult.Builder volumePairingKey(final String volumePairingKey) {
+            this.volumePairingKey = volumePairingKey;
             return this;
         }
 

@@ -999,6 +999,17 @@ public class SolidFireElement
     }
 
     @Override
+    public ListActivePairedVolumesResult listActivePairedVolumes(final ListActivePairedVolumesRequest request) {
+        return super.sendRequest( "ListActivePairedVolumes", request, ListActivePairedVolumesRequest.class, ListActivePairedVolumesResult.class );
+    }
+
+
+    @Override
+    public ListActivePairedVolumesResult listActivePairedVolumes() {
+        return this.listActivePairedVolumes( new ListActivePairedVolumesRequest( ) );
+    }
+
+    @Override
     public StartClusterPairingResult startClusterPairing(final StartClusterPairingRequest request) {
         return super.sendRequest( "StartClusterPairing", request, StartClusterPairingRequest.class, StartClusterPairingResult.class );
     }
@@ -1007,6 +1018,17 @@ public class SolidFireElement
     @Override
     public StartClusterPairingResult startClusterPairing() {
         return this.startClusterPairing( new StartClusterPairingRequest( ) );
+    }
+
+    @Override
+    public StartVolumePairingResult startVolumePairing(final StartVolumePairingRequest request) {
+        return super.sendRequest( "StartVolumePairing", request, StartVolumePairingRequest.class, StartVolumePairingResult.class );
+    }
+
+
+    @Override
+    public StartVolumePairingResult startVolumePairing(Long volumeID, Optional<String> mode) {
+        return this.startVolumePairing( new StartVolumePairingRequest( volumeID, mode) );
     }
 
     @Override
@@ -1021,6 +1043,17 @@ public class SolidFireElement
     }
 
     @Override
+    public CompleteVolumePairingResult completeVolumePairing(final CompleteVolumePairingRequest request) {
+        return super.sendRequest( "CompleteVolumePairing", request, CompleteVolumePairingRequest.class, CompleteVolumePairingResult.class );
+    }
+
+
+    @Override
+    public CompleteVolumePairingResult completeVolumePairing(String volumePairingKey, Long volumeID) {
+        return this.completeVolumePairing( new CompleteVolumePairingRequest( volumePairingKey, volumeID) );
+    }
+
+    @Override
     public RemoveClusterPairResult removeClusterPair(final RemoveClusterPairRequest request) {
         return super.sendRequest( "RemoveClusterPair", request, RemoveClusterPairRequest.class, RemoveClusterPairResult.class );
     }
@@ -1029,6 +1062,28 @@ public class SolidFireElement
     @Override
     public RemoveClusterPairResult removeClusterPair(Long clusterPairID) {
         return this.removeClusterPair( new RemoveClusterPairRequest( clusterPairID) );
+    }
+
+    @Override
+    public RemoveVolumePairResult removeVolumePair(final RemoveVolumePairRequest request) {
+        return super.sendRequest( "RemoveVolumePair", request, RemoveVolumePairRequest.class, RemoveVolumePairResult.class );
+    }
+
+
+    @Override
+    public RemoveVolumePairResult removeVolumePair(Long volumeID) {
+        return this.removeVolumePair( new RemoveVolumePairRequest( volumeID) );
+    }
+
+    @Override
+    public ModifyVolumePairResult modifyVolumePair(final ModifyVolumePairRequest request) {
+        return super.sendRequest( "ModifyVolumePair", request, ModifyVolumePairRequest.class, ModifyVolumePairResult.class );
+    }
+
+
+    @Override
+    public ModifyVolumePairResult modifyVolumePair(Long volumeID, Optional<Boolean> pausedManual, Optional<String> mode) {
+        return this.modifyVolumePair( new ModifyVolumePairRequest( volumeID, pausedManual, mode) );
     }
 
     @Override
