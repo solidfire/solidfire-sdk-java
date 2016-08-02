@@ -1312,6 +1312,17 @@ public class SolidFireElement
     }
 
     @Override
+    public ListBulkVolumeJobsResult listBulkVolumeJobs(final ListBulkVolumeJobsRequest request) {
+        return super.sendRequest( "ListBulkVolumeJobs", request, ListBulkVolumeJobsRequest.class, ListBulkVolumeJobsResult.class );
+    }
+
+
+    @Override
+    public ListBulkVolumeJobsResult listBulkVolumeJobs() {
+        return this.listBulkVolumeJobs( new ListBulkVolumeJobsRequest( ) );
+    }
+
+    @Override
     public ListActiveVolumesResult listActiveVolumes(final ListActiveVolumesRequest request) {
         return super.sendRequest( "ListActiveVolumes", request, ListActiveVolumesRequest.class, ListActiveVolumesResult.class );
     }
@@ -1419,6 +1430,21 @@ public class SolidFireElement
     @Override
     public RestoreDeletedVolumeResult restoreDeletedVolume(Long volumeID) {
         return this.restoreDeletedVolume( new RestoreDeletedVolumeRequest( volumeID) );
+    }
+
+    @Override
+    public StartBulkVolumeReadResult startBulkVolumeRead(final StartBulkVolumeReadRequest request) {
+        return super.sendRequest( "StartBulkVolumeRead", request, StartBulkVolumeReadRequest.class, StartBulkVolumeReadResult.class );
+    }
+
+    @Override
+    public StartBulkVolumeWriteResult startBulkVolumeWrite(final StartBulkVolumeWriteRequest request) {
+        return super.sendRequest( "StartBulkVolumeWrite", request, StartBulkVolumeWriteRequest.class, StartBulkVolumeWriteResult.class );
+    }
+
+    @Override
+    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(final UpdateBulkVolumeStatusRequest request) {
+        return super.sendRequest( "UpdateBulkVolumeStatus", request, UpdateBulkVolumeStatusRequest.class, UpdateBulkVolumeStatusResult.class );
     }
 
     @Override
