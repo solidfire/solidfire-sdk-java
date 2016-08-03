@@ -39,11 +39,11 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class UpdateBulkVolumeStatusResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1984446792L;
+    private static final long serialVersionUID = 570025374L;
 
     @SerializedName("status") private final String status;
     @SerializedName("url") private final String url;
-    @SerializedName("attributes") private final String attributes;
+    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
 
     /**
      * The object returned by the "UpdateBulkVolumeStatus" API Service call.
@@ -53,7 +53,7 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public UpdateBulkVolumeStatusResult(String status, String url, String attributes) {
+    public UpdateBulkVolumeStatusResult(String status, String url, java.util.Map<String, Object> attributes) {
         this.status = status;
         this.url = url;
         this.attributes = attributes;
@@ -81,7 +81,7 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
     /**
      * Returns attributes that were specified in the BulkVolumeStatusUpdate method. Values are returned if they have changed or not.
      **/
-    public String getAttributes() {
+    public java.util.Map<String, Object> getAttributes() {
         return this.attributes;
     }
 
@@ -131,7 +131,7 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
     public static class Builder {
         private String status;
         private String url;
-        private String attributes;
+        private java.util.Map<String, Object> attributes;
 
         private Builder() { }
 
@@ -160,7 +160,7 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
             return this;
         }
 
-        public UpdateBulkVolumeStatusResult.Builder attributes(final String attributes) {
+        public UpdateBulkVolumeStatusResult.Builder attributes(final java.util.Map<String, Object> attributes) {
             this.attributes = attributes;
             return this;
         }
