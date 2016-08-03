@@ -41,7 +41,7 @@ public class ModifyVolumeResult  implements Serializable  {
 
     private static final long serialVersionUID = -1173734810L;
 
-    @SerializedName("curve") private final TreeMap<String,Long> curve;
+    @SerializedName("curve") private final java.util.Map<String,Long> curve;
 
     /**
      * The object returned by the "ModifyVolume" API Service call.
@@ -49,7 +49,7 @@ public class ModifyVolumeResult  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(TreeMap<String,Long> curve) {
+    public ModifyVolumeResult(java.util.Map<String,Long> curve) {
         this.curve = curve;
     }
 
@@ -60,7 +60,7 @@ public class ModifyVolumeResult  implements Serializable  {
      * The values represent the cost performing an IOP at a specific I/O size.
      * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
      **/
-    public TreeMap<String,Long> getCurve() {
+    public java.util.Map<String,Long> getCurve() {
         return this.curve;
     }
 
@@ -104,7 +104,7 @@ public class ModifyVolumeResult  implements Serializable  {
     }
 
     public static class Builder {
-        private TreeMap<String,Long> curve;
+        private java.util.Map<String,Long> curve;
 
         private Builder() { }
 
@@ -119,7 +119,7 @@ public class ModifyVolumeResult  implements Serializable  {
             return this;
         }
 
-        public ModifyVolumeResult.Builder curve(final TreeMap<String,Long> curve) {
+        public ModifyVolumeResult.Builder curve(final java.util.Map<String,Long> curve) {
             this.curve = curve;
             return this;
         }

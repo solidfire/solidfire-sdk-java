@@ -41,7 +41,7 @@ public class ListFibreChannelPortInfoResult  implements Serializable  {
 
     private static final long serialVersionUID = -201731339L;
 
-    @SerializedName("fibreChannelPortInfo") private final TreeMap<String,FibreChannelPortInfoResult> fibreChannelPortInfo;
+    @SerializedName("fibreChannelPortInfo") private final java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo;
 
     /**
      * ListFibreChannelPortInfoResult is used to return information about the Fibre Channel ports.
@@ -49,7 +49,7 @@ public class ListFibreChannelPortInfoResult  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public ListFibreChannelPortInfoResult(TreeMap<String,FibreChannelPortInfoResult> fibreChannelPortInfo) {
+    public ListFibreChannelPortInfoResult(java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo) {
         this.fibreChannelPortInfo = fibreChannelPortInfo;
     }
 
@@ -57,7 +57,7 @@ public class ListFibreChannelPortInfoResult  implements Serializable  {
     /**
      * Used to return information about the Fibre Channel ports.
      **/
-    public TreeMap<String,FibreChannelPortInfoResult> getFibreChannelPortInfo() {
+    public java.util.Map<String,FibreChannelPortInfoResult> getFibreChannelPortInfo() {
         return this.fibreChannelPortInfo;
     }
 
@@ -101,7 +101,7 @@ public class ListFibreChannelPortInfoResult  implements Serializable  {
     }
 
     public static class Builder {
-        private TreeMap<String,FibreChannelPortInfoResult> fibreChannelPortInfo;
+        private java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo;
 
         private Builder() { }
 
@@ -116,7 +116,7 @@ public class ListFibreChannelPortInfoResult  implements Serializable  {
             return this;
         }
 
-        public ListFibreChannelPortInfoResult.Builder fibreChannelPortInfo(final TreeMap<String,FibreChannelPortInfoResult> fibreChannelPortInfo) {
+        public ListFibreChannelPortInfoResult.Builder fibreChannelPortInfo(final java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo) {
             this.fibreChannelPortInfo = fibreChannelPortInfo;
             return this;
         }

@@ -42,7 +42,7 @@ public class CreateVolumeResult  implements Serializable  {
     private static final long serialVersionUID = -1333016570L;
 
     @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("curve") private final TreeMap<String,Long> curve;
+    @SerializedName("curve") private final java.util.Map<String,Long> curve;
 
     /**
      * The object returned by the "CreateVolume" API Service call.
@@ -51,7 +51,7 @@ public class CreateVolumeResult  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public CreateVolumeResult(Long volumeID, TreeMap<String,Long> curve) {
+    public CreateVolumeResult(Long volumeID, java.util.Map<String,Long> curve) {
         this.volumeID = volumeID;
         this.curve = curve;
     }
@@ -70,7 +70,7 @@ public class CreateVolumeResult  implements Serializable  {
      * The values represent the cost performing an IOP at a specific I/O size.
      * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
      **/
-    public TreeMap<String,Long> getCurve() {
+    public java.util.Map<String,Long> getCurve() {
         return this.curve;
     }
 
@@ -117,7 +117,7 @@ public class CreateVolumeResult  implements Serializable  {
 
     public static class Builder {
         private Long volumeID;
-        private TreeMap<String,Long> curve;
+        private java.util.Map<String,Long> curve;
 
         private Builder() { }
 
@@ -139,7 +139,7 @@ public class CreateVolumeResult  implements Serializable  {
             return this;
         }
 
-        public CreateVolumeResult.Builder curve(final TreeMap<String,Long> curve) {
+        public CreateVolumeResult.Builder curve(final java.util.Map<String,Long> curve) {
             this.curve = curve;
             return this;
         }
