@@ -2181,6 +2181,24 @@ public interface SolidFireElementIF {
     GetVolumeEfficiencyResult getVolumeEfficiency(Long volumeID, Optional<Boolean> force);
 
     /**
+     * ListBulkVolumeJobs is used to return information about each bulk volume read or write operation that is occurring in the system.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListBulkVolumeJobsRequest 
+     *  
+     * @return the response
+     **/
+    ListBulkVolumeJobsResult listBulkVolumeJobs(final ListBulkVolumeJobsRequest request);
+
+
+    /**
+     * Convenience method for listBulkVolumeJobs 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listBulkVolumeJobs(ListBulkVolumeJobsRequest) 
+     **/
+    ListBulkVolumeJobsResult listBulkVolumeJobs();
+
+    /**
      * ListActiveVolumes is used to return the list of active volumes currently in the system.
      * The list of volumes is returned sorted in VolumeID order and can be returned in multiple parts (pages).
      *  
@@ -2402,6 +2420,49 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#restoreDeletedVolume(RestoreDeletedVolumeRequest) 
      **/
     RestoreDeletedVolumeResult restoreDeletedVolume(Long volumeID);
+
+    /**
+     * StartBulkVolumeRead allows you to initialize a bulk volume read session on a specified volume.
+     * Only two bulk volume processes can run simultaneously on a volume.
+     * When you initialize the session, data is read from a SolidFire storage volume for the purposes of storing the data on an external backup source.
+     * The external data is accessed by a web server running on a SolidFire node.
+     * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.<br/>
+     * <br/>
+     * At the start of a bulk volume read operation, a snapshot of the volume is made and the snapshot is deleted when the read has completed.
+     * You can also read a snapshot of the volume by entering the ID of the snapshot as a parameter.
+     * Reading a previous snapshot does not create a new snapshot of the volume, nor does the previous snapshot be deleted when the read completes.<br/>
+     * <br/>
+     * <b>Note</b>: This process creates a new snapshot if the ID of an existing snapshot is not provided.
+     * Snapshots can be created if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     *  
+     * @param request The request @see com.solidfire.element.api.StartBulkVolumeReadRequest 
+     *  
+     * @return the response
+     **/
+    StartBulkVolumeReadResult startBulkVolumeRead(final StartBulkVolumeReadRequest request);
+
+    /**
+     * StartBulkVolumeWrite allows you to initialize a bulk volume write session on a specified volume.
+     * Only two bulk volume processes can run simultaneously on a volume.
+     * When the session is initialized, data can be written to a SolidFire storage volume from an external backup source.
+     * The external data is accessed by a web server running on a SolidFire node.
+     * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.
+     *  
+     * @param request The request @see com.solidfire.element.api.StartBulkVolumeWriteRequest 
+     *  
+     * @return the response
+     **/
+    StartBulkVolumeWriteResult startBulkVolumeWrite(final StartBulkVolumeWriteRequest request);
+
+    /**
+     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
+     *  
+     * @param request The request @see com.solidfire.element.api.UpdateBulkVolumeStatusRequest 
+     *  
+     * @return the response
+     **/
+    UpdateBulkVolumeStatusResult updateBulkVolumeStatus(final UpdateBulkVolumeStatusRequest request);
 
     /**
      * Creates a new volume access group.
