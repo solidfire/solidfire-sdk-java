@@ -1,6 +1,9 @@
 package com.solidfire.adaptor
 
 import com.solidfire.element.api._
+import org.mockito
+import org.mockito.Mockito.when
+import org.mockito.Matchers.any
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.{Matchers, BeforeAndAfterAll, WordSpec}
 import com.solidfire.adaptor.ElementServiceAdaptor._
@@ -12,50 +15,56 @@ import scala.util.Random
   */
 class ElementServiceAdaptorTest extends WordSpec with BeforeAndAfterAll with MockitoSugar with Matchers {
 
+  val sfe = mock[SolidFireElement]
+
   "getNodeStats" should {
-    "throw IllegalArgumentException when request is null" in {
+    "throw IllegalArgumentException when SolidFireElement is null" in {
       the[IllegalArgumentException] thrownBy {
         getNodeStats( null, null )
+      } should have message "SolidFireElement was null"
+    }
+    "throw IllegalArgumentException when request is null" in {
+      the[IllegalArgumentException] thrownBy {
+        getNodeStats( sfe, null )
       } should have message "GetNodeStatsRequest was null"
     }
     "throw IllegalArgumentException when request node ID is null" in {
       the[IllegalArgumentException] thrownBy {
-        getNodeStats( GetNodeStatsRequest.builder().build(), null )
+        getNodeStats( sfe, GetNodeStatsRequest.builder().build())
       } should have message "GetNodeStatsRequest.getNodeID() was null"
-    }
-    "throw IllegalArgumentException when response is null" in {
-      the[IllegalArgumentException] thrownBy {
-        getNodeStats( new GetNodeStatsRequest(1L), null )
-      } should have message "GetNodeStatsResult was null"
-    }
-    "throw IllegalArgumentException when response node stats is null" in {
-      the[IllegalArgumentException] thrownBy {
-        getNodeStats( new GetNodeStatsRequest(1L), GetNodeStatsResult.builder().build() )
-      } should have message "GetNodeStatsResult.getNodeStats() was null"
     }
 
     "map the request node id to the result node stats node id" in {
       val request:GetNodeStatsRequest = new GetNodeStatsRequest(Random.nextLong())
-      val result = GetNodeStatsResult.builder().nodeStats(NodeStatsInfo.builder().build()).build()
 
-      getNodeStats( request, result ).getNodeStats.getNodeID should be (request.getNodeID)
+      val result = new GetNodeStatsResult(NodeStatsInfo.builder().build())
+
+      when(sfe.sendRequest("GetNodeStats", request, classOf[GetNodeStatsRequest], classOf[GetNodeStatsResult])).thenReturn(result)
+
+      getNodeStats( sfe, request ).getNodeStats.getNodeID should be (request.getNodeID)
     }
   }
 
   "getDriveStats" should {
-    "throw IllegalArgumentException when response is null" in {
+    "throw IllegalArgumentException when SolidFireElement is null" in {
       the[IllegalArgumentException] thrownBy {
         getDriveStats( null, null )
-      } should have message "GetDriveStatsResult was null"
+      } should have message "SolidFireElement was null"
     }
-    "throw IllegalArgumentException when response node stats is null" in {
+    "throw IllegalArgumentException when request node stats is null" in {
       the[IllegalArgumentException] thrownBy {
-        getDriveStats( null, GetDriveStatsResult.builder().build() )
-      } should have message "GetDriveStatsResult.getDriveStats() was null"
+        getDriveStats( sfe, null )
+      } should have message "GetDriveStatsRequest was null"
     }
 
     "map the request node id to the result node stats node id" in {
-      val result = getDriveStats( null, GetDriveStatsResult.builder().driveStats(DriveStats.builder().build()).build() )
+      val request:GetDriveStatsRequest = new GetDriveStatsRequest(1L)
+
+      val grsResult = new GetDriveStatsResult(DriveStats.builder().build())
+
+      when(sfe.sendRequest("GetDriveStats", request, classOf[GetDriveStatsRequest], classOf[GetDriveStatsResult])).thenReturn(grsResult)
+
+      val result = getDriveStats( sfe, request)
       result.getDriveStats.getReadBytes should be (0L)
       result.getDriveStats.getWriteBytes should be (0L)
       result.getDriveStats.getReadOps should be (0L)

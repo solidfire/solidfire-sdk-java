@@ -53,7 +53,14 @@ public class ElementServiceAdaptor {
      * @param result The result object from the api call.
      * @return a GetDriveStatsResult with Read/Write Opts/Bytes set to 0L when they were null.
      */
+<<<<<<< Updated upstream
     public static GetDriveStatsResult getDriveStats(GetDriveStatsRequest request, GetDriveStatsResult result) {
+=======
+    public static GetDriveStatsResult getDriveStats(final SolidFireElement sfe, final GetDriveStatsRequest request) {
+        if (sfe == null) throw new IllegalArgumentException("SolidFireElement was null");
+
+        if (request == null) throw new IllegalArgumentException("GetDriveStatsRequest was null");
+>>>>>>> Stashed changes
 
         if(result == null) throw new IllegalArgumentException("GetDriveStatsResult was null");
         if(result.getDriveStats() == null) throw new IllegalArgumentException("GetDriveStatsResult.getDriveStats() was null");
