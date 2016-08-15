@@ -42,7 +42,7 @@ public class GroupSnapshot  implements Serializable  {
     private static final long serialVersionUID = -2045239278L;
 
     @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
-    @SerializedName("groupSnapshotUUID") private final String groupSnapshotUUID;
+    @SerializedName("groupSnapshotUUID") private final java.util.UUID groupSnapshotUUID;
     @SerializedName("members") private final GroupSnapshotMembers[] members;
     @SerializedName("name") private final String name;
     @SerializedName("createTime") private final String createTime;
@@ -61,7 +61,7 @@ public class GroupSnapshot  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public GroupSnapshot(Long groupSnapshotID, String groupSnapshotUUID, GroupSnapshotMembers[] members, String name, String createTime, String status, java.util.Map<String, Object> attributes) {
+    public GroupSnapshot(Long groupSnapshotID, java.util.UUID groupSnapshotUUID, GroupSnapshotMembers[] members, String name, String createTime, String status, java.util.Map<String, Object> attributes) {
         this.name = name;
         this.createTime = createTime;
         this.attributes = attributes;
@@ -82,7 +82,7 @@ public class GroupSnapshot  implements Serializable  {
     /**
      * UUID of the group snapshot.
      **/
-    public String getGroupSnapshotUUID() {
+    public java.util.UUID getGroupSnapshotUUID() {
         return this.groupSnapshotUUID;
     }
 
@@ -167,7 +167,7 @@ public class GroupSnapshot  implements Serializable  {
         return sb.toString();
     }
 
-    public static final Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -177,7 +177,7 @@ public class GroupSnapshot  implements Serializable  {
 
     public static class Builder {
         private Long groupSnapshotID;
-        private String groupSnapshotUUID;
+        private java.util.UUID groupSnapshotUUID;
         private GroupSnapshotMembers[] members;
         private String name;
         private String createTime;
@@ -214,7 +214,7 @@ public class GroupSnapshot  implements Serializable  {
             return this;
         }
 
-        public GroupSnapshot.Builder groupSnapshotUUID(final String groupSnapshotUUID) {
+        public GroupSnapshot.Builder groupSnapshotUUID(final java.util.UUID groupSnapshotUUID) {
             this.groupSnapshotUUID = groupSnapshotUUID;
             return this;
         }

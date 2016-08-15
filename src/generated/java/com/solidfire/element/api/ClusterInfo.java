@@ -52,7 +52,7 @@ public class ClusterInfo  implements Serializable  {
     @SerializedName("svip") private final String svip;
     @SerializedName("svipNodeID") private final Long svipNodeID;
     @SerializedName("uniqueID") private final String uniqueID;
-    @SerializedName("uuid") private final String uuid;
+    @SerializedName("uuid") private final java.util.UUID uuid;
 
     /**
      * Cluster Info object returns information the node uses to communicate with the cluster.
@@ -71,7 +71,7 @@ public class ClusterInfo  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public ClusterInfo(java.util.Map<String, Object> attributes, String encryptionAtRestState, String[] ensemble, String mvip, Long mvipNodeID, String name, Long repCount, String state, String svip, Long svipNodeID, String uniqueID, String uuid) {
+    public ClusterInfo(java.util.Map<String, Object> attributes, String encryptionAtRestState, String[] ensemble, String mvip, Long mvipNodeID, String name, Long repCount, String state, String svip, Long svipNodeID, String uniqueID, java.util.UUID uuid) {
         this.name = name;
         this.state = state;
         this.uuid = uuid;
@@ -160,7 +160,7 @@ public class ClusterInfo  implements Serializable  {
     public String getUniqueID() {
         return this.uniqueID;
     }
-    public String getUuid() {
+    public java.util.UUID getUuid() {
         return this.uuid;
     }
 
@@ -217,7 +217,7 @@ public class ClusterInfo  implements Serializable  {
         return sb.toString();
     }
 
-    public static final Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -237,7 +237,7 @@ public class ClusterInfo  implements Serializable  {
         private String svip;
         private Long svipNodeID;
         private String uniqueID;
-        private String uuid;
+        private java.util.UUID uuid;
 
         private Builder() { }
 
@@ -329,7 +329,7 @@ public class ClusterInfo  implements Serializable  {
             return this;
         }
 
-        public ClusterInfo.Builder uuid(final String uuid) {
+        public ClusterInfo.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
             return this;
         }

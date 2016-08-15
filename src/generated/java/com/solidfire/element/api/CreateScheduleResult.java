@@ -88,7 +88,7 @@ public class CreateScheduleResult  implements Serializable  {
         return sb.toString();
     }
 
-    public static final Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 

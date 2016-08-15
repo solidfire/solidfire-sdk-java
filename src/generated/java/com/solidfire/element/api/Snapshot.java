@@ -53,7 +53,7 @@ public class Snapshot  implements Serializable  {
     @SerializedName("SnapshotUUID") private final String snapshotUUID;
     @SerializedName("totalSize") private final Long totalSize;
     @SerializedName("groupID") private final Optional<Long> groupID;
-    @SerializedName("groupSnapshotUUID") private final String groupSnapshotUUID;
+    @SerializedName("groupSnapshotUUID") private final java.util.UUID groupSnapshotUUID;
     @SerializedName("createTime") private final String createTime;
     @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
 
@@ -111,7 +111,7 @@ public class Snapshot  implements Serializable  {
      * @since 8.0
      **/
     @Since("8.0")
-    public Snapshot(Long snapshotID, Long volumeID, String name, String checksum, Boolean enableRemoteReplication, String expirationReason, String expirationTime, String remoteStatuses, String status, String snapshotUUID, Long totalSize, Optional<Long> groupID, String groupSnapshotUUID, String createTime, java.util.Map<String, Object> attributes) {
+    public Snapshot(Long snapshotID, Long volumeID, String name, String checksum, Boolean enableRemoteReplication, String expirationReason, String expirationTime, String remoteStatuses, String status, String snapshotUUID, Long totalSize, Optional<Long> groupID, java.util.UUID groupSnapshotUUID, String createTime, java.util.Map<String, Object> attributes) {
         this.name = name;
         this.remoteStatuses = remoteStatuses;
         this.expirationTime = expirationTime;
@@ -251,7 +251,7 @@ public class Snapshot  implements Serializable  {
      **/
 
     @Since("8.0")
-    public String getGroupSnapshotUUID() {
+    public java.util.UUID getGroupSnapshotUUID() {
         return this.groupSnapshotUUID;
     }
 
@@ -329,7 +329,7 @@ public class Snapshot  implements Serializable  {
         return sb.toString();
     }
 
-    public static final Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -350,7 +350,7 @@ public class Snapshot  implements Serializable  {
         private String snapshotUUID;
         private Long totalSize;
         private Optional<Long> groupID;
-        private String groupSnapshotUUID;
+        private java.util.UUID groupSnapshotUUID;
         private String createTime;
         private java.util.Map<String, Object> attributes;
 
@@ -455,7 +455,7 @@ public class Snapshot  implements Serializable  {
             return this;
         }
 
-        public Snapshot.Builder groupSnapshotUUID(final String groupSnapshotUUID) {
+        public Snapshot.Builder groupSnapshotUUID(final java.util.UUID groupSnapshotUUID) {
             this.groupSnapshotUUID = groupSnapshotUUID;
             return this;
         }

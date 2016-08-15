@@ -53,7 +53,7 @@ public class PendingNode  implements Serializable  {
     @SerializedName("sip") private final String sip;
     @SerializedName("sipi") private final String sipi;
     @SerializedName("softwareVersion") private final String softwareVersion;
-    @SerializedName("uuid") private final String uuid;
+    @SerializedName("uuid") private final java.util.UUID uuid;
 
     /**
      * A &quot;pending node&quot; is one that has not yet joined the cluster.
@@ -74,7 +74,7 @@ public class PendingNode  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public PendingNode(Long pendingNodeID, Long assignedNodeID, String name, Boolean compatible, Platform platformInfo, String cip, String cipi, String mip, String mipi, String sip, String sipi, String softwareVersion, String uuid) {
+    public PendingNode(Long pendingNodeID, Long assignedNodeID, String name, Boolean compatible, Platform platformInfo, String cip, String cipi, String mip, String mipi, String sip, String sipi, String softwareVersion, java.util.UUID uuid) {
         this.name = name;
         this.sip = sip;
         this.cipi = cipi;
@@ -166,7 +166,7 @@ public class PendingNode  implements Serializable  {
     /**
      * UUID of node.
      **/
-    public String getUuid() {
+    public java.util.UUID getUuid() {
         return this.uuid;
     }
 
@@ -225,7 +225,7 @@ public class PendingNode  implements Serializable  {
         return sb.toString();
     }
 
-    public static final Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -246,7 +246,7 @@ public class PendingNode  implements Serializable  {
         private String sip;
         private String sipi;
         private String softwareVersion;
-        private String uuid;
+        private java.util.UUID uuid;
 
         private Builder() { }
 
@@ -345,7 +345,7 @@ public class PendingNode  implements Serializable  {
             return this;
         }
 
-        public PendingNode.Builder uuid(final String uuid) {
+        public PendingNode.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
             return this;
         }

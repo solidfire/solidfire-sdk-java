@@ -45,7 +45,7 @@ public class VolumePair  implements Serializable  {
     @SerializedName("remoteVolumeID") private final Long remoteVolumeID;
     @SerializedName("remoteSliceID") private final Long remoteSliceID;
     @SerializedName("remoteVolumeName") private final String remoteVolumeName;
-    @SerializedName("volumePairUUID") private final String volumePairUUID;
+    @SerializedName("volumePairUUID") private final java.util.UUID volumePairUUID;
     @SerializedName("remoteReplication") private final RemoteReplication remoteReplication;
 
     /**
@@ -60,7 +60,7 @@ public class VolumePair  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public VolumePair(Long clusterPairID, Long remoteVolumeID, Long remoteSliceID, String remoteVolumeName, String volumePairUUID, RemoteReplication remoteReplication) {
+    public VolumePair(Long clusterPairID, Long remoteVolumeID, Long remoteSliceID, String remoteVolumeName, java.util.UUID volumePairUUID, RemoteReplication remoteReplication) {
         this.clusterPairID = clusterPairID;
         this.remoteVolumeName = remoteVolumeName;
         this.remoteVolumeID = remoteVolumeID;
@@ -101,7 +101,7 @@ public class VolumePair  implements Serializable  {
     /**
      * A UUID in canonical form.
      **/
-    public String getVolumePairUUID() {
+    public java.util.UUID getVolumePairUUID() {
         return this.volumePairUUID;
     }
 
@@ -153,7 +153,7 @@ public class VolumePair  implements Serializable  {
         return sb.toString();
     }
 
-    public static final Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -166,7 +166,7 @@ public class VolumePair  implements Serializable  {
         private Long remoteVolumeID;
         private Long remoteSliceID;
         private String remoteVolumeName;
-        private String volumePairUUID;
+        private java.util.UUID volumePairUUID;
         private RemoteReplication remoteReplication;
 
         private Builder() { }
@@ -212,7 +212,7 @@ public class VolumePair  implements Serializable  {
             return this;
         }
 
-        public VolumePair.Builder volumePairUUID(final String volumePairUUID) {
+        public VolumePair.Builder volumePairUUID(final java.util.UUID volumePairUUID) {
             this.volumePairUUID = volumePairUUID;
             return this;
         }
