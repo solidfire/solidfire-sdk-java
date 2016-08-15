@@ -1956,6 +1956,25 @@ public interface SolidFireElementIF {
     @Since("8.0")
     CreateScheduleResult createSchedule(final CreateScheduleRequest request);
 
+
+    /**
+     * Convenience method for createSchedule 
+     *  
+     * @param schedule The "Schedule" object will be used to create a new schedule.<br/>
+     *                 Do not set ScheduleID property, it will be ignored.<br/>
+     *                 Frequency property must be of type that inherits from Frequency. Valid types are:<br/>
+     *                 DaysOfMonthFrequency<br/>
+     *                 DaysOrWeekFrequency<br/>
+     *                 TimeIntervalFrequency
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#createSchedule(CreateScheduleRequest) 
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    CreateScheduleResult createSchedule(Schedule schedule);
+
     /**
      * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.<br/>
      *  
@@ -1966,6 +1985,25 @@ public interface SolidFireElementIF {
      **/
     @Since("8.0")
     ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request);
+
+
+    /**
+     * Convenience method for modifySchedule 
+     *  
+     * @param schedule The "Schedule" object will be used to modify an existing schedule.<br/>
+     *                 The ScheduleID property is required.<br/>
+     *                 Frequency property must be of type that inherits from Frequency. Valid types are:<br/>
+     *                 DaysOfMonthFrequency<br/>
+     *                 DaysOrWeekFrequency<br/>
+     *                 TimeIntervalFrequency
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#modifySchedule(ModifyScheduleRequest) 
+     * @since 8.0 
+     **/
+    @Since("8.0")
+    ModifyScheduleResult modifySchedule(Schedule schedule);
 
     /**
      * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.

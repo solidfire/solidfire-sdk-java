@@ -16,42 +16,34 @@
 /*
  * DO NOT EDIT THIS CODE BY HAND! It has been generated with jsvcgen.
  */
-package com.solidfire.element.api;
+package com.solidfire.element.apiactual;
 
 import com.google.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
 
 import java.io.Serializable;
-
-import java.util.Arrays;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * 
+ *
  **/
-public class Weekday  implements Serializable  {
+public class ApiWeekday implements Serializable {
 
     private static final long serialVersionUID = -2101250842L;
 
-    @SerializedName("day") private final Long day;
-    @SerializedName("offset") private final Long offset;
+    @SerializedName("day")
+    private final Long day;
+    @SerializedName("offset")
+    private final Long offset;
 
     /**
-     * 
-     * @param day [required] 
-     * @param offset [required] 
+     * @param day    [required]
+     * @param offset [required]
      * @since 7.0
      **/
     @Since("7.0")
-    public Weekday(Long day, Long offset) {
+    public ApiWeekday(Long day, Long offset) {
         this.day = day;
         this.offset = offset;
     }
@@ -59,6 +51,7 @@ public class Weekday  implements Serializable  {
     public Long getDay() {
         return this.day;
     }
+
     public Long getOffset() {
         return this.offset;
     }
@@ -68,35 +61,35 @@ public class Weekday  implements Serializable  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Weekday that = (Weekday) o;
-        
+        ApiWeekday that = (ApiWeekday) o;
 
-        return Objects.equals( day , that.day )
-            && Objects.equals( offset , that.offset );
+
+        return Objects.equals(day, that.day)
+                && Objects.equals(offset, that.offset);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( day, offset );
+        return Objects.hash(day, offset);
     }
 
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append( "{ " );
+        sb.append("{ ");
 
         sb.append(" day : ").append(day).append(",");
         sb.append(" offset : ").append(offset);
-        sb.append( " }" );
+        sb.append(" }");
 
-        if(sb.lastIndexOf(", }") != -1)
+        if (sb.lastIndexOf(", }") != -1)
             sb.deleteCharAt(sb.lastIndexOf(", }"));
 
         return sb.toString();
     }
 
-    public static final Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -108,27 +101,28 @@ public class Weekday  implements Serializable  {
         private Long day;
         private Long offset;
 
-        private Builder() { }
-
-        public Weekday build() {
-            return new Weekday (
-                         this.day,
-                         this.offset            );
+        private Builder() {
         }
 
-        private Weekday.Builder buildFrom(final Weekday req) {
+        public ApiWeekday build() {
+            return new ApiWeekday(
+                    this.day,
+                    this.offset);
+        }
+
+        private ApiWeekday.Builder buildFrom(final ApiWeekday req) {
             this.day = req.day;
             this.offset = req.offset;
 
             return this;
         }
 
-        public Weekday.Builder day(final Long day) {
+        public ApiWeekday.Builder day(final Long day) {
             this.day = day;
             return this;
         }
 
-        public Weekday.Builder offset(final Long offset) {
+        public ApiWeekday.Builder offset(final Long offset) {
             this.offset = offset;
             return this;
         }

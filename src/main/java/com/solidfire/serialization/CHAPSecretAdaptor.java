@@ -45,7 +45,7 @@ public class CHAPSecretAdaptor implements JsonSerializer<CHAPSecret>, JsonDeseri
      * @return A tree of JsonElements corresponding to the serialized form of optional.
      */
     public JsonElement serialize(CHAPSecret chapSecret, Type type, JsonSerializationContext context) {
-        if (chapSecret == null) {
+        if (chapSecret == null ) {
             // Nothing to serialize
             return null;
         }

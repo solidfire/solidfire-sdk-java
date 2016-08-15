@@ -728,18 +728,15 @@ public class SolidFireElement
 
     @Override
     public GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request) {
-        final GetDriveStatsResult result = super.sendRequest( "GetDriveStats", request, GetDriveStatsRequest.class, GetDriveStatsResult.class );
-
-        return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStats(request, result);
+        return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStats(this, request);
     }
 
 
     @Override
     public GetDriveStatsResult getDriveStats(Long driveID) {
         final GetDriveStatsRequest request = new GetDriveStatsRequest( driveID);
-        final GetDriveStatsResult result = this.getDriveStats( request );
 
-        return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStats(request, result);
+        return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStats(this, request);
     }
 
     @Override
@@ -962,18 +959,15 @@ public class SolidFireElement
 
     @Override
     public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request) {
-        final GetNodeStatsResult result = super.sendRequest( "GetNodeStats", request, GetNodeStatsRequest.class, GetNodeStatsResult.class );
-
-        return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(request, result);
+        return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(this, request);
     }
 
 
     @Override
     public GetNodeStatsResult getNodeStats(Long nodeID) {
         final GetNodeStatsRequest request = new GetNodeStatsRequest( nodeID);
-        final GetNodeStatsResult result = this.getNodeStats( request );
 
-        return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(request, result);
+        return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(this, request);
     }
 
     @Override
@@ -1180,39 +1174,61 @@ public class SolidFireElement
     @Override
     @Since("8.0")
     public GetScheduleResult getSchedule(final GetScheduleRequest request) {
-        return super.sendRequest( "GetSchedule", request, GetScheduleRequest.class, GetScheduleResult.class );
+        return com.solidfire.adaptor.ElementServiceAdaptor.getSchedule(this, request);
     }
 
 
     @Override
     @Since("8.0")
     public GetScheduleResult getSchedule(Long scheduleID) {
-        return this.getSchedule( new GetScheduleRequest( scheduleID) );
+        final GetScheduleRequest request = new GetScheduleRequest( scheduleID);
+
+        return com.solidfire.adaptor.ElementServiceAdaptor.getSchedule(this, request);
     }
 
     @Override
     @Since("8.0")
     public ListSchedulesResult listSchedules(final ListSchedulesRequest request) {
-        return super.sendRequest( "ListSchedules", request, ListSchedulesRequest.class, ListSchedulesResult.class );
+        return com.solidfire.adaptor.ElementServiceAdaptor.listSchedules(this, request);
     }
 
 
     @Override
     @Since("8.0")
     public ListSchedulesResult listSchedules() {
-        return this.listSchedules( new ListSchedulesRequest( ) );
+        final ListSchedulesRequest request = new ListSchedulesRequest( );
+
+        return com.solidfire.adaptor.ElementServiceAdaptor.listSchedules(this, request);
     }
 
     @Override
     @Since("8.0")
     public CreateScheduleResult createSchedule(final CreateScheduleRequest request) {
-        return super.sendRequest( "CreateSchedule", request, CreateScheduleRequest.class, CreateScheduleResult.class );
+        return com.solidfire.adaptor.ElementServiceAdaptor.createSchedule(this, request);
+    }
+
+
+    @Override
+    @Since("8.0")
+    public CreateScheduleResult createSchedule(Schedule schedule) {
+        final CreateScheduleRequest request = new CreateScheduleRequest( schedule);
+
+        return com.solidfire.adaptor.ElementServiceAdaptor.createSchedule(this, request);
     }
 
     @Override
     @Since("8.0")
     public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request) {
-        return super.sendRequest( "ModifySchedule", request, ModifyScheduleRequest.class, ModifyScheduleResult.class );
+        return com.solidfire.adaptor.ElementServiceAdaptor.modifySchedule(this, request);
+    }
+
+
+    @Override
+    @Since("8.0")
+    public ModifyScheduleResult modifySchedule(Schedule schedule) {
+        final ModifyScheduleRequest request = new ModifyScheduleRequest( schedule);
+
+        return com.solidfire.adaptor.ElementServiceAdaptor.modifySchedule(this, request);
     }
 
     @Override

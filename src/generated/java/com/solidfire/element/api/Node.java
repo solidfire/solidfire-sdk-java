@@ -54,7 +54,7 @@ public class Node  implements Serializable  {
     @SerializedName("mipi") private final String mipi;
     @SerializedName("sip") private final String sip;
     @SerializedName("sipi") private final String sipi;
-    @SerializedName("uuid") private final String uuid;
+    @SerializedName("uuid") private final java.util.UUID uuid;
     @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
 
     /**
@@ -79,7 +79,7 @@ public class Node  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public Node(Long nodeID, Long associatedMasterServiceID, Long associatedFServiceID, String fibreChannelTargetPortGroup, String name, Platform platformInfo, String softwareVersion, String cip, String cipi, String mip, String mipi, String sip, String sipi, String uuid, java.util.Map<String, Object> attributes) {
+    public Node(Long nodeID, Long associatedMasterServiceID, Long associatedFServiceID, String fibreChannelTargetPortGroup, String name, Platform platformInfo, String softwareVersion, String cip, String cipi, String mip, String mipi, String sip, String sipi, java.util.UUID uuid, java.util.Map<String, Object> attributes) {
         this.name = name;
         this.sip = sip;
         this.cipi = cipi;
@@ -180,7 +180,7 @@ public class Node  implements Serializable  {
     /**
      * UUID of node.
      **/
-    public String getUuid() {
+    public java.util.UUID getUuid() {
         return this.uuid;
     }
     public java.util.Map<String, Object> getAttributes() {
@@ -246,7 +246,7 @@ public class Node  implements Serializable  {
         return sb.toString();
     }
 
-    public static final Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -268,7 +268,7 @@ public class Node  implements Serializable  {
         private String mipi;
         private String sip;
         private String sipi;
-        private String uuid;
+        private java.util.UUID uuid;
         private java.util.Map<String, Object> attributes;
 
         private Builder() { }
@@ -377,7 +377,7 @@ public class Node  implements Serializable  {
             return this;
         }
 
-        public Node.Builder uuid(final String uuid) {
+        public Node.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
             return this;
         }

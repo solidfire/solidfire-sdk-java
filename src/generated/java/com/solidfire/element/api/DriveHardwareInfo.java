@@ -53,7 +53,7 @@ public class DriveHardwareInfo  implements Serializable  {
     @SerializedName("securityFeatureSupported") private final Boolean securityFeatureSupported;
     @SerializedName("serial") private final String serial;
     @SerializedName("size") private final Long size;
-    @SerializedName("uuid") private final String uuid;
+    @SerializedName("uuid") private final java.util.UUID uuid;
     @SerializedName("version") private final String version;
 
     /**
@@ -75,7 +75,7 @@ public class DriveHardwareInfo  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public DriveHardwareInfo(String description, String dev, String devpath, Boolean driveSecurityAtMaximum, Boolean driveSecurityFrozen, Boolean driveSecurityLocked, String logicalname, String product, Boolean securityFeatureEnabled, Boolean securityFeatureSupported, String serial, Long size, String uuid, String version) {
+    public DriveHardwareInfo(String description, String dev, String devpath, Boolean driveSecurityAtMaximum, Boolean driveSecurityFrozen, Boolean driveSecurityLocked, String logicalname, String product, Boolean securityFeatureEnabled, Boolean securityFeatureSupported, String serial, Long size, java.util.UUID uuid, String version) {
         this.serial = serial;
         this.size = size;
         this.description = description;
@@ -128,7 +128,7 @@ public class DriveHardwareInfo  implements Serializable  {
     public Long getSize() {
         return this.size;
     }
-    public String getUuid() {
+    public java.util.UUID getUuid() {
         return this.uuid;
     }
     public String getVersion() {
@@ -192,7 +192,7 @@ public class DriveHardwareInfo  implements Serializable  {
         return sb.toString();
     }
 
-    public static final Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -213,7 +213,7 @@ public class DriveHardwareInfo  implements Serializable  {
         private Boolean securityFeatureSupported;
         private String serial;
         private Long size;
-        private String uuid;
+        private java.util.UUID uuid;
         private String version;
 
         private Builder() { }
@@ -315,7 +315,7 @@ public class DriveHardwareInfo  implements Serializable  {
             return this;
         }
 
-        public DriveHardwareInfo.Builder uuid(final String uuid) {
+        public DriveHardwareInfo.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
             return this;
         }

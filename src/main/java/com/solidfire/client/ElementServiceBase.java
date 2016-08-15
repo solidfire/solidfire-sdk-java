@@ -17,18 +17,32 @@
 package com.solidfire.client;
 
 import com.solidfire.element.api.CHAPSecret;
-import com.solidfire.element.api.ModifyAccountRequest;
 import com.solidfire.jsvcgen.client.RequestDispatcher;
 import com.solidfire.jsvcgen.client.ServiceBase;
-import com.solidfire.jsvcgen.serialization.OptionalAdapter;
 import com.solidfire.serialization.CHAPSecretAdaptor;
 
-import static com.solidfire.jsvcgen.javautil.Optional.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Jason Ryan Womack on 5/17/16.
  */
 public class ElementServiceBase extends ServiceBase {
+
+    private static final List<String> CHAP_SECRET_METHODS;
+
+    static {
+        CHAP_SECRET_METHODS =
+                Collections.unmodifiableList(
+                        Arrays.asList(
+                                "AddAccount".toLowerCase(),
+                                "ModifyAccount".toLowerCase(),
+                                "CreateStorageContainer".toLowerCase(),
+                                "ModifyStorageContainer".toLowerCase()
+                        )
+                );
+    }
 
     static {
         LogSplash.logo();
@@ -49,11 +63,11 @@ public class ElementServiceBase extends ServiceBase {
     protected <TRequest> String encodeRequest(String method,
                                               TRequest requestParams,
                                               Class<TRequest> requestParamsClass) {
-        final String request = super.encodeRequest(method,requestParams,requestParamsClass);
-        if("ModifyAccount".equalsIgnoreCase(method) && ModifyAccountRequest.class.equals(requestParamsClass)) {
-            return request.replace("\"initiatorSecret\":\"" + CHAPSecret.autoGenerate() + "\"","\"initiatorSecret\":null")
-                          .replace("\"targetSecret\":\"" + CHAPSecret.autoGenerate() + "\"","\"targetSecret\":null");
-         }
+        final String request = super.encodeRequest(method, requestParams, requestParamsClass);
+        if (CHAP_SECRET_METHODS.contains(method.toLowerCase())) {
+            return request.replace("\"" + CHAPSecret.autoGenerate() + "\"", "null")
+                          .replace("" + CHAPSecret.autoGenerate() + "", "null");
+        }
 
         return request;
     }
