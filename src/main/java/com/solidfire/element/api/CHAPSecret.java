@@ -16,14 +16,9 @@
 
 package com.solidfire.element.api;
 
-import com.solidfire.jsvcgen.javautil.Optional;
-
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- * Created by Jason Ryan Womack on 7/18/16.
- */
 @SuppressWarnings("serial")
 public class CHAPSecret implements Serializable {
 
@@ -46,11 +41,17 @@ public class CHAPSecret implements Serializable {
         return AutoGenerate.getInstance();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return this.secret;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,12 +60,15 @@ public class CHAPSecret implements Serializable {
         return Objects.equals(secret, that.secret);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         return Objects.hash(secret);
     }
 
-    public static final Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -77,10 +81,14 @@ public class CHAPSecret implements Serializable {
 
         private String secret;
 
-        private Builder() { }
+        /**
+         * Do not instantiate Builder.
+         */
+        private Builder() {
+        }
 
         public CHAPSecret build() {
-            return new CHAPSecret (this.secret);
+            return new CHAPSecret(this.secret);
         }
 
         private CHAPSecret.Builder buildFrom(final CHAPSecret req) {

@@ -43,7 +43,7 @@ public class PairedCluster  implements Serializable  {
 
     @SerializedName("clusterName") private final String clusterName;
     @SerializedName("clusterPairID") private final Long clusterPairID;
-    @SerializedName("clusterPairUUID") private final String clusterPairUUID;
+    @SerializedName("clusterPairUUID") private final java.util.UUID clusterPairUUID;
     @SerializedName("latency") private final Long latency;
     @SerializedName("mvip") private final String mvip;
     @SerializedName("status") private final String status;
@@ -61,7 +61,7 @@ public class PairedCluster  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public PairedCluster(String clusterName, Long clusterPairID, String clusterPairUUID, Long latency, String mvip, String status, String version) {
+    public PairedCluster(String clusterName, Long clusterPairID, java.util.UUID clusterPairUUID, Long latency, String mvip, String status, String version) {
         this.clusterPairID = clusterPairID;
         this.mvip = mvip;
         this.latency = latency;
@@ -89,7 +89,7 @@ public class PairedCluster  implements Serializable  {
     /**
      * Universally unique identifier.
      **/
-    public String getClusterPairUUID() {
+    public java.util.UUID getClusterPairUUID() {
         return this.clusterPairUUID;
     }
 
@@ -167,7 +167,7 @@ public class PairedCluster  implements Serializable  {
         return sb.toString();
     }
 
-    public static final Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -178,7 +178,7 @@ public class PairedCluster  implements Serializable  {
     public static class Builder {
         private String clusterName;
         private Long clusterPairID;
-        private String clusterPairUUID;
+        private java.util.UUID clusterPairUUID;
         private Long latency;
         private String mvip;
         private String status;
@@ -219,7 +219,7 @@ public class PairedCluster  implements Serializable  {
             return this;
         }
 
-        public PairedCluster.Builder clusterPairUUID(final String clusterPairUUID) {
+        public PairedCluster.Builder clusterPairUUID(final java.util.UUID clusterPairUUID) {
             this.clusterPairUUID = clusterPairUUID;
             return this;
         }

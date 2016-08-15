@@ -67,7 +67,7 @@ public class DriveHardware  implements Serializable  {
     @SerializedName("size") private final Long size;
     @SerializedName("slot") private final Long slot;
     @SerializedName("smartSsdWriteCapable") private final Optional<Boolean> smartSsdWriteCapable;
-    @SerializedName("uuid") private final String uuid;
+    @SerializedName("uuid") private final java.util.UUID uuid;
     @SerializedName("vendor") private final String vendor;
     @SerializedName("version") private final String version;
 
@@ -105,7 +105,7 @@ public class DriveHardware  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public DriveHardware(String canonicalName, Boolean connected, Long dev, String devPath, String driveType, Long lifeRemainingPercent, Long lifetimeReadBytes, Long lifetimeWriteBytes, String name, String path, String pathLink, Long powerOnHours, String product, Long reallocatedSectors, Long reserveCapacityPercent, String scsiCompatId, String scsiState, Boolean securityAtMaximum, Boolean securityEnabled, Boolean securityFrozen, Boolean securityLocked, Boolean securitySupported, String serial, Long size, Long slot, Optional<Boolean> smartSsdWriteCapable, String uuid, String vendor, String version) {
+    public DriveHardware(String canonicalName, Boolean connected, Long dev, String devPath, String driveType, Long lifeRemainingPercent, Long lifetimeReadBytes, Long lifetimeWriteBytes, String name, String path, String pathLink, Long powerOnHours, String product, Long reallocatedSectors, Long reserveCapacityPercent, String scsiCompatId, String scsiState, Boolean securityAtMaximum, Boolean securityEnabled, Boolean securityFrozen, Boolean securityLocked, Boolean securitySupported, String serial, Long size, Long slot, Optional<Boolean> smartSsdWriteCapable, java.util.UUID uuid, String vendor, String version) {
         this.serial = serial;
         this.name = name;
         this.securityLocked = securityLocked;
@@ -215,7 +215,7 @@ public class DriveHardware  implements Serializable  {
     public Optional<Boolean> getSmartSsdWriteCapable() {
         return this.smartSsdWriteCapable;
     }
-    public String getUuid() {
+    public java.util.UUID getUuid() {
         return this.uuid;
     }
     public String getVendor() {
@@ -313,7 +313,7 @@ public class DriveHardware  implements Serializable  {
         return sb.toString();
     }
 
-    public static final Builder builder() {
+    public static Builder builder() {
         return new Builder();
     }
 
@@ -348,7 +348,7 @@ public class DriveHardware  implements Serializable  {
         private Long size;
         private Long slot;
         private Optional<Boolean> smartSsdWriteCapable;
-        private String uuid;
+        private java.util.UUID uuid;
         private String vendor;
         private String version;
 
@@ -551,7 +551,7 @@ public class DriveHardware  implements Serializable  {
             return this;
         }
 
-        public DriveHardware.Builder uuid(final String uuid) {
+        public DriveHardware.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
             return this;
         }
