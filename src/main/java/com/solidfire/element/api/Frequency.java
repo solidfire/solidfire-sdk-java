@@ -15,6 +15,8 @@
  */
 package com.solidfire.element.api;
 
+import java.io.Serializable;
+
 /**
  * This is the base interface for DaysOfMonthFrequency, DaysOfWeekFrequency, and TimeIntervalFrequency.
  *
@@ -22,5 +24,5 @@ package com.solidfire.element.api;
  * @see com.solidfire.element.api.DaysOfWeekFrequency#DaysOfWeekFrequency(Long, Long, Weekday[])
  * @see com.solidfire.element.api.TimeIntervalFrequency#TimeIntervalFrequency(Long, Long, Long)
  */
-public interface Frequency {
+public interface Frequency extends Serializable {
 }

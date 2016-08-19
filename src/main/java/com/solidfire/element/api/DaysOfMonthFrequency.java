@@ -15,10 +15,14 @@
  */
 package com.solidfire.element.api;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class DaysOfMonthFrequency implements Frequency {
+public class DaysOfMonthFrequency implements Frequency, Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private final Long minutes;
     private final Long hours;
     private final Long[] monthdays;

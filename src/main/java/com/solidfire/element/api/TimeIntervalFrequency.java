@@ -15,9 +15,13 @@
  */
 package com.solidfire.element.api;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class TimeIntervalFrequency implements Frequency {
+public class TimeIntervalFrequency implements Frequency, Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private final Long minutes;
     private final Long hours;
     private final Long days;
