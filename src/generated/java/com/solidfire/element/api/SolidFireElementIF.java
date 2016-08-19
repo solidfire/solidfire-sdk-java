@@ -2130,6 +2130,18 @@ public interface SolidFireElementIF {
     CloneVolumeResult cloneVolume(final CloneVolumeRequest request);
 
     /**
+     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
+     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
+     * <br/><br/>
+     * <b>Note</b>: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
+     *  
+     * @param request The request @see com.solidfire.element.api.CloneMultipleVolumesRequest 
+     *  
+     * @return the response
+     **/
+    CloneMultipleVolumesResult cloneMultipleVolumes(final CloneMultipleVolumesRequest request);
+
+    /**
      * CreateVolume is used to create a new (empty) volume on the cluster.
      * When the volume is created successfully it is available for connection via iSCSI.
      *  

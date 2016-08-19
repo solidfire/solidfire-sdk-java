@@ -1290,6 +1290,11 @@ public class SolidFireElement
     }
 
     @Override
+    public CloneMultipleVolumesResult cloneMultipleVolumes(final CloneMultipleVolumesRequest request) {
+        return super.sendRequest( "CloneMultipleVolumes", request, CloneMultipleVolumesRequest.class, CloneMultipleVolumesResult.class );
+    }
+
+    @Override
     public CreateVolumeResult createVolume(final CreateVolumeRequest request) {
         return super.sendRequest( "CreateVolume", request, CreateVolumeRequest.class, CreateVolumeResult.class );
     }

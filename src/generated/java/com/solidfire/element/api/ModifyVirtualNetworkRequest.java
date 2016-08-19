@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ModifyVirtualNetworkRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1612380447L;
+    private static final long serialVersionUID = -20144113L;
 
     @SerializedName("virtualNetworkID") private final Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private final Optional<Long> virtualNetworkTag;
@@ -47,6 +47,8 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
     @SerializedName("addressBlocks") private final Optional<AddressBlock[]> addressBlocks;
     @SerializedName("netmask") private final Optional<String> netmask;
     @SerializedName("svip") private final Optional<String> svip;
+    @SerializedName("gateway") private final Optional<String> gateway;
+    @SerializedName("namespace") private final Optional<Boolean> namespace;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
@@ -66,9 +68,37 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
         this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
+        this.gateway = Optional.<String>empty();
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
         this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : addressBlocks;
         this.svip = (svip == null) ? Optional.<String>empty() : svip;
+        this.namespace = Optional.<Boolean>empty();
+    }
+
+    /**
+     * The Request object for the "ModifyVirtualNetwork" API Service call.
+     * @param virtualNetworkID (optional) Unique identifier of the virtual network to modify. This is the virtual network ID assigned by the SolidFire cluster.
+     * @param virtualNetworkTag (optional) Network Tag that identifies the virtual network to modify.
+     * @param name (optional) New name for the virtual network.
+     * @param addressBlocks (optional) New addressBlock to set for this Virtual Network object. This may contain new address blocks to add to the existing object or it may omit unused address blocks that need to be removed. Alternatively, existing address blocks may be extended or reduced in size. The size of the starting addressBlocks for a Virtual Network object can only be increased, and can never be decreased.
+     * @param netmask (optional) New netmask for this virtual network.
+     * @param svip (optional) The storage virtual IP address for this virtual network. The svip for Virtual Network cannot be changed. A new Virtual Network must be created in order to use a different svip address.
+     * @param gateway (optional) 
+     * @param namespace (optional) 
+     * @param attributes (optional) A new list of Name/Value pairs in JSON object format.
+     * @since 9.0
+     **/
+    @Since("9.0")
+    public ModifyVirtualNetworkRequest(Optional<Long> virtualNetworkID, Optional<Long> virtualNetworkTag, Optional<String> name, Optional<AddressBlock[]> addressBlocks, Optional<String> netmask, Optional<String> svip, Optional<String> gateway, Optional<Boolean> namespace, Optional<java.util.Map<String, Object>> attributes) {
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
+        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
+        this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : addressBlocks;
+        this.svip = (svip == null) ? Optional.<String>empty() : svip;
+        this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
 
 
@@ -118,6 +148,26 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
     }
 
     /**
+     * 
+     * @since 9.0 
+     **/
+
+    @Since("9.0")
+    public Optional<String> getGateway() {
+        return this.gateway;
+    }
+
+    /**
+     * 
+     * @since 9.0 
+     **/
+
+    @Since("9.0")
+    public Optional<Boolean> getNamespace() {
+        return this.namespace;
+    }
+
+    /**
      * A new list of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
@@ -138,12 +188,14 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
             && Objects.deepEquals( addressBlocks , that.addressBlocks )
             && Objects.equals( netmask , that.netmask )
             && Objects.equals( svip , that.svip )
+            && Objects.equals( gateway , that.gateway )
+            && Objects.equals( namespace , that.namespace )
             && Objects.equals( attributes , that.attributes );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualNetworkID, virtualNetworkTag, name, addressBlocks, netmask, svip, attributes );
+        return Objects.hash( virtualNetworkID, virtualNetworkTag, name, addressBlocks, netmask, svip, gateway, namespace, attributes );
     }
 
 
@@ -164,6 +216,10 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
             sb.append(" netmask : ").append(netmask.get()).append(",");
         if(null != svip && svip.isPresent())
             sb.append(" svip : ").append(svip.get()).append(",");
+        if(null != gateway && gateway.isPresent())
+            sb.append(" gateway : ").append(gateway.get()).append(",");
+        if(null != namespace && namespace.isPresent())
+            sb.append(" namespace : ").append(namespace.get()).append(",");
         if(null != attributes && attributes.isPresent())
             sb.append(" attributes : ").append(attributes.get());
         sb.append( " }" );
@@ -189,6 +245,8 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         private Optional<AddressBlock[]> addressBlocks;
         private Optional<String> netmask;
         private Optional<String> svip;
+        private Optional<String> gateway;
+        private Optional<Boolean> namespace;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -201,6 +259,8 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
                          this.addressBlocks,
                          this.netmask,
                          this.svip,
+                         this.gateway,
+                         this.namespace,
                          this.attributes            );
         }
 
@@ -211,6 +271,8 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
             this.addressBlocks = req.addressBlocks;
             this.netmask = req.netmask;
             this.svip = req.svip;
+            this.gateway = req.gateway;
+            this.namespace = req.namespace;
             this.attributes = req.attributes;
 
             return this;
@@ -243,6 +305,16 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
 
         public ModifyVirtualNetworkRequest.Builder optionalSvip(final String svip) {
             this.svip = (svip == null) ? Optional.<String>empty() : Optional.of(svip);
+            return this;
+        }
+
+        public ModifyVirtualNetworkRequest.Builder optionalGateway(final String gateway) {
+            this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
+            return this;
+        }
+
+        public ModifyVirtualNetworkRequest.Builder optionalNamespace(final Boolean namespace) {
+            this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
             return this;
         }
 
