@@ -144,31 +144,31 @@ public class ScheduleAdaptor {
                 .optionalToBeDeleted(api.getToBeDeleted())
                 .scheduleInfo(toScheduleInfo(api.getScheduleInfo()));
 
-
-        switch (api.getAttributes().get("frequency").toString()) {
-            case "Time Interval":
-                schedule.frequency(TimeIntervalFrequency.builder()
-                                                        .days(api.getHours() / 24)
-                                                        .hours(api.getHours() % 24)
-                                                        .minutes(api.getMinutes())
-                                                        .build());
-                break;
-            case "Days Of Month":
-                schedule.frequency(DaysOfMonthFrequency.builder()
-                                                       .hours(api.getHours())
-                                                       .minutes(api.getMinutes())
-                                                       .monthdays(api.getMonthdays())
-                                                       .build());
-                break;
-            case "Days Of Week":
-                schedule.frequency(DaysOfWeekFrequency.builder()
-                                                      .hours(api.getHours())
-                                                      .minutes(api.getMinutes())
-                                                      .weekdays(toWeekdays(api.getWeekdays()))
-                                                      .build());
-                break;
+        if(api.getAttributes() != null && api.getAttributes().containsKey("frequency")) {
+            switch (api.getAttributes().get("frequency").toString()) {
+                case "Time Interval":
+                    schedule.frequency(TimeIntervalFrequency.builder()
+                                                            .days(api.getHours() / 24)
+                                                            .hours(api.getHours() % 24)
+                                                            .minutes(api.getMinutes())
+                                                            .build());
+                    break;
+                case "Days Of Month":
+                    schedule.frequency(DaysOfMonthFrequency.builder()
+                                                           .hours(api.getHours())
+                                                           .minutes(api.getMinutes())
+                                                           .monthdays(api.getMonthdays())
+                                                           .build());
+                    break;
+                case "Days Of Week":
+                    schedule.frequency(DaysOfWeekFrequency.builder()
+                                                          .hours(api.getHours())
+                                                          .minutes(api.getMinutes())
+                                                          .weekdays(toWeekdays(api.getWeekdays()))
+                                                          .build());
+                    break;
+            }
         }
-
         return schedule.build();
     }
 
