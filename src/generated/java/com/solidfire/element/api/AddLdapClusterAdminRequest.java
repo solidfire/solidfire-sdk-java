@@ -39,10 +39,11 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AddLdapClusterAdminRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 16335092L;
+    private static final long serialVersionUID = 1987423210L;
 
     @SerializedName("username") private final String username;
     @SerializedName("access") private final String[] access;
+    @SerializedName("acceptEula") private final Optional<Boolean> acceptEula;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
@@ -56,6 +57,23 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
     public AddLdapClusterAdminRequest(String username, String[] access, Optional<java.util.Map<String, Object>> attributes) {
         this.username = username;
         this.access = access;
+        this.acceptEula = Optional.<Boolean>empty();
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
+
+    /**
+     * The Request object for the "AddLdapClusterAdmin" API Service call.
+     * @param username [required] The distinguished user name for the new LDAP cluster admin.
+     * @param access [required] Controls which methods this Cluster Admin can use. For more details on the levels of access, see the Access Control appendix in the SolidFire API Reference.
+     * @param acceptEula (optional) Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
+     * @param attributes (optional) List of Name/Value pairs in JSON object format.
+     * @since 9.0
+     **/
+    @Since("9.0")
+    public AddLdapClusterAdminRequest(String username, String[] access, Optional<Boolean> acceptEula, Optional<java.util.Map<String, Object>> attributes) {
+        this.username = username;
+        this.access = access;
+        this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
@@ -75,6 +93,16 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
     }
 
     /**
+     * Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
+     * @since 9.0 
+     **/
+
+    @Since("9.0")
+    public Optional<Boolean> getAcceptEula() {
+        return this.acceptEula;
+    }
+
+    /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
@@ -91,12 +119,13 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
 
         return Objects.equals( username , that.username )
             && Objects.deepEquals( access , that.access )
+            && Objects.equals( acceptEula , that.acceptEula )
             && Objects.equals( attributes , that.attributes );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( username, access, attributes );
+        return Objects.hash( username, access, acceptEula, attributes );
     }
 
 
@@ -107,6 +136,8 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
 
         sb.append(" username : ").append(username).append(",");
         sb.append(" access : ").append(Arrays.toString(access)).append(",");
+        if(null != acceptEula && acceptEula.isPresent())
+            sb.append(" acceptEula : ").append(acceptEula.get()).append(",");
         if(null != attributes && attributes.isPresent())
             sb.append(" attributes : ").append(attributes.get());
         sb.append( " }" );
@@ -128,6 +159,7 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
     public static class Builder {
         private String username;
         private String[] access;
+        private Optional<Boolean> acceptEula;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -136,12 +168,14 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
             return new AddLdapClusterAdminRequest (
                          this.username,
                          this.access,
+                         this.acceptEula,
                          this.attributes            );
         }
 
         private AddLdapClusterAdminRequest.Builder buildFrom(final AddLdapClusterAdminRequest req) {
             this.username = req.username;
             this.access = req.access;
+            this.acceptEula = req.acceptEula;
             this.attributes = req.attributes;
 
             return this;
@@ -154,6 +188,11 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
 
         public AddLdapClusterAdminRequest.Builder access(final String[] access) {
             this.access = access;
+            return this;
+        }
+
+        public AddLdapClusterAdminRequest.Builder optionalAcceptEula(final Boolean acceptEula) {
+            this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : Optional.of(acceptEula);
             return this;
         }
 

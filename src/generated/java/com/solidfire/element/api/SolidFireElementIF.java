@@ -1160,24 +1160,6 @@ public interface SolidFireElementIF {
     @Since("8.0")
     AddLdapClusterAdminResult addLdapClusterAdmin(final AddLdapClusterAdminRequest request);
 
-
-    /**
-     * Convenience method for addLdapClusterAdmin 
-     *  
-     * @param username The distinguished user name for the new LDAP cluster admin.
-     *
-     * @param access Controls which methods this Cluster Admin can use. For more details on the levels of access, see the Access Control appendix in the SolidFire API Reference.
-     *
-     * @param attributes List of Name/Value pairs in JSON object format.
-     *
-     *  
-     * @return the response
-     * @see com.solidfire.element.api.SolidFireElementIF#addLdapClusterAdmin(AddLdapClusterAdminRequest) 
-     * @since 8.0 
-     **/
-    @Since("8.0")
-    AddLdapClusterAdminResult addLdapClusterAdmin(String username, String[] access, Optional<java.util.Map<String, Object>> attributes);
-
     /**
      * The TestLdapAuthentication is used to verify the currently enabled LDAP authentication configuration settings are correct. If the configuration settings are correct, the API call returns a list of the groups the tested user is a member of.
      *  
@@ -2042,6 +2024,120 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#getCompleteStats(GetCompleteStatsRequest) 
      **/
     Object getCompleteStats();
+
+    /**
+     * The ListTests API method is used to return the tests that are available to run on a node.
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListTestsRequest 
+     *  
+     * @return the response
+     **/
+    ListTestsResult listTests(final ListTestsRequest request);
+
+
+    /**
+     * Convenience method for listTests 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listTests(ListTestsRequest) 
+     **/
+    ListTestsResult listTests();
+
+    /**
+     * The ListUtilities API method is used to return the tests that are available to run on a node.
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListUtilitiesRequest 
+     *  
+     * @return the response
+     **/
+    ListUtilitiesResult listUtilities(final ListUtilitiesRequest request);
+
+
+    /**
+     * Convenience method for listUtilities 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listUtilities(ListUtilitiesRequest) 
+     **/
+    ListUtilitiesResult listUtilities();
+
+    /**
+     * The TestConnectEnsemble API method is used to verify connectivity with a sepcified database ensemble. By default it uses the ensemble for the cluster the node is associated with. Alternatively you can provide a different ensemble to test connectivity with.
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     *  
+     * @param request The request @see com.solidfire.element.api.TestConnectEnsembleRequest 
+     *  
+     * @return the response
+     **/
+    TestConnectEnsembleResult testConnectEnsemble(final TestConnectEnsembleRequest request);
+
+
+    /**
+     * Convenience method for testConnectEnsemble 
+     *  
+     * @param ensemble A comma-separated list of ensemble node CIPs for connectivity testing
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#testConnectEnsemble(TestConnectEnsembleRequest) 
+     **/
+    TestConnectEnsembleResult testConnectEnsemble(Optional<String> ensemble);
+
+    /**
+     * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     *  
+     * @param request The request @see com.solidfire.element.api.TestConnectMvipRequest 
+     *  
+     * @return the response
+     **/
+    TestConnectMvipResult testConnectMvip(final TestConnectMvipRequest request);
+
+
+    /**
+     * Convenience method for testConnectMvip 
+     *  
+     * @param mvip Optionally, use to test the management connection of a different MVIP. This is not needed to test the connection to the target cluster.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#testConnectMvip(TestConnectMvipRequest) 
+     **/
+    TestConnectMvipResult testConnectMvip(Optional<String> mvip);
+
+    /**
+     * The TestConnectSvip API method is used to test the storage connection to the cluster. The test pings the SVIP using ICMP packets and when successful connects as an iSCSI initiator.
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     *  
+     * @param request The request @see com.solidfire.element.api.TestConnectSvipRequest 
+     *  
+     * @return the response
+     **/
+    TestConnectSvipResult testConnectSvip(final TestConnectSvipRequest request);
+
+
+    /**
+     * Convenience method for testConnectSvip 
+     *  
+     * @param svip Optionally, use to test the storage connection of a different SVIP. This is not needed to test the connection to the target cluster.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#testConnectSvip(TestConnectSvipRequest) 
+     **/
+    TestConnectSvipResult testConnectSvip(Optional<String> svip);
+
+    /**
+     * The TestPing API method is used to validate the connection to all nodes in the cluster on both 1G and 10G interfaces using ICMP packets. The test uses the appropriate MTU sizes for each packet based on the MTU settings in the network configuration.
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     *  
+     * @param request The request @see com.solidfire.element.api.TestPingRequest 
+     *  
+     * @return the response
+     **/
+    TestPingResult testPing(final TestPingRequest request);
 
     /**
      * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.

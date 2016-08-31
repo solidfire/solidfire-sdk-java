@@ -35,40 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * Represents the relationship between the source Volume and cloned Volume IDs.
+ * The Request object for the "TestConnectMvip" API Service call.
  **/
-public class GroupCloneVolumeMember  implements Serializable  {
+public class TestConnectMvipRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1785945131L;
+    private static final long serialVersionUID = 1829877805L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("srcVolumeID") private final Long srcVolumeID;
+    @SerializedName("mvip") private final Optional<String> mvip;
 
     /**
-     * Represents the relationship between the source Volume and cloned Volume IDs.
-     * @param volumeID [required] The VolumeID of the cloned volume.
-     * @param srcVolumeID [required] The VolumeID of the source volume.
+     * The Request object for the "TestConnectMvip" API Service call.
+     * @param mvip (optional) Optionally, use to test the management connection of a different MVIP. This is not needed to test the connection to the target cluster.
      * @since 7.0
      **/
     @Since("7.0")
-    public GroupCloneVolumeMember(Long volumeID, Long srcVolumeID) {
-        this.volumeID = volumeID;
-        this.srcVolumeID = srcVolumeID;
+    public TestConnectMvipRequest(Optional<String> mvip) {
+        this.mvip = (mvip == null) ? Optional.<String>empty() : mvip;
     }
 
 
     /**
-     * The VolumeID of the cloned volume.
+     * Optionally, use to test the management connection of a different MVIP. This is not needed to test the connection to the target cluster.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    /**
-     * The VolumeID of the source volume.
-     **/
-    public Long getSrcVolumeID() {
-        return this.srcVolumeID;
+    public Optional<String> getMvip() {
+        return this.mvip;
     }
 
     @Override
@@ -76,16 +66,15 @@ public class GroupCloneVolumeMember  implements Serializable  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GroupCloneVolumeMember that = (GroupCloneVolumeMember) o;
+        TestConnectMvipRequest that = (TestConnectMvipRequest) o;
         
 
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( srcVolumeID , that.srcVolumeID );
+        return Objects.equals( mvip , that.mvip );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, srcVolumeID );
+        return Objects.hash( (Object) mvip );
     }
 
 
@@ -94,8 +83,8 @@ public class GroupCloneVolumeMember  implements Serializable  {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" srcVolumeID : ").append(srcVolumeID);
+        if(null != mvip && mvip.isPresent())
+            sb.append(" mvip : ").append(mvip.get());
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -113,31 +102,23 @@ public class GroupCloneVolumeMember  implements Serializable  {
     }
 
     public static class Builder {
-        private Long volumeID;
-        private Long srcVolumeID;
+        private Optional<String> mvip;
 
         private Builder() { }
 
-        public GroupCloneVolumeMember build() {
-            return new GroupCloneVolumeMember (
-                         this.volumeID,
-                         this.srcVolumeID            );
+        public TestConnectMvipRequest build() {
+            return new TestConnectMvipRequest (
+                         this.mvip            );
         }
 
-        private GroupCloneVolumeMember.Builder buildFrom(final GroupCloneVolumeMember req) {
-            this.volumeID = req.volumeID;
-            this.srcVolumeID = req.srcVolumeID;
+        private TestConnectMvipRequest.Builder buildFrom(final TestConnectMvipRequest req) {
+            this.mvip = req.mvip;
 
             return this;
         }
 
-        public GroupCloneVolumeMember.Builder volumeID(final Long volumeID) {
-            this.volumeID = volumeID;
-            return this;
-        }
-
-        public GroupCloneVolumeMember.Builder srcVolumeID(final Long srcVolumeID) {
-            this.srcVolumeID = srcVolumeID;
+        public TestConnectMvipRequest.Builder optionalMvip(final String mvip) {
+            this.mvip = (mvip == null) ? Optional.<String>empty() : Optional.of(mvip);
             return this;
         }
 

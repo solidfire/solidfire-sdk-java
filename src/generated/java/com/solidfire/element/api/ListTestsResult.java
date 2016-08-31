@@ -35,40 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * Represents the relationship between the source Volume and cloned Volume IDs.
+ * The object returned by the "ListTests" API Service call.
  **/
-public class GroupCloneVolumeMember  implements Serializable  {
+public class ListTestsResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1785945131L;
+    private static final long serialVersionUID = 56906467L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("srcVolumeID") private final Long srcVolumeID;
+    @SerializedName("tests") private final String[] tests;
 
     /**
-     * Represents the relationship between the source Volume and cloned Volume IDs.
-     * @param volumeID [required] The VolumeID of the cloned volume.
-     * @param srcVolumeID [required] The VolumeID of the source volume.
+     * The object returned by the "ListTests" API Service call.
+     * @param tests [required] List of tests that can be performed on the node.
      * @since 7.0
      **/
     @Since("7.0")
-    public GroupCloneVolumeMember(Long volumeID, Long srcVolumeID) {
-        this.volumeID = volumeID;
-        this.srcVolumeID = srcVolumeID;
+    public ListTestsResult(String[] tests) {
+        this.tests = tests;
     }
 
 
     /**
-     * The VolumeID of the cloned volume.
+     * List of tests that can be performed on the node.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    /**
-     * The VolumeID of the source volume.
-     **/
-    public Long getSrcVolumeID() {
-        return this.srcVolumeID;
+    public String[] getTests() {
+        return this.tests;
     }
 
     @Override
@@ -76,16 +66,15 @@ public class GroupCloneVolumeMember  implements Serializable  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GroupCloneVolumeMember that = (GroupCloneVolumeMember) o;
+        ListTestsResult that = (ListTestsResult) o;
         
 
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( srcVolumeID , that.srcVolumeID );
+        return Objects.deepEquals( tests , that.tests );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, srcVolumeID );
+        return Objects.hash( (Object) tests );
     }
 
 
@@ -94,8 +83,7 @@ public class GroupCloneVolumeMember  implements Serializable  {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" srcVolumeID : ").append(srcVolumeID);
+        sb.append(" tests : ").append(Arrays.toString(tests));
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -113,31 +101,23 @@ public class GroupCloneVolumeMember  implements Serializable  {
     }
 
     public static class Builder {
-        private Long volumeID;
-        private Long srcVolumeID;
+        private String[] tests;
 
         private Builder() { }
 
-        public GroupCloneVolumeMember build() {
-            return new GroupCloneVolumeMember (
-                         this.volumeID,
-                         this.srcVolumeID            );
+        public ListTestsResult build() {
+            return new ListTestsResult (
+                         this.tests            );
         }
 
-        private GroupCloneVolumeMember.Builder buildFrom(final GroupCloneVolumeMember req) {
-            this.volumeID = req.volumeID;
-            this.srcVolumeID = req.srcVolumeID;
+        private ListTestsResult.Builder buildFrom(final ListTestsResult req) {
+            this.tests = req.tests;
 
             return this;
         }
 
-        public GroupCloneVolumeMember.Builder volumeID(final Long volumeID) {
-            this.volumeID = volumeID;
-            return this;
-        }
-
-        public GroupCloneVolumeMember.Builder srcVolumeID(final Long srcVolumeID) {
-            this.srcVolumeID = srcVolumeID;
+        public ListTestsResult.Builder tests(final String[] tests) {
+            this.tests = tests;
             return this;
         }
 

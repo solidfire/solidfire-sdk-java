@@ -632,13 +632,6 @@ public class SolidFireElement
         return super.sendRequest( "AddLdapClusterAdmin", request, AddLdapClusterAdminRequest.class, AddLdapClusterAdminResult.class );
     }
 
-
-    @Override
-    @Since("8.0")
-    public AddLdapClusterAdminResult addLdapClusterAdmin(String username, String[] access, Optional<java.util.Map<String, Object>> attributes) {
-        return this.addLdapClusterAdmin( new AddLdapClusterAdminRequest( username, access, attributes) );
-    }
-
     @Override
     @Since("8.0")
     public TestLdapAuthenticationResult testLdapAuthentication(final TestLdapAuthenticationRequest request) {
@@ -1077,6 +1070,66 @@ public class SolidFireElement
     @Override
     public Object getCompleteStats() {
         return this.getCompleteStats( new GetCompleteStatsRequest( ) );
+    }
+
+    @Override
+    public ListTestsResult listTests(final ListTestsRequest request) {
+        return super.sendRequest( "ListTests", request, ListTestsRequest.class, ListTestsResult.class );
+    }
+
+
+    @Override
+    public ListTestsResult listTests() {
+        return this.listTests( new ListTestsRequest( ) );
+    }
+
+    @Override
+    public ListUtilitiesResult listUtilities(final ListUtilitiesRequest request) {
+        return super.sendRequest( "ListUtilities", request, ListUtilitiesRequest.class, ListUtilitiesResult.class );
+    }
+
+
+    @Override
+    public ListUtilitiesResult listUtilities() {
+        return this.listUtilities( new ListUtilitiesRequest( ) );
+    }
+
+    @Override
+    public TestConnectEnsembleResult testConnectEnsemble(final TestConnectEnsembleRequest request) {
+        return super.sendRequest( "TestConnectEnsemble", request, TestConnectEnsembleRequest.class, TestConnectEnsembleResult.class );
+    }
+
+
+    @Override
+    public TestConnectEnsembleResult testConnectEnsemble(Optional<String> ensemble) {
+        return this.testConnectEnsemble( new TestConnectEnsembleRequest( ensemble) );
+    }
+
+    @Override
+    public TestConnectMvipResult testConnectMvip(final TestConnectMvipRequest request) {
+        return super.sendRequest( "TestConnectMvip", request, TestConnectMvipRequest.class, TestConnectMvipResult.class );
+    }
+
+
+    @Override
+    public TestConnectMvipResult testConnectMvip(Optional<String> mvip) {
+        return this.testConnectMvip( new TestConnectMvipRequest( mvip) );
+    }
+
+    @Override
+    public TestConnectSvipResult testConnectSvip(final TestConnectSvipRequest request) {
+        return super.sendRequest( "TestConnectSvip", request, TestConnectSvipRequest.class, TestConnectSvipResult.class );
+    }
+
+
+    @Override
+    public TestConnectSvipResult testConnectSvip(Optional<String> svip) {
+        return this.testConnectSvip( new TestConnectSvipRequest( svip) );
+    }
+
+    @Override
+    public TestPingResult testPing(final TestPingRequest request) {
+        return super.sendRequest( "TestPing", request, TestPingRequest.class, TestPingResult.class );
     }
 
     @Override

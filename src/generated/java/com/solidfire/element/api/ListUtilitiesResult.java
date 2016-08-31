@@ -35,40 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * Represents the relationship between the source Volume and cloned Volume IDs.
+ * The object returned by the "ListUtilities" API Service call.
  **/
-public class GroupCloneVolumeMember  implements Serializable  {
+public class ListUtilitiesResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1785945131L;
+    private static final long serialVersionUID = -1625897097L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("srcVolumeID") private final Long srcVolumeID;
+    @SerializedName("utilities") private final String[] utilities;
 
     /**
-     * Represents the relationship between the source Volume and cloned Volume IDs.
-     * @param volumeID [required] The VolumeID of the cloned volume.
-     * @param srcVolumeID [required] The VolumeID of the source volume.
+     * The object returned by the "ListUtilities" API Service call.
+     * @param utilities [required] List of utilities currently available to run on the node.
      * @since 7.0
      **/
     @Since("7.0")
-    public GroupCloneVolumeMember(Long volumeID, Long srcVolumeID) {
-        this.volumeID = volumeID;
-        this.srcVolumeID = srcVolumeID;
+    public ListUtilitiesResult(String[] utilities) {
+        this.utilities = utilities;
     }
 
 
     /**
-     * The VolumeID of the cloned volume.
+     * List of utilities currently available to run on the node.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    /**
-     * The VolumeID of the source volume.
-     **/
-    public Long getSrcVolumeID() {
-        return this.srcVolumeID;
+    public String[] getUtilities() {
+        return this.utilities;
     }
 
     @Override
@@ -76,16 +66,15 @@ public class GroupCloneVolumeMember  implements Serializable  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GroupCloneVolumeMember that = (GroupCloneVolumeMember) o;
+        ListUtilitiesResult that = (ListUtilitiesResult) o;
         
 
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( srcVolumeID , that.srcVolumeID );
+        return Objects.deepEquals( utilities , that.utilities );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, srcVolumeID );
+        return Objects.hash( (Object) utilities );
     }
 
 
@@ -94,8 +83,7 @@ public class GroupCloneVolumeMember  implements Serializable  {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" srcVolumeID : ").append(srcVolumeID);
+        sb.append(" utilities : ").append(Arrays.toString(utilities));
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -113,31 +101,23 @@ public class GroupCloneVolumeMember  implements Serializable  {
     }
 
     public static class Builder {
-        private Long volumeID;
-        private Long srcVolumeID;
+        private String[] utilities;
 
         private Builder() { }
 
-        public GroupCloneVolumeMember build() {
-            return new GroupCloneVolumeMember (
-                         this.volumeID,
-                         this.srcVolumeID            );
+        public ListUtilitiesResult build() {
+            return new ListUtilitiesResult (
+                         this.utilities            );
         }
 
-        private GroupCloneVolumeMember.Builder buildFrom(final GroupCloneVolumeMember req) {
-            this.volumeID = req.volumeID;
-            this.srcVolumeID = req.srcVolumeID;
+        private ListUtilitiesResult.Builder buildFrom(final ListUtilitiesResult req) {
+            this.utilities = req.utilities;
 
             return this;
         }
 
-        public GroupCloneVolumeMember.Builder volumeID(final Long volumeID) {
-            this.volumeID = volumeID;
-            return this;
-        }
-
-        public GroupCloneVolumeMember.Builder srcVolumeID(final Long srcVolumeID) {
-            this.srcVolumeID = srcVolumeID;
+        public ListUtilitiesResult.Builder utilities(final String[] utilities) {
+            this.utilities = utilities;
             return this;
         }
 

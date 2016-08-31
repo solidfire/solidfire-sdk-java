@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class Snapshot  implements Serializable  {
 
-    private static final long serialVersionUID = -1297963942L;
+    private static final long serialVersionUID = -1616693506L;
 
     @SerializedName("snapshotID") private final Long snapshotID;
     @SerializedName("volumeID") private final Long volumeID;
@@ -50,7 +50,7 @@ public class Snapshot  implements Serializable  {
     @SerializedName("expirationTime") private final String expirationTime;
     @SerializedName("remoteStatuses") private final String remoteStatuses;
     @SerializedName("status") private final String status;
-    @SerializedName("SnapshotUUID") private final String snapshotUUID;
+    @SerializedName("SnapshotUUID") private final java.util.UUID snapshotUUID;
     @SerializedName("totalSize") private final Long totalSize;
     @SerializedName("groupID") private final Optional<Long> groupID;
     @SerializedName("groupSnapshotUUID") private final java.util.UUID groupSnapshotUUID;
@@ -111,7 +111,7 @@ public class Snapshot  implements Serializable  {
      * @since 8.0
      **/
     @Since("8.0")
-    public Snapshot(Long snapshotID, Long volumeID, String name, String checksum, Boolean enableRemoteReplication, String expirationReason, String expirationTime, String remoteStatuses, String status, String snapshotUUID, Long totalSize, Optional<Long> groupID, java.util.UUID groupSnapshotUUID, String createTime, java.util.Map<String, Object> attributes) {
+    public Snapshot(Long snapshotID, Long volumeID, String name, String checksum, Boolean enableRemoteReplication, String expirationReason, String expirationTime, String remoteStatuses, String status, java.util.UUID snapshotUUID, Long totalSize, Optional<Long> groupID, java.util.UUID groupSnapshotUUID, String createTime, java.util.Map<String, Object> attributes) {
         this.name = name;
         this.remoteStatuses = remoteStatuses;
         this.expirationTime = expirationTime;
@@ -224,7 +224,7 @@ public class Snapshot  implements Serializable  {
      **/
 
     @Since("8.0")
-    public String getSnapshotUUID() {
+    public java.util.UUID getSnapshotUUID() {
         return this.snapshotUUID;
     }
 
@@ -347,7 +347,7 @@ public class Snapshot  implements Serializable  {
         private String expirationTime;
         private String remoteStatuses;
         private String status;
-        private String snapshotUUID;
+        private java.util.UUID snapshotUUID;
         private Long totalSize;
         private Optional<Long> groupID;
         private java.util.UUID groupSnapshotUUID;
@@ -440,7 +440,7 @@ public class Snapshot  implements Serializable  {
             return this;
         }
 
-        public Snapshot.Builder SnapshotUUID(final String snapshotUUID) {
+        public Snapshot.Builder SnapshotUUID(final java.util.UUID snapshotUUID) {
             this.snapshotUUID = snapshotUUID;
             return this;
         }

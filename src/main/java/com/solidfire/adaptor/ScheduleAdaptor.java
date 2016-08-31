@@ -124,7 +124,7 @@ public class ScheduleAdaptor {
 
         final ApiModifyScheduleResult apiResult = sfe.sendRequest("ModifySchedule", apiRequest.build(), ApiModifyScheduleRequest.class, ApiModifyScheduleResult.class);
 
-        return ModifyScheduleResult.builder().schedule(toSchedule(apiResult.getSchedule())).build();
+        return new ModifyScheduleResult();
 
     }
 

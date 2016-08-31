@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class CloneMultipleVolumeParams  implements Serializable  {
 
-    private static final long serialVersionUID = 1249730835L;
+    private static final long serialVersionUID = 1363969163L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("access") private final Optional<String> access;
@@ -54,7 +54,7 @@ public class CloneMultipleVolumeParams  implements Serializable  {
      * @param access (optional) access : readOnly; readWrite, locked, replicationTarget
      * @param name (optional) New name for the clone.
      * @param newAccountID (optional) Account ID for the new volume.
-     * @param newSize (optional) New size Total size of the volume, in bytes. Size is rounded up to the neares 1MB size.
+     * @param newSize (optional) New size Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
      * @param attributes (optional) List of Name/Value pairs in JSON object format.
      * @since 7.0
      **/
@@ -98,7 +98,7 @@ public class CloneMultipleVolumeParams  implements Serializable  {
     }
 
     /**
-     * New size Total size of the volume, in bytes. Size is rounded up to the neares 1MB size.
+     * New size Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
      **/
     public Optional<Long> getNewSize() {
         return this.newSize;
