@@ -54,7 +54,7 @@ public abstract class AbstractFactory<T extends ServiceBase> {
 
     protected abstract T toServiceBase(final RequestDispatcher requestDispatcher);
 
-    protected RequestDispatcher buildRequestDispatcher(String target, Optional<Integer> port, Optional<String> username, Optional<String> password, Optional<String> apiVersion, boolean verifySSL) {
+    protected RequestDispatcher buildRequestDispatcher(String target, Optional<Integer> port, String username, String password, Optional<String> apiVersion, boolean verifySSL) {
 
         final URL endpoint;
         if (apiVersion.isPresent()) {
@@ -72,18 +72,10 @@ public abstract class AbstractFactory<T extends ServiceBase> {
         }
         final RequestDispatcher requestDispatcher;
 
-        if (username.isPresent() && password.isPresent()) {
-            if (verifySSL) {
-                requestDispatcher = new HttpsRequestDispatcher(endpoint, username.get(), password.get());
-            } else {
-                requestDispatcher = new HttpsRequestDispatcherWithoutSSLVerification(endpoint, username.get(), password.get());
-            }
+        if (verifySSL) {
+            requestDispatcher = new HttpsRequestDispatcher(endpoint, username, password);
         } else {
-            if (verifySSL) {
-                requestDispatcher = new HttpsRequestDispatcher(endpoint);
-            } else {
-                requestDispatcher = new HttpsRequestDispatcherWithoutSSLVerification(endpoint);
-            }
+            requestDispatcher = new HttpsRequestDispatcherWithoutSSLVerification(endpoint, username, password);
         }
 
         return requestDispatcher;
@@ -109,7 +101,7 @@ public abstract class AbstractFactory<T extends ServiceBase> {
         }
     }
 
-    protected T checkVersion(String target, Optional<Integer> port, Optional<String> username, Optional<String> password, Optional<String> version, boolean verifySSL) {
+    protected T checkVersion(String target, Optional<Integer> port, String username, String password, Optional<String> version, boolean verifySSL) {
         testTargetFormat(target, verifySSL);
 
         final RequestDispatcher dispatcher;
@@ -122,7 +114,7 @@ public abstract class AbstractFactory<T extends ServiceBase> {
             try {
                 versionActual = Double.valueOf(version.get());
             } catch (NullPointerException | NumberFormatException e) {
-                throw new ApiException("Unable to determine version to connect from value: " + version);
+                throw new ApiException("Unable to determine version to connect from value: " + version.get());
             }
 
             if (versionActual < getMinApiVersion()) {

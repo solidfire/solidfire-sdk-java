@@ -31,10 +31,44 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
     private static final double MIN_SDK_VERSION = 7.0;
     private static final double MAX_SDK_VERSION = 8.4;
 
-    private ElementFactory() {}
+    private ElementFactory() {
+    }
+
 
     /**
-     * Create a new instance of  SolidFireElement with a connection to the given target and the appropriate username and
+     * Create a new instance of SolidFireElement with a connection to the given target with the appropriate username and
+     * password.  Hostname verification is defaulted to false.
+     *
+     * @param mvip     the management virtual IP (MVIP)
+     * @param username admin username
+     * @param password admin password
+     * @return an instance of the SolidFire Element
+     */
+    public static SolidFireElement create(String mvip, String username, String password) {
+        return new ElementFactory().checkVersion(mvip, Optional.<Integer>empty(), username, password, Optional.<String>empty(), false);
+    }
+
+
+    /**
+     * Create a new instance of SolidFireElement with a connection to the given target with the appropriate username and
+     * password.  The instance will be initialized at the maximum supported version of the API.
+     * @see #getMaxApiVersion()
+     *
+     * @param target    the management virtual IP (or hostname)
+     * @param username  admin username
+     * @param password  admin password
+     * @param verifySSL if set to true, the target will be checked against the list of valid SSL hosts, including verification of the
+     *                  validity of the Cert recorded for a given target, otherwise these validity checks are ignored, which is useful
+     *                  when the target is an IP address.
+     * @return an instance of the SolidFire Element
+     */
+    public static SolidFireElement create(String target, String username, String password, boolean verifySSL) {
+        return new ElementFactory().checkVersion(target, Optional.<Integer>empty(), username, password, Optional.<String>empty(), verifySSL);
+    }
+
+
+    /**
+     * Create a new instance of SolidFireElement with a connection to the given target with the appropriate username and
      * password.
      *
      * @param target     the management virtual IP (or hostname)
@@ -47,12 +81,47 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
      * @return an instance of the SolidFire Element
      */
     public static SolidFireElement create(String target, String username, String password, String apiVersion, boolean verifySSL) {
-
-        return new ElementFactory().checkVersion(target, Optional.<Integer>empty(), of(username), of(password), of(apiVersion), verifySSL);
+        return new ElementFactory().checkVersion(target, Optional.<Integer>empty(), username, password, of(apiVersion), verifySSL);
     }
 
+
     /**
-     * Create a new instance of  SolidFireElement with a connection to the given target with Port and the appropriate username and
+     * Create a new instance of SolidFireElement with a connection to the given target with Port and the appropriate username and
+     * password.  The instance will be initialized at the maximum supported version of the API.
+     * @see #getMaxApiVersion()
+     *
+     * @param target    the management virtual IP (or hostname)
+     * @param port      the port to use
+     * @param username  admin username
+     * @param password  admin password
+     * @param verifySSL if set to true, the target will be checked against the list of valid SSL hosts, including verification of the
+     *                  validity of the Cert recorded for a given target, otherwise these validity checks are ignored, which is useful
+     *                  when the target is an IP address.
+     * @return an instance of the SolidFire Element
+     */
+    public static SolidFireElement create(String target, Integer port, String username, String password, boolean verifySSL) {
+        return new ElementFactory().checkVersion(target, of(port), username, password, Optional.<String>empty(), verifySSL);
+    }
+
+
+    /**
+     * Create a new instance of SolidFireElement with a connection to the given target with Port and the appropriate username and
+     * password.  Hostname verification is defaulted to false.
+     *
+     * @param target     the management virtual IP (or hostname)
+     * @param port       the port to use
+     * @param username   admin username
+     * @param password   admin password
+     * @param apiVersion the version of the API services
+     * @return an instance of the SolidFire Element
+     */
+    public static SolidFireElement create(String target, Integer port, String username, String password, String apiVersion) {
+        return new ElementFactory().checkVersion(target, of(port), username, password, of(apiVersion), false);
+    }
+
+
+    /**
+     * Create a new instance of SolidFireElement with a connection to the given target with Port and the appropriate username and
      * password.
      *
      * @param target     the management virtual IP (or hostname)
@@ -66,39 +135,9 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
      * @return an instance of the SolidFire Element
      */
     public static SolidFireElement create(String target, Integer port, String username, String password, String apiVersion, boolean verifySSL) {
-        return new ElementFactory().checkVersion(target, of(port), of(username), of(password), of(apiVersion), verifySSL);
+        return new ElementFactory().checkVersion(target, of(port), username, password, of(apiVersion), verifySSL);
     }
 
-    /**
-     * Similar to the other create method, but do not use any form of authentication. This is only useful before the
-     * cluster has been created.
-     *
-     * @param target     the management virtual IP (or hostname)
-     * @param apiVersion the version of the API services
-     * @param verifySSL  if set to true, the target will be checked against the list of valid SSL hosts, including verification of the
-     *                   validity of the Cert recorded for a given target, otherwise these validity checks are ignored, which is useful
-     *                   when the target is an IP address.
-     * @return an instance of the SolidFire Element
-     */
-    public static SolidFireElement create(String target, String apiVersion, boolean verifySSL) {
-        return new ElementFactory().checkVersion(target, Optional.<Integer>empty(), Optional.<String>empty(), Optional.<String>empty(), of(apiVersion), verifySSL);
-    }
-
-    /**
-     * Similar to the other create method, but do not use any form of authentication. This is only useful before the
-     * cluster has been created.
-     *
-     * @param target     the management virtual IP (or hostname)
-     * @param port       the port to use
-     * @param apiVersion the version of the API services
-     * @param verifySSL  if set to true, the target will be checked against the list of valid SSL hosts, including verification of the
-     *                   validity of the Cert recorded for a given target, otherwise these validity checks are ignored, which is useful
-     *                   when the target is an IP address.
-     * @return an instance of the SolidFire Element
-     */
-    public static SolidFireElement create(String target, Integer port, String apiVersion, boolean verifySSL) {
-        return new ElementFactory().checkVersion(target, of(port), Optional.<String>empty(), Optional.<String>empty(), of(apiVersion), verifySSL);
-    }
 
     /**
      * {@inheritDoc}

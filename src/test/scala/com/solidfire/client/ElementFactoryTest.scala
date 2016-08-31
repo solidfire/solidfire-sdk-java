@@ -42,28 +42,28 @@ class TestFactorySuite extends WordSpec with BeforeAndAfterAll with MockitoSugar
 
   "buildRequestDispatcher" should {
     "return correct dispatcher with only hostname and verifySSL=true" in {
-      testFactory.buildRequestDispatcher( "hostname", Empty[Integer], Empty[String], Empty[String], Empty[String], true ) shouldBe a[HttpsRequestDispatcher]
+      testFactory.buildRequestDispatcher( "hostname", Empty[Integer], "username", "password", Empty[String], true ) shouldBe a[HttpsRequestDispatcher]
     }
     "return correct dispatcher with only hostname and verifySSL=false" in {
-      testFactory.buildRequestDispatcher( "hostname", Empty[Integer], Empty[String], Empty[String], Empty[String], false ) shouldBe a[HttpsRequestDispatcherWithoutSSLVerification]
+      testFactory.buildRequestDispatcher( "hostname", Empty[Integer], "username", "password", Empty[String], false ) shouldBe a[HttpsRequestDispatcherWithoutSSLVerification]
     }
     "return correct dispatcher with hostname, username, password and verifySSL=true" in {
-      testFactory.buildRequestDispatcher( "hostname", Empty[Integer], Of( "username" ), Of( "password" ), Empty[String], true ) shouldBe a[HttpsRequestDispatcher]
+      testFactory.buildRequestDispatcher( "hostname", Empty[Integer], "username", "password", Empty[String], true ) shouldBe a[HttpsRequestDispatcher]
     }
     "return correct dispatcher with hostname, username, password and verifySSL=false" in {
-      testFactory.buildRequestDispatcher( "hostname", Empty[Integer], Of( "username" ), Of( "password" ), Empty[String], false ) shouldBe a[HttpsRequestDispatcherWithoutSSLVerification]
+      testFactory.buildRequestDispatcher( "hostname", Empty[Integer], "username", "password", Empty[String], false ) shouldBe a[HttpsRequestDispatcherWithoutSSLVerification]
     }
     "return dispatcher with the correct api version when supplied" in {
-      val dispatcher = testFactory.buildRequestDispatcher( "hostname", Empty[Integer], Empty[String], Empty[String], Of( "6.0" ), true ).asInstanceOf[HttpsRequestDispatcher]
+      val dispatcher = testFactory.buildRequestDispatcher( "hostname", Empty[Integer], "username", "password", Of( "6.0" ), true ).asInstanceOf[HttpsRequestDispatcher]
       dispatcher.getEndpoint.toString should endWith( "/json-rpc/6.0" )
     }
     "return dispatcher with the minimum api version when api version is not given" in {
-      val dispatcher = testFactory.buildRequestDispatcher( "hostname", Empty[Integer], Empty[String], Empty[String], Empty[String], true ).asInstanceOf[HttpsRequestDispatcher]
+      val dispatcher = testFactory.buildRequestDispatcher( "hostname", Empty[Integer], "username", "password", Empty[String], true ).asInstanceOf[HttpsRequestDispatcher]
       dispatcher.getEndpoint.toString should endWith( "/json-rpc/5.0" )
     }
     "throw exception when version supplied does not parse to a double" in {
       the[ApiException] thrownBy {
-        testFactory.buildRequestDispatcher( "hostname", Empty[Integer], Empty[String], Empty[String], Of("fivedotzero"), true )
+        testFactory.buildRequestDispatcher( "hostname", Empty[Integer], "username", "password", Of("fivedotzero"), true )
       } should have message "Unable to determine version to connect from value: fivedotzero"
     }
 
@@ -75,33 +75,33 @@ class TestFactorySuite extends WordSpec with BeforeAndAfterAll with MockitoSugar
 
     def getEndpoint( serviceBase: ServiceBase ): String = serviceBase.getRequestDispatcher.asInstanceOf[HttpsRequestDispatcher].getEndpoint.toString
     "assign max version when version is not passed and current version is greater" in {
-      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], Empty[String], Empty[String], Empty[String], false ) ) should endWith( "/json-rpc/10.0" )
+      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Empty[String], false ) ) should endWith( "/json-rpc/10.0" )
     }
     "assign greater then max version when valid version is supplied" in {
-      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], Empty[String], Empty[String], Of("12.0"), false ) ) should endWith( "/json-rpc/12.0" )
+      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of("12.0"), false ) ) should endWith( "/json-rpc/12.0" )
     }
     "assign lower then max version when valid version is supplied" in {
-      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], Empty[String], Empty[String], Of("8.0"), false ) ) should endWith( "/json-rpc/8.0" )
+      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of("8.0"), false ) ) should endWith( "/json-rpc/8.0" )
     }
     "assign the min version when min version is supplied" in {
-      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], Empty[String], Empty[String], Of("5.0"), false ) ) should endWith( "/json-rpc/5.0" )
+      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of("5.0"), false ) ) should endWith( "/json-rpc/5.0" )
     }
     "throw exception when version supplied does not parse to a double" in {
       testFactory.resetFirstPass()
       the[ApiException] thrownBy {
-        testFactory.checkVersion( "127.0.0.1", Empty[Integer], Empty[String], Empty[String], Of("fivedotzero"), false )
+        testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of("fivedotzero"), false )
       } should have message "Unable to determine version to connect from value: fivedotzero"
     }
     "throw exception when version supplied is less then the minimum version" in {
       testFactory.resetFirstPass()
       the[ApiException] thrownBy {
-        testFactory.checkVersion( "127.0.0.1", Empty[Integer], Empty[String], Empty[String], Of("4.0"), false )
+        testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of("4.0"), false )
       } should have message "Cannot connect to a version lower than supported by the SDK. Connect at 5.0 or higher."
     }
     "throw exception when version supplied is not a valid version" in {
       testFactory.resetFirstPass()
       the[ApiException] thrownBy {
-        testFactory.checkVersion( "127.0.0.1", Empty[Integer], Empty[String], Empty[String], Of("8.1"), false )
+        testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of("8.1"), false )
       } should have message "Invalid version to connect on this cluster. Valid versions are: 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, or 12.0"
     }
   }
