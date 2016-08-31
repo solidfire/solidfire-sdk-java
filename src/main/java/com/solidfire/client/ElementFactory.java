@@ -52,7 +52,6 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
     /**
      * Create a new instance of SolidFireElement with a connection to the given target with the appropriate username and
      * password.  The instance will be initialized at the maximum supported version of the API.
-     * @see #getMaxApiVersion()
      *
      * @param target    the management virtual IP (or hostname)
      * @param username  admin username
@@ -61,6 +60,7 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
      *                  validity of the Cert recorded for a given target, otherwise these validity checks are ignored, which is useful
      *                  when the target is an IP address.
      * @return an instance of the SolidFire Element
+     * @see #getMaxApiVersion()
      */
     public static SolidFireElement create(String target, String username, String password, boolean verifySSL) {
         return new ElementFactory().checkVersion(target, Optional.<Integer>empty(), username, password, Optional.<String>empty(), verifySSL);
@@ -88,7 +88,6 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
     /**
      * Create a new instance of SolidFireElement with a connection to the given target with Port and the appropriate username and
      * password.  The instance will be initialized at the maximum supported version of the API.
-     * @see #getMaxApiVersion()
      *
      * @param target    the management virtual IP (or hostname)
      * @param port      the port to use
@@ -98,6 +97,7 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
      *                  validity of the Cert recorded for a given target, otherwise these validity checks are ignored, which is useful
      *                  when the target is an IP address.
      * @return an instance of the SolidFire Element
+     * @see #getMaxApiVersion()
      */
     public static SolidFireElement create(String target, Integer port, String username, String password, boolean verifySSL) {
         return new ElementFactory().checkVersion(target, of(port), username, password, Optional.<String>empty(), verifySSL);
@@ -108,15 +108,15 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
      * Create a new instance of SolidFireElement with a connection to the given target with Port and the appropriate username and
      * password.  Hostname verification is defaulted to false.
      *
-     * @param target     the management virtual IP (or hostname)
+     * @param mvip       the management virtual IP
      * @param port       the port to use
      * @param username   admin username
      * @param password   admin password
      * @param apiVersion the version of the API services
      * @return an instance of the SolidFire Element
      */
-    public static SolidFireElement create(String target, Integer port, String username, String password, String apiVersion) {
-        return new ElementFactory().checkVersion(target, of(port), username, password, of(apiVersion), false);
+    public static SolidFireElement create(String mvip, Integer port, String username, String password, String apiVersion) {
+        return new ElementFactory().checkVersion(mvip, of(port), username, password, of(apiVersion), false);
     }
 
 
