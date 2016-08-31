@@ -25,9 +25,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Jason Ryan Womack on 5/17/16.
- */
 public class ElementServiceBase extends ServiceBase {
 
     private static final List<String> CHAP_SECRET_METHODS;
@@ -47,6 +44,8 @@ public class ElementServiceBase extends ServiceBase {
     static {
         LogSplash.logo();
     }
+
+
 
     /**
      * Create a service with the given connection.
