@@ -39,36 +39,66 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class VirtualNetwork  implements Serializable  {
 
-    private static final long serialVersionUID = 709408058L;
+    private static final long serialVersionUID = -1508239191L;
 
     @SerializedName("virtualNetworkID") private final Long virtualNetworkID;
     @SerializedName("virtualNetworkTag") private final Long virtualNetworkTag;
     @SerializedName("addressBlocks") private final AddressBlock[] addressBlocks;
-    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
     @SerializedName("name") private final String name;
     @SerializedName("netmask") private final String netmask;
     @SerializedName("svip") private final String svip;
+    @SerializedName("gateway") private final Optional<String> gateway;
+    @SerializedName("namespace") private final Optional<Boolean> namespace;
+    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
 
     /**
      * 
      * @param virtualNetworkID [required] SolidFire unique identifier for a virtual network.
      * @param virtualNetworkTag [required] VLAN Tag identifier.
      * @param addressBlocks [required] Range of address blocks currently assigned to the virtual network.
-     * @param attributes [required] List of Name/Value pairs in JSON object format.
      * @param name [required] The name assigned to the virtual network.
      * @param netmask [required] IP address of the netmask for the virtual network.
      * @param svip [required] Storage IP address for the virtual network.
+     * @param attributes [required] List of Name/Value pairs in JSON object format.
      * @since 7.0
      **/
     @Since("7.0")
-    public VirtualNetwork(Long virtualNetworkID, Long virtualNetworkTag, AddressBlock[] addressBlocks, java.util.Map<String, Object> attributes, String name, String netmask, String svip) {
+    public VirtualNetwork(Long virtualNetworkID, Long virtualNetworkTag, AddressBlock[] addressBlocks, String name, String netmask, String svip, java.util.Map<String, Object> attributes) {
         this.name = name;
         this.virtualNetworkTag = virtualNetworkTag;
         this.netmask = netmask;
         this.virtualNetworkID = virtualNetworkID;
+        this.gateway = Optional.<String>empty();
         this.attributes = attributes;
         this.addressBlocks = addressBlocks;
         this.svip = svip;
+        this.namespace = Optional.<Boolean>empty();
+    }
+
+    /**
+     * 
+     * @param virtualNetworkID [required] SolidFire unique identifier for a virtual network.
+     * @param virtualNetworkTag [required] VLAN Tag identifier.
+     * @param addressBlocks [required] Range of address blocks currently assigned to the virtual network.
+     * @param name [required] The name assigned to the virtual network.
+     * @param netmask [required] IP address of the netmask for the virtual network.
+     * @param svip [required] Storage IP address for the virtual network.
+     * @param gateway (optional) 
+     * @param namespace (optional) 
+     * @param attributes [required] List of Name/Value pairs in JSON object format.
+     * @since 9.0
+     **/
+    @Since("9.0")
+    public VirtualNetwork(Long virtualNetworkID, Long virtualNetworkTag, AddressBlock[] addressBlocks, String name, String netmask, String svip, Optional<String> gateway, Optional<Boolean> namespace, java.util.Map<String, Object> attributes) {
+        this.name = name;
+        this.virtualNetworkTag = virtualNetworkTag;
+        this.netmask = netmask;
+        this.virtualNetworkID = virtualNetworkID;
+        this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
+        this.attributes = attributes;
+        this.addressBlocks = addressBlocks;
+        this.svip = svip;
+        this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
 
 
@@ -97,13 +127,6 @@ public class VirtualNetwork  implements Serializable  {
     }
 
     /**
-     * List of Name/Value pairs in JSON object format.
-     **/
-    public java.util.Map<String, Object> getAttributes() {
-        return this.attributes;
-    }
-
-    /**
      * The name assigned to the virtual network.
      **/
     public String getName() {
@@ -124,6 +147,33 @@ public class VirtualNetwork  implements Serializable  {
         return this.svip;
     }
 
+    /**
+     * 
+     * @since 9.0 
+     **/
+
+    @Since("9.0")
+    public Optional<String> getGateway() {
+        return this.gateway;
+    }
+
+    /**
+     * 
+     * @since 9.0 
+     **/
+
+    @Since("9.0")
+    public Optional<Boolean> getNamespace() {
+        return this.namespace;
+    }
+
+    /**
+     * List of Name/Value pairs in JSON object format.
+     **/
+    public java.util.Map<String, Object> getAttributes() {
+        return this.attributes;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -135,15 +185,17 @@ public class VirtualNetwork  implements Serializable  {
         return Objects.equals( virtualNetworkID , that.virtualNetworkID )
             && Objects.equals( virtualNetworkTag , that.virtualNetworkTag )
             && Objects.deepEquals( addressBlocks , that.addressBlocks )
-            && Objects.equals( attributes , that.attributes )
             && Objects.equals( name , that.name )
             && Objects.equals( netmask , that.netmask )
-            && Objects.equals( svip , that.svip );
+            && Objects.equals( svip , that.svip )
+            && Objects.equals( gateway , that.gateway )
+            && Objects.equals( namespace , that.namespace )
+            && Objects.equals( attributes , that.attributes );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualNetworkID, virtualNetworkTag, addressBlocks, attributes, name, netmask, svip );
+        return Objects.hash( virtualNetworkID, virtualNetworkTag, addressBlocks, name, netmask, svip, gateway, namespace, attributes );
     }
 
 
@@ -155,10 +207,14 @@ public class VirtualNetwork  implements Serializable  {
         sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
         sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
         sb.append(" addressBlocks : ").append(Arrays.toString(addressBlocks)).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
         sb.append(" name : ").append(name).append(",");
         sb.append(" netmask : ").append(netmask).append(",");
-        sb.append(" svip : ").append(svip);
+        sb.append(" svip : ").append(svip).append(",");
+        if(null != gateway && gateway.isPresent())
+            sb.append(" gateway : ").append(gateway.get()).append(",");
+        if(null != namespace && namespace.isPresent())
+            sb.append(" namespace : ").append(namespace.get()).append(",");
+        sb.append(" attributes : ").append(attributes);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -179,10 +235,12 @@ public class VirtualNetwork  implements Serializable  {
         private Long virtualNetworkID;
         private Long virtualNetworkTag;
         private AddressBlock[] addressBlocks;
-        private java.util.Map<String, Object> attributes;
         private String name;
         private String netmask;
         private String svip;
+        private Optional<String> gateway;
+        private Optional<Boolean> namespace;
+        private java.util.Map<String, Object> attributes;
 
         private Builder() { }
 
@@ -191,20 +249,24 @@ public class VirtualNetwork  implements Serializable  {
                          this.virtualNetworkID,
                          this.virtualNetworkTag,
                          this.addressBlocks,
-                         this.attributes,
                          this.name,
                          this.netmask,
-                         this.svip            );
+                         this.svip,
+                         this.gateway,
+                         this.namespace,
+                         this.attributes            );
         }
 
         private VirtualNetwork.Builder buildFrom(final VirtualNetwork req) {
             this.virtualNetworkID = req.virtualNetworkID;
             this.virtualNetworkTag = req.virtualNetworkTag;
             this.addressBlocks = req.addressBlocks;
-            this.attributes = req.attributes;
             this.name = req.name;
             this.netmask = req.netmask;
             this.svip = req.svip;
+            this.gateway = req.gateway;
+            this.namespace = req.namespace;
+            this.attributes = req.attributes;
 
             return this;
         }
@@ -224,11 +286,6 @@ public class VirtualNetwork  implements Serializable  {
             return this;
         }
 
-        public VirtualNetwork.Builder attributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = attributes;
-            return this;
-        }
-
         public VirtualNetwork.Builder name(final String name) {
             this.name = name;
             return this;
@@ -241,6 +298,21 @@ public class VirtualNetwork  implements Serializable  {
 
         public VirtualNetwork.Builder svip(final String svip) {
             this.svip = svip;
+            return this;
+        }
+
+        public VirtualNetwork.Builder optionalGateway(final String gateway) {
+            this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
+            return this;
+        }
+
+        public VirtualNetwork.Builder optionalNamespace(final Boolean namespace) {
+            this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
+            return this;
+        }
+
+        public VirtualNetwork.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
             return this;
         }
 
