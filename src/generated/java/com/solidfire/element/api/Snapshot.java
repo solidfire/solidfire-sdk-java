@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class Snapshot  implements Serializable  {
 
-    private static final long serialVersionUID = -1616693506L;
+    private static final long serialVersionUID = 376686869L;
 
     @SerializedName("snapshotID") private final Long snapshotID;
     @SerializedName("volumeID") private final Long volumeID;
@@ -50,7 +50,7 @@ public class Snapshot  implements Serializable  {
     @SerializedName("expirationTime") private final String expirationTime;
     @SerializedName("remoteStatuses") private final String remoteStatuses;
     @SerializedName("status") private final String status;
-    @SerializedName("SnapshotUUID") private final java.util.UUID snapshotUUID;
+    @SerializedName("snapshotUUID") private final java.util.UUID snapshotUUID;
     @SerializedName("totalSize") private final Long totalSize;
     @SerializedName("groupID") private final Optional<Long> groupID;
     @SerializedName("groupSnapshotUUID") private final java.util.UUID groupSnapshotUUID;
@@ -440,7 +440,7 @@ public class Snapshot  implements Serializable  {
             return this;
         }
 
-        public Snapshot.Builder SnapshotUUID(final java.util.UUID snapshotUUID) {
+        public Snapshot.Builder snapshotUUID(final java.util.UUID snapshotUUID) {
             this.snapshotUUID = snapshotUUID;
             return this;
         }
