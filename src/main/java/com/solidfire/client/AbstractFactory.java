@@ -114,7 +114,7 @@ public abstract class AbstractFactory<T extends ServiceBase> {
 
         final RequestDispatcher dispatcher;
 
-        final T element = toServiceBase(buildRequestDispatcher(target, port, username, password, version, verifySSL));
+        final T element = toServiceBase(buildRequestDispatcher(target, port, username, password, of(getMinApiVersion()+""), verifySSL));
         final GetAPIResult getAPIResult = element.sendRequest("GetAPI", new GetAPIRequest(), GetAPIRequest.class, GetAPIResult.class);
 
         if (version.isPresent()) {
