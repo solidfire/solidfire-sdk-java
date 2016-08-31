@@ -39,11 +39,12 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AddClusterAdminRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -2112294983L;
+    private static final long serialVersionUID = -1921789959L;
 
     @SerializedName("username") private final String username;
     @SerializedName("password") private final String password;
     @SerializedName("access") private final String[] access;
+    @SerializedName("acceptEula") private final Optional<Boolean> acceptEula;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
 
     /**
@@ -57,9 +58,28 @@ public class AddClusterAdminRequest  implements Serializable  {
     @Since("7.0")
     public AddClusterAdminRequest(String username, String password, String[] access, Optional<java.util.Map<String, Object>> attributes) {
         this.username = username;
-        this.password = password;
-        this.access = access;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.acceptEula = Optional.<Boolean>empty();
+        this.access = access;
+        this.password = password;
+    }
+
+    /**
+     * The Request object for the "AddClusterAdmin" API Service call.
+     * @param username [required] Unique username for this Cluster Admin.
+     * @param password [required] Password used to authenticate this Cluster Admin.
+     * @param access [required] Controls which methods this Cluster Admin can use. For more details on the levels of access, see &quot;Access Control&quot; in the Element API Guide.
+     * @param acceptEula (optional) Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
+     * @param attributes (optional) List of Name/Value pairs in JSON object format.
+     * @since 9.0
+     **/
+    @Since("9.0")
+    public AddClusterAdminRequest(String username, String password, String[] access, Optional<Boolean> acceptEula, Optional<java.util.Map<String, Object>> attributes) {
+        this.username = username;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
+        this.access = access;
+        this.password = password;
     }
 
 
@@ -85,6 +105,16 @@ public class AddClusterAdminRequest  implements Serializable  {
     }
 
     /**
+     * Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
+     * @since 9.0 
+     **/
+
+    @Since("9.0")
+    public Optional<Boolean> getAcceptEula() {
+        return this.acceptEula;
+    }
+
+    /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
@@ -102,12 +132,13 @@ public class AddClusterAdminRequest  implements Serializable  {
         return Objects.equals( username , that.username )
             && Objects.equals( password , that.password )
             && Objects.deepEquals( access , that.access )
+            && Objects.equals( acceptEula , that.acceptEula )
             && Objects.equals( attributes , that.attributes );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( username, password, access, attributes );
+        return Objects.hash( username, password, access, acceptEula, attributes );
     }
 
 
@@ -119,6 +150,8 @@ public class AddClusterAdminRequest  implements Serializable  {
         sb.append(" username : ").append(username).append(",");
         sb.append(" password : ").append(password).append(",");
         sb.append(" access : ").append(Arrays.toString(access)).append(",");
+        if(null != acceptEula && acceptEula.isPresent())
+            sb.append(" acceptEula : ").append(acceptEula.get()).append(",");
         if(null != attributes && attributes.isPresent())
             sb.append(" attributes : ").append(attributes.get());
         sb.append( " }" );
@@ -141,6 +174,7 @@ public class AddClusterAdminRequest  implements Serializable  {
         private String username;
         private String password;
         private String[] access;
+        private Optional<Boolean> acceptEula;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -150,6 +184,7 @@ public class AddClusterAdminRequest  implements Serializable  {
                          this.username,
                          this.password,
                          this.access,
+                         this.acceptEula,
                          this.attributes            );
         }
 
@@ -157,6 +192,7 @@ public class AddClusterAdminRequest  implements Serializable  {
             this.username = req.username;
             this.password = req.password;
             this.access = req.access;
+            this.acceptEula = req.acceptEula;
             this.attributes = req.attributes;
 
             return this;
@@ -174,6 +210,11 @@ public class AddClusterAdminRequest  implements Serializable  {
 
         public AddClusterAdminRequest.Builder access(final String[] access) {
             this.access = access;
+            return this;
+        }
+
+        public AddClusterAdminRequest.Builder optionalAcceptEula(final Boolean acceptEula) {
+            this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : Optional.of(acceptEula);
             return this;
         }
 

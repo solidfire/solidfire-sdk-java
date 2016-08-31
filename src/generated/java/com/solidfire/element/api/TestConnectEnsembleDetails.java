@@ -35,40 +35,30 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * Represents the relationship between the source Volume and cloned Volume IDs.
+ * 
  **/
-public class GroupCloneVolumeMember  implements Serializable  {
+public class TestConnectEnsembleDetails  implements Serializable  {
 
-    private static final long serialVersionUID = -1785945131L;
+    private static final long serialVersionUID = -1073658240L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("srcVolumeID") private final Long srcVolumeID;
+    @SerializedName("nodes") private final Object nodes;
 
     /**
-     * Represents the relationship between the source Volume and cloned Volume IDs.
-     * @param volumeID [required] The VolumeID of the cloned volume.
-     * @param srcVolumeID [required] The VolumeID of the source volume.
+     * 
+     * @param nodes [required] A list of each ensemble node in the test and the results of the tests.
      * @since 7.0
      **/
     @Since("7.0")
-    public GroupCloneVolumeMember(Long volumeID, Long srcVolumeID) {
-        this.volumeID = volumeID;
-        this.srcVolumeID = srcVolumeID;
+    public TestConnectEnsembleDetails(Object nodes) {
+        this.nodes = nodes;
     }
 
 
     /**
-     * The VolumeID of the cloned volume.
+     * A list of each ensemble node in the test and the results of the tests.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    /**
-     * The VolumeID of the source volume.
-     **/
-    public Long getSrcVolumeID() {
-        return this.srcVolumeID;
+    public Object getNodes() {
+        return this.nodes;
     }
 
     @Override
@@ -76,16 +66,15 @@ public class GroupCloneVolumeMember  implements Serializable  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GroupCloneVolumeMember that = (GroupCloneVolumeMember) o;
+        TestConnectEnsembleDetails that = (TestConnectEnsembleDetails) o;
         
 
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( srcVolumeID , that.srcVolumeID );
+        return Objects.equals( nodes , that.nodes );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, srcVolumeID );
+        return Objects.hash( nodes );
     }
 
 
@@ -94,8 +83,7 @@ public class GroupCloneVolumeMember  implements Serializable  {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" srcVolumeID : ").append(srcVolumeID);
+        sb.append(" nodes : ").append(nodes);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -113,31 +101,23 @@ public class GroupCloneVolumeMember  implements Serializable  {
     }
 
     public static class Builder {
-        private Long volumeID;
-        private Long srcVolumeID;
+        private Object nodes;
 
         private Builder() { }
 
-        public GroupCloneVolumeMember build() {
-            return new GroupCloneVolumeMember (
-                         this.volumeID,
-                         this.srcVolumeID            );
+        public TestConnectEnsembleDetails build() {
+            return new TestConnectEnsembleDetails (
+                         this.nodes            );
         }
 
-        private GroupCloneVolumeMember.Builder buildFrom(final GroupCloneVolumeMember req) {
-            this.volumeID = req.volumeID;
-            this.srcVolumeID = req.srcVolumeID;
+        private TestConnectEnsembleDetails.Builder buildFrom(final TestConnectEnsembleDetails req) {
+            this.nodes = req.nodes;
 
             return this;
         }
 
-        public GroupCloneVolumeMember.Builder volumeID(final Long volumeID) {
-            this.volumeID = volumeID;
-            return this;
-        }
-
-        public GroupCloneVolumeMember.Builder srcVolumeID(final Long srcVolumeID) {
-            this.srcVolumeID = srcVolumeID;
+        public TestConnectEnsembleDetails.Builder nodes(final Object nodes) {
+            this.nodes = nodes;
             return this;
         }
 

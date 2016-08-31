@@ -16,6 +16,7 @@
 
 package com.solidfire.client;
 
+import com.solidfire.element.api.SolidFireElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * This class generates a entry at the head of the logs.
  */
 final class LogSplash {
-    private static final Logger log = LoggerFactory.getLogger(LogSplash.class);
+    private static final Logger log = LoggerFactory.getLogger(SolidFireElement.class);
 
     static {
         log.info("                                   ");
