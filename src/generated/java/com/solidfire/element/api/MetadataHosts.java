@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class MetadataHosts  implements Serializable  {
 
-    private static final long serialVersionUID = 1304169231L;
+    private static final long serialVersionUID = 645730861L;
 
     @SerializedName("deadSecondaries") private final Long[] deadSecondaries;
     @SerializedName("liveSecondaries") private final Long[] liveSecondaries;
@@ -48,7 +48,7 @@ public class MetadataHosts  implements Serializable  {
     /**
      * The volume services on which the volume metadata resides.
      * @param deadSecondaries [required] Secondary metadata (slice) services that are in a dead state.
-     * @param liveSecondaries [required] Secondary metadata (slice) services that are currently in a &quot;live&quot; state.
+     * @param liveSecondaries [required] Secondary metadata (slice) services that are currently in a "live" state.
      * @param primary [required] The primary metadata (slice) services hosting the volume.
      * @since 7.0
      **/
@@ -68,7 +68,7 @@ public class MetadataHosts  implements Serializable  {
     }
 
     /**
-     * Secondary metadata (slice) services that are currently in a &quot;live&quot; state.
+     * Secondary metadata (slice) services that are currently in a "live" state.
      **/
     public Long[] getLiveSecondaries() {
         return this.liveSecondaries;

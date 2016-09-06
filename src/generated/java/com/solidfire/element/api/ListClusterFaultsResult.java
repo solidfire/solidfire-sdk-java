@@ -39,13 +39,13 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListClusterFaultsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 406675408L;
+    private static final long serialVersionUID = 179886493L;
 
     @SerializedName("faults") private final ClusterFaultInfo[] faults;
 
     /**
      * The object returned by the "ListClusterFaults" API Service call.
-     * @param faults [required] 
+     * @param faults [required] The list of Cluster Fault objects.
      * @since 7.0
      **/
     @Since("7.0")
@@ -53,6 +53,10 @@ public class ListClusterFaultsResult  implements Serializable  {
         this.faults = faults;
     }
 
+
+    /**
+     * The list of Cluster Fault objects.
+     **/
     public ClusterFaultInfo[] getFaults() {
         return this.faults;
     }

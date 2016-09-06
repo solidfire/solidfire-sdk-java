@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AddClusterAdminRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1921789959L;
+    private static final long serialVersionUID = 1229865126L;
 
     @SerializedName("username") private final String username;
     @SerializedName("password") private final String password;
@@ -51,7 +51,7 @@ public class AddClusterAdminRequest  implements Serializable  {
      * The Request object for the "AddClusterAdmin" API Service call.
      * @param username [required] Unique username for this Cluster Admin.
      * @param password [required] Password used to authenticate this Cluster Admin.
-     * @param access [required] Controls which methods this Cluster Admin can use. For more details on the levels of access, see &quot;Access Control&quot; in the Element API Guide.
+     * @param access [required] Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
      * @param attributes (optional) List of Name/Value pairs in JSON object format.
      * @since 7.0
      **/
@@ -68,7 +68,7 @@ public class AddClusterAdminRequest  implements Serializable  {
      * The Request object for the "AddClusterAdmin" API Service call.
      * @param username [required] Unique username for this Cluster Admin.
      * @param password [required] Password used to authenticate this Cluster Admin.
-     * @param access [required] Controls which methods this Cluster Admin can use. For more details on the levels of access, see &quot;Access Control&quot; in the Element API Guide.
+     * @param access [required] Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
      * @param acceptEula (optional) Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
      * @param attributes (optional) List of Name/Value pairs in JSON object format.
      * @since 9.0
@@ -98,7 +98,7 @@ public class AddClusterAdminRequest  implements Serializable  {
     }
 
     /**
-     * Controls which methods this Cluster Admin can use. For more details on the levels of access, see &quot;Access Control&quot; in the Element API Guide.
+     * Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
      **/
     public String[] getAccess() {
         return this.access;

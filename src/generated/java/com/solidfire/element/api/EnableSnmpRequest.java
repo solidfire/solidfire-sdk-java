@@ -39,13 +39,13 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class EnableSnmpRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -167448845L;
+    private static final long serialVersionUID = 424594038L;
 
     @SerializedName("snmpV3Enabled") private final Boolean snmpV3Enabled;
 
     /**
      * The Request object for the "EnableSnmp" API Service call.
-     * @param snmpV3Enabled [required] If set to &quot;true&quot;, then SNMP v3 is enabled on each node in the cluster. If set to &quot;false&quot;, then SNMP v2 is enabled.
+     * @param snmpV3Enabled [required] If set to "true", then SNMP v3 is enabled on each node in the cluster. If set to "false", then SNMP v2 is enabled.
      * @since 7.0
      **/
     @Since("7.0")
@@ -55,7 +55,7 @@ public class EnableSnmpRequest  implements Serializable  {
 
 
     /**
-     * If set to &quot;true&quot;, then SNMP v3 is enabled on each node in the cluster. If set to &quot;false&quot;, then SNMP v2 is enabled.
+     * If set to "true", then SNMP v3 is enabled on each node in the cluster. If set to "false", then SNMP v2 is enabled.
      **/
     public Boolean getSnmpV3Enabled() {
         return this.snmpV3Enabled;

@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class LdapConfiguration  implements Serializable  {
 
-    private static final long serialVersionUID = -801623939L;
+    private static final long serialVersionUID = 1824213705L;
 
     @SerializedName("authType") private final String authType;
     @SerializedName("enabled") private final Boolean enabled;
@@ -118,7 +118,7 @@ public class LdapConfiguration  implements Serializable  {
     /**
      * Controls the default group search filter used, can be one of the following:<br/>
      * <b>NoGroups</b>: No group support.<br/>
-     * <b>ActiveDirectory</b>: Nested membership of all of a user&#39;s AD groups.<br/>
+     * <b>ActiveDirectory</b>: Nested membership of all of a user's AD groups.<br/>
      * <b>MemberDN</b>: MemberDN style groups (single-level).
      **/
     public String getGroupSearchType() {

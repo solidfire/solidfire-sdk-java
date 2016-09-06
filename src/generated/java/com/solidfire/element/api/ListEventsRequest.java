@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListEventsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1601474680L;
+    private static final long serialVersionUID = -1593377383L;
 
     @SerializedName("maxEvents") private final Optional<Long> maxEvents;
     @SerializedName("startEventID") private final Optional<Long> startEventID;
@@ -51,10 +51,25 @@ public class ListEventsRequest  implements Serializable  {
      * @param maxEvents (optional) Specifies the maximum number of events to return.
      * @param startEventID (optional) Identifies the beginning of a range of events to return.
      * @param endEventID (optional) Identifies the end of a range of events to return.
-     * @param eventQueueType (optional) 
      * @since 7.0
      **/
     @Since("7.0")
+    public ListEventsRequest(Optional<Long> maxEvents, Optional<Long> startEventID, Optional<Long> endEventID) {
+        this.maxEvents = (maxEvents == null) ? Optional.<Long>empty() : maxEvents;
+        this.startEventID = (startEventID == null) ? Optional.<Long>empty() : startEventID;
+        this.endEventID = (endEventID == null) ? Optional.<Long>empty() : endEventID;
+        this.eventQueueType = Optional.<String>empty();
+    }
+
+    /**
+     * The Request object for the "ListEvents" API Service call.
+     * @param maxEvents (optional) Specifies the maximum number of events to return.
+     * @param startEventID (optional) Identifies the beginning of a range of events to return.
+     * @param endEventID (optional) Identifies the end of a range of events to return.
+     * @param eventQueueType (optional) 
+     * @since 9.0
+     **/
+    @Since("9.0")
     public ListEventsRequest(Optional<Long> maxEvents, Optional<Long> startEventID, Optional<Long> endEventID, Optional<String> eventQueueType) {
         this.maxEvents = (maxEvents == null) ? Optional.<Long>empty() : maxEvents;
         this.startEventID = (startEventID == null) ? Optional.<Long>empty() : startEventID;
@@ -83,6 +98,8 @@ public class ListEventsRequest  implements Serializable  {
     public Optional<Long> getEndEventID() {
         return this.endEventID;
     }
+
+    @Since("9.0")
     public Optional<String> getEventQueueType() {
         return this.eventQueueType;
     }

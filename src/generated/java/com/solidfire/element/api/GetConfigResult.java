@@ -39,13 +39,13 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetConfigResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1801240221L;
+    private static final long serialVersionUID = -1341970238L;
 
     @SerializedName("config") private final Config config;
 
     /**
      * The object returned by the "GetConfig" API Service call.
-     * @param config [required] The details of the cluster. Values returned in &quot;config&quot;: cluster- Cluster information that identifies how the node communicates with the cluster it is associated with. (Object) network - Network information for bonding and Ethernet connections. (Object)
+     * @param config [required] The details of the cluster. Values returned in "config": cluster- Cluster information that identifies how the node communicates with the cluster it is associated with. (Object) network - Network information for bonding and Ethernet connections. (Object)
      * @since 7.0
      **/
     @Since("7.0")
@@ -55,7 +55,7 @@ public class GetConfigResult  implements Serializable  {
 
 
     /**
-     * The details of the cluster. Values returned in &quot;config&quot;: cluster- Cluster information that identifies how the node communicates with the cluster it is associated with. (Object) network - Network information for bonding and Ethernet connections. (Object)
+     * The details of the cluster. Values returned in "config": cluster- Cluster information that identifies how the node communicates with the cluster it is associated with. (Object) network - Network information for bonding and Ethernet connections. (Object)
      **/
     public Config getConfig() {
         return this.config;

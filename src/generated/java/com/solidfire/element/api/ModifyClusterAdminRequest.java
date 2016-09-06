@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ModifyClusterAdminRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1861604974L;
+    private static final long serialVersionUID = -678455022L;
 
     @SerializedName("clusterAdminID") private final Long clusterAdminID;
     @SerializedName("password") private final Optional<String> password;
@@ -50,7 +50,7 @@ public class ModifyClusterAdminRequest  implements Serializable  {
      * The Request object for the "ModifyClusterAdmin" API Service call.
      * @param clusterAdminID [required] ClusterAdminID for the Cluster Admin or LDAP Cluster Admin to modify.
      * @param password (optional) Password used to authenticate this Cluster Admin.
-     * @param access (optional) Controls which methods this Cluster Admin can use. For more details on the levels of access, see &quot;Access Control&quot; in the Element API Guide.
+     * @param access (optional) Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
      * @param attributes (optional) List of Name/Value pairs in JSON object format.
      * @since 7.0
      **/
@@ -78,7 +78,7 @@ public class ModifyClusterAdminRequest  implements Serializable  {
     }
 
     /**
-     * Controls which methods this Cluster Admin can use. For more details on the levels of access, see &quot;Access Control&quot; in the Element API Guide.
+     * Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
      **/
     public Optional<String[]> getAccess() {
         return this.access;

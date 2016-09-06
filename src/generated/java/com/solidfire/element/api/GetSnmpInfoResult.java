@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetSnmpInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1622974191L;
+    private static final long serialVersionUID = 1622598915L;
 
     @SerializedName("networks") private final SnmpNetwork[] networks;
     @SerializedName("enabled") private final Boolean enabled;
@@ -51,7 +51,7 @@ public class GetSnmpInfoResult  implements Serializable  {
      * @param networks [required] List of networks and access types enabled for SNMP.
      * @param enabled [required] If the nodes in the cluster are configured for SNMP.
      * @param snmpV3Enabled [required] If the nodes in the cluster are configured for SNMP v3.
-     * @param usmUsers [required] If SNMP v3 is enabled, the values returned is a list of user access parameters for SNMP information from the cluster. This will be returned instead of the &quot;networks&quot; parameter.
+     * @param usmUsers [required] If SNMP v3 is enabled, the values returned is a list of user access parameters for SNMP information from the cluster. This will be returned instead of the "networks" parameter.
      * @since 7.0
      **/
     @Since("7.0")
@@ -66,7 +66,7 @@ public class GetSnmpInfoResult  implements Serializable  {
     /**
      * List of networks and access types enabled for SNMP.
      * <br/><br/>
-     * <b>Note</b>: &quot;networks&quot; will only be present if SNMP V3 is disabled.
+     * <b>Note</b>: "networks" will only be present if SNMP V3 is disabled.
      **/
     public SnmpNetwork[] getNetworks() {
         return this.networks;
@@ -87,7 +87,7 @@ public class GetSnmpInfoResult  implements Serializable  {
     }
 
     /**
-     * If SNMP v3 is enabled, the values returned is a list of user access parameters for SNMP information from the cluster. This will be returned instead of the &quot;networks&quot; parameter.
+     * If SNMP v3 is enabled, the values returned is a list of user access parameters for SNMP information from the cluster. This will be returned instead of the "networks" parameter.
      **/
     public SnmpV3UsmUser[] getUsmUsers() {
         return this.usmUsers;

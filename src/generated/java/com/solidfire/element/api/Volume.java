@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class Volume  implements Serializable  {
 
-    private static final long serialVersionUID = -1140192989L;
+    private static final long serialVersionUID = -2053684118L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("name") private final String name;
@@ -64,7 +64,7 @@ public class Volume  implements Serializable  {
 
     /**
      * Volumes Info is an object containing information about a volume.
-     * The return objects only include &quot;configured&quot; information about the volume and not runtime or usage information.
+     * The return objects only include "configured" information about the volume and not runtime or usage information.
      * Information about paired volumes will also be returned.
      * @param volumeID [required] Unique VolumeID for the volume.
      * @param name [required] Name of the volume as provided at creation time.
@@ -72,7 +72,7 @@ public class Volume  implements Serializable  {
      * @param createTime [required] UTC formatted time the volume was created.
      * @param status [required] Current status of the volume
      * @param access [required] Access allowed for the volume
-     * @param enable512e [required] If &quot;true&quot;, the volume provides 512 byte sector emulation.
+     * @param enable512e [required] If "true", the volume provides 512 byte sector emulation.
      * @param iqn [required] Volume iSCSI Qualified Name.
      * @param scsiEUIDeviceID [required] Globally unique SCSI device identifier for the volume in EUI-64 based 16-byte format.
      * @param scsiNAADeviceID [required] Globally unique SCSI device identifier for the volume in NAA IEEE Registered Extended format.
@@ -113,7 +113,7 @@ public class Volume  implements Serializable  {
 
     /**
      * Volumes Info is an object containing information about a volume.
-     * The return objects only include &quot;configured&quot; information about the volume and not runtime or usage information.
+     * The return objects only include "configured" information about the volume and not runtime or usage information.
      * Information about paired volumes will also be returned.
      * @param volumeID [required] Unique VolumeID for the volume.
      * @param name [required] Name of the volume as provided at creation time.
@@ -121,7 +121,7 @@ public class Volume  implements Serializable  {
      * @param createTime [required] UTC formatted time the volume was created.
      * @param status [required] Current status of the volume
      * @param access [required] Access allowed for the volume
-     * @param enable512e [required] If &quot;true&quot;, the volume provides 512 byte sector emulation.
+     * @param enable512e [required] If "true", the volume provides 512 byte sector emulation.
      * @param iqn [required] Volume iSCSI Qualified Name.
      * @param scsiEUIDeviceID [required] Globally unique SCSI device identifier for the volume in EUI-64 based 16-byte format.
      * @param scsiNAADeviceID [required] Globally unique SCSI device identifier for the volume in NAA IEEE Registered Extended format.
@@ -211,7 +211,7 @@ public class Volume  implements Serializable  {
     }
 
     /**
-     * If &quot;true&quot;, the volume provides 512 byte sector emulation.
+     * If "true", the volume provides 512 byte sector emulation.
      **/
     public Boolean getEnable512e() {
         return this.enable512e;

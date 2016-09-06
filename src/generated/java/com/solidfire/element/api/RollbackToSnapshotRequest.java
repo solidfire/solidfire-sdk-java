@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class RollbackToSnapshotRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 2122296179L;
+    private static final long serialVersionUID = 1191703517L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("snapshotID") private final Long snapshotID;
@@ -90,7 +90,7 @@ public class RollbackToSnapshotRequest  implements Serializable  {
 
     /**
      * Name for the snapshot. If no name is given, then the name of the snapshot being rolled back to is used with 
-     * &quot;-copy&quot; appended to the end of the name.
+     * "-copy" appended to the end of the name.
      **/
     public Optional<String> getName() {
         return this.name;

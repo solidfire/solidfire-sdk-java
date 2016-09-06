@@ -39,13 +39,13 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetDriveHardwareInfoRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -722581449L;
+    private static final long serialVersionUID = -1230787692L;
 
     @SerializedName("driveID") private final Long driveID;
 
     /**
      * The Request object for the "GetDriveHardwareInfo" API Service call.
-     * @param driveID [required] DriveID for the drive information requested. DriveIDs can be obtained via the &quot;ListDrives&quot; method.
+     * @param driveID [required] DriveID for the drive information requested. DriveIDs can be obtained via the "ListDrives" method.
      * @since 7.0
      **/
     @Since("7.0")
@@ -55,7 +55,7 @@ public class GetDriveHardwareInfoRequest  implements Serializable  {
 
 
     /**
-     * DriveID for the drive information requested. DriveIDs can be obtained via the &quot;ListDrives&quot; method.
+     * DriveID for the drive information requested. DriveIDs can be obtained via the "ListDrives" method.
      **/
     public Long getDriveID() {
         return this.driveID;

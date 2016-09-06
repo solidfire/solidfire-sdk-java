@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class CloneVolumeRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1324548605L;
+    private static final long serialVersionUID = -244293593L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("name") private final String name;
@@ -97,7 +97,7 @@ public class CloneVolumeRequest  implements Serializable  {
     /**
      * New size of the volume, in bytes.
      * May be greater or less than the size of the volume being cloned.
-     * If unspecified, the clone&#39;s volume size will be the same as the source volume.
+     * If unspecified, the clone's volume size will be the same as the source volume.
      * Size is rounded up to the nearest 1 MiB.
      **/
     public Optional<Long> getNewSize() {

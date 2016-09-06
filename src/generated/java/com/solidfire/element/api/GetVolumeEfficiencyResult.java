@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetVolumeEfficiencyResult  implements Serializable  {
 
-    private static final long serialVersionUID = 2028217252L;
+    private static final long serialVersionUID = -362330277L;
 
     @SerializedName("compression") private final Double compression;
     @SerializedName("deduplication") private final Double deduplication;
@@ -85,7 +85,7 @@ public class GetVolumeEfficiencyResult  implements Serializable  {
 
     /**
      * The amount of space being saved by compressing data on a single volume.
-     * Stated as a ratio where &quot;1&quot; means data has been stored without being compressed.
+     * Stated as a ratio where "1" means data has been stored without being compressed.
      **/
     public Double getCompression() {
         return this.compression;

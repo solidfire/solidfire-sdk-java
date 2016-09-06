@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class Platform  implements Serializable  {
 
-    private static final long serialVersionUID = 766203464L;
+    private static final long serialVersionUID = -1626154017L;
 
     @SerializedName("nodeType") private final String nodeType;
     @SerializedName("chassisType") private final String chassisType;
@@ -48,8 +48,8 @@ public class Platform  implements Serializable  {
 
     /**
      * 
-     * @param nodeType [required] SolidFire&#39;s name for this platform.
-     * @param chassisType [required] Name of the chassis (example: &quot;R620&quot;).
+     * @param nodeType [required] SolidFire's name for this platform.
+     * @param chassisType [required] Name of the chassis (example: "R620").
      * @param cpuModel [required] The model of CPU used on this platform.
      * @param nodeMemoryGB [required] The amount of memory on this platform in GiB.
      * @since 7.0
@@ -64,14 +64,14 @@ public class Platform  implements Serializable  {
 
 
     /**
-     * SolidFire&#39;s name for this platform.
+     * SolidFire's name for this platform.
      **/
     public String getNodeType() {
         return this.nodeType;
     }
 
     /**
-     * Name of the chassis (example: &quot;R620&quot;).
+     * Name of the chassis (example: "R620").
      **/
     public String getChassisType() {
         return this.chassisType;

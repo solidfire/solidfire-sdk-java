@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class Account  implements Serializable  {
 
-    private static final long serialVersionUID = -912830108L;
+    private static final long serialVersionUID = 2129640835L;
 
     @SerializedName("accountID") private final Long accountID;
     @SerializedName("username") private final String username;
@@ -51,7 +51,7 @@ public class Account  implements Serializable  {
 
     /**
      * The object containing information about an account.
-     * This object only includes &quot;configured&quot; information about the account, not any runtime or usage information.
+     * This object only includes "configured" information about the account, not any runtime or usage information.
      * @param accountID [required] Unique AccountID for the account.
      * @param username [required] User name for the account.
      * @param status [required] Current status of the account.

@@ -393,7 +393,7 @@ public interface SolidFireElementIF {
      * @param faultTypes Determines the types of faults cleared:<br/>
      *                   <b>current</b>: Faults that are currently detected and have not been resolved.<br/>
      *                   <b>resolved</b>: Faults that were previously detected and resolved.<br/>
-     *                   <b>all</b>: Both current and resolved faults are cleared. The fault status can be determined by the &quot;resolved&quot; field of the fault object.
+     *                   <b>all</b>: Both current and resolved faults are cleared. The fault status can be determined by the "resolved" field of the fault object.
      *
      *  
      * @return the response
@@ -521,7 +521,7 @@ public interface SolidFireElementIF {
     ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request);
 
     /**
-     * RemoveClusterAdmin is used to remove a Cluster Admin. The &quot;admin&quot; Cluster Admin cannot be removed.
+     * RemoveClusterAdmin is used to remove a Cluster Admin. The "admin" Cluster Admin cannot be removed.
      *  
      * @param request The request @see com.solidfire.element.api.RemoveClusterAdminRequest 
      *  
@@ -556,7 +556,7 @@ public interface SolidFireElementIF {
     /**
      * Convenience method for setClusterConfig 
      *  
-     * @param cluster Objects that are changed for the cluster interface settings. Only the fields you want changed need to be added to this method as objects in the &quot;cluster&quot; parameter.
+     * @param cluster Objects that are changed for the cluster interface settings. Only the fields you want changed need to be added to this method as objects in the "cluster" parameter.
      *
      *  
      * @return the response
@@ -587,7 +587,7 @@ public interface SolidFireElementIF {
     GetSnmpACLResult getSnmpACL();
 
     /**
-     * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all &quot;network&quot; or &quot;usmUsers&quot; values set with the older SetSnmpInfo.
+     * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
      *  
      * @param request The request @see com.solidfire.element.api.SetSnmpACLRequest 
      *  
@@ -601,7 +601,7 @@ public interface SolidFireElementIF {
     /**
      * Convenience method for setSnmpACL 
      *  
-     * @param networks List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible &quot;networks&quot; values. REQUIRED if SNMP v# is disabled.
+     * @param networks List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible "networks" values. REQUIRED if SNMP v# is disabled.
      *
      * @param usmUsers List of users and the type of access they have to the SNMP servers running on the cluster nodes. REQUIRED if SNMP v3 is enabled.
      *
@@ -653,7 +653,7 @@ public interface SolidFireElementIF {
     /**
      * Convenience method for enableSnmp 
      *  
-     * @param snmpV3Enabled If set to &quot;true&quot;, then SNMP v3 is enabled on each node in the cluster. If set to &quot;false&quot;, then SNMP v2 is enabled.
+     * @param snmpV3Enabled If set to "true", then SNMP v3 is enabled on each node in the cluster. If set to "false", then SNMP v2 is enabled.
      *
      *  
      * @return the response
@@ -858,16 +858,16 @@ public interface SolidFireElementIF {
     GetAsyncResultResult getAsyncResult(Long asyncHandle);
 
     /**
-     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster&#39;s data.
-     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as &quot;available&quot; and must be added via AddDrives before they can be utilized.
-     * Use the &quot;ListDrives&quot; method to display drives that are &quot;available&quot; to be added.
-     * When you add multiple drives, it is more efficient to add them in a single &quot;AddDrives&quot; method call rather than multiple individual methods with a single drive each.
+     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
+     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
+     * Use the "ListDrives" method to display drives that are "available" to be added.
+     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
      * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
      * <br/><br/>
-     * When you add a drive, the system automatically determines the &quot;type&quot; of drive it should be.
+     * When you add a drive, the system automatically determines the "type" of drive it should be.
      * <br/><br/>
      * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
-     * As the new drive(s) are syncing on the system, you can use the &quot;ListSyncJobs&quot; method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
+     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
      *  
      * @param request The request @see com.solidfire.element.api.AddDrivesRequest 
      *  
@@ -888,7 +888,7 @@ public interface SolidFireElementIF {
     AddDrivesResult addDrives(NewDrive[] drives);
 
     /**
-     * ListDrives allows you to retrieve the list of the drives that exist in the cluster&#39;s active nodes.
+     * ListDrives allows you to retrieve the list of the drives that exist in the cluster's active nodes.
      * This method returns drives that have been added as volume metadata or block drives as well as drives that have not been added and are available.
      *  
      * @param request The request @see com.solidfire.element.api.ListDrivesRequest 
@@ -919,7 +919,7 @@ public interface SolidFireElementIF {
     /**
      * Convenience method for getDriveHardwareInfo 
      *  
-     * @param driveID DriveID for the drive information requested. DriveIDs can be obtained via the &quot;ListDrives&quot; method.
+     * @param driveID DriveID for the drive information requested. DriveIDs can be obtained via the "ListDrives" method.
      *
      *  
      * @return the response
@@ -1023,11 +1023,11 @@ public interface SolidFireElementIF {
     GetDriveStatsResult getDriveStats(Long driveID);
 
     /**
-     * SecureEraseDrives is used to remove any residual data from drives that have a status of &quot;available.&quot; For example, when replacing a drive at its end-of-life that contained sensitive data.
+     * SecureEraseDrives is used to remove any residual data from drives that have a status of "available." For example, when replacing a drive at its end-of-life that contained sensitive data.
      * It uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. The method may take up to two minutes to complete, so it is an asynchronous method.
      * The GetAsyncResult method can be used to check on the status of the secure erase operation.
      * <br/><br/>
-     * Use the &quot;ListDrives&quot; method to obtain the driveIDs for the drives you want to secure erase.
+     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to secure erase.
      *  
      * @param request The request @see com.solidfire.element.api.SecureEraseDrivesRequest 
      *  
@@ -1052,16 +1052,16 @@ public interface SolidFireElementIF {
      * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
      * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
      * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
-     * Use the &quot;GetAsyncResult&quot; method to check the status of the remove operation.
+     * Use the "GetAsyncResult" method to check the status of the remove operation.
      * <br/><br/>
-     * When removing multiple drives, use a single &quot;RemoveDrives&quot; method call rather than multiple individual methods with a single drive each.
+     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
      * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
      * <br/><br/>
-     * You can also remove drives with a &quot;failed&quot; status using &quot;RemoveDrives&quot;.
-     * When you remove a drive with a &quot;failed&quot; status it is not returned to an &quot;available&quot; or &quot;active&quot; status.
+     * You can also remove drives with a "failed" status using "RemoveDrives".
+     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
      * The drive is unavailable for use in the cluster.
      * <br/><br/>
-     * Use the &quot;ListDrives&quot; method to obtain the driveIDs for the drives you want to remove.
+     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
      *  
      * @param request The request @see com.solidfire.element.api.RemoveDrivesRequest 
      *  
@@ -1303,13 +1303,13 @@ public interface SolidFireElementIF {
     ListPendingNodesResult listPendingNodes();
 
     /**
-     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a &quot;pending node&quot; with the cluster.
+     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
      * <br/><br/>
-     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the &quot;ModifyVirtualNetwork&quot; method to add more storage IP addresses to your virtual network.
+     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
      * <br/><br/>
-     * The software version on each node in a cluster must be compatible. Run the &quot;ListAllNodes&quot; API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see &quot;Node Versioning and Compatibility&quot; in the Element API guide.
+     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
      * <br/><br/>
-     * Once a node has been added, the drives on the node are made available and can then be added via the &quot;AddDrives&quot; method to increase the storage capacity of the cluster.
+     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
      * <br/><br/>
      * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
      *  
@@ -1332,9 +1332,9 @@ public interface SolidFireElementIF {
     AddNodesResult addNodes(Long[] pendingNodes);
 
     /**
-     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with &quot;RemoveDrives&quot; method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
+     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
      * <br/><br/>
-     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the &quot;Pending Node&quot; list.
+     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
      *  
      * @param request The request @see com.solidfire.element.api.RemoveNodesRequest 
      *  
@@ -1400,9 +1400,9 @@ public interface SolidFireElementIF {
     SetConfigResult setConfig(Config config);
 
     /**
-     * The &quot;SetNetworkConfig&quot; method is used to set the network configuration for a node. To see the states in which these objects can be modified, see &quot;Network Object for 1G and 10G Interfaces&quot; on page 109 of the Element API. To display the current network settings for a node, run the &quot;GetNetworkConfig&quot; method.
+     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
      * <br/><br/>
-     * <b>WARNING!</b> Changing the &quot;bond-mode&quot; on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
      * <br/><br/>
      * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
      *  
@@ -1425,7 +1425,7 @@ public interface SolidFireElementIF {
     SetNetworkConfigResult setNetworkConfig(Network network);
 
     /**
-     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both &quot;GetClusterConfig&quot; and &quot;GetNetworkConfig&quot; methods.
+     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
      * <br/><br/>
      * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
      *  
@@ -1706,8 +1706,8 @@ public interface SolidFireElementIF {
 
     /**
      * DeleteSnapshot is used to delete a snapshot.
-     * A snapshot that is currently the &quot;active&quot; snapshot cannot be deleted.
-     * You must rollback and make another snapshot &quot;active&quot; before the current snapshot can be deleted.
+     * A snapshot that is currently the "active" snapshot cannot be deleted.
+     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
      * To rollback a snapshot, use RollbackToSnapshot.
      *  
      * @param request The request @see com.solidfire.element.api.DeleteSnapshotRequest 
@@ -1784,10 +1784,10 @@ public interface SolidFireElementIF {
     ModifySnapshotResult modifySnapshot(Long snapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication);
 
     /**
-     * RollbackToSnapshot is used to make an existing snapshot the &quot;active&quot; volume image. This method creates a new 
-     * snapshot from an existing snapshot. The new snapshot becomes &quot;active&quot; and the existing snapshot is preserved until 
-     * it is manually deleted. The previously &quot;active&quot; snapshot is deleted unless the parameter saveCurrentState is set with 
-     * a value of &quot;true.&quot;
+     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
+     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
+     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
+     * a value of "true."
      * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
      * Snapshots are not created when cluster fullness is at stage 4 or 5.
      *  

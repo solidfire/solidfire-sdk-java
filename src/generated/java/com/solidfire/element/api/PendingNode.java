@@ -35,11 +35,11 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * A &quot;pending node&quot; is one that has not yet joined the cluster.
+ * A "pending node" is one that has not yet joined the cluster.
  **/
 public class PendingNode  implements Serializable  {
 
-    private static final long serialVersionUID = 1843244214L;
+    private static final long serialVersionUID = 1561275609L;
 
     @SerializedName("pendingNodeID") private final Long pendingNodeID;
     @SerializedName("AssignedNodeID") private final Long assignedNodeID;
@@ -56,7 +56,7 @@ public class PendingNode  implements Serializable  {
     @SerializedName("uuid") private final java.util.UUID uuid;
 
     /**
-     * A &quot;pending node&quot; is one that has not yet joined the cluster.
+     * A "pending node" is one that has not yet joined the cluster.
      * It can be added to a cluster using the AddNode method.
      * @param pendingNodeID [required] 
      * @param assignedNodeID [required] 
@@ -64,11 +64,11 @@ public class PendingNode  implements Serializable  {
      * @param compatible [required] 
      * @param platformInfo [required] Information about the platform this node is.
      * @param cip [required] IP address used for both intra- and inter-cluster communication.
-     * @param cipi [required] The machine&#39;s name for the &quot;cip&quot; interface.
+     * @param cipi [required] The machine's name for the "cip" interface.
      * @param mip [required] IP address used for cluster management (hosting the API and web site).
-     * @param mipi [required] The machine&#39;s name for the &quot;mip&quot; interface.
+     * @param mipi [required] The machine's name for the "mip" interface.
      * @param sip [required] IP address used for iSCSI traffic.
-     * @param sipi [required] The machine&#39;s name for the &quot;sip&quot; interface.
+     * @param sipi [required] The machine's name for the "sip" interface.
      * @param softwareVersion [required] The version of SolidFire software this node is currently running.
      * @param uuid [required] UUID of node.
      * @since 7.0
@@ -122,7 +122,7 @@ public class PendingNode  implements Serializable  {
     }
 
     /**
-     * The machine&#39;s name for the &quot;cip&quot; interface.
+     * The machine's name for the "cip" interface.
      **/
     public String getCipi() {
         return this.cipi;
@@ -136,7 +136,7 @@ public class PendingNode  implements Serializable  {
     }
 
     /**
-     * The machine&#39;s name for the &quot;mip&quot; interface.
+     * The machine's name for the "mip" interface.
      **/
     public String getMipi() {
         return this.mipi;
@@ -150,7 +150,7 @@ public class PendingNode  implements Serializable  {
     }
 
     /**
-     * The machine&#39;s name for the &quot;sip&quot; interface.
+     * The machine's name for the "sip" interface.
      **/
     public String getSipi() {
         return this.sipi;

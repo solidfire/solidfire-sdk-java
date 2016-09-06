@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class StartBulkVolumeWriteResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1857607454L;
+    private static final long serialVersionUID = 1942679135L;
 
     @SerializedName("asyncHandle") private final Long asyncHandle;
     @SerializedName("key") private final String key;
@@ -49,7 +49,7 @@ public class StartBulkVolumeWriteResult  implements Serializable  {
      * The object returned by the "StartBulkVolumeWrite" API Service call.
      * @param asyncHandle [required] ID of the async process to be checked for completion.
      * @param key [required] Opaque key uniquely identifying the session.
-     * @param url [required] URL to access the node&#39;s web server
+     * @param url [required] URL to access the node's web server
      * @since 7.0
      **/
     @Since("7.0")
@@ -75,7 +75,7 @@ public class StartBulkVolumeWriteResult  implements Serializable  {
     }
 
     /**
-     * URL to access the node&#39;s web server
+     * URL to access the node's web server
      **/
     public String getUrl() {
         return this.url;

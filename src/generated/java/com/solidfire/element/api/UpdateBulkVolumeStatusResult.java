@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class UpdateBulkVolumeStatusResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1504958602L;
+    private static final long serialVersionUID = -242779232L;
 
     @SerializedName("status") private final String status;
     @SerializedName("url") private final String url;
@@ -48,7 +48,7 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
     /**
      * The object returned by the "UpdateBulkVolumeStatus" API Service call.
      * @param status [required] Status of the session requested. Returned status:<br/>
-     * @param url [required] The URL to access the node&#39;s web server provided only if the session is still active.
+     * @param url [required] The URL to access the node's web server provided only if the session is still active.
      * @param attributes [required] Returns attributes that were specified in the BulkVolumeStatusUpdate method. Values are returned if they have changed or not.
      * @since 7.0
      **/
@@ -72,7 +72,7 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
     }
 
     /**
-     * The URL to access the node&#39;s web server provided only if the session is still active.
+     * The URL to access the node's web server provided only if the session is still active.
      **/
     public String getUrl() {
         return this.url;

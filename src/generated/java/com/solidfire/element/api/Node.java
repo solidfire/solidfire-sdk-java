@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class Node  implements Serializable  {
 
-    private static final long serialVersionUID = -2078668701L;
+    private static final long serialVersionUID = -249558084L;
 
     @SerializedName("nodeID") private final Long nodeID;
     @SerializedName("associatedMasterServiceID") private final Long associatedMasterServiceID;
@@ -69,11 +69,11 @@ public class Node  implements Serializable  {
      * @param platformInfo [required] Information about the platform this node is.
      * @param softwareVersion [required] The version of SolidFire software this node is currently running.
      * @param cip [required] IP address used for both intra- and inter-cluster communication.
-     * @param cipi [required] The machine&#39;s name for the &quot;cip&quot; interface.
+     * @param cipi [required] The machine's name for the "cip" interface.
      * @param mip [required] IP address used for cluster management (hosting the API and web site).
-     * @param mipi [required] The machine&#39;s name for the &quot;mip&quot; interface.
+     * @param mipi [required] The machine's name for the "mip" interface.
      * @param sip [required] IP address used for iSCSI traffic.
-     * @param sipi [required] The machine&#39;s name for the &quot;sip&quot; interface.
+     * @param sipi [required] The machine's name for the "sip" interface.
      * @param uuid [required] UUID of node.
      * @param attributes [required] 
      * @since 7.0
@@ -143,7 +143,7 @@ public class Node  implements Serializable  {
     }
 
     /**
-     * The machine&#39;s name for the &quot;cip&quot; interface.
+     * The machine's name for the "cip" interface.
      **/
     public String getCipi() {
         return this.cipi;
@@ -157,7 +157,7 @@ public class Node  implements Serializable  {
     }
 
     /**
-     * The machine&#39;s name for the &quot;mip&quot; interface.
+     * The machine's name for the "mip" interface.
      **/
     public String getMipi() {
         return this.mipi;
@@ -171,7 +171,7 @@ public class Node  implements Serializable  {
     }
 
     /**
-     * The machine&#39;s name for the &quot;sip&quot; interface.
+     * The machine's name for the "sip" interface.
      **/
     public String getSipi() {
         return this.sipi;

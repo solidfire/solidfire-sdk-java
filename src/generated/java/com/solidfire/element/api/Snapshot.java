@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class Snapshot  implements Serializable  {
 
-    private static final long serialVersionUID = 376686869L;
+    private static final long serialVersionUID = 1111804601L;
 
     @SerializedName("snapshotID") private final Long snapshotID;
     @SerializedName("volumeID") private final Long volumeID;
@@ -105,7 +105,7 @@ public class Snapshot  implements Serializable  {
      * @param snapshotUUID [required] Universal Unique ID of an existing snapshot.
      * @param totalSize [required] Total size of this snapshot in bytes.
      * @param groupID (optional) If present, the ID of the group this snapshot is a part of.
-     * @param groupSnapshotUUID [required] The current &quot;members&quot; results contains information about each snapshot in the group.
+     * @param groupSnapshotUUID [required] The current "members" results contains information about each snapshot in the group.
      * @param createTime [required] The time this snapshot was taken.
      * @param attributes [required] List of Name/Value pairs in JSON object format.
      * @since 8.0
@@ -245,8 +245,8 @@ public class Snapshot  implements Serializable  {
     }
 
     /**
-     * The current &quot;members&quot; results contains information about each snapshot in the group.
-     * Each of these members will have a &quot;uuid&quot; parameter for the snapshot&#39;s UUID.
+     * The current "members" results contains information about each snapshot in the group.
+     * Each of these members will have a "uuid" parameter for the snapshot's UUID.
      * @since 8.0 
      **/
 

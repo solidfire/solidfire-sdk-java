@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class VolumeStats  implements Serializable  {
 
-    private static final long serialVersionUID = 586122882L;
+    private static final long serialVersionUID = 1439848760L;
 
     @SerializedName("accountID") private final Long accountID;
     @SerializedName("actualIOPS") private final Long actualIOPS;
@@ -178,7 +178,7 @@ public class VolumeStats  implements Serializable  {
 
     /**
      * The volume services being migrated to if the volume metadata is getting migrated between volume services.
-     * A &quot;null&quot; value means the volume is not migrating.
+     * A "null" value means the volume is not migrating.
      **/
     public MetadataHosts getDesiredMetadataHosts() {
         return this.desiredMetadataHosts;
@@ -186,7 +186,7 @@ public class VolumeStats  implements Serializable  {
 
     /**
      * The observed latency time, in microseconds, to complete operations to a volume.<br/>
-     * A &quot;0&quot; (zero) value means there is no I/O to the volume.
+     * A "0" (zero) value means there is no I/O to the volume.
      **/
     public Long getLatencyUSec() {
         return this.latencyUSec;

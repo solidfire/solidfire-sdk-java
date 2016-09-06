@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class CloneMultipleVolumeParams  implements Serializable  {
 
-    private static final long serialVersionUID = 1409365951L;
+    private static final long serialVersionUID = 80805354L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("access") private final Optional<String> access;
@@ -50,7 +50,7 @@ public class CloneMultipleVolumeParams  implements Serializable  {
 
     /**
      * 
-     * @param volumeID [required] Required parameter for &quot;volumes&quot; array: volumeID.
+     * @param volumeID [required] Required parameter for "volumes" array: volumeID.
      * @param access (optional) Access settings for the new volume.
      * @param name (optional) New name for the clone.
      * @param newAccountID (optional) Account ID for the new volume.
@@ -70,7 +70,7 @@ public class CloneMultipleVolumeParams  implements Serializable  {
 
 
     /**
-     * Required parameter for &quot;volumes&quot; array: volumeID.
+     * Required parameter for "volumes" array: volumeID.
      **/
     public Long getVolumeID() {
         return this.volumeID;

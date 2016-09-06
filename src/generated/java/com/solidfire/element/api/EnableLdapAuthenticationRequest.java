@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class EnableLdapAuthenticationRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1732140391L;
+    private static final long serialVersionUID = -2040059293L;
 
     @SerializedName("authType") private final Optional<String> authType;
     @SerializedName("groupSearchBaseDN") private final Optional<String> groupSearchBaseDN;
@@ -100,7 +100,7 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
 
     /**
      * REQUIRED for CustomFilter<br/>
-     * For use with the CustomFilter search type, an LDAP filter to use to return the DNs of a user&#39;s groups.<br/>
+     * For use with the CustomFilter search type, an LDAP filter to use to return the DNs of a user's groups.<br/>
      * The string can have placeholder text of %USERNAME% and %USERDN% to be replaced with their username and full userDN as needed.
      **/
     public Optional<String> getGroupSearchCustomFilter() {
@@ -110,7 +110,7 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
     /**
      * Controls the default group search filter used, can be one of the following:<br/>
      * <b>NoGroups</b>: No group support.<br/>
-     * <b>ActiveDirectory</b>: (default) Nested membership of all of a user&#39;s AD groups.<br/>
+     * <b>ActiveDirectory</b>: (default) Nested membership of all of a user's AD groups.<br/>
      * <b>MemberDN</b>: MemberDN style groups (single-level).
      **/
     public Optional<String> getGroupSearchType() {
@@ -143,7 +143,7 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
     /**
      * REQUIRED for DirectBind<br/>
      * A string that is used to form a fully qualified user DN.<br/>
-     * The string should have the placeholder text &quot;%USERNAME%&quot; which will be replaced with the username of the authenticating user.
+     * The string should have the placeholder text "%USERNAME%" which will be replaced with the username of the authenticating user.
      **/
     public Optional<String> getUserDNTemplate() {
         return this.userDNTemplate;
@@ -160,7 +160,7 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
     /**
      * REQUIRED for SearchAndBind.<br/>
      * The LDAP filter to use.<br/>
-     * The string should have the placeholder text &quot;%USERNAME%&quot; which will be replaced with the username of the authenticating user.<br/>
+     * The string should have the placeholder text "%USERNAME%" which will be replaced with the username of the authenticating user.<br/>
      * Example: (&(objectClass=person) (sAMAccountName=%USERNAME%)) will use the sAMAccountName field in Active Directory to match the nusername entered at cluster login.
      **/
     public Optional<String> getUserSearchFilter() {

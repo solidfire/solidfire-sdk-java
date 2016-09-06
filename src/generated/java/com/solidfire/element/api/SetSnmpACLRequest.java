@@ -39,14 +39,14 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class SetSnmpACLRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1142496615L;
+    private static final long serialVersionUID = -1998404382L;
 
     @SerializedName("networks") private final SnmpNetwork[] networks;
     @SerializedName("usmUsers") private final SnmpV3UsmUser[] usmUsers;
 
     /**
      * The Request object for the "SetSnmpACL" API Service call.
-     * @param networks [required] List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible &quot;networks&quot; values. REQUIRED if SNMP v# is disabled.
+     * @param networks [required] List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible "networks" values. REQUIRED if SNMP v# is disabled.
      * @param usmUsers [required] List of users and the type of access they have to the SNMP servers running on the cluster nodes. REQUIRED if SNMP v3 is enabled.
      * @since 8.0
      **/
@@ -58,7 +58,7 @@ public class SetSnmpACLRequest  implements Serializable  {
 
 
     /**
-     * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible &quot;networks&quot; values. REQUIRED if SNMP v# is disabled.
+     * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible "networks" values. REQUIRED if SNMP v# is disabled.
      **/
     public SnmpNetwork[] getNetworks() {
         return this.networks;

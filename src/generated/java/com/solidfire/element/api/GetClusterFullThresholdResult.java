@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetClusterFullThresholdResult  implements Serializable  {
 
-    private static final long serialVersionUID = 196414323L;
+    private static final long serialVersionUID = -603551051L;
 
     @SerializedName("blockFullness") private final String blockFullness;
     @SerializedName("fullness") private final String fullness;
@@ -62,16 +62,16 @@ public class GetClusterFullThresholdResult  implements Serializable  {
     /**
      * The object returned by the "GetClusterFullThreshold" API Service call.
      * @param blockFullness [required] Current computed level of block fullness of the cluster.
-     * @param fullness [required] Reflects the highest level of fullness between &quot;blockFullness&quot; and &quot;metadataFullness&quot;.
+     * @param fullness [required] Reflects the highest level of fullness between "blockFullness" and "metadataFullness".
      * @param maxMetadataOverProvisionFactor [required] A value representative of the number of times metadata space can be over provisioned relative to the amount of space available. For example, if there was enough metadata space to store 100 TiB of volumes and this number was set to 5, then 500 TiB worth of volumes could be created.
      * @param metadataFullness [required] Current computed level of metadata fullness of the cluster.
-     * @param sliceReserveUsedThresholdPct [required] Error condition; message sent to &quot;Alerts&quot; if the reserved slice utilization is greater than the sliceReserveUsedThresholdPct value returned.
-     * @param stage2AwareThreshold [required] Awareness condition: Value that is set for &quot;Stage 2&quot; cluster threshold level.
+     * @param sliceReserveUsedThresholdPct [required] Error condition; message sent to "Alerts" if the reserved slice utilization is greater than the sliceReserveUsedThresholdPct value returned.
+     * @param stage2AwareThreshold [required] Awareness condition: Value that is set for "Stage 2" cluster threshold level.
      * @param stage2BlockThresholdBytes [required] Number of bytes being used by the cluster at which a stage2 condition will exist.
      * @param stage3BlockThresholdBytes [required] Number of bytes being used by the cluster at which a stage3 condition will exist.
      * @param stage3BlockThresholdPercent [required] The percent value set for stage3. At this percent full, a warning will be posted in the Alerts log.
-     * @param stage3LowThreshold [required] Error condition; message sent to &quot;Alerts&quot; that capacity on a cluster is getting low.
-     * @param stage4CriticalThreshold [required] Error condition; message sent to &quot;Alerts&quot; that capacity on a cluster is critically low.
+     * @param stage3LowThreshold [required] Error condition; message sent to "Alerts" that capacity on a cluster is getting low.
+     * @param stage4CriticalThreshold [required] Error condition; message sent to "Alerts" that capacity on a cluster is critically low.
      * @param stage4BlockThresholdBytes [required] Number of bytes being used by the cluster at which a stage4 condition will exist.
      * @param stage5BlockThresholdBytes [required] Number of bytes being used by the cluster at which a stage5 condition will exist.
      * @param sumTotalClusterBytes [required] Physical capacity of the cluster measured in bytes.
@@ -111,7 +111,7 @@ public class GetClusterFullThresholdResult  implements Serializable  {
     }
 
     /**
-     * Reflects the highest level of fullness between &quot;blockFullness&quot; and &quot;metadataFullness&quot;.
+     * Reflects the highest level of fullness between "blockFullness" and "metadataFullness".
      **/
     public String getFullness() {
         return this.fullness;
@@ -132,14 +132,14 @@ public class GetClusterFullThresholdResult  implements Serializable  {
     }
 
     /**
-     * Error condition; message sent to &quot;Alerts&quot; if the reserved slice utilization is greater than the sliceReserveUsedThresholdPct value returned.
+     * Error condition; message sent to "Alerts" if the reserved slice utilization is greater than the sliceReserveUsedThresholdPct value returned.
      **/
     public Long getSliceReserveUsedThresholdPct() {
         return this.sliceReserveUsedThresholdPct;
     }
 
     /**
-     * Awareness condition: Value that is set for &quot;Stage 2&quot; cluster threshold level.
+     * Awareness condition: Value that is set for "Stage 2" cluster threshold level.
      **/
     public Long getStage2AwareThreshold() {
         return this.stage2AwareThreshold;
@@ -167,14 +167,14 @@ public class GetClusterFullThresholdResult  implements Serializable  {
     }
 
     /**
-     * Error condition; message sent to &quot;Alerts&quot; that capacity on a cluster is getting low.
+     * Error condition; message sent to "Alerts" that capacity on a cluster is getting low.
      **/
     public Long getStage3LowThreshold() {
         return this.stage3LowThreshold;
     }
 
     /**
-     * Error condition; message sent to &quot;Alerts&quot; that capacity on a cluster is critically low.
+     * Error condition; message sent to "Alerts" that capacity on a cluster is critically low.
      **/
     public Long getStage4CriticalThreshold() {
         return this.stage4CriticalThreshold;

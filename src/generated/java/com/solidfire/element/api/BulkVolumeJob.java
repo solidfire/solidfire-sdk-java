@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class BulkVolumeJob  implements Serializable  {
 
-    private static final long serialVersionUID = 1916802850L;
+    private static final long serialVersionUID = 193615460L;
 
     @SerializedName("bulkVolumeID") private final Long bulkVolumeID;
     @SerializedName("createTime") private final String createTime;
@@ -59,7 +59,7 @@ public class BulkVolumeJob  implements Serializable  {
      * 
      * @param bulkVolumeID [required] The internal bulk volume job ID.
      * @param createTime [required] Timestamp created for the bulk volume job.
-     * @param format [required] Format is either &quot;compressed&quot; or &quot;native&quot;.
+     * @param format [required] Format is either "compressed" or "native".
      * @param key [required] The unique key created by the bulk volume session.
      * @param percentComplete [required] The completed percentage reported by the operation.
      * @param remainingTime [required] The estimated time remaining in seconds.
@@ -93,7 +93,7 @@ public class BulkVolumeJob  implements Serializable  {
      * @param bulkVolumeID [required] The internal bulk volume job ID.
      * @param createTime [required] Timestamp created for the bulk volume job.
      * @param elapsedTime [required] The number of seconds since the job began.
-     * @param format [required] Format is either &quot;compressed&quot; or &quot;native&quot;.
+     * @param format [required] Format is either "compressed" or "native".
      * @param key [required] The unique key created by the bulk volume session.
      * @param percentComplete [required] The completed percentage reported by the operation.
      * @param remainingTime [required] The estimated time remaining in seconds.
@@ -148,7 +148,7 @@ public class BulkVolumeJob  implements Serializable  {
     }
 
     /**
-     * Format is either &quot;compressed&quot; or &quot;native&quot;.
+     * Format is either "compressed" or "native".
      **/
     public String getFormat() {
         return this.format;

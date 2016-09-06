@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class VolumeQOS  implements Serializable  {
 
-    private static final long serialVersionUID = 1682977139L;
+    private static final long serialVersionUID = -1221769299L;
 
     @SerializedName("minIOPS") private final Long minIOPS;
     @SerializedName("maxIOPS") private final Long maxIOPS;
@@ -51,7 +51,7 @@ public class VolumeQOS  implements Serializable  {
      * Quality of Service (QoS) Result values are used on SolidFire volumes to provision performance expectations.
      * @param minIOPS [required] Desired minimum 4KB IOPS to guarantee.
      * @param maxIOPS [required] Desired maximum 4KB IOPS allowed over an extended period of time.
-     * @param burstIOPS [required] Maximum &quot;peak&quot; 4KB IOPS allowed for short periods of time.
+     * @param burstIOPS [required] Maximum "peak" 4KB IOPS allowed for short periods of time.
      * @param burstTime [required] The length of time burst IOPS is allowed.
      * @param curve [required] The curve is a set of key-value pairs.
      * @since 7.0
@@ -83,7 +83,7 @@ public class VolumeQOS  implements Serializable  {
     }
 
     /**
-     * Maximum &quot;peak&quot; 4KB IOPS allowed for short periods of time.
+     * Maximum "peak" 4KB IOPS allowed for short periods of time.
      * Allows for bursts of I/O activity over the normal max IOPS value.
      **/
     public Long getBurstIOPS() {

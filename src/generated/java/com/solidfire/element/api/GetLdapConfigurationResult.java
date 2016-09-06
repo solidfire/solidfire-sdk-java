@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetLdapConfigurationResult  implements Serializable  {
 
-    private static final long serialVersionUID = -778688371L;
+    private static final long serialVersionUID = 1970968967L;
 
     @SerializedName("ldapConfiguration") private final LdapConfiguration ldapConfiguration;
 
@@ -57,7 +57,7 @@ public class GetLdapConfigurationResult  implements Serializable  {
     /**
      * List of the current LDAP configuration settings. This API call will not return the plain text of the search account password.
      * <br/><br/>
-     * <b>Note</b>: If LDAP authentication is currently disabled, all the returned settings will be empty with the exception of "authType", and "groupSearchType" which are set to &quot;SearchAndBind&quot; and &quot;ActiveDirectory&quot; respectively.
+     * <b>Note</b>: If LDAP authentication is currently disabled, all the returned settings will be empty with the exception of "authType", and "groupSearchType" which are set to "SearchAndBind" and "ActiveDirectory" respectively.
      **/
     public LdapConfiguration getLdapConfiguration() {
         return this.ldapConfiguration;

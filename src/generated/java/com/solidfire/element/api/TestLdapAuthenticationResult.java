@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class TestLdapAuthenticationResult  implements Serializable  {
 
-    private static final long serialVersionUID = 529086387L;
+    private static final long serialVersionUID = -1122051719L;
 
     @SerializedName("groups") private final String[] groups;
     @SerializedName("userDN") private final String userDN;
@@ -47,7 +47,7 @@ public class TestLdapAuthenticationResult  implements Serializable  {
     /**
      * The object returned by the "TestLdapAuthentication" API Service call.
      * @param groups [required] List of LDAP groups that the tested user is a member of.
-     * @param userDN [required] The tested user&#39;s full LDAP distinguished name.
+     * @param userDN [required] The tested user's full LDAP distinguished name.
      * @since 7.0
      **/
     @Since("7.0")
@@ -65,7 +65,7 @@ public class TestLdapAuthenticationResult  implements Serializable  {
     }
 
     /**
-     * The tested user&#39;s full LDAP distinguished name.
+     * The tested user's full LDAP distinguished name.
      **/
     public String getUserDN() {
         return this.userDN;

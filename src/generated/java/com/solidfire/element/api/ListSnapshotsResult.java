@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListSnapshotsResult  implements Serializable  {
 
-    private static final long serialVersionUID = -35286292L;
+    private static final long serialVersionUID = 1422658649L;
 
     @SerializedName("snapshots") private final Snapshot[] snapshots;
 
@@ -57,7 +57,7 @@ public class ListSnapshotsResult  implements Serializable  {
     /**
      * Information about each snapshot for each volume.
      * If volumeID is not provided, all snapshots for all volumes is returned.
-     * Snapshots that are in a group will be returned with a &quot;groupID&quot;.
+     * Snapshots that are in a group will be returned with a "groupID".
      * Snapshots that are enabled for replication.
      **/
     public Snapshot[] getSnapshots() {

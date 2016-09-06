@@ -39,13 +39,13 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class SetClusterConfigRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1255055410L;
+    private static final long serialVersionUID = 1657597185L;
 
     @SerializedName("cluster") private final ClusterConfig cluster;
 
     /**
      * The Request object for the "SetClusterConfig" API Service call.
-     * @param cluster [required] Objects that are changed for the cluster interface settings. Only the fields you want changed need to be added to this method as objects in the &quot;cluster&quot; parameter.
+     * @param cluster [required] Objects that are changed for the cluster interface settings. Only the fields you want changed need to be added to this method as objects in the "cluster" parameter.
      * @since 7.0
      **/
     @Since("7.0")
@@ -55,7 +55,7 @@ public class SetClusterConfigRequest  implements Serializable  {
 
 
     /**
-     * Objects that are changed for the cluster interface settings. Only the fields you want changed need to be added to this method as objects in the &quot;cluster&quot; parameter.
+     * Objects that are changed for the cluster interface settings. Only the fields you want changed need to be added to this method as objects in the "cluster" parameter.
      **/
     public ClusterConfig getCluster() {
         return this.cluster;

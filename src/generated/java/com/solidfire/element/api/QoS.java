@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class QoS  implements Serializable  {
 
-    private static final long serialVersionUID = -1734655448L;
+    private static final long serialVersionUID = -79923561L;
 
     @SerializedName("minIOPS") private final Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private final Optional<Long> maxIOPS;
@@ -58,7 +58,7 @@ public class QoS  implements Serializable  {
      * <b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>
      * @param minIOPS (optional) Desired minimum 4KB IOPS to guarantee.
      * @param maxIOPS (optional) Desired maximum 4KB IOPS allowed over an extended period of time.
-     * @param burstIOPS (optional) Maximum &quot;peak&quot; 4KB IOPS allowed for short periods of time.
+     * @param burstIOPS (optional) Maximum "peak" 4KB IOPS allowed for short periods of time.
      * @param burstTime (optional) The length of time burst IOPS is allowed.
      * @since 7.0
      **/
@@ -88,7 +88,7 @@ public class QoS  implements Serializable  {
     }
 
     /**
-     * Maximum &quot;peak&quot; 4KB IOPS allowed for short periods of time.
+     * Maximum "peak" 4KB IOPS allowed for short periods of time.
      * Allows for bursts of I/O activity over the normal max IOPS value.
      **/
     public Optional<Long> getBurstIOPS() {

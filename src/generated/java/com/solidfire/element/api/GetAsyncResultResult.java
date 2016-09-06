@@ -35,17 +35,17 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
 
 
 /**
- * The object returned by the &quot;GetAsyncResult&quot; API Service call.
+ * The object returned by the "GetAsyncResult" API Service call.
  **/
 public class GetAsyncResultResult  implements Serializable  {
 
-    private static final long serialVersionUID = 18116817L;
+    private static final long serialVersionUID = -137673806L;
 
     @SerializedName("result") private final AsyncResult result;
     @SerializedName("status") private final String status;
 
     /**
-     * The object returned by the &quot;GetAsyncResult&quot; API Service call.
+     * The object returned by the "GetAsyncResult" API Service call.
      * <br/>
      * <b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.
      * @param result [required] The resulting message for the original method call if the call was completed successfully.

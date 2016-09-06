@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ClearClusterFaultsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1306931634L;
+    private static final long serialVersionUID = -502176780L;
 
     @SerializedName("faultTypes") private final Optional<String> faultTypes;
 
@@ -58,7 +58,7 @@ public class ClearClusterFaultsRequest  implements Serializable  {
      * Determines the types of faults cleared:<br/>
      * <b>current</b>: Faults that are currently detected and have not been resolved.<br/>
      * <b>resolved</b>: Faults that were previously detected and resolved.<br/>
-     * <b>all</b>: Both current and resolved faults are cleared. The fault status can be determined by the &quot;resolved&quot; field of the fault object.
+     * <b>all</b>: Both current and resolved faults are cleared. The fault status can be determined by the "resolved" field of the fault object.
      **/
     public Optional<String> getFaultTypes() {
         return this.faultTypes;

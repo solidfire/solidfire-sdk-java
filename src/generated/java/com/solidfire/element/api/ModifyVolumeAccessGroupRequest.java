@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ModifyVolumeAccessGroupRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1006841893L;
+    private static final long serialVersionUID = -1476164933L;
 
     @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
     @SerializedName("virtualNetworkID") private final Optional<Long[]> virtualNetworkID;
@@ -129,7 +129,7 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
 
     /**
      * List of initiators to include in the volume access group.
-     * If unspecified, the access group&#39;s configured initiators will not be modified.
+     * If unspecified, the access group's configured initiators will not be modified.
      **/
     public Optional<String[]> getInitiators() {
         return this.initiators;
@@ -137,7 +137,7 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
 
     /**
      * List of volumes to initially include in the volume access group.
-     * If unspecified, the access group&#39;s volumes will not be modified.
+     * If unspecified, the access group's volumes will not be modified.
      **/
     public Optional<Long[]> getVolumes() {
         return this.volumes;
