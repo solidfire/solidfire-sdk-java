@@ -88,7 +88,8 @@ public class ScheduleAdaptor {
                                                                                     .scheduleName(apiSchedule.getScheduleName())
                                                                                     .scheduleType(apiSchedule.getScheduleType())
                                                                                     .optionalStartingDate(apiSchedule.getStartingDate())
-                                                                                    .optionalWeekdays(apiSchedule.getWeekdays());
+                                                                                    .optionalWeekdays(apiSchedule.getWeekdays())
+                                                                                    .attributes(apiSchedule.getAttributes());
 
         return sfe.sendRequest("CreateSchedule", apiRequest.build(), ApiCreateScheduleRequest.class, CreateScheduleResult.class);
 
