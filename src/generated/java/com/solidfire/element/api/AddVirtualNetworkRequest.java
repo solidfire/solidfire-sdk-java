@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AddVirtualNetworkRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1695117385L;
+    private static final long serialVersionUID = -1016942277L;
 
     @SerializedName("virtualNetworkTag") private final Long virtualNetworkTag;
     @SerializedName("name") private final String name;
@@ -114,8 +114,8 @@ public class AddVirtualNetworkRequest  implements Serializable  {
     /**
      * Unique Range of IP addresses to include in the virtual network.
      * Attributes for this parameter are:
-     * <b>start:</b> start of the IP address range. (String)
-     * <b>size:</b> numbre of IP addresses to include in the block. (Integer)
+     * <br/><b>start:</b> start of the IP address range. (String)
+     * <br/><b>size:</b> numbre of IP addresses to include in the block. (Integer)
      **/
     public AddressBlock[] getAddressBlocks() {
         return this.addressBlocks;

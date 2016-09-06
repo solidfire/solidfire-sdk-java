@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class PairedCluster  implements Serializable  {
 
-    private static final long serialVersionUID = -2109317578L;
+    private static final long serialVersionUID = 1718146493L;
 
     @SerializedName("clusterName") private final String clusterName;
     @SerializedName("clusterPairID") private final Long clusterPairID;
@@ -56,7 +56,7 @@ public class PairedCluster  implements Serializable  {
      * @param clusterPairUUID [required] Universally unique identifier.
      * @param latency [required] Number, in milliseconds, of latency between clusters.
      * @param mvip [required] IP of the management connection for paired clusters.
-     * @param status [required] Can be one of the following:<br/>
+     * @param status [required] Can be one of the following:
      * @param version [required] The Element OS version of the other cluster in the pair.
      * @since 7.0
      **/
@@ -108,10 +108,10 @@ public class PairedCluster  implements Serializable  {
     }
 
     /**
-     * Can be one of the following:<br/>
-     * <b>Connected</b>
-     * <b>Misconfigured</b>
-     * <b>Disconnected</b>
+     * Can be one of the following:
+     * <br/><b>Connected</b>
+     * <br/><b>Misconfigured</b>
+     * <br/><b>Disconnected</b>
      **/
     public String getStatus() {
         return this.status;

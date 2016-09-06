@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class UpdateBulkVolumeStatusResult  implements Serializable  {
 
-    private static final long serialVersionUID = 570025374L;
+    private static final long serialVersionUID = -1504958602L;
 
     @SerializedName("status") private final String status;
     @SerializedName("url") private final String url;
@@ -62,10 +62,10 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
 
     /**
      * Status of the session requested. Returned status:<br/>
-     * <b><preparing/b>
-     * <b>active</b>
-     * <b>done</b>
-     * <b>failed</b>
+     * <br/><b>preparing</b>
+     * <br/><b>active</b>
+     * <br/><b>done</b>
+     * <br/><b>failed</b>
      **/
     public String getStatus() {
         return this.status;

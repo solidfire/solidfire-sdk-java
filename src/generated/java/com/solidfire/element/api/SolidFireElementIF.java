@@ -359,7 +359,7 @@ public interface SolidFireElementIF {
     GetLimitsResult getLimits();
 
     /**
-     * Returns events detected on the cluster, sorted from oldest to newest.
+     * ListEvents returns events detected on the cluster, sorted from oldest to newest.
      *  
      * @param request The request @see com.solidfire.element.api.ListEventsRequest 
      *  
@@ -368,7 +368,8 @@ public interface SolidFireElementIF {
     ListEventsResult listEvents(final ListEventsRequest request);
 
     /**
-     * Gets the list of cluster faults
+     * ListClusterFaults is used to retrieve information about any faults detected on the cluster.
+     * With this method, both current and resolved faults can be retrieved. The system caches faults every 30 seconds.
      *  
      * @param request The request @see com.solidfire.element.api.ListClusterFaultsRequest 
      *  
@@ -772,7 +773,7 @@ public interface SolidFireElementIF {
     /**
      * The EnableEncryptionAtRest method is used to enable the Advanced Encryption Standard (AES) 256-bit encryption at rest on the cluster so that the cluster can manage the encryption key used for the drives on each node. This feature is not enabled by default. Enabling this operation allows the cluster to automatically manage encryption keys internally for the drives on each node in the cluster. Nodes do not store the keys to unlock drives and the keys are never passed over the network. Two nodes participating in a cluster are required to access the key to disable encryption on a drive. The encryption management does not affect performance or efficiency on the cluster. If an encryption-enabled drive or node is removed from the cluster with the API, all data is secure erased and any data left on the drive cannot be read or accessed.
      * Enabling or disabling encryption should be performed when the cluster is running and in a healthy state. Encryption can be enabled or disabled at your discretion and can be performed as often as you need.
-     * <b>Note</b>: This process is asynchronous and returns a response before encryption is enabled. The GetClusterInfo method can be used to poll the system to see when the process has completed.
+     * <br/><b>Note</b>: This process is asynchronous and returns a response before encryption is enabled. The GetClusterInfo method can be used to poll the system to see when the process has completed.
      *  
      * @param request The request @see com.solidfire.element.api.EnableEncryptionAtRestRequest 
      *  
@@ -790,9 +791,9 @@ public interface SolidFireElementIF {
     EnableEncryptionAtRestResult enableEncryptionAtRest();
 
     /**
-     * The DisableEncryptionAtRest method is used to remove the encryption that was previously applied to the cluster using the EnableEncryptionAtRest method.
-     * Enabling or disabling encryption should be performed when the cluster is running and in a healthy state. Encryption can be enabled or disabled at your discretion and can be performed as often as you need.
-     * <b>Note</b>: This process is asynchronous and returns a response before encryption is disabled. The GetClusterInfo method can be used to poll the system to see when the process has completed.
+     * The DisableEncryptionAtRest method enables you to remove the encryption that was previously applied to the cluster using the EnableEncryptionAtRest method.
+     * This disable method is asynchronous and returns a response before encryption is disabled.
+     * You can use the GetClusterInfo method to poll the system to see when the process has completed.
      *  
      * @param request The request @see com.solidfire.element.api.DisableEncryptionAtRestRequest 
      *  
@@ -939,6 +940,8 @@ public interface SolidFireElementIF {
     /**
      * Convenience method for listDriveHardware 
      *  
+     * @param force This must be set to true in order to retrieve the drive hardware stats from the cluster.
+     *
      *  
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#listDriveHardware(ListDriveHardwareRequest) 
@@ -1244,14 +1247,40 @@ public interface SolidFireElementIF {
     @Since("8.0")
     DisableLdapAuthenticationResult disableLdapAuthentication();
 
+    /**
+     * ListActiveNodes returns the list of currently active nodes that are in the cluster.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListActiveNodesRequest 
+     *  
+     * @return the response
+     **/
     ListActiveNodesResult listActiveNodes(final ListActiveNodesRequest request);
 
 
+    /**
+     * Convenience method for listActiveNodes 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listActiveNodes(ListActiveNodesRequest) 
+     **/
     ListActiveNodesResult listActiveNodes();
 
+    /**
+     * ListAllNodes enables you to retrieve a list of active and pending nodes in the cluster.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListAllNodesRequest 
+     *  
+     * @return the response
+     **/
     ListAllNodesResult listAllNodes(final ListAllNodesRequest request);
 
 
+    /**
+     * Convenience method for listAllNodes 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listAllNodes(ListAllNodesRequest) 
+     **/
     ListAllNodesResult listAllNodes();
 
     /**
@@ -1759,7 +1788,6 @@ public interface SolidFireElementIF {
      * snapshot from an existing snapshot. The new snapshot becomes &quot;active&quot; and the existing snapshot is preserved until 
      * it is manually deleted. The previously &quot;active&quot; snapshot is deleted unless the parameter saveCurrentState is set with 
      * a value of &quot;true.&quot;
-     * <br/><br/>
      * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
      * Snapshots are not created when cluster fullness is at stage 4 or 5.
      *  
@@ -2027,7 +2055,7 @@ public interface SolidFireElementIF {
 
     /**
      * The ListTests API method is used to return the tests that are available to run on a node.
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     * <br/><b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
      *  
      * @param request The request @see com.solidfire.element.api.ListTestsRequest 
      *  
@@ -2046,7 +2074,7 @@ public interface SolidFireElementIF {
 
     /**
      * The ListUtilities API method is used to return the tests that are available to run on a node.
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     * <br/><b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
      *  
      * @param request The request @see com.solidfire.element.api.ListUtilitiesRequest 
      *  
@@ -2065,7 +2093,7 @@ public interface SolidFireElementIF {
 
     /**
      * The TestConnectEnsemble API method is used to verify connectivity with a sepcified database ensemble. By default it uses the ensemble for the cluster the node is associated with. Alternatively you can provide a different ensemble to test connectivity with.
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     * <br/><b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
      *  
      * @param request The request @see com.solidfire.element.api.TestConnectEnsembleRequest 
      *  
@@ -2087,7 +2115,7 @@ public interface SolidFireElementIF {
 
     /**
      * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     * <br/><b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
      *  
      * @param request The request @see com.solidfire.element.api.TestConnectMvipRequest 
      *  
@@ -2109,7 +2137,7 @@ public interface SolidFireElementIF {
 
     /**
      * The TestConnectSvip API method is used to test the storage connection to the cluster. The test pings the SVIP using ICMP packets and when successful connects as an iSCSI initiator.
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     * <br/><b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
      *  
      * @param request The request @see com.solidfire.element.api.TestConnectSvipRequest 
      *  
@@ -2131,7 +2159,7 @@ public interface SolidFireElementIF {
 
     /**
      * The TestPing API method is used to validate the connection to all nodes in the cluster on both 1G and 10G interfaces using ICMP packets. The test uses the appropriate MTU sizes for each packet based on the MTU settings in the network configuration.
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     * <br/><b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
      *  
      * @param request The request @see com.solidfire.element.api.TestPingRequest 
      *  
@@ -2154,7 +2182,7 @@ public interface SolidFireElementIF {
 
     /**
      * AddVirtualNetwork is used to add a new virtual network to a cluster configuration. When a virtual network is added, an interface for each node is created and each will require a virtual network IP address. The number of IP addresses specified as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. Virtual network addresses are bulk provisioned by SolidFire and assigned to individual nodes automatically. Virtual network addresses do not need to be assigned to nodes manually.
-     * 
+     * <br/><br/>
      * <b>Note:</b> The AddVirtualNetwork method is used only to create a new virtual network. If you want to make changes to a virtual network, please use the ModifyVirtualNetwork method.
      *  
      * @param request The request @see com.solidfire.element.api.AddVirtualNetworkRequest 
@@ -2167,7 +2195,7 @@ public interface SolidFireElementIF {
 
     /**
      * ModifyVirtualNetwork is used to change various attributes of a VirtualNetwork object. This method can be used to add or remove address blocks, change the netmask IP, or modify the name or description of the virtual network.
-     * 
+     * <br/><br/>
      * <b>Note:</b> This method requires either the VirtualNetworkID or the VirtualNetworkTag as a parameter, but not both.
      *  
      * @param request The request @see com.solidfire.element.api.ModifyVirtualNetworkRequest 
@@ -2180,7 +2208,7 @@ public interface SolidFireElementIF {
 
     /**
      * RemoveVirtualNetwork is used to remove a previously added virtual network.
-     * 
+     * <br/><br/>
      * <b>Note:</b> This method requires either the VirtualNetworkID of the VirtualNetworkTag as a parameter, but not both.
      *  
      * @param request The request @see com.solidfire.element.api.RemoveVirtualNetworkRequest 
@@ -2559,7 +2587,7 @@ public interface SolidFireElementIF {
     /**
      * Convenience method for restoreDeletedVolume 
      *  
-     * @param volumeID RestoreDeletedVolume
+     * @param volumeID VolumeID for the deleted volume to restore.
      *
      *  
      * @return the response

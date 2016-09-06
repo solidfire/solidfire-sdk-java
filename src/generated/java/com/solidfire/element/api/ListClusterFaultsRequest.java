@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListClusterFaultsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -766407781L;
+    private static final long serialVersionUID = -1062562261L;
 
     @SerializedName("exceptions") private final Optional<Boolean> exceptions;
     @SerializedName("bestPractices") private final Optional<Boolean> bestPractices;
@@ -49,9 +49,9 @@ public class ListClusterFaultsRequest  implements Serializable  {
     /**
      * The Request object for the "ListClusterFaults" API Service call.
      * @param exceptions (optional) 
-     * @param bestPractices (optional) 
+     * @param bestPractices (optional) Include faults triggered by sub-optimal system configuration.
      * @param update (optional) 
-     * @param faultTypes (optional) 
+     * @param faultTypes (optional) Determines the types of faults returned: current: List active, unresolved faults.
      * @since 7.0
      **/
     @Since("7.0")
@@ -65,12 +65,23 @@ public class ListClusterFaultsRequest  implements Serializable  {
     public Optional<Boolean> getExceptions() {
         return this.exceptions;
     }
+
+    /**
+     * Include faults triggered by sub-optimal system configuration.
+     * Possible values: true, false
+     **/
     public Optional<Boolean> getBestPractices() {
         return this.bestPractices;
     }
     public Optional<Boolean> getUpdate() {
         return this.update;
     }
+
+    /**
+     * Determines the types of faults returned: current: List active, unresolved faults.
+     * <b>resolved</b>: List faults that were previously detected and resolved.
+     * <b>all</b>: (Default) List both current and resolved faults. You can see the fault status in the 'resolved' field of the Cluster Fault object.
+     **/
     public Optional<String> getFaultTypes() {
         return this.faultTypes;
     }

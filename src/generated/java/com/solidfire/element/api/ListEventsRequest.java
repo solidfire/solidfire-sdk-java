@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListEventsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1549644137L;
+    private static final long serialVersionUID = -1601474680L;
 
     @SerializedName("maxEvents") private final Optional<Long> maxEvents;
     @SerializedName("startEventID") private final Optional<Long> startEventID;
@@ -48,9 +48,9 @@ public class ListEventsRequest  implements Serializable  {
 
     /**
      * The Request object for the "ListEvents" API Service call.
-     * @param maxEvents (optional) 
-     * @param startEventID (optional) 
-     * @param endEventID (optional) 
+     * @param maxEvents (optional) Specifies the maximum number of events to return.
+     * @param startEventID (optional) Identifies the beginning of a range of events to return.
+     * @param endEventID (optional) Identifies the end of a range of events to return.
      * @param eventQueueType (optional) 
      * @since 7.0
      **/
@@ -62,12 +62,24 @@ public class ListEventsRequest  implements Serializable  {
         this.eventQueueType = (eventQueueType == null) ? Optional.<String>empty() : eventQueueType;
     }
 
+
+    /**
+     * Specifies the maximum number of events to return.
+     **/
     public Optional<Long> getMaxEvents() {
         return this.maxEvents;
     }
+
+    /**
+     * Identifies the beginning of a range of events to return.
+     **/
     public Optional<Long> getStartEventID() {
         return this.startEventID;
     }
+
+    /**
+     * Identifies the end of a range of events to return.
+     **/
     public Optional<Long> getEndEventID() {
         return this.endEventID;
     }

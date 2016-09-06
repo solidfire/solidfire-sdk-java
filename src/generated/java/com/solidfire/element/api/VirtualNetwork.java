@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class VirtualNetwork  implements Serializable  {
 
-    private static final long serialVersionUID = -1508239191L;
+    private static final long serialVersionUID = 40898342L;
 
     @SerializedName("virtualNetworkID") private final Long virtualNetworkID;
     @SerializedName("virtualNetworkTag") private final Long virtualNetworkTag;
@@ -118,9 +118,9 @@ public class VirtualNetwork  implements Serializable  {
 
     /**
      * Range of address blocks currently assigned to the virtual network.
-     * <b>available:</b> Binary string in "1"s and "0"s. 1 equals the IP is available and 0 equals the IP is not available. The string is read from right to left with the digit to the far right being the first IP address in the list of addressBlocks.
-     * <b>size:</b> the size of this block of addresses.
-     * <b>start:</b> first IP address in the block.
+     * <br/><b>available:</b> Binary string in "1"s and "0"s. 1 equals the IP is available and 0 equals the IP is not available. The string is read from right to left with the digit to the far right being the first IP address in the list of addressBlocks.
+     * <br/><b>size:</b> the size of this block of addresses.
+     * <br/><b>start:</b> first IP address in the block.
      **/
     public AddressBlock[] getAddressBlocks() {
         return this.addressBlocks;

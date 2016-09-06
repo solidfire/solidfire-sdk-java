@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class SnmpV3UsmUser  implements Serializable  {
 
-    private static final long serialVersionUID = 1518161687L;
+    private static final long serialVersionUID = -2017812210L;
 
     @SerializedName("access") private final String access;
     @SerializedName("name") private final String name;
@@ -49,11 +49,11 @@ public class SnmpV3UsmUser  implements Serializable  {
 
     /**
      * The SNMP v3 usmUser object is used with the API method SetSnmpInfo to configure SNMP on the cluster.
-     * @param access [required] <b>rouser</b>: read-only access.*
+     * @param access [required] <br/><b>rouser</b>: read-only access.*
      * @param name [required] The name of the user. Must contain at least one character, but no more than 32 characters. Blank spaces are not allowed.
      * @param password [required] The password of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "auth" or "priv."
      * @param passphrase [required] The passphrase of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "priv."
-     * @param secLevel [required] <b>noauth</b>: No password or passphrase is required.
+     * @param secLevel [required] <br/><b>noauth</b>: No password or passphrase is required.
      * @since 7.0
      **/
     @Since("7.0")
@@ -67,9 +67,9 @@ public class SnmpV3UsmUser  implements Serializable  {
 
 
     /**
-     * <b>rouser</b>: read-only access.*
-     * <b>rwuser</b>: for read-write access.
-     * <b>rosys</b>: for read-only access to a restricted set of system information
+     * <br/><b>rouser</b>: read-only access.*
+     * <br/><b>rwuser</b>: for read-write access.
+     * <br/><b>rosys</b>: for read-only access to a restricted set of system information
      * *SolidFire recommends that all USM users be set to "rouser" access, because all SolidFire MIB objects are read-only.
      **/
     public String getAccess() {
@@ -98,9 +98,9 @@ public class SnmpV3UsmUser  implements Serializable  {
     }
 
     /**
-     * <b>noauth</b>: No password or passphrase is required.
-     * <b>auth</b>: A password is required for user access.
-     * <b>priv</b>: A password and passphrase is required for user access.
+     * <br/><b>noauth</b>: No password or passphrase is required.
+     * <br/><b>auth</b>: A password is required for user access.
+     * <br/><b>priv</b>: A password and passphrase is required for user access.
      **/
     public String getSecLevel() {
         return this.secLevel;

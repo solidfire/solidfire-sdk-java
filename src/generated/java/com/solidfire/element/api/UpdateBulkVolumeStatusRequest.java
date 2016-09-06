@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class UpdateBulkVolumeStatusRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1489854499L;
+    private static final long serialVersionUID = -11675017L;
 
     @SerializedName("key") private final String key;
     @SerializedName("status") private final String status;
@@ -76,9 +76,9 @@ public class UpdateBulkVolumeStatusRequest  implements Serializable  {
     /**
      * The SolidFire system sets the status of the given bulk volume job.<br/>
      * Possible values:<br/>
-     * <b>running</b>: jobs that are still active.
-     * <b>complete</b>: jobs that are done. failed - jobs that have failed.
-     * <b>failed</b>: jobs that have failed.
+     * <br/><b>running</b>: jobs that are still active.
+     * <br/><b>complete</b>: jobs that are done. failed - jobs that have failed.
+     * <br/><b>failed</b>: jobs that have failed.
      **/
     public String getStatus() {
         return this.status;

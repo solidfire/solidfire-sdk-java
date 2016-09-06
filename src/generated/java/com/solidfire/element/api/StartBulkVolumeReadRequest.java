@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class StartBulkVolumeReadRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1206345233L;
+    private static final long serialVersionUID = -953327189L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("format") private final String format;
@@ -51,7 +51,7 @@ public class StartBulkVolumeReadRequest  implements Serializable  {
     /**
      * The Request object for the "StartBulkVolumeRead" API Service call.
      * @param volumeID [required] ID of the volume to be read.
-     * @param format [required] The format of the volume data. Can be either:<br/>
+     * @param format [required] The format of the volume data. Can be either:
      * @param snapshotID (optional) ID of a previously created snapshot used for bulk volume reads.
      * @param script (optional) Executable name of a script.
      * @param scriptParameters (optional) JSON parameters to pass to the script.
@@ -77,9 +77,9 @@ public class StartBulkVolumeReadRequest  implements Serializable  {
     }
 
     /**
-     * The format of the volume data. Can be either:<br/>
-     * <b>uncompressed</b>: every byte of the volume is returned without any compression.
-     * <b>native</b>: opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk volume write.
+     * The format of the volume data. Can be either:
+     * <br/><b>uncompressed</b>: every byte of the volume is returned without any compression.
+     * <br/><b>native</b>: opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk volume write.
      **/
     public String getFormat() {
         return this.format;

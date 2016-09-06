@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class CloneMultipleVolumeParams  implements Serializable  {
 
-    private static final long serialVersionUID = 1363969163L;
+    private static final long serialVersionUID = 1409365951L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("access") private final Optional<String> access;
@@ -51,7 +51,7 @@ public class CloneMultipleVolumeParams  implements Serializable  {
     /**
      * 
      * @param volumeID [required] Required parameter for &quot;volumes&quot; array: volumeID.
-     * @param access (optional) access : readOnly; readWrite, locked, replicationTarget
+     * @param access (optional) Access settings for the new volume.
      * @param name (optional) New name for the clone.
      * @param newAccountID (optional) Account ID for the new volume.
      * @param newSize (optional) New size Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
@@ -77,7 +77,13 @@ public class CloneMultipleVolumeParams  implements Serializable  {
     }
 
     /**
-     * access : readOnly; readWrite, locked, replicationTarget
+     * Access settings for the new volume.
+     * <br/><b>readOnly</b>: Only read operations are allowed.
+     * <br/><b>readWrite</b>: Reads and writes are allowed.
+     * <br/><b>locked</b>: No reads or writes are allowed.
+     * <br/><b>replicationTarget</b>: Identify a volume as the target volume for a paired set of volumes. If the volume is not paired, the access status is locked.
+     * <br/><br/>
+     * If unspecified, the access settings of the clone will be the same as the source.
      **/
     public Optional<String> getAccess() {
         return this.access;

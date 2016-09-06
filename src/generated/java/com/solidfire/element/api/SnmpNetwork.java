@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class SnmpNetwork  implements Serializable  {
 
-    private static final long serialVersionUID = -1890405025L;
+    private static final long serialVersionUID = 1047589412L;
 
     @SerializedName("access") private final String access;
     @SerializedName("cidr") private final Long cidr;
@@ -48,7 +48,7 @@ public class SnmpNetwork  implements Serializable  {
 
     /**
      * The SNMP network object contains information about SNMP configuration for the cluster nodes. SNMP v3 is supported on SolidFire clusters.
-     * @param access [required] <b>ro</b>: read-only access.*
+     * @param access [required] <br/><b>ro</b>: read-only access.*
      * @param cidr [required] A CIDR network mask. This network mask must be an integer greater than or equal to 0, and less than or equal to 32. It must also not be equal to 31.
      * @param community [required] SNMP community string.
      * @param network [required] This parameter along with the cidr variable is used to control which network the access and community string apply to. The special value of "default" is used to specify an entry that applies to all networks. The cidr mask is ignored when network value is either a host name or default.
@@ -64,9 +64,9 @@ public class SnmpNetwork  implements Serializable  {
 
 
     /**
-     * <b>ro</b>: read-only access.*
-     * <b>rw</b>: for read-write access.
-     * <b>rosys</b>: for read-only access to a restricted set of system information
+     * <br/><b>ro</b>: read-only access.*
+     * <br/><b>rw</b>: for read-write access.
+     * <br/><b>rosys</b>: for read-only access to a restricted set of system information
      * *SolidFire recommends that all networks other than the default "localhost" be set to "ro" access, because all SolidFire MIB objects are read-only.
      **/
     public String getAccess() {

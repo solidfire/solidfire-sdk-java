@@ -39,13 +39,13 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListDriveHardwareRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1977463252L;
+    private static final long serialVersionUID = 1907905225L;
 
     @SerializedName("force") private final Boolean force;
 
     /**
      * The Request object for the "ListDriveHardware" API Service call.
-     * @param force [required] 
+     * @param force [required] This must be set to true in order to retrieve the drive hardware stats from the cluster.
      * @since 7.0
      **/
     @Since("7.0")
@@ -53,6 +53,10 @@ public class ListDriveHardwareRequest  implements Serializable  {
         this.force = force;
     }
 
+
+    /**
+     * This must be set to true in order to retrieve the drive hardware stats from the cluster.
+     **/
     public Boolean getForce() {
         return this.force;
     }
