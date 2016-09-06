@@ -69,6 +69,10 @@ public class ScheduleAdaptor {
      * @return a CreateScheduleResult
      */
     public static CreateScheduleResult createSchedule(SolidFireElement sfe, CreateScheduleRequest request) {
+        if (request == null || request.getSchedule() == null) {
+            throw new ApiException("Invalid Request. Request or Schedule is null or missing.");
+
+        }
         if (request.getSchedule().getScheduleID().isPresent()) {
             throw new ApiException("ScheduleID should not be present. Do not specify ScheduleID when creating a Schedule. One will be assigned upon creation.");
         }
@@ -100,6 +104,9 @@ public class ScheduleAdaptor {
      * @return a ModifyScheduleResult with the modified simple schedule objects
      */
     public static ModifyScheduleResult modifySchedule(SolidFireElement sfe, ModifyScheduleRequest request) {
+        if (request == null || request.getSchedule() == null  ) {
+            throw new ApiException("Invalid Request. Request or Schedule is null or missing.");
+        }
         if (!request.getSchedule().getScheduleID().isPresent()) {
             throw new ApiException("ScheduleID is missing. Cannot modify a schedule without a ScheduleID");
         }
@@ -219,7 +226,9 @@ public class ScheduleAdaptor {
 
         api.scheduleInfo(toApiScheduleInfo(schedule.getScheduleInfo()));
 
-        if (schedule.getFrequency().getClass().equals(TimeIntervalFrequency.class)) {
+        if (schedule.getFrequency() == null) {
+            throw new ApiException("Invalid schedule - no frequency set");
+        } else if (schedule.getFrequency().getClass().equals(TimeIntervalFrequency.class)) {
 
             final TimeIntervalFrequency frequency = (TimeIntervalFrequency) schedule.getFrequency();
 
@@ -263,8 +272,15 @@ public class ScheduleAdaptor {
         return api.build();
     }
 
-    private static ApiScheduleInfo toApiScheduleInfo(final ScheduleInfo info) {
+    private static ApiScheduleInfo toApiScheduleInfo(final ScheduleInfo scheduleInfo) {
         final ApiScheduleInfo.Builder api = ApiScheduleInfo.builder();
+
+        final ScheduleInfo info;
+        if(scheduleInfo == null) {
+            info = ScheduleInfo.builder().build();
+        } else {
+            info = scheduleInfo;
+        }
 
         api.optionalEnableRemoteReplication(info.getEnableRemoteReplication().orElse(null));
         api.optionalName(info.getSnapshotName().orElse(null));
