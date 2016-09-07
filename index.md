@@ -47,15 +47,14 @@ The SolidFire Java SDK is also released as a Signed Assembly containing everythi
 
 ___Dependencies___:
 
-| Component       | Version |
-| --------------- | ------- |
-| base64          | 2.3.8   |
-| gson            | 2.3     |
-| joda-time       | 2.4     |
-| joda-convert    | 1.2     |
-| slf4j-api       | 1.7.7   |
-| logback-core    | 1.1.3   |
-| logback-classic | 1.1.3   |
+| Component           | Version |
+| ------------------- | ------- |
+| jsvcgen-client-java | 0.3.0   |
+| base64              | 2.3.9   |
+| gson                | 2.6.2   |
+| joda-time           | 2.9.3   |
+| joda-convert        | 1.8.1   |
+| slf4j-api           | 1.6.6   |
 
 _**Note**: The SDK assembly should only be used in a standalone setting such as scripting or for prototyping.  It should not be used in a production environment as the signed components might conflict with other components that are unsigned or signed with another certificate.  See below._   
 
@@ -74,41 +73,48 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 ##Examples
 ###Examples of using the API (Java)
 ```java
-import com.solidfire.javautil.Optional;
+import com.solidfire.client.ElementFactory;
+import com.solidfire.element.api.*;
+import com.solidfire.jsvcgen.javautil.Optional;
 
 // Import Optional common empty types (String, Long, & Map)
-import static com.solidfire.javautil.Optional.*;
+import static com.solidfire.jsvcgen.javautil.Optional.*;
 
 public class ReadmeJavaExample {
-  public static void main(String[] args ) {
-    // Create Connection to SF Cluster
-    SolidFireElementIF sf = SolidFireElement.create("mvip", "8.0", "username", "password");
+    public static void main(String[] args) {
+        // Create Connection to SF Cluster
+        SolidFireElement sf = ElementFactory.create("mvip", "username", "password", "8.0");
 
-    // Create some accounts
-    AddAccountRequest addAccountRequest = new AddAccountRequest("username", EMPTY_STRING, 
-                                                                EMPTY_STRING, EMPTY_MAP);
-    Long accountId = sf.addAccount(addAccountRequest).getAccountID();
+        // Create some accounts
+        AddAccountRequest addAccountRequest = AddAccountRequest.builder()
+                                                               .username("username")
+                                                               .build();
 
-    // And a volume with default QoS
-    CreateVolumeRequest createVolumeRequest = new CreateVolumeRequest("volumeName", accountId, 
-                                                                      1000000000l, false, 
-                                                                      Optional.<QoS>empty(), 
-                                                                      EMPTY_MAP);
-    Long volumeId = sf.createVolume(createVolumeRequest).getVolumeID();
+        Long accountId = sf.addAccount(addAccountRequest).getAccountID();
 
-    // Lookup iqn for new volume
-    String iqn = sf.listVolumesForAccount(accountId, of(volumeId), of(1l)).getVolumes()[0].getIqn();
+        // And a volume with default QoS
+        CreateVolumeRequest createVolumeRequest = new CreateVolumeRequest("volumeName", accountId,
+                1000000000l, false,
+                Optional.<QoS>empty(),
+                EMPTY_MAP);
 
-    // Change Min and Burst QoS while keeping Max and Burst Time the same
-    QoS qos = new QoS(of(5000l), EMPTY_LONG, of(30000l), EMPTY_LONG);
+        Long volumeId = sf.createVolume(createVolumeRequest).getVolumeID();
 
-    // Modify the volume size and QoS
-    ModifyVolumeRequest modifyVolumeRequest = new ModifyVolumeRequest(volumeId, EMPTY_LONG, 
-                                                                      EMPTY_STRING, EMPTY_STRING, 
-                                                                      of(qos), of(2000000000l),
-                                                                      EMPTY_MAP);
-    sf.modifyVolume(modifyVolumeRequest);
-  }
+        // Lookup iqn for new volume
+        String iqn = sf.listVolumesForAccount(accountId, of(volumeId), of(1l)).getVolumes()[0].getIqn();
+
+        // Change Min and Burst QoS while keeping Max and Burst Time the same
+        QoS qos = new QoS(of(5000l), EMPTY_LONG, of(30000l), EMPTY_LONG);
+
+        // Modify the volume size and QoS
+        ModifyVolumeRequest modifyVolumeRequest = ModifyVolumeRequest.builder()
+                                                                     .volumeID(volumeId)
+                                                                     .optionalQos(qos)
+                                                                     .optionalTotalSize(2000000000l)
+                                                                     .build();
+
+        sf.modifyVolume(modifyVolumeRequest);
+    }
 }
 ```
 
@@ -116,16 +122,16 @@ public class ReadmeJavaExample {
 ```scala    
 // Import your Java Primitive Types
 import java.lang.Long
-
+import com.solidfire.client.ElementFactory
 import com.solidfire.javautil.Optional.{empty, of}
 
-class ReadmeExample {
+class ReadmeScalaExample {
 
   // Create Connection to SF Cluster
-  val sf = SolidFireElement.create("mvip", "8.0", "username", "password")
+  val sf = ElementFactory.create("mvip", "username", "password", "8.0")
 
   // Create some accounts
-  val addAccount = new AddAccountRequest("username", empty[String], empty[String], empty())
+  val addAccount = AddAccountRequest.builder.username("username").build
   val accountId = sf.addAccount(addAccount).getAccountID
 
   // And a volume
@@ -139,14 +145,18 @@ class ReadmeExample {
   val qos: QoS = new QoS(of(5000l), empty[Long], of(30000l), empty[Long])
 
   // Modify the volume
-  val modifyVolume = new ModifyVolumeRequest(volumeId, empty[Long], empty[String], empty[String], 
-                                             of(qos), of( 2000000000l ), empty())
+  val modifyVolume = ModifyVolumeRequest.builder
+                                        .volumeID(volumeId)
+                                        .optionalQoS(qos)
+                                        .optionalSize( 2000000000l )
+                                        .build
+  
   sf.modifyVolume(modifyVolume)
 }
 ```
 
 ##Logback
-The SDK and the Assembly leverage the [SLF4J API](http://www.slf4j.org/) for logging with the [logback-classi](http://logback.qos.ch/reasonsToSwitch.html)c implementation.  An advantage to using the SLF4J interface is the avaialabitly of legacy logging framework [bridges](http://www.slf4j.org/legacy.html), for intecepting and consolidating all logging calls into a single log.
+The SDK and the Assembly leverage the [SLF4J API](http://www.slf4j.org/) for logging with the [logback-classi](http://logback.qos.ch/reasonsToSwitch.html)c implementation.  An advantage to using the SLF4J interface is the availability of legacy logging framework [bridges](http://www.slf4j.org/legacy.html), for intercepting and consolidating all logging calls into a single log.
 ###Tracing Request / Response calls in the log
 An example logback.xml: 
 
