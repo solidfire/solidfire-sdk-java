@@ -18,12 +18,8 @@ package com.solidfire.adaptor;
 import com.solidfire.element.api.*;
 import com.solidfire.element.apiactual.*;
 import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.utils.ArrayUtils;
 
 import java.util.*;
-
-import static com.solidfire.utils.ArrayUtils.toPrimative;
-import static com.solidfire.utils.ArrayUtils.toWrapper;
 
 /**
  * Created by Jason Ryan Womack on 8/11/16.
@@ -122,7 +118,7 @@ public class ScheduleAdaptor {
      * @return a ModifyScheduleResult with the modified simple schedule objects
      */
     public static ModifyScheduleResult modifySchedule(SolidFireElement sfe, ModifyScheduleRequest request) {
-        if (request == null || request.getSchedule() == null  ) {
+        if (request == null || request.getSchedule() == null) {
             throw new ApiException("Invalid Request. Request or Schedule is null or missing.");
         }
         if (!request.getSchedule().getScheduleID().isPresent()) {
@@ -177,7 +173,7 @@ public class ScheduleAdaptor {
                 .optionalToBeDeleted(api.getToBeDeleted())
                 .scheduleInfo(toScheduleInfo(api.getScheduleInfo()));
 
-        if(api.getAttributes() != null && api.getAttributes().containsKey(FREQUENCY)) {
+        if (api.getAttributes() != null && api.getAttributes().containsKey(FREQUENCY)) {
             switch (api.getAttributes().get(FREQUENCY).toString()) {
                 case TIME_INTERVAL:
                     schedule.frequency(TimeIntervalFrequency.builder()
@@ -263,13 +259,13 @@ public class ScheduleAdaptor {
             attributes.put(FREQUENCY, TIME_INTERVAL);
             api.attributes(attributes);
 
-            if(frequency.getMinutes() == null) {
+            if (frequency.getMinutes() == null) {
                 api.minutes(0L);
             } else {
                 api.minutes(frequency.getMinutes());
             }
 
-            if(frequency.getHours() == null) {
+            if (frequency.getHours() == null) {
                 api.hours(0L);
             } else {
                 api.hours(frequency.getDays() * 24 + frequency.getHours());
@@ -312,7 +308,7 @@ public class ScheduleAdaptor {
         final ApiScheduleInfo.Builder api = ApiScheduleInfo.builder();
 
         final ScheduleInfo info;
-        if(scheduleInfo == null) {
+        if (scheduleInfo == null) {
             info = ScheduleInfo.builder().build();
         } else {
             info = scheduleInfo;
