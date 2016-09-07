@@ -1,12 +1,10 @@
 package com.solidfire.adaptor
 
-import com.solidfire.element.api._
-import org.mockito
-import org.mockito.Mockito.when
-import org.mockito.Matchers.any
-import org.scalatest.mock.MockitoSugar
-import org.scalatest.{Matchers, BeforeAndAfterAll, WordSpec}
 import com.solidfire.adaptor.ElementServiceAdaptor._
+import com.solidfire.element.api._
+import org.mockito.Mockito.when
+import org.scalatest.mock.MockitoSugar
+import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
 
 import scala.util.Random
 
@@ -30,18 +28,18 @@ class ElementServiceAdaptorTest extends WordSpec with BeforeAndAfterAll with Moc
     }
     "throw IllegalArgumentException when request node ID is null" in {
       the[IllegalArgumentException] thrownBy {
-        getNodeStats( sfe, GetNodeStatsRequest.builder().build())
+        getNodeStats( sfe, GetNodeStatsRequest.builder( ).build( ) )
       } should have message "GetNodeStatsRequest.getNodeID() was null"
     }
 
     "map the request node id to the result node stats node id" in {
-      val request:GetNodeStatsRequest = new GetNodeStatsRequest(Random.nextLong())
+      val request: GetNodeStatsRequest = new GetNodeStatsRequest( Random.nextLong( ) )
 
-      val result = new GetNodeStatsResult(NodeStatsInfo.builder().build())
+      val result = new GetNodeStatsResult( NodeStatsInfo.builder( ).build( ) )
 
-      when(sfe.sendRequest("GetNodeStats", request, classOf[GetNodeStatsRequest], classOf[GetNodeStatsResult])).thenReturn(result)
+      when( sfe.sendRequest( "GetNodeStats", request, classOf[GetNodeStatsRequest], classOf[GetNodeStatsResult] ) ).thenReturn( result )
 
-      getNodeStats( sfe, request ).getNodeStats.getNodeID should be (request.getNodeID)
+      getNodeStats( sfe, request ).getNodeStats.getNodeID should be( request.getNodeID )
     }
   }
 
@@ -58,17 +56,17 @@ class ElementServiceAdaptorTest extends WordSpec with BeforeAndAfterAll with Moc
     }
 
     "map the request node id to the result node stats node id" in {
-      val request:GetDriveStatsRequest = new GetDriveStatsRequest(1L)
+      val request: GetDriveStatsRequest = new GetDriveStatsRequest( 1L )
 
-      val grsResult = new GetDriveStatsResult(DriveStats.builder().build())
+      val grsResult = new GetDriveStatsResult( DriveStats.builder( ).build( ) )
 
-      when(sfe.sendRequest("GetDriveStats", request, classOf[GetDriveStatsRequest], classOf[GetDriveStatsResult])).thenReturn(grsResult)
+      when( sfe.sendRequest( "GetDriveStats", request, classOf[GetDriveStatsRequest], classOf[GetDriveStatsResult] ) ).thenReturn( grsResult )
 
-      val result = getDriveStats( sfe, request)
-      result.getDriveStats.getReadBytes should be (0L)
-      result.getDriveStats.getWriteBytes should be (0L)
-      result.getDriveStats.getReadOps should be (0L)
-      result.getDriveStats.getWriteOps should be (0L)
+      val result = getDriveStats( sfe, request )
+      result.getDriveStats.getReadBytes should be( 0L )
+      result.getDriveStats.getWriteBytes should be( 0L )
+      result.getDriveStats.getReadOps should be( 0L )
+      result.getDriveStats.getWriteOps should be( 0L )
     }
   }
 }

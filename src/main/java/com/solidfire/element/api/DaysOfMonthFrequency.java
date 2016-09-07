@@ -23,11 +23,11 @@ public class DaysOfMonthFrequency implements Frequency, Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final Long minutes;
-    private final Long hours;
-    private final Long[] monthdays;
+    private final long minutes;
+    private final long hours;
+    private final long[] monthdays;
 
-    public DaysOfMonthFrequency(final Long minutes, final Long hours, final Long[] monthdays) {
+    public DaysOfMonthFrequency(final long minutes, final long hours, final long[] monthdays) {
         this.minutes = minutes;
         this.hours = hours;
         this.monthdays = monthdays;
@@ -38,7 +38,7 @@ public class DaysOfMonthFrequency implements Frequency, Serializable {
      *
      * @return Value for property 'minutes'.
      */
-    public Long getMinutes() {
+    public long getMinutes() {
         return this.minutes;
     }
 
@@ -47,7 +47,7 @@ public class DaysOfMonthFrequency implements Frequency, Serializable {
      *
      * @return Value for property 'hours'.
      */
-    public Long getHours() {
+    public long getHours() {
         return this.hours;
     }
 
@@ -56,7 +56,7 @@ public class DaysOfMonthFrequency implements Frequency, Serializable {
      *
      * @return Value for property 'monthdays'.
      */
-    public Long[] getMonthdays() {
+    public long[] getMonthdays() {
         return this.monthdays;
     }
 
@@ -109,9 +109,9 @@ public class DaysOfMonthFrequency implements Frequency, Serializable {
     }
 
     public static class Builder {
-        private Long minutes;
-        private Long hours;
-        private Long[] monthdays;
+        private long minutes;
+        private long hours;
+        private long[] monthdays;
 
         /**
          * Do not instantiate Builder.
@@ -134,17 +134,17 @@ public class DaysOfMonthFrequency implements Frequency, Serializable {
             return this;
         }
 
-        public DaysOfMonthFrequency.Builder minutes(final Long minutes) {
+        public DaysOfMonthFrequency.Builder minutes(final long minutes) {
             this.minutes = minutes;
             return this;
         }
 
-        public DaysOfMonthFrequency.Builder hours(final Long hours) {
+        public DaysOfMonthFrequency.Builder hours(final long hours) {
             this.hours = hours;
             return this;
         }
 
-        public DaysOfMonthFrequency.Builder monthdays(final Long[] monthdays) {
+        public DaysOfMonthFrequency.Builder monthdays(final long[] monthdays) {
             this.monthdays = monthdays;
             return this;
         }

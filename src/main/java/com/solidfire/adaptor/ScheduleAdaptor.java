@@ -18,13 +18,22 @@ package com.solidfire.adaptor;
 import com.solidfire.element.api.*;
 import com.solidfire.element.apiactual.*;
 import com.solidfire.jsvcgen.client.ApiException;
+import com.solidfire.utils.ArrayUtils;
 
 import java.util.*;
+
+import static com.solidfire.utils.ArrayUtils.toPrimative;
+import static com.solidfire.utils.ArrayUtils.toWrapper;
 
 /**
  * Created by Jason Ryan Womack on 8/11/16.
  */
 public class ScheduleAdaptor {
+
+    public static final String TIME_INTERVAL = "Time Interval";
+    public static final String DAYS_OF_MONTH = "Days Of Month";
+    public static final String DAYS_OF_WEEK = "Days Of Week";
+    public static final String FREQUENCY = "frequency";
 
     /**
      * This adaptor modifies the ApiSchedule object returned by the GetSchedule API call into a Simple Schedule
@@ -77,6 +86,14 @@ public class ScheduleAdaptor {
             throw new ApiException("ScheduleID should not be present. Do not specify ScheduleID when creating a Schedule. One will be assigned upon creation.");
         }
 
+        if (request.getSchedule().getFrequency() == null) {
+            throw new ApiException("Frequency is not present. Make sure the schedule object has a value in the frequency property before attempting to create a Schedule.");
+        }
+
+        if (request.getSchedule().getScheduleInfo() == null) {
+            throw new ApiException("Schedule_info is not present. Make sure the schedule object has a value in the schedule_info property before attempting to modify a Schedule.");
+        }
+
         final ApiSchedule apiSchedule = toApiSchedule(request.getSchedule());
         final ApiCreateScheduleRequest.Builder apiRequest = ApiCreateScheduleRequest.builder()
                                                                                     .optionalHours(apiSchedule.getHours())
@@ -110,6 +127,14 @@ public class ScheduleAdaptor {
         }
         if (!request.getSchedule().getScheduleID().isPresent()) {
             throw new ApiException("ScheduleID is missing. Cannot modify a schedule without a ScheduleID");
+        }
+
+        if (request.getSchedule().getFrequency() == null) {
+            throw new ApiException("Frequency is not present. Make sure the schedule object has a value in the frequency property before attempting to create a Schedule.");
+        }
+
+        if (request.getSchedule().getScheduleInfo() == null) {
+            throw new ApiException("Schedule_info is not present. Make sure the schedule object has a value in the schedule_info property before attempting to modify a Schedule.");
         }
 
         final ApiSchedule apiSchedule = toApiSchedule(request.getSchedule());
@@ -152,23 +177,23 @@ public class ScheduleAdaptor {
                 .optionalToBeDeleted(api.getToBeDeleted())
                 .scheduleInfo(toScheduleInfo(api.getScheduleInfo()));
 
-        if(api.getAttributes() != null && api.getAttributes().containsKey("frequency")) {
-            switch (api.getAttributes().get("frequency").toString()) {
-                case "Time Interval":
+        if(api.getAttributes() != null && api.getAttributes().containsKey(FREQUENCY)) {
+            switch (api.getAttributes().get(FREQUENCY).toString()) {
+                case TIME_INTERVAL:
                     schedule.frequency(TimeIntervalFrequency.builder()
                                                             .days(api.getHours() / 24)
                                                             .hours(api.getHours() % 24)
                                                             .minutes(api.getMinutes())
                                                             .build());
                     break;
-                case "Days Of Month":
+                case DAYS_OF_MONTH:
                     schedule.frequency(DaysOfMonthFrequency.builder()
                                                            .hours(api.getHours())
                                                            .minutes(api.getMinutes())
-                                                           .monthdays(api.getMonthdays())
+                                                           .monthdays(toPrimative(api.getMonthdays()))
                                                            .build());
                     break;
-                case "Days Of Week":
+                case DAYS_OF_WEEK:
                     schedule.frequency(DaysOfWeekFrequency.builder()
                                                           .hours(api.getHours())
                                                           .minutes(api.getMinutes())
@@ -235,7 +260,7 @@ public class ScheduleAdaptor {
 
             final Map<String, Object> attributes = new HashMap<>();
 
-            attributes.put("frequency", "Time Interval");
+            attributes.put(FREQUENCY, TIME_INTERVAL);
             api.attributes(attributes);
             api.minutes(frequency.getMinutes());
             api.hours(frequency.getDays() * 24 + frequency.getHours());
@@ -246,10 +271,10 @@ public class ScheduleAdaptor {
 
             final Map<String, Object> attributes = new HashMap<>();
 
-            attributes.put("frequency", "Days Of Month");
+            attributes.put(FREQUENCY, DAYS_OF_MONTH);
             api.attributes(attributes);
             api.minutes(frequency.getMinutes());
-            api.monthdays(frequency.getMonthdays());
+            api.monthdays(toWrapper(frequency.getMonthdays()));
 
         } else if (schedule.getFrequency().getClass().equals(DaysOfWeekFrequency.class)) {
 
@@ -257,7 +282,7 @@ public class ScheduleAdaptor {
 
             final Map<String, Object> attributes = new HashMap<>();
 
-            attributes.put("frequency", "Days Of Week");
+            attributes.put(FREQUENCY, DAYS_OF_WEEK);
             api.attributes(attributes);
             api.minutes(frequency.getMinutes());
 

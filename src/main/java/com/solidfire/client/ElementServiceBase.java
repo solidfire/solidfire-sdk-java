@@ -25,9 +25,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static com.solidfire.adaptor.ScheduleAdaptor.DAYS_OF_MONTH;
+import static com.solidfire.adaptor.ScheduleAdaptor.DAYS_OF_WEEK;
+import static com.solidfire.adaptor.ScheduleAdaptor.TIME_INTERVAL;
+
 public class ElementServiceBase extends ServiceBase {
 
     private static final List<String> CHAP_SECRET_METHODS;
+    public static final String BEGIN_OF_PARAMS = "\"params\":{";
 
     static {
         CHAP_SECRET_METHODS =
@@ -66,6 +71,22 @@ public class ElementServiceBase extends ServiceBase {
         if (CHAP_SECRET_METHODS.contains(method.toLowerCase())) {
             return request.replace("\"" + CHAPSecret.autoGenerate() + "\"", "null")
                           .replace("" + CHAPSecret.autoGenerate() + "", "null");
+        }
+
+
+        if("ModifySchedule".equalsIgnoreCase(method)) {
+            final StringBuilder sb = new StringBuilder();
+
+            if(request.contains(TIME_INTERVAL) || request.contains(DAYS_OF_WEEK) ) {
+                sb.append("\"monthdays\":null,");
+            }
+            if(request.contains(TIME_INTERVAL) || request.contains(DAYS_OF_MONTH) ) {
+                sb.append("\"weekdays\":null,");
+            }
+
+            final int beginOfParamsIndex = request.indexOf(BEGIN_OF_PARAMS) + BEGIN_OF_PARAMS.length();
+
+            return request.substring(0,beginOfParamsIndex) + sb + request.substring(beginOfParamsIndex);
         }
 
         return request;

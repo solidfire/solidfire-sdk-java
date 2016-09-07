@@ -63,7 +63,7 @@ class TestFactorySuite extends WordSpec with BeforeAndAfterAll with MockitoSugar
     }
     "throw exception when version supplied does not parse to a double" in {
       the[ApiException] thrownBy {
-        testFactory.buildRequestDispatcher( "hostname", Empty[Integer], "username", "password", Of("fivedotzero"), true )
+        testFactory.buildRequestDispatcher( "hostname", Empty[Integer], "username", "password", Of( "fivedotzero" ), true )
       } should have message "Unable to determine version to connect from value: fivedotzero"
     }
 
@@ -78,30 +78,30 @@ class TestFactorySuite extends WordSpec with BeforeAndAfterAll with MockitoSugar
       getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Empty[String], false ) ) should endWith( "/json-rpc/10.0" )
     }
     "assign greater then max version when valid version is supplied" in {
-      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of("12.0"), false ) ) should endWith( "/json-rpc/12.0" )
+      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of( "12.0" ), false ) ) should endWith( "/json-rpc/12.0" )
     }
     "assign lower then max version when valid version is supplied" in {
-      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of("8.0"), false ) ) should endWith( "/json-rpc/8.0" )
+      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of( "8.0" ), false ) ) should endWith( "/json-rpc/8.0" )
     }
     "assign the min version when min version is supplied" in {
-      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of("5.0"), false ) ) should endWith( "/json-rpc/5.0" )
+      getEndpoint( testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of( "5.0" ), false ) ) should endWith( "/json-rpc/5.0" )
     }
     "throw exception when version supplied does not parse to a double" in {
-      testFactory.resetFirstPass()
+      testFactory.resetFirstPass( )
       the[ApiException] thrownBy {
-        testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of("fivedotzero"), false )
+        testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of( "fivedotzero" ), false )
       } should have message "Unable to determine version to connect from value: fivedotzero"
     }
     "throw exception when version supplied is less then the minimum version" in {
-      testFactory.resetFirstPass()
+      testFactory.resetFirstPass( )
       the[ApiException] thrownBy {
-        testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of("4.0"), false )
+        testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of( "4.0" ), false )
       } should have message "Cannot connect to a version lower than supported by the SDK. Connect at 5.0 or higher."
     }
     "throw exception when version supplied is not a valid version" in {
-      testFactory.resetFirstPass()
+      testFactory.resetFirstPass( )
       the[ApiException] thrownBy {
-        testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of("8.1"), false )
+        testFactory.checkVersion( "127.0.0.1", Empty[Integer], "username", "password", Of( "8.1" ), false )
       } should have message "Invalid version to connect on this cluster. Valid versions are: 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, or 12.0"
     }
   }
@@ -118,7 +118,9 @@ abstract class AbstractTestFactory extends AbstractFactory[TestElement] {
 
 class TestFactory( mockRequestDispatcher: RequestDispatcher ) extends AbstractTestFactory {
   var isFirstPass = true
-  def resetFirstPass() = isFirstPass = true
+
+  def resetFirstPass( ) = isFirstPass = true
+
   override protected def toServiceBase( requestDispatcher: RequestDispatcher ): TestElement = {
     if (isFirstPass) {
       isFirstPass = false

@@ -107,7 +107,7 @@ object Config {
 }
 
 object Version {
-  val solidfireSdks = "1.1.0.1-SNAPSHOT"
+  val solidfireSdks = "1.1.0"
 
   val javaLanguage  = "1.7"
   val javaTarget    = "1.7"

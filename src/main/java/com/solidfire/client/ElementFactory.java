@@ -69,6 +69,21 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
 
     /**
      * Create a new instance of SolidFireElement with a connection to the given target with the appropriate username and
+     * password.   Hostname verification is defaulted to false.
+     *
+     * @param mvip       the management virtual IP
+     * @param username   admin username
+     * @param password   admin password
+     * @param apiVersion the version of the API services
+     * @return an instance of the SolidFire Element
+     */
+    public static SolidFireElement create(String mvip, String username, String password, String apiVersion) {
+        return new ElementFactory().checkVersion(mvip, Optional.<Integer>empty(), username, password, of(apiVersion), false);
+    }
+
+
+    /**
+     * Create a new instance of SolidFireElement with a connection to the given target with the appropriate username and
      * password.
      *
      * @param target     the management virtual IP (or hostname)

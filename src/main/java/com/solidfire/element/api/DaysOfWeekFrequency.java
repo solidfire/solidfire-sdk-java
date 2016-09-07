@@ -23,11 +23,11 @@ public class DaysOfWeekFrequency implements Frequency, Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final Long minutes;
-    private final Long hours;
+    private final long minutes;
+    private final long hours;
     private final Weekday[] weekdays;
 
-    public DaysOfWeekFrequency(final Long minutes, final Long hours, final Weekday[] weekdays) {
+    public DaysOfWeekFrequency(final long minutes, final long hours, final Weekday[] weekdays) {
         this.minutes = minutes;
         this.hours = hours;
         this.weekdays = weekdays;
@@ -38,7 +38,7 @@ public class DaysOfWeekFrequency implements Frequency, Serializable {
      *
      * @return Value for property 'minutes'.
      */
-    public Long getMinutes() {
+    public long getMinutes() {
         return this.minutes;
     }
 
@@ -47,7 +47,7 @@ public class DaysOfWeekFrequency implements Frequency, Serializable {
      *
      * @return Value for property 'hours'.
      */
-    public Long getHours() {
+    public long getHours() {
         return this.hours;
     }
 
@@ -109,8 +109,8 @@ public class DaysOfWeekFrequency implements Frequency, Serializable {
     }
 
     public static class Builder {
-        private Long minutes;
-        private Long hours;
+        private long minutes;
+        private long hours;
         private Weekday[] weekdays;
 
         /**
@@ -134,12 +134,12 @@ public class DaysOfWeekFrequency implements Frequency, Serializable {
             return this;
         }
 
-        public DaysOfWeekFrequency.Builder minutes(final Long minutes) {
+        public DaysOfWeekFrequency.Builder minutes(final long minutes) {
             this.minutes = minutes;
             return this;
         }
 
-        public DaysOfWeekFrequency.Builder hours(final Long hours) {
+        public DaysOfWeekFrequency.Builder hours(final long hours) {
             this.hours = hours;
             return this;
         }
