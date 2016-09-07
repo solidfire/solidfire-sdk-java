@@ -20,13 +20,13 @@ import java.util.Objects;
 
 public class TimeIntervalFrequency implements Frequency, Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final Long serialVersionUID = 1L;
 
-    private final long minutes;
-    private final long hours;
-    private final long days;
+    private final Long minutes;
+    private final Long hours;
+    private final Long days;
 
-    public TimeIntervalFrequency(final long minutes, final long hours, final long days) {
+    public TimeIntervalFrequency(final Long minutes, final Long hours, final Long days) {
         this.minutes = minutes;
         this.hours = hours;
         this.days = days;
@@ -37,7 +37,7 @@ public class TimeIntervalFrequency implements Frequency, Serializable {
      *
      * @return Value for property 'minutes'.
      */
-    public long getMinutes() {
+    public Long getMinutes() {
         return this.minutes;
     }
 
@@ -46,7 +46,7 @@ public class TimeIntervalFrequency implements Frequency, Serializable {
      *
      * @return Value for property 'hours'.
      */
-    public long getHours() {
+    public Long getHours() {
         return this.hours;
     }
 
@@ -55,7 +55,7 @@ public class TimeIntervalFrequency implements Frequency, Serializable {
      *
      * @return Value for property 'days'.
      */
-    public long getDays() {
+    public Long getDays() {
         return this.days;
     }
 
@@ -108,9 +108,9 @@ public class TimeIntervalFrequency implements Frequency, Serializable {
     }
 
     public static class Builder {
-        private long minutes;
-        private long hours;
-        private long days;
+        private Long minutes;
+        private Long hours;
+        private Long days;
 
         /**
          * Do not instantiate Builder.
@@ -133,17 +133,17 @@ public class TimeIntervalFrequency implements Frequency, Serializable {
             return this;
         }
 
-        public TimeIntervalFrequency.Builder minutes(final long minutes) {
+        public TimeIntervalFrequency.Builder minutes(final Long minutes) {
             this.minutes = minutes;
             return this;
         }
 
-        public TimeIntervalFrequency.Builder hours(final long hours) {
+        public TimeIntervalFrequency.Builder hours(final Long hours) {
             this.hours = hours;
             return this;
         }
 
-        public TimeIntervalFrequency.Builder days(final long days) {
+        public TimeIntervalFrequency.Builder days(final Long days) {
             this.days = days;
             return this;
         }

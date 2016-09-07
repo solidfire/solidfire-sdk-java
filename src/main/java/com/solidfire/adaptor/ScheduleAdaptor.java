@@ -190,7 +190,7 @@ public class ScheduleAdaptor {
                     schedule.frequency(DaysOfMonthFrequency.builder()
                                                            .hours(api.getHours())
                                                            .minutes(api.getMinutes())
-                                                           .monthdays(toPrimative(api.getMonthdays()))
+                                                           .monthdays(api.getMonthdays())
                                                            .build());
                     break;
                 case DAYS_OF_WEEK:
@@ -262,8 +262,18 @@ public class ScheduleAdaptor {
 
             attributes.put(FREQUENCY, TIME_INTERVAL);
             api.attributes(attributes);
-            api.minutes(frequency.getMinutes());
-            api.hours(frequency.getDays() * 24 + frequency.getHours());
+
+            if(frequency.getMinutes() == null) {
+                api.minutes(0L);
+            } else {
+                api.minutes(frequency.getMinutes());
+            }
+
+            if(frequency.getHours() == null) {
+                api.hours(0L);
+            } else {
+                api.hours(frequency.getDays() * 24 + frequency.getHours());
+            }
 
         } else if (schedule.getFrequency().getClass().equals(DaysOfMonthFrequency.class)) {
 
@@ -274,7 +284,7 @@ public class ScheduleAdaptor {
             attributes.put(FREQUENCY, DAYS_OF_MONTH);
             api.attributes(attributes);
             api.minutes(frequency.getMinutes());
-            api.monthdays(toWrapper(frequency.getMonthdays()));
+            api.monthdays(frequency.getMonthdays());
 
         } else if (schedule.getFrequency().getClass().equals(DaysOfWeekFrequency.class)) {
 

@@ -21,13 +21,13 @@ import java.util.Objects;
 
 public class DaysOfWeekFrequency implements Frequency, Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final Long serialVersionUID = 1L;
 
-    private final long minutes;
-    private final long hours;
+    private final Long minutes;
+    private final Long hours;
     private final Weekday[] weekdays;
 
-    public DaysOfWeekFrequency(final long minutes, final long hours, final Weekday[] weekdays) {
+    public DaysOfWeekFrequency(final Long minutes, final Long hours, final Weekday[] weekdays) {
         this.minutes = minutes;
         this.hours = hours;
         this.weekdays = weekdays;
@@ -38,7 +38,7 @@ public class DaysOfWeekFrequency implements Frequency, Serializable {
      *
      * @return Value for property 'minutes'.
      */
-    public long getMinutes() {
+    public Long getMinutes() {
         return this.minutes;
     }
 
@@ -47,7 +47,7 @@ public class DaysOfWeekFrequency implements Frequency, Serializable {
      *
      * @return Value for property 'hours'.
      */
-    public long getHours() {
+    public Long getHours() {
         return this.hours;
     }
 
@@ -109,8 +109,8 @@ public class DaysOfWeekFrequency implements Frequency, Serializable {
     }
 
     public static class Builder {
-        private long minutes;
-        private long hours;
+        private Long minutes;
+        private Long hours;
         private Weekday[] weekdays;
 
         /**
@@ -134,12 +134,12 @@ public class DaysOfWeekFrequency implements Frequency, Serializable {
             return this;
         }
 
-        public DaysOfWeekFrequency.Builder minutes(final long minutes) {
+        public DaysOfWeekFrequency.Builder minutes(final Long minutes) {
             this.minutes = minutes;
             return this;
         }
 
-        public DaysOfWeekFrequency.Builder hours(final long hours) {
+        public DaysOfWeekFrequency.Builder hours(final Long hours) {
             this.hours = hours;
             return this;
         }
