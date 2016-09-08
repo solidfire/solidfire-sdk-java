@@ -151,7 +151,7 @@ public class ScheduleAdaptor {
                                                                                     .optionalStartingDate(apiSchedule.getStartingDate())
                                                                                     .optionalWeekdays(apiSchedule.getWeekdays());
 
-        final ApiModifyScheduleResult apiResult = sfe.sendRequest("ModifySchedule", apiRequest.build(), ApiModifyScheduleRequest.class, ApiModifyScheduleResult.class);
+        sfe.sendRequest("ModifySchedule", apiRequest.build(), ApiModifyScheduleRequest.class, ApiModifyScheduleResult.class);
 
         return new ModifyScheduleResult();
 
