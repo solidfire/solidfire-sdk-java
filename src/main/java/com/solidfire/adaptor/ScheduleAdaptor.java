@@ -265,8 +265,12 @@ public class ScheduleAdaptor {
                 api.minutes(frequency.getMinutes());
             }
 
-            if (frequency.getHours() == null) {
+            if (frequency.getDays() == null && frequency.getHours() == null) {
                 api.hours(0L);
+            } else if (frequency.getHours() == null) {
+                api.hours(frequency.getDays() * 24);
+            } else if (frequency.getDays() == null) {
+                api.hours(frequency.getHours());
             } else {
                 api.hours(frequency.getDays() * 24 + frequency.getHours());
             }
