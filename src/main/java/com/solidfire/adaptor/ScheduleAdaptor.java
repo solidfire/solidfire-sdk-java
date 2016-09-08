@@ -259,11 +259,11 @@ public class ScheduleAdaptor {
             attributes.put(FREQUENCY, TIME_INTERVAL);
             api.attributes(attributes);
 
-            api.minutes(frequency.getMinutes() == null ? 0L : frequency.getMinutes());
-
+            final long minutes = frequency.getMinutes() == null ? 0L : frequency.getMinutes()
             final long hours = frequency.getHours() == null ? 0L : frequency.getHours();
             final long days = frequency.getDays() == null ? 0L : frequency.getDays();
 
+            api.minutes(minutes);
             api.hours(days * 24 + hours);
 
         } else if (schedule.getFrequency().getClass().equals(DaysOfMonthFrequency.class)) {
