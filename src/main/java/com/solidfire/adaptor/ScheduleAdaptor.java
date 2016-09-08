@@ -177,8 +177,8 @@ public class ScheduleAdaptor {
             switch (api.getAttributes().get(FREQUENCY).toString()) {
                 case TIME_INTERVAL:
                     schedule.frequency(TimeIntervalFrequency.builder()
-                                                            .days(api.getHours() / 24)
-                                                            .hours(api.getHours() % 24)
+                                                            .days(api.getHours() == null ? 0L : api.getHours() / 24)
+                                                            .hours(api.getHours() == null ? 0L : api.getHours() % 24)
                                                             .minutes(api.getMinutes())
                                                             .build());
                     break;
@@ -204,15 +204,15 @@ public class ScheduleAdaptor {
     private static ScheduleInfo toScheduleInfo(final ApiScheduleInfo api) {
         final ScheduleInfo.Builder info = ScheduleInfo.builder();
 
-        info.optionalEnableRemoteReplication(api.getEnableRemoteReplication().orElse(null));
-        info.optionalSnapshotName(api.getName().orElse(null));
-        info.optionalRetention(api.getRetention().orElse(null));
+        info.optionalEnableRemoteReplication(api.getEnableRemoteReplication() == null ? null : api.getEnableRemoteReplication().orElse(null));
+        info.optionalSnapshotName(api.getName() == null ? null : api.getName().orElse(null));
+        info.optionalRetention(api.getRetention() == null ? null : api.getRetention().orElse(null));
 
         final Set<Long> volumeIDs = new HashSet<>();
-        if (api.getVolumeID().isPresent()) {
+        if (api.getVolumeID() != null && api.getVolumeID().isPresent()) {
             volumeIDs.add(api.getVolumeID().get());
         }
-        if (api.getVolumes().isPresent()) {
+        if (api.getVolumes() != null && api.getVolumes().isPresent()) {
             volumeIDs.addAll(Arrays.asList(api.getVolumes().get()));
         }
 
@@ -259,21 +259,12 @@ public class ScheduleAdaptor {
             attributes.put(FREQUENCY, TIME_INTERVAL);
             api.attributes(attributes);
 
-            if (frequency.getMinutes() == null) {
-                api.minutes(0L);
-            } else {
-                api.minutes(frequency.getMinutes());
-            }
+            api.minutes(frequency.getMinutes() == null ? 0L : frequency.getMinutes());
 
-            if (frequency.getDays() == null && frequency.getHours() == null) {
-                api.hours(0L);
-            } else if (frequency.getHours() == null) {
-                api.hours(frequency.getDays() * 24);
-            } else if (frequency.getDays() == null) {
-                api.hours(frequency.getHours());
-            } else {
-                api.hours(frequency.getDays() * 24 + frequency.getHours());
-            }
+            final long hours = frequency.getHours() == null ? 0L : frequency.getHours();
+            final long days = frequency.getDays() == null ? 0L : frequency.getDays();
+
+            api.hours(days * 24 + hours);
 
         } else if (schedule.getFrequency().getClass().equals(DaysOfMonthFrequency.class)) {
 
@@ -311,16 +302,11 @@ public class ScheduleAdaptor {
     private static ApiScheduleInfo toApiScheduleInfo(final ScheduleInfo scheduleInfo) {
         final ApiScheduleInfo.Builder api = ApiScheduleInfo.builder();
 
-        final ScheduleInfo info;
-        if (scheduleInfo == null) {
-            info = ScheduleInfo.builder().build();
-        } else {
-            info = scheduleInfo;
-        }
+        final ScheduleInfo info = (scheduleInfo == null) ? ScheduleInfo.builder().build() : scheduleInfo;
 
-        api.optionalEnableRemoteReplication(info.getEnableRemoteReplication().orElse(null));
-        api.optionalName(info.getSnapshotName().orElse(null));
-        api.optionalRetention(info.getRetention().orElse(null));
+        api.optionalEnableRemoteReplication(info.getEnableRemoteReplication() == null ? null : info.getEnableRemoteReplication().orElse(null));
+        api.optionalName(info.getSnapshotName() == null ? null : info.getSnapshotName().orElse(null));
+        api.optionalRetention(info.getRetention() == null ? null : info.getRetention().orElse(null));
 
 
         if (!info.getVolumeIDs().isPresent() || info.getVolumeIDs().get().length == 0) {
