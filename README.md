@@ -23,23 +23,23 @@ If you have any questions or comments about this product, contact <sdk@solidfire
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>element-api</artifactId>
-  <version>1.0.0.53</version>
+  <version>1.1.0.77</version>
 </dependency>
 ```
 
 or SBT:
 
 ```scala
-libraryDependencies += "com.solidfire" % "element-api" % "1.0.0.53"
+libraryDependencies += "com.solidfire" % "element-api" % "1.1.0.77"
 ```
 
 or Gradle:
 
 ```groovy
-compile 'com.solidfire:element-api:1.0.0.53'
+compile 'com.solidfire:element-api:1.1.0.77'
 ```
 ##Assembly Jar
-The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.0.0.53/solidfire-sdk-1.0.0.53.jar).  
+The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.1.0.77/solidfire-sdk-1.1.0.77.jar).  
 
 ___Dependencies___:
 
@@ -63,6 +63,8 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 ##Documentation
 
 [Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/latest/api/)
+
+[1.1.0.77 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/1.1.0.77/)
 
 [1.0.0.53 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/1.0.0.53/)
 
@@ -116,39 +118,38 @@ public class ReadmeJavaExample {
 
 ###Examples of using the API (Scala)
 ```scala    
-// Import your Java Primitive Types
-import java.lang.Long
 import com.solidfire.client.ElementFactory
-import com.solidfire.javautil.Optional.{empty, of}
+import com.solidfire.element.api._
+import com.solidfire.jsvcgen.javautil.Optional.{empty, of}
 
 class ReadmeScalaExample {
 
+
   // Create Connection to SF Cluster
-  val sf = ElementFactory.create("mvip", "username", "password", "8.0")
+  val sf = ElementFactory.create( "mvip", "username", "password", "8.0" )
 
   // Create some accounts
-  val addAccount = AddAccountRequest.builder.username("username").build
-  val accountId = sf.addAccount(addAccount).getAccountID
+  val addAccount = AddAccountRequest.builder.username( "username" ).build
+  val accountId  = sf.addAccount( addAccount ).getAccountID
 
   // And a volume
-  val createVolume = new CreateVolumeRequest("volumeName", accountId, 1000000000l, false, empty[QoS], empty())
-  val volumeId = sf.createVolume(createVolume).getVolumeID
+  val createVolume = new CreateVolumeRequest( "volumeName", accountId, 1000000000L, false, empty[QoS], empty( ) )
+  val volumeId     = sf.createVolume( createVolume ).getVolumeID
 
   // Lookup iqn for new volume
-  val iqn: String = sf.listVolumesForAccount(accountId, of(volumeId), of(1l)).getVolumes()(0).getIqn
+  val iqn: String = sf.listVolumesForAccount( accountId, of( volumeId ), of( 1L ) ).getVolumes( )( 0 ).getIqn
 
   // Change Min and Burst QoS while keeping Max and Burst Time the same
-  val qos: QoS = new QoS(of(5000l), empty[Long], of(30000l), empty[Long])
+  val qos: QoS = new QoS( of( 5000l ), empty(), of( 30000l ), empty() )
 
   // Modify the volume
   val modifyVolume = ModifyVolumeRequest.builder
-                                        .volumeID(volumeId)
-                                        .optionalQoS(qos)
-                                        .optionalSize( 2000000000l )
-                                        .build
-  
-  sf.modifyVolume(modifyVolume)
-}
+    .volumeID( volumeId )
+    .optionalQos( qos )
+    .optionalTotalSize( 2000000000l )
+    .build
+
+  sf.modifyVolume( modifyVolume )
 ```
 
 ##Logback

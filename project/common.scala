@@ -1,4 +1,5 @@
 
+import aQute.bnd.osgi.Constants
 import com.typesafe.sbt.osgi.SbtOsgi
 import com.typesafe.sbt.osgi.SbtOsgi.autoImport._
 import sbt.Keys._
@@ -81,7 +82,6 @@ object Config {
     organization := org,
     resolvers := repositories,
     crossPaths := false, // do not append _${scalaVersion} to generated JAR
-    autoScalaLibrary := false, // do not add Scala libraries as a dependency
     unmanagedSourceDirectories in Compile += baseDirectory.value / "src/generated/java",
     unmanagedSourceDirectories in Compile += baseDirectory.value / "src/generated/scala",
     libraryDependencies ++= Seq(
@@ -109,39 +109,53 @@ object Config {
 object Version {
   val solidfireSdks = "1.1.0"
 
-  val javaLanguage  = "1.7"
-  val javaTarget    = "1.7"
+  val javaLanguage = "1.7"
+  val javaTarget   = "1.7"
 
   val jsvcgenClient = "0.2.14-SNAPSHOT"
   val slf4j         = "1.6.6"
 
-  val scalatest     = "2.2.6"
-  val junit         = "0.11"
-  val mockito       = "1.10.19"
-  val scalacheck    = "1.13.0"
+  val scalatest  = "2.2.6"
+  val junit      = "0.11"
+  val mockito    = "1.10.19"
+  val scalacheck = "1.13.0"
 }
 
 object Dependencies {
-  lazy val jsvcgenClient  = "com.solidfire" % "jsvcgen-client-java" % Version.jsvcgenClient
-  lazy val slf4j          = "org.slf4j"     % "slf4j-api"           % Version.slf4j
+  lazy val jsvcgenClient = "com.solidfire" % "jsvcgen-client-java" % Version.jsvcgenClient
+  lazy val slf4j         = "org.slf4j" % "slf4j-api" % Version.slf4j
 
-  lazy val slf4jSimple  = "org.slf4j"       %  "slf4j-simple"    % Version.slf4j        % "test"
-  lazy val scalatest    = "org.scalatest"   %% "scalatest"       % Version.scalatest    % "test"
-  lazy val mockito      = "org.mockito"     %  "mockito-all"     % Version.mockito      % "test"
-  lazy val scalacheck   = "org.scalacheck"  %% "scalacheck"      % Version.scalacheck   % "test"
+  lazy val slf4jSimple = "org.slf4j" % "slf4j-simple" % Version.slf4j % "test"
+  lazy val scalatest   = "org.scalatest" %% "scalatest" % Version.scalatest % "test"
+  lazy val mockito     = "org.mockito" % "mockito-all" % Version.mockito % "test"
+  lazy val scalacheck  = "org.scalacheck" %% "scalacheck" % Version.scalacheck % "test"
 }
 
 object SDKBuild extends Build {
 
-  lazy val elementApi = Project(id = "solidfire-java-sdk",
-    base = file("."),
+  val Examples = config( "examples" ) extend Test
+
+  lazy val elementApi = Project( id = "solidfire-java-sdk",
+    base = file( "." ),
     settings = Config.settings
   ).settings(
     version := (version in ThisBuild).value,
-    description := "OSGi bundle for interfacing with the Public and Incubating SolidFire Element API.",
-    OsgiKeys.exportPackage := Seq("com.solidfire.client","com.solidfire.javautil","com.solidfire.serialization","com.solidfire.annotation","com.solidfire.element.api")
+    description := "OSGi bundle for interfacing with the Public SolidFire Element API.",
+    libraryDependencies += Dependencies.jsvcgenClient,
+    OsgiKeys.exportPackage := Seq( "com.solidfire.adaptor", "com.solidfire.client", "com.solidfire.javautil", "com.solidfire.serialization", "com.solidfire.annotation", "com.solidfire.element.api" ),
+    OsgiKeys.additionalHeaders := Map( Constants.NOEE -> "true", Constants.REQUIRE_CAPABILITY -> "" ),
+    // Here we redefine the "package" task to generate the OSGi Bundle.
+    Keys.`package` in Compile <<= OsgiKeys.bundle
   ).settings(
-    addArtifact(artifact in (Compile, OsgiKeys.bundle), OsgiKeys.bundle).settings: _*
-  ).enablePlugins( SbtOsgi )
+    addArtifact( artifact in(Compile, OsgiKeys.bundle), OsgiKeys.bundle ).settings: _*
+  )
+    .configs( Examples )
+    .settings( inConfig( Examples )( Config.settings ++ Seq(
+      unmanagedSourceDirectories in Compile += baseDirectory.value / "src/examples/java",
+      unmanagedSourceDirectories in Compile += baseDirectory.value / "src/examples/scala"
+    )
+    ): _ * )
+    .enablePlugins( SbtOsgi )
+
 
 }

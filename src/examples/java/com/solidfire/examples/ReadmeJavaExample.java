@@ -1,3 +1,5 @@
+package com.solidfire.examples;
+
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -19,7 +21,7 @@ public class ReadmeJavaExample {
 
         // And a volume with default QoS
         CreateVolumeRequest createVolumeRequest = new CreateVolumeRequest("volumeName", accountId,
-                1000000000l, false,
+                1000000000L, false,
                 Optional.<QoS>empty(),
                 EMPTY_MAP);
 
@@ -29,13 +31,13 @@ public class ReadmeJavaExample {
         String iqn = sf.listVolumesForAccount(accountId, of(volumeId), of(1l)).getVolumes()[0].getIqn();
 
         // Change Min and Burst QoS while keeping Max and Burst Time the same
-        QoS qos = new QoS(of(5000l), EMPTY_LONG, of(30000l), EMPTY_LONG);
+        QoS qos = new QoS(of(5000L), EMPTY_LONG, of(30000L), EMPTY_LONG);
 
         // Modify the volume size and QoS
         ModifyVolumeRequest modifyVolumeRequest = ModifyVolumeRequest.builder()
                                                                      .volumeID(volumeId)
                                                                      .optionalQos(qos)
-                                                                     .optionalTotalSize(2000000000l)
+                                                                     .optionalTotalSize(2000000000L)
                                                                      .build();
 
         sf.modifyVolume(modifyVolumeRequest);
