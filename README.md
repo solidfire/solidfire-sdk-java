@@ -1,5 +1,4 @@
-<img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png"" height="50" width="50" >
-# SolidFire Java SDK
+#<img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png"" height="50" width="50" > SolidFire Java SDK
 
 Java SDK library for interacting with SolidFire Element API
 
@@ -112,13 +111,13 @@ from the <i>AddAccountResult</i> object.
 ```java
     // Send the request and wait for the result then pull the AccountID
     ListAccountResults listAccountsResult = sfe.listAccounts();
-    Account account = listAccountsResult.getAccounts()[0];   
+    Account account = listAccountsResult.getAccounts()[0].getAccountID();   
 ```
 ####Scala:
 ```scala
     // Send the request and wait for the result then pull the AccountID
-    val listAccountsResult = sfe.listAccounts;
-    val account = listAccountsResult.getAccounts(0);   
+    val listAccountsResult = sfe.listAccounts
+    val account = listAccountsResult.getAccounts(0).getAccountID
 ```
 
 ###Examples of using the API (Java)
@@ -145,10 +144,10 @@ public class ReadmeJavaExample {
         //* --------- EXAMPLE 2 - CREATE A VOLUME ------------- *//
         // Construct a request with parameters using the constructor.
         CreateVolumeRequest createVolumeRequest = new CreateVolumeRequest("volumeName", accountId,
-                1000000000l, false,
-                Optional.<QoS>empty(),
-                EMPTY_MAP);
-  
+                                                                          1000000000l, false,
+                                                                          Optional.<QoS>empty(),
+                                                                          EMPTY_MAP);
+                                                            
         // Send the "CreateVolume" request pull the VolumeID off the result object
         Long volumeId = sf.createVolume(createVolumeRequest).getVolumeID();
 
@@ -194,7 +193,8 @@ class ReadmeScalaExample {
 
   //* --------- EXAMPLE 2 - CREATE A VOLUME ------------- *//
   // Construct a "CreateVolume" request with parameters using the constructor.
-  val createVolume = new CreateVolumeRequest( "volumeName", accountId, 1000000000L, false, empty[QoS], empty( ) )
+  val createVolume = new CreateVolumeRequest( "volumeName", accountId, 
+                                              1000000000L, false, empty[QoS], empty( ) )
   
   // Send the request pull the VolumeID off the result object
   val volumeId = sf.createVolume( createVolume ).getVolumeID
@@ -227,25 +227,27 @@ class ReadmeScalaExample {
 Connection timeout (useful for failing fast when a host becomes
 unreachable):
 
+####Java:
 ```java
     import com.solidfire.client.ElementFactory
     ...
-    SolidFireElement sfe = ElementFactory.create("ip-address-of-cluster", "username", "password")
-    sfe.getRequestDispatcher().setConnectionTimeout(600)
+    SolidFireElement sfe = ElementFactory.create("ip-address-of-cluster", "username", "password");
+    sfe.getRequestDispatcher().setConnectionTimeout(600);
 ```
 
 Read timeout (useful for extending time for a service call to return):
 
+####Java:
 ```java
     import com.solidfire.client.ElementFactory
     ...
-    SolidFireElement sfe = ElementFactory.create("ip-address-of-cluster", "username", "password")
-    sfe.getRequestDispatcher().setReadTimeout(600)
+    SolidFireElement sfe = ElementFactory.create("ip-address-of-cluster", "username", "password");
+    sfe.getRequestDispatcher().setReadTimeout(600);
 ```
 
 
 ##Logging and Logback
-The SDK and the Assembly leverage the [SLF4J API](http://www.slf4j.org/) for logging with the assembly also including  [logback-classic](http://logback.qos.ch/reasonsToSwitch.html)c implementation.  An advantage to using the SLF4J interface is the availability of legacy logging framework [bridges](http://www.slf4j.org/legacy.html), for intercepting and consolidating all logging calls into a single log.
+The SDK and the Assembly leverage the [SLF4J API](http://www.slf4j.org/) for logging with the assembly also including  [logback-classic](http://logback.qos.ch/reasonsToSwitch.html) implementation.  An advantage to using the SLF4J interface is the availability of legacy logging framework [bridges](http://www.slf4j.org/legacy.html), for intercepting and consolidating all logging calls into a single log.
 
 ###Logback (Assembly Only) Tracing Request / Response calls in the log
 An example logback.xml: 
