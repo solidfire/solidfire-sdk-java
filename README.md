@@ -229,7 +229,7 @@ unreachable):
 
 ####Java:
 ```java
-    import com.solidfire.client.ElementFactory
+    import com.solidfire.client.ElementFactory;
     ...
     SolidFireElement sfe = ElementFactory.create("ip-address-of-cluster", "username", "password");
     sfe.getRequestDispatcher().setConnectionTimeout(600);
@@ -239,7 +239,7 @@ Read timeout (useful for extending time for a service call to return):
 
 ####Java:
 ```java
-    import com.solidfire.client.ElementFactory
+    import com.solidfire.client.ElementFactory;
     ...
     SolidFireElement sfe = ElementFactory.create("ip-address-of-cluster", "username", "password");
     sfe.getRequestDispatcher().setReadTimeout(600);
