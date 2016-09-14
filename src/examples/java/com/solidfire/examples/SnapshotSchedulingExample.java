@@ -84,3 +84,4 @@ public class SnapshotSchedulingExample {
         // display the newly modified schedule
         System.out.println(modifiedScheduleResult.getSchedule());
     }
+}
