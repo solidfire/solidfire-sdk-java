@@ -19,6 +19,9 @@ package com.solidfire.element.api;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * This class represents the CHAP Secret
+ */
 @SuppressWarnings("serial")
 public class CHAPSecret implements Serializable {
 
@@ -104,6 +107,9 @@ public class CHAPSecret implements Serializable {
     }
 }
 
+/**
+ * This class represents the AutoGenerate CHAP Secret.
+ */
 @SuppressWarnings("serial")
 final class AutoGenerate extends CHAPSecret {
     private AutoGenerate() {

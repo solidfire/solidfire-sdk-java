@@ -26,7 +26,7 @@ import java.util.Objects;
 
 
 /**
- *
+ * Day of the week the snapshot is to be created.
  **/
 public class ApiWeekday implements Serializable {
 
@@ -38,8 +38,8 @@ public class ApiWeekday implements Serializable {
     private final Long offset;
 
     /**
-     * @param day    [required]
-     * @param offset [required]
+     * @param day    [required]  0 - 6 (Sunday - Saturday)
+     * @param offset [required]  1 (always)
      * @since 7.0
      **/
     @Since("7.0")
@@ -48,14 +48,23 @@ public class ApiWeekday implements Serializable {
         this.offset = offset;
     }
 
+    /**
+     * The representation of the day of the week
+     * @return 0 - 6 (Sunday - Saturday)
+     */
     public Long getDay() {
         return this.day;
     }
 
+    /**
+     * The representation of the offset
+     * @return 1 (always)
+     */
     public Long getOffset() {
         return this.offset;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,12 +77,14 @@ public class ApiWeekday implements Serializable {
                 && Objects.equals(offset, that.offset);
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         return Objects.hash(day, offset);
     }
 
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -101,6 +112,7 @@ public class ApiWeekday implements Serializable {
         private Long day;
         private Long offset;
 
+        /** Do not instantiate Builder. */
         private Builder() {
         }
 

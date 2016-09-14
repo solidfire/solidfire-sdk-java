@@ -54,6 +54,7 @@ public class ApiGetScheduleResult implements Serializable {
         return this.schedule;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,12 +66,14 @@ public class ApiGetScheduleResult implements Serializable {
         return Objects.equals(schedule, that.schedule);
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         return Objects.hash((Object) schedule);
     }
 
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -96,6 +99,7 @@ public class ApiGetScheduleResult implements Serializable {
     public static class Builder {
         private ApiSchedule schedule;
 
+        /** Do not instantiate Builder. */
         private Builder() {
         }
 

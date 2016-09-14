@@ -28,7 +28,7 @@ import java.util.Objects;
 
 
 /**
- *
+ * The unique name given to the schedule, the retention period for the snapshot that was created, and the volume ID of the volume from which the snapshot was created.
  **/
 public class ApiScheduleInfo implements Serializable {
 
@@ -98,6 +98,7 @@ public class ApiScheduleInfo implements Serializable {
         return this.retention;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -113,12 +114,14 @@ public class ApiScheduleInfo implements Serializable {
                 && Objects.equals(retention, that.retention);
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         return Objects.hash(volumeID, volumes, name, enableRemoteReplication, retention);
     }
 
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -157,6 +160,7 @@ public class ApiScheduleInfo implements Serializable {
         private Optional<Boolean> enableRemoteReplication;
         private Optional<String> retention;
 
+        /** Do not instantiate Builder. */
         private Builder() {
         }
 

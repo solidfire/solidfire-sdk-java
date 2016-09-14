@@ -31,6 +31,15 @@ import java.util.List;
 import static com.solidfire.jsvcgen.javautil.Optional.of;
 import static java.lang.String.format;
 
+
+/**
+ * The Abstract Factory defines the version checking logic for an implementation factory
+ * that instantiates a ServiceBase.
+ *
+ * @param <T> extends ServiceBase
+ *
+ * @see #checkVersion(String, Optional, String, String, Optional, boolean)
+ */
 public abstract class AbstractFactory<T extends ServiceBase> {
 
     private static final Logger log = LoggerFactory.getLogger(AbstractFactory.class);
@@ -52,8 +61,26 @@ public abstract class AbstractFactory<T extends ServiceBase> {
      */
     protected abstract double getMaxApiVersion();
 
+    /**
+     * Initializes the ServiceBase with a given RequestDispatcher.
+     *
+     * @param requestDispatcher the instantiated RequestBuilder
+     * @return the initialized ServiceBase
+     */
     protected abstract T toServiceBase(final RequestDispatcher requestDispatcher);
 
+    /**
+     *
+     * @param target     the management virtual IP (or hostname)
+     * @param port       the port to use
+     * @param username   admin username
+     * @param password   admin password
+     * @param apiVersion the version of the API services
+     * @param verifySSL  if set to true, the target will be checked against the list of valid SSL hosts, including verification of the
+     *                   validity of the Cert recorded for a given target, otherwise these validity checks are ignored, which is useful
+     *                   when the target is an IP address.
+     * @return an initialized RequestBuilder
+     */
     protected RequestDispatcher buildRequestDispatcher(String target, Optional<Integer> port, String username, String password, Optional<String> apiVersion, boolean verifySSL) {
 
         final URL endpoint;
@@ -82,12 +109,34 @@ public abstract class AbstractFactory<T extends ServiceBase> {
 
     }
 
+    /**
+     * Checks if the provided target is in the form of an IP address or a hostname.  Depending on the value of verifySSL, this method
+     * will throw an ApiException because IP addresses will not have a proper SSL certificate.
+     * @param target     the management virtual IP (or hostname)
+     * @param verifySSL  if set to true, the target will be checked against the list of valid SSL hosts, including verification of the
+     *                   validity of the Cert recorded for a given target, otherwise these validity checks are ignored, which is useful
+     *                   when the target is an IP address.
+     * @throws ApiException when target is in the form of an IP address and verifySSL is true.
+     */
     protected static void testTargetFormat(String target, boolean verifySSL) {
         if (target.matches(IP4_ADDRESS_REGEX) && verifySSL) {
             throw new ApiException("Cannot verify SSL when target is an IP address. Set verifySSL to false or use a fully qualified domain name.");
         }
     }
 
+    /**
+     * Creates a URL representation of a SolidFire API endpoint, depending on the optional value of port, in the form:
+     *
+     * https://{target}:{port}/json-rpc/{apiVersion}
+     *  or
+     * https://{target}/json-rpc/{apiVersion}
+     *
+     *
+     * @param target     the management virtual IP (or hostname)
+     * @param port       (optional) the port to use
+     * @param apiVersion the version of the API services
+     * @return URL representing the SolidFire API endpoint
+     */
     protected static URL toEndpoint(String target, Optional<Integer> port, double apiVersion) {
         try {
             if (port.isPresent()) {
@@ -101,6 +150,22 @@ public abstract class AbstractFactory<T extends ServiceBase> {
         }
     }
 
+    /**
+     * Checks the version of an endpoint against the target endpoint.  If the version is malformed, lower then the minimally supported version, or
+     * the version is not supported on the cluster, an exception is thrown.  If the version provided is higher the the maximum supported version
+     * for the SDK, a warning is generated, but the ServiceBase implementation is returned.  If a version is not supplied, either the highest
+     * supported version of the Cluster or the maximum supported version of the Cluster, which ever is lower, is used.
+     *
+     * @param target     the management virtual IP (or hostname)
+     * @param port       (optional) the port to use
+     * @param username   admin username
+     * @param password   admin password
+     * @param version    (optional) the requested supported version of the SolidFire Cluster
+     * @param verifySSL  if set to true, the target will be checked against the list of valid SSL hosts, including verification of the
+     *                   validity of the Cert recorded for a given target, otherwise these validity checks are ignored, which is useful
+     *                   when the target is an IP address.
+     * @return T the implementation of ServiceBase initialized with the properly constructed RequestDispatcher
+     */
     protected T checkVersion(String target, Optional<Integer> port, String username, String password, Optional<String> version, boolean verifySSL) {
         testTargetFormat(target, verifySSL);
 
@@ -148,6 +213,7 @@ public abstract class AbstractFactory<T extends ServiceBase> {
         return toServiceBase(dispatcher);
     }
 
+    //* Simple join list of strings method used for pretty documentation formatting *//
     private static String join(final List<?> list, final String delim, final String endingConjunction) {
         final StringBuilder sb = new StringBuilder();
 

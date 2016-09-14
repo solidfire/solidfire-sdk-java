@@ -27,7 +27,10 @@ import java.util.Objects;
 
 
 /**
- * Schedule is an object containing information about each schedule created to autonomously make a snapshot of a volume. The return object includes information for all schedules. If scheduleID is used to identify a specific schedule then only information for that scheduleID is returned. Schedules information is returned with the API method, see ListSchedules on the SolidFire API guide page 245.
+ * Schedule is an object containing information about each schedule created to autonomously make a snapshot of a volume.
+ * The return object includes information for all schedules. If scheduleID is used to identify a specific schedule then
+ * only information for that scheduleID is returned. Schedules information is returned with the API method, see
+ * "ListSchedules" on the SolidFire API guide page 245.
  **/
 public class ApiSchedule implements Serializable {
 
@@ -69,7 +72,10 @@ public class ApiSchedule implements Serializable {
     private final ApiWeekday[] weekdays;
 
     /**
-     * Schedule is an object containing information about each schedule created to autonomously make a snapshot of a volume. The return object includes information for all schedules. If scheduleID is used to identify a specific schedule then only information for that scheduleID is returned. Schedules information is returned with the API method, see ListSchedules on the SolidFire API guide page 245.
+     * Schedule is an object containing information about each schedule created to autonomously make a snapshot of a volume.
+     * The return object includes information for all schedules. If scheduleID is used to identify a specific schedule then
+     * only information for that scheduleID is returned. Schedules information is returned with the API method, see
+     * "ListSchedules" on the SolidFire API guide page 245.
      *
      * @param attributes       [required] Indicates the frequency of the schedule occurrence.<br/>
      * @param hasError         [required] Indicates whether or not the schedule has errors.
@@ -80,9 +86,11 @@ public class ApiSchedule implements Serializable {
      * @param monthdays        [required] Shows the days of the month that the next snapshot will be created on.
      * @param paused           [required] Indicates whether or not the schedule is paused.
      * @param recurring        [required] Indicates whether or not the schedule is recurring.
-     * @param runNextInterval  [required] Indicates whether or not the schedule will run the next time the scheduler is active. When set to "true", the schedule will run the next time the scheduler is active and then reset back to "false".
+     * @param runNextInterval  [required] Indicates whether or not the schedule will run the next time the scheduler is active.
+     *                         When set to "true", the schedule will run the next time the scheduler is active and then reset back to "false".
      * @param scheduleID       [required] Unique ID of the schedule
-     * @param scheduleInfo     [required] Includes the unique name given to the schedule, the retention period for the snapshot that was created, and the volume ID of the volume from which the snapshot was created.
+     * @param scheduleInfo     [required] Includes the unique name given to the schedule, the retention period for the snapshot that was
+     *                         created, and the volume ID of the volume from which the snapshot was created.
      * @param scheduleName     [required] Unique name assigned to the schedule.
      * @param scheduleType     [required] Only "snapshot" is supported at this time.
      * @param startingDate     [required] Indicates the date the first time the schedule began of will begin. Formatted in UTC time.
@@ -91,7 +99,10 @@ public class ApiSchedule implements Serializable {
      * @since 7.0
      **/
     @Since("7.0")
-    public ApiSchedule(java.util.Map<String, Object> attributes, Boolean hasError, Long hours, String lastRunStatus, String lastRunTimeStart, Long minutes, Long[] monthdays, Boolean paused, Boolean recurring, Boolean runNextInterval, Long scheduleID, ApiScheduleInfo scheduleInfo, String scheduleName, String scheduleType, String startingDate, Boolean toBeDeleted, ApiWeekday[] weekdays) {
+    public ApiSchedule(java.util.Map<String, Object> attributes, Boolean hasError, Long hours, String lastRunStatus, String lastRunTimeStart,
+                       Long minutes, Long[] monthdays, Boolean paused, Boolean recurring, Boolean runNextInterval, Long scheduleID,
+                       ApiScheduleInfo scheduleInfo, String scheduleName, String scheduleType, String startingDate, Boolean toBeDeleted,
+                       ApiWeekday[] weekdays) {
         this.weekdays = weekdays;
         this.scheduleID = scheduleID;
         this.lastRunStatus = lastRunStatus;
@@ -189,7 +200,8 @@ public class ApiSchedule implements Serializable {
     }
 
     /**
-     * Indicates whether or not the schedule will run the next time the scheduler is active. When set to "true", the schedule will run the next time the scheduler is active and then reset back to "false".
+     * Indicates whether or not the schedule will run the next time the scheduler is active.
+     * When set to "true", the schedule will run the next time the scheduler is active and then reset back to "false".
      **/
     public Boolean getRunNextInterval() {
         return this.runNextInterval;
@@ -203,7 +215,8 @@ public class ApiSchedule implements Serializable {
     }
 
     /**
-     * Includes the unique name given to the schedule, the retention period for the snapshot that was created, and the volume ID of the volume from which the snapshot was created.
+     * Includes the unique name given to the schedule, the retention period for the snapshot that was created, and the
+     * volume ID of the volume from which the snapshot was created.
      **/
     public ApiScheduleInfo getScheduleInfo() {
         return this.scheduleInfo;
@@ -244,6 +257,7 @@ public class ApiSchedule implements Serializable {
         return this.weekdays;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -271,12 +285,15 @@ public class ApiSchedule implements Serializable {
                 && Objects.deepEquals(weekdays, that.weekdays);
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
-        return Objects.hash(attributes, hasError, hours, lastRunStatus, lastRunTimeStart, minutes, monthdays, paused, recurring, runNextInterval, scheduleID, scheduleInfo, scheduleName, scheduleType, startingDate, toBeDeleted, weekdays);
+        return Objects.hash(attributes, hasError, hours, lastRunStatus, lastRunTimeStart, minutes, monthdays, paused, recurring,
+                runNextInterval, scheduleID, scheduleInfo, scheduleName, scheduleType, startingDate, toBeDeleted, weekdays);
     }
 
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -334,6 +351,7 @@ public class ApiSchedule implements Serializable {
         private Boolean toBeDeleted;
         private ApiWeekday[] weekdays;
 
+        /** Do not instantiate Builder. */
         private Builder() {
         }
 

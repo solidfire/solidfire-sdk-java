@@ -18,6 +18,9 @@ package com.solidfire.element.api;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * This class represents the Frequency Type "Time Interval"
+ */
 public class TimeIntervalFrequency implements Frequency, Serializable {
 
     private static final long serialVersionUID = 1L;

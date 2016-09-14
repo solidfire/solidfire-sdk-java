@@ -157,7 +157,13 @@ public class ScheduleAdaptor {
 
     }
 
-
+    /**
+     * Converts an ApiSchedule object into a Schedule object
+     *
+     * @param api the ApiSchedule object to be converted
+     *
+     * @return a Schedule object
+    */
     public static Schedule toSchedule(final ApiSchedule api) {
         final Schedule.Builder schedule = Schedule.builder();
 
@@ -229,6 +235,13 @@ public class ScheduleAdaptor {
         return weekdays.toArray(new Weekday[api.length]);
     }
 
+    /**
+     * Converts a Schedule object into an ApiSchedule object
+     *
+     * @param schedule the Schedule object to be converted
+     *
+     * @return an ApiSchedule object
+     */
     public static ApiSchedule toApiSchedule(final Schedule schedule) {
         final ApiSchedule.Builder api = ApiSchedule.builder();
 
