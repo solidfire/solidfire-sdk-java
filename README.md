@@ -24,7 +24,7 @@ If you have any questions or comments about this product, contact <sdk@solidfire
 ```xml
 <dependency>
   <groupId>com.solidfire</groupId>
-  <artifactId>element-api</artifactId>
+  <artifactId>solidfire-sdk-java</artifactId>
   <version>1.1.0.79</version>
 </dependency>
 ```
@@ -32,13 +32,13 @@ If you have any questions or comments about this product, contact <sdk@solidfire
 or SBT:
 
 ```scala
-libraryDependencies += "com.solidfire" % "element-api" % "1.1.0.79"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.1.0.79"
 ```
 
 or Gradle:
 
 ```groovy
-compile 'com.solidfire:element-api:1.1.0.79'
+compile 'com.solidfire:solidfire-sdk-java:1.1.0.79'
 ```
 ##Assembly Jar
 The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.1.0.79/solidfire-sdk-1.1.0.79.jar).  
