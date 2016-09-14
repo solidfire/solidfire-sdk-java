@@ -24,14 +24,14 @@ class ReadmeScalaExample {
 
   //* --------- EXAMPLE 3 - LIST ONE VOLUME FOR AN ACCOUNT ------------- *//
   // Send the "ListVolume" request with desired parameters inline and pull the first volume in the result
-  val volume: Volume = sfe.listVolumesForAccount( accountId, of( volumeId ), of( 1L ) ).getVolumes( 0 )
+  val volume: Volume = sfe.listVolumesForAccount( accountId, of( volumeId ), of( 1L ) ).getVolumes( )( 0 )
 
   // pull the iqn from the volume
   val iqn: String = volume.getIqn
 
   //* --------- EXAMPLE 4 - MODIFY A VOLUME ------------- *//
   // Change Min and Burst QoS while keeping Max and Burst Time the same
-  val qos: QoS = new QoS( of( 5000l ), empty(), of( 30000l ), empty() )
+  val qos: QoS = new QoS( of( 5000l ), empty( ), of( 30000l ), empty( ) )
 
   // Construct request to modify the volume size and QoS using the builder.
   val modifyVolume = ModifyVolumeRequest.builder
