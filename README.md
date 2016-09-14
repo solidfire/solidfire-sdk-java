@@ -212,10 +212,10 @@ class ReadmeScalaExample {
 
   // Construct request to modify the volume size and QoS using the builder.
   val modifyVolume = ModifyVolumeRequest.builder
-    .volumeID( volumeId )
-    .optionalQos( qos )
-    .optionalTotalSize( 2000000000l )
-    .build
+                                        .volumeID( volumeId )
+                                        .optionalQos( qos )
+                                        .optionalTotalSize( 2000000000l )
+                                        .build
 
   // Send the modify volume request
   sf.modifyVolume( modifyVolume )
