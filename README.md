@@ -117,7 +117,7 @@ from the <i>AddAccountResult</i> object.
 ```scala
     // Send the request and wait for the result then pull the AccountID
     val listAccountsResult = sfe.listAccounts
-    val account = listAccountsResult.getAccounts(0).getAccountID
+    val account = listAccountsResult.getAccounts()(0).getAccountID
 ```
 
 ###Examples of using the API (Java)
@@ -201,7 +201,7 @@ class ReadmeScalaExample {
 
   //* --------- EXAMPLE 3 - LIST ONE VOLUME FOR AN ACCOUNT ------------- *//
   // Send the "ListVolume" request with desired parameters inline and pull the first volume in the result
-  val iqn: Volume = sf.listVolumesForAccount( accountId, of( volumeId ), of( 1L ) ).getVolumes( )( 0 )
+  val iqn: Volume = sf.listVolumesForAccount( accountId, of( volumeId ), of( 1L ) ).getVolumes()(0)
   
   // pull the iqn from the volume
   val iqn: String = volume.getIqn
