@@ -96,7 +96,7 @@ import com.solidfire.element.api._
 import com.solidfire.jsvcgen.javautil.Optional.{empty, of}
 
 ...
-    // Use ElementFactory to get a SolidFireElement object.
+  // Use ElementFactory to get a SolidFireElement object.
   val sf = ElementFactory.create( "mvip", "username", "password", "8.0" )
 ```
 
