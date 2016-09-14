@@ -245,6 +245,9 @@ Read timeout (useful for extending time for a service call to return):
     sfe.getRequestDispatcher().setReadTimeout(600);
 ```
 
+##More Examples
+
+More specific examples are available [here](examples/README.md)
 
 ##Logging and Logback
 The SDK and the Assembly leverage the [SLF4J API](http://www.slf4j.org/) for logging with the assembly also including  [logback-classic](http://logback.qos.ch/reasonsToSwitch.html) implementation.  An advantage to using the SLF4J interface is the availability of legacy logging framework [bridges](http://www.slf4j.org/legacy.html), for intercepting and consolidating all logging calls into a single log.
