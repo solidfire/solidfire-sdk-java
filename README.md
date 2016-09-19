@@ -111,7 +111,7 @@ from the <i>AddAccountResult</i> object.
 ####Java:
 ```java
     // Send the request and wait for the result then pull the AccountID
-    ListAccountsResults listAccountsResult = sfe.listAccounts(ListAccountsRequest.builder().build());
+    ListAccountsResult listAccountsResult = sfe.listAccounts(ListAccountsRequest.builder().build());
     Account account = listAccountsResult.getAccounts()[0].getAccountID();   
 ```
 ####Scala:
