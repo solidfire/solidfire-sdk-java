@@ -3,7 +3,7 @@
 Java SDK library for interacting with SolidFire Element API
 
 ##Current Release
-Version 1.1.0.79
+Version 1.1.0.81
 
 ##Description
 The SolidFire Java SDK is a collection of software modules and libraries that facilitate integration and orchestration between proprietary systems and third-party applications. The Java SDK allows developers to deeply integrate SolidFire system API with the Java programming language. The SolidFire Java SDK reduces the amount of additional coding time required for integration.
@@ -26,23 +26,23 @@ If you have any questions or comments about this product, contact <sdk@solidfire
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>solidfire-sdk-java</artifactId>
-  <version>1.1.0.79</version>
+  <version>1.1.0.81</version>
 </dependency>
 ```
 
 or SBT:
 
 ```scala
-libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.1.0.79"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.1.0.81"
 ```
 
 or Gradle:
 
 ```groovy
-compile 'com.solidfire:solidfire-sdk-java:1.1.0.79'
+compile 'com.solidfire:solidfire-sdk-java:1.1.0.81'
 ```
 ##Assembly Jar
-The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.1.0.79/solidfire-sdk-1.1.0.79.jar).  
+The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.1.0.81/solidfire-sdk-1.1.0.81.jar).  
 
 ___Dependencies___:
 
@@ -67,15 +67,15 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 [Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/latest/api/)
 
-[1.1.0.79 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/1.1.0.79/)
+[1.1.0.81 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/)
 
-[1.0.0.53 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/1.0.0.53/)
+[1.0.0.53 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/v1.0/)
 
 ##Examples
-Step 1 - Build a [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/1.1.0.79/com/solidfire/element/api/SolidFireElement.html) object using the factory
+Step 1 - Build a [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/element/api/SolidFireElement.html) object using the factory
 ---
-This is the preferred way to construct the [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/1.1.0.79/com/solidfire/element/api/SolidFireElement.html) object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
-SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the [ElementFactory](https://solidfire.github.io/solidfire-sdk-java/doc/1.1.0.79/com/solidfire/client/ElementFactory.html) documentation.
+This is the preferred way to construct the [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/element/api/SolidFireElement.html) object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
+SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the [ElementFactory](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/client/ElementFactory.html) documentation.
 
 ####Java:
 ```java
