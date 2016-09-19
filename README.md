@@ -112,13 +112,13 @@ from the <i>AddAccountResult</i> object.
 ```java
     // Send the request and wait for the result then pull the AccountID
     ListAccountsResult listAccountsResult = sfe.listAccounts(ListAccountsRequest.builder().build());
-    Account account = listAccountsResult.getAccounts()[0].getAccountID();   
+    Long accountId = listAccountsResult.getAccounts()[0].getAccountID();   
 ```
 ####Scala:
 ```scala
     // Send the request and wait for the result then pull the AccountID
     val listAccountsResult = sfe.listAccounts(ListAccountsRequest.builder.build)
-    val account = listAccountsResult.getAccounts()(0).getAccountID
+    val accountId = listAccountsResult.getAccounts()(0).getAccountID
 ```
 
 ###Examples of using the API (Java)
