@@ -9,10 +9,11 @@ Version 1.1.0.79
 The SolidFire Java SDK is a collection of software modules and libraries that facilitate integration and orchestration between proprietary systems and third-party applications. The Java SDK allows developers to deeply integrate SolidFire system API with the Java programming language. The SolidFire Java SDK reduces the amount of additional coding time required for integration.
 
 ##Compatibility
-| Component    | Version           |
-| ------------ | ----------------- |
-| Java         | 7.0 & 8.0         |
-| SolidFire OS | Element 7.x & 8.x |
+| Component    | Version             |
+| ------------ | ------------------- |
+| Java         | 7.0 & 8.0           |
+| SolidFire OS | Element 7.0 - 8.4\* |
+\*<sub><sup>_**Note**: This version of the SDK will work with versions of Element OS greater then 8.4 but some features will not be supported in the API._</sup></sub>
 
 ##Getting Help
 Contacting SolidFire SDK Support
