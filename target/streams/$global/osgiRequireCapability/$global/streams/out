@@ -1,0 +1,5 @@
+[0m[[0mdebug[0m] [0mAttempting to call javac directly...[0m
+[0m[[0mdebug[0m] [0mcom.sun.tools.javac.Main not found with appropriate method signature; forking javac instead[0m
+[0m[[0mdebug[0m] [0mForking javac: javac @/var/folders/ym/h7hlpp4s55v_fb_k07n43nc00000gp/T/sbt_282533af/argfile[0m
+[0m[[33mwarn[0m] [0mPicked up JAVA_TOOL_OPTIONS: -Djava.awt.headless=true[0m
+[0m[[0mdebug[0m] [0mjavac returned exit code: 0[0m

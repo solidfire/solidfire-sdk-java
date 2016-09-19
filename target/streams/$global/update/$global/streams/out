@@ -1,0 +1,619 @@
+[0m[[0minfo[0m] [0mUpdating {file:/Users/jwomack-LT/solid/github/solidfire-sdk-java/}solidfire-java-sdk...[0m
+[0m[[0mdebug[0m] [0mno default cache defined: set to /Users/jwomack-LT/.ivy2/cache[0m
+[0m[[0mdebug[0m] [0m:: resolving dependencies :: com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT[0m
+[0m[[0mdebug[0m] [0m	confs: [compile, runtime, test, provided, optional, examples, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool][0m
+[0m[[0mdebug[0m] [0m	validate = true[0m
+[0m[[0mdebug[0m] [0m	refresh = false[0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.6 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@2de0ab98[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.10.6[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.10.6 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[2.10.6] org.scala-lang#scala-library;2.10.6[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.slf4j#slf4j-api;1.6.6 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.slf4j#slf4j-api;1.6.6 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.slf4j#slf4j-api;1.6.6[0m
+[0m[[0mdebug[0m] [0m	found org.slf4j#slf4j-api;1.6.6 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.solidfire#jsvcgen-client-java;0.3.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@65c100d6[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.solidfire#jsvcgen-client-java;0.3.0[0m
+[0m[[0mdebug[0m] [0m	found com.solidfire#jsvcgen-client-java;0.3.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->compile(*)][0m
+[0m[[0minfo[0m] [0mResolving net.iharder#base64;2.3.9 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: net.iharder#base64;2.3.9 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: net.iharder#base64;2.3.9[0m
+[0m[[0mdebug[0m] [0m	found net.iharder#base64;2.3.9 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->compile(*)][0m
+[0m[[0minfo[0m] [0mResolving com.google.code.gson#gson;2.6.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.google.code.gson#gson;2.6.2 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.google.code.gson#gson;2.6.2[0m
+[0m[[0mdebug[0m] [0m	found com.google.code.gson#gson;2.6.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->compile(*)][0m
+[0m[[0minfo[0m] [0mResolving joda-time#joda-time;2.9.3 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: joda-time#joda-time;2.9.3 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: joda-time#joda-time;2.9.3[0m
+[0m[[0mdebug[0m] [0m	found joda-time#joda-time;2.9.3 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->compile(*)][0m
+[0m[[0minfo[0m] [0mResolving org.joda#joda-convert;1.8.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.joda#joda-convert;1.8.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.joda#joda-convert;1.8.1[0m
+[0m[[0mdebug[0m] [0m	found org.joda#joda-convert;1.8.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'test'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [test][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-simple;1.6.6 [test->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.slf4j#slf4j-simple;1.6.6 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.slf4j#slf4j-simple;1.6.6 {test=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.slf4j#slf4j-simple;1.6.6[0m
+[0m[[0mdebug[0m] [0m	found org.slf4j#slf4j-simple;1.6.6 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-simple;1.6.6 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-simple;1.6.6 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.slf4j#slf4j-simple;1.6.6->org.slf4j#slf4j-api;1.6.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.slf4j#slf4j-simple;1.6.6->org.slf4j#slf4j-api;1.6.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.slf4j#slf4j-simple;1.6.6->org.slf4j#slf4j-api;1.6.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.slf4j#slf4j-simple;1.6.6->org.slf4j#slf4j-api;1.6.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-simple;1.6.6 [test->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.mockito#mockito-all;1.10.19 [test->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.mockito#mockito-all;1.10.19 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.mockito#mockito-all;1.10.19 {test=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.mockito#mockito-all;1.10.19[0m
+[0m[[0mdebug[0m] [0m	found org.mockito#mockito-all;1.10.19 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.mockito#mockito-all;1.10.19 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.mockito#mockito-all;1.10.19 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.mockito#mockito-all;1.10.19 [test->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalatest#scalatest_2.10;2.2.6 [test->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scalatest#scalatest_2.10;2.2.6 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scalatest#scalatest_2.10;2.2.6 {test=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scalatest#scalatest_2.10;2.2.6[0m
+[0m[[0mdebug[0m] [0m	found org.scalatest#scalatest_2.10;2.2.6 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalatest#scalatest_2.10;2.2.6 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalatest#scalatest_2.10;2.2.6 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [compile->compile(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-reflect;2.10.6 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.10.6 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.10.6[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-reflect;2.10.6 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[2.10.6] org.scala-lang#scala-reflect;2.10.6[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalatest#scalatest_2.10;2.2.6 [test->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalacheck#scalacheck_2.10;1.13.0 [test->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scalacheck#scalacheck_2.10;1.13.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scalacheck#scalacheck_2.10;1.13.0 {test=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scalacheck#scalacheck_2.10;1.13.0[0m
+[0m[[0mdebug[0m] [0m	found org.scalacheck#scalacheck_2.10;1.13.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalacheck#scalacheck_2.10;1.13.0 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalacheck#scalacheck_2.10;1.13.0 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-lang#scala-library;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-lang#scala-library;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [compile->compile(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-sbt#test-interface;1.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-sbt#test-interface;1.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-sbt#test-interface;1.0[0m
+[0m[[0mdebug[0m] [0m	found org.scala-sbt#test-interface;1.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-lang#scala-library;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-lang#scala-library;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalacheck#scalacheck_2.10;1.13.0 [test->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'provided'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [provided][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'optional'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [optional][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'examples'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [examples][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [test][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-simple;1.6.6 [test->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-simple;1.6.6 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-simple;1.6.6 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.slf4j#slf4j-simple;1.6.6->org.slf4j#slf4j-api;1.6.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.slf4j#slf4j-simple;1.6.6->org.slf4j#slf4j-api;1.6.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.slf4j#slf4j-simple;1.6.6->org.slf4j#slf4j-api;1.6.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.slf4j#slf4j-simple;1.6.6->org.slf4j#slf4j-api;1.6.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-simple;1.6.6 [test->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.mockito#mockito-all;1.10.19 [test->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.mockito#mockito-all;1.10.19 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.mockito#mockito-all;1.10.19 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.mockito#mockito-all;1.10.19 [test->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalatest#scalatest_2.10;2.2.6 [test->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalatest#scalatest_2.10;2.2.6 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalatest#scalatest_2.10;2.2.6 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalatest#scalatest_2.10;2.2.6 [test->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalacheck#scalacheck_2.10;1.13.0 [test->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalacheck#scalacheck_2.10;1.13.0 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalacheck#scalacheck_2.10;1.13.0 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-lang#scala-library;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-lang#scala-library;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-lang#scala-library;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-lang#scala-library;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalacheck#scalacheck_2.10;1.13.0 [test->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile-internal'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [compile-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [optional][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [provided][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime-internal'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [runtime-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [optional][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'test-internal'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [test-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [test][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-api;1.6.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.slf4j#slf4j-api;1.6.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->net.iharder#base64;2.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->com.google.code.gson#gson;2.6.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->joda-time#joda-time;2.9.3 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#jsvcgen-client-java;0.3.0->org.joda#joda-convert;1.8.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->com.solidfire#jsvcgen-client-java;0.3.0 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-simple;1.6.6 [test->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-simple;1.6.6 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-simple;1.6.6 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.slf4j#slf4j-simple;1.6.6->org.slf4j#slf4j-api;1.6.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.slf4j#slf4j-simple;1.6.6->org.slf4j#slf4j-api;1.6.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.slf4j#slf4j-simple;1.6.6->org.slf4j#slf4j-api;1.6.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.slf4j#slf4j-simple;1.6.6->org.slf4j#slf4j-api;1.6.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.slf4j#slf4j-simple;1.6.6 [test->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.mockito#mockito-all;1.10.19 [test->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.mockito#mockito-all;1.10.19 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.mockito#mockito-all;1.10.19 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.mockito#mockito-all;1.10.19 [test->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalatest#scalatest_2.10;2.2.6 [test->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalatest#scalatest_2.10;2.2.6 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalatest#scalatest_2.10;2.2.6 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-library;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalatest#scalatest_2.10;2.2.6->org.scala-lang#scala-reflect;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalatest#scalatest_2.10;2.2.6 [test->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalacheck#scalacheck_2.10;1.13.0 [test->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalacheck#scalacheck_2.10;1.13.0 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalacheck#scalacheck_2.10;1.13.0 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-lang#scala-library;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-lang#scala-library;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-lang#scala-library;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-lang#scala-library;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalacheck#scalacheck_2.10;1.13.0->org.scala-sbt#test-interface;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scalacheck#scalacheck_2.10;1.13.0 [test->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [optional][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [provided][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'plugin'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [plugin][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.brianmckenna#wartremover_2.10;0.14 [plugin->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.brianmckenna#wartremover_2.10;0.14 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.brianmckenna#wartremover_2.10;0.14 {plugin=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.brianmckenna#wartremover_2.10;0.14[0m
+[0m[[0mdebug[0m] [0m	found org.brianmckenna#wartremover_2.10;0.14 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.brianmckenna#wartremover_2.10;0.14 [plugin->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.brianmckenna#wartremover_2.10;0.14 [plugin->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scala-lang#scala-compiler;2.10.5 [compile->compile(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-compiler;2.10.5 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.10.5 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-compiler;2.10.5[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-compiler;2.10.5 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.5->org.scala-lang#scala-library;2.10.5 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.5 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-library;2.10.5 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.10.5[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.10.5 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[2.10.5] org.scala-lang#scala-library;2.10.5[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.5->org.scala-lang#scala-library;2.10.5 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.5->org.scala-lang#scala-library;2.10.5 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.5->org.scala-lang#scala-library;2.10.5 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.5->org.scala-lang#scala-library;2.10.5 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.5->org.scala-lang#scala-reflect;2.10.5 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-reflect;2.10.5 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.10.5 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.10.5[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-reflect;2.10.5 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m	[2.10.5] org.scala-lang#scala-reflect;2.10.5[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.5->org.scala-lang#scala-reflect;2.10.5 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.5->org.scala-lang#scala-library;2.10.5 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.5->org.scala-lang#scala-library;2.10.5 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scala-lang#scala-compiler;2.10.5 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scala-lang#scala-compiler;2.10.5 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scala-lang#scala-compiler;2.10.5 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.5->org.scala-lang#scala-library;2.10.5 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.5->org.scala-lang#scala-library;2.10.5 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.5->org.scala-lang#scala-reflect;2.10.5 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.5->org.scala-lang#scala-reflect;2.10.5 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.5->org.scala-lang#scala-library;2.10.5 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.5->org.scala-lang#scala-library;2.10.5 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scala-lang#scala-library;2.10.5 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scala-lang#scala-library;2.10.5 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scalamacros#quasiquotes_2.10;2.0.1 [compile->compile(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scalamacros#quasiquotes_2.10;2.0.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scalamacros#quasiquotes_2.10;2.0.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scalamacros#quasiquotes_2.10;2.0.1[0m
+[0m[[0mdebug[0m] [0m	found org.scalamacros#quasiquotes_2.10;2.0.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-library;2.10.4 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-library;2.10.5 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-library;2.10.4 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-library;2.10.5 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-reflect;2.10.4 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-reflect;2.10.5 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-reflect;2.10.4 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-reflect;2.10.5 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scalamacros#quasiquotes_2.10;2.0.1 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scalamacros#quasiquotes_2.10;2.0.1 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scalamacros#quasiquotes_2.10;2.0.1 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-library;2.10.4 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-library;2.10.5 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-library;2.10.5 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-reflect;2.10.4 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-reflect;2.10.5 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalamacros#quasiquotes_2.10;2.0.1->org.scala-lang#scala-reflect;2.10.5 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scala-lang#scala-compiler;2.10.5 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scala-lang#scala-compiler;2.10.5 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scala-lang#scala-library;2.10.5 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scala-lang#scala-library;2.10.5 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scalamacros#quasiquotes_2.10;2.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.brianmckenna#wartremover_2.10;0.14->org.scalamacros#quasiquotes_2.10;2.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.brianmckenna#wartremover_2.10;0.14 [plugin->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'sources'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [sources][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'docs'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [docs][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'pom'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [pom][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'scala-tool'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT [scala-tool][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.6 [scala-tool->default][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-compiler;2.10.6 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.10.6 {scala-tool=[default, optional(default)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-compiler;2.10.6[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-compiler;2.10.6 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.6 [scala-tool->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.6 [scala-tool->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->default][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->optional(default)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-reflect;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-reflect;2.10.6 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-library;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-library;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-reflect;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#scala-reflect;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.6->org.scala-lang#scala-library;2.10.6 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.6 [scala-tool->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.6 [scala-tool->optional(default)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#jline;2.10.6 [optional->compile(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#jline;2.10.6 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#jline;2.10.6 {optional=[compile(*), master(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#jline;2.10.6[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#jline;2.10.6 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#jline;2.10.6->org.fusesource.jansi#jansi;1.4 [compile->compile(*)][0m
+[0m[[0minfo[0m] [0mResolving org.fusesource.jansi#jansi;1.4 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.fusesource.jansi#jansi;1.4 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.fusesource.jansi#jansi;1.4[0m
+[0m[[0mdebug[0m] [0m	found org.fusesource.jansi#jansi;1.4 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#jline;2.10.6->org.fusesource.jansi#jansi;1.4 [compile->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.6->org.scala-lang#jline;2.10.6 [optional->master(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [scala-tool->default][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [scala-tool->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [scala-tool->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [scala-tool->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.6 [scala-tool->optional(default)][0m
+[0m[[0mdebug[0m] [0m	resolved ivy file produced in cache[0m
+[0m[[0mdebug[0m] [0m:: downloading artifacts ::[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-library;2.10.6!scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.slf4j#slf4j-api;1.6.6!slf4j-api.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.solidfire#jsvcgen-client-java;0.3.0!jsvcgen-client-java.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] net.iharder#base64;2.3.9!base64.jar(bundle)[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.google.code.gson#gson;2.6.2!gson.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] joda-time#joda-time;2.9.3!joda-time.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.joda#joda-convert;1.8.1!joda-convert.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.slf4j#slf4j-simple;1.6.6!slf4j-simple.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.mockito#mockito-all;1.10.19!mockito-all.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scalatest#scalatest_2.10;2.2.6!scalatest_2.10.jar(bundle)[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scalacheck#scalacheck_2.10;1.13.0!scalacheck_2.10.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-reflect;2.10.6!scala-reflect.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-sbt#test-interface;1.0!test-interface.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.brianmckenna#wartremover_2.10;0.14!wartremover_2.10.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-compiler;2.10.5!scala-compiler.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-library;2.10.5!scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scalamacros#quasiquotes_2.10;2.0.1!quasiquotes_2.10.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-reflect;2.10.5!scala-reflect.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-compiler;2.10.6!scala-compiler.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#jline;2.10.6!jline.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 304ms :: artifacts dl 5ms[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT compile produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-compile.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT runtime produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-runtime.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT test produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-test.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT provided produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-provided.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT optional produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-optional.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT examples produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-examples.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT compile-internal produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-compile-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT runtime-internal produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-runtime-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT test-internal produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-test-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT plugin produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-plugin.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT sources produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-sources.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT docs produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-docs.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT pom produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-pom.xml[0m
+[0m[[0mdebug[0m] [0m	report for com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT scala-tool produced in /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/resolution-cache/reports/com.solidfire-solidfire-sdk-java-scala-tool.xml[0m
+[0m[[0mdebug[0m] [0m	resolve done (304ms resolve - 5ms download)[0m
+[0m[[0minfo[0m] [0mDone updating.[0m

@@ -68,7 +68,7 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 [Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/latest/api/)
 
-[1.0.0.53 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/1.0.0.53/)
+[1.0.0.53 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/v1.0/)
 
 ##Examples
 ###Examples of using the API (Java)

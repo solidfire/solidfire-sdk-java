@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="com.solidfire"
+		module="solidfire-sdk-java"
+		revision="0.1-SNAPSHOT"
+		conf="compile-internal"
+		confs="compile, runtime, test, provided, optional, examples, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
+		date="20160915105325"/>
+	<dependencies>
+		<module organisation="com.solidfire" name="jsvcgen-client-java">
+			<revision name="0.3.0" status="release" pubdate="20160909105828" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/solidfire/solidfire-sdk-java" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="2">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="4281" time="0" location="/Users/jwomack-LT/.ivy2/cache/com.solidfire/jsvcgen-client-java/ivy-0.3.0.xml" searched="false" origin-is-local="false" origin-location="https://oss.sonatype.org/content/groups/public/com/solidfire/jsvcgen-client-java/0.3.0/jsvcgen-client-java-0.3.0.pom"/>
+				<caller organisation="com.solidfire" name="solidfire-sdk-java" conf="optional, compile, provided, compile-internal" rev="0.3.0" rev-constraint-default="0.3.0" rev-constraint-dynamic="0.3.0" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="jsvcgen-client-java" type="jar" ext="jar" status="no" details="" size="32834" time="0" location="/Users/jwomack-LT/.ivy2/cache/com.solidfire/jsvcgen-client-java/jars/jsvcgen-client-java-0.3.0.jar">
+						<origin-location is-local="false" location="https://oss.sonatype.org/content/groups/public/com/solidfire/jsvcgen-client-java/0.3.0/jsvcgen-client-java-0.3.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.joda" name="joda-convert">
+			<revision name="1.8.1" status="release" pubdate="20151002045804" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.joda.org/joda-convert/" downloaded="false" searched="false" default="false" conf="compile, runtime, compile(*), runtime(*), master(compile), master" position="6">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="6308" time="0" location="/Users/jwomack-LT/.ivy2/cache/org.joda/joda-convert/ivy-1.8.1.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/joda/joda-convert/1.8.1/joda-convert-1.8.1.pom"/>
+				<caller organisation="com.solidfire" name="jsvcgen-client-java" conf="default, compile, runtime, master" rev="1.8.1" rev-constraint-default="1.8.1" rev-constraint-dynamic="1.8.1" callerrev="0.3.0"/>
+				<artifacts>
+					<artifact name="joda-convert" type="jar" ext="jar" status="no" details="" size="111521" time="0" location="/Users/jwomack-LT/.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.8.1.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/org/joda/joda-convert/1.8.1/joda-convert-1.8.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="joda-time" name="joda-time">
+			<revision name="2.9.3" status="release" pubdate="20160327133531" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.joda.org/joda-time/" downloaded="false" searched="false" default="false" conf="compile, runtime, compile(*), runtime(*), master(compile), master" position="5">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="6469" time="0" location="/Users/jwomack-LT/.ivy2/cache/joda-time/joda-time/ivy-2.9.3.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/joda-time/joda-time/2.9.3/joda-time-2.9.3.pom"/>
+				<caller organisation="com.solidfire" name="jsvcgen-client-java" conf="default, compile, runtime, master" rev="2.9.3" rev-constraint-default="2.9.3" rev-constraint-dynamic="2.9.3" callerrev="0.3.0"/>
+				<artifacts>
+					<artifact name="joda-time" type="jar" ext="jar" status="no" details="" size="627814" time="0" location="/Users/jwomack-LT/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.9.3.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/joda-time/joda-time/2.9.3/joda-time-2.9.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.google.code.gson" name="gson">
+			<revision name="2.6.2" status="release" pubdate="20160226193201" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, runtime, compile(*), runtime(*), master(compile), master" position="4">
+				<license name="Apache 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3507" time="0" location="/Users/jwomack-LT/.ivy2/cache/com.google.code.gson/gson/ivy-2.6.2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/google/code/gson/gson/2.6.2/gson-2.6.2.pom"/>
+				<caller organisation="com.solidfire" name="jsvcgen-client-java" conf="default, compile, runtime, master" rev="2.6.2" rev-constraint-default="2.6.2" rev-constraint-dynamic="2.6.2" callerrev="0.3.0"/>
+				<artifacts>
+					<artifact name="gson" type="jar" ext="jar" status="no" details="" size="229650" time="0" location="/Users/jwomack-LT/.ivy2/cache/com.google.code.gson/gson/jars/gson-2.6.2.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/com/google/code/gson/gson/2.6.2/gson-2.6.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.iharder" name="base64">
+			<revision name="2.3.9" status="release" pubdate="20160115074046" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://iharder.net/base64/" downloaded="false" searched="false" default="false" conf="compile, runtime, compile(*), runtime(*), master(compile), master" position="3">
+				<license name="Public domain"/>
+				<metadata-artifact status="no" details="" size="2982" time="0" location="/Users/jwomack-LT/.ivy2/cache/net.iharder/base64/ivy-2.3.9.xml" searched="false" origin-is-local="false" origin-location="https://jcenter.bintray.com/net/iharder/base64/2.3.9/base64-2.3.9.pom"/>
+				<caller organisation="com.solidfire" name="jsvcgen-client-java" conf="default, compile, runtime, master" rev="2.3.9" rev-constraint-default="2.3.9" rev-constraint-dynamic="2.3.9" callerrev="0.3.0"/>
+				<artifacts>
+					<artifact name="base64" type="bundle" ext="jar" status="no" details="" size="17536" time="0" location="/Users/jwomack-LT/.ivy2/cache/net.iharder/base64/bundles/base64-2.3.9.jar">
+						<origin-location is-local="false" location="https://jcenter.bintray.com/net/iharder/base64/2.3.9/base64-2.3.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.slf4j" name="slf4j-api">
+			<revision name="1.6.6" status="release" pubdate="20120611084148" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.slf4j.org" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, compile(*), runtime, runtime(*), master(compile), master" position="1">
+				<metadata-artifact status="no" details="" size="4415" time="0" location="/Users/jwomack-LT/.ivy2/cache/org.slf4j/slf4j-api/ivy-1.6.6.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.6.6/slf4j-api-1.6.6.pom"/>
+				<caller organisation="com.solidfire" name="solidfire-sdk-java" conf="optional, compile, provided, compile-internal" rev="1.6.6" rev-constraint-default="1.6.6" rev-constraint-dynamic="1.6.6" callerrev="0.1-SNAPSHOT"/>
+				<caller organisation="com.solidfire" name="jsvcgen-client-java" conf="default, compile, runtime, master" rev="1.6.6" rev-constraint-default="1.6.6" rev-constraint-dynamic="1.6.6" callerrev="0.3.0"/>
+				<artifacts>
+					<artifact name="slf4j-api" type="jar" ext="jar" status="no" details="" size="26176" time="0" location="/Users/jwomack-LT/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.6.6.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.6.6/slf4j-api-1.6.6.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.10.6" status="release" pubdate="20150918033528" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.10.6/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="0">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html          "/>
+				<metadata-artifact status="no" details="" size="2669" time="0" location="/Users/jwomack-LT/.ivy2/cache/org.scala-lang/scala-library/ivy-2.10.6.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.6/scala-library-2.10.6.pom"/>
+				<caller organisation="com.solidfire" name="solidfire-sdk-java" conf="optional, compile, provided, compile-internal" rev="2.10.6" rev-constraint-default="2.10.6" rev-constraint-dynamic="2.10.6" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="no" details="" size="7132001" time="0" location="/Users/jwomack-LT/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.6.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.6/scala-library-2.10.6.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
