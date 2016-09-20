@@ -17,7 +17,7 @@ The SolidFire Java SDK is a collection of software modules and libraries that fa
 
 ##Getting Help
 Contacting SolidFire SDK Support
-If you have any questions or comments about this product, contact <sdk@solidfire.com> or reach out to the developer community at [ThePub](http://netapp.io). Your feedback helps us focus our efforts on new features and capabilities.
+If you have any questions or comments about this product, contact <ng-sf-host-integrations-sdk@netapp.com> or reach out to the developer community at [ThePub](http://netapp.io). Your feedback helps us focus our efforts on new features and capabilities.
 
 ##Download
 [Download](http://mvnrepository.com/artifact/com.solidfire) the latest JAR or grab via Maven:
