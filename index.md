@@ -11,6 +11,7 @@ Version 1.1.0.85
 The SolidFire Java SDK is a collection of software modules and libraries that facilitate integration and orchestration between proprietary systems and third-party applications. The Java SDK allows developers to deeply integrate SolidFire system API with the Java programming language. The SolidFire Java SDK reduces the amount of additional coding time required for integration.
 
 ##Compatibility
+
 | Component    | Version             |
 | ------------ | ------------------- |
 | Java         | 7.0 & 8.0           |
@@ -93,6 +94,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.*;
     SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
 ~~~
 ####Scala:
+
 ~~~scala
 import com.solidfire.client.ElementFactory
 import com.solidfire.element.api._
@@ -111,12 +113,15 @@ This example sends a request to list accounts then pulls the first account
 from the <i>AddAccountResult</i> object.
 
 ####Java:
+
 ~~~java
     // Send the request and wait for the result then pull the Account
     ListAccountsResult listAccountsResult = sfe.listAccounts(ListAccountsRequest.builder().build());
     Account account = listAccountsResult.getAccounts()[0];
 ~~~
+
 ####Scala:
+
 ~~~scala
     // Send the request and wait for the result then pull the first Account
     val listAccountsResult = sfe.listAccounts(ListAccountsRequest.builder.build)
@@ -124,6 +129,7 @@ from the <i>AddAccountResult</i> object.
 ~~~
 
 ###Examples of using the API (Java)
+
 ~~~java
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
@@ -176,7 +182,9 @@ public class ReadmeJavaExample {
     }
 }
 ~~~
+
 ###Examples of using the API (Scala)
+
 ~~~scala    
 import com.solidfire.client.ElementFactory
 import com.solidfire.element.api._
@@ -231,6 +239,7 @@ Connection timeout (useful for failing fast when a host becomes
 unreachable):
 
 ####Java:
+
 ~~~java
     import com.solidfire.client.ElementFactory;
     import com.solidfire.element.api.*;
@@ -242,6 +251,7 @@ unreachable):
 Read timeout (useful for extending time for a service call to return):
 
 ####Java:
+
 ~~~java
     import com.solidfire.client.ElementFactory;
     import com.solidfire.element.api.*;
