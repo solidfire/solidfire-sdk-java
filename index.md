@@ -13,7 +13,7 @@ The SolidFire Java SDK is a collection of software modules and libraries that fa
 ## Compatibility
 
 | Component    | Version             |
-| ------------ | ------------------- |
+|:------------:|:-------------------:|
 | Java         | 7.0 & 8.0           |
 | SolidFire OS | Element 7.0 - 8.4\* |
 \*<sub><sup>_**Note**: This version of the SDK will work with versions of Element OS greater then 8.4 but some features will not be supported in the API._</sup></sub>
@@ -296,8 +296,8 @@ An example logback.xml:
 ~~~
 
 ## Roadmap
-| Version | Release Date      | Notes                                                             |
-| ------- | ------------------ | ---------------------------------------------------------------- |
+| Version | Release Date       | Notes                                                             |
+|:-------:|:------------------:|:----------------------------------------------------------------:|
 | 1.0     | November 20, 2015  | Accounts, Volumes, Access Groups, Snapshots, and Group Snapshots |
 | 1.1     | September 20, 2016 | Additional Nitorgen & Oxygen API Coverage                        |
 | 1.2     | ___TBD___          | Complete Nitorgen, Oxygen, & Fluorine API Coverage               |
