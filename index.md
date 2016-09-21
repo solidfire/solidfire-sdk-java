@@ -44,6 +44,7 @@ or Gradle:
 ~~~groovy
 compile 'com.solidfire:solidfire-sdk-java:1.1.0.85'
 ~~~
+
 ##Assembly Jar
 The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.1.0.85/solidfire-sdk-assembly-1.1.0.85.jar).  
 
@@ -81,6 +82,7 @@ This is the preferred way to construct the [SolidFireElement](https://solidfire.
 SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the [ElementFactory](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/client/ElementFactory.html) documentation.
 
 ####Java:
+
 ~~~java
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
@@ -93,6 +95,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.*;
     // Use ElementFactory to get a SolidFireElement object.
     SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
 ~~~
+
 ####Scala:
 
 ~~~scala
