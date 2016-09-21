@@ -13,7 +13,14 @@ set -e
 git clone -b  gh-pages https://${GH_TOKEN}@github.com/solidfire/solidfire-sdk-java.git ../solidfire-sdk-java.gh-pages
 
 # copy generated HTML site to `master' branch
-cat ../solidfire-sdk-java.gh-pages/front.yml ./README.md > ../solidfire-sdk-java.gh-pages/index.md
+for file in **/*.md; do
+    cat ../solidfire-sdk-java.gh-pages/front.yml ${file} > ${file##*/}
+done
+
+sed -i -e 's/.md/.html/g' *.md
+sed -i -e 's/examples\///g' *.md
+
+rm -f **/*.md-e
 
 # commit and push generated content to `master' branch
 # since repository was cloned in write mode with token auth - we can push there
