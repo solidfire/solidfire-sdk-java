@@ -6,5 +6,5 @@ layout: index
 
 Examples:
 
-- [Manage Accounts](manage-accounts.md)
-- [Snapshot Scheduling](snapshot-scheduling.md)
+- [Manage Accounts](manage-accounts.html)
+- [Snapshot Scheduling](snapshot-scheduling.html)
