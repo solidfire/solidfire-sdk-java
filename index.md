@@ -84,6 +84,7 @@ SDK and Element OS. Optionally, you can choose to set the version manually and w
 ####Java:
 
 ~~~java
+
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -94,11 +95,13 @@ import static com.solidfire.jsvcgen.javautil.Optional.*;
 ...
     // Use ElementFactory to get a SolidFireElement object.
     SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+
 ~~~
 
 ####Scala:
 
 ~~~scala
+
 import com.solidfire.client.ElementFactory
 import com.solidfire.element.api._
 import com.solidfire.jsvcgen.javautil.Optional.{empty, of}
@@ -106,6 +109,7 @@ import com.solidfire.jsvcgen.javautil.Optional.{empty, of}
 ...
   // Use ElementFactory to get a SolidFireElement object.
   val sf = ElementFactory.create( "mvip", "username", "password", "8.0" )
+
 ~~~
 
 ##Step 2 - Call the API method and retrieve the result
