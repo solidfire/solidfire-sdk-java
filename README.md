@@ -1,20 +1,23 @@
+#<img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png"" height="50" width="50" > SolidFire Java SDK
 
-# SolidFire Java SDK <img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png"" height="50" width="50" >
+Java SDK library for interacting with SolidFire Element API
 
-SolidFire Management API as a Java SDK
+##Current Release
+Version 1.1.0.85
 
 ##Description
 The SolidFire Java SDK is a collection of software modules and libraries that facilitate integration and orchestration between proprietary systems and third-party applications. The Java SDK allows developers to deeply integrate SolidFire system API with the Java programming language. The SolidFire Java SDK reduces the amount of additional coding time required for integration.
 
 ##Compatibility
-| Component    | Version           |
-| ------------ | ----------------- |
-| Java         | 7.0 & 8.0         |
-| SolidFire OS | Element 7.x & 8.x |
+| Component    | Version             |
+| ------------ | ------------------- |
+| Java         | 7.0 & 8.0           |
+| SolidFire OS | Element 7.0 - 8.4\* |
+\*<sub><sup>_**Note**: This version of the SDK will work with versions of Element OS greater then 8.4 but some features will not be supported in the API._</sup></sub>
 
 ##Getting Help
 Contacting SolidFire SDK Support
-If you have any questions or comments about this product, contact <sdk@solidfire.com> or reach out to the developer community at [developer.solidfire.com](http://developer.solidfire.com). Your feedback helps us focus our efforts on new features and capabilities.
+If you have any questions or comments about this product, contact <ng-sf-host-integrations-sdk@netapp.com> or reach out to the developer community at [ThePub](http://netapp.io). Your feedback helps us focus our efforts on new features and capabilities.
 
 ##Download
 [Download](http://mvnrepository.com/artifact/com.solidfire) the latest JAR or grab via Maven:
@@ -22,24 +25,24 @@ If you have any questions or comments about this product, contact <sdk@solidfire
 ```xml
 <dependency>
   <groupId>com.solidfire</groupId>
-  <artifactId>element-api</artifactId>
-  <version>1.0.0.53</version>
+  <artifactId>solidfire-sdk-java</artifactId>
+  <version>1.1.0.85</version>
 </dependency>
 ```
 
 or SBT:
 
 ```scala
-libraryDependencies += "com.solidfire" % "element-api" % "1.0.0.53"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.1.0.85"
 ```
 
 or Gradle:
 
 ```groovy
-compile 'com.solidfire:element-api:1.0.0.53'
+compile 'com.solidfire:solidfire-sdk-java:1.1.0.85'
 ```
 ##Assembly Jar
-The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.0.0.53/solidfire-sdk-1.0.0.53.jar).  
+The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.1.0.85/solidfire-sdk-assembly-1.1.0.85.jar).  
 
 ___Dependencies___:
 
@@ -64,10 +67,17 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 [Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/latest/api/)
 
-[1.0.0.53 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/1.0.0.53/)
+[1.1.0.85 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/)
+
+[1.0.0.53 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/v1.0/)
 
 ##Examples
-###Examples of using the API (Java)
+Step 1 - Build a [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/element/api/SolidFireElement.html) object using the factory
+---
+This is the preferred way to construct the [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/element/api/SolidFireElement.html) object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
+SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the [ElementFactory](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/client/ElementFactory.html) documentation.
+
+####Java:
 ```java
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
@@ -76,84 +86,176 @@ import com.solidfire.jsvcgen.javautil.Optional;
 // Import Optional common empty types (String, Long, & Map)
 import static com.solidfire.jsvcgen.javautil.Optional.*;
 
+...
+    // Use ElementFactory to get a SolidFireElement object.
+    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+```
+####Scala:
+```scala
+import com.solidfire.client.ElementFactory
+import com.solidfire.element.api._
+import com.solidfire.jsvcgen.javautil.Optional.{empty, of}
+
+...
+  // Use ElementFactory to get a SolidFireElement object.
+  val sf = ElementFactory.create( "mvip", "username", "password", "8.0" )
+```
+
+##Step 2 - Call the API method and retrieve the result
+
+All service methods in SolidFireElement call API endpoints and they all return result objects. The naming convention is <i>[methodName]Result</i>. For example, <i>listAccounts()</i> returns a <i>ListAccountsResult</i> object which has a property called <i>getAccounts()</i> returns an array of <i>Accounts</i> that can be iterated.
+
+This example sends a request to list accounts then pulls the first account
+from the <i>AddAccountResult</i> object.
+
+####Java:
+```java
+    // Send the request and wait for the result then pull the Account
+    ListAccountsResult listAccountsResult = sfe.listAccounts(ListAccountsRequest.builder().build());
+    Account account = listAccountsResult.getAccounts()[0];
+```
+####Scala:
+```scala
+    // Send the request and wait for the result then pull the first Account
+    val listAccountsResult = sfe.listAccounts(ListAccountsRequest.builder.build)
+    val account = listAccountsResult.getAccounts()(0)
+```
+
+###Examples of using the API (Java)
+```java
+import com.solidfire.client.ElementFactory;
+import com.solidfire.element.api.*;
+import com.solidfire.jsvcgen.javautil.Optional;
+
+// Import Optional common empty types (String, Long, & Map)
+import static com.solidfire.jsvcgen.javautil.Optional.*;
 public class ReadmeJavaExample {
     public static void main(String[] args) {
         // Create Connection to SF Cluster
         SolidFireElement sf = ElementFactory.create("mvip", "username", "password", "8.0");
 
-        // Create some accounts
+        //* --------- EXAMPLE 1 - CREATE AN ACCOUNT ----------- *//
+        // Construct an "AddAccount" request with only required parameters using the builder
         AddAccountRequest addAccountRequest = AddAccountRequest.builder()
                                                                .username("username")
                                                                .build();
-
+        // Send the request and pull the account ID from the result object
         Long accountId = sf.addAccount(addAccountRequest).getAccountID();
 
-        // And a volume with default QoS
+        //* --------- EXAMPLE 2 - CREATE A VOLUME ------------- *//
+        // Construct a request with parameters using the constructor.
         CreateVolumeRequest createVolumeRequest = new CreateVolumeRequest("volumeName", accountId,
-                1000000000l, false,
-                Optional.<QoS>empty(),
-                EMPTY_MAP);
-
+                                                                          1000000000l, false,
+                                                                          Optional.<QoS>empty(),
+                                                                          EMPTY_MAP);
+                                                            
+        // Send the "CreateVolume" request pull the VolumeID off the result object
         Long volumeId = sf.createVolume(createVolumeRequest).getVolumeID();
 
-        // Lookup iqn for new volume
-        String iqn = sf.listVolumesForAccount(accountId, of(volumeId), of(1l)).getVolumes()[0].getIqn();
+        //* --------- EXAMPLE 3 - LIST ONE VOLUME FOR AN ACCOUNT ------------- *//
+        // Send the "ListVolume" request with desired parameters inline and pull the first volume in the result
+        Volume volume = sf.listVolumesForAccount(accountId, of(volumeId), of(1l)).getVolumes()[0];
+        // Pull the iqn from the volume
+        String iqn = volume.getIqn();
 
+        //* --------- EXAMPLE 3 - MODIFY A VOLUME ------------- *//
         // Change Min and Burst QoS while keeping Max and Burst Time the same
         QoS qos = new QoS(of(5000l), EMPTY_LONG, of(30000l), EMPTY_LONG);
 
-        // Modify the volume size and QoS
+        // Construct request to modify the volume size and QoS using the builder
         ModifyVolumeRequest modifyVolumeRequest = ModifyVolumeRequest.builder()
                                                                      .volumeID(volumeId)
                                                                      .optionalQos(qos)
                                                                      .optionalTotalSize(2000000000l)
                                                                      .build();
 
+        // Send the modify volume request
         sf.modifyVolume(modifyVolumeRequest);
     }
 }
 ```
-
 ###Examples of using the API (Scala)
 ```scala    
-// Import your Java Primitive Types
-import java.lang.Long
 import com.solidfire.client.ElementFactory
-import com.solidfire.javautil.Optional.{empty, of}
+import com.solidfire.element.api._
+import com.solidfire.jsvcgen.javautil.Optional.{empty, of}
 
 class ReadmeScalaExample {
 
   // Create Connection to SF Cluster
-  val sf = ElementFactory.create("mvip", "username", "password", "8.0")
+  val sf = ElementFactory.create( "mvip", "username", "password", "8.0" )
 
-  // Create some accounts
-  val addAccount = AddAccountRequest.builder.username("username").build
-  val accountId = sf.addAccount(addAccount).getAccountID
+  //* --------- EXAMPLE 1 - CREATE AN ACCOUNT ----------- *//
+  // Construct an "AddAccount" request with only required parameters using the builder
+  val addAccount = AddAccountRequest.builder.username( "username" ).build
 
-  // And a volume
-  val createVolume = new CreateVolumeRequest("volumeName", accountId, 1000000000l, false, empty[QoS], empty())
-  val volumeId = sf.createVolume(createVolume).getVolumeID
+  // Send the request and pull the account ID from the result object
+  val accountId = sf.addAccount( addAccount ).getAccountID
 
-  // Lookup iqn for new volume
-  val iqn: String = sf.listVolumesForAccount(accountId, of(volumeId), of(1l)).getVolumes()(0).getIqn
-
-  // Change Min and Burst QoS while keeping Max and Burst Time the same
-  val qos: QoS = new QoS(of(5000l), empty[Long], of(30000l), empty[Long])
-
-  // Modify the volume
-  val modifyVolume = ModifyVolumeRequest.builder
-                                        .volumeID(volumeId)
-                                        .optionalQoS(qos)
-                                        .optionalSize( 2000000000l )
-                                        .build
+  //* --------- EXAMPLE 2 - CREATE A VOLUME ------------- *//
+  // Construct a "CreateVolume" request with parameters using the constructor.
+  val createVolume = new CreateVolumeRequest( "volumeName", accountId, 
+                                              1000000000L, false, empty[QoS], empty( ) )
   
-  sf.modifyVolume(modifyVolume)
+  // Send the request pull the VolumeID off the result object
+  val volumeId = sf.createVolume( createVolume ).getVolumeID
+
+  //* --------- EXAMPLE 3 - LIST ONE VOLUME FOR AN ACCOUNT ------------- *//
+  // Send the "ListVolume" request with desired parameters inline and pull the first volume in the result
+  val iqn: Volume = sf.listVolumesForAccount( accountId, of( volumeId ), of( 1L ) ).getVolumes()(0)
+  
+  // pull the iqn from the volume
+  val iqn: String = volume.getIqn
+
+  //* --------- EXAMPLE 4 - MODIFY A VOLUME ------------- *//
+  // Change Min and Burst QoS while keeping Max and Burst Time the same
+  val qos: QoS = new QoS( of( 5000l ), empty(), of( 30000l ), empty() )
+
+  // Construct request to modify the volume size and QoS using the builder.
+  val modifyVolume = ModifyVolumeRequest.builder
+                                        .volumeID( volumeId )
+                                        .optionalQos( qos )
+                                        .optionalTotalSize( 2000000000l )
+                                        .build
+
+  // Send the modify volume request
+  sf.modifyVolume( modifyVolume )
 }
 ```
 
-##Logback
-The SDK and the Assembly leverage the [SLF4J API](http://www.slf4j.org/) for logging with the [logback-classi](http://logback.qos.ch/reasonsToSwitch.html)c implementation.  An advantage to using the SLF4J interface is the availability of legacy logging framework [bridges](http://www.slf4j.org/legacy.html), for intercepting and consolidating all logging calls into a single log.
-###Tracing Request / Response calls in the log
+##Timeouts
+
+Connection timeout (useful for failing fast when a host becomes
+unreachable):
+
+####Java:
+```java
+    import com.solidfire.client.ElementFactory;
+    import com.solidfire.element.api.*;
+    ...
+    SolidFireElement sfe = ElementFactory.create("ip-address-of-cluster", "username", "password");
+    sfe.getRequestDispatcher().setConnectionTimeout(600);
+```
+
+Read timeout (useful for extending time for a service call to return):
+
+####Java:
+```java
+    import com.solidfire.client.ElementFactory;
+    import com.solidfire.element.api.*;
+    ...
+    SolidFireElement sfe = ElementFactory.create("ip-address-of-cluster", "username", "password");
+    sfe.getRequestDispatcher().setReadTimeout(600);
+```
+
+##More Examples
+
+More specific examples are available [here](examples/README.md)
+
+##Logging and Logback
+The SDK and the Assembly leverage the [SLF4J API](http://www.slf4j.org/) for logging with the assembly also including  [logback-classic](http://logback.qos.ch/reasonsToSwitch.html) implementation.  An advantage to using the SLF4J interface is the availability of legacy logging framework [bridges](http://www.slf4j.org/legacy.html), for intercepting and consolidating all logging calls into a single log.
+
+###Logback (Assembly Only) Tracing Request / Response calls in the log
 An example logback.xml: 
 
 ```xml
@@ -176,14 +278,14 @@ An example logback.xml:
 ```
 
 ##Roadmap
-| Version | Release Date      | Notes                                                            |
-| ------- | ----------------- | ---------------------------------------------------------------- |
-| 1.0     | November 20, 2015 | Accounts, Volumes, Access Groups, Snapshots, and Group Snapshots |
-| 1.1     | ___TBD___         | Complete Nitorgen & Oxygen API Coverage                          |
-| 1.2     | ___TBD___         | Fluorine API Coverage                                            |
+| Version | Release Date      | Notes                                                             |
+| ------- | ------------------ | ---------------------------------------------------------------- |
+| 1.0     | November 20, 2015  | Accounts, Volumes, Access Groups, Snapshots, and Group Snapshots |
+| 1.1     | September 20, 2016 | Additional Nitorgen & Oxygen API Coverage                        |
+| 1.2     | ___TBD___          | Complete Nitorgen, Oxygen, & Fluorine API Coverage               |
 
 ##License
-Copyright © 2015 SolidFire, Inc. All rights reserved.
+Copyright © 2016 NetApp, Inc. All rights reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

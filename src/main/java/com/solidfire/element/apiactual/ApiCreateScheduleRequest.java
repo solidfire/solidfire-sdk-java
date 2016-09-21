@@ -183,6 +183,7 @@ public class ApiCreateScheduleRequest implements Serializable {
         return this.weekdays;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -204,12 +205,14 @@ public class ApiCreateScheduleRequest implements Serializable {
                 && Objects.deepEquals(weekdays, that.weekdays);
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         return Objects.hash(attributes, hours, minutes, paused, recurring, scheduleName, scheduleType, scheduleInfo, startingDate, monthdays, weekdays);
     }
 
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -262,6 +265,7 @@ public class ApiCreateScheduleRequest implements Serializable {
         private Optional<Long[]> monthdays;
         private Optional<ApiWeekday[]> weekdays;
 
+        /** Do not instantiate Builder. */
         private Builder() {
         }
 

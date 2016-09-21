@@ -36,14 +36,8 @@ public class CHAPSecretAdaptor implements JsonSerializer<CHAPSecret>, JsonDeseri
         return CHAPSecret.class;
     }
 
-    /**
-     * Serializes a CHAPSecret object.
-     *
-     * @param chapSecret the value to serialize.
-     * @param type       the type of the source object.
-     * @param context    Context used for serialization.
-     * @return A tree of JsonElements corresponding to the serialized form of optional.
-     */
+    /** {@inheritDoc} */
+    @Override
     public JsonElement serialize(CHAPSecret chapSecret, Type type, JsonSerializationContext context) {
         if (chapSecret == null ) {
             // Nothing to serialize
@@ -53,6 +47,7 @@ public class CHAPSecretAdaptor implements JsonSerializer<CHAPSecret>, JsonDeseri
         return context.serialize(chapSecret.getSecret());
     }
 
+    /** {@inheritDoc} */
     @Override
     public CHAPSecret deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         return new CHAPSecret(json.getAsString());

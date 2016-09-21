@@ -19,6 +19,9 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * This class represents the Frequency Type "Days of Week"
+ */
 public class DaysOfWeekFrequency implements Frequency, Serializable {
 
     private static final long serialVersionUID = 1L;

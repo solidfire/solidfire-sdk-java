@@ -15,5 +15,10 @@
  */
 package com.solidfire.element.api;
 
+/**
+ * An interface for account requests.
+ * @see com.solidfire.element.api.AddAccountRequest
+ * @see com.solidfire.element.api.ModifyAccountRequest
+ */
 public interface IAccountRequest {
 }
