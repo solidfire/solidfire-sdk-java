@@ -23,25 +23,25 @@ If you have any questions or comments about this product, contact <sdk@solidfire
 ##Download
 [Download](http://mvnrepository.com/artifact/com.solidfire) the latest JAR or grab via Maven:
 
-```xml
+~~~xml
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>element-api</artifactId>
   <version>1.0.0.53</version>
 </dependency>
-```
+~~~
 
 or SBT:
 
-```scala
+~~~scala
 libraryDependencies += "com.solidfire" % "element-api" % "1.0.0.53"
-```
+~~~
 
 or Gradle:
 
-```groovy
+~~~groovy
 compile 'com.solidfire:element-api:1.0.0.53'
-```
+~~~
 ##Assembly Jar
 The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.0.0.53/solidfire-sdk-1.0.0.53.jar).  
 
@@ -72,7 +72,7 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 ##Examples
 ###Examples of using the API (Java)
-```java
+~~~java
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -116,10 +116,10 @@ public class ReadmeJavaExample {
         sf.modifyVolume(modifyVolumeRequest);
     }
 }
-```
+~~~
 
 ###Examples of using the API (Scala)
-```scala    
+~~~scala    
 // Import your Java Primitive Types
 import java.lang.Long
 import com.solidfire.client.ElementFactory
@@ -153,14 +153,14 @@ class ReadmeScalaExample {
   
   sf.modifyVolume(modifyVolume)
 }
-```
+~~~
 
 ##Logback
 The SDK and the Assembly leverage the [SLF4J API](http://www.slf4j.org/) for logging with the [logback-classi](http://logback.qos.ch/reasonsToSwitch.html)c implementation.  An advantage to using the SLF4J interface is the availability of legacy logging framework [bridges](http://www.slf4j.org/legacy.html), for intercepting and consolidating all logging calls into a single log.
 ###Tracing Request / Response calls in the log
 An example logback.xml: 
 
-```xml
+~~~xml
 <configuration debug="true">
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -177,7 +177,7 @@ An example logback.xml:
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>
-```
+~~~
 
 ##Roadmap
 | Version | Release Date      | Notes                                                            |

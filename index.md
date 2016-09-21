@@ -24,25 +24,25 @@ If you have any questions or comments about this product, contact <ng-sf-host-in
 ##Download
 [Download](http://mvnrepository.com/artifact/com.solidfire) the latest JAR or grab via Maven:
 
-```xml
+~~~xml
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>solidfire-sdk-java</artifactId>
   <version>1.1.0.85</version>
 </dependency>
-```
+~~~
 
 or SBT:
 
-```scala
+~~~scala
 libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.1.0.85"
-```
+~~~
 
 or Gradle:
 
-```groovy
+~~~groovy
 compile 'com.solidfire:solidfire-sdk-java:1.1.0.85'
-```
+~~~
 ##Assembly Jar
 The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.1.0.85/solidfire-sdk-assembly-1.1.0.85.jar).  
 
@@ -80,7 +80,7 @@ This is the preferred way to construct the [SolidFireElement](https://solidfire.
 SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the [ElementFactory](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/client/ElementFactory.html) documentation.
 
 ####Java:
-```java
+~~~java
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -91,9 +91,9 @@ import static com.solidfire.jsvcgen.javautil.Optional.*;
 ...
     // Use ElementFactory to get a SolidFireElement object.
     SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
-```
+~~~
 ####Scala:
-```scala
+~~~scala
 import com.solidfire.client.ElementFactory
 import com.solidfire.element.api._
 import com.solidfire.jsvcgen.javautil.Optional.{empty, of}
@@ -101,7 +101,7 @@ import com.solidfire.jsvcgen.javautil.Optional.{empty, of}
 ...
   // Use ElementFactory to get a SolidFireElement object.
   val sf = ElementFactory.create( "mvip", "username", "password", "8.0" )
-```
+~~~
 
 ##Step 2 - Call the API method and retrieve the result
 
@@ -111,20 +111,20 @@ This example sends a request to list accounts then pulls the first account
 from the <i>AddAccountResult</i> object.
 
 ####Java:
-```java
+~~~java
     // Send the request and wait for the result then pull the Account
     ListAccountsResult listAccountsResult = sfe.listAccounts(ListAccountsRequest.builder().build());
     Account account = listAccountsResult.getAccounts()[0];
-```
+~~~
 ####Scala:
-```scala
+~~~scala
     // Send the request and wait for the result then pull the first Account
     val listAccountsResult = sfe.listAccounts(ListAccountsRequest.builder.build)
     val account = listAccountsResult.getAccounts()(0)
-```
+~~~
 
 ###Examples of using the API (Java)
-```java
+~~~java
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
 import com.solidfire.jsvcgen.javautil.Optional;
@@ -175,9 +175,9 @@ public class ReadmeJavaExample {
         sf.modifyVolume(modifyVolumeRequest);
     }
 }
-```
+~~~
 ###Examples of using the API (Scala)
-```scala    
+~~~scala    
 import com.solidfire.client.ElementFactory
 import com.solidfire.element.api._
 import com.solidfire.jsvcgen.javautil.Optional.{empty, of}
@@ -223,7 +223,7 @@ class ReadmeScalaExample {
   // Send the modify volume request
   sf.modifyVolume( modifyVolume )
 }
-```
+~~~
 
 ##Timeouts
 
@@ -231,24 +231,24 @@ Connection timeout (useful for failing fast when a host becomes
 unreachable):
 
 ####Java:
-```java
+~~~java
     import com.solidfire.client.ElementFactory;
     import com.solidfire.element.api.*;
     ...
     SolidFireElement sfe = ElementFactory.create("ip-address-of-cluster", "username", "password");
     sfe.getRequestDispatcher().setConnectionTimeout(600);
-```
+~~~
 
 Read timeout (useful for extending time for a service call to return):
 
 ####Java:
-```java
+~~~java
     import com.solidfire.client.ElementFactory;
     import com.solidfire.element.api.*;
     ...
     SolidFireElement sfe = ElementFactory.create("ip-address-of-cluster", "username", "password");
     sfe.getRequestDispatcher().setReadTimeout(600);
-```
+~~~
 
 ##More Examples
 
@@ -260,7 +260,7 @@ The SDK and the Assembly leverage the [SLF4J API](http://www.slf4j.org/) for log
 ###Logback (Assembly Only) Tracing Request / Response calls in the log
 An example logback.xml: 
 
-```xml
+~~~xml
 <configuration debug="true">
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -277,7 +277,7 @@ An example logback.xml:
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>
-```
+~~~
 
 ##Roadmap
 | Version | Release Date      | Notes                                                             |

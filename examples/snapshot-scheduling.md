@@ -23,7 +23,7 @@ Further documentation for each method and type can be found at our [Java documen
 
 To list all the schedules on a cluster:
 
-``` java
+~~~ java
     // Create Connection to SF Cluster
     SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
     
@@ -34,13 +34,13 @@ To list all the schedules on a cluster:
     for (Schedule schedule : listSchedulesResult.getSchedules()) {
         System.out.println(schedule);
     }
-```
+~~~
 
 ### Get one Schedule
 
 To get a single schedule:
 
-``` java
+~~~ java
     // Create Connection to SF Cluster
     SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
     
@@ -49,7 +49,7 @@ To get a single schedule:
     
     // display the schedule from the result object
     System.out.println(getSchedulesResult.getSchedule());
-```
+~~~
 
 ### Create a Schedule
 
@@ -65,34 +65,34 @@ All three types of schedules are demonstrated here:
 
 This type of schedule will base snapshots on a time interval frequency. Each snapshot will be taken after the specified amount of time has passed. Control the duration by setting days, hours, and minutes on the TimeIntervalFrequency object.
 
-``` java
+~~~ java
     Schedule schedule = Schedule.builder()
                                 .name("SnapshotEvery3AndAHalfDays")
                                 .frequency(new TimeIntervalFrequency(0L, 12L, 3L))
                                 .build();
-```
+~~~
 
 ##### Days Of Week Schedule
 
 This type of schedule will base snapshots on a weekly frequency. Each snapshot will be taken on the specified weekdays at the time specified in the hours and minutes properties. Control the schedule by setting weekdays, hours, and minutes on the DaysOfWeekFrequency object.
 
-``` java
+~~~ java
     Schedule schedule = Schedule.builder()
                                 .name("SnapshotOnMonWedFriAt3am")
                                 .frequency(new DaysOfWeekFrequency(0L, 3L, new Weekday[]{Weekday.Monday, Weekday.Wednesday, Weekday.Friday}))
                                 .build();
-```
+~~~
 
 ##### Days Of Month Schedule
 
 This type of schedule will base snapshots on a monthly frequency. Each snapshot will be taken on the specified month days at the time specified in the hours and minutes properties. Control the schedule by setting monthdays, hours, and minutes on the DaysOfMonthFrequency object.
 
-``` java
+~~~ java
     Schedule schedule = Schedule.builder()
                                 .name("SnapshotOn7th14thAnd21stAt0130Hours")
                                 .frequency(new DaysOfMonthFrequency(30L, 3L, new Long[]{7L, 14L, 21L}))
                                 .build();
-```
+~~~
 
 #### Create a Schedule (cont.)
 
@@ -100,7 +100,7 @@ After creating the schedule and setting the frequency to Time Interval, Days Of 
 
 Continuing on with the [Time Interval](#time-interval-schedule) example from above:
 
-```java
+~~~java
     Schedule.Builder scheduleBuilder = Schedule.builder()
                                                .name("SnapshotEvery12Hours")
                                                .frequency(TimeIntervalFrequency.builder().hours(12L).build());
@@ -124,7 +124,7 @@ Continuing on with the [Time Interval](#time-interval-schedule) example from abo
 
     // Grab the schedule ID from the result object
     Long newScheduleId = createScheduleResult.getScheduleID();
-```
+~~~
 
 At this point we have created a new schedule called SnapshotEvery12Hours that creates a snapshot whose name is prepended with "12th hour snapshot" every 12 hours for volumes 1, 3, and 5 that is retained for 72 hours.
 
@@ -132,7 +132,7 @@ At this point we have created a new schedule called SnapshotEvery12Hours that cr
 
 To modify a schedule, first you must have a valid schedule object with its `ScheduleID` set. You can create one manually but it is preferred to retrieve it from the cluster, modify the properties needed and then send it back. Here is an example:
 
-``` java
+~~~ java
     // Create Connection to SF Cluster
     SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
 
@@ -156,4 +156,4 @@ To modify a schedule, first you must have a valid schedule object with its `Sche
 
     // display the newly modified schedule
     System.out.println(modifiedScheduleResult.getSchedule());  
-```
+~~~
