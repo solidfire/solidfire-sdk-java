@@ -1,4 +1,0 @@
-[0m[[0minfo[0m] [0m:: delivering :: com.solidfire#solidfire-sdk-java;0.1-SNAPSHOT :: 0.1-SNAPSHOT :: integration :: Thu Sep 15 10:53:25 MDT 2016[0m
-[0m[[0mdebug[0m] [0m	options = status=integration pubdate=Thu Sep 15 10:53:25 MDT 2016 validate=true resolveDynamicRevisions=true merge=true resolveId=null pubBranch=null[0m
-[0m[[0minfo[0m] [0m	delivering ivy file to /Users/jwomack-LT/solid/github/solidfire-sdk-java/target/ivy-0.1-SNAPSHOT.xml[0m
-[0m[[0mdebug[0m] [0m	deliver done (181ms)[0m

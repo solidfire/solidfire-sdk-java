@@ -2,4 +2,7 @@
 .idea/
 _site
 .sass-cache
+.git/
+target/
+project/
 
