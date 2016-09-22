@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # only proceed script when started not by pull request (PR)
-if [ $TRAVIS_PULL_REQUEST == "true" ]; then
-  echo "this is PR, exiting"
+if [ [$TRAVIS_PULL_REQUEST == "true"] || [$TRAVIS_BRANCH != "master"] ]; then
+  echo "this is PR or not on master, exiting"
   exit 0
 fi
 
