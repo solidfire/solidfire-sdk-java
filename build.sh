@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# only proceed script when started on master
+if [ $TRAVIS_BRANCH != "master" ]; then
+  echo "this is not on master, exiting"
+  exit 0
+fi
+
 # only proceed script when started not by pull request (PR)
 if [ $TRAVIS_PULL_REQUEST == "true" ]; then
   echo "this is PR, exiting"
@@ -30,5 +36,5 @@ cd ../solidfire-sdk-java.gh-pages
 git config user.email "jason.womack@solidfire.com"
 git config user.name "Jason Ryan Womack"
 git add -A .
-git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
+git commit --allow-empty -a -m "Travis #$TRAVIS_BUILD_NUMBER"
 git push --quiet origin gh-pages > /dev/null 2>&1
