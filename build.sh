@@ -7,7 +7,7 @@ if [ $TRAVIS_PULL_REQUEST == "true" ]; then
 fi
 
 # enable error reporting to the console
-set -e
+set -ev
 
 #clone `master' branch of the repository using encrypted GH_TOKEN for authentification
 git clone -b  gh-pages https://${GH_TOKEN}@github.com/solidfire/solidfire-sdk-java.git ../solidfire-sdk-java.gh-pages
@@ -31,4 +31,4 @@ git config user.email "jason.womack@solidfire.com"
 git config user.name "Jason Ryan Womack"
 git add -A .
 git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
-git push --quiet origin gh-pages > /dev/null 2>&1
+git push --quiet origin gh-pages 
