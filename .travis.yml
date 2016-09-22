@@ -1,8 +1,5 @@
 language: ruby
 script: "./build.sh"
-branches:
-  only:
-  - master
 rvm:
 - 2.1.2
 env:
