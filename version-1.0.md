@@ -3,7 +3,7 @@ title: Solidfire Java SDK
 layout: index
 ---
 
-# SolidFire Java SDK <img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png"" height="50" width="50" >
+# <img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png"" height="50" width="50" > SolidFire Java SDK v1.0
 
 SolidFire Management API as a Java SDK
 
@@ -211,7 +211,7 @@ An example logback.xml:
 | 1.1     | ___TBD___         | Complete Nitorgen & Oxygen API Coverage                          |
 | 1.2     | ___TBD___         | Fluorine API Coverage                                            |
 
-##License
+## License
 
 Copyright © 2015 SolidFire, Inc. All rights reserved.
 
