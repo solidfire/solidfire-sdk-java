@@ -1,3 +1,5 @@
+import de.johoop.jacoco4sbt.XMLReport
+
 name := "solidFire-sdk-java"
 
 exportJars := false
@@ -20,3 +22,9 @@ packageOptions in(Compile, packageBin) += Package.ManifestAttributes(
 )
 
 jacoco.settings
+
+Keys.fork              in jacoco.Config := true
+
+parallelExecution      in jacoco.Config := false
+
+jacoco.reportFormats   in jacoco.Config := Seq( XMLReport(encoding = "utf-8"))
