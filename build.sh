@@ -36,5 +36,5 @@ cd ../solidfire-sdk-java.gh-pages
 git config user.email "jason.womack@solidfire.com"
 git config user.name "Jason Ryan Womack"
 git add -A .
-git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
+git commit --allow-empty -a -m "Travis #$TRAVIS_BUILD_NUMBER"
 git push --quiet origin gh-pages > /dev/null 2>&1
