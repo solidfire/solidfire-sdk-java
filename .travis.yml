@@ -2,12 +2,12 @@ language: scala
 sudo: false
 script:
  - sbt clean jacoco:cover
+ - "./build.sh"
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 cache:
   directories:
   - "$HOME/.ivy2/cache"
-script: "./build.sh"
 env:
   global:
   - secure: Vcy6KV/XbSycZCK3hjf33BGGSIJuOawQXr3C7DNWVbAnBK98xrfyY7t1zhQYaJe+z4lodrS28/pswLskIFowizX4oHStDElyEtcHOXgIt7j9lel7CJitUM1HbppopdKaHczuQRK06ay/T67+Ej4PyezHq+vLquyAfrSjlZyNHyz2Y9qlyG9me7eGXjSaYkywn7emzryP0YtBsHvCjMNfbTQkd28vToHoH1hBlftixVBeCSMlApsU1j38jclsK2LFn1DwgU700Y4miKS/DKrEEDDEgCjUsI3DPEITxgXu5X0eI820yb6H9Zz4PmfWaj5VVkxxAiFiIKU3vSsQ8nrn1uhg4vuFAX+2TtMslDBKS4B2B75rLYmL90AUQx982z6yWDFyj/4mlNgB/oedoOKmua8MWDKjgZHQYLMS5JIYSYmPsVAq1fCYAhCkvxlaxpNAOAITT8vZ95Y2W0mt/6s1w5s9vAGs0PQX28oELYRJNeqgb5kXL3OZ4TW77CiG79saRpnIT48MweTyA0su7XukWS/bPXmX4w/Pn3KNx/Ee5qR/RmMfDfO2imsag2KANuvCg4C1bOAg3xDX4FllTdBzZvwVeM78v7N/DFGzirK2QGeE8jL+yD93RsAqLy84fFkfhBQZKEAR5xUlNHpAs154nvqyX4RzZWIt+ECcAsP7+3w=
