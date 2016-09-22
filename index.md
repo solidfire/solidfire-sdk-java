@@ -2,7 +2,7 @@
 title: Solidfire Java SDK
 layout: index
 ---
-# <img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png"" height="50" width="50" > SolidFire Java SDK
+# <img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png" height="50" width="50" > SolidFire Java SDK
 
 Java SDK library for interacting with SolidFire Element API
 
@@ -14,7 +14,7 @@ Version 1.1.0.85
 
 The SolidFire Java SDK is a collection of software modules and libraries that facilitate integration and orchestration between proprietary systems and third-party applications. The Java SDK allows developers to deeply integrate SolidFire system API with the Java programming language. The SolidFire Java SDK reduces the amount of additional coding time required for integration.
 
-##Compatibility
+## Compatibility
 
 | Component    | Version             |
 | ------------ | ------------------- |
