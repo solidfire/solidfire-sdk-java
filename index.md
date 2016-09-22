@@ -332,8 +332,8 @@ An example logback.xml:
 | Version | Release Date      | Notes                                                             |
 | ------- | ------------------ | ---------------------------------------------------------------- |
 | 1.0     | November 20, 2015  | Accounts, Volumes, Access Groups, Snapshots, and Group Snapshots |
-| 1.1     | September 20, 2016 | Additional Nitorgen & Oxygen API Coverage                        |
-| 1.2     | ___TBD___          | Complete Nitorgen, Oxygen, & Fluorine API Coverage               |
+| 1.1     | September 20, 2016 | Additional Nitrogen & Oxygen API Coverage                        |
+| 1.2     | ___TBD___          | Complete Nitrogen, Oxygen, & Fluorine API Coverage               |
 
 ## License
 
