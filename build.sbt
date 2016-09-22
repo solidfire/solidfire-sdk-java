@@ -23,8 +23,11 @@ packageOptions in(Compile, packageBin) += Package.ManifestAttributes(
 
 jacoco.settings
 
+jacoco.excludes        in jacoco.Config := Seq("*Request*", "*Result*", "*Example*", "*SolidFire*", "*api*", "*generated*")
+
 Keys.fork              in jacoco.Config := true
 
 parallelExecution      in jacoco.Config := false
 
 jacoco.reportFormats   in jacoco.Config := Seq( XMLReport(encoding = "utf-8"))
+
