@@ -112,7 +112,7 @@ object Version {
   val javaLanguage = "1.7"
   val javaTarget   = "1.7"
 
-  val jsvcgenClient = "0.3.0"
+  val jsvcgenClient = "0.3.3-SNAPSHOT"
   val slf4j         = "1.6.6"
 
   val scalatest  = "2.2.6"

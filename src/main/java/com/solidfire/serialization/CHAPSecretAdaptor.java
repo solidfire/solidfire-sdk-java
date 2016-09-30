@@ -16,7 +16,7 @@
 
 package com.solidfire.serialization;
 
-import com.google.gson.*;
+import com.solidfire.gson.*;
 import com.solidfire.element.api.CHAPSecret;
 
 import java.lang.reflect.Type;

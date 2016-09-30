@@ -18,7 +18,7 @@
  */
 package com.solidfire.element.apiactual;
 
-import com.google.gson.annotations.SerializedName;
+import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.jsvcgen.annotation.Since;
 
 import java.io.Serializable;
