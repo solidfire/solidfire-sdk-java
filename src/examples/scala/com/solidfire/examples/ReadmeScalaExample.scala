@@ -1,3 +1,5 @@
+package com.solidfire.examples
+
 import com.solidfire.client.ElementFactory
 import com.solidfire.element.api._
 import com.solidfire.jsvcgen.javautil.Optional.{empty, of}
