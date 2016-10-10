@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AddLdapClusterAdminRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1987423210L;
+    private static final long serialVersionUID = 918863598L;
 
     @SerializedName("username") private final String username;
     @SerializedName("access") private final String[] access;
@@ -50,26 +50,11 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
      * The Request object for the "AddLdapClusterAdmin" API Service call.
      * @param username [required] The distinguished user name for the new LDAP cluster admin.
      * @param access [required] Controls which methods this Cluster Admin can use. For more details on the levels of access, see the Access Control appendix in the SolidFire API Reference.
+     * @param acceptEula (optional) Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
      * @param attributes (optional) List of Name/Value pairs in JSON object format.
      * @since 8.0
      **/
     @Since("8.0")
-    public AddLdapClusterAdminRequest(String username, String[] access, Optional<java.util.Map<String, Object>> attributes) {
-        this.username = username;
-        this.access = access;
-        this.acceptEula = Optional.<Boolean>empty();
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-    }
-
-    /**
-     * The Request object for the "AddLdapClusterAdmin" API Service call.
-     * @param username [required] The distinguished user name for the new LDAP cluster admin.
-     * @param access [required] Controls which methods this Cluster Admin can use. For more details on the levels of access, see the Access Control appendix in the SolidFire API Reference.
-     * @param acceptEula (optional) Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 9.0
-     **/
-    @Since("9.0")
     public AddLdapClusterAdminRequest(String username, String[] access, Optional<Boolean> acceptEula, Optional<java.util.Map<String, Object>> attributes) {
         this.username = username;
         this.access = access;
@@ -94,10 +79,7 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
 
     /**
      * Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
-     * @since 9.0 
      **/
-
-    @Since("9.0")
     public Optional<Boolean> getAcceptEula() {
         return this.acceptEula;
     }

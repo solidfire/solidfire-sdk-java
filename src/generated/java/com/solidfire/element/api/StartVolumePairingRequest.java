@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class StartVolumePairingRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1874532687L;
+    private static final long serialVersionUID = -317356972L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("mode") private final Optional<String> mode;
@@ -47,10 +47,21 @@ public class StartVolumePairingRequest  implements Serializable  {
     /**
      * The Request object for the "StartVolumePairing" API Service call.
      * @param volumeID [required] The ID of the volume on which to start the pairing process.
-     * @param mode (optional) The mode of the volume on which to start the pairing process. The mode can only be set if the volume is the source volume.<br/>
      * @since 7.0
      **/
     @Since("7.0")
+    public StartVolumePairingRequest(Long volumeID) {
+        this.volumeID = volumeID;
+        this.mode = Optional.<String>empty();
+    }
+
+    /**
+     * The Request object for the "StartVolumePairing" API Service call.
+     * @param volumeID [required] The ID of the volume on which to start the pairing process.
+     * @param mode (optional) The mode of the volume on which to start the pairing process. The mode can only be set if the volume is the source volume.<br/>
+     * @since 8.0
+     **/
+    @Since("8.0")
     public StartVolumePairingRequest(Long volumeID, Optional<String> mode) {
         this.volumeID = volumeID;
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
@@ -70,7 +81,10 @@ public class StartVolumePairingRequest  implements Serializable  {
      * <b>Async</b>: (default if no mode parameter specified) Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.<br/>
      * <b>Sync</b>: Source acknowledges write when the data is stored locally and on the remote cluster.<br/>
      * <b>SnapshotsOnly</b>: Only snapshots created on the source cluster will be replicated. Active writes from the source volume will not be replicated.<br/>
+     * @since 8.0 
      **/
+
+    @Since("8.0")
     public Optional<String> getMode() {
         return this.mode;
     }

@@ -39,29 +39,26 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ModifyVolumeResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1173734810L;
+    private static final long serialVersionUID = -202788262L;
 
-    @SerializedName("curve") private final java.util.Map<String,Long> curve;
+    @SerializedName("volume") private final Volume volume;
 
     /**
      * The object returned by the "ModifyVolume" API Service call.
-     * @param curve [required] The curve is a set of key-value pairs.
+     * @param volume [required] Object containing information about the newly modified volume.
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeResult(java.util.Map<String,Long> curve) {
-        this.curve = curve;
+    public ModifyVolumeResult(Volume volume) {
+        this.volume = volume;
     }
 
 
     /**
-     * The curve is a set of key-value pairs.
-     * The keys are I/O sizes in bytes.
-     * The values represent the cost performing an IOP at a specific I/O size.
-     * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
+     * Object containing information about the newly modified volume.
      **/
-    public java.util.Map<String,Long> getCurve() {
-        return this.curve;
+    public Volume getVolume() {
+        return this.volume;
     }
 
     @Override
@@ -72,12 +69,12 @@ public class ModifyVolumeResult  implements Serializable  {
         ModifyVolumeResult that = (ModifyVolumeResult) o;
         
 
-        return Objects.equals( curve , that.curve );
+        return Objects.equals( volume , that.volume );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) curve );
+        return Objects.hash( (Object) volume );
     }
 
 
@@ -86,7 +83,7 @@ public class ModifyVolumeResult  implements Serializable  {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" curve : ").append(curve);
+        sb.append(" volume : ").append(volume);
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -104,23 +101,23 @@ public class ModifyVolumeResult  implements Serializable  {
     }
 
     public static class Builder {
-        private java.util.Map<String,Long> curve;
+        private Volume volume;
 
         private Builder() { }
 
         public ModifyVolumeResult build() {
             return new ModifyVolumeResult (
-                         this.curve            );
+                         this.volume            );
         }
 
         private ModifyVolumeResult.Builder buildFrom(final ModifyVolumeResult req) {
-            this.curve = req.curve;
+            this.volume = req.volume;
 
             return this;
         }
 
-        public ModifyVolumeResult.Builder curve(final java.util.Map<String,Long> curve) {
-            this.curve = curve;
+        public ModifyVolumeResult.Builder volume(final Volume volume) {
+            this.volume = volume;
             return this;
         }
 
