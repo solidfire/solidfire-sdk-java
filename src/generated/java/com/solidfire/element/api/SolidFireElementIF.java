@@ -753,6 +753,24 @@ public interface SolidFireElementIF {
     GetAPIResult getAPI();
 
     /**
+     * GetNtpInfo is used to return the current network time protocol (NTP) configuration information.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetNtpInfoRequest 
+     *  
+     * @return the response
+     **/
+    GetNtpInfoResult getNtpInfo(final GetNtpInfoRequest request);
+
+
+    /**
+     * Convenience method for getNtpInfo 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getNtpInfo(GetNtpInfoRequest) 
+     **/
+    GetNtpInfoResult getNtpInfo();
+
+    /**
      * GetCurrentClusterAdmin returns information for the current primary cluster administrator. The primary Cluster Admin was ncreated when the cluster was created.
      *  
      * @param request The request @see com.solidfire.element.api.GetCurrentClusterAdminRequest 
@@ -1149,6 +1167,30 @@ public interface SolidFireElementIF {
      **/
     @Since("7.0")
     ListFibreChannelSessionsResult listFibreChannelSessions();
+
+    /**
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
+     *  
+     * @param request The request @see com.solidfire.element.api.InvokeSFApiRequest 
+     *  
+     * @return the response
+     **/
+    Object invokeSFApi(final InvokeSFApiRequest request);
+
+
+    /**
+     * Convenience method for invokeSFApi 
+     *  
+     * @param method The name of the method to invoke. This is case sensitive.
+     *
+     * @param parameters An object, normally a dictionary or hashtable of the key/value pairs, to be passed as the params for the method being invoked.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#invokeSFApi(InvokeSFApiRequest) 
+     **/
+    Object invokeSFApi(String method, Object parameters);
 
     /**
      * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.

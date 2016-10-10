@@ -144,4 +144,17 @@ public class ElementServiceAdaptor {
         if (request == null) throw new IllegalArgumentException("ModifyScheduleRequest was null");
         return ScheduleAdaptor.modifySchedule(sfe, request);
     }
+
+
+    public static Object invokeSFApi(final SolidFireElement sfe, final InvokeSFApiRequest request){
+
+        if (sfe == null) throw new IllegalArgumentException("SolidFireElement was null");
+
+        if (request == null) throw new IllegalArgumentException("InvokeSFApiRequest was null");
+
+        if (request.getMethod() == null) throw new IllegalArgumentException("InvokeSFApiRequest GetMethod was null");
+
+        return sfe.sendRequest(request.getMethod(), request.getParameters(), Object.class, Object.class);
+
+    }
 }

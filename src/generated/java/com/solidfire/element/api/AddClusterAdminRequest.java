@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class AddClusterAdminRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1229865126L;
+    private static final long serialVersionUID = -1312202061L;
 
     @SerializedName("username") private final String username;
     @SerializedName("password") private final String password;
@@ -52,28 +52,11 @@ public class AddClusterAdminRequest  implements Serializable  {
      * @param username [required] Unique username for this Cluster Admin.
      * @param password [required] Password used to authenticate this Cluster Admin.
      * @param access [required] Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
+     * @param acceptEula (optional) Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
      * @param attributes (optional) List of Name/Value pairs in JSON object format.
      * @since 7.0
      **/
     @Since("7.0")
-    public AddClusterAdminRequest(String username, String password, String[] access, Optional<java.util.Map<String, Object>> attributes) {
-        this.username = username;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.acceptEula = Optional.<Boolean>empty();
-        this.access = access;
-        this.password = password;
-    }
-
-    /**
-     * The Request object for the "AddClusterAdmin" API Service call.
-     * @param username [required] Unique username for this Cluster Admin.
-     * @param password [required] Password used to authenticate this Cluster Admin.
-     * @param access [required] Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
-     * @param acceptEula (optional) Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 9.0
-     **/
-    @Since("9.0")
     public AddClusterAdminRequest(String username, String password, String[] access, Optional<Boolean> acceptEula, Optional<java.util.Map<String, Object>> attributes) {
         this.username = username;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
@@ -106,10 +89,7 @@ public class AddClusterAdminRequest  implements Serializable  {
 
     /**
      * Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
-     * @since 9.0 
      **/
-
-    @Since("9.0")
     public Optional<Boolean> getAcceptEula() {
         return this.acceptEula;
     }

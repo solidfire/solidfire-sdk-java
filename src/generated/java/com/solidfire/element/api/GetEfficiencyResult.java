@@ -39,51 +39,51 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetEfficiencyResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1359876085L;
+    private static final long serialVersionUID = 92675526L;
 
-    @SerializedName("compression") private final Double compression;
-    @SerializedName("deduplication") private final Double deduplication;
-    @SerializedName("thinProvisioning") private final Double thinProvisioning;
+    @SerializedName("compression") private final Optional<Double> compression;
+    @SerializedName("deduplication") private final Optional<Double> deduplication;
+    @SerializedName("thinProvisioning") private final Optional<Double> thinProvisioning;
     @SerializedName("timestamp") private final String timestamp;
     @SerializedName("missingVolumes") private final Long[] missingVolumes;
 
     /**
      * The object returned by the "GetEfficiency" API Service call.
-     * @param compression [required] The amount of space being saved by compressing data on a single volume. Stated as a ratio where "1" means data has been stored without being compressed.
-     * @param deduplication [required] The amount of space being saved on a single volume by not duplicating data. Stated as a ratio.
-     * @param thinProvisioning [required] The ratio of space used to the amount of space allocated for storing data. Stated as a ratio.
+     * @param compression (optional) The amount of space being saved by compressing data on a single volume. Stated as a ratio where "1" means data has been stored without being compressed.
+     * @param deduplication (optional) The amount of space being saved on a single volume by not duplicating data. Stated as a ratio.
+     * @param thinProvisioning (optional) The ratio of space used to the amount of space allocated for storing data. Stated as a ratio.
      * @param timestamp [required] The last time efficiency data was collected after Garbage Collection (GC). ISO 8601 data string.
      * @param missingVolumes [required] The volumes that could not be queried for efficiency data. Missing volumes can be caused by GC being less than hour old, temporary network loss or restarted services since the GC cycle.
      * @since 7.0
      **/
     @Since("7.0")
-    public GetEfficiencyResult(Double compression, Double deduplication, Double thinProvisioning, String timestamp, Long[] missingVolumes) {
+    public GetEfficiencyResult(Optional<Double> compression, Optional<Double> deduplication, Optional<Double> thinProvisioning, String timestamp, Long[] missingVolumes) {
         this.timestamp = timestamp;
-        this.compression = compression;
-        this.thinProvisioning = thinProvisioning;
+        this.compression = (compression == null) ? Optional.<Double>empty() : compression;
+        this.thinProvisioning = (thinProvisioning == null) ? Optional.<Double>empty() : thinProvisioning;
         this.missingVolumes = missingVolumes;
-        this.deduplication = deduplication;
+        this.deduplication = (deduplication == null) ? Optional.<Double>empty() : deduplication;
     }
 
 
     /**
      * The amount of space being saved by compressing data on a single volume. Stated as a ratio where "1" means data has been stored without being compressed.
      **/
-    public Double getCompression() {
+    public Optional<Double> getCompression() {
         return this.compression;
     }
 
     /**
      * The amount of space being saved on a single volume by not duplicating data. Stated as a ratio.
      **/
-    public Double getDeduplication() {
+    public Optional<Double> getDeduplication() {
         return this.deduplication;
     }
 
     /**
      * The ratio of space used to the amount of space allocated for storing data. Stated as a ratio.
      **/
-    public Double getThinProvisioning() {
+    public Optional<Double> getThinProvisioning() {
         return this.thinProvisioning;
     }
 
@@ -127,9 +127,12 @@ public class GetEfficiencyResult  implements Serializable  {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" compression : ").append(compression).append(",");
-        sb.append(" deduplication : ").append(deduplication).append(",");
-        sb.append(" thinProvisioning : ").append(thinProvisioning).append(",");
+        if(null != compression && compression.isPresent())
+            sb.append(" compression : ").append(compression.get()).append(",");
+        if(null != deduplication && deduplication.isPresent())
+            sb.append(" deduplication : ").append(deduplication.get()).append(",");
+        if(null != thinProvisioning && thinProvisioning.isPresent())
+            sb.append(" thinProvisioning : ").append(thinProvisioning.get()).append(",");
         sb.append(" timestamp : ").append(timestamp).append(",");
         sb.append(" missingVolumes : ").append(Arrays.toString(missingVolumes));
         sb.append( " }" );
@@ -149,9 +152,9 @@ public class GetEfficiencyResult  implements Serializable  {
     }
 
     public static class Builder {
-        private Double compression;
-        private Double deduplication;
-        private Double thinProvisioning;
+        private Optional<Double> compression;
+        private Optional<Double> deduplication;
+        private Optional<Double> thinProvisioning;
         private String timestamp;
         private Long[] missingVolumes;
 
@@ -176,18 +179,18 @@ public class GetEfficiencyResult  implements Serializable  {
             return this;
         }
 
-        public GetEfficiencyResult.Builder compression(final Double compression) {
-            this.compression = compression;
+        public GetEfficiencyResult.Builder optionalCompression(final Double compression) {
+            this.compression = (compression == null) ? Optional.<Double>empty() : Optional.of(compression);
             return this;
         }
 
-        public GetEfficiencyResult.Builder deduplication(final Double deduplication) {
-            this.deduplication = deduplication;
+        public GetEfficiencyResult.Builder optionalDeduplication(final Double deduplication) {
+            this.deduplication = (deduplication == null) ? Optional.<Double>empty() : Optional.of(deduplication);
             return this;
         }
 
-        public GetEfficiencyResult.Builder thinProvisioning(final Double thinProvisioning) {
-            this.thinProvisioning = thinProvisioning;
+        public GetEfficiencyResult.Builder optionalThinProvisioning(final Double thinProvisioning) {
+            this.thinProvisioning = (thinProvisioning == null) ? Optional.<Double>empty() : Optional.of(thinProvisioning);
             return this;
         }
 

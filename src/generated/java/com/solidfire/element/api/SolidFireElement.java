@@ -432,6 +432,17 @@ public class SolidFireElement
     }
 
     @Override
+    public GetNtpInfoResult getNtpInfo(final GetNtpInfoRequest request) {
+        return super.sendRequest( "GetNtpInfo", request, GetNtpInfoRequest.class, GetNtpInfoResult.class );
+    }
+
+
+    @Override
+    public GetNtpInfoResult getNtpInfo() {
+        return this.getNtpInfo( new GetNtpInfoRequest( ) );
+    }
+
+    @Override
     public GetCurrentClusterAdminResult getCurrentClusterAdmin(final GetCurrentClusterAdminRequest request) {
         return super.sendRequest( "GetCurrentClusterAdmin", request, GetCurrentClusterAdminRequest.class, GetCurrentClusterAdminResult.class );
     }
@@ -624,6 +635,19 @@ public class SolidFireElement
     @Since("7.0")
     public ListFibreChannelSessionsResult listFibreChannelSessions() {
         return this.listFibreChannelSessions( new ListFibreChannelSessionsRequest( ) );
+    }
+
+    @Override
+    public Object invokeSFApi(final InvokeSFApiRequest request) {
+        return com.solidfire.adaptor.ElementServiceAdaptor.invokeSFApi(this, request);
+    }
+
+
+    @Override
+    public Object invokeSFApi(String method, Object parameters) {
+        final InvokeSFApiRequest request = new InvokeSFApiRequest( method, parameters);
+
+        return com.solidfire.adaptor.ElementServiceAdaptor.invokeSFApi(this, request);
     }
 
     @Override
@@ -840,7 +864,7 @@ public class SolidFireElement
 
 
     @Override
-    public StartVolumePairingResult startVolumePairing(Long volumeID, Optional<String> mode) {
+    public StartVolumePairingResult startVolumePairing(Long volumeID, @Since("8.0") Optional<String> mode) {
         return this.startVolumePairing( new StartVolumePairingRequest( volumeID, mode) );
     }
 
