@@ -1190,7 +1190,7 @@ public interface SolidFireElementIF {
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#invokeSFApi(InvokeSFApiRequest) 
      **/
-    Object invokeSFApi(String method, Object parameters);
+    Object invokeSFApi(String method, Optional<Object> parameters);
 
     /**
      * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.

@@ -39,21 +39,21 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class InvokeSFApiRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1312965638L;
+    private static final long serialVersionUID = 1088458300L;
 
     @SerializedName("method") private final String method;
-    @SerializedName("parameters") private final Object parameters;
+    @SerializedName("parameters") private final Optional<Object> parameters;
 
     /**
      * The Request object for the "InvokeSFApi" API Service call.
      * @param method [required] The name of the method to invoke. This is case sensitive.
-     * @param parameters [required] An object, normally a dictionary or hashtable of the key/value pairs, to be passed as the params for the method being invoked.
+     * @param parameters (optional) An object, normally a dictionary or hashtable of the key/value pairs, to be passed as the params for the method being invoked.
      * @since 7.0
      **/
     @Since("7.0")
-    public InvokeSFApiRequest(String method, Object parameters) {
+    public InvokeSFApiRequest(String method, Optional<Object> parameters) {
         this.method = method;
-        this.parameters = parameters;
+        this.parameters = (parameters == null) ? Optional.<Object>empty() : parameters;
     }
 
 
@@ -67,7 +67,7 @@ public class InvokeSFApiRequest  implements Serializable  {
     /**
      * An object, normally a dictionary or hashtable of the key/value pairs, to be passed as the params for the method being invoked.
      **/
-    public Object getParameters() {
+    public Optional<Object> getParameters() {
         return this.parameters;
     }
 
@@ -95,7 +95,8 @@ public class InvokeSFApiRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" method : ").append(method).append(",");
-        sb.append(" parameters : ").append(parameters);
+        if(null != parameters && parameters.isPresent())
+            sb.append(" parameters : ").append(parameters.get());
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -114,7 +115,7 @@ public class InvokeSFApiRequest  implements Serializable  {
 
     public static class Builder {
         private String method;
-        private Object parameters;
+        private Optional<Object> parameters;
 
         private Builder() { }
 
@@ -136,8 +137,8 @@ public class InvokeSFApiRequest  implements Serializable  {
             return this;
         }
 
-        public InvokeSFApiRequest.Builder parameters(final Object parameters) {
-            this.parameters = parameters;
+        public InvokeSFApiRequest.Builder optionalParameters(final Object parameters) {
+            this.parameters = (parameters == null) ? Optional.<Object>empty() : Optional.of(parameters);
             return this;
         }
 

@@ -644,7 +644,7 @@ public class SolidFireElement
 
 
     @Override
-    public Object invokeSFApi(String method, Object parameters) {
+    public Object invokeSFApi(String method, Optional<Object> parameters) {
         final InvokeSFApiRequest request = new InvokeSFApiRequest( method, parameters);
 
         return com.solidfire.adaptor.ElementServiceAdaptor.invokeSFApi(this, request);
