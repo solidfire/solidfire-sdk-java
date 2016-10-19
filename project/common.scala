@@ -66,6 +66,11 @@ object Config {
           <name>Jason Ryan Womack</name>
           <url>https://github.com/jason-womack</url>
         </developer>
+        <developer>
+          <id>ahaid</id>
+          <name>Adam Haid</name>
+          <url>https://github.com/ahaid</url>
+        </developer>
       </developers>
   }
 
@@ -112,7 +117,7 @@ object Version {
   val javaLanguage = "1.7"
   val javaTarget   = "1.7"
 
-  val jsvcgenClient = "0.3.4"
+  val jsvcgenClient = "0.3.5-SNAPSHOT"
   val slf4j         = "1.6.6"
 
   val scalatest  = "2.2.6"
