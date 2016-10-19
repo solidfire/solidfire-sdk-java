@@ -39,12 +39,11 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ModifyVolumeRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1029710751L;
+    private static final long serialVersionUID = 56390388L;
 
     @SerializedName("volumeID") private final Long volumeID;
     @SerializedName("accountID") private final Optional<Long> accountID;
     @SerializedName("access") private final Optional<String> access;
-    @SerializedName("setCreateTime") private final Optional<String> setCreateTime;
     @SerializedName("qos") private final Optional<QoS> qos;
     @SerializedName("totalSize") private final Optional<Long> totalSize;
     @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
@@ -54,15 +53,13 @@ public class ModifyVolumeRequest  implements Serializable  {
      * @param volumeID [required] VolumeID for the volume to be modified.
      * @param accountID (optional) AccountID to which the volume is reassigned.
      * @param access (optional) Access allowed for the volume.
-     * @param setCreateTime (optional) Identify the time at which the volume was created.
      * @param qos (optional) New quality of service settings for this volume.
      * @param totalSize (optional) New size of the volume in bytes.
      * @param attributes (optional) List of Name/Value pairs in JSON object format.
      * @since 7.0
      **/
     @Since("7.0")
-    public ModifyVolumeRequest(Long volumeID, Optional<Long> accountID, Optional<String> access, Optional<String> setCreateTime, Optional<QoS> qos, Optional<Long> totalSize, Optional<java.util.Map<String, Object>> attributes) {
-        this.setCreateTime = (setCreateTime == null) ? Optional.<String>empty() : setCreateTime;
+    public ModifyVolumeRequest(Long volumeID, Optional<Long> accountID, Optional<String> access, Optional<QoS> qos, Optional<Long> totalSize, Optional<java.util.Map<String, Object>> attributes) {
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
         this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
@@ -101,13 +98,6 @@ public class ModifyVolumeRequest  implements Serializable  {
     }
 
     /**
-     * Identify the time at which the volume was created.
-     **/
-    public Optional<String> getSetCreateTime() {
-        return this.setCreateTime;
-    }
-
-    /**
      * New quality of service settings for this volume.
      **/
     public Optional<QoS> getQos() {
@@ -141,7 +131,6 @@ public class ModifyVolumeRequest  implements Serializable  {
         return Objects.equals( volumeID , that.volumeID )
             && Objects.equals( accountID , that.accountID )
             && Objects.equals( access , that.access )
-            && Objects.equals( setCreateTime , that.setCreateTime )
             && Objects.equals( qos , that.qos )
             && Objects.equals( totalSize , that.totalSize )
             && Objects.equals( attributes , that.attributes );
@@ -149,7 +138,7 @@ public class ModifyVolumeRequest  implements Serializable  {
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, accountID, access, setCreateTime, qos, totalSize, attributes );
+        return Objects.hash( volumeID, accountID, access, qos, totalSize, attributes );
     }
 
 
@@ -163,8 +152,6 @@ public class ModifyVolumeRequest  implements Serializable  {
             sb.append(" accountID : ").append(accountID.get()).append(",");
         if(null != access && access.isPresent())
             sb.append(" access : ").append(access.get()).append(",");
-        if(null != setCreateTime && setCreateTime.isPresent())
-            sb.append(" setCreateTime : ").append(setCreateTime.get()).append(",");
         if(null != qos && qos.isPresent())
             sb.append(" qos : ").append(qos.get()).append(",");
         if(null != totalSize && totalSize.isPresent())
@@ -191,7 +178,6 @@ public class ModifyVolumeRequest  implements Serializable  {
         private Long volumeID;
         private Optional<Long> accountID;
         private Optional<String> access;
-        private Optional<String> setCreateTime;
         private Optional<QoS> qos;
         private Optional<Long> totalSize;
         private Optional<java.util.Map<String, Object>> attributes;
@@ -203,7 +189,6 @@ public class ModifyVolumeRequest  implements Serializable  {
                          this.volumeID,
                          this.accountID,
                          this.access,
-                         this.setCreateTime,
                          this.qos,
                          this.totalSize,
                          this.attributes            );
@@ -213,7 +198,6 @@ public class ModifyVolumeRequest  implements Serializable  {
             this.volumeID = req.volumeID;
             this.accountID = req.accountID;
             this.access = req.access;
-            this.setCreateTime = req.setCreateTime;
             this.qos = req.qos;
             this.totalSize = req.totalSize;
             this.attributes = req.attributes;
@@ -233,11 +217,6 @@ public class ModifyVolumeRequest  implements Serializable  {
 
         public ModifyVolumeRequest.Builder optionalAccess(final String access) {
             this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
-            return this;
-        }
-
-        public ModifyVolumeRequest.Builder optionalSetCreateTime(final String setCreateTime) {
-            this.setCreateTime = (setCreateTime == null) ? Optional.<String>empty() : Optional.of(setCreateTime);
             return this;
         }
 

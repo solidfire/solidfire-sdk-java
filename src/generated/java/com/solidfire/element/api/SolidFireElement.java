@@ -638,6 +638,50 @@ public class SolidFireElement
     }
 
     @Override
+    public GetClusterHardwareInfoResult getClusterHardwareInfo(final GetClusterHardwareInfoRequest request) {
+        return super.sendRequest( "GetClusterHardwareInfo", request, GetClusterHardwareInfoRequest.class, GetClusterHardwareInfoResult.class );
+    }
+
+
+    @Override
+    public GetClusterHardwareInfoResult getClusterHardwareInfo(Optional<String> type) {
+        return this.getClusterHardwareInfo( new GetClusterHardwareInfoRequest( type) );
+    }
+
+    @Override
+    public GetHardwareConfigResult getHardwareConfig(final GetHardwareConfigRequest request) {
+        return super.sendRequest( "GetHardwareConfig", request, GetHardwareConfigRequest.class, GetHardwareConfigResult.class );
+    }
+
+
+    @Override
+    public GetHardwareConfigResult getHardwareConfig() {
+        return this.getHardwareConfig( new GetHardwareConfigRequest( ) );
+    }
+
+    @Override
+    public GetNodeHardwareInfoResult getNodeHardwareInfo(final GetNodeHardwareInfoRequest request) {
+        return super.sendRequest( "GetNodeHardwareInfo", request, GetNodeHardwareInfoRequest.class, GetNodeHardwareInfoResult.class );
+    }
+
+
+    @Override
+    public GetNodeHardwareInfoResult getNodeHardwareInfo(Long nodeID) {
+        return this.getNodeHardwareInfo( new GetNodeHardwareInfoRequest( nodeID) );
+    }
+
+    @Override
+    public GetNvramInfoResult getNvramInfo(final GetNvramInfoRequest request) {
+        return super.sendRequest( "GetNvramInfo", request, GetNvramInfoRequest.class, GetNvramInfoResult.class );
+    }
+
+
+    @Override
+    public GetNvramInfoResult getNvramInfo() {
+        return this.getNvramInfo( new GetNvramInfoRequest( ) );
+    }
+
+    @Override
     public Object invokeSFApi(final InvokeSFApiRequest request) {
         return com.solidfire.adaptor.ElementServiceAdaptor.invokeSFApi(this, request);
     }
@@ -1185,6 +1229,89 @@ public class SolidFireElement
     @Since("7.0")
     public RemoveVirtualNetworkResult removeVirtualNetwork(Optional<Long> virtualNetworkID, Optional<Long> virtualNetworkTag) {
         return this.removeVirtualNetwork( new RemoveVirtualNetworkRequest( virtualNetworkID, virtualNetworkTag) );
+    }
+
+    @Override
+    @Since("9.0")
+    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request) {
+        return super.sendRequest( "PrepareVirtualSnapshot", request, PrepareVirtualSnapshotRequest.class, PrepareVirtualSnapshotResult.class );
+    }
+
+    @Override
+    @Since("9.0")
+    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request) {
+        return super.sendRequest( "GetVirtualVolumeUnsharedChunks", request, GetVirtualVolumeUnsharedChunksRequest.class, VirtualVolumeUnsharedChunkResult.class );
+    }
+
+    @Override
+    @Since("9.0")
+    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request) {
+        return super.sendRequest( "CreateVirtualVolumeHost", request, CreateVirtualVolumeHostRequest.class, VirtualVolumeNullResult.class );
+    }
+
+    @Override
+    @Since("9.0")
+    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(final ListVirtualVolumeHostsRequest request) {
+        return super.sendRequest( "ListVirtualVolumeHosts", request, ListVirtualVolumeHostsRequest.class, ListVirtualVolumeHostsResult.class );
+    }
+
+
+    @Override
+    @Since("9.0")
+    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(Optional<java.util.UUID[]> virtualVolumeHostIDs, Optional<java.util.UUID> callingVirtualVolumeHostID) {
+        return this.listVirtualVolumeHosts( new ListVirtualVolumeHostsRequest( virtualVolumeHostIDs, callingVirtualVolumeHostID) );
+    }
+
+    @Override
+    @Since("9.0")
+    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request) {
+        return super.sendRequest( "GetVirtualVolumeTaskUpdate", request, GetVirtualVolumeTaskUpdateRequest.class, VirtualVolumeTaskResult.class );
+    }
+
+
+    @Override
+    @Since("9.0")
+    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(java.util.UUID virtualVolumeTaskID, Optional<java.util.UUID> callingVirtualVolumeHostID) {
+        return this.getVirtualVolumeTaskUpdate( new GetVirtualVolumeTaskUpdateRequest( virtualVolumeTaskID, callingVirtualVolumeHostID) );
+    }
+
+    @Override
+    @Since("9.0")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request) {
+        return super.sendRequest( "ListVirtualVolumeTasks", request, ListVirtualVolumeTasksRequest.class, ListVirtualVolumeTasksResult.class );
+    }
+
+
+    @Override
+    @Since("9.0")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(Optional<java.util.UUID[]> virtualVolumeTaskIDs, Optional<java.util.UUID> callingVirtualVolumeHostID) {
+        return this.listVirtualVolumeTasks( new ListVirtualVolumeTasksRequest( virtualVolumeTaskIDs, callingVirtualVolumeHostID) );
+    }
+
+    @Override
+    @Since("9.0")
+    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(final ListVirtualVolumeBindingsRequest request) {
+        return super.sendRequest( "ListVirtualVolumeBindings", request, ListVirtualVolumeBindingsRequest.class, ListVirtualVolumeBindingsResult.class );
+    }
+
+
+    @Override
+    @Since("9.0")
+    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(Optional<Long[]> virtualVolumeBindingIDs, Optional<java.util.UUID> callingVirtualVolumeHostID) {
+        return this.listVirtualVolumeBindings( new ListVirtualVolumeBindingsRequest( virtualVolumeBindingIDs, callingVirtualVolumeHostID) );
+    }
+
+    @Override
+    @Since("9.0")
+    public GetVirtualVolumeCountResult getVirtualVolumeCount(final GetVirtualVolumeCountRequest request) {
+        return super.sendRequest( "GetVirtualVolumeCount", request, GetVirtualVolumeCountRequest.class, GetVirtualVolumeCountResult.class );
+    }
+
+
+    @Override
+    @Since("9.0")
+    public GetVirtualVolumeCountResult getVirtualVolumeCount() {
+        return this.getVirtualVolumeCount( new GetVirtualVolumeCountRequest( ) );
     }
 
     @Override

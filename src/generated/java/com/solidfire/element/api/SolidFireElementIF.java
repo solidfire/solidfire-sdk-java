@@ -1169,6 +1169,84 @@ public interface SolidFireElementIF {
     ListFibreChannelSessionsResult listFibreChannelSessions();
 
     /**
+     * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetClusterHardwareInfoRequest 
+     *  
+     * @return the response
+     **/
+    GetClusterHardwareInfoResult getClusterHardwareInfo(final GetClusterHardwareInfoRequest request);
+
+
+    /**
+     * Convenience method for getClusterHardwareInfo 
+     *  
+     * @param type Include only a certain type of hardware information in the response. Can be one of the following:drives: List only drive information in the response.nodes: List only node information in the response.all: Include both drive and node information in the response.If this parameter is omitted, a type of "all" is assumed.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getClusterHardwareInfo(GetClusterHardwareInfoRequest) 
+     **/
+    GetClusterHardwareInfoResult getClusterHardwareInfo(Optional<String> type);
+
+    /**
+     * GetHardwareConfig enables you to display the hardware configuration information for a node. NOTE: This method is available only through the per-node API endpoint 5.0 or later.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetHardwareConfigRequest 
+     *  
+     * @return the response
+     **/
+    GetHardwareConfigResult getHardwareConfig(final GetHardwareConfigRequest request);
+
+
+    /**
+     * Convenience method for getHardwareConfig 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getHardwareConfig(GetHardwareConfigRequest) 
+     **/
+    GetHardwareConfigResult getHardwareConfig();
+
+    /**
+     * GetNodeHardwareInfo is used to return all the hardware info and status for the node specified. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetNodeHardwareInfoRequest 
+     *  
+     * @return the response
+     **/
+    GetNodeHardwareInfoResult getNodeHardwareInfo(final GetNodeHardwareInfoRequest request);
+
+
+    /**
+     * Convenience method for getNodeHardwareInfo 
+     *  
+     * @param nodeID The ID of the node for which hardware information is being requested.  Information about a  node is returned if a   node is specified.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getNodeHardwareInfo(GetNodeHardwareInfoRequest) 
+     **/
+    GetNodeHardwareInfoResult getNodeHardwareInfo(Long nodeID);
+
+    /**
+     * GetNvramInfo allows you to retrieve information from each node about the NVRAM card.  
+     *  
+     * @param request The request @see com.solidfire.element.api.GetNvramInfoRequest 
+     *  
+     * @return the response
+     **/
+    GetNvramInfoResult getNvramInfo(final GetNvramInfoRequest request);
+
+
+    /**
+     * Convenience method for getNvramInfo 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getNvramInfo(GetNvramInfoRequest) 
+     **/
+    GetNvramInfoResult getNvramInfo();
+
+    /**
      * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
      * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
      *  
@@ -2276,6 +2354,159 @@ public interface SolidFireElementIF {
      **/
     @Since("7.0")
     RemoveVirtualNetworkResult removeVirtualNetwork(Optional<Long> virtualNetworkID, Optional<Long> virtualNetworkTag);
+
+    /**
+     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
+     *  
+     * @param request The request @see com.solidfire.element.api.PrepareVirtualSnapshotRequest 
+     *  
+     * @return the response
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request);
+
+    /**
+     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
+     * chunks not shared between two volumes. This call will return results in less 
+     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
+     * error is thrown. If the offset/length combination is invalid or out fo range 
+     * an error is thrown.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetVirtualVolumeUnsharedChunksRequest 
+     *  
+     * @return the response
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request);
+
+    /**
+     * CreateVirtualVolumeHost creates a new ESX host.
+     *  
+     * @param request The request @see com.solidfire.element.api.CreateVirtualVolumeHostRequest 
+     *  
+     * @return the response
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request);
+
+    /**
+     * ListVirtualVolumeHosts returns a list of known ESX hosts.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListVirtualVolumeHostsRequest 
+     *  
+     * @return the response
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    ListVirtualVolumeHostsResult listVirtualVolumeHosts(final ListVirtualVolumeHostsRequest request);
+
+
+    /**
+     * Convenience method for listVirtualVolumeHosts 
+     *  
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listVirtualVolumeHosts(ListVirtualVolumeHostsRequest) 
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    ListVirtualVolumeHostsResult listVirtualVolumeHosts(Optional<java.util.UUID[]> virtualVolumeHostIDs, Optional<java.util.UUID> callingVirtualVolumeHostID);
+
+    /**
+     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetVirtualVolumeTaskUpdateRequest 
+     *  
+     * @return the response
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request);
+
+
+    /**
+     * Convenience method for getVirtualVolumeTaskUpdate 
+     *  
+     * @param virtualVolumeTaskID The UUID of the VVol Task.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getVirtualVolumeTaskUpdate(GetVirtualVolumeTaskUpdateRequest) 
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(java.util.UUID virtualVolumeTaskID, Optional<java.util.UUID> callingVirtualVolumeHostID);
+
+    /**
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListVirtualVolumeTasksRequest 
+     *  
+     * @return the response
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request);
+
+
+    /**
+     * Convenience method for listVirtualVolumeTasks 
+     *  
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listVirtualVolumeTasks(ListVirtualVolumeTasksRequest) 
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    ListVirtualVolumeTasksResult listVirtualVolumeTasks(Optional<java.util.UUID[]> virtualVolumeTaskIDs, Optional<java.util.UUID> callingVirtualVolumeHostID);
+
+    /**
+     * ListVirtualVolumeBindings returns a list of VVol bindings.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListVirtualVolumeBindingsRequest 
+     *  
+     * @return the response
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    ListVirtualVolumeBindingsResult listVirtualVolumeBindings(final ListVirtualVolumeBindingsRequest request);
+
+
+    /**
+     * Convenience method for listVirtualVolumeBindings 
+     *  
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listVirtualVolumeBindings(ListVirtualVolumeBindingsRequest) 
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    ListVirtualVolumeBindingsResult listVirtualVolumeBindings(Optional<Long[]> virtualVolumeBindingIDs, Optional<java.util.UUID> callingVirtualVolumeHostID);
+
+    /**
+     * Enables retrieval of the number of virtual volumes currently in the system.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetVirtualVolumeCountRequest 
+     *  
+     * @return the response
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    GetVirtualVolumeCountResult getVirtualVolumeCount(final GetVirtualVolumeCountRequest request);
+
+
+    /**
+     * Convenience method for getVirtualVolumeCount 
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getVirtualVolumeCount(GetVirtualVolumeCountRequest) 
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    GetVirtualVolumeCountResult getVirtualVolumeCount();
 
     /**
      * CloneVolume is used to create a copy of the volume.
