@@ -599,6 +599,32 @@ public class SolidFireElement
     }
 
     @Override
+    @Since("9.0")
+    public GetFeatureStatusResult getFeatureStatus(final GetFeatureStatusRequest request) {
+        return super.sendRequest( "GetFeatureStatus", request, GetFeatureStatusRequest.class, GetFeatureStatusResult.class );
+    }
+
+
+    @Override
+    @Since("9.0")
+    public GetFeatureStatusResult getFeatureStatus(Optional<String> feature) {
+        return this.getFeatureStatus( new GetFeatureStatusRequest( feature) );
+    }
+
+    @Override
+    @Since("9.0")
+    public EnableFeatureResult enableFeature(final EnableFeatureRequest request) {
+        return super.sendRequest( "EnableFeature", request, EnableFeatureRequest.class, EnableFeatureResult.class );
+    }
+
+
+    @Override
+    @Since("9.0")
+    public EnableFeatureResult enableFeature(String feature) {
+        return this.enableFeature( new EnableFeatureRequest( feature) );
+    }
+
+    @Override
     @Since("8.0")
     public ListFibreChannelPortInfoResult listFibreChannelPortInfo(final ListFibreChannelPortInfoRequest request) {
         return super.sendRequest( "ListFibreChannelPortInfo", request, ListFibreChannelPortInfoRequest.class, ListFibreChannelPortInfoResult.class );
@@ -1138,6 +1164,55 @@ public class SolidFireElement
     @Override
     public Object getCompleteStats() {
         return this.getCompleteStats( new GetCompleteStatsRequest( ) );
+    }
+
+    @Override
+    public CreateStorageContainerResult createStorageContainer(final CreateStorageContainerRequest request) {
+        return super.sendRequest( "CreateStorageContainer", request, CreateStorageContainerRequest.class, CreateStorageContainerResult.class );
+    }
+
+    @Override
+    public DeleteStorageContainerResult deleteStorageContainers(final DeleteStorageContainersRequest request) {
+        return super.sendRequest( "DeleteStorageContainers", request, DeleteStorageContainersRequest.class, DeleteStorageContainerResult.class );
+    }
+
+
+    @Override
+    public DeleteStorageContainerResult deleteStorageContainers(java.util.UUID[] storageContainerIDs, Optional<java.util.UUID> callingHostID) {
+        return this.deleteStorageContainers( new DeleteStorageContainersRequest( storageContainerIDs, callingHostID) );
+    }
+
+    @Override
+    public CreateStorageContainerResult modifyStorageContainer(final ModifyStorageContainerRequest request) {
+        return super.sendRequest( "ModifyStorageContainer", request, ModifyStorageContainerRequest.class, CreateStorageContainerResult.class );
+    }
+
+
+    @Override
+    public CreateStorageContainerResult modifyStorageContainer(Optional<CHAPSecret> initiatorSecret, Optional<CHAPSecret> targetSecret, Optional<java.util.UUID> callingHostID) {
+        return this.modifyStorageContainer( new ModifyStorageContainerRequest( initiatorSecret, targetSecret, callingHostID) );
+    }
+
+    @Override
+    public ListStorageContainersResult listStorageContainers(final ListStorageContainersRequest request) {
+        return super.sendRequest( "ListStorageContainers", request, ListStorageContainersRequest.class, ListStorageContainersResult.class );
+    }
+
+
+    @Override
+    public ListStorageContainersResult listStorageContainers(Optional<java.util.UUID[]> storageContainerIDs, Optional<java.util.UUID> callingHostID) {
+        return this.listStorageContainers( new ListStorageContainersRequest( storageContainerIDs, callingHostID) );
+    }
+
+    @Override
+    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(final GetStorageContainerEfficiencyRequest request) {
+        return super.sendRequest( "GetStorageContainerEfficiency", request, GetStorageContainerEfficiencyRequest.class, GetStorageContainerEfficiencyResult.class );
+    }
+
+
+    @Override
+    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(Long storageContainerID) {
+        return this.getStorageContainerEfficiency( new GetStorageContainerEfficiencyRequest( storageContainerID) );
     }
 
     @Override

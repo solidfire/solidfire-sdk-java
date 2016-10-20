@@ -1100,6 +1100,58 @@ public interface SolidFireElementIF {
     AsyncHandleResult removeDrives(Long[] drives);
 
     /**
+     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetFeatureStatusRequest 
+     *  
+     * @return the response
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    GetFeatureStatusResult getFeatureStatus(final GetFeatureStatusRequest request);
+
+
+    /**
+     * Convenience method for getFeatureStatus 
+     *  
+     * @param feature Valid values:<br/>
+     *                <b>vvols</b>: Enable the Virtual Volumes (VVOLs) cluster feature.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getFeatureStatus(GetFeatureStatusRequest) 
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    GetFeatureStatusResult getFeatureStatus(Optional<String> feature);
+
+    /**
+     * EnableFeature allows you to enable cluster features that are disabled by default.
+     *  
+     * @param request The request @see com.solidfire.element.api.EnableFeatureRequest 
+     *  
+     * @return the response
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    EnableFeatureResult enableFeature(final EnableFeatureRequest request);
+
+
+    /**
+     * Convenience method for enableFeature 
+     *  
+     * @param feature Valid values:<br/>
+     *                <b>vvols</b>: Enable the Virtual Volumes (VVOLs) cluster feature.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#enableFeature(EnableFeatureRequest) 
+     * @since 9.0 
+     **/
+    @Since("9.0")
+    EnableFeatureResult enableFeature(String feature);
+
+    /**
      * The ListFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
      *  
      * @param request The request @see com.solidfire.element.api.ListFibreChannelPortInfoRequest 
@@ -2172,6 +2224,97 @@ public interface SolidFireElementIF {
      * @see com.solidfire.element.api.SolidFireElementIF#getCompleteStats(GetCompleteStatsRequest) 
      **/
     Object getCompleteStats();
+
+    /**
+     * Creates a new VVols storage container.
+     *  
+     * @param request The request @see com.solidfire.element.api.CreateStorageContainerRequest 
+     *  
+     * @return the response
+     **/
+    CreateStorageContainerResult createStorageContainer(final CreateStorageContainerRequest request);
+
+    /**
+     * Deletes a storage container from the system.
+     *  
+     * @param request The request @see com.solidfire.element.api.DeleteStorageContainersRequest 
+     *  
+     * @return the response
+     **/
+    DeleteStorageContainerResult deleteStorageContainers(final DeleteStorageContainersRequest request);
+
+
+    /**
+     * Convenience method for deleteStorageContainers 
+     *  
+     * @param storageContainerIDs list of storageContainerID of the storage container to delete.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#deleteStorageContainers(DeleteStorageContainersRequest) 
+     **/
+    DeleteStorageContainerResult deleteStorageContainers(java.util.UUID[] storageContainerIDs, Optional<java.util.UUID> callingHostID);
+
+    /**
+     * Modifies an existing storage container.
+     *  
+     * @param request The request @see com.solidfire.element.api.ModifyStorageContainerRequest 
+     *  
+     * @return the response
+     **/
+    CreateStorageContainerResult modifyStorageContainer(final ModifyStorageContainerRequest request);
+
+
+    /**
+     * Convenience method for modifyStorageContainer 
+     *  
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#modifyStorageContainer(ModifyStorageContainerRequest) 
+     **/
+    CreateStorageContainerResult modifyStorageContainer(Optional<CHAPSecret> initiatorSecret, Optional<CHAPSecret> targetSecret, Optional<java.util.UUID> callingHostID);
+
+    /**
+     * Gets information for all storage containers currently in the system.
+     *  
+     * @param request The request @see com.solidfire.element.api.ListStorageContainersRequest 
+     *  
+     * @return the response
+     **/
+    ListStorageContainersResult listStorageContainers(final ListStorageContainersRequest request);
+
+
+    /**
+     * Convenience method for listStorageContainers 
+     *  
+     * @param storageContainerIDs List of storage containers to get
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#listStorageContainers(ListStorageContainersRequest) 
+     **/
+    ListStorageContainersResult listStorageContainers(Optional<java.util.UUID[]> storageContainerIDs, Optional<java.util.UUID> callingHostID);
+
+    /**
+     * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
+     *  
+     * @param request The request @see com.solidfire.element.api.GetStorageContainerEfficiencyRequest 
+     *  
+     * @return the response
+     **/
+    GetStorageContainerEfficiencyResult getStorageContainerEfficiency(final GetStorageContainerEfficiencyRequest request);
+
+
+    /**
+     * Convenience method for getStorageContainerEfficiency 
+     *  
+     * @param storageContainerID The ID of the storage container for which to retrieve efficiency information.
+     *
+     *  
+     * @return the response
+     * @see com.solidfire.element.api.SolidFireElementIF#getStorageContainerEfficiency(GetStorageContainerEfficiencyRequest) 
+     **/
+    GetStorageContainerEfficiencyResult getStorageContainerEfficiency(Long storageContainerID);
 
     /**
      * The ListTests API method is used to return the tests that are available to run on a node.
