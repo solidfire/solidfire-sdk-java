@@ -41,7 +41,7 @@ public class ListVirtualVolumeHostsResult  implements Serializable  {
 
     private static final long serialVersionUID = -1920751988L;
 
-    @SerializedName("hosts") private final VirtualVolumeHost[] hosts;
+    @SerializedName("hosts") private VirtualVolumeHost[] hosts;
 
     /**
      * The object returned by the "ListVirtualVolumeHosts" API Service call.
@@ -53,12 +53,25 @@ public class ListVirtualVolumeHostsResult  implements Serializable  {
         this.hosts = hosts;
     }
 
+    
+    /**
+     * The object returned by the "ListVirtualVolumeHosts" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListVirtualVolumeHostsResult() {}
+
 
     /**
      * List of known ESX hosts.
      **/
     public VirtualVolumeHost[] getHosts() {
         return this.hosts;
+    }
+
+    public void setHosts(VirtualVolumeHost[] hosts) {
+        this.hosts = hosts;
     }
 
     @Override

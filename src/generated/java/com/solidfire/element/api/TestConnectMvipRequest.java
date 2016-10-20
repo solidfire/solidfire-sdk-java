@@ -41,7 +41,7 @@ public class TestConnectMvipRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1829877805L;
 
-    @SerializedName("mvip") private final Optional<String> mvip;
+    @SerializedName("mvip") private Optional<String> mvip;
 
     /**
      * The Request object for the "TestConnectMvip" API Service call.
@@ -53,12 +53,25 @@ public class TestConnectMvipRequest  implements Serializable  {
         this.mvip = (mvip == null) ? Optional.<String>empty() : mvip;
     }
 
+    
+    /**
+     * The Request object for the "TestConnectMvip" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public TestConnectMvipRequest() {}
+
 
     /**
      * Optionally, use to test the management connection of a different MVIP. This is not needed to test the connection to the target cluster.
      **/
     public Optional<String> getMvip() {
         return this.mvip;
+    }
+
+    public void setMvip(Optional<String> mvip) {
+        this.mvip = mvip;
     }
 
     @Override

@@ -41,7 +41,7 @@ public class ListDrivesResult  implements Serializable  {
 
     private static final long serialVersionUID = -657498322L;
 
-    @SerializedName("drives") private final DriveInfo[] drives;
+    @SerializedName("drives") private DriveInfo[] drives;
 
     /**
      * The object returned by the "ListDrives" API Service call.
@@ -53,12 +53,25 @@ public class ListDrivesResult  implements Serializable  {
         this.drives = drives;
     }
 
+    
+    /**
+     * The object returned by the "ListDrives" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListDrivesResult() {}
+
 
     /**
      * Information for the drives that are connected to the cluster.
      **/
     public DriveInfo[] getDrives() {
         return this.drives;
+    }
+
+    public void setDrives(DriveInfo[] drives) {
+        this.drives = drives;
     }
 
     @Override

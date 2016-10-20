@@ -41,9 +41,9 @@ public class VirtualVolumeUnsharedChunkResult  implements Serializable  {
 
     private static final long serialVersionUID = 1896108830L;
 
-    @SerializedName("chunks") private final Long chunks;
-    @SerializedName("scannedChunks") private final Long scannedChunks;
-    @SerializedName("chunkSize") private final Long chunkSize;
+    @SerializedName("chunks") private Long chunks;
+    @SerializedName("scannedChunks") private Long scannedChunks;
+    @SerializedName("chunkSize") private Long chunkSize;
 
     /**
      * The object returned by the "VirtualVolumeUnsharedChunk" API Service call.
@@ -59,12 +59,25 @@ public class VirtualVolumeUnsharedChunkResult  implements Serializable  {
         this.chunkSize = chunkSize;
     }
 
+    
+    /**
+     * The object returned by the "VirtualVolumeUnsharedChunk" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public VirtualVolumeUnsharedChunkResult() {}
+
 
     /**
      * Number of allocated/unshared chunks.
      **/
     public Long getChunks() {
         return this.chunks;
+    }
+
+    public void setChunks(Long chunks) {
+        this.chunks = chunks;
     }
 
     /**
@@ -74,11 +87,19 @@ public class VirtualVolumeUnsharedChunkResult  implements Serializable  {
         return this.scannedChunks;
     }
 
+    public void setScannedChunks(Long scannedChunks) {
+        this.scannedChunks = scannedChunks;
+    }
+
     /**
      * Size of each chunk.
      **/
     public Long getChunkSize() {
         return this.chunkSize;
+    }
+
+    public void setChunkSize(Long chunkSize) {
+        this.chunkSize = chunkSize;
     }
 
     @Override

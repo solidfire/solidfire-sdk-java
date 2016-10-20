@@ -41,7 +41,7 @@ public class ListVirtualVolumeTasksResult  implements Serializable  {
 
     private static final long serialVersionUID = 1049373594L;
 
-    @SerializedName("tasks") private final VirtualVolumeTask[] tasks;
+    @SerializedName("tasks") private VirtualVolumeTask[] tasks;
 
     /**
      * The object returned by the "ListVirtualVolumeTasks" API Service call.
@@ -53,12 +53,25 @@ public class ListVirtualVolumeTasksResult  implements Serializable  {
         this.tasks = tasks;
     }
 
+    
+    /**
+     * The object returned by the "ListVirtualVolumeTasks" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListVirtualVolumeTasksResult() {}
+
 
     /**
      * List of VVol Async Tasks.
      **/
     public VirtualVolumeTask[] getTasks() {
         return this.tasks;
+    }
+
+    public void setTasks(VirtualVolumeTask[] tasks) {
+        this.tasks = tasks;
     }
 
     @Override

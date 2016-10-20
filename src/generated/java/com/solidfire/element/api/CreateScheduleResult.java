@@ -41,7 +41,7 @@ public class CreateScheduleResult  implements Serializable  {
 
     private static final long serialVersionUID = 770132974L;
 
-    @SerializedName("scheduleID") private final Long scheduleID;
+    @SerializedName("scheduleID") private Long scheduleID;
 
     /**
      * The object returned by the "CreateSchedule" API Service call.
@@ -53,8 +53,21 @@ public class CreateScheduleResult  implements Serializable  {
         this.scheduleID = scheduleID;
     }
 
+    
+    /**
+     * The object returned by the "CreateSchedule" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CreateScheduleResult() {}
+
     public Long getScheduleID() {
         return this.scheduleID;
+    }
+
+    public void setScheduleID(Long scheduleID) {
+        this.scheduleID = scheduleID;
     }
 
     @Override

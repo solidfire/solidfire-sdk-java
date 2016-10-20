@@ -41,7 +41,7 @@ public class ListClusterAdminsResult  implements Serializable  {
 
     private static final long serialVersionUID = 1108634933L;
 
-    @SerializedName("clusterAdmins") private final ClusterAdmin[] clusterAdmins;
+    @SerializedName("clusterAdmins") private ClusterAdmin[] clusterAdmins;
 
     /**
      * The object returned by the "ListClusterAdmins" API Service call.
@@ -53,12 +53,25 @@ public class ListClusterAdminsResult  implements Serializable  {
         this.clusterAdmins = clusterAdmins;
     }
 
+    
+    /**
+     * The object returned by the "ListClusterAdmins" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListClusterAdminsResult() {}
+
 
     /**
      * Information about the cluster admin.
      **/
     public ClusterAdmin[] getClusterAdmins() {
         return this.clusterAdmins;
+    }
+
+    public void setClusterAdmins(ClusterAdmin[] clusterAdmins) {
+        this.clusterAdmins = clusterAdmins;
     }
 
     @Override

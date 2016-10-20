@@ -41,9 +41,9 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
 
     private static final long serialVersionUID = -242779232L;
 
-    @SerializedName("status") private final String status;
-    @SerializedName("url") private final String url;
-    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
+    @SerializedName("status") private String status;
+    @SerializedName("url") private String url;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     /**
      * The object returned by the "UpdateBulkVolumeStatus" API Service call.
@@ -59,6 +59,15 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
         this.attributes = attributes;
     }
 
+    
+    /**
+     * The object returned by the "UpdateBulkVolumeStatus" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public UpdateBulkVolumeStatusResult() {}
+
 
     /**
      * Status of the session requested. Returned status:<br/>
@@ -71,6 +80,10 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
         return this.status;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     /**
      * The URL to access the node's web server provided only if the session is still active.
      **/
@@ -78,11 +91,19 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
         return this.url;
     }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     /**
      * Returns attributes that were specified in the BulkVolumeStatusUpdate method. Values are returned if they have changed or not.
      **/
     public java.util.Map<String, Object> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

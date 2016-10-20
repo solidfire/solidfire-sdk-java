@@ -41,18 +41,18 @@ public class ISCSISession  implements Serializable  {
 
     private static final long serialVersionUID = 1904990967L;
 
-    @SerializedName("accountID") private final Long accountID;
-    @SerializedName("accountName") private final String accountName;
-    @SerializedName("driveID") private final Long driveID;
-    @SerializedName("initiatorIP") private final String initiatorIP;
-    @SerializedName("initiatorName") private final String initiatorName;
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("serviceID") private final Long serviceID;
-    @SerializedName("sessionID") private final Long sessionID;
-    @SerializedName("targetName") private final String targetName;
-    @SerializedName("targetIP") private final String targetIP;
-    @SerializedName("virtualNetworkID") private final String virtualNetworkID;
-    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("accountID") private Long accountID;
+    @SerializedName("accountName") private String accountName;
+    @SerializedName("driveID") private Long driveID;
+    @SerializedName("initiatorIP") private String initiatorIP;
+    @SerializedName("initiatorName") private String initiatorName;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("serviceID") private Long serviceID;
+    @SerializedName("sessionID") private Long sessionID;
+    @SerializedName("targetName") private String targetName;
+    @SerializedName("targetIP") private String targetIP;
+    @SerializedName("virtualNetworkID") private String virtualNetworkID;
+    @SerializedName("volumeID") private Long volumeID;
 
     /**
      * 
@@ -86,41 +86,98 @@ public class ISCSISession  implements Serializable  {
         this.serviceID = serviceID;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ISCSISession() {}
+
     public Long getAccountID() {
         return this.accountID;
+    }
+
+    public void setAccountID(Long accountID) {
+        this.accountID = accountID;
     }
     public String getAccountName() {
         return this.accountName;
     }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
     public Long getDriveID() {
         return this.driveID;
+    }
+
+    public void setDriveID(Long driveID) {
+        this.driveID = driveID;
     }
     public String getInitiatorIP() {
         return this.initiatorIP;
     }
+
+    public void setInitiatorIP(String initiatorIP) {
+        this.initiatorIP = initiatorIP;
+    }
     public String getInitiatorName() {
         return this.initiatorName;
+    }
+
+    public void setInitiatorName(String initiatorName) {
+        this.initiatorName = initiatorName;
     }
     public Long getNodeID() {
         return this.nodeID;
     }
+
+    public void setNodeID(Long nodeID) {
+        this.nodeID = nodeID;
+    }
     public Long getServiceID() {
         return this.serviceID;
+    }
+
+    public void setServiceID(Long serviceID) {
+        this.serviceID = serviceID;
     }
     public Long getSessionID() {
         return this.sessionID;
     }
+
+    public void setSessionID(Long sessionID) {
+        this.sessionID = sessionID;
+    }
     public String getTargetName() {
         return this.targetName;
+    }
+
+    public void setTargetName(String targetName) {
+        this.targetName = targetName;
     }
     public String getTargetIP() {
         return this.targetIP;
     }
+
+    public void setTargetIP(String targetIP) {
+        this.targetIP = targetIP;
+    }
     public String getVirtualNetworkID() {
         return this.virtualNetworkID;
     }
+
+    public void setVirtualNetworkID(String virtualNetworkID) {
+        this.virtualNetworkID = virtualNetworkID;
+    }
     public Long getVolumeID() {
         return this.volumeID;
+    }
+
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
     }
 
     @Override

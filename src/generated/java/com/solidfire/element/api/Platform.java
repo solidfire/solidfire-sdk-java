@@ -41,10 +41,10 @@ public class Platform  implements Serializable  {
 
     private static final long serialVersionUID = -1626154017L;
 
-    @SerializedName("nodeType") private final String nodeType;
-    @SerializedName("chassisType") private final String chassisType;
-    @SerializedName("cpuModel") private final String cpuModel;
-    @SerializedName("nodeMemoryGB") private final Long nodeMemoryGB;
+    @SerializedName("nodeType") private String nodeType;
+    @SerializedName("chassisType") private String chassisType;
+    @SerializedName("cpuModel") private String cpuModel;
+    @SerializedName("nodeMemoryGB") private Long nodeMemoryGB;
 
     /**
      * 
@@ -62,12 +62,25 @@ public class Platform  implements Serializable  {
         this.nodeMemoryGB = nodeMemoryGB;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public Platform() {}
+
 
     /**
      * SolidFire's name for this platform.
      **/
     public String getNodeType() {
         return this.nodeType;
+    }
+
+    public void setNodeType(String nodeType) {
+        this.nodeType = nodeType;
     }
 
     /**
@@ -77,6 +90,10 @@ public class Platform  implements Serializable  {
         return this.chassisType;
     }
 
+    public void setChassisType(String chassisType) {
+        this.chassisType = chassisType;
+    }
+
     /**
      * The model of CPU used on this platform.
      **/
@@ -84,11 +101,19 @@ public class Platform  implements Serializable  {
         return this.cpuModel;
     }
 
+    public void setCpuModel(String cpuModel) {
+        this.cpuModel = cpuModel;
+    }
+
     /**
      * The amount of memory on this platform in GiB.
      **/
     public Long getNodeMemoryGB() {
         return this.nodeMemoryGB;
+    }
+
+    public void setNodeMemoryGB(Long nodeMemoryGB) {
+        this.nodeMemoryGB = nodeMemoryGB;
     }
 
     @Override

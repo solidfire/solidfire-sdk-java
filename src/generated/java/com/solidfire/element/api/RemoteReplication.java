@@ -41,13 +41,13 @@ public class RemoteReplication  implements Serializable  {
 
     private static final long serialVersionUID = 1815989745L;
 
-    @SerializedName("mode") private final String mode;
-    @SerializedName("pauseLimit") private final Long pauseLimit;
-    @SerializedName("remoteServiceID") private final Long remoteServiceID;
-    @SerializedName("resumeDetails") private final String resumeDetails;
-    @SerializedName("snapshotReplication") private final SnapshotReplication snapshotReplication;
-    @SerializedName("state") private final String state;
-    @SerializedName("stateDetails") private final String stateDetails;
+    @SerializedName("mode") private String mode;
+    @SerializedName("pauseLimit") private Long pauseLimit;
+    @SerializedName("remoteServiceID") private Long remoteServiceID;
+    @SerializedName("resumeDetails") private String resumeDetails;
+    @SerializedName("snapshotReplication") private SnapshotReplication snapshotReplication;
+    @SerializedName("state") private String state;
+    @SerializedName("stateDetails") private String stateDetails;
 
     /**
      * Details on the volume replication.
@@ -71,6 +71,15 @@ public class RemoteReplication  implements Serializable  {
         this.pauseLimit = pauseLimit;
     }
 
+    
+    /**
+     * Details on the volume replication.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public RemoteReplication() {}
+
 
     /**
      * Volume replication mode.<br/>
@@ -83,11 +92,19 @@ public class RemoteReplication  implements Serializable  {
         return this.mode;
     }
 
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
     /**
      * The number of occurring write ops before auto-pausing, on a per volume pair level.
      **/
     public Long getPauseLimit() {
         return this.pauseLimit;
+    }
+
+    public void setPauseLimit(Long pauseLimit) {
+        this.pauseLimit = pauseLimit;
     }
 
     /**
@@ -97,11 +114,19 @@ public class RemoteReplication  implements Serializable  {
         return this.remoteServiceID;
     }
 
+    public void setRemoteServiceID(Long remoteServiceID) {
+        this.remoteServiceID = remoteServiceID;
+    }
+
     /**
      * Reserved for future use.
      **/
     public String getResumeDetails() {
         return this.resumeDetails;
+    }
+
+    public void setResumeDetails(String resumeDetails) {
+        this.resumeDetails = resumeDetails;
     }
 
     /**
@@ -111,6 +136,10 @@ public class RemoteReplication  implements Serializable  {
         return this.snapshotReplication;
     }
 
+    public void setSnapshotReplication(SnapshotReplication snapshotReplication) {
+        this.snapshotReplication = snapshotReplication;
+    }
+
     /**
      * The state of the volume replication.
      **/
@@ -118,11 +147,19 @@ public class RemoteReplication  implements Serializable  {
         return this.state;
     }
 
+    public void setState(String state) {
+        this.state = state;
+    }
+
     /**
      * Reserved for future use.
      **/
     public String getStateDetails() {
         return this.stateDetails;
+    }
+
+    public void setStateDetails(String stateDetails) {
+        this.stateDetails = stateDetails;
     }
 
     @Override

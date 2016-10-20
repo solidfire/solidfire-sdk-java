@@ -41,21 +41,21 @@ public class Snapshot  implements Serializable  {
 
     private static final long serialVersionUID = 1111804601L;
 
-    @SerializedName("snapshotID") private final Long snapshotID;
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("name") private final String name;
-    @SerializedName("checksum") private final String checksum;
-    @SerializedName("enableRemoteReplication") private final Boolean enableRemoteReplication;
-    @SerializedName("expirationReason") private final String expirationReason;
-    @SerializedName("expirationTime") private final String expirationTime;
-    @SerializedName("remoteStatuses") private final String remoteStatuses;
-    @SerializedName("status") private final String status;
-    @SerializedName("snapshotUUID") private final java.util.UUID snapshotUUID;
-    @SerializedName("totalSize") private final Long totalSize;
-    @SerializedName("groupID") private final Optional<Long> groupID;
-    @SerializedName("groupSnapshotUUID") private final java.util.UUID groupSnapshotUUID;
-    @SerializedName("createTime") private final String createTime;
-    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
+    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("name") private String name;
+    @SerializedName("checksum") private String checksum;
+    @SerializedName("enableRemoteReplication") private Boolean enableRemoteReplication;
+    @SerializedName("expirationReason") private String expirationReason;
+    @SerializedName("expirationTime") private String expirationTime;
+    @SerializedName("remoteStatuses") private String remoteStatuses;
+    @SerializedName("status") private String status;
+    @SerializedName("snapshotUUID") private java.util.UUID snapshotUUID;
+    @SerializedName("totalSize") private Long totalSize;
+    @SerializedName("groupID") private Optional<Long> groupID;
+    @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
+    @SerializedName("createTime") private String createTime;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     /**
      * Snapshots is an object containing information about each snapshot made for a volume.
@@ -129,6 +129,16 @@ public class Snapshot  implements Serializable  {
         this.snapshotUUID = snapshotUUID;
     }
 
+    
+    /**
+     * Snapshots is an object containing information about each snapshot made for a volume.
+     * The return object includes information for the active snapshot as well as each snapshot created for the volume.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public Snapshot() {}
+
 
     /**
      * Unique ID for this snapshot.
@@ -137,11 +147,19 @@ public class Snapshot  implements Serializable  {
         return this.snapshotID;
     }
 
+    public void setSnapshotID(Long snapshotID) {
+        this.snapshotID = snapshotID;
+    }
+
     /**
      * The volume this snapshot was taken of.
      **/
     public Long getVolumeID() {
         return this.volumeID;
+    }
+
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
     }
 
     /**
@@ -152,12 +170,20 @@ public class Snapshot  implements Serializable  {
         return this.name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * A string that represents the correct digits in the stored snapshot.
      * This checksum can be used later to compare other snapshots to detect errors in the data.
      **/
     public String getChecksum() {
         return this.checksum;
+    }
+
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
     }
 
     /**
@@ -168,6 +194,10 @@ public class Snapshot  implements Serializable  {
     @Since("8.0")
     public Boolean getEnableRemoteReplication() {
         return this.enableRemoteReplication;
+    }
+
+    public void setEnableRemoteReplication(Boolean enableRemoteReplication) {
+        this.enableRemoteReplication = enableRemoteReplication;
     }
 
     /**
@@ -183,6 +213,10 @@ public class Snapshot  implements Serializable  {
         return this.expirationReason;
     }
 
+    public void setExpirationReason(String expirationReason) {
+        this.expirationReason = expirationReason;
+    }
+
     /**
      * The time at which this snapshot will expire and be purged from the cluster.
      * @since 8.0 
@@ -191,6 +225,10 @@ public class Snapshot  implements Serializable  {
     @Since("8.0")
     public String getExpirationTime() {
         return this.expirationTime;
+    }
+
+    public void setExpirationTime(String expirationTime) {
+        this.expirationTime = expirationTime;
     }
 
     /**
@@ -208,6 +246,10 @@ public class Snapshot  implements Serializable  {
         return this.remoteStatuses;
     }
 
+    public void setRemoteStatuses(String remoteStatuses) {
+        this.remoteStatuses = remoteStatuses;
+    }
+
     /**
      * Current status of the snapshot
      * <br/><b>Preparing</b>: A snapshot that is being prepared for use and is not yet writable.
@@ -216,6 +258,10 @@ public class Snapshot  implements Serializable  {
      **/
     public String getStatus() {
         return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     /**
@@ -228,6 +274,10 @@ public class Snapshot  implements Serializable  {
         return this.snapshotUUID;
     }
 
+    public void setSnapshotUUID(java.util.UUID snapshotUUID) {
+        this.snapshotUUID = snapshotUUID;
+    }
+
     /**
      * Total size of this snapshot in bytes.
      * It is equivalent to totalSize of the volume when this snapshot was taken.
@@ -236,12 +286,20 @@ public class Snapshot  implements Serializable  {
         return this.totalSize;
     }
 
+    public void setTotalSize(Long totalSize) {
+        this.totalSize = totalSize;
+    }
+
     /**
      * If present, the ID of the group this snapshot is a part of.
      * If not present, this snapshot is not part of a group.
      **/
     public Optional<Long> getGroupID() {
         return this.groupID;
+    }
+
+    public void setGroupID(Optional<Long> groupID) {
+        this.groupID = groupID;
     }
 
     /**
@@ -255,6 +313,10 @@ public class Snapshot  implements Serializable  {
         return this.groupSnapshotUUID;
     }
 
+    public void setGroupSnapshotUUID(java.util.UUID groupSnapshotUUID) {
+        this.groupSnapshotUUID = groupSnapshotUUID;
+    }
+
     /**
      * The time this snapshot was taken.
      **/
@@ -262,11 +324,19 @@ public class Snapshot  implements Serializable  {
         return this.createTime;
     }
 
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public java.util.Map<String, Object> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

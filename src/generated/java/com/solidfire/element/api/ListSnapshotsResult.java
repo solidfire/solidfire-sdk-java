@@ -41,7 +41,7 @@ public class ListSnapshotsResult  implements Serializable  {
 
     private static final long serialVersionUID = 1422658649L;
 
-    @SerializedName("snapshots") private final Snapshot[] snapshots;
+    @SerializedName("snapshots") private Snapshot[] snapshots;
 
     /**
      * The object returned by the "ListSnapshots" API Service call.
@@ -53,6 +53,15 @@ public class ListSnapshotsResult  implements Serializable  {
         this.snapshots = snapshots;
     }
 
+    
+    /**
+     * The object returned by the "ListSnapshots" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListSnapshotsResult() {}
+
 
     /**
      * Information about each snapshot for each volume.
@@ -62,6 +71,10 @@ public class ListSnapshotsResult  implements Serializable  {
      **/
     public Snapshot[] getSnapshots() {
         return this.snapshots;
+    }
+
+    public void setSnapshots(Snapshot[] snapshots) {
+        this.snapshots = snapshots;
     }
 
     @Override

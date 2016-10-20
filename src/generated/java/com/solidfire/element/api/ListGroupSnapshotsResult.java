@@ -41,7 +41,7 @@ public class ListGroupSnapshotsResult  implements Serializable  {
 
     private static final long serialVersionUID = -504608135L;
 
-    @SerializedName("groupSnapshots") private final GroupSnapshot[] groupSnapshots;
+    @SerializedName("groupSnapshots") private GroupSnapshot[] groupSnapshots;
 
     /**
      * The object returned by the "ListGroupSnapshots" API Service call.
@@ -53,12 +53,25 @@ public class ListGroupSnapshotsResult  implements Serializable  {
         this.groupSnapshots = groupSnapshots;
     }
 
+    
+    /**
+     * The object returned by the "ListGroupSnapshots" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListGroupSnapshotsResult() {}
+
 
     /**
      * List of Group Snapshots.
      **/
     public GroupSnapshot[] getGroupSnapshots() {
         return this.groupSnapshots;
+    }
+
+    public void setGroupSnapshots(GroupSnapshot[] groupSnapshots) {
+        this.groupSnapshots = groupSnapshots;
     }
 
     @Override

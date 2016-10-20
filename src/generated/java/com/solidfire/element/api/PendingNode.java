@@ -41,19 +41,19 @@ public class PendingNode  implements Serializable  {
 
     private static final long serialVersionUID = 1561275609L;
 
-    @SerializedName("pendingNodeID") private final Long pendingNodeID;
-    @SerializedName("AssignedNodeID") private final Long assignedNodeID;
-    @SerializedName("name") private final String name;
-    @SerializedName("compatible") private final Boolean compatible;
-    @SerializedName("platformInfo") private final Platform platformInfo;
-    @SerializedName("cip") private final String cip;
-    @SerializedName("cipi") private final String cipi;
-    @SerializedName("mip") private final String mip;
-    @SerializedName("mipi") private final String mipi;
-    @SerializedName("sip") private final String sip;
-    @SerializedName("sipi") private final String sipi;
-    @SerializedName("softwareVersion") private final String softwareVersion;
-    @SerializedName("uuid") private final java.util.UUID uuid;
+    @SerializedName("pendingNodeID") private Long pendingNodeID;
+    @SerializedName("AssignedNodeID") private Long assignedNodeID;
+    @SerializedName("name") private String name;
+    @SerializedName("compatible") private Boolean compatible;
+    @SerializedName("platformInfo") private Platform platformInfo;
+    @SerializedName("cip") private String cip;
+    @SerializedName("cipi") private String cipi;
+    @SerializedName("mip") private String mip;
+    @SerializedName("mipi") private String mipi;
+    @SerializedName("sip") private String sip;
+    @SerializedName("sipi") private String sipi;
+    @SerializedName("softwareVersion") private String softwareVersion;
+    @SerializedName("uuid") private java.util.UUID uuid;
 
     /**
      * A "pending node" is one that has not yet joined the cluster.
@@ -90,11 +90,29 @@ public class PendingNode  implements Serializable  {
         this.mipi = mipi;
     }
 
+    
+    /**
+     * A "pending node" is one that has not yet joined the cluster.
+     * It can be added to a cluster using the AddNode method.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public PendingNode() {}
+
     public Long getPendingNodeID() {
         return this.pendingNodeID;
     }
+
+    public void setPendingNodeID(Long pendingNodeID) {
+        this.pendingNodeID = pendingNodeID;
+    }
     public Long getAssignedNodeID() {
         return this.assignedNodeID;
+    }
+
+    public void setAssignedNodeID(Long assignedNodeID) {
+        this.assignedNodeID = assignedNodeID;
     }
 
     /**
@@ -103,8 +121,16 @@ public class PendingNode  implements Serializable  {
     public String getName() {
         return this.name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     public Boolean getCompatible() {
         return this.compatible;
+    }
+
+    public void setCompatible(Boolean compatible) {
+        this.compatible = compatible;
     }
 
     /**
@@ -114,11 +140,19 @@ public class PendingNode  implements Serializable  {
         return this.platformInfo;
     }
 
+    public void setPlatformInfo(Platform platformInfo) {
+        this.platformInfo = platformInfo;
+    }
+
     /**
      * IP address used for both intra- and inter-cluster communication.
      **/
     public String getCip() {
         return this.cip;
+    }
+
+    public void setCip(String cip) {
+        this.cip = cip;
     }
 
     /**
@@ -128,11 +162,19 @@ public class PendingNode  implements Serializable  {
         return this.cipi;
     }
 
+    public void setCipi(String cipi) {
+        this.cipi = cipi;
+    }
+
     /**
      * IP address used for cluster management (hosting the API and web site).
      **/
     public String getMip() {
         return this.mip;
+    }
+
+    public void setMip(String mip) {
+        this.mip = mip;
     }
 
     /**
@@ -142,11 +184,19 @@ public class PendingNode  implements Serializable  {
         return this.mipi;
     }
 
+    public void setMipi(String mipi) {
+        this.mipi = mipi;
+    }
+
     /**
      * IP address used for iSCSI traffic.
      **/
     public String getSip() {
         return this.sip;
+    }
+
+    public void setSip(String sip) {
+        this.sip = sip;
     }
 
     /**
@@ -156,6 +206,10 @@ public class PendingNode  implements Serializable  {
         return this.sipi;
     }
 
+    public void setSipi(String sipi) {
+        this.sipi = sipi;
+    }
+
     /**
      * The version of SolidFire software this node is currently running.
      **/
@@ -163,11 +217,19 @@ public class PendingNode  implements Serializable  {
         return this.softwareVersion;
     }
 
+    public void setSoftwareVersion(String softwareVersion) {
+        this.softwareVersion = softwareVersion;
+    }
+
     /**
      * UUID of node.
      **/
     public java.util.UUID getUuid() {
         return this.uuid;
+    }
+
+    public void setUuid(java.util.UUID uuid) {
+        this.uuid = uuid;
     }
 
     @Override

@@ -41,8 +41,8 @@ public class SnapshotReplication  implements Serializable  {
 
     private static final long serialVersionUID = 2109559456L;
 
-    @SerializedName("state") private final String state;
-    @SerializedName("stateDetails") private final String stateDetails;
+    @SerializedName("state") private String state;
+    @SerializedName("stateDetails") private String stateDetails;
 
     /**
      * 
@@ -56,6 +56,15 @@ public class SnapshotReplication  implements Serializable  {
         this.stateDetails = stateDetails;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public SnapshotReplication() {}
+
 
     /**
      * The state of the snapshot replication.
@@ -64,11 +73,19 @@ public class SnapshotReplication  implements Serializable  {
         return this.state;
     }
 
+    public void setState(String state) {
+        this.state = state;
+    }
+
     /**
      * Reserved for future use.
      **/
     public String getStateDetails() {
         return this.stateDetails;
+    }
+
+    public void setStateDetails(String stateDetails) {
+        this.stateDetails = stateDetails;
     }
 
     @Override

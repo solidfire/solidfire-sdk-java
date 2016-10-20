@@ -41,7 +41,7 @@ public class ListSchedulesResult  implements Serializable  {
 
     private static final long serialVersionUID = 1370282927L;
 
-    @SerializedName("schedules") private final Schedule[] schedules;
+    @SerializedName("schedules") private Schedule[] schedules;
 
     /**
      * The object returned by the "ListSchedules" API Service call.
@@ -53,12 +53,25 @@ public class ListSchedulesResult  implements Serializable  {
         this.schedules = schedules;
     }
 
+    
+    /**
+     * The object returned by the "ListSchedules" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListSchedulesResult() {}
+
 
     /**
      * The list of schedules currently on the cluster.
      **/
     public Schedule[] getSchedules() {
         return this.schedules;
+    }
+
+    public void setSchedules(Schedule[] schedules) {
+        this.schedules = schedules;
     }
 
     @Override

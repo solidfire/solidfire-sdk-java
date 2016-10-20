@@ -41,7 +41,7 @@ public class GetBackupTargetRequest  implements Serializable  {
 
     private static final long serialVersionUID = 522466102L;
 
-    @SerializedName("backupTargetID") private final Long backupTargetID;
+    @SerializedName("backupTargetID") private Long backupTargetID;
 
     /**
      * The Request object for the "GetBackupTarget" API Service call.
@@ -53,12 +53,25 @@ public class GetBackupTargetRequest  implements Serializable  {
         this.backupTargetID = backupTargetID;
     }
 
+    
+    /**
+     * The Request object for the "GetBackupTarget" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetBackupTargetRequest() {}
+
 
     /**
      * Unique identifier assigned to the backup target.
      **/
     public Long getBackupTargetID() {
         return this.backupTargetID;
+    }
+
+    public void setBackupTargetID(Long backupTargetID) {
+        this.backupTargetID = backupTargetID;
     }
 
     @Override

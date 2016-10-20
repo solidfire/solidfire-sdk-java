@@ -41,29 +41,29 @@ public class ClusterCapacity  implements Serializable  {
 
     private static final long serialVersionUID = 21333276L;
 
-    @SerializedName("activeBlockSpace") private final Long activeBlockSpace;
-    @SerializedName("activeSessions") private final Long activeSessions;
-    @SerializedName("averageIOPS") private final Long averageIOPS;
-    @SerializedName("clusterRecentIOSize") private final Long clusterRecentIOSize;
-    @SerializedName("currentIOPS") private final Long currentIOPS;
-    @SerializedName("maxIOPS") private final Long maxIOPS;
-    @SerializedName("maxOverProvisionableSpace") private final Long maxOverProvisionableSpace;
-    @SerializedName("maxProvisionedSpace") private final Long maxProvisionedSpace;
-    @SerializedName("maxUsedMetadataSpace") private final Long maxUsedMetadataSpace;
-    @SerializedName("maxUsedSpace") private final Long maxUsedSpace;
-    @SerializedName("nonZeroBlocks") private final Long nonZeroBlocks;
-    @SerializedName("peakActiveSessions") private final Long peakActiveSessions;
-    @SerializedName("peakIOPS") private final Long peakIOPS;
-    @SerializedName("provisionedSpace") private final Long provisionedSpace;
-    @SerializedName("snapshotNonZeroBlocks") private final Long snapshotNonZeroBlocks;
-    @SerializedName("timestamp") private final String timestamp;
-    @SerializedName("totalOps") private final Long totalOps;
-    @SerializedName("uniqueBlocks") private final Long uniqueBlocks;
-    @SerializedName("uniqueBlocksUsedSpace") private final Long uniqueBlocksUsedSpace;
-    @SerializedName("usedMetadataSpace") private final Long usedMetadataSpace;
-    @SerializedName("usedMetadataSpaceInSnapshots") private final Long usedMetadataSpaceInSnapshots;
-    @SerializedName("usedSpace") private final Long usedSpace;
-    @SerializedName("zeroBlocks") private final Long zeroBlocks;
+    @SerializedName("activeBlockSpace") private Long activeBlockSpace;
+    @SerializedName("activeSessions") private Long activeSessions;
+    @SerializedName("averageIOPS") private Long averageIOPS;
+    @SerializedName("clusterRecentIOSize") private Long clusterRecentIOSize;
+    @SerializedName("currentIOPS") private Long currentIOPS;
+    @SerializedName("maxIOPS") private Long maxIOPS;
+    @SerializedName("maxOverProvisionableSpace") private Long maxOverProvisionableSpace;
+    @SerializedName("maxProvisionedSpace") private Long maxProvisionedSpace;
+    @SerializedName("maxUsedMetadataSpace") private Long maxUsedMetadataSpace;
+    @SerializedName("maxUsedSpace") private Long maxUsedSpace;
+    @SerializedName("nonZeroBlocks") private Long nonZeroBlocks;
+    @SerializedName("peakActiveSessions") private Long peakActiveSessions;
+    @SerializedName("peakIOPS") private Long peakIOPS;
+    @SerializedName("provisionedSpace") private Long provisionedSpace;
+    @SerializedName("snapshotNonZeroBlocks") private Long snapshotNonZeroBlocks;
+    @SerializedName("timestamp") private String timestamp;
+    @SerializedName("totalOps") private Long totalOps;
+    @SerializedName("uniqueBlocks") private Long uniqueBlocks;
+    @SerializedName("uniqueBlocksUsedSpace") private Long uniqueBlocksUsedSpace;
+    @SerializedName("usedMetadataSpace") private Long usedMetadataSpace;
+    @SerializedName("usedMetadataSpaceInSnapshots") private Long usedMetadataSpaceInSnapshots;
+    @SerializedName("usedSpace") private Long usedSpace;
+    @SerializedName("zeroBlocks") private Long zeroBlocks;
 
     /**
      * High level capacity measurements for the entire cluster.
@@ -172,6 +172,15 @@ public class ClusterCapacity  implements Serializable  {
         this.uniqueBlocks = uniqueBlocks;
     }
 
+    
+    /**
+     * High level capacity measurements for the entire cluster.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ClusterCapacity() {}
+
 
     /**
      * The amount of space on the block drives.
@@ -181,11 +190,19 @@ public class ClusterCapacity  implements Serializable  {
         return this.activeBlockSpace;
     }
 
+    public void setActiveBlockSpace(Long activeBlockSpace) {
+        this.activeBlockSpace = activeBlockSpace;
+    }
+
     /**
      * Number of active iSCSI sessions communicating with the cluster
      **/
     public Long getActiveSessions() {
         return this.activeSessions;
+    }
+
+    public void setActiveSessions(Long activeSessions) {
+        this.activeSessions = activeSessions;
     }
 
     /**
@@ -195,11 +212,19 @@ public class ClusterCapacity  implements Serializable  {
         return this.averageIOPS;
     }
 
+    public void setAverageIOPS(Long averageIOPS) {
+        this.averageIOPS = averageIOPS;
+    }
+
     /**
      * The average size of IOPS to all volumes in the cluster.
      **/
     public Long getClusterRecentIOSize() {
         return this.clusterRecentIOSize;
+    }
+
+    public void setClusterRecentIOSize(Long clusterRecentIOSize) {
+        this.clusterRecentIOSize = clusterRecentIOSize;
     }
 
     /**
@@ -209,11 +234,19 @@ public class ClusterCapacity  implements Serializable  {
         return this.currentIOPS;
     }
 
+    public void setCurrentIOPS(Long currentIOPS) {
+        this.currentIOPS = currentIOPS;
+    }
+
     /**
      * Estimated maximum IOPS capability of the current cluster.
      **/
     public Long getMaxIOPS() {
         return this.maxIOPS;
+    }
+
+    public void setMaxIOPS(Long maxIOPS) {
+        this.maxIOPS = maxIOPS;
     }
 
     /**
@@ -226,11 +259,19 @@ public class ClusterCapacity  implements Serializable  {
         return this.maxOverProvisionableSpace;
     }
 
+    public void setMaxOverProvisionableSpace(Long maxOverProvisionableSpace) {
+        this.maxOverProvisionableSpace = maxOverProvisionableSpace;
+    }
+
     /**
      * The total amount of provisionable space if all volumes are 100% filled (no thin provisioned metadata).
      **/
     public Long getMaxProvisionedSpace() {
         return this.maxProvisionedSpace;
+    }
+
+    public void setMaxProvisionedSpace(Long maxProvisionedSpace) {
+        this.maxProvisionedSpace = maxProvisionedSpace;
     }
 
     /**
@@ -240,11 +281,19 @@ public class ClusterCapacity  implements Serializable  {
         return this.maxUsedMetadataSpace;
     }
 
+    public void setMaxUsedMetadataSpace(Long maxUsedMetadataSpace) {
+        this.maxUsedMetadataSpace = maxUsedMetadataSpace;
+    }
+
     /**
      * The total amount of space on all active block drives.
      **/
     public Long getMaxUsedSpace() {
         return this.maxUsedSpace;
+    }
+
+    public void setMaxUsedSpace(Long maxUsedSpace) {
+        this.maxUsedSpace = maxUsedSpace;
     }
 
     /**
@@ -254,11 +303,19 @@ public class ClusterCapacity  implements Serializable  {
         return this.nonZeroBlocks;
     }
 
+    public void setNonZeroBlocks(Long nonZeroBlocks) {
+        this.nonZeroBlocks = nonZeroBlocks;
+    }
+
     /**
      * Peak number of iSCSI connections since midnight UTC.
      **/
     public Long getPeakActiveSessions() {
         return this.peakActiveSessions;
+    }
+
+    public void setPeakActiveSessions(Long peakActiveSessions) {
+        this.peakActiveSessions = peakActiveSessions;
     }
 
     /**
@@ -268,11 +325,19 @@ public class ClusterCapacity  implements Serializable  {
         return this.peakIOPS;
     }
 
+    public void setPeakIOPS(Long peakIOPS) {
+        this.peakIOPS = peakIOPS;
+    }
+
     /**
      * Total amount of space provisioned in all volumes on the cluster.
      **/
     public Long getProvisionedSpace() {
         return this.provisionedSpace;
+    }
+
+    public void setProvisionedSpace(Long provisionedSpace) {
+        this.provisionedSpace = provisionedSpace;
     }
 
     /**
@@ -285,6 +350,10 @@ public class ClusterCapacity  implements Serializable  {
         return this.snapshotNonZeroBlocks;
     }
 
+    public void setSnapshotNonZeroBlocks(Long snapshotNonZeroBlocks) {
+        this.snapshotNonZeroBlocks = snapshotNonZeroBlocks;
+    }
+
     /**
      * The date and time this cluster capacity sample was taken.
      **/
@@ -292,11 +361,19 @@ public class ClusterCapacity  implements Serializable  {
         return this.timestamp;
     }
 
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
     /**
      * The total number of I/O operations performed throughout the lifetime of the cluster
      **/
     public Long getTotalOps() {
         return this.totalOps;
+    }
+
+    public void setTotalOps(Long totalOps) {
+        this.totalOps = totalOps;
     }
 
     /**
@@ -307,6 +384,10 @@ public class ClusterCapacity  implements Serializable  {
         return this.uniqueBlocks;
     }
 
+    public void setUniqueBlocks(Long uniqueBlocks) {
+        this.uniqueBlocks = uniqueBlocks;
+    }
+
     /**
      * The total amount of data the uniqueBlocks take up on the block drives.
      * This number is always consistent with the uniqueBlocks value.
@@ -315,11 +396,19 @@ public class ClusterCapacity  implements Serializable  {
         return this.uniqueBlocksUsedSpace;
     }
 
+    public void setUniqueBlocksUsedSpace(Long uniqueBlocksUsedSpace) {
+        this.uniqueBlocksUsedSpace = uniqueBlocksUsedSpace;
+    }
+
     /**
      * The total amount of bytes on volume drives used to store metadata
      **/
     public Long getUsedMetadataSpace() {
         return this.usedMetadataSpace;
+    }
+
+    public void setUsedMetadataSpace(Long usedMetadataSpace) {
+        this.usedMetadataSpace = usedMetadataSpace;
     }
 
     /**
@@ -330,6 +419,10 @@ public class ClusterCapacity  implements Serializable  {
         return this.usedMetadataSpaceInSnapshots;
     }
 
+    public void setUsedMetadataSpaceInSnapshots(Long usedMetadataSpaceInSnapshots) {
+        this.usedMetadataSpaceInSnapshots = usedMetadataSpaceInSnapshots;
+    }
+
     /**
      * Total amount of space used by all block drives in the system.
      **/
@@ -337,11 +430,19 @@ public class ClusterCapacity  implements Serializable  {
         return this.usedSpace;
     }
 
+    public void setUsedSpace(Long usedSpace) {
+        this.usedSpace = usedSpace;
+    }
+
     /**
      * Total number of 4KiB blocks without data after the last round of garabage collection operation has completed.
      **/
     public Long getZeroBlocks() {
         return this.zeroBlocks;
+    }
+
+    public void setZeroBlocks(Long zeroBlocks) {
+        this.zeroBlocks = zeroBlocks;
     }
 
     @Override

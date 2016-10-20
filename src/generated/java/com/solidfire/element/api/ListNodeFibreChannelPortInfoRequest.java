@@ -41,7 +41,7 @@ public class ListNodeFibreChannelPortInfoRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1861342635L;
 
-    @SerializedName("force") private final Optional<Boolean> force;
+    @SerializedName("force") private Optional<Boolean> force;
 
     /**
      * The Request object for the "ListNodeFibreChannelPortInfo" API Service call.
@@ -53,12 +53,25 @@ public class ListNodeFibreChannelPortInfoRequest  implements Serializable  {
         this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
 
+    
+    /**
+     * The Request object for the "ListNodeFibreChannelPortInfo" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListNodeFibreChannelPortInfoRequest() {}
+
 
     /**
      * Specify force=true to call method on all member nodes of the cluster.
      **/
     public Optional<Boolean> getForce() {
         return this.force;
+    }
+
+    public void setForce(Optional<Boolean> force) {
+        this.force = force;
     }
 
     @Override

@@ -41,10 +41,10 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
 
     private static final long serialVersionUID = 461883202L;
 
-    @SerializedName("username") private final String username;
-    @SerializedName("initiatorSecret") private final Optional<CHAPSecret> initiatorSecret;
-    @SerializedName("targetSecret") private final Optional<CHAPSecret> targetSecret;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("username") private String username;
+    @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
+    @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "AddAccount" API Service call.
@@ -62,6 +62,15 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
+    
+    /**
+     * The Request object for the "AddAccount" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public AddAccountRequest() {}
+
 
     /**
      * Unique username for this account.
@@ -69,6 +78,10 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
      **/
     public String getUsername() {
         return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -82,6 +95,10 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
         return this.initiatorSecret;
     }
 
+    public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) {
+        this.initiatorSecret = initiatorSecret;
+    }
+
     /**
      * CHAP secret to use for the target (mutual CHAP authentication).
      * Should be 12-16 characters long and impenetrable.
@@ -93,11 +110,19 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
         return this.targetSecret;
     }
 
+    public void setTargetSecret(Optional<CHAPSecret> targetSecret) {
+        this.targetSecret = targetSecret;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

@@ -41,9 +41,9 @@ public class TestConnectSvipDetails  implements Serializable  {
 
     private static final long serialVersionUID = -1095999738L;
 
-    @SerializedName("pingBytes") private final Object pingBytes;
-    @SerializedName("svip") private final String svip;
-    @SerializedName("connected") private final Boolean connected;
+    @SerializedName("pingBytes") private Object pingBytes;
+    @SerializedName("svip") private String svip;
+    @SerializedName("connected") private Boolean connected;
 
     /**
      * 
@@ -59,12 +59,25 @@ public class TestConnectSvipDetails  implements Serializable  {
         this.connected = connected;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public TestConnectSvipDetails() {}
+
 
     /**
      * Details of the ping tests with 56 Bytes and 1500 Bytes.
      **/
     public Object getPingBytes() {
         return this.pingBytes;
+    }
+
+    public void setPingBytes(Object pingBytes) {
+        this.pingBytes = pingBytes;
     }
 
     /**
@@ -74,11 +87,19 @@ public class TestConnectSvipDetails  implements Serializable  {
         return this.svip;
     }
 
+    public void setSvip(String svip) {
+        this.svip = svip;
+    }
+
     /**
      * Whether the test could connect to the MVIP.
      **/
     public Boolean getConnected() {
         return this.connected;
+    }
+
+    public void setConnected(Boolean connected) {
+        this.connected = connected;
     }
 
     @Override

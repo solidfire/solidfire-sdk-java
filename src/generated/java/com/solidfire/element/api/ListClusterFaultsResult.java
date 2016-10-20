@@ -41,7 +41,7 @@ public class ListClusterFaultsResult  implements Serializable  {
 
     private static final long serialVersionUID = 179886493L;
 
-    @SerializedName("faults") private final ClusterFaultInfo[] faults;
+    @SerializedName("faults") private ClusterFaultInfo[] faults;
 
     /**
      * The object returned by the "ListClusterFaults" API Service call.
@@ -53,12 +53,25 @@ public class ListClusterFaultsResult  implements Serializable  {
         this.faults = faults;
     }
 
+    
+    /**
+     * The object returned by the "ListClusterFaults" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListClusterFaultsResult() {}
+
 
     /**
      * The list of Cluster Fault objects.
      **/
     public ClusterFaultInfo[] getFaults() {
         return this.faults;
+    }
+
+    public void setFaults(ClusterFaultInfo[] faults) {
+        this.faults = faults;
     }
 
     @Override

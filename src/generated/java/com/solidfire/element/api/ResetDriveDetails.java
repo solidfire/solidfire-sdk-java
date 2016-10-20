@@ -41,10 +41,10 @@ public class ResetDriveDetails  implements Serializable  {
 
     private static final long serialVersionUID = 354778296L;
 
-    @SerializedName("drive") private final String drive;
-    @SerializedName("returnCode") private final Long returnCode;
-    @SerializedName("stderr") private final String stderr;
-    @SerializedName("stdout") private final String stdout;
+    @SerializedName("drive") private String drive;
+    @SerializedName("returnCode") private Long returnCode;
+    @SerializedName("stderr") private String stderr;
+    @SerializedName("stdout") private String stdout;
 
     /**
      * 
@@ -62,6 +62,15 @@ public class ResetDriveDetails  implements Serializable  {
         this.stdout = stdout;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ResetDriveDetails() {}
+
 
     /**
      * Drive name
@@ -69,14 +78,30 @@ public class ResetDriveDetails  implements Serializable  {
     public String getDrive() {
         return this.drive;
     }
+
+    public void setDrive(String drive) {
+        this.drive = drive;
+    }
     public Long getReturnCode() {
         return this.returnCode;
+    }
+
+    public void setReturnCode(Long returnCode) {
+        this.returnCode = returnCode;
     }
     public String getStderr() {
         return this.stderr;
     }
+
+    public void setStderr(String stderr) {
+        this.stderr = stderr;
+    }
     public String getStdout() {
         return this.stdout;
+    }
+
+    public void setStdout(String stdout) {
+        this.stdout = stdout;
     }
 
     @Override

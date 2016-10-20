@@ -41,13 +41,13 @@ public class PhysicalAdapter  implements Serializable  {
 
     private static final long serialVersionUID = -669387540L;
 
-    @SerializedName("address") private final Optional<String> address;
-    @SerializedName("macAddress") private final Optional<String> macAddress;
-    @SerializedName("macAddressPermanent") private final Optional<String> macAddressPermanent;
-    @SerializedName("mtu") private final Optional<String> mtu;
-    @SerializedName("netmask") private final Optional<String> netmask;
-    @SerializedName("network") private final Optional<String> network;
-    @SerializedName("upAndRunning") private final Optional<Boolean> upAndRunning;
+    @SerializedName("address") private Optional<String> address;
+    @SerializedName("macAddress") private Optional<String> macAddress;
+    @SerializedName("macAddressPermanent") private Optional<String> macAddressPermanent;
+    @SerializedName("mtu") private Optional<String> mtu;
+    @SerializedName("netmask") private Optional<String> netmask;
+    @SerializedName("network") private Optional<String> network;
+    @SerializedName("upAndRunning") private Optional<Boolean> upAndRunning;
 
     /**
      * 
@@ -71,26 +71,63 @@ public class PhysicalAdapter  implements Serializable  {
         this.address = (address == null) ? Optional.<String>empty() : address;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public PhysicalAdapter() {}
+
     public Optional<String> getAddress() {
         return this.address;
+    }
+
+    public void setAddress(Optional<String> address) {
+        this.address = address;
     }
     public Optional<String> getMacAddress() {
         return this.macAddress;
     }
+
+    public void setMacAddress(Optional<String> macAddress) {
+        this.macAddress = macAddress;
+    }
     public Optional<String> getMacAddressPermanent() {
         return this.macAddressPermanent;
+    }
+
+    public void setMacAddressPermanent(Optional<String> macAddressPermanent) {
+        this.macAddressPermanent = macAddressPermanent;
     }
     public Optional<String> getMtu() {
         return this.mtu;
     }
+
+    public void setMtu(Optional<String> mtu) {
+        this.mtu = mtu;
+    }
     public Optional<String> getNetmask() {
         return this.netmask;
+    }
+
+    public void setNetmask(Optional<String> netmask) {
+        this.netmask = netmask;
     }
     public Optional<String> getNetwork() {
         return this.network;
     }
+
+    public void setNetwork(Optional<String> network) {
+        this.network = network;
+    }
     public Optional<Boolean> getUpAndRunning() {
         return this.upAndRunning;
+    }
+
+    public void setUpAndRunning(Optional<Boolean> upAndRunning) {
+        this.upAndRunning = upAndRunning;
     }
 
     @Override

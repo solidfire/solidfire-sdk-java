@@ -41,9 +41,9 @@ public class ModifySnapshotRequest  implements Serializable  {
 
     private static final long serialVersionUID = -398415602L;
 
-    @SerializedName("snapshotID") private final Long snapshotID;
-    @SerializedName("expirationTime") private final Optional<String> expirationTime;
-    @SerializedName("enableRemoteReplication") private final Optional<Boolean> enableRemoteReplication;
+    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("expirationTime") private Optional<String> expirationTime;
+    @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
 
     /**
      * The Request object for the "ModifySnapshot" API Service call.
@@ -59,6 +59,15 @@ public class ModifySnapshotRequest  implements Serializable  {
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
 
+    
+    /**
+     * The Request object for the "ModifySnapshot" API Service call.
+     * Empty constructor to support serialization.
+     * @since 8.0
+     **/
+    @Since("8.0")
+    public ModifySnapshotRequest() {}
+
 
     /**
      * ID of the snapshot.
@@ -67,11 +76,19 @@ public class ModifySnapshotRequest  implements Serializable  {
         return this.snapshotID;
     }
 
+    public void setSnapshotID(Long snapshotID) {
+        this.snapshotID = snapshotID;
+    }
+
     /**
      * Use to set the time when the snapshot should be removed.
      **/
     public Optional<String> getExpirationTime() {
         return this.expirationTime;
+    }
+
+    public void setExpirationTime(Optional<String> expirationTime) {
+        this.expirationTime = expirationTime;
     }
 
     /**
@@ -82,6 +99,10 @@ public class ModifySnapshotRequest  implements Serializable  {
      **/
     public Optional<Boolean> getEnableRemoteReplication() {
         return this.enableRemoteReplication;
+    }
+
+    public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) {
+        this.enableRemoteReplication = enableRemoteReplication;
     }
 
     @Override

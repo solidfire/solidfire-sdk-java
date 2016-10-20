@@ -41,7 +41,7 @@ public class ListBulkVolumeJobsResult  implements Serializable  {
 
     private static final long serialVersionUID = -1330231349L;
 
-    @SerializedName("bulkVolumeJobs") private final BulkVolumeJob[] bulkVolumeJobs;
+    @SerializedName("bulkVolumeJobs") private BulkVolumeJob[] bulkVolumeJobs;
 
     /**
      * The object returned by the "ListBulkVolumeJobs" API Service call.
@@ -53,12 +53,25 @@ public class ListBulkVolumeJobsResult  implements Serializable  {
         this.bulkVolumeJobs = bulkVolumeJobs;
     }
 
+    
+    /**
+     * The object returned by the "ListBulkVolumeJobs" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListBulkVolumeJobsResult() {}
+
 
     /**
      * An array of information for each bulk volume job.
      **/
     public BulkVolumeJob[] getBulkVolumeJobs() {
         return this.bulkVolumeJobs;
+    }
+
+    public void setBulkVolumeJobs(BulkVolumeJob[] bulkVolumeJobs) {
+        this.bulkVolumeJobs = bulkVolumeJobs;
     }
 
     @Override

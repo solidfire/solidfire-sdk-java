@@ -41,11 +41,11 @@ public class SnmpV3UsmUser  implements Serializable  {
 
     private static final long serialVersionUID = -2017812210L;
 
-    @SerializedName("access") private final String access;
-    @SerializedName("name") private final String name;
-    @SerializedName("password") private final String password;
-    @SerializedName("passphrase") private final String passphrase;
-    @SerializedName("secLevel") private final String secLevel;
+    @SerializedName("access") private String access;
+    @SerializedName("name") private String name;
+    @SerializedName("password") private String password;
+    @SerializedName("passphrase") private String passphrase;
+    @SerializedName("secLevel") private String secLevel;
 
     /**
      * The SNMP v3 usmUser object is used with the API method SetSnmpInfo to configure SNMP on the cluster.
@@ -65,6 +65,15 @@ public class SnmpV3UsmUser  implements Serializable  {
         this.password = password;
     }
 
+    
+    /**
+     * The SNMP v3 usmUser object is used with the API method SetSnmpInfo to configure SNMP on the cluster.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public SnmpV3UsmUser() {}
+
 
     /**
      * <br/><b>rouser</b>: read-only access.*
@@ -76,11 +85,19 @@ public class SnmpV3UsmUser  implements Serializable  {
         return this.access;
     }
 
+    public void setAccess(String access) {
+        this.access = access;
+    }
+
     /**
      * The name of the user. Must contain at least one character, but no more than 32 characters. Blank spaces are not allowed.
      **/
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -90,11 +107,19 @@ public class SnmpV3UsmUser  implements Serializable  {
         return this.password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     /**
      * The passphrase of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "priv."
      **/
     public String getPassphrase() {
         return this.passphrase;
+    }
+
+    public void setPassphrase(String passphrase) {
+        this.passphrase = passphrase;
     }
 
     /**
@@ -104,6 +129,10 @@ public class SnmpV3UsmUser  implements Serializable  {
      **/
     public String getSecLevel() {
         return this.secLevel;
+    }
+
+    public void setSecLevel(String secLevel) {
+        this.secLevel = secLevel;
     }
 
     @Override

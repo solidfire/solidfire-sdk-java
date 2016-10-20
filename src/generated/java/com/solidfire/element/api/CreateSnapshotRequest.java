@@ -41,12 +41,12 @@ public class CreateSnapshotRequest  implements Serializable  {
 
     private static final long serialVersionUID = 2112431342L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("snapshotID") private final Optional<Long> snapshotID;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("enableRemoteReplication") private final Optional<Boolean> enableRemoteReplication;
-    @SerializedName("retention") private final Optional<String> retention;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("snapshotID") private Optional<Long> snapshotID;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
+    @SerializedName("retention") private Optional<String> retention;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "CreateSnapshot" API Service call.
@@ -86,12 +86,25 @@ public class CreateSnapshotRequest  implements Serializable  {
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
 
+    
+    /**
+     * The Request object for the "CreateSnapshot" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CreateSnapshotRequest() {}
+
 
     /**
      * ID of the volume image from which to copy.
      **/
     public Long getVolumeID() {
         return this.volumeID;
+    }
+
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
     }
 
     /**
@@ -103,12 +116,20 @@ public class CreateSnapshotRequest  implements Serializable  {
         return this.snapshotID;
     }
 
+    public void setSnapshotID(Optional<Long> snapshotID) {
+        this.snapshotID = snapshotID;
+    }
+
     /**
      * A name for the snapshot.
      * If no name is provided, the date and time the snapshot was taken is used.
      **/
     public Optional<String> getName() {
         return this.name;
+    }
+
+    public void setName(Optional<String> name) {
+        this.name = name;
     }
 
     /**
@@ -121,6 +142,10 @@ public class CreateSnapshotRequest  implements Serializable  {
         return this.enableRemoteReplication;
     }
 
+    public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) {
+        this.enableRemoteReplication = enableRemoteReplication;
+    }
+
     /**
      * The amount of time the snapshot will be retained. Enter in HH:mm:ss
      * @since 8.0 
@@ -131,11 +156,19 @@ public class CreateSnapshotRequest  implements Serializable  {
         return this.retention;
     }
 
+    public void setRetention(Optional<String> retention) {
+        this.retention = retention;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

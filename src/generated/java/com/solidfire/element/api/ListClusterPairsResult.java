@@ -41,7 +41,7 @@ public class ListClusterPairsResult  implements Serializable  {
 
     private static final long serialVersionUID = -1996808640L;
 
-    @SerializedName("clusterPairs") private final PairedCluster[] clusterPairs;
+    @SerializedName("clusterPairs") private PairedCluster[] clusterPairs;
 
     /**
      * The object returned by the "ListClusterPairs" API Service call.
@@ -53,12 +53,25 @@ public class ListClusterPairsResult  implements Serializable  {
         this.clusterPairs = clusterPairs;
     }
 
+    
+    /**
+     * The object returned by the "ListClusterPairs" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListClusterPairsResult() {}
+
 
     /**
      * Information about each paired cluster.
      **/
     public PairedCluster[] getClusterPairs() {
         return this.clusterPairs;
+    }
+
+    public void setClusterPairs(PairedCluster[] clusterPairs) {
+        this.clusterPairs = clusterPairs;
     }
 
     @Override

@@ -41,10 +41,10 @@ public class ListVirtualNetworksRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1763276070L;
 
-    @SerializedName("virtualNetworkID") private final Optional<Long> virtualNetworkID;
-    @SerializedName("virtualNetworkTag") private final Optional<Long> virtualNetworkTag;
-    @SerializedName("virtualNetworkIDs") private final Optional<Long[]> virtualNetworkIDs;
-    @SerializedName("virtualNetworkTags") private final Optional<Long[]> virtualNetworkTags;
+    @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
+    @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
+    @SerializedName("virtualNetworkIDs") private Optional<Long[]> virtualNetworkIDs;
+    @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
 
     /**
      * The Request object for the "ListVirtualNetworks" API Service call.
@@ -62,12 +62,25 @@ public class ListVirtualNetworksRequest  implements Serializable  {
         this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
     }
 
+    
+    /**
+     * The Request object for the "ListVirtualNetworks" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListVirtualNetworksRequest() {}
+
 
     /**
      * Network ID to filter the list for a single virtual network
      **/
     public Optional<Long> getVirtualNetworkID() {
         return this.virtualNetworkID;
+    }
+
+    public void setVirtualNetworkID(Optional<Long> virtualNetworkID) {
+        this.virtualNetworkID = virtualNetworkID;
     }
 
     /**
@@ -77,6 +90,10 @@ public class ListVirtualNetworksRequest  implements Serializable  {
         return this.virtualNetworkTag;
     }
 
+    public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) {
+        this.virtualNetworkTag = virtualNetworkTag;
+    }
+
     /**
      * NetworkIDs to include in the list.
      **/
@@ -84,11 +101,19 @@ public class ListVirtualNetworksRequest  implements Serializable  {
         return this.virtualNetworkIDs;
     }
 
+    public void setVirtualNetworkIDs(Optional<Long[]> virtualNetworkIDs) {
+        this.virtualNetworkIDs = virtualNetworkIDs;
+    }
+
     /**
      * Network Tags to include in the list.
      **/
     public Optional<Long[]> getVirtualNetworkTags() {
         return this.virtualNetworkTags;
+    }
+
+    public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) {
+        this.virtualNetworkTags = virtualNetworkTags;
     }
 
     @Override

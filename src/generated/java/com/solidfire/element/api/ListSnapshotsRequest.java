@@ -41,7 +41,7 @@ public class ListSnapshotsRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1058970254L;
 
-    @SerializedName("volumeID") private final Optional<Long> volumeID;
+    @SerializedName("volumeID") private Optional<Long> volumeID;
 
     /**
      * The Request object for the "ListSnapshots" API Service call.
@@ -53,6 +53,15 @@ public class ListSnapshotsRequest  implements Serializable  {
         this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
     }
 
+    
+    /**
+     * The Request object for the "ListSnapshots" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListSnapshotsRequest() {}
+
 
     /**
      * The volume to list snapshots for.
@@ -60,6 +69,10 @@ public class ListSnapshotsRequest  implements Serializable  {
      **/
     public Optional<Long> getVolumeID() {
         return this.volumeID;
+    }
+
+    public void setVolumeID(Optional<Long> volumeID) {
+        this.volumeID = volumeID;
     }
 
     @Override

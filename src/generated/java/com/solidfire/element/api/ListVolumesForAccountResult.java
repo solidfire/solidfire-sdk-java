@@ -41,7 +41,7 @@ public class ListVolumesForAccountResult  implements Serializable  {
 
     private static final long serialVersionUID = 1159938776L;
 
-    @SerializedName("volumes") private final Volume[] volumes;
+    @SerializedName("volumes") private Volume[] volumes;
 
     /**
      * The object returned by the "ListVolumesForAccount" API Service call.
@@ -53,12 +53,25 @@ public class ListVolumesForAccountResult  implements Serializable  {
         this.volumes = volumes;
     }
 
+    
+    /**
+     * The object returned by the "ListVolumesForAccount" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListVolumesForAccountResult() {}
+
 
     /**
      * List of volumes.
      **/
     public Volume[] getVolumes() {
         return this.volumes;
+    }
+
+    public void setVolumes(Volume[] volumes) {
+        this.volumes = volumes;
     }
 
     @Override

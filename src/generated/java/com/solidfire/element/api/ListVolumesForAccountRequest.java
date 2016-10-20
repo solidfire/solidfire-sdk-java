@@ -41,9 +41,9 @@ public class ListVolumesForAccountRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1165429088L;
 
-    @SerializedName("accountID") private final Long accountID;
-    @SerializedName("startVolumeID") private final Optional<Long> startVolumeID;
-    @SerializedName("limit") private final Optional<Long> limit;
+    @SerializedName("accountID") private Long accountID;
+    @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
+    @SerializedName("limit") private Optional<Long> limit;
 
     /**
      * The Request object for the "ListVolumesForAccount" API Service call.
@@ -59,12 +59,25 @@ public class ListVolumesForAccountRequest  implements Serializable  {
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
+    
+    /**
+     * The Request object for the "ListVolumesForAccount" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListVolumesForAccountRequest() {}
+
 
     /**
      * The ID of the account to list the volumes for.
      **/
     public Long getAccountID() {
         return this.accountID;
+    }
+
+    public void setAccountID(Long accountID) {
+        this.accountID = accountID;
     }
 
     /**
@@ -76,11 +89,19 @@ public class ListVolumesForAccountRequest  implements Serializable  {
         return this.startVolumeID;
     }
 
+    public void setStartVolumeID(Optional<Long> startVolumeID) {
+        this.startVolumeID = startVolumeID;
+    }
+
     /**
      * The maximum number of volumes to return from the API.
      **/
     public Optional<Long> getLimit() {
         return this.limit;
+    }
+
+    public void setLimit(Optional<Long> limit) {
+        this.limit = limit;
     }
 
     @Override

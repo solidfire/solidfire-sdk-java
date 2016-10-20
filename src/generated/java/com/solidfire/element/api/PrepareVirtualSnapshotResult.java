@@ -41,10 +41,10 @@ public class PrepareVirtualSnapshotResult  implements Serializable  {
 
     private static final long serialVersionUID = -1770297992L;
 
-    @SerializedName("virtualVolumeTaskID") private final java.util.UUID virtualVolumeTaskID;
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("snapshotID") private final Long snapshotID;
-    @SerializedName("virtualVolumeID") private final java.util.UUID virtualVolumeID;
+    @SerializedName("virtualVolumeTaskID") private java.util.UUID virtualVolumeTaskID;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
 
     /**
      * The object returned by the "PrepareVirtualSnapshot" API Service call.
@@ -62,12 +62,25 @@ public class PrepareVirtualSnapshotResult  implements Serializable  {
         this.virtualVolumeID = virtualVolumeID;
     }
 
+    
+    /**
+     * The object returned by the "PrepareVirtualSnapshot" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public PrepareVirtualSnapshotResult() {}
+
 
     /**
      * The ID of the clone task.
      **/
     public java.util.UUID getVirtualVolumeTaskID() {
         return this.virtualVolumeTaskID;
+    }
+
+    public void setVirtualVolumeTaskID(java.util.UUID virtualVolumeTaskID) {
+        this.virtualVolumeTaskID = virtualVolumeTaskID;
     }
 
     /**
@@ -77,6 +90,10 @@ public class PrepareVirtualSnapshotResult  implements Serializable  {
         return this.volumeID;
     }
 
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
+    }
+
     /**
      * snapshotID for the prepared VVol snapshot.
      **/
@@ -84,11 +101,19 @@ public class PrepareVirtualSnapshotResult  implements Serializable  {
         return this.snapshotID;
     }
 
+    public void setSnapshotID(Long snapshotID) {
+        this.snapshotID = snapshotID;
+    }
+
     /**
      * virtualVolumeID for the newly created clone.
      **/
     public java.util.UUID getVirtualVolumeID() {
         return this.virtualVolumeID;
+    }
+
+    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) {
+        this.virtualVolumeID = virtualVolumeID;
     }
 
     @Override

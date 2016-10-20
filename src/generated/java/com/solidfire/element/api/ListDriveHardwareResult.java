@@ -41,7 +41,7 @@ public class ListDriveHardwareResult  implements Serializable  {
 
     private static final long serialVersionUID = 2064757888L;
 
-    @SerializedName("nodes") private final NodeDriveHardware[] nodes;
+    @SerializedName("nodes") private NodeDriveHardware[] nodes;
 
     /**
      * The object returned by the "ListDriveHardware" API Service call.
@@ -53,8 +53,21 @@ public class ListDriveHardwareResult  implements Serializable  {
         this.nodes = nodes;
     }
 
+    
+    /**
+     * The object returned by the "ListDriveHardware" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListDriveHardwareResult() {}
+
     public NodeDriveHardware[] getNodes() {
         return this.nodes;
+    }
+
+    public void setNodes(NodeDriveHardware[] nodes) {
+        this.nodes = nodes;
     }
 
     @Override

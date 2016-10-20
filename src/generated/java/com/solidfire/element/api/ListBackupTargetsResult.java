@@ -41,7 +41,7 @@ public class ListBackupTargetsResult  implements Serializable  {
 
     private static final long serialVersionUID = -1614172039L;
 
-    @SerializedName("backupTargets") private final BackupTarget[] backupTargets;
+    @SerializedName("backupTargets") private BackupTarget[] backupTargets;
 
     /**
      * The object returned by the "ListBackupTargets" API Service call.
@@ -53,12 +53,25 @@ public class ListBackupTargetsResult  implements Serializable  {
         this.backupTargets = backupTargets;
     }
 
+    
+    /**
+     * The object returned by the "ListBackupTargets" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListBackupTargetsResult() {}
+
 
     /**
      * Objects returned for each backup target.
      **/
     public BackupTarget[] getBackupTargets() {
         return this.backupTargets;
+    }
+
+    public void setBackupTargets(BackupTarget[] backupTargets) {
+        this.backupTargets = backupTargets;
     }
 
     @Override

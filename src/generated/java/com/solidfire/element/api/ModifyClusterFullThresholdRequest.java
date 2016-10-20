@@ -41,9 +41,9 @@ public class ModifyClusterFullThresholdRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1756428140L;
 
-    @SerializedName("stage2AwareThreshold") private final Optional<Long> stage2AwareThreshold;
-    @SerializedName("stage3BlockThresholdPercent") private final Optional<Long> stage3BlockThresholdPercent;
-    @SerializedName("maxMetadataOverProvisionFactor") private final Optional<Long> maxMetadataOverProvisionFactor;
+    @SerializedName("stage2AwareThreshold") private Optional<Long> stage2AwareThreshold;
+    @SerializedName("stage3BlockThresholdPercent") private Optional<Long> stage3BlockThresholdPercent;
+    @SerializedName("maxMetadataOverProvisionFactor") private Optional<Long> maxMetadataOverProvisionFactor;
 
     /**
      * The Request object for the "ModifyClusterFullThreshold" API Service call.
@@ -72,12 +72,25 @@ public class ModifyClusterFullThresholdRequest  implements Serializable  {
         this.maxMetadataOverProvisionFactor = (maxMetadataOverProvisionFactor == null) ? Optional.<Long>empty() : maxMetadataOverProvisionFactor;
     }
 
+    
+    /**
+     * The Request object for the "ModifyClusterFullThreshold" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ModifyClusterFullThresholdRequest() {}
+
 
     /**
      * Number of nodes worth of capacity remaining on the cluster that triggers a notification.
      **/
     public Optional<Long> getStage2AwareThreshold() {
         return this.stage2AwareThreshold;
+    }
+
+    public void setStage2AwareThreshold(Optional<Long> stage2AwareThreshold) {
+        this.stage2AwareThreshold = stage2AwareThreshold;
     }
 
     /**
@@ -90,11 +103,19 @@ public class ModifyClusterFullThresholdRequest  implements Serializable  {
         return this.stage3BlockThresholdPercent;
     }
 
+    public void setStage3BlockThresholdPercent(Optional<Long> stage3BlockThresholdPercent) {
+        this.stage3BlockThresholdPercent = stage3BlockThresholdPercent;
+    }
+
     /**
      * A value representative of the number of times metadata space can be over provisioned relative to the amount of space available. For example, if there was enough metadata space to store 100 TiB of volumes and this number was set to 5, then 500 TiB worth of volumes could be created.
      **/
     public Optional<Long> getMaxMetadataOverProvisionFactor() {
         return this.maxMetadataOverProvisionFactor;
+    }
+
+    public void setMaxMetadataOverProvisionFactor(Optional<Long> maxMetadataOverProvisionFactor) {
+        this.maxMetadataOverProvisionFactor = maxMetadataOverProvisionFactor;
     }
 
     @Override

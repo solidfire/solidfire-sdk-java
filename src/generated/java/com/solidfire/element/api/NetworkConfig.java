@@ -41,33 +41,33 @@ public class NetworkConfig  implements Serializable  {
 
     private static final long serialVersionUID = -1828621032L;
 
-    @SerializedName("#default") private final Optional<Boolean> Default;
-    @SerializedName("address") private final Optional<String> address;
-    @SerializedName("auto") private final Optional<Boolean> auto;
-    @SerializedName("bond-downdelay") private final Optional<Long> bondDowndelay;
-    @SerializedName("bond-fail_over_mac") private final Optional<String> bondFailOverMac;
-    @SerializedName("bond-primary_reselect") private final Optional<String> bondPrimaryReselect;
-    @SerializedName("bond-lacp_rate") private final Optional<String> bondLacpRate;
-    @SerializedName("bond-miimon") private final Optional<Long> bondMiimon;
-    @SerializedName("bond-mode") private final Optional<String> bondMode;
-    @SerializedName("bond-slaves") private final Optional<String> bondSlaves;
-    @SerializedName("bond-updelay") private final Optional<Long> bondUpdelay;
-    @SerializedName("broadcast") private final Optional<String> broadcast;
-    @SerializedName("dns-nameservers") private final Optional<String> dnsNameservers;
-    @SerializedName("dns-search") private final Optional<String> dnsSearch;
-    @SerializedName("family") private final Optional<String> family;
-    @SerializedName("gateway") private final Optional<String> gateway;
-    @SerializedName("macAddress") private final Optional<String> macAddress;
-    @SerializedName("macAddressPermanent") private final Optional<String> macAddressPermanent;
-    @SerializedName("method") private final Optional<String> method;
-    @SerializedName("mtu") private final Optional<String> mtu;
-    @SerializedName("netmask") private final Optional<String> netmask;
-    @SerializedName("network") private final Optional<String> network;
-    @SerializedName("physical") private final Optional<PhysicalAdapter> physical;
-    @SerializedName("routes") private final Optional<String[]> routes;
-    @SerializedName("status") private final Optional<String> status;
-    @SerializedName("symmetricRouteRules") private final Optional<String[]> symmetricRouteRules;
-    @SerializedName("upAndRunning") private final Optional<Boolean> upAndRunning;
+    @SerializedName("#default") private Optional<Boolean> Default;
+    @SerializedName("address") private Optional<String> address;
+    @SerializedName("auto") private Optional<Boolean> auto;
+    @SerializedName("bond-downdelay") private Optional<Long> bondDowndelay;
+    @SerializedName("bond-fail_over_mac") private Optional<String> bondFailOverMac;
+    @SerializedName("bond-primary_reselect") private Optional<String> bondPrimaryReselect;
+    @SerializedName("bond-lacp_rate") private Optional<String> bondLacpRate;
+    @SerializedName("bond-miimon") private Optional<Long> bondMiimon;
+    @SerializedName("bond-mode") private Optional<String> bondMode;
+    @SerializedName("bond-slaves") private Optional<String> bondSlaves;
+    @SerializedName("bond-updelay") private Optional<Long> bondUpdelay;
+    @SerializedName("broadcast") private Optional<String> broadcast;
+    @SerializedName("dns-nameservers") private Optional<String> dnsNameservers;
+    @SerializedName("dns-search") private Optional<String> dnsSearch;
+    @SerializedName("family") private Optional<String> family;
+    @SerializedName("gateway") private Optional<String> gateway;
+    @SerializedName("macAddress") private Optional<String> macAddress;
+    @SerializedName("macAddressPermanent") private Optional<String> macAddressPermanent;
+    @SerializedName("method") private Optional<String> method;
+    @SerializedName("mtu") private Optional<String> mtu;
+    @SerializedName("netmask") private Optional<String> netmask;
+    @SerializedName("network") private Optional<String> network;
+    @SerializedName("physical") private Optional<PhysicalAdapter> physical;
+    @SerializedName("routes") private Optional<String[]> routes;
+    @SerializedName("status") private Optional<String> status;
+    @SerializedName("symmetricRouteRules") private Optional<String[]> symmetricRouteRules;
+    @SerializedName("upAndRunning") private Optional<Boolean> upAndRunning;
 
     /**
      * 
@@ -131,86 +131,203 @@ public class NetworkConfig  implements Serializable  {
         this.physical = (physical == null) ? Optional.<PhysicalAdapter>empty() : physical;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public NetworkConfig() {}
+
     public Optional<Boolean> getDefault() {
         return this.Default;
+    }
+
+    public void setDefault(Optional<Boolean> Default) {
+        this.Default = Default;
     }
     public Optional<String> getAddress() {
         return this.address;
     }
+
+    public void setAddress(Optional<String> address) {
+        this.address = address;
+    }
     public Optional<Boolean> getAuto() {
         return this.auto;
+    }
+
+    public void setAuto(Optional<Boolean> auto) {
+        this.auto = auto;
     }
     public Optional<Long> getBondDowndelay() {
         return this.bondDowndelay;
     }
+
+    public void setBondDowndelay(Optional<Long> bondDowndelay) {
+        this.bondDowndelay = bondDowndelay;
+    }
     public Optional<String> getBondFailOverMac() {
         return this.bondFailOverMac;
+    }
+
+    public void setBondFailOverMac(Optional<String> bondFailOverMac) {
+        this.bondFailOverMac = bondFailOverMac;
     }
     public Optional<String> getBondPrimaryReselect() {
         return this.bondPrimaryReselect;
     }
+
+    public void setBondPrimaryReselect(Optional<String> bondPrimaryReselect) {
+        this.bondPrimaryReselect = bondPrimaryReselect;
+    }
     public Optional<String> getBondLacpRate() {
         return this.bondLacpRate;
+    }
+
+    public void setBondLacpRate(Optional<String> bondLacpRate) {
+        this.bondLacpRate = bondLacpRate;
     }
     public Optional<Long> getBondMiimon() {
         return this.bondMiimon;
     }
+
+    public void setBondMiimon(Optional<Long> bondMiimon) {
+        this.bondMiimon = bondMiimon;
+    }
     public Optional<String> getBondMode() {
         return this.bondMode;
+    }
+
+    public void setBondMode(Optional<String> bondMode) {
+        this.bondMode = bondMode;
     }
     public Optional<String> getBondSlaves() {
         return this.bondSlaves;
     }
+
+    public void setBondSlaves(Optional<String> bondSlaves) {
+        this.bondSlaves = bondSlaves;
+    }
     public Optional<Long> getBondUpdelay() {
         return this.bondUpdelay;
+    }
+
+    public void setBondUpdelay(Optional<Long> bondUpdelay) {
+        this.bondUpdelay = bondUpdelay;
     }
     public Optional<String> getBroadcast() {
         return this.broadcast;
     }
+
+    public void setBroadcast(Optional<String> broadcast) {
+        this.broadcast = broadcast;
+    }
     public Optional<String> getDnsNameservers() {
         return this.dnsNameservers;
+    }
+
+    public void setDnsNameservers(Optional<String> dnsNameservers) {
+        this.dnsNameservers = dnsNameservers;
     }
     public Optional<String> getDnsSearch() {
         return this.dnsSearch;
     }
+
+    public void setDnsSearch(Optional<String> dnsSearch) {
+        this.dnsSearch = dnsSearch;
+    }
     public Optional<String> getFamily() {
         return this.family;
+    }
+
+    public void setFamily(Optional<String> family) {
+        this.family = family;
     }
     public Optional<String> getGateway() {
         return this.gateway;
     }
+
+    public void setGateway(Optional<String> gateway) {
+        this.gateway = gateway;
+    }
     public Optional<String> getMacAddress() {
         return this.macAddress;
+    }
+
+    public void setMacAddress(Optional<String> macAddress) {
+        this.macAddress = macAddress;
     }
     public Optional<String> getMacAddressPermanent() {
         return this.macAddressPermanent;
     }
+
+    public void setMacAddressPermanent(Optional<String> macAddressPermanent) {
+        this.macAddressPermanent = macAddressPermanent;
+    }
     public Optional<String> getMethod() {
         return this.method;
+    }
+
+    public void setMethod(Optional<String> method) {
+        this.method = method;
     }
     public Optional<String> getMtu() {
         return this.mtu;
     }
+
+    public void setMtu(Optional<String> mtu) {
+        this.mtu = mtu;
+    }
     public Optional<String> getNetmask() {
         return this.netmask;
+    }
+
+    public void setNetmask(Optional<String> netmask) {
+        this.netmask = netmask;
     }
     public Optional<String> getNetwork() {
         return this.network;
     }
+
+    public void setNetwork(Optional<String> network) {
+        this.network = network;
+    }
     public Optional<PhysicalAdapter> getPhysical() {
         return this.physical;
+    }
+
+    public void setPhysical(Optional<PhysicalAdapter> physical) {
+        this.physical = physical;
     }
     public Optional<String[]> getRoutes() {
         return this.routes;
     }
+
+    public void setRoutes(Optional<String[]> routes) {
+        this.routes = routes;
+    }
     public Optional<String> getStatus() {
         return this.status;
+    }
+
+    public void setStatus(Optional<String> status) {
+        this.status = status;
     }
     public Optional<String[]> getSymmetricRouteRules() {
         return this.symmetricRouteRules;
     }
+
+    public void setSymmetricRouteRules(Optional<String[]> symmetricRouteRules) {
+        this.symmetricRouteRules = symmetricRouteRules;
+    }
     public Optional<Boolean> getUpAndRunning() {
         return this.upAndRunning;
+    }
+
+    public void setUpAndRunning(Optional<Boolean> upAndRunning) {
+        this.upAndRunning = upAndRunning;
     }
 
     @Override

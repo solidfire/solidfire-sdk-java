@@ -41,7 +41,7 @@ public class RemoveVolumePairRequest  implements Serializable  {
 
     private static final long serialVersionUID = -502731008L;
 
-    @SerializedName("volumeID") private final Long volumeID;
+    @SerializedName("volumeID") private Long volumeID;
 
     /**
      * The Request object for the "RemoveVolumePair" API Service call.
@@ -53,12 +53,25 @@ public class RemoveVolumePairRequest  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+    
+    /**
+     * The Request object for the "RemoveVolumePair" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public RemoveVolumePairRequest() {}
+
 
     /**
      * ID of the volume on which to stop the replication process.
      **/
     public Long getVolumeID() {
         return this.volumeID;
+    }
+
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
     }
 
     @Override

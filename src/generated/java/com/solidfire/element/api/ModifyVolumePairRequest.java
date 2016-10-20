@@ -41,9 +41,9 @@ public class ModifyVolumePairRequest  implements Serializable  {
 
     private static final long serialVersionUID = -793453021L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("pausedManual") private final Optional<Boolean> pausedManual;
-    @SerializedName("mode") private final Optional<String> mode;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("pausedManual") private Optional<Boolean> pausedManual;
+    @SerializedName("mode") private Optional<String> mode;
 
     /**
      * The Request object for the "ModifyVolumePair" API Service call.
@@ -59,12 +59,25 @@ public class ModifyVolumePairRequest  implements Serializable  {
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
     }
 
+    
+    /**
+     * The Request object for the "ModifyVolumePair" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ModifyVolumePairRequest() {}
+
 
     /**
      * Identification number of the volume to be modified.
      **/
     public Long getVolumeID() {
         return this.volumeID;
+    }
+
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
     }
 
     /**
@@ -77,6 +90,10 @@ public class ModifyVolumePairRequest  implements Serializable  {
         return this.pausedManual;
     }
 
+    public void setPausedManual(Optional<Boolean> pausedManual) {
+        this.pausedManual = pausedManual;
+    }
+
     /**
      * Volume replication mode.<br/>
      * Possible values:<br/>
@@ -86,6 +103,10 @@ public class ModifyVolumePairRequest  implements Serializable  {
      **/
     public Optional<String> getMode() {
         return this.mode;
+    }
+
+    public void setMode(Optional<String> mode) {
+        this.mode = mode;
     }
 
     @Override

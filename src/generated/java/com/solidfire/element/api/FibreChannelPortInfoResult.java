@@ -41,7 +41,7 @@ public class FibreChannelPortInfoResult  implements Serializable  {
 
     private static final long serialVersionUID = 311865795L;
 
-    @SerializedName("result") private final FibreChannelPortList result;
+    @SerializedName("result") private FibreChannelPortList result;
 
     /**
      * Used to return information about the Fibre Channel ports.
@@ -53,12 +53,25 @@ public class FibreChannelPortInfoResult  implements Serializable  {
         this.result = result;
     }
 
+    
+    /**
+     * Used to return information about the Fibre Channel ports.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public FibreChannelPortInfoResult() {}
+
 
     /**
      * Used to return information about the Fibre Channel ports.
      **/
     public FibreChannelPortList getResult() {
         return this.result;
+    }
+
+    public void setResult(FibreChannelPortList result) {
+        this.result = result;
     }
 
     @Override

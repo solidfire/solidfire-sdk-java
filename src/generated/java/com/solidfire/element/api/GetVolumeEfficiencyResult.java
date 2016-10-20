@@ -41,11 +41,11 @@ public class GetVolumeEfficiencyResult  implements Serializable  {
 
     private static final long serialVersionUID = -362330277L;
 
-    @SerializedName("compression") private final Double compression;
-    @SerializedName("deduplication") private final Double deduplication;
-    @SerializedName("missingVolumes") private final Long[] missingVolumes;
-    @SerializedName("thinProvisioning") private final Double thinProvisioning;
-    @SerializedName("timestamp") private final String timestamp;
+    @SerializedName("compression") private Double compression;
+    @SerializedName("deduplication") private Double deduplication;
+    @SerializedName("missingVolumes") private Long[] missingVolumes;
+    @SerializedName("thinProvisioning") private Double thinProvisioning;
+    @SerializedName("timestamp") private String timestamp;
 
     /**
      * The object returned by the "GetVolumeEfficiency" API Service call.
@@ -82,6 +82,15 @@ public class GetVolumeEfficiencyResult  implements Serializable  {
         this.deduplication = deduplication;
     }
 
+    
+    /**
+     * The object returned by the "GetVolumeEfficiency" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetVolumeEfficiencyResult() {}
+
 
     /**
      * The amount of space being saved by compressing data on a single volume.
@@ -91,12 +100,20 @@ public class GetVolumeEfficiencyResult  implements Serializable  {
         return this.compression;
     }
 
+    public void setCompression(Double compression) {
+        this.compression = compression;
+    }
+
     /**
      * The amount of space being saved on a single volume by not duplicating data.
      * Stated as a ratio.
      **/
     public Double getDeduplication() {
         return this.deduplication;
+    }
+
+    public void setDeduplication(Double deduplication) {
+        this.deduplication = deduplication;
     }
 
     /**
@@ -110,6 +127,10 @@ public class GetVolumeEfficiencyResult  implements Serializable  {
         return this.missingVolumes;
     }
 
+    public void setMissingVolumes(Long[] missingVolumes) {
+        this.missingVolumes = missingVolumes;
+    }
+
     /**
      * The ratio of space used to the amount of space allocated for storing data.
      * Stated as a ratio.
@@ -118,11 +139,19 @@ public class GetVolumeEfficiencyResult  implements Serializable  {
         return this.thinProvisioning;
     }
 
+    public void setThinProvisioning(Double thinProvisioning) {
+        this.thinProvisioning = thinProvisioning;
+    }
+
     /**
      * The last time efficiency data was collected after Garbage Collection (GC).
      **/
     public String getTimestamp() {
         return this.timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override

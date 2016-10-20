@@ -41,8 +41,8 @@ public class ListVirtualVolumeBindingsRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1967617285L;
 
-    @SerializedName("virtualVolumeBindingIDs") private final Optional<Long[]> virtualVolumeBindingIDs;
-    @SerializedName("callingVirtualVolumeHostID") private final Optional<java.util.UUID> callingVirtualVolumeHostID;
+    @SerializedName("virtualVolumeBindingIDs") private Optional<Long[]> virtualVolumeBindingIDs;
+    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
     /**
      * The Request object for the "ListVirtualVolumeBindings" API Service call.
@@ -56,11 +56,28 @@ public class ListVirtualVolumeBindingsRequest  implements Serializable  {
         this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
     }
 
+    
+    /**
+     * The Request object for the "ListVirtualVolumeBindings" API Service call.
+     * Empty constructor to support serialization.
+     * @since 9.0
+     **/
+    @Since("9.0")
+    public ListVirtualVolumeBindingsRequest() {}
+
     public Optional<Long[]> getVirtualVolumeBindingIDs() {
         return this.virtualVolumeBindingIDs;
     }
+
+    public void setVirtualVolumeBindingIDs(Optional<Long[]> virtualVolumeBindingIDs) {
+        this.virtualVolumeBindingIDs = virtualVolumeBindingIDs;
+    }
     public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
         return this.callingVirtualVolumeHostID;
+    }
+
+    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) {
+        this.callingVirtualVolumeHostID = callingVirtualVolumeHostID;
     }
 
     @Override

@@ -41,19 +41,19 @@ public class BulkVolumeJob  implements Serializable  {
 
     private static final long serialVersionUID = 193615460L;
 
-    @SerializedName("bulkVolumeID") private final Long bulkVolumeID;
-    @SerializedName("createTime") private final String createTime;
-    @SerializedName("elapsedTime") private final Long elapsedTime;
-    @SerializedName("format") private final String format;
-    @SerializedName("key") private final String key;
-    @SerializedName("percentComplete") private final Long percentComplete;
-    @SerializedName("remainingTime") private final Long remainingTime;
-    @SerializedName("srcVolumeID") private final Long srcVolumeID;
-    @SerializedName("status") private final String status;
-    @SerializedName("script") private final String script;
-    @SerializedName("snapshotID") private final Long snapshotID;
-    @SerializedName("type") private final String type;
-    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
+    @SerializedName("bulkVolumeID") private Long bulkVolumeID;
+    @SerializedName("createTime") private String createTime;
+    @SerializedName("elapsedTime") private Long elapsedTime;
+    @SerializedName("format") private String format;
+    @SerializedName("key") private String key;
+    @SerializedName("percentComplete") private Long percentComplete;
+    @SerializedName("remainingTime") private Long remainingTime;
+    @SerializedName("srcVolumeID") private Long srcVolumeID;
+    @SerializedName("status") private String status;
+    @SerializedName("script") private String script;
+    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("type") private String type;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     /**
      * 
@@ -122,6 +122,15 @@ public class BulkVolumeJob  implements Serializable  {
         this.snapshotID = snapshotID;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public BulkVolumeJob() {}
+
 
     /**
      * The internal bulk volume job ID.
@@ -130,11 +139,19 @@ public class BulkVolumeJob  implements Serializable  {
         return this.bulkVolumeID;
     }
 
+    public void setBulkVolumeID(Long bulkVolumeID) {
+        this.bulkVolumeID = bulkVolumeID;
+    }
+
     /**
      * Timestamp created for the bulk volume job.
      **/
     public String getCreateTime() {
         return this.createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     /**
@@ -147,11 +164,19 @@ public class BulkVolumeJob  implements Serializable  {
         return this.elapsedTime;
     }
 
+    public void setElapsedTime(Long elapsedTime) {
+        this.elapsedTime = elapsedTime;
+    }
+
     /**
      * Format is either "compressed" or "native".
      **/
     public String getFormat() {
         return this.format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
     }
 
     /**
@@ -161,11 +186,19 @@ public class BulkVolumeJob  implements Serializable  {
         return this.key;
     }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     /**
      * The completed percentage reported by the operation.
      **/
     public Long getPercentComplete() {
         return this.percentComplete;
+    }
+
+    public void setPercentComplete(Long percentComplete) {
+        this.percentComplete = percentComplete;
     }
 
     /**
@@ -175,11 +208,19 @@ public class BulkVolumeJob  implements Serializable  {
         return this.remainingTime;
     }
 
+    public void setRemainingTime(Long remainingTime) {
+        this.remainingTime = remainingTime;
+    }
+
     /**
      * The source volume ID.
      **/
     public Long getSrcVolumeID() {
         return this.srcVolumeID;
+    }
+
+    public void setSrcVolumeID(Long srcVolumeID) {
+        this.srcVolumeID = srcVolumeID;
     }
 
     /**
@@ -193,6 +234,10 @@ public class BulkVolumeJob  implements Serializable  {
         return this.status;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     /**
      * The name of the script if one is provided.
      **/
@@ -200,11 +245,19 @@ public class BulkVolumeJob  implements Serializable  {
         return this.script;
     }
 
+    public void setScript(String script) {
+        this.script = script;
+    }
+
     /**
      * ID of the snapshot if a snapshot is in the source of the bulk volume job.
      **/
     public Long getSnapshotID() {
         return this.snapshotID;
+    }
+
+    public void setSnapshotID(Long snapshotID) {
+        this.snapshotID = snapshotID;
     }
 
     /**
@@ -216,11 +269,19 @@ public class BulkVolumeJob  implements Serializable  {
         return this.type;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
     /**
      * JSON attributes on the bulk volume job.
      **/
     public java.util.Map<String, Object> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

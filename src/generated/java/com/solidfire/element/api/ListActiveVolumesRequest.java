@@ -41,8 +41,8 @@ public class ListActiveVolumesRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1455059609L;
 
-    @SerializedName("startVolumeID") private final Optional<Long> startVolumeID;
-    @SerializedName("limit") private final Optional<Long> limit;
+    @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
+    @SerializedName("limit") private Optional<Long> limit;
 
     /**
      * The Request object for the "ListActiveVolumes" API Service call.
@@ -56,6 +56,15 @@ public class ListActiveVolumesRequest  implements Serializable  {
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
+    
+    /**
+     * The Request object for the "ListActiveVolumes" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListActiveVolumesRequest() {}
+
 
     /**
      * The ID of the first volume to list.
@@ -66,11 +75,19 @@ public class ListActiveVolumesRequest  implements Serializable  {
         return this.startVolumeID;
     }
 
+    public void setStartVolumeID(Optional<Long> startVolumeID) {
+        this.startVolumeID = startVolumeID;
+    }
+
     /**
      * The maximum number of volumes to return from the API.
      **/
     public Optional<Long> getLimit() {
         return this.limit;
+    }
+
+    public void setLimit(Optional<Long> limit) {
+        this.limit = limit;
     }
 
     @Override

@@ -41,26 +41,26 @@ public class Volume  implements Serializable  {
 
     private static final long serialVersionUID = -2053684118L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("name") private final String name;
-    @SerializedName("accountID") private final Long accountID;
-    @SerializedName("createTime") private final String createTime;
-    @SerializedName("status") private final String status;
-    @SerializedName("access") private final String access;
-    @SerializedName("enable512e") private final Boolean enable512e;
-    @SerializedName("iqn") private final String iqn;
-    @SerializedName("scsiEUIDeviceID") private final String scsiEUIDeviceID;
-    @SerializedName("scsiNAADeviceID") private final String scsiNAADeviceID;
-    @SerializedName("qos") private final VolumeQOS qos;
-    @SerializedName("volumeAccessGroups") private final Long[] volumeAccessGroups;
-    @SerializedName("volumePairs") private final VolumePair[] volumePairs;
-    @SerializedName("deleteTime") private final Optional<String> deleteTime;
-    @SerializedName("purgeTime") private final Optional<String> purgeTime;
-    @SerializedName("sliceCount") private final Long sliceCount;
-    @SerializedName("totalSize") private final Long totalSize;
-    @SerializedName("blockSize") private final Long blockSize;
-    @SerializedName("virtualVolumeID") private final java.util.UUID virtualVolumeID;
-    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("name") private String name;
+    @SerializedName("accountID") private Long accountID;
+    @SerializedName("createTime") private String createTime;
+    @SerializedName("status") private String status;
+    @SerializedName("access") private String access;
+    @SerializedName("enable512e") private Boolean enable512e;
+    @SerializedName("iqn") private String iqn;
+    @SerializedName("scsiEUIDeviceID") private String scsiEUIDeviceID;
+    @SerializedName("scsiNAADeviceID") private String scsiNAADeviceID;
+    @SerializedName("qos") private VolumeQOS qos;
+    @SerializedName("volumeAccessGroups") private Long[] volumeAccessGroups;
+    @SerializedName("volumePairs") private VolumePair[] volumePairs;
+    @SerializedName("deleteTime") private Optional<String> deleteTime;
+    @SerializedName("purgeTime") private Optional<String> purgeTime;
+    @SerializedName("sliceCount") private Long sliceCount;
+    @SerializedName("totalSize") private Long totalSize;
+    @SerializedName("blockSize") private Long blockSize;
+    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     /**
      * Volumes Info is an object containing information about a volume.
@@ -161,12 +161,27 @@ public class Volume  implements Serializable  {
         this.access = access;
     }
 
+    
+    /**
+     * Volumes Info is an object containing information about a volume.
+     * The return objects only include "configured" information about the volume and not runtime or usage information.
+     * Information about paired volumes will also be returned.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public Volume() {}
+
 
     /**
      * Unique VolumeID for the volume.
      **/
     public Long getVolumeID() {
         return this.volumeID;
+    }
+
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
     }
 
     /**
@@ -176,11 +191,19 @@ public class Volume  implements Serializable  {
         return this.name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * Unique AccountID for the account.
      **/
     public Long getAccountID() {
         return this.accountID;
+    }
+
+    public void setAccountID(Long accountID) {
+        this.accountID = accountID;
     }
 
     /**
@@ -190,6 +213,10 @@ public class Volume  implements Serializable  {
         return this.createTime;
     }
 
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
     /**
      * Current status of the volume
      * init: A volume that is being initialized and is not ready for connections.
@@ -197,6 +224,10 @@ public class Volume  implements Serializable  {
      **/
     public String getStatus() {
         return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     /**
@@ -210,11 +241,19 @@ public class Volume  implements Serializable  {
         return this.access;
     }
 
+    public void setAccess(String access) {
+        this.access = access;
+    }
+
     /**
      * If "true", the volume provides 512 byte sector emulation.
      **/
     public Boolean getEnable512e() {
         return this.enable512e;
+    }
+
+    public void setEnable512e(Boolean enable512e) {
+        this.enable512e = enable512e;
     }
 
     /**
@@ -224,11 +263,19 @@ public class Volume  implements Serializable  {
         return this.iqn;
     }
 
+    public void setIqn(String iqn) {
+        this.iqn = iqn;
+    }
+
     /**
      * Globally unique SCSI device identifier for the volume in EUI-64 based 16-byte format.
      **/
     public String getScsiEUIDeviceID() {
         return this.scsiEUIDeviceID;
+    }
+
+    public void setScsiEUIDeviceID(String scsiEUIDeviceID) {
+        this.scsiEUIDeviceID = scsiEUIDeviceID;
     }
 
     /**
@@ -238,6 +285,10 @@ public class Volume  implements Serializable  {
         return this.scsiNAADeviceID;
     }
 
+    public void setScsiNAADeviceID(String scsiNAADeviceID) {
+        this.scsiNAADeviceID = scsiNAADeviceID;
+    }
+
     /**
      * Quality of service settings for this volume.
      **/
@@ -245,11 +296,19 @@ public class Volume  implements Serializable  {
         return this.qos;
     }
 
+    public void setQos(VolumeQOS qos) {
+        this.qos = qos;
+    }
+
     /**
      * List of volume access groups to which a volume belongs.
      **/
     public Long[] getVolumeAccessGroups() {
         return this.volumeAccessGroups;
+    }
+
+    public void setVolumeAccessGroups(Long[] volumeAccessGroups) {
+        this.volumeAccessGroups = volumeAccessGroups;
     }
 
     /**
@@ -261,12 +320,20 @@ public class Volume  implements Serializable  {
         return this.volumePairs;
     }
 
+    public void setVolumePairs(VolumePair[] volumePairs) {
+        this.volumePairs = volumePairs;
+    }
+
     /**
      * The time this volume was deleted.
      * If this has no value, the volume has not yet been deleted.
      **/
     public Optional<String> getDeleteTime() {
         return this.deleteTime;
+    }
+
+    public void setDeleteTime(Optional<String> deleteTime) {
+        this.deleteTime = deleteTime;
     }
 
     /**
@@ -277,6 +344,10 @@ public class Volume  implements Serializable  {
         return this.purgeTime;
     }
 
+    public void setPurgeTime(Optional<String> purgeTime) {
+        this.purgeTime = purgeTime;
+    }
+
     /**
      * The number of slices backing this volume.
      * In the current software, this value will always be 1.
@@ -285,11 +356,19 @@ public class Volume  implements Serializable  {
         return this.sliceCount;
     }
 
+    public void setSliceCount(Long sliceCount) {
+        this.sliceCount = sliceCount;
+    }
+
     /**
      * Total size of this volume in bytes.
      **/
     public Long getTotalSize() {
         return this.totalSize;
+    }
+
+    public void setTotalSize(Long totalSize) {
+        this.totalSize = totalSize;
     }
 
     /**
@@ -302,6 +381,10 @@ public class Volume  implements Serializable  {
         return this.blockSize;
     }
 
+    public void setBlockSize(Long blockSize) {
+        this.blockSize = blockSize;
+    }
+
     /**
      * Virtual volume ID this volume backs.
      **/
@@ -309,11 +392,19 @@ public class Volume  implements Serializable  {
         return this.virtualVolumeID;
     }
 
+    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) {
+        this.virtualVolumeID = virtualVolumeID;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public java.util.Map<String, Object> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

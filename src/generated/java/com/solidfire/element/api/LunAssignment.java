@@ -41,8 +41,8 @@ public class LunAssignment  implements Serializable  {
 
     private static final long serialVersionUID = 1196457034L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("lun") private final Long lun;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("lun") private Long lun;
 
     /**
      * VolumeID and Lun assignment.
@@ -56,6 +56,15 @@ public class LunAssignment  implements Serializable  {
         this.lun = lun;
     }
 
+    
+    /**
+     * VolumeID and Lun assignment.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public LunAssignment() {}
+
 
     /**
      * The volume ID assigned to the Lun.
@@ -64,11 +73,19 @@ public class LunAssignment  implements Serializable  {
         return this.volumeID;
     }
 
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
+    }
+
     /**
      * Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed.
      **/
     public Long getLun() {
         return this.lun;
+    }
+
+    public void setLun(Long lun) {
+        this.lun = lun;
     }
 
     @Override

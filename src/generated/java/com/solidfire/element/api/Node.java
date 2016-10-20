@@ -41,21 +41,21 @@ public class Node  implements Serializable  {
 
     private static final long serialVersionUID = -249558084L;
 
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("associatedMasterServiceID") private final Long associatedMasterServiceID;
-    @SerializedName("associatedFServiceID") private final Long associatedFServiceID;
-    @SerializedName("fibreChannelTargetPortGroup") private final String fibreChannelTargetPortGroup;
-    @SerializedName("name") private final String name;
-    @SerializedName("platformInfo") private final Platform platformInfo;
-    @SerializedName("softwareVersion") private final String softwareVersion;
-    @SerializedName("cip") private final String cip;
-    @SerializedName("cipi") private final String cipi;
-    @SerializedName("mip") private final String mip;
-    @SerializedName("mipi") private final String mipi;
-    @SerializedName("sip") private final String sip;
-    @SerializedName("sipi") private final String sipi;
-    @SerializedName("uuid") private final java.util.UUID uuid;
-    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("associatedMasterServiceID") private Long associatedMasterServiceID;
+    @SerializedName("associatedFServiceID") private Long associatedFServiceID;
+    @SerializedName("fibreChannelTargetPortGroup") private String fibreChannelTargetPortGroup;
+    @SerializedName("name") private String name;
+    @SerializedName("platformInfo") private Platform platformInfo;
+    @SerializedName("softwareVersion") private String softwareVersion;
+    @SerializedName("cip") private String cip;
+    @SerializedName("cipi") private String cipi;
+    @SerializedName("mip") private String mip;
+    @SerializedName("mipi") private String mipi;
+    @SerializedName("sip") private String sip;
+    @SerializedName("sipi") private String sipi;
+    @SerializedName("uuid") private java.util.UUID uuid;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     /**
      * A node refers to an individual machine in a cluster.
@@ -97,6 +97,17 @@ public class Node  implements Serializable  {
         this.mipi = mipi;
     }
 
+    
+    /**
+     * A node refers to an individual machine in a cluster.
+     * Each active node hosts a master service, which is responsible for managing the drives and other services on its node.
+     * After a node is made active, its drives will become available for addition to the cluster.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public Node() {}
+
 
     /**
      * The unique identifier for this node.
@@ -105,20 +116,40 @@ public class Node  implements Serializable  {
         return this.nodeID;
     }
 
+    public void setNodeID(Long nodeID) {
+        this.nodeID = nodeID;
+    }
+
     /**
      * The master service responsible for controlling other services on this node.
      **/
     public Long getAssociatedMasterServiceID() {
         return this.associatedMasterServiceID;
     }
+
+    public void setAssociatedMasterServiceID(Long associatedMasterServiceID) {
+        this.associatedMasterServiceID = associatedMasterServiceID;
+    }
     public Long getAssociatedFServiceID() {
         return this.associatedFServiceID;
+    }
+
+    public void setAssociatedFServiceID(Long associatedFServiceID) {
+        this.associatedFServiceID = associatedFServiceID;
     }
     public String getFibreChannelTargetPortGroup() {
         return this.fibreChannelTargetPortGroup;
     }
+
+    public void setFibreChannelTargetPortGroup(String fibreChannelTargetPortGroup) {
+        this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
+    }
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -128,11 +159,19 @@ public class Node  implements Serializable  {
         return this.platformInfo;
     }
 
+    public void setPlatformInfo(Platform platformInfo) {
+        this.platformInfo = platformInfo;
+    }
+
     /**
      * The version of SolidFire software this node is currently running.
      **/
     public String getSoftwareVersion() {
         return this.softwareVersion;
+    }
+
+    public void setSoftwareVersion(String softwareVersion) {
+        this.softwareVersion = softwareVersion;
     }
 
     /**
@@ -142,11 +181,19 @@ public class Node  implements Serializable  {
         return this.cip;
     }
 
+    public void setCip(String cip) {
+        this.cip = cip;
+    }
+
     /**
      * The machine's name for the "cip" interface.
      **/
     public String getCipi() {
         return this.cipi;
+    }
+
+    public void setCipi(String cipi) {
+        this.cipi = cipi;
     }
 
     /**
@@ -156,11 +203,19 @@ public class Node  implements Serializable  {
         return this.mip;
     }
 
+    public void setMip(String mip) {
+        this.mip = mip;
+    }
+
     /**
      * The machine's name for the "mip" interface.
      **/
     public String getMipi() {
         return this.mipi;
+    }
+
+    public void setMipi(String mipi) {
+        this.mipi = mipi;
     }
 
     /**
@@ -170,11 +225,19 @@ public class Node  implements Serializable  {
         return this.sip;
     }
 
+    public void setSip(String sip) {
+        this.sip = sip;
+    }
+
     /**
      * The machine's name for the "sip" interface.
      **/
     public String getSipi() {
         return this.sipi;
+    }
+
+    public void setSipi(String sipi) {
+        this.sipi = sipi;
     }
 
     /**
@@ -183,8 +246,16 @@ public class Node  implements Serializable  {
     public java.util.UUID getUuid() {
         return this.uuid;
     }
+
+    public void setUuid(java.util.UUID uuid) {
+        this.uuid = uuid;
+    }
     public java.util.Map<String, Object> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

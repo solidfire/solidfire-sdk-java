@@ -41,8 +41,8 @@ public class TestLdapAuthenticationResult  implements Serializable  {
 
     private static final long serialVersionUID = -1122051719L;
 
-    @SerializedName("groups") private final String[] groups;
-    @SerializedName("userDN") private final String userDN;
+    @SerializedName("groups") private String[] groups;
+    @SerializedName("userDN") private String userDN;
 
     /**
      * The object returned by the "TestLdapAuthentication" API Service call.
@@ -56,6 +56,15 @@ public class TestLdapAuthenticationResult  implements Serializable  {
         this.userDN = userDN;
     }
 
+    
+    /**
+     * The object returned by the "TestLdapAuthentication" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public TestLdapAuthenticationResult() {}
+
 
     /**
      * List of LDAP groups that the tested user is a member of.
@@ -64,11 +73,19 @@ public class TestLdapAuthenticationResult  implements Serializable  {
         return this.groups;
     }
 
+    public void setGroups(String[] groups) {
+        this.groups = groups;
+    }
+
     /**
      * The tested user's full LDAP distinguished name.
      **/
     public String getUserDN() {
         return this.userDN;
+    }
+
+    public void setUserDN(String userDN) {
+        this.userDN = userDN;
     }
 
     @Override

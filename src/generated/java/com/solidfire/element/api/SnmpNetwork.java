@@ -41,10 +41,10 @@ public class SnmpNetwork  implements Serializable  {
 
     private static final long serialVersionUID = 1047589412L;
 
-    @SerializedName("access") private final String access;
-    @SerializedName("cidr") private final Long cidr;
-    @SerializedName("community") private final String community;
-    @SerializedName("network") private final String network;
+    @SerializedName("access") private String access;
+    @SerializedName("cidr") private Long cidr;
+    @SerializedName("community") private String community;
+    @SerializedName("network") private String network;
 
     /**
      * The SNMP network object contains information about SNMP configuration for the cluster nodes. SNMP v3 is supported on SolidFire clusters.
@@ -62,6 +62,15 @@ public class SnmpNetwork  implements Serializable  {
         this.network = network;
     }
 
+    
+    /**
+     * The SNMP network object contains information about SNMP configuration for the cluster nodes. SNMP v3 is supported on SolidFire clusters.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public SnmpNetwork() {}
+
 
     /**
      * <br/><b>ro</b>: read-only access.*
@@ -73,11 +82,19 @@ public class SnmpNetwork  implements Serializable  {
         return this.access;
     }
 
+    public void setAccess(String access) {
+        this.access = access;
+    }
+
     /**
      * A CIDR network mask. This network mask must be an integer greater than or equal to 0, and less than or equal to 32. It must also not be equal to 31.
      **/
     public Long getCidr() {
         return this.cidr;
+    }
+
+    public void setCidr(Long cidr) {
+        this.cidr = cidr;
     }
 
     /**
@@ -87,11 +104,19 @@ public class SnmpNetwork  implements Serializable  {
         return this.community;
     }
 
+    public void setCommunity(String community) {
+        this.community = community;
+    }
+
     /**
      * This parameter along with the cidr variable is used to control which network the access and community string apply to. The special value of "default" is used to specify an entry that applies to all networks. The cidr mask is ignored when network value is either a host name or default.
      **/
     public String getNetwork() {
         return this.network;
+    }
+
+    public void setNetwork(String network) {
+        this.network = network;
     }
 
     @Override

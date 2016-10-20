@@ -41,11 +41,11 @@ public class GetEfficiencyResult  implements Serializable  {
 
     private static final long serialVersionUID = 92675526L;
 
-    @SerializedName("compression") private final Optional<Double> compression;
-    @SerializedName("deduplication") private final Optional<Double> deduplication;
-    @SerializedName("thinProvisioning") private final Optional<Double> thinProvisioning;
-    @SerializedName("timestamp") private final String timestamp;
-    @SerializedName("missingVolumes") private final Long[] missingVolumes;
+    @SerializedName("compression") private Optional<Double> compression;
+    @SerializedName("deduplication") private Optional<Double> deduplication;
+    @SerializedName("thinProvisioning") private Optional<Double> thinProvisioning;
+    @SerializedName("timestamp") private String timestamp;
+    @SerializedName("missingVolumes") private Long[] missingVolumes;
 
     /**
      * The object returned by the "GetEfficiency" API Service call.
@@ -65,12 +65,25 @@ public class GetEfficiencyResult  implements Serializable  {
         this.deduplication = (deduplication == null) ? Optional.<Double>empty() : deduplication;
     }
 
+    
+    /**
+     * The object returned by the "GetEfficiency" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetEfficiencyResult() {}
+
 
     /**
      * The amount of space being saved by compressing data on a single volume. Stated as a ratio where "1" means data has been stored without being compressed.
      **/
     public Optional<Double> getCompression() {
         return this.compression;
+    }
+
+    public void setCompression(Optional<Double> compression) {
+        this.compression = compression;
     }
 
     /**
@@ -80,11 +93,19 @@ public class GetEfficiencyResult  implements Serializable  {
         return this.deduplication;
     }
 
+    public void setDeduplication(Optional<Double> deduplication) {
+        this.deduplication = deduplication;
+    }
+
     /**
      * The ratio of space used to the amount of space allocated for storing data. Stated as a ratio.
      **/
     public Optional<Double> getThinProvisioning() {
         return this.thinProvisioning;
+    }
+
+    public void setThinProvisioning(Optional<Double> thinProvisioning) {
+        this.thinProvisioning = thinProvisioning;
     }
 
     /**
@@ -94,11 +115,19 @@ public class GetEfficiencyResult  implements Serializable  {
         return this.timestamp;
     }
 
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
     /**
      * The volumes that could not be queried for efficiency data. Missing volumes can be caused by GC being less than hour old, temporary network loss or restarted services since the GC cycle.
      **/
     public Long[] getMissingVolumes() {
         return this.missingVolumes;
+    }
+
+    public void setMissingVolumes(Long[] missingVolumes) {
+        this.missingVolumes = missingVolumes;
     }
 
     @Override

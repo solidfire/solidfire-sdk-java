@@ -41,19 +41,19 @@ public class ClusterFaultInfo  implements Serializable  {
 
     private static final long serialVersionUID = 1498069682L;
 
-    @SerializedName("severity") private final String severity;
-    @SerializedName("type") private final String type;
-    @SerializedName("code") private final String code;
-    @SerializedName("details") private final String details;
-    @SerializedName("nodeHardwareFaultID") private final Long nodeHardwareFaultID;
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("serviceID") private final Long serviceID;
-    @SerializedName("driveID") private final Long driveID;
-    @SerializedName("resolved") private final Boolean resolved;
-    @SerializedName("clusterFaultID") private final Long clusterFaultID;
-    @SerializedName("date") private final String date;
-    @SerializedName("resolvedDate") private final String resolvedDate;
-    @SerializedName("data") private final Object data;
+    @SerializedName("severity") private String severity;
+    @SerializedName("type") private String type;
+    @SerializedName("code") private String code;
+    @SerializedName("details") private String details;
+    @SerializedName("nodeHardwareFaultID") private Long nodeHardwareFaultID;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("serviceID") private Long serviceID;
+    @SerializedName("driveID") private Long driveID;
+    @SerializedName("resolved") private Boolean resolved;
+    @SerializedName("clusterFaultID") private Long clusterFaultID;
+    @SerializedName("date") private String date;
+    @SerializedName("resolvedDate") private String resolvedDate;
+    @SerializedName("data") private Object data;
 
     /**
      * 
@@ -89,44 +89,105 @@ public class ClusterFaultInfo  implements Serializable  {
         this.serviceID = serviceID;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ClusterFaultInfo() {}
+
     public String getSeverity() {
         return this.severity;
+    }
+
+    public void setSeverity(String severity) {
+        this.severity = severity;
     }
     public String getType() {
         return this.type;
     }
+
+    public void setType(String type) {
+        this.type = type;
+    }
     public String getCode() {
         return this.code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
     public String getDetails() {
         return this.details;
     }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
     public Long getNodeHardwareFaultID() {
         return this.nodeHardwareFaultID;
+    }
+
+    public void setNodeHardwareFaultID(Long nodeHardwareFaultID) {
+        this.nodeHardwareFaultID = nodeHardwareFaultID;
     }
     public Long getNodeID() {
         return this.nodeID;
     }
+
+    public void setNodeID(Long nodeID) {
+        this.nodeID = nodeID;
+    }
     public Long getServiceID() {
         return this.serviceID;
+    }
+
+    public void setServiceID(Long serviceID) {
+        this.serviceID = serviceID;
     }
     public Long getDriveID() {
         return this.driveID;
     }
+
+    public void setDriveID(Long driveID) {
+        this.driveID = driveID;
+    }
     public Boolean getResolved() {
         return this.resolved;
+    }
+
+    public void setResolved(Boolean resolved) {
+        this.resolved = resolved;
     }
     public Long getClusterFaultID() {
         return this.clusterFaultID;
     }
+
+    public void setClusterFaultID(Long clusterFaultID) {
+        this.clusterFaultID = clusterFaultID;
+    }
     public String getDate() {
         return this.date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
     public String getResolvedDate() {
         return this.resolvedDate;
     }
+
+    public void setResolvedDate(String resolvedDate) {
+        this.resolvedDate = resolvedDate;
+    }
     public Object getData() {
         return this.data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
     }
 
     @Override

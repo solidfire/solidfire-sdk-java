@@ -41,7 +41,7 @@ public class ListTestsResult  implements Serializable  {
 
     private static final long serialVersionUID = 56906467L;
 
-    @SerializedName("tests") private final String[] tests;
+    @SerializedName("tests") private String[] tests;
 
     /**
      * The object returned by the "ListTests" API Service call.
@@ -53,12 +53,25 @@ public class ListTestsResult  implements Serializable  {
         this.tests = tests;
     }
 
+    
+    /**
+     * The object returned by the "ListTests" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListTestsResult() {}
+
 
     /**
      * List of tests that can be performed on the node.
      **/
     public String[] getTests() {
         return this.tests;
+    }
+
+    public void setTests(String[] tests) {
+        this.tests = tests;
     }
 
     @Override

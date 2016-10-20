@@ -41,7 +41,7 @@ public class GetConfigResult  implements Serializable  {
 
     private static final long serialVersionUID = -1341970238L;
 
-    @SerializedName("config") private final Config config;
+    @SerializedName("config") private Config config;
 
     /**
      * The object returned by the "GetConfig" API Service call.
@@ -53,12 +53,25 @@ public class GetConfigResult  implements Serializable  {
         this.config = config;
     }
 
+    
+    /**
+     * The object returned by the "GetConfig" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetConfigResult() {}
+
 
     /**
      * The details of the cluster. Values returned in "config": cluster- Cluster information that identifies how the node communicates with the cluster it is associated with. (Object) network - Network information for bonding and Ethernet connections. (Object)
      **/
     public Config getConfig() {
         return this.config;
+    }
+
+    public void setConfig(Config config) {
+        this.config = config;
     }
 
     @Override

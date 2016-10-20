@@ -41,7 +41,7 @@ public class ModifyScheduleRequest  implements Serializable  {
 
     private static final long serialVersionUID = 79798341L;
 
-    @SerializedName("schedule") private final Schedule schedule;
+    @SerializedName("schedule") private Schedule schedule;
 
     /**
      * The Request object for the "ModifySchedule" API Service call.
@@ -52,6 +52,15 @@ public class ModifyScheduleRequest  implements Serializable  {
     public ModifyScheduleRequest(Schedule schedule) {
         this.schedule = schedule;
     }
+
+    
+    /**
+     * The Request object for the "ModifySchedule" API Service call.
+     * Empty constructor to support serialization.
+     * @since 8.0
+     **/
+    @Since("8.0")
+    public ModifyScheduleRequest() {}
 
 
     /**
@@ -64,6 +73,10 @@ public class ModifyScheduleRequest  implements Serializable  {
      **/
     public Schedule getSchedule() {
         return this.schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     @Override

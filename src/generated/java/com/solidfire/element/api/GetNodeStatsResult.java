@@ -41,7 +41,7 @@ public class GetNodeStatsResult  implements Serializable  {
 
     private static final long serialVersionUID = 914759763L;
 
-    @SerializedName("nodeStats") private final NodeStatsInfo nodeStats;
+    @SerializedName("nodeStats") private NodeStatsInfo nodeStats;
 
     /**
      * The object returned by the "GetNodeStats" API Service call.
@@ -53,12 +53,25 @@ public class GetNodeStatsResult  implements Serializable  {
         this.nodeStats = nodeStats;
     }
 
+    
+    /**
+     * The object returned by the "GetNodeStats" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetNodeStatsResult() {}
+
 
     /**
      * Node activity information.
      **/
     public NodeStatsInfo getNodeStats() {
         return this.nodeStats;
+    }
+
+    public void setNodeStats(NodeStatsInfo nodeStats) {
+        this.nodeStats = nodeStats;
     }
 
     @Override

@@ -41,8 +41,8 @@ public class ListAccountsRequest  implements Serializable  {
 
     private static final long serialVersionUID = 725452430L;
 
-    @SerializedName("startAccountID") private final Optional<Long> startAccountID;
-    @SerializedName("limit") private final Optional<Long> limit;
+    @SerializedName("startAccountID") private Optional<Long> startAccountID;
+    @SerializedName("limit") private Optional<Long> limit;
 
     /**
      * The Request object for the "ListAccounts" API Service call.
@@ -56,6 +56,15 @@ public class ListAccountsRequest  implements Serializable  {
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
+    
+    /**
+     * The Request object for the "ListAccounts" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListAccountsRequest() {}
+
 
     /**
      * Starting AccountID to return.
@@ -67,11 +76,19 @@ public class ListAccountsRequest  implements Serializable  {
         return this.startAccountID;
     }
 
+    public void setStartAccountID(Optional<Long> startAccountID) {
+        this.startAccountID = startAccountID;
+    }
+
     /**
      * Maximum number of AccountInfo objects to return.
      **/
     public Optional<Long> getLimit() {
         return this.limit;
+    }
+
+    public void setLimit(Optional<Long> limit) {
+        this.limit = limit;
     }
 
     @Override

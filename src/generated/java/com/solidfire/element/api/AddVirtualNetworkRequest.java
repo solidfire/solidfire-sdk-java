@@ -41,14 +41,14 @@ public class AddVirtualNetworkRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1016942277L;
 
-    @SerializedName("virtualNetworkTag") private final Long virtualNetworkTag;
-    @SerializedName("name") private final String name;
-    @SerializedName("addressBlocks") private final AddressBlock[] addressBlocks;
-    @SerializedName("netmask") private final String netmask;
-    @SerializedName("svip") private final String svip;
-    @SerializedName("gateway") private final Optional<String> gateway;
-    @SerializedName("namespace") private final Optional<Boolean> namespace;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
+    @SerializedName("name") private String name;
+    @SerializedName("addressBlocks") private AddressBlock[] addressBlocks;
+    @SerializedName("netmask") private String netmask;
+    @SerializedName("svip") private String svip;
+    @SerializedName("gateway") private Optional<String> gateway;
+    @SerializedName("namespace") private Optional<Boolean> namespace;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "AddVirtualNetwork" API Service call.
@@ -96,6 +96,15 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
 
+    
+    /**
+     * The Request object for the "AddVirtualNetwork" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public AddVirtualNetworkRequest() {}
+
 
     /**
      * A unique virtual network (VLAN) tag. Supported values are 1 to 4095 (the number zero (0) is not supported).
@@ -104,11 +113,19 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         return this.virtualNetworkTag;
     }
 
+    public void setVirtualNetworkTag(Long virtualNetworkTag) {
+        this.virtualNetworkTag = virtualNetworkTag;
+    }
+
     /**
      * User defined name for the new virtual network.
      **/
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -121,6 +138,10 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         return this.addressBlocks;
     }
 
+    public void setAddressBlocks(AddressBlock[] addressBlocks) {
+        this.addressBlocks = addressBlocks;
+    }
+
     /**
      * Unique netmask for the virtual network being created.
      **/
@@ -128,11 +149,19 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         return this.netmask;
     }
 
+    public void setNetmask(String netmask) {
+        this.netmask = netmask;
+    }
+
     /**
      * Unique storage IP address for the virtual network being created.
      **/
     public String getSvip() {
         return this.svip;
+    }
+
+    public void setSvip(String svip) {
+        this.svip = svip;
     }
 
     /**
@@ -145,6 +174,10 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         return this.gateway;
     }
 
+    public void setGateway(Optional<String> gateway) {
+        this.gateway = gateway;
+    }
+
     /**
      * 
      * @since 9.0 
@@ -155,11 +188,19 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         return this.namespace;
     }
 
+    public void setNamespace(Optional<Boolean> namespace) {
+        this.namespace = namespace;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

@@ -41,8 +41,8 @@ public class Network  implements Serializable  {
 
     private static final long serialVersionUID = 310271428L;
 
-    @SerializedName("Bond10G") private final Optional<NetworkConfig> bond10G;
-    @SerializedName("Bond1G") private final Optional<NetworkConfig> bond1G;
+    @SerializedName("Bond10G") private Optional<NetworkConfig> bond10G;
+    @SerializedName("Bond1G") private Optional<NetworkConfig> bond1G;
 
     /**
      * 
@@ -56,11 +56,28 @@ public class Network  implements Serializable  {
         this.bond1G = (bond1G == null) ? Optional.<NetworkConfig>empty() : bond1G;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public Network() {}
+
     public Optional<NetworkConfig> getBond10G() {
         return this.bond10G;
     }
+
+    public void setBond10G(Optional<NetworkConfig> bond10G) {
+        this.bond10G = bond10G;
+    }
     public Optional<NetworkConfig> getBond1G() {
         return this.bond1G;
+    }
+
+    public void setBond1G(Optional<NetworkConfig> bond1G) {
+        this.bond1G = bond1G;
     }
 
     @Override

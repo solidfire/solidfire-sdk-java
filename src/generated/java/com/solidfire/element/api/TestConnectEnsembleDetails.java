@@ -41,7 +41,7 @@ public class TestConnectEnsembleDetails  implements Serializable  {
 
     private static final long serialVersionUID = -1073658240L;
 
-    @SerializedName("nodes") private final Object nodes;
+    @SerializedName("nodes") private Object nodes;
 
     /**
      * 
@@ -53,12 +53,25 @@ public class TestConnectEnsembleDetails  implements Serializable  {
         this.nodes = nodes;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public TestConnectEnsembleDetails() {}
+
 
     /**
      * A list of each ensemble node in the test and the results of the tests.
      **/
     public Object getNodes() {
         return this.nodes;
+    }
+
+    public void setNodes(Object nodes) {
+        this.nodes = nodes;
     }
 
     @Override

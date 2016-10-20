@@ -41,10 +41,10 @@ public class ListEventsRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1593377383L;
 
-    @SerializedName("maxEvents") private final Optional<Long> maxEvents;
-    @SerializedName("startEventID") private final Optional<Long> startEventID;
-    @SerializedName("endEventID") private final Optional<Long> endEventID;
-    @SerializedName("eventQueueType") private final Optional<String> eventQueueType;
+    @SerializedName("maxEvents") private Optional<Long> maxEvents;
+    @SerializedName("startEventID") private Optional<Long> startEventID;
+    @SerializedName("endEventID") private Optional<Long> endEventID;
+    @SerializedName("eventQueueType") private Optional<String> eventQueueType;
 
     /**
      * The Request object for the "ListEvents" API Service call.
@@ -77,12 +77,25 @@ public class ListEventsRequest  implements Serializable  {
         this.eventQueueType = (eventQueueType == null) ? Optional.<String>empty() : eventQueueType;
     }
 
+    
+    /**
+     * The Request object for the "ListEvents" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListEventsRequest() {}
+
 
     /**
      * Specifies the maximum number of events to return.
      **/
     public Optional<Long> getMaxEvents() {
         return this.maxEvents;
+    }
+
+    public void setMaxEvents(Optional<Long> maxEvents) {
+        this.maxEvents = maxEvents;
     }
 
     /**
@@ -92,6 +105,10 @@ public class ListEventsRequest  implements Serializable  {
         return this.startEventID;
     }
 
+    public void setStartEventID(Optional<Long> startEventID) {
+        this.startEventID = startEventID;
+    }
+
     /**
      * Identifies the end of a range of events to return.
      **/
@@ -99,9 +116,17 @@ public class ListEventsRequest  implements Serializable  {
         return this.endEventID;
     }
 
+    public void setEndEventID(Optional<Long> endEventID) {
+        this.endEventID = endEventID;
+    }
+
     @Since("9.0")
     public Optional<String> getEventQueueType() {
         return this.eventQueueType;
+    }
+
+    public void setEventQueueType(Optional<String> eventQueueType) {
+        this.eventQueueType = eventQueueType;
     }
 
     @Override

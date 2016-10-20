@@ -41,8 +41,8 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest  implements Serializab
 
     private static final long serialVersionUID = 1778422325L;
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
-    @SerializedName("initiators") private final String[] initiators;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("initiators") private String[] initiators;
 
     /**
      * The Request object for the "RemoveInitiatorsFromVolumeAccessGroup" API Service call.
@@ -56,6 +56,15 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest  implements Serializab
         this.initiators = initiators;
     }
 
+    
+    /**
+     * The Request object for the "RemoveInitiatorsFromVolumeAccessGroup" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public RemoveInitiatorsFromVolumeAccessGroupRequest() {}
+
 
     /**
      * The ID of the volume access group to modify.
@@ -64,11 +73,19 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest  implements Serializab
         return this.volumeAccessGroupID;
     }
 
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) {
+        this.volumeAccessGroupID = volumeAccessGroupID;
+    }
+
     /**
      * List of initiators to remove from the volume access group.
      **/
     public String[] getInitiators() {
         return this.initiators;
+    }
+
+    public void setInitiators(String[] initiators) {
+        this.initiators = initiators;
     }
 
     @Override

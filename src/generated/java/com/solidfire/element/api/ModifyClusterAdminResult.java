@@ -52,6 +52,7 @@ public class ModifyClusterAdminResult  implements Serializable  {
     }
 
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

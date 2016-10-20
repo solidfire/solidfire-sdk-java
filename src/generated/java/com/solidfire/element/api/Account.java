@@ -41,13 +41,13 @@ public class Account  implements Serializable  {
 
     private static final long serialVersionUID = 2129640835L;
 
-    @SerializedName("accountID") private final Long accountID;
-    @SerializedName("username") private final String username;
-    @SerializedName("status") private final String status;
-    @SerializedName("volumes") private final Long[] volumes;
-    @SerializedName("initiatorSecret") private final Optional<CHAPSecret> initiatorSecret;
-    @SerializedName("targetSecret") private final Optional<CHAPSecret> targetSecret;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("accountID") private Long accountID;
+    @SerializedName("username") private String username;
+    @SerializedName("status") private String status;
+    @SerializedName("volumes") private Long[] volumes;
+    @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
+    @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The object containing information about an account.
@@ -72,12 +72,26 @@ public class Account  implements Serializable  {
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
 
+    
+    /**
+     * The object containing information about an account.
+     * This object only includes "configured" information about the account, not any runtime or usage information.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public Account() {}
+
 
     /**
      * Unique AccountID for the account.
      **/
     public Long getAccountID() {
         return this.accountID;
+    }
+
+    public void setAccountID(Long accountID) {
+        this.accountID = accountID;
     }
 
     /**
@@ -87,11 +101,19 @@ public class Account  implements Serializable  {
         return this.username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     /**
      * Current status of the account.
      **/
     public String getStatus() {
         return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     /**
@@ -101,11 +123,19 @@ public class Account  implements Serializable  {
         return this.volumes;
     }
 
+    public void setVolumes(Long[] volumes) {
+        this.volumes = volumes;
+    }
+
     /**
      * CHAP secret to use for the initiator.
      **/
     public Optional<CHAPSecret> getInitiatorSecret() {
         return this.initiatorSecret;
+    }
+
+    public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) {
+        this.initiatorSecret = initiatorSecret;
     }
 
     /**
@@ -115,11 +145,19 @@ public class Account  implements Serializable  {
         return this.targetSecret;
     }
 
+    public void setTargetSecret(Optional<CHAPSecret> targetSecret) {
+        this.targetSecret = targetSecret;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

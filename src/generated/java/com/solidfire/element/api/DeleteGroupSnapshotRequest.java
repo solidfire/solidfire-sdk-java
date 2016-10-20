@@ -41,8 +41,8 @@ public class DeleteGroupSnapshotRequest  implements Serializable  {
 
     private static final long serialVersionUID = 36937148L;
 
-    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
-    @SerializedName("saveMembers") private final Boolean saveMembers;
+    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
+    @SerializedName("saveMembers") private Boolean saveMembers;
 
     /**
      * The Request object for the "DeleteGroupSnapshot" API Service call.
@@ -56,6 +56,15 @@ public class DeleteGroupSnapshotRequest  implements Serializable  {
         this.saveMembers = saveMembers;
     }
 
+    
+    /**
+     * The Request object for the "DeleteGroupSnapshot" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public DeleteGroupSnapshotRequest() {}
+
 
     /**
      * Unique ID of the group snapshot.
@@ -64,12 +73,20 @@ public class DeleteGroupSnapshotRequest  implements Serializable  {
         return this.groupSnapshotID;
     }
 
+    public void setGroupSnapshotID(Long groupSnapshotID) {
+        this.groupSnapshotID = groupSnapshotID;
+    }
+
     /**
      * <br/><b>true</b>: Snapshots are kept, but group association is removed.
      * <br/><b>false</b>: The group and snapshots are deleted.
      **/
     public Boolean getSaveMembers() {
         return this.saveMembers;
+    }
+
+    public void setSaveMembers(Boolean saveMembers) {
+        this.saveMembers = saveMembers;
     }
 
     @Override

@@ -41,9 +41,9 @@ public class ModifyGroupSnapshotRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1577042989L;
 
-    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
-    @SerializedName("expirationTime") private final Optional<String> expirationTime;
-    @SerializedName("enableRemoteReplication") private final Optional<Boolean> enableRemoteReplication;
+    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
+    @SerializedName("expirationTime") private Optional<String> expirationTime;
+    @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
 
     /**
      * The Request object for the "ModifyGroupSnapshot" API Service call.
@@ -59,6 +59,15 @@ public class ModifyGroupSnapshotRequest  implements Serializable  {
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
 
+    
+    /**
+     * The Request object for the "ModifyGroupSnapshot" API Service call.
+     * Empty constructor to support serialization.
+     * @since 8.0
+     **/
+    @Since("8.0")
+    public ModifyGroupSnapshotRequest() {}
+
 
     /**
      * ID of the snapshot.
@@ -67,11 +76,19 @@ public class ModifyGroupSnapshotRequest  implements Serializable  {
         return this.groupSnapshotID;
     }
 
+    public void setGroupSnapshotID(Long groupSnapshotID) {
+        this.groupSnapshotID = groupSnapshotID;
+    }
+
     /**
      * Use to set the time when the snapshot should be removed.
      **/
     public Optional<String> getExpirationTime() {
         return this.expirationTime;
+    }
+
+    public void setExpirationTime(Optional<String> expirationTime) {
+        this.expirationTime = expirationTime;
     }
 
     /**
@@ -82,6 +99,10 @@ public class ModifyGroupSnapshotRequest  implements Serializable  {
      **/
     public Optional<Boolean> getEnableRemoteReplication() {
         return this.enableRemoteReplication;
+    }
+
+    public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) {
+        this.enableRemoteReplication = enableRemoteReplication;
     }
 
     @Override

@@ -41,7 +41,7 @@ public class ListUtilitiesResult  implements Serializable  {
 
     private static final long serialVersionUID = -1625897097L;
 
-    @SerializedName("utilities") private final String[] utilities;
+    @SerializedName("utilities") private String[] utilities;
 
     /**
      * The object returned by the "ListUtilities" API Service call.
@@ -53,12 +53,25 @@ public class ListUtilitiesResult  implements Serializable  {
         this.utilities = utilities;
     }
 
+    
+    /**
+     * The object returned by the "ListUtilities" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListUtilitiesResult() {}
+
 
     /**
      * List of utilities currently available to run on the node.
      **/
     public String[] getUtilities() {
         return this.utilities;
+    }
+
+    public void setUtilities(String[] utilities) {
+        this.utilities = utilities;
     }
 
     @Override

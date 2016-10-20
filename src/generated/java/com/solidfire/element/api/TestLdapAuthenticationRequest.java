@@ -41,9 +41,9 @@ public class TestLdapAuthenticationRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1764798054L;
 
-    @SerializedName("username") private final String username;
-    @SerializedName("password") private final String password;
-    @SerializedName("ldapConfiguration") private final Optional<LdapConfiguration> ldapConfiguration;
+    @SerializedName("username") private String username;
+    @SerializedName("password") private String password;
+    @SerializedName("ldapConfiguration") private Optional<LdapConfiguration> ldapConfiguration;
 
     /**
      * The Request object for the "TestLdapAuthentication" API Service call.
@@ -59,12 +59,25 @@ public class TestLdapAuthenticationRequest  implements Serializable  {
         this.ldapConfiguration = (ldapConfiguration == null) ? Optional.<LdapConfiguration>empty() : ldapConfiguration;
     }
 
+    
+    /**
+     * The Request object for the "TestLdapAuthentication" API Service call.
+     * Empty constructor to support serialization.
+     * @since 8.0
+     **/
+    @Since("8.0")
+    public TestLdapAuthenticationRequest() {}
+
 
     /**
      * The username to be tested.
      **/
     public String getUsername() {
         return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -74,11 +87,19 @@ public class TestLdapAuthenticationRequest  implements Serializable  {
         return this.password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     /**
      * An ldapConfiguration object to be tested. If this parameter is provided, the API call will test the provided configuration even if LDAP authentication is currently disabled.
      **/
     public Optional<LdapConfiguration> getLdapConfiguration() {
         return this.ldapConfiguration;
+    }
+
+    public void setLdapConfiguration(Optional<LdapConfiguration> ldapConfiguration) {
+        this.ldapConfiguration = ldapConfiguration;
     }
 
     @Override

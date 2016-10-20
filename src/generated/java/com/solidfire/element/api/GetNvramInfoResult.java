@@ -41,7 +41,7 @@ public class GetNvramInfoResult  implements Serializable  {
 
     private static final long serialVersionUID = 1656914543L;
 
-    @SerializedName("nvramInfo") private final java.util.Map<String, Object> nvramInfo;
+    @SerializedName("nvramInfo") private java.util.Map<String, Object> nvramInfo;
 
     /**
      * The object returned by the "GetNvramInfo" API Service call.
@@ -53,12 +53,25 @@ public class GetNvramInfoResult  implements Serializable  {
         this.nvramInfo = nvramInfo;
     }
 
+    
+    /**
+     * The object returned by the "GetNvramInfo" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetNvramInfoResult() {}
+
 
     /**
      * Arrays of events and errors detected on the NVRAM card.
      **/
     public java.util.Map<String, Object> getNvramInfo() {
         return this.nvramInfo;
+    }
+
+    public void setNvramInfo(java.util.Map<String, Object> nvramInfo) {
+        this.nvramInfo = nvramInfo;
     }
 
     @Override

@@ -41,10 +41,10 @@ public class ListClusterFaultsRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1062562261L;
 
-    @SerializedName("exceptions") private final Optional<Boolean> exceptions;
-    @SerializedName("bestPractices") private final Optional<Boolean> bestPractices;
-    @SerializedName("update") private final Optional<Boolean> update;
-    @SerializedName("faultTypes") private final Optional<String> faultTypes;
+    @SerializedName("exceptions") private Optional<Boolean> exceptions;
+    @SerializedName("bestPractices") private Optional<Boolean> bestPractices;
+    @SerializedName("update") private Optional<Boolean> update;
+    @SerializedName("faultTypes") private Optional<String> faultTypes;
 
     /**
      * The Request object for the "ListClusterFaults" API Service call.
@@ -62,8 +62,21 @@ public class ListClusterFaultsRequest  implements Serializable  {
         this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : faultTypes;
     }
 
+    
+    /**
+     * The Request object for the "ListClusterFaults" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListClusterFaultsRequest() {}
+
     public Optional<Boolean> getExceptions() {
         return this.exceptions;
+    }
+
+    public void setExceptions(Optional<Boolean> exceptions) {
+        this.exceptions = exceptions;
     }
 
     /**
@@ -73,8 +86,16 @@ public class ListClusterFaultsRequest  implements Serializable  {
     public Optional<Boolean> getBestPractices() {
         return this.bestPractices;
     }
+
+    public void setBestPractices(Optional<Boolean> bestPractices) {
+        this.bestPractices = bestPractices;
+    }
     public Optional<Boolean> getUpdate() {
         return this.update;
+    }
+
+    public void setUpdate(Optional<Boolean> update) {
+        this.update = update;
     }
 
     /**
@@ -84,6 +105,10 @@ public class ListClusterFaultsRequest  implements Serializable  {
      **/
     public Optional<String> getFaultTypes() {
         return this.faultTypes;
+    }
+
+    public void setFaultTypes(Optional<String> faultTypes) {
+        this.faultTypes = faultTypes;
     }
 
     @Override

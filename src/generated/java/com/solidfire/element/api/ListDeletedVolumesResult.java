@@ -41,7 +41,7 @@ public class ListDeletedVolumesResult  implements Serializable  {
 
     private static final long serialVersionUID = 1165910947L;
 
-    @SerializedName("volumes") private final Volume[] volumes;
+    @SerializedName("volumes") private Volume[] volumes;
 
     /**
      * The object returned by the "ListDeletedVolumes" API Service call.
@@ -53,12 +53,25 @@ public class ListDeletedVolumesResult  implements Serializable  {
         this.volumes = volumes;
     }
 
+    
+    /**
+     * The object returned by the "ListDeletedVolumes" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListDeletedVolumesResult() {}
+
 
     /**
      * List of deleted volumes.
      **/
     public Volume[] getVolumes() {
         return this.volumes;
+    }
+
+    public void setVolumes(Volume[] volumes) {
+        this.volumes = volumes;
     }
 
     @Override

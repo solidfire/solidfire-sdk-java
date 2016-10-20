@@ -41,7 +41,7 @@ public class CreateScheduleRequest  implements Serializable  {
 
     private static final long serialVersionUID = 585243841L;
 
-    @SerializedName("schedule") private final Schedule schedule;
+    @SerializedName("schedule") private Schedule schedule;
 
     /**
      * The Request object for the "CreateSchedule" API Service call.
@@ -52,6 +52,15 @@ public class CreateScheduleRequest  implements Serializable  {
     public CreateScheduleRequest(Schedule schedule) {
         this.schedule = schedule;
     }
+
+    
+    /**
+     * The Request object for the "CreateSchedule" API Service call.
+     * Empty constructor to support serialization.
+     * @since 8.0
+     **/
+    @Since("8.0")
+    public CreateScheduleRequest() {}
 
 
     /**
@@ -64,6 +73,10 @@ public class CreateScheduleRequest  implements Serializable  {
      **/
     public Schedule getSchedule() {
         return this.schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     @Override

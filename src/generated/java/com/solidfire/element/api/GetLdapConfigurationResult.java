@@ -41,7 +41,7 @@ public class GetLdapConfigurationResult  implements Serializable  {
 
     private static final long serialVersionUID = 1970968967L;
 
-    @SerializedName("ldapConfiguration") private final LdapConfiguration ldapConfiguration;
+    @SerializedName("ldapConfiguration") private LdapConfiguration ldapConfiguration;
 
     /**
      * The object returned by the "GetLdapConfiguration" API Service call.
@@ -53,6 +53,15 @@ public class GetLdapConfigurationResult  implements Serializable  {
         this.ldapConfiguration = ldapConfiguration;
     }
 
+    
+    /**
+     * The object returned by the "GetLdapConfiguration" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetLdapConfigurationResult() {}
+
 
     /**
      * List of the current LDAP configuration settings. This API call will not return the plain text of the search account password.
@@ -61,6 +70,10 @@ public class GetLdapConfigurationResult  implements Serializable  {
      **/
     public LdapConfiguration getLdapConfiguration() {
         return this.ldapConfiguration;
+    }
+
+    public void setLdapConfiguration(LdapConfiguration ldapConfiguration) {
+        this.ldapConfiguration = ldapConfiguration;
     }
 
     @Override

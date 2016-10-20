@@ -41,16 +41,16 @@ public class VirtualVolumeInfo  implements Serializable  {
 
     private static final long serialVersionUID = -1843250825L;
 
-    @SerializedName("virtualVolumeID") private final java.util.UUID virtualVolumeID;
-    @SerializedName("parentVirtualVolumeID") private final java.util.UUID parentVirtualVolumeID;
-    @SerializedName("storageContainerID") private final java.util.UUID storageContainerID;
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("snapshotID") private final Long snapshotID;
-    @SerializedName("virtualVolumeType") private final String virtualVolumeType;
-    @SerializedName("status") private final String status;
-    @SerializedName("bindings") private final Long[] bindings;
-    @SerializedName("children") private final java.util.UUID[] children;
-    @SerializedName("metadata") private final java.util.Map<String, Object> metadata;
+    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
+    @SerializedName("parentVirtualVolumeID") private java.util.UUID parentVirtualVolumeID;
+    @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("virtualVolumeType") private String virtualVolumeType;
+    @SerializedName("status") private String status;
+    @SerializedName("bindings") private Long[] bindings;
+    @SerializedName("children") private java.util.UUID[] children;
+    @SerializedName("metadata") private java.util.Map<String, Object> metadata;
 
     /**
      * 
@@ -80,35 +80,84 @@ public class VirtualVolumeInfo  implements Serializable  {
         this.snapshotID = snapshotID;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public VirtualVolumeInfo() {}
+
     public java.util.UUID getVirtualVolumeID() {
         return this.virtualVolumeID;
+    }
+
+    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) {
+        this.virtualVolumeID = virtualVolumeID;
     }
     public java.util.UUID getParentVirtualVolumeID() {
         return this.parentVirtualVolumeID;
     }
+
+    public void setParentVirtualVolumeID(java.util.UUID parentVirtualVolumeID) {
+        this.parentVirtualVolumeID = parentVirtualVolumeID;
+    }
     public java.util.UUID getStorageContainerID() {
         return this.storageContainerID;
+    }
+
+    public void setStorageContainerID(java.util.UUID storageContainerID) {
+        this.storageContainerID = storageContainerID;
     }
     public Long getVolumeID() {
         return this.volumeID;
     }
+
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
+    }
     public Long getSnapshotID() {
         return this.snapshotID;
+    }
+
+    public void setSnapshotID(Long snapshotID) {
+        this.snapshotID = snapshotID;
     }
     public String getVirtualVolumeType() {
         return this.virtualVolumeType;
     }
+
+    public void setVirtualVolumeType(String virtualVolumeType) {
+        this.virtualVolumeType = virtualVolumeType;
+    }
     public String getStatus() {
         return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
     public Long[] getBindings() {
         return this.bindings;
     }
+
+    public void setBindings(Long[] bindings) {
+        this.bindings = bindings;
+    }
     public java.util.UUID[] getChildren() {
         return this.children;
     }
+
+    public void setChildren(java.util.UUID[] children) {
+        this.children = children;
+    }
     public java.util.Map<String, Object> getMetadata() {
         return this.metadata;
+    }
+
+    public void setMetadata(java.util.Map<String, Object> metadata) {
+        this.metadata = metadata;
     }
 
     @Override

@@ -41,7 +41,7 @@ public class DeleteSnapshotRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1151190076L;
 
-    @SerializedName("snapshotID") private final Long snapshotID;
+    @SerializedName("snapshotID") private Long snapshotID;
 
     /**
      * The Request object for the "DeleteSnapshot" API Service call.
@@ -53,12 +53,25 @@ public class DeleteSnapshotRequest  implements Serializable  {
         this.snapshotID = snapshotID;
     }
 
+    
+    /**
+     * The Request object for the "DeleteSnapshot" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public DeleteSnapshotRequest() {}
+
 
     /**
      * The ID of the snapshot to delete.
      **/
     public Long getSnapshotID() {
         return this.snapshotID;
+    }
+
+    public void setSnapshotID(Long snapshotID) {
+        this.snapshotID = snapshotID;
     }
 
     @Override

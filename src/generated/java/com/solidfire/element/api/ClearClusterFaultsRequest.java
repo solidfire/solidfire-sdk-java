@@ -41,7 +41,7 @@ public class ClearClusterFaultsRequest  implements Serializable  {
 
     private static final long serialVersionUID = -502176780L;
 
-    @SerializedName("faultTypes") private final Optional<String> faultTypes;
+    @SerializedName("faultTypes") private Optional<String> faultTypes;
 
     /**
      * The Request object for the "ClearClusterFaults" API Service call.
@@ -53,6 +53,15 @@ public class ClearClusterFaultsRequest  implements Serializable  {
         this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : faultTypes;
     }
 
+    
+    /**
+     * The Request object for the "ClearClusterFaults" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ClearClusterFaultsRequest() {}
+
 
     /**
      * Determines the types of faults cleared:<br/>
@@ -62,6 +71,10 @@ public class ClearClusterFaultsRequest  implements Serializable  {
      **/
     public Optional<String> getFaultTypes() {
         return this.faultTypes;
+    }
+
+    public void setFaultTypes(Optional<String> faultTypes) {
+        this.faultTypes = faultTypes;
     }
 
     @Override

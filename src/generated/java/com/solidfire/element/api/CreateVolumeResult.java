@@ -41,8 +41,8 @@ public class CreateVolumeResult  implements Serializable  {
 
     private static final long serialVersionUID = -1333016570L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("curve") private final java.util.Map<String,Long> curve;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("curve") private java.util.Map<String,Long> curve;
 
     /**
      * The object returned by the "CreateVolume" API Service call.
@@ -56,12 +56,25 @@ public class CreateVolumeResult  implements Serializable  {
         this.curve = curve;
     }
 
+    
+    /**
+     * The object returned by the "CreateVolume" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CreateVolumeResult() {}
+
 
     /**
      * VolumeID for the newly created volume.
      **/
     public Long getVolumeID() {
         return this.volumeID;
+    }
+
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
     }
 
     /**
@@ -72,6 +85,10 @@ public class CreateVolumeResult  implements Serializable  {
      **/
     public java.util.Map<String,Long> getCurve() {
         return this.curve;
+    }
+
+    public void setCurve(java.util.Map<String,Long> curve) {
+        this.curve = curve;
     }
 
     @Override

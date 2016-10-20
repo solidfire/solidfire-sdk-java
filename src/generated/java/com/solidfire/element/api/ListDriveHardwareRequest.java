@@ -41,7 +41,7 @@ public class ListDriveHardwareRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1907905225L;
 
-    @SerializedName("force") private final Boolean force;
+    @SerializedName("force") private Boolean force;
 
     /**
      * The Request object for the "ListDriveHardware" API Service call.
@@ -53,12 +53,25 @@ public class ListDriveHardwareRequest  implements Serializable  {
         this.force = force;
     }
 
+    
+    /**
+     * The Request object for the "ListDriveHardware" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListDriveHardwareRequest() {}
+
 
     /**
      * This must be set to true in order to retrieve the drive hardware stats from the cluster.
      **/
     public Boolean getForce() {
         return this.force;
+    }
+
+    public void setForce(Boolean force) {
+        this.force = force;
     }
 
     @Override

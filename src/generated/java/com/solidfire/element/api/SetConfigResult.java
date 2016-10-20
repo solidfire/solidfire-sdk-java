@@ -41,7 +41,7 @@ public class SetConfigResult  implements Serializable  {
 
     private static final long serialVersionUID = 2096126452L;
 
-    @SerializedName("config") private final Config config;
+    @SerializedName("config") private Config config;
 
     /**
      * The object returned by the "SetConfig" API Service call.
@@ -53,12 +53,25 @@ public class SetConfigResult  implements Serializable  {
         this.config = config;
     }
 
+    
+    /**
+     * The object returned by the "SetConfig" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public SetConfigResult() {}
+
 
     /**
      * The new and current configuration for the node.
      **/
     public Config getConfig() {
         return this.config;
+    }
+
+    public void setConfig(Config config) {
+        this.config = config;
     }
 
     @Override

@@ -41,13 +41,13 @@ public class PairedCluster  implements Serializable  {
 
     private static final long serialVersionUID = 1718146493L;
 
-    @SerializedName("clusterName") private final String clusterName;
-    @SerializedName("clusterPairID") private final Long clusterPairID;
-    @SerializedName("clusterPairUUID") private final java.util.UUID clusterPairUUID;
-    @SerializedName("latency") private final Long latency;
-    @SerializedName("mvip") private final String mvip;
-    @SerializedName("status") private final String status;
-    @SerializedName("version") private final String version;
+    @SerializedName("clusterName") private String clusterName;
+    @SerializedName("clusterPairID") private Long clusterPairID;
+    @SerializedName("clusterPairUUID") private java.util.UUID clusterPairUUID;
+    @SerializedName("latency") private Long latency;
+    @SerializedName("mvip") private String mvip;
+    @SerializedName("status") private String status;
+    @SerializedName("version") private String version;
 
     /**
      * 
@@ -71,12 +71,25 @@ public class PairedCluster  implements Serializable  {
         this.clusterPairUUID = clusterPairUUID;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public PairedCluster() {}
+
 
     /**
      * Name of the other cluster in the pair
      **/
     public String getClusterName() {
         return this.clusterName;
+    }
+
+    public void setClusterName(String clusterName) {
+        this.clusterName = clusterName;
     }
 
     /**
@@ -86,11 +99,19 @@ public class PairedCluster  implements Serializable  {
         return this.clusterPairID;
     }
 
+    public void setClusterPairID(Long clusterPairID) {
+        this.clusterPairID = clusterPairID;
+    }
+
     /**
      * Universally unique identifier.
      **/
     public java.util.UUID getClusterPairUUID() {
         return this.clusterPairUUID;
+    }
+
+    public void setClusterPairUUID(java.util.UUID clusterPairUUID) {
+        this.clusterPairUUID = clusterPairUUID;
     }
 
     /**
@@ -100,11 +121,19 @@ public class PairedCluster  implements Serializable  {
         return this.latency;
     }
 
+    public void setLatency(Long latency) {
+        this.latency = latency;
+    }
+
     /**
      * IP of the management connection for paired clusters.
      **/
     public String getMvip() {
         return this.mvip;
+    }
+
+    public void setMvip(String mvip) {
+        this.mvip = mvip;
     }
 
     /**
@@ -117,11 +146,19 @@ public class PairedCluster  implements Serializable  {
         return this.status;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     /**
      * The Element OS version of the other cluster in the pair.
      **/
     public String getVersion() {
         return this.version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     @Override

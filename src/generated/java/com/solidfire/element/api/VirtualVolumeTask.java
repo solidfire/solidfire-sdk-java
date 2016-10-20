@@ -41,16 +41,16 @@ public class VirtualVolumeTask  implements Serializable  {
 
     private static final long serialVersionUID = 1468931520L;
 
-    @SerializedName("virtualVolumeTaskID") private final java.util.UUID virtualVolumeTaskID;
-    @SerializedName("virtualvolumeID") private final java.util.UUID virtualvolumeID;
-    @SerializedName("cloneVirtualVolumeID") private final java.util.UUID cloneVirtualVolumeID;
-    @SerializedName("status") private final String status;
-    @SerializedName("operation") private final String operation;
-    @SerializedName("virtualVolumeHostID") private final java.util.UUID virtualVolumeHostID;
-    @SerializedName("parentMetadata") private final java.util.Map<String, Object> parentMetadata;
-    @SerializedName("parentTotalSize") private final Long parentTotalSize;
-    @SerializedName("parentUsedSize") private final Long parentUsedSize;
-    @SerializedName("cancelled") private final Boolean cancelled;
+    @SerializedName("virtualVolumeTaskID") private java.util.UUID virtualVolumeTaskID;
+    @SerializedName("virtualvolumeID") private java.util.UUID virtualvolumeID;
+    @SerializedName("cloneVirtualVolumeID") private java.util.UUID cloneVirtualVolumeID;
+    @SerializedName("status") private String status;
+    @SerializedName("operation") private String operation;
+    @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
+    @SerializedName("parentMetadata") private java.util.Map<String, Object> parentMetadata;
+    @SerializedName("parentTotalSize") private Long parentTotalSize;
+    @SerializedName("parentUsedSize") private Long parentUsedSize;
+    @SerializedName("cancelled") private Boolean cancelled;
 
     /**
      * 
@@ -80,35 +80,84 @@ public class VirtualVolumeTask  implements Serializable  {
         this.virtualvolumeID = virtualvolumeID;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public VirtualVolumeTask() {}
+
     public java.util.UUID getVirtualVolumeTaskID() {
         return this.virtualVolumeTaskID;
+    }
+
+    public void setVirtualVolumeTaskID(java.util.UUID virtualVolumeTaskID) {
+        this.virtualVolumeTaskID = virtualVolumeTaskID;
     }
     public java.util.UUID getVirtualvolumeID() {
         return this.virtualvolumeID;
     }
+
+    public void setVirtualvolumeID(java.util.UUID virtualvolumeID) {
+        this.virtualvolumeID = virtualvolumeID;
+    }
     public java.util.UUID getCloneVirtualVolumeID() {
         return this.cloneVirtualVolumeID;
+    }
+
+    public void setCloneVirtualVolumeID(java.util.UUID cloneVirtualVolumeID) {
+        this.cloneVirtualVolumeID = cloneVirtualVolumeID;
     }
     public String getStatus() {
         return this.status;
     }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
     public String getOperation() {
         return this.operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
     }
     public java.util.UUID getVirtualVolumeHostID() {
         return this.virtualVolumeHostID;
     }
+
+    public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) {
+        this.virtualVolumeHostID = virtualVolumeHostID;
+    }
     public java.util.Map<String, Object> getParentMetadata() {
         return this.parentMetadata;
+    }
+
+    public void setParentMetadata(java.util.Map<String, Object> parentMetadata) {
+        this.parentMetadata = parentMetadata;
     }
     public Long getParentTotalSize() {
         return this.parentTotalSize;
     }
+
+    public void setParentTotalSize(Long parentTotalSize) {
+        this.parentTotalSize = parentTotalSize;
+    }
     public Long getParentUsedSize() {
         return this.parentUsedSize;
     }
+
+    public void setParentUsedSize(Long parentUsedSize) {
+        this.parentUsedSize = parentUsedSize;
+    }
     public Boolean getCancelled() {
         return this.cancelled;
+    }
+
+    public void setCancelled(Boolean cancelled) {
+        this.cancelled = cancelled;
     }
 
     @Override

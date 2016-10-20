@@ -41,9 +41,9 @@ public class TestPingResult  implements Serializable  {
 
     private static final long serialVersionUID = 2036029079L;
 
-    @SerializedName("result") private final String result;
-    @SerializedName("duration") private final String duration;
-    @SerializedName("details") private final Object details;
+    @SerializedName("result") private String result;
+    @SerializedName("duration") private String duration;
+    @SerializedName("details") private Object details;
 
     /**
      * The object returned by the "TestPing" API Service call.
@@ -59,12 +59,25 @@ public class TestPingResult  implements Serializable  {
         this.details = details;
     }
 
+    
+    /**
+     * The object returned by the "TestPing" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public TestPingResult() {}
+
 
     /**
      * Result of the ping test.
      **/
     public String getResult() {
         return this.result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 
     /**
@@ -74,11 +87,19 @@ public class TestPingResult  implements Serializable  {
         return this.duration;
     }
 
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
     /**
      * List of each IP the node was able to communicate with.
      **/
     public Object getDetails() {
         return this.details;
+    }
+
+    public void setDetails(Object details) {
+        this.details = details;
     }
 
     @Override

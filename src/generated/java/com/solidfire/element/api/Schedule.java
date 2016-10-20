@@ -41,18 +41,18 @@ public class Schedule  implements Serializable  {
 
     private static final long serialVersionUID = -517757647L;
 
-    @SerializedName("frequency") private final Frequency frequency;
-    @SerializedName("hasError") private final Optional<Boolean> hasError;
-    @SerializedName("lastRunStatus") private final String lastRunStatus;
-    @SerializedName("lastRunTimeStart") private final String lastRunTimeStart;
-    @SerializedName("paused") private final Optional<Boolean> paused;
-    @SerializedName("recurring") private final Optional<Boolean> recurring;
-    @SerializedName("runNextInterval") private final Optional<Boolean> runNextInterval;
-    @SerializedName("scheduleID") private final Optional<Long> scheduleID;
-    @SerializedName("scheduleInfo") private final ScheduleInfo scheduleInfo;
-    @SerializedName("name") private final String name;
-    @SerializedName("startingDate") private final String startingDate;
-    @SerializedName("toBeDeleted") private final Optional<Boolean> toBeDeleted;
+    @SerializedName("frequency") private Frequency frequency;
+    @SerializedName("hasError") private Optional<Boolean> hasError;
+    @SerializedName("lastRunStatus") private String lastRunStatus;
+    @SerializedName("lastRunTimeStart") private String lastRunTimeStart;
+    @SerializedName("paused") private Optional<Boolean> paused;
+    @SerializedName("recurring") private Optional<Boolean> recurring;
+    @SerializedName("runNextInterval") private Optional<Boolean> runNextInterval;
+    @SerializedName("scheduleID") private Optional<Long> scheduleID;
+    @SerializedName("scheduleInfo") private ScheduleInfo scheduleInfo;
+    @SerializedName("name") private String name;
+    @SerializedName("startingDate") private String startingDate;
+    @SerializedName("toBeDeleted") private Optional<Boolean> toBeDeleted;
 
     /**
      * Schedule is an object containing information about each schedule created to autonomously make a snapshot of a volume. The return object includes information for all schedules. If scheduleID is used to identify a specific schedule then only information for that scheduleID is returned. Schedules information is returned with the API method, see ListSchedules on the SolidFire API guide page 245.
@@ -86,6 +86,15 @@ public class Schedule  implements Serializable  {
         this.hasError = (hasError == null) ? Optional.<Boolean>empty() : hasError;
     }
 
+    
+    /**
+     * Schedule is an object containing information about each schedule created to autonomously make a snapshot of a volume. The return object includes information for all schedules. If scheduleID is used to identify a specific schedule then only information for that scheduleID is returned. Schedules information is returned with the API method, see ListSchedules on the SolidFire API guide page 245.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public Schedule() {}
+
 
     /**
      * Indicates the frequency of the schedule occurrence. Set this to a type that inherits from Frequency.<br/>
@@ -98,11 +107,19 @@ public class Schedule  implements Serializable  {
         return this.frequency;
     }
 
+    public void setFrequency(Frequency frequency) {
+        this.frequency = frequency;
+    }
+
     /**
      * Indicates whether or not the schedule has errors.
      **/
     public Optional<Boolean> getHasError() {
         return this.hasError;
+    }
+
+    public void setHasError(Optional<Boolean> hasError) {
+        this.hasError = hasError;
     }
 
     /**
@@ -115,6 +132,10 @@ public class Schedule  implements Serializable  {
         return this.lastRunStatus;
     }
 
+    public void setLastRunStatus(String lastRunStatus) {
+        this.lastRunStatus = lastRunStatus;
+    }
+
     /**
      * Indicates the last time the schedule started n ISO 8601 date string.
      * Valid values are:<br/>
@@ -125,11 +146,19 @@ public class Schedule  implements Serializable  {
         return this.lastRunTimeStart;
     }
 
+    public void setLastRunTimeStart(String lastRunTimeStart) {
+        this.lastRunTimeStart = lastRunTimeStart;
+    }
+
     /**
      * Indicates whether or not the schedule is paused.
      **/
     public Optional<Boolean> getPaused() {
         return this.paused;
+    }
+
+    public void setPaused(Optional<Boolean> paused) {
+        this.paused = paused;
     }
 
     /**
@@ -139,11 +168,19 @@ public class Schedule  implements Serializable  {
         return this.recurring;
     }
 
+    public void setRecurring(Optional<Boolean> recurring) {
+        this.recurring = recurring;
+    }
+
     /**
      * Indicates whether or not the schedule will run the next time the scheduler is active. When set to "true", the schedule will run the next time the scheduler is active and then reset back to "false".
      **/
     public Optional<Boolean> getRunNextInterval() {
         return this.runNextInterval;
+    }
+
+    public void setRunNextInterval(Optional<Boolean> runNextInterval) {
+        this.runNextInterval = runNextInterval;
     }
 
     /**
@@ -153,11 +190,19 @@ public class Schedule  implements Serializable  {
         return this.scheduleID;
     }
 
+    public void setScheduleID(Optional<Long> scheduleID) {
+        this.scheduleID = scheduleID;
+    }
+
     /**
      * Includes the unique name given to the schedule, the retention period for the snapshot that was created, and the volume ID of the volume from which the snapshot was created.
      **/
     public ScheduleInfo getScheduleInfo() {
         return this.scheduleInfo;
+    }
+
+    public void setScheduleInfo(ScheduleInfo scheduleInfo) {
+        this.scheduleInfo = scheduleInfo;
     }
 
     /**
@@ -167,6 +212,10 @@ public class Schedule  implements Serializable  {
         return this.name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * Indicates the date the first time the schedule began of will begin. Formatted in UTC time.
      **/
@@ -174,11 +223,19 @@ public class Schedule  implements Serializable  {
         return this.startingDate;
     }
 
+    public void setStartingDate(String startingDate) {
+        this.startingDate = startingDate;
+    }
+
     /**
      * Indicates if the schedule is marked for deletion.
      **/
     public Optional<Boolean> getToBeDeleted() {
         return this.toBeDeleted;
+    }
+
+    public void setToBeDeleted(Optional<Boolean> toBeDeleted) {
+        this.toBeDeleted = toBeDeleted;
     }
 
     @Override

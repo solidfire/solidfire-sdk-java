@@ -41,10 +41,10 @@ public class QoS  implements Serializable  {
 
     private static final long serialVersionUID = -79923561L;
 
-    @SerializedName("minIOPS") private final Optional<Long> minIOPS;
-    @SerializedName("maxIOPS") private final Optional<Long> maxIOPS;
-    @SerializedName("burstIOPS") private final Optional<Long> burstIOPS;
-    @SerializedName("burstTime") private final Optional<Long> burstTime;
+    @SerializedName("minIOPS") private Optional<Long> minIOPS;
+    @SerializedName("maxIOPS") private Optional<Long> maxIOPS;
+    @SerializedName("burstIOPS") private Optional<Long> burstIOPS;
+    @SerializedName("burstTime") private Optional<Long> burstTime;
 
     /**
      * Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.
@@ -70,6 +70,23 @@ public class QoS  implements Serializable  {
         this.burstTime = (burstTime == null) ? Optional.<Long>empty() : burstTime;
     }
 
+    
+    /**
+     * Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.
+     * Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.
+     * <br/><br/>
+     * Volumes created without specified QoS values are created with the Default values listed below.
+     * Default values can be found by running the GetDefaultQoS method.
+     * <br/><br/>
+     * <b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>
+     * <b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>
+     * <b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public QoS() {}
+
 
     /**
      * Desired minimum 4KB IOPS to guarantee.
@@ -80,11 +97,19 @@ public class QoS  implements Serializable  {
         return this.minIOPS;
     }
 
+    public void setMinIOPS(Optional<Long> minIOPS) {
+        this.minIOPS = minIOPS;
+    }
+
     /**
      * Desired maximum 4KB IOPS allowed over an extended period of time.
      **/
     public Optional<Long> getMaxIOPS() {
         return this.maxIOPS;
+    }
+
+    public void setMaxIOPS(Optional<Long> maxIOPS) {
+        this.maxIOPS = maxIOPS;
     }
 
     /**
@@ -95,6 +120,10 @@ public class QoS  implements Serializable  {
         return this.burstIOPS;
     }
 
+    public void setBurstIOPS(Optional<Long> burstIOPS) {
+        this.burstIOPS = burstIOPS;
+    }
+
     /**
      * The length of time burst IOPS is allowed.
      * The value returned is represented in time units of seconds.
@@ -102,6 +131,10 @@ public class QoS  implements Serializable  {
      **/
     public Optional<Long> getBurstTime() {
         return this.burstTime;
+    }
+
+    public void setBurstTime(Optional<Long> burstTime) {
+        this.burstTime = burstTime;
     }
 
     @Override

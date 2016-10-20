@@ -41,11 +41,11 @@ public class VolumeQOS  implements Serializable  {
 
     private static final long serialVersionUID = -1221769299L;
 
-    @SerializedName("minIOPS") private final Long minIOPS;
-    @SerializedName("maxIOPS") private final Long maxIOPS;
-    @SerializedName("burstIOPS") private final Long burstIOPS;
-    @SerializedName("burstTime") private final Long burstTime;
-    @SerializedName("curve") private final java.util.Map<String,Long> curve;
+    @SerializedName("minIOPS") private Long minIOPS;
+    @SerializedName("maxIOPS") private Long maxIOPS;
+    @SerializedName("burstIOPS") private Long burstIOPS;
+    @SerializedName("burstTime") private Long burstTime;
+    @SerializedName("curve") private java.util.Map<String,Long> curve;
 
     /**
      * Quality of Service (QoS) Result values are used on SolidFire volumes to provision performance expectations.
@@ -65,6 +65,15 @@ public class VolumeQOS  implements Serializable  {
         this.minIOPS = minIOPS;
     }
 
+    
+    /**
+     * Quality of Service (QoS) Result values are used on SolidFire volumes to provision performance expectations.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public VolumeQOS() {}
+
 
     /**
      * Desired minimum 4KB IOPS to guarantee.
@@ -75,11 +84,19 @@ public class VolumeQOS  implements Serializable  {
         return this.minIOPS;
     }
 
+    public void setMinIOPS(Long minIOPS) {
+        this.minIOPS = minIOPS;
+    }
+
     /**
      * Desired maximum 4KB IOPS allowed over an extended period of time.
      **/
     public Long getMaxIOPS() {
         return this.maxIOPS;
+    }
+
+    public void setMaxIOPS(Long maxIOPS) {
+        this.maxIOPS = maxIOPS;
     }
 
     /**
@@ -88,6 +105,10 @@ public class VolumeQOS  implements Serializable  {
      **/
     public Long getBurstIOPS() {
         return this.burstIOPS;
+    }
+
+    public void setBurstIOPS(Long burstIOPS) {
+        this.burstIOPS = burstIOPS;
     }
 
     /**
@@ -99,6 +120,10 @@ public class VolumeQOS  implements Serializable  {
         return this.burstTime;
     }
 
+    public void setBurstTime(Long burstTime) {
+        this.burstTime = burstTime;
+    }
+
     /**
      * The curve is a set of key-value pairs.
      * The keys are I/O sizes in bytes.
@@ -107,6 +132,10 @@ public class VolumeQOS  implements Serializable  {
      **/
     public java.util.Map<String,Long> getCurve() {
         return this.curve;
+    }
+
+    public void setCurve(java.util.Map<String,Long> curve) {
+        this.curve = curve;
     }
 
     @Override

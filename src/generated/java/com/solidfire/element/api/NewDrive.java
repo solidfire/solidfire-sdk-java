@@ -41,7 +41,7 @@ public class NewDrive  implements Serializable  {
 
     private static final long serialVersionUID = -629875949L;
 
-    @SerializedName("driveID") private final Long driveID;
+    @SerializedName("driveID") private Long driveID;
 
     /**
      * 
@@ -53,12 +53,25 @@ public class NewDrive  implements Serializable  {
         this.driveID = driveID;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public NewDrive() {}
+
 
     /**
      * A unique identifier for this drive.
      **/
     public Long getDriveID() {
         return this.driveID;
+    }
+
+    public void setDriveID(Long driveID) {
+        this.driveID = driveID;
     }
 
     @Override

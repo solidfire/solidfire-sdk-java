@@ -41,7 +41,7 @@ public class AddNodesRequest  implements Serializable  {
 
     private static final long serialVersionUID = 2058406478L;
 
-    @SerializedName("pendingNodes") private final Long[] pendingNodes;
+    @SerializedName("pendingNodes") private Long[] pendingNodes;
 
     /**
      * The Request object for the "AddNodes" API Service call.
@@ -53,12 +53,25 @@ public class AddNodesRequest  implements Serializable  {
         this.pendingNodes = pendingNodes;
     }
 
+    
+    /**
+     * The Request object for the "AddNodes" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public AddNodesRequest() {}
+
 
     /**
      * List of PendingNodeIDs for the Nodes to be added. You can obtain the list of Pending Nodes via the ListPendingNodes method.
      **/
     public Long[] getPendingNodes() {
         return this.pendingNodes;
+    }
+
+    public void setPendingNodes(Long[] pendingNodes) {
+        this.pendingNodes = pendingNodes;
     }
 
     @Override

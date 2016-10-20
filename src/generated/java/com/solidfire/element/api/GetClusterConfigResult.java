@@ -41,7 +41,7 @@ public class GetClusterConfigResult  implements Serializable  {
 
     private static final long serialVersionUID = -1259484778L;
 
-    @SerializedName("cluster") private final ClusterConfig cluster;
+    @SerializedName("cluster") private ClusterConfig cluster;
 
     /**
      * The object returned by the "GetClusterConfig" API Service call.
@@ -53,12 +53,25 @@ public class GetClusterConfigResult  implements Serializable  {
         this.cluster = cluster;
     }
 
+    
+    /**
+     * The object returned by the "GetClusterConfig" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetClusterConfigResult() {}
+
 
     /**
      * Cluster configuration information the node uses to communicate with the cluster.
      **/
     public ClusterConfig getCluster() {
         return this.cluster;
+    }
+
+    public void setCluster(ClusterConfig cluster) {
+        this.cluster = cluster;
     }
 
     @Override

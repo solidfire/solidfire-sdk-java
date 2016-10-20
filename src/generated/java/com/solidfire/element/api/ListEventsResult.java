@@ -41,8 +41,8 @@ public class ListEventsResult  implements Serializable  {
 
     private static final long serialVersionUID = 428743907L;
 
-    @SerializedName("eventQueueType") private final String eventQueueType;
-    @SerializedName("events") private final EventInfo[] events;
+    @SerializedName("eventQueueType") private String eventQueueType;
+    @SerializedName("events") private EventInfo[] events;
 
     /**
      * The object returned by the "ListEvents" API Service call.
@@ -56,11 +56,28 @@ public class ListEventsResult  implements Serializable  {
         this.events = events;
     }
 
+    
+    /**
+     * The object returned by the "ListEvents" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListEventsResult() {}
+
     public String getEventQueueType() {
         return this.eventQueueType;
     }
+
+    public void setEventQueueType(String eventQueueType) {
+        this.eventQueueType = eventQueueType;
+    }
     public EventInfo[] getEvents() {
         return this.events;
+    }
+
+    public void setEvents(EventInfo[] events) {
+        this.events = events;
     }
 
     @Override

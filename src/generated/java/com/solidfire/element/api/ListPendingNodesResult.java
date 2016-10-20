@@ -41,7 +41,7 @@ public class ListPendingNodesResult  implements Serializable  {
 
     private static final long serialVersionUID = 2008031949L;
 
-    @SerializedName("pendingNodes") private final PendingNode[] pendingNodes;
+    @SerializedName("pendingNodes") private PendingNode[] pendingNodes;
 
     /**
      * The object returned by the "ListPendingNodes" API Service call.
@@ -53,8 +53,21 @@ public class ListPendingNodesResult  implements Serializable  {
         this.pendingNodes = pendingNodes;
     }
 
+    
+    /**
+     * The object returned by the "ListPendingNodes" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListPendingNodesResult() {}
+
     public PendingNode[] getPendingNodes() {
         return this.pendingNodes;
+    }
+
+    public void setPendingNodes(PendingNode[] pendingNodes) {
+        this.pendingNodes = pendingNodes;
     }
 
     @Override

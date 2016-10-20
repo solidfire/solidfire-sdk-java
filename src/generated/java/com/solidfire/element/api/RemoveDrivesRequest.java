@@ -41,7 +41,7 @@ public class RemoveDrivesRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1421229161L;
 
-    @SerializedName("drives") private final Long[] drives;
+    @SerializedName("drives") private Long[] drives;
 
     /**
      * The Request object for the "RemoveDrives" API Service call.
@@ -53,12 +53,25 @@ public class RemoveDrivesRequest  implements Serializable  {
         this.drives = drives;
     }
 
+    
+    /**
+     * The Request object for the "RemoveDrives" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public RemoveDrivesRequest() {}
+
 
     /**
      * List of driveIDs to remove from the cluster.
      **/
     public Long[] getDrives() {
         return this.drives;
+    }
+
+    public void setDrives(Long[] drives) {
+        this.drives = drives;
     }
 
     @Override

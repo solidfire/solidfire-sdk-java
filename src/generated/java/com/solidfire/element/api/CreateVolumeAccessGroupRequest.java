@@ -41,12 +41,12 @@ public class CreateVolumeAccessGroupRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1336348327L;
 
-    @SerializedName("name") private final String name;
-    @SerializedName("initiators") private final Optional<String[]> initiators;
-    @SerializedName("volumes") private final Optional<Long[]> volumes;
-    @SerializedName("virtualNetworkID") private final Optional<Long[]> virtualNetworkID;
-    @SerializedName("virtualNetworkTags") private final Optional<Long[]> virtualNetworkTags;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("name") private String name;
+    @SerializedName("initiators") private Optional<String[]> initiators;
+    @SerializedName("volumes") private Optional<Long[]> volumes;
+    @SerializedName("virtualNetworkID") private Optional<Long[]> virtualNetworkID;
+    @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "CreateVolumeAccessGroup" API Service call.
@@ -86,6 +86,15 @@ public class CreateVolumeAccessGroupRequest  implements Serializable  {
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
     }
 
+    
+    /**
+     * The Request object for the "CreateVolumeAccessGroup" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CreateVolumeAccessGroupRequest() {}
+
 
     /**
      * Name of the volume access group.
@@ -93,6 +102,10 @@ public class CreateVolumeAccessGroupRequest  implements Serializable  {
      **/
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -103,12 +116,20 @@ public class CreateVolumeAccessGroupRequest  implements Serializable  {
         return this.initiators;
     }
 
+    public void setInitiators(Optional<String[]> initiators) {
+        this.initiators = initiators;
+    }
+
     /**
      * List of volumes to initially include in the volume access group.
      * If unspecified, the access group will start without any volumes.
      **/
     public Optional<Long[]> getVolumes() {
         return this.volumes;
+    }
+
+    public void setVolumes(Optional<Long[]> volumes) {
+        this.volumes = volumes;
     }
 
     /**
@@ -121,6 +142,10 @@ public class CreateVolumeAccessGroupRequest  implements Serializable  {
         return this.virtualNetworkID;
     }
 
+    public void setVirtualNetworkID(Optional<Long[]> virtualNetworkID) {
+        this.virtualNetworkID = virtualNetworkID;
+    }
+
     /**
      * The ID of the VLAN Virtual Network Tag to associate the volume access group with.
      * @since 8.0 
@@ -131,11 +156,19 @@ public class CreateVolumeAccessGroupRequest  implements Serializable  {
         return this.virtualNetworkTags;
     }
 
+    public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) {
+        this.virtualNetworkTags = virtualNetworkTags;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

@@ -41,7 +41,7 @@ public class GetVolumeStatsResult  implements Serializable  {
 
     private static final long serialVersionUID = 831015867L;
 
-    @SerializedName("volumeStats") private final VolumeStats volumeStats;
+    @SerializedName("volumeStats") private VolumeStats volumeStats;
 
     /**
      * The object returned by the "GetVolumeStats" API Service call.
@@ -53,12 +53,25 @@ public class GetVolumeStatsResult  implements Serializable  {
         this.volumeStats = volumeStats;
     }
 
+    
+    /**
+     * The object returned by the "GetVolumeStats" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetVolumeStatsResult() {}
+
 
     /**
      * Volume activity information.
      **/
     public VolumeStats getVolumeStats() {
         return this.volumeStats;
+    }
+
+    public void setVolumeStats(VolumeStats volumeStats) {
+        this.volumeStats = volumeStats;
     }
 
     @Override

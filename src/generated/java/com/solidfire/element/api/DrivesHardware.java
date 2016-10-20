@@ -41,7 +41,7 @@ public class DrivesHardware  implements Serializable  {
 
     private static final long serialVersionUID = 370298901L;
 
-    @SerializedName("driveHardware") private final DriveHardware[] driveHardware;
+    @SerializedName("driveHardware") private DriveHardware[] driveHardware;
 
     /**
      * 
@@ -53,8 +53,21 @@ public class DrivesHardware  implements Serializable  {
         this.driveHardware = driveHardware;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public DrivesHardware() {}
+
     public DriveHardware[] getDriveHardware() {
         return this.driveHardware;
+    }
+
+    public void setDriveHardware(DriveHardware[] driveHardware) {
+        this.driveHardware = driveHardware;
     }
 
     @Override

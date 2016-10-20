@@ -41,7 +41,7 @@ public class ListNodeFibreChannelPortInfoResult  implements Serializable  {
 
     private static final long serialVersionUID = 684376075L;
 
-    @SerializedName("nodes") private final NodeFibreChannelPortInfoResult[] nodes;
+    @SerializedName("nodes") private NodeFibreChannelPortInfoResult[] nodes;
 
     /**
      * List of fibre channel port info results grouped by node.
@@ -53,12 +53,25 @@ public class ListNodeFibreChannelPortInfoResult  implements Serializable  {
         this.nodes = nodes;
     }
 
+    
+    /**
+     * List of fibre channel port info results grouped by node.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListNodeFibreChannelPortInfoResult() {}
+
 
     /**
      * List of fibre channel port info results grouped by node.
      **/
     public NodeFibreChannelPortInfoResult[] getNodes() {
         return this.nodes;
+    }
+
+    public void setNodes(NodeFibreChannelPortInfoResult[] nodes) {
+        this.nodes = nodes;
     }
 
     @Override

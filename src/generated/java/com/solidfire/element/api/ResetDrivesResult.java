@@ -41,7 +41,7 @@ public class ResetDrivesResult  implements Serializable  {
 
     private static final long serialVersionUID = -1738633984L;
 
-    @SerializedName("details") private final ResetDrivesDetails details;
+    @SerializedName("details") private ResetDrivesDetails details;
 
     /**
      * The object returned by the "ResetDrives" API Service call.
@@ -53,12 +53,25 @@ public class ResetDrivesResult  implements Serializable  {
         this.details = details;
     }
 
+    
+    /**
+     * The object returned by the "ResetDrives" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ResetDrivesResult() {}
+
 
     /**
      * Details of drives that are being reset.
      **/
     public ResetDrivesDetails getDetails() {
         return this.details;
+    }
+
+    public void setDetails(ResetDrivesDetails details) {
+        this.details = details;
     }
 
     @Override

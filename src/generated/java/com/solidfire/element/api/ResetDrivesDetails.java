@@ -41,7 +41,7 @@ public class ResetDrivesDetails  implements Serializable  {
 
     private static final long serialVersionUID = 1808022535L;
 
-    @SerializedName("drives") private final ResetDriveDetails[] drives;
+    @SerializedName("drives") private ResetDriveDetails[] drives;
 
     /**
      * 
@@ -53,12 +53,25 @@ public class ResetDrivesDetails  implements Serializable  {
         this.drives = drives;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ResetDrivesDetails() {}
+
 
     /**
      * Details of a single drive that is being reset.
      **/
     public ResetDriveDetails[] getDrives() {
         return this.drives;
+    }
+
+    public void setDrives(ResetDriveDetails[] drives) {
+        this.drives = drives;
     }
 
     @Override

@@ -41,13 +41,13 @@ public class SolidfireDefaults  implements Serializable  {
 
     private static final long serialVersionUID = 2127016438L;
 
-    @SerializedName("sliceFileLogFileCapacity") private final Long sliceFileLogFileCapacity;
-    @SerializedName("postCallbackThreadCount") private final Long postCallbackThreadCount;
-    @SerializedName("cpuDmaLatency") private final Long cpuDmaLatency;
-    @SerializedName("bufferCacheGB") private final Long bufferCacheGB;
-    @SerializedName("maxIncomingSliceSyncs") private final Long maxIncomingSliceSyncs;
-    @SerializedName("configuredIops") private final Long configuredIops;
-    @SerializedName("sCacheFileCapacity") private final Long sCacheFileCapacity;
+    @SerializedName("sliceFileLogFileCapacity") private Long sliceFileLogFileCapacity;
+    @SerializedName("postCallbackThreadCount") private Long postCallbackThreadCount;
+    @SerializedName("cpuDmaLatency") private Long cpuDmaLatency;
+    @SerializedName("bufferCacheGB") private Long bufferCacheGB;
+    @SerializedName("maxIncomingSliceSyncs") private Long maxIncomingSliceSyncs;
+    @SerializedName("configuredIops") private Long configuredIops;
+    @SerializedName("sCacheFileCapacity") private Long sCacheFileCapacity;
 
     /**
      * 
@@ -71,26 +71,63 @@ public class SolidfireDefaults  implements Serializable  {
         this.bufferCacheGB = bufferCacheGB;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public SolidfireDefaults() {}
+
     public Long getSliceFileLogFileCapacity() {
         return this.sliceFileLogFileCapacity;
+    }
+
+    public void setSliceFileLogFileCapacity(Long sliceFileLogFileCapacity) {
+        this.sliceFileLogFileCapacity = sliceFileLogFileCapacity;
     }
     public Long getPostCallbackThreadCount() {
         return this.postCallbackThreadCount;
     }
+
+    public void setPostCallbackThreadCount(Long postCallbackThreadCount) {
+        this.postCallbackThreadCount = postCallbackThreadCount;
+    }
     public Long getCpuDmaLatency() {
         return this.cpuDmaLatency;
+    }
+
+    public void setCpuDmaLatency(Long cpuDmaLatency) {
+        this.cpuDmaLatency = cpuDmaLatency;
     }
     public Long getBufferCacheGB() {
         return this.bufferCacheGB;
     }
+
+    public void setBufferCacheGB(Long bufferCacheGB) {
+        this.bufferCacheGB = bufferCacheGB;
+    }
     public Long getMaxIncomingSliceSyncs() {
         return this.maxIncomingSliceSyncs;
+    }
+
+    public void setMaxIncomingSliceSyncs(Long maxIncomingSliceSyncs) {
+        this.maxIncomingSliceSyncs = maxIncomingSliceSyncs;
     }
     public Long getConfiguredIops() {
         return this.configuredIops;
     }
+
+    public void setConfiguredIops(Long configuredIops) {
+        this.configuredIops = configuredIops;
+    }
     public Long getSCacheFileCapacity() {
         return this.sCacheFileCapacity;
+    }
+
+    public void setSCacheFileCapacity(Long sCacheFileCapacity) {
+        this.sCacheFileCapacity = sCacheFileCapacity;
     }
 
     @Override

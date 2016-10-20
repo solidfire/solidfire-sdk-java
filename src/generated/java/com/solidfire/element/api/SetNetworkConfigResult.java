@@ -41,7 +41,7 @@ public class SetNetworkConfigResult  implements Serializable  {
 
     private static final long serialVersionUID = -1793624961L;
 
-    @SerializedName("network") private final Network network;
+    @SerializedName("network") private Network network;
 
     /**
      * The object returned by the "SetNetworkConfig" API Service call.
@@ -53,8 +53,21 @@ public class SetNetworkConfigResult  implements Serializable  {
         this.network = network;
     }
 
+    
+    /**
+     * The object returned by the "SetNetworkConfig" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public SetNetworkConfigResult() {}
+
     public Network getNetwork() {
         return this.network;
+    }
+
+    public void setNetwork(Network network) {
+        this.network = network;
     }
 
     @Override

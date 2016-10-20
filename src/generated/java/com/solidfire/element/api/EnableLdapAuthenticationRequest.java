@@ -41,16 +41,16 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
 
     private static final long serialVersionUID = -2040059293L;
 
-    @SerializedName("authType") private final Optional<String> authType;
-    @SerializedName("groupSearchBaseDN") private final Optional<String> groupSearchBaseDN;
-    @SerializedName("groupSearchCustomFilter") private final Optional<String> groupSearchCustomFilter;
-    @SerializedName("groupSearchType") private final Optional<String> groupSearchType;
-    @SerializedName("searchBindDN") private final Optional<String> searchBindDN;
-    @SerializedName("searchBindPassword") private final Optional<String> searchBindPassword;
-    @SerializedName("serverURIs") private final String[] serverURIs;
-    @SerializedName("userDNTemplate") private final Optional<String> userDNTemplate;
-    @SerializedName("userSearchBaseDN") private final Optional<String> userSearchBaseDN;
-    @SerializedName("userSearchFilter") private final Optional<String> userSearchFilter;
+    @SerializedName("authType") private Optional<String> authType;
+    @SerializedName("groupSearchBaseDN") private Optional<String> groupSearchBaseDN;
+    @SerializedName("groupSearchCustomFilter") private Optional<String> groupSearchCustomFilter;
+    @SerializedName("groupSearchType") private Optional<String> groupSearchType;
+    @SerializedName("searchBindDN") private Optional<String> searchBindDN;
+    @SerializedName("searchBindPassword") private Optional<String> searchBindPassword;
+    @SerializedName("serverURIs") private String[] serverURIs;
+    @SerializedName("userDNTemplate") private Optional<String> userDNTemplate;
+    @SerializedName("userSearchBaseDN") private Optional<String> userSearchBaseDN;
+    @SerializedName("userSearchFilter") private Optional<String> userSearchFilter;
 
     /**
      * The Request object for the "EnableLdapAuthentication" API Service call.
@@ -80,6 +80,15 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         this.userDNTemplate = (userDNTemplate == null) ? Optional.<String>empty() : userDNTemplate;
     }
 
+    
+    /**
+     * The Request object for the "EnableLdapAuthentication" API Service call.
+     * Empty constructor to support serialization.
+     * @since 8.0
+     **/
+    @Since("8.0")
+    public EnableLdapAuthenticationRequest() {}
+
 
     /**
      * Identifies which user authentcation method will be used. <br/>
@@ -91,11 +100,19 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.authType;
     }
 
+    public void setAuthType(Optional<String> authType) {
+        this.authType = authType;
+    }
+
     /**
      * The base DN of the tree to start the group search (will do a subtree search from here).
      **/
     public Optional<String> getGroupSearchBaseDN() {
         return this.groupSearchBaseDN;
+    }
+
+    public void setGroupSearchBaseDN(Optional<String> groupSearchBaseDN) {
+        this.groupSearchBaseDN = groupSearchBaseDN;
     }
 
     /**
@@ -105,6 +122,10 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
      **/
     public Optional<String> getGroupSearchCustomFilter() {
         return this.groupSearchCustomFilter;
+    }
+
+    public void setGroupSearchCustomFilter(Optional<String> groupSearchCustomFilter) {
+        this.groupSearchCustomFilter = groupSearchCustomFilter;
     }
 
     /**
@@ -117,12 +138,20 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.groupSearchType;
     }
 
+    public void setGroupSearchType(Optional<String> groupSearchType) {
+        this.groupSearchType = groupSearchType;
+    }
+
     /**
      * REQUIRED for SearchAndBind<br/>
      * A fully qualified DN to log in with to perform an LDAP search for the user (needs read access to the LDAP directory).
      **/
     public Optional<String> getSearchBindDN() {
         return this.searchBindDN;
+    }
+
+    public void setSearchBindDN(Optional<String> searchBindDN) {
+        this.searchBindDN = searchBindDN;
     }
 
     /**
@@ -133,11 +162,19 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.searchBindPassword;
     }
 
+    public void setSearchBindPassword(Optional<String> searchBindPassword) {
+        this.searchBindPassword = searchBindPassword;
+    }
+
     /**
      * A list of LDAP server URIs (examples: "ldap://1.2.3.4" and ldaps://1.2.3.4:123")
      **/
     public String[] getServerURIs() {
         return this.serverURIs;
+    }
+
+    public void setServerURIs(String[] serverURIs) {
+        this.serverURIs = serverURIs;
     }
 
     /**
@@ -149,12 +186,20 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.userDNTemplate;
     }
 
+    public void setUserDNTemplate(Optional<String> userDNTemplate) {
+        this.userDNTemplate = userDNTemplate;
+    }
+
     /**
      * REQUIRED for SearchAndBind
      * The base DN of the tree used to start the search (will do a subtree search from here).
      **/
     public Optional<String> getUserSearchBaseDN() {
         return this.userSearchBaseDN;
+    }
+
+    public void setUserSearchBaseDN(Optional<String> userSearchBaseDN) {
+        this.userSearchBaseDN = userSearchBaseDN;
     }
 
     /**
@@ -165,6 +210,10 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
      **/
     public Optional<String> getUserSearchFilter() {
         return this.userSearchFilter;
+    }
+
+    public void setUserSearchFilter(Optional<String> userSearchFilter) {
+        this.userSearchFilter = userSearchFilter;
     }
 
     @Override

@@ -41,10 +41,10 @@ public class VolumeAccessGroup  implements Serializable  {
 
     private static final long serialVersionUID = 936271874L;
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
-    @SerializedName("name") private final String name;
-    @SerializedName("initiators") private final String[] initiators;
-    @SerializedName("volumes") private final Long[] volumes;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("name") private String name;
+    @SerializedName("initiators") private String[] initiators;
+    @SerializedName("volumes") private Long[] volumes;
 
     /**
      * A volume access group is a useful way of grouping volumes and initiators together for ease of management.
@@ -69,12 +69,32 @@ public class VolumeAccessGroup  implements Serializable  {
         this.volumes = volumes;
     }
 
+    
+    /**
+     * A volume access group is a useful way of grouping volumes and initiators together for ease of management.
+     * <br/><br/>
+     * Volume Access Group Limits:
+     * <br/><br/>
+     * - A volume access group can contain up to sixty-four initiator IQNs.
+     * - An initiator can only belong to only one volume access group.
+     * - A volume access group can contain up to two thousand volumes.
+     * - Each volume access group can belong to a maximum of four other volume access groups.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public VolumeAccessGroup() {}
+
 
     /**
      * Unique ID for this volume access group.
      **/
     public Long getVolumeAccessGroupID() {
         return this.volumeAccessGroupID;
+    }
+
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) {
+        this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
     /**
@@ -84,6 +104,10 @@ public class VolumeAccessGroup  implements Serializable  {
         return this.name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * List of unique initiator names belonging to the volume access group.
      **/
@@ -91,11 +115,19 @@ public class VolumeAccessGroup  implements Serializable  {
         return this.initiators;
     }
 
+    public void setInitiators(String[] initiators) {
+        this.initiators = initiators;
+    }
+
     /**
      * List of volumes belonging to the volume access group.
      **/
     public Long[] getVolumes() {
         return this.volumes;
+    }
+
+    public void setVolumes(Long[] volumes) {
+        this.volumes = volumes;
     }
 
     @Override

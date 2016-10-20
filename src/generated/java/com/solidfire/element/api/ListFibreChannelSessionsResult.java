@@ -41,7 +41,7 @@ public class ListFibreChannelSessionsResult  implements Serializable  {
 
     private static final long serialVersionUID = 1385337796L;
 
-    @SerializedName("sessions") private final FibreChannelSession[] sessions;
+    @SerializedName("sessions") private FibreChannelSession[] sessions;
 
     /**
      * Used to return information about the Fibre Channel sessions.
@@ -53,12 +53,25 @@ public class ListFibreChannelSessionsResult  implements Serializable  {
         this.sessions = sessions;
     }
 
+    
+    /**
+     * Used to return information about the Fibre Channel sessions.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListFibreChannelSessionsResult() {}
+
 
     /**
      * A list of FibreChannelSession objects with information about the Fibre Channel session.
      **/
     public FibreChannelSession[] getSessions() {
         return this.sessions;
+    }
+
+    public void setSessions(FibreChannelSession[] sessions) {
+        this.sessions = sessions;
     }
 
     @Override

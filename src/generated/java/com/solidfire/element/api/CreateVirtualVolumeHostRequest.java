@@ -41,12 +41,12 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
 
     private static final long serialVersionUID = -264853873L;
 
-    @SerializedName("virtualVolumeHostID") private final java.util.UUID virtualVolumeHostID;
-    @SerializedName("clusterID") private final java.util.UUID clusterID;
-    @SerializedName("initiatorNames") private final Optional<String[]> initiatorNames;
-    @SerializedName("visibleProtocolEndpointIDs") private final Optional<java.util.UUID[]> visibleProtocolEndpointIDs;
-    @SerializedName("hostAddress") private final Optional<String> hostAddress;
-    @SerializedName("callingVirtualVolumeHostID") private final Optional<java.util.UUID> callingVirtualVolumeHostID;
+    @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
+    @SerializedName("clusterID") private java.util.UUID clusterID;
+    @SerializedName("initiatorNames") private Optional<String[]> initiatorNames;
+    @SerializedName("visibleProtocolEndpointIDs") private Optional<java.util.UUID[]> visibleProtocolEndpointIDs;
+    @SerializedName("hostAddress") private Optional<String> hostAddress;
+    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
     /**
      * The Request object for the "CreateVirtualVolumeHost" API Service call.
@@ -68,6 +68,15 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
         this.initiatorNames = (initiatorNames == null) ? Optional.<String[]>empty() : initiatorNames;
     }
 
+    
+    /**
+     * The Request object for the "CreateVirtualVolumeHost" API Service call.
+     * Empty constructor to support serialization.
+     * @since 9.0
+     **/
+    @Since("9.0")
+    public CreateVirtualVolumeHostRequest() {}
+
 
     /**
      * The GUID of the ESX host.
@@ -76,14 +85,26 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
         return this.virtualVolumeHostID;
     }
 
+    public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) {
+        this.virtualVolumeHostID = virtualVolumeHostID;
+    }
+
     /**
      * The GUID of the ESX Cluster.
      **/
     public java.util.UUID getClusterID() {
         return this.clusterID;
     }
+
+    public void setClusterID(java.util.UUID clusterID) {
+        this.clusterID = clusterID;
+    }
     public Optional<String[]> getInitiatorNames() {
         return this.initiatorNames;
+    }
+
+    public void setInitiatorNames(Optional<String[]> initiatorNames) {
+        this.initiatorNames = initiatorNames;
     }
 
     /**
@@ -93,14 +114,26 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
         return this.visibleProtocolEndpointIDs;
     }
 
+    public void setVisibleProtocolEndpointIDs(Optional<java.util.UUID[]> visibleProtocolEndpointIDs) {
+        this.visibleProtocolEndpointIDs = visibleProtocolEndpointIDs;
+    }
+
     /**
      * IP or DNS name for the host.
      **/
     public Optional<String> getHostAddress() {
         return this.hostAddress;
     }
+
+    public void setHostAddress(Optional<String> hostAddress) {
+        this.hostAddress = hostAddress;
+    }
     public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
         return this.callingVirtualVolumeHostID;
+    }
+
+    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) {
+        this.callingVirtualVolumeHostID = callingVirtualVolumeHostID;
     }
 
     @Override

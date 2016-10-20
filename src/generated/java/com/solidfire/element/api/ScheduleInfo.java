@@ -41,10 +41,10 @@ public class ScheduleInfo  implements Serializable  {
 
     private static final long serialVersionUID = 1971104557L;
 
-    @SerializedName("volumeIDs") private final Optional<Long[]> volumeIDs;
-    @SerializedName("snapshotName") private final Optional<String> snapshotName;
-    @SerializedName("enableRemoteReplication") private final Optional<Boolean> enableRemoteReplication;
-    @SerializedName("retention") private final Optional<String> retention;
+    @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
+    @SerializedName("snapshotName") private Optional<String> snapshotName;
+    @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
+    @SerializedName("retention") private Optional<String> retention;
 
     /**
      * 
@@ -62,12 +62,25 @@ public class ScheduleInfo  implements Serializable  {
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ScheduleInfo() {}
+
 
     /**
      * A list of volume IDs to be included in the group snapshot.
      **/
     public Optional<Long[]> getVolumeIDs() {
         return this.volumeIDs;
+    }
+
+    public void setVolumeIDs(Optional<Long[]> volumeIDs) {
+        this.volumeIDs = volumeIDs;
     }
 
     /**
@@ -77,6 +90,10 @@ public class ScheduleInfo  implements Serializable  {
         return this.snapshotName;
     }
 
+    public void setSnapshotName(Optional<String> snapshotName) {
+        this.snapshotName = snapshotName;
+    }
+
     /**
      * Indicates if the snapshot should be included in remote replication.
      **/
@@ -84,11 +101,19 @@ public class ScheduleInfo  implements Serializable  {
         return this.enableRemoteReplication;
     }
 
+    public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) {
+        this.enableRemoteReplication = enableRemoteReplication;
+    }
+
     /**
      * The amount of time the snapshot will be retained in HH:mm:ss.
      **/
     public Optional<String> getRetention() {
         return this.retention;
+    }
+
+    public void setRetention(Optional<String> retention) {
+        this.retention = retention;
     }
 
     @Override

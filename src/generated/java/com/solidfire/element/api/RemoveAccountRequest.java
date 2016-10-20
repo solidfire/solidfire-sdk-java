@@ -41,7 +41,7 @@ public class RemoveAccountRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1756353743L;
 
-    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("accountID") private Long accountID;
 
     /**
      * The Request object for the "RemoveAccount" API Service call.
@@ -53,12 +53,25 @@ public class RemoveAccountRequest  implements Serializable  {
         this.accountID = accountID;
     }
 
+    
+    /**
+     * The Request object for the "RemoveAccount" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public RemoveAccountRequest() {}
+
 
     /**
      * AccountID for the account to remove.
      **/
     public Long getAccountID() {
         return this.accountID;
+    }
+
+    public void setAccountID(Long accountID) {
+        this.accountID = accountID;
     }
 
     @Override

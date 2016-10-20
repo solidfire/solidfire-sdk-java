@@ -41,12 +41,12 @@ public class ModifyVolumeRequest  implements Serializable  {
 
     private static final long serialVersionUID = 56390388L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("accountID") private final Optional<Long> accountID;
-    @SerializedName("access") private final Optional<String> access;
-    @SerializedName("qos") private final Optional<QoS> qos;
-    @SerializedName("totalSize") private final Optional<Long> totalSize;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("accountID") private Optional<Long> accountID;
+    @SerializedName("access") private Optional<String> access;
+    @SerializedName("qos") private Optional<QoS> qos;
+    @SerializedName("totalSize") private Optional<Long> totalSize;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "ModifyVolume" API Service call.
@@ -68,6 +68,15 @@ public class ModifyVolumeRequest  implements Serializable  {
         this.access = (access == null) ? Optional.<String>empty() : access;
     }
 
+    
+    /**
+     * The Request object for the "ModifyVolume" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ModifyVolumeRequest() {}
+
 
     /**
      * VolumeID for the volume to be modified.
@@ -76,12 +85,20 @@ public class ModifyVolumeRequest  implements Serializable  {
         return this.volumeID;
     }
 
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
+    }
+
     /**
      * AccountID to which the volume is reassigned.
      * If none is specified, the previous account name is used.
      **/
     public Optional<Long> getAccountID() {
         return this.accountID;
+    }
+
+    public void setAccountID(Optional<Long> accountID) {
+        this.accountID = accountID;
     }
 
     /**
@@ -97,11 +114,19 @@ public class ModifyVolumeRequest  implements Serializable  {
         return this.access;
     }
 
+    public void setAccess(Optional<String> access) {
+        this.access = access;
+    }
+
     /**
      * New quality of service settings for this volume.
      **/
     public Optional<QoS> getQos() {
         return this.qos;
+    }
+
+    public void setQos(Optional<QoS> qos) {
+        this.qos = qos;
     }
 
     /**
@@ -113,11 +138,19 @@ public class ModifyVolumeRequest  implements Serializable  {
         return this.totalSize;
     }
 
+    public void setTotalSize(Optional<Long> totalSize) {
+        this.totalSize = totalSize;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

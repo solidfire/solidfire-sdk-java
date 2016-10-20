@@ -41,10 +41,10 @@ public class GetClusterVersionInfoResult  implements Serializable  {
 
     private static final long serialVersionUID = -1444163647L;
 
-    @SerializedName("clusterAPIVersion") private final String clusterAPIVersion;
-    @SerializedName("clusterVersion") private final String clusterVersion;
-    @SerializedName("clusterVersionInfo") private final ClusterVersionInfo[] clusterVersionInfo;
-    @SerializedName("softwareVersionInfo") private final SoftwareVersionInfo softwareVersionInfo;
+    @SerializedName("clusterAPIVersion") private String clusterAPIVersion;
+    @SerializedName("clusterVersion") private String clusterVersion;
+    @SerializedName("clusterVersionInfo") private ClusterVersionInfo[] clusterVersionInfo;
+    @SerializedName("softwareVersionInfo") private SoftwareVersionInfo softwareVersionInfo;
 
     /**
      * The object returned by the "GetClusterVersionInfo" API Service call.
@@ -62,17 +62,42 @@ public class GetClusterVersionInfoResult  implements Serializable  {
         this.softwareVersionInfo = softwareVersionInfo;
     }
 
+    
+    /**
+     * The object returned by the "GetClusterVersionInfo" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetClusterVersionInfoResult() {}
+
     public String getClusterAPIVersion() {
         return this.clusterAPIVersion;
+    }
+
+    public void setClusterAPIVersion(String clusterAPIVersion) {
+        this.clusterAPIVersion = clusterAPIVersion;
     }
     public String getClusterVersion() {
         return this.clusterVersion;
     }
+
+    public void setClusterVersion(String clusterVersion) {
+        this.clusterVersion = clusterVersion;
+    }
     public ClusterVersionInfo[] getClusterVersionInfo() {
         return this.clusterVersionInfo;
     }
+
+    public void setClusterVersionInfo(ClusterVersionInfo[] clusterVersionInfo) {
+        this.clusterVersionInfo = clusterVersionInfo;
+    }
     public SoftwareVersionInfo getSoftwareVersionInfo() {
         return this.softwareVersionInfo;
+    }
+
+    public void setSoftwareVersionInfo(SoftwareVersionInfo softwareVersionInfo) {
+        this.softwareVersionInfo = softwareVersionInfo;
     }
 
     @Override

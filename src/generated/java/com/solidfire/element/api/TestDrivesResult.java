@@ -41,7 +41,7 @@ public class TestDrivesResult  implements Serializable  {
 
     private static final long serialVersionUID = -496126034L;
 
-    @SerializedName("details") private final String details;
+    @SerializedName("details") private String details;
 
     /**
      * The object returned by the "TestDrives" API Service call.
@@ -53,8 +53,21 @@ public class TestDrivesResult  implements Serializable  {
         this.details = details;
     }
 
+    
+    /**
+     * The object returned by the "TestDrives" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public TestDrivesResult() {}
+
     public String getDetails() {
         return this.details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     @Override

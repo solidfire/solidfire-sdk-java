@@ -41,7 +41,7 @@ public class TestConnectEnsembleRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1350494679L;
 
-    @SerializedName("ensemble") private final Optional<String> ensemble;
+    @SerializedName("ensemble") private Optional<String> ensemble;
 
     /**
      * The Request object for the "TestConnectEnsemble" API Service call.
@@ -53,12 +53,25 @@ public class TestConnectEnsembleRequest  implements Serializable  {
         this.ensemble = (ensemble == null) ? Optional.<String>empty() : ensemble;
     }
 
+    
+    /**
+     * The Request object for the "TestConnectEnsemble" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public TestConnectEnsembleRequest() {}
+
 
     /**
      * A comma-separated list of ensemble node CIPs for connectivity testing
      **/
     public Optional<String> getEnsemble() {
         return this.ensemble;
+    }
+
+    public void setEnsemble(Optional<String> ensemble) {
+        this.ensemble = ensemble;
     }
 
     @Override

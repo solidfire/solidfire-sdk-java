@@ -41,7 +41,7 @@ public class FibreChannelPortList  implements Serializable  {
 
     private static final long serialVersionUID = -1944190359L;
 
-    @SerializedName("fibreChannelPorts") private final FibreChannelPortInfo[] fibreChannelPorts;
+    @SerializedName("fibreChannelPorts") private FibreChannelPortInfo[] fibreChannelPorts;
 
     /**
      * List of all Fibre Channel ports.
@@ -53,12 +53,25 @@ public class FibreChannelPortList  implements Serializable  {
         this.fibreChannelPorts = fibreChannelPorts;
     }
 
+    
+    /**
+     * List of all Fibre Channel ports.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public FibreChannelPortList() {}
+
 
     /**
      * List of all physical Fibre Channel ports.
      **/
     public FibreChannelPortInfo[] getFibreChannelPorts() {
         return this.fibreChannelPorts;
+    }
+
+    public void setFibreChannelPorts(FibreChannelPortInfo[] fibreChannelPorts) {
+        this.fibreChannelPorts = fibreChannelPorts;
     }
 
     @Override

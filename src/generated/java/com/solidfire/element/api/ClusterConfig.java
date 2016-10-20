@@ -41,16 +41,16 @@ public class ClusterConfig  implements Serializable  {
 
     private static final long serialVersionUID = 956907419L;
 
-    @SerializedName("cipi") private final Optional<String> cipi;
-    @SerializedName("cluster") private final Optional<String> cluster;
-    @SerializedName("ensemble") private final Optional<String[]> ensemble;
-    @SerializedName("mipi") private final Optional<String> mipi;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("nodeID") private final Optional<Long> nodeID;
-    @SerializedName("pendingNodeID") private final Optional<Long> pendingNodeID;
-    @SerializedName("role") private final Optional<String> role;
-    @SerializedName("sipi") private final Optional<String> sipi;
-    @SerializedName("state") private final Optional<String> state;
+    @SerializedName("cipi") private Optional<String> cipi;
+    @SerializedName("cluster") private Optional<String> cluster;
+    @SerializedName("ensemble") private Optional<String[]> ensemble;
+    @SerializedName("mipi") private Optional<String> mipi;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("nodeID") private Optional<Long> nodeID;
+    @SerializedName("pendingNodeID") private Optional<Long> pendingNodeID;
+    @SerializedName("role") private Optional<String> role;
+    @SerializedName("sipi") private Optional<String> sipi;
+    @SerializedName("state") private Optional<String> state;
 
     /**
      * Cluster Config object returns information the node uses to communicate with the cluster.
@@ -80,12 +80,25 @@ public class ClusterConfig  implements Serializable  {
         this.mipi = (mipi == null) ? Optional.<String>empty() : mipi;
     }
 
+    
+    /**
+     * Cluster Config object returns information the node uses to communicate with the cluster.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ClusterConfig() {}
+
 
     /**
      * Network interface used for cluster communication.
      **/
     public Optional<String> getCipi() {
         return this.cipi;
+    }
+
+    public void setCipi(Optional<String> cipi) {
+        this.cipi = cipi;
     }
 
     /**
@@ -95,11 +108,19 @@ public class ClusterConfig  implements Serializable  {
         return this.cluster;
     }
 
+    public void setCluster(Optional<String> cluster) {
+        this.cluster = cluster;
+    }
+
     /**
      * Nodes that are participating in the cluster.
      **/
     public Optional<String[]> getEnsemble() {
         return this.ensemble;
+    }
+
+    public void setEnsemble(Optional<String[]> ensemble) {
+        this.ensemble = ensemble;
     }
 
     /**
@@ -109,17 +130,33 @@ public class ClusterConfig  implements Serializable  {
         return this.mipi;
     }
 
+    public void setMipi(Optional<String> mipi) {
+        this.mipi = mipi;
+    }
+
     /**
      * Unique cluster name.
      **/
     public Optional<String> getName() {
         return this.name;
     }
+
+    public void setName(Optional<String> name) {
+        this.name = name;
+    }
     public Optional<Long> getNodeID() {
         return this.nodeID;
     }
+
+    public void setNodeID(Optional<Long> nodeID) {
+        this.nodeID = nodeID;
+    }
     public Optional<Long> getPendingNodeID() {
         return this.pendingNodeID;
+    }
+
+    public void setPendingNodeID(Optional<Long> pendingNodeID) {
+        this.pendingNodeID = pendingNodeID;
     }
 
     /**
@@ -129,14 +166,26 @@ public class ClusterConfig  implements Serializable  {
         return this.role;
     }
 
+    public void setRole(Optional<String> role) {
+        this.role = role;
+    }
+
     /**
      * Network interface used for storage.
      **/
     public Optional<String> getSipi() {
         return this.sipi;
     }
+
+    public void setSipi(Optional<String> sipi) {
+        this.sipi = sipi;
+    }
     public Optional<String> getState() {
         return this.state;
+    }
+
+    public void setState(Optional<String> state) {
+        this.state = state;
     }
 
     @Override

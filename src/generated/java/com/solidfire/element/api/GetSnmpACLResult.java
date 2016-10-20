@@ -41,8 +41,8 @@ public class GetSnmpACLResult  implements Serializable  {
 
     private static final long serialVersionUID = -1538058029L;
 
-    @SerializedName("networks") private final SnmpNetwork[] networks;
-    @SerializedName("usmUsers") private final SnmpV3UsmUser[] usmUsers;
+    @SerializedName("networks") private SnmpNetwork[] networks;
+    @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
 
     /**
      * The object returned by the "GetSnmpACL" API Service call.
@@ -56,6 +56,15 @@ public class GetSnmpACLResult  implements Serializable  {
         this.usmUsers = usmUsers;
     }
 
+    
+    /**
+     * The object returned by the "GetSnmpACL" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetSnmpACLResult() {}
+
 
     /**
      * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is disabled.
@@ -64,11 +73,19 @@ public class GetSnmpACLResult  implements Serializable  {
         return this.networks;
     }
 
+    public void setNetworks(SnmpNetwork[] networks) {
+        this.networks = networks;
+    }
+
     /**
      * List of users and the type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is enabled.
      **/
     public SnmpV3UsmUser[] getUsmUsers() {
         return this.usmUsers;
+    }
+
+    public void setUsmUsers(SnmpV3UsmUser[] usmUsers) {
+        this.usmUsers = usmUsers;
     }
 
     @Override

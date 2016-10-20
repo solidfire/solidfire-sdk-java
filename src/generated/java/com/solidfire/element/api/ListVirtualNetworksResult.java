@@ -41,7 +41,7 @@ public class ListVirtualNetworksResult  implements Serializable  {
 
     private static final long serialVersionUID = 1811344176L;
 
-    @SerializedName("virtualNetworks") private final VirtualNetwork[] virtualNetworks;
+    @SerializedName("virtualNetworks") private VirtualNetwork[] virtualNetworks;
 
     /**
      * The object returned by the "ListVirtualNetworks" API Service call.
@@ -53,12 +53,25 @@ public class ListVirtualNetworksResult  implements Serializable  {
         this.virtualNetworks = virtualNetworks;
     }
 
+    
+    /**
+     * The object returned by the "ListVirtualNetworks" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListVirtualNetworksResult() {}
+
 
     /**
      * Object containing virtual network IP addresses.
      **/
     public VirtualNetwork[] getVirtualNetworks() {
         return this.virtualNetworks;
+    }
+
+    public void setVirtualNetworks(VirtualNetwork[] virtualNetworks) {
+        this.virtualNetworks = virtualNetworks;
     }
 
     @Override

@@ -41,10 +41,10 @@ public class GroupSnapshotMembers  implements Serializable  {
 
     private static final long serialVersionUID = 718814070L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("snapshotID") private final Long snapshotID;
-    @SerializedName("snapshotUUID") private final String snapshotUUID;
-    @SerializedName("checksum") private final String checksum;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("snapshotUUID") private String snapshotUUID;
+    @SerializedName("checksum") private String checksum;
 
     /**
      * List of checksum, volumeIDs and snapshotIDs for each member of the group.
@@ -77,6 +77,15 @@ public class GroupSnapshotMembers  implements Serializable  {
         this.checksum = checksum;
     }
 
+    
+    /**
+     * List of checksum, volumeIDs and snapshotIDs for each member of the group.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GroupSnapshotMembers() {}
+
 
     /**
      * The source volume ID for the snapshot.
@@ -85,12 +94,20 @@ public class GroupSnapshotMembers  implements Serializable  {
         return this.volumeID;
     }
 
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
+    }
+
     /**
      * Unique ID of a snapshot from which the new snapshot is made.
      * The snapshotID passed must be a snapshot on the given volume.
      **/
     public Long getSnapshotID() {
         return this.snapshotID;
+    }
+
+    public void setSnapshotID(Long snapshotID) {
+        this.snapshotID = snapshotID;
     }
 
     /**
@@ -103,12 +120,20 @@ public class GroupSnapshotMembers  implements Serializable  {
         return this.snapshotUUID;
     }
 
+    public void setSnapshotUUID(String snapshotUUID) {
+        this.snapshotUUID = snapshotUUID;
+    }
+
     /**
      * A string that represents the correct digits in the stored snapshot.
      * This checksum can be used later to compare other snapshots to detect errors in the data.
      **/
     public String getChecksum() {
         return this.checksum;
+    }
+
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
     }
 
     @Override

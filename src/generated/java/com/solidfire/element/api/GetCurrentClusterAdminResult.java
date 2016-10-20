@@ -41,7 +41,7 @@ public class GetCurrentClusterAdminResult  implements Serializable  {
 
     private static final long serialVersionUID = -1933572728L;
 
-    @SerializedName("clusterAdmin") private final ClusterAdmin clusterAdmin;
+    @SerializedName("clusterAdmin") private ClusterAdmin clusterAdmin;
 
     /**
      * The object returned by the "GetCurrentClusterAdmin" API Service call.
@@ -53,12 +53,25 @@ public class GetCurrentClusterAdminResult  implements Serializable  {
         this.clusterAdmin = clusterAdmin;
     }
 
+    
+    /**
+     * The object returned by the "GetCurrentClusterAdmin" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetCurrentClusterAdminResult() {}
+
 
     /**
      * Information about all cluster and LDAP administrators that exist for a cluster.
      **/
     public ClusterAdmin getClusterAdmin() {
         return this.clusterAdmin;
+    }
+
+    public void setClusterAdmin(ClusterAdmin clusterAdmin) {
+        this.clusterAdmin = clusterAdmin;
     }
 
     @Override

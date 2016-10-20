@@ -41,12 +41,12 @@ public class StartBulkVolumeReadRequest  implements Serializable  {
 
     private static final long serialVersionUID = -953327189L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("format") private final String format;
-    @SerializedName("snapshotID") private final Optional<Long> snapshotID;
-    @SerializedName("script") private final Optional<String> script;
-    @SerializedName("scriptParameters") private final Optional<Object> scriptParameters;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("format") private String format;
+    @SerializedName("snapshotID") private Optional<Long> snapshotID;
+    @SerializedName("script") private Optional<String> script;
+    @SerializedName("scriptParameters") private Optional<Object> scriptParameters;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "StartBulkVolumeRead" API Service call.
@@ -68,12 +68,25 @@ public class StartBulkVolumeReadRequest  implements Serializable  {
         this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : scriptParameters;
     }
 
+    
+    /**
+     * The Request object for the "StartBulkVolumeRead" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public StartBulkVolumeReadRequest() {}
+
 
     /**
      * ID of the volume to be read.
      **/
     public Long getVolumeID() {
         return this.volumeID;
+    }
+
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
     }
 
     /**
@@ -85,12 +98,20 @@ public class StartBulkVolumeReadRequest  implements Serializable  {
         return this.format;
     }
 
+    public void setFormat(String format) {
+        this.format = format;
+    }
+
     /**
      * ID of a previously created snapshot used for bulk volume reads.
      * If no ID is entered, a snapshot of the current active volume image is made.
      **/
     public Optional<Long> getSnapshotID() {
         return this.snapshotID;
+    }
+
+    public void setSnapshotID(Optional<Long> snapshotID) {
+        this.snapshotID = snapshotID;
     }
 
     /**
@@ -102,6 +123,10 @@ public class StartBulkVolumeReadRequest  implements Serializable  {
         return this.script;
     }
 
+    public void setScript(Optional<String> script) {
+        this.script = script;
+    }
+
     /**
      * JSON parameters to pass to the script.
      **/
@@ -109,11 +134,19 @@ public class StartBulkVolumeReadRequest  implements Serializable  {
         return this.scriptParameters;
     }
 
+    public void setScriptParameters(Optional<Object> scriptParameters) {
+        this.scriptParameters = scriptParameters;
+    }
+
     /**
      * JSON attributes for the bulk volume job.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

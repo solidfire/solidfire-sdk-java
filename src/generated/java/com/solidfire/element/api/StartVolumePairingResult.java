@@ -41,7 +41,7 @@ public class StartVolumePairingResult  implements Serializable  {
 
     private static final long serialVersionUID = 783410121L;
 
-    @SerializedName("volumePairingKey") private final String volumePairingKey;
+    @SerializedName("volumePairingKey") private String volumePairingKey;
 
     /**
      * The object returned by the "StartVolumePairing" API Service call.
@@ -53,12 +53,25 @@ public class StartVolumePairingResult  implements Serializable  {
         this.volumePairingKey = volumePairingKey;
     }
 
+    
+    /**
+     * The object returned by the "StartVolumePairing" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public StartVolumePairingResult() {}
+
 
     /**
      * A string of characters that is used by the "CompleteVolumePairing" API method.
      **/
     public String getVolumePairingKey() {
         return this.volumePairingKey;
+    }
+
+    public void setVolumePairingKey(String volumePairingKey) {
+        this.volumePairingKey = volumePairingKey;
     }
 
     @Override

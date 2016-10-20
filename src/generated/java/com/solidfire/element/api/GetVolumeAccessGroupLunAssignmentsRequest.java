@@ -41,7 +41,7 @@ public class GetVolumeAccessGroupLunAssignmentsRequest  implements Serializable 
 
     private static final long serialVersionUID = 448043396L;
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
 
     /**
      * The Request object for the "GetVolumeAccessGroupLunAssignments" API Service call.
@@ -53,12 +53,25 @@ public class GetVolumeAccessGroupLunAssignmentsRequest  implements Serializable 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
+    
+    /**
+     * The Request object for the "GetVolumeAccessGroupLunAssignments" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetVolumeAccessGroupLunAssignmentsRequest() {}
+
 
     /**
      * Unique volume access group ID used to return information.
      **/
     public Long getVolumeAccessGroupID() {
         return this.volumeAccessGroupID;
+    }
+
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) {
+        this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
     @Override

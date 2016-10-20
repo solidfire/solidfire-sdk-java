@@ -41,7 +41,7 @@ public class ListFibreChannelPortInfoResult  implements Serializable  {
 
     private static final long serialVersionUID = -201731339L;
 
-    @SerializedName("fibreChannelPortInfo") private final java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo;
+    @SerializedName("fibreChannelPortInfo") private java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo;
 
     /**
      * ListFibreChannelPortInfoResult is used to return information about the Fibre Channel ports.
@@ -53,12 +53,25 @@ public class ListFibreChannelPortInfoResult  implements Serializable  {
         this.fibreChannelPortInfo = fibreChannelPortInfo;
     }
 
+    
+    /**
+     * ListFibreChannelPortInfoResult is used to return information about the Fibre Channel ports.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListFibreChannelPortInfoResult() {}
+
 
     /**
      * Used to return information about the Fibre Channel ports.
      **/
     public java.util.Map<String,FibreChannelPortInfoResult> getFibreChannelPortInfo() {
         return this.fibreChannelPortInfo;
+    }
+
+    public void setFibreChannelPortInfo(java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo) {
+        this.fibreChannelPortInfo = fibreChannelPortInfo;
     }
 
     @Override

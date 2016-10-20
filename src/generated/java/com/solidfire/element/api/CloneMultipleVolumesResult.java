@@ -41,9 +41,9 @@ public class CloneMultipleVolumesResult  implements Serializable  {
 
     private static final long serialVersionUID = -1442813158L;
 
-    @SerializedName("asyncHandle") private final Long asyncHandle;
-    @SerializedName("groupCloneID") private final Long groupCloneID;
-    @SerializedName("members") private final GroupCloneVolumeMember[] members;
+    @SerializedName("asyncHandle") private Long asyncHandle;
+    @SerializedName("groupCloneID") private Long groupCloneID;
+    @SerializedName("members") private GroupCloneVolumeMember[] members;
 
     /**
      * The object returned by the "CloneMultipleVolumes" API Service call.
@@ -59,12 +59,25 @@ public class CloneMultipleVolumesResult  implements Serializable  {
         this.members = members;
     }
 
+    
+    /**
+     * The object returned by the "CloneMultipleVolumes" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CloneMultipleVolumesResult() {}
+
 
     /**
      * A value returned from an asynchronous method call.
      **/
     public Long getAsyncHandle() {
         return this.asyncHandle;
+    }
+
+    public void setAsyncHandle(Long asyncHandle) {
+        this.asyncHandle = asyncHandle;
     }
 
     /**
@@ -74,11 +87,19 @@ public class CloneMultipleVolumesResult  implements Serializable  {
         return this.groupCloneID;
     }
 
+    public void setGroupCloneID(Long groupCloneID) {
+        this.groupCloneID = groupCloneID;
+    }
+
     /**
      * List of volumeIDs for the source and destination volume pairs.
      **/
     public GroupCloneVolumeMember[] getMembers() {
         return this.members;
+    }
+
+    public void setMembers(GroupCloneVolumeMember[] members) {
+        this.members = members;
     }
 
     @Override

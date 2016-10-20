@@ -41,8 +41,8 @@ public class NodeFibreChannelPortInfoResult  implements Serializable  {
 
     private static final long serialVersionUID = -473622851L;
 
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("result") private final FibreChannelPortList result;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("result") private FibreChannelPortList result;
 
     /**
      * Fibre channel port info results for a node.
@@ -56,6 +56,15 @@ public class NodeFibreChannelPortInfoResult  implements Serializable  {
         this.result = result;
     }
 
+    
+    /**
+     * Fibre channel port info results for a node.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public NodeFibreChannelPortInfoResult() {}
+
 
     /**
      * The ID of the Fibre Channel node.
@@ -64,11 +73,19 @@ public class NodeFibreChannelPortInfoResult  implements Serializable  {
         return this.nodeID;
     }
 
+    public void setNodeID(Long nodeID) {
+        this.nodeID = nodeID;
+    }
+
     /**
      * Contains a list of information about the Fibre Channel ports.
      **/
     public FibreChannelPortList getResult() {
         return this.result;
+    }
+
+    public void setResult(FibreChannelPortList result) {
+        this.result = result;
     }
 
     @Override

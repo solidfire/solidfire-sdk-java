@@ -41,8 +41,8 @@ public class ListVirtualVolumeTasksRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1238956793L;
 
-    @SerializedName("virtualVolumeTaskIDs") private final Optional<java.util.UUID[]> virtualVolumeTaskIDs;
-    @SerializedName("callingVirtualVolumeHostID") private final Optional<java.util.UUID> callingVirtualVolumeHostID;
+    @SerializedName("virtualVolumeTaskIDs") private Optional<java.util.UUID[]> virtualVolumeTaskIDs;
+    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
     /**
      * The Request object for the "ListVirtualVolumeTasks" API Service call.
@@ -56,11 +56,28 @@ public class ListVirtualVolumeTasksRequest  implements Serializable  {
         this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
     }
 
+    
+    /**
+     * The Request object for the "ListVirtualVolumeTasks" API Service call.
+     * Empty constructor to support serialization.
+     * @since 9.0
+     **/
+    @Since("9.0")
+    public ListVirtualVolumeTasksRequest() {}
+
     public Optional<java.util.UUID[]> getVirtualVolumeTaskIDs() {
         return this.virtualVolumeTaskIDs;
     }
+
+    public void setVirtualVolumeTaskIDs(Optional<java.util.UUID[]> virtualVolumeTaskIDs) {
+        this.virtualVolumeTaskIDs = virtualVolumeTaskIDs;
+    }
     public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
         return this.callingVirtualVolumeHostID;
+    }
+
+    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) {
+        this.callingVirtualVolumeHostID = callingVirtualVolumeHostID;
     }
 
     @Override

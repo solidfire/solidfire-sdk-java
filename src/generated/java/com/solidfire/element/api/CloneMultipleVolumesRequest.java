@@ -41,10 +41,10 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
 
     private static final long serialVersionUID = 493827587L;
 
-    @SerializedName("volumes") private final CloneMultipleVolumeParams[] volumes;
-    @SerializedName("access") private final Optional<String> access;
-    @SerializedName("groupSnapshotID") private final Optional<Long> groupSnapshotID;
-    @SerializedName("newAccountID") private final Optional<Long> newAccountID;
+    @SerializedName("volumes") private CloneMultipleVolumeParams[] volumes;
+    @SerializedName("access") private Optional<String> access;
+    @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
+    @SerializedName("newAccountID") private Optional<Long> newAccountID;
 
     /**
      * The Request object for the "CloneMultipleVolumes" API Service call.
@@ -62,12 +62,25 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
         this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
 
+    
+    /**
+     * The Request object for the "CloneMultipleVolumes" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CloneMultipleVolumesRequest() {}
+
 
     /**
      * Array of Unique ID for each volume to include in the clone with optional parameters. If optional parameters are not specified, the values will be inherited from the source volumes.
      **/
     public CloneMultipleVolumeParams[] getVolumes() {
         return this.volumes;
+    }
+
+    public void setVolumes(CloneMultipleVolumeParams[] volumes) {
+        this.volumes = volumes;
     }
 
     /**
@@ -83,6 +96,10 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
         return this.access;
     }
 
+    public void setAccess(Optional<String> access) {
+        this.access = access;
+    }
+
     /**
      * ID of the group snapshot to use as a basis for the clone.
      **/
@@ -90,11 +107,19 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
         return this.groupSnapshotID;
     }
 
+    public void setGroupSnapshotID(Optional<Long> groupSnapshotID) {
+        this.groupSnapshotID = groupSnapshotID;
+    }
+
     /**
      * New account ID for the volumes if not overridden by information passed in the volumes array.
      **/
     public Optional<Long> getNewAccountID() {
         return this.newAccountID;
+    }
+
+    public void setNewAccountID(Optional<Long> newAccountID) {
+        this.newAccountID = newAccountID;
     }
 
     @Override

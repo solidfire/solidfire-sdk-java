@@ -41,8 +41,8 @@ public class NodeDriveHardware  implements Serializable  {
 
     private static final long serialVersionUID = -751505842L;
 
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("result") private final DrivesHardware result;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("result") private DrivesHardware result;
 
     /**
      * 
@@ -56,11 +56,28 @@ public class NodeDriveHardware  implements Serializable  {
         this.result = result;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public NodeDriveHardware() {}
+
     public Long getNodeID() {
         return this.nodeID;
     }
+
+    public void setNodeID(Long nodeID) {
+        this.nodeID = nodeID;
+    }
     public DrivesHardware getResult() {
         return this.result;
+    }
+
+    public void setResult(DrivesHardware result) {
+        this.result = result;
     }
 
     @Override

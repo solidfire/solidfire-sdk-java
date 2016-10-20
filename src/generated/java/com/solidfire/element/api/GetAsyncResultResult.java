@@ -41,8 +41,8 @@ public class GetAsyncResultResult  implements Serializable  {
 
     private static final long serialVersionUID = -137673806L;
 
-    @SerializedName("result") private final AsyncResult result;
-    @SerializedName("status") private final String status;
+    @SerializedName("result") private AsyncResult result;
+    @SerializedName("status") private String status;
 
     /**
      * The object returned by the "GetAsyncResult" API Service call.
@@ -58,12 +58,27 @@ public class GetAsyncResultResult  implements Serializable  {
         this.status = status;
     }
 
+    
+    /**
+     * The object returned by the "GetAsyncResult" API Service call.
+     * <br/>
+     * <b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetAsyncResultResult() {}
+
 
     /**
      * The resulting message for the original method call if the call was completed successfully.
      **/
     public AsyncResult getResult() {
         return this.result;
+    }
+
+    public void setResult(AsyncResult result) {
+        this.result = result;
     }
 
     /**
@@ -73,6 +88,10 @@ public class GetAsyncResultResult  implements Serializable  {
      **/
     public String getStatus() {
         return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override

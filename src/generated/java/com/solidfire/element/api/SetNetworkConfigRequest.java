@@ -41,7 +41,7 @@ public class SetNetworkConfigRequest  implements Serializable  {
 
     private static final long serialVersionUID = -896939746L;
 
-    @SerializedName("network") private final Network network;
+    @SerializedName("network") private Network network;
 
     /**
      * The Request object for the "SetNetworkConfig" API Service call.
@@ -53,12 +53,25 @@ public class SetNetworkConfigRequest  implements Serializable  {
         this.network = network;
     }
 
+    
+    /**
+     * The Request object for the "SetNetworkConfig" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public SetNetworkConfigRequest() {}
+
 
     /**
      * Objects that will be changed for the node network settings.
      **/
     public Network getNetwork() {
         return this.network;
+    }
+
+    public void setNetwork(Network network) {
+        this.network = network;
     }
 
     @Override

@@ -41,8 +41,8 @@ public class ClusterHardwareInfo  implements Serializable  {
 
     private static final long serialVersionUID = 1685597827L;
 
-    @SerializedName("drives") private final java.util.Map<String,DriveHardwareInfo> drives;
-    @SerializedName("nodes") private final java.util.Map<String,java.util.Map<String, Object>> nodes;
+    @SerializedName("drives") private java.util.Map<String,DriveHardwareInfo> drives;
+    @SerializedName("nodes") private java.util.Map<String,java.util.Map<String, Object>> nodes;
 
     /**
      * 
@@ -56,11 +56,28 @@ public class ClusterHardwareInfo  implements Serializable  {
         this.nodes = nodes;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ClusterHardwareInfo() {}
+
     public java.util.Map<String,DriveHardwareInfo> getDrives() {
         return this.drives;
     }
+
+    public void setDrives(java.util.Map<String,DriveHardwareInfo> drives) {
+        this.drives = drives;
+    }
     public java.util.Map<String,java.util.Map<String, Object>> getNodes() {
         return this.nodes;
+    }
+
+    public void setNodes(java.util.Map<String,java.util.Map<String, Object>> nodes) {
+        this.nodes = nodes;
     }
 
     @Override

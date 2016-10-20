@@ -41,16 +41,16 @@ public class EventInfo  implements Serializable  {
 
     private static final long serialVersionUID = -243936856L;
 
-    @SerializedName("eventID") private final Long eventID;
-    @SerializedName("severity") private final Long severity;
-    @SerializedName("eventInfoType") private final String eventInfoType;
-    @SerializedName("message") private final String message;
-    @SerializedName("serviceID") private final Long serviceID;
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("driveID") private final Long driveID;
-    @SerializedName("timeOfReport") private final String timeOfReport;
-    @SerializedName("timeOfPublish") private final String timeOfPublish;
-    @SerializedName("details") private final Object details;
+    @SerializedName("eventID") private Long eventID;
+    @SerializedName("severity") private Long severity;
+    @SerializedName("eventInfoType") private String eventInfoType;
+    @SerializedName("message") private String message;
+    @SerializedName("serviceID") private Long serviceID;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("driveID") private Long driveID;
+    @SerializedName("timeOfReport") private String timeOfReport;
+    @SerializedName("timeOfPublish") private String timeOfPublish;
+    @SerializedName("details") private Object details;
 
     /**
      * 
@@ -80,35 +80,84 @@ public class EventInfo  implements Serializable  {
         this.eventInfoType = eventInfoType;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public EventInfo() {}
+
     public Long getEventID() {
         return this.eventID;
+    }
+
+    public void setEventID(Long eventID) {
+        this.eventID = eventID;
     }
     public Long getSeverity() {
         return this.severity;
     }
+
+    public void setSeverity(Long severity) {
+        this.severity = severity;
+    }
     public String getEventInfoType() {
         return this.eventInfoType;
+    }
+
+    public void setEventInfoType(String eventInfoType) {
+        this.eventInfoType = eventInfoType;
     }
     public String getMessage() {
         return this.message;
     }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
     public Long getServiceID() {
         return this.serviceID;
+    }
+
+    public void setServiceID(Long serviceID) {
+        this.serviceID = serviceID;
     }
     public Long getNodeID() {
         return this.nodeID;
     }
+
+    public void setNodeID(Long nodeID) {
+        this.nodeID = nodeID;
+    }
     public Long getDriveID() {
         return this.driveID;
+    }
+
+    public void setDriveID(Long driveID) {
+        this.driveID = driveID;
     }
     public String getTimeOfReport() {
         return this.timeOfReport;
     }
+
+    public void setTimeOfReport(String timeOfReport) {
+        this.timeOfReport = timeOfReport;
+    }
     public String getTimeOfPublish() {
         return this.timeOfPublish;
     }
+
+    public void setTimeOfPublish(String timeOfPublish) {
+        this.timeOfPublish = timeOfPublish;
+    }
     public Object getDetails() {
         return this.details;
+    }
+
+    public void setDetails(Object details) {
+        this.details = details;
     }
 
     @Override

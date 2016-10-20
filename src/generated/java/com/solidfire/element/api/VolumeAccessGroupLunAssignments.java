@@ -41,9 +41,9 @@ public class VolumeAccessGroupLunAssignments  implements Serializable  {
 
     private static final long serialVersionUID = 568929847L;
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
-    @SerializedName("lunAssignments") private final LunAssignment[] lunAssignments;
-    @SerializedName("deletedLunAssignments") private final LunAssignment[] deletedLunAssignments;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
+    @SerializedName("deletedLunAssignments") private LunAssignment[] deletedLunAssignments;
 
     /**
      * VolumeAccessGroup ID and Lun to be assigned to all volumes within it.
@@ -59,12 +59,25 @@ public class VolumeAccessGroupLunAssignments  implements Serializable  {
         this.deletedLunAssignments = deletedLunAssignments;
     }
 
+    
+    /**
+     * VolumeAccessGroup ID and Lun to be assigned to all volumes within it.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public VolumeAccessGroupLunAssignments() {}
+
 
     /**
      * Unique volume access group ID for which the LUN assignments will be modified.
      **/
     public Long getVolumeAccessGroupID() {
         return this.volumeAccessGroupID;
+    }
+
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) {
+        this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
     /**
@@ -74,11 +87,19 @@ public class VolumeAccessGroupLunAssignments  implements Serializable  {
         return this.lunAssignments;
     }
 
+    public void setLunAssignments(LunAssignment[] lunAssignments) {
+        this.lunAssignments = lunAssignments;
+    }
+
     /**
      * The volume IDs with deleted LUN values.
      **/
     public LunAssignment[] getDeletedLunAssignments() {
         return this.deletedLunAssignments;
+    }
+
+    public void setDeletedLunAssignments(LunAssignment[] deletedLunAssignments) {
+        this.deletedLunAssignments = deletedLunAssignments;
     }
 
     @Override

@@ -41,8 +41,8 @@ public class ListVolumeAccessGroupsRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1227743246L;
 
-    @SerializedName("startVolumeAccessGroupID") private final Optional<Long> startVolumeAccessGroupID;
-    @SerializedName("limit") private final Optional<Long> limit;
+    @SerializedName("startVolumeAccessGroupID") private Optional<Long> startVolumeAccessGroupID;
+    @SerializedName("limit") private Optional<Long> limit;
 
     /**
      * The Request object for the "ListVolumeAccessGroups" API Service call.
@@ -56,6 +56,15 @@ public class ListVolumeAccessGroupsRequest  implements Serializable  {
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
+    
+    /**
+     * The Request object for the "ListVolumeAccessGroups" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListVolumeAccessGroupsRequest() {}
+
 
     /**
      * The lowest VolumeAccessGroupID to return.
@@ -66,12 +75,20 @@ public class ListVolumeAccessGroupsRequest  implements Serializable  {
         return this.startVolumeAccessGroupID;
     }
 
+    public void setStartVolumeAccessGroupID(Optional<Long> startVolumeAccessGroupID) {
+        this.startVolumeAccessGroupID = startVolumeAccessGroupID;
+    }
+
     /**
      * The maximum number of results to return.
      * This can be useful for paging.
      **/
     public Optional<Long> getLimit() {
         return this.limit;
+    }
+
+    public void setLimit(Optional<Long> limit) {
+        this.limit = limit;
     }
 
     @Override

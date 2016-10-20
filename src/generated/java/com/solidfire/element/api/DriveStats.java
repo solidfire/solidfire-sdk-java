@@ -41,22 +41,22 @@ public class DriveStats  implements Serializable  {
 
     private static final long serialVersionUID = 471126863L;
 
-    @SerializedName("activeSessions") private final Long activeSessions;
-    @SerializedName("failedDieCount") private final Long failedDieCount;
-    @SerializedName("lifeRemainingPercent") private final Long lifeRemainingPercent;
-    @SerializedName("lifetimeReadBytes") private final Long lifetimeReadBytes;
-    @SerializedName("lifetimeWriteBytes") private final Long lifetimeWriteBytes;
-    @SerializedName("powerOnHours") private final Long powerOnHours;
-    @SerializedName("readBytes") private final Long readBytes;
-    @SerializedName("readOps") private final Long readOps;
-    @SerializedName("reallocatedSectors") private final Long reallocatedSectors;
-    @SerializedName("reserveCapacityPercent") private final Long reserveCapacityPercent;
-    @SerializedName("timestamp") private final String timestamp;
-    @SerializedName("totalCapacity") private final Long totalCapacity;
-    @SerializedName("usedCapacity") private final Optional<Long> usedCapacity;
-    @SerializedName("usedMemory") private final Long usedMemory;
-    @SerializedName("writeBytes") private final Long writeBytes;
-    @SerializedName("writeOps") private final Long writeOps;
+    @SerializedName("activeSessions") private Long activeSessions;
+    @SerializedName("failedDieCount") private Long failedDieCount;
+    @SerializedName("lifeRemainingPercent") private Long lifeRemainingPercent;
+    @SerializedName("lifetimeReadBytes") private Long lifetimeReadBytes;
+    @SerializedName("lifetimeWriteBytes") private Long lifetimeWriteBytes;
+    @SerializedName("powerOnHours") private Long powerOnHours;
+    @SerializedName("readBytes") private Long readBytes;
+    @SerializedName("readOps") private Long readOps;
+    @SerializedName("reallocatedSectors") private Long reallocatedSectors;
+    @SerializedName("reserveCapacityPercent") private Long reserveCapacityPercent;
+    @SerializedName("timestamp") private String timestamp;
+    @SerializedName("totalCapacity") private Long totalCapacity;
+    @SerializedName("usedCapacity") private Optional<Long> usedCapacity;
+    @SerializedName("usedMemory") private Long usedMemory;
+    @SerializedName("writeBytes") private Long writeBytes;
+    @SerializedName("writeOps") private Long writeOps;
 
     /**
      * 
@@ -98,53 +98,126 @@ public class DriveStats  implements Serializable  {
         this.powerOnHours = powerOnHours;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public DriveStats() {}
+
     public Long getActiveSessions() {
         return this.activeSessions;
+    }
+
+    public void setActiveSessions(Long activeSessions) {
+        this.activeSessions = activeSessions;
     }
     public Long getFailedDieCount() {
         return this.failedDieCount;
     }
+
+    public void setFailedDieCount(Long failedDieCount) {
+        this.failedDieCount = failedDieCount;
+    }
     public Long getLifeRemainingPercent() {
         return this.lifeRemainingPercent;
+    }
+
+    public void setLifeRemainingPercent(Long lifeRemainingPercent) {
+        this.lifeRemainingPercent = lifeRemainingPercent;
     }
     public Long getLifetimeReadBytes() {
         return this.lifetimeReadBytes;
     }
+
+    public void setLifetimeReadBytes(Long lifetimeReadBytes) {
+        this.lifetimeReadBytes = lifetimeReadBytes;
+    }
     public Long getLifetimeWriteBytes() {
         return this.lifetimeWriteBytes;
+    }
+
+    public void setLifetimeWriteBytes(Long lifetimeWriteBytes) {
+        this.lifetimeWriteBytes = lifetimeWriteBytes;
     }
     public Long getPowerOnHours() {
         return this.powerOnHours;
     }
+
+    public void setPowerOnHours(Long powerOnHours) {
+        this.powerOnHours = powerOnHours;
+    }
     public Long getReadBytes() {
         return this.readBytes;
+    }
+
+    public void setReadBytes(Long readBytes) {
+        this.readBytes = readBytes;
     }
     public Long getReadOps() {
         return this.readOps;
     }
+
+    public void setReadOps(Long readOps) {
+        this.readOps = readOps;
+    }
     public Long getReallocatedSectors() {
         return this.reallocatedSectors;
+    }
+
+    public void setReallocatedSectors(Long reallocatedSectors) {
+        this.reallocatedSectors = reallocatedSectors;
     }
     public Long getReserveCapacityPercent() {
         return this.reserveCapacityPercent;
     }
+
+    public void setReserveCapacityPercent(Long reserveCapacityPercent) {
+        this.reserveCapacityPercent = reserveCapacityPercent;
+    }
     public String getTimestamp() {
         return this.timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
     public Long getTotalCapacity() {
         return this.totalCapacity;
     }
+
+    public void setTotalCapacity(Long totalCapacity) {
+        this.totalCapacity = totalCapacity;
+    }
     public Optional<Long> getUsedCapacity() {
         return this.usedCapacity;
+    }
+
+    public void setUsedCapacity(Optional<Long> usedCapacity) {
+        this.usedCapacity = usedCapacity;
     }
     public Long getUsedMemory() {
         return this.usedMemory;
     }
+
+    public void setUsedMemory(Long usedMemory) {
+        this.usedMemory = usedMemory;
+    }
     public Long getWriteBytes() {
         return this.writeBytes;
     }
+
+    public void setWriteBytes(Long writeBytes) {
+        this.writeBytes = writeBytes;
+    }
     public Long getWriteOps() {
         return this.writeOps;
+    }
+
+    public void setWriteOps(Long writeOps) {
+        this.writeOps = writeOps;
     }
 
     @Override

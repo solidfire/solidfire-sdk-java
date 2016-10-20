@@ -41,7 +41,7 @@ public class ListAccountsResult  implements Serializable  {
 
     private static final long serialVersionUID = 635177114L;
 
-    @SerializedName("accounts") private final Account[] accounts;
+    @SerializedName("accounts") private Account[] accounts;
 
     /**
      * The object returned by the "ListAccounts" API Service call.
@@ -53,12 +53,25 @@ public class ListAccountsResult  implements Serializable  {
         this.accounts = accounts;
     }
 
+    
+    /**
+     * The object returned by the "ListAccounts" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListAccountsResult() {}
+
 
     /**
      * List of accounts.
      **/
     public Account[] getAccounts() {
         return this.accounts;
+    }
+
+    public void setAccounts(Account[] accounts) {
+        this.accounts = accounts;
     }
 
     @Override

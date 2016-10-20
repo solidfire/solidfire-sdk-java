@@ -41,7 +41,7 @@ public class GetClusterStatsResult  implements Serializable  {
 
     private static final long serialVersionUID = -1140569260L;
 
-    @SerializedName("clusterStats") private final ClusterStats clusterStats;
+    @SerializedName("clusterStats") private ClusterStats clusterStats;
 
     /**
      * The object returned by the "GetClusterStats" API Service call.
@@ -53,8 +53,21 @@ public class GetClusterStatsResult  implements Serializable  {
         this.clusterStats = clusterStats;
     }
 
+    
+    /**
+     * The object returned by the "GetClusterStats" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetClusterStatsResult() {}
+
     public ClusterStats getClusterStats() {
         return this.clusterStats;
+    }
+
+    public void setClusterStats(ClusterStats clusterStats) {
+        this.clusterStats = clusterStats;
     }
 
     @Override

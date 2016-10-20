@@ -41,7 +41,7 @@ public class ListActiveVolumesResult  implements Serializable  {
 
     private static final long serialVersionUID = -1292530807L;
 
-    @SerializedName("volumes") private final Volume[] volumes;
+    @SerializedName("volumes") private Volume[] volumes;
 
     /**
      * The object returned by the "ListActiveVolumes" API Service call.
@@ -53,12 +53,25 @@ public class ListActiveVolumesResult  implements Serializable  {
         this.volumes = volumes;
     }
 
+    
+    /**
+     * The object returned by the "ListActiveVolumes" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListActiveVolumesResult() {}
+
 
     /**
      * List of active volumes.
      **/
     public Volume[] getVolumes() {
         return this.volumes;
+    }
+
+    public void setVolumes(Volume[] volumes) {
+        this.volumes = volumes;
     }
 
     @Override

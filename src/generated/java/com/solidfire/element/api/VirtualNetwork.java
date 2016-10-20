@@ -41,15 +41,15 @@ public class VirtualNetwork  implements Serializable  {
 
     private static final long serialVersionUID = 40898342L;
 
-    @SerializedName("virtualNetworkID") private final Long virtualNetworkID;
-    @SerializedName("virtualNetworkTag") private final Long virtualNetworkTag;
-    @SerializedName("addressBlocks") private final AddressBlock[] addressBlocks;
-    @SerializedName("name") private final String name;
-    @SerializedName("netmask") private final String netmask;
-    @SerializedName("svip") private final String svip;
-    @SerializedName("gateway") private final Optional<String> gateway;
-    @SerializedName("namespace") private final Optional<Boolean> namespace;
-    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
+    @SerializedName("virtualNetworkID") private Long virtualNetworkID;
+    @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
+    @SerializedName("addressBlocks") private AddressBlock[] addressBlocks;
+    @SerializedName("name") private String name;
+    @SerializedName("netmask") private String netmask;
+    @SerializedName("svip") private String svip;
+    @SerializedName("gateway") private Optional<String> gateway;
+    @SerializedName("namespace") private Optional<Boolean> namespace;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     /**
      * 
@@ -101,6 +101,15 @@ public class VirtualNetwork  implements Serializable  {
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public VirtualNetwork() {}
+
 
     /**
      * SolidFire unique identifier for a virtual network.
@@ -109,11 +118,19 @@ public class VirtualNetwork  implements Serializable  {
         return this.virtualNetworkID;
     }
 
+    public void setVirtualNetworkID(Long virtualNetworkID) {
+        this.virtualNetworkID = virtualNetworkID;
+    }
+
     /**
      * VLAN Tag identifier.
      **/
     public Long getVirtualNetworkTag() {
         return this.virtualNetworkTag;
+    }
+
+    public void setVirtualNetworkTag(Long virtualNetworkTag) {
+        this.virtualNetworkTag = virtualNetworkTag;
     }
 
     /**
@@ -126,11 +143,19 @@ public class VirtualNetwork  implements Serializable  {
         return this.addressBlocks;
     }
 
+    public void setAddressBlocks(AddressBlock[] addressBlocks) {
+        this.addressBlocks = addressBlocks;
+    }
+
     /**
      * The name assigned to the virtual network.
      **/
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -140,11 +165,19 @@ public class VirtualNetwork  implements Serializable  {
         return this.netmask;
     }
 
+    public void setNetmask(String netmask) {
+        this.netmask = netmask;
+    }
+
     /**
      * Storage IP address for the virtual network.
      **/
     public String getSvip() {
         return this.svip;
+    }
+
+    public void setSvip(String svip) {
+        this.svip = svip;
     }
 
     /**
@@ -157,6 +190,10 @@ public class VirtualNetwork  implements Serializable  {
         return this.gateway;
     }
 
+    public void setGateway(Optional<String> gateway) {
+        this.gateway = gateway;
+    }
+
     /**
      * 
      * @since 9.0 
@@ -167,11 +204,19 @@ public class VirtualNetwork  implements Serializable  {
         return this.namespace;
     }
 
+    public void setNamespace(Optional<Boolean> namespace) {
+        this.namespace = namespace;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public java.util.Map<String, Object> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

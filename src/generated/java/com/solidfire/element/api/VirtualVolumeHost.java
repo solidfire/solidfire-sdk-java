@@ -41,12 +41,12 @@ public class VirtualVolumeHost  implements Serializable  {
 
     private static final long serialVersionUID = -1206323719L;
 
-    @SerializedName("virtualVolumeHostID") private final java.util.UUID virtualVolumeHostID;
-    @SerializedName("clusterID") private final java.util.UUID clusterID;
-    @SerializedName("visibleProtocolEndpointIDs") private final java.util.UUID[] visibleProtocolEndpointIDs;
-    @SerializedName("bindings") private final Long[] bindings;
-    @SerializedName("initiatorNames") private final String[] initiatorNames;
-    @SerializedName("hostAddress") private final String hostAddress;
+    @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
+    @SerializedName("clusterID") private java.util.UUID clusterID;
+    @SerializedName("visibleProtocolEndpointIDs") private java.util.UUID[] visibleProtocolEndpointIDs;
+    @SerializedName("bindings") private Long[] bindings;
+    @SerializedName("initiatorNames") private String[] initiatorNames;
+    @SerializedName("hostAddress") private String hostAddress;
 
     /**
      * 
@@ -68,23 +68,56 @@ public class VirtualVolumeHost  implements Serializable  {
         this.initiatorNames = initiatorNames;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public VirtualVolumeHost() {}
+
     public java.util.UUID getVirtualVolumeHostID() {
         return this.virtualVolumeHostID;
+    }
+
+    public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) {
+        this.virtualVolumeHostID = virtualVolumeHostID;
     }
     public java.util.UUID getClusterID() {
         return this.clusterID;
     }
+
+    public void setClusterID(java.util.UUID clusterID) {
+        this.clusterID = clusterID;
+    }
     public java.util.UUID[] getVisibleProtocolEndpointIDs() {
         return this.visibleProtocolEndpointIDs;
+    }
+
+    public void setVisibleProtocolEndpointIDs(java.util.UUID[] visibleProtocolEndpointIDs) {
+        this.visibleProtocolEndpointIDs = visibleProtocolEndpointIDs;
     }
     public Long[] getBindings() {
         return this.bindings;
     }
+
+    public void setBindings(Long[] bindings) {
+        this.bindings = bindings;
+    }
     public String[] getInitiatorNames() {
         return this.initiatorNames;
     }
+
+    public void setInitiatorNames(String[] initiatorNames) {
+        this.initiatorNames = initiatorNames;
+    }
     public String getHostAddress() {
         return this.hostAddress;
+    }
+
+    public void setHostAddress(String hostAddress) {
+        this.hostAddress = hostAddress;
     }
 
     @Override

@@ -41,8 +41,8 @@ public class GetSnmpStateResult  implements Serializable  {
 
     private static final long serialVersionUID = -311543948L;
 
-    @SerializedName("enabled") private final Boolean enabled;
-    @SerializedName("snmpV3Enabled") private final Boolean snmpV3Enabled;
+    @SerializedName("enabled") private Boolean enabled;
+    @SerializedName("snmpV3Enabled") private Boolean snmpV3Enabled;
 
     /**
      * The object returned by the "GetSnmpState" API Service call.
@@ -56,6 +56,15 @@ public class GetSnmpStateResult  implements Serializable  {
         this.snmpV3Enabled = snmpV3Enabled;
     }
 
+    
+    /**
+     * The object returned by the "GetSnmpState" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetSnmpStateResult() {}
+
 
     /**
      * If the nodes in the cluster are configured for SNMP.
@@ -64,11 +73,19 @@ public class GetSnmpStateResult  implements Serializable  {
         return this.enabled;
     }
 
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     /**
      * If the node in the cluster is configured for SNMP v3.
      **/
     public Boolean getSnmpV3Enabled() {
         return this.snmpV3Enabled;
+    }
+
+    public void setSnmpV3Enabled(Boolean snmpV3Enabled) {
+        this.snmpV3Enabled = snmpV3Enabled;
     }
 
     @Override

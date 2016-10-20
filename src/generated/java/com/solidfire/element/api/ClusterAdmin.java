@@ -41,10 +41,10 @@ public class ClusterAdmin  implements Serializable  {
 
     private static final long serialVersionUID = 1365310294L;
 
-    @SerializedName("access") private final String[] access;
-    @SerializedName("clusterAdminID") private final Long clusterAdminID;
-    @SerializedName("username") private final String username;
-    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
+    @SerializedName("access") private String[] access;
+    @SerializedName("clusterAdminID") private Long clusterAdminID;
+    @SerializedName("username") private String username;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     /**
      * 
@@ -62,14 +62,35 @@ public class ClusterAdmin  implements Serializable  {
         this.attributes = attributes;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ClusterAdmin() {}
+
     public String[] getAccess() {
         return this.access;
+    }
+
+    public void setAccess(String[] access) {
+        this.access = access;
     }
     public Long getClusterAdminID() {
         return this.clusterAdminID;
     }
+
+    public void setClusterAdminID(Long clusterAdminID) {
+        this.clusterAdminID = clusterAdminID;
+    }
     public String getUsername() {
         return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -77,6 +98,10 @@ public class ClusterAdmin  implements Serializable  {
      **/
     public java.util.Map<String, Object> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

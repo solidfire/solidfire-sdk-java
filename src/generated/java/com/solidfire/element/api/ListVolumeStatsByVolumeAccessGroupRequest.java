@@ -41,7 +41,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest  implements Serializable 
 
     private static final long serialVersionUID = -992778893L;
 
-    @SerializedName("volumeAccessGroups") private final Optional<Long[]> volumeAccessGroups;
+    @SerializedName("volumeAccessGroups") private Optional<Long[]> volumeAccessGroups;
 
     /**
      * The Request object for the "ListVolumeStatsByVolumeAccessGroup" API Service call.
@@ -53,6 +53,15 @@ public class ListVolumeStatsByVolumeAccessGroupRequest  implements Serializable 
         this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
     }
 
+    
+    /**
+     * The Request object for the "ListVolumeStatsByVolumeAccessGroup" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListVolumeStatsByVolumeAccessGroupRequest() {}
+
 
     /**
      * An array of VolumeAccessGroupIDs for which volume activity is returned.
@@ -60,6 +69,10 @@ public class ListVolumeStatsByVolumeAccessGroupRequest  implements Serializable 
      **/
     public Optional<Long[]> getVolumeAccessGroups() {
         return this.volumeAccessGroups;
+    }
+
+    public void setVolumeAccessGroups(Optional<Long[]> volumeAccessGroups) {
+        this.volumeAccessGroups = volumeAccessGroups;
     }
 
     @Override

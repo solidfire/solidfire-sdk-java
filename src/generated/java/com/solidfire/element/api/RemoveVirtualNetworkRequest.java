@@ -41,8 +41,8 @@ public class RemoveVirtualNetworkRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1351674028L;
 
-    @SerializedName("virtualNetworkID") private final Optional<Long> virtualNetworkID;
-    @SerializedName("virtualNetworkTag") private final Optional<Long> virtualNetworkTag;
+    @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
+    @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
 
     /**
      * The Request object for the "RemoveVirtualNetwork" API Service call.
@@ -56,6 +56,15 @@ public class RemoveVirtualNetworkRequest  implements Serializable  {
         this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
     }
 
+    
+    /**
+     * The Request object for the "RemoveVirtualNetwork" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public RemoveVirtualNetworkRequest() {}
+
 
     /**
      * Network ID that identifies the virtual network to remove.
@@ -64,11 +73,19 @@ public class RemoveVirtualNetworkRequest  implements Serializable  {
         return this.virtualNetworkID;
     }
 
+    public void setVirtualNetworkID(Optional<Long> virtualNetworkID) {
+        this.virtualNetworkID = virtualNetworkID;
+    }
+
     /**
      * Network Tag that identifies the virtual network to remove.
      **/
     public Optional<Long> getVirtualNetworkTag() {
         return this.virtualNetworkTag;
+    }
+
+    public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) {
+        this.virtualNetworkTag = virtualNetworkTag;
     }
 
     @Override

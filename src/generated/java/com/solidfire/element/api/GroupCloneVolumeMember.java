@@ -41,8 +41,8 @@ public class GroupCloneVolumeMember  implements Serializable  {
 
     private static final long serialVersionUID = -1785945131L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("srcVolumeID") private final Long srcVolumeID;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("srcVolumeID") private Long srcVolumeID;
 
     /**
      * Represents the relationship between the source Volume and cloned Volume IDs.
@@ -56,6 +56,15 @@ public class GroupCloneVolumeMember  implements Serializable  {
         this.srcVolumeID = srcVolumeID;
     }
 
+    
+    /**
+     * Represents the relationship between the source Volume and cloned Volume IDs.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GroupCloneVolumeMember() {}
+
 
     /**
      * The VolumeID of the cloned volume.
@@ -64,11 +73,19 @@ public class GroupCloneVolumeMember  implements Serializable  {
         return this.volumeID;
     }
 
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
+    }
+
     /**
      * The VolumeID of the source volume.
      **/
     public Long getSrcVolumeID() {
         return this.srcVolumeID;
+    }
+
+    public void setSrcVolumeID(Long srcVolumeID) {
+        this.srcVolumeID = srcVolumeID;
     }
 
     @Override

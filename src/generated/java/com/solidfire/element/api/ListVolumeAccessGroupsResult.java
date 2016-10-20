@@ -41,7 +41,7 @@ public class ListVolumeAccessGroupsResult  implements Serializable  {
 
     private static final long serialVersionUID = 1985813315L;
 
-    @SerializedName("volumeAccessGroups") private final VolumeAccessGroup[] volumeAccessGroups;
+    @SerializedName("volumeAccessGroups") private VolumeAccessGroup[] volumeAccessGroups;
 
     /**
      * The object returned by the "ListVolumeAccessGroups" API Service call.
@@ -53,12 +53,25 @@ public class ListVolumeAccessGroupsResult  implements Serializable  {
         this.volumeAccessGroups = volumeAccessGroups;
     }
 
+    
+    /**
+     * The object returned by the "ListVolumeAccessGroups" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListVolumeAccessGroupsResult() {}
+
 
     /**
      * List of volume access groups.
      **/
     public VolumeAccessGroup[] getVolumeAccessGroups() {
         return this.volumeAccessGroups;
+    }
+
+    public void setVolumeAccessGroups(VolumeAccessGroup[] volumeAccessGroups) {
+        this.volumeAccessGroups = volumeAccessGroups;
     }
 
     @Override

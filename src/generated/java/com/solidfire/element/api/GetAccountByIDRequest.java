@@ -41,7 +41,7 @@ public class GetAccountByIDRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1508999421L;
 
-    @SerializedName("accountID") private final Long accountID;
+    @SerializedName("accountID") private Long accountID;
 
     /**
      * The Request object for the "GetAccountByID" API Service call.
@@ -53,12 +53,25 @@ public class GetAccountByIDRequest  implements Serializable  {
         this.accountID = accountID;
     }
 
+    
+    /**
+     * The Request object for the "GetAccountByID" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetAccountByIDRequest() {}
+
 
     /**
      * Specifies the account for which details are gathered.
      **/
     public Long getAccountID() {
         return this.accountID;
+    }
+
+    public void setAccountID(Long accountID) {
+        this.accountID = accountID;
     }
 
     @Override

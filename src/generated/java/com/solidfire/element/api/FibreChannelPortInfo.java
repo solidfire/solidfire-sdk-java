@@ -41,17 +41,17 @@ public class FibreChannelPortInfo  implements Serializable  {
 
     private static final long serialVersionUID = -1981511491L;
 
-    @SerializedName("firmware") private final String firmware;
-    @SerializedName("hbaPort") private final Long hbaPort;
-    @SerializedName("model") private final String model;
-    @SerializedName("nPortID") private final String nPortID;
-    @SerializedName("pciSlot") private final Long pciSlot;
-    @SerializedName("serial") private final String serial;
-    @SerializedName("speed") private final String speed;
-    @SerializedName("state") private final String state;
-    @SerializedName("switchWwn") private final String switchWwn;
-    @SerializedName("wwnn") private final String wwnn;
-    @SerializedName("wwpn") private final String wwpn;
+    @SerializedName("firmware") private String firmware;
+    @SerializedName("hbaPort") private Long hbaPort;
+    @SerializedName("model") private String model;
+    @SerializedName("nPortID") private String nPortID;
+    @SerializedName("pciSlot") private Long pciSlot;
+    @SerializedName("serial") private String serial;
+    @SerializedName("speed") private String speed;
+    @SerializedName("state") private String state;
+    @SerializedName("switchWwn") private String switchWwn;
+    @SerializedName("wwnn") private String wwnn;
+    @SerializedName("wwpn") private String wwpn;
 
     /**
      * Fibre Channel Node Port Info object returns information about all Fibre Channel ports on a node, or for one node in the cluster. The same information is returned for all ports or port information for one node. This information is returned with the API method ListNodeFibreChannelPortInfo (in the SolidFire API Guide).
@@ -83,12 +83,25 @@ public class FibreChannelPortInfo  implements Serializable  {
         this.speed = speed;
     }
 
+    
+    /**
+     * Fibre Channel Node Port Info object returns information about all Fibre Channel ports on a node, or for one node in the cluster. The same information is returned for all ports or port information for one node. This information is returned with the API method ListNodeFibreChannelPortInfo (in the SolidFire API Guide).
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public FibreChannelPortInfo() {}
+
 
     /**
      * The version of the firmware installed on the Fibre Channel port.
      **/
     public String getFirmware() {
         return this.firmware;
+    }
+
+    public void setFirmware(String firmware) {
+        this.firmware = firmware;
     }
 
     /**
@@ -98,11 +111,19 @@ public class FibreChannelPortInfo  implements Serializable  {
         return this.hbaPort;
     }
 
+    public void setHbaPort(Long hbaPort) {
+        this.hbaPort = hbaPort;
+    }
+
     /**
      * Model of the HBA on the port.
      **/
     public String getModel() {
         return this.model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     /**
@@ -112,11 +133,19 @@ public class FibreChannelPortInfo  implements Serializable  {
         return this.nPortID;
     }
 
+    public void setNPortID(String nPortID) {
+        this.nPortID = nPortID;
+    }
+
     /**
      * Slot in which the pci card resides on the Fibre Channel node hardware.
      **/
     public Long getPciSlot() {
         return this.pciSlot;
+    }
+
+    public void setPciSlot(Long pciSlot) {
+        this.pciSlot = pciSlot;
     }
 
     /**
@@ -126,11 +155,19 @@ public class FibreChannelPortInfo  implements Serializable  {
         return this.serial;
     }
 
+    public void setSerial(String serial) {
+        this.serial = serial;
+    }
+
     /**
      * Speed of the HBA on the port.
      **/
     public String getSpeed() {
         return this.speed;
+    }
+
+    public void setSpeed(String speed) {
+        this.speed = speed;
     }
 
     /**
@@ -142,11 +179,19 @@ public class FibreChannelPortInfo  implements Serializable  {
         return this.state;
     }
 
+    public void setState(String state) {
+        this.state = state;
+    }
+
     /**
      * The World Wide Name of the Fibre Channel switch port.
      **/
     public String getSwitchWwn() {
         return this.switchWwn;
+    }
+
+    public void setSwitchWwn(String switchWwn) {
+        this.switchWwn = switchWwn;
     }
 
     /**
@@ -156,11 +201,19 @@ public class FibreChannelPortInfo  implements Serializable  {
         return this.wwnn;
     }
 
+    public void setWwnn(String wwnn) {
+        this.wwnn = wwnn;
+    }
+
     /**
      * World Wide Port Name assigned to the physical port of the HBA.
      **/
     public String getWwpn() {
         return this.wwpn;
+    }
+
+    public void setWwpn(String wwpn) {
+        this.wwpn = wwpn;
     }
 
     @Override

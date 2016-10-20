@@ -41,7 +41,7 @@ public class RemoveBackupTargetRequest  implements Serializable  {
 
     private static final long serialVersionUID = 847459383L;
 
-    @SerializedName("backupTargetID") private final Long backupTargetID;
+    @SerializedName("backupTargetID") private Long backupTargetID;
 
     /**
      * The Request object for the "RemoveBackupTarget" API Service call.
@@ -53,12 +53,25 @@ public class RemoveBackupTargetRequest  implements Serializable  {
         this.backupTargetID = backupTargetID;
     }
 
+    
+    /**
+     * The Request object for the "RemoveBackupTarget" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public RemoveBackupTargetRequest() {}
+
 
     /**
      * Unique target ID of the target to remove.
      **/
     public Long getBackupTargetID() {
         return this.backupTargetID;
+    }
+
+    public void setBackupTargetID(Long backupTargetID) {
+        this.backupTargetID = backupTargetID;
     }
 
     @Override

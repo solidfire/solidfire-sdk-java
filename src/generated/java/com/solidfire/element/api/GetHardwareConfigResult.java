@@ -41,7 +41,7 @@ public class GetHardwareConfigResult  implements Serializable  {
 
     private static final long serialVersionUID = -1197898847L;
 
-    @SerializedName("hardwareConfig") private final HardwareConfig hardwareConfig;
+    @SerializedName("hardwareConfig") private HardwareConfig hardwareConfig;
 
     /**
      * The object returned by the "GetHardwareConfig" API Service call.
@@ -53,12 +53,25 @@ public class GetHardwareConfigResult  implements Serializable  {
         this.hardwareConfig = hardwareConfig;
     }
 
+    
+    /**
+     * The object returned by the "GetHardwareConfig" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetHardwareConfigResult() {}
+
 
     /**
      * List of hardware information and current settings.
      **/
     public HardwareConfig getHardwareConfig() {
         return this.hardwareConfig;
+    }
+
+    public void setHardwareConfig(HardwareConfig hardwareConfig) {
+        this.hardwareConfig = hardwareConfig;
     }
 
     @Override

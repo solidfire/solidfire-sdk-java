@@ -41,9 +41,9 @@ public class ClusterVersionInfo  implements Serializable  {
 
     private static final long serialVersionUID = 996139717L;
 
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("nodeVersion") private final String nodeVersion;
-    @SerializedName("nodeInternalRevision") private final String nodeInternalRevision;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("nodeVersion") private String nodeVersion;
+    @SerializedName("nodeInternalRevision") private String nodeInternalRevision;
 
     /**
      * Version information for a node in the cluster.
@@ -59,14 +59,35 @@ public class ClusterVersionInfo  implements Serializable  {
         this.nodeInternalRevision = nodeInternalRevision;
     }
 
+    
+    /**
+     * Version information for a node in the cluster.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ClusterVersionInfo() {}
+
     public Long getNodeID() {
         return this.nodeID;
+    }
+
+    public void setNodeID(Long nodeID) {
+        this.nodeID = nodeID;
     }
     public String getNodeVersion() {
         return this.nodeVersion;
     }
+
+    public void setNodeVersion(String nodeVersion) {
+        this.nodeVersion = nodeVersion;
+    }
     public String getNodeInternalRevision() {
         return this.nodeInternalRevision;
+    }
+
+    public void setNodeInternalRevision(String nodeInternalRevision) {
+        this.nodeInternalRevision = nodeInternalRevision;
     }
 
     @Override

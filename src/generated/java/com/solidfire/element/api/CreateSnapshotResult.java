@@ -41,8 +41,8 @@ public class CreateSnapshotResult  implements Serializable  {
 
     private static final long serialVersionUID = -351386451L;
 
-    @SerializedName("snapshotID") private final Long snapshotID;
-    @SerializedName("checksum") private final String checksum;
+    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("checksum") private String checksum;
 
     /**
      * The object returned by the "CreateSnapshot" API Service call.
@@ -56,6 +56,15 @@ public class CreateSnapshotResult  implements Serializable  {
         this.checksum = checksum;
     }
 
+    
+    /**
+     * The object returned by the "CreateSnapshot" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CreateSnapshotResult() {}
+
 
     /**
      * ID of the newly-created snapshot.
@@ -64,12 +73,20 @@ public class CreateSnapshotResult  implements Serializable  {
         return this.snapshotID;
     }
 
+    public void setSnapshotID(Long snapshotID) {
+        this.snapshotID = snapshotID;
+    }
+
     /**
      * A string that represents the correct digits in the stored snapshot.
      * This checksum can be used later to compare other snapshots to detect errors in the data.
      **/
     public String getChecksum() {
         return this.checksum;
+    }
+
+    public void setChecksum(String checksum) {
+        this.checksum = checksum;
     }
 
     @Override

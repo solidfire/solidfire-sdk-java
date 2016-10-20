@@ -41,7 +41,7 @@ public class GetVirtualVolumeCountResult  implements Serializable  {
 
     private static final long serialVersionUID = -876061185L;
 
-    @SerializedName("count") private final Long count;
+    @SerializedName("count") private Long count;
 
     /**
      * The object returned by the "GetVirtualVolumeCount" API Service call.
@@ -53,12 +53,25 @@ public class GetVirtualVolumeCountResult  implements Serializable  {
         this.count = count;
     }
 
+    
+    /**
+     * The object returned by the "GetVirtualVolumeCount" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetVirtualVolumeCountResult() {}
+
 
     /**
      * The number of virtual volumes currently in the system.
      **/
     public Long getCount() {
         return this.count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
     }
 
     @Override

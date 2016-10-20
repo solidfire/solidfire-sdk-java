@@ -41,10 +41,10 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
 
     private static final long serialVersionUID = 918863598L;
 
-    @SerializedName("username") private final String username;
-    @SerializedName("access") private final String[] access;
-    @SerializedName("acceptEula") private final Optional<Boolean> acceptEula;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("username") private String username;
+    @SerializedName("access") private String[] access;
+    @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "AddLdapClusterAdmin" API Service call.
@@ -62,12 +62,25 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
+    
+    /**
+     * The Request object for the "AddLdapClusterAdmin" API Service call.
+     * Empty constructor to support serialization.
+     * @since 8.0
+     **/
+    @Since("8.0")
+    public AddLdapClusterAdminRequest() {}
+
 
     /**
      * The distinguished user name for the new LDAP cluster admin.
      **/
     public String getUsername() {
         return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -77,6 +90,10 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
         return this.access;
     }
 
+    public void setAccess(String[] access) {
+        this.access = access;
+    }
+
     /**
      * Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
      **/
@@ -84,11 +101,19 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
         return this.acceptEula;
     }
 
+    public void setAcceptEula(Optional<Boolean> acceptEula) {
+        this.acceptEula = acceptEula;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

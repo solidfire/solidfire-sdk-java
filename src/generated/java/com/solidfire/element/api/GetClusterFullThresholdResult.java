@@ -41,23 +41,23 @@ public class GetClusterFullThresholdResult  implements Serializable  {
 
     private static final long serialVersionUID = -603551051L;
 
-    @SerializedName("blockFullness") private final String blockFullness;
-    @SerializedName("fullness") private final String fullness;
-    @SerializedName("maxMetadataOverProvisionFactor") private final Long maxMetadataOverProvisionFactor;
-    @SerializedName("metadataFullness") private final String metadataFullness;
-    @SerializedName("sliceReserveUsedThresholdPct") private final Long sliceReserveUsedThresholdPct;
-    @SerializedName("stage2AwareThreshold") private final Long stage2AwareThreshold;
-    @SerializedName("stage2BlockThresholdBytes") private final Long stage2BlockThresholdBytes;
-    @SerializedName("stage3BlockThresholdBytes") private final Long stage3BlockThresholdBytes;
-    @SerializedName("stage3BlockThresholdPercent") private final Long stage3BlockThresholdPercent;
-    @SerializedName("stage3LowThreshold") private final Long stage3LowThreshold;
-    @SerializedName("stage4CriticalThreshold") private final Long stage4CriticalThreshold;
-    @SerializedName("stage4BlockThresholdBytes") private final Long stage4BlockThresholdBytes;
-    @SerializedName("stage5BlockThresholdBytes") private final Long stage5BlockThresholdBytes;
-    @SerializedName("sumTotalClusterBytes") private final Long sumTotalClusterBytes;
-    @SerializedName("sumTotalMetadataClusterBytes") private final Long sumTotalMetadataClusterBytes;
-    @SerializedName("sumUsedClusterBytes") private final Long sumUsedClusterBytes;
-    @SerializedName("sumUsedMetadataClusterBytes") private final Long sumUsedMetadataClusterBytes;
+    @SerializedName("blockFullness") private String blockFullness;
+    @SerializedName("fullness") private String fullness;
+    @SerializedName("maxMetadataOverProvisionFactor") private Long maxMetadataOverProvisionFactor;
+    @SerializedName("metadataFullness") private String metadataFullness;
+    @SerializedName("sliceReserveUsedThresholdPct") private Long sliceReserveUsedThresholdPct;
+    @SerializedName("stage2AwareThreshold") private Long stage2AwareThreshold;
+    @SerializedName("stage2BlockThresholdBytes") private Long stage2BlockThresholdBytes;
+    @SerializedName("stage3BlockThresholdBytes") private Long stage3BlockThresholdBytes;
+    @SerializedName("stage3BlockThresholdPercent") private Long stage3BlockThresholdPercent;
+    @SerializedName("stage3LowThreshold") private Long stage3LowThreshold;
+    @SerializedName("stage4CriticalThreshold") private Long stage4CriticalThreshold;
+    @SerializedName("stage4BlockThresholdBytes") private Long stage4BlockThresholdBytes;
+    @SerializedName("stage5BlockThresholdBytes") private Long stage5BlockThresholdBytes;
+    @SerializedName("sumTotalClusterBytes") private Long sumTotalClusterBytes;
+    @SerializedName("sumTotalMetadataClusterBytes") private Long sumTotalMetadataClusterBytes;
+    @SerializedName("sumUsedClusterBytes") private Long sumUsedClusterBytes;
+    @SerializedName("sumUsedMetadataClusterBytes") private Long sumUsedMetadataClusterBytes;
 
     /**
      * The object returned by the "GetClusterFullThreshold" API Service call.
@@ -101,6 +101,15 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         this.stage3BlockThresholdPercent = stage3BlockThresholdPercent;
     }
 
+    
+    /**
+     * The object returned by the "GetClusterFullThreshold" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetClusterFullThresholdResult() {}
+
 
     /**
      * Current computed level of block fullness of the cluster.
@@ -110,11 +119,19 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         return this.blockFullness;
     }
 
+    public void setBlockFullness(String blockFullness) {
+        this.blockFullness = blockFullness;
+    }
+
     /**
      * Reflects the highest level of fullness between "blockFullness" and "metadataFullness".
      **/
     public String getFullness() {
         return this.fullness;
+    }
+
+    public void setFullness(String fullness) {
+        this.fullness = fullness;
     }
 
     /**
@@ -124,11 +141,19 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         return this.maxMetadataOverProvisionFactor;
     }
 
+    public void setMaxMetadataOverProvisionFactor(Long maxMetadataOverProvisionFactor) {
+        this.maxMetadataOverProvisionFactor = maxMetadataOverProvisionFactor;
+    }
+
     /**
      * Current computed level of metadata fullness of the cluster.
      **/
     public String getMetadataFullness() {
         return this.metadataFullness;
+    }
+
+    public void setMetadataFullness(String metadataFullness) {
+        this.metadataFullness = metadataFullness;
     }
 
     /**
@@ -138,11 +163,19 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         return this.sliceReserveUsedThresholdPct;
     }
 
+    public void setSliceReserveUsedThresholdPct(Long sliceReserveUsedThresholdPct) {
+        this.sliceReserveUsedThresholdPct = sliceReserveUsedThresholdPct;
+    }
+
     /**
      * Awareness condition: Value that is set for "Stage 2" cluster threshold level.
      **/
     public Long getStage2AwareThreshold() {
         return this.stage2AwareThreshold;
+    }
+
+    public void setStage2AwareThreshold(Long stage2AwareThreshold) {
+        this.stage2AwareThreshold = stage2AwareThreshold;
     }
 
     /**
@@ -152,11 +185,19 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         return this.stage2BlockThresholdBytes;
     }
 
+    public void setStage2BlockThresholdBytes(Long stage2BlockThresholdBytes) {
+        this.stage2BlockThresholdBytes = stage2BlockThresholdBytes;
+    }
+
     /**
      * Number of bytes being used by the cluster at which a stage3 condition will exist.
      **/
     public Long getStage3BlockThresholdBytes() {
         return this.stage3BlockThresholdBytes;
+    }
+
+    public void setStage3BlockThresholdBytes(Long stage3BlockThresholdBytes) {
+        this.stage3BlockThresholdBytes = stage3BlockThresholdBytes;
     }
 
     /**
@@ -166,11 +207,19 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         return this.stage3BlockThresholdPercent;
     }
 
+    public void setStage3BlockThresholdPercent(Long stage3BlockThresholdPercent) {
+        this.stage3BlockThresholdPercent = stage3BlockThresholdPercent;
+    }
+
     /**
      * Error condition; message sent to "Alerts" that capacity on a cluster is getting low.
      **/
     public Long getStage3LowThreshold() {
         return this.stage3LowThreshold;
+    }
+
+    public void setStage3LowThreshold(Long stage3LowThreshold) {
+        this.stage3LowThreshold = stage3LowThreshold;
     }
 
     /**
@@ -180,11 +229,19 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         return this.stage4CriticalThreshold;
     }
 
+    public void setStage4CriticalThreshold(Long stage4CriticalThreshold) {
+        this.stage4CriticalThreshold = stage4CriticalThreshold;
+    }
+
     /**
      * Number of bytes being used by the cluster at which a stage4 condition will exist.
      **/
     public Long getStage4BlockThresholdBytes() {
         return this.stage4BlockThresholdBytes;
+    }
+
+    public void setStage4BlockThresholdBytes(Long stage4BlockThresholdBytes) {
+        this.stage4BlockThresholdBytes = stage4BlockThresholdBytes;
     }
 
     /**
@@ -194,11 +251,19 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         return this.stage5BlockThresholdBytes;
     }
 
+    public void setStage5BlockThresholdBytes(Long stage5BlockThresholdBytes) {
+        this.stage5BlockThresholdBytes = stage5BlockThresholdBytes;
+    }
+
     /**
      * Physical capacity of the cluster measured in bytes.
      **/
     public Long getSumTotalClusterBytes() {
         return this.sumTotalClusterBytes;
+    }
+
+    public void setSumTotalClusterBytes(Long sumTotalClusterBytes) {
+        this.sumTotalClusterBytes = sumTotalClusterBytes;
     }
 
     /**
@@ -208,6 +273,10 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         return this.sumTotalMetadataClusterBytes;
     }
 
+    public void setSumTotalMetadataClusterBytes(Long sumTotalMetadataClusterBytes) {
+        this.sumTotalMetadataClusterBytes = sumTotalMetadataClusterBytes;
+    }
+
     /**
      * Number of bytes used on the cluster.
      **/
@@ -215,11 +284,19 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         return this.sumUsedClusterBytes;
     }
 
+    public void setSumUsedClusterBytes(Long sumUsedClusterBytes) {
+        this.sumUsedClusterBytes = sumUsedClusterBytes;
+    }
+
     /**
      * Amount of space used on volume drives to store metadata.
      **/
     public Long getSumUsedMetadataClusterBytes() {
         return this.sumUsedMetadataClusterBytes;
+    }
+
+    public void setSumUsedMetadataClusterBytes(Long sumUsedMetadataClusterBytes) {
+        this.sumUsedMetadataClusterBytes = sumUsedMetadataClusterBytes;
     }
 
     @Override

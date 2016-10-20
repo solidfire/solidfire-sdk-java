@@ -41,10 +41,10 @@ public class RollbackToGroupSnapshotRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1217912347L;
 
-    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
-    @SerializedName("saveCurrentState") private final Boolean saveCurrentState;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
+    @SerializedName("saveCurrentState") private Boolean saveCurrentState;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "RollbackToGroupSnapshot" API Service call.
@@ -62,12 +62,25 @@ public class RollbackToGroupSnapshotRequest  implements Serializable  {
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
+    
+    /**
+     * The Request object for the "RollbackToGroupSnapshot" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public RollbackToGroupSnapshotRequest() {}
+
 
     /**
      * Unique ID of the group snapshot.
      **/
     public Long getGroupSnapshotID() {
         return this.groupSnapshotID;
+    }
+
+    public void setGroupSnapshotID(Long groupSnapshotID) {
+        this.groupSnapshotID = groupSnapshotID;
     }
 
     /**
@@ -78,6 +91,10 @@ public class RollbackToGroupSnapshotRequest  implements Serializable  {
         return this.saveCurrentState;
     }
 
+    public void setSaveCurrentState(Boolean saveCurrentState) {
+        this.saveCurrentState = saveCurrentState;
+    }
+
     /**
      * Name for the snapshot. If no name is given, then the name of the snapshot being rolled back to is used with 
      * "-copy" appended to the end of the name.
@@ -86,11 +103,19 @@ public class RollbackToGroupSnapshotRequest  implements Serializable  {
         return this.name;
     }
 
+    public void setName(Optional<String> name) {
+        this.name = name;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

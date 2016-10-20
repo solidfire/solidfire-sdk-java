@@ -41,11 +41,11 @@ public class TestPingRequest  implements Serializable  {
 
     private static final long serialVersionUID = -966237040L;
 
-    @SerializedName("attempts") private final Optional<Long> attempts;
-    @SerializedName("hosts") private final Optional<String> hosts;
-    @SerializedName("totalTimeoutSec") private final Optional<Long> totalTimeoutSec;
-    @SerializedName("packetSize") private final Optional<Long> packetSize;
-    @SerializedName("pingTimeoutMsec") private final Optional<Long> pingTimeoutMsec;
+    @SerializedName("attempts") private Optional<Long> attempts;
+    @SerializedName("hosts") private Optional<String> hosts;
+    @SerializedName("totalTimeoutSec") private Optional<Long> totalTimeoutSec;
+    @SerializedName("packetSize") private Optional<Long> packetSize;
+    @SerializedName("pingTimeoutMsec") private Optional<Long> pingTimeoutMsec;
 
     /**
      * The Request object for the "TestPing" API Service call.
@@ -65,12 +65,25 @@ public class TestPingRequest  implements Serializable  {
         this.totalTimeoutSec = (totalTimeoutSec == null) ? Optional.<Long>empty() : totalTimeoutSec;
     }
 
+    
+    /**
+     * The Request object for the "TestPing" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public TestPingRequest() {}
+
 
     /**
      * Specifies the number of times the system should repeat the test ping. Default is 5.
      **/
     public Optional<Long> getAttempts() {
         return this.attempts;
+    }
+
+    public void setAttempts(Optional<Long> attempts) {
+        this.attempts = attempts;
     }
 
     /**
@@ -80,11 +93,19 @@ public class TestPingRequest  implements Serializable  {
         return this.hosts;
     }
 
+    public void setHosts(Optional<String> hosts) {
+        this.hosts = hosts;
+    }
+
     /**
      * Specifies the length of time the ping should wait for a system response before issuing the next ping attempt or ending the process.
      **/
     public Optional<Long> getTotalTimeoutSec() {
         return this.totalTimeoutSec;
+    }
+
+    public void setTotalTimeoutSec(Optional<Long> totalTimeoutSec) {
+        this.totalTimeoutSec = totalTimeoutSec;
     }
 
     /**
@@ -94,11 +115,19 @@ public class TestPingRequest  implements Serializable  {
         return this.packetSize;
     }
 
+    public void setPacketSize(Optional<Long> packetSize) {
+        this.packetSize = packetSize;
+    }
+
     /**
      * Specify the number of milliseconds to wait for each individual ping response. Default is 500ms.
      **/
     public Optional<Long> getPingTimeoutMsec() {
         return this.pingTimeoutMsec;
+    }
+
+    public void setPingTimeoutMsec(Optional<Long> pingTimeoutMsec) {
+        this.pingTimeoutMsec = pingTimeoutMsec;
     }
 
     @Override

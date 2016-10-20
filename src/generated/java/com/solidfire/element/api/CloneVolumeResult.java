@@ -41,9 +41,9 @@ public class CloneVolumeResult  implements Serializable  {
 
     private static final long serialVersionUID = -113869221L;
 
-    @SerializedName("cloneID") private final Long cloneID;
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("asyncHandle") private final Long asyncHandle;
+    @SerializedName("cloneID") private Long cloneID;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("asyncHandle") private Long asyncHandle;
 
     /**
      * The object returned by the "CloneVolume" API Service call.
@@ -59,12 +59,25 @@ public class CloneVolumeResult  implements Serializable  {
         this.asyncHandle = asyncHandle;
     }
 
+    
+    /**
+     * The object returned by the "CloneVolume" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CloneVolumeResult() {}
+
 
     /**
      * The ID of the newly-created clone.
      **/
     public Long getCloneID() {
         return this.cloneID;
+    }
+
+    public void setCloneID(Long cloneID) {
+        this.cloneID = cloneID;
     }
 
     /**
@@ -74,11 +87,19 @@ public class CloneVolumeResult  implements Serializable  {
         return this.volumeID;
     }
 
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
+    }
+
     /**
      * Handle value used to track the progress of the clone.
      **/
     public Long getAsyncHandle() {
         return this.asyncHandle;
+    }
+
+    public void setAsyncHandle(Long asyncHandle) {
+        this.asyncHandle = asyncHandle;
     }
 
     @Override

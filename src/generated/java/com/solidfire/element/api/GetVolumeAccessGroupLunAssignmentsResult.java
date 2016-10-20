@@ -41,7 +41,7 @@ public class GetVolumeAccessGroupLunAssignmentsResult  implements Serializable  
 
     private static final long serialVersionUID = -472207715L;
 
-    @SerializedName("volumeAccessGroupLunAssignments") private final VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments;
+    @SerializedName("volumeAccessGroupLunAssignments") private VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments;
 
     /**
      * The object returned by the "GetVolumeAccessGroupLunAssignments" API Service call.
@@ -53,12 +53,25 @@ public class GetVolumeAccessGroupLunAssignmentsResult  implements Serializable  
         this.volumeAccessGroupLunAssignments = volumeAccessGroupLunAssignments;
     }
 
+    
+    /**
+     * The object returned by the "GetVolumeAccessGroupLunAssignments" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetVolumeAccessGroupLunAssignmentsResult() {}
+
 
     /**
      * List of all physical Fibre Channel ports, or a port for a single node.
      **/
     public VolumeAccessGroupLunAssignments getVolumeAccessGroupLunAssignments() {
         return this.volumeAccessGroupLunAssignments;
+    }
+
+    public void setVolumeAccessGroupLunAssignments(VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments) {
+        this.volumeAccessGroupLunAssignments = volumeAccessGroupLunAssignments;
     }
 
     @Override

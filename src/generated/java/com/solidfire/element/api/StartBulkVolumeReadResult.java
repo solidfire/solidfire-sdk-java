@@ -41,9 +41,9 @@ public class StartBulkVolumeReadResult  implements Serializable  {
 
     private static final long serialVersionUID = 1212553501L;
 
-    @SerializedName("asyncHandle") private final Long asyncHandle;
-    @SerializedName("key") private final String key;
-    @SerializedName("url") private final String url;
+    @SerializedName("asyncHandle") private Long asyncHandle;
+    @SerializedName("key") private String key;
+    @SerializedName("url") private String url;
 
     /**
      * The object returned by the "StartBulkVolumeRead" API Service call.
@@ -59,12 +59,25 @@ public class StartBulkVolumeReadResult  implements Serializable  {
         this.url = url;
     }
 
+    
+    /**
+     * The object returned by the "StartBulkVolumeRead" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public StartBulkVolumeReadResult() {}
+
 
     /**
      * ID of the async process to be checked for completion.
      **/
     public Long getAsyncHandle() {
         return this.asyncHandle;
+    }
+
+    public void setAsyncHandle(Long asyncHandle) {
+        this.asyncHandle = asyncHandle;
     }
 
     /**
@@ -74,11 +87,19 @@ public class StartBulkVolumeReadResult  implements Serializable  {
         return this.key;
     }
 
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     /**
      * URL to access the node's web server
      **/
     public String getUrl() {
         return this.url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override

@@ -41,7 +41,7 @@ public class GetNodeHardwareInfoResult  implements Serializable  {
 
     private static final long serialVersionUID = 1251875756L;
 
-    @SerializedName("nodeHardwareInfo") private final java.util.Map<String, Object> nodeHardwareInfo;
+    @SerializedName("nodeHardwareInfo") private java.util.Map<String, Object> nodeHardwareInfo;
 
     /**
      * The object returned by the "GetNodeHardwareInfo" API Service call.
@@ -53,12 +53,25 @@ public class GetNodeHardwareInfoResult  implements Serializable  {
         this.nodeHardwareInfo = nodeHardwareInfo;
     }
 
+    
+    /**
+     * The object returned by the "GetNodeHardwareInfo" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetNodeHardwareInfoResult() {}
+
 
     /**
      * Hardware information for the specified nodeID.
      **/
     public java.util.Map<String, Object> getNodeHardwareInfo() {
         return this.nodeHardwareInfo;
+    }
+
+    public void setNodeHardwareInfo(java.util.Map<String, Object> nodeHardwareInfo) {
+        this.nodeHardwareInfo = nodeHardwareInfo;
     }
 
     @Override

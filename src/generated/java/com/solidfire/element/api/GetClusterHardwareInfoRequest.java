@@ -41,7 +41,7 @@ public class GetClusterHardwareInfoRequest  implements Serializable  {
 
     private static final long serialVersionUID = -30944693L;
 
-    @SerializedName("type") private final Optional<String> type;
+    @SerializedName("type") private Optional<String> type;
 
     /**
      * The Request object for the "GetClusterHardwareInfo" API Service call.
@@ -53,12 +53,25 @@ public class GetClusterHardwareInfoRequest  implements Serializable  {
         this.type = (type == null) ? Optional.<String>empty() : type;
     }
 
+    
+    /**
+     * The Request object for the "GetClusterHardwareInfo" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetClusterHardwareInfoRequest() {}
+
 
     /**
      * Include only a certain type of hardware information in the response. Can be one of the following:drives: List only drive information in the response.nodes: List only node information in the response.all: Include both drive and node information in the response.If this parameter is omitted, a type of "all" is assumed.
      **/
     public Optional<String> getType() {
         return this.type;
+    }
+
+    public void setType(Optional<String> type) {
+        this.type = type;
     }
 
     @Override

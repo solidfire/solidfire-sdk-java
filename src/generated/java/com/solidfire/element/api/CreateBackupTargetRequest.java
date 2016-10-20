@@ -41,8 +41,8 @@ public class CreateBackupTargetRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1193186332L;
 
-    @SerializedName("name") private final String name;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("name") private String name;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "CreateBackupTarget" API Service call.
@@ -56,6 +56,15 @@ public class CreateBackupTargetRequest  implements Serializable  {
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
+    
+    /**
+     * The Request object for the "CreateBackupTarget" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CreateBackupTargetRequest() {}
+
 
     /**
      * Name for the backup target.
@@ -64,11 +73,19 @@ public class CreateBackupTargetRequest  implements Serializable  {
         return this.name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

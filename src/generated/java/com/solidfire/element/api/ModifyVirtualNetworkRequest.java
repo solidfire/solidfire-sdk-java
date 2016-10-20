@@ -41,15 +41,15 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1483322180L;
 
-    @SerializedName("virtualNetworkID") private final Optional<Long> virtualNetworkID;
-    @SerializedName("virtualNetworkTag") private final Optional<Long> virtualNetworkTag;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("addressBlocks") private final Optional<AddressBlock[]> addressBlocks;
-    @SerializedName("netmask") private final Optional<String> netmask;
-    @SerializedName("svip") private final Optional<String> svip;
-    @SerializedName("gateway") private final Optional<String> gateway;
-    @SerializedName("namespace") private final Optional<Boolean> namespace;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
+    @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("addressBlocks") private Optional<AddressBlock[]> addressBlocks;
+    @SerializedName("netmask") private Optional<String> netmask;
+    @SerializedName("svip") private Optional<String> svip;
+    @SerializedName("gateway") private Optional<String> gateway;
+    @SerializedName("namespace") private Optional<Boolean> namespace;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "ModifyVirtualNetwork" API Service call.
@@ -101,12 +101,25 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
 
+    
+    /**
+     * The Request object for the "ModifyVirtualNetwork" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ModifyVirtualNetworkRequest() {}
+
 
     /**
      * Unique identifier of the virtual network to modify. This is the virtual network ID assigned by the SolidFire cluster.
      **/
     public Optional<Long> getVirtualNetworkID() {
         return this.virtualNetworkID;
+    }
+
+    public void setVirtualNetworkID(Optional<Long> virtualNetworkID) {
+        this.virtualNetworkID = virtualNetworkID;
     }
 
     /**
@@ -116,11 +129,19 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.virtualNetworkTag;
     }
 
+    public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) {
+        this.virtualNetworkTag = virtualNetworkTag;
+    }
+
     /**
      * New name for the virtual network.
      **/
     public Optional<String> getName() {
         return this.name;
+    }
+
+    public void setName(Optional<String> name) {
+        this.name = name;
     }
 
     /**
@@ -133,6 +154,10 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.addressBlocks;
     }
 
+    public void setAddressBlocks(Optional<AddressBlock[]> addressBlocks) {
+        this.addressBlocks = addressBlocks;
+    }
+
     /**
      * New netmask for this virtual network.
      **/
@@ -140,11 +165,19 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.netmask;
     }
 
+    public void setNetmask(Optional<String> netmask) {
+        this.netmask = netmask;
+    }
+
     /**
      * The storage virtual IP address for this virtual network. The svip for Virtual Network cannot be changed. A new Virtual Network must be created in order to use a different svip address.
      **/
     public Optional<String> getSvip() {
         return this.svip;
+    }
+
+    public void setSvip(Optional<String> svip) {
+        this.svip = svip;
     }
 
     /**
@@ -157,6 +190,10 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.gateway;
     }
 
+    public void setGateway(Optional<String> gateway) {
+        this.gateway = gateway;
+    }
+
     /**
      * 
      * @since 9.0 
@@ -167,11 +204,19 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.namespace;
     }
 
+    public void setNamespace(Optional<Boolean> namespace) {
+        this.namespace = namespace;
+    }
+
     /**
      * A new list of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

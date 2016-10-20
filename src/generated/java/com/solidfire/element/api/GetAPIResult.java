@@ -41,8 +41,8 @@ public class GetAPIResult  implements Serializable  {
 
     private static final long serialVersionUID = 478491697L;
 
-    @SerializedName("currentVersion") private final Double currentVersion;
-    @SerializedName("supportedVersions") private final Double[] supportedVersions;
+    @SerializedName("currentVersion") private Double currentVersion;
+    @SerializedName("supportedVersions") private Double[] supportedVersions;
 
     /**
      * The object returned by the "GetAPI" API Service call.
@@ -56,11 +56,28 @@ public class GetAPIResult  implements Serializable  {
         this.supportedVersions = supportedVersions;
     }
 
+    
+    /**
+     * The object returned by the "GetAPI" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetAPIResult() {}
+
     public Double getCurrentVersion() {
         return this.currentVersion;
     }
+
+    public void setCurrentVersion(Double currentVersion) {
+        this.currentVersion = currentVersion;
+    }
     public Double[] getSupportedVersions() {
         return this.supportedVersions;
+    }
+
+    public void setSupportedVersions(Double[] supportedVersions) {
+        this.supportedVersions = supportedVersions;
     }
 
     @Override

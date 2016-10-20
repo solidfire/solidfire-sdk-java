@@ -41,7 +41,7 @@ public class GetNodeHardwareInfoRequest  implements Serializable  {
 
     private static final long serialVersionUID = -2077544639L;
 
-    @SerializedName("nodeID") private final Long nodeID;
+    @SerializedName("nodeID") private Long nodeID;
 
     /**
      * The Request object for the "GetNodeHardwareInfo" API Service call.
@@ -53,12 +53,25 @@ public class GetNodeHardwareInfoRequest  implements Serializable  {
         this.nodeID = nodeID;
     }
 
+    
+    /**
+     * The Request object for the "GetNodeHardwareInfo" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetNodeHardwareInfoRequest() {}
+
 
     /**
      * The ID of the node for which hardware information is being requested.  Information about a  node is returned if a   node is specified.
      **/
     public Long getNodeID() {
         return this.nodeID;
+    }
+
+    public void setNodeID(Long nodeID) {
+        this.nodeID = nodeID;
     }
 
     @Override

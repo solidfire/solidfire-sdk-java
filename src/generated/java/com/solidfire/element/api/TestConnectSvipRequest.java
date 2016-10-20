@@ -41,7 +41,7 @@ public class TestConnectSvipRequest  implements Serializable  {
 
     private static final long serialVersionUID = 345898496L;
 
-    @SerializedName("svip") private final Optional<String> svip;
+    @SerializedName("svip") private Optional<String> svip;
 
     /**
      * The Request object for the "TestConnectSvip" API Service call.
@@ -53,12 +53,25 @@ public class TestConnectSvipRequest  implements Serializable  {
         this.svip = (svip == null) ? Optional.<String>empty() : svip;
     }
 
+    
+    /**
+     * The Request object for the "TestConnectSvip" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public TestConnectSvipRequest() {}
+
 
     /**
      * Optionally, use to test the storage connection of a different SVIP. This is not needed to test the connection to the target cluster.
      **/
     public Optional<String> getSvip() {
         return this.svip;
+    }
+
+    public void setSvip(Optional<String> svip) {
+        this.svip = svip;
     }
 
     @Override

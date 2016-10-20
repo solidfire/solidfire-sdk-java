@@ -41,10 +41,10 @@ public class PrepareVirtualSnapshotRequest  implements Serializable  {
 
     private static final long serialVersionUID = 432238774L;
 
-    @SerializedName("virtualVolumeID") private final java.util.UUID virtualVolumeID;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("writableSnapshot") private final Optional<Boolean> writableSnapshot;
-    @SerializedName("callingVirtualVolumeHostID") private final Optional<java.util.UUID> callingVirtualVolumeHostID;
+    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("writableSnapshot") private Optional<Boolean> writableSnapshot;
+    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
     /**
      * The Request object for the "PrepareVirtualSnapshot" API Service call.
@@ -62,12 +62,25 @@ public class PrepareVirtualSnapshotRequest  implements Serializable  {
         this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
     }
 
+    
+    /**
+     * The Request object for the "PrepareVirtualSnapshot" API Service call.
+     * Empty constructor to support serialization.
+     * @since 9.0
+     **/
+    @Since("9.0")
+    public PrepareVirtualSnapshotRequest() {}
+
 
     /**
      * The ID of the Virtual Volume to clone.
      **/
     public java.util.UUID getVirtualVolumeID() {
         return this.virtualVolumeID;
+    }
+
+    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) {
+        this.virtualVolumeID = virtualVolumeID;
     }
 
     /**
@@ -77,14 +90,26 @@ public class PrepareVirtualSnapshotRequest  implements Serializable  {
         return this.name;
     }
 
+    public void setName(Optional<String> name) {
+        this.name = name;
+    }
+
     /**
      * Will the snapshot be writable?
      **/
     public Optional<Boolean> getWritableSnapshot() {
         return this.writableSnapshot;
     }
+
+    public void setWritableSnapshot(Optional<Boolean> writableSnapshot) {
+        this.writableSnapshot = writableSnapshot;
+    }
     public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
         return this.callingVirtualVolumeHostID;
+    }
+
+    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) {
+        this.callingVirtualVolumeHostID = callingVirtualVolumeHostID;
     }
 
     @Override

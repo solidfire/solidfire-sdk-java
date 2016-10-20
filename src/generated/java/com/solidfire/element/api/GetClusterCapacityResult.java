@@ -41,7 +41,7 @@ public class GetClusterCapacityResult  implements Serializable  {
 
     private static final long serialVersionUID = 777255473L;
 
-    @SerializedName("clusterCapacity") private final ClusterCapacity clusterCapacity;
+    @SerializedName("clusterCapacity") private ClusterCapacity clusterCapacity;
 
     /**
      * The object returned by the "GetClusterCapacity" API Service call.
@@ -53,8 +53,21 @@ public class GetClusterCapacityResult  implements Serializable  {
         this.clusterCapacity = clusterCapacity;
     }
 
+    
+    /**
+     * The object returned by the "GetClusterCapacity" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetClusterCapacityResult() {}
+
     public ClusterCapacity getClusterCapacity() {
         return this.clusterCapacity;
+    }
+
+    public void setClusterCapacity(ClusterCapacity clusterCapacity) {
+        this.clusterCapacity = clusterCapacity;
     }
 
     @Override

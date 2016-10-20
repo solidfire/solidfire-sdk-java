@@ -41,7 +41,7 @@ public class SnmpSendTestTrapsResult  implements Serializable  {
 
     private static final long serialVersionUID = -1070312036L;
 
-    @SerializedName("status") private final String status;
+    @SerializedName("status") private String status;
 
     /**
      * The object returned by the "SnmpSendTestTraps" API Service call.
@@ -53,8 +53,21 @@ public class SnmpSendTestTrapsResult  implements Serializable  {
         this.status = status;
     }
 
+    
+    /**
+     * The object returned by the "SnmpSendTestTraps" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public SnmpSendTestTrapsResult() {}
+
     public String getStatus() {
         return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override

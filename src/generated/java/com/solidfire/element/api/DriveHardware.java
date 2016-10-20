@@ -41,35 +41,35 @@ public class DriveHardware  implements Serializable  {
 
     private static final long serialVersionUID = -1082137014L;
 
-    @SerializedName("canonicalName") private final String canonicalName;
-    @SerializedName("connected") private final Boolean connected;
-    @SerializedName("dev") private final Long dev;
-    @SerializedName("devPath") private final String devPath;
-    @SerializedName("driveType") private final String driveType;
-    @SerializedName("lifeRemainingPercent") private final Long lifeRemainingPercent;
-    @SerializedName("lifetimeReadBytes") private final Long lifetimeReadBytes;
-    @SerializedName("lifetimeWriteBytes") private final Long lifetimeWriteBytes;
-    @SerializedName("name") private final String name;
-    @SerializedName("path") private final String path;
-    @SerializedName("pathLink") private final String pathLink;
-    @SerializedName("powerOnHours") private final Long powerOnHours;
-    @SerializedName("product") private final String product;
-    @SerializedName("reallocatedSectors") private final Long reallocatedSectors;
-    @SerializedName("reserveCapacityPercent") private final Long reserveCapacityPercent;
-    @SerializedName("scsiCompatId") private final String scsiCompatId;
-    @SerializedName("scsiState") private final String scsiState;
-    @SerializedName("securityAtMaximum") private final Boolean securityAtMaximum;
-    @SerializedName("securityEnabled") private final Boolean securityEnabled;
-    @SerializedName("securityFrozen") private final Boolean securityFrozen;
-    @SerializedName("securityLocked") private final Boolean securityLocked;
-    @SerializedName("securitySupported") private final Boolean securitySupported;
-    @SerializedName("serial") private final String serial;
-    @SerializedName("size") private final Long size;
-    @SerializedName("slot") private final Long slot;
-    @SerializedName("smartSsdWriteCapable") private final Optional<Boolean> smartSsdWriteCapable;
-    @SerializedName("uuid") private final java.util.UUID uuid;
-    @SerializedName("vendor") private final String vendor;
-    @SerializedName("version") private final String version;
+    @SerializedName("canonicalName") private String canonicalName;
+    @SerializedName("connected") private Boolean connected;
+    @SerializedName("dev") private Long dev;
+    @SerializedName("devPath") private String devPath;
+    @SerializedName("driveType") private String driveType;
+    @SerializedName("lifeRemainingPercent") private Long lifeRemainingPercent;
+    @SerializedName("lifetimeReadBytes") private Long lifetimeReadBytes;
+    @SerializedName("lifetimeWriteBytes") private Long lifetimeWriteBytes;
+    @SerializedName("name") private String name;
+    @SerializedName("path") private String path;
+    @SerializedName("pathLink") private String pathLink;
+    @SerializedName("powerOnHours") private Long powerOnHours;
+    @SerializedName("product") private String product;
+    @SerializedName("reallocatedSectors") private Long reallocatedSectors;
+    @SerializedName("reserveCapacityPercent") private Long reserveCapacityPercent;
+    @SerializedName("scsiCompatId") private String scsiCompatId;
+    @SerializedName("scsiState") private String scsiState;
+    @SerializedName("securityAtMaximum") private Boolean securityAtMaximum;
+    @SerializedName("securityEnabled") private Boolean securityEnabled;
+    @SerializedName("securityFrozen") private Boolean securityFrozen;
+    @SerializedName("securityLocked") private Boolean securityLocked;
+    @SerializedName("securitySupported") private Boolean securitySupported;
+    @SerializedName("serial") private String serial;
+    @SerializedName("size") private Long size;
+    @SerializedName("slot") private Long slot;
+    @SerializedName("smartSsdWriteCapable") private Optional<Boolean> smartSsdWriteCapable;
+    @SerializedName("uuid") private java.util.UUID uuid;
+    @SerializedName("vendor") private String vendor;
+    @SerializedName("version") private String version;
 
     /**
      * 
@@ -137,92 +137,217 @@ public class DriveHardware  implements Serializable  {
         this.powerOnHours = powerOnHours;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public DriveHardware() {}
+
     public String getCanonicalName() {
         return this.canonicalName;
+    }
+
+    public void setCanonicalName(String canonicalName) {
+        this.canonicalName = canonicalName;
     }
     public Boolean getConnected() {
         return this.connected;
     }
+
+    public void setConnected(Boolean connected) {
+        this.connected = connected;
+    }
     public Long getDev() {
         return this.dev;
+    }
+
+    public void setDev(Long dev) {
+        this.dev = dev;
     }
     public String getDevPath() {
         return this.devPath;
     }
+
+    public void setDevPath(String devPath) {
+        this.devPath = devPath;
+    }
     public String getDriveType() {
         return this.driveType;
+    }
+
+    public void setDriveType(String driveType) {
+        this.driveType = driveType;
     }
     public Long getLifeRemainingPercent() {
         return this.lifeRemainingPercent;
     }
+
+    public void setLifeRemainingPercent(Long lifeRemainingPercent) {
+        this.lifeRemainingPercent = lifeRemainingPercent;
+    }
     public Long getLifetimeReadBytes() {
         return this.lifetimeReadBytes;
+    }
+
+    public void setLifetimeReadBytes(Long lifetimeReadBytes) {
+        this.lifetimeReadBytes = lifetimeReadBytes;
     }
     public Long getLifetimeWriteBytes() {
         return this.lifetimeWriteBytes;
     }
+
+    public void setLifetimeWriteBytes(Long lifetimeWriteBytes) {
+        this.lifetimeWriteBytes = lifetimeWriteBytes;
+    }
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
     public String getPath() {
         return this.path;
     }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
     public String getPathLink() {
         return this.pathLink;
+    }
+
+    public void setPathLink(String pathLink) {
+        this.pathLink = pathLink;
     }
     public Long getPowerOnHours() {
         return this.powerOnHours;
     }
+
+    public void setPowerOnHours(Long powerOnHours) {
+        this.powerOnHours = powerOnHours;
+    }
     public String getProduct() {
         return this.product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
     }
     public Long getReallocatedSectors() {
         return this.reallocatedSectors;
     }
+
+    public void setReallocatedSectors(Long reallocatedSectors) {
+        this.reallocatedSectors = reallocatedSectors;
+    }
     public Long getReserveCapacityPercent() {
         return this.reserveCapacityPercent;
+    }
+
+    public void setReserveCapacityPercent(Long reserveCapacityPercent) {
+        this.reserveCapacityPercent = reserveCapacityPercent;
     }
     public String getScsiCompatId() {
         return this.scsiCompatId;
     }
+
+    public void setScsiCompatId(String scsiCompatId) {
+        this.scsiCompatId = scsiCompatId;
+    }
     public String getScsiState() {
         return this.scsiState;
+    }
+
+    public void setScsiState(String scsiState) {
+        this.scsiState = scsiState;
     }
     public Boolean getSecurityAtMaximum() {
         return this.securityAtMaximum;
     }
+
+    public void setSecurityAtMaximum(Boolean securityAtMaximum) {
+        this.securityAtMaximum = securityAtMaximum;
+    }
     public Boolean getSecurityEnabled() {
         return this.securityEnabled;
+    }
+
+    public void setSecurityEnabled(Boolean securityEnabled) {
+        this.securityEnabled = securityEnabled;
     }
     public Boolean getSecurityFrozen() {
         return this.securityFrozen;
     }
+
+    public void setSecurityFrozen(Boolean securityFrozen) {
+        this.securityFrozen = securityFrozen;
+    }
     public Boolean getSecurityLocked() {
         return this.securityLocked;
+    }
+
+    public void setSecurityLocked(Boolean securityLocked) {
+        this.securityLocked = securityLocked;
     }
     public Boolean getSecuritySupported() {
         return this.securitySupported;
     }
+
+    public void setSecuritySupported(Boolean securitySupported) {
+        this.securitySupported = securitySupported;
+    }
     public String getSerial() {
         return this.serial;
+    }
+
+    public void setSerial(String serial) {
+        this.serial = serial;
     }
     public Long getSize() {
         return this.size;
     }
+
+    public void setSize(Long size) {
+        this.size = size;
+    }
     public Long getSlot() {
         return this.slot;
+    }
+
+    public void setSlot(Long slot) {
+        this.slot = slot;
     }
     public Optional<Boolean> getSmartSsdWriteCapable() {
         return this.smartSsdWriteCapable;
     }
+
+    public void setSmartSsdWriteCapable(Optional<Boolean> smartSsdWriteCapable) {
+        this.smartSsdWriteCapable = smartSsdWriteCapable;
+    }
     public java.util.UUID getUuid() {
         return this.uuid;
+    }
+
+    public void setUuid(java.util.UUID uuid) {
+        this.uuid = uuid;
     }
     public String getVendor() {
         return this.vendor;
     }
+
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
+    }
     public String getVersion() {
         return this.version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     @Override

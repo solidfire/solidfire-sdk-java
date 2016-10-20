@@ -41,7 +41,7 @@ public class AddNodesResult  implements Serializable  {
 
     private static final long serialVersionUID = -137423564L;
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    @SerializedName("nodes") private AddedNode[] nodes;
 
     /**
      * The object returned by the "AddNodes" API Service call.
@@ -53,12 +53,25 @@ public class AddNodesResult  implements Serializable  {
         this.nodes = nodes;
     }
 
+    
+    /**
+     * The object returned by the "AddNodes" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public AddNodesResult() {}
+
 
     /**
      * An array of objects mapping the previous "pendingNodeID" to the "nodeID".
      **/
     public AddedNode[] getNodes() {
         return this.nodes;
+    }
+
+    public void setNodes(AddedNode[] nodes) {
+        this.nodes = nodes;
     }
 
     @Override

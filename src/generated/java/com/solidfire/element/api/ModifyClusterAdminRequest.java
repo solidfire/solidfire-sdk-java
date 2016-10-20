@@ -41,10 +41,10 @@ public class ModifyClusterAdminRequest  implements Serializable  {
 
     private static final long serialVersionUID = -678455022L;
 
-    @SerializedName("clusterAdminID") private final Long clusterAdminID;
-    @SerializedName("password") private final Optional<String> password;
-    @SerializedName("access") private final Optional<String[]> access;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("clusterAdminID") private Long clusterAdminID;
+    @SerializedName("password") private Optional<String> password;
+    @SerializedName("access") private Optional<String[]> access;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "ModifyClusterAdmin" API Service call.
@@ -62,12 +62,25 @@ public class ModifyClusterAdminRequest  implements Serializable  {
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
+    
+    /**
+     * The Request object for the "ModifyClusterAdmin" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ModifyClusterAdminRequest() {}
+
 
     /**
      * ClusterAdminID for the Cluster Admin or LDAP Cluster Admin to modify.
      **/
     public Long getClusterAdminID() {
         return this.clusterAdminID;
+    }
+
+    public void setClusterAdminID(Long clusterAdminID) {
+        this.clusterAdminID = clusterAdminID;
     }
 
     /**
@@ -77,6 +90,10 @@ public class ModifyClusterAdminRequest  implements Serializable  {
         return this.password;
     }
 
+    public void setPassword(Optional<String> password) {
+        this.password = password;
+    }
+
     /**
      * Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
      **/
@@ -84,11 +101,19 @@ public class ModifyClusterAdminRequest  implements Serializable  {
         return this.access;
     }
 
+    public void setAccess(Optional<String[]> access) {
+        this.access = access;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

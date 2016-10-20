@@ -41,7 +41,7 @@ public class ListVirtualVolumeBindingsResult  implements Serializable  {
 
     private static final long serialVersionUID = 289456756L;
 
-    @SerializedName("bindings") private final VirtualVolumeBinding[] bindings;
+    @SerializedName("bindings") private VirtualVolumeBinding[] bindings;
 
     /**
      * The object returned by the "ListVirtualVolumeBindings" API Service call.
@@ -53,12 +53,25 @@ public class ListVirtualVolumeBindingsResult  implements Serializable  {
         this.bindings = bindings;
     }
 
+    
+    /**
+     * The object returned by the "ListVirtualVolumeBindings" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListVirtualVolumeBindingsResult() {}
+
 
     /**
      * Describes the VVol <-> Host binding.
      **/
     public VirtualVolumeBinding[] getBindings() {
         return this.bindings;
+    }
+
+    public void setBindings(VirtualVolumeBinding[] bindings) {
+        this.bindings = bindings;
     }
 
     @Override

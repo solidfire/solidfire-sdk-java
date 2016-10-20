@@ -41,18 +41,18 @@ public class NodeStatsInfo  implements Serializable  {
 
     private static final long serialVersionUID = -195709558L;
 
-    @SerializedName("cBytesIn") private final Long cBytesIn;
-    @SerializedName("cBytesOut") private final Long cBytesOut;
-    @SerializedName("cpu") private final Long cpu;
-    @SerializedName("mBytesIn") private final Long mBytesIn;
-    @SerializedName("mBytesOut") private final Long mBytesOut;
-    @SerializedName("networkUtilizationCluster") private final Long networkUtilizationCluster;
-    @SerializedName("networkUtilizationStorage") private final Long networkUtilizationStorage;
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("sBytesIn") private final Long sBytesIn;
-    @SerializedName("sBytesOut") private final Long sBytesOut;
-    @SerializedName("timestamp") private final String timestamp;
-    @SerializedName("usedMemory") private final Long usedMemory;
+    @SerializedName("cBytesIn") private Long cBytesIn;
+    @SerializedName("cBytesOut") private Long cBytesOut;
+    @SerializedName("cpu") private Long cpu;
+    @SerializedName("mBytesIn") private Long mBytesIn;
+    @SerializedName("mBytesOut") private Long mBytesOut;
+    @SerializedName("networkUtilizationCluster") private Long networkUtilizationCluster;
+    @SerializedName("networkUtilizationStorage") private Long networkUtilizationStorage;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("sBytesIn") private Long sBytesIn;
+    @SerializedName("sBytesOut") private Long sBytesOut;
+    @SerializedName("timestamp") private String timestamp;
+    @SerializedName("usedMemory") private Long usedMemory;
 
     /**
      * 
@@ -86,12 +86,25 @@ public class NodeStatsInfo  implements Serializable  {
         this.cBytesIn = cBytesIn;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public NodeStatsInfo() {}
+
 
     /**
      * Bytes in on the cluster interface.
      **/
     public Long getCBytesIn() {
         return this.cBytesIn;
+    }
+
+    public void setCBytesIn(Long cBytesIn) {
+        this.cBytesIn = cBytesIn;
     }
 
     /**
@@ -101,11 +114,19 @@ public class NodeStatsInfo  implements Serializable  {
         return this.cBytesOut;
     }
 
+    public void setCBytesOut(Long cBytesOut) {
+        this.cBytesOut = cBytesOut;
+    }
+
     /**
      * CPU Usage %
      **/
     public Long getCpu() {
         return this.cpu;
+    }
+
+    public void setCpu(Long cpu) {
+        this.cpu = cpu;
     }
 
     /**
@@ -115,11 +136,19 @@ public class NodeStatsInfo  implements Serializable  {
         return this.mBytesIn;
     }
 
+    public void setMBytesIn(Long mBytesIn) {
+        this.mBytesIn = mBytesIn;
+    }
+
     /**
      * Bytes out on the management interface.
      **/
     public Long getMBytesOut() {
         return this.mBytesOut;
+    }
+
+    public void setMBytesOut(Long mBytesOut) {
+        this.mBytesOut = mBytesOut;
     }
 
     /**
@@ -129,14 +158,26 @@ public class NodeStatsInfo  implements Serializable  {
         return this.networkUtilizationCluster;
     }
 
+    public void setNetworkUtilizationCluster(Long networkUtilizationCluster) {
+        this.networkUtilizationCluster = networkUtilizationCluster;
+    }
+
     /**
      * Network interface utilization (in %) for the storage network interface.
      **/
     public Long getNetworkUtilizationStorage() {
         return this.networkUtilizationStorage;
     }
+
+    public void setNetworkUtilizationStorage(Long networkUtilizationStorage) {
+        this.networkUtilizationStorage = networkUtilizationStorage;
+    }
     public Long getNodeID() {
         return this.nodeID;
+    }
+
+    public void setNodeID(Long nodeID) {
+        this.nodeID = nodeID;
     }
 
     /**
@@ -146,11 +187,19 @@ public class NodeStatsInfo  implements Serializable  {
         return this.sBytesIn;
     }
 
+    public void setSBytesIn(Long sBytesIn) {
+        this.sBytesIn = sBytesIn;
+    }
+
     /**
      * Bytes out on the storage interface.
      **/
     public Long getSBytesOut() {
         return this.sBytesOut;
+    }
+
+    public void setSBytesOut(Long sBytesOut) {
+        this.sBytesOut = sBytesOut;
     }
 
     /**
@@ -160,11 +209,19 @@ public class NodeStatsInfo  implements Serializable  {
         return this.timestamp;
     }
 
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
     /**
      * Total memory usage in bytes.
      **/
     public Long getUsedMemory() {
         return this.usedMemory;
+    }
+
+    public void setUsedMemory(Long usedMemory) {
+        this.usedMemory = usedMemory;
     }
 
     @Override

@@ -41,7 +41,7 @@ public class SetConfigRequest  implements Serializable  {
 
     private static final long serialVersionUID = 2073041927L;
 
-    @SerializedName("config") private final Config config;
+    @SerializedName("config") private Config config;
 
     /**
      * The Request object for the "SetConfig" API Service call.
@@ -53,12 +53,25 @@ public class SetConfigRequest  implements Serializable  {
         this.config = config;
     }
 
+    
+    /**
+     * The Request object for the "SetConfig" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public SetConfigRequest() {}
+
 
     /**
      * Objects that you want changed for the cluster interface settings.
      **/
     public Config getConfig() {
         return this.config;
+    }
+
+    public void setConfig(Config config) {
+        this.config = config;
     }
 
     @Override

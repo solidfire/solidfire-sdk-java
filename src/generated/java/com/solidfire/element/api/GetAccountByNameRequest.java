@@ -41,7 +41,7 @@ public class GetAccountByNameRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1266133902L;
 
-    @SerializedName("username") private final String username;
+    @SerializedName("username") private String username;
 
     /**
      * The Request object for the "GetAccountByName" API Service call.
@@ -53,12 +53,25 @@ public class GetAccountByNameRequest  implements Serializable  {
         this.username = username;
     }
 
+    
+    /**
+     * The Request object for the "GetAccountByName" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetAccountByNameRequest() {}
+
 
     /**
      * Username for the account.
      **/
     public String getUsername() {
         return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override

@@ -41,7 +41,7 @@ public class RemoveNodesRequest  implements Serializable  {
 
     private static final long serialVersionUID = -882665361L;
 
-    @SerializedName("nodes") private final Long[] nodes;
+    @SerializedName("nodes") private Long[] nodes;
 
     /**
      * The Request object for the "RemoveNodes" API Service call.
@@ -53,12 +53,25 @@ public class RemoveNodesRequest  implements Serializable  {
         this.nodes = nodes;
     }
 
+    
+    /**
+     * The Request object for the "RemoveNodes" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public RemoveNodesRequest() {}
+
 
     /**
      * List of NodeIDs for the nodes to be removed.
      **/
     public Long[] getNodes() {
         return this.nodes;
+    }
+
+    public void setNodes(Long[] nodes) {
+        this.nodes = nodes;
     }
 
     @Override

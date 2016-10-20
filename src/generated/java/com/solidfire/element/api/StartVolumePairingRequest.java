@@ -41,8 +41,8 @@ public class StartVolumePairingRequest  implements Serializable  {
 
     private static final long serialVersionUID = -317356972L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("mode") private final Optional<String> mode;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("mode") private Optional<String> mode;
 
     /**
      * The Request object for the "StartVolumePairing" API Service call.
@@ -67,12 +67,25 @@ public class StartVolumePairingRequest  implements Serializable  {
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
     }
 
+    
+    /**
+     * The Request object for the "StartVolumePairing" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public StartVolumePairingRequest() {}
+
 
     /**
      * The ID of the volume on which to start the pairing process.
      **/
     public Long getVolumeID() {
         return this.volumeID;
+    }
+
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
     }
 
     /**
@@ -87,6 +100,10 @@ public class StartVolumePairingRequest  implements Serializable  {
     @Since("8.0")
     public Optional<String> getMode() {
         return this.mode;
+    }
+
+    public void setMode(Optional<String> mode) {
+        this.mode = mode;
     }
 
     @Override

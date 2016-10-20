@@ -41,9 +41,9 @@ public class TestConnectMvipResult  implements Serializable  {
 
     private static final long serialVersionUID = 439833771L;
 
-    @SerializedName("details") private final TestConnectMvipDetails details;
-    @SerializedName("duration") private final String duration;
-    @SerializedName("result") private final String result;
+    @SerializedName("details") private TestConnectMvipDetails details;
+    @SerializedName("duration") private String duration;
+    @SerializedName("result") private String result;
 
     /**
      * The object returned by the "TestConnectMvip" API Service call.
@@ -59,12 +59,25 @@ public class TestConnectMvipResult  implements Serializable  {
         this.result = result;
     }
 
+    
+    /**
+     * The object returned by the "TestConnectMvip" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public TestConnectMvipResult() {}
+
 
     /**
      * Information about the test operation
      **/
     public TestConnectMvipDetails getDetails() {
         return this.details;
+    }
+
+    public void setDetails(TestConnectMvipDetails details) {
+        this.details = details;
     }
 
     /**
@@ -74,11 +87,19 @@ public class TestConnectMvipResult  implements Serializable  {
         return this.duration;
     }
 
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
     /**
      * The results of the entire test
      **/
     public String getResult() {
         return this.result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 
     @Override

@@ -41,8 +41,8 @@ public class InvokeSFApiRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1088458300L;
 
-    @SerializedName("method") private final String method;
-    @SerializedName("parameters") private final Optional<Object> parameters;
+    @SerializedName("method") private String method;
+    @SerializedName("parameters") private Optional<Object> parameters;
 
     /**
      * The Request object for the "InvokeSFApi" API Service call.
@@ -56,6 +56,15 @@ public class InvokeSFApiRequest  implements Serializable  {
         this.parameters = (parameters == null) ? Optional.<Object>empty() : parameters;
     }
 
+    
+    /**
+     * The Request object for the "InvokeSFApi" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public InvokeSFApiRequest() {}
+
 
     /**
      * The name of the method to invoke. This is case sensitive.
@@ -64,11 +73,19 @@ public class InvokeSFApiRequest  implements Serializable  {
         return this.method;
     }
 
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
     /**
      * An object, normally a dictionary or hashtable of the key/value pairs, to be passed as the params for the method being invoked.
      **/
     public Optional<Object> getParameters() {
         return this.parameters;
+    }
+
+    public void setParameters(Optional<Object> parameters) {
+        this.parameters = parameters;
     }
 
     @Override

@@ -41,11 +41,11 @@ public class UpdateBulkVolumeStatusRequest  implements Serializable  {
 
     private static final long serialVersionUID = -11675017L;
 
-    @SerializedName("key") private final String key;
-    @SerializedName("status") private final String status;
-    @SerializedName("percentComplete") private final Optional<String> percentComplete;
-    @SerializedName("message") private final Optional<String> message;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("key") private String key;
+    @SerializedName("status") private String status;
+    @SerializedName("percentComplete") private Optional<String> percentComplete;
+    @SerializedName("message") private Optional<String> message;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "UpdateBulkVolumeStatus" API Service call.
@@ -65,12 +65,25 @@ public class UpdateBulkVolumeStatusRequest  implements Serializable  {
         this.message = (message == null) ? Optional.<String>empty() : message;
     }
 
+    
+    /**
+     * The Request object for the "UpdateBulkVolumeStatus" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public UpdateBulkVolumeStatusRequest() {}
+
 
     /**
      * The key assigned during initialization of a "StartBulkVolumeRead" or "StartBulkVolumeWrite" session.
      **/
     public String getKey() {
         return this.key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     /**
@@ -84,11 +97,19 @@ public class UpdateBulkVolumeStatusRequest  implements Serializable  {
         return this.status;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     /**
      * The completed progress of the bulk volume job as a percentage.
      **/
     public Optional<String> getPercentComplete() {
         return this.percentComplete;
+    }
+
+    public void setPercentComplete(Optional<String> percentComplete) {
+        this.percentComplete = percentComplete;
     }
 
     /**
@@ -98,11 +119,19 @@ public class UpdateBulkVolumeStatusRequest  implements Serializable  {
         return this.message;
     }
 
+    public void setMessage(Optional<String> message) {
+        this.message = message;
+    }
+
     /**
      * JSON attributes  updates what is on the bulk volume job.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

@@ -41,12 +41,12 @@ public class CloneMultipleVolumeParams  implements Serializable  {
 
     private static final long serialVersionUID = 80805354L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("access") private final Optional<String> access;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("newAccountID") private final Optional<Long> newAccountID;
-    @SerializedName("newSize") private final Optional<Long> newSize;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("access") private Optional<String> access;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("newAccountID") private Optional<Long> newAccountID;
+    @SerializedName("newSize") private Optional<Long> newSize;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * 
@@ -68,12 +68,25 @@ public class CloneMultipleVolumeParams  implements Serializable  {
         this.access = (access == null) ? Optional.<String>empty() : access;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CloneMultipleVolumeParams() {}
+
 
     /**
      * Required parameter for "volumes" array: volumeID.
      **/
     public Long getVolumeID() {
         return this.volumeID;
+    }
+
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
     }
 
     /**
@@ -89,11 +102,19 @@ public class CloneMultipleVolumeParams  implements Serializable  {
         return this.access;
     }
 
+    public void setAccess(Optional<String> access) {
+        this.access = access;
+    }
+
     /**
      * New name for the clone.
      **/
     public Optional<String> getName() {
         return this.name;
+    }
+
+    public void setName(Optional<String> name) {
+        this.name = name;
     }
 
     /**
@@ -103,6 +124,10 @@ public class CloneMultipleVolumeParams  implements Serializable  {
         return this.newAccountID;
     }
 
+    public void setNewAccountID(Optional<Long> newAccountID) {
+        this.newAccountID = newAccountID;
+    }
+
     /**
      * New size Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
      **/
@@ -110,11 +135,19 @@ public class CloneMultipleVolumeParams  implements Serializable  {
         return this.newSize;
     }
 
+    public void setNewSize(Optional<Long> newSize) {
+        this.newSize = newSize;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

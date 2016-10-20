@@ -41,8 +41,8 @@ public class CreateGroupSnapshotResult  implements Serializable  {
 
     private static final long serialVersionUID = 67011248L;
 
-    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
-    @SerializedName("members") private final GroupSnapshotMembers[] members;
+    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
+    @SerializedName("members") private GroupSnapshotMembers[] members;
 
     /**
      * The object returned by the "CreateGroupSnapshot" API Service call.
@@ -56,6 +56,15 @@ public class CreateGroupSnapshotResult  implements Serializable  {
         this.members = members;
     }
 
+    
+    /**
+     * The object returned by the "CreateGroupSnapshot" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CreateGroupSnapshotResult() {}
+
 
     /**
      * Unique ID of the new group snapshot.
@@ -64,11 +73,19 @@ public class CreateGroupSnapshotResult  implements Serializable  {
         return this.groupSnapshotID;
     }
 
+    public void setGroupSnapshotID(Long groupSnapshotID) {
+        this.groupSnapshotID = groupSnapshotID;
+    }
+
     /**
      * List of checksum, volumeIDs and snapshotIDs for each member of the group.
      **/
     public GroupSnapshotMembers[] getMembers() {
         return this.members;
+    }
+
+    public void setMembers(GroupSnapshotMembers[] members) {
+        this.members = members;
     }
 
     @Override

@@ -41,9 +41,9 @@ public class TestConnectEnsembleResult  implements Serializable  {
 
     private static final long serialVersionUID = -653594735L;
 
-    @SerializedName("details") private final TestConnectEnsembleDetails details;
-    @SerializedName("duration") private final String duration;
-    @SerializedName("result") private final String result;
+    @SerializedName("details") private TestConnectEnsembleDetails details;
+    @SerializedName("duration") private String duration;
+    @SerializedName("result") private String result;
 
     /**
      * The object returned by the "TestConnectEnsemble" API Service call.
@@ -59,8 +59,21 @@ public class TestConnectEnsembleResult  implements Serializable  {
         this.result = result;
     }
 
+    
+    /**
+     * The object returned by the "TestConnectEnsemble" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public TestConnectEnsembleResult() {}
+
     public TestConnectEnsembleDetails getDetails() {
         return this.details;
+    }
+
+    public void setDetails(TestConnectEnsembleDetails details) {
+        this.details = details;
     }
 
     /**
@@ -70,11 +83,19 @@ public class TestConnectEnsembleResult  implements Serializable  {
         return this.duration;
     }
 
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
     /**
      * The results of the entire test
      **/
     public String getResult() {
         return this.result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 
     @Override

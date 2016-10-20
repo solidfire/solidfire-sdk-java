@@ -41,7 +41,7 @@ public class ModifyVolumeResult  implements Serializable  {
 
     private static final long serialVersionUID = -202788262L;
 
-    @SerializedName("volume") private final Volume volume;
+    @SerializedName("volume") private Volume volume;
 
     /**
      * The object returned by the "ModifyVolume" API Service call.
@@ -53,12 +53,25 @@ public class ModifyVolumeResult  implements Serializable  {
         this.volume = volume;
     }
 
+    
+    /**
+     * The object returned by the "ModifyVolume" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ModifyVolumeResult() {}
+
 
     /**
      * Object containing information about the newly modified volume.
      **/
     public Volume getVolume() {
         return this.volume;
+    }
+
+    public void setVolume(Volume volume) {
+        this.volume = volume;
     }
 
     @Override

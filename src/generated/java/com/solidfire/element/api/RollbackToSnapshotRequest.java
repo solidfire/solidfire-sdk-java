@@ -41,11 +41,11 @@ public class RollbackToSnapshotRequest  implements Serializable  {
 
     private static final long serialVersionUID = 1191703517L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("snapshotID") private final Long snapshotID;
-    @SerializedName("saveCurrentState") private final Boolean saveCurrentState;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("saveCurrentState") private Boolean saveCurrentState;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "RollbackToSnapshot" API Service call.
@@ -65,6 +65,15 @@ public class RollbackToSnapshotRequest  implements Serializable  {
         this.snapshotID = snapshotID;
     }
 
+    
+    /**
+     * The Request object for the "RollbackToSnapshot" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public RollbackToSnapshotRequest() {}
+
 
     /**
      * VolumeID for the volume.
@@ -73,11 +82,19 @@ public class RollbackToSnapshotRequest  implements Serializable  {
         return this.volumeID;
     }
 
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
+    }
+
     /**
      * ID of a previously created snapshot on the given volume.
      **/
     public Long getSnapshotID() {
         return this.snapshotID;
+    }
+
+    public void setSnapshotID(Long snapshotID) {
+        this.snapshotID = snapshotID;
     }
 
     /**
@@ -88,6 +105,10 @@ public class RollbackToSnapshotRequest  implements Serializable  {
         return this.saveCurrentState;
     }
 
+    public void setSaveCurrentState(Boolean saveCurrentState) {
+        this.saveCurrentState = saveCurrentState;
+    }
+
     /**
      * Name for the snapshot. If no name is given, then the name of the snapshot being rolled back to is used with 
      * "-copy" appended to the end of the name.
@@ -96,11 +117,19 @@ public class RollbackToSnapshotRequest  implements Serializable  {
         return this.name;
     }
 
+    public void setName(Optional<String> name) {
+        this.name = name;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

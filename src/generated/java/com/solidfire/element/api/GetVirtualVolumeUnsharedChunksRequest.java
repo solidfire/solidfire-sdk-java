@@ -41,12 +41,12 @@ public class GetVirtualVolumeUnsharedChunksRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1493338607L;
 
-    @SerializedName("virtualVolumeID") private final java.util.UUID virtualVolumeID;
-    @SerializedName("baseVirtualVolumeID") private final java.util.UUID baseVirtualVolumeID;
-    @SerializedName("segmentStart") private final Long segmentStart;
-    @SerializedName("segmentLength") private final Long segmentLength;
-    @SerializedName("chunkSize") private final Long chunkSize;
-    @SerializedName("callingVirtualVolumeHostID") private final Optional<java.util.UUID> callingVirtualVolumeHostID;
+    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
+    @SerializedName("baseVirtualVolumeID") private java.util.UUID baseVirtualVolumeID;
+    @SerializedName("segmentStart") private Long segmentStart;
+    @SerializedName("segmentLength") private Long segmentLength;
+    @SerializedName("chunkSize") private Long chunkSize;
+    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
     /**
      * The Request object for the "GetVirtualVolumeUnsharedChunks" API Service call.
@@ -68,12 +68,25 @@ public class GetVirtualVolumeUnsharedChunksRequest  implements Serializable  {
         this.segmentLength = segmentLength;
     }
 
+    
+    /**
+     * The Request object for the "GetVirtualVolumeUnsharedChunks" API Service call.
+     * Empty constructor to support serialization.
+     * @since 9.0
+     **/
+    @Since("9.0")
+    public GetVirtualVolumeUnsharedChunksRequest() {}
+
 
     /**
      * The ID of the Virtual Volume.
      **/
     public java.util.UUID getVirtualVolumeID() {
         return this.virtualVolumeID;
+    }
+
+    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) {
+        this.virtualVolumeID = virtualVolumeID;
     }
 
     /**
@@ -83,11 +96,19 @@ public class GetVirtualVolumeUnsharedChunksRequest  implements Serializable  {
         return this.baseVirtualVolumeID;
     }
 
+    public void setBaseVirtualVolumeID(java.util.UUID baseVirtualVolumeID) {
+        this.baseVirtualVolumeID = baseVirtualVolumeID;
+    }
+
     /**
      * Start Byte offset.
      **/
     public Long getSegmentStart() {
         return this.segmentStart;
+    }
+
+    public void setSegmentStart(Long segmentStart) {
+        this.segmentStart = segmentStart;
     }
 
     /**
@@ -97,14 +118,26 @@ public class GetVirtualVolumeUnsharedChunksRequest  implements Serializable  {
         return this.segmentLength;
     }
 
+    public void setSegmentLength(Long segmentLength) {
+        this.segmentLength = segmentLength;
+    }
+
     /**
      * Number of bytes represented by one bit in the bitmap.
      **/
     public Long getChunkSize() {
         return this.chunkSize;
     }
+
+    public void setChunkSize(Long chunkSize) {
+        this.chunkSize = chunkSize;
+    }
     public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
         return this.callingVirtualVolumeHostID;
+    }
+
+    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) {
+        this.callingVirtualVolumeHostID = callingVirtualVolumeHostID;
     }
 
     @Override

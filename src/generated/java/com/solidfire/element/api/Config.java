@@ -41,8 +41,8 @@ public class Config  implements Serializable  {
 
     private static final long serialVersionUID = -742843429L;
 
-    @SerializedName("cluster") private final ClusterConfig cluster;
-    @SerializedName("network") private final Network network;
+    @SerializedName("cluster") private ClusterConfig cluster;
+    @SerializedName("network") private Network network;
 
     /**
      * 
@@ -56,11 +56,28 @@ public class Config  implements Serializable  {
         this.network = network;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public Config() {}
+
     public ClusterConfig getCluster() {
         return this.cluster;
     }
+
+    public void setCluster(ClusterConfig cluster) {
+        this.cluster = cluster;
+    }
     public Network getNetwork() {
         return this.network;
+    }
+
+    public void setNetwork(Network network) {
+        this.network = network;
     }
 
     @Override

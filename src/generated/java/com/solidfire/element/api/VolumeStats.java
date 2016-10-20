@@ -41,32 +41,32 @@ public class VolumeStats  implements Serializable  {
 
     private static final long serialVersionUID = 1439848760L;
 
-    @SerializedName("accountID") private final Long accountID;
-    @SerializedName("actualIOPS") private final Long actualIOPS;
-    @SerializedName("asyncDelay") private final Optional<String> asyncDelay;
-    @SerializedName("averageIOPSize") private final Long averageIOPSize;
-    @SerializedName("burstIOPSCredit") private final Long burstIOPSCredit;
-    @SerializedName("clientQueueDepth") private final Long clientQueueDepth;
-    @SerializedName("desiredMetadataHosts") private final MetadataHosts desiredMetadataHosts;
-    @SerializedName("latencyUSec") private final Long latencyUSec;
-    @SerializedName("metadataHosts") private final MetadataHosts metadataHosts;
-    @SerializedName("nonZeroBlocks") private final Long nonZeroBlocks;
-    @SerializedName("readBytes") private final Long readBytes;
-    @SerializedName("readLatencyUSec") private final Long readLatencyUSec;
-    @SerializedName("readOps") private final Long readOps;
-    @SerializedName("throttle") private final Double throttle;
-    @SerializedName("timestamp") private final String timestamp;
-    @SerializedName("totalLatencyUSec") private final Long totalLatencyUSec;
-    @SerializedName("unalignedReads") private final Long unalignedReads;
-    @SerializedName("unalignedWrites") private final Long unalignedWrites;
-    @SerializedName("volumeAccessGroups") private final Long[] volumeAccessGroups;
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("volumeSize") private final Long volumeSize;
-    @SerializedName("volumeUtilization") private final Double volumeUtilization;
-    @SerializedName("writeBytes") private final Long writeBytes;
-    @SerializedName("writeLatencyUSec") private final Long writeLatencyUSec;
-    @SerializedName("writeOps") private final Long writeOps;
-    @SerializedName("zeroBlocks") private final Long zeroBlocks;
+    @SerializedName("accountID") private Long accountID;
+    @SerializedName("actualIOPS") private Long actualIOPS;
+    @SerializedName("asyncDelay") private Optional<String> asyncDelay;
+    @SerializedName("averageIOPSize") private Long averageIOPSize;
+    @SerializedName("burstIOPSCredit") private Long burstIOPSCredit;
+    @SerializedName("clientQueueDepth") private Long clientQueueDepth;
+    @SerializedName("desiredMetadataHosts") private MetadataHosts desiredMetadataHosts;
+    @SerializedName("latencyUSec") private Long latencyUSec;
+    @SerializedName("metadataHosts") private MetadataHosts metadataHosts;
+    @SerializedName("nonZeroBlocks") private Long nonZeroBlocks;
+    @SerializedName("readBytes") private Long readBytes;
+    @SerializedName("readLatencyUSec") private Long readLatencyUSec;
+    @SerializedName("readOps") private Long readOps;
+    @SerializedName("throttle") private Double throttle;
+    @SerializedName("timestamp") private String timestamp;
+    @SerializedName("totalLatencyUSec") private Long totalLatencyUSec;
+    @SerializedName("unalignedReads") private Long unalignedReads;
+    @SerializedName("unalignedWrites") private Long unalignedWrites;
+    @SerializedName("volumeAccessGroups") private Long[] volumeAccessGroups;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("volumeSize") private Long volumeSize;
+    @SerializedName("volumeUtilization") private Double volumeUtilization;
+    @SerializedName("writeBytes") private Long writeBytes;
+    @SerializedName("writeLatencyUSec") private Long writeLatencyUSec;
+    @SerializedName("writeOps") private Long writeOps;
+    @SerializedName("zeroBlocks") private Long zeroBlocks;
 
     /**
      * Contains statistical data for an individual volume.
@@ -128,6 +128,15 @@ public class VolumeStats  implements Serializable  {
         this.desiredMetadataHosts = desiredMetadataHosts;
     }
 
+    
+    /**
+     * Contains statistical data for an individual volume.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public VolumeStats() {}
+
 
     /**
      * AccountID of the volume owner.
@@ -136,11 +145,19 @@ public class VolumeStats  implements Serializable  {
         return this.accountID;
     }
 
+    public void setAccountID(Long accountID) {
+        this.accountID = accountID;
+    }
+
     /**
      * Current actual IOPS to the volume in the last 500 milliseconds.
      **/
     public Long getActualIOPS() {
         return this.actualIOPS;
+    }
+
+    public void setActualIOPS(Long actualIOPS) {
+        this.actualIOPS = actualIOPS;
     }
 
     /**
@@ -154,11 +171,19 @@ public class VolumeStats  implements Serializable  {
         return this.asyncDelay;
     }
 
+    public void setAsyncDelay(Optional<String> asyncDelay) {
+        this.asyncDelay = asyncDelay;
+    }
+
     /**
      * Average size in bytes of recent I/O to the volume in the last 500 milliseconds.
      **/
     public Long getAverageIOPSize() {
         return this.averageIOPSize;
+    }
+
+    public void setAverageIOPSize(Long averageIOPSize) {
+        this.averageIOPSize = averageIOPSize;
     }
 
     /**
@@ -169,11 +194,19 @@ public class VolumeStats  implements Serializable  {
         return this.burstIOPSCredit;
     }
 
+    public void setBurstIOPSCredit(Long burstIOPSCredit) {
+        this.burstIOPSCredit = burstIOPSCredit;
+    }
+
     /**
      * The number of outstanding read and write operations to the cluster.
      **/
     public Long getClientQueueDepth() {
         return this.clientQueueDepth;
+    }
+
+    public void setClientQueueDepth(Long clientQueueDepth) {
+        this.clientQueueDepth = clientQueueDepth;
     }
 
     /**
@@ -184,12 +217,20 @@ public class VolumeStats  implements Serializable  {
         return this.desiredMetadataHosts;
     }
 
+    public void setDesiredMetadataHosts(MetadataHosts desiredMetadataHosts) {
+        this.desiredMetadataHosts = desiredMetadataHosts;
+    }
+
     /**
      * The observed latency time, in microseconds, to complete operations to a volume.<br/>
      * A "0" (zero) value means there is no I/O to the volume.
      **/
     public Long getLatencyUSec() {
         return this.latencyUSec;
+    }
+
+    public void setLatencyUSec(Long latencyUSec) {
+        this.latencyUSec = latencyUSec;
     }
 
     /**
@@ -199,11 +240,19 @@ public class VolumeStats  implements Serializable  {
         return this.metadataHosts;
     }
 
+    public void setMetadataHosts(MetadataHosts metadataHosts) {
+        this.metadataHosts = metadataHosts;
+    }
+
     /**
      * The number of 4KiB blocks with data after the last garbage collection operation has completed.
      **/
     public Long getNonZeroBlocks() {
         return this.nonZeroBlocks;
+    }
+
+    public void setNonZeroBlocks(Long nonZeroBlocks) {
+        this.nonZeroBlocks = nonZeroBlocks;
     }
 
     /**
@@ -213,6 +262,10 @@ public class VolumeStats  implements Serializable  {
         return this.readBytes;
     }
 
+    public void setReadBytes(Long readBytes) {
+        this.readBytes = readBytes;
+    }
+
     /**
      * The average time, in microseconds, to complete read operations.
      **/
@@ -220,11 +273,19 @@ public class VolumeStats  implements Serializable  {
         return this.readLatencyUSec;
     }
 
+    public void setReadLatencyUSec(Long readLatencyUSec) {
+        this.readLatencyUSec = readLatencyUSec;
+    }
+
     /**
      * Total read operations.
      **/
     public Long getReadOps() {
         return this.readOps;
+    }
+
+    public void setReadOps(Long readOps) {
+        this.readOps = readOps;
     }
 
     /**
@@ -235,6 +296,10 @@ public class VolumeStats  implements Serializable  {
         return this.throttle;
     }
 
+    public void setThrottle(Double throttle) {
+        this.throttle = throttle;
+    }
+
     /**
      * The current time in UTC.
      **/
@@ -242,11 +307,19 @@ public class VolumeStats  implements Serializable  {
         return this.timestamp;
     }
 
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
     /**
      * The average time, in microseconds, to complete read and write operations to a volume.
      **/
     public Long getTotalLatencyUSec() {
         return this.totalLatencyUSec;
+    }
+
+    public void setTotalLatencyUSec(Long totalLatencyUSec) {
+        this.totalLatencyUSec = totalLatencyUSec;
     }
 
     /**
@@ -257,12 +330,20 @@ public class VolumeStats  implements Serializable  {
         return this.unalignedReads;
     }
 
+    public void setUnalignedReads(Long unalignedReads) {
+        this.unalignedReads = unalignedReads;
+    }
+
     /**
      * For 512e volumes, the number of write operations that were not on a 4k sector boundary.
      * High numbers of unaligned writes may indicate improper partition alignment.
      **/
     public Long getUnalignedWrites() {
         return this.unalignedWrites;
+    }
+
+    public void setUnalignedWrites(Long unalignedWrites) {
+        this.unalignedWrites = unalignedWrites;
     }
 
     /**
@@ -272,6 +353,10 @@ public class VolumeStats  implements Serializable  {
         return this.volumeAccessGroups;
     }
 
+    public void setVolumeAccessGroups(Long[] volumeAccessGroups) {
+        this.volumeAccessGroups = volumeAccessGroups;
+    }
+
     /**
      * Volume ID of the volume.
      **/
@@ -279,11 +364,19 @@ public class VolumeStats  implements Serializable  {
         return this.volumeID;
     }
 
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
+    }
+
     /**
      * Total provisioned capacity in bytes.
      **/
     public Long getVolumeSize() {
         return this.volumeSize;
+    }
+
+    public void setVolumeSize(Long volumeSize) {
+        this.volumeSize = volumeSize;
     }
 
     /**
@@ -298,11 +391,19 @@ public class VolumeStats  implements Serializable  {
         return this.volumeUtilization;
     }
 
+    public void setVolumeUtilization(Double volumeUtilization) {
+        this.volumeUtilization = volumeUtilization;
+    }
+
     /**
      * Total bytes written by clients.
      **/
     public Long getWriteBytes() {
         return this.writeBytes;
+    }
+
+    public void setWriteBytes(Long writeBytes) {
+        this.writeBytes = writeBytes;
     }
 
     /**
@@ -312,6 +413,10 @@ public class VolumeStats  implements Serializable  {
         return this.writeLatencyUSec;
     }
 
+    public void setWriteLatencyUSec(Long writeLatencyUSec) {
+        this.writeLatencyUSec = writeLatencyUSec;
+    }
+
     /**
      * Total write operations occurring on the volume.
      **/
@@ -319,11 +424,19 @@ public class VolumeStats  implements Serializable  {
         return this.writeOps;
     }
 
+    public void setWriteOps(Long writeOps) {
+        this.writeOps = writeOps;
+    }
+
     /**
      * Total number of 4KiB blocks without data after the last round of garbage collection operation has completed.
      **/
     public Long getZeroBlocks() {
         return this.zeroBlocks;
+    }
+
+    public void setZeroBlocks(Long zeroBlocks) {
+        this.zeroBlocks = zeroBlocks;
     }
 
     @Override

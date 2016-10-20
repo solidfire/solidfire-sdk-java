@@ -41,11 +41,11 @@ public class CreateGroupSnapshotRequest  implements Serializable  {
 
     private static final long serialVersionUID = -21586728L;
 
-    @SerializedName("volumes") private final Long[] volumes;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("enableRemoteReplication") private final Optional<Boolean> enableRemoteReplication;
-    @SerializedName("retention") private final Optional<String> retention;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("volumes") private Long[] volumes;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
+    @SerializedName("retention") private Optional<String> retention;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "CreateGroupSnapshot" API Service call.
@@ -81,6 +81,15 @@ public class CreateGroupSnapshotRequest  implements Serializable  {
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
 
+    
+    /**
+     * The Request object for the "CreateGroupSnapshot" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CreateGroupSnapshotRequest() {}
+
 
     /**
      * Unique ID of the volume image from which to copy.
@@ -89,12 +98,20 @@ public class CreateGroupSnapshotRequest  implements Serializable  {
         return this.volumes;
     }
 
+    public void setVolumes(Long[] volumes) {
+        this.volumes = volumes;
+    }
+
     /**
      * A name for the snapshot.
      * If no name is provided, the date and time the snapshot was taken is used.
      **/
     public Optional<String> getName() {
         return this.name;
+    }
+
+    public void setName(Optional<String> name) {
+        this.name = name;
     }
 
     /**
@@ -107,6 +124,10 @@ public class CreateGroupSnapshotRequest  implements Serializable  {
         return this.enableRemoteReplication;
     }
 
+    public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) {
+        this.enableRemoteReplication = enableRemoteReplication;
+    }
+
     /**
      * The amount of time the snapshot will be retained. Enter in HH:mm:ss
      * @since 8.0 
@@ -117,11 +138,19 @@ public class CreateGroupSnapshotRequest  implements Serializable  {
         return this.retention;
     }
 
+    public void setRetention(Optional<String> retention) {
+        this.retention = retention;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

@@ -41,16 +41,16 @@ public class LdapConfiguration  implements Serializable  {
 
     private static final long serialVersionUID = 1824213705L;
 
-    @SerializedName("authType") private final String authType;
-    @SerializedName("enabled") private final Boolean enabled;
-    @SerializedName("groupSearchBaseDN") private final String groupSearchBaseDN;
-    @SerializedName("groupSearchCustomFilter") private final String groupSearchCustomFilter;
-    @SerializedName("groupSearchType") private final String groupSearchType;
-    @SerializedName("searchBindDN") private final String searchBindDN;
-    @SerializedName("serverURIs") private final String[] serverURIs;
-    @SerializedName("userDNTemplate") private final String userDNTemplate;
-    @SerializedName("userSearchBaseDN") private final String userSearchBaseDN;
-    @SerializedName("userSearchFilter") private final String userSearchFilter;
+    @SerializedName("authType") private String authType;
+    @SerializedName("enabled") private Boolean enabled;
+    @SerializedName("groupSearchBaseDN") private String groupSearchBaseDN;
+    @SerializedName("groupSearchCustomFilter") private String groupSearchCustomFilter;
+    @SerializedName("groupSearchType") private String groupSearchType;
+    @SerializedName("searchBindDN") private String searchBindDN;
+    @SerializedName("serverURIs") private String[] serverURIs;
+    @SerializedName("userDNTemplate") private String userDNTemplate;
+    @SerializedName("userSearchBaseDN") private String userSearchBaseDN;
+    @SerializedName("userSearchFilter") private String userSearchFilter;
 
     /**
      * LDAP Configuration object returns information about the LDAP configuration on SolidFire storage. LDAP information is returned with the API method GetLdapConfiguration.
@@ -80,6 +80,15 @@ public class LdapConfiguration  implements Serializable  {
         this.userDNTemplate = userDNTemplate;
     }
 
+    
+    /**
+     * LDAP Configuration object returns information about the LDAP configuration on SolidFire storage. LDAP information is returned with the API method GetLdapConfiguration.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public LdapConfiguration() {}
+
 
     /**
      * Identifies which user authentcation method will be used. <br/>
@@ -89,6 +98,10 @@ public class LdapConfiguration  implements Serializable  {
      **/
     public String getAuthType() {
         return this.authType;
+    }
+
+    public void setAuthType(String authType) {
+        this.authType = authType;
     }
 
     /**
@@ -101,6 +114,10 @@ public class LdapConfiguration  implements Serializable  {
         return this.enabled;
     }
 
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     /**
      * The base DN of the tree to start the group search (will do a subtree search from here).
      **/
@@ -108,11 +125,19 @@ public class LdapConfiguration  implements Serializable  {
         return this.groupSearchBaseDN;
     }
 
+    public void setGroupSearchBaseDN(String groupSearchBaseDN) {
+        this.groupSearchBaseDN = groupSearchBaseDN;
+    }
+
     /**
      * The custom search filter used.
      **/
     public String getGroupSearchCustomFilter() {
         return this.groupSearchCustomFilter;
+    }
+
+    public void setGroupSearchCustomFilter(String groupSearchCustomFilter) {
+        this.groupSearchCustomFilter = groupSearchCustomFilter;
     }
 
     /**
@@ -125,11 +150,19 @@ public class LdapConfiguration  implements Serializable  {
         return this.groupSearchType;
     }
 
+    public void setGroupSearchType(String groupSearchType) {
+        this.groupSearchType = groupSearchType;
+    }
+
     /**
      * A fully qualified DN to log in with to perform an LDAP search for the user (needs read access to the LDAP directory).
      **/
     public String getSearchBindDN() {
         return this.searchBindDN;
+    }
+
+    public void setSearchBindDN(String searchBindDN) {
+        this.searchBindDN = searchBindDN;
     }
 
     /**
@@ -139,11 +172,19 @@ public class LdapConfiguration  implements Serializable  {
         return this.serverURIs;
     }
 
+    public void setServerURIs(String[] serverURIs) {
+        this.serverURIs = serverURIs;
+    }
+
     /**
      * A string that is used to form a fully qualified user DN.
      **/
     public String getUserDNTemplate() {
         return this.userDNTemplate;
+    }
+
+    public void setUserDNTemplate(String userDNTemplate) {
+        this.userDNTemplate = userDNTemplate;
     }
 
     /**
@@ -153,11 +194,19 @@ public class LdapConfiguration  implements Serializable  {
         return this.userSearchBaseDN;
     }
 
+    public void setUserSearchBaseDN(String userSearchBaseDN) {
+        this.userSearchBaseDN = userSearchBaseDN;
+    }
+
     /**
      * The LDAP filter used.
      **/
     public String getUserSearchFilter() {
         return this.userSearchFilter;
+    }
+
+    public void setUserSearchFilter(String userSearchFilter) {
+        this.userSearchFilter = userSearchFilter;
     }
 
     @Override

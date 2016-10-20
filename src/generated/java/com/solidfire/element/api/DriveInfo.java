@@ -41,14 +41,14 @@ public class DriveInfo  implements Serializable  {
 
     private static final long serialVersionUID = 1302055454L;
 
-    @SerializedName("capacity") private final Long capacity;
-    @SerializedName("driveID") private final Long driveID;
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("serial") private final String serial;
-    @SerializedName("slot") private final Long slot;
-    @SerializedName("status") private final String status;
-    @SerializedName("type") private final String type;
-    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
+    @SerializedName("capacity") private Long capacity;
+    @SerializedName("driveID") private Long driveID;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("serial") private String serial;
+    @SerializedName("slot") private Long slot;
+    @SerializedName("status") private String status;
+    @SerializedName("type") private String type;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     /**
      * 
@@ -74,12 +74,25 @@ public class DriveInfo  implements Serializable  {
         this.capacity = capacity;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public DriveInfo() {}
+
 
     /**
      * Total capacity of the drive, in bytes.
      **/
     public Long getCapacity() {
         return this.capacity;
+    }
+
+    public void setCapacity(Long capacity) {
+        this.capacity = capacity;
     }
 
     /**
@@ -89,11 +102,19 @@ public class DriveInfo  implements Serializable  {
         return this.driveID;
     }
 
+    public void setDriveID(Long driveID) {
+        this.driveID = driveID;
+    }
+
     /**
      * NodeID where this drive is located.
      **/
     public Long getNodeID() {
         return this.nodeID;
+    }
+
+    public void setNodeID(Long nodeID) {
+        this.nodeID = nodeID;
     }
 
     /**
@@ -103,17 +124,33 @@ public class DriveInfo  implements Serializable  {
         return this.serial;
     }
 
+    public void setSerial(String serial) {
+        this.serial = serial;
+    }
+
     /**
      * Slot number in the server chassis where this drive is located, or -1 if SATADimm used for internal metadata drive.
      **/
     public Long getSlot() {
         return this.slot;
     }
+
+    public void setSlot(Long slot) {
+        this.slot = slot;
+    }
     public String getStatus() {
         return this.status;
     }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
     public String getType() {
         return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     /**
@@ -121,6 +158,10 @@ public class DriveInfo  implements Serializable  {
      **/
     public java.util.Map<String, Object> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

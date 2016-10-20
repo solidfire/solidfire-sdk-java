@@ -41,8 +41,8 @@ public class ResetDrivesRequest  implements Serializable  {
 
     private static final long serialVersionUID = -71656495L;
 
-    @SerializedName("drives") private final String drives;
-    @SerializedName("force") private final Boolean force;
+    @SerializedName("drives") private String drives;
+    @SerializedName("force") private Boolean force;
 
     /**
      * The Request object for the "ResetDrives" API Service call.
@@ -56,6 +56,15 @@ public class ResetDrivesRequest  implements Serializable  {
         this.force = force;
     }
 
+    
+    /**
+     * The Request object for the "ResetDrives" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ResetDrivesRequest() {}
+
 
     /**
      * List of device names (not driveIDs) to reset.
@@ -64,11 +73,19 @@ public class ResetDrivesRequest  implements Serializable  {
         return this.drives;
     }
 
+    public void setDrives(String drives) {
+        this.drives = drives;
+    }
+
     /**
      * The "force" parameter must be included on this method to successfully reset a drive.
      **/
     public Boolean getForce() {
         return this.force;
+    }
+
+    public void setForce(Boolean force) {
+        this.force = force;
     }
 
     @Override

@@ -41,8 +41,8 @@ public class GetNtpInfoResult  implements Serializable  {
 
     private static final long serialVersionUID = -1588484063L;
 
-    @SerializedName("broadcastclient") private final Boolean broadcastclient;
-    @SerializedName("servers") private final String[] servers;
+    @SerializedName("broadcastclient") private Boolean broadcastclient;
+    @SerializedName("servers") private String[] servers;
 
     /**
      * The object returned by the "GetNtpInfo" API Service call.
@@ -56,6 +56,15 @@ public class GetNtpInfoResult  implements Serializable  {
         this.servers = servers;
     }
 
+    
+    /**
+     * The object returned by the "GetNtpInfo" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetNtpInfoResult() {}
+
 
     /**
      * Indicates whether or not the nodes in the cluster are listening for broadcast NTP messages. Possible values:
@@ -66,11 +75,19 @@ public class GetNtpInfoResult  implements Serializable  {
         return this.broadcastclient;
     }
 
+    public void setBroadcastclient(Boolean broadcastclient) {
+        this.broadcastclient = broadcastclient;
+    }
+
     /**
      * List of NTP servers.
      **/
     public String[] getServers() {
         return this.servers;
+    }
+
+    public void setServers(String[] servers) {
+        this.servers = servers;
     }
 
     @Override

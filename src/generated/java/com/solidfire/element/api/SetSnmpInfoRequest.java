@@ -41,10 +41,10 @@ public class SetSnmpInfoRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1439453455L;
 
-    @SerializedName("networks") private final Optional<SnmpNetwork[]> networks;
-    @SerializedName("enabled") private final Optional<Boolean> enabled;
-    @SerializedName("snmpV3Enabled") private final Optional<Boolean> snmpV3Enabled;
-    @SerializedName("usmUsers") private final Optional<SnmpV3UsmUser[]> usmUsers;
+    @SerializedName("networks") private Optional<SnmpNetwork[]> networks;
+    @SerializedName("enabled") private Optional<Boolean> enabled;
+    @SerializedName("snmpV3Enabled") private Optional<Boolean> snmpV3Enabled;
+    @SerializedName("usmUsers") private Optional<SnmpV3UsmUser[]> usmUsers;
 
     /**
      * The Request object for the "SetSnmpInfo" API Service call.
@@ -62,12 +62,25 @@ public class SetSnmpInfoRequest  implements Serializable  {
         this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : usmUsers;
     }
 
+    
+    /**
+     * The Request object for the "SetSnmpInfo" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public SetSnmpInfoRequest() {}
+
 
     /**
      * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible "networks" values. SNMP v2 only.
      **/
     public Optional<SnmpNetwork[]> getNetworks() {
         return this.networks;
+    }
+
+    public void setNetworks(Optional<SnmpNetwork[]> networks) {
+        this.networks = networks;
     }
 
     /**
@@ -77,6 +90,10 @@ public class SetSnmpInfoRequest  implements Serializable  {
         return this.enabled;
     }
 
+    public void setEnabled(Optional<Boolean> enabled) {
+        this.enabled = enabled;
+    }
+
     /**
      * If set to "true", then SNMP v3 is enabled on each node in the cluster.
      **/
@@ -84,11 +101,19 @@ public class SetSnmpInfoRequest  implements Serializable  {
         return this.snmpV3Enabled;
     }
 
+    public void setSnmpV3Enabled(Optional<Boolean> snmpV3Enabled) {
+        this.snmpV3Enabled = snmpV3Enabled;
+    }
+
     /**
      * If SNMP v3 is enabled, this value must be passed in place of the "networks" parameter. SNMP v3 only.
      **/
     public Optional<SnmpV3UsmUser[]> getUsmUsers() {
         return this.usmUsers;
+    }
+
+    public void setUsmUsers(Optional<SnmpV3UsmUser[]> usmUsers) {
+        this.usmUsers = usmUsers;
     }
 
     @Override

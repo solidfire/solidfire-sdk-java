@@ -41,12 +41,12 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
 
     private static final long serialVersionUID = -1770709149L;
 
-    @SerializedName("accountID") private final Long accountID;
-    @SerializedName("username") private final Optional<String> username;
-    @SerializedName("status") private final Optional<String> status;
-    @SerializedName("initiatorSecret") private final Optional<CHAPSecret> initiatorSecret;
-    @SerializedName("targetSecret") private final Optional<CHAPSecret> targetSecret;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("accountID") private Long accountID;
+    @SerializedName("username") private Optional<String> username;
+    @SerializedName("status") private Optional<String> status;
+    @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
+    @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "ModifyAccount" API Service call.
@@ -68,12 +68,25 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
 
+    
+    /**
+     * The Request object for the "ModifyAccount" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ModifyAccountRequest() {}
+
 
     /**
      * AccountID for the account to modify.
      **/
     public Long getAccountID() {
         return this.accountID;
+    }
+
+    public void setAccountID(Long accountID) {
+        this.accountID = accountID;
     }
 
     /**
@@ -83,11 +96,19 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         return this.username;
     }
 
+    public void setUsername(Optional<String> username) {
+        this.username = username;
+    }
+
     /**
      * Status of the account.
      **/
     public Optional<String> getStatus() {
         return this.status;
+    }
+
+    public void setStatus(Optional<String> status) {
+        this.status = status;
     }
 
     /**
@@ -98,6 +119,10 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         return this.initiatorSecret;
     }
 
+    public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) {
+        this.initiatorSecret = initiatorSecret;
+    }
+
     /**
      * CHAP secret to use for the target (mutual CHAP authentication).
      * Should be 12-16 characters long and impenetrable.
@@ -106,11 +131,19 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         return this.targetSecret;
     }
 
+    public void setTargetSecret(Optional<CHAPSecret> targetSecret) {
+        this.targetSecret = targetSecret;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

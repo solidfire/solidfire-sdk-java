@@ -41,7 +41,7 @@ public class AsyncHandleResult  implements Serializable  {
 
     private static final long serialVersionUID = -362619182L;
 
-    @SerializedName("asyncHandle") private final Long asyncHandle;
+    @SerializedName("asyncHandle") private Long asyncHandle;
 
     /**
      * The object returned by the "AsyncHandle" API Service call.
@@ -53,8 +53,21 @@ public class AsyncHandleResult  implements Serializable  {
         this.asyncHandle = asyncHandle;
     }
 
+    
+    /**
+     * The object returned by the "AsyncHandle" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public AsyncHandleResult() {}
+
     public Long getAsyncHandle() {
         return this.asyncHandle;
+    }
+
+    public void setAsyncHandle(Long asyncHandle) {
+        this.asyncHandle = asyncHandle;
     }
 
     @Override

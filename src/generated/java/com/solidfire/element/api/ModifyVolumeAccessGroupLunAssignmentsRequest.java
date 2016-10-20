@@ -41,8 +41,8 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest  implements Serializab
 
     private static final long serialVersionUID = 326091512L;
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
-    @SerializedName("lunAssignments") private final LunAssignment[] lunAssignments;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
 
     /**
      * The Request object for the "ModifyVolumeAccessGroupLunAssignments" API Service call.
@@ -56,6 +56,15 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest  implements Serializab
         this.lunAssignments = lunAssignments;
     }
 
+    
+    /**
+     * The Request object for the "ModifyVolumeAccessGroupLunAssignments" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ModifyVolumeAccessGroupLunAssignmentsRequest() {}
+
 
     /**
      * Unique volume access group ID for which the LUN assignments will be modified.
@@ -64,11 +73,19 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest  implements Serializab
         return this.volumeAccessGroupID;
     }
 
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) {
+        this.volumeAccessGroupID = volumeAccessGroupID;
+    }
+
     /**
      * The volume IDs with new assigned LUN values.
      **/
     public LunAssignment[] getLunAssignments() {
         return this.lunAssignments;
+    }
+
+    public void setLunAssignments(LunAssignment[] lunAssignments) {
+        this.lunAssignments = lunAssignments;
     }
 
     @Override

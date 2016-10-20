@@ -41,13 +41,13 @@ public class ClusterStats  implements Serializable  {
 
     private static final long serialVersionUID = -563757431L;
 
-    @SerializedName("clusterUtilization") private final Double clusterUtilization;
-    @SerializedName("clientQueueDepth") private final Long clientQueueDepth;
-    @SerializedName("readBytes") private final Long readBytes;
-    @SerializedName("readOps") private final Long readOps;
-    @SerializedName("timestamp") private final String timestamp;
-    @SerializedName("writeBytes") private final Long writeBytes;
-    @SerializedName("writeOps") private final Long writeOps;
+    @SerializedName("clusterUtilization") private Double clusterUtilization;
+    @SerializedName("clientQueueDepth") private Long clientQueueDepth;
+    @SerializedName("readBytes") private Long readBytes;
+    @SerializedName("readOps") private Long readOps;
+    @SerializedName("timestamp") private String timestamp;
+    @SerializedName("writeBytes") private Long writeBytes;
+    @SerializedName("writeOps") private Long writeOps;
 
     /**
      * 
@@ -71,6 +71,15 @@ public class ClusterStats  implements Serializable  {
         this.readBytes = readBytes;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ClusterStats() {}
+
 
     /**
      * The amount of cluster capacity being utilized.
@@ -78,8 +87,16 @@ public class ClusterStats  implements Serializable  {
     public Double getClusterUtilization() {
         return this.clusterUtilization;
     }
+
+    public void setClusterUtilization(Double clusterUtilization) {
+        this.clusterUtilization = clusterUtilization;
+    }
     public Long getClientQueueDepth() {
         return this.clientQueueDepth;
+    }
+
+    public void setClientQueueDepth(Long clientQueueDepth) {
+        this.clientQueueDepth = clientQueueDepth;
     }
 
     /**
@@ -89,11 +106,19 @@ public class ClusterStats  implements Serializable  {
         return this.readBytes;
     }
 
+    public void setReadBytes(Long readBytes) {
+        this.readBytes = readBytes;
+    }
+
     /**
      * Total read operations.
      **/
     public Long getReadOps() {
         return this.readOps;
+    }
+
+    public void setReadOps(Long readOps) {
+        this.readOps = readOps;
     }
 
     /**
@@ -103,6 +128,10 @@ public class ClusterStats  implements Serializable  {
         return this.timestamp;
     }
 
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
     /**
      * Total bytes written by clients.
      **/
@@ -110,11 +139,19 @@ public class ClusterStats  implements Serializable  {
         return this.writeBytes;
     }
 
+    public void setWriteBytes(Long writeBytes) {
+        this.writeBytes = writeBytes;
+    }
+
     /**
      * Total write operations.
      **/
     public Long getWriteOps() {
         return this.writeOps;
+    }
+
+    public void setWriteOps(Long writeOps) {
+        this.writeOps = writeOps;
     }
 
     @Override

@@ -41,12 +41,12 @@ public class CreateVolumeRequest  implements Serializable  {
 
     private static final long serialVersionUID = 2095583324L;
 
-    @SerializedName("name") private final String name;
-    @SerializedName("accountID") private final Long accountID;
-    @SerializedName("totalSize") private final Long totalSize;
-    @SerializedName("enable512e") private final Boolean enable512e;
-    @SerializedName("qos") private final Optional<QoS> qos;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("name") private String name;
+    @SerializedName("accountID") private Long accountID;
+    @SerializedName("totalSize") private Long totalSize;
+    @SerializedName("enable512e") private Boolean enable512e;
+    @SerializedName("qos") private Optional<QoS> qos;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "CreateVolume" API Service call.
@@ -68,6 +68,15 @@ public class CreateVolumeRequest  implements Serializable  {
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
 
+    
+    /**
+     * The Request object for the "CreateVolume" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CreateVolumeRequest() {}
+
 
     /**
      * Name of the volume.
@@ -78,11 +87,19 @@ public class CreateVolumeRequest  implements Serializable  {
         return this.name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * AccountID for the owner of this volume.
      **/
     public Long getAccountID() {
         return this.accountID;
+    }
+
+    public void setAccountID(Long accountID) {
+        this.accountID = accountID;
     }
 
     /**
@@ -92,11 +109,19 @@ public class CreateVolumeRequest  implements Serializable  {
         return this.totalSize;
     }
 
+    public void setTotalSize(Long totalSize) {
+        this.totalSize = totalSize;
+    }
+
     /**
      * Should the volume provides 512-byte sector emulation?
      **/
     public Boolean getEnable512e() {
         return this.enable512e;
+    }
+
+    public void setEnable512e(Boolean enable512e) {
+        this.enable512e = enable512e;
     }
 
     /**
@@ -109,11 +134,19 @@ public class CreateVolumeRequest  implements Serializable  {
         return this.qos;
     }
 
+    public void setQos(Optional<QoS> qos) {
+        this.qos = qos;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

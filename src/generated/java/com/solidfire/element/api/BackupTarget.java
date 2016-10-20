@@ -41,9 +41,9 @@ public class BackupTarget  implements Serializable  {
 
     private static final long serialVersionUID = 283987060L;
 
-    @SerializedName("name") private final String name;
-    @SerializedName("backupTargetID") private final Long backupTargetID;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("name") private String name;
+    @SerializedName("backupTargetID") private Long backupTargetID;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The object containing information about a backup target.
@@ -59,12 +59,25 @@ public class BackupTarget  implements Serializable  {
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
+    
+    /**
+     * The object containing information about a backup target.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public BackupTarget() {}
+
 
     /**
      * Name for the backup target.
      **/
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -74,11 +87,19 @@ public class BackupTarget  implements Serializable  {
         return this.backupTargetID;
     }
 
+    public void setBackupTargetID(Long backupTargetID) {
+        this.backupTargetID = backupTargetID;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

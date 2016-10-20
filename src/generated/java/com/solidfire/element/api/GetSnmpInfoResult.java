@@ -41,10 +41,10 @@ public class GetSnmpInfoResult  implements Serializable  {
 
     private static final long serialVersionUID = 1622598915L;
 
-    @SerializedName("networks") private final SnmpNetwork[] networks;
-    @SerializedName("enabled") private final Boolean enabled;
-    @SerializedName("snmpV3Enabled") private final Boolean snmpV3Enabled;
-    @SerializedName("usmUsers") private final SnmpV3UsmUser[] usmUsers;
+    @SerializedName("networks") private SnmpNetwork[] networks;
+    @SerializedName("enabled") private Boolean enabled;
+    @SerializedName("snmpV3Enabled") private Boolean snmpV3Enabled;
+    @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
 
     /**
      * The object returned by the "GetSnmpInfo" API Service call.
@@ -62,6 +62,15 @@ public class GetSnmpInfoResult  implements Serializable  {
         this.usmUsers = usmUsers;
     }
 
+    
+    /**
+     * The object returned by the "GetSnmpInfo" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetSnmpInfoResult() {}
+
 
     /**
      * List of networks and access types enabled for SNMP.
@@ -72,11 +81,19 @@ public class GetSnmpInfoResult  implements Serializable  {
         return this.networks;
     }
 
+    public void setNetworks(SnmpNetwork[] networks) {
+        this.networks = networks;
+    }
+
     /**
      * If the nodes in the cluster are configured for SNMP.
      **/
     public Boolean getEnabled() {
         return this.enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     /**
@@ -86,11 +103,19 @@ public class GetSnmpInfoResult  implements Serializable  {
         return this.snmpV3Enabled;
     }
 
+    public void setSnmpV3Enabled(Boolean snmpV3Enabled) {
+        this.snmpV3Enabled = snmpV3Enabled;
+    }
+
     /**
      * If SNMP v3 is enabled, the values returned is a list of user access parameters for SNMP information from the cluster. This will be returned instead of the "networks" parameter.
      **/
     public SnmpV3UsmUser[] getUsmUsers() {
         return this.usmUsers;
+    }
+
+    public void setUsmUsers(SnmpV3UsmUser[] usmUsers) {
+        this.usmUsers = usmUsers;
     }
 
     @Override

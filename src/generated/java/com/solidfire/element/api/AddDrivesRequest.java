@@ -41,7 +41,7 @@ public class AddDrivesRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1279570968L;
 
-    @SerializedName("drives") private final NewDrive[] drives;
+    @SerializedName("drives") private NewDrive[] drives;
 
     /**
      * The Request object for the "AddDrives" API Service call.
@@ -53,12 +53,25 @@ public class AddDrivesRequest  implements Serializable  {
         this.drives = drives;
     }
 
+    
+    /**
+     * The Request object for the "AddDrives" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public AddDrivesRequest() {}
+
 
     /**
      * List of drives to add to the cluster.
      **/
     public NewDrive[] getDrives() {
         return this.drives;
+    }
+
+    public void setDrives(NewDrive[] drives) {
+        this.drives = drives;
     }
 
     @Override

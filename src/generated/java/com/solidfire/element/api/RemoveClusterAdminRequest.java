@@ -41,7 +41,7 @@ public class RemoveClusterAdminRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1898586412L;
 
-    @SerializedName("clusterAdminID") private final Long clusterAdminID;
+    @SerializedName("clusterAdminID") private Long clusterAdminID;
 
     /**
      * The Request object for the "RemoveClusterAdmin" API Service call.
@@ -53,12 +53,25 @@ public class RemoveClusterAdminRequest  implements Serializable  {
         this.clusterAdminID = clusterAdminID;
     }
 
+    
+    /**
+     * The Request object for the "RemoveClusterAdmin" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public RemoveClusterAdminRequest() {}
+
 
     /**
      * ClusterAdminID for the Cluster Admin to remove.
      **/
     public Long getClusterAdminID() {
         return this.clusterAdminID;
+    }
+
+    public void setClusterAdminID(Long clusterAdminID) {
+        this.clusterAdminID = clusterAdminID;
     }
 
     @Override

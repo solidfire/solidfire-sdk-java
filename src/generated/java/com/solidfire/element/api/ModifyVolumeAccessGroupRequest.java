@@ -41,13 +41,13 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1476164933L;
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
-    @SerializedName("virtualNetworkID") private final Optional<Long[]> virtualNetworkID;
-    @SerializedName("virtualNetworkTags") private final Optional<Long[]> virtualNetworkTags;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("initiators") private final Optional<String[]> initiators;
-    @SerializedName("volumes") private final Optional<Long[]> volumes;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("virtualNetworkID") private Optional<Long[]> virtualNetworkID;
+    @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("initiators") private Optional<String[]> initiators;
+    @SerializedName("volumes") private Optional<Long[]> volumes;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "ModifyVolumeAccessGroup" API Service call.
@@ -91,12 +91,25 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
     }
 
+    
+    /**
+     * The Request object for the "ModifyVolumeAccessGroup" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ModifyVolumeAccessGroupRequest() {}
+
 
     /**
      * The ID of the volume access group to modify.
      **/
     public Long getVolumeAccessGroupID() {
         return this.volumeAccessGroupID;
+    }
+
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) {
+        this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
     /**
@@ -109,6 +122,10 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         return this.virtualNetworkID;
     }
 
+    public void setVirtualNetworkID(Optional<Long[]> virtualNetworkID) {
+        this.virtualNetworkID = virtualNetworkID;
+    }
+
     /**
      * The ID of the VLAN Virtual Network Tag to associate the volume access group with.
      * @since 8.0 
@@ -119,12 +136,20 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         return this.virtualNetworkTags;
     }
 
+    public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) {
+        this.virtualNetworkTags = virtualNetworkTags;
+    }
+
     /**
      * Name of the volume access group.
      * It is not required to be unique, but recommended.
      **/
     public Optional<String> getName() {
         return this.name;
+    }
+
+    public void setName(Optional<String> name) {
+        this.name = name;
     }
 
     /**
@@ -135,6 +160,10 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         return this.initiators;
     }
 
+    public void setInitiators(Optional<String[]> initiators) {
+        this.initiators = initiators;
+    }
+
     /**
      * List of volumes to initially include in the volume access group.
      * If unspecified, the access group's volumes will not be modified.
@@ -143,11 +172,19 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         return this.volumes;
     }
 
+    public void setVolumes(Optional<Long[]> volumes) {
+        this.volumes = volumes;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

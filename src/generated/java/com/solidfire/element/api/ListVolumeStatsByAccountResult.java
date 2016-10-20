@@ -41,7 +41,7 @@ public class ListVolumeStatsByAccountResult  implements Serializable  {
 
     private static final long serialVersionUID = -146299878L;
 
-    @SerializedName("volumeStats") private final VolumeStats[] volumeStats;
+    @SerializedName("volumeStats") private VolumeStats[] volumeStats;
 
     /**
      * The object returned by the "ListVolumeStatsByAccount" API Service call.
@@ -53,6 +53,15 @@ public class ListVolumeStatsByAccountResult  implements Serializable  {
         this.volumeStats = volumeStats;
     }
 
+    
+    /**
+     * The object returned by the "ListVolumeStatsByAccount" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListVolumeStatsByAccountResult() {}
+
 
     /**
      * List of account activity information.
@@ -60,6 +69,10 @@ public class ListVolumeStatsByAccountResult  implements Serializable  {
      **/
     public VolumeStats[] getVolumeStats() {
         return this.volumeStats;
+    }
+
+    public void setVolumeStats(VolumeStats[] volumeStats) {
+        this.volumeStats = volumeStats;
     }
 
     @Override

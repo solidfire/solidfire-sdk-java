@@ -41,7 +41,7 @@ public class GetClusterHardwareInfoResult  implements Serializable  {
 
     private static final long serialVersionUID = -616052708L;
 
-    @SerializedName("clusterHardwareInfo") private final ClusterHardwareInfo clusterHardwareInfo;
+    @SerializedName("clusterHardwareInfo") private ClusterHardwareInfo clusterHardwareInfo;
 
     /**
      * The object returned by the "GetClusterHardwareInfo" API Service call.
@@ -53,12 +53,25 @@ public class GetClusterHardwareInfoResult  implements Serializable  {
         this.clusterHardwareInfo = clusterHardwareInfo;
     }
 
+    
+    /**
+     * The object returned by the "GetClusterHardwareInfo" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetClusterHardwareInfoResult() {}
+
 
     /**
      * Hardware information for all nodes and drives in the cluster. Each object in this output is labeled with the nodeID of the given node.
      **/
     public ClusterHardwareInfo getClusterHardwareInfo() {
         return this.clusterHardwareInfo;
+    }
+
+    public void setClusterHardwareInfo(ClusterHardwareInfo clusterHardwareInfo) {
+        this.clusterHardwareInfo = clusterHardwareInfo;
     }
 
     @Override

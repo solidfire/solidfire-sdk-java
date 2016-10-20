@@ -41,13 +41,13 @@ public class CloneVolumeRequest  implements Serializable  {
 
     private static final long serialVersionUID = -244293593L;
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("name") private final String name;
-    @SerializedName("newAccountID") private final Optional<Long> newAccountID;
-    @SerializedName("newSize") private final Optional<Long> newSize;
-    @SerializedName("access") private final Optional<String> access;
-    @SerializedName("snapshotID") private final Optional<Long> snapshotID;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("name") private String name;
+    @SerializedName("newAccountID") private Optional<Long> newAccountID;
+    @SerializedName("newSize") private Optional<Long> newSize;
+    @SerializedName("access") private Optional<String> access;
+    @SerializedName("snapshotID") private Optional<Long> snapshotID;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "CloneVolume" API Service call.
@@ -71,6 +71,15 @@ public class CloneVolumeRequest  implements Serializable  {
         this.access = (access == null) ? Optional.<String>empty() : access;
     }
 
+    
+    /**
+     * The Request object for the "CloneVolume" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public CloneVolumeRequest() {}
+
 
     /**
      * The ID of the volume to clone.
@@ -79,11 +88,19 @@ public class CloneVolumeRequest  implements Serializable  {
         return this.volumeID;
     }
 
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = volumeID;
+    }
+
     /**
      * The name for the newly-created volume.
      **/
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -94,6 +111,10 @@ public class CloneVolumeRequest  implements Serializable  {
         return this.newAccountID;
     }
 
+    public void setNewAccountID(Optional<Long> newAccountID) {
+        this.newAccountID = newAccountID;
+    }
+
     /**
      * New size of the volume, in bytes.
      * May be greater or less than the size of the volume being cloned.
@@ -102,6 +123,10 @@ public class CloneVolumeRequest  implements Serializable  {
      **/
     public Optional<Long> getNewSize() {
         return this.newSize;
+    }
+
+    public void setNewSize(Optional<Long> newSize) {
+        this.newSize = newSize;
     }
 
     /**
@@ -117,6 +142,10 @@ public class CloneVolumeRequest  implements Serializable  {
         return this.access;
     }
 
+    public void setAccess(Optional<String> access) {
+        this.access = access;
+    }
+
     /**
      * ID of the snapshot to use as the source of the clone.
      * If unspecified, the clone will be created with a snapshot of the active volume.
@@ -125,11 +154,19 @@ public class CloneVolumeRequest  implements Serializable  {
         return this.snapshotID;
     }
 
+    public void setSnapshotID(Optional<Long> snapshotID) {
+        this.snapshotID = snapshotID;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

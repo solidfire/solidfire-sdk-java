@@ -41,11 +41,11 @@ public class AddClusterAdminRequest  implements Serializable  {
 
     private static final long serialVersionUID = -1312202061L;
 
-    @SerializedName("username") private final String username;
-    @SerializedName("password") private final String password;
-    @SerializedName("access") private final String[] access;
-    @SerializedName("acceptEula") private final Optional<Boolean> acceptEula;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("username") private String username;
+    @SerializedName("password") private String password;
+    @SerializedName("access") private String[] access;
+    @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     /**
      * The Request object for the "AddClusterAdmin" API Service call.
@@ -65,12 +65,25 @@ public class AddClusterAdminRequest  implements Serializable  {
         this.password = password;
     }
 
+    
+    /**
+     * The Request object for the "AddClusterAdmin" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public AddClusterAdminRequest() {}
+
 
     /**
      * Unique username for this Cluster Admin.
      **/
     public String getUsername() {
         return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
@@ -80,11 +93,19 @@ public class AddClusterAdminRequest  implements Serializable  {
         return this.password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     /**
      * Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
      **/
     public String[] getAccess() {
         return this.access;
+    }
+
+    public void setAccess(String[] access) {
+        this.access = access;
     }
 
     /**
@@ -94,11 +115,19 @@ public class AddClusterAdminRequest  implements Serializable  {
         return this.acceptEula;
     }
 
+    public void setAcceptEula(Optional<Boolean> acceptEula) {
+        this.acceptEula = acceptEula;
+    }
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() {
         return this.attributes;
+    }
+
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
+        this.attributes = attributes;
     }
 
     @Override

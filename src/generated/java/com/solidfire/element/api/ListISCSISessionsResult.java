@@ -41,7 +41,7 @@ public class ListISCSISessionsResult  implements Serializable  {
 
     private static final long serialVersionUID = 344505827L;
 
-    @SerializedName("sessions") private final ISCSISession[] sessions;
+    @SerializedName("sessions") private ISCSISession[] sessions;
 
     /**
      * The object returned by the "ListISCSISessions" API Service call.
@@ -53,8 +53,21 @@ public class ListISCSISessionsResult  implements Serializable  {
         this.sessions = sessions;
     }
 
+    
+    /**
+     * The object returned by the "ListISCSISessions" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public ListISCSISessionsResult() {}
+
     public ISCSISession[] getSessions() {
         return this.sessions;
+    }
+
+    public void setSessions(ISCSISession[] sessions) {
+        this.sessions = sessions;
     }
 
     @Override

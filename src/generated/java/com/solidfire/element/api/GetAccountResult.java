@@ -41,7 +41,7 @@ public class GetAccountResult  implements Serializable  {
 
     private static final long serialVersionUID = -1096309178L;
 
-    @SerializedName("account") private final Account account;
+    @SerializedName("account") private Account account;
 
     /**
      * The object returned by the "GetAccount" API Service call.
@@ -53,12 +53,25 @@ public class GetAccountResult  implements Serializable  {
         this.account = account;
     }
 
+    
+    /**
+     * The object returned by the "GetAccount" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetAccountResult() {}
+
 
     /**
      * Account details.
      **/
     public Account getAccount() {
         return this.account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override

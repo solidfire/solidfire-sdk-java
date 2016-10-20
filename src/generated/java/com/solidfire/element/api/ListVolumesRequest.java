@@ -41,12 +41,12 @@ public class ListVolumesRequest  implements Serializable  {
 
     private static final long serialVersionUID = -337491134L;
 
-    @SerializedName("startVolumeID") private final Optional<Long> startVolumeID;
-    @SerializedName("limit") private final Optional<Long> limit;
-    @SerializedName("volumeStatus") private final Optional<String> volumeStatus;
-    @SerializedName("accounts") private final Optional<Long[]> accounts;
-    @SerializedName("isPaired") private final Optional<Boolean> isPaired;
-    @SerializedName("volumeIDs") private final Optional<Long[]> volumeIDs;
+    @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
+    @SerializedName("limit") private Optional<Long> limit;
+    @SerializedName("volumeStatus") private Optional<String> volumeStatus;
+    @SerializedName("accounts") private Optional<Long[]> accounts;
+    @SerializedName("isPaired") private Optional<Boolean> isPaired;
+    @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
 
     /**
      * The Request object for the "ListVolumes" API Service call.
@@ -87,6 +87,15 @@ public class ListVolumesRequest  implements Serializable  {
         this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
     }
 
+    
+    /**
+     * The Request object for the "ListVolumes" API Service call.
+     * Empty constructor to support serialization.
+     * @since 8.0
+     **/
+    @Since("8.0")
+    public ListVolumesRequest() {}
+
 
     /**
      * The ID of the first volume to list.
@@ -97,11 +106,19 @@ public class ListVolumesRequest  implements Serializable  {
         return this.startVolumeID;
     }
 
+    public void setStartVolumeID(Optional<Long> startVolumeID) {
+        this.startVolumeID = startVolumeID;
+    }
+
     /**
      * The maximum number of volumes to return from the API.
      **/
     public Optional<Long> getLimit() {
         return this.limit;
+    }
+
+    public void setLimit(Optional<Long> limit) {
+        this.limit = limit;
     }
 
     /**
@@ -112,6 +129,10 @@ public class ListVolumesRequest  implements Serializable  {
         return this.volumeStatus;
     }
 
+    public void setVolumeStatus(Optional<String> volumeStatus) {
+        this.volumeStatus = volumeStatus;
+    }
+
     /**
      * If specified, only fetch volumes which belong to the provided accounts.
      * By default, list volumes for all accounts.
@@ -120,12 +141,20 @@ public class ListVolumesRequest  implements Serializable  {
         return this.accounts;
     }
 
+    public void setAccounts(Optional<Long[]> accounts) {
+        this.accounts = accounts;
+    }
+
     /**
      * If specified, only fetch volumes which are paired (if true) or non-paired (if false).
      * By default, list all volumes regardless of their pairing status.
      **/
     public Optional<Boolean> getIsPaired() {
         return this.isPaired;
+    }
+
+    public void setIsPaired(Optional<Boolean> isPaired) {
+        this.isPaired = isPaired;
     }
 
     /**
@@ -137,6 +166,10 @@ public class ListVolumesRequest  implements Serializable  {
     @Since("9.0")
     public Optional<Long[]> getVolumeIDs() {
         return this.volumeIDs;
+    }
+
+    public void setVolumeIDs(Optional<Long[]> volumeIDs) {
+        this.volumeIDs = volumeIDs;
     }
 
     @Override

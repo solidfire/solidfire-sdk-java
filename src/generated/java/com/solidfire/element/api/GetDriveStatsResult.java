@@ -41,7 +41,7 @@ public class GetDriveStatsResult  implements Serializable  {
 
     private static final long serialVersionUID = 1924897911L;
 
-    @SerializedName("driveStats") private final DriveStats driveStats;
+    @SerializedName("driveStats") private DriveStats driveStats;
 
     /**
      * The object returned by the "GetDriveStats" API Service call.
@@ -53,8 +53,21 @@ public class GetDriveStatsResult  implements Serializable  {
         this.driveStats = driveStats;
     }
 
+    
+    /**
+     * The object returned by the "GetDriveStats" API Service call.
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public GetDriveStatsResult() {}
+
     public DriveStats getDriveStats() {
         return this.driveStats;
+    }
+
+    public void setDriveStats(DriveStats driveStats) {
+        this.driveStats = driveStats;
     }
 
     @Override

@@ -41,7 +41,7 @@ public class NodeStatsNodes  implements Serializable  {
 
     private static final long serialVersionUID = 1552009954L;
 
-    @SerializedName("nodes") private final NodeStatsInfo[] nodes;
+    @SerializedName("nodes") private NodeStatsInfo[] nodes;
 
     /**
      * 
@@ -53,12 +53,25 @@ public class NodeStatsNodes  implements Serializable  {
         this.nodes = nodes;
     }
 
+    
+    /**
+     * 
+     * Empty constructor to support serialization.
+     * @since 7.0
+     **/
+    @Since("7.0")
+    public NodeStatsNodes() {}
+
 
     /**
      * Node activity information for a single node.
      **/
     public NodeStatsInfo[] getNodes() {
         return this.nodes;
+    }
+
+    public void setNodes(NodeStatsInfo[] nodes) {
+        this.nodes = nodes;
     }
 
     @Override
