@@ -80,6 +80,8 @@ public class CloneMultipleVolumesResult  implements Serializable  {
         this.asyncHandle = asyncHandle;
     }
 
+
+
     /**
      * Unique ID of the new group clone.
      **/
@@ -91,6 +93,8 @@ public class CloneMultipleVolumesResult  implements Serializable  {
         this.groupCloneID = groupCloneID;
     }
 
+
+
     /**
      * List of volumeIDs for the source and destination volume pairs.
      **/
@@ -101,6 +105,8 @@ public class CloneMultipleVolumesResult  implements Serializable  {
     public void setMembers(GroupCloneVolumeMember[] members) {
         this.members = members;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

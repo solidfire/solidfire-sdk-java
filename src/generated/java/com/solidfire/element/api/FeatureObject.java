@@ -77,6 +77,8 @@ public class FeatureObject  implements Serializable  {
         this.enabled = enabled;
     }
 
+
+
     /**
      * The name of the feature.
      **/
@@ -87,6 +89,8 @@ public class FeatureObject  implements Serializable  {
     public void setFeature(String feature) {
         this.feature = feature;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

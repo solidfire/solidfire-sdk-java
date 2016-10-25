@@ -80,6 +80,8 @@ public class ModifyBackupTargetRequest  implements Serializable  {
         this.backupTargetID = backupTargetID;
     }
 
+
+
     /**
      * Name for the backup target.
      **/
@@ -87,9 +89,11 @@ public class ModifyBackupTargetRequest  implements Serializable  {
         return this.name;
     }
 
-    public void setName(Optional<String> name) {
-        this.name = name;
+    public void setName(String name) {
+        this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -98,9 +102,11 @@ public class ModifyBackupTargetRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

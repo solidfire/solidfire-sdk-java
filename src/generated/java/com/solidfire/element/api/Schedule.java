@@ -111,6 +111,8 @@ public class Schedule  implements Serializable  {
         this.frequency = frequency;
     }
 
+
+
     /**
      * Indicates whether or not the schedule has errors.
      **/
@@ -118,9 +120,11 @@ public class Schedule  implements Serializable  {
         return this.hasError;
     }
 
-    public void setHasError(Optional<Boolean> hasError) {
-        this.hasError = hasError;
+    public void setHasError(Boolean hasError) {
+        this.hasError = (hasError == null) ? Optional.<Boolean>empty() : Optional.of(hasError);
     }
+
+
 
     /**
      * Indicates the status of the last scheduled snapshot.<br/>
@@ -136,6 +140,8 @@ public class Schedule  implements Serializable  {
         this.lastRunStatus = lastRunStatus;
     }
 
+
+
     /**
      * Indicates the last time the schedule started n ISO 8601 date string.
      * Valid values are:<br/>
@@ -150,6 +156,8 @@ public class Schedule  implements Serializable  {
         this.lastRunTimeStart = lastRunTimeStart;
     }
 
+
+
     /**
      * Indicates whether or not the schedule is paused.
      **/
@@ -157,9 +165,11 @@ public class Schedule  implements Serializable  {
         return this.paused;
     }
 
-    public void setPaused(Optional<Boolean> paused) {
-        this.paused = paused;
+    public void setPaused(Boolean paused) {
+        this.paused = (paused == null) ? Optional.<Boolean>empty() : Optional.of(paused);
     }
+
+
 
     /**
      * Indicates whether or not the schedule is recurring.
@@ -168,9 +178,11 @@ public class Schedule  implements Serializable  {
         return this.recurring;
     }
 
-    public void setRecurring(Optional<Boolean> recurring) {
-        this.recurring = recurring;
+    public void setRecurring(Boolean recurring) {
+        this.recurring = (recurring == null) ? Optional.<Boolean>empty() : Optional.of(recurring);
     }
+
+
 
     /**
      * Indicates whether or not the schedule will run the next time the scheduler is active. When set to "true", the schedule will run the next time the scheduler is active and then reset back to "false".
@@ -179,9 +191,11 @@ public class Schedule  implements Serializable  {
         return this.runNextInterval;
     }
 
-    public void setRunNextInterval(Optional<Boolean> runNextInterval) {
-        this.runNextInterval = runNextInterval;
+    public void setRunNextInterval(Boolean runNextInterval) {
+        this.runNextInterval = (runNextInterval == null) ? Optional.<Boolean>empty() : Optional.of(runNextInterval);
     }
+
+
 
     /**
      * Unique ID of the schedule
@@ -190,9 +204,11 @@ public class Schedule  implements Serializable  {
         return this.scheduleID;
     }
 
-    public void setScheduleID(Optional<Long> scheduleID) {
-        this.scheduleID = scheduleID;
+    public void setScheduleID(Long scheduleID) {
+        this.scheduleID = (scheduleID == null) ? Optional.<Long>empty() : Optional.of(scheduleID);
     }
+
+
 
     /**
      * Includes the unique name given to the schedule, the retention period for the snapshot that was created, and the volume ID of the volume from which the snapshot was created.
@@ -205,6 +221,8 @@ public class Schedule  implements Serializable  {
         this.scheduleInfo = scheduleInfo;
     }
 
+
+
     /**
      * Unique name assigned to the schedule.
      **/
@@ -215,6 +233,8 @@ public class Schedule  implements Serializable  {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     /**
      * Indicates the date the first time the schedule began of will begin. Formatted in UTC time.
@@ -227,6 +247,8 @@ public class Schedule  implements Serializable  {
         this.startingDate = startingDate;
     }
 
+
+
     /**
      * Indicates if the schedule is marked for deletion.
      **/
@@ -234,9 +256,11 @@ public class Schedule  implements Serializable  {
         return this.toBeDeleted;
     }
 
-    public void setToBeDeleted(Optional<Boolean> toBeDeleted) {
-        this.toBeDeleted = toBeDeleted;
+    public void setToBeDeleted(Boolean toBeDeleted) {
+        this.toBeDeleted = (toBeDeleted == null) ? Optional.<Boolean>empty() : Optional.of(toBeDeleted);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

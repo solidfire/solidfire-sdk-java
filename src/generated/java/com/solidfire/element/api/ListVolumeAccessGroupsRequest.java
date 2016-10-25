@@ -75,9 +75,11 @@ public class ListVolumeAccessGroupsRequest  implements Serializable  {
         return this.startVolumeAccessGroupID;
     }
 
-    public void setStartVolumeAccessGroupID(Optional<Long> startVolumeAccessGroupID) {
-        this.startVolumeAccessGroupID = startVolumeAccessGroupID;
+    public void setStartVolumeAccessGroupID(Long startVolumeAccessGroupID) {
+        this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<Long>empty() : Optional.of(startVolumeAccessGroupID);
     }
+
+
 
     /**
      * The maximum number of results to return.
@@ -87,9 +89,11 @@ public class ListVolumeAccessGroupsRequest  implements Serializable  {
         return this.limit;
     }
 
-    public void setLimit(Optional<Long> limit) {
-        this.limit = limit;
+    public void setLimit(Long limit) {
+        this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

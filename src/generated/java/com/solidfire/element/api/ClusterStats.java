@@ -91,6 +91,8 @@ public class ClusterStats  implements Serializable  {
     public void setClusterUtilization(Double clusterUtilization) {
         this.clusterUtilization = clusterUtilization;
     }
+
+
     public Long getClientQueueDepth() {
         return this.clientQueueDepth;
     }
@@ -98,6 +100,8 @@ public class ClusterStats  implements Serializable  {
     public void setClientQueueDepth(Long clientQueueDepth) {
         this.clientQueueDepth = clientQueueDepth;
     }
+
+
 
     /**
      * Total bytes read by clients.
@@ -110,6 +114,8 @@ public class ClusterStats  implements Serializable  {
         this.readBytes = readBytes;
     }
 
+
+
     /**
      * Total read operations.
      **/
@@ -120,6 +126,8 @@ public class ClusterStats  implements Serializable  {
     public void setReadOps(Long readOps) {
         this.readOps = readOps;
     }
+
+
 
     /**
      * Current time in UTC format. ISO 8601 date string.
@@ -132,6 +140,8 @@ public class ClusterStats  implements Serializable  {
         this.timestamp = timestamp;
     }
 
+
+
     /**
      * Total bytes written by clients.
      **/
@@ -143,6 +153,8 @@ public class ClusterStats  implements Serializable  {
         this.writeBytes = writeBytes;
     }
 
+
+
     /**
      * Total write operations.
      **/
@@ -153,6 +165,8 @@ public class ClusterStats  implements Serializable  {
     public void setWriteOps(Long writeOps) {
         this.writeOps = writeOps;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

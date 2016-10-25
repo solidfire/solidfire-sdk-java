@@ -107,6 +107,8 @@ public class NodeStatsInfo  implements Serializable  {
         this.cBytesIn = cBytesIn;
     }
 
+
+
     /**
      * Bytes out on the cluster interface.
      **/
@@ -117,6 +119,8 @@ public class NodeStatsInfo  implements Serializable  {
     public void setCBytesOut(Long cBytesOut) {
         this.cBytesOut = cBytesOut;
     }
+
+
 
     /**
      * CPU Usage %
@@ -129,6 +133,8 @@ public class NodeStatsInfo  implements Serializable  {
         this.cpu = cpu;
     }
 
+
+
     /**
      * Bytes in on the management interface.
      **/
@@ -139,6 +145,8 @@ public class NodeStatsInfo  implements Serializable  {
     public void setMBytesIn(Long mBytesIn) {
         this.mBytesIn = mBytesIn;
     }
+
+
 
     /**
      * Bytes out on the management interface.
@@ -151,6 +159,8 @@ public class NodeStatsInfo  implements Serializable  {
         this.mBytesOut = mBytesOut;
     }
 
+
+
     /**
      * Network interface utilization (in %) for the cluster network interface.
      **/
@@ -162,6 +172,8 @@ public class NodeStatsInfo  implements Serializable  {
         this.networkUtilizationCluster = networkUtilizationCluster;
     }
 
+
+
     /**
      * Network interface utilization (in %) for the storage network interface.
      **/
@@ -172,6 +184,8 @@ public class NodeStatsInfo  implements Serializable  {
     public void setNetworkUtilizationStorage(Long networkUtilizationStorage) {
         this.networkUtilizationStorage = networkUtilizationStorage;
     }
+
+
     public Long getNodeID() {
         return this.nodeID;
     }
@@ -179,6 +193,8 @@ public class NodeStatsInfo  implements Serializable  {
     public void setNodeID(Long nodeID) {
         this.nodeID = nodeID;
     }
+
+
 
     /**
      * Bytes in on the storage interface.
@@ -191,6 +207,8 @@ public class NodeStatsInfo  implements Serializable  {
         this.sBytesIn = sBytesIn;
     }
 
+
+
     /**
      * Bytes out on the storage interface.
      **/
@@ -201,6 +219,8 @@ public class NodeStatsInfo  implements Serializable  {
     public void setSBytesOut(Long sBytesOut) {
         this.sBytesOut = sBytesOut;
     }
+
+
 
     /**
      * Current time in UTC format ISO 8691 date string.
@@ -213,6 +233,8 @@ public class NodeStatsInfo  implements Serializable  {
         this.timestamp = timestamp;
     }
 
+
+
     /**
      * Total memory usage in bytes.
      **/
@@ -223,6 +245,8 @@ public class NodeStatsInfo  implements Serializable  {
     public void setUsedMemory(Long usedMemory) {
         this.usedMemory = usedMemory;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

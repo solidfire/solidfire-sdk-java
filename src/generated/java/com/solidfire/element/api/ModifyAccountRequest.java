@@ -89,6 +89,8 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         this.accountID = accountID;
     }
 
+
+
     /**
      * Change the username of the account to this value.
      **/
@@ -96,9 +98,11 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         return this.username;
     }
 
-    public void setUsername(Optional<String> username) {
-        this.username = username;
+    public void setUsername(String username) {
+        this.username = (username == null) ? Optional.<String>empty() : Optional.of(username);
     }
+
+
 
     /**
      * Status of the account.
@@ -107,9 +111,11 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         return this.status;
     }
 
-    public void setStatus(Optional<String> status) {
-        this.status = status;
+    public void setStatus(String status) {
+        this.status = (status == null) ? Optional.<String>empty() : Optional.of(status);
     }
+
+
 
     /**
      * CHAP secret to use for the initiator.
@@ -119,9 +125,11 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         return this.initiatorSecret;
     }
 
-    public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) {
-        this.initiatorSecret = initiatorSecret;
+    public void setInitiatorSecret(CHAPSecret initiatorSecret) {
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
     }
+
+
 
     /**
      * CHAP secret to use for the target (mutual CHAP authentication).
@@ -131,9 +139,11 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         return this.targetSecret;
     }
 
-    public void setTargetSecret(Optional<CHAPSecret> targetSecret) {
-        this.targetSecret = targetSecret;
+    public void setTargetSecret(CHAPSecret targetSecret) {
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -142,9 +152,11 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

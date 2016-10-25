@@ -74,6 +74,8 @@ public class GetNodeHardwareInfoResult  implements Serializable  {
         this.nodeHardwareInfo = nodeHardwareInfo;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -88,6 +88,8 @@ public class VolumeQOS  implements Serializable  {
         this.minIOPS = minIOPS;
     }
 
+
+
     /**
      * Desired maximum 4KB IOPS allowed over an extended period of time.
      **/
@@ -98,6 +100,8 @@ public class VolumeQOS  implements Serializable  {
     public void setMaxIOPS(Long maxIOPS) {
         this.maxIOPS = maxIOPS;
     }
+
+
 
     /**
      * Maximum "peak" 4KB IOPS allowed for short periods of time.
@@ -110,6 +114,8 @@ public class VolumeQOS  implements Serializable  {
     public void setBurstIOPS(Long burstIOPS) {
         this.burstIOPS = burstIOPS;
     }
+
+
 
     /**
      * The length of time burst IOPS is allowed.
@@ -124,6 +130,8 @@ public class VolumeQOS  implements Serializable  {
         this.burstTime = burstTime;
     }
 
+
+
     /**
      * The curve is a set of key-value pairs.
      * The keys are I/O sizes in bytes.
@@ -137,6 +145,8 @@ public class VolumeQOS  implements Serializable  {
     public void setCurve(java.util.Map<String,Long> curve) {
         this.curve = curve;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

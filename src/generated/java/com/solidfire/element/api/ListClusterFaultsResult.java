@@ -74,6 +74,8 @@ public class ListClusterFaultsResult  implements Serializable  {
         this.faults = faults;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

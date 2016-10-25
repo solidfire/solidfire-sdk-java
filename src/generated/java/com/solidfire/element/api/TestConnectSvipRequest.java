@@ -70,9 +70,11 @@ public class TestConnectSvipRequest  implements Serializable  {
         return this.svip;
     }
 
-    public void setSvip(Optional<String> svip) {
-        this.svip = svip;
+    public void setSvip(String svip) {
+        this.svip = (svip == null) ? Optional.<String>empty() : Optional.of(svip);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -97,9 +97,11 @@ public class QoS  implements Serializable  {
         return this.minIOPS;
     }
 
-    public void setMinIOPS(Optional<Long> minIOPS) {
-        this.minIOPS = minIOPS;
+    public void setMinIOPS(Long minIOPS) {
+        this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : Optional.of(minIOPS);
     }
+
+
 
     /**
      * Desired maximum 4KB IOPS allowed over an extended period of time.
@@ -108,9 +110,11 @@ public class QoS  implements Serializable  {
         return this.maxIOPS;
     }
 
-    public void setMaxIOPS(Optional<Long> maxIOPS) {
-        this.maxIOPS = maxIOPS;
+    public void setMaxIOPS(Long maxIOPS) {
+        this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : Optional.of(maxIOPS);
     }
+
+
 
     /**
      * Maximum "peak" 4KB IOPS allowed for short periods of time.
@@ -120,9 +124,11 @@ public class QoS  implements Serializable  {
         return this.burstIOPS;
     }
 
-    public void setBurstIOPS(Optional<Long> burstIOPS) {
-        this.burstIOPS = burstIOPS;
+    public void setBurstIOPS(Long burstIOPS) {
+        this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : Optional.of(burstIOPS);
     }
+
+
 
     /**
      * The length of time burst IOPS is allowed.
@@ -133,9 +139,11 @@ public class QoS  implements Serializable  {
         return this.burstTime;
     }
 
-    public void setBurstTime(Optional<Long> burstTime) {
-        this.burstTime = burstTime;
+    public void setBurstTime(Long burstTime) {
+        this.burstTime = (burstTime == null) ? Optional.<Long>empty() : Optional.of(burstTime);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

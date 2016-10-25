@@ -77,6 +77,8 @@ public class CreateBackupTargetRequest  implements Serializable  {
         this.name = name;
     }
 
+
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
@@ -84,9 +86,11 @@ public class CreateBackupTargetRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

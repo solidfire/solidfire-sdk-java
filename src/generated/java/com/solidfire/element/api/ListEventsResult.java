@@ -72,6 +72,8 @@ public class ListEventsResult  implements Serializable  {
     public void setEventQueueType(String eventQueueType) {
         this.eventQueueType = eventQueueType;
     }
+
+
     public EventInfo[] getEvents() {
         return this.events;
     }
@@ -79,6 +81,8 @@ public class ListEventsResult  implements Serializable  {
     public void setEvents(EventInfo[] events) {
         this.events = events;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

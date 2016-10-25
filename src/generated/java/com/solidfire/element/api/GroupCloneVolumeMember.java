@@ -77,6 +77,8 @@ public class GroupCloneVolumeMember  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * The VolumeID of the source volume.
      **/
@@ -87,6 +89,8 @@ public class GroupCloneVolumeMember  implements Serializable  {
     public void setSrcVolumeID(Long srcVolumeID) {
         this.srcVolumeID = srcVolumeID;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -74,6 +74,8 @@ public class GetDriveHardwareInfoRequest  implements Serializable  {
         this.driveID = driveID;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

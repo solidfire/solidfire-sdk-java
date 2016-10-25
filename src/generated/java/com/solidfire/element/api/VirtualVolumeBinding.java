@@ -101,6 +101,8 @@ public class VirtualVolumeBinding  implements Serializable  {
         this.protocolEndpointID = protocolEndpointID;
     }
 
+
+
     /**
      * The scsiNAADeviceID of the protocol endpoint. For more information, see protocolEndpoint.
      **/
@@ -111,6 +113,8 @@ public class VirtualVolumeBinding  implements Serializable  {
     public void setProtocolEndpointInBandID(String protocolEndpointInBandID) {
         this.protocolEndpointInBandID = protocolEndpointInBandID;
     }
+
+
 
     /**
      * The type of protocol endpoint. SCSI is the only value returned for the protocol endpoint type.
@@ -123,6 +127,8 @@ public class VirtualVolumeBinding  implements Serializable  {
         this.protocolEndpointType = protocolEndpointType;
     }
 
+
+
     /**
      * The unique ID of the virtual volume binding object.
      **/
@@ -133,6 +139,8 @@ public class VirtualVolumeBinding  implements Serializable  {
     public void setVirtualVolumeBindingID(Long virtualVolumeBindingID) {
         this.virtualVolumeBindingID = virtualVolumeBindingID;
     }
+
+
 
     /**
      * The unique ID of the virtual volume host.
@@ -145,6 +153,8 @@ public class VirtualVolumeBinding  implements Serializable  {
         this.virtualVolumeHostID = virtualVolumeHostID;
     }
 
+
+
     /**
      * The unique ID of the virtual volume.
      **/
@@ -155,6 +165,8 @@ public class VirtualVolumeBinding  implements Serializable  {
     public void setVirtualVolumeID(java.util.UUID virtualVolumeID) {
         this.virtualVolumeID = virtualVolumeID;
     }
+
+
 
     /**
      * The secondary ID of the virtual volume.
@@ -167,6 +179,8 @@ public class VirtualVolumeBinding  implements Serializable  {
         this.virtualVolumeSecondaryID = virtualVolumeSecondaryID;
     }
 
+
+
     /**
      * An object describing the bound volume or snapshot.
      **/
@@ -177,6 +191,8 @@ public class VirtualVolumeBinding  implements Serializable  {
     public void setVirtualVolume(VirtualVolumeInfo virtualVolume) {
         this.virtualVolume = virtualVolume;
     }
+
+
 
     /**
      * An object describing the protocol endpoint to which the virtual volume is bound.
@@ -189,6 +205,8 @@ public class VirtualVolumeBinding  implements Serializable  {
         this.protocolEndpoint = protocolEndpoint;
     }
 
+
+
     /**
      * An object describing the host to which this binding corresponds.
      **/
@@ -199,6 +217,8 @@ public class VirtualVolumeBinding  implements Serializable  {
     public void setVirtualVolumeHost(VirtualVolumeHost virtualVolumeHost) {
         this.virtualVolumeHost = virtualVolumeHost;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

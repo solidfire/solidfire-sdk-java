@@ -73,9 +73,11 @@ public class RemoveVirtualNetworkRequest  implements Serializable  {
         return this.virtualNetworkID;
     }
 
-    public void setVirtualNetworkID(Optional<Long> virtualNetworkID) {
-        this.virtualNetworkID = virtualNetworkID;
+    public void setVirtualNetworkID(Long virtualNetworkID) {
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
     }
+
+
 
     /**
      * Network Tag that identifies the virtual network to remove.
@@ -84,9 +86,11 @@ public class RemoveVirtualNetworkRequest  implements Serializable  {
         return this.virtualNetworkTag;
     }
 
-    public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) {
-        this.virtualNetworkTag = virtualNetworkTag;
+    public void setVirtualNetworkTag(Long virtualNetworkTag) {
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

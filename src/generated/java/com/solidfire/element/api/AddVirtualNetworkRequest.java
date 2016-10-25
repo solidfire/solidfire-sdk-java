@@ -117,6 +117,8 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         this.virtualNetworkTag = virtualNetworkTag;
     }
 
+
+
     /**
      * User defined name for the new virtual network.
      **/
@@ -127,6 +129,8 @@ public class AddVirtualNetworkRequest  implements Serializable  {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     /**
      * Unique Range of IP addresses to include in the virtual network.
@@ -142,6 +146,8 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         this.addressBlocks = addressBlocks;
     }
 
+
+
     /**
      * Unique netmask for the virtual network being created.
      **/
@@ -152,6 +158,8 @@ public class AddVirtualNetworkRequest  implements Serializable  {
     public void setNetmask(String netmask) {
         this.netmask = netmask;
     }
+
+
 
     /**
      * Unique storage IP address for the virtual network being created.
@@ -164,6 +172,8 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         this.svip = svip;
     }
 
+
+
     /**
      * 
      * @since 9.0 
@@ -174,9 +184,11 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         return this.gateway;
     }
 
-    public void setGateway(Optional<String> gateway) {
-        this.gateway = gateway;
+    public void setGateway(String gateway) {
+        this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
     }
+
+
 
     /**
      * 
@@ -188,9 +200,11 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         return this.namespace;
     }
 
-    public void setNamespace(Optional<Boolean> namespace) {
-        this.namespace = namespace;
+    public void setNamespace(Boolean namespace) {
+        this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -199,9 +213,11 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

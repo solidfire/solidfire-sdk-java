@@ -80,6 +80,8 @@ public class VirtualVolumeUnsharedChunkResult  implements Serializable  {
         this.chunks = chunks;
     }
 
+
+
     /**
      * Number of chunks scanned.
      **/
@@ -91,6 +93,8 @@ public class VirtualVolumeUnsharedChunkResult  implements Serializable  {
         this.scannedChunks = scannedChunks;
     }
 
+
+
     /**
      * Size of each chunk.
      **/
@@ -101,6 +105,8 @@ public class VirtualVolumeUnsharedChunkResult  implements Serializable  {
     public void setChunkSize(Long chunkSize) {
         this.chunkSize = chunkSize;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

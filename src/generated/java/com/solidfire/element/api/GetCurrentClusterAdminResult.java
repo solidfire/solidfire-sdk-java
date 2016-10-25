@@ -74,6 +74,8 @@ public class GetCurrentClusterAdminResult  implements Serializable  {
         this.clusterAdmin = clusterAdmin;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

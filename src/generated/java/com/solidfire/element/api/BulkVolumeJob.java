@@ -143,6 +143,8 @@ public class BulkVolumeJob  implements Serializable  {
         this.bulkVolumeID = bulkVolumeID;
     }
 
+
+
     /**
      * Timestamp created for the bulk volume job.
      **/
@@ -153,6 +155,8 @@ public class BulkVolumeJob  implements Serializable  {
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
+
+
 
     /**
      * The number of seconds since the job began.
@@ -168,6 +172,8 @@ public class BulkVolumeJob  implements Serializable  {
         this.elapsedTime = elapsedTime;
     }
 
+
+
     /**
      * Format is either "compressed" or "native".
      **/
@@ -178,6 +184,8 @@ public class BulkVolumeJob  implements Serializable  {
     public void setFormat(String format) {
         this.format = format;
     }
+
+
 
     /**
      * The unique key created by the bulk volume session.
@@ -190,6 +198,8 @@ public class BulkVolumeJob  implements Serializable  {
         this.key = key;
     }
 
+
+
     /**
      * The completed percentage reported by the operation.
      **/
@@ -200,6 +210,8 @@ public class BulkVolumeJob  implements Serializable  {
     public void setPercentComplete(Long percentComplete) {
         this.percentComplete = percentComplete;
     }
+
+
 
     /**
      * The estimated time remaining in seconds.
@@ -212,6 +224,8 @@ public class BulkVolumeJob  implements Serializable  {
         this.remainingTime = remainingTime;
     }
 
+
+
     /**
      * The source volume ID.
      **/
@@ -222,6 +236,8 @@ public class BulkVolumeJob  implements Serializable  {
     public void setSrcVolumeID(Long srcVolumeID) {
         this.srcVolumeID = srcVolumeID;
     }
+
+
 
     /**
      * Can be one of the following:
@@ -238,6 +254,8 @@ public class BulkVolumeJob  implements Serializable  {
         this.status = status;
     }
 
+
+
     /**
      * The name of the script if one is provided.
      **/
@@ -249,6 +267,8 @@ public class BulkVolumeJob  implements Serializable  {
         this.script = script;
     }
 
+
+
     /**
      * ID of the snapshot if a snapshot is in the source of the bulk volume job.
      **/
@@ -259,6 +279,8 @@ public class BulkVolumeJob  implements Serializable  {
     public void setSnapshotID(Long snapshotID) {
         this.snapshotID = snapshotID;
     }
+
+
 
     /**
      * Can be one of the following:
@@ -273,6 +295,8 @@ public class BulkVolumeJob  implements Serializable  {
         this.type = type;
     }
 
+
+
     /**
      * JSON attributes on the bulk volume job.
      **/
@@ -283,6 +307,8 @@ public class BulkVolumeJob  implements Serializable  {
     public void setAttributes(java.util.Map<String, Object> attributes) {
         this.attributes = attributes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

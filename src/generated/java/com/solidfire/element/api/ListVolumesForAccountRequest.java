@@ -80,6 +80,8 @@ public class ListVolumesForAccountRequest  implements Serializable  {
         this.accountID = accountID;
     }
 
+
+
     /**
      * The ID of the first volume to list.
      * This can be useful for paging results.
@@ -89,9 +91,11 @@ public class ListVolumesForAccountRequest  implements Serializable  {
         return this.startVolumeID;
     }
 
-    public void setStartVolumeID(Optional<Long> startVolumeID) {
-        this.startVolumeID = startVolumeID;
+    public void setStartVolumeID(Long startVolumeID) {
+        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : Optional.of(startVolumeID);
     }
+
+
 
     /**
      * The maximum number of volumes to return from the API.
@@ -100,9 +104,11 @@ public class ListVolumesForAccountRequest  implements Serializable  {
         return this.limit;
     }
 
-    public void setLimit(Optional<Long> limit) {
-        this.limit = limit;
+    public void setLimit(Long limit) {
+        this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

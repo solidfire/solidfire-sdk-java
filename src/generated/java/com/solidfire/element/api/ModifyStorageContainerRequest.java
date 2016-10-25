@@ -78,27 +78,35 @@ public class ModifyStorageContainerRequest  implements Serializable  {
     public void setStorageContainerID(java.util.UUID storageContainerID) {
         this.storageContainerID = storageContainerID;
     }
+
+
     public Optional<CHAPSecret> getInitiatorSecret() {
         return this.initiatorSecret;
     }
 
-    public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) {
-        this.initiatorSecret = initiatorSecret;
+    public void setInitiatorSecret(CHAPSecret initiatorSecret) {
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
     }
+
+
     public Optional<CHAPSecret> getTargetSecret() {
         return this.targetSecret;
     }
 
-    public void setTargetSecret(Optional<CHAPSecret> targetSecret) {
-        this.targetSecret = targetSecret;
+    public void setTargetSecret(CHAPSecret targetSecret) {
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
     }
+
+
     public Optional<java.util.UUID> getCallingHostID() {
         return this.callingHostID;
     }
 
-    public void setCallingHostID(Optional<java.util.UUID> callingHostID) {
-        this.callingHostID = callingHostID;
+    public void setCallingHostID(java.util.UUID callingHostID) {
+        this.callingHostID = (callingHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingHostID);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

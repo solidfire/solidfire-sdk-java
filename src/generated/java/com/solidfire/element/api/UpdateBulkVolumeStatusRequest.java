@@ -86,6 +86,8 @@ public class UpdateBulkVolumeStatusRequest  implements Serializable  {
         this.key = key;
     }
 
+
+
     /**
      * The SolidFire system sets the status of the given bulk volume job.<br/>
      * Possible values:<br/>
@@ -101,6 +103,8 @@ public class UpdateBulkVolumeStatusRequest  implements Serializable  {
         this.status = status;
     }
 
+
+
     /**
      * The completed progress of the bulk volume job as a percentage.
      **/
@@ -108,9 +112,11 @@ public class UpdateBulkVolumeStatusRequest  implements Serializable  {
         return this.percentComplete;
     }
 
-    public void setPercentComplete(Optional<String> percentComplete) {
-        this.percentComplete = percentComplete;
+    public void setPercentComplete(String percentComplete) {
+        this.percentComplete = (percentComplete == null) ? Optional.<String>empty() : Optional.of(percentComplete);
     }
+
+
 
     /**
      * Returns the status of the bulk volume job when the job has completed.
@@ -119,9 +125,11 @@ public class UpdateBulkVolumeStatusRequest  implements Serializable  {
         return this.message;
     }
 
-    public void setMessage(Optional<String> message) {
-        this.message = message;
+    public void setMessage(String message) {
+        this.message = (message == null) ? Optional.<String>empty() : Optional.of(message);
     }
+
+
 
     /**
      * JSON attributes  updates what is on the bulk volume job.
@@ -130,9 +138,11 @@ public class UpdateBulkVolumeStatusRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

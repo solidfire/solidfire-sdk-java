@@ -77,6 +77,8 @@ public class LunAssignment  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed.
      **/
@@ -87,6 +89,8 @@ public class LunAssignment  implements Serializable  {
     public void setLun(Long lun) {
         this.lun = lun;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -84,6 +84,8 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
         this.status = status;
     }
 
+
+
     /**
      * The URL to access the node's web server provided only if the session is still active.
      **/
@@ -95,6 +97,8 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
         this.url = url;
     }
 
+
+
     /**
      * Returns attributes that were specified in the BulkVolumeStatusUpdate method. Values are returned if they have changed or not.
      **/
@@ -105,6 +109,8 @@ public class UpdateBulkVolumeStatusResult  implements Serializable  {
     public void setAttributes(java.util.Map<String, Object> attributes) {
         this.attributes = attributes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -86,6 +86,8 @@ public class SnmpNetwork  implements Serializable  {
         this.access = access;
     }
 
+
+
     /**
      * A CIDR network mask. This network mask must be an integer greater than or equal to 0, and less than or equal to 32. It must also not be equal to 31.
      **/
@@ -96,6 +98,8 @@ public class SnmpNetwork  implements Serializable  {
     public void setCidr(Long cidr) {
         this.cidr = cidr;
     }
+
+
 
     /**
      * SNMP community string.
@@ -108,6 +112,8 @@ public class SnmpNetwork  implements Serializable  {
         this.community = community;
     }
 
+
+
     /**
      * This parameter along with the cidr variable is used to control which network the access and community string apply to. The special value of "default" is used to specify an entry that applies to all networks. The cidr mask is ignored when network value is either a host name or default.
      **/
@@ -118,6 +124,8 @@ public class SnmpNetwork  implements Serializable  {
     public void setNetwork(String network) {
         this.network = network;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

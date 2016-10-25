@@ -79,6 +79,8 @@ public class GetNtpInfoResult  implements Serializable  {
         this.broadcastclient = broadcastclient;
     }
 
+
+
     /**
      * List of NTP servers.
      **/
@@ -89,6 +91,8 @@ public class GetNtpInfoResult  implements Serializable  {
     public void setServers(String[] servers) {
         this.servers = servers;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

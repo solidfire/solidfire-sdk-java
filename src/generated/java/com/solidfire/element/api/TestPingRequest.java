@@ -82,9 +82,11 @@ public class TestPingRequest  implements Serializable  {
         return this.attempts;
     }
 
-    public void setAttempts(Optional<Long> attempts) {
-        this.attempts = attempts;
+    public void setAttempts(Long attempts) {
+        this.attempts = (attempts == null) ? Optional.<Long>empty() : Optional.of(attempts);
     }
+
+
 
     /**
      * Specify address or hostnames of devices to ping.
@@ -93,9 +95,11 @@ public class TestPingRequest  implements Serializable  {
         return this.hosts;
     }
 
-    public void setHosts(Optional<String> hosts) {
-        this.hosts = hosts;
+    public void setHosts(String hosts) {
+        this.hosts = (hosts == null) ? Optional.<String>empty() : Optional.of(hosts);
     }
+
+
 
     /**
      * Specifies the length of time the ping should wait for a system response before issuing the next ping attempt or ending the process.
@@ -104,9 +108,11 @@ public class TestPingRequest  implements Serializable  {
         return this.totalTimeoutSec;
     }
 
-    public void setTotalTimeoutSec(Optional<Long> totalTimeoutSec) {
-        this.totalTimeoutSec = totalTimeoutSec;
+    public void setTotalTimeoutSec(Long totalTimeoutSec) {
+        this.totalTimeoutSec = (totalTimeoutSec == null) ? Optional.<Long>empty() : Optional.of(totalTimeoutSec);
     }
+
+
 
     /**
      * Specify the number of bytes to send in the ICMP packet sent to each IP. Number be less than the maximum MTU specified in the network configuration.
@@ -115,9 +121,11 @@ public class TestPingRequest  implements Serializable  {
         return this.packetSize;
     }
 
-    public void setPacketSize(Optional<Long> packetSize) {
-        this.packetSize = packetSize;
+    public void setPacketSize(Long packetSize) {
+        this.packetSize = (packetSize == null) ? Optional.<Long>empty() : Optional.of(packetSize);
     }
+
+
 
     /**
      * Specify the number of milliseconds to wait for each individual ping response. Default is 500ms.
@@ -126,9 +134,11 @@ public class TestPingRequest  implements Serializable  {
         return this.pingTimeoutMsec;
     }
 
-    public void setPingTimeoutMsec(Optional<Long> pingTimeoutMsec) {
-        this.pingTimeoutMsec = pingTimeoutMsec;
+    public void setPingTimeoutMsec(Long pingTimeoutMsec) {
+        this.pingTimeoutMsec = (pingTimeoutMsec == null) ? Optional.<Long>empty() : Optional.of(pingTimeoutMsec);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

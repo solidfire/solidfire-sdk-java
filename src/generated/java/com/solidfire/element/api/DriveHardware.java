@@ -153,6 +153,8 @@ public class DriveHardware  implements Serializable  {
     public void setCanonicalName(String canonicalName) {
         this.canonicalName = canonicalName;
     }
+
+
     public Boolean getConnected() {
         return this.connected;
     }
@@ -160,6 +162,8 @@ public class DriveHardware  implements Serializable  {
     public void setConnected(Boolean connected) {
         this.connected = connected;
     }
+
+
     public Long getDev() {
         return this.dev;
     }
@@ -167,6 +171,8 @@ public class DriveHardware  implements Serializable  {
     public void setDev(Long dev) {
         this.dev = dev;
     }
+
+
     public String getDevPath() {
         return this.devPath;
     }
@@ -174,6 +180,8 @@ public class DriveHardware  implements Serializable  {
     public void setDevPath(String devPath) {
         this.devPath = devPath;
     }
+
+
     public String getDriveType() {
         return this.driveType;
     }
@@ -181,6 +189,8 @@ public class DriveHardware  implements Serializable  {
     public void setDriveType(String driveType) {
         this.driveType = driveType;
     }
+
+
     public Long getLifeRemainingPercent() {
         return this.lifeRemainingPercent;
     }
@@ -188,6 +198,8 @@ public class DriveHardware  implements Serializable  {
     public void setLifeRemainingPercent(Long lifeRemainingPercent) {
         this.lifeRemainingPercent = lifeRemainingPercent;
     }
+
+
     public Long getLifetimeReadBytes() {
         return this.lifetimeReadBytes;
     }
@@ -195,6 +207,8 @@ public class DriveHardware  implements Serializable  {
     public void setLifetimeReadBytes(Long lifetimeReadBytes) {
         this.lifetimeReadBytes = lifetimeReadBytes;
     }
+
+
     public Long getLifetimeWriteBytes() {
         return this.lifetimeWriteBytes;
     }
@@ -202,6 +216,8 @@ public class DriveHardware  implements Serializable  {
     public void setLifetimeWriteBytes(Long lifetimeWriteBytes) {
         this.lifetimeWriteBytes = lifetimeWriteBytes;
     }
+
+
     public String getName() {
         return this.name;
     }
@@ -209,6 +225,8 @@ public class DriveHardware  implements Serializable  {
     public void setName(String name) {
         this.name = name;
     }
+
+
     public String getPath() {
         return this.path;
     }
@@ -216,6 +234,8 @@ public class DriveHardware  implements Serializable  {
     public void setPath(String path) {
         this.path = path;
     }
+
+
     public String getPathLink() {
         return this.pathLink;
     }
@@ -223,6 +243,8 @@ public class DriveHardware  implements Serializable  {
     public void setPathLink(String pathLink) {
         this.pathLink = pathLink;
     }
+
+
     public Long getPowerOnHours() {
         return this.powerOnHours;
     }
@@ -230,6 +252,8 @@ public class DriveHardware  implements Serializable  {
     public void setPowerOnHours(Long powerOnHours) {
         this.powerOnHours = powerOnHours;
     }
+
+
     public String getProduct() {
         return this.product;
     }
@@ -237,6 +261,8 @@ public class DriveHardware  implements Serializable  {
     public void setProduct(String product) {
         this.product = product;
     }
+
+
     public Long getReallocatedSectors() {
         return this.reallocatedSectors;
     }
@@ -244,6 +270,8 @@ public class DriveHardware  implements Serializable  {
     public void setReallocatedSectors(Long reallocatedSectors) {
         this.reallocatedSectors = reallocatedSectors;
     }
+
+
     public Long getReserveCapacityPercent() {
         return this.reserveCapacityPercent;
     }
@@ -251,6 +279,8 @@ public class DriveHardware  implements Serializable  {
     public void setReserveCapacityPercent(Long reserveCapacityPercent) {
         this.reserveCapacityPercent = reserveCapacityPercent;
     }
+
+
     public String getScsiCompatId() {
         return this.scsiCompatId;
     }
@@ -258,6 +288,8 @@ public class DriveHardware  implements Serializable  {
     public void setScsiCompatId(String scsiCompatId) {
         this.scsiCompatId = scsiCompatId;
     }
+
+
     public String getScsiState() {
         return this.scsiState;
     }
@@ -265,6 +297,8 @@ public class DriveHardware  implements Serializable  {
     public void setScsiState(String scsiState) {
         this.scsiState = scsiState;
     }
+
+
     public Boolean getSecurityAtMaximum() {
         return this.securityAtMaximum;
     }
@@ -272,6 +306,8 @@ public class DriveHardware  implements Serializable  {
     public void setSecurityAtMaximum(Boolean securityAtMaximum) {
         this.securityAtMaximum = securityAtMaximum;
     }
+
+
     public Boolean getSecurityEnabled() {
         return this.securityEnabled;
     }
@@ -279,6 +315,8 @@ public class DriveHardware  implements Serializable  {
     public void setSecurityEnabled(Boolean securityEnabled) {
         this.securityEnabled = securityEnabled;
     }
+
+
     public Boolean getSecurityFrozen() {
         return this.securityFrozen;
     }
@@ -286,6 +324,8 @@ public class DriveHardware  implements Serializable  {
     public void setSecurityFrozen(Boolean securityFrozen) {
         this.securityFrozen = securityFrozen;
     }
+
+
     public Boolean getSecurityLocked() {
         return this.securityLocked;
     }
@@ -293,6 +333,8 @@ public class DriveHardware  implements Serializable  {
     public void setSecurityLocked(Boolean securityLocked) {
         this.securityLocked = securityLocked;
     }
+
+
     public Boolean getSecuritySupported() {
         return this.securitySupported;
     }
@@ -300,6 +342,8 @@ public class DriveHardware  implements Serializable  {
     public void setSecuritySupported(Boolean securitySupported) {
         this.securitySupported = securitySupported;
     }
+
+
     public String getSerial() {
         return this.serial;
     }
@@ -307,6 +351,8 @@ public class DriveHardware  implements Serializable  {
     public void setSerial(String serial) {
         this.serial = serial;
     }
+
+
     public Long getSize() {
         return this.size;
     }
@@ -314,6 +360,8 @@ public class DriveHardware  implements Serializable  {
     public void setSize(Long size) {
         this.size = size;
     }
+
+
     public Long getSlot() {
         return this.slot;
     }
@@ -321,13 +369,17 @@ public class DriveHardware  implements Serializable  {
     public void setSlot(Long slot) {
         this.slot = slot;
     }
+
+
     public Optional<Boolean> getSmartSsdWriteCapable() {
         return this.smartSsdWriteCapable;
     }
 
-    public void setSmartSsdWriteCapable(Optional<Boolean> smartSsdWriteCapable) {
-        this.smartSsdWriteCapable = smartSsdWriteCapable;
+    public void setSmartSsdWriteCapable(Boolean smartSsdWriteCapable) {
+        this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : Optional.of(smartSsdWriteCapable);
     }
+
+
     public java.util.UUID getUuid() {
         return this.uuid;
     }
@@ -335,6 +387,8 @@ public class DriveHardware  implements Serializable  {
     public void setUuid(java.util.UUID uuid) {
         this.uuid = uuid;
     }
+
+
     public String getVendor() {
         return this.vendor;
     }
@@ -342,6 +396,8 @@ public class DriveHardware  implements Serializable  {
     public void setVendor(String vendor) {
         this.vendor = vendor;
     }
+
+
     public String getVersion() {
         return this.version;
     }
@@ -349,6 +405,8 @@ public class DriveHardware  implements Serializable  {
     public void setVersion(String version) {
         this.version = version;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

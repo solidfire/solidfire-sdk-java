@@ -104,6 +104,8 @@ public class LdapConfiguration  implements Serializable  {
         this.authType = authType;
     }
 
+
+
     /**
      * Identifies whether or not the system is enabled for LDAP. <br/>
      * Valid values:<br/>
@@ -118,6 +120,8 @@ public class LdapConfiguration  implements Serializable  {
         this.enabled = enabled;
     }
 
+
+
     /**
      * The base DN of the tree to start the group search (will do a subtree search from here).
      **/
@@ -129,6 +133,8 @@ public class LdapConfiguration  implements Serializable  {
         this.groupSearchBaseDN = groupSearchBaseDN;
     }
 
+
+
     /**
      * The custom search filter used.
      **/
@@ -139,6 +145,8 @@ public class LdapConfiguration  implements Serializable  {
     public void setGroupSearchCustomFilter(String groupSearchCustomFilter) {
         this.groupSearchCustomFilter = groupSearchCustomFilter;
     }
+
+
 
     /**
      * Controls the default group search filter used, can be one of the following:<br/>
@@ -154,6 +162,8 @@ public class LdapConfiguration  implements Serializable  {
         this.groupSearchType = groupSearchType;
     }
 
+
+
     /**
      * A fully qualified DN to log in with to perform an LDAP search for the user (needs read access to the LDAP directory).
      **/
@@ -164,6 +174,8 @@ public class LdapConfiguration  implements Serializable  {
     public void setSearchBindDN(String searchBindDN) {
         this.searchBindDN = searchBindDN;
     }
+
+
 
     /**
      * A comma-separated list of LDAP server URIs (examples: "ldap://1.2.3.4" and ldaps://1.2.3.4:123")
@@ -176,6 +188,8 @@ public class LdapConfiguration  implements Serializable  {
         this.serverURIs = serverURIs;
     }
 
+
+
     /**
      * A string that is used to form a fully qualified user DN.
      **/
@@ -186,6 +200,8 @@ public class LdapConfiguration  implements Serializable  {
     public void setUserDNTemplate(String userDNTemplate) {
         this.userDNTemplate = userDNTemplate;
     }
+
+
 
     /**
      * The base DN of the tree used to start the search (will do a subtree search from here).
@@ -198,6 +214,8 @@ public class LdapConfiguration  implements Serializable  {
         this.userSearchBaseDN = userSearchBaseDN;
     }
 
+
+
     /**
      * The LDAP filter used.
      **/
@@ -208,6 +226,8 @@ public class LdapConfiguration  implements Serializable  {
     public void setUserSearchFilter(String userSearchFilter) {
         this.userSearchFilter = userSearchFilter;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

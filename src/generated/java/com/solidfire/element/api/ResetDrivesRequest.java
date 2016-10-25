@@ -77,6 +77,8 @@ public class ResetDrivesRequest  implements Serializable  {
         this.drives = drives;
     }
 
+
+
     /**
      * The "force" parameter must be included on this method to successfully reset a drive.
      **/
@@ -87,6 +89,8 @@ public class ResetDrivesRequest  implements Serializable  {
     public void setForce(Boolean force) {
         this.force = force;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

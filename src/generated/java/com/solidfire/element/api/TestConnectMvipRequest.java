@@ -70,9 +70,11 @@ public class TestConnectMvipRequest  implements Serializable  {
         return this.mvip;
     }
 
-    public void setMvip(Optional<String> mvip) {
-        this.mvip = mvip;
+    public void setMvip(String mvip) {
+        this.mvip = (mvip == null) ? Optional.<String>empty() : Optional.of(mvip);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

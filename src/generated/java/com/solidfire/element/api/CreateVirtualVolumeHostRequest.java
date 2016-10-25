@@ -89,6 +89,8 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
         this.virtualVolumeHostID = virtualVolumeHostID;
     }
 
+
+
     /**
      * The GUID of the ESX Cluster.
      **/
@@ -99,13 +101,17 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
     public void setClusterID(java.util.UUID clusterID) {
         this.clusterID = clusterID;
     }
+
+
     public Optional<String[]> getInitiatorNames() {
         return this.initiatorNames;
     }
 
-    public void setInitiatorNames(Optional<String[]> initiatorNames) {
-        this.initiatorNames = initiatorNames;
+    public void setInitiatorNames(String[] initiatorNames) {
+        this.initiatorNames = (initiatorNames == null) ? Optional.<String[]>empty() : Optional.of(initiatorNames);
     }
+
+
 
     /**
      * A list of PEs the host is aware of.
@@ -114,9 +120,11 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
         return this.visibleProtocolEndpointIDs;
     }
 
-    public void setVisibleProtocolEndpointIDs(Optional<java.util.UUID[]> visibleProtocolEndpointIDs) {
-        this.visibleProtocolEndpointIDs = visibleProtocolEndpointIDs;
+    public void setVisibleProtocolEndpointIDs(java.util.UUID[] visibleProtocolEndpointIDs) {
+        this.visibleProtocolEndpointIDs = (visibleProtocolEndpointIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(visibleProtocolEndpointIDs);
     }
+
+
 
     /**
      * IP or DNS name for the host.
@@ -125,16 +133,20 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
         return this.hostAddress;
     }
 
-    public void setHostAddress(Optional<String> hostAddress) {
-        this.hostAddress = hostAddress;
+    public void setHostAddress(String hostAddress) {
+        this.hostAddress = (hostAddress == null) ? Optional.<String>empty() : Optional.of(hostAddress);
     }
+
+
     public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
         return this.callingVirtualVolumeHostID;
     }
 
-    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) {
-        this.callingVirtualVolumeHostID = callingVirtualVolumeHostID;
+    public void setCallingVirtualVolumeHostID(java.util.UUID callingVirtualVolumeHostID) {
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

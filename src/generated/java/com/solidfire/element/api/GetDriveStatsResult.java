@@ -70,6 +70,8 @@ public class GetDriveStatsResult  implements Serializable  {
         this.driveStats = driveStats;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

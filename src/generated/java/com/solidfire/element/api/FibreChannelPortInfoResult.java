@@ -74,6 +74,8 @@ public class FibreChannelPortInfoResult  implements Serializable  {
         this.result = result;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

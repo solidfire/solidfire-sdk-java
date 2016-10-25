@@ -120,6 +120,8 @@ public class Node  implements Serializable  {
         this.nodeID = nodeID;
     }
 
+
+
     /**
      * The master service responsible for controlling other services on this node.
      **/
@@ -130,6 +132,8 @@ public class Node  implements Serializable  {
     public void setAssociatedMasterServiceID(Long associatedMasterServiceID) {
         this.associatedMasterServiceID = associatedMasterServiceID;
     }
+
+
     public Long getAssociatedFServiceID() {
         return this.associatedFServiceID;
     }
@@ -137,6 +141,8 @@ public class Node  implements Serializable  {
     public void setAssociatedFServiceID(Long associatedFServiceID) {
         this.associatedFServiceID = associatedFServiceID;
     }
+
+
     public String getFibreChannelTargetPortGroup() {
         return this.fibreChannelTargetPortGroup;
     }
@@ -144,6 +150,8 @@ public class Node  implements Serializable  {
     public void setFibreChannelTargetPortGroup(String fibreChannelTargetPortGroup) {
         this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
     }
+
+
     public String getName() {
         return this.name;
     }
@@ -151,6 +159,8 @@ public class Node  implements Serializable  {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     /**
      * Information about the platform this node is.
@@ -163,6 +173,8 @@ public class Node  implements Serializable  {
         this.platformInfo = platformInfo;
     }
 
+
+
     /**
      * The version of SolidFire software this node is currently running.
      **/
@@ -173,6 +185,8 @@ public class Node  implements Serializable  {
     public void setSoftwareVersion(String softwareVersion) {
         this.softwareVersion = softwareVersion;
     }
+
+
 
     /**
      * IP address used for both intra- and inter-cluster communication.
@@ -185,6 +199,8 @@ public class Node  implements Serializable  {
         this.cip = cip;
     }
 
+
+
     /**
      * The machine's name for the "cip" interface.
      **/
@@ -195,6 +211,8 @@ public class Node  implements Serializable  {
     public void setCipi(String cipi) {
         this.cipi = cipi;
     }
+
+
 
     /**
      * IP address used for cluster management (hosting the API and web site).
@@ -207,6 +225,8 @@ public class Node  implements Serializable  {
         this.mip = mip;
     }
 
+
+
     /**
      * The machine's name for the "mip" interface.
      **/
@@ -217,6 +237,8 @@ public class Node  implements Serializable  {
     public void setMipi(String mipi) {
         this.mipi = mipi;
     }
+
+
 
     /**
      * IP address used for iSCSI traffic.
@@ -229,6 +251,8 @@ public class Node  implements Serializable  {
         this.sip = sip;
     }
 
+
+
     /**
      * The machine's name for the "sip" interface.
      **/
@@ -240,6 +264,8 @@ public class Node  implements Serializable  {
         this.sipi = sipi;
     }
 
+
+
     /**
      * UUID of node.
      **/
@@ -250,6 +276,8 @@ public class Node  implements Serializable  {
     public void setUuid(java.util.UUID uuid) {
         this.uuid = uuid;
     }
+
+
     public java.util.Map<String, Object> getAttributes() {
         return this.attributes;
     }
@@ -257,6 +285,8 @@ public class Node  implements Serializable  {
     public void setAttributes(java.util.Map<String, Object> attributes) {
         this.attributes = attributes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

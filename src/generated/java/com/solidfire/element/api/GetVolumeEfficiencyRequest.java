@@ -76,13 +76,17 @@ public class GetVolumeEfficiencyRequest  implements Serializable  {
     public void setVolumeID(Long volumeID) {
         this.volumeID = volumeID;
     }
+
+
     public Optional<Boolean> getForce() {
         return this.force;
     }
 
-    public void setForce(Optional<Boolean> force) {
-        this.force = force;
+    public void setForce(Boolean force) {
+        this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

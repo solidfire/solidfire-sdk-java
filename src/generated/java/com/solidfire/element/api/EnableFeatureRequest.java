@@ -74,6 +74,8 @@ public class EnableFeatureRequest  implements Serializable  {
         this.feature = feature;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

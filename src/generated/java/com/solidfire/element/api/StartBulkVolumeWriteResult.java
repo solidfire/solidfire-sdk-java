@@ -80,6 +80,8 @@ public class StartBulkVolumeWriteResult  implements Serializable  {
         this.asyncHandle = asyncHandle;
     }
 
+
+
     /**
      * Opaque key uniquely identifying the session.
      **/
@@ -91,6 +93,8 @@ public class StartBulkVolumeWriteResult  implements Serializable  {
         this.key = key;
     }
 
+
+
     /**
      * URL to access the node's web server
      **/
@@ -101,6 +105,8 @@ public class StartBulkVolumeWriteResult  implements Serializable  {
     public void setUrl(String url) {
         this.url = url;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

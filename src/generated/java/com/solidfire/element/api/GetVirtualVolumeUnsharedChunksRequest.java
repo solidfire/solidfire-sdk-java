@@ -89,6 +89,8 @@ public class GetVirtualVolumeUnsharedChunksRequest  implements Serializable  {
         this.virtualVolumeID = virtualVolumeID;
     }
 
+
+
     /**
      * The ID of the Virtual Volume to compare against.
      **/
@@ -99,6 +101,8 @@ public class GetVirtualVolumeUnsharedChunksRequest  implements Serializable  {
     public void setBaseVirtualVolumeID(java.util.UUID baseVirtualVolumeID) {
         this.baseVirtualVolumeID = baseVirtualVolumeID;
     }
+
+
 
     /**
      * Start Byte offset.
@@ -111,6 +115,8 @@ public class GetVirtualVolumeUnsharedChunksRequest  implements Serializable  {
         this.segmentStart = segmentStart;
     }
 
+
+
     /**
      * Length of the scan segment in bytes.
      **/
@@ -122,6 +128,8 @@ public class GetVirtualVolumeUnsharedChunksRequest  implements Serializable  {
         this.segmentLength = segmentLength;
     }
 
+
+
     /**
      * Number of bytes represented by one bit in the bitmap.
      **/
@@ -132,13 +140,17 @@ public class GetVirtualVolumeUnsharedChunksRequest  implements Serializable  {
     public void setChunkSize(Long chunkSize) {
         this.chunkSize = chunkSize;
     }
+
+
     public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
         return this.callingVirtualVolumeHostID;
     }
 
-    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) {
-        this.callingVirtualVolumeHostID = callingVirtualVolumeHostID;
+    public void setCallingVirtualVolumeHostID(java.util.UUID callingVirtualVolumeHostID) {
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -74,6 +74,8 @@ public class ListVirtualVolumeHostsResult  implements Serializable  {
         this.hosts = hosts;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

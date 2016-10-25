@@ -83,6 +83,8 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
         this.username = username;
     }
 
+
+
     /**
      * Controls which methods this Cluster Admin can use. For more details on the levels of access, see the Access Control appendix in the SolidFire API Reference.
      **/
@@ -94,6 +96,8 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
         this.access = access;
     }
 
+
+
     /**
      * Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
      **/
@@ -101,9 +105,11 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
         return this.acceptEula;
     }
 
-    public void setAcceptEula(Optional<Boolean> acceptEula) {
-        this.acceptEula = acceptEula;
+    public void setAcceptEula(Boolean acceptEula) {
+        this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : Optional.of(acceptEula);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -112,9 +118,11 @@ public class AddLdapClusterAdminRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

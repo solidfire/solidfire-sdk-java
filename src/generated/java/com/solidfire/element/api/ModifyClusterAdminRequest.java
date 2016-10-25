@@ -83,6 +83,8 @@ public class ModifyClusterAdminRequest  implements Serializable  {
         this.clusterAdminID = clusterAdminID;
     }
 
+
+
     /**
      * Password used to authenticate this Cluster Admin.
      **/
@@ -90,9 +92,11 @@ public class ModifyClusterAdminRequest  implements Serializable  {
         return this.password;
     }
 
-    public void setPassword(Optional<String> password) {
-        this.password = password;
+    public void setPassword(String password) {
+        this.password = (password == null) ? Optional.<String>empty() : Optional.of(password);
     }
+
+
 
     /**
      * Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
@@ -101,9 +105,11 @@ public class ModifyClusterAdminRequest  implements Serializable  {
         return this.access;
     }
 
-    public void setAccess(Optional<String[]> access) {
-        this.access = access;
+    public void setAccess(String[] access) {
+        this.access = (access == null) ? Optional.<String[]>empty() : Optional.of(access);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -112,9 +118,11 @@ public class ModifyClusterAdminRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

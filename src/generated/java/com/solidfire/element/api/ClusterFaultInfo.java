@@ -105,6 +105,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setSeverity(String severity) {
         this.severity = severity;
     }
+
+
     public String getType() {
         return this.type;
     }
@@ -112,6 +114,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setType(String type) {
         this.type = type;
     }
+
+
     public String getCode() {
         return this.code;
     }
@@ -119,6 +123,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setCode(String code) {
         this.code = code;
     }
+
+
     public String getDetails() {
         return this.details;
     }
@@ -126,6 +132,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setDetails(String details) {
         this.details = details;
     }
+
+
     public Long getNodeHardwareFaultID() {
         return this.nodeHardwareFaultID;
     }
@@ -133,6 +141,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setNodeHardwareFaultID(Long nodeHardwareFaultID) {
         this.nodeHardwareFaultID = nodeHardwareFaultID;
     }
+
+
     public Long getNodeID() {
         return this.nodeID;
     }
@@ -140,6 +150,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setNodeID(Long nodeID) {
         this.nodeID = nodeID;
     }
+
+
     public Long getServiceID() {
         return this.serviceID;
     }
@@ -147,6 +159,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setServiceID(Long serviceID) {
         this.serviceID = serviceID;
     }
+
+
     public Long getDriveID() {
         return this.driveID;
     }
@@ -154,6 +168,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setDriveID(Long driveID) {
         this.driveID = driveID;
     }
+
+
     public Boolean getResolved() {
         return this.resolved;
     }
@@ -161,6 +177,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setResolved(Boolean resolved) {
         this.resolved = resolved;
     }
+
+
     public Long getClusterFaultID() {
         return this.clusterFaultID;
     }
@@ -168,6 +186,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setClusterFaultID(Long clusterFaultID) {
         this.clusterFaultID = clusterFaultID;
     }
+
+
     public String getDate() {
         return this.date;
     }
@@ -175,6 +195,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setDate(String date) {
         this.date = date;
     }
+
+
     public String getResolvedDate() {
         return this.resolvedDate;
     }
@@ -182,6 +204,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setResolvedDate(String resolvedDate) {
         this.resolvedDate = resolvedDate;
     }
+
+
     public Object getData() {
         return this.data;
     }
@@ -189,6 +213,8 @@ public class ClusterFaultInfo  implements Serializable  {
     public void setData(Object data) {
         this.data = data;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

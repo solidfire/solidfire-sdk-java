@@ -74,6 +74,8 @@ public class ListClusterAdminsResult  implements Serializable  {
         this.clusterAdmins = clusterAdmins;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

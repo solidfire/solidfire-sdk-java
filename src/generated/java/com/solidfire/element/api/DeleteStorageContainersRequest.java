@@ -76,13 +76,17 @@ public class DeleteStorageContainersRequest  implements Serializable  {
     public void setStorageContainerIDs(java.util.UUID[] storageContainerIDs) {
         this.storageContainerIDs = storageContainerIDs;
     }
+
+
     public Optional<java.util.UUID> getCallingHostID() {
         return this.callingHostID;
     }
 
-    public void setCallingHostID(Optional<java.util.UUID> callingHostID) {
-        this.callingHostID = callingHostID;
+    public void setCallingHostID(java.util.UUID callingHostID) {
+        this.callingHostID = (callingHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingHostID);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -80,6 +80,8 @@ public class CloneVolumeResult  implements Serializable  {
         this.cloneID = cloneID;
     }
 
+
+
     /**
      * The volume ID of the newly-created clone.
      **/
@@ -91,6 +93,8 @@ public class CloneVolumeResult  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * Handle value used to track the progress of the clone.
      **/
@@ -101,6 +105,8 @@ public class CloneVolumeResult  implements Serializable  {
     public void setAsyncHandle(Long asyncHandle) {
         this.asyncHandle = asyncHandle;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

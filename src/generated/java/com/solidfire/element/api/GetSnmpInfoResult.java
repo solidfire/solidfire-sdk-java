@@ -85,6 +85,8 @@ public class GetSnmpInfoResult  implements Serializable  {
         this.networks = networks;
     }
 
+
+
     /**
      * If the nodes in the cluster are configured for SNMP.
      **/
@@ -95,6 +97,8 @@ public class GetSnmpInfoResult  implements Serializable  {
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
+
+
 
     /**
      * If the nodes in the cluster are configured for SNMP v3.
@@ -107,6 +111,8 @@ public class GetSnmpInfoResult  implements Serializable  {
         this.snmpV3Enabled = snmpV3Enabled;
     }
 
+
+
     /**
      * If SNMP v3 is enabled, the values returned is a list of user access parameters for SNMP information from the cluster. This will be returned instead of the "networks" parameter.
      **/
@@ -117,6 +123,8 @@ public class GetSnmpInfoResult  implements Serializable  {
     public void setUsmUsers(SnmpV3UsmUser[] usmUsers) {
         this.usmUsers = usmUsers;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

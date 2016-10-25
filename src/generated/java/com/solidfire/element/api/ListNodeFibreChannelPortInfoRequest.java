@@ -70,9 +70,11 @@ public class ListNodeFibreChannelPortInfoRequest  implements Serializable  {
         return this.force;
     }
 
-    public void setForce(Optional<Boolean> force) {
-        this.force = force;
+    public void setForce(Boolean force) {
+        this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

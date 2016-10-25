@@ -74,6 +74,8 @@ public class ListTestsResult  implements Serializable  {
         this.tests = tests;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

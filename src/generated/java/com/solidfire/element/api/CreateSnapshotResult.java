@@ -77,6 +77,8 @@ public class CreateSnapshotResult  implements Serializable  {
         this.snapshotID = snapshotID;
     }
 
+
+
     /**
      * A string that represents the correct digits in the stored snapshot.
      * This checksum can be used later to compare other snapshots to detect errors in the data.
@@ -88,6 +90,8 @@ public class CreateSnapshotResult  implements Serializable  {
     public void setChecksum(String checksum) {
         this.checksum = checksum;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

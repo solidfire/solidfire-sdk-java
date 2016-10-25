@@ -96,6 +96,8 @@ public class VirtualVolumeTask  implements Serializable  {
     public void setVirtualVolumeTaskID(java.util.UUID virtualVolumeTaskID) {
         this.virtualVolumeTaskID = virtualVolumeTaskID;
     }
+
+
     public java.util.UUID getVirtualvolumeID() {
         return this.virtualvolumeID;
     }
@@ -103,6 +105,8 @@ public class VirtualVolumeTask  implements Serializable  {
     public void setVirtualvolumeID(java.util.UUID virtualvolumeID) {
         this.virtualvolumeID = virtualvolumeID;
     }
+
+
     public java.util.UUID getCloneVirtualVolumeID() {
         return this.cloneVirtualVolumeID;
     }
@@ -110,6 +114,8 @@ public class VirtualVolumeTask  implements Serializable  {
     public void setCloneVirtualVolumeID(java.util.UUID cloneVirtualVolumeID) {
         this.cloneVirtualVolumeID = cloneVirtualVolumeID;
     }
+
+
     public String getStatus() {
         return this.status;
     }
@@ -117,6 +123,8 @@ public class VirtualVolumeTask  implements Serializable  {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
     public String getOperation() {
         return this.operation;
     }
@@ -124,6 +132,8 @@ public class VirtualVolumeTask  implements Serializable  {
     public void setOperation(String operation) {
         this.operation = operation;
     }
+
+
     public java.util.UUID getVirtualVolumeHostID() {
         return this.virtualVolumeHostID;
     }
@@ -131,6 +141,8 @@ public class VirtualVolumeTask  implements Serializable  {
     public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) {
         this.virtualVolumeHostID = virtualVolumeHostID;
     }
+
+
     public java.util.Map<String, Object> getParentMetadata() {
         return this.parentMetadata;
     }
@@ -138,6 +150,8 @@ public class VirtualVolumeTask  implements Serializable  {
     public void setParentMetadata(java.util.Map<String, Object> parentMetadata) {
         this.parentMetadata = parentMetadata;
     }
+
+
     public Long getParentTotalSize() {
         return this.parentTotalSize;
     }
@@ -145,6 +159,8 @@ public class VirtualVolumeTask  implements Serializable  {
     public void setParentTotalSize(Long parentTotalSize) {
         this.parentTotalSize = parentTotalSize;
     }
+
+
     public Long getParentUsedSize() {
         return this.parentUsedSize;
     }
@@ -152,6 +168,8 @@ public class VirtualVolumeTask  implements Serializable  {
     public void setParentUsedSize(Long parentUsedSize) {
         this.parentUsedSize = parentUsedSize;
     }
+
+
     public Boolean getCancelled() {
         return this.cancelled;
     }
@@ -159,6 +177,8 @@ public class VirtualVolumeTask  implements Serializable  {
     public void setCancelled(Boolean cancelled) {
         this.cancelled = cancelled;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

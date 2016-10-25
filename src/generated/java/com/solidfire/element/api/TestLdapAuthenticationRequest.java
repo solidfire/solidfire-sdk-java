@@ -80,6 +80,8 @@ public class TestLdapAuthenticationRequest  implements Serializable  {
         this.username = username;
     }
 
+
+
     /**
      * The password for the username to be tester.
      **/
@@ -91,6 +93,8 @@ public class TestLdapAuthenticationRequest  implements Serializable  {
         this.password = password;
     }
 
+
+
     /**
      * An ldapConfiguration object to be tested. If this parameter is provided, the API call will test the provided configuration even if LDAP authentication is currently disabled.
      **/
@@ -98,9 +102,11 @@ public class TestLdapAuthenticationRequest  implements Serializable  {
         return this.ldapConfiguration;
     }
 
-    public void setLdapConfiguration(Optional<LdapConfiguration> ldapConfiguration) {
-        this.ldapConfiguration = ldapConfiguration;
+    public void setLdapConfiguration(LdapConfiguration ldapConfiguration) {
+        this.ldapConfiguration = (ldapConfiguration == null) ? Optional.<LdapConfiguration>empty() : Optional.of(ldapConfiguration);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -77,6 +77,8 @@ public class SnapshotReplication  implements Serializable  {
         this.state = state;
     }
 
+
+
     /**
      * Reserved for future use.
      **/
@@ -87,6 +89,8 @@ public class SnapshotReplication  implements Serializable  {
     public void setStateDetails(String stateDetails) {
         this.stateDetails = stateDetails;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

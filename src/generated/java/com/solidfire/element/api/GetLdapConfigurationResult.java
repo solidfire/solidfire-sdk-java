@@ -76,6 +76,8 @@ public class GetLdapConfigurationResult  implements Serializable  {
         this.ldapConfiguration = ldapConfiguration;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

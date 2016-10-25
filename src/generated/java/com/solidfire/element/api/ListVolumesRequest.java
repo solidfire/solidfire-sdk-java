@@ -106,9 +106,11 @@ public class ListVolumesRequest  implements Serializable  {
         return this.startVolumeID;
     }
 
-    public void setStartVolumeID(Optional<Long> startVolumeID) {
-        this.startVolumeID = startVolumeID;
+    public void setStartVolumeID(Long startVolumeID) {
+        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : Optional.of(startVolumeID);
     }
+
+
 
     /**
      * The maximum number of volumes to return from the API.
@@ -117,9 +119,11 @@ public class ListVolumesRequest  implements Serializable  {
         return this.limit;
     }
 
-    public void setLimit(Optional<Long> limit) {
-        this.limit = limit;
+    public void setLimit(Long limit) {
+        this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
     }
+
+
 
     /**
      * If specified, filter to only volumes with the provided status.
@@ -129,9 +133,11 @@ public class ListVolumesRequest  implements Serializable  {
         return this.volumeStatus;
     }
 
-    public void setVolumeStatus(Optional<String> volumeStatus) {
-        this.volumeStatus = volumeStatus;
+    public void setVolumeStatus(String volumeStatus) {
+        this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : Optional.of(volumeStatus);
     }
+
+
 
     /**
      * If specified, only fetch volumes which belong to the provided accounts.
@@ -141,9 +147,11 @@ public class ListVolumesRequest  implements Serializable  {
         return this.accounts;
     }
 
-    public void setAccounts(Optional<Long[]> accounts) {
-        this.accounts = accounts;
+    public void setAccounts(Long[] accounts) {
+        this.accounts = (accounts == null) ? Optional.<Long[]>empty() : Optional.of(accounts);
     }
+
+
 
     /**
      * If specified, only fetch volumes which are paired (if true) or non-paired (if false).
@@ -153,9 +161,11 @@ public class ListVolumesRequest  implements Serializable  {
         return this.isPaired;
     }
 
-    public void setIsPaired(Optional<Boolean> isPaired) {
-        this.isPaired = isPaired;
+    public void setIsPaired(Boolean isPaired) {
+        this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : Optional.of(isPaired);
     }
+
+
 
     /**
      * If specified, only fetch volumes specified in this list.
@@ -168,9 +178,11 @@ public class ListVolumesRequest  implements Serializable  {
         return this.volumeIDs;
     }
 
-    public void setVolumeIDs(Optional<Long[]> volumeIDs) {
-        this.volumeIDs = volumeIDs;
+    public void setVolumeIDs(Long[] volumeIDs) {
+        this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

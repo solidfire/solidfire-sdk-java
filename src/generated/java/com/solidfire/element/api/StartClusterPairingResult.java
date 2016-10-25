@@ -77,6 +77,8 @@ public class StartClusterPairingResult  implements Serializable  {
         this.clusterPairingKey = clusterPairingKey;
     }
 
+
+
     /**
      * Unique identifier for the cluster pair.
      **/
@@ -87,6 +89,8 @@ public class StartClusterPairingResult  implements Serializable  {
     public void setClusterPairID(Long clusterPairID) {
         this.clusterPairID = clusterPairID;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

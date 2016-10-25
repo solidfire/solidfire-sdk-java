@@ -74,6 +74,8 @@ public class ListBackupTargetsResult  implements Serializable  {
         this.backupTargets = backupTargets;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

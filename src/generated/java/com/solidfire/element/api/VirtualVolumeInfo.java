@@ -96,6 +96,8 @@ public class VirtualVolumeInfo  implements Serializable  {
     public void setVirtualVolumeID(java.util.UUID virtualVolumeID) {
         this.virtualVolumeID = virtualVolumeID;
     }
+
+
     public java.util.UUID getParentVirtualVolumeID() {
         return this.parentVirtualVolumeID;
     }
@@ -103,6 +105,8 @@ public class VirtualVolumeInfo  implements Serializable  {
     public void setParentVirtualVolumeID(java.util.UUID parentVirtualVolumeID) {
         this.parentVirtualVolumeID = parentVirtualVolumeID;
     }
+
+
     public java.util.UUID getStorageContainerID() {
         return this.storageContainerID;
     }
@@ -110,6 +114,8 @@ public class VirtualVolumeInfo  implements Serializable  {
     public void setStorageContainerID(java.util.UUID storageContainerID) {
         this.storageContainerID = storageContainerID;
     }
+
+
     public Long getVolumeID() {
         return this.volumeID;
     }
@@ -117,6 +123,8 @@ public class VirtualVolumeInfo  implements Serializable  {
     public void setVolumeID(Long volumeID) {
         this.volumeID = volumeID;
     }
+
+
     public Long getSnapshotID() {
         return this.snapshotID;
     }
@@ -124,6 +132,8 @@ public class VirtualVolumeInfo  implements Serializable  {
     public void setSnapshotID(Long snapshotID) {
         this.snapshotID = snapshotID;
     }
+
+
     public String getVirtualVolumeType() {
         return this.virtualVolumeType;
     }
@@ -131,6 +141,8 @@ public class VirtualVolumeInfo  implements Serializable  {
     public void setVirtualVolumeType(String virtualVolumeType) {
         this.virtualVolumeType = virtualVolumeType;
     }
+
+
     public String getStatus() {
         return this.status;
     }
@@ -138,6 +150,8 @@ public class VirtualVolumeInfo  implements Serializable  {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
     public Long[] getBindings() {
         return this.bindings;
     }
@@ -145,6 +159,8 @@ public class VirtualVolumeInfo  implements Serializable  {
     public void setBindings(Long[] bindings) {
         this.bindings = bindings;
     }
+
+
     public java.util.UUID[] getChildren() {
         return this.children;
     }
@@ -152,6 +168,8 @@ public class VirtualVolumeInfo  implements Serializable  {
     public void setChildren(java.util.UUID[] children) {
         this.children = children;
     }
+
+
     public java.util.Map<String, Object> getMetadata() {
         return this.metadata;
     }
@@ -159,6 +177,8 @@ public class VirtualVolumeInfo  implements Serializable  {
     public void setMetadata(java.util.Map<String, Object> metadata) {
         this.metadata = metadata;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

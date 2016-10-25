@@ -76,13 +76,17 @@ public class GetAccountEfficiencyRequest  implements Serializable  {
     public void setAccountID(Long accountID) {
         this.accountID = accountID;
     }
+
+
     public Optional<Boolean> getForce() {
         return this.force;
     }
 
-    public void setForce(Optional<Boolean> force) {
-        this.force = force;
+    public void setForce(Boolean force) {
+        this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

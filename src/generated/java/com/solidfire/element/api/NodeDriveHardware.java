@@ -72,6 +72,8 @@ public class NodeDriveHardware  implements Serializable  {
     public void setNodeID(Long nodeID) {
         this.nodeID = nodeID;
     }
+
+
     public DrivesHardware getResult() {
         return this.result;
     }
@@ -79,6 +81,8 @@ public class NodeDriveHardware  implements Serializable  {
     public void setResult(DrivesHardware result) {
         this.result = result;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -70,6 +70,8 @@ public class CreateStorageContainerResult  implements Serializable  {
         this.storageContainer = storageContainer;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -97,9 +97,11 @@ public class ClusterConfig  implements Serializable  {
         return this.cipi;
     }
 
-    public void setCipi(Optional<String> cipi) {
-        this.cipi = cipi;
+    public void setCipi(String cipi) {
+        this.cipi = (cipi == null) ? Optional.<String>empty() : Optional.of(cipi);
     }
+
+
 
     /**
      * Unique cluster name.
@@ -108,9 +110,11 @@ public class ClusterConfig  implements Serializable  {
         return this.cluster;
     }
 
-    public void setCluster(Optional<String> cluster) {
-        this.cluster = cluster;
+    public void setCluster(String cluster) {
+        this.cluster = (cluster == null) ? Optional.<String>empty() : Optional.of(cluster);
     }
+
+
 
     /**
      * Nodes that are participating in the cluster.
@@ -119,9 +123,11 @@ public class ClusterConfig  implements Serializable  {
         return this.ensemble;
     }
 
-    public void setEnsemble(Optional<String[]> ensemble) {
-        this.ensemble = ensemble;
+    public void setEnsemble(String[] ensemble) {
+        this.ensemble = (ensemble == null) ? Optional.<String[]>empty() : Optional.of(ensemble);
     }
+
+
 
     /**
      * Network interface used for node management.
@@ -130,9 +136,11 @@ public class ClusterConfig  implements Serializable  {
         return this.mipi;
     }
 
-    public void setMipi(Optional<String> mipi) {
-        this.mipi = mipi;
+    public void setMipi(String mipi) {
+        this.mipi = (mipi == null) ? Optional.<String>empty() : Optional.of(mipi);
     }
+
+
 
     /**
      * Unique cluster name.
@@ -141,23 +149,29 @@ public class ClusterConfig  implements Serializable  {
         return this.name;
     }
 
-    public void setName(Optional<String> name) {
-        this.name = name;
+    public void setName(String name) {
+        this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
     }
+
+
     public Optional<Long> getNodeID() {
         return this.nodeID;
     }
 
-    public void setNodeID(Optional<Long> nodeID) {
-        this.nodeID = nodeID;
+    public void setNodeID(Long nodeID) {
+        this.nodeID = (nodeID == null) ? Optional.<Long>empty() : Optional.of(nodeID);
     }
+
+
     public Optional<Long> getPendingNodeID() {
         return this.pendingNodeID;
     }
 
-    public void setPendingNodeID(Optional<Long> pendingNodeID) {
-        this.pendingNodeID = pendingNodeID;
+    public void setPendingNodeID(Long pendingNodeID) {
+        this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : Optional.of(pendingNodeID);
     }
+
+
 
     /**
      * Identifies the role of the node
@@ -166,9 +180,11 @@ public class ClusterConfig  implements Serializable  {
         return this.role;
     }
 
-    public void setRole(Optional<String> role) {
-        this.role = role;
+    public void setRole(String role) {
+        this.role = (role == null) ? Optional.<String>empty() : Optional.of(role);
     }
+
+
 
     /**
      * Network interface used for storage.
@@ -177,16 +193,20 @@ public class ClusterConfig  implements Serializable  {
         return this.sipi;
     }
 
-    public void setSipi(Optional<String> sipi) {
-        this.sipi = sipi;
+    public void setSipi(String sipi) {
+        this.sipi = (sipi == null) ? Optional.<String>empty() : Optional.of(sipi);
     }
+
+
     public Optional<String> getState() {
         return this.state;
     }
 
-    public void setState(Optional<String> state) {
-        this.state = state;
+    public void setState(String state) {
+        this.state = (state == null) ? Optional.<String>empty() : Optional.of(state);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -107,6 +107,8 @@ public class ClusterInfo  implements Serializable  {
         this.attributes = attributes;
     }
 
+
+
     /**
      * Encryption at rest state.
      **/
@@ -117,6 +119,8 @@ public class ClusterInfo  implements Serializable  {
     public void setEncryptionAtRestState(String encryptionAtRestState) {
         this.encryptionAtRestState = encryptionAtRestState;
     }
+
+
 
     /**
      * Array of Node IP addresses that are participating in the cluster.
@@ -129,6 +133,8 @@ public class ClusterInfo  implements Serializable  {
         this.ensemble = ensemble;
     }
 
+
+
     /**
      * Management network interface.
      **/
@@ -139,6 +145,8 @@ public class ClusterInfo  implements Serializable  {
     public void setMvip(String mvip) {
         this.mvip = mvip;
     }
+
+
 
     /**
      * Node holding the master MVIP address
@@ -151,6 +159,8 @@ public class ClusterInfo  implements Serializable  {
         this.mvipNodeID = mvipNodeID;
     }
 
+
+
     /**
      * Unique cluster name.
      **/
@@ -161,6 +171,8 @@ public class ClusterInfo  implements Serializable  {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     /**
      * Number of replicas of each piece of data to store in the cluster.
@@ -173,6 +185,8 @@ public class ClusterInfo  implements Serializable  {
     public void setRepCount(Long repCount) {
         this.repCount = repCount;
     }
+
+
     public String getState() {
         return this.state;
     }
@@ -180,6 +194,8 @@ public class ClusterInfo  implements Serializable  {
     public void setState(String state) {
         this.state = state;
     }
+
+
 
     /**
      * Storage virtual IP
@@ -192,6 +208,8 @@ public class ClusterInfo  implements Serializable  {
         this.svip = svip;
     }
 
+
+
     /**
      * Node holding the master SVIP address.
      **/
@@ -203,6 +221,8 @@ public class ClusterInfo  implements Serializable  {
         this.svipNodeID = svipNodeID;
     }
 
+
+
     /**
      * Unique ID for the cluster.
      **/
@@ -213,6 +233,8 @@ public class ClusterInfo  implements Serializable  {
     public void setUniqueID(String uniqueID) {
         this.uniqueID = uniqueID;
     }
+
+
     public java.util.UUID getUuid() {
         return this.uuid;
     }
@@ -220,6 +242,8 @@ public class ClusterInfo  implements Serializable  {
     public void setUuid(java.util.UUID uuid) {
         this.uuid = uuid;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -74,6 +74,8 @@ public class GetNodeStatsResult  implements Serializable  {
         this.nodeStats = nodeStats;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

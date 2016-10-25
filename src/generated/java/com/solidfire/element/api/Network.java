@@ -69,16 +69,20 @@ public class Network  implements Serializable  {
         return this.bond10G;
     }
 
-    public void setBond10G(Optional<NetworkConfig> bond10G) {
-        this.bond10G = bond10G;
+    public void setBond10G(NetworkConfig bond10G) {
+        this.bond10G = (bond10G == null) ? Optional.<NetworkConfig>empty() : Optional.of(bond10G);
     }
+
+
     public Optional<NetworkConfig> getBond1G() {
         return this.bond1G;
     }
 
-    public void setBond1G(Optional<NetworkConfig> bond1G) {
-        this.bond1G = bond1G;
+    public void setBond1G(NetworkConfig bond1G) {
+        this.bond1G = (bond1G == null) ? Optional.<NetworkConfig>empty() : Optional.of(bond1G);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

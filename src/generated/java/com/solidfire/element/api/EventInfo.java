@@ -96,6 +96,8 @@ public class EventInfo  implements Serializable  {
     public void setEventID(Long eventID) {
         this.eventID = eventID;
     }
+
+
     public Long getSeverity() {
         return this.severity;
     }
@@ -103,6 +105,8 @@ public class EventInfo  implements Serializable  {
     public void setSeverity(Long severity) {
         this.severity = severity;
     }
+
+
     public String getEventInfoType() {
         return this.eventInfoType;
     }
@@ -110,6 +114,8 @@ public class EventInfo  implements Serializable  {
     public void setEventInfoType(String eventInfoType) {
         this.eventInfoType = eventInfoType;
     }
+
+
     public String getMessage() {
         return this.message;
     }
@@ -117,6 +123,8 @@ public class EventInfo  implements Serializable  {
     public void setMessage(String message) {
         this.message = message;
     }
+
+
     public Long getServiceID() {
         return this.serviceID;
     }
@@ -124,6 +132,8 @@ public class EventInfo  implements Serializable  {
     public void setServiceID(Long serviceID) {
         this.serviceID = serviceID;
     }
+
+
     public Long getNodeID() {
         return this.nodeID;
     }
@@ -131,6 +141,8 @@ public class EventInfo  implements Serializable  {
     public void setNodeID(Long nodeID) {
         this.nodeID = nodeID;
     }
+
+
     public Long getDriveID() {
         return this.driveID;
     }
@@ -138,6 +150,8 @@ public class EventInfo  implements Serializable  {
     public void setDriveID(Long driveID) {
         this.driveID = driveID;
     }
+
+
     public String getTimeOfReport() {
         return this.timeOfReport;
     }
@@ -145,6 +159,8 @@ public class EventInfo  implements Serializable  {
     public void setTimeOfReport(String timeOfReport) {
         this.timeOfReport = timeOfReport;
     }
+
+
     public String getTimeOfPublish() {
         return this.timeOfPublish;
     }
@@ -152,6 +168,8 @@ public class EventInfo  implements Serializable  {
     public void setTimeOfPublish(String timeOfPublish) {
         this.timeOfPublish = timeOfPublish;
     }
+
+
     public Object getDetails() {
         return this.details;
     }
@@ -159,6 +177,8 @@ public class EventInfo  implements Serializable  {
     public void setDetails(Object details) {
         this.details = details;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

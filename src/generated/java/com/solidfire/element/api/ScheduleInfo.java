@@ -79,9 +79,11 @@ public class ScheduleInfo  implements Serializable  {
         return this.volumeIDs;
     }
 
-    public void setVolumeIDs(Optional<Long[]> volumeIDs) {
-        this.volumeIDs = volumeIDs;
+    public void setVolumeIDs(Long[] volumeIDs) {
+        this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
     }
+
+
 
     /**
      * The snapshot name to be used. 
@@ -90,9 +92,11 @@ public class ScheduleInfo  implements Serializable  {
         return this.snapshotName;
     }
 
-    public void setSnapshotName(Optional<String> snapshotName) {
-        this.snapshotName = snapshotName;
+    public void setSnapshotName(String snapshotName) {
+        this.snapshotName = (snapshotName == null) ? Optional.<String>empty() : Optional.of(snapshotName);
     }
+
+
 
     /**
      * Indicates if the snapshot should be included in remote replication.
@@ -101,9 +105,11 @@ public class ScheduleInfo  implements Serializable  {
         return this.enableRemoteReplication;
     }
 
-    public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) {
-        this.enableRemoteReplication = enableRemoteReplication;
+    public void setEnableRemoteReplication(Boolean enableRemoteReplication) {
+        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
     }
+
+
 
     /**
      * The amount of time the snapshot will be retained in HH:mm:ss.
@@ -112,9 +118,11 @@ public class ScheduleInfo  implements Serializable  {
         return this.retention;
     }
 
-    public void setRetention(Optional<String> retention) {
-        this.retention = retention;
+    public void setRetention(String retention) {
+        this.retention = (retention == null) ? Optional.<String>empty() : Optional.of(retention);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

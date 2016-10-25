@@ -82,9 +82,11 @@ public class GetEfficiencyResult  implements Serializable  {
         return this.compression;
     }
 
-    public void setCompression(Optional<Double> compression) {
-        this.compression = compression;
+    public void setCompression(Double compression) {
+        this.compression = (compression == null) ? Optional.<Double>empty() : Optional.of(compression);
     }
+
+
 
     /**
      * The amount of space being saved on a single volume by not duplicating data. Stated as a ratio.
@@ -93,9 +95,11 @@ public class GetEfficiencyResult  implements Serializable  {
         return this.deduplication;
     }
 
-    public void setDeduplication(Optional<Double> deduplication) {
-        this.deduplication = deduplication;
+    public void setDeduplication(Double deduplication) {
+        this.deduplication = (deduplication == null) ? Optional.<Double>empty() : Optional.of(deduplication);
     }
+
+
 
     /**
      * The ratio of space used to the amount of space allocated for storing data. Stated as a ratio.
@@ -104,9 +108,11 @@ public class GetEfficiencyResult  implements Serializable  {
         return this.thinProvisioning;
     }
 
-    public void setThinProvisioning(Optional<Double> thinProvisioning) {
-        this.thinProvisioning = thinProvisioning;
+    public void setThinProvisioning(Double thinProvisioning) {
+        this.thinProvisioning = (thinProvisioning == null) ? Optional.<Double>empty() : Optional.of(thinProvisioning);
     }
+
+
 
     /**
      * The last time efficiency data was collected after Garbage Collection (GC). ISO 8601 data string.
@@ -119,6 +125,8 @@ public class GetEfficiencyResult  implements Serializable  {
         this.timestamp = timestamp;
     }
 
+
+
     /**
      * The volumes that could not be queried for efficiency data. Missing volumes can be caused by GC being less than hour old, temporary network loss or restarted services since the GC cycle.
      **/
@@ -129,6 +137,8 @@ public class GetEfficiencyResult  implements Serializable  {
     public void setMissingVolumes(Long[] missingVolumes) {
         this.missingVolumes = missingVolumes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

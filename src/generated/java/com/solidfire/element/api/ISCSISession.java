@@ -102,6 +102,8 @@ public class ISCSISession  implements Serializable  {
     public void setAccountID(Long accountID) {
         this.accountID = accountID;
     }
+
+
     public String getAccountName() {
         return this.accountName;
     }
@@ -109,6 +111,8 @@ public class ISCSISession  implements Serializable  {
     public void setAccountName(String accountName) {
         this.accountName = accountName;
     }
+
+
     public Long getDriveID() {
         return this.driveID;
     }
@@ -116,6 +120,8 @@ public class ISCSISession  implements Serializable  {
     public void setDriveID(Long driveID) {
         this.driveID = driveID;
     }
+
+
     public String getInitiatorIP() {
         return this.initiatorIP;
     }
@@ -123,6 +129,8 @@ public class ISCSISession  implements Serializable  {
     public void setInitiatorIP(String initiatorIP) {
         this.initiatorIP = initiatorIP;
     }
+
+
     public String getInitiatorName() {
         return this.initiatorName;
     }
@@ -130,6 +138,8 @@ public class ISCSISession  implements Serializable  {
     public void setInitiatorName(String initiatorName) {
         this.initiatorName = initiatorName;
     }
+
+
     public Long getNodeID() {
         return this.nodeID;
     }
@@ -137,6 +147,8 @@ public class ISCSISession  implements Serializable  {
     public void setNodeID(Long nodeID) {
         this.nodeID = nodeID;
     }
+
+
     public Long getServiceID() {
         return this.serviceID;
     }
@@ -144,6 +156,8 @@ public class ISCSISession  implements Serializable  {
     public void setServiceID(Long serviceID) {
         this.serviceID = serviceID;
     }
+
+
     public Long getSessionID() {
         return this.sessionID;
     }
@@ -151,6 +165,8 @@ public class ISCSISession  implements Serializable  {
     public void setSessionID(Long sessionID) {
         this.sessionID = sessionID;
     }
+
+
     public String getTargetName() {
         return this.targetName;
     }
@@ -158,6 +174,8 @@ public class ISCSISession  implements Serializable  {
     public void setTargetName(String targetName) {
         this.targetName = targetName;
     }
+
+
     public String getTargetIP() {
         return this.targetIP;
     }
@@ -165,6 +183,8 @@ public class ISCSISession  implements Serializable  {
     public void setTargetIP(String targetIP) {
         this.targetIP = targetIP;
     }
+
+
     public String getVirtualNetworkID() {
         return this.virtualNetworkID;
     }
@@ -172,6 +192,8 @@ public class ISCSISession  implements Serializable  {
     public void setVirtualNetworkID(String virtualNetworkID) {
         this.virtualNetworkID = virtualNetworkID;
     }
+
+
     public Long getVolumeID() {
         return this.volumeID;
     }
@@ -179,6 +201,8 @@ public class ISCSISession  implements Serializable  {
     public void setVolumeID(Long volumeID) {
         this.volumeID = volumeID;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

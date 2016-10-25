@@ -74,6 +74,8 @@ public class AddClusterAdminResult  implements Serializable  {
         this.clusterAdminID = clusterAdminID;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

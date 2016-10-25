@@ -77,6 +77,8 @@ public class AddressBlock  implements Serializable  {
         this.start = start;
     }
 
+
+
     /**
      * Number of IP addresses to include in the block.
      **/
@@ -87,6 +89,8 @@ public class AddressBlock  implements Serializable  {
     public void setSize(Long size) {
         this.size = size;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

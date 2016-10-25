@@ -89,6 +89,8 @@ public class CloneMultipleVolumeParams  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * Access settings for the new volume.
      * <br/><b>readOnly</b>: Only read operations are allowed.
@@ -102,9 +104,11 @@ public class CloneMultipleVolumeParams  implements Serializable  {
         return this.access;
     }
 
-    public void setAccess(Optional<String> access) {
-        this.access = access;
+    public void setAccess(String access) {
+        this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
     }
+
+
 
     /**
      * New name for the clone.
@@ -113,9 +117,11 @@ public class CloneMultipleVolumeParams  implements Serializable  {
         return this.name;
     }
 
-    public void setName(Optional<String> name) {
-        this.name = name;
+    public void setName(String name) {
+        this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
     }
+
+
 
     /**
      * Account ID for the new volume.
@@ -124,9 +130,11 @@ public class CloneMultipleVolumeParams  implements Serializable  {
         return this.newAccountID;
     }
 
-    public void setNewAccountID(Optional<Long> newAccountID) {
-        this.newAccountID = newAccountID;
+    public void setNewAccountID(Long newAccountID) {
+        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
     }
+
+
 
     /**
      * New size Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
@@ -135,9 +143,11 @@ public class CloneMultipleVolumeParams  implements Serializable  {
         return this.newSize;
     }
 
-    public void setNewSize(Optional<Long> newSize) {
-        this.newSize = newSize;
+    public void setNewSize(Long newSize) {
+        this.newSize = (newSize == null) ? Optional.<Long>empty() : Optional.of(newSize);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -146,9 +156,11 @@ public class CloneMultipleVolumeParams  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

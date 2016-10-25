@@ -95,6 +95,8 @@ public class DriveInfo  implements Serializable  {
         this.capacity = capacity;
     }
 
+
+
     /**
      * DriveID for this drive.
      **/
@@ -105,6 +107,8 @@ public class DriveInfo  implements Serializable  {
     public void setDriveID(Long driveID) {
         this.driveID = driveID;
     }
+
+
 
     /**
      * NodeID where this drive is located.
@@ -117,6 +121,8 @@ public class DriveInfo  implements Serializable  {
         this.nodeID = nodeID;
     }
 
+
+
     /**
      * Drive serial number.
      **/
@@ -128,6 +134,8 @@ public class DriveInfo  implements Serializable  {
         this.serial = serial;
     }
 
+
+
     /**
      * Slot number in the server chassis where this drive is located, or -1 if SATADimm used for internal metadata drive.
      **/
@@ -138,6 +146,8 @@ public class DriveInfo  implements Serializable  {
     public void setSlot(Long slot) {
         this.slot = slot;
     }
+
+
     public String getStatus() {
         return this.status;
     }
@@ -145,6 +155,8 @@ public class DriveInfo  implements Serializable  {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
     public String getType() {
         return this.type;
     }
@@ -152,6 +164,8 @@ public class DriveInfo  implements Serializable  {
     public void setType(String type) {
         this.type = type;
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -163,6 +177,8 @@ public class DriveInfo  implements Serializable  {
     public void setAttributes(java.util.Map<String, Object> attributes) {
         this.attributes = attributes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

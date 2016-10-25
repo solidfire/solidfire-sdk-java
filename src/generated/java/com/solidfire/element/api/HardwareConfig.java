@@ -162,6 +162,8 @@ public class HardwareConfig  implements Serializable  {
     public void setScsiBusInternalDriver(String scsiBusInternalDriver) {
         this.scsiBusInternalDriver = scsiBusInternalDriver;
     }
+
+
     public String[] getNetworkDriver() {
         return this.networkDriver;
     }
@@ -169,6 +171,8 @@ public class HardwareConfig  implements Serializable  {
     public void setNetworkDriver(String[] networkDriver) {
         this.networkDriver = networkDriver;
     }
+
+
     public String getBiosRevision() {
         return this.biosRevision;
     }
@@ -176,6 +180,8 @@ public class HardwareConfig  implements Serializable  {
     public void setBiosRevision(String biosRevision) {
         this.biosRevision = biosRevision;
     }
+
+
     public Long getSlotOffset() {
         return this.slotOffset;
     }
@@ -183,6 +189,8 @@ public class HardwareConfig  implements Serializable  {
     public void setSlotOffset(Long slotOffset) {
         this.slotOffset = slotOffset;
     }
+
+
     public Long getNumCpu() {
         return this.numCpu;
     }
@@ -190,6 +198,8 @@ public class HardwareConfig  implements Serializable  {
     public void setNumCpu(Long numCpu) {
         this.numCpu = numCpu;
     }
+
+
     public String[] getSliceDrives() {
         return this.sliceDrives;
     }
@@ -197,6 +207,8 @@ public class HardwareConfig  implements Serializable  {
     public void setSliceDrives(String[] sliceDrives) {
         this.sliceDrives = sliceDrives;
     }
+
+
     public Long getNumDrives() {
         return this.numDrives;
     }
@@ -204,6 +216,8 @@ public class HardwareConfig  implements Serializable  {
     public void setNumDrives(Long numDrives) {
         this.numDrives = numDrives;
     }
+
+
     public KernelCrashDump getKernelCrashDump() {
         return this.kernelCrashDump;
     }
@@ -211,6 +225,8 @@ public class HardwareConfig  implements Serializable  {
     public void setKernelCrashDump(KernelCrashDump kernelCrashDump) {
         this.kernelCrashDump = kernelCrashDump;
     }
+
+
     public Long getBlockDriveSizeBytes() {
         return this.blockDriveSizeBytes;
     }
@@ -218,6 +234,8 @@ public class HardwareConfig  implements Serializable  {
     public void setBlockDriveSizeBytes(Long blockDriveSizeBytes) {
         this.blockDriveSizeBytes = blockDriveSizeBytes;
     }
+
+
     public String getCpuModel() {
         return this.cpuModel;
     }
@@ -225,6 +243,8 @@ public class HardwareConfig  implements Serializable  {
     public void setCpuModel(String cpuModel) {
         this.cpuModel = cpuModel;
     }
+
+
     public String getBmcFirmwareRevision() {
         return this.bmcFirmwareRevision;
     }
@@ -232,6 +252,8 @@ public class HardwareConfig  implements Serializable  {
     public void setBmcFirmwareRevision(String bmcFirmwareRevision) {
         this.bmcFirmwareRevision = bmcFirmwareRevision;
     }
+
+
     public Long getCpuCoresEnabled() {
         return this.cpuCoresEnabled;
     }
@@ -239,6 +261,8 @@ public class HardwareConfig  implements Serializable  {
     public void setCpuCoresEnabled(Long cpuCoresEnabled) {
         this.cpuCoresEnabled = cpuCoresEnabled;
     }
+
+
     public String getFibreChannelModel() {
         return this.fibreChannelModel;
     }
@@ -246,6 +270,8 @@ public class HardwareConfig  implements Serializable  {
     public void setFibreChannelModel(String fibreChannelModel) {
         this.fibreChannelModel = fibreChannelModel;
     }
+
+
     public String getChassisType() {
         return this.chassisType;
     }
@@ -253,6 +279,8 @@ public class HardwareConfig  implements Serializable  {
     public void setChassisType(String chassisType) {
         this.chassisType = chassisType;
     }
+
+
     public String getBmcIpmiVersion() {
         return this.bmcIpmiVersion;
     }
@@ -260,6 +288,8 @@ public class HardwareConfig  implements Serializable  {
     public void setBmcIpmiVersion(String bmcIpmiVersion) {
         this.bmcIpmiVersion = bmcIpmiVersion;
     }
+
+
     public String getNodeType() {
         return this.nodeType;
     }
@@ -267,6 +297,8 @@ public class HardwareConfig  implements Serializable  {
     public void setNodeType(String nodeType) {
         this.nodeType = nodeType;
     }
+
+
     public SolidfireDefaults getSolidfireDefaults() {
         return this.solidfireDefaults;
     }
@@ -274,6 +306,8 @@ public class HardwareConfig  implements Serializable  {
     public void setSolidfireDefaults(SolidfireDefaults solidfireDefaults) {
         this.solidfireDefaults = solidfireDefaults;
     }
+
+
     public String getIdracVersion() {
         return this.idracVersion;
     }
@@ -281,6 +315,8 @@ public class HardwareConfig  implements Serializable  {
     public void setIdracVersion(String idracVersion) {
         this.idracVersion = idracVersion;
     }
+
+
     public String[] getBlockDrives() {
         return this.blockDrives;
     }
@@ -288,6 +324,8 @@ public class HardwareConfig  implements Serializable  {
     public void setBlockDrives(String[] blockDrives) {
         this.blockDrives = blockDrives;
     }
+
+
     public String getBiosVendor() {
         return this.biosVendor;
     }
@@ -295,6 +333,8 @@ public class HardwareConfig  implements Serializable  {
     public void setBiosVendor(String biosVendor) {
         this.biosVendor = biosVendor;
     }
+
+
     public String getFibreChannelFirmwareRevision() {
         return this.fibreChannelFirmwareRevision;
     }
@@ -302,6 +342,8 @@ public class HardwareConfig  implements Serializable  {
     public void setFibreChannelFirmwareRevision(String fibreChannelFirmwareRevision) {
         this.fibreChannelFirmwareRevision = fibreChannelFirmwareRevision;
     }
+
+
     public String getScsiBusExternalDriver() {
         return this.scsiBusExternalDriver;
     }
@@ -309,6 +351,8 @@ public class HardwareConfig  implements Serializable  {
     public void setScsiBusExternalDriver(String scsiBusExternalDriver) {
         this.scsiBusExternalDriver = scsiBusExternalDriver;
     }
+
+
     public Long getNumDrivesInternal() {
         return this.numDrivesInternal;
     }
@@ -316,6 +360,8 @@ public class HardwareConfig  implements Serializable  {
     public void setNumDrivesInternal(Long numDrivesInternal) {
         this.numDrivesInternal = numDrivesInternal;
     }
+
+
     public Long getSliceDriveSizeBytes() {
         return this.sliceDriveSizeBytes;
     }
@@ -323,6 +369,8 @@ public class HardwareConfig  implements Serializable  {
     public void setSliceDriveSizeBytes(Long sliceDriveSizeBytes) {
         this.sliceDriveSizeBytes = sliceDriveSizeBytes;
     }
+
+
     public String getBiosVersion() {
         return this.biosVersion;
     }
@@ -330,6 +378,8 @@ public class HardwareConfig  implements Serializable  {
     public void setBiosVersion(String biosVersion) {
         this.biosVersion = biosVersion;
     }
+
+
     public Long getMemoryMhz() {
         return this.memoryMhz;
     }
@@ -337,6 +387,8 @@ public class HardwareConfig  implements Serializable  {
     public void setMemoryMhz(Long memoryMhz) {
         this.memoryMhz = memoryMhz;
     }
+
+
     public Long getCpuCores() {
         return this.cpuCores;
     }
@@ -344,6 +396,8 @@ public class HardwareConfig  implements Serializable  {
     public void setCpuCores(Long cpuCores) {
         this.cpuCores = cpuCores;
     }
+
+
     public String getRootDrive() {
         return this.rootDrive;
     }
@@ -351,6 +405,8 @@ public class HardwareConfig  implements Serializable  {
     public void setRootDrive(String rootDrive) {
         this.rootDrive = rootDrive;
     }
+
+
     public Long getDriveSizeBytesInternal() {
         return this.driveSizeBytesInternal;
     }
@@ -358,6 +414,8 @@ public class HardwareConfig  implements Serializable  {
     public void setDriveSizeBytesInternal(Long driveSizeBytesInternal) {
         this.driveSizeBytesInternal = driveSizeBytesInternal;
     }
+
+
     public String getLifecycleVersion() {
         return this.lifecycleVersion;
     }
@@ -365,6 +423,8 @@ public class HardwareConfig  implements Serializable  {
     public void setLifecycleVersion(String lifecycleVersion) {
         this.lifecycleVersion = lifecycleVersion;
     }
+
+
     public Long getMemoryGB() {
         return this.memoryGB;
     }
@@ -372,6 +432,8 @@ public class HardwareConfig  implements Serializable  {
     public void setMemoryGB(Long memoryGB) {
         this.memoryGB = memoryGB;
     }
+
+
     public Long getCpuThreads() {
         return this.cpuThreads;
     }
@@ -379,6 +441,8 @@ public class HardwareConfig  implements Serializable  {
     public void setCpuThreads(Long cpuThreads) {
         this.cpuThreads = cpuThreads;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

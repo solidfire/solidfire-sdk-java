@@ -77,6 +77,8 @@ public class CreateVolumeResult  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * The curve is a set of key-value pairs.
      * The keys are I/O sizes in bytes.
@@ -90,6 +92,8 @@ public class CreateVolumeResult  implements Serializable  {
     public void setCurve(java.util.Map<String,Long> curve) {
         this.curve = curve;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

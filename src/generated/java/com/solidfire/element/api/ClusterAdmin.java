@@ -78,6 +78,8 @@ public class ClusterAdmin  implements Serializable  {
     public void setAccess(String[] access) {
         this.access = access;
     }
+
+
     public Long getClusterAdminID() {
         return this.clusterAdminID;
     }
@@ -85,6 +87,8 @@ public class ClusterAdmin  implements Serializable  {
     public void setClusterAdminID(Long clusterAdminID) {
         this.clusterAdminID = clusterAdminID;
     }
+
+
     public String getUsername() {
         return this.username;
     }
@@ -92,6 +96,8 @@ public class ClusterAdmin  implements Serializable  {
     public void setUsername(String username) {
         this.username = username;
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -103,6 +109,8 @@ public class ClusterAdmin  implements Serializable  {
     public void setAttributes(java.util.Map<String, Object> attributes) {
         this.attributes = attributes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

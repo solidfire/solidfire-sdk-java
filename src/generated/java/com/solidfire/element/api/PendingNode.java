@@ -107,6 +107,8 @@ public class PendingNode  implements Serializable  {
     public void setPendingNodeID(Long pendingNodeID) {
         this.pendingNodeID = pendingNodeID;
     }
+
+
     public Long getAssignedNodeID() {
         return this.assignedNodeID;
     }
@@ -114,6 +116,8 @@ public class PendingNode  implements Serializable  {
     public void setAssignedNodeID(Long assignedNodeID) {
         this.assignedNodeID = assignedNodeID;
     }
+
+
 
     /**
      * The host name for this node.
@@ -125,6 +129,8 @@ public class PendingNode  implements Serializable  {
     public void setName(String name) {
         this.name = name;
     }
+
+
     public Boolean getCompatible() {
         return this.compatible;
     }
@@ -132,6 +138,8 @@ public class PendingNode  implements Serializable  {
     public void setCompatible(Boolean compatible) {
         this.compatible = compatible;
     }
+
+
 
     /**
      * Information about the platform this node is.
@@ -144,6 +152,8 @@ public class PendingNode  implements Serializable  {
         this.platformInfo = platformInfo;
     }
 
+
+
     /**
      * IP address used for both intra- and inter-cluster communication.
      **/
@@ -154,6 +164,8 @@ public class PendingNode  implements Serializable  {
     public void setCip(String cip) {
         this.cip = cip;
     }
+
+
 
     /**
      * The machine's name for the "cip" interface.
@@ -166,6 +178,8 @@ public class PendingNode  implements Serializable  {
         this.cipi = cipi;
     }
 
+
+
     /**
      * IP address used for cluster management (hosting the API and web site).
      **/
@@ -176,6 +190,8 @@ public class PendingNode  implements Serializable  {
     public void setMip(String mip) {
         this.mip = mip;
     }
+
+
 
     /**
      * The machine's name for the "mip" interface.
@@ -188,6 +204,8 @@ public class PendingNode  implements Serializable  {
         this.mipi = mipi;
     }
 
+
+
     /**
      * IP address used for iSCSI traffic.
      **/
@@ -198,6 +216,8 @@ public class PendingNode  implements Serializable  {
     public void setSip(String sip) {
         this.sip = sip;
     }
+
+
 
     /**
      * The machine's name for the "sip" interface.
@@ -210,6 +230,8 @@ public class PendingNode  implements Serializable  {
         this.sipi = sipi;
     }
 
+
+
     /**
      * The version of SolidFire software this node is currently running.
      **/
@@ -221,6 +243,8 @@ public class PendingNode  implements Serializable  {
         this.softwareVersion = softwareVersion;
     }
 
+
+
     /**
      * UUID of node.
      **/
@@ -231,6 +255,8 @@ public class PendingNode  implements Serializable  {
     public void setUuid(java.util.UUID uuid) {
         this.uuid = uuid;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -72,6 +72,8 @@ public class GetAPIResult  implements Serializable  {
     public void setCurrentVersion(Double currentVersion) {
         this.currentVersion = currentVersion;
     }
+
+
     public Double[] getSupportedVersions() {
         return this.supportedVersions;
     }
@@ -79,6 +81,8 @@ public class GetAPIResult  implements Serializable  {
     public void setSupportedVersions(Double[] supportedVersions) {
         this.supportedVersions = supportedVersions;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

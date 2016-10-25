@@ -80,6 +80,8 @@ public class TestPingResult  implements Serializable  {
         this.result = result;
     }
 
+
+
     /**
      * The total duration of the ping test.
      **/
@@ -91,6 +93,8 @@ public class TestPingResult  implements Serializable  {
         this.duration = duration;
     }
 
+
+
     /**
      * List of each IP the node was able to communicate with.
      **/
@@ -101,6 +105,8 @@ public class TestPingResult  implements Serializable  {
     public void setDetails(Object details) {
         this.details = details;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -118,9 +118,11 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.virtualNetworkID;
     }
 
-    public void setVirtualNetworkID(Optional<Long> virtualNetworkID) {
-        this.virtualNetworkID = virtualNetworkID;
+    public void setVirtualNetworkID(Long virtualNetworkID) {
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
     }
+
+
 
     /**
      * Network Tag that identifies the virtual network to modify.
@@ -129,9 +131,11 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.virtualNetworkTag;
     }
 
-    public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) {
-        this.virtualNetworkTag = virtualNetworkTag;
+    public void setVirtualNetworkTag(Long virtualNetworkTag) {
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
     }
+
+
 
     /**
      * New name for the virtual network.
@@ -140,9 +144,11 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.name;
     }
 
-    public void setName(Optional<String> name) {
-        this.name = name;
+    public void setName(String name) {
+        this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
     }
+
+
 
     /**
      * New addressBlock to set for this Virtual Network object. This may contain new address blocks to add to the existing object or it may omit unused address blocks that need to be removed. Alternatively, existing address blocks may be extended or reduced in size. The size of the starting addressBlocks for a Virtual Network object can only be increased, and can never be decreased.
@@ -154,9 +160,11 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.addressBlocks;
     }
 
-    public void setAddressBlocks(Optional<AddressBlock[]> addressBlocks) {
-        this.addressBlocks = addressBlocks;
+    public void setAddressBlocks(AddressBlock[] addressBlocks) {
+        this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : Optional.of(addressBlocks);
     }
+
+
 
     /**
      * New netmask for this virtual network.
@@ -165,9 +173,11 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.netmask;
     }
 
-    public void setNetmask(Optional<String> netmask) {
-        this.netmask = netmask;
+    public void setNetmask(String netmask) {
+        this.netmask = (netmask == null) ? Optional.<String>empty() : Optional.of(netmask);
     }
+
+
 
     /**
      * The storage virtual IP address for this virtual network. The svip for Virtual Network cannot be changed. A new Virtual Network must be created in order to use a different svip address.
@@ -176,9 +186,11 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.svip;
     }
 
-    public void setSvip(Optional<String> svip) {
-        this.svip = svip;
+    public void setSvip(String svip) {
+        this.svip = (svip == null) ? Optional.<String>empty() : Optional.of(svip);
     }
+
+
 
     /**
      * 
@@ -190,9 +202,11 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.gateway;
     }
 
-    public void setGateway(Optional<String> gateway) {
-        this.gateway = gateway;
+    public void setGateway(String gateway) {
+        this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
     }
+
+
 
     /**
      * 
@@ -204,9 +218,11 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.namespace;
     }
 
-    public void setNamespace(Optional<Boolean> namespace) {
-        this.namespace = namespace;
+    public void setNamespace(Boolean namespace) {
+        this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
     }
+
+
 
     /**
      * A new list of Name/Value pairs in JSON object format.
@@ -215,9 +231,11 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

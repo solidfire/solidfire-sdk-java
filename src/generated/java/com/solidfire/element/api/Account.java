@@ -94,6 +94,8 @@ public class Account  implements Serializable  {
         this.accountID = accountID;
     }
 
+
+
     /**
      * User name for the account.
      **/
@@ -104,6 +106,8 @@ public class Account  implements Serializable  {
     public void setUsername(String username) {
         this.username = username;
     }
+
+
 
     /**
      * Current status of the account.
@@ -116,6 +120,8 @@ public class Account  implements Serializable  {
         this.status = status;
     }
 
+
+
     /**
      * List of VolumeIDs for Volumes owned by this account.
      **/
@@ -127,6 +133,8 @@ public class Account  implements Serializable  {
         this.volumes = volumes;
     }
 
+
+
     /**
      * CHAP secret to use for the initiator.
      **/
@@ -134,9 +142,11 @@ public class Account  implements Serializable  {
         return this.initiatorSecret;
     }
 
-    public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) {
-        this.initiatorSecret = initiatorSecret;
+    public void setInitiatorSecret(CHAPSecret initiatorSecret) {
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
     }
+
+
 
     /**
      * CHAP secret to use for the target (mutual CHAP authentication).
@@ -145,9 +155,11 @@ public class Account  implements Serializable  {
         return this.targetSecret;
     }
 
-    public void setTargetSecret(Optional<CHAPSecret> targetSecret) {
-        this.targetSecret = targetSecret;
+    public void setTargetSecret(CHAPSecret targetSecret) {
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -156,9 +168,11 @@ public class Account  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {
