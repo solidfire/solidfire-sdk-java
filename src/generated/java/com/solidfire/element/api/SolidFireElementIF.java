@@ -1114,8 +1114,7 @@ public interface SolidFireElementIF {
     /**
      * Convenience method for getFeatureStatus 
      *  
-     * @param feature Valid values:<br/>
-     *                <b>vvols</b>: Enable the Virtual Volumes (VVOLs) cluster feature.
+     * @param feature Valid values: vvols: Find the status of the Virtual Volumes (VVOLs) cluster feature.
      *
      *  
      * @return the response
@@ -1140,8 +1139,7 @@ public interface SolidFireElementIF {
     /**
      * Convenience method for enableFeature 
      *  
-     * @param feature Valid values:<br/>
-     *                <b>vvols</b>: Enable the Virtual Volumes (VVOLs) cluster feature.
+     * @param feature Valid values: vvols: Enable the Virtual Volumes (VVOLs) cluster feature.
      *
      *  
      * @return the response
@@ -2231,7 +2229,9 @@ public interface SolidFireElementIF {
      * @param request The request @see com.solidfire.element.api.CreateStorageContainerRequest 
      *  
      * @return the response
+     * @since 9.0 
      **/
+    @Since("9.0")
     CreateStorageContainerResult createStorageContainer(final CreateStorageContainerRequest request);
 
     /**
@@ -2240,7 +2240,9 @@ public interface SolidFireElementIF {
      * @param request The request @see com.solidfire.element.api.DeleteStorageContainersRequest 
      *  
      * @return the response
+     * @since 9.0 
      **/
+    @Since("9.0")
     DeleteStorageContainerResult deleteStorageContainers(final DeleteStorageContainersRequest request);
 
 
@@ -2252,7 +2254,9 @@ public interface SolidFireElementIF {
      *  
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#deleteStorageContainers(DeleteStorageContainersRequest) 
+     * @since 9.0 
      **/
+    @Since("9.0")
     DeleteStorageContainerResult deleteStorageContainers(java.util.UUID[] storageContainerIDs, Optional<java.util.UUID> callingHostID);
 
     /**
@@ -2261,18 +2265,10 @@ public interface SolidFireElementIF {
      * @param request The request @see com.solidfire.element.api.ModifyStorageContainerRequest 
      *  
      * @return the response
+     * @since 9.0 
      **/
+    @Since("9.0")
     CreateStorageContainerResult modifyStorageContainer(final ModifyStorageContainerRequest request);
-
-
-    /**
-     * Convenience method for modifyStorageContainer 
-     *  
-     *  
-     * @return the response
-     * @see com.solidfire.element.api.SolidFireElementIF#modifyStorageContainer(ModifyStorageContainerRequest) 
-     **/
-    CreateStorageContainerResult modifyStorageContainer(Optional<CHAPSecret> initiatorSecret, Optional<CHAPSecret> targetSecret, Optional<java.util.UUID> callingHostID);
 
     /**
      * Gets information for all storage containers currently in the system.
@@ -2280,7 +2276,9 @@ public interface SolidFireElementIF {
      * @param request The request @see com.solidfire.element.api.ListStorageContainersRequest 
      *  
      * @return the response
+     * @since 9.0 
      **/
+    @Since("9.0")
     ListStorageContainersResult listStorageContainers(final ListStorageContainersRequest request);
 
 
@@ -2292,7 +2290,9 @@ public interface SolidFireElementIF {
      *  
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#listStorageContainers(ListStorageContainersRequest) 
+     * @since 9.0 
      **/
+    @Since("9.0")
     ListStorageContainersResult listStorageContainers(Optional<java.util.UUID[]> storageContainerIDs, Optional<java.util.UUID> callingHostID);
 
     /**
@@ -2301,7 +2301,9 @@ public interface SolidFireElementIF {
      * @param request The request @see com.solidfire.element.api.GetStorageContainerEfficiencyRequest 
      *  
      * @return the response
+     * @since 9.0 
      **/
+    @Since("9.0")
     GetStorageContainerEfficiencyResult getStorageContainerEfficiency(final GetStorageContainerEfficiencyRequest request);
 
 
@@ -2313,8 +2315,10 @@ public interface SolidFireElementIF {
      *  
      * @return the response
      * @see com.solidfire.element.api.SolidFireElementIF#getStorageContainerEfficiency(GetStorageContainerEfficiencyRequest) 
+     * @since 9.0 
      **/
-    GetStorageContainerEfficiencyResult getStorageContainerEfficiency(Long storageContainerID);
+    @Since("9.0")
+    GetStorageContainerEfficiencyResult getStorageContainerEfficiency(java.util.UUID storageContainerID);
 
     /**
      * The ListTests API method is used to return the tests that are available to run on a node.

@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class DeleteStorageContainersRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -433087096L;
+    private static final long serialVersionUID = -474602418L;
 
     @SerializedName("storageContainerIDs") private java.util.UUID[] storageContainerIDs;
     @SerializedName("callingHostID") private Optional<java.util.UUID> callingHostID;
@@ -48,9 +48,9 @@ public class DeleteStorageContainersRequest  implements Serializable  {
      * The Request object for the "DeleteStorageContainers" API Service call.
      * @param storageContainerIDs [required] list of storageContainerID of the storage container to delete.
      * @param callingHostID (optional) 
-     * @since 7.0
+     * @since 9.0
      **/
-    @Since("7.0")
+    @Since("9.0")
     public DeleteStorageContainersRequest(java.util.UUID[] storageContainerIDs, Optional<java.util.UUID> callingHostID) {
         this.storageContainerIDs = storageContainerIDs;
         this.callingHostID = (callingHostID == null) ? Optional.<java.util.UUID>empty() : callingHostID;
@@ -60,9 +60,9 @@ public class DeleteStorageContainersRequest  implements Serializable  {
     /**
      * The Request object for the "DeleteStorageContainers" API Service call.
      * Empty constructor to support serialization.
-     * @since 7.0
+     * @since 9.0
      **/
-    @Since("7.0")
+    @Since("9.0")
     public DeleteStorageContainersRequest() {}
 
 

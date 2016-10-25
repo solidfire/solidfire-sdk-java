@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ListStorageContainersRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1677319567L;
+    private static final long serialVersionUID = 66177806L;
 
     @SerializedName("storageContainerIDs") private Optional<java.util.UUID[]> storageContainerIDs;
     @SerializedName("callingHostID") private Optional<java.util.UUID> callingHostID;
@@ -48,9 +48,9 @@ public class ListStorageContainersRequest  implements Serializable  {
      * The Request object for the "ListStorageContainers" API Service call.
      * @param storageContainerIDs (optional) List of storage containers to get
      * @param callingHostID (optional) 
-     * @since 7.0
+     * @since 9.0
      **/
-    @Since("7.0")
+    @Since("9.0")
     public ListStorageContainersRequest(Optional<java.util.UUID[]> storageContainerIDs, Optional<java.util.UUID> callingHostID) {
         this.storageContainerIDs = (storageContainerIDs == null) ? Optional.<java.util.UUID[]>empty() : storageContainerIDs;
         this.callingHostID = (callingHostID == null) ? Optional.<java.util.UUID>empty() : callingHostID;
@@ -60,9 +60,9 @@ public class ListStorageContainersRequest  implements Serializable  {
     /**
      * The Request object for the "ListStorageContainers" API Service call.
      * Empty constructor to support serialization.
-     * @since 7.0
+     * @since 9.0
      **/
-    @Since("7.0")
+    @Since("9.0")
     public ListStorageContainersRequest() {}
 
 

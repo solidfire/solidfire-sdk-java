@@ -39,13 +39,13 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetFeatureStatusRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 733463847L;
+    private static final long serialVersionUID = -195166075L;
 
     @SerializedName("feature") private Optional<String> feature;
 
     /**
      * The Request object for the "GetFeatureStatus" API Service call.
-     * @param feature (optional) Valid values:<br/>
+     * @param feature (optional) Valid values: vvols: Find the status of the Virtual Volumes (VVOLs) cluster feature.
      * @since 9.0
      **/
     @Since("9.0")
@@ -64,8 +64,7 @@ public class GetFeatureStatusRequest  implements Serializable  {
 
 
     /**
-     * Valid values:<br/>
-     * <b>vvols</b>: Enable the Virtual Volumes (VVOLs) cluster feature.
+     * Valid values: vvols: Find the status of the Virtual Volumes (VVOLs) cluster feature.
      **/
     public Optional<String> getFeature() {
         return this.feature;

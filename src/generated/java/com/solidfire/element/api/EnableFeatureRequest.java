@@ -39,13 +39,13 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class EnableFeatureRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 634293620L;
+    private static final long serialVersionUID = 1222678608L;
 
     @SerializedName("feature") private String feature;
 
     /**
      * The Request object for the "EnableFeature" API Service call.
-     * @param feature [required] Valid values:<br/>
+     * @param feature [required] Valid values: vvols: Enable the Virtual Volumes (VVOLs) cluster feature.
      * @since 9.0
      **/
     @Since("9.0")
@@ -64,8 +64,7 @@ public class EnableFeatureRequest  implements Serializable  {
 
 
     /**
-     * Valid values:<br/>
-     * <b>vvols</b>: Enable the Virtual Volumes (VVOLs) cluster feature.
+     * Valid values: vvols: Enable the Virtual Volumes (VVOLs) cluster feature.
      **/
     public String getFeature() {
         return this.feature;

@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class CreateStorageContainerRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -186852430L;
+    private static final long serialVersionUID = 1180538485L;
 
     @SerializedName("name") private String name;
     @SerializedName("callingHostID") private Optional<java.util.UUID> callingHostID;
@@ -49,12 +49,12 @@ public class CreateStorageContainerRequest  implements Serializable  {
     /**
      * The Request object for the "CreateStorageContainer" API Service call.
      * @param name [required] Name of the storage container.
-     * @param callingHostID (optional) 
-     * @param initiatorSecret (optional) 
-     * @param targetSecret (optional) 
-     * @since 7.0
+     * @param callingHostID (optional) Non-storagecontainer account that will become a storage container.
+     * @param initiatorSecret (optional) The secret for CHAP authentication for the initiator
+     * @param targetSecret (optional) The secret for CHAP authentication for the target
+     * @since 9.0
      **/
-    @Since("7.0")
+    @Since("9.0")
     public CreateStorageContainerRequest(String name, Optional<java.util.UUID> callingHostID, Optional<CHAPSecret> initiatorSecret, Optional<CHAPSecret> targetSecret) {
         this.name = name;
         this.callingHostID = (callingHostID == null) ? Optional.<java.util.UUID>empty() : callingHostID;
@@ -66,9 +66,9 @@ public class CreateStorageContainerRequest  implements Serializable  {
     /**
      * The Request object for the "CreateStorageContainer" API Service call.
      * Empty constructor to support serialization.
-     * @since 7.0
+     * @since 9.0
      **/
-    @Since("7.0")
+    @Since("9.0")
     public CreateStorageContainerRequest() {}
 
 
@@ -82,6 +82,10 @@ public class CreateStorageContainerRequest  implements Serializable  {
     public void setName(String name) {
         this.name = name;
     }
+
+    /**
+     * Non-storagecontainer account that will become a storage container.
+     **/
     public Optional<java.util.UUID> getCallingHostID() {
         return this.callingHostID;
     }
@@ -89,6 +93,10 @@ public class CreateStorageContainerRequest  implements Serializable  {
     public void setCallingHostID(Optional<java.util.UUID> callingHostID) {
         this.callingHostID = callingHostID;
     }
+
+    /**
+     * The secret for CHAP authentication for the initiator
+     **/
     public Optional<CHAPSecret> getInitiatorSecret() {
         return this.initiatorSecret;
     }
@@ -96,6 +104,10 @@ public class CreateStorageContainerRequest  implements Serializable  {
     public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) {
         this.initiatorSecret = initiatorSecret;
     }
+
+    /**
+     * The secret for CHAP authentication for the target
+     **/
     public Optional<CHAPSecret> getTargetSecret() {
         return this.targetSecret;
     }

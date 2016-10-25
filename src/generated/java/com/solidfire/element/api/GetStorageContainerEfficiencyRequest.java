@@ -39,17 +39,17 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class GetStorageContainerEfficiencyRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 2067169129L;
+    private static final long serialVersionUID = -937151738L;
 
-    @SerializedName("storageContainerID") private Long storageContainerID;
+    @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
 
     /**
      * The Request object for the "GetStorageContainerEfficiency" API Service call.
      * @param storageContainerID [required] The ID of the storage container for which to retrieve efficiency information.
-     * @since 7.0
+     * @since 9.0
      **/
-    @Since("7.0")
-    public GetStorageContainerEfficiencyRequest(Long storageContainerID) {
+    @Since("9.0")
+    public GetStorageContainerEfficiencyRequest(java.util.UUID storageContainerID) {
         this.storageContainerID = storageContainerID;
     }
 
@@ -57,20 +57,20 @@ public class GetStorageContainerEfficiencyRequest  implements Serializable  {
     /**
      * The Request object for the "GetStorageContainerEfficiency" API Service call.
      * Empty constructor to support serialization.
-     * @since 7.0
+     * @since 9.0
      **/
-    @Since("7.0")
+    @Since("9.0")
     public GetStorageContainerEfficiencyRequest() {}
 
 
     /**
      * The ID of the storage container for which to retrieve efficiency information.
      **/
-    public Long getStorageContainerID() {
+    public java.util.UUID getStorageContainerID() {
         return this.storageContainerID;
     }
 
-    public void setStorageContainerID(Long storageContainerID) {
+    public void setStorageContainerID(java.util.UUID storageContainerID) {
         this.storageContainerID = storageContainerID;
     }
 
@@ -114,7 +114,7 @@ public class GetStorageContainerEfficiencyRequest  implements Serializable  {
     }
 
     public static class Builder {
-        private Long storageContainerID;
+        private java.util.UUID storageContainerID;
 
         private Builder() { }
 
@@ -129,7 +129,7 @@ public class GetStorageContainerEfficiencyRequest  implements Serializable  {
             return this;
         }
 
-        public GetStorageContainerEfficiencyRequest.Builder storageContainerID(final Long storageContainerID) {
+        public GetStorageContainerEfficiencyRequest.Builder storageContainerID(final java.util.UUID storageContainerID) {
             this.storageContainerID = storageContainerID;
             return this;
         }
