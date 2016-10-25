@@ -72,6 +72,8 @@ public class AddedNode  implements Serializable  {
     public void setNodeID(Long nodeID) {
         this.nodeID = nodeID;
     }
+
+
     public Long getPendingNodeID() {
         return this.pendingNodeID;
     }
@@ -79,6 +81,8 @@ public class AddedNode  implements Serializable  {
     public void setPendingNodeID(Long pendingNodeID) {
         this.pendingNodeID = pendingNodeID;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

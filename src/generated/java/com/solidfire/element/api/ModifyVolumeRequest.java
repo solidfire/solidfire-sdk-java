@@ -89,6 +89,8 @@ public class ModifyVolumeRequest  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * AccountID to which the volume is reassigned.
      * If none is specified, the previous account name is used.
@@ -97,9 +99,11 @@ public class ModifyVolumeRequest  implements Serializable  {
         return this.accountID;
     }
 
-    public void setAccountID(Optional<Long> accountID) {
-        this.accountID = accountID;
+    public void setAccountID(Long accountID) {
+        this.accountID = (accountID == null) ? Optional.<Long>empty() : Optional.of(accountID);
     }
+
+
 
     /**
      * Access allowed for the volume.
@@ -114,9 +118,11 @@ public class ModifyVolumeRequest  implements Serializable  {
         return this.access;
     }
 
-    public void setAccess(Optional<String> access) {
-        this.access = access;
+    public void setAccess(String access) {
+        this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
     }
+
+
 
     /**
      * New quality of service settings for this volume.
@@ -125,9 +131,11 @@ public class ModifyVolumeRequest  implements Serializable  {
         return this.qos;
     }
 
-    public void setQos(Optional<QoS> qos) {
-        this.qos = qos;
+    public void setQos(QoS qos) {
+        this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
     }
+
+
 
     /**
      * New size of the volume in bytes.
@@ -138,9 +146,11 @@ public class ModifyVolumeRequest  implements Serializable  {
         return this.totalSize;
     }
 
-    public void setTotalSize(Optional<Long> totalSize) {
-        this.totalSize = totalSize;
+    public void setTotalSize(Long totalSize) {
+        this.totalSize = (totalSize == null) ? Optional.<Long>empty() : Optional.of(totalSize);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -149,9 +159,11 @@ public class ModifyVolumeRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

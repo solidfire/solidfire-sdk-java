@@ -76,13 +76,17 @@ public class GetVirtualVolumeTaskUpdateRequest  implements Serializable  {
     public void setVirtualVolumeTaskID(java.util.UUID virtualVolumeTaskID) {
         this.virtualVolumeTaskID = virtualVolumeTaskID;
     }
+
+
     public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
         return this.callingVirtualVolumeHostID;
     }
 
-    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) {
-        this.callingVirtualVolumeHostID = callingVirtualVolumeHostID;
+    public void setCallingVirtualVolumeHostID(java.util.UUID callingVirtualVolumeHostID) {
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

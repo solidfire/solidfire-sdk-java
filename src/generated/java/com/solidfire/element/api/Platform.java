@@ -83,6 +83,8 @@ public class Platform  implements Serializable  {
         this.nodeType = nodeType;
     }
 
+
+
     /**
      * Name of the chassis (example: "R620").
      **/
@@ -93,6 +95,8 @@ public class Platform  implements Serializable  {
     public void setChassisType(String chassisType) {
         this.chassisType = chassisType;
     }
+
+
 
     /**
      * The model of CPU used on this platform.
@@ -105,6 +109,8 @@ public class Platform  implements Serializable  {
         this.cpuModel = cpuModel;
     }
 
+
+
     /**
      * The amount of memory on this platform in GiB.
      **/
@@ -115,6 +121,8 @@ public class Platform  implements Serializable  {
     public void setNodeMemoryGB(Long nodeMemoryGB) {
         this.nodeMemoryGB = nodeMemoryGB;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

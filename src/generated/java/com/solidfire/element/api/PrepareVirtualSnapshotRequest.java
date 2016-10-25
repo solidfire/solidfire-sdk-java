@@ -83,6 +83,8 @@ public class PrepareVirtualSnapshotRequest  implements Serializable  {
         this.virtualVolumeID = virtualVolumeID;
     }
 
+
+
     /**
      * The name for the newly-created volume.
      **/
@@ -90,9 +92,11 @@ public class PrepareVirtualSnapshotRequest  implements Serializable  {
         return this.name;
     }
 
-    public void setName(Optional<String> name) {
-        this.name = name;
+    public void setName(String name) {
+        this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
     }
+
+
 
     /**
      * Will the snapshot be writable?
@@ -101,16 +105,20 @@ public class PrepareVirtualSnapshotRequest  implements Serializable  {
         return this.writableSnapshot;
     }
 
-    public void setWritableSnapshot(Optional<Boolean> writableSnapshot) {
-        this.writableSnapshot = writableSnapshot;
+    public void setWritableSnapshot(Boolean writableSnapshot) {
+        this.writableSnapshot = (writableSnapshot == null) ? Optional.<Boolean>empty() : Optional.of(writableSnapshot);
     }
+
+
     public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
         return this.callingVirtualVolumeHostID;
     }
 
-    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) {
-        this.callingVirtualVolumeHostID = callingVirtualVolumeHostID;
+    public void setCallingVirtualVolumeHostID(java.util.UUID callingVirtualVolumeHostID) {
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

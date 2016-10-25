@@ -74,6 +74,8 @@ public class EnableSnmpRequest  implements Serializable  {
         this.snmpV3Enabled = snmpV3Enabled;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

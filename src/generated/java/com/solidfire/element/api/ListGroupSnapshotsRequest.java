@@ -71,9 +71,11 @@ public class ListGroupSnapshotsRequest  implements Serializable  {
         return this.volumeID;
     }
 
-    public void setVolumeID(Optional<Long> volumeID) {
-        this.volumeID = volumeID;
+    public void setVolumeID(Long volumeID) {
+        this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -96,6 +96,8 @@ public class RemoteReplication  implements Serializable  {
         this.mode = mode;
     }
 
+
+
     /**
      * The number of occurring write ops before auto-pausing, on a per volume pair level.
      **/
@@ -106,6 +108,8 @@ public class RemoteReplication  implements Serializable  {
     public void setPauseLimit(Long pauseLimit) {
         this.pauseLimit = pauseLimit;
     }
+
+
 
     /**
      * The remote slice service ID.
@@ -118,6 +122,8 @@ public class RemoteReplication  implements Serializable  {
         this.remoteServiceID = remoteServiceID;
     }
 
+
+
     /**
      * Reserved for future use.
      **/
@@ -128,6 +134,8 @@ public class RemoteReplication  implements Serializable  {
     public void setResumeDetails(String resumeDetails) {
         this.resumeDetails = resumeDetails;
     }
+
+
 
     /**
      * The details of snapshot replication.
@@ -140,6 +148,8 @@ public class RemoteReplication  implements Serializable  {
         this.snapshotReplication = snapshotReplication;
     }
 
+
+
     /**
      * The state of the volume replication.
      **/
@@ -151,6 +161,8 @@ public class RemoteReplication  implements Serializable  {
         this.state = state;
     }
 
+
+
     /**
      * Reserved for future use.
      **/
@@ -161,6 +173,8 @@ public class RemoteReplication  implements Serializable  {
     public void setStateDetails(String stateDetails) {
         this.stateDetails = stateDetails;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

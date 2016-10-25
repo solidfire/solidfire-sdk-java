@@ -91,6 +91,8 @@ public class VolumePair  implements Serializable  {
         this.clusterPairID = clusterPairID;
     }
 
+
+
     /**
      * The VolumeID on the remote cluster a volume is paired with.
      **/
@@ -101,6 +103,8 @@ public class VolumePair  implements Serializable  {
     public void setRemoteVolumeID(Long remoteVolumeID) {
         this.remoteVolumeID = remoteVolumeID;
     }
+
+
 
     /**
      * The SliceID on the remote cluster a volume is paired with.
@@ -113,6 +117,8 @@ public class VolumePair  implements Serializable  {
         this.remoteSliceID = remoteSliceID;
     }
 
+
+
     /**
      * The last-observed name of the volume on the remote cluster a volume is paired with.
      **/
@@ -123,6 +129,8 @@ public class VolumePair  implements Serializable  {
     public void setRemoteVolumeName(String remoteVolumeName) {
         this.remoteVolumeName = remoteVolumeName;
     }
+
+
 
     /**
      * A UUID in canonical form.
@@ -135,6 +143,8 @@ public class VolumePair  implements Serializable  {
         this.volumePairUUID = volumePairUUID;
     }
 
+
+
     /**
      * Details about the replication configuration for this volume pair.
      **/
@@ -145,6 +155,8 @@ public class VolumePair  implements Serializable  {
     public void setRemoteReplication(RemoteReplication remoteReplication) {
         this.remoteReplication = remoteReplication;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

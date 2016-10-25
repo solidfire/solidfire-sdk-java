@@ -84,6 +84,8 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
         this.username = username;
     }
 
+
+
     /**
      * CHAP secret to use for the initiator.
      * Should be 12-16 characters long and impenetrable.
@@ -95,9 +97,11 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
         return this.initiatorSecret;
     }
 
-    public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) {
-        this.initiatorSecret = initiatorSecret;
+    public void setInitiatorSecret(CHAPSecret initiatorSecret) {
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
     }
+
+
 
     /**
      * CHAP secret to use for the target (mutual CHAP authentication).
@@ -110,9 +114,11 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
         return this.targetSecret;
     }
 
-    public void setTargetSecret(Optional<CHAPSecret> targetSecret) {
-        this.targetSecret = targetSecret;
+    public void setTargetSecret(CHAPSecret targetSecret) {
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -121,9 +127,11 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

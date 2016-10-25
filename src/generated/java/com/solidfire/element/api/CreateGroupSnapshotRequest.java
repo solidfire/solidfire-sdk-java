@@ -102,6 +102,8 @@ public class CreateGroupSnapshotRequest  implements Serializable  {
         this.volumes = volumes;
     }
 
+
+
     /**
      * A name for the snapshot.
      * If no name is provided, the date and time the snapshot was taken is used.
@@ -110,9 +112,11 @@ public class CreateGroupSnapshotRequest  implements Serializable  {
         return this.name;
     }
 
-    public void setName(Optional<String> name) {
-        this.name = name;
+    public void setName(String name) {
+        this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
     }
+
+
 
     /**
      * Identifies if snapshot is enabled for remote replication.
@@ -124,9 +128,11 @@ public class CreateGroupSnapshotRequest  implements Serializable  {
         return this.enableRemoteReplication;
     }
 
-    public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) {
-        this.enableRemoteReplication = enableRemoteReplication;
+    public void setEnableRemoteReplication(Boolean enableRemoteReplication) {
+        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
     }
+
+
 
     /**
      * The amount of time the snapshot will be retained. Enter in HH:mm:ss
@@ -138,9 +144,11 @@ public class CreateGroupSnapshotRequest  implements Serializable  {
         return this.retention;
     }
 
-    public void setRetention(Optional<String> retention) {
-        this.retention = retention;
+    public void setRetention(String retention) {
+        this.retention = (retention == null) ? Optional.<String>empty() : Optional.of(retention);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -149,9 +157,11 @@ public class CreateGroupSnapshotRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

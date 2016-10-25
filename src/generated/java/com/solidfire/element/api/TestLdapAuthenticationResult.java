@@ -77,6 +77,8 @@ public class TestLdapAuthenticationResult  implements Serializable  {
         this.groups = groups;
     }
 
+
+
     /**
      * The tested user's full LDAP distinguished name.
      **/
@@ -87,6 +89,8 @@ public class TestLdapAuthenticationResult  implements Serializable  {
     public void setUserDN(String userDN) {
         this.userDN = userDN;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

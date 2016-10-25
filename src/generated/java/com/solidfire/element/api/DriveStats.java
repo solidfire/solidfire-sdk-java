@@ -114,6 +114,8 @@ public class DriveStats  implements Serializable  {
     public void setActiveSessions(Long activeSessions) {
         this.activeSessions = activeSessions;
     }
+
+
     public Long getFailedDieCount() {
         return this.failedDieCount;
     }
@@ -121,6 +123,8 @@ public class DriveStats  implements Serializable  {
     public void setFailedDieCount(Long failedDieCount) {
         this.failedDieCount = failedDieCount;
     }
+
+
     public Long getLifeRemainingPercent() {
         return this.lifeRemainingPercent;
     }
@@ -128,6 +132,8 @@ public class DriveStats  implements Serializable  {
     public void setLifeRemainingPercent(Long lifeRemainingPercent) {
         this.lifeRemainingPercent = lifeRemainingPercent;
     }
+
+
     public Long getLifetimeReadBytes() {
         return this.lifetimeReadBytes;
     }
@@ -135,6 +141,8 @@ public class DriveStats  implements Serializable  {
     public void setLifetimeReadBytes(Long lifetimeReadBytes) {
         this.lifetimeReadBytes = lifetimeReadBytes;
     }
+
+
     public Long getLifetimeWriteBytes() {
         return this.lifetimeWriteBytes;
     }
@@ -142,6 +150,8 @@ public class DriveStats  implements Serializable  {
     public void setLifetimeWriteBytes(Long lifetimeWriteBytes) {
         this.lifetimeWriteBytes = lifetimeWriteBytes;
     }
+
+
     public Long getPowerOnHours() {
         return this.powerOnHours;
     }
@@ -149,6 +159,8 @@ public class DriveStats  implements Serializable  {
     public void setPowerOnHours(Long powerOnHours) {
         this.powerOnHours = powerOnHours;
     }
+
+
     public Long getReadBytes() {
         return this.readBytes;
     }
@@ -156,6 +168,8 @@ public class DriveStats  implements Serializable  {
     public void setReadBytes(Long readBytes) {
         this.readBytes = readBytes;
     }
+
+
     public Long getReadOps() {
         return this.readOps;
     }
@@ -163,6 +177,8 @@ public class DriveStats  implements Serializable  {
     public void setReadOps(Long readOps) {
         this.readOps = readOps;
     }
+
+
     public Long getReallocatedSectors() {
         return this.reallocatedSectors;
     }
@@ -170,6 +186,8 @@ public class DriveStats  implements Serializable  {
     public void setReallocatedSectors(Long reallocatedSectors) {
         this.reallocatedSectors = reallocatedSectors;
     }
+
+
     public Long getReserveCapacityPercent() {
         return this.reserveCapacityPercent;
     }
@@ -177,6 +195,8 @@ public class DriveStats  implements Serializable  {
     public void setReserveCapacityPercent(Long reserveCapacityPercent) {
         this.reserveCapacityPercent = reserveCapacityPercent;
     }
+
+
     public String getTimestamp() {
         return this.timestamp;
     }
@@ -184,6 +204,8 @@ public class DriveStats  implements Serializable  {
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
+
+
     public Long getTotalCapacity() {
         return this.totalCapacity;
     }
@@ -191,13 +213,17 @@ public class DriveStats  implements Serializable  {
     public void setTotalCapacity(Long totalCapacity) {
         this.totalCapacity = totalCapacity;
     }
+
+
     public Optional<Long> getUsedCapacity() {
         return this.usedCapacity;
     }
 
-    public void setUsedCapacity(Optional<Long> usedCapacity) {
-        this.usedCapacity = usedCapacity;
+    public void setUsedCapacity(Long usedCapacity) {
+        this.usedCapacity = (usedCapacity == null) ? Optional.<Long>empty() : Optional.of(usedCapacity);
     }
+
+
     public Long getUsedMemory() {
         return this.usedMemory;
     }
@@ -205,6 +231,8 @@ public class DriveStats  implements Serializable  {
     public void setUsedMemory(Long usedMemory) {
         this.usedMemory = usedMemory;
     }
+
+
     public Long getWriteBytes() {
         return this.writeBytes;
     }
@@ -212,6 +240,8 @@ public class DriveStats  implements Serializable  {
     public void setWriteBytes(Long writeBytes) {
         this.writeBytes = writeBytes;
     }
+
+
     public Long getWriteOps() {
         return this.writeOps;
     }
@@ -219,6 +249,8 @@ public class DriveStats  implements Serializable  {
     public void setWriteOps(Long writeOps) {
         this.writeOps = writeOps;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -74,6 +74,8 @@ public class VirtualVolumeTaskResult  implements Serializable  {
         this.task = task;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -72,6 +72,8 @@ public class ClusterHardwareInfo  implements Serializable  {
     public void setDrives(java.util.Map<String,DriveHardwareInfo> drives) {
         this.drives = drives;
     }
+
+
     public java.util.Map<String,java.util.Map<String, Object>> getNodes() {
         return this.nodes;
     }
@@ -79,6 +81,8 @@ public class ClusterHardwareInfo  implements Serializable  {
     public void setNodes(java.util.Map<String,java.util.Map<String, Object>> nodes) {
         this.nodes = nodes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -87,6 +87,8 @@ public class SolidfireDefaults  implements Serializable  {
     public void setSliceFileLogFileCapacity(Long sliceFileLogFileCapacity) {
         this.sliceFileLogFileCapacity = sliceFileLogFileCapacity;
     }
+
+
     public Long getPostCallbackThreadCount() {
         return this.postCallbackThreadCount;
     }
@@ -94,6 +96,8 @@ public class SolidfireDefaults  implements Serializable  {
     public void setPostCallbackThreadCount(Long postCallbackThreadCount) {
         this.postCallbackThreadCount = postCallbackThreadCount;
     }
+
+
     public Long getCpuDmaLatency() {
         return this.cpuDmaLatency;
     }
@@ -101,6 +105,8 @@ public class SolidfireDefaults  implements Serializable  {
     public void setCpuDmaLatency(Long cpuDmaLatency) {
         this.cpuDmaLatency = cpuDmaLatency;
     }
+
+
     public Long getBufferCacheGB() {
         return this.bufferCacheGB;
     }
@@ -108,6 +114,8 @@ public class SolidfireDefaults  implements Serializable  {
     public void setBufferCacheGB(Long bufferCacheGB) {
         this.bufferCacheGB = bufferCacheGB;
     }
+
+
     public Long getMaxIncomingSliceSyncs() {
         return this.maxIncomingSliceSyncs;
     }
@@ -115,6 +123,8 @@ public class SolidfireDefaults  implements Serializable  {
     public void setMaxIncomingSliceSyncs(Long maxIncomingSliceSyncs) {
         this.maxIncomingSliceSyncs = maxIncomingSliceSyncs;
     }
+
+
     public Long getConfiguredIops() {
         return this.configuredIops;
     }
@@ -122,6 +132,8 @@ public class SolidfireDefaults  implements Serializable  {
     public void setConfiguredIops(Long configuredIops) {
         this.configuredIops = configuredIops;
     }
+
+
     public Long getSCacheFileCapacity() {
         return this.sCacheFileCapacity;
     }
@@ -129,6 +141,8 @@ public class SolidfireDefaults  implements Serializable  {
     public void setSCacheFileCapacity(Long sCacheFileCapacity) {
         this.sCacheFileCapacity = sCacheFileCapacity;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

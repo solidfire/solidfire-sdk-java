@@ -71,9 +71,11 @@ public class ListVolumeStatsByVolumeAccessGroupRequest  implements Serializable 
         return this.volumeAccessGroups;
     }
 
-    public void setVolumeAccessGroups(Optional<Long[]> volumeAccessGroups) {
-        this.volumeAccessGroups = volumeAccessGroups;
+    public void setVolumeAccessGroups(Long[] volumeAccessGroups) {
+        this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroups);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

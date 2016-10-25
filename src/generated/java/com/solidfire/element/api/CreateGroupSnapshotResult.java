@@ -77,6 +77,8 @@ public class CreateGroupSnapshotResult  implements Serializable  {
         this.groupSnapshotID = groupSnapshotID;
     }
 
+
+
     /**
      * List of checksum, volumeIDs and snapshotIDs for each member of the group.
      **/
@@ -87,6 +89,8 @@ public class CreateGroupSnapshotResult  implements Serializable  {
     public void setMembers(GroupSnapshotMembers[] members) {
         this.members = members;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

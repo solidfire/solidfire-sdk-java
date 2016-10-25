@@ -92,6 +92,8 @@ public class PairedCluster  implements Serializable  {
         this.clusterName = clusterName;
     }
 
+
+
     /**
      * Unique ID given to each cluster in the pair.
      **/
@@ -102,6 +104,8 @@ public class PairedCluster  implements Serializable  {
     public void setClusterPairID(Long clusterPairID) {
         this.clusterPairID = clusterPairID;
     }
+
+
 
     /**
      * Universally unique identifier.
@@ -114,6 +118,8 @@ public class PairedCluster  implements Serializable  {
         this.clusterPairUUID = clusterPairUUID;
     }
 
+
+
     /**
      * Number, in milliseconds, of latency between clusters.
      **/
@@ -125,6 +131,8 @@ public class PairedCluster  implements Serializable  {
         this.latency = latency;
     }
 
+
+
     /**
      * IP of the management connection for paired clusters.
      **/
@@ -135,6 +143,8 @@ public class PairedCluster  implements Serializable  {
     public void setMvip(String mvip) {
         this.mvip = mvip;
     }
+
+
 
     /**
      * Can be one of the following:
@@ -150,6 +160,8 @@ public class PairedCluster  implements Serializable  {
         this.status = status;
     }
 
+
+
     /**
      * The Element OS version of the other cluster in the pair.
      **/
@@ -160,6 +172,8 @@ public class PairedCluster  implements Serializable  {
     public void setVersion(String version) {
         this.version = version;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

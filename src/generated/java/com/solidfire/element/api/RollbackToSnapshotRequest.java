@@ -86,6 +86,8 @@ public class RollbackToSnapshotRequest  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * ID of a previously created snapshot on the given volume.
      **/
@@ -96,6 +98,8 @@ public class RollbackToSnapshotRequest  implements Serializable  {
     public void setSnapshotID(Long snapshotID) {
         this.snapshotID = snapshotID;
     }
+
+
 
     /**
      * <br/><b>true</b>: The previous active volume image is kept.
@@ -109,6 +113,8 @@ public class RollbackToSnapshotRequest  implements Serializable  {
         this.saveCurrentState = saveCurrentState;
     }
 
+
+
     /**
      * Name for the snapshot. If no name is given, then the name of the snapshot being rolled back to is used with 
      * "-copy" appended to the end of the name.
@@ -117,9 +123,11 @@ public class RollbackToSnapshotRequest  implements Serializable  {
         return this.name;
     }
 
-    public void setName(Optional<String> name) {
-        this.name = name;
+    public void setName(String name) {
+        this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format
@@ -128,9 +136,11 @@ public class RollbackToSnapshotRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

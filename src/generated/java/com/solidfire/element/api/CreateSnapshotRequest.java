@@ -107,6 +107,8 @@ public class CreateSnapshotRequest  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * Unique ID of a snapshot from which the new snapshot is made.
      * The snapshotID passed must be a snapshot on the given volume.
@@ -116,9 +118,11 @@ public class CreateSnapshotRequest  implements Serializable  {
         return this.snapshotID;
     }
 
-    public void setSnapshotID(Optional<Long> snapshotID) {
-        this.snapshotID = snapshotID;
+    public void setSnapshotID(Long snapshotID) {
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
     }
+
+
 
     /**
      * A name for the snapshot.
@@ -128,9 +132,11 @@ public class CreateSnapshotRequest  implements Serializable  {
         return this.name;
     }
 
-    public void setName(Optional<String> name) {
-        this.name = name;
+    public void setName(String name) {
+        this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
     }
+
+
 
     /**
      * Identifies if snapshot is enabled for remote replication.
@@ -142,9 +148,11 @@ public class CreateSnapshotRequest  implements Serializable  {
         return this.enableRemoteReplication;
     }
 
-    public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) {
-        this.enableRemoteReplication = enableRemoteReplication;
+    public void setEnableRemoteReplication(Boolean enableRemoteReplication) {
+        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
     }
+
+
 
     /**
      * The amount of time the snapshot will be retained. Enter in HH:mm:ss
@@ -156,9 +164,11 @@ public class CreateSnapshotRequest  implements Serializable  {
         return this.retention;
     }
 
-    public void setRetention(Optional<String> retention) {
-        this.retention = retention;
+    public void setRetention(String retention) {
+        this.retention = (retention == null) ? Optional.<String>empty() : Optional.of(retention);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -167,9 +177,11 @@ public class CreateSnapshotRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

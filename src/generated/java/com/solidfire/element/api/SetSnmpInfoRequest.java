@@ -79,9 +79,11 @@ public class SetSnmpInfoRequest  implements Serializable  {
         return this.networks;
     }
 
-    public void setNetworks(Optional<SnmpNetwork[]> networks) {
-        this.networks = networks;
+    public void setNetworks(SnmpNetwork[] networks) {
+        this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : Optional.of(networks);
     }
+
+
 
     /**
      * If set to "true", then SNMP is enabled on each node in the cluster.
@@ -90,9 +92,11 @@ public class SetSnmpInfoRequest  implements Serializable  {
         return this.enabled;
     }
 
-    public void setEnabled(Optional<Boolean> enabled) {
-        this.enabled = enabled;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = (enabled == null) ? Optional.<Boolean>empty() : Optional.of(enabled);
     }
+
+
 
     /**
      * If set to "true", then SNMP v3 is enabled on each node in the cluster.
@@ -101,9 +105,11 @@ public class SetSnmpInfoRequest  implements Serializable  {
         return this.snmpV3Enabled;
     }
 
-    public void setSnmpV3Enabled(Optional<Boolean> snmpV3Enabled) {
-        this.snmpV3Enabled = snmpV3Enabled;
+    public void setSnmpV3Enabled(Boolean snmpV3Enabled) {
+        this.snmpV3Enabled = (snmpV3Enabled == null) ? Optional.<Boolean>empty() : Optional.of(snmpV3Enabled);
     }
+
+
 
     /**
      * If SNMP v3 is enabled, this value must be passed in place of the "networks" parameter. SNMP v3 only.
@@ -112,9 +118,11 @@ public class SetSnmpInfoRequest  implements Serializable  {
         return this.usmUsers;
     }
 
-    public void setUsmUsers(Optional<SnmpV3UsmUser[]> usmUsers) {
-        this.usmUsers = usmUsers;
+    public void setUsmUsers(SnmpV3UsmUser[] usmUsers) {
+        this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : Optional.of(usmUsers);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

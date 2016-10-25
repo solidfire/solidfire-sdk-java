@@ -73,9 +73,11 @@ public class TestDrivesRequest  implements Serializable  {
         return this.minutes;
     }
 
-    public void setMinutes(Optional<Long> minutes) {
-        this.minutes = minutes;
+    public void setMinutes(Long minutes) {
+        this.minutes = (minutes == null) ? Optional.<Long>empty() : Optional.of(minutes);
     }
+
+
 
     /**
      * The "force" parameter must be included on this method to successfully test the drives on the node.
@@ -87,6 +89,8 @@ public class TestDrivesRequest  implements Serializable  {
     public void setForce(Boolean force) {
         this.force = force;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

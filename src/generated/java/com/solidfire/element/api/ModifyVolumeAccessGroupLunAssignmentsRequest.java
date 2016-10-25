@@ -77,6 +77,8 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest  implements Serializab
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
+
+
     /**
      * The volume IDs with new assigned LUN values.
      **/
@@ -87,6 +89,8 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest  implements Serializab
     public void setLunAssignments(LunAssignment[] lunAssignments) {
         this.lunAssignments = lunAssignments;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

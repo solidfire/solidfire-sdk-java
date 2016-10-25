@@ -88,6 +88,8 @@ public class StartVolumePairingRequest  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * The mode of the volume on which to start the pairing process. The mode can only be set if the volume is the source volume.<br/>
      * Possible values:<br/>
@@ -102,9 +104,11 @@ public class StartVolumePairingRequest  implements Serializable  {
         return this.mode;
     }
 
-    public void setMode(Optional<String> mode) {
-        this.mode = mode;
+    public void setMode(String mode) {
+        this.mode = (mode == null) ? Optional.<String>empty() : Optional.of(mode);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

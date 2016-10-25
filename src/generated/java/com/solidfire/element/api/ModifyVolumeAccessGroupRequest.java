@@ -112,6 +112,8 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
+
+
     /**
      * The ID of the SolidFire Virtual Network ID to associate the volume access group with.
      * @since 8.0 
@@ -122,9 +124,11 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         return this.virtualNetworkID;
     }
 
-    public void setVirtualNetworkID(Optional<Long[]> virtualNetworkID) {
-        this.virtualNetworkID = virtualNetworkID;
+    public void setVirtualNetworkID(Long[] virtualNetworkID) {
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkID);
     }
+
+
 
     /**
      * The ID of the VLAN Virtual Network Tag to associate the volume access group with.
@@ -136,9 +140,11 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         return this.virtualNetworkTags;
     }
 
-    public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) {
-        this.virtualNetworkTags = virtualNetworkTags;
+    public void setVirtualNetworkTags(Long[] virtualNetworkTags) {
+        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkTags);
     }
+
+
 
     /**
      * Name of the volume access group.
@@ -148,9 +154,11 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         return this.name;
     }
 
-    public void setName(Optional<String> name) {
-        this.name = name;
+    public void setName(String name) {
+        this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
     }
+
+
 
     /**
      * List of initiators to include in the volume access group.
@@ -160,9 +168,11 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         return this.initiators;
     }
 
-    public void setInitiators(Optional<String[]> initiators) {
-        this.initiators = initiators;
+    public void setInitiators(String[] initiators) {
+        this.initiators = (initiators == null) ? Optional.<String[]>empty() : Optional.of(initiators);
     }
+
+
 
     /**
      * List of volumes to initially include in the volume access group.
@@ -172,9 +182,11 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         return this.volumes;
     }
 
-    public void setVolumes(Optional<Long[]> volumes) {
-        this.volumes = volumes;
+    public void setVolumes(Long[] volumes) {
+        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : Optional.of(volumes);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -183,9 +195,11 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

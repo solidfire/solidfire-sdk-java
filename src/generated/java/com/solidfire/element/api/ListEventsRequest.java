@@ -94,9 +94,11 @@ public class ListEventsRequest  implements Serializable  {
         return this.maxEvents;
     }
 
-    public void setMaxEvents(Optional<Long> maxEvents) {
-        this.maxEvents = maxEvents;
+    public void setMaxEvents(Long maxEvents) {
+        this.maxEvents = (maxEvents == null) ? Optional.<Long>empty() : Optional.of(maxEvents);
     }
+
+
 
     /**
      * Identifies the beginning of a range of events to return.
@@ -105,9 +107,11 @@ public class ListEventsRequest  implements Serializable  {
         return this.startEventID;
     }
 
-    public void setStartEventID(Optional<Long> startEventID) {
-        this.startEventID = startEventID;
+    public void setStartEventID(Long startEventID) {
+        this.startEventID = (startEventID == null) ? Optional.<Long>empty() : Optional.of(startEventID);
     }
+
+
 
     /**
      * Identifies the end of a range of events to return.
@@ -116,18 +120,22 @@ public class ListEventsRequest  implements Serializable  {
         return this.endEventID;
     }
 
-    public void setEndEventID(Optional<Long> endEventID) {
-        this.endEventID = endEventID;
+    public void setEndEventID(Long endEventID) {
+        this.endEventID = (endEventID == null) ? Optional.<Long>empty() : Optional.of(endEventID);
     }
+
+
 
     @Since("9.0")
     public Optional<String> getEventQueueType() {
         return this.eventQueueType;
     }
 
-    public void setEventQueueType(Optional<String> eventQueueType) {
-        this.eventQueueType = eventQueueType;
+    public void setEventQueueType(String eventQueueType) {
+        this.eventQueueType = (eventQueueType == null) ? Optional.<String>empty() : Optional.of(eventQueueType);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

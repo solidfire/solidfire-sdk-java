@@ -74,6 +74,8 @@ public class SetNetworkConfigRequest  implements Serializable  {
         this.network = network;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

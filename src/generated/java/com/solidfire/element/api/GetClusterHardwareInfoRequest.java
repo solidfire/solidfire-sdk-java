@@ -70,9 +70,11 @@ public class GetClusterHardwareInfoRequest  implements Serializable  {
         return this.type;
     }
 
-    public void setType(Optional<String> type) {
-        this.type = type;
+    public void setType(String type) {
+        this.type = (type == null) ? Optional.<String>empty() : Optional.of(type);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

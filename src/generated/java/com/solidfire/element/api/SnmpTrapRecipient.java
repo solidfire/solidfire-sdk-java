@@ -80,6 +80,8 @@ public class SnmpTrapRecipient  implements Serializable  {
         this.host = host;
     }
 
+
+
     /**
      * SNMP community string.
      **/
@@ -91,6 +93,8 @@ public class SnmpTrapRecipient  implements Serializable  {
         this.community = community;
     }
 
+
+
     /**
      * The UDP port number on the host where the trap is to be sent. Valid range is 1 - 65535. 0 (zero) is not a valid port number. Default is 162.
      **/
@@ -101,6 +105,8 @@ public class SnmpTrapRecipient  implements Serializable  {
     public void setPort(Long port) {
         this.port = port;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

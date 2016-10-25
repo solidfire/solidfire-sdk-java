@@ -83,6 +83,8 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
         this.volumes = volumes;
     }
 
+
+
     /**
      * New default access method for the new volumes if not overridden by information passed in the volumes array.
      * <br/><b>readOnly</b>: Only read operations are allowed.
@@ -96,9 +98,11 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
         return this.access;
     }
 
-    public void setAccess(Optional<String> access) {
-        this.access = access;
+    public void setAccess(String access) {
+        this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
     }
+
+
 
     /**
      * ID of the group snapshot to use as a basis for the clone.
@@ -107,9 +111,11 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
         return this.groupSnapshotID;
     }
 
-    public void setGroupSnapshotID(Optional<Long> groupSnapshotID) {
-        this.groupSnapshotID = groupSnapshotID;
+    public void setGroupSnapshotID(Long groupSnapshotID) {
+        this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : Optional.of(groupSnapshotID);
     }
+
+
 
     /**
      * New account ID for the volumes if not overridden by information passed in the volumes array.
@@ -118,9 +124,11 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
         return this.newAccountID;
     }
 
-    public void setNewAccountID(Optional<Long> newAccountID) {
-        this.newAccountID = newAccountID;
+    public void setNewAccountID(Long newAccountID) {
+        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

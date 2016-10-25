@@ -77,6 +77,8 @@ public class GetSnmpStateResult  implements Serializable  {
         this.enabled = enabled;
     }
 
+
+
     /**
      * If the node in the cluster is configured for SNMP v3.
      **/
@@ -87,6 +89,8 @@ public class GetSnmpStateResult  implements Serializable  {
     public void setSnmpV3Enabled(Boolean snmpV3Enabled) {
         this.snmpV3Enabled = snmpV3Enabled;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

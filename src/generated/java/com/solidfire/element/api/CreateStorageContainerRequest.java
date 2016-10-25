@@ -83,6 +83,8 @@ public class CreateStorageContainerRequest  implements Serializable  {
         this.name = name;
     }
 
+
+
     /**
      * Non-storagecontainer account that will become a storage container.
      **/
@@ -90,9 +92,11 @@ public class CreateStorageContainerRequest  implements Serializable  {
         return this.callingHostID;
     }
 
-    public void setCallingHostID(Optional<java.util.UUID> callingHostID) {
-        this.callingHostID = callingHostID;
+    public void setCallingHostID(java.util.UUID callingHostID) {
+        this.callingHostID = (callingHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingHostID);
     }
+
+
 
     /**
      * The secret for CHAP authentication for the initiator
@@ -101,9 +105,11 @@ public class CreateStorageContainerRequest  implements Serializable  {
         return this.initiatorSecret;
     }
 
-    public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) {
-        this.initiatorSecret = initiatorSecret;
+    public void setInitiatorSecret(CHAPSecret initiatorSecret) {
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
     }
+
+
 
     /**
      * The secret for CHAP authentication for the target
@@ -112,9 +118,11 @@ public class CreateStorageContainerRequest  implements Serializable  {
         return this.targetSecret;
     }
 
-    public void setTargetSecret(Optional<CHAPSecret> targetSecret) {
-        this.targetSecret = targetSecret;
+    public void setTargetSecret(CHAPSecret targetSecret) {
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

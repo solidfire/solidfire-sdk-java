@@ -77,6 +77,8 @@ public class AddInitiatorsToVolumeAccessGroupRequest  implements Serializable  {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
+
+
     /**
      * List of initiators to add to the volume access group.
      **/
@@ -87,6 +89,8 @@ public class AddInitiatorsToVolumeAccessGroupRequest  implements Serializable  {
     public void setInitiators(String[] initiators) {
         this.initiators = initiators;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

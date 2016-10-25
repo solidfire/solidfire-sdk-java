@@ -194,6 +194,8 @@ public class ClusterCapacity  implements Serializable  {
         this.activeBlockSpace = activeBlockSpace;
     }
 
+
+
     /**
      * Number of active iSCSI sessions communicating with the cluster
      **/
@@ -204,6 +206,8 @@ public class ClusterCapacity  implements Serializable  {
     public void setActiveSessions(Long activeSessions) {
         this.activeSessions = activeSessions;
     }
+
+
 
     /**
      * Average IPS for the cluster since midnight Coordinated Universal Time (UTC).
@@ -216,6 +220,8 @@ public class ClusterCapacity  implements Serializable  {
         this.averageIOPS = averageIOPS;
     }
 
+
+
     /**
      * The average size of IOPS to all volumes in the cluster.
      **/
@@ -226,6 +232,8 @@ public class ClusterCapacity  implements Serializable  {
     public void setClusterRecentIOSize(Long clusterRecentIOSize) {
         this.clusterRecentIOSize = clusterRecentIOSize;
     }
+
+
 
     /**
      * Average IOPS for all volumes in the cluster over the last 5 seconds.
@@ -238,6 +246,8 @@ public class ClusterCapacity  implements Serializable  {
         this.currentIOPS = currentIOPS;
     }
 
+
+
     /**
      * Estimated maximum IOPS capability of the current cluster.
      **/
@@ -248,6 +258,8 @@ public class ClusterCapacity  implements Serializable  {
     public void setMaxIOPS(Long maxIOPS) {
         this.maxIOPS = maxIOPS;
     }
+
+
 
     /**
      * The maximum amount of provisionable space.
@@ -263,6 +275,8 @@ public class ClusterCapacity  implements Serializable  {
         this.maxOverProvisionableSpace = maxOverProvisionableSpace;
     }
 
+
+
     /**
      * The total amount of provisionable space if all volumes are 100% filled (no thin provisioned metadata).
      **/
@@ -273,6 +287,8 @@ public class ClusterCapacity  implements Serializable  {
     public void setMaxProvisionedSpace(Long maxProvisionedSpace) {
         this.maxProvisionedSpace = maxProvisionedSpace;
     }
+
+
 
     /**
      * The amount of bytes on volume drives used to store metadata.
@@ -285,6 +301,8 @@ public class ClusterCapacity  implements Serializable  {
         this.maxUsedMetadataSpace = maxUsedMetadataSpace;
     }
 
+
+
     /**
      * The total amount of space on all active block drives.
      **/
@@ -295,6 +313,8 @@ public class ClusterCapacity  implements Serializable  {
     public void setMaxUsedSpace(Long maxUsedSpace) {
         this.maxUsedSpace = maxUsedSpace;
     }
+
+
 
     /**
      * Total number of 4KiB blocks with data after the last garbage collection operation has completed.
@@ -307,6 +327,8 @@ public class ClusterCapacity  implements Serializable  {
         this.nonZeroBlocks = nonZeroBlocks;
     }
 
+
+
     /**
      * Peak number of iSCSI connections since midnight UTC.
      **/
@@ -317,6 +339,8 @@ public class ClusterCapacity  implements Serializable  {
     public void setPeakActiveSessions(Long peakActiveSessions) {
         this.peakActiveSessions = peakActiveSessions;
     }
+
+
 
     /**
      * The highest value for currentIOPS since midnight UTC.
@@ -329,6 +353,8 @@ public class ClusterCapacity  implements Serializable  {
         this.peakIOPS = peakIOPS;
     }
 
+
+
     /**
      * Total amount of space provisioned in all volumes on the cluster.
      **/
@@ -339,6 +365,8 @@ public class ClusterCapacity  implements Serializable  {
     public void setProvisionedSpace(Long provisionedSpace) {
         this.provisionedSpace = provisionedSpace;
     }
+
+
 
     /**
      * Total number of 4KiB blocks in snapshots with data.
@@ -354,6 +382,8 @@ public class ClusterCapacity  implements Serializable  {
         this.snapshotNonZeroBlocks = snapshotNonZeroBlocks;
     }
 
+
+
     /**
      * The date and time this cluster capacity sample was taken.
      **/
@@ -365,6 +395,8 @@ public class ClusterCapacity  implements Serializable  {
         this.timestamp = timestamp;
     }
 
+
+
     /**
      * The total number of I/O operations performed throughout the lifetime of the cluster
      **/
@@ -375,6 +407,8 @@ public class ClusterCapacity  implements Serializable  {
     public void setTotalOps(Long totalOps) {
         this.totalOps = totalOps;
     }
+
+
 
     /**
      * The total number of blocks stored on the block drives.
@@ -388,6 +422,8 @@ public class ClusterCapacity  implements Serializable  {
         this.uniqueBlocks = uniqueBlocks;
     }
 
+
+
     /**
      * The total amount of data the uniqueBlocks take up on the block drives.
      * This number is always consistent with the uniqueBlocks value.
@@ -400,6 +436,8 @@ public class ClusterCapacity  implements Serializable  {
         this.uniqueBlocksUsedSpace = uniqueBlocksUsedSpace;
     }
 
+
+
     /**
      * The total amount of bytes on volume drives used to store metadata
      **/
@@ -410,6 +448,8 @@ public class ClusterCapacity  implements Serializable  {
     public void setUsedMetadataSpace(Long usedMetadataSpace) {
         this.usedMetadataSpace = usedMetadataSpace;
     }
+
+
 
     /**
      * The amount of bytes on volume drives used for storing unique data in snapshots.
@@ -423,6 +463,8 @@ public class ClusterCapacity  implements Serializable  {
         this.usedMetadataSpaceInSnapshots = usedMetadataSpaceInSnapshots;
     }
 
+
+
     /**
      * Total amount of space used by all block drives in the system.
      **/
@@ -434,6 +476,8 @@ public class ClusterCapacity  implements Serializable  {
         this.usedSpace = usedSpace;
     }
 
+
+
     /**
      * Total number of 4KiB blocks without data after the last round of garabage collection operation has completed.
      **/
@@ -444,6 +488,8 @@ public class ClusterCapacity  implements Serializable  {
     public void setZeroBlocks(Long zeroBlocks) {
         this.zeroBlocks = zeroBlocks;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

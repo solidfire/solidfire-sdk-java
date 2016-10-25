@@ -81,6 +81,8 @@ public class GetStorageContainerEfficiencyResult  implements Serializable  {
     public void setCompression(Double compression) {
         this.compression = compression;
     }
+
+
     public Double getDeduplication() {
         return this.deduplication;
     }
@@ -88,6 +90,8 @@ public class GetStorageContainerEfficiencyResult  implements Serializable  {
     public void setDeduplication(Double deduplication) {
         this.deduplication = deduplication;
     }
+
+
 
     /**
      * The volumes that could not be queried for efficiency data. Missing volumes can be caused by the Garbage Collection (GC) cycle being less than an hour old, temporary loss of network connectivity, or restarted services since the GC cycle.
@@ -99,6 +103,8 @@ public class GetStorageContainerEfficiencyResult  implements Serializable  {
     public void setMissingVolumes(Long[] missingVolumes) {
         this.missingVolumes = missingVolumes;
     }
+
+
     public Double getThinProvisioning() {
         return this.thinProvisioning;
     }
@@ -106,6 +112,8 @@ public class GetStorageContainerEfficiencyResult  implements Serializable  {
     public void setThinProvisioning(Double thinProvisioning) {
         this.thinProvisioning = thinProvisioning;
     }
+
+
 
     /**
      * The last time efficiency data was collected after Garbage Collection (GC).
@@ -117,6 +125,8 @@ public class GetStorageContainerEfficiencyResult  implements Serializable  {
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

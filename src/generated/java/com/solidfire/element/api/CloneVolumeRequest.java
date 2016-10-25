@@ -92,6 +92,8 @@ public class CloneVolumeRequest  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * The name for the newly-created volume.
      **/
@@ -103,6 +105,8 @@ public class CloneVolumeRequest  implements Serializable  {
         this.name = name;
     }
 
+
+
     /**
      * AccountID for the owner of the new volume.
      * If unspecified, the AccountID of the owner of the volume being cloned is used.
@@ -111,9 +115,11 @@ public class CloneVolumeRequest  implements Serializable  {
         return this.newAccountID;
     }
 
-    public void setNewAccountID(Optional<Long> newAccountID) {
-        this.newAccountID = newAccountID;
+    public void setNewAccountID(Long newAccountID) {
+        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
     }
+
+
 
     /**
      * New size of the volume, in bytes.
@@ -125,9 +131,11 @@ public class CloneVolumeRequest  implements Serializable  {
         return this.newSize;
     }
 
-    public void setNewSize(Optional<Long> newSize) {
-        this.newSize = newSize;
+    public void setNewSize(Long newSize) {
+        this.newSize = (newSize == null) ? Optional.<Long>empty() : Optional.of(newSize);
     }
+
+
 
     /**
      * Access settings for the new volume.
@@ -142,9 +150,11 @@ public class CloneVolumeRequest  implements Serializable  {
         return this.access;
     }
 
-    public void setAccess(Optional<String> access) {
-        this.access = access;
+    public void setAccess(String access) {
+        this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
     }
+
+
 
     /**
      * ID of the snapshot to use as the source of the clone.
@@ -154,9 +164,11 @@ public class CloneVolumeRequest  implements Serializable  {
         return this.snapshotID;
     }
 
-    public void setSnapshotID(Optional<Long> snapshotID) {
-        this.snapshotID = snapshotID;
+    public void setSnapshotID(Long snapshotID) {
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -165,9 +177,11 @@ public class CloneVolumeRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -74,6 +74,8 @@ public class ListSchedulesResult  implements Serializable  {
         this.schedules = schedules;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

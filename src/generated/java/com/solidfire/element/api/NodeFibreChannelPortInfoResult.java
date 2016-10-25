@@ -77,6 +77,8 @@ public class NodeFibreChannelPortInfoResult  implements Serializable  {
         this.nodeID = nodeID;
     }
 
+
+
     /**
      * Contains a list of information about the Fibre Channel ports.
      **/
@@ -87,6 +89,8 @@ public class NodeFibreChannelPortInfoResult  implements Serializable  {
     public void setResult(FibreChannelPortList result) {
         this.result = result;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -86,6 +86,8 @@ public class FibreChannelSession  implements Serializable  {
         this.initiatorWWPN = initiatorWWPN;
     }
 
+
+
     /**
      * The node owning the Fibre Channel session.
      **/
@@ -96,6 +98,8 @@ public class FibreChannelSession  implements Serializable  {
     public void setNodeID(Long nodeID) {
         this.nodeID = nodeID;
     }
+
+
 
     /**
      * The service ID of the FService owning this Fibre Channel session
@@ -108,6 +112,8 @@ public class FibreChannelSession  implements Serializable  {
         this.serviceID = serviceID;
     }
 
+
+
     /**
      * The WWPN of the target port involved in this session.
      **/
@@ -119,6 +125,8 @@ public class FibreChannelSession  implements Serializable  {
         this.targetWWPN = targetWWPN;
     }
 
+
+
     /**
      * The ID of the volume access group to which the initiatorWWPN belongs. If not in a volume access group, the value will be null.
      **/
@@ -129,6 +137,8 @@ public class FibreChannelSession  implements Serializable  {
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

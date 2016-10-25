@@ -83,6 +83,8 @@ public class PrepareVirtualSnapshotResult  implements Serializable  {
         this.virtualVolumeTaskID = virtualVolumeTaskID;
     }
 
+
+
     /**
      * The volume ID of the newly-created clone.
      **/
@@ -93,6 +95,8 @@ public class PrepareVirtualSnapshotResult  implements Serializable  {
     public void setVolumeID(Long volumeID) {
         this.volumeID = volumeID;
     }
+
+
 
     /**
      * snapshotID for the prepared VVol snapshot.
@@ -105,6 +109,8 @@ public class PrepareVirtualSnapshotResult  implements Serializable  {
         this.snapshotID = snapshotID;
     }
 
+
+
     /**
      * virtualVolumeID for the newly created clone.
      **/
@@ -115,6 +121,8 @@ public class PrepareVirtualSnapshotResult  implements Serializable  {
     public void setVirtualVolumeID(java.util.UUID virtualVolumeID) {
         this.virtualVolumeID = virtualVolumeID;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

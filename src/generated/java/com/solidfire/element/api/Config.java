@@ -72,6 +72,8 @@ public class Config  implements Serializable  {
     public void setCluster(ClusterConfig cluster) {
         this.cluster = cluster;
     }
+
+
     public Network getNetwork() {
         return this.network;
     }
@@ -79,6 +81,8 @@ public class Config  implements Serializable  {
     public void setNetwork(Network network) {
         this.network = network;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

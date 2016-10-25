@@ -70,9 +70,11 @@ public class GetFeatureStatusRequest  implements Serializable  {
         return this.feature;
     }
 
-    public void setFeature(Optional<String> feature) {
-        this.feature = feature;
+    public void setFeature(String feature) {
+        this.feature = (feature == null) ? Optional.<String>empty() : Optional.of(feature);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

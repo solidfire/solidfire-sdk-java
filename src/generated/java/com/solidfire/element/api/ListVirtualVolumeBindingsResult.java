@@ -74,6 +74,8 @@ public class ListVirtualVolumeBindingsResult  implements Serializable  {
         this.bindings = bindings;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

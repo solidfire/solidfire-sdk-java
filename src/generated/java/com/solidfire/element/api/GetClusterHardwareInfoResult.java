@@ -74,6 +74,8 @@ public class GetClusterHardwareInfoResult  implements Serializable  {
         this.clusterHardwareInfo = clusterHardwareInfo;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -74,6 +74,8 @@ public class GetNvramInfoResult  implements Serializable  {
         this.nvramInfo = nvramInfo;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

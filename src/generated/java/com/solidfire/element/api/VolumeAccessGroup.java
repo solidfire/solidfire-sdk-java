@@ -97,6 +97,8 @@ public class VolumeAccessGroup  implements Serializable  {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
+
+
     /**
      * Name of the volume access group.
      **/
@@ -107,6 +109,8 @@ public class VolumeAccessGroup  implements Serializable  {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     /**
      * List of unique initiator names belonging to the volume access group.
@@ -119,6 +123,8 @@ public class VolumeAccessGroup  implements Serializable  {
         this.initiators = initiators;
     }
 
+
+
     /**
      * List of volumes belonging to the volume access group.
      **/
@@ -129,6 +135,8 @@ public class VolumeAccessGroup  implements Serializable  {
     public void setVolumes(Long[] volumes) {
         this.volumes = volumes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

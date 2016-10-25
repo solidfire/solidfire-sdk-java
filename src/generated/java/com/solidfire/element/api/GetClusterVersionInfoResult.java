@@ -78,6 +78,8 @@ public class GetClusterVersionInfoResult  implements Serializable  {
     public void setClusterAPIVersion(String clusterAPIVersion) {
         this.clusterAPIVersion = clusterAPIVersion;
     }
+
+
     public String getClusterVersion() {
         return this.clusterVersion;
     }
@@ -85,6 +87,8 @@ public class GetClusterVersionInfoResult  implements Serializable  {
     public void setClusterVersion(String clusterVersion) {
         this.clusterVersion = clusterVersion;
     }
+
+
     public ClusterVersionInfo[] getClusterVersionInfo() {
         return this.clusterVersionInfo;
     }
@@ -92,6 +96,8 @@ public class GetClusterVersionInfoResult  implements Serializable  {
     public void setClusterVersionInfo(ClusterVersionInfo[] clusterVersionInfo) {
         this.clusterVersionInfo = clusterVersionInfo;
     }
+
+
     public SoftwareVersionInfo getSoftwareVersionInfo() {
         return this.softwareVersionInfo;
     }
@@ -99,6 +105,8 @@ public class GetClusterVersionInfoResult  implements Serializable  {
     public void setSoftwareVersionInfo(SoftwareVersionInfo softwareVersionInfo) {
         this.softwareVersionInfo = softwareVersionInfo;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

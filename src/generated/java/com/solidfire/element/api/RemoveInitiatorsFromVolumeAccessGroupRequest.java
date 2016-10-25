@@ -77,6 +77,8 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest  implements Serializab
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
+
+
     /**
      * List of initiators to remove from the volume access group.
      **/
@@ -87,6 +89,8 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest  implements Serializab
     public void setInitiators(String[] initiators) {
         this.initiators = initiators;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

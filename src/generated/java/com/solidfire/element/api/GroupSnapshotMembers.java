@@ -98,6 +98,8 @@ public class GroupSnapshotMembers  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * Unique ID of a snapshot from which the new snapshot is made.
      * The snapshotID passed must be a snapshot on the given volume.
@@ -109,6 +111,8 @@ public class GroupSnapshotMembers  implements Serializable  {
     public void setSnapshotID(Long snapshotID) {
         this.snapshotID = snapshotID;
     }
+
+
 
     /**
      * Universal Unique ID of an existing snapshot.
@@ -124,6 +128,8 @@ public class GroupSnapshotMembers  implements Serializable  {
         this.snapshotUUID = snapshotUUID;
     }
 
+
+
     /**
      * A string that represents the correct digits in the stored snapshot.
      * This checksum can be used later to compare other snapshots to detect errors in the data.
@@ -135,6 +141,8 @@ public class GroupSnapshotMembers  implements Serializable  {
     public void setChecksum(String checksum) {
         this.checksum = checksum;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

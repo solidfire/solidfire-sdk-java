@@ -70,9 +70,11 @@ public class TestConnectEnsembleRequest  implements Serializable  {
         return this.ensemble;
     }
 
-    public void setEnsemble(Optional<String> ensemble) {
-        this.ensemble = ensemble;
+    public void setEnsemble(String ensemble) {
+        this.ensemble = (ensemble == null) ? Optional.<String>empty() : Optional.of(ensemble);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

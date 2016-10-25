@@ -82,6 +82,8 @@ public class ResetDriveDetails  implements Serializable  {
     public void setDrive(String drive) {
         this.drive = drive;
     }
+
+
     public Long getReturnCode() {
         return this.returnCode;
     }
@@ -89,6 +91,8 @@ public class ResetDriveDetails  implements Serializable  {
     public void setReturnCode(Long returnCode) {
         this.returnCode = returnCode;
     }
+
+
     public String getStderr() {
         return this.stderr;
     }
@@ -96,6 +100,8 @@ public class ResetDriveDetails  implements Serializable  {
     public void setStderr(String stderr) {
         this.stderr = stderr;
     }
+
+
     public String getStdout() {
         return this.stdout;
     }
@@ -103,6 +109,8 @@ public class ResetDriveDetails  implements Serializable  {
     public void setStdout(String stdout) {
         this.stdout = stdout;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

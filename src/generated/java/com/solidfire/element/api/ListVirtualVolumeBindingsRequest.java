@@ -69,16 +69,20 @@ public class ListVirtualVolumeBindingsRequest  implements Serializable  {
         return this.virtualVolumeBindingIDs;
     }
 
-    public void setVirtualVolumeBindingIDs(Optional<Long[]> virtualVolumeBindingIDs) {
-        this.virtualVolumeBindingIDs = virtualVolumeBindingIDs;
+    public void setVirtualVolumeBindingIDs(Long[] virtualVolumeBindingIDs) {
+        this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<Long[]>empty() : Optional.of(virtualVolumeBindingIDs);
     }
+
+
     public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
         return this.callingVirtualVolumeHostID;
     }
 
-    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) {
-        this.callingVirtualVolumeHostID = callingVirtualVolumeHostID;
+    public void setCallingVirtualVolumeHostID(java.util.UUID callingVirtualVolumeHostID) {
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

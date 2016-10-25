@@ -79,9 +79,11 @@ public class ListVirtualNetworksRequest  implements Serializable  {
         return this.virtualNetworkID;
     }
 
-    public void setVirtualNetworkID(Optional<Long> virtualNetworkID) {
-        this.virtualNetworkID = virtualNetworkID;
+    public void setVirtualNetworkID(Long virtualNetworkID) {
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
     }
+
+
 
     /**
      * Network Tag to filter the list for a single virtual network
@@ -90,9 +92,11 @@ public class ListVirtualNetworksRequest  implements Serializable  {
         return this.virtualNetworkTag;
     }
 
-    public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) {
-        this.virtualNetworkTag = virtualNetworkTag;
+    public void setVirtualNetworkTag(Long virtualNetworkTag) {
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
     }
+
+
 
     /**
      * NetworkIDs to include in the list.
@@ -101,9 +105,11 @@ public class ListVirtualNetworksRequest  implements Serializable  {
         return this.virtualNetworkIDs;
     }
 
-    public void setVirtualNetworkIDs(Optional<Long[]> virtualNetworkIDs) {
-        this.virtualNetworkIDs = virtualNetworkIDs;
+    public void setVirtualNetworkIDs(Long[] virtualNetworkIDs) {
+        this.virtualNetworkIDs = (virtualNetworkIDs == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkIDs);
     }
+
+
 
     /**
      * Network Tags to include in the list.
@@ -112,9 +118,11 @@ public class ListVirtualNetworksRequest  implements Serializable  {
         return this.virtualNetworkTags;
     }
 
-    public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) {
-        this.virtualNetworkTags = virtualNetworkTags;
+    public void setVirtualNetworkTags(Long[] virtualNetworkTags) {
+        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkTags);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

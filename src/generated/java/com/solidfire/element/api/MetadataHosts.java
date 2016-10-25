@@ -80,6 +80,8 @@ public class MetadataHosts  implements Serializable  {
         this.deadSecondaries = deadSecondaries;
     }
 
+
+
     /**
      * Secondary metadata (slice) services that are currently in a "live" state.
      **/
@@ -91,6 +93,8 @@ public class MetadataHosts  implements Serializable  {
         this.liveSecondaries = liveSecondaries;
     }
 
+
+
     /**
      * The primary metadata (slice) services hosting the volume.
      **/
@@ -101,6 +105,8 @@ public class MetadataHosts  implements Serializable  {
     public void setPrimary(Long primary) {
         this.primary = primary;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

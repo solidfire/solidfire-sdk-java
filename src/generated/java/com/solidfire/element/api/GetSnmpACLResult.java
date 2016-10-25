@@ -77,6 +77,8 @@ public class GetSnmpACLResult  implements Serializable  {
         this.networks = networks;
     }
 
+
+
     /**
      * List of users and the type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is enabled.
      **/
@@ -87,6 +89,8 @@ public class GetSnmpACLResult  implements Serializable  {
     public void setUsmUsers(SnmpV3UsmUser[] usmUsers) {
         this.usmUsers = usmUsers;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

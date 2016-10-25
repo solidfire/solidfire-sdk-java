@@ -149,6 +149,8 @@ public class VolumeStats  implements Serializable  {
         this.accountID = accountID;
     }
 
+
+
     /**
      * Current actual IOPS to the volume in the last 500 milliseconds.
      **/
@@ -159,6 +161,8 @@ public class VolumeStats  implements Serializable  {
     public void setActualIOPS(Long actualIOPS) {
         this.actualIOPS = actualIOPS;
     }
+
+
 
     /**
      * The length of time since the volume was last synced with the remote cluster.
@@ -171,9 +175,11 @@ public class VolumeStats  implements Serializable  {
         return this.asyncDelay;
     }
 
-    public void setAsyncDelay(Optional<String> asyncDelay) {
-        this.asyncDelay = asyncDelay;
+    public void setAsyncDelay(String asyncDelay) {
+        this.asyncDelay = (asyncDelay == null) ? Optional.<String>empty() : Optional.of(asyncDelay);
     }
+
+
 
     /**
      * Average size in bytes of recent I/O to the volume in the last 500 milliseconds.
@@ -185,6 +191,8 @@ public class VolumeStats  implements Serializable  {
     public void setAverageIOPSize(Long averageIOPSize) {
         this.averageIOPSize = averageIOPSize;
     }
+
+
 
     /**
      * The total number of IOP credits available to the user.
@@ -198,6 +206,8 @@ public class VolumeStats  implements Serializable  {
         this.burstIOPSCredit = burstIOPSCredit;
     }
 
+
+
     /**
      * The number of outstanding read and write operations to the cluster.
      **/
@@ -208,6 +218,8 @@ public class VolumeStats  implements Serializable  {
     public void setClientQueueDepth(Long clientQueueDepth) {
         this.clientQueueDepth = clientQueueDepth;
     }
+
+
 
     /**
      * The volume services being migrated to if the volume metadata is getting migrated between volume services.
@@ -221,6 +233,8 @@ public class VolumeStats  implements Serializable  {
         this.desiredMetadataHosts = desiredMetadataHosts;
     }
 
+
+
     /**
      * The observed latency time, in microseconds, to complete operations to a volume.<br/>
      * A "0" (zero) value means there is no I/O to the volume.
@@ -233,6 +247,8 @@ public class VolumeStats  implements Serializable  {
         this.latencyUSec = latencyUSec;
     }
 
+
+
     /**
      * The volume services on which the volume metadata resides.
      **/
@@ -243,6 +259,8 @@ public class VolumeStats  implements Serializable  {
     public void setMetadataHosts(MetadataHosts metadataHosts) {
         this.metadataHosts = metadataHosts;
     }
+
+
 
     /**
      * The number of 4KiB blocks with data after the last garbage collection operation has completed.
@@ -255,6 +273,8 @@ public class VolumeStats  implements Serializable  {
         this.nonZeroBlocks = nonZeroBlocks;
     }
 
+
+
     /**
      * Total bytes read by clients.
      **/
@@ -265,6 +285,8 @@ public class VolumeStats  implements Serializable  {
     public void setReadBytes(Long readBytes) {
         this.readBytes = readBytes;
     }
+
+
 
     /**
      * The average time, in microseconds, to complete read operations.
@@ -277,6 +299,8 @@ public class VolumeStats  implements Serializable  {
         this.readLatencyUSec = readLatencyUSec;
     }
 
+
+
     /**
      * Total read operations.
      **/
@@ -287,6 +311,8 @@ public class VolumeStats  implements Serializable  {
     public void setReadOps(Long readOps) {
         this.readOps = readOps;
     }
+
+
 
     /**
      * A floating value between 0 and 1 that represents how much the system is throttling clients
@@ -300,6 +326,8 @@ public class VolumeStats  implements Serializable  {
         this.throttle = throttle;
     }
 
+
+
     /**
      * The current time in UTC.
      **/
@@ -311,6 +339,8 @@ public class VolumeStats  implements Serializable  {
         this.timestamp = timestamp;
     }
 
+
+
     /**
      * The average time, in microseconds, to complete read and write operations to a volume.
      **/
@@ -321,6 +351,8 @@ public class VolumeStats  implements Serializable  {
     public void setTotalLatencyUSec(Long totalLatencyUSec) {
         this.totalLatencyUSec = totalLatencyUSec;
     }
+
+
 
     /**
      * For 512e volumes, the number of read operations that were not on a 4k sector boundary.
@@ -334,6 +366,8 @@ public class VolumeStats  implements Serializable  {
         this.unalignedReads = unalignedReads;
     }
 
+
+
     /**
      * For 512e volumes, the number of write operations that were not on a 4k sector boundary.
      * High numbers of unaligned writes may indicate improper partition alignment.
@@ -346,6 +380,8 @@ public class VolumeStats  implements Serializable  {
         this.unalignedWrites = unalignedWrites;
     }
 
+
+
     /**
      * List of volume access group(s) to which a volume belongs.
      **/
@@ -356,6 +392,8 @@ public class VolumeStats  implements Serializable  {
     public void setVolumeAccessGroups(Long[] volumeAccessGroups) {
         this.volumeAccessGroups = volumeAccessGroups;
     }
+
+
 
     /**
      * Volume ID of the volume.
@@ -368,6 +406,8 @@ public class VolumeStats  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * Total provisioned capacity in bytes.
      **/
@@ -378,6 +418,8 @@ public class VolumeStats  implements Serializable  {
     public void setVolumeSize(Long volumeSize) {
         this.volumeSize = volumeSize;
     }
+
+
 
     /**
      * A floating value that describes how much the client is using the volume.
@@ -395,6 +437,8 @@ public class VolumeStats  implements Serializable  {
         this.volumeUtilization = volumeUtilization;
     }
 
+
+
     /**
      * Total bytes written by clients.
      **/
@@ -405,6 +449,8 @@ public class VolumeStats  implements Serializable  {
     public void setWriteBytes(Long writeBytes) {
         this.writeBytes = writeBytes;
     }
+
+
 
     /**
      * The average time, in microseconds, to complete write operations.
@@ -417,6 +463,8 @@ public class VolumeStats  implements Serializable  {
         this.writeLatencyUSec = writeLatencyUSec;
     }
 
+
+
     /**
      * Total write operations occurring on the volume.
      **/
@@ -428,6 +476,8 @@ public class VolumeStats  implements Serializable  {
         this.writeOps = writeOps;
     }
 
+
+
     /**
      * Total number of 4KiB blocks without data after the last round of garbage collection operation has completed.
      **/
@@ -438,6 +488,8 @@ public class VolumeStats  implements Serializable  {
     public void setZeroBlocks(Long zeroBlocks) {
         this.zeroBlocks = zeroBlocks;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

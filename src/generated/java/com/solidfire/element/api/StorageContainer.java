@@ -87,6 +87,8 @@ public class StorageContainer  implements Serializable  {
     public void setName(String name) {
         this.name = name;
     }
+
+
     public java.util.UUID getStorageContainerID() {
         return this.storageContainerID;
     }
@@ -94,6 +96,8 @@ public class StorageContainer  implements Serializable  {
     public void setStorageContainerID(java.util.UUID storageContainerID) {
         this.storageContainerID = storageContainerID;
     }
+
+
     public Long getAccountID() {
         return this.accountID;
     }
@@ -101,6 +105,8 @@ public class StorageContainer  implements Serializable  {
     public void setAccountID(Long accountID) {
         this.accountID = accountID;
     }
+
+
     public String getProtocolEndpointType() {
         return this.protocolEndpointType;
     }
@@ -108,6 +114,8 @@ public class StorageContainer  implements Serializable  {
     public void setProtocolEndpointType(String protocolEndpointType) {
         this.protocolEndpointType = protocolEndpointType;
     }
+
+
     public CHAPSecret getInitiatorSecret() {
         return this.initiatorSecret;
     }
@@ -115,6 +123,8 @@ public class StorageContainer  implements Serializable  {
     public void setInitiatorSecret(CHAPSecret initiatorSecret) {
         this.initiatorSecret = initiatorSecret;
     }
+
+
     public CHAPSecret getTargetSecret() {
         return this.targetSecret;
     }
@@ -122,6 +132,8 @@ public class StorageContainer  implements Serializable  {
     public void setTargetSecret(CHAPSecret targetSecret) {
         this.targetSecret = targetSecret;
     }
+
+
     public String getStatus() {
         return this.status;
     }
@@ -129,6 +141,8 @@ public class StorageContainer  implements Serializable  {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

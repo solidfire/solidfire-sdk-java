@@ -77,6 +77,8 @@ public class InvokeSFApiRequest  implements Serializable  {
         this.method = method;
     }
 
+
+
     /**
      * An object, normally a dictionary or hashtable of the key/value pairs, to be passed as the params for the method being invoked.
      **/
@@ -84,9 +86,11 @@ public class InvokeSFApiRequest  implements Serializable  {
         return this.parameters;
     }
 
-    public void setParameters(Optional<Object> parameters) {
-        this.parameters = parameters;
+    public void setParameters(Object parameters) {
+        this.parameters = (parameters == null) ? Optional.<Object>empty() : Optional.of(parameters);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

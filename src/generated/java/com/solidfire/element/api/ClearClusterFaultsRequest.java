@@ -73,9 +73,11 @@ public class ClearClusterFaultsRequest  implements Serializable  {
         return this.faultTypes;
     }
 
-    public void setFaultTypes(Optional<String> faultTypes) {
-        this.faultTypes = faultTypes;
+    public void setFaultTypes(String faultTypes) {
+        this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : Optional.of(faultTypes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

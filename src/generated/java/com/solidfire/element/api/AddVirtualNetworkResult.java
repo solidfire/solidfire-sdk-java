@@ -74,6 +74,8 @@ public class AddVirtualNetworkResult  implements Serializable  {
         this.virtualNetworkID = virtualNetworkID;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

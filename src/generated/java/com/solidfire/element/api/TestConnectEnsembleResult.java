@@ -76,6 +76,8 @@ public class TestConnectEnsembleResult  implements Serializable  {
         this.details = details;
     }
 
+
+
     /**
      * The length of time required to run the test.
      **/
@@ -87,6 +89,8 @@ public class TestConnectEnsembleResult  implements Serializable  {
         this.duration = duration;
     }
 
+
+
     /**
      * The results of the entire test
      **/
@@ -97,6 +101,8 @@ public class TestConnectEnsembleResult  implements Serializable  {
     public void setResult(String result) {
         this.result = result;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

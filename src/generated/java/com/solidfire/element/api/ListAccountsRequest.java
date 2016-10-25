@@ -76,9 +76,11 @@ public class ListAccountsRequest  implements Serializable  {
         return this.startAccountID;
     }
 
-    public void setStartAccountID(Optional<Long> startAccountID) {
-        this.startAccountID = startAccountID;
+    public void setStartAccountID(Long startAccountID) {
+        this.startAccountID = (startAccountID == null) ? Optional.<Long>empty() : Optional.of(startAccountID);
     }
+
+
 
     /**
      * Maximum number of AccountInfo objects to return.
@@ -87,9 +89,11 @@ public class ListAccountsRequest  implements Serializable  {
         return this.limit;
     }
 
-    public void setLimit(Optional<Long> limit) {
-        this.limit = limit;
+    public void setLimit(Long limit) {
+        this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

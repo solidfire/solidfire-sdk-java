@@ -77,6 +77,8 @@ public class RemoveVolumesFromVolumeAccessGroupRequest  implements Serializable 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
+
+
     /**
      * List of volumes to remove from this volume access group.
      **/
@@ -87,6 +89,8 @@ public class RemoveVolumesFromVolumeAccessGroupRequest  implements Serializable 
     public void setVolumes(Long[] volumes) {
         this.volumes = volumes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

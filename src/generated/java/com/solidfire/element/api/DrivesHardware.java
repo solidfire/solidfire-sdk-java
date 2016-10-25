@@ -70,6 +70,8 @@ public class DrivesHardware  implements Serializable  {
         this.driveHardware = driveHardware;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

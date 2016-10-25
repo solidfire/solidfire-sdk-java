@@ -74,6 +74,8 @@ public class DeleteSnapshotRequest  implements Serializable  {
         this.snapshotID = snapshotID;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

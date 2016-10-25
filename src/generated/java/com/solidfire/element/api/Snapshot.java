@@ -151,6 +151,8 @@ public class Snapshot  implements Serializable  {
         this.snapshotID = snapshotID;
     }
 
+
+
     /**
      * The volume this snapshot was taken of.
      **/
@@ -161,6 +163,8 @@ public class Snapshot  implements Serializable  {
     public void setVolumeID(Long volumeID) {
         this.volumeID = volumeID;
     }
+
+
 
     /**
      * A name for this snapshot.
@@ -174,6 +178,8 @@ public class Snapshot  implements Serializable  {
         this.name = name;
     }
 
+
+
     /**
      * A string that represents the correct digits in the stored snapshot.
      * This checksum can be used later to compare other snapshots to detect errors in the data.
@@ -185,6 +191,8 @@ public class Snapshot  implements Serializable  {
     public void setChecksum(String checksum) {
         this.checksum = checksum;
     }
+
+
 
     /**
      * Identifies if snapshot is enabled for remote replication.
@@ -199,6 +207,8 @@ public class Snapshot  implements Serializable  {
     public void setEnableRemoteReplication(Boolean enableRemoteReplication) {
         this.enableRemoteReplication = enableRemoteReplication;
     }
+
+
 
     /**
      * Indicates how the snapshot expiration was set. Possible values:
@@ -217,6 +227,8 @@ public class Snapshot  implements Serializable  {
         this.expirationReason = expirationReason;
     }
 
+
+
     /**
      * The time at which this snapshot will expire and be purged from the cluster.
      * @since 8.0 
@@ -230,6 +242,8 @@ public class Snapshot  implements Serializable  {
     public void setExpirationTime(String expirationTime) {
         this.expirationTime = expirationTime;
     }
+
+
 
     /**
      * Current remote status of the snapshot remoteStatus: Possible values:
@@ -250,6 +264,8 @@ public class Snapshot  implements Serializable  {
         this.remoteStatuses = remoteStatuses;
     }
 
+
+
     /**
      * Current status of the snapshot
      * <br/><b>Preparing</b>: A snapshot that is being prepared for use and is not yet writable.
@@ -263,6 +279,8 @@ public class Snapshot  implements Serializable  {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
 
     /**
      * Universal Unique ID of an existing snapshot.
@@ -278,6 +296,8 @@ public class Snapshot  implements Serializable  {
         this.snapshotUUID = snapshotUUID;
     }
 
+
+
     /**
      * Total size of this snapshot in bytes.
      * It is equivalent to totalSize of the volume when this snapshot was taken.
@@ -290,6 +310,8 @@ public class Snapshot  implements Serializable  {
         this.totalSize = totalSize;
     }
 
+
+
     /**
      * If present, the ID of the group this snapshot is a part of.
      * If not present, this snapshot is not part of a group.
@@ -298,9 +320,11 @@ public class Snapshot  implements Serializable  {
         return this.groupID;
     }
 
-    public void setGroupID(Optional<Long> groupID) {
-        this.groupID = groupID;
+    public void setGroupID(Long groupID) {
+        this.groupID = (groupID == null) ? Optional.<Long>empty() : Optional.of(groupID);
     }
+
+
 
     /**
      * The current "members" results contains information about each snapshot in the group.
@@ -317,6 +341,8 @@ public class Snapshot  implements Serializable  {
         this.groupSnapshotUUID = groupSnapshotUUID;
     }
 
+
+
     /**
      * The time this snapshot was taken.
      **/
@@ -328,6 +354,8 @@ public class Snapshot  implements Serializable  {
         this.createTime = createTime;
     }
 
+
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
@@ -338,6 +366,8 @@ public class Snapshot  implements Serializable  {
     public void setAttributes(java.util.Map<String, Object> attributes) {
         this.attributes = attributes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

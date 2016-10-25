@@ -122,6 +122,8 @@ public class VirtualNetwork  implements Serializable  {
         this.virtualNetworkID = virtualNetworkID;
     }
 
+
+
     /**
      * VLAN Tag identifier.
      **/
@@ -132,6 +134,8 @@ public class VirtualNetwork  implements Serializable  {
     public void setVirtualNetworkTag(Long virtualNetworkTag) {
         this.virtualNetworkTag = virtualNetworkTag;
     }
+
+
 
     /**
      * Range of address blocks currently assigned to the virtual network.
@@ -147,6 +151,8 @@ public class VirtualNetwork  implements Serializable  {
         this.addressBlocks = addressBlocks;
     }
 
+
+
     /**
      * The name assigned to the virtual network.
      **/
@@ -157,6 +163,8 @@ public class VirtualNetwork  implements Serializable  {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     /**
      * IP address of the netmask for the virtual network.
@@ -169,6 +177,8 @@ public class VirtualNetwork  implements Serializable  {
         this.netmask = netmask;
     }
 
+
+
     /**
      * Storage IP address for the virtual network.
      **/
@@ -180,6 +190,8 @@ public class VirtualNetwork  implements Serializable  {
         this.svip = svip;
     }
 
+
+
     /**
      * 
      * @since 9.0 
@@ -190,9 +202,11 @@ public class VirtualNetwork  implements Serializable  {
         return this.gateway;
     }
 
-    public void setGateway(Optional<String> gateway) {
-        this.gateway = gateway;
+    public void setGateway(String gateway) {
+        this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
     }
+
+
 
     /**
      * 
@@ -204,9 +218,11 @@ public class VirtualNetwork  implements Serializable  {
         return this.namespace;
     }
 
-    public void setNamespace(Optional<Boolean> namespace) {
-        this.namespace = namespace;
+    public void setNamespace(Boolean namespace) {
+        this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -218,6 +234,8 @@ public class VirtualNetwork  implements Serializable  {
     public void setAttributes(java.util.Map<String, Object> attributes) {
         this.attributes = attributes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

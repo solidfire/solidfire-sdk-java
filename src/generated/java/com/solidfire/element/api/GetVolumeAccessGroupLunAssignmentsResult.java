@@ -74,6 +74,8 @@ public class GetVolumeAccessGroupLunAssignmentsResult  implements Serializable  
         this.volumeAccessGroupLunAssignments = volumeAccessGroupLunAssignments;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

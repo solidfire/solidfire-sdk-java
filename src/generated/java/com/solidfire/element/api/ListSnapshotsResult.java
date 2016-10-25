@@ -77,6 +77,8 @@ public class ListSnapshotsResult  implements Serializable  {
         this.snapshots = snapshots;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

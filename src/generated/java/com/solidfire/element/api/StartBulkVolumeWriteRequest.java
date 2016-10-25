@@ -86,6 +86,8 @@ public class StartBulkVolumeWriteRequest  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * The format of the volume data. Can be either:
      * <br/><b>uncompressed</b>: every byte of the volume is returned without any compression.
@@ -99,6 +101,8 @@ public class StartBulkVolumeWriteRequest  implements Serializable  {
         this.format = format;
     }
 
+
+
     /**
      * Executable name of a script.
      * If no script name is given then the key and URL are necessary to access SolidFire nodes.
@@ -108,9 +112,11 @@ public class StartBulkVolumeWriteRequest  implements Serializable  {
         return this.script;
     }
 
-    public void setScript(Optional<String> script) {
-        this.script = script;
+    public void setScript(String script) {
+        this.script = (script == null) ? Optional.<String>empty() : Optional.of(script);
     }
+
+
 
     /**
      * JSON parameters to pass to the script.
@@ -119,9 +125,11 @@ public class StartBulkVolumeWriteRequest  implements Serializable  {
         return this.scriptParameters;
     }
 
-    public void setScriptParameters(Optional<Object> scriptParameters) {
-        this.scriptParameters = scriptParameters;
+    public void setScriptParameters(Object scriptParameters) {
+        this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : Optional.of(scriptParameters);
     }
+
+
 
     /**
      * JSON attributes for the bulk volume job.
@@ -130,9 +138,11 @@ public class StartBulkVolumeWriteRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

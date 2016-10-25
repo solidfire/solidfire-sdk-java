@@ -84,51 +84,65 @@ public class PhysicalAdapter  implements Serializable  {
         return this.address;
     }
 
-    public void setAddress(Optional<String> address) {
-        this.address = address;
+    public void setAddress(String address) {
+        this.address = (address == null) ? Optional.<String>empty() : Optional.of(address);
     }
+
+
     public Optional<String> getMacAddress() {
         return this.macAddress;
     }
 
-    public void setMacAddress(Optional<String> macAddress) {
-        this.macAddress = macAddress;
+    public void setMacAddress(String macAddress) {
+        this.macAddress = (macAddress == null) ? Optional.<String>empty() : Optional.of(macAddress);
     }
+
+
     public Optional<String> getMacAddressPermanent() {
         return this.macAddressPermanent;
     }
 
-    public void setMacAddressPermanent(Optional<String> macAddressPermanent) {
-        this.macAddressPermanent = macAddressPermanent;
+    public void setMacAddressPermanent(String macAddressPermanent) {
+        this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : Optional.of(macAddressPermanent);
     }
+
+
     public Optional<String> getMtu() {
         return this.mtu;
     }
 
-    public void setMtu(Optional<String> mtu) {
-        this.mtu = mtu;
+    public void setMtu(String mtu) {
+        this.mtu = (mtu == null) ? Optional.<String>empty() : Optional.of(mtu);
     }
+
+
     public Optional<String> getNetmask() {
         return this.netmask;
     }
 
-    public void setNetmask(Optional<String> netmask) {
-        this.netmask = netmask;
+    public void setNetmask(String netmask) {
+        this.netmask = (netmask == null) ? Optional.<String>empty() : Optional.of(netmask);
     }
+
+
     public Optional<String> getNetwork() {
         return this.network;
     }
 
-    public void setNetwork(Optional<String> network) {
-        this.network = network;
+    public void setNetwork(String network) {
+        this.network = (network == null) ? Optional.<String>empty() : Optional.of(network);
     }
+
+
     public Optional<Boolean> getUpAndRunning() {
         return this.upAndRunning;
     }
 
-    public void setUpAndRunning(Optional<Boolean> upAndRunning) {
-        this.upAndRunning = upAndRunning;
+    public void setUpAndRunning(Boolean upAndRunning) {
+        this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : Optional.of(upAndRunning);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

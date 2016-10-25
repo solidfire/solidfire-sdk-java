@@ -73,16 +73,20 @@ public class ListStorageContainersRequest  implements Serializable  {
         return this.storageContainerIDs;
     }
 
-    public void setStorageContainerIDs(Optional<java.util.UUID[]> storageContainerIDs) {
-        this.storageContainerIDs = storageContainerIDs;
+    public void setStorageContainerIDs(java.util.UUID[] storageContainerIDs) {
+        this.storageContainerIDs = (storageContainerIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(storageContainerIDs);
     }
+
+
     public Optional<java.util.UUID> getCallingHostID() {
         return this.callingHostID;
     }
 
-    public void setCallingHostID(Optional<java.util.UUID> callingHostID) {
-        this.callingHostID = callingHostID;
+    public void setCallingHostID(java.util.UUID callingHostID) {
+        this.callingHostID = (callingHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingHostID);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

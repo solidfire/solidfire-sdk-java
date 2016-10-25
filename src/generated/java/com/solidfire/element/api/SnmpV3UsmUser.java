@@ -89,6 +89,8 @@ public class SnmpV3UsmUser  implements Serializable  {
         this.access = access;
     }
 
+
+
     /**
      * The name of the user. Must contain at least one character, but no more than 32 characters. Blank spaces are not allowed.
      **/
@@ -99,6 +101,8 @@ public class SnmpV3UsmUser  implements Serializable  {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     /**
      * The password of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "auth" or "priv."
@@ -111,6 +115,8 @@ public class SnmpV3UsmUser  implements Serializable  {
         this.password = password;
     }
 
+
+
     /**
      * The passphrase of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "priv."
      **/
@@ -121,6 +127,8 @@ public class SnmpV3UsmUser  implements Serializable  {
     public void setPassphrase(String passphrase) {
         this.passphrase = passphrase;
     }
+
+
 
     /**
      * <br/><b>noauth</b>: No password or passphrase is required.
@@ -134,6 +142,8 @@ public class SnmpV3UsmUser  implements Serializable  {
     public void setSecLevel(String secLevel) {
         this.secLevel = secLevel;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

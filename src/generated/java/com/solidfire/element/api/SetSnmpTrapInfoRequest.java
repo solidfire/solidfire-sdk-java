@@ -83,6 +83,8 @@ public class SetSnmpTrapInfoRequest  implements Serializable  {
         this.trapRecipients = trapRecipients;
     }
 
+
+
     /**
      * If "true", when a cluster fault is logged a corresponding solidFireClusterFaultNotification is sent to the configured list of trap recipients.
      **/
@@ -93,6 +95,8 @@ public class SetSnmpTrapInfoRequest  implements Serializable  {
     public void setClusterFaultTrapsEnabled(Boolean clusterFaultTrapsEnabled) {
         this.clusterFaultTrapsEnabled = clusterFaultTrapsEnabled;
     }
+
+
 
     /**
      * If "true", when a cluster fault is logged a corresponding solidFireClusterFaultResolvedNotification is sent to the configured list of trap recipients.
@@ -105,6 +109,8 @@ public class SetSnmpTrapInfoRequest  implements Serializable  {
         this.clusterFaultResolvedTrapsEnabled = clusterFaultResolvedTrapsEnabled;
     }
 
+
+
     /**
      * If "true", when a cluster fault is logged a corresponding solidFireClusterEventNotification is sent to the configured list of trap recipients.
      **/
@@ -115,6 +121,8 @@ public class SetSnmpTrapInfoRequest  implements Serializable  {
     public void setClusterEventTrapsEnabled(Boolean clusterEventTrapsEnabled) {
         this.clusterEventTrapsEnabled = clusterEventTrapsEnabled;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

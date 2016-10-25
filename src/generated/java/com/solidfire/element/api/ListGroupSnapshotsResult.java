@@ -74,6 +74,8 @@ public class ListGroupSnapshotsResult  implements Serializable  {
         this.groupSnapshots = groupSnapshots;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

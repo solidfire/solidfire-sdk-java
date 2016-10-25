@@ -74,6 +74,8 @@ public class GetHardwareConfigResult  implements Serializable  {
         this.hardwareConfig = hardwareConfig;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

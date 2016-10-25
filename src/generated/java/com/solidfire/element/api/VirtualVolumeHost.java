@@ -84,6 +84,8 @@ public class VirtualVolumeHost  implements Serializable  {
     public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) {
         this.virtualVolumeHostID = virtualVolumeHostID;
     }
+
+
     public java.util.UUID getClusterID() {
         return this.clusterID;
     }
@@ -91,6 +93,8 @@ public class VirtualVolumeHost  implements Serializable  {
     public void setClusterID(java.util.UUID clusterID) {
         this.clusterID = clusterID;
     }
+
+
     public java.util.UUID[] getVisibleProtocolEndpointIDs() {
         return this.visibleProtocolEndpointIDs;
     }
@@ -98,6 +102,8 @@ public class VirtualVolumeHost  implements Serializable  {
     public void setVisibleProtocolEndpointIDs(java.util.UUID[] visibleProtocolEndpointIDs) {
         this.visibleProtocolEndpointIDs = visibleProtocolEndpointIDs;
     }
+
+
     public Long[] getBindings() {
         return this.bindings;
     }
@@ -105,6 +111,8 @@ public class VirtualVolumeHost  implements Serializable  {
     public void setBindings(Long[] bindings) {
         this.bindings = bindings;
     }
+
+
     public String[] getInitiatorNames() {
         return this.initiatorNames;
     }
@@ -112,6 +120,8 @@ public class VirtualVolumeHost  implements Serializable  {
     public void setInitiatorNames(String[] initiatorNames) {
         this.initiatorNames = initiatorNames;
     }
+
+
     public String getHostAddress() {
         return this.hostAddress;
     }
@@ -119,6 +129,8 @@ public class VirtualVolumeHost  implements Serializable  {
     public void setHostAddress(String hostAddress) {
         this.hostAddress = hostAddress;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

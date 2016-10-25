@@ -81,6 +81,8 @@ public class KernelCrashDump  implements Serializable  {
     public void setKernelCrashDumpMinFreeGb(Long kernelCrashDumpMinFreeGb) {
         this.kernelCrashDumpMinFreeGb = kernelCrashDumpMinFreeGb;
     }
+
+
     public String getKernelCrashDumpDirectory() {
         return this.kernelCrashDumpDirectory;
     }
@@ -88,6 +90,8 @@ public class KernelCrashDump  implements Serializable  {
     public void setKernelCrashDumpDirectory(String kernelCrashDumpDirectory) {
         this.kernelCrashDumpDirectory = kernelCrashDumpDirectory;
     }
+
+
     public String getKernelCrashDumpKernelOptions() {
         return this.kernelCrashDumpKernelOptions;
     }
@@ -95,6 +99,8 @@ public class KernelCrashDump  implements Serializable  {
     public void setKernelCrashDumpKernelOptions(String kernelCrashDumpKernelOptions) {
         this.kernelCrashDumpKernelOptions = kernelCrashDumpKernelOptions;
     }
+
+
     public Long getKernelCrashDumpMakedumpfileLevel() {
         return this.kernelCrashDumpMakedumpfileLevel;
     }
@@ -102,6 +108,8 @@ public class KernelCrashDump  implements Serializable  {
     public void setKernelCrashDumpMakedumpfileLevel(Long kernelCrashDumpMakedumpfileLevel) {
         this.kernelCrashDumpMakedumpfileLevel = kernelCrashDumpMakedumpfileLevel;
     }
+
+
     public String getKernelCrashDumpDefaultState() {
         return this.kernelCrashDumpDefaultState;
     }
@@ -109,6 +117,8 @@ public class KernelCrashDump  implements Serializable  {
     public void setKernelCrashDumpDefaultState(String kernelCrashDumpDefaultState) {
         this.kernelCrashDumpDefaultState = kernelCrashDumpDefaultState;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

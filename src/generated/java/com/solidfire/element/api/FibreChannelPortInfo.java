@@ -104,6 +104,8 @@ public class FibreChannelPortInfo  implements Serializable  {
         this.firmware = firmware;
     }
 
+
+
     /**
      * The ID of the individual HBA port.
      **/
@@ -114,6 +116,8 @@ public class FibreChannelPortInfo  implements Serializable  {
     public void setHbaPort(Long hbaPort) {
         this.hbaPort = hbaPort;
     }
+
+
 
     /**
      * Model of the HBA on the port.
@@ -126,6 +130,8 @@ public class FibreChannelPortInfo  implements Serializable  {
         this.model = model;
     }
 
+
+
     /**
      * Unique SolidFire port node ID.
      **/
@@ -136,6 +142,8 @@ public class FibreChannelPortInfo  implements Serializable  {
     public void setNPortID(String nPortID) {
         this.nPortID = nPortID;
     }
+
+
 
     /**
      * Slot in which the pci card resides on the Fibre Channel node hardware.
@@ -148,6 +156,8 @@ public class FibreChannelPortInfo  implements Serializable  {
         this.pciSlot = pciSlot;
     }
 
+
+
     /**
      * Serial number on the Fibre Channel port.
      **/
@@ -159,6 +169,8 @@ public class FibreChannelPortInfo  implements Serializable  {
         this.serial = serial;
     }
 
+
+
     /**
      * Speed of the HBA on the port.
      **/
@@ -169,6 +181,8 @@ public class FibreChannelPortInfo  implements Serializable  {
     public void setSpeed(String speed) {
         this.speed = speed;
     }
+
+
 
     /**
      * Possible values:
@@ -183,6 +197,8 @@ public class FibreChannelPortInfo  implements Serializable  {
         this.state = state;
     }
 
+
+
     /**
      * The World Wide Name of the Fibre Channel switch port.
      **/
@@ -193,6 +209,8 @@ public class FibreChannelPortInfo  implements Serializable  {
     public void setSwitchWwn(String switchWwn) {
         this.switchWwn = switchWwn;
     }
+
+
 
     /**
      * World Wide Node Name of the HBA node.
@@ -205,6 +223,8 @@ public class FibreChannelPortInfo  implements Serializable  {
         this.wwnn = wwnn;
     }
 
+
+
     /**
      * World Wide Port Name assigned to the physical port of the HBA.
      **/
@@ -215,6 +235,8 @@ public class FibreChannelPortInfo  implements Serializable  {
     public void setWwpn(String wwpn) {
         this.wwpn = wwpn;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

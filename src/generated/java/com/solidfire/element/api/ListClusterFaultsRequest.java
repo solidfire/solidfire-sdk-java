@@ -75,9 +75,11 @@ public class ListClusterFaultsRequest  implements Serializable  {
         return this.exceptions;
     }
 
-    public void setExceptions(Optional<Boolean> exceptions) {
-        this.exceptions = exceptions;
+    public void setExceptions(Boolean exceptions) {
+        this.exceptions = (exceptions == null) ? Optional.<Boolean>empty() : Optional.of(exceptions);
     }
+
+
 
     /**
      * Include faults triggered by sub-optimal system configuration.
@@ -87,16 +89,20 @@ public class ListClusterFaultsRequest  implements Serializable  {
         return this.bestPractices;
     }
 
-    public void setBestPractices(Optional<Boolean> bestPractices) {
-        this.bestPractices = bestPractices;
+    public void setBestPractices(Boolean bestPractices) {
+        this.bestPractices = (bestPractices == null) ? Optional.<Boolean>empty() : Optional.of(bestPractices);
     }
+
+
     public Optional<Boolean> getUpdate() {
         return this.update;
     }
 
-    public void setUpdate(Optional<Boolean> update) {
-        this.update = update;
+    public void setUpdate(Boolean update) {
+        this.update = (update == null) ? Optional.<Boolean>empty() : Optional.of(update);
     }
+
+
 
     /**
      * Determines the types of faults returned: current: List active, unresolved faults.
@@ -107,9 +113,11 @@ public class ListClusterFaultsRequest  implements Serializable  {
         return this.faultTypes;
     }
 
-    public void setFaultTypes(Optional<String> faultTypes) {
-        this.faultTypes = faultTypes;
+    public void setFaultTypes(String faultTypes) {
+        this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : Optional.of(faultTypes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

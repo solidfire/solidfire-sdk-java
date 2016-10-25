@@ -74,6 +74,8 @@ public class GetAsyncResultRequest  implements Serializable  {
         this.asyncHandle = asyncHandle;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

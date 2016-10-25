@@ -108,6 +108,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
     public String getDev() {
         return this.dev;
     }
@@ -115,6 +117,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setDev(String dev) {
         this.dev = dev;
     }
+
+
     public String getDevpath() {
         return this.devpath;
     }
@@ -122,6 +126,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setDevpath(String devpath) {
         this.devpath = devpath;
     }
+
+
     public Boolean getDriveSecurityAtMaximum() {
         return this.driveSecurityAtMaximum;
     }
@@ -129,6 +135,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setDriveSecurityAtMaximum(Boolean driveSecurityAtMaximum) {
         this.driveSecurityAtMaximum = driveSecurityAtMaximum;
     }
+
+
     public Boolean getDriveSecurityFrozen() {
         return this.driveSecurityFrozen;
     }
@@ -136,6 +144,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setDriveSecurityFrozen(Boolean driveSecurityFrozen) {
         this.driveSecurityFrozen = driveSecurityFrozen;
     }
+
+
     public Boolean getDriveSecurityLocked() {
         return this.driveSecurityLocked;
     }
@@ -143,6 +153,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setDriveSecurityLocked(Boolean driveSecurityLocked) {
         this.driveSecurityLocked = driveSecurityLocked;
     }
+
+
     public String getLogicalname() {
         return this.logicalname;
     }
@@ -150,6 +162,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setLogicalname(String logicalname) {
         this.logicalname = logicalname;
     }
+
+
     public String getProduct() {
         return this.product;
     }
@@ -157,6 +171,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setProduct(String product) {
         this.product = product;
     }
+
+
     public Boolean getSecurityFeatureEnabled() {
         return this.securityFeatureEnabled;
     }
@@ -164,6 +180,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setSecurityFeatureEnabled(Boolean securityFeatureEnabled) {
         this.securityFeatureEnabled = securityFeatureEnabled;
     }
+
+
     public Boolean getSecurityFeatureSupported() {
         return this.securityFeatureSupported;
     }
@@ -171,6 +189,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setSecurityFeatureSupported(Boolean securityFeatureSupported) {
         this.securityFeatureSupported = securityFeatureSupported;
     }
+
+
     public String getSerial() {
         return this.serial;
     }
@@ -178,6 +198,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setSerial(String serial) {
         this.serial = serial;
     }
+
+
     public Long getSize() {
         return this.size;
     }
@@ -185,6 +207,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setSize(Long size) {
         this.size = size;
     }
+
+
     public java.util.UUID getUuid() {
         return this.uuid;
     }
@@ -192,6 +216,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setUuid(java.util.UUID uuid) {
         this.uuid = uuid;
     }
+
+
     public String getVersion() {
         return this.version;
     }
@@ -199,6 +225,8 @@ public class DriveHardwareInfo  implements Serializable  {
     public void setVersion(String version) {
         this.version = version;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

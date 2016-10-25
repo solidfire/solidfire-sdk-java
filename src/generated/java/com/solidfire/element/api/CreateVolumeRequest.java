@@ -91,6 +91,8 @@ public class CreateVolumeRequest  implements Serializable  {
         this.name = name;
     }
 
+
+
     /**
      * AccountID for the owner of this volume.
      **/
@@ -101,6 +103,8 @@ public class CreateVolumeRequest  implements Serializable  {
     public void setAccountID(Long accountID) {
         this.accountID = accountID;
     }
+
+
 
     /**
      * Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
@@ -113,6 +117,8 @@ public class CreateVolumeRequest  implements Serializable  {
         this.totalSize = totalSize;
     }
 
+
+
     /**
      * Should the volume provides 512-byte sector emulation?
      **/
@@ -124,6 +130,8 @@ public class CreateVolumeRequest  implements Serializable  {
         this.enable512e = enable512e;
     }
 
+
+
     /**
      * Initial quality of service settings for this volume.
      * <br/><br/>
@@ -134,9 +142,11 @@ public class CreateVolumeRequest  implements Serializable  {
         return this.qos;
     }
 
-    public void setQos(Optional<QoS> qos) {
-        this.qos = qos;
+    public void setQos(QoS qos) {
+        this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
     }
+
+
 
     /**
      * List of Name/Value pairs in JSON object format.
@@ -145,9 +155,11 @@ public class CreateVolumeRequest  implements Serializable  {
         return this.attributes;
     }
 
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) {
-        this.attributes = attributes;
+    public void setAttributes(java.util.Map<String, Object> attributes) {
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

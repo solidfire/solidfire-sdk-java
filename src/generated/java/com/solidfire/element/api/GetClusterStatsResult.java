@@ -70,6 +70,8 @@ public class GetClusterStatsResult  implements Serializable  {
         this.clusterStats = clusterStats;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

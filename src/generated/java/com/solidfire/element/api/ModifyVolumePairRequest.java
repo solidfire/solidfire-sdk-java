@@ -80,6 +80,8 @@ public class ModifyVolumePairRequest  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * Valid values that can be entered:<br/>
      * <b>true</b>: to pause volume replication.<br/>
@@ -90,9 +92,11 @@ public class ModifyVolumePairRequest  implements Serializable  {
         return this.pausedManual;
     }
 
-    public void setPausedManual(Optional<Boolean> pausedManual) {
-        this.pausedManual = pausedManual;
+    public void setPausedManual(Boolean pausedManual) {
+        this.pausedManual = (pausedManual == null) ? Optional.<Boolean>empty() : Optional.of(pausedManual);
     }
+
+
 
     /**
      * Volume replication mode.<br/>
@@ -105,9 +109,11 @@ public class ModifyVolumePairRequest  implements Serializable  {
         return this.mode;
     }
 
-    public void setMode(Optional<String> mode) {
-        this.mode = mode;
+    public void setMode(String mode) {
+        this.mode = (mode == null) ? Optional.<String>empty() : Optional.of(mode);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

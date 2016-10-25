@@ -81,6 +81,8 @@ public class GetAsyncResultResult  implements Serializable  {
         this.result = result;
     }
 
+
+
     /**
      * Status of the asynchronous method call
      * <br/><b>running</b>: The method is still running.
@@ -93,6 +95,8 @@ public class GetAsyncResultResult  implements Serializable  {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

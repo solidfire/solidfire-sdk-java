@@ -123,6 +123,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         this.blockFullness = blockFullness;
     }
 
+
+
     /**
      * Reflects the highest level of fullness between "blockFullness" and "metadataFullness".
      **/
@@ -133,6 +135,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
     public void setFullness(String fullness) {
         this.fullness = fullness;
     }
+
+
 
     /**
      * A value representative of the number of times metadata space can be over provisioned relative to the amount of space available. For example, if there was enough metadata space to store 100 TiB of volumes and this number was set to 5, then 500 TiB worth of volumes could be created.
@@ -145,6 +149,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         this.maxMetadataOverProvisionFactor = maxMetadataOverProvisionFactor;
     }
 
+
+
     /**
      * Current computed level of metadata fullness of the cluster.
      **/
@@ -155,6 +161,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
     public void setMetadataFullness(String metadataFullness) {
         this.metadataFullness = metadataFullness;
     }
+
+
 
     /**
      * Error condition; message sent to "Alerts" if the reserved slice utilization is greater than the sliceReserveUsedThresholdPct value returned.
@@ -167,6 +175,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         this.sliceReserveUsedThresholdPct = sliceReserveUsedThresholdPct;
     }
 
+
+
     /**
      * Awareness condition: Value that is set for "Stage 2" cluster threshold level.
      **/
@@ -177,6 +187,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
     public void setStage2AwareThreshold(Long stage2AwareThreshold) {
         this.stage2AwareThreshold = stage2AwareThreshold;
     }
+
+
 
     /**
      * Number of bytes being used by the cluster at which a stage2 condition will exist.
@@ -189,6 +201,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         this.stage2BlockThresholdBytes = stage2BlockThresholdBytes;
     }
 
+
+
     /**
      * Number of bytes being used by the cluster at which a stage3 condition will exist.
      **/
@@ -199,6 +213,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
     public void setStage3BlockThresholdBytes(Long stage3BlockThresholdBytes) {
         this.stage3BlockThresholdBytes = stage3BlockThresholdBytes;
     }
+
+
 
     /**
      * The percent value set for stage3. At this percent full, a warning will be posted in the Alerts log.
@@ -211,6 +227,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         this.stage3BlockThresholdPercent = stage3BlockThresholdPercent;
     }
 
+
+
     /**
      * Error condition; message sent to "Alerts" that capacity on a cluster is getting low.
      **/
@@ -221,6 +239,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
     public void setStage3LowThreshold(Long stage3LowThreshold) {
         this.stage3LowThreshold = stage3LowThreshold;
     }
+
+
 
     /**
      * Error condition; message sent to "Alerts" that capacity on a cluster is critically low.
@@ -233,6 +253,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         this.stage4CriticalThreshold = stage4CriticalThreshold;
     }
 
+
+
     /**
      * Number of bytes being used by the cluster at which a stage4 condition will exist.
      **/
@@ -243,6 +265,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
     public void setStage4BlockThresholdBytes(Long stage4BlockThresholdBytes) {
         this.stage4BlockThresholdBytes = stage4BlockThresholdBytes;
     }
+
+
 
     /**
      * Number of bytes being used by the cluster at which a stage5 condition will exist.
@@ -255,6 +279,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         this.stage5BlockThresholdBytes = stage5BlockThresholdBytes;
     }
 
+
+
     /**
      * Physical capacity of the cluster measured in bytes.
      **/
@@ -265,6 +291,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
     public void setSumTotalClusterBytes(Long sumTotalClusterBytes) {
         this.sumTotalClusterBytes = sumTotalClusterBytes;
     }
+
+
 
     /**
      * Total amount of space that can be used to store metadata.
@@ -277,6 +305,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         this.sumTotalMetadataClusterBytes = sumTotalMetadataClusterBytes;
     }
 
+
+
     /**
      * Number of bytes used on the cluster.
      **/
@@ -288,6 +318,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
         this.sumUsedClusterBytes = sumUsedClusterBytes;
     }
 
+
+
     /**
      * Amount of space used on volume drives to store metadata.
      **/
@@ -298,6 +330,8 @@ public class GetClusterFullThresholdResult  implements Serializable  {
     public void setSumUsedMetadataClusterBytes(Long sumUsedMetadataClusterBytes) {
         this.sumUsedMetadataClusterBytes = sumUsedMetadataClusterBytes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

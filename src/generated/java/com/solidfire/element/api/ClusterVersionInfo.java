@@ -75,6 +75,8 @@ public class ClusterVersionInfo  implements Serializable  {
     public void setNodeID(Long nodeID) {
         this.nodeID = nodeID;
     }
+
+
     public String getNodeVersion() {
         return this.nodeVersion;
     }
@@ -82,6 +84,8 @@ public class ClusterVersionInfo  implements Serializable  {
     public void setNodeVersion(String nodeVersion) {
         this.nodeVersion = nodeVersion;
     }
+
+
     public String getNodeInternalRevision() {
         return this.nodeInternalRevision;
     }
@@ -89,6 +93,8 @@ public class ClusterVersionInfo  implements Serializable  {
     public void setNodeInternalRevision(String nodeInternalRevision) {
         this.nodeInternalRevision = nodeInternalRevision;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

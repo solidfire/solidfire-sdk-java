@@ -74,6 +74,8 @@ public class ListFibreChannelPortInfoResult  implements Serializable  {
         this.fibreChannelPortInfo = fibreChannelPortInfo;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

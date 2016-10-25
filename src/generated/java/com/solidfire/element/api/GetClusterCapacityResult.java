@@ -70,6 +70,8 @@ public class GetClusterCapacityResult  implements Serializable  {
         this.clusterCapacity = clusterCapacity;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

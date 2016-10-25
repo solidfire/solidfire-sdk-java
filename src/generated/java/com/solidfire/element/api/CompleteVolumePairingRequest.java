@@ -77,6 +77,8 @@ public class CompleteVolumePairingRequest  implements Serializable  {
         this.volumePairingKey = volumePairingKey;
     }
 
+
+
     /**
      * The ID of volume on which to complete the pairing process.
      **/
@@ -87,6 +89,8 @@ public class CompleteVolumePairingRequest  implements Serializable  {
     public void setVolumeID(Long volumeID) {
         this.volumeID = volumeID;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

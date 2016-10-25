@@ -75,6 +75,8 @@ public class ListVolumeStatsByAccountResult  implements Serializable  {
         this.volumeStats = volumeStats;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -80,6 +80,8 @@ public class VolumeAccessGroupLunAssignments  implements Serializable  {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
+
+
     /**
      * The volume IDs with assigned LUN values.
      **/
@@ -91,6 +93,8 @@ public class VolumeAccessGroupLunAssignments  implements Serializable  {
         this.lunAssignments = lunAssignments;
     }
 
+
+
     /**
      * The volume IDs with deleted LUN values.
      **/
@@ -101,6 +105,8 @@ public class VolumeAccessGroupLunAssignments  implements Serializable  {
     public void setDeletedLunAssignments(LunAssignment[] deletedLunAssignments) {
         this.deletedLunAssignments = deletedLunAssignments;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

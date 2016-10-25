@@ -74,6 +74,8 @@ public class GetAccountResult  implements Serializable  {
         this.account = account;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -100,9 +100,11 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.authType;
     }
 
-    public void setAuthType(Optional<String> authType) {
-        this.authType = authType;
+    public void setAuthType(String authType) {
+        this.authType = (authType == null) ? Optional.<String>empty() : Optional.of(authType);
     }
+
+
 
     /**
      * The base DN of the tree to start the group search (will do a subtree search from here).
@@ -111,9 +113,11 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.groupSearchBaseDN;
     }
 
-    public void setGroupSearchBaseDN(Optional<String> groupSearchBaseDN) {
-        this.groupSearchBaseDN = groupSearchBaseDN;
+    public void setGroupSearchBaseDN(String groupSearchBaseDN) {
+        this.groupSearchBaseDN = (groupSearchBaseDN == null) ? Optional.<String>empty() : Optional.of(groupSearchBaseDN);
     }
+
+
 
     /**
      * REQUIRED for CustomFilter<br/>
@@ -124,9 +128,11 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.groupSearchCustomFilter;
     }
 
-    public void setGroupSearchCustomFilter(Optional<String> groupSearchCustomFilter) {
-        this.groupSearchCustomFilter = groupSearchCustomFilter;
+    public void setGroupSearchCustomFilter(String groupSearchCustomFilter) {
+        this.groupSearchCustomFilter = (groupSearchCustomFilter == null) ? Optional.<String>empty() : Optional.of(groupSearchCustomFilter);
     }
+
+
 
     /**
      * Controls the default group search filter used, can be one of the following:<br/>
@@ -138,9 +144,11 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.groupSearchType;
     }
 
-    public void setGroupSearchType(Optional<String> groupSearchType) {
-        this.groupSearchType = groupSearchType;
+    public void setGroupSearchType(String groupSearchType) {
+        this.groupSearchType = (groupSearchType == null) ? Optional.<String>empty() : Optional.of(groupSearchType);
     }
+
+
 
     /**
      * REQUIRED for SearchAndBind<br/>
@@ -150,9 +158,11 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.searchBindDN;
     }
 
-    public void setSearchBindDN(Optional<String> searchBindDN) {
-        this.searchBindDN = searchBindDN;
+    public void setSearchBindDN(String searchBindDN) {
+        this.searchBindDN = (searchBindDN == null) ? Optional.<String>empty() : Optional.of(searchBindDN);
     }
+
+
 
     /**
      * REQUIRED for SearchAndBind<br/>
@@ -162,9 +172,11 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.searchBindPassword;
     }
 
-    public void setSearchBindPassword(Optional<String> searchBindPassword) {
-        this.searchBindPassword = searchBindPassword;
+    public void setSearchBindPassword(String searchBindPassword) {
+        this.searchBindPassword = (searchBindPassword == null) ? Optional.<String>empty() : Optional.of(searchBindPassword);
     }
+
+
 
     /**
      * A list of LDAP server URIs (examples: "ldap://1.2.3.4" and ldaps://1.2.3.4:123")
@@ -177,6 +189,8 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         this.serverURIs = serverURIs;
     }
 
+
+
     /**
      * REQUIRED for DirectBind<br/>
      * A string that is used to form a fully qualified user DN.<br/>
@@ -186,9 +200,11 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.userDNTemplate;
     }
 
-    public void setUserDNTemplate(Optional<String> userDNTemplate) {
-        this.userDNTemplate = userDNTemplate;
+    public void setUserDNTemplate(String userDNTemplate) {
+        this.userDNTemplate = (userDNTemplate == null) ? Optional.<String>empty() : Optional.of(userDNTemplate);
     }
+
+
 
     /**
      * REQUIRED for SearchAndBind
@@ -198,9 +214,11 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.userSearchBaseDN;
     }
 
-    public void setUserSearchBaseDN(Optional<String> userSearchBaseDN) {
-        this.userSearchBaseDN = userSearchBaseDN;
+    public void setUserSearchBaseDN(String userSearchBaseDN) {
+        this.userSearchBaseDN = (userSearchBaseDN == null) ? Optional.<String>empty() : Optional.of(userSearchBaseDN);
     }
+
+
 
     /**
      * REQUIRED for SearchAndBind.<br/>
@@ -212,9 +230,11 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         return this.userSearchFilter;
     }
 
-    public void setUserSearchFilter(Optional<String> userSearchFilter) {
-        this.userSearchFilter = userSearchFilter;
+    public void setUserSearchFilter(String userSearchFilter) {
+        this.userSearchFilter = (userSearchFilter == null) ? Optional.<String>empty() : Optional.of(userSearchFilter);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

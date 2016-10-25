@@ -92,6 +92,8 @@ public class GroupSnapshot  implements Serializable  {
         this.groupSnapshotID = groupSnapshotID;
     }
 
+
+
     /**
      * UUID of the group snapshot.
      **/
@@ -102,6 +104,8 @@ public class GroupSnapshot  implements Serializable  {
     public void setGroupSnapshotUUID(java.util.UUID groupSnapshotUUID) {
         this.groupSnapshotUUID = groupSnapshotUUID;
     }
+
+
 
     /**
      * List of volumeIDs and snapshotIDs for each member of the group.
@@ -114,6 +118,8 @@ public class GroupSnapshot  implements Serializable  {
         this.members = members;
     }
 
+
+
     /**
      * Name of the group snapshot, or, if none was given, the UTC formatted day and time on which the snapshot was created.
      **/
@@ -125,6 +131,8 @@ public class GroupSnapshot  implements Serializable  {
         this.name = name;
     }
 
+
+
     /**
      * The UTC formatted day and time on which the snapshot was created.
      **/
@@ -135,6 +143,8 @@ public class GroupSnapshot  implements Serializable  {
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
+
+
 
     /**
      * Status of the snapshot.
@@ -150,6 +160,8 @@ public class GroupSnapshot  implements Serializable  {
         this.status = status;
     }
 
+
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
@@ -160,6 +172,8 @@ public class GroupSnapshot  implements Serializable  {
     public void setAttributes(java.util.Map<String, Object> attributes) {
         this.attributes = attributes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

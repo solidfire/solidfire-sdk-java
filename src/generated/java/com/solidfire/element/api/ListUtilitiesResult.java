@@ -74,6 +74,8 @@ public class ListUtilitiesResult  implements Serializable  {
         this.utilities = utilities;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

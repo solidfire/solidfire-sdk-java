@@ -72,6 +72,8 @@ public class ListAllNodesResult  implements Serializable  {
     public void setNodes(Node[] nodes) {
         this.nodes = nodes;
     }
+
+
     public PendingNode[] getPendingNodes() {
         return this.pendingNodes;
     }
@@ -79,6 +81,8 @@ public class ListAllNodesResult  implements Serializable  {
     public void setPendingNodes(PendingNode[] pendingNodes) {
         this.pendingNodes = pendingNodes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

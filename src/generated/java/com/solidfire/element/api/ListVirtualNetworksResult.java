@@ -74,6 +74,8 @@ public class ListVirtualNetworksResult  implements Serializable  {
         this.virtualNetworks = virtualNetworks;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

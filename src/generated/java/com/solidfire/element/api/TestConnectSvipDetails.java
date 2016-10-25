@@ -80,6 +80,8 @@ public class TestConnectSvipDetails  implements Serializable  {
         this.pingBytes = pingBytes;
     }
 
+
+
     /**
      * The SVIP tested against.
      **/
@@ -91,6 +93,8 @@ public class TestConnectSvipDetails  implements Serializable  {
         this.svip = svip;
     }
 
+
+
     /**
      * Whether the test could connect to the MVIP.
      **/
@@ -101,6 +105,8 @@ public class TestConnectSvipDetails  implements Serializable  {
     public void setConnected(Boolean connected) {
         this.connected = connected;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

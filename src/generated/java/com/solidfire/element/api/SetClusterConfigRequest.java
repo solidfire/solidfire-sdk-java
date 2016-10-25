@@ -74,6 +74,8 @@ public class SetClusterConfigRequest  implements Serializable  {
         this.cluster = cluster;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -80,6 +80,8 @@ public class ModifySnapshotRequest  implements Serializable  {
         this.snapshotID = snapshotID;
     }
 
+
+
     /**
      * Use to set the time when the snapshot should be removed.
      **/
@@ -87,9 +89,11 @@ public class ModifySnapshotRequest  implements Serializable  {
         return this.expirationTime;
     }
 
-    public void setExpirationTime(Optional<String> expirationTime) {
-        this.expirationTime = expirationTime;
+    public void setExpirationTime(String expirationTime) {
+        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : Optional.of(expirationTime);
     }
+
+
 
     /**
      * Use to enable the snapshot created to be replicated to a remote SolidFire cluster.
@@ -101,9 +105,11 @@ public class ModifySnapshotRequest  implements Serializable  {
         return this.enableRemoteReplication;
     }
 
-    public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) {
-        this.enableRemoteReplication = enableRemoteReplication;
+    public void setEnableRemoteReplication(Boolean enableRemoteReplication) {
+        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

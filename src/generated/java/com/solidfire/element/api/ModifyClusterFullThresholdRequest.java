@@ -89,9 +89,11 @@ public class ModifyClusterFullThresholdRequest  implements Serializable  {
         return this.stage2AwareThreshold;
     }
 
-    public void setStage2AwareThreshold(Optional<Long> stage2AwareThreshold) {
-        this.stage2AwareThreshold = stage2AwareThreshold;
+    public void setStage2AwareThreshold(Long stage2AwareThreshold) {
+        this.stage2AwareThreshold = (stage2AwareThreshold == null) ? Optional.<Long>empty() : Optional.of(stage2AwareThreshold);
     }
+
+
 
     /**
      * Percent below "Error" state to raise a cluster "Warning" alert.
@@ -103,9 +105,11 @@ public class ModifyClusterFullThresholdRequest  implements Serializable  {
         return this.stage3BlockThresholdPercent;
     }
 
-    public void setStage3BlockThresholdPercent(Optional<Long> stage3BlockThresholdPercent) {
-        this.stage3BlockThresholdPercent = stage3BlockThresholdPercent;
+    public void setStage3BlockThresholdPercent(Long stage3BlockThresholdPercent) {
+        this.stage3BlockThresholdPercent = (stage3BlockThresholdPercent == null) ? Optional.<Long>empty() : Optional.of(stage3BlockThresholdPercent);
     }
+
+
 
     /**
      * A value representative of the number of times metadata space can be over provisioned relative to the amount of space available. For example, if there was enough metadata space to store 100 TiB of volumes and this number was set to 5, then 500 TiB worth of volumes could be created.
@@ -114,9 +118,11 @@ public class ModifyClusterFullThresholdRequest  implements Serializable  {
         return this.maxMetadataOverProvisionFactor;
     }
 
-    public void setMaxMetadataOverProvisionFactor(Optional<Long> maxMetadataOverProvisionFactor) {
-        this.maxMetadataOverProvisionFactor = maxMetadataOverProvisionFactor;
+    public void setMaxMetadataOverProvisionFactor(Long maxMetadataOverProvisionFactor) {
+        this.maxMetadataOverProvisionFactor = (maxMetadataOverProvisionFactor == null) ? Optional.<Long>empty() : Optional.of(maxMetadataOverProvisionFactor);
     }
+
+
 
     @Override
     public boolean equals(Object o) {

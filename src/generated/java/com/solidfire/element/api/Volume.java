@@ -184,6 +184,8 @@ public class Volume  implements Serializable  {
         this.volumeID = volumeID;
     }
 
+
+
     /**
      * Name of the volume as provided at creation time.
      **/
@@ -194,6 +196,8 @@ public class Volume  implements Serializable  {
     public void setName(String name) {
         this.name = name;
     }
+
+
 
     /**
      * Unique AccountID for the account.
@@ -206,6 +210,8 @@ public class Volume  implements Serializable  {
         this.accountID = accountID;
     }
 
+
+
     /**
      * UTC formatted time the volume was created.
      **/
@@ -216,6 +222,8 @@ public class Volume  implements Serializable  {
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
+
+
 
     /**
      * Current status of the volume
@@ -229,6 +237,8 @@ public class Volume  implements Serializable  {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
 
     /**
      * Access allowed for the volume
@@ -245,6 +255,8 @@ public class Volume  implements Serializable  {
         this.access = access;
     }
 
+
+
     /**
      * If "true", the volume provides 512 byte sector emulation.
      **/
@@ -255,6 +267,8 @@ public class Volume  implements Serializable  {
     public void setEnable512e(Boolean enable512e) {
         this.enable512e = enable512e;
     }
+
+
 
     /**
      * Volume iSCSI Qualified Name.
@@ -267,6 +281,8 @@ public class Volume  implements Serializable  {
         this.iqn = iqn;
     }
 
+
+
     /**
      * Globally unique SCSI device identifier for the volume in EUI-64 based 16-byte format.
      **/
@@ -277,6 +293,8 @@ public class Volume  implements Serializable  {
     public void setScsiEUIDeviceID(String scsiEUIDeviceID) {
         this.scsiEUIDeviceID = scsiEUIDeviceID;
     }
+
+
 
     /**
      * Globally unique SCSI device identifier for the volume in NAA IEEE Registered Extended format.
@@ -289,6 +307,8 @@ public class Volume  implements Serializable  {
         this.scsiNAADeviceID = scsiNAADeviceID;
     }
 
+
+
     /**
      * Quality of service settings for this volume.
      **/
@@ -300,6 +320,8 @@ public class Volume  implements Serializable  {
         this.qos = qos;
     }
 
+
+
     /**
      * List of volume access groups to which a volume belongs.
      **/
@@ -310,6 +332,8 @@ public class Volume  implements Serializable  {
     public void setVolumeAccessGroups(Long[] volumeAccessGroups) {
         this.volumeAccessGroups = volumeAccessGroups;
     }
+
+
 
     /**
      * Information about a paired volume.
@@ -324,6 +348,8 @@ public class Volume  implements Serializable  {
         this.volumePairs = volumePairs;
     }
 
+
+
     /**
      * The time this volume was deleted.
      * If this has no value, the volume has not yet been deleted.
@@ -332,9 +358,11 @@ public class Volume  implements Serializable  {
         return this.deleteTime;
     }
 
-    public void setDeleteTime(Optional<String> deleteTime) {
-        this.deleteTime = deleteTime;
+    public void setDeleteTime(String deleteTime) {
+        this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : Optional.of(deleteTime);
     }
+
+
 
     /**
      * The time this volume will be purged from the system.
@@ -344,9 +372,11 @@ public class Volume  implements Serializable  {
         return this.purgeTime;
     }
 
-    public void setPurgeTime(Optional<String> purgeTime) {
-        this.purgeTime = purgeTime;
+    public void setPurgeTime(String purgeTime) {
+        this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : Optional.of(purgeTime);
     }
+
+
 
     /**
      * The number of slices backing this volume.
@@ -360,6 +390,8 @@ public class Volume  implements Serializable  {
         this.sliceCount = sliceCount;
     }
 
+
+
     /**
      * Total size of this volume in bytes.
      **/
@@ -370,6 +402,8 @@ public class Volume  implements Serializable  {
     public void setTotalSize(Long totalSize) {
         this.totalSize = totalSize;
     }
+
+
 
     /**
      * Size of the blocks on the volume.
@@ -385,6 +419,8 @@ public class Volume  implements Serializable  {
         this.blockSize = blockSize;
     }
 
+
+
     /**
      * Virtual volume ID this volume backs.
      **/
@@ -396,6 +432,8 @@ public class Volume  implements Serializable  {
         this.virtualVolumeID = virtualVolumeID;
     }
 
+
+
     /**
      * List of Name/Value pairs in JSON object format.
      **/
@@ -406,6 +444,8 @@ public class Volume  implements Serializable  {
     public void setAttributes(java.util.Map<String, Object> attributes) {
         this.attributes = attributes;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

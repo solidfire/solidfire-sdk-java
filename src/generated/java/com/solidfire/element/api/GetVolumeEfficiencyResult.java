@@ -104,6 +104,8 @@ public class GetVolumeEfficiencyResult  implements Serializable  {
         this.compression = compression;
     }
 
+
+
     /**
      * The amount of space being saved on a single volume by not duplicating data.
      * Stated as a ratio.
@@ -115,6 +117,8 @@ public class GetVolumeEfficiencyResult  implements Serializable  {
     public void setDeduplication(Double deduplication) {
         this.deduplication = deduplication;
     }
+
+
 
     /**
      * The volumes that could not be queried for efficiency data.
@@ -131,6 +135,8 @@ public class GetVolumeEfficiencyResult  implements Serializable  {
         this.missingVolumes = missingVolumes;
     }
 
+
+
     /**
      * The ratio of space used to the amount of space allocated for storing data.
      * Stated as a ratio.
@@ -143,6 +149,8 @@ public class GetVolumeEfficiencyResult  implements Serializable  {
         this.thinProvisioning = thinProvisioning;
     }
 
+
+
     /**
      * The last time efficiency data was collected after Garbage Collection (GC).
      **/
@@ -153,6 +161,8 @@ public class GetVolumeEfficiencyResult  implements Serializable  {
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
