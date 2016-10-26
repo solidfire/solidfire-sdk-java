@@ -34,7 +34,7 @@ class InvokeSFApiTest extends WordSpec with BeforeAndAfterAll with MockitoSugar 
     "GetAPI via InvokeSFApi" in {
       val request = new InvokeSFApiRequest("GetAPI", null)
 
-      val returned = Utility.getResultFromResource("GetAPI_v7.json")
+      val returned = Utility.getResultFromResource[Object]("GetAPI_v7.json")
 
       when( sfe.sendRequest( org.mockito.Matchers.eq("GetAPI"), any(), any() ,any())  ).thenReturn( returned )
 
@@ -45,7 +45,7 @@ class InvokeSFApiTest extends WordSpec with BeforeAndAfterAll with MockitoSugar 
     "GetConfig via InvokeSFApi" in {
       val request = new InvokeSFApiRequest("GetConfig", null)
 
-      val returned = Utility.getResultFromResource("GetConfig_v8.json")
+      val returned = Utility.getResultFromResource[Object]("GetConfig_v8.json")
 
       when( sfe.sendRequest( org.mockito.Matchers.eq("GetConfig"), any(), any() ,any())  ).thenReturn( returned )
 
@@ -56,7 +56,7 @@ class InvokeSFApiTest extends WordSpec with BeforeAndAfterAll with MockitoSugar 
     "ListAccounts via InvokeSFApi" in {
       val listAccountsRequest = new ListAccountsRequest(Optional.EMPTY_LONG, Optional.EMPTY_LONG)
       val request = new InvokeSFApiRequest("ListAccounts", Optional.of(listAccountsRequest))
-      val returned = Utility.getResultFromResource("ListAccounts_v8.json")
+      val returned = Utility.getResultFromResource[Object]("ListAccounts_v8.json")
 
       when( sfe.sendRequest( org.mockito.Matchers.eq("ListAccounts"), org.mockito.Matchers.eq(Optional.of(listAccountsRequest)), any() ,any())  ).thenReturn( returned )
 
