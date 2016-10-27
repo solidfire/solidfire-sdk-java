@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class ClusterHardwareInfo  implements Serializable  {
 
-    private static final long serialVersionUID = 1685597827L;
+    private static final long serialVersionUID = 1253246585L;
 
     @SerializedName("drives") private java.util.Map<String,DriveHardwareInfo> drives;
     @SerializedName("nodes") private java.util.Map<String,java.util.Map<String, Object>> nodes;
