@@ -39,7 +39,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.of;
  **/
 public class DriveHardwareInfo  implements Serializable  {
 
-    private static final long serialVersionUID = -2123095482L;
+    private static final long serialVersionUID = 773052226L;
 
     @SerializedName("description") private String description;
     @SerializedName("dev") private String dev;
@@ -49,6 +49,7 @@ public class DriveHardwareInfo  implements Serializable  {
     @SerializedName("driveSecurityLocked") private Boolean driveSecurityLocked;
     @SerializedName("logicalname") private String logicalname;
     @SerializedName("product") private String product;
+    @SerializedName("scsiCompatID") private String scsiCompatID;
     @SerializedName("securityFeatureEnabled") private Boolean securityFeatureEnabled;
     @SerializedName("securityFeatureSupported") private Boolean securityFeatureSupported;
     @SerializedName("serial") private String serial;
@@ -66,6 +67,7 @@ public class DriveHardwareInfo  implements Serializable  {
      * @param driveSecurityLocked [required] 
      * @param logicalname [required] 
      * @param product [required] 
+     * @param scsiCompatID [required] 
      * @param securityFeatureEnabled [required] 
      * @param securityFeatureSupported [required] 
      * @param serial [required] 
@@ -75,8 +77,9 @@ public class DriveHardwareInfo  implements Serializable  {
      * @since 7.0
      **/
     @Since("7.0")
-    public DriveHardwareInfo(String description, String dev, String devpath, Boolean driveSecurityAtMaximum, Boolean driveSecurityFrozen, Boolean driveSecurityLocked, String logicalname, String product, Boolean securityFeatureEnabled, Boolean securityFeatureSupported, String serial, Long size, java.util.UUID uuid, String version) {
+    public DriveHardwareInfo(String description, String dev, String devpath, Boolean driveSecurityAtMaximum, Boolean driveSecurityFrozen, Boolean driveSecurityLocked, String logicalname, String product, String scsiCompatID, Boolean securityFeatureEnabled, Boolean securityFeatureSupported, String serial, Long size, java.util.UUID uuid, String version) {
         this.serial = serial;
+        this.scsiCompatID = scsiCompatID;
         this.size = size;
         this.description = description;
         this.uuid = uuid;
@@ -173,6 +176,15 @@ public class DriveHardwareInfo  implements Serializable  {
     }
 
 
+    public String getScsiCompatID() {
+        return this.scsiCompatID;
+    }
+
+    public void setScsiCompatID(String scsiCompatID) {
+        this.scsiCompatID = scsiCompatID;
+    }
+
+
     public Boolean getSecurityFeatureEnabled() {
         return this.securityFeatureEnabled;
     }
@@ -244,6 +256,7 @@ public class DriveHardwareInfo  implements Serializable  {
             && Objects.equals( driveSecurityLocked , that.driveSecurityLocked )
             && Objects.equals( logicalname , that.logicalname )
             && Objects.equals( product , that.product )
+            && Objects.equals( scsiCompatID , that.scsiCompatID )
             && Objects.equals( securityFeatureEnabled , that.securityFeatureEnabled )
             && Objects.equals( securityFeatureSupported , that.securityFeatureSupported )
             && Objects.equals( serial , that.serial )
@@ -254,7 +267,7 @@ public class DriveHardwareInfo  implements Serializable  {
 
     @Override
     public int hashCode() {
-        return Objects.hash( description, dev, devpath, driveSecurityAtMaximum, driveSecurityFrozen, driveSecurityLocked, logicalname, product, securityFeatureEnabled, securityFeatureSupported, serial, size, uuid, version );
+        return Objects.hash( description, dev, devpath, driveSecurityAtMaximum, driveSecurityFrozen, driveSecurityLocked, logicalname, product, scsiCompatID, securityFeatureEnabled, securityFeatureSupported, serial, size, uuid, version );
     }
 
 
@@ -271,6 +284,7 @@ public class DriveHardwareInfo  implements Serializable  {
         sb.append(" driveSecurityLocked : ").append(driveSecurityLocked).append(",");
         sb.append(" logicalname : ").append(logicalname).append(",");
         sb.append(" product : ").append(product).append(",");
+        sb.append(" scsiCompatID : ").append(scsiCompatID).append(",");
         sb.append(" securityFeatureEnabled : ").append(securityFeatureEnabled).append(",");
         sb.append(" securityFeatureSupported : ").append(securityFeatureSupported).append(",");
         sb.append(" serial : ").append(serial).append(",");
@@ -302,6 +316,7 @@ public class DriveHardwareInfo  implements Serializable  {
         private Boolean driveSecurityLocked;
         private String logicalname;
         private String product;
+        private String scsiCompatID;
         private Boolean securityFeatureEnabled;
         private Boolean securityFeatureSupported;
         private String serial;
@@ -321,6 +336,7 @@ public class DriveHardwareInfo  implements Serializable  {
                          this.driveSecurityLocked,
                          this.logicalname,
                          this.product,
+                         this.scsiCompatID,
                          this.securityFeatureEnabled,
                          this.securityFeatureSupported,
                          this.serial,
@@ -338,6 +354,7 @@ public class DriveHardwareInfo  implements Serializable  {
             this.driveSecurityLocked = req.driveSecurityLocked;
             this.logicalname = req.logicalname;
             this.product = req.product;
+            this.scsiCompatID = req.scsiCompatID;
             this.securityFeatureEnabled = req.securityFeatureEnabled;
             this.securityFeatureSupported = req.securityFeatureSupported;
             this.serial = req.serial;
@@ -385,6 +402,11 @@ public class DriveHardwareInfo  implements Serializable  {
 
         public DriveHardwareInfo.Builder product(final String product) {
             this.product = product;
+            return this;
+        }
+
+        public DriveHardwareInfo.Builder scsiCompatID(final String scsiCompatID) {
+            this.scsiCompatID = scsiCompatID;
             return this;
         }
 
