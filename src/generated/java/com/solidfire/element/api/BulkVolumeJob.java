@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class BulkVolumeJob  implements Serializable  {
 
-    private static final long serialVersionUID = 193615460L;
+public class BulkVolumeJob implements Serializable {
 
+    public static final long serialVersionUID = -5547098018442628314L;
     @SerializedName("bulkVolumeID") private Long bulkVolumeID;
     @SerializedName("createTime") private String createTime;
     @SerializedName("elapsedTime") private Long elapsedTime;
@@ -55,260 +47,140 @@ public class BulkVolumeJob  implements Serializable  {
     @SerializedName("type") private String type;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
-    /**
-     * 
-     * @param bulkVolumeID [required] The internal bulk volume job ID.
-     * @param createTime [required] Timestamp created for the bulk volume job.
-     * @param format [required] Format is either "compressed" or "native".
-     * @param key [required] The unique key created by the bulk volume session.
-     * @param percentComplete [required] The completed percentage reported by the operation.
-     * @param remainingTime [required] The estimated time remaining in seconds.
-     * @param srcVolumeID [required] The source volume ID.
-     * @param status [required] Can be one of the following:
-     * @param script [required] The name of the script if one is provided.
-     * @param snapshotID [required] ID of the snapshot if a snapshot is in the source of the bulk volume job.
-     * @param type [required] Can be one of the following:
-     * @param attributes [required] JSON attributes on the bulk volume job.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public BulkVolumeJob(Long bulkVolumeID, String createTime, String format, String key, Long percentComplete, Long remainingTime, Long srcVolumeID, String status, String script, Long snapshotID, String type, java.util.Map<String, Object> attributes) {
-        this.format = format;
-        this.createTime = createTime;
-        this.percentComplete = percentComplete;
-        this.remainingTime = remainingTime;
-        this.attributes = attributes;
-        this.srcVolumeID = srcVolumeID;
-        this.key = key;
-        this.elapsedTime = null;
-        this.status = status;
-        this.script = script;
-        this.type = type;
-        this.bulkVolumeID = bulkVolumeID;
-        this.snapshotID = snapshotID;
-    }
-
-    /**
-     * 
-     * @param bulkVolumeID [required] The internal bulk volume job ID.
-     * @param createTime [required] Timestamp created for the bulk volume job.
-     * @param elapsedTime [required] The number of seconds since the job began.
-     * @param format [required] Format is either "compressed" or "native".
-     * @param key [required] The unique key created by the bulk volume session.
-     * @param percentComplete [required] The completed percentage reported by the operation.
-     * @param remainingTime [required] The estimated time remaining in seconds.
-     * @param srcVolumeID [required] The source volume ID.
-     * @param status [required] Can be one of the following:
-     * @param script [required] The name of the script if one is provided.
-     * @param snapshotID [required] ID of the snapshot if a snapshot is in the source of the bulk volume job.
-     * @param type [required] Can be one of the following:
-     * @param attributes [required] JSON attributes on the bulk volume job.
-     * @since 8.0
-     **/
-    @Since("8.0")
-    public BulkVolumeJob(Long bulkVolumeID, String createTime, Long elapsedTime, String format, String key, Long percentComplete, Long remainingTime, Long srcVolumeID, String status, String script, Long snapshotID, String type, java.util.Map<String, Object> attributes) {
-        this.format = format;
-        this.createTime = createTime;
-        this.percentComplete = percentComplete;
-        this.remainingTime = remainingTime;
-        this.attributes = attributes;
-        this.srcVolumeID = srcVolumeID;
-        this.key = key;
-        this.elapsedTime = elapsedTime;
-        this.status = status;
-        this.script = script;
-        this.type = type;
-        this.bulkVolumeID = bulkVolumeID;
-        this.snapshotID = snapshotID;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public BulkVolumeJob() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public BulkVolumeJob(
+        Long bulkVolumeID,
+        String createTime,
+        Long elapsedTime,
+        String format,
+        String key,
+        Long percentComplete,
+        Long remainingTime,
+        Long srcVolumeID,
+        String status,
+        String script,
+        Long snapshotID,
+        String type,
+        java.util.Map<String, Object> attributes
+    )
+    {
+        this.bulkVolumeID = bulkVolumeID;
+        this.createTime = createTime;
+        this.elapsedTime = elapsedTime;
+        this.format = format;
+        this.key = key;
+        this.percentComplete = percentComplete;
+        this.remainingTime = remainingTime;
+        this.srcVolumeID = srcVolumeID;
+        this.status = status;
+        this.script = script;
+        this.snapshotID = snapshotID;
+        this.type = type;
+        this.attributes = attributes;
+    }
 
-    /**
+    /** 
      * The internal bulk volume job ID.
      **/
-    public Long getBulkVolumeID() {
-        return this.bulkVolumeID;
-    }
-
-    public void setBulkVolumeID(Long bulkVolumeID) {
+    public Long getBulkVolumeID() { return this.bulkVolumeID; }
+    public void setBulkVolumeID(Long bulkVolumeID) { 
         this.bulkVolumeID = bulkVolumeID;
     }
-
-
-
-    /**
+    /** 
      * Timestamp created for the bulk volume job.
      **/
-    public String getCreateTime() {
-        return this.createTime;
-    }
-
-    public void setCreateTime(String createTime) {
+    public String getCreateTime() { return this.createTime; }
+    public void setCreateTime(String createTime) { 
         this.createTime = createTime;
     }
-
-
-
-    /**
+    /** 
      * The number of seconds since the job began.
-     * @since 8.0 
      **/
-
-    @Since("8.0")
-    public Long getElapsedTime() {
-        return this.elapsedTime;
-    }
-
-    public void setElapsedTime(Long elapsedTime) {
+    public Long getElapsedTime() { return this.elapsedTime; }
+    public void setElapsedTime(Long elapsedTime) { 
         this.elapsedTime = elapsedTime;
     }
-
-
-
-    /**
+    /** 
      * Format is either "compressed" or "native".
      **/
-    public String getFormat() {
-        return this.format;
-    }
-
-    public void setFormat(String format) {
+    public String getFormat() { return this.format; }
+    public void setFormat(String format) { 
         this.format = format;
     }
-
-
-
-    /**
+    /** 
      * The unique key created by the bulk volume session.
      **/
-    public String getKey() {
-        return this.key;
-    }
-
-    public void setKey(String key) {
+    public String getKey() { return this.key; }
+    public void setKey(String key) { 
         this.key = key;
     }
-
-
-
-    /**
+    /** 
      * The completed percentage reported by the operation.
      **/
-    public Long getPercentComplete() {
-        return this.percentComplete;
-    }
-
-    public void setPercentComplete(Long percentComplete) {
+    public Long getPercentComplete() { return this.percentComplete; }
+    public void setPercentComplete(Long percentComplete) { 
         this.percentComplete = percentComplete;
     }
-
-
-
-    /**
+    /** 
      * The estimated time remaining in seconds.
      **/
-    public Long getRemainingTime() {
-        return this.remainingTime;
-    }
-
-    public void setRemainingTime(Long remainingTime) {
+    public Long getRemainingTime() { return this.remainingTime; }
+    public void setRemainingTime(Long remainingTime) { 
         this.remainingTime = remainingTime;
     }
-
-
-
-    /**
+    /** 
      * The source volume ID.
      **/
-    public Long getSrcVolumeID() {
-        return this.srcVolumeID;
-    }
-
-    public void setSrcVolumeID(Long srcVolumeID) {
+    public Long getSrcVolumeID() { return this.srcVolumeID; }
+    public void setSrcVolumeID(Long srcVolumeID) { 
         this.srcVolumeID = srcVolumeID;
     }
-
-
-
-    /**
+    /** 
      * Can be one of the following:
      * <br/><b>preparing</b>
      * <br/><b>active</b>
      * <br/><b>done</b>
      * <br/><b>failed</b>
      **/
-    public String getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(String status) {
+    public String getStatus() { return this.status; }
+    public void setStatus(String status) { 
         this.status = status;
     }
-
-
-
-    /**
+    /** 
      * The name of the script if one is provided.
      **/
-    public String getScript() {
-        return this.script;
-    }
-
-    public void setScript(String script) {
+    public String getScript() { return this.script; }
+    public void setScript(String script) { 
         this.script = script;
     }
-
-
-
-    /**
+    /** 
      * ID of the snapshot if a snapshot is in the source of the bulk volume job.
      **/
-    public Long getSnapshotID() {
-        return this.snapshotID;
-    }
-
-    public void setSnapshotID(Long snapshotID) {
+    public Long getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
-
-
-
-    /**
+    /** 
      * Can be one of the following:
      * <br/><b>read</b>
      * <br/><b>write</b>
      **/
-    public String getType() {
-        return this.type;
-    }
-
-    public void setType(String type) {
+    public String getType() { return this.type; }
+    public void setType(String type) { 
         this.type = type;
     }
-
-
-
-    /**
+    /** 
      * JSON attributes on the bulk volume job.
      **/
-    public java.util.Map<String, Object> getAttributes() {
-        return this.attributes;
-    }
-
-    public void setAttributes(java.util.Map<String, Object> attributes) {
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
         this.attributes = attributes;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -316,21 +188,20 @@ public class BulkVolumeJob  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         BulkVolumeJob that = (BulkVolumeJob) o;
-        
-
-        return Objects.equals( bulkVolumeID , that.bulkVolumeID )
-            && Objects.equals( createTime , that.createTime )
-            && Objects.equals( elapsedTime , that.elapsedTime )
-            && Objects.equals( format , that.format )
-            && Objects.equals( key , that.key )
-            && Objects.equals( percentComplete , that.percentComplete )
-            && Objects.equals( remainingTime , that.remainingTime )
-            && Objects.equals( srcVolumeID , that.srcVolumeID )
-            && Objects.equals( status , that.status )
-            && Objects.equals( script , that.script )
-            && Objects.equals( snapshotID , that.snapshotID )
-            && Objects.equals( type , that.type )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(bulkVolumeID, that.bulkVolumeID) &&
+            Objects.equals(createTime, that.createTime) &&
+            Objects.equals(elapsedTime, that.elapsedTime) &&
+            Objects.equals(format, that.format) &&
+            Objects.equals(key, that.key) &&
+            Objects.equals(percentComplete, that.percentComplete) &&
+            Objects.equals(remainingTime, that.remainingTime) &&
+            Objects.equals(srcVolumeID, that.srcVolumeID) &&
+            Objects.equals(status, that.status) &&
+            Objects.equals(script, that.script) &&
+            Objects.equals(snapshotID, that.snapshotID) &&
+            Objects.equals(type, that.type) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -338,6 +209,24 @@ public class BulkVolumeJob  implements Serializable  {
         return Objects.hash( bulkVolumeID, createTime, elapsedTime, format, key, percentComplete, remainingTime, srcVolumeID, status, script, snapshotID, type, attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("bulkVolumeID", bulkVolumeID);
+        map.put("createTime", createTime);
+        map.put("elapsedTime", elapsedTime);
+        map.put("format", format);
+        map.put("key", key);
+        map.put("percentComplete", percentComplete);
+        map.put("remainingTime", remainingTime);
+        map.put("srcVolumeID", srcVolumeID);
+        map.put("status", status);
+        map.put("script", script);
+        map.put("snapshotID", snapshotID);
+        map.put("type", type);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -356,7 +245,7 @@ public class BulkVolumeJob  implements Serializable  {
         sb.append(" script : ").append(script).append(",");
         sb.append(" snapshotID : ").append(snapshotID).append(",");
         sb.append(" type : ").append(type).append(",");
-        sb.append(" attributes : ").append(attributes);
+        sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -404,7 +293,7 @@ public class BulkVolumeJob  implements Serializable  {
                          this.script,
                          this.snapshotID,
                          this.type,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private BulkVolumeJob.Builder buildFrom(final BulkVolumeJob req) {
@@ -491,5 +380,4 @@ public class BulkVolumeJob  implements Serializable  {
         }
 
     }
-
 }

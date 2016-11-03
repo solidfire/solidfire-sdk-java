@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "CreateStorageContainer" API Service call.
+ * 
  **/
-public class CreateStorageContainerResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1419722693L;
+public class CreateStorageContainerResult implements Serializable {
 
+    public static final long serialVersionUID = -3639316056822176673L;
     @SerializedName("storageContainer") private StorageContainer storageContainer;
 
-    /**
-     * The object returned by the "CreateStorageContainer" API Service call.
-     * @param storageContainer [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public CreateStorageContainerResult(StorageContainer storageContainer) {
-        this.storageContainer = storageContainer;
-    }
-
-    
-    /**
-     * The object returned by the "CreateStorageContainer" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public CreateStorageContainerResult() {}
 
-    public StorageContainer getStorageContainer() {
-        return this.storageContainer;
-    }
-
-    public void setStorageContainer(StorageContainer storageContainer) {
+    // parameterized constructor
+    @Since("7.0")
+    public CreateStorageContainerResult(
+        StorageContainer storageContainer
+    )
+    {
         this.storageContainer = storageContainer;
     }
 
-
+    /** 
+     **/
+    public StorageContainer getStorageContainer() { return this.storageContainer; }
+    public void setStorageContainer(StorageContainer storageContainer) { 
+        this.storageContainer = storageContainer;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,23 +61,28 @@ public class CreateStorageContainerResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateStorageContainerResult that = (CreateStorageContainerResult) o;
-        
-
-        return Objects.equals( storageContainer , that.storageContainer );
+        return 
+            Objects.equals(storageContainer, that.storageContainer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) storageContainer );
+        return Objects.hash( storageContainer );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("storageContainer", storageContainer);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" storageContainer : ").append(storageContainer);
+        sb.append(" storageContainer : ").append(storageContainer).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,7 +106,7 @@ public class CreateStorageContainerResult  implements Serializable  {
 
         public CreateStorageContainerResult build() {
             return new CreateStorageContainerResult (
-                         this.storageContainer            );
+                         this.storageContainer);
         }
 
         private CreateStorageContainerResult.Builder buildFrom(final CreateStorageContainerResult req) {
@@ -133,5 +121,4 @@ public class CreateStorageContainerResult  implements Serializable  {
         }
 
     }
-
 }

@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * Fibre Channel Node Port Info object returns information about all Fibre Channel ports on a node, or for one node in the cluster. The same information is returned for all ports or port information for one node. This information is returned with the API method ListNodeFibreChannelPortInfo (in the SolidFire API Guide).
+ * ['Fibre Channel Node Port Info object returns information about all Fibre Channel ports on a node, or for one node in the cluster. The same information is returned for all ports or port information for one node. This information is returned with the API method ListNodeFibreChannelPortInfo (in the SolidFire API Guide).']
  **/
-public class FibreChannelPortInfo  implements Serializable  {
 
-    private static final long serialVersionUID = -1981511491L;
+public class FibreChannelPortInfo implements Serializable {
 
+    public static final long serialVersionUID = 4075342483456572376L;
     @SerializedName("firmware") private String firmware;
     @SerializedName("hbaPort") private Long hbaPort;
     @SerializedName("model") private String model;
@@ -53,190 +45,118 @@ public class FibreChannelPortInfo  implements Serializable  {
     @SerializedName("wwnn") private String wwnn;
     @SerializedName("wwpn") private String wwpn;
 
-    /**
-     * Fibre Channel Node Port Info object returns information about all Fibre Channel ports on a node, or for one node in the cluster. The same information is returned for all ports or port information for one node. This information is returned with the API method ListNodeFibreChannelPortInfo (in the SolidFire API Guide).
-     * @param firmware [required] The version of the firmware installed on the Fibre Channel port.
-     * @param hbaPort [required] The ID of the individual HBA port.
-     * @param model [required] Model of the HBA on the port.
-     * @param nPortID [required] Unique SolidFire port node ID.
-     * @param pciSlot [required] Slot in which the pci card resides on the Fibre Channel node hardware.
-     * @param serial [required] Serial number on the Fibre Channel port.
-     * @param speed [required] Speed of the HBA on the port.
-     * @param state [required] Possible values:
-     * @param switchWwn [required] The World Wide Name of the Fibre Channel switch port.
-     * @param wwnn [required] World Wide Node Name of the HBA node.
-     * @param wwpn [required] World Wide Port Name assigned to the physical port of the HBA.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public FibreChannelPortInfo(String firmware, Long hbaPort, String model, String nPortID, Long pciSlot, String serial, String speed, String state, String switchWwn, String wwnn, String wwpn) {
-        this.serial = serial;
-        this.model = model;
-        this.state = state;
-        this.wwpn = wwpn;
-        this.switchWwn = switchWwn;
-        this.firmware = firmware;
-        this.pciSlot = pciSlot;
-        this.nPortID = nPortID;
-        this.wwnn = wwnn;
-        this.hbaPort = hbaPort;
-        this.speed = speed;
-    }
-
-    
-    /**
-     * Fibre Channel Node Port Info object returns information about all Fibre Channel ports on a node, or for one node in the cluster. The same information is returned for all ports or port information for one node. This information is returned with the API method ListNodeFibreChannelPortInfo (in the SolidFire API Guide).
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public FibreChannelPortInfo() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public FibreChannelPortInfo(
+        String firmware,
+        Long hbaPort,
+        String model,
+        String nPortID,
+        Long pciSlot,
+        String serial,
+        String speed,
+        String state,
+        String switchWwn,
+        String wwnn,
+        String wwpn
+    )
+    {
+        this.firmware = firmware;
+        this.hbaPort = hbaPort;
+        this.model = model;
+        this.nPortID = nPortID;
+        this.pciSlot = pciSlot;
+        this.serial = serial;
+        this.speed = speed;
+        this.state = state;
+        this.switchWwn = switchWwn;
+        this.wwnn = wwnn;
+        this.wwpn = wwpn;
+    }
 
-    /**
+    /** 
      * The version of the firmware installed on the Fibre Channel port.
      **/
-    public String getFirmware() {
-        return this.firmware;
-    }
-
-    public void setFirmware(String firmware) {
+    public String getFirmware() { return this.firmware; }
+    public void setFirmware(String firmware) { 
         this.firmware = firmware;
     }
-
-
-
-    /**
+    /** 
      * The ID of the individual HBA port.
      **/
-    public Long getHbaPort() {
-        return this.hbaPort;
-    }
-
-    public void setHbaPort(Long hbaPort) {
+    public Long getHbaPort() { return this.hbaPort; }
+    public void setHbaPort(Long hbaPort) { 
         this.hbaPort = hbaPort;
     }
-
-
-
-    /**
+    /** 
      * Model of the HBA on the port.
      **/
-    public String getModel() {
-        return this.model;
-    }
-
-    public void setModel(String model) {
+    public String getModel() { return this.model; }
+    public void setModel(String model) { 
         this.model = model;
     }
-
-
-
-    /**
+    /** 
      * Unique SolidFire port node ID.
      **/
-    public String getNPortID() {
-        return this.nPortID;
-    }
-
-    public void setNPortID(String nPortID) {
+    public String getNPortID() { return this.nPortID; }
+    public void setNPortID(String nPortID) { 
         this.nPortID = nPortID;
     }
-
-
-
-    /**
+    /** 
      * Slot in which the pci card resides on the Fibre Channel node hardware.
      **/
-    public Long getPciSlot() {
-        return this.pciSlot;
-    }
-
-    public void setPciSlot(Long pciSlot) {
+    public Long getPciSlot() { return this.pciSlot; }
+    public void setPciSlot(Long pciSlot) { 
         this.pciSlot = pciSlot;
     }
-
-
-
-    /**
+    /** 
      * Serial number on the Fibre Channel port.
      **/
-    public String getSerial() {
-        return this.serial;
-    }
-
-    public void setSerial(String serial) {
+    public String getSerial() { return this.serial; }
+    public void setSerial(String serial) { 
         this.serial = serial;
     }
-
-
-
-    /**
+    /** 
      * Speed of the HBA on the port.
      **/
-    public String getSpeed() {
-        return this.speed;
-    }
-
-    public void setSpeed(String speed) {
+    public String getSpeed() { return this.speed; }
+    public void setSpeed(String speed) { 
         this.speed = speed;
     }
-
-
-
-    /**
+    /** 
      * Possible values:
      * <br/><br/>
      * <strong>Unknown<br/>NotPresent<br/>Online<br/>Offline<br/>Blocked<br/>Bypassed<br/>Diagnostics<br/>Linkdown<br/>Error<br/>Loopback<br/>Deleted</strong>
      **/
-    public String getState() {
-        return this.state;
-    }
-
-    public void setState(String state) {
+    public String getState() { return this.state; }
+    public void setState(String state) { 
         this.state = state;
     }
-
-
-
-    /**
+    /** 
      * The World Wide Name of the Fibre Channel switch port.
      **/
-    public String getSwitchWwn() {
-        return this.switchWwn;
-    }
-
-    public void setSwitchWwn(String switchWwn) {
+    public String getSwitchWwn() { return this.switchWwn; }
+    public void setSwitchWwn(String switchWwn) { 
         this.switchWwn = switchWwn;
     }
-
-
-
-    /**
+    /** 
      * World Wide Node Name of the HBA node.
      **/
-    public String getWwnn() {
-        return this.wwnn;
-    }
-
-    public void setWwnn(String wwnn) {
+    public String getWwnn() { return this.wwnn; }
+    public void setWwnn(String wwnn) { 
         this.wwnn = wwnn;
     }
-
-
-
-    /**
+    /** 
      * World Wide Port Name assigned to the physical port of the HBA.
      **/
-    public String getWwpn() {
-        return this.wwpn;
-    }
-
-    public void setWwpn(String wwpn) {
+    public String getWwpn() { return this.wwpn; }
+    public void setWwpn(String wwpn) { 
         this.wwpn = wwpn;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -244,19 +164,18 @@ public class FibreChannelPortInfo  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         FibreChannelPortInfo that = (FibreChannelPortInfo) o;
-        
-
-        return Objects.equals( firmware , that.firmware )
-            && Objects.equals( hbaPort , that.hbaPort )
-            && Objects.equals( model , that.model )
-            && Objects.equals( nPortID , that.nPortID )
-            && Objects.equals( pciSlot , that.pciSlot )
-            && Objects.equals( serial , that.serial )
-            && Objects.equals( speed , that.speed )
-            && Objects.equals( state , that.state )
-            && Objects.equals( switchWwn , that.switchWwn )
-            && Objects.equals( wwnn , that.wwnn )
-            && Objects.equals( wwpn , that.wwpn );
+        return 
+            Objects.equals(firmware, that.firmware) &&
+            Objects.equals(hbaPort, that.hbaPort) &&
+            Objects.equals(model, that.model) &&
+            Objects.equals(nPortID, that.nPortID) &&
+            Objects.equals(pciSlot, that.pciSlot) &&
+            Objects.equals(serial, that.serial) &&
+            Objects.equals(speed, that.speed) &&
+            Objects.equals(state, that.state) &&
+            Objects.equals(switchWwn, that.switchWwn) &&
+            Objects.equals(wwnn, that.wwnn) &&
+            Objects.equals(wwpn, that.wwpn);
     }
 
     @Override
@@ -264,6 +183,22 @@ public class FibreChannelPortInfo  implements Serializable  {
         return Objects.hash( firmware, hbaPort, model, nPortID, pciSlot, serial, speed, state, switchWwn, wwnn, wwpn );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("firmware", firmware);
+        map.put("hbaPort", hbaPort);
+        map.put("model", model);
+        map.put("nPortID", nPortID);
+        map.put("pciSlot", pciSlot);
+        map.put("serial", serial);
+        map.put("speed", speed);
+        map.put("state", state);
+        map.put("switchWwn", switchWwn);
+        map.put("wwnn", wwnn);
+        map.put("wwpn", wwpn);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -280,7 +215,7 @@ public class FibreChannelPortInfo  implements Serializable  {
         sb.append(" state : ").append(state).append(",");
         sb.append(" switchWwn : ").append(switchWwn).append(",");
         sb.append(" wwnn : ").append(wwnn).append(",");
-        sb.append(" wwpn : ").append(wwpn);
+        sb.append(" wwpn : ").append(wwpn).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -324,7 +259,7 @@ public class FibreChannelPortInfo  implements Serializable  {
                          this.state,
                          this.switchWwn,
                          this.wwnn,
-                         this.wwpn            );
+                         this.wwpn);
         }
 
         private FibreChannelPortInfo.Builder buildFrom(final FibreChannelPortInfo req) {
@@ -399,5 +334,4 @@ public class FibreChannelPortInfo  implements Serializable  {
         }
 
     }
-
 }

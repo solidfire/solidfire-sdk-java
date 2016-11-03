@@ -19,114 +19,79 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetStorageContainerEfficiency" API Service call.
+ * 
  **/
-public class GetStorageContainerEfficiencyResult  implements Serializable  {
 
-    private static final long serialVersionUID = 2061817778L;
+public class GetStorageContainerEfficiencyResult implements Serializable {
 
+    public static final long serialVersionUID = -666660104766808245L;
     @SerializedName("compression") private Double compression;
     @SerializedName("deduplication") private Double deduplication;
     @SerializedName("missingVolumes") private Long[] missingVolumes;
     @SerializedName("thinProvisioning") private Double thinProvisioning;
     @SerializedName("timestamp") private String timestamp;
 
-    /**
-     * The object returned by the "GetStorageContainerEfficiency" API Service call.
-     * @param compression [required] 
-     * @param deduplication [required] 
-     * @param missingVolumes [required] The volumes that could not be queried for efficiency data. Missing volumes can be caused by the Garbage Collection (GC) cycle being less than an hour old, temporary loss of network connectivity, or restarted services since the GC cycle.
-     * @param thinProvisioning [required] 
-     * @param timestamp [required] The last time efficiency data was collected after Garbage Collection (GC).
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetStorageContainerEfficiencyResult(Double compression, Double deduplication, Long[] missingVolumes, Double thinProvisioning, String timestamp) {
-        this.timestamp = timestamp;
-        this.compression = compression;
-        this.thinProvisioning = thinProvisioning;
-        this.missingVolumes = missingVolumes;
-        this.deduplication = deduplication;
-    }
-
-    
-    /**
-     * The object returned by the "GetStorageContainerEfficiency" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetStorageContainerEfficiencyResult() {}
 
-    public Double getCompression() {
-        return this.compression;
-    }
-
-    public void setCompression(Double compression) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetStorageContainerEfficiencyResult(
+        Double compression,
+        Double deduplication,
+        Long[] missingVolumes,
+        Double thinProvisioning,
+        String timestamp
+    )
+    {
         this.compression = compression;
-    }
-
-
-    public Double getDeduplication() {
-        return this.deduplication;
-    }
-
-    public void setDeduplication(Double deduplication) {
         this.deduplication = deduplication;
-    }
-
-
-
-    /**
-     * The volumes that could not be queried for efficiency data. Missing volumes can be caused by the Garbage Collection (GC) cycle being less than an hour old, temporary loss of network connectivity, or restarted services since the GC cycle.
-     **/
-    public Long[] getMissingVolumes() {
-        return this.missingVolumes;
-    }
-
-    public void setMissingVolumes(Long[] missingVolumes) {
         this.missingVolumes = missingVolumes;
-    }
-
-
-    public Double getThinProvisioning() {
-        return this.thinProvisioning;
-    }
-
-    public void setThinProvisioning(Double thinProvisioning) {
         this.thinProvisioning = thinProvisioning;
-    }
-
-
-
-    /**
-     * The last time efficiency data was collected after Garbage Collection (GC).
-     **/
-    public String getTimestamp() {
-        return this.timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 
-
+    /** 
+     **/
+    public Double getCompression() { return this.compression; }
+    public void setCompression(Double compression) { 
+        this.compression = compression;
+    }
+    /** 
+     **/
+    public Double getDeduplication() { return this.deduplication; }
+    public void setDeduplication(Double deduplication) { 
+        this.deduplication = deduplication;
+    }
+    /** 
+     * The volumes that could not be queried for efficiency data. Missing volumes can be caused by the Garbage Collection (GC) cycle being less than an hour old, temporary loss of network connectivity, or restarted services since the GC cycle.
+     **/
+    public Long[] getMissingVolumes() { return this.missingVolumes; }
+    public void setMissingVolumes(Long[] missingVolumes) { 
+        this.missingVolumes = missingVolumes;
+    }
+    /** 
+     **/
+    public Double getThinProvisioning() { return this.thinProvisioning; }
+    public void setThinProvisioning(Double thinProvisioning) { 
+        this.thinProvisioning = thinProvisioning;
+    }
+    /** 
+     * The last time efficiency data was collected after Garbage Collection (GC).
+     **/
+    public String getTimestamp() { return this.timestamp; }
+    public void setTimestamp(String timestamp) { 
+        this.timestamp = timestamp;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -134,20 +99,29 @@ public class GetStorageContainerEfficiencyResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetStorageContainerEfficiencyResult that = (GetStorageContainerEfficiencyResult) o;
-        
-
-        return Objects.equals( compression , that.compression )
-            && Objects.equals( deduplication , that.deduplication )
-            && Objects.deepEquals( missingVolumes , that.missingVolumes )
-            && Objects.equals( thinProvisioning , that.thinProvisioning )
-            && Objects.equals( timestamp , that.timestamp );
+        return 
+            Objects.equals(compression, that.compression) &&
+            Objects.equals(deduplication, that.deduplication) &&
+            Objects.equals(missingVolumes, that.missingVolumes) &&
+            Objects.equals(thinProvisioning, that.thinProvisioning) &&
+            Objects.equals(timestamp, that.timestamp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( compression, deduplication, missingVolumes, thinProvisioning, timestamp );
+        return Objects.hash( compression, deduplication, (Object[])missingVolumes, thinProvisioning, timestamp );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("compression", compression);
+        map.put("deduplication", deduplication);
+        map.put("missingVolumes", missingVolumes);
+        map.put("thinProvisioning", thinProvisioning);
+        map.put("timestamp", timestamp);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -158,7 +132,7 @@ public class GetStorageContainerEfficiencyResult  implements Serializable  {
         sb.append(" deduplication : ").append(deduplication).append(",");
         sb.append(" missingVolumes : ").append(Arrays.toString(missingVolumes)).append(",");
         sb.append(" thinProvisioning : ").append(thinProvisioning).append(",");
-        sb.append(" timestamp : ").append(timestamp);
+        sb.append(" timestamp : ").append(timestamp).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -190,7 +164,7 @@ public class GetStorageContainerEfficiencyResult  implements Serializable  {
                          this.deduplication,
                          this.missingVolumes,
                          this.thinProvisioning,
-                         this.timestamp            );
+                         this.timestamp);
         }
 
         private GetStorageContainerEfficiencyResult.Builder buildFrom(final GetStorageContainerEfficiencyResult req) {
@@ -229,5 +203,4 @@ public class GetStorageContainerEfficiencyResult  implements Serializable  {
         }
 
     }
-
 }

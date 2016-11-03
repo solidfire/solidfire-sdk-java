@@ -1,9 +1,9 @@
 package com.solidfire.client
 
 import com.solidfire.adaptor.ScheduleAdaptor.{DAYS_OF_MONTH, DAYS_OF_WEEK, FREQUENCY, TIME_INTERVAL}
+import com.solidfire.core.client.RequestDispatcher
 import com.solidfire.element.api._
 import com.solidfire.element.apiactual.ApiModifyScheduleRequest
-import com.solidfire.jsvcgen.client.RequestDispatcher
 import org.mockito.Mockito._
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}

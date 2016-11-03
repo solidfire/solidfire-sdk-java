@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetSchedule" API Service call.
+ * 
  **/
-public class GetScheduleRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -381787192L;
+public class GetScheduleRequest implements Serializable {
 
+    public static final long serialVersionUID = 8629386455849003456L;
     @SerializedName("scheduleID") private Long scheduleID;
 
-    /**
-     * The Request object for the "GetSchedule" API Service call.
-     * @param scheduleID [required] Unique ID of the schedule or multiple schedules to display
-     * @since 8.0
-     **/
-    @Since("8.0")
-    public GetScheduleRequest(Long scheduleID) {
-        this.scheduleID = scheduleID;
-    }
-
-    
-    /**
-     * The Request object for the "GetSchedule" API Service call.
-     * Empty constructor to support serialization.
-     * @since 8.0
-     **/
-    @Since("8.0")
+    // empty constructor
+    @Since("7.0")
     public GetScheduleRequest() {}
 
-
-    /**
-     * Unique ID of the schedule or multiple schedules to display
-     **/
-    public Long getScheduleID() {
-        return this.scheduleID;
-    }
-
-    public void setScheduleID(Long scheduleID) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetScheduleRequest(
+        Long scheduleID
+    )
+    {
         this.scheduleID = scheduleID;
     }
 
-
+    /** 
+     * Unique ID of the schedule or multiple schedules to display
+     **/
+    public Long getScheduleID() { return this.scheduleID; }
+    public void setScheduleID(Long scheduleID) { 
+        this.scheduleID = scheduleID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class GetScheduleRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetScheduleRequest that = (GetScheduleRequest) o;
-        
-
-        return Objects.equals( scheduleID , that.scheduleID );
+        return 
+            Objects.equals(scheduleID, that.scheduleID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) scheduleID );
+        return Objects.hash( scheduleID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("scheduleID", scheduleID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" scheduleID : ").append(scheduleID);
+        sb.append(" scheduleID : ").append(scheduleID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class GetScheduleRequest  implements Serializable  {
 
         public GetScheduleRequest build() {
             return new GetScheduleRequest (
-                         this.scheduleID            );
+                         this.scheduleID);
         }
 
         private GetScheduleRequest.Builder buildFrom(final GetScheduleRequest req) {
@@ -137,5 +122,4 @@ public class GetScheduleRequest  implements Serializable  {
         }
 
     }
-
 }

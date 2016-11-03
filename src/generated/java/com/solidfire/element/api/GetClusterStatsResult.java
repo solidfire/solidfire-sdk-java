@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetClusterStats" API Service call.
+ * 
  **/
-public class GetClusterStatsResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1140569260L;
+public class GetClusterStatsResult implements Serializable {
 
+    public static final long serialVersionUID = -4887384401902242783L;
     @SerializedName("clusterStats") private ClusterStats clusterStats;
 
-    /**
-     * The object returned by the "GetClusterStats" API Service call.
-     * @param clusterStats [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetClusterStatsResult(ClusterStats clusterStats) {
-        this.clusterStats = clusterStats;
-    }
-
-    
-    /**
-     * The object returned by the "GetClusterStats" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetClusterStatsResult() {}
 
-    public ClusterStats getClusterStats() {
-        return this.clusterStats;
-    }
-
-    public void setClusterStats(ClusterStats clusterStats) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetClusterStatsResult(
+        ClusterStats clusterStats
+    )
+    {
         this.clusterStats = clusterStats;
     }
 
-
+    /** 
+     **/
+    public ClusterStats getClusterStats() { return this.clusterStats; }
+    public void setClusterStats(ClusterStats clusterStats) { 
+        this.clusterStats = clusterStats;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,23 +61,28 @@ public class GetClusterStatsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterStatsResult that = (GetClusterStatsResult) o;
-        
-
-        return Objects.equals( clusterStats , that.clusterStats );
+        return 
+            Objects.equals(clusterStats, that.clusterStats);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) clusterStats );
+        return Objects.hash( clusterStats );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterStats", clusterStats);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" clusterStats : ").append(clusterStats);
+        sb.append(" clusterStats : ").append(clusterStats).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,7 +106,7 @@ public class GetClusterStatsResult  implements Serializable  {
 
         public GetClusterStatsResult build() {
             return new GetClusterStatsResult (
-                         this.clusterStats            );
+                         this.clusterStats);
         }
 
         private GetClusterStatsResult.Builder buildFrom(final GetClusterStatsResult req) {
@@ -133,5 +121,4 @@ public class GetClusterStatsResult  implements Serializable  {
         }
 
     }
-
 }

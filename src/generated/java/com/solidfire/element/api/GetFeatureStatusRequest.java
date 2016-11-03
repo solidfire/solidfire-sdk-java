@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetFeatureStatus" API Service call.
+ * 
  **/
-public class GetFeatureStatusRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -195166075L;
+public class GetFeatureStatusRequest implements Serializable {
 
+    public static final long serialVersionUID = 1167517827330762920L;
     @SerializedName("feature") private Optional<String> feature;
 
-    /**
-     * The Request object for the "GetFeatureStatus" API Service call.
-     * @param feature (optional) Valid values: vvols: Find the status of the Virtual Volumes (VVOLs) cluster feature.
-     * @since 9.0
-     **/
-    @Since("9.0")
-    public GetFeatureStatusRequest(Optional<String> feature) {
+    // empty constructor
+    @Since("7.0")
+    public GetFeatureStatusRequest() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public GetFeatureStatusRequest(
+        Optional<String> feature
+    )
+    {
         this.feature = (feature == null) ? Optional.<String>empty() : feature;
     }
 
-    
-    /**
-     * The Request object for the "GetFeatureStatus" API Service call.
-     * Empty constructor to support serialization.
-     * @since 9.0
-     **/
-    @Since("9.0")
-    public GetFeatureStatusRequest() {}
-
-
-    /**
+    /** 
      * Valid values: vvols: Find the status of the Virtual Volumes (VVOLs) cluster feature.
      **/
-    public Optional<String> getFeature() {
-        return this.feature;
+    public Optional<String> getFeature() { return this.feature; }
+    public void setFeature(Optional<String> feature) { 
+        this.feature = (feature == null) ? Optional.<String>empty() : feature;
     }
-
-    public void setFeature(String feature) {
-        this.feature = (feature == null) ? Optional.<String>empty() : Optional.of(feature);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -82,24 +62,30 @@ public class GetFeatureStatusRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetFeatureStatusRequest that = (GetFeatureStatusRequest) o;
-        
-
-        return Objects.equals( feature , that.feature );
+        return 
+            Objects.equals(feature, that.feature);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) feature );
+        return Objects.hash( feature );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("feature", feature);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != feature && feature.isPresent())
-            sb.append(" feature : ").append(feature.get());
+        if(null != feature && feature.isPresent()){
+            sb.append(" feature : ").append(feature.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -123,7 +109,7 @@ public class GetFeatureStatusRequest  implements Serializable  {
 
         public GetFeatureStatusRequest build() {
             return new GetFeatureStatusRequest (
-                         this.feature            );
+                         this.feature);
         }
 
         private GetFeatureStatusRequest.Builder buildFrom(final GetFeatureStatusRequest req) {
@@ -138,5 +124,4 @@ public class GetFeatureStatusRequest  implements Serializable  {
         }
 
     }
-
 }

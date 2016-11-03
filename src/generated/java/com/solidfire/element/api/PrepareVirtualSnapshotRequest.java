@@ -19,106 +19,71 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "PrepareVirtualSnapshot" API Service call.
+ * 
  **/
-public class PrepareVirtualSnapshotRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 432238774L;
+public class PrepareVirtualSnapshotRequest implements Serializable {
 
-    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
+    public static final long serialVersionUID = -4324099540451716656L;
+    @SerializedName("virtualVolumeID") private UUIDNullable virtualVolumeID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("writableSnapshot") private Optional<Boolean> writableSnapshot;
-    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
+    @SerializedName("callingVirtualVolumeHostID") private Optional<UUIDNullable> callingVirtualVolumeHostID;
 
-    /**
-     * The Request object for the "PrepareVirtualSnapshot" API Service call.
-     * @param virtualVolumeID [required] The ID of the Virtual Volume to clone.
-     * @param name (optional) The name for the newly-created volume.
-     * @param writableSnapshot (optional) Will the snapshot be writable?
-     * @param callingVirtualVolumeHostID (optional) 
-     * @since 9.0
-     **/
-    @Since("9.0")
-    public PrepareVirtualSnapshotRequest(java.util.UUID virtualVolumeID, Optional<String> name, Optional<Boolean> writableSnapshot, Optional<java.util.UUID> callingVirtualVolumeHostID) {
+    // empty constructor
+    @Since("7.0")
+    public PrepareVirtualSnapshotRequest() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public PrepareVirtualSnapshotRequest(
+        UUIDNullable virtualVolumeID,
+        Optional<String> name,
+        Optional<Boolean> writableSnapshot,
+        Optional<UUIDNullable> callingVirtualVolumeHostID
+    )
+    {
         this.virtualVolumeID = virtualVolumeID;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.writableSnapshot = (writableSnapshot == null) ? Optional.<Boolean>empty() : writableSnapshot;
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
     }
 
-    
-    /**
-     * The Request object for the "PrepareVirtualSnapshot" API Service call.
-     * Empty constructor to support serialization.
-     * @since 9.0
-     **/
-    @Since("9.0")
-    public PrepareVirtualSnapshotRequest() {}
-
-
-    /**
+    /** 
      * The ID of the Virtual Volume to clone.
      **/
-    public java.util.UUID getVirtualVolumeID() {
-        return this.virtualVolumeID;
-    }
-
-    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) {
+    public UUIDNullable getVirtualVolumeID() { return this.virtualVolumeID; }
+    public void setVirtualVolumeID(UUIDNullable virtualVolumeID) { 
         this.virtualVolumeID = virtualVolumeID;
     }
-
-
-
-    /**
+    /** 
      * The name for the newly-created volume.
      **/
-    public Optional<String> getName() {
-        return this.name;
+    public Optional<String> getName() { return this.name; }
+    public void setName(Optional<String> name) { 
+        this.name = (name == null) ? Optional.<String>empty() : name;
     }
-
-    public void setName(String name) {
-        this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
-    }
-
-
-
-    /**
+    /** 
      * Will the snapshot be writable?
      **/
-    public Optional<Boolean> getWritableSnapshot() {
-        return this.writableSnapshot;
+    public Optional<Boolean> getWritableSnapshot() { return this.writableSnapshot; }
+    public void setWritableSnapshot(Optional<Boolean> writableSnapshot) { 
+        this.writableSnapshot = (writableSnapshot == null) ? Optional.<Boolean>empty() : writableSnapshot;
     }
-
-    public void setWritableSnapshot(Boolean writableSnapshot) {
-        this.writableSnapshot = (writableSnapshot == null) ? Optional.<Boolean>empty() : Optional.of(writableSnapshot);
+    /** 
+     **/
+    public Optional<UUIDNullable> getCallingVirtualVolumeHostID() { return this.callingVirtualVolumeHostID; }
+    public void setCallingVirtualVolumeHostID(Optional<UUIDNullable> callingVirtualVolumeHostID) { 
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
     }
-
-
-    public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
-        return this.callingVirtualVolumeHostID;
-    }
-
-    public void setCallingVirtualVolumeHostID(java.util.UUID callingVirtualVolumeHostID) {
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -126,12 +91,11 @@ public class PrepareVirtualSnapshotRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         PrepareVirtualSnapshotRequest that = (PrepareVirtualSnapshotRequest) o;
-        
-
-        return Objects.equals( virtualVolumeID , that.virtualVolumeID )
-            && Objects.equals( name , that.name )
-            && Objects.equals( writableSnapshot , that.writableSnapshot )
-            && Objects.equals( callingVirtualVolumeHostID , that.callingVirtualVolumeHostID );
+        return 
+            Objects.equals(virtualVolumeID, that.virtualVolumeID) &&
+            Objects.equals(name, that.name) &&
+            Objects.equals(writableSnapshot, that.writableSnapshot) &&
+            Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }
 
     @Override
@@ -140,18 +104,30 @@ public class PrepareVirtualSnapshotRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("virtualVolumeID", virtualVolumeID);
+        map.put("name", name);
+        map.put("writableSnapshot", writableSnapshot);
+        map.put("callingVirtualVolumeHostID", callingVirtualVolumeHostID);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
         sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
-        if(null != name && name.isPresent())
+        if(null != name && name.isPresent()){
             sb.append(" name : ").append(name.get()).append(",");
-        if(null != writableSnapshot && writableSnapshot.isPresent())
+        }
+        if(null != writableSnapshot && writableSnapshot.isPresent()){
             sb.append(" writableSnapshot : ").append(writableSnapshot.get()).append(",");
-        if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent())
-            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get());
+        }
+        if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent()){
+            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -169,10 +145,10 @@ public class PrepareVirtualSnapshotRequest  implements Serializable  {
     }
 
     public static class Builder {
-        private java.util.UUID virtualVolumeID;
+        private UUIDNullable virtualVolumeID;
         private Optional<String> name;
         private Optional<Boolean> writableSnapshot;
-        private Optional<java.util.UUID> callingVirtualVolumeHostID;
+        private Optional<UUIDNullable> callingVirtualVolumeHostID;
 
         private Builder() { }
 
@@ -181,7 +157,7 @@ public class PrepareVirtualSnapshotRequest  implements Serializable  {
                          this.virtualVolumeID,
                          this.name,
                          this.writableSnapshot,
-                         this.callingVirtualVolumeHostID            );
+                         this.callingVirtualVolumeHostID);
         }
 
         private PrepareVirtualSnapshotRequest.Builder buildFrom(final PrepareVirtualSnapshotRequest req) {
@@ -193,7 +169,7 @@ public class PrepareVirtualSnapshotRequest  implements Serializable  {
             return this;
         }
 
-        public PrepareVirtualSnapshotRequest.Builder virtualVolumeID(final java.util.UUID virtualVolumeID) {
+        public PrepareVirtualSnapshotRequest.Builder virtualVolumeID(final UUIDNullable virtualVolumeID) {
             this.virtualVolumeID = virtualVolumeID;
             return this;
         }
@@ -208,11 +184,10 @@ public class PrepareVirtualSnapshotRequest  implements Serializable  {
             return this;
         }
 
-        public PrepareVirtualSnapshotRequest.Builder optionalCallingVirtualVolumeHostID(final java.util.UUID callingVirtualVolumeHostID) {
-            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
+        public PrepareVirtualSnapshotRequest.Builder optionalCallingVirtualVolumeHostID(final UUIDNullable callingVirtualVolumeHostID) {
+            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : Optional.of(callingVirtualVolumeHostID);
             return this;
         }
 
     }
-
 }

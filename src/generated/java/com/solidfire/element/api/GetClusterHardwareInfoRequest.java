@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetClusterHardwareInfo" API Service call.
+ * 
  **/
-public class GetClusterHardwareInfoRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -30944693L;
+public class GetClusterHardwareInfoRequest implements Serializable {
 
+    public static final long serialVersionUID = -945659093469045744L;
     @SerializedName("type") private Optional<String> type;
 
-    /**
-     * The Request object for the "GetClusterHardwareInfo" API Service call.
-     * @param type (optional) Include only a certain type of hardware information in the response. Can be one of the following:drives: List only drive information in the response.nodes: List only node information in the response.all: Include both drive and node information in the response.If this parameter is omitted, a type of "all" is assumed.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetClusterHardwareInfoRequest(Optional<String> type) {
-        this.type = (type == null) ? Optional.<String>empty() : type;
-    }
-
-    
-    /**
-     * The Request object for the "GetClusterHardwareInfo" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetClusterHardwareInfoRequest() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public GetClusterHardwareInfoRequest(
+        Optional<String> type
+    )
+    {
+        this.type = (type == null) ? Optional.<String>empty() : type;
+    }
 
-    /**
+    /** 
      * Include only a certain type of hardware information in the response. Can be one of the following:drives: List only drive information in the response.nodes: List only node information in the response.all: Include both drive and node information in the response.If this parameter is omitted, a type of "all" is assumed.
      **/
-    public Optional<String> getType() {
-        return this.type;
+    public Optional<String> getType() { return this.type; }
+    public void setType(Optional<String> type) { 
+        this.type = (type == null) ? Optional.<String>empty() : type;
     }
-
-    public void setType(String type) {
-        this.type = (type == null) ? Optional.<String>empty() : Optional.of(type);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -82,24 +62,30 @@ public class GetClusterHardwareInfoRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterHardwareInfoRequest that = (GetClusterHardwareInfoRequest) o;
-        
-
-        return Objects.equals( type , that.type );
+        return 
+            Objects.equals(type, that.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) type );
+        return Objects.hash( type );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("type", type);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != type && type.isPresent())
-            sb.append(" type : ").append(type.get());
+        if(null != type && type.isPresent()){
+            sb.append(" type : ").append(type.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -123,7 +109,7 @@ public class GetClusterHardwareInfoRequest  implements Serializable  {
 
         public GetClusterHardwareInfoRequest build() {
             return new GetClusterHardwareInfoRequest (
-                         this.type            );
+                         this.type);
         }
 
         private GetClusterHardwareInfoRequest.Builder buildFrom(final GetClusterHardwareInfoRequest req) {
@@ -138,5 +124,4 @@ public class GetClusterHardwareInfoRequest  implements Serializable  {
         }
 
     }
-
 }

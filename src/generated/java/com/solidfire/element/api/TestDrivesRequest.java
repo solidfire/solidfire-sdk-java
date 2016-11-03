@@ -19,78 +19,52 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "TestDrives" API Service call.
+ * 
  **/
-public class TestDrivesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -631481725L;
+public class TestDrivesRequest implements Serializable {
 
+    public static final long serialVersionUID = -5757296498888204657L;
     @SerializedName("minutes") private Optional<Long> minutes;
     @SerializedName("force") private Boolean force;
 
-    /**
-     * The Request object for the "TestDrives" API Service call.
-     * @param minutes (optional) The number of minutes to run the test can be specified.
-     * @param force [required] The "force" parameter must be included on this method to successfully test the drives on the node.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public TestDrivesRequest(Optional<Long> minutes, Boolean force) {
+    public TestDrivesRequest() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public TestDrivesRequest(
+        Optional<Long> minutes,
+        Boolean force
+    )
+    {
         this.minutes = (minutes == null) ? Optional.<Long>empty() : minutes;
         this.force = force;
     }
 
-    
-    /**
-     * The Request object for the "TestDrives" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public TestDrivesRequest() {}
-
-
-    /**
+    /** 
      * The number of minutes to run the test can be specified.
      **/
-    public Optional<Long> getMinutes() {
-        return this.minutes;
+    public Optional<Long> getMinutes() { return this.minutes; }
+    public void setMinutes(Optional<Long> minutes) { 
+        this.minutes = (minutes == null) ? Optional.<Long>empty() : minutes;
     }
-
-    public void setMinutes(Long minutes) {
-        this.minutes = (minutes == null) ? Optional.<Long>empty() : Optional.of(minutes);
-    }
-
-
-
-    /**
+    /** 
      * The "force" parameter must be included on this method to successfully test the drives on the node.
      **/
-    public Boolean getForce() {
-        return this.force;
-    }
-
-    public void setForce(Boolean force) {
+    public Boolean getForce() { return this.force; }
+    public void setForce(Boolean force) { 
         this.force = force;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -98,10 +72,9 @@ public class TestDrivesRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestDrivesRequest that = (TestDrivesRequest) o;
-        
-
-        return Objects.equals( minutes , that.minutes )
-            && Objects.equals( force , that.force );
+        return 
+            Objects.equals(minutes, that.minutes) &&
+            Objects.equals(force, that.force);
     }
 
     @Override
@@ -110,14 +83,22 @@ public class TestDrivesRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("minutes", minutes);
+        map.put("force", force);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != minutes && minutes.isPresent())
+        if(null != minutes && minutes.isPresent()){
             sb.append(" minutes : ").append(minutes.get()).append(",");
-        sb.append(" force : ").append(force);
+        }
+        sb.append(" force : ").append(force).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -143,7 +124,7 @@ public class TestDrivesRequest  implements Serializable  {
         public TestDrivesRequest build() {
             return new TestDrivesRequest (
                          this.minutes,
-                         this.force            );
+                         this.force);
         }
 
         private TestDrivesRequest.Builder buildFrom(final TestDrivesRequest req) {
@@ -164,5 +145,4 @@ public class TestDrivesRequest  implements Serializable  {
         }
 
     }
-
 }

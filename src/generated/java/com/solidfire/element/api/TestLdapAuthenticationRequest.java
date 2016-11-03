@@ -19,94 +19,62 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "TestLdapAuthentication" API Service call.
+ * 
  **/
-public class TestLdapAuthenticationRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1764798054L;
+public class TestLdapAuthenticationRequest implements Serializable {
 
+    public static final long serialVersionUID = 8032836993327776039L;
     @SerializedName("username") private String username;
     @SerializedName("password") private String password;
     @SerializedName("ldapConfiguration") private Optional<LdapConfiguration> ldapConfiguration;
 
-    /**
-     * The Request object for the "TestLdapAuthentication" API Service call.
-     * @param username [required] The username to be tested.
-     * @param password [required] The password for the username to be tester.
-     * @param ldapConfiguration (optional) An ldapConfiguration object to be tested. If this parameter is provided, the API call will test the provided configuration even if LDAP authentication is currently disabled.
-     * @since 8.0
-     **/
-    @Since("8.0")
-    public TestLdapAuthenticationRequest(String username, String password, Optional<LdapConfiguration> ldapConfiguration) {
+    // empty constructor
+    @Since("7.0")
+    public TestLdapAuthenticationRequest() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public TestLdapAuthenticationRequest(
+        String username,
+        String password,
+        Optional<LdapConfiguration> ldapConfiguration
+    )
+    {
         this.username = username;
         this.password = password;
         this.ldapConfiguration = (ldapConfiguration == null) ? Optional.<LdapConfiguration>empty() : ldapConfiguration;
     }
 
-    
-    /**
-     * The Request object for the "TestLdapAuthentication" API Service call.
-     * Empty constructor to support serialization.
-     * @since 8.0
-     **/
-    @Since("8.0")
-    public TestLdapAuthenticationRequest() {}
-
-
-    /**
+    /** 
      * The username to be tested.
      **/
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setUsername(String username) {
+    public String getUsername() { return this.username; }
+    public void setUsername(String username) { 
         this.username = username;
     }
-
-
-
-    /**
+    /** 
      * The password for the username to be tester.
      **/
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
+    public String getPassword() { return this.password; }
+    public void setPassword(String password) { 
         this.password = password;
     }
-
-
-
-    /**
+    /** 
      * An ldapConfiguration object to be tested. If this parameter is provided, the API call will test the provided configuration even if LDAP authentication is currently disabled.
      **/
-    public Optional<LdapConfiguration> getLdapConfiguration() {
-        return this.ldapConfiguration;
+    public Optional<LdapConfiguration> getLdapConfiguration() { return this.ldapConfiguration; }
+    public void setLdapConfiguration(Optional<LdapConfiguration> ldapConfiguration) { 
+        this.ldapConfiguration = (ldapConfiguration == null) ? Optional.<LdapConfiguration>empty() : ldapConfiguration;
     }
-
-    public void setLdapConfiguration(LdapConfiguration ldapConfiguration) {
-        this.ldapConfiguration = (ldapConfiguration == null) ? Optional.<LdapConfiguration>empty() : Optional.of(ldapConfiguration);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -114,11 +82,10 @@ public class TestLdapAuthenticationRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestLdapAuthenticationRequest that = (TestLdapAuthenticationRequest) o;
-        
-
-        return Objects.equals( username , that.username )
-            && Objects.equals( password , that.password )
-            && Objects.equals( ldapConfiguration , that.ldapConfiguration );
+        return 
+            Objects.equals(username, that.username) &&
+            Objects.equals(password, that.password) &&
+            Objects.equals(ldapConfiguration, that.ldapConfiguration);
     }
 
     @Override
@@ -127,6 +94,14 @@ public class TestLdapAuthenticationRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("username", username);
+        map.put("password", password);
+        map.put("ldapConfiguration", ldapConfiguration);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -134,8 +109,9 @@ public class TestLdapAuthenticationRequest  implements Serializable  {
 
         sb.append(" username : ").append(username).append(",");
         sb.append(" password : ").append(password).append(",");
-        if(null != ldapConfiguration && ldapConfiguration.isPresent())
-            sb.append(" ldapConfiguration : ").append(ldapConfiguration.get());
+        if(null != ldapConfiguration && ldapConfiguration.isPresent()){
+            sb.append(" ldapConfiguration : ").append(ldapConfiguration.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -163,7 +139,7 @@ public class TestLdapAuthenticationRequest  implements Serializable  {
             return new TestLdapAuthenticationRequest (
                          this.username,
                          this.password,
-                         this.ldapConfiguration            );
+                         this.ldapConfiguration);
         }
 
         private TestLdapAuthenticationRequest.Builder buildFrom(final TestLdapAuthenticationRequest req) {
@@ -190,5 +166,4 @@ public class TestLdapAuthenticationRequest  implements Serializable  {
         }
 
     }
-
 }

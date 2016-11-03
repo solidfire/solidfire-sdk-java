@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "TestConnectMvip" API Service call.
+ * 
  **/
-public class TestConnectMvipRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1829877805L;
+public class TestConnectMvipRequest implements Serializable {
 
+    public static final long serialVersionUID = 918184488572641133L;
     @SerializedName("mvip") private Optional<String> mvip;
 
-    /**
-     * The Request object for the "TestConnectMvip" API Service call.
-     * @param mvip (optional) Optionally, use to test the management connection of a different MVIP. This is not needed to test the connection to the target cluster.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public TestConnectMvipRequest(Optional<String> mvip) {
-        this.mvip = (mvip == null) ? Optional.<String>empty() : mvip;
-    }
-
-    
-    /**
-     * The Request object for the "TestConnectMvip" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public TestConnectMvipRequest() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public TestConnectMvipRequest(
+        Optional<String> mvip
+    )
+    {
+        this.mvip = (mvip == null) ? Optional.<String>empty() : mvip;
+    }
 
-    /**
+    /** 
      * Optionally, use to test the management connection of a different MVIP. This is not needed to test the connection to the target cluster.
      **/
-    public Optional<String> getMvip() {
-        return this.mvip;
+    public Optional<String> getMvip() { return this.mvip; }
+    public void setMvip(Optional<String> mvip) { 
+        this.mvip = (mvip == null) ? Optional.<String>empty() : mvip;
     }
-
-    public void setMvip(String mvip) {
-        this.mvip = (mvip == null) ? Optional.<String>empty() : Optional.of(mvip);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -82,24 +62,30 @@ public class TestConnectMvipRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectMvipRequest that = (TestConnectMvipRequest) o;
-        
-
-        return Objects.equals( mvip , that.mvip );
+        return 
+            Objects.equals(mvip, that.mvip);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) mvip );
+        return Objects.hash( mvip );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("mvip", mvip);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != mvip && mvip.isPresent())
-            sb.append(" mvip : ").append(mvip.get());
+        if(null != mvip && mvip.isPresent()){
+            sb.append(" mvip : ").append(mvip.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -123,7 +109,7 @@ public class TestConnectMvipRequest  implements Serializable  {
 
         public TestConnectMvipRequest build() {
             return new TestConnectMvipRequest (
-                         this.mvip            );
+                         this.mvip);
         }
 
         private TestConnectMvipRequest.Builder buildFrom(final TestConnectMvipRequest req) {
@@ -138,5 +124,4 @@ public class TestConnectMvipRequest  implements Serializable  {
         }
 
     }
-
 }

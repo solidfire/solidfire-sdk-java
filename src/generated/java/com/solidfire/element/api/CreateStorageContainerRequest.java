@@ -19,110 +19,72 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "CreateStorageContainer" API Service call.
+ * 
  **/
-public class CreateStorageContainerRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1180538485L;
+public class CreateStorageContainerRequest implements Serializable {
 
+    public static final long serialVersionUID = -7290793674015554618L;
     @SerializedName("name") private String name;
-    @SerializedName("callingHostID") private Optional<java.util.UUID> callingHostID;
-    @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
-    @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
+    @SerializedName("callingHostID") private Optional<UUIDNullable> callingHostID;
+    @SerializedName("initiatorSecret") private Optional<String> initiatorSecret;
+    @SerializedName("targetSecret") private Optional<String> targetSecret;
 
-    /**
-     * The Request object for the "CreateStorageContainer" API Service call.
-     * @param name [required] Name of the storage container.
-     * @param callingHostID (optional) Non-storagecontainer account that will become a storage container.
-     * @param initiatorSecret (optional) The secret for CHAP authentication for the initiator
-     * @param targetSecret (optional) The secret for CHAP authentication for the target
-     * @since 9.0
-     **/
-    @Since("9.0")
-    public CreateStorageContainerRequest(String name, Optional<java.util.UUID> callingHostID, Optional<CHAPSecret> initiatorSecret, Optional<CHAPSecret> targetSecret) {
-        this.name = name;
-        this.callingHostID = (callingHostID == null) ? Optional.<java.util.UUID>empty() : callingHostID;
-        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
-        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
-    }
-
-    
-    /**
-     * The Request object for the "CreateStorageContainer" API Service call.
-     * Empty constructor to support serialization.
-     * @since 9.0
-     **/
-    @Since("9.0")
+    // empty constructor
+    @Since("7.0")
     public CreateStorageContainerRequest() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public CreateStorageContainerRequest(
+        String name,
+        Optional<UUIDNullable> callingHostID,
+        Optional<String> initiatorSecret,
+        Optional<String> targetSecret
+    )
+    {
+        this.name = name;
+        this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : callingHostID;
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : initiatorSecret;
+        this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : targetSecret;
+    }
 
-    /**
+    /** 
      * Name of the storage container.
      **/
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
+    public String getName() { return this.name; }
+    public void setName(String name) { 
         this.name = name;
     }
-
-
-
-    /**
+    /** 
      * Non-storagecontainer account that will become a storage container.
      **/
-    public Optional<java.util.UUID> getCallingHostID() {
-        return this.callingHostID;
+    public Optional<UUIDNullable> getCallingHostID() { return this.callingHostID; }
+    public void setCallingHostID(Optional<UUIDNullable> callingHostID) { 
+        this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : callingHostID;
     }
-
-    public void setCallingHostID(java.util.UUID callingHostID) {
-        this.callingHostID = (callingHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingHostID);
-    }
-
-
-
-    /**
+    /** 
      * The secret for CHAP authentication for the initiator
      **/
-    public Optional<CHAPSecret> getInitiatorSecret() {
-        return this.initiatorSecret;
+    public Optional<String> getInitiatorSecret() { return this.initiatorSecret; }
+    public void setInitiatorSecret(Optional<String> initiatorSecret) { 
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : initiatorSecret;
     }
-
-    public void setInitiatorSecret(CHAPSecret initiatorSecret) {
-        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
-    }
-
-
-
-    /**
+    /** 
      * The secret for CHAP authentication for the target
      **/
-    public Optional<CHAPSecret> getTargetSecret() {
-        return this.targetSecret;
+    public Optional<String> getTargetSecret() { return this.targetSecret; }
+    public void setTargetSecret(Optional<String> targetSecret) { 
+        this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : targetSecret;
     }
-
-    public void setTargetSecret(CHAPSecret targetSecret) {
-        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -130,12 +92,11 @@ public class CreateStorageContainerRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateStorageContainerRequest that = (CreateStorageContainerRequest) o;
-        
-
-        return Objects.equals( name , that.name )
-            && Objects.equals( callingHostID , that.callingHostID )
-            && Objects.equals( initiatorSecret , that.initiatorSecret )
-            && Objects.equals( targetSecret , that.targetSecret );
+        return 
+            Objects.equals(name, that.name) &&
+            Objects.equals(callingHostID, that.callingHostID) &&
+            Objects.equals(initiatorSecret, that.initiatorSecret) &&
+            Objects.equals(targetSecret, that.targetSecret);
     }
 
     @Override
@@ -144,18 +105,30 @@ public class CreateStorageContainerRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("name", name);
+        map.put("callingHostID", callingHostID);
+        map.put("initiatorSecret", initiatorSecret);
+        map.put("targetSecret", targetSecret);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
         sb.append(" name : ").append(name).append(",");
-        if(null != callingHostID && callingHostID.isPresent())
+        if(null != callingHostID && callingHostID.isPresent()){
             sb.append(" callingHostID : ").append(callingHostID.get()).append(",");
-        if(null != initiatorSecret && initiatorSecret.isPresent())
+        }
+        if(null != initiatorSecret && initiatorSecret.isPresent()){
             sb.append(" initiatorSecret : ").append(initiatorSecret.get()).append(",");
-        if(null != targetSecret && targetSecret.isPresent())
-            sb.append(" targetSecret : ").append(targetSecret.get());
+        }
+        if(null != targetSecret && targetSecret.isPresent()){
+            sb.append(" targetSecret : ").append(targetSecret.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -174,9 +147,9 @@ public class CreateStorageContainerRequest  implements Serializable  {
 
     public static class Builder {
         private String name;
-        private Optional<java.util.UUID> callingHostID;
-        private Optional<CHAPSecret> initiatorSecret;
-        private Optional<CHAPSecret> targetSecret;
+        private Optional<UUIDNullable> callingHostID;
+        private Optional<String> initiatorSecret;
+        private Optional<String> targetSecret;
 
         private Builder() { }
 
@@ -185,7 +158,7 @@ public class CreateStorageContainerRequest  implements Serializable  {
                          this.name,
                          this.callingHostID,
                          this.initiatorSecret,
-                         this.targetSecret            );
+                         this.targetSecret);
         }
 
         private CreateStorageContainerRequest.Builder buildFrom(final CreateStorageContainerRequest req) {
@@ -202,21 +175,20 @@ public class CreateStorageContainerRequest  implements Serializable  {
             return this;
         }
 
-        public CreateStorageContainerRequest.Builder optionalCallingHostID(final java.util.UUID callingHostID) {
-            this.callingHostID = (callingHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingHostID);
+        public CreateStorageContainerRequest.Builder optionalCallingHostID(final UUIDNullable callingHostID) {
+            this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : Optional.of(callingHostID);
             return this;
         }
 
-        public CreateStorageContainerRequest.Builder optionalInitiatorSecret(final CHAPSecret initiatorSecret) {
-            this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
+        public CreateStorageContainerRequest.Builder optionalInitiatorSecret(final String initiatorSecret) {
+            this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public CreateStorageContainerRequest.Builder optionalTargetSecret(final CHAPSecret targetSecret) {
-            this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
+        public CreateStorageContainerRequest.Builder optionalTargetSecret(final String targetSecret) {
+            this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : Optional.of(targetSecret);
             return this;
         }
 
     }
-
 }

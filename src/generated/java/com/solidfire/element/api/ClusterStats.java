@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class ClusterStats  implements Serializable  {
 
-    private static final long serialVersionUID = -563757431L;
+public class ClusterStats implements Serializable {
 
+    public static final long serialVersionUID = -8071979927197008409L;
     @SerializedName("clusterUtilization") private Double clusterUtilization;
     @SerializedName("clientQueueDepth") private Long clientQueueDepth;
     @SerializedName("readBytes") private Long readBytes;
@@ -49,124 +41,79 @@ public class ClusterStats  implements Serializable  {
     @SerializedName("writeBytes") private Long writeBytes;
     @SerializedName("writeOps") private Long writeOps;
 
-    /**
-     * 
-     * @param clusterUtilization [required] The amount of cluster capacity being utilized.
-     * @param clientQueueDepth [required] 
-     * @param readBytes [required] Total bytes read by clients.
-     * @param readOps [required] Total read operations.
-     * @param timestamp [required] Current time in UTC format. ISO 8601 date string.
-     * @param writeBytes [required] Total bytes written by clients.
-     * @param writeOps [required] Total write operations.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ClusterStats(Double clusterUtilization, Long clientQueueDepth, Long readBytes, Long readOps, String timestamp, Long writeBytes, Long writeOps) {
-        this.writeOps = writeOps;
-        this.timestamp = timestamp;
-        this.readOps = readOps;
-        this.clusterUtilization = clusterUtilization;
-        this.writeBytes = writeBytes;
-        this.clientQueueDepth = clientQueueDepth;
-        this.readBytes = readBytes;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ClusterStats() {}
 
-
-    /**
-     * The amount of cluster capacity being utilized.
-     **/
-    public Double getClusterUtilization() {
-        return this.clusterUtilization;
-    }
-
-    public void setClusterUtilization(Double clusterUtilization) {
+    // parameterized constructor
+    @Since("7.0")
+    public ClusterStats(
+        Double clusterUtilization,
+        Long clientQueueDepth,
+        Long readBytes,
+        Long readOps,
+        String timestamp,
+        Long writeBytes,
+        Long writeOps
+    )
+    {
         this.clusterUtilization = clusterUtilization;
-    }
-
-
-    public Long getClientQueueDepth() {
-        return this.clientQueueDepth;
-    }
-
-    public void setClientQueueDepth(Long clientQueueDepth) {
         this.clientQueueDepth = clientQueueDepth;
-    }
-
-
-
-    /**
-     * Total bytes read by clients.
-     **/
-    public Long getReadBytes() {
-        return this.readBytes;
-    }
-
-    public void setReadBytes(Long readBytes) {
         this.readBytes = readBytes;
-    }
-
-
-
-    /**
-     * Total read operations.
-     **/
-    public Long getReadOps() {
-        return this.readOps;
-    }
-
-    public void setReadOps(Long readOps) {
         this.readOps = readOps;
-    }
-
-
-
-    /**
-     * Current time in UTC format. ISO 8601 date string.
-     **/
-    public String getTimestamp() {
-        return this.timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
-    }
-
-
-
-    /**
-     * Total bytes written by clients.
-     **/
-    public Long getWriteBytes() {
-        return this.writeBytes;
-    }
-
-    public void setWriteBytes(Long writeBytes) {
         this.writeBytes = writeBytes;
-    }
-
-
-
-    /**
-     * Total write operations.
-     **/
-    public Long getWriteOps() {
-        return this.writeOps;
-    }
-
-    public void setWriteOps(Long writeOps) {
         this.writeOps = writeOps;
     }
 
-
+    /** 
+     * The amount of cluster capacity being utilized.
+     **/
+    public Double getClusterUtilization() { return this.clusterUtilization; }
+    public void setClusterUtilization(Double clusterUtilization) { 
+        this.clusterUtilization = clusterUtilization;
+    }
+    /** 
+     **/
+    public Long getClientQueueDepth() { return this.clientQueueDepth; }
+    public void setClientQueueDepth(Long clientQueueDepth) { 
+        this.clientQueueDepth = clientQueueDepth;
+    }
+    /** 
+     * Total bytes read by clients.
+     **/
+    public Long getReadBytes() { return this.readBytes; }
+    public void setReadBytes(Long readBytes) { 
+        this.readBytes = readBytes;
+    }
+    /** 
+     * Total read operations.
+     **/
+    public Long getReadOps() { return this.readOps; }
+    public void setReadOps(Long readOps) { 
+        this.readOps = readOps;
+    }
+    /** 
+     * Current time in UTC format. ISO 8601 date string.
+     **/
+    public String getTimestamp() { return this.timestamp; }
+    public void setTimestamp(String timestamp) { 
+        this.timestamp = timestamp;
+    }
+    /** 
+     * Total bytes written by clients.
+     **/
+    public Long getWriteBytes() { return this.writeBytes; }
+    public void setWriteBytes(Long writeBytes) { 
+        this.writeBytes = writeBytes;
+    }
+    /** 
+     * Total write operations.
+     **/
+    public Long getWriteOps() { return this.writeOps; }
+    public void setWriteOps(Long writeOps) { 
+        this.writeOps = writeOps;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -174,15 +121,14 @@ public class ClusterStats  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClusterStats that = (ClusterStats) o;
-        
-
-        return Objects.equals( clusterUtilization , that.clusterUtilization )
-            && Objects.equals( clientQueueDepth , that.clientQueueDepth )
-            && Objects.equals( readBytes , that.readBytes )
-            && Objects.equals( readOps , that.readOps )
-            && Objects.equals( timestamp , that.timestamp )
-            && Objects.equals( writeBytes , that.writeBytes )
-            && Objects.equals( writeOps , that.writeOps );
+        return 
+            Objects.equals(clusterUtilization, that.clusterUtilization) &&
+            Objects.equals(clientQueueDepth, that.clientQueueDepth) &&
+            Objects.equals(readBytes, that.readBytes) &&
+            Objects.equals(readOps, that.readOps) &&
+            Objects.equals(timestamp, that.timestamp) &&
+            Objects.equals(writeBytes, that.writeBytes) &&
+            Objects.equals(writeOps, that.writeOps);
     }
 
     @Override
@@ -190,6 +136,18 @@ public class ClusterStats  implements Serializable  {
         return Objects.hash( clusterUtilization, clientQueueDepth, readBytes, readOps, timestamp, writeBytes, writeOps );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterUtilization", clusterUtilization);
+        map.put("clientQueueDepth", clientQueueDepth);
+        map.put("readBytes", readBytes);
+        map.put("readOps", readOps);
+        map.put("timestamp", timestamp);
+        map.put("writeBytes", writeBytes);
+        map.put("writeOps", writeOps);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -202,7 +160,7 @@ public class ClusterStats  implements Serializable  {
         sb.append(" readOps : ").append(readOps).append(",");
         sb.append(" timestamp : ").append(timestamp).append(",");
         sb.append(" writeBytes : ").append(writeBytes).append(",");
-        sb.append(" writeOps : ").append(writeOps);
+        sb.append(" writeOps : ").append(writeOps).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -238,7 +196,7 @@ public class ClusterStats  implements Serializable  {
                          this.readOps,
                          this.timestamp,
                          this.writeBytes,
-                         this.writeOps            );
+                         this.writeOps);
         }
 
         private ClusterStats.Builder buildFrom(final ClusterStats req) {
@@ -289,5 +247,4 @@ public class ClusterStats  implements Serializable  {
         }
 
     }
-
 }

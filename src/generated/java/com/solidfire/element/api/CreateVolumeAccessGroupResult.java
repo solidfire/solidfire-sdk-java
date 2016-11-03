@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "CreateVolumeAccessGroup" API Service call.
+ * 
  **/
-public class CreateVolumeAccessGroupResult  implements Serializable  {
 
-    private static final long serialVersionUID = -921186699L;
+public class CreateVolumeAccessGroupResult implements Serializable {
 
+    public static final long serialVersionUID = -3703710454092842045L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
 
-    /**
-     * The object returned by the "CreateVolumeAccessGroup" API Service call.
-     * @param volumeAccessGroupID [required] The ID for the newly-created volume access group.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public CreateVolumeAccessGroupResult(Long volumeAccessGroupID) {
-        this.volumeAccessGroupID = volumeAccessGroupID;
-    }
-
-    
-    /**
-     * The object returned by the "CreateVolumeAccessGroup" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public CreateVolumeAccessGroupResult() {}
 
-
-    /**
-     * The ID for the newly-created volume access group.
-     **/
-    public Long getVolumeAccessGroupID() {
-        return this.volumeAccessGroupID;
-    }
-
-    public void setVolumeAccessGroupID(Long volumeAccessGroupID) {
+    // parameterized constructor
+    @Since("7.0")
+    public CreateVolumeAccessGroupResult(
+        Long volumeAccessGroupID
+    )
+    {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
-
+    /** 
+     * The ID for the newly-created volume access group.
+     **/
+    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+        this.volumeAccessGroupID = volumeAccessGroupID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class CreateVolumeAccessGroupResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateVolumeAccessGroupResult that = (CreateVolumeAccessGroupResult) o;
-        
-
-        return Objects.equals( volumeAccessGroupID , that.volumeAccessGroupID );
+        return 
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volumeAccessGroupID );
+        return Objects.hash( volumeAccessGroupID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroupID", volumeAccessGroupID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID);
+        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class CreateVolumeAccessGroupResult  implements Serializable  {
 
         public CreateVolumeAccessGroupResult build() {
             return new CreateVolumeAccessGroupResult (
-                         this.volumeAccessGroupID            );
+                         this.volumeAccessGroupID);
         }
 
         private CreateVolumeAccessGroupResult.Builder buildFrom(final CreateVolumeAccessGroupResult req) {
@@ -137,5 +122,4 @@ public class CreateVolumeAccessGroupResult  implements Serializable  {
         }
 
     }
-
 }

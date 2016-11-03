@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetVolumeAccessGroupLunAssignments" API Service call.
+ * 
  **/
-public class GetVolumeAccessGroupLunAssignmentsResult  implements Serializable  {
 
-    private static final long serialVersionUID = -472207715L;
+public class GetVolumeAccessGroupLunAssignmentsResult implements Serializable {
 
+    public static final long serialVersionUID = 7463507992215591007L;
     @SerializedName("volumeAccessGroupLunAssignments") private VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments;
 
-    /**
-     * The object returned by the "GetVolumeAccessGroupLunAssignments" API Service call.
-     * @param volumeAccessGroupLunAssignments [required] List of all physical Fibre Channel ports, or a port for a single node.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetVolumeAccessGroupLunAssignmentsResult(VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments) {
-        this.volumeAccessGroupLunAssignments = volumeAccessGroupLunAssignments;
-    }
-
-    
-    /**
-     * The object returned by the "GetVolumeAccessGroupLunAssignments" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetVolumeAccessGroupLunAssignmentsResult() {}
 
-
-    /**
-     * List of all physical Fibre Channel ports, or a port for a single node.
-     **/
-    public VolumeAccessGroupLunAssignments getVolumeAccessGroupLunAssignments() {
-        return this.volumeAccessGroupLunAssignments;
-    }
-
-    public void setVolumeAccessGroupLunAssignments(VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetVolumeAccessGroupLunAssignmentsResult(
+        VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments
+    )
+    {
         this.volumeAccessGroupLunAssignments = volumeAccessGroupLunAssignments;
     }
 
-
+    /** 
+     * List of all physical Fibre Channel ports, or a port for a single node.
+     **/
+    public VolumeAccessGroupLunAssignments getVolumeAccessGroupLunAssignments() { return this.volumeAccessGroupLunAssignments; }
+    public void setVolumeAccessGroupLunAssignments(VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments) { 
+        this.volumeAccessGroupLunAssignments = volumeAccessGroupLunAssignments;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class GetVolumeAccessGroupLunAssignmentsResult  implements Serializable  
         if (o == null || getClass() != o.getClass()) return false;
 
         GetVolumeAccessGroupLunAssignmentsResult that = (GetVolumeAccessGroupLunAssignmentsResult) o;
-        
-
-        return Objects.equals( volumeAccessGroupLunAssignments , that.volumeAccessGroupLunAssignments );
+        return 
+            Objects.equals(volumeAccessGroupLunAssignments, that.volumeAccessGroupLunAssignments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volumeAccessGroupLunAssignments );
+        return Objects.hash( volumeAccessGroupLunAssignments );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroupLunAssignments", volumeAccessGroupLunAssignments);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupLunAssignments : ").append(volumeAccessGroupLunAssignments);
+        sb.append(" volumeAccessGroupLunAssignments : ").append(volumeAccessGroupLunAssignments).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class GetVolumeAccessGroupLunAssignmentsResult  implements Serializable  
 
         public GetVolumeAccessGroupLunAssignmentsResult build() {
             return new GetVolumeAccessGroupLunAssignmentsResult (
-                         this.volumeAccessGroupLunAssignments            );
+                         this.volumeAccessGroupLunAssignments);
         }
 
         private GetVolumeAccessGroupLunAssignmentsResult.Builder buildFrom(final GetVolumeAccessGroupLunAssignmentsResult req) {
@@ -137,5 +122,4 @@ public class GetVolumeAccessGroupLunAssignmentsResult  implements Serializable  
         }
 
     }
-
 }

@@ -1,9 +1,10 @@
 package com.solidfire.adaptor
 
 import com.solidfire.adaptor.ElementServiceAdaptor._
+import com.solidfire.core.client.ApiException
 import com.solidfire.element.api._
-import com.solidfire.jsvcgen.client.ApiException
 import org.mockito.Mockito.when
+import org.mockito.Matchers._
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
 
@@ -77,6 +78,7 @@ class ElementServiceAdaptorTest extends WordSpec with BeforeAndAfterAll with Moc
       val schedule = Schedule.builder().name("someName").build()
       schedule.setScheduleID(null)
       when (sfe.modifySchedule(schedule)).thenCallRealMethod()
+      when (sfe.modifySchedule(any[ModifyScheduleRequest]())).thenCallRealMethod()
       the [ApiException] thrownBy {
         sfe.modifySchedule(schedule)
       } should have message "ScheduleID is missing. Cannot modify a schedule without a ScheduleID"

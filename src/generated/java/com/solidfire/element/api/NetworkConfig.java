@@ -19,29 +19,21 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class NetworkConfig  implements Serializable  {
 
-    private static final long serialVersionUID = -1828621032L;
+public class NetworkConfig implements Serializable {
 
-    @SerializedName("#default") private Optional<Boolean> Default;
+    public static final long serialVersionUID = -6490718356259567027L;
+    @SerializedName("#default") private Optional<Boolean> _default;
     @SerializedName("address") private Optional<String> address;
     @SerializedName("auto") private Optional<Boolean> auto;
     @SerializedName("bond-downdelay") private Optional<Long> bondDowndelay;
@@ -69,320 +61,233 @@ public class NetworkConfig  implements Serializable  {
     @SerializedName("symmetricRouteRules") private Optional<String[]> symmetricRouteRules;
     @SerializedName("upAndRunning") private Optional<Boolean> upAndRunning;
 
-    /**
-     * 
-     * @param Default (optional) 
-     * @param address (optional) 
-     * @param auto (optional) 
-     * @param bondDowndelay (optional) 
-     * @param bondFailOverMac (optional) 
-     * @param bondPrimaryReselect (optional) 
-     * @param bondLacpRate (optional) 
-     * @param bondMiimon (optional) 
-     * @param bondMode (optional) 
-     * @param bondSlaves (optional) 
-     * @param bondUpdelay (optional) 
-     * @param broadcast (optional) 
-     * @param dnsNameservers (optional) 
-     * @param dnsSearch (optional) 
-     * @param family (optional) 
-     * @param gateway (optional) 
-     * @param macAddress (optional) 
-     * @param macAddressPermanent (optional) 
-     * @param method (optional) 
-     * @param mtu (optional) 
-     * @param netmask (optional) 
-     * @param network (optional) 
-     * @param physical (optional) 
-     * @param routes (optional) 
-     * @param status (optional) 
-     * @param symmetricRouteRules (optional) 
-     * @param upAndRunning (optional) 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public NetworkConfig(Optional<Boolean> Default, Optional<String> address, Optional<Boolean> auto, Optional<Long> bondDowndelay, Optional<String> bondFailOverMac, Optional<String> bondPrimaryReselect, Optional<String> bondLacpRate, Optional<Long> bondMiimon, Optional<String> bondMode, Optional<String> bondSlaves, Optional<Long> bondUpdelay, Optional<String> broadcast, Optional<String> dnsNameservers, Optional<String> dnsSearch, Optional<String> family, Optional<String> gateway, Optional<String> macAddress, Optional<String> macAddressPermanent, Optional<String> method, Optional<String> mtu, Optional<String> netmask, Optional<String> network, Optional<PhysicalAdapter> physical, Optional<String[]> routes, Optional<String> status, Optional<String[]> symmetricRouteRules, Optional<Boolean> upAndRunning) {
-        this.network = (network == null) ? Optional.<String>empty() : network;
-        this.method = (method == null) ? Optional.<String>empty() : method;
-        this.dnsNameservers = (dnsNameservers == null) ? Optional.<String>empty() : dnsNameservers;
-        this.auto = (auto == null) ? Optional.<Boolean>empty() : auto;
-        this.macAddress = (macAddress == null) ? Optional.<String>empty() : macAddress;
-        this.Default = (Default == null) ? Optional.<Boolean>empty() : Default;
-        this.routes = (routes == null) ? Optional.<String[]>empty() : routes;
-        this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : macAddressPermanent;
-        this.bondLacpRate = (bondLacpRate == null) ? Optional.<String>empty() : bondLacpRate;
-        this.bondMiimon = (bondMiimon == null) ? Optional.<Long>empty() : bondMiimon;
-        this.dnsSearch = (dnsSearch == null) ? Optional.<String>empty() : dnsSearch;
-        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
-        this.symmetricRouteRules = (symmetricRouteRules == null) ? Optional.<String[]>empty() : symmetricRouteRules;
-        this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
-        this.bondDowndelay = (bondDowndelay == null) ? Optional.<Long>empty() : bondDowndelay;
-        this.bondPrimaryReselect = (bondPrimaryReselect == null) ? Optional.<String>empty() : bondPrimaryReselect;
-        this.broadcast = (broadcast == null) ? Optional.<String>empty() : broadcast;
-        this.status = (status == null) ? Optional.<String>empty() : status;
-        this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
-        this.bondFailOverMac = (bondFailOverMac == null) ? Optional.<String>empty() : bondFailOverMac;
-        this.bondSlaves = (bondSlaves == null) ? Optional.<String>empty() : bondSlaves;
-        this.mtu = (mtu == null) ? Optional.<String>empty() : mtu;
-        this.address = (address == null) ? Optional.<String>empty() : address;
-        this.bondUpdelay = (bondUpdelay == null) ? Optional.<Long>empty() : bondUpdelay;
-        this.bondMode = (bondMode == null) ? Optional.<String>empty() : bondMode;
-        this.family = (family == null) ? Optional.<String>empty() : family;
-        this.physical = (physical == null) ? Optional.<PhysicalAdapter>empty() : physical;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public NetworkConfig() {}
 
-    public Optional<Boolean> getDefault() {
-        return this.Default;
+    // parameterized constructor
+    @Since("7.0")
+    public NetworkConfig(
+        Optional<Boolean> _default,
+        Optional<String> address,
+        Optional<Boolean> auto,
+        Optional<Long> bondDowndelay,
+        Optional<String> bondFailOverMac,
+        Optional<String> bondPrimaryReselect,
+        Optional<String> bondLacpRate,
+        Optional<Long> bondMiimon,
+        Optional<String> bondMode,
+        Optional<String> bondSlaves,
+        Optional<Long> bondUpdelay,
+        Optional<String> broadcast,
+        Optional<String> dnsNameservers,
+        Optional<String> dnsSearch,
+        Optional<String> family,
+        Optional<String> gateway,
+        Optional<String> macAddress,
+        Optional<String> macAddressPermanent,
+        Optional<String> method,
+        Optional<String> mtu,
+        Optional<String> netmask,
+        Optional<String> network,
+        Optional<PhysicalAdapter> physical,
+        Optional<String[]> routes,
+        Optional<String> status,
+        Optional<String[]> symmetricRouteRules,
+        Optional<Boolean> upAndRunning
+    )
+    {
+        this._default = (_default == null) ? Optional.<Boolean>empty() : _default;
+        this.address = (address == null) ? Optional.<String>empty() : address;
+        this.auto = (auto == null) ? Optional.<Boolean>empty() : auto;
+        this.bondDowndelay = (bondDowndelay == null) ? Optional.<Long>empty() : bondDowndelay;
+        this.bondFailOverMac = (bondFailOverMac == null) ? Optional.<String>empty() : bondFailOverMac;
+        this.bondPrimaryReselect = (bondPrimaryReselect == null) ? Optional.<String>empty() : bondPrimaryReselect;
+        this.bondLacpRate = (bondLacpRate == null) ? Optional.<String>empty() : bondLacpRate;
+        this.bondMiimon = (bondMiimon == null) ? Optional.<Long>empty() : bondMiimon;
+        this.bondMode = (bondMode == null) ? Optional.<String>empty() : bondMode;
+        this.bondSlaves = (bondSlaves == null) ? Optional.<String>empty() : bondSlaves;
+        this.bondUpdelay = (bondUpdelay == null) ? Optional.<Long>empty() : bondUpdelay;
+        this.broadcast = (broadcast == null) ? Optional.<String>empty() : broadcast;
+        this.dnsNameservers = (dnsNameservers == null) ? Optional.<String>empty() : dnsNameservers;
+        this.dnsSearch = (dnsSearch == null) ? Optional.<String>empty() : dnsSearch;
+        this.family = (family == null) ? Optional.<String>empty() : family;
+        this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
+        this.macAddress = (macAddress == null) ? Optional.<String>empty() : macAddress;
+        this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : macAddressPermanent;
+        this.method = (method == null) ? Optional.<String>empty() : method;
+        this.mtu = (mtu == null) ? Optional.<String>empty() : mtu;
+        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
+        this.network = (network == null) ? Optional.<String>empty() : network;
+        this.physical = (physical == null) ? Optional.<PhysicalAdapter>empty() : physical;
+        this.routes = (routes == null) ? Optional.<String[]>empty() : routes;
+        this.status = (status == null) ? Optional.<String>empty() : status;
+        this.symmetricRouteRules = (symmetricRouteRules == null) ? Optional.<String[]>empty() : symmetricRouteRules;
+        this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
     }
 
-    public void setDefault(Boolean Default) {
-        this.Default = (Default == null) ? Optional.<Boolean>empty() : Optional.of(Default);
+    /** 
+     **/
+    public Optional<Boolean> get_default() { return this._default; }
+    public void set_default(Optional<Boolean> _default) { 
+        this._default = (_default == null) ? Optional.<Boolean>empty() : _default;
     }
-
-
-    public Optional<String> getAddress() {
-        return this.address;
+    /** 
+     **/
+    public Optional<String> getAddress() { return this.address; }
+    public void setAddress(Optional<String> address) { 
+        this.address = (address == null) ? Optional.<String>empty() : address;
     }
-
-    public void setAddress(String address) {
-        this.address = (address == null) ? Optional.<String>empty() : Optional.of(address);
+    /** 
+     **/
+    public Optional<Boolean> getAuto() { return this.auto; }
+    public void setAuto(Optional<Boolean> auto) { 
+        this.auto = (auto == null) ? Optional.<Boolean>empty() : auto;
     }
-
-
-    public Optional<Boolean> getAuto() {
-        return this.auto;
+    /** 
+     **/
+    public Optional<Long> getBondDowndelay() { return this.bondDowndelay; }
+    public void setBondDowndelay(Optional<Long> bondDowndelay) { 
+        this.bondDowndelay = (bondDowndelay == null) ? Optional.<Long>empty() : bondDowndelay;
     }
-
-    public void setAuto(Boolean auto) {
-        this.auto = (auto == null) ? Optional.<Boolean>empty() : Optional.of(auto);
+    /** 
+     **/
+    public Optional<String> getBondFailOverMac() { return this.bondFailOverMac; }
+    public void setBondFailOverMac(Optional<String> bondFailOverMac) { 
+        this.bondFailOverMac = (bondFailOverMac == null) ? Optional.<String>empty() : bondFailOverMac;
     }
-
-
-    public Optional<Long> getBondDowndelay() {
-        return this.bondDowndelay;
+    /** 
+     **/
+    public Optional<String> getBondPrimaryReselect() { return this.bondPrimaryReselect; }
+    public void setBondPrimaryReselect(Optional<String> bondPrimaryReselect) { 
+        this.bondPrimaryReselect = (bondPrimaryReselect == null) ? Optional.<String>empty() : bondPrimaryReselect;
     }
-
-    public void setBondDowndelay(Long bondDowndelay) {
-        this.bondDowndelay = (bondDowndelay == null) ? Optional.<Long>empty() : Optional.of(bondDowndelay);
+    /** 
+     **/
+    public Optional<String> getBondLacpRate() { return this.bondLacpRate; }
+    public void setBondLacpRate(Optional<String> bondLacpRate) { 
+        this.bondLacpRate = (bondLacpRate == null) ? Optional.<String>empty() : bondLacpRate;
     }
-
-
-    public Optional<String> getBondFailOverMac() {
-        return this.bondFailOverMac;
+    /** 
+     **/
+    public Optional<Long> getBondMiimon() { return this.bondMiimon; }
+    public void setBondMiimon(Optional<Long> bondMiimon) { 
+        this.bondMiimon = (bondMiimon == null) ? Optional.<Long>empty() : bondMiimon;
     }
-
-    public void setBondFailOverMac(String bondFailOverMac) {
-        this.bondFailOverMac = (bondFailOverMac == null) ? Optional.<String>empty() : Optional.of(bondFailOverMac);
+    /** 
+     **/
+    public Optional<String> getBondMode() { return this.bondMode; }
+    public void setBondMode(Optional<String> bondMode) { 
+        this.bondMode = (bondMode == null) ? Optional.<String>empty() : bondMode;
     }
-
-
-    public Optional<String> getBondPrimaryReselect() {
-        return this.bondPrimaryReselect;
+    /** 
+     **/
+    public Optional<String> getBondSlaves() { return this.bondSlaves; }
+    public void setBondSlaves(Optional<String> bondSlaves) { 
+        this.bondSlaves = (bondSlaves == null) ? Optional.<String>empty() : bondSlaves;
     }
-
-    public void setBondPrimaryReselect(String bondPrimaryReselect) {
-        this.bondPrimaryReselect = (bondPrimaryReselect == null) ? Optional.<String>empty() : Optional.of(bondPrimaryReselect);
+    /** 
+     **/
+    public Optional<Long> getBondUpdelay() { return this.bondUpdelay; }
+    public void setBondUpdelay(Optional<Long> bondUpdelay) { 
+        this.bondUpdelay = (bondUpdelay == null) ? Optional.<Long>empty() : bondUpdelay;
     }
-
-
-    public Optional<String> getBondLacpRate() {
-        return this.bondLacpRate;
+    /** 
+     **/
+    public Optional<String> getBroadcast() { return this.broadcast; }
+    public void setBroadcast(Optional<String> broadcast) { 
+        this.broadcast = (broadcast == null) ? Optional.<String>empty() : broadcast;
     }
-
-    public void setBondLacpRate(String bondLacpRate) {
-        this.bondLacpRate = (bondLacpRate == null) ? Optional.<String>empty() : Optional.of(bondLacpRate);
+    /** 
+     **/
+    public Optional<String> getDnsNameservers() { return this.dnsNameservers; }
+    public void setDnsNameservers(Optional<String> dnsNameservers) { 
+        this.dnsNameservers = (dnsNameservers == null) ? Optional.<String>empty() : dnsNameservers;
     }
-
-
-    public Optional<Long> getBondMiimon() {
-        return this.bondMiimon;
+    /** 
+     **/
+    public Optional<String> getDnsSearch() { return this.dnsSearch; }
+    public void setDnsSearch(Optional<String> dnsSearch) { 
+        this.dnsSearch = (dnsSearch == null) ? Optional.<String>empty() : dnsSearch;
     }
-
-    public void setBondMiimon(Long bondMiimon) {
-        this.bondMiimon = (bondMiimon == null) ? Optional.<Long>empty() : Optional.of(bondMiimon);
+    /** 
+     **/
+    public Optional<String> getFamily() { return this.family; }
+    public void setFamily(Optional<String> family) { 
+        this.family = (family == null) ? Optional.<String>empty() : family;
     }
-
-
-    public Optional<String> getBondMode() {
-        return this.bondMode;
+    /** 
+     **/
+    public Optional<String> getGateway() { return this.gateway; }
+    public void setGateway(Optional<String> gateway) { 
+        this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
     }
-
-    public void setBondMode(String bondMode) {
-        this.bondMode = (bondMode == null) ? Optional.<String>empty() : Optional.of(bondMode);
+    /** 
+     **/
+    public Optional<String> getMacAddress() { return this.macAddress; }
+    public void setMacAddress(Optional<String> macAddress) { 
+        this.macAddress = (macAddress == null) ? Optional.<String>empty() : macAddress;
     }
-
-
-    public Optional<String> getBondSlaves() {
-        return this.bondSlaves;
+    /** 
+     **/
+    public Optional<String> getMacAddressPermanent() { return this.macAddressPermanent; }
+    public void setMacAddressPermanent(Optional<String> macAddressPermanent) { 
+        this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : macAddressPermanent;
     }
-
-    public void setBondSlaves(String bondSlaves) {
-        this.bondSlaves = (bondSlaves == null) ? Optional.<String>empty() : Optional.of(bondSlaves);
+    /** 
+     **/
+    public Optional<String> getMethod() { return this.method; }
+    public void setMethod(Optional<String> method) { 
+        this.method = (method == null) ? Optional.<String>empty() : method;
     }
-
-
-    public Optional<Long> getBondUpdelay() {
-        return this.bondUpdelay;
+    /** 
+     **/
+    public Optional<String> getMtu() { return this.mtu; }
+    public void setMtu(Optional<String> mtu) { 
+        this.mtu = (mtu == null) ? Optional.<String>empty() : mtu;
     }
-
-    public void setBondUpdelay(Long bondUpdelay) {
-        this.bondUpdelay = (bondUpdelay == null) ? Optional.<Long>empty() : Optional.of(bondUpdelay);
+    /** 
+     **/
+    public Optional<String> getNetmask() { return this.netmask; }
+    public void setNetmask(Optional<String> netmask) { 
+        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
     }
-
-
-    public Optional<String> getBroadcast() {
-        return this.broadcast;
+    /** 
+     **/
+    public Optional<String> getNetwork() { return this.network; }
+    public void setNetwork(Optional<String> network) { 
+        this.network = (network == null) ? Optional.<String>empty() : network;
     }
-
-    public void setBroadcast(String broadcast) {
-        this.broadcast = (broadcast == null) ? Optional.<String>empty() : Optional.of(broadcast);
+    /** 
+     **/
+    public Optional<PhysicalAdapter> getPhysical() { return this.physical; }
+    public void setPhysical(Optional<PhysicalAdapter> physical) { 
+        this.physical = (physical == null) ? Optional.<PhysicalAdapter>empty() : physical;
     }
-
-
-    public Optional<String> getDnsNameservers() {
-        return this.dnsNameservers;
+    /** 
+     **/
+    public Optional<String[]> getRoutes() { return this.routes; }
+    public void setRoutes(Optional<String[]> routes) { 
+        this.routes = (routes == null) ? Optional.<String[]>empty() : routes;
     }
-
-    public void setDnsNameservers(String dnsNameservers) {
-        this.dnsNameservers = (dnsNameservers == null) ? Optional.<String>empty() : Optional.of(dnsNameservers);
+    /** 
+     **/
+    public Optional<String> getStatus() { return this.status; }
+    public void setStatus(Optional<String> status) { 
+        this.status = (status == null) ? Optional.<String>empty() : status;
     }
-
-
-    public Optional<String> getDnsSearch() {
-        return this.dnsSearch;
+    /** 
+     **/
+    public Optional<String[]> getSymmetricRouteRules() { return this.symmetricRouteRules; }
+    public void setSymmetricRouteRules(Optional<String[]> symmetricRouteRules) { 
+        this.symmetricRouteRules = (symmetricRouteRules == null) ? Optional.<String[]>empty() : symmetricRouteRules;
     }
-
-    public void setDnsSearch(String dnsSearch) {
-        this.dnsSearch = (dnsSearch == null) ? Optional.<String>empty() : Optional.of(dnsSearch);
+    /** 
+     **/
+    public Optional<Boolean> getUpAndRunning() { return this.upAndRunning; }
+    public void setUpAndRunning(Optional<Boolean> upAndRunning) { 
+        this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
     }
-
-
-    public Optional<String> getFamily() {
-        return this.family;
-    }
-
-    public void setFamily(String family) {
-        this.family = (family == null) ? Optional.<String>empty() : Optional.of(family);
-    }
-
-
-    public Optional<String> getGateway() {
-        return this.gateway;
-    }
-
-    public void setGateway(String gateway) {
-        this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
-    }
-
-
-    public Optional<String> getMacAddress() {
-        return this.macAddress;
-    }
-
-    public void setMacAddress(String macAddress) {
-        this.macAddress = (macAddress == null) ? Optional.<String>empty() : Optional.of(macAddress);
-    }
-
-
-    public Optional<String> getMacAddressPermanent() {
-        return this.macAddressPermanent;
-    }
-
-    public void setMacAddressPermanent(String macAddressPermanent) {
-        this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : Optional.of(macAddressPermanent);
-    }
-
-
-    public Optional<String> getMethod() {
-        return this.method;
-    }
-
-    public void setMethod(String method) {
-        this.method = (method == null) ? Optional.<String>empty() : Optional.of(method);
-    }
-
-
-    public Optional<String> getMtu() {
-        return this.mtu;
-    }
-
-    public void setMtu(String mtu) {
-        this.mtu = (mtu == null) ? Optional.<String>empty() : Optional.of(mtu);
-    }
-
-
-    public Optional<String> getNetmask() {
-        return this.netmask;
-    }
-
-    public void setNetmask(String netmask) {
-        this.netmask = (netmask == null) ? Optional.<String>empty() : Optional.of(netmask);
-    }
-
-
-    public Optional<String> getNetwork() {
-        return this.network;
-    }
-
-    public void setNetwork(String network) {
-        this.network = (network == null) ? Optional.<String>empty() : Optional.of(network);
-    }
-
-
-    public Optional<PhysicalAdapter> getPhysical() {
-        return this.physical;
-    }
-
-    public void setPhysical(PhysicalAdapter physical) {
-        this.physical = (physical == null) ? Optional.<PhysicalAdapter>empty() : Optional.of(physical);
-    }
-
-
-    public Optional<String[]> getRoutes() {
-        return this.routes;
-    }
-
-    public void setRoutes(String[] routes) {
-        this.routes = (routes == null) ? Optional.<String[]>empty() : Optional.of(routes);
-    }
-
-
-    public Optional<String> getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(String status) {
-        this.status = (status == null) ? Optional.<String>empty() : Optional.of(status);
-    }
-
-
-    public Optional<String[]> getSymmetricRouteRules() {
-        return this.symmetricRouteRules;
-    }
-
-    public void setSymmetricRouteRules(String[] symmetricRouteRules) {
-        this.symmetricRouteRules = (symmetricRouteRules == null) ? Optional.<String[]>empty() : Optional.of(symmetricRouteRules);
-    }
-
-
-    public Optional<Boolean> getUpAndRunning() {
-        return this.upAndRunning;
-    }
-
-    public void setUpAndRunning(Boolean upAndRunning) {
-        this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : Optional.of(upAndRunning);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -390,102 +295,160 @@ public class NetworkConfig  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         NetworkConfig that = (NetworkConfig) o;
-        
-
-        return Objects.equals( Default , that.Default )
-            && Objects.equals( address , that.address )
-            && Objects.equals( auto , that.auto )
-            && Objects.equals( bondDowndelay , that.bondDowndelay )
-            && Objects.equals( bondFailOverMac , that.bondFailOverMac )
-            && Objects.equals( bondPrimaryReselect , that.bondPrimaryReselect )
-            && Objects.equals( bondLacpRate , that.bondLacpRate )
-            && Objects.equals( bondMiimon , that.bondMiimon )
-            && Objects.equals( bondMode , that.bondMode )
-            && Objects.equals( bondSlaves , that.bondSlaves )
-            && Objects.equals( bondUpdelay , that.bondUpdelay )
-            && Objects.equals( broadcast , that.broadcast )
-            && Objects.equals( dnsNameservers , that.dnsNameservers )
-            && Objects.equals( dnsSearch , that.dnsSearch )
-            && Objects.equals( family , that.family )
-            && Objects.equals( gateway , that.gateway )
-            && Objects.equals( macAddress , that.macAddress )
-            && Objects.equals( macAddressPermanent , that.macAddressPermanent )
-            && Objects.equals( method , that.method )
-            && Objects.equals( mtu , that.mtu )
-            && Objects.equals( netmask , that.netmask )
-            && Objects.equals( network , that.network )
-            && Objects.equals( physical , that.physical )
-            && Objects.deepEquals( routes , that.routes )
-            && Objects.equals( status , that.status )
-            && Objects.deepEquals( symmetricRouteRules , that.symmetricRouteRules )
-            && Objects.equals( upAndRunning , that.upAndRunning );
+        return 
+            Objects.equals(_default, that._default) &&
+            Objects.equals(address, that.address) &&
+            Objects.equals(auto, that.auto) &&
+            Objects.equals(bondDowndelay, that.bondDowndelay) &&
+            Objects.equals(bondFailOverMac, that.bondFailOverMac) &&
+            Objects.equals(bondPrimaryReselect, that.bondPrimaryReselect) &&
+            Objects.equals(bondLacpRate, that.bondLacpRate) &&
+            Objects.equals(bondMiimon, that.bondMiimon) &&
+            Objects.equals(bondMode, that.bondMode) &&
+            Objects.equals(bondSlaves, that.bondSlaves) &&
+            Objects.equals(bondUpdelay, that.bondUpdelay) &&
+            Objects.equals(broadcast, that.broadcast) &&
+            Objects.equals(dnsNameservers, that.dnsNameservers) &&
+            Objects.equals(dnsSearch, that.dnsSearch) &&
+            Objects.equals(family, that.family) &&
+            Objects.equals(gateway, that.gateway) &&
+            Objects.equals(macAddress, that.macAddress) &&
+            Objects.equals(macAddressPermanent, that.macAddressPermanent) &&
+            Objects.equals(method, that.method) &&
+            Objects.equals(mtu, that.mtu) &&
+            Objects.equals(netmask, that.netmask) &&
+            Objects.equals(network, that.network) &&
+            Objects.equals(physical, that.physical) &&
+            Objects.equals(routes, that.routes) &&
+            Objects.equals(status, that.status) &&
+            Objects.equals(symmetricRouteRules, that.symmetricRouteRules) &&
+            Objects.equals(upAndRunning, that.upAndRunning);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( Default, address, auto, bondDowndelay, bondFailOverMac, bondPrimaryReselect, bondLacpRate, bondMiimon, bondMode, bondSlaves, bondUpdelay, broadcast, dnsNameservers, dnsSearch, family, gateway, macAddress, macAddressPermanent, method, mtu, netmask, network, physical, routes, status, symmetricRouteRules, upAndRunning );
+        return Objects.hash( _default, address, auto, bondDowndelay, bondFailOverMac, bondPrimaryReselect, bondLacpRate, bondMiimon, bondMode, bondSlaves, bondUpdelay, broadcast, dnsNameservers, dnsSearch, family, gateway, macAddress, macAddressPermanent, method, mtu, netmask, network, physical, routes, status, symmetricRouteRules, upAndRunning );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("_default", _default);
+        map.put("address", address);
+        map.put("auto", auto);
+        map.put("bondDowndelay", bondDowndelay);
+        map.put("bondFailOverMac", bondFailOverMac);
+        map.put("bondPrimaryReselect", bondPrimaryReselect);
+        map.put("bondLacpRate", bondLacpRate);
+        map.put("bondMiimon", bondMiimon);
+        map.put("bondMode", bondMode);
+        map.put("bondSlaves", bondSlaves);
+        map.put("bondUpdelay", bondUpdelay);
+        map.put("broadcast", broadcast);
+        map.put("dnsNameservers", dnsNameservers);
+        map.put("dnsSearch", dnsSearch);
+        map.put("family", family);
+        map.put("gateway", gateway);
+        map.put("macAddress", macAddress);
+        map.put("macAddressPermanent", macAddressPermanent);
+        map.put("method", method);
+        map.put("mtu", mtu);
+        map.put("netmask", netmask);
+        map.put("network", network);
+        map.put("physical", physical);
+        map.put("routes", routes);
+        map.put("status", status);
+        map.put("symmetricRouteRules", symmetricRouteRules);
+        map.put("upAndRunning", upAndRunning);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != Default && Default.isPresent())
-            sb.append(" Default : ").append(Default.get()).append(",");
-        if(null != address && address.isPresent())
+        if(null != _default && _default.isPresent()){
+            sb.append(" _default : ").append(_default.get()).append(",");
+        }
+        if(null != address && address.isPresent()){
             sb.append(" address : ").append(address.get()).append(",");
-        if(null != auto && auto.isPresent())
+        }
+        if(null != auto && auto.isPresent()){
             sb.append(" auto : ").append(auto.get()).append(",");
-        if(null != bondDowndelay && bondDowndelay.isPresent())
+        }
+        if(null != bondDowndelay && bondDowndelay.isPresent()){
             sb.append(" bondDowndelay : ").append(bondDowndelay.get()).append(",");
-        if(null != bondFailOverMac && bondFailOverMac.isPresent())
+        }
+        if(null != bondFailOverMac && bondFailOverMac.isPresent()){
             sb.append(" bondFailOverMac : ").append(bondFailOverMac.get()).append(",");
-        if(null != bondPrimaryReselect && bondPrimaryReselect.isPresent())
+        }
+        if(null != bondPrimaryReselect && bondPrimaryReselect.isPresent()){
             sb.append(" bondPrimaryReselect : ").append(bondPrimaryReselect.get()).append(",");
-        if(null != bondLacpRate && bondLacpRate.isPresent())
+        }
+        if(null != bondLacpRate && bondLacpRate.isPresent()){
             sb.append(" bondLacpRate : ").append(bondLacpRate.get()).append(",");
-        if(null != bondMiimon && bondMiimon.isPresent())
+        }
+        if(null != bondMiimon && bondMiimon.isPresent()){
             sb.append(" bondMiimon : ").append(bondMiimon.get()).append(",");
-        if(null != bondMode && bondMode.isPresent())
+        }
+        if(null != bondMode && bondMode.isPresent()){
             sb.append(" bondMode : ").append(bondMode.get()).append(",");
-        if(null != bondSlaves && bondSlaves.isPresent())
+        }
+        if(null != bondSlaves && bondSlaves.isPresent()){
             sb.append(" bondSlaves : ").append(bondSlaves.get()).append(",");
-        if(null != bondUpdelay && bondUpdelay.isPresent())
+        }
+        if(null != bondUpdelay && bondUpdelay.isPresent()){
             sb.append(" bondUpdelay : ").append(bondUpdelay.get()).append(",");
-        if(null != broadcast && broadcast.isPresent())
+        }
+        if(null != broadcast && broadcast.isPresent()){
             sb.append(" broadcast : ").append(broadcast.get()).append(",");
-        if(null != dnsNameservers && dnsNameservers.isPresent())
+        }
+        if(null != dnsNameservers && dnsNameservers.isPresent()){
             sb.append(" dnsNameservers : ").append(dnsNameservers.get()).append(",");
-        if(null != dnsSearch && dnsSearch.isPresent())
+        }
+        if(null != dnsSearch && dnsSearch.isPresent()){
             sb.append(" dnsSearch : ").append(dnsSearch.get()).append(",");
-        if(null != family && family.isPresent())
+        }
+        if(null != family && family.isPresent()){
             sb.append(" family : ").append(family.get()).append(",");
-        if(null != gateway && gateway.isPresent())
+        }
+        if(null != gateway && gateway.isPresent()){
             sb.append(" gateway : ").append(gateway.get()).append(",");
-        if(null != macAddress && macAddress.isPresent())
+        }
+        if(null != macAddress && macAddress.isPresent()){
             sb.append(" macAddress : ").append(macAddress.get()).append(",");
-        if(null != macAddressPermanent && macAddressPermanent.isPresent())
+        }
+        if(null != macAddressPermanent && macAddressPermanent.isPresent()){
             sb.append(" macAddressPermanent : ").append(macAddressPermanent.get()).append(",");
-        if(null != method && method.isPresent())
+        }
+        if(null != method && method.isPresent()){
             sb.append(" method : ").append(method.get()).append(",");
-        if(null != mtu && mtu.isPresent())
+        }
+        if(null != mtu && mtu.isPresent()){
             sb.append(" mtu : ").append(mtu.get()).append(",");
-        if(null != netmask && netmask.isPresent())
+        }
+        if(null != netmask && netmask.isPresent()){
             sb.append(" netmask : ").append(netmask.get()).append(",");
-        if(null != network && network.isPresent())
+        }
+        if(null != network && network.isPresent()){
             sb.append(" network : ").append(network.get()).append(",");
-        if(null != physical && physical.isPresent())
+        }
+        if(null != physical && physical.isPresent()){
             sb.append(" physical : ").append(physical.get()).append(",");
-        if(null != routes && routes.isPresent())
-            sb.append(" routes : ").append(Arrays.toString(routes.get())).append(",");
-        if(null != status && status.isPresent())
+        }
+        if(null != routes && routes.isPresent()){
+            sb.append(" routes : ").append(routes.get()).append(",");
+        }
+        if(null != status && status.isPresent()){
             sb.append(" status : ").append(status.get()).append(",");
-        if(null != symmetricRouteRules && symmetricRouteRules.isPresent())
-            sb.append(" symmetricRouteRules : ").append(Arrays.toString(symmetricRouteRules.get())).append(",");
-        if(null != upAndRunning && upAndRunning.isPresent())
-            sb.append(" upAndRunning : ").append(upAndRunning.get());
+        }
+        if(null != symmetricRouteRules && symmetricRouteRules.isPresent()){
+            sb.append(" symmetricRouteRules : ").append(symmetricRouteRules.get()).append(",");
+        }
+        if(null != upAndRunning && upAndRunning.isPresent()){
+            sb.append(" upAndRunning : ").append(upAndRunning.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -503,7 +466,7 @@ public class NetworkConfig  implements Serializable  {
     }
 
     public static class Builder {
-        private Optional<Boolean> Default;
+        private Optional<Boolean> _default;
         private Optional<String> address;
         private Optional<Boolean> auto;
         private Optional<Long> bondDowndelay;
@@ -535,7 +498,7 @@ public class NetworkConfig  implements Serializable  {
 
         public NetworkConfig build() {
             return new NetworkConfig (
-                         this.Default,
+                         this._default,
                          this.address,
                          this.auto,
                          this.bondDowndelay,
@@ -561,11 +524,11 @@ public class NetworkConfig  implements Serializable  {
                          this.routes,
                          this.status,
                          this.symmetricRouteRules,
-                         this.upAndRunning            );
+                         this.upAndRunning);
         }
 
         private NetworkConfig.Builder buildFrom(final NetworkConfig req) {
-            this.Default = req.Default;
+            this._default = req._default;
             this.address = req.address;
             this.auto = req.auto;
             this.bondDowndelay = req.bondDowndelay;
@@ -596,8 +559,8 @@ public class NetworkConfig  implements Serializable  {
             return this;
         }
 
-        public NetworkConfig.Builder optionalDefault(final Boolean Default) {
-            this.Default = (Default == null) ? Optional.<Boolean>empty() : Optional.of(Default);
+        public NetworkConfig.Builder optional_default(final Boolean _default) {
+            this._default = (_default == null) ? Optional.<Boolean>empty() : Optional.of(_default);
             return this;
         }
 
@@ -732,5 +695,4 @@ public class NetworkConfig  implements Serializable  {
         }
 
     }
-
 }

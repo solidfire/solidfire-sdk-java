@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "CreateVolume" API Service call.
+ * 
  **/
-public class CreateVolumeRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 2095583324L;
+public class CreateVolumeRequest implements Serializable {
 
+    public static final long serialVersionUID = 5050439057400185898L;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("totalSize") private Long totalSize;
@@ -48,118 +40,76 @@ public class CreateVolumeRequest  implements Serializable  {
     @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "CreateVolume" API Service call.
-     * @param name [required] Name of the volume.
-     * @param accountID [required] AccountID for the owner of this volume.
-     * @param totalSize [required] Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
-     * @param enable512e [required] Should the volume provides 512-byte sector emulation?
-     * @param qos (optional) Initial quality of service settings for this volume.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public CreateVolumeRequest(String name, Long accountID, Long totalSize, Boolean enable512e, Optional<QoS> qos, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = name;
-        this.totalSize = totalSize;
-        this.enable512e = enable512e;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.accountID = accountID;
-        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
-    }
-
-    
-    /**
-     * The Request object for the "CreateVolume" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public CreateVolumeRequest() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public CreateVolumeRequest(
+        String name,
+        Long accountID,
+        Long totalSize,
+        Boolean enable512e,
+        Optional<QoS> qos,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.name = name;
+        this.accountID = accountID;
+        this.totalSize = totalSize;
+        this.enable512e = enable512e;
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
 
-    /**
+    /** 
      * Name of the volume.
      * Not required to be unique, but it is recommended.
      * May be 1 to 64 characters in length.
      **/
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
+    public String getName() { return this.name; }
+    public void setName(String name) { 
         this.name = name;
     }
-
-
-
-    /**
+    /** 
      * AccountID for the owner of this volume.
      **/
-    public Long getAccountID() {
-        return this.accountID;
-    }
-
-    public void setAccountID(Long accountID) {
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
-
-
-
-    /**
+    /** 
      * Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
      **/
-    public Long getTotalSize() {
-        return this.totalSize;
-    }
-
-    public void setTotalSize(Long totalSize) {
+    public Long getTotalSize() { return this.totalSize; }
+    public void setTotalSize(Long totalSize) { 
         this.totalSize = totalSize;
     }
-
-
-
-    /**
+    /** 
      * Should the volume provides 512-byte sector emulation?
      **/
-    public Boolean getEnable512e() {
-        return this.enable512e;
-    }
-
-    public void setEnable512e(Boolean enable512e) {
+    public Boolean getEnable512e() { return this.enable512e; }
+    public void setEnable512e(Boolean enable512e) { 
         this.enable512e = enable512e;
     }
-
-
-
-    /**
+    /** 
      * Initial quality of service settings for this volume.
      * <br/><br/>
      * Volumes created without specified QoS values are created with the default values for QoS.
      * Default values for a volume can be found by running the GetDefaultQoS method.
      **/
-    public Optional<QoS> getQos() {
-        return this.qos;
+    public Optional<QoS> getQos() { return this.qos; }
+    public void setQos(Optional<QoS> qos) { 
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
-
-    public void setQos(QoS qos) {
-        this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
-    }
-
-
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
-
-    public void setAttributes(java.util.Map<String, Object> attributes) {
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -167,14 +117,13 @@ public class CreateVolumeRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateVolumeRequest that = (CreateVolumeRequest) o;
-        
-
-        return Objects.equals( name , that.name )
-            && Objects.equals( accountID , that.accountID )
-            && Objects.equals( totalSize , that.totalSize )
-            && Objects.equals( enable512e , that.enable512e )
-            && Objects.equals( qos , that.qos )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(name, that.name) &&
+            Objects.equals(accountID, that.accountID) &&
+            Objects.equals(totalSize, that.totalSize) &&
+            Objects.equals(enable512e, that.enable512e) &&
+            Objects.equals(qos, that.qos) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -182,6 +131,17 @@ public class CreateVolumeRequest  implements Serializable  {
         return Objects.hash( name, accountID, totalSize, enable512e, qos, attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("name", name);
+        map.put("accountID", accountID);
+        map.put("totalSize", totalSize);
+        map.put("enable512e", enable512e);
+        map.put("qos", qos);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -192,10 +152,12 @@ public class CreateVolumeRequest  implements Serializable  {
         sb.append(" accountID : ").append(accountID).append(",");
         sb.append(" totalSize : ").append(totalSize).append(",");
         sb.append(" enable512e : ").append(enable512e).append(",");
-        if(null != qos && qos.isPresent())
+        if(null != qos && qos.isPresent()){
             sb.append(" qos : ").append(qos.get()).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -229,7 +191,7 @@ public class CreateVolumeRequest  implements Serializable  {
                          this.totalSize,
                          this.enable512e,
                          this.qos,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private CreateVolumeRequest.Builder buildFrom(final CreateVolumeRequest req) {
@@ -274,5 +236,4 @@ public class CreateVolumeRequest  implements Serializable  {
         }
 
     }
-
 }

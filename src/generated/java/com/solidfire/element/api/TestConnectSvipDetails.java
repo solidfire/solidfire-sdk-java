@@ -19,94 +19,62 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class TestConnectSvipDetails  implements Serializable  {
 
-    private static final long serialVersionUID = -1095999738L;
+public class TestConnectSvipDetails implements Serializable {
 
-    @SerializedName("pingBytes") private Object pingBytes;
+    public static final long serialVersionUID = 3870859095519816826L;
+    @SerializedName("pingBytes") private java.util.Map<String, Object> pingBytes;
     @SerializedName("svip") private String svip;
     @SerializedName("connected") private Boolean connected;
 
-    /**
-     * 
-     * @param pingBytes [required] Details of the ping tests with 56 Bytes and 1500 Bytes.
-     * @param svip [required] The SVIP tested against.
-     * @param connected [required] Whether the test could connect to the MVIP.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public TestConnectSvipDetails(Object pingBytes, String svip, Boolean connected) {
-        this.pingBytes = pingBytes;
-        this.svip = svip;
-        this.connected = connected;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public TestConnectSvipDetails() {}
 
-
-    /**
-     * Details of the ping tests with 56 Bytes and 1500 Bytes.
-     **/
-    public Object getPingBytes() {
-        return this.pingBytes;
-    }
-
-    public void setPingBytes(Object pingBytes) {
+    // parameterized constructor
+    @Since("7.0")
+    public TestConnectSvipDetails(
+        java.util.Map<String, Object> pingBytes,
+        String svip,
+        Boolean connected
+    )
+    {
         this.pingBytes = pingBytes;
-    }
-
-
-
-    /**
-     * The SVIP tested against.
-     **/
-    public String getSvip() {
-        return this.svip;
-    }
-
-    public void setSvip(String svip) {
         this.svip = svip;
-    }
-
-
-
-    /**
-     * Whether the test could connect to the MVIP.
-     **/
-    public Boolean getConnected() {
-        return this.connected;
-    }
-
-    public void setConnected(Boolean connected) {
         this.connected = connected;
     }
 
-
+    /** 
+     * Details of the ping tests with 56 Bytes and 1500 Bytes.
+     **/
+    public java.util.Map<String, Object> getPingBytes() { return this.pingBytes; }
+    public void setPingBytes(java.util.Map<String, Object> pingBytes) { 
+        this.pingBytes = pingBytes;
+    }
+    /** 
+     * The SVIP tested against.
+     **/
+    public String getSvip() { return this.svip; }
+    public void setSvip(String svip) { 
+        this.svip = svip;
+    }
+    /** 
+     * Whether the test could connect to the MVIP.
+     **/
+    public Boolean getConnected() { return this.connected; }
+    public void setConnected(Boolean connected) { 
+        this.connected = connected;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -114,11 +82,10 @@ public class TestConnectSvipDetails  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectSvipDetails that = (TestConnectSvipDetails) o;
-        
-
-        return Objects.equals( pingBytes , that.pingBytes )
-            && Objects.equals( svip , that.svip )
-            && Objects.equals( connected , that.connected );
+        return 
+            Objects.equals(pingBytes, that.pingBytes) &&
+            Objects.equals(svip, that.svip) &&
+            Objects.equals(connected, that.connected);
     }
 
     @Override
@@ -127,6 +94,14 @@ public class TestConnectSvipDetails  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("pingBytes", pingBytes);
+        map.put("svip", svip);
+        map.put("connected", connected);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -134,7 +109,7 @@ public class TestConnectSvipDetails  implements Serializable  {
 
         sb.append(" pingBytes : ").append(pingBytes).append(",");
         sb.append(" svip : ").append(svip).append(",");
-        sb.append(" connected : ").append(connected);
+        sb.append(" connected : ").append(connected).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -152,7 +127,7 @@ public class TestConnectSvipDetails  implements Serializable  {
     }
 
     public static class Builder {
-        private Object pingBytes;
+        private java.util.Map<String, Object> pingBytes;
         private String svip;
         private Boolean connected;
 
@@ -162,7 +137,7 @@ public class TestConnectSvipDetails  implements Serializable  {
             return new TestConnectSvipDetails (
                          this.pingBytes,
                          this.svip,
-                         this.connected            );
+                         this.connected);
         }
 
         private TestConnectSvipDetails.Builder buildFrom(final TestConnectSvipDetails req) {
@@ -173,7 +148,7 @@ public class TestConnectSvipDetails  implements Serializable  {
             return this;
         }
 
-        public TestConnectSvipDetails.Builder pingBytes(final Object pingBytes) {
+        public TestConnectSvipDetails.Builder pingBytes(final java.util.Map<String, Object> pingBytes) {
             this.pingBytes = pingBytes;
             return this;
         }
@@ -189,5 +164,4 @@ public class TestConnectSvipDetails  implements Serializable  {
         }
 
     }
-
 }

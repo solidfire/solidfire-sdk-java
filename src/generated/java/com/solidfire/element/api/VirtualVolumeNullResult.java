@@ -19,37 +19,24 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "VirtualVolumeNull" API Service call.
+ * 
  **/
-public class VirtualVolumeNullResult  implements Serializable  {
 
-    private static final long serialVersionUID = 484208596L;
+public class VirtualVolumeNullResult implements Serializable {
 
+    public static final long serialVersionUID = 2812379360884607176L;
 
-    /**
-     * The object returned by the "VirtualVolumeNull" API Service call.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public VirtualVolumeNullResult() {
-
-    }
+    public VirtualVolumeNullResult() {}
 
 
 
@@ -58,11 +45,14 @@ public class VirtualVolumeNullResult  implements Serializable  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
+        VirtualVolumeNullResult that = (VirtualVolumeNullResult) o;
+
         return true;
     }
 
     @Override
     public int hashCode() {
+
         return this.getClass().hashCode();
     }
 

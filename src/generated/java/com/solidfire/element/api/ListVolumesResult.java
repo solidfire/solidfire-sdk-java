@@ -19,62 +19,44 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListVolumes" API Service call.
+ * 
  **/
-public class ListVolumesResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1884895191L;
+public class ListVolumesResult implements Serializable {
 
+    public static final long serialVersionUID = -5301816642691385785L;
     @SerializedName("volumes") private Volume[] volumes;
 
-    /**
-     * The object returned by the "ListVolumes" API Service call.
-     * @param volumes [required] List of volumes.
-     * @since 8.0
-     **/
+    // empty constructor
     @Since("8.0")
-    public ListVolumesResult(Volume[] volumes) {
-        this.volumes = volumes;
-    }
 
-    
-    /**
-     * The object returned by the "ListVolumes" API Service call.
-     * Empty constructor to support serialization.
-     * @since 8.0
-     **/
-    @Since("8.0")
     public ListVolumesResult() {}
 
+    // parameterized constructor
+    @Since("8.0")
 
-    /**
-     * List of volumes.
-     **/
-    public Volume[] getVolumes() {
-        return this.volumes;
-    }
-
-    public void setVolumes(Volume[] volumes) {
+    public ListVolumesResult(
+        Volume[] volumes
+    )
+    {
         this.volumes = volumes;
     }
 
-
+    /** 
+     * List of volumes.
+     **/
+    public Volume[] getVolumes() { return this.volumes; }
+    public void setVolumes(Volume[] volumes) { 
+        this.volumes = volumes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +64,28 @@ public class ListVolumesResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumesResult that = (ListVolumesResult) o;
-        
-
-        return Objects.deepEquals( volumes , that.volumes );
+        return 
+            Objects.equals(volumes, that.volumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volumes );
+        return Objects.hash( (Object[])volumes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumes", volumes);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumes : ").append(Arrays.toString(volumes));
+        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +109,7 @@ public class ListVolumesResult  implements Serializable  {
 
         public ListVolumesResult build() {
             return new ListVolumesResult (
-                         this.volumes            );
+                         this.volumes);
         }
 
         private ListVolumesResult.Builder buildFrom(final ListVolumesResult req) {
@@ -137,5 +124,4 @@ public class ListVolumesResult  implements Serializable  {
         }
 
     }
-
 }

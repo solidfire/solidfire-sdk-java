@@ -19,81 +19,55 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ListAccounts" API Service call.
+ * 
  **/
-public class ListAccountsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 725452430L;
+public class ListAccountsRequest implements Serializable {
 
+    public static final long serialVersionUID = -2105972003732958220L;
     @SerializedName("startAccountID") private Optional<Long> startAccountID;
     @SerializedName("limit") private Optional<Long> limit;
 
-    /**
-     * The Request object for the "ListAccounts" API Service call.
-     * @param startAccountID (optional) Starting AccountID to return.
-     * @param limit (optional) Maximum number of AccountInfo objects to return.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListAccountsRequest(Optional<Long> startAccountID, Optional<Long> limit) {
+    public ListAccountsRequest() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public ListAccountsRequest(
+        Optional<Long> startAccountID,
+        Optional<Long> limit
+    )
+    {
         this.startAccountID = (startAccountID == null) ? Optional.<Long>empty() : startAccountID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
-    
-    /**
-     * The Request object for the "ListAccounts" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListAccountsRequest() {}
-
-
-    /**
+    /** 
      * Starting AccountID to return.
      * If no Account exists with this AccountID,
      * the next Account by AccountID order is used as the start of the list.
      * To page through the list, pass the AccountID of the last Account in the previous response + 1
      **/
-    public Optional<Long> getStartAccountID() {
-        return this.startAccountID;
+    public Optional<Long> getStartAccountID() { return this.startAccountID; }
+    public void setStartAccountID(Optional<Long> startAccountID) { 
+        this.startAccountID = (startAccountID == null) ? Optional.<Long>empty() : startAccountID;
     }
-
-    public void setStartAccountID(Long startAccountID) {
-        this.startAccountID = (startAccountID == null) ? Optional.<Long>empty() : Optional.of(startAccountID);
-    }
-
-
-
-    /**
+    /** 
      * Maximum number of AccountInfo objects to return.
      **/
-    public Optional<Long> getLimit() {
-        return this.limit;
+    public Optional<Long> getLimit() { return this.limit; }
+    public void setLimit(Optional<Long> limit) { 
+        this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
-
-    public void setLimit(Long limit) {
-        this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -101,10 +75,9 @@ public class ListAccountsRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListAccountsRequest that = (ListAccountsRequest) o;
-        
-
-        return Objects.equals( startAccountID , that.startAccountID )
-            && Objects.equals( limit , that.limit );
+        return 
+            Objects.equals(startAccountID, that.startAccountID) &&
+            Objects.equals(limit, that.limit);
     }
 
     @Override
@@ -113,15 +86,24 @@ public class ListAccountsRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("startAccountID", startAccountID);
+        map.put("limit", limit);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != startAccountID && startAccountID.isPresent())
+        if(null != startAccountID && startAccountID.isPresent()){
             sb.append(" startAccountID : ").append(startAccountID.get()).append(",");
-        if(null != limit && limit.isPresent())
-            sb.append(" limit : ").append(limit.get());
+        }
+        if(null != limit && limit.isPresent()){
+            sb.append(" limit : ").append(limit.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -147,7 +129,7 @@ public class ListAccountsRequest  implements Serializable  {
         public ListAccountsRequest build() {
             return new ListAccountsRequest (
                          this.startAccountID,
-                         this.limit            );
+                         this.limit);
         }
 
         private ListAccountsRequest.Builder buildFrom(final ListAccountsRequest req) {
@@ -168,5 +150,4 @@ public class ListAccountsRequest  implements Serializable  {
         }
 
     }
-
 }

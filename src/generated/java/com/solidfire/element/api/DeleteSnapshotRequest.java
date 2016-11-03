@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "DeleteSnapshot" API Service call.
+ * 
  **/
-public class DeleteSnapshotRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1151190076L;
+public class DeleteSnapshotRequest implements Serializable {
 
+    public static final long serialVersionUID = -7448163228177860503L;
     @SerializedName("snapshotID") private Long snapshotID;
 
-    /**
-     * The Request object for the "DeleteSnapshot" API Service call.
-     * @param snapshotID [required] The ID of the snapshot to delete.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public DeleteSnapshotRequest(Long snapshotID) {
-        this.snapshotID = snapshotID;
-    }
-
-    
-    /**
-     * The Request object for the "DeleteSnapshot" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public DeleteSnapshotRequest() {}
 
-
-    /**
-     * The ID of the snapshot to delete.
-     **/
-    public Long getSnapshotID() {
-        return this.snapshotID;
-    }
-
-    public void setSnapshotID(Long snapshotID) {
+    // parameterized constructor
+    @Since("7.0")
+    public DeleteSnapshotRequest(
+        Long snapshotID
+    )
+    {
         this.snapshotID = snapshotID;
     }
 
-
+    /** 
+     * The ID of the snapshot to delete.
+     **/
+    public Long getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Long snapshotID) { 
+        this.snapshotID = snapshotID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class DeleteSnapshotRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         DeleteSnapshotRequest that = (DeleteSnapshotRequest) o;
-        
-
-        return Objects.equals( snapshotID , that.snapshotID );
+        return 
+            Objects.equals(snapshotID, that.snapshotID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) snapshotID );
+        return Objects.hash( snapshotID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("snapshotID", snapshotID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" snapshotID : ").append(snapshotID);
+        sb.append(" snapshotID : ").append(snapshotID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class DeleteSnapshotRequest  implements Serializable  {
 
         public DeleteSnapshotRequest build() {
             return new DeleteSnapshotRequest (
-                         this.snapshotID            );
+                         this.snapshotID);
         }
 
         private DeleteSnapshotRequest.Builder buildFrom(final DeleteSnapshotRequest req) {
@@ -137,5 +122,4 @@ public class DeleteSnapshotRequest  implements Serializable  {
         }
 
     }
-
 }

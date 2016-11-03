@@ -19,94 +19,62 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "TestConnectMvip" API Service call.
+ * 
  **/
-public class TestConnectMvipResult  implements Serializable  {
 
-    private static final long serialVersionUID = 439833771L;
+public class TestConnectMvipResult implements Serializable {
 
+    public static final long serialVersionUID = 8154601040674968950L;
     @SerializedName("details") private TestConnectMvipDetails details;
     @SerializedName("duration") private String duration;
     @SerializedName("result") private String result;
 
-    /**
-     * The object returned by the "TestConnectMvip" API Service call.
-     * @param details [required] Information about the test operation
-     * @param duration [required] The length of time required to run the test.
-     * @param result [required] The results of the entire test
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public TestConnectMvipResult(TestConnectMvipDetails details, String duration, String result) {
-        this.details = details;
-        this.duration = duration;
-        this.result = result;
-    }
-
-    
-    /**
-     * The object returned by the "TestConnectMvip" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public TestConnectMvipResult() {}
 
-
-    /**
-     * Information about the test operation
-     **/
-    public TestConnectMvipDetails getDetails() {
-        return this.details;
-    }
-
-    public void setDetails(TestConnectMvipDetails details) {
+    // parameterized constructor
+    @Since("7.0")
+    public TestConnectMvipResult(
+        TestConnectMvipDetails details,
+        String duration,
+        String result
+    )
+    {
         this.details = details;
-    }
-
-
-
-    /**
-     * The length of time required to run the test.
-     **/
-    public String getDuration() {
-        return this.duration;
-    }
-
-    public void setDuration(String duration) {
         this.duration = duration;
-    }
-
-
-
-    /**
-     * The results of the entire test
-     **/
-    public String getResult() {
-        return this.result;
-    }
-
-    public void setResult(String result) {
         this.result = result;
     }
 
-
+    /** 
+     * Information about the test operation
+     **/
+    public TestConnectMvipDetails getDetails() { return this.details; }
+    public void setDetails(TestConnectMvipDetails details) { 
+        this.details = details;
+    }
+    /** 
+     * The length of time required to run the test.
+     **/
+    public String getDuration() { return this.duration; }
+    public void setDuration(String duration) { 
+        this.duration = duration;
+    }
+    /** 
+     * The results of the entire test
+     **/
+    public String getResult() { return this.result; }
+    public void setResult(String result) { 
+        this.result = result;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -114,11 +82,10 @@ public class TestConnectMvipResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectMvipResult that = (TestConnectMvipResult) o;
-        
-
-        return Objects.equals( details , that.details )
-            && Objects.equals( duration , that.duration )
-            && Objects.equals( result , that.result );
+        return 
+            Objects.equals(details, that.details) &&
+            Objects.equals(duration, that.duration) &&
+            Objects.equals(result, that.result);
     }
 
     @Override
@@ -127,6 +94,14 @@ public class TestConnectMvipResult  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("details", details);
+        map.put("duration", duration);
+        map.put("result", result);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -134,7 +109,7 @@ public class TestConnectMvipResult  implements Serializable  {
 
         sb.append(" details : ").append(details).append(",");
         sb.append(" duration : ").append(duration).append(",");
-        sb.append(" result : ").append(result);
+        sb.append(" result : ").append(result).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -162,7 +137,7 @@ public class TestConnectMvipResult  implements Serializable  {
             return new TestConnectMvipResult (
                          this.details,
                          this.duration,
-                         this.result            );
+                         this.result);
         }
 
         private TestConnectMvipResult.Builder buildFrom(final TestConnectMvipResult req) {
@@ -189,5 +164,4 @@ public class TestConnectMvipResult  implements Serializable  {
         }
 
     }
-
 }

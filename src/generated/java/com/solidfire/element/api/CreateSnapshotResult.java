@@ -19,79 +19,53 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "CreateSnapshot" API Service call.
+ * 
  **/
-public class CreateSnapshotResult  implements Serializable  {
 
-    private static final long serialVersionUID = -351386451L;
+public class CreateSnapshotResult implements Serializable {
 
+    public static final long serialVersionUID = -6903857969883440265L;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("checksum") private String checksum;
 
-    /**
-     * The object returned by the "CreateSnapshot" API Service call.
-     * @param snapshotID [required] ID of the newly-created snapshot.
-     * @param checksum [required] A string that represents the correct digits in the stored snapshot.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public CreateSnapshotResult(Long snapshotID, String checksum) {
-        this.snapshotID = snapshotID;
-        this.checksum = checksum;
-    }
-
-    
-    /**
-     * The object returned by the "CreateSnapshot" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public CreateSnapshotResult() {}
 
-
-    /**
-     * ID of the newly-created snapshot.
-     **/
-    public Long getSnapshotID() {
-        return this.snapshotID;
-    }
-
-    public void setSnapshotID(Long snapshotID) {
+    // parameterized constructor
+    @Since("7.0")
+    public CreateSnapshotResult(
+        Long snapshotID,
+        String checksum
+    )
+    {
         this.snapshotID = snapshotID;
-    }
-
-
-
-    /**
-     * A string that represents the correct digits in the stored snapshot.
-     * This checksum can be used later to compare other snapshots to detect errors in the data.
-     **/
-    public String getChecksum() {
-        return this.checksum;
-    }
-
-    public void setChecksum(String checksum) {
         this.checksum = checksum;
     }
 
-
+    /** 
+     * ID of the newly-created snapshot.
+     **/
+    public Long getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Long snapshotID) { 
+        this.snapshotID = snapshotID;
+    }
+    /** 
+     * A string that represents the correct digits in the stored snapshot.
+     * This checksum can be used later to compare other snapshots to detect errors in the data.
+     **/
+    public String getChecksum() { return this.checksum; }
+    public void setChecksum(String checksum) { 
+        this.checksum = checksum;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -99,10 +73,9 @@ public class CreateSnapshotResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateSnapshotResult that = (CreateSnapshotResult) o;
-        
-
-        return Objects.equals( snapshotID , that.snapshotID )
-            && Objects.equals( checksum , that.checksum );
+        return 
+            Objects.equals(snapshotID, that.snapshotID) &&
+            Objects.equals(checksum, that.checksum);
     }
 
     @Override
@@ -111,13 +84,20 @@ public class CreateSnapshotResult  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("snapshotID", snapshotID);
+        map.put("checksum", checksum);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
         sb.append(" snapshotID : ").append(snapshotID).append(",");
-        sb.append(" checksum : ").append(checksum);
+        sb.append(" checksum : ").append(checksum).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -143,7 +123,7 @@ public class CreateSnapshotResult  implements Serializable  {
         public CreateSnapshotResult build() {
             return new CreateSnapshotResult (
                          this.snapshotID,
-                         this.checksum            );
+                         this.checksum);
         }
 
         private CreateSnapshotResult.Builder buildFrom(final CreateSnapshotResult req) {
@@ -164,5 +144,4 @@ public class CreateSnapshotResult  implements Serializable  {
         }
 
     }
-
 }

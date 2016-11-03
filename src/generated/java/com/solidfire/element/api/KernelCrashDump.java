@@ -19,106 +19,77 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class KernelCrashDump  implements Serializable  {
 
-    private static final long serialVersionUID = 265614002L;
+public class KernelCrashDump implements Serializable {
 
+    public static final long serialVersionUID = 8968604396374954485L;
     @SerializedName("kernelCrashDumpMinFreeGb") private Long kernelCrashDumpMinFreeGb;
     @SerializedName("kernelCrashDumpDirectory") private String kernelCrashDumpDirectory;
     @SerializedName("kernelCrashDumpKernelOptions") private String kernelCrashDumpKernelOptions;
     @SerializedName("kernelCrashDumpMakedumpfileLevel") private Long kernelCrashDumpMakedumpfileLevel;
     @SerializedName("kernelCrashDumpDefaultState") private String kernelCrashDumpDefaultState;
 
-    /**
-     * 
-     * @param kernelCrashDumpMinFreeGb [required] 
-     * @param kernelCrashDumpDirectory [required] 
-     * @param kernelCrashDumpKernelOptions [required] 
-     * @param kernelCrashDumpMakedumpfileLevel [required] 
-     * @param kernelCrashDumpDefaultState [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public KernelCrashDump(Long kernelCrashDumpMinFreeGb, String kernelCrashDumpDirectory, String kernelCrashDumpKernelOptions, Long kernelCrashDumpMakedumpfileLevel, String kernelCrashDumpDefaultState) {
-        this.kernelCrashDumpMakedumpfileLevel = kernelCrashDumpMakedumpfileLevel;
-        this.kernelCrashDumpDefaultState = kernelCrashDumpDefaultState;
-        this.kernelCrashDumpKernelOptions = kernelCrashDumpKernelOptions;
-        this.kernelCrashDumpMinFreeGb = kernelCrashDumpMinFreeGb;
-        this.kernelCrashDumpDirectory = kernelCrashDumpDirectory;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public KernelCrashDump() {}
 
-    public Long getKernelCrashDumpMinFreeGb() {
-        return this.kernelCrashDumpMinFreeGb;
-    }
-
-    public void setKernelCrashDumpMinFreeGb(Long kernelCrashDumpMinFreeGb) {
+    // parameterized constructor
+    @Since("7.0")
+    public KernelCrashDump(
+        Long kernelCrashDumpMinFreeGb,
+        String kernelCrashDumpDirectory,
+        String kernelCrashDumpKernelOptions,
+        Long kernelCrashDumpMakedumpfileLevel,
+        String kernelCrashDumpDefaultState
+    )
+    {
         this.kernelCrashDumpMinFreeGb = kernelCrashDumpMinFreeGb;
-    }
-
-
-    public String getKernelCrashDumpDirectory() {
-        return this.kernelCrashDumpDirectory;
-    }
-
-    public void setKernelCrashDumpDirectory(String kernelCrashDumpDirectory) {
         this.kernelCrashDumpDirectory = kernelCrashDumpDirectory;
-    }
-
-
-    public String getKernelCrashDumpKernelOptions() {
-        return this.kernelCrashDumpKernelOptions;
-    }
-
-    public void setKernelCrashDumpKernelOptions(String kernelCrashDumpKernelOptions) {
         this.kernelCrashDumpKernelOptions = kernelCrashDumpKernelOptions;
-    }
-
-
-    public Long getKernelCrashDumpMakedumpfileLevel() {
-        return this.kernelCrashDumpMakedumpfileLevel;
-    }
-
-    public void setKernelCrashDumpMakedumpfileLevel(Long kernelCrashDumpMakedumpfileLevel) {
         this.kernelCrashDumpMakedumpfileLevel = kernelCrashDumpMakedumpfileLevel;
-    }
-
-
-    public String getKernelCrashDumpDefaultState() {
-        return this.kernelCrashDumpDefaultState;
-    }
-
-    public void setKernelCrashDumpDefaultState(String kernelCrashDumpDefaultState) {
         this.kernelCrashDumpDefaultState = kernelCrashDumpDefaultState;
     }
 
-
+    /** 
+     **/
+    public Long getKernelCrashDumpMinFreeGb() { return this.kernelCrashDumpMinFreeGb; }
+    public void setKernelCrashDumpMinFreeGb(Long kernelCrashDumpMinFreeGb) { 
+        this.kernelCrashDumpMinFreeGb = kernelCrashDumpMinFreeGb;
+    }
+    /** 
+     **/
+    public String getKernelCrashDumpDirectory() { return this.kernelCrashDumpDirectory; }
+    public void setKernelCrashDumpDirectory(String kernelCrashDumpDirectory) { 
+        this.kernelCrashDumpDirectory = kernelCrashDumpDirectory;
+    }
+    /** 
+     **/
+    public String getKernelCrashDumpKernelOptions() { return this.kernelCrashDumpKernelOptions; }
+    public void setKernelCrashDumpKernelOptions(String kernelCrashDumpKernelOptions) { 
+        this.kernelCrashDumpKernelOptions = kernelCrashDumpKernelOptions;
+    }
+    /** 
+     **/
+    public Long getKernelCrashDumpMakedumpfileLevel() { return this.kernelCrashDumpMakedumpfileLevel; }
+    public void setKernelCrashDumpMakedumpfileLevel(Long kernelCrashDumpMakedumpfileLevel) { 
+        this.kernelCrashDumpMakedumpfileLevel = kernelCrashDumpMakedumpfileLevel;
+    }
+    /** 
+     **/
+    public String getKernelCrashDumpDefaultState() { return this.kernelCrashDumpDefaultState; }
+    public void setKernelCrashDumpDefaultState(String kernelCrashDumpDefaultState) { 
+        this.kernelCrashDumpDefaultState = kernelCrashDumpDefaultState;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -126,13 +97,12 @@ public class KernelCrashDump  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         KernelCrashDump that = (KernelCrashDump) o;
-        
-
-        return Objects.equals( kernelCrashDumpMinFreeGb , that.kernelCrashDumpMinFreeGb )
-            && Objects.equals( kernelCrashDumpDirectory , that.kernelCrashDumpDirectory )
-            && Objects.equals( kernelCrashDumpKernelOptions , that.kernelCrashDumpKernelOptions )
-            && Objects.equals( kernelCrashDumpMakedumpfileLevel , that.kernelCrashDumpMakedumpfileLevel )
-            && Objects.equals( kernelCrashDumpDefaultState , that.kernelCrashDumpDefaultState );
+        return 
+            Objects.equals(kernelCrashDumpMinFreeGb, that.kernelCrashDumpMinFreeGb) &&
+            Objects.equals(kernelCrashDumpDirectory, that.kernelCrashDumpDirectory) &&
+            Objects.equals(kernelCrashDumpKernelOptions, that.kernelCrashDumpKernelOptions) &&
+            Objects.equals(kernelCrashDumpMakedumpfileLevel, that.kernelCrashDumpMakedumpfileLevel) &&
+            Objects.equals(kernelCrashDumpDefaultState, that.kernelCrashDumpDefaultState);
     }
 
     @Override
@@ -140,6 +110,16 @@ public class KernelCrashDump  implements Serializable  {
         return Objects.hash( kernelCrashDumpMinFreeGb, kernelCrashDumpDirectory, kernelCrashDumpKernelOptions, kernelCrashDumpMakedumpfileLevel, kernelCrashDumpDefaultState );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("kernelCrashDumpMinFreeGb", kernelCrashDumpMinFreeGb);
+        map.put("kernelCrashDumpDirectory", kernelCrashDumpDirectory);
+        map.put("kernelCrashDumpKernelOptions", kernelCrashDumpKernelOptions);
+        map.put("kernelCrashDumpMakedumpfileLevel", kernelCrashDumpMakedumpfileLevel);
+        map.put("kernelCrashDumpDefaultState", kernelCrashDumpDefaultState);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -150,7 +130,7 @@ public class KernelCrashDump  implements Serializable  {
         sb.append(" kernelCrashDumpDirectory : ").append(kernelCrashDumpDirectory).append(",");
         sb.append(" kernelCrashDumpKernelOptions : ").append(kernelCrashDumpKernelOptions).append(",");
         sb.append(" kernelCrashDumpMakedumpfileLevel : ").append(kernelCrashDumpMakedumpfileLevel).append(",");
-        sb.append(" kernelCrashDumpDefaultState : ").append(kernelCrashDumpDefaultState);
+        sb.append(" kernelCrashDumpDefaultState : ").append(kernelCrashDumpDefaultState).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -182,7 +162,7 @@ public class KernelCrashDump  implements Serializable  {
                          this.kernelCrashDumpDirectory,
                          this.kernelCrashDumpKernelOptions,
                          this.kernelCrashDumpMakedumpfileLevel,
-                         this.kernelCrashDumpDefaultState            );
+                         this.kernelCrashDumpDefaultState);
         }
 
         private KernelCrashDump.Builder buildFrom(final KernelCrashDump req) {
@@ -221,5 +201,4 @@ public class KernelCrashDump  implements Serializable  {
         }
 
     }
-
 }

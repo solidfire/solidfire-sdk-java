@@ -19,74 +19,51 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetAccountEfficiency" API Service call.
+ * 
  **/
-public class GetAccountEfficiencyRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 697692937L;
+public class GetAccountEfficiencyRequest implements Serializable {
 
+    public static final long serialVersionUID = 6289053675311483886L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("force") private Optional<Boolean> force;
 
-    /**
-     * The Request object for the "GetAccountEfficiency" API Service call.
-     * @param accountID [required] Specifies the volume account for which capacity is computed.
-     * @param force (optional) 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetAccountEfficiencyRequest(Long accountID, Optional<Boolean> force) {
+    public GetAccountEfficiencyRequest() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public GetAccountEfficiencyRequest(
+        Long accountID,
+        Optional<Boolean> force
+    )
+    {
         this.accountID = accountID;
         this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
 
-    
-    /**
-     * The Request object for the "GetAccountEfficiency" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetAccountEfficiencyRequest() {}
-
-
-    /**
+    /** 
      * Specifies the volume account for which capacity is computed.
      **/
-    public Long getAccountID() {
-        return this.accountID;
-    }
-
-    public void setAccountID(Long accountID) {
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
-
-
-    public Optional<Boolean> getForce() {
-        return this.force;
+    /** 
+     **/
+    public Optional<Boolean> getForce() { return this.force; }
+    public void setForce(Optional<Boolean> force) { 
+        this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
-
-    public void setForce(Boolean force) {
-        this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -94,10 +71,9 @@ public class GetAccountEfficiencyRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetAccountEfficiencyRequest that = (GetAccountEfficiencyRequest) o;
-        
-
-        return Objects.equals( accountID , that.accountID )
-            && Objects.equals( force , that.force );
+        return 
+            Objects.equals(accountID, that.accountID) &&
+            Objects.equals(force, that.force);
     }
 
     @Override
@@ -106,14 +82,22 @@ public class GetAccountEfficiencyRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("accountID", accountID);
+        map.put("force", force);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
         sb.append(" accountID : ").append(accountID).append(",");
-        if(null != force && force.isPresent())
-            sb.append(" force : ").append(force.get());
+        if(null != force && force.isPresent()){
+            sb.append(" force : ").append(force.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -139,7 +123,7 @@ public class GetAccountEfficiencyRequest  implements Serializable  {
         public GetAccountEfficiencyRequest build() {
             return new GetAccountEfficiencyRequest (
                          this.accountID,
-                         this.force            );
+                         this.force);
         }
 
         private GetAccountEfficiencyRequest.Builder buildFrom(final GetAccountEfficiencyRequest req) {
@@ -160,5 +144,4 @@ public class GetAccountEfficiencyRequest  implements Serializable  {
         }
 
     }
-
 }

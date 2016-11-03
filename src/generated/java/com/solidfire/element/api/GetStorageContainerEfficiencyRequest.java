@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetStorageContainerEfficiency" API Service call.
+ * 
  **/
-public class GetStorageContainerEfficiencyRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -937151738L;
+public class GetStorageContainerEfficiencyRequest implements Serializable {
 
+    public static final long serialVersionUID = -6334814596262264226L;
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
 
-    /**
-     * The Request object for the "GetStorageContainerEfficiency" API Service call.
-     * @param storageContainerID [required] The ID of the storage container for which to retrieve efficiency information.
-     * @since 9.0
-     **/
-    @Since("9.0")
-    public GetStorageContainerEfficiencyRequest(java.util.UUID storageContainerID) {
-        this.storageContainerID = storageContainerID;
-    }
-
-    
-    /**
-     * The Request object for the "GetStorageContainerEfficiency" API Service call.
-     * Empty constructor to support serialization.
-     * @since 9.0
-     **/
-    @Since("9.0")
+    // empty constructor
+    @Since("7.0")
     public GetStorageContainerEfficiencyRequest() {}
 
-
-    /**
-     * The ID of the storage container for which to retrieve efficiency information.
-     **/
-    public java.util.UUID getStorageContainerID() {
-        return this.storageContainerID;
-    }
-
-    public void setStorageContainerID(java.util.UUID storageContainerID) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetStorageContainerEfficiencyRequest(
+        java.util.UUID storageContainerID
+    )
+    {
         this.storageContainerID = storageContainerID;
     }
 
-
+    /** 
+     * The ID of the storage container for which to retrieve efficiency information.
+     **/
+    public java.util.UUID getStorageContainerID() { return this.storageContainerID; }
+    public void setStorageContainerID(java.util.UUID storageContainerID) { 
+        this.storageContainerID = storageContainerID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class GetStorageContainerEfficiencyRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetStorageContainerEfficiencyRequest that = (GetStorageContainerEfficiencyRequest) o;
-        
-
-        return Objects.equals( storageContainerID , that.storageContainerID );
+        return 
+            Objects.equals(storageContainerID, that.storageContainerID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) storageContainerID );
+        return Objects.hash( storageContainerID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("storageContainerID", storageContainerID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" storageContainerID : ").append(storageContainerID);
+        sb.append(" storageContainerID : ").append(storageContainerID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class GetStorageContainerEfficiencyRequest  implements Serializable  {
 
         public GetStorageContainerEfficiencyRequest build() {
             return new GetStorageContainerEfficiencyRequest (
-                         this.storageContainerID            );
+                         this.storageContainerID);
         }
 
         private GetStorageContainerEfficiencyRequest.Builder buildFrom(final GetStorageContainerEfficiencyRequest req) {
@@ -137,5 +122,4 @@ public class GetStorageContainerEfficiencyRequest  implements Serializable  {
         }
 
     }
-
 }

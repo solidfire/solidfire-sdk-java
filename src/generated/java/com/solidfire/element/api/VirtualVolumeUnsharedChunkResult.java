@@ -19,94 +19,62 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "VirtualVolumeUnsharedChunk" API Service call.
+ * 
  **/
-public class VirtualVolumeUnsharedChunkResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1896108830L;
+public class VirtualVolumeUnsharedChunkResult implements Serializable {
 
+    public static final long serialVersionUID = 8353668077409552607L;
     @SerializedName("chunks") private Long chunks;
     @SerializedName("scannedChunks") private Long scannedChunks;
     @SerializedName("chunkSize") private Long chunkSize;
 
-    /**
-     * The object returned by the "VirtualVolumeUnsharedChunk" API Service call.
-     * @param chunks [required] Number of allocated/unshared chunks.
-     * @param scannedChunks [required] Number of chunks scanned.
-     * @param chunkSize [required] Size of each chunk.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public VirtualVolumeUnsharedChunkResult(Long chunks, Long scannedChunks, Long chunkSize) {
-        this.chunks = chunks;
-        this.scannedChunks = scannedChunks;
-        this.chunkSize = chunkSize;
-    }
-
-    
-    /**
-     * The object returned by the "VirtualVolumeUnsharedChunk" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public VirtualVolumeUnsharedChunkResult() {}
 
-
-    /**
-     * Number of allocated/unshared chunks.
-     **/
-    public Long getChunks() {
-        return this.chunks;
-    }
-
-    public void setChunks(Long chunks) {
+    // parameterized constructor
+    @Since("7.0")
+    public VirtualVolumeUnsharedChunkResult(
+        Long chunks,
+        Long scannedChunks,
+        Long chunkSize
+    )
+    {
         this.chunks = chunks;
-    }
-
-
-
-    /**
-     * Number of chunks scanned.
-     **/
-    public Long getScannedChunks() {
-        return this.scannedChunks;
-    }
-
-    public void setScannedChunks(Long scannedChunks) {
         this.scannedChunks = scannedChunks;
-    }
-
-
-
-    /**
-     * Size of each chunk.
-     **/
-    public Long getChunkSize() {
-        return this.chunkSize;
-    }
-
-    public void setChunkSize(Long chunkSize) {
         this.chunkSize = chunkSize;
     }
 
-
+    /** 
+     * Number of allocated/unshared chunks.
+     **/
+    public Long getChunks() { return this.chunks; }
+    public void setChunks(Long chunks) { 
+        this.chunks = chunks;
+    }
+    /** 
+     * Number of chunks scanned.
+     **/
+    public Long getScannedChunks() { return this.scannedChunks; }
+    public void setScannedChunks(Long scannedChunks) { 
+        this.scannedChunks = scannedChunks;
+    }
+    /** 
+     * Size of each chunk.
+     **/
+    public Long getChunkSize() { return this.chunkSize; }
+    public void setChunkSize(Long chunkSize) { 
+        this.chunkSize = chunkSize;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -114,11 +82,10 @@ public class VirtualVolumeUnsharedChunkResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         VirtualVolumeUnsharedChunkResult that = (VirtualVolumeUnsharedChunkResult) o;
-        
-
-        return Objects.equals( chunks , that.chunks )
-            && Objects.equals( scannedChunks , that.scannedChunks )
-            && Objects.equals( chunkSize , that.chunkSize );
+        return 
+            Objects.equals(chunks, that.chunks) &&
+            Objects.equals(scannedChunks, that.scannedChunks) &&
+            Objects.equals(chunkSize, that.chunkSize);
     }
 
     @Override
@@ -127,6 +94,14 @@ public class VirtualVolumeUnsharedChunkResult  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("chunks", chunks);
+        map.put("scannedChunks", scannedChunks);
+        map.put("chunkSize", chunkSize);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -134,7 +109,7 @@ public class VirtualVolumeUnsharedChunkResult  implements Serializable  {
 
         sb.append(" chunks : ").append(chunks).append(",");
         sb.append(" scannedChunks : ").append(scannedChunks).append(",");
-        sb.append(" chunkSize : ").append(chunkSize);
+        sb.append(" chunkSize : ").append(chunkSize).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -162,7 +137,7 @@ public class VirtualVolumeUnsharedChunkResult  implements Serializable  {
             return new VirtualVolumeUnsharedChunkResult (
                          this.chunks,
                          this.scannedChunks,
-                         this.chunkSize            );
+                         this.chunkSize);
         }
 
         private VirtualVolumeUnsharedChunkResult.Builder buildFrom(final VirtualVolumeUnsharedChunkResult req) {
@@ -189,5 +164,4 @@ public class VirtualVolumeUnsharedChunkResult  implements Serializable  {
         }
 
     }
-
 }

@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetClusterInfo" API Service call.
+ * 
  **/
-public class GetClusterInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1037801707L;
+public class GetClusterInfoResult implements Serializable {
 
+    public static final long serialVersionUID = 6164399410616241841L;
     @SerializedName("clusterInfo") private ClusterInfo clusterInfo;
 
-    /**
-     * The object returned by the "GetClusterInfo" API Service call.
-     * @param clusterInfo [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetClusterInfoResult(ClusterInfo clusterInfo) {
-        this.clusterInfo = clusterInfo;
-    }
-
-    
-    /**
-     * The object returned by the "GetClusterInfo" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetClusterInfoResult() {}
 
-    public ClusterInfo getClusterInfo() {
-        return this.clusterInfo;
-    }
-
-    public void setClusterInfo(ClusterInfo clusterInfo) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetClusterInfoResult(
+        ClusterInfo clusterInfo
+    )
+    {
         this.clusterInfo = clusterInfo;
     }
 
-
+    /** 
+     **/
+    public ClusterInfo getClusterInfo() { return this.clusterInfo; }
+    public void setClusterInfo(ClusterInfo clusterInfo) { 
+        this.clusterInfo = clusterInfo;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,23 +61,28 @@ public class GetClusterInfoResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterInfoResult that = (GetClusterInfoResult) o;
-        
-
-        return Objects.equals( clusterInfo , that.clusterInfo );
+        return 
+            Objects.equals(clusterInfo, that.clusterInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) clusterInfo );
+        return Objects.hash( clusterInfo );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterInfo", clusterInfo);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" clusterInfo : ").append(clusterInfo);
+        sb.append(" clusterInfo : ").append(clusterInfo).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,7 +106,7 @@ public class GetClusterInfoResult  implements Serializable  {
 
         public GetClusterInfoResult build() {
             return new GetClusterInfoResult (
-                         this.clusterInfo            );
+                         this.clusterInfo);
         }
 
         private GetClusterInfoResult.Builder buildFrom(final GetClusterInfoResult req) {
@@ -133,5 +121,4 @@ public class GetClusterInfoResult  implements Serializable  {
         }
 
     }
-
 }

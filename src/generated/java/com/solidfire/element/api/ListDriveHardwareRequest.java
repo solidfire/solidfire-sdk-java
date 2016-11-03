@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ListDriveHardware" API Service call.
+ * 
  **/
-public class ListDriveHardwareRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1907905225L;
+public class ListDriveHardwareRequest implements Serializable {
 
+    public static final long serialVersionUID = 8026999793715868059L;
     @SerializedName("force") private Boolean force;
 
-    /**
-     * The Request object for the "ListDriveHardware" API Service call.
-     * @param force [required] This must be set to true in order to retrieve the drive hardware stats from the cluster.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListDriveHardwareRequest(Boolean force) {
-        this.force = force;
-    }
-
-    
-    /**
-     * The Request object for the "ListDriveHardware" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ListDriveHardwareRequest() {}
 
-
-    /**
-     * This must be set to true in order to retrieve the drive hardware stats from the cluster.
-     **/
-    public Boolean getForce() {
-        return this.force;
-    }
-
-    public void setForce(Boolean force) {
+    // parameterized constructor
+    @Since("7.0")
+    public ListDriveHardwareRequest(
+        Boolean force
+    )
+    {
         this.force = force;
     }
 
-
+    /** 
+     * This must be set to true in order to retrieve the drive hardware stats from the cluster.
+     **/
+    public Boolean getForce() { return this.force; }
+    public void setForce(Boolean force) { 
+        this.force = force;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class ListDriveHardwareRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListDriveHardwareRequest that = (ListDriveHardwareRequest) o;
-        
-
-        return Objects.equals( force , that.force );
+        return 
+            Objects.equals(force, that.force);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) force );
+        return Objects.hash( force );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("force", force);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" force : ").append(force);
+        sb.append(" force : ").append(force).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class ListDriveHardwareRequest  implements Serializable  {
 
         public ListDriveHardwareRequest build() {
             return new ListDriveHardwareRequest (
-                         this.force            );
+                         this.force);
         }
 
         private ListDriveHardwareRequest.Builder buildFrom(final ListDriveHardwareRequest req) {
@@ -137,5 +122,4 @@ public class ListDriveHardwareRequest  implements Serializable  {
         }
 
     }
-
 }

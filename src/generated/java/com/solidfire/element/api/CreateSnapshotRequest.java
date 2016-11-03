@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "CreateSnapshot" API Service call.
+ * 
  **/
-public class CreateSnapshotRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 2112431342L;
+public class CreateSnapshotRequest implements Serializable {
 
+    public static final long serialVersionUID = -1805268150014758546L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("name") private Optional<String> name;
@@ -48,140 +40,74 @@ public class CreateSnapshotRequest  implements Serializable  {
     @SerializedName("retention") private Optional<String> retention;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "CreateSnapshot" API Service call.
-     * @param volumeID [required] ID of the volume image from which to copy.
-     * @param snapshotID (optional) Unique ID of a snapshot from which the new snapshot is made.
-     * @param name (optional) A name for the snapshot.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public CreateSnapshotRequest(Long volumeID, Optional<Long> snapshotID, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = (name == null) ? Optional.<String>empty() : name;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.retention = Optional.<String>empty();
-        this.enableRemoteReplication = Optional.<Boolean>empty();
-        this.volumeID = volumeID;
-        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
-    }
-
-    /**
-     * The Request object for the "CreateSnapshot" API Service call.
-     * @param volumeID [required] ID of the volume image from which to copy.
-     * @param snapshotID (optional) Unique ID of a snapshot from which the new snapshot is made.
-     * @param name (optional) A name for the snapshot.
-     * @param enableRemoteReplication (optional) Identifies if snapshot is enabled for remote replication.
-     * @param retention (optional) The amount of time the snapshot will be retained. Enter in HH:mm:ss
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 8.0
-     **/
-    @Since("8.0")
-    public CreateSnapshotRequest(Long volumeID, Optional<Long> snapshotID, Optional<String> name, Optional<Boolean> enableRemoteReplication, Optional<String> retention, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = (name == null) ? Optional.<String>empty() : name;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.retention = (retention == null) ? Optional.<String>empty() : retention;
-        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
-        this.volumeID = volumeID;
-        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
-    }
-
-    
-    /**
-     * The Request object for the "CreateSnapshot" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public CreateSnapshotRequest() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public CreateSnapshotRequest(
+        Long volumeID,
+        Optional<Long> snapshotID,
+        Optional<String> name,
+        Optional<Boolean> enableRemoteReplication,
+        Optional<String> retention,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.volumeID = volumeID;
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
+        this.retention = (retention == null) ? Optional.<String>empty() : retention;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
 
-    /**
+    /** 
      * ID of the volume image from which to copy.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    public void setVolumeID(Long volumeID) {
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
-
-
-
-    /**
+    /** 
      * Unique ID of a snapshot from which the new snapshot is made.
      * The snapshotID passed must be a snapshot on the given volume.
      * If a SnapshotID is not provided, a snapshot is created from the volume's active branch.
      **/
-    public Optional<Long> getSnapshotID() {
-        return this.snapshotID;
+    public Optional<Long> getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Optional<Long> snapshotID) { 
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
-
-    public void setSnapshotID(Long snapshotID) {
-        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
-    }
-
-
-
-    /**
+    /** 
      * A name for the snapshot.
      * If no name is provided, the date and time the snapshot was taken is used.
      **/
-    public Optional<String> getName() {
-        return this.name;
+    public Optional<String> getName() { return this.name; }
+    public void setName(Optional<String> name) { 
+        this.name = (name == null) ? Optional.<String>empty() : name;
     }
-
-    public void setName(String name) {
-        this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
-    }
-
-
-
-    /**
+    /** 
      * Identifies if snapshot is enabled for remote replication.
-     * @since 8.0 
      **/
-
-    @Since("8.0")
-    public Optional<Boolean> getEnableRemoteReplication() {
-        return this.enableRemoteReplication;
+    public Optional<Boolean> getEnableRemoteReplication() { return this.enableRemoteReplication; }
+    public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) { 
+        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
-
-    public void setEnableRemoteReplication(Boolean enableRemoteReplication) {
-        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
-    }
-
-
-
-    /**
+    /** 
      * The amount of time the snapshot will be retained. Enter in HH:mm:ss
-     * @since 8.0 
      **/
-
-    @Since("8.0")
-    public Optional<String> getRetention() {
-        return this.retention;
+    public Optional<String> getRetention() { return this.retention; }
+    public void setRetention(Optional<String> retention) { 
+        this.retention = (retention == null) ? Optional.<String>empty() : retention;
     }
-
-    public void setRetention(String retention) {
-        this.retention = (retention == null) ? Optional.<String>empty() : Optional.of(retention);
-    }
-
-
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
-
-    public void setAttributes(java.util.Map<String, Object> attributes) {
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -189,14 +115,13 @@ public class CreateSnapshotRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateSnapshotRequest that = (CreateSnapshotRequest) o;
-        
-
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( snapshotID , that.snapshotID )
-            && Objects.equals( name , that.name )
-            && Objects.equals( enableRemoteReplication , that.enableRemoteReplication )
-            && Objects.equals( retention , that.retention )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(snapshotID, that.snapshotID) &&
+            Objects.equals(name, that.name) &&
+            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
+            Objects.equals(retention, that.retention) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -205,22 +130,38 @@ public class CreateSnapshotRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        map.put("snapshotID", snapshotID);
+        map.put("name", name);
+        map.put("enableRemoteReplication", enableRemoteReplication);
+        map.put("retention", retention);
+        map.put("attributes", attributes);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
         sb.append(" volumeID : ").append(volumeID).append(",");
-        if(null != snapshotID && snapshotID.isPresent())
+        if(null != snapshotID && snapshotID.isPresent()){
             sb.append(" snapshotID : ").append(snapshotID.get()).append(",");
-        if(null != name && name.isPresent())
+        }
+        if(null != name && name.isPresent()){
             sb.append(" name : ").append(name.get()).append(",");
-        if(null != enableRemoteReplication && enableRemoteReplication.isPresent())
+        }
+        if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
             sb.append(" enableRemoteReplication : ").append(enableRemoteReplication.get()).append(",");
-        if(null != retention && retention.isPresent())
+        }
+        if(null != retention && retention.isPresent()){
             sb.append(" retention : ").append(retention.get()).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -254,7 +195,7 @@ public class CreateSnapshotRequest  implements Serializable  {
                          this.name,
                          this.enableRemoteReplication,
                          this.retention,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private CreateSnapshotRequest.Builder buildFrom(final CreateSnapshotRequest req) {
@@ -299,5 +240,4 @@ public class CreateSnapshotRequest  implements Serializable  {
         }
 
     }
-
 }

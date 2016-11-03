@@ -19,70 +19,50 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class NodeDriveHardware  implements Serializable  {
 
-    private static final long serialVersionUID = -751505842L;
+public class NodeDriveHardware implements Serializable {
 
+    public static final long serialVersionUID = 4433141605775576765L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("result") private DrivesHardware result;
 
-    /**
-     * 
-     * @param nodeID [required] 
-     * @param result [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public NodeDriveHardware(Long nodeID, DrivesHardware result) {
-        this.nodeID = nodeID;
-        this.result = result;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public NodeDriveHardware() {}
 
-    public Long getNodeID() {
-        return this.nodeID;
-    }
-
-    public void setNodeID(Long nodeID) {
+    // parameterized constructor
+    @Since("7.0")
+    public NodeDriveHardware(
+        Long nodeID,
+        DrivesHardware result
+    )
+    {
         this.nodeID = nodeID;
-    }
-
-
-    public DrivesHardware getResult() {
-        return this.result;
-    }
-
-    public void setResult(DrivesHardware result) {
         this.result = result;
     }
 
-
+    /** 
+     **/
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
+    }
+    /** 
+     **/
+    public DrivesHardware getResult() { return this.result; }
+    public void setResult(DrivesHardware result) { 
+        this.result = result;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -90,10 +70,9 @@ public class NodeDriveHardware  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         NodeDriveHardware that = (NodeDriveHardware) o;
-        
-
-        return Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( result , that.result );
+        return 
+            Objects.equals(nodeID, that.nodeID) &&
+            Objects.equals(result, that.result);
     }
 
     @Override
@@ -102,13 +81,20 @@ public class NodeDriveHardware  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodeID", nodeID);
+        map.put("result", result);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
         sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" result : ").append(result);
+        sb.append(" result : ").append(result).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -134,7 +120,7 @@ public class NodeDriveHardware  implements Serializable  {
         public NodeDriveHardware build() {
             return new NodeDriveHardware (
                          this.nodeID,
-                         this.result            );
+                         this.result);
         }
 
         private NodeDriveHardware.Builder buildFrom(final NodeDriveHardware req) {
@@ -155,5 +141,4 @@ public class NodeDriveHardware  implements Serializable  {
         }
 
     }
-
 }

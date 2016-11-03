@@ -19,131 +19,77 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.
+ * ['Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.', 'Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.', '<br/><br/>', 'Volumes created without specified QoS values are created with the Default values listed below.', 'Default values can be found by running the GetDefaultQoS method.', '<br/><br/>', '<b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>', '<b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>', '<b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>']['Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.', 'Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.', '<br/><br/>', 'Volumes created without specified QoS values are created with the Default values listed below.', 'Default values can be found by running the GetDefaultQoS method.', '<br/><br/>', '<b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>', '<b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>', '<b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>']['Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.', 'Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.', '<br/><br/>', 'Volumes created without specified QoS values are created with the Default values listed below.', 'Default values can be found by running the GetDefaultQoS method.', '<br/><br/>', '<b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>', '<b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>', '<b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>']['Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.', 'Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.', '<br/><br/>', 'Volumes created without specified QoS values are created with the Default values listed below.', 'Default values can be found by running the GetDefaultQoS method.', '<br/><br/>', '<b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>', '<b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>', '<b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>']['Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.', 'Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.', '<br/><br/>', 'Volumes created without specified QoS values are created with the Default values listed below.', 'Default values can be found by running the GetDefaultQoS method.', '<br/><br/>', '<b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>', '<b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>', '<b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>']['Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.', 'Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.', '<br/><br/>', 'Volumes created without specified QoS values are created with the Default values listed below.', 'Default values can be found by running the GetDefaultQoS method.', '<br/><br/>', '<b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>', '<b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>', '<b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>']['Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.', 'Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.', '<br/><br/>', 'Volumes created without specified QoS values are created with the Default values listed below.', 'Default values can be found by running the GetDefaultQoS method.', '<br/><br/>', '<b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>', '<b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>', '<b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>']['Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.', 'Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.', '<br/><br/>', 'Volumes created without specified QoS values are created with the Default values listed below.', 'Default values can be found by running the GetDefaultQoS method.', '<br/><br/>', '<b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>', '<b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>', '<b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>']['Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.', 'Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.', '<br/><br/>', 'Volumes created without specified QoS values are created with the Default values listed below.', 'Default values can be found by running the GetDefaultQoS method.', '<br/><br/>', '<b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>', '<b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>', '<b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>']
  **/
-public class QoS  implements Serializable  {
 
-    private static final long serialVersionUID = -79923561L;
+public class QoS implements Serializable {
 
+    public static final long serialVersionUID = 1023223855695272644L;
     @SerializedName("minIOPS") private Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private Optional<Long> maxIOPS;
     @SerializedName("burstIOPS") private Optional<Long> burstIOPS;
     @SerializedName("burstTime") private Optional<Long> burstTime;
 
-    /**
-     * Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.
-     * Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.
-     * <br/><br/>
-     * Volumes created without specified QoS values are created with the Default values listed below.
-     * Default values can be found by running the GetDefaultQoS method.
-     * <br/><br/>
-     * <b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>
-     * <b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>
-     * <b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>
-     * @param minIOPS (optional) Desired minimum 4KB IOPS to guarantee.
-     * @param maxIOPS (optional) Desired maximum 4KB IOPS allowed over an extended period of time.
-     * @param burstIOPS (optional) Maximum "peak" 4KB IOPS allowed for short periods of time.
-     * @param burstTime (optional) The length of time burst IOPS is allowed.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public QoS(Optional<Long> minIOPS, Optional<Long> maxIOPS, Optional<Long> burstIOPS, Optional<Long> burstTime) {
+    public QoS() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public QoS(
+        Optional<Long> minIOPS,
+        Optional<Long> maxIOPS,
+        Optional<Long> burstIOPS,
+        Optional<Long> burstTime
+    )
+    {
         this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : minIOPS;
         this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : maxIOPS;
         this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : burstIOPS;
         this.burstTime = (burstTime == null) ? Optional.<Long>empty() : burstTime;
     }
 
-    
-    /**
-     * Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.
-     * Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.
-     * <br/><br/>
-     * Volumes created without specified QoS values are created with the Default values listed below.
-     * Default values can be found by running the GetDefaultQoS method.
-     * <br/><br/>
-     * <b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>
-     * <b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>
-     * <b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public QoS() {}
-
-
-    /**
+    /** 
      * Desired minimum 4KB IOPS to guarantee.
      * The allowed IOPS will only drop below this level if all volumes have been capped
      * at their minimum IOPS value and there is still insufficient performance capacity.
      **/
-    public Optional<Long> getMinIOPS() {
-        return this.minIOPS;
+    public Optional<Long> getMinIOPS() { return this.minIOPS; }
+    public void setMinIOPS(Optional<Long> minIOPS) { 
+        this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : minIOPS;
     }
-
-    public void setMinIOPS(Long minIOPS) {
-        this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : Optional.of(minIOPS);
-    }
-
-
-
-    /**
+    /** 
      * Desired maximum 4KB IOPS allowed over an extended period of time.
      **/
-    public Optional<Long> getMaxIOPS() {
-        return this.maxIOPS;
+    public Optional<Long> getMaxIOPS() { return this.maxIOPS; }
+    public void setMaxIOPS(Optional<Long> maxIOPS) { 
+        this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : maxIOPS;
     }
-
-    public void setMaxIOPS(Long maxIOPS) {
-        this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : Optional.of(maxIOPS);
-    }
-
-
-
-    /**
+    /** 
      * Maximum "peak" 4KB IOPS allowed for short periods of time.
      * Allows for bursts of I/O activity over the normal max IOPS value.
      **/
-    public Optional<Long> getBurstIOPS() {
-        return this.burstIOPS;
+    public Optional<Long> getBurstIOPS() { return this.burstIOPS; }
+    public void setBurstIOPS(Optional<Long> burstIOPS) { 
+        this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : burstIOPS;
     }
-
-    public void setBurstIOPS(Long burstIOPS) {
-        this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : Optional.of(burstIOPS);
-    }
-
-
-
-    /**
+    /** 
      * The length of time burst IOPS is allowed.
      * The value returned is represented in time units of seconds.
      * <br/><b>Note</b>: this value is calculated by the system based on IOPS set for QoS.
      **/
-    public Optional<Long> getBurstTime() {
-        return this.burstTime;
+    public Optional<Long> getBurstTime() { return this.burstTime; }
+    public void setBurstTime(Optional<Long> burstTime) { 
+        this.burstTime = (burstTime == null) ? Optional.<Long>empty() : burstTime;
     }
-
-    public void setBurstTime(Long burstTime) {
-        this.burstTime = (burstTime == null) ? Optional.<Long>empty() : Optional.of(burstTime);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -151,12 +97,11 @@ public class QoS  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         QoS that = (QoS) o;
-        
-
-        return Objects.equals( minIOPS , that.minIOPS )
-            && Objects.equals( maxIOPS , that.maxIOPS )
-            && Objects.equals( burstIOPS , that.burstIOPS )
-            && Objects.equals( burstTime , that.burstTime );
+        return 
+            Objects.equals(minIOPS, that.minIOPS) &&
+            Objects.equals(maxIOPS, that.maxIOPS) &&
+            Objects.equals(burstIOPS, that.burstIOPS) &&
+            Objects.equals(burstTime, that.burstTime);
     }
 
     @Override
@@ -165,19 +110,32 @@ public class QoS  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("minIOPS", minIOPS);
+        map.put("maxIOPS", maxIOPS);
+        map.put("burstIOPS", burstIOPS);
+        map.put("burstTime", burstTime);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != minIOPS && minIOPS.isPresent())
+        if(null != minIOPS && minIOPS.isPresent()){
             sb.append(" minIOPS : ").append(minIOPS.get()).append(",");
-        if(null != maxIOPS && maxIOPS.isPresent())
+        }
+        if(null != maxIOPS && maxIOPS.isPresent()){
             sb.append(" maxIOPS : ").append(maxIOPS.get()).append(",");
-        if(null != burstIOPS && burstIOPS.isPresent())
+        }
+        if(null != burstIOPS && burstIOPS.isPresent()){
             sb.append(" burstIOPS : ").append(burstIOPS.get()).append(",");
-        if(null != burstTime && burstTime.isPresent())
-            sb.append(" burstTime : ").append(burstTime.get());
+        }
+        if(null != burstTime && burstTime.isPresent()){
+            sb.append(" burstTime : ").append(burstTime.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -207,7 +165,7 @@ public class QoS  implements Serializable  {
                          this.minIOPS,
                          this.maxIOPS,
                          this.burstIOPS,
-                         this.burstTime            );
+                         this.burstTime);
         }
 
         private QoS.Builder buildFrom(final QoS req) {
@@ -240,5 +198,4 @@ public class QoS  implements Serializable  {
         }
 
     }
-
 }

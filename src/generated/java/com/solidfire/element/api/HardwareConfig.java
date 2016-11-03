@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class HardwareConfig  implements Serializable  {
 
-    private static final long serialVersionUID = 128587381L;
+public class HardwareConfig implements Serializable {
 
+    public static final long serialVersionUID = 5656038675960507532L;
     @SerializedName("scsiBusInternalDriver") private String scsiBusInternalDriver;
     @SerializedName("networkDriver") private String[] networkDriver;
     @SerializedName("biosRevision") private String biosRevision;
@@ -74,375 +66,273 @@ public class HardwareConfig  implements Serializable  {
     @SerializedName("memoryGB") private Long memoryGB;
     @SerializedName("cpuThreads") private Long cpuThreads;
 
-    /**
-     * 
-     * @param scsiBusInternalDriver [required] 
-     * @param networkDriver [required] 
-     * @param biosRevision [required] 
-     * @param slotOffset [required] 
-     * @param numCpu [required] 
-     * @param sliceDrives [required] 
-     * @param numDrives [required] 
-     * @param kernelCrashDump [required] 
-     * @param blockDriveSizeBytes [required] 
-     * @param cpuModel [required] 
-     * @param bmcFirmwareRevision [required] 
-     * @param cpuCoresEnabled [required] 
-     * @param fibreChannelModel [required] 
-     * @param chassisType [required] 
-     * @param bmcIpmiVersion [required] 
-     * @param nodeType [required] 
-     * @param solidfireDefaults [required] 
-     * @param idracVersion [required] 
-     * @param blockDrives [required] 
-     * @param biosVendor [required] 
-     * @param fibreChannelFirmwareRevision [required] 
-     * @param scsiBusExternalDriver [required] 
-     * @param numDrivesInternal [required] 
-     * @param sliceDriveSizeBytes [required] 
-     * @param biosVersion [required] 
-     * @param memoryMhz [required] 
-     * @param cpuCores [required] 
-     * @param rootDrive [required] 
-     * @param driveSizeBytesInternal [required] 
-     * @param lifecycleVersion [required] 
-     * @param memoryGB [required] 
-     * @param cpuThreads [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public HardwareConfig(String scsiBusInternalDriver, String[] networkDriver, String biosRevision, Long slotOffset, Long numCpu, String[] sliceDrives, Long numDrives, KernelCrashDump kernelCrashDump, Long blockDriveSizeBytes, String cpuModel, String bmcFirmwareRevision, Long cpuCoresEnabled, String fibreChannelModel, String chassisType, String bmcIpmiVersion, String nodeType, SolidfireDefaults solidfireDefaults, String idracVersion, String[] blockDrives, String biosVendor, String fibreChannelFirmwareRevision, String scsiBusExternalDriver, Long numDrivesInternal, Long sliceDriveSizeBytes, String biosVersion, Long memoryMhz, Long cpuCores, String rootDrive, Long driveSizeBytesInternal, String lifecycleVersion, Long memoryGB, Long cpuThreads) {
-        this.scsiBusExternalDriver = scsiBusExternalDriver;
-        this.biosVersion = biosVersion;
-        this.chassisType = chassisType;
-        this.numDrives = numDrives;
-        this.sliceDriveSizeBytes = sliceDriveSizeBytes;
-        this.solidfireDefaults = solidfireDefaults;
-        this.rootDrive = rootDrive;
-        this.numCpu = numCpu;
-        this.memoryGB = memoryGB;
-        this.scsiBusInternalDriver = scsiBusInternalDriver;
-        this.fibreChannelModel = fibreChannelModel;
-        this.biosVendor = biosVendor;
-        this.fibreChannelFirmwareRevision = fibreChannelFirmwareRevision;
-        this.blockDriveSizeBytes = blockDriveSizeBytes;
-        this.biosRevision = biosRevision;
-        this.blockDrives = blockDrives;
-        this.sliceDrives = sliceDrives;
-        this.driveSizeBytesInternal = driveSizeBytesInternal;
-        this.nodeType = nodeType;
-        this.lifecycleVersion = lifecycleVersion;
-        this.memoryMhz = memoryMhz;
-        this.cpuCoresEnabled = cpuCoresEnabled;
-        this.networkDriver = networkDriver;
-        this.bmcFirmwareRevision = bmcFirmwareRevision;
-        this.cpuCores = cpuCores;
-        this.idracVersion = idracVersion;
-        this.slotOffset = slotOffset;
-        this.cpuThreads = cpuThreads;
-        this.numDrivesInternal = numDrivesInternal;
-        this.cpuModel = cpuModel;
-        this.kernelCrashDump = kernelCrashDump;
-        this.bmcIpmiVersion = bmcIpmiVersion;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public HardwareConfig() {}
 
-    public String getScsiBusInternalDriver() {
-        return this.scsiBusInternalDriver;
-    }
-
-    public void setScsiBusInternalDriver(String scsiBusInternalDriver) {
+    // parameterized constructor
+    @Since("7.0")
+    public HardwareConfig(
+        String scsiBusInternalDriver,
+        String[] networkDriver,
+        String biosRevision,
+        Long slotOffset,
+        Long numCpu,
+        String[] sliceDrives,
+        Long numDrives,
+        KernelCrashDump kernelCrashDump,
+        Long blockDriveSizeBytes,
+        String cpuModel,
+        String bmcFirmwareRevision,
+        Long cpuCoresEnabled,
+        String fibreChannelModel,
+        String chassisType,
+        String bmcIpmiVersion,
+        String nodeType,
+        SolidfireDefaults solidfireDefaults,
+        String idracVersion,
+        String[] blockDrives,
+        String biosVendor,
+        String fibreChannelFirmwareRevision,
+        String scsiBusExternalDriver,
+        Long numDrivesInternal,
+        Long sliceDriveSizeBytes,
+        String biosVersion,
+        Long memoryMhz,
+        Long cpuCores,
+        String rootDrive,
+        Long driveSizeBytesInternal,
+        String lifecycleVersion,
+        Long memoryGB,
+        Long cpuThreads
+    )
+    {
         this.scsiBusInternalDriver = scsiBusInternalDriver;
-    }
-
-
-    public String[] getNetworkDriver() {
-        return this.networkDriver;
-    }
-
-    public void setNetworkDriver(String[] networkDriver) {
         this.networkDriver = networkDriver;
-    }
-
-
-    public String getBiosRevision() {
-        return this.biosRevision;
-    }
-
-    public void setBiosRevision(String biosRevision) {
         this.biosRevision = biosRevision;
-    }
-
-
-    public Long getSlotOffset() {
-        return this.slotOffset;
-    }
-
-    public void setSlotOffset(Long slotOffset) {
         this.slotOffset = slotOffset;
-    }
-
-
-    public Long getNumCpu() {
-        return this.numCpu;
-    }
-
-    public void setNumCpu(Long numCpu) {
         this.numCpu = numCpu;
-    }
-
-
-    public String[] getSliceDrives() {
-        return this.sliceDrives;
-    }
-
-    public void setSliceDrives(String[] sliceDrives) {
         this.sliceDrives = sliceDrives;
-    }
-
-
-    public Long getNumDrives() {
-        return this.numDrives;
-    }
-
-    public void setNumDrives(Long numDrives) {
         this.numDrives = numDrives;
-    }
-
-
-    public KernelCrashDump getKernelCrashDump() {
-        return this.kernelCrashDump;
-    }
-
-    public void setKernelCrashDump(KernelCrashDump kernelCrashDump) {
         this.kernelCrashDump = kernelCrashDump;
-    }
-
-
-    public Long getBlockDriveSizeBytes() {
-        return this.blockDriveSizeBytes;
-    }
-
-    public void setBlockDriveSizeBytes(Long blockDriveSizeBytes) {
         this.blockDriveSizeBytes = blockDriveSizeBytes;
-    }
-
-
-    public String getCpuModel() {
-        return this.cpuModel;
-    }
-
-    public void setCpuModel(String cpuModel) {
         this.cpuModel = cpuModel;
-    }
-
-
-    public String getBmcFirmwareRevision() {
-        return this.bmcFirmwareRevision;
-    }
-
-    public void setBmcFirmwareRevision(String bmcFirmwareRevision) {
         this.bmcFirmwareRevision = bmcFirmwareRevision;
-    }
-
-
-    public Long getCpuCoresEnabled() {
-        return this.cpuCoresEnabled;
-    }
-
-    public void setCpuCoresEnabled(Long cpuCoresEnabled) {
         this.cpuCoresEnabled = cpuCoresEnabled;
-    }
-
-
-    public String getFibreChannelModel() {
-        return this.fibreChannelModel;
-    }
-
-    public void setFibreChannelModel(String fibreChannelModel) {
         this.fibreChannelModel = fibreChannelModel;
-    }
-
-
-    public String getChassisType() {
-        return this.chassisType;
-    }
-
-    public void setChassisType(String chassisType) {
         this.chassisType = chassisType;
-    }
-
-
-    public String getBmcIpmiVersion() {
-        return this.bmcIpmiVersion;
-    }
-
-    public void setBmcIpmiVersion(String bmcIpmiVersion) {
         this.bmcIpmiVersion = bmcIpmiVersion;
-    }
-
-
-    public String getNodeType() {
-        return this.nodeType;
-    }
-
-    public void setNodeType(String nodeType) {
         this.nodeType = nodeType;
-    }
-
-
-    public SolidfireDefaults getSolidfireDefaults() {
-        return this.solidfireDefaults;
-    }
-
-    public void setSolidfireDefaults(SolidfireDefaults solidfireDefaults) {
         this.solidfireDefaults = solidfireDefaults;
-    }
-
-
-    public String getIdracVersion() {
-        return this.idracVersion;
-    }
-
-    public void setIdracVersion(String idracVersion) {
         this.idracVersion = idracVersion;
-    }
-
-
-    public String[] getBlockDrives() {
-        return this.blockDrives;
-    }
-
-    public void setBlockDrives(String[] blockDrives) {
         this.blockDrives = blockDrives;
-    }
-
-
-    public String getBiosVendor() {
-        return this.biosVendor;
-    }
-
-    public void setBiosVendor(String biosVendor) {
         this.biosVendor = biosVendor;
-    }
-
-
-    public String getFibreChannelFirmwareRevision() {
-        return this.fibreChannelFirmwareRevision;
-    }
-
-    public void setFibreChannelFirmwareRevision(String fibreChannelFirmwareRevision) {
         this.fibreChannelFirmwareRevision = fibreChannelFirmwareRevision;
-    }
-
-
-    public String getScsiBusExternalDriver() {
-        return this.scsiBusExternalDriver;
-    }
-
-    public void setScsiBusExternalDriver(String scsiBusExternalDriver) {
         this.scsiBusExternalDriver = scsiBusExternalDriver;
-    }
-
-
-    public Long getNumDrivesInternal() {
-        return this.numDrivesInternal;
-    }
-
-    public void setNumDrivesInternal(Long numDrivesInternal) {
         this.numDrivesInternal = numDrivesInternal;
-    }
-
-
-    public Long getSliceDriveSizeBytes() {
-        return this.sliceDriveSizeBytes;
-    }
-
-    public void setSliceDriveSizeBytes(Long sliceDriveSizeBytes) {
         this.sliceDriveSizeBytes = sliceDriveSizeBytes;
-    }
-
-
-    public String getBiosVersion() {
-        return this.biosVersion;
-    }
-
-    public void setBiosVersion(String biosVersion) {
         this.biosVersion = biosVersion;
-    }
-
-
-    public Long getMemoryMhz() {
-        return this.memoryMhz;
-    }
-
-    public void setMemoryMhz(Long memoryMhz) {
         this.memoryMhz = memoryMhz;
-    }
-
-
-    public Long getCpuCores() {
-        return this.cpuCores;
-    }
-
-    public void setCpuCores(Long cpuCores) {
         this.cpuCores = cpuCores;
-    }
-
-
-    public String getRootDrive() {
-        return this.rootDrive;
-    }
-
-    public void setRootDrive(String rootDrive) {
         this.rootDrive = rootDrive;
-    }
-
-
-    public Long getDriveSizeBytesInternal() {
-        return this.driveSizeBytesInternal;
-    }
-
-    public void setDriveSizeBytesInternal(Long driveSizeBytesInternal) {
         this.driveSizeBytesInternal = driveSizeBytesInternal;
-    }
-
-
-    public String getLifecycleVersion() {
-        return this.lifecycleVersion;
-    }
-
-    public void setLifecycleVersion(String lifecycleVersion) {
         this.lifecycleVersion = lifecycleVersion;
-    }
-
-
-    public Long getMemoryGB() {
-        return this.memoryGB;
-    }
-
-    public void setMemoryGB(Long memoryGB) {
         this.memoryGB = memoryGB;
-    }
-
-
-    public Long getCpuThreads() {
-        return this.cpuThreads;
-    }
-
-    public void setCpuThreads(Long cpuThreads) {
         this.cpuThreads = cpuThreads;
     }
 
-
+    /** 
+     **/
+    public String getScsiBusInternalDriver() { return this.scsiBusInternalDriver; }
+    public void setScsiBusInternalDriver(String scsiBusInternalDriver) { 
+        this.scsiBusInternalDriver = scsiBusInternalDriver;
+    }
+    /** 
+     **/
+    public String[] getNetworkDriver() { return this.networkDriver; }
+    public void setNetworkDriver(String[] networkDriver) { 
+        this.networkDriver = networkDriver;
+    }
+    /** 
+     **/
+    public String getBiosRevision() { return this.biosRevision; }
+    public void setBiosRevision(String biosRevision) { 
+        this.biosRevision = biosRevision;
+    }
+    /** 
+     **/
+    public Long getSlotOffset() { return this.slotOffset; }
+    public void setSlotOffset(Long slotOffset) { 
+        this.slotOffset = slotOffset;
+    }
+    /** 
+     **/
+    public Long getNumCpu() { return this.numCpu; }
+    public void setNumCpu(Long numCpu) { 
+        this.numCpu = numCpu;
+    }
+    /** 
+     **/
+    public String[] getSliceDrives() { return this.sliceDrives; }
+    public void setSliceDrives(String[] sliceDrives) { 
+        this.sliceDrives = sliceDrives;
+    }
+    /** 
+     **/
+    public Long getNumDrives() { return this.numDrives; }
+    public void setNumDrives(Long numDrives) { 
+        this.numDrives = numDrives;
+    }
+    /** 
+     **/
+    public KernelCrashDump getKernelCrashDump() { return this.kernelCrashDump; }
+    public void setKernelCrashDump(KernelCrashDump kernelCrashDump) { 
+        this.kernelCrashDump = kernelCrashDump;
+    }
+    /** 
+     **/
+    public Long getBlockDriveSizeBytes() { return this.blockDriveSizeBytes; }
+    public void setBlockDriveSizeBytes(Long blockDriveSizeBytes) { 
+        this.blockDriveSizeBytes = blockDriveSizeBytes;
+    }
+    /** 
+     **/
+    public String getCpuModel() { return this.cpuModel; }
+    public void setCpuModel(String cpuModel) { 
+        this.cpuModel = cpuModel;
+    }
+    /** 
+     **/
+    public String getBmcFirmwareRevision() { return this.bmcFirmwareRevision; }
+    public void setBmcFirmwareRevision(String bmcFirmwareRevision) { 
+        this.bmcFirmwareRevision = bmcFirmwareRevision;
+    }
+    /** 
+     **/
+    public Long getCpuCoresEnabled() { return this.cpuCoresEnabled; }
+    public void setCpuCoresEnabled(Long cpuCoresEnabled) { 
+        this.cpuCoresEnabled = cpuCoresEnabled;
+    }
+    /** 
+     **/
+    public String getFibreChannelModel() { return this.fibreChannelModel; }
+    public void setFibreChannelModel(String fibreChannelModel) { 
+        this.fibreChannelModel = fibreChannelModel;
+    }
+    /** 
+     **/
+    public String getChassisType() { return this.chassisType; }
+    public void setChassisType(String chassisType) { 
+        this.chassisType = chassisType;
+    }
+    /** 
+     **/
+    public String getBmcIpmiVersion() { return this.bmcIpmiVersion; }
+    public void setBmcIpmiVersion(String bmcIpmiVersion) { 
+        this.bmcIpmiVersion = bmcIpmiVersion;
+    }
+    /** 
+     **/
+    public String getNodeType() { return this.nodeType; }
+    public void setNodeType(String nodeType) { 
+        this.nodeType = nodeType;
+    }
+    /** 
+     **/
+    public SolidfireDefaults getSolidfireDefaults() { return this.solidfireDefaults; }
+    public void setSolidfireDefaults(SolidfireDefaults solidfireDefaults) { 
+        this.solidfireDefaults = solidfireDefaults;
+    }
+    /** 
+     **/
+    public String getIdracVersion() { return this.idracVersion; }
+    public void setIdracVersion(String idracVersion) { 
+        this.idracVersion = idracVersion;
+    }
+    /** 
+     **/
+    public String[] getBlockDrives() { return this.blockDrives; }
+    public void setBlockDrives(String[] blockDrives) { 
+        this.blockDrives = blockDrives;
+    }
+    /** 
+     **/
+    public String getBiosVendor() { return this.biosVendor; }
+    public void setBiosVendor(String biosVendor) { 
+        this.biosVendor = biosVendor;
+    }
+    /** 
+     **/
+    public String getFibreChannelFirmwareRevision() { return this.fibreChannelFirmwareRevision; }
+    public void setFibreChannelFirmwareRevision(String fibreChannelFirmwareRevision) { 
+        this.fibreChannelFirmwareRevision = fibreChannelFirmwareRevision;
+    }
+    /** 
+     **/
+    public String getScsiBusExternalDriver() { return this.scsiBusExternalDriver; }
+    public void setScsiBusExternalDriver(String scsiBusExternalDriver) { 
+        this.scsiBusExternalDriver = scsiBusExternalDriver;
+    }
+    /** 
+     **/
+    public Long getNumDrivesInternal() { return this.numDrivesInternal; }
+    public void setNumDrivesInternal(Long numDrivesInternal) { 
+        this.numDrivesInternal = numDrivesInternal;
+    }
+    /** 
+     **/
+    public Long getSliceDriveSizeBytes() { return this.sliceDriveSizeBytes; }
+    public void setSliceDriveSizeBytes(Long sliceDriveSizeBytes) { 
+        this.sliceDriveSizeBytes = sliceDriveSizeBytes;
+    }
+    /** 
+     **/
+    public String getBiosVersion() { return this.biosVersion; }
+    public void setBiosVersion(String biosVersion) { 
+        this.biosVersion = biosVersion;
+    }
+    /** 
+     **/
+    public Long getMemoryMhz() { return this.memoryMhz; }
+    public void setMemoryMhz(Long memoryMhz) { 
+        this.memoryMhz = memoryMhz;
+    }
+    /** 
+     **/
+    public Long getCpuCores() { return this.cpuCores; }
+    public void setCpuCores(Long cpuCores) { 
+        this.cpuCores = cpuCores;
+    }
+    /** 
+     **/
+    public String getRootDrive() { return this.rootDrive; }
+    public void setRootDrive(String rootDrive) { 
+        this.rootDrive = rootDrive;
+    }
+    /** 
+     **/
+    public Long getDriveSizeBytesInternal() { return this.driveSizeBytesInternal; }
+    public void setDriveSizeBytesInternal(Long driveSizeBytesInternal) { 
+        this.driveSizeBytesInternal = driveSizeBytesInternal;
+    }
+    /** 
+     **/
+    public String getLifecycleVersion() { return this.lifecycleVersion; }
+    public void setLifecycleVersion(String lifecycleVersion) { 
+        this.lifecycleVersion = lifecycleVersion;
+    }
+    /** 
+     **/
+    public Long getMemoryGB() { return this.memoryGB; }
+    public void setMemoryGB(Long memoryGB) { 
+        this.memoryGB = memoryGB;
+    }
+    /** 
+     **/
+    public Long getCpuThreads() { return this.cpuThreads; }
+    public void setCpuThreads(Long cpuThreads) { 
+        this.cpuThreads = cpuThreads;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -450,47 +340,83 @@ public class HardwareConfig  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         HardwareConfig that = (HardwareConfig) o;
-        
-
-        return Objects.equals( scsiBusInternalDriver , that.scsiBusInternalDriver )
-            && Objects.deepEquals( networkDriver , that.networkDriver )
-            && Objects.equals( biosRevision , that.biosRevision )
-            && Objects.equals( slotOffset , that.slotOffset )
-            && Objects.equals( numCpu , that.numCpu )
-            && Objects.deepEquals( sliceDrives , that.sliceDrives )
-            && Objects.equals( numDrives , that.numDrives )
-            && Objects.equals( kernelCrashDump , that.kernelCrashDump )
-            && Objects.equals( blockDriveSizeBytes , that.blockDriveSizeBytes )
-            && Objects.equals( cpuModel , that.cpuModel )
-            && Objects.equals( bmcFirmwareRevision , that.bmcFirmwareRevision )
-            && Objects.equals( cpuCoresEnabled , that.cpuCoresEnabled )
-            && Objects.equals( fibreChannelModel , that.fibreChannelModel )
-            && Objects.equals( chassisType , that.chassisType )
-            && Objects.equals( bmcIpmiVersion , that.bmcIpmiVersion )
-            && Objects.equals( nodeType , that.nodeType )
-            && Objects.equals( solidfireDefaults , that.solidfireDefaults )
-            && Objects.equals( idracVersion , that.idracVersion )
-            && Objects.deepEquals( blockDrives , that.blockDrives )
-            && Objects.equals( biosVendor , that.biosVendor )
-            && Objects.equals( fibreChannelFirmwareRevision , that.fibreChannelFirmwareRevision )
-            && Objects.equals( scsiBusExternalDriver , that.scsiBusExternalDriver )
-            && Objects.equals( numDrivesInternal , that.numDrivesInternal )
-            && Objects.equals( sliceDriveSizeBytes , that.sliceDriveSizeBytes )
-            && Objects.equals( biosVersion , that.biosVersion )
-            && Objects.equals( memoryMhz , that.memoryMhz )
-            && Objects.equals( cpuCores , that.cpuCores )
-            && Objects.equals( rootDrive , that.rootDrive )
-            && Objects.equals( driveSizeBytesInternal , that.driveSizeBytesInternal )
-            && Objects.equals( lifecycleVersion , that.lifecycleVersion )
-            && Objects.equals( memoryGB , that.memoryGB )
-            && Objects.equals( cpuThreads , that.cpuThreads );
+        return 
+            Objects.equals(scsiBusInternalDriver, that.scsiBusInternalDriver) &&
+            Objects.equals(networkDriver, that.networkDriver) &&
+            Objects.equals(biosRevision, that.biosRevision) &&
+            Objects.equals(slotOffset, that.slotOffset) &&
+            Objects.equals(numCpu, that.numCpu) &&
+            Objects.equals(sliceDrives, that.sliceDrives) &&
+            Objects.equals(numDrives, that.numDrives) &&
+            Objects.equals(kernelCrashDump, that.kernelCrashDump) &&
+            Objects.equals(blockDriveSizeBytes, that.blockDriveSizeBytes) &&
+            Objects.equals(cpuModel, that.cpuModel) &&
+            Objects.equals(bmcFirmwareRevision, that.bmcFirmwareRevision) &&
+            Objects.equals(cpuCoresEnabled, that.cpuCoresEnabled) &&
+            Objects.equals(fibreChannelModel, that.fibreChannelModel) &&
+            Objects.equals(chassisType, that.chassisType) &&
+            Objects.equals(bmcIpmiVersion, that.bmcIpmiVersion) &&
+            Objects.equals(nodeType, that.nodeType) &&
+            Objects.equals(solidfireDefaults, that.solidfireDefaults) &&
+            Objects.equals(idracVersion, that.idracVersion) &&
+            Objects.equals(blockDrives, that.blockDrives) &&
+            Objects.equals(biosVendor, that.biosVendor) &&
+            Objects.equals(fibreChannelFirmwareRevision, that.fibreChannelFirmwareRevision) &&
+            Objects.equals(scsiBusExternalDriver, that.scsiBusExternalDriver) &&
+            Objects.equals(numDrivesInternal, that.numDrivesInternal) &&
+            Objects.equals(sliceDriveSizeBytes, that.sliceDriveSizeBytes) &&
+            Objects.equals(biosVersion, that.biosVersion) &&
+            Objects.equals(memoryMhz, that.memoryMhz) &&
+            Objects.equals(cpuCores, that.cpuCores) &&
+            Objects.equals(rootDrive, that.rootDrive) &&
+            Objects.equals(driveSizeBytesInternal, that.driveSizeBytesInternal) &&
+            Objects.equals(lifecycleVersion, that.lifecycleVersion) &&
+            Objects.equals(memoryGB, that.memoryGB) &&
+            Objects.equals(cpuThreads, that.cpuThreads);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( scsiBusInternalDriver, networkDriver, biosRevision, slotOffset, numCpu, sliceDrives, numDrives, kernelCrashDump, blockDriveSizeBytes, cpuModel, bmcFirmwareRevision, cpuCoresEnabled, fibreChannelModel, chassisType, bmcIpmiVersion, nodeType, solidfireDefaults, idracVersion, blockDrives, biosVendor, fibreChannelFirmwareRevision, scsiBusExternalDriver, numDrivesInternal, sliceDriveSizeBytes, biosVersion, memoryMhz, cpuCores, rootDrive, driveSizeBytesInternal, lifecycleVersion, memoryGB, cpuThreads );
+        return Objects.hash( scsiBusInternalDriver, (Object[])networkDriver, biosRevision, slotOffset, numCpu, (Object[])sliceDrives, numDrives, kernelCrashDump, blockDriveSizeBytes, cpuModel, bmcFirmwareRevision, cpuCoresEnabled, fibreChannelModel, chassisType, bmcIpmiVersion, nodeType, solidfireDefaults, idracVersion, (Object[])blockDrives, biosVendor, fibreChannelFirmwareRevision, scsiBusExternalDriver, numDrivesInternal, sliceDriveSizeBytes, biosVersion, memoryMhz, cpuCores, rootDrive, driveSizeBytesInternal, lifecycleVersion, memoryGB, cpuThreads );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("scsiBusInternalDriver", scsiBusInternalDriver);
+        map.put("networkDriver", networkDriver);
+        map.put("biosRevision", biosRevision);
+        map.put("slotOffset", slotOffset);
+        map.put("numCpu", numCpu);
+        map.put("sliceDrives", sliceDrives);
+        map.put("numDrives", numDrives);
+        map.put("kernelCrashDump", kernelCrashDump);
+        map.put("blockDriveSizeBytes", blockDriveSizeBytes);
+        map.put("cpuModel", cpuModel);
+        map.put("bmcFirmwareRevision", bmcFirmwareRevision);
+        map.put("cpuCoresEnabled", cpuCoresEnabled);
+        map.put("fibreChannelModel", fibreChannelModel);
+        map.put("chassisType", chassisType);
+        map.put("bmcIpmiVersion", bmcIpmiVersion);
+        map.put("nodeType", nodeType);
+        map.put("solidfireDefaults", solidfireDefaults);
+        map.put("idracVersion", idracVersion);
+        map.put("blockDrives", blockDrives);
+        map.put("biosVendor", biosVendor);
+        map.put("fibreChannelFirmwareRevision", fibreChannelFirmwareRevision);
+        map.put("scsiBusExternalDriver", scsiBusExternalDriver);
+        map.put("numDrivesInternal", numDrivesInternal);
+        map.put("sliceDriveSizeBytes", sliceDriveSizeBytes);
+        map.put("biosVersion", biosVersion);
+        map.put("memoryMhz", memoryMhz);
+        map.put("cpuCores", cpuCores);
+        map.put("rootDrive", rootDrive);
+        map.put("driveSizeBytesInternal", driveSizeBytesInternal);
+        map.put("lifecycleVersion", lifecycleVersion);
+        map.put("memoryGB", memoryGB);
+        map.put("cpuThreads", cpuThreads);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -528,7 +454,7 @@ public class HardwareConfig  implements Serializable  {
         sb.append(" driveSizeBytesInternal : ").append(driveSizeBytesInternal).append(",");
         sb.append(" lifecycleVersion : ").append(lifecycleVersion).append(",");
         sb.append(" memoryGB : ").append(memoryGB).append(",");
-        sb.append(" cpuThreads : ").append(cpuThreads);
+        sb.append(" cpuThreads : ").append(cpuThreads).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -614,7 +540,7 @@ public class HardwareConfig  implements Serializable  {
                          this.driveSizeBytesInternal,
                          this.lifecycleVersion,
                          this.memoryGB,
-                         this.cpuThreads            );
+                         this.cpuThreads);
         }
 
         private HardwareConfig.Builder buildFrom(final HardwareConfig req) {
@@ -815,5 +741,4 @@ public class HardwareConfig  implements Serializable  {
         }
 
     }
-
 }

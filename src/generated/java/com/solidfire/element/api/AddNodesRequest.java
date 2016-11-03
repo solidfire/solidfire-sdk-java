@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "AddNodes" API Service call.
+ * 
  **/
-public class AddNodesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 2058406478L;
+public class AddNodesRequest implements Serializable {
 
+    public static final long serialVersionUID = 3993935760062895060L;
     @SerializedName("pendingNodes") private Long[] pendingNodes;
 
-    /**
-     * The Request object for the "AddNodes" API Service call.
-     * @param pendingNodes [required] List of PendingNodeIDs for the Nodes to be added. You can obtain the list of Pending Nodes via the ListPendingNodes method.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public AddNodesRequest(Long[] pendingNodes) {
-        this.pendingNodes = pendingNodes;
-    }
-
-    
-    /**
-     * The Request object for the "AddNodes" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public AddNodesRequest() {}
 
-
-    /**
-     * List of PendingNodeIDs for the Nodes to be added. You can obtain the list of Pending Nodes via the ListPendingNodes method.
-     **/
-    public Long[] getPendingNodes() {
-        return this.pendingNodes;
-    }
-
-    public void setPendingNodes(Long[] pendingNodes) {
+    // parameterized constructor
+    @Since("7.0")
+    public AddNodesRequest(
+        Long[] pendingNodes
+    )
+    {
         this.pendingNodes = pendingNodes;
     }
 
-
+    /** 
+     * List of PendingNodeIDs for the Nodes to be added. You can obtain the list of Pending Nodes via the ListPendingNodes method.
+     **/
+    public Long[] getPendingNodes() { return this.pendingNodes; }
+    public void setPendingNodes(Long[] pendingNodes) { 
+        this.pendingNodes = pendingNodes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class AddNodesRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddNodesRequest that = (AddNodesRequest) o;
-        
-
-        return Objects.deepEquals( pendingNodes , that.pendingNodes );
+        return 
+            Objects.equals(pendingNodes, that.pendingNodes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) pendingNodes );
+        return Objects.hash( (Object[])pendingNodes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("pendingNodes", pendingNodes);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" pendingNodes : ").append(Arrays.toString(pendingNodes));
+        sb.append(" pendingNodes : ").append(Arrays.toString(pendingNodes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class AddNodesRequest  implements Serializable  {
 
         public AddNodesRequest build() {
             return new AddNodesRequest (
-                         this.pendingNodes            );
+                         this.pendingNodes);
         }
 
         private AddNodesRequest.Builder buildFrom(final AddNodesRequest req) {
@@ -137,5 +122,4 @@ public class AddNodesRequest  implements Serializable  {
         }
 
     }
-
 }

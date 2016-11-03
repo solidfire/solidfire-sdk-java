@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetHardwareConfig" API Service call.
+ * 
  **/
-public class GetHardwareConfigResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1197898847L;
+public class GetHardwareConfigResult implements Serializable {
 
+    public static final long serialVersionUID = -8177285962521123370L;
     @SerializedName("hardwareConfig") private HardwareConfig hardwareConfig;
 
-    /**
-     * The object returned by the "GetHardwareConfig" API Service call.
-     * @param hardwareConfig [required] List of hardware information and current settings.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetHardwareConfigResult(HardwareConfig hardwareConfig) {
-        this.hardwareConfig = hardwareConfig;
-    }
-
-    
-    /**
-     * The object returned by the "GetHardwareConfig" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetHardwareConfigResult() {}
 
-
-    /**
-     * List of hardware information and current settings.
-     **/
-    public HardwareConfig getHardwareConfig() {
-        return this.hardwareConfig;
-    }
-
-    public void setHardwareConfig(HardwareConfig hardwareConfig) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetHardwareConfigResult(
+        HardwareConfig hardwareConfig
+    )
+    {
         this.hardwareConfig = hardwareConfig;
     }
 
-
+    /** 
+     * List of hardware information and current settings.
+     **/
+    public HardwareConfig getHardwareConfig() { return this.hardwareConfig; }
+    public void setHardwareConfig(HardwareConfig hardwareConfig) { 
+        this.hardwareConfig = hardwareConfig;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class GetHardwareConfigResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetHardwareConfigResult that = (GetHardwareConfigResult) o;
-        
-
-        return Objects.equals( hardwareConfig , that.hardwareConfig );
+        return 
+            Objects.equals(hardwareConfig, that.hardwareConfig);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) hardwareConfig );
+        return Objects.hash( hardwareConfig );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("hardwareConfig", hardwareConfig);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" hardwareConfig : ").append(hardwareConfig);
+        sb.append(" hardwareConfig : ").append(hardwareConfig).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class GetHardwareConfigResult  implements Serializable  {
 
         public GetHardwareConfigResult build() {
             return new GetHardwareConfigResult (
-                         this.hardwareConfig            );
+                         this.hardwareConfig);
         }
 
         private GetHardwareConfigResult.Builder buildFrom(final GetHardwareConfigResult req) {
@@ -137,5 +122,4 @@ public class GetHardwareConfigResult  implements Serializable  {
         }
 
     }
-
 }

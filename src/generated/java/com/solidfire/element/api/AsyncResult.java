@@ -19,66 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The wrapped object returned by the "GetAsyncResult" API Service call.
+ * ['The wrapped object returned by the "GetAsyncResult" API Service call.', '<br/>', '<b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.']['The wrapped object returned by the "GetAsyncResult" API Service call.', '<br/>', '<b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.']['The wrapped object returned by the "GetAsyncResult" API Service call.', '<br/>', '<b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.']
  **/
-public class AsyncResult  implements Serializable  {
 
-    private static final long serialVersionUID = -223964137L;
+public class AsyncResult implements Serializable {
 
+    public static final long serialVersionUID = 4906531700232443044L;
     @SerializedName("message") private String message;
 
-    /**
-     * The wrapped object returned by the "GetAsyncResult" API Service call.
-     * <br/>
-     * <b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.
-     * @param message [required] The return value for the original method call if the call was completed successfully.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public AsyncResult(String message) {
-        this.message = message;
-    }
-
-    
-    /**
-     * The wrapped object returned by the "GetAsyncResult" API Service call.
-     * <br/>
-     * <b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public AsyncResult() {}
 
-
-    /**
-     * The return value for the original method call if the call was completed successfully.
-     **/
-    public String getMessage() {
-        return this.message;
-    }
-
-    public void setMessage(String message) {
+    // parameterized constructor
+    @Since("7.0")
+    public AsyncResult(
+        String message
+    )
+    {
         this.message = message;
     }
 
-
+    /** 
+     * The return value for the original method call if the call was completed successfully.
+     **/
+    public String getMessage() { return this.message; }
+    public void setMessage(String message) { 
+        this.message = message;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -86,23 +62,28 @@ public class AsyncResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         AsyncResult that = (AsyncResult) o;
-        
-
-        return Objects.equals( message , that.message );
+        return 
+            Objects.equals(message, that.message);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) message );
+        return Objects.hash( message );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("message", message);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" message : ").append(message);
+        sb.append(" message : ").append(message).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -126,7 +107,7 @@ public class AsyncResult  implements Serializable  {
 
         public AsyncResult build() {
             return new AsyncResult (
-                         this.message            );
+                         this.message);
         }
 
         private AsyncResult.Builder buildFrom(final AsyncResult req) {
@@ -141,5 +122,4 @@ public class AsyncResult  implements Serializable  {
         }
 
     }
-
 }

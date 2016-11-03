@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "AsyncHandle" API Service call.
+ * 
  **/
-public class AsyncHandleResult  implements Serializable  {
 
-    private static final long serialVersionUID = -362619182L;
+public class AsyncHandleResult implements Serializable {
 
+    public static final long serialVersionUID = -2932335770116448432L;
     @SerializedName("asyncHandle") private Long asyncHandle;
 
-    /**
-     * The object returned by the "AsyncHandle" API Service call.
-     * @param asyncHandle [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public AsyncHandleResult(Long asyncHandle) {
-        this.asyncHandle = asyncHandle;
-    }
-
-    
-    /**
-     * The object returned by the "AsyncHandle" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public AsyncHandleResult() {}
 
-    public Long getAsyncHandle() {
-        return this.asyncHandle;
-    }
-
-    public void setAsyncHandle(Long asyncHandle) {
+    // parameterized constructor
+    @Since("7.0")
+    public AsyncHandleResult(
+        Long asyncHandle
+    )
+    {
         this.asyncHandle = asyncHandle;
     }
 
-
+    /** 
+     **/
+    public Long getAsyncHandle() { return this.asyncHandle; }
+    public void setAsyncHandle(Long asyncHandle) { 
+        this.asyncHandle = asyncHandle;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,23 +61,28 @@ public class AsyncHandleResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         AsyncHandleResult that = (AsyncHandleResult) o;
-        
-
-        return Objects.equals( asyncHandle , that.asyncHandle );
+        return 
+            Objects.equals(asyncHandle, that.asyncHandle);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) asyncHandle );
+        return Objects.hash( asyncHandle );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("asyncHandle", asyncHandle);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" asyncHandle : ").append(asyncHandle);
+        sb.append(" asyncHandle : ").append(asyncHandle).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,7 +106,7 @@ public class AsyncHandleResult  implements Serializable  {
 
         public AsyncHandleResult build() {
             return new AsyncHandleResult (
-                         this.asyncHandle            );
+                         this.asyncHandle);
         }
 
         private AsyncHandleResult.Builder buildFrom(final AsyncHandleResult req) {
@@ -133,5 +121,4 @@ public class AsyncHandleResult  implements Serializable  {
         }
 
     }
-
 }

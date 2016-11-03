@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "AddAccount" API Service call.
+ * 
  **/
-public class AddAccountResult  implements Serializable  {
 
-    private static final long serialVersionUID = 925006241L;
+public class AddAccountResult implements Serializable {
 
+    public static final long serialVersionUID = 8785573545235280037L;
     @SerializedName("accountID") private Long accountID;
 
-    /**
-     * The object returned by the "AddAccount" API Service call.
-     * @param accountID [required] AccountID for the newly created Account.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public AddAccountResult(Long accountID) {
-        this.accountID = accountID;
-    }
-
-    
-    /**
-     * The object returned by the "AddAccount" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public AddAccountResult() {}
 
-
-    /**
-     * AccountID for the newly created Account.
-     **/
-    public Long getAccountID() {
-        return this.accountID;
-    }
-
-    public void setAccountID(Long accountID) {
+    // parameterized constructor
+    @Since("7.0")
+    public AddAccountResult(
+        Long accountID
+    )
+    {
         this.accountID = accountID;
     }
 
-
+    /** 
+     * AccountID for the newly created Account.
+     **/
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
+        this.accountID = accountID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class AddAccountResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddAccountResult that = (AddAccountResult) o;
-        
-
-        return Objects.equals( accountID , that.accountID );
+        return 
+            Objects.equals(accountID, that.accountID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) accountID );
+        return Objects.hash( accountID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("accountID", accountID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" accountID : ").append(accountID);
+        sb.append(" accountID : ").append(accountID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class AddAccountResult  implements Serializable  {
 
         public AddAccountResult build() {
             return new AddAccountResult (
-                         this.accountID            );
+                         this.accountID);
         }
 
         private AddAccountResult.Builder buildFrom(final AddAccountResult req) {
@@ -137,5 +122,4 @@ public class AddAccountResult  implements Serializable  {
         }
 
     }
-
 }

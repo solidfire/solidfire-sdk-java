@@ -19,112 +19,74 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetSnmpInfo" API Service call.
+ * 
  **/
-public class GetSnmpInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1622598915L;
+public class GetSnmpInfoResult implements Serializable {
 
+    public static final long serialVersionUID = -1945868960257895030L;
     @SerializedName("networks") private SnmpNetwork[] networks;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("snmpV3Enabled") private Boolean snmpV3Enabled;
     @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
 
-    /**
-     * The object returned by the "GetSnmpInfo" API Service call.
-     * @param networks [required] List of networks and access types enabled for SNMP.
-     * @param enabled [required] If the nodes in the cluster are configured for SNMP.
-     * @param snmpV3Enabled [required] If the nodes in the cluster are configured for SNMP v3.
-     * @param usmUsers [required] If SNMP v3 is enabled, the values returned is a list of user access parameters for SNMP information from the cluster. This will be returned instead of the "networks" parameter.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetSnmpInfoResult(SnmpNetwork[] networks, Boolean enabled, Boolean snmpV3Enabled, SnmpV3UsmUser[] usmUsers) {
+    public GetSnmpInfoResult() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public GetSnmpInfoResult(
+        SnmpNetwork[] networks,
+        Boolean enabled,
+        Boolean snmpV3Enabled,
+        SnmpV3UsmUser[] usmUsers
+    )
+    {
         this.networks = networks;
         this.enabled = enabled;
         this.snmpV3Enabled = snmpV3Enabled;
         this.usmUsers = usmUsers;
     }
 
-    
-    /**
-     * The object returned by the "GetSnmpInfo" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetSnmpInfoResult() {}
-
-
-    /**
+    /** 
      * List of networks and access types enabled for SNMP.
      * <br/><br/>
      * <b>Note</b>: "networks" will only be present if SNMP V3 is disabled.
      **/
-    public SnmpNetwork[] getNetworks() {
-        return this.networks;
-    }
-
-    public void setNetworks(SnmpNetwork[] networks) {
+    public SnmpNetwork[] getNetworks() { return this.networks; }
+    public void setNetworks(SnmpNetwork[] networks) { 
         this.networks = networks;
     }
-
-
-
-    /**
+    /** 
      * If the nodes in the cluster are configured for SNMP.
      **/
-    public Boolean getEnabled() {
-        return this.enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
+    public Boolean getEnabled() { return this.enabled; }
+    public void setEnabled(Boolean enabled) { 
         this.enabled = enabled;
     }
-
-
-
-    /**
+    /** 
      * If the nodes in the cluster are configured for SNMP v3.
      **/
-    public Boolean getSnmpV3Enabled() {
-        return this.snmpV3Enabled;
-    }
-
-    public void setSnmpV3Enabled(Boolean snmpV3Enabled) {
+    public Boolean getSnmpV3Enabled() { return this.snmpV3Enabled; }
+    public void setSnmpV3Enabled(Boolean snmpV3Enabled) { 
         this.snmpV3Enabled = snmpV3Enabled;
     }
-
-
-
-    /**
+    /** 
      * If SNMP v3 is enabled, the values returned is a list of user access parameters for SNMP information from the cluster. This will be returned instead of the "networks" parameter.
      **/
-    public SnmpV3UsmUser[] getUsmUsers() {
-        return this.usmUsers;
-    }
-
-    public void setUsmUsers(SnmpV3UsmUser[] usmUsers) {
+    public SnmpV3UsmUser[] getUsmUsers() { return this.usmUsers; }
+    public void setUsmUsers(SnmpV3UsmUser[] usmUsers) { 
         this.usmUsers = usmUsers;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -132,19 +94,27 @@ public class GetSnmpInfoResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetSnmpInfoResult that = (GetSnmpInfoResult) o;
-        
-
-        return Objects.deepEquals( networks , that.networks )
-            && Objects.equals( enabled , that.enabled )
-            && Objects.equals( snmpV3Enabled , that.snmpV3Enabled )
-            && Objects.deepEquals( usmUsers , that.usmUsers );
+        return 
+            Objects.equals(networks, that.networks) &&
+            Objects.equals(enabled, that.enabled) &&
+            Objects.equals(snmpV3Enabled, that.snmpV3Enabled) &&
+            Objects.equals(usmUsers, that.usmUsers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( networks, enabled, snmpV3Enabled, usmUsers );
+        return Objects.hash( (Object[])networks, enabled, snmpV3Enabled, (Object[])usmUsers );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("networks", networks);
+        map.put("enabled", enabled);
+        map.put("snmpV3Enabled", snmpV3Enabled);
+        map.put("usmUsers", usmUsers);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -154,7 +124,7 @@ public class GetSnmpInfoResult  implements Serializable  {
         sb.append(" networks : ").append(Arrays.toString(networks)).append(",");
         sb.append(" enabled : ").append(enabled).append(",");
         sb.append(" snmpV3Enabled : ").append(snmpV3Enabled).append(",");
-        sb.append(" usmUsers : ").append(Arrays.toString(usmUsers));
+        sb.append(" usmUsers : ").append(Arrays.toString(usmUsers)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -184,7 +154,7 @@ public class GetSnmpInfoResult  implements Serializable  {
                          this.networks,
                          this.enabled,
                          this.snmpV3Enabled,
-                         this.usmUsers            );
+                         this.usmUsers);
         }
 
         private GetSnmpInfoResult.Builder buildFrom(final GetSnmpInfoResult req) {
@@ -217,5 +187,4 @@ public class GetSnmpInfoResult  implements Serializable  {
         }
 
     }
-
 }

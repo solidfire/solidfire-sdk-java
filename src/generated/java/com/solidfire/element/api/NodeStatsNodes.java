@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class NodeStatsNodes  implements Serializable  {
 
-    private static final long serialVersionUID = 1552009954L;
+public class NodeStatsNodes implements Serializable {
 
+    public static final long serialVersionUID = -628070124108147734L;
     @SerializedName("nodes") private NodeStatsInfo[] nodes;
 
-    /**
-     * 
-     * @param nodes [required] Node activity information for a single node.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public NodeStatsNodes(NodeStatsInfo[] nodes) {
-        this.nodes = nodes;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public NodeStatsNodes() {}
 
-
-    /**
-     * Node activity information for a single node.
-     **/
-    public NodeStatsInfo[] getNodes() {
-        return this.nodes;
-    }
-
-    public void setNodes(NodeStatsInfo[] nodes) {
+    // parameterized constructor
+    @Since("7.0")
+    public NodeStatsNodes(
+        NodeStatsInfo[] nodes
+    )
+    {
         this.nodes = nodes;
     }
 
-
+    /** 
+     * Node activity information for a single node.
+     **/
+    public NodeStatsInfo[] getNodes() { return this.nodes; }
+    public void setNodes(NodeStatsInfo[] nodes) { 
+        this.nodes = nodes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class NodeStatsNodes  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         NodeStatsNodes that = (NodeStatsNodes) o;
-        
-
-        return Objects.deepEquals( nodes , that.nodes );
+        return 
+            Objects.equals(nodes, that.nodes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( (Object[])nodes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodes", nodes);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class NodeStatsNodes  implements Serializable  {
 
         public NodeStatsNodes build() {
             return new NodeStatsNodes (
-                         this.nodes            );
+                         this.nodes);
         }
 
         private NodeStatsNodes.Builder buildFrom(final NodeStatsNodes req) {
@@ -137,5 +122,4 @@ public class NodeStatsNodes  implements Serializable  {
         }
 
     }
-
 }

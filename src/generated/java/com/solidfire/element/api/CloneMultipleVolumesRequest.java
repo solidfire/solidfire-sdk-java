@@ -19,73 +19,52 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "CloneMultipleVolumes" API Service call.
+ * 
  **/
-public class CloneMultipleVolumesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 493827587L;
+public class CloneMultipleVolumesRequest implements Serializable {
 
+    public static final long serialVersionUID = -6275597178319531856L;
     @SerializedName("volumes") private CloneMultipleVolumeParams[] volumes;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
     @SerializedName("newAccountID") private Optional<Long> newAccountID;
 
-    /**
-     * The Request object for the "CloneMultipleVolumes" API Service call.
-     * @param volumes [required] Array of Unique ID for each volume to include in the clone with optional parameters. If optional parameters are not specified, the values will be inherited from the source volumes.
-     * @param access (optional) New default access method for the new volumes if not overridden by information passed in the volumes array.
-     * @param groupSnapshotID (optional) ID of the group snapshot to use as a basis for the clone.
-     * @param newAccountID (optional) New account ID for the volumes if not overridden by information passed in the volumes array.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public CloneMultipleVolumesRequest(CloneMultipleVolumeParams[] volumes, Optional<String> access, Optional<Long> groupSnapshotID, Optional<Long> newAccountID) {
+    public CloneMultipleVolumesRequest() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public CloneMultipleVolumesRequest(
+        CloneMultipleVolumeParams[] volumes,
+        Optional<String> access,
+        Optional<Long> groupSnapshotID,
+        Optional<Long> newAccountID
+    )
+    {
         this.volumes = volumes;
         this.access = (access == null) ? Optional.<String>empty() : access;
         this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : groupSnapshotID;
         this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
 
-    
-    /**
-     * The Request object for the "CloneMultipleVolumes" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public CloneMultipleVolumesRequest() {}
-
-
-    /**
+    /** 
      * Array of Unique ID for each volume to include in the clone with optional parameters. If optional parameters are not specified, the values will be inherited from the source volumes.
      **/
-    public CloneMultipleVolumeParams[] getVolumes() {
-        return this.volumes;
-    }
-
-    public void setVolumes(CloneMultipleVolumeParams[] volumes) {
+    public CloneMultipleVolumeParams[] getVolumes() { return this.volumes; }
+    public void setVolumes(CloneMultipleVolumeParams[] volumes) { 
         this.volumes = volumes;
     }
-
-
-
-    /**
+    /** 
      * New default access method for the new volumes if not overridden by information passed in the volumes array.
      * <br/><b>readOnly</b>: Only read operations are allowed.
      * <br/><b>readWrite</b>: Reads and writes are allowed.
@@ -94,41 +73,24 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
      * <br/><br/>
      * If unspecified, the access settings of the clone will be the same as the source.
      **/
-    public Optional<String> getAccess() {
-        return this.access;
+    public Optional<String> getAccess() { return this.access; }
+    public void setAccess(Optional<String> access) { 
+        this.access = (access == null) ? Optional.<String>empty() : access;
     }
-
-    public void setAccess(String access) {
-        this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
-    }
-
-
-
-    /**
+    /** 
      * ID of the group snapshot to use as a basis for the clone.
      **/
-    public Optional<Long> getGroupSnapshotID() {
-        return this.groupSnapshotID;
+    public Optional<Long> getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(Optional<Long> groupSnapshotID) { 
+        this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : groupSnapshotID;
     }
-
-    public void setGroupSnapshotID(Long groupSnapshotID) {
-        this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : Optional.of(groupSnapshotID);
-    }
-
-
-
-    /**
+    /** 
      * New account ID for the volumes if not overridden by information passed in the volumes array.
      **/
-    public Optional<Long> getNewAccountID() {
-        return this.newAccountID;
+    public Optional<Long> getNewAccountID() { return this.newAccountID; }
+    public void setNewAccountID(Optional<Long> newAccountID) { 
+        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
-
-    public void setNewAccountID(Long newAccountID) {
-        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -136,19 +98,27 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CloneMultipleVolumesRequest that = (CloneMultipleVolumesRequest) o;
-        
-
-        return Objects.deepEquals( volumes , that.volumes )
-            && Objects.equals( access , that.access )
-            && Objects.equals( groupSnapshotID , that.groupSnapshotID )
-            && Objects.equals( newAccountID , that.newAccountID );
+        return 
+            Objects.equals(volumes, that.volumes) &&
+            Objects.equals(access, that.access) &&
+            Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
+            Objects.equals(newAccountID, that.newAccountID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumes, access, groupSnapshotID, newAccountID );
+        return Objects.hash( (Object[])volumes, access, groupSnapshotID, newAccountID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumes", volumes);
+        map.put("access", access);
+        map.put("groupSnapshotID", groupSnapshotID);
+        map.put("newAccountID", newAccountID);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -156,12 +126,15 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
-        if(null != access && access.isPresent())
+        if(null != access && access.isPresent()){
             sb.append(" access : ").append(access.get()).append(",");
-        if(null != groupSnapshotID && groupSnapshotID.isPresent())
+        }
+        if(null != groupSnapshotID && groupSnapshotID.isPresent()){
             sb.append(" groupSnapshotID : ").append(groupSnapshotID.get()).append(",");
-        if(null != newAccountID && newAccountID.isPresent())
-            sb.append(" newAccountID : ").append(newAccountID.get());
+        }
+        if(null != newAccountID && newAccountID.isPresent()){
+            sb.append(" newAccountID : ").append(newAccountID.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -191,7 +164,7 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
                          this.volumes,
                          this.access,
                          this.groupSnapshotID,
-                         this.newAccountID            );
+                         this.newAccountID);
         }
 
         private CloneMultipleVolumesRequest.Builder buildFrom(final CloneMultipleVolumesRequest req) {
@@ -224,5 +197,4 @@ public class CloneMultipleVolumesRequest  implements Serializable  {
         }
 
     }
-
 }

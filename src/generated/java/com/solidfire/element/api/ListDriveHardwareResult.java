@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListDriveHardware" API Service call.
+ * 
  **/
-public class ListDriveHardwareResult  implements Serializable  {
 
-    private static final long serialVersionUID = 2064757888L;
+public class ListDriveHardwareResult implements Serializable {
 
+    public static final long serialVersionUID = -7565014355252238436L;
     @SerializedName("nodes") private NodeDriveHardware[] nodes;
 
-    /**
-     * The object returned by the "ListDriveHardware" API Service call.
-     * @param nodes [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListDriveHardwareResult(NodeDriveHardware[] nodes) {
-        this.nodes = nodes;
-    }
-
-    
-    /**
-     * The object returned by the "ListDriveHardware" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ListDriveHardwareResult() {}
 
-    public NodeDriveHardware[] getNodes() {
-        return this.nodes;
-    }
-
-    public void setNodes(NodeDriveHardware[] nodes) {
+    // parameterized constructor
+    @Since("7.0")
+    public ListDriveHardwareResult(
+        NodeDriveHardware[] nodes
+    )
+    {
         this.nodes = nodes;
     }
 
-
+    /** 
+     **/
+    public NodeDriveHardware[] getNodes() { return this.nodes; }
+    public void setNodes(NodeDriveHardware[] nodes) { 
+        this.nodes = nodes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,23 +61,28 @@ public class ListDriveHardwareResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListDriveHardwareResult that = (ListDriveHardwareResult) o;
-        
-
-        return Objects.deepEquals( nodes , that.nodes );
+        return 
+            Objects.equals(nodes, that.nodes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( (Object[])nodes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodes", nodes);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,7 +106,7 @@ public class ListDriveHardwareResult  implements Serializable  {
 
         public ListDriveHardwareResult build() {
             return new ListDriveHardwareResult (
-                         this.nodes            );
+                         this.nodes);
         }
 
         private ListDriveHardwareResult.Builder buildFrom(final ListDriveHardwareResult req) {
@@ -133,5 +121,4 @@ public class ListDriveHardwareResult  implements Serializable  {
         }
 
     }
-
 }

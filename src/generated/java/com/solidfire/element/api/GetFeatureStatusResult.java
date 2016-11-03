@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetFeatureStatus" API Service call.
+ * 
  **/
-public class GetFeatureStatusResult  implements Serializable  {
 
-    private static final long serialVersionUID = -2044316903L;
+public class GetFeatureStatusResult implements Serializable {
 
+    public static final long serialVersionUID = -7588132468976147671L;
     @SerializedName("features") private FeatureObject[] features;
 
-    /**
-     * The object returned by the "GetFeatureStatus" API Service call.
-     * @param features [required] An array of feature objects indicating the feature name and its status.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetFeatureStatusResult(FeatureObject[] features) {
-        this.features = features;
-    }
-
-    
-    /**
-     * The object returned by the "GetFeatureStatus" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetFeatureStatusResult() {}
 
-
-    /**
-     * An array of feature objects indicating the feature name and its status.
-     **/
-    public FeatureObject[] getFeatures() {
-        return this.features;
-    }
-
-    public void setFeatures(FeatureObject[] features) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetFeatureStatusResult(
+        FeatureObject[] features
+    )
+    {
         this.features = features;
     }
 
-
+    /** 
+     * An array of feature objects indicating the feature name and its status.
+     **/
+    public FeatureObject[] getFeatures() { return this.features; }
+    public void setFeatures(FeatureObject[] features) { 
+        this.features = features;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class GetFeatureStatusResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetFeatureStatusResult that = (GetFeatureStatusResult) o;
-        
-
-        return Objects.deepEquals( features , that.features );
+        return 
+            Objects.equals(features, that.features);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) features );
+        return Objects.hash( (Object[])features );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("features", features);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" features : ").append(Arrays.toString(features));
+        sb.append(" features : ").append(Arrays.toString(features)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class GetFeatureStatusResult  implements Serializable  {
 
         public GetFeatureStatusResult build() {
             return new GetFeatureStatusResult (
-                         this.features            );
+                         this.features);
         }
 
         private GetFeatureStatusResult.Builder buildFrom(final GetFeatureStatusResult req) {
@@ -137,5 +122,4 @@ public class GetFeatureStatusResult  implements Serializable  {
         }
 
     }
-
 }

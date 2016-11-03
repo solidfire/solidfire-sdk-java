@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "SetConfig" API Service call.
+ * 
  **/
-public class SetConfigResult  implements Serializable  {
 
-    private static final long serialVersionUID = 2096126452L;
+public class SetConfigResult implements Serializable {
 
+    public static final long serialVersionUID = 344451354242962146L;
     @SerializedName("config") private Config config;
 
-    /**
-     * The object returned by the "SetConfig" API Service call.
-     * @param config [required] The new and current configuration for the node.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public SetConfigResult(Config config) {
-        this.config = config;
-    }
-
-    
-    /**
-     * The object returned by the "SetConfig" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public SetConfigResult() {}
 
-
-    /**
-     * The new and current configuration for the node.
-     **/
-    public Config getConfig() {
-        return this.config;
-    }
-
-    public void setConfig(Config config) {
+    // parameterized constructor
+    @Since("7.0")
+    public SetConfigResult(
+        Config config
+    )
+    {
         this.config = config;
     }
 
-
+    /** 
+     * The new and current configuration for the node.
+     **/
+    public Config getConfig() { return this.config; }
+    public void setConfig(Config config) { 
+        this.config = config;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class SetConfigResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetConfigResult that = (SetConfigResult) o;
-        
-
-        return Objects.equals( config , that.config );
+        return 
+            Objects.equals(config, that.config);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) config );
+        return Objects.hash( config );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("config", config);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" config : ").append(config);
+        sb.append(" config : ").append(config).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class SetConfigResult  implements Serializable  {
 
         public SetConfigResult build() {
             return new SetConfigResult (
-                         this.config            );
+                         this.config);
         }
 
         private SetConfigResult.Builder buildFrom(final SetConfigResult req) {
@@ -137,5 +122,4 @@ public class SetConfigResult  implements Serializable  {
         }
 
     }
-
 }

@@ -19,65 +19,45 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListSnapshots" API Service call.
+ * 
  **/
-public class ListSnapshotsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1422658649L;
+public class ListSnapshotsResult implements Serializable {
 
+    public static final long serialVersionUID = 3190994173877911303L;
     @SerializedName("snapshots") private Snapshot[] snapshots;
 
-    /**
-     * The object returned by the "ListSnapshots" API Service call.
-     * @param snapshots [required] Information about each snapshot for each volume.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListSnapshotsResult(Snapshot[] snapshots) {
-        this.snapshots = snapshots;
-    }
-
-    
-    /**
-     * The object returned by the "ListSnapshots" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ListSnapshotsResult() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public ListSnapshotsResult(
+        Snapshot[] snapshots
+    )
+    {
+        this.snapshots = snapshots;
+    }
 
-    /**
+    /** 
      * Information about each snapshot for each volume.
      * If volumeID is not provided, all snapshots for all volumes is returned.
      * Snapshots that are in a group will be returned with a "groupID".
      * Snapshots that are enabled for replication.
      **/
-    public Snapshot[] getSnapshots() {
-        return this.snapshots;
-    }
-
-    public void setSnapshots(Snapshot[] snapshots) {
+    public Snapshot[] getSnapshots() { return this.snapshots; }
+    public void setSnapshots(Snapshot[] snapshots) { 
         this.snapshots = snapshots;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -85,23 +65,28 @@ public class ListSnapshotsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListSnapshotsResult that = (ListSnapshotsResult) o;
-        
-
-        return Objects.deepEquals( snapshots , that.snapshots );
+        return 
+            Objects.equals(snapshots, that.snapshots);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) snapshots );
+        return Objects.hash( (Object[])snapshots );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("snapshots", snapshots);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" snapshots : ").append(Arrays.toString(snapshots));
+        sb.append(" snapshots : ").append(Arrays.toString(snapshots)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -125,7 +110,7 @@ public class ListSnapshotsResult  implements Serializable  {
 
         public ListSnapshotsResult build() {
             return new ListSnapshotsResult (
-                         this.snapshots            );
+                         this.snapshots);
         }
 
         private ListSnapshotsResult.Builder buildFrom(final ListSnapshotsResult req) {
@@ -140,5 +125,4 @@ public class ListSnapshotsResult  implements Serializable  {
         }
 
     }
-
 }

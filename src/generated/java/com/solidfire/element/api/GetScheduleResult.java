@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetSchedule" API Service call.
+ * 
  **/
-public class GetScheduleResult  implements Serializable  {
 
-    private static final long serialVersionUID = -2034220319L;
+public class GetScheduleResult implements Serializable {
 
+    public static final long serialVersionUID = 1475592162045554801L;
     @SerializedName("schedule") private Schedule schedule;
 
-    /**
-     * The object returned by the "GetSchedule" API Service call.
-     * @param schedule [required] The schedule attributes.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetScheduleResult(Schedule schedule) {
-        this.schedule = schedule;
-    }
-
-    
-    /**
-     * The object returned by the "GetSchedule" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetScheduleResult() {}
 
-
-    /**
-     * The schedule attributes.
-     **/
-    public Schedule getSchedule() {
-        return this.schedule;
-    }
-
-    public void setSchedule(Schedule schedule) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetScheduleResult(
+        Schedule schedule
+    )
+    {
         this.schedule = schedule;
     }
 
-
+    /** 
+     * The schedule attributes.
+     **/
+    public Schedule getSchedule() { return this.schedule; }
+    public void setSchedule(Schedule schedule) { 
+        this.schedule = schedule;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class GetScheduleResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetScheduleResult that = (GetScheduleResult) o;
-        
-
-        return Objects.equals( schedule , that.schedule );
+        return 
+            Objects.equals(schedule, that.schedule);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) schedule );
+        return Objects.hash( schedule );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("schedule", schedule);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" schedule : ").append(schedule);
+        sb.append(" schedule : ").append(schedule).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class GetScheduleResult  implements Serializable  {
 
         public GetScheduleResult build() {
             return new GetScheduleResult (
-                         this.schedule            );
+                         this.schedule);
         }
 
         private GetScheduleResult.Builder buildFrom(final GetScheduleResult req) {
@@ -137,5 +122,4 @@ public class GetScheduleResult  implements Serializable  {
         }
 
     }
-
 }

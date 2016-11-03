@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ListNodeFibreChannelPortInfo" API Service call.
+ * 
  **/
-public class ListNodeFibreChannelPortInfoRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1861342635L;
+public class ListNodeFibreChannelPortInfoRequest implements Serializable {
 
+    public static final long serialVersionUID = 5004353518930172840L;
     @SerializedName("force") private Optional<Boolean> force;
 
-    /**
-     * The Request object for the "ListNodeFibreChannelPortInfo" API Service call.
-     * @param force (optional) Specify force=true to call method on all member nodes of the cluster.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListNodeFibreChannelPortInfoRequest(Optional<Boolean> force) {
-        this.force = (force == null) ? Optional.<Boolean>empty() : force;
-    }
-
-    
-    /**
-     * The Request object for the "ListNodeFibreChannelPortInfo" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ListNodeFibreChannelPortInfoRequest() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public ListNodeFibreChannelPortInfoRequest(
+        Optional<Boolean> force
+    )
+    {
+        this.force = (force == null) ? Optional.<Boolean>empty() : force;
+    }
 
-    /**
+    /** 
      * Specify force=true to call method on all member nodes of the cluster.
      **/
-    public Optional<Boolean> getForce() {
-        return this.force;
+    public Optional<Boolean> getForce() { return this.force; }
+    public void setForce(Optional<Boolean> force) { 
+        this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
-
-    public void setForce(Boolean force) {
-        this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -82,24 +62,30 @@ public class ListNodeFibreChannelPortInfoRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListNodeFibreChannelPortInfoRequest that = (ListNodeFibreChannelPortInfoRequest) o;
-        
-
-        return Objects.equals( force , that.force );
+        return 
+            Objects.equals(force, that.force);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) force );
+        return Objects.hash( force );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("force", force);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != force && force.isPresent())
-            sb.append(" force : ").append(force.get());
+        if(null != force && force.isPresent()){
+            sb.append(" force : ").append(force.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -123,7 +109,7 @@ public class ListNodeFibreChannelPortInfoRequest  implements Serializable  {
 
         public ListNodeFibreChannelPortInfoRequest build() {
             return new ListNodeFibreChannelPortInfoRequest (
-                         this.force            );
+                         this.force);
         }
 
         private ListNodeFibreChannelPortInfoRequest.Builder buildFrom(final ListNodeFibreChannelPortInfoRequest req) {
@@ -138,5 +124,4 @@ public class ListNodeFibreChannelPortInfoRequest  implements Serializable  {
         }
 
     }
-
 }

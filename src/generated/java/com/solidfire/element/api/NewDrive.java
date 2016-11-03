@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class NewDrive  implements Serializable  {
 
-    private static final long serialVersionUID = -629875949L;
+public class NewDrive implements Serializable {
 
+    public static final long serialVersionUID = -7720744847732639554L;
     @SerializedName("driveID") private Long driveID;
 
-    /**
-     * 
-     * @param driveID [required] A unique identifier for this drive.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public NewDrive(Long driveID) {
-        this.driveID = driveID;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public NewDrive() {}
 
-
-    /**
-     * A unique identifier for this drive.
-     **/
-    public Long getDriveID() {
-        return this.driveID;
-    }
-
-    public void setDriveID(Long driveID) {
+    // parameterized constructor
+    @Since("7.0")
+    public NewDrive(
+        Long driveID
+    )
+    {
         this.driveID = driveID;
     }
 
-
+    /** 
+     * A unique identifier for this drive.
+     **/
+    public Long getDriveID() { return this.driveID; }
+    public void setDriveID(Long driveID) { 
+        this.driveID = driveID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class NewDrive  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         NewDrive that = (NewDrive) o;
-        
-
-        return Objects.equals( driveID , that.driveID );
+        return 
+            Objects.equals(driveID, that.driveID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) driveID );
+        return Objects.hash( driveID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("driveID", driveID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" driveID : ").append(driveID);
+        sb.append(" driveID : ").append(driveID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class NewDrive  implements Serializable  {
 
         public NewDrive build() {
             return new NewDrive (
-                         this.driveID            );
+                         this.driveID);
         }
 
         private NewDrive.Builder buildFrom(final NewDrive req) {
@@ -137,5 +122,4 @@ public class NewDrive  implements Serializable  {
         }
 
     }
-
 }

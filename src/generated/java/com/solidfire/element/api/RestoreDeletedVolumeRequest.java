@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "RestoreDeletedVolume" API Service call.
+ * 
  **/
-public class RestoreDeletedVolumeRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1255521833L;
+public class RestoreDeletedVolumeRequest implements Serializable {
 
+    public static final long serialVersionUID = 5395134700613497933L;
     @SerializedName("volumeID") private Long volumeID;
 
-    /**
-     * The Request object for the "RestoreDeletedVolume" API Service call.
-     * @param volumeID [required] VolumeID for the deleted volume to restore.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public RestoreDeletedVolumeRequest(Long volumeID) {
-        this.volumeID = volumeID;
-    }
-
-    
-    /**
-     * The Request object for the "RestoreDeletedVolume" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public RestoreDeletedVolumeRequest() {}
 
-
-    /**
-     * VolumeID for the deleted volume to restore.
-     **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    public void setVolumeID(Long volumeID) {
+    // parameterized constructor
+    @Since("7.0")
+    public RestoreDeletedVolumeRequest(
+        Long volumeID
+    )
+    {
         this.volumeID = volumeID;
     }
 
-
+    /** 
+     * VolumeID for the deleted volume to restore.
+     **/
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class RestoreDeletedVolumeRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         RestoreDeletedVolumeRequest that = (RestoreDeletedVolumeRequest) o;
-        
-
-        return Objects.equals( volumeID , that.volumeID );
+        return 
+            Objects.equals(volumeID, that.volumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volumeID );
+        return Objects.hash( volumeID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID);
+        sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class RestoreDeletedVolumeRequest  implements Serializable  {
 
         public RestoreDeletedVolumeRequest build() {
             return new RestoreDeletedVolumeRequest (
-                         this.volumeID            );
+                         this.volumeID);
         }
 
         private RestoreDeletedVolumeRequest.Builder buildFrom(final RestoreDeletedVolumeRequest req) {
@@ -137,5 +122,4 @@ public class RestoreDeletedVolumeRequest  implements Serializable  {
         }
 
     }
-
 }

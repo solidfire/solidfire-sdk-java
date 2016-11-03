@@ -19,8 +19,8 @@
 package com.solidfire.element.apiactual;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.javautil.Optional;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 
 import java.io.Serializable;
 import java.util.Arrays;

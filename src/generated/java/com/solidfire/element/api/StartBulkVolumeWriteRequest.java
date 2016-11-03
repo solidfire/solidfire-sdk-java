@@ -19,130 +19,86 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "StartBulkVolumeWrite" API Service call.
+ * 
  **/
-public class StartBulkVolumeWriteRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -504697922L;
+public class StartBulkVolumeWriteRequest implements Serializable {
 
+    public static final long serialVersionUID = -7266294121919800595L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("format") private String format;
     @SerializedName("script") private Optional<String> script;
-    @SerializedName("scriptParameters") private Optional<Object> scriptParameters;
+    @SerializedName("scriptParameters") private Optional<java.util.Map<String, Object>> scriptParameters;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "StartBulkVolumeWrite" API Service call.
-     * @param volumeID [required] ID of the volume to be written to.
-     * @param format [required] The format of the volume data. Can be either:
-     * @param script (optional) Executable name of a script.
-     * @param scriptParameters (optional) JSON parameters to pass to the script.
-     * @param attributes (optional) JSON attributes for the bulk volume job.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public StartBulkVolumeWriteRequest(Long volumeID, String format, Optional<String> script, Optional<Object> scriptParameters, Optional<java.util.Map<String, Object>> attributes) {
-        this.format = format;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.volumeID = volumeID;
-        this.script = (script == null) ? Optional.<String>empty() : script;
-        this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : scriptParameters;
-    }
-
-    
-    /**
-     * The Request object for the "StartBulkVolumeWrite" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public StartBulkVolumeWriteRequest() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public StartBulkVolumeWriteRequest(
+        Long volumeID,
+        String format,
+        Optional<String> script,
+        Optional<java.util.Map<String, Object>> scriptParameters,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.volumeID = volumeID;
+        this.format = format;
+        this.script = (script == null) ? Optional.<String>empty() : script;
+        this.scriptParameters = (scriptParameters == null) ? Optional.<java.util.Map<String, Object>>empty() : scriptParameters;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
 
-    /**
+    /** 
      * ID of the volume to be written to.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    public void setVolumeID(Long volumeID) {
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
-
-
-
-    /**
+    /** 
      * The format of the volume data. Can be either:
      * <br/><b>uncompressed</b>: every byte of the volume is returned without any compression.
      * <br/><b>native</b>: opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk volume write
      **/
-    public String getFormat() {
-        return this.format;
-    }
-
-    public void setFormat(String format) {
+    public String getFormat() { return this.format; }
+    public void setFormat(String format) { 
         this.format = format;
     }
-
-
-
-    /**
+    /** 
      * Executable name of a script.
      * If no script name is given then the key and URL are necessary to access SolidFire nodes.
      * The script runs on the primary node and the key and URL is returned to the script so the local web server can be contacted.
      **/
-    public Optional<String> getScript() {
-        return this.script;
+    public Optional<String> getScript() { return this.script; }
+    public void setScript(Optional<String> script) { 
+        this.script = (script == null) ? Optional.<String>empty() : script;
     }
-
-    public void setScript(String script) {
-        this.script = (script == null) ? Optional.<String>empty() : Optional.of(script);
-    }
-
-
-
-    /**
+    /** 
      * JSON parameters to pass to the script.
      **/
-    public Optional<Object> getScriptParameters() {
-        return this.scriptParameters;
+    public Optional<java.util.Map<String, Object>> getScriptParameters() { return this.scriptParameters; }
+    public void setScriptParameters(Optional<java.util.Map<String, Object>> scriptParameters) { 
+        this.scriptParameters = (scriptParameters == null) ? Optional.<java.util.Map<String, Object>>empty() : scriptParameters;
     }
-
-    public void setScriptParameters(Object scriptParameters) {
-        this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : Optional.of(scriptParameters);
-    }
-
-
-
-    /**
+    /** 
      * JSON attributes for the bulk volume job.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
-
-    public void setAttributes(java.util.Map<String, Object> attributes) {
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -150,13 +106,12 @@ public class StartBulkVolumeWriteRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         StartBulkVolumeWriteRequest that = (StartBulkVolumeWriteRequest) o;
-        
-
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( format , that.format )
-            && Objects.equals( script , that.script )
-            && Objects.equals( scriptParameters , that.scriptParameters )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(format, that.format) &&
+            Objects.equals(script, that.script) &&
+            Objects.equals(scriptParameters, that.scriptParameters) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -165,6 +120,16 @@ public class StartBulkVolumeWriteRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        map.put("format", format);
+        map.put("script", script);
+        map.put("scriptParameters", scriptParameters);
+        map.put("attributes", attributes);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -172,12 +137,15 @@ public class StartBulkVolumeWriteRequest  implements Serializable  {
 
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" format : ").append(format).append(",");
-        if(null != script && script.isPresent())
+        if(null != script && script.isPresent()){
             sb.append(" script : ").append(script.get()).append(",");
-        if(null != scriptParameters && scriptParameters.isPresent())
+        }
+        if(null != scriptParameters && scriptParameters.isPresent()){
             sb.append(" scriptParameters : ").append(scriptParameters.get()).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -198,7 +166,7 @@ public class StartBulkVolumeWriteRequest  implements Serializable  {
         private Long volumeID;
         private String format;
         private Optional<String> script;
-        private Optional<Object> scriptParameters;
+        private Optional<java.util.Map<String, Object>> scriptParameters;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -209,7 +177,7 @@ public class StartBulkVolumeWriteRequest  implements Serializable  {
                          this.format,
                          this.script,
                          this.scriptParameters,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private StartBulkVolumeWriteRequest.Builder buildFrom(final StartBulkVolumeWriteRequest req) {
@@ -237,8 +205,8 @@ public class StartBulkVolumeWriteRequest  implements Serializable  {
             return this;
         }
 
-        public StartBulkVolumeWriteRequest.Builder optionalScriptParameters(final Object scriptParameters) {
-            this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : Optional.of(scriptParameters);
+        public StartBulkVolumeWriteRequest.Builder optionalScriptParameters(final java.util.Map<String, Object> scriptParameters) {
+            this.scriptParameters = (scriptParameters == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(scriptParameters);
             return this;
         }
 
@@ -248,5 +216,4 @@ public class StartBulkVolumeWriteRequest  implements Serializable  {
         }
 
     }
-
 }

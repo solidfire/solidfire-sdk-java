@@ -19,37 +19,24 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "PurgeDeletedVolume" API Service call.
+ * 
  **/
-public class PurgeDeletedVolumeResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1717740149L;
+public class PurgeDeletedVolumeResult implements Serializable {
 
+    public static final long serialVersionUID = -7713536133728787671L;
 
-    /**
-     * The object returned by the "PurgeDeletedVolume" API Service call.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public PurgeDeletedVolumeResult() {
-
-    }
+    public PurgeDeletedVolumeResult() {}
 
 
 
@@ -58,11 +45,14 @@ public class PurgeDeletedVolumeResult  implements Serializable  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
+        PurgeDeletedVolumeResult that = (PurgeDeletedVolumeResult) o;
+
         return true;
     }
 
     @Override
     public int hashCode() {
+
         return this.getClass().hashCode();
     }
 

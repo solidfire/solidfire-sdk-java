@@ -19,80 +19,54 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetNtpInfo" API Service call.
+ * 
  **/
-public class GetNtpInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1588484063L;
+public class GetNtpInfoResult implements Serializable {
 
+    public static final long serialVersionUID = -3054121633811647599L;
     @SerializedName("broadcastclient") private Boolean broadcastclient;
     @SerializedName("servers") private String[] servers;
 
-    /**
-     * The object returned by the "GetNtpInfo" API Service call.
-     * @param broadcastclient [required] Indicates whether or not the nodes in the cluster are listening for broadcast NTP messages. Possible values:
-     * @param servers [required] List of NTP servers.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetNtpInfoResult(Boolean broadcastclient, String[] servers) {
+    public GetNtpInfoResult() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public GetNtpInfoResult(
+        Boolean broadcastclient,
+        String[] servers
+    )
+    {
         this.broadcastclient = broadcastclient;
         this.servers = servers;
     }
 
-    
-    /**
-     * The object returned by the "GetNtpInfo" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetNtpInfoResult() {}
-
-
-    /**
+    /** 
      * Indicates whether or not the nodes in the cluster are listening for broadcast NTP messages. Possible values:
      * true
      * false
      **/
-    public Boolean getBroadcastclient() {
-        return this.broadcastclient;
-    }
-
-    public void setBroadcastclient(Boolean broadcastclient) {
+    public Boolean getBroadcastclient() { return this.broadcastclient; }
+    public void setBroadcastclient(Boolean broadcastclient) { 
         this.broadcastclient = broadcastclient;
     }
-
-
-
-    /**
+    /** 
      * List of NTP servers.
      **/
-    public String[] getServers() {
-        return this.servers;
-    }
-
-    public void setServers(String[] servers) {
+    public String[] getServers() { return this.servers; }
+    public void setServers(String[] servers) { 
         this.servers = servers;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -100,17 +74,23 @@ public class GetNtpInfoResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetNtpInfoResult that = (GetNtpInfoResult) o;
-        
-
-        return Objects.equals( broadcastclient , that.broadcastclient )
-            && Objects.deepEquals( servers , that.servers );
+        return 
+            Objects.equals(broadcastclient, that.broadcastclient) &&
+            Objects.equals(servers, that.servers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( broadcastclient, servers );
+        return Objects.hash( broadcastclient, (Object[])servers );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("broadcastclient", broadcastclient);
+        map.put("servers", servers);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -118,7 +98,7 @@ public class GetNtpInfoResult  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" broadcastclient : ").append(broadcastclient).append(",");
-        sb.append(" servers : ").append(Arrays.toString(servers));
+        sb.append(" servers : ").append(Arrays.toString(servers)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -144,7 +124,7 @@ public class GetNtpInfoResult  implements Serializable  {
         public GetNtpInfoResult build() {
             return new GetNtpInfoResult (
                          this.broadcastclient,
-                         this.servers            );
+                         this.servers);
         }
 
         private GetNtpInfoResult.Builder buildFrom(final GetNtpInfoResult req) {
@@ -165,5 +145,4 @@ public class GetNtpInfoResult  implements Serializable  {
         }
 
     }
-
 }

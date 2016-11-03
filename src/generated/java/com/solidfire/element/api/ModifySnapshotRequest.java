@@ -19,97 +19,65 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ModifySnapshot" API Service call.
+ * 
  **/
-public class ModifySnapshotRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -398415602L;
+public class ModifySnapshotRequest implements Serializable {
 
+    public static final long serialVersionUID = -334314395405117264L;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
 
-    /**
-     * The Request object for the "ModifySnapshot" API Service call.
-     * @param snapshotID [required] ID of the snapshot.
-     * @param expirationTime (optional) Use to set the time when the snapshot should be removed.
-     * @param enableRemoteReplication (optional) Use to enable the snapshot created to be replicated to a remote SolidFire cluster.
-     * @since 8.0
-     **/
-    @Since("8.0")
-    public ModifySnapshotRequest(Long snapshotID, Optional<String> expirationTime, Optional<Boolean> enableRemoteReplication) {
+    // empty constructor
+    @Since("7.0")
+    public ModifySnapshotRequest() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public ModifySnapshotRequest(
+        Long snapshotID,
+        Optional<String> expirationTime,
+        Optional<Boolean> enableRemoteReplication
+    )
+    {
         this.snapshotID = snapshotID;
         this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
 
-    
-    /**
-     * The Request object for the "ModifySnapshot" API Service call.
-     * Empty constructor to support serialization.
-     * @since 8.0
-     **/
-    @Since("8.0")
-    public ModifySnapshotRequest() {}
-
-
-    /**
+    /** 
      * ID of the snapshot.
      **/
-    public Long getSnapshotID() {
-        return this.snapshotID;
-    }
-
-    public void setSnapshotID(Long snapshotID) {
+    public Long getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
-
-
-
-    /**
+    /** 
      * Use to set the time when the snapshot should be removed.
      **/
-    public Optional<String> getExpirationTime() {
-        return this.expirationTime;
+    public Optional<String> getExpirationTime() { return this.expirationTime; }
+    public void setExpirationTime(Optional<String> expirationTime) { 
+        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
     }
-
-    public void setExpirationTime(String expirationTime) {
-        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : Optional.of(expirationTime);
-    }
-
-
-
-    /**
+    /** 
      * Use to enable the snapshot created to be replicated to a remote SolidFire cluster.
      * Possible values:
      * <br/><b>true</b>: the snapshot will be replicated to remote storage.
      * <br/><b>false</b>: Default. No replication.
      **/
-    public Optional<Boolean> getEnableRemoteReplication() {
-        return this.enableRemoteReplication;
+    public Optional<Boolean> getEnableRemoteReplication() { return this.enableRemoteReplication; }
+    public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) { 
+        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
-
-    public void setEnableRemoteReplication(Boolean enableRemoteReplication) {
-        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -117,11 +85,10 @@ public class ModifySnapshotRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifySnapshotRequest that = (ModifySnapshotRequest) o;
-        
-
-        return Objects.equals( snapshotID , that.snapshotID )
-            && Objects.equals( expirationTime , that.expirationTime )
-            && Objects.equals( enableRemoteReplication , that.enableRemoteReplication );
+        return 
+            Objects.equals(snapshotID, that.snapshotID) &&
+            Objects.equals(expirationTime, that.expirationTime) &&
+            Objects.equals(enableRemoteReplication, that.enableRemoteReplication);
     }
 
     @Override
@@ -130,16 +97,26 @@ public class ModifySnapshotRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("snapshotID", snapshotID);
+        map.put("expirationTime", expirationTime);
+        map.put("enableRemoteReplication", enableRemoteReplication);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
         sb.append(" snapshotID : ").append(snapshotID).append(",");
-        if(null != expirationTime && expirationTime.isPresent())
+        if(null != expirationTime && expirationTime.isPresent()){
             sb.append(" expirationTime : ").append(expirationTime.get()).append(",");
-        if(null != enableRemoteReplication && enableRemoteReplication.isPresent())
-            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication.get());
+        }
+        if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
+            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -167,7 +144,7 @@ public class ModifySnapshotRequest  implements Serializable  {
             return new ModifySnapshotRequest (
                          this.snapshotID,
                          this.expirationTime,
-                         this.enableRemoteReplication            );
+                         this.enableRemoteReplication);
         }
 
         private ModifySnapshotRequest.Builder buildFrom(final ModifySnapshotRequest req) {
@@ -194,5 +171,4 @@ public class ModifySnapshotRequest  implements Serializable  {
         }
 
     }
-
 }

@@ -19,70 +19,50 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetAPI" API Service call.
+ * 
  **/
-public class GetAPIResult  implements Serializable  {
 
-    private static final long serialVersionUID = 478491697L;
+public class GetAPIResult implements Serializable {
 
+    public static final long serialVersionUID = -334735413474527149L;
     @SerializedName("currentVersion") private Double currentVersion;
     @SerializedName("supportedVersions") private Double[] supportedVersions;
 
-    /**
-     * The object returned by the "GetAPI" API Service call.
-     * @param currentVersion [required] 
-     * @param supportedVersions [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetAPIResult(Double currentVersion, Double[] supportedVersions) {
-        this.currentVersion = currentVersion;
-        this.supportedVersions = supportedVersions;
-    }
-
-    
-    /**
-     * The object returned by the "GetAPI" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetAPIResult() {}
 
-    public Double getCurrentVersion() {
-        return this.currentVersion;
-    }
-
-    public void setCurrentVersion(Double currentVersion) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetAPIResult(
+        Double currentVersion,
+        Double[] supportedVersions
+    )
+    {
         this.currentVersion = currentVersion;
-    }
-
-
-    public Double[] getSupportedVersions() {
-        return this.supportedVersions;
-    }
-
-    public void setSupportedVersions(Double[] supportedVersions) {
         this.supportedVersions = supportedVersions;
     }
 
-
+    /** 
+     **/
+    public Double getCurrentVersion() { return this.currentVersion; }
+    public void setCurrentVersion(Double currentVersion) { 
+        this.currentVersion = currentVersion;
+    }
+    /** 
+     **/
+    public Double[] getSupportedVersions() { return this.supportedVersions; }
+    public void setSupportedVersions(Double[] supportedVersions) { 
+        this.supportedVersions = supportedVersions;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -90,17 +70,23 @@ public class GetAPIResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetAPIResult that = (GetAPIResult) o;
-        
-
-        return Objects.equals( currentVersion , that.currentVersion )
-            && Objects.deepEquals( supportedVersions , that.supportedVersions );
+        return 
+            Objects.equals(currentVersion, that.currentVersion) &&
+            Objects.equals(supportedVersions, that.supportedVersions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( currentVersion, supportedVersions );
+        return Objects.hash( currentVersion, (Object[])supportedVersions );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("currentVersion", currentVersion);
+        map.put("supportedVersions", supportedVersions);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -108,7 +94,7 @@ public class GetAPIResult  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" currentVersion : ").append(currentVersion).append(",");
-        sb.append(" supportedVersions : ").append(Arrays.toString(supportedVersions));
+        sb.append(" supportedVersions : ").append(Arrays.toString(supportedVersions)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -134,7 +120,7 @@ public class GetAPIResult  implements Serializable  {
         public GetAPIResult build() {
             return new GetAPIResult (
                          this.currentVersion,
-                         this.supportedVersions            );
+                         this.supportedVersions);
         }
 
         private GetAPIResult.Builder buildFrom(final GetAPIResult req) {
@@ -155,5 +141,4 @@ public class GetAPIResult  implements Serializable  {
         }
 
     }
-
 }

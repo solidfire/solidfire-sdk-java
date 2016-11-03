@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * A node refers to an individual machine in a cluster.
+ * ['A node refers to an individual machine in a cluster.', 'Each active node hosts a master service, which is responsible for managing the drives and other services on its node.', 'After a node is made active, its drives will become available for addition to the cluster.']['A node refers to an individual machine in a cluster.', 'Each active node hosts a master service, which is responsible for managing the drives and other services on its node.', 'After a node is made active, its drives will become available for addition to the cluster.']['A node refers to an individual machine in a cluster.', 'Each active node hosts a master service, which is responsible for managing the drives and other services on its node.', 'After a node is made active, its drives will become available for addition to the cluster.']
  **/
-public class Node  implements Serializable  {
 
-    private static final long serialVersionUID = -249558084L;
+public class Node implements Serializable {
 
+    public static final long serialVersionUID = -7985492147846592224L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("associatedMasterServiceID") private Long associatedMasterServiceID;
     @SerializedName("associatedFServiceID") private Long associatedFServiceID;
@@ -54,239 +46,151 @@ public class Node  implements Serializable  {
     @SerializedName("mipi") private String mipi;
     @SerializedName("sip") private String sip;
     @SerializedName("sipi") private String sipi;
-    @SerializedName("uuid") private java.util.UUID uuid;
+    @SerializedName("uuid") private UUIDNullable uuid;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
-    /**
-     * A node refers to an individual machine in a cluster.
-     * Each active node hosts a master service, which is responsible for managing the drives and other services on its node.
-     * After a node is made active, its drives will become available for addition to the cluster.
-     * @param nodeID [required] The unique identifier for this node.
-     * @param associatedMasterServiceID [required] The master service responsible for controlling other services on this node.
-     * @param associatedFServiceID [required] 
-     * @param fibreChannelTargetPortGroup [required] 
-     * @param name [required] 
-     * @param platformInfo [required] Information about the platform this node is.
-     * @param softwareVersion [required] The version of SolidFire software this node is currently running.
-     * @param cip [required] IP address used for both intra- and inter-cluster communication.
-     * @param cipi [required] The machine's name for the "cip" interface.
-     * @param mip [required] IP address used for cluster management (hosting the API and web site).
-     * @param mipi [required] The machine's name for the "mip" interface.
-     * @param sip [required] IP address used for iSCSI traffic.
-     * @param sipi [required] The machine's name for the "sip" interface.
-     * @param uuid [required] UUID of node.
-     * @param attributes [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public Node(Long nodeID, Long associatedMasterServiceID, Long associatedFServiceID, String fibreChannelTargetPortGroup, String name, Platform platformInfo, String softwareVersion, String cip, String cipi, String mip, String mipi, String sip, String sipi, java.util.UUID uuid, java.util.Map<String, Object> attributes) {
-        this.name = name;
-        this.sip = sip;
-        this.cipi = cipi;
-        this.softwareVersion = softwareVersion;
-        this.uuid = uuid;
-        this.associatedFServiceID = associatedFServiceID;
-        this.attributes = attributes;
-        this.associatedMasterServiceID = associatedMasterServiceID;
-        this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
-        this.cip = cip;
-        this.platformInfo = platformInfo;
-        this.mip = mip;
-        this.sipi = sipi;
-        this.nodeID = nodeID;
-        this.mipi = mipi;
-    }
-
-    
-    /**
-     * A node refers to an individual machine in a cluster.
-     * Each active node hosts a master service, which is responsible for managing the drives and other services on its node.
-     * After a node is made active, its drives will become available for addition to the cluster.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public Node() {}
 
-
-    /**
-     * The unique identifier for this node.
-     **/
-    public Long getNodeID() {
-        return this.nodeID;
-    }
-
-    public void setNodeID(Long nodeID) {
+    // parameterized constructor
+    @Since("7.0")
+    public Node(
+        Long nodeID,
+        Long associatedMasterServiceID,
+        Long associatedFServiceID,
+        String fibreChannelTargetPortGroup,
+        String name,
+        Platform platformInfo,
+        String softwareVersion,
+        String cip,
+        String cipi,
+        String mip,
+        String mipi,
+        String sip,
+        String sipi,
+        UUIDNullable uuid,
+        java.util.Map<String, Object> attributes
+    )
+    {
         this.nodeID = nodeID;
-    }
-
-
-
-    /**
-     * The master service responsible for controlling other services on this node.
-     **/
-    public Long getAssociatedMasterServiceID() {
-        return this.associatedMasterServiceID;
-    }
-
-    public void setAssociatedMasterServiceID(Long associatedMasterServiceID) {
         this.associatedMasterServiceID = associatedMasterServiceID;
-    }
-
-
-    public Long getAssociatedFServiceID() {
-        return this.associatedFServiceID;
-    }
-
-    public void setAssociatedFServiceID(Long associatedFServiceID) {
         this.associatedFServiceID = associatedFServiceID;
-    }
-
-
-    public String getFibreChannelTargetPortGroup() {
-        return this.fibreChannelTargetPortGroup;
-    }
-
-    public void setFibreChannelTargetPortGroup(String fibreChannelTargetPortGroup) {
         this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
-    }
-
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-
-
-    /**
-     * Information about the platform this node is.
-     **/
-    public Platform getPlatformInfo() {
-        return this.platformInfo;
-    }
-
-    public void setPlatformInfo(Platform platformInfo) {
         this.platformInfo = platformInfo;
-    }
-
-
-
-    /**
-     * The version of SolidFire software this node is currently running.
-     **/
-    public String getSoftwareVersion() {
-        return this.softwareVersion;
-    }
-
-    public void setSoftwareVersion(String softwareVersion) {
         this.softwareVersion = softwareVersion;
-    }
-
-
-
-    /**
-     * IP address used for both intra- and inter-cluster communication.
-     **/
-    public String getCip() {
-        return this.cip;
-    }
-
-    public void setCip(String cip) {
         this.cip = cip;
-    }
-
-
-
-    /**
-     * The machine's name for the "cip" interface.
-     **/
-    public String getCipi() {
-        return this.cipi;
-    }
-
-    public void setCipi(String cipi) {
         this.cipi = cipi;
-    }
-
-
-
-    /**
-     * IP address used for cluster management (hosting the API and web site).
-     **/
-    public String getMip() {
-        return this.mip;
-    }
-
-    public void setMip(String mip) {
         this.mip = mip;
-    }
-
-
-
-    /**
-     * The machine's name for the "mip" interface.
-     **/
-    public String getMipi() {
-        return this.mipi;
-    }
-
-    public void setMipi(String mipi) {
         this.mipi = mipi;
-    }
-
-
-
-    /**
-     * IP address used for iSCSI traffic.
-     **/
-    public String getSip() {
-        return this.sip;
-    }
-
-    public void setSip(String sip) {
         this.sip = sip;
-    }
-
-
-
-    /**
-     * The machine's name for the "sip" interface.
-     **/
-    public String getSipi() {
-        return this.sipi;
-    }
-
-    public void setSipi(String sipi) {
         this.sipi = sipi;
-    }
-
-
-
-    /**
-     * UUID of node.
-     **/
-    public java.util.UUID getUuid() {
-        return this.uuid;
-    }
-
-    public void setUuid(java.util.UUID uuid) {
         this.uuid = uuid;
-    }
-
-
-    public java.util.Map<String, Object> getAttributes() {
-        return this.attributes;
-    }
-
-    public void setAttributes(java.util.Map<String, Object> attributes) {
         this.attributes = attributes;
     }
 
-
+    /** 
+     * The unique identifier for this node.
+     **/
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
+    }
+    /** 
+     * The master service responsible for controlling other services on this node.
+     **/
+    public Long getAssociatedMasterServiceID() { return this.associatedMasterServiceID; }
+    public void setAssociatedMasterServiceID(Long associatedMasterServiceID) { 
+        this.associatedMasterServiceID = associatedMasterServiceID;
+    }
+    /** 
+     **/
+    public Long getAssociatedFServiceID() { return this.associatedFServiceID; }
+    public void setAssociatedFServiceID(Long associatedFServiceID) { 
+        this.associatedFServiceID = associatedFServiceID;
+    }
+    /** 
+     **/
+    public String getFibreChannelTargetPortGroup() { return this.fibreChannelTargetPortGroup; }
+    public void setFibreChannelTargetPortGroup(String fibreChannelTargetPortGroup) { 
+        this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
+    }
+    /** 
+     **/
+    public String getName() { return this.name; }
+    public void setName(String name) { 
+        this.name = name;
+    }
+    /** 
+     * Information about the platform this node is.
+     **/
+    public Platform getPlatformInfo() { return this.platformInfo; }
+    public void setPlatformInfo(Platform platformInfo) { 
+        this.platformInfo = platformInfo;
+    }
+    /** 
+     * The version of SolidFire software this node is currently running.
+     **/
+    public String getSoftwareVersion() { return this.softwareVersion; }
+    public void setSoftwareVersion(String softwareVersion) { 
+        this.softwareVersion = softwareVersion;
+    }
+    /** 
+     * IP address used for both intra- and inter-cluster communication.
+     **/
+    public String getCip() { return this.cip; }
+    public void setCip(String cip) { 
+        this.cip = cip;
+    }
+    /** 
+     * The machine's name for the "cip" interface.
+     **/
+    public String getCipi() { return this.cipi; }
+    public void setCipi(String cipi) { 
+        this.cipi = cipi;
+    }
+    /** 
+     * IP address used for cluster management (hosting the API and web site).
+     **/
+    public String getMip() { return this.mip; }
+    public void setMip(String mip) { 
+        this.mip = mip;
+    }
+    /** 
+     * The machine's name for the "mip" interface.
+     **/
+    public String getMipi() { return this.mipi; }
+    public void setMipi(String mipi) { 
+        this.mipi = mipi;
+    }
+    /** 
+     * IP address used for iSCSI traffic.
+     **/
+    public String getSip() { return this.sip; }
+    public void setSip(String sip) { 
+        this.sip = sip;
+    }
+    /** 
+     * The machine's name for the "sip" interface.
+     **/
+    public String getSipi() { return this.sipi; }
+    public void setSipi(String sipi) { 
+        this.sipi = sipi;
+    }
+    /** 
+     * UUID of node.
+     **/
+    public UUIDNullable getUuid() { return this.uuid; }
+    public void setUuid(UUIDNullable uuid) { 
+        this.uuid = uuid;
+    }
+    /** 
+     **/
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
+        this.attributes = attributes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -294,23 +198,22 @@ public class Node  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         Node that = (Node) o;
-        
-
-        return Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( associatedMasterServiceID , that.associatedMasterServiceID )
-            && Objects.equals( associatedFServiceID , that.associatedFServiceID )
-            && Objects.equals( fibreChannelTargetPortGroup , that.fibreChannelTargetPortGroup )
-            && Objects.equals( name , that.name )
-            && Objects.equals( platformInfo , that.platformInfo )
-            && Objects.equals( softwareVersion , that.softwareVersion )
-            && Objects.equals( cip , that.cip )
-            && Objects.equals( cipi , that.cipi )
-            && Objects.equals( mip , that.mip )
-            && Objects.equals( mipi , that.mipi )
-            && Objects.equals( sip , that.sip )
-            && Objects.equals( sipi , that.sipi )
-            && Objects.equals( uuid , that.uuid )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(nodeID, that.nodeID) &&
+            Objects.equals(associatedMasterServiceID, that.associatedMasterServiceID) &&
+            Objects.equals(associatedFServiceID, that.associatedFServiceID) &&
+            Objects.equals(fibreChannelTargetPortGroup, that.fibreChannelTargetPortGroup) &&
+            Objects.equals(name, that.name) &&
+            Objects.equals(platformInfo, that.platformInfo) &&
+            Objects.equals(softwareVersion, that.softwareVersion) &&
+            Objects.equals(cip, that.cip) &&
+            Objects.equals(cipi, that.cipi) &&
+            Objects.equals(mip, that.mip) &&
+            Objects.equals(mipi, that.mipi) &&
+            Objects.equals(sip, that.sip) &&
+            Objects.equals(sipi, that.sipi) &&
+            Objects.equals(uuid, that.uuid) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -318,6 +221,26 @@ public class Node  implements Serializable  {
         return Objects.hash( nodeID, associatedMasterServiceID, associatedFServiceID, fibreChannelTargetPortGroup, name, platformInfo, softwareVersion, cip, cipi, mip, mipi, sip, sipi, uuid, attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodeID", nodeID);
+        map.put("associatedMasterServiceID", associatedMasterServiceID);
+        map.put("associatedFServiceID", associatedFServiceID);
+        map.put("fibreChannelTargetPortGroup", fibreChannelTargetPortGroup);
+        map.put("name", name);
+        map.put("platformInfo", platformInfo);
+        map.put("softwareVersion", softwareVersion);
+        map.put("cip", cip);
+        map.put("cipi", cipi);
+        map.put("mip", mip);
+        map.put("mipi", mipi);
+        map.put("sip", sip);
+        map.put("sipi", sipi);
+        map.put("uuid", uuid);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -338,7 +261,7 @@ public class Node  implements Serializable  {
         sb.append(" sip : ").append(sip).append(",");
         sb.append(" sipi : ").append(sipi).append(",");
         sb.append(" uuid : ").append(uuid).append(",");
-        sb.append(" attributes : ").append(attributes);
+        sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -369,7 +292,7 @@ public class Node  implements Serializable  {
         private String mipi;
         private String sip;
         private String sipi;
-        private java.util.UUID uuid;
+        private UUIDNullable uuid;
         private java.util.Map<String, Object> attributes;
 
         private Builder() { }
@@ -390,7 +313,7 @@ public class Node  implements Serializable  {
                          this.sip,
                          this.sipi,
                          this.uuid,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private Node.Builder buildFrom(final Node req) {
@@ -478,7 +401,7 @@ public class Node  implements Serializable  {
             return this;
         }
 
-        public Node.Builder uuid(final java.util.UUID uuid) {
+        public Node.Builder uuid(final UUIDNullable uuid) {
             this.uuid = uuid;
             return this;
         }
@@ -489,5 +412,4 @@ public class Node  implements Serializable  {
         }
 
     }
-
 }

@@ -104,14 +104,12 @@ public class ElementServiceAdaptor {
      * object using the Frequency classes that delineate different types of scheduling frequencies.
      *
      * @param sfe     An instance of SolidFireElement
-     * @param request The original request object.
      * @return a ListScheduleResult with the modified simple schedule objects
      */
-    public static ListSchedulesResult listSchedules(final SolidFireElement sfe, final ListSchedulesRequest request) {
+    public static ListSchedulesResult listSchedules(final SolidFireElement sfe) {
         if (sfe == null) throw new IllegalArgumentException("SolidFireElement was null");
 
-        if (request == null) throw new IllegalArgumentException("ListSchedulesRequest was null");
-        return ScheduleAdaptor.listSchedules(sfe, request);
+        return ScheduleAdaptor.listSchedules(sfe);
     }
 
     /**

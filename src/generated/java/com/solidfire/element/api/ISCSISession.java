@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class ISCSISession  implements Serializable  {
 
-    private static final long serialVersionUID = 1904990967L;
+public class ISCSISession implements Serializable {
 
+    public static final long serialVersionUID = -1637168637781139879L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("accountName") private String accountName;
     @SerializedName("driveID") private Long driveID;
@@ -54,155 +46,113 @@ public class ISCSISession  implements Serializable  {
     @SerializedName("virtualNetworkID") private String virtualNetworkID;
     @SerializedName("volumeID") private Long volumeID;
 
-    /**
-     * 
-     * @param accountID [required] 
-     * @param accountName [required] 
-     * @param driveID [required] 
-     * @param initiatorIP [required] 
-     * @param initiatorName [required] 
-     * @param nodeID [required] 
-     * @param serviceID [required] 
-     * @param sessionID [required] 
-     * @param targetName [required] 
-     * @param targetIP [required] 
-     * @param virtualNetworkID [required] 
-     * @param volumeID [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ISCSISession(Long accountID, String accountName, Long driveID, String initiatorIP, String initiatorName, Long nodeID, Long serviceID, Long sessionID, String targetName, String targetIP, String virtualNetworkID, Long volumeID) {
-        this.accountName = accountName;
-        this.initiatorIP = initiatorIP;
-        this.virtualNetworkID = virtualNetworkID;
-        this.targetIP = targetIP;
-        this.accountID = accountID;
-        this.sessionID = sessionID;
-        this.targetName = targetName;
-        this.volumeID = volumeID;
-        this.driveID = driveID;
-        this.nodeID = nodeID;
-        this.initiatorName = initiatorName;
-        this.serviceID = serviceID;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ISCSISession() {}
 
-    public Long getAccountID() {
-        return this.accountID;
-    }
-
-    public void setAccountID(Long accountID) {
+    // parameterized constructor
+    @Since("7.0")
+    public ISCSISession(
+        Long accountID,
+        String accountName,
+        Long driveID,
+        String initiatorIP,
+        String initiatorName,
+        Long nodeID,
+        Long serviceID,
+        Long sessionID,
+        String targetName,
+        String targetIP,
+        String virtualNetworkID,
+        Long volumeID
+    )
+    {
         this.accountID = accountID;
-    }
-
-
-    public String getAccountName() {
-        return this.accountName;
-    }
-
-    public void setAccountName(String accountName) {
         this.accountName = accountName;
-    }
-
-
-    public Long getDriveID() {
-        return this.driveID;
-    }
-
-    public void setDriveID(Long driveID) {
         this.driveID = driveID;
-    }
-
-
-    public String getInitiatorIP() {
-        return this.initiatorIP;
-    }
-
-    public void setInitiatorIP(String initiatorIP) {
         this.initiatorIP = initiatorIP;
-    }
-
-
-    public String getInitiatorName() {
-        return this.initiatorName;
-    }
-
-    public void setInitiatorName(String initiatorName) {
         this.initiatorName = initiatorName;
-    }
-
-
-    public Long getNodeID() {
-        return this.nodeID;
-    }
-
-    public void setNodeID(Long nodeID) {
         this.nodeID = nodeID;
-    }
-
-
-    public Long getServiceID() {
-        return this.serviceID;
-    }
-
-    public void setServiceID(Long serviceID) {
         this.serviceID = serviceID;
-    }
-
-
-    public Long getSessionID() {
-        return this.sessionID;
-    }
-
-    public void setSessionID(Long sessionID) {
         this.sessionID = sessionID;
-    }
-
-
-    public String getTargetName() {
-        return this.targetName;
-    }
-
-    public void setTargetName(String targetName) {
         this.targetName = targetName;
-    }
-
-
-    public String getTargetIP() {
-        return this.targetIP;
-    }
-
-    public void setTargetIP(String targetIP) {
         this.targetIP = targetIP;
-    }
-
-
-    public String getVirtualNetworkID() {
-        return this.virtualNetworkID;
-    }
-
-    public void setVirtualNetworkID(String virtualNetworkID) {
         this.virtualNetworkID = virtualNetworkID;
-    }
-
-
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    public void setVolumeID(Long volumeID) {
         this.volumeID = volumeID;
     }
 
-
+    /** 
+     **/
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
+        this.accountID = accountID;
+    }
+    /** 
+     **/
+    public String getAccountName() { return this.accountName; }
+    public void setAccountName(String accountName) { 
+        this.accountName = accountName;
+    }
+    /** 
+     **/
+    public Long getDriveID() { return this.driveID; }
+    public void setDriveID(Long driveID) { 
+        this.driveID = driveID;
+    }
+    /** 
+     **/
+    public String getInitiatorIP() { return this.initiatorIP; }
+    public void setInitiatorIP(String initiatorIP) { 
+        this.initiatorIP = initiatorIP;
+    }
+    /** 
+     **/
+    public String getInitiatorName() { return this.initiatorName; }
+    public void setInitiatorName(String initiatorName) { 
+        this.initiatorName = initiatorName;
+    }
+    /** 
+     **/
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
+    }
+    /** 
+     **/
+    public Long getServiceID() { return this.serviceID; }
+    public void setServiceID(Long serviceID) { 
+        this.serviceID = serviceID;
+    }
+    /** 
+     **/
+    public Long getSessionID() { return this.sessionID; }
+    public void setSessionID(Long sessionID) { 
+        this.sessionID = sessionID;
+    }
+    /** 
+     **/
+    public String getTargetName() { return this.targetName; }
+    public void setTargetName(String targetName) { 
+        this.targetName = targetName;
+    }
+    /** 
+     **/
+    public String getTargetIP() { return this.targetIP; }
+    public void setTargetIP(String targetIP) { 
+        this.targetIP = targetIP;
+    }
+    /** 
+     **/
+    public String getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(String virtualNetworkID) { 
+        this.virtualNetworkID = virtualNetworkID;
+    }
+    /** 
+     **/
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -210,20 +160,19 @@ public class ISCSISession  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ISCSISession that = (ISCSISession) o;
-        
-
-        return Objects.equals( accountID , that.accountID )
-            && Objects.equals( accountName , that.accountName )
-            && Objects.equals( driveID , that.driveID )
-            && Objects.equals( initiatorIP , that.initiatorIP )
-            && Objects.equals( initiatorName , that.initiatorName )
-            && Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( serviceID , that.serviceID )
-            && Objects.equals( sessionID , that.sessionID )
-            && Objects.equals( targetName , that.targetName )
-            && Objects.equals( targetIP , that.targetIP )
-            && Objects.equals( virtualNetworkID , that.virtualNetworkID )
-            && Objects.equals( volumeID , that.volumeID );
+        return 
+            Objects.equals(accountID, that.accountID) &&
+            Objects.equals(accountName, that.accountName) &&
+            Objects.equals(driveID, that.driveID) &&
+            Objects.equals(initiatorIP, that.initiatorIP) &&
+            Objects.equals(initiatorName, that.initiatorName) &&
+            Objects.equals(nodeID, that.nodeID) &&
+            Objects.equals(serviceID, that.serviceID) &&
+            Objects.equals(sessionID, that.sessionID) &&
+            Objects.equals(targetName, that.targetName) &&
+            Objects.equals(targetIP, that.targetIP) &&
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
+            Objects.equals(volumeID, that.volumeID);
     }
 
     @Override
@@ -231,6 +180,23 @@ public class ISCSISession  implements Serializable  {
         return Objects.hash( accountID, accountName, driveID, initiatorIP, initiatorName, nodeID, serviceID, sessionID, targetName, targetIP, virtualNetworkID, volumeID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("accountID", accountID);
+        map.put("accountName", accountName);
+        map.put("driveID", driveID);
+        map.put("initiatorIP", initiatorIP);
+        map.put("initiatorName", initiatorName);
+        map.put("nodeID", nodeID);
+        map.put("serviceID", serviceID);
+        map.put("sessionID", sessionID);
+        map.put("targetName", targetName);
+        map.put("targetIP", targetIP);
+        map.put("virtualNetworkID", virtualNetworkID);
+        map.put("volumeID", volumeID);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -248,7 +214,7 @@ public class ISCSISession  implements Serializable  {
         sb.append(" targetName : ").append(targetName).append(",");
         sb.append(" targetIP : ").append(targetIP).append(",");
         sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
-        sb.append(" volumeID : ").append(volumeID);
+        sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -294,7 +260,7 @@ public class ISCSISession  implements Serializable  {
                          this.targetName,
                          this.targetIP,
                          this.virtualNetworkID,
-                         this.volumeID            );
+                         this.volumeID);
         }
 
         private ISCSISession.Builder buildFrom(final ISCSISession req) {
@@ -375,5 +341,4 @@ public class ISCSISession  implements Serializable  {
         }
 
     }
-
 }

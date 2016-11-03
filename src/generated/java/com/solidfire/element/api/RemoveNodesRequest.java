@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "RemoveNodes" API Service call.
+ * 
  **/
-public class RemoveNodesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -882665361L;
+public class RemoveNodesRequest implements Serializable {
 
+    public static final long serialVersionUID = 4755776002002165092L;
     @SerializedName("nodes") private Long[] nodes;
 
-    /**
-     * The Request object for the "RemoveNodes" API Service call.
-     * @param nodes [required] List of NodeIDs for the nodes to be removed.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public RemoveNodesRequest(Long[] nodes) {
-        this.nodes = nodes;
-    }
-
-    
-    /**
-     * The Request object for the "RemoveNodes" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public RemoveNodesRequest() {}
 
-
-    /**
-     * List of NodeIDs for the nodes to be removed.
-     **/
-    public Long[] getNodes() {
-        return this.nodes;
-    }
-
-    public void setNodes(Long[] nodes) {
+    // parameterized constructor
+    @Since("7.0")
+    public RemoveNodesRequest(
+        Long[] nodes
+    )
+    {
         this.nodes = nodes;
     }
 
-
+    /** 
+     * List of NodeIDs for the nodes to be removed.
+     **/
+    public Long[] getNodes() { return this.nodes; }
+    public void setNodes(Long[] nodes) { 
+        this.nodes = nodes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class RemoveNodesRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveNodesRequest that = (RemoveNodesRequest) o;
-        
-
-        return Objects.deepEquals( nodes , that.nodes );
+        return 
+            Objects.equals(nodes, that.nodes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( (Object[])nodes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodes", nodes);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class RemoveNodesRequest  implements Serializable  {
 
         public RemoveNodesRequest build() {
             return new RemoveNodesRequest (
-                         this.nodes            );
+                         this.nodes);
         }
 
         private RemoveNodesRequest.Builder buildFrom(final RemoveNodesRequest req) {
@@ -137,5 +122,4 @@ public class RemoveNodesRequest  implements Serializable  {
         }
 
     }
-
 }

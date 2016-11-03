@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class ClusterFaultInfo  implements Serializable  {
 
-    private static final long serialVersionUID = 1498069682L;
+public class ClusterFaultInfo implements Serializable {
 
+    public static final long serialVersionUID = -5303506460547294310L;
     @SerializedName("severity") private String severity;
     @SerializedName("type") private String type;
     @SerializedName("code") private String code;
@@ -53,168 +45,123 @@ public class ClusterFaultInfo  implements Serializable  {
     @SerializedName("clusterFaultID") private Long clusterFaultID;
     @SerializedName("date") private String date;
     @SerializedName("resolvedDate") private String resolvedDate;
-    @SerializedName("data") private Object data;
+    @SerializedName("data") private java.util.Map<String, Object> data;
 
-    /**
-     * 
-     * @param severity [required] 
-     * @param type [required] 
-     * @param code [required] 
-     * @param details [required] 
-     * @param nodeHardwareFaultID [required] 
-     * @param nodeID [required] 
-     * @param serviceID [required] 
-     * @param driveID [required] 
-     * @param resolved [required] 
-     * @param clusterFaultID [required] 
-     * @param date [required] 
-     * @param resolvedDate [required] 
-     * @param data [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ClusterFaultInfo(String severity, String type, String code, String details, Long nodeHardwareFaultID, Long nodeID, Long serviceID, Long driveID, Boolean resolved, Long clusterFaultID, String date, String resolvedDate, Object data) {
-        this.clusterFaultID = clusterFaultID;
-        this.nodeHardwareFaultID = nodeHardwareFaultID;
-        this.data = data;
-        this.code = code;
-        this.resolvedDate = resolvedDate;
-        this.date = date;
-        this.resolved = resolved;
-        this.details = details;
-        this.severity = severity;
-        this.driveID = driveID;
-        this.type = type;
-        this.nodeID = nodeID;
-        this.serviceID = serviceID;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ClusterFaultInfo() {}
 
-    public String getSeverity() {
-        return this.severity;
-    }
-
-    public void setSeverity(String severity) {
+    // parameterized constructor
+    @Since("7.0")
+    public ClusterFaultInfo(
+        String severity,
+        String type,
+        String code,
+        String details,
+        Long nodeHardwareFaultID,
+        Long nodeID,
+        Long serviceID,
+        Long driveID,
+        Boolean resolved,
+        Long clusterFaultID,
+        String date,
+        String resolvedDate,
+        java.util.Map<String, Object> data
+    )
+    {
         this.severity = severity;
-    }
-
-
-    public String getType() {
-        return this.type;
-    }
-
-    public void setType(String type) {
         this.type = type;
-    }
-
-
-    public String getCode() {
-        return this.code;
-    }
-
-    public void setCode(String code) {
         this.code = code;
-    }
-
-
-    public String getDetails() {
-        return this.details;
-    }
-
-    public void setDetails(String details) {
         this.details = details;
-    }
-
-
-    public Long getNodeHardwareFaultID() {
-        return this.nodeHardwareFaultID;
-    }
-
-    public void setNodeHardwareFaultID(Long nodeHardwareFaultID) {
         this.nodeHardwareFaultID = nodeHardwareFaultID;
-    }
-
-
-    public Long getNodeID() {
-        return this.nodeID;
-    }
-
-    public void setNodeID(Long nodeID) {
         this.nodeID = nodeID;
-    }
-
-
-    public Long getServiceID() {
-        return this.serviceID;
-    }
-
-    public void setServiceID(Long serviceID) {
         this.serviceID = serviceID;
-    }
-
-
-    public Long getDriveID() {
-        return this.driveID;
-    }
-
-    public void setDriveID(Long driveID) {
         this.driveID = driveID;
-    }
-
-
-    public Boolean getResolved() {
-        return this.resolved;
-    }
-
-    public void setResolved(Boolean resolved) {
         this.resolved = resolved;
-    }
-
-
-    public Long getClusterFaultID() {
-        return this.clusterFaultID;
-    }
-
-    public void setClusterFaultID(Long clusterFaultID) {
         this.clusterFaultID = clusterFaultID;
-    }
-
-
-    public String getDate() {
-        return this.date;
-    }
-
-    public void setDate(String date) {
         this.date = date;
-    }
-
-
-    public String getResolvedDate() {
-        return this.resolvedDate;
-    }
-
-    public void setResolvedDate(String resolvedDate) {
         this.resolvedDate = resolvedDate;
-    }
-
-
-    public Object getData() {
-        return this.data;
-    }
-
-    public void setData(Object data) {
         this.data = data;
     }
 
-
+    /** 
+     **/
+    public String getSeverity() { return this.severity; }
+    public void setSeverity(String severity) { 
+        this.severity = severity;
+    }
+    /** 
+     **/
+    public String getType() { return this.type; }
+    public void setType(String type) { 
+        this.type = type;
+    }
+    /** 
+     **/
+    public String getCode() { return this.code; }
+    public void setCode(String code) { 
+        this.code = code;
+    }
+    /** 
+     **/
+    public String getDetails() { return this.details; }
+    public void setDetails(String details) { 
+        this.details = details;
+    }
+    /** 
+     **/
+    public Long getNodeHardwareFaultID() { return this.nodeHardwareFaultID; }
+    public void setNodeHardwareFaultID(Long nodeHardwareFaultID) { 
+        this.nodeHardwareFaultID = nodeHardwareFaultID;
+    }
+    /** 
+     **/
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
+    }
+    /** 
+     **/
+    public Long getServiceID() { return this.serviceID; }
+    public void setServiceID(Long serviceID) { 
+        this.serviceID = serviceID;
+    }
+    /** 
+     **/
+    public Long getDriveID() { return this.driveID; }
+    public void setDriveID(Long driveID) { 
+        this.driveID = driveID;
+    }
+    /** 
+     **/
+    public Boolean getResolved() { return this.resolved; }
+    public void setResolved(Boolean resolved) { 
+        this.resolved = resolved;
+    }
+    /** 
+     **/
+    public Long getClusterFaultID() { return this.clusterFaultID; }
+    public void setClusterFaultID(Long clusterFaultID) { 
+        this.clusterFaultID = clusterFaultID;
+    }
+    /** 
+     **/
+    public String getDate() { return this.date; }
+    public void setDate(String date) { 
+        this.date = date;
+    }
+    /** 
+     **/
+    public String getResolvedDate() { return this.resolvedDate; }
+    public void setResolvedDate(String resolvedDate) { 
+        this.resolvedDate = resolvedDate;
+    }
+    /** 
+     **/
+    public java.util.Map<String, Object> getData() { return this.data; }
+    public void setData(java.util.Map<String, Object> data) { 
+        this.data = data;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -222,21 +169,20 @@ public class ClusterFaultInfo  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClusterFaultInfo that = (ClusterFaultInfo) o;
-        
-
-        return Objects.equals( severity , that.severity )
-            && Objects.equals( type , that.type )
-            && Objects.equals( code , that.code )
-            && Objects.equals( details , that.details )
-            && Objects.equals( nodeHardwareFaultID , that.nodeHardwareFaultID )
-            && Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( serviceID , that.serviceID )
-            && Objects.equals( driveID , that.driveID )
-            && Objects.equals( resolved , that.resolved )
-            && Objects.equals( clusterFaultID , that.clusterFaultID )
-            && Objects.equals( date , that.date )
-            && Objects.equals( resolvedDate , that.resolvedDate )
-            && Objects.equals( data , that.data );
+        return 
+            Objects.equals(severity, that.severity) &&
+            Objects.equals(type, that.type) &&
+            Objects.equals(code, that.code) &&
+            Objects.equals(details, that.details) &&
+            Objects.equals(nodeHardwareFaultID, that.nodeHardwareFaultID) &&
+            Objects.equals(nodeID, that.nodeID) &&
+            Objects.equals(serviceID, that.serviceID) &&
+            Objects.equals(driveID, that.driveID) &&
+            Objects.equals(resolved, that.resolved) &&
+            Objects.equals(clusterFaultID, that.clusterFaultID) &&
+            Objects.equals(date, that.date) &&
+            Objects.equals(resolvedDate, that.resolvedDate) &&
+            Objects.equals(data, that.data);
     }
 
     @Override
@@ -244,6 +190,24 @@ public class ClusterFaultInfo  implements Serializable  {
         return Objects.hash( severity, type, code, details, nodeHardwareFaultID, nodeID, serviceID, driveID, resolved, clusterFaultID, date, resolvedDate, data );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("severity", severity);
+        map.put("type", type);
+        map.put("code", code);
+        map.put("details", details);
+        map.put("nodeHardwareFaultID", nodeHardwareFaultID);
+        map.put("nodeID", nodeID);
+        map.put("serviceID", serviceID);
+        map.put("driveID", driveID);
+        map.put("resolved", resolved);
+        map.put("clusterFaultID", clusterFaultID);
+        map.put("date", date);
+        map.put("resolvedDate", resolvedDate);
+        map.put("data", data);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -262,7 +226,7 @@ public class ClusterFaultInfo  implements Serializable  {
         sb.append(" clusterFaultID : ").append(clusterFaultID).append(",");
         sb.append(" date : ").append(date).append(",");
         sb.append(" resolvedDate : ").append(resolvedDate).append(",");
-        sb.append(" data : ").append(data);
+        sb.append(" data : ").append(data).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -292,7 +256,7 @@ public class ClusterFaultInfo  implements Serializable  {
         private Long clusterFaultID;
         private String date;
         private String resolvedDate;
-        private Object data;
+        private java.util.Map<String, Object> data;
 
         private Builder() { }
 
@@ -310,7 +274,7 @@ public class ClusterFaultInfo  implements Serializable  {
                          this.clusterFaultID,
                          this.date,
                          this.resolvedDate,
-                         this.data            );
+                         this.data);
         }
 
         private ClusterFaultInfo.Builder buildFrom(final ClusterFaultInfo req) {
@@ -391,11 +355,10 @@ public class ClusterFaultInfo  implements Serializable  {
             return this;
         }
 
-        public ClusterFaultInfo.Builder data(final Object data) {
+        public ClusterFaultInfo.Builder data(final java.util.Map<String, Object> data) {
             this.data = data;
             return this;
         }
 
     }
-
 }

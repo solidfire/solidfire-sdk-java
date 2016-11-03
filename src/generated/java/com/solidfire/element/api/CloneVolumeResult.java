@@ -19,94 +19,62 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "CloneVolume" API Service call.
+ * 
  **/
-public class CloneVolumeResult  implements Serializable  {
 
-    private static final long serialVersionUID = -113869221L;
+public class CloneVolumeResult implements Serializable {
 
+    public static final long serialVersionUID = 7651196543218505931L;
     @SerializedName("cloneID") private Long cloneID;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("asyncHandle") private Long asyncHandle;
 
-    /**
-     * The object returned by the "CloneVolume" API Service call.
-     * @param cloneID [required] The ID of the newly-created clone.
-     * @param volumeID [required] The volume ID of the newly-created clone.
-     * @param asyncHandle [required] Handle value used to track the progress of the clone.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public CloneVolumeResult(Long cloneID, Long volumeID, Long asyncHandle) {
-        this.cloneID = cloneID;
-        this.volumeID = volumeID;
-        this.asyncHandle = asyncHandle;
-    }
-
-    
-    /**
-     * The object returned by the "CloneVolume" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public CloneVolumeResult() {}
 
-
-    /**
-     * The ID of the newly-created clone.
-     **/
-    public Long getCloneID() {
-        return this.cloneID;
-    }
-
-    public void setCloneID(Long cloneID) {
+    // parameterized constructor
+    @Since("7.0")
+    public CloneVolumeResult(
+        Long cloneID,
+        Long volumeID,
+        Long asyncHandle
+    )
+    {
         this.cloneID = cloneID;
-    }
-
-
-
-    /**
-     * The volume ID of the newly-created clone.
-     **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    public void setVolumeID(Long volumeID) {
         this.volumeID = volumeID;
-    }
-
-
-
-    /**
-     * Handle value used to track the progress of the clone.
-     **/
-    public Long getAsyncHandle() {
-        return this.asyncHandle;
-    }
-
-    public void setAsyncHandle(Long asyncHandle) {
         this.asyncHandle = asyncHandle;
     }
 
-
+    /** 
+     * The ID of the newly-created clone.
+     **/
+    public Long getCloneID() { return this.cloneID; }
+    public void setCloneID(Long cloneID) { 
+        this.cloneID = cloneID;
+    }
+    /** 
+     * The volume ID of the newly-created clone.
+     **/
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
+    }
+    /** 
+     * Handle value used to track the progress of the clone.
+     **/
+    public Long getAsyncHandle() { return this.asyncHandle; }
+    public void setAsyncHandle(Long asyncHandle) { 
+        this.asyncHandle = asyncHandle;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -114,11 +82,10 @@ public class CloneVolumeResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CloneVolumeResult that = (CloneVolumeResult) o;
-        
-
-        return Objects.equals( cloneID , that.cloneID )
-            && Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( asyncHandle , that.asyncHandle );
+        return 
+            Objects.equals(cloneID, that.cloneID) &&
+            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(asyncHandle, that.asyncHandle);
     }
 
     @Override
@@ -127,6 +94,14 @@ public class CloneVolumeResult  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("cloneID", cloneID);
+        map.put("volumeID", volumeID);
+        map.put("asyncHandle", asyncHandle);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -134,7 +109,7 @@ public class CloneVolumeResult  implements Serializable  {
 
         sb.append(" cloneID : ").append(cloneID).append(",");
         sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" asyncHandle : ").append(asyncHandle);
+        sb.append(" asyncHandle : ").append(asyncHandle).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -162,7 +137,7 @@ public class CloneVolumeResult  implements Serializable  {
             return new CloneVolumeResult (
                          this.cloneID,
                          this.volumeID,
-                         this.asyncHandle            );
+                         this.asyncHandle);
         }
 
         private CloneVolumeResult.Builder buildFrom(final CloneVolumeResult req) {
@@ -189,5 +164,4 @@ public class CloneVolumeResult  implements Serializable  {
         }
 
     }
-
 }

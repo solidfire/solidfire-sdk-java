@@ -19,78 +19,52 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetSnmpACL" API Service call.
+ * 
  **/
-public class GetSnmpACLResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1538058029L;
+public class GetSnmpACLResult implements Serializable {
 
+    public static final long serialVersionUID = 5085918780635082491L;
     @SerializedName("networks") private SnmpNetwork[] networks;
     @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
 
-    /**
-     * The object returned by the "GetSnmpACL" API Service call.
-     * @param networks [required] List of networks and what type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is disabled.
-     * @param usmUsers [required] List of users and the type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is enabled.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetSnmpACLResult(SnmpNetwork[] networks, SnmpV3UsmUser[] usmUsers) {
-        this.networks = networks;
-        this.usmUsers = usmUsers;
-    }
-
-    
-    /**
-     * The object returned by the "GetSnmpACL" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetSnmpACLResult() {}
 
-
-    /**
-     * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is disabled.
-     **/
-    public SnmpNetwork[] getNetworks() {
-        return this.networks;
-    }
-
-    public void setNetworks(SnmpNetwork[] networks) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetSnmpACLResult(
+        SnmpNetwork[] networks,
+        SnmpV3UsmUser[] usmUsers
+    )
+    {
         this.networks = networks;
-    }
-
-
-
-    /**
-     * List of users and the type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is enabled.
-     **/
-    public SnmpV3UsmUser[] getUsmUsers() {
-        return this.usmUsers;
-    }
-
-    public void setUsmUsers(SnmpV3UsmUser[] usmUsers) {
         this.usmUsers = usmUsers;
     }
 
-
+    /** 
+     * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is disabled.
+     **/
+    public SnmpNetwork[] getNetworks() { return this.networks; }
+    public void setNetworks(SnmpNetwork[] networks) { 
+        this.networks = networks;
+    }
+    /** 
+     * List of users and the type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is enabled.
+     **/
+    public SnmpV3UsmUser[] getUsmUsers() { return this.usmUsers; }
+    public void setUsmUsers(SnmpV3UsmUser[] usmUsers) { 
+        this.usmUsers = usmUsers;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -98,17 +72,23 @@ public class GetSnmpACLResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetSnmpACLResult that = (GetSnmpACLResult) o;
-        
-
-        return Objects.deepEquals( networks , that.networks )
-            && Objects.deepEquals( usmUsers , that.usmUsers );
+        return 
+            Objects.equals(networks, that.networks) &&
+            Objects.equals(usmUsers, that.usmUsers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( networks, usmUsers );
+        return Objects.hash( (Object[])networks, (Object[])usmUsers );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("networks", networks);
+        map.put("usmUsers", usmUsers);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -116,7 +96,7 @@ public class GetSnmpACLResult  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" networks : ").append(Arrays.toString(networks)).append(",");
-        sb.append(" usmUsers : ").append(Arrays.toString(usmUsers));
+        sb.append(" usmUsers : ").append(Arrays.toString(usmUsers)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -142,7 +122,7 @@ public class GetSnmpACLResult  implements Serializable  {
         public GetSnmpACLResult build() {
             return new GetSnmpACLResult (
                          this.networks,
-                         this.usmUsers            );
+                         this.usmUsers);
         }
 
         private GetSnmpACLResult.Builder buildFrom(final GetSnmpACLResult req) {
@@ -163,5 +143,4 @@ public class GetSnmpACLResult  implements Serializable  {
         }
 
     }
-
 }

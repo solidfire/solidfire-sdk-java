@@ -19,78 +19,52 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ResetDrives" API Service call.
+ * 
  **/
-public class ResetDrivesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -71656495L;
+public class ResetDrivesRequest implements Serializable {
 
+    public static final long serialVersionUID = 6206046925761567031L;
     @SerializedName("drives") private String drives;
     @SerializedName("force") private Boolean force;
 
-    /**
-     * The Request object for the "ResetDrives" API Service call.
-     * @param drives [required] List of device names (not driveIDs) to reset.
-     * @param force [required] The "force" parameter must be included on this method to successfully reset a drive.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ResetDrivesRequest(String drives, Boolean force) {
-        this.drives = drives;
-        this.force = force;
-    }
-
-    
-    /**
-     * The Request object for the "ResetDrives" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ResetDrivesRequest() {}
 
-
-    /**
-     * List of device names (not driveIDs) to reset.
-     **/
-    public String getDrives() {
-        return this.drives;
-    }
-
-    public void setDrives(String drives) {
+    // parameterized constructor
+    @Since("7.0")
+    public ResetDrivesRequest(
+        String drives,
+        Boolean force
+    )
+    {
         this.drives = drives;
-    }
-
-
-
-    /**
-     * The "force" parameter must be included on this method to successfully reset a drive.
-     **/
-    public Boolean getForce() {
-        return this.force;
-    }
-
-    public void setForce(Boolean force) {
         this.force = force;
     }
 
-
+    /** 
+     * List of device names (not driveIDs) to reset.
+     **/
+    public String getDrives() { return this.drives; }
+    public void setDrives(String drives) { 
+        this.drives = drives;
+    }
+    /** 
+     * The "force" parameter must be included on this method to successfully reset a drive.
+     **/
+    public Boolean getForce() { return this.force; }
+    public void setForce(Boolean force) { 
+        this.force = force;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -98,10 +72,9 @@ public class ResetDrivesRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ResetDrivesRequest that = (ResetDrivesRequest) o;
-        
-
-        return Objects.equals( drives , that.drives )
-            && Objects.equals( force , that.force );
+        return 
+            Objects.equals(drives, that.drives) &&
+            Objects.equals(force, that.force);
     }
 
     @Override
@@ -110,13 +83,20 @@ public class ResetDrivesRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("drives", drives);
+        map.put("force", force);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
         sb.append(" drives : ").append(drives).append(",");
-        sb.append(" force : ").append(force);
+        sb.append(" force : ").append(force).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -142,7 +122,7 @@ public class ResetDrivesRequest  implements Serializable  {
         public ResetDrivesRequest build() {
             return new ResetDrivesRequest (
                          this.drives,
-                         this.force            );
+                         this.force);
         }
 
         private ResetDrivesRequest.Builder buildFrom(final ResetDrivesRequest req) {
@@ -163,5 +143,4 @@ public class ResetDrivesRequest  implements Serializable  {
         }
 
     }
-
 }

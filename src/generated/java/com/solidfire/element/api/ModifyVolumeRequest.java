@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ModifyVolume" API Service call.
+ * 
  **/
-public class ModifyVolumeRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 56390388L;
+public class ModifyVolumeRequest implements Serializable {
 
+    public static final long serialVersionUID = -6916105554939877400L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;
@@ -48,64 +40,45 @@ public class ModifyVolumeRequest  implements Serializable  {
     @SerializedName("totalSize") private Optional<Long> totalSize;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "ModifyVolume" API Service call.
-     * @param volumeID [required] VolumeID for the volume to be modified.
-     * @param accountID (optional) AccountID to which the volume is reassigned.
-     * @param access (optional) Access allowed for the volume.
-     * @param qos (optional) New quality of service settings for this volume.
-     * @param totalSize (optional) New size of the volume in bytes.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ModifyVolumeRequest(Long volumeID, Optional<Long> accountID, Optional<String> access, Optional<QoS> qos, Optional<Long> totalSize, Optional<java.util.Map<String, Object>> attributes) {
-        this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
-        this.volumeID = volumeID;
-        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
-        this.access = (access == null) ? Optional.<String>empty() : access;
-    }
-
-    
-    /**
-     * The Request object for the "ModifyVolume" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ModifyVolumeRequest() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyVolumeRequest(
+        Long volumeID,
+        Optional<Long> accountID,
+        Optional<String> access,
+        Optional<QoS> qos,
+        Optional<Long> totalSize,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.volumeID = volumeID;
+        this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
+        this.access = (access == null) ? Optional.<String>empty() : access;
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
+        this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
 
-    /**
+    /** 
      * VolumeID for the volume to be modified.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    public void setVolumeID(Long volumeID) {
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
-
-
-
-    /**
+    /** 
      * AccountID to which the volume is reassigned.
      * If none is specified, the previous account name is used.
      **/
-    public Optional<Long> getAccountID() {
-        return this.accountID;
+    public Optional<Long> getAccountID() { return this.accountID; }
+    public void setAccountID(Optional<Long> accountID) { 
+        this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
     }
-
-    public void setAccountID(Long accountID) {
-        this.accountID = (accountID == null) ? Optional.<Long>empty() : Optional.of(accountID);
-    }
-
-
-
-    /**
+    /** 
      * Access allowed for the volume.
      * <br/><b>readOnly</b>: Only read operations are allowed.
      * <br/><b>readWrite</b>: Reads and writes are allowed.
@@ -114,56 +87,33 @@ public class ModifyVolumeRequest  implements Serializable  {
      * <br/><br/>
      * If unspecified, the access settings of the clone will be the same as the source.
      **/
-    public Optional<String> getAccess() {
-        return this.access;
+    public Optional<String> getAccess() { return this.access; }
+    public void setAccess(Optional<String> access) { 
+        this.access = (access == null) ? Optional.<String>empty() : access;
     }
-
-    public void setAccess(String access) {
-        this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
-    }
-
-
-
-    /**
+    /** 
      * New quality of service settings for this volume.
      **/
-    public Optional<QoS> getQos() {
-        return this.qos;
+    public Optional<QoS> getQos() { return this.qos; }
+    public void setQos(Optional<QoS> qos) { 
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
-
-    public void setQos(QoS qos) {
-        this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
-    }
-
-
-
-    /**
+    /** 
      * New size of the volume in bytes.
      * Size is rounded up to the nearest 1MiB size.
      * This parameter can only be used to *increase* the size of a volume.
      **/
-    public Optional<Long> getTotalSize() {
-        return this.totalSize;
+    public Optional<Long> getTotalSize() { return this.totalSize; }
+    public void setTotalSize(Optional<Long> totalSize) { 
+        this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
     }
-
-    public void setTotalSize(Long totalSize) {
-        this.totalSize = (totalSize == null) ? Optional.<Long>empty() : Optional.of(totalSize);
-    }
-
-
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
-
-    public void setAttributes(java.util.Map<String, Object> attributes) {
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -171,14 +121,13 @@ public class ModifyVolumeRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumeRequest that = (ModifyVolumeRequest) o;
-        
-
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( accountID , that.accountID )
-            && Objects.equals( access , that.access )
-            && Objects.equals( qos , that.qos )
-            && Objects.equals( totalSize , that.totalSize )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(accountID, that.accountID) &&
+            Objects.equals(access, that.access) &&
+            Objects.equals(qos, that.qos) &&
+            Objects.equals(totalSize, that.totalSize) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -187,22 +136,38 @@ public class ModifyVolumeRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        map.put("accountID", accountID);
+        map.put("access", access);
+        map.put("qos", qos);
+        map.put("totalSize", totalSize);
+        map.put("attributes", attributes);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
         sb.append(" volumeID : ").append(volumeID).append(",");
-        if(null != accountID && accountID.isPresent())
+        if(null != accountID && accountID.isPresent()){
             sb.append(" accountID : ").append(accountID.get()).append(",");
-        if(null != access && access.isPresent())
+        }
+        if(null != access && access.isPresent()){
             sb.append(" access : ").append(access.get()).append(",");
-        if(null != qos && qos.isPresent())
+        }
+        if(null != qos && qos.isPresent()){
             sb.append(" qos : ").append(qos.get()).append(",");
-        if(null != totalSize && totalSize.isPresent())
+        }
+        if(null != totalSize && totalSize.isPresent()){
             sb.append(" totalSize : ").append(totalSize.get()).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -236,7 +201,7 @@ public class ModifyVolumeRequest  implements Serializable  {
                          this.access,
                          this.qos,
                          this.totalSize,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private ModifyVolumeRequest.Builder buildFrom(final ModifyVolumeRequest req) {
@@ -281,5 +246,4 @@ public class ModifyVolumeRequest  implements Serializable  {
         }
 
     }
-
 }

@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ModifyVolume" API Service call.
+ * 
  **/
-public class ModifyVolumeResult  implements Serializable  {
 
-    private static final long serialVersionUID = -202788262L;
+public class ModifyVolumeResult implements Serializable {
 
+    public static final long serialVersionUID = 7716152308587193073L;
     @SerializedName("volume") private Volume volume;
 
-    /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * @param volume [required] Object containing information about the newly modified volume.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ModifyVolumeResult(Volume volume) {
-        this.volume = volume;
-    }
-
-    
-    /**
-     * The object returned by the "ModifyVolume" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ModifyVolumeResult() {}
 
-
-    /**
-     * Object containing information about the newly modified volume.
-     **/
-    public Volume getVolume() {
-        return this.volume;
-    }
-
-    public void setVolume(Volume volume) {
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyVolumeResult(
+        Volume volume
+    )
+    {
         this.volume = volume;
     }
 
-
+    /** 
+     * Object containing information about the newly modified volume.
+     **/
+    public Volume getVolume() { return this.volume; }
+    public void setVolume(Volume volume) { 
+        this.volume = volume;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class ModifyVolumeResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumeResult that = (ModifyVolumeResult) o;
-        
-
-        return Objects.equals( volume , that.volume );
+        return 
+            Objects.equals(volume, that.volume);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volume );
+        return Objects.hash( volume );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volume", volume);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volume : ").append(volume);
+        sb.append(" volume : ").append(volume).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class ModifyVolumeResult  implements Serializable  {
 
         public ModifyVolumeResult build() {
             return new ModifyVolumeResult (
-                         this.volume            );
+                         this.volume);
         }
 
         private ModifyVolumeResult.Builder buildFrom(final ModifyVolumeResult req) {
@@ -137,5 +122,4 @@ public class ModifyVolumeResult  implements Serializable  {
         }
 
     }
-
 }

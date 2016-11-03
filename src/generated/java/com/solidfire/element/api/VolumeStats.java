@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * Contains statistical data for an individual volume.
  **/
-public class VolumeStats  implements Serializable  {
 
-    private static final long serialVersionUID = 1439848760L;
+public class VolumeStats implements Serializable {
 
+    public static final long serialVersionUID = -3367989483107432160L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("actualIOPS") private Long actualIOPS;
     @SerializedName("asyncDelay") private Optional<String> asyncDelay;
@@ -68,360 +60,227 @@ public class VolumeStats  implements Serializable  {
     @SerializedName("writeOps") private Long writeOps;
     @SerializedName("zeroBlocks") private Long zeroBlocks;
 
-    /**
-     * Contains statistical data for an individual volume.
-     * @param accountID [required] AccountID of the volume owner.
-     * @param actualIOPS [required] Current actual IOPS to the volume in the last 500 milliseconds.
-     * @param asyncDelay (optional) The length of time since the volume was last synced with the remote cluster.
-     * @param averageIOPSize [required] Average size in bytes of recent I/O to the volume in the last 500 milliseconds.
-     * @param burstIOPSCredit [required] The total number of IOP credits available to the user.
-     * @param clientQueueDepth [required] The number of outstanding read and write operations to the cluster.
-     * @param desiredMetadataHosts [required] The volume services being migrated to if the volume metadata is getting migrated between volume services.
-     * @param latencyUSec [required] The observed latency time, in microseconds, to complete operations to a volume.<br/>
-     * @param metadataHosts [required] The volume services on which the volume metadata resides.
-     * @param nonZeroBlocks [required] The number of 4KiB blocks with data after the last garbage collection operation has completed.
-     * @param readBytes [required] Total bytes read by clients.
-     * @param readLatencyUSec [required] The average time, in microseconds, to complete read operations.
-     * @param readOps [required] Total read operations.
-     * @param throttle [required] A floating value between 0 and 1 that represents how much the system is throttling clients
-     * @param timestamp [required] The current time in UTC.
-     * @param totalLatencyUSec [required] The average time, in microseconds, to complete read and write operations to a volume.
-     * @param unalignedReads [required] For 512e volumes, the number of read operations that were not on a 4k sector boundary.
-     * @param unalignedWrites [required] For 512e volumes, the number of write operations that were not on a 4k sector boundary.
-     * @param volumeAccessGroups [required] List of volume access group(s) to which a volume belongs.
-     * @param volumeID [required] Volume ID of the volume.
-     * @param volumeSize [required] Total provisioned capacity in bytes.
-     * @param volumeUtilization [required] A floating value that describes how much the client is using the volume.
-     * @param writeBytes [required] Total bytes written by clients.
-     * @param writeLatencyUSec [required] The average time, in microseconds, to complete write operations.
-     * @param writeOps [required] Total write operations occurring on the volume.
-     * @param zeroBlocks [required] Total number of 4KiB blocks without data after the last round of garbage collection operation has completed.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public VolumeStats(Long accountID, Long actualIOPS, Optional<String> asyncDelay, Long averageIOPSize, Long burstIOPSCredit, Long clientQueueDepth, MetadataHosts desiredMetadataHosts, Long latencyUSec, MetadataHosts metadataHosts, Long nonZeroBlocks, Long readBytes, Long readLatencyUSec, Long readOps, Double throttle, String timestamp, Long totalLatencyUSec, Long unalignedReads, Long unalignedWrites, Long[] volumeAccessGroups, Long volumeID, Long volumeSize, Double volumeUtilization, Long writeBytes, Long writeLatencyUSec, Long writeOps, Long zeroBlocks) {
-        this.writeOps = writeOps;
-        this.totalLatencyUSec = totalLatencyUSec;
-        this.volumeAccessGroups = volumeAccessGroups;
-        this.unalignedWrites = unalignedWrites;
-        this.timestamp = timestamp;
-        this.readOps = readOps;
-        this.nonZeroBlocks = nonZeroBlocks;
-        this.burstIOPSCredit = burstIOPSCredit;
-        this.metadataHosts = metadataHosts;
-        this.writeBytes = writeBytes;
-        this.asyncDelay = (asyncDelay == null) ? Optional.<String>empty() : asyncDelay;
-        this.accountID = accountID;
-        this.readLatencyUSec = readLatencyUSec;
-        this.unalignedReads = unalignedReads;
-        this.latencyUSec = latencyUSec;
-        this.clientQueueDepth = clientQueueDepth;
-        this.readBytes = readBytes;
-        this.volumeUtilization = volumeUtilization;
-        this.volumeID = volumeID;
-        this.writeLatencyUSec = writeLatencyUSec;
-        this.zeroBlocks = zeroBlocks;
-        this.throttle = throttle;
-        this.volumeSize = volumeSize;
-        this.averageIOPSize = averageIOPSize;
-        this.actualIOPS = actualIOPS;
-        this.desiredMetadataHosts = desiredMetadataHosts;
-    }
-
-    
-    /**
-     * Contains statistical data for an individual volume.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public VolumeStats() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public VolumeStats(
+        Long accountID,
+        Long actualIOPS,
+        Optional<String> asyncDelay,
+        Long averageIOPSize,
+        Long burstIOPSCredit,
+        Long clientQueueDepth,
+        MetadataHosts desiredMetadataHosts,
+        Long latencyUSec,
+        MetadataHosts metadataHosts,
+        Long nonZeroBlocks,
+        Long readBytes,
+        Long readLatencyUSec,
+        Long readOps,
+        Double throttle,
+        String timestamp,
+        Long totalLatencyUSec,
+        Long unalignedReads,
+        Long unalignedWrites,
+        Long[] volumeAccessGroups,
+        Long volumeID,
+        Long volumeSize,
+        Double volumeUtilization,
+        Long writeBytes,
+        Long writeLatencyUSec,
+        Long writeOps,
+        Long zeroBlocks
+    )
+    {
+        this.accountID = accountID;
+        this.actualIOPS = actualIOPS;
+        this.asyncDelay = (asyncDelay == null) ? Optional.<String>empty() : asyncDelay;
+        this.averageIOPSize = averageIOPSize;
+        this.burstIOPSCredit = burstIOPSCredit;
+        this.clientQueueDepth = clientQueueDepth;
+        this.desiredMetadataHosts = desiredMetadataHosts;
+        this.latencyUSec = latencyUSec;
+        this.metadataHosts = metadataHosts;
+        this.nonZeroBlocks = nonZeroBlocks;
+        this.readBytes = readBytes;
+        this.readLatencyUSec = readLatencyUSec;
+        this.readOps = readOps;
+        this.throttle = throttle;
+        this.timestamp = timestamp;
+        this.totalLatencyUSec = totalLatencyUSec;
+        this.unalignedReads = unalignedReads;
+        this.unalignedWrites = unalignedWrites;
+        this.volumeAccessGroups = volumeAccessGroups;
+        this.volumeID = volumeID;
+        this.volumeSize = volumeSize;
+        this.volumeUtilization = volumeUtilization;
+        this.writeBytes = writeBytes;
+        this.writeLatencyUSec = writeLatencyUSec;
+        this.writeOps = writeOps;
+        this.zeroBlocks = zeroBlocks;
+    }
 
-    /**
+    /** 
      * AccountID of the volume owner.
      **/
-    public Long getAccountID() {
-        return this.accountID;
-    }
-
-    public void setAccountID(Long accountID) {
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
-
-
-
-    /**
+    /** 
      * Current actual IOPS to the volume in the last 500 milliseconds.
      **/
-    public Long getActualIOPS() {
-        return this.actualIOPS;
-    }
-
-    public void setActualIOPS(Long actualIOPS) {
+    public Long getActualIOPS() { return this.actualIOPS; }
+    public void setActualIOPS(Long actualIOPS) { 
         this.actualIOPS = actualIOPS;
     }
-
-
-
-    /**
+    /** 
      * The length of time since the volume was last synced with the remote cluster.
      * If the volume is not paired, this is null.
      * <br/><br/>
      * <br/><b>Note</b>: A target volume in an active replication state always has an async delay of 0 (zero).
      * <br/>Target volumes are system-aware during replication and assume async delay is accurate at all times.
      **/
-    public Optional<String> getAsyncDelay() {
-        return this.asyncDelay;
+    public Optional<String> getAsyncDelay() { return this.asyncDelay; }
+    public void setAsyncDelay(Optional<String> asyncDelay) { 
+        this.asyncDelay = (asyncDelay == null) ? Optional.<String>empty() : asyncDelay;
     }
-
-    public void setAsyncDelay(String asyncDelay) {
-        this.asyncDelay = (asyncDelay == null) ? Optional.<String>empty() : Optional.of(asyncDelay);
-    }
-
-
-
-    /**
+    /** 
      * Average size in bytes of recent I/O to the volume in the last 500 milliseconds.
      **/
-    public Long getAverageIOPSize() {
-        return this.averageIOPSize;
-    }
-
-    public void setAverageIOPSize(Long averageIOPSize) {
+    public Long getAverageIOPSize() { return this.averageIOPSize; }
+    public void setAverageIOPSize(Long averageIOPSize) { 
         this.averageIOPSize = averageIOPSize;
     }
-
-
-
-    /**
+    /** 
      * The total number of IOP credits available to the user.
      * When users are not using up to the max IOPS, credits are accrued.
      **/
-    public Long getBurstIOPSCredit() {
-        return this.burstIOPSCredit;
-    }
-
-    public void setBurstIOPSCredit(Long burstIOPSCredit) {
+    public Long getBurstIOPSCredit() { return this.burstIOPSCredit; }
+    public void setBurstIOPSCredit(Long burstIOPSCredit) { 
         this.burstIOPSCredit = burstIOPSCredit;
     }
-
-
-
-    /**
+    /** 
      * The number of outstanding read and write operations to the cluster.
      **/
-    public Long getClientQueueDepth() {
-        return this.clientQueueDepth;
-    }
-
-    public void setClientQueueDepth(Long clientQueueDepth) {
+    public Long getClientQueueDepth() { return this.clientQueueDepth; }
+    public void setClientQueueDepth(Long clientQueueDepth) { 
         this.clientQueueDepth = clientQueueDepth;
     }
-
-
-
-    /**
+    /** 
      * The volume services being migrated to if the volume metadata is getting migrated between volume services.
      * A "null" value means the volume is not migrating.
      **/
-    public MetadataHosts getDesiredMetadataHosts() {
-        return this.desiredMetadataHosts;
-    }
-
-    public void setDesiredMetadataHosts(MetadataHosts desiredMetadataHosts) {
+    public MetadataHosts getDesiredMetadataHosts() { return this.desiredMetadataHosts; }
+    public void setDesiredMetadataHosts(MetadataHosts desiredMetadataHosts) { 
         this.desiredMetadataHosts = desiredMetadataHosts;
     }
-
-
-
-    /**
+    /** 
      * The observed latency time, in microseconds, to complete operations to a volume.<br/>
      * A "0" (zero) value means there is no I/O to the volume.
      **/
-    public Long getLatencyUSec() {
-        return this.latencyUSec;
-    }
-
-    public void setLatencyUSec(Long latencyUSec) {
+    public Long getLatencyUSec() { return this.latencyUSec; }
+    public void setLatencyUSec(Long latencyUSec) { 
         this.latencyUSec = latencyUSec;
     }
-
-
-
-    /**
+    /** 
      * The volume services on which the volume metadata resides.
      **/
-    public MetadataHosts getMetadataHosts() {
-        return this.metadataHosts;
-    }
-
-    public void setMetadataHosts(MetadataHosts metadataHosts) {
+    public MetadataHosts getMetadataHosts() { return this.metadataHosts; }
+    public void setMetadataHosts(MetadataHosts metadataHosts) { 
         this.metadataHosts = metadataHosts;
     }
-
-
-
-    /**
+    /** 
      * The number of 4KiB blocks with data after the last garbage collection operation has completed.
      **/
-    public Long getNonZeroBlocks() {
-        return this.nonZeroBlocks;
-    }
-
-    public void setNonZeroBlocks(Long nonZeroBlocks) {
+    public Long getNonZeroBlocks() { return this.nonZeroBlocks; }
+    public void setNonZeroBlocks(Long nonZeroBlocks) { 
         this.nonZeroBlocks = nonZeroBlocks;
     }
-
-
-
-    /**
+    /** 
      * Total bytes read by clients.
      **/
-    public Long getReadBytes() {
-        return this.readBytes;
-    }
-
-    public void setReadBytes(Long readBytes) {
+    public Long getReadBytes() { return this.readBytes; }
+    public void setReadBytes(Long readBytes) { 
         this.readBytes = readBytes;
     }
-
-
-
-    /**
+    /** 
      * The average time, in microseconds, to complete read operations.
      **/
-    public Long getReadLatencyUSec() {
-        return this.readLatencyUSec;
-    }
-
-    public void setReadLatencyUSec(Long readLatencyUSec) {
+    public Long getReadLatencyUSec() { return this.readLatencyUSec; }
+    public void setReadLatencyUSec(Long readLatencyUSec) { 
         this.readLatencyUSec = readLatencyUSec;
     }
-
-
-
-    /**
+    /** 
      * Total read operations.
      **/
-    public Long getReadOps() {
-        return this.readOps;
-    }
-
-    public void setReadOps(Long readOps) {
+    public Long getReadOps() { return this.readOps; }
+    public void setReadOps(Long readOps) { 
         this.readOps = readOps;
     }
-
-
-
-    /**
+    /** 
      * A floating value between 0 and 1 that represents how much the system is throttling clients
      * below their max IOPS because of re-replication of data, transient errors and snapshots taken.
      **/
-    public Double getThrottle() {
-        return this.throttle;
-    }
-
-    public void setThrottle(Double throttle) {
+    public Double getThrottle() { return this.throttle; }
+    public void setThrottle(Double throttle) { 
         this.throttle = throttle;
     }
-
-
-
-    /**
+    /** 
      * The current time in UTC.
      **/
-    public String getTimestamp() {
-        return this.timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
+    public String getTimestamp() { return this.timestamp; }
+    public void setTimestamp(String timestamp) { 
         this.timestamp = timestamp;
     }
-
-
-
-    /**
+    /** 
      * The average time, in microseconds, to complete read and write operations to a volume.
      **/
-    public Long getTotalLatencyUSec() {
-        return this.totalLatencyUSec;
-    }
-
-    public void setTotalLatencyUSec(Long totalLatencyUSec) {
+    public Long getTotalLatencyUSec() { return this.totalLatencyUSec; }
+    public void setTotalLatencyUSec(Long totalLatencyUSec) { 
         this.totalLatencyUSec = totalLatencyUSec;
     }
-
-
-
-    /**
+    /** 
      * For 512e volumes, the number of read operations that were not on a 4k sector boundary.
      * High numbers of unaligned reads may indicate improper partition alignment.
      **/
-    public Long getUnalignedReads() {
-        return this.unalignedReads;
-    }
-
-    public void setUnalignedReads(Long unalignedReads) {
+    public Long getUnalignedReads() { return this.unalignedReads; }
+    public void setUnalignedReads(Long unalignedReads) { 
         this.unalignedReads = unalignedReads;
     }
-
-
-
-    /**
+    /** 
      * For 512e volumes, the number of write operations that were not on a 4k sector boundary.
      * High numbers of unaligned writes may indicate improper partition alignment.
      **/
-    public Long getUnalignedWrites() {
-        return this.unalignedWrites;
-    }
-
-    public void setUnalignedWrites(Long unalignedWrites) {
+    public Long getUnalignedWrites() { return this.unalignedWrites; }
+    public void setUnalignedWrites(Long unalignedWrites) { 
         this.unalignedWrites = unalignedWrites;
     }
-
-
-
-    /**
+    /** 
      * List of volume access group(s) to which a volume belongs.
      **/
-    public Long[] getVolumeAccessGroups() {
-        return this.volumeAccessGroups;
-    }
-
-    public void setVolumeAccessGroups(Long[] volumeAccessGroups) {
+    public Long[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
+    public void setVolumeAccessGroups(Long[] volumeAccessGroups) { 
         this.volumeAccessGroups = volumeAccessGroups;
     }
-
-
-
-    /**
+    /** 
      * Volume ID of the volume.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    public void setVolumeID(Long volumeID) {
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
-
-
-
-    /**
+    /** 
      * Total provisioned capacity in bytes.
      **/
-    public Long getVolumeSize() {
-        return this.volumeSize;
-    }
-
-    public void setVolumeSize(Long volumeSize) {
+    public Long getVolumeSize() { return this.volumeSize; }
+    public void setVolumeSize(Long volumeSize) { 
         this.volumeSize = volumeSize;
     }
-
-
-
-    /**
+    /** 
      * A floating value that describes how much the client is using the volume.
      * <br/><br/>
      * Values:<br/>
@@ -429,67 +288,38 @@ public class VolumeStats  implements Serializable  {
      * 1 = Client is using their max<br/>
      * >1 = Client is using their burst
      **/
-    public Double getVolumeUtilization() {
-        return this.volumeUtilization;
-    }
-
-    public void setVolumeUtilization(Double volumeUtilization) {
+    public Double getVolumeUtilization() { return this.volumeUtilization; }
+    public void setVolumeUtilization(Double volumeUtilization) { 
         this.volumeUtilization = volumeUtilization;
     }
-
-
-
-    /**
+    /** 
      * Total bytes written by clients.
      **/
-    public Long getWriteBytes() {
-        return this.writeBytes;
-    }
-
-    public void setWriteBytes(Long writeBytes) {
+    public Long getWriteBytes() { return this.writeBytes; }
+    public void setWriteBytes(Long writeBytes) { 
         this.writeBytes = writeBytes;
     }
-
-
-
-    /**
+    /** 
      * The average time, in microseconds, to complete write operations.
      **/
-    public Long getWriteLatencyUSec() {
-        return this.writeLatencyUSec;
-    }
-
-    public void setWriteLatencyUSec(Long writeLatencyUSec) {
+    public Long getWriteLatencyUSec() { return this.writeLatencyUSec; }
+    public void setWriteLatencyUSec(Long writeLatencyUSec) { 
         this.writeLatencyUSec = writeLatencyUSec;
     }
-
-
-
-    /**
+    /** 
      * Total write operations occurring on the volume.
      **/
-    public Long getWriteOps() {
-        return this.writeOps;
-    }
-
-    public void setWriteOps(Long writeOps) {
+    public Long getWriteOps() { return this.writeOps; }
+    public void setWriteOps(Long writeOps) { 
         this.writeOps = writeOps;
     }
-
-
-
-    /**
+    /** 
      * Total number of 4KiB blocks without data after the last round of garbage collection operation has completed.
      **/
-    public Long getZeroBlocks() {
-        return this.zeroBlocks;
-    }
-
-    public void setZeroBlocks(Long zeroBlocks) {
+    public Long getZeroBlocks() { return this.zeroBlocks; }
+    public void setZeroBlocks(Long zeroBlocks) { 
         this.zeroBlocks = zeroBlocks;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -497,41 +327,71 @@ public class VolumeStats  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         VolumeStats that = (VolumeStats) o;
-        
-
-        return Objects.equals( accountID , that.accountID )
-            && Objects.equals( actualIOPS , that.actualIOPS )
-            && Objects.equals( asyncDelay , that.asyncDelay )
-            && Objects.equals( averageIOPSize , that.averageIOPSize )
-            && Objects.equals( burstIOPSCredit , that.burstIOPSCredit )
-            && Objects.equals( clientQueueDepth , that.clientQueueDepth )
-            && Objects.equals( desiredMetadataHosts , that.desiredMetadataHosts )
-            && Objects.equals( latencyUSec , that.latencyUSec )
-            && Objects.equals( metadataHosts , that.metadataHosts )
-            && Objects.equals( nonZeroBlocks , that.nonZeroBlocks )
-            && Objects.equals( readBytes , that.readBytes )
-            && Objects.equals( readLatencyUSec , that.readLatencyUSec )
-            && Objects.equals( readOps , that.readOps )
-            && Objects.equals( throttle , that.throttle )
-            && Objects.equals( timestamp , that.timestamp )
-            && Objects.equals( totalLatencyUSec , that.totalLatencyUSec )
-            && Objects.equals( unalignedReads , that.unalignedReads )
-            && Objects.equals( unalignedWrites , that.unalignedWrites )
-            && Objects.deepEquals( volumeAccessGroups , that.volumeAccessGroups )
-            && Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( volumeSize , that.volumeSize )
-            && Objects.equals( volumeUtilization , that.volumeUtilization )
-            && Objects.equals( writeBytes , that.writeBytes )
-            && Objects.equals( writeLatencyUSec , that.writeLatencyUSec )
-            && Objects.equals( writeOps , that.writeOps )
-            && Objects.equals( zeroBlocks , that.zeroBlocks );
+        return 
+            Objects.equals(accountID, that.accountID) &&
+            Objects.equals(actualIOPS, that.actualIOPS) &&
+            Objects.equals(asyncDelay, that.asyncDelay) &&
+            Objects.equals(averageIOPSize, that.averageIOPSize) &&
+            Objects.equals(burstIOPSCredit, that.burstIOPSCredit) &&
+            Objects.equals(clientQueueDepth, that.clientQueueDepth) &&
+            Objects.equals(desiredMetadataHosts, that.desiredMetadataHosts) &&
+            Objects.equals(latencyUSec, that.latencyUSec) &&
+            Objects.equals(metadataHosts, that.metadataHosts) &&
+            Objects.equals(nonZeroBlocks, that.nonZeroBlocks) &&
+            Objects.equals(readBytes, that.readBytes) &&
+            Objects.equals(readLatencyUSec, that.readLatencyUSec) &&
+            Objects.equals(readOps, that.readOps) &&
+            Objects.equals(throttle, that.throttle) &&
+            Objects.equals(timestamp, that.timestamp) &&
+            Objects.equals(totalLatencyUSec, that.totalLatencyUSec) &&
+            Objects.equals(unalignedReads, that.unalignedReads) &&
+            Objects.equals(unalignedWrites, that.unalignedWrites) &&
+            Objects.equals(volumeAccessGroups, that.volumeAccessGroups) &&
+            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(volumeSize, that.volumeSize) &&
+            Objects.equals(volumeUtilization, that.volumeUtilization) &&
+            Objects.equals(writeBytes, that.writeBytes) &&
+            Objects.equals(writeLatencyUSec, that.writeLatencyUSec) &&
+            Objects.equals(writeOps, that.writeOps) &&
+            Objects.equals(zeroBlocks, that.zeroBlocks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID, actualIOPS, asyncDelay, averageIOPSize, burstIOPSCredit, clientQueueDepth, desiredMetadataHosts, latencyUSec, metadataHosts, nonZeroBlocks, readBytes, readLatencyUSec, readOps, throttle, timestamp, totalLatencyUSec, unalignedReads, unalignedWrites, volumeAccessGroups, volumeID, volumeSize, volumeUtilization, writeBytes, writeLatencyUSec, writeOps, zeroBlocks );
+        return Objects.hash( accountID, actualIOPS, asyncDelay, averageIOPSize, burstIOPSCredit, clientQueueDepth, desiredMetadataHosts, latencyUSec, metadataHosts, nonZeroBlocks, readBytes, readLatencyUSec, readOps, throttle, timestamp, totalLatencyUSec, unalignedReads, unalignedWrites, (Object[])volumeAccessGroups, volumeID, volumeSize, volumeUtilization, writeBytes, writeLatencyUSec, writeOps, zeroBlocks );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("accountID", accountID);
+        map.put("actualIOPS", actualIOPS);
+        map.put("asyncDelay", asyncDelay);
+        map.put("averageIOPSize", averageIOPSize);
+        map.put("burstIOPSCredit", burstIOPSCredit);
+        map.put("clientQueueDepth", clientQueueDepth);
+        map.put("desiredMetadataHosts", desiredMetadataHosts);
+        map.put("latencyUSec", latencyUSec);
+        map.put("metadataHosts", metadataHosts);
+        map.put("nonZeroBlocks", nonZeroBlocks);
+        map.put("readBytes", readBytes);
+        map.put("readLatencyUSec", readLatencyUSec);
+        map.put("readOps", readOps);
+        map.put("throttle", throttle);
+        map.put("timestamp", timestamp);
+        map.put("totalLatencyUSec", totalLatencyUSec);
+        map.put("unalignedReads", unalignedReads);
+        map.put("unalignedWrites", unalignedWrites);
+        map.put("volumeAccessGroups", volumeAccessGroups);
+        map.put("volumeID", volumeID);
+        map.put("volumeSize", volumeSize);
+        map.put("volumeUtilization", volumeUtilization);
+        map.put("writeBytes", writeBytes);
+        map.put("writeLatencyUSec", writeLatencyUSec);
+        map.put("writeOps", writeOps);
+        map.put("zeroBlocks", zeroBlocks);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -540,8 +400,9 @@ public class VolumeStats  implements Serializable  {
 
         sb.append(" accountID : ").append(accountID).append(",");
         sb.append(" actualIOPS : ").append(actualIOPS).append(",");
-        if(null != asyncDelay && asyncDelay.isPresent())
+        if(null != asyncDelay && asyncDelay.isPresent()){
             sb.append(" asyncDelay : ").append(asyncDelay.get()).append(",");
+        }
         sb.append(" averageIOPSize : ").append(averageIOPSize).append(",");
         sb.append(" burstIOPSCredit : ").append(burstIOPSCredit).append(",");
         sb.append(" clientQueueDepth : ").append(clientQueueDepth).append(",");
@@ -564,7 +425,7 @@ public class VolumeStats  implements Serializable  {
         sb.append(" writeBytes : ").append(writeBytes).append(",");
         sb.append(" writeLatencyUSec : ").append(writeLatencyUSec).append(",");
         sb.append(" writeOps : ").append(writeOps).append(",");
-        sb.append(" zeroBlocks : ").append(zeroBlocks);
+        sb.append(" zeroBlocks : ").append(zeroBlocks).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -638,7 +499,7 @@ public class VolumeStats  implements Serializable  {
                          this.writeBytes,
                          this.writeLatencyUSec,
                          this.writeOps,
-                         this.zeroBlocks            );
+                         this.zeroBlocks);
         }
 
         private VolumeStats.Builder buildFrom(final VolumeStats req) {
@@ -803,5 +664,4 @@ public class VolumeStats  implements Serializable  {
         }
 
     }
-
 }

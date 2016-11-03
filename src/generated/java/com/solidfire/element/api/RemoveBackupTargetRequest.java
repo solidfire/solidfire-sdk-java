@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "RemoveBackupTarget" API Service call.
+ * 
  **/
-public class RemoveBackupTargetRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 847459383L;
+public class RemoveBackupTargetRequest implements Serializable {
 
+    public static final long serialVersionUID = -1520692591750398943L;
     @SerializedName("backupTargetID") private Long backupTargetID;
 
-    /**
-     * The Request object for the "RemoveBackupTarget" API Service call.
-     * @param backupTargetID [required] Unique target ID of the target to remove.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public RemoveBackupTargetRequest(Long backupTargetID) {
-        this.backupTargetID = backupTargetID;
-    }
-
-    
-    /**
-     * The Request object for the "RemoveBackupTarget" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public RemoveBackupTargetRequest() {}
 
-
-    /**
-     * Unique target ID of the target to remove.
-     **/
-    public Long getBackupTargetID() {
-        return this.backupTargetID;
-    }
-
-    public void setBackupTargetID(Long backupTargetID) {
+    // parameterized constructor
+    @Since("7.0")
+    public RemoveBackupTargetRequest(
+        Long backupTargetID
+    )
+    {
         this.backupTargetID = backupTargetID;
     }
 
-
+    /** 
+     * Unique target ID of the target to remove.
+     **/
+    public Long getBackupTargetID() { return this.backupTargetID; }
+    public void setBackupTargetID(Long backupTargetID) { 
+        this.backupTargetID = backupTargetID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class RemoveBackupTargetRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveBackupTargetRequest that = (RemoveBackupTargetRequest) o;
-        
-
-        return Objects.equals( backupTargetID , that.backupTargetID );
+        return 
+            Objects.equals(backupTargetID, that.backupTargetID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) backupTargetID );
+        return Objects.hash( backupTargetID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("backupTargetID", backupTargetID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" backupTargetID : ").append(backupTargetID);
+        sb.append(" backupTargetID : ").append(backupTargetID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class RemoveBackupTargetRequest  implements Serializable  {
 
         public RemoveBackupTargetRequest build() {
             return new RemoveBackupTargetRequest (
-                         this.backupTargetID            );
+                         this.backupTargetID);
         }
 
         private RemoveBackupTargetRequest.Builder buildFrom(final RemoveBackupTargetRequest req) {
@@ -137,5 +122,4 @@ public class RemoveBackupTargetRequest  implements Serializable  {
         }
 
     }
-
 }

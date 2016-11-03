@@ -19,98 +19,69 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class ClusterAdmin  implements Serializable  {
 
-    private static final long serialVersionUID = 1365310294L;
+public class ClusterAdmin implements Serializable {
 
+    public static final long serialVersionUID = 5002497716622301063L;
     @SerializedName("access") private String[] access;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     @SerializedName("username") private String username;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
-    /**
-     * 
-     * @param access [required] 
-     * @param clusterAdminID [required] 
-     * @param username [required] 
-     * @param attributes [required] List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ClusterAdmin(String[] access, Long clusterAdminID, String username, java.util.Map<String, Object> attributes) {
-        this.access = access;
-        this.clusterAdminID = clusterAdminID;
-        this.username = username;
-        this.attributes = attributes;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ClusterAdmin() {}
 
-    public String[] getAccess() {
-        return this.access;
-    }
-
-    public void setAccess(String[] access) {
+    // parameterized constructor
+    @Since("7.0")
+    public ClusterAdmin(
+        String[] access,
+        Long clusterAdminID,
+        String username,
+        java.util.Map<String, Object> attributes
+    )
+    {
         this.access = access;
-    }
-
-
-    public Long getClusterAdminID() {
-        return this.clusterAdminID;
-    }
-
-    public void setClusterAdminID(Long clusterAdminID) {
         this.clusterAdminID = clusterAdminID;
-    }
-
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setUsername(String username) {
         this.username = username;
-    }
-
-
-
-    /**
-     * List of Name/Value pairs in JSON object format.
-     **/
-    public java.util.Map<String, Object> getAttributes() {
-        return this.attributes;
-    }
-
-    public void setAttributes(java.util.Map<String, Object> attributes) {
         this.attributes = attributes;
     }
 
-
+    /** 
+     **/
+    public String[] getAccess() { return this.access; }
+    public void setAccess(String[] access) { 
+        this.access = access;
+    }
+    /** 
+     **/
+    public Long getClusterAdminID() { return this.clusterAdminID; }
+    public void setClusterAdminID(Long clusterAdminID) { 
+        this.clusterAdminID = clusterAdminID;
+    }
+    /** 
+     **/
+    public String getUsername() { return this.username; }
+    public void setUsername(String username) { 
+        this.username = username;
+    }
+    /** 
+     * List of Name/Value pairs in JSON object format.
+     **/
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
+        this.attributes = attributes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -118,19 +89,27 @@ public class ClusterAdmin  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClusterAdmin that = (ClusterAdmin) o;
-        
-
-        return Objects.deepEquals( access , that.access )
-            && Objects.equals( clusterAdminID , that.clusterAdminID )
-            && Objects.equals( username , that.username )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(access, that.access) &&
+            Objects.equals(clusterAdminID, that.clusterAdminID) &&
+            Objects.equals(username, that.username) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( access, clusterAdminID, username, attributes );
+        return Objects.hash( (Object[])access, clusterAdminID, username, attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("access", access);
+        map.put("clusterAdminID", clusterAdminID);
+        map.put("username", username);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -140,7 +119,7 @@ public class ClusterAdmin  implements Serializable  {
         sb.append(" access : ").append(Arrays.toString(access)).append(",");
         sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
         sb.append(" username : ").append(username).append(",");
-        sb.append(" attributes : ").append(attributes);
+        sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -170,7 +149,7 @@ public class ClusterAdmin  implements Serializable  {
                          this.access,
                          this.clusterAdminID,
                          this.username,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private ClusterAdmin.Builder buildFrom(final ClusterAdmin req) {
@@ -203,5 +182,4 @@ public class ClusterAdmin  implements Serializable  {
         }
 
     }
-
 }

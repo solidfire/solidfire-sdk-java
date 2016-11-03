@@ -1,8 +1,8 @@
 package com.solidfire.api
 
 import com.solidfire.adaptor.ElementServiceAdaptor._
+import com.solidfire.core.javautil.Optional
 import com.solidfire.element.api._
-import com.solidfire.jsvcgen.javautil.Optional
 import com.solidfire.util.Utility
 import org.mockito.Matchers._
 import org.mockito.Mockito.when
@@ -55,10 +55,10 @@ class InvokeSFApiTest extends WordSpec with BeforeAndAfterAll with MockitoSugar 
 
     "ListAccounts via InvokeSFApi" in {
       val listAccountsRequest = new ListAccountsRequest(Optional.EMPTY_LONG, Optional.EMPTY_LONG)
-      val request = new InvokeSFApiRequest("ListAccounts", Optional.of(listAccountsRequest))
+      val request = new InvokeSFApiRequest("ListAccounts", Optional.of(listAccountsRequest.toMap()))
       val returned = Utility.getResultFromResource[Object]("ListAccounts_v8.json")
 
-      when( sfe.sendRequest( org.mockito.Matchers.eq("ListAccounts"), org.mockito.Matchers.eq(Optional.of(listAccountsRequest)), any() ,any())  ).thenReturn( returned )
+      when( sfe.sendRequest( org.mockito.Matchers.eq("ListAccounts"), org.mockito.Matchers.eq(Optional.of(listAccountsRequest.toMap())), any() ,any())  ).thenReturn( returned )
 
       val result = invokeSFApi(sfe, request).asInstanceOf[com.solidfire.gson.internal.LinkedTreeMap[String, Object]]
       result.get("accounts") should not be null

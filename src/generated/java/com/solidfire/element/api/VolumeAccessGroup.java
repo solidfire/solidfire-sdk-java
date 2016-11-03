@@ -19,124 +19,72 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * A volume access group is a useful way of grouping volumes and initiators together for ease of management.
+ * ['A volume access group is a useful way of grouping volumes and initiators together for ease of management.', '<br/><br/>', 'Volume Access Group Limits:', '<br/><br/>', '- A volume access group can contain up to sixty-four initiator IQNs.', '- An initiator can only belong to only one volume access group.', '- A volume access group can contain up to two thousand volumes.', '- Each volume access group can belong to a maximum of four other volume access groups.']['A volume access group is a useful way of grouping volumes and initiators together for ease of management.', '<br/><br/>', 'Volume Access Group Limits:', '<br/><br/>', '- A volume access group can contain up to sixty-four initiator IQNs.', '- An initiator can only belong to only one volume access group.', '- A volume access group can contain up to two thousand volumes.', '- Each volume access group can belong to a maximum of four other volume access groups.']['A volume access group is a useful way of grouping volumes and initiators together for ease of management.', '<br/><br/>', 'Volume Access Group Limits:', '<br/><br/>', '- A volume access group can contain up to sixty-four initiator IQNs.', '- An initiator can only belong to only one volume access group.', '- A volume access group can contain up to two thousand volumes.', '- Each volume access group can belong to a maximum of four other volume access groups.']['A volume access group is a useful way of grouping volumes and initiators together for ease of management.', '<br/><br/>', 'Volume Access Group Limits:', '<br/><br/>', '- A volume access group can contain up to sixty-four initiator IQNs.', '- An initiator can only belong to only one volume access group.', '- A volume access group can contain up to two thousand volumes.', '- Each volume access group can belong to a maximum of four other volume access groups.']['A volume access group is a useful way of grouping volumes and initiators together for ease of management.', '<br/><br/>', 'Volume Access Group Limits:', '<br/><br/>', '- A volume access group can contain up to sixty-four initiator IQNs.', '- An initiator can only belong to only one volume access group.', '- A volume access group can contain up to two thousand volumes.', '- Each volume access group can belong to a maximum of four other volume access groups.']['A volume access group is a useful way of grouping volumes and initiators together for ease of management.', '<br/><br/>', 'Volume Access Group Limits:', '<br/><br/>', '- A volume access group can contain up to sixty-four initiator IQNs.', '- An initiator can only belong to only one volume access group.', '- A volume access group can contain up to two thousand volumes.', '- Each volume access group can belong to a maximum of four other volume access groups.']['A volume access group is a useful way of grouping volumes and initiators together for ease of management.', '<br/><br/>', 'Volume Access Group Limits:', '<br/><br/>', '- A volume access group can contain up to sixty-four initiator IQNs.', '- An initiator can only belong to only one volume access group.', '- A volume access group can contain up to two thousand volumes.', '- Each volume access group can belong to a maximum of four other volume access groups.']['A volume access group is a useful way of grouping volumes and initiators together for ease of management.', '<br/><br/>', 'Volume Access Group Limits:', '<br/><br/>', '- A volume access group can contain up to sixty-four initiator IQNs.', '- An initiator can only belong to only one volume access group.', '- A volume access group can contain up to two thousand volumes.', '- Each volume access group can belong to a maximum of four other volume access groups.']
  **/
-public class VolumeAccessGroup  implements Serializable  {
 
-    private static final long serialVersionUID = 936271874L;
+public class VolumeAccessGroup implements Serializable {
 
+    public static final long serialVersionUID = 143293271697026076L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("name") private String name;
     @SerializedName("initiators") private String[] initiators;
     @SerializedName("volumes") private Long[] volumes;
 
-    /**
-     * A volume access group is a useful way of grouping volumes and initiators together for ease of management.
-     * <br/><br/>
-     * Volume Access Group Limits:
-     * <br/><br/>
-     * - A volume access group can contain up to sixty-four initiator IQNs.
-     * - An initiator can only belong to only one volume access group.
-     * - A volume access group can contain up to two thousand volumes.
-     * - Each volume access group can belong to a maximum of four other volume access groups.
-     * @param volumeAccessGroupID [required] Unique ID for this volume access group.
-     * @param name [required] Name of the volume access group.
-     * @param initiators [required] List of unique initiator names belonging to the volume access group.
-     * @param volumes [required] List of volumes belonging to the volume access group.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public VolumeAccessGroup(Long volumeAccessGroupID, String name, String[] initiators, Long[] volumes) {
-        this.volumeAccessGroupID = volumeAccessGroupID;
-        this.name = name;
-        this.initiators = initiators;
-        this.volumes = volumes;
-    }
-
-    
-    /**
-     * A volume access group is a useful way of grouping volumes and initiators together for ease of management.
-     * <br/><br/>
-     * Volume Access Group Limits:
-     * <br/><br/>
-     * - A volume access group can contain up to sixty-four initiator IQNs.
-     * - An initiator can only belong to only one volume access group.
-     * - A volume access group can contain up to two thousand volumes.
-     * - Each volume access group can belong to a maximum of four other volume access groups.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public VolumeAccessGroup() {}
 
-
-    /**
-     * Unique ID for this volume access group.
-     **/
-    public Long getVolumeAccessGroupID() {
-        return this.volumeAccessGroupID;
-    }
-
-    public void setVolumeAccessGroupID(Long volumeAccessGroupID) {
+    // parameterized constructor
+    @Since("7.0")
+    public VolumeAccessGroup(
+        Long volumeAccessGroupID,
+        String name,
+        String[] initiators,
+        Long[] volumes
+    )
+    {
         this.volumeAccessGroupID = volumeAccessGroupID;
-    }
-
-
-
-    /**
-     * Name of the volume access group.
-     **/
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-
-
-    /**
-     * List of unique initiator names belonging to the volume access group.
-     **/
-    public String[] getInitiators() {
-        return this.initiators;
-    }
-
-    public void setInitiators(String[] initiators) {
         this.initiators = initiators;
-    }
-
-
-
-    /**
-     * List of volumes belonging to the volume access group.
-     **/
-    public Long[] getVolumes() {
-        return this.volumes;
-    }
-
-    public void setVolumes(Long[] volumes) {
         this.volumes = volumes;
     }
 
-
+    /** 
+     * Unique ID for this volume access group.
+     **/
+    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+        this.volumeAccessGroupID = volumeAccessGroupID;
+    }
+    /** 
+     * Name of the volume access group.
+     **/
+    public String getName() { return this.name; }
+    public void setName(String name) { 
+        this.name = name;
+    }
+    /** 
+     * List of unique initiator names belonging to the volume access group.
+     **/
+    public String[] getInitiators() { return this.initiators; }
+    public void setInitiators(String[] initiators) { 
+        this.initiators = initiators;
+    }
+    /** 
+     * List of volumes belonging to the volume access group.
+     **/
+    public Long[] getVolumes() { return this.volumes; }
+    public void setVolumes(Long[] volumes) { 
+        this.volumes = volumes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -144,19 +92,27 @@ public class VolumeAccessGroup  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         VolumeAccessGroup that = (VolumeAccessGroup) o;
-        
-
-        return Objects.equals( volumeAccessGroupID , that.volumeAccessGroupID )
-            && Objects.equals( name , that.name )
-            && Objects.deepEquals( initiators , that.initiators )
-            && Objects.deepEquals( volumes , that.volumes );
+        return 
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
+            Objects.equals(name, that.name) &&
+            Objects.equals(initiators, that.initiators) &&
+            Objects.equals(volumes, that.volumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, name, initiators, volumes );
+        return Objects.hash( volumeAccessGroupID, name, (Object[])initiators, (Object[])volumes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroupID", volumeAccessGroupID);
+        map.put("name", name);
+        map.put("initiators", initiators);
+        map.put("volumes", volumes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -166,7 +122,7 @@ public class VolumeAccessGroup  implements Serializable  {
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
         sb.append(" name : ").append(name).append(",");
         sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
-        sb.append(" volumes : ").append(Arrays.toString(volumes));
+        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -196,7 +152,7 @@ public class VolumeAccessGroup  implements Serializable  {
                          this.volumeAccessGroupID,
                          this.name,
                          this.initiators,
-                         this.volumes            );
+                         this.volumes);
         }
 
         private VolumeAccessGroup.Builder buildFrom(final VolumeAccessGroup req) {
@@ -229,5 +185,4 @@ public class VolumeAccessGroup  implements Serializable  {
         }
 
     }
-
 }

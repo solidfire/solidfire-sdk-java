@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetNodeHardwareInfo" API Service call.
+ * 
  **/
-public class GetNodeHardwareInfoRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -2077544639L;
+public class GetNodeHardwareInfoRequest implements Serializable {
 
+    public static final long serialVersionUID = 3185024681412644061L;
     @SerializedName("nodeID") private Long nodeID;
 
-    /**
-     * The Request object for the "GetNodeHardwareInfo" API Service call.
-     * @param nodeID [required] The ID of the node for which hardware information is being requested.  Information about a  node is returned if a   node is specified.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetNodeHardwareInfoRequest(Long nodeID) {
-        this.nodeID = nodeID;
-    }
-
-    
-    /**
-     * The Request object for the "GetNodeHardwareInfo" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetNodeHardwareInfoRequest() {}
 
-
-    /**
-     * The ID of the node for which hardware information is being requested.  Information about a  node is returned if a   node is specified.
-     **/
-    public Long getNodeID() {
-        return this.nodeID;
-    }
-
-    public void setNodeID(Long nodeID) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetNodeHardwareInfoRequest(
+        Long nodeID
+    )
+    {
         this.nodeID = nodeID;
     }
 
-
+    /** 
+     * The ID of the node for which hardware information is being requested.  Information about a  node is returned if a   node is specified.
+     **/
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class GetNodeHardwareInfoRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetNodeHardwareInfoRequest that = (GetNodeHardwareInfoRequest) o;
-        
-
-        return Objects.equals( nodeID , that.nodeID );
+        return 
+            Objects.equals(nodeID, that.nodeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodeID );
+        return Objects.hash( nodeID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodeID", nodeID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodeID : ").append(nodeID);
+        sb.append(" nodeID : ").append(nodeID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class GetNodeHardwareInfoRequest  implements Serializable  {
 
         public GetNodeHardwareInfoRequest build() {
             return new GetNodeHardwareInfoRequest (
-                         this.nodeID            );
+                         this.nodeID);
         }
 
         private GetNodeHardwareInfoRequest.Builder buildFrom(final GetNodeHardwareInfoRequest req) {
@@ -137,5 +122,4 @@ public class GetNodeHardwareInfoRequest  implements Serializable  {
         }
 
     }
-
 }

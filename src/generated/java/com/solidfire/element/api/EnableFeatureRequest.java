@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "EnableFeature" API Service call.
+ * 
  **/
-public class EnableFeatureRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1222678608L;
+public class EnableFeatureRequest implements Serializable {
 
+    public static final long serialVersionUID = 8090329014016240992L;
     @SerializedName("feature") private String feature;
 
-    /**
-     * The Request object for the "EnableFeature" API Service call.
-     * @param feature [required] Valid values: vvols: Enable the Virtual Volumes (VVOLs) cluster feature.
-     * @since 9.0
-     **/
-    @Since("9.0")
-    public EnableFeatureRequest(String feature) {
-        this.feature = feature;
-    }
-
-    
-    /**
-     * The Request object for the "EnableFeature" API Service call.
-     * Empty constructor to support serialization.
-     * @since 9.0
-     **/
-    @Since("9.0")
+    // empty constructor
+    @Since("7.0")
     public EnableFeatureRequest() {}
 
-
-    /**
-     * Valid values: vvols: Enable the Virtual Volumes (VVOLs) cluster feature.
-     **/
-    public String getFeature() {
-        return this.feature;
-    }
-
-    public void setFeature(String feature) {
+    // parameterized constructor
+    @Since("7.0")
+    public EnableFeatureRequest(
+        String feature
+    )
+    {
         this.feature = feature;
     }
 
-
+    /** 
+     * Valid values: vvols: Enable the Virtual Volumes (VVOLs) cluster feature.
+     **/
+    public String getFeature() { return this.feature; }
+    public void setFeature(String feature) { 
+        this.feature = feature;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class EnableFeatureRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         EnableFeatureRequest that = (EnableFeatureRequest) o;
-        
-
-        return Objects.equals( feature , that.feature );
+        return 
+            Objects.equals(feature, that.feature);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) feature );
+        return Objects.hash( feature );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("feature", feature);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" feature : ").append(feature);
+        sb.append(" feature : ").append(feature).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class EnableFeatureRequest  implements Serializable  {
 
         public EnableFeatureRequest build() {
             return new EnableFeatureRequest (
-                         this.feature            );
+                         this.feature);
         }
 
         private EnableFeatureRequest.Builder buildFrom(final EnableFeatureRequest req) {
@@ -137,5 +122,4 @@ public class EnableFeatureRequest  implements Serializable  {
         }
 
     }
-
 }

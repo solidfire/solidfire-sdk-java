@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "TestConnectSvip" API Service call.
+ * 
  **/
-public class TestConnectSvipRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 345898496L;
+public class TestConnectSvipRequest implements Serializable {
 
+    public static final long serialVersionUID = 2243948957120107271L;
     @SerializedName("svip") private Optional<String> svip;
 
-    /**
-     * The Request object for the "TestConnectSvip" API Service call.
-     * @param svip (optional) Optionally, use to test the storage connection of a different SVIP. This is not needed to test the connection to the target cluster.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public TestConnectSvipRequest(Optional<String> svip) {
-        this.svip = (svip == null) ? Optional.<String>empty() : svip;
-    }
-
-    
-    /**
-     * The Request object for the "TestConnectSvip" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public TestConnectSvipRequest() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public TestConnectSvipRequest(
+        Optional<String> svip
+    )
+    {
+        this.svip = (svip == null) ? Optional.<String>empty() : svip;
+    }
 
-    /**
+    /** 
      * Optionally, use to test the storage connection of a different SVIP. This is not needed to test the connection to the target cluster.
      **/
-    public Optional<String> getSvip() {
-        return this.svip;
+    public Optional<String> getSvip() { return this.svip; }
+    public void setSvip(Optional<String> svip) { 
+        this.svip = (svip == null) ? Optional.<String>empty() : svip;
     }
-
-    public void setSvip(String svip) {
-        this.svip = (svip == null) ? Optional.<String>empty() : Optional.of(svip);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -82,24 +62,30 @@ public class TestConnectSvipRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectSvipRequest that = (TestConnectSvipRequest) o;
-        
-
-        return Objects.equals( svip , that.svip );
+        return 
+            Objects.equals(svip, that.svip);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) svip );
+        return Objects.hash( svip );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("svip", svip);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != svip && svip.isPresent())
-            sb.append(" svip : ").append(svip.get());
+        if(null != svip && svip.isPresent()){
+            sb.append(" svip : ").append(svip.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -123,7 +109,7 @@ public class TestConnectSvipRequest  implements Serializable  {
 
         public TestConnectSvipRequest build() {
             return new TestConnectSvipRequest (
-                         this.svip            );
+                         this.svip);
         }
 
         private TestConnectSvipRequest.Builder buildFrom(final TestConnectSvipRequest req) {
@@ -138,5 +124,4 @@ public class TestConnectSvipRequest  implements Serializable  {
         }
 
     }
-
 }

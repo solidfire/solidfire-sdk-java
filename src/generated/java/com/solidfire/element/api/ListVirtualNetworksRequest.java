@@ -19,110 +19,72 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ListVirtualNetworks" API Service call.
+ * 
  **/
-public class ListVirtualNetworksRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1763276070L;
+public class ListVirtualNetworksRequest implements Serializable {
 
+    public static final long serialVersionUID = 323479911027186489L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
     @SerializedName("virtualNetworkIDs") private Optional<Long[]> virtualNetworkIDs;
     @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
 
-    /**
-     * The Request object for the "ListVirtualNetworks" API Service call.
-     * @param virtualNetworkID (optional) Network ID to filter the list for a single virtual network
-     * @param virtualNetworkTag (optional) Network Tag to filter the list for a single virtual network
-     * @param virtualNetworkIDs (optional) NetworkIDs to include in the list.
-     * @param virtualNetworkTags (optional) Network Tags to include in the list.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListVirtualNetworksRequest(Optional<Long> virtualNetworkID, Optional<Long> virtualNetworkTag, Optional<Long[]> virtualNetworkIDs, Optional<Long[]> virtualNetworkTags) {
+    public ListVirtualNetworksRequest() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public ListVirtualNetworksRequest(
+        Optional<Long> virtualNetworkID,
+        Optional<Long> virtualNetworkTag,
+        Optional<Long[]> virtualNetworkIDs,
+        Optional<Long[]> virtualNetworkTags
+    )
+    {
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
         this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
         this.virtualNetworkIDs = (virtualNetworkIDs == null) ? Optional.<Long[]>empty() : virtualNetworkIDs;
         this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
     }
 
-    
-    /**
-     * The Request object for the "ListVirtualNetworks" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListVirtualNetworksRequest() {}
-
-
-    /**
+    /** 
      * Network ID to filter the list for a single virtual network
      **/
-    public Optional<Long> getVirtualNetworkID() {
-        return this.virtualNetworkID;
+    public Optional<Long> getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(Optional<Long> virtualNetworkID) { 
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
     }
-
-    public void setVirtualNetworkID(Long virtualNetworkID) {
-        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
-    }
-
-
-
-    /**
+    /** 
      * Network Tag to filter the list for a single virtual network
      **/
-    public Optional<Long> getVirtualNetworkTag() {
-        return this.virtualNetworkTag;
+    public Optional<Long> getVirtualNetworkTag() { return this.virtualNetworkTag; }
+    public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) { 
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
     }
-
-    public void setVirtualNetworkTag(Long virtualNetworkTag) {
-        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
-    }
-
-
-
-    /**
+    /** 
      * NetworkIDs to include in the list.
      **/
-    public Optional<Long[]> getVirtualNetworkIDs() {
-        return this.virtualNetworkIDs;
+    public Optional<Long[]> getVirtualNetworkIDs() { return this.virtualNetworkIDs; }
+    public void setVirtualNetworkIDs(Optional<Long[]> virtualNetworkIDs) { 
+        this.virtualNetworkIDs = (virtualNetworkIDs == null) ? Optional.<Long[]>empty() : virtualNetworkIDs;
     }
-
-    public void setVirtualNetworkIDs(Long[] virtualNetworkIDs) {
-        this.virtualNetworkIDs = (virtualNetworkIDs == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkIDs);
-    }
-
-
-
-    /**
+    /** 
      * Network Tags to include in the list.
      **/
-    public Optional<Long[]> getVirtualNetworkTags() {
-        return this.virtualNetworkTags;
+    public Optional<Long[]> getVirtualNetworkTags() { return this.virtualNetworkTags; }
+    public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) { 
+        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
     }
-
-    public void setVirtualNetworkTags(Long[] virtualNetworkTags) {
-        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkTags);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -130,12 +92,11 @@ public class ListVirtualNetworksRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualNetworksRequest that = (ListVirtualNetworksRequest) o;
-        
-
-        return Objects.equals( virtualNetworkID , that.virtualNetworkID )
-            && Objects.equals( virtualNetworkTag , that.virtualNetworkTag )
-            && Objects.deepEquals( virtualNetworkIDs , that.virtualNetworkIDs )
-            && Objects.deepEquals( virtualNetworkTags , that.virtualNetworkTags );
+        return 
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
+            Objects.equals(virtualNetworkIDs, that.virtualNetworkIDs) &&
+            Objects.equals(virtualNetworkTags, that.virtualNetworkTags);
     }
 
     @Override
@@ -144,19 +105,32 @@ public class ListVirtualNetworksRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("virtualNetworkID", virtualNetworkID);
+        map.put("virtualNetworkTag", virtualNetworkTag);
+        map.put("virtualNetworkIDs", virtualNetworkIDs);
+        map.put("virtualNetworkTags", virtualNetworkTags);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != virtualNetworkID && virtualNetworkID.isPresent())
+        if(null != virtualNetworkID && virtualNetworkID.isPresent()){
             sb.append(" virtualNetworkID : ").append(virtualNetworkID.get()).append(",");
-        if(null != virtualNetworkTag && virtualNetworkTag.isPresent())
+        }
+        if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
             sb.append(" virtualNetworkTag : ").append(virtualNetworkTag.get()).append(",");
-        if(null != virtualNetworkIDs && virtualNetworkIDs.isPresent())
-            sb.append(" virtualNetworkIDs : ").append(Arrays.toString(virtualNetworkIDs.get())).append(",");
-        if(null != virtualNetworkTags && virtualNetworkTags.isPresent())
-            sb.append(" virtualNetworkTags : ").append(Arrays.toString(virtualNetworkTags.get()));
+        }
+        if(null != virtualNetworkIDs && virtualNetworkIDs.isPresent()){
+            sb.append(" virtualNetworkIDs : ").append(virtualNetworkIDs.get()).append(",");
+        }
+        if(null != virtualNetworkTags && virtualNetworkTags.isPresent()){
+            sb.append(" virtualNetworkTags : ").append(virtualNetworkTags.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -186,7 +160,7 @@ public class ListVirtualNetworksRequest  implements Serializable  {
                          this.virtualNetworkID,
                          this.virtualNetworkTag,
                          this.virtualNetworkIDs,
-                         this.virtualNetworkTags            );
+                         this.virtualNetworkTags);
         }
 
         private ListVirtualNetworksRequest.Builder buildFrom(final ListVirtualNetworksRequest req) {
@@ -219,5 +193,4 @@ public class ListVirtualNetworksRequest  implements Serializable  {
         }
 
     }
-
 }

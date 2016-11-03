@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * Used to return information about the Fibre Channel sessions.
  **/
-public class ListFibreChannelSessionsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1385337796L;
+public class ListFibreChannelSessionsResult implements Serializable {
 
+    public static final long serialVersionUID = -122152116909046325L;
     @SerializedName("sessions") private FibreChannelSession[] sessions;
 
-    /**
-     * Used to return information about the Fibre Channel sessions.
-     * @param sessions [required] A list of FibreChannelSession objects with information about the Fibre Channel session.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListFibreChannelSessionsResult(FibreChannelSession[] sessions) {
-        this.sessions = sessions;
-    }
-
-    
-    /**
-     * Used to return information about the Fibre Channel sessions.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ListFibreChannelSessionsResult() {}
 
-
-    /**
-     * A list of FibreChannelSession objects with information about the Fibre Channel session.
-     **/
-    public FibreChannelSession[] getSessions() {
-        return this.sessions;
-    }
-
-    public void setSessions(FibreChannelSession[] sessions) {
+    // parameterized constructor
+    @Since("7.0")
+    public ListFibreChannelSessionsResult(
+        FibreChannelSession[] sessions
+    )
+    {
         this.sessions = sessions;
     }
 
-
+    /** 
+     * A list of FibreChannelSession objects with information about the Fibre Channel session.
+     **/
+    public FibreChannelSession[] getSessions() { return this.sessions; }
+    public void setSessions(FibreChannelSession[] sessions) { 
+        this.sessions = sessions;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class ListFibreChannelSessionsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListFibreChannelSessionsResult that = (ListFibreChannelSessionsResult) o;
-        
-
-        return Objects.deepEquals( sessions , that.sessions );
+        return 
+            Objects.equals(sessions, that.sessions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) sessions );
+        return Objects.hash( (Object[])sessions );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("sessions", sessions);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" sessions : ").append(Arrays.toString(sessions));
+        sb.append(" sessions : ").append(Arrays.toString(sessions)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class ListFibreChannelSessionsResult  implements Serializable  {
 
         public ListFibreChannelSessionsResult build() {
             return new ListFibreChannelSessionsResult (
-                         this.sessions            );
+                         this.sessions);
         }
 
         private ListFibreChannelSessionsResult.Builder buildFrom(final ListFibreChannelSessionsResult req) {
@@ -137,5 +122,4 @@ public class ListFibreChannelSessionsResult  implements Serializable  {
         }
 
     }
-
 }

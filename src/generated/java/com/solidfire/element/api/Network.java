@@ -19,70 +19,50 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class Network  implements Serializable  {
 
-    private static final long serialVersionUID = 310271428L;
+public class Network implements Serializable {
 
+    public static final long serialVersionUID = 8968856628286036613L;
     @SerializedName("Bond10G") private Optional<NetworkConfig> bond10G;
     @SerializedName("Bond1G") private Optional<NetworkConfig> bond1G;
 
-    /**
-     * 
-     * @param bond10G (optional) 
-     * @param bond1G (optional) 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public Network(Optional<NetworkConfig> bond10G, Optional<NetworkConfig> bond1G) {
+    public Network() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public Network(
+        Optional<NetworkConfig> bond10G,
+        Optional<NetworkConfig> bond1G
+    )
+    {
         this.bond10G = (bond10G == null) ? Optional.<NetworkConfig>empty() : bond10G;
         this.bond1G = (bond1G == null) ? Optional.<NetworkConfig>empty() : bond1G;
     }
 
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
+    /** 
      **/
-    @Since("7.0")
-    public Network() {}
-
-    public Optional<NetworkConfig> getBond10G() {
-        return this.bond10G;
+    public Optional<NetworkConfig> getBond10G() { return this.bond10G; }
+    public void setBond10G(Optional<NetworkConfig> bond10G) { 
+        this.bond10G = (bond10G == null) ? Optional.<NetworkConfig>empty() : bond10G;
     }
-
-    public void setBond10G(NetworkConfig bond10G) {
-        this.bond10G = (bond10G == null) ? Optional.<NetworkConfig>empty() : Optional.of(bond10G);
+    /** 
+     **/
+    public Optional<NetworkConfig> getBond1G() { return this.bond1G; }
+    public void setBond1G(Optional<NetworkConfig> bond1G) { 
+        this.bond1G = (bond1G == null) ? Optional.<NetworkConfig>empty() : bond1G;
     }
-
-
-    public Optional<NetworkConfig> getBond1G() {
-        return this.bond1G;
-    }
-
-    public void setBond1G(NetworkConfig bond1G) {
-        this.bond1G = (bond1G == null) ? Optional.<NetworkConfig>empty() : Optional.of(bond1G);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -90,10 +70,9 @@ public class Network  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         Network that = (Network) o;
-        
-
-        return Objects.equals( bond10G , that.bond10G )
-            && Objects.equals( bond1G , that.bond1G );
+        return 
+            Objects.equals(bond10G, that.bond10G) &&
+            Objects.equals(bond1G, that.bond1G);
     }
 
     @Override
@@ -102,15 +81,24 @@ public class Network  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("bond10G", bond10G);
+        map.put("bond1G", bond1G);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != bond10G && bond10G.isPresent())
+        if(null != bond10G && bond10G.isPresent()){
             sb.append(" bond10G : ").append(bond10G.get()).append(",");
-        if(null != bond1G && bond1G.isPresent())
-            sb.append(" bond1G : ").append(bond1G.get());
+        }
+        if(null != bond1G && bond1G.isPresent()){
+            sb.append(" bond1G : ").append(bond1G.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -136,7 +124,7 @@ public class Network  implements Serializable  {
         public Network build() {
             return new Network (
                          this.bond10G,
-                         this.bond1G            );
+                         this.bond1G);
         }
 
         private Network.Builder buildFrom(final Network req) {
@@ -157,5 +145,4 @@ public class Network  implements Serializable  {
         }
 
     }
-
 }

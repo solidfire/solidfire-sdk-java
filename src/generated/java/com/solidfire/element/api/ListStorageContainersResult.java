@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListStorageContainers" API Service call.
+ * 
  **/
-public class ListStorageContainersResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1162626470L;
+public class ListStorageContainersResult implements Serializable {
 
+    public static final long serialVersionUID = 3012254209072210575L;
     @SerializedName("storageContainers") private StorageContainer[] storageContainers;
 
-    /**
-     * The object returned by the "ListStorageContainers" API Service call.
-     * @param storageContainers [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListStorageContainersResult(StorageContainer[] storageContainers) {
-        this.storageContainers = storageContainers;
-    }
-
-    
-    /**
-     * The object returned by the "ListStorageContainers" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ListStorageContainersResult() {}
 
-    public StorageContainer[] getStorageContainers() {
-        return this.storageContainers;
-    }
-
-    public void setStorageContainers(StorageContainer[] storageContainers) {
+    // parameterized constructor
+    @Since("7.0")
+    public ListStorageContainersResult(
+        StorageContainer[] storageContainers
+    )
+    {
         this.storageContainers = storageContainers;
     }
 
-
+    /** 
+     **/
+    public StorageContainer[] getStorageContainers() { return this.storageContainers; }
+    public void setStorageContainers(StorageContainer[] storageContainers) { 
+        this.storageContainers = storageContainers;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,23 +61,28 @@ public class ListStorageContainersResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListStorageContainersResult that = (ListStorageContainersResult) o;
-        
-
-        return Objects.deepEquals( storageContainers , that.storageContainers );
+        return 
+            Objects.equals(storageContainers, that.storageContainers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) storageContainers );
+        return Objects.hash( (Object[])storageContainers );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("storageContainers", storageContainers);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" storageContainers : ").append(Arrays.toString(storageContainers));
+        sb.append(" storageContainers : ").append(Arrays.toString(storageContainers)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,7 +106,7 @@ public class ListStorageContainersResult  implements Serializable  {
 
         public ListStorageContainersResult build() {
             return new ListStorageContainersResult (
-                         this.storageContainers            );
+                         this.storageContainers);
         }
 
         private ListStorageContainersResult.Builder buildFrom(final ListStorageContainersResult req) {
@@ -133,5 +121,4 @@ public class ListStorageContainersResult  implements Serializable  {
         }
 
     }
-
 }

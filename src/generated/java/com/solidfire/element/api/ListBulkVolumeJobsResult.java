@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListBulkVolumeJobs" API Service call.
+ * 
  **/
-public class ListBulkVolumeJobsResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1330231349L;
+public class ListBulkVolumeJobsResult implements Serializable {
 
+    public static final long serialVersionUID = 7680581996036886373L;
     @SerializedName("bulkVolumeJobs") private BulkVolumeJob[] bulkVolumeJobs;
 
-    /**
-     * The object returned by the "ListBulkVolumeJobs" API Service call.
-     * @param bulkVolumeJobs [required] An array of information for each bulk volume job.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListBulkVolumeJobsResult(BulkVolumeJob[] bulkVolumeJobs) {
-        this.bulkVolumeJobs = bulkVolumeJobs;
-    }
-
-    
-    /**
-     * The object returned by the "ListBulkVolumeJobs" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ListBulkVolumeJobsResult() {}
 
-
-    /**
-     * An array of information for each bulk volume job.
-     **/
-    public BulkVolumeJob[] getBulkVolumeJobs() {
-        return this.bulkVolumeJobs;
-    }
-
-    public void setBulkVolumeJobs(BulkVolumeJob[] bulkVolumeJobs) {
+    // parameterized constructor
+    @Since("7.0")
+    public ListBulkVolumeJobsResult(
+        BulkVolumeJob[] bulkVolumeJobs
+    )
+    {
         this.bulkVolumeJobs = bulkVolumeJobs;
     }
 
-
+    /** 
+     * An array of information for each bulk volume job.
+     **/
+    public BulkVolumeJob[] getBulkVolumeJobs() { return this.bulkVolumeJobs; }
+    public void setBulkVolumeJobs(BulkVolumeJob[] bulkVolumeJobs) { 
+        this.bulkVolumeJobs = bulkVolumeJobs;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class ListBulkVolumeJobsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListBulkVolumeJobsResult that = (ListBulkVolumeJobsResult) o;
-        
-
-        return Objects.deepEquals( bulkVolumeJobs , that.bulkVolumeJobs );
+        return 
+            Objects.equals(bulkVolumeJobs, that.bulkVolumeJobs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) bulkVolumeJobs );
+        return Objects.hash( (Object[])bulkVolumeJobs );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("bulkVolumeJobs", bulkVolumeJobs);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" bulkVolumeJobs : ").append(Arrays.toString(bulkVolumeJobs));
+        sb.append(" bulkVolumeJobs : ").append(Arrays.toString(bulkVolumeJobs)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class ListBulkVolumeJobsResult  implements Serializable  {
 
         public ListBulkVolumeJobsResult build() {
             return new ListBulkVolumeJobsResult (
-                         this.bulkVolumeJobs            );
+                         this.bulkVolumeJobs);
         }
 
         private ListBulkVolumeJobsResult.Builder buildFrom(final ListBulkVolumeJobsResult req) {
@@ -137,5 +122,4 @@ public class ListBulkVolumeJobsResult  implements Serializable  {
         }
 
     }
-
 }

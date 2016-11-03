@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "DeleteVolumeAccessGroup" API Service call.
+ * 
  **/
-public class DeleteVolumeAccessGroupRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1947438853L;
+public class DeleteVolumeAccessGroupRequest implements Serializable {
 
+    public static final long serialVersionUID = 8476466628428325659L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
 
-    /**
-     * The Request object for the "DeleteVolumeAccessGroup" API Service call.
-     * @param volumeAccessGroupID [required] The ID of the volume access group to delete.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public DeleteVolumeAccessGroupRequest(Long volumeAccessGroupID) {
-        this.volumeAccessGroupID = volumeAccessGroupID;
-    }
-
-    
-    /**
-     * The Request object for the "DeleteVolumeAccessGroup" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public DeleteVolumeAccessGroupRequest() {}
 
-
-    /**
-     * The ID of the volume access group to delete.
-     **/
-    public Long getVolumeAccessGroupID() {
-        return this.volumeAccessGroupID;
-    }
-
-    public void setVolumeAccessGroupID(Long volumeAccessGroupID) {
+    // parameterized constructor
+    @Since("7.0")
+    public DeleteVolumeAccessGroupRequest(
+        Long volumeAccessGroupID
+    )
+    {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
-
+    /** 
+     * The ID of the volume access group to delete.
+     **/
+    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+        this.volumeAccessGroupID = volumeAccessGroupID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class DeleteVolumeAccessGroupRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         DeleteVolumeAccessGroupRequest that = (DeleteVolumeAccessGroupRequest) o;
-        
-
-        return Objects.equals( volumeAccessGroupID , that.volumeAccessGroupID );
+        return 
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volumeAccessGroupID );
+        return Objects.hash( volumeAccessGroupID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroupID", volumeAccessGroupID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID);
+        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class DeleteVolumeAccessGroupRequest  implements Serializable  {
 
         public DeleteVolumeAccessGroupRequest build() {
             return new DeleteVolumeAccessGroupRequest (
-                         this.volumeAccessGroupID            );
+                         this.volumeAccessGroupID);
         }
 
         private DeleteVolumeAccessGroupRequest.Builder buildFrom(final DeleteVolumeAccessGroupRequest req) {
@@ -137,5 +122,4 @@ public class DeleteVolumeAccessGroupRequest  implements Serializable  {
         }
 
     }
-
 }

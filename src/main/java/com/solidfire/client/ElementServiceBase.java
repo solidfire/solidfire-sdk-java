@@ -17,8 +17,8 @@
 package com.solidfire.client;
 
 import com.solidfire.element.api.CHAPSecret;
-import com.solidfire.jsvcgen.client.RequestDispatcher;
-import com.solidfire.jsvcgen.client.ServiceBase;
+import com.solidfire.core.client.RequestDispatcher;
+import com.solidfire.core.client.ServiceBase;
 import com.solidfire.serialization.CHAPSecretAdaptor;
 
 import java.util.Arrays;

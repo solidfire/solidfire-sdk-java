@@ -19,70 +19,50 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ListVirtualVolumeTasks" API Service call.
+ * 
  **/
-public class ListVirtualVolumeTasksRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1238956793L;
+public class ListVirtualVolumeTasksRequest implements Serializable {
 
-    @SerializedName("virtualVolumeTaskIDs") private Optional<java.util.UUID[]> virtualVolumeTaskIDs;
-    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
+    public static final long serialVersionUID = -8824861203375597941L;
+    @SerializedName("virtualVolumeTaskIDs") private Optional<UUIDNullable[]> virtualVolumeTaskIDs;
+    @SerializedName("callingVirtualVolumeHostID") private Optional<UUIDNullable> callingVirtualVolumeHostID;
 
-    /**
-     * The Request object for the "ListVirtualVolumeTasks" API Service call.
-     * @param virtualVolumeTaskIDs (optional) 
-     * @param callingVirtualVolumeHostID (optional) 
-     * @since 9.0
-     **/
-    @Since("9.0")
-    public ListVirtualVolumeTasksRequest(Optional<java.util.UUID[]> virtualVolumeTaskIDs, Optional<java.util.UUID> callingVirtualVolumeHostID) {
-        this.virtualVolumeTaskIDs = (virtualVolumeTaskIDs == null) ? Optional.<java.util.UUID[]>empty() : virtualVolumeTaskIDs;
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
-    }
-
-    
-    /**
-     * The Request object for the "ListVirtualVolumeTasks" API Service call.
-     * Empty constructor to support serialization.
-     * @since 9.0
-     **/
-    @Since("9.0")
+    // empty constructor
+    @Since("7.0")
     public ListVirtualVolumeTasksRequest() {}
 
-    public Optional<java.util.UUID[]> getVirtualVolumeTaskIDs() {
-        return this.virtualVolumeTaskIDs;
+    // parameterized constructor
+    @Since("7.0")
+    public ListVirtualVolumeTasksRequest(
+        Optional<UUIDNullable[]> virtualVolumeTaskIDs,
+        Optional<UUIDNullable> callingVirtualVolumeHostID
+    )
+    {
+        this.virtualVolumeTaskIDs = (virtualVolumeTaskIDs == null) ? Optional.<UUIDNullable[]>empty() : virtualVolumeTaskIDs;
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
     }
 
-    public void setVirtualVolumeTaskIDs(java.util.UUID[] virtualVolumeTaskIDs) {
-        this.virtualVolumeTaskIDs = (virtualVolumeTaskIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(virtualVolumeTaskIDs);
+    /** 
+     **/
+    public Optional<UUIDNullable[]> getVirtualVolumeTaskIDs() { return this.virtualVolumeTaskIDs; }
+    public void setVirtualVolumeTaskIDs(Optional<UUIDNullable[]> virtualVolumeTaskIDs) { 
+        this.virtualVolumeTaskIDs = (virtualVolumeTaskIDs == null) ? Optional.<UUIDNullable[]>empty() : virtualVolumeTaskIDs;
     }
-
-
-    public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
-        return this.callingVirtualVolumeHostID;
+    /** 
+     **/
+    public Optional<UUIDNullable> getCallingVirtualVolumeHostID() { return this.callingVirtualVolumeHostID; }
+    public void setCallingVirtualVolumeHostID(Optional<UUIDNullable> callingVirtualVolumeHostID) { 
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
     }
-
-    public void setCallingVirtualVolumeHostID(java.util.UUID callingVirtualVolumeHostID) {
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -90,10 +70,9 @@ public class ListVirtualVolumeTasksRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualVolumeTasksRequest that = (ListVirtualVolumeTasksRequest) o;
-        
-
-        return Objects.deepEquals( virtualVolumeTaskIDs , that.virtualVolumeTaskIDs )
-            && Objects.equals( callingVirtualVolumeHostID , that.callingVirtualVolumeHostID );
+        return 
+            Objects.equals(virtualVolumeTaskIDs, that.virtualVolumeTaskIDs) &&
+            Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }
 
     @Override
@@ -102,15 +81,24 @@ public class ListVirtualVolumeTasksRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("virtualVolumeTaskIDs", virtualVolumeTaskIDs);
+        map.put("callingVirtualVolumeHostID", callingVirtualVolumeHostID);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != virtualVolumeTaskIDs && virtualVolumeTaskIDs.isPresent())
-            sb.append(" virtualVolumeTaskIDs : ").append(Arrays.toString(virtualVolumeTaskIDs.get())).append(",");
-        if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent())
-            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get());
+        if(null != virtualVolumeTaskIDs && virtualVolumeTaskIDs.isPresent()){
+            sb.append(" virtualVolumeTaskIDs : ").append(virtualVolumeTaskIDs.get()).append(",");
+        }
+        if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent()){
+            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -128,15 +116,15 @@ public class ListVirtualVolumeTasksRequest  implements Serializable  {
     }
 
     public static class Builder {
-        private Optional<java.util.UUID[]> virtualVolumeTaskIDs;
-        private Optional<java.util.UUID> callingVirtualVolumeHostID;
+        private Optional<UUIDNullable[]> virtualVolumeTaskIDs;
+        private Optional<UUIDNullable> callingVirtualVolumeHostID;
 
         private Builder() { }
 
         public ListVirtualVolumeTasksRequest build() {
             return new ListVirtualVolumeTasksRequest (
                          this.virtualVolumeTaskIDs,
-                         this.callingVirtualVolumeHostID            );
+                         this.callingVirtualVolumeHostID);
         }
 
         private ListVirtualVolumeTasksRequest.Builder buildFrom(final ListVirtualVolumeTasksRequest req) {
@@ -146,16 +134,15 @@ public class ListVirtualVolumeTasksRequest  implements Serializable  {
             return this;
         }
 
-        public ListVirtualVolumeTasksRequest.Builder optionalVirtualVolumeTaskIDs(final java.util.UUID[] virtualVolumeTaskIDs) {
-            this.virtualVolumeTaskIDs = (virtualVolumeTaskIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(virtualVolumeTaskIDs);
+        public ListVirtualVolumeTasksRequest.Builder optionalVirtualVolumeTaskIDs(final UUIDNullable[] virtualVolumeTaskIDs) {
+            this.virtualVolumeTaskIDs = (virtualVolumeTaskIDs == null) ? Optional.<UUIDNullable[]>empty() : Optional.of(virtualVolumeTaskIDs);
             return this;
         }
 
-        public ListVirtualVolumeTasksRequest.Builder optionalCallingVirtualVolumeHostID(final java.util.UUID callingVirtualVolumeHostID) {
-            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
+        public ListVirtualVolumeTasksRequest.Builder optionalCallingVirtualVolumeHostID(final UUIDNullable callingVirtualVolumeHostID) {
+            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : Optional.of(callingVirtualVolumeHostID);
             return this;
         }
 
     }
-
 }

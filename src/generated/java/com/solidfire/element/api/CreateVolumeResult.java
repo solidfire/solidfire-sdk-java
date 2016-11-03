@@ -19,81 +19,55 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "CreateVolume" API Service call.
+ * 
  **/
-public class CreateVolumeResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1333016570L;
+public class CreateVolumeResult implements Serializable {
 
+    public static final long serialVersionUID = 2889880193310552919L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("curve") private java.util.Map<String,Long> curve;
 
-    /**
-     * The object returned by the "CreateVolume" API Service call.
-     * @param volumeID [required] VolumeID for the newly created volume.
-     * @param curve [required] The curve is a set of key-value pairs.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public CreateVolumeResult(Long volumeID, java.util.Map<String,Long> curve) {
+    public CreateVolumeResult() {}
+
+    // parameterized constructor
+    @Since("7.0")
+    public CreateVolumeResult(
+        Long volumeID,
+        java.util.Map<String,Long> curve
+    )
+    {
         this.volumeID = volumeID;
         this.curve = curve;
     }
 
-    
-    /**
-     * The object returned by the "CreateVolume" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public CreateVolumeResult() {}
-
-
-    /**
+    /** 
      * VolumeID for the newly created volume.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    public void setVolumeID(Long volumeID) {
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
-
-
-
-    /**
+    /** 
      * The curve is a set of key-value pairs.
      * The keys are I/O sizes in bytes.
      * The values represent the cost performing an IOP at a specific I/O size.
      * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
      **/
-    public java.util.Map<String,Long> getCurve() {
-        return this.curve;
-    }
-
-    public void setCurve(java.util.Map<String,Long> curve) {
+    public java.util.Map<String,Long> getCurve() { return this.curve; }
+    public void setCurve(java.util.Map<String,Long> curve) { 
         this.curve = curve;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -101,10 +75,9 @@ public class CreateVolumeResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateVolumeResult that = (CreateVolumeResult) o;
-        
-
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( curve , that.curve );
+        return 
+            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(curve, that.curve);
     }
 
     @Override
@@ -113,13 +86,20 @@ public class CreateVolumeResult  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        map.put("curve", curve);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
         sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" curve : ").append(curve);
+        sb.append(" curve : ").append(curve).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -145,7 +125,7 @@ public class CreateVolumeResult  implements Serializable  {
         public CreateVolumeResult build() {
             return new CreateVolumeResult (
                          this.volumeID,
-                         this.curve            );
+                         this.curve);
         }
 
         private CreateVolumeResult.Builder buildFrom(final CreateVolumeResult req) {
@@ -166,5 +146,4 @@ public class CreateVolumeResult  implements Serializable  {
         }
 
     }
-
 }

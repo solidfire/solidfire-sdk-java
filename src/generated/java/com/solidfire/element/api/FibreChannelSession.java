@@ -19,126 +19,82 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * FibreChannelSession contains information about each Fibre Channel session that is visible to the cluster and what target ports it is visible on.
  **/
-public class FibreChannelSession  implements Serializable  {
 
-    private static final long serialVersionUID = -1073846206L;
+public class FibreChannelSession implements Serializable {
 
+    public static final long serialVersionUID = 8264333238023851936L;
     @SerializedName("initiatorWWPN") private String initiatorWWPN;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("serviceID") private Long serviceID;
     @SerializedName("targetWWPN") private String targetWWPN;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
 
-    /**
-     * FibreChannelSession contains information about each Fibre Channel session that is visible to the cluster and what target ports it is visible on.
-     * @param initiatorWWPN [required] The WWPN of the initiator which is logged into the target port.
-     * @param nodeID [required] The node owning the Fibre Channel session.
-     * @param serviceID [required] The service ID of the FService owning this Fibre Channel session
-     * @param targetWWPN [required] The WWPN of the target port involved in this session.
-     * @param volumeAccessGroupID [required] The ID of the volume access group to which the initiatorWWPN belongs. If not in a volume access group, the value will be null.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public FibreChannelSession(String initiatorWWPN, Long nodeID, Long serviceID, String targetWWPN, Long volumeAccessGroupID) {
-        this.volumeAccessGroupID = volumeAccessGroupID;
-        this.initiatorWWPN = initiatorWWPN;
-        this.nodeID = nodeID;
-        this.serviceID = serviceID;
-        this.targetWWPN = targetWWPN;
-    }
-
-    
-    /**
-     * FibreChannelSession contains information about each Fibre Channel session that is visible to the cluster and what target ports it is visible on.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public FibreChannelSession() {}
 
-
-    /**
-     * The WWPN of the initiator which is logged into the target port.
-     **/
-    public String getInitiatorWWPN() {
-        return this.initiatorWWPN;
-    }
-
-    public void setInitiatorWWPN(String initiatorWWPN) {
+    // parameterized constructor
+    @Since("7.0")
+    public FibreChannelSession(
+        String initiatorWWPN,
+        Long nodeID,
+        Long serviceID,
+        String targetWWPN,
+        Long volumeAccessGroupID
+    )
+    {
         this.initiatorWWPN = initiatorWWPN;
-    }
-
-
-
-    /**
-     * The node owning the Fibre Channel session.
-     **/
-    public Long getNodeID() {
-        return this.nodeID;
-    }
-
-    public void setNodeID(Long nodeID) {
         this.nodeID = nodeID;
-    }
-
-
-
-    /**
-     * The service ID of the FService owning this Fibre Channel session
-     **/
-    public Long getServiceID() {
-        return this.serviceID;
-    }
-
-    public void setServiceID(Long serviceID) {
         this.serviceID = serviceID;
-    }
-
-
-
-    /**
-     * The WWPN of the target port involved in this session.
-     **/
-    public String getTargetWWPN() {
-        return this.targetWWPN;
-    }
-
-    public void setTargetWWPN(String targetWWPN) {
         this.targetWWPN = targetWWPN;
-    }
-
-
-
-    /**
-     * The ID of the volume access group to which the initiatorWWPN belongs. If not in a volume access group, the value will be null.
-     **/
-    public Long getVolumeAccessGroupID() {
-        return this.volumeAccessGroupID;
-    }
-
-    public void setVolumeAccessGroupID(Long volumeAccessGroupID) {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
-
+    /** 
+     * The WWPN of the initiator which is logged into the target port.
+     **/
+    public String getInitiatorWWPN() { return this.initiatorWWPN; }
+    public void setInitiatorWWPN(String initiatorWWPN) { 
+        this.initiatorWWPN = initiatorWWPN;
+    }
+    /** 
+     * The node owning the Fibre Channel session.
+     **/
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
+    }
+    /** 
+     * The service ID of the FService owning this Fibre Channel session
+     **/
+    public Long getServiceID() { return this.serviceID; }
+    public void setServiceID(Long serviceID) { 
+        this.serviceID = serviceID;
+    }
+    /** 
+     * The WWPN of the target port involved in this session.
+     **/
+    public String getTargetWWPN() { return this.targetWWPN; }
+    public void setTargetWWPN(String targetWWPN) { 
+        this.targetWWPN = targetWWPN;
+    }
+    /** 
+     * The ID of the volume access group to which the initiatorWWPN belongs. If not in a volume access group, the value will be null.
+     **/
+    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+        this.volumeAccessGroupID = volumeAccessGroupID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -146,13 +102,12 @@ public class FibreChannelSession  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         FibreChannelSession that = (FibreChannelSession) o;
-        
-
-        return Objects.equals( initiatorWWPN , that.initiatorWWPN )
-            && Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( serviceID , that.serviceID )
-            && Objects.equals( targetWWPN , that.targetWWPN )
-            && Objects.equals( volumeAccessGroupID , that.volumeAccessGroupID );
+        return 
+            Objects.equals(initiatorWWPN, that.initiatorWWPN) &&
+            Objects.equals(nodeID, that.nodeID) &&
+            Objects.equals(serviceID, that.serviceID) &&
+            Objects.equals(targetWWPN, that.targetWWPN) &&
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID);
     }
 
     @Override
@@ -160,6 +115,16 @@ public class FibreChannelSession  implements Serializable  {
         return Objects.hash( initiatorWWPN, nodeID, serviceID, targetWWPN, volumeAccessGroupID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("initiatorWWPN", initiatorWWPN);
+        map.put("nodeID", nodeID);
+        map.put("serviceID", serviceID);
+        map.put("targetWWPN", targetWWPN);
+        map.put("volumeAccessGroupID", volumeAccessGroupID);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -170,7 +135,7 @@ public class FibreChannelSession  implements Serializable  {
         sb.append(" nodeID : ").append(nodeID).append(",");
         sb.append(" serviceID : ").append(serviceID).append(",");
         sb.append(" targetWWPN : ").append(targetWWPN).append(",");
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID);
+        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -202,7 +167,7 @@ public class FibreChannelSession  implements Serializable  {
                          this.nodeID,
                          this.serviceID,
                          this.targetWWPN,
-                         this.volumeAccessGroupID            );
+                         this.volumeAccessGroupID);
         }
 
         private FibreChannelSession.Builder buildFrom(final FibreChannelSession req) {
@@ -241,5 +206,4 @@ public class FibreChannelSession  implements Serializable  {
         }
 
     }
-
 }

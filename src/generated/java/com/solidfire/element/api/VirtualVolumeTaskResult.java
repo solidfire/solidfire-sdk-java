@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "VirtualVolumeTask" API Service call.
+ * 
  **/
-public class VirtualVolumeTaskResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1328398717L;
+public class VirtualVolumeTaskResult implements Serializable {
 
+    public static final long serialVersionUID = 3671052213670823488L;
     @SerializedName("task") private VirtualVolumeTask task;
 
-    /**
-     * The object returned by the "VirtualVolumeTask" API Service call.
-     * @param task [required] Returns the state of a VVol Async Task.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public VirtualVolumeTaskResult(VirtualVolumeTask task) {
-        this.task = task;
-    }
-
-    
-    /**
-     * The object returned by the "VirtualVolumeTask" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public VirtualVolumeTaskResult() {}
 
-
-    /**
-     * Returns the state of a VVol Async Task.
-     **/
-    public VirtualVolumeTask getTask() {
-        return this.task;
-    }
-
-    public void setTask(VirtualVolumeTask task) {
+    // parameterized constructor
+    @Since("7.0")
+    public VirtualVolumeTaskResult(
+        VirtualVolumeTask task
+    )
+    {
         this.task = task;
     }
 
-
+    /** 
+     * Returns the state of a VVol Async Task.
+     **/
+    public VirtualVolumeTask getTask() { return this.task; }
+    public void setTask(VirtualVolumeTask task) { 
+        this.task = task;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class VirtualVolumeTaskResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         VirtualVolumeTaskResult that = (VirtualVolumeTaskResult) o;
-        
-
-        return Objects.equals( task , that.task );
+        return 
+            Objects.equals(task, that.task);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) task );
+        return Objects.hash( task );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("task", task);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" task : ").append(task);
+        sb.append(" task : ").append(task).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class VirtualVolumeTaskResult  implements Serializable  {
 
         public VirtualVolumeTaskResult build() {
             return new VirtualVolumeTaskResult (
-                         this.task            );
+                         this.task);
         }
 
         private VirtualVolumeTaskResult.Builder buildFrom(final VirtualVolumeTaskResult req) {
@@ -137,5 +122,4 @@ public class VirtualVolumeTaskResult  implements Serializable  {
         }
 
     }
-
 }

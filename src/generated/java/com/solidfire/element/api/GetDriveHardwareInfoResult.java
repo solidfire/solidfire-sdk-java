@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetDriveHardwareInfo" API Service call.
+ * 
  **/
-public class GetDriveHardwareInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = 131670110L;
+public class GetDriveHardwareInfoResult implements Serializable {
 
+    public static final long serialVersionUID = -2168228537840358943L;
     @SerializedName("driveHardwareInfo") private DriveHardwareInfo driveHardwareInfo;
 
-    /**
-     * The object returned by the "GetDriveHardwareInfo" API Service call.
-     * @param driveHardwareInfo [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetDriveHardwareInfoResult(DriveHardwareInfo driveHardwareInfo) {
-        this.driveHardwareInfo = driveHardwareInfo;
-    }
-
-    
-    /**
-     * The object returned by the "GetDriveHardwareInfo" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetDriveHardwareInfoResult() {}
 
-    public DriveHardwareInfo getDriveHardwareInfo() {
-        return this.driveHardwareInfo;
-    }
-
-    public void setDriveHardwareInfo(DriveHardwareInfo driveHardwareInfo) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetDriveHardwareInfoResult(
+        DriveHardwareInfo driveHardwareInfo
+    )
+    {
         this.driveHardwareInfo = driveHardwareInfo;
     }
 
-
+    /** 
+     **/
+    public DriveHardwareInfo getDriveHardwareInfo() { return this.driveHardwareInfo; }
+    public void setDriveHardwareInfo(DriveHardwareInfo driveHardwareInfo) { 
+        this.driveHardwareInfo = driveHardwareInfo;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,23 +61,28 @@ public class GetDriveHardwareInfoResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetDriveHardwareInfoResult that = (GetDriveHardwareInfoResult) o;
-        
-
-        return Objects.equals( driveHardwareInfo , that.driveHardwareInfo );
+        return 
+            Objects.equals(driveHardwareInfo, that.driveHardwareInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) driveHardwareInfo );
+        return Objects.hash( driveHardwareInfo );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("driveHardwareInfo", driveHardwareInfo);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" driveHardwareInfo : ").append(driveHardwareInfo);
+        sb.append(" driveHardwareInfo : ").append(driveHardwareInfo).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,7 +106,7 @@ public class GetDriveHardwareInfoResult  implements Serializable  {
 
         public GetDriveHardwareInfoResult build() {
             return new GetDriveHardwareInfoResult (
-                         this.driveHardwareInfo            );
+                         this.driveHardwareInfo);
         }
 
         private GetDriveHardwareInfoResult.Builder buildFrom(final GetDriveHardwareInfoResult req) {
@@ -133,5 +121,4 @@ public class GetDriveHardwareInfoResult  implements Serializable  {
         }
 
     }
-
 }

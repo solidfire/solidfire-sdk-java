@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetCurrentClusterAdmin" API Service call.
+ * 
  **/
-public class GetCurrentClusterAdminResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1933572728L;
+public class GetCurrentClusterAdminResult implements Serializable {
 
+    public static final long serialVersionUID = -6109185927360892441L;
     @SerializedName("clusterAdmin") private ClusterAdmin clusterAdmin;
 
-    /**
-     * The object returned by the "GetCurrentClusterAdmin" API Service call.
-     * @param clusterAdmin [required] Information about all cluster and LDAP administrators that exist for a cluster.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetCurrentClusterAdminResult(ClusterAdmin clusterAdmin) {
-        this.clusterAdmin = clusterAdmin;
-    }
-
-    
-    /**
-     * The object returned by the "GetCurrentClusterAdmin" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetCurrentClusterAdminResult() {}
 
-
-    /**
-     * Information about all cluster and LDAP administrators that exist for a cluster.
-     **/
-    public ClusterAdmin getClusterAdmin() {
-        return this.clusterAdmin;
-    }
-
-    public void setClusterAdmin(ClusterAdmin clusterAdmin) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetCurrentClusterAdminResult(
+        ClusterAdmin clusterAdmin
+    )
+    {
         this.clusterAdmin = clusterAdmin;
     }
 
-
+    /** 
+     * Information about all cluster and LDAP administrators that exist for a cluster.
+     **/
+    public ClusterAdmin getClusterAdmin() { return this.clusterAdmin; }
+    public void setClusterAdmin(ClusterAdmin clusterAdmin) { 
+        this.clusterAdmin = clusterAdmin;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class GetCurrentClusterAdminResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetCurrentClusterAdminResult that = (GetCurrentClusterAdminResult) o;
-        
-
-        return Objects.equals( clusterAdmin , that.clusterAdmin );
+        return 
+            Objects.equals(clusterAdmin, that.clusterAdmin);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) clusterAdmin );
+        return Objects.hash( clusterAdmin );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterAdmin", clusterAdmin);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" clusterAdmin : ").append(clusterAdmin);
+        sb.append(" clusterAdmin : ").append(clusterAdmin).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class GetCurrentClusterAdminResult  implements Serializable  {
 
         public GetCurrentClusterAdminResult build() {
             return new GetCurrentClusterAdminResult (
-                         this.clusterAdmin            );
+                         this.clusterAdmin);
         }
 
         private GetCurrentClusterAdminResult.Builder buildFrom(final GetCurrentClusterAdminResult req) {
@@ -137,5 +122,4 @@ public class GetCurrentClusterAdminResult  implements Serializable  {
         }
 
     }
-
 }

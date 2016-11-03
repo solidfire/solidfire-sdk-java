@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetNvramInfo" API Service call.
+ * 
  **/
-public class GetNvramInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1656914543L;
+public class GetNvramInfoResult implements Serializable {
 
+    public static final long serialVersionUID = 8380977530507768205L;
     @SerializedName("nvramInfo") private java.util.Map<String, Object> nvramInfo;
 
-    /**
-     * The object returned by the "GetNvramInfo" API Service call.
-     * @param nvramInfo [required] Arrays of events and errors detected on the NVRAM card.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetNvramInfoResult(java.util.Map<String, Object> nvramInfo) {
-        this.nvramInfo = nvramInfo;
-    }
-
-    
-    /**
-     * The object returned by the "GetNvramInfo" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetNvramInfoResult() {}
 
-
-    /**
-     * Arrays of events and errors detected on the NVRAM card.
-     **/
-    public java.util.Map<String, Object> getNvramInfo() {
-        return this.nvramInfo;
-    }
-
-    public void setNvramInfo(java.util.Map<String, Object> nvramInfo) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetNvramInfoResult(
+        java.util.Map<String, Object> nvramInfo
+    )
+    {
         this.nvramInfo = nvramInfo;
     }
 
-
+    /** 
+     * Arrays of events and errors detected on the NVRAM card.
+     **/
+    public java.util.Map<String, Object> getNvramInfo() { return this.nvramInfo; }
+    public void setNvramInfo(java.util.Map<String, Object> nvramInfo) { 
+        this.nvramInfo = nvramInfo;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class GetNvramInfoResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetNvramInfoResult that = (GetNvramInfoResult) o;
-        
-
-        return Objects.equals( nvramInfo , that.nvramInfo );
+        return 
+            Objects.equals(nvramInfo, that.nvramInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nvramInfo );
+        return Objects.hash( nvramInfo );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nvramInfo", nvramInfo);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nvramInfo : ").append(nvramInfo);
+        sb.append(" nvramInfo : ").append(nvramInfo).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class GetNvramInfoResult  implements Serializable  {
 
         public GetNvramInfoResult build() {
             return new GetNvramInfoResult (
-                         this.nvramInfo            );
+                         this.nvramInfo);
         }
 
         private GetNvramInfoResult.Builder buildFrom(final GetNvramInfoResult req) {
@@ -137,5 +122,4 @@ public class GetNvramInfoResult  implements Serializable  {
         }
 
     }
-
 }

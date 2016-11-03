@@ -99,10 +99,10 @@ SDK and Element OS. Optionally, you can choose to set the version manually and w
 
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
-import com.solidfire.jsvcgen.javautil.Optional;
+import com.solidfire.core.javautil.Optional;
 
 // Import Optional common empty types (String, Long, & Map)
-import static com.solidfire.jsvcgen.javautil.Optional.*;
+import static com.solidfire.core.javautil.Optional.*;
 
 ...
     // Use ElementFactory to get a SolidFireElement object.
@@ -116,7 +116,7 @@ import static com.solidfire.jsvcgen.javautil.Optional.*;
 
 import com.solidfire.client.ElementFactory
 import com.solidfire.element.api._
-import com.solidfire.jsvcgen.javautil.Optional.{empty, of}
+import com.solidfire.core.javautil.Optional.{empty, of}
 
 ...
   // Use ElementFactory to get a SolidFireElement object.
@@ -157,10 +157,10 @@ from the <i>AddAccountResult</i> object.
 
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
-import com.solidfire.jsvcgen.javautil.Optional;
+import com.solidfire.core.javautil.Optional;
 
 // Import Optional common empty types (String, Long, & Map)
-import static com.solidfire.jsvcgen.javautil.Optional.*;
+import static com.solidfire.core.javautil.Optional.*;
 public class ReadmeJavaExample {
     public static void main(String[] args) {
         // Create Connection to SF Cluster
@@ -214,7 +214,7 @@ public class ReadmeJavaExample {
 
 import com.solidfire.client.ElementFactory
 import com.solidfire.element.api._
-import com.solidfire.jsvcgen.javautil.Optional.{empty, of}
+import com.solidfire.core.javautil.Optional.{empty, of}
 
 class ReadmeScalaExample {
 

@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListVolumeAccessGroups" API Service call.
+ * 
  **/
-public class ListVolumeAccessGroupsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1985813315L;
+public class ListVolumeAccessGroupsResult implements Serializable {
 
+    public static final long serialVersionUID = -2843709235167971533L;
     @SerializedName("volumeAccessGroups") private VolumeAccessGroup[] volumeAccessGroups;
 
-    /**
-     * The object returned by the "ListVolumeAccessGroups" API Service call.
-     * @param volumeAccessGroups [required] List of volume access groups.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListVolumeAccessGroupsResult(VolumeAccessGroup[] volumeAccessGroups) {
-        this.volumeAccessGroups = volumeAccessGroups;
-    }
-
-    
-    /**
-     * The object returned by the "ListVolumeAccessGroups" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ListVolumeAccessGroupsResult() {}
 
-
-    /**
-     * List of volume access groups.
-     **/
-    public VolumeAccessGroup[] getVolumeAccessGroups() {
-        return this.volumeAccessGroups;
-    }
-
-    public void setVolumeAccessGroups(VolumeAccessGroup[] volumeAccessGroups) {
+    // parameterized constructor
+    @Since("7.0")
+    public ListVolumeAccessGroupsResult(
+        VolumeAccessGroup[] volumeAccessGroups
+    )
+    {
         this.volumeAccessGroups = volumeAccessGroups;
     }
 
-
+    /** 
+     * List of volume access groups.
+     **/
+    public VolumeAccessGroup[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
+    public void setVolumeAccessGroups(VolumeAccessGroup[] volumeAccessGroups) { 
+        this.volumeAccessGroups = volumeAccessGroups;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class ListVolumeAccessGroupsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumeAccessGroupsResult that = (ListVolumeAccessGroupsResult) o;
-        
-
-        return Objects.deepEquals( volumeAccessGroups , that.volumeAccessGroups );
+        return 
+            Objects.equals(volumeAccessGroups, that.volumeAccessGroups);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volumeAccessGroups );
+        return Objects.hash( (Object[])volumeAccessGroups );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroups", volumeAccessGroups);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups));
+        sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class ListVolumeAccessGroupsResult  implements Serializable  {
 
         public ListVolumeAccessGroupsResult build() {
             return new ListVolumeAccessGroupsResult (
-                         this.volumeAccessGroups            );
+                         this.volumeAccessGroups);
         }
 
         private ListVolumeAccessGroupsResult.Builder buildFrom(final ListVolumeAccessGroupsResult req) {
@@ -137,5 +122,4 @@ public class ListVolumeAccessGroupsResult  implements Serializable  {
         }
 
     }
-
 }

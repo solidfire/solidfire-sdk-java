@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "SetNetworkConfig" API Service call.
+ * 
  **/
-public class SetNetworkConfigResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1793624961L;
+public class SetNetworkConfigResult implements Serializable {
 
+    public static final long serialVersionUID = -3253439767702836539L;
     @SerializedName("network") private Network network;
 
-    /**
-     * The object returned by the "SetNetworkConfig" API Service call.
-     * @param network [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public SetNetworkConfigResult(Network network) {
-        this.network = network;
-    }
-
-    
-    /**
-     * The object returned by the "SetNetworkConfig" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public SetNetworkConfigResult() {}
 
-    public Network getNetwork() {
-        return this.network;
-    }
-
-    public void setNetwork(Network network) {
+    // parameterized constructor
+    @Since("7.0")
+    public SetNetworkConfigResult(
+        Network network
+    )
+    {
         this.network = network;
     }
 
-
+    /** 
+     **/
+    public Network getNetwork() { return this.network; }
+    public void setNetwork(Network network) { 
+        this.network = network;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,23 +61,28 @@ public class SetNetworkConfigResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetNetworkConfigResult that = (SetNetworkConfigResult) o;
-        
-
-        return Objects.equals( network , that.network );
+        return 
+            Objects.equals(network, that.network);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) network );
+        return Objects.hash( network );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("network", network);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" network : ").append(network);
+        sb.append(" network : ").append(network).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,7 +106,7 @@ public class SetNetworkConfigResult  implements Serializable  {
 
         public SetNetworkConfigResult build() {
             return new SetNetworkConfigResult (
-                         this.network            );
+                         this.network);
         }
 
         private SetNetworkConfigResult.Builder buildFrom(final SetNetworkConfigResult req) {
@@ -133,5 +121,4 @@ public class SetNetworkConfigResult  implements Serializable  {
         }
 
     }
-
 }

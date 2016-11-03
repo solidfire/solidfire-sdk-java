@@ -19,130 +19,95 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class StorageContainer  implements Serializable  {
 
-    private static final long serialVersionUID = 336474430L;
+public class StorageContainer implements Serializable {
 
+    public static final long serialVersionUID = -4235618932443262772L;
     @SerializedName("name") private String name;
-    @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
+    @SerializedName("storageContainerID") private UUIDNullable storageContainerID;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("protocolEndpointType") private String protocolEndpointType;
-    @SerializedName("initiatorSecret") private CHAPSecret initiatorSecret;
-    @SerializedName("targetSecret") private CHAPSecret targetSecret;
+    @SerializedName("initiatorSecret") private String initiatorSecret;
+    @SerializedName("targetSecret") private String targetSecret;
     @SerializedName("status") private String status;
 
-    /**
-     * 
-     * @param name [required] 
-     * @param storageContainerID [required] 
-     * @param accountID [required] 
-     * @param protocolEndpointType [required] 
-     * @param initiatorSecret [required] 
-     * @param targetSecret [required] 
-     * @param status [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public StorageContainer(String name, java.util.UUID storageContainerID, Long accountID, String protocolEndpointType, CHAPSecret initiatorSecret, CHAPSecret targetSecret, String status) {
-        this.initiatorSecret = initiatorSecret;
-        this.name = name;
-        this.storageContainerID = storageContainerID;
-        this.protocolEndpointType = protocolEndpointType;
-        this.accountID = accountID;
-        this.status = status;
-        this.targetSecret = targetSecret;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public StorageContainer() {}
 
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
+    // parameterized constructor
+    @Since("7.0")
+    public StorageContainer(
+        String name,
+        UUIDNullable storageContainerID,
+        Long accountID,
+        String protocolEndpointType,
+        String initiatorSecret,
+        String targetSecret,
+        String status
+    )
+    {
         this.name = name;
-    }
-
-
-    public java.util.UUID getStorageContainerID() {
-        return this.storageContainerID;
-    }
-
-    public void setStorageContainerID(java.util.UUID storageContainerID) {
         this.storageContainerID = storageContainerID;
-    }
-
-
-    public Long getAccountID() {
-        return this.accountID;
-    }
-
-    public void setAccountID(Long accountID) {
         this.accountID = accountID;
-    }
-
-
-    public String getProtocolEndpointType() {
-        return this.protocolEndpointType;
-    }
-
-    public void setProtocolEndpointType(String protocolEndpointType) {
         this.protocolEndpointType = protocolEndpointType;
-    }
-
-
-    public CHAPSecret getInitiatorSecret() {
-        return this.initiatorSecret;
-    }
-
-    public void setInitiatorSecret(CHAPSecret initiatorSecret) {
         this.initiatorSecret = initiatorSecret;
-    }
-
-
-    public CHAPSecret getTargetSecret() {
-        return this.targetSecret;
-    }
-
-    public void setTargetSecret(CHAPSecret targetSecret) {
         this.targetSecret = targetSecret;
-    }
-
-
-    public String getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(String status) {
         this.status = status;
     }
 
-
+    /** 
+     **/
+    public String getName() { return this.name; }
+    public void setName(String name) { 
+        this.name = name;
+    }
+    /** 
+     **/
+    public UUIDNullable getStorageContainerID() { return this.storageContainerID; }
+    public void setStorageContainerID(UUIDNullable storageContainerID) { 
+        this.storageContainerID = storageContainerID;
+    }
+    /** 
+     **/
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
+        this.accountID = accountID;
+    }
+    /** 
+     **/
+    public String getProtocolEndpointType() { return this.protocolEndpointType; }
+    public void setProtocolEndpointType(String protocolEndpointType) { 
+        this.protocolEndpointType = protocolEndpointType;
+    }
+    /** 
+     **/
+    public String getInitiatorSecret() { return this.initiatorSecret; }
+    public void setInitiatorSecret(String initiatorSecret) { 
+        this.initiatorSecret = initiatorSecret;
+    }
+    /** 
+     **/
+    public String getTargetSecret() { return this.targetSecret; }
+    public void setTargetSecret(String targetSecret) { 
+        this.targetSecret = targetSecret;
+    }
+    /** 
+     **/
+    public String getStatus() { return this.status; }
+    public void setStatus(String status) { 
+        this.status = status;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -150,15 +115,14 @@ public class StorageContainer  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         StorageContainer that = (StorageContainer) o;
-        
-
-        return Objects.equals( name , that.name )
-            && Objects.equals( storageContainerID , that.storageContainerID )
-            && Objects.equals( accountID , that.accountID )
-            && Objects.equals( protocolEndpointType , that.protocolEndpointType )
-            && Objects.equals( initiatorSecret , that.initiatorSecret )
-            && Objects.equals( targetSecret , that.targetSecret )
-            && Objects.equals( status , that.status );
+        return 
+            Objects.equals(name, that.name) &&
+            Objects.equals(storageContainerID, that.storageContainerID) &&
+            Objects.equals(accountID, that.accountID) &&
+            Objects.equals(protocolEndpointType, that.protocolEndpointType) &&
+            Objects.equals(initiatorSecret, that.initiatorSecret) &&
+            Objects.equals(targetSecret, that.targetSecret) &&
+            Objects.equals(status, that.status);
     }
 
     @Override
@@ -166,6 +130,18 @@ public class StorageContainer  implements Serializable  {
         return Objects.hash( name, storageContainerID, accountID, protocolEndpointType, initiatorSecret, targetSecret, status );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("name", name);
+        map.put("storageContainerID", storageContainerID);
+        map.put("accountID", accountID);
+        map.put("protocolEndpointType", protocolEndpointType);
+        map.put("initiatorSecret", initiatorSecret);
+        map.put("targetSecret", targetSecret);
+        map.put("status", status);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -178,7 +154,7 @@ public class StorageContainer  implements Serializable  {
         sb.append(" protocolEndpointType : ").append(protocolEndpointType).append(",");
         sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
         sb.append(" targetSecret : ").append(targetSecret).append(",");
-        sb.append(" status : ").append(status);
+        sb.append(" status : ").append(status).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -197,11 +173,11 @@ public class StorageContainer  implements Serializable  {
 
     public static class Builder {
         private String name;
-        private java.util.UUID storageContainerID;
+        private UUIDNullable storageContainerID;
         private Long accountID;
         private String protocolEndpointType;
-        private CHAPSecret initiatorSecret;
-        private CHAPSecret targetSecret;
+        private String initiatorSecret;
+        private String targetSecret;
         private String status;
 
         private Builder() { }
@@ -214,7 +190,7 @@ public class StorageContainer  implements Serializable  {
                          this.protocolEndpointType,
                          this.initiatorSecret,
                          this.targetSecret,
-                         this.status            );
+                         this.status);
         }
 
         private StorageContainer.Builder buildFrom(final StorageContainer req) {
@@ -234,7 +210,7 @@ public class StorageContainer  implements Serializable  {
             return this;
         }
 
-        public StorageContainer.Builder storageContainerID(final java.util.UUID storageContainerID) {
+        public StorageContainer.Builder storageContainerID(final UUIDNullable storageContainerID) {
             this.storageContainerID = storageContainerID;
             return this;
         }
@@ -249,12 +225,12 @@ public class StorageContainer  implements Serializable  {
             return this;
         }
 
-        public StorageContainer.Builder initiatorSecret(final CHAPSecret initiatorSecret) {
+        public StorageContainer.Builder initiatorSecret(final String initiatorSecret) {
             this.initiatorSecret = initiatorSecret;
             return this;
         }
 
-        public StorageContainer.Builder targetSecret(final CHAPSecret targetSecret) {
+        public StorageContainer.Builder targetSecret(final String targetSecret) {
             this.targetSecret = targetSecret;
             return this;
         }
@@ -265,5 +241,4 @@ public class StorageContainer  implements Serializable  {
         }
 
     }
-
 }

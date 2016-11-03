@@ -19,74 +19,51 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetVirtualVolumeTaskUpdate" API Service call.
+ * 
  **/
-public class GetVirtualVolumeTaskUpdateRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -536949L;
+public class GetVirtualVolumeTaskUpdateRequest implements Serializable {
 
-    @SerializedName("virtualVolumeTaskID") private java.util.UUID virtualVolumeTaskID;
-    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
+    public static final long serialVersionUID = -719216214284926469L;
+    @SerializedName("virtualVolumeTaskID") private UUIDNullable virtualVolumeTaskID;
+    @SerializedName("callingVirtualVolumeHostID") private Optional<UUIDNullable> callingVirtualVolumeHostID;
 
-    /**
-     * The Request object for the "GetVirtualVolumeTaskUpdate" API Service call.
-     * @param virtualVolumeTaskID [required] The UUID of the VVol Task.
-     * @param callingVirtualVolumeHostID (optional) 
-     * @since 9.0
-     **/
-    @Since("9.0")
-    public GetVirtualVolumeTaskUpdateRequest(java.util.UUID virtualVolumeTaskID, Optional<java.util.UUID> callingVirtualVolumeHostID) {
-        this.virtualVolumeTaskID = virtualVolumeTaskID;
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
-    }
-
-    
-    /**
-     * The Request object for the "GetVirtualVolumeTaskUpdate" API Service call.
-     * Empty constructor to support serialization.
-     * @since 9.0
-     **/
-    @Since("9.0")
+    // empty constructor
+    @Since("7.0")
     public GetVirtualVolumeTaskUpdateRequest() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public GetVirtualVolumeTaskUpdateRequest(
+        UUIDNullable virtualVolumeTaskID,
+        Optional<UUIDNullable> callingVirtualVolumeHostID
+    )
+    {
+        this.virtualVolumeTaskID = virtualVolumeTaskID;
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
+    }
 
-    /**
+    /** 
      * The UUID of the VVol Task.
      **/
-    public java.util.UUID getVirtualVolumeTaskID() {
-        return this.virtualVolumeTaskID;
-    }
-
-    public void setVirtualVolumeTaskID(java.util.UUID virtualVolumeTaskID) {
+    public UUIDNullable getVirtualVolumeTaskID() { return this.virtualVolumeTaskID; }
+    public void setVirtualVolumeTaskID(UUIDNullable virtualVolumeTaskID) { 
         this.virtualVolumeTaskID = virtualVolumeTaskID;
     }
-
-
-    public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
-        return this.callingVirtualVolumeHostID;
+    /** 
+     **/
+    public Optional<UUIDNullable> getCallingVirtualVolumeHostID() { return this.callingVirtualVolumeHostID; }
+    public void setCallingVirtualVolumeHostID(Optional<UUIDNullable> callingVirtualVolumeHostID) { 
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
     }
-
-    public void setCallingVirtualVolumeHostID(java.util.UUID callingVirtualVolumeHostID) {
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -94,10 +71,9 @@ public class GetVirtualVolumeTaskUpdateRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetVirtualVolumeTaskUpdateRequest that = (GetVirtualVolumeTaskUpdateRequest) o;
-        
-
-        return Objects.equals( virtualVolumeTaskID , that.virtualVolumeTaskID )
-            && Objects.equals( callingVirtualVolumeHostID , that.callingVirtualVolumeHostID );
+        return 
+            Objects.equals(virtualVolumeTaskID, that.virtualVolumeTaskID) &&
+            Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }
 
     @Override
@@ -106,14 +82,22 @@ public class GetVirtualVolumeTaskUpdateRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("virtualVolumeTaskID", virtualVolumeTaskID);
+        map.put("callingVirtualVolumeHostID", callingVirtualVolumeHostID);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
         sb.append(" virtualVolumeTaskID : ").append(virtualVolumeTaskID).append(",");
-        if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent())
-            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get());
+        if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent()){
+            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -131,15 +115,15 @@ public class GetVirtualVolumeTaskUpdateRequest  implements Serializable  {
     }
 
     public static class Builder {
-        private java.util.UUID virtualVolumeTaskID;
-        private Optional<java.util.UUID> callingVirtualVolumeHostID;
+        private UUIDNullable virtualVolumeTaskID;
+        private Optional<UUIDNullable> callingVirtualVolumeHostID;
 
         private Builder() { }
 
         public GetVirtualVolumeTaskUpdateRequest build() {
             return new GetVirtualVolumeTaskUpdateRequest (
                          this.virtualVolumeTaskID,
-                         this.callingVirtualVolumeHostID            );
+                         this.callingVirtualVolumeHostID);
         }
 
         private GetVirtualVolumeTaskUpdateRequest.Builder buildFrom(final GetVirtualVolumeTaskUpdateRequest req) {
@@ -149,16 +133,15 @@ public class GetVirtualVolumeTaskUpdateRequest  implements Serializable  {
             return this;
         }
 
-        public GetVirtualVolumeTaskUpdateRequest.Builder virtualVolumeTaskID(final java.util.UUID virtualVolumeTaskID) {
+        public GetVirtualVolumeTaskUpdateRequest.Builder virtualVolumeTaskID(final UUIDNullable virtualVolumeTaskID) {
             this.virtualVolumeTaskID = virtualVolumeTaskID;
             return this;
         }
 
-        public GetVirtualVolumeTaskUpdateRequest.Builder optionalCallingVirtualVolumeHostID(final java.util.UUID callingVirtualVolumeHostID) {
-            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
+        public GetVirtualVolumeTaskUpdateRequest.Builder optionalCallingVirtualVolumeHostID(final UUIDNullable callingVirtualVolumeHostID) {
+            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : Optional.of(callingVirtualVolumeHostID);
             return this;
         }
 
     }
-
 }

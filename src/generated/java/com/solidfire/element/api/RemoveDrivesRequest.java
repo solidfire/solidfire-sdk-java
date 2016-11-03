@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "RemoveDrives" API Service call.
+ * 
  **/
-public class RemoveDrivesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1421229161L;
+public class RemoveDrivesRequest implements Serializable {
 
+    public static final long serialVersionUID = 7717335362027122969L;
     @SerializedName("drives") private Long[] drives;
 
-    /**
-     * The Request object for the "RemoveDrives" API Service call.
-     * @param drives [required] List of driveIDs to remove from the cluster.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public RemoveDrivesRequest(Long[] drives) {
-        this.drives = drives;
-    }
-
-    
-    /**
-     * The Request object for the "RemoveDrives" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public RemoveDrivesRequest() {}
 
-
-    /**
-     * List of driveIDs to remove from the cluster.
-     **/
-    public Long[] getDrives() {
-        return this.drives;
-    }
-
-    public void setDrives(Long[] drives) {
+    // parameterized constructor
+    @Since("7.0")
+    public RemoveDrivesRequest(
+        Long[] drives
+    )
+    {
         this.drives = drives;
     }
 
-
+    /** 
+     * List of driveIDs to remove from the cluster.
+     **/
+    public Long[] getDrives() { return this.drives; }
+    public void setDrives(Long[] drives) { 
+        this.drives = drives;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class RemoveDrivesRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveDrivesRequest that = (RemoveDrivesRequest) o;
-        
-
-        return Objects.deepEquals( drives , that.drives );
+        return 
+            Objects.equals(drives, that.drives);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) drives );
+        return Objects.hash( (Object[])drives );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("drives", drives);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(Arrays.toString(drives));
+        sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class RemoveDrivesRequest  implements Serializable  {
 
         public RemoveDrivesRequest build() {
             return new RemoveDrivesRequest (
-                         this.drives            );
+                         this.drives);
         }
 
         private RemoveDrivesRequest.Builder buildFrom(final RemoveDrivesRequest req) {
@@ -137,5 +122,4 @@ public class RemoveDrivesRequest  implements Serializable  {
         }
 
     }
-
 }

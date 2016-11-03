@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetAccountByName" API Service call.
+ * 
  **/
-public class GetAccountByNameRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1266133902L;
+public class GetAccountByNameRequest implements Serializable {
 
+    public static final long serialVersionUID = -6774078436625157895L;
     @SerializedName("username") private String username;
 
-    /**
-     * The Request object for the "GetAccountByName" API Service call.
-     * @param username [required] Username for the account.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetAccountByNameRequest(String username) {
-        this.username = username;
-    }
-
-    
-    /**
-     * The Request object for the "GetAccountByName" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetAccountByNameRequest() {}
 
-
-    /**
-     * Username for the account.
-     **/
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setUsername(String username) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetAccountByNameRequest(
+        String username
+    )
+    {
         this.username = username;
     }
 
-
+    /** 
+     * Username for the account.
+     **/
+    public String getUsername() { return this.username; }
+    public void setUsername(String username) { 
+        this.username = username;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class GetAccountByNameRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetAccountByNameRequest that = (GetAccountByNameRequest) o;
-        
-
-        return Objects.equals( username , that.username );
+        return 
+            Objects.equals(username, that.username);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) username );
+        return Objects.hash( username );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("username", username);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" username : ").append(username);
+        sb.append(" username : ").append(username).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class GetAccountByNameRequest  implements Serializable  {
 
         public GetAccountByNameRequest build() {
             return new GetAccountByNameRequest (
-                         this.username            );
+                         this.username);
         }
 
         private GetAccountByNameRequest.Builder buildFrom(final GetAccountByNameRequest req) {
@@ -137,5 +122,4 @@ public class GetAccountByNameRequest  implements Serializable  {
         }
 
     }
-
 }

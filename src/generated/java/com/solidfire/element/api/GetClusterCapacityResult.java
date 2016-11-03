@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetClusterCapacity" API Service call.
+ * 
  **/
-public class GetClusterCapacityResult  implements Serializable  {
 
-    private static final long serialVersionUID = 777255473L;
+public class GetClusterCapacityResult implements Serializable {
 
+    public static final long serialVersionUID = 3923025019627806089L;
     @SerializedName("clusterCapacity") private ClusterCapacity clusterCapacity;
 
-    /**
-     * The object returned by the "GetClusterCapacity" API Service call.
-     * @param clusterCapacity [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetClusterCapacityResult(ClusterCapacity clusterCapacity) {
-        this.clusterCapacity = clusterCapacity;
-    }
-
-    
-    /**
-     * The object returned by the "GetClusterCapacity" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetClusterCapacityResult() {}
 
-    public ClusterCapacity getClusterCapacity() {
-        return this.clusterCapacity;
-    }
-
-    public void setClusterCapacity(ClusterCapacity clusterCapacity) {
+    // parameterized constructor
+    @Since("7.0")
+    public GetClusterCapacityResult(
+        ClusterCapacity clusterCapacity
+    )
+    {
         this.clusterCapacity = clusterCapacity;
     }
 
-
+    /** 
+     **/
+    public ClusterCapacity getClusterCapacity() { return this.clusterCapacity; }
+    public void setClusterCapacity(ClusterCapacity clusterCapacity) { 
+        this.clusterCapacity = clusterCapacity;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,23 +61,28 @@ public class GetClusterCapacityResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterCapacityResult that = (GetClusterCapacityResult) o;
-        
-
-        return Objects.equals( clusterCapacity , that.clusterCapacity );
+        return 
+            Objects.equals(clusterCapacity, that.clusterCapacity);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) clusterCapacity );
+        return Objects.hash( clusterCapacity );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterCapacity", clusterCapacity);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" clusterCapacity : ").append(clusterCapacity);
+        sb.append(" clusterCapacity : ").append(clusterCapacity).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,7 +106,7 @@ public class GetClusterCapacityResult  implements Serializable  {
 
         public GetClusterCapacityResult build() {
             return new GetClusterCapacityResult (
-                         this.clusterCapacity            );
+                         this.clusterCapacity);
         }
 
         private GetClusterCapacityResult.Builder buildFrom(final GetClusterCapacityResult req) {
@@ -133,5 +121,4 @@ public class GetClusterCapacityResult  implements Serializable  {
         }
 
     }
-
 }

@@ -1,7 +1,7 @@
 package com.solidfire.api
 
+import com.solidfire.core.javautil.Optional
 import com.solidfire.element.api._
-import com.solidfire.jsvcgen.javautil.Optional
 import com.solidfire.util.Utility
 import org.mockito.Mockito.when
 import org.scalatest.mock.MockitoSugar

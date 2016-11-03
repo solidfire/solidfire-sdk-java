@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class ResetDrivesDetails  implements Serializable  {
 
-    private static final long serialVersionUID = 1808022535L;
+public class ResetDrivesDetails implements Serializable {
 
+    public static final long serialVersionUID = 8174824568407856434L;
     @SerializedName("drives") private ResetDriveDetails[] drives;
 
-    /**
-     * 
-     * @param drives [required] Details of a single drive that is being reset.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ResetDrivesDetails(ResetDriveDetails[] drives) {
-        this.drives = drives;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ResetDrivesDetails() {}
 
-
-    /**
-     * Details of a single drive that is being reset.
-     **/
-    public ResetDriveDetails[] getDrives() {
-        return this.drives;
-    }
-
-    public void setDrives(ResetDriveDetails[] drives) {
+    // parameterized constructor
+    @Since("7.0")
+    public ResetDrivesDetails(
+        ResetDriveDetails[] drives
+    )
+    {
         this.drives = drives;
     }
 
-
+    /** 
+     * Details of a single drive that is being reset.
+     **/
+    public ResetDriveDetails[] getDrives() { return this.drives; }
+    public void setDrives(ResetDriveDetails[] drives) { 
+        this.drives = drives;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class ResetDrivesDetails  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ResetDrivesDetails that = (ResetDrivesDetails) o;
-        
-
-        return Objects.deepEquals( drives , that.drives );
+        return 
+            Objects.equals(drives, that.drives);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) drives );
+        return Objects.hash( (Object[])drives );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("drives", drives);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(Arrays.toString(drives));
+        sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class ResetDrivesDetails  implements Serializable  {
 
         public ResetDrivesDetails build() {
             return new ResetDrivesDetails (
-                         this.drives            );
+                         this.drives);
         }
 
         private ResetDrivesDetails.Builder buildFrom(final ResetDrivesDetails req) {
@@ -137,5 +122,4 @@ public class ResetDrivesDetails  implements Serializable  {
         }
 
     }
-
 }

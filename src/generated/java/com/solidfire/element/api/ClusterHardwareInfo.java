@@ -19,70 +19,50 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class ClusterHardwareInfo  implements Serializable  {
 
-    private static final long serialVersionUID = 1253246585L;
+public class ClusterHardwareInfo implements Serializable {
 
+    public static final long serialVersionUID = -588255729826736799L;
     @SerializedName("drives") private java.util.Map<String,DriveHardwareInfo> drives;
     @SerializedName("nodes") private java.util.Map<String,java.util.Map<String, Object>> nodes;
 
-    /**
-     * 
-     * @param drives [required] 
-     * @param nodes [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ClusterHardwareInfo(java.util.Map<String,DriveHardwareInfo> drives, java.util.Map<String,java.util.Map<String, Object>> nodes) {
-        this.drives = drives;
-        this.nodes = nodes;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ClusterHardwareInfo() {}
 
-    public java.util.Map<String,DriveHardwareInfo> getDrives() {
-        return this.drives;
-    }
-
-    public void setDrives(java.util.Map<String,DriveHardwareInfo> drives) {
+    // parameterized constructor
+    @Since("7.0")
+    public ClusterHardwareInfo(
+        java.util.Map<String,DriveHardwareInfo> drives,
+        java.util.Map<String,java.util.Map<String, Object>> nodes
+    )
+    {
         this.drives = drives;
-    }
-
-
-    public java.util.Map<String,java.util.Map<String, Object>> getNodes() {
-        return this.nodes;
-    }
-
-    public void setNodes(java.util.Map<String,java.util.Map<String, Object>> nodes) {
         this.nodes = nodes;
     }
 
-
+    /** 
+     **/
+    public java.util.Map<String,DriveHardwareInfo> getDrives() { return this.drives; }
+    public void setDrives(java.util.Map<String,DriveHardwareInfo> drives) { 
+        this.drives = drives;
+    }
+    /** 
+     **/
+    public java.util.Map<String,java.util.Map<String, Object>> getNodes() { return this.nodes; }
+    public void setNodes(java.util.Map<String,java.util.Map<String, Object>> nodes) { 
+        this.nodes = nodes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -90,10 +70,9 @@ public class ClusterHardwareInfo  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClusterHardwareInfo that = (ClusterHardwareInfo) o;
-        
-
-        return Objects.equals( drives , that.drives )
-            && Objects.equals( nodes , that.nodes );
+        return 
+            Objects.equals(drives, that.drives) &&
+            Objects.equals(nodes, that.nodes);
     }
 
     @Override
@@ -102,13 +81,20 @@ public class ClusterHardwareInfo  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("drives", drives);
+        map.put("nodes", nodes);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
         sb.append(" drives : ").append(drives).append(",");
-        sb.append(" nodes : ").append(nodes);
+        sb.append(" nodes : ").append(nodes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -134,7 +120,7 @@ public class ClusterHardwareInfo  implements Serializable  {
         public ClusterHardwareInfo build() {
             return new ClusterHardwareInfo (
                          this.drives,
-                         this.nodes            );
+                         this.nodes);
         }
 
         private ClusterHardwareInfo.Builder buildFrom(final ClusterHardwareInfo req) {
@@ -155,5 +141,4 @@ public class ClusterHardwareInfo  implements Serializable  {
         }
 
     }
-
 }

@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * Used to return information about the Fibre Channel ports.
  **/
-public class FibreChannelPortInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = 311865795L;
+public class FibreChannelPortInfoResult implements Serializable {
 
+    public static final long serialVersionUID = 6909080941140733765L;
     @SerializedName("result") private FibreChannelPortList result;
 
-    /**
-     * Used to return information about the Fibre Channel ports.
-     * @param result [required] Used to return information about the Fibre Channel ports.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public FibreChannelPortInfoResult(FibreChannelPortList result) {
-        this.result = result;
-    }
-
-    
-    /**
-     * Used to return information about the Fibre Channel ports.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public FibreChannelPortInfoResult() {}
 
-
-    /**
-     * Used to return information about the Fibre Channel ports.
-     **/
-    public FibreChannelPortList getResult() {
-        return this.result;
-    }
-
-    public void setResult(FibreChannelPortList result) {
+    // parameterized constructor
+    @Since("7.0")
+    public FibreChannelPortInfoResult(
+        FibreChannelPortList result
+    )
+    {
         this.result = result;
     }
 
-
+    /** 
+     * Used to return information about the Fibre Channel ports.
+     **/
+    public FibreChannelPortList getResult() { return this.result; }
+    public void setResult(FibreChannelPortList result) { 
+        this.result = result;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class FibreChannelPortInfoResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         FibreChannelPortInfoResult that = (FibreChannelPortInfoResult) o;
-        
-
-        return Objects.equals( result , that.result );
+        return 
+            Objects.equals(result, that.result);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) result );
+        return Objects.hash( result );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("result", result);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" result : ").append(result);
+        sb.append(" result : ").append(result).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class FibreChannelPortInfoResult  implements Serializable  {
 
         public FibreChannelPortInfoResult build() {
             return new FibreChannelPortInfoResult (
-                         this.result            );
+                         this.result);
         }
 
         private FibreChannelPortInfoResult.Builder buildFrom(final FibreChannelPortInfoResult req) {
@@ -137,5 +122,4 @@ public class FibreChannelPortInfoResult  implements Serializable  {
         }
 
     }
-
 }

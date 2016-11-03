@@ -19,82 +19,59 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * Version information for a node in the cluster.
  **/
-public class ClusterVersionInfo  implements Serializable  {
 
-    private static final long serialVersionUID = 996139717L;
+public class ClusterVersionInfo implements Serializable {
 
+    public static final long serialVersionUID = -4232836006568542040L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("nodeVersion") private String nodeVersion;
     @SerializedName("nodeInternalRevision") private String nodeInternalRevision;
 
-    /**
-     * Version information for a node in the cluster.
-     * @param nodeID [required] 
-     * @param nodeVersion [required] 
-     * @param nodeInternalRevision [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ClusterVersionInfo(Long nodeID, String nodeVersion, String nodeInternalRevision) {
-        this.nodeID = nodeID;
-        this.nodeVersion = nodeVersion;
-        this.nodeInternalRevision = nodeInternalRevision;
-    }
-
-    
-    /**
-     * Version information for a node in the cluster.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ClusterVersionInfo() {}
 
-    public Long getNodeID() {
-        return this.nodeID;
-    }
-
-    public void setNodeID(Long nodeID) {
+    // parameterized constructor
+    @Since("7.0")
+    public ClusterVersionInfo(
+        Long nodeID,
+        String nodeVersion,
+        String nodeInternalRevision
+    )
+    {
         this.nodeID = nodeID;
-    }
-
-
-    public String getNodeVersion() {
-        return this.nodeVersion;
-    }
-
-    public void setNodeVersion(String nodeVersion) {
         this.nodeVersion = nodeVersion;
-    }
-
-
-    public String getNodeInternalRevision() {
-        return this.nodeInternalRevision;
-    }
-
-    public void setNodeInternalRevision(String nodeInternalRevision) {
         this.nodeInternalRevision = nodeInternalRevision;
     }
 
-
+    /** 
+     **/
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
+    }
+    /** 
+     **/
+    public String getNodeVersion() { return this.nodeVersion; }
+    public void setNodeVersion(String nodeVersion) { 
+        this.nodeVersion = nodeVersion;
+    }
+    /** 
+     **/
+    public String getNodeInternalRevision() { return this.nodeInternalRevision; }
+    public void setNodeInternalRevision(String nodeInternalRevision) { 
+        this.nodeInternalRevision = nodeInternalRevision;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -102,11 +79,10 @@ public class ClusterVersionInfo  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClusterVersionInfo that = (ClusterVersionInfo) o;
-        
-
-        return Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( nodeVersion , that.nodeVersion )
-            && Objects.equals( nodeInternalRevision , that.nodeInternalRevision );
+        return 
+            Objects.equals(nodeID, that.nodeID) &&
+            Objects.equals(nodeVersion, that.nodeVersion) &&
+            Objects.equals(nodeInternalRevision, that.nodeInternalRevision);
     }
 
     @Override
@@ -115,6 +91,14 @@ public class ClusterVersionInfo  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodeID", nodeID);
+        map.put("nodeVersion", nodeVersion);
+        map.put("nodeInternalRevision", nodeInternalRevision);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -122,7 +106,7 @@ public class ClusterVersionInfo  implements Serializable  {
 
         sb.append(" nodeID : ").append(nodeID).append(",");
         sb.append(" nodeVersion : ").append(nodeVersion).append(",");
-        sb.append(" nodeInternalRevision : ").append(nodeInternalRevision);
+        sb.append(" nodeInternalRevision : ").append(nodeInternalRevision).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -150,7 +134,7 @@ public class ClusterVersionInfo  implements Serializable  {
             return new ClusterVersionInfo (
                          this.nodeID,
                          this.nodeVersion,
-                         this.nodeInternalRevision            );
+                         this.nodeInternalRevision);
         }
 
         private ClusterVersionInfo.Builder buildFrom(final ClusterVersionInfo req) {
@@ -177,5 +161,4 @@ public class ClusterVersionInfo  implements Serializable  {
         }
 
     }
-
 }

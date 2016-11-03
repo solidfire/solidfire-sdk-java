@@ -19,37 +19,24 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "DisableSnmp" API Service call.
+ * 
  **/
-public class DisableSnmpResult  implements Serializable  {
 
-    private static final long serialVersionUID = -94356644L;
+public class DisableSnmpResult implements Serializable {
 
+    public static final long serialVersionUID = 5564087243898071742L;
 
-    /**
-     * The object returned by the "DisableSnmp" API Service call.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public DisableSnmpResult() {
-
-    }
+    public DisableSnmpResult() {}
 
 
 
@@ -58,11 +45,14 @@ public class DisableSnmpResult  implements Serializable  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
+        DisableSnmpResult that = (DisableSnmpResult) o;
+
         return true;
     }
 
     @Override
     public int hashCode() {
+
         return this.getClass().hashCode();
     }
 

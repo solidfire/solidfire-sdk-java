@@ -17,7 +17,7 @@ package com.solidfire.adaptor;
 
 import com.solidfire.element.api.*;
 import com.solidfire.element.apiactual.*;
-import com.solidfire.jsvcgen.client.ApiException;
+import com.solidfire.core.client.ApiException;
 
 import java.util.*;
 
@@ -51,11 +51,10 @@ public class ScheduleAdaptor {
      * object using the Frequency classes that delineate different types of scheduling frequencies.
      *
      * @param sfe     An instance of SolidFireElement
-     * @param request The original request object.
      * @return a ListScheduleResult with the modified simple schedule objects
      */
-    public static ListSchedulesResult listSchedules(SolidFireElement sfe, ListSchedulesRequest request) {
-        final ApiListSchedulesResult result = sfe.sendRequest("ListSchedules", request, ListSchedulesRequest.class, ApiListSchedulesResult.class);
+    public static ListSchedulesResult listSchedules(SolidFireElement sfe) {
+        final ApiListSchedulesResult result = sfe.sendRequest("ListSchedules", null, null, ApiListSchedulesResult.class);
 
         final List<Schedule> schedules = new ArrayList<>();
         for (final ApiSchedule apiSchedule : result.getSchedules()) {

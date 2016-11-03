@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListISCSISessions" API Service call.
+ * 
  **/
-public class ListISCSISessionsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 344505827L;
+public class ListISCSISessionsResult implements Serializable {
 
+    public static final long serialVersionUID = 3301056024020204128L;
     @SerializedName("sessions") private ISCSISession[] sessions;
 
-    /**
-     * The object returned by the "ListISCSISessions" API Service call.
-     * @param sessions [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListISCSISessionsResult(ISCSISession[] sessions) {
-        this.sessions = sessions;
-    }
-
-    
-    /**
-     * The object returned by the "ListISCSISessions" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ListISCSISessionsResult() {}
 
-    public ISCSISession[] getSessions() {
-        return this.sessions;
-    }
-
-    public void setSessions(ISCSISession[] sessions) {
+    // parameterized constructor
+    @Since("7.0")
+    public ListISCSISessionsResult(
+        ISCSISession[] sessions
+    )
+    {
         this.sessions = sessions;
     }
 
-
+    /** 
+     **/
+    public ISCSISession[] getSessions() { return this.sessions; }
+    public void setSessions(ISCSISession[] sessions) { 
+        this.sessions = sessions;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,23 +61,28 @@ public class ListISCSISessionsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListISCSISessionsResult that = (ListISCSISessionsResult) o;
-        
-
-        return Objects.deepEquals( sessions , that.sessions );
+        return 
+            Objects.equals(sessions, that.sessions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) sessions );
+        return Objects.hash( (Object[])sessions );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("sessions", sessions);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" sessions : ").append(Arrays.toString(sessions));
+        sb.append(" sessions : ").append(Arrays.toString(sessions)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,7 +106,7 @@ public class ListISCSISessionsResult  implements Serializable  {
 
         public ListISCSISessionsResult build() {
             return new ListISCSISessionsResult (
-                         this.sessions            );
+                         this.sessions);
         }
 
         private ListISCSISessionsResult.Builder buildFrom(final ListISCSISessionsResult req) {
@@ -133,5 +121,4 @@ public class ListISCSISessionsResult  implements Serializable  {
         }
 
     }
-
 }

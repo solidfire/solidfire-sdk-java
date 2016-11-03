@@ -19,78 +19,52 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "AddInitiatorsToVolumeAccessGroup" API Service call.
+ * 
  **/
-public class AddInitiatorsToVolumeAccessGroupRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1973611011L;
+public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
 
+    public static final long serialVersionUID = 6354255713219394327L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("initiators") private String[] initiators;
 
-    /**
-     * The Request object for the "AddInitiatorsToVolumeAccessGroup" API Service call.
-     * @param volumeAccessGroupID [required] The ID of the volume access group to modify.
-     * @param initiators [required] List of initiators to add to the volume access group.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public AddInitiatorsToVolumeAccessGroupRequest(Long volumeAccessGroupID, String[] initiators) {
-        this.volumeAccessGroupID = volumeAccessGroupID;
-        this.initiators = initiators;
-    }
-
-    
-    /**
-     * The Request object for the "AddInitiatorsToVolumeAccessGroup" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public AddInitiatorsToVolumeAccessGroupRequest() {}
 
-
-    /**
-     * The ID of the volume access group to modify.
-     **/
-    public Long getVolumeAccessGroupID() {
-        return this.volumeAccessGroupID;
-    }
-
-    public void setVolumeAccessGroupID(Long volumeAccessGroupID) {
+    // parameterized constructor
+    @Since("7.0")
+    public AddInitiatorsToVolumeAccessGroupRequest(
+        Long volumeAccessGroupID,
+        String[] initiators
+    )
+    {
         this.volumeAccessGroupID = volumeAccessGroupID;
-    }
-
-
-
-    /**
-     * List of initiators to add to the volume access group.
-     **/
-    public String[] getInitiators() {
-        return this.initiators;
-    }
-
-    public void setInitiators(String[] initiators) {
         this.initiators = initiators;
     }
 
-
+    /** 
+     * The ID of the volume access group to modify.
+     **/
+    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+        this.volumeAccessGroupID = volumeAccessGroupID;
+    }
+    /** 
+     * List of initiators to add to the volume access group.
+     **/
+    public String[] getInitiators() { return this.initiators; }
+    public void setInitiators(String[] initiators) { 
+        this.initiators = initiators;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -98,17 +72,23 @@ public class AddInitiatorsToVolumeAccessGroupRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddInitiatorsToVolumeAccessGroupRequest that = (AddInitiatorsToVolumeAccessGroupRequest) o;
-        
-
-        return Objects.equals( volumeAccessGroupID , that.volumeAccessGroupID )
-            && Objects.deepEquals( initiators , that.initiators );
+        return 
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
+            Objects.equals(initiators, that.initiators);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, initiators );
+        return Objects.hash( volumeAccessGroupID, (Object[])initiators );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroupID", volumeAccessGroupID);
+        map.put("initiators", initiators);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -116,7 +96,7 @@ public class AddInitiatorsToVolumeAccessGroupRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" initiators : ").append(Arrays.toString(initiators));
+        sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -142,7 +122,7 @@ public class AddInitiatorsToVolumeAccessGroupRequest  implements Serializable  {
         public AddInitiatorsToVolumeAccessGroupRequest build() {
             return new AddInitiatorsToVolumeAccessGroupRequest (
                          this.volumeAccessGroupID,
-                         this.initiators            );
+                         this.initiators);
         }
 
         private AddInitiatorsToVolumeAccessGroupRequest.Builder buildFrom(final AddInitiatorsToVolumeAccessGroupRequest req) {
@@ -163,5 +143,4 @@ public class AddInitiatorsToVolumeAccessGroupRequest  implements Serializable  {
         }
 
     }
-
 }

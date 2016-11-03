@@ -19,134 +19,90 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "CreateVirtualVolumeHost" API Service call.
+ * 
  **/
-public class CreateVirtualVolumeHostRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -264853873L;
+public class CreateVirtualVolumeHostRequest implements Serializable {
 
-    @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
-    @SerializedName("clusterID") private java.util.UUID clusterID;
+    public static final long serialVersionUID = -5873437268951260126L;
+    @SerializedName("virtualVolumeHostID") private UUIDNullable virtualVolumeHostID;
+    @SerializedName("clusterID") private UUIDNullable clusterID;
     @SerializedName("initiatorNames") private Optional<String[]> initiatorNames;
-    @SerializedName("visibleProtocolEndpointIDs") private Optional<java.util.UUID[]> visibleProtocolEndpointIDs;
+    @SerializedName("visibleProtocolEndpointIDs") private Optional<UUIDNullable[]> visibleProtocolEndpointIDs;
     @SerializedName("hostAddress") private Optional<String> hostAddress;
-    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
+    @SerializedName("callingVirtualVolumeHostID") private Optional<UUIDNullable> callingVirtualVolumeHostID;
 
-    /**
-     * The Request object for the "CreateVirtualVolumeHost" API Service call.
-     * @param virtualVolumeHostID [required] The GUID of the ESX host.
-     * @param clusterID [required] The GUID of the ESX Cluster.
-     * @param initiatorNames (optional) 
-     * @param visibleProtocolEndpointIDs (optional) A list of PEs the host is aware of.
-     * @param hostAddress (optional) IP or DNS name for the host.
-     * @param callingVirtualVolumeHostID (optional) 
-     * @since 9.0
-     **/
-    @Since("9.0")
-    public CreateVirtualVolumeHostRequest(java.util.UUID virtualVolumeHostID, java.util.UUID clusterID, Optional<String[]> initiatorNames, Optional<java.util.UUID[]> visibleProtocolEndpointIDs, Optional<String> hostAddress, Optional<java.util.UUID> callingVirtualVolumeHostID) {
-        this.visibleProtocolEndpointIDs = (visibleProtocolEndpointIDs == null) ? Optional.<java.util.UUID[]>empty() : visibleProtocolEndpointIDs;
-        this.virtualVolumeHostID = virtualVolumeHostID;
-        this.clusterID = clusterID;
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
-        this.hostAddress = (hostAddress == null) ? Optional.<String>empty() : hostAddress;
-        this.initiatorNames = (initiatorNames == null) ? Optional.<String[]>empty() : initiatorNames;
-    }
-
-    
-    /**
-     * The Request object for the "CreateVirtualVolumeHost" API Service call.
-     * Empty constructor to support serialization.
-     * @since 9.0
-     **/
-    @Since("9.0")
+    // empty constructor
+    @Since("7.0")
     public CreateVirtualVolumeHostRequest() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public CreateVirtualVolumeHostRequest(
+        UUIDNullable virtualVolumeHostID,
+        UUIDNullable clusterID,
+        Optional<String[]> initiatorNames,
+        Optional<UUIDNullable[]> visibleProtocolEndpointIDs,
+        Optional<String> hostAddress,
+        Optional<UUIDNullable> callingVirtualVolumeHostID
+    )
+    {
+        this.virtualVolumeHostID = virtualVolumeHostID;
+        this.clusterID = clusterID;
+        this.initiatorNames = (initiatorNames == null) ? Optional.<String[]>empty() : initiatorNames;
+        this.visibleProtocolEndpointIDs = (visibleProtocolEndpointIDs == null) ? Optional.<UUIDNullable[]>empty() : visibleProtocolEndpointIDs;
+        this.hostAddress = (hostAddress == null) ? Optional.<String>empty() : hostAddress;
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
+    }
 
-    /**
+    /** 
      * The GUID of the ESX host.
      **/
-    public java.util.UUID getVirtualVolumeHostID() {
-        return this.virtualVolumeHostID;
-    }
-
-    public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) {
+    public UUIDNullable getVirtualVolumeHostID() { return this.virtualVolumeHostID; }
+    public void setVirtualVolumeHostID(UUIDNullable virtualVolumeHostID) { 
         this.virtualVolumeHostID = virtualVolumeHostID;
     }
-
-
-
-    /**
+    /** 
      * The GUID of the ESX Cluster.
      **/
-    public java.util.UUID getClusterID() {
-        return this.clusterID;
-    }
-
-    public void setClusterID(java.util.UUID clusterID) {
+    public UUIDNullable getClusterID() { return this.clusterID; }
+    public void setClusterID(UUIDNullable clusterID) { 
         this.clusterID = clusterID;
     }
-
-
-    public Optional<String[]> getInitiatorNames() {
-        return this.initiatorNames;
+    /** 
+     **/
+    public Optional<String[]> getInitiatorNames() { return this.initiatorNames; }
+    public void setInitiatorNames(Optional<String[]> initiatorNames) { 
+        this.initiatorNames = (initiatorNames == null) ? Optional.<String[]>empty() : initiatorNames;
     }
-
-    public void setInitiatorNames(String[] initiatorNames) {
-        this.initiatorNames = (initiatorNames == null) ? Optional.<String[]>empty() : Optional.of(initiatorNames);
-    }
-
-
-
-    /**
+    /** 
      * A list of PEs the host is aware of.
      **/
-    public Optional<java.util.UUID[]> getVisibleProtocolEndpointIDs() {
-        return this.visibleProtocolEndpointIDs;
+    public Optional<UUIDNullable[]> getVisibleProtocolEndpointIDs() { return this.visibleProtocolEndpointIDs; }
+    public void setVisibleProtocolEndpointIDs(Optional<UUIDNullable[]> visibleProtocolEndpointIDs) { 
+        this.visibleProtocolEndpointIDs = (visibleProtocolEndpointIDs == null) ? Optional.<UUIDNullable[]>empty() : visibleProtocolEndpointIDs;
     }
-
-    public void setVisibleProtocolEndpointIDs(java.util.UUID[] visibleProtocolEndpointIDs) {
-        this.visibleProtocolEndpointIDs = (visibleProtocolEndpointIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(visibleProtocolEndpointIDs);
-    }
-
-
-
-    /**
+    /** 
      * IP or DNS name for the host.
      **/
-    public Optional<String> getHostAddress() {
-        return this.hostAddress;
+    public Optional<String> getHostAddress() { return this.hostAddress; }
+    public void setHostAddress(Optional<String> hostAddress) { 
+        this.hostAddress = (hostAddress == null) ? Optional.<String>empty() : hostAddress;
     }
-
-    public void setHostAddress(String hostAddress) {
-        this.hostAddress = (hostAddress == null) ? Optional.<String>empty() : Optional.of(hostAddress);
+    /** 
+     **/
+    public Optional<UUIDNullable> getCallingVirtualVolumeHostID() { return this.callingVirtualVolumeHostID; }
+    public void setCallingVirtualVolumeHostID(Optional<UUIDNullable> callingVirtualVolumeHostID) { 
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
     }
-
-
-    public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
-        return this.callingVirtualVolumeHostID;
-    }
-
-    public void setCallingVirtualVolumeHostID(java.util.UUID callingVirtualVolumeHostID) {
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -154,14 +110,13 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateVirtualVolumeHostRequest that = (CreateVirtualVolumeHostRequest) o;
-        
-
-        return Objects.equals( virtualVolumeHostID , that.virtualVolumeHostID )
-            && Objects.equals( clusterID , that.clusterID )
-            && Objects.deepEquals( initiatorNames , that.initiatorNames )
-            && Objects.deepEquals( visibleProtocolEndpointIDs , that.visibleProtocolEndpointIDs )
-            && Objects.equals( hostAddress , that.hostAddress )
-            && Objects.equals( callingVirtualVolumeHostID , that.callingVirtualVolumeHostID );
+        return 
+            Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) &&
+            Objects.equals(clusterID, that.clusterID) &&
+            Objects.equals(initiatorNames, that.initiatorNames) &&
+            Objects.equals(visibleProtocolEndpointIDs, that.visibleProtocolEndpointIDs) &&
+            Objects.equals(hostAddress, that.hostAddress) &&
+            Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }
 
     @Override
@@ -170,6 +125,17 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("virtualVolumeHostID", virtualVolumeHostID);
+        map.put("clusterID", clusterID);
+        map.put("initiatorNames", initiatorNames);
+        map.put("visibleProtocolEndpointIDs", visibleProtocolEndpointIDs);
+        map.put("hostAddress", hostAddress);
+        map.put("callingVirtualVolumeHostID", callingVirtualVolumeHostID);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -177,14 +143,18 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
 
         sb.append(" virtualVolumeHostID : ").append(virtualVolumeHostID).append(",");
         sb.append(" clusterID : ").append(clusterID).append(",");
-        if(null != initiatorNames && initiatorNames.isPresent())
-            sb.append(" initiatorNames : ").append(Arrays.toString(initiatorNames.get())).append(",");
-        if(null != visibleProtocolEndpointIDs && visibleProtocolEndpointIDs.isPresent())
-            sb.append(" visibleProtocolEndpointIDs : ").append(Arrays.toString(visibleProtocolEndpointIDs.get())).append(",");
-        if(null != hostAddress && hostAddress.isPresent())
+        if(null != initiatorNames && initiatorNames.isPresent()){
+            sb.append(" initiatorNames : ").append(initiatorNames.get()).append(",");
+        }
+        if(null != visibleProtocolEndpointIDs && visibleProtocolEndpointIDs.isPresent()){
+            sb.append(" visibleProtocolEndpointIDs : ").append(visibleProtocolEndpointIDs.get()).append(",");
+        }
+        if(null != hostAddress && hostAddress.isPresent()){
             sb.append(" hostAddress : ").append(hostAddress.get()).append(",");
-        if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent())
-            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get());
+        }
+        if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent()){
+            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -202,12 +172,12 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
     }
 
     public static class Builder {
-        private java.util.UUID virtualVolumeHostID;
-        private java.util.UUID clusterID;
+        private UUIDNullable virtualVolumeHostID;
+        private UUIDNullable clusterID;
         private Optional<String[]> initiatorNames;
-        private Optional<java.util.UUID[]> visibleProtocolEndpointIDs;
+        private Optional<UUIDNullable[]> visibleProtocolEndpointIDs;
         private Optional<String> hostAddress;
-        private Optional<java.util.UUID> callingVirtualVolumeHostID;
+        private Optional<UUIDNullable> callingVirtualVolumeHostID;
 
         private Builder() { }
 
@@ -218,7 +188,7 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
                          this.initiatorNames,
                          this.visibleProtocolEndpointIDs,
                          this.hostAddress,
-                         this.callingVirtualVolumeHostID            );
+                         this.callingVirtualVolumeHostID);
         }
 
         private CreateVirtualVolumeHostRequest.Builder buildFrom(final CreateVirtualVolumeHostRequest req) {
@@ -232,12 +202,12 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
             return this;
         }
 
-        public CreateVirtualVolumeHostRequest.Builder virtualVolumeHostID(final java.util.UUID virtualVolumeHostID) {
+        public CreateVirtualVolumeHostRequest.Builder virtualVolumeHostID(final UUIDNullable virtualVolumeHostID) {
             this.virtualVolumeHostID = virtualVolumeHostID;
             return this;
         }
 
-        public CreateVirtualVolumeHostRequest.Builder clusterID(final java.util.UUID clusterID) {
+        public CreateVirtualVolumeHostRequest.Builder clusterID(final UUIDNullable clusterID) {
             this.clusterID = clusterID;
             return this;
         }
@@ -247,8 +217,8 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
             return this;
         }
 
-        public CreateVirtualVolumeHostRequest.Builder optionalVisibleProtocolEndpointIDs(final java.util.UUID[] visibleProtocolEndpointIDs) {
-            this.visibleProtocolEndpointIDs = (visibleProtocolEndpointIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(visibleProtocolEndpointIDs);
+        public CreateVirtualVolumeHostRequest.Builder optionalVisibleProtocolEndpointIDs(final UUIDNullable[] visibleProtocolEndpointIDs) {
+            this.visibleProtocolEndpointIDs = (visibleProtocolEndpointIDs == null) ? Optional.<UUIDNullable[]>empty() : Optional.of(visibleProtocolEndpointIDs);
             return this;
         }
 
@@ -257,11 +227,10 @@ public class CreateVirtualVolumeHostRequest  implements Serializable  {
             return this;
         }
 
-        public CreateVirtualVolumeHostRequest.Builder optionalCallingVirtualVolumeHostID(final java.util.UUID callingVirtualVolumeHostID) {
-            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
+        public CreateVirtualVolumeHostRequest.Builder optionalCallingVirtualVolumeHostID(final UUIDNullable callingVirtualVolumeHostID) {
+            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : Optional.of(callingVirtualVolumeHostID);
             return this;
         }
 
     }
-
 }

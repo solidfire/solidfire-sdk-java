@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class TestConnectEnsembleDetails  implements Serializable  {
 
-    private static final long serialVersionUID = -1073658240L;
+public class TestConnectEnsembleDetails implements Serializable {
 
-    @SerializedName("nodes") private Object nodes;
+    public static final long serialVersionUID = -4998247157821783259L;
+    @SerializedName("nodes") private java.util.Map<String, Object> nodes;
 
-    /**
-     * 
-     * @param nodes [required] A list of each ensemble node in the test and the results of the tests.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public TestConnectEnsembleDetails(Object nodes) {
-        this.nodes = nodes;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public TestConnectEnsembleDetails() {}
 
-
-    /**
-     * A list of each ensemble node in the test and the results of the tests.
-     **/
-    public Object getNodes() {
-        return this.nodes;
-    }
-
-    public void setNodes(Object nodes) {
+    // parameterized constructor
+    @Since("7.0")
+    public TestConnectEnsembleDetails(
+        java.util.Map<String, Object> nodes
+    )
+    {
         this.nodes = nodes;
     }
 
-
+    /** 
+     * A list of each ensemble node in the test and the results of the tests.
+     **/
+    public java.util.Map<String, Object> getNodes() { return this.nodes; }
+    public void setNodes(java.util.Map<String, Object> nodes) { 
+        this.nodes = nodes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,9 +62,8 @@ public class TestConnectEnsembleDetails  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectEnsembleDetails that = (TestConnectEnsembleDetails) o;
-        
-
-        return Objects.equals( nodes , that.nodes );
+        return 
+            Objects.equals(nodes, that.nodes);
     }
 
     @Override
@@ -93,12 +72,18 @@ public class TestConnectEnsembleDetails  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodes", nodes);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(nodes);
+        sb.append(" nodes : ").append(nodes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -116,13 +101,13 @@ public class TestConnectEnsembleDetails  implements Serializable  {
     }
 
     public static class Builder {
-        private Object nodes;
+        private java.util.Map<String, Object> nodes;
 
         private Builder() { }
 
         public TestConnectEnsembleDetails build() {
             return new TestConnectEnsembleDetails (
-                         this.nodes            );
+                         this.nodes);
         }
 
         private TestConnectEnsembleDetails.Builder buildFrom(final TestConnectEnsembleDetails req) {
@@ -131,11 +116,10 @@ public class TestConnectEnsembleDetails  implements Serializable  {
             return this;
         }
 
-        public TestConnectEnsembleDetails.Builder nodes(final Object nodes) {
+        public TestConnectEnsembleDetails.Builder nodes(final java.util.Map<String, Object> nodes) {
             this.nodes = nodes;
             return this;
         }
 
     }
-
 }

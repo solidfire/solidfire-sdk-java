@@ -19,130 +19,74 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * List of checksum, volumeIDs and snapshotIDs for each member of the group.
  **/
-public class GroupSnapshotMembers  implements Serializable  {
 
-    private static final long serialVersionUID = 718814070L;
+public class GroupSnapshotMembers implements Serializable {
 
+    public static final long serialVersionUID = 4785362642461122102L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("snapshotUUID") private String snapshotUUID;
     @SerializedName("checksum") private String checksum;
 
-    /**
-     * List of checksum, volumeIDs and snapshotIDs for each member of the group.
-     * @param volumeID [required] The source volume ID for the snapshot.
-     * @param snapshotID [required] Unique ID of a snapshot from which the new snapshot is made.
-     * @param checksum [required] A string that represents the correct digits in the stored snapshot.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GroupSnapshotMembers(Long volumeID, Long snapshotID, String checksum) {
-        this.volumeID = volumeID;
-        this.snapshotID = snapshotID;
-        this.snapshotUUID = null;
-        this.checksum = checksum;
-    }
-
-    /**
-     * List of checksum, volumeIDs and snapshotIDs for each member of the group.
-     * @param volumeID [required] The source volume ID for the snapshot.
-     * @param snapshotID [required] Unique ID of a snapshot from which the new snapshot is made.
-     * @param snapshotUUID [required] Universal Unique ID of an existing snapshot.
-     * @param checksum [required] A string that represents the correct digits in the stored snapshot.
-     * @since 8.0
-     **/
-    @Since("8.0")
-    public GroupSnapshotMembers(Long volumeID, Long snapshotID, String snapshotUUID, String checksum) {
-        this.volumeID = volumeID;
-        this.snapshotID = snapshotID;
-        this.snapshotUUID = snapshotUUID;
-        this.checksum = checksum;
-    }
-
-    
-    /**
-     * List of checksum, volumeIDs and snapshotIDs for each member of the group.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GroupSnapshotMembers() {}
 
-
-    /**
-     * The source volume ID for the snapshot.
-     **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    public void setVolumeID(Long volumeID) {
+    // parameterized constructor
+    @Since("7.0")
+    public GroupSnapshotMembers(
+        Long volumeID,
+        Long snapshotID,
+        String snapshotUUID,
+        String checksum
+    )
+    {
         this.volumeID = volumeID;
-    }
-
-
-
-    /**
-     * Unique ID of a snapshot from which the new snapshot is made.
-     * The snapshotID passed must be a snapshot on the given volume.
-     **/
-    public Long getSnapshotID() {
-        return this.snapshotID;
-    }
-
-    public void setSnapshotID(Long snapshotID) {
         this.snapshotID = snapshotID;
-    }
-
-
-
-    /**
-     * Universal Unique ID of an existing snapshot.
-     * @since 8.0 
-     **/
-
-    @Since("8.0")
-    public String getSnapshotUUID() {
-        return this.snapshotUUID;
-    }
-
-    public void setSnapshotUUID(String snapshotUUID) {
         this.snapshotUUID = snapshotUUID;
-    }
-
-
-
-    /**
-     * A string that represents the correct digits in the stored snapshot.
-     * This checksum can be used later to compare other snapshots to detect errors in the data.
-     **/
-    public String getChecksum() {
-        return this.checksum;
-    }
-
-    public void setChecksum(String checksum) {
         this.checksum = checksum;
     }
 
-
+    /** 
+     * The source volume ID for the snapshot.
+     **/
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
+    }
+    /** 
+     * Unique ID of a snapshot from which the new snapshot is made.
+     * The snapshotID passed must be a snapshot on the given volume.
+     **/
+    public Long getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Long snapshotID) { 
+        this.snapshotID = snapshotID;
+    }
+    /** 
+     * Universal Unique ID of an existing snapshot.
+     **/
+    public String getSnapshotUUID() { return this.snapshotUUID; }
+    public void setSnapshotUUID(String snapshotUUID) { 
+        this.snapshotUUID = snapshotUUID;
+    }
+    /** 
+     * A string that represents the correct digits in the stored snapshot.
+     * This checksum can be used later to compare other snapshots to detect errors in the data.
+     **/
+    public String getChecksum() { return this.checksum; }
+    public void setChecksum(String checksum) { 
+        this.checksum = checksum;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -150,12 +94,11 @@ public class GroupSnapshotMembers  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GroupSnapshotMembers that = (GroupSnapshotMembers) o;
-        
-
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( snapshotID , that.snapshotID )
-            && Objects.equals( snapshotUUID , that.snapshotUUID )
-            && Objects.equals( checksum , that.checksum );
+        return 
+            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(snapshotID, that.snapshotID) &&
+            Objects.equals(snapshotUUID, that.snapshotUUID) &&
+            Objects.equals(checksum, that.checksum);
     }
 
     @Override
@@ -163,6 +106,15 @@ public class GroupSnapshotMembers  implements Serializable  {
         return Objects.hash( volumeID, snapshotID, snapshotUUID, checksum );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        map.put("snapshotID", snapshotID);
+        map.put("snapshotUUID", snapshotUUID);
+        map.put("checksum", checksum);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -172,7 +124,7 @@ public class GroupSnapshotMembers  implements Serializable  {
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" snapshotID : ").append(snapshotID).append(",");
         sb.append(" snapshotUUID : ").append(snapshotUUID).append(",");
-        sb.append(" checksum : ").append(checksum);
+        sb.append(" checksum : ").append(checksum).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -202,7 +154,7 @@ public class GroupSnapshotMembers  implements Serializable  {
                          this.volumeID,
                          this.snapshotID,
                          this.snapshotUUID,
-                         this.checksum            );
+                         this.checksum);
         }
 
         private GroupSnapshotMembers.Builder buildFrom(final GroupSnapshotMembers req) {
@@ -235,5 +187,4 @@ public class GroupSnapshotMembers  implements Serializable  {
         }
 
     }
-
 }

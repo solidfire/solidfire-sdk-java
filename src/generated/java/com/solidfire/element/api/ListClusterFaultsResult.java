@@ -19,62 +19,42 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListClusterFaults" API Service call.
+ * 
  **/
-public class ListClusterFaultsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 179886493L;
+public class ListClusterFaultsResult implements Serializable {
 
+    public static final long serialVersionUID = 8263283430508705045L;
     @SerializedName("faults") private ClusterFaultInfo[] faults;
 
-    /**
-     * The object returned by the "ListClusterFaults" API Service call.
-     * @param faults [required] The list of Cluster Fault objects.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListClusterFaultsResult(ClusterFaultInfo[] faults) {
-        this.faults = faults;
-    }
-
-    
-    /**
-     * The object returned by the "ListClusterFaults" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ListClusterFaultsResult() {}
 
-
-    /**
-     * The list of Cluster Fault objects.
-     **/
-    public ClusterFaultInfo[] getFaults() {
-        return this.faults;
-    }
-
-    public void setFaults(ClusterFaultInfo[] faults) {
+    // parameterized constructor
+    @Since("7.0")
+    public ListClusterFaultsResult(
+        ClusterFaultInfo[] faults
+    )
+    {
         this.faults = faults;
     }
 
-
+    /** 
+     * The list of Cluster Fault objects.
+     **/
+    public ClusterFaultInfo[] getFaults() { return this.faults; }
+    public void setFaults(ClusterFaultInfo[] faults) { 
+        this.faults = faults;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -82,23 +62,28 @@ public class ListClusterFaultsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListClusterFaultsResult that = (ListClusterFaultsResult) o;
-        
-
-        return Objects.deepEquals( faults , that.faults );
+        return 
+            Objects.equals(faults, that.faults);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) faults );
+        return Objects.hash( (Object[])faults );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("faults", faults);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" faults : ").append(Arrays.toString(faults));
+        sb.append(" faults : ").append(Arrays.toString(faults)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +107,7 @@ public class ListClusterFaultsResult  implements Serializable  {
 
         public ListClusterFaultsResult build() {
             return new ListClusterFaultsResult (
-                         this.faults            );
+                         this.faults);
         }
 
         private ListClusterFaultsResult.Builder buildFrom(final ListClusterFaultsResult req) {
@@ -137,5 +122,4 @@ public class ListClusterFaultsResult  implements Serializable  {
         }
 
     }
-
 }

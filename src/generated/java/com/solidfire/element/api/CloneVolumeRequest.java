@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "CloneVolume" API Service call.
+ * 
  **/
-public class CloneVolumeRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -244293593L;
+public class CloneVolumeRequest implements Serializable {
 
+    public static final long serialVersionUID = -768791333545216038L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("newAccountID") private Optional<Long> newAccountID;
@@ -49,95 +41,64 @@ public class CloneVolumeRequest  implements Serializable  {
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "CloneVolume" API Service call.
-     * @param volumeID [required] The ID of the volume to clone.
-     * @param name [required] The name for the newly-created volume.
-     * @param newAccountID (optional) AccountID for the owner of the new volume.
-     * @param newSize (optional) New size of the volume, in bytes.
-     * @param access (optional) Access settings for the new volume.
-     * @param snapshotID (optional) ID of the snapshot to use as the source of the clone.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public CloneVolumeRequest(Long volumeID, String name, Optional<Long> newAccountID, Optional<Long> newSize, Optional<String> access, Optional<Long> snapshotID, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = name;
-        this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
-        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.volumeID = volumeID;
-        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
-        this.access = (access == null) ? Optional.<String>empty() : access;
-    }
-
-    
-    /**
-     * The Request object for the "CloneVolume" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public CloneVolumeRequest() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public CloneVolumeRequest(
+        Long volumeID,
+        String name,
+        Optional<Long> newAccountID,
+        Optional<Long> newSize,
+        Optional<String> access,
+        Optional<Long> snapshotID,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.volumeID = volumeID;
+        this.name = name;
+        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
+        this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
+        this.access = (access == null) ? Optional.<String>empty() : access;
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
 
-    /**
+    /** 
      * The ID of the volume to clone.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-
-    public void setVolumeID(Long volumeID) {
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
-
-
-
-    /**
+    /** 
      * The name for the newly-created volume.
      **/
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
+    public String getName() { return this.name; }
+    public void setName(String name) { 
         this.name = name;
     }
-
-
-
-    /**
+    /** 
      * AccountID for the owner of the new volume.
      * If unspecified, the AccountID of the owner of the volume being cloned is used.
      **/
-    public Optional<Long> getNewAccountID() {
-        return this.newAccountID;
+    public Optional<Long> getNewAccountID() { return this.newAccountID; }
+    public void setNewAccountID(Optional<Long> newAccountID) { 
+        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
-
-    public void setNewAccountID(Long newAccountID) {
-        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
-    }
-
-
-
-    /**
+    /** 
      * New size of the volume, in bytes.
      * May be greater or less than the size of the volume being cloned.
      * If unspecified, the clone's volume size will be the same as the source volume.
      * Size is rounded up to the nearest 1 MiB.
      **/
-    public Optional<Long> getNewSize() {
-        return this.newSize;
+    public Optional<Long> getNewSize() { return this.newSize; }
+    public void setNewSize(Optional<Long> newSize) { 
+        this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
     }
-
-    public void setNewSize(Long newSize) {
-        this.newSize = (newSize == null) ? Optional.<Long>empty() : Optional.of(newSize);
-    }
-
-
-
-    /**
+    /** 
      * Access settings for the new volume.
      * <br/><b>readOnly</b>: Only read operations are allowed.
      * <br/><b>readWrite</b>: Reads and writes are allowed.
@@ -146,42 +107,25 @@ public class CloneVolumeRequest  implements Serializable  {
      * <br/><br/>
      * If unspecified, the access settings of the clone will be the same as the source.
      **/
-    public Optional<String> getAccess() {
-        return this.access;
+    public Optional<String> getAccess() { return this.access; }
+    public void setAccess(Optional<String> access) { 
+        this.access = (access == null) ? Optional.<String>empty() : access;
     }
-
-    public void setAccess(String access) {
-        this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
-    }
-
-
-
-    /**
+    /** 
      * ID of the snapshot to use as the source of the clone.
      * If unspecified, the clone will be created with a snapshot of the active volume.
      **/
-    public Optional<Long> getSnapshotID() {
-        return this.snapshotID;
+    public Optional<Long> getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Optional<Long> snapshotID) { 
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
-
-    public void setSnapshotID(Long snapshotID) {
-        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
-    }
-
-
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
-
-    public void setAttributes(java.util.Map<String, Object> attributes) {
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
-    }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -189,15 +133,14 @@ public class CloneVolumeRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CloneVolumeRequest that = (CloneVolumeRequest) o;
-        
-
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( name , that.name )
-            && Objects.equals( newAccountID , that.newAccountID )
-            && Objects.equals( newSize , that.newSize )
-            && Objects.equals( access , that.access )
-            && Objects.equals( snapshotID , that.snapshotID )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(name, that.name) &&
+            Objects.equals(newAccountID, that.newAccountID) &&
+            Objects.equals(newSize, that.newSize) &&
+            Objects.equals(access, that.access) &&
+            Objects.equals(snapshotID, that.snapshotID) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -206,6 +149,18 @@ public class CloneVolumeRequest  implements Serializable  {
     }
 
 
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        map.put("name", name);
+        map.put("newAccountID", newAccountID);
+        map.put("newSize", newSize);
+        map.put("access", access);
+        map.put("snapshotID", snapshotID);
+        map.put("attributes", attributes);
+        return map;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
@@ -213,16 +168,21 @@ public class CloneVolumeRequest  implements Serializable  {
 
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" name : ").append(name).append(",");
-        if(null != newAccountID && newAccountID.isPresent())
+        if(null != newAccountID && newAccountID.isPresent()){
             sb.append(" newAccountID : ").append(newAccountID.get()).append(",");
-        if(null != newSize && newSize.isPresent())
+        }
+        if(null != newSize && newSize.isPresent()){
             sb.append(" newSize : ").append(newSize.get()).append(",");
-        if(null != access && access.isPresent())
+        }
+        if(null != access && access.isPresent()){
             sb.append(" access : ").append(access.get()).append(",");
-        if(null != snapshotID && snapshotID.isPresent())
+        }
+        if(null != snapshotID && snapshotID.isPresent()){
             sb.append(" snapshotID : ").append(snapshotID.get()).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes.get()).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -258,7 +218,7 @@ public class CloneVolumeRequest  implements Serializable  {
                          this.newSize,
                          this.access,
                          this.snapshotID,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private CloneVolumeRequest.Builder buildFrom(final CloneVolumeRequest req) {
@@ -309,5 +269,4 @@ public class CloneVolumeRequest  implements Serializable  {
         }
 
     }
-
 }

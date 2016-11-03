@@ -19,106 +19,77 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class SoftwareVersionInfo  implements Serializable  {
 
-    private static final long serialVersionUID = 193461099L;
+public class SoftwareVersionInfo implements Serializable {
 
+    public static final long serialVersionUID = -4210356135559607214L;
     @SerializedName("currentVersion") private String currentVersion;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("packageName") private String packageName;
     @SerializedName("pendingVersion") private String pendingVersion;
     @SerializedName("startTime") private String startTime;
 
-    /**
-     * 
-     * @param currentVersion [required] 
-     * @param nodeID [required] 
-     * @param packageName [required] 
-     * @param pendingVersion [required] 
-     * @param startTime [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public SoftwareVersionInfo(String currentVersion, Long nodeID, String packageName, String pendingVersion, String startTime) {
-        this.startTime = startTime;
-        this.pendingVersion = pendingVersion;
-        this.packageName = packageName;
-        this.nodeID = nodeID;
-        this.currentVersion = currentVersion;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public SoftwareVersionInfo() {}
 
-    public String getCurrentVersion() {
-        return this.currentVersion;
-    }
-
-    public void setCurrentVersion(String currentVersion) {
+    // parameterized constructor
+    @Since("7.0")
+    public SoftwareVersionInfo(
+        String currentVersion,
+        Long nodeID,
+        String packageName,
+        String pendingVersion,
+        String startTime
+    )
+    {
         this.currentVersion = currentVersion;
-    }
-
-
-    public Long getNodeID() {
-        return this.nodeID;
-    }
-
-    public void setNodeID(Long nodeID) {
         this.nodeID = nodeID;
-    }
-
-
-    public String getPackageName() {
-        return this.packageName;
-    }
-
-    public void setPackageName(String packageName) {
         this.packageName = packageName;
-    }
-
-
-    public String getPendingVersion() {
-        return this.pendingVersion;
-    }
-
-    public void setPendingVersion(String pendingVersion) {
         this.pendingVersion = pendingVersion;
-    }
-
-
-    public String getStartTime() {
-        return this.startTime;
-    }
-
-    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-
+    /** 
+     **/
+    public String getCurrentVersion() { return this.currentVersion; }
+    public void setCurrentVersion(String currentVersion) { 
+        this.currentVersion = currentVersion;
+    }
+    /** 
+     **/
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
+    }
+    /** 
+     **/
+    public String getPackageName() { return this.packageName; }
+    public void setPackageName(String packageName) { 
+        this.packageName = packageName;
+    }
+    /** 
+     **/
+    public String getPendingVersion() { return this.pendingVersion; }
+    public void setPendingVersion(String pendingVersion) { 
+        this.pendingVersion = pendingVersion;
+    }
+    /** 
+     **/
+    public String getStartTime() { return this.startTime; }
+    public void setStartTime(String startTime) { 
+        this.startTime = startTime;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -126,13 +97,12 @@ public class SoftwareVersionInfo  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         SoftwareVersionInfo that = (SoftwareVersionInfo) o;
-        
-
-        return Objects.equals( currentVersion , that.currentVersion )
-            && Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( packageName , that.packageName )
-            && Objects.equals( pendingVersion , that.pendingVersion )
-            && Objects.equals( startTime , that.startTime );
+        return 
+            Objects.equals(currentVersion, that.currentVersion) &&
+            Objects.equals(nodeID, that.nodeID) &&
+            Objects.equals(packageName, that.packageName) &&
+            Objects.equals(pendingVersion, that.pendingVersion) &&
+            Objects.equals(startTime, that.startTime);
     }
 
     @Override
@@ -140,6 +110,16 @@ public class SoftwareVersionInfo  implements Serializable  {
         return Objects.hash( currentVersion, nodeID, packageName, pendingVersion, startTime );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("currentVersion", currentVersion);
+        map.put("nodeID", nodeID);
+        map.put("packageName", packageName);
+        map.put("pendingVersion", pendingVersion);
+        map.put("startTime", startTime);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -150,7 +130,7 @@ public class SoftwareVersionInfo  implements Serializable  {
         sb.append(" nodeID : ").append(nodeID).append(",");
         sb.append(" packageName : ").append(packageName).append(",");
         sb.append(" pendingVersion : ").append(pendingVersion).append(",");
-        sb.append(" startTime : ").append(startTime);
+        sb.append(" startTime : ").append(startTime).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -182,7 +162,7 @@ public class SoftwareVersionInfo  implements Serializable  {
                          this.nodeID,
                          this.packageName,
                          this.pendingVersion,
-                         this.startTime            );
+                         this.startTime);
         }
 
         private SoftwareVersionInfo.Builder buildFrom(final SoftwareVersionInfo req) {
@@ -221,5 +201,4 @@ public class SoftwareVersionInfo  implements Serializable  {
         }
 
     }
-
 }

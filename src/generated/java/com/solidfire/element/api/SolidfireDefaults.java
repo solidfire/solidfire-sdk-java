@@ -19,28 +19,20 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
  * 
  **/
-public class SolidfireDefaults  implements Serializable  {
 
-    private static final long serialVersionUID = 2127016438L;
+public class SolidfireDefaults implements Serializable {
 
+    public static final long serialVersionUID = 3299673363960865430L;
     @SerializedName("sliceFileLogFileCapacity") private Long sliceFileLogFileCapacity;
     @SerializedName("postCallbackThreadCount") private Long postCallbackThreadCount;
     @SerializedName("cpuDmaLatency") private Long cpuDmaLatency;
@@ -49,100 +41,73 @@ public class SolidfireDefaults  implements Serializable  {
     @SerializedName("configuredIops") private Long configuredIops;
     @SerializedName("sCacheFileCapacity") private Long sCacheFileCapacity;
 
-    /**
-     * 
-     * @param sliceFileLogFileCapacity [required] 
-     * @param postCallbackThreadCount [required] 
-     * @param cpuDmaLatency [required] 
-     * @param bufferCacheGB [required] 
-     * @param maxIncomingSliceSyncs [required] 
-     * @param configuredIops [required] 
-     * @param sCacheFileCapacity [required] 
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public SolidfireDefaults(Long sliceFileLogFileCapacity, Long postCallbackThreadCount, Long cpuDmaLatency, Long bufferCacheGB, Long maxIncomingSliceSyncs, Long configuredIops, Long sCacheFileCapacity) {
-        this.maxIncomingSliceSyncs = maxIncomingSliceSyncs;
-        this.sliceFileLogFileCapacity = sliceFileLogFileCapacity;
-        this.configuredIops = configuredIops;
-        this.cpuDmaLatency = cpuDmaLatency;
-        this.postCallbackThreadCount = postCallbackThreadCount;
-        this.sCacheFileCapacity = sCacheFileCapacity;
-        this.bufferCacheGB = bufferCacheGB;
-    }
-
-    
-    /**
-     * 
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public SolidfireDefaults() {}
 
-    public Long getSliceFileLogFileCapacity() {
-        return this.sliceFileLogFileCapacity;
-    }
-
-    public void setSliceFileLogFileCapacity(Long sliceFileLogFileCapacity) {
+    // parameterized constructor
+    @Since("7.0")
+    public SolidfireDefaults(
+        Long sliceFileLogFileCapacity,
+        Long postCallbackThreadCount,
+        Long cpuDmaLatency,
+        Long bufferCacheGB,
+        Long maxIncomingSliceSyncs,
+        Long configuredIops,
+        Long sCacheFileCapacity
+    )
+    {
         this.sliceFileLogFileCapacity = sliceFileLogFileCapacity;
-    }
-
-
-    public Long getPostCallbackThreadCount() {
-        return this.postCallbackThreadCount;
-    }
-
-    public void setPostCallbackThreadCount(Long postCallbackThreadCount) {
         this.postCallbackThreadCount = postCallbackThreadCount;
-    }
-
-
-    public Long getCpuDmaLatency() {
-        return this.cpuDmaLatency;
-    }
-
-    public void setCpuDmaLatency(Long cpuDmaLatency) {
         this.cpuDmaLatency = cpuDmaLatency;
-    }
-
-
-    public Long getBufferCacheGB() {
-        return this.bufferCacheGB;
-    }
-
-    public void setBufferCacheGB(Long bufferCacheGB) {
         this.bufferCacheGB = bufferCacheGB;
-    }
-
-
-    public Long getMaxIncomingSliceSyncs() {
-        return this.maxIncomingSliceSyncs;
-    }
-
-    public void setMaxIncomingSliceSyncs(Long maxIncomingSliceSyncs) {
         this.maxIncomingSliceSyncs = maxIncomingSliceSyncs;
-    }
-
-
-    public Long getConfiguredIops() {
-        return this.configuredIops;
-    }
-
-    public void setConfiguredIops(Long configuredIops) {
         this.configuredIops = configuredIops;
-    }
-
-
-    public Long getSCacheFileCapacity() {
-        return this.sCacheFileCapacity;
-    }
-
-    public void setSCacheFileCapacity(Long sCacheFileCapacity) {
         this.sCacheFileCapacity = sCacheFileCapacity;
     }
 
-
+    /** 
+     **/
+    public Long getSliceFileLogFileCapacity() { return this.sliceFileLogFileCapacity; }
+    public void setSliceFileLogFileCapacity(Long sliceFileLogFileCapacity) { 
+        this.sliceFileLogFileCapacity = sliceFileLogFileCapacity;
+    }
+    /** 
+     **/
+    public Long getPostCallbackThreadCount() { return this.postCallbackThreadCount; }
+    public void setPostCallbackThreadCount(Long postCallbackThreadCount) { 
+        this.postCallbackThreadCount = postCallbackThreadCount;
+    }
+    /** 
+     **/
+    public Long getCpuDmaLatency() { return this.cpuDmaLatency; }
+    public void setCpuDmaLatency(Long cpuDmaLatency) { 
+        this.cpuDmaLatency = cpuDmaLatency;
+    }
+    /** 
+     **/
+    public Long getBufferCacheGB() { return this.bufferCacheGB; }
+    public void setBufferCacheGB(Long bufferCacheGB) { 
+        this.bufferCacheGB = bufferCacheGB;
+    }
+    /** 
+     **/
+    public Long getMaxIncomingSliceSyncs() { return this.maxIncomingSliceSyncs; }
+    public void setMaxIncomingSliceSyncs(Long maxIncomingSliceSyncs) { 
+        this.maxIncomingSliceSyncs = maxIncomingSliceSyncs;
+    }
+    /** 
+     **/
+    public Long getConfiguredIops() { return this.configuredIops; }
+    public void setConfiguredIops(Long configuredIops) { 
+        this.configuredIops = configuredIops;
+    }
+    /** 
+     **/
+    public Long getSCacheFileCapacity() { return this.sCacheFileCapacity; }
+    public void setSCacheFileCapacity(Long sCacheFileCapacity) { 
+        this.sCacheFileCapacity = sCacheFileCapacity;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -150,15 +115,14 @@ public class SolidfireDefaults  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         SolidfireDefaults that = (SolidfireDefaults) o;
-        
-
-        return Objects.equals( sliceFileLogFileCapacity , that.sliceFileLogFileCapacity )
-            && Objects.equals( postCallbackThreadCount , that.postCallbackThreadCount )
-            && Objects.equals( cpuDmaLatency , that.cpuDmaLatency )
-            && Objects.equals( bufferCacheGB , that.bufferCacheGB )
-            && Objects.equals( maxIncomingSliceSyncs , that.maxIncomingSliceSyncs )
-            && Objects.equals( configuredIops , that.configuredIops )
-            && Objects.equals( sCacheFileCapacity , that.sCacheFileCapacity );
+        return 
+            Objects.equals(sliceFileLogFileCapacity, that.sliceFileLogFileCapacity) &&
+            Objects.equals(postCallbackThreadCount, that.postCallbackThreadCount) &&
+            Objects.equals(cpuDmaLatency, that.cpuDmaLatency) &&
+            Objects.equals(bufferCacheGB, that.bufferCacheGB) &&
+            Objects.equals(maxIncomingSliceSyncs, that.maxIncomingSliceSyncs) &&
+            Objects.equals(configuredIops, that.configuredIops) &&
+            Objects.equals(sCacheFileCapacity, that.sCacheFileCapacity);
     }
 
     @Override
@@ -166,6 +130,18 @@ public class SolidfireDefaults  implements Serializable  {
         return Objects.hash( sliceFileLogFileCapacity, postCallbackThreadCount, cpuDmaLatency, bufferCacheGB, maxIncomingSliceSyncs, configuredIops, sCacheFileCapacity );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("sliceFileLogFileCapacity", sliceFileLogFileCapacity);
+        map.put("postCallbackThreadCount", postCallbackThreadCount);
+        map.put("cpuDmaLatency", cpuDmaLatency);
+        map.put("bufferCacheGB", bufferCacheGB);
+        map.put("maxIncomingSliceSyncs", maxIncomingSliceSyncs);
+        map.put("configuredIops", configuredIops);
+        map.put("sCacheFileCapacity", sCacheFileCapacity);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -178,7 +154,7 @@ public class SolidfireDefaults  implements Serializable  {
         sb.append(" bufferCacheGB : ").append(bufferCacheGB).append(",");
         sb.append(" maxIncomingSliceSyncs : ").append(maxIncomingSliceSyncs).append(",");
         sb.append(" configuredIops : ").append(configuredIops).append(",");
-        sb.append(" sCacheFileCapacity : ").append(sCacheFileCapacity);
+        sb.append(" sCacheFileCapacity : ").append(sCacheFileCapacity).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -214,7 +190,7 @@ public class SolidfireDefaults  implements Serializable  {
                          this.bufferCacheGB,
                          this.maxIncomingSliceSyncs,
                          this.configuredIops,
-                         this.sCacheFileCapacity            );
+                         this.sCacheFileCapacity);
         }
 
         private SolidfireDefaults.Builder buildFrom(final SolidfireDefaults req) {
@@ -265,5 +241,4 @@ public class SolidfireDefaults  implements Serializable  {
         }
 
     }
-
 }
