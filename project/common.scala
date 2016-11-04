@@ -94,7 +94,8 @@ object Config {
       Dependencies.slf4jSimple,
       Dependencies.mockito,
       Dependencies.scalatest,
-      Dependencies.scalacheck
+      Dependencies.scalacheck,
+      Dependencies.junit
     )
   )
 
@@ -135,6 +136,7 @@ object Dependencies {
   lazy val scalatest      = "org.scalatest" %% "scalatest" % Version.scalatest % "test"
   lazy val mockito        = "org.mockito" % "mockito-all" % Version.mockito % "test"
   lazy val scalacheck     = "org.scalacheck" %% "scalacheck" % Version.scalacheck % "test"
+  lazy val junit          = "com.novocode" % "junit-interface" % Version.junit % "test"
 }
 
 

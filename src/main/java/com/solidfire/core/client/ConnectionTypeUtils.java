@@ -23,6 +23,6 @@ public class ConnectionTypeUtils {
                         (!isNode && (Objects.equals(t, "Cluster") || Objects.equals(t, "Both"))));
             }
         }
-        throw new ApiException("Unable to determine ConnectionType of " + methodName);
+        return true;
     }
 }
