@@ -45,7 +45,7 @@ public class ClusterFaultInfo implements Serializable {
     @SerializedName("clusterFaultID") private Long clusterFaultID;
     @SerializedName("date") private String date;
     @SerializedName("resolvedDate") private String resolvedDate;
-    @SerializedName("data") private java.util.Map<String, Object> data;
+    @SerializedName("data") private Object data;
 
     // empty constructor
     @Since("7.0")
@@ -66,7 +66,7 @@ public class ClusterFaultInfo implements Serializable {
         Long clusterFaultID,
         String date,
         String resolvedDate,
-        java.util.Map<String, Object> data
+        Object data
     )
     {
         this.severity = severity;
@@ -158,8 +158,8 @@ public class ClusterFaultInfo implements Serializable {
     }
     /** 
      **/
-    public java.util.Map<String, Object> getData() { return this.data; }
-    public void setData(java.util.Map<String, Object> data) { 
+    public Object getData() { return this.data; }
+    public void setData(Object data) { 
         this.data = data;
     }
 
@@ -256,7 +256,7 @@ public class ClusterFaultInfo implements Serializable {
         private Long clusterFaultID;
         private String date;
         private String resolvedDate;
-        private java.util.Map<String, Object> data;
+        private Object data;
 
         private Builder() { }
 
@@ -355,7 +355,7 @@ public class ClusterFaultInfo implements Serializable {
             return this;
         }
 
-        public ClusterFaultInfo.Builder data(final java.util.Map<String, Object> data) {
+        public ClusterFaultInfo.Builder data(final Object data) {
             this.data = data;
             return this;
         }

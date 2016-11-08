@@ -27,7 +27,7 @@ import com.solidfire.core.javautil.Optional;
  * The API for controlling a SolidFire cluster.
  **/
 
-public interface SolidFireElementIF {
+public interface InternalSolidFireElementIF {
 
     /** 
      * Used to add a new account to the system.

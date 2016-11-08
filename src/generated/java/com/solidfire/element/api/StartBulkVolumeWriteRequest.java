@@ -36,7 +36,7 @@ public class StartBulkVolumeWriteRequest implements Serializable {
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("format") private String format;
     @SerializedName("script") private Optional<String> script;
-    @SerializedName("scriptParameters") private Optional<java.util.Map<String, Object>> scriptParameters;
+    @SerializedName("scriptParameters") private Optional<Object> scriptParameters;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
@@ -49,14 +49,14 @@ public class StartBulkVolumeWriteRequest implements Serializable {
         Long volumeID,
         String format,
         Optional<String> script,
-        Optional<java.util.Map<String, Object>> scriptParameters,
+        Optional<Object> scriptParameters,
         Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.volumeID = volumeID;
         this.format = format;
         this.script = (script == null) ? Optional.<String>empty() : script;
-        this.scriptParameters = (scriptParameters == null) ? Optional.<java.util.Map<String, Object>>empty() : scriptParameters;
+        this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : scriptParameters;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
@@ -88,9 +88,9 @@ public class StartBulkVolumeWriteRequest implements Serializable {
     /** 
      * JSON parameters to pass to the script.
      **/
-    public Optional<java.util.Map<String, Object>> getScriptParameters() { return this.scriptParameters; }
-    public void setScriptParameters(Optional<java.util.Map<String, Object>> scriptParameters) { 
-        this.scriptParameters = (scriptParameters == null) ? Optional.<java.util.Map<String, Object>>empty() : scriptParameters;
+    public Optional<Object> getScriptParameters() { return this.scriptParameters; }
+    public void setScriptParameters(Optional<Object> scriptParameters) { 
+        this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : scriptParameters;
     }
     /** 
      * JSON attributes for the bulk volume job.
@@ -166,7 +166,7 @@ public class StartBulkVolumeWriteRequest implements Serializable {
         private Long volumeID;
         private String format;
         private Optional<String> script;
-        private Optional<java.util.Map<String, Object>> scriptParameters;
+        private Optional<Object> scriptParameters;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -205,8 +205,8 @@ public class StartBulkVolumeWriteRequest implements Serializable {
             return this;
         }
 
-        public StartBulkVolumeWriteRequest.Builder optionalScriptParameters(final java.util.Map<String, Object> scriptParameters) {
-            this.scriptParameters = (scriptParameters == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(scriptParameters);
+        public StartBulkVolumeWriteRequest.Builder optionalScriptParameters(final Object scriptParameters) {
+            this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : Optional.of(scriptParameters);
             return this;
         }
 

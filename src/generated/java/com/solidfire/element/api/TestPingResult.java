@@ -35,7 +35,7 @@ public class TestPingResult implements Serializable {
     public static final long serialVersionUID = -5573014009870116151L;
     @SerializedName("result") private String result;
     @SerializedName("duration") private String duration;
-    @SerializedName("details") private java.util.Map<String, Object> details;
+    @SerializedName("details") private Object details;
 
     // empty constructor
     @Since("7.0")
@@ -46,7 +46,7 @@ public class TestPingResult implements Serializable {
     public TestPingResult(
         String result,
         String duration,
-        java.util.Map<String, Object> details
+        Object details
     )
     {
         this.result = result;
@@ -71,8 +71,8 @@ public class TestPingResult implements Serializable {
     /** 
      * List of each IP the node was able to communicate with.
      **/
-    public java.util.Map<String, Object> getDetails() { return this.details; }
-    public void setDetails(java.util.Map<String, Object> details) { 
+    public Object getDetails() { return this.details; }
+    public void setDetails(Object details) { 
         this.details = details;
     }
 
@@ -129,7 +129,7 @@ public class TestPingResult implements Serializable {
     public static class Builder {
         private String result;
         private String duration;
-        private java.util.Map<String, Object> details;
+        private Object details;
 
         private Builder() { }
 
@@ -158,7 +158,7 @@ public class TestPingResult implements Serializable {
             return this;
         }
 
-        public TestPingResult.Builder details(final java.util.Map<String, Object> details) {
+        public TestPingResult.Builder details(final Object details) {
             this.details = details;
             return this;
         }

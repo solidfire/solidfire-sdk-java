@@ -3076,7 +3076,7 @@ public class SolidFireElement
         String format,
         Optional<Long> snapshotID,
         Optional<String> script,
-        Optional<java.util.Map<String, Object>> scriptParameters,
+        Optional<Object> scriptParameters,
         Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.startBulkVolumeRead(new StartBulkVolumeReadRequest(volumeID, format, snapshotID, script, scriptParameters, attributes));
@@ -3109,7 +3109,7 @@ public class SolidFireElement
         Long volumeID,
         String format,
         Optional<String> script,
-        Optional<java.util.Map<String, Object>> scriptParameters,
+        Optional<Object> scriptParameters,
         Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.startBulkVolumeWrite(new StartBulkVolumeWriteRequest(volumeID, format, script, scriptParameters, attributes));

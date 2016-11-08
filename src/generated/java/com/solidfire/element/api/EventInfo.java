@@ -42,7 +42,7 @@ public class EventInfo implements Serializable {
     @SerializedName("driveID") private Long driveID;
     @SerializedName("timeOfReport") private String timeOfReport;
     @SerializedName("timeOfPublish") private String timeOfPublish;
-    @SerializedName("details") private java.util.Map<String, Object> details;
+    @SerializedName("details") private Object details;
 
     // empty constructor
     @Since("7.0")
@@ -60,7 +60,7 @@ public class EventInfo implements Serializable {
         Long driveID,
         String timeOfReport,
         String timeOfPublish,
-        java.util.Map<String, Object> details
+        Object details
     )
     {
         this.eventID = eventID;
@@ -131,8 +131,8 @@ public class EventInfo implements Serializable {
     }
     /** 
      **/
-    public java.util.Map<String, Object> getDetails() { return this.details; }
-    public void setDetails(java.util.Map<String, Object> details) { 
+    public Object getDetails() { return this.details; }
+    public void setDetails(Object details) { 
         this.details = details;
     }
 
@@ -217,7 +217,7 @@ public class EventInfo implements Serializable {
         private Long driveID;
         private String timeOfReport;
         private String timeOfPublish;
-        private java.util.Map<String, Object> details;
+        private Object details;
 
         private Builder() { }
 
@@ -295,7 +295,7 @@ public class EventInfo implements Serializable {
             return this;
         }
 
-        public EventInfo.Builder details(final java.util.Map<String, Object> details) {
+        public EventInfo.Builder details(final Object details) {
             this.details = details;
             return this;
         }
