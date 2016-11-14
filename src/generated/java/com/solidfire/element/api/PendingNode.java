@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class PendingNode implements Serializable {
 
-    public static final long serialVersionUID = -930850330231659742L;
+    public static final long serialVersionUID = 2004656930L;
     @SerializedName("pendingNodeID") private Long pendingNodeID;
     @SerializedName("AssignedNodeID") private Long assignedNodeID;
     @SerializedName("name") private String name;
@@ -45,7 +45,7 @@ public class PendingNode implements Serializable {
     @SerializedName("sip") private String sip;
     @SerializedName("sipi") private String sipi;
     @SerializedName("softwareVersion") private String softwareVersion;
-    @SerializedName("uuid") private UUIDNullable uuid;
+    @SerializedName("uuid") private java.util.UUID uuid;
 
     // empty constructor
     @Since("7.0")
@@ -66,7 +66,7 @@ public class PendingNode implements Serializable {
         String sip,
         String sipi,
         String softwareVersion,
-        UUIDNullable uuid
+        java.util.UUID uuid
     )
     {
         this.pendingNodeID = pendingNodeID;
@@ -168,8 +168,8 @@ public class PendingNode implements Serializable {
     /** 
      * UUID of node.
      **/
-    public UUIDNullable getUuid() { return this.uuid; }
-    public void setUuid(UUIDNullable uuid) { 
+    public java.util.UUID getUuid() { return this.uuid; }
+    public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
 
@@ -266,7 +266,7 @@ public class PendingNode implements Serializable {
         private String sip;
         private String sipi;
         private String softwareVersion;
-        private UUIDNullable uuid;
+        private java.util.UUID uuid;
 
         private Builder() { }
 
@@ -365,7 +365,7 @@ public class PendingNode implements Serializable {
             return this;
         }
 
-        public PendingNode.Builder uuid(final UUIDNullable uuid) {
+        public PendingNode.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
             return this;
         }

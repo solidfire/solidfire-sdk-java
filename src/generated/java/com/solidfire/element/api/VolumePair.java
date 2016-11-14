@@ -32,12 +32,12 @@ import java.util.Objects;
 
 public class VolumePair implements Serializable {
 
-    public static final long serialVersionUID = 4755249077071999580L;
+    public static final long serialVersionUID = 1499558492L;
     @SerializedName("clusterPairID") private Long clusterPairID;
     @SerializedName("remoteVolumeID") private Long remoteVolumeID;
     @SerializedName("remoteSliceID") private Long remoteSliceID;
     @SerializedName("remoteVolumeName") private String remoteVolumeName;
-    @SerializedName("volumePairUUID") private UUIDNullable volumePairUUID;
+    @SerializedName("volumePairUUID") private java.util.UUID volumePairUUID;
     @SerializedName("remoteReplication") private RemoteReplication remoteReplication;
 
     // empty constructor
@@ -51,7 +51,7 @@ public class VolumePair implements Serializable {
         Long remoteVolumeID,
         Long remoteSliceID,
         String remoteVolumeName,
-        UUIDNullable volumePairUUID,
+        java.util.UUID volumePairUUID,
         RemoteReplication remoteReplication
     )
     {
@@ -94,8 +94,8 @@ public class VolumePair implements Serializable {
     /** 
      * A UUID in canonical form.
      **/
-    public UUIDNullable getVolumePairUUID() { return this.volumePairUUID; }
-    public void setVolumePairUUID(UUIDNullable volumePairUUID) { 
+    public java.util.UUID getVolumePairUUID() { return this.volumePairUUID; }
+    public void setVolumePairUUID(java.util.UUID volumePairUUID) { 
         this.volumePairUUID = volumePairUUID;
     }
     /** 
@@ -170,7 +170,7 @@ public class VolumePair implements Serializable {
         private Long remoteVolumeID;
         private Long remoteSliceID;
         private String remoteVolumeName;
-        private UUIDNullable volumePairUUID;
+        private java.util.UUID volumePairUUID;
         private RemoteReplication remoteReplication;
 
         private Builder() { }
@@ -216,7 +216,7 @@ public class VolumePair implements Serializable {
             return this;
         }
 
-        public VolumePair.Builder volumePairUUID(final UUIDNullable volumePairUUID) {
+        public VolumePair.Builder volumePairUUID(final java.util.UUID volumePairUUID) {
             this.volumePairUUID = volumePairUUID;
             return this;
         }

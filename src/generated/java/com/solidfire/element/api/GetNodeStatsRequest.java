@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetNodeStatsRequest implements Serializable {
 
-    public static final long serialVersionUID = -8944306068794105553L;
+    public static final long serialVersionUID = -148365009L;
     @SerializedName("nodeID") private Long nodeID;
 
     // empty constructor

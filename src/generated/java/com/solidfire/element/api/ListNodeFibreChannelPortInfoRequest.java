@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListNodeFibreChannelPortInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 5004353518930172840L;
+    public static final long serialVersionUID = -498132056L;
     @SerializedName("force") private Optional<Boolean> force;
 
     // empty constructor

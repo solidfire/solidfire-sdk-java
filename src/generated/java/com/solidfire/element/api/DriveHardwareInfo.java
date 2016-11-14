@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DriveHardwareInfo implements Serializable {
 
-    public static final long serialVersionUID = -8893614935301879707L;
+    public static final long serialVersionUID = 876152933L;
     @SerializedName("description") private String description;
     @SerializedName("dev") private String dev;
     @SerializedName("devpath") private String devpath;
@@ -46,7 +46,7 @@ public class DriveHardwareInfo implements Serializable {
     @SerializedName("securityFeatureSupported") private Boolean securityFeatureSupported;
     @SerializedName("serial") private String serial;
     @SerializedName("size") private Long size;
-    @SerializedName("uuid") private UUIDNullable uuid;
+    @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("version") private String version;
 
     // empty constructor
@@ -69,7 +69,7 @@ public class DriveHardwareInfo implements Serializable {
         Boolean securityFeatureSupported,
         String serial,
         Long size,
-        UUIDNullable uuid,
+        java.util.UUID uuid,
         String version
     )
     {
@@ -170,8 +170,8 @@ public class DriveHardwareInfo implements Serializable {
     }
     /** 
      **/
-    public UUIDNullable getUuid() { return this.uuid; }
-    public void setUuid(UUIDNullable uuid) { 
+    public java.util.UUID getUuid() { return this.uuid; }
+    public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
     /** 
@@ -281,7 +281,7 @@ public class DriveHardwareInfo implements Serializable {
         private Boolean securityFeatureSupported;
         private String serial;
         private Long size;
-        private UUIDNullable uuid;
+        private java.util.UUID uuid;
         private String version;
 
         private Builder() { }
@@ -390,7 +390,7 @@ public class DriveHardwareInfo implements Serializable {
             return this;
         }
 
-        public DriveHardwareInfo.Builder uuid(final UUIDNullable uuid) {
+        public DriveHardwareInfo.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
             return this;
         }

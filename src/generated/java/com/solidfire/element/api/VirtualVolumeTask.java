@@ -32,13 +32,13 @@ import java.util.Objects;
 
 public class VirtualVolumeTask implements Serializable {
 
-    public static final long serialVersionUID = 6792984935426811173L;
-    @SerializedName("virtualVolumeTaskID") private UUIDNullable virtualVolumeTaskID;
-    @SerializedName("virtualvolumeID") private UUIDNullable virtualvolumeID;
-    @SerializedName("cloneVirtualVolumeID") private UUIDNullable cloneVirtualVolumeID;
+    public static final long serialVersionUID = -659430107L;
+    @SerializedName("virtualVolumeTaskID") private java.util.UUID virtualVolumeTaskID;
+    @SerializedName("virtualvolumeID") private java.util.UUID virtualvolumeID;
+    @SerializedName("cloneVirtualVolumeID") private java.util.UUID cloneVirtualVolumeID;
     @SerializedName("status") private String status;
     @SerializedName("operation") private String operation;
-    @SerializedName("virtualVolumeHostID") private UUIDNullable virtualVolumeHostID;
+    @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
     @SerializedName("parentMetadata") private java.util.Map<String, Object> parentMetadata;
     @SerializedName("parentTotalSize") private Long parentTotalSize;
     @SerializedName("parentUsedSize") private Long parentUsedSize;
@@ -51,12 +51,12 @@ public class VirtualVolumeTask implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public VirtualVolumeTask(
-        UUIDNullable virtualVolumeTaskID,
-        UUIDNullable virtualvolumeID,
-        UUIDNullable cloneVirtualVolumeID,
+        java.util.UUID virtualVolumeTaskID,
+        java.util.UUID virtualvolumeID,
+        java.util.UUID cloneVirtualVolumeID,
         String status,
         String operation,
-        UUIDNullable virtualVolumeHostID,
+        java.util.UUID virtualVolumeHostID,
         java.util.Map<String, Object> parentMetadata,
         Long parentTotalSize,
         Long parentUsedSize,
@@ -77,20 +77,20 @@ public class VirtualVolumeTask implements Serializable {
 
     /** 
      **/
-    public UUIDNullable getVirtualVolumeTaskID() { return this.virtualVolumeTaskID; }
-    public void setVirtualVolumeTaskID(UUIDNullable virtualVolumeTaskID) { 
+    public java.util.UUID getVirtualVolumeTaskID() { return this.virtualVolumeTaskID; }
+    public void setVirtualVolumeTaskID(java.util.UUID virtualVolumeTaskID) { 
         this.virtualVolumeTaskID = virtualVolumeTaskID;
     }
     /** 
      **/
-    public UUIDNullable getVirtualvolumeID() { return this.virtualvolumeID; }
-    public void setVirtualvolumeID(UUIDNullable virtualvolumeID) { 
+    public java.util.UUID getVirtualvolumeID() { return this.virtualvolumeID; }
+    public void setVirtualvolumeID(java.util.UUID virtualvolumeID) { 
         this.virtualvolumeID = virtualvolumeID;
     }
     /** 
      **/
-    public UUIDNullable getCloneVirtualVolumeID() { return this.cloneVirtualVolumeID; }
-    public void setCloneVirtualVolumeID(UUIDNullable cloneVirtualVolumeID) { 
+    public java.util.UUID getCloneVirtualVolumeID() { return this.cloneVirtualVolumeID; }
+    public void setCloneVirtualVolumeID(java.util.UUID cloneVirtualVolumeID) { 
         this.cloneVirtualVolumeID = cloneVirtualVolumeID;
     }
     /** 
@@ -107,8 +107,8 @@ public class VirtualVolumeTask implements Serializable {
     }
     /** 
      **/
-    public UUIDNullable getVirtualVolumeHostID() { return this.virtualVolumeHostID; }
-    public void setVirtualVolumeHostID(UUIDNullable virtualVolumeHostID) { 
+    public java.util.UUID getVirtualVolumeHostID() { return this.virtualVolumeHostID; }
+    public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) { 
         this.virtualVolumeHostID = virtualVolumeHostID;
     }
     /** 
@@ -208,12 +208,12 @@ public class VirtualVolumeTask implements Serializable {
     }
 
     public static class Builder {
-        private UUIDNullable virtualVolumeTaskID;
-        private UUIDNullable virtualvolumeID;
-        private UUIDNullable cloneVirtualVolumeID;
+        private java.util.UUID virtualVolumeTaskID;
+        private java.util.UUID virtualvolumeID;
+        private java.util.UUID cloneVirtualVolumeID;
         private String status;
         private String operation;
-        private UUIDNullable virtualVolumeHostID;
+        private java.util.UUID virtualVolumeHostID;
         private java.util.Map<String, Object> parentMetadata;
         private Long parentTotalSize;
         private Long parentUsedSize;
@@ -250,17 +250,17 @@ public class VirtualVolumeTask implements Serializable {
             return this;
         }
 
-        public VirtualVolumeTask.Builder virtualVolumeTaskID(final UUIDNullable virtualVolumeTaskID) {
+        public VirtualVolumeTask.Builder virtualVolumeTaskID(final java.util.UUID virtualVolumeTaskID) {
             this.virtualVolumeTaskID = virtualVolumeTaskID;
             return this;
         }
 
-        public VirtualVolumeTask.Builder virtualvolumeID(final UUIDNullable virtualvolumeID) {
+        public VirtualVolumeTask.Builder virtualvolumeID(final java.util.UUID virtualvolumeID) {
             this.virtualvolumeID = virtualvolumeID;
             return this;
         }
 
-        public VirtualVolumeTask.Builder cloneVirtualVolumeID(final UUIDNullable cloneVirtualVolumeID) {
+        public VirtualVolumeTask.Builder cloneVirtualVolumeID(final java.util.UUID cloneVirtualVolumeID) {
             this.cloneVirtualVolumeID = cloneVirtualVolumeID;
             return this;
         }
@@ -275,7 +275,7 @@ public class VirtualVolumeTask implements Serializable {
             return this;
         }
 
-        public VirtualVolumeTask.Builder virtualVolumeHostID(final UUIDNullable virtualVolumeHostID) {
+        public VirtualVolumeTask.Builder virtualVolumeHostID(final java.util.UUID virtualVolumeHostID) {
             this.virtualVolumeHostID = virtualVolumeHostID;
             return this;
         }

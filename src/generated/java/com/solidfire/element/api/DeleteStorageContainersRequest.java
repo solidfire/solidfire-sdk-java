@@ -32,9 +32,8 @@ import java.util.Objects;
 
 public class DeleteStorageContainersRequest implements Serializable {
 
-    public static final long serialVersionUID = 655860174858501057L;
-    @SerializedName("storageContainerIDs") private UUIDNullable[] storageContainerIDs;
-    @SerializedName("callingHostID") private Optional<UUIDNullable> callingHostID;
+    public static final long serialVersionUID = -1463534655L;
+    @SerializedName("storageContainerIDs") private java.util.UUID[] storageContainerIDs;
 
     // empty constructor
     @Since("7.0")
@@ -43,26 +42,18 @@ public class DeleteStorageContainersRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public DeleteStorageContainersRequest(
-        UUIDNullable[] storageContainerIDs,
-        Optional<UUIDNullable> callingHostID
+        java.util.UUID[] storageContainerIDs
     )
     {
         this.storageContainerIDs = storageContainerIDs;
-        this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : callingHostID;
     }
 
     /** 
      * list of storageContainerID of the storage container to delete.
      **/
-    public UUIDNullable[] getStorageContainerIDs() { return this.storageContainerIDs; }
-    public void setStorageContainerIDs(UUIDNullable[] storageContainerIDs) { 
+    public java.util.UUID[] getStorageContainerIDs() { return this.storageContainerIDs; }
+    public void setStorageContainerIDs(java.util.UUID[] storageContainerIDs) { 
         this.storageContainerIDs = storageContainerIDs;
-    }
-    /** 
-     **/
-    public Optional<UUIDNullable> getCallingHostID() { return this.callingHostID; }
-    public void setCallingHostID(Optional<UUIDNullable> callingHostID) { 
-        this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : callingHostID;
     }
 
     @Override
@@ -72,20 +63,18 @@ public class DeleteStorageContainersRequest implements Serializable {
 
         DeleteStorageContainersRequest that = (DeleteStorageContainersRequest) o;
         return 
-            Objects.equals(storageContainerIDs, that.storageContainerIDs) &&
-            Objects.equals(callingHostID, that.callingHostID);
+            Objects.equals(storageContainerIDs, that.storageContainerIDs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])storageContainerIDs, callingHostID );
+        return Objects.hash( (Object[])storageContainerIDs );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("storageContainerIDs", storageContainerIDs);
-        map.put("callingHostID", callingHostID);
         return map;
     }
 
@@ -95,9 +84,6 @@ public class DeleteStorageContainersRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" storageContainerIDs : ").append(Arrays.toString(storageContainerIDs)).append(",");
-        if(null != callingHostID && callingHostID.isPresent()){
-            sb.append(" callingHostID : ").append(callingHostID.get()).append(",");
-        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -115,31 +101,23 @@ public class DeleteStorageContainersRequest implements Serializable {
     }
 
     public static class Builder {
-        private UUIDNullable[] storageContainerIDs;
-        private Optional<UUIDNullable> callingHostID;
+        private java.util.UUID[] storageContainerIDs;
 
         private Builder() { }
 
         public DeleteStorageContainersRequest build() {
             return new DeleteStorageContainersRequest (
-                         this.storageContainerIDs,
-                         this.callingHostID);
+                         this.storageContainerIDs);
         }
 
         private DeleteStorageContainersRequest.Builder buildFrom(final DeleteStorageContainersRequest req) {
             this.storageContainerIDs = req.storageContainerIDs;
-            this.callingHostID = req.callingHostID;
 
             return this;
         }
 
-        public DeleteStorageContainersRequest.Builder storageContainerIDs(final UUIDNullable[] storageContainerIDs) {
+        public DeleteStorageContainersRequest.Builder storageContainerIDs(final java.util.UUID[] storageContainerIDs) {
             this.storageContainerIDs = storageContainerIDs;
-            return this;
-        }
-
-        public DeleteStorageContainersRequest.Builder optionalCallingHostID(final UUIDNullable callingHostID) {
-            this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : Optional.of(callingHostID);
             return this;
         }
 

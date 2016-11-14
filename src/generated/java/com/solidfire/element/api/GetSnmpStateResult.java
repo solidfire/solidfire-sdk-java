@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetSnmpStateResult implements Serializable {
 
-    public static final long serialVersionUID = 6113235952334962570L;
+    public static final long serialVersionUID = -1760395382L;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("snmpV3Enabled") private Boolean snmpV3Enabled;
 

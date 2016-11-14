@@ -32,11 +32,11 @@ import java.util.Objects;
 
 public class PrepareVirtualSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -4324099540451716656L;
-    @SerializedName("virtualVolumeID") private UUIDNullable virtualVolumeID;
+    public static final long serialVersionUID = -973991472L;
+    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("writableSnapshot") private Optional<Boolean> writableSnapshot;
-    @SerializedName("callingVirtualVolumeHostID") private Optional<UUIDNullable> callingVirtualVolumeHostID;
+    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
     // empty constructor
     @Since("7.0")
@@ -45,23 +45,23 @@ public class PrepareVirtualSnapshotRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public PrepareVirtualSnapshotRequest(
-        UUIDNullable virtualVolumeID,
+        java.util.UUID virtualVolumeID,
         Optional<String> name,
         Optional<Boolean> writableSnapshot,
-        Optional<UUIDNullable> callingVirtualVolumeHostID
+        Optional<java.util.UUID> callingVirtualVolumeHostID
     )
     {
         this.virtualVolumeID = virtualVolumeID;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.writableSnapshot = (writableSnapshot == null) ? Optional.<Boolean>empty() : writableSnapshot;
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
     }
 
     /** 
      * The ID of the Virtual Volume to clone.
      **/
-    public UUIDNullable getVirtualVolumeID() { return this.virtualVolumeID; }
-    public void setVirtualVolumeID(UUIDNullable virtualVolumeID) { 
+    public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
+    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
         this.virtualVolumeID = virtualVolumeID;
     }
     /** 
@@ -80,9 +80,9 @@ public class PrepareVirtualSnapshotRequest implements Serializable {
     }
     /** 
      **/
-    public Optional<UUIDNullable> getCallingVirtualVolumeHostID() { return this.callingVirtualVolumeHostID; }
-    public void setCallingVirtualVolumeHostID(Optional<UUIDNullable> callingVirtualVolumeHostID) { 
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
+    public Optional<java.util.UUID> getCallingVirtualVolumeHostID() { return this.callingVirtualVolumeHostID; }
+    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) { 
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
     }
 
     @Override
@@ -145,10 +145,10 @@ public class PrepareVirtualSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private UUIDNullable virtualVolumeID;
+        private java.util.UUID virtualVolumeID;
         private Optional<String> name;
         private Optional<Boolean> writableSnapshot;
-        private Optional<UUIDNullable> callingVirtualVolumeHostID;
+        private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
         private Builder() { }
 
@@ -169,7 +169,7 @@ public class PrepareVirtualSnapshotRequest implements Serializable {
             return this;
         }
 
-        public PrepareVirtualSnapshotRequest.Builder virtualVolumeID(final UUIDNullable virtualVolumeID) {
+        public PrepareVirtualSnapshotRequest.Builder virtualVolumeID(final java.util.UUID virtualVolumeID) {
             this.virtualVolumeID = virtualVolumeID;
             return this;
         }
@@ -184,8 +184,8 @@ public class PrepareVirtualSnapshotRequest implements Serializable {
             return this;
         }
 
-        public PrepareVirtualSnapshotRequest.Builder optionalCallingVirtualVolumeHostID(final UUIDNullable callingVirtualVolumeHostID) {
-            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : Optional.of(callingVirtualVolumeHostID);
+        public PrepareVirtualSnapshotRequest.Builder optionalCallingVirtualVolumeHostID(final java.util.UUID callingVirtualVolumeHostID) {
+            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
             return this;
         }
 

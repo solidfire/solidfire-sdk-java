@@ -32,13 +32,29 @@ import java.util.Objects;
 
 public class ModifyVolumeAccessGroupResult implements Serializable {
 
-    public static final long serialVersionUID = 2646586656634627601L;
+    public static final long serialVersionUID = -1073813999L;
+    @SerializedName("volumeAccessGroup") private VolumeAccessGroup volumeAccessGroup;
 
     // empty constructor
     @Since("7.0")
     public ModifyVolumeAccessGroupResult() {}
 
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyVolumeAccessGroupResult(
+        VolumeAccessGroup volumeAccessGroup
+    )
+    {
+        this.volumeAccessGroup = volumeAccessGroup;
+    }
 
+    /** 
+     * An object containing information about the newly modified volume access group.
+     **/
+    public VolumeAccessGroup getVolumeAccessGroup() { return this.volumeAccessGroup; }
+    public void setVolumeAccessGroup(VolumeAccessGroup volumeAccessGroup) { 
+        this.volumeAccessGroup = volumeAccessGroup;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -46,14 +62,64 @@ public class ModifyVolumeAccessGroupResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumeAccessGroupResult that = (ModifyVolumeAccessGroupResult) o;
-
-        return true;
+        return 
+            Objects.equals(volumeAccessGroup, that.volumeAccessGroup);
     }
 
     @Override
     public int hashCode() {
-
-        return this.getClass().hashCode();
+        return Objects.hash( volumeAccessGroup );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroup", volumeAccessGroup);
+        return map;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append( "{ " );
+
+        sb.append(" volumeAccessGroup : ").append(volumeAccessGroup).append(",");
+        sb.append( " }" );
+
+        if(sb.lastIndexOf(", }") != -1)
+            sb.deleteCharAt(sb.lastIndexOf(", }"));
+
+        return sb.toString();
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private VolumeAccessGroup volumeAccessGroup;
+
+        private Builder() { }
+
+        public ModifyVolumeAccessGroupResult build() {
+            return new ModifyVolumeAccessGroupResult (
+                         this.volumeAccessGroup);
+        }
+
+        private ModifyVolumeAccessGroupResult.Builder buildFrom(final ModifyVolumeAccessGroupResult req) {
+            this.volumeAccessGroup = req.volumeAccessGroup;
+
+            return this;
+        }
+
+        public ModifyVolumeAccessGroupResult.Builder volumeAccessGroup(final VolumeAccessGroup volumeAccessGroup) {
+            this.volumeAccessGroup = volumeAccessGroup;
+            return this;
+        }
+
+    }
 }

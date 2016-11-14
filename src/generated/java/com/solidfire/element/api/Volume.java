@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Volume implements Serializable {
 
-    public static final long serialVersionUID = -7686354995119743056L;
+    public static final long serialVersionUID = 576102320L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
@@ -51,7 +51,7 @@ public class Volume implements Serializable {
     @SerializedName("sliceCount") private Long sliceCount;
     @SerializedName("totalSize") private Long totalSize;
     @SerializedName("blockSize") private Long blockSize;
-    @SerializedName("virtualVolumeID") private UUIDNullable virtualVolumeID;
+    @SerializedName("virtualVolumeID") private Long virtualVolumeID;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
@@ -79,7 +79,7 @@ public class Volume implements Serializable {
         Long sliceCount,
         Long totalSize,
         Long blockSize,
-        UUIDNullable virtualVolumeID,
+        Long virtualVolumeID,
         java.util.Map<String, Object> attributes
     )
     {
@@ -245,8 +245,8 @@ public class Volume implements Serializable {
     /** 
      * Virtual volume ID this volume backs.
      **/
-    public UUIDNullable getVirtualVolumeID() { return this.virtualVolumeID; }
-    public void setVirtualVolumeID(UUIDNullable virtualVolumeID) { 
+    public Long getVirtualVolumeID() { return this.virtualVolumeID; }
+    public void setVirtualVolumeID(Long virtualVolumeID) { 
         this.virtualVolumeID = virtualVolumeID;
     }
     /** 
@@ -381,7 +381,7 @@ public class Volume implements Serializable {
         private Long sliceCount;
         private Long totalSize;
         private Long blockSize;
-        private UUIDNullable virtualVolumeID;
+        private Long virtualVolumeID;
         private java.util.Map<String, Object> attributes;
 
         private Builder() { }
@@ -525,7 +525,7 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder virtualVolumeID(final UUIDNullable virtualVolumeID) {
+        public Volume.Builder virtualVolumeID(final Long virtualVolumeID) {
             this.virtualVolumeID = virtualVolumeID;
             return this;
         }

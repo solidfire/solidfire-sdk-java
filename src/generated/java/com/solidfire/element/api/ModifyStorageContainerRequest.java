@@ -32,11 +32,10 @@ import java.util.Objects;
 
 public class ModifyStorageContainerRequest implements Serializable {
 
-    public static final long serialVersionUID = -7847052334144051852L;
+    public static final long serialVersionUID = 1097966964L;
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
     @SerializedName("initiatorSecret") private Optional<String> initiatorSecret;
     @SerializedName("targetSecret") private Optional<String> targetSecret;
-    @SerializedName("callingHostID") private Optional<UUIDNullable> callingHostID;
 
     // empty constructor
     @Since("7.0")
@@ -47,14 +46,12 @@ public class ModifyStorageContainerRequest implements Serializable {
     public ModifyStorageContainerRequest(
         java.util.UUID storageContainerID,
         Optional<String> initiatorSecret,
-        Optional<String> targetSecret,
-        Optional<UUIDNullable> callingHostID
+        Optional<String> targetSecret
     )
     {
         this.storageContainerID = storageContainerID;
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : initiatorSecret;
         this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : targetSecret;
-        this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : callingHostID;
     }
 
     /** 
@@ -75,12 +72,6 @@ public class ModifyStorageContainerRequest implements Serializable {
     public void setTargetSecret(Optional<String> targetSecret) { 
         this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : targetSecret;
     }
-    /** 
-     **/
-    public Optional<UUIDNullable> getCallingHostID() { return this.callingHostID; }
-    public void setCallingHostID(Optional<UUIDNullable> callingHostID) { 
-        this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : callingHostID;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -91,13 +82,12 @@ public class ModifyStorageContainerRequest implements Serializable {
         return 
             Objects.equals(storageContainerID, that.storageContainerID) &&
             Objects.equals(initiatorSecret, that.initiatorSecret) &&
-            Objects.equals(targetSecret, that.targetSecret) &&
-            Objects.equals(callingHostID, that.callingHostID);
+            Objects.equals(targetSecret, that.targetSecret);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( storageContainerID, initiatorSecret, targetSecret, callingHostID );
+        return Objects.hash( storageContainerID, initiatorSecret, targetSecret );
     }
 
 
@@ -106,7 +96,6 @@ public class ModifyStorageContainerRequest implements Serializable {
         map.put("storageContainerID", storageContainerID);
         map.put("initiatorSecret", initiatorSecret);
         map.put("targetSecret", targetSecret);
-        map.put("callingHostID", callingHostID);
         return map;
     }
 
@@ -121,9 +110,6 @@ public class ModifyStorageContainerRequest implements Serializable {
         }
         if(null != targetSecret && targetSecret.isPresent()){
             sb.append(" targetSecret : ").append(targetSecret.get()).append(",");
-        }
-        if(null != callingHostID && callingHostID.isPresent()){
-            sb.append(" callingHostID : ").append(callingHostID.get()).append(",");
         }
         sb.append( " }" );
 
@@ -145,7 +131,6 @@ public class ModifyStorageContainerRequest implements Serializable {
         private java.util.UUID storageContainerID;
         private Optional<String> initiatorSecret;
         private Optional<String> targetSecret;
-        private Optional<UUIDNullable> callingHostID;
 
         private Builder() { }
 
@@ -153,15 +138,13 @@ public class ModifyStorageContainerRequest implements Serializable {
             return new ModifyStorageContainerRequest (
                          this.storageContainerID,
                          this.initiatorSecret,
-                         this.targetSecret,
-                         this.callingHostID);
+                         this.targetSecret);
         }
 
         private ModifyStorageContainerRequest.Builder buildFrom(final ModifyStorageContainerRequest req) {
             this.storageContainerID = req.storageContainerID;
             this.initiatorSecret = req.initiatorSecret;
             this.targetSecret = req.targetSecret;
-            this.callingHostID = req.callingHostID;
 
             return this;
         }
@@ -178,11 +161,6 @@ public class ModifyStorageContainerRequest implements Serializable {
 
         public ModifyStorageContainerRequest.Builder optionalTargetSecret(final String targetSecret) {
             this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : Optional.of(targetSecret);
-            return this;
-        }
-
-        public ModifyStorageContainerRequest.Builder optionalCallingHostID(final UUIDNullable callingHostID) {
-            this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : Optional.of(callingHostID);
             return this;
         }
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class SetNetworkConfigResult implements Serializable {
 
-    public static final long serialVersionUID = -3253439767702836539L;
+    public static final long serialVersionUID = -873370939L;
     @SerializedName("network") private Network network;
 
     // empty constructor

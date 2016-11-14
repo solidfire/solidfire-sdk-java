@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Node implements Serializable {
 
-    public static final long serialVersionUID = -7985492147846592224L;
+    public static final long serialVersionUID = 1391380768L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("associatedMasterServiceID") private Long associatedMasterServiceID;
     @SerializedName("associatedFServiceID") private Long associatedFServiceID;
@@ -46,7 +46,7 @@ public class Node implements Serializable {
     @SerializedName("mipi") private String mipi;
     @SerializedName("sip") private String sip;
     @SerializedName("sipi") private String sipi;
-    @SerializedName("uuid") private UUIDNullable uuid;
+    @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
@@ -69,7 +69,7 @@ public class Node implements Serializable {
         String mipi,
         String sip,
         String sipi,
-        UUIDNullable uuid,
+        java.util.UUID uuid,
         java.util.Map<String, Object> attributes
     )
     {
@@ -181,8 +181,8 @@ public class Node implements Serializable {
     /** 
      * UUID of node.
      **/
-    public UUIDNullable getUuid() { return this.uuid; }
-    public void setUuid(UUIDNullable uuid) { 
+    public java.util.UUID getUuid() { return this.uuid; }
+    public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
     /** 
@@ -292,7 +292,7 @@ public class Node implements Serializable {
         private String mipi;
         private String sip;
         private String sipi;
-        private UUIDNullable uuid;
+        private java.util.UUID uuid;
         private java.util.Map<String, Object> attributes;
 
         private Builder() { }
@@ -401,7 +401,7 @@ public class Node implements Serializable {
             return this;
         }
 
-        public Node.Builder uuid(final UUIDNullable uuid) {
+        public Node.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
             return this;
         }

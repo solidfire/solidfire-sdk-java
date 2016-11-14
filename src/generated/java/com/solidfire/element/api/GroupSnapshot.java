@@ -32,9 +32,9 @@ import java.util.Objects;
 
 public class GroupSnapshot implements Serializable {
 
-    public static final long serialVersionUID = 7672350438056052972L;
+    public static final long serialVersionUID = -727398164L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
-    @SerializedName("groupSnapshotUUID") private UUIDNullable groupSnapshotUUID;
+    @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
     @SerializedName("members") private GroupSnapshotMembers[] members;
     @SerializedName("name") private String name;
     @SerializedName("createTime") private String createTime;
@@ -49,7 +49,7 @@ public class GroupSnapshot implements Serializable {
     @Since("7.0")
     public GroupSnapshot(
         Long groupSnapshotID,
-        UUIDNullable groupSnapshotUUID,
+        java.util.UUID groupSnapshotUUID,
         GroupSnapshotMembers[] members,
         String name,
         String createTime,
@@ -76,8 +76,8 @@ public class GroupSnapshot implements Serializable {
     /** 
      * UUID of the group snapshot.
      **/
-    public UUIDNullable getGroupSnapshotUUID() { return this.groupSnapshotUUID; }
-    public void setGroupSnapshotUUID(UUIDNullable groupSnapshotUUID) { 
+    public java.util.UUID getGroupSnapshotUUID() { return this.groupSnapshotUUID; }
+    public void setGroupSnapshotUUID(java.util.UUID groupSnapshotUUID) { 
         this.groupSnapshotUUID = groupSnapshotUUID;
     }
     /** 
@@ -183,7 +183,7 @@ public class GroupSnapshot implements Serializable {
 
     public static class Builder {
         private Long groupSnapshotID;
-        private UUIDNullable groupSnapshotUUID;
+        private java.util.UUID groupSnapshotUUID;
         private GroupSnapshotMembers[] members;
         private String name;
         private String createTime;
@@ -220,7 +220,7 @@ public class GroupSnapshot implements Serializable {
             return this;
         }
 
-        public GroupSnapshot.Builder groupSnapshotUUID(final UUIDNullable groupSnapshotUUID) {
+        public GroupSnapshot.Builder groupSnapshotUUID(final java.util.UUID groupSnapshotUUID) {
             this.groupSnapshotUUID = groupSnapshotUUID;
             return this;
         }

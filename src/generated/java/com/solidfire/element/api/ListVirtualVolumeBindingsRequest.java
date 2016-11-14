@@ -32,9 +32,9 @@ import java.util.Objects;
 
 public class ListVirtualVolumeBindingsRequest implements Serializable {
 
-    public static final long serialVersionUID = 1543024419589101292L;
+    public static final long serialVersionUID = -916678932L;
     @SerializedName("virtualVolumeBindingIDs") private Optional<Long[]> virtualVolumeBindingIDs;
-    @SerializedName("callingVirtualVolumeHostID") private Optional<UUIDNullable> callingVirtualVolumeHostID;
+    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
     // empty constructor
     @Since("7.0")
@@ -44,11 +44,11 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
     @Since("7.0")
     public ListVirtualVolumeBindingsRequest(
         Optional<Long[]> virtualVolumeBindingIDs,
-        Optional<UUIDNullable> callingVirtualVolumeHostID
+        Optional<java.util.UUID> callingVirtualVolumeHostID
     )
     {
         this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<Long[]>empty() : virtualVolumeBindingIDs;
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
     }
 
     /** 
@@ -59,9 +59,9 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
     }
     /** 
      **/
-    public Optional<UUIDNullable> getCallingVirtualVolumeHostID() { return this.callingVirtualVolumeHostID; }
-    public void setCallingVirtualVolumeHostID(Optional<UUIDNullable> callingVirtualVolumeHostID) { 
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
+    public Optional<java.util.UUID> getCallingVirtualVolumeHostID() { return this.callingVirtualVolumeHostID; }
+    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) { 
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
     }
 
     @Override
@@ -117,7 +117,7 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
 
     public static class Builder {
         private Optional<Long[]> virtualVolumeBindingIDs;
-        private Optional<UUIDNullable> callingVirtualVolumeHostID;
+        private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
         private Builder() { }
 
@@ -139,8 +139,8 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
             return this;
         }
 
-        public ListVirtualVolumeBindingsRequest.Builder optionalCallingVirtualVolumeHostID(final UUIDNullable callingVirtualVolumeHostID) {
-            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : Optional.of(callingVirtualVolumeHostID);
+        public ListVirtualVolumeBindingsRequest.Builder optionalCallingVirtualVolumeHostID(final java.util.UUID callingVirtualVolumeHostID) {
+            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
             return this;
         }
 

@@ -32,9 +32,8 @@ import java.util.Objects;
 
 public class ListStorageContainersRequest implements Serializable {
 
-    public static final long serialVersionUID = 6165115027762705922L;
-    @SerializedName("storageContainerIDs") private Optional<UUIDNullable[]> storageContainerIDs;
-    @SerializedName("callingHostID") private Optional<UUIDNullable> callingHostID;
+    public static final long serialVersionUID = 490206722L;
+    @SerializedName("storageContainerIDs") private Optional<java.util.UUID[]> storageContainerIDs;
 
     // empty constructor
     @Since("7.0")
@@ -43,26 +42,18 @@ public class ListStorageContainersRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListStorageContainersRequest(
-        Optional<UUIDNullable[]> storageContainerIDs,
-        Optional<UUIDNullable> callingHostID
+        Optional<java.util.UUID[]> storageContainerIDs
     )
     {
-        this.storageContainerIDs = (storageContainerIDs == null) ? Optional.<UUIDNullable[]>empty() : storageContainerIDs;
-        this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : callingHostID;
+        this.storageContainerIDs = (storageContainerIDs == null) ? Optional.<java.util.UUID[]>empty() : storageContainerIDs;
     }
 
     /** 
      * List of storage containers to get
      **/
-    public Optional<UUIDNullable[]> getStorageContainerIDs() { return this.storageContainerIDs; }
-    public void setStorageContainerIDs(Optional<UUIDNullable[]> storageContainerIDs) { 
-        this.storageContainerIDs = (storageContainerIDs == null) ? Optional.<UUIDNullable[]>empty() : storageContainerIDs;
-    }
-    /** 
-     **/
-    public Optional<UUIDNullable> getCallingHostID() { return this.callingHostID; }
-    public void setCallingHostID(Optional<UUIDNullable> callingHostID) { 
-        this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : callingHostID;
+    public Optional<java.util.UUID[]> getStorageContainerIDs() { return this.storageContainerIDs; }
+    public void setStorageContainerIDs(Optional<java.util.UUID[]> storageContainerIDs) { 
+        this.storageContainerIDs = (storageContainerIDs == null) ? Optional.<java.util.UUID[]>empty() : storageContainerIDs;
     }
 
     @Override
@@ -72,20 +63,18 @@ public class ListStorageContainersRequest implements Serializable {
 
         ListStorageContainersRequest that = (ListStorageContainersRequest) o;
         return 
-            Objects.equals(storageContainerIDs, that.storageContainerIDs) &&
-            Objects.equals(callingHostID, that.callingHostID);
+            Objects.equals(storageContainerIDs, that.storageContainerIDs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( storageContainerIDs, callingHostID );
+        return Objects.hash( storageContainerIDs );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("storageContainerIDs", storageContainerIDs);
-        map.put("callingHostID", callingHostID);
         return map;
     }
 
@@ -96,9 +85,6 @@ public class ListStorageContainersRequest implements Serializable {
 
         if(null != storageContainerIDs && storageContainerIDs.isPresent()){
             sb.append(" storageContainerIDs : ").append(storageContainerIDs.get()).append(",");
-        }
-        if(null != callingHostID && callingHostID.isPresent()){
-            sb.append(" callingHostID : ").append(callingHostID.get()).append(",");
         }
         sb.append( " }" );
 
@@ -117,31 +103,23 @@ public class ListStorageContainersRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<UUIDNullable[]> storageContainerIDs;
-        private Optional<UUIDNullable> callingHostID;
+        private Optional<java.util.UUID[]> storageContainerIDs;
 
         private Builder() { }
 
         public ListStorageContainersRequest build() {
             return new ListStorageContainersRequest (
-                         this.storageContainerIDs,
-                         this.callingHostID);
+                         this.storageContainerIDs);
         }
 
         private ListStorageContainersRequest.Builder buildFrom(final ListStorageContainersRequest req) {
             this.storageContainerIDs = req.storageContainerIDs;
-            this.callingHostID = req.callingHostID;
 
             return this;
         }
 
-        public ListStorageContainersRequest.Builder optionalStorageContainerIDs(final UUIDNullable[] storageContainerIDs) {
-            this.storageContainerIDs = (storageContainerIDs == null) ? Optional.<UUIDNullable[]>empty() : Optional.of(storageContainerIDs);
-            return this;
-        }
-
-        public ListStorageContainersRequest.Builder optionalCallingHostID(final UUIDNullable callingHostID) {
-            this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : Optional.of(callingHostID);
+        public ListStorageContainersRequest.Builder optionalStorageContainerIDs(final java.util.UUID[] storageContainerIDs) {
+            this.storageContainerIDs = (storageContainerIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(storageContainerIDs);
             return this;
         }
 

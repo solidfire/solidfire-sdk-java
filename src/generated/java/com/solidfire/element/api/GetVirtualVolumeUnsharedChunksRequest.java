@@ -32,13 +32,13 @@ import java.util.Objects;
 
 public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
 
-    public static final long serialVersionUID = -9127441186961834977L;
-    @SerializedName("virtualVolumeID") private UUIDNullable virtualVolumeID;
-    @SerializedName("baseVirtualVolumeID") private UUIDNullable baseVirtualVolumeID;
+    public static final long serialVersionUID = -2032223201L;
+    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
+    @SerializedName("baseVirtualVolumeID") private java.util.UUID baseVirtualVolumeID;
     @SerializedName("segmentStart") private Long segmentStart;
     @SerializedName("segmentLength") private Long segmentLength;
     @SerializedName("chunkSize") private Long chunkSize;
-    @SerializedName("callingVirtualVolumeHostID") private Optional<UUIDNullable> callingVirtualVolumeHostID;
+    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
     // empty constructor
     @Since("7.0")
@@ -47,12 +47,12 @@ public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetVirtualVolumeUnsharedChunksRequest(
-        UUIDNullable virtualVolumeID,
-        UUIDNullable baseVirtualVolumeID,
+        java.util.UUID virtualVolumeID,
+        java.util.UUID baseVirtualVolumeID,
         Long segmentStart,
         Long segmentLength,
         Long chunkSize,
-        Optional<UUIDNullable> callingVirtualVolumeHostID
+        Optional<java.util.UUID> callingVirtualVolumeHostID
     )
     {
         this.virtualVolumeID = virtualVolumeID;
@@ -60,21 +60,21 @@ public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
         this.segmentStart = segmentStart;
         this.segmentLength = segmentLength;
         this.chunkSize = chunkSize;
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
     }
 
     /** 
      * The ID of the Virtual Volume.
      **/
-    public UUIDNullable getVirtualVolumeID() { return this.virtualVolumeID; }
-    public void setVirtualVolumeID(UUIDNullable virtualVolumeID) { 
+    public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
+    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
         this.virtualVolumeID = virtualVolumeID;
     }
     /** 
      * The ID of the Virtual Volume to compare against.
      **/
-    public UUIDNullable getBaseVirtualVolumeID() { return this.baseVirtualVolumeID; }
-    public void setBaseVirtualVolumeID(UUIDNullable baseVirtualVolumeID) { 
+    public java.util.UUID getBaseVirtualVolumeID() { return this.baseVirtualVolumeID; }
+    public void setBaseVirtualVolumeID(java.util.UUID baseVirtualVolumeID) { 
         this.baseVirtualVolumeID = baseVirtualVolumeID;
     }
     /** 
@@ -100,9 +100,9 @@ public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
     }
     /** 
      **/
-    public Optional<UUIDNullable> getCallingVirtualVolumeHostID() { return this.callingVirtualVolumeHostID; }
-    public void setCallingVirtualVolumeHostID(Optional<UUIDNullable> callingVirtualVolumeHostID) { 
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : callingVirtualVolumeHostID;
+    public Optional<java.util.UUID> getCallingVirtualVolumeHostID() { return this.callingVirtualVolumeHostID; }
+    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) { 
+        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
     }
 
     @Override
@@ -167,12 +167,12 @@ public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
     }
 
     public static class Builder {
-        private UUIDNullable virtualVolumeID;
-        private UUIDNullable baseVirtualVolumeID;
+        private java.util.UUID virtualVolumeID;
+        private java.util.UUID baseVirtualVolumeID;
         private Long segmentStart;
         private Long segmentLength;
         private Long chunkSize;
-        private Optional<UUIDNullable> callingVirtualVolumeHostID;
+        private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
         private Builder() { }
 
@@ -197,12 +197,12 @@ public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
             return this;
         }
 
-        public GetVirtualVolumeUnsharedChunksRequest.Builder virtualVolumeID(final UUIDNullable virtualVolumeID) {
+        public GetVirtualVolumeUnsharedChunksRequest.Builder virtualVolumeID(final java.util.UUID virtualVolumeID) {
             this.virtualVolumeID = virtualVolumeID;
             return this;
         }
 
-        public GetVirtualVolumeUnsharedChunksRequest.Builder baseVirtualVolumeID(final UUIDNullable baseVirtualVolumeID) {
+        public GetVirtualVolumeUnsharedChunksRequest.Builder baseVirtualVolumeID(final java.util.UUID baseVirtualVolumeID) {
             this.baseVirtualVolumeID = baseVirtualVolumeID;
             return this;
         }
@@ -222,8 +222,8 @@ public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
             return this;
         }
 
-        public GetVirtualVolumeUnsharedChunksRequest.Builder optionalCallingVirtualVolumeHostID(final UUIDNullable callingVirtualVolumeHostID) {
-            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<UUIDNullable>empty() : Optional.of(callingVirtualVolumeHostID);
+        public GetVirtualVolumeUnsharedChunksRequest.Builder optionalCallingVirtualVolumeHostID(final java.util.UUID callingVirtualVolumeHostID) {
+            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
             return this;
         }
 

@@ -32,16 +32,16 @@ import java.util.Objects;
 
 public class VirtualVolumeBinding implements Serializable {
 
-    public static final long serialVersionUID = 7502598809220693698L;
-    @SerializedName("protocolEndpointID") private UUIDNullable protocolEndpointID;
+    public static final long serialVersionUID = -740409662L;
+    @SerializedName("protocolEndpointID") private java.util.UUID protocolEndpointID;
     @SerializedName("protocolEndpointInBandID") private String protocolEndpointInBandID;
     @SerializedName("protocolEndpointType") private String protocolEndpointType;
     @SerializedName("virtualVolumeBindingID") private Long virtualVolumeBindingID;
-    @SerializedName("virtualVolumeHostID") private UUIDNullable virtualVolumeHostID;
-    @SerializedName("virtualVolumeID") private UUIDNullable virtualVolumeID;
+    @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
+    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
     @SerializedName("virtualVolumeSecondaryID") private String virtualVolumeSecondaryID;
     @SerializedName("virtualVolume") private VirtualVolumeInfo virtualVolume;
-    @SerializedName("protocolEndpoint") private UUIDNullable protocolEndpoint;
+    @SerializedName("protocolEndpoint") private java.util.UUID protocolEndpoint;
     @SerializedName("virtualVolumeHost") private VirtualVolumeHost virtualVolumeHost;
 
     // empty constructor
@@ -51,15 +51,15 @@ public class VirtualVolumeBinding implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public VirtualVolumeBinding(
-        UUIDNullable protocolEndpointID,
+        java.util.UUID protocolEndpointID,
         String protocolEndpointInBandID,
         String protocolEndpointType,
         Long virtualVolumeBindingID,
-        UUIDNullable virtualVolumeHostID,
-        UUIDNullable virtualVolumeID,
+        java.util.UUID virtualVolumeHostID,
+        java.util.UUID virtualVolumeID,
         String virtualVolumeSecondaryID,
         VirtualVolumeInfo virtualVolume,
-        UUIDNullable protocolEndpoint,
+        java.util.UUID protocolEndpoint,
         VirtualVolumeHost virtualVolumeHost
     )
     {
@@ -78,8 +78,8 @@ public class VirtualVolumeBinding implements Serializable {
     /** 
      * The unique ID of the protocol endpoint.
      **/
-    public UUIDNullable getProtocolEndpointID() { return this.protocolEndpointID; }
-    public void setProtocolEndpointID(UUIDNullable protocolEndpointID) { 
+    public java.util.UUID getProtocolEndpointID() { return this.protocolEndpointID; }
+    public void setProtocolEndpointID(java.util.UUID protocolEndpointID) { 
         this.protocolEndpointID = protocolEndpointID;
     }
     /** 
@@ -106,15 +106,15 @@ public class VirtualVolumeBinding implements Serializable {
     /** 
      * The unique ID of the virtual volume host.
      **/
-    public UUIDNullable getVirtualVolumeHostID() { return this.virtualVolumeHostID; }
-    public void setVirtualVolumeHostID(UUIDNullable virtualVolumeHostID) { 
+    public java.util.UUID getVirtualVolumeHostID() { return this.virtualVolumeHostID; }
+    public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) { 
         this.virtualVolumeHostID = virtualVolumeHostID;
     }
     /** 
      * The unique ID of the virtual volume.
      **/
-    public UUIDNullable getVirtualVolumeID() { return this.virtualVolumeID; }
-    public void setVirtualVolumeID(UUIDNullable virtualVolumeID) { 
+    public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
+    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
         this.virtualVolumeID = virtualVolumeID;
     }
     /** 
@@ -134,8 +134,8 @@ public class VirtualVolumeBinding implements Serializable {
     /** 
      * An object describing the protocol endpoint to which the virtual volume is bound.
      **/
-    public UUIDNullable getProtocolEndpoint() { return this.protocolEndpoint; }
-    public void setProtocolEndpoint(UUIDNullable protocolEndpoint) { 
+    public java.util.UUID getProtocolEndpoint() { return this.protocolEndpoint; }
+    public void setProtocolEndpoint(java.util.UUID protocolEndpoint) { 
         this.protocolEndpoint = protocolEndpoint;
     }
     /** 
@@ -218,15 +218,15 @@ public class VirtualVolumeBinding implements Serializable {
     }
 
     public static class Builder {
-        private UUIDNullable protocolEndpointID;
+        private java.util.UUID protocolEndpointID;
         private String protocolEndpointInBandID;
         private String protocolEndpointType;
         private Long virtualVolumeBindingID;
-        private UUIDNullable virtualVolumeHostID;
-        private UUIDNullable virtualVolumeID;
+        private java.util.UUID virtualVolumeHostID;
+        private java.util.UUID virtualVolumeID;
         private String virtualVolumeSecondaryID;
         private VirtualVolumeInfo virtualVolume;
-        private UUIDNullable protocolEndpoint;
+        private java.util.UUID protocolEndpoint;
         private VirtualVolumeHost virtualVolumeHost;
 
         private Builder() { }
@@ -260,7 +260,7 @@ public class VirtualVolumeBinding implements Serializable {
             return this;
         }
 
-        public VirtualVolumeBinding.Builder protocolEndpointID(final UUIDNullable protocolEndpointID) {
+        public VirtualVolumeBinding.Builder protocolEndpointID(final java.util.UUID protocolEndpointID) {
             this.protocolEndpointID = protocolEndpointID;
             return this;
         }
@@ -280,12 +280,12 @@ public class VirtualVolumeBinding implements Serializable {
             return this;
         }
 
-        public VirtualVolumeBinding.Builder virtualVolumeHostID(final UUIDNullable virtualVolumeHostID) {
+        public VirtualVolumeBinding.Builder virtualVolumeHostID(final java.util.UUID virtualVolumeHostID) {
             this.virtualVolumeHostID = virtualVolumeHostID;
             return this;
         }
 
-        public VirtualVolumeBinding.Builder virtualVolumeID(final UUIDNullable virtualVolumeID) {
+        public VirtualVolumeBinding.Builder virtualVolumeID(final java.util.UUID virtualVolumeID) {
             this.virtualVolumeID = virtualVolumeID;
             return this;
         }
@@ -300,7 +300,7 @@ public class VirtualVolumeBinding implements Serializable {
             return this;
         }
 
-        public VirtualVolumeBinding.Builder protocolEndpoint(final UUIDNullable protocolEndpoint) {
+        public VirtualVolumeBinding.Builder protocolEndpoint(final java.util.UUID protocolEndpoint) {
             this.protocolEndpoint = protocolEndpoint;
             return this;
         }

@@ -1202,6 +1202,98 @@ public class SolidFireElement
         return super.sendRequest("GetNvramInfo", null, null, GetNvramInfoResult.class);
     }
     /** 
+     * CreateInitiators enables you to create multiple new initiator IQNs or World Wide Port Names (WWPNs) and optionally assign them aliases and attributes. When you use CreateInitiators to create new initiators, you can also add them to volume access groups.
+     * If CreateInitiators fails to create one of the initiators provided in the parameter, the method returns an error and does not create any initiators (no partial completion is possible).
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CreateInitiatorsResult createInitiators(final CreateInitiatorsRequest request) {
+        return super.sendRequest("CreateInitiators", request, CreateInitiatorsRequest.class, CreateInitiatorsResult.class);
+    }
+
+    /** 
+     * CreateInitiators enables you to create multiple new initiator IQNs or World Wide Port Names (WWPNs) and optionally assign them aliases and attributes. When you use CreateInitiators to create new initiators, you can also add them to volume access groups.
+     * If CreateInitiators fails to create one of the initiators provided in the parameter, the method returns an error and does not create any initiators (no partial completion is possible).
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CreateInitiatorsResult createInitiators(
+        CreateInitiator[] initiators
+        ) {
+        return this.createInitiators(new CreateInitiatorsRequest(initiators));
+    }
+    /** 
+     * ModifyInitiators enables you to change the attributes of an existing initiator. You cannot change the name of an existing initiator. If you need to change the name of an initiator, delete the existing initiator with DeleteInitiators and create a new one with CreateInitiators.
+     * If ModifyInitiators fails to change one of the initiators provided in the parameter, the method returns an error and does not create any initiators (no partial completion is possible).
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ModifyInitiatorsResult modifyInitiators(final ModifyInitiatorsRequest request) {
+        return super.sendRequest("ModifyInitiators", request, ModifyInitiatorsRequest.class, ModifyInitiatorsResult.class);
+    }
+
+    /** 
+     * ModifyInitiators enables you to change the attributes of an existing initiator. You cannot change the name of an existing initiator. If you need to change the name of an initiator, delete the existing initiator with DeleteInitiators and create a new one with CreateInitiators.
+     * If ModifyInitiators fails to change one of the initiators provided in the parameter, the method returns an error and does not create any initiators (no partial completion is possible).
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ModifyInitiatorsResult modifyInitiators(
+        ModifyInitiator[] initiators
+        ) {
+        return this.modifyInitiators(new ModifyInitiatorsRequest(initiators));
+    }
+    /** 
+     * DeleteInitiators enables you to delete one or more initiators from the system (and from any associated volumes or volume access groups).
+     * If DeleteInitiators fails to delete one of the initiators provided in the parameter, the system returns an error and does not delete any initiators (no partial completion is possible).
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public DeleteInitiatorsResult deleteInitiators(final DeleteInitiatorsRequest request) {
+        return super.sendRequest("DeleteInitiators", request, DeleteInitiatorsRequest.class, DeleteInitiatorsResult.class);
+    }
+
+    /** 
+     * DeleteInitiators enables you to delete one or more initiators from the system (and from any associated volumes or volume access groups).
+     * If DeleteInitiators fails to delete one of the initiators provided in the parameter, the system returns an error and does not delete any initiators (no partial completion is possible).
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public DeleteInitiatorsResult deleteInitiators(
+        Long[] initiators
+        ) {
+        return this.deleteInitiators(new DeleteInitiatorsRequest(initiators));
+    }
+    /** 
+     * ListInitiators enables you to list initiator IQNs or World Wide Port Names (WWPNs).
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListInitiatorsResult listInitiators(final ListInitiatorsRequest request) {
+        return super.sendRequest("ListInitiators", request, ListInitiatorsRequest.class, ListInitiatorsResult.class);
+    }
+
+    /** 
+     * ListInitiators enables you to list initiator IQNs or World Wide Port Names (WWPNs).
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListInitiatorsResult listInitiators(
+        Optional<Long> startInitiatorID,
+        Optional<Long> limit,
+        Optional<Long[]> initiators
+        ) {
+        return this.listInitiators(new ListInitiatorsRequest(startInitiatorID, limit, initiators));
+    }
+    /** 
      * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
      * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
      **/
@@ -1696,6 +1788,31 @@ public class SolidFireElement
         return this.modifyVolumePair(new ModifyVolumePairRequest(volumeID, pausedManual, mode));
     }
     /** 
+     * Gets protocol endpoints in the system
+     * If protocolEndpointIDs isn't specified all protocol endpoints
+     * are returned. Else the supplied protocolEndpointIDs are.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListProtocolEndpointsResult listProtocolEndpoints(final ListProtocolEndpointsRequest request) {
+        return super.sendRequest("ListProtocolEndpoints", request, ListProtocolEndpointsRequest.class, ListProtocolEndpointsResult.class);
+    }
+
+    /** 
+     * Gets protocol endpoints in the system
+     * If protocolEndpointIDs isn't specified all protocol endpoints
+     * are returned. Else the supplied protocolEndpointIDs are.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListProtocolEndpointsResult listProtocolEndpoints(
+        Optional<java.util.UUID[]> protocolEndpointIDs
+        ) {
+        return this.listProtocolEndpoints(new ListProtocolEndpointsRequest(protocolEndpointIDs));
+    }
+    /** 
      * CreateSnapshot is used to create a point-in-time copy of a volume.
      * A snapshot can be created from any volume or from an existing snapshot.
      * <br/><br/>
@@ -2088,11 +2205,10 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public CreateStorageContainerResult createStorageContainer(
         String name,
-        Optional<UUIDNullable> callingHostID,
         Optional<String> initiatorSecret,
         Optional<String> targetSecret
         ) {
-        return this.createStorageContainer(new CreateStorageContainerRequest(name, callingHostID, initiatorSecret, targetSecret));
+        return this.createStorageContainer(new CreateStorageContainerRequest(name, initiatorSecret, targetSecret));
     }
     /** 
      * Deletes a storage container from the system.
@@ -2111,10 +2227,9 @@ public class SolidFireElement
     @Since("9.0")
     @ConnectionType("Cluster")
     public DeleteStorageContainerResult deleteStorageContainers(
-        UUIDNullable[] storageContainerIDs,
-        Optional<UUIDNullable> callingHostID
+        java.util.UUID[] storageContainerIDs
         ) {
-        return this.deleteStorageContainers(new DeleteStorageContainersRequest(storageContainerIDs, callingHostID));
+        return this.deleteStorageContainers(new DeleteStorageContainersRequest(storageContainerIDs));
     }
     /** 
      * Modifies an existing storage container.
@@ -2135,10 +2250,9 @@ public class SolidFireElement
     public CreateStorageContainerResult modifyStorageContainer(
         java.util.UUID storageContainerID,
         Optional<String> initiatorSecret,
-        Optional<String> targetSecret,
-        Optional<UUIDNullable> callingHostID
+        Optional<String> targetSecret
         ) {
-        return this.modifyStorageContainer(new ModifyStorageContainerRequest(storageContainerID, initiatorSecret, targetSecret, callingHostID));
+        return this.modifyStorageContainer(new ModifyStorageContainerRequest(storageContainerID, initiatorSecret, targetSecret));
     }
     /** 
      * Gets information for all storage containers currently in the system.
@@ -2157,10 +2271,9 @@ public class SolidFireElement
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListStorageContainersResult listStorageContainers(
-        Optional<UUIDNullable[]> storageContainerIDs,
-        Optional<UUIDNullable> callingHostID
+        Optional<java.util.UUID[]> storageContainerIDs
         ) {
-        return this.listStorageContainers(new ListStorageContainersRequest(storageContainerIDs, callingHostID));
+        return this.listStorageContainers(new ListStorageContainersRequest(storageContainerIDs));
     }
     /** 
      * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
@@ -2419,6 +2532,29 @@ public class SolidFireElement
         return this.removeVirtualNetwork(new RemoveVirtualNetworkRequest(virtualNetworkID, virtualNetworkTag));
     }
     /** 
+     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
+     **/
+    @Override
+    @Since("7.0")
+    public ListVirtualVolumesResult listVirtualVolumes(final ListVirtualVolumesRequest request) {
+        return super.sendRequest("ListVirtualVolumes", request, ListVirtualVolumesRequest.class, ListVirtualVolumesResult.class);
+    }
+
+    /** 
+     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
+     **/
+    @Override
+    @Since("7.0")
+    public ListVirtualVolumesResult listVirtualVolumes(
+        Optional<Boolean> details,
+        Optional<Long> limit,
+        Optional<Boolean> recursive,
+        Optional<java.util.UUID> startVirtualVolumeID,
+        Optional<java.util.UUID[]> virtualVolumeIDs
+        ) {
+        return this.listVirtualVolumes(new ListVirtualVolumesRequest(details, limit, recursive, startVirtualVolumeID, virtualVolumeIDs));
+    }
+    /** 
      * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
      **/
     @Override
@@ -2435,10 +2571,10 @@ public class SolidFireElement
     @Since("9.0")
     @ConnectionType("Cluster")
     public PrepareVirtualSnapshotResult prepareVirtualSnapshot(
-        UUIDNullable virtualVolumeID,
+        java.util.UUID virtualVolumeID,
         Optional<String> name,
         Optional<Boolean> writableSnapshot,
-        Optional<UUIDNullable> callingVirtualVolumeHostID
+        Optional<java.util.UUID> callingVirtualVolumeHostID
         ) {
         return this.prepareVirtualSnapshot(new PrepareVirtualSnapshotRequest(virtualVolumeID, name, writableSnapshot, callingVirtualVolumeHostID));
     }
@@ -2467,12 +2603,12 @@ public class SolidFireElement
     @Since("9.0")
     @ConnectionType("Cluster")
     public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(
-        UUIDNullable virtualVolumeID,
-        UUIDNullable baseVirtualVolumeID,
+        java.util.UUID virtualVolumeID,
+        java.util.UUID baseVirtualVolumeID,
         Long segmentStart,
         Long segmentLength,
         Long chunkSize,
-        Optional<UUIDNullable> callingVirtualVolumeHostID
+        Optional<java.util.UUID> callingVirtualVolumeHostID
         ) {
         return this.getVirtualVolumeUnsharedChunks(new GetVirtualVolumeUnsharedChunksRequest(virtualVolumeID, baseVirtualVolumeID, segmentStart, segmentLength, chunkSize, callingVirtualVolumeHostID));
     }
@@ -2493,12 +2629,12 @@ public class SolidFireElement
     @Since("9.0")
     @ConnectionType("Cluster")
     public VirtualVolumeNullResult createVirtualVolumeHost(
-        UUIDNullable virtualVolumeHostID,
-        UUIDNullable clusterID,
+        java.util.UUID virtualVolumeHostID,
+        java.util.UUID clusterID,
         Optional<String[]> initiatorNames,
-        Optional<UUIDNullable[]> visibleProtocolEndpointIDs,
+        Optional<java.util.UUID[]> visibleProtocolEndpointIDs,
         Optional<String> hostAddress,
-        Optional<UUIDNullable> callingVirtualVolumeHostID
+        Optional<java.util.UUID> callingVirtualVolumeHostID
         ) {
         return this.createVirtualVolumeHost(new CreateVirtualVolumeHostRequest(virtualVolumeHostID, clusterID, initiatorNames, visibleProtocolEndpointIDs, hostAddress, callingVirtualVolumeHostID));
     }
@@ -2519,8 +2655,8 @@ public class SolidFireElement
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListVirtualVolumeHostsResult listVirtualVolumeHosts(
-        Optional<UUIDNullable[]> virtualVolumeHostIDs,
-        Optional<UUIDNullable> callingVirtualVolumeHostID
+        Optional<java.util.UUID[]> virtualVolumeHostIDs,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
         ) {
         return this.listVirtualVolumeHosts(new ListVirtualVolumeHostsRequest(virtualVolumeHostIDs, callingVirtualVolumeHostID));
     }
@@ -2541,8 +2677,8 @@ public class SolidFireElement
     @Since("9.0")
     @ConnectionType("Cluster")
     public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(
-        UUIDNullable virtualVolumeTaskID,
-        Optional<UUIDNullable> callingVirtualVolumeHostID
+        java.util.UUID virtualVolumeTaskID,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
         ) {
         return this.getVirtualVolumeTaskUpdate(new GetVirtualVolumeTaskUpdateRequest(virtualVolumeTaskID, callingVirtualVolumeHostID));
     }
@@ -2563,8 +2699,8 @@ public class SolidFireElement
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
-        Optional<UUIDNullable[]> virtualVolumeTaskIDs,
-        Optional<UUIDNullable> callingVirtualVolumeHostID
+        Optional<java.util.UUID[]> virtualVolumeTaskIDs,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
         ) {
         return this.listVirtualVolumeTasks(new ListVirtualVolumeTasksRequest(virtualVolumeTaskIDs, callingVirtualVolumeHostID));
     }
@@ -2586,7 +2722,7 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(
         Optional<Long[]> virtualVolumeBindingIDs,
-        Optional<UUIDNullable> callingVirtualVolumeHostID
+        Optional<java.util.UUID> callingVirtualVolumeHostID
         ) {
         return this.listVirtualVolumeBindings(new ListVirtualVolumeBindingsRequest(virtualVolumeBindingIDs, callingVirtualVolumeHostID));
     }
@@ -2675,6 +2811,88 @@ public class SolidFireElement
         return this.cloneMultipleVolumes(new CloneMultipleVolumesRequest(volumes, access, groupSnapshotID, newAccountID));
     }
     /** 
+     * Copies one volume to another.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public CopyVolumeResult copyVolume(final CopyVolumeRequest request) {
+        return super.sendRequest("CopyVolume", request, CopyVolumeRequest.class, CopyVolumeResult.class);
+    }
+
+    /** 
+     * Copies one volume to another.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public CopyVolumeResult copyVolume(
+        Long volumeID,
+        Long dstVolumeID,
+        Optional<Long> snapshotID
+        ) {
+        return this.copyVolume(new CopyVolumeRequest(volumeID, dstVolumeID, snapshotID));
+    }
+    /** 
+     * Cancels a currently running clone operation.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public CancelCloneResult cancelClone(final CancelCloneRequest request) {
+        return super.sendRequest("CancelClone", request, CancelCloneRequest.class, CancelCloneResult.class);
+    }
+
+    /** 
+     * Cancels a currently running clone operation.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public CancelCloneResult cancelClone(
+        Long cloneID
+        ) {
+        return this.cancelClone(new CancelCloneRequest(cloneID));
+    }
+    /** 
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. 
+     **/
+    @Override
+    @Since("9.0")
+    public CancelGroupCloneResult cancelGroupClone(final CancelGroupCloneRequest request) {
+        return super.sendRequest("CancelGroupClone", request, CancelGroupCloneRequest.class, CancelGroupCloneResult.class);
+    }
+
+    /** 
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. 
+     **/
+    @Override
+    @Since("9.0")
+    public CancelGroupCloneResult cancelGroupClone(
+        Long groupCloneID
+        ) {
+        return this.cancelGroupClone(new CancelGroupCloneRequest(groupCloneID));
+    }
+    /** 
+     * You can use ListAsyncResults to list the results of all currently running and completed asynchronous methods on the system. Querying asynchronous results with ListAsyncResults does not cause completed asyncHandles to expire; you can use GetAsyncResult to query any of the asyncHandles returned by ListAsyncResults.
+     **/
+    @Override
+    @Since("9.0")
+    public ListAsyncResultsResult listAsyncResults(final ListAsyncResultsRequest request) {
+        return super.sendRequest("ListAsyncResults", request, ListAsyncResultsRequest.class, ListAsyncResultsResult.class);
+    }
+
+    /** 
+     * You can use ListAsyncResults to list the results of all currently running and completed asynchronous methods on the system. Querying asynchronous results with ListAsyncResults does not cause completed asyncHandles to expire; you can use GetAsyncResult to query any of the asyncHandles returned by ListAsyncResults.
+     **/
+    @Override
+    @Since("9.0")
+    public ListAsyncResultsResult listAsyncResults(
+        Optional<String[]> asyncResultTypes
+        ) {
+        return this.listAsyncResults(new ListAsyncResultsRequest(asyncResultTypes));
+    }
+    /** 
      * CreateVolume is used to create a new (empty) volume on the cluster.
      * When the volume is created successfully it is available for connection via iSCSI.
      **/
@@ -2750,6 +2968,27 @@ public class SolidFireElement
         Long volumeID
         ) {
         return this.deleteVolume(new DeleteVolumeRequest(volumeID));
+    }
+    /** 
+     * DeleteVolumes marks multiple (up to 500) active volumes for deletion. Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.The cleanup interval can be set in the SetClusterSettings method. For more information on using this method, see SetClusterSettings on page 1. After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated and no further connections are allowed while the volumes are in this state. A marked volume is not returned in target discovery requests. Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from the system. If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or write operation is stopped. If the volumes you delete are paired with a volume, replication between the paired volumes is suspended and no data is transferred to them or from them while in a deleted state. The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state and data is no longer sent to them or from the deleted volumes. Until the deleted volumes are purged, they can be restored and data transfers resume. If the deleted volumes are purged from the system, the volumes they were paired with enter into a StoppedMisconfigured state and the volume pairing status is removed. The purged volumes become permanently unavailable.
+     **/
+    @Override
+    @Since("9.0")
+    public DeleteVolumesResult deleteVolumes(final DeleteVolumesRequest request) {
+        return super.sendRequest("DeleteVolumes", request, DeleteVolumesRequest.class, DeleteVolumesResult.class);
+    }
+
+    /** 
+     * DeleteVolumes marks multiple (up to 500) active volumes for deletion. Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.The cleanup interval can be set in the SetClusterSettings method. For more information on using this method, see SetClusterSettings on page 1. After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated and no further connections are allowed while the volumes are in this state. A marked volume is not returned in target discovery requests. Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from the system. If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or write operation is stopped. If the volumes you delete are paired with a volume, replication between the paired volumes is suspended and no data is transferred to them or from them while in a deleted state. The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state and data is no longer sent to them or from the deleted volumes. Until the deleted volumes are purged, they can be restored and data transfers resume. If the deleted volumes are purged from the system, the volumes they were paired with enter into a StoppedMisconfigured state and the volume pairing status is removed. The purged volumes become permanently unavailable.
+     **/
+    @Override
+    @Since("9.0")
+    public DeleteVolumesResult deleteVolumes(
+        Optional<Long[]> accountIDs,
+        Optional<Long[]> volumeAccessGroupIDs,
+        Optional<Long[]> volumeIDs
+        ) {
+        return this.deleteVolumes(new DeleteVolumesRequest(accountIDs, volumeAccessGroupIDs, volumeIDs));
     }
     /** 
      * GetVolumeStats is used to retrieve high-level activity measurements for a single volume.
@@ -2984,6 +3223,32 @@ public class SolidFireElement
         return this.modifyVolume(new ModifyVolumeRequest(volumeID, accountID, access, qos, totalSize, attributes));
     }
     /** 
+     * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
+     **/
+    @Override
+    @Since("9.0")
+    public ModifyVolumesResult modifyVolumes(final ModifyVolumesRequest request) {
+        return super.sendRequest("ModifyVolumes", request, ModifyVolumesRequest.class, ModifyVolumesResult.class);
+    }
+
+    /** 
+     * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
+     **/
+    @Override
+    @Since("9.0")
+    public ModifyVolumesResult modifyVolumes(
+        Long[] volumeIDs,
+        Optional<Long> accountID,
+        Optional<String> access,
+        Optional<java.util.Map<String, Object>> attributes,
+        Optional<String> mode,
+        Optional<QoS> qos,
+        Optional<String> setCreateTime,
+        Optional<Long> totalSize
+        ) {
+        return this.modifyVolumes(new ModifyVolumesRequest(volumeIDs, accountID, access, attributes, mode, qos, setCreateTime, totalSize));
+    }
+    /** 
      * PurgeDeletedVolume immediately and permanently purges a volume which has been deleted.
      * A volume must be deleted using DeleteVolume before it can be purged.
      * Volumes are purged automatically after a period of time, so usage of this method is not typically required.
@@ -3007,6 +3272,27 @@ public class SolidFireElement
         Long volumeID
         ) {
         return this.purgeDeletedVolume(new PurgeDeletedVolumeRequest(volumeID));
+    }
+    /** 
+     * PurgeDeletedVolumes immediately and permanently purges volumes that have been deleted; you can use this method to purge up to 500 volumes at one time. You must delete volumes using DeleteVolumes before they can be purged. Volumes are purged by the system automatically after a period of time, so usage of this method is not typically required.
+     **/
+    @Override
+    @Since("9.0")
+    public PurgeDeletedVolumesResult purgeDeletedVolumes(final PurgeDeletedVolumesRequest request) {
+        return super.sendRequest("PurgeDeletedVolumes", request, PurgeDeletedVolumesRequest.class, PurgeDeletedVolumesResult.class);
+    }
+
+    /** 
+     * PurgeDeletedVolumes immediately and permanently purges volumes that have been deleted; you can use this method to purge up to 500 volumes at one time. You must delete volumes using DeleteVolumes before they can be purged. Volumes are purged by the system automatically after a period of time, so usage of this method is not typically required.
+     **/
+    @Override
+    @Since("9.0")
+    public PurgeDeletedVolumesResult purgeDeletedVolumes(
+        Optional<Long[]> volumeIDs,
+        Optional<Long[]> accountIDs,
+        Optional<Long[]> volumeAccessGroupIDs
+        ) {
+        return this.purgeDeletedVolumes(new PurgeDeletedVolumesRequest(volumeIDs, accountIDs, volumeAccessGroupIDs));
     }
     /** 
      * RestoreDeletedVolume marks a deleted volume as active again.
@@ -3140,6 +3426,27 @@ public class SolidFireElement
         return this.updateBulkVolumeStatus(new UpdateBulkVolumeStatusRequest(key, status, percentComplete, message, attributes));
     }
     /** 
+     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for a volume. For more information on QoS in a  cluster, see the . 
+     **/
+    @Override
+    @Since("7.0")
+    public SetDefaultQoSResult setDefaultQoS(final SetDefaultQoSRequest request) {
+        return super.sendRequest("SetDefaultQoS", request, SetDefaultQoSRequest.class, SetDefaultQoSResult.class);
+    }
+
+    /** 
+     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for a volume. For more information on QoS in a  cluster, see the . 
+     **/
+    @Override
+    @Since("7.0")
+    public SetDefaultQoSResult setDefaultQoS(
+        Optional<Long> minIOPS,
+        Optional<Long> maxIOPS,
+        Optional<Long> burstIOPS
+        ) {
+        return this.setDefaultQoS(new SetDefaultQoSRequest(minIOPS, maxIOPS, burstIOPS));
+    }
+    /** 
      * Creates a new volume access group.
      * The new volume access group must be given a name when it is created.
      * Entering initiators and volumes are optional when creating a volume access group.
@@ -3147,7 +3454,7 @@ public class SolidFireElement
      * Any initiator IQN that is successfully added to the volume access group is able to access any volume in the group without CHAP authentication.
      **/
     @Override
-    @Since("7.0")
+    @Since("9.0")
     @ConnectionType("Cluster")
     public CreateVolumeAccessGroupResult createVolumeAccessGroup(final CreateVolumeAccessGroupRequest request) {
         return super.sendRequest("CreateVolumeAccessGroup", request, CreateVolumeAccessGroupRequest.class, CreateVolumeAccessGroupResult.class);
@@ -3161,7 +3468,7 @@ public class SolidFireElement
      * Any initiator IQN that is successfully added to the volume access group is able to access any volume in the group without CHAP authentication.
      **/
     @Override
-    @Since("7.0")
+    @Since("9.0")
     @ConnectionType("Cluster")
     public CreateVolumeAccessGroupResult createVolumeAccessGroup(
         String name,
@@ -3177,7 +3484,7 @@ public class SolidFireElement
      * ListVolumeAccessGroups is used to return information about the volume access groups that are currently in the system.
      **/
     @Override
-    @Since("7.0")
+    @Since("9.0")
     @ConnectionType("Cluster")
     public ListVolumeAccessGroupsResult listVolumeAccessGroups(final ListVolumeAccessGroupsRequest request) {
         return super.sendRequest("ListVolumeAccessGroups", request, ListVolumeAccessGroupsRequest.class, ListVolumeAccessGroupsResult.class);
@@ -3187,7 +3494,7 @@ public class SolidFireElement
      * ListVolumeAccessGroups is used to return information about the volume access groups that are currently in the system.
      **/
     @Override
-    @Since("7.0")
+    @Since("9.0")
     @ConnectionType("Cluster")
     public ListVolumeAccessGroupsResult listVolumeAccessGroups(
         Optional<Long> startVolumeAccessGroupID,
@@ -3229,7 +3536,7 @@ public class SolidFireElement
      * RemoveVolumesFromVolumeAccessGroup<br/>
      **/
     @Override
-    @Since("7.0")
+    @Since("9.0")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(final ModifyVolumeAccessGroupRequest request) {
         return super.sendRequest("ModifyVolumeAccessGroup", request, ModifyVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
@@ -3248,7 +3555,7 @@ public class SolidFireElement
      * RemoveVolumesFromVolumeAccessGroup<br/>
      **/
     @Override
-    @Since("7.0")
+    @Since("9.0")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(
         Long volumeAccessGroupID,

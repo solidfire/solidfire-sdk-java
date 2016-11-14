@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ClusterInfo implements Serializable {
 
-    public static final long serialVersionUID = 6937143244161912485L;
+    public static final long serialVersionUID = -1471836507L;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
     @SerializedName("encryptionAtRestState") private String encryptionAtRestState;
     @SerializedName("ensemble") private String[] ensemble;
@@ -44,7 +44,7 @@ public class ClusterInfo implements Serializable {
     @SerializedName("svip") private String svip;
     @SerializedName("svipNodeID") private Long svipNodeID;
     @SerializedName("uniqueID") private String uniqueID;
-    @SerializedName("uuid") private UUIDNullable uuid;
+    @SerializedName("uuid") private java.util.UUID uuid;
 
     // empty constructor
     @Since("7.0")
@@ -64,7 +64,7 @@ public class ClusterInfo implements Serializable {
         String svip,
         Long svipNodeID,
         String uniqueID,
-        UUIDNullable uuid
+        java.util.UUID uuid
     )
     {
         this.attributes = attributes;
@@ -160,8 +160,8 @@ public class ClusterInfo implements Serializable {
     }
     /** 
      **/
-    public UUIDNullable getUuid() { return this.uuid; }
-    public void setUuid(UUIDNullable uuid) { 
+    public java.util.UUID getUuid() { return this.uuid; }
+    public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
 
@@ -254,7 +254,7 @@ public class ClusterInfo implements Serializable {
         private String svip;
         private Long svipNodeID;
         private String uniqueID;
-        private UUIDNullable uuid;
+        private java.util.UUID uuid;
 
         private Builder() { }
 
@@ -346,7 +346,7 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
-        public ClusterInfo.Builder uuid(final UUIDNullable uuid) {
+        public ClusterInfo.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
             return this;
         }

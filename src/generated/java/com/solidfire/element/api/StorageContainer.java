@@ -32,9 +32,9 @@ import java.util.Objects;
 
 public class StorageContainer implements Serializable {
 
-    public static final long serialVersionUID = -4235618932443262772L;
+    public static final long serialVersionUID = -1345531700L;
     @SerializedName("name") private String name;
-    @SerializedName("storageContainerID") private UUIDNullable storageContainerID;
+    @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("protocolEndpointType") private String protocolEndpointType;
     @SerializedName("initiatorSecret") private String initiatorSecret;
@@ -49,7 +49,7 @@ public class StorageContainer implements Serializable {
     @Since("7.0")
     public StorageContainer(
         String name,
-        UUIDNullable storageContainerID,
+        java.util.UUID storageContainerID,
         Long accountID,
         String protocolEndpointType,
         String initiatorSecret,
@@ -74,8 +74,8 @@ public class StorageContainer implements Serializable {
     }
     /** 
      **/
-    public UUIDNullable getStorageContainerID() { return this.storageContainerID; }
-    public void setStorageContainerID(UUIDNullable storageContainerID) { 
+    public java.util.UUID getStorageContainerID() { return this.storageContainerID; }
+    public void setStorageContainerID(java.util.UUID storageContainerID) { 
         this.storageContainerID = storageContainerID;
     }
     /** 
@@ -173,7 +173,7 @@ public class StorageContainer implements Serializable {
 
     public static class Builder {
         private String name;
-        private UUIDNullable storageContainerID;
+        private java.util.UUID storageContainerID;
         private Long accountID;
         private String protocolEndpointType;
         private String initiatorSecret;
@@ -210,7 +210,7 @@ public class StorageContainer implements Serializable {
             return this;
         }
 
-        public StorageContainer.Builder storageContainerID(final UUIDNullable storageContainerID) {
+        public StorageContainer.Builder storageContainerID(final java.util.UUID storageContainerID) {
             this.storageContainerID = storageContainerID;
             return this;
         }

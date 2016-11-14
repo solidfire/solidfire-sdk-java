@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DriveHardware implements Serializable {
 
-    public static final long serialVersionUID = -2699863894590814659L;
+    public static final long serialVersionUID = -1526528451L;
     @SerializedName("canonicalName") private String canonicalName;
     @SerializedName("connected") private Boolean connected;
     @SerializedName("dev") private Long dev;
@@ -59,7 +59,7 @@ public class DriveHardware implements Serializable {
     @SerializedName("size") private Long size;
     @SerializedName("slot") private Long slot;
     @SerializedName("smartSsdWriteCapable") private Optional<Boolean> smartSsdWriteCapable;
-    @SerializedName("uuid") private UUIDNullable uuid;
+    @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("vendor") private String vendor;
     @SerializedName("version") private String version;
 
@@ -96,7 +96,7 @@ public class DriveHardware implements Serializable {
         Long size,
         Long slot,
         Optional<Boolean> smartSsdWriteCapable,
-        UUIDNullable uuid,
+        java.util.UUID uuid,
         String vendor,
         String version
     )
@@ -290,8 +290,8 @@ public class DriveHardware implements Serializable {
     }
     /** 
      **/
-    public UUIDNullable getUuid() { return this.uuid; }
-    public void setUuid(UUIDNullable uuid) { 
+    public java.util.UUID getUuid() { return this.uuid; }
+    public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
     /** 
@@ -464,7 +464,7 @@ public class DriveHardware implements Serializable {
         private Long size;
         private Long slot;
         private Optional<Boolean> smartSsdWriteCapable;
-        private UUIDNullable uuid;
+        private java.util.UUID uuid;
         private String vendor;
         private String version;
 
@@ -667,7 +667,7 @@ public class DriveHardware implements Serializable {
             return this;
         }
 
-        public DriveHardware.Builder uuid(final UUIDNullable uuid) {
+        public DriveHardware.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
             return this;
         }

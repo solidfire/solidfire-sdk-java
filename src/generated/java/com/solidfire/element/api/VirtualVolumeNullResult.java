@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class VirtualVolumeNullResult implements Serializable {
 
-    public static final long serialVersionUID = 2812379360884607176L;
+    public static final long serialVersionUID = -886388536L;
 
     // empty constructor
     @Since("7.0")

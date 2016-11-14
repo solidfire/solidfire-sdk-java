@@ -32,10 +32,10 @@ import java.util.Objects;
 
 public class VirtualVolumeHost implements Serializable {
 
-    public static final long serialVersionUID = -2100377211988292460L;
-    @SerializedName("virtualVolumeHostID") private UUIDNullable virtualVolumeHostID;
-    @SerializedName("clusterID") private UUIDNullable clusterID;
-    @SerializedName("visibleProtocolEndpointIDs") private UUIDNullable[] visibleProtocolEndpointIDs;
+    public static final long serialVersionUID = -786641772L;
+    @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
+    @SerializedName("clusterID") private java.util.UUID clusterID;
+    @SerializedName("visibleProtocolEndpointIDs") private java.util.UUID[] visibleProtocolEndpointIDs;
     @SerializedName("bindings") private Long[] bindings;
     @SerializedName("initiatorNames") private String[] initiatorNames;
     @SerializedName("hostAddress") private String hostAddress;
@@ -47,9 +47,9 @@ public class VirtualVolumeHost implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public VirtualVolumeHost(
-        UUIDNullable virtualVolumeHostID,
-        UUIDNullable clusterID,
-        UUIDNullable[] visibleProtocolEndpointIDs,
+        java.util.UUID virtualVolumeHostID,
+        java.util.UUID clusterID,
+        java.util.UUID[] visibleProtocolEndpointIDs,
         Long[] bindings,
         String[] initiatorNames,
         String hostAddress
@@ -65,20 +65,20 @@ public class VirtualVolumeHost implements Serializable {
 
     /** 
      **/
-    public UUIDNullable getVirtualVolumeHostID() { return this.virtualVolumeHostID; }
-    public void setVirtualVolumeHostID(UUIDNullable virtualVolumeHostID) { 
+    public java.util.UUID getVirtualVolumeHostID() { return this.virtualVolumeHostID; }
+    public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) { 
         this.virtualVolumeHostID = virtualVolumeHostID;
     }
     /** 
      **/
-    public UUIDNullable getClusterID() { return this.clusterID; }
-    public void setClusterID(UUIDNullable clusterID) { 
+    public java.util.UUID getClusterID() { return this.clusterID; }
+    public void setClusterID(java.util.UUID clusterID) { 
         this.clusterID = clusterID;
     }
     /** 
      **/
-    public UUIDNullable[] getVisibleProtocolEndpointIDs() { return this.visibleProtocolEndpointIDs; }
-    public void setVisibleProtocolEndpointIDs(UUIDNullable[] visibleProtocolEndpointIDs) { 
+    public java.util.UUID[] getVisibleProtocolEndpointIDs() { return this.visibleProtocolEndpointIDs; }
+    public void setVisibleProtocolEndpointIDs(java.util.UUID[] visibleProtocolEndpointIDs) { 
         this.visibleProtocolEndpointIDs = visibleProtocolEndpointIDs;
     }
     /** 
@@ -160,9 +160,9 @@ public class VirtualVolumeHost implements Serializable {
     }
 
     public static class Builder {
-        private UUIDNullable virtualVolumeHostID;
-        private UUIDNullable clusterID;
-        private UUIDNullable[] visibleProtocolEndpointIDs;
+        private java.util.UUID virtualVolumeHostID;
+        private java.util.UUID clusterID;
+        private java.util.UUID[] visibleProtocolEndpointIDs;
         private Long[] bindings;
         private String[] initiatorNames;
         private String hostAddress;
@@ -190,17 +190,17 @@ public class VirtualVolumeHost implements Serializable {
             return this;
         }
 
-        public VirtualVolumeHost.Builder virtualVolumeHostID(final UUIDNullable virtualVolumeHostID) {
+        public VirtualVolumeHost.Builder virtualVolumeHostID(final java.util.UUID virtualVolumeHostID) {
             this.virtualVolumeHostID = virtualVolumeHostID;
             return this;
         }
 
-        public VirtualVolumeHost.Builder clusterID(final UUIDNullable clusterID) {
+        public VirtualVolumeHost.Builder clusterID(final java.util.UUID clusterID) {
             this.clusterID = clusterID;
             return this;
         }
 
-        public VirtualVolumeHost.Builder visibleProtocolEndpointIDs(final UUIDNullable[] visibleProtocolEndpointIDs) {
+        public VirtualVolumeHost.Builder visibleProtocolEndpointIDs(final java.util.UUID[] visibleProtocolEndpointIDs) {
             this.visibleProtocolEndpointIDs = visibleProtocolEndpointIDs;
             return this;
         }

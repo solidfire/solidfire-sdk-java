@@ -32,8 +32,9 @@ import java.util.Objects;
 
 public class CreateVolumeAccessGroupResult implements Serializable {
 
-    public static final long serialVersionUID = -3703710454092842045L;
+    public static final long serialVersionUID = 283458499L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroup") private VolumeAccessGroup volumeAccessGroup;
 
     // empty constructor
     @Since("7.0")
@@ -42,10 +43,12 @@ public class CreateVolumeAccessGroupResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CreateVolumeAccessGroupResult(
-        Long volumeAccessGroupID
+        Long volumeAccessGroupID,
+        VolumeAccessGroup volumeAccessGroup
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
+        this.volumeAccessGroup = volumeAccessGroup;
     }
 
     /** 
@@ -55,6 +58,12 @@ public class CreateVolumeAccessGroupResult implements Serializable {
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
+    /** 
+     **/
+    public VolumeAccessGroup getVolumeAccessGroup() { return this.volumeAccessGroup; }
+    public void setVolumeAccessGroup(VolumeAccessGroup volumeAccessGroup) { 
+        this.volumeAccessGroup = volumeAccessGroup;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -63,18 +72,20 @@ public class CreateVolumeAccessGroupResult implements Serializable {
 
         CreateVolumeAccessGroupResult that = (CreateVolumeAccessGroupResult) o;
         return 
-            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID);
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
+            Objects.equals(volumeAccessGroup, that.volumeAccessGroup);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID );
+        return Objects.hash( volumeAccessGroupID, volumeAccessGroup );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("volumeAccessGroupID", volumeAccessGroupID);
+        map.put("volumeAccessGroup", volumeAccessGroup);
         return map;
     }
 
@@ -84,6 +95,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
+        sb.append(" volumeAccessGroup : ").append(volumeAccessGroup).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -102,22 +114,30 @@ public class CreateVolumeAccessGroupResult implements Serializable {
 
     public static class Builder {
         private Long volumeAccessGroupID;
+        private VolumeAccessGroup volumeAccessGroup;
 
         private Builder() { }
 
         public CreateVolumeAccessGroupResult build() {
             return new CreateVolumeAccessGroupResult (
-                         this.volumeAccessGroupID);
+                         this.volumeAccessGroupID,
+                         this.volumeAccessGroup);
         }
 
         private CreateVolumeAccessGroupResult.Builder buildFrom(final CreateVolumeAccessGroupResult req) {
             this.volumeAccessGroupID = req.volumeAccessGroupID;
+            this.volumeAccessGroup = req.volumeAccessGroup;
 
             return this;
         }
 
         public CreateVolumeAccessGroupResult.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
+            return this;
+        }
+
+        public CreateVolumeAccessGroupResult.Builder volumeAccessGroup(final VolumeAccessGroup volumeAccessGroup) {
+            this.volumeAccessGroup = volumeAccessGroup;
             return this;
         }
 

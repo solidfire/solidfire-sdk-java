@@ -32,9 +32,8 @@ import java.util.Objects;
 
 public class CreateStorageContainerRequest implements Serializable {
 
-    public static final long serialVersionUID = -7290793674015554618L;
+    public static final long serialVersionUID = 564347846L;
     @SerializedName("name") private String name;
-    @SerializedName("callingHostID") private Optional<UUIDNullable> callingHostID;
     @SerializedName("initiatorSecret") private Optional<String> initiatorSecret;
     @SerializedName("targetSecret") private Optional<String> targetSecret;
 
@@ -46,13 +45,11 @@ public class CreateStorageContainerRequest implements Serializable {
     @Since("7.0")
     public CreateStorageContainerRequest(
         String name,
-        Optional<UUIDNullable> callingHostID,
         Optional<String> initiatorSecret,
         Optional<String> targetSecret
     )
     {
         this.name = name;
-        this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : callingHostID;
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : initiatorSecret;
         this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : targetSecret;
     }
@@ -63,13 +60,6 @@ public class CreateStorageContainerRequest implements Serializable {
     public String getName() { return this.name; }
     public void setName(String name) { 
         this.name = name;
-    }
-    /** 
-     * Non-storagecontainer account that will become a storage container.
-     **/
-    public Optional<UUIDNullable> getCallingHostID() { return this.callingHostID; }
-    public void setCallingHostID(Optional<UUIDNullable> callingHostID) { 
-        this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : callingHostID;
     }
     /** 
      * The secret for CHAP authentication for the initiator
@@ -94,21 +84,19 @@ public class CreateStorageContainerRequest implements Serializable {
         CreateStorageContainerRequest that = (CreateStorageContainerRequest) o;
         return 
             Objects.equals(name, that.name) &&
-            Objects.equals(callingHostID, that.callingHostID) &&
             Objects.equals(initiatorSecret, that.initiatorSecret) &&
             Objects.equals(targetSecret, that.targetSecret);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, callingHostID, initiatorSecret, targetSecret );
+        return Objects.hash( name, initiatorSecret, targetSecret );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("name", name);
-        map.put("callingHostID", callingHostID);
         map.put("initiatorSecret", initiatorSecret);
         map.put("targetSecret", targetSecret);
         return map;
@@ -120,9 +108,6 @@ public class CreateStorageContainerRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" name : ").append(name).append(",");
-        if(null != callingHostID && callingHostID.isPresent()){
-            sb.append(" callingHostID : ").append(callingHostID.get()).append(",");
-        }
         if(null != initiatorSecret && initiatorSecret.isPresent()){
             sb.append(" initiatorSecret : ").append(initiatorSecret.get()).append(",");
         }
@@ -147,7 +132,6 @@ public class CreateStorageContainerRequest implements Serializable {
 
     public static class Builder {
         private String name;
-        private Optional<UUIDNullable> callingHostID;
         private Optional<String> initiatorSecret;
         private Optional<String> targetSecret;
 
@@ -156,14 +140,12 @@ public class CreateStorageContainerRequest implements Serializable {
         public CreateStorageContainerRequest build() {
             return new CreateStorageContainerRequest (
                          this.name,
-                         this.callingHostID,
                          this.initiatorSecret,
                          this.targetSecret);
         }
 
         private CreateStorageContainerRequest.Builder buildFrom(final CreateStorageContainerRequest req) {
             this.name = req.name;
-            this.callingHostID = req.callingHostID;
             this.initiatorSecret = req.initiatorSecret;
             this.targetSecret = req.targetSecret;
 
@@ -172,11 +154,6 @@ public class CreateStorageContainerRequest implements Serializable {
 
         public CreateStorageContainerRequest.Builder name(final String name) {
             this.name = name;
-            return this;
-        }
-
-        public CreateStorageContainerRequest.Builder optionalCallingHostID(final UUIDNullable callingHostID) {
-            this.callingHostID = (callingHostID == null) ? Optional.<UUIDNullable>empty() : Optional.of(callingHostID);
             return this;
         }
 

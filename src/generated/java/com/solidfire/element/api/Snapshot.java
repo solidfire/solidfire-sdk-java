@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Snapshot implements Serializable {
 
-    public static final long serialVersionUID = -3853847877971082924L;
+    public static final long serialVersionUID = 119800148L;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
@@ -42,10 +42,10 @@ public class Snapshot implements Serializable {
     @SerializedName("expirationTime") private String expirationTime;
     @SerializedName("remoteStatuses") private String remoteStatuses;
     @SerializedName("status") private String status;
-    @SerializedName("snapshotUUID") private UUIDNullable snapshotUUID;
+    @SerializedName("snapshotUUID") private java.util.UUID snapshotUUID;
     @SerializedName("totalSize") private Long totalSize;
     @SerializedName("groupID") private Optional<Long> groupID;
-    @SerializedName("groupSnapshotUUID") private UUIDNullable groupSnapshotUUID;
+    @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
     @SerializedName("createTime") private String createTime;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
@@ -65,10 +65,10 @@ public class Snapshot implements Serializable {
         String expirationTime,
         String remoteStatuses,
         String status,
-        UUIDNullable snapshotUUID,
+        java.util.UUID snapshotUUID,
         Long totalSize,
         Optional<Long> groupID,
-        UUIDNullable groupSnapshotUUID,
+        java.util.UUID groupSnapshotUUID,
         String createTime,
         java.util.Map<String, Object> attributes
     )
@@ -169,8 +169,8 @@ public class Snapshot implements Serializable {
     /** 
      * Universal Unique ID of an existing snapshot.
      **/
-    public UUIDNullable getSnapshotUUID() { return this.snapshotUUID; }
-    public void setSnapshotUUID(UUIDNullable snapshotUUID) { 
+    public java.util.UUID getSnapshotUUID() { return this.snapshotUUID; }
+    public void setSnapshotUUID(java.util.UUID snapshotUUID) { 
         this.snapshotUUID = snapshotUUID;
     }
     /** 
@@ -193,8 +193,8 @@ public class Snapshot implements Serializable {
      * The current "members" results contains information about each snapshot in the group.
      * Each of these members will have a "uuid" parameter for the snapshot's UUID.
      **/
-    public UUIDNullable getGroupSnapshotUUID() { return this.groupSnapshotUUID; }
-    public void setGroupSnapshotUUID(UUIDNullable groupSnapshotUUID) { 
+    public java.util.UUID getGroupSnapshotUUID() { return this.groupSnapshotUUID; }
+    public void setGroupSnapshotUUID(java.util.UUID groupSnapshotUUID) { 
         this.groupSnapshotUUID = groupSnapshotUUID;
     }
     /** 
@@ -310,10 +310,10 @@ public class Snapshot implements Serializable {
         private String expirationTime;
         private String remoteStatuses;
         private String status;
-        private UUIDNullable snapshotUUID;
+        private java.util.UUID snapshotUUID;
         private Long totalSize;
         private Optional<Long> groupID;
-        private UUIDNullable groupSnapshotUUID;
+        private java.util.UUID groupSnapshotUUID;
         private String createTime;
         private java.util.Map<String, Object> attributes;
 
@@ -403,7 +403,7 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder snapshotUUID(final UUIDNullable snapshotUUID) {
+        public Snapshot.Builder snapshotUUID(final java.util.UUID snapshotUUID) {
             this.snapshotUUID = snapshotUUID;
             return this;
         }
@@ -418,7 +418,7 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder groupSnapshotUUID(final UUIDNullable groupSnapshotUUID) {
+        public Snapshot.Builder groupSnapshotUUID(final java.util.UUID groupSnapshotUUID) {
             this.groupSnapshotUUID = groupSnapshotUUID;
             return this;
         }
