@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Volume implements Serializable {
 
-    public static final long serialVersionUID = 576102320L;
+    public static final long serialVersionUID = -7686354995119743056L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;

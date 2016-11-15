@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Snapshot implements Serializable {
 
-    public static final long serialVersionUID = 119800148L;
+    public static final long serialVersionUID = -3853847877971082924L;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;

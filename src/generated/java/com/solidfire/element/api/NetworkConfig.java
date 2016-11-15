@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class NetworkConfig implements Serializable {
 
-    public static final long serialVersionUID = 1443531341L;
+    public static final long serialVersionUID = -6490718356259567027L;
     @SerializedName("#default") private Optional<Boolean> _default;
     @SerializedName("address") private Optional<String> address;
     @SerializedName("auto") private Optional<Boolean> auto;

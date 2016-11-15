@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class SnmpNetwork implements Serializable {
 
-    public static final long serialVersionUID = -1619391135L;
+    public static final long serialVersionUID = 867099654301027681L;
     @SerializedName("access") private String access;
     @SerializedName("cidr") private Long cidr;
     @SerializedName("community") private String community;

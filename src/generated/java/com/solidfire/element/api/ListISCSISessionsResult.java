@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListISCSISessionsResult implements Serializable {
 
-    public static final long serialVersionUID = -815580576L;
+    public static final long serialVersionUID = 3301056024020204128L;
     @SerializedName("sessions") private ISCSISession[] sessions;
 
     // empty constructor

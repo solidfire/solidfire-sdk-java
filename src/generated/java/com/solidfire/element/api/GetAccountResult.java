@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetAccountResult implements Serializable {
 
-    public static final long serialVersionUID = 130235374L;
+    public static final long serialVersionUID = -895889465820365842L;
     @SerializedName("account") private Account account;
 
     // empty constructor

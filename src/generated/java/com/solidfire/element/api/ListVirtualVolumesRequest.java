@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 621523556L;
+    public static final long serialVersionUID = -1561321066464562588L;
     @SerializedName("details") private Optional<Boolean> details;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("recursive") private Optional<Boolean> recursive;

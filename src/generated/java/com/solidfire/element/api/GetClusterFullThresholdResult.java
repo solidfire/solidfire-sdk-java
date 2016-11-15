@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetClusterFullThresholdResult implements Serializable {
 
-    public static final long serialVersionUID = 90551468L;
+    public static final long serialVersionUID = 8363724432751309996L;
     @SerializedName("blockFullness") private String blockFullness;
     @SerializedName("fullness") private String fullness;
     @SerializedName("maxMetadataOverProvisionFactor") private Long maxMetadataOverProvisionFactor;

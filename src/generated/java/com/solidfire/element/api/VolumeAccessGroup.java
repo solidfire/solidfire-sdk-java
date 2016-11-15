@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class VolumeAccessGroup implements Serializable {
 
-    public static final long serialVersionUID = -1372296164L;
+    public static final long serialVersionUID = 143293271697026076L;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
     @SerializedName("deletedVolumes") private Long[] deletedVolumes;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;

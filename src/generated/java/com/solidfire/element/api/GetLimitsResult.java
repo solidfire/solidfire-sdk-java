@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetLimitsResult implements Serializable {
 
-    public static final long serialVersionUID = -1789600176L;
+    public static final long serialVersionUID = 4349219860804591184L;
     @SerializedName("accountCountMax") private Long accountCountMax;
     @SerializedName("accountNameLengthMax") private Long accountNameLengthMax;
     @SerializedName("accountNameLengthMin") private Long accountNameLengthMin;
