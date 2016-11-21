@@ -41,7 +41,9 @@ public class GetLimitsResult implements Serializable {
     @SerializedName("cloneJobsPerVolumeMax") private Long cloneJobsPerVolumeMax;
     @SerializedName("clusterPairsCountMax") private Long clusterPairsCountMax;
     @SerializedName("initiatorNameLengthMax") private Long initiatorNameLengthMax;
+    @SerializedName("initiatorCountMax") private Long initiatorCountMax;
     @SerializedName("initiatorsPerVolumeAccessGroupCountMax") private Long initiatorsPerVolumeAccessGroupCountMax;
+    @SerializedName("iscsiSessionsFromFibreChannelNodesMax") private Long iscsiSessionsFromFibreChannelNodesMax;
     @SerializedName("secretLengthMax") private Long secretLengthMax;
     @SerializedName("secretLengthMin") private Long secretLengthMin;
     @SerializedName("snapshotNameLengthMax") private Long snapshotNameLengthMax;
@@ -52,6 +54,7 @@ public class GetLimitsResult implements Serializable {
     @SerializedName("volumeAccessGroupNameLengthMin") private Long volumeAccessGroupNameLengthMin;
     @SerializedName("volumeAccessGroupsPerInitiatorCountMax") private Long volumeAccessGroupsPerInitiatorCountMax;
     @SerializedName("volumeAccessGroupsPerVolumeCountMax") private Long volumeAccessGroupsPerVolumeCountMax;
+    @SerializedName("initiatorAliasLengthMax") private Long initiatorAliasLengthMax;
     @SerializedName("volumeBurstIOPSMax") private Long volumeBurstIOPSMax;
     @SerializedName("volumeBurstIOPSMin") private Long volumeBurstIOPSMin;
     @SerializedName("volumeCountMax") private Long volumeCountMax;
@@ -82,7 +85,9 @@ public class GetLimitsResult implements Serializable {
         Long cloneJobsPerVolumeMax,
         Long clusterPairsCountMax,
         Long initiatorNameLengthMax,
+        Long initiatorCountMax,
         Long initiatorsPerVolumeAccessGroupCountMax,
+        Long iscsiSessionsFromFibreChannelNodesMax,
         Long secretLengthMax,
         Long secretLengthMin,
         Long snapshotNameLengthMax,
@@ -93,6 +98,7 @@ public class GetLimitsResult implements Serializable {
         Long volumeAccessGroupNameLengthMin,
         Long volumeAccessGroupsPerInitiatorCountMax,
         Long volumeAccessGroupsPerVolumeCountMax,
+        Long initiatorAliasLengthMax,
         Long volumeBurstIOPSMax,
         Long volumeBurstIOPSMin,
         Long volumeCountMax,
@@ -117,7 +123,9 @@ public class GetLimitsResult implements Serializable {
         this.cloneJobsPerVolumeMax = cloneJobsPerVolumeMax;
         this.clusterPairsCountMax = clusterPairsCountMax;
         this.initiatorNameLengthMax = initiatorNameLengthMax;
+        this.initiatorCountMax = initiatorCountMax;
         this.initiatorsPerVolumeAccessGroupCountMax = initiatorsPerVolumeAccessGroupCountMax;
+        this.iscsiSessionsFromFibreChannelNodesMax = iscsiSessionsFromFibreChannelNodesMax;
         this.secretLengthMax = secretLengthMax;
         this.secretLengthMin = secretLengthMin;
         this.snapshotNameLengthMax = snapshotNameLengthMax;
@@ -128,6 +136,7 @@ public class GetLimitsResult implements Serializable {
         this.volumeAccessGroupNameLengthMin = volumeAccessGroupNameLengthMin;
         this.volumeAccessGroupsPerInitiatorCountMax = volumeAccessGroupsPerInitiatorCountMax;
         this.volumeAccessGroupsPerVolumeCountMax = volumeAccessGroupsPerVolumeCountMax;
+        this.initiatorAliasLengthMax = initiatorAliasLengthMax;
         this.volumeBurstIOPSMax = volumeBurstIOPSMax;
         this.volumeBurstIOPSMin = volumeBurstIOPSMin;
         this.volumeCountMax = volumeCountMax;
@@ -194,9 +203,21 @@ public class GetLimitsResult implements Serializable {
     }
     /** 
      **/
+    public Long getInitiatorCountMax() { return this.initiatorCountMax; }
+    public void setInitiatorCountMax(Long initiatorCountMax) { 
+        this.initiatorCountMax = initiatorCountMax;
+    }
+    /** 
+     **/
     public Long getInitiatorsPerVolumeAccessGroupCountMax() { return this.initiatorsPerVolumeAccessGroupCountMax; }
     public void setInitiatorsPerVolumeAccessGroupCountMax(Long initiatorsPerVolumeAccessGroupCountMax) { 
         this.initiatorsPerVolumeAccessGroupCountMax = initiatorsPerVolumeAccessGroupCountMax;
+    }
+    /** 
+     **/
+    public Long getIscsiSessionsFromFibreChannelNodesMax() { return this.iscsiSessionsFromFibreChannelNodesMax; }
+    public void setIscsiSessionsFromFibreChannelNodesMax(Long iscsiSessionsFromFibreChannelNodesMax) { 
+        this.iscsiSessionsFromFibreChannelNodesMax = iscsiSessionsFromFibreChannelNodesMax;
     }
     /** 
      **/
@@ -257,6 +278,12 @@ public class GetLimitsResult implements Serializable {
     public Long getVolumeAccessGroupsPerVolumeCountMax() { return this.volumeAccessGroupsPerVolumeCountMax; }
     public void setVolumeAccessGroupsPerVolumeCountMax(Long volumeAccessGroupsPerVolumeCountMax) { 
         this.volumeAccessGroupsPerVolumeCountMax = volumeAccessGroupsPerVolumeCountMax;
+    }
+    /** 
+     **/
+    public Long getInitiatorAliasLengthMax() { return this.initiatorAliasLengthMax; }
+    public void setInitiatorAliasLengthMax(Long initiatorAliasLengthMax) { 
+        this.initiatorAliasLengthMax = initiatorAliasLengthMax;
     }
     /** 
      **/
@@ -358,7 +385,9 @@ public class GetLimitsResult implements Serializable {
             Objects.equals(cloneJobsPerVolumeMax, that.cloneJobsPerVolumeMax) &&
             Objects.equals(clusterPairsCountMax, that.clusterPairsCountMax) &&
             Objects.equals(initiatorNameLengthMax, that.initiatorNameLengthMax) &&
+            Objects.equals(initiatorCountMax, that.initiatorCountMax) &&
             Objects.equals(initiatorsPerVolumeAccessGroupCountMax, that.initiatorsPerVolumeAccessGroupCountMax) &&
+            Objects.equals(iscsiSessionsFromFibreChannelNodesMax, that.iscsiSessionsFromFibreChannelNodesMax) &&
             Objects.equals(secretLengthMax, that.secretLengthMax) &&
             Objects.equals(secretLengthMin, that.secretLengthMin) &&
             Objects.equals(snapshotNameLengthMax, that.snapshotNameLengthMax) &&
@@ -369,6 +398,7 @@ public class GetLimitsResult implements Serializable {
             Objects.equals(volumeAccessGroupNameLengthMin, that.volumeAccessGroupNameLengthMin) &&
             Objects.equals(volumeAccessGroupsPerInitiatorCountMax, that.volumeAccessGroupsPerInitiatorCountMax) &&
             Objects.equals(volumeAccessGroupsPerVolumeCountMax, that.volumeAccessGroupsPerVolumeCountMax) &&
+            Objects.equals(initiatorAliasLengthMax, that.initiatorAliasLengthMax) &&
             Objects.equals(volumeBurstIOPSMax, that.volumeBurstIOPSMax) &&
             Objects.equals(volumeBurstIOPSMin, that.volumeBurstIOPSMin) &&
             Objects.equals(volumeCountMax, that.volumeCountMax) &&
@@ -387,7 +417,7 @@ public class GetLimitsResult implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountCountMax, accountNameLengthMax, accountNameLengthMin, bulkVolumeJobsPerNodeMax, bulkVolumeJobsPerVolumeMax, cloneJobsPerVolumeMax, clusterPairsCountMax, initiatorNameLengthMax, initiatorsPerVolumeAccessGroupCountMax, secretLengthMax, secretLengthMin, snapshotNameLengthMax, snapshotsPerVolumeMax, volumeAccessGroupCountMax, volumeAccessGroupLunMax, volumeAccessGroupNameLengthMax, volumeAccessGroupNameLengthMin, volumeAccessGroupsPerInitiatorCountMax, volumeAccessGroupsPerVolumeCountMax, volumeBurstIOPSMax, volumeBurstIOPSMin, volumeCountMax, volumeMaxIOPSMax, volumeMaxIOPSMin, volumeMinIOPSMax, volumeMinIOPSMin, volumeNameLengthMax, volumeNameLengthMin, volumeSizeMax, volumeSizeMin, volumesPerAccountCountMax, volumesPerGroupSnapshotMax, volumesPerVolumeAccessGroupCountMax );
+        return Objects.hash( accountCountMax, accountNameLengthMax, accountNameLengthMin, bulkVolumeJobsPerNodeMax, bulkVolumeJobsPerVolumeMax, cloneJobsPerVolumeMax, clusterPairsCountMax, initiatorNameLengthMax, initiatorCountMax, initiatorsPerVolumeAccessGroupCountMax, iscsiSessionsFromFibreChannelNodesMax, secretLengthMax, secretLengthMin, snapshotNameLengthMax, snapshotsPerVolumeMax, volumeAccessGroupCountMax, volumeAccessGroupLunMax, volumeAccessGroupNameLengthMax, volumeAccessGroupNameLengthMin, volumeAccessGroupsPerInitiatorCountMax, volumeAccessGroupsPerVolumeCountMax, initiatorAliasLengthMax, volumeBurstIOPSMax, volumeBurstIOPSMin, volumeCountMax, volumeMaxIOPSMax, volumeMaxIOPSMin, volumeMinIOPSMax, volumeMinIOPSMin, volumeNameLengthMax, volumeNameLengthMin, volumeSizeMax, volumeSizeMin, volumesPerAccountCountMax, volumesPerGroupSnapshotMax, volumesPerVolumeAccessGroupCountMax );
     }
 
 
@@ -401,7 +431,9 @@ public class GetLimitsResult implements Serializable {
         map.put("cloneJobsPerVolumeMax", cloneJobsPerVolumeMax);
         map.put("clusterPairsCountMax", clusterPairsCountMax);
         map.put("initiatorNameLengthMax", initiatorNameLengthMax);
+        map.put("initiatorCountMax", initiatorCountMax);
         map.put("initiatorsPerVolumeAccessGroupCountMax", initiatorsPerVolumeAccessGroupCountMax);
+        map.put("iscsiSessionsFromFibreChannelNodesMax", iscsiSessionsFromFibreChannelNodesMax);
         map.put("secretLengthMax", secretLengthMax);
         map.put("secretLengthMin", secretLengthMin);
         map.put("snapshotNameLengthMax", snapshotNameLengthMax);
@@ -412,6 +444,7 @@ public class GetLimitsResult implements Serializable {
         map.put("volumeAccessGroupNameLengthMin", volumeAccessGroupNameLengthMin);
         map.put("volumeAccessGroupsPerInitiatorCountMax", volumeAccessGroupsPerInitiatorCountMax);
         map.put("volumeAccessGroupsPerVolumeCountMax", volumeAccessGroupsPerVolumeCountMax);
+        map.put("initiatorAliasLengthMax", initiatorAliasLengthMax);
         map.put("volumeBurstIOPSMax", volumeBurstIOPSMax);
         map.put("volumeBurstIOPSMin", volumeBurstIOPSMin);
         map.put("volumeCountMax", volumeCountMax);
@@ -442,7 +475,9 @@ public class GetLimitsResult implements Serializable {
         sb.append(" cloneJobsPerVolumeMax : ").append(cloneJobsPerVolumeMax).append(",");
         sb.append(" clusterPairsCountMax : ").append(clusterPairsCountMax).append(",");
         sb.append(" initiatorNameLengthMax : ").append(initiatorNameLengthMax).append(",");
+        sb.append(" initiatorCountMax : ").append(initiatorCountMax).append(",");
         sb.append(" initiatorsPerVolumeAccessGroupCountMax : ").append(initiatorsPerVolumeAccessGroupCountMax).append(",");
+        sb.append(" iscsiSessionsFromFibreChannelNodesMax : ").append(iscsiSessionsFromFibreChannelNodesMax).append(",");
         sb.append(" secretLengthMax : ").append(secretLengthMax).append(",");
         sb.append(" secretLengthMin : ").append(secretLengthMin).append(",");
         sb.append(" snapshotNameLengthMax : ").append(snapshotNameLengthMax).append(",");
@@ -453,6 +488,7 @@ public class GetLimitsResult implements Serializable {
         sb.append(" volumeAccessGroupNameLengthMin : ").append(volumeAccessGroupNameLengthMin).append(",");
         sb.append(" volumeAccessGroupsPerInitiatorCountMax : ").append(volumeAccessGroupsPerInitiatorCountMax).append(",");
         sb.append(" volumeAccessGroupsPerVolumeCountMax : ").append(volumeAccessGroupsPerVolumeCountMax).append(",");
+        sb.append(" initiatorAliasLengthMax : ").append(initiatorAliasLengthMax).append(",");
         sb.append(" volumeBurstIOPSMax : ").append(volumeBurstIOPSMax).append(",");
         sb.append(" volumeBurstIOPSMin : ").append(volumeBurstIOPSMin).append(",");
         sb.append(" volumeCountMax : ").append(volumeCountMax).append(",");
@@ -492,7 +528,9 @@ public class GetLimitsResult implements Serializable {
         private Long cloneJobsPerVolumeMax;
         private Long clusterPairsCountMax;
         private Long initiatorNameLengthMax;
+        private Long initiatorCountMax;
         private Long initiatorsPerVolumeAccessGroupCountMax;
+        private Long iscsiSessionsFromFibreChannelNodesMax;
         private Long secretLengthMax;
         private Long secretLengthMin;
         private Long snapshotNameLengthMax;
@@ -503,6 +541,7 @@ public class GetLimitsResult implements Serializable {
         private Long volumeAccessGroupNameLengthMin;
         private Long volumeAccessGroupsPerInitiatorCountMax;
         private Long volumeAccessGroupsPerVolumeCountMax;
+        private Long initiatorAliasLengthMax;
         private Long volumeBurstIOPSMax;
         private Long volumeBurstIOPSMin;
         private Long volumeCountMax;
@@ -530,7 +569,9 @@ public class GetLimitsResult implements Serializable {
                          this.cloneJobsPerVolumeMax,
                          this.clusterPairsCountMax,
                          this.initiatorNameLengthMax,
+                         this.initiatorCountMax,
                          this.initiatorsPerVolumeAccessGroupCountMax,
+                         this.iscsiSessionsFromFibreChannelNodesMax,
                          this.secretLengthMax,
                          this.secretLengthMin,
                          this.snapshotNameLengthMax,
@@ -541,6 +582,7 @@ public class GetLimitsResult implements Serializable {
                          this.volumeAccessGroupNameLengthMin,
                          this.volumeAccessGroupsPerInitiatorCountMax,
                          this.volumeAccessGroupsPerVolumeCountMax,
+                         this.initiatorAliasLengthMax,
                          this.volumeBurstIOPSMax,
                          this.volumeBurstIOPSMin,
                          this.volumeCountMax,
@@ -566,7 +608,9 @@ public class GetLimitsResult implements Serializable {
             this.cloneJobsPerVolumeMax = req.cloneJobsPerVolumeMax;
             this.clusterPairsCountMax = req.clusterPairsCountMax;
             this.initiatorNameLengthMax = req.initiatorNameLengthMax;
+            this.initiatorCountMax = req.initiatorCountMax;
             this.initiatorsPerVolumeAccessGroupCountMax = req.initiatorsPerVolumeAccessGroupCountMax;
+            this.iscsiSessionsFromFibreChannelNodesMax = req.iscsiSessionsFromFibreChannelNodesMax;
             this.secretLengthMax = req.secretLengthMax;
             this.secretLengthMin = req.secretLengthMin;
             this.snapshotNameLengthMax = req.snapshotNameLengthMax;
@@ -577,6 +621,7 @@ public class GetLimitsResult implements Serializable {
             this.volumeAccessGroupNameLengthMin = req.volumeAccessGroupNameLengthMin;
             this.volumeAccessGroupsPerInitiatorCountMax = req.volumeAccessGroupsPerInitiatorCountMax;
             this.volumeAccessGroupsPerVolumeCountMax = req.volumeAccessGroupsPerVolumeCountMax;
+            this.initiatorAliasLengthMax = req.initiatorAliasLengthMax;
             this.volumeBurstIOPSMax = req.volumeBurstIOPSMax;
             this.volumeBurstIOPSMin = req.volumeBurstIOPSMin;
             this.volumeCountMax = req.volumeCountMax;
@@ -635,8 +680,18 @@ public class GetLimitsResult implements Serializable {
             return this;
         }
 
+        public GetLimitsResult.Builder initiatorCountMax(final Long initiatorCountMax) {
+            this.initiatorCountMax = initiatorCountMax;
+            return this;
+        }
+
         public GetLimitsResult.Builder initiatorsPerVolumeAccessGroupCountMax(final Long initiatorsPerVolumeAccessGroupCountMax) {
             this.initiatorsPerVolumeAccessGroupCountMax = initiatorsPerVolumeAccessGroupCountMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder iscsiSessionsFromFibreChannelNodesMax(final Long iscsiSessionsFromFibreChannelNodesMax) {
+            this.iscsiSessionsFromFibreChannelNodesMax = iscsiSessionsFromFibreChannelNodesMax;
             return this;
         }
 
@@ -687,6 +742,11 @@ public class GetLimitsResult implements Serializable {
 
         public GetLimitsResult.Builder volumeAccessGroupsPerVolumeCountMax(final Long volumeAccessGroupsPerVolumeCountMax) {
             this.volumeAccessGroupsPerVolumeCountMax = volumeAccessGroupsPerVolumeCountMax;
+            return this;
+        }
+
+        public GetLimitsResult.Builder initiatorAliasLengthMax(final Long initiatorAliasLengthMax) {
+            this.initiatorAliasLengthMax = initiatorAliasLengthMax;
             return this;
         }
 

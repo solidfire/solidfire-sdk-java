@@ -34,6 +34,8 @@ public class NetworkConfig implements Serializable {
 
     public static final long serialVersionUID = -6490718356259567027L;
     @SerializedName("#default") private Optional<Boolean> _default;
+    @SerializedName("bond-master") private String bondMaster;
+    @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
     @SerializedName("address") private Optional<String> address;
     @SerializedName("auto") private Optional<Boolean> auto;
     @SerializedName("bond-downdelay") private Optional<Long> bondDowndelay;
@@ -69,6 +71,8 @@ public class NetworkConfig implements Serializable {
     @Since("7.0")
     public NetworkConfig(
         Optional<Boolean> _default,
+        String bondMaster,
+        Long virtualNetworkTag,
         Optional<String> address,
         Optional<Boolean> auto,
         Optional<Long> bondDowndelay,
@@ -98,6 +102,8 @@ public class NetworkConfig implements Serializable {
     )
     {
         this._default = (_default == null) ? Optional.<Boolean>empty() : _default;
+        this.bondMaster = bondMaster;
+        this.virtualNetworkTag = virtualNetworkTag;
         this.address = (address == null) ? Optional.<String>empty() : address;
         this.auto = (auto == null) ? Optional.<Boolean>empty() : auto;
         this.bondDowndelay = (bondDowndelay == null) ? Optional.<Long>empty() : bondDowndelay;
@@ -131,6 +137,18 @@ public class NetworkConfig implements Serializable {
     public Optional<Boolean> get_default() { return this._default; }
     public void set_default(Optional<Boolean> _default) { 
         this._default = (_default == null) ? Optional.<Boolean>empty() : _default;
+    }
+    /** 
+     **/
+    public String getBondMaster() { return this.bondMaster; }
+    public void setBondMaster(String bondMaster) { 
+        this.bondMaster = bondMaster;
+    }
+    /** 
+     **/
+    public Long getVirtualNetworkTag() { return this.virtualNetworkTag; }
+    public void setVirtualNetworkTag(Long virtualNetworkTag) { 
+        this.virtualNetworkTag = virtualNetworkTag;
     }
     /** 
      **/
@@ -297,6 +315,8 @@ public class NetworkConfig implements Serializable {
         NetworkConfig that = (NetworkConfig) o;
         return 
             Objects.equals(_default, that._default) &&
+            Objects.equals(bondMaster, that.bondMaster) &&
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
             Objects.equals(address, that.address) &&
             Objects.equals(auto, that.auto) &&
             Objects.equals(bondDowndelay, that.bondDowndelay) &&
@@ -327,13 +347,15 @@ public class NetworkConfig implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( _default, address, auto, bondDowndelay, bondFailOverMac, bondPrimaryReselect, bondLacpRate, bondMiimon, bondMode, bondSlaves, bondUpdelay, broadcast, dnsNameservers, dnsSearch, family, gateway, macAddress, macAddressPermanent, method, mtu, netmask, network, physical, routes, status, symmetricRouteRules, upAndRunning );
+        return Objects.hash( _default, bondMaster, virtualNetworkTag, address, auto, bondDowndelay, bondFailOverMac, bondPrimaryReselect, bondLacpRate, bondMiimon, bondMode, bondSlaves, bondUpdelay, broadcast, dnsNameservers, dnsSearch, family, gateway, macAddress, macAddressPermanent, method, mtu, netmask, network, physical, routes, status, symmetricRouteRules, upAndRunning );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("_default", _default);
+        map.put("bondMaster", bondMaster);
+        map.put("virtualNetworkTag", virtualNetworkTag);
         map.put("address", address);
         map.put("auto", auto);
         map.put("bondDowndelay", bondDowndelay);
@@ -371,6 +393,8 @@ public class NetworkConfig implements Serializable {
         if(null != _default && _default.isPresent()){
             sb.append(" _default : ").append(_default.get()).append(",");
         }
+        sb.append(" bondMaster : ").append(bondMaster).append(",");
+        sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
         if(null != address && address.isPresent()){
             sb.append(" address : ").append(address.get()).append(",");
         }
@@ -467,6 +491,8 @@ public class NetworkConfig implements Serializable {
 
     public static class Builder {
         private Optional<Boolean> _default;
+        private String bondMaster;
+        private Long virtualNetworkTag;
         private Optional<String> address;
         private Optional<Boolean> auto;
         private Optional<Long> bondDowndelay;
@@ -499,6 +525,8 @@ public class NetworkConfig implements Serializable {
         public NetworkConfig build() {
             return new NetworkConfig (
                          this._default,
+                         this.bondMaster,
+                         this.virtualNetworkTag,
                          this.address,
                          this.auto,
                          this.bondDowndelay,
@@ -529,6 +557,8 @@ public class NetworkConfig implements Serializable {
 
         private NetworkConfig.Builder buildFrom(final NetworkConfig req) {
             this._default = req._default;
+            this.bondMaster = req.bondMaster;
+            this.virtualNetworkTag = req.virtualNetworkTag;
             this.address = req.address;
             this.auto = req.auto;
             this.bondDowndelay = req.bondDowndelay;
@@ -561,6 +591,16 @@ public class NetworkConfig implements Serializable {
 
         public NetworkConfig.Builder optional_default(final Boolean _default) {
             this._default = (_default == null) ? Optional.<Boolean>empty() : Optional.of(_default);
+            return this;
+        }
+
+        public NetworkConfig.Builder bondMaster(final String bondMaster) {
+            this.bondMaster = bondMaster;
+            return this;
+        }
+
+        public NetworkConfig.Builder virtualNetworkTag(final Long virtualNetworkTag) {
+            this.virtualNetworkTag = virtualNetworkTag;
             return this;
         }
 

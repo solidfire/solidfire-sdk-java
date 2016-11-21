@@ -34,6 +34,7 @@ public class DriveStats implements Serializable {
 
     public static final long serialVersionUID = 215354036034394227L;
     @SerializedName("activeSessions") private Long activeSessions;
+    @SerializedName("driveID") private Optional<Long> driveID;
     @SerializedName("failedDieCount") private Long failedDieCount;
     @SerializedName("lifeRemainingPercent") private Long lifeRemainingPercent;
     @SerializedName("lifetimeReadBytes") private Long lifetimeReadBytes;
@@ -58,6 +59,7 @@ public class DriveStats implements Serializable {
     @Since("7.0")
     public DriveStats(
         Long activeSessions,
+        Optional<Long> driveID,
         Long failedDieCount,
         Long lifeRemainingPercent,
         Long lifetimeReadBytes,
@@ -76,6 +78,7 @@ public class DriveStats implements Serializable {
     )
     {
         this.activeSessions = activeSessions;
+        this.driveID = (driveID == null) ? Optional.<Long>empty() : driveID;
         this.failedDieCount = failedDieCount;
         this.lifeRemainingPercent = lifeRemainingPercent;
         this.lifetimeReadBytes = lifetimeReadBytes;
@@ -98,6 +101,12 @@ public class DriveStats implements Serializable {
     public Long getActiveSessions() { return this.activeSessions; }
     public void setActiveSessions(Long activeSessions) { 
         this.activeSessions = activeSessions;
+    }
+    /** 
+     **/
+    public Optional<Long> getDriveID() { return this.driveID; }
+    public void setDriveID(Optional<Long> driveID) { 
+        this.driveID = (driveID == null) ? Optional.<Long>empty() : driveID;
     }
     /** 
      **/
@@ -198,6 +207,7 @@ public class DriveStats implements Serializable {
         DriveStats that = (DriveStats) o;
         return 
             Objects.equals(activeSessions, that.activeSessions) &&
+            Objects.equals(driveID, that.driveID) &&
             Objects.equals(failedDieCount, that.failedDieCount) &&
             Objects.equals(lifeRemainingPercent, that.lifeRemainingPercent) &&
             Objects.equals(lifetimeReadBytes, that.lifetimeReadBytes) &&
@@ -217,13 +227,14 @@ public class DriveStats implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( activeSessions, failedDieCount, lifeRemainingPercent, lifetimeReadBytes, lifetimeWriteBytes, powerOnHours, readBytes, readOps, reallocatedSectors, reserveCapacityPercent, timestamp, totalCapacity, usedCapacity, usedMemory, writeBytes, writeOps );
+        return Objects.hash( activeSessions, driveID, failedDieCount, lifeRemainingPercent, lifetimeReadBytes, lifetimeWriteBytes, powerOnHours, readBytes, readOps, reallocatedSectors, reserveCapacityPercent, timestamp, totalCapacity, usedCapacity, usedMemory, writeBytes, writeOps );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("activeSessions", activeSessions);
+        map.put("driveID", driveID);
         map.put("failedDieCount", failedDieCount);
         map.put("lifeRemainingPercent", lifeRemainingPercent);
         map.put("lifetimeReadBytes", lifetimeReadBytes);
@@ -248,6 +259,9 @@ public class DriveStats implements Serializable {
         sb.append( "{ " );
 
         sb.append(" activeSessions : ").append(activeSessions).append(",");
+        if(null != driveID && driveID.isPresent()){
+            sb.append(" driveID : ").append(driveID.get()).append(",");
+        }
         sb.append(" failedDieCount : ").append(failedDieCount).append(",");
         sb.append(" lifeRemainingPercent : ").append(lifeRemainingPercent).append(",");
         sb.append(" lifetimeReadBytes : ").append(lifetimeReadBytes).append(",");
@@ -283,6 +297,7 @@ public class DriveStats implements Serializable {
 
     public static class Builder {
         private Long activeSessions;
+        private Optional<Long> driveID;
         private Long failedDieCount;
         private Long lifeRemainingPercent;
         private Long lifetimeReadBytes;
@@ -304,6 +319,7 @@ public class DriveStats implements Serializable {
         public DriveStats build() {
             return new DriveStats (
                          this.activeSessions,
+                         this.driveID,
                          this.failedDieCount,
                          this.lifeRemainingPercent,
                          this.lifetimeReadBytes,
@@ -323,6 +339,7 @@ public class DriveStats implements Serializable {
 
         private DriveStats.Builder buildFrom(final DriveStats req) {
             this.activeSessions = req.activeSessions;
+            this.driveID = req.driveID;
             this.failedDieCount = req.failedDieCount;
             this.lifeRemainingPercent = req.lifeRemainingPercent;
             this.lifetimeReadBytes = req.lifetimeReadBytes;
@@ -344,6 +361,11 @@ public class DriveStats implements Serializable {
 
         public DriveStats.Builder activeSessions(final Long activeSessions) {
             this.activeSessions = activeSessions;
+            return this;
+        }
+
+        public DriveStats.Builder optionalDriveID(final Long driveID) {
+            this.driveID = (driveID == null) ? Optional.<Long>empty() : Optional.of(driveID);
             return this;
         }
 

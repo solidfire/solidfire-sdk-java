@@ -44,6 +44,8 @@ public class VirtualVolumeInfo implements Serializable {
     @SerializedName("bindings") private Long[] bindings;
     @SerializedName("children") private java.util.UUID[] children;
     @SerializedName("metadata") private java.util.Map<String, Object> metadata;
+    @SerializedName("snapshotInfo") private Snapshot snapshotInfo;
+    @SerializedName("volumeInfo") private Volume volumeInfo;
 
     // empty constructor
     @Since("7.0")
@@ -62,7 +64,9 @@ public class VirtualVolumeInfo implements Serializable {
         String status,
         Long[] bindings,
         java.util.UUID[] children,
-        java.util.Map<String, Object> metadata
+        java.util.Map<String, Object> metadata,
+        Snapshot snapshotInfo,
+        Volume volumeInfo
     )
     {
         this.virtualVolumeID = virtualVolumeID;
@@ -76,6 +80,8 @@ public class VirtualVolumeInfo implements Serializable {
         this.bindings = bindings;
         this.children = children;
         this.metadata = metadata;
+        this.snapshotInfo = snapshotInfo;
+        this.volumeInfo = volumeInfo;
     }
 
     /** 
@@ -144,6 +150,18 @@ public class VirtualVolumeInfo implements Serializable {
     public void setMetadata(java.util.Map<String, Object> metadata) { 
         this.metadata = metadata;
     }
+    /** 
+     **/
+    public Snapshot getSnapshotInfo() { return this.snapshotInfo; }
+    public void setSnapshotInfo(Snapshot snapshotInfo) { 
+        this.snapshotInfo = snapshotInfo;
+    }
+    /** 
+     **/
+    public Volume getVolumeInfo() { return this.volumeInfo; }
+    public void setVolumeInfo(Volume volumeInfo) { 
+        this.volumeInfo = volumeInfo;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -162,12 +180,14 @@ public class VirtualVolumeInfo implements Serializable {
             Objects.equals(status, that.status) &&
             Objects.equals(bindings, that.bindings) &&
             Objects.equals(children, that.children) &&
-            Objects.equals(metadata, that.metadata);
+            Objects.equals(metadata, that.metadata) &&
+            Objects.equals(snapshotInfo, that.snapshotInfo) &&
+            Objects.equals(volumeInfo, that.volumeInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualVolumeID, parentVirtualVolumeID, storageContainerID, storageContainer, volumeID, snapshotID, virtualVolumeType, status, (Object[])bindings, (Object[])children, metadata );
+        return Objects.hash( virtualVolumeID, parentVirtualVolumeID, storageContainerID, storageContainer, volumeID, snapshotID, virtualVolumeType, status, (Object[])bindings, (Object[])children, metadata, snapshotInfo, volumeInfo );
     }
 
 
@@ -184,6 +204,8 @@ public class VirtualVolumeInfo implements Serializable {
         map.put("bindings", bindings);
         map.put("children", children);
         map.put("metadata", metadata);
+        map.put("snapshotInfo", snapshotInfo);
+        map.put("volumeInfo", volumeInfo);
         return map;
     }
 
@@ -203,6 +225,8 @@ public class VirtualVolumeInfo implements Serializable {
         sb.append(" bindings : ").append(Arrays.toString(bindings)).append(",");
         sb.append(" children : ").append(Arrays.toString(children)).append(",");
         sb.append(" metadata : ").append(metadata).append(",");
+        sb.append(" snapshotInfo : ").append(snapshotInfo).append(",");
+        sb.append(" volumeInfo : ").append(volumeInfo).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -231,6 +255,8 @@ public class VirtualVolumeInfo implements Serializable {
         private Long[] bindings;
         private java.util.UUID[] children;
         private java.util.Map<String, Object> metadata;
+        private Snapshot snapshotInfo;
+        private Volume volumeInfo;
 
         private Builder() { }
 
@@ -246,7 +272,9 @@ public class VirtualVolumeInfo implements Serializable {
                          this.status,
                          this.bindings,
                          this.children,
-                         this.metadata);
+                         this.metadata,
+                         this.snapshotInfo,
+                         this.volumeInfo);
         }
 
         private VirtualVolumeInfo.Builder buildFrom(final VirtualVolumeInfo req) {
@@ -261,6 +289,8 @@ public class VirtualVolumeInfo implements Serializable {
             this.bindings = req.bindings;
             this.children = req.children;
             this.metadata = req.metadata;
+            this.snapshotInfo = req.snapshotInfo;
+            this.volumeInfo = req.volumeInfo;
 
             return this;
         }
@@ -317,6 +347,16 @@ public class VirtualVolumeInfo implements Serializable {
 
         public VirtualVolumeInfo.Builder metadata(final java.util.Map<String, Object> metadata) {
             this.metadata = metadata;
+            return this;
+        }
+
+        public VirtualVolumeInfo.Builder snapshotInfo(final Snapshot snapshotInfo) {
+            this.snapshotInfo = snapshotInfo;
+            return this;
+        }
+
+        public VirtualVolumeInfo.Builder volumeInfo(final Volume volumeInfo) {
+            this.volumeInfo = volumeInfo;
             return this;
         }
 

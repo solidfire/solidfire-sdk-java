@@ -34,6 +34,7 @@ public class ListVolumeAccessGroupsResult implements Serializable {
 
     public static final long serialVersionUID = -2843709235167971533L;
     @SerializedName("volumeAccessGroups") private VolumeAccessGroup[] volumeAccessGroups;
+    @SerializedName("volumeAccessGroupsNotFound") private Long[] volumeAccessGroupsNotFound;
 
     // empty constructor
     @Since("7.0")
@@ -42,18 +43,27 @@ public class ListVolumeAccessGroupsResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListVolumeAccessGroupsResult(
-        VolumeAccessGroup[] volumeAccessGroups
+        VolumeAccessGroup[] volumeAccessGroups,
+        Long[] volumeAccessGroupsNotFound
     )
     {
         this.volumeAccessGroups = volumeAccessGroups;
+        this.volumeAccessGroupsNotFound = volumeAccessGroupsNotFound;
     }
 
     /** 
-     * List of volume access groups.
+     * A list of objects describing each volume access group.
      **/
     public VolumeAccessGroup[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
     public void setVolumeAccessGroups(VolumeAccessGroup[] volumeAccessGroups) { 
         this.volumeAccessGroups = volumeAccessGroups;
+    }
+    /** 
+     * A list of volume access groups not found by the system. Present if you used the "volumeAccessGroups" parameter and the system was unable to find one or more volume access groups that you specified.
+     **/
+    public Long[] getVolumeAccessGroupsNotFound() { return this.volumeAccessGroupsNotFound; }
+    public void setVolumeAccessGroupsNotFound(Long[] volumeAccessGroupsNotFound) { 
+        this.volumeAccessGroupsNotFound = volumeAccessGroupsNotFound;
     }
 
     @Override
@@ -63,18 +73,20 @@ public class ListVolumeAccessGroupsResult implements Serializable {
 
         ListVolumeAccessGroupsResult that = (ListVolumeAccessGroupsResult) o;
         return 
-            Objects.equals(volumeAccessGroups, that.volumeAccessGroups);
+            Objects.equals(volumeAccessGroups, that.volumeAccessGroups) &&
+            Objects.equals(volumeAccessGroupsNotFound, that.volumeAccessGroupsNotFound);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])volumeAccessGroups );
+        return Objects.hash( (Object[])volumeAccessGroups, (Object[])volumeAccessGroupsNotFound );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("volumeAccessGroups", volumeAccessGroups);
+        map.put("volumeAccessGroupsNotFound", volumeAccessGroupsNotFound);
         return map;
     }
 
@@ -84,6 +96,7 @@ public class ListVolumeAccessGroupsResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups)).append(",");
+        sb.append(" volumeAccessGroupsNotFound : ").append(Arrays.toString(volumeAccessGroupsNotFound)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -102,22 +115,30 @@ public class ListVolumeAccessGroupsResult implements Serializable {
 
     public static class Builder {
         private VolumeAccessGroup[] volumeAccessGroups;
+        private Long[] volumeAccessGroupsNotFound;
 
         private Builder() { }
 
         public ListVolumeAccessGroupsResult build() {
             return new ListVolumeAccessGroupsResult (
-                         this.volumeAccessGroups);
+                         this.volumeAccessGroups,
+                         this.volumeAccessGroupsNotFound);
         }
 
         private ListVolumeAccessGroupsResult.Builder buildFrom(final ListVolumeAccessGroupsResult req) {
             this.volumeAccessGroups = req.volumeAccessGroups;
+            this.volumeAccessGroupsNotFound = req.volumeAccessGroupsNotFound;
 
             return this;
         }
 
         public ListVolumeAccessGroupsResult.Builder volumeAccessGroups(final VolumeAccessGroup[] volumeAccessGroups) {
             this.volumeAccessGroups = volumeAccessGroups;
+            return this;
+        }
+
+        public ListVolumeAccessGroupsResult.Builder volumeAccessGroupsNotFound(final Long[] volumeAccessGroupsNotFound) {
+            this.volumeAccessGroupsNotFound = volumeAccessGroupsNotFound;
             return this;
         }
 

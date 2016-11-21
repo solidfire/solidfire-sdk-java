@@ -59,6 +59,11 @@ public class VolumeStats implements Serializable {
     @SerializedName("writeLatencyUSec") private Long writeLatencyUSec;
     @SerializedName("writeOps") private Long writeOps;
     @SerializedName("zeroBlocks") private Long zeroBlocks;
+    @SerializedName("writeBytesLastSample") private Long writeBytesLastSample;
+    @SerializedName("samplePeriodMSec") private Long samplePeriodMSec;
+    @SerializedName("readBytesLastSample") private Long readBytesLastSample;
+    @SerializedName("readOpsLastSample") private Long readOpsLastSample;
+    @SerializedName("WriteOpsLastSample") private Long writeOpsLastSample;
 
     // empty constructor
     @Since("7.0")
@@ -92,7 +97,12 @@ public class VolumeStats implements Serializable {
         Long writeBytes,
         Long writeLatencyUSec,
         Long writeOps,
-        Long zeroBlocks
+        Long zeroBlocks,
+        Long writeBytesLastSample,
+        Long samplePeriodMSec,
+        Long readBytesLastSample,
+        Long readOpsLastSample,
+        Long writeOpsLastSample
     )
     {
         this.accountID = accountID;
@@ -121,6 +131,11 @@ public class VolumeStats implements Serializable {
         this.writeLatencyUSec = writeLatencyUSec;
         this.writeOps = writeOps;
         this.zeroBlocks = zeroBlocks;
+        this.writeBytesLastSample = writeBytesLastSample;
+        this.samplePeriodMSec = samplePeriodMSec;
+        this.readBytesLastSample = readBytesLastSample;
+        this.readOpsLastSample = readOpsLastSample;
+        this.writeOpsLastSample = writeOpsLastSample;
     }
 
     /** 
@@ -320,6 +335,41 @@ public class VolumeStats implements Serializable {
     public void setZeroBlocks(Long zeroBlocks) { 
         this.zeroBlocks = zeroBlocks;
     }
+    /** 
+     * The total number of bytes written to the volume during the last sample period.
+     **/
+    public Long getWriteBytesLastSample() { return this.writeBytesLastSample; }
+    public void setWriteBytesLastSample(Long writeBytesLastSample) { 
+        this.writeBytesLastSample = writeBytesLastSample;
+    }
+    /** 
+     * The length of the sample period in milliseconds.
+     **/
+    public Long getSamplePeriodMSec() { return this.samplePeriodMSec; }
+    public void setSamplePeriodMSec(Long samplePeriodMSec) { 
+        this.samplePeriodMSec = samplePeriodMSec;
+    }
+    /** 
+     * The total number of bytes read from the volume during the last sample period.
+     **/
+    public Long getReadBytesLastSample() { return this.readBytesLastSample; }
+    public void setReadBytesLastSample(Long readBytesLastSample) { 
+        this.readBytesLastSample = readBytesLastSample;
+    }
+    /** 
+     * The total number of read operations durin gth elast sample period.
+     **/
+    public Long getReadOpsLastSample() { return this.readOpsLastSample; }
+    public void setReadOpsLastSample(Long readOpsLastSample) { 
+        this.readOpsLastSample = readOpsLastSample;
+    }
+    /** 
+     * The total number of write operations during the last sample period.
+     **/
+    public Long getWriteOpsLastSample() { return this.writeOpsLastSample; }
+    public void setWriteOpsLastSample(Long writeOpsLastSample) { 
+        this.writeOpsLastSample = writeOpsLastSample;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -353,12 +403,17 @@ public class VolumeStats implements Serializable {
             Objects.equals(writeBytes, that.writeBytes) &&
             Objects.equals(writeLatencyUSec, that.writeLatencyUSec) &&
             Objects.equals(writeOps, that.writeOps) &&
-            Objects.equals(zeroBlocks, that.zeroBlocks);
+            Objects.equals(zeroBlocks, that.zeroBlocks) &&
+            Objects.equals(writeBytesLastSample, that.writeBytesLastSample) &&
+            Objects.equals(samplePeriodMSec, that.samplePeriodMSec) &&
+            Objects.equals(readBytesLastSample, that.readBytesLastSample) &&
+            Objects.equals(readOpsLastSample, that.readOpsLastSample) &&
+            Objects.equals(writeOpsLastSample, that.writeOpsLastSample);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID, actualIOPS, asyncDelay, averageIOPSize, burstIOPSCredit, clientQueueDepth, desiredMetadataHosts, latencyUSec, metadataHosts, nonZeroBlocks, readBytes, readLatencyUSec, readOps, throttle, timestamp, totalLatencyUSec, unalignedReads, unalignedWrites, (Object[])volumeAccessGroups, volumeID, volumeSize, volumeUtilization, writeBytes, writeLatencyUSec, writeOps, zeroBlocks );
+        return Objects.hash( accountID, actualIOPS, asyncDelay, averageIOPSize, burstIOPSCredit, clientQueueDepth, desiredMetadataHosts, latencyUSec, metadataHosts, nonZeroBlocks, readBytes, readLatencyUSec, readOps, throttle, timestamp, totalLatencyUSec, unalignedReads, unalignedWrites, (Object[])volumeAccessGroups, volumeID, volumeSize, volumeUtilization, writeBytes, writeLatencyUSec, writeOps, zeroBlocks, writeBytesLastSample, samplePeriodMSec, readBytesLastSample, readOpsLastSample, writeOpsLastSample );
     }
 
 
@@ -390,6 +445,11 @@ public class VolumeStats implements Serializable {
         map.put("writeLatencyUSec", writeLatencyUSec);
         map.put("writeOps", writeOps);
         map.put("zeroBlocks", zeroBlocks);
+        map.put("writeBytesLastSample", writeBytesLastSample);
+        map.put("samplePeriodMSec", samplePeriodMSec);
+        map.put("readBytesLastSample", readBytesLastSample);
+        map.put("readOpsLastSample", readOpsLastSample);
+        map.put("writeOpsLastSample", writeOpsLastSample);
         return map;
     }
 
@@ -426,6 +486,11 @@ public class VolumeStats implements Serializable {
         sb.append(" writeLatencyUSec : ").append(writeLatencyUSec).append(",");
         sb.append(" writeOps : ").append(writeOps).append(",");
         sb.append(" zeroBlocks : ").append(zeroBlocks).append(",");
+        sb.append(" writeBytesLastSample : ").append(writeBytesLastSample).append(",");
+        sb.append(" samplePeriodMSec : ").append(samplePeriodMSec).append(",");
+        sb.append(" readBytesLastSample : ").append(readBytesLastSample).append(",");
+        sb.append(" readOpsLastSample : ").append(readOpsLastSample).append(",");
+        sb.append(" writeOpsLastSample : ").append(writeOpsLastSample).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -469,6 +534,11 @@ public class VolumeStats implements Serializable {
         private Long writeLatencyUSec;
         private Long writeOps;
         private Long zeroBlocks;
+        private Long writeBytesLastSample;
+        private Long samplePeriodMSec;
+        private Long readBytesLastSample;
+        private Long readOpsLastSample;
+        private Long writeOpsLastSample;
 
         private Builder() { }
 
@@ -499,7 +569,12 @@ public class VolumeStats implements Serializable {
                          this.writeBytes,
                          this.writeLatencyUSec,
                          this.writeOps,
-                         this.zeroBlocks);
+                         this.zeroBlocks,
+                         this.writeBytesLastSample,
+                         this.samplePeriodMSec,
+                         this.readBytesLastSample,
+                         this.readOpsLastSample,
+                         this.writeOpsLastSample);
         }
 
         private VolumeStats.Builder buildFrom(final VolumeStats req) {
@@ -529,6 +604,11 @@ public class VolumeStats implements Serializable {
             this.writeLatencyUSec = req.writeLatencyUSec;
             this.writeOps = req.writeOps;
             this.zeroBlocks = req.zeroBlocks;
+            this.writeBytesLastSample = req.writeBytesLastSample;
+            this.samplePeriodMSec = req.samplePeriodMSec;
+            this.readBytesLastSample = req.readBytesLastSample;
+            this.readOpsLastSample = req.readOpsLastSample;
+            this.writeOpsLastSample = req.writeOpsLastSample;
 
             return this;
         }
@@ -660,6 +740,31 @@ public class VolumeStats implements Serializable {
 
         public VolumeStats.Builder zeroBlocks(final Long zeroBlocks) {
             this.zeroBlocks = zeroBlocks;
+            return this;
+        }
+
+        public VolumeStats.Builder writeBytesLastSample(final Long writeBytesLastSample) {
+            this.writeBytesLastSample = writeBytesLastSample;
+            return this;
+        }
+
+        public VolumeStats.Builder samplePeriodMSec(final Long samplePeriodMSec) {
+            this.samplePeriodMSec = samplePeriodMSec;
+            return this;
+        }
+
+        public VolumeStats.Builder readBytesLastSample(final Long readBytesLastSample) {
+            this.readBytesLastSample = readBytesLastSample;
+            return this;
+        }
+
+        public VolumeStats.Builder readOpsLastSample(final Long readOpsLastSample) {
+            this.readOpsLastSample = readOpsLastSample;
+            return this;
+        }
+
+        public VolumeStats.Builder writeOpsLastSample(final Long writeOpsLastSample) {
+            this.writeOpsLastSample = writeOpsLastSample;
             return this;
         }
 

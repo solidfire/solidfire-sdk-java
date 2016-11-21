@@ -40,6 +40,8 @@ public class SolidfireDefaults implements Serializable {
     @SerializedName("maxIncomingSliceSyncs") private Long maxIncomingSliceSyncs;
     @SerializedName("configuredIops") private Long configuredIops;
     @SerializedName("sCacheFileCapacity") private Long sCacheFileCapacity;
+    @SerializedName("maxDriveWriteThroughputMBPerSec") private Long maxDriveWriteThroughputMBPerSec;
+    @SerializedName("driveWriteThroughputMBPerSleep") private Long driveWriteThroughputMBPerSleep;
 
     // empty constructor
     @Since("7.0")
@@ -54,7 +56,9 @@ public class SolidfireDefaults implements Serializable {
         Long bufferCacheGB,
         Long maxIncomingSliceSyncs,
         Long configuredIops,
-        Long sCacheFileCapacity
+        Long sCacheFileCapacity,
+        Long maxDriveWriteThroughputMBPerSec,
+        Long driveWriteThroughputMBPerSleep
     )
     {
         this.sliceFileLogFileCapacity = sliceFileLogFileCapacity;
@@ -64,6 +68,8 @@ public class SolidfireDefaults implements Serializable {
         this.maxIncomingSliceSyncs = maxIncomingSliceSyncs;
         this.configuredIops = configuredIops;
         this.sCacheFileCapacity = sCacheFileCapacity;
+        this.maxDriveWriteThroughputMBPerSec = maxDriveWriteThroughputMBPerSec;
+        this.driveWriteThroughputMBPerSleep = driveWriteThroughputMBPerSleep;
     }
 
     /** 
@@ -108,6 +114,18 @@ public class SolidfireDefaults implements Serializable {
     public void setSCacheFileCapacity(Long sCacheFileCapacity) { 
         this.sCacheFileCapacity = sCacheFileCapacity;
     }
+    /** 
+     **/
+    public Long getMaxDriveWriteThroughputMBPerSec() { return this.maxDriveWriteThroughputMBPerSec; }
+    public void setMaxDriveWriteThroughputMBPerSec(Long maxDriveWriteThroughputMBPerSec) { 
+        this.maxDriveWriteThroughputMBPerSec = maxDriveWriteThroughputMBPerSec;
+    }
+    /** 
+     **/
+    public Long getDriveWriteThroughputMBPerSleep() { return this.driveWriteThroughputMBPerSleep; }
+    public void setDriveWriteThroughputMBPerSleep(Long driveWriteThroughputMBPerSleep) { 
+        this.driveWriteThroughputMBPerSleep = driveWriteThroughputMBPerSleep;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -122,12 +140,14 @@ public class SolidfireDefaults implements Serializable {
             Objects.equals(bufferCacheGB, that.bufferCacheGB) &&
             Objects.equals(maxIncomingSliceSyncs, that.maxIncomingSliceSyncs) &&
             Objects.equals(configuredIops, that.configuredIops) &&
-            Objects.equals(sCacheFileCapacity, that.sCacheFileCapacity);
+            Objects.equals(sCacheFileCapacity, that.sCacheFileCapacity) &&
+            Objects.equals(maxDriveWriteThroughputMBPerSec, that.maxDriveWriteThroughputMBPerSec) &&
+            Objects.equals(driveWriteThroughputMBPerSleep, that.driveWriteThroughputMBPerSleep);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( sliceFileLogFileCapacity, postCallbackThreadCount, cpuDmaLatency, bufferCacheGB, maxIncomingSliceSyncs, configuredIops, sCacheFileCapacity );
+        return Objects.hash( sliceFileLogFileCapacity, postCallbackThreadCount, cpuDmaLatency, bufferCacheGB, maxIncomingSliceSyncs, configuredIops, sCacheFileCapacity, maxDriveWriteThroughputMBPerSec, driveWriteThroughputMBPerSleep );
     }
 
 
@@ -140,6 +160,8 @@ public class SolidfireDefaults implements Serializable {
         map.put("maxIncomingSliceSyncs", maxIncomingSliceSyncs);
         map.put("configuredIops", configuredIops);
         map.put("sCacheFileCapacity", sCacheFileCapacity);
+        map.put("maxDriveWriteThroughputMBPerSec", maxDriveWriteThroughputMBPerSec);
+        map.put("driveWriteThroughputMBPerSleep", driveWriteThroughputMBPerSleep);
         return map;
     }
 
@@ -155,6 +177,8 @@ public class SolidfireDefaults implements Serializable {
         sb.append(" maxIncomingSliceSyncs : ").append(maxIncomingSliceSyncs).append(",");
         sb.append(" configuredIops : ").append(configuredIops).append(",");
         sb.append(" sCacheFileCapacity : ").append(sCacheFileCapacity).append(",");
+        sb.append(" maxDriveWriteThroughputMBPerSec : ").append(maxDriveWriteThroughputMBPerSec).append(",");
+        sb.append(" driveWriteThroughputMBPerSleep : ").append(driveWriteThroughputMBPerSleep).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -179,6 +203,8 @@ public class SolidfireDefaults implements Serializable {
         private Long maxIncomingSliceSyncs;
         private Long configuredIops;
         private Long sCacheFileCapacity;
+        private Long maxDriveWriteThroughputMBPerSec;
+        private Long driveWriteThroughputMBPerSleep;
 
         private Builder() { }
 
@@ -190,7 +216,9 @@ public class SolidfireDefaults implements Serializable {
                          this.bufferCacheGB,
                          this.maxIncomingSliceSyncs,
                          this.configuredIops,
-                         this.sCacheFileCapacity);
+                         this.sCacheFileCapacity,
+                         this.maxDriveWriteThroughputMBPerSec,
+                         this.driveWriteThroughputMBPerSleep);
         }
 
         private SolidfireDefaults.Builder buildFrom(final SolidfireDefaults req) {
@@ -201,6 +229,8 @@ public class SolidfireDefaults implements Serializable {
             this.maxIncomingSliceSyncs = req.maxIncomingSliceSyncs;
             this.configuredIops = req.configuredIops;
             this.sCacheFileCapacity = req.sCacheFileCapacity;
+            this.maxDriveWriteThroughputMBPerSec = req.maxDriveWriteThroughputMBPerSec;
+            this.driveWriteThroughputMBPerSleep = req.driveWriteThroughputMBPerSleep;
 
             return this;
         }
@@ -237,6 +267,16 @@ public class SolidfireDefaults implements Serializable {
 
         public SolidfireDefaults.Builder sCacheFileCapacity(final Long sCacheFileCapacity) {
             this.sCacheFileCapacity = sCacheFileCapacity;
+            return this;
+        }
+
+        public SolidfireDefaults.Builder maxDriveWriteThroughputMBPerSec(final Long maxDriveWriteThroughputMBPerSec) {
+            this.maxDriveWriteThroughputMBPerSec = maxDriveWriteThroughputMBPerSec;
+            return this;
+        }
+
+        public SolidfireDefaults.Builder driveWriteThroughputMBPerSleep(final Long driveWriteThroughputMBPerSleep) {
+            this.driveWriteThroughputMBPerSleep = driveWriteThroughputMBPerSleep;
             return this;
         }
 
