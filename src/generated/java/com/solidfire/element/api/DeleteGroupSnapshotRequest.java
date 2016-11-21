@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DeleteGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 7666156614345321835L;
+    public static final long serialVersionUID = -560960149L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("saveMembers") private Boolean saveMembers;
 

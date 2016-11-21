@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateInitiator implements Serializable {
 
-    public static final long serialVersionUID = 5723732916272205312L;
+    public static final long serialVersionUID = -6451712L;
     @SerializedName("name") private String name;
     @SerializedName("alias") private Optional<String> alias;
     @SerializedName("volumeAccessGroupID") private Optional<Long> volumeAccessGroupID;

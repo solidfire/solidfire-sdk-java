@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyStorageContainerRequest implements Serializable {
 
-    public static final long serialVersionUID = -7847052334144051852L;
+    public static final long serialVersionUID = 1097966964L;
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
     @SerializedName("initiatorSecret") private Optional<String> initiatorSecret;
     @SerializedName("targetSecret") private Optional<String> targetSecret;

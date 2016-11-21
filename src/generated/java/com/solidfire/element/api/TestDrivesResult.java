@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class TestDrivesResult implements Serializable {
 
-    public static final long serialVersionUID = 7173335651099316228L;
+    public static final long serialVersionUID = -898920444L;
     @SerializedName("details") private String details;
 
     // empty constructor

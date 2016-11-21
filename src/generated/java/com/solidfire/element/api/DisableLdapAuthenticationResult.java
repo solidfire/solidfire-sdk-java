@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DisableLdapAuthenticationResult implements Serializable {
 
-    public static final long serialVersionUID = 1488637025436948223L;
+    public static final long serialVersionUID = -861284609L;
 
     // empty constructor
     @Since("7.0")
