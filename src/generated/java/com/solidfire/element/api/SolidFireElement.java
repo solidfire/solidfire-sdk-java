@@ -3305,10 +3305,9 @@ public class SolidFireElement
         Optional<java.util.Map<String, Object>> attributes,
         Optional<String> mode,
         Optional<QoS> qos,
-        Optional<String> setCreateTime,
         Optional<Long> totalSize
         ) {
-        return this.modifyVolumes(new ModifyVolumesRequest(volumeIDs, accountID, access, attributes, mode, qos, setCreateTime, totalSize));
+        return this.modifyVolumes(new ModifyVolumesRequest(volumeIDs, accountID, access, attributes, mode, qos, totalSize));
     }
     /** 
      * PurgeDeletedVolume immediately and permanently purges a volume which has been deleted.

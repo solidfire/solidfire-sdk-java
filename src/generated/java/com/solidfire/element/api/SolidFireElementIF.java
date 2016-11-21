@@ -2493,7 +2493,6 @@ public interface SolidFireElementIF {
         Optional<java.util.Map<String, Object>> attributes,
         Optional<String> mode,
         Optional<QoS> qos,
-        Optional<String> setCreateTime,
         Optional<Long> totalSize
         );
     /** 

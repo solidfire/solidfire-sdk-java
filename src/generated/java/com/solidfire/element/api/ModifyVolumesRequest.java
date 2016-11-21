@@ -39,7 +39,6 @@ public class ModifyVolumesRequest implements Serializable {
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
     @SerializedName("mode") private Optional<String> mode;
     @SerializedName("qos") private Optional<QoS> qos;
-    @SerializedName("setCreateTime") private Optional<String> setCreateTime;
     @SerializedName("totalSize") private Optional<Long> totalSize;
 
     // empty constructor
@@ -55,7 +54,6 @@ public class ModifyVolumesRequest implements Serializable {
         Optional<java.util.Map<String, Object>> attributes,
         Optional<String> mode,
         Optional<QoS> qos,
-        Optional<String> setCreateTime,
         Optional<Long> totalSize
     )
     {
@@ -65,7 +63,6 @@ public class ModifyVolumesRequest implements Serializable {
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
-        this.setCreateTime = (setCreateTime == null) ? Optional.<String>empty() : setCreateTime;
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
     }
 
@@ -111,13 +108,6 @@ public class ModifyVolumesRequest implements Serializable {
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
     /** 
-     * Identify the time at which the volume was created.
-     **/
-    public Optional<String> getSetCreateTime() { return this.setCreateTime; }
-    public void setSetCreateTime(Optional<String> setCreateTime) { 
-        this.setCreateTime = (setCreateTime == null) ? Optional.<String>empty() : setCreateTime;
-    }
-    /** 
      * New size of the volume in bytes. 1000000000 is equal to 1GB. Size is rounded up to the nearest 1MB in size. This parameter can only be used to increase the size of a volume.
      **/
     public Optional<Long> getTotalSize() { return this.totalSize; }
@@ -138,13 +128,12 @@ public class ModifyVolumesRequest implements Serializable {
             Objects.equals(attributes, that.attributes) &&
             Objects.equals(mode, that.mode) &&
             Objects.equals(qos, that.qos) &&
-            Objects.equals(setCreateTime, that.setCreateTime) &&
             Objects.equals(totalSize, that.totalSize);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])volumeIDs, accountID, access, attributes, mode, qos, setCreateTime, totalSize );
+        return Objects.hash( (Object[])volumeIDs, accountID, access, attributes, mode, qos, totalSize );
     }
 
 
@@ -156,7 +145,6 @@ public class ModifyVolumesRequest implements Serializable {
         map.put("attributes", attributes);
         map.put("mode", mode);
         map.put("qos", qos);
-        map.put("setCreateTime", setCreateTime);
         map.put("totalSize", totalSize);
         return map;
     }
@@ -181,9 +169,6 @@ public class ModifyVolumesRequest implements Serializable {
         }
         if(null != qos && qos.isPresent()){
             sb.append(" qos : ").append(qos.get()).append(",");
-        }
-        if(null != setCreateTime && setCreateTime.isPresent()){
-            sb.append(" setCreateTime : ").append(setCreateTime.get()).append(",");
         }
         if(null != totalSize && totalSize.isPresent()){
             sb.append(" totalSize : ").append(totalSize.get()).append(",");
@@ -211,7 +196,6 @@ public class ModifyVolumesRequest implements Serializable {
         private Optional<java.util.Map<String, Object>> attributes;
         private Optional<String> mode;
         private Optional<QoS> qos;
-        private Optional<String> setCreateTime;
         private Optional<Long> totalSize;
 
         private Builder() { }
@@ -224,7 +208,6 @@ public class ModifyVolumesRequest implements Serializable {
                          this.attributes,
                          this.mode,
                          this.qos,
-                         this.setCreateTime,
                          this.totalSize);
         }
 
@@ -235,7 +218,6 @@ public class ModifyVolumesRequest implements Serializable {
             this.attributes = req.attributes;
             this.mode = req.mode;
             this.qos = req.qos;
-            this.setCreateTime = req.setCreateTime;
             this.totalSize = req.totalSize;
 
             return this;
@@ -268,11 +250,6 @@ public class ModifyVolumesRequest implements Serializable {
 
         public ModifyVolumesRequest.Builder optionalQos(final QoS qos) {
             this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
-            return this;
-        }
-
-        public ModifyVolumesRequest.Builder optionalSetCreateTime(final String setCreateTime) {
-            this.setCreateTime = (setCreateTime == null) ? Optional.<String>empty() : Optional.of(setCreateTime);
             return this;
         }
 
