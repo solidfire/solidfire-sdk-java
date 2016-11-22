@@ -119,21 +119,12 @@ public class ListVolumesRequest implements Serializable {
 
         ListVolumesRequest that = (ListVolumesRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(startVolumeID, that.startVolumeID) &&
-            Objects.equals(limit, that.limit) &&
-            Objects.equals(volumeStatus, that.volumeStatus) &&
-            Arrays.equals(accounts, that.accounts) &&
-            Objects.equals(isPaired, that.isPaired) &&
-            Arrays.equals(volumeIDs, that.volumeIDs);
-=======
             Objects.equals(startVolumeID.orElse(null), that.startVolumeID.orElse(null)) &&
             Objects.equals(limit.orElse(null), that.limit.orElse(null)) &&
             Objects.equals(volumeStatus.orElse(null), that.volumeStatus.orElse(null)) &&
             Arrays.equals(accounts.orElse(null), that.accounts.orElse(null)) &&
             Objects.equals(isPaired.orElse(null), that.isPaired.orElse(null)) &&
             Arrays.equals(volumeIDs.orElse(null), that.volumeIDs.orElse(null));
->>>>>>> local
     }
 
     @Override

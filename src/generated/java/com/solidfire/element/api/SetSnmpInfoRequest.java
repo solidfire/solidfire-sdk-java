@@ -93,17 +93,10 @@ public class SetSnmpInfoRequest implements Serializable {
 
         SetSnmpInfoRequest that = (SetSnmpInfoRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Arrays.equals(networks, that.networks) &&
-            Objects.equals(enabled, that.enabled) &&
-            Objects.equals(snmpV3Enabled, that.snmpV3Enabled) &&
-            Arrays.equals(usmUsers, that.usmUsers);
-=======
             Arrays.equals(networks.orElse(null), that.networks.orElse(null)) &&
             Objects.equals(enabled.orElse(null), that.enabled.orElse(null)) &&
             Objects.equals(snmpV3Enabled.orElse(null), that.snmpV3Enabled.orElse(null)) &&
             Arrays.equals(usmUsers.orElse(null), that.usmUsers.orElse(null));
->>>>>>> local
     }
 
     @Override

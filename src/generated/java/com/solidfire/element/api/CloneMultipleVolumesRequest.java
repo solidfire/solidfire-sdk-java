@@ -100,15 +100,9 @@ public class CloneMultipleVolumesRequest implements Serializable {
         CloneMultipleVolumesRequest that = (CloneMultipleVolumesRequest) o;
         return 
             Arrays.equals(volumes, that.volumes) &&
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(access, that.access) &&
-            Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
-            Objects.equals(newAccountID, that.newAccountID);
-=======
             Objects.equals(access.orElse(null), that.access.orElse(null)) &&
             Objects.equals(groupSnapshotID.orElse(null), that.groupSnapshotID.orElse(null)) &&
             Objects.equals(newAccountID.orElse(null), that.newAccountID.orElse(null));
->>>>>>> local
     }
 
     @Override

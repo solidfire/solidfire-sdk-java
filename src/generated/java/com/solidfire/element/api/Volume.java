@@ -277,13 +277,8 @@ public class Volume implements Serializable {
             Objects.equals(qos, that.qos) &&
             Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) &&
             Arrays.equals(volumePairs, that.volumePairs) &&
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(deleteTime, that.deleteTime) &&
-            Objects.equals(purgeTime, that.purgeTime) &&
-=======
             Objects.equals(deleteTime.orElse(null), that.deleteTime.orElse(null)) &&
             Objects.equals(purgeTime.orElse(null), that.purgeTime.orElse(null)) &&
->>>>>>> local
             Objects.equals(sliceCount, that.sliceCount) &&
             Objects.equals(totalSize, that.totalSize) &&
             Objects.equals(blockSize, that.blockSize) &&

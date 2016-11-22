@@ -83,15 +83,9 @@ public class ListInitiatorsRequest implements Serializable {
 
         ListInitiatorsRequest that = (ListInitiatorsRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(startInitiatorID, that.startInitiatorID) &&
-            Objects.equals(limit, that.limit) &&
-            Arrays.equals(initiators, that.initiators);
-=======
             Objects.equals(startInitiatorID.orElse(null), that.startInitiatorID.orElse(null)) &&
             Objects.equals(limit.orElse(null), that.limit.orElse(null)) &&
             Arrays.equals(initiators.orElse(null), that.initiators.orElse(null));
->>>>>>> local
     }
 
     @Override

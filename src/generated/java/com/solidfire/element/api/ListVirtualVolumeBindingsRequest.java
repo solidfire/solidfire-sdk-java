@@ -71,13 +71,8 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
 
         ListVirtualVolumeBindingsRequest that = (ListVirtualVolumeBindingsRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Arrays.equals(virtualVolumeBindingIDs, that.virtualVolumeBindingIDs) &&
-            Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
-=======
             Arrays.equals(virtualVolumeBindingIDs.orElse(null), that.virtualVolumeBindingIDs.orElse(null)) &&
             Objects.equals(callingVirtualVolumeHostID.orElse(null), that.callingVirtualVolumeHostID.orElse(null));
->>>>>>> local
     }
 
     @Override

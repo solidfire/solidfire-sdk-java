@@ -83,15 +83,9 @@ public class PurgeDeletedVolumesRequest implements Serializable {
 
         PurgeDeletedVolumesRequest that = (PurgeDeletedVolumesRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Arrays.equals(volumeIDs, that.volumeIDs) &&
-            Arrays.equals(accountIDs, that.accountIDs) &&
-            Arrays.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs);
-=======
             Arrays.equals(volumeIDs.orElse(null), that.volumeIDs.orElse(null)) &&
             Arrays.equals(accountIDs.orElse(null), that.accountIDs.orElse(null)) &&
             Arrays.equals(volumeAccessGroupIDs.orElse(null), that.volumeAccessGroupIDs.orElse(null));
->>>>>>> local
     }
 
     @Override

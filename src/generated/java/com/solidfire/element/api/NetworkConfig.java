@@ -317,34 +317,6 @@ public class NetworkConfig implements Serializable {
             Objects.equals(_default.orElse(null), that._default.orElse(null)) &&
             Objects.equals(bondMaster, that.bondMaster) &&
             Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(address, that.address) &&
-            Objects.equals(auto, that.auto) &&
-            Objects.equals(bondDowndelay, that.bondDowndelay) &&
-            Objects.equals(bondFailOverMac, that.bondFailOverMac) &&
-            Objects.equals(bondPrimaryReselect, that.bondPrimaryReselect) &&
-            Objects.equals(bondLacpRate, that.bondLacpRate) &&
-            Objects.equals(bondMiimon, that.bondMiimon) &&
-            Objects.equals(bondMode, that.bondMode) &&
-            Objects.equals(bondSlaves, that.bondSlaves) &&
-            Objects.equals(bondUpdelay, that.bondUpdelay) &&
-            Objects.equals(broadcast, that.broadcast) &&
-            Objects.equals(dnsNameservers, that.dnsNameservers) &&
-            Objects.equals(dnsSearch, that.dnsSearch) &&
-            Objects.equals(family, that.family) &&
-            Objects.equals(gateway, that.gateway) &&
-            Objects.equals(macAddress, that.macAddress) &&
-            Objects.equals(macAddressPermanent, that.macAddressPermanent) &&
-            Objects.equals(method, that.method) &&
-            Objects.equals(mtu, that.mtu) &&
-            Objects.equals(netmask, that.netmask) &&
-            Objects.equals(network, that.network) &&
-            Objects.equals(physical, that.physical) &&
-            Arrays.equals(routes, that.routes) &&
-            Objects.equals(status, that.status) &&
-            Arrays.equals(symmetricRouteRules, that.symmetricRouteRules) &&
-            Objects.equals(upAndRunning, that.upAndRunning);
-=======
             Objects.equals(address.orElse(null), that.address.orElse(null)) &&
             Objects.equals(auto.orElse(null), that.auto.orElse(null)) &&
             Objects.equals(bondDowndelay.orElse(null), that.bondDowndelay.orElse(null)) &&
@@ -371,7 +343,6 @@ public class NetworkConfig implements Serializable {
             Objects.equals(status.orElse(null), that.status.orElse(null)) &&
             Arrays.equals(symmetricRouteRules.orElse(null), that.symmetricRouteRules.orElse(null)) &&
             Objects.equals(upAndRunning.orElse(null), that.upAndRunning.orElse(null));
->>>>>>> local
     }
 
     @Override

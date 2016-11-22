@@ -105,17 +105,10 @@ public class CreateGroupSnapshotRequest implements Serializable {
         CreateGroupSnapshotRequest that = (CreateGroupSnapshotRequest) o;
         return 
             Arrays.equals(volumes, that.volumes) &&
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(name, that.name) &&
-            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
-            Objects.equals(retention, that.retention) &&
-            Objects.equals(attributes, that.attributes);
-=======
             Objects.equals(name.orElse(null), that.name.orElse(null)) &&
             Objects.equals(enableRemoteReplication.orElse(null), that.enableRemoteReplication.orElse(null)) &&
             Objects.equals(retention.orElse(null), that.retention.orElse(null)) &&
             Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
->>>>>>> local
     }
 
     @Override

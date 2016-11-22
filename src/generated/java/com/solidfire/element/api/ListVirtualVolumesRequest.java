@@ -103,19 +103,11 @@ public class ListVirtualVolumesRequest implements Serializable {
 
         ListVirtualVolumesRequest that = (ListVirtualVolumesRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(details, that.details) &&
-            Objects.equals(limit, that.limit) &&
-            Objects.equals(recursive, that.recursive) &&
-            Objects.equals(startVirtualVolumeID, that.startVirtualVolumeID) &&
-            Arrays.equals(virtualVolumeIDs, that.virtualVolumeIDs);
-=======
             Objects.equals(details.orElse(null), that.details.orElse(null)) &&
             Objects.equals(limit.orElse(null), that.limit.orElse(null)) &&
             Objects.equals(recursive.orElse(null), that.recursive.orElse(null)) &&
             Objects.equals(startVirtualVolumeID.orElse(null), that.startVirtualVolumeID.orElse(null)) &&
             Arrays.equals(virtualVolumeIDs.orElse(null), that.virtualVolumeIDs.orElse(null));
->>>>>>> local
     }
 
     @Override

@@ -73,13 +73,8 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
 
         ListVolumeStatsByVirtualVolumeRequest that = (ListVolumeStatsByVirtualVolumeRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(startVirtualVolumeID, that.startVirtualVolumeID) &&
-            Arrays.equals(virtualVolumeIDs, that.virtualVolumeIDs);
-=======
             Objects.equals(startVirtualVolumeID.orElse(null), that.startVirtualVolumeID.orElse(null)) &&
             Arrays.equals(virtualVolumeIDs.orElse(null), that.virtualVolumeIDs.orElse(null));
->>>>>>> local
     }
 
     @Override

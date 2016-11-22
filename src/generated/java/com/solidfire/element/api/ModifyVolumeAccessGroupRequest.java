@@ -127,21 +127,12 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         ModifyVolumeAccessGroupRequest that = (ModifyVolumeAccessGroupRequest) o;
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
-<<<<<<< refs/remotes/origin/develop
-            Arrays.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Arrays.equals(virtualNetworkTags, that.virtualNetworkTags) &&
-            Objects.equals(name, that.name) &&
-            Arrays.equals(initiators, that.initiators) &&
-            Arrays.equals(volumes, that.volumes) &&
-            Objects.equals(attributes, that.attributes);
-=======
             Arrays.equals(virtualNetworkID.orElse(null), that.virtualNetworkID.orElse(null)) &&
             Arrays.equals(virtualNetworkTags.orElse(null), that.virtualNetworkTags.orElse(null)) &&
             Objects.equals(name.orElse(null), that.name.orElse(null)) &&
             Arrays.equals(initiators.orElse(null), that.initiators.orElse(null)) &&
             Arrays.equals(volumes.orElse(null), that.volumes.orElse(null)) &&
             Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
->>>>>>> local
     }
 
     @Override

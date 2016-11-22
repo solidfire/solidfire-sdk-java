@@ -106,13 +106,8 @@ public class AddClusterAdminRequest implements Serializable {
             Objects.equals(username, that.username) &&
             Objects.equals(password, that.password) &&
             Arrays.equals(access, that.access) &&
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(acceptEula, that.acceptEula) &&
-            Objects.equals(attributes, that.attributes);
-=======
             Objects.equals(acceptEula.orElse(null), that.acceptEula.orElse(null)) &&
             Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
->>>>>>> local
     }
 
     @Override

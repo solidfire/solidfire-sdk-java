@@ -146,17 +146,6 @@ public class ModifyVirtualNetworkRequest implements Serializable {
 
         ModifyVirtualNetworkRequest that = (ModifyVirtualNetworkRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
-            Objects.equals(name, that.name) &&
-            Arrays.equals(addressBlocks, that.addressBlocks) &&
-            Objects.equals(netmask, that.netmask) &&
-            Objects.equals(svip, that.svip) &&
-            Objects.equals(gateway, that.gateway) &&
-            Objects.equals(namespace, that.namespace) &&
-            Objects.equals(attributes, that.attributes);
-=======
             Objects.equals(virtualNetworkID.orElse(null), that.virtualNetworkID.orElse(null)) &&
             Objects.equals(virtualNetworkTag.orElse(null), that.virtualNetworkTag.orElse(null)) &&
             Objects.equals(name.orElse(null), that.name.orElse(null)) &&
@@ -166,7 +155,6 @@ public class ModifyVirtualNetworkRequest implements Serializable {
             Objects.equals(gateway.orElse(null), that.gateway.orElse(null)) &&
             Objects.equals(namespace.orElse(null), that.namespace.orElse(null)) &&
             Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
->>>>>>> local
     }
 
     @Override

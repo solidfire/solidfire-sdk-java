@@ -113,17 +113,10 @@ public class CreateVirtualVolumeHostRequest implements Serializable {
         return 
             Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) &&
             Objects.equals(clusterID, that.clusterID) &&
-<<<<<<< refs/remotes/origin/develop
-            Arrays.equals(initiatorNames, that.initiatorNames) &&
-            Arrays.equals(visibleProtocolEndpointIDs, that.visibleProtocolEndpointIDs) &&
-            Objects.equals(hostAddress, that.hostAddress) &&
-            Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
-=======
             Arrays.equals(initiatorNames.orElse(null), that.initiatorNames.orElse(null)) &&
             Arrays.equals(visibleProtocolEndpointIDs.orElse(null), that.visibleProtocolEndpointIDs.orElse(null)) &&
             Objects.equals(hostAddress.orElse(null), that.hostAddress.orElse(null)) &&
             Objects.equals(callingVirtualVolumeHostID.orElse(null), that.callingVirtualVolumeHostID.orElse(null));
->>>>>>> local
     }
 
     @Override

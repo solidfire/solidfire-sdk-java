@@ -169,18 +169,6 @@ public class EnableLdapAuthenticationRequest implements Serializable {
 
         EnableLdapAuthenticationRequest that = (EnableLdapAuthenticationRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(authType, that.authType) &&
-            Objects.equals(groupSearchBaseDN, that.groupSearchBaseDN) &&
-            Objects.equals(groupSearchCustomFilter, that.groupSearchCustomFilter) &&
-            Objects.equals(groupSearchType, that.groupSearchType) &&
-            Objects.equals(searchBindDN, that.searchBindDN) &&
-            Objects.equals(searchBindPassword, that.searchBindPassword) &&
-            Arrays.equals(serverURIs, that.serverURIs) &&
-            Objects.equals(userDNTemplate, that.userDNTemplate) &&
-            Objects.equals(userSearchBaseDN, that.userSearchBaseDN) &&
-            Objects.equals(userSearchFilter, that.userSearchFilter);
-=======
             Objects.equals(authType.orElse(null), that.authType.orElse(null)) &&
             Objects.equals(groupSearchBaseDN.orElse(null), that.groupSearchBaseDN.orElse(null)) &&
             Objects.equals(groupSearchCustomFilter.orElse(null), that.groupSearchCustomFilter.orElse(null)) &&
@@ -191,7 +179,6 @@ public class EnableLdapAuthenticationRequest implements Serializable {
             Objects.equals(userDNTemplate.orElse(null), that.userDNTemplate.orElse(null)) &&
             Objects.equals(userSearchBaseDN.orElse(null), that.userSearchBaseDN.orElse(null)) &&
             Objects.equals(userSearchFilter.orElse(null), that.userSearchFilter.orElse(null));
->>>>>>> local
     }
 
     @Override

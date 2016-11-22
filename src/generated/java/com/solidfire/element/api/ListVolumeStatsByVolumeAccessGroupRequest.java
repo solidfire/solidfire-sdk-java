@@ -64,11 +64,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
 
         ListVolumeStatsByVolumeAccessGroupRequest that = (ListVolumeStatsByVolumeAccessGroupRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups);
-=======
             Arrays.equals(volumeAccessGroups.orElse(null), that.volumeAccessGroups.orElse(null));
->>>>>>> local
     }
 
     @Override

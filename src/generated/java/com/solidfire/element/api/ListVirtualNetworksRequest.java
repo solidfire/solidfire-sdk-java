@@ -93,17 +93,10 @@ public class ListVirtualNetworksRequest implements Serializable {
 
         ListVirtualNetworksRequest that = (ListVirtualNetworksRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
-            Arrays.equals(virtualNetworkIDs, that.virtualNetworkIDs) &&
-            Arrays.equals(virtualNetworkTags, that.virtualNetworkTags);
-=======
             Objects.equals(virtualNetworkID.orElse(null), that.virtualNetworkID.orElse(null)) &&
             Objects.equals(virtualNetworkTag.orElse(null), that.virtualNetworkTag.orElse(null)) &&
             Arrays.equals(virtualNetworkIDs.orElse(null), that.virtualNetworkIDs.orElse(null)) &&
             Arrays.equals(virtualNetworkTags.orElse(null), that.virtualNetworkTags.orElse(null));
->>>>>>> local
     }
 
     @Override

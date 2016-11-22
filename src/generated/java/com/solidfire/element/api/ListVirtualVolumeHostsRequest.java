@@ -71,13 +71,8 @@ public class ListVirtualVolumeHostsRequest implements Serializable {
 
         ListVirtualVolumeHostsRequest that = (ListVirtualVolumeHostsRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Arrays.equals(virtualVolumeHostIDs, that.virtualVolumeHostIDs) &&
-            Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
-=======
             Arrays.equals(virtualVolumeHostIDs.orElse(null), that.virtualVolumeHostIDs.orElse(null)) &&
             Objects.equals(callingVirtualVolumeHostID.orElse(null), that.callingVirtualVolumeHostID.orElse(null));
->>>>>>> local
     }
 
     @Override

@@ -95,13 +95,8 @@ public class AddLdapClusterAdminRequest implements Serializable {
         return 
             Objects.equals(username, that.username) &&
             Arrays.equals(access, that.access) &&
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(acceptEula, that.acceptEula) &&
-            Objects.equals(attributes, that.attributes);
-=======
             Objects.equals(acceptEula.orElse(null), that.acceptEula.orElse(null)) &&
             Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
->>>>>>> local
     }
 
     @Override

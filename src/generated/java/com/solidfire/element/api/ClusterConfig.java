@@ -150,18 +150,6 @@ public class ClusterConfig implements Serializable {
 
         ClusterConfig that = (ClusterConfig) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(cipi, that.cipi) &&
-            Objects.equals(cluster, that.cluster) &&
-            Arrays.equals(ensemble, that.ensemble) &&
-            Objects.equals(mipi, that.mipi) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(pendingNodeID, that.pendingNodeID) &&
-            Objects.equals(role, that.role) &&
-            Objects.equals(sipi, that.sipi) &&
-            Objects.equals(state, that.state);
-=======
             Objects.equals(cipi.orElse(null), that.cipi.orElse(null)) &&
             Objects.equals(cluster.orElse(null), that.cluster.orElse(null)) &&
             Arrays.equals(ensemble.orElse(null), that.ensemble.orElse(null)) &&
@@ -172,7 +160,6 @@ public class ClusterConfig implements Serializable {
             Objects.equals(role.orElse(null), that.role.orElse(null)) &&
             Objects.equals(sipi.orElse(null), that.sipi.orElse(null)) &&
             Objects.equals(state.orElse(null), that.state.orElse(null));
->>>>>>> local
     }
 
     @Override

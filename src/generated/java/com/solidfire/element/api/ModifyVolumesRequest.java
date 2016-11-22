@@ -123,21 +123,12 @@ public class ModifyVolumesRequest implements Serializable {
         ModifyVolumesRequest that = (ModifyVolumesRequest) o;
         return 
             Arrays.equals(volumeIDs, that.volumeIDs) &&
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(accountID, that.accountID) &&
-            Objects.equals(access, that.access) &&
-            Objects.equals(attributes, that.attributes) &&
-            Objects.equals(mode, that.mode) &&
-            Objects.equals(qos, that.qos) &&
-            Objects.equals(totalSize, that.totalSize);
-=======
             Objects.equals(accountID.orElse(null), that.accountID.orElse(null)) &&
             Objects.equals(access.orElse(null), that.access.orElse(null)) &&
             Objects.equals(attributes.orElse(null), that.attributes.orElse(null)) &&
             Objects.equals(mode.orElse(null), that.mode.orElse(null)) &&
             Objects.equals(qos.orElse(null), that.qos.orElse(null)) &&
             Objects.equals(totalSize.orElse(null), that.totalSize.orElse(null));
->>>>>>> local
     }
 
     @Override

@@ -63,11 +63,7 @@ public class ListAsyncResultsRequest implements Serializable {
 
         ListAsyncResultsRequest that = (ListAsyncResultsRequest) o;
         return 
-<<<<<<< refs/remotes/origin/develop
-            Arrays.equals(asyncResultTypes, that.asyncResultTypes);
-=======
             Arrays.equals(asyncResultTypes.orElse(null), that.asyncResultTypes.orElse(null));
->>>>>>> local
     }
 
     @Override

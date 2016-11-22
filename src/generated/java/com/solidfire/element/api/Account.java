@@ -127,15 +127,9 @@ public class Account implements Serializable {
             Objects.equals(username, that.username) &&
             Objects.equals(status, that.status) &&
             Arrays.equals(volumes, that.volumes) &&
-<<<<<<< refs/remotes/origin/develop
-            Objects.equals(initiatorSecret, that.initiatorSecret) &&
-            Objects.equals(targetSecret, that.targetSecret) &&
-            Objects.equals(attributes, that.attributes);
-=======
             Objects.equals(initiatorSecret.orElse(null), that.initiatorSecret.orElse(null)) &&
             Objects.equals(targetSecret.orElse(null), that.targetSecret.orElse(null)) &&
             Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
->>>>>>> local
     }
 
     @Override
