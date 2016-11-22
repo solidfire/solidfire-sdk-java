@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class KernelCrashDump implements Serializable {
 
-    public static final long serialVersionUID = 1223660021L;
+    public static final long serialVersionUID = 8968604396374954485L;
     @SerializedName("kernelCrashDumpMinFreeGb") private Long kernelCrashDumpMinFreeGb;
     @SerializedName("kernelCrashDumpDirectory") private String kernelCrashDumpDirectory;
     @SerializedName("kernelCrashDumpKernelOptions") private String kernelCrashDumpKernelOptions;

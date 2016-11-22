@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class NetworkConfig implements Serializable {
 
-    public static final long serialVersionUID = 1443531341L;
+    public static final long serialVersionUID = -6490718356259567027L;
     @SerializedName("#default") private Optional<Boolean> _default;
     @SerializedName("bond-master") private String bondMaster;
     @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
@@ -339,9 +339,9 @@ public class NetworkConfig implements Serializable {
             Objects.equals(netmask, that.netmask) &&
             Objects.equals(network, that.network) &&
             Objects.equals(physical, that.physical) &&
-            Arrays.equals(routes, that.routes) &&
+            Objects.equals(routes, that.routes) &&
             Objects.equals(status, that.status) &&
-            Arrays.equals(symmetricRouteRules, that.symmetricRouteRules) &&
+            Objects.equals(symmetricRouteRules, that.symmetricRouteRules) &&
             Objects.equals(upAndRunning, that.upAndRunning);
     }
 
@@ -391,87 +391,87 @@ public class NetworkConfig implements Serializable {
         sb.append( "{ " );
 
         if(null != _default && _default.isPresent()){
-            sb.append(" _default : ").append(_default.get()).append(",");
+            sb.append(" _default : ").append(_default).append(",");
         }
         sb.append(" bondMaster : ").append(bondMaster).append(",");
         sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
         if(null != address && address.isPresent()){
-            sb.append(" address : ").append(address.get()).append(",");
+            sb.append(" address : ").append(address).append(",");
         }
         if(null != auto && auto.isPresent()){
-            sb.append(" auto : ").append(auto.get()).append(",");
+            sb.append(" auto : ").append(auto).append(",");
         }
         if(null != bondDowndelay && bondDowndelay.isPresent()){
-            sb.append(" bondDowndelay : ").append(bondDowndelay.get()).append(",");
+            sb.append(" bondDowndelay : ").append(bondDowndelay).append(",");
         }
         if(null != bondFailOverMac && bondFailOverMac.isPresent()){
-            sb.append(" bondFailOverMac : ").append(bondFailOverMac.get()).append(",");
+            sb.append(" bondFailOverMac : ").append(bondFailOverMac).append(",");
         }
         if(null != bondPrimaryReselect && bondPrimaryReselect.isPresent()){
-            sb.append(" bondPrimaryReselect : ").append(bondPrimaryReselect.get()).append(",");
+            sb.append(" bondPrimaryReselect : ").append(bondPrimaryReselect).append(",");
         }
         if(null != bondLacpRate && bondLacpRate.isPresent()){
-            sb.append(" bondLacpRate : ").append(bondLacpRate.get()).append(",");
+            sb.append(" bondLacpRate : ").append(bondLacpRate).append(",");
         }
         if(null != bondMiimon && bondMiimon.isPresent()){
-            sb.append(" bondMiimon : ").append(bondMiimon.get()).append(",");
+            sb.append(" bondMiimon : ").append(bondMiimon).append(",");
         }
         if(null != bondMode && bondMode.isPresent()){
-            sb.append(" bondMode : ").append(bondMode.get()).append(",");
+            sb.append(" bondMode : ").append(bondMode).append(",");
         }
         if(null != bondSlaves && bondSlaves.isPresent()){
-            sb.append(" bondSlaves : ").append(bondSlaves.get()).append(",");
+            sb.append(" bondSlaves : ").append(bondSlaves).append(",");
         }
         if(null != bondUpdelay && bondUpdelay.isPresent()){
-            sb.append(" bondUpdelay : ").append(bondUpdelay.get()).append(",");
+            sb.append(" bondUpdelay : ").append(bondUpdelay).append(",");
         }
         if(null != broadcast && broadcast.isPresent()){
-            sb.append(" broadcast : ").append(broadcast.get()).append(",");
+            sb.append(" broadcast : ").append(broadcast).append(",");
         }
         if(null != dnsNameservers && dnsNameservers.isPresent()){
-            sb.append(" dnsNameservers : ").append(dnsNameservers.get()).append(",");
+            sb.append(" dnsNameservers : ").append(dnsNameservers).append(",");
         }
         if(null != dnsSearch && dnsSearch.isPresent()){
-            sb.append(" dnsSearch : ").append(dnsSearch.get()).append(",");
+            sb.append(" dnsSearch : ").append(dnsSearch).append(",");
         }
         if(null != family && family.isPresent()){
-            sb.append(" family : ").append(family.get()).append(",");
+            sb.append(" family : ").append(family).append(",");
         }
         if(null != gateway && gateway.isPresent()){
-            sb.append(" gateway : ").append(gateway.get()).append(",");
+            sb.append(" gateway : ").append(gateway).append(",");
         }
         if(null != macAddress && macAddress.isPresent()){
-            sb.append(" macAddress : ").append(macAddress.get()).append(",");
+            sb.append(" macAddress : ").append(macAddress).append(",");
         }
         if(null != macAddressPermanent && macAddressPermanent.isPresent()){
-            sb.append(" macAddressPermanent : ").append(macAddressPermanent.get()).append(",");
+            sb.append(" macAddressPermanent : ").append(macAddressPermanent).append(",");
         }
         if(null != method && method.isPresent()){
-            sb.append(" method : ").append(method.get()).append(",");
+            sb.append(" method : ").append(method).append(",");
         }
         if(null != mtu && mtu.isPresent()){
-            sb.append(" mtu : ").append(mtu.get()).append(",");
+            sb.append(" mtu : ").append(mtu).append(",");
         }
         if(null != netmask && netmask.isPresent()){
-            sb.append(" netmask : ").append(netmask.get()).append(",");
+            sb.append(" netmask : ").append(netmask).append(",");
         }
         if(null != network && network.isPresent()){
-            sb.append(" network : ").append(network.get()).append(",");
+            sb.append(" network : ").append(network).append(",");
         }
         if(null != physical && physical.isPresent()){
-            sb.append(" physical : ").append(physical.get()).append(",");
+            sb.append(" physical : ").append(physical).append(",");
         }
         if(null != routes && routes.isPresent()){
-            sb.append(" routes : ").append(routes.get()).append(",");
+            sb.append(" routes : ").append(routes).append(",");
         }
         if(null != status && status.isPresent()){
-            sb.append(" status : ").append(status.get()).append(",");
+            sb.append(" status : ").append(status).append(",");
         }
         if(null != symmetricRouteRules && symmetricRouteRules.isPresent()){
-            sb.append(" symmetricRouteRules : ").append(symmetricRouteRules.get()).append(",");
+            sb.append(" symmetricRouteRules : ").append(symmetricRouteRules).append(",");
         }
         if(null != upAndRunning && upAndRunning.isPresent()){
-            sb.append(" upAndRunning : ").append(upAndRunning.get()).append(",");
+            sb.append(" upAndRunning : ").append(upAndRunning).append(",");
         }
         sb.append( " }" );
 

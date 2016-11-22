@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ScheduleInfo implements Serializable {
 
-    public static final long serialVersionUID = 524141091L;
+    public static final long serialVersionUID = -2613274100562542045L;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
     @SerializedName("snapshotName") private Optional<String> snapshotName;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
@@ -93,7 +93,7 @@ public class ScheduleInfo implements Serializable {
 
         ScheduleInfo that = (ScheduleInfo) o;
         return 
-            Arrays.equals(volumeIDs, that.volumeIDs) &&
+            Objects.equals(volumeIDs, that.volumeIDs) &&
             Objects.equals(snapshotName, that.snapshotName) &&
             Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
             Objects.equals(retention, that.retention);
@@ -120,16 +120,16 @@ public class ScheduleInfo implements Serializable {
         sb.append( "{ " );
 
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(volumeIDs.get()).append(",");
+            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
         }
         if(null != snapshotName && snapshotName.isPresent()){
-            sb.append(" snapshotName : ").append(snapshotName.get()).append(",");
+            sb.append(" snapshotName : ").append(snapshotName).append(",");
         }
         if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
-            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication.get()).append(",");
+            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
         }
         if(null != retention && retention.isPresent()){
-            sb.append(" retention : ").append(retention.get()).append(",");
+            sb.append(" retention : ").append(retention).append(",");
         }
         sb.append( " }" );
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class HardwareConfig implements Serializable {
 
-    public static final long serialVersionUID = 1954491532L;
+    public static final long serialVersionUID = 5656038675960507532L;
     @SerializedName("scsiBusInternalDriver") private String scsiBusInternalDriver;
     @SerializedName("networkDriver") private String[] networkDriver;
     @SerializedName("biosRevision") private String biosRevision;

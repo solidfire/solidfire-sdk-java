@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetVolumeEfficiencyRequest implements Serializable {
 
-    public static final long serialVersionUID = 1106678966L;
+    public static final long serialVersionUID = 6871428855542224054L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("force") private Optional<Boolean> force;
 
@@ -96,7 +96,7 @@ public class GetVolumeEfficiencyRequest implements Serializable {
 
         sb.append(" volumeID : ").append(volumeID).append(",");
         if(null != force && force.isPresent()){
-            sb.append(" force : ").append(force.get()).append(",");
+            sb.append(" force : ").append(force).append(",");
         }
         sb.append( " }" );
 

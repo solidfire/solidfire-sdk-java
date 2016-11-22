@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DriveStats implements Serializable {
 
-    public static final long serialVersionUID = -758720397L;
+    public static final long serialVersionUID = 215354036034394227L;
     @SerializedName("activeSessions") private Long activeSessions;
     @SerializedName("driveID") private Optional<Long> driveID;
     @SerializedName("failedDieCount") private Long failedDieCount;
@@ -260,7 +260,7 @@ public class DriveStats implements Serializable {
 
         sb.append(" activeSessions : ").append(activeSessions).append(",");
         if(null != driveID && driveID.isPresent()){
-            sb.append(" driveID : ").append(driveID.get()).append(",");
+            sb.append(" driveID : ").append(driveID).append(",");
         }
         sb.append(" failedDieCount : ").append(failedDieCount).append(",");
         sb.append(" lifeRemainingPercent : ").append(lifeRemainingPercent).append(",");
@@ -274,7 +274,7 @@ public class DriveStats implements Serializable {
         sb.append(" timestamp : ").append(timestamp).append(",");
         sb.append(" totalCapacity : ").append(totalCapacity).append(",");
         if(null != usedCapacity && usedCapacity.isPresent()){
-            sb.append(" usedCapacity : ").append(usedCapacity.get()).append(",");
+            sb.append(" usedCapacity : ").append(usedCapacity).append(",");
         }
         sb.append(" usedMemory : ").append(usedMemory).append(",");
         sb.append(" writeBytes : ").append(writeBytes).append(",");

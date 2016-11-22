@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -788096898L;
+    public static final long serialVersionUID = -2486206820112754562L;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("volumeStatus") private Optional<String> volumeStatus;
@@ -122,9 +122,9 @@ public class ListVolumesRequest implements Serializable {
             Objects.equals(startVolumeID, that.startVolumeID) &&
             Objects.equals(limit, that.limit) &&
             Objects.equals(volumeStatus, that.volumeStatus) &&
-            Arrays.equals(accounts, that.accounts) &&
+            Objects.equals(accounts, that.accounts) &&
             Objects.equals(isPaired, that.isPaired) &&
-            Arrays.equals(volumeIDs, that.volumeIDs);
+            Objects.equals(volumeIDs, that.volumeIDs);
     }
 
     @Override
@@ -150,22 +150,22 @@ public class ListVolumesRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != startVolumeID && startVolumeID.isPresent()){
-            sb.append(" startVolumeID : ").append(startVolumeID.get()).append(",");
+            sb.append(" startVolumeID : ").append(startVolumeID).append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit.get()).append(",");
+            sb.append(" limit : ").append(limit).append(",");
         }
         if(null != volumeStatus && volumeStatus.isPresent()){
-            sb.append(" volumeStatus : ").append(volumeStatus.get()).append(",");
+            sb.append(" volumeStatus : ").append(volumeStatus).append(",");
         }
         if(null != accounts && accounts.isPresent()){
-            sb.append(" accounts : ").append(accounts.get()).append(",");
+            sb.append(" accounts : ").append(accounts).append(",");
         }
         if(null != isPaired && isPaired.isPresent()){
-            sb.append(" isPaired : ").append(isPaired.get()).append(",");
+            sb.append(" isPaired : ").append(isPaired).append(",");
         }
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(volumeIDs.get()).append(",");
+            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
         }
         sb.append( " }" );
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListSnapshotsRequest implements Serializable {
 
-    public static final long serialVersionUID = -1811764342L;
+    public static final long serialVersionUID = -2283933622639350902L;
     @SerializedName("volumeID") private Optional<Long> volumeID;
 
     // empty constructor
@@ -85,7 +85,7 @@ public class ListSnapshotsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != volumeID && volumeID.isPresent()){
-            sb.append(" volumeID : ").append(volumeID.get()).append(",");
+            sb.append(" volumeID : ").append(volumeID).append(",");
         }
         sb.append( " }" );
 

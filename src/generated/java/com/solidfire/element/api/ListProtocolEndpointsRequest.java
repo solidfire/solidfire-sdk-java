@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListProtocolEndpointsRequest implements Serializable {
 
-    public static final long serialVersionUID = -1325512911L;
+    public static final long serialVersionUID = 2280366146651572017L;
     @SerializedName("protocolEndpointIDs") private Optional<java.util.UUID[]> protocolEndpointIDs;
 
     // empty constructor
@@ -62,7 +62,7 @@ public class ListProtocolEndpointsRequest implements Serializable {
 
         ListProtocolEndpointsRequest that = (ListProtocolEndpointsRequest) o;
         return 
-            Arrays.equals(protocolEndpointIDs, that.protocolEndpointIDs);
+            Objects.equals(protocolEndpointIDs, that.protocolEndpointIDs);
     }
 
     @Override
@@ -83,7 +83,7 @@ public class ListProtocolEndpointsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != protocolEndpointIDs && protocolEndpointIDs.isPresent()){
-            sb.append(" protocolEndpointIDs : ").append(protocolEndpointIDs.get()).append(",");
+            sb.append(" protocolEndpointIDs : ").append(protocolEndpointIDs).append(",");
         }
         sb.append( " }" );
 

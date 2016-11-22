@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class VolumeAccessGroupLunAssignments implements Serializable {
 
-    public static final long serialVersionUID = -603598849L;
+    public static final long serialVersionUID = -29908714038898689L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
     @SerializedName("deletedLunAssignments") private LunAssignment[] deletedLunAssignments;

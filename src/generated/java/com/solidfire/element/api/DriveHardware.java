@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DriveHardware implements Serializable {
 
-    public static final long serialVersionUID = -1526528451L;
+    public static final long serialVersionUID = -2699863894590814659L;
     @SerializedName("canonicalName") private String canonicalName;
     @SerializedName("connected") private Boolean connected;
     @SerializedName("dev") private Long dev;
@@ -416,7 +416,7 @@ public class DriveHardware implements Serializable {
         sb.append(" size : ").append(size).append(",");
         sb.append(" slot : ").append(slot).append(",");
         if(null != smartSsdWriteCapable && smartSsdWriteCapable.isPresent()){
-            sb.append(" smartSsdWriteCapable : ").append(smartSsdWriteCapable.get()).append(",");
+            sb.append(" smartSsdWriteCapable : ").append(smartSsdWriteCapable).append(",");
         }
         sb.append(" uuid : ").append(uuid).append(",");
         sb.append(" vendor : ").append(vendor).append(",");

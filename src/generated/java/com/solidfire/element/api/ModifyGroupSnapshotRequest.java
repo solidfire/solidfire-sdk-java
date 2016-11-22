@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 1108760680L;
+    public static final long serialVersionUID = -3820766952241604504L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
@@ -112,10 +112,10 @@ public class ModifyGroupSnapshotRequest implements Serializable {
 
         sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
         if(null != expirationTime && expirationTime.isPresent()){
-            sb.append(" expirationTime : ").append(expirationTime.get()).append(",");
+            sb.append(" expirationTime : ").append(expirationTime).append(",");
         }
         if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
-            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication.get()).append(",");
+            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
         }
         sb.append( " }" );
 

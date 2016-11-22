@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RemoveVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = 801786343L;
+    public static final long serialVersionUID = -7622530625529296409L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
 
@@ -96,10 +96,10 @@ public class RemoveVirtualNetworkRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID.get()).append(",");
+            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
         }
         if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
-            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag.get()).append(",");
+            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
         }
         sb.append( " }" );
 

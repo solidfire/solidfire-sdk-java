@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListGroupSnapshotsRequest implements Serializable {
 
-    public static final long serialVersionUID = 1538161994L;
+    public static final long serialVersionUID = 8925165299321175370L;
     @SerializedName("volumeID") private Optional<Long> volumeID;
 
     // empty constructor
@@ -85,7 +85,7 @@ public class ListGroupSnapshotsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != volumeID && volumeID.isPresent()){
-            sb.append(" volumeID : ").append(volumeID.get()).append(",");
+            sb.append(" volumeID : ").append(volumeID).append(",");
         }
         sb.append( " }" );
 

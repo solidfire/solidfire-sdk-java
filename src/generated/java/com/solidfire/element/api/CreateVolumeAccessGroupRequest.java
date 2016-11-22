@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 945101162L;
+    public static final long serialVersionUID = 6824028462430624106L;
     @SerializedName("name") private String name;
     @SerializedName("initiators") private Optional<String[]> initiators;
     @SerializedName("volumes") private Optional<Long[]> volumes;
@@ -117,10 +117,10 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         CreateVolumeAccessGroupRequest that = (CreateVolumeAccessGroupRequest) o;
         return 
             Objects.equals(name, that.name) &&
-            Arrays.equals(initiators, that.initiators) &&
-            Arrays.equals(volumes, that.volumes) &&
-            Arrays.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Arrays.equals(virtualNetworkTags, that.virtualNetworkTags) &&
+            Objects.equals(initiators, that.initiators) &&
+            Objects.equals(volumes, that.volumes) &&
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
+            Objects.equals(virtualNetworkTags, that.virtualNetworkTags) &&
             Objects.equals(attributes, that.attributes);
     }
 
@@ -148,19 +148,19 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
 
         sb.append(" name : ").append(name).append(",");
         if(null != initiators && initiators.isPresent()){
-            sb.append(" initiators : ").append(initiators.get()).append(",");
+            sb.append(" initiators : ").append(initiators).append(",");
         }
         if(null != volumes && volumes.isPresent()){
-            sb.append(" volumes : ").append(volumes.get()).append(",");
+            sb.append(" volumes : ").append(volumes).append(",");
         }
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID.get()).append(",");
+            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
         }
         if(null != virtualNetworkTags && virtualNetworkTags.isPresent()){
-            sb.append(" virtualNetworkTags : ").append(virtualNetworkTags.get()).append(",");
+            sb.append(" virtualNetworkTags : ").append(virtualNetworkTags).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

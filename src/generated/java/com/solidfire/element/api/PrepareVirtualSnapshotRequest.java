@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class PrepareVirtualSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -973991472L;
+    public static final long serialVersionUID = -4324099540451716656L;
     @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("writableSnapshot") private Optional<Boolean> writableSnapshot;
@@ -120,13 +120,13 @@ public class PrepareVirtualSnapshotRequest implements Serializable {
 
         sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name.get()).append(",");
+            sb.append(" name : ").append(name).append(",");
         }
         if(null != writableSnapshot && writableSnapshot.isPresent()){
-            sb.append(" writableSnapshot : ").append(writableSnapshot.get()).append(",");
+            sb.append(" writableSnapshot : ").append(writableSnapshot).append(",");
         }
         if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent()){
-            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get()).append(",");
+            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID).append(",");
         }
         sb.append( " }" );
 

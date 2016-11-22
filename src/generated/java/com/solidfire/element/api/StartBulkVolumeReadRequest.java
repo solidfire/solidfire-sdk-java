@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class StartBulkVolumeReadRequest implements Serializable {
 
-    public static final long serialVersionUID = -235807937L;
+    public static final long serialVersionUID = -108156352014984385L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("format") private String format;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
@@ -151,16 +151,16 @@ public class StartBulkVolumeReadRequest implements Serializable {
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" format : ").append(format).append(",");
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID.get()).append(",");
+            sb.append(" snapshotID : ").append(snapshotID).append(",");
         }
         if(null != script && script.isPresent()){
-            sb.append(" script : ").append(script.get()).append(",");
+            sb.append(" script : ").append(script).append(",");
         }
         if(null != scriptParameters && scriptParameters.isPresent()){
-            sb.append(" scriptParameters : ").append(scriptParameters.get()).append(",");
+            sb.append(" scriptParameters : ").append(scriptParameters).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

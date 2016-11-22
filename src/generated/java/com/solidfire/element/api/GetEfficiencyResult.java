@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetEfficiencyResult implements Serializable {
 
-    public static final long serialVersionUID = -1863375281L;
+    public static final long serialVersionUID = 1200500802556208719L;
     @SerializedName("compression") private Optional<Double> compression;
     @SerializedName("deduplication") private Optional<Double> deduplication;
     @SerializedName("thinProvisioning") private Optional<Double> thinProvisioning;
@@ -132,13 +132,13 @@ public class GetEfficiencyResult implements Serializable {
         sb.append( "{ " );
 
         if(null != compression && compression.isPresent()){
-            sb.append(" compression : ").append(compression.get()).append(",");
+            sb.append(" compression : ").append(compression).append(",");
         }
         if(null != deduplication && deduplication.isPresent()){
-            sb.append(" deduplication : ").append(deduplication.get()).append(",");
+            sb.append(" deduplication : ").append(deduplication).append(",");
         }
         if(null != thinProvisioning && thinProvisioning.isPresent()){
-            sb.append(" thinProvisioning : ").append(thinProvisioning.get()).append(",");
+            sb.append(" thinProvisioning : ").append(thinProvisioning).append(",");
         }
         sb.append(" timestamp : ").append(timestamp).append(",");
         sb.append(" missingVolumes : ").append(Arrays.toString(missingVolumes)).append(",");

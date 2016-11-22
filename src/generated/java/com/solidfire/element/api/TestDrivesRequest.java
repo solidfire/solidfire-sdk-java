@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class TestDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 1965760143L;
+    public static final long serialVersionUID = -5757296498888204657L;
     @SerializedName("minutes") private Optional<Long> minutes;
     @SerializedName("force") private Boolean force;
 
@@ -96,7 +96,7 @@ public class TestDrivesRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != minutes && minutes.isPresent()){
-            sb.append(" minutes : ").append(minutes.get()).append(",");
+            sb.append(" minutes : ").append(minutes).append(",");
         }
         sb.append(" force : ").append(force).append(",");
         sb.append( " }" );

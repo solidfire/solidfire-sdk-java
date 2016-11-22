@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ClusterConfig implements Serializable {
 
-    public static final long serialVersionUID = 2141584681L;
+    public static final long serialVersionUID = 3884387958155246889L;
     @SerializedName("cipi") private Optional<String> cipi;
     @SerializedName("cluster") private Optional<String> cluster;
     @SerializedName("ensemble") private Optional<String[]> ensemble;
@@ -152,7 +152,7 @@ public class ClusterConfig implements Serializable {
         return 
             Objects.equals(cipi, that.cipi) &&
             Objects.equals(cluster, that.cluster) &&
-            Arrays.equals(ensemble, that.ensemble) &&
+            Objects.equals(ensemble, that.ensemble) &&
             Objects.equals(mipi, that.mipi) &&
             Objects.equals(name, that.name) &&
             Objects.equals(nodeID, that.nodeID) &&
@@ -189,34 +189,34 @@ public class ClusterConfig implements Serializable {
         sb.append( "{ " );
 
         if(null != cipi && cipi.isPresent()){
-            sb.append(" cipi : ").append(cipi.get()).append(",");
+            sb.append(" cipi : ").append(cipi).append(",");
         }
         if(null != cluster && cluster.isPresent()){
-            sb.append(" cluster : ").append(cluster.get()).append(",");
+            sb.append(" cluster : ").append(cluster).append(",");
         }
         if(null != ensemble && ensemble.isPresent()){
-            sb.append(" ensemble : ").append(ensemble.get()).append(",");
+            sb.append(" ensemble : ").append(ensemble).append(",");
         }
         if(null != mipi && mipi.isPresent()){
-            sb.append(" mipi : ").append(mipi.get()).append(",");
+            sb.append(" mipi : ").append(mipi).append(",");
         }
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name.get()).append(",");
+            sb.append(" name : ").append(name).append(",");
         }
         if(null != nodeID && nodeID.isPresent()){
-            sb.append(" nodeID : ").append(nodeID.get()).append(",");
+            sb.append(" nodeID : ").append(nodeID).append(",");
         }
         if(null != pendingNodeID && pendingNodeID.isPresent()){
-            sb.append(" pendingNodeID : ").append(pendingNodeID.get()).append(",");
+            sb.append(" pendingNodeID : ").append(pendingNodeID).append(",");
         }
         if(null != role && role.isPresent()){
-            sb.append(" role : ").append(role.get()).append(",");
+            sb.append(" role : ").append(role).append(",");
         }
         if(null != sipi && sipi.isPresent()){
-            sb.append(" sipi : ").append(sipi.get()).append(",");
+            sb.append(" sipi : ").append(sipi).append(",");
         }
         if(null != state && state.isPresent()){
-            sb.append(" state : ").append(state.get()).append(",");
+            sb.append(" state : ").append(state).append(",");
         }
         sb.append( " }" );
 

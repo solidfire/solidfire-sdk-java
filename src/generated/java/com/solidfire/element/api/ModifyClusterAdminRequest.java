@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = -256498903L;
+    public static final long serialVersionUID = 8115405465052390185L;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     @SerializedName("password") private Optional<String> password;
     @SerializedName("access") private Optional<String[]> access;
@@ -95,7 +95,7 @@ public class ModifyClusterAdminRequest implements Serializable {
         return 
             Objects.equals(clusterAdminID, that.clusterAdminID) &&
             Objects.equals(password, that.password) &&
-            Arrays.equals(access, that.access) &&
+            Objects.equals(access, that.access) &&
             Objects.equals(attributes, that.attributes);
     }
 
@@ -121,13 +121,13 @@ public class ModifyClusterAdminRequest implements Serializable {
 
         sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
         if(null != password && password.isPresent()){
-            sb.append(" password : ").append(password.get()).append(",");
+            sb.append(" password : ").append(password).append(",");
         }
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access.get()).append(",");
+            sb.append(" access : ").append(access).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

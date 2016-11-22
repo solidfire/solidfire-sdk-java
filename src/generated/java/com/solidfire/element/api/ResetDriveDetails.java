@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ResetDriveDetails implements Serializable {
 
-    public static final long serialVersionUID = 99150390L;
+    public static final long serialVersionUID = 1589571588236831286L;
     @SerializedName("drive") private String drive;
     @SerializedName("returnCode") private Long returnCode;
     @SerializedName("stderr") private String stderr;

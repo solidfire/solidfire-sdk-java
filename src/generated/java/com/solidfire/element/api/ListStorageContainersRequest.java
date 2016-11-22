@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListStorageContainersRequest implements Serializable {
 
-    public static final long serialVersionUID = 490206722L;
+    public static final long serialVersionUID = 6165115027762705922L;
     @SerializedName("storageContainerIDs") private Optional<java.util.UUID[]> storageContainerIDs;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class ListStorageContainersRequest implements Serializable {
 
         ListStorageContainersRequest that = (ListStorageContainersRequest) o;
         return 
-            Arrays.equals(storageContainerIDs, that.storageContainerIDs);
+            Objects.equals(storageContainerIDs, that.storageContainerIDs);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class ListStorageContainersRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != storageContainerIDs && storageContainerIDs.isPresent()){
-            sb.append(" storageContainerIDs : ").append(storageContainerIDs.get()).append(",");
+            sb.append(" storageContainerIDs : ").append(storageContainerIDs).append(",");
         }
         sb.append( " }" );
 

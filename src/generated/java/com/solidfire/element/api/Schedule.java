@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Schedule implements Serializable {
 
-    public static final long serialVersionUID = 358144551L;
+    public static final long serialVersionUID = -5892117456652543449L;
     @SerializedName("frequency") private Frequency frequency;
     @SerializedName("hasError") private Optional<Boolean> hasError;
     @SerializedName("lastRunStatus") private String lastRunStatus;
@@ -227,27 +227,27 @@ public class Schedule implements Serializable {
 
         sb.append(" frequency : ").append(frequency).append(",");
         if(null != hasError && hasError.isPresent()){
-            sb.append(" hasError : ").append(hasError.get()).append(",");
+            sb.append(" hasError : ").append(hasError).append(",");
         }
         sb.append(" lastRunStatus : ").append(lastRunStatus).append(",");
         sb.append(" lastRunTimeStart : ").append(lastRunTimeStart).append(",");
         if(null != paused && paused.isPresent()){
-            sb.append(" paused : ").append(paused.get()).append(",");
+            sb.append(" paused : ").append(paused).append(",");
         }
         if(null != recurring && recurring.isPresent()){
-            sb.append(" recurring : ").append(recurring.get()).append(",");
+            sb.append(" recurring : ").append(recurring).append(",");
         }
         if(null != runNextInterval && runNextInterval.isPresent()){
-            sb.append(" runNextInterval : ").append(runNextInterval.get()).append(",");
+            sb.append(" runNextInterval : ").append(runNextInterval).append(",");
         }
         if(null != scheduleID && scheduleID.isPresent()){
-            sb.append(" scheduleID : ").append(scheduleID.get()).append(",");
+            sb.append(" scheduleID : ").append(scheduleID).append(",");
         }
         sb.append(" scheduleInfo : ").append(scheduleInfo).append(",");
         sb.append(" name : ").append(name).append(",");
         sb.append(" startingDate : ").append(startingDate).append(",");
         if(null != toBeDeleted && toBeDeleted.isPresent()){
-            sb.append(" toBeDeleted : ").append(toBeDeleted.get()).append(",");
+            sb.append(" toBeDeleted : ").append(toBeDeleted).append(",");
         }
         sb.append( " }" );
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 2014889002L;
+    public static final long serialVersionUID = 5050439057400185898L;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("totalSize") private Long totalSize;
@@ -153,10 +153,10 @@ public class CreateVolumeRequest implements Serializable {
         sb.append(" totalSize : ").append(totalSize).append(",");
         sb.append(" enable512e : ").append(enable512e).append(",");
         if(null != qos && qos.isPresent()){
-            sb.append(" qos : ").append(qos.get()).append(",");
+            sb.append(" qos : ").append(qos).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

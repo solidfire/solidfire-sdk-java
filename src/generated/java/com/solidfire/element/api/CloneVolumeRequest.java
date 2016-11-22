@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CloneVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -106727462L;
+    public static final long serialVersionUID = -768791333545216038L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("newAccountID") private Optional<Long> newAccountID;
@@ -169,19 +169,19 @@ public class CloneVolumeRequest implements Serializable {
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" name : ").append(name).append(",");
         if(null != newAccountID && newAccountID.isPresent()){
-            sb.append(" newAccountID : ").append(newAccountID.get()).append(",");
+            sb.append(" newAccountID : ").append(newAccountID).append(",");
         }
         if(null != newSize && newSize.isPresent()){
-            sb.append(" newSize : ").append(newSize.get()).append(",");
+            sb.append(" newSize : ").append(newSize).append(",");
         }
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access.get()).append(",");
+            sb.append(" access : ").append(access).append(",");
         }
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID.get()).append(",");
+            sb.append(" snapshotID : ").append(snapshotID).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

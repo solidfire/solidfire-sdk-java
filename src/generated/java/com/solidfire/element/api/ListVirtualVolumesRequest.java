@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 621523556L;
+    public static final long serialVersionUID = -1561321066464562588L;
     @SerializedName("details") private Optional<Boolean> details;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("recursive") private Optional<Boolean> recursive;
@@ -107,7 +107,7 @@ public class ListVirtualVolumesRequest implements Serializable {
             Objects.equals(limit, that.limit) &&
             Objects.equals(recursive, that.recursive) &&
             Objects.equals(startVirtualVolumeID, that.startVirtualVolumeID) &&
-            Arrays.equals(virtualVolumeIDs, that.virtualVolumeIDs);
+            Objects.equals(virtualVolumeIDs, that.virtualVolumeIDs);
     }
 
     @Override
@@ -132,19 +132,19 @@ public class ListVirtualVolumesRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != details && details.isPresent()){
-            sb.append(" details : ").append(details.get()).append(",");
+            sb.append(" details : ").append(details).append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit.get()).append(",");
+            sb.append(" limit : ").append(limit).append(",");
         }
         if(null != recursive && recursive.isPresent()){
-            sb.append(" recursive : ").append(recursive.get()).append(",");
+            sb.append(" recursive : ").append(recursive).append(",");
         }
         if(null != startVirtualVolumeID && startVirtualVolumeID.isPresent()){
-            sb.append(" startVirtualVolumeID : ").append(startVirtualVolumeID.get()).append(",");
+            sb.append(" startVirtualVolumeID : ").append(startVirtualVolumeID).append(",");
         }
         if(null != virtualVolumeIDs && virtualVolumeIDs.isPresent()){
-            sb.append(" virtualVolumeIDs : ").append(virtualVolumeIDs.get()).append(",");
+            sb.append(" virtualVolumeIDs : ").append(virtualVolumeIDs).append(",");
         }
         sb.append( " }" );
 

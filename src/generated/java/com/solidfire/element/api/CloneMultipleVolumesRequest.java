@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CloneMultipleVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -1462628176L;
+    public static final long serialVersionUID = -6275597178319531856L;
     @SerializedName("volumes") private CloneMultipleVolumeParams[] volumes;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
@@ -127,13 +127,13 @@ public class CloneMultipleVolumesRequest implements Serializable {
 
         sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access.get()).append(",");
+            sb.append(" access : ").append(access).append(",");
         }
         if(null != groupSnapshotID && groupSnapshotID.isPresent()){
-            sb.append(" groupSnapshotID : ").append(groupSnapshotID.get()).append(",");
+            sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
         }
         if(null != newAccountID && newAccountID.isPresent()){
-            sb.append(" newAccountID : ").append(newAccountID.get()).append(",");
+            sb.append(" newAccountID : ").append(newAccountID).append(",");
         }
         sb.append( " }" );
 

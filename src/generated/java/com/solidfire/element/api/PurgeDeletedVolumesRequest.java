@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class PurgeDeletedVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 19693014L;
+    public static final long serialVersionUID = -291946162793185834L;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
     @SerializedName("accountIDs") private Optional<Long[]> accountIDs;
     @SerializedName("volumeAccessGroupIDs") private Optional<Long[]> volumeAccessGroupIDs;
@@ -83,9 +83,9 @@ public class PurgeDeletedVolumesRequest implements Serializable {
 
         PurgeDeletedVolumesRequest that = (PurgeDeletedVolumesRequest) o;
         return 
-            Arrays.equals(volumeIDs, that.volumeIDs) &&
-            Arrays.equals(accountIDs, that.accountIDs) &&
-            Arrays.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs);
+            Objects.equals(volumeIDs, that.volumeIDs) &&
+            Objects.equals(accountIDs, that.accountIDs) &&
+            Objects.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs);
     }
 
     @Override
@@ -108,13 +108,13 @@ public class PurgeDeletedVolumesRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(volumeIDs.get()).append(",");
+            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
         }
         if(null != accountIDs && accountIDs.isPresent()){
-            sb.append(" accountIDs : ").append(accountIDs.get()).append(",");
+            sb.append(" accountIDs : ").append(accountIDs).append(",");
         }
         if(null != volumeAccessGroupIDs && volumeAccessGroupIDs.isPresent()){
-            sb.append(" volumeAccessGroupIDs : ").append(volumeAccessGroupIDs.get()).append(",");
+            sb.append(" volumeAccessGroupIDs : ").append(volumeAccessGroupIDs).append(",");
         }
         sb.append( " }" );
 

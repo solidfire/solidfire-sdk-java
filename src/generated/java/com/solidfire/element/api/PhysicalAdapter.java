@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class PhysicalAdapter implements Serializable {
 
-    public static final long serialVersionUID = 1383489379L;
+    public static final long serialVersionUID = -950225984887038109L;
     @SerializedName("address") private Optional<String> address;
     @SerializedName("macAddress") private Optional<String> macAddress;
     @SerializedName("macAddressPermanent") private Optional<String> macAddressPermanent;
@@ -149,25 +149,25 @@ public class PhysicalAdapter implements Serializable {
         sb.append( "{ " );
 
         if(null != address && address.isPresent()){
-            sb.append(" address : ").append(address.get()).append(",");
+            sb.append(" address : ").append(address).append(",");
         }
         if(null != macAddress && macAddress.isPresent()){
-            sb.append(" macAddress : ").append(macAddress.get()).append(",");
+            sb.append(" macAddress : ").append(macAddress).append(",");
         }
         if(null != macAddressPermanent && macAddressPermanent.isPresent()){
-            sb.append(" macAddressPermanent : ").append(macAddressPermanent.get()).append(",");
+            sb.append(" macAddressPermanent : ").append(macAddressPermanent).append(",");
         }
         if(null != mtu && mtu.isPresent()){
-            sb.append(" mtu : ").append(mtu.get()).append(",");
+            sb.append(" mtu : ").append(mtu).append(",");
         }
         if(null != netmask && netmask.isPresent()){
-            sb.append(" netmask : ").append(netmask.get()).append(",");
+            sb.append(" netmask : ").append(netmask).append(",");
         }
         if(null != network && network.isPresent()){
-            sb.append(" network : ").append(network.get()).append(",");
+            sb.append(" network : ").append(network).append(",");
         }
         if(null != upAndRunning && upAndRunning.isPresent()){
-            sb.append(" upAndRunning : ").append(upAndRunning.get()).append(",");
+            sb.append(" upAndRunning : ").append(upAndRunning).append(",");
         }
         sb.append( " }" );
 

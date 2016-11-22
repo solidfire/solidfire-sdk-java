@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Snapshot implements Serializable {
 
-    public static final long serialVersionUID = 119800148L;
+    public static final long serialVersionUID = -3853847877971082924L;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
@@ -279,7 +279,7 @@ public class Snapshot implements Serializable {
         sb.append(" snapshotUUID : ").append(snapshotUUID).append(",");
         sb.append(" totalSize : ").append(totalSize).append(",");
         if(null != groupID && groupID.isPresent()){
-            sb.append(" groupID : ").append(groupID.get()).append(",");
+            sb.append(" groupID : ").append(groupID).append(",");
         }
         sb.append(" groupSnapshotUUID : ").append(groupSnapshotUUID).append(",");
         sb.append(" createTime : ").append(createTime).append(",");

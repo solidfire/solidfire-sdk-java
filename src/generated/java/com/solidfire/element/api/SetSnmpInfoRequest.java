@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class SetSnmpInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 647339517L;
+    public static final long serialVersionUID = 5748454860350922237L;
     @SerializedName("networks") private Optional<SnmpNetwork[]> networks;
     @SerializedName("enabled") private Optional<Boolean> enabled;
     @SerializedName("snmpV3Enabled") private Optional<Boolean> snmpV3Enabled;
@@ -93,10 +93,10 @@ public class SetSnmpInfoRequest implements Serializable {
 
         SetSnmpInfoRequest that = (SetSnmpInfoRequest) o;
         return 
-            Arrays.equals(networks, that.networks) &&
+            Objects.equals(networks, that.networks) &&
             Objects.equals(enabled, that.enabled) &&
             Objects.equals(snmpV3Enabled, that.snmpV3Enabled) &&
-            Arrays.equals(usmUsers, that.usmUsers);
+            Objects.equals(usmUsers, that.usmUsers);
     }
 
     @Override
@@ -120,16 +120,16 @@ public class SetSnmpInfoRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != networks && networks.isPresent()){
-            sb.append(" networks : ").append(networks.get()).append(",");
+            sb.append(" networks : ").append(networks).append(",");
         }
         if(null != enabled && enabled.isPresent()){
-            sb.append(" enabled : ").append(enabled.get()).append(",");
+            sb.append(" enabled : ").append(enabled).append(",");
         }
         if(null != snmpV3Enabled && snmpV3Enabled.isPresent()){
-            sb.append(" snmpV3Enabled : ").append(snmpV3Enabled.get()).append(",");
+            sb.append(" snmpV3Enabled : ").append(snmpV3Enabled).append(",");
         }
         if(null != usmUsers && usmUsers.isPresent()){
-            sb.append(" usmUsers : ").append(usmUsers.get()).append(",");
+            sb.append(" usmUsers : ").append(usmUsers).append(",");
         }
         sb.append( " }" );
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 280225768L;
+    public static final long serialVersionUID = -6916105554939877400L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;
@@ -154,19 +154,19 @@ public class ModifyVolumeRequest implements Serializable {
 
         sb.append(" volumeID : ").append(volumeID).append(",");
         if(null != accountID && accountID.isPresent()){
-            sb.append(" accountID : ").append(accountID.get()).append(",");
+            sb.append(" accountID : ").append(accountID).append(",");
         }
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access.get()).append(",");
+            sb.append(" access : ").append(access).append(",");
         }
         if(null != qos && qos.isPresent()){
-            sb.append(" qos : ").append(qos.get()).append(",");
+            sb.append(" qos : ").append(qos).append(",");
         }
         if(null != totalSize && totalSize.isPresent()){
-            sb.append(" totalSize : ").append(totalSize.get()).append(",");
+            sb.append(" totalSize : ").append(totalSize).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

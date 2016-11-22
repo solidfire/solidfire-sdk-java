@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class AddClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 126212043L;
+    public static final long serialVersionUID = -1519043753950193717L;
     @SerializedName("username") private String username;
     @SerializedName("password") private String password;
     @SerializedName("access") private String[] access;
@@ -135,10 +135,10 @@ public class AddClusterAdminRequest implements Serializable {
         sb.append(" password : ").append(password).append(",");
         sb.append(" access : ").append(Arrays.toString(access)).append(",");
         if(null != acceptEula && acceptEula.isPresent()){
-            sb.append(" acceptEula : ").append(acceptEula.get()).append(",");
+            sb.append(" acceptEula : ").append(acceptEula).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

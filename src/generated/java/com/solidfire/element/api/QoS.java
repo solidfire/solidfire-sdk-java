@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class QoS implements Serializable {
 
-    public static final long serialVersionUID = -328459580L;
+    public static final long serialVersionUID = 1023223855695272644L;
     @SerializedName("minIOPS") private Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private Optional<Long> maxIOPS;
     @SerializedName("burstIOPS") private Optional<Long> burstIOPS;
@@ -125,16 +125,16 @@ public class QoS implements Serializable {
         sb.append( "{ " );
 
         if(null != minIOPS && minIOPS.isPresent()){
-            sb.append(" minIOPS : ").append(minIOPS.get()).append(",");
+            sb.append(" minIOPS : ").append(minIOPS).append(",");
         }
         if(null != maxIOPS && maxIOPS.isPresent()){
-            sb.append(" maxIOPS : ").append(maxIOPS.get()).append(",");
+            sb.append(" maxIOPS : ").append(maxIOPS).append(",");
         }
         if(null != burstIOPS && burstIOPS.isPresent()){
-            sb.append(" burstIOPS : ").append(burstIOPS.get()).append(",");
+            sb.append(" burstIOPS : ").append(burstIOPS).append(",");
         }
         if(null != burstTime && burstTime.isPresent()){
-            sb.append(" burstTime : ").append(burstTime.get()).append(",");
+            sb.append(" burstTime : ").append(burstTime).append(",");
         }
         sb.append( " }" );
 

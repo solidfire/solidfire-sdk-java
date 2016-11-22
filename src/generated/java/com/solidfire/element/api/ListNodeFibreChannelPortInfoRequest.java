@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListNodeFibreChannelPortInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -498132056L;
+    public static final long serialVersionUID = 5004353518930172840L;
     @SerializedName("force") private Optional<Boolean> force;
 
     // empty constructor
@@ -84,7 +84,7 @@ public class ListNodeFibreChannelPortInfoRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != force && force.isPresent()){
-            sb.append(" force : ").append(force.get()).append(",");
+            sb.append(" force : ").append(force).append(",");
         }
         sb.append( " }" );
 

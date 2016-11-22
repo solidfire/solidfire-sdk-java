@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class TestPingRequest implements Serializable {
 
-    public static final long serialVersionUID = -917292280L;
+    public static final long serialVersionUID = 8242775352369429256L;
     @SerializedName("attempts") private Optional<Long> attempts;
     @SerializedName("hosts") private Optional<String> hosts;
     @SerializedName("totalTimeoutSec") private Optional<Long> totalTimeoutSec;
@@ -132,19 +132,19 @@ public class TestPingRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != attempts && attempts.isPresent()){
-            sb.append(" attempts : ").append(attempts.get()).append(",");
+            sb.append(" attempts : ").append(attempts).append(",");
         }
         if(null != hosts && hosts.isPresent()){
-            sb.append(" hosts : ").append(hosts.get()).append(",");
+            sb.append(" hosts : ").append(hosts).append(",");
         }
         if(null != totalTimeoutSec && totalTimeoutSec.isPresent()){
-            sb.append(" totalTimeoutSec : ").append(totalTimeoutSec.get()).append(",");
+            sb.append(" totalTimeoutSec : ").append(totalTimeoutSec).append(",");
         }
         if(null != packetSize && packetSize.isPresent()){
-            sb.append(" packetSize : ").append(packetSize.get()).append(",");
+            sb.append(" packetSize : ").append(packetSize).append(",");
         }
         if(null != pingTimeoutMsec && pingTimeoutMsec.isPresent()){
-            sb.append(" pingTimeoutMsec : ").append(pingTimeoutMsec.get()).append(",");
+            sb.append(" pingTimeoutMsec : ").append(pingTimeoutMsec).append(",");
         }
         sb.append( " }" );
 

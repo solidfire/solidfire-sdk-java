@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 1781436442L;
+    public static final long serialVersionUID = -4050530006639669222L;
     @SerializedName("volumes") private Long[] volumes;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
@@ -134,16 +134,16 @@ public class CreateGroupSnapshotRequest implements Serializable {
 
         sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name.get()).append(",");
+            sb.append(" name : ").append(name).append(",");
         }
         if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
-            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication.get()).append(",");
+            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
         }
         if(null != retention && retention.isPresent()){
-            sb.append(" retention : ").append(retention.get()).append(",");
+            sb.append(" retention : ").append(retention).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

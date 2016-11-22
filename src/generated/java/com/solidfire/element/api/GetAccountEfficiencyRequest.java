@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetAccountEfficiencyRequest implements Serializable {
 
-    public static final long serialVersionUID = 843992046L;
+    public static final long serialVersionUID = 6289053675311483886L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("force") private Optional<Boolean> force;
 
@@ -96,7 +96,7 @@ public class GetAccountEfficiencyRequest implements Serializable {
 
         sb.append(" accountID : ").append(accountID).append(",");
         if(null != force && force.isPresent()){
-            sb.append(" force : ").append(force.get()).append(",");
+            sb.append(" force : ").append(force).append(",");
         }
         sb.append( " }" );
 

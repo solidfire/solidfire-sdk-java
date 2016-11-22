@@ -32,9 +32,9 @@ import java.util.Objects;
 
 public class DeleteVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = 2050497274L;
+    public static final long serialVersionUID = 3323553014043122426L;
     @SerializedName("volumes") private Volume[] volumes;
-    @SerializedName("curve") private QoS curve;
+    @SerializedName("curve") private VolumeQOS curve;
 
     // empty constructor
     @Since("7.0")
@@ -44,7 +44,7 @@ public class DeleteVolumesResult implements Serializable {
     @Since("7.0")
     public DeleteVolumesResult(
         Volume[] volumes,
-        QoS curve
+        VolumeQOS curve
     )
     {
         this.volumes = volumes;
@@ -60,8 +60,8 @@ public class DeleteVolumesResult implements Serializable {
     }
     /** 
      **/
-    public QoS getCurve() { return this.curve; }
-    public void setCurve(QoS curve) { 
+    public VolumeQOS getCurve() { return this.curve; }
+    public void setCurve(VolumeQOS curve) { 
         this.curve = curve;
     }
 
@@ -114,7 +114,7 @@ public class DeleteVolumesResult implements Serializable {
 
     public static class Builder {
         private Volume[] volumes;
-        private QoS curve;
+        private VolumeQOS curve;
 
         private Builder() { }
 
@@ -136,7 +136,7 @@ public class DeleteVolumesResult implements Serializable {
             return this;
         }
 
-        public DeleteVolumesResult.Builder curve(final QoS curve) {
+        public DeleteVolumesResult.Builder curve(final VolumeQOS curve) {
             this.curve = curve;
             return this;
         }

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateScheduleRequest implements Serializable {
 
-    public static final long serialVersionUID = -359028225L;
+    public static final long serialVersionUID = -4373490005883377153L;
     @SerializedName("schedule") private Schedule schedule;
 
     // empty constructor

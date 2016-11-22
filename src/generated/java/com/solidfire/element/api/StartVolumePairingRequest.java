@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class StartVolumePairingRequest implements Serializable {
 
-    public static final long serialVersionUID = -194270532L;
+    public static final long serialVersionUID = 5766800825199078076L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("mode") private Optional<String> mode;
 
@@ -101,7 +101,7 @@ public class StartVolumePairingRequest implements Serializable {
 
         sb.append(" volumeID : ").append(volumeID).append(",");
         if(null != mode && mode.isPresent()){
-            sb.append(" mode : ").append(mode.get()).append(",");
+            sb.append(" mode : ").append(mode).append(",");
         }
         sb.append( " }" );
 
