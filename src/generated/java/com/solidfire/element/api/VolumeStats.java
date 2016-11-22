@@ -63,7 +63,8 @@ public class VolumeStats implements Serializable {
     @SerializedName("samplePeriodMSec") private Long samplePeriodMSec;
     @SerializedName("readBytesLastSample") private Long readBytesLastSample;
     @SerializedName("readOpsLastSample") private Long readOpsLastSample;
-    @SerializedName("WriteOpsLastSample") private Long writeOpsLastSample;
+    @SerializedName("writeOpsLastSample") private Long writeOpsLastSample;
+    @SerializedName("virtualVolumeID") private Long virtualVolumeID;
 
     // empty constructor
     @Since("7.0")
@@ -102,7 +103,8 @@ public class VolumeStats implements Serializable {
         Long samplePeriodMSec,
         Long readBytesLastSample,
         Long readOpsLastSample,
-        Long writeOpsLastSample
+        Long writeOpsLastSample,
+        Long virtualVolumeID
     )
     {
         this.accountID = accountID;
@@ -136,6 +138,7 @@ public class VolumeStats implements Serializable {
         this.readBytesLastSample = readBytesLastSample;
         this.readOpsLastSample = readOpsLastSample;
         this.writeOpsLastSample = writeOpsLastSample;
+        this.virtualVolumeID = virtualVolumeID;
     }
 
     /** 
@@ -370,6 +373,13 @@ public class VolumeStats implements Serializable {
     public void setWriteOpsLastSample(Long writeOpsLastSample) { 
         this.writeOpsLastSample = writeOpsLastSample;
     }
+    /** 
+     * If the volume of interest is associated with a virtual volume, this is the virtual volume ID.
+     **/
+    public Long getVirtualVolumeID() { return this.virtualVolumeID; }
+    public void setVirtualVolumeID(Long virtualVolumeID) { 
+        this.virtualVolumeID = virtualVolumeID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -408,12 +418,13 @@ public class VolumeStats implements Serializable {
             Objects.equals(samplePeriodMSec, that.samplePeriodMSec) &&
             Objects.equals(readBytesLastSample, that.readBytesLastSample) &&
             Objects.equals(readOpsLastSample, that.readOpsLastSample) &&
-            Objects.equals(writeOpsLastSample, that.writeOpsLastSample);
+            Objects.equals(writeOpsLastSample, that.writeOpsLastSample) &&
+            Objects.equals(virtualVolumeID, that.virtualVolumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID, actualIOPS, asyncDelay, averageIOPSize, burstIOPSCredit, clientQueueDepth, desiredMetadataHosts, latencyUSec, metadataHosts, nonZeroBlocks, readBytes, readLatencyUSec, readOps, throttle, timestamp, totalLatencyUSec, unalignedReads, unalignedWrites, (Object[])volumeAccessGroups, volumeID, volumeSize, volumeUtilization, writeBytes, writeLatencyUSec, writeOps, zeroBlocks, writeBytesLastSample, samplePeriodMSec, readBytesLastSample, readOpsLastSample, writeOpsLastSample );
+        return Objects.hash( accountID, actualIOPS, asyncDelay, averageIOPSize, burstIOPSCredit, clientQueueDepth, desiredMetadataHosts, latencyUSec, metadataHosts, nonZeroBlocks, readBytes, readLatencyUSec, readOps, throttle, timestamp, totalLatencyUSec, unalignedReads, unalignedWrites, (Object[])volumeAccessGroups, volumeID, volumeSize, volumeUtilization, writeBytes, writeLatencyUSec, writeOps, zeroBlocks, writeBytesLastSample, samplePeriodMSec, readBytesLastSample, readOpsLastSample, writeOpsLastSample, virtualVolumeID );
     }
 
 
@@ -450,6 +461,7 @@ public class VolumeStats implements Serializable {
         map.put("readBytesLastSample", readBytesLastSample);
         map.put("readOpsLastSample", readOpsLastSample);
         map.put("writeOpsLastSample", writeOpsLastSample);
+        map.put("virtualVolumeID", virtualVolumeID);
         return map;
     }
 
@@ -491,6 +503,7 @@ public class VolumeStats implements Serializable {
         sb.append(" readBytesLastSample : ").append(readBytesLastSample).append(",");
         sb.append(" readOpsLastSample : ").append(readOpsLastSample).append(",");
         sb.append(" writeOpsLastSample : ").append(writeOpsLastSample).append(",");
+        sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -539,6 +552,7 @@ public class VolumeStats implements Serializable {
         private Long readBytesLastSample;
         private Long readOpsLastSample;
         private Long writeOpsLastSample;
+        private Long virtualVolumeID;
 
         private Builder() { }
 
@@ -574,7 +588,8 @@ public class VolumeStats implements Serializable {
                          this.samplePeriodMSec,
                          this.readBytesLastSample,
                          this.readOpsLastSample,
-                         this.writeOpsLastSample);
+                         this.writeOpsLastSample,
+                         this.virtualVolumeID);
         }
 
         private VolumeStats.Builder buildFrom(final VolumeStats req) {
@@ -609,6 +624,7 @@ public class VolumeStats implements Serializable {
             this.readBytesLastSample = req.readBytesLastSample;
             this.readOpsLastSample = req.readOpsLastSample;
             this.writeOpsLastSample = req.writeOpsLastSample;
+            this.virtualVolumeID = req.virtualVolumeID;
 
             return this;
         }
@@ -765,6 +781,11 @@ public class VolumeStats implements Serializable {
 
         public VolumeStats.Builder writeOpsLastSample(final Long writeOpsLastSample) {
             this.writeOpsLastSample = writeOpsLastSample;
+            return this;
+        }
+
+        public VolumeStats.Builder virtualVolumeID(final Long virtualVolumeID) {
+            this.virtualVolumeID = virtualVolumeID;
             return this;
         }
 
