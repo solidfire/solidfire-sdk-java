@@ -38,7 +38,7 @@ public class ModifyVolumesRequest implements Serializable {
     @SerializedName("access") private Optional<String> access;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
     @SerializedName("mode") private Optional<String> mode;
-    @SerializedName("qos") private Optional<VolumeQOS> qos;
+    @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("totalSize") private Optional<Long> totalSize;
 
     // empty constructor
@@ -53,7 +53,7 @@ public class ModifyVolumesRequest implements Serializable {
         Optional<String> access,
         Optional<java.util.Map<String, Object>> attributes,
         Optional<String> mode,
-        Optional<VolumeQOS> qos,
+        Optional<QoS> qos,
         Optional<Long> totalSize
     )
     {
@@ -62,7 +62,7 @@ public class ModifyVolumesRequest implements Serializable {
         this.access = (access == null) ? Optional.<String>empty() : access;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
-        this.qos = (qos == null) ? Optional.<VolumeQOS>empty() : qos;
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
     }
 
@@ -103,9 +103,9 @@ public class ModifyVolumesRequest implements Serializable {
     /** 
      * New quality of service settings for this volume.If not specified, the QoS settings are not changed.
      **/
-    public Optional<VolumeQOS> getQos() { return this.qos; }
-    public void setQos(Optional<VolumeQOS> qos) { 
-        this.qos = (qos == null) ? Optional.<VolumeQOS>empty() : qos;
+    public Optional<QoS> getQos() { return this.qos; }
+    public void setQos(Optional<QoS> qos) { 
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
     /** 
      * New size of the volume in bytes. 1000000000 is equal to 1GB. Size is rounded up to the nearest 1MB in size. This parameter can only be used to increase the size of a volume.
@@ -195,7 +195,7 @@ public class ModifyVolumesRequest implements Serializable {
         private Optional<String> access;
         private Optional<java.util.Map<String, Object>> attributes;
         private Optional<String> mode;
-        private Optional<VolumeQOS> qos;
+        private Optional<QoS> qos;
         private Optional<Long> totalSize;
 
         private Builder() { }
@@ -248,8 +248,8 @@ public class ModifyVolumesRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optionalQos(final VolumeQOS qos) {
-            this.qos = (qos == null) ? Optional.<VolumeQOS>empty() : Optional.of(qos);
+        public ModifyVolumesRequest.Builder optionalQos(final QoS qos) {
+            this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
         }
 
