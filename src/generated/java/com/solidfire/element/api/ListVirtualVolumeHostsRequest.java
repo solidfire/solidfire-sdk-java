@@ -71,7 +71,7 @@ public class ListVirtualVolumeHostsRequest implements Serializable {
 
         ListVirtualVolumeHostsRequest that = (ListVirtualVolumeHostsRequest) o;
         return 
-            Objects.equals(virtualVolumeHostIDs, that.virtualVolumeHostIDs) &&
+            Arrays.equals(virtualVolumeHostIDs, that.virtualVolumeHostIDs) &&
             Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }
 

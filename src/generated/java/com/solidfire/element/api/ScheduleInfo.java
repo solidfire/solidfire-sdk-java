@@ -93,7 +93,7 @@ public class ScheduleInfo implements Serializable {
 
         ScheduleInfo that = (ScheduleInfo) o;
         return 
-            Objects.equals(volumeIDs, that.volumeIDs) &&
+            Arrays.equals(volumeIDs, that.volumeIDs) &&
             Objects.equals(snapshotName, that.snapshotName) &&
             Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
             Objects.equals(retention, that.retention);

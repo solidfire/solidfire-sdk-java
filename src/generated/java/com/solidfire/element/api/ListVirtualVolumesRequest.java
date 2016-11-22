@@ -107,7 +107,7 @@ public class ListVirtualVolumesRequest implements Serializable {
             Objects.equals(limit, that.limit) &&
             Objects.equals(recursive, that.recursive) &&
             Objects.equals(startVirtualVolumeID, that.startVirtualVolumeID) &&
-            Objects.equals(virtualVolumeIDs, that.virtualVolumeIDs);
+            Arrays.equals(virtualVolumeIDs, that.virtualVolumeIDs);
     }
 
     @Override

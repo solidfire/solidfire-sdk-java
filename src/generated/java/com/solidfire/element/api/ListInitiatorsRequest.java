@@ -85,7 +85,7 @@ public class ListInitiatorsRequest implements Serializable {
         return 
             Objects.equals(startInitiatorID, that.startInitiatorID) &&
             Objects.equals(limit, that.limit) &&
-            Objects.equals(initiators, that.initiators);
+            Arrays.equals(initiators, that.initiators);
     }
 
     @Override

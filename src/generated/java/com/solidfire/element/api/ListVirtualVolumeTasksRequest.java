@@ -71,7 +71,7 @@ public class ListVirtualVolumeTasksRequest implements Serializable {
 
         ListVirtualVolumeTasksRequest that = (ListVirtualVolumeTasksRequest) o;
         return 
-            Objects.equals(virtualVolumeTaskIDs, that.virtualVolumeTaskIDs) &&
+            Arrays.equals(virtualVolumeTaskIDs, that.virtualVolumeTaskIDs) &&
             Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }
 

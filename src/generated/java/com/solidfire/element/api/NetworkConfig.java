@@ -339,9 +339,9 @@ public class NetworkConfig implements Serializable {
             Objects.equals(netmask, that.netmask) &&
             Objects.equals(network, that.network) &&
             Objects.equals(physical, that.physical) &&
-            Objects.equals(routes, that.routes) &&
+            Arrays.equals(routes, that.routes) &&
             Objects.equals(status, that.status) &&
-            Objects.equals(symmetricRouteRules, that.symmetricRouteRules) &&
+            Arrays.equals(symmetricRouteRules, that.symmetricRouteRules) &&
             Objects.equals(upAndRunning, that.upAndRunning);
     }
 

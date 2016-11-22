@@ -122,9 +122,9 @@ public class ListVolumesRequest implements Serializable {
             Objects.equals(startVolumeID, that.startVolumeID) &&
             Objects.equals(limit, that.limit) &&
             Objects.equals(volumeStatus, that.volumeStatus) &&
-            Objects.equals(accounts, that.accounts) &&
+            Arrays.equals(accounts, that.accounts) &&
             Objects.equals(isPaired, that.isPaired) &&
-            Objects.equals(volumeIDs, that.volumeIDs);
+            Arrays.equals(volumeIDs, that.volumeIDs);
     }
 
     @Override

@@ -62,7 +62,7 @@ public class ListProtocolEndpointsRequest implements Serializable {
 
         ListProtocolEndpointsRequest that = (ListProtocolEndpointsRequest) o;
         return 
-            Objects.equals(protocolEndpointIDs, that.protocolEndpointIDs);
+            Arrays.equals(protocolEndpointIDs, that.protocolEndpointIDs);
     }
 
     @Override

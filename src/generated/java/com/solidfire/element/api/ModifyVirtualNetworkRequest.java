@@ -149,7 +149,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
             Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
             Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
             Objects.equals(name, that.name) &&
-            Objects.equals(addressBlocks, that.addressBlocks) &&
+            Arrays.equals(addressBlocks, that.addressBlocks) &&
             Objects.equals(netmask, that.netmask) &&
             Objects.equals(svip, that.svip) &&
             Objects.equals(gateway, that.gateway) &&

@@ -117,10 +117,10 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         CreateVolumeAccessGroupRequest that = (CreateVolumeAccessGroupRequest) o;
         return 
             Objects.equals(name, that.name) &&
-            Objects.equals(initiators, that.initiators) &&
-            Objects.equals(volumes, that.volumes) &&
-            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Objects.equals(virtualNetworkTags, that.virtualNetworkTags) &&
+            Arrays.equals(initiators, that.initiators) &&
+            Arrays.equals(volumes, that.volumes) &&
+            Arrays.equals(virtualNetworkID, that.virtualNetworkID) &&
+            Arrays.equals(virtualNetworkTags, that.virtualNetworkTags) &&
             Objects.equals(attributes, that.attributes);
     }
 

@@ -95,8 +95,8 @@ public class ListVirtualNetworksRequest implements Serializable {
         return 
             Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
             Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
-            Objects.equals(virtualNetworkIDs, that.virtualNetworkIDs) &&
-            Objects.equals(virtualNetworkTags, that.virtualNetworkTags);
+            Arrays.equals(virtualNetworkIDs, that.virtualNetworkIDs) &&
+            Arrays.equals(virtualNetworkTags, that.virtualNetworkTags);
     }
 
     @Override

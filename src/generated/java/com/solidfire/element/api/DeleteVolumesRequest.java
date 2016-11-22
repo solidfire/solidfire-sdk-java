@@ -83,9 +83,9 @@ public class DeleteVolumesRequest implements Serializable {
 
         DeleteVolumesRequest that = (DeleteVolumesRequest) o;
         return 
-            Objects.equals(accountIDs, that.accountIDs) &&
-            Objects.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs) &&
-            Objects.equals(volumeIDs, that.volumeIDs);
+            Arrays.equals(accountIDs, that.accountIDs) &&
+            Arrays.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs) &&
+            Arrays.equals(volumeIDs, that.volumeIDs);
     }
 
     @Override

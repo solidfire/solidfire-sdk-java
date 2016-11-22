@@ -83,9 +83,9 @@ public class PurgeDeletedVolumesRequest implements Serializable {
 
         PurgeDeletedVolumesRequest that = (PurgeDeletedVolumesRequest) o;
         return 
-            Objects.equals(volumeIDs, that.volumeIDs) &&
-            Objects.equals(accountIDs, that.accountIDs) &&
-            Objects.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs);
+            Arrays.equals(volumeIDs, that.volumeIDs) &&
+            Arrays.equals(accountIDs, that.accountIDs) &&
+            Arrays.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs);
     }
 
     @Override

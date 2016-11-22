@@ -63,7 +63,7 @@ public class ListStorageContainersRequest implements Serializable {
 
         ListStorageContainersRequest that = (ListStorageContainersRequest) o;
         return 
-            Objects.equals(storageContainerIDs, that.storageContainerIDs);
+            Arrays.equals(storageContainerIDs, that.storageContainerIDs);
     }
 
     @Override

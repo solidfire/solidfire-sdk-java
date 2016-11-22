@@ -95,7 +95,7 @@ public class ModifyClusterAdminRequest implements Serializable {
         return 
             Objects.equals(clusterAdminID, that.clusterAdminID) &&
             Objects.equals(password, that.password) &&
-            Objects.equals(access, that.access) &&
+            Arrays.equals(access, that.access) &&
             Objects.equals(attributes, that.attributes);
     }
 
