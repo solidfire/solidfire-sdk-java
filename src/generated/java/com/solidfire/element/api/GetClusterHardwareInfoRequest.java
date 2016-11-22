@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetClusterHardwareInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -945659093469045744L;
+    public static final long serialVersionUID = -1758929904L;
     @SerializedName("type") private Optional<String> type;
 
     // empty constructor
@@ -84,7 +84,7 @@ public class GetClusterHardwareInfoRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != type && type.isPresent()){
-            sb.append(" type : ").append(type).append(",");
+            sb.append(" type : ").append(type.get()).append(",");
         }
         sb.append( " }" );
 

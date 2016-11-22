@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyBackupTargetRequest implements Serializable {
 
-    public static final long serialVersionUID = -2231080711756074693L;
+    public static final long serialVersionUID = -695357125L;
     @SerializedName("backupTargetID") private Long backupTargetID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
@@ -109,10 +109,10 @@ public class ModifyBackupTargetRequest implements Serializable {
 
         sb.append(" backupTargetID : ").append(backupTargetID).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(name.get()).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(attributes.get()).append(",");
         }
         sb.append( " }" );
 

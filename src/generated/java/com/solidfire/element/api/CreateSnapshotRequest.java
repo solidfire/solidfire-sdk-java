@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -1805268150014758546L;
+    public static final long serialVersionUID = -1442107026L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("name") private Optional<String> name;
@@ -148,19 +148,19 @@ public class CreateSnapshotRequest implements Serializable {
 
         sb.append(" volumeID : ").append(volumeID).append(",");
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID).append(",");
+            sb.append(" snapshotID : ").append(snapshotID.get()).append(",");
         }
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(name.get()).append(",");
         }
         if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
-            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
+            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication.get()).append(",");
         }
         if(null != retention && retention.isPresent()){
-            sb.append(" retention : ").append(retention).append(",");
+            sb.append(" retention : ").append(retention.get()).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(attributes.get()).append(",");
         }
         sb.append( " }" );
 

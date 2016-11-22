@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class EnableLdapAuthenticationRequest implements Serializable {
 
-    public static final long serialVersionUID = 4288984566259899362L;
+    public static final long serialVersionUID = 789437410L;
     @SerializedName("authType") private Optional<String> authType;
     @SerializedName("groupSearchBaseDN") private Optional<String> groupSearchBaseDN;
     @SerializedName("groupSearchCustomFilter") private Optional<String> groupSearchCustomFilter;
@@ -208,32 +208,32 @@ public class EnableLdapAuthenticationRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != authType && authType.isPresent()){
-            sb.append(" authType : ").append(authType).append(",");
+            sb.append(" authType : ").append(authType.get()).append(",");
         }
         if(null != groupSearchBaseDN && groupSearchBaseDN.isPresent()){
-            sb.append(" groupSearchBaseDN : ").append(groupSearchBaseDN).append(",");
+            sb.append(" groupSearchBaseDN : ").append(groupSearchBaseDN.get()).append(",");
         }
         if(null != groupSearchCustomFilter && groupSearchCustomFilter.isPresent()){
-            sb.append(" groupSearchCustomFilter : ").append(groupSearchCustomFilter).append(",");
+            sb.append(" groupSearchCustomFilter : ").append(groupSearchCustomFilter.get()).append(",");
         }
         if(null != groupSearchType && groupSearchType.isPresent()){
-            sb.append(" groupSearchType : ").append(groupSearchType).append(",");
+            sb.append(" groupSearchType : ").append(groupSearchType.get()).append(",");
         }
         if(null != searchBindDN && searchBindDN.isPresent()){
-            sb.append(" searchBindDN : ").append(searchBindDN).append(",");
+            sb.append(" searchBindDN : ").append(searchBindDN.get()).append(",");
         }
         if(null != searchBindPassword && searchBindPassword.isPresent()){
-            sb.append(" searchBindPassword : ").append(searchBindPassword).append(",");
+            sb.append(" searchBindPassword : ").append(searchBindPassword.get()).append(",");
         }
         sb.append(" serverURIs : ").append(Arrays.toString(serverURIs)).append(",");
         if(null != userDNTemplate && userDNTemplate.isPresent()){
-            sb.append(" userDNTemplate : ").append(userDNTemplate).append(",");
+            sb.append(" userDNTemplate : ").append(userDNTemplate.get()).append(",");
         }
         if(null != userSearchBaseDN && userSearchBaseDN.isPresent()){
-            sb.append(" userSearchBaseDN : ").append(userSearchBaseDN).append(",");
+            sb.append(" userSearchBaseDN : ").append(userSearchBaseDN.get()).append(",");
         }
         if(null != userSearchFilter && userSearchFilter.isPresent()){
-            sb.append(" userSearchFilter : ").append(userSearchFilter).append(",");
+            sb.append(" userSearchFilter : ").append(userSearchFilter.get()).append(",");
         }
         sb.append( " }" );
 

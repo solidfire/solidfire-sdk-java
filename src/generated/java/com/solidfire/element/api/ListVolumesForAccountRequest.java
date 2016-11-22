@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVolumesForAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = 245848432924198062L;
+    public static final long serialVersionUID = -519535442L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
@@ -111,10 +111,10 @@ public class ListVolumesForAccountRequest implements Serializable {
 
         sb.append(" accountID : ").append(accountID).append(",");
         if(null != startVolumeID && startVolumeID.isPresent()){
-            sb.append(" startVolumeID : ").append(startVolumeID).append(",");
+            sb.append(" startVolumeID : ").append(startVolumeID.get()).append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(limit.get()).append(",");
         }
         sb.append( " }" );
 

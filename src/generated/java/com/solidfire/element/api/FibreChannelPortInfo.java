@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class FibreChannelPortInfo implements Serializable {
 
-    public static final long serialVersionUID = 4075342483456572376L;
+    public static final long serialVersionUID = -2005091368L;
     @SerializedName("firmware") private String firmware;
     @SerializedName("hbaPort") private Long hbaPort;
     @SerializedName("model") private String model;

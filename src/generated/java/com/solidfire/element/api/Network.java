@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Network implements Serializable {
 
-    public static final long serialVersionUID = 8968856628286036613L;
+    public static final long serialVersionUID = -1704617339L;
     @SerializedName("Bond10G") private Optional<NetworkConfig> bond10G;
     @SerializedName("Bond1G") private Optional<NetworkConfig> bond1G;
     @SerializedName("eth0") private Optional<NetworkConfig> eth0;
@@ -149,25 +149,25 @@ public class Network implements Serializable {
         sb.append( "{ " );
 
         if(null != bond10G && bond10G.isPresent()){
-            sb.append(" bond10G : ").append(bond10G).append(",");
+            sb.append(" bond10G : ").append(bond10G.get()).append(",");
         }
         if(null != bond1G && bond1G.isPresent()){
-            sb.append(" bond1G : ").append(bond1G).append(",");
+            sb.append(" bond1G : ").append(bond1G.get()).append(",");
         }
         if(null != eth0 && eth0.isPresent()){
-            sb.append(" eth0 : ").append(eth0).append(",");
+            sb.append(" eth0 : ").append(eth0.get()).append(",");
         }
         if(null != eth1 && eth1.isPresent()){
-            sb.append(" eth1 : ").append(eth1).append(",");
+            sb.append(" eth1 : ").append(eth1.get()).append(",");
         }
         if(null != eth2 && eth2.isPresent()){
-            sb.append(" eth2 : ").append(eth2).append(",");
+            sb.append(" eth2 : ").append(eth2.get()).append(",");
         }
         if(null != eth3 && eth3.isPresent()){
-            sb.append(" eth3 : ").append(eth3).append(",");
+            sb.append(" eth3 : ").append(eth3.get()).append(",");
         }
         if(null != lo && lo.isPresent()){
-            sb.append(" lo : ").append(lo).append(",");
+            sb.append(" lo : ").append(lo.get()).append(",");
         }
         sb.append( " }" );
 

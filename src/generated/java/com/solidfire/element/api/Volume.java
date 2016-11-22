@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Volume implements Serializable {
 
-    public static final long serialVersionUID = -7686354995119743056L;
+    public static final long serialVersionUID = 576102320L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
@@ -336,10 +336,10 @@ public class Volume implements Serializable {
         sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups)).append(",");
         sb.append(" volumePairs : ").append(Arrays.toString(volumePairs)).append(",");
         if(null != deleteTime && deleteTime.isPresent()){
-            sb.append(" deleteTime : ").append(deleteTime).append(",");
+            sb.append(" deleteTime : ").append(deleteTime.get()).append(",");
         }
         if(null != purgeTime && purgeTime.isPresent()){
-            sb.append(" purgeTime : ").append(purgeTime).append(",");
+            sb.append(" purgeTime : ").append(purgeTime.get()).append(",");
         }
         sb.append(" sliceCount : ").append(sliceCount).append(",");
         sb.append(" totalSize : ").append(totalSize).append(",");

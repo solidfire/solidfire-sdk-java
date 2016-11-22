@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = 357601812538223462L;
+    public static final long serialVersionUID = 794848102L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("username") private Optional<String> username;
     @SerializedName("status") private Optional<String> status;
@@ -147,19 +147,19 @@ public class ModifyAccountRequest implements Serializable {
 
         sb.append(" accountID : ").append(accountID).append(",");
         if(null != username && username.isPresent()){
-            sb.append(" username : ").append(username).append(",");
+            sb.append(" username : ").append(username.get()).append(",");
         }
         if(null != status && status.isPresent()){
-            sb.append(" status : ").append(status).append(",");
+            sb.append(" status : ").append(status.get()).append(",");
         }
         if(null != initiatorSecret && initiatorSecret.isPresent()){
-            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+            sb.append(" initiatorSecret : ").append(initiatorSecret.get()).append(",");
         }
         if(null != targetSecret && targetSecret.isPresent()){
-            sb.append(" targetSecret : ").append(targetSecret).append(",");
+            sb.append(" targetSecret : ").append(targetSecret.get()).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(attributes.get()).append(",");
         }
         sb.append( " }" );
 

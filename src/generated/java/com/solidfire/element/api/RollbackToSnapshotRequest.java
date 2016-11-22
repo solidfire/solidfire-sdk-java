@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RollbackToSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 7387529128604457855L;
+    public static final long serialVersionUID = 106027903L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
@@ -137,10 +137,10 @@ public class RollbackToSnapshotRequest implements Serializable {
         sb.append(" snapshotID : ").append(snapshotID).append(",");
         sb.append(" saveCurrentState : ").append(saveCurrentState).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(name.get()).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(attributes.get()).append(",");
         }
         sb.append( " }" );
 

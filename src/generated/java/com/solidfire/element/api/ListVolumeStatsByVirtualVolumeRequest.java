@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 8894287531491187419L;
+    public static final long serialVersionUID = -860366117L;
     @SerializedName("startVirtualVolumeID") private Optional<java.util.UUID> startVirtualVolumeID;
     @SerializedName("virtualVolumeIDs") private Optional<java.util.UUID[]> virtualVolumeIDs;
 
@@ -96,10 +96,10 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != startVirtualVolumeID && startVirtualVolumeID.isPresent()){
-            sb.append(" startVirtualVolumeID : ").append(startVirtualVolumeID).append(",");
+            sb.append(" startVirtualVolumeID : ").append(startVirtualVolumeID.get()).append(",");
         }
         if(null != virtualVolumeIDs && virtualVolumeIDs.isPresent()){
-            sb.append(" virtualVolumeIDs : ").append(virtualVolumeIDs).append(",");
+            sb.append(" virtualVolumeIDs : ").append(virtualVolumeIDs.get()).append(",");
         }
         sb.append( " }" );
 

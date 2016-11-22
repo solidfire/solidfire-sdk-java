@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 3268711327032306340L;
+    public static final long serialVersionUID = 823028388L;
     @SerializedName("startInitiatorID") private Optional<Long> startInitiatorID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("initiators") private Optional<Long[]> initiators;
@@ -108,13 +108,13 @@ public class ListInitiatorsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != startInitiatorID && startInitiatorID.isPresent()){
-            sb.append(" startInitiatorID : ").append(startInitiatorID).append(",");
+            sb.append(" startInitiatorID : ").append(startInitiatorID.get()).append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(limit.get()).append(",");
         }
         if(null != initiators && initiators.isPresent()){
-            sb.append(" initiators : ").append(initiators).append(",");
+            sb.append(" initiators : ").append(initiators.get()).append(",");
         }
         sb.append( " }" );
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumeTasksRequest implements Serializable {
 
-    public static final long serialVersionUID = -8824861203375597941L;
+    public static final long serialVersionUID = -592718197L;
     @SerializedName("virtualVolumeTaskIDs") private Optional<java.util.UUID[]> virtualVolumeTaskIDs;
     @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
@@ -94,10 +94,10 @@ public class ListVirtualVolumeTasksRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != virtualVolumeTaskIDs && virtualVolumeTaskIDs.isPresent()){
-            sb.append(" virtualVolumeTaskIDs : ").append(virtualVolumeTaskIDs).append(",");
+            sb.append(" virtualVolumeTaskIDs : ").append(virtualVolumeTaskIDs.get()).append(",");
         }
         if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent()){
-            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID).append(",");
+            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get()).append(",");
         }
         sb.append( " }" );
 

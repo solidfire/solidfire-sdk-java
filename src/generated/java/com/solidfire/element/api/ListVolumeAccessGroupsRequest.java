@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVolumeAccessGroupsRequest implements Serializable {
 
-    public static final long serialVersionUID = -8600610168887686606L;
+    public static final long serialVersionUID = -1881781710L;
     @SerializedName("startVolumeAccessGroupID") private Optional<Long> startVolumeAccessGroupID;
     @SerializedName("limit") private Optional<Long> limit;
 
@@ -99,10 +99,10 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != startVolumeAccessGroupID && startVolumeAccessGroupID.isPresent()){
-            sb.append(" startVolumeAccessGroupID : ").append(startVolumeAccessGroupID).append(",");
+            sb.append(" startVolumeAccessGroupID : ").append(startVolumeAccessGroupID.get()).append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(limit.get()).append(",");
         }
         sb.append( " }" );
 

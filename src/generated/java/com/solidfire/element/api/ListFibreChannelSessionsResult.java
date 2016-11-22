@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListFibreChannelSessionsResult implements Serializable {
 
-    public static final long serialVersionUID = -122152116909046325L;
+    public static final long serialVersionUID = -15530549L;
     @SerializedName("sessions") private FibreChannelSession[] sessions;
 
     // empty constructor

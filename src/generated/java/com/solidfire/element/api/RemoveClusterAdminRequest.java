@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RemoveClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 8468883642750058499L;
+    public static final long serialVersionUID = -1841577981L;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
 
     // empty constructor

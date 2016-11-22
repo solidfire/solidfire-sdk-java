@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyClusterFullThresholdRequest implements Serializable {
 
-    public static final long serialVersionUID = 8813417033775615946L;
+    public static final long serialVersionUID = -1013805110L;
     @SerializedName("stage2AwareThreshold") private Optional<Long> stage2AwareThreshold;
     @SerializedName("stage3BlockThresholdPercent") private Optional<Long> stage3BlockThresholdPercent;
     @SerializedName("maxMetadataOverProvisionFactor") private Optional<Long> maxMetadataOverProvisionFactor;
@@ -108,13 +108,13 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != stage2AwareThreshold && stage2AwareThreshold.isPresent()){
-            sb.append(" stage2AwareThreshold : ").append(stage2AwareThreshold).append(",");
+            sb.append(" stage2AwareThreshold : ").append(stage2AwareThreshold.get()).append(",");
         }
         if(null != stage3BlockThresholdPercent && stage3BlockThresholdPercent.isPresent()){
-            sb.append(" stage3BlockThresholdPercent : ").append(stage3BlockThresholdPercent).append(",");
+            sb.append(" stage3BlockThresholdPercent : ").append(stage3BlockThresholdPercent.get()).append(",");
         }
         if(null != maxMetadataOverProvisionFactor && maxMetadataOverProvisionFactor.isPresent()){
-            sb.append(" maxMetadataOverProvisionFactor : ").append(maxMetadataOverProvisionFactor).append(",");
+            sb.append(" maxMetadataOverProvisionFactor : ").append(maxMetadataOverProvisionFactor.get()).append(",");
         }
         sb.append( " }" );
 

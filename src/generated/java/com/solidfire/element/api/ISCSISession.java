@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ISCSISession implements Serializable {
 
-    public static final long serialVersionUID = -1637168637781139879L;
+    public static final long serialVersionUID = 1269112409L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("initiator") private Initiator initiator;
     @SerializedName("accountName") private String accountName;

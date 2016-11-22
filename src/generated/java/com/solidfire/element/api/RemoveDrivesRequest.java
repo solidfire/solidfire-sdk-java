@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RemoveDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 7717335362027122969L;
+    public static final long serialVersionUID = -1573916391L;
     @SerializedName("drives") private Long[] drives;
 
     // empty constructor

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateInitiator implements Serializable {
 
-    public static final long serialVersionUID = 5723732916272205312L;
+    public static final long serialVersionUID = -6451712L;
     @SerializedName("name") private String name;
     @SerializedName("alias") private Optional<String> alias;
     @SerializedName("volumeAccessGroupID") private Optional<Long> volumeAccessGroupID;
@@ -121,13 +121,13 @@ public class CreateInitiator implements Serializable {
 
         sb.append(" name : ").append(name).append(",");
         if(null != alias && alias.isPresent()){
-            sb.append(" alias : ").append(alias).append(",");
+            sb.append(" alias : ").append(alias.get()).append(",");
         }
         if(null != volumeAccessGroupID && volumeAccessGroupID.isPresent()){
-            sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
+            sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID.get()).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(attributes.get()).append(",");
         }
         sb.append( " }" );
 

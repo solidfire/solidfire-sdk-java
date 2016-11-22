@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListDriveHardwareRequest implements Serializable {
 
-    public static final long serialVersionUID = 8026999793715868059L;
+    public static final long serialVersionUID = -1802407525L;
     @SerializedName("force") private Boolean force;
 
     // empty constructor

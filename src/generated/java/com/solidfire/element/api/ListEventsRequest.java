@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListEventsRequest implements Serializable {
 
-    public static final long serialVersionUID = -6442141863228186837L;
+    public static final long serialVersionUID = 2040291115L;
     @SerializedName("maxEvents") private Optional<Long> maxEvents;
     @SerializedName("startEventID") private Optional<Long> startEventID;
     @SerializedName("endEventID") private Optional<Long> endEventID;
@@ -119,16 +119,16 @@ public class ListEventsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != maxEvents && maxEvents.isPresent()){
-            sb.append(" maxEvents : ").append(maxEvents).append(",");
+            sb.append(" maxEvents : ").append(maxEvents.get()).append(",");
         }
         if(null != startEventID && startEventID.isPresent()){
-            sb.append(" startEventID : ").append(startEventID).append(",");
+            sb.append(" startEventID : ").append(startEventID.get()).append(",");
         }
         if(null != endEventID && endEventID.isPresent()){
-            sb.append(" endEventID : ").append(endEventID).append(",");
+            sb.append(" endEventID : ").append(endEventID.get()).append(",");
         }
         if(null != eventQueueType && eventQueueType.isPresent()){
-            sb.append(" eventQueueType : ").append(eventQueueType).append(",");
+            sb.append(" eventQueueType : ").append(eventQueueType.get()).append(",");
         }
         sb.append( " }" );
 

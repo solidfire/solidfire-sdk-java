@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListActiveVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 4826675269592232446L;
+    public static final long serialVersionUID = -1170918914L;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
 
@@ -98,10 +98,10 @@ public class ListActiveVolumesRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != startVolumeID && startVolumeID.isPresent()){
-            sb.append(" startVolumeID : ").append(startVolumeID).append(",");
+            sb.append(" startVolumeID : ").append(startVolumeID.get()).append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(limit.get()).append(",");
         }
         sb.append( " }" );
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -2486206820112754562L;
+    public static final long serialVersionUID = -788096898L;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("volumeStatus") private Optional<String> volumeStatus;
@@ -150,22 +150,22 @@ public class ListVolumesRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != startVolumeID && startVolumeID.isPresent()){
-            sb.append(" startVolumeID : ").append(startVolumeID).append(",");
+            sb.append(" startVolumeID : ").append(startVolumeID.get()).append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(limit.get()).append(",");
         }
         if(null != volumeStatus && volumeStatus.isPresent()){
-            sb.append(" volumeStatus : ").append(volumeStatus).append(",");
+            sb.append(" volumeStatus : ").append(volumeStatus.get()).append(",");
         }
         if(null != accounts && accounts.isPresent()){
-            sb.append(" accounts : ").append(accounts).append(",");
+            sb.append(" accounts : ").append(accounts.get()).append(",");
         }
         if(null != isPaired && isPaired.isPresent()){
-            sb.append(" isPaired : ").append(isPaired).append(",");
+            sb.append(" isPaired : ").append(isPaired.get()).append(",");
         }
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
+            sb.append(" volumeIDs : ").append(volumeIDs.get()).append(",");
         }
         sb.append( " }" );
 

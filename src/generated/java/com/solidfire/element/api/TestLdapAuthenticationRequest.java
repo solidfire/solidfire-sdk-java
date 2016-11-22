@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class TestLdapAuthenticationRequest implements Serializable {
 
-    public static final long serialVersionUID = 8032836993327776039L;
+    public static final long serialVersionUID = -2048179929L;
     @SerializedName("username") private String username;
     @SerializedName("password") private String password;
     @SerializedName("ldapConfiguration") private Optional<LdapConfiguration> ldapConfiguration;
@@ -110,7 +110,7 @@ public class TestLdapAuthenticationRequest implements Serializable {
         sb.append(" username : ").append(username).append(",");
         sb.append(" password : ").append(password).append(",");
         if(null != ldapConfiguration && ldapConfiguration.isPresent()){
-            sb.append(" ldapConfiguration : ").append(ldapConfiguration).append(",");
+            sb.append(" ldapConfiguration : ").append(ldapConfiguration.get()).append(",");
         }
         sb.append( " }" );
 

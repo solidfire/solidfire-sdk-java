@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class StartBulkVolumeWriteRequest implements Serializable {
 
-    public static final long serialVersionUID = -7266294121919800595L;
+    public static final long serialVersionUID = -1653204243L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("format") private String format;
     @SerializedName("script") private Optional<String> script;
@@ -138,13 +138,13 @@ public class StartBulkVolumeWriteRequest implements Serializable {
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" format : ").append(format).append(",");
         if(null != script && script.isPresent()){
-            sb.append(" script : ").append(script).append(",");
+            sb.append(" script : ").append(script.get()).append(",");
         }
         if(null != scriptParameters && scriptParameters.isPresent()){
-            sb.append(" scriptParameters : ").append(scriptParameters).append(",");
+            sb.append(" scriptParameters : ").append(scriptParameters.get()).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(attributes.get()).append(",");
         }
         sb.append( " }" );
 

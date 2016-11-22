@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListClusterFaultsRequest implements Serializable {
 
-    public static final long serialVersionUID = -7013942156541238584L;
+    public static final long serialVersionUID = 607707848L;
     @SerializedName("exceptions") private Optional<Boolean> exceptions;
     @SerializedName("bestPractices") private Optional<Boolean> bestPractices;
     @SerializedName("update") private Optional<Boolean> update;
@@ -121,16 +121,16 @@ public class ListClusterFaultsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != exceptions && exceptions.isPresent()){
-            sb.append(" exceptions : ").append(exceptions).append(",");
+            sb.append(" exceptions : ").append(exceptions.get()).append(",");
         }
         if(null != bestPractices && bestPractices.isPresent()){
-            sb.append(" bestPractices : ").append(bestPractices).append(",");
+            sb.append(" bestPractices : ").append(bestPractices.get()).append(",");
         }
         if(null != update && update.isPresent()){
-            sb.append(" update : ").append(update).append(",");
+            sb.append(" update : ").append(update.get()).append(",");
         }
         if(null != faultTypes && faultTypes.isPresent()){
-            sb.append(" faultTypes : ").append(faultTypes).append(",");
+            sb.append(" faultTypes : ").append(faultTypes.get()).append(",");
         }
         sb.append( " }" );
 

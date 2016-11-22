@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class UpdateBulkVolumeStatusRequest implements Serializable {
 
-    public static final long serialVersionUID = -4782595184797079493L;
+    public static final long serialVersionUID = -911398853L;
     @SerializedName("key") private String key;
     @SerializedName("status") private String status;
     @SerializedName("percentComplete") private Optional<String> percentComplete;
@@ -138,13 +138,13 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
         sb.append(" key : ").append(key).append(",");
         sb.append(" status : ").append(status).append(",");
         if(null != percentComplete && percentComplete.isPresent()){
-            sb.append(" percentComplete : ").append(percentComplete).append(",");
+            sb.append(" percentComplete : ").append(percentComplete.get()).append(",");
         }
         if(null != message && message.isPresent()){
-            sb.append(" message : ").append(message).append(",");
+            sb.append(" message : ").append(message.get()).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(attributes.get()).append(",");
         }
         sb.append( " }" );
 

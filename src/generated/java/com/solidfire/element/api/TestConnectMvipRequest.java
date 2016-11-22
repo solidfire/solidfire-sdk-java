@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class TestConnectMvipRequest implements Serializable {
 
-    public static final long serialVersionUID = 918184488572641133L;
+    public static final long serialVersionUID = 2007326573L;
     @SerializedName("mvip") private Optional<String> mvip;
 
     // empty constructor
@@ -84,7 +84,7 @@ public class TestConnectMvipRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != mvip && mvip.isPresent()){
-            sb.append(" mvip : ").append(mvip).append(",");
+            sb.append(" mvip : ").append(mvip.get()).append(",");
         }
         sb.append( " }" );
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class PurgeDeletedVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -291946162793185834L;
+    public static final long serialVersionUID = 19693014L;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
     @SerializedName("accountIDs") private Optional<Long[]> accountIDs;
     @SerializedName("volumeAccessGroupIDs") private Optional<Long[]> volumeAccessGroupIDs;
@@ -108,13 +108,13 @@ public class PurgeDeletedVolumesRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
+            sb.append(" volumeIDs : ").append(volumeIDs.get()).append(",");
         }
         if(null != accountIDs && accountIDs.isPresent()){
-            sb.append(" accountIDs : ").append(accountIDs).append(",");
+            sb.append(" accountIDs : ").append(accountIDs.get()).append(",");
         }
         if(null != volumeAccessGroupIDs && volumeAccessGroupIDs.isPresent()){
-            sb.append(" volumeAccessGroupIDs : ").append(volumeAccessGroupIDs).append(",");
+            sb.append(" volumeAccessGroupIDs : ").append(volumeAccessGroupIDs.get()).append(",");
         }
         sb.append( " }" );
 

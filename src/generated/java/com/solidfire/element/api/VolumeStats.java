@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class VolumeStats implements Serializable {
 
-    public static final long serialVersionUID = -3367989483107432160L;
+    public static final long serialVersionUID = -736016096L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("actualIOPS") private Long actualIOPS;
     @SerializedName("asyncDelay") private Optional<String> asyncDelay;
@@ -473,7 +473,7 @@ public class VolumeStats implements Serializable {
         sb.append(" accountID : ").append(accountID).append(",");
         sb.append(" actualIOPS : ").append(actualIOPS).append(",");
         if(null != asyncDelay && asyncDelay.isPresent()){
-            sb.append(" asyncDelay : ").append(asyncDelay).append(",");
+            sb.append(" asyncDelay : ").append(asyncDelay.get()).append(",");
         }
         sb.append(" averageIOPSize : ").append(averageIOPSize).append(",");
         sb.append(" burstIOPSCredit : ").append(burstIOPSCredit).append(",");

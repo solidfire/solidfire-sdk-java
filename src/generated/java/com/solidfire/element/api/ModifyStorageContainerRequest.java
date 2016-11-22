@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyStorageContainerRequest implements Serializable {
 
-    public static final long serialVersionUID = -7847052334144051852L;
+    public static final long serialVersionUID = 1097966964L;
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
     @SerializedName("initiatorSecret") private Optional<String> initiatorSecret;
     @SerializedName("targetSecret") private Optional<String> targetSecret;
@@ -106,10 +106,10 @@ public class ModifyStorageContainerRequest implements Serializable {
 
         sb.append(" storageContainerID : ").append(storageContainerID).append(",");
         if(null != initiatorSecret && initiatorSecret.isPresent()){
-            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+            sb.append(" initiatorSecret : ").append(initiatorSecret.get()).append(",");
         }
         if(null != targetSecret && targetSecret.isPresent()){
-            sb.append(" targetSecret : ").append(targetSecret).append(",");
+            sb.append(" targetSecret : ").append(targetSecret.get()).append(",");
         }
         sb.append( " }" );
 

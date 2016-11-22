@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class SetSnmpInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 5748454860350922237L;
+    public static final long serialVersionUID = 647339517L;
     @SerializedName("networks") private Optional<SnmpNetwork[]> networks;
     @SerializedName("enabled") private Optional<Boolean> enabled;
     @SerializedName("snmpV3Enabled") private Optional<Boolean> snmpV3Enabled;
@@ -120,16 +120,16 @@ public class SetSnmpInfoRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != networks && networks.isPresent()){
-            sb.append(" networks : ").append(networks).append(",");
+            sb.append(" networks : ").append(networks.get()).append(",");
         }
         if(null != enabled && enabled.isPresent()){
-            sb.append(" enabled : ").append(enabled).append(",");
+            sb.append(" enabled : ").append(enabled.get()).append(",");
         }
         if(null != snmpV3Enabled && snmpV3Enabled.isPresent()){
-            sb.append(" snmpV3Enabled : ").append(snmpV3Enabled).append(",");
+            sb.append(" snmpV3Enabled : ").append(snmpV3Enabled.get()).append(",");
         }
         if(null != usmUsers && usmUsers.isPresent()){
-            sb.append(" usmUsers : ").append(usmUsers).append(",");
+            sb.append(" usmUsers : ").append(usmUsers.get()).append(",");
         }
         sb.append( " }" );
 
