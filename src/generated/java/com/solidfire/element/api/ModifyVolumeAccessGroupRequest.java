@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = -695617336L;
+    public static final long serialVersionUID = -6230175995726808888L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("virtualNetworkID") private Optional<Long[]> virtualNetworkID;
     @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
@@ -127,11 +127,11 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         ModifyVolumeAccessGroupRequest that = (ModifyVolumeAccessGroupRequest) o;
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
-            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Objects.equals(virtualNetworkTags, that.virtualNetworkTags) &&
+            Arrays.equals(virtualNetworkID, that.virtualNetworkID) &&
+            Arrays.equals(virtualNetworkTags, that.virtualNetworkTags) &&
             Objects.equals(name, that.name) &&
-            Objects.equals(initiators, that.initiators) &&
-            Objects.equals(volumes, that.volumes) &&
+            Arrays.equals(initiators, that.initiators) &&
+            Arrays.equals(volumes, that.volumes) &&
             Objects.equals(attributes, that.attributes);
     }
 

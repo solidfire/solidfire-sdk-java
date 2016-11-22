@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class HardwareInfo implements Serializable {
 
-    public static final long serialVersionUID = 21297248L;
+    public static final long serialVersionUID = -2700695853978027936L;
     @SerializedName("bus") private java.util.Map<String, Object> bus;
     @SerializedName("driveHardware") private DriveHardware[] driveHardware;
     @SerializedName("fibreChannelPorts") private Long[] fibreChannelPorts;
@@ -214,8 +214,8 @@ public class HardwareInfo implements Serializable {
         HardwareInfo that = (HardwareInfo) o;
         return 
             Objects.equals(bus, that.bus) &&
-            Objects.equals(driveHardware, that.driveHardware) &&
-            Objects.equals(fibreChannelPorts, that.fibreChannelPorts) &&
+            Arrays.equals(driveHardware, that.driveHardware) &&
+            Arrays.equals(fibreChannelPorts, that.fibreChannelPorts) &&
             Objects.equals(hardwareConfig, that.hardwareConfig) &&
             Objects.equals(kernelCrashDumpState, that.kernelCrashDumpState) &&
             Objects.equals(memory, that.memory) &&

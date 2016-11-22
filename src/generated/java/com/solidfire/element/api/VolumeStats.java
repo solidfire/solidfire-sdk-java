@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class VolumeStats implements Serializable {
 
-    public static final long serialVersionUID = -736016096L;
+    public static final long serialVersionUID = -3367989483107432160L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("actualIOPS") private Long actualIOPS;
     @SerializedName("asyncDelay") private Optional<String> asyncDelay;
@@ -396,7 +396,7 @@ public class VolumeStats implements Serializable {
             Objects.equals(totalLatencyUSec, that.totalLatencyUSec) &&
             Objects.equals(unalignedReads, that.unalignedReads) &&
             Objects.equals(unalignedWrites, that.unalignedWrites) &&
-            Objects.equals(volumeAccessGroups, that.volumeAccessGroups) &&
+            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) &&
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(volumeSize, that.volumeSize) &&
             Objects.equals(volumeUtilization, that.volumeUtilization) &&

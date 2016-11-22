@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class AddVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = -460832057L;
+    public static final long serialVersionUID = -2607397254846725433L;
     @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
     @SerializedName("name") private String name;
     @SerializedName("addressBlocks") private AddressBlock[] addressBlocks;
@@ -138,7 +138,7 @@ public class AddVirtualNetworkRequest implements Serializable {
         return 
             Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
             Objects.equals(name, that.name) &&
-            Objects.equals(addressBlocks, that.addressBlocks) &&
+            Arrays.equals(addressBlocks, that.addressBlocks) &&
             Objects.equals(netmask, that.netmask) &&
             Objects.equals(svip, that.svip) &&
             Objects.equals(gateway, that.gateway) &&

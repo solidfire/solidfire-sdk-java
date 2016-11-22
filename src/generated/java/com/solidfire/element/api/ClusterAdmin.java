@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ClusterAdmin implements Serializable {
 
-    public static final long serialVersionUID = 1022990215L;
+    public static final long serialVersionUID = 5002497716622301063L;
     @SerializedName("access") private String[] access;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     @SerializedName("username") private String username;
@@ -90,7 +90,7 @@ public class ClusterAdmin implements Serializable {
 
         ClusterAdmin that = (ClusterAdmin) o;
         return 
-            Objects.equals(access, that.access) &&
+            Arrays.equals(access, that.access) &&
             Objects.equals(clusterAdminID, that.clusterAdminID) &&
             Objects.equals(username, that.username) &&
             Objects.equals(attributes, that.attributes);

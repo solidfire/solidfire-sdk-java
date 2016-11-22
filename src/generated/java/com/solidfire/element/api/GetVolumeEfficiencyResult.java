@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetVolumeEfficiencyResult implements Serializable {
 
-    public static final long serialVersionUID = -1971544945L;
+    public static final long serialVersionUID = -5060321682615657329L;
     @SerializedName("compression") private Double compression;
     @SerializedName("deduplication") private Double deduplication;
     @SerializedName("missingVolumes") private Long[] missingVolumes;
@@ -109,7 +109,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
         return 
             Objects.equals(compression, that.compression) &&
             Objects.equals(deduplication, that.deduplication) &&
-            Objects.equals(missingVolumes, that.missingVolumes) &&
+            Arrays.equals(missingVolumes, that.missingVolumes) &&
             Objects.equals(thinProvisioning, that.thinProvisioning) &&
             Objects.equals(timestamp, that.timestamp);
     }

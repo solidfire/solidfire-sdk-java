@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class PurgeDeletedVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 19693014L;
+    public static final long serialVersionUID = -291946162793185834L;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
     @SerializedName("accountIDs") private Optional<Long[]> accountIDs;
     @SerializedName("volumeAccessGroupIDs") private Optional<Long[]> volumeAccessGroupIDs;
@@ -83,9 +83,9 @@ public class PurgeDeletedVolumesRequest implements Serializable {
 
         PurgeDeletedVolumesRequest that = (PurgeDeletedVolumesRequest) o;
         return 
-            Objects.equals(volumeIDs, that.volumeIDs) &&
-            Objects.equals(accountIDs, that.accountIDs) &&
-            Objects.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs);
+            Arrays.equals(volumeIDs, that.volumeIDs) &&
+            Arrays.equals(accountIDs, that.accountIDs) &&
+            Arrays.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs);
     }
 
     @Override

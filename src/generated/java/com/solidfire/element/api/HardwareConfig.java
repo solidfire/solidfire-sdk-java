@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class HardwareConfig implements Serializable {
 
-    public static final long serialVersionUID = 1954491532L;
+    public static final long serialVersionUID = 5656038675960507532L;
     @SerializedName("scsiBusInternalDriver") private String scsiBusInternalDriver;
     @SerializedName("networkDriver") private String[] networkDriver;
     @SerializedName("biosRevision") private String biosRevision;
@@ -342,11 +342,11 @@ public class HardwareConfig implements Serializable {
         HardwareConfig that = (HardwareConfig) o;
         return 
             Objects.equals(scsiBusInternalDriver, that.scsiBusInternalDriver) &&
-            Objects.equals(networkDriver, that.networkDriver) &&
+            Arrays.equals(networkDriver, that.networkDriver) &&
             Objects.equals(biosRevision, that.biosRevision) &&
             Objects.equals(slotOffset, that.slotOffset) &&
             Objects.equals(numCpu, that.numCpu) &&
-            Objects.equals(sliceDrives, that.sliceDrives) &&
+            Arrays.equals(sliceDrives, that.sliceDrives) &&
             Objects.equals(numDrives, that.numDrives) &&
             Objects.equals(kernelCrashDump, that.kernelCrashDump) &&
             Objects.equals(blockDriveSizeBytes, that.blockDriveSizeBytes) &&
@@ -359,7 +359,7 @@ public class HardwareConfig implements Serializable {
             Objects.equals(nodeType, that.nodeType) &&
             Objects.equals(solidfireDefaults, that.solidfireDefaults) &&
             Objects.equals(idracVersion, that.idracVersion) &&
-            Objects.equals(blockDrives, that.blockDrives) &&
+            Arrays.equals(blockDrives, that.blockDrives) &&
             Objects.equals(biosVendor, that.biosVendor) &&
             Objects.equals(fibreChannelFirmwareRevision, that.fibreChannelFirmwareRevision) &&
             Objects.equals(scsiBusExternalDriver, that.scsiBusExternalDriver) &&

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetAPIResult implements Serializable {
 
-    public static final long serialVersionUID = 974878803L;
+    public static final long serialVersionUID = -334735413474527149L;
     @SerializedName("currentVersion") private Double currentVersion;
     @SerializedName("supportedVersions") private Double[] supportedVersions;
 
@@ -72,7 +72,7 @@ public class GetAPIResult implements Serializable {
         GetAPIResult that = (GetAPIResult) o;
         return 
             Objects.equals(currentVersion, that.currentVersion) &&
-            Objects.equals(supportedVersions, that.supportedVersions);
+            Arrays.equals(supportedVersions, that.supportedVersions);
     }
 
     @Override

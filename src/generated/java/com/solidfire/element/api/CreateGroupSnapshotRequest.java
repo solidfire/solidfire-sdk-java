@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 1781436442L;
+    public static final long serialVersionUID = -4050530006639669222L;
     @SerializedName("volumes") private Long[] volumes;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
@@ -104,7 +104,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
 
         CreateGroupSnapshotRequest that = (CreateGroupSnapshotRequest) o;
         return 
-            Objects.equals(volumes, that.volumes) &&
+            Arrays.equals(volumes, that.volumes) &&
             Objects.equals(name, that.name) &&
             Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
             Objects.equals(retention, that.retention) &&

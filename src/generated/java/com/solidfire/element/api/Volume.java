@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Volume implements Serializable {
 
-    public static final long serialVersionUID = 576102320L;
+    public static final long serialVersionUID = -7686354995119743056L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
@@ -275,8 +275,8 @@ public class Volume implements Serializable {
             Objects.equals(scsiEUIDeviceID, that.scsiEUIDeviceID) &&
             Objects.equals(scsiNAADeviceID, that.scsiNAADeviceID) &&
             Objects.equals(qos, that.qos) &&
-            Objects.equals(volumeAccessGroups, that.volumeAccessGroups) &&
-            Objects.equals(volumePairs, that.volumePairs) &&
+            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) &&
+            Arrays.equals(volumePairs, that.volumePairs) &&
             Objects.equals(deleteTime, that.deleteTime) &&
             Objects.equals(purgeTime, that.purgeTime) &&
             Objects.equals(sliceCount, that.sliceCount) &&

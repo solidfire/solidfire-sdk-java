@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListSnapshotsResult implements Serializable {
 
-    public static final long serialVersionUID = 1716879111L;
+    public static final long serialVersionUID = 3190994173877911303L;
     @SerializedName("snapshots") private Snapshot[] snapshots;
 
     // empty constructor
@@ -66,7 +66,7 @@ public class ListSnapshotsResult implements Serializable {
 
         ListSnapshotsResult that = (ListSnapshotsResult) o;
         return 
-            Objects.equals(snapshots, that.snapshots);
+            Arrays.equals(snapshots, that.snapshots);
     }
 
     @Override

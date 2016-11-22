@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListAsyncResultsResult implements Serializable {
 
-    public static final long serialVersionUID = -778028897L;
+    public static final long serialVersionUID = 6710724792487524511L;
     @SerializedName("asyncHandles") private AsyncHandle[] asyncHandles;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class ListAsyncResultsResult implements Serializable {
 
         ListAsyncResultsResult that = (ListAsyncResultsResult) o;
         return 
-            Objects.equals(asyncHandles, that.asyncHandles);
+            Arrays.equals(asyncHandles, that.asyncHandles);
     }
 
     @Override

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Initiator implements Serializable {
 
-    public static final long serialVersionUID = -1058369598L;
+    public static final long serialVersionUID = -3345742751132381246L;
     @SerializedName("alias") private String alias;
     @SerializedName("initiatorID") private Long initiatorID;
     @SerializedName("initiatorName") private String initiatorName;
@@ -106,7 +106,7 @@ public class Initiator implements Serializable {
             Objects.equals(alias, that.alias) &&
             Objects.equals(initiatorID, that.initiatorID) &&
             Objects.equals(initiatorName, that.initiatorName) &&
-            Objects.equals(volumeAccessGroups, that.volumeAccessGroups) &&
+            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) &&
             Objects.equals(attributes, that.attributes);
     }
 

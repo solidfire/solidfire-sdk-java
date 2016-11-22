@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class NetworkConfig implements Serializable {
 
-    public static final long serialVersionUID = 1443531341L;
+    public static final long serialVersionUID = -6490718356259567027L;
     @SerializedName("#default") private Optional<Boolean> _default;
     @SerializedName("bond-master") private String bondMaster;
     @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
@@ -339,9 +339,9 @@ public class NetworkConfig implements Serializable {
             Objects.equals(netmask, that.netmask) &&
             Objects.equals(network, that.network) &&
             Objects.equals(physical, that.physical) &&
-            Objects.equals(routes, that.routes) &&
+            Arrays.equals(routes, that.routes) &&
             Objects.equals(status, that.status) &&
-            Objects.equals(symmetricRouteRules, that.symmetricRouteRules) &&
+            Arrays.equals(symmetricRouteRules, that.symmetricRouteRules) &&
             Objects.equals(upAndRunning, that.upAndRunning);
     }
 

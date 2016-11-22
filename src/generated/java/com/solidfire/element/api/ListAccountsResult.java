@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListAccountsResult implements Serializable {
 
-    public static final long serialVersionUID = -2075988171L;
+    public static final long serialVersionUID = 647365102596714293L;
     @SerializedName("accounts") private Account[] accounts;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class ListAccountsResult implements Serializable {
 
         ListAccountsResult that = (ListAccountsResult) o;
         return 
-            Objects.equals(accounts, that.accounts);
+            Arrays.equals(accounts, that.accounts);
     }
 
     @Override

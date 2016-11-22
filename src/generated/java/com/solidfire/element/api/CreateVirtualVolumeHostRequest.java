@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateVirtualVolumeHostRequest implements Serializable {
 
-    public static final long serialVersionUID = 899589154L;
+    public static final long serialVersionUID = -5873437268951260126L;
     @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
     @SerializedName("clusterID") private java.util.UUID clusterID;
     @SerializedName("initiatorNames") private Optional<String[]> initiatorNames;
@@ -113,8 +113,8 @@ public class CreateVirtualVolumeHostRequest implements Serializable {
         return 
             Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) &&
             Objects.equals(clusterID, that.clusterID) &&
-            Objects.equals(initiatorNames, that.initiatorNames) &&
-            Objects.equals(visibleProtocolEndpointIDs, that.visibleProtocolEndpointIDs) &&
+            Arrays.equals(initiatorNames, that.initiatorNames) &&
+            Arrays.equals(visibleProtocolEndpointIDs, that.visibleProtocolEndpointIDs) &&
             Objects.equals(hostAddress, that.hostAddress) &&
             Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }

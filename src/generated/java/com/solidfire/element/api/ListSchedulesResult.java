@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListSchedulesResult implements Serializable {
 
-    public static final long serialVersionUID = 1426004794L;
+    public static final long serialVersionUID = 8655052800213850938L;
     @SerializedName("schedules") private Schedule[] schedules;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class ListSchedulesResult implements Serializable {
 
         ListSchedulesResult that = (ListSchedulesResult) o;
         return 
-            Objects.equals(schedules, that.schedules);
+            Arrays.equals(schedules, that.schedules);
     }
 
     @Override

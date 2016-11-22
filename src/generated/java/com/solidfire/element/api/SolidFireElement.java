@@ -1142,66 +1142,6 @@ public class SolidFireElement
         return super.sendRequest("ListFibreChannelSessions", null, null, ListFibreChannelSessionsResult.class);
     }
     /** 
-     * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetClusterHardwareInfoResult getClusterHardwareInfo(final GetClusterHardwareInfoRequest request) {
-        return super.sendRequest("GetClusterHardwareInfo", request, GetClusterHardwareInfoRequest.class, GetClusterHardwareInfoResult.class);
-    }
-
-    /** 
-     * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetClusterHardwareInfoResult getClusterHardwareInfo(
-        Optional<String> type
-        ) {
-        return this.getClusterHardwareInfo(new GetClusterHardwareInfoRequest(type));
-    }
-    /** 
-     * GetHardwareConfig enables you to display the hardware configuration information for a node. NOTE: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public GetHardwareConfigResult getHardwareConfig() {
-        return super.sendRequest("GetHardwareConfig", null, null, GetHardwareConfigResult.class);
-    }
-    /** 
-     * GetNodeHardwareInfo is used to return all the hardware info and status for the node specified. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetNodeHardwareInfoResult getNodeHardwareInfo(final GetNodeHardwareInfoRequest request) {
-        return super.sendRequest("GetNodeHardwareInfo", request, GetNodeHardwareInfoRequest.class, GetNodeHardwareInfoResult.class);
-    }
-
-    /** 
-     * GetNodeHardwareInfo is used to return all the hardware info and status for the node specified. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetNodeHardwareInfoResult getNodeHardwareInfo(
-        Long nodeID
-        ) {
-        return this.getNodeHardwareInfo(new GetNodeHardwareInfoRequest(nodeID));
-    }
-    /** 
-     * GetNvramInfo allows you to retrieve information from each node about the NVRAM card.  
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public GetNvramInfoResult getNvramInfo() {
-        return super.sendRequest("GetNvramInfo", null, null, GetNvramInfoResult.class);
-    }
-    /** 
      * CreateInitiators enables you to create multiple new initiator IQNs or World Wide Port Names (WWPNs) and optionally assign them aliases and attributes. When you use CreateInitiators to create new initiators, you can also add them to volume access groups.
      * If CreateInitiators fails to create one of the initiators provided in the parameter, the method returns an error and does not create any initiators (no partial completion is possible).
      **/
@@ -1415,206 +1355,6 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public DisableLdapAuthenticationResult disableLdapAuthentication() {
         return super.sendRequest("DisableLdapAuthentication", null, null, DisableLdapAuthenticationResult.class);
-    }
-    /** 
-     * ListActiveNodes returns the list of currently active nodes that are in the cluster.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListActiveNodesResult listActiveNodes() {
-        return super.sendRequest("ListActiveNodes", null, null, ListActiveNodesResult.class);
-    }
-    /** 
-     * ListAllNodes enables you to retrieve a list of active and pending nodes in the cluster.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListAllNodesResult listAllNodes() {
-        return super.sendRequest("ListAllNodes", null, null, ListAllNodesResult.class);
-    }
-    /** 
-     * Gets the list of pending nodes.
-     * Pending nodes are running and configured to join the cluster, but have not been added via the AddNodes method.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListPendingNodesResult listPendingNodes() {
-        return super.sendRequest("ListPendingNodes", null, null, ListPendingNodesResult.class);
-    }
-    /** 
-     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
-     * <br/><br/>
-     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
-     * <br/><br/>
-     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
-     * <br/><br/>
-     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
-     * <br/><br/>
-     * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddNodesResult addNodes(final AddNodesRequest request) {
-        return super.sendRequest("AddNodes", request, AddNodesRequest.class, AddNodesResult.class);
-    }
-
-    /** 
-     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
-     * <br/><br/>
-     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
-     * <br/><br/>
-     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
-     * <br/><br/>
-     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
-     * <br/><br/>
-     * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddNodesResult addNodes(
-        Long[] pendingNodes
-        ) {
-        return this.addNodes(new AddNodesRequest(pendingNodes));
-    }
-    /** 
-     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
-     * <br/><br/>
-     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public RemoveNodesResult removeNodes(final RemoveNodesRequest request) {
-        return super.sendRequest("RemoveNodes", request, RemoveNodesRequest.class, RemoveNodesResult.class);
-    }
-
-    /** 
-     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
-     * <br/><br/>
-     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public RemoveNodesResult removeNodes(
-        Long[] nodes
-        ) {
-        return this.removeNodes(new RemoveNodesRequest(nodes));
-    }
-    /** 
-     * The GetNetworkConfig API method is used to display the network configuration information for a node.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public GetNetworkConfigResult getNetworkConfig() {
-        return super.sendRequest("GetNetworkConfig", null, null, GetNetworkConfigResult.class);
-    }
-    /** 
-     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
-     * <br/><br/>
-     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetConfigResult setConfig(final SetConfigRequest request) {
-        return super.sendRequest("SetConfig", request, SetConfigRequest.class, SetConfigResult.class);
-    }
-
-    /** 
-     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
-     * <br/><br/>
-     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetConfigResult setConfig(
-        Config config
-        ) {
-        return this.setConfig(new SetConfigRequest(config));
-    }
-    /** 
-     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
-     * <br/><br/>
-     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetNetworkConfigResult setNetworkConfig(final SetNetworkConfigRequest request) {
-        return super.sendRequest("SetNetworkConfig", request, SetNetworkConfigRequest.class, SetNetworkConfigResult.class);
-    }
-
-    /** 
-     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
-     * <br/><br/>
-     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetNetworkConfigResult setNetworkConfig(
-        Network network
-        ) {
-        return this.setNetworkConfig(new SetNetworkConfigRequest(network));
-    }
-    /** 
-     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Both")
-    public GetConfigResult getConfig() {
-        return super.sendRequest("GetConfig", null, null, GetConfigResult.class);
-    }
-    /** 
-     * GetNodeStats is used to return the high-level activity measurements for a single node.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request) {
-        return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(this, request);
-    }
-
-    /** 
-     * GetNodeStats is used to return the high-level activity measurements for a single node.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetNodeStatsResult getNodeStats(
-        Long nodeID
-        ) {
-        return this.getNodeStats(new GetNodeStatsRequest(nodeID));
-    }
-    /** 
-     * ListNodeStats is used to return the high-level activity measurements for all nodes in a cluster.
-     **/
-    @Override
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public ListNodeStatsResult listNodeStats() {
-        return super.sendRequest("ListNodeStats", null, null, ListNodeStatsResult.class);
     }
     /** 
      * ListClusterPairs is used to list all of the clusters a cluster is paired with.
@@ -2463,6 +2203,552 @@ public class SolidFireElement
         Optional<Long> pingTimeoutMsec
         ) {
         return this.testPing(new TestPingRequest(attempts, hosts, totalTimeoutSec, packetSize, pingTimeoutMsec));
+    }
+    /** 
+     * Creates a new volume access group.
+     * The new volume access group must be given a name when it is created.
+     * Entering initiators and volumes are optional when creating a volume access group.
+     * Once the group is created volumes and initiator IQNs can be added.
+     * Any initiator IQN that is successfully added to the volume access group is able to access any volume in the group without CHAP authentication.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public CreateVolumeAccessGroupResult createVolumeAccessGroup(final CreateVolumeAccessGroupRequest request) {
+        return super.sendRequest("CreateVolumeAccessGroup", request, CreateVolumeAccessGroupRequest.class, CreateVolumeAccessGroupResult.class);
+    }
+
+    /** 
+     * Creates a new volume access group.
+     * The new volume access group must be given a name when it is created.
+     * Entering initiators and volumes are optional when creating a volume access group.
+     * Once the group is created volumes and initiator IQNs can be added.
+     * Any initiator IQN that is successfully added to the volume access group is able to access any volume in the group without CHAP authentication.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public CreateVolumeAccessGroupResult createVolumeAccessGroup(
+        String name,
+        Optional<String[]> initiators,
+        Optional<Long[]> volumes,
+        Optional<Long[]> virtualNetworkID,
+        Optional<Long[]> virtualNetworkTags,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.createVolumeAccessGroup(new CreateVolumeAccessGroupRequest(name, initiators, volumes, virtualNetworkID, virtualNetworkTags, attributes));
+    }
+    /** 
+     * ListVolumeAccessGroups is used to return information about the volume access groups that are currently in the system.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ListVolumeAccessGroupsResult listVolumeAccessGroups(final ListVolumeAccessGroupsRequest request) {
+        return super.sendRequest("ListVolumeAccessGroups", request, ListVolumeAccessGroupsRequest.class, ListVolumeAccessGroupsResult.class);
+    }
+
+    /** 
+     * ListVolumeAccessGroups is used to return information about the volume access groups that are currently in the system.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ListVolumeAccessGroupsResult listVolumeAccessGroups(
+        Optional<Long> startVolumeAccessGroupID,
+        Optional<Long> limit
+        ) {
+        return this.listVolumeAccessGroups(new ListVolumeAccessGroupsRequest(startVolumeAccessGroupID, limit));
+    }
+    /** 
+     * Delete a volume access group from the system.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(final DeleteVolumeAccessGroupRequest request) {
+        return super.sendRequest("DeleteVolumeAccessGroup", request, DeleteVolumeAccessGroupRequest.class, DeleteVolumeAccessGroupResult.class);
+    }
+
+    /** 
+     * Delete a volume access group from the system.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(
+        Long volumeAccessGroupID
+        ) {
+        return this.deleteVolumeAccessGroup(new DeleteVolumeAccessGroupRequest(volumeAccessGroupID));
+    }
+    /** 
+     * Update initiators and add or remove volumes from a volume access group.
+     * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
+     * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
+     * <br/><br/>
+     * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
+     * <br/><br/>
+     * AddInitiatorsToVolumeAccessGroup<br/>
+     * RemoveInitiatorsFromVolumeAccessGroup<br/>
+     * AddVolumesToVolumeAccessGroup<br/>
+     * RemoveVolumesFromVolumeAccessGroup<br/>
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(final ModifyVolumeAccessGroupRequest request) {
+        return super.sendRequest("ModifyVolumeAccessGroup", request, ModifyVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
+    }
+
+    /** 
+     * Update initiators and add or remove volumes from a volume access group.
+     * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
+     * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
+     * <br/><br/>
+     * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
+     * <br/><br/>
+     * AddInitiatorsToVolumeAccessGroup<br/>
+     * RemoveInitiatorsFromVolumeAccessGroup<br/>
+     * AddVolumesToVolumeAccessGroup<br/>
+     * RemoveVolumesFromVolumeAccessGroup<br/>
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(
+        Long volumeAccessGroupID,
+        Optional<Long[]> virtualNetworkID,
+        Optional<Long[]> virtualNetworkTags,
+        Optional<String> name,
+        Optional<String[]> initiators,
+        Optional<Long[]> volumes,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.modifyVolumeAccessGroup(new ModifyVolumeAccessGroupRequest(volumeAccessGroupID, virtualNetworkID, virtualNetworkTags, name, initiators, volumes, attributes));
+    }
+    /** 
+     * Add initiators to a volume access group.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(final AddInitiatorsToVolumeAccessGroupRequest request) {
+        return super.sendRequest("AddInitiatorsToVolumeAccessGroup", request, AddInitiatorsToVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
+    }
+
+    /** 
+     * Add initiators to a volume access group.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(
+        Long volumeAccessGroupID,
+        String[] initiators
+        ) {
+        return this.addInitiatorsToVolumeAccessGroup(new AddInitiatorsToVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
+    }
+    /** 
+     * Remove initiators from a volume access group.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(final RemoveInitiatorsFromVolumeAccessGroupRequest request) {
+        return super.sendRequest("RemoveInitiatorsFromVolumeAccessGroup", request, RemoveInitiatorsFromVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
+    }
+
+    /** 
+     * Remove initiators from a volume access group.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(
+        Long volumeAccessGroupID,
+        String[] initiators
+        ) {
+        return this.removeInitiatorsFromVolumeAccessGroup(new RemoveInitiatorsFromVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
+    }
+    /** 
+     * Add volumes to a volume access group.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(final AddVolumesToVolumeAccessGroupRequest request) {
+        return super.sendRequest("AddVolumesToVolumeAccessGroup", request, AddVolumesToVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
+    }
+
+    /** 
+     * Add volumes to a volume access group.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(
+        Long volumeAccessGroupID,
+        Long[] volumes
+        ) {
+        return this.addVolumesToVolumeAccessGroup(new AddVolumesToVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
+    }
+    /** 
+     * Remove volumes from a volume access group.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(final RemoveVolumesFromVolumeAccessGroupRequest request) {
+        return super.sendRequest("RemoveVolumesFromVolumeAccessGroup", request, RemoveVolumesFromVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
+    }
+
+    /** 
+     * Remove volumes from a volume access group.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(
+        Long volumeAccessGroupID,
+        Long[] volumes
+        ) {
+        return this.removeVolumesFromVolumeAccessGroup(new RemoveVolumesFromVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
+    }
+    /** 
+     * GetVolumeAccessGroupEfficiency is used to retrieve efficiency information about a volume access group. Only the volume access group provided as parameters in this API method is used to compute the capacity.
+     **/
+    @Override
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public GetEfficiencyResult getVolumeAccessGroupEfficiency(final GetVolumeAccessGroupEfficiencyRequest request) {
+        return super.sendRequest("GetVolumeAccessGroupEfficiency", request, GetVolumeAccessGroupEfficiencyRequest.class, GetEfficiencyResult.class);
+    }
+
+    /** 
+     * GetVolumeAccessGroupEfficiency is used to retrieve efficiency information about a volume access group. Only the volume access group provided as parameters in this API method is used to compute the capacity.
+     **/
+    @Override
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public GetEfficiencyResult getVolumeAccessGroupEfficiency(
+        Long volumeAccessGroupID
+        ) {
+        return this.getVolumeAccessGroupEfficiency(new GetVolumeAccessGroupEfficiencyRequest(volumeAccessGroupID));
+    }
+    /** 
+     * The GetVolumeAccessGroupLunAssignments is used to return information LUN mappings of a specified volume access group.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(final GetVolumeAccessGroupLunAssignmentsRequest request) {
+        return super.sendRequest("GetVolumeAccessGroupLunAssignments", request, GetVolumeAccessGroupLunAssignmentsRequest.class, GetVolumeAccessGroupLunAssignmentsResult.class);
+    }
+
+    /** 
+     * The GetVolumeAccessGroupLunAssignments is used to return information LUN mappings of a specified volume access group.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(
+        Long volumeAccessGroupID
+        ) {
+        return this.getVolumeAccessGroupLunAssignments(new GetVolumeAccessGroupLunAssignmentsRequest(volumeAccessGroupID));
+    }
+    /** 
+     * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
+     * <br/><br/>
+     * LUN assignment values must be unique for volumes in a volume access group. An exception will be seen if LUN assignments are duplicated in a volume access group. However, the same LUN values can be used again in different volume access groups.
+     * <br/><br/>
+     * <b>Note:</b> Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed. None of the specified LUN assignments will be modified if there is an exception.
+     * <br/><br/>
+     * <b>Caution:</b> If a LUN assignment is changed for a volume with active I/O, the I/O could be disrupted. Changes to the server configuration may be required in order to change volume LUN assignments.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(final ModifyVolumeAccessGroupLunAssignmentsRequest request) {
+        return super.sendRequest("ModifyVolumeAccessGroupLunAssignments", request, ModifyVolumeAccessGroupLunAssignmentsRequest.class, ModifyVolumeAccessGroupLunAssignmentsResult.class);
+    }
+
+    /** 
+     * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
+     * <br/><br/>
+     * LUN assignment values must be unique for volumes in a volume access group. An exception will be seen if LUN assignments are duplicated in a volume access group. However, the same LUN values can be used again in different volume access groups.
+     * <br/><br/>
+     * <b>Note:</b> Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed. None of the specified LUN assignments will be modified if there is an exception.
+     * <br/><br/>
+     * <b>Caution:</b> If a LUN assignment is changed for a volume with active I/O, the I/O could be disrupted. Changes to the server configuration may be required in order to change volume LUN assignments.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(
+        Long volumeAccessGroupID,
+        LunAssignment[] lunAssignments
+        ) {
+        return this.modifyVolumeAccessGroupLunAssignments(new ModifyVolumeAccessGroupLunAssignmentsRequest(volumeAccessGroupID, lunAssignments));
+    }
+    /** 
+     * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetClusterHardwareInfoResult getClusterHardwareInfo(final GetClusterHardwareInfoRequest request) {
+        return super.sendRequest("GetClusterHardwareInfo", request, GetClusterHardwareInfoRequest.class, GetClusterHardwareInfoResult.class);
+    }
+
+    /** 
+     * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetClusterHardwareInfoResult getClusterHardwareInfo(
+        Optional<String> type
+        ) {
+        return this.getClusterHardwareInfo(new GetClusterHardwareInfoRequest(type));
+    }
+    /** 
+     * GetHardwareConfig enables you to display the hardware configuration information for a node. NOTE: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public GetHardwareConfigResult getHardwareConfig() {
+        return super.sendRequest("GetHardwareConfig", null, null, GetHardwareConfigResult.class);
+    }
+    /** 
+     * GetNodeHardwareInfo is used to return all the hardware info and status for the node specified. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetNodeHardwareInfoResult getNodeHardwareInfo(final GetNodeHardwareInfoRequest request) {
+        return super.sendRequest("GetNodeHardwareInfo", request, GetNodeHardwareInfoRequest.class, GetNodeHardwareInfoResult.class);
+    }
+
+    /** 
+     * GetNodeHardwareInfo is used to return all the hardware info and status for the node specified. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetNodeHardwareInfoResult getNodeHardwareInfo(
+        Long nodeID
+        ) {
+        return this.getNodeHardwareInfo(new GetNodeHardwareInfoRequest(nodeID));
+    }
+    /** 
+     * GetNvramInfo allows you to retrieve information from each node about the NVRAM card.  
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public GetNvramInfoResult getNvramInfo() {
+        return super.sendRequest("GetNvramInfo", null, null, GetNvramInfoResult.class);
+    }
+    /** 
+     * ListActiveNodes returns the list of currently active nodes that are in the cluster.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListActiveNodesResult listActiveNodes() {
+        return super.sendRequest("ListActiveNodes", null, null, ListActiveNodesResult.class);
+    }
+    /** 
+     * ListAllNodes enables you to retrieve a list of active and pending nodes in the cluster.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListAllNodesResult listAllNodes() {
+        return super.sendRequest("ListAllNodes", null, null, ListAllNodesResult.class);
+    }
+    /** 
+     * Gets the list of pending nodes.
+     * Pending nodes are running and configured to join the cluster, but have not been added via the AddNodes method.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListPendingNodesResult listPendingNodes() {
+        return super.sendRequest("ListPendingNodes", null, null, ListPendingNodesResult.class);
+    }
+    /** 
+     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
+     * <br/><br/>
+     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
+     * <br/><br/>
+     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
+     * <br/><br/>
+     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
+     * <br/><br/>
+     * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddNodesResult addNodes(final AddNodesRequest request) {
+        return super.sendRequest("AddNodes", request, AddNodesRequest.class, AddNodesResult.class);
+    }
+
+    /** 
+     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
+     * <br/><br/>
+     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
+     * <br/><br/>
+     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
+     * <br/><br/>
+     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
+     * <br/><br/>
+     * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddNodesResult addNodes(
+        Long[] pendingNodes
+        ) {
+        return this.addNodes(new AddNodesRequest(pendingNodes));
+    }
+    /** 
+     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
+     * <br/><br/>
+     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public RemoveNodesResult removeNodes(final RemoveNodesRequest request) {
+        return super.sendRequest("RemoveNodes", request, RemoveNodesRequest.class, RemoveNodesResult.class);
+    }
+
+    /** 
+     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
+     * <br/><br/>
+     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public RemoveNodesResult removeNodes(
+        Long[] nodes
+        ) {
+        return this.removeNodes(new RemoveNodesRequest(nodes));
+    }
+    /** 
+     * The GetNetworkConfig API method is used to display the network configuration information for a node.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public GetNetworkConfigResult getNetworkConfig() {
+        return super.sendRequest("GetNetworkConfig", null, null, GetNetworkConfigResult.class);
+    }
+    /** 
+     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
+     * <br/><br/>
+     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetConfigResult setConfig(final SetConfigRequest request) {
+        return super.sendRequest("SetConfig", request, SetConfigRequest.class, SetConfigResult.class);
+    }
+
+    /** 
+     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
+     * <br/><br/>
+     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetConfigResult setConfig(
+        Config config
+        ) {
+        return this.setConfig(new SetConfigRequest(config));
+    }
+    /** 
+     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
+     * <br/><br/>
+     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetNetworkConfigResult setNetworkConfig(final SetNetworkConfigRequest request) {
+        return super.sendRequest("SetNetworkConfig", request, SetNetworkConfigRequest.class, SetNetworkConfigResult.class);
+    }
+
+    /** 
+     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
+     * <br/><br/>
+     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetNetworkConfigResult setNetworkConfig(
+        Network network
+        ) {
+        return this.setNetworkConfig(new SetNetworkConfigRequest(network));
+    }
+    /** 
+     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Both")
+    public GetConfigResult getConfig() {
+        return super.sendRequest("GetConfig", null, null, GetConfigResult.class);
+    }
+    /** 
+     * GetNodeStats is used to return the high-level activity measurements for a single node.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request) {
+        return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(this, request);
+    }
+
+    /** 
+     * GetNodeStats is used to return the high-level activity measurements for a single node.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetNodeStatsResult getNodeStats(
+        Long nodeID
+        ) {
+        return this.getNodeStats(new GetNodeStatsRequest(nodeID));
+    }
+    /** 
+     * ListNodeStats is used to return the high-level activity measurements for all nodes in a cluster.
+     **/
+    @Override
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public ListNodeStatsResult listNodeStats() {
+        return super.sendRequest("ListNodeStats", null, null, ListNodeStatsResult.class);
     }
     /** 
      * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
@@ -3510,291 +3796,5 @@ public class SolidFireElement
         Optional<Long> burstIOPS
         ) {
         return this.setDefaultQoS(new SetDefaultQoSRequest(minIOPS, maxIOPS, burstIOPS));
-    }
-    /** 
-     * Creates a new volume access group.
-     * The new volume access group must be given a name when it is created.
-     * Entering initiators and volumes are optional when creating a volume access group.
-     * Once the group is created volumes and initiator IQNs can be added.
-     * Any initiator IQN that is successfully added to the volume access group is able to access any volume in the group without CHAP authentication.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public CreateVolumeAccessGroupResult createVolumeAccessGroup(final CreateVolumeAccessGroupRequest request) {
-        return super.sendRequest("CreateVolumeAccessGroup", request, CreateVolumeAccessGroupRequest.class, CreateVolumeAccessGroupResult.class);
-    }
-
-    /** 
-     * Creates a new volume access group.
-     * The new volume access group must be given a name when it is created.
-     * Entering initiators and volumes are optional when creating a volume access group.
-     * Once the group is created volumes and initiator IQNs can be added.
-     * Any initiator IQN that is successfully added to the volume access group is able to access any volume in the group without CHAP authentication.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public CreateVolumeAccessGroupResult createVolumeAccessGroup(
-        String name,
-        Optional<String[]> initiators,
-        Optional<Long[]> volumes,
-        Optional<Long[]> virtualNetworkID,
-        Optional<Long[]> virtualNetworkTags,
-        Optional<java.util.Map<String, Object>> attributes
-        ) {
-        return this.createVolumeAccessGroup(new CreateVolumeAccessGroupRequest(name, initiators, volumes, virtualNetworkID, virtualNetworkTags, attributes));
-    }
-    /** 
-     * ListVolumeAccessGroups is used to return information about the volume access groups that are currently in the system.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ListVolumeAccessGroupsResult listVolumeAccessGroups(final ListVolumeAccessGroupsRequest request) {
-        return super.sendRequest("ListVolumeAccessGroups", request, ListVolumeAccessGroupsRequest.class, ListVolumeAccessGroupsResult.class);
-    }
-
-    /** 
-     * ListVolumeAccessGroups is used to return information about the volume access groups that are currently in the system.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ListVolumeAccessGroupsResult listVolumeAccessGroups(
-        Optional<Long> startVolumeAccessGroupID,
-        Optional<Long> limit
-        ) {
-        return this.listVolumeAccessGroups(new ListVolumeAccessGroupsRequest(startVolumeAccessGroupID, limit));
-    }
-    /** 
-     * Delete a volume access group from the system.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(final DeleteVolumeAccessGroupRequest request) {
-        return super.sendRequest("DeleteVolumeAccessGroup", request, DeleteVolumeAccessGroupRequest.class, DeleteVolumeAccessGroupResult.class);
-    }
-
-    /** 
-     * Delete a volume access group from the system.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(
-        Long volumeAccessGroupID
-        ) {
-        return this.deleteVolumeAccessGroup(new DeleteVolumeAccessGroupRequest(volumeAccessGroupID));
-    }
-    /** 
-     * Update initiators and add or remove volumes from a volume access group.
-     * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
-     * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
-     * <br/><br/>
-     * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
-     * <br/><br/>
-     * AddInitiatorsToVolumeAccessGroup<br/>
-     * RemoveInitiatorsFromVolumeAccessGroup<br/>
-     * AddVolumesToVolumeAccessGroup<br/>
-     * RemoveVolumesFromVolumeAccessGroup<br/>
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(final ModifyVolumeAccessGroupRequest request) {
-        return super.sendRequest("ModifyVolumeAccessGroup", request, ModifyVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
-    }
-
-    /** 
-     * Update initiators and add or remove volumes from a volume access group.
-     * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
-     * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
-     * <br/><br/>
-     * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
-     * <br/><br/>
-     * AddInitiatorsToVolumeAccessGroup<br/>
-     * RemoveInitiatorsFromVolumeAccessGroup<br/>
-     * AddVolumesToVolumeAccessGroup<br/>
-     * RemoveVolumesFromVolumeAccessGroup<br/>
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(
-        Long volumeAccessGroupID,
-        Optional<Long[]> virtualNetworkID,
-        Optional<Long[]> virtualNetworkTags,
-        Optional<String> name,
-        Optional<String[]> initiators,
-        Optional<Long[]> volumes,
-        Optional<java.util.Map<String, Object>> attributes
-        ) {
-        return this.modifyVolumeAccessGroup(new ModifyVolumeAccessGroupRequest(volumeAccessGroupID, virtualNetworkID, virtualNetworkTags, name, initiators, volumes, attributes));
-    }
-    /** 
-     * Add initiators to a volume access group.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(final AddInitiatorsToVolumeAccessGroupRequest request) {
-        return super.sendRequest("AddInitiatorsToVolumeAccessGroup", request, AddInitiatorsToVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
-    }
-
-    /** 
-     * Add initiators to a volume access group.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(
-        Long volumeAccessGroupID,
-        String[] initiators
-        ) {
-        return this.addInitiatorsToVolumeAccessGroup(new AddInitiatorsToVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
-    }
-    /** 
-     * Remove initiators from a volume access group.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(final RemoveInitiatorsFromVolumeAccessGroupRequest request) {
-        return super.sendRequest("RemoveInitiatorsFromVolumeAccessGroup", request, RemoveInitiatorsFromVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
-    }
-
-    /** 
-     * Remove initiators from a volume access group.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(
-        Long volumeAccessGroupID,
-        String[] initiators
-        ) {
-        return this.removeInitiatorsFromVolumeAccessGroup(new RemoveInitiatorsFromVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
-    }
-    /** 
-     * Add volumes to a volume access group.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(final AddVolumesToVolumeAccessGroupRequest request) {
-        return super.sendRequest("AddVolumesToVolumeAccessGroup", request, AddVolumesToVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
-    }
-
-    /** 
-     * Add volumes to a volume access group.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(
-        Long volumeAccessGroupID,
-        Long[] volumes
-        ) {
-        return this.addVolumesToVolumeAccessGroup(new AddVolumesToVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
-    }
-    /** 
-     * Remove volumes from a volume access group.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(final RemoveVolumesFromVolumeAccessGroupRequest request) {
-        return super.sendRequest("RemoveVolumesFromVolumeAccessGroup", request, RemoveVolumesFromVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
-    }
-
-    /** 
-     * Remove volumes from a volume access group.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(
-        Long volumeAccessGroupID,
-        Long[] volumes
-        ) {
-        return this.removeVolumesFromVolumeAccessGroup(new RemoveVolumesFromVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
-    }
-    /** 
-     * GetVolumeAccessGroupEfficiency is used to retrieve efficiency information about a volume access group. Only the volume access group provided as parameters in this API method is used to compute the capacity.
-     **/
-    @Override
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public GetEfficiencyResult getVolumeAccessGroupEfficiency(final GetVolumeAccessGroupEfficiencyRequest request) {
-        return super.sendRequest("GetVolumeAccessGroupEfficiency", request, GetVolumeAccessGroupEfficiencyRequest.class, GetEfficiencyResult.class);
-    }
-
-    /** 
-     * GetVolumeAccessGroupEfficiency is used to retrieve efficiency information about a volume access group. Only the volume access group provided as parameters in this API method is used to compute the capacity.
-     **/
-    @Override
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public GetEfficiencyResult getVolumeAccessGroupEfficiency(
-        Long volumeAccessGroupID
-        ) {
-        return this.getVolumeAccessGroupEfficiency(new GetVolumeAccessGroupEfficiencyRequest(volumeAccessGroupID));
-    }
-    /** 
-     * The GetVolumeAccessGroupLunAssignments is used to return information LUN mappings of a specified volume access group.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(final GetVolumeAccessGroupLunAssignmentsRequest request) {
-        return super.sendRequest("GetVolumeAccessGroupLunAssignments", request, GetVolumeAccessGroupLunAssignmentsRequest.class, GetVolumeAccessGroupLunAssignmentsResult.class);
-    }
-
-    /** 
-     * The GetVolumeAccessGroupLunAssignments is used to return information LUN mappings of a specified volume access group.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(
-        Long volumeAccessGroupID
-        ) {
-        return this.getVolumeAccessGroupLunAssignments(new GetVolumeAccessGroupLunAssignmentsRequest(volumeAccessGroupID));
-    }
-    /** 
-     * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
-     * <br/><br/>
-     * LUN assignment values must be unique for volumes in a volume access group. An exception will be seen if LUN assignments are duplicated in a volume access group. However, the same LUN values can be used again in different volume access groups.
-     * <br/><br/>
-     * <b>Note:</b> Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed. None of the specified LUN assignments will be modified if there is an exception.
-     * <br/><br/>
-     * <b>Caution:</b> If a LUN assignment is changed for a volume with active I/O, the I/O could be disrupted. Changes to the server configuration may be required in order to change volume LUN assignments.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(final ModifyVolumeAccessGroupLunAssignmentsRequest request) {
-        return super.sendRequest("ModifyVolumeAccessGroupLunAssignments", request, ModifyVolumeAccessGroupLunAssignmentsRequest.class, ModifyVolumeAccessGroupLunAssignmentsResult.class);
-    }
-
-    /** 
-     * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
-     * <br/><br/>
-     * LUN assignment values must be unique for volumes in a volume access group. An exception will be seen if LUN assignments are duplicated in a volume access group. However, the same LUN values can be used again in different volume access groups.
-     * <br/><br/>
-     * <b>Note:</b> Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed. None of the specified LUN assignments will be modified if there is an exception.
-     * <br/><br/>
-     * <b>Caution:</b> If a LUN assignment is changed for a volume with active I/O, the I/O could be disrupted. Changes to the server configuration may be required in order to change volume LUN assignments.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(
-        Long volumeAccessGroupID,
-        LunAssignment[] lunAssignments
-        ) {
-        return this.modifyVolumeAccessGroupLunAssignments(new ModifyVolumeAccessGroupLunAssignmentsRequest(volumeAccessGroupID, lunAssignments));
     }
 }

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumeBindingsResult implements Serializable {
 
-    public static final long serialVersionUID = 1641931305L;
+    public static final long serialVersionUID = 6436663975426777641L;
     @SerializedName("bindings") private VirtualVolumeBinding[] bindings;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class ListVirtualVolumeBindingsResult implements Serializable {
 
         ListVirtualVolumeBindingsResult that = (ListVirtualVolumeBindingsResult) o;
         return 
-            Objects.equals(bindings, that.bindings);
+            Arrays.equals(bindings, that.bindings);
     }
 
     @Override

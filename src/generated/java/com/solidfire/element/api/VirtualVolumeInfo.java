@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class VirtualVolumeInfo implements Serializable {
 
-    public static final long serialVersionUID = 1573175622L;
+    public static final long serialVersionUID = -3100253211114290874L;
     @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
     @SerializedName("parentVirtualVolumeID") private java.util.UUID parentVirtualVolumeID;
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
@@ -178,8 +178,8 @@ public class VirtualVolumeInfo implements Serializable {
             Objects.equals(snapshotID, that.snapshotID) &&
             Objects.equals(virtualVolumeType, that.virtualVolumeType) &&
             Objects.equals(status, that.status) &&
-            Objects.equals(bindings, that.bindings) &&
-            Objects.equals(children, that.children) &&
+            Arrays.equals(bindings, that.bindings) &&
+            Arrays.equals(children, that.children) &&
             Objects.equals(metadata, that.metadata) &&
             Objects.equals(snapshotInfo, that.snapshotInfo) &&
             Objects.equals(volumeInfo, that.volumeInfo);

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CloneMultipleVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -1462628176L;
+    public static final long serialVersionUID = -6275597178319531856L;
     @SerializedName("volumes") private CloneMultipleVolumeParams[] volumes;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
@@ -99,7 +99,7 @@ public class CloneMultipleVolumesRequest implements Serializable {
 
         CloneMultipleVolumesRequest that = (CloneMultipleVolumesRequest) o;
         return 
-            Objects.equals(volumes, that.volumes) &&
+            Arrays.equals(volumes, that.volumes) &&
             Objects.equals(access, that.access) &&
             Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
             Objects.equals(newAccountID, that.newAccountID);

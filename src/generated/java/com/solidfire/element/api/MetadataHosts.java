@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class MetadataHosts implements Serializable {
 
-    public static final long serialVersionUID = -1360445663L;
+    public static final long serialVersionUID = 2342637687735402273L;
     @SerializedName("deadSecondaries") private Long[] deadSecondaries;
     @SerializedName("liveSecondaries") private Long[] liveSecondaries;
     @SerializedName("primary") private Long primary;
@@ -83,8 +83,8 @@ public class MetadataHosts implements Serializable {
 
         MetadataHosts that = (MetadataHosts) o;
         return 
-            Objects.equals(deadSecondaries, that.deadSecondaries) &&
-            Objects.equals(liveSecondaries, that.liveSecondaries) &&
+            Arrays.equals(deadSecondaries, that.deadSecondaries) &&
+            Arrays.equals(liveSecondaries, that.liveSecondaries) &&
             Objects.equals(primary, that.primary);
     }
 

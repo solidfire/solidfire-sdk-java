@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 1320033190L;
+    public static final long serialVersionUID = -973849202726659162L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("initiators") private String[] initiators;
 
@@ -74,7 +74,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
         RemoveInitiatorsFromVolumeAccessGroupRequest that = (RemoveInitiatorsFromVolumeAccessGroupRequest) o;
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
-            Objects.equals(initiators, that.initiators);
+            Arrays.equals(initiators, that.initiators);
     }
 
     @Override

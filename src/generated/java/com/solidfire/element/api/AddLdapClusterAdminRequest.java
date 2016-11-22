@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class AddLdapClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 1454906654L;
+    public static final long serialVersionUID = -5722700464815334114L;
     @SerializedName("username") private String username;
     @SerializedName("access") private String[] access;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
@@ -94,7 +94,7 @@ public class AddLdapClusterAdminRequest implements Serializable {
         AddLdapClusterAdminRequest that = (AddLdapClusterAdminRequest) o;
         return 
             Objects.equals(username, that.username) &&
-            Objects.equals(access, that.access) &&
+            Arrays.equals(access, that.access) &&
             Objects.equals(acceptEula, that.acceptEula) &&
             Objects.equals(attributes, that.attributes);
     }

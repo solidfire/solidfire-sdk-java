@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 621523556L;
+    public static final long serialVersionUID = -1561321066464562588L;
     @SerializedName("details") private Optional<Boolean> details;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("recursive") private Optional<Boolean> recursive;
@@ -107,7 +107,7 @@ public class ListVirtualVolumesRequest implements Serializable {
             Objects.equals(limit, that.limit) &&
             Objects.equals(recursive, that.recursive) &&
             Objects.equals(startVirtualVolumeID, that.startVirtualVolumeID) &&
-            Objects.equals(virtualVolumeIDs, that.virtualVolumeIDs);
+            Arrays.equals(virtualVolumeIDs, that.virtualVolumeIDs);
     }
 
     @Override

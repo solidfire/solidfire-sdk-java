@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class LdapConfiguration implements Serializable {
 
-    public static final long serialVersionUID = 1780006854L;
+    public static final long serialVersionUID = -4900050528922714170L;
     @SerializedName("authType") private String authType;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("groupSearchBaseDN") private String groupSearchBaseDN;
@@ -168,7 +168,7 @@ public class LdapConfiguration implements Serializable {
             Objects.equals(groupSearchCustomFilter, that.groupSearchCustomFilter) &&
             Objects.equals(groupSearchType, that.groupSearchType) &&
             Objects.equals(searchBindDN, that.searchBindDN) &&
-            Objects.equals(serverURIs, that.serverURIs) &&
+            Arrays.equals(serverURIs, that.serverURIs) &&
             Objects.equals(userDNTemplate, that.userDNTemplate) &&
             Objects.equals(userSearchBaseDN, that.userSearchBaseDN) &&
             Objects.equals(userSearchFilter, that.userSearchFilter);

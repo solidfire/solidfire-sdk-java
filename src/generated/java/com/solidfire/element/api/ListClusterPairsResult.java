@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListClusterPairsResult implements Serializable {
 
-    public static final long serialVersionUID = -267067072L;
+    public static final long serialVersionUID = -8080838636769844928L;
     @SerializedName("clusterPairs") private PairedCluster[] clusterPairs;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class ListClusterPairsResult implements Serializable {
 
         ListClusterPairsResult that = (ListClusterPairsResult) o;
         return 
-            Objects.equals(clusterPairs, that.clusterPairs);
+            Arrays.equals(clusterPairs, that.clusterPairs);
     }
 
     @Override

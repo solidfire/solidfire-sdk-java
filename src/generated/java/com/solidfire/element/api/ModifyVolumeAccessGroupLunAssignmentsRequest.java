@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializable {
 
-    public static final long serialVersionUID = -1602509399L;
+    public static final long serialVersionUID = -2854592840284265047L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
 
@@ -74,7 +74,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
         ModifyVolumeAccessGroupLunAssignmentsRequest that = (ModifyVolumeAccessGroupLunAssignmentsRequest) o;
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
-            Objects.equals(lunAssignments, that.lunAssignments);
+            Arrays.equals(lunAssignments, that.lunAssignments);
     }
 
     @Override

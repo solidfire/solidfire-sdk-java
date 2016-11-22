@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumeHostsResult implements Serializable {
 
-    public static final long serialVersionUID = -1888704501L;
+    public static final long serialVersionUID = -8007463979747334133L;
     @SerializedName("hosts") private VirtualVolumeHost[] hosts;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class ListVirtualVolumeHostsResult implements Serializable {
 
         ListVirtualVolumeHostsResult that = (ListVirtualVolumeHostsResult) o;
         return 
-            Objects.equals(hosts, that.hosts);
+            Arrays.equals(hosts, that.hosts);
     }
 
     @Override

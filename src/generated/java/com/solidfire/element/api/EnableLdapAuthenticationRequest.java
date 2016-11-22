@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class EnableLdapAuthenticationRequest implements Serializable {
 
-    public static final long serialVersionUID = 789437410L;
+    public static final long serialVersionUID = 4288984566259899362L;
     @SerializedName("authType") private Optional<String> authType;
     @SerializedName("groupSearchBaseDN") private Optional<String> groupSearchBaseDN;
     @SerializedName("groupSearchCustomFilter") private Optional<String> groupSearchCustomFilter;
@@ -175,7 +175,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
             Objects.equals(groupSearchType, that.groupSearchType) &&
             Objects.equals(searchBindDN, that.searchBindDN) &&
             Objects.equals(searchBindPassword, that.searchBindPassword) &&
-            Objects.equals(serverURIs, that.serverURIs) &&
+            Arrays.equals(serverURIs, that.serverURIs) &&
             Objects.equals(userDNTemplate, that.userDNTemplate) &&
             Objects.equals(userSearchBaseDN, that.userSearchBaseDN) &&
             Objects.equals(userSearchFilter, that.userSearchFilter);

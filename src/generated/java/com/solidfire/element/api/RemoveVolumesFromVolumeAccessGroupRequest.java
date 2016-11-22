@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 239848816L;
+    public static final long serialVersionUID = 4779120452503850352L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("volumes") private Long[] volumes;
 
@@ -74,7 +74,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
         RemoveVolumesFromVolumeAccessGroupRequest that = (RemoveVolumesFromVolumeAccessGroupRequest) o;
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
-            Objects.equals(volumes, that.volumes);
+            Arrays.equals(volumes, that.volumes);
     }
 
     @Override

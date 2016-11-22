@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumeBindingsRequest implements Serializable {
 
-    public static final long serialVersionUID = -916678932L;
+    public static final long serialVersionUID = 1543024419589101292L;
     @SerializedName("virtualVolumeBindingIDs") private Optional<Long[]> virtualVolumeBindingIDs;
     @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
@@ -71,7 +71,7 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
 
         ListVirtualVolumeBindingsRequest that = (ListVirtualVolumeBindingsRequest) o;
         return 
-            Objects.equals(virtualVolumeBindingIDs, that.virtualVolumeBindingIDs) &&
+            Arrays.equals(virtualVolumeBindingIDs, that.virtualVolumeBindingIDs) &&
             Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }
 

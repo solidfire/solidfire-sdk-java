@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumeTasksResult implements Serializable {
 
-    public static final long serialVersionUID = 603344336L;
+    public static final long serialVersionUID = 7921986552949263824L;
     @SerializedName("tasks") private VirtualVolumeTask[] tasks;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class ListVirtualVolumeTasksResult implements Serializable {
 
         ListVirtualVolumeTasksResult that = (ListVirtualVolumeTasksResult) o;
         return 
-            Objects.equals(tasks, that.tasks);
+            Arrays.equals(tasks, that.tasks);
     }
 
     @Override

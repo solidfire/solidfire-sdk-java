@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class SolidfireDefaults implements Serializable {
 
-    public static final long serialVersionUID = 766812822L;
+    public static final long serialVersionUID = 3299673363960865430L;
     @SerializedName("sliceFileLogFileCapacity") private Long sliceFileLogFileCapacity;
     @SerializedName("postCallbackThreadCount") private Long postCallbackThreadCount;
     @SerializedName("cpuDmaLatency") private Long cpuDmaLatency;

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class VolumeAccessGroup implements Serializable {
 
-    public static final long serialVersionUID = -1372296164L;
+    public static final long serialVersionUID = 143293271697026076L;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
     @SerializedName("deletedVolumes") private Long[] deletedVolumes;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
@@ -124,12 +124,12 @@ public class VolumeAccessGroup implements Serializable {
         VolumeAccessGroup that = (VolumeAccessGroup) o;
         return 
             Objects.equals(attributes, that.attributes) &&
-            Objects.equals(deletedVolumes, that.deletedVolumes) &&
+            Arrays.equals(deletedVolumes, that.deletedVolumes) &&
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
             Objects.equals(name, that.name) &&
-            Objects.equals(initiatorIDs, that.initiatorIDs) &&
-            Objects.equals(initiators, that.initiators) &&
-            Objects.equals(volumes, that.volumes);
+            Arrays.equals(initiatorIDs, that.initiatorIDs) &&
+            Arrays.equals(initiators, that.initiators) &&
+            Arrays.equals(volumes, that.volumes);
     }
 
     @Override

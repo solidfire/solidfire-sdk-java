@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetSnmpInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -2074176118L;
+    public static final long serialVersionUID = -1945868960257895030L;
     @SerializedName("networks") private SnmpNetwork[] networks;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("snmpV3Enabled") private Boolean snmpV3Enabled;
@@ -95,10 +95,10 @@ public class GetSnmpInfoResult implements Serializable {
 
         GetSnmpInfoResult that = (GetSnmpInfoResult) o;
         return 
-            Objects.equals(networks, that.networks) &&
+            Arrays.equals(networks, that.networks) &&
             Objects.equals(enabled, that.enabled) &&
             Objects.equals(snmpV3Enabled, that.snmpV3Enabled) &&
-            Objects.equals(usmUsers, that.usmUsers);
+            Arrays.equals(usmUsers, that.usmUsers);
     }
 
     @Override

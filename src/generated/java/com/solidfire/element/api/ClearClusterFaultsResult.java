@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ClearClusterFaultsResult implements Serializable {
 
-    public static final long serialVersionUID = 177511815L;
+    public static final long serialVersionUID = -3383296994744951417L;
 
     // empty constructor
     @Since("7.0")

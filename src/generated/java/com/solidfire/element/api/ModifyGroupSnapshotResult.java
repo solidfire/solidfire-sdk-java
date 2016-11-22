@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyGroupSnapshotResult implements Serializable {
 
-    public static final long serialVersionUID = -379727207L;
+    public static final long serialVersionUID = -4654919035054599527L;
 
     // empty constructor
     @Since("8.0")

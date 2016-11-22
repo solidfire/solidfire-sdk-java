@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DeleteVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 1709326705L;
+    public static final long serialVersionUID = -6227406894762147471L;
     @SerializedName("accountIDs") private Optional<Long[]> accountIDs;
     @SerializedName("volumeAccessGroupIDs") private Optional<Long[]> volumeAccessGroupIDs;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
@@ -83,9 +83,9 @@ public class DeleteVolumesRequest implements Serializable {
 
         DeleteVolumesRequest that = (DeleteVolumesRequest) o;
         return 
-            Objects.equals(accountIDs, that.accountIDs) &&
-            Objects.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs) &&
-            Objects.equals(volumeIDs, that.volumeIDs);
+            Arrays.equals(accountIDs, that.accountIDs) &&
+            Arrays.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs) &&
+            Arrays.equals(volumeIDs, that.volumeIDs);
     }
 
     @Override

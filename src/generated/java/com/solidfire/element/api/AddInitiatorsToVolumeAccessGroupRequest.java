@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = -1502594281L;
+    public static final long serialVersionUID = 6354255713219394327L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("initiators") private String[] initiators;
 
@@ -74,7 +74,7 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
         AddInitiatorsToVolumeAccessGroupRequest that = (AddInitiatorsToVolumeAccessGroupRequest) o;
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
-            Objects.equals(initiators, that.initiators);
+            Arrays.equals(initiators, that.initiators);
     }
 
     @Override

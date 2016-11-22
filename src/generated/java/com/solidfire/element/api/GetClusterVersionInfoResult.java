@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetClusterVersionInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 1415059778L;
+    public static final long serialVersionUID = 7467984518886463810L;
     @SerializedName("clusterAPIVersion") private String clusterAPIVersion;
     @SerializedName("clusterVersion") private String clusterVersion;
     @SerializedName("clusterVersionInfo") private ClusterVersionInfo[] clusterVersionInfo;
@@ -91,7 +91,7 @@ public class GetClusterVersionInfoResult implements Serializable {
         return 
             Objects.equals(clusterAPIVersion, that.clusterAPIVersion) &&
             Objects.equals(clusterVersion, that.clusterVersion) &&
-            Objects.equals(clusterVersionInfo, that.clusterVersionInfo) &&
+            Arrays.equals(clusterVersionInfo, that.clusterVersionInfo) &&
             Objects.equals(softwareVersionInfo, that.softwareVersionInfo);
     }
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVolumeAccessGroupsResult implements Serializable {
 
-    public static final long serialVersionUID = 1766897459L;
+    public static final long serialVersionUID = -2843709235167971533L;
     @SerializedName("volumeAccessGroups") private VolumeAccessGroup[] volumeAccessGroups;
     @SerializedName("volumeAccessGroupsNotFound") private Long[] volumeAccessGroupsNotFound;
 
@@ -73,8 +73,8 @@ public class ListVolumeAccessGroupsResult implements Serializable {
 
         ListVolumeAccessGroupsResult that = (ListVolumeAccessGroupsResult) o;
         return 
-            Objects.equals(volumeAccessGroups, that.volumeAccessGroups) &&
-            Objects.equals(volumeAccessGroupsNotFound, that.volumeAccessGroupsNotFound);
+            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) &&
+            Arrays.equals(volumeAccessGroupsNotFound, that.volumeAccessGroupsNotFound);
     }
 
     @Override

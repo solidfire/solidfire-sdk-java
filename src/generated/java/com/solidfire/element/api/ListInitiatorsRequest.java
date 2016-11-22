@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 823028388L;
+    public static final long serialVersionUID = 3268711327032306340L;
     @SerializedName("startInitiatorID") private Optional<Long> startInitiatorID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("initiators") private Optional<Long[]> initiators;
@@ -85,7 +85,7 @@ public class ListInitiatorsRequest implements Serializable {
         return 
             Objects.equals(startInitiatorID, that.startInitiatorID) &&
             Objects.equals(limit, that.limit) &&
-            Objects.equals(initiators, that.initiators);
+            Arrays.equals(initiators, that.initiators);
     }
 
     @Override

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class SetSnmpACLRequest implements Serializable {
 
-    public static final long serialVersionUID = 1329125190L;
+    public static final long serialVersionUID = 6271612792860104518L;
     @SerializedName("networks") private SnmpNetwork[] networks;
     @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
 
@@ -73,8 +73,8 @@ public class SetSnmpACLRequest implements Serializable {
 
         SetSnmpACLRequest that = (SetSnmpACLRequest) o;
         return 
-            Objects.equals(networks, that.networks) &&
-            Objects.equals(usmUsers, that.usmUsers);
+            Arrays.equals(networks, that.networks) &&
+            Arrays.equals(usmUsers, that.usmUsers);
     }
 
     @Override

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Account implements Serializable {
 
-    public static final long serialVersionUID = 1183286338L;
+    public static final long serialVersionUID = 6182745512723579970L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("username") private String username;
     @SerializedName("status") private String status;
@@ -126,7 +126,7 @@ public class Account implements Serializable {
             Objects.equals(accountID, that.accountID) &&
             Objects.equals(username, that.username) &&
             Objects.equals(status, that.status) &&
-            Objects.equals(volumes, that.volumes) &&
+            Arrays.equals(volumes, that.volumes) &&
             Objects.equals(initiatorSecret, that.initiatorSecret) &&
             Objects.equals(targetSecret, that.targetSecret) &&
             Objects.equals(attributes, that.attributes);

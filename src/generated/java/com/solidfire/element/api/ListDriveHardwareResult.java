@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListDriveHardwareResult implements Serializable {
 
-    public static final long serialVersionUID = 1786095516L;
+    public static final long serialVersionUID = -7565014355252238436L;
     @SerializedName("nodes") private NodeDriveHardware[] nodes;
 
     // empty constructor
@@ -62,7 +62,7 @@ public class ListDriveHardwareResult implements Serializable {
 
         ListDriveHardwareResult that = (ListDriveHardwareResult) o;
         return 
-            Objects.equals(nodes, that.nodes);
+            Arrays.equals(nodes, that.nodes);
     }
 
     @Override

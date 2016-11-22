@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListClusterAdminsResult implements Serializable {
 
-    public static final long serialVersionUID = 67083818L;
+    public static final long serialVersionUID = 7677046371408387626L;
     @SerializedName("clusterAdmins") private ClusterAdmin[] clusterAdmins;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class ListClusterAdminsResult implements Serializable {
 
         ListClusterAdminsResult that = (ListClusterAdminsResult) o;
         return 
-            Objects.equals(clusterAdmins, that.clusterAdmins);
+            Arrays.equals(clusterAdmins, that.clusterAdmins);
     }
 
     @Override

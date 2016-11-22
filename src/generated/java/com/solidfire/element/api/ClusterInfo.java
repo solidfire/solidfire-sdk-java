@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ClusterInfo implements Serializable {
 
-    public static final long serialVersionUID = -1471836507L;
+    public static final long serialVersionUID = 6937143244161912485L;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
     @SerializedName("encryptionAtRestState") private String encryptionAtRestState;
     @SerializedName("ensemble") private String[] ensemble;
@@ -174,7 +174,7 @@ public class ClusterInfo implements Serializable {
         return 
             Objects.equals(attributes, that.attributes) &&
             Objects.equals(encryptionAtRestState, that.encryptionAtRestState) &&
-            Objects.equals(ensemble, that.ensemble) &&
+            Arrays.equals(ensemble, that.ensemble) &&
             Objects.equals(mvip, that.mvip) &&
             Objects.equals(mvipNodeID, that.mvipNodeID) &&
             Objects.equals(name, that.name) &&

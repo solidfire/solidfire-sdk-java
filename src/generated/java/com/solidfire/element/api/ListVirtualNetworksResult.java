@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVirtualNetworksResult implements Serializable {
 
-    public static final long serialVersionUID = 1496986290L;
+    public static final long serialVersionUID = -6359844543713889614L;
     @SerializedName("virtualNetworks") private VirtualNetwork[] virtualNetworks;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class ListVirtualNetworksResult implements Serializable {
 
         ListVirtualNetworksResult that = (ListVirtualNetworksResult) o;
         return 
-            Objects.equals(virtualNetworks, that.virtualNetworks);
+            Arrays.equals(virtualNetworks, that.virtualNetworks);
     }
 
     @Override

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RemoveNodesRequest implements Serializable {
 
-    public static final long serialVersionUID = -1632985756L;
+    public static final long serialVersionUID = 4755776002002165092L;
     @SerializedName("nodes") private Long[] nodes;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class RemoveNodesRequest implements Serializable {
 
         RemoveNodesRequest that = (RemoveNodesRequest) o;
         return 
-            Objects.equals(nodes, that.nodes);
+            Arrays.equals(nodes, that.nodes);
     }
 
     @Override

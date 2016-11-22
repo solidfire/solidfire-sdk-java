@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetSnmpTrapInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -331253853L;
+    public static final long serialVersionUID = -2022621179440695389L;
     @SerializedName("trapRecipients") private SnmpTrapRecipient[] trapRecipients;
     @SerializedName("clusterFaultTrapsEnabled") private Boolean clusterFaultTrapsEnabled;
     @SerializedName("clusterFaultResolvedTrapsEnabled") private Boolean clusterFaultResolvedTrapsEnabled;
@@ -93,7 +93,7 @@ public class GetSnmpTrapInfoResult implements Serializable {
 
         GetSnmpTrapInfoResult that = (GetSnmpTrapInfoResult) o;
         return 
-            Objects.equals(trapRecipients, that.trapRecipients) &&
+            Arrays.equals(trapRecipients, that.trapRecipients) &&
             Objects.equals(clusterFaultTrapsEnabled, that.clusterFaultTrapsEnabled) &&
             Objects.equals(clusterFaultResolvedTrapsEnabled, that.clusterFaultResolvedTrapsEnabled) &&
             Objects.equals(clusterEventTrapsEnabled, that.clusterEventTrapsEnabled);

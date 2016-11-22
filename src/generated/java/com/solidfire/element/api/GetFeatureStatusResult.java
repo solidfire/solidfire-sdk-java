@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetFeatureStatusResult implements Serializable {
 
-    public static final long serialVersionUID = 504472361L;
+    public static final long serialVersionUID = -7588132468976147671L;
     @SerializedName("features") private FeatureObject[] features;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class GetFeatureStatusResult implements Serializable {
 
         GetFeatureStatusResult that = (GetFeatureStatusResult) o;
         return 
-            Objects.equals(features, that.features);
+            Arrays.equals(features, that.features);
     }
 
     @Override

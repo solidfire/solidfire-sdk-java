@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetNtpInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 869413777L;
+    public static final long serialVersionUID = -3054121633811647599L;
     @SerializedName("broadcastclient") private Boolean broadcastclient;
     @SerializedName("servers") private String[] servers;
 
@@ -76,7 +76,7 @@ public class GetNtpInfoResult implements Serializable {
         GetNtpInfoResult that = (GetNtpInfoResult) o;
         return 
             Objects.equals(broadcastclient, that.broadcastclient) &&
-            Objects.equals(servers, that.servers);
+            Arrays.equals(servers, that.servers);
     }
 
     @Override

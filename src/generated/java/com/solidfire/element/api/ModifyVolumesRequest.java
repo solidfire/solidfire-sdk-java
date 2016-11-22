@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -1918464962L;
+    public static final long serialVersionUID = 9020809531737148478L;
     @SerializedName("volumeIDs") private Long[] volumeIDs;
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;
@@ -122,7 +122,7 @@ public class ModifyVolumesRequest implements Serializable {
 
         ModifyVolumesRequest that = (ModifyVolumesRequest) o;
         return 
-            Objects.equals(volumeIDs, that.volumeIDs) &&
+            Arrays.equals(volumeIDs, that.volumeIDs) &&
             Objects.equals(accountID, that.accountID) &&
             Objects.equals(access, that.access) &&
             Objects.equals(attributes, that.attributes) &&

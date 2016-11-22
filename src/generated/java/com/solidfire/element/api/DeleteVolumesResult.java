@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DeleteVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = 2050497274L;
+    public static final long serialVersionUID = 3323553014043122426L;
     @SerializedName("volumes") private Volume[] volumes;
     @SerializedName("curve") private QoS curve;
 
@@ -72,7 +72,7 @@ public class DeleteVolumesResult implements Serializable {
 
         DeleteVolumesResult that = (DeleteVolumesResult) o;
         return 
-            Objects.equals(volumes, that.volumes) &&
+            Arrays.equals(volumes, that.volumes) &&
             Objects.equals(curve, that.curve);
     }
 

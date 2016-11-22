@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ClusterConfig implements Serializable {
 
-    public static final long serialVersionUID = 2141584681L;
+    public static final long serialVersionUID = 3884387958155246889L;
     @SerializedName("cipi") private Optional<String> cipi;
     @SerializedName("cluster") private Optional<String> cluster;
     @SerializedName("ensemble") private Optional<String[]> ensemble;
@@ -152,7 +152,7 @@ public class ClusterConfig implements Serializable {
         return 
             Objects.equals(cipi, that.cipi) &&
             Objects.equals(cluster, that.cluster) &&
-            Objects.equals(ensemble, that.ensemble) &&
+            Arrays.equals(ensemble, that.ensemble) &&
             Objects.equals(mipi, that.mipi) &&
             Objects.equals(name, that.name) &&
             Objects.equals(nodeID, that.nodeID) &&

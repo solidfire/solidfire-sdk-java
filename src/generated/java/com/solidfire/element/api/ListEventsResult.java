@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListEventsResult implements Serializable {
 
-    public static final long serialVersionUID = -1047881416L;
+    public static final long serialVersionUID = 2761767569186265400L;
     @SerializedName("eventQueueType") private String eventQueueType;
     @SerializedName("events") private EventInfo[] events;
 
@@ -72,7 +72,7 @@ public class ListEventsResult implements Serializable {
         ListEventsResult that = (ListEventsResult) o;
         return 
             Objects.equals(eventQueueType, that.eventQueueType) &&
-            Objects.equals(events, that.events);
+            Arrays.equals(events, that.events);
     }
 
     @Override

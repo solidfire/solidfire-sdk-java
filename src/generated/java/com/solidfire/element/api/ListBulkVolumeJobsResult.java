@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListBulkVolumeJobsResult implements Serializable {
 
-    public static final long serialVersionUID = -972419227L;
+    public static final long serialVersionUID = 7680581996036886373L;
     @SerializedName("bulkVolumeJobs") private BulkVolumeJob[] bulkVolumeJobs;
 
     // empty constructor
@@ -63,7 +63,7 @@ public class ListBulkVolumeJobsResult implements Serializable {
 
         ListBulkVolumeJobsResult that = (ListBulkVolumeJobsResult) o;
         return 
-            Objects.equals(bulkVolumeJobs, that.bulkVolumeJobs);
+            Arrays.equals(bulkVolumeJobs, that.bulkVolumeJobs);
     }
 
     @Override

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class TestConnectEnsembleRequest implements Serializable {
 
-    public static final long serialVersionUID = -839732236L;
+    public static final long serialVersionUID = 152307940432458740L;
     @SerializedName("ensemble") private Optional<String> ensemble;
 
     // empty constructor

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListProtocolEndpointsResult implements Serializable {
 
-    public static final long serialVersionUID = 1260466058L;
+    public static final long serialVersionUID = -170373092149743734L;
     @SerializedName("protocolEndpoints") private ProtocolEndpoint[] protocolEndpoints;
 
     // empty constructor
@@ -62,7 +62,7 @@ public class ListProtocolEndpointsResult implements Serializable {
 
         ListProtocolEndpointsResult that = (ListProtocolEndpointsResult) o;
         return 
-            Objects.equals(protocolEndpoints, that.protocolEndpoints);
+            Arrays.equals(protocolEndpoints, that.protocolEndpoints);
     }
 
     @Override

@@ -32,8 +32,8 @@ import java.util.Objects;
 
 public class ModifyVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = 1915125131L;
-    @SerializedName("curve") private QoS curve;
+    public static final long serialVersionUID = 5469388004351442315L;
+    @SerializedName("qos") private QoS qos;
     @SerializedName("volumes") private Volume[] volumes;
 
     // empty constructor
@@ -43,19 +43,19 @@ public class ModifyVolumesResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyVolumesResult(
-        QoS curve,
+        QoS qos,
         Volume[] volumes
     )
     {
-        this.curve = curve;
+        this.qos = qos;
         this.volumes = volumes;
     }
 
     /** 
      **/
-    public QoS getCurve() { return this.curve; }
-    public void setCurve(QoS curve) { 
-        this.curve = curve;
+    public QoS getQos() { return this.qos; }
+    public void setQos(QoS qos) { 
+        this.qos = qos;
     }
     /** 
      **/
@@ -71,19 +71,19 @@ public class ModifyVolumesResult implements Serializable {
 
         ModifyVolumesResult that = (ModifyVolumesResult) o;
         return 
-            Objects.equals(curve, that.curve) &&
-            Objects.equals(volumes, that.volumes);
+            Objects.equals(qos, that.qos) &&
+            Arrays.equals(volumes, that.volumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( curve, (Object[])volumes );
+        return Objects.hash( qos, (Object[])volumes );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("curve", curve);
+        map.put("qos", qos);
         map.put("volumes", volumes);
         return map;
     }
@@ -93,7 +93,7 @@ public class ModifyVolumesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" curve : ").append(curve).append(",");
+        sb.append(" qos : ").append(qos).append(",");
         sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
         sb.append( " }" );
 
@@ -112,26 +112,26 @@ public class ModifyVolumesResult implements Serializable {
     }
 
     public static class Builder {
-        private QoS curve;
+        private QoS qos;
         private Volume[] volumes;
 
         private Builder() { }
 
         public ModifyVolumesResult build() {
             return new ModifyVolumesResult (
-                         this.curve,
+                         this.qos,
                          this.volumes);
         }
 
         private ModifyVolumesResult.Builder buildFrom(final ModifyVolumesResult req) {
-            this.curve = req.curve;
+            this.qos = req.qos;
             this.volumes = req.volumes;
 
             return this;
         }
 
-        public ModifyVolumesResult.Builder curve(final QoS curve) {
-            this.curve = curve;
+        public ModifyVolumesResult.Builder qos(final QoS qos) {
+            this.qos = qos;
             return this;
         }
 

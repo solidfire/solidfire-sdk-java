@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GroupSnapshot implements Serializable {
 
-    public static final long serialVersionUID = -727398164L;
+    public static final long serialVersionUID = 7672350438056052972L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
     @SerializedName("members") private GroupSnapshotMembers[] members;
@@ -128,7 +128,7 @@ public class GroupSnapshot implements Serializable {
         return 
             Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
             Objects.equals(groupSnapshotUUID, that.groupSnapshotUUID) &&
-            Objects.equals(members, that.members) &&
+            Arrays.equals(members, that.members) &&
             Objects.equals(name, that.name) &&
             Objects.equals(createTime, that.createTime) &&
             Objects.equals(status, that.status) &&

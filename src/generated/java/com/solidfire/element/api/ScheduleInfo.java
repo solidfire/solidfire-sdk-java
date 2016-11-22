@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ScheduleInfo implements Serializable {
 
-    public static final long serialVersionUID = 524141091L;
+    public static final long serialVersionUID = -2613274100562542045L;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
     @SerializedName("snapshotName") private Optional<String> snapshotName;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
@@ -93,7 +93,7 @@ public class ScheduleInfo implements Serializable {
 
         ScheduleInfo that = (ScheduleInfo) o;
         return 
-            Objects.equals(volumeIDs, that.volumeIDs) &&
+            Arrays.equals(volumeIDs, that.volumeIDs) &&
             Objects.equals(snapshotName, that.snapshotName) &&
             Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
             Objects.equals(retention, that.retention);

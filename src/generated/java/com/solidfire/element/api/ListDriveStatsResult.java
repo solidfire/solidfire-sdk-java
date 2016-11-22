@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListDriveStatsResult implements Serializable {
 
-    public static final long serialVersionUID = 760014346L;
+    public static final long serialVersionUID = -7807466351059212790L;
     @SerializedName("driveStats") private DriveStats[] driveStats;
     @SerializedName("errors") private java.util.Map<String, Object>[] errors;
 
@@ -73,8 +73,8 @@ public class ListDriveStatsResult implements Serializable {
 
         ListDriveStatsResult that = (ListDriveStatsResult) o;
         return 
-            Objects.equals(driveStats, that.driveStats) &&
-            Objects.equals(errors, that.errors);
+            Arrays.equals(driveStats, that.driveStats) &&
+            Arrays.equals(errors, that.errors);
     }
 
     @Override
