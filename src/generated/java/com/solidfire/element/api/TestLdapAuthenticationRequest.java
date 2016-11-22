@@ -85,7 +85,7 @@ public class TestLdapAuthenticationRequest implements Serializable {
         return 
             Objects.equals(username, that.username) &&
             Objects.equals(password, that.password) &&
-            Objects.equals(ldapConfiguration.orElse(null), that.ldapConfiguration.orElse(null));
+            Objects.equals(ldapConfiguration, that.ldapConfiguration);
     }
 
     @Override
@@ -110,7 +110,7 @@ public class TestLdapAuthenticationRequest implements Serializable {
         sb.append(" username : ").append(username).append(",");
         sb.append(" password : ").append(password).append(",");
         if(null != ldapConfiguration && ldapConfiguration.isPresent()){
-            sb.append(" ldapConfiguration : ").append(ldapConfiguration.orElse(null)).append(",");
+            sb.append(" ldapConfiguration : ").append(ldapConfiguration).append(",");
         }
         sb.append( " }" );
 

@@ -64,7 +64,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
 
         ListVolumeStatsByVolumeAccessGroupRequest that = (ListVolumeStatsByVolumeAccessGroupRequest) o;
         return 
-            Arrays.equals(volumeAccessGroups.orElse(null), that.volumeAccessGroups.orElse(null));
+            Objects.equals(volumeAccessGroups, that.volumeAccessGroups);
     }
 
     @Override
@@ -85,7 +85,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != volumeAccessGroups && volumeAccessGroups.isPresent()){
-            sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups.orElse(null))).append(",");
+            sb.append(" volumeAccessGroups : ").append(volumeAccessGroups).append(",");
         }
         sb.append( " }" );
 

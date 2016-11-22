@@ -390,7 +390,7 @@ public class VolumeStats implements Serializable {
         return 
             Objects.equals(accountID, that.accountID) &&
             Objects.equals(actualIOPS, that.actualIOPS) &&
-            Objects.equals(asyncDelay.orElse(null), that.asyncDelay.orElse(null)) &&
+            Objects.equals(asyncDelay, that.asyncDelay) &&
             Objects.equals(averageIOPSize, that.averageIOPSize) &&
             Objects.equals(burstIOPSCredit, that.burstIOPSCredit) &&
             Objects.equals(clientQueueDepth, that.clientQueueDepth) &&
@@ -473,7 +473,7 @@ public class VolumeStats implements Serializable {
         sb.append(" accountID : ").append(accountID).append(",");
         sb.append(" actualIOPS : ").append(actualIOPS).append(",");
         if(null != asyncDelay && asyncDelay.isPresent()){
-            sb.append(" asyncDelay : ").append(asyncDelay.orElse(null)).append(",");
+            sb.append(" asyncDelay : ").append(asyncDelay).append(",");
         }
         sb.append(" averageIOPSize : ").append(averageIOPSize).append(",");
         sb.append(" burstIOPSCredit : ").append(burstIOPSCredit).append(",");

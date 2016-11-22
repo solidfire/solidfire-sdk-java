@@ -83,9 +83,9 @@ public class ListInitiatorsRequest implements Serializable {
 
         ListInitiatorsRequest that = (ListInitiatorsRequest) o;
         return 
-            Objects.equals(startInitiatorID.orElse(null), that.startInitiatorID.orElse(null)) &&
-            Objects.equals(limit.orElse(null), that.limit.orElse(null)) &&
-            Arrays.equals(initiators.orElse(null), that.initiators.orElse(null));
+            Objects.equals(startInitiatorID, that.startInitiatorID) &&
+            Objects.equals(limit, that.limit) &&
+            Objects.equals(initiators, that.initiators);
     }
 
     @Override
@@ -108,13 +108,13 @@ public class ListInitiatorsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != startInitiatorID && startInitiatorID.isPresent()){
-            sb.append(" startInitiatorID : ").append(startInitiatorID.orElse(null)).append(",");
+            sb.append(" startInitiatorID : ").append(startInitiatorID).append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit.orElse(null)).append(",");
+            sb.append(" limit : ").append(limit).append(",");
         }
         if(null != initiators && initiators.isPresent()){
-            sb.append(" initiators : ").append(Arrays.toString(initiators.orElse(null))).append(",");
+            sb.append(" initiators : ").append(initiators).append(",");
         }
         sb.append( " }" );
 

@@ -92,10 +92,10 @@ public class ListEventsRequest implements Serializable {
 
         ListEventsRequest that = (ListEventsRequest) o;
         return 
-            Objects.equals(maxEvents.orElse(null), that.maxEvents.orElse(null)) &&
-            Objects.equals(startEventID.orElse(null), that.startEventID.orElse(null)) &&
-            Objects.equals(endEventID.orElse(null), that.endEventID.orElse(null)) &&
-            Objects.equals(eventQueueType.orElse(null), that.eventQueueType.orElse(null));
+            Objects.equals(maxEvents, that.maxEvents) &&
+            Objects.equals(startEventID, that.startEventID) &&
+            Objects.equals(endEventID, that.endEventID) &&
+            Objects.equals(eventQueueType, that.eventQueueType);
     }
 
     @Override
@@ -119,16 +119,16 @@ public class ListEventsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != maxEvents && maxEvents.isPresent()){
-            sb.append(" maxEvents : ").append(maxEvents.orElse(null)).append(",");
+            sb.append(" maxEvents : ").append(maxEvents).append(",");
         }
         if(null != startEventID && startEventID.isPresent()){
-            sb.append(" startEventID : ").append(startEventID.orElse(null)).append(",");
+            sb.append(" startEventID : ").append(startEventID).append(",");
         }
         if(null != endEventID && endEventID.isPresent()){
-            sb.append(" endEventID : ").append(endEventID.orElse(null)).append(",");
+            sb.append(" endEventID : ").append(endEventID).append(",");
         }
         if(null != eventQueueType && eventQueueType.isPresent()){
-            sb.append(" eventQueueType : ").append(eventQueueType.orElse(null)).append(",");
+            sb.append(" eventQueueType : ").append(eventQueueType).append(",");
         }
         sb.append( " }" );
 

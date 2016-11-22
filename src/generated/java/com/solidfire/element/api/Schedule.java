@@ -184,17 +184,17 @@ public class Schedule implements Serializable {
         Schedule that = (Schedule) o;
         return 
             Objects.equals(frequency, that.frequency) &&
-            Objects.equals(hasError.orElse(null), that.hasError.orElse(null)) &&
+            Objects.equals(hasError, that.hasError) &&
             Objects.equals(lastRunStatus, that.lastRunStatus) &&
             Objects.equals(lastRunTimeStart, that.lastRunTimeStart) &&
-            Objects.equals(paused.orElse(null), that.paused.orElse(null)) &&
-            Objects.equals(recurring.orElse(null), that.recurring.orElse(null)) &&
-            Objects.equals(runNextInterval.orElse(null), that.runNextInterval.orElse(null)) &&
-            Objects.equals(scheduleID.orElse(null), that.scheduleID.orElse(null)) &&
+            Objects.equals(paused, that.paused) &&
+            Objects.equals(recurring, that.recurring) &&
+            Objects.equals(runNextInterval, that.runNextInterval) &&
+            Objects.equals(scheduleID, that.scheduleID) &&
             Objects.equals(scheduleInfo, that.scheduleInfo) &&
             Objects.equals(name, that.name) &&
             Objects.equals(startingDate, that.startingDate) &&
-            Objects.equals(toBeDeleted.orElse(null), that.toBeDeleted.orElse(null));
+            Objects.equals(toBeDeleted, that.toBeDeleted);
     }
 
     @Override
@@ -227,27 +227,27 @@ public class Schedule implements Serializable {
 
         sb.append(" frequency : ").append(frequency).append(",");
         if(null != hasError && hasError.isPresent()){
-            sb.append(" hasError : ").append(hasError.orElse(null)).append(",");
+            sb.append(" hasError : ").append(hasError).append(",");
         }
         sb.append(" lastRunStatus : ").append(lastRunStatus).append(",");
         sb.append(" lastRunTimeStart : ").append(lastRunTimeStart).append(",");
         if(null != paused && paused.isPresent()){
-            sb.append(" paused : ").append(paused.orElse(null)).append(",");
+            sb.append(" paused : ").append(paused).append(",");
         }
         if(null != recurring && recurring.isPresent()){
-            sb.append(" recurring : ").append(recurring.orElse(null)).append(",");
+            sb.append(" recurring : ").append(recurring).append(",");
         }
         if(null != runNextInterval && runNextInterval.isPresent()){
-            sb.append(" runNextInterval : ").append(runNextInterval.orElse(null)).append(",");
+            sb.append(" runNextInterval : ").append(runNextInterval).append(",");
         }
         if(null != scheduleID && scheduleID.isPresent()){
-            sb.append(" scheduleID : ").append(scheduleID.orElse(null)).append(",");
+            sb.append(" scheduleID : ").append(scheduleID).append(",");
         }
         sb.append(" scheduleInfo : ").append(scheduleInfo).append(",");
         sb.append(" name : ").append(name).append(",");
         sb.append(" startingDate : ").append(startingDate).append(",");
         if(null != toBeDeleted && toBeDeleted.isPresent()){
-            sb.append(" toBeDeleted : ").append(toBeDeleted.orElse(null)).append(",");
+            sb.append(" toBeDeleted : ").append(toBeDeleted).append(",");
         }
         sb.append( " }" );
 

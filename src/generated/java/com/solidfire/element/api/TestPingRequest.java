@@ -103,11 +103,11 @@ public class TestPingRequest implements Serializable {
 
         TestPingRequest that = (TestPingRequest) o;
         return 
-            Objects.equals(attempts.orElse(null), that.attempts.orElse(null)) &&
-            Objects.equals(hosts.orElse(null), that.hosts.orElse(null)) &&
-            Objects.equals(totalTimeoutSec.orElse(null), that.totalTimeoutSec.orElse(null)) &&
-            Objects.equals(packetSize.orElse(null), that.packetSize.orElse(null)) &&
-            Objects.equals(pingTimeoutMsec.orElse(null), that.pingTimeoutMsec.orElse(null));
+            Objects.equals(attempts, that.attempts) &&
+            Objects.equals(hosts, that.hosts) &&
+            Objects.equals(totalTimeoutSec, that.totalTimeoutSec) &&
+            Objects.equals(packetSize, that.packetSize) &&
+            Objects.equals(pingTimeoutMsec, that.pingTimeoutMsec);
     }
 
     @Override
@@ -132,19 +132,19 @@ public class TestPingRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != attempts && attempts.isPresent()){
-            sb.append(" attempts : ").append(attempts.orElse(null)).append(",");
+            sb.append(" attempts : ").append(attempts).append(",");
         }
         if(null != hosts && hosts.isPresent()){
-            sb.append(" hosts : ").append(hosts.orElse(null)).append(",");
+            sb.append(" hosts : ").append(hosts).append(",");
         }
         if(null != totalTimeoutSec && totalTimeoutSec.isPresent()){
-            sb.append(" totalTimeoutSec : ").append(totalTimeoutSec.orElse(null)).append(",");
+            sb.append(" totalTimeoutSec : ").append(totalTimeoutSec).append(",");
         }
         if(null != packetSize && packetSize.isPresent()){
-            sb.append(" packetSize : ").append(packetSize.orElse(null)).append(",");
+            sb.append(" packetSize : ").append(packetSize).append(",");
         }
         if(null != pingTimeoutMsec && pingTimeoutMsec.isPresent()){
-            sb.append(" pingTimeoutMsec : ").append(pingTimeoutMsec.orElse(null)).append(",");
+            sb.append(" pingTimeoutMsec : ").append(pingTimeoutMsec).append(",");
         }
         sb.append( " }" );
 

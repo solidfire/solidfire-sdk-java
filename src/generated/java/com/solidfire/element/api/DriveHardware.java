@@ -339,7 +339,7 @@ public class DriveHardware implements Serializable {
             Objects.equals(serial, that.serial) &&
             Objects.equals(size, that.size) &&
             Objects.equals(slot, that.slot) &&
-            Objects.equals(smartSsdWriteCapable.orElse(null), that.smartSsdWriteCapable.orElse(null)) &&
+            Objects.equals(smartSsdWriteCapable, that.smartSsdWriteCapable) &&
             Objects.equals(uuid, that.uuid) &&
             Objects.equals(vendor, that.vendor) &&
             Objects.equals(version, that.version);
@@ -416,7 +416,7 @@ public class DriveHardware implements Serializable {
         sb.append(" size : ").append(size).append(",");
         sb.append(" slot : ").append(slot).append(",");
         if(null != smartSsdWriteCapable && smartSsdWriteCapable.isPresent()){
-            sb.append(" smartSsdWriteCapable : ").append(smartSsdWriteCapable.orElse(null)).append(",");
+            sb.append(" smartSsdWriteCapable : ").append(smartSsdWriteCapable).append(",");
         }
         sb.append(" uuid : ").append(uuid).append(",");
         sb.append(" vendor : ").append(vendor).append(",");

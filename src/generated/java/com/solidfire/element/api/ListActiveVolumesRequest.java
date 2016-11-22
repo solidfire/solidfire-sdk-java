@@ -75,8 +75,8 @@ public class ListActiveVolumesRequest implements Serializable {
 
         ListActiveVolumesRequest that = (ListActiveVolumesRequest) o;
         return 
-            Objects.equals(startVolumeID.orElse(null), that.startVolumeID.orElse(null)) &&
-            Objects.equals(limit.orElse(null), that.limit.orElse(null));
+            Objects.equals(startVolumeID, that.startVolumeID) &&
+            Objects.equals(limit, that.limit);
     }
 
     @Override
@@ -98,10 +98,10 @@ public class ListActiveVolumesRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != startVolumeID && startVolumeID.isPresent()){
-            sb.append(" startVolumeID : ").append(startVolumeID.orElse(null)).append(",");
+            sb.append(" startVolumeID : ").append(startVolumeID).append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit.orElse(null)).append(",");
+            sb.append(" limit : ").append(limit).append(",");
         }
         sb.append( " }" );
 

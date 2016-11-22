@@ -136,11 +136,11 @@ public class CloneVolumeRequest implements Serializable {
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(name, that.name) &&
-            Objects.equals(newAccountID.orElse(null), that.newAccountID.orElse(null)) &&
-            Objects.equals(newSize.orElse(null), that.newSize.orElse(null)) &&
-            Objects.equals(access.orElse(null), that.access.orElse(null)) &&
-            Objects.equals(snapshotID.orElse(null), that.snapshotID.orElse(null)) &&
-            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+            Objects.equals(newAccountID, that.newAccountID) &&
+            Objects.equals(newSize, that.newSize) &&
+            Objects.equals(access, that.access) &&
+            Objects.equals(snapshotID, that.snapshotID) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -169,19 +169,19 @@ public class CloneVolumeRequest implements Serializable {
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" name : ").append(name).append(",");
         if(null != newAccountID && newAccountID.isPresent()){
-            sb.append(" newAccountID : ").append(newAccountID.orElse(null)).append(",");
+            sb.append(" newAccountID : ").append(newAccountID).append(",");
         }
         if(null != newSize && newSize.isPresent()){
-            sb.append(" newSize : ").append(newSize.orElse(null)).append(",");
+            sb.append(" newSize : ").append(newSize).append(",");
         }
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access.orElse(null)).append(",");
+            sb.append(" access : ").append(access).append(",");
         }
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID.orElse(null)).append(",");
+            sb.append(" snapshotID : ").append(snapshotID).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

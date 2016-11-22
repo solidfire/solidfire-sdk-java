@@ -85,7 +85,7 @@ public class BackupTarget implements Serializable {
         return 
             Objects.equals(name, that.name) &&
             Objects.equals(backupTargetID, that.backupTargetID) &&
-            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -110,7 +110,7 @@ public class BackupTarget implements Serializable {
         sb.append(" name : ").append(name).append(",");
         sb.append(" backupTargetID : ").append(backupTargetID).append(",");
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

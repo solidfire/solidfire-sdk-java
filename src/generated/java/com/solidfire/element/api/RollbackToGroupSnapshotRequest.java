@@ -97,8 +97,8 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
         return 
             Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
             Objects.equals(saveCurrentState, that.saveCurrentState) &&
-            Objects.equals(name.orElse(null), that.name.orElse(null)) &&
-            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+            Objects.equals(name, that.name) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -124,10 +124,10 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
         sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
         sb.append(" saveCurrentState : ").append(saveCurrentState).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name.orElse(null)).append(",");
+            sb.append(" name : ").append(name).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

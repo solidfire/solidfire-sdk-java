@@ -117,11 +117,11 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         CreateVolumeAccessGroupRequest that = (CreateVolumeAccessGroupRequest) o;
         return 
             Objects.equals(name, that.name) &&
-            Arrays.equals(initiators.orElse(null), that.initiators.orElse(null)) &&
-            Arrays.equals(volumes.orElse(null), that.volumes.orElse(null)) &&
-            Arrays.equals(virtualNetworkID.orElse(null), that.virtualNetworkID.orElse(null)) &&
-            Arrays.equals(virtualNetworkTags.orElse(null), that.virtualNetworkTags.orElse(null)) &&
-            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+            Objects.equals(initiators, that.initiators) &&
+            Objects.equals(volumes, that.volumes) &&
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
+            Objects.equals(virtualNetworkTags, that.virtualNetworkTags) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -148,19 +148,19 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
 
         sb.append(" name : ").append(name).append(",");
         if(null != initiators && initiators.isPresent()){
-            sb.append(" initiators : ").append(Arrays.toString(initiators.orElse(null))).append(",");
+            sb.append(" initiators : ").append(initiators).append(",");
         }
         if(null != volumes && volumes.isPresent()){
-            sb.append(" volumes : ").append(Arrays.toString(volumes.orElse(null))).append(",");
+            sb.append(" volumes : ").append(volumes).append(",");
         }
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(Arrays.toString(virtualNetworkID.orElse(null))).append(",");
+            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
         }
         if(null != virtualNetworkTags && virtualNetworkTags.isPresent()){
-            sb.append(" virtualNetworkTags : ").append(Arrays.toString(virtualNetworkTags.orElse(null))).append(",");
+            sb.append(" virtualNetworkTags : ").append(virtualNetworkTags).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

@@ -76,8 +76,8 @@ public class ListAccountsRequest implements Serializable {
 
         ListAccountsRequest that = (ListAccountsRequest) o;
         return 
-            Objects.equals(startAccountID.orElse(null), that.startAccountID.orElse(null)) &&
-            Objects.equals(limit.orElse(null), that.limit.orElse(null));
+            Objects.equals(startAccountID, that.startAccountID) &&
+            Objects.equals(limit, that.limit);
     }
 
     @Override
@@ -99,10 +99,10 @@ public class ListAccountsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != startAccountID && startAccountID.isPresent()){
-            sb.append(" startAccountID : ").append(startAccountID.orElse(null)).append(",");
+            sb.append(" startAccountID : ").append(startAccountID).append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit.orElse(null)).append(",");
+            sb.append(" limit : ").append(limit).append(",");
         }
         sb.append( " }" );
 

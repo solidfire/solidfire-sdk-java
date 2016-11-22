@@ -123,12 +123,12 @@ public class ModifyVolumesRequest implements Serializable {
         ModifyVolumesRequest that = (ModifyVolumesRequest) o;
         return 
             Arrays.equals(volumeIDs, that.volumeIDs) &&
-            Objects.equals(accountID.orElse(null), that.accountID.orElse(null)) &&
-            Objects.equals(access.orElse(null), that.access.orElse(null)) &&
-            Objects.equals(attributes.orElse(null), that.attributes.orElse(null)) &&
-            Objects.equals(mode.orElse(null), that.mode.orElse(null)) &&
-            Objects.equals(qos.orElse(null), that.qos.orElse(null)) &&
-            Objects.equals(totalSize.orElse(null), that.totalSize.orElse(null));
+            Objects.equals(accountID, that.accountID) &&
+            Objects.equals(access, that.access) &&
+            Objects.equals(attributes, that.attributes) &&
+            Objects.equals(mode, that.mode) &&
+            Objects.equals(qos, that.qos) &&
+            Objects.equals(totalSize, that.totalSize);
     }
 
     @Override
@@ -156,22 +156,22 @@ public class ModifyVolumesRequest implements Serializable {
 
         sb.append(" volumeIDs : ").append(Arrays.toString(volumeIDs)).append(",");
         if(null != accountID && accountID.isPresent()){
-            sb.append(" accountID : ").append(accountID.orElse(null)).append(",");
+            sb.append(" accountID : ").append(accountID).append(",");
         }
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access.orElse(null)).append(",");
+            sb.append(" access : ").append(access).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         if(null != mode && mode.isPresent()){
-            sb.append(" mode : ").append(mode.orElse(null)).append(",");
+            sb.append(" mode : ").append(mode).append(",");
         }
         if(null != qos && qos.isPresent()){
-            sb.append(" qos : ").append(qos.orElse(null)).append(",");
+            sb.append(" qos : ").append(qos).append(",");
         }
         if(null != totalSize && totalSize.isPresent()){
-            sb.append(" totalSize : ").append(totalSize.orElse(null)).append(",");
+            sb.append(" totalSize : ").append(totalSize).append(",");
         }
         sb.append( " }" );
 

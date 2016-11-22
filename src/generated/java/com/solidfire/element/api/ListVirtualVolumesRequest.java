@@ -103,11 +103,11 @@ public class ListVirtualVolumesRequest implements Serializable {
 
         ListVirtualVolumesRequest that = (ListVirtualVolumesRequest) o;
         return 
-            Objects.equals(details.orElse(null), that.details.orElse(null)) &&
-            Objects.equals(limit.orElse(null), that.limit.orElse(null)) &&
-            Objects.equals(recursive.orElse(null), that.recursive.orElse(null)) &&
-            Objects.equals(startVirtualVolumeID.orElse(null), that.startVirtualVolumeID.orElse(null)) &&
-            Arrays.equals(virtualVolumeIDs.orElse(null), that.virtualVolumeIDs.orElse(null));
+            Objects.equals(details, that.details) &&
+            Objects.equals(limit, that.limit) &&
+            Objects.equals(recursive, that.recursive) &&
+            Objects.equals(startVirtualVolumeID, that.startVirtualVolumeID) &&
+            Objects.equals(virtualVolumeIDs, that.virtualVolumeIDs);
     }
 
     @Override
@@ -132,19 +132,19 @@ public class ListVirtualVolumesRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != details && details.isPresent()){
-            sb.append(" details : ").append(details.orElse(null)).append(",");
+            sb.append(" details : ").append(details).append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit.orElse(null)).append(",");
+            sb.append(" limit : ").append(limit).append(",");
         }
         if(null != recursive && recursive.isPresent()){
-            sb.append(" recursive : ").append(recursive.orElse(null)).append(",");
+            sb.append(" recursive : ").append(recursive).append(",");
         }
         if(null != startVirtualVolumeID && startVirtualVolumeID.isPresent()){
-            sb.append(" startVirtualVolumeID : ").append(startVirtualVolumeID.orElse(null)).append(",");
+            sb.append(" startVirtualVolumeID : ").append(startVirtualVolumeID).append(",");
         }
         if(null != virtualVolumeIDs && virtualVolumeIDs.isPresent()){
-            sb.append(" virtualVolumeIDs : ").append(Arrays.toString(virtualVolumeIDs.orElse(null))).append(",");
+            sb.append(" virtualVolumeIDs : ").append(virtualVolumeIDs).append(",");
         }
         sb.append( " }" );
 

@@ -93,10 +93,10 @@ public class ScheduleInfo implements Serializable {
 
         ScheduleInfo that = (ScheduleInfo) o;
         return 
-            Arrays.equals(volumeIDs.orElse(null), that.volumeIDs.orElse(null)) &&
-            Objects.equals(snapshotName.orElse(null), that.snapshotName.orElse(null)) &&
-            Objects.equals(enableRemoteReplication.orElse(null), that.enableRemoteReplication.orElse(null)) &&
-            Objects.equals(retention.orElse(null), that.retention.orElse(null));
+            Objects.equals(volumeIDs, that.volumeIDs) &&
+            Objects.equals(snapshotName, that.snapshotName) &&
+            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
+            Objects.equals(retention, that.retention);
     }
 
     @Override
@@ -120,16 +120,16 @@ public class ScheduleInfo implements Serializable {
         sb.append( "{ " );
 
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(Arrays.toString(volumeIDs.orElse(null))).append(",");
+            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
         }
         if(null != snapshotName && snapshotName.isPresent()){
-            sb.append(" snapshotName : ").append(snapshotName.orElse(null)).append(",");
+            sb.append(" snapshotName : ").append(snapshotName).append(",");
         }
         if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
-            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication.orElse(null)).append(",");
+            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
         }
         if(null != retention && retention.isPresent()){
-            sb.append(" retention : ").append(retention.orElse(null)).append(",");
+            sb.append(" retention : ").append(retention).append(",");
         }
         sb.append( " }" );
 

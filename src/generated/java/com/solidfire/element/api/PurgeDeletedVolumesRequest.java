@@ -83,9 +83,9 @@ public class PurgeDeletedVolumesRequest implements Serializable {
 
         PurgeDeletedVolumesRequest that = (PurgeDeletedVolumesRequest) o;
         return 
-            Arrays.equals(volumeIDs.orElse(null), that.volumeIDs.orElse(null)) &&
-            Arrays.equals(accountIDs.orElse(null), that.accountIDs.orElse(null)) &&
-            Arrays.equals(volumeAccessGroupIDs.orElse(null), that.volumeAccessGroupIDs.orElse(null));
+            Objects.equals(volumeIDs, that.volumeIDs) &&
+            Objects.equals(accountIDs, that.accountIDs) &&
+            Objects.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs);
     }
 
     @Override
@@ -108,13 +108,13 @@ public class PurgeDeletedVolumesRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(Arrays.toString(volumeIDs.orElse(null))).append(",");
+            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
         }
         if(null != accountIDs && accountIDs.isPresent()){
-            sb.append(" accountIDs : ").append(Arrays.toString(accountIDs.orElse(null))).append(",");
+            sb.append(" accountIDs : ").append(accountIDs).append(",");
         }
         if(null != volumeAccessGroupIDs && volumeAccessGroupIDs.isPresent()){
-            sb.append(" volumeAccessGroupIDs : ").append(Arrays.toString(volumeAccessGroupIDs.orElse(null))).append(",");
+            sb.append(" volumeAccessGroupIDs : ").append(volumeAccessGroupIDs).append(",");
         }
         sb.append( " }" );
 

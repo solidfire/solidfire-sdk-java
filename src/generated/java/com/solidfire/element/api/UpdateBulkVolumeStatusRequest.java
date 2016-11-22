@@ -109,9 +109,9 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
         return 
             Objects.equals(key, that.key) &&
             Objects.equals(status, that.status) &&
-            Objects.equals(percentComplete.orElse(null), that.percentComplete.orElse(null)) &&
-            Objects.equals(message.orElse(null), that.message.orElse(null)) &&
-            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+            Objects.equals(percentComplete, that.percentComplete) &&
+            Objects.equals(message, that.message) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -138,13 +138,13 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
         sb.append(" key : ").append(key).append(",");
         sb.append(" status : ").append(status).append(",");
         if(null != percentComplete && percentComplete.isPresent()){
-            sb.append(" percentComplete : ").append(percentComplete.orElse(null)).append(",");
+            sb.append(" percentComplete : ").append(percentComplete).append(",");
         }
         if(null != message && message.isPresent()){
-            sb.append(" message : ").append(message.orElse(null)).append(",");
+            sb.append(" message : ").append(message).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

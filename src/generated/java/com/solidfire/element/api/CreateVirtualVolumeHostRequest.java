@@ -113,10 +113,10 @@ public class CreateVirtualVolumeHostRequest implements Serializable {
         return 
             Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) &&
             Objects.equals(clusterID, that.clusterID) &&
-            Arrays.equals(initiatorNames.orElse(null), that.initiatorNames.orElse(null)) &&
-            Arrays.equals(visibleProtocolEndpointIDs.orElse(null), that.visibleProtocolEndpointIDs.orElse(null)) &&
-            Objects.equals(hostAddress.orElse(null), that.hostAddress.orElse(null)) &&
-            Objects.equals(callingVirtualVolumeHostID.orElse(null), that.callingVirtualVolumeHostID.orElse(null));
+            Objects.equals(initiatorNames, that.initiatorNames) &&
+            Objects.equals(visibleProtocolEndpointIDs, that.visibleProtocolEndpointIDs) &&
+            Objects.equals(hostAddress, that.hostAddress) &&
+            Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }
 
     @Override
@@ -144,16 +144,16 @@ public class CreateVirtualVolumeHostRequest implements Serializable {
         sb.append(" virtualVolumeHostID : ").append(virtualVolumeHostID).append(",");
         sb.append(" clusterID : ").append(clusterID).append(",");
         if(null != initiatorNames && initiatorNames.isPresent()){
-            sb.append(" initiatorNames : ").append(Arrays.toString(initiatorNames.orElse(null))).append(",");
+            sb.append(" initiatorNames : ").append(initiatorNames).append(",");
         }
         if(null != visibleProtocolEndpointIDs && visibleProtocolEndpointIDs.isPresent()){
-            sb.append(" visibleProtocolEndpointIDs : ").append(Arrays.toString(visibleProtocolEndpointIDs.orElse(null))).append(",");
+            sb.append(" visibleProtocolEndpointIDs : ").append(visibleProtocolEndpointIDs).append(",");
         }
         if(null != hostAddress && hostAddress.isPresent()){
-            sb.append(" hostAddress : ").append(hostAddress.orElse(null)).append(",");
+            sb.append(" hostAddress : ").append(hostAddress).append(",");
         }
         if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent()){
-            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.orElse(null)).append(",");
+            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID).append(",");
         }
         sb.append( " }" );
 

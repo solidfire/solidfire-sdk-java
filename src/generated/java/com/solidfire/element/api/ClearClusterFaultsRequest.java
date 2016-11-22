@@ -66,7 +66,7 @@ public class ClearClusterFaultsRequest implements Serializable {
 
         ClearClusterFaultsRequest that = (ClearClusterFaultsRequest) o;
         return 
-            Objects.equals(faultTypes.orElse(null), that.faultTypes.orElse(null));
+            Objects.equals(faultTypes, that.faultTypes);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class ClearClusterFaultsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != faultTypes && faultTypes.isPresent()){
-            sb.append(" faultTypes : ").append(faultTypes.orElse(null)).append(",");
+            sb.append(" faultTypes : ").append(faultTypes).append(",");
         }
         sb.append( " }" );
 

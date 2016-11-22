@@ -64,7 +64,7 @@ public class ListSnapshotsRequest implements Serializable {
 
         ListSnapshotsRequest that = (ListSnapshotsRequest) o;
         return 
-            Objects.equals(volumeID.orElse(null), that.volumeID.orElse(null));
+            Objects.equals(volumeID, that.volumeID);
     }
 
     @Override
@@ -85,7 +85,7 @@ public class ListSnapshotsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != volumeID && volumeID.isPresent()){
-            sb.append(" volumeID : ").append(volumeID.orElse(null)).append(",");
+            sb.append(" volumeID : ").append(volumeID).append(",");
         }
         sb.append( " }" );
 

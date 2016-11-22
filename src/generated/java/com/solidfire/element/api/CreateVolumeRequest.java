@@ -122,8 +122,8 @@ public class CreateVolumeRequest implements Serializable {
             Objects.equals(accountID, that.accountID) &&
             Objects.equals(totalSize, that.totalSize) &&
             Objects.equals(enable512e, that.enable512e) &&
-            Objects.equals(qos.orElse(null), that.qos.orElse(null)) &&
-            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+            Objects.equals(qos, that.qos) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -153,10 +153,10 @@ public class CreateVolumeRequest implements Serializable {
         sb.append(" totalSize : ").append(totalSize).append(",");
         sb.append(" enable512e : ").append(enable512e).append(",");
         if(null != qos && qos.isPresent()){
-            sb.append(" qos : ").append(qos.orElse(null)).append(",");
+            sb.append(" qos : ").append(qos).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

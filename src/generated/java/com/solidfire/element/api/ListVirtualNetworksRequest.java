@@ -93,10 +93,10 @@ public class ListVirtualNetworksRequest implements Serializable {
 
         ListVirtualNetworksRequest that = (ListVirtualNetworksRequest) o;
         return 
-            Objects.equals(virtualNetworkID.orElse(null), that.virtualNetworkID.orElse(null)) &&
-            Objects.equals(virtualNetworkTag.orElse(null), that.virtualNetworkTag.orElse(null)) &&
-            Arrays.equals(virtualNetworkIDs.orElse(null), that.virtualNetworkIDs.orElse(null)) &&
-            Arrays.equals(virtualNetworkTags.orElse(null), that.virtualNetworkTags.orElse(null));
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
+            Objects.equals(virtualNetworkIDs, that.virtualNetworkIDs) &&
+            Objects.equals(virtualNetworkTags, that.virtualNetworkTags);
     }
 
     @Override
@@ -120,16 +120,16 @@ public class ListVirtualNetworksRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID.orElse(null)).append(",");
+            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
         }
         if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
-            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag.orElse(null)).append(",");
+            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
         }
         if(null != virtualNetworkIDs && virtualNetworkIDs.isPresent()){
-            sb.append(" virtualNetworkIDs : ").append(Arrays.toString(virtualNetworkIDs.orElse(null))).append(",");
+            sb.append(" virtualNetworkIDs : ").append(virtualNetworkIDs).append(",");
         }
         if(null != virtualNetworkTags && virtualNetworkTags.isPresent()){
-            sb.append(" virtualNetworkTags : ").append(Arrays.toString(virtualNetworkTags.orElse(null))).append(",");
+            sb.append(" virtualNetworkTags : ").append(virtualNetworkTags).append(",");
         }
         sb.append( " }" );
 

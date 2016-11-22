@@ -85,7 +85,7 @@ public class CopyVolumeRequest implements Serializable {
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(dstVolumeID, that.dstVolumeID) &&
-            Objects.equals(snapshotID.orElse(null), that.snapshotID.orElse(null));
+            Objects.equals(snapshotID, that.snapshotID);
     }
 
     @Override
@@ -110,7 +110,7 @@ public class CopyVolumeRequest implements Serializable {
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" dstVolumeID : ").append(dstVolumeID).append(",");
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID.orElse(null)).append(",");
+            sb.append(" snapshotID : ").append(snapshotID).append(",");
         }
         sb.append( " }" );
 

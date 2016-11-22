@@ -84,8 +84,8 @@ public class ModifyBackupTargetRequest implements Serializable {
         ModifyBackupTargetRequest that = (ModifyBackupTargetRequest) o;
         return 
             Objects.equals(backupTargetID, that.backupTargetID) &&
-            Objects.equals(name.orElse(null), that.name.orElse(null)) &&
-            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+            Objects.equals(name, that.name) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -109,10 +109,10 @@ public class ModifyBackupTargetRequest implements Serializable {
 
         sb.append(" backupTargetID : ").append(backupTargetID).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name.orElse(null)).append(",");
+            sb.append(" name : ").append(name).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

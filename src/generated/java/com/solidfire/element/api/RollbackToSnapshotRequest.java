@@ -108,8 +108,8 @@ public class RollbackToSnapshotRequest implements Serializable {
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(snapshotID, that.snapshotID) &&
             Objects.equals(saveCurrentState, that.saveCurrentState) &&
-            Objects.equals(name.orElse(null), that.name.orElse(null)) &&
-            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+            Objects.equals(name, that.name) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -137,10 +137,10 @@ public class RollbackToSnapshotRequest implements Serializable {
         sb.append(" snapshotID : ").append(snapshotID).append(",");
         sb.append(" saveCurrentState : ").append(saveCurrentState).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name.orElse(null)).append(",");
+            sb.append(" name : ").append(name).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

@@ -103,9 +103,9 @@ public class GetEfficiencyResult implements Serializable {
 
         GetEfficiencyResult that = (GetEfficiencyResult) o;
         return 
-            Objects.equals(compression.orElse(null), that.compression.orElse(null)) &&
-            Objects.equals(deduplication.orElse(null), that.deduplication.orElse(null)) &&
-            Objects.equals(thinProvisioning.orElse(null), that.thinProvisioning.orElse(null)) &&
+            Objects.equals(compression, that.compression) &&
+            Objects.equals(deduplication, that.deduplication) &&
+            Objects.equals(thinProvisioning, that.thinProvisioning) &&
             Objects.equals(timestamp, that.timestamp) &&
             Arrays.equals(missingVolumes, that.missingVolumes);
     }
@@ -132,13 +132,13 @@ public class GetEfficiencyResult implements Serializable {
         sb.append( "{ " );
 
         if(null != compression && compression.isPresent()){
-            sb.append(" compression : ").append(compression.orElse(null)).append(",");
+            sb.append(" compression : ").append(compression).append(",");
         }
         if(null != deduplication && deduplication.isPresent()){
-            sb.append(" deduplication : ").append(deduplication.orElse(null)).append(",");
+            sb.append(" deduplication : ").append(deduplication).append(",");
         }
         if(null != thinProvisioning && thinProvisioning.isPresent()){
-            sb.append(" thinProvisioning : ").append(thinProvisioning.orElse(null)).append(",");
+            sb.append(" thinProvisioning : ").append(thinProvisioning).append(",");
         }
         sb.append(" timestamp : ").append(timestamp).append(",");
         sb.append(" missingVolumes : ").append(Arrays.toString(missingVolumes)).append(",");

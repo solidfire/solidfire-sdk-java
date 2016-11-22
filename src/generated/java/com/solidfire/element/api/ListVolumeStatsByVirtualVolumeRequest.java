@@ -73,8 +73,8 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
 
         ListVolumeStatsByVirtualVolumeRequest that = (ListVolumeStatsByVirtualVolumeRequest) o;
         return 
-            Objects.equals(startVirtualVolumeID.orElse(null), that.startVirtualVolumeID.orElse(null)) &&
-            Arrays.equals(virtualVolumeIDs.orElse(null), that.virtualVolumeIDs.orElse(null));
+            Objects.equals(startVirtualVolumeID, that.startVirtualVolumeID) &&
+            Objects.equals(virtualVolumeIDs, that.virtualVolumeIDs);
     }
 
     @Override
@@ -96,10 +96,10 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != startVirtualVolumeID && startVirtualVolumeID.isPresent()){
-            sb.append(" startVirtualVolumeID : ").append(startVirtualVolumeID.orElse(null)).append(",");
+            sb.append(" startVirtualVolumeID : ").append(startVirtualVolumeID).append(",");
         }
         if(null != virtualVolumeIDs && virtualVolumeIDs.isPresent()){
-            sb.append(" virtualVolumeIDs : ").append(Arrays.toString(virtualVolumeIDs.orElse(null))).append(",");
+            sb.append(" virtualVolumeIDs : ").append(virtualVolumeIDs).append(",");
         }
         sb.append( " }" );
 

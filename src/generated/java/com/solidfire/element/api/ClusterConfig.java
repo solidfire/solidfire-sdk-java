@@ -150,16 +150,16 @@ public class ClusterConfig implements Serializable {
 
         ClusterConfig that = (ClusterConfig) o;
         return 
-            Objects.equals(cipi.orElse(null), that.cipi.orElse(null)) &&
-            Objects.equals(cluster.orElse(null), that.cluster.orElse(null)) &&
-            Arrays.equals(ensemble.orElse(null), that.ensemble.orElse(null)) &&
-            Objects.equals(mipi.orElse(null), that.mipi.orElse(null)) &&
-            Objects.equals(name.orElse(null), that.name.orElse(null)) &&
-            Objects.equals(nodeID.orElse(null), that.nodeID.orElse(null)) &&
-            Objects.equals(pendingNodeID.orElse(null), that.pendingNodeID.orElse(null)) &&
-            Objects.equals(role.orElse(null), that.role.orElse(null)) &&
-            Objects.equals(sipi.orElse(null), that.sipi.orElse(null)) &&
-            Objects.equals(state.orElse(null), that.state.orElse(null));
+            Objects.equals(cipi, that.cipi) &&
+            Objects.equals(cluster, that.cluster) &&
+            Objects.equals(ensemble, that.ensemble) &&
+            Objects.equals(mipi, that.mipi) &&
+            Objects.equals(name, that.name) &&
+            Objects.equals(nodeID, that.nodeID) &&
+            Objects.equals(pendingNodeID, that.pendingNodeID) &&
+            Objects.equals(role, that.role) &&
+            Objects.equals(sipi, that.sipi) &&
+            Objects.equals(state, that.state);
     }
 
     @Override
@@ -189,34 +189,34 @@ public class ClusterConfig implements Serializable {
         sb.append( "{ " );
 
         if(null != cipi && cipi.isPresent()){
-            sb.append(" cipi : ").append(cipi.orElse(null)).append(",");
+            sb.append(" cipi : ").append(cipi).append(",");
         }
         if(null != cluster && cluster.isPresent()){
-            sb.append(" cluster : ").append(cluster.orElse(null)).append(",");
+            sb.append(" cluster : ").append(cluster).append(",");
         }
         if(null != ensemble && ensemble.isPresent()){
-            sb.append(" ensemble : ").append(Arrays.toString(ensemble.orElse(null))).append(",");
+            sb.append(" ensemble : ").append(ensemble).append(",");
         }
         if(null != mipi && mipi.isPresent()){
-            sb.append(" mipi : ").append(mipi.orElse(null)).append(",");
+            sb.append(" mipi : ").append(mipi).append(",");
         }
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name.orElse(null)).append(",");
+            sb.append(" name : ").append(name).append(",");
         }
         if(null != nodeID && nodeID.isPresent()){
-            sb.append(" nodeID : ").append(nodeID.orElse(null)).append(",");
+            sb.append(" nodeID : ").append(nodeID).append(",");
         }
         if(null != pendingNodeID && pendingNodeID.isPresent()){
-            sb.append(" pendingNodeID : ").append(pendingNodeID.orElse(null)).append(",");
+            sb.append(" pendingNodeID : ").append(pendingNodeID).append(",");
         }
         if(null != role && role.isPresent()){
-            sb.append(" role : ").append(role.orElse(null)).append(",");
+            sb.append(" role : ").append(role).append(",");
         }
         if(null != sipi && sipi.isPresent()){
-            sb.append(" sipi : ").append(sipi.orElse(null)).append(",");
+            sb.append(" sipi : ").append(sipi).append(",");
         }
         if(null != state && state.isPresent()){
-            sb.append(" state : ").append(state.orElse(null)).append(",");
+            sb.append(" state : ").append(state).append(",");
         }
         sb.append( " }" );
 

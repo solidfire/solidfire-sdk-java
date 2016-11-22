@@ -117,11 +117,11 @@ public class CreateSnapshotRequest implements Serializable {
         CreateSnapshotRequest that = (CreateSnapshotRequest) o;
         return 
             Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(snapshotID.orElse(null), that.snapshotID.orElse(null)) &&
-            Objects.equals(name.orElse(null), that.name.orElse(null)) &&
-            Objects.equals(enableRemoteReplication.orElse(null), that.enableRemoteReplication.orElse(null)) &&
-            Objects.equals(retention.orElse(null), that.retention.orElse(null)) &&
-            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+            Objects.equals(snapshotID, that.snapshotID) &&
+            Objects.equals(name, that.name) &&
+            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
+            Objects.equals(retention, that.retention) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -148,19 +148,19 @@ public class CreateSnapshotRequest implements Serializable {
 
         sb.append(" volumeID : ").append(volumeID).append(",");
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID.orElse(null)).append(",");
+            sb.append(" snapshotID : ").append(snapshotID).append(",");
         }
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name.orElse(null)).append(",");
+            sb.append(" name : ").append(name).append(",");
         }
         if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
-            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication.orElse(null)).append(",");
+            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
         }
         if(null != retention && retention.isPresent()){
-            sb.append(" retention : ").append(retention.orElse(null)).append(",");
+            sb.append(" retention : ").append(retention).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

@@ -277,8 +277,8 @@ public class Volume implements Serializable {
             Objects.equals(qos, that.qos) &&
             Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) &&
             Arrays.equals(volumePairs, that.volumePairs) &&
-            Objects.equals(deleteTime.orElse(null), that.deleteTime.orElse(null)) &&
-            Objects.equals(purgeTime.orElse(null), that.purgeTime.orElse(null)) &&
+            Objects.equals(deleteTime, that.deleteTime) &&
+            Objects.equals(purgeTime, that.purgeTime) &&
             Objects.equals(sliceCount, that.sliceCount) &&
             Objects.equals(totalSize, that.totalSize) &&
             Objects.equals(blockSize, that.blockSize) &&
@@ -336,10 +336,10 @@ public class Volume implements Serializable {
         sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups)).append(",");
         sb.append(" volumePairs : ").append(Arrays.toString(volumePairs)).append(",");
         if(null != deleteTime && deleteTime.isPresent()){
-            sb.append(" deleteTime : ").append(deleteTime.orElse(null)).append(",");
+            sb.append(" deleteTime : ").append(deleteTime).append(",");
         }
         if(null != purgeTime && purgeTime.isPresent()){
-            sb.append(" purgeTime : ").append(purgeTime.orElse(null)).append(",");
+            sb.append(" purgeTime : ").append(purgeTime).append(",");
         }
         sb.append(" sliceCount : ").append(sliceCount).append(",");
         sb.append(" totalSize : ").append(totalSize).append(",");

@@ -84,8 +84,8 @@ public class CreateStorageContainerRequest implements Serializable {
         CreateStorageContainerRequest that = (CreateStorageContainerRequest) o;
         return 
             Objects.equals(name, that.name) &&
-            Objects.equals(initiatorSecret.orElse(null), that.initiatorSecret.orElse(null)) &&
-            Objects.equals(targetSecret.orElse(null), that.targetSecret.orElse(null));
+            Objects.equals(initiatorSecret, that.initiatorSecret) &&
+            Objects.equals(targetSecret, that.targetSecret);
     }
 
     @Override
@@ -109,10 +109,10 @@ public class CreateStorageContainerRequest implements Serializable {
 
         sb.append(" name : ").append(name).append(",");
         if(null != initiatorSecret && initiatorSecret.isPresent()){
-            sb.append(" initiatorSecret : ").append(initiatorSecret.orElse(null)).append(",");
+            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
         }
         if(null != targetSecret && targetSecret.isPresent()){
-            sb.append(" targetSecret : ").append(targetSecret.orElse(null)).append(",");
+            sb.append(" targetSecret : ").append(targetSecret).append(",");
         }
         sb.append( " }" );
 

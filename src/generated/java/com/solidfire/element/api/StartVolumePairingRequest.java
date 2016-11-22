@@ -78,7 +78,7 @@ public class StartVolumePairingRequest implements Serializable {
         StartVolumePairingRequest that = (StartVolumePairingRequest) o;
         return 
             Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(mode.orElse(null), that.mode.orElse(null));
+            Objects.equals(mode, that.mode);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class StartVolumePairingRequest implements Serializable {
 
         sb.append(" volumeID : ").append(volumeID).append(",");
         if(null != mode && mode.isPresent()){
-            sb.append(" mode : ").append(mode.orElse(null)).append(",");
+            sb.append(" mode : ").append(mode).append(",");
         }
         sb.append( " }" );
 

@@ -63,7 +63,7 @@ public class ListStorageContainersRequest implements Serializable {
 
         ListStorageContainersRequest that = (ListStorageContainersRequest) o;
         return 
-            Arrays.equals(storageContainerIDs.orElse(null), that.storageContainerIDs.orElse(null));
+            Objects.equals(storageContainerIDs, that.storageContainerIDs);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class ListStorageContainersRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != storageContainerIDs && storageContainerIDs.isPresent()){
-            sb.append(" storageContainerIDs : ").append(Arrays.toString(storageContainerIDs.orElse(null))).append(",");
+            sb.append(" storageContainerIDs : ").append(storageContainerIDs).append(",");
         }
         sb.append( " }" );
 

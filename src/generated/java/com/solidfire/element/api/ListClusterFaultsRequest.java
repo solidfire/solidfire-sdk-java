@@ -94,10 +94,10 @@ public class ListClusterFaultsRequest implements Serializable {
 
         ListClusterFaultsRequest that = (ListClusterFaultsRequest) o;
         return 
-            Objects.equals(exceptions.orElse(null), that.exceptions.orElse(null)) &&
-            Objects.equals(bestPractices.orElse(null), that.bestPractices.orElse(null)) &&
-            Objects.equals(update.orElse(null), that.update.orElse(null)) &&
-            Objects.equals(faultTypes.orElse(null), that.faultTypes.orElse(null));
+            Objects.equals(exceptions, that.exceptions) &&
+            Objects.equals(bestPractices, that.bestPractices) &&
+            Objects.equals(update, that.update) &&
+            Objects.equals(faultTypes, that.faultTypes);
     }
 
     @Override
@@ -121,16 +121,16 @@ public class ListClusterFaultsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != exceptions && exceptions.isPresent()){
-            sb.append(" exceptions : ").append(exceptions.orElse(null)).append(",");
+            sb.append(" exceptions : ").append(exceptions).append(",");
         }
         if(null != bestPractices && bestPractices.isPresent()){
-            sb.append(" bestPractices : ").append(bestPractices.orElse(null)).append(",");
+            sb.append(" bestPractices : ").append(bestPractices).append(",");
         }
         if(null != update && update.isPresent()){
-            sb.append(" update : ").append(update.orElse(null)).append(",");
+            sb.append(" update : ").append(update).append(",");
         }
         if(null != faultTypes && faultTypes.isPresent()){
-            sb.append(" faultTypes : ").append(faultTypes.orElse(null)).append(",");
+            sb.append(" faultTypes : ").append(faultTypes).append(",");
         }
         sb.append( " }" );
 

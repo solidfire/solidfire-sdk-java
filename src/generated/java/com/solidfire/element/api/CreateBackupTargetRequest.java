@@ -74,7 +74,7 @@ public class CreateBackupTargetRequest implements Serializable {
         CreateBackupTargetRequest that = (CreateBackupTargetRequest) o;
         return 
             Objects.equals(name, that.name) &&
-            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -97,7 +97,7 @@ public class CreateBackupTargetRequest implements Serializable {
 
         sb.append(" name : ").append(name).append(",");
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

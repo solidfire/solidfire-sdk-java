@@ -152,8 +152,8 @@ public class VirtualNetwork implements Serializable {
             Objects.equals(name, that.name) &&
             Objects.equals(netmask, that.netmask) &&
             Objects.equals(svip, that.svip) &&
-            Objects.equals(gateway.orElse(null), that.gateway.orElse(null)) &&
-            Objects.equals(namespace.orElse(null), that.namespace.orElse(null)) &&
+            Objects.equals(gateway, that.gateway) &&
+            Objects.equals(namespace, that.namespace) &&
             Objects.equals(attributes, that.attributes);
     }
 
@@ -189,10 +189,10 @@ public class VirtualNetwork implements Serializable {
         sb.append(" netmask : ").append(netmask).append(",");
         sb.append(" svip : ").append(svip).append(",");
         if(null != gateway && gateway.isPresent()){
-            sb.append(" gateway : ").append(gateway.orElse(null)).append(",");
+            sb.append(" gateway : ").append(gateway).append(",");
         }
         if(null != namespace && namespace.isPresent()){
-            sb.append(" namespace : ").append(namespace.orElse(null)).append(",");
+            sb.append(" namespace : ").append(namespace).append(",");
         }
         sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );

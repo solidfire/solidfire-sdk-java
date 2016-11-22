@@ -141,9 +141,9 @@ public class AddVirtualNetworkRequest implements Serializable {
             Arrays.equals(addressBlocks, that.addressBlocks) &&
             Objects.equals(netmask, that.netmask) &&
             Objects.equals(svip, that.svip) &&
-            Objects.equals(gateway.orElse(null), that.gateway.orElse(null)) &&
-            Objects.equals(namespace.orElse(null), that.namespace.orElse(null)) &&
-            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+            Objects.equals(gateway, that.gateway) &&
+            Objects.equals(namespace, that.namespace) &&
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
@@ -176,13 +176,13 @@ public class AddVirtualNetworkRequest implements Serializable {
         sb.append(" netmask : ").append(netmask).append(",");
         sb.append(" svip : ").append(svip).append(",");
         if(null != gateway && gateway.isPresent()){
-            sb.append(" gateway : ").append(gateway.orElse(null)).append(",");
+            sb.append(" gateway : ").append(gateway).append(",");
         }
         if(null != namespace && namespace.isPresent()){
-            sb.append(" namespace : ").append(namespace.orElse(null)).append(",");
+            sb.append(" namespace : ").append(namespace).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 

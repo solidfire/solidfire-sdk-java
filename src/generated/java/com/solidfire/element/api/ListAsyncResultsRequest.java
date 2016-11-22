@@ -63,7 +63,7 @@ public class ListAsyncResultsRequest implements Serializable {
 
         ListAsyncResultsRequest that = (ListAsyncResultsRequest) o;
         return 
-            Arrays.equals(asyncResultTypes.orElse(null), that.asyncResultTypes.orElse(null));
+            Objects.equals(asyncResultTypes, that.asyncResultTypes);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class ListAsyncResultsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != asyncResultTypes && asyncResultTypes.isPresent()){
-            sb.append(" asyncResultTypes : ").append(Arrays.toString(asyncResultTypes.orElse(null))).append(",");
+            sb.append(" asyncResultTypes : ").append(asyncResultTypes).append(",");
         }
         sb.append( " }" );
 

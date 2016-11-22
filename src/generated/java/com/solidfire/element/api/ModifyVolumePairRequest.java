@@ -91,8 +91,8 @@ public class ModifyVolumePairRequest implements Serializable {
         ModifyVolumePairRequest that = (ModifyVolumePairRequest) o;
         return 
             Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(pausedManual.orElse(null), that.pausedManual.orElse(null)) &&
-            Objects.equals(mode.orElse(null), that.mode.orElse(null));
+            Objects.equals(pausedManual, that.pausedManual) &&
+            Objects.equals(mode, that.mode);
     }
 
     @Override
@@ -116,10 +116,10 @@ public class ModifyVolumePairRequest implements Serializable {
 
         sb.append(" volumeID : ").append(volumeID).append(",");
         if(null != pausedManual && pausedManual.isPresent()){
-            sb.append(" pausedManual : ").append(pausedManual.orElse(null)).append(",");
+            sb.append(" pausedManual : ").append(pausedManual).append(",");
         }
         if(null != mode && mode.isPresent()){
-            sb.append(" mode : ").append(mode.orElse(null)).append(",");
+            sb.append(" mode : ").append(mode).append(",");
         }
         sb.append( " }" );
 

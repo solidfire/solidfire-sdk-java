@@ -116,13 +116,13 @@ public class PhysicalAdapter implements Serializable {
 
         PhysicalAdapter that = (PhysicalAdapter) o;
         return 
-            Objects.equals(address.orElse(null), that.address.orElse(null)) &&
-            Objects.equals(macAddress.orElse(null), that.macAddress.orElse(null)) &&
-            Objects.equals(macAddressPermanent.orElse(null), that.macAddressPermanent.orElse(null)) &&
-            Objects.equals(mtu.orElse(null), that.mtu.orElse(null)) &&
-            Objects.equals(netmask.orElse(null), that.netmask.orElse(null)) &&
-            Objects.equals(network.orElse(null), that.network.orElse(null)) &&
-            Objects.equals(upAndRunning.orElse(null), that.upAndRunning.orElse(null));
+            Objects.equals(address, that.address) &&
+            Objects.equals(macAddress, that.macAddress) &&
+            Objects.equals(macAddressPermanent, that.macAddressPermanent) &&
+            Objects.equals(mtu, that.mtu) &&
+            Objects.equals(netmask, that.netmask) &&
+            Objects.equals(network, that.network) &&
+            Objects.equals(upAndRunning, that.upAndRunning);
     }
 
     @Override
@@ -149,25 +149,25 @@ public class PhysicalAdapter implements Serializable {
         sb.append( "{ " );
 
         if(null != address && address.isPresent()){
-            sb.append(" address : ").append(address.orElse(null)).append(",");
+            sb.append(" address : ").append(address).append(",");
         }
         if(null != macAddress && macAddress.isPresent()){
-            sb.append(" macAddress : ").append(macAddress.orElse(null)).append(",");
+            sb.append(" macAddress : ").append(macAddress).append(",");
         }
         if(null != macAddressPermanent && macAddressPermanent.isPresent()){
-            sb.append(" macAddressPermanent : ").append(macAddressPermanent.orElse(null)).append(",");
+            sb.append(" macAddressPermanent : ").append(macAddressPermanent).append(",");
         }
         if(null != mtu && mtu.isPresent()){
-            sb.append(" mtu : ").append(mtu.orElse(null)).append(",");
+            sb.append(" mtu : ").append(mtu).append(",");
         }
         if(null != netmask && netmask.isPresent()){
-            sb.append(" netmask : ").append(netmask.orElse(null)).append(",");
+            sb.append(" netmask : ").append(netmask).append(",");
         }
         if(null != network && network.isPresent()){
-            sb.append(" network : ").append(network.orElse(null)).append(",");
+            sb.append(" network : ").append(network).append(",");
         }
         if(null != upAndRunning && upAndRunning.isPresent()){
-            sb.append(" upAndRunning : ").append(upAndRunning.orElse(null)).append(",");
+            sb.append(" upAndRunning : ").append(upAndRunning).append(",");
         }
         sb.append( " }" );
 

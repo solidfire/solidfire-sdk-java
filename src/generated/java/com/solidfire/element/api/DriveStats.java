@@ -207,7 +207,7 @@ public class DriveStats implements Serializable {
         DriveStats that = (DriveStats) o;
         return 
             Objects.equals(activeSessions, that.activeSessions) &&
-            Objects.equals(driveID.orElse(null), that.driveID.orElse(null)) &&
+            Objects.equals(driveID, that.driveID) &&
             Objects.equals(failedDieCount, that.failedDieCount) &&
             Objects.equals(lifeRemainingPercent, that.lifeRemainingPercent) &&
             Objects.equals(lifetimeReadBytes, that.lifetimeReadBytes) &&
@@ -219,7 +219,7 @@ public class DriveStats implements Serializable {
             Objects.equals(reserveCapacityPercent, that.reserveCapacityPercent) &&
             Objects.equals(timestamp, that.timestamp) &&
             Objects.equals(totalCapacity, that.totalCapacity) &&
-            Objects.equals(usedCapacity.orElse(null), that.usedCapacity.orElse(null)) &&
+            Objects.equals(usedCapacity, that.usedCapacity) &&
             Objects.equals(usedMemory, that.usedMemory) &&
             Objects.equals(writeBytes, that.writeBytes) &&
             Objects.equals(writeOps, that.writeOps);
@@ -260,7 +260,7 @@ public class DriveStats implements Serializable {
 
         sb.append(" activeSessions : ").append(activeSessions).append(",");
         if(null != driveID && driveID.isPresent()){
-            sb.append(" driveID : ").append(driveID.orElse(null)).append(",");
+            sb.append(" driveID : ").append(driveID).append(",");
         }
         sb.append(" failedDieCount : ").append(failedDieCount).append(",");
         sb.append(" lifeRemainingPercent : ").append(lifeRemainingPercent).append(",");
@@ -274,7 +274,7 @@ public class DriveStats implements Serializable {
         sb.append(" timestamp : ").append(timestamp).append(",");
         sb.append(" totalCapacity : ").append(totalCapacity).append(",");
         if(null != usedCapacity && usedCapacity.isPresent()){
-            sb.append(" usedCapacity : ").append(usedCapacity.orElse(null)).append(",");
+            sb.append(" usedCapacity : ").append(usedCapacity).append(",");
         }
         sb.append(" usedMemory : ").append(usedMemory).append(",");
         sb.append(" writeBytes : ").append(writeBytes).append(",");

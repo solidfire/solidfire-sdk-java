@@ -63,7 +63,7 @@ public class TestConnectEnsembleRequest implements Serializable {
 
         TestConnectEnsembleRequest that = (TestConnectEnsembleRequest) o;
         return 
-            Objects.equals(ensemble.orElse(null), that.ensemble.orElse(null));
+            Objects.equals(ensemble, that.ensemble);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class TestConnectEnsembleRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != ensemble && ensemble.isPresent()){
-            sb.append(" ensemble : ").append(ensemble.orElse(null)).append(",");
+            sb.append(" ensemble : ").append(ensemble).append(",");
         }
         sb.append( " }" );
 
