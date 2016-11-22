@@ -94,9 +94,9 @@ public class CreateInitiator implements Serializable {
         CreateInitiator that = (CreateInitiator) o;
         return 
             Objects.equals(name, that.name) &&
-            Objects.equals(alias, that.alias) &&
-            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(alias.orElse(null), that.alias.orElse(null)) &&
+            Objects.equals(volumeAccessGroupID.orElse(null), that.volumeAccessGroupID.orElse(null)) &&
+            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
     }
 
     @Override
@@ -121,13 +121,13 @@ public class CreateInitiator implements Serializable {
 
         sb.append(" name : ").append(name).append(",");
         if(null != alias && alias.isPresent()){
-            sb.append(" alias : ").append(alias.get()).append(",");
+            sb.append(" alias : ").append(alias.orElse(null)).append(",");
         }
         if(null != volumeAccessGroupID && volumeAccessGroupID.isPresent()){
-            sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID.get()).append(",");
+            sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID.orElse(null)).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
         }
         sb.append( " }" );
 

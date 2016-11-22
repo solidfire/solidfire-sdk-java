@@ -117,7 +117,7 @@ public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
             Objects.equals(segmentStart, that.segmentStart) &&
             Objects.equals(segmentLength, that.segmentLength) &&
             Objects.equals(chunkSize, that.chunkSize) &&
-            Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
+            Objects.equals(callingVirtualVolumeHostID.orElse(null), that.callingVirtualVolumeHostID.orElse(null));
     }
 
     @Override
@@ -148,7 +148,7 @@ public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
         sb.append(" segmentLength : ").append(segmentLength).append(",");
         sb.append(" chunkSize : ").append(chunkSize).append(",");
         if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent()){
-            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get()).append(",");
+            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.orElse(null)).append(",");
         }
         sb.append( " }" );
 

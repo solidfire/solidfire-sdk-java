@@ -81,8 +81,8 @@ public class ModifyStorageContainerRequest implements Serializable {
         ModifyStorageContainerRequest that = (ModifyStorageContainerRequest) o;
         return 
             Objects.equals(storageContainerID, that.storageContainerID) &&
-            Objects.equals(initiatorSecret, that.initiatorSecret) &&
-            Objects.equals(targetSecret, that.targetSecret);
+            Objects.equals(initiatorSecret.orElse(null), that.initiatorSecret.orElse(null)) &&
+            Objects.equals(targetSecret.orElse(null), that.targetSecret.orElse(null));
     }
 
     @Override
@@ -106,10 +106,10 @@ public class ModifyStorageContainerRequest implements Serializable {
 
         sb.append(" storageContainerID : ").append(storageContainerID).append(",");
         if(null != initiatorSecret && initiatorSecret.isPresent()){
-            sb.append(" initiatorSecret : ").append(initiatorSecret.get()).append(",");
+            sb.append(" initiatorSecret : ").append(initiatorSecret.orElse(null)).append(",");
         }
         if(null != targetSecret && targetSecret.isPresent()){
-            sb.append(" targetSecret : ").append(targetSecret.get()).append(",");
+            sb.append(" targetSecret : ").append(targetSecret.orElse(null)).append(",");
         }
         sb.append( " }" );
 

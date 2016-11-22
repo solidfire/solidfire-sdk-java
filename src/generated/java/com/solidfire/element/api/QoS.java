@@ -98,10 +98,10 @@ public class QoS implements Serializable {
 
         QoS that = (QoS) o;
         return 
-            Objects.equals(minIOPS, that.minIOPS) &&
-            Objects.equals(maxIOPS, that.maxIOPS) &&
-            Objects.equals(burstIOPS, that.burstIOPS) &&
-            Objects.equals(burstTime, that.burstTime);
+            Objects.equals(minIOPS.orElse(null), that.minIOPS.orElse(null)) &&
+            Objects.equals(maxIOPS.orElse(null), that.maxIOPS.orElse(null)) &&
+            Objects.equals(burstIOPS.orElse(null), that.burstIOPS.orElse(null)) &&
+            Objects.equals(burstTime.orElse(null), that.burstTime.orElse(null));
     }
 
     @Override
@@ -125,16 +125,16 @@ public class QoS implements Serializable {
         sb.append( "{ " );
 
         if(null != minIOPS && minIOPS.isPresent()){
-            sb.append(" minIOPS : ").append(minIOPS.get()).append(",");
+            sb.append(" minIOPS : ").append(minIOPS.orElse(null)).append(",");
         }
         if(null != maxIOPS && maxIOPS.isPresent()){
-            sb.append(" maxIOPS : ").append(maxIOPS.get()).append(",");
+            sb.append(" maxIOPS : ").append(maxIOPS.orElse(null)).append(",");
         }
         if(null != burstIOPS && burstIOPS.isPresent()){
-            sb.append(" burstIOPS : ").append(burstIOPS.get()).append(",");
+            sb.append(" burstIOPS : ").append(burstIOPS.orElse(null)).append(",");
         }
         if(null != burstTime && burstTime.isPresent()){
-            sb.append(" burstTime : ").append(burstTime.get()).append(",");
+            sb.append(" burstTime : ").append(burstTime.orElse(null)).append(",");
         }
         sb.append( " }" );
 

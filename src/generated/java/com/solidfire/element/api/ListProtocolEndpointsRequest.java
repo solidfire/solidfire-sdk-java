@@ -62,7 +62,11 @@ public class ListProtocolEndpointsRequest implements Serializable {
 
         ListProtocolEndpointsRequest that = (ListProtocolEndpointsRequest) o;
         return 
+<<<<<<< refs/remotes/origin/develop
             Arrays.equals(protocolEndpointIDs, that.protocolEndpointIDs);
+=======
+            Arrays.equals(protocolEndpointIDs.orElse(null), that.protocolEndpointIDs.orElse(null));
+>>>>>>> local
     }
 
     @Override
@@ -83,7 +87,7 @@ public class ListProtocolEndpointsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != protocolEndpointIDs && protocolEndpointIDs.isPresent()){
-            sb.append(" protocolEndpointIDs : ").append(protocolEndpointIDs.get()).append(",");
+            sb.append(" protocolEndpointIDs : ").append(Arrays.toString(protocolEndpointIDs.orElse(null))).append(",");
         }
         sb.append( " }" );
 

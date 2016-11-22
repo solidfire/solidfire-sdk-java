@@ -95,8 +95,13 @@ public class AddLdapClusterAdminRequest implements Serializable {
         return 
             Objects.equals(username, that.username) &&
             Arrays.equals(access, that.access) &&
+<<<<<<< refs/remotes/origin/develop
             Objects.equals(acceptEula, that.acceptEula) &&
             Objects.equals(attributes, that.attributes);
+=======
+            Objects.equals(acceptEula.orElse(null), that.acceptEula.orElse(null)) &&
+            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+>>>>>>> local
     }
 
     @Override
@@ -122,10 +127,10 @@ public class AddLdapClusterAdminRequest implements Serializable {
         sb.append(" username : ").append(username).append(",");
         sb.append(" access : ").append(Arrays.toString(access)).append(",");
         if(null != acceptEula && acceptEula.isPresent()){
-            sb.append(" acceptEula : ").append(acceptEula.get()).append(",");
+            sb.append(" acceptEula : ").append(acceptEula.orElse(null)).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
         }
         sb.append( " }" );
 

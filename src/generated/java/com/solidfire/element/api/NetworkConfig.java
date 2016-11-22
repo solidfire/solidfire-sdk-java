@@ -314,9 +314,10 @@ public class NetworkConfig implements Serializable {
 
         NetworkConfig that = (NetworkConfig) o;
         return 
-            Objects.equals(_default, that._default) &&
+            Objects.equals(_default.orElse(null), that._default.orElse(null)) &&
             Objects.equals(bondMaster, that.bondMaster) &&
             Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
+<<<<<<< refs/remotes/origin/develop
             Objects.equals(address, that.address) &&
             Objects.equals(auto, that.auto) &&
             Objects.equals(bondDowndelay, that.bondDowndelay) &&
@@ -343,6 +344,34 @@ public class NetworkConfig implements Serializable {
             Objects.equals(status, that.status) &&
             Arrays.equals(symmetricRouteRules, that.symmetricRouteRules) &&
             Objects.equals(upAndRunning, that.upAndRunning);
+=======
+            Objects.equals(address.orElse(null), that.address.orElse(null)) &&
+            Objects.equals(auto.orElse(null), that.auto.orElse(null)) &&
+            Objects.equals(bondDowndelay.orElse(null), that.bondDowndelay.orElse(null)) &&
+            Objects.equals(bondFailOverMac.orElse(null), that.bondFailOverMac.orElse(null)) &&
+            Objects.equals(bondPrimaryReselect.orElse(null), that.bondPrimaryReselect.orElse(null)) &&
+            Objects.equals(bondLacpRate.orElse(null), that.bondLacpRate.orElse(null)) &&
+            Objects.equals(bondMiimon.orElse(null), that.bondMiimon.orElse(null)) &&
+            Objects.equals(bondMode.orElse(null), that.bondMode.orElse(null)) &&
+            Objects.equals(bondSlaves.orElse(null), that.bondSlaves.orElse(null)) &&
+            Objects.equals(bondUpdelay.orElse(null), that.bondUpdelay.orElse(null)) &&
+            Objects.equals(broadcast.orElse(null), that.broadcast.orElse(null)) &&
+            Objects.equals(dnsNameservers.orElse(null), that.dnsNameservers.orElse(null)) &&
+            Objects.equals(dnsSearch.orElse(null), that.dnsSearch.orElse(null)) &&
+            Objects.equals(family.orElse(null), that.family.orElse(null)) &&
+            Objects.equals(gateway.orElse(null), that.gateway.orElse(null)) &&
+            Objects.equals(macAddress.orElse(null), that.macAddress.orElse(null)) &&
+            Objects.equals(macAddressPermanent.orElse(null), that.macAddressPermanent.orElse(null)) &&
+            Objects.equals(method.orElse(null), that.method.orElse(null)) &&
+            Objects.equals(mtu.orElse(null), that.mtu.orElse(null)) &&
+            Objects.equals(netmask.orElse(null), that.netmask.orElse(null)) &&
+            Objects.equals(network.orElse(null), that.network.orElse(null)) &&
+            Objects.equals(physical.orElse(null), that.physical.orElse(null)) &&
+            Arrays.equals(routes.orElse(null), that.routes.orElse(null)) &&
+            Objects.equals(status.orElse(null), that.status.orElse(null)) &&
+            Arrays.equals(symmetricRouteRules.orElse(null), that.symmetricRouteRules.orElse(null)) &&
+            Objects.equals(upAndRunning.orElse(null), that.upAndRunning.orElse(null));
+>>>>>>> local
     }
 
     @Override
@@ -391,87 +420,87 @@ public class NetworkConfig implements Serializable {
         sb.append( "{ " );
 
         if(null != _default && _default.isPresent()){
-            sb.append(" _default : ").append(_default.get()).append(",");
+            sb.append(" _default : ").append(_default.orElse(null)).append(",");
         }
         sb.append(" bondMaster : ").append(bondMaster).append(",");
         sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
         if(null != address && address.isPresent()){
-            sb.append(" address : ").append(address.get()).append(",");
+            sb.append(" address : ").append(address.orElse(null)).append(",");
         }
         if(null != auto && auto.isPresent()){
-            sb.append(" auto : ").append(auto.get()).append(",");
+            sb.append(" auto : ").append(auto.orElse(null)).append(",");
         }
         if(null != bondDowndelay && bondDowndelay.isPresent()){
-            sb.append(" bondDowndelay : ").append(bondDowndelay.get()).append(",");
+            sb.append(" bondDowndelay : ").append(bondDowndelay.orElse(null)).append(",");
         }
         if(null != bondFailOverMac && bondFailOverMac.isPresent()){
-            sb.append(" bondFailOverMac : ").append(bondFailOverMac.get()).append(",");
+            sb.append(" bondFailOverMac : ").append(bondFailOverMac.orElse(null)).append(",");
         }
         if(null != bondPrimaryReselect && bondPrimaryReselect.isPresent()){
-            sb.append(" bondPrimaryReselect : ").append(bondPrimaryReselect.get()).append(",");
+            sb.append(" bondPrimaryReselect : ").append(bondPrimaryReselect.orElse(null)).append(",");
         }
         if(null != bondLacpRate && bondLacpRate.isPresent()){
-            sb.append(" bondLacpRate : ").append(bondLacpRate.get()).append(",");
+            sb.append(" bondLacpRate : ").append(bondLacpRate.orElse(null)).append(",");
         }
         if(null != bondMiimon && bondMiimon.isPresent()){
-            sb.append(" bondMiimon : ").append(bondMiimon.get()).append(",");
+            sb.append(" bondMiimon : ").append(bondMiimon.orElse(null)).append(",");
         }
         if(null != bondMode && bondMode.isPresent()){
-            sb.append(" bondMode : ").append(bondMode.get()).append(",");
+            sb.append(" bondMode : ").append(bondMode.orElse(null)).append(",");
         }
         if(null != bondSlaves && bondSlaves.isPresent()){
-            sb.append(" bondSlaves : ").append(bondSlaves.get()).append(",");
+            sb.append(" bondSlaves : ").append(bondSlaves.orElse(null)).append(",");
         }
         if(null != bondUpdelay && bondUpdelay.isPresent()){
-            sb.append(" bondUpdelay : ").append(bondUpdelay.get()).append(",");
+            sb.append(" bondUpdelay : ").append(bondUpdelay.orElse(null)).append(",");
         }
         if(null != broadcast && broadcast.isPresent()){
-            sb.append(" broadcast : ").append(broadcast.get()).append(",");
+            sb.append(" broadcast : ").append(broadcast.orElse(null)).append(",");
         }
         if(null != dnsNameservers && dnsNameservers.isPresent()){
-            sb.append(" dnsNameservers : ").append(dnsNameservers.get()).append(",");
+            sb.append(" dnsNameservers : ").append(dnsNameservers.orElse(null)).append(",");
         }
         if(null != dnsSearch && dnsSearch.isPresent()){
-            sb.append(" dnsSearch : ").append(dnsSearch.get()).append(",");
+            sb.append(" dnsSearch : ").append(dnsSearch.orElse(null)).append(",");
         }
         if(null != family && family.isPresent()){
-            sb.append(" family : ").append(family.get()).append(",");
+            sb.append(" family : ").append(family.orElse(null)).append(",");
         }
         if(null != gateway && gateway.isPresent()){
-            sb.append(" gateway : ").append(gateway.get()).append(",");
+            sb.append(" gateway : ").append(gateway.orElse(null)).append(",");
         }
         if(null != macAddress && macAddress.isPresent()){
-            sb.append(" macAddress : ").append(macAddress.get()).append(",");
+            sb.append(" macAddress : ").append(macAddress.orElse(null)).append(",");
         }
         if(null != macAddressPermanent && macAddressPermanent.isPresent()){
-            sb.append(" macAddressPermanent : ").append(macAddressPermanent.get()).append(",");
+            sb.append(" macAddressPermanent : ").append(macAddressPermanent.orElse(null)).append(",");
         }
         if(null != method && method.isPresent()){
-            sb.append(" method : ").append(method.get()).append(",");
+            sb.append(" method : ").append(method.orElse(null)).append(",");
         }
         if(null != mtu && mtu.isPresent()){
-            sb.append(" mtu : ").append(mtu.get()).append(",");
+            sb.append(" mtu : ").append(mtu.orElse(null)).append(",");
         }
         if(null != netmask && netmask.isPresent()){
-            sb.append(" netmask : ").append(netmask.get()).append(",");
+            sb.append(" netmask : ").append(netmask.orElse(null)).append(",");
         }
         if(null != network && network.isPresent()){
-            sb.append(" network : ").append(network.get()).append(",");
+            sb.append(" network : ").append(network.orElse(null)).append(",");
         }
         if(null != physical && physical.isPresent()){
-            sb.append(" physical : ").append(physical.get()).append(",");
+            sb.append(" physical : ").append(physical.orElse(null)).append(",");
         }
         if(null != routes && routes.isPresent()){
-            sb.append(" routes : ").append(routes.get()).append(",");
+            sb.append(" routes : ").append(Arrays.toString(routes.orElse(null))).append(",");
         }
         if(null != status && status.isPresent()){
-            sb.append(" status : ").append(status.get()).append(",");
+            sb.append(" status : ").append(status.orElse(null)).append(",");
         }
         if(null != symmetricRouteRules && symmetricRouteRules.isPresent()){
-            sb.append(" symmetricRouteRules : ").append(symmetricRouteRules.get()).append(",");
+            sb.append(" symmetricRouteRules : ").append(Arrays.toString(symmetricRouteRules.orElse(null))).append(",");
         }
         if(null != upAndRunning && upAndRunning.isPresent()){
-            sb.append(" upAndRunning : ").append(upAndRunning.get()).append(",");
+            sb.append(" upAndRunning : ").append(upAndRunning.orElse(null)).append(",");
         }
         sb.append( " }" );
 

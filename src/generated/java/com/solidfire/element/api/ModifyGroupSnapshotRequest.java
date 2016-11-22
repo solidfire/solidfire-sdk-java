@@ -87,8 +87,8 @@ public class ModifyGroupSnapshotRequest implements Serializable {
         ModifyGroupSnapshotRequest that = (ModifyGroupSnapshotRequest) o;
         return 
             Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
-            Objects.equals(expirationTime, that.expirationTime) &&
-            Objects.equals(enableRemoteReplication, that.enableRemoteReplication);
+            Objects.equals(expirationTime.orElse(null), that.expirationTime.orElse(null)) &&
+            Objects.equals(enableRemoteReplication.orElse(null), that.enableRemoteReplication.orElse(null));
     }
 
     @Override
@@ -112,10 +112,10 @@ public class ModifyGroupSnapshotRequest implements Serializable {
 
         sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
         if(null != expirationTime && expirationTime.isPresent()){
-            sb.append(" expirationTime : ").append(expirationTime.get()).append(",");
+            sb.append(" expirationTime : ").append(expirationTime.orElse(null)).append(",");
         }
         if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
-            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication.get()).append(",");
+            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication.orElse(null)).append(",");
         }
         sb.append( " }" );
 

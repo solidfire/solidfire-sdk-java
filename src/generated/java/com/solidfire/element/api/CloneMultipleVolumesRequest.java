@@ -100,9 +100,15 @@ public class CloneMultipleVolumesRequest implements Serializable {
         CloneMultipleVolumesRequest that = (CloneMultipleVolumesRequest) o;
         return 
             Arrays.equals(volumes, that.volumes) &&
+<<<<<<< refs/remotes/origin/develop
             Objects.equals(access, that.access) &&
             Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
             Objects.equals(newAccountID, that.newAccountID);
+=======
+            Objects.equals(access.orElse(null), that.access.orElse(null)) &&
+            Objects.equals(groupSnapshotID.orElse(null), that.groupSnapshotID.orElse(null)) &&
+            Objects.equals(newAccountID.orElse(null), that.newAccountID.orElse(null));
+>>>>>>> local
     }
 
     @Override
@@ -127,13 +133,13 @@ public class CloneMultipleVolumesRequest implements Serializable {
 
         sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access.get()).append(",");
+            sb.append(" access : ").append(access.orElse(null)).append(",");
         }
         if(null != groupSnapshotID && groupSnapshotID.isPresent()){
-            sb.append(" groupSnapshotID : ").append(groupSnapshotID.get()).append(",");
+            sb.append(" groupSnapshotID : ").append(groupSnapshotID.orElse(null)).append(",");
         }
         if(null != newAccountID && newAccountID.isPresent()){
-            sb.append(" newAccountID : ").append(newAccountID.get()).append(",");
+            sb.append(" newAccountID : ").append(newAccountID.orElse(null)).append(",");
         }
         sb.append( " }" );
 

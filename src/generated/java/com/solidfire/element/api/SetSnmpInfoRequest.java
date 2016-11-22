@@ -93,10 +93,17 @@ public class SetSnmpInfoRequest implements Serializable {
 
         SetSnmpInfoRequest that = (SetSnmpInfoRequest) o;
         return 
+<<<<<<< refs/remotes/origin/develop
             Arrays.equals(networks, that.networks) &&
             Objects.equals(enabled, that.enabled) &&
             Objects.equals(snmpV3Enabled, that.snmpV3Enabled) &&
             Arrays.equals(usmUsers, that.usmUsers);
+=======
+            Arrays.equals(networks.orElse(null), that.networks.orElse(null)) &&
+            Objects.equals(enabled.orElse(null), that.enabled.orElse(null)) &&
+            Objects.equals(snmpV3Enabled.orElse(null), that.snmpV3Enabled.orElse(null)) &&
+            Arrays.equals(usmUsers.orElse(null), that.usmUsers.orElse(null));
+>>>>>>> local
     }
 
     @Override
@@ -120,16 +127,16 @@ public class SetSnmpInfoRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != networks && networks.isPresent()){
-            sb.append(" networks : ").append(networks.get()).append(",");
+            sb.append(" networks : ").append(Arrays.toString(networks.orElse(null))).append(",");
         }
         if(null != enabled && enabled.isPresent()){
-            sb.append(" enabled : ").append(enabled.get()).append(",");
+            sb.append(" enabled : ").append(enabled.orElse(null)).append(",");
         }
         if(null != snmpV3Enabled && snmpV3Enabled.isPresent()){
-            sb.append(" snmpV3Enabled : ").append(snmpV3Enabled.get()).append(",");
+            sb.append(" snmpV3Enabled : ").append(snmpV3Enabled.orElse(null)).append(",");
         }
         if(null != usmUsers && usmUsers.isPresent()){
-            sb.append(" usmUsers : ").append(usmUsers.get()).append(",");
+            sb.append(" usmUsers : ").append(Arrays.toString(usmUsers.orElse(null))).append(",");
         }
         sb.append( " }" );
 

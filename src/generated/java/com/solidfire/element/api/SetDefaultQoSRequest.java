@@ -83,9 +83,9 @@ public class SetDefaultQoSRequest implements Serializable {
 
         SetDefaultQoSRequest that = (SetDefaultQoSRequest) o;
         return 
-            Objects.equals(minIOPS, that.minIOPS) &&
-            Objects.equals(maxIOPS, that.maxIOPS) &&
-            Objects.equals(burstIOPS, that.burstIOPS);
+            Objects.equals(minIOPS.orElse(null), that.minIOPS.orElse(null)) &&
+            Objects.equals(maxIOPS.orElse(null), that.maxIOPS.orElse(null)) &&
+            Objects.equals(burstIOPS.orElse(null), that.burstIOPS.orElse(null));
     }
 
     @Override
@@ -108,13 +108,13 @@ public class SetDefaultQoSRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != minIOPS && minIOPS.isPresent()){
-            sb.append(" minIOPS : ").append(minIOPS.get()).append(",");
+            sb.append(" minIOPS : ").append(minIOPS.orElse(null)).append(",");
         }
         if(null != maxIOPS && maxIOPS.isPresent()){
-            sb.append(" maxIOPS : ").append(maxIOPS.get()).append(",");
+            sb.append(" maxIOPS : ").append(maxIOPS.orElse(null)).append(",");
         }
         if(null != burstIOPS && burstIOPS.isPresent()){
-            sb.append(" burstIOPS : ").append(burstIOPS.get()).append(",");
+            sb.append(" burstIOPS : ").append(burstIOPS.orElse(null)).append(",");
         }
         sb.append( " }" );
 

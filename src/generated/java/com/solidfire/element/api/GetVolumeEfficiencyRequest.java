@@ -73,7 +73,7 @@ public class GetVolumeEfficiencyRequest implements Serializable {
         GetVolumeEfficiencyRequest that = (GetVolumeEfficiencyRequest) o;
         return 
             Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(force, that.force);
+            Objects.equals(force.orElse(null), that.force.orElse(null));
     }
 
     @Override
@@ -96,7 +96,7 @@ public class GetVolumeEfficiencyRequest implements Serializable {
 
         sb.append(" volumeID : ").append(volumeID).append(",");
         if(null != force && force.isPresent()){
-            sb.append(" force : ").append(force.get()).append(",");
+            sb.append(" force : ").append(force.orElse(null)).append(",");
         }
         sb.append( " }" );
 

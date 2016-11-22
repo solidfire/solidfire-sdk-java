@@ -120,11 +120,11 @@ public class CloneMultipleVolumeParams implements Serializable {
         CloneMultipleVolumeParams that = (CloneMultipleVolumeParams) o;
         return 
             Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(access, that.access) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(newAccountID, that.newAccountID) &&
-            Objects.equals(newSize, that.newSize) &&
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(access.orElse(null), that.access.orElse(null)) &&
+            Objects.equals(name.orElse(null), that.name.orElse(null)) &&
+            Objects.equals(newAccountID.orElse(null), that.newAccountID.orElse(null)) &&
+            Objects.equals(newSize.orElse(null), that.newSize.orElse(null)) &&
+            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
     }
 
     @Override
@@ -151,19 +151,19 @@ public class CloneMultipleVolumeParams implements Serializable {
 
         sb.append(" volumeID : ").append(volumeID).append(",");
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access.get()).append(",");
+            sb.append(" access : ").append(access.orElse(null)).append(",");
         }
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name.get()).append(",");
+            sb.append(" name : ").append(name.orElse(null)).append(",");
         }
         if(null != newAccountID && newAccountID.isPresent()){
-            sb.append(" newAccountID : ").append(newAccountID.get()).append(",");
+            sb.append(" newAccountID : ").append(newAccountID.orElse(null)).append(",");
         }
         if(null != newSize && newSize.isPresent()){
-            sb.append(" newSize : ").append(newSize.get()).append(",");
+            sb.append(" newSize : ").append(newSize.orElse(null)).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
         }
         sb.append( " }" );
 

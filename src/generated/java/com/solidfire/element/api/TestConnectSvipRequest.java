@@ -63,7 +63,7 @@ public class TestConnectSvipRequest implements Serializable {
 
         TestConnectSvipRequest that = (TestConnectSvipRequest) o;
         return 
-            Objects.equals(svip, that.svip);
+            Objects.equals(svip.orElse(null), that.svip.orElse(null));
     }
 
     @Override
@@ -84,7 +84,7 @@ public class TestConnectSvipRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != svip && svip.isPresent()){
-            sb.append(" svip : ").append(svip.get()).append(",");
+            sb.append(" svip : ").append(svip.orElse(null)).append(",");
         }
         sb.append( " }" );
 

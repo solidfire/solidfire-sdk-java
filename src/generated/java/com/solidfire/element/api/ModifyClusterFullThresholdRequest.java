@@ -83,9 +83,9 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
 
         ModifyClusterFullThresholdRequest that = (ModifyClusterFullThresholdRequest) o;
         return 
-            Objects.equals(stage2AwareThreshold, that.stage2AwareThreshold) &&
-            Objects.equals(stage3BlockThresholdPercent, that.stage3BlockThresholdPercent) &&
-            Objects.equals(maxMetadataOverProvisionFactor, that.maxMetadataOverProvisionFactor);
+            Objects.equals(stage2AwareThreshold.orElse(null), that.stage2AwareThreshold.orElse(null)) &&
+            Objects.equals(stage3BlockThresholdPercent.orElse(null), that.stage3BlockThresholdPercent.orElse(null)) &&
+            Objects.equals(maxMetadataOverProvisionFactor.orElse(null), that.maxMetadataOverProvisionFactor.orElse(null));
     }
 
     @Override
@@ -108,13 +108,13 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != stage2AwareThreshold && stage2AwareThreshold.isPresent()){
-            sb.append(" stage2AwareThreshold : ").append(stage2AwareThreshold.get()).append(",");
+            sb.append(" stage2AwareThreshold : ").append(stage2AwareThreshold.orElse(null)).append(",");
         }
         if(null != stage3BlockThresholdPercent && stage3BlockThresholdPercent.isPresent()){
-            sb.append(" stage3BlockThresholdPercent : ").append(stage3BlockThresholdPercent.get()).append(",");
+            sb.append(" stage3BlockThresholdPercent : ").append(stage3BlockThresholdPercent.orElse(null)).append(",");
         }
         if(null != maxMetadataOverProvisionFactor && maxMetadataOverProvisionFactor.isPresent()){
-            sb.append(" maxMetadataOverProvisionFactor : ").append(maxMetadataOverProvisionFactor.get()).append(",");
+            sb.append(" maxMetadataOverProvisionFactor : ").append(maxMetadataOverProvisionFactor.orElse(null)).append(",");
         }
         sb.append( " }" );
 

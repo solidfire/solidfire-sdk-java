@@ -63,7 +63,7 @@ public class GetFeatureStatusRequest implements Serializable {
 
         GetFeatureStatusRequest that = (GetFeatureStatusRequest) o;
         return 
-            Objects.equals(feature, that.feature);
+            Objects.equals(feature.orElse(null), that.feature.orElse(null));
     }
 
     @Override
@@ -84,7 +84,7 @@ public class GetFeatureStatusRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != feature && feature.isPresent()){
-            sb.append(" feature : ").append(feature.get()).append(",");
+            sb.append(" feature : ").append(feature.orElse(null)).append(",");
         }
         sb.append( " }" );
 

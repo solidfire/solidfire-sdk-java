@@ -73,8 +73,8 @@ public class RemoveVirtualNetworkRequest implements Serializable {
 
         RemoveVirtualNetworkRequest that = (RemoveVirtualNetworkRequest) o;
         return 
-            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Objects.equals(virtualNetworkTag, that.virtualNetworkTag);
+            Objects.equals(virtualNetworkID.orElse(null), that.virtualNetworkID.orElse(null)) &&
+            Objects.equals(virtualNetworkTag.orElse(null), that.virtualNetworkTag.orElse(null));
     }
 
     @Override
@@ -96,10 +96,10 @@ public class RemoveVirtualNetworkRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID.get()).append(",");
+            sb.append(" virtualNetworkID : ").append(virtualNetworkID.orElse(null)).append(",");
         }
         if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
-            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag.get()).append(",");
+            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag.orElse(null)).append(",");
         }
         sb.append( " }" );
 

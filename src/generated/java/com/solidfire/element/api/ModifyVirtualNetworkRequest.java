@@ -146,6 +146,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
 
         ModifyVirtualNetworkRequest that = (ModifyVirtualNetworkRequest) o;
         return 
+<<<<<<< refs/remotes/origin/develop
             Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
             Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
             Objects.equals(name, that.name) &&
@@ -155,6 +156,17 @@ public class ModifyVirtualNetworkRequest implements Serializable {
             Objects.equals(gateway, that.gateway) &&
             Objects.equals(namespace, that.namespace) &&
             Objects.equals(attributes, that.attributes);
+=======
+            Objects.equals(virtualNetworkID.orElse(null), that.virtualNetworkID.orElse(null)) &&
+            Objects.equals(virtualNetworkTag.orElse(null), that.virtualNetworkTag.orElse(null)) &&
+            Objects.equals(name.orElse(null), that.name.orElse(null)) &&
+            Arrays.equals(addressBlocks.orElse(null), that.addressBlocks.orElse(null)) &&
+            Objects.equals(netmask.orElse(null), that.netmask.orElse(null)) &&
+            Objects.equals(svip.orElse(null), that.svip.orElse(null)) &&
+            Objects.equals(gateway.orElse(null), that.gateway.orElse(null)) &&
+            Objects.equals(namespace.orElse(null), that.namespace.orElse(null)) &&
+            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+>>>>>>> local
     }
 
     @Override
@@ -183,31 +195,31 @@ public class ModifyVirtualNetworkRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID.get()).append(",");
+            sb.append(" virtualNetworkID : ").append(virtualNetworkID.orElse(null)).append(",");
         }
         if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
-            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag.get()).append(",");
+            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag.orElse(null)).append(",");
         }
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name.get()).append(",");
+            sb.append(" name : ").append(name.orElse(null)).append(",");
         }
         if(null != addressBlocks && addressBlocks.isPresent()){
-            sb.append(" addressBlocks : ").append(addressBlocks.get()).append(",");
+            sb.append(" addressBlocks : ").append(Arrays.toString(addressBlocks.orElse(null))).append(",");
         }
         if(null != netmask && netmask.isPresent()){
-            sb.append(" netmask : ").append(netmask.get()).append(",");
+            sb.append(" netmask : ").append(netmask.orElse(null)).append(",");
         }
         if(null != svip && svip.isPresent()){
-            sb.append(" svip : ").append(svip.get()).append(",");
+            sb.append(" svip : ").append(svip.orElse(null)).append(",");
         }
         if(null != gateway && gateway.isPresent()){
-            sb.append(" gateway : ").append(gateway.get()).append(",");
+            sb.append(" gateway : ").append(gateway.orElse(null)).append(",");
         }
         if(null != namespace && namespace.isPresent()){
-            sb.append(" namespace : ").append(namespace.get()).append(",");
+            sb.append(" namespace : ").append(namespace.orElse(null)).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
         }
         sb.append( " }" );
 

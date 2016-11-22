@@ -120,10 +120,10 @@ public class StartBulkVolumeReadRequest implements Serializable {
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(format, that.format) &&
-            Objects.equals(snapshotID, that.snapshotID) &&
-            Objects.equals(script, that.script) &&
-            Objects.equals(scriptParameters, that.scriptParameters) &&
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(snapshotID.orElse(null), that.snapshotID.orElse(null)) &&
+            Objects.equals(script.orElse(null), that.script.orElse(null)) &&
+            Objects.equals(scriptParameters.orElse(null), that.scriptParameters.orElse(null)) &&
+            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
     }
 
     @Override
@@ -151,16 +151,16 @@ public class StartBulkVolumeReadRequest implements Serializable {
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" format : ").append(format).append(",");
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID.get()).append(",");
+            sb.append(" snapshotID : ").append(snapshotID.orElse(null)).append(",");
         }
         if(null != script && script.isPresent()){
-            sb.append(" script : ").append(script.get()).append(",");
+            sb.append(" script : ").append(script.orElse(null)).append(",");
         }
         if(null != scriptParameters && scriptParameters.isPresent()){
-            sb.append(" scriptParameters : ").append(scriptParameters.get()).append(",");
+            sb.append(" scriptParameters : ").append(scriptParameters.orElse(null)).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
         }
         sb.append( " }" );
 

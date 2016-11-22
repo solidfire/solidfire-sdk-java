@@ -73,7 +73,7 @@ public class GetAccountEfficiencyRequest implements Serializable {
         GetAccountEfficiencyRequest that = (GetAccountEfficiencyRequest) o;
         return 
             Objects.equals(accountID, that.accountID) &&
-            Objects.equals(force, that.force);
+            Objects.equals(force.orElse(null), that.force.orElse(null));
     }
 
     @Override
@@ -96,7 +96,7 @@ public class GetAccountEfficiencyRequest implements Serializable {
 
         sb.append(" accountID : ").append(accountID).append(",");
         if(null != force && force.isPresent()){
-            sb.append(" force : ").append(force.get()).append(",");
+            sb.append(" force : ").append(force.orElse(null)).append(",");
         }
         sb.append( " }" );
 

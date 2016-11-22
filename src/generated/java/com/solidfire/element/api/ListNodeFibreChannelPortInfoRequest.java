@@ -63,7 +63,7 @@ public class ListNodeFibreChannelPortInfoRequest implements Serializable {
 
         ListNodeFibreChannelPortInfoRequest that = (ListNodeFibreChannelPortInfoRequest) o;
         return 
-            Objects.equals(force, that.force);
+            Objects.equals(force.orElse(null), that.force.orElse(null));
     }
 
     @Override
@@ -84,7 +84,7 @@ public class ListNodeFibreChannelPortInfoRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != force && force.isPresent()){
-            sb.append(" force : ").append(force.get()).append(",");
+            sb.append(" force : ").append(force.orElse(null)).append(",");
         }
         sb.append( " }" );
 

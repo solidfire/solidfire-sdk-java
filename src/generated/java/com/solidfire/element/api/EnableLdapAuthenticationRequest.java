@@ -169,6 +169,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
 
         EnableLdapAuthenticationRequest that = (EnableLdapAuthenticationRequest) o;
         return 
+<<<<<<< refs/remotes/origin/develop
             Objects.equals(authType, that.authType) &&
             Objects.equals(groupSearchBaseDN, that.groupSearchBaseDN) &&
             Objects.equals(groupSearchCustomFilter, that.groupSearchCustomFilter) &&
@@ -179,6 +180,18 @@ public class EnableLdapAuthenticationRequest implements Serializable {
             Objects.equals(userDNTemplate, that.userDNTemplate) &&
             Objects.equals(userSearchBaseDN, that.userSearchBaseDN) &&
             Objects.equals(userSearchFilter, that.userSearchFilter);
+=======
+            Objects.equals(authType.orElse(null), that.authType.orElse(null)) &&
+            Objects.equals(groupSearchBaseDN.orElse(null), that.groupSearchBaseDN.orElse(null)) &&
+            Objects.equals(groupSearchCustomFilter.orElse(null), that.groupSearchCustomFilter.orElse(null)) &&
+            Objects.equals(groupSearchType.orElse(null), that.groupSearchType.orElse(null)) &&
+            Objects.equals(searchBindDN.orElse(null), that.searchBindDN.orElse(null)) &&
+            Objects.equals(searchBindPassword.orElse(null), that.searchBindPassword.orElse(null)) &&
+            Arrays.equals(serverURIs, that.serverURIs) &&
+            Objects.equals(userDNTemplate.orElse(null), that.userDNTemplate.orElse(null)) &&
+            Objects.equals(userSearchBaseDN.orElse(null), that.userSearchBaseDN.orElse(null)) &&
+            Objects.equals(userSearchFilter.orElse(null), that.userSearchFilter.orElse(null));
+>>>>>>> local
     }
 
     @Override
@@ -208,32 +221,32 @@ public class EnableLdapAuthenticationRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != authType && authType.isPresent()){
-            sb.append(" authType : ").append(authType.get()).append(",");
+            sb.append(" authType : ").append(authType.orElse(null)).append(",");
         }
         if(null != groupSearchBaseDN && groupSearchBaseDN.isPresent()){
-            sb.append(" groupSearchBaseDN : ").append(groupSearchBaseDN.get()).append(",");
+            sb.append(" groupSearchBaseDN : ").append(groupSearchBaseDN.orElse(null)).append(",");
         }
         if(null != groupSearchCustomFilter && groupSearchCustomFilter.isPresent()){
-            sb.append(" groupSearchCustomFilter : ").append(groupSearchCustomFilter.get()).append(",");
+            sb.append(" groupSearchCustomFilter : ").append(groupSearchCustomFilter.orElse(null)).append(",");
         }
         if(null != groupSearchType && groupSearchType.isPresent()){
-            sb.append(" groupSearchType : ").append(groupSearchType.get()).append(",");
+            sb.append(" groupSearchType : ").append(groupSearchType.orElse(null)).append(",");
         }
         if(null != searchBindDN && searchBindDN.isPresent()){
-            sb.append(" searchBindDN : ").append(searchBindDN.get()).append(",");
+            sb.append(" searchBindDN : ").append(searchBindDN.orElse(null)).append(",");
         }
         if(null != searchBindPassword && searchBindPassword.isPresent()){
-            sb.append(" searchBindPassword : ").append(searchBindPassword.get()).append(",");
+            sb.append(" searchBindPassword : ").append(searchBindPassword.orElse(null)).append(",");
         }
         sb.append(" serverURIs : ").append(Arrays.toString(serverURIs)).append(",");
         if(null != userDNTemplate && userDNTemplate.isPresent()){
-            sb.append(" userDNTemplate : ").append(userDNTemplate.get()).append(",");
+            sb.append(" userDNTemplate : ").append(userDNTemplate.orElse(null)).append(",");
         }
         if(null != userSearchBaseDN && userSearchBaseDN.isPresent()){
-            sb.append(" userSearchBaseDN : ").append(userSearchBaseDN.get()).append(",");
+            sb.append(" userSearchBaseDN : ").append(userSearchBaseDN.orElse(null)).append(",");
         }
         if(null != userSearchFilter && userSearchFilter.isPresent()){
-            sb.append(" userSearchFilter : ").append(userSearchFilter.get()).append(",");
+            sb.append(" userSearchFilter : ").append(userSearchFilter.orElse(null)).append(",");
         }
         sb.append( " }" );
 

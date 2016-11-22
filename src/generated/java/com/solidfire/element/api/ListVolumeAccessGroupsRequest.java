@@ -76,8 +76,8 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
 
         ListVolumeAccessGroupsRequest that = (ListVolumeAccessGroupsRequest) o;
         return 
-            Objects.equals(startVolumeAccessGroupID, that.startVolumeAccessGroupID) &&
-            Objects.equals(limit, that.limit);
+            Objects.equals(startVolumeAccessGroupID.orElse(null), that.startVolumeAccessGroupID.orElse(null)) &&
+            Objects.equals(limit.orElse(null), that.limit.orElse(null));
     }
 
     @Override
@@ -99,10 +99,10 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != startVolumeAccessGroupID && startVolumeAccessGroupID.isPresent()){
-            sb.append(" startVolumeAccessGroupID : ").append(startVolumeAccessGroupID.get()).append(",");
+            sb.append(" startVolumeAccessGroupID : ").append(startVolumeAccessGroupID.orElse(null)).append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit.get()).append(",");
+            sb.append(" limit : ").append(limit.orElse(null)).append(",");
         }
         sb.append( " }" );
 

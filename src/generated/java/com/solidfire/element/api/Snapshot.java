@@ -230,7 +230,7 @@ public class Snapshot implements Serializable {
             Objects.equals(status, that.status) &&
             Objects.equals(snapshotUUID, that.snapshotUUID) &&
             Objects.equals(totalSize, that.totalSize) &&
-            Objects.equals(groupID, that.groupID) &&
+            Objects.equals(groupID.orElse(null), that.groupID.orElse(null)) &&
             Objects.equals(groupSnapshotUUID, that.groupSnapshotUUID) &&
             Objects.equals(createTime, that.createTime) &&
             Objects.equals(attributes, that.attributes);
@@ -279,7 +279,7 @@ public class Snapshot implements Serializable {
         sb.append(" snapshotUUID : ").append(snapshotUUID).append(",");
         sb.append(" totalSize : ").append(totalSize).append(",");
         if(null != groupID && groupID.isPresent()){
-            sb.append(" groupID : ").append(groupID.get()).append(",");
+            sb.append(" groupID : ").append(groupID.orElse(null)).append(",");
         }
         sb.append(" groupSnapshotUUID : ").append(groupSnapshotUUID).append(",");
         sb.append(" createTime : ").append(createTime).append(",");

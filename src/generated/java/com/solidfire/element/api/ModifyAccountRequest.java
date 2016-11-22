@@ -116,11 +116,11 @@ public class ModifyAccountRequest implements Serializable {
         ModifyAccountRequest that = (ModifyAccountRequest) o;
         return 
             Objects.equals(accountID, that.accountID) &&
-            Objects.equals(username, that.username) &&
-            Objects.equals(status, that.status) &&
-            Objects.equals(initiatorSecret, that.initiatorSecret) &&
-            Objects.equals(targetSecret, that.targetSecret) &&
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(username.orElse(null), that.username.orElse(null)) &&
+            Objects.equals(status.orElse(null), that.status.orElse(null)) &&
+            Objects.equals(initiatorSecret.orElse(null), that.initiatorSecret.orElse(null)) &&
+            Objects.equals(targetSecret.orElse(null), that.targetSecret.orElse(null)) &&
+            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
     }
 
     @Override
@@ -147,19 +147,19 @@ public class ModifyAccountRequest implements Serializable {
 
         sb.append(" accountID : ").append(accountID).append(",");
         if(null != username && username.isPresent()){
-            sb.append(" username : ").append(username.get()).append(",");
+            sb.append(" username : ").append(username.orElse(null)).append(",");
         }
         if(null != status && status.isPresent()){
-            sb.append(" status : ").append(status.get()).append(",");
+            sb.append(" status : ").append(status.orElse(null)).append(",");
         }
         if(null != initiatorSecret && initiatorSecret.isPresent()){
-            sb.append(" initiatorSecret : ").append(initiatorSecret.get()).append(",");
+            sb.append(" initiatorSecret : ").append(initiatorSecret.orElse(null)).append(",");
         }
         if(null != targetSecret && targetSecret.isPresent()){
-            sb.append(" targetSecret : ").append(targetSecret.get()).append(",");
+            sb.append(" targetSecret : ").append(targetSecret.orElse(null)).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
         }
         sb.append( " }" );
 

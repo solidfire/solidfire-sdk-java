@@ -71,8 +71,13 @@ public class ListVirtualVolumeTasksRequest implements Serializable {
 
         ListVirtualVolumeTasksRequest that = (ListVirtualVolumeTasksRequest) o;
         return 
+<<<<<<< refs/remotes/origin/develop
             Arrays.equals(virtualVolumeTaskIDs, that.virtualVolumeTaskIDs) &&
             Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
+=======
+            Arrays.equals(virtualVolumeTaskIDs.orElse(null), that.virtualVolumeTaskIDs.orElse(null)) &&
+            Objects.equals(callingVirtualVolumeHostID.orElse(null), that.callingVirtualVolumeHostID.orElse(null));
+>>>>>>> local
     }
 
     @Override
@@ -94,10 +99,10 @@ public class ListVirtualVolumeTasksRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != virtualVolumeTaskIDs && virtualVolumeTaskIDs.isPresent()){
-            sb.append(" virtualVolumeTaskIDs : ").append(virtualVolumeTaskIDs.get()).append(",");
+            sb.append(" virtualVolumeTaskIDs : ").append(Arrays.toString(virtualVolumeTaskIDs.orElse(null))).append(",");
         }
         if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent()){
-            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get()).append(",");
+            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.orElse(null)).append(",");
         }
         sb.append( " }" );
 

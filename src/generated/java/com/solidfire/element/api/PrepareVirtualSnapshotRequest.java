@@ -93,9 +93,9 @@ public class PrepareVirtualSnapshotRequest implements Serializable {
         PrepareVirtualSnapshotRequest that = (PrepareVirtualSnapshotRequest) o;
         return 
             Objects.equals(virtualVolumeID, that.virtualVolumeID) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(writableSnapshot, that.writableSnapshot) &&
-            Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
+            Objects.equals(name.orElse(null), that.name.orElse(null)) &&
+            Objects.equals(writableSnapshot.orElse(null), that.writableSnapshot.orElse(null)) &&
+            Objects.equals(callingVirtualVolumeHostID.orElse(null), that.callingVirtualVolumeHostID.orElse(null));
     }
 
     @Override
@@ -120,13 +120,13 @@ public class PrepareVirtualSnapshotRequest implements Serializable {
 
         sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name.get()).append(",");
+            sb.append(" name : ").append(name.orElse(null)).append(",");
         }
         if(null != writableSnapshot && writableSnapshot.isPresent()){
-            sb.append(" writableSnapshot : ").append(writableSnapshot.get()).append(",");
+            sb.append(" writableSnapshot : ").append(writableSnapshot.orElse(null)).append(",");
         }
         if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent()){
-            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get()).append(",");
+            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.orElse(null)).append(",");
         }
         sb.append( " }" );
 

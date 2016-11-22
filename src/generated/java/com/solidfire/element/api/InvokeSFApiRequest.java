@@ -74,7 +74,7 @@ public class InvokeSFApiRequest implements Serializable {
         InvokeSFApiRequest that = (InvokeSFApiRequest) o;
         return 
             Objects.equals(method, that.method) &&
-            Objects.equals(parameters, that.parameters);
+            Objects.equals(parameters.orElse(null), that.parameters.orElse(null));
     }
 
     @Override
@@ -97,7 +97,7 @@ public class InvokeSFApiRequest implements Serializable {
 
         sb.append(" method : ").append(method).append(",");
         if(null != parameters && parameters.isPresent()){
-            sb.append(" parameters : ").append(parameters.get()).append(",");
+            sb.append(" parameters : ").append(parameters.orElse(null)).append(",");
         }
         sb.append( " }" );
 

@@ -123,11 +123,11 @@ public class ModifyVolumeRequest implements Serializable {
         ModifyVolumeRequest that = (ModifyVolumeRequest) o;
         return 
             Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(accountID, that.accountID) &&
-            Objects.equals(access, that.access) &&
-            Objects.equals(qos, that.qos) &&
-            Objects.equals(totalSize, that.totalSize) &&
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(accountID.orElse(null), that.accountID.orElse(null)) &&
+            Objects.equals(access.orElse(null), that.access.orElse(null)) &&
+            Objects.equals(qos.orElse(null), that.qos.orElse(null)) &&
+            Objects.equals(totalSize.orElse(null), that.totalSize.orElse(null)) &&
+            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
     }
 
     @Override
@@ -154,19 +154,19 @@ public class ModifyVolumeRequest implements Serializable {
 
         sb.append(" volumeID : ").append(volumeID).append(",");
         if(null != accountID && accountID.isPresent()){
-            sb.append(" accountID : ").append(accountID.get()).append(",");
+            sb.append(" accountID : ").append(accountID.orElse(null)).append(",");
         }
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access.get()).append(",");
+            sb.append(" access : ").append(access.orElse(null)).append(",");
         }
         if(null != qos && qos.isPresent()){
-            sb.append(" qos : ").append(qos.get()).append(",");
+            sb.append(" qos : ").append(qos.orElse(null)).append(",");
         }
         if(null != totalSize && totalSize.isPresent()){
-            sb.append(" totalSize : ").append(totalSize.get()).append(",");
+            sb.append(" totalSize : ").append(totalSize.orElse(null)).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
         }
         sb.append( " }" );
 

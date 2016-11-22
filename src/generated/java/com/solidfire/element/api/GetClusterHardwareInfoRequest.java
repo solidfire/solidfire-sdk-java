@@ -63,7 +63,7 @@ public class GetClusterHardwareInfoRequest implements Serializable {
 
         GetClusterHardwareInfoRequest that = (GetClusterHardwareInfoRequest) o;
         return 
-            Objects.equals(type, that.type);
+            Objects.equals(type.orElse(null), that.type.orElse(null));
     }
 
     @Override
@@ -84,7 +84,7 @@ public class GetClusterHardwareInfoRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != type && type.isPresent()){
-            sb.append(" type : ").append(type.get()).append(",");
+            sb.append(" type : ").append(type.orElse(null)).append(",");
         }
         sb.append( " }" );
 

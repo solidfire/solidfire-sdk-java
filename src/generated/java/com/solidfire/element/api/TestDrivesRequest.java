@@ -73,7 +73,7 @@ public class TestDrivesRequest implements Serializable {
 
         TestDrivesRequest that = (TestDrivesRequest) o;
         return 
-            Objects.equals(minutes, that.minutes) &&
+            Objects.equals(minutes.orElse(null), that.minutes.orElse(null)) &&
             Objects.equals(force, that.force);
     }
 
@@ -96,7 +96,7 @@ public class TestDrivesRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != minutes && minutes.isPresent()){
-            sb.append(" minutes : ").append(minutes.get()).append(",");
+            sb.append(" minutes : ").append(minutes.orElse(null)).append(",");
         }
         sb.append(" force : ").append(force).append(",");
         sb.append( " }" );

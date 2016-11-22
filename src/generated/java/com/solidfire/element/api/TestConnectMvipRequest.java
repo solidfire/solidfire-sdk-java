@@ -63,7 +63,7 @@ public class TestConnectMvipRequest implements Serializable {
 
         TestConnectMvipRequest that = (TestConnectMvipRequest) o;
         return 
-            Objects.equals(mvip, that.mvip);
+            Objects.equals(mvip.orElse(null), that.mvip.orElse(null));
     }
 
     @Override
@@ -84,7 +84,7 @@ public class TestConnectMvipRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != mvip && mvip.isPresent()){
-            sb.append(" mvip : ").append(mvip.get()).append(",");
+            sb.append(" mvip : ").append(mvip.orElse(null)).append(",");
         }
         sb.append( " }" );
 

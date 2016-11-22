@@ -73,7 +73,7 @@ public class GetVirtualVolumeTaskUpdateRequest implements Serializable {
         GetVirtualVolumeTaskUpdateRequest that = (GetVirtualVolumeTaskUpdateRequest) o;
         return 
             Objects.equals(virtualVolumeTaskID, that.virtualVolumeTaskID) &&
-            Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
+            Objects.equals(callingVirtualVolumeHostID.orElse(null), that.callingVirtualVolumeHostID.orElse(null));
     }
 
     @Override
@@ -96,7 +96,7 @@ public class GetVirtualVolumeTaskUpdateRequest implements Serializable {
 
         sb.append(" virtualVolumeTaskID : ").append(virtualVolumeTaskID).append(",");
         if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent()){
-            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get()).append(",");
+            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.orElse(null)).append(",");
         }
         sb.append( " }" );
 

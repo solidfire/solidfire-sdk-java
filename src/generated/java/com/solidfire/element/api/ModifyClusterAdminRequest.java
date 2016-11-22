@@ -94,9 +94,15 @@ public class ModifyClusterAdminRequest implements Serializable {
         ModifyClusterAdminRequest that = (ModifyClusterAdminRequest) o;
         return 
             Objects.equals(clusterAdminID, that.clusterAdminID) &&
+<<<<<<< refs/remotes/origin/develop
             Objects.equals(password, that.password) &&
             Arrays.equals(access, that.access) &&
             Objects.equals(attributes, that.attributes);
+=======
+            Objects.equals(password.orElse(null), that.password.orElse(null)) &&
+            Arrays.equals(access.orElse(null), that.access.orElse(null)) &&
+            Objects.equals(attributes.orElse(null), that.attributes.orElse(null));
+>>>>>>> local
     }
 
     @Override
@@ -121,13 +127,13 @@ public class ModifyClusterAdminRequest implements Serializable {
 
         sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
         if(null != password && password.isPresent()){
-            sb.append(" password : ").append(password.get()).append(",");
+            sb.append(" password : ").append(password.orElse(null)).append(",");
         }
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access.get()).append(",");
+            sb.append(" access : ").append(Arrays.toString(access.orElse(null))).append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes.get()).append(",");
+            sb.append(" attributes : ").append(attributes.orElse(null)).append(",");
         }
         sb.append( " }" );
 

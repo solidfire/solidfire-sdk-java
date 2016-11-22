@@ -83,9 +83,15 @@ public class DeleteVolumesRequest implements Serializable {
 
         DeleteVolumesRequest that = (DeleteVolumesRequest) o;
         return 
+<<<<<<< refs/remotes/origin/develop
             Arrays.equals(accountIDs, that.accountIDs) &&
             Arrays.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs) &&
             Arrays.equals(volumeIDs, that.volumeIDs);
+=======
+            Arrays.equals(accountIDs.orElse(null), that.accountIDs.orElse(null)) &&
+            Arrays.equals(volumeAccessGroupIDs.orElse(null), that.volumeAccessGroupIDs.orElse(null)) &&
+            Arrays.equals(volumeIDs.orElse(null), that.volumeIDs.orElse(null));
+>>>>>>> local
     }
 
     @Override
@@ -108,13 +114,13 @@ public class DeleteVolumesRequest implements Serializable {
         sb.append( "{ " );
 
         if(null != accountIDs && accountIDs.isPresent()){
-            sb.append(" accountIDs : ").append(accountIDs.get()).append(",");
+            sb.append(" accountIDs : ").append(Arrays.toString(accountIDs.orElse(null))).append(",");
         }
         if(null != volumeAccessGroupIDs && volumeAccessGroupIDs.isPresent()){
-            sb.append(" volumeAccessGroupIDs : ").append(volumeAccessGroupIDs.get()).append(",");
+            sb.append(" volumeAccessGroupIDs : ").append(Arrays.toString(volumeAccessGroupIDs.orElse(null))).append(",");
         }
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(volumeIDs.get()).append(",");
+            sb.append(" volumeIDs : ").append(Arrays.toString(volumeIDs.orElse(null))).append(",");
         }
         sb.append( " }" );
 

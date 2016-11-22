@@ -116,13 +116,13 @@ public class Network implements Serializable {
 
         Network that = (Network) o;
         return 
-            Objects.equals(bond10G, that.bond10G) &&
-            Objects.equals(bond1G, that.bond1G) &&
-            Objects.equals(eth0, that.eth0) &&
-            Objects.equals(eth1, that.eth1) &&
-            Objects.equals(eth2, that.eth2) &&
-            Objects.equals(eth3, that.eth3) &&
-            Objects.equals(lo, that.lo);
+            Objects.equals(bond10G.orElse(null), that.bond10G.orElse(null)) &&
+            Objects.equals(bond1G.orElse(null), that.bond1G.orElse(null)) &&
+            Objects.equals(eth0.orElse(null), that.eth0.orElse(null)) &&
+            Objects.equals(eth1.orElse(null), that.eth1.orElse(null)) &&
+            Objects.equals(eth2.orElse(null), that.eth2.orElse(null)) &&
+            Objects.equals(eth3.orElse(null), that.eth3.orElse(null)) &&
+            Objects.equals(lo.orElse(null), that.lo.orElse(null));
     }
 
     @Override
@@ -149,25 +149,25 @@ public class Network implements Serializable {
         sb.append( "{ " );
 
         if(null != bond10G && bond10G.isPresent()){
-            sb.append(" bond10G : ").append(bond10G.get()).append(",");
+            sb.append(" bond10G : ").append(bond10G.orElse(null)).append(",");
         }
         if(null != bond1G && bond1G.isPresent()){
-            sb.append(" bond1G : ").append(bond1G.get()).append(",");
+            sb.append(" bond1G : ").append(bond1G.orElse(null)).append(",");
         }
         if(null != eth0 && eth0.isPresent()){
-            sb.append(" eth0 : ").append(eth0.get()).append(",");
+            sb.append(" eth0 : ").append(eth0.orElse(null)).append(",");
         }
         if(null != eth1 && eth1.isPresent()){
-            sb.append(" eth1 : ").append(eth1.get()).append(",");
+            sb.append(" eth1 : ").append(eth1.orElse(null)).append(",");
         }
         if(null != eth2 && eth2.isPresent()){
-            sb.append(" eth2 : ").append(eth2.get()).append(",");
+            sb.append(" eth2 : ").append(eth2.orElse(null)).append(",");
         }
         if(null != eth3 && eth3.isPresent()){
-            sb.append(" eth3 : ").append(eth3.get()).append(",");
+            sb.append(" eth3 : ").append(eth3.orElse(null)).append(",");
         }
         if(null != lo && lo.isPresent()){
-            sb.append(" lo : ").append(lo.get()).append(",");
+            sb.append(" lo : ").append(lo.orElse(null)).append(",");
         }
         sb.append( " }" );
 
