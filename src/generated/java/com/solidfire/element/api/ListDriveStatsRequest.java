@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ListDriveStatsRequest implements Serializable {
 
     public static final long serialVersionUID = -6463847803564234079L;
-    @SerializedName("drives") private Long[] drives;
+    @SerializedName("drives") private Optional<Long[]> drives;
 
     // empty constructor
     @Since("7.0")
@@ -42,18 +42,18 @@ public class ListDriveStatsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListDriveStatsRequest(
-        Long[] drives
+        Optional<Long[]> drives
     )
     {
-        this.drives = drives;
+        this.drives = (drives == null) ? Optional.<Long[]>empty() : drives;
     }
 
     /** 
      * Optional list of DriveIDs for which to return drive statistics. If you omit this parameter, measurements for all drives are returned.
      **/
-    public Long[] getDrives() { return this.drives; }
-    public void setDrives(Long[] drives) { 
-        this.drives = drives;
+    public Optional<Long[]> getDrives() { return this.drives; }
+    public void setDrives(Optional<Long[]> drives) { 
+        this.drives = (drives == null) ? Optional.<Long[]>empty() : drives;
     }
 
     @Override
@@ -63,12 +63,12 @@ public class ListDriveStatsRequest implements Serializable {
 
         ListDriveStatsRequest that = (ListDriveStatsRequest) o;
         return 
-            Arrays.equals(drives, that.drives);
+            Objects.equals(drives, that.drives);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])drives );
+        return Objects.hash( drives );
     }
 
 
@@ -83,7 +83,9 @@ public class ListDriveStatsRequest implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
+        if(null != drives && drives.isPresent()){
+            sb.append(" drives : ").append(drives).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -101,7 +103,7 @@ public class ListDriveStatsRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long[] drives;
+        private Optional<Long[]> drives;
 
         private Builder() { }
 
@@ -116,8 +118,8 @@ public class ListDriveStatsRequest implements Serializable {
             return this;
         }
 
-        public ListDriveStatsRequest.Builder drives(final Long[] drives) {
-            this.drives = drives;
+        public ListDriveStatsRequest.Builder optionalDrives(final Long[] drives) {
+            this.drives = (drives == null) ? Optional.<Long[]>empty() : Optional.of(drives);
             return this;
         }
 

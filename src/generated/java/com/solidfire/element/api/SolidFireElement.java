@@ -1437,78 +1437,6 @@ public class SolidFireElement
         return this.modifySchedule(new ModifyScheduleRequest(schedule));
     }
     /** 
-     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request) {
-        return super.sendRequest("ListVolumeStatsByVirtualVolume", request, ListVolumeStatsByVirtualVolumeRequest.class, ListVolumeStatsByVirtualVolumeResult.class);
-    }
-
-    /** 
-     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(
-        Optional<java.util.UUID> startVirtualVolumeID,
-        Optional<java.util.UUID[]> virtualVolumeIDs
-        ) {
-        return this.listVolumeStatsByVirtualVolume(new ListVolumeStatsByVirtualVolumeRequest(startVirtualVolumeID, virtualVolumeIDs));
-    }
-    /** 
-     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public Object getRawStats() {
-        return super.sendRequest("GetRawStats", null, null, Object.class);
-    }
-    /** 
-     * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Node")
-    public GetHardwareInfoResult getHardwareInfo() {
-        return super.sendRequest("GetHardwareInfo", null, null, GetHardwareInfoResult.class);
-    }
-    /** 
-     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public Object getCompleteStats() {
-        return super.sendRequest("GetCompleteStats", null, null, Object.class);
-    }
-    /** 
-     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request) {
-        return super.sendRequest("ListDriveStats", request, ListDriveStatsRequest.class, ListDriveStatsResult.class);
-    }
-
-    /** 
-     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListDriveStatsResult listDriveStats(
-        Long[] drives
-        ) {
-        return this.listDriveStats(new ListDriveStatsRequest(drives));
-    }
-    /** 
      * Creates a new VVols storage container.
      **/
     @Override
@@ -3817,5 +3745,77 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public SnmpSendTestTrapsResult snmpSendTestTraps() {
         return super.sendRequest("SnmpSendTestTraps", null, null, SnmpSendTestTrapsResult.class);
+    }
+    /** 
+     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request) {
+        return super.sendRequest("ListVolumeStatsByVirtualVolume", request, ListVolumeStatsByVirtualVolumeRequest.class, ListVolumeStatsByVirtualVolumeResult.class);
+    }
+
+    /** 
+     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(
+        Optional<java.util.UUID> startVirtualVolumeID,
+        Optional<java.util.UUID[]> virtualVolumeIDs
+        ) {
+        return this.listVolumeStatsByVirtualVolume(new ListVolumeStatsByVirtualVolumeRequest(startVirtualVolumeID, virtualVolumeIDs));
+    }
+    /** 
+     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public Object getRawStats() {
+        return super.sendRequest("GetRawStats", null, null, Object.class);
+    }
+    /** 
+     * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Node")
+    public GetHardwareInfoResult getHardwareInfo() {
+        return super.sendRequest("GetHardwareInfo", null, null, GetHardwareInfoResult.class);
+    }
+    /** 
+     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public Object getCompleteStats() {
+        return super.sendRequest("GetCompleteStats", null, null, Object.class);
+    }
+    /** 
+     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request) {
+        return super.sendRequest("ListDriveStats", request, ListDriveStatsRequest.class, ListDriveStatsResult.class);
+    }
+
+    /** 
+     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListDriveStatsResult listDriveStats(
+        Optional<Long[]> drives
+        ) {
+        return this.listDriveStats(new ListDriveStatsRequest(drives));
     }
 }
