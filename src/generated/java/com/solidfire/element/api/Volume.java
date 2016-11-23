@@ -51,7 +51,7 @@ public class Volume implements Serializable {
     @SerializedName("sliceCount") private Long sliceCount;
     @SerializedName("totalSize") private Long totalSize;
     @SerializedName("blockSize") private Long blockSize;
-    @SerializedName("virtualVolumeID") private Long virtualVolumeID;
+    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
@@ -79,7 +79,7 @@ public class Volume implements Serializable {
         Long sliceCount,
         Long totalSize,
         Long blockSize,
-        Long virtualVolumeID,
+        java.util.UUID virtualVolumeID,
         java.util.Map<String, Object> attributes
     )
     {
@@ -245,8 +245,8 @@ public class Volume implements Serializable {
     /** 
      * Virtual volume ID this volume backs.
      **/
-    public Long getVirtualVolumeID() { return this.virtualVolumeID; }
-    public void setVirtualVolumeID(Long virtualVolumeID) { 
+    public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
+    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
         this.virtualVolumeID = virtualVolumeID;
     }
     /** 
@@ -381,7 +381,7 @@ public class Volume implements Serializable {
         private Long sliceCount;
         private Long totalSize;
         private Long blockSize;
-        private Long virtualVolumeID;
+        private java.util.UUID virtualVolumeID;
         private java.util.Map<String, Object> attributes;
 
         private Builder() { }
@@ -525,7 +525,7 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder virtualVolumeID(final Long virtualVolumeID) {
+        public Volume.Builder virtualVolumeID(final java.util.UUID virtualVolumeID) {
             this.virtualVolumeID = virtualVolumeID;
             return this;
         }

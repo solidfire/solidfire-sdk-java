@@ -64,7 +64,7 @@ public class VolumeStats implements Serializable {
     @SerializedName("readBytesLastSample") private Long readBytesLastSample;
     @SerializedName("readOpsLastSample") private Long readOpsLastSample;
     @SerializedName("writeOpsLastSample") private Long writeOpsLastSample;
-    @SerializedName("virtualVolumeID") private Long virtualVolumeID;
+    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
 
     // empty constructor
     @Since("7.0")
@@ -104,7 +104,7 @@ public class VolumeStats implements Serializable {
         Long readBytesLastSample,
         Long readOpsLastSample,
         Long writeOpsLastSample,
-        Long virtualVolumeID
+        java.util.UUID virtualVolumeID
     )
     {
         this.accountID = accountID;
@@ -376,8 +376,8 @@ public class VolumeStats implements Serializable {
     /** 
      * If the volume of interest is associated with a virtual volume, this is the virtual volume ID.
      **/
-    public Long getVirtualVolumeID() { return this.virtualVolumeID; }
-    public void setVirtualVolumeID(Long virtualVolumeID) { 
+    public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
+    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
         this.virtualVolumeID = virtualVolumeID;
     }
 
@@ -552,7 +552,7 @@ public class VolumeStats implements Serializable {
         private Long readBytesLastSample;
         private Long readOpsLastSample;
         private Long writeOpsLastSample;
-        private Long virtualVolumeID;
+        private java.util.UUID virtualVolumeID;
 
         private Builder() { }
 
@@ -784,7 +784,7 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder virtualVolumeID(final Long virtualVolumeID) {
+        public VolumeStats.Builder virtualVolumeID(final java.util.UUID virtualVolumeID) {
             this.virtualVolumeID = virtualVolumeID;
             return this;
         }
