@@ -2890,4 +2890,15 @@ public interface SolidFireElementIF {
     public ListDriveStatsResult listDriveStats(
         Optional<Long[]> drives
         );
+    /** 
+     **/
+    @Since("9.0")
+    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request);
+
+    /** 
+     **/
+    @Since("9.0")
+    public ListVolumeStatsResult listVolumeStats(
+        Optional<Long[]> volumeIDs
+        );
 }

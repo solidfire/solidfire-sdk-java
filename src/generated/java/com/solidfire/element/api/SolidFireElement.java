@@ -3818,4 +3818,21 @@ public class SolidFireElement
         ) {
         return this.listDriveStats(new ListDriveStatsRequest(drives));
     }
+    /** 
+     **/
+    @Override
+    @Since("9.0")
+    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request) {
+        return super.sendRequest("ListVolumeStats", request, ListVolumeStatsRequest.class, ListVolumeStatsResult.class);
+    }
+
+    /** 
+     **/
+    @Override
+    @Since("9.0")
+    public ListVolumeStatsResult listVolumeStats(
+        Optional<Long[]> volumeIDs
+        ) {
+        return this.listVolumeStats(new ListVolumeStatsRequest(volumeIDs));
+    }
 }
