@@ -181,6 +181,10 @@ public class ServiceBase {
 
             final JsonObject resultObj = gson.fromJson(reader, JsonObject.class);
 
+            if(resultObj == null) {
+                throw new NullPointerException();
+            }
+
             checkForError(resultObj);
 
             TResult result = gson.fromJson(resultObj.get("result"), resultParamsClass);
