@@ -70,6 +70,7 @@ public class AddedNode implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddedNode that = (AddedNode) o;
+
         return 
             Objects.equals(nodeID, that.nodeID) &&
             Objects.equals(pendingNodeID, that.pendingNodeID);

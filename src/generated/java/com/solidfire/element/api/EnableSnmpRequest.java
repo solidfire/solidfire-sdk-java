@@ -62,6 +62,7 @@ public class EnableSnmpRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         EnableSnmpRequest that = (EnableSnmpRequest) o;
+
         return 
             Objects.equals(snmpV3Enabled, that.snmpV3Enabled);
     }

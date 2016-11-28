@@ -45,8 +45,7 @@ public class RemoveNodesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RemoveNodesResult that = (RemoveNodesResult) o;
-
+        
         return true;
     }
 

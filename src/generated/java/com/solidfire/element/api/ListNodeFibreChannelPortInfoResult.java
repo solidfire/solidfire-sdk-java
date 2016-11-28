@@ -62,6 +62,7 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListNodeFibreChannelPortInfoResult that = (ListNodeFibreChannelPortInfoResult) o;
+
         return 
             Arrays.equals(nodes, that.nodes);
     }

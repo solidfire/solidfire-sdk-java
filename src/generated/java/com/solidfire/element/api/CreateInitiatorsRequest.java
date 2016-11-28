@@ -62,6 +62,7 @@ public class CreateInitiatorsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateInitiatorsRequest that = (CreateInitiatorsRequest) o;
+
         return 
             Arrays.equals(initiators, that.initiators);
     }

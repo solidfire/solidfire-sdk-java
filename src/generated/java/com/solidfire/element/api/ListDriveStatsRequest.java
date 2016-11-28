@@ -62,6 +62,7 @@ public class ListDriveStatsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListDriveStatsRequest that = (ListDriveStatsRequest) o;
+
         return 
             Objects.equals(drives, that.drives);
     }

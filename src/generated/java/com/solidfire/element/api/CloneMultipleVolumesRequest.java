@@ -98,6 +98,7 @@ public class CloneMultipleVolumesRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CloneMultipleVolumesRequest that = (CloneMultipleVolumesRequest) o;
+
         return 
             Arrays.equals(volumes, that.volumes) &&
             Objects.equals(access, that.access) &&

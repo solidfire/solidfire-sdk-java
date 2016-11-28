@@ -102,6 +102,7 @@ public class GetEfficiencyResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetEfficiencyResult that = (GetEfficiencyResult) o;
+
         return 
             Objects.equals(compression, that.compression) &&
             Objects.equals(deduplication, that.deduplication) &&

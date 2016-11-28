@@ -179,6 +179,7 @@ public class PendingNode implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         PendingNode that = (PendingNode) o;
+
         return 
             Objects.equals(pendingNodeID, that.pendingNodeID) &&
             Objects.equals(assignedNodeID, that.assignedNodeID) &&

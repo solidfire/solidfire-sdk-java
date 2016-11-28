@@ -62,6 +62,7 @@ public class TestConnectEnsembleDetails implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectEnsembleDetails that = (TestConnectEnsembleDetails) o;
+
         return 
             Objects.equals(nodes, that.nodes);
     }

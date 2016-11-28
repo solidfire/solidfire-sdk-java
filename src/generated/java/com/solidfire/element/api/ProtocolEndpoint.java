@@ -106,6 +106,7 @@ public class ProtocolEndpoint implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ProtocolEndpoint that = (ProtocolEndpoint) o;
+
         return 
             Objects.equals(protocolEndpointID, that.protocolEndpointID) &&
             Objects.equals(protocolEndpointState, that.protocolEndpointState) &&

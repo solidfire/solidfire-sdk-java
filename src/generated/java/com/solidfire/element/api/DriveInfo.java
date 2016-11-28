@@ -130,6 +130,7 @@ public class DriveInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         DriveInfo that = (DriveInfo) o;
+
         return 
             Objects.equals(capacity, that.capacity) &&
             Objects.equals(driveID, that.driveID) &&

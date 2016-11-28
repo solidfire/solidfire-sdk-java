@@ -104,6 +104,7 @@ public class RollbackToSnapshotRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         RollbackToSnapshotRequest that = (RollbackToSnapshotRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(snapshotID, that.snapshotID) &&

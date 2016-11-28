@@ -152,6 +152,7 @@ public class VirtualVolumeBinding implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         VirtualVolumeBinding that = (VirtualVolumeBinding) o;
+
         return 
             Objects.equals(protocolEndpointID, that.protocolEndpointID) &&
             Objects.equals(protocolEndpointInBandID, that.protocolEndpointInBandID) &&

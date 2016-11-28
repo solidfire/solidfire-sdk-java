@@ -106,6 +106,7 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         UpdateBulkVolumeStatusRequest that = (UpdateBulkVolumeStatusRequest) o;
+
         return 
             Objects.equals(key, that.key) &&
             Objects.equals(status, that.status) &&

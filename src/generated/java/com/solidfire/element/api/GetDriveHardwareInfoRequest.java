@@ -62,6 +62,7 @@ public class GetDriveHardwareInfoRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetDriveHardwareInfoRequest that = (GetDriveHardwareInfoRequest) o;
+
         return 
             Objects.equals(driveID, that.driveID);
     }

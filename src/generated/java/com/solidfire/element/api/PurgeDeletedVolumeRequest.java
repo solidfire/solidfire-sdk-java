@@ -62,6 +62,7 @@ public class PurgeDeletedVolumeRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         PurgeDeletedVolumeRequest that = (PurgeDeletedVolumeRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID);
     }

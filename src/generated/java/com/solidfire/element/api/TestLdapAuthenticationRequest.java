@@ -82,6 +82,7 @@ public class TestLdapAuthenticationRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestLdapAuthenticationRequest that = (TestLdapAuthenticationRequest) o;
+
         return 
             Objects.equals(username, that.username) &&
             Objects.equals(password, that.password) &&

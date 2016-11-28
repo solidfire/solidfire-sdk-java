@@ -62,6 +62,7 @@ public class NodeStatsNodes implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         NodeStatsNodes that = (NodeStatsNodes) o;
+
         return 
             Arrays.equals(nodes, that.nodes);
     }

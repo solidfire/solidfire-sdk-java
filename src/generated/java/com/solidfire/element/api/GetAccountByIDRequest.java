@@ -62,6 +62,7 @@ public class GetAccountByIDRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetAccountByIDRequest that = (GetAccountByIDRequest) o;
+
         return 
             Objects.equals(accountID, that.accountID);
     }

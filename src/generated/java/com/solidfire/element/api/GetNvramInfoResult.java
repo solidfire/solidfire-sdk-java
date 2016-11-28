@@ -62,6 +62,7 @@ public class GetNvramInfoResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetNvramInfoResult that = (GetNvramInfoResult) o;
+
         return 
             Objects.equals(nvramInfo, that.nvramInfo);
     }

@@ -82,6 +82,7 @@ public class CloneMultipleVolumesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CloneMultipleVolumesResult that = (CloneMultipleVolumesResult) o;
+
         return 
             Objects.equals(asyncHandle, that.asyncHandle) &&
             Objects.equals(groupCloneID, that.groupCloneID) &&

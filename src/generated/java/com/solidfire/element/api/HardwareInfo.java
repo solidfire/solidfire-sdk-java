@@ -212,6 +212,7 @@ public class HardwareInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         HardwareInfo that = (HardwareInfo) o;
+
         return 
             Objects.equals(bus, that.bus) &&
             Arrays.equals(driveHardware, that.driveHardware) &&

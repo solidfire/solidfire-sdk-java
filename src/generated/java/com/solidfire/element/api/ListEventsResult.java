@@ -70,6 +70,7 @@ public class ListEventsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListEventsResult that = (ListEventsResult) o;
+
         return 
             Objects.equals(eventQueueType, that.eventQueueType) &&
             Arrays.equals(events, that.events);

@@ -118,6 +118,7 @@ public class CloneMultipleVolumeParams implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CloneMultipleVolumeParams that = (CloneMultipleVolumeParams) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(access, that.access) &&

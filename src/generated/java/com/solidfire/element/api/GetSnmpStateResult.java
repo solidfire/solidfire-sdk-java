@@ -72,6 +72,7 @@ public class GetSnmpStateResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetSnmpStateResult that = (GetSnmpStateResult) o;
+
         return 
             Objects.equals(enabled, that.enabled) &&
             Objects.equals(snmpV3Enabled, that.snmpV3Enabled);

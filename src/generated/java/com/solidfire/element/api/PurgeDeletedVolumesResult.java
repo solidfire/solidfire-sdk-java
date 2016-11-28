@@ -45,8 +45,7 @@ public class PurgeDeletedVolumesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PurgeDeletedVolumesResult that = (PurgeDeletedVolumesResult) o;
-
+        
         return true;
     }
 

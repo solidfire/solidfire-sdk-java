@@ -93,6 +93,7 @@ public class ListClusterFaultsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListClusterFaultsRequest that = (ListClusterFaultsRequest) o;
+
         return 
             Objects.equals(exceptions, that.exceptions) &&
             Objects.equals(bestPractices, that.bestPractices) &&

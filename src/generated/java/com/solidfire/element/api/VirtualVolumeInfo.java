@@ -169,6 +169,7 @@ public class VirtualVolumeInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         VirtualVolumeInfo that = (VirtualVolumeInfo) o;
+
         return 
             Objects.equals(virtualVolumeID, that.virtualVolumeID) &&
             Objects.equals(parentVirtualVolumeID, that.parentVirtualVolumeID) &&

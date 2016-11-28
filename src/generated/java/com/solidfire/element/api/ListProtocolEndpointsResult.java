@@ -61,6 +61,7 @@ public class ListProtocolEndpointsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListProtocolEndpointsResult that = (ListProtocolEndpointsResult) o;
+
         return 
             Arrays.equals(protocolEndpoints, that.protocolEndpoints);
     }

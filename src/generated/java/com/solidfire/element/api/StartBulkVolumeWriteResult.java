@@ -82,6 +82,7 @@ public class StartBulkVolumeWriteResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         StartBulkVolumeWriteResult that = (StartBulkVolumeWriteResult) o;
+
         return 
             Objects.equals(asyncHandle, that.asyncHandle) &&
             Objects.equals(key, that.key) &&

@@ -72,6 +72,7 @@ public class ListDriveStatsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListDriveStatsResult that = (ListDriveStatsResult) o;
+
         return 
             Arrays.equals(driveStats, that.driveStats) &&
             Arrays.equals(errors, that.errors);

@@ -82,6 +82,7 @@ public class MetadataHosts implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         MetadataHosts that = (MetadataHosts) o;
+
         return 
             Arrays.equals(deadSecondaries, that.deadSecondaries) &&
             Arrays.equals(liveSecondaries, that.liveSecondaries) &&

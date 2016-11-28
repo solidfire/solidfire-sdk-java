@@ -71,6 +71,7 @@ public class GetAccountEfficiencyRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetAccountEfficiencyRequest that = (GetAccountEfficiencyRequest) o;
+
         return 
             Objects.equals(accountID, that.accountID) &&
             Objects.equals(force, that.force);

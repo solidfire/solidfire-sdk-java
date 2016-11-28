@@ -72,6 +72,7 @@ public class TestLdapAuthenticationResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestLdapAuthenticationResult that = (TestLdapAuthenticationResult) o;
+
         return 
             Arrays.equals(groups, that.groups) &&
             Objects.equals(userDN, that.userDN);

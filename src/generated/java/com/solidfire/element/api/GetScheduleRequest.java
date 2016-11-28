@@ -62,6 +62,7 @@ public class GetScheduleRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetScheduleRequest that = (GetScheduleRequest) o;
+
         return 
             Objects.equals(scheduleID, that.scheduleID);
     }

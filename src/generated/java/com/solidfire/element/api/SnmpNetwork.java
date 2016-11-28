@@ -95,6 +95,7 @@ public class SnmpNetwork implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SnmpNetwork that = (SnmpNetwork) o;
+
         return 
             Objects.equals(access, that.access) &&
             Objects.equals(cidr, that.cidr) &&

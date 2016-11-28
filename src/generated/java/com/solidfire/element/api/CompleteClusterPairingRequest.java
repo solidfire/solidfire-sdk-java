@@ -62,6 +62,7 @@ public class CompleteClusterPairingRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CompleteClusterPairingRequest that = (CompleteClusterPairingRequest) o;
+
         return 
             Objects.equals(clusterPairingKey, that.clusterPairingKey);
     }

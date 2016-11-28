@@ -62,6 +62,7 @@ public class ListVirtualVolumeBindingsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualVolumeBindingsResult that = (ListVirtualVolumeBindingsResult) o;
+
         return 
             Arrays.equals(bindings, that.bindings);
     }

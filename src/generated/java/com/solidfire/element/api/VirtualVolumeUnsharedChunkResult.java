@@ -82,6 +82,7 @@ public class VirtualVolumeUnsharedChunkResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         VirtualVolumeUnsharedChunkResult that = (VirtualVolumeUnsharedChunkResult) o;
+
         return 
             Objects.equals(chunks, that.chunks) &&
             Objects.equals(scannedChunks, that.scannedChunks) &&

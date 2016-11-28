@@ -223,6 +223,7 @@ public class GetClusterFullThresholdResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterFullThresholdResult that = (GetClusterFullThresholdResult) o;
+
         return 
             Objects.equals(blockFullness, that.blockFullness) &&
             Objects.equals(fullness, that.fullness) &&

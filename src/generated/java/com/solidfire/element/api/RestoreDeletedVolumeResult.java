@@ -45,8 +45,7 @@ public class RestoreDeletedVolumeResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RestoreDeletedVolumeResult that = (RestoreDeletedVolumeResult) o;
-
+        
         return true;
     }
 

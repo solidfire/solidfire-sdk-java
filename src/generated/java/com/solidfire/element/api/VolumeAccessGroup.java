@@ -122,6 +122,7 @@ public class VolumeAccessGroup implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         VolumeAccessGroup that = (VolumeAccessGroup) o;
+
         return 
             Objects.equals(attributes, that.attributes) &&
             Arrays.equals(deletedVolumes, that.deletedVolumes) &&

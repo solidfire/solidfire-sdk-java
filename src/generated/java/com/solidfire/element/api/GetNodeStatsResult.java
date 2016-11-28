@@ -62,6 +62,7 @@ public class GetNodeStatsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetNodeStatsResult that = (GetNodeStatsResult) o;
+
         return 
             Objects.equals(nodeStats, that.nodeStats);
     }

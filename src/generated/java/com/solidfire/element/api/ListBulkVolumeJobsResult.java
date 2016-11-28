@@ -62,6 +62,7 @@ public class ListBulkVolumeJobsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListBulkVolumeJobsResult that = (ListBulkVolumeJobsResult) o;
+
         return 
             Arrays.equals(bulkVolumeJobs, that.bulkVolumeJobs);
     }

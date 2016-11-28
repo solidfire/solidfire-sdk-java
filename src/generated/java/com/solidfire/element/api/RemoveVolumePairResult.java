@@ -45,8 +45,7 @@ public class RemoveVolumePairResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RemoveVolumePairResult that = (RemoveVolumePairResult) o;
-
+        
         return true;
     }
 

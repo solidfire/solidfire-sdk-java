@@ -62,6 +62,7 @@ public class ListVirtualNetworksResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualNetworksResult that = (ListVirtualNetworksResult) o;
+
         return 
             Arrays.equals(virtualNetworks, that.virtualNetworks);
     }

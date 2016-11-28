@@ -115,6 +115,7 @@ public class StorageContainer implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         StorageContainer that = (StorageContainer) o;
+
         return 
             Objects.equals(name, that.name) &&
             Objects.equals(storageContainerID, that.storageContainerID) &&

@@ -62,6 +62,7 @@ public class TestConnectMvipRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectMvipRequest that = (TestConnectMvipRequest) o;
+
         return 
             Objects.equals(mvip, that.mvip);
     }

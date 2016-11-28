@@ -121,6 +121,7 @@ public class ClusterStats implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClusterStats that = (ClusterStats) o;
+
         return 
             Objects.equals(clusterUtilization, that.clusterUtilization) &&
             Objects.equals(clientQueueDepth, that.clientQueueDepth) &&

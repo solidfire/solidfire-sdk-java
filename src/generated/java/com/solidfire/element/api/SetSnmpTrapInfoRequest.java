@@ -92,6 +92,7 @@ public class SetSnmpTrapInfoRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetSnmpTrapInfoRequest that = (SetSnmpTrapInfoRequest) o;
+
         return 
             Arrays.equals(trapRecipients, that.trapRecipients) &&
             Objects.equals(clusterFaultTrapsEnabled, that.clusterFaultTrapsEnabled) &&

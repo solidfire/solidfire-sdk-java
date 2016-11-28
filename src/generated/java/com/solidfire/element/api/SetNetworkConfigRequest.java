@@ -62,6 +62,7 @@ public class SetNetworkConfigRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetNetworkConfigRequest that = (SetNetworkConfigRequest) o;
+
         return 
             Objects.equals(network, that.network);
     }

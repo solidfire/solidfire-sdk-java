@@ -85,6 +85,7 @@ public class ModifySnapshotRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifySnapshotRequest that = (ModifySnapshotRequest) o;
+
         return 
             Objects.equals(snapshotID, that.snapshotID) &&
             Objects.equals(expirationTime, that.expirationTime) &&

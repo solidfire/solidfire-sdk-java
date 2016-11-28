@@ -115,6 +115,7 @@ public class CreateSnapshotRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateSnapshotRequest that = (CreateSnapshotRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(snapshotID, that.snapshotID) &&

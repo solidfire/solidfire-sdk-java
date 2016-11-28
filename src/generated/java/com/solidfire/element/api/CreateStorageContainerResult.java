@@ -61,6 +61,7 @@ public class CreateStorageContainerResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateStorageContainerResult that = (CreateStorageContainerResult) o;
+
         return 
             Objects.equals(storageContainer, that.storageContainer);
     }

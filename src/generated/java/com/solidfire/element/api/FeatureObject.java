@@ -72,6 +72,7 @@ public class FeatureObject implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         FeatureObject that = (FeatureObject) o;
+
         return 
             Objects.equals(enabled, that.enabled) &&
             Objects.equals(feature, that.feature);

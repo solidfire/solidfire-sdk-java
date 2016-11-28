@@ -61,6 +61,7 @@ public class ListActiveNodesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListActiveNodesResult that = (ListActiveNodesResult) o;
+
         return 
             Arrays.equals(nodes, that.nodes);
     }

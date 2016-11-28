@@ -182,6 +182,7 @@ public class Schedule implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         Schedule that = (Schedule) o;
+
         return 
             Objects.equals(frequency, that.frequency) &&
             Objects.equals(hasError, that.hasError) &&

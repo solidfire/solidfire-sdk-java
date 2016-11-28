@@ -70,6 +70,7 @@ public class GetAPIResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetAPIResult that = (GetAPIResult) o;
+
         return 
             Objects.equals(currentVersion, that.currentVersion) &&
             Arrays.equals(supportedVersions, that.supportedVersions);

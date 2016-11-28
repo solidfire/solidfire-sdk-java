@@ -187,6 +187,7 @@ public class DriveHardwareInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         DriveHardwareInfo that = (DriveHardwareInfo) o;
+
         return 
             Objects.equals(description, that.description) &&
             Objects.equals(dev, that.dev) &&

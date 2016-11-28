@@ -45,8 +45,7 @@ public class SetSnmpTrapInfoResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SetSnmpTrapInfoResult that = (SetSnmpTrapInfoResult) o;
-
+        
         return true;
     }
 

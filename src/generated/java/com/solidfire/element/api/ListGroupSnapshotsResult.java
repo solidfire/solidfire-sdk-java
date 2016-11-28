@@ -62,6 +62,7 @@ public class ListGroupSnapshotsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListGroupSnapshotsResult that = (ListGroupSnapshotsResult) o;
+
         return 
             Arrays.equals(groupSnapshots, that.groupSnapshots);
     }

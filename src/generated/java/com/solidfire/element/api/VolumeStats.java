@@ -387,6 +387,7 @@ public class VolumeStats implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         VolumeStats that = (VolumeStats) o;
+
         return 
             Objects.equals(accountID, that.accountID) &&
             Objects.equals(actualIOPS, that.actualIOPS) &&

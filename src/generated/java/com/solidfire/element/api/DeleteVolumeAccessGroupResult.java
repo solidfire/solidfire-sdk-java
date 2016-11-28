@@ -45,8 +45,7 @@ public class DeleteVolumeAccessGroupResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DeleteVolumeAccessGroupResult that = (DeleteVolumeAccessGroupResult) o;
-
+        
         return true;
     }
 

@@ -198,6 +198,7 @@ public class Node implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         Node that = (Node) o;
+
         return 
             Objects.equals(nodeID, that.nodeID) &&
             Objects.equals(associatedMasterServiceID, that.associatedMasterServiceID) &&

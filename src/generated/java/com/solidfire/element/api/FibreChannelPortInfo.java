@@ -164,6 +164,7 @@ public class FibreChannelPortInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         FibreChannelPortInfo that = (FibreChannelPortInfo) o;
+
         return 
             Objects.equals(firmware, that.firmware) &&
             Objects.equals(hbaPort, that.hbaPort) &&

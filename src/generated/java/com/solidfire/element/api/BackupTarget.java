@@ -82,6 +82,7 @@ public class BackupTarget implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         BackupTarget that = (BackupTarget) o;
+
         return 
             Objects.equals(name, that.name) &&
             Objects.equals(backupTargetID, that.backupTargetID) &&

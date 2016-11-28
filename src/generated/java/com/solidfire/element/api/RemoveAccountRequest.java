@@ -62,6 +62,7 @@ public class RemoveAccountRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveAccountRequest that = (RemoveAccountRequest) o;
+
         return 
             Objects.equals(accountID, that.accountID);
     }

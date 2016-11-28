@@ -82,6 +82,7 @@ public class TestPingResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestPingResult that = (TestPingResult) o;
+
         return 
             Objects.equals(result, that.result) &&
             Objects.equals(duration, that.duration) &&

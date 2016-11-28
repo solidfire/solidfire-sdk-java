@@ -72,6 +72,7 @@ public class TestDrivesRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestDrivesRequest that = (TestDrivesRequest) o;
+
         return 
             Objects.equals(minutes, that.minutes) &&
             Objects.equals(force, that.force);

@@ -102,6 +102,7 @@ public class TestPingRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestPingRequest that = (TestPingRequest) o;
+
         return 
             Objects.equals(attempts, that.attempts) &&
             Objects.equals(hosts, that.hosts) &&

@@ -218,6 +218,7 @@ public class Snapshot implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         Snapshot that = (Snapshot) o;
+
         return 
             Objects.equals(snapshotID, that.snapshotID) &&
             Objects.equals(volumeID, that.volumeID) &&

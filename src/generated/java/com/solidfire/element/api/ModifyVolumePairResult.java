@@ -45,8 +45,7 @@ public class ModifyVolumePairResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumePairResult that = (ModifyVolumePairResult) o;
-
+        
         return true;
     }
 

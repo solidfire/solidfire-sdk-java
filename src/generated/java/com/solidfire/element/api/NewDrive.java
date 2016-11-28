@@ -62,6 +62,7 @@ public class NewDrive implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         NewDrive that = (NewDrive) o;
+
         return 
             Objects.equals(driveID, that.driveID);
     }

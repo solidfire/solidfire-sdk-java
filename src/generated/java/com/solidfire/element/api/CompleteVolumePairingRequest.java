@@ -72,6 +72,7 @@ public class CompleteVolumePairingRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CompleteVolumePairingRequest that = (CompleteVolumePairingRequest) o;
+
         return 
             Objects.equals(volumePairingKey, that.volumePairingKey) &&
             Objects.equals(volumeID, that.volumeID);

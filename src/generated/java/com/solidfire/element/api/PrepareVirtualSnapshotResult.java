@@ -92,6 +92,7 @@ public class PrepareVirtualSnapshotResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         PrepareVirtualSnapshotResult that = (PrepareVirtualSnapshotResult) o;
+
         return 
             Objects.equals(virtualVolumeTaskID, that.virtualVolumeTaskID) &&
             Objects.equals(volumeID, that.volumeID) &&

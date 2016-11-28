@@ -106,6 +106,7 @@ public class VirtualVolumeHost implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         VirtualVolumeHost that = (VirtualVolumeHost) o;
+
         return 
             Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) &&
             Objects.equals(clusterID, that.clusterID) &&

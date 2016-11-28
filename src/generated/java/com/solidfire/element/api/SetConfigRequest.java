@@ -62,6 +62,7 @@ public class SetConfigRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetConfigRequest that = (SetConfigRequest) o;
+
         return 
             Objects.equals(config, that.config);
     }

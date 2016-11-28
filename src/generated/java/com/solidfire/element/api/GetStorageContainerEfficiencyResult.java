@@ -99,6 +99,7 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetStorageContainerEfficiencyResult that = (GetStorageContainerEfficiencyResult) o;
+
         return 
             Objects.equals(compression, that.compression) &&
             Objects.equals(deduplication, that.deduplication) &&

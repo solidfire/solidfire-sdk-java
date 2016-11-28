@@ -45,8 +45,7 @@ public class ModifyBackupTargetResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyBackupTargetResult that = (ModifyBackupTargetResult) o;
-
+        
         return true;
     }
 

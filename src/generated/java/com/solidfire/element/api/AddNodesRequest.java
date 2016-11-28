@@ -62,6 +62,7 @@ public class AddNodesRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddNodesRequest that = (AddNodesRequest) o;
+
         return 
             Arrays.equals(pendingNodes, that.pendingNodes);
     }

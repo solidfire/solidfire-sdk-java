@@ -62,6 +62,7 @@ public class ListStorageContainersRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListStorageContainersRequest that = (ListStorageContainersRequest) o;
+
         return 
             Objects.equals(storageContainerIDs, that.storageContainerIDs);
     }

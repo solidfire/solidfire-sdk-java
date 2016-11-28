@@ -62,6 +62,7 @@ public class ListDriveHardwareRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListDriveHardwareRequest that = (ListDriveHardwareRequest) o;
+
         return 
             Objects.equals(force, that.force);
     }

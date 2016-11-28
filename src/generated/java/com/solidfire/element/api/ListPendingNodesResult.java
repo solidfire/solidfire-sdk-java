@@ -61,6 +61,7 @@ public class ListPendingNodesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListPendingNodesResult that = (ListPendingNodesResult) o;
+
         return 
             Arrays.equals(pendingNodes, that.pendingNodes);
     }

@@ -85,6 +85,7 @@ public class ModifyGroupSnapshotRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyGroupSnapshotRequest that = (ModifyGroupSnapshotRequest) o;
+
         return 
             Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
             Objects.equals(expirationTime, that.expirationTime) &&

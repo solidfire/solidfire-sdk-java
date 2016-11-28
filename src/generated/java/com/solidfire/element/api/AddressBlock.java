@@ -72,6 +72,7 @@ public class AddressBlock implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddressBlock that = (AddressBlock) o;
+
         return 
             Objects.equals(start, that.start) &&
             Objects.equals(size, that.size);

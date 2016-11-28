@@ -62,6 +62,7 @@ public class TestConnectSvipRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectSvipRequest that = (TestConnectSvipRequest) o;
+
         return 
             Objects.equals(svip, that.svip);
     }

@@ -97,6 +97,7 @@ public class QoS implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         QoS that = (QoS) o;
+
         return 
             Objects.equals(minIOPS, that.minIOPS) &&
             Objects.equals(maxIOPS, that.maxIOPS) &&

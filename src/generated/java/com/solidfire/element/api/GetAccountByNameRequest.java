@@ -62,6 +62,7 @@ public class GetAccountByNameRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetAccountByNameRequest that = (GetAccountByNameRequest) o;
+
         return 
             Objects.equals(username, that.username);
     }

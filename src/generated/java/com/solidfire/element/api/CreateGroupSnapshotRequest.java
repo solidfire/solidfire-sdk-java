@@ -103,6 +103,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateGroupSnapshotRequest that = (CreateGroupSnapshotRequest) o;
+
         return 
             Arrays.equals(volumes, that.volumes) &&
             Objects.equals(name, that.name) &&

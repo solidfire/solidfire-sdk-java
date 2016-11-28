@@ -111,6 +111,7 @@ public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetVirtualVolumeUnsharedChunksRequest that = (GetVirtualVolumeUnsharedChunksRequest) o;
+
         return 
             Objects.equals(virtualVolumeID, that.virtualVolumeID) &&
             Objects.equals(baseVirtualVolumeID, that.baseVirtualVolumeID) &&

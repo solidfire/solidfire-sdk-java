@@ -61,6 +61,7 @@ public class GetClusterStateRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterStateRequest that = (GetClusterStateRequest) o;
+
         return 
             Objects.equals(force, that.force);
     }

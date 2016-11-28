@@ -168,6 +168,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         EnableLdapAuthenticationRequest that = (EnableLdapAuthenticationRequest) o;
+
         return 
             Objects.equals(authType, that.authType) &&
             Objects.equals(groupSearchBaseDN, that.groupSearchBaseDN) &&

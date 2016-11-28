@@ -92,6 +92,7 @@ public class Platform implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         Platform that = (Platform) o;
+
         return 
             Objects.equals(nodeType, that.nodeType) &&
             Objects.equals(chassisType, that.chassisType) &&

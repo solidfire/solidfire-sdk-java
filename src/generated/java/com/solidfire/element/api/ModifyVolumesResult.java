@@ -70,6 +70,7 @@ public class ModifyVolumesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumesResult that = (ModifyVolumesResult) o;
+
         return 
             Objects.equals(qos, that.qos) &&
             Arrays.equals(volumes, that.volumes);

@@ -112,6 +112,7 @@ public class VolumePair implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         VolumePair that = (VolumePair) o;
+
         return 
             Objects.equals(clusterPairID, that.clusterPairID) &&
             Objects.equals(remoteVolumeID, that.remoteVolumeID) &&

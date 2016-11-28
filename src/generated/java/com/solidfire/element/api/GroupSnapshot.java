@@ -125,6 +125,7 @@ public class GroupSnapshot implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GroupSnapshot that = (GroupSnapshot) o;
+
         return 
             Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
             Objects.equals(groupSnapshotUUID, that.groupSnapshotUUID) &&

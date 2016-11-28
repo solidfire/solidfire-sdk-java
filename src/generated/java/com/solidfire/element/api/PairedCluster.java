@@ -125,6 +125,7 @@ public class PairedCluster implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         PairedCluster that = (PairedCluster) o;
+
         return 
             Objects.equals(clusterName, that.clusterName) &&
             Objects.equals(clusterPairID, that.clusterPairID) &&

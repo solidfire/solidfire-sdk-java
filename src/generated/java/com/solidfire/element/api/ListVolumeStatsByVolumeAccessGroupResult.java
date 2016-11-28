@@ -63,6 +63,7 @@ public class ListVolumeStatsByVolumeAccessGroupResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumeStatsByVolumeAccessGroupResult that = (ListVolumeStatsByVolumeAccessGroupResult) o;
+
         return 
             Arrays.equals(volumeStats, that.volumeStats);
     }

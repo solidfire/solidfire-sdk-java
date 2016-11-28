@@ -62,6 +62,7 @@ public class StartVolumePairingResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         StartVolumePairingResult that = (StartVolumePairingResult) o;
+
         return 
             Objects.equals(volumePairingKey, that.volumePairingKey);
     }

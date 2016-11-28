@@ -145,6 +145,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVirtualNetworkRequest that = (ModifyVirtualNetworkRequest) o;
+
         return 
             Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
             Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&

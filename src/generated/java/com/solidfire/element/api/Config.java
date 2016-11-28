@@ -70,6 +70,7 @@ public class Config implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         Config that = (Config) o;
+
         return 
             Objects.equals(cluster, that.cluster) &&
             Objects.equals(network, that.network);

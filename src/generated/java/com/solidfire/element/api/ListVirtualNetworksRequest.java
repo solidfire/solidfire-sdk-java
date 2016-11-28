@@ -92,6 +92,7 @@ public class ListVirtualNetworksRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualNetworksRequest that = (ListVirtualNetworksRequest) o;
+
         return 
             Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
             Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&

@@ -92,6 +92,7 @@ public class AddLdapClusterAdminRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddLdapClusterAdminRequest that = (AddLdapClusterAdminRequest) o;
+
         return 
             Objects.equals(username, that.username) &&
             Arrays.equals(access, that.access) &&

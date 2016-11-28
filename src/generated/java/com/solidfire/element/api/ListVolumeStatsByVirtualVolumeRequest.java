@@ -72,6 +72,7 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumeStatsByVirtualVolumeRequest that = (ListVolumeStatsByVirtualVolumeRequest) o;
+
         return 
             Objects.equals(startVirtualVolumeID, that.startVirtualVolumeID) &&
             Objects.equals(virtualVolumeIDs, that.virtualVolumeIDs);

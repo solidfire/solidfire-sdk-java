@@ -45,8 +45,7 @@ public class RemoveAccountResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RemoveAccountResult that = (RemoveAccountResult) o;
-
+        
         return true;
     }
 

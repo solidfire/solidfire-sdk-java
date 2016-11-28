@@ -62,6 +62,7 @@ public class DeleteSnapshotRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         DeleteSnapshotRequest that = (DeleteSnapshotRequest) o;
+
         return 
             Objects.equals(snapshotID, that.snapshotID);
     }

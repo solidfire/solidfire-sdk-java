@@ -62,6 +62,7 @@ public class DeleteInitiatorsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         DeleteInitiatorsRequest that = (DeleteInitiatorsRequest) o;
+
         return 
             Arrays.equals(initiators, that.initiators);
     }

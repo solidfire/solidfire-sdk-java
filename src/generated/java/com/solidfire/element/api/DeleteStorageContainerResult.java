@@ -45,8 +45,7 @@ public class DeleteStorageContainerResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DeleteStorageContainerResult that = (DeleteStorageContainerResult) o;
-
+        
         return true;
     }
 

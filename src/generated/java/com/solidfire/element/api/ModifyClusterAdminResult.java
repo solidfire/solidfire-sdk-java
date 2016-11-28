@@ -45,8 +45,7 @@ public class ModifyClusterAdminResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyClusterAdminResult that = (ModifyClusterAdminResult) o;
-
+        
         return true;
     }
 

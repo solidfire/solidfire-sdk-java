@@ -101,6 +101,7 @@ public class AddAccountRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddAccountRequest that = (AddAccountRequest) o;
+
         return 
             Objects.equals(username, that.username) &&
             Objects.equals(initiatorSecret, that.initiatorSecret) &&

@@ -107,6 +107,7 @@ public class SnmpV3UsmUser implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SnmpV3UsmUser that = (SnmpV3UsmUser) o;
+
         return 
             Objects.equals(access, that.access) &&
             Objects.equals(name, that.name) &&

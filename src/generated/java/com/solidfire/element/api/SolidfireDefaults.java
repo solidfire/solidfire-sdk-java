@@ -133,6 +133,7 @@ public class SolidfireDefaults implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SolidfireDefaults that = (SolidfireDefaults) o;
+
         return 
             Objects.equals(sliceFileLogFileCapacity, that.sliceFileLogFileCapacity) &&
             Objects.equals(postCallbackThreadCount, that.postCallbackThreadCount) &&

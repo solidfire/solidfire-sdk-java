@@ -62,6 +62,7 @@ public class RemoveClusterAdminRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveClusterAdminRequest that = (RemoveClusterAdminRequest) o;
+
         return 
             Objects.equals(clusterAdminID, that.clusterAdminID);
     }

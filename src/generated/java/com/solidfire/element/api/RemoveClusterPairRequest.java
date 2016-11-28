@@ -62,6 +62,7 @@ public class RemoveClusterPairRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveClusterPairRequest that = (RemoveClusterPairRequest) o;
+
         return 
             Objects.equals(clusterPairID, that.clusterPairID);
     }

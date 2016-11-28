@@ -117,6 +117,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         StartBulkVolumeReadRequest that = (StartBulkVolumeReadRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(format, that.format) &&

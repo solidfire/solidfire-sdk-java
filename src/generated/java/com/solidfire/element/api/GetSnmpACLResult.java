@@ -72,6 +72,7 @@ public class GetSnmpACLResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetSnmpACLResult that = (GetSnmpACLResult) o;
+
         return 
             Arrays.equals(networks, that.networks) &&
             Arrays.equals(usmUsers, that.usmUsers);

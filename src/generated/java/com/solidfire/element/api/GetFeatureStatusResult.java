@@ -62,6 +62,7 @@ public class GetFeatureStatusResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetFeatureStatusResult that = (GetFeatureStatusResult) o;
+
         return 
             Arrays.equals(features, that.features);
     }

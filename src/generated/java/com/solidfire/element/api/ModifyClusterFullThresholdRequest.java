@@ -82,6 +82,7 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyClusterFullThresholdRequest that = (ModifyClusterFullThresholdRequest) o;
+
         return 
             Objects.equals(stage2AwareThreshold, that.stage2AwareThreshold) &&
             Objects.equals(stage3BlockThresholdPercent, that.stage3BlockThresholdPercent) &&

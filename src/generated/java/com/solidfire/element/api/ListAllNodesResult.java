@@ -70,6 +70,7 @@ public class ListAllNodesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListAllNodesResult that = (ListAllNodesResult) o;
+
         return 
             Arrays.equals(nodes, that.nodes) &&
             Arrays.equals(pendingNodes, that.pendingNodes);

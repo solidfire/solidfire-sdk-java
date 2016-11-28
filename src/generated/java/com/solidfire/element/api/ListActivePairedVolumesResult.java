@@ -62,6 +62,7 @@ public class ListActivePairedVolumesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListActivePairedVolumesResult that = (ListActivePairedVolumesResult) o;
+
         return 
             Arrays.equals(volumes, that.volumes);
     }

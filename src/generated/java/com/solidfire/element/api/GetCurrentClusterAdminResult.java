@@ -62,6 +62,7 @@ public class GetCurrentClusterAdminResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetCurrentClusterAdminResult that = (GetCurrentClusterAdminResult) o;
+
         return 
             Objects.equals(clusterAdmin, that.clusterAdmin);
     }

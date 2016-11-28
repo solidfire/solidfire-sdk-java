@@ -62,6 +62,7 @@ public class RemoveNodesRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveNodesRequest that = (RemoveNodesRequest) o;
+
         return 
             Arrays.equals(nodes, that.nodes);
     }

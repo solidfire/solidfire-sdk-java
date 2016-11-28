@@ -61,6 +61,7 @@ public class GetClusterCapacityResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterCapacityResult that = (GetClusterCapacityResult) o;
+
         return 
             Objects.equals(clusterCapacity, that.clusterCapacity);
     }

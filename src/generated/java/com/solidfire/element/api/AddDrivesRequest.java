@@ -62,6 +62,7 @@ public class AddDrivesRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddDrivesRequest that = (AddDrivesRequest) o;
+
         return 
             Arrays.equals(drives, that.drives);
     }

@@ -61,6 +61,7 @@ public class DrivesHardware implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         DrivesHardware that = (DrivesHardware) o;
+
         return 
             Arrays.equals(driveHardware, that.driveHardware);
     }

@@ -62,6 +62,7 @@ public class GetHardwareInfoResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetHardwareInfoResult that = (GetHardwareInfoResult) o;
+
         return 
             Objects.equals(hardwareInfo, that.hardwareInfo);
     }

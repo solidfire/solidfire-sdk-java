@@ -118,6 +118,7 @@ public class ListVolumesRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumesRequest that = (ListVolumesRequest) o;
+
         return 
             Objects.equals(startVolumeID, that.startVolumeID) &&
             Objects.equals(limit, that.limit) &&

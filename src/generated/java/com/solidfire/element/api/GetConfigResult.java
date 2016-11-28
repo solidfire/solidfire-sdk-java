@@ -62,6 +62,7 @@ public class GetConfigResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetConfigResult that = (GetConfigResult) o;
+
         return 
             Objects.equals(config, that.config);
     }

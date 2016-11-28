@@ -171,6 +171,7 @@ public class ClusterInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClusterInfo that = (ClusterInfo) o;
+
         return 
             Objects.equals(attributes, that.attributes) &&
             Objects.equals(encryptionAtRestState, that.encryptionAtRestState) &&

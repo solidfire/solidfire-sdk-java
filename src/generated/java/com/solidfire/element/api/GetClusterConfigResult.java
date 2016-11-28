@@ -62,6 +62,7 @@ public class GetClusterConfigResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterConfigResult that = (GetClusterConfigResult) o;
+
         return 
             Objects.equals(cluster, that.cluster);
     }

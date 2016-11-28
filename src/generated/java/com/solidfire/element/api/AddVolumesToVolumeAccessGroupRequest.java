@@ -72,6 +72,7 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddVolumesToVolumeAccessGroupRequest that = (AddVolumesToVolumeAccessGroupRequest) o;
+
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
             Arrays.equals(volumes, that.volumes);

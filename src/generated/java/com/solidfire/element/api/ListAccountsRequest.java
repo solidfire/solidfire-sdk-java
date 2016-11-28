@@ -75,6 +75,7 @@ public class ListAccountsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListAccountsRequest that = (ListAccountsRequest) o;
+
         return 
             Objects.equals(startAccountID, that.startAccountID) &&
             Objects.equals(limit, that.limit);

@@ -75,6 +75,7 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumeAccessGroupsRequest that = (ListVolumeAccessGroupsRequest) o;
+
         return 
             Objects.equals(startVolumeAccessGroupID, that.startVolumeAccessGroupID) &&
             Objects.equals(limit, that.limit);

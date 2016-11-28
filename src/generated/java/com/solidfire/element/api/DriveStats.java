@@ -205,6 +205,7 @@ public class DriveStats implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         DriveStats that = (DriveStats) o;
+
         return 
             Objects.equals(activeSessions, that.activeSessions) &&
             Objects.equals(driveID, that.driveID) &&

@@ -161,6 +161,7 @@ public class LdapConfiguration implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         LdapConfiguration that = (LdapConfiguration) o;
+
         return 
             Objects.equals(authType, that.authType) &&
             Objects.equals(enabled, that.enabled) &&

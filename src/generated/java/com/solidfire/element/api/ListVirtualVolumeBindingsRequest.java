@@ -70,6 +70,7 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualVolumeBindingsRequest that = (ListVirtualVolumeBindingsRequest) o;
+
         return 
             Objects.equals(virtualVolumeBindingIDs, that.virtualVolumeBindingIDs) &&
             Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);

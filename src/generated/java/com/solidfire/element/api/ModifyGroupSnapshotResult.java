@@ -46,8 +46,7 @@ public class ModifyGroupSnapshotResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyGroupSnapshotResult that = (ModifyGroupSnapshotResult) o;
-
+        
         return true;
     }
 

@@ -62,6 +62,7 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         DeleteVolumeAccessGroupRequest that = (DeleteVolumeAccessGroupRequest) o;
+
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID);
     }

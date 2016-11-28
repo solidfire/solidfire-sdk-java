@@ -72,6 +72,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveInitiatorsFromVolumeAccessGroupRequest that = (RemoveInitiatorsFromVolumeAccessGroupRequest) o;
+
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
             Arrays.equals(initiators, that.initiators);

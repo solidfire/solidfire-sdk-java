@@ -72,6 +72,7 @@ public class CreateBackupTargetRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateBackupTargetRequest that = (CreateBackupTargetRequest) o;
+
         return 
             Objects.equals(name, that.name) &&
             Objects.equals(attributes, that.attributes);

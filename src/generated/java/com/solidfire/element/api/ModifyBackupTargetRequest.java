@@ -82,6 +82,7 @@ public class ModifyBackupTargetRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyBackupTargetRequest that = (ModifyBackupTargetRequest) o;
+
         return 
             Objects.equals(backupTargetID, that.backupTargetID) &&
             Objects.equals(name, that.name) &&

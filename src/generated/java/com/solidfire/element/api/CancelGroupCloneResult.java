@@ -45,8 +45,7 @@ public class CancelGroupCloneResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CancelGroupCloneResult that = (CancelGroupCloneResult) o;
-
+        
         return true;
     }
 

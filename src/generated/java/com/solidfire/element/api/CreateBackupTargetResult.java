@@ -62,6 +62,7 @@ public class CreateBackupTargetResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateBackupTargetResult that = (CreateBackupTargetResult) o;
+
         return 
             Objects.equals(backupTargetID, that.backupTargetID);
     }

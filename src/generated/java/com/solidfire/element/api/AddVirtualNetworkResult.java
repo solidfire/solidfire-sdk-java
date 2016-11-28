@@ -62,6 +62,7 @@ public class AddVirtualNetworkResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddVirtualNetworkResult that = (AddVirtualNetworkResult) o;
+
         return 
             Objects.equals(virtualNetworkID, that.virtualNetworkID);
     }

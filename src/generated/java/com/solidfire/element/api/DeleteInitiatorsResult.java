@@ -45,8 +45,7 @@ public class DeleteInitiatorsResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DeleteInitiatorsResult that = (DeleteInitiatorsResult) o;
-
+        
         return true;
     }
 

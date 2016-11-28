@@ -110,6 +110,7 @@ public class CreateVirtualVolumeHostRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateVirtualVolumeHostRequest that = (CreateVirtualVolumeHostRequest) o;
+
         return 
             Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) &&
             Objects.equals(clusterID, that.clusterID) &&

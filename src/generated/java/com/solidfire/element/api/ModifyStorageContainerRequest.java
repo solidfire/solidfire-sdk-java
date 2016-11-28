@@ -79,6 +79,7 @@ public class ModifyStorageContainerRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyStorageContainerRequest that = (ModifyStorageContainerRequest) o;
+
         return 
             Objects.equals(storageContainerID, that.storageContainerID) &&
             Objects.equals(initiatorSecret, that.initiatorSecret) &&

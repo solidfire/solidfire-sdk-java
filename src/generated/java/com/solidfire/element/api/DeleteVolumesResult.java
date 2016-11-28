@@ -71,6 +71,7 @@ public class DeleteVolumesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         DeleteVolumesResult that = (DeleteVolumesResult) o;
+
         return 
             Arrays.equals(volumes, that.volumes) &&
             Objects.equals(curve, that.curve);

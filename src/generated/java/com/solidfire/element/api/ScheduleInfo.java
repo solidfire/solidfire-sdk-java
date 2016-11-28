@@ -92,6 +92,7 @@ public class ScheduleInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ScheduleInfo that = (ScheduleInfo) o;
+
         return 
             Objects.equals(volumeIDs, that.volumeIDs) &&
             Objects.equals(snapshotName, that.snapshotName) &&

@@ -82,6 +82,7 @@ public class CloneVolumeResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CloneVolumeResult that = (CloneVolumeResult) o;
+
         return 
             Objects.equals(cloneID, that.cloneID) &&
             Objects.equals(volumeID, that.volumeID) &&

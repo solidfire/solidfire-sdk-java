@@ -62,6 +62,7 @@ public class RemoveBackupTargetRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveBackupTargetRequest that = (RemoveBackupTargetRequest) o;
+
         return 
             Objects.equals(backupTargetID, that.backupTargetID);
     }

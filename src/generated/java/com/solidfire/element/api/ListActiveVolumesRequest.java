@@ -74,6 +74,7 @@ public class ListActiveVolumesRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListActiveVolumesRequest that = (ListActiveVolumesRequest) o;
+
         return 
             Objects.equals(startVolumeID, that.startVolumeID) &&
             Objects.equals(limit, that.limit);

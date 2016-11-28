@@ -313,6 +313,7 @@ public class NetworkConfig implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         NetworkConfig that = (NetworkConfig) o;
+
         return 
             Objects.equals(_default, that._default) &&
             Objects.equals(bondMaster, that.bondMaster) &&

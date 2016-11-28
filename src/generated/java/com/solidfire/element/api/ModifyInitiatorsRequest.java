@@ -62,6 +62,7 @@ public class ModifyInitiatorsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyInitiatorsRequest that = (ModifyInitiatorsRequest) o;
+
         return 
             Arrays.equals(initiators, that.initiators);
     }

@@ -263,6 +263,7 @@ public class Volume implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         Volume that = (Volume) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(name, that.name) &&

@@ -86,6 +86,7 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         UpdateBulkVolumeStatusResult that = (UpdateBulkVolumeStatusResult) o;
+
         return 
             Objects.equals(status, that.status) &&
             Objects.equals(url, that.url) &&

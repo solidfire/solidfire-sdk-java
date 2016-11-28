@@ -73,6 +73,7 @@ public class CreateSnapshotResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateSnapshotResult that = (CreateSnapshotResult) o;
+
         return 
             Objects.equals(snapshotID, that.snapshotID) &&
             Objects.equals(checksum, that.checksum);

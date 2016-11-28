@@ -92,6 +92,7 @@ public class ModifyInitiator implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyInitiator that = (ModifyInitiator) o;
+
         return 
             Objects.equals(initiatorID, that.initiatorID) &&
             Objects.equals(alias, that.alias) &&

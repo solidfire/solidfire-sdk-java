@@ -61,6 +61,7 @@ public class AsyncHandleResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AsyncHandleResult that = (AsyncHandleResult) o;
+
         return 
             Objects.equals(asyncHandle, that.asyncHandle);
     }

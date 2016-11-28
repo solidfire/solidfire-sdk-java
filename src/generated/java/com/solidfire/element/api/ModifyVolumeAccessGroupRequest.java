@@ -125,6 +125,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumeAccessGroupRequest that = (ModifyVolumeAccessGroupRequest) o;
+
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
             Objects.equals(virtualNetworkID, that.virtualNetworkID) &&

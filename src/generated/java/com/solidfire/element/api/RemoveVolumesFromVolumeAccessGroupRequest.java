@@ -72,6 +72,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveVolumesFromVolumeAccessGroupRequest that = (RemoveVolumesFromVolumeAccessGroupRequest) o;
+
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
             Arrays.equals(volumes, that.volumes);

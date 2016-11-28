@@ -62,6 +62,7 @@ public class GetClusterHardwareInfoRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterHardwareInfoRequest that = (GetClusterHardwareInfoRequest) o;
+
         return 
             Objects.equals(type, that.type);
     }

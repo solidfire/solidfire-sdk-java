@@ -82,6 +82,7 @@ public class SetDefaultQoSRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetDefaultQoSRequest that = (SetDefaultQoSRequest) o;
+
         return 
             Objects.equals(minIOPS, that.minIOPS) &&
             Objects.equals(maxIOPS, that.maxIOPS) &&

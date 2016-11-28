@@ -62,6 +62,7 @@ public class CancelGroupCloneRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CancelGroupCloneRequest that = (CancelGroupCloneRequest) o;
+
         return 
             Objects.equals(groupCloneID, that.groupCloneID);
     }

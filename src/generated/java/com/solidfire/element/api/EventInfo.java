@@ -142,6 +142,7 @@ public class EventInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         EventInfo that = (EventInfo) o;
+
         return 
             Objects.equals(eventID, that.eventID) &&
             Objects.equals(severity, that.severity) &&

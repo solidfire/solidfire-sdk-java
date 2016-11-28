@@ -63,6 +63,7 @@ public class ListGroupSnapshotsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListGroupSnapshotsRequest that = (ListGroupSnapshotsRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID);
     }

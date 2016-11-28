@@ -91,6 +91,7 @@ public class PrepareVirtualSnapshotRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         PrepareVirtualSnapshotRequest that = (PrepareVirtualSnapshotRequest) o;
+
         return 
             Objects.equals(virtualVolumeID, that.virtualVolumeID) &&
             Objects.equals(name, that.name) &&

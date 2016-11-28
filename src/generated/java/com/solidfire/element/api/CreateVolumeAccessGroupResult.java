@@ -71,6 +71,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateVolumeAccessGroupResult that = (CreateVolumeAccessGroupResult) o;
+
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
             Objects.equals(volumeAccessGroup, that.volumeAccessGroup);

@@ -61,6 +61,7 @@ public class SetNetworkConfigResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetNetworkConfigResult that = (SetNetworkConfigResult) o;
+
         return 
             Objects.equals(network, that.network);
     }

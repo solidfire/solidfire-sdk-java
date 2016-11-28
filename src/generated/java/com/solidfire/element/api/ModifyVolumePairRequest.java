@@ -89,6 +89,7 @@ public class ModifyVolumePairRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumePairRequest that = (ModifyVolumePairRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(pausedManual, that.pausedManual) &&

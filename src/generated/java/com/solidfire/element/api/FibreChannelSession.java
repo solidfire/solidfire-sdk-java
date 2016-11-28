@@ -102,6 +102,7 @@ public class FibreChannelSession implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         FibreChannelSession that = (FibreChannelSession) o;
+
         return 
             Objects.equals(initiatorWWPN, that.initiatorWWPN) &&
             Objects.equals(nodeID, that.nodeID) &&

@@ -135,6 +135,7 @@ public class AddVirtualNetworkRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddVirtualNetworkRequest that = (AddVirtualNetworkRequest) o;
+
         return 
             Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
             Objects.equals(name, that.name) &&

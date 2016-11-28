@@ -37,7 +37,6 @@ public class ModifyVolumesRequest implements Serializable {
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-    @SerializedName("mode") private Optional<String> mode;
     @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("totalSize") private Optional<Long> totalSize;
 
@@ -52,7 +51,6 @@ public class ModifyVolumesRequest implements Serializable {
         Optional<Long> accountID,
         Optional<String> access,
         Optional<java.util.Map<String, Object>> attributes,
-        Optional<String> mode,
         Optional<QoS> qos,
         Optional<Long> totalSize
     )
@@ -61,7 +59,6 @@ public class ModifyVolumesRequest implements Serializable {
         this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
         this.access = (access == null) ? Optional.<String>empty() : access;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.mode = (mode == null) ? Optional.<String>empty() : mode;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
     }
@@ -94,13 +91,6 @@ public class ModifyVolumesRequest implements Serializable {
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
     /** 
-     * Volume replication mode. Possible values:asynch: Waits for system to acknowledge that data is stored on source before writing to the target.sync: Does not wait for data transmission acknowledgment from source to begin writing data to the target.
-     **/
-    public Optional<String> getMode() { return this.mode; }
-    public void setMode(Optional<String> mode) { 
-        this.mode = (mode == null) ? Optional.<String>empty() : mode;
-    }
-    /** 
      * New quality of service settings for this volume.If not specified, the QoS settings are not changed.
      **/
     public Optional<QoS> getQos() { return this.qos; }
@@ -121,19 +111,19 @@ public class ModifyVolumesRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumesRequest that = (ModifyVolumesRequest) o;
+
         return 
             Arrays.equals(volumeIDs, that.volumeIDs) &&
             Objects.equals(accountID, that.accountID) &&
             Objects.equals(access, that.access) &&
             Objects.equals(attributes, that.attributes) &&
-            Objects.equals(mode, that.mode) &&
             Objects.equals(qos, that.qos) &&
             Objects.equals(totalSize, that.totalSize);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])volumeIDs, accountID, access, attributes, mode, qos, totalSize );
+        return Objects.hash( (Object[])volumeIDs, accountID, access, attributes, qos, totalSize );
     }
 
 
@@ -143,7 +133,6 @@ public class ModifyVolumesRequest implements Serializable {
         map.put("accountID", accountID);
         map.put("access", access);
         map.put("attributes", attributes);
-        map.put("mode", mode);
         map.put("qos", qos);
         map.put("totalSize", totalSize);
         return map;
@@ -163,9 +152,6 @@ public class ModifyVolumesRequest implements Serializable {
         }
         if(null != attributes && attributes.isPresent()){
             sb.append(" attributes : ").append(attributes).append(",");
-        }
-        if(null != mode && mode.isPresent()){
-            sb.append(" mode : ").append(mode).append(",");
         }
         if(null != qos && qos.isPresent()){
             sb.append(" qos : ").append(qos).append(",");
@@ -194,7 +180,6 @@ public class ModifyVolumesRequest implements Serializable {
         private Optional<Long> accountID;
         private Optional<String> access;
         private Optional<java.util.Map<String, Object>> attributes;
-        private Optional<String> mode;
         private Optional<QoS> qos;
         private Optional<Long> totalSize;
 
@@ -206,7 +191,6 @@ public class ModifyVolumesRequest implements Serializable {
                          this.accountID,
                          this.access,
                          this.attributes,
-                         this.mode,
                          this.qos,
                          this.totalSize);
         }
@@ -216,7 +200,6 @@ public class ModifyVolumesRequest implements Serializable {
             this.accountID = req.accountID;
             this.access = req.access;
             this.attributes = req.attributes;
-            this.mode = req.mode;
             this.qos = req.qos;
             this.totalSize = req.totalSize;
 
@@ -240,11 +223,6 @@ public class ModifyVolumesRequest implements Serializable {
 
         public ModifyVolumesRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
-            return this;
-        }
-
-        public ModifyVolumesRequest.Builder optionalMode(final String mode) {
-            this.mode = (mode == null) ? Optional.<String>empty() : Optional.of(mode);
             return this;
         }
 

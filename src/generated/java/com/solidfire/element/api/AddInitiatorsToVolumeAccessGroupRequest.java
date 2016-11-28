@@ -72,6 +72,7 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddInitiatorsToVolumeAccessGroupRequest that = (AddInitiatorsToVolumeAccessGroupRequest) o;
+
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
             Arrays.equals(initiators, that.initiators);

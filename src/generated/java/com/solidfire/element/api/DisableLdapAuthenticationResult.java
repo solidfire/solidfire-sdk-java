@@ -45,8 +45,7 @@ public class DisableLdapAuthenticationResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DisableLdapAuthenticationResult that = (DisableLdapAuthenticationResult) o;
-
+        
         return true;
     }
 

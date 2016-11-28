@@ -61,6 +61,7 @@ public class CancelCloneRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CancelCloneRequest that = (CancelCloneRequest) o;
+
         return 
             Objects.equals(cloneID, that.cloneID);
     }

@@ -145,6 +145,7 @@ public class VirtualNetwork implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         VirtualNetwork that = (VirtualNetwork) o;
+
         return 
             Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
             Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&

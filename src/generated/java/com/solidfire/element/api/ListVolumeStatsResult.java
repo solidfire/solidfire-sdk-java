@@ -62,6 +62,7 @@ public class ListVolumeStatsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumeStatsResult that = (ListVolumeStatsResult) o;
+
         return 
             Arrays.equals(volumeStats, that.volumeStats);
     }

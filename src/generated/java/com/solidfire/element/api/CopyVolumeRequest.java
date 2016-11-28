@@ -82,6 +82,7 @@ public class CopyVolumeRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CopyVolumeRequest that = (CopyVolumeRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(dstVolumeID, that.dstVolumeID) &&

@@ -75,6 +75,7 @@ public class CreateVolumeResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateVolumeResult that = (CreateVolumeResult) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(curve, that.curve);

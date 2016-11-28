@@ -115,6 +115,7 @@ public class PhysicalAdapter implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         PhysicalAdapter that = (PhysicalAdapter) o;
+
         return 
             Objects.equals(address, that.address) &&
             Objects.equals(macAddress, that.macAddress) &&

@@ -62,6 +62,7 @@ public class TestConnectEnsembleRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectEnsembleRequest that = (TestConnectEnsembleRequest) o;
+
         return 
             Objects.equals(ensemble, that.ensemble);
     }

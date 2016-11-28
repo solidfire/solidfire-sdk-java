@@ -45,8 +45,7 @@ public class RemoveBackupTargetResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RemoveBackupTargetResult that = (RemoveBackupTargetResult) o;
-
+        
         return true;
     }
 

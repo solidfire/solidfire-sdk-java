@@ -62,6 +62,7 @@ public class ListAccountsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListAccountsResult that = (ListAccountsResult) o;
+
         return 
             Arrays.equals(accounts, that.accounts);
     }

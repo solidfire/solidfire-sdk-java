@@ -62,6 +62,7 @@ public class ListVirtualVolumeTasksResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualVolumeTasksResult that = (ListVirtualVolumeTasksResult) o;
+
         return 
             Arrays.equals(tasks, that.tasks);
     }

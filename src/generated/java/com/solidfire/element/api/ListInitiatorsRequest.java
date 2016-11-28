@@ -82,6 +82,7 @@ public class ListInitiatorsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListInitiatorsRequest that = (ListInitiatorsRequest) o;
+
         return 
             Objects.equals(startInitiatorID, that.startInitiatorID) &&
             Objects.equals(limit, that.limit) &&

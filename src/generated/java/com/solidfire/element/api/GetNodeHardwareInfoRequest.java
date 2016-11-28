@@ -62,6 +62,7 @@ public class GetNodeHardwareInfoRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetNodeHardwareInfoRequest that = (GetNodeHardwareInfoRequest) o;
+
         return 
             Objects.equals(nodeID, that.nodeID);
     }

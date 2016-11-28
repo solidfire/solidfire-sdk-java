@@ -61,6 +61,7 @@ public class CreateScheduleResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateScheduleResult that = (CreateScheduleResult) o;
+
         return 
             Objects.equals(scheduleID, that.scheduleID);
     }

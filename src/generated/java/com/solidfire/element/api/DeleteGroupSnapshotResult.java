@@ -45,8 +45,7 @@ public class DeleteGroupSnapshotResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DeleteGroupSnapshotResult that = (DeleteGroupSnapshotResult) o;
-
+        
         return true;
     }
 

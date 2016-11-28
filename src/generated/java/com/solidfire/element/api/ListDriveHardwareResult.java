@@ -61,6 +61,7 @@ public class ListDriveHardwareResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListDriveHardwareResult that = (ListDriveHardwareResult) o;
+
         return 
             Arrays.equals(nodes, that.nodes);
     }

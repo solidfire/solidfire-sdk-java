@@ -92,6 +92,7 @@ public class SetSnmpInfoRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetSnmpInfoRequest that = (SetSnmpInfoRequest) o;
+
         return 
             Objects.equals(networks, that.networks) &&
             Objects.equals(enabled, that.enabled) &&

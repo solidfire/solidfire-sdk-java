@@ -89,6 +89,7 @@ public class ResetDriveDetails implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ResetDriveDetails that = (ResetDriveDetails) o;
+
         return 
             Objects.equals(drive, that.drive) &&
             Objects.equals(returnCode, that.returnCode) &&

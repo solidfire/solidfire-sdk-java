@@ -62,6 +62,7 @@ public class RestoreDeletedVolumeRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         RestoreDeletedVolumeRequest that = (RestoreDeletedVolumeRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID);
     }

@@ -94,6 +94,7 @@ public class GetSnmpInfoResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetSnmpInfoResult that = (GetSnmpInfoResult) o;
+
         return 
             Arrays.equals(networks, that.networks) &&
             Objects.equals(enabled, that.enabled) &&

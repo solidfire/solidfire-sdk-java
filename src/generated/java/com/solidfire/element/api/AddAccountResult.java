@@ -62,6 +62,7 @@ public class AddAccountResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddAccountResult that = (AddAccountResult) o;
+
         return 
             Objects.equals(accountID, that.accountID);
     }

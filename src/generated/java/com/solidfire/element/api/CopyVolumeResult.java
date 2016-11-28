@@ -71,6 +71,7 @@ public class CopyVolumeResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CopyVolumeResult that = (CopyVolumeResult) o;
+
         return 
             Objects.equals(cloneID, that.cloneID) &&
             Objects.equals(asyncHandle, that.asyncHandle);

@@ -72,6 +72,7 @@ public class SnapshotReplication implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SnapshotReplication that = (SnapshotReplication) o;
+
         return 
             Objects.equals(state, that.state) &&
             Objects.equals(stateDetails, that.stateDetails);

@@ -62,6 +62,7 @@ public class GetBackupTargetResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetBackupTargetResult that = (GetBackupTargetResult) o;
+
         return 
             Objects.equals(backupTarget, that.backupTarget);
     }

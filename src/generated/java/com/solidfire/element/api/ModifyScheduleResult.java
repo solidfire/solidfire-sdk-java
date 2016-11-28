@@ -45,8 +45,7 @@ public class ModifyScheduleResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyScheduleResult that = (ModifyScheduleResult) o;
-
+        
         return true;
     }
 

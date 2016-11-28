@@ -62,6 +62,7 @@ public class RemoveVolumePairRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveVolumePairRequest that = (RemoveVolumePairRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID);
     }

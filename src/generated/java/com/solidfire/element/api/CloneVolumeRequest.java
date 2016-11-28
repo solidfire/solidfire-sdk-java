@@ -133,6 +133,7 @@ public class CloneVolumeRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CloneVolumeRequest that = (CloneVolumeRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(name, that.name) &&

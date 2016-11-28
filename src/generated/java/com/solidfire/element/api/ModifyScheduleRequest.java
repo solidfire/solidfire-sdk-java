@@ -67,6 +67,7 @@ public class ModifyScheduleRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyScheduleRequest that = (ModifyScheduleRequest) o;
+
         return 
             Objects.equals(schedule, that.schedule);
     }

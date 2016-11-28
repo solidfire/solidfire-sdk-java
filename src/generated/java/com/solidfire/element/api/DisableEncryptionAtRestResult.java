@@ -45,8 +45,7 @@ public class DisableEncryptionAtRestResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DisableEncryptionAtRestResult that = (DisableEncryptionAtRestResult) o;
-
+        
         return true;
     }
 

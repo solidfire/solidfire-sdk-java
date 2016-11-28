@@ -62,6 +62,7 @@ public class ListClusterPairsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListClusterPairsResult that = (ListClusterPairsResult) o;
+
         return 
             Arrays.equals(clusterPairs, that.clusterPairs);
     }

@@ -45,8 +45,7 @@ public class DisableSnmpResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DisableSnmpResult that = (DisableSnmpResult) o;
-
+        
         return true;
     }
 

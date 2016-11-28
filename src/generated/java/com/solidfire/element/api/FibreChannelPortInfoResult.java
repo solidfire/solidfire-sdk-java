@@ -62,6 +62,7 @@ public class FibreChannelPortInfoResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         FibreChannelPortInfoResult that = (FibreChannelPortInfoResult) o;
+
         return 
             Objects.equals(result, that.result);
     }

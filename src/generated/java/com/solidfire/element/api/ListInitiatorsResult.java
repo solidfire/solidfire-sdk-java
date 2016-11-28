@@ -62,6 +62,7 @@ public class ListInitiatorsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListInitiatorsResult that = (ListInitiatorsResult) o;
+
         return 
             Arrays.equals(initiators, that.initiators);
     }

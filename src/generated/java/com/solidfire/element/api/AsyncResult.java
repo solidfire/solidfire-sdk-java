@@ -62,6 +62,7 @@ public class AsyncResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AsyncResult that = (AsyncResult) o;
+
         return 
             Objects.equals(message, that.message);
     }

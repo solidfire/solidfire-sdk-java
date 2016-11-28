@@ -188,6 +188,7 @@ public class BulkVolumeJob implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         BulkVolumeJob that = (BulkVolumeJob) o;
+
         return 
             Objects.equals(bulkVolumeID, that.bulkVolumeID) &&
             Objects.equals(createTime, that.createTime) &&

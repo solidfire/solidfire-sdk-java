@@ -64,6 +64,7 @@ public class ListVolumesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumesResult that = (ListVolumesResult) o;
+
         return 
             Arrays.equals(volumes, that.volumes);
     }

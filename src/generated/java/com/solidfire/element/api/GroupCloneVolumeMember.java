@@ -72,6 +72,7 @@ public class GroupCloneVolumeMember implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GroupCloneVolumeMember that = (GroupCloneVolumeMember) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(srcVolumeID, that.srcVolumeID);

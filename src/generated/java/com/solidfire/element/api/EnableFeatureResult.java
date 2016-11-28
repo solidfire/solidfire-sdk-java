@@ -45,8 +45,7 @@ public class EnableFeatureResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EnableFeatureResult that = (EnableFeatureResult) o;
-
+        
         return true;
     }
 

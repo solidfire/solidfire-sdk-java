@@ -82,6 +82,7 @@ public class TestConnectSvipDetails implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectSvipDetails that = (TestConnectSvipDetails) o;
+
         return 
             Objects.equals(pingBytes, that.pingBytes) &&
             Objects.equals(svip, that.svip) &&

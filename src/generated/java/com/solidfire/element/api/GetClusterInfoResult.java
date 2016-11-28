@@ -61,6 +61,7 @@ public class GetClusterInfoResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterInfoResult that = (GetClusterInfoResult) o;
+
         return 
             Objects.equals(clusterInfo, that.clusterInfo);
     }

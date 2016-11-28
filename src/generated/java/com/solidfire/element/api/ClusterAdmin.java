@@ -89,6 +89,7 @@ public class ClusterAdmin implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClusterAdmin that = (ClusterAdmin) o;
+
         return 
             Arrays.equals(access, that.access) &&
             Objects.equals(clusterAdminID, that.clusterAdminID) &&

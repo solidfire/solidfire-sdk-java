@@ -110,6 +110,7 @@ public class VolumeQOS implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         VolumeQOS that = (VolumeQOS) o;
+
         return 
             Objects.equals(minIOPS, that.minIOPS) &&
             Objects.equals(maxIOPS, that.maxIOPS) &&

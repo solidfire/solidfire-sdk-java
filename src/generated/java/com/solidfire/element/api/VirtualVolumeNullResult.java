@@ -45,8 +45,7 @@ public class VirtualVolumeNullResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        VirtualVolumeNullResult that = (VirtualVolumeNullResult) o;
-
+        
         return true;
     }
 

@@ -169,6 +169,7 @@ public class ClusterFaultInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClusterFaultInfo that = (ClusterFaultInfo) o;
+
         return 
             Objects.equals(severity, that.severity) &&
             Objects.equals(type, that.type) &&

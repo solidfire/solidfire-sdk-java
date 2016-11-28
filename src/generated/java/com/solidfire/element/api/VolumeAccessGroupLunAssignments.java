@@ -82,6 +82,7 @@ public class VolumeAccessGroupLunAssignments implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         VolumeAccessGroupLunAssignments that = (VolumeAccessGroupLunAssignments) o;
+
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
             Arrays.equals(lunAssignments, that.lunAssignments) &&

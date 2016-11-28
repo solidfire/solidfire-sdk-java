@@ -71,6 +71,7 @@ public class GetVirtualVolumeTaskUpdateRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetVirtualVolumeTaskUpdateRequest that = (GetVirtualVolumeTaskUpdateRequest) o;
+
         return 
             Objects.equals(virtualVolumeTaskID, that.virtualVolumeTaskID) &&
             Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);

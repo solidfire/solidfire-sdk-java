@@ -115,6 +115,7 @@ public class Network implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         Network that = (Network) o;
+
         return 
             Objects.equals(bond10G, that.bond10G) &&
             Objects.equals(bond1G, that.bond1G) &&

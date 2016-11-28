@@ -45,8 +45,7 @@ public class ClearClusterFaultsResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ClearClusterFaultsResult that = (ClearClusterFaultsResult) o;
-
+        
         return true;
     }
 

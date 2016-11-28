@@ -97,6 +97,7 @@ public class SoftwareVersionInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SoftwareVersionInfo that = (SoftwareVersionInfo) o;
+
         return 
             Objects.equals(currentVersion, that.currentVersion) &&
             Objects.equals(nodeID, that.nodeID) &&

@@ -82,6 +82,7 @@ public class SnmpTrapRecipient implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SnmpTrapRecipient that = (SnmpTrapRecipient) o;
+
         return 
             Objects.equals(host, that.host) &&
             Objects.equals(community, that.community) &&

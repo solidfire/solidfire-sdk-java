@@ -45,8 +45,7 @@ public class SetSnmpInfoResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SetSnmpInfoResult that = (SetSnmpInfoResult) o;
-
+        
         return true;
     }
 

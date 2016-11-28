@@ -72,6 +72,7 @@ public class LunAssignment implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         LunAssignment that = (LunAssignment) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(lun, that.lun);

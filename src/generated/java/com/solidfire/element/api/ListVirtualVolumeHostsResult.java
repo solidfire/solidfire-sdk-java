@@ -62,6 +62,7 @@ public class ListVirtualVolumeHostsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualVolumeHostsResult that = (ListVirtualVolumeHostsResult) o;
+
         return 
             Arrays.equals(hosts, that.hosts);
     }

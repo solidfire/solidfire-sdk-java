@@ -126,6 +126,7 @@ public class RemoteReplication implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoteReplication that = (RemoteReplication) o;
+
         return 
             Objects.equals(mode, that.mode) &&
             Objects.equals(pauseLimit, that.pauseLimit) &&

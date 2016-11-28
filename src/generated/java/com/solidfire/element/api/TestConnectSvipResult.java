@@ -82,6 +82,7 @@ public class TestConnectSvipResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectSvipResult that = (TestConnectSvipResult) o;
+
         return 
             Objects.equals(details, that.details) &&
             Objects.equals(duration, that.duration) &&

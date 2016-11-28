@@ -62,6 +62,7 @@ public class SetClusterConfigRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetClusterConfigRequest that = (SetClusterConfigRequest) o;
+
         return 
             Objects.equals(cluster, that.cluster);
     }

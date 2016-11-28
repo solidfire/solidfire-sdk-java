@@ -62,6 +62,7 @@ public class GetClusterStateResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterStateResult that = (GetClusterStateResult) o;
+
         return 
             Arrays.equals(nodes, that.nodes);
     }

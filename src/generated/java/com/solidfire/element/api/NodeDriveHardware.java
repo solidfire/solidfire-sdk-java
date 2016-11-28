@@ -70,6 +70,7 @@ public class NodeDriveHardware implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         NodeDriveHardware that = (NodeDriveHardware) o;
+
         return 
             Objects.equals(nodeID, that.nodeID) &&
             Objects.equals(result, that.result);

@@ -289,6 +289,7 @@ public class ClusterCapacity implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClusterCapacity that = (ClusterCapacity) o;
+
         return 
             Objects.equals(activeBlockSpace, that.activeBlockSpace) &&
             Objects.equals(activeSessions, that.activeSessions) &&

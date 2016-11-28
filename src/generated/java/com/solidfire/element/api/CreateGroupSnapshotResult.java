@@ -72,6 +72,7 @@ public class CreateGroupSnapshotResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateGroupSnapshotResult that = (CreateGroupSnapshotResult) o;
+
         return 
             Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
             Arrays.equals(members, that.members);

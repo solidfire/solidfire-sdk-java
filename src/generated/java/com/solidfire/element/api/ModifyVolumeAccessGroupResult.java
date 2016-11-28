@@ -62,6 +62,7 @@ public class ModifyVolumeAccessGroupResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumeAccessGroupResult that = (ModifyVolumeAccessGroupResult) o;
+
         return 
             Objects.equals(volumeAccessGroup, that.volumeAccessGroup);
     }

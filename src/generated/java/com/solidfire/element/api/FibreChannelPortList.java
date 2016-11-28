@@ -62,6 +62,7 @@ public class FibreChannelPortList implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         FibreChannelPortList that = (FibreChannelPortList) o;
+
         return 
             Arrays.equals(fibreChannelPorts, that.fibreChannelPorts);
     }

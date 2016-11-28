@@ -45,8 +45,7 @@ public class RemoveClusterPairResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RemoveClusterPairResult that = (RemoveClusterPairResult) o;
-
+        
         return true;
     }
 

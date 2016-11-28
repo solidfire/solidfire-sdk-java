@@ -97,6 +97,7 @@ public class KernelCrashDump implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         KernelCrashDump that = (KernelCrashDump) o;
+
         return 
             Objects.equals(kernelCrashDumpMinFreeGb, that.kernelCrashDumpMinFreeGb) &&
             Objects.equals(kernelCrashDumpDirectory, that.kernelCrashDumpDirectory) &&

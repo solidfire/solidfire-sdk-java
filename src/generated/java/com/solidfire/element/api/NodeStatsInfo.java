@@ -171,6 +171,7 @@ public class NodeStatsInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         NodeStatsInfo that = (NodeStatsInfo) o;
+
         return 
             Objects.equals(cBytesIn, that.cBytesIn) &&
             Objects.equals(cBytesOut, that.cBytesOut) &&

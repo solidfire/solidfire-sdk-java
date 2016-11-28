@@ -62,6 +62,7 @@ public class EnableFeatureRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         EnableFeatureRequest that = (EnableFeatureRequest) o;
+
         return 
             Objects.equals(feature, that.feature);
     }

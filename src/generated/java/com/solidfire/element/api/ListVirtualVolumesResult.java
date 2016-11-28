@@ -70,6 +70,7 @@ public class ListVirtualVolumesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualVolumesResult that = (ListVirtualVolumesResult) o;
+
         return 
             Arrays.equals(virtualVolumes, that.virtualVolumes) &&
             Objects.equals(nextVirtualVolumeID, that.nextVirtualVolumeID);

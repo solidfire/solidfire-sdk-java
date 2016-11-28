@@ -62,6 +62,7 @@ public class ListClusterAdminsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListClusterAdminsResult that = (ListClusterAdminsResult) o;
+
         return 
             Arrays.equals(clusterAdmins, that.clusterAdmins);
     }

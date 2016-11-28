@@ -62,6 +62,7 @@ public class ListAsyncResultsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListAsyncResultsRequest that = (ListAsyncResultsRequest) o;
+
         return 
             Objects.equals(asyncResultTypes, that.asyncResultTypes);
     }

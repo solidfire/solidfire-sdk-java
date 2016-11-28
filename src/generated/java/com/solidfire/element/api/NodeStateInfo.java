@@ -72,6 +72,7 @@ public class NodeStateInfo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         NodeStateInfo that = (NodeStateInfo) o;
+
         return 
             Objects.equals(cluster, that.cluster) &&
             Objects.equals(state, that.state);

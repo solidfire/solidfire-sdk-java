@@ -65,6 +65,7 @@ public class ClearClusterFaultsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClearClusterFaultsRequest that = (ClearClusterFaultsRequest) o;
+
         return 
             Objects.equals(faultTypes, that.faultTypes);
     }

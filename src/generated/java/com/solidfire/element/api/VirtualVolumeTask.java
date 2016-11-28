@@ -142,6 +142,7 @@ public class VirtualVolumeTask implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         VirtualVolumeTask that = (VirtualVolumeTask) o;
+
         return 
             Objects.equals(virtualVolumeTaskID, that.virtualVolumeTaskID) &&
             Objects.equals(virtualvolumeID, that.virtualvolumeID) &&

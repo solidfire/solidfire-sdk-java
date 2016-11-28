@@ -62,6 +62,7 @@ public class GetStorageContainerEfficiencyRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetStorageContainerEfficiencyRequest that = (GetStorageContainerEfficiencyRequest) o;
+
         return 
             Objects.equals(storageContainerID, that.storageContainerID);
     }

@@ -62,6 +62,7 @@ public class ListUtilitiesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListUtilitiesResult that = (ListUtilitiesResult) o;
+
         return 
             Arrays.equals(utilities, that.utilities);
     }

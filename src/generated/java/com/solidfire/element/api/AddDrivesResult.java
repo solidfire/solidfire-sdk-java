@@ -45,8 +45,7 @@ public class AddDrivesResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddDrivesResult that = (AddDrivesResult) o;
-
+        
         return true;
     }
 

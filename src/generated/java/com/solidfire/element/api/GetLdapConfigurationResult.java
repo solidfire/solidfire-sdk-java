@@ -64,6 +64,7 @@ public class GetLdapConfigurationResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetLdapConfigurationResult that = (GetLdapConfigurationResult) o;
+
         return 
             Objects.equals(ldapConfiguration, that.ldapConfiguration);
     }

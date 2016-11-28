@@ -121,6 +121,7 @@ public class ModifyVolumeRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumeRequest that = (ModifyVolumeRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(accountID, that.accountID) &&

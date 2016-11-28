@@ -46,8 +46,7 @@ public class ModifySnapshotResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifySnapshotResult that = (ModifySnapshotResult) o;
-
+        
         return true;
     }
 

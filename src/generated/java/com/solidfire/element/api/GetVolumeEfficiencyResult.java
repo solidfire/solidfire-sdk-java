@@ -106,6 +106,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetVolumeEfficiencyResult that = (GetVolumeEfficiencyResult) o;
+
         return 
             Objects.equals(compression, that.compression) &&
             Objects.equals(deduplication, that.deduplication) &&

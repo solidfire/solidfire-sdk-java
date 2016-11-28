@@ -71,6 +71,7 @@ public class GetVolumeEfficiencyRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetVolumeEfficiencyRequest that = (GetVolumeEfficiencyRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(force, that.force);

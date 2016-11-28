@@ -72,6 +72,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumeAccessGroupLunAssignmentsRequest that = (ModifyVolumeAccessGroupLunAssignmentsRequest) o;
+
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
             Arrays.equals(lunAssignments, that.lunAssignments);

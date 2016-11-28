@@ -62,6 +62,7 @@ public class ListTestsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListTestsResult that = (ListTestsResult) o;
+
         return 
             Arrays.equals(tests, that.tests);
     }

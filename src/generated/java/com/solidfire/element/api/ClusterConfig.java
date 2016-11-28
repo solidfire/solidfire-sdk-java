@@ -149,6 +149,7 @@ public class ClusterConfig implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClusterConfig that = (ClusterConfig) o;
+
         return 
             Objects.equals(cipi, that.cipi) &&
             Objects.equals(cluster, that.cluster) &&

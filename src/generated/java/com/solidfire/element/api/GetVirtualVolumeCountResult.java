@@ -62,6 +62,7 @@ public class GetVirtualVolumeCountResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetVirtualVolumeCountResult that = (GetVirtualVolumeCountResult) o;
+
         return 
             Objects.equals(count, that.count);
     }

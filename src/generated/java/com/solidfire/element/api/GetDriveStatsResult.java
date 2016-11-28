@@ -61,6 +61,7 @@ public class GetDriveStatsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetDriveStatsResult that = (GetDriveStatsResult) o;
+
         return 
             Objects.equals(driveStats, that.driveStats);
     }

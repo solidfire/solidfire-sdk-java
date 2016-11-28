@@ -45,8 +45,7 @@ public class RemoveClusterAdminResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RemoveClusterAdminResult that = (RemoveClusterAdminResult) o;
-
+        
         return true;
     }
 

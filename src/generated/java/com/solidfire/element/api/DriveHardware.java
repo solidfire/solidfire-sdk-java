@@ -313,6 +313,7 @@ public class DriveHardware implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         DriveHardware that = (DriveHardware) o;
+
         return 
             Objects.equals(canonicalName, that.canonicalName) &&
             Objects.equals(connected, that.connected) &&

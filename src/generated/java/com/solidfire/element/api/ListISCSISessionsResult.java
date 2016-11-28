@@ -61,6 +61,7 @@ public class ListISCSISessionsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListISCSISessionsResult that = (ListISCSISessionsResult) o;
+
         return 
             Arrays.equals(sessions, that.sessions);
     }

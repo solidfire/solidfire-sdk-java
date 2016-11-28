@@ -62,6 +62,7 @@ public class GetHardwareConfigResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetHardwareConfigResult that = (GetHardwareConfigResult) o;
+
         return 
             Objects.equals(hardwareConfig, that.hardwareConfig);
     }

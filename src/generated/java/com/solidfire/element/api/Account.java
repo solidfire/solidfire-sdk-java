@@ -122,6 +122,7 @@ public class Account implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         Account that = (Account) o;
+
         return 
             Objects.equals(accountID, that.accountID) &&
             Objects.equals(username, that.username) &&

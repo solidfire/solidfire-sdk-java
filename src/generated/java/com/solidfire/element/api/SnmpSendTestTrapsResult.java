@@ -61,6 +61,7 @@ public class SnmpSendTestTrapsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SnmpSendTestTrapsResult that = (SnmpSendTestTrapsResult) o;
+
         return 
             Objects.equals(status, that.status);
     }

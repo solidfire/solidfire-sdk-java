@@ -88,6 +88,7 @@ public class GetClusterVersionInfoResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterVersionInfoResult that = (GetClusterVersionInfoResult) o;
+
         return 
             Objects.equals(clusterAPIVersion, that.clusterAPIVersion) &&
             Objects.equals(clusterVersion, that.clusterVersion) &&

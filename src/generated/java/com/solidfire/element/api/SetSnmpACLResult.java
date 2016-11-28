@@ -45,8 +45,7 @@ public class SetSnmpACLResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SetSnmpACLResult that = (SetSnmpACLResult) o;
-
+        
         return true;
     }
 

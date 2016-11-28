@@ -74,6 +74,7 @@ public class GetNtpInfoResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetNtpInfoResult that = (GetNtpInfoResult) o;
+
         return 
             Objects.equals(broadcastclient, that.broadcastclient) &&
             Arrays.equals(servers, that.servers);

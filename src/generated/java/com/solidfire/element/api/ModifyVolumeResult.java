@@ -62,6 +62,7 @@ public class ModifyVolumeResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumeResult that = (ModifyVolumeResult) o;
+
         return 
             Objects.equals(volume, that.volume);
     }

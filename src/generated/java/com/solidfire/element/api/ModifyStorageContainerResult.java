@@ -61,6 +61,7 @@ public class ModifyStorageContainerResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyStorageContainerResult that = (ModifyStorageContainerResult) o;
+
         return 
             Objects.equals(storageContainer, that.storageContainer);
     }

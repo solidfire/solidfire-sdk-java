@@ -62,6 +62,7 @@ public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetVolumeAccessGroupEfficiencyRequest that = (GetVolumeAccessGroupEfficiencyRequest) o;
+
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID);
     }

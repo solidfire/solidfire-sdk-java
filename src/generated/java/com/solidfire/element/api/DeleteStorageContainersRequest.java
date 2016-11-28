@@ -62,6 +62,7 @@ public class DeleteStorageContainersRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         DeleteStorageContainersRequest that = (DeleteStorageContainersRequest) o;
+
         return 
             Arrays.equals(storageContainerIDs, that.storageContainerIDs);
     }

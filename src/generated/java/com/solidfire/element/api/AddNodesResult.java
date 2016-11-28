@@ -62,6 +62,7 @@ public class AddNodesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddNodesResult that = (AddNodesResult) o;
+
         return 
             Arrays.equals(nodes, that.nodes);
     }

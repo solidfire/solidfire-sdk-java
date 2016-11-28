@@ -102,6 +102,7 @@ public class ListVirtualVolumesRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualVolumesRequest that = (ListVirtualVolumesRequest) o;
+
         return 
             Objects.equals(details, that.details) &&
             Objects.equals(limit, that.limit) &&

@@ -65,6 +65,7 @@ public class ListSnapshotsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListSnapshotsResult that = (ListSnapshotsResult) o;
+
         return 
             Arrays.equals(snapshots, that.snapshots);
     }

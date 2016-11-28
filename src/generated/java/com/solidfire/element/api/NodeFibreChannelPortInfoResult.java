@@ -72,6 +72,7 @@ public class NodeFibreChannelPortInfoResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         NodeFibreChannelPortInfoResult that = (NodeFibreChannelPortInfoResult) o;
+
         return 
             Objects.equals(nodeID, that.nodeID) &&
             Objects.equals(result, that.result);

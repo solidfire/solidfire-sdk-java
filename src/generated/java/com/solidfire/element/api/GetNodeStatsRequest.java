@@ -62,6 +62,7 @@ public class GetNodeStatsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetNodeStatsRequest that = (GetNodeStatsRequest) o;
+
         return 
             Objects.equals(nodeID, that.nodeID);
     }

@@ -72,6 +72,7 @@ public class SetSnmpACLRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetSnmpACLRequest that = (SetSnmpACLRequest) o;
+
         return 
             Arrays.equals(networks, that.networks) &&
             Arrays.equals(usmUsers, that.usmUsers);

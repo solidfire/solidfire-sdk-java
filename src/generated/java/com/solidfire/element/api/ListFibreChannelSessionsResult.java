@@ -62,6 +62,7 @@ public class ListFibreChannelSessionsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListFibreChannelSessionsResult that = (ListFibreChannelSessionsResult) o;
+
         return 
             Arrays.equals(sessions, that.sessions);
     }

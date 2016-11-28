@@ -376,6 +376,7 @@ public class GetLimitsResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetLimitsResult that = (GetLimitsResult) o;
+
         return 
             Objects.equals(accountCountMax, that.accountCountMax) &&
             Objects.equals(accountNameLengthMax, that.accountNameLengthMax) &&

@@ -72,6 +72,7 @@ public class RemoveVirtualNetworkRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveVirtualNetworkRequest that = (RemoveVirtualNetworkRequest) o;
+
         return 
             Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
             Objects.equals(virtualNetworkTag, that.virtualNetworkTag);

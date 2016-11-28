@@ -91,6 +91,7 @@ public class ListEventsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListEventsRequest that = (ListEventsRequest) o;
+
         return 
             Objects.equals(maxEvents, that.maxEvents) &&
             Objects.equals(startEventID, that.startEventID) &&

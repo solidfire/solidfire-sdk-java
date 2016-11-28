@@ -45,8 +45,7 @@ public class AddLdapClusterAdminResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddLdapClusterAdminResult that = (AddLdapClusterAdminResult) o;
-
+        
         return true;
     }
 

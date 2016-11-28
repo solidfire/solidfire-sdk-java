@@ -102,6 +102,7 @@ public class AddClusterAdminRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddClusterAdminRequest that = (AddClusterAdminRequest) o;
+
         return 
             Objects.equals(username, that.username) &&
             Objects.equals(password, that.password) &&

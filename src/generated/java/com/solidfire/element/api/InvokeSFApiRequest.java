@@ -72,6 +72,7 @@ public class InvokeSFApiRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         InvokeSFApiRequest that = (InvokeSFApiRequest) o;
+
         return 
             Objects.equals(method, that.method) &&
             Objects.equals(parameters, that.parameters);

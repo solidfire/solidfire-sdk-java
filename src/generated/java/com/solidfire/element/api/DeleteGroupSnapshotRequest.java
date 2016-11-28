@@ -73,6 +73,7 @@ public class DeleteGroupSnapshotRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         DeleteGroupSnapshotRequest that = (DeleteGroupSnapshotRequest) o;
+
         return 
             Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
             Objects.equals(saveMembers, that.saveMembers);

@@ -72,6 +72,7 @@ public class ResetDrivesRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ResetDrivesRequest that = (ResetDrivesRequest) o;
+
         return 
             Objects.equals(drives, that.drives) &&
             Objects.equals(force, that.force);

@@ -45,8 +45,7 @@ public class CancelCloneResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CancelCloneResult that = (CancelCloneResult) o;
-
+        
         return true;
     }
 

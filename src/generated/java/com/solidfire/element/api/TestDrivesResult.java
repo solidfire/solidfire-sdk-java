@@ -61,6 +61,7 @@ public class TestDrivesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestDrivesResult that = (TestDrivesResult) o;
+
         return 
             Objects.equals(details, that.details);
     }

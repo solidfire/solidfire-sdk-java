@@ -72,6 +72,7 @@ public class StartClusterPairingResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         StartClusterPairingResult that = (StartClusterPairingResult) o;
+
         return 
             Objects.equals(clusterPairingKey, that.clusterPairingKey) &&
             Objects.equals(clusterPairID, that.clusterPairID);

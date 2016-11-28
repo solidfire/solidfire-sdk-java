@@ -62,6 +62,7 @@ public class ListSchedulesResult implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListSchedulesResult that = (ListSchedulesResult) o;
+
         return 
             Arrays.equals(schedules, that.schedules);
     }

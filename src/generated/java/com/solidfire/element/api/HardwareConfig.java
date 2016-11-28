@@ -340,6 +340,7 @@ public class HardwareConfig implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         HardwareConfig that = (HardwareConfig) o;
+
         return 
             Objects.equals(scsiBusInternalDriver, that.scsiBusInternalDriver) &&
             Arrays.equals(networkDriver, that.networkDriver) &&

@@ -76,6 +76,7 @@ public class StartVolumePairingRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         StartVolumePairingRequest that = (StartVolumePairingRequest) o;
+
         return 
             Objects.equals(volumeID, that.volumeID) &&
             Objects.equals(mode, that.mode);

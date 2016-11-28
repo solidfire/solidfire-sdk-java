@@ -115,6 +115,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateVolumeAccessGroupRequest that = (CreateVolumeAccessGroupRequest) o;
+
         return 
             Objects.equals(name, that.name) &&
             Objects.equals(initiators, that.initiators) &&

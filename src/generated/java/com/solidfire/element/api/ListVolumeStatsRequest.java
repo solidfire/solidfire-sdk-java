@@ -61,6 +61,7 @@ public class ListVolumeStatsRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumeStatsRequest that = (ListVolumeStatsRequest) o;
+
         return 
             Objects.equals(volumeIDs, that.volumeIDs);
     }

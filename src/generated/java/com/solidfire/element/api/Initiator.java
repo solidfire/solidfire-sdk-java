@@ -102,6 +102,7 @@ public class Initiator implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         Initiator that = (Initiator) o;
+
         return 
             Objects.equals(alias, that.alias) &&
             Objects.equals(initiatorID, that.initiatorID) &&

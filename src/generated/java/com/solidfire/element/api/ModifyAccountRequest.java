@@ -114,6 +114,7 @@ public class ModifyAccountRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyAccountRequest that = (ModifyAccountRequest) o;
+
         return 
             Objects.equals(accountID, that.accountID) &&
             Objects.equals(username, that.username) &&

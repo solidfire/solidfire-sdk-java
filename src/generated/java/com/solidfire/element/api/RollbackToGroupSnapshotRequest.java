@@ -94,6 +94,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
 
         RollbackToGroupSnapshotRequest that = (RollbackToGroupSnapshotRequest) o;
+
         return 
             Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
             Objects.equals(saveCurrentState, that.saveCurrentState) &&
