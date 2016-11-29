@@ -42,13 +42,15 @@ public class HardwareInfo implements Serializable {
     @SerializedName("network") private java.util.Map<String, Object> network;
     @SerializedName("networkInterfaces") private java.util.Map<String, Object> networkInterfaces;
     @SerializedName("nvram") private java.util.Map<String, Object> nvram;
-    @SerializedName("origin") private String origin;
+    @SerializedName("origin") private java.util.Map<String, Object> origin;
     @SerializedName("platform") private java.util.Map<String, Object> platform;
     @SerializedName("serial") private String serial;
     @SerializedName("storage") private java.util.Map<String, Object> storage;
     @SerializedName("sysinfo") private java.util.Map<String, Object> sysinfo;
     @SerializedName("system") private java.util.Map<String, Object> system;
     @SerializedName("uuid") private java.util.UUID uuid;
+    @SerializedName("systemMemory") private SystemMemory systemMemory;
+    @SerializedName("fileSystemUsage") private java.util.Map<String, Object> fileSystemUsage;
 
     // empty constructor
     @Since("7.0")
@@ -66,13 +68,15 @@ public class HardwareInfo implements Serializable {
         java.util.Map<String, Object> network,
         java.util.Map<String, Object> networkInterfaces,
         java.util.Map<String, Object> nvram,
-        String origin,
+        java.util.Map<String, Object> origin,
         java.util.Map<String, Object> platform,
         String serial,
         java.util.Map<String, Object> storage,
         java.util.Map<String, Object> sysinfo,
         java.util.Map<String, Object> system,
-        java.util.UUID uuid
+        java.util.UUID uuid,
+        SystemMemory systemMemory,
+        java.util.Map<String, Object> fileSystemUsage
     )
     {
         this.bus = bus;
@@ -91,6 +95,8 @@ public class HardwareInfo implements Serializable {
         this.sysinfo = sysinfo;
         this.system = system;
         this.uuid = uuid;
+        this.systemMemory = systemMemory;
+        this.fileSystemUsage = fileSystemUsage;
     }
 
     /** 
@@ -159,8 +165,8 @@ public class HardwareInfo implements Serializable {
     /** 
      * The vendor of the motherboard.
      **/
-    public String getOrigin() { return this.origin; }
-    public void setOrigin(String origin) { 
+    public java.util.Map<String, Object> getOrigin() { return this.origin; }
+    public void setOrigin(java.util.Map<String, Object> origin) { 
         this.origin = origin;
     }
     /** 
@@ -205,6 +211,18 @@ public class HardwareInfo implements Serializable {
     public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
+    /** 
+     **/
+    public SystemMemory getSystemMemory() { return this.systemMemory; }
+    public void setSystemMemory(SystemMemory systemMemory) { 
+        this.systemMemory = systemMemory;
+    }
+    /** 
+     **/
+    public java.util.Map<String, Object> getFileSystemUsage() { return this.fileSystemUsage; }
+    public void setFileSystemUsage(java.util.Map<String, Object> fileSystemUsage) { 
+        this.fileSystemUsage = fileSystemUsage;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -229,12 +247,14 @@ public class HardwareInfo implements Serializable {
             Objects.equals(storage, that.storage) &&
             Objects.equals(sysinfo, that.sysinfo) &&
             Objects.equals(system, that.system) &&
-            Objects.equals(uuid, that.uuid);
+            Objects.equals(uuid, that.uuid) &&
+            Objects.equals(systemMemory, that.systemMemory) &&
+            Objects.equals(fileSystemUsage, that.fileSystemUsage);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( bus, (Object[])driveHardware, (Object[])fibreChannelPorts, hardwareConfig, kernelCrashDumpState, memory, network, networkInterfaces, nvram, origin, platform, serial, storage, sysinfo, system, uuid );
+        return Objects.hash( bus, (Object[])driveHardware, (Object[])fibreChannelPorts, hardwareConfig, kernelCrashDumpState, memory, network, networkInterfaces, nvram, origin, platform, serial, storage, sysinfo, system, uuid, systemMemory, fileSystemUsage );
     }
 
 
@@ -256,6 +276,8 @@ public class HardwareInfo implements Serializable {
         map.put("sysinfo", sysinfo);
         map.put("system", system);
         map.put("uuid", uuid);
+        map.put("systemMemory", systemMemory);
+        map.put("fileSystemUsage", fileSystemUsage);
         return map;
     }
 
@@ -280,6 +302,8 @@ public class HardwareInfo implements Serializable {
         sb.append(" sysinfo : ").append(sysinfo).append(",");
         sb.append(" system : ").append(system).append(",");
         sb.append(" uuid : ").append(uuid).append(",");
+        sb.append(" systemMemory : ").append(systemMemory).append(",");
+        sb.append(" fileSystemUsage : ").append(fileSystemUsage).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -306,13 +330,15 @@ public class HardwareInfo implements Serializable {
         private java.util.Map<String, Object> network;
         private java.util.Map<String, Object> networkInterfaces;
         private java.util.Map<String, Object> nvram;
-        private String origin;
+        private java.util.Map<String, Object> origin;
         private java.util.Map<String, Object> platform;
         private String serial;
         private java.util.Map<String, Object> storage;
         private java.util.Map<String, Object> sysinfo;
         private java.util.Map<String, Object> system;
         private java.util.UUID uuid;
+        private SystemMemory systemMemory;
+        private java.util.Map<String, Object> fileSystemUsage;
 
         private Builder() { }
 
@@ -333,7 +359,9 @@ public class HardwareInfo implements Serializable {
                          this.storage,
                          this.sysinfo,
                          this.system,
-                         this.uuid);
+                         this.uuid,
+                         this.systemMemory,
+                         this.fileSystemUsage);
         }
 
         private HardwareInfo.Builder buildFrom(final HardwareInfo req) {
@@ -353,6 +381,8 @@ public class HardwareInfo implements Serializable {
             this.sysinfo = req.sysinfo;
             this.system = req.system;
             this.uuid = req.uuid;
+            this.systemMemory = req.systemMemory;
+            this.fileSystemUsage = req.fileSystemUsage;
 
             return this;
         }
@@ -402,7 +432,7 @@ public class HardwareInfo implements Serializable {
             return this;
         }
 
-        public HardwareInfo.Builder origin(final String origin) {
+        public HardwareInfo.Builder origin(final java.util.Map<String, Object> origin) {
             this.origin = origin;
             return this;
         }
@@ -434,6 +464,16 @@ public class HardwareInfo implements Serializable {
 
         public HardwareInfo.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
+            return this;
+        }
+
+        public HardwareInfo.Builder systemMemory(final SystemMemory systemMemory) {
+            this.systemMemory = systemMemory;
+            return this;
+        }
+
+        public HardwareInfo.Builder fileSystemUsage(final java.util.Map<String, Object> fileSystemUsage) {
+            this.fileSystemUsage = fileSystemUsage;
             return this;
         }
 

@@ -30,6 +30,68 @@ import com.solidfire.core.javautil.Optional;
 public interface SolidFireElementIF {
 
     /** 
+     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request);
+
+    /** 
+     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(
+        Optional<java.util.UUID> startVirtualVolumeID,
+        Optional<java.util.UUID[]> virtualVolumeIDs
+        );
+    /** 
+     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public Object getRawStats();
+    /** 
+     * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
+     **/
+    @Since("9.0")
+    @ConnectionType("Node")
+    public GetHardwareInfoResult getHardwareInfo();
+    /** 
+     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public Object getCompleteStats();
+    /** 
+     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request);
+
+    /** 
+     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListDriveStatsResult listDriveStats(
+        Optional<Long[]> drives
+        );
+    /** 
+     **/
+    @Since("9.0")
+    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request);
+
+    /** 
+     **/
+    @Since("9.0")
+    public ListVolumeStatsResult listVolumeStats(
+        Optional<Long[]> volumeIDs
+        );
+    /** 
      * Used to add a new account to the system.
      * New volumes can be created under the new account.
      * The CHAP settings specified for the account applies to all volumes owned by the account.
@@ -2276,68 +2338,6 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public SnmpSendTestTrapsResult snmpSendTestTraps();
-    /** 
-     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request);
-
-    /** 
-     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(
-        Optional<java.util.UUID> startVirtualVolumeID,
-        Optional<java.util.UUID[]> virtualVolumeIDs
-        );
-    /** 
-     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public Object getRawStats();
-    /** 
-     * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
-     **/
-    @Since("9.0")
-    @ConnectionType("Node")
-    public GetHardwareInfoResult getHardwareInfo();
-    /** 
-     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public Object getCompleteStats();
-    /** 
-     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request);
-
-    /** 
-     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListDriveStatsResult listDriveStats(
-        Optional<Long[]> drives
-        );
-    /** 
-     **/
-    @Since("9.0")
-    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request);
-
-    /** 
-     **/
-    @Since("9.0")
-    public ListVolumeStatsResult listVolumeStats(
-        Optional<Long[]> volumeIDs
-        );
     /** 
      * CloneVolume is used to create a copy of the volume.
      * This method is asynchronous and may take a variable amount of time to complete.
