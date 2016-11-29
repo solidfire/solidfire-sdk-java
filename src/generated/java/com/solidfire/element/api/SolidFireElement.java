@@ -3212,7 +3212,7 @@ public class SolidFireElement
         return this.copyVolume(new CopyVolumeRequest(volumeID, dstVolumeID, snapshotID));
     }
     /** 
-     * Cancels a currently running clone operation.
+     * Cancels a currently running clone operation. This method does not return anything.
      **/
     @Override
     @Since("9.0")
@@ -3222,7 +3222,7 @@ public class SolidFireElement
     }
 
     /** 
-     * Cancels a currently running clone operation.
+     * Cancels a currently running clone operation. This method does not return anything.
      **/
     @Override
     @Since("9.0")
@@ -3233,7 +3233,7 @@ public class SolidFireElement
         return this.cancelClone(new CancelCloneRequest(cloneID));
     }
     /** 
-     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. 
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
      **/
     @Override
     @Since("9.0")
@@ -3243,7 +3243,7 @@ public class SolidFireElement
     }
 
     /** 
-     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. 
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
      **/
     @Override
     @Since("9.0")
@@ -3812,7 +3812,7 @@ public class SolidFireElement
         return this.updateBulkVolumeStatus(new UpdateBulkVolumeStatusRequest(key, status, percentComplete, message, attributes));
     }
     /** 
-     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for a volume. For more information on QoS in a  cluster, see the . 
+     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.
      **/
     @Override
     @Since("9.0")
@@ -3822,7 +3822,7 @@ public class SolidFireElement
     }
 
     /** 
-     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for a volume. For more information on QoS in a  cluster, see the . 
+     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.
      **/
     @Override
     @Since("9.0")

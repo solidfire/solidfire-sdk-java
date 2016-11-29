@@ -2419,14 +2419,14 @@ public interface SolidFireElementIF {
         Optional<Long> snapshotID
         );
     /** 
-     * Cancels a currently running clone operation.
+     * Cancels a currently running clone operation. This method does not return anything.
      **/
     @Since("9.0")
     @ConnectionType("Cluster")
     public CancelCloneResult cancelClone(final CancelCloneRequest request);
 
     /** 
-     * Cancels a currently running clone operation.
+     * Cancels a currently running clone operation. This method does not return anything.
      **/
     @Since("9.0")
     @ConnectionType("Cluster")
@@ -2434,14 +2434,14 @@ public interface SolidFireElementIF {
         Long cloneID
         );
     /** 
-     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. 
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
      **/
     @Since("9.0")
     @ConnectionType("Cluster")
     public CancelGroupCloneResult cancelGroupClone(final CancelGroupCloneRequest request);
 
     /** 
-     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. 
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
      **/
     @Since("9.0")
     @ConnectionType("Cluster")
@@ -2884,14 +2884,14 @@ public interface SolidFireElementIF {
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
-     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for a volume. For more information on QoS in a  cluster, see the . 
+     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.
      **/
     @Since("9.0")
     @ConnectionType("Cluster")
     public SetDefaultQoSResult setDefaultQoS(final SetDefaultQoSRequest request);
 
     /** 
-     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for a volume. For more information on QoS in a  cluster, see the . 
+     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.
      **/
     @Since("9.0")
     @ConnectionType("Cluster")
