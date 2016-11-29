@@ -35,7 +35,7 @@ public class HardwareInfo implements Serializable {
     public static final long serialVersionUID = -2700695853978027936L;
     @SerializedName("bus") private java.util.Map<String, Object> bus;
     @SerializedName("driveHardware") private DriveHardware[] driveHardware;
-    @SerializedName("fibreChannelPorts") private Long[] fibreChannelPorts;
+    @SerializedName("fibreChannelPorts") private FibreChannelPortInfo[] fibreChannelPorts;
     @SerializedName("hardwareConfig") private java.util.Map<String, Object> hardwareConfig;
     @SerializedName("kernelCrashDumpState") private String kernelCrashDumpState;
     @SerializedName("memory") private java.util.Map<String, Object> memory;
@@ -61,7 +61,7 @@ public class HardwareInfo implements Serializable {
     public HardwareInfo(
         java.util.Map<String, Object> bus,
         DriveHardware[] driveHardware,
-        Long[] fibreChannelPorts,
+        FibreChannelPortInfo[] fibreChannelPorts,
         java.util.Map<String, Object> hardwareConfig,
         String kernelCrashDumpState,
         java.util.Map<String, Object> memory,
@@ -116,8 +116,8 @@ public class HardwareInfo implements Serializable {
     /** 
      * A list of  ports on the node.
      **/
-    public Long[] getFibreChannelPorts() { return this.fibreChannelPorts; }
-    public void setFibreChannelPorts(Long[] fibreChannelPorts) { 
+    public FibreChannelPortInfo[] getFibreChannelPorts() { return this.fibreChannelPorts; }
+    public void setFibreChannelPorts(FibreChannelPortInfo[] fibreChannelPorts) { 
         this.fibreChannelPorts = fibreChannelPorts;
     }
     /** 
@@ -323,7 +323,7 @@ public class HardwareInfo implements Serializable {
     public static class Builder {
         private java.util.Map<String, Object> bus;
         private DriveHardware[] driveHardware;
-        private Long[] fibreChannelPorts;
+        private FibreChannelPortInfo[] fibreChannelPorts;
         private java.util.Map<String, Object> hardwareConfig;
         private String kernelCrashDumpState;
         private java.util.Map<String, Object> memory;
@@ -397,7 +397,7 @@ public class HardwareInfo implements Serializable {
             return this;
         }
 
-        public HardwareInfo.Builder fibreChannelPorts(final Long[] fibreChannelPorts) {
+        public HardwareInfo.Builder fibreChannelPorts(final FibreChannelPortInfo[] fibreChannelPorts) {
             this.fibreChannelPorts = fibreChannelPorts;
             return this;
         }
