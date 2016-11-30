@@ -33,7 +33,6 @@ import java.util.Objects;
 public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
 
     public static final long serialVersionUID = 8894287531491187419L;
-    @SerializedName("startVirtualVolumeID") private Optional<java.util.UUID> startVirtualVolumeID;
     @SerializedName("virtualVolumeIDs") private Optional<java.util.UUID[]> virtualVolumeIDs;
 
     // empty constructor
@@ -43,21 +42,12 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListVolumeStatsByVirtualVolumeRequest(
-        Optional<java.util.UUID> startVirtualVolumeID,
         Optional<java.util.UUID[]> virtualVolumeIDs
     )
     {
-        this.startVirtualVolumeID = (startVirtualVolumeID == null) ? Optional.<java.util.UUID>empty() : startVirtualVolumeID;
         this.virtualVolumeIDs = (virtualVolumeIDs == null) ? Optional.<java.util.UUID[]>empty() : virtualVolumeIDs;
     }
 
-    /** 
-     * The ID of the virtual volume at which to begin the list.
-     **/
-    public Optional<java.util.UUID> getStartVirtualVolumeID() { return this.startVirtualVolumeID; }
-    public void setStartVirtualVolumeID(Optional<java.util.UUID> startVirtualVolumeID) { 
-        this.startVirtualVolumeID = (startVirtualVolumeID == null) ? Optional.<java.util.UUID>empty() : startVirtualVolumeID;
-    }
     /** 
      * A list of virtual volume  IDs for which to retrieve information. If you specify this parameter, the method returns information about only these virtual volumes.
      **/
@@ -74,19 +64,17 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
         ListVolumeStatsByVirtualVolumeRequest that = (ListVolumeStatsByVirtualVolumeRequest) o;
 
         return 
-            Objects.equals(startVirtualVolumeID, that.startVirtualVolumeID) &&
             Objects.equals(virtualVolumeIDs, that.virtualVolumeIDs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( startVirtualVolumeID, virtualVolumeIDs );
+        return Objects.hash( virtualVolumeIDs );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("startVirtualVolumeID", startVirtualVolumeID);
         map.put("virtualVolumeIDs", virtualVolumeIDs);
         return map;
     }
@@ -96,9 +84,6 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != startVirtualVolumeID && startVirtualVolumeID.isPresent()){
-            sb.append(" startVirtualVolumeID : ").append(startVirtualVolumeID).append(",");
-        }
         if(null != virtualVolumeIDs && virtualVolumeIDs.isPresent()){
             sb.append(" virtualVolumeIDs : ").append(virtualVolumeIDs).append(",");
         }
@@ -119,26 +104,18 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<java.util.UUID> startVirtualVolumeID;
         private Optional<java.util.UUID[]> virtualVolumeIDs;
 
         private Builder() { }
 
         public ListVolumeStatsByVirtualVolumeRequest build() {
             return new ListVolumeStatsByVirtualVolumeRequest (
-                         this.startVirtualVolumeID,
                          this.virtualVolumeIDs);
         }
 
         private ListVolumeStatsByVirtualVolumeRequest.Builder buildFrom(final ListVolumeStatsByVirtualVolumeRequest req) {
-            this.startVirtualVolumeID = req.startVirtualVolumeID;
             this.virtualVolumeIDs = req.virtualVolumeIDs;
 
-            return this;
-        }
-
-        public ListVolumeStatsByVirtualVolumeRequest.Builder optionalStartVirtualVolumeID(final java.util.UUID startVirtualVolumeID) {
-            this.startVirtualVolumeID = (startVirtualVolumeID == null) ? Optional.<java.util.UUID>empty() : Optional.of(startVirtualVolumeID);
             return this;
         }
 

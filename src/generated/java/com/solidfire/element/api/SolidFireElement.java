@@ -40,93 +40,207 @@ public class SolidFireElement
     }
 
     /** 
-     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
      **/
     @Override
     @Since("9.0")
     @ConnectionType("Cluster")
-    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request) {
-        return super.sendRequest("ListVolumeStatsByVirtualVolume", request, ListVolumeStatsByVirtualVolumeRequest.class, ListVolumeStatsByVirtualVolumeResult.class);
+    public ListVirtualVolumesResult listVirtualVolumes(final ListVirtualVolumesRequest request) {
+        return super.sendRequest("ListVirtualVolumes", request, ListVirtualVolumesRequest.class, ListVirtualVolumesResult.class);
     }
 
     /** 
-     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
      **/
     @Override
     @Since("9.0")
     @ConnectionType("Cluster")
-    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(
+    public ListVirtualVolumesResult listVirtualVolumes(
+        Optional<Boolean> details,
+        Optional<Long> limit,
+        Optional<Boolean> recursive,
         Optional<java.util.UUID> startVirtualVolumeID,
         Optional<java.util.UUID[]> virtualVolumeIDs
         ) {
-        return this.listVolumeStatsByVirtualVolume(new ListVolumeStatsByVirtualVolumeRequest(startVirtualVolumeID, virtualVolumeIDs));
+        return this.listVirtualVolumes(new ListVirtualVolumesRequest(details, limit, recursive, startVirtualVolumeID, virtualVolumeIDs));
     }
     /** 
-     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public Object getRawStats() {
-        return super.sendRequest("GetRawStats", null, null, Object.class);
-    }
-    /** 
-     * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Node")
-    public GetHardwareInfoResult getHardwareInfo() {
-        return super.sendRequest("GetHardwareInfo", null, null, GetHardwareInfoResult.class);
-    }
-    /** 
-     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public Object getCompleteStats() {
-        return super.sendRequest("GetCompleteStats", null, null, Object.class);
-    }
-    /** 
-     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
      **/
     @Override
     @Since("9.0")
     @ConnectionType("Cluster")
-    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request) {
-        return super.sendRequest("ListDriveStats", request, ListDriveStatsRequest.class, ListDriveStatsResult.class);
+    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request) {
+        return super.sendRequest("PrepareVirtualSnapshot", request, PrepareVirtualSnapshotRequest.class, PrepareVirtualSnapshotResult.class);
     }
 
     /** 
-     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
      **/
     @Override
     @Since("9.0")
     @ConnectionType("Cluster")
-    public ListDriveStatsResult listDriveStats(
-        Optional<Long[]> drives
+    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(
+        java.util.UUID virtualVolumeID,
+        Optional<String> name,
+        Optional<Boolean> writableSnapshot,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
         ) {
-        return this.listDriveStats(new ListDriveStatsRequest(drives));
+        return this.prepareVirtualSnapshot(new PrepareVirtualSnapshotRequest(virtualVolumeID, name, writableSnapshot, callingVirtualVolumeHostID));
     }
     /** 
+     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
+     * chunks not shared between two volumes. This call will return results in less 
+     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
+     * error is thrown. If the offset/length combination is invalid or out fo range 
+     * an error is thrown.
      **/
     @Override
     @Since("9.0")
-    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request) {
-        return super.sendRequest("ListVolumeStats", request, ListVolumeStatsRequest.class, ListVolumeStatsResult.class);
+    @ConnectionType("Cluster")
+    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request) {
+        return super.sendRequest("GetVirtualVolumeUnsharedChunks", request, GetVirtualVolumeUnsharedChunksRequest.class, VirtualVolumeUnsharedChunkResult.class);
     }
 
     /** 
+     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
+     * chunks not shared between two volumes. This call will return results in less 
+     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
+     * error is thrown. If the offset/length combination is invalid or out fo range 
+     * an error is thrown.
      **/
     @Override
     @Since("9.0")
-    public ListVolumeStatsResult listVolumeStats(
-        Optional<Long[]> volumeIDs
+    @ConnectionType("Cluster")
+    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(
+        java.util.UUID virtualVolumeID,
+        java.util.UUID baseVirtualVolumeID,
+        Long segmentStart,
+        Long segmentLength,
+        Long chunkSize,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
         ) {
-        return this.listVolumeStats(new ListVolumeStatsRequest(volumeIDs));
+        return this.getVirtualVolumeUnsharedChunks(new GetVirtualVolumeUnsharedChunksRequest(virtualVolumeID, baseVirtualVolumeID, segmentStart, segmentLength, chunkSize, callingVirtualVolumeHostID));
+    }
+    /** 
+     * CreateVirtualVolumeHost creates a new ESX host.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request) {
+        return super.sendRequest("CreateVirtualVolumeHost", request, CreateVirtualVolumeHostRequest.class, VirtualVolumeNullResult.class);
+    }
+
+    /** 
+     * CreateVirtualVolumeHost creates a new ESX host.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult createVirtualVolumeHost(
+        java.util.UUID virtualVolumeHostID,
+        java.util.UUID clusterID,
+        Optional<String[]> initiatorNames,
+        Optional<java.util.UUID[]> visibleProtocolEndpointIDs,
+        Optional<String> hostAddress,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.createVirtualVolumeHost(new CreateVirtualVolumeHostRequest(virtualVolumeHostID, clusterID, initiatorNames, visibleProtocolEndpointIDs, hostAddress, callingVirtualVolumeHostID));
+    }
+    /** 
+     * ListVirtualVolumeHosts returns a list of known ESX hosts.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(final ListVirtualVolumeHostsRequest request) {
+        return super.sendRequest("ListVirtualVolumeHosts", request, ListVirtualVolumeHostsRequest.class, ListVirtualVolumeHostsResult.class);
+    }
+
+    /** 
+     * ListVirtualVolumeHosts returns a list of known ESX hosts.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(
+        Optional<java.util.UUID[]> virtualVolumeHostIDs
+        ) {
+        return this.listVirtualVolumeHosts(new ListVirtualVolumeHostsRequest(virtualVolumeHostIDs));
+    }
+    /** 
+     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request) {
+        return super.sendRequest("GetVirtualVolumeTaskUpdate", request, GetVirtualVolumeTaskUpdateRequest.class, VirtualVolumeTaskResult.class);
+    }
+
+    /** 
+     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(
+        java.util.UUID virtualVolumeTaskID,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.getVirtualVolumeTaskUpdate(new GetVirtualVolumeTaskUpdateRequest(virtualVolumeTaskID, callingVirtualVolumeHostID));
+    }
+    /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request) {
+        return super.sendRequest("ListVirtualVolumeTasks", request, ListVirtualVolumeTasksRequest.class, ListVirtualVolumeTasksResult.class);
+    }
+
+    /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
+        Optional<java.util.UUID[]> virtualVolumeTaskIDs
+        ) {
+        return this.listVirtualVolumeTasks(new ListVirtualVolumeTasksRequest(virtualVolumeTaskIDs));
+    }
+    /** 
+     * ListVirtualVolumeBindings returns a list of VVol bindings.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(final ListVirtualVolumeBindingsRequest request) {
+        return super.sendRequest("ListVirtualVolumeBindings", request, ListVirtualVolumeBindingsRequest.class, ListVirtualVolumeBindingsResult.class);
+    }
+
+    /** 
+     * ListVirtualVolumeBindings returns a list of VVol bindings.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(
+        Optional<Long[]> virtualVolumeBindingIDs
+        ) {
+        return this.listVirtualVolumeBindings(new ListVirtualVolumeBindingsRequest(virtualVolumeBindingIDs));
+    }
+    /** 
+     * Enables retrieval of the number of virtual volumes currently in the system.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public GetVirtualVolumeCountResult getVirtualVolumeCount() {
+        return super.sendRequest("GetVirtualVolumeCount", null, null, GetVirtualVolumeCountResult.class);
     }
     /** 
      * Used to add a new account to the system.
@@ -2416,212 +2530,6 @@ public class SolidFireElement
         return this.removeVirtualNetwork(new RemoveVirtualNetworkRequest(virtualNetworkID, virtualNetworkTag));
     }
     /** 
-     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumesResult listVirtualVolumes(final ListVirtualVolumesRequest request) {
-        return super.sendRequest("ListVirtualVolumes", request, ListVirtualVolumesRequest.class, ListVirtualVolumesResult.class);
-    }
-
-    /** 
-     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumesResult listVirtualVolumes(
-        Optional<Boolean> details,
-        Optional<Long> limit,
-        Optional<Boolean> recursive,
-        Optional<java.util.UUID> startVirtualVolumeID,
-        Optional<java.util.UUID[]> virtualVolumeIDs
-        ) {
-        return this.listVirtualVolumes(new ListVirtualVolumesRequest(details, limit, recursive, startVirtualVolumeID, virtualVolumeIDs));
-    }
-    /** 
-     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request) {
-        return super.sendRequest("PrepareVirtualSnapshot", request, PrepareVirtualSnapshotRequest.class, PrepareVirtualSnapshotResult.class);
-    }
-
-    /** 
-     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(
-        java.util.UUID virtualVolumeID,
-        Optional<String> name,
-        Optional<Boolean> writableSnapshot,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        ) {
-        return this.prepareVirtualSnapshot(new PrepareVirtualSnapshotRequest(virtualVolumeID, name, writableSnapshot, callingVirtualVolumeHostID));
-    }
-    /** 
-     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
-     * chunks not shared between two volumes. This call will return results in less 
-     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
-     * error is thrown. If the offset/length combination is invalid or out fo range 
-     * an error is thrown.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request) {
-        return super.sendRequest("GetVirtualVolumeUnsharedChunks", request, GetVirtualVolumeUnsharedChunksRequest.class, VirtualVolumeUnsharedChunkResult.class);
-    }
-
-    /** 
-     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
-     * chunks not shared between two volumes. This call will return results in less 
-     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
-     * error is thrown. If the offset/length combination is invalid or out fo range 
-     * an error is thrown.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(
-        java.util.UUID virtualVolumeID,
-        java.util.UUID baseVirtualVolumeID,
-        Long segmentStart,
-        Long segmentLength,
-        Long chunkSize,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        ) {
-        return this.getVirtualVolumeUnsharedChunks(new GetVirtualVolumeUnsharedChunksRequest(virtualVolumeID, baseVirtualVolumeID, segmentStart, segmentLength, chunkSize, callingVirtualVolumeHostID));
-    }
-    /** 
-     * CreateVirtualVolumeHost creates a new ESX host.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request) {
-        return super.sendRequest("CreateVirtualVolumeHost", request, CreateVirtualVolumeHostRequest.class, VirtualVolumeNullResult.class);
-    }
-
-    /** 
-     * CreateVirtualVolumeHost creates a new ESX host.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeNullResult createVirtualVolumeHost(
-        java.util.UUID virtualVolumeHostID,
-        java.util.UUID clusterID,
-        Optional<String[]> initiatorNames,
-        Optional<java.util.UUID[]> visibleProtocolEndpointIDs,
-        Optional<String> hostAddress,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        ) {
-        return this.createVirtualVolumeHost(new CreateVirtualVolumeHostRequest(virtualVolumeHostID, clusterID, initiatorNames, visibleProtocolEndpointIDs, hostAddress, callingVirtualVolumeHostID));
-    }
-    /** 
-     * ListVirtualVolumeHosts returns a list of known ESX hosts.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(final ListVirtualVolumeHostsRequest request) {
-        return super.sendRequest("ListVirtualVolumeHosts", request, ListVirtualVolumeHostsRequest.class, ListVirtualVolumeHostsResult.class);
-    }
-
-    /** 
-     * ListVirtualVolumeHosts returns a list of known ESX hosts.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(
-        Optional<java.util.UUID[]> virtualVolumeHostIDs,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        ) {
-        return this.listVirtualVolumeHosts(new ListVirtualVolumeHostsRequest(virtualVolumeHostIDs, callingVirtualVolumeHostID));
-    }
-    /** 
-     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request) {
-        return super.sendRequest("GetVirtualVolumeTaskUpdate", request, GetVirtualVolumeTaskUpdateRequest.class, VirtualVolumeTaskResult.class);
-    }
-
-    /** 
-     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(
-        java.util.UUID virtualVolumeTaskID,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        ) {
-        return this.getVirtualVolumeTaskUpdate(new GetVirtualVolumeTaskUpdateRequest(virtualVolumeTaskID, callingVirtualVolumeHostID));
-    }
-    /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request) {
-        return super.sendRequest("ListVirtualVolumeTasks", request, ListVirtualVolumeTasksRequest.class, ListVirtualVolumeTasksResult.class);
-    }
-
-    /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
-        Optional<java.util.UUID[]> virtualVolumeTaskIDs,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        ) {
-        return this.listVirtualVolumeTasks(new ListVirtualVolumeTasksRequest(virtualVolumeTaskIDs, callingVirtualVolumeHostID));
-    }
-    /** 
-     * ListVirtualVolumeBindings returns a list of VVol bindings.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(final ListVirtualVolumeBindingsRequest request) {
-        return super.sendRequest("ListVirtualVolumeBindings", request, ListVirtualVolumeBindingsRequest.class, ListVirtualVolumeBindingsResult.class);
-    }
-
-    /** 
-     * ListVirtualVolumeBindings returns a list of VVol bindings.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(
-        Optional<Long[]> virtualVolumeBindingIDs,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        ) {
-        return this.listVirtualVolumeBindings(new ListVirtualVolumeBindingsRequest(virtualVolumeBindingIDs, callingVirtualVolumeHostID));
-    }
-    /** 
-     * Enables retrieval of the number of virtual volumes currently in the system.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public GetVirtualVolumeCountResult getVirtualVolumeCount() {
-        return super.sendRequest("GetVirtualVolumeCount", null, null, GetVirtualVolumeCountResult.class);
-    }
-    /** 
      * Return the high-level capacity measurements for an entire cluster.
      * The fields returned from this method can be used to calculate the efficiency rates that are displayed in the Element User Interface.
      **/
@@ -3833,5 +3741,93 @@ public class SolidFireElement
         Optional<Long> burstIOPS
         ) {
         return this.setDefaultQoS(new SetDefaultQoSRequest(minIOPS, maxIOPS, burstIOPS));
+    }
+    /** 
+     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request) {
+        return super.sendRequest("ListVolumeStatsByVirtualVolume", request, ListVolumeStatsByVirtualVolumeRequest.class, ListVolumeStatsByVirtualVolumeResult.class);
+    }
+
+    /** 
+     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(
+        Optional<java.util.UUID[]> virtualVolumeIDs
+        ) {
+        return this.listVolumeStatsByVirtualVolume(new ListVolumeStatsByVirtualVolumeRequest(virtualVolumeIDs));
+    }
+    /** 
+     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public Object getRawStats() {
+        return super.sendRequest("GetRawStats", null, null, Object.class);
+    }
+    /** 
+     * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Node")
+    public GetHardwareInfoResult getHardwareInfo() {
+        return super.sendRequest("GetHardwareInfo", null, null, GetHardwareInfoResult.class);
+    }
+    /** 
+     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public Object getCompleteStats() {
+        return super.sendRequest("GetCompleteStats", null, null, Object.class);
+    }
+    /** 
+     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request) {
+        return super.sendRequest("ListDriveStats", request, ListDriveStatsRequest.class, ListDriveStatsResult.class);
+    }
+
+    /** 
+     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListDriveStatsResult listDriveStats(
+        Optional<Long[]> drives
+        ) {
+        return this.listDriveStats(new ListDriveStatsRequest(drives));
+    }
+    /** 
+     **/
+    @Override
+    @Since("9.0")
+    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request) {
+        return super.sendRequest("ListVolumeStats", request, ListVolumeStatsRequest.class, ListVolumeStatsResult.class);
+    }
+
+    /** 
+     **/
+    @Override
+    @Since("9.0")
+    public ListVolumeStatsResult listVolumeStats(
+        Optional<Long[]> volumeIDs
+        ) {
+        return this.listVolumeStats(new ListVolumeStatsRequest(volumeIDs));
     }
 }

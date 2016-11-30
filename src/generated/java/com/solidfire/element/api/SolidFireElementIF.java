@@ -30,67 +30,157 @@ import com.solidfire.core.javautil.Optional;
 public interface SolidFireElementIF {
 
     /** 
-     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
      **/
     @Since("9.0")
     @ConnectionType("Cluster")
-    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request);
+    public ListVirtualVolumesResult listVirtualVolumes(final ListVirtualVolumesRequest request);
 
     /** 
-     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
      **/
     @Since("9.0")
     @ConnectionType("Cluster")
-    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(
+    public ListVirtualVolumesResult listVirtualVolumes(
+        Optional<Boolean> details,
+        Optional<Long> limit,
+        Optional<Boolean> recursive,
         Optional<java.util.UUID> startVirtualVolumeID,
         Optional<java.util.UUID[]> virtualVolumeIDs
         );
     /** 
-     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public Object getRawStats();
-    /** 
-     * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
-     **/
-    @Since("9.0")
-    @ConnectionType("Node")
-    public GetHardwareInfoResult getHardwareInfo();
-    /** 
-     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public Object getCompleteStats();
-    /** 
-     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
      **/
     @Since("9.0")
     @ConnectionType("Cluster")
-    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request);
+    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request);
 
     /** 
-     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
      **/
     @Since("9.0")
     @ConnectionType("Cluster")
-    public ListDriveStatsResult listDriveStats(
-        Optional<Long[]> drives
+    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(
+        java.util.UUID virtualVolumeID,
+        Optional<String> name,
+        Optional<Boolean> writableSnapshot,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
         );
     /** 
+     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
+     * chunks not shared between two volumes. This call will return results in less 
+     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
+     * error is thrown. If the offset/length combination is invalid or out fo range 
+     * an error is thrown.
      **/
     @Since("9.0")
-    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request);
+    @ConnectionType("Cluster")
+    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request);
 
     /** 
+     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
+     * chunks not shared between two volumes. This call will return results in less 
+     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
+     * error is thrown. If the offset/length combination is invalid or out fo range 
+     * an error is thrown.
      **/
     @Since("9.0")
-    public ListVolumeStatsResult listVolumeStats(
-        Optional<Long[]> volumeIDs
+    @ConnectionType("Cluster")
+    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(
+        java.util.UUID virtualVolumeID,
+        java.util.UUID baseVirtualVolumeID,
+        Long segmentStart,
+        Long segmentLength,
+        Long chunkSize,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
         );
+    /** 
+     * CreateVirtualVolumeHost creates a new ESX host.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request);
+
+    /** 
+     * CreateVirtualVolumeHost creates a new ESX host.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult createVirtualVolumeHost(
+        java.util.UUID virtualVolumeHostID,
+        java.util.UUID clusterID,
+        Optional<String[]> initiatorNames,
+        Optional<java.util.UUID[]> visibleProtocolEndpointIDs,
+        Optional<String> hostAddress,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        );
+    /** 
+     * ListVirtualVolumeHosts returns a list of known ESX hosts.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(final ListVirtualVolumeHostsRequest request);
+
+    /** 
+     * ListVirtualVolumeHosts returns a list of known ESX hosts.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(
+        Optional<java.util.UUID[]> virtualVolumeHostIDs
+        );
+    /** 
+     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request);
+
+    /** 
+     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(
+        java.util.UUID virtualVolumeTaskID,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        );
+    /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request);
+
+    /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
+        Optional<java.util.UUID[]> virtualVolumeTaskIDs
+        );
+    /** 
+     * ListVirtualVolumeBindings returns a list of VVol bindings.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(final ListVirtualVolumeBindingsRequest request);
+
+    /** 
+     * ListVirtualVolumeBindings returns a list of VVol bindings.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(
+        Optional<Long[]> virtualVolumeBindingIDs
+        );
+    /** 
+     * Enables retrieval of the number of virtual volumes currently in the system.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public GetVirtualVolumeCountResult getVirtualVolumeCount();
     /** 
      * Used to add a new account to the system.
      * New volumes can be created under the new account.
@@ -1827,161 +1917,6 @@ public interface SolidFireElementIF {
         Optional<Long> virtualNetworkTag
         );
     /** 
-     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumesResult listVirtualVolumes(final ListVirtualVolumesRequest request);
-
-    /** 
-     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumesResult listVirtualVolumes(
-        Optional<Boolean> details,
-        Optional<Long> limit,
-        Optional<Boolean> recursive,
-        Optional<java.util.UUID> startVirtualVolumeID,
-        Optional<java.util.UUID[]> virtualVolumeIDs
-        );
-    /** 
-     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request);
-
-    /** 
-     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(
-        java.util.UUID virtualVolumeID,
-        Optional<String> name,
-        Optional<Boolean> writableSnapshot,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        );
-    /** 
-     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
-     * chunks not shared between two volumes. This call will return results in less 
-     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
-     * error is thrown. If the offset/length combination is invalid or out fo range 
-     * an error is thrown.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request);
-
-    /** 
-     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
-     * chunks not shared between two volumes. This call will return results in less 
-     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
-     * error is thrown. If the offset/length combination is invalid or out fo range 
-     * an error is thrown.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(
-        java.util.UUID virtualVolumeID,
-        java.util.UUID baseVirtualVolumeID,
-        Long segmentStart,
-        Long segmentLength,
-        Long chunkSize,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        );
-    /** 
-     * CreateVirtualVolumeHost creates a new ESX host.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request);
-
-    /** 
-     * CreateVirtualVolumeHost creates a new ESX host.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeNullResult createVirtualVolumeHost(
-        java.util.UUID virtualVolumeHostID,
-        java.util.UUID clusterID,
-        Optional<String[]> initiatorNames,
-        Optional<java.util.UUID[]> visibleProtocolEndpointIDs,
-        Optional<String> hostAddress,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        );
-    /** 
-     * ListVirtualVolumeHosts returns a list of known ESX hosts.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(final ListVirtualVolumeHostsRequest request);
-
-    /** 
-     * ListVirtualVolumeHosts returns a list of known ESX hosts.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(
-        Optional<java.util.UUID[]> virtualVolumeHostIDs,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        );
-    /** 
-     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request);
-
-    /** 
-     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(
-        java.util.UUID virtualVolumeTaskID,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        );
-    /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request);
-
-    /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
-        Optional<java.util.UUID[]> virtualVolumeTaskIDs,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        );
-    /** 
-     * ListVirtualVolumeBindings returns a list of VVol bindings.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(final ListVirtualVolumeBindingsRequest request);
-
-    /** 
-     * ListVirtualVolumeBindings returns a list of VVol bindings.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(
-        Optional<Long[]> virtualVolumeBindingIDs,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        );
-    /** 
-     * Enables retrieval of the number of virtual volumes currently in the system.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public GetVirtualVolumeCountResult getVirtualVolumeCount();
-    /** 
      * Return the high-level capacity measurements for an entire cluster.
      * The fields returned from this method can be used to calculate the efficiency rates that are displayed in the Element User Interface.
      **/
@@ -2899,5 +2834,66 @@ public interface SolidFireElementIF {
         Optional<Long> minIOPS,
         Optional<Long> maxIOPS,
         Optional<Long> burstIOPS
+        );
+    /** 
+     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request);
+
+    /** 
+     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(
+        Optional<java.util.UUID[]> virtualVolumeIDs
+        );
+    /** 
+     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public Object getRawStats();
+    /** 
+     * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
+     **/
+    @Since("9.0")
+    @ConnectionType("Node")
+    public GetHardwareInfoResult getHardwareInfo();
+    /** 
+     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public Object getCompleteStats();
+    /** 
+     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request);
+
+    /** 
+     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListDriveStatsResult listDriveStats(
+        Optional<Long[]> drives
+        );
+    /** 
+     **/
+    @Since("9.0")
+    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request);
+
+    /** 
+     **/
+    @Since("9.0")
+    public ListVolumeStatsResult listVolumeStats(
+        Optional<Long[]> volumeIDs
         );
 }
