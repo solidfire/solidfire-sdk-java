@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetHardwareInfoResult implements Serializable {
 
     public static final long serialVersionUID = -195013475782007290L;
-    @SerializedName("hardwareInfo") private HardwareInfo hardwareInfo;
+    @SerializedName("hardwareInfo") private java.util.Map<String, Object> hardwareInfo;
 
     // empty constructor
     @Since("7.0")
@@ -42,7 +42,7 @@ public class GetHardwareInfoResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetHardwareInfoResult(
-        HardwareInfo hardwareInfo
+        java.util.Map<String, Object> hardwareInfo
     )
     {
         this.hardwareInfo = hardwareInfo;
@@ -51,8 +51,8 @@ public class GetHardwareInfoResult implements Serializable {
     /** 
      * Hardware information for this node. 
      **/
-    public HardwareInfo getHardwareInfo() { return this.hardwareInfo; }
-    public void setHardwareInfo(HardwareInfo hardwareInfo) { 
+    public java.util.Map<String, Object> getHardwareInfo() { return this.hardwareInfo; }
+    public void setHardwareInfo(java.util.Map<String, Object> hardwareInfo) { 
         this.hardwareInfo = hardwareInfo;
     }
 
@@ -102,7 +102,7 @@ public class GetHardwareInfoResult implements Serializable {
     }
 
     public static class Builder {
-        private HardwareInfo hardwareInfo;
+        private java.util.Map<String, Object> hardwareInfo;
 
         private Builder() { }
 
@@ -117,7 +117,7 @@ public class GetHardwareInfoResult implements Serializable {
             return this;
         }
 
-        public GetHardwareInfoResult.Builder hardwareInfo(final HardwareInfo hardwareInfo) {
+        public GetHardwareInfoResult.Builder hardwareInfo(final java.util.Map<String, Object> hardwareInfo) {
             this.hardwareInfo = hardwareInfo;
             return this;
         }
