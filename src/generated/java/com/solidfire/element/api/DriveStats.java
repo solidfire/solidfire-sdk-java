@@ -33,7 +33,7 @@ import java.util.Objects;
 public class DriveStats implements Serializable {
 
     public static final long serialVersionUID = 215354036034394227L;
-    @SerializedName("activeSessions") private Long activeSessions;
+    @SerializedName("activeSessions") private Optional<Long> activeSessions;
     @SerializedName("driveID") private Optional<Long> driveID;
     @SerializedName("failedDieCount") private Long failedDieCount;
     @SerializedName("lifeRemainingPercent") private Long lifeRemainingPercent;
@@ -58,7 +58,7 @@ public class DriveStats implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public DriveStats(
-        Long activeSessions,
+        Optional<Long> activeSessions,
         Optional<Long> driveID,
         Long failedDieCount,
         Long lifeRemainingPercent,
@@ -77,7 +77,7 @@ public class DriveStats implements Serializable {
         Long writeOps
     )
     {
-        this.activeSessions = activeSessions;
+        this.activeSessions = (activeSessions == null) ? Optional.<Long>empty() : activeSessions;
         this.driveID = (driveID == null) ? Optional.<Long>empty() : driveID;
         this.failedDieCount = failedDieCount;
         this.lifeRemainingPercent = lifeRemainingPercent;
@@ -98,9 +98,9 @@ public class DriveStats implements Serializable {
 
     /** 
      **/
-    public Long getActiveSessions() { return this.activeSessions; }
-    public void setActiveSessions(Long activeSessions) { 
-        this.activeSessions = activeSessions;
+    public Optional<Long> getActiveSessions() { return this.activeSessions; }
+    public void setActiveSessions(Optional<Long> activeSessions) { 
+        this.activeSessions = (activeSessions == null) ? Optional.<Long>empty() : activeSessions;
     }
     /** 
      **/
@@ -259,7 +259,9 @@ public class DriveStats implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" activeSessions : ").append(activeSessions).append(",");
+        if(null != activeSessions && activeSessions.isPresent()){
+            sb.append(" activeSessions : ").append(activeSessions).append(",");
+        }
         if(null != driveID && driveID.isPresent()){
             sb.append(" driveID : ").append(driveID).append(",");
         }
@@ -297,7 +299,7 @@ public class DriveStats implements Serializable {
     }
 
     public static class Builder {
-        private Long activeSessions;
+        private Optional<Long> activeSessions;
         private Optional<Long> driveID;
         private Long failedDieCount;
         private Long lifeRemainingPercent;
@@ -360,8 +362,8 @@ public class DriveStats implements Serializable {
             return this;
         }
 
-        public DriveStats.Builder activeSessions(final Long activeSessions) {
-            this.activeSessions = activeSessions;
+        public DriveStats.Builder optionalActiveSessions(final Long activeSessions) {
+            this.activeSessions = (activeSessions == null) ? Optional.<Long>empty() : Optional.of(activeSessions);
             return this;
         }
 
