@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -33,7 +34,7 @@ import java.util.Objects;
 public class GetNodeHardwareInfoResult implements Serializable {
 
     public static final long serialVersionUID = -3553623158556209250L;
-    @SerializedName("nodeHardwareInfo") private java.util.Map<String, Object> nodeHardwareInfo;
+    @SerializedName("nodeHardwareInfo") private LinkedTreeMap<String, Object> nodeHardwareInfo;
 
     // empty constructor
     @Since("7.0")
@@ -42,7 +43,7 @@ public class GetNodeHardwareInfoResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetNodeHardwareInfoResult(
-        java.util.Map<String, Object> nodeHardwareInfo
+        LinkedTreeMap<String, Object> nodeHardwareInfo
     )
     {
         this.nodeHardwareInfo = nodeHardwareInfo;
@@ -51,8 +52,8 @@ public class GetNodeHardwareInfoResult implements Serializable {
     /** 
      * Hardware information for the specified nodeID.
      **/
-    public java.util.Map<String, Object> getNodeHardwareInfo() { return this.nodeHardwareInfo; }
-    public void setNodeHardwareInfo(java.util.Map<String, Object> nodeHardwareInfo) { 
+    public LinkedTreeMap<String, Object> getNodeHardwareInfo() { return this.nodeHardwareInfo; }
+    public void setNodeHardwareInfo(LinkedTreeMap<String, Object> nodeHardwareInfo) { 
         this.nodeHardwareInfo = nodeHardwareInfo;
     }
 
@@ -102,7 +103,7 @@ public class GetNodeHardwareInfoResult implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> nodeHardwareInfo;
+        private LinkedTreeMap<String, Object> nodeHardwareInfo;
 
         private Builder() { }
 
@@ -117,7 +118,7 @@ public class GetNodeHardwareInfoResult implements Serializable {
             return this;
         }
 
-        public GetNodeHardwareInfoResult.Builder nodeHardwareInfo(final java.util.Map<String, Object> nodeHardwareInfo) {
+        public GetNodeHardwareInfoResult.Builder nodeHardwareInfo(final LinkedTreeMap<String, Object> nodeHardwareInfo) {
             this.nodeHardwareInfo = nodeHardwareInfo;
             return this;
         }

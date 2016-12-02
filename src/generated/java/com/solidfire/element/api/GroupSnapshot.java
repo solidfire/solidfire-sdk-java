@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -39,7 +40,7 @@ public class GroupSnapshot implements Serializable {
     @SerializedName("name") private String name;
     @SerializedName("createTime") private String createTime;
     @SerializedName("status") private String status;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private LinkedTreeMap<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -54,7 +55,7 @@ public class GroupSnapshot implements Serializable {
         String name,
         String createTime,
         String status,
-        java.util.Map<String, Object> attributes
+        LinkedTreeMap<String, Object> attributes
     )
     {
         this.groupSnapshotID = groupSnapshotID;
@@ -114,8 +115,8 @@ public class GroupSnapshot implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public LinkedTreeMap<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(LinkedTreeMap<String, Object> attributes) { 
         this.attributes = attributes;
     }
 
@@ -189,7 +190,7 @@ public class GroupSnapshot implements Serializable {
         private String name;
         private String createTime;
         private String status;
-        private java.util.Map<String, Object> attributes;
+        private LinkedTreeMap<String, Object> attributes;
 
         private Builder() { }
 
@@ -246,7 +247,7 @@ public class GroupSnapshot implements Serializable {
             return this;
         }
 
-        public GroupSnapshot.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public GroupSnapshot.Builder attributes(final LinkedTreeMap<String, Object> attributes) {
             this.attributes = attributes;
             return this;
         }

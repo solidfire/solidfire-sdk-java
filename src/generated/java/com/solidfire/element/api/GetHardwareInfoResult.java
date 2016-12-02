@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -33,7 +34,7 @@ import java.util.Objects;
 public class GetHardwareInfoResult implements Serializable {
 
     public static final long serialVersionUID = -195013475782007290L;
-    @SerializedName("hardwareInfo") private java.util.Map<String, Object> hardwareInfo;
+    @SerializedName("hardwareInfo") private LinkedTreeMap<String, Object> hardwareInfo;
 
     // empty constructor
     @Since("7.0")
@@ -42,7 +43,7 @@ public class GetHardwareInfoResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetHardwareInfoResult(
-        java.util.Map<String, Object> hardwareInfo
+        LinkedTreeMap<String, Object> hardwareInfo
     )
     {
         this.hardwareInfo = hardwareInfo;
@@ -51,8 +52,8 @@ public class GetHardwareInfoResult implements Serializable {
     /** 
      * Hardware information for this node. 
      **/
-    public java.util.Map<String, Object> getHardwareInfo() { return this.hardwareInfo; }
-    public void setHardwareInfo(java.util.Map<String, Object> hardwareInfo) { 
+    public LinkedTreeMap<String, Object> getHardwareInfo() { return this.hardwareInfo; }
+    public void setHardwareInfo(LinkedTreeMap<String, Object> hardwareInfo) { 
         this.hardwareInfo = hardwareInfo;
     }
 
@@ -102,7 +103,7 @@ public class GetHardwareInfoResult implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> hardwareInfo;
+        private LinkedTreeMap<String, Object> hardwareInfo;
 
         private Builder() { }
 
@@ -117,7 +118,7 @@ public class GetHardwareInfoResult implements Serializable {
             return this;
         }
 
-        public GetHardwareInfoResult.Builder hardwareInfo(final java.util.Map<String, Object> hardwareInfo) {
+        public GetHardwareInfoResult.Builder hardwareInfo(final LinkedTreeMap<String, Object> hardwareInfo) {
             this.hardwareInfo = hardwareInfo;
             return this;
         }

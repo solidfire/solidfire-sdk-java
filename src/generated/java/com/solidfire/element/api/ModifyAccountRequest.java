@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -38,7 +39,7 @@ public class ModifyAccountRequest implements Serializable {
     @SerializedName("status") private Optional<String> status;
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<LinkedTreeMap<String, Object>> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -52,7 +53,7 @@ public class ModifyAccountRequest implements Serializable {
         Optional<String> status,
         Optional<CHAPSecret> initiatorSecret,
         Optional<CHAPSecret> targetSecret,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<LinkedTreeMap<String, Object>> attributes
     )
     {
         this.accountID = accountID;
@@ -60,7 +61,7 @@ public class ModifyAccountRequest implements Serializable {
         this.status = (status == null) ? Optional.<String>empty() : status;
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
     }
 
     /** 
@@ -103,9 +104,9 @@ public class ModifyAccountRequest implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<LinkedTreeMap<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<LinkedTreeMap<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -184,7 +185,7 @@ public class ModifyAccountRequest implements Serializable {
         private Optional<String> status;
         private Optional<CHAPSecret> initiatorSecret;
         private Optional<CHAPSecret> targetSecret;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<LinkedTreeMap<String, Object>> attributes;
 
         private Builder() { }
 
@@ -234,8 +235,8 @@ public class ModifyAccountRequest implements Serializable {
             return this;
         }
 
-        public ModifyAccountRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public ModifyAccountRequest.Builder optionalAttributes(final LinkedTreeMap<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 

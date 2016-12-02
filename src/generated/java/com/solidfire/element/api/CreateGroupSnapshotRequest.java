@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -37,7 +38,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
     @SerializedName("name") private Optional<String> name;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
     @SerializedName("retention") private Optional<String> retention;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<LinkedTreeMap<String, Object>> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -50,14 +51,14 @@ public class CreateGroupSnapshotRequest implements Serializable {
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> retention,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<LinkedTreeMap<String, Object>> attributes
     )
     {
         this.volumes = volumes;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
     }
 
     /** 
@@ -92,9 +93,9 @@ public class CreateGroupSnapshotRequest implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<LinkedTreeMap<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<LinkedTreeMap<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -167,7 +168,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
         private Optional<String> name;
         private Optional<Boolean> enableRemoteReplication;
         private Optional<String> retention;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<LinkedTreeMap<String, Object>> attributes;
 
         private Builder() { }
 
@@ -210,8 +211,8 @@ public class CreateGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public CreateGroupSnapshotRequest.Builder optionalAttributes(final LinkedTreeMap<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 

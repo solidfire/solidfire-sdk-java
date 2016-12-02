@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -34,7 +35,7 @@ public class InvokeSFApiRequest implements Serializable {
 
     public static final long serialVersionUID = -295482890790858190L;
     @SerializedName("method") private String method;
-    @SerializedName("parameters") private Optional<java.util.Map<String, Object>> parameters;
+    @SerializedName("parameters") private Optional<LinkedTreeMap<String, Object>> parameters;
 
     // empty constructor
     @Since("7.0")
@@ -44,11 +45,11 @@ public class InvokeSFApiRequest implements Serializable {
     @Since("7.0")
     public InvokeSFApiRequest(
         String method,
-        Optional<java.util.Map<String, Object>> parameters
+        Optional<LinkedTreeMap<String, Object>> parameters
     )
     {
         this.method = method;
-        this.parameters = (parameters == null) ? Optional.<java.util.Map<String, Object>>empty() : parameters;
+        this.parameters = (parameters == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : parameters;
     }
 
     /** 
@@ -61,9 +62,9 @@ public class InvokeSFApiRequest implements Serializable {
     /** 
      * An object, normally a dictionary or hashtable of the key/value pairs, to be passed as the params for the method being invoked.
      **/
-    public Optional<java.util.Map<String, Object>> getParameters() { return this.parameters; }
-    public void setParameters(Optional<java.util.Map<String, Object>> parameters) { 
-        this.parameters = (parameters == null) ? Optional.<java.util.Map<String, Object>>empty() : parameters;
+    public Optional<LinkedTreeMap<String, Object>> getParameters() { return this.parameters; }
+    public void setParameters(Optional<LinkedTreeMap<String, Object>> parameters) { 
+        this.parameters = (parameters == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : parameters;
     }
 
     @Override
@@ -118,7 +119,7 @@ public class InvokeSFApiRequest implements Serializable {
 
     public static class Builder {
         private String method;
-        private Optional<java.util.Map<String, Object>> parameters;
+        private Optional<LinkedTreeMap<String, Object>> parameters;
 
         private Builder() { }
 
@@ -140,8 +141,8 @@ public class InvokeSFApiRequest implements Serializable {
             return this;
         }
 
-        public InvokeSFApiRequest.Builder optionalParameters(final java.util.Map<String, Object> parameters) {
-            this.parameters = (parameters == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(parameters);
+        public InvokeSFApiRequest.Builder optionalParameters(final LinkedTreeMap<String, Object> parameters) {
+            this.parameters = (parameters == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : Optional.of(parameters);
             return this;
         }
 

@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -37,7 +38,7 @@ public class Initiator implements Serializable {
     @SerializedName("initiatorID") private Long initiatorID;
     @SerializedName("initiatorName") private String initiatorName;
     @SerializedName("volumeAccessGroups") private Long[] volumeAccessGroups;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private LinkedTreeMap<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -50,7 +51,7 @@ public class Initiator implements Serializable {
         Long initiatorID,
         String initiatorName,
         Long[] volumeAccessGroups,
-        java.util.Map<String, Object> attributes
+        LinkedTreeMap<String, Object> attributes
     )
     {
         this.alias = alias;
@@ -91,8 +92,8 @@ public class Initiator implements Serializable {
     /** 
      * A set of JSON attributes assigned to this initiator. (JSON Object)
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public LinkedTreeMap<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(LinkedTreeMap<String, Object> attributes) { 
         this.attributes = attributes;
     }
 
@@ -158,7 +159,7 @@ public class Initiator implements Serializable {
         private Long initiatorID;
         private String initiatorName;
         private Long[] volumeAccessGroups;
-        private java.util.Map<String, Object> attributes;
+        private LinkedTreeMap<String, Object> attributes;
 
         private Builder() { }
 
@@ -201,7 +202,7 @@ public class Initiator implements Serializable {
             return this;
         }
 
-        public Initiator.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public Initiator.Builder attributes(final LinkedTreeMap<String, Object> attributes) {
             this.attributes = attributes;
             return this;
         }

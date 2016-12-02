@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -38,7 +39,7 @@ public class CreateVolumeRequest implements Serializable {
     @SerializedName("totalSize") private Long totalSize;
     @SerializedName("enable512e") private Boolean enable512e;
     @SerializedName("qos") private Optional<QoS> qos;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<LinkedTreeMap<String, Object>> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -52,7 +53,7 @@ public class CreateVolumeRequest implements Serializable {
         Long totalSize,
         Boolean enable512e,
         Optional<QoS> qos,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<LinkedTreeMap<String, Object>> attributes
     )
     {
         this.name = name;
@@ -60,7 +61,7 @@ public class CreateVolumeRequest implements Serializable {
         this.totalSize = totalSize;
         this.enable512e = enable512e;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
     }
 
     /** 
@@ -106,9 +107,9 @@ public class CreateVolumeRequest implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<LinkedTreeMap<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<LinkedTreeMap<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -181,7 +182,7 @@ public class CreateVolumeRequest implements Serializable {
         private Long totalSize;
         private Boolean enable512e;
         private Optional<QoS> qos;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<LinkedTreeMap<String, Object>> attributes;
 
         private Builder() { }
 
@@ -231,8 +232,8 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public CreateVolumeRequest.Builder optionalAttributes(final LinkedTreeMap<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 

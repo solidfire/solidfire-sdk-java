@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -34,7 +35,7 @@ public class ClusterHardwareInfo implements Serializable {
 
     public static final long serialVersionUID = -588255729826736799L;
     @SerializedName("drives") private java.util.Map<String,DriveHardwareInfo> drives;
-    @SerializedName("nodes") private java.util.Map<String,java.util.Map<String, Object>> nodes;
+    @SerializedName("nodes") private java.util.Map<String,LinkedTreeMap<String, Object>> nodes;
 
     // empty constructor
     @Since("7.0")
@@ -44,7 +45,7 @@ public class ClusterHardwareInfo implements Serializable {
     @Since("7.0")
     public ClusterHardwareInfo(
         java.util.Map<String,DriveHardwareInfo> drives,
-        java.util.Map<String,java.util.Map<String, Object>> nodes
+        java.util.Map<String,LinkedTreeMap<String, Object>> nodes
     )
     {
         this.drives = drives;
@@ -59,8 +60,8 @@ public class ClusterHardwareInfo implements Serializable {
     }
     /** 
      **/
-    public java.util.Map<String,java.util.Map<String, Object>> getNodes() { return this.nodes; }
-    public void setNodes(java.util.Map<String,java.util.Map<String, Object>> nodes) { 
+    public java.util.Map<String,LinkedTreeMap<String, Object>> getNodes() { return this.nodes; }
+    public void setNodes(java.util.Map<String,LinkedTreeMap<String, Object>> nodes) { 
         this.nodes = nodes;
     }
 
@@ -114,7 +115,7 @@ public class ClusterHardwareInfo implements Serializable {
 
     public static class Builder {
         private java.util.Map<String,DriveHardwareInfo> drives;
-        private java.util.Map<String,java.util.Map<String, Object>> nodes;
+        private java.util.Map<String,LinkedTreeMap<String, Object>> nodes;
 
         private Builder() { }
 
@@ -136,7 +137,7 @@ public class ClusterHardwareInfo implements Serializable {
             return this;
         }
 
-        public ClusterHardwareInfo.Builder nodes(final java.util.Map<String,java.util.Map<String, Object>> nodes) {
+        public ClusterHardwareInfo.Builder nodes(final java.util.Map<String,LinkedTreeMap<String, Object>> nodes) {
             this.nodes = nodes;
             return this;
         }

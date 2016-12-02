@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public class ClusterAdmin implements Serializable {
     @SerializedName("access") private String[] access;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     @SerializedName("username") private String username;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private LinkedTreeMap<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -48,7 +49,7 @@ public class ClusterAdmin implements Serializable {
         String[] access,
         Long clusterAdminID,
         String username,
-        java.util.Map<String, Object> attributes
+        LinkedTreeMap<String, Object> attributes
     )
     {
         this.access = access;
@@ -78,8 +79,8 @@ public class ClusterAdmin implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public LinkedTreeMap<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(LinkedTreeMap<String, Object> attributes) { 
         this.attributes = attributes;
     }
 
@@ -141,7 +142,7 @@ public class ClusterAdmin implements Serializable {
         private String[] access;
         private Long clusterAdminID;
         private String username;
-        private java.util.Map<String, Object> attributes;
+        private LinkedTreeMap<String, Object> attributes;
 
         private Builder() { }
 
@@ -177,7 +178,7 @@ public class ClusterAdmin implements Serializable {
             return this;
         }
 
-        public ClusterAdmin.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public ClusterAdmin.Builder attributes(final LinkedTreeMap<String, Object> attributes) {
             this.attributes = attributes;
             return this;
         }

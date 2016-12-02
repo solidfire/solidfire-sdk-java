@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -39,7 +40,7 @@ public class CloneVolumeRequest implements Serializable {
     @SerializedName("newSize") private Optional<Long> newSize;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<LinkedTreeMap<String, Object>> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -54,7 +55,7 @@ public class CloneVolumeRequest implements Serializable {
         Optional<Long> newSize,
         Optional<String> access,
         Optional<Long> snapshotID,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<LinkedTreeMap<String, Object>> attributes
     )
     {
         this.volumeID = volumeID;
@@ -63,7 +64,7 @@ public class CloneVolumeRequest implements Serializable {
         this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
         this.access = (access == null) ? Optional.<String>empty() : access;
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
     }
 
     /** 
@@ -122,9 +123,9 @@ public class CloneVolumeRequest implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<LinkedTreeMap<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<LinkedTreeMap<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -207,7 +208,7 @@ public class CloneVolumeRequest implements Serializable {
         private Optional<Long> newSize;
         private Optional<String> access;
         private Optional<Long> snapshotID;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<LinkedTreeMap<String, Object>> attributes;
 
         private Builder() { }
 
@@ -264,8 +265,8 @@ public class CloneVolumeRequest implements Serializable {
             return this;
         }
 
-        public CloneVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public CloneVolumeRequest.Builder optionalAttributes(final LinkedTreeMap<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 

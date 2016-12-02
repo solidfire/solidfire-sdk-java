@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public class ModifyVolumesRequest implements Serializable {
     @SerializedName("volumeIDs") private Long[] volumeIDs;
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<LinkedTreeMap<String, Object>> attributes;
     @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("totalSize") private Optional<Long> totalSize;
 
@@ -50,7 +51,7 @@ public class ModifyVolumesRequest implements Serializable {
         Long[] volumeIDs,
         Optional<Long> accountID,
         Optional<String> access,
-        Optional<java.util.Map<String, Object>> attributes,
+        Optional<LinkedTreeMap<String, Object>> attributes,
         Optional<QoS> qos,
         Optional<Long> totalSize
     )
@@ -58,7 +59,7 @@ public class ModifyVolumesRequest implements Serializable {
         this.volumeIDs = volumeIDs;
         this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
         this.access = (access == null) ? Optional.<String>empty() : access;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
     }
@@ -86,9 +87,9 @@ public class ModifyVolumesRequest implements Serializable {
     }
     /** 
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<LinkedTreeMap<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<LinkedTreeMap<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
     }
     /** 
      * New quality of service settings for this volume.If not specified, the QoS settings are not changed.
@@ -179,7 +180,7 @@ public class ModifyVolumesRequest implements Serializable {
         private Long[] volumeIDs;
         private Optional<Long> accountID;
         private Optional<String> access;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<LinkedTreeMap<String, Object>> attributes;
         private Optional<QoS> qos;
         private Optional<Long> totalSize;
 
@@ -221,8 +222,8 @@ public class ModifyVolumesRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public ModifyVolumesRequest.Builder optionalAttributes(final LinkedTreeMap<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 

@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -52,7 +53,7 @@ public class Volume implements Serializable {
     @SerializedName("totalSize") private Long totalSize;
     @SerializedName("blockSize") private Long blockSize;
     @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private LinkedTreeMap<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -80,7 +81,7 @@ public class Volume implements Serializable {
         Long totalSize,
         Long blockSize,
         java.util.UUID virtualVolumeID,
-        java.util.Map<String, Object> attributes
+        LinkedTreeMap<String, Object> attributes
     )
     {
         this.volumeID = volumeID;
@@ -252,8 +253,8 @@ public class Volume implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public LinkedTreeMap<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(LinkedTreeMap<String, Object> attributes) { 
         this.attributes = attributes;
     }
 
@@ -383,7 +384,7 @@ public class Volume implements Serializable {
         private Long totalSize;
         private Long blockSize;
         private java.util.UUID virtualVolumeID;
-        private java.util.Map<String, Object> attributes;
+        private LinkedTreeMap<String, Object> attributes;
 
         private Builder() { }
 
@@ -531,7 +532,7 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public Volume.Builder attributes(final LinkedTreeMap<String, Object> attributes) {
             this.attributes = attributes;
             return this;
         }

@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -41,7 +42,7 @@ public class VirtualNetwork implements Serializable {
     @SerializedName("svip") private String svip;
     @SerializedName("gateway") private Optional<String> gateway;
     @SerializedName("namespace") private Optional<Boolean> namespace;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private LinkedTreeMap<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -58,7 +59,7 @@ public class VirtualNetwork implements Serializable {
         String svip,
         Optional<String> gateway,
         Optional<Boolean> namespace,
-        java.util.Map<String, Object> attributes
+        LinkedTreeMap<String, Object> attributes
     )
     {
         this.virtualNetworkID = virtualNetworkID;
@@ -134,8 +135,8 @@ public class VirtualNetwork implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public LinkedTreeMap<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(LinkedTreeMap<String, Object> attributes) { 
         this.attributes = attributes;
     }
 
@@ -221,7 +222,7 @@ public class VirtualNetwork implements Serializable {
         private String svip;
         private Optional<String> gateway;
         private Optional<Boolean> namespace;
-        private java.util.Map<String, Object> attributes;
+        private LinkedTreeMap<String, Object> attributes;
 
         private Builder() { }
 
@@ -292,7 +293,7 @@ public class VirtualNetwork implements Serializable {
             return this;
         }
 
-        public VirtualNetwork.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public VirtualNetwork.Builder attributes(final LinkedTreeMap<String, Object> attributes) {
             this.attributes = attributes;
             return this;
         }

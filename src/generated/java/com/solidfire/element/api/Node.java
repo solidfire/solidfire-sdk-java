@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -47,7 +48,7 @@ public class Node implements Serializable {
     @SerializedName("sip") private String sip;
     @SerializedName("sipi") private String sipi;
     @SerializedName("uuid") private java.util.UUID uuid;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private LinkedTreeMap<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -70,7 +71,7 @@ public class Node implements Serializable {
         String sip,
         String sipi,
         java.util.UUID uuid,
-        java.util.Map<String, Object> attributes
+        LinkedTreeMap<String, Object> attributes
     )
     {
         this.nodeID = nodeID;
@@ -187,8 +188,8 @@ public class Node implements Serializable {
     }
     /** 
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public LinkedTreeMap<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(LinkedTreeMap<String, Object> attributes) { 
         this.attributes = attributes;
     }
 
@@ -294,7 +295,7 @@ public class Node implements Serializable {
         private String sip;
         private String sipi;
         private java.util.UUID uuid;
-        private java.util.Map<String, Object> attributes;
+        private LinkedTreeMap<String, Object> attributes;
 
         private Builder() { }
 
@@ -407,7 +408,7 @@ public class Node implements Serializable {
             return this;
         }
 
-        public Node.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public Node.Builder attributes(final LinkedTreeMap<String, Object> attributes) {
             this.attributes = attributes;
             return this;
         }

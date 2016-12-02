@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -45,7 +46,7 @@ public class BulkVolumeJob implements Serializable {
     @SerializedName("script") private String script;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("type") private String type;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private LinkedTreeMap<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -66,7 +67,7 @@ public class BulkVolumeJob implements Serializable {
         String script,
         Long snapshotID,
         String type,
-        java.util.Map<String, Object> attributes
+        LinkedTreeMap<String, Object> attributes
     )
     {
         this.bulkVolumeID = bulkVolumeID;
@@ -177,8 +178,8 @@ public class BulkVolumeJob implements Serializable {
     /** 
      * JSON attributes on the bulk volume job.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public LinkedTreeMap<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(LinkedTreeMap<String, Object> attributes) { 
         this.attributes = attributes;
     }
 
@@ -276,7 +277,7 @@ public class BulkVolumeJob implements Serializable {
         private String script;
         private Long snapshotID;
         private String type;
-        private java.util.Map<String, Object> attributes;
+        private LinkedTreeMap<String, Object> attributes;
 
         private Builder() { }
 
@@ -375,7 +376,7 @@ public class BulkVolumeJob implements Serializable {
             return this;
         }
 
-        public BulkVolumeJob.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public BulkVolumeJob.Builder attributes(final LinkedTreeMap<String, Object> attributes) {
             this.attributes = attributes;
             return this;
         }

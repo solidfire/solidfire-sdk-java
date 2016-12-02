@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -33,7 +34,7 @@ import java.util.Objects;
 public class ClusterInfo implements Serializable {
 
     public static final long serialVersionUID = 6937143244161912485L;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private LinkedTreeMap<String, Object> attributes;
     @SerializedName("encryptionAtRestState") private String encryptionAtRestState;
     @SerializedName("ensemble") private String[] ensemble;
     @SerializedName("mvip") private String mvip;
@@ -53,7 +54,7 @@ public class ClusterInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ClusterInfo(
-        java.util.Map<String, Object> attributes,
+        LinkedTreeMap<String, Object> attributes,
         String encryptionAtRestState,
         String[] ensemble,
         String mvip,
@@ -84,8 +85,8 @@ public class ClusterInfo implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public LinkedTreeMap<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(LinkedTreeMap<String, Object> attributes) { 
         this.attributes = attributes;
     }
     /** 
@@ -244,7 +245,7 @@ public class ClusterInfo implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> attributes;
+        private LinkedTreeMap<String, Object> attributes;
         private String encryptionAtRestState;
         private String[] ensemble;
         private String mvip;
@@ -292,7 +293,7 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
-        public ClusterInfo.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public ClusterInfo.Builder attributes(final LinkedTreeMap<String, Object> attributes) {
             this.attributes = attributes;
             return this;
         }

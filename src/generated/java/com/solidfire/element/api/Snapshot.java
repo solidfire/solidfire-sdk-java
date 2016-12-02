@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -47,7 +48,7 @@ public class Snapshot implements Serializable {
     @SerializedName("groupID") private Optional<Long> groupID;
     @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
     @SerializedName("createTime") private String createTime;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private LinkedTreeMap<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -70,7 +71,7 @@ public class Snapshot implements Serializable {
         Optional<Long> groupID,
         java.util.UUID groupSnapshotUUID,
         String createTime,
-        java.util.Map<String, Object> attributes
+        LinkedTreeMap<String, Object> attributes
     )
     {
         this.snapshotID = snapshotID;
@@ -207,8 +208,8 @@ public class Snapshot implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public LinkedTreeMap<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(LinkedTreeMap<String, Object> attributes) { 
         this.attributes = attributes;
     }
 
@@ -316,7 +317,7 @@ public class Snapshot implements Serializable {
         private Optional<Long> groupID;
         private java.util.UUID groupSnapshotUUID;
         private String createTime;
-        private java.util.Map<String, Object> attributes;
+        private LinkedTreeMap<String, Object> attributes;
 
         private Builder() { }
 
@@ -429,7 +430,7 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public Snapshot.Builder attributes(final LinkedTreeMap<String, Object> attributes) {
             this.attributes = attributes;
             return this;
         }
