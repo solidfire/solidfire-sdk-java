@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 
 import com.solidfire.core.annotation.*;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.gson.internal.LinkedTreeMap;
 
 
 /**
