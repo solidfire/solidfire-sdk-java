@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -41,7 +40,7 @@ public class DriveInfo implements Serializable {
     @SerializedName("slot") private Long slot;
     @SerializedName("status") private String status;
     @SerializedName("type") private String type;
-    @SerializedName("attributes") private LinkedTreeMap<String, Object> attributes;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -57,7 +56,7 @@ public class DriveInfo implements Serializable {
         Long slot,
         String status,
         String type,
-        LinkedTreeMap<String, Object> attributes
+        java.util.Map<String, Object> attributes
     )
     {
         this.capacity = capacity;
@@ -120,8 +119,8 @@ public class DriveInfo implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public LinkedTreeMap<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(LinkedTreeMap<String, Object> attributes) { 
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
         this.attributes = attributes;
     }
 
@@ -199,7 +198,7 @@ public class DriveInfo implements Serializable {
         private Long slot;
         private String status;
         private String type;
-        private LinkedTreeMap<String, Object> attributes;
+        private java.util.Map<String, Object> attributes;
 
         private Builder() { }
 
@@ -263,7 +262,7 @@ public class DriveInfo implements Serializable {
             return this;
         }
 
-        public DriveInfo.Builder attributes(final LinkedTreeMap<String, Object> attributes) {
+        public DriveInfo.Builder attributes(final java.util.Map<String, Object> attributes) {
             this.attributes = attributes;
             return this;
         }

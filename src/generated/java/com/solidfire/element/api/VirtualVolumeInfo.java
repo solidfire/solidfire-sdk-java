@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -44,7 +43,7 @@ public class VirtualVolumeInfo implements Serializable {
     @SerializedName("status") private String status;
     @SerializedName("bindings") private Long[] bindings;
     @SerializedName("children") private java.util.UUID[] children;
-    @SerializedName("metadata") private LinkedTreeMap<String, Object> metadata;
+    @SerializedName("metadata") private java.util.Map<String, Object> metadata;
     @SerializedName("snapshotInfo") private Snapshot snapshotInfo;
     @SerializedName("volumeInfo") private Volume volumeInfo;
 
@@ -65,7 +64,7 @@ public class VirtualVolumeInfo implements Serializable {
         String status,
         Long[] bindings,
         java.util.UUID[] children,
-        LinkedTreeMap<String, Object> metadata,
+        java.util.Map<String, Object> metadata,
         Snapshot snapshotInfo,
         Volume volumeInfo
     )
@@ -147,8 +146,8 @@ public class VirtualVolumeInfo implements Serializable {
     }
     /** 
      **/
-    public LinkedTreeMap<String, Object> getMetadata() { return this.metadata; }
-    public void setMetadata(LinkedTreeMap<String, Object> metadata) { 
+    public java.util.Map<String, Object> getMetadata() { return this.metadata; }
+    public void setMetadata(java.util.Map<String, Object> metadata) { 
         this.metadata = metadata;
     }
     /** 
@@ -256,7 +255,7 @@ public class VirtualVolumeInfo implements Serializable {
         private String status;
         private Long[] bindings;
         private java.util.UUID[] children;
-        private LinkedTreeMap<String, Object> metadata;
+        private java.util.Map<String, Object> metadata;
         private Snapshot snapshotInfo;
         private Volume volumeInfo;
 
@@ -347,7 +346,7 @@ public class VirtualVolumeInfo implements Serializable {
             return this;
         }
 
-        public VirtualVolumeInfo.Builder metadata(final LinkedTreeMap<String, Object> metadata) {
+        public VirtualVolumeInfo.Builder metadata(final java.util.Map<String, Object> metadata) {
             this.metadata = metadata;
             return this;
         }

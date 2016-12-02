@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -40,7 +39,7 @@ public class VirtualVolumeTask implements Serializable {
     @SerializedName("status") private String status;
     @SerializedName("operation") private String operation;
     @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
-    @SerializedName("parentMetadata") private LinkedTreeMap<String, Object> parentMetadata;
+    @SerializedName("parentMetadata") private java.util.Map<String, Object> parentMetadata;
     @SerializedName("parentTotalSize") private Long parentTotalSize;
     @SerializedName("parentUsedSize") private Long parentUsedSize;
     @SerializedName("cancelled") private Boolean cancelled;
@@ -58,7 +57,7 @@ public class VirtualVolumeTask implements Serializable {
         String status,
         String operation,
         java.util.UUID virtualVolumeHostID,
-        LinkedTreeMap<String, Object> parentMetadata,
+        java.util.Map<String, Object> parentMetadata,
         Long parentTotalSize,
         Long parentUsedSize,
         Boolean cancelled
@@ -114,8 +113,8 @@ public class VirtualVolumeTask implements Serializable {
     }
     /** 
      **/
-    public LinkedTreeMap<String, Object> getParentMetadata() { return this.parentMetadata; }
-    public void setParentMetadata(LinkedTreeMap<String, Object> parentMetadata) { 
+    public java.util.Map<String, Object> getParentMetadata() { return this.parentMetadata; }
+    public void setParentMetadata(java.util.Map<String, Object> parentMetadata) { 
         this.parentMetadata = parentMetadata;
     }
     /** 
@@ -216,7 +215,7 @@ public class VirtualVolumeTask implements Serializable {
         private String status;
         private String operation;
         private java.util.UUID virtualVolumeHostID;
-        private LinkedTreeMap<String, Object> parentMetadata;
+        private java.util.Map<String, Object> parentMetadata;
         private Long parentTotalSize;
         private Long parentUsedSize;
         private Boolean cancelled;
@@ -282,7 +281,7 @@ public class VirtualVolumeTask implements Serializable {
             return this;
         }
 
-        public VirtualVolumeTask.Builder parentMetadata(final LinkedTreeMap<String, Object> parentMetadata) {
+        public VirtualVolumeTask.Builder parentMetadata(final java.util.Map<String, Object> parentMetadata) {
             this.parentMetadata = parentMetadata;
             return this;
         }

@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -34,7 +33,7 @@ import java.util.Objects;
 public class GetNvramInfoResult implements Serializable {
 
     public static final long serialVersionUID = 8380977530507768205L;
-    @SerializedName("nvramInfo") private LinkedTreeMap<String, Object> nvramInfo;
+    @SerializedName("nvramInfo") private java.util.Map<String, Object> nvramInfo;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +42,7 @@ public class GetNvramInfoResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetNvramInfoResult(
-        LinkedTreeMap<String, Object> nvramInfo
+        java.util.Map<String, Object> nvramInfo
     )
     {
         this.nvramInfo = nvramInfo;
@@ -52,8 +51,8 @@ public class GetNvramInfoResult implements Serializable {
     /** 
      * Arrays of events and errors detected on the NVRAM card.
      **/
-    public LinkedTreeMap<String, Object> getNvramInfo() { return this.nvramInfo; }
-    public void setNvramInfo(LinkedTreeMap<String, Object> nvramInfo) { 
+    public java.util.Map<String, Object> getNvramInfo() { return this.nvramInfo; }
+    public void setNvramInfo(java.util.Map<String, Object> nvramInfo) { 
         this.nvramInfo = nvramInfo;
     }
 
@@ -103,7 +102,7 @@ public class GetNvramInfoResult implements Serializable {
     }
 
     public static class Builder {
-        private LinkedTreeMap<String, Object> nvramInfo;
+        private java.util.Map<String, Object> nvramInfo;
 
         private Builder() { }
 
@@ -118,7 +117,7 @@ public class GetNvramInfoResult implements Serializable {
             return this;
         }
 
-        public GetNvramInfoResult.Builder nvramInfo(final LinkedTreeMap<String, Object> nvramInfo) {
+        public GetNvramInfoResult.Builder nvramInfo(final java.util.Map<String, Object> nvramInfo) {
             this.nvramInfo = nvramInfo;
             return this;
         }

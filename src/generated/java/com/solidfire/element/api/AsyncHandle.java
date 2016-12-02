@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -37,7 +36,7 @@ public class AsyncHandle implements Serializable {
     @SerializedName("asyncResultID") private Long asyncResultID;
     @SerializedName("completed") private Boolean completed;
     @SerializedName("createTime") private String createTime;
-    @SerializedName("data") private LinkedTreeMap<String, Object> data;
+    @SerializedName("data") private java.util.Map<String, Object> data;
     @SerializedName("lastUpdateTime") private String lastUpdateTime;
     @SerializedName("resultType") private String resultType;
     @SerializedName("success") private Boolean success;
@@ -52,7 +51,7 @@ public class AsyncHandle implements Serializable {
         Long asyncResultID,
         Boolean completed,
         String createTime,
-        LinkedTreeMap<String, Object> data,
+        java.util.Map<String, Object> data,
         String lastUpdateTime,
         String resultType,
         Boolean success
@@ -91,8 +90,8 @@ public class AsyncHandle implements Serializable {
     /** 
      * Attributes related to the result
      **/
-    public LinkedTreeMap<String, Object> getData() { return this.data; }
-    public void setData(LinkedTreeMap<String, Object> data) { 
+    public java.util.Map<String, Object> getData() { return this.data; }
+    public void setData(java.util.Map<String, Object> data) { 
         this.data = data;
     }
     /** 
@@ -184,7 +183,7 @@ public class AsyncHandle implements Serializable {
         private Long asyncResultID;
         private Boolean completed;
         private String createTime;
-        private LinkedTreeMap<String, Object> data;
+        private java.util.Map<String, Object> data;
         private String lastUpdateTime;
         private String resultType;
         private Boolean success;
@@ -229,7 +228,7 @@ public class AsyncHandle implements Serializable {
             return this;
         }
 
-        public AsyncHandle.Builder data(final LinkedTreeMap<String, Object> data) {
+        public AsyncHandle.Builder data(final java.util.Map<String, Object> data) {
             this.data = data;
             return this;
         }

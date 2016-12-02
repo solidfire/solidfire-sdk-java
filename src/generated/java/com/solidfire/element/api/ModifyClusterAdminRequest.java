@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -37,7 +36,7 @@ public class ModifyClusterAdminRequest implements Serializable {
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     @SerializedName("password") private Optional<String> password;
     @SerializedName("access") private Optional<String[]> access;
-    @SerializedName("attributes") private Optional<LinkedTreeMap<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -49,13 +48,13 @@ public class ModifyClusterAdminRequest implements Serializable {
         Long clusterAdminID,
         Optional<String> password,
         Optional<String[]> access,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.clusterAdminID = clusterAdminID;
         this.password = (password == null) ? Optional.<String>empty() : password;
         this.access = (access == null) ? Optional.<String[]>empty() : access;
-        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     /** 
@@ -82,9 +81,9 @@ public class ModifyClusterAdminRequest implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<LinkedTreeMap<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<LinkedTreeMap<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -151,7 +150,7 @@ public class ModifyClusterAdminRequest implements Serializable {
         private Long clusterAdminID;
         private Optional<String> password;
         private Optional<String[]> access;
-        private Optional<LinkedTreeMap<String, Object>> attributes;
+        private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
 
@@ -187,8 +186,8 @@ public class ModifyClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder optionalAttributes(final LinkedTreeMap<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : Optional.of(attributes);
+        public ModifyClusterAdminRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 

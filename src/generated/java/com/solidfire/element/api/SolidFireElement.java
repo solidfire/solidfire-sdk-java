@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.core.annotation.*;
 import com.solidfire.core.client.RequestDispatcher;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 
 /**
  * The API for controlling a SolidFire cluster.
@@ -506,7 +505,7 @@ public class SolidFireElement
         String username,
         Optional<CHAPSecret> initiatorSecret,
         Optional<CHAPSecret> targetSecret,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.addAccount(new AddAccountRequest(username, initiatorSecret, targetSecret, attributes));
     }
@@ -602,7 +601,7 @@ public class SolidFireElement
         Optional<String> status,
         Optional<CHAPSecret> initiatorSecret,
         Optional<CHAPSecret> targetSecret,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.modifyAccount(new ModifyAccountRequest(accountID, username, status, initiatorSecret, targetSecret, attributes));
     }
@@ -671,7 +670,7 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public CreateBackupTargetResult createBackupTarget(
         String name,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.createBackupTarget(new CreateBackupTargetRequest(name, attributes));
     }
@@ -724,7 +723,7 @@ public class SolidFireElement
     public ModifyBackupTargetResult modifyBackupTarget(
         Long backupTargetID,
         Optional<String> name,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.modifyBackupTarget(new ModifyBackupTargetRequest(backupTargetID, name, attributes));
     }
@@ -940,7 +939,7 @@ public class SolidFireElement
     @ConnectionType("Both")
     public Object invokeSFApi(
         String method,
-        Optional<LinkedTreeMap<String, Object>> parameters
+        Optional<java.util.Map<String, Object>> parameters
         ) {
         return this.invokeSFApi(new InvokeSFApiRequest(method, parameters));
     }
@@ -968,7 +967,7 @@ public class SolidFireElement
         String username,
         String[] access,
         Optional<Boolean> acceptEula,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.addLdapClusterAdmin(new AddLdapClusterAdminRequest(username, access, acceptEula, attributes));
     }
@@ -1269,7 +1268,7 @@ public class SolidFireElement
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> retention,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.createSnapshot(new CreateSnapshotRequest(volumeID, snapshotID, name, enableRemoteReplication, retention, attributes));
     }
@@ -1377,7 +1376,7 @@ public class SolidFireElement
         Long snapshotID,
         Boolean saveCurrentState,
         Optional<String> name,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.rollbackToSnapshot(new RollbackToSnapshotRequest(volumeID, snapshotID, saveCurrentState, name, attributes));
     }
@@ -1410,7 +1409,7 @@ public class SolidFireElement
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> retention,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.createGroupSnapshot(new CreateGroupSnapshotRequest(volumes, name, enableRemoteReplication, retention, attributes));
     }
@@ -1510,7 +1509,7 @@ public class SolidFireElement
         Long groupSnapshotID,
         Boolean saveCurrentState,
         Optional<String> name,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.rollbackToGroupSnapshot(new RollbackToGroupSnapshotRequest(groupSnapshotID, saveCurrentState, name, attributes));
     }
@@ -1849,7 +1848,7 @@ public class SolidFireElement
         Optional<Long[]> volumes,
         Optional<Long[]> virtualNetworkID,
         Optional<Long[]> virtualNetworkTags,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.createVolumeAccessGroup(new CreateVolumeAccessGroupRequest(name, initiators, volumes, virtualNetworkID, virtualNetworkTags, attributes));
     }
@@ -1937,7 +1936,7 @@ public class SolidFireElement
         Optional<String> name,
         Optional<String[]> initiators,
         Optional<Long[]> volumes,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.modifyVolumeAccessGroup(new ModifyVolumeAccessGroupRequest(volumeAccessGroupID, virtualNetworkID, virtualNetworkTags, name, initiators, volumes, attributes));
     }
@@ -2221,7 +2220,7 @@ public class SolidFireElement
         String svip,
         Optional<String> gateway,
         Optional<Boolean> namespace,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.addVirtualNetwork(new AddVirtualNetworkRequest(virtualNetworkTag, name, addressBlocks, netmask, svip, gateway, namespace, attributes));
     }
@@ -2254,7 +2253,7 @@ public class SolidFireElement
         Optional<String> svip,
         Optional<String> gateway,
         Optional<Boolean> namespace,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.modifyVirtualNetwork(new ModifyVirtualNetworkRequest(virtualNetworkID, virtualNetworkTag, name, addressBlocks, netmask, svip, gateway, namespace, attributes));
     }
@@ -2479,7 +2478,7 @@ public class SolidFireElement
         String password,
         String[] access,
         Optional<Boolean> acceptEula,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.addClusterAdmin(new AddClusterAdminRequest(username, password, access, acceptEula, attributes));
     }
@@ -2503,7 +2502,7 @@ public class SolidFireElement
         Long clusterAdminID,
         Optional<String> password,
         Optional<String[]> access,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.modifyClusterAdmin(new ModifyClusterAdminRequest(clusterAdminID, password, access, attributes));
     }
@@ -2817,7 +2816,7 @@ public class SolidFireElement
         Optional<Long> newSize,
         Optional<String> access,
         Optional<Long> snapshotID,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.cloneVolume(new CloneVolumeRequest(volumeID, name, newAccountID, newSize, access, snapshotID, attributes));
     }
@@ -2961,7 +2960,7 @@ public class SolidFireElement
         Long totalSize,
         Boolean enable512e,
         Optional<QoS> qos,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.createVolume(new CreateVolumeRequest(name, accountID, totalSize, enable512e, qos, attributes));
     }
@@ -3265,7 +3264,7 @@ public class SolidFireElement
         Optional<String> access,
         Optional<QoS> qos,
         Optional<Long> totalSize,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.modifyVolume(new ModifyVolumeRequest(volumeID, accountID, access, qos, totalSize, attributes));
     }
@@ -3289,7 +3288,7 @@ public class SolidFireElement
         Long[] volumeIDs,
         Optional<Long> accountID,
         Optional<String> access,
-        Optional<LinkedTreeMap<String, Object>> attributes,
+        Optional<java.util.Map<String, Object>> attributes,
         Optional<QoS> qos,
         Optional<Long> totalSize
         ) {
@@ -3412,7 +3411,7 @@ public class SolidFireElement
         Optional<Long> snapshotID,
         Optional<String> script,
         Optional<Object> scriptParameters,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.startBulkVolumeRead(new StartBulkVolumeReadRequest(volumeID, format, snapshotID, script, scriptParameters, attributes));
     }
@@ -3445,7 +3444,7 @@ public class SolidFireElement
         String format,
         Optional<String> script,
         Optional<Object> scriptParameters,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.startBulkVolumeWrite(new StartBulkVolumeWriteRequest(volumeID, format, script, scriptParameters, attributes));
     }
@@ -3470,7 +3469,7 @@ public class SolidFireElement
         String status,
         Optional<String> percentComplete,
         Optional<String> message,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.updateBulkVolumeStatus(new UpdateBulkVolumeStatusRequest(key, status, percentComplete, message, attributes));
     }

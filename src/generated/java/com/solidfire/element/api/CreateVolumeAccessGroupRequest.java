@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -39,7 +38,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
     @SerializedName("volumes") private Optional<Long[]> volumes;
     @SerializedName("virtualNetworkID") private Optional<Long[]> virtualNetworkID;
     @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
-    @SerializedName("attributes") private Optional<LinkedTreeMap<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -53,7 +52,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         Optional<Long[]> volumes,
         Optional<Long[]> virtualNetworkID,
         Optional<Long[]> virtualNetworkTags,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.name = name;
@@ -61,7 +60,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
         this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
-        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     /** 
@@ -105,9 +104,9 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<LinkedTreeMap<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<LinkedTreeMap<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -186,7 +185,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         private Optional<Long[]> volumes;
         private Optional<Long[]> virtualNetworkID;
         private Optional<Long[]> virtualNetworkTags;
-        private Optional<LinkedTreeMap<String, Object>> attributes;
+        private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
 
@@ -236,8 +235,8 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder optionalAttributes(final LinkedTreeMap<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : Optional.of(attributes);
+        public CreateVolumeAccessGroupRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 

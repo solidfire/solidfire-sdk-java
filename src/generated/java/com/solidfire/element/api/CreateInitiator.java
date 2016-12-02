@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -37,7 +36,7 @@ public class CreateInitiator implements Serializable {
     @SerializedName("name") private String name;
     @SerializedName("alias") private Optional<String> alias;
     @SerializedName("volumeAccessGroupID") private Optional<Long> volumeAccessGroupID;
-    @SerializedName("attributes") private Optional<LinkedTreeMap<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -49,13 +48,13 @@ public class CreateInitiator implements Serializable {
         String name,
         Optional<String> alias,
         Optional<Long> volumeAccessGroupID,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.name = name;
         this.alias = (alias == null) ? Optional.<String>empty() : alias;
         this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<Long>empty() : volumeAccessGroupID;
-        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     /** 
@@ -82,9 +81,9 @@ public class CreateInitiator implements Serializable {
     /** 
      * (Optional) A set of JSON attributes assigned to this initiator. (JSON Object)
      **/
-    public Optional<LinkedTreeMap<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<LinkedTreeMap<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -151,7 +150,7 @@ public class CreateInitiator implements Serializable {
         private String name;
         private Optional<String> alias;
         private Optional<Long> volumeAccessGroupID;
-        private Optional<LinkedTreeMap<String, Object>> attributes;
+        private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
 
@@ -187,8 +186,8 @@ public class CreateInitiator implements Serializable {
             return this;
         }
 
-        public CreateInitiator.Builder optionalAttributes(final LinkedTreeMap<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : Optional.of(attributes);
+        public CreateInitiator.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 

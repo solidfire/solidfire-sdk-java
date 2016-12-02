@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 
 import com.solidfire.core.annotation.*;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 
 
 /**
@@ -381,7 +380,7 @@ public interface SolidFireElementIF {
         String username,
         Optional<CHAPSecret> initiatorSecret,
         Optional<CHAPSecret> targetSecret,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * Returns details about an account, given its AccountID.
@@ -453,7 +452,7 @@ public interface SolidFireElementIF {
         Optional<String> status,
         Optional<CHAPSecret> initiatorSecret,
         Optional<CHAPSecret> targetSecret,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * Used to remove an existing account.
@@ -504,7 +503,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public CreateBackupTargetResult createBackupTarget(
         String name,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * GetBackupTarget allows you to return information about a specific backup target that has been created.
@@ -542,7 +541,7 @@ public interface SolidFireElementIF {
     public ModifyBackupTargetResult modifyBackupTarget(
         Long backupTargetID,
         Optional<String> name,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * RemoveBackupTarget allows you to delete backup targets.
@@ -704,7 +703,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Both")
     public Object invokeSFApi(
         String method,
-        Optional<LinkedTreeMap<String, Object>> parameters
+        Optional<java.util.Map<String, Object>> parameters
         );
     /** 
      * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
@@ -726,7 +725,7 @@ public interface SolidFireElementIF {
         String username,
         String[] access,
         Optional<Boolean> acceptEula,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * The TestLdapAuthentication is used to verify the currently enabled LDAP authentication configuration settings are correct. If the configuration settings are correct, the API call returns a list of the groups the tested user is a member of.
@@ -952,7 +951,7 @@ public interface SolidFireElementIF {
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> retention,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * DeleteSnapshot is used to delete a snapshot.
@@ -1036,7 +1035,7 @@ public interface SolidFireElementIF {
         Long snapshotID,
         Boolean saveCurrentState,
         Optional<String> name,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
@@ -1063,7 +1062,7 @@ public interface SolidFireElementIF {
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> retention,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * DeleteGroupSnapshot is used to delete a group snapshot.
@@ -1139,7 +1138,7 @@ public interface SolidFireElementIF {
         Long groupSnapshotID,
         Boolean saveCurrentState,
         Optional<String> name,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
@@ -1391,7 +1390,7 @@ public interface SolidFireElementIF {
         Optional<Long[]> volumes,
         Optional<Long[]> virtualNetworkID,
         Optional<Long[]> virtualNetworkTags,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * ListVolumeAccessGroups is used to return information about the volume access groups that are currently in the system.
@@ -1461,7 +1460,7 @@ public interface SolidFireElementIF {
         Optional<String> name,
         Optional<String[]> initiators,
         Optional<Long[]> volumes,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * Add initiators to a volume access group.
@@ -1673,7 +1672,7 @@ public interface SolidFireElementIF {
         String svip,
         Optional<String> gateway,
         Optional<Boolean> namespace,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * ModifyVirtualNetwork is used to change various attributes of a VirtualNetwork object. This method can be used to add or remove address blocks, change the netmask IP, or modify the name or description of the virtual network.
@@ -1700,7 +1699,7 @@ public interface SolidFireElementIF {
         Optional<String> svip,
         Optional<String> gateway,
         Optional<Boolean> namespace,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * RemoveVirtualNetwork is used to remove a previously added virtual network.
@@ -1865,7 +1864,7 @@ public interface SolidFireElementIF {
         String password,
         String[] access,
         Optional<Boolean> acceptEula,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
@@ -1883,7 +1882,7 @@ public interface SolidFireElementIF {
         Long clusterAdminID,
         Optional<String> password,
         Optional<String[]> access,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * RemoveClusterAdmin is used to remove a Cluster Admin. The "admin" Cluster Admin cannot be removed.
@@ -2116,7 +2115,7 @@ public interface SolidFireElementIF {
         Optional<Long> newSize,
         Optional<String> access,
         Optional<Long> snapshotID,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
@@ -2224,7 +2223,7 @@ public interface SolidFireElementIF {
         Long totalSize,
         Boolean enable512e,
         Optional<QoS> qos,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * DeleteVolume marks an active volume for deletion.
@@ -2459,7 +2458,7 @@ public interface SolidFireElementIF {
         Optional<String> access,
         Optional<QoS> qos,
         Optional<Long> totalSize,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
@@ -2477,7 +2476,7 @@ public interface SolidFireElementIF {
         Long[] volumeIDs,
         Optional<Long> accountID,
         Optional<String> access,
-        Optional<LinkedTreeMap<String, Object>> attributes,
+        Optional<java.util.Map<String, Object>> attributes,
         Optional<QoS> qos,
         Optional<Long> totalSize
         );
@@ -2576,7 +2575,7 @@ public interface SolidFireElementIF {
         Optional<Long> snapshotID,
         Optional<String> script,
         Optional<Object> scriptParameters,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * StartBulkVolumeWrite allows you to initialize a bulk volume write session on a specified volume.
@@ -2603,7 +2602,7 @@ public interface SolidFireElementIF {
         String format,
         Optional<String> script,
         Optional<Object> scriptParameters,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
@@ -2622,7 +2621,7 @@ public interface SolidFireElementIF {
         String status,
         Optional<String> percentComplete,
         Optional<String> message,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.

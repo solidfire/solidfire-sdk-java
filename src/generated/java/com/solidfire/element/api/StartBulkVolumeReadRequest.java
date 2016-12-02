@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -39,7 +38,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("script") private Optional<String> script;
     @SerializedName("scriptParameters") private Optional<Object> scriptParameters;
-    @SerializedName("attributes") private Optional<LinkedTreeMap<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -53,7 +52,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
         Optional<Long> snapshotID,
         Optional<String> script,
         Optional<Object> scriptParameters,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.volumeID = volumeID;
@@ -61,7 +60,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
         this.script = (script == null) ? Optional.<String>empty() : script;
         this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : scriptParameters;
-        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     /** 
@@ -107,9 +106,9 @@ public class StartBulkVolumeReadRequest implements Serializable {
     /** 
      * JSON attributes for the bulk volume job.
      **/
-    public Optional<LinkedTreeMap<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<LinkedTreeMap<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -186,7 +185,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
         private Optional<Long> snapshotID;
         private Optional<String> script;
         private Optional<Object> scriptParameters;
-        private Optional<LinkedTreeMap<String, Object>> attributes;
+        private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
 
@@ -236,8 +235,8 @@ public class StartBulkVolumeReadRequest implements Serializable {
             return this;
         }
 
-        public StartBulkVolumeReadRequest.Builder optionalAttributes(final LinkedTreeMap<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : Optional.of(attributes);
+        public StartBulkVolumeReadRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 

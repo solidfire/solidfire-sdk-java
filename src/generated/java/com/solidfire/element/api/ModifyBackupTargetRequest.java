@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -36,7 +35,7 @@ public class ModifyBackupTargetRequest implements Serializable {
     public static final long serialVersionUID = -2231080711756074693L;
     @SerializedName("backupTargetID") private Long backupTargetID;
     @SerializedName("name") private Optional<String> name;
-    @SerializedName("attributes") private Optional<LinkedTreeMap<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -47,12 +46,12 @@ public class ModifyBackupTargetRequest implements Serializable {
     public ModifyBackupTargetRequest(
         Long backupTargetID,
         Optional<String> name,
-        Optional<LinkedTreeMap<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.backupTargetID = backupTargetID;
         this.name = (name == null) ? Optional.<String>empty() : name;
-        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     /** 
@@ -72,9 +71,9 @@ public class ModifyBackupTargetRequest implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<LinkedTreeMap<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<LinkedTreeMap<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -135,7 +134,7 @@ public class ModifyBackupTargetRequest implements Serializable {
     public static class Builder {
         private Long backupTargetID;
         private Optional<String> name;
-        private Optional<LinkedTreeMap<String, Object>> attributes;
+        private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
 
@@ -164,8 +163,8 @@ public class ModifyBackupTargetRequest implements Serializable {
             return this;
         }
 
-        public ModifyBackupTargetRequest.Builder optionalAttributes(final LinkedTreeMap<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<LinkedTreeMap<String, Object>>empty() : Optional.of(attributes);
+        public ModifyBackupTargetRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 

@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -34,7 +33,7 @@ import java.util.Objects;
 public class VolumeAccessGroup implements Serializable {
 
     public static final long serialVersionUID = 143293271697026076L;
-    @SerializedName("attributes") private LinkedTreeMap<String, Object> attributes;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
     @SerializedName("deletedVolumes") private Long[] deletedVolumes;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("name") private String name;
@@ -49,7 +48,7 @@ public class VolumeAccessGroup implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public VolumeAccessGroup(
-        LinkedTreeMap<String, Object> attributes,
+        java.util.Map<String, Object> attributes,
         Long[] deletedVolumes,
         Long volumeAccessGroupID,
         String name,
@@ -70,8 +69,8 @@ public class VolumeAccessGroup implements Serializable {
     /** 
      * List of name/value pairs
      **/
-    public LinkedTreeMap<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(LinkedTreeMap<String, Object> attributes) { 
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
         this.attributes = attributes;
     }
     /** 
@@ -181,7 +180,7 @@ public class VolumeAccessGroup implements Serializable {
     }
 
     public static class Builder {
-        private LinkedTreeMap<String, Object> attributes;
+        private java.util.Map<String, Object> attributes;
         private Long[] deletedVolumes;
         private Long volumeAccessGroupID;
         private String name;
@@ -214,7 +213,7 @@ public class VolumeAccessGroup implements Serializable {
             return this;
         }
 
-        public VolumeAccessGroup.Builder attributes(final LinkedTreeMap<String, Object> attributes) {
+        public VolumeAccessGroup.Builder attributes(final java.util.Map<String, Object> attributes) {
             this.attributes = attributes;
             return this;
         }

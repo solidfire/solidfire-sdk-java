@@ -21,7 +21,6 @@ package com.solidfire.element.api;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
-import com.solidfire.gson.internal.LinkedTreeMap;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -35,7 +34,7 @@ public class ListDriveStatsResult implements Serializable {
 
     public static final long serialVersionUID = -7807466351059212790L;
     @SerializedName("driveStats") private DriveStats[] driveStats;
-    @SerializedName("errors") private LinkedTreeMap<String, Object>[] errors;
+    @SerializedName("errors") private java.util.Map<String, Object>[] errors;
 
     // empty constructor
     @Since("7.0")
@@ -45,7 +44,7 @@ public class ListDriveStatsResult implements Serializable {
     @Since("7.0")
     public ListDriveStatsResult(
         DriveStats[] driveStats,
-        LinkedTreeMap<String, Object>[] errors
+        java.util.Map<String, Object>[] errors
     )
     {
         this.driveStats = driveStats;
@@ -62,8 +61,8 @@ public class ListDriveStatsResult implements Serializable {
     /** 
      * If there are errors retrieving information about a drive, this list contains the driveID and associated error message. Always present, and empty if there are no errors.
      **/
-    public LinkedTreeMap<String, Object>[] getErrors() { return this.errors; }
-    public void setErrors(LinkedTreeMap<String, Object>[] errors) { 
+    public java.util.Map<String, Object>[] getErrors() { return this.errors; }
+    public void setErrors(java.util.Map<String, Object>[] errors) { 
         this.errors = errors;
     }
 
@@ -117,7 +116,7 @@ public class ListDriveStatsResult implements Serializable {
 
     public static class Builder {
         private DriveStats[] driveStats;
-        private LinkedTreeMap<String, Object>[] errors;
+        private java.util.Map<String, Object>[] errors;
 
         private Builder() { }
 
@@ -139,7 +138,7 @@ public class ListDriveStatsResult implements Serializable {
             return this;
         }
 
-        public ListDriveStatsResult.Builder errors(final LinkedTreeMap<String, Object>[] errors) {
+        public ListDriveStatsResult.Builder errors(final java.util.Map<String, Object>[] errors) {
             this.errors = errors;
             return this;
         }
