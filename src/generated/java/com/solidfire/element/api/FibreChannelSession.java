@@ -37,7 +37,7 @@ public class FibreChannelSession implements Serializable {
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("serviceID") private Long serviceID;
     @SerializedName("targetWWPN") private String targetWWPN;
-    @SerializedName("volumeAccessGroupID") private java.util.UUID volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private Optional<int> volumeAccessGroupID;
 
     // empty constructor
     @Since("7.0")
@@ -50,14 +50,14 @@ public class FibreChannelSession implements Serializable {
         Long nodeID,
         Long serviceID,
         String targetWWPN,
-        java.util.UUID volumeAccessGroupID
+        Optional<int> volumeAccessGroupID
     )
     {
         this.initiatorWWPN = initiatorWWPN;
         this.nodeID = nodeID;
         this.serviceID = serviceID;
         this.targetWWPN = targetWWPN;
-        this.volumeAccessGroupID = volumeAccessGroupID;
+        this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<int>empty() : volumeAccessGroupID;
     }
 
     /** 
@@ -91,9 +91,9 @@ public class FibreChannelSession implements Serializable {
     /** 
      * The ID of the volume access group to which the initiatorWWPN belongs. If not in a volume access group, the value will be null.
      **/
-    public java.util.UUID getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
-    public void setVolumeAccessGroupID(java.util.UUID volumeAccessGroupID) { 
-        this.volumeAccessGroupID = volumeAccessGroupID;
+    public Optional<int> getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Optional<int> volumeAccessGroupID) { 
+        this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<int>empty() : volumeAccessGroupID;
     }
 
     @Override
@@ -136,7 +136,9 @@ public class FibreChannelSession implements Serializable {
         sb.append(" nodeID : ").append(nodeID).append(",");
         sb.append(" serviceID : ").append(serviceID).append(",");
         sb.append(" targetWWPN : ").append(targetWWPN).append(",");
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
+        if(null != volumeAccessGroupID && volumeAccessGroupID.isPresent()){
+            sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -158,7 +160,7 @@ public class FibreChannelSession implements Serializable {
         private Long nodeID;
         private Long serviceID;
         private String targetWWPN;
-        private java.util.UUID volumeAccessGroupID;
+        private Optional<int> volumeAccessGroupID;
 
         private Builder() { }
 
@@ -201,8 +203,8 @@ public class FibreChannelSession implements Serializable {
             return this;
         }
 
-        public FibreChannelSession.Builder volumeAccessGroupID(final java.util.UUID volumeAccessGroupID) {
-            this.volumeAccessGroupID = volumeAccessGroupID;
+        public FibreChannelSession.Builder optionalVolumeAccessGroupID(final int volumeAccessGroupID) {
+            this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<int>empty() : Optional.of(volumeAccessGroupID);
             return this;
         }
 
