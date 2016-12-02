@@ -37,7 +37,7 @@ public class FibreChannelSession implements Serializable {
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("serviceID") private Long serviceID;
     @SerializedName("targetWWPN") private String targetWWPN;
-    @SerializedName("volumeAccessGroupID") private Optional<int> volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private Optional<Long> volumeAccessGroupID;
 
     // empty constructor
     @Since("7.0")
@@ -50,14 +50,14 @@ public class FibreChannelSession implements Serializable {
         Long nodeID,
         Long serviceID,
         String targetWWPN,
-        Optional<int> volumeAccessGroupID
+        Optional<Long> volumeAccessGroupID
     )
     {
         this.initiatorWWPN = initiatorWWPN;
         this.nodeID = nodeID;
         this.serviceID = serviceID;
         this.targetWWPN = targetWWPN;
-        this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<int>empty() : volumeAccessGroupID;
+        this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<Long>empty() : volumeAccessGroupID;
     }
 
     /** 
@@ -91,9 +91,9 @@ public class FibreChannelSession implements Serializable {
     /** 
      * The ID of the volume access group to which the initiatorWWPN belongs. If not in a volume access group, the value will be null.
      **/
-    public Optional<int> getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
-    public void setVolumeAccessGroupID(Optional<int> volumeAccessGroupID) { 
-        this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<int>empty() : volumeAccessGroupID;
+    public Optional<Long> getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Optional<Long> volumeAccessGroupID) { 
+        this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<Long>empty() : volumeAccessGroupID;
     }
 
     @Override
@@ -160,7 +160,7 @@ public class FibreChannelSession implements Serializable {
         private Long nodeID;
         private Long serviceID;
         private String targetWWPN;
-        private Optional<int> volumeAccessGroupID;
+        private Optional<Long> volumeAccessGroupID;
 
         private Builder() { }
 
@@ -203,8 +203,8 @@ public class FibreChannelSession implements Serializable {
             return this;
         }
 
-        public FibreChannelSession.Builder optionalVolumeAccessGroupID(final int volumeAccessGroupID) {
-            this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<int>empty() : Optional.of(volumeAccessGroupID);
+        public FibreChannelSession.Builder optionalVolumeAccessGroupID(final Long volumeAccessGroupID) {
+            this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<Long>empty() : Optional.of(volumeAccessGroupID);
             return this;
         }
 
