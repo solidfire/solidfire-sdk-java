@@ -37,7 +37,7 @@ public class FibreChannelSession implements Serializable {
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("serviceID") private Long serviceID;
     @SerializedName("targetWWPN") private String targetWWPN;
-    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private java.util.UUID volumeAccessGroupID;
 
     // empty constructor
     @Since("7.0")
@@ -50,7 +50,7 @@ public class FibreChannelSession implements Serializable {
         Long nodeID,
         Long serviceID,
         String targetWWPN,
-        Long volumeAccessGroupID
+        java.util.UUID volumeAccessGroupID
     )
     {
         this.initiatorWWPN = initiatorWWPN;
@@ -91,8 +91,8 @@ public class FibreChannelSession implements Serializable {
     /** 
      * The ID of the volume access group to which the initiatorWWPN belongs. If not in a volume access group, the value will be null.
      **/
-    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
-    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+    public java.util.UUID getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(java.util.UUID volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
@@ -158,7 +158,7 @@ public class FibreChannelSession implements Serializable {
         private Long nodeID;
         private Long serviceID;
         private String targetWWPN;
-        private Long volumeAccessGroupID;
+        private java.util.UUID volumeAccessGroupID;
 
         private Builder() { }
 
@@ -201,7 +201,7 @@ public class FibreChannelSession implements Serializable {
             return this;
         }
 
-        public FibreChannelSession.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
+        public FibreChannelSession.Builder volumeAccessGroupID(final java.util.UUID volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }

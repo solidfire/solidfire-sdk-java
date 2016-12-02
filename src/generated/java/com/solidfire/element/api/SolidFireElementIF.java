@@ -334,6 +334,33 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListNodeStatsResult listNodeStats();
     /** 
+     * The ListFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ListFibreChannelPortInfoResult listFibreChannelPortInfo();
+    /** 
+     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
+     **/
+    @Since("7.0")
+    @ConnectionType("Node")
+    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo(final ListNodeFibreChannelPortInfoRequest request);
+
+    /** 
+     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
+     **/
+    @Since("7.0")
+    @ConnectionType("Node")
+    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo(
+        Optional<Boolean> force
+        );
+    /** 
+     * The ListFibreChannelSessions is used to return information about the active Fibre Channel sessions on a cluster.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListFibreChannelSessionsResult listFibreChannelSessions();
+    /** 
      * Used to add a new account to the system.
      * New volumes can be created under the new account.
      * The CHAP settings specified for the account applies to all volumes owned by the account.
@@ -592,33 +619,6 @@ public interface SolidFireElementIF {
     public EnableFeatureResult enableFeature(
         String feature
         );
-    /** 
-     * The ListFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ListFibreChannelPortInfoResult listFibreChannelPortInfo();
-    /** 
-     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
-     **/
-    @Since("7.0")
-    @ConnectionType("Node")
-    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo(final ListNodeFibreChannelPortInfoRequest request);
-
-    /** 
-     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
-     **/
-    @Since("7.0")
-    @ConnectionType("Node")
-    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo(
-        Optional<Boolean> force
-        );
-    /** 
-     * The ListFibreChannelSessions is used to return information about the active Fibre Channel sessions on a cluster.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListFibreChannelSessionsResult listFibreChannelSessions();
     /** 
      * CreateInitiators enables you to create multiple new initiator IQNs or World Wide Port Names (WWPNs) and optionally assign them aliases and attributes. When you use CreateInitiators to create new initiators, you can also add them to volume access groups.
      * If CreateInitiators fails to create one of the initiators provided in the parameter, the method returns an error and does not create any initiators (no partial completion is possible).

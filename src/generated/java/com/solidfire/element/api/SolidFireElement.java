@@ -443,6 +443,45 @@ public class SolidFireElement
         return super.sendRequest("ListNodeStats", null, null, ListNodeStatsResult.class);
     }
     /** 
+     * The ListFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
+     **/
+    @Override
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ListFibreChannelPortInfoResult listFibreChannelPortInfo() {
+        return super.sendRequest("ListFibreChannelPortInfo", null, null, ListFibreChannelPortInfoResult.class);
+    }
+    /** 
+     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo(final ListNodeFibreChannelPortInfoRequest request) {
+        return super.sendRequest("ListNodeFibreChannelPortInfo", request, ListNodeFibreChannelPortInfoRequest.class, ListNodeFibreChannelPortInfoResult.class);
+    }
+
+    /** 
+     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo(
+        Optional<Boolean> force
+        ) {
+        return this.listNodeFibreChannelPortInfo(new ListNodeFibreChannelPortInfoRequest(force));
+    }
+    /** 
+     * The ListFibreChannelSessions is used to return information about the active Fibre Channel sessions on a cluster.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListFibreChannelSessionsResult listFibreChannelSessions() {
+        return super.sendRequest("ListFibreChannelSessions", null, null, ListFibreChannelSessionsResult.class);
+    }
+    /** 
      * Used to add a new account to the system.
      * New volumes can be created under the new account.
      * The CHAP settings specified for the account applies to all volumes owned by the account.
@@ -787,45 +826,6 @@ public class SolidFireElement
         String feature
         ) {
         return this.enableFeature(new EnableFeatureRequest(feature));
-    }
-    /** 
-     * The ListFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
-     **/
-    @Override
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ListFibreChannelPortInfoResult listFibreChannelPortInfo() {
-        return super.sendRequest("ListFibreChannelPortInfo", null, null, ListFibreChannelPortInfoResult.class);
-    }
-    /** 
-     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Node")
-    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo(final ListNodeFibreChannelPortInfoRequest request) {
-        return super.sendRequest("ListNodeFibreChannelPortInfo", request, ListNodeFibreChannelPortInfoRequest.class, ListNodeFibreChannelPortInfoResult.class);
-    }
-
-    /** 
-     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes. However, this method can be used on the cluster if the force=true parameter is included in the method call. When used on the cluster, all Fibre Channel interfaces are listed.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Node")
-    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo(
-        Optional<Boolean> force
-        ) {
-        return this.listNodeFibreChannelPortInfo(new ListNodeFibreChannelPortInfoRequest(force));
-    }
-    /** 
-     * The ListFibreChannelSessions is used to return information about the active Fibre Channel sessions on a cluster.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListFibreChannelSessionsResult listFibreChannelSessions() {
-        return super.sendRequest("ListFibreChannelSessions", null, null, ListFibreChannelSessionsResult.class);
     }
     /** 
      * CreateInitiators enables you to create multiple new initiator IQNs or World Wide Port Names (WWPNs) and optionally assign them aliases and attributes. When you use CreateInitiators to create new initiators, you can also add them to volume access groups.
