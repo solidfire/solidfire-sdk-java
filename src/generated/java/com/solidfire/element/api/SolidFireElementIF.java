@@ -2888,11 +2888,13 @@ public interface SolidFireElementIF {
     /** 
      **/
     @Since("9.0")
+    @ConnectionType("Cluster")
     public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request);
 
     /** 
      **/
     @Since("9.0")
+    @ConnectionType("Cluster")
     public ListVolumeStatsResult listVolumeStats(
         Optional<Long[]> volumeIDs
         );

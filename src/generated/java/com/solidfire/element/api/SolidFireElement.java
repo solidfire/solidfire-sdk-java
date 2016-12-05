@@ -3817,6 +3817,7 @@ public class SolidFireElement
      **/
     @Override
     @Since("9.0")
+    @ConnectionType("Cluster")
     public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request) {
         return super.sendRequest("ListVolumeStats", request, ListVolumeStatsRequest.class, ListVolumeStatsResult.class);
     }
@@ -3825,6 +3826,7 @@ public class SolidFireElement
      **/
     @Override
     @Since("9.0")
+    @ConnectionType("Cluster")
     public ListVolumeStatsResult listVolumeStats(
         Optional<Long[]> volumeIDs
         ) {
