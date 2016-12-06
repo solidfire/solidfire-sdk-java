@@ -926,280 +926,6 @@ public interface SolidFireElementIF {
         Optional<java.util.UUID[]> protocolEndpointIDs
         );
     /** 
-     * CreateSnapshot is used to create a point-in-time copy of a volume.
-     * A snapshot can be created from any volume or from an existing snapshot.
-     * <br/><br/>
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public CreateSnapshotResult createSnapshot(final CreateSnapshotRequest request);
-
-    /** 
-     * CreateSnapshot is used to create a point-in-time copy of a volume.
-     * A snapshot can be created from any volume or from an existing snapshot.
-     * <br/><br/>
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public CreateSnapshotResult createSnapshot(
-        Long volumeID,
-        Optional<Long> snapshotID,
-        Optional<String> name,
-        Optional<Boolean> enableRemoteReplication,
-        Optional<String> retention,
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * DeleteSnapshot is used to delete a snapshot.
-     * A snapshot that is currently the "active" snapshot cannot be deleted.
-     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
-     * To rollback a snapshot, use RollbackToSnapshot.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public DeleteSnapshotResult deleteSnapshot(final DeleteSnapshotRequest request);
-
-    /** 
-     * DeleteSnapshot is used to delete a snapshot.
-     * A snapshot that is currently the "active" snapshot cannot be deleted.
-     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
-     * To rollback a snapshot, use RollbackToSnapshot.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public DeleteSnapshotResult deleteSnapshot(
-        Long snapshotID
-        );
-    /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request);
-
-    /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(
-        Optional<Long> volumeID
-        );
-    /** 
-     * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
-     * Use this API method to enable the snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ModifySnapshotResult modifySnapshot(final ModifySnapshotRequest request);
-
-    /** 
-     * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
-     * Use this API method to enable the snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ModifySnapshotResult modifySnapshot(
-        Long snapshotID,
-        Optional<String> expirationTime,
-        Optional<Boolean> enableRemoteReplication
-        );
-    /** 
-     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
-     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
-     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
-     * a value of "true."
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public CreateSnapshotResult rollbackToSnapshot(final RollbackToSnapshotRequest request);
-
-    /** 
-     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
-     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
-     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
-     * a value of "true."
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public CreateSnapshotResult rollbackToSnapshot(
-        Long volumeID,
-        Long snapshotID,
-        Boolean saveCurrentState,
-        Optional<String> name,
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
-     * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
-     * <br/><br/>
-     * <b>Note</b>: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult createGroupSnapshot(final CreateGroupSnapshotRequest request);
-
-    /** 
-     * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
-     * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
-     * <br/><br/>
-     * <b>Note</b>: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult createGroupSnapshot(
-        Long[] volumes,
-        Optional<String> name,
-        Optional<Boolean> enableRemoteReplication,
-        Optional<String> retention,
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * DeleteGroupSnapshot is used to delete a group snapshot.
-     * The saveMembers parameter can be used to preserve all the snapshots that
-     * were made for the volumes in the group but the group association will be removed.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public DeleteGroupSnapshotResult deleteGroupSnapshot(final DeleteGroupSnapshotRequest request);
-
-    /** 
-     * DeleteGroupSnapshot is used to delete a group snapshot.
-     * The saveMembers parameter can be used to preserve all the snapshots that
-     * were made for the volumes in the group but the group association will be removed.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public DeleteGroupSnapshotResult deleteGroupSnapshot(
-        Long groupSnapshotID,
-        Boolean saveMembers
-        );
-    /** 
-     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListGroupSnapshotsResult listGroupSnapshots(final ListGroupSnapshotsRequest request);
-
-    /** 
-     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListGroupSnapshotsResult listGroupSnapshots(
-        Optional<Long> volumeID
-        );
-    /** 
-     * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ModifyGroupSnapshotResult modifyGroupSnapshot(final ModifyGroupSnapshotRequest request);
-
-    /** 
-     * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ModifyGroupSnapshotResult modifyGroupSnapshot(
-        Long groupSnapshotID,
-        Optional<String> expirationTime,
-        Optional<Boolean> enableRemoteReplication
-        );
-    /** 
-     * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
-     * <br/><br/>
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request);
-
-    /** 
-     * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
-     * <br/><br/>
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult rollbackToGroupSnapshot(
-        Long groupSnapshotID,
-        Boolean saveCurrentState,
-        Optional<String> name,
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public GetScheduleResult getSchedule(final GetScheduleRequest request);
-
-    /** 
-     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public GetScheduleResult getSchedule(
-        Long scheduleID
-        );
-    /** 
-     * ListSchedule is used to return information about all scheduled snapshots that have been created.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ListSchedulesResult listSchedules();
-    /** 
-     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.<br/>
-     * <br/>
-     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. <br/>
-     * <br/>
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public CreateScheduleResult createSchedule(final CreateScheduleRequest request);
-
-    /** 
-     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.<br/>
-     * <br/>
-     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. <br/>
-     * <br/>
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public CreateScheduleResult createSchedule(
-        Schedule schedule
-        );
-    /** 
-     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.<br/>
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request);
-
-    /** 
-     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.<br/>
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ModifyScheduleResult modifySchedule(
-        Schedule schedule
-        );
-    /** 
      * Creates a new VVols storage container.
      **/
     @Since("9.0")
@@ -2898,4 +2624,278 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public SnmpSendTestTrapsResult snmpSendTestTraps();
+    /** 
+     * CreateSnapshot is used to create a point-in-time copy of a volume.
+     * A snapshot can be created from any volume or from an existing snapshot.
+     * <br/><br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult createSnapshot(final CreateSnapshotRequest request);
+
+    /** 
+     * CreateSnapshot is used to create a point-in-time copy of a volume.
+     * A snapshot can be created from any volume or from an existing snapshot.
+     * <br/><br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult createSnapshot(
+        Long volumeID,
+        Optional<Long> snapshotID,
+        Optional<String> name,
+        Optional<Boolean> enableRemoteReplication,
+        Optional<String> retention,
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * DeleteSnapshot is used to delete a snapshot.
+     * A snapshot that is currently the "active" snapshot cannot be deleted.
+     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
+     * To rollback a snapshot, use RollbackToSnapshot.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public DeleteSnapshotResult deleteSnapshot(final DeleteSnapshotRequest request);
+
+    /** 
+     * DeleteSnapshot is used to delete a snapshot.
+     * A snapshot that is currently the "active" snapshot cannot be deleted.
+     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
+     * To rollback a snapshot, use RollbackToSnapshot.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public DeleteSnapshotResult deleteSnapshot(
+        Long snapshotID
+        );
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request);
+
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(
+        Optional<Long> volumeID
+        );
+    /** 
+     * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
+     * Use this API method to enable the snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifySnapshotResult modifySnapshot(final ModifySnapshotRequest request);
+
+    /** 
+     * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
+     * Use this API method to enable the snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifySnapshotResult modifySnapshot(
+        Long snapshotID,
+        Optional<String> expirationTime,
+        Optional<Boolean> enableRemoteReplication
+        );
+    /** 
+     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
+     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
+     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
+     * a value of "true."
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult rollbackToSnapshot(final RollbackToSnapshotRequest request);
+
+    /** 
+     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
+     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
+     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
+     * a value of "true."
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult rollbackToSnapshot(
+        Long volumeID,
+        Long snapshotID,
+        Boolean saveCurrentState,
+        Optional<String> name,
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
+     * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
+     * <br/><br/>
+     * <b>Note</b>: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CreateGroupSnapshotResult createGroupSnapshot(final CreateGroupSnapshotRequest request);
+
+    /** 
+     * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
+     * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
+     * <br/><br/>
+     * <b>Note</b>: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CreateGroupSnapshotResult createGroupSnapshot(
+        Long[] volumes,
+        Optional<String> name,
+        Optional<Boolean> enableRemoteReplication,
+        Optional<String> retention,
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * DeleteGroupSnapshot is used to delete a group snapshot.
+     * The saveMembers parameter can be used to preserve all the snapshots that
+     * were made for the volumes in the group but the group association will be removed.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public DeleteGroupSnapshotResult deleteGroupSnapshot(final DeleteGroupSnapshotRequest request);
+
+    /** 
+     * DeleteGroupSnapshot is used to delete a group snapshot.
+     * The saveMembers parameter can be used to preserve all the snapshots that
+     * were made for the volumes in the group but the group association will be removed.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public DeleteGroupSnapshotResult deleteGroupSnapshot(
+        Long groupSnapshotID,
+        Boolean saveMembers
+        );
+    /** 
+     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListGroupSnapshotsResult listGroupSnapshots(final ListGroupSnapshotsRequest request);
+
+    /** 
+     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListGroupSnapshotsResult listGroupSnapshots(
+        Optional<Long> volumeID
+        );
+    /** 
+     * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifyGroupSnapshotResult modifyGroupSnapshot(final ModifyGroupSnapshotRequest request);
+
+    /** 
+     * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifyGroupSnapshotResult modifyGroupSnapshot(
+        Long groupSnapshotID,
+        Optional<String> expirationTime,
+        Optional<Boolean> enableRemoteReplication
+        );
+    /** 
+     * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
+     * <br/><br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request);
+
+    /** 
+     * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
+     * <br/><br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CreateGroupSnapshotResult rollbackToGroupSnapshot(
+        Long groupSnapshotID,
+        Boolean saveCurrentState,
+        Optional<String> name,
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public GetScheduleResult getSchedule(final GetScheduleRequest request);
+
+    /** 
+     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public GetScheduleResult getSchedule(
+        Long scheduleID
+        );
+    /** 
+     * ListSchedule is used to return information about all scheduled snapshots that have been created.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ListSchedulesResult listSchedules();
+    /** 
+     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.<br/>
+     * <br/>
+     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. <br/>
+     * <br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public CreateScheduleResult createSchedule(final CreateScheduleRequest request);
+
+    /** 
+     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.<br/>
+     * <br/>
+     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. <br/>
+     * <br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public CreateScheduleResult createSchedule(
+        Schedule schedule
+        );
+    /** 
+     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.<br/>
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request);
+
+    /** 
+     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.<br/>
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifyScheduleResult modifySchedule(
+        Schedule schedule
+        );
 }

@@ -40,7 +40,7 @@ public class Snapshot implements Serializable {
     @SerializedName("enableRemoteReplication") private Boolean enableRemoteReplication;
     @SerializedName("expirationReason") private String expirationReason;
     @SerializedName("expirationTime") private String expirationTime;
-    @SerializedName("remoteStatuses") private String remoteStatuses;
+    @SerializedName("remoteStatuses") private SnapshotRemoteStatus[] remoteStatuses;
     @SerializedName("status") private String status;
     @SerializedName("snapshotUUID") private java.util.UUID snapshotUUID;
     @SerializedName("totalSize") private Long totalSize;
@@ -63,7 +63,7 @@ public class Snapshot implements Serializable {
         Boolean enableRemoteReplication,
         String expirationReason,
         String expirationTime,
-        String remoteStatuses,
+        SnapshotRemoteStatus[] remoteStatuses,
         String status,
         java.util.UUID snapshotUUID,
         Long totalSize,
@@ -152,8 +152,8 @@ public class Snapshot implements Serializable {
      * <br/><b>Deleted</b>: This is a target cluster, the snapshot has been deleted, and it still exists on the source.
      * <br/><b>volumePairUUID</b>: universal identifier of the volume pair
      **/
-    public String getRemoteStatuses() { return this.remoteStatuses; }
-    public void setRemoteStatuses(String remoteStatuses) { 
+    public SnapshotRemoteStatus[] getRemoteStatuses() { return this.remoteStatuses; }
+    public void setRemoteStatuses(SnapshotRemoteStatus[] remoteStatuses) { 
         this.remoteStatuses = remoteStatuses;
     }
     /** 
@@ -227,7 +227,7 @@ public class Snapshot implements Serializable {
             Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
             Objects.equals(expirationReason, that.expirationReason) &&
             Objects.equals(expirationTime, that.expirationTime) &&
-            Objects.equals(remoteStatuses, that.remoteStatuses) &&
+            Arrays.equals(remoteStatuses, that.remoteStatuses) &&
             Objects.equals(status, that.status) &&
             Objects.equals(snapshotUUID, that.snapshotUUID) &&
             Objects.equals(totalSize, that.totalSize) &&
@@ -239,7 +239,7 @@ public class Snapshot implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( snapshotID, volumeID, name, checksum, enableRemoteReplication, expirationReason, expirationTime, remoteStatuses, status, snapshotUUID, totalSize, groupID, groupSnapshotUUID, createTime, attributes );
+        return Objects.hash( snapshotID, volumeID, name, checksum, enableRemoteReplication, expirationReason, expirationTime, (Object[])remoteStatuses, status, snapshotUUID, totalSize, groupID, groupSnapshotUUID, createTime, attributes );
     }
 
 
@@ -275,7 +275,7 @@ public class Snapshot implements Serializable {
         sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
         sb.append(" expirationReason : ").append(expirationReason).append(",");
         sb.append(" expirationTime : ").append(expirationTime).append(",");
-        sb.append(" remoteStatuses : ").append(remoteStatuses).append(",");
+        sb.append(" remoteStatuses : ").append(Arrays.toString(remoteStatuses)).append(",");
         sb.append(" status : ").append(status).append(",");
         sb.append(" snapshotUUID : ").append(snapshotUUID).append(",");
         sb.append(" totalSize : ").append(totalSize).append(",");
@@ -309,7 +309,7 @@ public class Snapshot implements Serializable {
         private Boolean enableRemoteReplication;
         private String expirationReason;
         private String expirationTime;
-        private String remoteStatuses;
+        private SnapshotRemoteStatus[] remoteStatuses;
         private String status;
         private java.util.UUID snapshotUUID;
         private Long totalSize;
@@ -394,7 +394,7 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder remoteStatuses(final String remoteStatuses) {
+        public Snapshot.Builder remoteStatuses(final SnapshotRemoteStatus[] remoteStatuses) {
             this.remoteStatuses = remoteStatuses;
             return this;
         }
