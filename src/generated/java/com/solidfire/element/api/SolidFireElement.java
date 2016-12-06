@@ -482,6 +482,30 @@ public class SolidFireElement
         return super.sendRequest("ListFibreChannelSessions", null, null, ListFibreChannelSessionsResult.class);
     }
     /** 
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Both")
+    public Object invokeSFApi(final InvokeSFApiRequest request) {
+        return com.solidfire.adaptor.ElementServiceAdaptor.invokeSFApi(this, request);
+    }
+
+    /** 
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Both")
+    public Object invokeSFApi(
+        String method,
+        Optional<java.util.Map<String, Object>> parameters
+        ) {
+        return this.invokeSFApi(new InvokeSFApiRequest(method, parameters));
+    }
+    /** 
      * Used to add a new account to the system.
      * New volumes can be created under the new account.
      * The CHAP settings specified for the account applies to all volumes owned by the account.
@@ -918,30 +942,6 @@ public class SolidFireElement
         Optional<Long[]> initiators
         ) {
         return this.listInitiators(new ListInitiatorsRequest(startInitiatorID, limit, initiators));
-    }
-    /** 
-     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
-     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Both")
-    public Object invokeSFApi(final InvokeSFApiRequest request) {
-        return com.solidfire.adaptor.ElementServiceAdaptor.invokeSFApi(this, request);
-    }
-
-    /** 
-     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
-     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Both")
-    public Object invokeSFApi(
-        String method,
-        Optional<java.util.Map<String, Object>> parameters
-        ) {
-        return this.invokeSFApi(new InvokeSFApiRequest(method, parameters));
     }
     /** 
      * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
@@ -2284,498 +2284,6 @@ public class SolidFireElement
         return this.removeVirtualNetwork(new RemoveVirtualNetworkRequest(virtualNetworkID, virtualNetworkTag));
     }
     /** 
-     * Return the high-level capacity measurements for an entire cluster.
-     * The fields returned from this method can be used to calculate the efficiency rates that are displayed in the Element User Interface.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetClusterCapacityResult getClusterCapacity() {
-        return super.sendRequest("GetClusterCapacity", null, null, GetClusterCapacityResult.class);
-    }
-    /** 
-     * Return configuration information about the cluster.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetClusterInfoResult getClusterInfo() {
-        return super.sendRequest("GetClusterInfo", null, null, GetClusterInfoResult.class);
-    }
-    /** 
-     * Return information about the Element software version running on each node in the cluster.
-     * Information about the nodes that are currently in the process of upgrading software is also returned.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetClusterVersionInfoResult getClusterVersionInfo() {
-        return super.sendRequest("GetClusterVersionInfo", null, null, GetClusterVersionInfoResult.class);
-    }
-    /** 
-     * GetLimits enables you to retrieve the limit values set by the API. These values might change between releases of  Element, but do not change without an update to the system. Knowing the limit values set by the API can be useful when writing API scripts for user-facing tools.NOTE: The GetLimits method returns the limits for the current software version regardless of the API endpoint version used to pass the method.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetLimitsResult getLimits() {
-        return super.sendRequest("GetLimits", null, null, GetLimitsResult.class);
-    }
-    /** 
-     * ListEvents returns events detected on the cluster, sorted from oldest to newest.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListEventsResult listEvents(final ListEventsRequest request) {
-        return super.sendRequest("ListEvents", request, ListEventsRequest.class, ListEventsResult.class);
-    }
-
-    /** 
-     * ListEvents returns events detected on the cluster, sorted from oldest to newest.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListEventsResult listEvents(
-        Optional<Long> maxEvents,
-        Optional<Long> startEventID,
-        Optional<Long> endEventID,
-        Optional<String> eventQueueType
-        ) {
-        return this.listEvents(new ListEventsRequest(maxEvents, startEventID, endEventID, eventQueueType));
-    }
-    /** 
-     * ListClusterFaults is used to retrieve information about any faults detected on the cluster.
-     * With this method, both current and resolved faults can be retrieved. The system caches faults every 30 seconds.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListClusterFaultsResult listClusterFaults(final ListClusterFaultsRequest request) {
-        return super.sendRequest("ListClusterFaults", request, ListClusterFaultsRequest.class, ListClusterFaultsResult.class);
-    }
-
-    /** 
-     * ListClusterFaults is used to retrieve information about any faults detected on the cluster.
-     * With this method, both current and resolved faults can be retrieved. The system caches faults every 30 seconds.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListClusterFaultsResult listClusterFaults(
-        Optional<Boolean> exceptions,
-        Optional<Boolean> bestPractices,
-        Optional<Boolean> update,
-        Optional<String> faultTypes
-        ) {
-        return this.listClusterFaults(new ListClusterFaultsRequest(exceptions, bestPractices, update, faultTypes));
-    }
-    /** 
-     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request) {
-        return super.sendRequest("ClearClusterFaults", request, ClearClusterFaultsRequest.class, ClearClusterFaultsResult.class);
-    }
-
-    /** 
-     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ClearClusterFaultsResult clearClusterFaults(
-        Optional<String> faultTypes
-        ) {
-        return this.clearClusterFaults(new ClearClusterFaultsRequest(faultTypes));
-    }
-    /** 
-     * The GetClusterConfig API method is used to return information about the cluster configuration this node uses to communicate with the cluster it is a part of.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public GetClusterConfigResult getClusterConfig() {
-        return super.sendRequest("GetClusterConfig", null, null, GetClusterConfigResult.class);
-    }
-    /** 
-     * GetClusterFullThreshold is used to view the stages set for cluster fullness levels. All levels are returned when this method is entered.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetClusterFullThresholdResult getClusterFullThreshold() {
-        return super.sendRequest("GetClusterFullThreshold", null, null, GetClusterFullThresholdResult.class);
-    }
-    /** 
-     * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(final ModifyClusterFullThresholdRequest request) {
-        return super.sendRequest("ModifyClusterFullThreshold", request, ModifyClusterFullThresholdRequest.class, ModifyClusterFullThresholdResult.class);
-    }
-
-    /** 
-     * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(
-        Optional<Long> stage2AwareThreshold,
-        Optional<Long> stage3BlockThresholdPercent,
-        Optional<Long> maxMetadataOverProvisionFactor
-        ) {
-        return this.modifyClusterFullThreshold(new ModifyClusterFullThresholdRequest(stage2AwareThreshold, stage3BlockThresholdPercent, maxMetadataOverProvisionFactor));
-    }
-    /** 
-     * GetClusterStats is used to return high-level activity measurements for the cluster. Values returned are cumulative from the creation of the cluster.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetClusterStatsResult getClusterStats() {
-        return super.sendRequest("GetClusterStats", null, null, GetClusterStatsResult.class);
-    }
-    /** 
-     * ListClusterAdmins returns the list of all cluster administrators for the cluster. There can be several cluster administrators that have different levels of permissions. There can be only one primary cluster administrator in the system. The primary Cluster Admin is the administrator that was created when the cluster was created. LDAP administrators can also be created when setting up an LDAP system on the cluster.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListClusterAdminsResult listClusterAdmins() {
-        return super.sendRequest("ListClusterAdmins", null, null, ListClusterAdminsResult.class);
-    }
-    /** 
-     * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
-     * <br/><br/>
-     * Each Cluster Admin can be restricted to a sub-set of the API. SolidFire recommends using multiple Cluster Admins for different users and applications. Each Cluster Admin should be given the minimal permissions necessary to reduce the potential impact of credential compromise.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddClusterAdminResult addClusterAdmin(final AddClusterAdminRequest request) {
-        return super.sendRequest("AddClusterAdmin", request, AddClusterAdminRequest.class, AddClusterAdminResult.class);
-    }
-
-    /** 
-     * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
-     * <br/><br/>
-     * Each Cluster Admin can be restricted to a sub-set of the API. SolidFire recommends using multiple Cluster Admins for different users and applications. Each Cluster Admin should be given the minimal permissions necessary to reduce the potential impact of credential compromise.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddClusterAdminResult addClusterAdmin(
-        String username,
-        String password,
-        String[] access,
-        Optional<Boolean> acceptEula,
-        Optional<java.util.Map<String, Object>> attributes
-        ) {
-        return this.addClusterAdmin(new AddClusterAdminRequest(username, password, access, acceptEula, attributes));
-    }
-    /** 
-     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request) {
-        return super.sendRequest("ModifyClusterAdmin", request, ModifyClusterAdminRequest.class, ModifyClusterAdminResult.class);
-    }
-
-    /** 
-     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ModifyClusterAdminResult modifyClusterAdmin(
-        Long clusterAdminID,
-        Optional<String> password,
-        Optional<String[]> access,
-        Optional<java.util.Map<String, Object>> attributes
-        ) {
-        return this.modifyClusterAdmin(new ModifyClusterAdminRequest(clusterAdminID, password, access, attributes));
-    }
-    /** 
-     * RemoveClusterAdmin is used to remove a Cluster Admin. The "admin" Cluster Admin cannot be removed.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public RemoveClusterAdminResult removeClusterAdmin(final RemoveClusterAdminRequest request) {
-        return super.sendRequest("RemoveClusterAdmin", request, RemoveClusterAdminRequest.class, RemoveClusterAdminResult.class);
-    }
-
-    /** 
-     * RemoveClusterAdmin is used to remove a Cluster Admin. The "admin" Cluster Admin cannot be removed.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public RemoveClusterAdminResult removeClusterAdmin(
-        Long clusterAdminID
-        ) {
-        return this.removeClusterAdmin(new RemoveClusterAdminRequest(clusterAdminID));
-    }
-    /** 
-     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetClusterConfigResult setClusterConfig(final SetClusterConfigRequest request) {
-        return super.sendRequest("SetClusterConfig", request, SetClusterConfigRequest.class, SetClusterConfigResult.class);
-    }
-
-    /** 
-     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetClusterConfigResult setClusterConfig(
-        ClusterConfig cluster
-        ) {
-        return this.setClusterConfig(new SetClusterConfigRequest(cluster));
-    }
-    /** 
-     * GetSnmpACL is used to return the current SNMP access permissions on the cluster nodes.
-     **/
-    @Override
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public GetSnmpACLResult getSnmpACL() {
-        return super.sendRequest("GetSnmpACL", null, null, GetSnmpACLResult.class);
-    }
-    /** 
-     * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
-     **/
-    @Override
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public SetSnmpACLResult setSnmpACL(final SetSnmpACLRequest request) {
-        return super.sendRequest("SetSnmpACL", request, SetSnmpACLRequest.class, SetSnmpACLResult.class);
-    }
-
-    /** 
-     * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
-     **/
-    @Override
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public SetSnmpACLResult setSnmpACL(
-        SnmpNetwork[] networks,
-        SnmpV3UsmUser[] usmUsers
-        ) {
-        return this.setSnmpACL(new SetSnmpACLRequest(networks, usmUsers));
-    }
-    /** 
-     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public GetSnmpTrapInfoResult getSnmpTrapInfo() {
-        return super.sendRequest("GetSnmpTrapInfo", null, null, GetSnmpTrapInfoResult.class);
-    }
-    /** 
-     * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public SetSnmpTrapInfoResult setSnmpTrapInfo(final SetSnmpTrapInfoRequest request) {
-        return super.sendRequest("SetSnmpTrapInfo", request, SetSnmpTrapInfoRequest.class, SetSnmpTrapInfoResult.class);
-    }
-
-    /** 
-     * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public SetSnmpTrapInfoResult setSnmpTrapInfo(
-        SnmpTrapRecipient[] trapRecipients,
-        Boolean clusterFaultTrapsEnabled,
-        Boolean clusterFaultResolvedTrapsEnabled,
-        Boolean clusterEventTrapsEnabled
-        ) {
-        return this.setSnmpTrapInfo(new SetSnmpTrapInfoRequest(trapRecipients, clusterFaultTrapsEnabled, clusterFaultResolvedTrapsEnabled, clusterEventTrapsEnabled));
-    }
-    /** 
-     * EnableSnmp is used to enable SNMP on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to EnableSnmp.
-     **/
-    @Override
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public EnableSnmpResult enableSnmp(final EnableSnmpRequest request) {
-        return super.sendRequest("EnableSnmp", request, EnableSnmpRequest.class, EnableSnmpResult.class);
-    }
-
-    /** 
-     * EnableSnmp is used to enable SNMP on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to EnableSnmp.
-     **/
-    @Override
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public EnableSnmpResult enableSnmp(
-        Boolean snmpV3Enabled
-        ) {
-        return this.enableSnmp(new EnableSnmpRequest(snmpV3Enabled));
-    }
-    /** 
-     * DisableSnmp is used to disable SNMP on the cluster nodes.
-     **/
-    @Override
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public DisableSnmpResult disableSnmp() {
-        return super.sendRequest("DisableSnmp", null, null, DisableSnmpResult.class);
-    }
-    /** 
-     * GetSnmpInfo is used to return the current simple network management protocol (SNMP) configuration information.
-     * <br/><br/>
-     * <b>Note</b>: GetSnmpInfo will be available for Element OS 8 and prior releases. It will be deprecated after Element OS 8. There are two new SNMP API methods that you should migrate over to. They are GetSnmpState and GetSnmpACL. Please see details in this document for their descriptions and usage.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetSnmpInfoResult getSnmpInfo() {
-        return super.sendRequest("GetSnmpInfo", null, null, GetSnmpInfoResult.class);
-    }
-    /** 
-     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
-     * <br/><br/>
-     * <b>Note</b>: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request) {
-        return super.sendRequest("SetSnmpInfo", request, SetSnmpInfoRequest.class, SetSnmpInfoResult.class);
-    }
-
-    /** 
-     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
-     * <br/><br/>
-     * <b>Note</b>: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public SetSnmpInfoResult setSnmpInfo(
-        Optional<SnmpNetwork[]> networks,
-        Optional<Boolean> enabled,
-        Optional<Boolean> snmpV3Enabled,
-        Optional<SnmpV3UsmUser[]> usmUsers
-        ) {
-        return this.setSnmpInfo(new SetSnmpInfoRequest(networks, enabled, snmpV3Enabled, usmUsers));
-    }
-    /** 
-     * GetSnmpState is used to return the current state of the SNMP feature.
-     * <br/><br/>
-     * <b>Note</b>: GetSnmpState is new for Element OS 8. Please use this method and SetSnmpACL to migrate your SNMP functionality in the future.
-     **/
-    @Override
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public GetSnmpStateResult getSnmpState() {
-        return super.sendRequest("GetSnmpState", null, null, GetSnmpStateResult.class);
-    }
-    /** 
-     * Retrieves the current version of the API and a list of all supported versions.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Both")
-    public GetAPIResult getAPI() {
-        return super.sendRequest("GetAPI", null, null, GetAPIResult.class);
-    }
-    /** 
-     * GetNtpInfo is used to return the current network time protocol (NTP) configuration information.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetNtpInfoResult getNtpInfo() {
-        return super.sendRequest("GetNtpInfo", null, null, GetNtpInfoResult.class);
-    }
-    /** 
-     * The GetClusterState method is used to indicate if a node is part of a cluster or not. The three states are: <br><strong>Available:</strong> Node has not been configured with a cluster name.<br><strong>Pending:</strong> Node is pending for a specific named cluster and can be added.<br><strong>Active:</strong> Node is active and a member of a cluster and may not be added to another cluster.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public GetClusterStateResult getClusterState(final GetClusterStateRequest request) {
-        return super.sendRequest("GetClusterState", request, GetClusterStateRequest.class, GetClusterStateResult.class);
-    }
-
-    /** 
-     * The GetClusterState method is used to indicate if a node is part of a cluster or not. The three states are: <br><strong>Available:</strong> Node has not been configured with a cluster name.<br><strong>Pending:</strong> Node is pending for a specific named cluster and can be added.<br><strong>Active:</strong> Node is active and a member of a cluster and may not be added to another cluster.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public GetClusterStateResult getClusterState(
-        Optional<Boolean> force
-        ) {
-        return this.getClusterState(new GetClusterStateRequest(force));
-    }
-    /** 
-     * GetCurrentClusterAdmin returns information for the current primary cluster administrator. The primary Cluster Admin was ncreated when the cluster was created.
-     **/
-    @Override
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public GetCurrentClusterAdminResult getCurrentClusterAdmin() {
-        return super.sendRequest("GetCurrentClusterAdmin", null, null, GetCurrentClusterAdminResult.class);
-    }
-    /** 
-     * The EnableEncryptionAtRest method is used to enable the Advanced Encryption Standard (AES) 256-bit encryption at rest on the cluster so that the cluster can manage the encryption key used for the drives on each node. This feature is not enabled by default. Enabling this operation allows the cluster to automatically manage encryption keys internally for the drives on each node in the cluster. Nodes do not store the keys to unlock drives and the keys are never passed over the network. Two nodes participating in a cluster are required to access the key to disable encryption on a drive. The encryption management does not affect performance or efficiency on the cluster. If an encryption-enabled drive or node is removed from the cluster with the API, all data is secure erased and any data left on the drive cannot be read or accessed.
-     * Enabling or disabling encryption should be performed when the cluster is running and in a healthy state. Encryption can be enabled or disabled at your discretion and can be performed as often as you need.
-     * <br/><b>Note</b>: This process is asynchronous and returns a response before encryption is enabled. The GetClusterInfo method can be used to poll the system to see when the process has completed.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public EnableEncryptionAtRestResult enableEncryptionAtRest() {
-        return super.sendRequest("EnableEncryptionAtRest", null, null, EnableEncryptionAtRestResult.class);
-    }
-    /** 
-     * The DisableEncryptionAtRest method enables you to remove the encryption that was previously applied to the cluster using the EnableEncryptionAtRest method.
-     * This disable method is asynchronous and returns a response before encryption is disabled.
-     * You can use the GetClusterInfo method to poll the system to see when the process has completed.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public DisableEncryptionAtRestResult disableEncryptionAtRest() {
-        return super.sendRequest("DisableEncryptionAtRest", null, null, DisableEncryptionAtRestResult.class);
-    }
-    /** 
-     * SnmpSendTestTraps enables you to test SNMP functionality for a cluster. This method instructs the cluster to send test SNMP traps to the currently configured SNMP manager.
-     **/
-    @Override
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public SnmpSendTestTrapsResult snmpSendTestTraps() {
-        return super.sendRequest("SnmpSendTestTraps", null, null, SnmpSendTestTrapsResult.class);
-    }
-    /** 
      * CloneVolume is used to create a copy of the volume.
      * This method is asynchronous and may take a variable amount of time to complete.
      * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
@@ -3831,5 +3339,497 @@ public class SolidFireElement
         Optional<Long[]> volumeIDs
         ) {
         return this.listVolumeStats(new ListVolumeStatsRequest(volumeIDs));
+    }
+    /** 
+     * Return the high-level capacity measurements for an entire cluster.
+     * The fields returned from this method can be used to calculate the efficiency rates that are displayed in the Element User Interface.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetClusterCapacityResult getClusterCapacity() {
+        return super.sendRequest("GetClusterCapacity", null, null, GetClusterCapacityResult.class);
+    }
+    /** 
+     * Return configuration information about the cluster.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetClusterInfoResult getClusterInfo() {
+        return super.sendRequest("GetClusterInfo", null, null, GetClusterInfoResult.class);
+    }
+    /** 
+     * Return information about the Element software version running on each node in the cluster.
+     * Information about the nodes that are currently in the process of upgrading software is also returned.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetClusterVersionInfoResult getClusterVersionInfo() {
+        return super.sendRequest("GetClusterVersionInfo", null, null, GetClusterVersionInfoResult.class);
+    }
+    /** 
+     * GetLimits enables you to retrieve the limit values set by the API. These values might change between releases of  Element, but do not change without an update to the system. Knowing the limit values set by the API can be useful when writing API scripts for user-facing tools.NOTE: The GetLimits method returns the limits for the current software version regardless of the API endpoint version used to pass the method.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetLimitsResult getLimits() {
+        return super.sendRequest("GetLimits", null, null, GetLimitsResult.class);
+    }
+    /** 
+     * ListEvents returns events detected on the cluster, sorted from oldest to newest.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListEventsResult listEvents(final ListEventsRequest request) {
+        return super.sendRequest("ListEvents", request, ListEventsRequest.class, ListEventsResult.class);
+    }
+
+    /** 
+     * ListEvents returns events detected on the cluster, sorted from oldest to newest.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListEventsResult listEvents(
+        Optional<Long> maxEvents,
+        Optional<Long> startEventID,
+        Optional<Long> endEventID,
+        Optional<String> eventQueueType
+        ) {
+        return this.listEvents(new ListEventsRequest(maxEvents, startEventID, endEventID, eventQueueType));
+    }
+    /** 
+     * ListClusterFaults is used to retrieve information about any faults detected on the cluster.
+     * With this method, both current and resolved faults can be retrieved. The system caches faults every 30 seconds.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListClusterFaultsResult listClusterFaults(final ListClusterFaultsRequest request) {
+        return super.sendRequest("ListClusterFaults", request, ListClusterFaultsRequest.class, ListClusterFaultsResult.class);
+    }
+
+    /** 
+     * ListClusterFaults is used to retrieve information about any faults detected on the cluster.
+     * With this method, both current and resolved faults can be retrieved. The system caches faults every 30 seconds.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListClusterFaultsResult listClusterFaults(
+        Optional<Boolean> exceptions,
+        Optional<Boolean> bestPractices,
+        Optional<Boolean> update,
+        Optional<String> faultTypes
+        ) {
+        return this.listClusterFaults(new ListClusterFaultsRequest(exceptions, bestPractices, update, faultTypes));
+    }
+    /** 
+     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request) {
+        return super.sendRequest("ClearClusterFaults", request, ClearClusterFaultsRequest.class, ClearClusterFaultsResult.class);
+    }
+
+    /** 
+     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ClearClusterFaultsResult clearClusterFaults(
+        Optional<String> faultTypes
+        ) {
+        return this.clearClusterFaults(new ClearClusterFaultsRequest(faultTypes));
+    }
+    /** 
+     * The GetClusterConfig API method is used to return information about the cluster configuration this node uses to communicate with the cluster it is a part of.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public GetClusterConfigResult getClusterConfig() {
+        return super.sendRequest("GetClusterConfig", null, null, GetClusterConfigResult.class);
+    }
+    /** 
+     * GetClusterFullThreshold is used to view the stages set for cluster fullness levels. All levels are returned when this method is entered.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetClusterFullThresholdResult getClusterFullThreshold() {
+        return super.sendRequest("GetClusterFullThreshold", null, null, GetClusterFullThresholdResult.class);
+    }
+    /** 
+     * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(final ModifyClusterFullThresholdRequest request) {
+        return super.sendRequest("ModifyClusterFullThreshold", request, ModifyClusterFullThresholdRequest.class, ModifyClusterFullThresholdResult.class);
+    }
+
+    /** 
+     * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(
+        Optional<Long> stage2AwareThreshold,
+        Optional<Long> stage3BlockThresholdPercent,
+        Optional<Long> maxMetadataOverProvisionFactor
+        ) {
+        return this.modifyClusterFullThreshold(new ModifyClusterFullThresholdRequest(stage2AwareThreshold, stage3BlockThresholdPercent, maxMetadataOverProvisionFactor));
+    }
+    /** 
+     * GetClusterStats is used to return high-level activity measurements for the cluster. Values returned are cumulative from the creation of the cluster.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetClusterStatsResult getClusterStats() {
+        return super.sendRequest("GetClusterStats", null, null, GetClusterStatsResult.class);
+    }
+    /** 
+     * ListClusterAdmins returns the list of all cluster administrators for the cluster. There can be several cluster administrators that have different levels of permissions. There can be only one primary cluster administrator in the system. The primary Cluster Admin is the administrator that was created when the cluster was created. LDAP administrators can also be created when setting up an LDAP system on the cluster.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListClusterAdminsResult listClusterAdmins() {
+        return super.sendRequest("ListClusterAdmins", null, null, ListClusterAdminsResult.class);
+    }
+    /** 
+     * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
+     * <br/><br/>
+     * Each Cluster Admin can be restricted to a sub-set of the API. SolidFire recommends using multiple Cluster Admins for different users and applications. Each Cluster Admin should be given the minimal permissions necessary to reduce the potential impact of credential compromise.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddClusterAdminResult addClusterAdmin(final AddClusterAdminRequest request) {
+        return super.sendRequest("AddClusterAdmin", request, AddClusterAdminRequest.class, AddClusterAdminResult.class);
+    }
+
+    /** 
+     * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
+     * <br/><br/>
+     * Each Cluster Admin can be restricted to a sub-set of the API. SolidFire recommends using multiple Cluster Admins for different users and applications. Each Cluster Admin should be given the minimal permissions necessary to reduce the potential impact of credential compromise.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddClusterAdminResult addClusterAdmin(
+        String username,
+        String password,
+        String[] access,
+        Optional<Boolean> acceptEula,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.addClusterAdmin(new AddClusterAdminRequest(username, password, access, acceptEula, attributes));
+    }
+    /** 
+     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request) {
+        return super.sendRequest("ModifyClusterAdmin", request, ModifyClusterAdminRequest.class, ModifyClusterAdminResult.class);
+    }
+
+    /** 
+     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ModifyClusterAdminResult modifyClusterAdmin(
+        Long clusterAdminID,
+        Optional<String> password,
+        Optional<String[]> access,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.modifyClusterAdmin(new ModifyClusterAdminRequest(clusterAdminID, password, access, attributes));
+    }
+    /** 
+     * RemoveClusterAdmin is used to remove a Cluster Admin. The "admin" Cluster Admin cannot be removed.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public RemoveClusterAdminResult removeClusterAdmin(final RemoveClusterAdminRequest request) {
+        return super.sendRequest("RemoveClusterAdmin", request, RemoveClusterAdminRequest.class, RemoveClusterAdminResult.class);
+    }
+
+    /** 
+     * RemoveClusterAdmin is used to remove a Cluster Admin. The "admin" Cluster Admin cannot be removed.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public RemoveClusterAdminResult removeClusterAdmin(
+        Long clusterAdminID
+        ) {
+        return this.removeClusterAdmin(new RemoveClusterAdminRequest(clusterAdminID));
+    }
+    /** 
+     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetClusterConfigResult setClusterConfig(final SetClusterConfigRequest request) {
+        return super.sendRequest("SetClusterConfig", request, SetClusterConfigRequest.class, SetClusterConfigResult.class);
+    }
+
+    /** 
+     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetClusterConfigResult setClusterConfig(
+        ClusterConfig cluster
+        ) {
+        return this.setClusterConfig(new SetClusterConfigRequest(cluster));
+    }
+    /** 
+     * GetSnmpACL is used to return the current SNMP access permissions on the cluster nodes.
+     **/
+    @Override
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public GetSnmpACLResult getSnmpACL() {
+        return super.sendRequest("GetSnmpACL", null, null, GetSnmpACLResult.class);
+    }
+    /** 
+     * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
+     **/
+    @Override
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public SetSnmpACLResult setSnmpACL(final SetSnmpACLRequest request) {
+        return super.sendRequest("SetSnmpACL", request, SetSnmpACLRequest.class, SetSnmpACLResult.class);
+    }
+
+    /** 
+     * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
+     **/
+    @Override
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public SetSnmpACLResult setSnmpACL(
+        SnmpNetwork[] networks,
+        SnmpV3UsmUser[] usmUsers
+        ) {
+        return this.setSnmpACL(new SetSnmpACLRequest(networks, usmUsers));
+    }
+    /** 
+     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public GetSnmpTrapInfoResult getSnmpTrapInfo() {
+        return super.sendRequest("GetSnmpTrapInfo", null, null, GetSnmpTrapInfoResult.class);
+    }
+    /** 
+     * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public SetSnmpTrapInfoResult setSnmpTrapInfo(final SetSnmpTrapInfoRequest request) {
+        return super.sendRequest("SetSnmpTrapInfo", request, SetSnmpTrapInfoRequest.class, SetSnmpTrapInfoResult.class);
+    }
+
+    /** 
+     * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public SetSnmpTrapInfoResult setSnmpTrapInfo(
+        SnmpTrapRecipient[] trapRecipients,
+        Boolean clusterFaultTrapsEnabled,
+        Boolean clusterFaultResolvedTrapsEnabled,
+        Boolean clusterEventTrapsEnabled
+        ) {
+        return this.setSnmpTrapInfo(new SetSnmpTrapInfoRequest(trapRecipients, clusterFaultTrapsEnabled, clusterFaultResolvedTrapsEnabled, clusterEventTrapsEnabled));
+    }
+    /** 
+     * EnableSnmp is used to enable SNMP on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to EnableSnmp.
+     **/
+    @Override
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public EnableSnmpResult enableSnmp(final EnableSnmpRequest request) {
+        return super.sendRequest("EnableSnmp", request, EnableSnmpRequest.class, EnableSnmpResult.class);
+    }
+
+    /** 
+     * EnableSnmp is used to enable SNMP on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to EnableSnmp.
+     **/
+    @Override
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public EnableSnmpResult enableSnmp(
+        Boolean snmpV3Enabled
+        ) {
+        return this.enableSnmp(new EnableSnmpRequest(snmpV3Enabled));
+    }
+    /** 
+     * DisableSnmp is used to disable SNMP on the cluster nodes.
+     **/
+    @Override
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public DisableSnmpResult disableSnmp() {
+        return super.sendRequest("DisableSnmp", null, null, DisableSnmpResult.class);
+    }
+    /** 
+     * GetSnmpInfo is used to return the current simple network management protocol (SNMP) configuration information.
+     * <br/><br/>
+     * <b>Note</b>: GetSnmpInfo will be available for Element OS 8 and prior releases. It will be deprecated after Element OS 8. There are two new SNMP API methods that you should migrate over to. They are GetSnmpState and GetSnmpACL. Please see details in this document for their descriptions and usage.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetSnmpInfoResult getSnmpInfo() {
+        return super.sendRequest("GetSnmpInfo", null, null, GetSnmpInfoResult.class);
+    }
+    /** 
+     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
+     * <br/><br/>
+     * <b>Note</b>: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request) {
+        return super.sendRequest("SetSnmpInfo", request, SetSnmpInfoRequest.class, SetSnmpInfoResult.class);
+    }
+
+    /** 
+     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
+     * <br/><br/>
+     * <b>Note</b>: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public SetSnmpInfoResult setSnmpInfo(
+        Optional<SnmpNetwork[]> networks,
+        Optional<Boolean> enabled,
+        Optional<Boolean> snmpV3Enabled,
+        Optional<SnmpV3UsmUser[]> usmUsers
+        ) {
+        return this.setSnmpInfo(new SetSnmpInfoRequest(networks, enabled, snmpV3Enabled, usmUsers));
+    }
+    /** 
+     * GetSnmpState is used to return the current state of the SNMP feature.
+     * <br/><br/>
+     * <b>Note</b>: GetSnmpState is new for Element OS 8. Please use this method and SetSnmpACL to migrate your SNMP functionality in the future.
+     **/
+    @Override
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public GetSnmpStateResult getSnmpState() {
+        return super.sendRequest("GetSnmpState", null, null, GetSnmpStateResult.class);
+    }
+    /** 
+     * Retrieves the current version of the API and a list of all supported versions.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Both")
+    public GetAPIResult getAPI() {
+        return super.sendRequest("GetAPI", null, null, GetAPIResult.class);
+    }
+    /** 
+     * GetNtpInfo is used to return the current network time protocol (NTP) configuration information.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetNtpInfoResult getNtpInfo() {
+        return super.sendRequest("GetNtpInfo", null, null, GetNtpInfoResult.class);
+    }
+    /** 
+     * The GetClusterState method is used to indicate if a node is part of a cluster or not. The three states are: <br><strong>Available:</strong> Node has not been configured with a cluster name.<br><strong>Pending:</strong> Node is pending for a specific named cluster and can be added.<br><strong>Active:</strong> Node is active and a member of a cluster and may not be added to another cluster.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public GetClusterStateResult getClusterState(final GetClusterStateRequest request) {
+        return super.sendRequest("GetClusterState", request, GetClusterStateRequest.class, GetClusterStateResult.class);
+    }
+
+    /** 
+     * The GetClusterState method is used to indicate if a node is part of a cluster or not. The three states are: <br><strong>Available:</strong> Node has not been configured with a cluster name.<br><strong>Pending:</strong> Node is pending for a specific named cluster and can be added.<br><strong>Active:</strong> Node is active and a member of a cluster and may not be added to another cluster.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public GetClusterStateResult getClusterState(
+        Optional<Boolean> force
+        ) {
+        return this.getClusterState(new GetClusterStateRequest(force));
+    }
+    /** 
+     * GetCurrentClusterAdmin returns information for the current primary cluster administrator. The primary Cluster Admin was ncreated when the cluster was created.
+     **/
+    @Override
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public GetCurrentClusterAdminResult getCurrentClusterAdmin() {
+        return super.sendRequest("GetCurrentClusterAdmin", null, null, GetCurrentClusterAdminResult.class);
+    }
+    /** 
+     * The EnableEncryptionAtRest method is used to enable the Advanced Encryption Standard (AES) 256-bit encryption at rest on the cluster so that the cluster can manage the encryption key used for the drives on each node. This feature is not enabled by default. Enabling this operation allows the cluster to automatically manage encryption keys internally for the drives on each node in the cluster. Nodes do not store the keys to unlock drives and the keys are never passed over the network. Two nodes participating in a cluster are required to access the key to disable encryption on a drive. The encryption management does not affect performance or efficiency on the cluster. If an encryption-enabled drive or node is removed from the cluster with the API, all data is secure erased and any data left on the drive cannot be read or accessed.
+     * Enabling or disabling encryption should be performed when the cluster is running and in a healthy state. Encryption can be enabled or disabled at your discretion and can be performed as often as you need.
+     * <br/><b>Note</b>: This process is asynchronous and returns a response before encryption is enabled. The GetClusterInfo method can be used to poll the system to see when the process has completed.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public EnableEncryptionAtRestResult enableEncryptionAtRest() {
+        return super.sendRequest("EnableEncryptionAtRest", null, null, EnableEncryptionAtRestResult.class);
+    }
+    /** 
+     * The DisableEncryptionAtRest method enables you to remove the encryption that was previously applied to the cluster using the EnableEncryptionAtRest method.
+     * This disable method is asynchronous and returns a response before encryption is disabled.
+     * You can use the GetClusterInfo method to poll the system to see when the process has completed.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public DisableEncryptionAtRestResult disableEncryptionAtRest() {
+        return super.sendRequest("DisableEncryptionAtRest", null, null, DisableEncryptionAtRestResult.class);
+    }
+    /** 
+     * SnmpSendTestTraps enables you to test SNMP functionality for a cluster. This method instructs the cluster to send test SNMP traps to the currently configured SNMP manager.
+     **/
+    @Override
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public SnmpSendTestTrapsResult snmpSendTestTraps() {
+        return super.sendRequest("SnmpSendTestTraps", null, null, SnmpSendTestTrapsResult.class);
     }
 }
