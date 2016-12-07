@@ -34,7 +34,6 @@ public class GetAccountEfficiencyRequest implements Serializable {
 
     public static final long serialVersionUID = 6289053675311483886L;
     @SerializedName("accountID") private Long accountID;
-    @SerializedName("force") private Optional<Boolean> force;
 
     // empty constructor
     @Since("7.0")
@@ -43,12 +42,10 @@ public class GetAccountEfficiencyRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetAccountEfficiencyRequest(
-        Long accountID,
-        Optional<Boolean> force
+        Long accountID
     )
     {
         this.accountID = accountID;
-        this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
 
     /** 
@@ -57,12 +54,6 @@ public class GetAccountEfficiencyRequest implements Serializable {
     public Long getAccountID() { return this.accountID; }
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
-    }
-    /** 
-     **/
-    public Optional<Boolean> getForce() { return this.force; }
-    public void setForce(Optional<Boolean> force) { 
-        this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
 
     @Override
@@ -73,20 +64,18 @@ public class GetAccountEfficiencyRequest implements Serializable {
         GetAccountEfficiencyRequest that = (GetAccountEfficiencyRequest) o;
 
         return 
-            Objects.equals(accountID, that.accountID) &&
-            Objects.equals(force, that.force);
+            Objects.equals(accountID, that.accountID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID, force );
+        return Objects.hash( accountID );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("accountID", accountID);
-        map.put("force", force);
         return map;
     }
 
@@ -96,9 +85,6 @@ public class GetAccountEfficiencyRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" accountID : ").append(accountID).append(",");
-        if(null != force && force.isPresent()){
-            sb.append(" force : ").append(force).append(",");
-        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -117,30 +103,22 @@ public class GetAccountEfficiencyRequest implements Serializable {
 
     public static class Builder {
         private Long accountID;
-        private Optional<Boolean> force;
 
         private Builder() { }
 
         public GetAccountEfficiencyRequest build() {
             return new GetAccountEfficiencyRequest (
-                         this.accountID,
-                         this.force);
+                         this.accountID);
         }
 
         private GetAccountEfficiencyRequest.Builder buildFrom(final GetAccountEfficiencyRequest req) {
             this.accountID = req.accountID;
-            this.force = req.force;
 
             return this;
         }
 
         public GetAccountEfficiencyRequest.Builder accountID(final Long accountID) {
             this.accountID = accountID;
-            return this;
-        }
-
-        public GetAccountEfficiencyRequest.Builder optionalForce(final Boolean force) {
-            this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
             return this;
         }
 

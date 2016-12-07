@@ -34,7 +34,6 @@ public class GetVolumeEfficiencyRequest implements Serializable {
 
     public static final long serialVersionUID = 6871428855542224054L;
     @SerializedName("volumeID") private Long volumeID;
-    @SerializedName("force") private Optional<Boolean> force;
 
     // empty constructor
     @Since("7.0")
@@ -43,12 +42,10 @@ public class GetVolumeEfficiencyRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetVolumeEfficiencyRequest(
-        Long volumeID,
-        Optional<Boolean> force
+        Long volumeID
     )
     {
         this.volumeID = volumeID;
-        this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
 
     /** 
@@ -57,12 +54,6 @@ public class GetVolumeEfficiencyRequest implements Serializable {
     public Long getVolumeID() { return this.volumeID; }
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
-    }
-    /** 
-     **/
-    public Optional<Boolean> getForce() { return this.force; }
-    public void setForce(Optional<Boolean> force) { 
-        this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
 
     @Override
@@ -73,20 +64,18 @@ public class GetVolumeEfficiencyRequest implements Serializable {
         GetVolumeEfficiencyRequest that = (GetVolumeEfficiencyRequest) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(force, that.force);
+            Objects.equals(volumeID, that.volumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, force );
+        return Objects.hash( volumeID );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("volumeID", volumeID);
-        map.put("force", force);
         return map;
     }
 
@@ -96,9 +85,6 @@ public class GetVolumeEfficiencyRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" volumeID : ").append(volumeID).append(",");
-        if(null != force && force.isPresent()){
-            sb.append(" force : ").append(force).append(",");
-        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -117,30 +103,22 @@ public class GetVolumeEfficiencyRequest implements Serializable {
 
     public static class Builder {
         private Long volumeID;
-        private Optional<Boolean> force;
 
         private Builder() { }
 
         public GetVolumeEfficiencyRequest build() {
             return new GetVolumeEfficiencyRequest (
-                         this.volumeID,
-                         this.force);
+                         this.volumeID);
         }
 
         private GetVolumeEfficiencyRequest.Builder buildFrom(final GetVolumeEfficiencyRequest req) {
             this.volumeID = req.volumeID;
-            this.force = req.force;
 
             return this;
         }
 
         public GetVolumeEfficiencyRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
-            return this;
-        }
-
-        public GetVolumeEfficiencyRequest.Builder optionalForce(final Boolean force) {
-            this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
             return this;
         }
 
