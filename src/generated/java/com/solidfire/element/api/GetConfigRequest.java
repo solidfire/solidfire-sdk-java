@@ -30,18 +30,18 @@ import java.util.Objects;
  * 
  **/
 
-public class GetClusterStateRequest implements Serializable {
+public class GetConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = -4583979987896002662L;
+    public static final long serialVersionUID = -1142457388697771347L;
     @SerializedName("force") private Optional<Boolean> force;
 
     // empty constructor
     @Since("7.0")
-    public GetClusterStateRequest() {}
+    public GetConfigRequest() {}
 
     // parameterized constructor
     @Since("7.0")
-    public GetClusterStateRequest(
+    public GetConfigRequest(
         Optional<Boolean> force
     )
     {
@@ -61,7 +61,7 @@ public class GetClusterStateRequest implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GetClusterStateRequest that = (GetClusterStateRequest) o;
+        GetConfigRequest that = (GetConfigRequest) o;
 
         return 
             Objects.equals(force, that.force);
@@ -108,18 +108,18 @@ public class GetClusterStateRequest implements Serializable {
 
         private Builder() { }
 
-        public GetClusterStateRequest build() {
-            return new GetClusterStateRequest (
+        public GetConfigRequest build() {
+            return new GetConfigRequest (
                          this.force);
         }
 
-        private GetClusterStateRequest.Builder buildFrom(final GetClusterStateRequest req) {
+        private GetConfigRequest.Builder buildFrom(final GetConfigRequest req) {
             this.force = req.force;
 
             return this;
         }
 
-        public GetClusterStateRequest.Builder optionalForce(final Boolean force) {
+        public GetConfigRequest.Builder optionalForce(final Boolean force) {
             this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
             return this;
         }
