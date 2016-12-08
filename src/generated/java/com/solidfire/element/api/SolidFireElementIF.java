@@ -1213,7 +1213,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Both")
     public GetConfigResult getConfig(
-        Optional<Boolean> force
+        Boolean force
         );
     /** 
      * GetNodeStats is used to return the high-level activity measurements for a single node.
@@ -2858,7 +2858,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public GetClusterStateResult getClusterState(
-        Optional<Boolean> force
+        Boolean force
         );
     /** 
      * GetCurrentClusterAdmin returns information for the current primary cluster administrator. The primary Cluster Admin was ncreated when the cluster was created.

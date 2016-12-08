@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetClusterStateRequest implements Serializable {
 
     public static final long serialVersionUID = -4583979987896002662L;
-    @SerializedName("force") private Optional<Boolean> force;
+    @SerializedName("force") private Boolean force;
 
     // empty constructor
     @Since("7.0")
@@ -42,18 +42,18 @@ public class GetClusterStateRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetClusterStateRequest(
-        Optional<Boolean> force
+        Boolean force
     )
     {
-        this.force = (force == null) ? Optional.<Boolean>empty() : force;
+        this.force = force;
     }
 
     /** 
      * To run this command, the force parameter must be set to true.
      **/
-    public Optional<Boolean> getForce() { return this.force; }
-    public void setForce(Optional<Boolean> force) { 
-        this.force = (force == null) ? Optional.<Boolean>empty() : force;
+    public Boolean getForce() { return this.force; }
+    public void setForce(Boolean force) { 
+        this.force = force;
     }
 
     @Override
@@ -84,9 +84,7 @@ public class GetClusterStateRequest implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != force && force.isPresent()){
-            sb.append(" force : ").append(force).append(",");
-        }
+        sb.append(" force : ").append(force).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -104,7 +102,7 @@ public class GetClusterStateRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Boolean> force;
+        private Boolean force;
 
         private Builder() { }
 
@@ -119,8 +117,8 @@ public class GetClusterStateRequest implements Serializable {
             return this;
         }
 
-        public GetClusterStateRequest.Builder optionalForce(final Boolean force) {
-            this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
+        public GetClusterStateRequest.Builder force(final Boolean force) {
+            this.force = force;
             return this;
         }
 

@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetConfigRequest implements Serializable {
 
     public static final long serialVersionUID = -1142457388697771347L;
-    @SerializedName("force") private Optional<Boolean> force;
+    @SerializedName("force") private Boolean force;
 
     // empty constructor
     @Since("7.0")
@@ -42,18 +42,18 @@ public class GetConfigRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetConfigRequest(
-        Optional<Boolean> force
+        Boolean force
     )
     {
-        this.force = (force == null) ? Optional.<Boolean>empty() : force;
+        this.force = force;
     }
 
     /** 
      * To run this command, the force parameter must be set to true.
      **/
-    public Optional<Boolean> getForce() { return this.force; }
-    public void setForce(Optional<Boolean> force) { 
-        this.force = (force == null) ? Optional.<Boolean>empty() : force;
+    public Boolean getForce() { return this.force; }
+    public void setForce(Boolean force) { 
+        this.force = force;
     }
 
     @Override
@@ -84,9 +84,7 @@ public class GetConfigRequest implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != force && force.isPresent()){
-            sb.append(" force : ").append(force).append(",");
-        }
+        sb.append(" force : ").append(force).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -104,7 +102,7 @@ public class GetConfigRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Boolean> force;
+        private Boolean force;
 
         private Builder() { }
 
@@ -119,8 +117,8 @@ public class GetConfigRequest implements Serializable {
             return this;
         }
 
-        public GetConfigRequest.Builder optionalForce(final Boolean force) {
-            this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
+        public GetConfigRequest.Builder force(final Boolean force) {
+            this.force = force;
             return this;
         }
 

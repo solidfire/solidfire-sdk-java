@@ -1569,7 +1569,7 @@ public class SolidFireElement
     @Since("5.0")
     @ConnectionType("Both")
     public GetConfigResult getConfig(
-        Optional<Boolean> force
+        Boolean force
         ) {
         return this.getConfig(new GetConfigRequest(force));
     }
@@ -3775,7 +3775,7 @@ public class SolidFireElement
     @Since("5.0")
     @ConnectionType("Cluster")
     public GetClusterStateResult getClusterState(
-        Optional<Boolean> force
+        Boolean force
         ) {
         return this.getClusterState(new GetClusterStateRequest(force));
     }
