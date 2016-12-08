@@ -437,237 +437,64 @@ public class SolidFireElement
         return this.getAccountEfficiency(new GetAccountEfficiencyRequest(accountID));
     }
     /** 
-     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
-     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
-     * Use the "ListDrives" method to display drives that are "available" to be added.
-     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
-     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
-     * <br/><br/>
-     * When you add a drive, the system automatically determines the "type" of drive it should be.
-     * <br/><br/>
-     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
-     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddDrivesResult addDrives(final AddDrivesRequest request) {
-        return super.sendRequest("AddDrives", request, AddDrivesRequest.class, AddDrivesResult.class);
-    }
-
-    /** 
-     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
-     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
-     * Use the "ListDrives" method to display drives that are "available" to be added.
-     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
-     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
-     * <br/><br/>
-     * When you add a drive, the system automatically determines the "type" of drive it should be.
-     * <br/><br/>
-     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
-     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddDrivesResult addDrives(
-        NewDrive[] drives
-        ) {
-        return this.addDrives(new AddDrivesRequest(drives));
-    }
-    /** 
-     * ListDrives allows you to retrieve the list of the drives that exist in the cluster's active nodes.
-     * This method returns drives that have been added as volume metadata or block drives as well as drives that have not been added and are available.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListDrivesResult listDrives() {
-        return super.sendRequest("ListDrives", null, null, ListDrivesResult.class);
-    }
-    /** 
-     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetDriveHardwareInfoResult getDriveHardwareInfo(final GetDriveHardwareInfoRequest request) {
-        return super.sendRequest("GetDriveHardwareInfo", request, GetDriveHardwareInfoRequest.class, GetDriveHardwareInfoResult.class);
-    }
-
-    /** 
-     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetDriveHardwareInfoResult getDriveHardwareInfo(
-        Long driveID
-        ) {
-        return this.getDriveHardwareInfo(new GetDriveHardwareInfoRequest(driveID));
-    }
-    /** 
-     * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
+     * GetLoginSessionInfo is used to return the period of time a log in authentication is valid for both log in shells and the TUI.
      **/
     @Override
     @Since("7.0")
-    @ConnectionType("Node")
-    public ListDriveHardwareResult listDriveHardware() {
-        return super.sendRequest("ListDriveHardware", null, null, ListDriveHardwareResult.class);
+    @ConnectionType("Cluster")
+    public GetLoginSessionInfoResult getLoginSessionInfo() {
+        return super.sendRequest("GetLoginSessionInfo", null, null, GetLoginSessionInfoResult.class);
     }
     /** 
-     * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     * SetLoginSessionInfo is used to set the period of time a log in authentication is valid. After the log in period elapses without activity on the system the authentication will expire. New log in credentials will be required for continued access to the cluster once the timeout period has elapsed.
      **/
     @Override
-    @Since("6.0")
-    @ConnectionType("Node")
-    public ResetDrivesResult resetDrives(final ResetDrivesRequest request) {
-        return super.sendRequest("ResetDrives", request, ResetDrivesRequest.class, ResetDrivesResult.class);
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public SetLoginSessionInfoResult setLoginSessionInfo(final SetLoginSessionInfoRequest request) {
+        return super.sendRequest("SetLoginSessionInfo", request, SetLoginSessionInfoRequest.class, SetLoginSessionInfoResult.class);
     }
 
     /** 
-     * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     * SetLoginSessionInfo is used to set the period of time a log in authentication is valid. After the log in period elapses without activity on the system the authentication will expire. New log in credentials will be required for continued access to the cluster once the timeout period has elapsed.
      **/
     @Override
-    @Since("6.0")
-    @ConnectionType("Node")
-    public ResetDrivesResult resetDrives(
-        String drives,
-        Boolean force
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public SetLoginSessionInfoResult setLoginSessionInfo(
+        String timeout
         ) {
-        return this.resetDrives(new ResetDrivesRequest(drives, force));
+        return this.setLoginSessionInfo(new SetLoginSessionInfoRequest(timeout));
     }
     /** 
-     * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
-     * <br/><br/>
-     * <b>Note</b>: This test takes approximately 10 minutes.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public TestDrivesResult testDrives(final TestDrivesRequest request) {
-        return super.sendRequest("TestDrives", request, TestDrivesRequest.class, TestDrivesResult.class);
-    }
-
-    /** 
-     * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
-     * <br/><br/>
-     * <b>Note</b>: This test takes approximately 10 minutes.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public TestDrivesResult testDrives(
-        Optional<Long> minutes
-        ) {
-        return this.testDrives(new TestDrivesRequest(minutes));
-    }
-    /** 
-     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
-     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
+     * GetRemoteLoggingHosts is used to retrieve the current list of log servers.
      **/
     @Override
     @Since("1.0")
     @ConnectionType("Cluster")
-    public GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request) {
-        return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStats(this, request);
+    public GetRemoteLoggingHostsResult getRemoteLoggingHosts() {
+        return super.sendRequest("GetRemoteLoggingHosts", null, null, GetRemoteLoggingHostsResult.class);
     }
-
     /** 
-     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
-     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
+     * RemoteLoggingHosts is used to configure remote logging from the nodes in the storage cluster to a centralized log server or servers. Remote logging is performed over TCP using the default port 514. This API does not add to the existing logging hosts. Rather, it replaces what currently exists with new values specified by this API method. You can use the GetRemoteLoggingHosts to determine what the current logging hosts are and then use the SetRemoteLoggingHosts to set the desired list of current and new logging hosts.
      **/
     @Override
     @Since("1.0")
     @ConnectionType("Cluster")
-    public GetDriveStatsResult getDriveStats(
-        Long driveID
-        ) {
-        return this.getDriveStats(new GetDriveStatsRequest(driveID));
-    }
-    /** 
-     * SecureEraseDrives is used to remove any residual data from drives that have a status of "available." For example, when replacing a drive at its end-of-life that contained sensitive data.
-     * It uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. The method may take up to two minutes to complete, so it is an asynchronous method.
-     * The GetAsyncResult method can be used to check on the status of the secure erase operation.
-     * <br/><br/>
-     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to secure erase.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public AsyncHandleResult secureEraseDrives(final SecureEraseDrivesRequest request) {
-        return super.sendRequest("SecureEraseDrives", request, SecureEraseDrivesRequest.class, AsyncHandleResult.class);
+    public SetRemoteLoggingHostsResult setRemoteLoggingHosts(final SetRemoteLoggingHostsRequest request) {
+        return super.sendRequest("SetRemoteLoggingHosts", request, SetRemoteLoggingHostsRequest.class, SetRemoteLoggingHostsResult.class);
     }
 
     /** 
-     * SecureEraseDrives is used to remove any residual data from drives that have a status of "available." For example, when replacing a drive at its end-of-life that contained sensitive data.
-     * It uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. The method may take up to two minutes to complete, so it is an asynchronous method.
-     * The GetAsyncResult method can be used to check on the status of the secure erase operation.
-     * <br/><br/>
-     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to secure erase.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public AsyncHandleResult secureEraseDrives(
-        Long[] drives
-        ) {
-        return this.secureEraseDrives(new SecureEraseDrivesRequest(drives));
-    }
-    /** 
-     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
-     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
-     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
-     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
-     * Use the "GetAsyncResult" method to check the status of the remove operation.
-     * <br/><br/>
-     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
-     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
-     * <br/><br/>
-     * You can also remove drives with a "failed" status using "RemoveDrives".
-     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
-     * The drive is unavailable for use in the cluster.
-     * <br/><br/>
-     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
+     * RemoteLoggingHosts is used to configure remote logging from the nodes in the storage cluster to a centralized log server or servers. Remote logging is performed over TCP using the default port 514. This API does not add to the existing logging hosts. Rather, it replaces what currently exists with new values specified by this API method. You can use the GetRemoteLoggingHosts to determine what the current logging hosts are and then use the SetRemoteLoggingHosts to set the desired list of current and new logging hosts.
      **/
     @Override
     @Since("1.0")
     @ConnectionType("Cluster")
-    public AsyncHandleResult removeDrives(final RemoveDrivesRequest request) {
-        return super.sendRequest("RemoveDrives", request, RemoveDrivesRequest.class, AsyncHandleResult.class);
-    }
-
-    /** 
-     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
-     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
-     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
-     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
-     * Use the "GetAsyncResult" method to check the status of the remove operation.
-     * <br/><br/>
-     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
-     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
-     * <br/><br/>
-     * You can also remove drives with a "failed" status using "RemoveDrives".
-     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
-     * The drive is unavailable for use in the cluster.
-     * <br/><br/>
-     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AsyncHandleResult removeDrives(
-        Long[] drives
+    public SetRemoteLoggingHostsResult setRemoteLoggingHosts(
+        LoggingServer[] remoteHosts
         ) {
-        return this.removeDrives(new RemoveDrivesRequest(drives));
+        return this.setRemoteLoggingHosts(new SetRemoteLoggingHostsRequest(remoteHosts));
     }
     /** 
      * CloneVolume is used to create a copy of the volume.
@@ -929,6 +756,15 @@ public class SolidFireElement
         Optional<Long[]> volumeIDs
         ) {
         return this.deleteVolumes(new DeleteVolumesRequest(accountIDs, volumeAccessGroupIDs, volumeIDs));
+    }
+    /** 
+     * GetDefaultQoS is used to retrieve the default QoS values that are set for a volume if QoS is not supplied.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public VolumeQOS getDefaultQoS() {
+        return super.sendRequest("GetDefaultQoS", null, null, VolumeQOS.class);
     }
     /** 
      * GetVolumeStats is used to retrieve high-level activity measurements for a single volume.
@@ -1388,220 +1224,6 @@ public class SolidFireElement
         Optional<Long> burstIOPS
         ) {
         return this.setDefaultQoS(new SetDefaultQoSRequest(minIOPS, maxIOPS, burstIOPS));
-    }
-    /** 
-     * ListActiveNodes returns the list of currently active nodes that are in the cluster.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListActiveNodesResult listActiveNodes() {
-        return super.sendRequest("ListActiveNodes", null, null, ListActiveNodesResult.class);
-    }
-    /** 
-     * ListAllNodes enables you to retrieve a list of active and pending nodes in the cluster.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListAllNodesResult listAllNodes() {
-        return super.sendRequest("ListAllNodes", null, null, ListAllNodesResult.class);
-    }
-    /** 
-     * Gets the list of pending nodes.
-     * Pending nodes are running and configured to join the cluster, but have not been added via the AddNodes method.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListPendingNodesResult listPendingNodes() {
-        return super.sendRequest("ListPendingNodes", null, null, ListPendingNodesResult.class);
-    }
-    /** 
-     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
-     * <br/><br/>
-     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
-     * <br/><br/>
-     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
-     * <br/><br/>
-     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
-     * <br/><br/>
-     * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddNodesResult addNodes(final AddNodesRequest request) {
-        return super.sendRequest("AddNodes", request, AddNodesRequest.class, AddNodesResult.class);
-    }
-
-    /** 
-     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
-     * <br/><br/>
-     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
-     * <br/><br/>
-     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
-     * <br/><br/>
-     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
-     * <br/><br/>
-     * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddNodesResult addNodes(
-        Long[] pendingNodes
-        ) {
-        return this.addNodes(new AddNodesRequest(pendingNodes));
-    }
-    /** 
-     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
-     * <br/><br/>
-     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public RemoveNodesResult removeNodes(final RemoveNodesRequest request) {
-        return super.sendRequest("RemoveNodes", request, RemoveNodesRequest.class, RemoveNodesResult.class);
-    }
-
-    /** 
-     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
-     * <br/><br/>
-     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public RemoveNodesResult removeNodes(
-        Long[] nodes
-        ) {
-        return this.removeNodes(new RemoveNodesRequest(nodes));
-    }
-    /** 
-     * The GetNetworkConfig API method is used to display the network configuration information for a node.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public GetNetworkConfigResult getNetworkConfig() {
-        return super.sendRequest("GetNetworkConfig", null, null, GetNetworkConfigResult.class);
-    }
-    /** 
-     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
-     * <br/><br/>
-     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetConfigResult setConfig(final SetConfigRequest request) {
-        return super.sendRequest("SetConfig", request, SetConfigRequest.class, SetConfigResult.class);
-    }
-
-    /** 
-     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
-     * <br/><br/>
-     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetConfigResult setConfig(
-        Config config
-        ) {
-        return this.setConfig(new SetConfigRequest(config));
-    }
-    /** 
-     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
-     * <br/><br/>
-     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetNetworkConfigResult setNetworkConfig(final SetNetworkConfigRequest request) {
-        return super.sendRequest("SetNetworkConfig", request, SetNetworkConfigRequest.class, SetNetworkConfigResult.class);
-    }
-
-    /** 
-     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
-     * <br/><br/>
-     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetNetworkConfigResult setNetworkConfig(
-        Network network
-        ) {
-        return this.setNetworkConfig(new SetNetworkConfigRequest(network));
-    }
-    /** 
-     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Both")
-    public GetConfigResult getConfig(final GetConfigRequest request) {
-        return super.sendRequest("GetConfig", request, GetConfigRequest.class, GetConfigResult.class);
-    }
-
-    /** 
-     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Both")
-    public GetConfigResult getConfig(
-        Boolean force
-        ) {
-        return this.getConfig(new GetConfigRequest(force));
-    }
-    /** 
-     * GetNodeStats is used to return the high-level activity measurements for a single node.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request) {
-        return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(this, request);
-    }
-
-    /** 
-     * GetNodeStats is used to return the high-level activity measurements for a single node.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetNodeStatsResult getNodeStats(
-        Long nodeID
-        ) {
-        return this.getNodeStats(new GetNodeStatsRequest(nodeID));
-    }
-    /** 
-     * ListNodeStats is used to return the high-level activity measurements for all nodes in a cluster.
-     **/
-    @Override
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public ListNodeStatsResult listNodeStats() {
-        return super.sendRequest("ListNodeStats", null, null, ListNodeStatsResult.class);
     }
     /** 
      * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
@@ -3480,6 +3102,15 @@ public class SolidFireElement
         return this.modifyClusterFullThreshold(new ModifyClusterFullThresholdRequest(stage2AwareThreshold, stage3BlockThresholdPercent, maxMetadataOverProvisionFactor));
     }
     /** 
+     * GetClusterMasterNodeID is used to return the ID of the node that can perform cluster-wide administration tasks and holds the storage virtual IP (SVIP) and management virtual IP (MVIP).
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetClusterMasterNodeIDResult getClusterMasterNodeID() {
+        return super.sendRequest("GetClusterMasterNodeID", null, null, GetClusterMasterNodeIDResult.class);
+    }
+    /** 
      * GetClusterStats is used to return high-level activity measurements for the cluster. Values returned are cumulative from the creation of the cluster.
      **/
     @Override
@@ -3487,6 +3118,38 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public GetClusterStatsResult getClusterStats() {
         return super.sendRequest("GetClusterStats", null, null, GetClusterStatsResult.class);
+    }
+    /** 
+     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
+     * <br/><br/>
+     * <b>Note</b>: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public CreateClusterResult createCluster(final CreateClusterRequest request) {
+        return super.sendRequest("CreateCluster", request, CreateClusterRequest.class, CreateClusterResult.class);
+    }
+
+    /** 
+     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
+     * <br/><br/>
+     * <b>Note</b>: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public CreateClusterResult createCluster(
+        Optional<Boolean> acceptEula,
+        String mvip,
+        String svip,
+        Long repCount,
+        String username,
+        String password,
+        String[] nodes,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.createCluster(new CreateClusterRequest(acceptEula, mvip, svip, repCount, username, password, nodes, attributes));
     }
     /** 
      * ListClusterAdmins returns the list of all cluster administrators for the cluster. There can be several cluster administrators that have different levels of permissions. There can be only one primary cluster administrator in the system. The primary Cluster Admin is the administrator that was created when the cluster was created. LDAP administrators can also be created when setting up an LDAP system on the cluster.
@@ -3741,6 +3404,15 @@ public class SolidFireElement
         return super.sendRequest("GetSnmpState", null, null, GetSnmpStateResult.class);
     }
     /** 
+     * ListSyncJobs is used to return information about synchronization jobs that are running on a SolidFire cluster. Synchronization jobs that are returned with this method are, "slice," "clone" and "remote."
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListSyncJobsResult listSyncJobs() {
+        return super.sendRequest("ListSyncJobs", null, null, ListSyncJobsResult.class);
+    }
+    /** 
      * Retrieves the current version of the API and a list of all supported versions.
      **/
     @Override
@@ -3757,6 +3429,28 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public GetNtpInfoResult getNtpInfo() {
         return super.sendRequest("GetNtpInfo", null, null, GetNtpInfoResult.class);
+    }
+    /** 
+     * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public SetNtpInfoResult setNtpInfo(final SetNtpInfoRequest request) {
+        return super.sendRequest("SetNtpInfo", request, SetNtpInfoRequest.class, SetNtpInfoResult.class);
+    }
+
+    /** 
+     * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public SetNtpInfoResult setNtpInfo(
+        String[] servers,
+        Optional<Boolean> broadcastclient
+        ) {
+        return this.setNtpInfo(new SetNtpInfoRequest(servers, broadcastclient));
     }
     /** 
      * The GetClusterState method is used to indicate if a node is part of a cluster or not. The three states are: <br><strong>Available:</strong> Node has not been configured with a cluster name.<br><strong>Pending:</strong> Node is pending for a specific named cluster and can be added.<br><strong>Active:</strong> Node is active and a member of a cluster and may not be added to another cluster.
@@ -3789,6 +3483,38 @@ public class SolidFireElement
         return super.sendRequest("GetCurrentClusterAdmin", null, null, GetCurrentClusterAdminResult.class);
     }
     /** 
+     * CreateSupportBundle is used to create a support bundle file under the node's directory. When the bundle has been successfully created, the bundle is stored on the node as a tar.gz file.
+     **/
+    @Override
+    @Since("8.0")
+    @ConnectionType("Node")
+    public CreateSupportBundleResult createSupportBundle(final CreateSupportBundleRequest request) {
+        return super.sendRequest("CreateSupportBundle", request, CreateSupportBundleRequest.class, CreateSupportBundleResult.class);
+    }
+
+    /** 
+     * CreateSupportBundle is used to create a support bundle file under the node's directory. When the bundle has been successfully created, the bundle is stored on the node as a tar.gz file.
+     **/
+    @Override
+    @Since("8.0")
+    @ConnectionType("Node")
+    public CreateSupportBundleResult createSupportBundle(
+        Optional<String> bundleName,
+        Optional<String> extraArgs,
+        Optional<Long> timeoutSec
+        ) {
+        return this.createSupportBundle(new CreateSupportBundleRequest(bundleName, extraArgs, timeoutSec));
+    }
+    /** 
+     * DeleteAllSupportBundles is used to delete all support bundles generated with the CreateSupportBundle API method.
+     **/
+    @Override
+    @Since("8.0")
+    @ConnectionType("Node")
+    public DeleteAllSupportBundlesResult deleteAllSupportBundles() {
+        return super.sendRequest("DeleteAllSupportBundles", null, null, DeleteAllSupportBundlesResult.class);
+    }
+    /** 
      * The EnableEncryptionAtRest method is used to enable the Advanced Encryption Standard (AES) 256-bit encryption at rest on the cluster so that the cluster can manage the encryption key used for the drives on each node. This feature is not enabled by default. Enabling this operation allows the cluster to automatically manage encryption keys internally for the drives on each node in the cluster. Nodes do not store the keys to unlock drives and the keys are never passed over the network. Two nodes participating in a cluster are required to access the key to disable encryption on a drive. The encryption management does not affect performance or efficiency on the cluster. If an encryption-enabled drive or node is removed from the cluster with the API, all data is secure erased and any data left on the drive cannot be read or accessed.
      * Enabling or disabling encryption should be performed when the cluster is running and in a healthy state. Encryption can be enabled or disabled at your discretion and can be performed as often as you need.
      * <br/><b>Note</b>: This process is asynchronous and returns a response before encryption is enabled. The GetClusterInfo method can be used to poll the system to see when the process has completed.
@@ -3811,6 +3537,14 @@ public class SolidFireElement
         return super.sendRequest("DisableEncryptionAtRest", null, null, DisableEncryptionAtRestResult.class);
     }
     /** 
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public GetSystemStatusResult getSystemStatus() {
+        return super.sendRequest("GetSystemStatus", null, null, GetSystemStatusResult.class);
+    }
+    /** 
      * SnmpSendTestTraps enables you to test SNMP functionality for a cluster. This method instructs the cluster to send test SNMP traps to the currently configured SNMP manager.
      **/
     @Override
@@ -3818,5 +3552,483 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public SnmpSendTestTrapsResult snmpSendTestTraps() {
         return super.sendRequest("SnmpSendTestTraps", null, null, SnmpSendTestTrapsResult.class);
+    }
+    /** 
+     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
+     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
+     * Use the "ListDrives" method to display drives that are "available" to be added.
+     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
+     * <br/><br/>
+     * When you add a drive, the system automatically determines the "type" of drive it should be.
+     * <br/><br/>
+     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
+     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddDrivesResult addDrives(final AddDrivesRequest request) {
+        return super.sendRequest("AddDrives", request, AddDrivesRequest.class, AddDrivesResult.class);
+    }
+
+    /** 
+     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
+     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
+     * Use the "ListDrives" method to display drives that are "available" to be added.
+     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
+     * <br/><br/>
+     * When you add a drive, the system automatically determines the "type" of drive it should be.
+     * <br/><br/>
+     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
+     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddDrivesResult addDrives(
+        NewDrive[] drives
+        ) {
+        return this.addDrives(new AddDrivesRequest(drives));
+    }
+    /** 
+     * ListDrives allows you to retrieve the list of the drives that exist in the cluster's active nodes.
+     * This method returns drives that have been added as volume metadata or block drives as well as drives that have not been added and are available.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListDrivesResult listDrives() {
+        return super.sendRequest("ListDrives", null, null, ListDrivesResult.class);
+    }
+    /** 
+     * GetDriveConfig is used to display drive information for expected slice and block drive counts as well as the number of slices and block drives that are currently connected to the node.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public GetDriveConfigResult getDriveConfig() {
+        return super.sendRequest("GetDriveConfig", null, null, GetDriveConfigResult.class);
+    }
+    /** 
+     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetDriveHardwareInfoResult getDriveHardwareInfo(final GetDriveHardwareInfoRequest request) {
+        return super.sendRequest("GetDriveHardwareInfo", request, GetDriveHardwareInfoRequest.class, GetDriveHardwareInfoResult.class);
+    }
+
+    /** 
+     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetDriveHardwareInfoResult getDriveHardwareInfo(
+        Long driveID
+        ) {
+        return this.getDriveHardwareInfo(new GetDriveHardwareInfoRequest(driveID));
+    }
+    /** 
+     * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public ListDriveHardwareResult listDriveHardware() {
+        return super.sendRequest("ListDriveHardware", null, null, ListDriveHardwareResult.class);
+    }
+    /** 
+     * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("6.0")
+    @ConnectionType("Node")
+    public ResetDrivesResult resetDrives(final ResetDrivesRequest request) {
+        return super.sendRequest("ResetDrives", request, ResetDrivesRequest.class, ResetDrivesResult.class);
+    }
+
+    /** 
+     * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("6.0")
+    @ConnectionType("Node")
+    public ResetDrivesResult resetDrives(
+        String drives,
+        Boolean force
+        ) {
+        return this.resetDrives(new ResetDrivesRequest(drives, force));
+    }
+    /** 
+     * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
+     * <br/><br/>
+     * <b>Note</b>: This test takes approximately 10 minutes.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public TestDrivesResult testDrives(final TestDrivesRequest request) {
+        return super.sendRequest("TestDrives", request, TestDrivesRequest.class, TestDrivesResult.class);
+    }
+
+    /** 
+     * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
+     * <br/><br/>
+     * <b>Note</b>: This test takes approximately 10 minutes.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public TestDrivesResult testDrives(
+        Optional<Long> minutes
+        ) {
+        return this.testDrives(new TestDrivesRequest(minutes));
+    }
+    /** 
+     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
+     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request) {
+        return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStats(this, request);
+    }
+
+    /** 
+     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
+     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetDriveStatsResult getDriveStats(
+        Long driveID
+        ) {
+        return this.getDriveStats(new GetDriveStatsRequest(driveID));
+    }
+    /** 
+     * SecureEraseDrives is used to remove any residual data from drives that have a status of "available." For example, when replacing a drive at its end-of-life that contained sensitive data.
+     * It uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. The method may take up to two minutes to complete, so it is an asynchronous method.
+     * The GetAsyncResult method can be used to check on the status of the secure erase operation.
+     * <br/><br/>
+     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to secure erase.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public AsyncHandleResult secureEraseDrives(final SecureEraseDrivesRequest request) {
+        return super.sendRequest("SecureEraseDrives", request, SecureEraseDrivesRequest.class, AsyncHandleResult.class);
+    }
+
+    /** 
+     * SecureEraseDrives is used to remove any residual data from drives that have a status of "available." For example, when replacing a drive at its end-of-life that contained sensitive data.
+     * It uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. The method may take up to two minutes to complete, so it is an asynchronous method.
+     * The GetAsyncResult method can be used to check on the status of the secure erase operation.
+     * <br/><br/>
+     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to secure erase.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public AsyncHandleResult secureEraseDrives(
+        Long[] drives
+        ) {
+        return this.secureEraseDrives(new SecureEraseDrivesRequest(drives));
+    }
+    /** 
+     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
+     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
+     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
+     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
+     * Use the "GetAsyncResult" method to check the status of the remove operation.
+     * <br/><br/>
+     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
+     * <br/><br/>
+     * You can also remove drives with a "failed" status using "RemoveDrives".
+     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
+     * The drive is unavailable for use in the cluster.
+     * <br/><br/>
+     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AsyncHandleResult removeDrives(final RemoveDrivesRequest request) {
+        return super.sendRequest("RemoveDrives", request, RemoveDrivesRequest.class, AsyncHandleResult.class);
+    }
+
+    /** 
+     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
+     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
+     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
+     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
+     * Use the "GetAsyncResult" method to check the status of the remove operation.
+     * <br/><br/>
+     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
+     * <br/><br/>
+     * You can also remove drives with a "failed" status using "RemoveDrives".
+     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
+     * The drive is unavailable for use in the cluster.
+     * <br/><br/>
+     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AsyncHandleResult removeDrives(
+        Long[] drives
+        ) {
+        return this.removeDrives(new RemoveDrivesRequest(drives));
+    }
+    /** 
+     * ListActiveNodes returns the list of currently active nodes that are in the cluster.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListActiveNodesResult listActiveNodes() {
+        return super.sendRequest("ListActiveNodes", null, null, ListActiveNodesResult.class);
+    }
+    /** 
+     * ListAllNodes enables you to retrieve a list of active and pending nodes in the cluster.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListAllNodesResult listAllNodes() {
+        return super.sendRequest("ListAllNodes", null, null, ListAllNodesResult.class);
+    }
+    /** 
+     * Gets the list of pending nodes.
+     * Pending nodes are running and configured to join the cluster, but have not been added via the AddNodes method.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListPendingNodesResult listPendingNodes() {
+        return super.sendRequest("ListPendingNodes", null, null, ListPendingNodesResult.class);
+    }
+    /** 
+     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
+     * <br/><br/>
+     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
+     * <br/><br/>
+     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
+     * <br/><br/>
+     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
+     * <br/><br/>
+     * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddNodesResult addNodes(final AddNodesRequest request) {
+        return super.sendRequest("AddNodes", request, AddNodesRequest.class, AddNodesResult.class);
+    }
+
+    /** 
+     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
+     * <br/><br/>
+     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
+     * <br/><br/>
+     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
+     * <br/><br/>
+     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
+     * <br/><br/>
+     * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddNodesResult addNodes(
+        Long[] pendingNodes
+        ) {
+        return this.addNodes(new AddNodesRequest(pendingNodes));
+    }
+    /** 
+     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
+     * <br/><br/>
+     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public RemoveNodesResult removeNodes(final RemoveNodesRequest request) {
+        return super.sendRequest("RemoveNodes", request, RemoveNodesRequest.class, RemoveNodesResult.class);
+    }
+
+    /** 
+     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
+     * <br/><br/>
+     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public RemoveNodesResult removeNodes(
+        Long[] nodes
+        ) {
+        return this.removeNodes(new RemoveNodesRequest(nodes));
+    }
+    /** 
+     * The GetNetworkConfig API method is used to display the network configuration information for a node.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public GetNetworkConfigResult getNetworkConfig() {
+        return super.sendRequest("GetNetworkConfig", null, null, GetNetworkConfigResult.class);
+    }
+    /** 
+     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
+     * <br/><br/>
+     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetConfigResult setConfig(final SetConfigRequest request) {
+        return super.sendRequest("SetConfig", request, SetConfigRequest.class, SetConfigResult.class);
+    }
+
+    /** 
+     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
+     * <br/><br/>
+     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetConfigResult setConfig(
+        Config config
+        ) {
+        return this.setConfig(new SetConfigRequest(config));
+    }
+    /** 
+     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
+     * <br/><br/>
+     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetNetworkConfigResult setNetworkConfig(final SetNetworkConfigRequest request) {
+        return super.sendRequest("SetNetworkConfig", request, SetNetworkConfigRequest.class, SetNetworkConfigResult.class);
+    }
+
+    /** 
+     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
+     * <br/><br/>
+     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetNetworkConfigResult setNetworkConfig(
+        Network network
+        ) {
+        return this.setNetworkConfig(new SetNetworkConfigRequest(network));
+    }
+    /** 
+     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Both")
+    public GetConfigResult getConfig(final GetConfigRequest request) {
+        return super.sendRequest("GetConfig", request, GetConfigRequest.class, GetConfigResult.class);
+    }
+
+    /** 
+     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Both")
+    public GetConfigResult getConfig(
+        Boolean force
+        ) {
+        return this.getConfig(new GetConfigRequest(force));
+    }
+    /** 
+     * GetBootstrapConfig returns the cluster name and node name from the bootstrap configuration file. This API method should be performed on an individual node before it has been configured into a cluster. The resulting information from this method is used in the Cluster Configuration UI when the cluster is eventually created.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public GetBootstrapConfigResult getBootstrapConfig() {
+        return super.sendRequest("GetBootstrapConfig", null, null, GetBootstrapConfigResult.class);
+    }
+    /** 
+     * GetNodeStats is used to return the high-level activity measurements for a single node.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request) {
+        return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(this, request);
+    }
+
+    /** 
+     * GetNodeStats is used to return the high-level activity measurements for a single node.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetNodeStatsResult getNodeStats(
+        Long nodeID
+        ) {
+        return this.getNodeStats(new GetNodeStatsRequest(nodeID));
+    }
+    /** 
+     * ListNodeStats is used to return the high-level activity measurements for all nodes in a cluster.
+     **/
+    @Override
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public ListNodeStatsResult listNodeStats() {
+        return super.sendRequest("ListNodeStats", null, null, ListNodeStatsResult.class);
+    }
+    /** 
+     * GetPendingOperation is used to detect an operation on a node that is currently in progress. This method can also be used to report back when an operation has completed.<br/>
+     * <br/>
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public GetPendingOperationResult getPendingOperation() {
+        return super.sendRequest("GetPendingOperation", null, null, GetPendingOperationResult.class);
     }
 }
