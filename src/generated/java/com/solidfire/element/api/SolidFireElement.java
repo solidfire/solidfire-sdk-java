@@ -3554,250 +3554,6 @@ public class SolidFireElement
         return super.sendRequest("SnmpSendTestTraps", null, null, SnmpSendTestTrapsResult.class);
     }
     /** 
-     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
-     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
-     * Use the "ListDrives" method to display drives that are "available" to be added.
-     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
-     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
-     * <br/><br/>
-     * When you add a drive, the system automatically determines the "type" of drive it should be.
-     * <br/><br/>
-     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
-     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddDrivesResult addDrives(final AddDrivesRequest request) {
-        return super.sendRequest("AddDrives", request, AddDrivesRequest.class, AddDrivesResult.class);
-    }
-
-    /** 
-     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
-     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
-     * Use the "ListDrives" method to display drives that are "available" to be added.
-     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
-     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
-     * <br/><br/>
-     * When you add a drive, the system automatically determines the "type" of drive it should be.
-     * <br/><br/>
-     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
-     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddDrivesResult addDrives(
-        NewDrive[] drives
-        ) {
-        return this.addDrives(new AddDrivesRequest(drives));
-    }
-    /** 
-     * ListDrives allows you to retrieve the list of the drives that exist in the cluster's active nodes.
-     * This method returns drives that have been added as volume metadata or block drives as well as drives that have not been added and are available.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListDrivesResult listDrives() {
-        return super.sendRequest("ListDrives", null, null, ListDrivesResult.class);
-    }
-    /** 
-     * GetDriveConfig is used to display drive information for expected slice and block drive counts as well as the number of slices and block drives that are currently connected to the node.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Node")
-    public GetDriveConfigResult getDriveConfig() {
-        return super.sendRequest("GetDriveConfig", null, null, GetDriveConfigResult.class);
-    }
-    /** 
-     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetDriveHardwareInfoResult getDriveHardwareInfo(final GetDriveHardwareInfoRequest request) {
-        return super.sendRequest("GetDriveHardwareInfo", request, GetDriveHardwareInfoRequest.class, GetDriveHardwareInfoResult.class);
-    }
-
-    /** 
-     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetDriveHardwareInfoResult getDriveHardwareInfo(
-        Long driveID
-        ) {
-        return this.getDriveHardwareInfo(new GetDriveHardwareInfoRequest(driveID));
-    }
-    /** 
-     * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Node")
-    public ListDriveHardwareResult listDriveHardware() {
-        return super.sendRequest("ListDriveHardware", null, null, ListDriveHardwareResult.class);
-    }
-    /** 
-     * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("6.0")
-    @ConnectionType("Node")
-    public ResetDrivesResult resetDrives(final ResetDrivesRequest request) {
-        return super.sendRequest("ResetDrives", request, ResetDrivesRequest.class, ResetDrivesResult.class);
-    }
-
-    /** 
-     * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("6.0")
-    @ConnectionType("Node")
-    public ResetDrivesResult resetDrives(
-        String drives,
-        Boolean force
-        ) {
-        return this.resetDrives(new ResetDrivesRequest(drives, force));
-    }
-    /** 
-     * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
-     * <br/><br/>
-     * <b>Note</b>: This test takes approximately 10 minutes.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public TestDrivesResult testDrives(final TestDrivesRequest request) {
-        return super.sendRequest("TestDrives", request, TestDrivesRequest.class, TestDrivesResult.class);
-    }
-
-    /** 
-     * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
-     * <br/><br/>
-     * <b>Note</b>: This test takes approximately 10 minutes.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Node")
-    public TestDrivesResult testDrives(
-        Optional<Long> minutes
-        ) {
-        return this.testDrives(new TestDrivesRequest(minutes));
-    }
-    /** 
-     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
-     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request) {
-        return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStats(this, request);
-    }
-
-    /** 
-     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
-     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetDriveStatsResult getDriveStats(
-        Long driveID
-        ) {
-        return this.getDriveStats(new GetDriveStatsRequest(driveID));
-    }
-    /** 
-     * SecureEraseDrives is used to remove any residual data from drives that have a status of "available." For example, when replacing a drive at its end-of-life that contained sensitive data.
-     * It uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. The method may take up to two minutes to complete, so it is an asynchronous method.
-     * The GetAsyncResult method can be used to check on the status of the secure erase operation.
-     * <br/><br/>
-     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to secure erase.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public AsyncHandleResult secureEraseDrives(final SecureEraseDrivesRequest request) {
-        return super.sendRequest("SecureEraseDrives", request, SecureEraseDrivesRequest.class, AsyncHandleResult.class);
-    }
-
-    /** 
-     * SecureEraseDrives is used to remove any residual data from drives that have a status of "available." For example, when replacing a drive at its end-of-life that contained sensitive data.
-     * It uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. The method may take up to two minutes to complete, so it is an asynchronous method.
-     * The GetAsyncResult method can be used to check on the status of the secure erase operation.
-     * <br/><br/>
-     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to secure erase.
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public AsyncHandleResult secureEraseDrives(
-        Long[] drives
-        ) {
-        return this.secureEraseDrives(new SecureEraseDrivesRequest(drives));
-    }
-    /** 
-     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
-     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
-     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
-     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
-     * Use the "GetAsyncResult" method to check the status of the remove operation.
-     * <br/><br/>
-     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
-     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
-     * <br/><br/>
-     * You can also remove drives with a "failed" status using "RemoveDrives".
-     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
-     * The drive is unavailable for use in the cluster.
-     * <br/><br/>
-     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AsyncHandleResult removeDrives(final RemoveDrivesRequest request) {
-        return super.sendRequest("RemoveDrives", request, RemoveDrivesRequest.class, AsyncHandleResult.class);
-    }
-
-    /** 
-     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
-     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
-     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
-     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
-     * Use the "GetAsyncResult" method to check the status of the remove operation.
-     * <br/><br/>
-     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
-     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
-     * <br/><br/>
-     * You can also remove drives with a "failed" status using "RemoveDrives".
-     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
-     * The drive is unavailable for use in the cluster.
-     * <br/><br/>
-     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AsyncHandleResult removeDrives(
-        Long[] drives
-        ) {
-        return this.removeDrives(new RemoveDrivesRequest(drives));
-    }
-    /** 
      * ListActiveNodes returns the list of currently active nodes that are in the cluster.
      **/
     @Override
@@ -4030,5 +3786,261 @@ public class SolidFireElement
     @ConnectionType("Node")
     public GetPendingOperationResult getPendingOperation() {
         return super.sendRequest("GetPendingOperation", null, null, GetPendingOperationResult.class);
+    }
+    /** 
+     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
+     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
+     * Use the "ListDrives" method to display drives that are "available" to be added.
+     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
+     * <br/><br/>
+     * When you add a drive, the system automatically determines the "type" of drive it should be.
+     * <br/><br/>
+     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
+     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddDrivesResult addDrives(final AddDrivesRequest request) {
+        return super.sendRequest("AddDrives", request, AddDrivesRequest.class, AddDrivesResult.class);
+    }
+
+    /** 
+     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
+     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
+     * Use the "ListDrives" method to display drives that are "available" to be added.
+     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
+     * <br/><br/>
+     * When you add a drive, the system automatically determines the "type" of drive it should be.
+     * <br/><br/>
+     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
+     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddDrivesResult addDrives(
+        NewDrive[] drives
+        ) {
+        return this.addDrives(new AddDrivesRequest(drives));
+    }
+    /** 
+     * ListDrives allows you to retrieve the list of the drives that exist in the cluster's active nodes.
+     * This method returns drives that have been added as volume metadata or block drives as well as drives that have not been added and are available.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListDrivesResult listDrives() {
+        return super.sendRequest("ListDrives", null, null, ListDrivesResult.class);
+    }
+    /** 
+     * GetDriveConfig is used to display drive information for expected slice and block drive counts as well as the number of slices and block drives that are currently connected to the node.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public GetDriveConfigResult getDriveConfig() {
+        return super.sendRequest("GetDriveConfig", null, null, GetDriveConfigResult.class);
+    }
+    /** 
+     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetDriveHardwareInfoResult getDriveHardwareInfo(final GetDriveHardwareInfoRequest request) {
+        return super.sendRequest("GetDriveHardwareInfo", request, GetDriveHardwareInfoRequest.class, GetDriveHardwareInfoResult.class);
+    }
+
+    /** 
+     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetDriveHardwareInfoResult getDriveHardwareInfo(
+        Long driveID
+        ) {
+        return this.getDriveHardwareInfo(new GetDriveHardwareInfoRequest(driveID));
+    }
+    /** 
+     * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListDriveHardwareResult listDriveHardware(final ListDriveHardwareRequest request) {
+        return super.sendRequest("ListDriveHardware", request, ListDriveHardwareRequest.class, ListDriveHardwareResult.class);
+    }
+
+    /** 
+     * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListDriveHardwareResult listDriveHardware(
+        Boolean force
+        ) {
+        return this.listDriveHardware(new ListDriveHardwareRequest(force));
+    }
+    /** 
+     * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("6.0")
+    @ConnectionType("Node")
+    public ResetDrivesResult resetDrives(final ResetDrivesRequest request) {
+        return super.sendRequest("ResetDrives", request, ResetDrivesRequest.class, ResetDrivesResult.class);
+    }
+
+    /** 
+     * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("6.0")
+    @ConnectionType("Node")
+    public ResetDrivesResult resetDrives(
+        String drives,
+        Boolean force
+        ) {
+        return this.resetDrives(new ResetDrivesRequest(drives, force));
+    }
+    /** 
+     * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
+     * <br/><br/>
+     * <b>Note</b>: This test takes approximately 10 minutes.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public TestDrivesResult testDrives(final TestDrivesRequest request) {
+        return super.sendRequest("TestDrives", request, TestDrivesRequest.class, TestDrivesResult.class);
+    }
+
+    /** 
+     * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
+     * <br/><br/>
+     * <b>Note</b>: This test takes approximately 10 minutes.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Node")
+    public TestDrivesResult testDrives(
+        Optional<Long> minutes
+        ) {
+        return this.testDrives(new TestDrivesRequest(minutes));
+    }
+    /** 
+     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
+     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request) {
+        return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStats(this, request);
+    }
+
+    /** 
+     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
+     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetDriveStatsResult getDriveStats(
+        Long driveID
+        ) {
+        return this.getDriveStats(new GetDriveStatsRequest(driveID));
+    }
+    /** 
+     * SecureEraseDrives is used to remove any residual data from drives that have a status of "available." For example, when replacing a drive at its end-of-life that contained sensitive data.
+     * It uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. The method may take up to two minutes to complete, so it is an asynchronous method.
+     * The GetAsyncResult method can be used to check on the status of the secure erase operation.
+     * <br/><br/>
+     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to secure erase.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public AsyncHandleResult secureEraseDrives(final SecureEraseDrivesRequest request) {
+        return super.sendRequest("SecureEraseDrives", request, SecureEraseDrivesRequest.class, AsyncHandleResult.class);
+    }
+
+    /** 
+     * SecureEraseDrives is used to remove any residual data from drives that have a status of "available." For example, when replacing a drive at its end-of-life that contained sensitive data.
+     * It uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. The method may take up to two minutes to complete, so it is an asynchronous method.
+     * The GetAsyncResult method can be used to check on the status of the secure erase operation.
+     * <br/><br/>
+     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to secure erase.
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public AsyncHandleResult secureEraseDrives(
+        Long[] drives
+        ) {
+        return this.secureEraseDrives(new SecureEraseDrivesRequest(drives));
+    }
+    /** 
+     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
+     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
+     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
+     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
+     * Use the "GetAsyncResult" method to check the status of the remove operation.
+     * <br/><br/>
+     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
+     * <br/><br/>
+     * You can also remove drives with a "failed" status using "RemoveDrives".
+     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
+     * The drive is unavailable for use in the cluster.
+     * <br/><br/>
+     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AsyncHandleResult removeDrives(final RemoveDrivesRequest request) {
+        return super.sendRequest("RemoveDrives", request, RemoveDrivesRequest.class, AsyncHandleResult.class);
+    }
+
+    /** 
+     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
+     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
+     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
+     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
+     * Use the "GetAsyncResult" method to check the status of the remove operation.
+     * <br/><br/>
+     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
+     * <br/><br/>
+     * You can also remove drives with a "failed" status using "RemoveDrives".
+     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
+     * The drive is unavailable for use in the cluster.
+     * <br/><br/>
+     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AsyncHandleResult removeDrives(
+        Long[] drives
+        ) {
+        return this.removeDrives(new RemoveDrivesRequest(drives));
     }
 }

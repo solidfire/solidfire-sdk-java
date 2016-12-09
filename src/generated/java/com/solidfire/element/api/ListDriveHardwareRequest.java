@@ -49,7 +49,7 @@ public class ListDriveHardwareRequest implements Serializable {
     }
 
     /** 
-     * This must be set to true in order to retrieve the drive hardware stats from the cluster.
+     * To run this command, the force parameter must be set to true.
      **/
     public Boolean getForce() { return this.force; }
     public void setForce(Boolean force) { 
