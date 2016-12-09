@@ -39,7 +39,7 @@ public class ModifyGroupSnapshotResult implements Serializable {
 
     public ModifyGroupSnapshotResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

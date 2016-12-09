@@ -40,6 +40,7 @@ public class PendingOperation implements Serializable {
     @Since("7.0")
     public PendingOperation() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public PendingOperation(
@@ -75,13 +76,13 @@ public class PendingOperation implements Serializable {
         PendingOperation that = (PendingOperation) o;
 
         return 
-            Objects.equals(pending, that.pending) &&
+            Objects.equals(pending, that.pending) && 
             Objects.equals(operation, that.operation);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( pending, operation );
+        return Objects.hash( pending,operation );
     }
 
 

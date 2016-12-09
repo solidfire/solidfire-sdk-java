@@ -43,6 +43,7 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
     @Since("7.0")
     public UpdateBulkVolumeStatusRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public UpdateBulkVolumeStatusRequest(
@@ -108,16 +109,16 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
         UpdateBulkVolumeStatusRequest that = (UpdateBulkVolumeStatusRequest) o;
 
         return 
-            Objects.equals(key, that.key) &&
-            Objects.equals(status, that.status) &&
-            Objects.equals(percentComplete, that.percentComplete) &&
-            Objects.equals(message, that.message) &&
+            Objects.equals(key, that.key) && 
+            Objects.equals(status, that.status) && 
+            Objects.equals(percentComplete, that.percentComplete) && 
+            Objects.equals(message, that.message) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( key, status, percentComplete, message, attributes );
+        return Objects.hash( key,status,percentComplete,message,attributes );
     }
 
 

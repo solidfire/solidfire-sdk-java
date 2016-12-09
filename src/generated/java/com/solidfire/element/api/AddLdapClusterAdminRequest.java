@@ -42,6 +42,7 @@ public class AddLdapClusterAdminRequest implements Serializable {
     @Since("7.0")
     public AddLdapClusterAdminRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public AddLdapClusterAdminRequest(
@@ -94,15 +95,15 @@ public class AddLdapClusterAdminRequest implements Serializable {
         AddLdapClusterAdminRequest that = (AddLdapClusterAdminRequest) o;
 
         return 
-            Objects.equals(username, that.username) &&
-            Arrays.equals(access, that.access) &&
-            Objects.equals(acceptEula, that.acceptEula) &&
+            Objects.equals(username, that.username) && 
+            Arrays.equals(access, that.access) && 
+            Objects.equals(acceptEula, that.acceptEula) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( username, (Object[])access, acceptEula, attributes );
+        return Objects.hash( username,(Object[])access,acceptEula,attributes );
     }
 
 

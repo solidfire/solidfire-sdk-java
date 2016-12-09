@@ -42,6 +42,7 @@ public class QoS implements Serializable {
     @Since("7.0")
     public QoS() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public QoS(
@@ -99,15 +100,15 @@ public class QoS implements Serializable {
         QoS that = (QoS) o;
 
         return 
-            Objects.equals(minIOPS, that.minIOPS) &&
-            Objects.equals(maxIOPS, that.maxIOPS) &&
-            Objects.equals(burstIOPS, that.burstIOPS) &&
+            Objects.equals(minIOPS, that.minIOPS) && 
+            Objects.equals(maxIOPS, that.maxIOPS) && 
+            Objects.equals(burstIOPS, that.burstIOPS) && 
             Objects.equals(burstTime, that.burstTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( minIOPS, maxIOPS, burstIOPS, burstTime );
+        return Objects.hash( minIOPS,maxIOPS,burstIOPS,burstTime );
     }
 
 

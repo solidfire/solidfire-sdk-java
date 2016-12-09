@@ -38,7 +38,7 @@ public class ClearClusterFaultsResult implements Serializable {
     @Since("7.0")
     public ClearClusterFaultsResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

@@ -42,8 +42,21 @@ public class GroupSnapshotMembers implements Serializable {
     @Since("7.0")
     public GroupSnapshotMembers() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public GroupSnapshotMembers(
+        Long volumeID,
+        Long snapshotID,
+        String checksum
+    )
+    {
+        this.volumeID = volumeID;
+        this.snapshotID = snapshotID;
+        this.checksum = checksum;
+    }
+    // parameterized constructor
+    @Since("8.0")
     public GroupSnapshotMembers(
         Long volumeID,
         Long snapshotID,
@@ -96,15 +109,15 @@ public class GroupSnapshotMembers implements Serializable {
         GroupSnapshotMembers that = (GroupSnapshotMembers) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(snapshotID, that.snapshotID) &&
-            Objects.equals(snapshotUUID, that.snapshotUUID) &&
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(snapshotID, that.snapshotID) && 
+            Objects.equals(snapshotUUID, that.snapshotUUID) && 
             Objects.equals(checksum, that.checksum);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, snapshotID, snapshotUUID, checksum );
+        return Objects.hash( volumeID,snapshotID,snapshotUUID,checksum );
     }
 
 

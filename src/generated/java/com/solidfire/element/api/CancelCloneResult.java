@@ -38,7 +38,7 @@ public class CancelCloneResult implements Serializable {
     @Since("7.0")
     public CancelCloneResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

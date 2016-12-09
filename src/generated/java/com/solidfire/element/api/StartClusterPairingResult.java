@@ -40,6 +40,7 @@ public class StartClusterPairingResult implements Serializable {
     @Since("7.0")
     public StartClusterPairingResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public StartClusterPairingResult(
@@ -74,13 +75,13 @@ public class StartClusterPairingResult implements Serializable {
         StartClusterPairingResult that = (StartClusterPairingResult) o;
 
         return 
-            Objects.equals(clusterPairingKey, that.clusterPairingKey) &&
+            Objects.equals(clusterPairingKey, that.clusterPairingKey) && 
             Objects.equals(clusterPairID, that.clusterPairID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterPairingKey, clusterPairID );
+        return Objects.hash( clusterPairingKey,clusterPairID );
     }
 
 

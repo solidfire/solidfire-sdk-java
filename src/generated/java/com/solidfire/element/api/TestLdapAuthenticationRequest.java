@@ -41,6 +41,7 @@ public class TestLdapAuthenticationRequest implements Serializable {
     @Since("7.0")
     public TestLdapAuthenticationRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public TestLdapAuthenticationRequest(
@@ -84,14 +85,14 @@ public class TestLdapAuthenticationRequest implements Serializable {
         TestLdapAuthenticationRequest that = (TestLdapAuthenticationRequest) o;
 
         return 
-            Objects.equals(username, that.username) &&
-            Objects.equals(password, that.password) &&
+            Objects.equals(username, that.username) && 
+            Objects.equals(password, that.password) && 
             Objects.equals(ldapConfiguration, that.ldapConfiguration);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( username, password, ldapConfiguration );
+        return Objects.hash( username,password,ldapConfiguration );
     }
 
 

@@ -39,6 +39,7 @@ public class GetAccountEfficiencyRequest implements Serializable {
     @Since("7.0")
     public GetAccountEfficiencyRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetAccountEfficiencyRequest(

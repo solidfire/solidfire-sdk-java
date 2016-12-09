@@ -61,8 +61,59 @@ public class ClusterCapacity implements Serializable {
     @Since("7.0")
     public ClusterCapacity() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public ClusterCapacity(
+        Long activeBlockSpace,
+        Long activeSessions,
+        Long averageIOPS,
+        Long clusterRecentIOSize,
+        Long currentIOPS,
+        Long maxIOPS,
+        Long maxOverProvisionableSpace,
+        Long maxProvisionedSpace,
+        Long maxUsedMetadataSpace,
+        Long maxUsedSpace,
+        Long nonZeroBlocks,
+        Long peakActiveSessions,
+        Long peakIOPS,
+        Long provisionedSpace,
+        String timestamp,
+        Long totalOps,
+        Long uniqueBlocks,
+        Long uniqueBlocksUsedSpace,
+        Long usedMetadataSpace,
+        Long usedMetadataSpaceInSnapshots,
+        Long usedSpace,
+        Long zeroBlocks
+    )
+    {
+        this.activeBlockSpace = activeBlockSpace;
+        this.activeSessions = activeSessions;
+        this.averageIOPS = averageIOPS;
+        this.clusterRecentIOSize = clusterRecentIOSize;
+        this.currentIOPS = currentIOPS;
+        this.maxIOPS = maxIOPS;
+        this.maxOverProvisionableSpace = maxOverProvisionableSpace;
+        this.maxProvisionedSpace = maxProvisionedSpace;
+        this.maxUsedMetadataSpace = maxUsedMetadataSpace;
+        this.maxUsedSpace = maxUsedSpace;
+        this.nonZeroBlocks = nonZeroBlocks;
+        this.peakActiveSessions = peakActiveSessions;
+        this.peakIOPS = peakIOPS;
+        this.provisionedSpace = provisionedSpace;
+        this.timestamp = timestamp;
+        this.totalOps = totalOps;
+        this.uniqueBlocks = uniqueBlocks;
+        this.uniqueBlocksUsedSpace = uniqueBlocksUsedSpace;
+        this.usedMetadataSpace = usedMetadataSpace;
+        this.usedMetadataSpaceInSnapshots = usedMetadataSpaceInSnapshots;
+        this.usedSpace = usedSpace;
+        this.zeroBlocks = zeroBlocks;
+    }
+    // parameterized constructor
+    @Since("8.0")
     public ClusterCapacity(
         Long activeBlockSpace,
         Long activeSessions,
@@ -291,34 +342,34 @@ public class ClusterCapacity implements Serializable {
         ClusterCapacity that = (ClusterCapacity) o;
 
         return 
-            Objects.equals(activeBlockSpace, that.activeBlockSpace) &&
-            Objects.equals(activeSessions, that.activeSessions) &&
-            Objects.equals(averageIOPS, that.averageIOPS) &&
-            Objects.equals(clusterRecentIOSize, that.clusterRecentIOSize) &&
-            Objects.equals(currentIOPS, that.currentIOPS) &&
-            Objects.equals(maxIOPS, that.maxIOPS) &&
-            Objects.equals(maxOverProvisionableSpace, that.maxOverProvisionableSpace) &&
-            Objects.equals(maxProvisionedSpace, that.maxProvisionedSpace) &&
-            Objects.equals(maxUsedMetadataSpace, that.maxUsedMetadataSpace) &&
-            Objects.equals(maxUsedSpace, that.maxUsedSpace) &&
-            Objects.equals(nonZeroBlocks, that.nonZeroBlocks) &&
-            Objects.equals(peakActiveSessions, that.peakActiveSessions) &&
-            Objects.equals(peakIOPS, that.peakIOPS) &&
-            Objects.equals(provisionedSpace, that.provisionedSpace) &&
-            Objects.equals(snapshotNonZeroBlocks, that.snapshotNonZeroBlocks) &&
-            Objects.equals(timestamp, that.timestamp) &&
-            Objects.equals(totalOps, that.totalOps) &&
-            Objects.equals(uniqueBlocks, that.uniqueBlocks) &&
-            Objects.equals(uniqueBlocksUsedSpace, that.uniqueBlocksUsedSpace) &&
-            Objects.equals(usedMetadataSpace, that.usedMetadataSpace) &&
-            Objects.equals(usedMetadataSpaceInSnapshots, that.usedMetadataSpaceInSnapshots) &&
-            Objects.equals(usedSpace, that.usedSpace) &&
+            Objects.equals(activeBlockSpace, that.activeBlockSpace) && 
+            Objects.equals(activeSessions, that.activeSessions) && 
+            Objects.equals(averageIOPS, that.averageIOPS) && 
+            Objects.equals(clusterRecentIOSize, that.clusterRecentIOSize) && 
+            Objects.equals(currentIOPS, that.currentIOPS) && 
+            Objects.equals(maxIOPS, that.maxIOPS) && 
+            Objects.equals(maxOverProvisionableSpace, that.maxOverProvisionableSpace) && 
+            Objects.equals(maxProvisionedSpace, that.maxProvisionedSpace) && 
+            Objects.equals(maxUsedMetadataSpace, that.maxUsedMetadataSpace) && 
+            Objects.equals(maxUsedSpace, that.maxUsedSpace) && 
+            Objects.equals(nonZeroBlocks, that.nonZeroBlocks) && 
+            Objects.equals(peakActiveSessions, that.peakActiveSessions) && 
+            Objects.equals(peakIOPS, that.peakIOPS) && 
+            Objects.equals(provisionedSpace, that.provisionedSpace) && 
+            Objects.equals(snapshotNonZeroBlocks, that.snapshotNonZeroBlocks) && 
+            Objects.equals(timestamp, that.timestamp) && 
+            Objects.equals(totalOps, that.totalOps) && 
+            Objects.equals(uniqueBlocks, that.uniqueBlocks) && 
+            Objects.equals(uniqueBlocksUsedSpace, that.uniqueBlocksUsedSpace) && 
+            Objects.equals(usedMetadataSpace, that.usedMetadataSpace) && 
+            Objects.equals(usedMetadataSpaceInSnapshots, that.usedMetadataSpaceInSnapshots) && 
+            Objects.equals(usedSpace, that.usedSpace) && 
             Objects.equals(zeroBlocks, that.zeroBlocks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( activeBlockSpace, activeSessions, averageIOPS, clusterRecentIOSize, currentIOPS, maxIOPS, maxOverProvisionableSpace, maxProvisionedSpace, maxUsedMetadataSpace, maxUsedSpace, nonZeroBlocks, peakActiveSessions, peakIOPS, provisionedSpace, snapshotNonZeroBlocks, timestamp, totalOps, uniqueBlocks, uniqueBlocksUsedSpace, usedMetadataSpace, usedMetadataSpaceInSnapshots, usedSpace, zeroBlocks );
+        return Objects.hash( activeBlockSpace,activeSessions,averageIOPS,clusterRecentIOSize,currentIOPS,maxIOPS,maxOverProvisionableSpace,maxProvisionedSpace,maxUsedMetadataSpace,maxUsedSpace,nonZeroBlocks,peakActiveSessions,peakIOPS,provisionedSpace,snapshotNonZeroBlocks,timestamp,totalOps,uniqueBlocks,uniqueBlocksUsedSpace,usedMetadataSpace,usedMetadataSpaceInSnapshots,usedSpace,zeroBlocks );
     }
 
 

@@ -39,6 +39,7 @@ public class GetVirtualVolumeCountResult implements Serializable {
     @Since("7.0")
     public GetVirtualVolumeCountResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetVirtualVolumeCountResult(

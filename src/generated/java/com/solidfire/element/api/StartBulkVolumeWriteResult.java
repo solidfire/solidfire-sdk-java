@@ -41,6 +41,7 @@ public class StartBulkVolumeWriteResult implements Serializable {
     @Since("7.0")
     public StartBulkVolumeWriteResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public StartBulkVolumeWriteResult(
@@ -84,14 +85,14 @@ public class StartBulkVolumeWriteResult implements Serializable {
         StartBulkVolumeWriteResult that = (StartBulkVolumeWriteResult) o;
 
         return 
-            Objects.equals(asyncHandle, that.asyncHandle) &&
-            Objects.equals(key, that.key) &&
+            Objects.equals(asyncHandle, that.asyncHandle) && 
+            Objects.equals(key, that.key) && 
             Objects.equals(url, that.url);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( asyncHandle, key, url );
+        return Objects.hash( asyncHandle,key,url );
     }
 
 

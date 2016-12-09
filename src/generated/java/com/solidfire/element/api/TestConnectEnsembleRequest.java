@@ -39,6 +39,7 @@ public class TestConnectEnsembleRequest implements Serializable {
     @Since("7.0")
     public TestConnectEnsembleRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public TestConnectEnsembleRequest(

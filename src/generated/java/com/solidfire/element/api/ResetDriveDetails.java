@@ -42,6 +42,7 @@ public class ResetDriveDetails implements Serializable {
     @Since("7.0")
     public ResetDriveDetails() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ResetDriveDetails(
@@ -91,15 +92,15 @@ public class ResetDriveDetails implements Serializable {
         ResetDriveDetails that = (ResetDriveDetails) o;
 
         return 
-            Objects.equals(drive, that.drive) &&
-            Objects.equals(returnCode, that.returnCode) &&
-            Objects.equals(stderr, that.stderr) &&
+            Objects.equals(drive, that.drive) && 
+            Objects.equals(returnCode, that.returnCode) && 
+            Objects.equals(stderr, that.stderr) && 
             Objects.equals(stdout, that.stdout);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( drive, returnCode, stderr, stdout );
+        return Objects.hash( drive,returnCode,stderr,stdout );
     }
 
 

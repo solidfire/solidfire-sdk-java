@@ -39,6 +39,7 @@ public class GetSystemStatusResult implements Serializable {
     @Since("7.0")
     public GetSystemStatusResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetSystemStatusResult(

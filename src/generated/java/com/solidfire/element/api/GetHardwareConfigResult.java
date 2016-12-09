@@ -39,6 +39,7 @@ public class GetHardwareConfigResult implements Serializable {
     @Since("7.0")
     public GetHardwareConfigResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetHardwareConfigResult(

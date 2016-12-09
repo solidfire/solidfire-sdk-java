@@ -42,6 +42,7 @@ public class GetBootstrapConfigResult implements Serializable {
     @Since("7.0")
     public GetBootstrapConfigResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetBootstrapConfigResult(
@@ -94,15 +95,15 @@ public class GetBootstrapConfigResult implements Serializable {
         GetBootstrapConfigResult that = (GetBootstrapConfigResult) o;
 
         return 
-            Objects.equals(clusterName, that.clusterName) &&
-            Objects.equals(nodeName, that.nodeName) &&
-            Arrays.equals(nodes, that.nodes) &&
+            Objects.equals(clusterName, that.clusterName) && 
+            Objects.equals(nodeName, that.nodeName) && 
+            Arrays.equals(nodes, that.nodes) && 
             Objects.equals(version, that.version);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterName, nodeName, (Object[])nodes, version );
+        return Objects.hash( clusterName,nodeName,(Object[])nodes,version );
     }
 
 

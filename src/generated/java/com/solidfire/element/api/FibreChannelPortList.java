@@ -39,6 +39,7 @@ public class FibreChannelPortList implements Serializable {
     @Since("7.0")
     public FibreChannelPortList() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public FibreChannelPortList(

@@ -39,6 +39,7 @@ public class ListClusterFaultsResult implements Serializable {
     @Since("7.0")
     public ListClusterFaultsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListClusterFaultsResult(

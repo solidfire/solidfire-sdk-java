@@ -44,8 +44,23 @@ public class CreateSnapshotRequest implements Serializable {
     @Since("7.0")
     public CreateSnapshotRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public CreateSnapshotRequest(
+        Long volumeID,
+        Optional<Long> snapshotID,
+        Optional<String> name,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.volumeID = volumeID;
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
+    // parameterized constructor
+    @Since("8.0")
     public CreateSnapshotRequest(
         Long volumeID,
         Optional<Long> snapshotID,
@@ -117,17 +132,17 @@ public class CreateSnapshotRequest implements Serializable {
         CreateSnapshotRequest that = (CreateSnapshotRequest) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(snapshotID, that.snapshotID) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
-            Objects.equals(retention, that.retention) &&
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(snapshotID, that.snapshotID) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) && 
+            Objects.equals(retention, that.retention) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, snapshotID, name, enableRemoteReplication, retention, attributes );
+        return Objects.hash( volumeID,snapshotID,name,enableRemoteReplication,retention,attributes );
     }
 
 

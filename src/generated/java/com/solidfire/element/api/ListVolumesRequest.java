@@ -44,8 +44,25 @@ public class ListVolumesRequest implements Serializable {
     @Since("7.0")
     public ListVolumesRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public ListVolumesRequest(
+        Optional<Long> startVolumeID,
+        Optional<Long> limit,
+        Optional<String> volumeStatus,
+        Optional<Long[]> accounts,
+        Optional<Boolean> isPaired
+    )
+    {
+        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
+        this.limit = (limit == null) ? Optional.<Long>empty() : limit;
+        this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
+        this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
+        this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
+    }
+    // parameterized constructor
+    @Since("9.0")
     public ListVolumesRequest(
         Optional<Long> startVolumeID,
         Optional<Long> limit,
@@ -120,17 +137,17 @@ public class ListVolumesRequest implements Serializable {
         ListVolumesRequest that = (ListVolumesRequest) o;
 
         return 
-            Objects.equals(startVolumeID, that.startVolumeID) &&
-            Objects.equals(limit, that.limit) &&
-            Objects.equals(volumeStatus, that.volumeStatus) &&
-            Objects.equals(accounts, that.accounts) &&
-            Objects.equals(isPaired, that.isPaired) &&
+            Objects.equals(startVolumeID, that.startVolumeID) && 
+            Objects.equals(limit, that.limit) && 
+            Objects.equals(volumeStatus, that.volumeStatus) && 
+            Objects.equals(accounts, that.accounts) && 
+            Objects.equals(isPaired, that.isPaired) && 
             Objects.equals(volumeIDs, that.volumeIDs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( startVolumeID, limit, volumeStatus, accounts, isPaired, volumeIDs );
+        return Objects.hash( startVolumeID,limit,volumeStatus,accounts,isPaired,volumeIDs );
     }
 
 

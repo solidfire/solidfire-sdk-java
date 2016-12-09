@@ -48,6 +48,7 @@ public class EventInfo implements Serializable {
     @Since("7.0")
     public EventInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public EventInfo(
@@ -144,21 +145,21 @@ public class EventInfo implements Serializable {
         EventInfo that = (EventInfo) o;
 
         return 
-            Objects.equals(eventID, that.eventID) &&
-            Objects.equals(severity, that.severity) &&
-            Objects.equals(eventInfoType, that.eventInfoType) &&
-            Objects.equals(message, that.message) &&
-            Objects.equals(serviceID, that.serviceID) &&
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(driveID, that.driveID) &&
-            Objects.equals(timeOfReport, that.timeOfReport) &&
-            Objects.equals(timeOfPublish, that.timeOfPublish) &&
+            Objects.equals(eventID, that.eventID) && 
+            Objects.equals(severity, that.severity) && 
+            Objects.equals(eventInfoType, that.eventInfoType) && 
+            Objects.equals(message, that.message) && 
+            Objects.equals(serviceID, that.serviceID) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(driveID, that.driveID) && 
+            Objects.equals(timeOfReport, that.timeOfReport) && 
+            Objects.equals(timeOfPublish, that.timeOfPublish) && 
             Objects.equals(details, that.details);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( eventID, severity, eventInfoType, message, serviceID, nodeID, driveID, timeOfReport, timeOfPublish, details );
+        return Objects.hash( eventID,severity,eventInfoType,message,serviceID,nodeID,driveID,timeOfReport,timeOfPublish,details );
     }
 
 

@@ -38,7 +38,7 @@ public class RemoveClusterPairResult implements Serializable {
     @Since("7.0")
     public RemoveClusterPairResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

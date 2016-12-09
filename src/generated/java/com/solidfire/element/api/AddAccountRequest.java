@@ -42,6 +42,7 @@ public class AddAccountRequest implements Serializable {
     @Since("7.0")
     public AddAccountRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public AddAccountRequest(
@@ -103,15 +104,15 @@ public class AddAccountRequest implements Serializable {
         AddAccountRequest that = (AddAccountRequest) o;
 
         return 
-            Objects.equals(username, that.username) &&
-            Objects.equals(initiatorSecret, that.initiatorSecret) &&
-            Objects.equals(targetSecret, that.targetSecret) &&
+            Objects.equals(username, that.username) && 
+            Objects.equals(initiatorSecret, that.initiatorSecret) && 
+            Objects.equals(targetSecret, that.targetSecret) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( username, initiatorSecret, targetSecret, attributes );
+        return Objects.hash( username,initiatorSecret,targetSecret,attributes );
     }
 
 

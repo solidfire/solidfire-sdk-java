@@ -40,6 +40,7 @@ public class Config implements Serializable {
     @Since("7.0")
     public Config() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public Config(
@@ -72,13 +73,13 @@ public class Config implements Serializable {
         Config that = (Config) o;
 
         return 
-            Objects.equals(cluster, that.cluster) &&
+            Objects.equals(cluster, that.cluster) && 
             Objects.equals(network, that.network);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( cluster, network );
+        return Objects.hash( cluster,network );
     }
 
 

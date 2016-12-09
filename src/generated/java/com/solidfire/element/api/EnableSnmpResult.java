@@ -38,7 +38,7 @@ public class EnableSnmpResult implements Serializable {
     @Since("7.0")
     public EnableSnmpResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

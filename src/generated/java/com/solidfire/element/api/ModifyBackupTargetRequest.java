@@ -41,6 +41,7 @@ public class ModifyBackupTargetRequest implements Serializable {
     @Since("7.0")
     public ModifyBackupTargetRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ModifyBackupTargetRequest(
@@ -84,14 +85,14 @@ public class ModifyBackupTargetRequest implements Serializable {
         ModifyBackupTargetRequest that = (ModifyBackupTargetRequest) o;
 
         return 
-            Objects.equals(backupTargetID, that.backupTargetID) &&
-            Objects.equals(name, that.name) &&
+            Objects.equals(backupTargetID, that.backupTargetID) && 
+            Objects.equals(name, that.name) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( backupTargetID, name, attributes );
+        return Objects.hash( backupTargetID,name,attributes );
     }
 
 

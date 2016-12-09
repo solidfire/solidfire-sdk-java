@@ -38,7 +38,7 @@ public class EnableFeatureResult implements Serializable {
     @Since("7.0")
     public EnableFeatureResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

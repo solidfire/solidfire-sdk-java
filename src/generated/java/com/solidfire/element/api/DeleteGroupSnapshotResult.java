@@ -38,7 +38,7 @@ public class DeleteGroupSnapshotResult implements Serializable {
     @Since("7.0")
     public DeleteGroupSnapshotResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

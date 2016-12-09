@@ -43,6 +43,7 @@ public class RollbackToSnapshotRequest implements Serializable {
     @Since("7.0")
     public RollbackToSnapshotRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public RollbackToSnapshotRequest(
@@ -106,16 +107,16 @@ public class RollbackToSnapshotRequest implements Serializable {
         RollbackToSnapshotRequest that = (RollbackToSnapshotRequest) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(snapshotID, that.snapshotID) &&
-            Objects.equals(saveCurrentState, that.saveCurrentState) &&
-            Objects.equals(name, that.name) &&
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(snapshotID, that.snapshotID) && 
+            Objects.equals(saveCurrentState, that.saveCurrentState) && 
+            Objects.equals(name, that.name) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, snapshotID, saveCurrentState, name, attributes );
+        return Objects.hash( volumeID,snapshotID,saveCurrentState,name,attributes );
     }
 
 

@@ -40,6 +40,7 @@ public class SnapshotRemoteStatus implements Serializable {
     @Since("7.0")
     public SnapshotRemoteStatus() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SnapshotRemoteStatus(
@@ -73,13 +74,13 @@ public class SnapshotRemoteStatus implements Serializable {
         SnapshotRemoteStatus that = (SnapshotRemoteStatus) o;
 
         return 
-            Objects.equals(remoteStatus, that.remoteStatus) &&
+            Objects.equals(remoteStatus, that.remoteStatus) && 
             Objects.equals(volumePairUUID, that.volumePairUUID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( remoteStatus, volumePairUUID );
+        return Objects.hash( remoteStatus,volumePairUUID );
     }
 
 

@@ -44,6 +44,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
     @Since("7.0")
     public StartBulkVolumeReadRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public StartBulkVolumeReadRequest(
@@ -119,17 +120,17 @@ public class StartBulkVolumeReadRequest implements Serializable {
         StartBulkVolumeReadRequest that = (StartBulkVolumeReadRequest) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(format, that.format) &&
-            Objects.equals(snapshotID, that.snapshotID) &&
-            Objects.equals(script, that.script) &&
-            Objects.equals(scriptParameters, that.scriptParameters) &&
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(format, that.format) && 
+            Objects.equals(snapshotID, that.snapshotID) && 
+            Objects.equals(script, that.script) && 
+            Objects.equals(scriptParameters, that.scriptParameters) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, format, snapshotID, script, scriptParameters, attributes );
+        return Objects.hash( volumeID,format,snapshotID,script,scriptParameters,attributes );
     }
 
 

@@ -42,6 +42,7 @@ public class Platform implements Serializable {
     @Since("7.0")
     public Platform() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public Platform(
@@ -94,15 +95,15 @@ public class Platform implements Serializable {
         Platform that = (Platform) o;
 
         return 
-            Objects.equals(nodeType, that.nodeType) &&
-            Objects.equals(chassisType, that.chassisType) &&
-            Objects.equals(cpuModel, that.cpuModel) &&
+            Objects.equals(nodeType, that.nodeType) && 
+            Objects.equals(chassisType, that.chassisType) && 
+            Objects.equals(cpuModel, that.cpuModel) && 
             Objects.equals(nodeMemoryGB, that.nodeMemoryGB);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeType, chassisType, cpuModel, nodeMemoryGB );
+        return Objects.hash( nodeType,chassisType,cpuModel,nodeMemoryGB );
     }
 
 

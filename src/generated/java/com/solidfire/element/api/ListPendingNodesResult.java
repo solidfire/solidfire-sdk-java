@@ -39,6 +39,7 @@ public class ListPendingNodesResult implements Serializable {
     @Since("7.0")
     public ListPendingNodesResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListPendingNodesResult(

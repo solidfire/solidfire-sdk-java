@@ -43,6 +43,7 @@ public class ListVirtualVolumesRequest implements Serializable {
     @Since("7.0")
     public ListVirtualVolumesRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListVirtualVolumesRequest(
@@ -104,16 +105,16 @@ public class ListVirtualVolumesRequest implements Serializable {
         ListVirtualVolumesRequest that = (ListVirtualVolumesRequest) o;
 
         return 
-            Objects.equals(details, that.details) &&
-            Objects.equals(limit, that.limit) &&
-            Objects.equals(recursive, that.recursive) &&
-            Objects.equals(startVirtualVolumeID, that.startVirtualVolumeID) &&
+            Objects.equals(details, that.details) && 
+            Objects.equals(limit, that.limit) && 
+            Objects.equals(recursive, that.recursive) && 
+            Objects.equals(startVirtualVolumeID, that.startVirtualVolumeID) && 
             Objects.equals(virtualVolumeIDs, that.virtualVolumeIDs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( details, limit, recursive, startVirtualVolumeID, virtualVolumeIDs );
+        return Objects.hash( details,limit,recursive,startVirtualVolumeID,virtualVolumeIDs );
     }
 
 

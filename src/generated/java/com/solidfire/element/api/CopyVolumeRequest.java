@@ -41,6 +41,7 @@ public class CopyVolumeRequest implements Serializable {
     @Since("7.0")
     public CopyVolumeRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CopyVolumeRequest(
@@ -84,14 +85,14 @@ public class CopyVolumeRequest implements Serializable {
         CopyVolumeRequest that = (CopyVolumeRequest) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(dstVolumeID, that.dstVolumeID) &&
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(dstVolumeID, that.dstVolumeID) && 
             Objects.equals(snapshotID, that.snapshotID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, dstVolumeID, snapshotID );
+        return Objects.hash( volumeID,dstVolumeID,snapshotID );
     }
 
 

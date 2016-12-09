@@ -39,6 +39,7 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
     @Since("7.0")
     public ListNodeFibreChannelPortInfoResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListNodeFibreChannelPortInfoResult(

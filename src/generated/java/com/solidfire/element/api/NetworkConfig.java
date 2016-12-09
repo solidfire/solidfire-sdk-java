@@ -67,6 +67,7 @@ public class NetworkConfig implements Serializable {
     @Since("7.0")
     public NetworkConfig() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public NetworkConfig(
@@ -315,40 +316,40 @@ public class NetworkConfig implements Serializable {
         NetworkConfig that = (NetworkConfig) o;
 
         return 
-            Objects.equals(_default, that._default) &&
-            Objects.equals(bondMaster, that.bondMaster) &&
-            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
-            Objects.equals(address, that.address) &&
-            Objects.equals(auto, that.auto) &&
-            Objects.equals(bondDowndelay, that.bondDowndelay) &&
-            Objects.equals(bondFailOverMac, that.bondFailOverMac) &&
-            Objects.equals(bondPrimaryReselect, that.bondPrimaryReselect) &&
-            Objects.equals(bondLacpRate, that.bondLacpRate) &&
-            Objects.equals(bondMiimon, that.bondMiimon) &&
-            Objects.equals(bondMode, that.bondMode) &&
-            Objects.equals(bondSlaves, that.bondSlaves) &&
-            Objects.equals(bondUpdelay, that.bondUpdelay) &&
-            Objects.equals(broadcast, that.broadcast) &&
-            Objects.equals(dnsNameservers, that.dnsNameservers) &&
-            Objects.equals(dnsSearch, that.dnsSearch) &&
-            Objects.equals(family, that.family) &&
-            Objects.equals(gateway, that.gateway) &&
-            Objects.equals(macAddress, that.macAddress) &&
-            Objects.equals(macAddressPermanent, that.macAddressPermanent) &&
-            Objects.equals(method, that.method) &&
-            Objects.equals(mtu, that.mtu) &&
-            Objects.equals(netmask, that.netmask) &&
-            Objects.equals(network, that.network) &&
-            Objects.equals(physical, that.physical) &&
-            Objects.equals(routes, that.routes) &&
-            Objects.equals(status, that.status) &&
-            Objects.equals(symmetricRouteRules, that.symmetricRouteRules) &&
+            Objects.equals(_default, that._default) && 
+            Objects.equals(bondMaster, that.bondMaster) && 
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) && 
+            Objects.equals(address, that.address) && 
+            Objects.equals(auto, that.auto) && 
+            Objects.equals(bondDowndelay, that.bondDowndelay) && 
+            Objects.equals(bondFailOverMac, that.bondFailOverMac) && 
+            Objects.equals(bondPrimaryReselect, that.bondPrimaryReselect) && 
+            Objects.equals(bondLacpRate, that.bondLacpRate) && 
+            Objects.equals(bondMiimon, that.bondMiimon) && 
+            Objects.equals(bondMode, that.bondMode) && 
+            Objects.equals(bondSlaves, that.bondSlaves) && 
+            Objects.equals(bondUpdelay, that.bondUpdelay) && 
+            Objects.equals(broadcast, that.broadcast) && 
+            Objects.equals(dnsNameservers, that.dnsNameservers) && 
+            Objects.equals(dnsSearch, that.dnsSearch) && 
+            Objects.equals(family, that.family) && 
+            Objects.equals(gateway, that.gateway) && 
+            Objects.equals(macAddress, that.macAddress) && 
+            Objects.equals(macAddressPermanent, that.macAddressPermanent) && 
+            Objects.equals(method, that.method) && 
+            Objects.equals(mtu, that.mtu) && 
+            Objects.equals(netmask, that.netmask) && 
+            Objects.equals(network, that.network) && 
+            Objects.equals(physical, that.physical) && 
+            Objects.equals(routes, that.routes) && 
+            Objects.equals(status, that.status) && 
+            Objects.equals(symmetricRouteRules, that.symmetricRouteRules) && 
             Objects.equals(upAndRunning, that.upAndRunning);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( _default, bondMaster, virtualNetworkTag, address, auto, bondDowndelay, bondFailOverMac, bondPrimaryReselect, bondLacpRate, bondMiimon, bondMode, bondSlaves, bondUpdelay, broadcast, dnsNameservers, dnsSearch, family, gateway, macAddress, macAddressPermanent, method, mtu, netmask, network, physical, routes, status, symmetricRouteRules, upAndRunning );
+        return Objects.hash( _default,bondMaster,virtualNetworkTag,address,auto,bondDowndelay,bondFailOverMac,bondPrimaryReselect,bondLacpRate,bondMiimon,bondMode,bondSlaves,bondUpdelay,broadcast,dnsNameservers,dnsSearch,family,gateway,macAddress,macAddressPermanent,method,mtu,netmask,network,physical,routes,status,symmetricRouteRules,upAndRunning );
     }
 
 

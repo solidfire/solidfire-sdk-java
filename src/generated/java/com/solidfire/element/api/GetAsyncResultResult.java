@@ -40,6 +40,7 @@ public class GetAsyncResultResult implements Serializable {
     @Since("7.0")
     public GetAsyncResultResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetAsyncResultResult(
@@ -76,13 +77,13 @@ public class GetAsyncResultResult implements Serializable {
         GetAsyncResultResult that = (GetAsyncResultResult) o;
 
         return 
-            Objects.equals(result, that.result) &&
+            Objects.equals(result, that.result) && 
             Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( result, status );
+        return Objects.hash( result,status );
     }
 
 

@@ -56,6 +56,7 @@ public class ISCSISession implements Serializable {
     @Since("7.0")
     public ISCSISession() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ISCSISession(
@@ -216,29 +217,29 @@ public class ISCSISession implements Serializable {
         ISCSISession that = (ISCSISession) o;
 
         return 
-            Objects.equals(accountID, that.accountID) &&
-            Objects.equals(initiator, that.initiator) &&
-            Objects.equals(accountName, that.accountName) &&
-            Objects.equals(driveID, that.driveID) &&
-            Objects.equals(initiatorIP, that.initiatorIP) &&
-            Objects.equals(initiatorPortName, that.initiatorPortName) &&
-            Objects.equals(targetPortName, that.targetPortName) &&
-            Objects.equals(initiatorName, that.initiatorName) &&
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(serviceID, that.serviceID) &&
-            Objects.equals(sessionID, that.sessionID) &&
-            Objects.equals(targetName, that.targetName) &&
-            Objects.equals(targetIP, that.targetIP) &&
-            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(createTime, that.createTime) &&
-            Objects.equals(volumeInstance, that.volumeInstance) &&
+            Objects.equals(accountID, that.accountID) && 
+            Objects.equals(initiator, that.initiator) && 
+            Objects.equals(accountName, that.accountName) && 
+            Objects.equals(driveID, that.driveID) && 
+            Objects.equals(initiatorIP, that.initiatorIP) && 
+            Objects.equals(initiatorPortName, that.initiatorPortName) && 
+            Objects.equals(targetPortName, that.targetPortName) && 
+            Objects.equals(initiatorName, that.initiatorName) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(serviceID, that.serviceID) && 
+            Objects.equals(sessionID, that.sessionID) && 
+            Objects.equals(targetName, that.targetName) && 
+            Objects.equals(targetIP, that.targetIP) && 
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(createTime, that.createTime) && 
+            Objects.equals(volumeInstance, that.volumeInstance) && 
             Objects.equals(initiatorSessionID, that.initiatorSessionID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID, initiator, accountName, driveID, initiatorIP, initiatorPortName, targetPortName, initiatorName, nodeID, serviceID, sessionID, targetName, targetIP, virtualNetworkID, volumeID, createTime, volumeInstance, initiatorSessionID );
+        return Objects.hash( accountID,initiator,accountName,driveID,initiatorIP,initiatorPortName,targetPortName,initiatorName,nodeID,serviceID,sessionID,targetName,targetIP,virtualNetworkID,volumeID,createTime,volumeInstance,initiatorSessionID );
     }
 
 

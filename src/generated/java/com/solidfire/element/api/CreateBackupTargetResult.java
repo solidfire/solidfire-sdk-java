@@ -39,6 +39,7 @@ public class CreateBackupTargetResult implements Serializable {
     @Since("7.0")
     public CreateBackupTargetResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CreateBackupTargetResult(

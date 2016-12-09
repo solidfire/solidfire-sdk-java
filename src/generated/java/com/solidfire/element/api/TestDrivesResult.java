@@ -39,6 +39,7 @@ public class TestDrivesResult implements Serializable {
     @Since("7.0")
     public TestDrivesResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public TestDrivesResult(

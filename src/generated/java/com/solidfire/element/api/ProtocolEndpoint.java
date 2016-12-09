@@ -44,6 +44,7 @@ public class ProtocolEndpoint implements Serializable {
     @Since("7.0")
     public ProtocolEndpoint() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ProtocolEndpoint(
@@ -108,17 +109,17 @@ public class ProtocolEndpoint implements Serializable {
         ProtocolEndpoint that = (ProtocolEndpoint) o;
 
         return 
-            Objects.equals(protocolEndpointID, that.protocolEndpointID) &&
-            Objects.equals(protocolEndpointState, that.protocolEndpointState) &&
-            Objects.equals(providerType, that.providerType) &&
-            Objects.equals(primaryProviderID, that.primaryProviderID) &&
-            Objects.equals(secondaryProviderID, that.secondaryProviderID) &&
+            Objects.equals(protocolEndpointID, that.protocolEndpointID) && 
+            Objects.equals(protocolEndpointState, that.protocolEndpointState) && 
+            Objects.equals(providerType, that.providerType) && 
+            Objects.equals(primaryProviderID, that.primaryProviderID) && 
+            Objects.equals(secondaryProviderID, that.secondaryProviderID) && 
             Objects.equals(scsiNAADeviceID, that.scsiNAADeviceID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( protocolEndpointID, protocolEndpointState, providerType, primaryProviderID, secondaryProviderID, scsiNAADeviceID );
+        return Objects.hash( protocolEndpointID,protocolEndpointState,providerType,primaryProviderID,secondaryProviderID,scsiNAADeviceID );
     }
 
 

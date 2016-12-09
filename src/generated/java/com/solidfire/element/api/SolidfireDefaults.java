@@ -47,6 +47,7 @@ public class SolidfireDefaults implements Serializable {
     @Since("7.0")
     public SolidfireDefaults() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SolidfireDefaults(
@@ -135,20 +136,20 @@ public class SolidfireDefaults implements Serializable {
         SolidfireDefaults that = (SolidfireDefaults) o;
 
         return 
-            Objects.equals(sliceFileLogFileCapacity, that.sliceFileLogFileCapacity) &&
-            Objects.equals(postCallbackThreadCount, that.postCallbackThreadCount) &&
-            Objects.equals(cpuDmaLatency, that.cpuDmaLatency) &&
-            Objects.equals(bufferCacheGB, that.bufferCacheGB) &&
-            Objects.equals(maxIncomingSliceSyncs, that.maxIncomingSliceSyncs) &&
-            Objects.equals(configuredIops, that.configuredIops) &&
-            Objects.equals(sCacheFileCapacity, that.sCacheFileCapacity) &&
-            Objects.equals(maxDriveWriteThroughputMBPerSec, that.maxDriveWriteThroughputMBPerSec) &&
+            Objects.equals(sliceFileLogFileCapacity, that.sliceFileLogFileCapacity) && 
+            Objects.equals(postCallbackThreadCount, that.postCallbackThreadCount) && 
+            Objects.equals(cpuDmaLatency, that.cpuDmaLatency) && 
+            Objects.equals(bufferCacheGB, that.bufferCacheGB) && 
+            Objects.equals(maxIncomingSliceSyncs, that.maxIncomingSliceSyncs) && 
+            Objects.equals(configuredIops, that.configuredIops) && 
+            Objects.equals(sCacheFileCapacity, that.sCacheFileCapacity) && 
+            Objects.equals(maxDriveWriteThroughputMBPerSec, that.maxDriveWriteThroughputMBPerSec) && 
             Objects.equals(driveWriteThroughputMBPerSleep, that.driveWriteThroughputMBPerSleep);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( sliceFileLogFileCapacity, postCallbackThreadCount, cpuDmaLatency, bufferCacheGB, maxIncomingSliceSyncs, configuredIops, sCacheFileCapacity, maxDriveWriteThroughputMBPerSec, driveWriteThroughputMBPerSleep );
+        return Objects.hash( sliceFileLogFileCapacity,postCallbackThreadCount,cpuDmaLatency,bufferCacheGB,maxIncomingSliceSyncs,configuredIops,sCacheFileCapacity,maxDriveWriteThroughputMBPerSec,driveWriteThroughputMBPerSleep );
     }
 
 

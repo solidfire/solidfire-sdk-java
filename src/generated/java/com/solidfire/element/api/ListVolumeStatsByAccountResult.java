@@ -39,6 +39,7 @@ public class ListVolumeStatsByAccountResult implements Serializable {
     @Since("7.0")
     public ListVolumeStatsByAccountResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListVolumeStatsByAccountResult(

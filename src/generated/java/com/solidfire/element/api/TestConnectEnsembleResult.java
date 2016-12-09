@@ -41,6 +41,7 @@ public class TestConnectEnsembleResult implements Serializable {
     @Since("7.0")
     public TestConnectEnsembleResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public TestConnectEnsembleResult(
@@ -83,14 +84,14 @@ public class TestConnectEnsembleResult implements Serializable {
         TestConnectEnsembleResult that = (TestConnectEnsembleResult) o;
 
         return 
-            Objects.equals(details, that.details) &&
-            Objects.equals(duration, that.duration) &&
+            Objects.equals(details, that.details) && 
+            Objects.equals(duration, that.duration) && 
             Objects.equals(result, that.result);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( details, duration, result );
+        return Objects.hash( details,duration,result );
     }
 
 

@@ -42,6 +42,7 @@ public class GetSnmpTrapInfoResult implements Serializable {
     @Since("7.0")
     public GetSnmpTrapInfoResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetSnmpTrapInfoResult(
@@ -94,15 +95,15 @@ public class GetSnmpTrapInfoResult implements Serializable {
         GetSnmpTrapInfoResult that = (GetSnmpTrapInfoResult) o;
 
         return 
-            Arrays.equals(trapRecipients, that.trapRecipients) &&
-            Objects.equals(clusterFaultTrapsEnabled, that.clusterFaultTrapsEnabled) &&
-            Objects.equals(clusterFaultResolvedTrapsEnabled, that.clusterFaultResolvedTrapsEnabled) &&
+            Arrays.equals(trapRecipients, that.trapRecipients) && 
+            Objects.equals(clusterFaultTrapsEnabled, that.clusterFaultTrapsEnabled) && 
+            Objects.equals(clusterFaultResolvedTrapsEnabled, that.clusterFaultResolvedTrapsEnabled) && 
             Objects.equals(clusterEventTrapsEnabled, that.clusterEventTrapsEnabled);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])trapRecipients, clusterFaultTrapsEnabled, clusterFaultResolvedTrapsEnabled, clusterEventTrapsEnabled );
+        return Objects.hash( (Object[])trapRecipients,clusterFaultTrapsEnabled,clusterFaultResolvedTrapsEnabled,clusterEventTrapsEnabled );
     }
 
 

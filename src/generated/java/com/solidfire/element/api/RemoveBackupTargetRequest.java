@@ -39,6 +39,7 @@ public class RemoveBackupTargetRequest implements Serializable {
     @Since("7.0")
     public RemoveBackupTargetRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public RemoveBackupTargetRequest(

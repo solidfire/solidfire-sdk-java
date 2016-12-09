@@ -39,6 +39,7 @@ public class SetClusterConfigRequest implements Serializable {
     @Since("7.0")
     public SetClusterConfigRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SetClusterConfigRequest(

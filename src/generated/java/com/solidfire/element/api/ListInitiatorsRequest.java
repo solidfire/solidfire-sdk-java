@@ -41,6 +41,7 @@ public class ListInitiatorsRequest implements Serializable {
     @Since("7.0")
     public ListInitiatorsRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListInitiatorsRequest(
@@ -84,14 +85,14 @@ public class ListInitiatorsRequest implements Serializable {
         ListInitiatorsRequest that = (ListInitiatorsRequest) o;
 
         return 
-            Objects.equals(startInitiatorID, that.startInitiatorID) &&
-            Objects.equals(limit, that.limit) &&
+            Objects.equals(startInitiatorID, that.startInitiatorID) && 
+            Objects.equals(limit, that.limit) && 
             Objects.equals(initiators, that.initiators);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( startInitiatorID, limit, initiators );
+        return Objects.hash( startInitiatorID,limit,initiators );
     }
 
 

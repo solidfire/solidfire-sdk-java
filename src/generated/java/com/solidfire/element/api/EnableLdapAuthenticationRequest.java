@@ -48,6 +48,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
     @Since("7.0")
     public EnableLdapAuthenticationRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public EnableLdapAuthenticationRequest(
@@ -170,21 +171,21 @@ public class EnableLdapAuthenticationRequest implements Serializable {
         EnableLdapAuthenticationRequest that = (EnableLdapAuthenticationRequest) o;
 
         return 
-            Objects.equals(authType, that.authType) &&
-            Objects.equals(groupSearchBaseDN, that.groupSearchBaseDN) &&
-            Objects.equals(groupSearchCustomFilter, that.groupSearchCustomFilter) &&
-            Objects.equals(groupSearchType, that.groupSearchType) &&
-            Objects.equals(searchBindDN, that.searchBindDN) &&
-            Objects.equals(searchBindPassword, that.searchBindPassword) &&
-            Arrays.equals(serverURIs, that.serverURIs) &&
-            Objects.equals(userDNTemplate, that.userDNTemplate) &&
-            Objects.equals(userSearchBaseDN, that.userSearchBaseDN) &&
+            Objects.equals(authType, that.authType) && 
+            Objects.equals(groupSearchBaseDN, that.groupSearchBaseDN) && 
+            Objects.equals(groupSearchCustomFilter, that.groupSearchCustomFilter) && 
+            Objects.equals(groupSearchType, that.groupSearchType) && 
+            Objects.equals(searchBindDN, that.searchBindDN) && 
+            Objects.equals(searchBindPassword, that.searchBindPassword) && 
+            Arrays.equals(serverURIs, that.serverURIs) && 
+            Objects.equals(userDNTemplate, that.userDNTemplate) && 
+            Objects.equals(userSearchBaseDN, that.userSearchBaseDN) && 
             Objects.equals(userSearchFilter, that.userSearchFilter);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( authType, groupSearchBaseDN, groupSearchCustomFilter, groupSearchType, searchBindDN, searchBindPassword, (Object[])serverURIs, userDNTemplate, userSearchBaseDN, userSearchFilter );
+        return Objects.hash( authType,groupSearchBaseDN,groupSearchCustomFilter,groupSearchType,searchBindDN,searchBindPassword,(Object[])serverURIs,userDNTemplate,userSearchBaseDN,userSearchFilter );
     }
 
 

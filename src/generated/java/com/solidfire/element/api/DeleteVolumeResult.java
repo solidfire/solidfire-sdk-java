@@ -38,7 +38,7 @@ public class DeleteVolumeResult implements Serializable {
     @Since("7.0")
     public DeleteVolumeResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

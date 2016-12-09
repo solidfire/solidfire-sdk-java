@@ -39,6 +39,7 @@ public class GetNodeStatsRequest implements Serializable {
     @Since("7.0")
     public GetNodeStatsRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetNodeStatsRequest(

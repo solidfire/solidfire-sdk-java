@@ -45,6 +45,7 @@ public class PairedCluster implements Serializable {
     @Since("7.0")
     public PairedCluster() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public PairedCluster(
@@ -127,18 +128,18 @@ public class PairedCluster implements Serializable {
         PairedCluster that = (PairedCluster) o;
 
         return 
-            Objects.equals(clusterName, that.clusterName) &&
-            Objects.equals(clusterPairID, that.clusterPairID) &&
-            Objects.equals(clusterPairUUID, that.clusterPairUUID) &&
-            Objects.equals(latency, that.latency) &&
-            Objects.equals(mvip, that.mvip) &&
-            Objects.equals(status, that.status) &&
+            Objects.equals(clusterName, that.clusterName) && 
+            Objects.equals(clusterPairID, that.clusterPairID) && 
+            Objects.equals(clusterPairUUID, that.clusterPairUUID) && 
+            Objects.equals(latency, that.latency) && 
+            Objects.equals(mvip, that.mvip) && 
+            Objects.equals(status, that.status) && 
             Objects.equals(version, that.version);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterName, clusterPairID, clusterPairUUID, latency, mvip, status, version );
+        return Objects.hash( clusterName,clusterPairID,clusterPairUUID,latency,mvip,status,version );
     }
 
 

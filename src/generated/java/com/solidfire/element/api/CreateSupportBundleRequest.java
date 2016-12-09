@@ -41,6 +41,7 @@ public class CreateSupportBundleRequest implements Serializable {
     @Since("7.0")
     public CreateSupportBundleRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CreateSupportBundleRequest(
@@ -84,14 +85,14 @@ public class CreateSupportBundleRequest implements Serializable {
         CreateSupportBundleRequest that = (CreateSupportBundleRequest) o;
 
         return 
-            Objects.equals(bundleName, that.bundleName) &&
-            Objects.equals(extraArgs, that.extraArgs) &&
+            Objects.equals(bundleName, that.bundleName) && 
+            Objects.equals(extraArgs, that.extraArgs) && 
             Objects.equals(timeoutSec, that.timeoutSec);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( bundleName, extraArgs, timeoutSec );
+        return Objects.hash( bundleName,extraArgs,timeoutSec );
     }
 
 

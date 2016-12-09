@@ -39,6 +39,7 @@ public class ListStorageContainersResult implements Serializable {
     @Since("7.0")
     public ListStorageContainersResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListStorageContainersResult(

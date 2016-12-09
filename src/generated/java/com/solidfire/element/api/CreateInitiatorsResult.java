@@ -39,6 +39,7 @@ public class CreateInitiatorsResult implements Serializable {
     @Since("7.0")
     public CreateInitiatorsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CreateInitiatorsResult(

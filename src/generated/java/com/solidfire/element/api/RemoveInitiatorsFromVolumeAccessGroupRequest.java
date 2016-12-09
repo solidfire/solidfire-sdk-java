@@ -40,6 +40,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
     @Since("7.0")
     public RemoveInitiatorsFromVolumeAccessGroupRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public RemoveInitiatorsFromVolumeAccessGroupRequest(
@@ -74,13 +75,13 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
         RemoveInitiatorsFromVolumeAccessGroupRequest that = (RemoveInitiatorsFromVolumeAccessGroupRequest) o;
 
         return 
-            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
             Arrays.equals(initiators, that.initiators);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, (Object[])initiators );
+        return Objects.hash( volumeAccessGroupID,(Object[])initiators );
     }
 
 

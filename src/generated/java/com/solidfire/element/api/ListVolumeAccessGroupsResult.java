@@ -40,6 +40,7 @@ public class ListVolumeAccessGroupsResult implements Serializable {
     @Since("7.0")
     public ListVolumeAccessGroupsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListVolumeAccessGroupsResult(
@@ -74,13 +75,13 @@ public class ListVolumeAccessGroupsResult implements Serializable {
         ListVolumeAccessGroupsResult that = (ListVolumeAccessGroupsResult) o;
 
         return 
-            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) &&
+            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) && 
             Arrays.equals(volumeAccessGroupsNotFound, that.volumeAccessGroupsNotFound);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])volumeAccessGroups, (Object[])volumeAccessGroupsNotFound );
+        return Objects.hash( (Object[])volumeAccessGroups,(Object[])volumeAccessGroupsNotFound );
     }
 
 

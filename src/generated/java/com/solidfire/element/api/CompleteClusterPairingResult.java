@@ -39,6 +39,7 @@ public class CompleteClusterPairingResult implements Serializable {
     @Since("7.0")
     public CompleteClusterPairingResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CompleteClusterPairingResult(

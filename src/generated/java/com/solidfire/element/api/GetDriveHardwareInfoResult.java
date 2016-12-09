@@ -39,6 +39,7 @@ public class GetDriveHardwareInfoResult implements Serializable {
     @Since("7.0")
     public GetDriveHardwareInfoResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetDriveHardwareInfoResult(

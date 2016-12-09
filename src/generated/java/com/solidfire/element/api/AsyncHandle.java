@@ -45,6 +45,7 @@ public class AsyncHandle implements Serializable {
     @Since("7.0")
     public AsyncHandle() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public AsyncHandle(
@@ -124,18 +125,18 @@ public class AsyncHandle implements Serializable {
         AsyncHandle that = (AsyncHandle) o;
 
         return 
-            Objects.equals(asyncResultID, that.asyncResultID) &&
-            Objects.equals(completed, that.completed) &&
-            Objects.equals(createTime, that.createTime) &&
-            Objects.equals(data, that.data) &&
-            Objects.equals(lastUpdateTime, that.lastUpdateTime) &&
-            Objects.equals(resultType, that.resultType) &&
+            Objects.equals(asyncResultID, that.asyncResultID) && 
+            Objects.equals(completed, that.completed) && 
+            Objects.equals(createTime, that.createTime) && 
+            Objects.equals(data, that.data) && 
+            Objects.equals(lastUpdateTime, that.lastUpdateTime) && 
+            Objects.equals(resultType, that.resultType) && 
             Objects.equals(success, that.success);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( asyncResultID, completed, createTime, data, lastUpdateTime, resultType, success );
+        return Objects.hash( asyncResultID,completed,createTime,data,lastUpdateTime,resultType,success );
     }
 
 

@@ -50,6 +50,7 @@ public class Schedule implements Serializable {
     @Since("7.0")
     public Schedule() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public Schedule(
@@ -184,23 +185,23 @@ public class Schedule implements Serializable {
         Schedule that = (Schedule) o;
 
         return 
-            Objects.equals(frequency, that.frequency) &&
-            Objects.equals(hasError, that.hasError) &&
-            Objects.equals(lastRunStatus, that.lastRunStatus) &&
-            Objects.equals(lastRunTimeStart, that.lastRunTimeStart) &&
-            Objects.equals(paused, that.paused) &&
-            Objects.equals(recurring, that.recurring) &&
-            Objects.equals(runNextInterval, that.runNextInterval) &&
-            Objects.equals(scheduleID, that.scheduleID) &&
-            Objects.equals(scheduleInfo, that.scheduleInfo) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(startingDate, that.startingDate) &&
+            Objects.equals(frequency, that.frequency) && 
+            Objects.equals(hasError, that.hasError) && 
+            Objects.equals(lastRunStatus, that.lastRunStatus) && 
+            Objects.equals(lastRunTimeStart, that.lastRunTimeStart) && 
+            Objects.equals(paused, that.paused) && 
+            Objects.equals(recurring, that.recurring) && 
+            Objects.equals(runNextInterval, that.runNextInterval) && 
+            Objects.equals(scheduleID, that.scheduleID) && 
+            Objects.equals(scheduleInfo, that.scheduleInfo) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(startingDate, that.startingDate) && 
             Objects.equals(toBeDeleted, that.toBeDeleted);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( frequency, hasError, lastRunStatus, lastRunTimeStart, paused, recurring, runNextInterval, scheduleID, scheduleInfo, name, startingDate, toBeDeleted );
+        return Objects.hash( frequency,hasError,lastRunStatus,lastRunTimeStart,paused,recurring,runNextInterval,scheduleID,scheduleInfo,name,startingDate,toBeDeleted );
     }
 
 

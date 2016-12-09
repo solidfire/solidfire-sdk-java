@@ -43,6 +43,7 @@ public class GetEfficiencyResult implements Serializable {
     @Since("7.0")
     public GetEfficiencyResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetEfficiencyResult(
@@ -104,16 +105,16 @@ public class GetEfficiencyResult implements Serializable {
         GetEfficiencyResult that = (GetEfficiencyResult) o;
 
         return 
-            Objects.equals(compression, that.compression) &&
-            Objects.equals(deduplication, that.deduplication) &&
-            Objects.equals(thinProvisioning, that.thinProvisioning) &&
-            Objects.equals(timestamp, that.timestamp) &&
+            Objects.equals(compression, that.compression) && 
+            Objects.equals(deduplication, that.deduplication) && 
+            Objects.equals(thinProvisioning, that.thinProvisioning) && 
+            Objects.equals(timestamp, that.timestamp) && 
             Arrays.equals(missingVolumes, that.missingVolumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( compression, deduplication, thinProvisioning, timestamp, (Object[])missingVolumes );
+        return Objects.hash( compression,deduplication,thinProvisioning,timestamp,(Object[])missingVolumes );
     }
 
 

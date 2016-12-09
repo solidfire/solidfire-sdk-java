@@ -39,6 +39,7 @@ public class ListProtocolEndpointsResult implements Serializable {
     @Since("7.0")
     public ListProtocolEndpointsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListProtocolEndpointsResult(

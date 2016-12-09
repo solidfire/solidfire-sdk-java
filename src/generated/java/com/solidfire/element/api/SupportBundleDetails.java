@@ -44,6 +44,7 @@ public class SupportBundleDetails implements Serializable {
     @Since("7.0")
     public SupportBundleDetails() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SupportBundleDetails(
@@ -114,17 +115,17 @@ public class SupportBundleDetails implements Serializable {
         SupportBundleDetails that = (SupportBundleDetails) o;
 
         return 
-            Objects.equals(bundleName, that.bundleName) &&
-            Objects.equals(extraArgs, that.extraArgs) &&
-            Arrays.equals(files, that.files) &&
-            Arrays.equals(url, that.url) &&
-            Objects.equals(output, that.output) &&
+            Objects.equals(bundleName, that.bundleName) && 
+            Objects.equals(extraArgs, that.extraArgs) && 
+            Arrays.equals(files, that.files) && 
+            Arrays.equals(url, that.url) && 
+            Objects.equals(output, that.output) && 
             Objects.equals(timeoutSec, that.timeoutSec);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( bundleName, extraArgs, (Object[])files, (Object[])url, output, timeoutSec );
+        return Objects.hash( bundleName,extraArgs,(Object[])files,(Object[])url,output,timeoutSec );
     }
 
 

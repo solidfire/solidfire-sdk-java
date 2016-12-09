@@ -41,6 +41,7 @@ public class VirtualVolumeUnsharedChunkResult implements Serializable {
     @Since("7.0")
     public VirtualVolumeUnsharedChunkResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public VirtualVolumeUnsharedChunkResult(
@@ -84,14 +85,14 @@ public class VirtualVolumeUnsharedChunkResult implements Serializable {
         VirtualVolumeUnsharedChunkResult that = (VirtualVolumeUnsharedChunkResult) o;
 
         return 
-            Objects.equals(chunks, that.chunks) &&
-            Objects.equals(scannedChunks, that.scannedChunks) &&
+            Objects.equals(chunks, that.chunks) && 
+            Objects.equals(scannedChunks, that.scannedChunks) && 
             Objects.equals(chunkSize, that.chunkSize);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( chunks, scannedChunks, chunkSize );
+        return Objects.hash( chunks,scannedChunks,chunkSize );
     }
 
 

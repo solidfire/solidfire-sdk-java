@@ -41,6 +41,7 @@ public class TestConnectMvipResult implements Serializable {
     @Since("7.0")
     public TestConnectMvipResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public TestConnectMvipResult(
@@ -84,14 +85,14 @@ public class TestConnectMvipResult implements Serializable {
         TestConnectMvipResult that = (TestConnectMvipResult) o;
 
         return 
-            Objects.equals(details, that.details) &&
-            Objects.equals(duration, that.duration) &&
+            Objects.equals(details, that.details) && 
+            Objects.equals(duration, that.duration) && 
             Objects.equals(result, that.result);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( details, duration, result );
+        return Objects.hash( details,duration,result );
     }
 
 

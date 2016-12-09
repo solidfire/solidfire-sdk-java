@@ -39,6 +39,7 @@ public class SetNetworkConfigRequest implements Serializable {
     @Since("7.0")
     public SetNetworkConfigRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SetNetworkConfigRequest(

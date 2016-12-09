@@ -38,7 +38,7 @@ public class RemoveClusterAdminResult implements Serializable {
     @Since("7.0")
     public RemoveClusterAdminResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

@@ -48,6 +48,7 @@ public class LdapConfiguration implements Serializable {
     @Since("7.0")
     public LdapConfiguration() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public LdapConfiguration(
@@ -163,21 +164,21 @@ public class LdapConfiguration implements Serializable {
         LdapConfiguration that = (LdapConfiguration) o;
 
         return 
-            Objects.equals(authType, that.authType) &&
-            Objects.equals(enabled, that.enabled) &&
-            Objects.equals(groupSearchBaseDN, that.groupSearchBaseDN) &&
-            Objects.equals(groupSearchCustomFilter, that.groupSearchCustomFilter) &&
-            Objects.equals(groupSearchType, that.groupSearchType) &&
-            Objects.equals(searchBindDN, that.searchBindDN) &&
-            Arrays.equals(serverURIs, that.serverURIs) &&
-            Objects.equals(userDNTemplate, that.userDNTemplate) &&
-            Objects.equals(userSearchBaseDN, that.userSearchBaseDN) &&
+            Objects.equals(authType, that.authType) && 
+            Objects.equals(enabled, that.enabled) && 
+            Objects.equals(groupSearchBaseDN, that.groupSearchBaseDN) && 
+            Objects.equals(groupSearchCustomFilter, that.groupSearchCustomFilter) && 
+            Objects.equals(groupSearchType, that.groupSearchType) && 
+            Objects.equals(searchBindDN, that.searchBindDN) && 
+            Arrays.equals(serverURIs, that.serverURIs) && 
+            Objects.equals(userDNTemplate, that.userDNTemplate) && 
+            Objects.equals(userSearchBaseDN, that.userSearchBaseDN) && 
             Objects.equals(userSearchFilter, that.userSearchFilter);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( authType, enabled, groupSearchBaseDN, groupSearchCustomFilter, groupSearchType, searchBindDN, (Object[])serverURIs, userDNTemplate, userSearchBaseDN, userSearchFilter );
+        return Objects.hash( authType,enabled,groupSearchBaseDN,groupSearchCustomFilter,groupSearchType,searchBindDN,(Object[])serverURIs,userDNTemplate,userSearchBaseDN,userSearchFilter );
     }
 
 

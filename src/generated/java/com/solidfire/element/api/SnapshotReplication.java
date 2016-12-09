@@ -40,6 +40,7 @@ public class SnapshotReplication implements Serializable {
     @Since("7.0")
     public SnapshotReplication() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SnapshotReplication(
@@ -74,13 +75,13 @@ public class SnapshotReplication implements Serializable {
         SnapshotReplication that = (SnapshotReplication) o;
 
         return 
-            Objects.equals(state, that.state) &&
+            Objects.equals(state, that.state) && 
             Objects.equals(stateDetails, that.stateDetails);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( state, stateDetails );
+        return Objects.hash( state,stateDetails );
     }
 
 

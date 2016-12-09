@@ -42,6 +42,7 @@ public class PrepareVirtualSnapshotResult implements Serializable {
     @Since("7.0")
     public PrepareVirtualSnapshotResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public PrepareVirtualSnapshotResult(
@@ -94,15 +95,15 @@ public class PrepareVirtualSnapshotResult implements Serializable {
         PrepareVirtualSnapshotResult that = (PrepareVirtualSnapshotResult) o;
 
         return 
-            Objects.equals(virtualVolumeTaskID, that.virtualVolumeTaskID) &&
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(snapshotID, that.snapshotID) &&
+            Objects.equals(virtualVolumeTaskID, that.virtualVolumeTaskID) && 
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(snapshotID, that.snapshotID) && 
             Objects.equals(virtualVolumeID, that.virtualVolumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualVolumeTaskID, volumeID, snapshotID, virtualVolumeID );
+        return Objects.hash( virtualVolumeTaskID,volumeID,snapshotID,virtualVolumeID );
     }
 
 

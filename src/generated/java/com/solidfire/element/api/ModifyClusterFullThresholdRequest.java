@@ -41,8 +41,19 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
     @Since("7.0")
     public ModifyClusterFullThresholdRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public ModifyClusterFullThresholdRequest(
+        Optional<Long> stage2AwareThreshold,
+        Optional<Long> maxMetadataOverProvisionFactor
+    )
+    {
+        this.stage2AwareThreshold = (stage2AwareThreshold == null) ? Optional.<Long>empty() : stage2AwareThreshold;
+        this.maxMetadataOverProvisionFactor = (maxMetadataOverProvisionFactor == null) ? Optional.<Long>empty() : maxMetadataOverProvisionFactor;
+    }
+    // parameterized constructor
+    @Since("8.0")
     public ModifyClusterFullThresholdRequest(
         Optional<Long> stage2AwareThreshold,
         Optional<Long> stage3BlockThresholdPercent,
@@ -84,14 +95,14 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
         ModifyClusterFullThresholdRequest that = (ModifyClusterFullThresholdRequest) o;
 
         return 
-            Objects.equals(stage2AwareThreshold, that.stage2AwareThreshold) &&
-            Objects.equals(stage3BlockThresholdPercent, that.stage3BlockThresholdPercent) &&
+            Objects.equals(stage2AwareThreshold, that.stage2AwareThreshold) && 
+            Objects.equals(stage3BlockThresholdPercent, that.stage3BlockThresholdPercent) && 
             Objects.equals(maxMetadataOverProvisionFactor, that.maxMetadataOverProvisionFactor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( stage2AwareThreshold, stage3BlockThresholdPercent, maxMetadataOverProvisionFactor );
+        return Objects.hash( stage2AwareThreshold,stage3BlockThresholdPercent,maxMetadataOverProvisionFactor );
     }
 
 

@@ -39,6 +39,7 @@ public class ListDeletedVolumesResult implements Serializable {
     @Since("7.0")
     public ListDeletedVolumesResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListDeletedVolumesResult(

@@ -40,6 +40,7 @@ public class RemoveVirtualNetworkRequest implements Serializable {
     @Since("7.0")
     public RemoveVirtualNetworkRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public RemoveVirtualNetworkRequest(
@@ -74,13 +75,13 @@ public class RemoveVirtualNetworkRequest implements Serializable {
         RemoveVirtualNetworkRequest that = (RemoveVirtualNetworkRequest) o;
 
         return 
-            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
             Objects.equals(virtualNetworkTag, that.virtualNetworkTag);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualNetworkID, virtualNetworkTag );
+        return Objects.hash( virtualNetworkID,virtualNetworkTag );
     }
 
 

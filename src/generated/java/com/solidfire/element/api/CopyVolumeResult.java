@@ -40,6 +40,7 @@ public class CopyVolumeResult implements Serializable {
     @Since("7.0")
     public CopyVolumeResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CopyVolumeResult(
@@ -73,13 +74,13 @@ public class CopyVolumeResult implements Serializable {
         CopyVolumeResult that = (CopyVolumeResult) o;
 
         return 
-            Objects.equals(cloneID, that.cloneID) &&
+            Objects.equals(cloneID, that.cloneID) && 
             Objects.equals(asyncHandle, that.asyncHandle);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( cloneID, asyncHandle );
+        return Objects.hash( cloneID,asyncHandle );
     }
 
 

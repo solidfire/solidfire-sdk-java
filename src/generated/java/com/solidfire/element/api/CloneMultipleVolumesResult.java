@@ -41,6 +41,7 @@ public class CloneMultipleVolumesResult implements Serializable {
     @Since("7.0")
     public CloneMultipleVolumesResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CloneMultipleVolumesResult(
@@ -84,14 +85,14 @@ public class CloneMultipleVolumesResult implements Serializable {
         CloneMultipleVolumesResult that = (CloneMultipleVolumesResult) o;
 
         return 
-            Objects.equals(asyncHandle, that.asyncHandle) &&
-            Objects.equals(groupCloneID, that.groupCloneID) &&
+            Objects.equals(asyncHandle, that.asyncHandle) && 
+            Objects.equals(groupCloneID, that.groupCloneID) && 
             Arrays.equals(members, that.members);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( asyncHandle, groupCloneID, (Object[])members );
+        return Objects.hash( asyncHandle,groupCloneID,(Object[])members );
     }
 
 

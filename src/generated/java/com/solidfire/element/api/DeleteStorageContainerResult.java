@@ -38,7 +38,7 @@ public class DeleteStorageContainerResult implements Serializable {
     @Since("7.0")
     public DeleteStorageContainerResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

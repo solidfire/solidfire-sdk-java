@@ -38,7 +38,7 @@ public class RemoveNodesResult implements Serializable {
     @Since("7.0")
     public RemoveNodesResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

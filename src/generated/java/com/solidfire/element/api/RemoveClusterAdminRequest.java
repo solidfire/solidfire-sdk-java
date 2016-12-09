@@ -39,6 +39,7 @@ public class RemoveClusterAdminRequest implements Serializable {
     @Since("7.0")
     public RemoveClusterAdminRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public RemoveClusterAdminRequest(

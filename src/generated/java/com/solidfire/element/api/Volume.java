@@ -58,8 +58,53 @@ public class Volume implements Serializable {
     @Since("7.0")
     public Volume() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public Volume(
+        Long volumeID,
+        String name,
+        Long accountID,
+        String createTime,
+        String status,
+        String access,
+        Boolean enable512e,
+        String iqn,
+        String scsiEUIDeviceID,
+        String scsiNAADeviceID,
+        VolumeQOS qos,
+        Long[] volumeAccessGroups,
+        VolumePair[] volumePairs,
+        Optional<String> deleteTime,
+        Optional<String> purgeTime,
+        Long sliceCount,
+        Long totalSize,
+        java.util.UUID virtualVolumeID,
+        java.util.Map<String, Object> attributes
+    )
+    {
+        this.volumeID = volumeID;
+        this.name = name;
+        this.accountID = accountID;
+        this.createTime = createTime;
+        this.status = status;
+        this.access = access;
+        this.enable512e = enable512e;
+        this.iqn = iqn;
+        this.scsiEUIDeviceID = scsiEUIDeviceID;
+        this.scsiNAADeviceID = scsiNAADeviceID;
+        this.qos = qos;
+        this.volumeAccessGroups = volumeAccessGroups;
+        this.volumePairs = volumePairs;
+        this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : deleteTime;
+        this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : purgeTime;
+        this.sliceCount = sliceCount;
+        this.totalSize = totalSize;
+        this.virtualVolumeID = virtualVolumeID;
+        this.attributes = attributes;
+    }
+    // parameterized constructor
+    @Since("8.0")
     public Volume(
         Long volumeID,
         String name,
@@ -265,31 +310,31 @@ public class Volume implements Serializable {
         Volume that = (Volume) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(accountID, that.accountID) &&
-            Objects.equals(createTime, that.createTime) &&
-            Objects.equals(status, that.status) &&
-            Objects.equals(access, that.access) &&
-            Objects.equals(enable512e, that.enable512e) &&
-            Objects.equals(iqn, that.iqn) &&
-            Objects.equals(scsiEUIDeviceID, that.scsiEUIDeviceID) &&
-            Objects.equals(scsiNAADeviceID, that.scsiNAADeviceID) &&
-            Objects.equals(qos, that.qos) &&
-            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) &&
-            Arrays.equals(volumePairs, that.volumePairs) &&
-            Objects.equals(deleteTime, that.deleteTime) &&
-            Objects.equals(purgeTime, that.purgeTime) &&
-            Objects.equals(sliceCount, that.sliceCount) &&
-            Objects.equals(totalSize, that.totalSize) &&
-            Objects.equals(blockSize, that.blockSize) &&
-            Objects.equals(virtualVolumeID, that.virtualVolumeID) &&
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(accountID, that.accountID) && 
+            Objects.equals(createTime, that.createTime) && 
+            Objects.equals(status, that.status) && 
+            Objects.equals(access, that.access) && 
+            Objects.equals(enable512e, that.enable512e) && 
+            Objects.equals(iqn, that.iqn) && 
+            Objects.equals(scsiEUIDeviceID, that.scsiEUIDeviceID) && 
+            Objects.equals(scsiNAADeviceID, that.scsiNAADeviceID) && 
+            Objects.equals(qos, that.qos) && 
+            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) && 
+            Arrays.equals(volumePairs, that.volumePairs) && 
+            Objects.equals(deleteTime, that.deleteTime) && 
+            Objects.equals(purgeTime, that.purgeTime) && 
+            Objects.equals(sliceCount, that.sliceCount) && 
+            Objects.equals(totalSize, that.totalSize) && 
+            Objects.equals(blockSize, that.blockSize) && 
+            Objects.equals(virtualVolumeID, that.virtualVolumeID) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, name, accountID, createTime, status, access, enable512e, iqn, scsiEUIDeviceID, scsiNAADeviceID, qos, (Object[])volumeAccessGroups, (Object[])volumePairs, deleteTime, purgeTime, sliceCount, totalSize, blockSize, virtualVolumeID, attributes );
+        return Objects.hash( volumeID,name,accountID,createTime,status,access,enable512e,iqn,scsiEUIDeviceID,scsiNAADeviceID,qos,(Object[])volumeAccessGroups,(Object[])volumePairs,deleteTime,purgeTime,sliceCount,totalSize,blockSize,virtualVolumeID,attributes );
     }
 
 

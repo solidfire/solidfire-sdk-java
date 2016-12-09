@@ -39,6 +39,7 @@ public class SetNetworkConfigResult implements Serializable {
     @Since("7.0")
     public SetNetworkConfigResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SetNetworkConfigResult(

@@ -39,6 +39,7 @@ public class ListSyncJobsResult implements Serializable {
     @Since("7.0")
     public ListSyncJobsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListSyncJobsResult(

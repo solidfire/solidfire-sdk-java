@@ -39,6 +39,7 @@ public class GetFeatureStatusRequest implements Serializable {
     @Since("7.0")
     public GetFeatureStatusRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetFeatureStatusRequest(

@@ -40,6 +40,7 @@ public class GetNtpInfoResult implements Serializable {
     @Since("7.0")
     public GetNtpInfoResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetNtpInfoResult(
@@ -76,13 +77,13 @@ public class GetNtpInfoResult implements Serializable {
         GetNtpInfoResult that = (GetNtpInfoResult) o;
 
         return 
-            Objects.equals(broadcastclient, that.broadcastclient) &&
+            Objects.equals(broadcastclient, that.broadcastclient) && 
             Arrays.equals(servers, that.servers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( broadcastclient, (Object[])servers );
+        return Objects.hash( broadcastclient,(Object[])servers );
     }
 
 

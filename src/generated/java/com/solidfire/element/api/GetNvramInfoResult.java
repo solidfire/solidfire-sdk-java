@@ -39,6 +39,7 @@ public class GetNvramInfoResult implements Serializable {
     @Since("7.0")
     public GetNvramInfoResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetNvramInfoResult(

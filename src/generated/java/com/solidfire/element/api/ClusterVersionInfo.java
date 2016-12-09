@@ -41,6 +41,7 @@ public class ClusterVersionInfo implements Serializable {
     @Since("7.0")
     public ClusterVersionInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ClusterVersionInfo(
@@ -81,14 +82,14 @@ public class ClusterVersionInfo implements Serializable {
         ClusterVersionInfo that = (ClusterVersionInfo) o;
 
         return 
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(nodeVersion, that.nodeVersion) &&
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(nodeVersion, that.nodeVersion) && 
             Objects.equals(nodeInternalRevision, that.nodeInternalRevision);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID, nodeVersion, nodeInternalRevision );
+        return Objects.hash( nodeID,nodeVersion,nodeInternalRevision );
     }
 
 

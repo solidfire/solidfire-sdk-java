@@ -38,7 +38,7 @@ public class DeleteInitiatorsResult implements Serializable {
     @Since("7.0")
     public DeleteInitiatorsResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

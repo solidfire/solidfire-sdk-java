@@ -38,7 +38,7 @@ public class PurgeDeletedVolumeResult implements Serializable {
     @Since("7.0")
     public PurgeDeletedVolumeResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

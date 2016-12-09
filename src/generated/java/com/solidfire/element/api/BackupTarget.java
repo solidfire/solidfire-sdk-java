@@ -41,6 +41,7 @@ public class BackupTarget implements Serializable {
     @Since("7.0")
     public BackupTarget() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public BackupTarget(
@@ -84,14 +85,14 @@ public class BackupTarget implements Serializable {
         BackupTarget that = (BackupTarget) o;
 
         return 
-            Objects.equals(name, that.name) &&
-            Objects.equals(backupTargetID, that.backupTargetID) &&
+            Objects.equals(name, that.name) && 
+            Objects.equals(backupTargetID, that.backupTargetID) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, backupTargetID, attributes );
+        return Objects.hash( name,backupTargetID,attributes );
     }
 
 

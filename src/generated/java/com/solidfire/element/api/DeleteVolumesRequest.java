@@ -41,6 +41,7 @@ public class DeleteVolumesRequest implements Serializable {
     @Since("7.0")
     public DeleteVolumesRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public DeleteVolumesRequest(
@@ -84,14 +85,14 @@ public class DeleteVolumesRequest implements Serializable {
         DeleteVolumesRequest that = (DeleteVolumesRequest) o;
 
         return 
-            Objects.equals(accountIDs, that.accountIDs) &&
-            Objects.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs) &&
+            Objects.equals(accountIDs, that.accountIDs) && 
+            Objects.equals(volumeAccessGroupIDs, that.volumeAccessGroupIDs) && 
             Objects.equals(volumeIDs, that.volumeIDs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountIDs, volumeAccessGroupIDs, volumeIDs );
+        return Objects.hash( accountIDs,volumeAccessGroupIDs,volumeIDs );
     }
 
 

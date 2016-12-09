@@ -42,6 +42,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
     @Since("7.0")
     public RollbackToGroupSnapshotRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public RollbackToGroupSnapshotRequest(
@@ -96,15 +97,15 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
         RollbackToGroupSnapshotRequest that = (RollbackToGroupSnapshotRequest) o;
 
         return 
-            Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
-            Objects.equals(saveCurrentState, that.saveCurrentState) &&
-            Objects.equals(name, that.name) &&
+            Objects.equals(groupSnapshotID, that.groupSnapshotID) && 
+            Objects.equals(saveCurrentState, that.saveCurrentState) && 
+            Objects.equals(name, that.name) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( groupSnapshotID, saveCurrentState, name, attributes );
+        return Objects.hash( groupSnapshotID,saveCurrentState,name,attributes );
     }
 
 

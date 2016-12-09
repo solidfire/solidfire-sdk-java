@@ -39,6 +39,7 @@ public class GetVolumeAccessGroupLunAssignmentsRequest implements Serializable {
     @Since("7.0")
     public GetVolumeAccessGroupLunAssignmentsRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetVolumeAccessGroupLunAssignmentsRequest(

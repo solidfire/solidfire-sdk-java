@@ -40,6 +40,7 @@ public class ListEventsResult implements Serializable {
     @Since("7.0")
     public ListEventsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListEventsResult(
@@ -72,13 +73,13 @@ public class ListEventsResult implements Serializable {
         ListEventsResult that = (ListEventsResult) o;
 
         return 
-            Objects.equals(eventQueueType, that.eventQueueType) &&
+            Objects.equals(eventQueueType, that.eventQueueType) && 
             Arrays.equals(events, that.events);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( eventQueueType, (Object[])events );
+        return Objects.hash( eventQueueType,(Object[])events );
     }
 
 

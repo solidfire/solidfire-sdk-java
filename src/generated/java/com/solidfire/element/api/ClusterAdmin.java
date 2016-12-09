@@ -42,6 +42,7 @@ public class ClusterAdmin implements Serializable {
     @Since("7.0")
     public ClusterAdmin() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ClusterAdmin(
@@ -91,15 +92,15 @@ public class ClusterAdmin implements Serializable {
         ClusterAdmin that = (ClusterAdmin) o;
 
         return 
-            Arrays.equals(access, that.access) &&
-            Objects.equals(clusterAdminID, that.clusterAdminID) &&
-            Objects.equals(username, that.username) &&
+            Arrays.equals(access, that.access) && 
+            Objects.equals(clusterAdminID, that.clusterAdminID) && 
+            Objects.equals(username, that.username) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])access, clusterAdminID, username, attributes );
+        return Objects.hash( (Object[])access,clusterAdminID,username,attributes );
     }
 
 

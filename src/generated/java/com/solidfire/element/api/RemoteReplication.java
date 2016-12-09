@@ -45,6 +45,7 @@ public class RemoteReplication implements Serializable {
     @Since("7.0")
     public RemoteReplication() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public RemoteReplication(
@@ -128,18 +129,18 @@ public class RemoteReplication implements Serializable {
         RemoteReplication that = (RemoteReplication) o;
 
         return 
-            Objects.equals(mode, that.mode) &&
-            Objects.equals(pauseLimit, that.pauseLimit) &&
-            Objects.equals(remoteServiceID, that.remoteServiceID) &&
-            Objects.equals(resumeDetails, that.resumeDetails) &&
-            Objects.equals(snapshotReplication, that.snapshotReplication) &&
-            Objects.equals(state, that.state) &&
+            Objects.equals(mode, that.mode) && 
+            Objects.equals(pauseLimit, that.pauseLimit) && 
+            Objects.equals(remoteServiceID, that.remoteServiceID) && 
+            Objects.equals(resumeDetails, that.resumeDetails) && 
+            Objects.equals(snapshotReplication, that.snapshotReplication) && 
+            Objects.equals(state, that.state) && 
             Objects.equals(stateDetails, that.stateDetails);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( mode, pauseLimit, remoteServiceID, resumeDetails, snapshotReplication, state, stateDetails );
+        return Objects.hash( mode,pauseLimit,remoteServiceID,resumeDetails,snapshotReplication,state,stateDetails );
     }
 
 

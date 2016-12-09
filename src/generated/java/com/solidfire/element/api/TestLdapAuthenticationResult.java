@@ -40,6 +40,7 @@ public class TestLdapAuthenticationResult implements Serializable {
     @Since("7.0")
     public TestLdapAuthenticationResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public TestLdapAuthenticationResult(
@@ -74,13 +75,13 @@ public class TestLdapAuthenticationResult implements Serializable {
         TestLdapAuthenticationResult that = (TestLdapAuthenticationResult) o;
 
         return 
-            Arrays.equals(groups, that.groups) &&
+            Arrays.equals(groups, that.groups) && 
             Objects.equals(userDN, that.userDN);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])groups, userDN );
+        return Objects.hash( (Object[])groups,userDN );
     }
 
 

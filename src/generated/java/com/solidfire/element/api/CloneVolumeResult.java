@@ -41,6 +41,7 @@ public class CloneVolumeResult implements Serializable {
     @Since("7.0")
     public CloneVolumeResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CloneVolumeResult(
@@ -84,14 +85,14 @@ public class CloneVolumeResult implements Serializable {
         CloneVolumeResult that = (CloneVolumeResult) o;
 
         return 
-            Objects.equals(cloneID, that.cloneID) &&
-            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(cloneID, that.cloneID) && 
+            Objects.equals(volumeID, that.volumeID) && 
             Objects.equals(asyncHandle, that.asyncHandle);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( cloneID, volumeID, asyncHandle );
+        return Objects.hash( cloneID,volumeID,asyncHandle );
     }
 
 

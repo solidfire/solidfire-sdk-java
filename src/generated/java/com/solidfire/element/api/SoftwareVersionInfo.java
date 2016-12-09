@@ -43,6 +43,7 @@ public class SoftwareVersionInfo implements Serializable {
     @Since("7.0")
     public SoftwareVersionInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SoftwareVersionInfo(
@@ -99,16 +100,16 @@ public class SoftwareVersionInfo implements Serializable {
         SoftwareVersionInfo that = (SoftwareVersionInfo) o;
 
         return 
-            Objects.equals(currentVersion, that.currentVersion) &&
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(packageName, that.packageName) &&
-            Objects.equals(pendingVersion, that.pendingVersion) &&
+            Objects.equals(currentVersion, that.currentVersion) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(packageName, that.packageName) && 
+            Objects.equals(pendingVersion, that.pendingVersion) && 
             Objects.equals(startTime, that.startTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( currentVersion, nodeID, packageName, pendingVersion, startTime );
+        return Objects.hash( currentVersion,nodeID,packageName,pendingVersion,startTime );
     }
 
 

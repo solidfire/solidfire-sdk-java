@@ -45,6 +45,7 @@ public class ClusterStats implements Serializable {
     @Since("7.0")
     public ClusterStats() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ClusterStats(
@@ -123,18 +124,18 @@ public class ClusterStats implements Serializable {
         ClusterStats that = (ClusterStats) o;
 
         return 
-            Objects.equals(clusterUtilization, that.clusterUtilization) &&
-            Objects.equals(clientQueueDepth, that.clientQueueDepth) &&
-            Objects.equals(readBytes, that.readBytes) &&
-            Objects.equals(readOps, that.readOps) &&
-            Objects.equals(timestamp, that.timestamp) &&
-            Objects.equals(writeBytes, that.writeBytes) &&
+            Objects.equals(clusterUtilization, that.clusterUtilization) && 
+            Objects.equals(clientQueueDepth, that.clientQueueDepth) && 
+            Objects.equals(readBytes, that.readBytes) && 
+            Objects.equals(readOps, that.readOps) && 
+            Objects.equals(timestamp, that.timestamp) && 
+            Objects.equals(writeBytes, that.writeBytes) && 
             Objects.equals(writeOps, that.writeOps);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterUtilization, clientQueueDepth, readBytes, readOps, timestamp, writeBytes, writeOps );
+        return Objects.hash( clusterUtilization,clientQueueDepth,readBytes,readOps,timestamp,writeBytes,writeOps );
     }
 
 

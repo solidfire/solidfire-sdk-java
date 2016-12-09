@@ -39,6 +39,7 @@ public class GetClusterHardwareInfoResult implements Serializable {
     @Since("7.0")
     public GetClusterHardwareInfoResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetClusterHardwareInfoResult(

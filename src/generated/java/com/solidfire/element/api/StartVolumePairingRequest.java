@@ -40,8 +40,17 @@ public class StartVolumePairingRequest implements Serializable {
     @Since("7.0")
     public StartVolumePairingRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public StartVolumePairingRequest(
+        Long volumeID
+    )
+    {
+        this.volumeID = volumeID;
+    }
+    // parameterized constructor
+    @Since("8.0")
     public StartVolumePairingRequest(
         Long volumeID,
         Optional<String> mode
@@ -78,13 +87,13 @@ public class StartVolumePairingRequest implements Serializable {
         StartVolumePairingRequest that = (StartVolumePairingRequest) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(volumeID, that.volumeID) && 
             Objects.equals(mode, that.mode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, mode );
+        return Objects.hash( volumeID,mode );
     }
 
 

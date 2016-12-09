@@ -39,6 +39,7 @@ public class ListDriveHardwareResult implements Serializable {
     @Since("7.0")
     public ListDriveHardwareResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListDriveHardwareResult(

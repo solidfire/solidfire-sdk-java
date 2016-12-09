@@ -39,6 +39,7 @@ public class ListNodeStatsResult implements Serializable {
     @Since("7.0")
     public ListNodeStatsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListNodeStatsResult(

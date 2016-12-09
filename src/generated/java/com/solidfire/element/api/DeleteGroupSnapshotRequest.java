@@ -40,6 +40,7 @@ public class DeleteGroupSnapshotRequest implements Serializable {
     @Since("7.0")
     public DeleteGroupSnapshotRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public DeleteGroupSnapshotRequest(
@@ -75,13 +76,13 @@ public class DeleteGroupSnapshotRequest implements Serializable {
         DeleteGroupSnapshotRequest that = (DeleteGroupSnapshotRequest) o;
 
         return 
-            Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
+            Objects.equals(groupSnapshotID, that.groupSnapshotID) && 
             Objects.equals(saveMembers, that.saveMembers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( groupSnapshotID, saveMembers );
+        return Objects.hash( groupSnapshotID,saveMembers );
     }
 
 

@@ -42,6 +42,7 @@ public class CloneMultipleVolumesRequest implements Serializable {
     @Since("7.0")
     public CloneMultipleVolumesRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CloneMultipleVolumesRequest(
@@ -100,15 +101,15 @@ public class CloneMultipleVolumesRequest implements Serializable {
         CloneMultipleVolumesRequest that = (CloneMultipleVolumesRequest) o;
 
         return 
-            Arrays.equals(volumes, that.volumes) &&
-            Objects.equals(access, that.access) &&
-            Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
+            Arrays.equals(volumes, that.volumes) && 
+            Objects.equals(access, that.access) && 
+            Objects.equals(groupSnapshotID, that.groupSnapshotID) && 
             Objects.equals(newAccountID, that.newAccountID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])volumes, access, groupSnapshotID, newAccountID );
+        return Objects.hash( (Object[])volumes,access,groupSnapshotID,newAccountID );
     }
 
 

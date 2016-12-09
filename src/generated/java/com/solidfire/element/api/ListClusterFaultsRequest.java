@@ -42,6 +42,7 @@ public class ListClusterFaultsRequest implements Serializable {
     @Since("7.0")
     public ListClusterFaultsRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListClusterFaultsRequest(
@@ -95,15 +96,15 @@ public class ListClusterFaultsRequest implements Serializable {
         ListClusterFaultsRequest that = (ListClusterFaultsRequest) o;
 
         return 
-            Objects.equals(exceptions, that.exceptions) &&
-            Objects.equals(bestPractices, that.bestPractices) &&
-            Objects.equals(update, that.update) &&
+            Objects.equals(exceptions, that.exceptions) && 
+            Objects.equals(bestPractices, that.bestPractices) && 
+            Objects.equals(update, that.update) && 
             Objects.equals(faultTypes, that.faultTypes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( exceptions, bestPractices, update, faultTypes );
+        return Objects.hash( exceptions,bestPractices,update,faultTypes );
     }
 
 

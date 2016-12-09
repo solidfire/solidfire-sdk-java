@@ -55,6 +55,7 @@ public class DriveStats implements Serializable {
     @Since("7.0")
     public DriveStats() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public DriveStats(
@@ -207,28 +208,28 @@ public class DriveStats implements Serializable {
         DriveStats that = (DriveStats) o;
 
         return 
-            Objects.equals(activeSessions, that.activeSessions) &&
-            Objects.equals(driveID, that.driveID) &&
-            Objects.equals(failedDieCount, that.failedDieCount) &&
-            Objects.equals(lifeRemainingPercent, that.lifeRemainingPercent) &&
-            Objects.equals(lifetimeReadBytes, that.lifetimeReadBytes) &&
-            Objects.equals(lifetimeWriteBytes, that.lifetimeWriteBytes) &&
-            Objects.equals(powerOnHours, that.powerOnHours) &&
-            Objects.equals(readBytes, that.readBytes) &&
-            Objects.equals(readOps, that.readOps) &&
-            Objects.equals(reallocatedSectors, that.reallocatedSectors) &&
-            Objects.equals(reserveCapacityPercent, that.reserveCapacityPercent) &&
-            Objects.equals(timestamp, that.timestamp) &&
-            Objects.equals(totalCapacity, that.totalCapacity) &&
-            Objects.equals(usedCapacity, that.usedCapacity) &&
-            Objects.equals(usedMemory, that.usedMemory) &&
-            Objects.equals(writeBytes, that.writeBytes) &&
+            Objects.equals(activeSessions, that.activeSessions) && 
+            Objects.equals(driveID, that.driveID) && 
+            Objects.equals(failedDieCount, that.failedDieCount) && 
+            Objects.equals(lifeRemainingPercent, that.lifeRemainingPercent) && 
+            Objects.equals(lifetimeReadBytes, that.lifetimeReadBytes) && 
+            Objects.equals(lifetimeWriteBytes, that.lifetimeWriteBytes) && 
+            Objects.equals(powerOnHours, that.powerOnHours) && 
+            Objects.equals(readBytes, that.readBytes) && 
+            Objects.equals(readOps, that.readOps) && 
+            Objects.equals(reallocatedSectors, that.reallocatedSectors) && 
+            Objects.equals(reserveCapacityPercent, that.reserveCapacityPercent) && 
+            Objects.equals(timestamp, that.timestamp) && 
+            Objects.equals(totalCapacity, that.totalCapacity) && 
+            Objects.equals(usedCapacity, that.usedCapacity) && 
+            Objects.equals(usedMemory, that.usedMemory) && 
+            Objects.equals(writeBytes, that.writeBytes) && 
             Objects.equals(writeOps, that.writeOps);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( activeSessions, driveID, failedDieCount, lifeRemainingPercent, lifetimeReadBytes, lifetimeWriteBytes, powerOnHours, readBytes, readOps, reallocatedSectors, reserveCapacityPercent, timestamp, totalCapacity, usedCapacity, usedMemory, writeBytes, writeOps );
+        return Objects.hash( activeSessions,driveID,failedDieCount,lifeRemainingPercent,lifetimeReadBytes,lifetimeWriteBytes,powerOnHours,readBytes,readOps,reallocatedSectors,reserveCapacityPercent,timestamp,totalCapacity,usedCapacity,usedMemory,writeBytes,writeOps );
     }
 
 

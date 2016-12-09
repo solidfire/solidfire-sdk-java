@@ -45,8 +45,25 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
     @Since("7.0")
     public ModifyVolumeAccessGroupRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public ModifyVolumeAccessGroupRequest(
+        Long volumeAccessGroupID,
+        Optional<String> name,
+        Optional<String[]> initiators,
+        Optional<Long[]> volumes,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.volumeAccessGroupID = volumeAccessGroupID;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
+        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
+    // parameterized constructor
+    @Since("8.0")
     public ModifyVolumeAccessGroupRequest(
         Long volumeAccessGroupID,
         Optional<Long[]> virtualNetworkID,
@@ -127,18 +144,18 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         ModifyVolumeAccessGroupRequest that = (ModifyVolumeAccessGroupRequest) o;
 
         return 
-            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
-            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Objects.equals(virtualNetworkTags, that.virtualNetworkTags) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(initiators, that.initiators) &&
-            Objects.equals(volumes, that.volumes) &&
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
+            Objects.equals(virtualNetworkTags, that.virtualNetworkTags) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(initiators, that.initiators) && 
+            Objects.equals(volumes, that.volumes) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, virtualNetworkID, virtualNetworkTags, name, initiators, volumes, attributes );
+        return Objects.hash( volumeAccessGroupID,virtualNetworkID,virtualNetworkTags,name,initiators,volumes,attributes );
     }
 
 

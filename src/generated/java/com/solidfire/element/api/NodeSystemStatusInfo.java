@@ -39,6 +39,7 @@ public class NodeSystemStatusInfo implements Serializable {
     @Since("7.0")
     public NodeSystemStatusInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public NodeSystemStatusInfo(

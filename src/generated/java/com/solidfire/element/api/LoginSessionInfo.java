@@ -39,6 +39,7 @@ public class LoginSessionInfo implements Serializable {
     @Since("7.0")
     public LoginSessionInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public LoginSessionInfo(

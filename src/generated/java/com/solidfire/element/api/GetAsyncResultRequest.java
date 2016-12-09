@@ -39,6 +39,7 @@ public class GetAsyncResultRequest implements Serializable {
     @Since("7.0")
     public GetAsyncResultRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetAsyncResultRequest(

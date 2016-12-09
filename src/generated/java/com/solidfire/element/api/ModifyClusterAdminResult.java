@@ -38,7 +38,7 @@ public class ModifyClusterAdminResult implements Serializable {
     @Since("7.0")
     public ModifyClusterAdminResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

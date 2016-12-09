@@ -45,6 +45,7 @@ public class StorageContainer implements Serializable {
     @Since("7.0")
     public StorageContainer() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public StorageContainer(
@@ -117,18 +118,18 @@ public class StorageContainer implements Serializable {
         StorageContainer that = (StorageContainer) o;
 
         return 
-            Objects.equals(name, that.name) &&
-            Objects.equals(storageContainerID, that.storageContainerID) &&
-            Objects.equals(accountID, that.accountID) &&
-            Objects.equals(protocolEndpointType, that.protocolEndpointType) &&
-            Objects.equals(initiatorSecret, that.initiatorSecret) &&
-            Objects.equals(targetSecret, that.targetSecret) &&
+            Objects.equals(name, that.name) && 
+            Objects.equals(storageContainerID, that.storageContainerID) && 
+            Objects.equals(accountID, that.accountID) && 
+            Objects.equals(protocolEndpointType, that.protocolEndpointType) && 
+            Objects.equals(initiatorSecret, that.initiatorSecret) && 
+            Objects.equals(targetSecret, that.targetSecret) && 
             Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, storageContainerID, accountID, protocolEndpointType, initiatorSecret, targetSecret, status );
+        return Objects.hash( name,storageContainerID,accountID,protocolEndpointType,initiatorSecret,targetSecret,status );
     }
 
 

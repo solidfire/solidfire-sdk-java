@@ -40,6 +40,7 @@ public class ListAccountsRequest implements Serializable {
     @Since("7.0")
     public ListAccountsRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListAccountsRequest(
@@ -77,13 +78,13 @@ public class ListAccountsRequest implements Serializable {
         ListAccountsRequest that = (ListAccountsRequest) o;
 
         return 
-            Objects.equals(startAccountID, that.startAccountID) &&
+            Objects.equals(startAccountID, that.startAccountID) && 
             Objects.equals(limit, that.limit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( startAccountID, limit );
+        return Objects.hash( startAccountID,limit );
     }
 
 

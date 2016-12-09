@@ -40,6 +40,7 @@ public class ListDriveStatsResult implements Serializable {
     @Since("7.0")
     public ListDriveStatsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListDriveStatsResult(
@@ -74,13 +75,13 @@ public class ListDriveStatsResult implements Serializable {
         ListDriveStatsResult that = (ListDriveStatsResult) o;
 
         return 
-            Arrays.equals(driveStats, that.driveStats) &&
+            Arrays.equals(driveStats, that.driveStats) && 
             Arrays.equals(errors, that.errors);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])driveStats, (Object[])errors );
+        return Objects.hash( (Object[])driveStats,(Object[])errors );
     }
 
 

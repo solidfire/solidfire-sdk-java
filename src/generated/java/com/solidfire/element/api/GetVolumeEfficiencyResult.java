@@ -43,8 +43,23 @@ public class GetVolumeEfficiencyResult implements Serializable {
     @Since("7.0")
     public GetVolumeEfficiencyResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public GetVolumeEfficiencyResult(
+        Double compression,
+        Double deduplication,
+        Double thinProvisioning,
+        String timestamp
+    )
+    {
+        this.compression = compression;
+        this.deduplication = deduplication;
+        this.thinProvisioning = thinProvisioning;
+        this.timestamp = timestamp;
+    }
+    // parameterized constructor
+    @Since("8.0")
     public GetVolumeEfficiencyResult(
         Double compression,
         Double deduplication,
@@ -108,16 +123,16 @@ public class GetVolumeEfficiencyResult implements Serializable {
         GetVolumeEfficiencyResult that = (GetVolumeEfficiencyResult) o;
 
         return 
-            Objects.equals(compression, that.compression) &&
-            Objects.equals(deduplication, that.deduplication) &&
-            Arrays.equals(missingVolumes, that.missingVolumes) &&
-            Objects.equals(thinProvisioning, that.thinProvisioning) &&
+            Objects.equals(compression, that.compression) && 
+            Objects.equals(deduplication, that.deduplication) && 
+            Arrays.equals(missingVolumes, that.missingVolumes) && 
+            Objects.equals(thinProvisioning, that.thinProvisioning) && 
             Objects.equals(timestamp, that.timestamp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( compression, deduplication, (Object[])missingVolumes, thinProvisioning, timestamp );
+        return Objects.hash( compression,deduplication,(Object[])missingVolumes,thinProvisioning,timestamp );
     }
 
 

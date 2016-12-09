@@ -51,6 +51,7 @@ public class PendingNode implements Serializable {
     @Since("7.0")
     public PendingNode() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public PendingNode(
@@ -181,24 +182,24 @@ public class PendingNode implements Serializable {
         PendingNode that = (PendingNode) o;
 
         return 
-            Objects.equals(pendingNodeID, that.pendingNodeID) &&
-            Objects.equals(assignedNodeID, that.assignedNodeID) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(compatible, that.compatible) &&
-            Objects.equals(platformInfo, that.platformInfo) &&
-            Objects.equals(cip, that.cip) &&
-            Objects.equals(cipi, that.cipi) &&
-            Objects.equals(mip, that.mip) &&
-            Objects.equals(mipi, that.mipi) &&
-            Objects.equals(sip, that.sip) &&
-            Objects.equals(sipi, that.sipi) &&
-            Objects.equals(softwareVersion, that.softwareVersion) &&
+            Objects.equals(pendingNodeID, that.pendingNodeID) && 
+            Objects.equals(assignedNodeID, that.assignedNodeID) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(compatible, that.compatible) && 
+            Objects.equals(platformInfo, that.platformInfo) && 
+            Objects.equals(cip, that.cip) && 
+            Objects.equals(cipi, that.cipi) && 
+            Objects.equals(mip, that.mip) && 
+            Objects.equals(mipi, that.mipi) && 
+            Objects.equals(sip, that.sip) && 
+            Objects.equals(sipi, that.sipi) && 
+            Objects.equals(softwareVersion, that.softwareVersion) && 
             Objects.equals(uuid, that.uuid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( pendingNodeID, assignedNodeID, name, compatible, platformInfo, cip, cipi, mip, mipi, sip, sipi, softwareVersion, uuid );
+        return Objects.hash( pendingNodeID,assignedNodeID,name,compatible,platformInfo,cip,cipi,mip,mipi,sip,sipi,softwareVersion,uuid );
     }
 
 

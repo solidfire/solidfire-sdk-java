@@ -41,6 +41,7 @@ public class ModifySnapshotRequest implements Serializable {
     @Since("7.0")
     public ModifySnapshotRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ModifySnapshotRequest(
@@ -87,14 +88,14 @@ public class ModifySnapshotRequest implements Serializable {
         ModifySnapshotRequest that = (ModifySnapshotRequest) o;
 
         return 
-            Objects.equals(snapshotID, that.snapshotID) &&
-            Objects.equals(expirationTime, that.expirationTime) &&
+            Objects.equals(snapshotID, that.snapshotID) && 
+            Objects.equals(expirationTime, that.expirationTime) && 
             Objects.equals(enableRemoteReplication, that.enableRemoteReplication);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( snapshotID, expirationTime, enableRemoteReplication );
+        return Objects.hash( snapshotID,expirationTime,enableRemoteReplication );
     }
 
 

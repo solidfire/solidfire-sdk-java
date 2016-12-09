@@ -40,6 +40,7 @@ public class GetSnmpStateResult implements Serializable {
     @Since("7.0")
     public GetSnmpStateResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetSnmpStateResult(
@@ -74,13 +75,13 @@ public class GetSnmpStateResult implements Serializable {
         GetSnmpStateResult that = (GetSnmpStateResult) o;
 
         return 
-            Objects.equals(enabled, that.enabled) &&
+            Objects.equals(enabled, that.enabled) && 
             Objects.equals(snmpV3Enabled, that.snmpV3Enabled);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( enabled, snmpV3Enabled );
+        return Objects.hash( enabled,snmpV3Enabled );
     }
 
 

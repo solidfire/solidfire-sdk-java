@@ -40,6 +40,7 @@ public class AddedNode implements Serializable {
     @Since("7.0")
     public AddedNode() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public AddedNode(
@@ -72,13 +73,13 @@ public class AddedNode implements Serializable {
         AddedNode that = (AddedNode) o;
 
         return 
-            Objects.equals(nodeID, that.nodeID) &&
+            Objects.equals(nodeID, that.nodeID) && 
             Objects.equals(pendingNodeID, that.pendingNodeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID, pendingNodeID );
+        return Objects.hash( nodeID,pendingNodeID );
     }
 
 

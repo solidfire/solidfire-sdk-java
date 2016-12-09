@@ -39,6 +39,7 @@ public class GetLdapConfigurationResult implements Serializable {
     @Since("7.0")
     public GetLdapConfigurationResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetLdapConfigurationResult(

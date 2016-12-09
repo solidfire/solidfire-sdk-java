@@ -41,6 +41,7 @@ public class ListVolumesForAccountRequest implements Serializable {
     @Since("7.0")
     public ListVolumesForAccountRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListVolumesForAccountRequest(
@@ -86,14 +87,14 @@ public class ListVolumesForAccountRequest implements Serializable {
         ListVolumesForAccountRequest that = (ListVolumesForAccountRequest) o;
 
         return 
-            Objects.equals(accountID, that.accountID) &&
-            Objects.equals(startVolumeID, that.startVolumeID) &&
+            Objects.equals(accountID, that.accountID) && 
+            Objects.equals(startVolumeID, that.startVolumeID) && 
             Objects.equals(limit, that.limit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID, startVolumeID, limit );
+        return Objects.hash( accountID,startVolumeID,limit );
     }
 
 

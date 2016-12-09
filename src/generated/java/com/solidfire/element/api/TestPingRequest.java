@@ -43,6 +43,7 @@ public class TestPingRequest implements Serializable {
     @Since("7.0")
     public TestPingRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public TestPingRequest(
@@ -104,16 +105,16 @@ public class TestPingRequest implements Serializable {
         TestPingRequest that = (TestPingRequest) o;
 
         return 
-            Objects.equals(attempts, that.attempts) &&
-            Objects.equals(hosts, that.hosts) &&
-            Objects.equals(totalTimeoutSec, that.totalTimeoutSec) &&
-            Objects.equals(packetSize, that.packetSize) &&
+            Objects.equals(attempts, that.attempts) && 
+            Objects.equals(hosts, that.hosts) && 
+            Objects.equals(totalTimeoutSec, that.totalTimeoutSec) && 
+            Objects.equals(packetSize, that.packetSize) && 
             Objects.equals(pingTimeoutMsec, that.pingTimeoutMsec);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( attempts, hosts, totalTimeoutSec, packetSize, pingTimeoutMsec );
+        return Objects.hash( attempts,hosts,totalTimeoutSec,packetSize,pingTimeoutMsec );
     }
 
 

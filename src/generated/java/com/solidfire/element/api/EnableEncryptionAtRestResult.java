@@ -38,7 +38,7 @@ public class EnableEncryptionAtRestResult implements Serializable {
     @Since("7.0")
     public EnableEncryptionAtRestResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

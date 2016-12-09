@@ -39,6 +39,7 @@ public class ListSchedulesResult implements Serializable {
     @Since("7.0")
     public ListSchedulesResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListSchedulesResult(

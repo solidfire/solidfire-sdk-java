@@ -45,6 +45,7 @@ public class Account implements Serializable {
     @Since("7.0")
     public Account() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public Account(
@@ -124,18 +125,18 @@ public class Account implements Serializable {
         Account that = (Account) o;
 
         return 
-            Objects.equals(accountID, that.accountID) &&
-            Objects.equals(username, that.username) &&
-            Objects.equals(status, that.status) &&
-            Arrays.equals(volumes, that.volumes) &&
-            Objects.equals(initiatorSecret, that.initiatorSecret) &&
-            Objects.equals(targetSecret, that.targetSecret) &&
+            Objects.equals(accountID, that.accountID) && 
+            Objects.equals(username, that.username) && 
+            Objects.equals(status, that.status) && 
+            Arrays.equals(volumes, that.volumes) && 
+            Objects.equals(initiatorSecret, that.initiatorSecret) && 
+            Objects.equals(targetSecret, that.targetSecret) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID, username, status, (Object[])volumes, initiatorSecret, targetSecret, attributes );
+        return Objects.hash( accountID,username,status,(Object[])volumes,initiatorSecret,targetSecret,attributes );
     }
 
 

@@ -40,6 +40,7 @@ public class CreateGroupSnapshotResult implements Serializable {
     @Since("7.0")
     public CreateGroupSnapshotResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CreateGroupSnapshotResult(
@@ -74,13 +75,13 @@ public class CreateGroupSnapshotResult implements Serializable {
         CreateGroupSnapshotResult that = (CreateGroupSnapshotResult) o;
 
         return 
-            Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
+            Objects.equals(groupSnapshotID, that.groupSnapshotID) && 
             Arrays.equals(members, that.members);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( groupSnapshotID, (Object[])members );
+        return Objects.hash( groupSnapshotID,(Object[])members );
     }
 
 

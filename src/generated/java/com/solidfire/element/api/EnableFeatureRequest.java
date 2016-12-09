@@ -39,6 +39,7 @@ public class EnableFeatureRequest implements Serializable {
     @Since("7.0")
     public EnableFeatureRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public EnableFeatureRequest(

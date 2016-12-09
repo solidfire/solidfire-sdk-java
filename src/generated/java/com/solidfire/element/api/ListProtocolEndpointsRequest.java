@@ -39,6 +39,7 @@ public class ListProtocolEndpointsRequest implements Serializable {
     @Since("7.0")
     public ListProtocolEndpointsRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListProtocolEndpointsRequest(

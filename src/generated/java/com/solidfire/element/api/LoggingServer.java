@@ -40,6 +40,7 @@ public class LoggingServer implements Serializable {
     @Since("7.0")
     public LoggingServer() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public LoggingServer(
@@ -74,13 +75,13 @@ public class LoggingServer implements Serializable {
         LoggingServer that = (LoggingServer) o;
 
         return 
-            Objects.equals(host, that.host) &&
+            Objects.equals(host, that.host) && 
             Objects.equals(port, that.port);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( host, port );
+        return Objects.hash( host,port );
     }
 
 

@@ -41,6 +41,7 @@ public class VolumeAccessGroupLunAssignments implements Serializable {
     @Since("7.0")
     public VolumeAccessGroupLunAssignments() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public VolumeAccessGroupLunAssignments(
@@ -84,14 +85,14 @@ public class VolumeAccessGroupLunAssignments implements Serializable {
         VolumeAccessGroupLunAssignments that = (VolumeAccessGroupLunAssignments) o;
 
         return 
-            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
-            Arrays.equals(lunAssignments, that.lunAssignments) &&
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
+            Arrays.equals(lunAssignments, that.lunAssignments) && 
             Arrays.equals(deletedLunAssignments, that.deletedLunAssignments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, (Object[])lunAssignments, (Object[])deletedLunAssignments );
+        return Objects.hash( volumeAccessGroupID,(Object[])lunAssignments,(Object[])deletedLunAssignments );
     }
 
 

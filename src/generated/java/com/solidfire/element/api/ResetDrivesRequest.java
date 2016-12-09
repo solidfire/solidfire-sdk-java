@@ -40,6 +40,7 @@ public class ResetDrivesRequest implements Serializable {
     @Since("7.0")
     public ResetDrivesRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ResetDrivesRequest(
@@ -74,13 +75,13 @@ public class ResetDrivesRequest implements Serializable {
         ResetDrivesRequest that = (ResetDrivesRequest) o;
 
         return 
-            Objects.equals(drives, that.drives) &&
+            Objects.equals(drives, that.drives) && 
             Objects.equals(force, that.force);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( drives, force );
+        return Objects.hash( drives,force );
     }
 
 

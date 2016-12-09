@@ -39,6 +39,7 @@ public class GetClusterStateRequest implements Serializable {
     @Since("7.0")
     public GetClusterStateRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetClusterStateRequest(

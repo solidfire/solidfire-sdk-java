@@ -39,6 +39,7 @@ public class GetRemoteLoggingHostsResult implements Serializable {
     @Since("7.0")
     public GetRemoteLoggingHostsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetRemoteLoggingHostsResult(

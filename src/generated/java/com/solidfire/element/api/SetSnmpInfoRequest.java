@@ -42,6 +42,7 @@ public class SetSnmpInfoRequest implements Serializable {
     @Since("7.0")
     public SetSnmpInfoRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SetSnmpInfoRequest(
@@ -94,15 +95,15 @@ public class SetSnmpInfoRequest implements Serializable {
         SetSnmpInfoRequest that = (SetSnmpInfoRequest) o;
 
         return 
-            Objects.equals(networks, that.networks) &&
-            Objects.equals(enabled, that.enabled) &&
-            Objects.equals(snmpV3Enabled, that.snmpV3Enabled) &&
+            Objects.equals(networks, that.networks) && 
+            Objects.equals(enabled, that.enabled) && 
+            Objects.equals(snmpV3Enabled, that.snmpV3Enabled) && 
             Objects.equals(usmUsers, that.usmUsers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( networks, enabled, snmpV3Enabled, usmUsers );
+        return Objects.hash( networks,enabled,snmpV3Enabled,usmUsers );
     }
 
 

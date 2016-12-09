@@ -48,6 +48,7 @@ public class VirtualVolumeBinding implements Serializable {
     @Since("7.0")
     public VirtualVolumeBinding() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public VirtualVolumeBinding(
@@ -154,21 +155,21 @@ public class VirtualVolumeBinding implements Serializable {
         VirtualVolumeBinding that = (VirtualVolumeBinding) o;
 
         return 
-            Objects.equals(protocolEndpointID, that.protocolEndpointID) &&
-            Objects.equals(protocolEndpointInBandID, that.protocolEndpointInBandID) &&
-            Objects.equals(protocolEndpointType, that.protocolEndpointType) &&
-            Objects.equals(virtualVolumeBindingID, that.virtualVolumeBindingID) &&
-            Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) &&
-            Objects.equals(virtualVolumeID, that.virtualVolumeID) &&
-            Objects.equals(virtualVolumeSecondaryID, that.virtualVolumeSecondaryID) &&
-            Objects.equals(virtualVolume, that.virtualVolume) &&
-            Objects.equals(protocolEndpoint, that.protocolEndpoint) &&
+            Objects.equals(protocolEndpointID, that.protocolEndpointID) && 
+            Objects.equals(protocolEndpointInBandID, that.protocolEndpointInBandID) && 
+            Objects.equals(protocolEndpointType, that.protocolEndpointType) && 
+            Objects.equals(virtualVolumeBindingID, that.virtualVolumeBindingID) && 
+            Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) && 
+            Objects.equals(virtualVolumeID, that.virtualVolumeID) && 
+            Objects.equals(virtualVolumeSecondaryID, that.virtualVolumeSecondaryID) && 
+            Objects.equals(virtualVolume, that.virtualVolume) && 
+            Objects.equals(protocolEndpoint, that.protocolEndpoint) && 
             Objects.equals(virtualVolumeHost, that.virtualVolumeHost);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( protocolEndpointID, protocolEndpointInBandID, protocolEndpointType, virtualVolumeBindingID, virtualVolumeHostID, virtualVolumeID, virtualVolumeSecondaryID, virtualVolume, protocolEndpoint, virtualVolumeHost );
+        return Objects.hash( protocolEndpointID,protocolEndpointInBandID,protocolEndpointType,virtualVolumeBindingID,virtualVolumeHostID,virtualVolumeID,virtualVolumeSecondaryID,virtualVolume,protocolEndpoint,virtualVolumeHost );
     }
 
 

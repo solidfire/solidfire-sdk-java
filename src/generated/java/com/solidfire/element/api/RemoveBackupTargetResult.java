@@ -38,7 +38,7 @@ public class RemoveBackupTargetResult implements Serializable {
     @Since("7.0")
     public RemoveBackupTargetResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

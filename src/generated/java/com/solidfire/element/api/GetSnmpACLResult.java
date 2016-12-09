@@ -40,6 +40,7 @@ public class GetSnmpACLResult implements Serializable {
     @Since("7.0")
     public GetSnmpACLResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetSnmpACLResult(
@@ -74,13 +75,13 @@ public class GetSnmpACLResult implements Serializable {
         GetSnmpACLResult that = (GetSnmpACLResult) o;
 
         return 
-            Arrays.equals(networks, that.networks) &&
+            Arrays.equals(networks, that.networks) && 
             Arrays.equals(usmUsers, that.usmUsers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])networks, (Object[])usmUsers );
+        return Objects.hash( (Object[])networks,(Object[])usmUsers );
     }
 
 

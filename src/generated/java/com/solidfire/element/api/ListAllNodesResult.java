@@ -40,6 +40,7 @@ public class ListAllNodesResult implements Serializable {
     @Since("7.0")
     public ListAllNodesResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListAllNodesResult(
@@ -72,13 +73,13 @@ public class ListAllNodesResult implements Serializable {
         ListAllNodesResult that = (ListAllNodesResult) o;
 
         return 
-            Arrays.equals(nodes, that.nodes) &&
+            Arrays.equals(nodes, that.nodes) && 
             Arrays.equals(pendingNodes, that.pendingNodes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])nodes, (Object[])pendingNodes );
+        return Objects.hash( (Object[])nodes,(Object[])pendingNodes );
     }
 
 

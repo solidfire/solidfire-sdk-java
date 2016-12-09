@@ -39,6 +39,7 @@ public class GetAccountByNameRequest implements Serializable {
     @Since("7.0")
     public GetAccountByNameRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetAccountByNameRequest(

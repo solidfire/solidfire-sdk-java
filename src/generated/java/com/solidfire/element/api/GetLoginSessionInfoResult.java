@@ -39,6 +39,7 @@ public class GetLoginSessionInfoResult implements Serializable {
     @Since("7.0")
     public GetLoginSessionInfoResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetLoginSessionInfoResult(

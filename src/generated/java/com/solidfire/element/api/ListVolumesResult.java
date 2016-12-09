@@ -40,9 +40,9 @@ public class ListVolumesResult implements Serializable {
 
     public ListVolumesResult() {}
 
+    
     // parameterized constructor
-    @Since("8.0")
-
+    @Since("7.0")
     public ListVolumesResult(
         Volume[] volumes
     )

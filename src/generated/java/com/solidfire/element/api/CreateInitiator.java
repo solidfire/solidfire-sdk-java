@@ -42,6 +42,7 @@ public class CreateInitiator implements Serializable {
     @Since("7.0")
     public CreateInitiator() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CreateInitiator(
@@ -94,15 +95,15 @@ public class CreateInitiator implements Serializable {
         CreateInitiator that = (CreateInitiator) o;
 
         return 
-            Objects.equals(name, that.name) &&
-            Objects.equals(alias, that.alias) &&
-            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
+            Objects.equals(name, that.name) && 
+            Objects.equals(alias, that.alias) && 
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, alias, volumeAccessGroupID, attributes );
+        return Objects.hash( name,alias,volumeAccessGroupID,attributes );
     }
 
 

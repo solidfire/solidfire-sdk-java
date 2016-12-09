@@ -39,6 +39,7 @@ public class DeleteSnapshotRequest implements Serializable {
     @Since("7.0")
     public DeleteSnapshotRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public DeleteSnapshotRequest(

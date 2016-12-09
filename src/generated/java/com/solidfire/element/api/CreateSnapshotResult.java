@@ -40,6 +40,7 @@ public class CreateSnapshotResult implements Serializable {
     @Since("7.0")
     public CreateSnapshotResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CreateSnapshotResult(
@@ -75,13 +76,13 @@ public class CreateSnapshotResult implements Serializable {
         CreateSnapshotResult that = (CreateSnapshotResult) o;
 
         return 
-            Objects.equals(snapshotID, that.snapshotID) &&
+            Objects.equals(snapshotID, that.snapshotID) && 
             Objects.equals(checksum, that.checksum);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( snapshotID, checksum );
+        return Objects.hash( snapshotID,checksum );
     }
 
 

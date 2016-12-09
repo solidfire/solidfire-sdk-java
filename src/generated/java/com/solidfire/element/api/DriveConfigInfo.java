@@ -67,6 +67,7 @@ public class DriveConfigInfo implements Serializable {
     @Since("7.0")
     public DriveConfigInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public DriveConfigInfo(
@@ -315,40 +316,40 @@ public class DriveConfigInfo implements Serializable {
         DriveConfigInfo that = (DriveConfigInfo) o;
 
         return 
-            Objects.equals(canonicalName, that.canonicalName) &&
-            Objects.equals(connected, that.connected) &&
-            Objects.equals(dev, that.dev) &&
-            Objects.equals(devPath, that.devPath) &&
-            Objects.equals(driveType, that.driveType) &&
-            Objects.equals(fsType, that.fsType) &&
-            Objects.equals(isMounted, that.isMounted) &&
-            Objects.equals(product, that.product) &&
-            Objects.equals(mountPoint, that.mountPoint) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(path, that.path) &&
-            Objects.equals(pathLink, that.pathLink) &&
-            Objects.equals(scsiCompatId, that.scsiCompatId) &&
-            Objects.equals(smartSsdWriteCapable, that.smartSsdWriteCapable) &&
-            Objects.equals(securityEnabled, that.securityEnabled) &&
-            Objects.equals(securityFrozen, that.securityFrozen) &&
-            Objects.equals(securityLocked, that.securityLocked) &&
-            Objects.equals(securitySupported, that.securitySupported) &&
-            Objects.equals(size, that.size) &&
-            Objects.equals(slot, that.slot) &&
-            Objects.equals(uuid, that.uuid) &&
-            Objects.equals(vendor, that.vendor) &&
-            Objects.equals(version, that.version) &&
-            Objects.equals(numBlockActual, that.numBlockActual) &&
-            Objects.equals(numBlockExpected, that.numBlockExpected) &&
-            Objects.equals(numSliceActual, that.numSliceActual) &&
-            Objects.equals(numSliceExpected, that.numSliceExpected) &&
-            Objects.equals(numTotalActual, that.numTotalActual) &&
+            Objects.equals(canonicalName, that.canonicalName) && 
+            Objects.equals(connected, that.connected) && 
+            Objects.equals(dev, that.dev) && 
+            Objects.equals(devPath, that.devPath) && 
+            Objects.equals(driveType, that.driveType) && 
+            Objects.equals(fsType, that.fsType) && 
+            Objects.equals(isMounted, that.isMounted) && 
+            Objects.equals(product, that.product) && 
+            Objects.equals(mountPoint, that.mountPoint) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(path, that.path) && 
+            Objects.equals(pathLink, that.pathLink) && 
+            Objects.equals(scsiCompatId, that.scsiCompatId) && 
+            Objects.equals(smartSsdWriteCapable, that.smartSsdWriteCapable) && 
+            Objects.equals(securityEnabled, that.securityEnabled) && 
+            Objects.equals(securityFrozen, that.securityFrozen) && 
+            Objects.equals(securityLocked, that.securityLocked) && 
+            Objects.equals(securitySupported, that.securitySupported) && 
+            Objects.equals(size, that.size) && 
+            Objects.equals(slot, that.slot) && 
+            Objects.equals(uuid, that.uuid) && 
+            Objects.equals(vendor, that.vendor) && 
+            Objects.equals(version, that.version) && 
+            Objects.equals(numBlockActual, that.numBlockActual) && 
+            Objects.equals(numBlockExpected, that.numBlockExpected) && 
+            Objects.equals(numSliceActual, that.numSliceActual) && 
+            Objects.equals(numSliceExpected, that.numSliceExpected) && 
+            Objects.equals(numTotalActual, that.numTotalActual) && 
             Objects.equals(numTotalExpected, that.numTotalExpected);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( canonicalName, connected, dev, devPath, driveType, fsType, isMounted, product, mountPoint, name, path, pathLink, scsiCompatId, smartSsdWriteCapable, securityEnabled, securityFrozen, securityLocked, securitySupported, size, slot, uuid, vendor, version, numBlockActual, numBlockExpected, numSliceActual, numSliceExpected, numTotalActual, numTotalExpected );
+        return Objects.hash( canonicalName,connected,dev,devPath,driveType,fsType,isMounted,product,mountPoint,name,path,pathLink,scsiCompatId,smartSsdWriteCapable,securityEnabled,securityFrozen,securityLocked,securitySupported,size,slot,uuid,vendor,version,numBlockActual,numBlockExpected,numSliceActual,numSliceExpected,numTotalActual,numTotalExpected );
     }
 
 

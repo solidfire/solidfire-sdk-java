@@ -39,6 +39,7 @@ public class GetClusterMasterNodeIDResult implements Serializable {
     @Since("7.0")
     public GetClusterMasterNodeIDResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetClusterMasterNodeIDResult(

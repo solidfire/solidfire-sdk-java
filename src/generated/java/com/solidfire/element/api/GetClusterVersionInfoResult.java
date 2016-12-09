@@ -42,6 +42,7 @@ public class GetClusterVersionInfoResult implements Serializable {
     @Since("7.0")
     public GetClusterVersionInfoResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetClusterVersionInfoResult(
@@ -90,15 +91,15 @@ public class GetClusterVersionInfoResult implements Serializable {
         GetClusterVersionInfoResult that = (GetClusterVersionInfoResult) o;
 
         return 
-            Objects.equals(clusterAPIVersion, that.clusterAPIVersion) &&
-            Objects.equals(clusterVersion, that.clusterVersion) &&
-            Arrays.equals(clusterVersionInfo, that.clusterVersionInfo) &&
+            Objects.equals(clusterAPIVersion, that.clusterAPIVersion) && 
+            Objects.equals(clusterVersion, that.clusterVersion) && 
+            Arrays.equals(clusterVersionInfo, that.clusterVersionInfo) && 
             Objects.equals(softwareVersionInfo, that.softwareVersionInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterAPIVersion, clusterVersion, (Object[])clusterVersionInfo, softwareVersionInfo );
+        return Objects.hash( clusterAPIVersion,clusterVersion,(Object[])clusterVersionInfo,softwareVersionInfo );
     }
 
 

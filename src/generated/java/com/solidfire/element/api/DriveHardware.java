@@ -67,6 +67,7 @@ public class DriveHardware implements Serializable {
     @Since("7.0")
     public DriveHardware() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public DriveHardware(
@@ -315,40 +316,40 @@ public class DriveHardware implements Serializable {
         DriveHardware that = (DriveHardware) o;
 
         return 
-            Objects.equals(canonicalName, that.canonicalName) &&
-            Objects.equals(connected, that.connected) &&
-            Objects.equals(dev, that.dev) &&
-            Objects.equals(devPath, that.devPath) &&
-            Objects.equals(driveType, that.driveType) &&
-            Objects.equals(lifeRemainingPercent, that.lifeRemainingPercent) &&
-            Objects.equals(lifetimeReadBytes, that.lifetimeReadBytes) &&
-            Objects.equals(lifetimeWriteBytes, that.lifetimeWriteBytes) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(path, that.path) &&
-            Objects.equals(pathLink, that.pathLink) &&
-            Objects.equals(powerOnHours, that.powerOnHours) &&
-            Objects.equals(product, that.product) &&
-            Objects.equals(reallocatedSectors, that.reallocatedSectors) &&
-            Objects.equals(reserveCapacityPercent, that.reserveCapacityPercent) &&
-            Objects.equals(scsiCompatId, that.scsiCompatId) &&
-            Objects.equals(scsiState, that.scsiState) &&
-            Objects.equals(securityAtMaximum, that.securityAtMaximum) &&
-            Objects.equals(securityEnabled, that.securityEnabled) &&
-            Objects.equals(securityFrozen, that.securityFrozen) &&
-            Objects.equals(securityLocked, that.securityLocked) &&
-            Objects.equals(securitySupported, that.securitySupported) &&
-            Objects.equals(serial, that.serial) &&
-            Objects.equals(size, that.size) &&
-            Objects.equals(slot, that.slot) &&
-            Objects.equals(smartSsdWriteCapable, that.smartSsdWriteCapable) &&
-            Objects.equals(uuid, that.uuid) &&
-            Objects.equals(vendor, that.vendor) &&
+            Objects.equals(canonicalName, that.canonicalName) && 
+            Objects.equals(connected, that.connected) && 
+            Objects.equals(dev, that.dev) && 
+            Objects.equals(devPath, that.devPath) && 
+            Objects.equals(driveType, that.driveType) && 
+            Objects.equals(lifeRemainingPercent, that.lifeRemainingPercent) && 
+            Objects.equals(lifetimeReadBytes, that.lifetimeReadBytes) && 
+            Objects.equals(lifetimeWriteBytes, that.lifetimeWriteBytes) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(path, that.path) && 
+            Objects.equals(pathLink, that.pathLink) && 
+            Objects.equals(powerOnHours, that.powerOnHours) && 
+            Objects.equals(product, that.product) && 
+            Objects.equals(reallocatedSectors, that.reallocatedSectors) && 
+            Objects.equals(reserveCapacityPercent, that.reserveCapacityPercent) && 
+            Objects.equals(scsiCompatId, that.scsiCompatId) && 
+            Objects.equals(scsiState, that.scsiState) && 
+            Objects.equals(securityAtMaximum, that.securityAtMaximum) && 
+            Objects.equals(securityEnabled, that.securityEnabled) && 
+            Objects.equals(securityFrozen, that.securityFrozen) && 
+            Objects.equals(securityLocked, that.securityLocked) && 
+            Objects.equals(securitySupported, that.securitySupported) && 
+            Objects.equals(serial, that.serial) && 
+            Objects.equals(size, that.size) && 
+            Objects.equals(slot, that.slot) && 
+            Objects.equals(smartSsdWriteCapable, that.smartSsdWriteCapable) && 
+            Objects.equals(uuid, that.uuid) && 
+            Objects.equals(vendor, that.vendor) && 
             Objects.equals(version, that.version);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( canonicalName, connected, dev, devPath, driveType, lifeRemainingPercent, lifetimeReadBytes, lifetimeWriteBytes, name, path, pathLink, powerOnHours, product, reallocatedSectors, reserveCapacityPercent, scsiCompatId, scsiState, securityAtMaximum, securityEnabled, securityFrozen, securityLocked, securitySupported, serial, size, slot, smartSsdWriteCapable, uuid, vendor, version );
+        return Objects.hash( canonicalName,connected,dev,devPath,driveType,lifeRemainingPercent,lifetimeReadBytes,lifetimeWriteBytes,name,path,pathLink,powerOnHours,product,reallocatedSectors,reserveCapacityPercent,scsiCompatId,scsiState,securityAtMaximum,securityEnabled,securityFrozen,securityLocked,securitySupported,serial,size,slot,smartSsdWriteCapable,uuid,vendor,version );
     }
 
 

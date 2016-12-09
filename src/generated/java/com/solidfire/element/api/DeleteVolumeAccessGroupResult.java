@@ -38,7 +38,7 @@ public class DeleteVolumeAccessGroupResult implements Serializable {
     @Since("7.0")
     public DeleteVolumeAccessGroupResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

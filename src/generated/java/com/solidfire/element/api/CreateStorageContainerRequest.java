@@ -41,6 +41,7 @@ public class CreateStorageContainerRequest implements Serializable {
     @Since("7.0")
     public CreateStorageContainerRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CreateStorageContainerRequest(
@@ -84,14 +85,14 @@ public class CreateStorageContainerRequest implements Serializable {
         CreateStorageContainerRequest that = (CreateStorageContainerRequest) o;
 
         return 
-            Objects.equals(name, that.name) &&
-            Objects.equals(initiatorSecret, that.initiatorSecret) &&
+            Objects.equals(name, that.name) && 
+            Objects.equals(initiatorSecret, that.initiatorSecret) && 
             Objects.equals(targetSecret, that.targetSecret);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, initiatorSecret, targetSecret );
+        return Objects.hash( name,initiatorSecret,targetSecret );
     }
 
 

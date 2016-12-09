@@ -39,6 +39,7 @@ public class ModifyScheduleRequest implements Serializable {
     @Since("7.0")
     public ModifyScheduleRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ModifyScheduleRequest(

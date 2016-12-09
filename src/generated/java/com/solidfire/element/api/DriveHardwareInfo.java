@@ -53,6 +53,7 @@ public class DriveHardwareInfo implements Serializable {
     @Since("7.0")
     public DriveHardwareInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public DriveHardwareInfo(
@@ -189,26 +190,26 @@ public class DriveHardwareInfo implements Serializable {
         DriveHardwareInfo that = (DriveHardwareInfo) o;
 
         return 
-            Objects.equals(description, that.description) &&
-            Objects.equals(dev, that.dev) &&
-            Objects.equals(devpath, that.devpath) &&
-            Objects.equals(driveSecurityAtMaximum, that.driveSecurityAtMaximum) &&
-            Objects.equals(driveSecurityFrozen, that.driveSecurityFrozen) &&
-            Objects.equals(driveSecurityLocked, that.driveSecurityLocked) &&
-            Objects.equals(logicalname, that.logicalname) &&
-            Objects.equals(product, that.product) &&
-            Objects.equals(scsiCompatID, that.scsiCompatID) &&
-            Objects.equals(securityFeatureEnabled, that.securityFeatureEnabled) &&
-            Objects.equals(securityFeatureSupported, that.securityFeatureSupported) &&
-            Objects.equals(serial, that.serial) &&
-            Objects.equals(size, that.size) &&
-            Objects.equals(uuid, that.uuid) &&
+            Objects.equals(description, that.description) && 
+            Objects.equals(dev, that.dev) && 
+            Objects.equals(devpath, that.devpath) && 
+            Objects.equals(driveSecurityAtMaximum, that.driveSecurityAtMaximum) && 
+            Objects.equals(driveSecurityFrozen, that.driveSecurityFrozen) && 
+            Objects.equals(driveSecurityLocked, that.driveSecurityLocked) && 
+            Objects.equals(logicalname, that.logicalname) && 
+            Objects.equals(product, that.product) && 
+            Objects.equals(scsiCompatID, that.scsiCompatID) && 
+            Objects.equals(securityFeatureEnabled, that.securityFeatureEnabled) && 
+            Objects.equals(securityFeatureSupported, that.securityFeatureSupported) && 
+            Objects.equals(serial, that.serial) && 
+            Objects.equals(size, that.size) && 
+            Objects.equals(uuid, that.uuid) && 
             Objects.equals(version, that.version);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( description, dev, devpath, driveSecurityAtMaximum, driveSecurityFrozen, driveSecurityLocked, logicalname, product, scsiCompatID, securityFeatureEnabled, securityFeatureSupported, serial, size, uuid, version );
+        return Objects.hash( description,dev,devpath,driveSecurityAtMaximum,driveSecurityFrozen,driveSecurityLocked,logicalname,product,scsiCompatID,securityFeatureEnabled,securityFeatureSupported,serial,size,uuid,version );
     }
 
 

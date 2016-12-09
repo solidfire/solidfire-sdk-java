@@ -40,6 +40,7 @@ public class ClusterHardwareInfo implements Serializable {
     @Since("7.0")
     public ClusterHardwareInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ClusterHardwareInfo(
@@ -72,13 +73,13 @@ public class ClusterHardwareInfo implements Serializable {
         ClusterHardwareInfo that = (ClusterHardwareInfo) o;
 
         return 
-            Objects.equals(drives, that.drives) &&
+            Objects.equals(drives, that.drives) && 
             Objects.equals(nodes, that.nodes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( drives, nodes );
+        return Objects.hash( drives,nodes );
     }
 
 

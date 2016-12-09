@@ -44,6 +44,7 @@ public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
     @Since("7.0")
     public GetVirtualVolumeUnsharedChunksRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetVirtualVolumeUnsharedChunksRequest(
@@ -113,17 +114,17 @@ public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
         GetVirtualVolumeUnsharedChunksRequest that = (GetVirtualVolumeUnsharedChunksRequest) o;
 
         return 
-            Objects.equals(virtualVolumeID, that.virtualVolumeID) &&
-            Objects.equals(baseVirtualVolumeID, that.baseVirtualVolumeID) &&
-            Objects.equals(segmentStart, that.segmentStart) &&
-            Objects.equals(segmentLength, that.segmentLength) &&
-            Objects.equals(chunkSize, that.chunkSize) &&
+            Objects.equals(virtualVolumeID, that.virtualVolumeID) && 
+            Objects.equals(baseVirtualVolumeID, that.baseVirtualVolumeID) && 
+            Objects.equals(segmentStart, that.segmentStart) && 
+            Objects.equals(segmentLength, that.segmentLength) && 
+            Objects.equals(chunkSize, that.chunkSize) && 
             Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualVolumeID, baseVirtualVolumeID, segmentStart, segmentLength, chunkSize, callingVirtualVolumeHostID );
+        return Objects.hash( virtualVolumeID,baseVirtualVolumeID,segmentStart,segmentLength,chunkSize,callingVirtualVolumeHostID );
     }
 
 

@@ -45,6 +45,7 @@ public class Network implements Serializable {
     @Since("7.0")
     public Network() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public Network(
@@ -117,18 +118,18 @@ public class Network implements Serializable {
         Network that = (Network) o;
 
         return 
-            Objects.equals(bond10G, that.bond10G) &&
-            Objects.equals(bond1G, that.bond1G) &&
-            Objects.equals(eth0, that.eth0) &&
-            Objects.equals(eth1, that.eth1) &&
-            Objects.equals(eth2, that.eth2) &&
-            Objects.equals(eth3, that.eth3) &&
+            Objects.equals(bond10G, that.bond10G) && 
+            Objects.equals(bond1G, that.bond1G) && 
+            Objects.equals(eth0, that.eth0) && 
+            Objects.equals(eth1, that.eth1) && 
+            Objects.equals(eth2, that.eth2) && 
+            Objects.equals(eth3, that.eth3) && 
             Objects.equals(lo, that.lo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( bond10G, bond1G, eth0, eth1, eth2, eth3, lo );
+        return Objects.hash( bond10G,bond1G,eth0,eth1,eth2,eth3,lo );
     }
 
 

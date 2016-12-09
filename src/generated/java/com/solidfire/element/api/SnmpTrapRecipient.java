@@ -41,6 +41,7 @@ public class SnmpTrapRecipient implements Serializable {
     @Since("7.0")
     public SnmpTrapRecipient() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SnmpTrapRecipient(
@@ -84,14 +85,14 @@ public class SnmpTrapRecipient implements Serializable {
         SnmpTrapRecipient that = (SnmpTrapRecipient) o;
 
         return 
-            Objects.equals(host, that.host) &&
-            Objects.equals(community, that.community) &&
+            Objects.equals(host, that.host) && 
+            Objects.equals(community, that.community) && 
             Objects.equals(port, that.port);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( host, community, port );
+        return Objects.hash( host,community,port );
     }
 
 

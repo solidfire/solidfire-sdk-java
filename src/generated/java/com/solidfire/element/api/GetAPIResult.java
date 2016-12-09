@@ -40,6 +40,7 @@ public class GetAPIResult implements Serializable {
     @Since("7.0")
     public GetAPIResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetAPIResult(
@@ -72,13 +73,13 @@ public class GetAPIResult implements Serializable {
         GetAPIResult that = (GetAPIResult) o;
 
         return 
-            Objects.equals(currentVersion, that.currentVersion) &&
+            Objects.equals(currentVersion, that.currentVersion) && 
             Arrays.equals(supportedVersions, that.supportedVersions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( currentVersion, (Object[])supportedVersions );
+        return Objects.hash( currentVersion,(Object[])supportedVersions );
     }
 
 

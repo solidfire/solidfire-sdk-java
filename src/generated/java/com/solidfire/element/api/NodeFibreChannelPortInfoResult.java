@@ -40,6 +40,7 @@ public class NodeFibreChannelPortInfoResult implements Serializable {
     @Since("7.0")
     public NodeFibreChannelPortInfoResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public NodeFibreChannelPortInfoResult(
@@ -74,13 +75,13 @@ public class NodeFibreChannelPortInfoResult implements Serializable {
         NodeFibreChannelPortInfoResult that = (NodeFibreChannelPortInfoResult) o;
 
         return 
-            Objects.equals(nodeID, that.nodeID) &&
+            Objects.equals(nodeID, that.nodeID) && 
             Objects.equals(result, that.result);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID, result );
+        return Objects.hash( nodeID,result );
     }
 
 

@@ -70,6 +70,7 @@ public class VolumeStats implements Serializable {
     @Since("7.0")
     public VolumeStats() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public VolumeStats(
@@ -389,43 +390,43 @@ public class VolumeStats implements Serializable {
         VolumeStats that = (VolumeStats) o;
 
         return 
-            Objects.equals(accountID, that.accountID) &&
-            Objects.equals(actualIOPS, that.actualIOPS) &&
-            Objects.equals(asyncDelay, that.asyncDelay) &&
-            Objects.equals(averageIOPSize, that.averageIOPSize) &&
-            Objects.equals(burstIOPSCredit, that.burstIOPSCredit) &&
-            Objects.equals(clientQueueDepth, that.clientQueueDepth) &&
-            Objects.equals(desiredMetadataHosts, that.desiredMetadataHosts) &&
-            Objects.equals(latencyUSec, that.latencyUSec) &&
-            Objects.equals(metadataHosts, that.metadataHosts) &&
-            Objects.equals(nonZeroBlocks, that.nonZeroBlocks) &&
-            Objects.equals(readBytes, that.readBytes) &&
-            Objects.equals(readLatencyUSec, that.readLatencyUSec) &&
-            Objects.equals(readOps, that.readOps) &&
-            Objects.equals(throttle, that.throttle) &&
-            Objects.equals(timestamp, that.timestamp) &&
-            Objects.equals(totalLatencyUSec, that.totalLatencyUSec) &&
-            Objects.equals(unalignedReads, that.unalignedReads) &&
-            Objects.equals(unalignedWrites, that.unalignedWrites) &&
-            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) &&
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(volumeSize, that.volumeSize) &&
-            Objects.equals(volumeUtilization, that.volumeUtilization) &&
-            Objects.equals(writeBytes, that.writeBytes) &&
-            Objects.equals(writeLatencyUSec, that.writeLatencyUSec) &&
-            Objects.equals(writeOps, that.writeOps) &&
-            Objects.equals(zeroBlocks, that.zeroBlocks) &&
-            Objects.equals(writeBytesLastSample, that.writeBytesLastSample) &&
-            Objects.equals(samplePeriodMSec, that.samplePeriodMSec) &&
-            Objects.equals(readBytesLastSample, that.readBytesLastSample) &&
-            Objects.equals(readOpsLastSample, that.readOpsLastSample) &&
-            Objects.equals(writeOpsLastSample, that.writeOpsLastSample) &&
+            Objects.equals(accountID, that.accountID) && 
+            Objects.equals(actualIOPS, that.actualIOPS) && 
+            Objects.equals(asyncDelay, that.asyncDelay) && 
+            Objects.equals(averageIOPSize, that.averageIOPSize) && 
+            Objects.equals(burstIOPSCredit, that.burstIOPSCredit) && 
+            Objects.equals(clientQueueDepth, that.clientQueueDepth) && 
+            Objects.equals(desiredMetadataHosts, that.desiredMetadataHosts) && 
+            Objects.equals(latencyUSec, that.latencyUSec) && 
+            Objects.equals(metadataHosts, that.metadataHosts) && 
+            Objects.equals(nonZeroBlocks, that.nonZeroBlocks) && 
+            Objects.equals(readBytes, that.readBytes) && 
+            Objects.equals(readLatencyUSec, that.readLatencyUSec) && 
+            Objects.equals(readOps, that.readOps) && 
+            Objects.equals(throttle, that.throttle) && 
+            Objects.equals(timestamp, that.timestamp) && 
+            Objects.equals(totalLatencyUSec, that.totalLatencyUSec) && 
+            Objects.equals(unalignedReads, that.unalignedReads) && 
+            Objects.equals(unalignedWrites, that.unalignedWrites) && 
+            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) && 
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(volumeSize, that.volumeSize) && 
+            Objects.equals(volumeUtilization, that.volumeUtilization) && 
+            Objects.equals(writeBytes, that.writeBytes) && 
+            Objects.equals(writeLatencyUSec, that.writeLatencyUSec) && 
+            Objects.equals(writeOps, that.writeOps) && 
+            Objects.equals(zeroBlocks, that.zeroBlocks) && 
+            Objects.equals(writeBytesLastSample, that.writeBytesLastSample) && 
+            Objects.equals(samplePeriodMSec, that.samplePeriodMSec) && 
+            Objects.equals(readBytesLastSample, that.readBytesLastSample) && 
+            Objects.equals(readOpsLastSample, that.readOpsLastSample) && 
+            Objects.equals(writeOpsLastSample, that.writeOpsLastSample) && 
             Objects.equals(virtualVolumeID, that.virtualVolumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID, actualIOPS, asyncDelay, averageIOPSize, burstIOPSCredit, clientQueueDepth, desiredMetadataHosts, latencyUSec, metadataHosts, nonZeroBlocks, readBytes, readLatencyUSec, readOps, throttle, timestamp, totalLatencyUSec, unalignedReads, unalignedWrites, (Object[])volumeAccessGroups, volumeID, volumeSize, volumeUtilization, writeBytes, writeLatencyUSec, writeOps, zeroBlocks, writeBytesLastSample, samplePeriodMSec, readBytesLastSample, readOpsLastSample, writeOpsLastSample, virtualVolumeID );
+        return Objects.hash( accountID,actualIOPS,asyncDelay,averageIOPSize,burstIOPSCredit,clientQueueDepth,desiredMetadataHosts,latencyUSec,metadataHosts,nonZeroBlocks,readBytes,readLatencyUSec,readOps,throttle,timestamp,totalLatencyUSec,unalignedReads,unalignedWrites,(Object[])volumeAccessGroups,volumeID,volumeSize,volumeUtilization,writeBytes,writeLatencyUSec,writeOps,zeroBlocks,writeBytesLastSample,samplePeriodMSec,readBytesLastSample,readOpsLastSample,writeOpsLastSample,virtualVolumeID );
     }
 
 

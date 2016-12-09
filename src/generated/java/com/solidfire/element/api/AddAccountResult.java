@@ -39,6 +39,7 @@ public class AddAccountResult implements Serializable {
     @Since("7.0")
     public AddAccountResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public AddAccountResult(

@@ -40,6 +40,7 @@ public class GetVirtualVolumeTaskUpdateRequest implements Serializable {
     @Since("7.0")
     public GetVirtualVolumeTaskUpdateRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetVirtualVolumeTaskUpdateRequest(
@@ -73,13 +74,13 @@ public class GetVirtualVolumeTaskUpdateRequest implements Serializable {
         GetVirtualVolumeTaskUpdateRequest that = (GetVirtualVolumeTaskUpdateRequest) o;
 
         return 
-            Objects.equals(virtualVolumeTaskID, that.virtualVolumeTaskID) &&
+            Objects.equals(virtualVolumeTaskID, that.virtualVolumeTaskID) && 
             Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualVolumeTaskID, callingVirtualVolumeHostID );
+        return Objects.hash( virtualVolumeTaskID,callingVirtualVolumeHostID );
     }
 
 

@@ -42,8 +42,21 @@ public class ListEventsRequest implements Serializable {
     @Since("7.0")
     public ListEventsRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public ListEventsRequest(
+        Optional<Long> maxEvents,
+        Optional<Long> startEventID,
+        Optional<Long> endEventID
+    )
+    {
+        this.maxEvents = (maxEvents == null) ? Optional.<Long>empty() : maxEvents;
+        this.startEventID = (startEventID == null) ? Optional.<Long>empty() : startEventID;
+        this.endEventID = (endEventID == null) ? Optional.<Long>empty() : endEventID;
+    }
+    // parameterized constructor
+    @Since("9.0")
     public ListEventsRequest(
         Optional<Long> maxEvents,
         Optional<Long> startEventID,
@@ -93,15 +106,15 @@ public class ListEventsRequest implements Serializable {
         ListEventsRequest that = (ListEventsRequest) o;
 
         return 
-            Objects.equals(maxEvents, that.maxEvents) &&
-            Objects.equals(startEventID, that.startEventID) &&
-            Objects.equals(endEventID, that.endEventID) &&
+            Objects.equals(maxEvents, that.maxEvents) && 
+            Objects.equals(startEventID, that.startEventID) && 
+            Objects.equals(endEventID, that.endEventID) && 
             Objects.equals(eventQueueType, that.eventQueueType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( maxEvents, startEventID, endEventID, eventQueueType );
+        return Objects.hash( maxEvents,startEventID,endEventID,eventQueueType );
     }
 
 

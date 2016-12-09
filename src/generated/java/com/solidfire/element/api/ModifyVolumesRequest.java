@@ -44,6 +44,7 @@ public class ModifyVolumesRequest implements Serializable {
     @Since("7.0")
     public ModifyVolumesRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ModifyVolumesRequest(
@@ -113,17 +114,17 @@ public class ModifyVolumesRequest implements Serializable {
         ModifyVolumesRequest that = (ModifyVolumesRequest) o;
 
         return 
-            Arrays.equals(volumeIDs, that.volumeIDs) &&
-            Objects.equals(accountID, that.accountID) &&
-            Objects.equals(access, that.access) &&
-            Objects.equals(attributes, that.attributes) &&
-            Objects.equals(qos, that.qos) &&
+            Arrays.equals(volumeIDs, that.volumeIDs) && 
+            Objects.equals(accountID, that.accountID) && 
+            Objects.equals(access, that.access) && 
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(qos, that.qos) && 
             Objects.equals(totalSize, that.totalSize);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])volumeIDs, accountID, access, attributes, qos, totalSize );
+        return Objects.hash( (Object[])volumeIDs,accountID,access,attributes,qos,totalSize );
     }
 
 

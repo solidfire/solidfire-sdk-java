@@ -50,6 +50,7 @@ public class ClusterInfo implements Serializable {
     @Since("7.0")
     public ClusterInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ClusterInfo(
@@ -173,23 +174,23 @@ public class ClusterInfo implements Serializable {
         ClusterInfo that = (ClusterInfo) o;
 
         return 
-            Objects.equals(attributes, that.attributes) &&
-            Objects.equals(encryptionAtRestState, that.encryptionAtRestState) &&
-            Arrays.equals(ensemble, that.ensemble) &&
-            Objects.equals(mvip, that.mvip) &&
-            Objects.equals(mvipNodeID, that.mvipNodeID) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(repCount, that.repCount) &&
-            Objects.equals(state, that.state) &&
-            Objects.equals(svip, that.svip) &&
-            Objects.equals(svipNodeID, that.svipNodeID) &&
-            Objects.equals(uniqueID, that.uniqueID) &&
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(encryptionAtRestState, that.encryptionAtRestState) && 
+            Arrays.equals(ensemble, that.ensemble) && 
+            Objects.equals(mvip, that.mvip) && 
+            Objects.equals(mvipNodeID, that.mvipNodeID) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(repCount, that.repCount) && 
+            Objects.equals(state, that.state) && 
+            Objects.equals(svip, that.svip) && 
+            Objects.equals(svipNodeID, that.svipNodeID) && 
+            Objects.equals(uniqueID, that.uniqueID) && 
             Objects.equals(uuid, that.uuid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( attributes, encryptionAtRestState, (Object[])ensemble, mvip, mvipNodeID, name, repCount, state, svip, svipNodeID, uniqueID, uuid );
+        return Objects.hash( attributes,encryptionAtRestState,(Object[])ensemble,mvip,mvipNodeID,name,repCount,state,svip,svipNodeID,uniqueID,uuid );
     }
 
 

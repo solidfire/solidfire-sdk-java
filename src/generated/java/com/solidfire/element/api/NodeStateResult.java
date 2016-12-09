@@ -40,6 +40,7 @@ public class NodeStateResult implements Serializable {
     @Since("7.0")
     public NodeStateResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public NodeStateResult(
@@ -74,13 +75,13 @@ public class NodeStateResult implements Serializable {
         NodeStateResult that = (NodeStateResult) o;
 
         return 
-            Objects.equals(nodeID, that.nodeID) &&
+            Objects.equals(nodeID, that.nodeID) && 
             Objects.equals(result, that.result);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID, result );
+        return Objects.hash( nodeID,result );
     }
 
 

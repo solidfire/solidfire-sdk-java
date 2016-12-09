@@ -39,6 +39,7 @@ public class CancelCloneRequest implements Serializable {
     @Since("7.0")
     public CancelCloneRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CancelCloneRequest(

@@ -43,6 +43,7 @@ public class SnmpV3UsmUser implements Serializable {
     @Since("7.0")
     public SnmpV3UsmUser() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SnmpV3UsmUser(
@@ -109,16 +110,16 @@ public class SnmpV3UsmUser implements Serializable {
         SnmpV3UsmUser that = (SnmpV3UsmUser) o;
 
         return 
-            Objects.equals(access, that.access) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(password, that.password) &&
-            Objects.equals(passphrase, that.passphrase) &&
+            Objects.equals(access, that.access) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(password, that.password) && 
+            Objects.equals(passphrase, that.passphrase) && 
             Objects.equals(secLevel, that.secLevel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( access, name, password, passphrase, secLevel );
+        return Objects.hash( access,name,password,passphrase,secLevel );
     }
 
 

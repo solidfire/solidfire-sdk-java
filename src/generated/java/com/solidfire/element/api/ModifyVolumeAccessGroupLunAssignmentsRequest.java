@@ -40,6 +40,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
     @Since("7.0")
     public ModifyVolumeAccessGroupLunAssignmentsRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ModifyVolumeAccessGroupLunAssignmentsRequest(
@@ -74,13 +75,13 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
         ModifyVolumeAccessGroupLunAssignmentsRequest that = (ModifyVolumeAccessGroupLunAssignmentsRequest) o;
 
         return 
-            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
             Arrays.equals(lunAssignments, that.lunAssignments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, (Object[])lunAssignments );
+        return Objects.hash( volumeAccessGroupID,(Object[])lunAssignments );
     }
 
 

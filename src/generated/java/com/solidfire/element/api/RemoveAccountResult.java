@@ -38,7 +38,7 @@ public class RemoveAccountResult implements Serializable {
     @Since("7.0")
     public RemoveAccountResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

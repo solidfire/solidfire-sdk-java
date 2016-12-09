@@ -40,6 +40,7 @@ public class InvokeSFApiRequest implements Serializable {
     @Since("7.0")
     public InvokeSFApiRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public InvokeSFApiRequest(
@@ -74,13 +75,13 @@ public class InvokeSFApiRequest implements Serializable {
         InvokeSFApiRequest that = (InvokeSFApiRequest) o;
 
         return 
-            Objects.equals(method, that.method) &&
+            Objects.equals(method, that.method) && 
             Objects.equals(parameters, that.parameters);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( method, parameters );
+        return Objects.hash( method,parameters );
     }
 
 

@@ -44,8 +44,23 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
     @Since("7.0")
     public CreateVolumeAccessGroupRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public CreateVolumeAccessGroupRequest(
+        String name,
+        Optional<String[]> initiators,
+        Optional<Long[]> volumes,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.name = name;
+        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
+        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
+    // parameterized constructor
+    @Since("8.0")
     public CreateVolumeAccessGroupRequest(
         String name,
         Optional<String[]> initiators,
@@ -117,17 +132,17 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         CreateVolumeAccessGroupRequest that = (CreateVolumeAccessGroupRequest) o;
 
         return 
-            Objects.equals(name, that.name) &&
-            Objects.equals(initiators, that.initiators) &&
-            Objects.equals(volumes, that.volumes) &&
-            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Objects.equals(virtualNetworkTags, that.virtualNetworkTags) &&
+            Objects.equals(name, that.name) && 
+            Objects.equals(initiators, that.initiators) && 
+            Objects.equals(volumes, that.volumes) && 
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
+            Objects.equals(virtualNetworkTags, that.virtualNetworkTags) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, initiators, volumes, virtualNetworkID, virtualNetworkTags, attributes );
+        return Objects.hash( name,initiators,volumes,virtualNetworkID,virtualNetworkTags,attributes );
     }
 
 

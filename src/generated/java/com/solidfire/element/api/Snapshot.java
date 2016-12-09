@@ -54,8 +54,35 @@ public class Snapshot implements Serializable {
     @Since("7.0")
     public Snapshot() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public Snapshot(
+        Long snapshotID,
+        Long volumeID,
+        String name,
+        String checksum,
+        String status,
+        Long totalSize,
+        Optional<Long> groupID,
+        String createTime,
+        java.util.Map<String, Object> attributes,
+        java.util.UUID virtualVolumeID
+    )
+    {
+        this.snapshotID = snapshotID;
+        this.volumeID = volumeID;
+        this.name = name;
+        this.checksum = checksum;
+        this.status = status;
+        this.totalSize = totalSize;
+        this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
+        this.createTime = createTime;
+        this.attributes = attributes;
+        this.virtualVolumeID = virtualVolumeID;
+    }
+    // parameterized constructor
+    @Since("8.0")
     public Snapshot(
         Long snapshotID,
         Long volumeID,
@@ -230,27 +257,27 @@ public class Snapshot implements Serializable {
         Snapshot that = (Snapshot) o;
 
         return 
-            Objects.equals(snapshotID, that.snapshotID) &&
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(checksum, that.checksum) &&
-            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
-            Objects.equals(expirationReason, that.expirationReason) &&
-            Objects.equals(expirationTime, that.expirationTime) &&
-            Arrays.equals(remoteStatuses, that.remoteStatuses) &&
-            Objects.equals(status, that.status) &&
-            Objects.equals(snapshotUUID, that.snapshotUUID) &&
-            Objects.equals(totalSize, that.totalSize) &&
-            Objects.equals(groupID, that.groupID) &&
-            Objects.equals(groupSnapshotUUID, that.groupSnapshotUUID) &&
-            Objects.equals(createTime, that.createTime) &&
-            Objects.equals(attributes, that.attributes) &&
+            Objects.equals(snapshotID, that.snapshotID) && 
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(checksum, that.checksum) && 
+            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) && 
+            Objects.equals(expirationReason, that.expirationReason) && 
+            Objects.equals(expirationTime, that.expirationTime) && 
+            Arrays.equals(remoteStatuses, that.remoteStatuses) && 
+            Objects.equals(status, that.status) && 
+            Objects.equals(snapshotUUID, that.snapshotUUID) && 
+            Objects.equals(totalSize, that.totalSize) && 
+            Objects.equals(groupID, that.groupID) && 
+            Objects.equals(groupSnapshotUUID, that.groupSnapshotUUID) && 
+            Objects.equals(createTime, that.createTime) && 
+            Objects.equals(attributes, that.attributes) && 
             Objects.equals(virtualVolumeID, that.virtualVolumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( snapshotID, volumeID, name, checksum, enableRemoteReplication, expirationReason, expirationTime, (Object[])remoteStatuses, status, snapshotUUID, totalSize, groupID, groupSnapshotUUID, createTime, attributes, virtualVolumeID );
+        return Objects.hash( snapshotID,volumeID,name,checksum,enableRemoteReplication,expirationReason,expirationTime,(Object[])remoteStatuses,status,snapshotUUID,totalSize,groupID,groupSnapshotUUID,createTime,attributes,virtualVolumeID );
     }
 
 

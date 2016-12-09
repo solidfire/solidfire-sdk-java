@@ -38,7 +38,7 @@ public class DisableLdapAuthenticationResult implements Serializable {
     @Since("7.0")
     public DisableLdapAuthenticationResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

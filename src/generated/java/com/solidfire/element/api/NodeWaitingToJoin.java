@@ -45,6 +45,7 @@ public class NodeWaitingToJoin implements Serializable {
     @Since("7.0")
     public NodeWaitingToJoin() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public NodeWaitingToJoin(
@@ -117,18 +118,18 @@ public class NodeWaitingToJoin implements Serializable {
         NodeWaitingToJoin that = (NodeWaitingToJoin) o;
 
         return 
-            Objects.equals(name, that.name) &&
-            Objects.equals(version, that.version) &&
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(pendingNodeID, that.pendingNodeID) &&
-            Objects.equals(mip, that.mip) &&
-            Objects.equals(cip, that.cip) &&
+            Objects.equals(name, that.name) && 
+            Objects.equals(version, that.version) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(pendingNodeID, that.pendingNodeID) && 
+            Objects.equals(mip, that.mip) && 
+            Objects.equals(cip, that.cip) && 
             Objects.equals(sip, that.sip);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, version, nodeID, pendingNodeID, mip, cip, sip );
+        return Objects.hash( name,version,nodeID,pendingNodeID,mip,cip,sip );
     }
 
 

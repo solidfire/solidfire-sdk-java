@@ -40,6 +40,7 @@ public class FeatureObject implements Serializable {
     @Since("7.0")
     public FeatureObject() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public FeatureObject(
@@ -74,13 +75,13 @@ public class FeatureObject implements Serializable {
         FeatureObject that = (FeatureObject) o;
 
         return 
-            Objects.equals(enabled, that.enabled) &&
+            Objects.equals(enabled, that.enabled) && 
             Objects.equals(feature, that.feature);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( enabled, feature );
+        return Objects.hash( enabled,feature );
     }
 
 

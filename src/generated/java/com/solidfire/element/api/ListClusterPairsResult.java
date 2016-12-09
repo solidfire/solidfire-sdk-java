@@ -39,6 +39,7 @@ public class ListClusterPairsResult implements Serializable {
     @Since("7.0")
     public ListClusterPairsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListClusterPairsResult(

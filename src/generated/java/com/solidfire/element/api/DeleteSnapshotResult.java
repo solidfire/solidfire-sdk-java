@@ -38,7 +38,7 @@ public class DeleteSnapshotResult implements Serializable {
     @Since("7.0")
     public DeleteSnapshotResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

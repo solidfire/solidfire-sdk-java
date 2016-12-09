@@ -39,6 +39,7 @@ public class RemoveAccountRequest implements Serializable {
     @Since("7.0")
     public RemoveAccountRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public RemoveAccountRequest(

@@ -39,6 +39,7 @@ public class SetClusterConfigResult implements Serializable {
     @Since("7.0")
     public SetClusterConfigResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SetClusterConfigResult(

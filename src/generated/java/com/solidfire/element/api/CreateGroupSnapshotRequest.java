@@ -43,8 +43,21 @@ public class CreateGroupSnapshotRequest implements Serializable {
     @Since("7.0")
     public CreateGroupSnapshotRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public CreateGroupSnapshotRequest(
+        Long[] volumes,
+        Optional<String> name,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.volumes = volumes;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
+    // parameterized constructor
+    @Since("8.0")
     public CreateGroupSnapshotRequest(
         Long[] volumes,
         Optional<String> name,
@@ -105,16 +118,16 @@ public class CreateGroupSnapshotRequest implements Serializable {
         CreateGroupSnapshotRequest that = (CreateGroupSnapshotRequest) o;
 
         return 
-            Arrays.equals(volumes, that.volumes) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
-            Objects.equals(retention, that.retention) &&
+            Arrays.equals(volumes, that.volumes) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) && 
+            Objects.equals(retention, that.retention) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])volumes, name, enableRemoteReplication, retention, attributes );
+        return Objects.hash( (Object[])volumes,name,enableRemoteReplication,retention,attributes );
     }
 
 

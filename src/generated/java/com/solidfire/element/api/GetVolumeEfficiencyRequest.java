@@ -39,6 +39,7 @@ public class GetVolumeEfficiencyRequest implements Serializable {
     @Since("7.0")
     public GetVolumeEfficiencyRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetVolumeEfficiencyRequest(

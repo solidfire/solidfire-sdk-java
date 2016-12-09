@@ -53,6 +53,7 @@ public class Node implements Serializable {
     @Since("7.0")
     public Node() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public Node(
@@ -200,26 +201,26 @@ public class Node implements Serializable {
         Node that = (Node) o;
 
         return 
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(associatedMasterServiceID, that.associatedMasterServiceID) &&
-            Objects.equals(associatedFServiceID, that.associatedFServiceID) &&
-            Objects.equals(fibreChannelTargetPortGroup, that.fibreChannelTargetPortGroup) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(platformInfo, that.platformInfo) &&
-            Objects.equals(softwareVersion, that.softwareVersion) &&
-            Objects.equals(cip, that.cip) &&
-            Objects.equals(cipi, that.cipi) &&
-            Objects.equals(mip, that.mip) &&
-            Objects.equals(mipi, that.mipi) &&
-            Objects.equals(sip, that.sip) &&
-            Objects.equals(sipi, that.sipi) &&
-            Objects.equals(uuid, that.uuid) &&
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(associatedMasterServiceID, that.associatedMasterServiceID) && 
+            Objects.equals(associatedFServiceID, that.associatedFServiceID) && 
+            Objects.equals(fibreChannelTargetPortGroup, that.fibreChannelTargetPortGroup) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(platformInfo, that.platformInfo) && 
+            Objects.equals(softwareVersion, that.softwareVersion) && 
+            Objects.equals(cip, that.cip) && 
+            Objects.equals(cipi, that.cipi) && 
+            Objects.equals(mip, that.mip) && 
+            Objects.equals(mipi, that.mipi) && 
+            Objects.equals(sip, that.sip) && 
+            Objects.equals(sipi, that.sipi) && 
+            Objects.equals(uuid, that.uuid) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID, associatedMasterServiceID, associatedFServiceID, fibreChannelTargetPortGroup, name, platformInfo, softwareVersion, cip, cipi, mip, mipi, sip, sipi, uuid, attributes );
+        return Objects.hash( nodeID,associatedMasterServiceID,associatedFServiceID,fibreChannelTargetPortGroup,name,platformInfo,softwareVersion,cip,cipi,mip,mipi,sip,sipi,uuid,attributes );
     }
 
 

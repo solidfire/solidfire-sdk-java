@@ -38,7 +38,7 @@ public class RemoveVirtualNetworkResult implements Serializable {
     @Since("7.0")
     public RemoveVirtualNetworkResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

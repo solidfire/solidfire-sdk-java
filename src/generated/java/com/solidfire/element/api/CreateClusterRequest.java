@@ -46,6 +46,7 @@ public class CreateClusterRequest implements Serializable {
     @Since("7.0")
     public CreateClusterRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CreateClusterRequest(
@@ -134,19 +135,19 @@ public class CreateClusterRequest implements Serializable {
         CreateClusterRequest that = (CreateClusterRequest) o;
 
         return 
-            Objects.equals(acceptEula, that.acceptEula) &&
-            Objects.equals(mvip, that.mvip) &&
-            Objects.equals(svip, that.svip) &&
-            Objects.equals(repCount, that.repCount) &&
-            Objects.equals(username, that.username) &&
-            Objects.equals(password, that.password) &&
-            Arrays.equals(nodes, that.nodes) &&
+            Objects.equals(acceptEula, that.acceptEula) && 
+            Objects.equals(mvip, that.mvip) && 
+            Objects.equals(svip, that.svip) && 
+            Objects.equals(repCount, that.repCount) && 
+            Objects.equals(username, that.username) && 
+            Objects.equals(password, that.password) && 
+            Arrays.equals(nodes, that.nodes) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( acceptEula, mvip, svip, repCount, username, password, (Object[])nodes, attributes );
+        return Objects.hash( acceptEula,mvip,svip,repCount,username,password,(Object[])nodes,attributes );
     }
 
 

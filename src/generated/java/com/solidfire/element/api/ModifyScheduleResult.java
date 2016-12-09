@@ -38,7 +38,7 @@ public class ModifyScheduleResult implements Serializable {
     @Since("7.0")
     public ModifyScheduleResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

@@ -41,6 +41,7 @@ public class ModifyVolumePairRequest implements Serializable {
     @Since("7.0")
     public ModifyVolumePairRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ModifyVolumePairRequest(
@@ -91,14 +92,14 @@ public class ModifyVolumePairRequest implements Serializable {
         ModifyVolumePairRequest that = (ModifyVolumePairRequest) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(pausedManual, that.pausedManual) &&
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(pausedManual, that.pausedManual) && 
             Objects.equals(mode, that.mode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, pausedManual, mode );
+        return Objects.hash( volumeID,pausedManual,mode );
     }
 
 

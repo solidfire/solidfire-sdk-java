@@ -40,6 +40,7 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
     @Since("7.0")
     public AddInitiatorsToVolumeAccessGroupRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public AddInitiatorsToVolumeAccessGroupRequest(
@@ -74,13 +75,13 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
         AddInitiatorsToVolumeAccessGroupRequest that = (AddInitiatorsToVolumeAccessGroupRequest) o;
 
         return 
-            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
             Arrays.equals(initiators, that.initiators);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, (Object[])initiators );
+        return Objects.hash( volumeAccessGroupID,(Object[])initiators );
     }
 
 

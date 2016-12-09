@@ -42,10 +42,15 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListVirtualVolumesResult listVirtualVolumes(
-        Optional<Boolean> details,
-        Optional<Long> limit,
-        Optional<Boolean> recursive,
-        Optional<java.util.UUID> startVirtualVolumeID,
+        
+        Optional<Boolean> details
+, 
+        Optional<Long> limit
+, 
+        Optional<Boolean> recursive
+, 
+        Optional<java.util.UUID> startVirtualVolumeID
+, 
         Optional<java.util.UUID[]> virtualVolumeIDs
         );
     /** 
@@ -61,9 +66,13 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public PrepareVirtualSnapshotResult prepareVirtualSnapshot(
-        java.util.UUID virtualVolumeID,
-        Optional<String> name,
-        Optional<Boolean> writableSnapshot,
+        
+        java.util.UUID virtualVolumeID
+, 
+        Optional<String> name
+, 
+        Optional<Boolean> writableSnapshot
+, 
         Optional<java.util.UUID> callingVirtualVolumeHostID
         );
     /** 
@@ -87,11 +96,17 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(
-        java.util.UUID virtualVolumeID,
-        java.util.UUID baseVirtualVolumeID,
-        Long segmentStart,
-        Long segmentLength,
-        Long chunkSize,
+        
+        java.util.UUID virtualVolumeID
+, 
+        java.util.UUID baseVirtualVolumeID
+, 
+        Long segmentStart
+, 
+        Long segmentLength
+, 
+        Long chunkSize
+, 
         Optional<java.util.UUID> callingVirtualVolumeHostID
         );
     /** 
@@ -107,11 +122,17 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public VirtualVolumeNullResult createVirtualVolumeHost(
-        java.util.UUID virtualVolumeHostID,
-        java.util.UUID clusterID,
-        Optional<String[]> initiatorNames,
-        Optional<java.util.UUID[]> visibleProtocolEndpointIDs,
-        Optional<String> hostAddress,
+        
+        java.util.UUID virtualVolumeHostID
+, 
+        java.util.UUID clusterID
+, 
+        Optional<String[]> initiatorNames
+, 
+        Optional<java.util.UUID[]> visibleProtocolEndpointIDs
+, 
+        Optional<String> hostAddress
+, 
         Optional<java.util.UUID> callingVirtualVolumeHostID
         );
     /** 
@@ -127,6 +148,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListVirtualVolumeHostsResult listVirtualVolumeHosts(
+        
         Optional<java.util.UUID[]> virtualVolumeHostIDs
         );
     /** 
@@ -142,7 +164,9 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(
-        java.util.UUID virtualVolumeTaskID,
+        
+        java.util.UUID virtualVolumeTaskID
+, 
         Optional<java.util.UUID> callingVirtualVolumeHostID
         );
     /** 
@@ -158,6 +182,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
+        
         Optional<java.util.UUID[]> virtualVolumeTaskIDs
         );
     /** 
@@ -173,6 +198,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(
+        
         Optional<Long[]> virtualVolumeBindingIDs
         );
     /** 
@@ -196,7 +222,9 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Both")
     public Object invokeSFApi(
-        String method,
+        
+        String method
+, 
         Optional<java.util.Map<String, Object>> parameters
         );
     /** 
@@ -216,9 +244,13 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public AddAccountResult addAccount(
-        String username,
-        Optional<CHAPSecret> initiatorSecret,
-        Optional<CHAPSecret> targetSecret,
+        
+        String username
+, 
+        Optional<CHAPSecret> initiatorSecret
+, 
+        Optional<CHAPSecret> targetSecret
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -234,6 +266,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public GetAccountResult getAccountByID(
+        
         Long accountID
         );
     /** 
@@ -249,6 +282,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public GetAccountResult getAccountByName(
+        
         String username
         );
     /** 
@@ -264,7 +298,9 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public ListAccountsResult listAccounts(
-        Optional<Long> startAccountID,
+        
+        Optional<Long> startAccountID
+, 
         Optional<Long> limit
         );
     /** 
@@ -286,11 +322,17 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public ModifyAccountResult modifyAccount(
-        Long accountID,
-        Optional<String> username,
-        Optional<String> status,
-        Optional<CHAPSecret> initiatorSecret,
-        Optional<CHAPSecret> targetSecret,
+        
+        Long accountID
+, 
+        Optional<String> username
+, 
+        Optional<String> status
+, 
+        Optional<CHAPSecret> initiatorSecret
+, 
+        Optional<CHAPSecret> targetSecret
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -310,6 +352,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public RemoveAccountResult removeAccount(
+        
         Long accountID
         );
     /** 
@@ -325,6 +368,7 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public GetEfficiencyResult getAccountEfficiency(
+        
         Long accountID
         );
     /** 
@@ -346,6 +390,7 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public SetLoginSessionInfoResult setLoginSessionInfo(
+        
         String timeout
         );
     /** 
@@ -367,6 +412,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public SetRemoteLoggingHostsResult setRemoteLoggingHosts(
+        
         LoggingServer[] remoteHosts
         );
     /** 
@@ -400,12 +446,19 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public CloneVolumeResult cloneVolume(
-        Long volumeID,
-        String name,
-        Optional<Long> newAccountID,
-        Optional<Long> newSize,
-        Optional<String> access,
-        Optional<Long> snapshotID,
+        
+        Long volumeID
+, 
+        String name
+, 
+        Optional<Long> newAccountID
+, 
+        Optional<Long> newSize
+, 
+        Optional<String> access
+, 
+        Optional<Long> snapshotID
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -427,9 +480,13 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public CloneMultipleVolumesResult cloneMultipleVolumes(
-        CloneMultipleVolumeParams[] volumes,
-        Optional<String> access,
-        Optional<Long> groupSnapshotID,
+        
+        CloneMultipleVolumeParams[] volumes
+, 
+        Optional<String> access
+, 
+        Optional<Long> groupSnapshotID
+, 
         Optional<Long> newAccountID
         );
     /** 
@@ -445,8 +502,11 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public CopyVolumeResult copyVolume(
-        Long volumeID,
-        Long dstVolumeID,
+        
+        Long volumeID
+, 
+        Long dstVolumeID
+, 
         Optional<Long> snapshotID
         );
     /** 
@@ -462,6 +522,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public CancelCloneResult cancelClone(
+        
         Long cloneID
         );
     /** 
@@ -477,6 +538,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public CancelGroupCloneResult cancelGroupClone(
+        
         Long groupCloneID
         );
     /** 
@@ -492,6 +554,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListAsyncResultsResult listAsyncResults(
+        
         Optional<String[]> asyncResultTypes
         );
     /** 
@@ -509,11 +572,17 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public CreateVolumeResult createVolume(
-        String name,
-        Long accountID,
-        Long totalSize,
-        Boolean enable512e,
-        Optional<QoS> qos,
+        
+        String name
+, 
+        Long accountID
+, 
+        Long totalSize
+, 
+        Boolean enable512e
+, 
+        Optional<QoS> qos
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -557,6 +626,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public DeleteVolumeResult deleteVolume(
+        
         Long volumeID
         );
     /** 
@@ -572,8 +642,11 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public DeleteVolumesResult deleteVolumes(
-        Optional<Long[]> accountIDs,
-        Optional<Long[]> volumeAccessGroupIDs,
+        
+        Optional<Long[]> accountIDs
+, 
+        Optional<Long[]> volumeAccessGroupIDs
+, 
         Optional<Long[]> volumeIDs
         );
     /** 
@@ -597,6 +670,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public GetVolumeStatsResult getVolumeStats(
+        
         Long volumeID
         );
     /** 
@@ -614,6 +688,7 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public GetVolumeEfficiencyResult getVolumeEfficiency(
+        
         Long volumeID
         );
     /** 
@@ -637,7 +712,9 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public ListActiveVolumesResult listActiveVolumes(
-        Optional<Long> startVolumeID,
+        
+        Optional<Long> startVolumeID
+, 
         Optional<Long> limit
         );
     /** 
@@ -667,11 +744,17 @@ public interface SolidFireElementIF {
     @Since("8.0")
     @ConnectionType("Cluster")
     public ListVolumesResult listVolumes(
-        Optional<Long> startVolumeID,
-        Optional<Long> limit,
-        Optional<String> volumeStatus,
-        Optional<Long[]> accounts,
-        Optional<Boolean> isPaired,
+        
+        Optional<Long> startVolumeID
+, 
+        Optional<Long> limit
+, 
+        Optional<String> volumeStatus
+, 
+        Optional<Long[]> accounts
+, 
+        Optional<Boolean> isPaired
+, 
         Optional<Long[]> volumeIDs
         );
     /** 
@@ -687,8 +770,11 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public ListVolumesForAccountResult listVolumesForAccount(
-        Long accountID,
-        Optional<Long> startVolumeID,
+        
+        Long accountID
+, 
+        Optional<Long> startVolumeID
+, 
         Optional<Long> limit
         );
     /** 
@@ -718,6 +804,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
+        
         Optional<Long[]> volumeAccessGroups
         );
     /** 
@@ -749,11 +836,17 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public ModifyVolumeResult modifyVolume(
-        Long volumeID,
-        Optional<Long> accountID,
-        Optional<String> access,
-        Optional<QoS> qos,
-        Optional<Long> totalSize,
+        
+        Long volumeID
+, 
+        Optional<Long> accountID
+, 
+        Optional<String> access
+, 
+        Optional<QoS> qos
+, 
+        Optional<Long> totalSize
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -769,11 +862,17 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ModifyVolumesResult modifyVolumes(
-        Long[] volumeIDs,
-        Optional<Long> accountID,
-        Optional<String> access,
-        Optional<java.util.Map<String, Object>> attributes,
-        Optional<QoS> qos,
+        
+        Long[] volumeIDs
+, 
+        Optional<Long> accountID
+, 
+        Optional<String> access
+, 
+        Optional<java.util.Map<String, Object>> attributes
+, 
+        Optional<QoS> qos
+, 
         Optional<Long> totalSize
         );
     /** 
@@ -793,6 +892,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public PurgeDeletedVolumeResult purgeDeletedVolume(
+        
         Long volumeID
         );
     /** 
@@ -808,8 +908,11 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public PurgeDeletedVolumesResult purgeDeletedVolumes(
-        Optional<Long[]> volumeIDs,
-        Optional<Long[]> accountIDs,
+        
+        Optional<Long[]> volumeIDs
+, 
+        Optional<Long[]> accountIDs
+, 
         Optional<Long[]> volumeAccessGroupIDs
         );
     /** 
@@ -827,6 +930,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public RestoreDeletedVolumeResult restoreDeletedVolume(
+        
         Long volumeID
         );
     /** 
@@ -866,11 +970,17 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public StartBulkVolumeReadResult startBulkVolumeRead(
-        Long volumeID,
-        String format,
-        Optional<Long> snapshotID,
-        Optional<String> script,
-        Optional<Object> scriptParameters,
+        
+        Long volumeID
+, 
+        String format
+, 
+        Optional<Long> snapshotID
+, 
+        Optional<String> script
+, 
+        Optional<Object> scriptParameters
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -894,10 +1004,15 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public StartBulkVolumeWriteResult startBulkVolumeWrite(
-        Long volumeID,
-        String format,
-        Optional<String> script,
-        Optional<Object> scriptParameters,
+        
+        Long volumeID
+, 
+        String format
+, 
+        Optional<String> script
+, 
+        Optional<Object> scriptParameters
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -913,10 +1028,15 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(
-        String key,
-        String status,
-        Optional<String> percentComplete,
-        Optional<String> message,
+        
+        String key
+, 
+        String status
+, 
+        Optional<String> percentComplete
+, 
+        Optional<String> message
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -932,8 +1052,11 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public SetDefaultQoSResult setDefaultQoS(
-        Optional<Long> minIOPS,
-        Optional<Long> maxIOPS,
+        
+        Optional<Long> minIOPS
+, 
+        Optional<Long> maxIOPS
+, 
         Optional<Long> burstIOPS
         );
     /** 
@@ -949,7 +1072,9 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public CreateBackupTargetResult createBackupTarget(
-        String name,
+        
+        String name
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -965,6 +1090,7 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public GetBackupTargetResult getBackupTarget(
+        
         Long backupTargetID
         );
     /** 
@@ -986,8 +1112,11 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public ModifyBackupTargetResult modifyBackupTarget(
-        Long backupTargetID,
-        Optional<String> name,
+        
+        Long backupTargetID
+, 
+        Optional<String> name
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -1003,6 +1132,7 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public RemoveBackupTargetResult removeBackupTarget(
+        
         Long backupTargetID
         );
     /** 
@@ -1034,6 +1164,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public GetAsyncResultResult getAsyncResult(
+        
         Long asyncHandle
         );
     /** 
@@ -1049,6 +1180,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public GetFeatureStatusResult getFeatureStatus(
+        
         Optional<String> feature
         );
     /** 
@@ -1064,6 +1196,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public EnableFeatureResult enableFeature(
+        
         String feature
         );
     /** 
@@ -1081,6 +1214,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public CreateInitiatorsResult createInitiators(
+        
         CreateInitiator[] initiators
         );
     /** 
@@ -1098,6 +1232,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ModifyInitiatorsResult modifyInitiators(
+        
         ModifyInitiator[] initiators
         );
     /** 
@@ -1115,6 +1250,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public DeleteInitiatorsResult deleteInitiators(
+        
         Long[] initiators
         );
     /** 
@@ -1130,8 +1266,11 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListInitiatorsResult listInitiators(
-        Optional<Long> startInitiatorID,
-        Optional<Long> limit,
+        
+        Optional<Long> startInitiatorID
+, 
+        Optional<Long> limit
+, 
         Optional<Long[]> initiators
         );
     /** 
@@ -1151,9 +1290,13 @@ public interface SolidFireElementIF {
     @Since("8.0")
     @ConnectionType("Cluster")
     public AddLdapClusterAdminResult addLdapClusterAdmin(
-        String username,
-        String[] access,
-        Optional<Boolean> acceptEula,
+        
+        String username
+, 
+        String[] access
+, 
+        Optional<Boolean> acceptEula
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -1169,8 +1312,11 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public TestLdapAuthenticationResult testLdapAuthentication(
-        String username,
-        String password,
+        
+        String username
+, 
+        String password
+, 
         Optional<LdapConfiguration> ldapConfiguration
         );
     /** 
@@ -1192,15 +1338,25 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public EnableLdapAuthenticationResult enableLdapAuthentication(
-        Optional<String> authType,
-        Optional<String> groupSearchBaseDN,
-        Optional<String> groupSearchCustomFilter,
-        Optional<String> groupSearchType,
-        Optional<String> searchBindDN,
-        Optional<String> searchBindPassword,
-        String[] serverURIs,
-        Optional<String> userDNTemplate,
-        Optional<String> userSearchBaseDN,
+        
+        Optional<String> authType
+, 
+        Optional<String> groupSearchBaseDN
+, 
+        Optional<String> groupSearchCustomFilter
+, 
+        Optional<String> groupSearchType
+, 
+        Optional<String> searchBindDN
+, 
+        Optional<String> searchBindPassword
+, 
+        String[] serverURIs
+, 
+        Optional<String> userDNTemplate
+, 
+        Optional<String> userSearchBaseDN
+, 
         Optional<String> userSearchFilter
         );
     /** 
@@ -1246,7 +1402,9 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public StartVolumePairingResult startVolumePairing(
-        Long volumeID,
+        
+        Long volumeID
+, 
         Optional<String> mode
         );
     /** 
@@ -1264,6 +1422,7 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public CompleteClusterPairingResult completeClusterPairing(
+        
         String clusterPairingKey
         );
     /** 
@@ -1279,7 +1438,9 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public CompleteVolumePairingResult completeVolumePairing(
-        String volumePairingKey,
+        
+        String volumePairingKey
+, 
         Long volumeID
         );
     /** 
@@ -1297,6 +1458,7 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public RemoveClusterPairResult removeClusterPair(
+        
         Long clusterPairID
         );
     /** 
@@ -1316,6 +1478,7 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public RemoveVolumePairResult removeVolumePair(
+        
         Long volumeID
         );
     /** 
@@ -1331,8 +1494,11 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public ModifyVolumePairResult modifyVolumePair(
-        Long volumeID,
-        Optional<Boolean> pausedManual,
+        
+        Long volumeID
+, 
+        Optional<Boolean> pausedManual
+, 
         Optional<String> mode
         );
     /** 
@@ -1352,6 +1518,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListProtocolEndpointsResult listProtocolEndpoints(
+        
         Optional<java.util.UUID[]> protocolEndpointIDs
         );
     /** 
@@ -1367,8 +1534,11 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public CreateStorageContainerResult createStorageContainer(
-        String name,
-        Optional<String> initiatorSecret,
+        
+        String name
+, 
+        Optional<String> initiatorSecret
+, 
         Optional<String> targetSecret
         );
     /** 
@@ -1384,6 +1554,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public DeleteStorageContainerResult deleteStorageContainers(
+        
         java.util.UUID[] storageContainerIDs
         );
     /** 
@@ -1399,8 +1570,11 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ModifyStorageContainerResult modifyStorageContainer(
-        java.util.UUID storageContainerID,
-        Optional<String> initiatorSecret,
+        
+        java.util.UUID storageContainerID
+, 
+        Optional<String> initiatorSecret
+, 
         Optional<String> targetSecret
         );
     /** 
@@ -1416,6 +1590,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListStorageContainersResult listStorageContainers(
+        
         Optional<java.util.UUID[]> storageContainerIDs
         );
     /** 
@@ -1431,6 +1606,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(
+        
         java.util.UUID storageContainerID
         );
     /** 
@@ -1462,6 +1638,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Node")
     public TestConnectEnsembleResult testConnectEnsemble(
+        
         Optional<String> ensemble
         );
     /** 
@@ -1479,6 +1656,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Node")
     public TestConnectMvipResult testConnectMvip(
+        
         Optional<String> mvip
         );
     /** 
@@ -1496,6 +1674,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Node")
     public TestConnectSvipResult testConnectSvip(
+        
         Optional<String> svip
         );
     /** 
@@ -1513,10 +1692,15 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Node")
     public TestPingResult testPing(
-        Optional<Long> attempts,
-        Optional<String> hosts,
-        Optional<Long> totalTimeoutSec,
-        Optional<Long> packetSize,
+        
+        Optional<Long> attempts
+, 
+        Optional<String> hosts
+, 
+        Optional<Long> totalTimeoutSec
+, 
+        Optional<Long> packetSize
+, 
         Optional<Long> pingTimeoutMsec
         );
     /** 
@@ -1540,11 +1724,17 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public CreateVolumeAccessGroupResult createVolumeAccessGroup(
-        String name,
-        Optional<String[]> initiators,
-        Optional<Long[]> volumes,
-        Optional<Long[]> virtualNetworkID,
-        Optional<Long[]> virtualNetworkTags,
+        
+        String name
+, 
+        Optional<String[]> initiators
+, 
+        Optional<Long[]> volumes
+, 
+        Optional<Long[]> virtualNetworkID
+, 
+        Optional<Long[]> virtualNetworkTags
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -1560,7 +1750,9 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public ListVolumeAccessGroupsResult listVolumeAccessGroups(
-        Optional<Long> startVolumeAccessGroupID,
+        
+        Optional<Long> startVolumeAccessGroupID
+, 
         Optional<Long> limit
         );
     /** 
@@ -1576,6 +1768,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(
+        
         Long volumeAccessGroupID
         );
     /** 
@@ -1609,12 +1802,19 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(
-        Long volumeAccessGroupID,
-        Optional<Long[]> virtualNetworkID,
-        Optional<Long[]> virtualNetworkTags,
-        Optional<String> name,
-        Optional<String[]> initiators,
-        Optional<Long[]> volumes,
+        
+        Long volumeAccessGroupID
+, 
+        Optional<Long[]> virtualNetworkID
+, 
+        Optional<Long[]> virtualNetworkTags
+, 
+        Optional<String> name
+, 
+        Optional<String[]> initiators
+, 
+        Optional<Long[]> volumes
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -1630,7 +1830,9 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(
-        Long volumeAccessGroupID,
+        
+        Long volumeAccessGroupID
+, 
         String[] initiators
         );
     /** 
@@ -1646,7 +1848,9 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(
-        Long volumeAccessGroupID,
+        
+        Long volumeAccessGroupID
+, 
         String[] initiators
         );
     /** 
@@ -1662,7 +1866,9 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(
-        Long volumeAccessGroupID,
+        
+        Long volumeAccessGroupID
+, 
         Long[] volumes
         );
     /** 
@@ -1678,7 +1884,9 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(
-        Long volumeAccessGroupID,
+        
+        Long volumeAccessGroupID
+, 
         Long[] volumes
         );
     /** 
@@ -1694,6 +1902,7 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public GetEfficiencyResult getVolumeAccessGroupEfficiency(
+        
         Long volumeAccessGroupID
         );
     /** 
@@ -1709,6 +1918,7 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(
+        
         Long volumeAccessGroupID
         );
     /** 
@@ -1736,7 +1946,9 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(
-        Long volumeAccessGroupID,
+        
+        Long volumeAccessGroupID
+, 
         LunAssignment[] lunAssignments
         );
     /** 
@@ -1752,6 +1964,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public GetClusterHardwareInfoResult getClusterHardwareInfo(
+        
         Optional<String> type
         );
     /** 
@@ -1773,6 +1986,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public GetNodeHardwareInfoResult getNodeHardwareInfo(
+        
         Long nodeID
         );
     /** 
@@ -1798,9 +2012,13 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public ListVirtualNetworksResult listVirtualNetworks(
-        Optional<Long> virtualNetworkID,
-        Optional<Long> virtualNetworkTag,
-        Optional<Long[]> virtualNetworkIDs,
+        
+        Optional<Long> virtualNetworkID
+, 
+        Optional<Long> virtualNetworkTag
+, 
+        Optional<Long[]> virtualNetworkIDs
+, 
         Optional<Long[]> virtualNetworkTags
         );
     /** 
@@ -1820,13 +2038,21 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public AddVirtualNetworkResult addVirtualNetwork(
-        Long virtualNetworkTag,
-        String name,
-        AddressBlock[] addressBlocks,
-        String netmask,
-        String svip,
-        Optional<String> gateway,
-        Optional<Boolean> namespace,
+        
+        Long virtualNetworkTag
+, 
+        String name
+, 
+        AddressBlock[] addressBlocks
+, 
+        String netmask
+, 
+        String svip
+, 
+        Optional<String> gateway
+, 
+        Optional<Boolean> namespace
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -1846,14 +2072,23 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public AddVirtualNetworkResult modifyVirtualNetwork(
-        Optional<Long> virtualNetworkID,
-        Optional<Long> virtualNetworkTag,
-        Optional<String> name,
-        Optional<AddressBlock[]> addressBlocks,
-        Optional<String> netmask,
-        Optional<String> svip,
-        Optional<String> gateway,
-        Optional<Boolean> namespace,
+        
+        Optional<Long> virtualNetworkID
+, 
+        Optional<Long> virtualNetworkTag
+, 
+        Optional<String> name
+, 
+        Optional<AddressBlock[]> addressBlocks
+, 
+        Optional<String> netmask
+, 
+        Optional<String> svip
+, 
+        Optional<String> gateway
+, 
+        Optional<Boolean> namespace
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -1873,7 +2108,9 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public RemoveVirtualNetworkResult removeVirtualNetwork(
-        Optional<Long> virtualNetworkID,
+        
+        Optional<Long> virtualNetworkID
+, 
         Optional<Long> virtualNetworkTag
         );
     /** 
@@ -1889,6 +2126,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(
+        
         Optional<java.util.UUID[]> virtualVolumeIDs
         );
     /** 
@@ -1924,6 +2162,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListDriveStatsResult listDriveStats(
+        
         Optional<Long[]> drives
         );
     /** 
@@ -1937,6 +2176,7 @@ public interface SolidFireElementIF {
     @Since("9.0")
     @ConnectionType("Cluster")
     public ListVolumeStatsResult listVolumeStats(
+        
         Optional<Long[]> volumeIDs
         );
     /** 
@@ -1960,11 +2200,17 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public CreateSnapshotResult createSnapshot(
-        Long volumeID,
-        Optional<Long> snapshotID,
-        Optional<String> name,
-        Optional<Boolean> enableRemoteReplication,
-        Optional<String> retention,
+        
+        Long volumeID
+, 
+        Optional<Long> snapshotID
+, 
+        Optional<String> name
+, 
+        Optional<Boolean> enableRemoteReplication
+, 
+        Optional<String> retention
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -1986,6 +2232,7 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public DeleteSnapshotResult deleteSnapshot(
+        
         Long snapshotID
         );
     /** 
@@ -2001,6 +2248,7 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public ListSnapshotsResult listSnapshots(
+        
         Optional<Long> volumeID
         );
     /** 
@@ -2018,8 +2266,11 @@ public interface SolidFireElementIF {
     @Since("8.0")
     @ConnectionType("Cluster")
     public ModifySnapshotResult modifySnapshot(
-        Long snapshotID,
-        Optional<String> expirationTime,
+        
+        Long snapshotID
+, 
+        Optional<String> expirationTime
+, 
         Optional<Boolean> enableRemoteReplication
         );
     /** 
@@ -2045,10 +2296,15 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Cluster")
     public CreateSnapshotResult rollbackToSnapshot(
-        Long volumeID,
-        Long snapshotID,
-        Boolean saveCurrentState,
-        Optional<String> name,
+        
+        Long volumeID
+, 
+        Long snapshotID
+, 
+        Boolean saveCurrentState
+, 
+        Optional<String> name
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -2072,10 +2328,15 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public CreateGroupSnapshotResult createGroupSnapshot(
-        Long[] volumes,
-        Optional<String> name,
-        Optional<Boolean> enableRemoteReplication,
-        Optional<String> retention,
+        
+        Long[] volumes
+, 
+        Optional<String> name
+, 
+        Optional<Boolean> enableRemoteReplication
+, 
+        Optional<String> retention
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -2095,7 +2356,9 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public DeleteGroupSnapshotResult deleteGroupSnapshot(
-        Long groupSnapshotID,
+        
+        Long groupSnapshotID
+, 
         Boolean saveMembers
         );
     /** 
@@ -2111,6 +2374,7 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public ListGroupSnapshotsResult listGroupSnapshots(
+        
         Optional<Long> volumeID
         );
     /** 
@@ -2126,8 +2390,11 @@ public interface SolidFireElementIF {
     @Since("8.0")
     @ConnectionType("Cluster")
     public ModifyGroupSnapshotResult modifyGroupSnapshot(
-        Long groupSnapshotID,
-        Optional<String> expirationTime,
+        
+        Long groupSnapshotID
+, 
+        Optional<String> expirationTime
+, 
         Optional<Boolean> enableRemoteReplication
         );
     /** 
@@ -2149,9 +2416,13 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public CreateGroupSnapshotResult rollbackToGroupSnapshot(
-        Long groupSnapshotID,
-        Boolean saveCurrentState,
-        Optional<String> name,
+        
+        Long groupSnapshotID
+, 
+        Boolean saveCurrentState
+, 
+        Optional<String> name
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -2167,6 +2438,7 @@ public interface SolidFireElementIF {
     @Since("8.0")
     @ConnectionType("Cluster")
     public GetScheduleResult getSchedule(
+        
         Long scheduleID
         );
     /** 
@@ -2196,6 +2468,7 @@ public interface SolidFireElementIF {
     @Since("8.0")
     @ConnectionType("Cluster")
     public CreateScheduleResult createSchedule(
+        
         Schedule schedule
         );
     /** 
@@ -2211,6 +2484,7 @@ public interface SolidFireElementIF {
     @Since("8.0")
     @ConnectionType("Cluster")
     public ModifyScheduleResult modifySchedule(
+        
         Schedule schedule
         );
     /** 
@@ -2270,9 +2544,13 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public ListEventsResult listEvents(
-        Optional<Long> maxEvents,
-        Optional<Long> startEventID,
-        Optional<Long> endEventID,
+        
+        Optional<Long> maxEvents
+, 
+        Optional<Long> startEventID
+, 
+        Optional<Long> endEventID
+, 
         Optional<String> eventQueueType
         );
     /** 
@@ -2290,9 +2568,13 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public ListClusterFaultsResult listClusterFaults(
-        Optional<Boolean> exceptions,
-        Optional<Boolean> bestPractices,
-        Optional<Boolean> update,
+        
+        Optional<Boolean> exceptions
+, 
+        Optional<Boolean> bestPractices
+, 
+        Optional<Boolean> update
+, 
         Optional<String> faultTypes
         );
     /** 
@@ -2308,6 +2590,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public ClearClusterFaultsResult clearClusterFaults(
+        
         Optional<String> faultTypes
         );
     /** 
@@ -2337,8 +2620,11 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public ModifyClusterFullThresholdResult modifyClusterFullThreshold(
-        Optional<Long> stage2AwareThreshold,
-        Optional<Long> stage3BlockThresholdPercent,
+        
+        Optional<Long> stage2AwareThreshold
+, 
+        Optional<Long> stage3BlockThresholdPercent
+, 
         Optional<Long> maxMetadataOverProvisionFactor
         );
     /** 
@@ -2370,13 +2656,21 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Node")
     public CreateClusterResult createCluster(
-        Optional<Boolean> acceptEula,
-        String mvip,
-        String svip,
-        Long repCount,
-        String username,
-        String password,
-        String[] nodes,
+        
+        Optional<Boolean> acceptEula
+, 
+        String mvip
+, 
+        String svip
+, 
+        Long repCount
+, 
+        String username
+, 
+        String password
+, 
+        String[] nodes
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -2402,10 +2696,15 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public AddClusterAdminResult addClusterAdmin(
-        String username,
-        String password,
-        String[] access,
-        Optional<Boolean> acceptEula,
+        
+        String username
+, 
+        String password
+, 
+        String[] access
+, 
+        Optional<Boolean> acceptEula
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -2421,9 +2720,13 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public ModifyClusterAdminResult modifyClusterAdmin(
-        Long clusterAdminID,
-        Optional<String> password,
-        Optional<String[]> access,
+        
+        Long clusterAdminID
+, 
+        Optional<String> password
+, 
+        Optional<String[]> access
+, 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
@@ -2439,6 +2742,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public RemoveClusterAdminResult removeClusterAdmin(
+        
         Long clusterAdminID
         );
     /** 
@@ -2458,6 +2762,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Node")
     public SetClusterConfigResult setClusterConfig(
+        
         ClusterConfig cluster
         );
     /** 
@@ -2479,7 +2784,9 @@ public interface SolidFireElementIF {
     @Since("8.0")
     @ConnectionType("Cluster")
     public SetSnmpACLResult setSnmpACL(
-        SnmpNetwork[] networks,
+        
+        SnmpNetwork[] networks
+, 
         SnmpV3UsmUser[] usmUsers
         );
     /** 
@@ -2501,9 +2808,13 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public SetSnmpTrapInfoResult setSnmpTrapInfo(
-        SnmpTrapRecipient[] trapRecipients,
-        Boolean clusterFaultTrapsEnabled,
-        Boolean clusterFaultResolvedTrapsEnabled,
+        
+        SnmpTrapRecipient[] trapRecipients
+, 
+        Boolean clusterFaultTrapsEnabled
+, 
+        Boolean clusterFaultResolvedTrapsEnabled
+, 
         Boolean clusterEventTrapsEnabled
         );
     /** 
@@ -2519,6 +2830,7 @@ public interface SolidFireElementIF {
     @Since("8.0")
     @ConnectionType("Cluster")
     public EnableSnmpResult enableSnmp(
+        
         Boolean snmpV3Enabled
         );
     /** 
@@ -2552,9 +2864,13 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public SetSnmpInfoResult setSnmpInfo(
-        Optional<SnmpNetwork[]> networks,
-        Optional<Boolean> enabled,
-        Optional<Boolean> snmpV3Enabled,
+        
+        Optional<SnmpNetwork[]> networks
+, 
+        Optional<Boolean> enabled
+, 
+        Optional<Boolean> snmpV3Enabled
+, 
         Optional<SnmpV3UsmUser[]> usmUsers
         );
     /** 
@@ -2596,7 +2912,9 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public SetNtpInfoResult setNtpInfo(
-        String[] servers,
+        
+        String[] servers
+, 
         Optional<Boolean> broadcastclient
         );
     /** 
@@ -2612,6 +2930,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public GetClusterStateResult getClusterState(
+        
         Boolean force
         );
     /** 
@@ -2633,8 +2952,11 @@ public interface SolidFireElementIF {
     @Since("8.0")
     @ConnectionType("Node")
     public CreateSupportBundleResult createSupportBundle(
-        Optional<String> bundleName,
-        Optional<String> extraArgs,
+        
+        Optional<String> bundleName
+, 
+        Optional<String> extraArgs
+, 
         Optional<Long> timeoutSec
         );
     /** 
@@ -2718,6 +3040,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public AddNodesResult addNodes(
+        
         Long[] pendingNodes
         );
     /** 
@@ -2737,6 +3060,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public RemoveNodesResult removeNodes(
+        
         Long[] nodes
         );
     /** 
@@ -2768,6 +3092,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Node")
     public SetConfigResult setConfig(
+        
         Config config
         );
     /** 
@@ -2791,6 +3116,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Node")
     public SetNetworkConfigResult setNetworkConfig(
+        
         Network network
         );
     /** 
@@ -2810,6 +3136,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Both")
     public GetConfigResult getConfig(
+        
         Boolean force
         );
     /** 
@@ -2831,6 +3158,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public GetNodeStatsResult getNodeStats(
+        
         Long nodeID
         );
     /** 
@@ -2878,6 +3206,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public AddDrivesResult addDrives(
+        
         NewDrive[] drives
         );
     /** 
@@ -2908,6 +3237,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public GetDriveHardwareInfoResult getDriveHardwareInfo(
+        
         Long driveID
         );
     /** 
@@ -2923,6 +3253,7 @@ public interface SolidFireElementIF {
     @Since("7.0")
     @ConnectionType("Cluster")
     public ListDriveHardwareResult listDriveHardware(
+        
         Boolean force
         );
     /** 
@@ -2942,7 +3273,9 @@ public interface SolidFireElementIF {
     @Since("6.0")
     @ConnectionType("Node")
     public ResetDrivesResult resetDrives(
-        String drives,
+        
+        String drives
+, 
         Boolean force
         );
     /** 
@@ -2966,6 +3299,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Node")
     public TestDrivesResult testDrives(
+        
         Optional<Long> minutes
         );
     /** 
@@ -2983,6 +3317,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public GetDriveStatsResult getDriveStats(
+        
         Long driveID
         );
     /** 
@@ -3006,6 +3341,7 @@ public interface SolidFireElementIF {
     @Since("5.0")
     @ConnectionType("Cluster")
     public AsyncHandleResult secureEraseDrives(
+        
         Long[] drives
         );
     /** 
@@ -3047,6 +3383,7 @@ public interface SolidFireElementIF {
     @Since("1.0")
     @ConnectionType("Cluster")
     public AsyncHandleResult removeDrives(
+        
         Long[] drives
         );
 }

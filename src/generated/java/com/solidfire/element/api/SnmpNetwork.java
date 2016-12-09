@@ -42,6 +42,7 @@ public class SnmpNetwork implements Serializable {
     @Since("7.0")
     public SnmpNetwork() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SnmpNetwork(
@@ -97,15 +98,15 @@ public class SnmpNetwork implements Serializable {
         SnmpNetwork that = (SnmpNetwork) o;
 
         return 
-            Objects.equals(access, that.access) &&
-            Objects.equals(cidr, that.cidr) &&
-            Objects.equals(community, that.community) &&
+            Objects.equals(access, that.access) && 
+            Objects.equals(cidr, that.cidr) && 
+            Objects.equals(community, that.community) && 
             Objects.equals(network, that.network);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( access, cidr, community, network );
+        return Objects.hash( access,cidr,community,network );
     }
 
 

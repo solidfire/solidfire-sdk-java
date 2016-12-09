@@ -39,6 +39,7 @@ public class GetDriveStatsResult implements Serializable {
     @Since("7.0")
     public GetDriveStatsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetDriveStatsResult(

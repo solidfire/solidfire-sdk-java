@@ -40,6 +40,7 @@ public class GroupCloneVolumeMember implements Serializable {
     @Since("7.0")
     public GroupCloneVolumeMember() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GroupCloneVolumeMember(
@@ -74,13 +75,13 @@ public class GroupCloneVolumeMember implements Serializable {
         GroupCloneVolumeMember that = (GroupCloneVolumeMember) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(volumeID, that.volumeID) && 
             Objects.equals(srcVolumeID, that.srcVolumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, srcVolumeID );
+        return Objects.hash( volumeID,srcVolumeID );
     }
 
 

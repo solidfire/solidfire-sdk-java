@@ -51,6 +51,7 @@ public class ClusterFaultInfo implements Serializable {
     @Since("7.0")
     public ClusterFaultInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ClusterFaultInfo(
@@ -171,24 +172,24 @@ public class ClusterFaultInfo implements Serializable {
         ClusterFaultInfo that = (ClusterFaultInfo) o;
 
         return 
-            Objects.equals(severity, that.severity) &&
-            Objects.equals(type, that.type) &&
-            Objects.equals(code, that.code) &&
-            Objects.equals(details, that.details) &&
-            Objects.equals(nodeHardwareFaultID, that.nodeHardwareFaultID) &&
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(serviceID, that.serviceID) &&
-            Objects.equals(driveID, that.driveID) &&
-            Objects.equals(resolved, that.resolved) &&
-            Objects.equals(clusterFaultID, that.clusterFaultID) &&
-            Objects.equals(date, that.date) &&
-            Objects.equals(resolvedDate, that.resolvedDate) &&
+            Objects.equals(severity, that.severity) && 
+            Objects.equals(type, that.type) && 
+            Objects.equals(code, that.code) && 
+            Objects.equals(details, that.details) && 
+            Objects.equals(nodeHardwareFaultID, that.nodeHardwareFaultID) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(serviceID, that.serviceID) && 
+            Objects.equals(driveID, that.driveID) && 
+            Objects.equals(resolved, that.resolved) && 
+            Objects.equals(clusterFaultID, that.clusterFaultID) && 
+            Objects.equals(date, that.date) && 
+            Objects.equals(resolvedDate, that.resolvedDate) && 
             Objects.equals(data, that.data);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( severity, type, code, details, nodeHardwareFaultID, nodeID, serviceID, driveID, resolved, clusterFaultID, date, resolvedDate, data );
+        return Objects.hash( severity,type,code,details,nodeHardwareFaultID,nodeID,serviceID,driveID,resolved,clusterFaultID,date,resolvedDate,data );
     }
 
 

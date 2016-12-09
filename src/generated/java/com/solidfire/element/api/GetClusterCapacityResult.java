@@ -39,6 +39,7 @@ public class GetClusterCapacityResult implements Serializable {
     @Since("7.0")
     public GetClusterCapacityResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetClusterCapacityResult(

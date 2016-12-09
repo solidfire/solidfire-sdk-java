@@ -43,6 +43,7 @@ public class VolumeQOS implements Serializable {
     @Since("7.0")
     public VolumeQOS() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public VolumeQOS(
@@ -112,16 +113,16 @@ public class VolumeQOS implements Serializable {
         VolumeQOS that = (VolumeQOS) o;
 
         return 
-            Objects.equals(minIOPS, that.minIOPS) &&
-            Objects.equals(maxIOPS, that.maxIOPS) &&
-            Objects.equals(burstIOPS, that.burstIOPS) &&
-            Objects.equals(burstTime, that.burstTime) &&
+            Objects.equals(minIOPS, that.minIOPS) && 
+            Objects.equals(maxIOPS, that.maxIOPS) && 
+            Objects.equals(burstIOPS, that.burstIOPS) && 
+            Objects.equals(burstTime, that.burstTime) && 
             Objects.equals(curve, that.curve);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( minIOPS, maxIOPS, burstIOPS, burstTime, curve );
+        return Objects.hash( minIOPS,maxIOPS,burstIOPS,burstTime,curve );
     }
 
 

@@ -41,6 +41,7 @@ public class MetadataHosts implements Serializable {
     @Since("7.0")
     public MetadataHosts() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public MetadataHosts(
@@ -84,14 +85,14 @@ public class MetadataHosts implements Serializable {
         MetadataHosts that = (MetadataHosts) o;
 
         return 
-            Arrays.equals(deadSecondaries, that.deadSecondaries) &&
-            Arrays.equals(liveSecondaries, that.liveSecondaries) &&
+            Arrays.equals(deadSecondaries, that.deadSecondaries) && 
+            Arrays.equals(liveSecondaries, that.liveSecondaries) && 
             Objects.equals(primary, that.primary);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])deadSecondaries, (Object[])liveSecondaries, primary );
+        return Objects.hash( (Object[])deadSecondaries,(Object[])liveSecondaries,primary );
     }
 
 

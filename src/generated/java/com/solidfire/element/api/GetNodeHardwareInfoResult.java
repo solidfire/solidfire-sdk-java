@@ -39,6 +39,7 @@ public class GetNodeHardwareInfoResult implements Serializable {
     @Since("7.0")
     public GetNodeHardwareInfoResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetNodeHardwareInfoResult(

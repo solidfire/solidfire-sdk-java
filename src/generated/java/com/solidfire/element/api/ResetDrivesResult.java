@@ -39,6 +39,7 @@ public class ResetDrivesResult implements Serializable {
     @Since("7.0")
     public ResetDrivesResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ResetDrivesResult(

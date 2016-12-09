@@ -39,6 +39,7 @@ public class ListGroupSnapshotsResult implements Serializable {
     @Since("7.0")
     public ListGroupSnapshotsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListGroupSnapshotsResult(

@@ -38,7 +38,7 @@ public class SetLoginSessionInfoResult implements Serializable {
     @Since("7.0")
     public SetLoginSessionInfoResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

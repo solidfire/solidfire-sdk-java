@@ -40,6 +40,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
     @Since("7.0")
     public RemoveVolumesFromVolumeAccessGroupRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public RemoveVolumesFromVolumeAccessGroupRequest(
@@ -74,13 +75,13 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
         RemoveVolumesFromVolumeAccessGroupRequest that = (RemoveVolumesFromVolumeAccessGroupRequest) o;
 
         return 
-            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
             Arrays.equals(volumes, that.volumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, (Object[])volumes );
+        return Objects.hash( volumeAccessGroupID,(Object[])volumes );
     }
 
 

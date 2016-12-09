@@ -70,6 +70,7 @@ public class HardwareConfig implements Serializable {
     @Since("7.0")
     public HardwareConfig() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public HardwareConfig(
@@ -342,43 +343,43 @@ public class HardwareConfig implements Serializable {
         HardwareConfig that = (HardwareConfig) o;
 
         return 
-            Objects.equals(scsiBusInternalDriver, that.scsiBusInternalDriver) &&
-            Arrays.equals(networkDriver, that.networkDriver) &&
-            Objects.equals(biosRevision, that.biosRevision) &&
-            Objects.equals(slotOffset, that.slotOffset) &&
-            Objects.equals(numCpu, that.numCpu) &&
-            Arrays.equals(sliceDrives, that.sliceDrives) &&
-            Objects.equals(numDrives, that.numDrives) &&
-            Objects.equals(kernelCrashDump, that.kernelCrashDump) &&
-            Objects.equals(blockDriveSizeBytes, that.blockDriveSizeBytes) &&
-            Objects.equals(cpuModel, that.cpuModel) &&
-            Objects.equals(bmcFirmwareRevision, that.bmcFirmwareRevision) &&
-            Objects.equals(cpuCoresEnabled, that.cpuCoresEnabled) &&
-            Objects.equals(fibreChannelModel, that.fibreChannelModel) &&
-            Objects.equals(chassisType, that.chassisType) &&
-            Objects.equals(bmcIpmiVersion, that.bmcIpmiVersion) &&
-            Objects.equals(nodeType, that.nodeType) &&
-            Objects.equals(solidfireDefaults, that.solidfireDefaults) &&
-            Objects.equals(idracVersion, that.idracVersion) &&
-            Arrays.equals(blockDrives, that.blockDrives) &&
-            Objects.equals(biosVendor, that.biosVendor) &&
-            Objects.equals(fibreChannelFirmwareRevision, that.fibreChannelFirmwareRevision) &&
-            Objects.equals(scsiBusExternalDriver, that.scsiBusExternalDriver) &&
-            Objects.equals(numDrivesInternal, that.numDrivesInternal) &&
-            Objects.equals(sliceDriveSizeBytes, that.sliceDriveSizeBytes) &&
-            Objects.equals(biosVersion, that.biosVersion) &&
-            Objects.equals(memoryMhz, that.memoryMhz) &&
-            Objects.equals(cpuCores, that.cpuCores) &&
-            Objects.equals(rootDrive, that.rootDrive) &&
-            Objects.equals(driveSizeBytesInternal, that.driveSizeBytesInternal) &&
-            Objects.equals(lifecycleVersion, that.lifecycleVersion) &&
-            Objects.equals(memoryGB, that.memoryGB) &&
+            Objects.equals(scsiBusInternalDriver, that.scsiBusInternalDriver) && 
+            Arrays.equals(networkDriver, that.networkDriver) && 
+            Objects.equals(biosRevision, that.biosRevision) && 
+            Objects.equals(slotOffset, that.slotOffset) && 
+            Objects.equals(numCpu, that.numCpu) && 
+            Arrays.equals(sliceDrives, that.sliceDrives) && 
+            Objects.equals(numDrives, that.numDrives) && 
+            Objects.equals(kernelCrashDump, that.kernelCrashDump) && 
+            Objects.equals(blockDriveSizeBytes, that.blockDriveSizeBytes) && 
+            Objects.equals(cpuModel, that.cpuModel) && 
+            Objects.equals(bmcFirmwareRevision, that.bmcFirmwareRevision) && 
+            Objects.equals(cpuCoresEnabled, that.cpuCoresEnabled) && 
+            Objects.equals(fibreChannelModel, that.fibreChannelModel) && 
+            Objects.equals(chassisType, that.chassisType) && 
+            Objects.equals(bmcIpmiVersion, that.bmcIpmiVersion) && 
+            Objects.equals(nodeType, that.nodeType) && 
+            Objects.equals(solidfireDefaults, that.solidfireDefaults) && 
+            Objects.equals(idracVersion, that.idracVersion) && 
+            Arrays.equals(blockDrives, that.blockDrives) && 
+            Objects.equals(biosVendor, that.biosVendor) && 
+            Objects.equals(fibreChannelFirmwareRevision, that.fibreChannelFirmwareRevision) && 
+            Objects.equals(scsiBusExternalDriver, that.scsiBusExternalDriver) && 
+            Objects.equals(numDrivesInternal, that.numDrivesInternal) && 
+            Objects.equals(sliceDriveSizeBytes, that.sliceDriveSizeBytes) && 
+            Objects.equals(biosVersion, that.biosVersion) && 
+            Objects.equals(memoryMhz, that.memoryMhz) && 
+            Objects.equals(cpuCores, that.cpuCores) && 
+            Objects.equals(rootDrive, that.rootDrive) && 
+            Objects.equals(driveSizeBytesInternal, that.driveSizeBytesInternal) && 
+            Objects.equals(lifecycleVersion, that.lifecycleVersion) && 
+            Objects.equals(memoryGB, that.memoryGB) && 
             Objects.equals(cpuThreads, that.cpuThreads);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( scsiBusInternalDriver, (Object[])networkDriver, biosRevision, slotOffset, numCpu, (Object[])sliceDrives, numDrives, kernelCrashDump, blockDriveSizeBytes, cpuModel, bmcFirmwareRevision, cpuCoresEnabled, fibreChannelModel, chassisType, bmcIpmiVersion, nodeType, solidfireDefaults, idracVersion, (Object[])blockDrives, biosVendor, fibreChannelFirmwareRevision, scsiBusExternalDriver, numDrivesInternal, sliceDriveSizeBytes, biosVersion, memoryMhz, cpuCores, rootDrive, driveSizeBytesInternal, lifecycleVersion, memoryGB, cpuThreads );
+        return Objects.hash( scsiBusInternalDriver,(Object[])networkDriver,biosRevision,slotOffset,numCpu,(Object[])sliceDrives,numDrives,kernelCrashDump,blockDriveSizeBytes,cpuModel,bmcFirmwareRevision,cpuCoresEnabled,fibreChannelModel,chassisType,bmcIpmiVersion,nodeType,solidfireDefaults,idracVersion,(Object[])blockDrives,biosVendor,fibreChannelFirmwareRevision,scsiBusExternalDriver,numDrivesInternal,sliceDriveSizeBytes,biosVersion,memoryMhz,cpuCores,rootDrive,driveSizeBytesInternal,lifecycleVersion,memoryGB,cpuThreads );
     }
 
 

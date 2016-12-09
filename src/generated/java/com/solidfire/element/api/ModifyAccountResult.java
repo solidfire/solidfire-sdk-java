@@ -38,7 +38,7 @@ public class ModifyAccountResult implements Serializable {
     @Since("7.0")
     public ModifyAccountResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

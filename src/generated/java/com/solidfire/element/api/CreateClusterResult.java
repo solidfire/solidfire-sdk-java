@@ -38,7 +38,7 @@ public class CreateClusterResult implements Serializable {
     @Since("7.0")
     public CreateClusterResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

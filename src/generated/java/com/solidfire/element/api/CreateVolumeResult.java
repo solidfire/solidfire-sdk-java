@@ -40,6 +40,7 @@ public class CreateVolumeResult implements Serializable {
     @Since("7.0")
     public CreateVolumeResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CreateVolumeResult(
@@ -77,13 +78,13 @@ public class CreateVolumeResult implements Serializable {
         CreateVolumeResult that = (CreateVolumeResult) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(volumeID, that.volumeID) && 
             Objects.equals(curve, that.curve);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, curve );
+        return Objects.hash( volumeID,curve );
     }
 
 

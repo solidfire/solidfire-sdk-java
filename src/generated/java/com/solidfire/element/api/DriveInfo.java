@@ -46,6 +46,7 @@ public class DriveInfo implements Serializable {
     @Since("7.0")
     public DriveInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public DriveInfo(
@@ -132,19 +133,19 @@ public class DriveInfo implements Serializable {
         DriveInfo that = (DriveInfo) o;
 
         return 
-            Objects.equals(capacity, that.capacity) &&
-            Objects.equals(driveID, that.driveID) &&
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(serial, that.serial) &&
-            Objects.equals(slot, that.slot) &&
-            Objects.equals(status, that.status) &&
-            Objects.equals(type, that.type) &&
+            Objects.equals(capacity, that.capacity) && 
+            Objects.equals(driveID, that.driveID) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(serial, that.serial) && 
+            Objects.equals(slot, that.slot) && 
+            Objects.equals(status, that.status) && 
+            Objects.equals(type, that.type) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( capacity, driveID, nodeID, serial, slot, status, type, attributes );
+        return Objects.hash( capacity,driveID,nodeID,serial,slot,status,type,attributes );
     }
 
 

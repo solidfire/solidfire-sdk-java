@@ -40,6 +40,7 @@ public class LunAssignment implements Serializable {
     @Since("7.0")
     public LunAssignment() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public LunAssignment(
@@ -74,13 +75,13 @@ public class LunAssignment implements Serializable {
         LunAssignment that = (LunAssignment) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
+            Objects.equals(volumeID, that.volumeID) && 
             Objects.equals(lun, that.lun);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, lun );
+        return Objects.hash( volumeID,lun );
     }
 
 

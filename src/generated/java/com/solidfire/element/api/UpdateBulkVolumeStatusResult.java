@@ -41,6 +41,7 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
     @Since("7.0")
     public UpdateBulkVolumeStatusResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public UpdateBulkVolumeStatusResult(
@@ -88,14 +89,14 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
         UpdateBulkVolumeStatusResult that = (UpdateBulkVolumeStatusResult) o;
 
         return 
-            Objects.equals(status, that.status) &&
-            Objects.equals(url, that.url) &&
+            Objects.equals(status, that.status) && 
+            Objects.equals(url, that.url) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( status, url, attributes );
+        return Objects.hash( status,url,attributes );
     }
 
 

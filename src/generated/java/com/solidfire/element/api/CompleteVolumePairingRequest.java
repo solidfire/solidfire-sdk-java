@@ -40,6 +40,7 @@ public class CompleteVolumePairingRequest implements Serializable {
     @Since("7.0")
     public CompleteVolumePairingRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CompleteVolumePairingRequest(
@@ -74,13 +75,13 @@ public class CompleteVolumePairingRequest implements Serializable {
         CompleteVolumePairingRequest that = (CompleteVolumePairingRequest) o;
 
         return 
-            Objects.equals(volumePairingKey, that.volumePairingKey) &&
+            Objects.equals(volumePairingKey, that.volumePairingKey) && 
             Objects.equals(volumeID, that.volumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumePairingKey, volumeID );
+        return Objects.hash( volumePairingKey,volumeID );
     }
 
 

@@ -48,6 +48,7 @@ public class ClusterConfig implements Serializable {
     @Since("7.0")
     public ClusterConfig() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ClusterConfig(
@@ -151,21 +152,21 @@ public class ClusterConfig implements Serializable {
         ClusterConfig that = (ClusterConfig) o;
 
         return 
-            Objects.equals(cipi, that.cipi) &&
-            Objects.equals(cluster, that.cluster) &&
-            Objects.equals(ensemble, that.ensemble) &&
-            Objects.equals(mipi, that.mipi) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(pendingNodeID, that.pendingNodeID) &&
-            Objects.equals(role, that.role) &&
-            Objects.equals(sipi, that.sipi) &&
+            Objects.equals(cipi, that.cipi) && 
+            Objects.equals(cluster, that.cluster) && 
+            Objects.equals(ensemble, that.ensemble) && 
+            Objects.equals(mipi, that.mipi) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(pendingNodeID, that.pendingNodeID) && 
+            Objects.equals(role, that.role) && 
+            Objects.equals(sipi, that.sipi) && 
             Objects.equals(state, that.state);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( cipi, cluster, ensemble, mipi, name, nodeID, pendingNodeID, role, sipi, state );
+        return Objects.hash( cipi,cluster,ensemble,mipi,name,nodeID,pendingNodeID,role,sipi,state );
     }
 
 

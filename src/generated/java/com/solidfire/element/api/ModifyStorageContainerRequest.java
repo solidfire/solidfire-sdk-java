@@ -41,6 +41,7 @@ public class ModifyStorageContainerRequest implements Serializable {
     @Since("7.0")
     public ModifyStorageContainerRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ModifyStorageContainerRequest(
@@ -81,14 +82,14 @@ public class ModifyStorageContainerRequest implements Serializable {
         ModifyStorageContainerRequest that = (ModifyStorageContainerRequest) o;
 
         return 
-            Objects.equals(storageContainerID, that.storageContainerID) &&
-            Objects.equals(initiatorSecret, that.initiatorSecret) &&
+            Objects.equals(storageContainerID, that.storageContainerID) && 
+            Objects.equals(initiatorSecret, that.initiatorSecret) && 
             Objects.equals(targetSecret, that.targetSecret);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( storageContainerID, initiatorSecret, targetSecret );
+        return Objects.hash( storageContainerID,initiatorSecret,targetSecret );
     }
 
 

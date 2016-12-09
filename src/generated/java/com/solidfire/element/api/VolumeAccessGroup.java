@@ -45,6 +45,7 @@ public class VolumeAccessGroup implements Serializable {
     @Since("7.0")
     public VolumeAccessGroup() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public VolumeAccessGroup(
@@ -124,18 +125,18 @@ public class VolumeAccessGroup implements Serializable {
         VolumeAccessGroup that = (VolumeAccessGroup) o;
 
         return 
-            Objects.equals(attributes, that.attributes) &&
-            Arrays.equals(deletedVolumes, that.deletedVolumes) &&
-            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) &&
-            Objects.equals(name, that.name) &&
-            Arrays.equals(initiatorIDs, that.initiatorIDs) &&
-            Arrays.equals(initiators, that.initiators) &&
+            Objects.equals(attributes, that.attributes) && 
+            Arrays.equals(deletedVolumes, that.deletedVolumes) && 
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
+            Objects.equals(name, that.name) && 
+            Arrays.equals(initiatorIDs, that.initiatorIDs) && 
+            Arrays.equals(initiators, that.initiators) && 
             Arrays.equals(volumes, that.volumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( attributes, (Object[])deletedVolumes, volumeAccessGroupID, name, (Object[])initiatorIDs, (Object[])initiators, (Object[])volumes );
+        return Objects.hash( attributes,(Object[])deletedVolumes,volumeAccessGroupID,name,(Object[])initiatorIDs,(Object[])initiators,(Object[])volumes );
     }
 
 

@@ -39,6 +39,7 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
     @Since("7.0")
     public ListVolumeStatsByVirtualVolumeRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListVolumeStatsByVirtualVolumeRequest(

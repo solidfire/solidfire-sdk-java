@@ -39,6 +39,7 @@ public class ListBackupTargetsResult implements Serializable {
     @Since("7.0")
     public ListBackupTargetsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListBackupTargetsResult(

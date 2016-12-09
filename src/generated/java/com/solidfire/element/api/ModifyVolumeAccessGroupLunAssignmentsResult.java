@@ -38,7 +38,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsResult implements Serializable
     @Since("7.0")
     public ModifyVolumeAccessGroupLunAssignmentsResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

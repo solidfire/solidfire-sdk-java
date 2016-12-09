@@ -43,6 +43,7 @@ public class KernelCrashDump implements Serializable {
     @Since("7.0")
     public KernelCrashDump() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public KernelCrashDump(
@@ -99,16 +100,16 @@ public class KernelCrashDump implements Serializable {
         KernelCrashDump that = (KernelCrashDump) o;
 
         return 
-            Objects.equals(kernelCrashDumpMinFreeGb, that.kernelCrashDumpMinFreeGb) &&
-            Objects.equals(kernelCrashDumpDirectory, that.kernelCrashDumpDirectory) &&
-            Objects.equals(kernelCrashDumpKernelOptions, that.kernelCrashDumpKernelOptions) &&
-            Objects.equals(kernelCrashDumpMakedumpfileLevel, that.kernelCrashDumpMakedumpfileLevel) &&
+            Objects.equals(kernelCrashDumpMinFreeGb, that.kernelCrashDumpMinFreeGb) && 
+            Objects.equals(kernelCrashDumpDirectory, that.kernelCrashDumpDirectory) && 
+            Objects.equals(kernelCrashDumpKernelOptions, that.kernelCrashDumpKernelOptions) && 
+            Objects.equals(kernelCrashDumpMakedumpfileLevel, that.kernelCrashDumpMakedumpfileLevel) && 
             Objects.equals(kernelCrashDumpDefaultState, that.kernelCrashDumpDefaultState);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( kernelCrashDumpMinFreeGb, kernelCrashDumpDirectory, kernelCrashDumpKernelOptions, kernelCrashDumpMakedumpfileLevel, kernelCrashDumpDefaultState );
+        return Objects.hash( kernelCrashDumpMinFreeGb,kernelCrashDumpDirectory,kernelCrashDumpKernelOptions,kernelCrashDumpMakedumpfileLevel,kernelCrashDumpDefaultState );
     }
 
 

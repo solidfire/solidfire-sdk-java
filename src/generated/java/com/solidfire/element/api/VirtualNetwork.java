@@ -47,8 +47,29 @@ public class VirtualNetwork implements Serializable {
     @Since("7.0")
     public VirtualNetwork() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public VirtualNetwork(
+        Long virtualNetworkID,
+        Long virtualNetworkTag,
+        AddressBlock[] addressBlocks,
+        String name,
+        String netmask,
+        String svip,
+        java.util.Map<String, Object> attributes
+    )
+    {
+        this.virtualNetworkID = virtualNetworkID;
+        this.virtualNetworkTag = virtualNetworkTag;
+        this.addressBlocks = addressBlocks;
+        this.name = name;
+        this.netmask = netmask;
+        this.svip = svip;
+        this.attributes = attributes;
+    }
+    // parameterized constructor
+    @Since("9.0")
     public VirtualNetwork(
         Long virtualNetworkID,
         Long virtualNetworkTag,
@@ -147,20 +168,20 @@ public class VirtualNetwork implements Serializable {
         VirtualNetwork that = (VirtualNetwork) o;
 
         return 
-            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
-            Arrays.equals(addressBlocks, that.addressBlocks) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(netmask, that.netmask) &&
-            Objects.equals(svip, that.svip) &&
-            Objects.equals(gateway, that.gateway) &&
-            Objects.equals(namespace, that.namespace) &&
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) && 
+            Arrays.equals(addressBlocks, that.addressBlocks) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(netmask, that.netmask) && 
+            Objects.equals(svip, that.svip) && 
+            Objects.equals(gateway, that.gateway) && 
+            Objects.equals(namespace, that.namespace) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualNetworkID, virtualNetworkTag, (Object[])addressBlocks, name, netmask, svip, gateway, namespace, attributes );
+        return Objects.hash( virtualNetworkID,virtualNetworkTag,(Object[])addressBlocks,name,netmask,svip,gateway,namespace,attributes );
     }
 
 

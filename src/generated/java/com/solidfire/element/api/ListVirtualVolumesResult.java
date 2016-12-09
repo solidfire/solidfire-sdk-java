@@ -40,6 +40,7 @@ public class ListVirtualVolumesResult implements Serializable {
     @Since("7.0")
     public ListVirtualVolumesResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListVirtualVolumesResult(
@@ -72,13 +73,13 @@ public class ListVirtualVolumesResult implements Serializable {
         ListVirtualVolumesResult that = (ListVirtualVolumesResult) o;
 
         return 
-            Arrays.equals(virtualVolumes, that.virtualVolumes) &&
+            Arrays.equals(virtualVolumes, that.virtualVolumes) && 
             Objects.equals(nextVirtualVolumeID, that.nextVirtualVolumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])virtualVolumes, nextVirtualVolumeID );
+        return Objects.hash( (Object[])virtualVolumes,nextVirtualVolumeID );
     }
 
 

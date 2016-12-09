@@ -49,6 +49,7 @@ public class FibreChannelPortInfo implements Serializable {
     @Since("7.0")
     public FibreChannelPortInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public FibreChannelPortInfo(
@@ -166,22 +167,22 @@ public class FibreChannelPortInfo implements Serializable {
         FibreChannelPortInfo that = (FibreChannelPortInfo) o;
 
         return 
-            Objects.equals(firmware, that.firmware) &&
-            Objects.equals(hbaPort, that.hbaPort) &&
-            Objects.equals(model, that.model) &&
-            Objects.equals(nPortID, that.nPortID) &&
-            Objects.equals(pciSlot, that.pciSlot) &&
-            Objects.equals(serial, that.serial) &&
-            Objects.equals(speed, that.speed) &&
-            Objects.equals(state, that.state) &&
-            Objects.equals(switchWwn, that.switchWwn) &&
-            Objects.equals(wwnn, that.wwnn) &&
+            Objects.equals(firmware, that.firmware) && 
+            Objects.equals(hbaPort, that.hbaPort) && 
+            Objects.equals(model, that.model) && 
+            Objects.equals(nPortID, that.nPortID) && 
+            Objects.equals(pciSlot, that.pciSlot) && 
+            Objects.equals(serial, that.serial) && 
+            Objects.equals(speed, that.speed) && 
+            Objects.equals(state, that.state) && 
+            Objects.equals(switchWwn, that.switchWwn) && 
+            Objects.equals(wwnn, that.wwnn) && 
             Objects.equals(wwpn, that.wwpn);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( firmware, hbaPort, model, nPortID, pciSlot, serial, speed, state, switchWwn, wwnn, wwpn );
+        return Objects.hash( firmware,hbaPort,model,nPortID,pciSlot,serial,speed,state,switchWwn,wwnn,wwpn );
     }
 
 

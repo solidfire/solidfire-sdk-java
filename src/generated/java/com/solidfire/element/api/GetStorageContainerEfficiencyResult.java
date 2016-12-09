@@ -43,6 +43,7 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
     @Since("7.0")
     public GetStorageContainerEfficiencyResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetStorageContainerEfficiencyResult(
@@ -101,16 +102,16 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
         GetStorageContainerEfficiencyResult that = (GetStorageContainerEfficiencyResult) o;
 
         return 
-            Objects.equals(compression, that.compression) &&
-            Objects.equals(deduplication, that.deduplication) &&
-            Arrays.equals(missingVolumes, that.missingVolumes) &&
-            Objects.equals(thinProvisioning, that.thinProvisioning) &&
+            Objects.equals(compression, that.compression) && 
+            Objects.equals(deduplication, that.deduplication) && 
+            Arrays.equals(missingVolumes, that.missingVolumes) && 
+            Objects.equals(thinProvisioning, that.thinProvisioning) && 
             Objects.equals(timestamp, that.timestamp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( compression, deduplication, (Object[])missingVolumes, thinProvisioning, timestamp );
+        return Objects.hash( compression,deduplication,(Object[])missingVolumes,thinProvisioning,timestamp );
     }
 
 

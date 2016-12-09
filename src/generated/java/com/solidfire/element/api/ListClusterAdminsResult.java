@@ -39,6 +39,7 @@ public class ListClusterAdminsResult implements Serializable {
     @Since("7.0")
     public ListClusterAdminsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListClusterAdminsResult(

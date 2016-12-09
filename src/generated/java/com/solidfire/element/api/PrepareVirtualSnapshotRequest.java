@@ -42,6 +42,7 @@ public class PrepareVirtualSnapshotRequest implements Serializable {
     @Since("7.0")
     public PrepareVirtualSnapshotRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public PrepareVirtualSnapshotRequest(
@@ -93,15 +94,15 @@ public class PrepareVirtualSnapshotRequest implements Serializable {
         PrepareVirtualSnapshotRequest that = (PrepareVirtualSnapshotRequest) o;
 
         return 
-            Objects.equals(virtualVolumeID, that.virtualVolumeID) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(writableSnapshot, that.writableSnapshot) &&
+            Objects.equals(virtualVolumeID, that.virtualVolumeID) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(writableSnapshot, that.writableSnapshot) && 
             Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualVolumeID, name, writableSnapshot, callingVirtualVolumeHostID );
+        return Objects.hash( virtualVolumeID,name,writableSnapshot,callingVirtualVolumeHostID );
     }
 
 

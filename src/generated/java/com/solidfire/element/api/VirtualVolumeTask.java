@@ -48,6 +48,7 @@ public class VirtualVolumeTask implements Serializable {
     @Since("7.0")
     public VirtualVolumeTask() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public VirtualVolumeTask(
@@ -144,21 +145,21 @@ public class VirtualVolumeTask implements Serializable {
         VirtualVolumeTask that = (VirtualVolumeTask) o;
 
         return 
-            Objects.equals(virtualVolumeTaskID, that.virtualVolumeTaskID) &&
-            Objects.equals(virtualvolumeID, that.virtualvolumeID) &&
-            Objects.equals(cloneVirtualVolumeID, that.cloneVirtualVolumeID) &&
-            Objects.equals(status, that.status) &&
-            Objects.equals(operation, that.operation) &&
-            Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) &&
-            Objects.equals(parentMetadata, that.parentMetadata) &&
-            Objects.equals(parentTotalSize, that.parentTotalSize) &&
-            Objects.equals(parentUsedSize, that.parentUsedSize) &&
+            Objects.equals(virtualVolumeTaskID, that.virtualVolumeTaskID) && 
+            Objects.equals(virtualvolumeID, that.virtualvolumeID) && 
+            Objects.equals(cloneVirtualVolumeID, that.cloneVirtualVolumeID) && 
+            Objects.equals(status, that.status) && 
+            Objects.equals(operation, that.operation) && 
+            Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) && 
+            Objects.equals(parentMetadata, that.parentMetadata) && 
+            Objects.equals(parentTotalSize, that.parentTotalSize) && 
+            Objects.equals(parentUsedSize, that.parentUsedSize) && 
             Objects.equals(cancelled, that.cancelled);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualVolumeTaskID, virtualvolumeID, cloneVirtualVolumeID, status, operation, virtualVolumeHostID, parentMetadata, parentTotalSize, parentUsedSize, cancelled );
+        return Objects.hash( virtualVolumeTaskID,virtualvolumeID,cloneVirtualVolumeID,status,operation,virtualVolumeHostID,parentMetadata,parentTotalSize,parentUsedSize,cancelled );
     }
 
 

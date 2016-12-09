@@ -39,6 +39,7 @@ public class GetConfigResult implements Serializable {
     @Since("7.0")
     public GetConfigResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetConfigResult(

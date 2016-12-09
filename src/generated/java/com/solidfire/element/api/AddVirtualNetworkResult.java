@@ -39,6 +39,7 @@ public class AddVirtualNetworkResult implements Serializable {
     @Since("7.0")
     public AddVirtualNetworkResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public AddVirtualNetworkResult(

@@ -40,6 +40,7 @@ public class AddressBlock implements Serializable {
     @Since("7.0")
     public AddressBlock() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public AddressBlock(
@@ -74,13 +75,13 @@ public class AddressBlock implements Serializable {
         AddressBlock that = (AddressBlock) o;
 
         return 
-            Objects.equals(start, that.start) &&
+            Objects.equals(start, that.start) && 
             Objects.equals(size, that.size);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( start, size );
+        return Objects.hash( start,size );
     }
 
 

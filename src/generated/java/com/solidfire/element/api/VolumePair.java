@@ -44,6 +44,7 @@ public class VolumePair implements Serializable {
     @Since("7.0")
     public VolumePair() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public VolumePair(
@@ -114,17 +115,17 @@ public class VolumePair implements Serializable {
         VolumePair that = (VolumePair) o;
 
         return 
-            Objects.equals(clusterPairID, that.clusterPairID) &&
-            Objects.equals(remoteVolumeID, that.remoteVolumeID) &&
-            Objects.equals(remoteSliceID, that.remoteSliceID) &&
-            Objects.equals(remoteVolumeName, that.remoteVolumeName) &&
-            Objects.equals(volumePairUUID, that.volumePairUUID) &&
+            Objects.equals(clusterPairID, that.clusterPairID) && 
+            Objects.equals(remoteVolumeID, that.remoteVolumeID) && 
+            Objects.equals(remoteSliceID, that.remoteSliceID) && 
+            Objects.equals(remoteVolumeName, that.remoteVolumeName) && 
+            Objects.equals(volumePairUUID, that.volumePairUUID) && 
             Objects.equals(remoteReplication, that.remoteReplication);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterPairID, remoteVolumeID, remoteSliceID, remoteVolumeName, volumePairUUID, remoteReplication );
+        return Objects.hash( clusterPairID,remoteVolumeID,remoteSliceID,remoteVolumeName,volumePairUUID,remoteReplication );
     }
 
 

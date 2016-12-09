@@ -41,6 +41,7 @@ public class SetDefaultQoSRequest implements Serializable {
     @Since("7.0")
     public SetDefaultQoSRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SetDefaultQoSRequest(
@@ -84,14 +85,14 @@ public class SetDefaultQoSRequest implements Serializable {
         SetDefaultQoSRequest that = (SetDefaultQoSRequest) o;
 
         return 
-            Objects.equals(minIOPS, that.minIOPS) &&
-            Objects.equals(maxIOPS, that.maxIOPS) &&
+            Objects.equals(minIOPS, that.minIOPS) && 
+            Objects.equals(maxIOPS, that.maxIOPS) && 
             Objects.equals(burstIOPS, that.burstIOPS);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( minIOPS, maxIOPS, burstIOPS );
+        return Objects.hash( minIOPS,maxIOPS,burstIOPS );
     }
 
 

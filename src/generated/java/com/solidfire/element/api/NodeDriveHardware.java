@@ -40,6 +40,7 @@ public class NodeDriveHardware implements Serializable {
     @Since("7.0")
     public NodeDriveHardware() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public NodeDriveHardware(
@@ -72,13 +73,13 @@ public class NodeDriveHardware implements Serializable {
         NodeDriveHardware that = (NodeDriveHardware) o;
 
         return 
-            Objects.equals(nodeID, that.nodeID) &&
+            Objects.equals(nodeID, that.nodeID) && 
             Objects.equals(result, that.result);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID, result );
+        return Objects.hash( nodeID,result );
     }
 
 

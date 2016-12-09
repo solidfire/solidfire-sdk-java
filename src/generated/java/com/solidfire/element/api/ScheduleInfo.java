@@ -42,6 +42,7 @@ public class ScheduleInfo implements Serializable {
     @Since("7.0")
     public ScheduleInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ScheduleInfo(
@@ -94,15 +95,15 @@ public class ScheduleInfo implements Serializable {
         ScheduleInfo that = (ScheduleInfo) o;
 
         return 
-            Objects.equals(volumeIDs, that.volumeIDs) &&
-            Objects.equals(snapshotName, that.snapshotName) &&
-            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) &&
+            Objects.equals(volumeIDs, that.volumeIDs) && 
+            Objects.equals(snapshotName, that.snapshotName) && 
+            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) && 
             Objects.equals(retention, that.retention);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeIDs, snapshotName, enableRemoteReplication, retention );
+        return Objects.hash( volumeIDs,snapshotName,enableRemoteReplication,retention );
     }
 
 

@@ -43,6 +43,7 @@ public class FibreChannelSession implements Serializable {
     @Since("7.0")
     public FibreChannelSession() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public FibreChannelSession(
@@ -104,16 +105,16 @@ public class FibreChannelSession implements Serializable {
         FibreChannelSession that = (FibreChannelSession) o;
 
         return 
-            Objects.equals(initiatorWWPN, that.initiatorWWPN) &&
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(serviceID, that.serviceID) &&
-            Objects.equals(targetWWPN, that.targetWWPN) &&
+            Objects.equals(initiatorWWPN, that.initiatorWWPN) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(serviceID, that.serviceID) && 
+            Objects.equals(targetWWPN, that.targetWWPN) && 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( initiatorWWPN, nodeID, serviceID, targetWWPN, volumeAccessGroupID );
+        return Objects.hash( initiatorWWPN,nodeID,serviceID,targetWWPN,volumeAccessGroupID );
     }
 
 

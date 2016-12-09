@@ -51,6 +51,7 @@ public class VirtualVolumeInfo implements Serializable {
     @Since("7.0")
     public VirtualVolumeInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public VirtualVolumeInfo(
@@ -171,24 +172,24 @@ public class VirtualVolumeInfo implements Serializable {
         VirtualVolumeInfo that = (VirtualVolumeInfo) o;
 
         return 
-            Objects.equals(virtualVolumeID, that.virtualVolumeID) &&
-            Objects.equals(parentVirtualVolumeID, that.parentVirtualVolumeID) &&
-            Objects.equals(storageContainerID, that.storageContainerID) &&
-            Objects.equals(storageContainer, that.storageContainer) &&
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(snapshotID, that.snapshotID) &&
-            Objects.equals(virtualVolumeType, that.virtualVolumeType) &&
-            Objects.equals(status, that.status) &&
-            Arrays.equals(bindings, that.bindings) &&
-            Arrays.equals(children, that.children) &&
-            Objects.equals(metadata, that.metadata) &&
-            Objects.equals(snapshotInfo, that.snapshotInfo) &&
+            Objects.equals(virtualVolumeID, that.virtualVolumeID) && 
+            Objects.equals(parentVirtualVolumeID, that.parentVirtualVolumeID) && 
+            Objects.equals(storageContainerID, that.storageContainerID) && 
+            Objects.equals(storageContainer, that.storageContainer) && 
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(snapshotID, that.snapshotID) && 
+            Objects.equals(virtualVolumeType, that.virtualVolumeType) && 
+            Objects.equals(status, that.status) && 
+            Arrays.equals(bindings, that.bindings) && 
+            Arrays.equals(children, that.children) && 
+            Objects.equals(metadata, that.metadata) && 
+            Objects.equals(snapshotInfo, that.snapshotInfo) && 
             Objects.equals(volumeInfo, that.volumeInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualVolumeID, parentVirtualVolumeID, storageContainerID, storageContainer, volumeID, snapshotID, virtualVolumeType, status, (Object[])bindings, (Object[])children, metadata, snapshotInfo, volumeInfo );
+        return Objects.hash( virtualVolumeID,parentVirtualVolumeID,storageContainerID,storageContainer,volumeID,snapshotID,virtualVolumeType,status,(Object[])bindings,(Object[])children,metadata,snapshotInfo,volumeInfo );
     }
 
 

@@ -39,6 +39,7 @@ public class ModifyInitiatorsRequest implements Serializable {
     @Since("7.0")
     public ModifyInitiatorsRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ModifyInitiatorsRequest(

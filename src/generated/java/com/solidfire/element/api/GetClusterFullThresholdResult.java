@@ -55,6 +55,7 @@ public class GetClusterFullThresholdResult implements Serializable {
     @Since("7.0")
     public GetClusterFullThresholdResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetClusterFullThresholdResult(
@@ -225,28 +226,28 @@ public class GetClusterFullThresholdResult implements Serializable {
         GetClusterFullThresholdResult that = (GetClusterFullThresholdResult) o;
 
         return 
-            Objects.equals(blockFullness, that.blockFullness) &&
-            Objects.equals(fullness, that.fullness) &&
-            Objects.equals(maxMetadataOverProvisionFactor, that.maxMetadataOverProvisionFactor) &&
-            Objects.equals(metadataFullness, that.metadataFullness) &&
-            Objects.equals(sliceReserveUsedThresholdPct, that.sliceReserveUsedThresholdPct) &&
-            Objects.equals(stage2AwareThreshold, that.stage2AwareThreshold) &&
-            Objects.equals(stage2BlockThresholdBytes, that.stage2BlockThresholdBytes) &&
-            Objects.equals(stage3BlockThresholdBytes, that.stage3BlockThresholdBytes) &&
-            Objects.equals(stage3BlockThresholdPercent, that.stage3BlockThresholdPercent) &&
-            Objects.equals(stage3LowThreshold, that.stage3LowThreshold) &&
-            Objects.equals(stage4CriticalThreshold, that.stage4CriticalThreshold) &&
-            Objects.equals(stage4BlockThresholdBytes, that.stage4BlockThresholdBytes) &&
-            Objects.equals(stage5BlockThresholdBytes, that.stage5BlockThresholdBytes) &&
-            Objects.equals(sumTotalClusterBytes, that.sumTotalClusterBytes) &&
-            Objects.equals(sumTotalMetadataClusterBytes, that.sumTotalMetadataClusterBytes) &&
-            Objects.equals(sumUsedClusterBytes, that.sumUsedClusterBytes) &&
+            Objects.equals(blockFullness, that.blockFullness) && 
+            Objects.equals(fullness, that.fullness) && 
+            Objects.equals(maxMetadataOverProvisionFactor, that.maxMetadataOverProvisionFactor) && 
+            Objects.equals(metadataFullness, that.metadataFullness) && 
+            Objects.equals(sliceReserveUsedThresholdPct, that.sliceReserveUsedThresholdPct) && 
+            Objects.equals(stage2AwareThreshold, that.stage2AwareThreshold) && 
+            Objects.equals(stage2BlockThresholdBytes, that.stage2BlockThresholdBytes) && 
+            Objects.equals(stage3BlockThresholdBytes, that.stage3BlockThresholdBytes) && 
+            Objects.equals(stage3BlockThresholdPercent, that.stage3BlockThresholdPercent) && 
+            Objects.equals(stage3LowThreshold, that.stage3LowThreshold) && 
+            Objects.equals(stage4CriticalThreshold, that.stage4CriticalThreshold) && 
+            Objects.equals(stage4BlockThresholdBytes, that.stage4BlockThresholdBytes) && 
+            Objects.equals(stage5BlockThresholdBytes, that.stage5BlockThresholdBytes) && 
+            Objects.equals(sumTotalClusterBytes, that.sumTotalClusterBytes) && 
+            Objects.equals(sumTotalMetadataClusterBytes, that.sumTotalMetadataClusterBytes) && 
+            Objects.equals(sumUsedClusterBytes, that.sumUsedClusterBytes) && 
             Objects.equals(sumUsedMetadataClusterBytes, that.sumUsedMetadataClusterBytes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( blockFullness, fullness, maxMetadataOverProvisionFactor, metadataFullness, sliceReserveUsedThresholdPct, stage2AwareThreshold, stage2BlockThresholdBytes, stage3BlockThresholdBytes, stage3BlockThresholdPercent, stage3LowThreshold, stage4CriticalThreshold, stage4BlockThresholdBytes, stage5BlockThresholdBytes, sumTotalClusterBytes, sumTotalMetadataClusterBytes, sumUsedClusterBytes, sumUsedMetadataClusterBytes );
+        return Objects.hash( blockFullness,fullness,maxMetadataOverProvisionFactor,metadataFullness,sliceReserveUsedThresholdPct,stage2AwareThreshold,stage2BlockThresholdBytes,stage3BlockThresholdBytes,stage3BlockThresholdPercent,stage3LowThreshold,stage4CriticalThreshold,stage4BlockThresholdBytes,stage5BlockThresholdBytes,sumTotalClusterBytes,sumTotalMetadataClusterBytes,sumUsedClusterBytes,sumUsedMetadataClusterBytes );
     }
 
 

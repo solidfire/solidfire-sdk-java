@@ -44,6 +44,7 @@ public class CreateVirtualVolumeHostRequest implements Serializable {
     @Since("7.0")
     public CreateVirtualVolumeHostRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CreateVirtualVolumeHostRequest(
@@ -112,17 +113,17 @@ public class CreateVirtualVolumeHostRequest implements Serializable {
         CreateVirtualVolumeHostRequest that = (CreateVirtualVolumeHostRequest) o;
 
         return 
-            Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) &&
-            Objects.equals(clusterID, that.clusterID) &&
-            Objects.equals(initiatorNames, that.initiatorNames) &&
-            Objects.equals(visibleProtocolEndpointIDs, that.visibleProtocolEndpointIDs) &&
-            Objects.equals(hostAddress, that.hostAddress) &&
+            Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) && 
+            Objects.equals(clusterID, that.clusterID) && 
+            Objects.equals(initiatorNames, that.initiatorNames) && 
+            Objects.equals(visibleProtocolEndpointIDs, that.visibleProtocolEndpointIDs) && 
+            Objects.equals(hostAddress, that.hostAddress) && 
             Objects.equals(callingVirtualVolumeHostID, that.callingVirtualVolumeHostID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualVolumeHostID, clusterID, initiatorNames, visibleProtocolEndpointIDs, hostAddress, callingVirtualVolumeHostID );
+        return Objects.hash( virtualVolumeHostID,clusterID,initiatorNames,visibleProtocolEndpointIDs,hostAddress,callingVirtualVolumeHostID );
     }
 
 

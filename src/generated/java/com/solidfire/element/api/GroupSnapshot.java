@@ -45,6 +45,7 @@ public class GroupSnapshot implements Serializable {
     @Since("7.0")
     public GroupSnapshot() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GroupSnapshot(
@@ -127,18 +128,18 @@ public class GroupSnapshot implements Serializable {
         GroupSnapshot that = (GroupSnapshot) o;
 
         return 
-            Objects.equals(groupSnapshotID, that.groupSnapshotID) &&
-            Objects.equals(groupSnapshotUUID, that.groupSnapshotUUID) &&
-            Arrays.equals(members, that.members) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(createTime, that.createTime) &&
-            Objects.equals(status, that.status) &&
+            Objects.equals(groupSnapshotID, that.groupSnapshotID) && 
+            Objects.equals(groupSnapshotUUID, that.groupSnapshotUUID) && 
+            Arrays.equals(members, that.members) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(createTime, that.createTime) && 
+            Objects.equals(status, that.status) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( groupSnapshotID, groupSnapshotUUID, (Object[])members, name, createTime, status, attributes );
+        return Objects.hash( groupSnapshotID,groupSnapshotUUID,(Object[])members,name,createTime,status,attributes );
     }
 
 

@@ -50,6 +50,7 @@ public class NodeStatsInfo implements Serializable {
     @Since("7.0")
     public NodeStatsInfo() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public NodeStatsInfo(
@@ -173,23 +174,23 @@ public class NodeStatsInfo implements Serializable {
         NodeStatsInfo that = (NodeStatsInfo) o;
 
         return 
-            Objects.equals(cBytesIn, that.cBytesIn) &&
-            Objects.equals(cBytesOut, that.cBytesOut) &&
-            Objects.equals(cpu, that.cpu) &&
-            Objects.equals(mBytesIn, that.mBytesIn) &&
-            Objects.equals(mBytesOut, that.mBytesOut) &&
-            Objects.equals(networkUtilizationCluster, that.networkUtilizationCluster) &&
-            Objects.equals(networkUtilizationStorage, that.networkUtilizationStorage) &&
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(sBytesIn, that.sBytesIn) &&
-            Objects.equals(sBytesOut, that.sBytesOut) &&
-            Objects.equals(timestamp, that.timestamp) &&
+            Objects.equals(cBytesIn, that.cBytesIn) && 
+            Objects.equals(cBytesOut, that.cBytesOut) && 
+            Objects.equals(cpu, that.cpu) && 
+            Objects.equals(mBytesIn, that.mBytesIn) && 
+            Objects.equals(mBytesOut, that.mBytesOut) && 
+            Objects.equals(networkUtilizationCluster, that.networkUtilizationCluster) && 
+            Objects.equals(networkUtilizationStorage, that.networkUtilizationStorage) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(sBytesIn, that.sBytesIn) && 
+            Objects.equals(sBytesOut, that.sBytesOut) && 
+            Objects.equals(timestamp, that.timestamp) && 
             Objects.equals(usedMemory, that.usedMemory);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( cBytesIn, cBytesOut, cpu, mBytesIn, mBytesOut, networkUtilizationCluster, networkUtilizationStorage, nodeID, sBytesIn, sBytesOut, timestamp, usedMemory );
+        return Objects.hash( cBytesIn,cBytesOut,cpu,mBytesIn,mBytesOut,networkUtilizationCluster,networkUtilizationStorage,nodeID,sBytesIn,sBytesOut,timestamp,usedMemory );
     }
 
 

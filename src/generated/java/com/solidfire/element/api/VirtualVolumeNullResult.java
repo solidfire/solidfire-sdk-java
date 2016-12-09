@@ -38,7 +38,7 @@ public class VirtualVolumeNullResult implements Serializable {
     @Since("7.0")
     public VirtualVolumeNullResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

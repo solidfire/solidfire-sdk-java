@@ -40,6 +40,7 @@ public class CreateBackupTargetRequest implements Serializable {
     @Since("7.0")
     public CreateBackupTargetRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CreateBackupTargetRequest(
@@ -74,13 +75,13 @@ public class CreateBackupTargetRequest implements Serializable {
         CreateBackupTargetRequest that = (CreateBackupTargetRequest) o;
 
         return 
-            Objects.equals(name, that.name) &&
+            Objects.equals(name, that.name) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, attributes );
+        return Objects.hash( name,attributes );
     }
 
 

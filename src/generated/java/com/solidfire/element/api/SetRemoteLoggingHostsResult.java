@@ -38,7 +38,7 @@ public class SetRemoteLoggingHostsResult implements Serializable {
     @Since("7.0")
     public SetRemoteLoggingHostsResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

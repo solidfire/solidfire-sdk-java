@@ -40,6 +40,7 @@ public class ListActiveVolumesRequest implements Serializable {
     @Since("7.0")
     public ListActiveVolumesRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListActiveVolumesRequest(
@@ -76,13 +77,13 @@ public class ListActiveVolumesRequest implements Serializable {
         ListActiveVolumesRequest that = (ListActiveVolumesRequest) o;
 
         return 
-            Objects.equals(startVolumeID, that.startVolumeID) &&
+            Objects.equals(startVolumeID, that.startVolumeID) && 
             Objects.equals(limit, that.limit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( startVolumeID, limit );
+        return Objects.hash( startVolumeID,limit );
     }
 
 

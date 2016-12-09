@@ -38,7 +38,7 @@ public class DisableSnmpResult implements Serializable {
     @Since("7.0")
     public DisableSnmpResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

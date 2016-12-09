@@ -43,6 +43,7 @@ public class AddClusterAdminRequest implements Serializable {
     @Since("7.0")
     public AddClusterAdminRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public AddClusterAdminRequest(
@@ -104,16 +105,16 @@ public class AddClusterAdminRequest implements Serializable {
         AddClusterAdminRequest that = (AddClusterAdminRequest) o;
 
         return 
-            Objects.equals(username, that.username) &&
-            Objects.equals(password, that.password) &&
-            Arrays.equals(access, that.access) &&
-            Objects.equals(acceptEula, that.acceptEula) &&
+            Objects.equals(username, that.username) && 
+            Objects.equals(password, that.password) && 
+            Arrays.equals(access, that.access) && 
+            Objects.equals(acceptEula, that.acceptEula) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( username, password, (Object[])access, acceptEula, attributes );
+        return Objects.hash( username,password,(Object[])access,acceptEula,attributes );
     }
 
 

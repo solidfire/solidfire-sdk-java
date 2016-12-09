@@ -45,6 +45,7 @@ public class PhysicalAdapter implements Serializable {
     @Since("7.0")
     public PhysicalAdapter() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public PhysicalAdapter(
@@ -117,18 +118,18 @@ public class PhysicalAdapter implements Serializable {
         PhysicalAdapter that = (PhysicalAdapter) o;
 
         return 
-            Objects.equals(address, that.address) &&
-            Objects.equals(macAddress, that.macAddress) &&
-            Objects.equals(macAddressPermanent, that.macAddressPermanent) &&
-            Objects.equals(mtu, that.mtu) &&
-            Objects.equals(netmask, that.netmask) &&
-            Objects.equals(network, that.network) &&
+            Objects.equals(address, that.address) && 
+            Objects.equals(macAddress, that.macAddress) && 
+            Objects.equals(macAddressPermanent, that.macAddressPermanent) && 
+            Objects.equals(mtu, that.mtu) && 
+            Objects.equals(netmask, that.netmask) && 
+            Objects.equals(network, that.network) && 
             Objects.equals(upAndRunning, that.upAndRunning);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( address, macAddress, macAddressPermanent, mtu, netmask, network, upAndRunning );
+        return Objects.hash( address,macAddress,macAddressPermanent,mtu,netmask,network,upAndRunning );
     }
 
 

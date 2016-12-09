@@ -55,6 +55,7 @@ public class SyncJob implements Serializable {
     @Since("7.0")
     public SyncJob() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public SyncJob(
@@ -207,28 +208,28 @@ public class SyncJob implements Serializable {
         SyncJob that = (SyncJob) o;
 
         return 
-            Objects.equals(bytesPerSecond, that.bytesPerSecond) &&
-            Objects.equals(currentBytes, that.currentBytes) &&
-            Objects.equals(dstServiceID, that.dstServiceID) &&
-            Objects.equals(elapsedTime, that.elapsedTime) &&
-            Objects.equals(percentComplete, that.percentComplete) &&
-            Objects.equals(remainingTime, that.remainingTime) &&
-            Objects.equals(sliceID, that.sliceID) &&
-            Objects.equals(srcServiceID, that.srcServiceID) &&
-            Objects.equals(totalBytes, that.totalBytes) &&
-            Objects.equals(type, that.type) &&
-            Objects.equals(cloneID, that.cloneID) &&
-            Objects.equals(dstVolumeID, that.dstVolumeID) &&
-            Objects.equals(nodeID, that.nodeID) &&
-            Objects.equals(snapshotID, that.snapshotID) &&
-            Objects.equals(srcVolumeID, that.srcVolumeID) &&
-            Objects.equals(blocksPerSecond, that.blocksPerSecond) &&
+            Objects.equals(bytesPerSecond, that.bytesPerSecond) && 
+            Objects.equals(currentBytes, that.currentBytes) && 
+            Objects.equals(dstServiceID, that.dstServiceID) && 
+            Objects.equals(elapsedTime, that.elapsedTime) && 
+            Objects.equals(percentComplete, that.percentComplete) && 
+            Objects.equals(remainingTime, that.remainingTime) && 
+            Objects.equals(sliceID, that.sliceID) && 
+            Objects.equals(srcServiceID, that.srcServiceID) && 
+            Objects.equals(totalBytes, that.totalBytes) && 
+            Objects.equals(type, that.type) && 
+            Objects.equals(cloneID, that.cloneID) && 
+            Objects.equals(dstVolumeID, that.dstVolumeID) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(snapshotID, that.snapshotID) && 
+            Objects.equals(srcVolumeID, that.srcVolumeID) && 
+            Objects.equals(blocksPerSecond, that.blocksPerSecond) && 
             Objects.equals(stage, that.stage);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( bytesPerSecond, currentBytes, dstServiceID, elapsedTime, percentComplete, remainingTime, sliceID, srcServiceID, totalBytes, type, cloneID, dstVolumeID, nodeID, snapshotID, srcVolumeID, blocksPerSecond, stage );
+        return Objects.hash( bytesPerSecond,currentBytes,dstServiceID,elapsedTime,percentComplete,remainingTime,sliceID,srcServiceID,totalBytes,type,cloneID,dstVolumeID,nodeID,snapshotID,srcVolumeID,blocksPerSecond,stage );
     }
 
 

@@ -39,6 +39,7 @@ public class TestConnectMvipRequest implements Serializable {
     @Since("7.0")
     public TestConnectMvipRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public TestConnectMvipRequest(

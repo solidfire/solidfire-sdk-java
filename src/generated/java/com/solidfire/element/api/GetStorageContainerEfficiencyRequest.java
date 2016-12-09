@@ -39,6 +39,7 @@ public class GetStorageContainerEfficiencyRequest implements Serializable {
     @Since("7.0")
     public GetStorageContainerEfficiencyRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetStorageContainerEfficiencyRequest(

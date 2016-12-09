@@ -44,6 +44,7 @@ public class CloneMultipleVolumeParams implements Serializable {
     @Since("7.0")
     public CloneMultipleVolumeParams() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public CloneMultipleVolumeParams(
@@ -120,17 +121,17 @@ public class CloneMultipleVolumeParams implements Serializable {
         CloneMultipleVolumeParams that = (CloneMultipleVolumeParams) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID) &&
-            Objects.equals(access, that.access) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(newAccountID, that.newAccountID) &&
-            Objects.equals(newSize, that.newSize) &&
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(access, that.access) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(newAccountID, that.newAccountID) && 
+            Objects.equals(newSize, that.newSize) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, access, name, newAccountID, newSize, attributes );
+        return Objects.hash( volumeID,access,name,newAccountID,newSize,attributes );
     }
 
 

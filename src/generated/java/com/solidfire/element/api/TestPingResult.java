@@ -41,6 +41,7 @@ public class TestPingResult implements Serializable {
     @Since("7.0")
     public TestPingResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public TestPingResult(
@@ -84,14 +85,14 @@ public class TestPingResult implements Serializable {
         TestPingResult that = (TestPingResult) o;
 
         return 
-            Objects.equals(result, that.result) &&
-            Objects.equals(duration, that.duration) &&
+            Objects.equals(result, that.result) && 
+            Objects.equals(duration, that.duration) && 
             Objects.equals(details, that.details);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( result, duration, details );
+        return Objects.hash( result,duration,details );
     }
 
 

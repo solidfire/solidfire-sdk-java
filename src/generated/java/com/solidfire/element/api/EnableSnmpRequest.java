@@ -39,6 +39,7 @@ public class EnableSnmpRequest implements Serializable {
     @Since("7.0")
     public EnableSnmpRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public EnableSnmpRequest(

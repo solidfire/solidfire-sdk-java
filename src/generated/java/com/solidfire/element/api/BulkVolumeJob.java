@@ -51,8 +51,39 @@ public class BulkVolumeJob implements Serializable {
     @Since("7.0")
     public BulkVolumeJob() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public BulkVolumeJob(
+        Long bulkVolumeID,
+        String createTime,
+        String format,
+        String key,
+        Long percentComplete,
+        Long remainingTime,
+        Long srcVolumeID,
+        String status,
+        String script,
+        Long snapshotID,
+        String type,
+        java.util.Map<String, Object> attributes
+    )
+    {
+        this.bulkVolumeID = bulkVolumeID;
+        this.createTime = createTime;
+        this.format = format;
+        this.key = key;
+        this.percentComplete = percentComplete;
+        this.remainingTime = remainingTime;
+        this.srcVolumeID = srcVolumeID;
+        this.status = status;
+        this.script = script;
+        this.snapshotID = snapshotID;
+        this.type = type;
+        this.attributes = attributes;
+    }
+    // parameterized constructor
+    @Since("8.0")
     public BulkVolumeJob(
         Long bulkVolumeID,
         String createTime,
@@ -190,24 +221,24 @@ public class BulkVolumeJob implements Serializable {
         BulkVolumeJob that = (BulkVolumeJob) o;
 
         return 
-            Objects.equals(bulkVolumeID, that.bulkVolumeID) &&
-            Objects.equals(createTime, that.createTime) &&
-            Objects.equals(elapsedTime, that.elapsedTime) &&
-            Objects.equals(format, that.format) &&
-            Objects.equals(key, that.key) &&
-            Objects.equals(percentComplete, that.percentComplete) &&
-            Objects.equals(remainingTime, that.remainingTime) &&
-            Objects.equals(srcVolumeID, that.srcVolumeID) &&
-            Objects.equals(status, that.status) &&
-            Objects.equals(script, that.script) &&
-            Objects.equals(snapshotID, that.snapshotID) &&
-            Objects.equals(type, that.type) &&
+            Objects.equals(bulkVolumeID, that.bulkVolumeID) && 
+            Objects.equals(createTime, that.createTime) && 
+            Objects.equals(elapsedTime, that.elapsedTime) && 
+            Objects.equals(format, that.format) && 
+            Objects.equals(key, that.key) && 
+            Objects.equals(percentComplete, that.percentComplete) && 
+            Objects.equals(remainingTime, that.remainingTime) && 
+            Objects.equals(srcVolumeID, that.srcVolumeID) && 
+            Objects.equals(status, that.status) && 
+            Objects.equals(script, that.script) && 
+            Objects.equals(snapshotID, that.snapshotID) && 
+            Objects.equals(type, that.type) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( bulkVolumeID, createTime, elapsedTime, format, key, percentComplete, remainingTime, srcVolumeID, status, script, snapshotID, type, attributes );
+        return Objects.hash( bulkVolumeID,createTime,elapsedTime,format,key,percentComplete,remainingTime,srcVolumeID,status,script,snapshotID,type,attributes );
     }
 
 

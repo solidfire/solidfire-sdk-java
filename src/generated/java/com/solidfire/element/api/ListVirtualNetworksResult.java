@@ -39,6 +39,7 @@ public class ListVirtualNetworksResult implements Serializable {
     @Since("7.0")
     public ListVirtualNetworksResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListVirtualNetworksResult(

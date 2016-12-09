@@ -74,6 +74,7 @@ public class GetLimitsResult implements Serializable {
     @Since("7.0")
     public GetLimitsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public GetLimitsResult(
@@ -378,47 +379,47 @@ public class GetLimitsResult implements Serializable {
         GetLimitsResult that = (GetLimitsResult) o;
 
         return 
-            Objects.equals(accountCountMax, that.accountCountMax) &&
-            Objects.equals(accountNameLengthMax, that.accountNameLengthMax) &&
-            Objects.equals(accountNameLengthMin, that.accountNameLengthMin) &&
-            Objects.equals(bulkVolumeJobsPerNodeMax, that.bulkVolumeJobsPerNodeMax) &&
-            Objects.equals(bulkVolumeJobsPerVolumeMax, that.bulkVolumeJobsPerVolumeMax) &&
-            Objects.equals(cloneJobsPerVolumeMax, that.cloneJobsPerVolumeMax) &&
-            Objects.equals(clusterPairsCountMax, that.clusterPairsCountMax) &&
-            Objects.equals(initiatorNameLengthMax, that.initiatorNameLengthMax) &&
-            Objects.equals(initiatorCountMax, that.initiatorCountMax) &&
-            Objects.equals(initiatorsPerVolumeAccessGroupCountMax, that.initiatorsPerVolumeAccessGroupCountMax) &&
-            Objects.equals(iscsiSessionsFromFibreChannelNodesMax, that.iscsiSessionsFromFibreChannelNodesMax) &&
-            Objects.equals(secretLengthMax, that.secretLengthMax) &&
-            Objects.equals(secretLengthMin, that.secretLengthMin) &&
-            Objects.equals(snapshotNameLengthMax, that.snapshotNameLengthMax) &&
-            Objects.equals(snapshotsPerVolumeMax, that.snapshotsPerVolumeMax) &&
-            Objects.equals(volumeAccessGroupCountMax, that.volumeAccessGroupCountMax) &&
-            Objects.equals(volumeAccessGroupLunMax, that.volumeAccessGroupLunMax) &&
-            Objects.equals(volumeAccessGroupNameLengthMax, that.volumeAccessGroupNameLengthMax) &&
-            Objects.equals(volumeAccessGroupNameLengthMin, that.volumeAccessGroupNameLengthMin) &&
-            Objects.equals(volumeAccessGroupsPerInitiatorCountMax, that.volumeAccessGroupsPerInitiatorCountMax) &&
-            Objects.equals(volumeAccessGroupsPerVolumeCountMax, that.volumeAccessGroupsPerVolumeCountMax) &&
-            Objects.equals(initiatorAliasLengthMax, that.initiatorAliasLengthMax) &&
-            Objects.equals(volumeBurstIOPSMax, that.volumeBurstIOPSMax) &&
-            Objects.equals(volumeBurstIOPSMin, that.volumeBurstIOPSMin) &&
-            Objects.equals(volumeCountMax, that.volumeCountMax) &&
-            Objects.equals(volumeMaxIOPSMax, that.volumeMaxIOPSMax) &&
-            Objects.equals(volumeMaxIOPSMin, that.volumeMaxIOPSMin) &&
-            Objects.equals(volumeMinIOPSMax, that.volumeMinIOPSMax) &&
-            Objects.equals(volumeMinIOPSMin, that.volumeMinIOPSMin) &&
-            Objects.equals(volumeNameLengthMax, that.volumeNameLengthMax) &&
-            Objects.equals(volumeNameLengthMin, that.volumeNameLengthMin) &&
-            Objects.equals(volumeSizeMax, that.volumeSizeMax) &&
-            Objects.equals(volumeSizeMin, that.volumeSizeMin) &&
-            Objects.equals(volumesPerAccountCountMax, that.volumesPerAccountCountMax) &&
-            Objects.equals(volumesPerGroupSnapshotMax, that.volumesPerGroupSnapshotMax) &&
+            Objects.equals(accountCountMax, that.accountCountMax) && 
+            Objects.equals(accountNameLengthMax, that.accountNameLengthMax) && 
+            Objects.equals(accountNameLengthMin, that.accountNameLengthMin) && 
+            Objects.equals(bulkVolumeJobsPerNodeMax, that.bulkVolumeJobsPerNodeMax) && 
+            Objects.equals(bulkVolumeJobsPerVolumeMax, that.bulkVolumeJobsPerVolumeMax) && 
+            Objects.equals(cloneJobsPerVolumeMax, that.cloneJobsPerVolumeMax) && 
+            Objects.equals(clusterPairsCountMax, that.clusterPairsCountMax) && 
+            Objects.equals(initiatorNameLengthMax, that.initiatorNameLengthMax) && 
+            Objects.equals(initiatorCountMax, that.initiatorCountMax) && 
+            Objects.equals(initiatorsPerVolumeAccessGroupCountMax, that.initiatorsPerVolumeAccessGroupCountMax) && 
+            Objects.equals(iscsiSessionsFromFibreChannelNodesMax, that.iscsiSessionsFromFibreChannelNodesMax) && 
+            Objects.equals(secretLengthMax, that.secretLengthMax) && 
+            Objects.equals(secretLengthMin, that.secretLengthMin) && 
+            Objects.equals(snapshotNameLengthMax, that.snapshotNameLengthMax) && 
+            Objects.equals(snapshotsPerVolumeMax, that.snapshotsPerVolumeMax) && 
+            Objects.equals(volumeAccessGroupCountMax, that.volumeAccessGroupCountMax) && 
+            Objects.equals(volumeAccessGroupLunMax, that.volumeAccessGroupLunMax) && 
+            Objects.equals(volumeAccessGroupNameLengthMax, that.volumeAccessGroupNameLengthMax) && 
+            Objects.equals(volumeAccessGroupNameLengthMin, that.volumeAccessGroupNameLengthMin) && 
+            Objects.equals(volumeAccessGroupsPerInitiatorCountMax, that.volumeAccessGroupsPerInitiatorCountMax) && 
+            Objects.equals(volumeAccessGroupsPerVolumeCountMax, that.volumeAccessGroupsPerVolumeCountMax) && 
+            Objects.equals(initiatorAliasLengthMax, that.initiatorAliasLengthMax) && 
+            Objects.equals(volumeBurstIOPSMax, that.volumeBurstIOPSMax) && 
+            Objects.equals(volumeBurstIOPSMin, that.volumeBurstIOPSMin) && 
+            Objects.equals(volumeCountMax, that.volumeCountMax) && 
+            Objects.equals(volumeMaxIOPSMax, that.volumeMaxIOPSMax) && 
+            Objects.equals(volumeMaxIOPSMin, that.volumeMaxIOPSMin) && 
+            Objects.equals(volumeMinIOPSMax, that.volumeMinIOPSMax) && 
+            Objects.equals(volumeMinIOPSMin, that.volumeMinIOPSMin) && 
+            Objects.equals(volumeNameLengthMax, that.volumeNameLengthMax) && 
+            Objects.equals(volumeNameLengthMin, that.volumeNameLengthMin) && 
+            Objects.equals(volumeSizeMax, that.volumeSizeMax) && 
+            Objects.equals(volumeSizeMin, that.volumeSizeMin) && 
+            Objects.equals(volumesPerAccountCountMax, that.volumesPerAccountCountMax) && 
+            Objects.equals(volumesPerGroupSnapshotMax, that.volumesPerGroupSnapshotMax) && 
             Objects.equals(volumesPerVolumeAccessGroupCountMax, that.volumesPerVolumeAccessGroupCountMax);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountCountMax, accountNameLengthMax, accountNameLengthMin, bulkVolumeJobsPerNodeMax, bulkVolumeJobsPerVolumeMax, cloneJobsPerVolumeMax, clusterPairsCountMax, initiatorNameLengthMax, initiatorCountMax, initiatorsPerVolumeAccessGroupCountMax, iscsiSessionsFromFibreChannelNodesMax, secretLengthMax, secretLengthMin, snapshotNameLengthMax, snapshotsPerVolumeMax, volumeAccessGroupCountMax, volumeAccessGroupLunMax, volumeAccessGroupNameLengthMax, volumeAccessGroupNameLengthMin, volumeAccessGroupsPerInitiatorCountMax, volumeAccessGroupsPerVolumeCountMax, initiatorAliasLengthMax, volumeBurstIOPSMax, volumeBurstIOPSMin, volumeCountMax, volumeMaxIOPSMax, volumeMaxIOPSMin, volumeMinIOPSMax, volumeMinIOPSMin, volumeNameLengthMax, volumeNameLengthMin, volumeSizeMax, volumeSizeMin, volumesPerAccountCountMax, volumesPerGroupSnapshotMax, volumesPerVolumeAccessGroupCountMax );
+        return Objects.hash( accountCountMax,accountNameLengthMax,accountNameLengthMin,bulkVolumeJobsPerNodeMax,bulkVolumeJobsPerVolumeMax,cloneJobsPerVolumeMax,clusterPairsCountMax,initiatorNameLengthMax,initiatorCountMax,initiatorsPerVolumeAccessGroupCountMax,iscsiSessionsFromFibreChannelNodesMax,secretLengthMax,secretLengthMin,snapshotNameLengthMax,snapshotsPerVolumeMax,volumeAccessGroupCountMax,volumeAccessGroupLunMax,volumeAccessGroupNameLengthMax,volumeAccessGroupNameLengthMin,volumeAccessGroupsPerInitiatorCountMax,volumeAccessGroupsPerVolumeCountMax,initiatorAliasLengthMax,volumeBurstIOPSMax,volumeBurstIOPSMin,volumeCountMax,volumeMaxIOPSMax,volumeMaxIOPSMin,volumeMinIOPSMax,volumeMinIOPSMin,volumeNameLengthMax,volumeNameLengthMin,volumeSizeMax,volumeSizeMin,volumesPerAccountCountMax,volumesPerGroupSnapshotMax,volumesPerVolumeAccessGroupCountMax );
     }
 
 

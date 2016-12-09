@@ -47,8 +47,29 @@ public class ModifyVirtualNetworkRequest implements Serializable {
     @Since("7.0")
     public ModifyVirtualNetworkRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public ModifyVirtualNetworkRequest(
+        Optional<Long> virtualNetworkID,
+        Optional<Long> virtualNetworkTag,
+        Optional<String> name,
+        Optional<AddressBlock[]> addressBlocks,
+        Optional<String> netmask,
+        Optional<String> svip,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : addressBlocks;
+        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
+        this.svip = (svip == null) ? Optional.<String>empty() : svip;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
+    // parameterized constructor
+    @Since("9.0")
     public ModifyVirtualNetworkRequest(
         Optional<Long> virtualNetworkID,
         Optional<Long> virtualNetworkTag,
@@ -147,20 +168,20 @@ public class ModifyVirtualNetworkRequest implements Serializable {
         ModifyVirtualNetworkRequest that = (ModifyVirtualNetworkRequest) o;
 
         return 
-            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
-            Objects.equals(name, that.name) &&
-            Objects.equals(addressBlocks, that.addressBlocks) &&
-            Objects.equals(netmask, that.netmask) &&
-            Objects.equals(svip, that.svip) &&
-            Objects.equals(gateway, that.gateway) &&
-            Objects.equals(namespace, that.namespace) &&
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(addressBlocks, that.addressBlocks) && 
+            Objects.equals(netmask, that.netmask) && 
+            Objects.equals(svip, that.svip) && 
+            Objects.equals(gateway, that.gateway) && 
+            Objects.equals(namespace, that.namespace) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualNetworkID, virtualNetworkTag, name, addressBlocks, netmask, svip, gateway, namespace, attributes );
+        return Objects.hash( virtualNetworkID,virtualNetworkTag,name,addressBlocks,netmask,svip,gateway,namespace,attributes );
     }
 
 

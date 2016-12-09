@@ -41,6 +41,7 @@ public class TestConnectSvipDetails implements Serializable {
     @Since("7.0")
     public TestConnectSvipDetails() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public TestConnectSvipDetails(
@@ -84,14 +85,14 @@ public class TestConnectSvipDetails implements Serializable {
         TestConnectSvipDetails that = (TestConnectSvipDetails) o;
 
         return 
-            Objects.equals(pingBytes, that.pingBytes) &&
-            Objects.equals(svip, that.svip) &&
+            Objects.equals(pingBytes, that.pingBytes) && 
+            Objects.equals(svip, that.svip) && 
             Objects.equals(connected, that.connected);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( pingBytes, svip, connected );
+        return Objects.hash( pingBytes,svip,connected );
     }
 
 

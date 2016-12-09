@@ -46,8 +46,27 @@ public class AddVirtualNetworkRequest implements Serializable {
     @Since("7.0")
     public AddVirtualNetworkRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
+    public AddVirtualNetworkRequest(
+        Long virtualNetworkTag,
+        String name,
+        AddressBlock[] addressBlocks,
+        String netmask,
+        String svip,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.virtualNetworkTag = virtualNetworkTag;
+        this.name = name;
+        this.addressBlocks = addressBlocks;
+        this.netmask = netmask;
+        this.svip = svip;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
+    // parameterized constructor
+    @Since("9.0")
     public AddVirtualNetworkRequest(
         Long virtualNetworkTag,
         String name,
@@ -137,19 +156,19 @@ public class AddVirtualNetworkRequest implements Serializable {
         AddVirtualNetworkRequest that = (AddVirtualNetworkRequest) o;
 
         return 
-            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
-            Objects.equals(name, that.name) &&
-            Arrays.equals(addressBlocks, that.addressBlocks) &&
-            Objects.equals(netmask, that.netmask) &&
-            Objects.equals(svip, that.svip) &&
-            Objects.equals(gateway, that.gateway) &&
-            Objects.equals(namespace, that.namespace) &&
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) && 
+            Objects.equals(name, that.name) && 
+            Arrays.equals(addressBlocks, that.addressBlocks) && 
+            Objects.equals(netmask, that.netmask) && 
+            Objects.equals(svip, that.svip) && 
+            Objects.equals(gateway, that.gateway) && 
+            Objects.equals(namespace, that.namespace) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualNetworkTag, name, (Object[])addressBlocks, netmask, svip, gateway, namespace, attributes );
+        return Objects.hash( virtualNetworkTag,name,(Object[])addressBlocks,netmask,svip,gateway,namespace,attributes );
     }
 
 

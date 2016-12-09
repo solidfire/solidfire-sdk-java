@@ -39,6 +39,7 @@ public class ListVirtualVolumeHostsResult implements Serializable {
     @Since("7.0")
     public ListVirtualVolumeHostsResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListVirtualVolumeHostsResult(

@@ -42,6 +42,7 @@ public class ListVirtualNetworksRequest implements Serializable {
     @Since("7.0")
     public ListVirtualNetworksRequest() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public ListVirtualNetworksRequest(
@@ -94,15 +95,15 @@ public class ListVirtualNetworksRequest implements Serializable {
         ListVirtualNetworksRequest that = (ListVirtualNetworksRequest) o;
 
         return 
-            Objects.equals(virtualNetworkID, that.virtualNetworkID) &&
-            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) &&
-            Objects.equals(virtualNetworkIDs, that.virtualNetworkIDs) &&
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) && 
+            Objects.equals(virtualNetworkIDs, that.virtualNetworkIDs) && 
             Objects.equals(virtualNetworkTags, that.virtualNetworkTags);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualNetworkID, virtualNetworkTag, virtualNetworkIDs, virtualNetworkTags );
+        return Objects.hash( virtualNetworkID,virtualNetworkTag,virtualNetworkIDs,virtualNetworkTags );
     }
 
 

@@ -38,7 +38,7 @@ public class SetNtpInfoResult implements Serializable {
     @Since("7.0")
     public SetNtpInfoResult() {}
 
-
+    
 
     @Override
     public boolean equals(Object o) {

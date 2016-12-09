@@ -39,6 +39,7 @@ public class AddClusterAdminResult implements Serializable {
     @Since("7.0")
     public AddClusterAdminResult() {}
 
+    
     // parameterized constructor
     @Since("7.0")
     public AddClusterAdminResult(
