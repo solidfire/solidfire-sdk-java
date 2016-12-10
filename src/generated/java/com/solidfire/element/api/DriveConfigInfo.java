@@ -38,15 +38,15 @@ public class DriveConfigInfo implements Serializable {
     @SerializedName("dev") private Long dev;
     @SerializedName("devPath") private String devPath;
     @SerializedName("driveType") private String driveType;
-    @SerializedName("fsType") private String fsType;
-    @SerializedName("isMounted") private Boolean isMounted;
+    @SerializedName("fsType") private Optional<String> fsType;
+    @SerializedName("isMounted") private Optional<Boolean> isMounted;
     @SerializedName("product") private String product;
-    @SerializedName("mountPoint") private String mountPoint;
+    @SerializedName("mountPoint") private Optional<String> mountPoint;
     @SerializedName("name") private String name;
     @SerializedName("path") private String path;
     @SerializedName("pathLink") private String pathLink;
     @SerializedName("scsiCompatId") private String scsiCompatId;
-    @SerializedName("smartSsdWriteCapable") private Boolean smartSsdWriteCapable;
+    @SerializedName("smartSsdWriteCapable") private Optional<Boolean> smartSsdWriteCapable;
     @SerializedName("securityEnabled") private Boolean securityEnabled;
     @SerializedName("securityFrozen") private Boolean securityFrozen;
     @SerializedName("securityLocked") private Boolean securityLocked;
@@ -79,15 +79,15 @@ public class DriveConfigInfo implements Serializable {
         Long dev,
         String devPath,
         String driveType,
-        String fsType,
-        Boolean isMounted,
+        Optional<String> fsType,
+        Optional<Boolean> isMounted,
         String product,
-        String mountPoint,
+        Optional<String> mountPoint,
         String name,
         String path,
         String pathLink,
         String scsiCompatId,
-        Boolean smartSsdWriteCapable,
+        Optional<Boolean> smartSsdWriteCapable,
         Boolean securityEnabled,
         Boolean securityFrozen,
         Boolean securityLocked,
@@ -113,15 +113,15 @@ public class DriveConfigInfo implements Serializable {
         this.dev = dev;
         this.devPath = devPath;
         this.driveType = driveType;
-        this.fsType = fsType;
-        this.isMounted = isMounted;
+        this.fsType = (fsType == null) ? Optional.<String>empty() : fsType;
+        this.isMounted = (isMounted == null) ? Optional.<Boolean>empty() : isMounted;
         this.product = product;
-        this.mountPoint = mountPoint;
+        this.mountPoint = (mountPoint == null) ? Optional.<String>empty() : mountPoint;
         this.name = name;
         this.path = path;
         this.pathLink = pathLink;
         this.scsiCompatId = scsiCompatId;
-        this.smartSsdWriteCapable = smartSsdWriteCapable;
+        this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : smartSsdWriteCapable;
         this.securityEnabled = securityEnabled;
         this.securityFrozen = securityFrozen;
         this.securityLocked = securityLocked;
@@ -174,15 +174,15 @@ public class DriveConfigInfo implements Serializable {
     }
     /** 
      **/
-    public String getFsType() { return this.fsType; }
-    public void setFsType(String fsType) { 
-        this.fsType = fsType;
+    public Optional<String> getFsType() { return this.fsType; }
+    public void setFsType(Optional<String> fsType) { 
+        this.fsType = (fsType == null) ? Optional.<String>empty() : fsType;
     }
     /** 
      **/
-    public Boolean getIsMounted() { return this.isMounted; }
-    public void setIsMounted(Boolean isMounted) { 
-        this.isMounted = isMounted;
+    public Optional<Boolean> getIsMounted() { return this.isMounted; }
+    public void setIsMounted(Optional<Boolean> isMounted) { 
+        this.isMounted = (isMounted == null) ? Optional.<Boolean>empty() : isMounted;
     }
     /** 
      **/
@@ -192,9 +192,9 @@ public class DriveConfigInfo implements Serializable {
     }
     /** 
      **/
-    public String getMountPoint() { return this.mountPoint; }
-    public void setMountPoint(String mountPoint) { 
-        this.mountPoint = mountPoint;
+    public Optional<String> getMountPoint() { return this.mountPoint; }
+    public void setMountPoint(Optional<String> mountPoint) { 
+        this.mountPoint = (mountPoint == null) ? Optional.<String>empty() : mountPoint;
     }
     /** 
      **/
@@ -222,9 +222,9 @@ public class DriveConfigInfo implements Serializable {
     }
     /** 
      **/
-    public Boolean getSmartSsdWriteCapable() { return this.smartSsdWriteCapable; }
-    public void setSmartSsdWriteCapable(Boolean smartSsdWriteCapable) { 
-        this.smartSsdWriteCapable = smartSsdWriteCapable;
+    public Optional<Boolean> getSmartSsdWriteCapable() { return this.smartSsdWriteCapable; }
+    public void setSmartSsdWriteCapable(Optional<Boolean> smartSsdWriteCapable) { 
+        this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : smartSsdWriteCapable;
     }
     /** 
      **/
@@ -430,15 +430,23 @@ public class DriveConfigInfo implements Serializable {
         sb.append(" dev : ").append(dev).append(",");
         sb.append(" devPath : ").append(devPath).append(",");
         sb.append(" driveType : ").append(driveType).append(",");
-        sb.append(" fsType : ").append(fsType).append(",");
-        sb.append(" isMounted : ").append(isMounted).append(",");
+        if(null != fsType && fsType.isPresent()){
+            sb.append(" fsType : ").append(fsType).append(",");
+        }
+        if(null != isMounted && isMounted.isPresent()){
+            sb.append(" isMounted : ").append(isMounted).append(",");
+        }
         sb.append(" product : ").append(product).append(",");
-        sb.append(" mountPoint : ").append(mountPoint).append(",");
+        if(null != mountPoint && mountPoint.isPresent()){
+            sb.append(" mountPoint : ").append(mountPoint).append(",");
+        }
         sb.append(" name : ").append(name).append(",");
         sb.append(" path : ").append(path).append(",");
         sb.append(" pathLink : ").append(pathLink).append(",");
         sb.append(" scsiCompatId : ").append(scsiCompatId).append(",");
-        sb.append(" smartSsdWriteCapable : ").append(smartSsdWriteCapable).append(",");
+        if(null != smartSsdWriteCapable && smartSsdWriteCapable.isPresent()){
+            sb.append(" smartSsdWriteCapable : ").append(smartSsdWriteCapable).append(",");
+        }
         sb.append(" securityEnabled : ").append(securityEnabled).append(",");
         sb.append(" securityFrozen : ").append(securityFrozen).append(",");
         sb.append(" securityLocked : ").append(securityLocked).append(",");
@@ -479,15 +487,15 @@ public class DriveConfigInfo implements Serializable {
         private Long dev;
         private String devPath;
         private String driveType;
-        private String fsType;
-        private Boolean isMounted;
+        private Optional<String> fsType;
+        private Optional<Boolean> isMounted;
         private String product;
-        private String mountPoint;
+        private Optional<String> mountPoint;
         private String name;
         private String path;
         private String pathLink;
         private String scsiCompatId;
-        private Boolean smartSsdWriteCapable;
+        private Optional<Boolean> smartSsdWriteCapable;
         private Boolean securityEnabled;
         private Boolean securityFrozen;
         private Boolean securityLocked;
@@ -607,13 +615,13 @@ public class DriveConfigInfo implements Serializable {
             return this;
         }
 
-        public DriveConfigInfo.Builder fsType(final String fsType) {
-            this.fsType = fsType;
+        public DriveConfigInfo.Builder optionalFsType(final String fsType) {
+            this.fsType = (fsType == null) ? Optional.<String>empty() : Optional.of(fsType);
             return this;
         }
 
-        public DriveConfigInfo.Builder isMounted(final Boolean isMounted) {
-            this.isMounted = isMounted;
+        public DriveConfigInfo.Builder optionalIsMounted(final Boolean isMounted) {
+            this.isMounted = (isMounted == null) ? Optional.<Boolean>empty() : Optional.of(isMounted);
             return this;
         }
 
@@ -622,8 +630,8 @@ public class DriveConfigInfo implements Serializable {
             return this;
         }
 
-        public DriveConfigInfo.Builder mountPoint(final String mountPoint) {
-            this.mountPoint = mountPoint;
+        public DriveConfigInfo.Builder optionalMountPoint(final String mountPoint) {
+            this.mountPoint = (mountPoint == null) ? Optional.<String>empty() : Optional.of(mountPoint);
             return this;
         }
 
@@ -647,8 +655,8 @@ public class DriveConfigInfo implements Serializable {
             return this;
         }
 
-        public DriveConfigInfo.Builder smartSsdWriteCapable(final Boolean smartSsdWriteCapable) {
-            this.smartSsdWriteCapable = smartSsdWriteCapable;
+        public DriveConfigInfo.Builder optionalSmartSsdWriteCapable(final Boolean smartSsdWriteCapable) {
+            this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : Optional.of(smartSsdWriteCapable);
             return this;
         }
 
