@@ -34,6 +34,12 @@ public class DrivesConfigInfo implements Serializable {
 
     public static final long serialVersionUID = -5022669741868595811L;
     @SerializedName("drives") private DriveConfigInfo[] drives;
+    @SerializedName("numBlockActual") private Long[] numBlockActual;
+    @SerializedName("numBlockExpected") private Long[] numBlockExpected;
+    @SerializedName("numSliceActual") private Long[] numSliceActual;
+    @SerializedName("numSliceExpected") private Long[] numSliceExpected;
+    @SerializedName("numTotalActual") private Long[] numTotalActual;
+    @SerializedName("numTotalExpected") private Long[] numTotalExpected;
 
     // empty constructor
     @Since("7.0")
@@ -43,10 +49,22 @@ public class DrivesConfigInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public DrivesConfigInfo(
-        DriveConfigInfo[] drives
+        DriveConfigInfo[] drives,
+        Long[] numBlockActual,
+        Long[] numBlockExpected,
+        Long[] numSliceActual,
+        Long[] numSliceExpected,
+        Long[] numTotalActual,
+        Long[] numTotalExpected
     )
     {
         this.drives = drives;
+        this.numBlockActual = numBlockActual;
+        this.numBlockExpected = numBlockExpected;
+        this.numSliceActual = numSliceActual;
+        this.numSliceExpected = numSliceExpected;
+        this.numTotalActual = numTotalActual;
+        this.numTotalExpected = numTotalExpected;
     }
 
     /** 
@@ -54,6 +72,42 @@ public class DrivesConfigInfo implements Serializable {
     public DriveConfigInfo[] getDrives() { return this.drives; }
     public void setDrives(DriveConfigInfo[] drives) { 
         this.drives = drives;
+    }
+    /** 
+     **/
+    public Long[] getNumBlockActual() { return this.numBlockActual; }
+    public void setNumBlockActual(Long[] numBlockActual) { 
+        this.numBlockActual = numBlockActual;
+    }
+    /** 
+     **/
+    public Long[] getNumBlockExpected() { return this.numBlockExpected; }
+    public void setNumBlockExpected(Long[] numBlockExpected) { 
+        this.numBlockExpected = numBlockExpected;
+    }
+    /** 
+     **/
+    public Long[] getNumSliceActual() { return this.numSliceActual; }
+    public void setNumSliceActual(Long[] numSliceActual) { 
+        this.numSliceActual = numSliceActual;
+    }
+    /** 
+     **/
+    public Long[] getNumSliceExpected() { return this.numSliceExpected; }
+    public void setNumSliceExpected(Long[] numSliceExpected) { 
+        this.numSliceExpected = numSliceExpected;
+    }
+    /** 
+     **/
+    public Long[] getNumTotalActual() { return this.numTotalActual; }
+    public void setNumTotalActual(Long[] numTotalActual) { 
+        this.numTotalActual = numTotalActual;
+    }
+    /** 
+     **/
+    public Long[] getNumTotalExpected() { return this.numTotalExpected; }
+    public void setNumTotalExpected(Long[] numTotalExpected) { 
+        this.numTotalExpected = numTotalExpected;
     }
 
     @Override
@@ -64,18 +118,30 @@ public class DrivesConfigInfo implements Serializable {
         DrivesConfigInfo that = (DrivesConfigInfo) o;
 
         return 
-            Arrays.equals(drives, that.drives);
+            Arrays.equals(drives, that.drives) && 
+            Arrays.equals(numBlockActual, that.numBlockActual) && 
+            Arrays.equals(numBlockExpected, that.numBlockExpected) && 
+            Arrays.equals(numSliceActual, that.numSliceActual) && 
+            Arrays.equals(numSliceExpected, that.numSliceExpected) && 
+            Arrays.equals(numTotalActual, that.numTotalActual) && 
+            Arrays.equals(numTotalExpected, that.numTotalExpected);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])drives );
+        return Objects.hash( (Object[])drives,(Object[])numBlockActual,(Object[])numBlockExpected,(Object[])numSliceActual,(Object[])numSliceExpected,(Object[])numTotalActual,(Object[])numTotalExpected );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("drives", drives);
+        map.put("numBlockActual", numBlockActual);
+        map.put("numBlockExpected", numBlockExpected);
+        map.put("numSliceActual", numSliceActual);
+        map.put("numSliceExpected", numSliceExpected);
+        map.put("numTotalActual", numTotalActual);
+        map.put("numTotalExpected", numTotalExpected);
         return map;
     }
 
@@ -85,6 +151,12 @@ public class DrivesConfigInfo implements Serializable {
         sb.append( "{ " );
 
         sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
+        sb.append(" numBlockActual : ").append(Arrays.toString(numBlockActual)).append(",");
+        sb.append(" numBlockExpected : ").append(Arrays.toString(numBlockExpected)).append(",");
+        sb.append(" numSliceActual : ").append(Arrays.toString(numSliceActual)).append(",");
+        sb.append(" numSliceExpected : ").append(Arrays.toString(numSliceExpected)).append(",");
+        sb.append(" numTotalActual : ").append(Arrays.toString(numTotalActual)).append(",");
+        sb.append(" numTotalExpected : ").append(Arrays.toString(numTotalExpected)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,22 +175,70 @@ public class DrivesConfigInfo implements Serializable {
 
     public static class Builder {
         private DriveConfigInfo[] drives;
+        private Long[] numBlockActual;
+        private Long[] numBlockExpected;
+        private Long[] numSliceActual;
+        private Long[] numSliceExpected;
+        private Long[] numTotalActual;
+        private Long[] numTotalExpected;
 
         private Builder() { }
 
         public DrivesConfigInfo build() {
             return new DrivesConfigInfo (
-                         this.drives);
+                         this.drives,
+                         this.numBlockActual,
+                         this.numBlockExpected,
+                         this.numSliceActual,
+                         this.numSliceExpected,
+                         this.numTotalActual,
+                         this.numTotalExpected);
         }
 
         private DrivesConfigInfo.Builder buildFrom(final DrivesConfigInfo req) {
             this.drives = req.drives;
+            this.numBlockActual = req.numBlockActual;
+            this.numBlockExpected = req.numBlockExpected;
+            this.numSliceActual = req.numSliceActual;
+            this.numSliceExpected = req.numSliceExpected;
+            this.numTotalActual = req.numTotalActual;
+            this.numTotalExpected = req.numTotalExpected;
 
             return this;
         }
 
         public DrivesConfigInfo.Builder drives(final DriveConfigInfo[] drives) {
             this.drives = drives;
+            return this;
+        }
+
+        public DrivesConfigInfo.Builder numBlockActual(final Long[] numBlockActual) {
+            this.numBlockActual = numBlockActual;
+            return this;
+        }
+
+        public DrivesConfigInfo.Builder numBlockExpected(final Long[] numBlockExpected) {
+            this.numBlockExpected = numBlockExpected;
+            return this;
+        }
+
+        public DrivesConfigInfo.Builder numSliceActual(final Long[] numSliceActual) {
+            this.numSliceActual = numSliceActual;
+            return this;
+        }
+
+        public DrivesConfigInfo.Builder numSliceExpected(final Long[] numSliceExpected) {
+            this.numSliceExpected = numSliceExpected;
+            return this;
+        }
+
+        public DrivesConfigInfo.Builder numTotalActual(final Long[] numTotalActual) {
+            this.numTotalActual = numTotalActual;
+            return this;
+        }
+
+        public DrivesConfigInfo.Builder numTotalExpected(final Long[] numTotalExpected) {
+            this.numTotalExpected = numTotalExpected;
             return this;
         }
 

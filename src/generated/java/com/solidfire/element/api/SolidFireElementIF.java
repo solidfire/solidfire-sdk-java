@@ -30,1201 +30,6 @@ import com.solidfire.core.javautil.Optional;
 public interface SolidFireElementIF {
 
     /** 
-     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumesResult listVirtualVolumes(final ListVirtualVolumesRequest request);
-
-    /** 
-     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumesResult listVirtualVolumes(
-        
-        Optional<Boolean> details
-, 
-        Optional<Long> limit
-, 
-        Optional<Boolean> recursive
-, 
-        Optional<java.util.UUID> startVirtualVolumeID
-, 
-        Optional<java.util.UUID[]> virtualVolumeIDs
-        );
-    /** 
-     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request);
-
-    /** 
-     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(
-        
-        java.util.UUID virtualVolumeID
-, 
-        Optional<String> name
-, 
-        Optional<Boolean> writableSnapshot
-, 
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        );
-    /** 
-     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
-     * chunks not shared between two volumes. This call will return results in less 
-     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
-     * error is thrown. If the offset/length combination is invalid or out fo range 
-     * an error is thrown.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request);
-
-    /** 
-     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
-     * chunks not shared between two volumes. This call will return results in less 
-     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
-     * error is thrown. If the offset/length combination is invalid or out fo range 
-     * an error is thrown.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(
-        
-        java.util.UUID virtualVolumeID
-, 
-        java.util.UUID baseVirtualVolumeID
-, 
-        Long segmentStart
-, 
-        Long segmentLength
-, 
-        Long chunkSize
-, 
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        );
-    /** 
-     * CreateVirtualVolumeHost creates a new ESX host.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request);
-
-    /** 
-     * CreateVirtualVolumeHost creates a new ESX host.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeNullResult createVirtualVolumeHost(
-        
-        java.util.UUID virtualVolumeHostID
-, 
-        java.util.UUID clusterID
-, 
-        Optional<String[]> initiatorNames
-, 
-        Optional<java.util.UUID[]> visibleProtocolEndpointIDs
-, 
-        Optional<String> hostAddress
-, 
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        );
-    /** 
-     * ListVirtualVolumeHosts returns a list of known ESX hosts.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(final ListVirtualVolumeHostsRequest request);
-
-    /** 
-     * ListVirtualVolumeHosts returns a list of known ESX hosts.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(
-        
-        Optional<java.util.UUID[]> virtualVolumeHostIDs
-        );
-    /** 
-     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request);
-
-    /** 
-     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(
-        
-        java.util.UUID virtualVolumeTaskID
-, 
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        );
-    /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request);
-
-    /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
-        
-        Optional<java.util.UUID[]> virtualVolumeTaskIDs
-        );
-    /** 
-     * ListVirtualVolumeBindings returns a list of VVol bindings.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(final ListVirtualVolumeBindingsRequest request);
-
-    /** 
-     * ListVirtualVolumeBindings returns a list of VVol bindings.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(
-        
-        Optional<Long[]> virtualVolumeBindingIDs
-        );
-    /** 
-     * Enables retrieval of the number of virtual volumes currently in the system.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public GetVirtualVolumeCountResult getVirtualVolumeCount();
-    /** 
-     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
-     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
-     **/
-    @Since("1.0")
-    @ConnectionType("Both")
-    public Object invokeSFApi(final InvokeSFApiRequest request);
-
-    /** 
-     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
-     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
-     **/
-    @Since("1.0")
-    @ConnectionType("Both")
-    public Object invokeSFApi(
-        
-        String method
-, 
-        Optional<java.util.Map<String, Object>> parameters
-        );
-    /** 
-     * Used to add a new account to the system.
-     * New volumes can be created under the new account.
-     * The CHAP settings specified for the account applies to all volumes owned by the account.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddAccountResult addAccount(final AddAccountRequest request);
-
-    /** 
-     * Used to add a new account to the system.
-     * New volumes can be created under the new account.
-     * The CHAP settings specified for the account applies to all volumes owned by the account.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddAccountResult addAccount(
-        
-        String username
-, 
-        Optional<CHAPSecret> initiatorSecret
-, 
-        Optional<CHAPSecret> targetSecret
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * Returns details about an account, given its AccountID.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetAccountResult getAccountByID(final GetAccountByIDRequest request);
-
-    /** 
-     * Returns details about an account, given its AccountID.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetAccountResult getAccountByID(
-        
-        Long accountID
-        );
-    /** 
-     * Returns details about an account, given its Username.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetAccountResult getAccountByName(final GetAccountByNameRequest request);
-
-    /** 
-     * Returns details about an account, given its Username.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetAccountResult getAccountByName(
-        
-        String username
-        );
-    /** 
-     * Returns the entire list of accounts, with optional paging support.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListAccountsResult listAccounts(final ListAccountsRequest request);
-
-    /** 
-     * Returns the entire list of accounts, with optional paging support.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListAccountsResult listAccounts(
-        
-        Optional<Long> startAccountID
-, 
-        Optional<Long> limit
-        );
-    /** 
-     * Used to modify an existing account.
-     * When locking an account, any existing connections from that account are immediately terminated.
-     * When changing CHAP settings, any existing connections continue to be active,
-     * and the new CHAP values are only used on subsequent connection or reconnection.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ModifyAccountResult modifyAccount(final ModifyAccountRequest request);
-
-    /** 
-     * Used to modify an existing account.
-     * When locking an account, any existing connections from that account are immediately terminated.
-     * When changing CHAP settings, any existing connections continue to be active,
-     * and the new CHAP values are only used on subsequent connection or reconnection.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ModifyAccountResult modifyAccount(
-        
-        Long accountID
-, 
-        Optional<String> username
-, 
-        Optional<String> status
-, 
-        Optional<CHAPSecret> initiatorSecret
-, 
-        Optional<CHAPSecret> targetSecret
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * Used to remove an existing account.
-     * All Volumes must be deleted and purged on the account before it can be removed.
-     * If volumes on the account are still pending deletion, RemoveAccount cannot be used until DeleteVolume to delete and purge the volumes.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public RemoveAccountResult removeAccount(final RemoveAccountRequest request);
-
-    /** 
-     * Used to remove an existing account.
-     * All Volumes must be deleted and purged on the account before it can be removed.
-     * If volumes on the account are still pending deletion, RemoveAccount cannot be used until DeleteVolume to delete and purge the volumes.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public RemoveAccountResult removeAccount(
-        
-        Long accountID
-        );
-    /** 
-     * GetAccountEfficiency is used to retrieve information about a volume account. Only the account given as a parameter in this API method is used to compute the capacity.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public GetEfficiencyResult getAccountEfficiency(final GetAccountEfficiencyRequest request);
-
-    /** 
-     * GetAccountEfficiency is used to retrieve information about a volume account. Only the account given as a parameter in this API method is used to compute the capacity.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public GetEfficiencyResult getAccountEfficiency(
-        
-        Long accountID
-        );
-    /** 
-     * GetLoginSessionInfo is used to return the period of time a log in authentication is valid for both log in shells and the TUI.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetLoginSessionInfoResult getLoginSessionInfo();
-    /** 
-     * SetLoginSessionInfo is used to set the period of time a log in authentication is valid. After the log in period elapses without activity on the system the authentication will expire. New log in credentials will be required for continued access to the cluster once the timeout period has elapsed.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public SetLoginSessionInfoResult setLoginSessionInfo(final SetLoginSessionInfoRequest request);
-
-    /** 
-     * SetLoginSessionInfo is used to set the period of time a log in authentication is valid. After the log in period elapses without activity on the system the authentication will expire. New log in credentials will be required for continued access to the cluster once the timeout period has elapsed.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public SetLoginSessionInfoResult setLoginSessionInfo(
-        
-        String timeout
-        );
-    /** 
-     * GetRemoteLoggingHosts is used to retrieve the current list of log servers.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetRemoteLoggingHostsResult getRemoteLoggingHosts();
-    /** 
-     * RemoteLoggingHosts is used to configure remote logging from the nodes in the storage cluster to a centralized log server or servers. Remote logging is performed over TCP using the default port 514. This API does not add to the existing logging hosts. Rather, it replaces what currently exists with new values specified by this API method. You can use the GetRemoteLoggingHosts to determine what the current logging hosts are and then use the SetRemoteLoggingHosts to set the desired list of current and new logging hosts.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public SetRemoteLoggingHostsResult setRemoteLoggingHosts(final SetRemoteLoggingHostsRequest request);
-
-    /** 
-     * RemoteLoggingHosts is used to configure remote logging from the nodes in the storage cluster to a centralized log server or servers. Remote logging is performed over TCP using the default port 514. This API does not add to the existing logging hosts. Rather, it replaces what currently exists with new values specified by this API method. You can use the GetRemoteLoggingHosts to determine what the current logging hosts are and then use the SetRemoteLoggingHosts to set the desired list of current and new logging hosts.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public SetRemoteLoggingHostsResult setRemoteLoggingHosts(
-        
-        LoggingServer[] remoteHosts
-        );
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * <br/><br/>
-     * <b>Note</b>: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * <br/><br/>
-     * <b>Note</b>: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request);
-
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * <br/><br/>
-     * <b>Note</b>: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * <br/><br/>
-     * <b>Note</b>: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(
-        
-        Long volumeID
-, 
-        String name
-, 
-        Optional<Long> newAccountID
-, 
-        Optional<Long> newSize
-, 
-        Optional<String> access
-, 
-        Optional<Long> snapshotID
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
-     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
-     * <br/><br/>
-     * <b>Note</b>: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public CloneMultipleVolumesResult cloneMultipleVolumes(final CloneMultipleVolumesRequest request);
-
-    /** 
-     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
-     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
-     * <br/><br/>
-     * <b>Note</b>: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public CloneMultipleVolumesResult cloneMultipleVolumes(
-        
-        CloneMultipleVolumeParams[] volumes
-, 
-        Optional<String> access
-, 
-        Optional<Long> groupSnapshotID
-, 
-        Optional<Long> newAccountID
-        );
-    /** 
-     * Copies one volume to another.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public CopyVolumeResult copyVolume(final CopyVolumeRequest request);
-
-    /** 
-     * Copies one volume to another.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public CopyVolumeResult copyVolume(
-        
-        Long volumeID
-, 
-        Long dstVolumeID
-, 
-        Optional<Long> snapshotID
-        );
-    /** 
-     * Cancels a currently running clone operation. This method does not return anything.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public CancelCloneResult cancelClone(final CancelCloneRequest request);
-
-    /** 
-     * Cancels a currently running clone operation. This method does not return anything.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public CancelCloneResult cancelClone(
-        
-        Long cloneID
-        );
-    /** 
-     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public CancelGroupCloneResult cancelGroupClone(final CancelGroupCloneRequest request);
-
-    /** 
-     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public CancelGroupCloneResult cancelGroupClone(
-        
-        Long groupCloneID
-        );
-    /** 
-     * You can use ListAsyncResults to list the results of all currently running and completed asynchronous methods on the system. Querying asynchronous results with ListAsyncResults does not cause completed asyncHandles to expire; you can use GetAsyncResult to query any of the asyncHandles returned by ListAsyncResults.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListAsyncResultsResult listAsyncResults(final ListAsyncResultsRequest request);
-
-    /** 
-     * You can use ListAsyncResults to list the results of all currently running and completed asynchronous methods on the system. Querying asynchronous results with ListAsyncResults does not cause completed asyncHandles to expire; you can use GetAsyncResult to query any of the asyncHandles returned by ListAsyncResults.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListAsyncResultsResult listAsyncResults(
-        
-        Optional<String[]> asyncResultTypes
-        );
-    /** 
-     * CreateVolume is used to create a new (empty) volume on the cluster.
-     * When the volume is created successfully it is available for connection via iSCSI.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(final CreateVolumeRequest request);
-
-    /** 
-     * CreateVolume is used to create a new (empty) volume on the cluster.
-     * When the volume is created successfully it is available for connection via iSCSI.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(
-        
-        String name
-, 
-        Long accountID
-, 
-        Long totalSize
-, 
-        Boolean enable512e
-, 
-        Optional<QoS> qos
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * DeleteVolume marks an active volume for deletion.
-     * It is purged (permanently deleted) after the cleanup interval elapses.
-     * After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.
-     * It is not returned in target discovery requests.
-     * <br/><br/>
-     * Any snapshots of a volume that has been marked to delete are not affected.
-     * Snapshots are kept until the volume is purged from the system.
-     * <br/><br/>
-     * If a volume is marked for deletion, and it has a bulk volume read or bulk volume write operation in progress, the bulk volume operation is stopped.
-     * <br/><br/>
-     * If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred to it or from it while in a deleted state.
-     * The remote volume the deleted volume was paired with enters into a PausedMisconfigured state and data is no longer sent to it or from the deleted volume.
-     * Until the deleted volume is purged, it can be restored and data transfers resumes.
-     * If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed.
-     * The purged volume becomes permanently unavailable.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public DeleteVolumeResult deleteVolume(final DeleteVolumeRequest request);
-
-    /** 
-     * DeleteVolume marks an active volume for deletion.
-     * It is purged (permanently deleted) after the cleanup interval elapses.
-     * After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.
-     * It is not returned in target discovery requests.
-     * <br/><br/>
-     * Any snapshots of a volume that has been marked to delete are not affected.
-     * Snapshots are kept until the volume is purged from the system.
-     * <br/><br/>
-     * If a volume is marked for deletion, and it has a bulk volume read or bulk volume write operation in progress, the bulk volume operation is stopped.
-     * <br/><br/>
-     * If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred to it or from it while in a deleted state.
-     * The remote volume the deleted volume was paired with enters into a PausedMisconfigured state and data is no longer sent to it or from the deleted volume.
-     * Until the deleted volume is purged, it can be restored and data transfers resumes.
-     * If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed.
-     * The purged volume becomes permanently unavailable.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public DeleteVolumeResult deleteVolume(
-        
-        Long volumeID
-        );
-    /** 
-     * DeleteVolumes marks multiple (up to 500) active volumes for deletion. Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.The cleanup interval can be set in the SetClusterSettings method. For more information on using this method, see SetClusterSettings on page 1. After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated and no further connections are allowed while the volumes are in this state. A marked volume is not returned in target discovery requests. Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from the system. If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or write operation is stopped. If the volumes you delete are paired with a volume, replication between the paired volumes is suspended and no data is transferred to them or from them while in a deleted state. The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state and data is no longer sent to them or from the deleted volumes. Until the deleted volumes are purged, they can be restored and data transfers resume. If the deleted volumes are purged from the system, the volumes they were paired with enter into a StoppedMisconfigured state and the volume pairing status is removed. The purged volumes become permanently unavailable.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public DeleteVolumesResult deleteVolumes(final DeleteVolumesRequest request);
-
-    /** 
-     * DeleteVolumes marks multiple (up to 500) active volumes for deletion. Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.The cleanup interval can be set in the SetClusterSettings method. For more information on using this method, see SetClusterSettings on page 1. After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated and no further connections are allowed while the volumes are in this state. A marked volume is not returned in target discovery requests. Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from the system. If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or write operation is stopped. If the volumes you delete are paired with a volume, replication between the paired volumes is suspended and no data is transferred to them or from them while in a deleted state. The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state and data is no longer sent to them or from the deleted volumes. Until the deleted volumes are purged, they can be restored and data transfers resume. If the deleted volumes are purged from the system, the volumes they were paired with enter into a StoppedMisconfigured state and the volume pairing status is removed. The purged volumes become permanently unavailable.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public DeleteVolumesResult deleteVolumes(
-        
-        Optional<Long[]> accountIDs
-, 
-        Optional<Long[]> volumeAccessGroupIDs
-, 
-        Optional<Long[]> volumeIDs
-        );
-    /** 
-     * GetDefaultQoS is used to retrieve the default QoS values that are set for a volume if QoS is not supplied.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public VolumeQOS getDefaultQoS();
-    /** 
-     * GetVolumeStats is used to retrieve high-level activity measurements for a single volume.
-     * Values are cumulative from the creation of the volume.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetVolumeStatsResult getVolumeStats(final GetVolumeStatsRequest request);
-
-    /** 
-     * GetVolumeStats is used to retrieve high-level activity measurements for a single volume.
-     * Values are cumulative from the creation of the volume.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetVolumeStatsResult getVolumeStats(
-        
-        Long volumeID
-        );
-    /** 
-     * GetVolumeEfficiency is used to retrieve information about a volume.
-     * Only the volume given as a parameter in this API method is used to compute the capacity.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public GetVolumeEfficiencyResult getVolumeEfficiency(final GetVolumeEfficiencyRequest request);
-
-    /** 
-     * GetVolumeEfficiency is used to retrieve information about a volume.
-     * Only the volume given as a parameter in this API method is used to compute the capacity.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public GetVolumeEfficiencyResult getVolumeEfficiency(
-        
-        Long volumeID
-        );
-    /** 
-     * ListBulkVolumeJobs is used to return information about each bulk volume read or write operation that is occurring in the system.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public ListBulkVolumeJobsResult listBulkVolumeJobs();
-    /** 
-     * ListActiveVolumes is used to return the list of active volumes currently in the system.
-     * The list of volumes is returned sorted in VolumeID order and can be returned in multiple parts (pages).
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListActiveVolumesResult listActiveVolumes(final ListActiveVolumesRequest request);
-
-    /** 
-     * ListActiveVolumes is used to return the list of active volumes currently in the system.
-     * The list of volumes is returned sorted in VolumeID order and can be returned in multiple parts (pages).
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListActiveVolumesResult listActiveVolumes(
-        
-        Optional<Long> startVolumeID
-, 
-        Optional<Long> limit
-        );
-    /** 
-     * ListDeletedVolumes is used to return the entire list of volumes that have been marked for deletion and is purged from the system.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListDeletedVolumesResult listDeletedVolumes();
-    /** 
-     * ListISCSISessions is used to return iSCSI connection information for volumes in the cluster.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListISCSISessionsResult listISCSISessions();
-    /** 
-     * The ListVolumes method is used to return a list of volumes that are in a cluster.
-     * You can specify the volumes you want to return in the list by using the available parameters.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ListVolumesResult listVolumes(final ListVolumesRequest request);
-
-    /** 
-     * The ListVolumes method is used to return a list of volumes that are in a cluster.
-     * You can specify the volumes you want to return in the list by using the available parameters.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ListVolumesResult listVolumes(
-        
-        Optional<Long> startVolumeID
-, 
-        Optional<Long> limit
-, 
-        Optional<String> volumeStatus
-, 
-        Optional<Long[]> accounts
-, 
-        Optional<Boolean> isPaired
-, 
-        Optional<Long[]> volumeIDs
-        );
-    /** 
-     * ListVolumesForAccount returns the list of active AND (pending) deleted volumes for an account.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListVolumesForAccountResult listVolumesForAccount(final ListVolumesForAccountRequest request);
-
-    /** 
-     * ListVolumesForAccount returns the list of active AND (pending) deleted volumes for an account.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListVolumesForAccountResult listVolumesForAccount(
-        
-        Long accountID
-, 
-        Optional<Long> startVolumeID
-, 
-        Optional<Long> limit
-        );
-    /** 
-     * ListVolumeStatsByAccount returns high-level activity measurements for every account.
-     * Values are summed from all the volumes owned by the account.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByAccountResult listVolumeStatsByAccount();
-    /** 
-     * ListVolumeStatsByVolume returns high-level activity measurements for every volume, by volume.
-     * Values are cumulative from the creation of the volume.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeResult listVolumeStatsByVolume();
-    /** 
-     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
-     **/
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request);
-
-    /** 
-     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
-     **/
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
-        
-        Optional<Long[]> volumeAccessGroups
-        );
-    /** 
-     * ModifyVolume is used to modify settings on an existing volume.
-     * Modifications can be made to one volume at a time and changes take place immediately.
-     * If an optional parameter is left unspecified, the value will not be changed.
-     * <br/><br/>
-     * Extending the size of a volume that is being replicated should be done in an order.
-     * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
-     * It is recommended that both the target and the source volumes be the same size.
-     * <br/><br/>
-     * <b>Note</b>: If you change access status to locked or target all existing iSCSI connections are terminated.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeResult modifyVolume(final ModifyVolumeRequest request);
-
-    /** 
-     * ModifyVolume is used to modify settings on an existing volume.
-     * Modifications can be made to one volume at a time and changes take place immediately.
-     * If an optional parameter is left unspecified, the value will not be changed.
-     * <br/><br/>
-     * Extending the size of a volume that is being replicated should be done in an order.
-     * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
-     * It is recommended that both the target and the source volumes be the same size.
-     * <br/><br/>
-     * <b>Note</b>: If you change access status to locked or target all existing iSCSI connections are terminated.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumeResult modifyVolume(
-        
-        Long volumeID
-, 
-        Optional<Long> accountID
-, 
-        Optional<String> access
-, 
-        Optional<QoS> qos
-, 
-        Optional<Long> totalSize
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumesResult modifyVolumes(final ModifyVolumesRequest request);
-
-    /** 
-     * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ModifyVolumesResult modifyVolumes(
-        
-        Long[] volumeIDs
-, 
-        Optional<Long> accountID
-, 
-        Optional<String> access
-, 
-        Optional<java.util.Map<String, Object>> attributes
-, 
-        Optional<QoS> qos
-, 
-        Optional<Long> totalSize
-        );
-    /** 
-     * PurgeDeletedVolume immediately and permanently purges a volume which has been deleted.
-     * A volume must be deleted using DeleteVolume before it can be purged.
-     * Volumes are purged automatically after a period of time, so usage of this method is not typically required.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public PurgeDeletedVolumeResult purgeDeletedVolume(final PurgeDeletedVolumeRequest request);
-
-    /** 
-     * PurgeDeletedVolume immediately and permanently purges a volume which has been deleted.
-     * A volume must be deleted using DeleteVolume before it can be purged.
-     * Volumes are purged automatically after a period of time, so usage of this method is not typically required.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public PurgeDeletedVolumeResult purgeDeletedVolume(
-        
-        Long volumeID
-        );
-    /** 
-     * PurgeDeletedVolumes immediately and permanently purges volumes that have been deleted; you can use this method to purge up to 500 volumes at one time. You must delete volumes using DeleteVolumes before they can be purged. Volumes are purged by the system automatically after a period of time, so usage of this method is not typically required.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public PurgeDeletedVolumesResult purgeDeletedVolumes(final PurgeDeletedVolumesRequest request);
-
-    /** 
-     * PurgeDeletedVolumes immediately and permanently purges volumes that have been deleted; you can use this method to purge up to 500 volumes at one time. You must delete volumes using DeleteVolumes before they can be purged. Volumes are purged by the system automatically after a period of time, so usage of this method is not typically required.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public PurgeDeletedVolumesResult purgeDeletedVolumes(
-        
-        Optional<Long[]> volumeIDs
-, 
-        Optional<Long[]> accountIDs
-, 
-        Optional<Long[]> volumeAccessGroupIDs
-        );
-    /** 
-     * RestoreDeletedVolume marks a deleted volume as active again.
-     * This action makes the volume immediately available for iSCSI connection.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public RestoreDeletedVolumeResult restoreDeletedVolume(final RestoreDeletedVolumeRequest request);
-
-    /** 
-     * RestoreDeletedVolume marks a deleted volume as active again.
-     * This action makes the volume immediately available for iSCSI connection.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public RestoreDeletedVolumeResult restoreDeletedVolume(
-        
-        Long volumeID
-        );
-    /** 
-     * StartBulkVolumeRead allows you to initialize a bulk volume read session on a specified volume.
-     * Only two bulk volume processes can run simultaneously on a volume.
-     * When you initialize the session, data is read from a SolidFire storage volume for the purposes of storing the data on an external backup source.
-     * The external data is accessed by a web server running on a SolidFire node.
-     * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.<br/>
-     * <br/>
-     * At the start of a bulk volume read operation, a snapshot of the volume is made and the snapshot is deleted when the read has completed.
-     * You can also read a snapshot of the volume by entering the ID of the snapshot as a parameter.
-     * Reading a previous snapshot does not create a new snapshot of the volume, nor does the previous snapshot be deleted when the read completes.<br/>
-     * <br/>
-     * <b>Note</b>: This process creates a new snapshot if the ID of an existing snapshot is not provided.
-     * Snapshots can be created if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public StartBulkVolumeReadResult startBulkVolumeRead(final StartBulkVolumeReadRequest request);
-
-    /** 
-     * StartBulkVolumeRead allows you to initialize a bulk volume read session on a specified volume.
-     * Only two bulk volume processes can run simultaneously on a volume.
-     * When you initialize the session, data is read from a SolidFire storage volume for the purposes of storing the data on an external backup source.
-     * The external data is accessed by a web server running on a SolidFire node.
-     * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.<br/>
-     * <br/>
-     * At the start of a bulk volume read operation, a snapshot of the volume is made and the snapshot is deleted when the read has completed.
-     * You can also read a snapshot of the volume by entering the ID of the snapshot as a parameter.
-     * Reading a previous snapshot does not create a new snapshot of the volume, nor does the previous snapshot be deleted when the read completes.<br/>
-     * <br/>
-     * <b>Note</b>: This process creates a new snapshot if the ID of an existing snapshot is not provided.
-     * Snapshots can be created if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public StartBulkVolumeReadResult startBulkVolumeRead(
-        
-        Long volumeID
-, 
-        String format
-, 
-        Optional<Long> snapshotID
-, 
-        Optional<String> script
-, 
-        Optional<Object> scriptParameters
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * StartBulkVolumeWrite allows you to initialize a bulk volume write session on a specified volume.
-     * Only two bulk volume processes can run simultaneously on a volume.
-     * When the session is initialized, data can be written to a SolidFire storage volume from an external backup source.
-     * The external data is accessed by a web server running on a SolidFire node.
-     * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public StartBulkVolumeWriteResult startBulkVolumeWrite(final StartBulkVolumeWriteRequest request);
-
-    /** 
-     * StartBulkVolumeWrite allows you to initialize a bulk volume write session on a specified volume.
-     * Only two bulk volume processes can run simultaneously on a volume.
-     * When the session is initialized, data can be written to a SolidFire storage volume from an external backup source.
-     * The external data is accessed by a web server running on a SolidFire node.
-     * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public StartBulkVolumeWriteResult startBulkVolumeWrite(
-        
-        Long volumeID
-, 
-        String format
-, 
-        Optional<String> script
-, 
-        Optional<Object> scriptParameters
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(final UpdateBulkVolumeStatusRequest request);
-
-    /** 
-     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(
-        
-        String key
-, 
-        String status
-, 
-        Optional<String> percentComplete
-, 
-        Optional<String> message
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public SetDefaultQoSResult setDefaultQoS(final SetDefaultQoSRequest request);
-
-    /** 
-     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public SetDefaultQoSResult setDefaultQoS(
-        
-        Optional<Long> minIOPS
-, 
-        Optional<Long> maxIOPS
-, 
-        Optional<Long> burstIOPS
-        );
-    /** 
-     * ListActiveNodes returns the list of currently active nodes that are in the cluster.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListActiveNodesResult listActiveNodes();
-    /** 
-     * ListAllNodes enables you to retrieve a list of active and pending nodes in the cluster.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListAllNodesResult listAllNodes();
-    /** 
-     * Gets the list of pending nodes.
-     * Pending nodes are running and configured to join the cluster, but have not been added via the AddNodes method.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListPendingNodesResult listPendingNodes();
-    /** 
-     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
-     * <br/><br/>
-     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
-     * <br/><br/>
-     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
-     * <br/><br/>
-     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
-     * <br/><br/>
-     * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddNodesResult addNodes(final AddNodesRequest request);
-
-    /** 
-     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
-     * <br/><br/>
-     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
-     * <br/><br/>
-     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
-     * <br/><br/>
-     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
-     * <br/><br/>
-     * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public AddNodesResult addNodes(
-        
-        Long[] pendingNodes
-        );
-    /** 
-     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
-     * <br/><br/>
-     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public RemoveNodesResult removeNodes(final RemoveNodesRequest request);
-
-    /** 
-     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
-     * <br/><br/>
-     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public RemoveNodesResult removeNodes(
-        
-        Long[] nodes
-        );
-    /** 
-     * The GetNetworkConfig API method is used to display the network configuration information for a node.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Since("5.0")
-    @ConnectionType("Node")
-    public GetNetworkConfigResult getNetworkConfig();
-    /** 
-     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
-     * <br/><br/>
-     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetConfigResult setConfig(final SetConfigRequest request);
-
-    /** 
-     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
-     * <br/><br/>
-     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetConfigResult setConfig(
-        
-        Config config
-        );
-    /** 
-     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
-     * <br/><br/>
-     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetNetworkConfigResult setNetworkConfig(final SetNetworkConfigRequest request);
-
-    /** 
-     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
-     * <br/><br/>
-     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Since("5.0")
-    @ConnectionType("Node")
-    public SetNetworkConfigResult setNetworkConfig(
-        
-        Network network
-        );
-    /** 
-     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Since("5.0")
-    @ConnectionType("Node")
-    public GetConfigResult getConfig();
-    /** 
-     * GetNodeStats is used to return the high-level activity measurements for a single node.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request);
-
-    /** 
-     * GetNodeStats is used to return the high-level activity measurements for a single node.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetNodeStatsResult getNodeStats(
-        
-        Long nodeID
-        );
-    /** 
-     * ListNodeStats is used to return the high-level activity measurements for all nodes in a cluster.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public ListNodeStatsResult listNodeStats();
-    /** 
-     * GetPendingOperation is used to detect an operation on a node that is currently in progress. This method can also be used to report back when an operation has completed.<br/>
-     * <br/>
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Since("5.0")
-    @ConnectionType("Node")
-    public GetPendingOperationResult getPendingOperation();
-    /** 
      * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
      **/
     @Since("6.0")
@@ -1364,6 +169,50 @@ public interface SolidFireElementIF {
         
         String feature
         );
+    /** 
+     * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetClusterHardwareInfoResult getClusterHardwareInfo(final GetClusterHardwareInfoRequest request);
+
+    /** 
+     * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetClusterHardwareInfoResult getClusterHardwareInfo(
+        
+        Optional<String> type
+        );
+    /** 
+     * GetHardwareConfig enables you to display the hardware configuration information for a node. NOTE: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Since("5.0")
+    @ConnectionType("Node")
+    public GetHardwareConfigResult getHardwareConfig();
+    /** 
+     * GetNodeHardwareInfo is used to return all the hardware info and status for the node specified. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetNodeHardwareInfoResult getNodeHardwareInfo(final GetNodeHardwareInfoRequest request);
+
+    /** 
+     * GetNodeHardwareInfo is used to return all the hardware info and status for the node specified. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetNodeHardwareInfoResult getNodeHardwareInfo(
+        
+        Long nodeID
+        );
+    /** 
+     * GetNvramInfo allows you to retrieve information from each node about the NVRAM card.  
+     **/
+    @Since("5.0")
+    @ConnectionType("Node")
+    public GetNvramInfoResult getNvramInfo();
     /** 
      * CreateInitiators enables you to create multiple new initiator IQNs or World Wide Port Names (WWPNs) and optionally assign them aliases and attributes. When you use CreateInitiators to create new initiators, you can also add them to volume access groups.
      * If CreateInitiators fails to create one of the initiators provided in the parameter, the method returns an error and does not create any initiators (no partial completion is possible).
@@ -1869,6 +718,124 @@ public interface SolidFireElementIF {
         Optional<Long> pingTimeoutMsec
         );
     /** 
+     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
+     * 
+     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListVirtualNetworksResult listVirtualNetworks(final ListVirtualNetworksRequest request);
+
+    /** 
+     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
+     * 
+     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListVirtualNetworksResult listVirtualNetworks(
+        
+        Optional<Long> virtualNetworkID
+, 
+        Optional<Long> virtualNetworkTag
+, 
+        Optional<Long[]> virtualNetworkIDs
+, 
+        Optional<Long[]> virtualNetworkTags
+        );
+    /** 
+     * AddVirtualNetwork is used to add a new virtual network to a cluster configuration. When a virtual network is added, an interface for each node is created and each will require a virtual network IP address. The number of IP addresses specified as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. Virtual network addresses are bulk provisioned by SolidFire and assigned to individual nodes automatically. Virtual network addresses do not need to be assigned to nodes manually.
+     * <br/><br/>
+     * <b>Note:</b> The AddVirtualNetwork method is used only to create a new virtual network. If you want to make changes to a virtual network, please use the ModifyVirtualNetwork method.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public AddVirtualNetworkResult addVirtualNetwork(final AddVirtualNetworkRequest request);
+
+    /** 
+     * AddVirtualNetwork is used to add a new virtual network to a cluster configuration. When a virtual network is added, an interface for each node is created and each will require a virtual network IP address. The number of IP addresses specified as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. Virtual network addresses are bulk provisioned by SolidFire and assigned to individual nodes automatically. Virtual network addresses do not need to be assigned to nodes manually.
+     * <br/><br/>
+     * <b>Note:</b> The AddVirtualNetwork method is used only to create a new virtual network. If you want to make changes to a virtual network, please use the ModifyVirtualNetwork method.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public AddVirtualNetworkResult addVirtualNetwork(
+        
+        Long virtualNetworkTag
+, 
+        String name
+, 
+        AddressBlock[] addressBlocks
+, 
+        String netmask
+, 
+        String svip
+, 
+        Optional<String> gateway
+, 
+        Optional<Boolean> namespace
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * ModifyVirtualNetwork is used to change various attributes of a VirtualNetwork object. This method can be used to add or remove address blocks, change the netmask IP, or modify the name or description of the virtual network.
+     * <br/><br/>
+     * <b>Note:</b> This method requires either the VirtualNetworkID or the VirtualNetworkTag as a parameter, but not both.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public AddVirtualNetworkResult modifyVirtualNetwork(final ModifyVirtualNetworkRequest request);
+
+    /** 
+     * ModifyVirtualNetwork is used to change various attributes of a VirtualNetwork object. This method can be used to add or remove address blocks, change the netmask IP, or modify the name or description of the virtual network.
+     * <br/><br/>
+     * <b>Note:</b> This method requires either the VirtualNetworkID or the VirtualNetworkTag as a parameter, but not both.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public AddVirtualNetworkResult modifyVirtualNetwork(
+        
+        Optional<Long> virtualNetworkID
+, 
+        Optional<Long> virtualNetworkTag
+, 
+        Optional<String> name
+, 
+        Optional<AddressBlock[]> addressBlocks
+, 
+        Optional<String> netmask
+, 
+        Optional<String> svip
+, 
+        Optional<String> gateway
+, 
+        Optional<Boolean> namespace
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * RemoveVirtualNetwork is used to remove a previously added virtual network.
+     * <br/><br/>
+     * <b>Note:</b> This method requires either the VirtualNetworkID of the VirtualNetworkTag as a parameter, but not both.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public RemoveVirtualNetworkResult removeVirtualNetwork(final RemoveVirtualNetworkRequest request);
+
+    /** 
+     * RemoveVirtualNetwork is used to remove a previously added virtual network.
+     * <br/><br/>
+     * <b>Note:</b> This method requires either the VirtualNetworkID of the VirtualNetworkTag as a parameter, but not both.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public RemoveVirtualNetworkResult removeVirtualNetwork(
+        
+        Optional<Long> virtualNetworkID
+, 
+        Optional<Long> virtualNetworkTag
+        );
+    /** 
      * Creates a new volume access group.
      * The new volume access group must be given a name when it is created.
      * Entering initiators and volumes are optional when creating a volume access group.
@@ -2117,559 +1084,149 @@ public interface SolidFireElementIF {
         LunAssignment[] lunAssignments
         );
     /** 
-     * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     * Used to add a new account to the system.
+     * New volumes can be created under the new account.
+     * The CHAP settings specified for the account applies to all volumes owned by the account.
      **/
     @Since("1.0")
     @ConnectionType("Cluster")
-    public GetClusterHardwareInfoResult getClusterHardwareInfo(final GetClusterHardwareInfoRequest request);
+    public AddAccountResult addAccount(final AddAccountRequest request);
 
     /** 
-     * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     * Used to add a new account to the system.
+     * New volumes can be created under the new account.
+     * The CHAP settings specified for the account applies to all volumes owned by the account.
      **/
     @Since("1.0")
     @ConnectionType("Cluster")
-    public GetClusterHardwareInfoResult getClusterHardwareInfo(
+    public AddAccountResult addAccount(
         
-        Optional<String> type
-        );
-    /** 
-     * GetHardwareConfig enables you to display the hardware configuration information for a node. NOTE: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Since("5.0")
-    @ConnectionType("Node")
-    public GetHardwareConfigResult getHardwareConfig();
-    /** 
-     * GetNodeHardwareInfo is used to return all the hardware info and status for the node specified. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetNodeHardwareInfoResult getNodeHardwareInfo(final GetNodeHardwareInfoRequest request);
-
-    /** 
-     * GetNodeHardwareInfo is used to return all the hardware info and status for the node specified. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
-     **/
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetNodeHardwareInfoResult getNodeHardwareInfo(
-        
-        Long nodeID
-        );
-    /** 
-     * GetNvramInfo allows you to retrieve information from each node about the NVRAM card.  
-     **/
-    @Since("5.0")
-    @ConnectionType("Node")
-    public GetNvramInfoResult getNvramInfo();
-    /** 
-     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
-     * 
-     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListVirtualNetworksResult listVirtualNetworks(final ListVirtualNetworksRequest request);
-
-    /** 
-     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
-     * 
-     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListVirtualNetworksResult listVirtualNetworks(
-        
-        Optional<Long> virtualNetworkID
+        String username
 , 
-        Optional<Long> virtualNetworkTag
+        Optional<CHAPSecret> initiatorSecret
 , 
-        Optional<Long[]> virtualNetworkIDs
-, 
-        Optional<Long[]> virtualNetworkTags
-        );
-    /** 
-     * AddVirtualNetwork is used to add a new virtual network to a cluster configuration. When a virtual network is added, an interface for each node is created and each will require a virtual network IP address. The number of IP addresses specified as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. Virtual network addresses are bulk provisioned by SolidFire and assigned to individual nodes automatically. Virtual network addresses do not need to be assigned to nodes manually.
-     * <br/><br/>
-     * <b>Note:</b> The AddVirtualNetwork method is used only to create a new virtual network. If you want to make changes to a virtual network, please use the ModifyVirtualNetwork method.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public AddVirtualNetworkResult addVirtualNetwork(final AddVirtualNetworkRequest request);
-
-    /** 
-     * AddVirtualNetwork is used to add a new virtual network to a cluster configuration. When a virtual network is added, an interface for each node is created and each will require a virtual network IP address. The number of IP addresses specified as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. Virtual network addresses are bulk provisioned by SolidFire and assigned to individual nodes automatically. Virtual network addresses do not need to be assigned to nodes manually.
-     * <br/><br/>
-     * <b>Note:</b> The AddVirtualNetwork method is used only to create a new virtual network. If you want to make changes to a virtual network, please use the ModifyVirtualNetwork method.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public AddVirtualNetworkResult addVirtualNetwork(
-        
-        Long virtualNetworkTag
-, 
-        String name
-, 
-        AddressBlock[] addressBlocks
-, 
-        String netmask
-, 
-        String svip
-, 
-        Optional<String> gateway
-, 
-        Optional<Boolean> namespace
+        Optional<CHAPSecret> targetSecret
 , 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
-     * ModifyVirtualNetwork is used to change various attributes of a VirtualNetwork object. This method can be used to add or remove address blocks, change the netmask IP, or modify the name or description of the virtual network.
-     * <br/><br/>
-     * <b>Note:</b> This method requires either the VirtualNetworkID or the VirtualNetworkTag as a parameter, but not both.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public AddVirtualNetworkResult modifyVirtualNetwork(final ModifyVirtualNetworkRequest request);
-
-    /** 
-     * ModifyVirtualNetwork is used to change various attributes of a VirtualNetwork object. This method can be used to add or remove address blocks, change the netmask IP, or modify the name or description of the virtual network.
-     * <br/><br/>
-     * <b>Note:</b> This method requires either the VirtualNetworkID or the VirtualNetworkTag as a parameter, but not both.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public AddVirtualNetworkResult modifyVirtualNetwork(
-        
-        Optional<Long> virtualNetworkID
-, 
-        Optional<Long> virtualNetworkTag
-, 
-        Optional<String> name
-, 
-        Optional<AddressBlock[]> addressBlocks
-, 
-        Optional<String> netmask
-, 
-        Optional<String> svip
-, 
-        Optional<String> gateway
-, 
-        Optional<Boolean> namespace
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * RemoveVirtualNetwork is used to remove a previously added virtual network.
-     * <br/><br/>
-     * <b>Note:</b> This method requires either the VirtualNetworkID of the VirtualNetworkTag as a parameter, but not both.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public RemoveVirtualNetworkResult removeVirtualNetwork(final RemoveVirtualNetworkRequest request);
-
-    /** 
-     * RemoveVirtualNetwork is used to remove a previously added virtual network.
-     * <br/><br/>
-     * <b>Note:</b> This method requires either the VirtualNetworkID of the VirtualNetworkTag as a parameter, but not both.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public RemoveVirtualNetworkResult removeVirtualNetwork(
-        
-        Optional<Long> virtualNetworkID
-, 
-        Optional<Long> virtualNetworkTag
-        );
-    /** 
-     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request);
-
-    /** 
-     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(
-        
-        Optional<java.util.UUID[]> virtualVolumeIDs
-        );
-    /** 
-     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * Returns details about an account, given its AccountID.
      **/
     @Since("1.0")
     @ConnectionType("Cluster")
-    public Object getRawStats();
+    public GetAccountResult getAccountByID(final GetAccountByIDRequest request);
+
     /** 
-     * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
-     **/
-    @Since("9.0")
-    @ConnectionType("Node")
-    public GetHardwareInfoResult getHardwareInfo();
-    /** 
-     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * Returns details about an account, given its AccountID.
      **/
     @Since("1.0")
     @ConnectionType("Cluster")
-    public Object getCompleteStats();
-    /** 
-     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request);
-
-    /** 
-     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
-     **/
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListDriveStatsResult listDriveStats(
+    public GetAccountResult getAccountByID(
         
-        Optional<Long[]> drives
+        Long accountID
         );
     /** 
+     * Returns details about an account, given its Username.
      **/
-    @Since("9.0")
+    @Since("1.0")
     @ConnectionType("Cluster")
-    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request);
+    public GetAccountResult getAccountByName(final GetAccountByNameRequest request);
 
     /** 
+     * Returns details about an account, given its Username.
      **/
-    @Since("9.0")
+    @Since("1.0")
     @ConnectionType("Cluster")
-    public ListVolumeStatsResult listVolumeStats(
+    public GetAccountResult getAccountByName(
         
-        Optional<Long[]> volumeIDs
+        String username
         );
     /** 
-     * CreateSnapshot is used to create a point-in-time copy of a volume.
-     * A snapshot can be created from any volume or from an existing snapshot.
-     * <br/><br/>
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     * Returns the entire list of accounts, with optional paging support.
      **/
-    @Since("6.0")
+    @Since("1.0")
     @ConnectionType("Cluster")
-    public CreateSnapshotResult createSnapshot(final CreateSnapshotRequest request);
+    public ListAccountsResult listAccounts(final ListAccountsRequest request);
 
     /** 
-     * CreateSnapshot is used to create a point-in-time copy of a volume.
-     * A snapshot can be created from any volume or from an existing snapshot.
-     * <br/><br/>
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     * Returns the entire list of accounts, with optional paging support.
      **/
-    @Since("6.0")
+    @Since("1.0")
     @ConnectionType("Cluster")
-    public CreateSnapshotResult createSnapshot(
+    public ListAccountsResult listAccounts(
         
-        Long volumeID
+        Optional<Long> startAccountID
 , 
-        Optional<Long> snapshotID
+        Optional<Long> limit
+        );
+    /** 
+     * Used to modify an existing account.
+     * When locking an account, any existing connections from that account are immediately terminated.
+     * When changing CHAP settings, any existing connections continue to be active,
+     * and the new CHAP values are only used on subsequent connection or reconnection.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ModifyAccountResult modifyAccount(final ModifyAccountRequest request);
+
+    /** 
+     * Used to modify an existing account.
+     * When locking an account, any existing connections from that account are immediately terminated.
+     * When changing CHAP settings, any existing connections continue to be active,
+     * and the new CHAP values are only used on subsequent connection or reconnection.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ModifyAccountResult modifyAccount(
+        
+        Long accountID
 , 
-        Optional<String> name
+        Optional<String> username
 , 
-        Optional<Boolean> enableRemoteReplication
+        Optional<String> status
 , 
-        Optional<String> retention
+        Optional<CHAPSecret> initiatorSecret
+, 
+        Optional<CHAPSecret> targetSecret
 , 
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
-     * DeleteSnapshot is used to delete a snapshot.
-     * A snapshot that is currently the "active" snapshot cannot be deleted.
-     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
-     * To rollback a snapshot, use RollbackToSnapshot.
+     * Used to remove an existing account.
+     * All Volumes must be deleted and purged on the account before it can be removed.
+     * If volumes on the account are still pending deletion, RemoveAccount cannot be used until DeleteVolume to delete and purge the volumes.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public RemoveAccountResult removeAccount(final RemoveAccountRequest request);
+
+    /** 
+     * Used to remove an existing account.
+     * All Volumes must be deleted and purged on the account before it can be removed.
+     * If volumes on the account are still pending deletion, RemoveAccount cannot be used until DeleteVolume to delete and purge the volumes.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public RemoveAccountResult removeAccount(
+        
+        Long accountID
+        );
+    /** 
+     * GetAccountEfficiency is used to retrieve information about a volume account. Only the account given as a parameter in this API method is used to compute the capacity.
      **/
     @Since("6.0")
     @ConnectionType("Cluster")
-    public DeleteSnapshotResult deleteSnapshot(final DeleteSnapshotRequest request);
+    public GetEfficiencyResult getAccountEfficiency(final GetAccountEfficiencyRequest request);
 
     /** 
-     * DeleteSnapshot is used to delete a snapshot.
-     * A snapshot that is currently the "active" snapshot cannot be deleted.
-     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
-     * To rollback a snapshot, use RollbackToSnapshot.
+     * GetAccountEfficiency is used to retrieve information about a volume account. Only the account given as a parameter in this API method is used to compute the capacity.
      **/
     @Since("6.0")
     @ConnectionType("Cluster")
-    public DeleteSnapshotResult deleteSnapshot(
+    public GetEfficiencyResult getAccountEfficiency(
         
-        Long snapshotID
+        Long accountID
         );
-    /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request);
-
-    /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(
-        
-        Optional<Long> volumeID
-        );
-    /** 
-     * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
-     * Use this API method to enable the snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ModifySnapshotResult modifySnapshot(final ModifySnapshotRequest request);
-
-    /** 
-     * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
-     * Use this API method to enable the snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ModifySnapshotResult modifySnapshot(
-        
-        Long snapshotID
-, 
-        Optional<String> expirationTime
-, 
-        Optional<Boolean> enableRemoteReplication
-        );
-    /** 
-     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
-     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
-     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
-     * a value of "true."
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public CreateSnapshotResult rollbackToSnapshot(final RollbackToSnapshotRequest request);
-
-    /** 
-     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
-     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
-     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
-     * a value of "true."
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6.0")
-    @ConnectionType("Cluster")
-    public CreateSnapshotResult rollbackToSnapshot(
-        
-        Long volumeID
-, 
-        Long snapshotID
-, 
-        Boolean saveCurrentState
-, 
-        Optional<String> name
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
-     * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
-     * <br/><br/>
-     * <b>Note</b>: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult createGroupSnapshot(final CreateGroupSnapshotRequest request);
-
-    /** 
-     * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
-     * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
-     * <br/><br/>
-     * <b>Note</b>: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult createGroupSnapshot(
-        
-        Long[] volumes
-, 
-        Optional<String> name
-, 
-        Optional<Boolean> enableRemoteReplication
-, 
-        Optional<String> retention
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * DeleteGroupSnapshot is used to delete a group snapshot.
-     * The saveMembers parameter can be used to preserve all the snapshots that
-     * were made for the volumes in the group but the group association will be removed.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public DeleteGroupSnapshotResult deleteGroupSnapshot(final DeleteGroupSnapshotRequest request);
-
-    /** 
-     * DeleteGroupSnapshot is used to delete a group snapshot.
-     * The saveMembers parameter can be used to preserve all the snapshots that
-     * were made for the volumes in the group but the group association will be removed.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public DeleteGroupSnapshotResult deleteGroupSnapshot(
-        
-        Long groupSnapshotID
-, 
-        Boolean saveMembers
-        );
-    /** 
-     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListGroupSnapshotsResult listGroupSnapshots(final ListGroupSnapshotsRequest request);
-
-    /** 
-     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListGroupSnapshotsResult listGroupSnapshots(
-        
-        Optional<Long> volumeID
-        );
-    /** 
-     * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ModifyGroupSnapshotResult modifyGroupSnapshot(final ModifyGroupSnapshotRequest request);
-
-    /** 
-     * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ModifyGroupSnapshotResult modifyGroupSnapshot(
-        
-        Long groupSnapshotID
-, 
-        Optional<String> expirationTime
-, 
-        Optional<Boolean> enableRemoteReplication
-        );
-    /** 
-     * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
-     * <br/><br/>
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request);
-
-    /** 
-     * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
-     * <br/><br/>
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult rollbackToGroupSnapshot(
-        
-        Long groupSnapshotID
-, 
-        Boolean saveCurrentState
-, 
-        Optional<String> name
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public GetScheduleResult getSchedule(final GetScheduleRequest request);
-
-    /** 
-     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public GetScheduleResult getSchedule(
-        
-        Long scheduleID
-        );
-    /** 
-     * ListSchedule is used to return information about all scheduled snapshots that have been created.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ListSchedulesResult listSchedules();
-    /** 
-     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.<br/>
-     * <br/>
-     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. <br/>
-     * <br/>
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public CreateScheduleResult createSchedule(final CreateScheduleRequest request);
-
-    /** 
-     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.<br/>
-     * <br/>
-     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. <br/>
-     * <br/>
-     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public CreateScheduleResult createSchedule(
-        
-        Schedule schedule
-        );
-    /** 
-     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.<br/>
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request);
-
-    /** 
-     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.<br/>
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ModifyScheduleResult modifySchedule(
-        
-        Schedule schedule
-        );
-    /** 
-     * The ListFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes.
-     **/
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ListFibreChannelPortInfoResult listFibreChannelPortInfo();
-    /** 
-     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes.
-     **/
-    @Since("7.0")
-    @ConnectionType("Node")
-    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo();
-    /** 
-     * The ListFibreChannelSessions is used to return information about the active Fibre Channel sessions on a cluster.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListFibreChannelSessionsResult listFibreChannelSessions();
     /** 
      * Return the high-level capacity measurements for an entire cluster.
      * The fields returned from this method can be used to calculate the efficiency rates that are displayed in the Element User Interface.
@@ -3367,5 +1924,1448 @@ public interface SolidFireElementIF {
     public AsyncHandleResult removeDrives(
         
         Long[] drives
+        );
+    /** 
+     * The ListFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ListFibreChannelPortInfoResult listFibreChannelPortInfo();
+    /** 
+     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes.
+     **/
+    @Since("7.0")
+    @ConnectionType("Node")
+    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo();
+    /** 
+     * The ListFibreChannelSessions is used to return information about the active Fibre Channel sessions on a cluster.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListFibreChannelSessionsResult listFibreChannelSessions();
+    /** 
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
+     **/
+    @Since("1.0")
+    @ConnectionType("Both")
+    public Object invokeSFApi(final InvokeSFApiRequest request);
+
+    /** 
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
+     **/
+    @Since("1.0")
+    @ConnectionType("Both")
+    public Object invokeSFApi(
+        
+        String method
+, 
+        Optional<java.util.Map<String, Object>> parameters
+        );
+    /** 
+     * GetLoginSessionInfo is used to return the period of time a log in authentication is valid for both log in shells and the TUI.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetLoginSessionInfoResult getLoginSessionInfo();
+    /** 
+     * SetLoginSessionInfo is used to set the period of time a log in authentication is valid. After the log in period elapses without activity on the system the authentication will expire. New log in credentials will be required for continued access to the cluster once the timeout period has elapsed.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public SetLoginSessionInfoResult setLoginSessionInfo(final SetLoginSessionInfoRequest request);
+
+    /** 
+     * SetLoginSessionInfo is used to set the period of time a log in authentication is valid. After the log in period elapses without activity on the system the authentication will expire. New log in credentials will be required for continued access to the cluster once the timeout period has elapsed.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public SetLoginSessionInfoResult setLoginSessionInfo(
+        
+        String timeout
+        );
+    /** 
+     * GetRemoteLoggingHosts is used to retrieve the current list of log servers.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetRemoteLoggingHostsResult getRemoteLoggingHosts();
+    /** 
+     * RemoteLoggingHosts is used to configure remote logging from the nodes in the storage cluster to a centralized log server or servers. Remote logging is performed over TCP using the default port 514. This API does not add to the existing logging hosts. Rather, it replaces what currently exists with new values specified by this API method. You can use the GetRemoteLoggingHosts to determine what the current logging hosts are and then use the SetRemoteLoggingHosts to set the desired list of current and new logging hosts.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public SetRemoteLoggingHostsResult setRemoteLoggingHosts(final SetRemoteLoggingHostsRequest request);
+
+    /** 
+     * RemoteLoggingHosts is used to configure remote logging from the nodes in the storage cluster to a centralized log server or servers. Remote logging is performed over TCP using the default port 514. This API does not add to the existing logging hosts. Rather, it replaces what currently exists with new values specified by this API method. You can use the GetRemoteLoggingHosts to determine what the current logging hosts are and then use the SetRemoteLoggingHosts to set the desired list of current and new logging hosts.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public SetRemoteLoggingHostsResult setRemoteLoggingHosts(
+        
+        LoggingServer[] remoteHosts
+        );
+    /** 
+     * ListActiveNodes returns the list of currently active nodes that are in the cluster.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListActiveNodesResult listActiveNodes();
+    /** 
+     * ListAllNodes enables you to retrieve a list of active and pending nodes in the cluster.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListAllNodesResult listAllNodes();
+    /** 
+     * Gets the list of pending nodes.
+     * Pending nodes are running and configured to join the cluster, but have not been added via the AddNodes method.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListPendingNodesResult listPendingNodes();
+    /** 
+     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
+     * <br/><br/>
+     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
+     * <br/><br/>
+     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
+     * <br/><br/>
+     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
+     * <br/><br/>
+     * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddNodesResult addNodes(final AddNodesRequest request);
+
+    /** 
+     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
+     * <br/><br/>
+     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
+     * <br/><br/>
+     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
+     * <br/><br/>
+     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
+     * <br/><br/>
+     * <b>Note</b>: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public AddNodesResult addNodes(
+        
+        Long[] pendingNodes
+        );
+    /** 
+     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
+     * <br/><br/>
+     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public RemoveNodesResult removeNodes(final RemoveNodesRequest request);
+
+    /** 
+     * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
+     * <br/><br/>
+     * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public RemoveNodesResult removeNodes(
+        
+        Long[] nodes
+        );
+    /** 
+     * The GetNetworkConfig API method is used to display the network configuration information for a node.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Since("5.0")
+    @ConnectionType("Node")
+    public GetNetworkConfigResult getNetworkConfig();
+    /** 
+     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
+     * <br/><br/>
+     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetConfigResult setConfig(final SetConfigRequest request);
+
+    /** 
+     * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
+     * <br/><br/>
+     * <b>Warning!</b> Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetConfigResult setConfig(
+        
+        Config config
+        );
+    /** 
+     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
+     * <br/><br/>
+     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetNetworkConfigResult setNetworkConfig(final SetNetworkConfigRequest request);
+
+    /** 
+     * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
+     * <br/><br/>
+     * <b>WARNING!</b> Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Since("5.0")
+    @ConnectionType("Node")
+    public SetNetworkConfigResult setNetworkConfig(
+        
+        Network network
+        );
+    /** 
+     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Since("5.0")
+    @ConnectionType("Node")
+    public GetConfigResult getConfig();
+    /** 
+     * GetNodeStats is used to return the high-level activity measurements for a single node.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request);
+
+    /** 
+     * GetNodeStats is used to return the high-level activity measurements for a single node.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetNodeStatsResult getNodeStats(
+        
+        Long nodeID
+        );
+    /** 
+     * ListNodeStats is used to return the high-level activity measurements for all nodes in a cluster.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public ListNodeStatsResult listNodeStats();
+    /** 
+     * GetPendingOperation is used to detect an operation on a node that is currently in progress. This method can also be used to report back when an operation has completed.<br/>
+     * <br/>
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Since("5.0")
+    @ConnectionType("Node")
+    public GetPendingOperationResult getPendingOperation();
+    /** 
+     * CreateSnapshot is used to create a point-in-time copy of a volume.
+     * A snapshot can be created from any volume or from an existing snapshot.
+     * <br/><br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult createSnapshot(final CreateSnapshotRequest request);
+
+    /** 
+     * CreateSnapshot is used to create a point-in-time copy of a volume.
+     * A snapshot can be created from any volume or from an existing snapshot.
+     * <br/><br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult createSnapshot(
+        
+        Long volumeID
+, 
+        Optional<Long> snapshotID
+, 
+        Optional<String> name
+, 
+        Optional<Boolean> enableRemoteReplication
+, 
+        Optional<String> retention
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * DeleteSnapshot is used to delete a snapshot.
+     * A snapshot that is currently the "active" snapshot cannot be deleted.
+     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
+     * To rollback a snapshot, use RollbackToSnapshot.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public DeleteSnapshotResult deleteSnapshot(final DeleteSnapshotRequest request);
+
+    /** 
+     * DeleteSnapshot is used to delete a snapshot.
+     * A snapshot that is currently the "active" snapshot cannot be deleted.
+     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
+     * To rollback a snapshot, use RollbackToSnapshot.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public DeleteSnapshotResult deleteSnapshot(
+        
+        Long snapshotID
+        );
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request);
+
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(
+        
+        Optional<Long> volumeID
+        );
+    /** 
+     * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
+     * Use this API method to enable the snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifySnapshotResult modifySnapshot(final ModifySnapshotRequest request);
+
+    /** 
+     * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
+     * Use this API method to enable the snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifySnapshotResult modifySnapshot(
+        
+        Long snapshotID
+, 
+        Optional<String> expirationTime
+, 
+        Optional<Boolean> enableRemoteReplication
+        );
+    /** 
+     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
+     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
+     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
+     * a value of "true."
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult rollbackToSnapshot(final RollbackToSnapshotRequest request);
+
+    /** 
+     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
+     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
+     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
+     * a value of "true."
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult rollbackToSnapshot(
+        
+        Long volumeID
+, 
+        Long snapshotID
+, 
+        Boolean saveCurrentState
+, 
+        Optional<String> name
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
+     * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
+     * <br/><br/>
+     * <b>Note</b>: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CreateGroupSnapshotResult createGroupSnapshot(final CreateGroupSnapshotRequest request);
+
+    /** 
+     * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
+     * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
+     * <br/><br/>
+     * <b>Note</b>: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CreateGroupSnapshotResult createGroupSnapshot(
+        
+        Long[] volumes
+, 
+        Optional<String> name
+, 
+        Optional<Boolean> enableRemoteReplication
+, 
+        Optional<String> retention
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * DeleteGroupSnapshot is used to delete a group snapshot.
+     * The saveMembers parameter can be used to preserve all the snapshots that
+     * were made for the volumes in the group but the group association will be removed.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public DeleteGroupSnapshotResult deleteGroupSnapshot(final DeleteGroupSnapshotRequest request);
+
+    /** 
+     * DeleteGroupSnapshot is used to delete a group snapshot.
+     * The saveMembers parameter can be used to preserve all the snapshots that
+     * were made for the volumes in the group but the group association will be removed.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public DeleteGroupSnapshotResult deleteGroupSnapshot(
+        
+        Long groupSnapshotID
+, 
+        Boolean saveMembers
+        );
+    /** 
+     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListGroupSnapshotsResult listGroupSnapshots(final ListGroupSnapshotsRequest request);
+
+    /** 
+     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListGroupSnapshotsResult listGroupSnapshots(
+        
+        Optional<Long> volumeID
+        );
+    /** 
+     * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifyGroupSnapshotResult modifyGroupSnapshot(final ModifyGroupSnapshotRequest request);
+
+    /** 
+     * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifyGroupSnapshotResult modifyGroupSnapshot(
+        
+        Long groupSnapshotID
+, 
+        Optional<String> expirationTime
+, 
+        Optional<Boolean> enableRemoteReplication
+        );
+    /** 
+     * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
+     * <br/><br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request);
+
+    /** 
+     * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
+     * <br/><br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CreateGroupSnapshotResult rollbackToGroupSnapshot(
+        
+        Long groupSnapshotID
+, 
+        Boolean saveCurrentState
+, 
+        Optional<String> name
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public GetScheduleResult getSchedule(final GetScheduleRequest request);
+
+    /** 
+     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public GetScheduleResult getSchedule(
+        
+        Long scheduleID
+        );
+    /** 
+     * ListSchedule is used to return information about all scheduled snapshots that have been created.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ListSchedulesResult listSchedules();
+    /** 
+     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.<br/>
+     * <br/>
+     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. <br/>
+     * <br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public CreateScheduleResult createSchedule(final CreateScheduleRequest request);
+
+    /** 
+     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.<br/>
+     * <br/>
+     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. <br/>
+     * <br/>
+     * <b>Note</b>: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public CreateScheduleResult createSchedule(
+        
+        Schedule schedule
+        );
+    /** 
+     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.<br/>
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request);
+
+    /** 
+     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.<br/>
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ModifyScheduleResult modifySchedule(
+        
+        Schedule schedule
+        );
+    /** 
+     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request);
+
+    /** 
+     * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(
+        
+        Optional<java.util.UUID[]> virtualVolumeIDs
+        );
+    /** 
+     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public Object getRawStats();
+    /** 
+     * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
+     **/
+    @Since("9.0")
+    @ConnectionType("Node")
+    public GetHardwareInfoResult getHardwareInfo();
+    /** 
+     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public Object getCompleteStats();
+    /** 
+     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request);
+
+    /** 
+     * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListDriveStatsResult listDriveStats(
+        
+        Optional<Long[]> drives
+        );
+    /** 
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request);
+
+    /** 
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsResult listVolumeStats(
+        
+        Optional<Long[]> volumeIDs
+        );
+    /** 
+     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumesResult listVirtualVolumes(final ListVirtualVolumesRequest request);
+
+    /** 
+     * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumesResult listVirtualVolumes(
+        
+        Optional<Boolean> details
+, 
+        Optional<Long> limit
+, 
+        Optional<Boolean> recursive
+, 
+        Optional<java.util.UUID> startVirtualVolumeID
+, 
+        Optional<java.util.UUID[]> virtualVolumeIDs
+        );
+    /** 
+     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request);
+
+    /** 
+     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(
+        
+        java.util.UUID virtualVolumeID
+, 
+        Optional<String> name
+, 
+        Optional<Boolean> writableSnapshot
+, 
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        );
+    /** 
+     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
+     * chunks not shared between two volumes. This call will return results in less 
+     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
+     * error is thrown. If the offset/length combination is invalid or out fo range 
+     * an error is thrown.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request);
+
+    /** 
+     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
+     * chunks not shared between two volumes. This call will return results in less 
+     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
+     * error is thrown. If the offset/length combination is invalid or out fo range 
+     * an error is thrown.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(
+        
+        java.util.UUID virtualVolumeID
+, 
+        java.util.UUID baseVirtualVolumeID
+, 
+        Long segmentStart
+, 
+        Long segmentLength
+, 
+        Long chunkSize
+, 
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        );
+    /** 
+     * CreateVirtualVolumeHost creates a new ESX host.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request);
+
+    /** 
+     * CreateVirtualVolumeHost creates a new ESX host.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult createVirtualVolumeHost(
+        
+        java.util.UUID virtualVolumeHostID
+, 
+        java.util.UUID clusterID
+, 
+        Optional<String[]> initiatorNames
+, 
+        Optional<java.util.UUID[]> visibleProtocolEndpointIDs
+, 
+        Optional<String> hostAddress
+, 
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        );
+    /** 
+     * ListVirtualVolumeHosts returns a list of known ESX hosts.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(final ListVirtualVolumeHostsRequest request);
+
+    /** 
+     * ListVirtualVolumeHosts returns a list of known ESX hosts.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(
+        
+        Optional<java.util.UUID[]> virtualVolumeHostIDs
+        );
+    /** 
+     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request);
+
+    /** 
+     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(
+        
+        java.util.UUID virtualVolumeTaskID
+, 
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        );
+    /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request);
+
+    /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
+        
+        Optional<java.util.UUID[]> virtualVolumeTaskIDs
+        );
+    /** 
+     * ListVirtualVolumeBindings returns a list of VVol bindings.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(final ListVirtualVolumeBindingsRequest request);
+
+    /** 
+     * ListVirtualVolumeBindings returns a list of VVol bindings.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(
+        
+        Optional<Long[]> virtualVolumeBindingIDs
+        );
+    /** 
+     * Enables retrieval of the number of virtual volumes currently in the system.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public GetVirtualVolumeCountResult getVirtualVolumeCount();
+    /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * <br/><br/>
+     * <b>Note</b>: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * <br/><br/>
+     * <b>Note</b>: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request);
+
+    /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * <br/><br/>
+     * <b>Note</b>: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * <br/><br/>
+     * <b>Note</b>: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(
+        
+        Long volumeID
+, 
+        String name
+, 
+        Optional<Long> newAccountID
+, 
+        Optional<Long> newSize
+, 
+        Optional<String> access
+, 
+        Optional<Long> snapshotID
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
+     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
+     * <br/><br/>
+     * <b>Note</b>: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CloneMultipleVolumesResult cloneMultipleVolumes(final CloneMultipleVolumesRequest request);
+
+    /** 
+     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
+     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
+     * <br/><br/>
+     * <b>Note</b>: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public CloneMultipleVolumesResult cloneMultipleVolumes(
+        
+        CloneMultipleVolumeParams[] volumes
+, 
+        Optional<String> access
+, 
+        Optional<Long> groupSnapshotID
+, 
+        Optional<Long> newAccountID
+        );
+    /** 
+     * Copies one volume to another.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public CopyVolumeResult copyVolume(final CopyVolumeRequest request);
+
+    /** 
+     * Copies one volume to another.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public CopyVolumeResult copyVolume(
+        
+        Long volumeID
+, 
+        Long dstVolumeID
+, 
+        Optional<Long> snapshotID
+        );
+    /** 
+     * Cancels a currently running clone operation. This method does not return anything.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public CancelCloneResult cancelClone(final CancelCloneRequest request);
+
+    /** 
+     * Cancels a currently running clone operation. This method does not return anything.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public CancelCloneResult cancelClone(
+        
+        Long cloneID
+        );
+    /** 
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public CancelGroupCloneResult cancelGroupClone(final CancelGroupCloneRequest request);
+
+    /** 
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public CancelGroupCloneResult cancelGroupClone(
+        
+        Long groupCloneID
+        );
+    /** 
+     * You can use ListAsyncResults to list the results of all currently running and completed asynchronous methods on the system. Querying asynchronous results with ListAsyncResults does not cause completed asyncHandles to expire; you can use GetAsyncResult to query any of the asyncHandles returned by ListAsyncResults.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListAsyncResultsResult listAsyncResults(final ListAsyncResultsRequest request);
+
+    /** 
+     * You can use ListAsyncResults to list the results of all currently running and completed asynchronous methods on the system. Querying asynchronous results with ListAsyncResults does not cause completed asyncHandles to expire; you can use GetAsyncResult to query any of the asyncHandles returned by ListAsyncResults.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListAsyncResultsResult listAsyncResults(
+        
+        Optional<String[]> asyncResultTypes
+        );
+    /** 
+     * CreateVolume is used to create a new (empty) volume on the cluster.
+     * When the volume is created successfully it is available for connection via iSCSI.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(final CreateVolumeRequest request);
+
+    /** 
+     * CreateVolume is used to create a new (empty) volume on the cluster.
+     * When the volume is created successfully it is available for connection via iSCSI.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(
+        
+        String name
+, 
+        Long accountID
+, 
+        Long totalSize
+, 
+        Boolean enable512e
+, 
+        Optional<QoS> qos
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * DeleteVolume marks an active volume for deletion.
+     * It is purged (permanently deleted) after the cleanup interval elapses.
+     * After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.
+     * It is not returned in target discovery requests.
+     * <br/><br/>
+     * Any snapshots of a volume that has been marked to delete are not affected.
+     * Snapshots are kept until the volume is purged from the system.
+     * <br/><br/>
+     * If a volume is marked for deletion, and it has a bulk volume read or bulk volume write operation in progress, the bulk volume operation is stopped.
+     * <br/><br/>
+     * If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred to it or from it while in a deleted state.
+     * The remote volume the deleted volume was paired with enters into a PausedMisconfigured state and data is no longer sent to it or from the deleted volume.
+     * Until the deleted volume is purged, it can be restored and data transfers resumes.
+     * If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed.
+     * The purged volume becomes permanently unavailable.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public DeleteVolumeResult deleteVolume(final DeleteVolumeRequest request);
+
+    /** 
+     * DeleteVolume marks an active volume for deletion.
+     * It is purged (permanently deleted) after the cleanup interval elapses.
+     * After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.
+     * It is not returned in target discovery requests.
+     * <br/><br/>
+     * Any snapshots of a volume that has been marked to delete are not affected.
+     * Snapshots are kept until the volume is purged from the system.
+     * <br/><br/>
+     * If a volume is marked for deletion, and it has a bulk volume read or bulk volume write operation in progress, the bulk volume operation is stopped.
+     * <br/><br/>
+     * If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred to it or from it while in a deleted state.
+     * The remote volume the deleted volume was paired with enters into a PausedMisconfigured state and data is no longer sent to it or from the deleted volume.
+     * Until the deleted volume is purged, it can be restored and data transfers resumes.
+     * If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed.
+     * The purged volume becomes permanently unavailable.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public DeleteVolumeResult deleteVolume(
+        
+        Long volumeID
+        );
+    /** 
+     * DeleteVolumes marks multiple (up to 500) active volumes for deletion. Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.The cleanup interval can be set in the SetClusterSettings method. For more information on using this method, see SetClusterSettings on page 1. After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated and no further connections are allowed while the volumes are in this state. A marked volume is not returned in target discovery requests. Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from the system. If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or write operation is stopped. If the volumes you delete are paired with a volume, replication between the paired volumes is suspended and no data is transferred to them or from them while in a deleted state. The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state and data is no longer sent to them or from the deleted volumes. Until the deleted volumes are purged, they can be restored and data transfers resume. If the deleted volumes are purged from the system, the volumes they were paired with enter into a StoppedMisconfigured state and the volume pairing status is removed. The purged volumes become permanently unavailable.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public DeleteVolumesResult deleteVolumes(final DeleteVolumesRequest request);
+
+    /** 
+     * DeleteVolumes marks multiple (up to 500) active volumes for deletion. Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.The cleanup interval can be set in the SetClusterSettings method. For more information on using this method, see SetClusterSettings on page 1. After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated and no further connections are allowed while the volumes are in this state. A marked volume is not returned in target discovery requests. Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from the system. If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or write operation is stopped. If the volumes you delete are paired with a volume, replication between the paired volumes is suspended and no data is transferred to them or from them while in a deleted state. The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state and data is no longer sent to them or from the deleted volumes. Until the deleted volumes are purged, they can be restored and data transfers resume. If the deleted volumes are purged from the system, the volumes they were paired with enter into a StoppedMisconfigured state and the volume pairing status is removed. The purged volumes become permanently unavailable.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public DeleteVolumesResult deleteVolumes(
+        
+        Optional<Long[]> accountIDs
+, 
+        Optional<Long[]> volumeAccessGroupIDs
+, 
+        Optional<Long[]> volumeIDs
+        );
+    /** 
+     * GetDefaultQoS is used to retrieve the default QoS values that are set for a volume if QoS is not supplied.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public VolumeQOS getDefaultQoS();
+    /** 
+     * GetVolumeStats is used to retrieve high-level activity measurements for a single volume.
+     * Values are cumulative from the creation of the volume.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetVolumeStatsResult getVolumeStats(final GetVolumeStatsRequest request);
+
+    /** 
+     * GetVolumeStats is used to retrieve high-level activity measurements for a single volume.
+     * Values are cumulative from the creation of the volume.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetVolumeStatsResult getVolumeStats(
+        
+        Long volumeID
+        );
+    /** 
+     * GetVolumeEfficiency is used to retrieve information about a volume.
+     * Only the volume given as a parameter in this API method is used to compute the capacity.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public GetVolumeEfficiencyResult getVolumeEfficiency(final GetVolumeEfficiencyRequest request);
+
+    /** 
+     * GetVolumeEfficiency is used to retrieve information about a volume.
+     * Only the volume given as a parameter in this API method is used to compute the capacity.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public GetVolumeEfficiencyResult getVolumeEfficiency(
+        
+        Long volumeID
+        );
+    /** 
+     * ListBulkVolumeJobs is used to return information about each bulk volume read or write operation that is occurring in the system.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public ListBulkVolumeJobsResult listBulkVolumeJobs();
+    /** 
+     * ListActiveVolumes is used to return the list of active volumes currently in the system.
+     * The list of volumes is returned sorted in VolumeID order and can be returned in multiple parts (pages).
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListActiveVolumesResult listActiveVolumes(final ListActiveVolumesRequest request);
+
+    /** 
+     * ListActiveVolumes is used to return the list of active volumes currently in the system.
+     * The list of volumes is returned sorted in VolumeID order and can be returned in multiple parts (pages).
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListActiveVolumesResult listActiveVolumes(
+        
+        Optional<Long> startVolumeID
+, 
+        Optional<Long> limit
+        );
+    /** 
+     * ListDeletedVolumes is used to return the entire list of volumes that have been marked for deletion and is purged from the system.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListDeletedVolumesResult listDeletedVolumes();
+    /** 
+     * ListISCSISessions is used to return iSCSI connection information for volumes in the cluster.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListISCSISessionsResult listISCSISessions();
+    /** 
+     * The ListVolumes method is used to return a list of volumes that are in a cluster.
+     * You can specify the volumes you want to return in the list by using the available parameters.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ListVolumesResult listVolumes(final ListVolumesRequest request);
+
+    /** 
+     * The ListVolumes method is used to return a list of volumes that are in a cluster.
+     * You can specify the volumes you want to return in the list by using the available parameters.
+     **/
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ListVolumesResult listVolumes(
+        
+        Optional<Long> startVolumeID
+, 
+        Optional<Long> limit
+, 
+        Optional<String> volumeStatus
+, 
+        Optional<Long[]> accounts
+, 
+        Optional<Boolean> isPaired
+, 
+        Optional<Long[]> volumeIDs
+        );
+    /** 
+     * ListVolumesForAccount returns the list of active AND (pending) deleted volumes for an account.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListVolumesForAccountResult listVolumesForAccount(final ListVolumesForAccountRequest request);
+
+    /** 
+     * ListVolumesForAccount returns the list of active AND (pending) deleted volumes for an account.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListVolumesForAccountResult listVolumesForAccount(
+        
+        Long accountID
+, 
+        Optional<Long> startVolumeID
+, 
+        Optional<Long> limit
+        );
+    /** 
+     * ListVolumeStatsByAccount returns high-level activity measurements for every account.
+     * Values are summed from all the volumes owned by the account.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByAccountResult listVolumeStatsByAccount();
+    /** 
+     * ListVolumeStatsByVolume returns high-level activity measurements for every volume, by volume.
+     * Values are cumulative from the creation of the volume.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeResult listVolumeStatsByVolume();
+    /** 
+     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
+     **/
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request);
+
+    /** 
+     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
+     **/
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
+        
+        Optional<Long[]> volumeAccessGroups
+        );
+    /** 
+     * ModifyVolume is used to modify settings on an existing volume.
+     * Modifications can be made to one volume at a time and changes take place immediately.
+     * If an optional parameter is left unspecified, the value will not be changed.
+     * <br/><br/>
+     * Extending the size of a volume that is being replicated should be done in an order.
+     * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
+     * It is recommended that both the target and the source volumes be the same size.
+     * <br/><br/>
+     * <b>Note</b>: If you change access status to locked or target all existing iSCSI connections are terminated.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeResult modifyVolume(final ModifyVolumeRequest request);
+
+    /** 
+     * ModifyVolume is used to modify settings on an existing volume.
+     * Modifications can be made to one volume at a time and changes take place immediately.
+     * If an optional parameter is left unspecified, the value will not be changed.
+     * <br/><br/>
+     * Extending the size of a volume that is being replicated should be done in an order.
+     * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
+     * It is recommended that both the target and the source volumes be the same size.
+     * <br/><br/>
+     * <b>Note</b>: If you change access status to locked or target all existing iSCSI connections are terminated.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumeResult modifyVolume(
+        
+        Long volumeID
+, 
+        Optional<Long> accountID
+, 
+        Optional<String> access
+, 
+        Optional<QoS> qos
+, 
+        Optional<Long> totalSize
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumesResult modifyVolumes(final ModifyVolumesRequest request);
+
+    /** 
+     * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ModifyVolumesResult modifyVolumes(
+        
+        Long[] volumeIDs
+, 
+        Optional<Long> accountID
+, 
+        Optional<String> access
+, 
+        Optional<java.util.Map<String, Object>> attributes
+, 
+        Optional<QoS> qos
+, 
+        Optional<Long> totalSize
+        );
+    /** 
+     * PurgeDeletedVolume immediately and permanently purges a volume which has been deleted.
+     * A volume must be deleted using DeleteVolume before it can be purged.
+     * Volumes are purged automatically after a period of time, so usage of this method is not typically required.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public PurgeDeletedVolumeResult purgeDeletedVolume(final PurgeDeletedVolumeRequest request);
+
+    /** 
+     * PurgeDeletedVolume immediately and permanently purges a volume which has been deleted.
+     * A volume must be deleted using DeleteVolume before it can be purged.
+     * Volumes are purged automatically after a period of time, so usage of this method is not typically required.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public PurgeDeletedVolumeResult purgeDeletedVolume(
+        
+        Long volumeID
+        );
+    /** 
+     * PurgeDeletedVolumes immediately and permanently purges volumes that have been deleted; you can use this method to purge up to 500 volumes at one time. You must delete volumes using DeleteVolumes before they can be purged. Volumes are purged by the system automatically after a period of time, so usage of this method is not typically required.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public PurgeDeletedVolumesResult purgeDeletedVolumes(final PurgeDeletedVolumesRequest request);
+
+    /** 
+     * PurgeDeletedVolumes immediately and permanently purges volumes that have been deleted; you can use this method to purge up to 500 volumes at one time. You must delete volumes using DeleteVolumes before they can be purged. Volumes are purged by the system automatically after a period of time, so usage of this method is not typically required.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public PurgeDeletedVolumesResult purgeDeletedVolumes(
+        
+        Optional<Long[]> volumeIDs
+, 
+        Optional<Long[]> accountIDs
+, 
+        Optional<Long[]> volumeAccessGroupIDs
+        );
+    /** 
+     * RestoreDeletedVolume marks a deleted volume as active again.
+     * This action makes the volume immediately available for iSCSI connection.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public RestoreDeletedVolumeResult restoreDeletedVolume(final RestoreDeletedVolumeRequest request);
+
+    /** 
+     * RestoreDeletedVolume marks a deleted volume as active again.
+     * This action makes the volume immediately available for iSCSI connection.
+     **/
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public RestoreDeletedVolumeResult restoreDeletedVolume(
+        
+        Long volumeID
+        );
+    /** 
+     * StartBulkVolumeRead allows you to initialize a bulk volume read session on a specified volume.
+     * Only two bulk volume processes can run simultaneously on a volume.
+     * When you initialize the session, data is read from a SolidFire storage volume for the purposes of storing the data on an external backup source.
+     * The external data is accessed by a web server running on a SolidFire node.
+     * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.<br/>
+     * <br/>
+     * At the start of a bulk volume read operation, a snapshot of the volume is made and the snapshot is deleted when the read has completed.
+     * You can also read a snapshot of the volume by entering the ID of the snapshot as a parameter.
+     * Reading a previous snapshot does not create a new snapshot of the volume, nor does the previous snapshot be deleted when the read completes.<br/>
+     * <br/>
+     * <b>Note</b>: This process creates a new snapshot if the ID of an existing snapshot is not provided.
+     * Snapshots can be created if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public StartBulkVolumeReadResult startBulkVolumeRead(final StartBulkVolumeReadRequest request);
+
+    /** 
+     * StartBulkVolumeRead allows you to initialize a bulk volume read session on a specified volume.
+     * Only two bulk volume processes can run simultaneously on a volume.
+     * When you initialize the session, data is read from a SolidFire storage volume for the purposes of storing the data on an external backup source.
+     * The external data is accessed by a web server running on a SolidFire node.
+     * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.<br/>
+     * <br/>
+     * At the start of a bulk volume read operation, a snapshot of the volume is made and the snapshot is deleted when the read has completed.
+     * You can also read a snapshot of the volume by entering the ID of the snapshot as a parameter.
+     * Reading a previous snapshot does not create a new snapshot of the volume, nor does the previous snapshot be deleted when the read completes.<br/>
+     * <br/>
+     * <b>Note</b>: This process creates a new snapshot if the ID of an existing snapshot is not provided.
+     * Snapshots can be created if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public StartBulkVolumeReadResult startBulkVolumeRead(
+        
+        Long volumeID
+, 
+        String format
+, 
+        Optional<Long> snapshotID
+, 
+        Optional<String> script
+, 
+        Optional<Object> scriptParameters
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * StartBulkVolumeWrite allows you to initialize a bulk volume write session on a specified volume.
+     * Only two bulk volume processes can run simultaneously on a volume.
+     * When the session is initialized, data can be written to a SolidFire storage volume from an external backup source.
+     * The external data is accessed by a web server running on a SolidFire node.
+     * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public StartBulkVolumeWriteResult startBulkVolumeWrite(final StartBulkVolumeWriteRequest request);
+
+    /** 
+     * StartBulkVolumeWrite allows you to initialize a bulk volume write session on a specified volume.
+     * Only two bulk volume processes can run simultaneously on a volume.
+     * When the session is initialized, data can be written to a SolidFire storage volume from an external backup source.
+     * The external data is accessed by a web server running on a SolidFire node.
+     * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public StartBulkVolumeWriteResult startBulkVolumeWrite(
+        
+        Long volumeID
+, 
+        String format
+, 
+        Optional<String> script
+, 
+        Optional<Object> scriptParameters
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(final UpdateBulkVolumeStatusRequest request);
+
+    /** 
+     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
+     **/
+    @Since("6.0")
+    @ConnectionType("Cluster")
+    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(
+        
+        String key
+, 
+        String status
+, 
+        Optional<String> percentComplete
+, 
+        Optional<String> message
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public SetDefaultQoSResult setDefaultQoS(final SetDefaultQoSRequest request);
+
+    /** 
+     * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public SetDefaultQoSResult setDefaultQoS(
+        
+        Optional<Long> minIOPS
+, 
+        Optional<Long> maxIOPS
+, 
+        Optional<Long> burstIOPS
         );
 }

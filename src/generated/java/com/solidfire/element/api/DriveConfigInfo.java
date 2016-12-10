@@ -62,6 +62,9 @@ public class DriveConfigInfo implements Serializable {
     @SerializedName("numSliceExpected") private Long numSliceExpected;
     @SerializedName("numTotalActual") private Long numTotalActual;
     @SerializedName("numTotalExpected") private Long numTotalExpected;
+    @SerializedName("securityAtMaximum") private Boolean securityAtMaximum;
+    @SerializedName("serial") private String serial;
+    @SerializedName("scsiState") private String scsiState;
 
     // empty constructor
     @Since("7.0")
@@ -99,7 +102,10 @@ public class DriveConfigInfo implements Serializable {
         Long numSliceActual,
         Long numSliceExpected,
         Long numTotalActual,
-        Long numTotalExpected
+        Long numTotalExpected,
+        Boolean securityAtMaximum,
+        String serial,
+        String scsiState
     )
     {
         this.canonicalName = canonicalName;
@@ -131,6 +137,9 @@ public class DriveConfigInfo implements Serializable {
         this.numSliceExpected = numSliceExpected;
         this.numTotalActual = numTotalActual;
         this.numTotalExpected = numTotalExpected;
+        this.securityAtMaximum = securityAtMaximum;
+        this.serial = serial;
+        this.scsiState = scsiState;
     }
 
     /** 
@@ -307,6 +316,24 @@ public class DriveConfigInfo implements Serializable {
     public void setNumTotalExpected(Long numTotalExpected) { 
         this.numTotalExpected = numTotalExpected;
     }
+    /** 
+     **/
+    public Boolean getSecurityAtMaximum() { return this.securityAtMaximum; }
+    public void setSecurityAtMaximum(Boolean securityAtMaximum) { 
+        this.securityAtMaximum = securityAtMaximum;
+    }
+    /** 
+     **/
+    public String getSerial() { return this.serial; }
+    public void setSerial(String serial) { 
+        this.serial = serial;
+    }
+    /** 
+     **/
+    public String getScsiState() { return this.scsiState; }
+    public void setScsiState(String scsiState) { 
+        this.scsiState = scsiState;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -344,12 +371,15 @@ public class DriveConfigInfo implements Serializable {
             Objects.equals(numSliceActual, that.numSliceActual) && 
             Objects.equals(numSliceExpected, that.numSliceExpected) && 
             Objects.equals(numTotalActual, that.numTotalActual) && 
-            Objects.equals(numTotalExpected, that.numTotalExpected);
+            Objects.equals(numTotalExpected, that.numTotalExpected) && 
+            Objects.equals(securityAtMaximum, that.securityAtMaximum) && 
+            Objects.equals(serial, that.serial) && 
+            Objects.equals(scsiState, that.scsiState);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( canonicalName,connected,dev,devPath,driveType,fsType,isMounted,product,mountPoint,name,path,pathLink,scsiCompatId,smartSsdWriteCapable,securityEnabled,securityFrozen,securityLocked,securitySupported,size,slot,uuid,vendor,version,numBlockActual,numBlockExpected,numSliceActual,numSliceExpected,numTotalActual,numTotalExpected );
+        return Objects.hash( canonicalName,connected,dev,devPath,driveType,fsType,isMounted,product,mountPoint,name,path,pathLink,scsiCompatId,smartSsdWriteCapable,securityEnabled,securityFrozen,securityLocked,securitySupported,size,slot,uuid,vendor,version,numBlockActual,numBlockExpected,numSliceActual,numSliceExpected,numTotalActual,numTotalExpected,securityAtMaximum,serial,scsiState );
     }
 
 
@@ -384,6 +414,9 @@ public class DriveConfigInfo implements Serializable {
         map.put("numSliceExpected", numSliceExpected);
         map.put("numTotalActual", numTotalActual);
         map.put("numTotalExpected", numTotalExpected);
+        map.put("securityAtMaximum", securityAtMaximum);
+        map.put("serial", serial);
+        map.put("scsiState", scsiState);
         return map;
     }
 
@@ -421,6 +454,9 @@ public class DriveConfigInfo implements Serializable {
         sb.append(" numSliceExpected : ").append(numSliceExpected).append(",");
         sb.append(" numTotalActual : ").append(numTotalActual).append(",");
         sb.append(" numTotalExpected : ").append(numTotalExpected).append(",");
+        sb.append(" securityAtMaximum : ").append(securityAtMaximum).append(",");
+        sb.append(" serial : ").append(serial).append(",");
+        sb.append(" scsiState : ").append(scsiState).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -467,6 +503,9 @@ public class DriveConfigInfo implements Serializable {
         private Long numSliceExpected;
         private Long numTotalActual;
         private Long numTotalExpected;
+        private Boolean securityAtMaximum;
+        private String serial;
+        private String scsiState;
 
         private Builder() { }
 
@@ -500,7 +539,10 @@ public class DriveConfigInfo implements Serializable {
                          this.numSliceActual,
                          this.numSliceExpected,
                          this.numTotalActual,
-                         this.numTotalExpected);
+                         this.numTotalExpected,
+                         this.securityAtMaximum,
+                         this.serial,
+                         this.scsiState);
         }
 
         private DriveConfigInfo.Builder buildFrom(final DriveConfigInfo req) {
@@ -533,6 +575,9 @@ public class DriveConfigInfo implements Serializable {
             this.numSliceExpected = req.numSliceExpected;
             this.numTotalActual = req.numTotalActual;
             this.numTotalExpected = req.numTotalExpected;
+            this.securityAtMaximum = req.securityAtMaximum;
+            this.serial = req.serial;
+            this.scsiState = req.scsiState;
 
             return this;
         }
@@ -679,6 +724,21 @@ public class DriveConfigInfo implements Serializable {
 
         public DriveConfigInfo.Builder numTotalExpected(final Long numTotalExpected) {
             this.numTotalExpected = numTotalExpected;
+            return this;
+        }
+
+        public DriveConfigInfo.Builder securityAtMaximum(final Boolean securityAtMaximum) {
+            this.securityAtMaximum = securityAtMaximum;
+            return this;
+        }
+
+        public DriveConfigInfo.Builder serial(final String serial) {
+            this.serial = serial;
+            return this;
+        }
+
+        public DriveConfigInfo.Builder scsiState(final String scsiState) {
+            this.scsiState = scsiState;
             return this;
         }
 
