@@ -1523,15 +1523,6 @@ public class SolidFireElement
         return super.sendRequest("GetConfig", null, null, GetConfigResult.class);
     }
     /** 
-     * GetBootstrapConfig returns the cluster name and node name from the bootstrap configuration file. This API method should be performed on an individual node before it has been configured into a cluster. The resulting information from this method is used in the Cluster Configuration UI when the cluster is eventually created.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Node")
-    public GetBootstrapConfigResult getBootstrapConfig() {
-        return super.sendRequest("GetBootstrapConfig", null, null, GetBootstrapConfigResult.class);
-    }
-    /** 
      * GetNodeStats is used to return the high-level activity measurements for a single node.
      **/
     @Override
