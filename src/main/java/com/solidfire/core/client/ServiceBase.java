@@ -208,6 +208,9 @@ public class ServiceBase {
     }
 
     protected void checkForError(JsonObject resultObj) throws ApiServerException {
+        if (resultObj == null){
+            throw new ApiServerException("NullResult", "", "Result object was null");
+        }
         if (resultObj.has("error")) {
             throw extractApiError(resultObj.get("error"));
         }

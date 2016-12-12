@@ -59,11 +59,11 @@ public class DurationAdapter extends TypeAdapter<Duration> {
             // Milliseconds are trickier because if the input string is not properly formatted (e.g. ".1") we need to
             // right pad the input string with zeros -- ".1" is really 100 milliseconds. Likewise, if the string is
             // larger than 3 characters, we need to cut off extra characters.
-            String millisecondsSource = m.group(5) != null ? m.group(5) : "000";
+            StringBuffer millisecondsSource = new StringBuffer(m.group(5) != null ? m.group(5) : "000");
             while (millisecondsSource.length() < 3)
-                millisecondsSource += '0';
-            millisecondsSource = millisecondsSource.substring(0, 3);
-            long millis = Long.parseLong(millisecondsSource);
+                millisecondsSource.append('0');
+            String millisecondsSourceResult = millisecondsSource.toString().substring(0, 3);
+            long millis = Long.parseLong(millisecondsSourceResult);
 
             long millisTotal = ((hours * 60 + minutes) * 60 + seconds) * 1000 + millis;
 

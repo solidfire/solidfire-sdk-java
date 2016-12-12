@@ -25,6 +25,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.Scanner;
 
 /**
@@ -153,7 +154,7 @@ public class HttpsRequestDispatcher implements RequestDispatcher {
     }
 
     private static String createBasicAuthToken(String username, String password) {
-        return "Basic " + Base64.encodeBytes((username + ":" + password).getBytes());
+        return "Basic " + Base64.encodeBytes((username + ":" + password).getBytes(Charset.forName("UTF-8")));
     }
 
     /** {@inheritDoc} */
