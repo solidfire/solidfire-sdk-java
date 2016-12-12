@@ -33,7 +33,7 @@ import java.util.Objects;
 public class Origin implements Serializable {
 
     public static final long serialVersionUID = -7308266263206371232L;
-    @SerializedName("&lt;signature&gt;") private Signature &lt;signature&gt;;
+    @SerializedName("&lt;signature&gt;") private Signature signature;
     @SerializedName("contract-date") private String contractDate;
     @SerializedName("contract-name") private String contractName;
     @SerializedName("contract-quantity") private Long contractQuantity;
@@ -51,7 +51,7 @@ public class Origin implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public Origin(
-        Signature &lt;signature&gt;,
+        Signature signature,
         String contractDate,
         String contractName,
         Long contractQuantity,
@@ -62,7 +62,7 @@ public class Origin implements Serializable {
         String type
     )
     {
-        this.&lt;signature&gt; = &lt;signature&gt;;
+        this.signature = signature;
         this.contractDate = contractDate;
         this.contractName = contractName;
         this.contractQuantity = contractQuantity;
@@ -75,9 +75,9 @@ public class Origin implements Serializable {
 
     /** 
      **/
-    public Signature get&lt;signature&gt;() { return this.&lt;signature&gt;; }
-    public void set&lt;signature&gt;(Signature &lt;signature&gt;) { 
-        this.&lt;signature&gt; = &lt;signature&gt;;
+    public Signature getSignature() { return this.signature; }
+    public void setSignature(Signature signature) { 
+        this.signature = signature;
     }
     /** 
      **/
@@ -136,7 +136,7 @@ public class Origin implements Serializable {
         Origin that = (Origin) o;
 
         return 
-            Objects.equals(&lt;signature&gt;, that.&lt;signature&gt;) && 
+            Objects.equals(signature, that.signature) && 
             Objects.equals(contractDate, that.contractDate) && 
             Objects.equals(contractName, that.contractName) && 
             Objects.equals(contractQuantity, that.contractQuantity) && 
@@ -149,13 +149,13 @@ public class Origin implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( &lt;signature&gt;,contractDate,contractName,contractQuantity,contractType,integrator,location,organization,type );
+        return Objects.hash( signature,contractDate,contractName,contractQuantity,contractType,integrator,location,organization,type );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("&lt;signature&gt;", &lt;signature&gt;);
+        map.put("signature", signature);
         map.put("contractDate", contractDate);
         map.put("contractName", contractName);
         map.put("contractQuantity", contractQuantity);
@@ -172,7 +172,7 @@ public class Origin implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" &lt;signature&gt; : ").append(&lt;signature&gt;).append(",");
+        sb.append(" signature : ").append(signature).append(",");
         sb.append(" contractDate : ").append(contractDate).append(",");
         sb.append(" contractName : ").append(contractName).append(",");
         sb.append(" contractQuantity : ").append(contractQuantity).append(",");
@@ -198,7 +198,7 @@ public class Origin implements Serializable {
     }
 
     public static class Builder {
-        private Signature &lt;signature&gt;;
+        private Signature signature;
         private String contractDate;
         private String contractName;
         private Long contractQuantity;
@@ -212,7 +212,7 @@ public class Origin implements Serializable {
 
         public Origin build() {
             return new Origin (
-                         this.&lt;signature&gt;,
+                         this.signature,
                          this.contractDate,
                          this.contractName,
                          this.contractQuantity,
@@ -224,7 +224,7 @@ public class Origin implements Serializable {
         }
 
         private Origin.Builder buildFrom(final Origin req) {
-            this.&lt;signature&gt; = req.&lt;signature&gt;;
+            this.signature = req.signature;
             this.contractDate = req.contractDate;
             this.contractName = req.contractName;
             this.contractQuantity = req.contractQuantity;
@@ -237,8 +237,8 @@ public class Origin implements Serializable {
             return this;
         }
 
-        public Origin.Builder &lt;signature&gt;(final Signature &lt;signature&gt;) {
-            this.&lt;signature&gt; = &lt;signature&gt;;
+        public Origin.Builder signature(final Signature signature) {
+            this.signature = signature;
             return this;
         }
 
