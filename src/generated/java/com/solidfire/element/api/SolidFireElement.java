@@ -1972,33 +1972,6 @@ public class SolidFireElement
         return super.sendRequest("GetCurrentClusterAdmin", null, null, GetCurrentClusterAdminResult.class);
     }
     /** 
-     * CreateClusterSupportBundle is used to gather support bundles from all the nodes in a cluster. When the bundle has been successfully created, the bundle is stored on the node as a tar.gz file.
-     **/
-    @Override
-    @Since("8.0")
-    @ConnectionType("Node")
-    public CreateClusterSupportBundleResult createClusterSupportBundle(final CreateClusterSupportBundleRequest request) {
-        return super.sendRequest("CreateClusterSupportBundle", request, CreateClusterSupportBundleRequest.class, CreateClusterSupportBundleResult.class);
-    }
-
-    /** 
-     * CreateClusterSupportBundle is used to gather support bundles from all the nodes in a cluster. When the bundle has been successfully created, the bundle is stored on the node as a tar.gz file.
-     **/
-    @Override
-    @Since("8.0")
-    @ConnectionType("Node")
-    public CreateClusterSupportBundleResult createClusterSupportBundle(
-        Optional<Boolean> allowIncomplete,
-        Optional<String> bundleName,
-        Optional<String> extraArgs,
-        Optional<String> mvip,
-        Optional<String> nodes,
-        String password,
-        String username
-        ) {
-        return this.createClusterSupportBundle(new CreateClusterSupportBundleRequest(allowIncomplete, bundleName, extraArgs, mvip, nodes, password, username));
-    }
-    /** 
      * CreateSupportBundle is used to create a support bundle file under the node's directory. When the bundle has been successfully created, the bundle is stored on the node as a tar.gz file.
      **/
     @Override
@@ -2068,6 +2041,50 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public SnmpSendTestTrapsResult snmpSendTestTraps() {
         return super.sendRequest("SnmpSendTestTraps", null, null, SnmpSendTestTrapsResult.class);
+    }
+    /** 
+     * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public RestartNetworkingResult restartNetworking(final RestartNetworkingRequest request) {
+        return super.sendRequest("RestartNetworking", request, RestartNetworkingRequest.class, RestartNetworkingResult.class);
+    }
+
+    /** 
+     * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public RestartNetworkingResult restartNetworking(
+        Boolean force
+        ) {
+        return this.restartNetworking(new RestartNetworkingRequest(force));
+    }
+    /** 
+     * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public RestartServicesResult restartServices(final RestartServicesRequest request) {
+        return super.sendRequest("RestartServices", request, RestartServicesRequest.class, RestartServicesResult.class);
+    }
+
+    /** 
+     * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public RestartServicesResult restartServices(
+        Boolean force,
+        Optional<String> service,
+        Optional<String> action
+        ) {
+        return this.restartServices(new RestartServicesRequest(force, service, action));
     }
     /** 
      * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
