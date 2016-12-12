@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetIpmiConfigResult implements Serializable {
 
     public static final long serialVersionUID = -2094399684237272645L;
-    @SerializedName("nodes") private GetIpmiConfigNodesResult nodes;
+    @SerializedName("nodes") private GetIpmiConfigNodesResult[] nodes;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class GetIpmiConfigResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetIpmiConfigResult(
-        GetIpmiConfigNodesResult nodes
+        GetIpmiConfigNodesResult[] nodes
     )
     {
         this.nodes = nodes;
@@ -51,8 +51,8 @@ public class GetIpmiConfigResult implements Serializable {
 
     /** 
      **/
-    public GetIpmiConfigNodesResult getNodes() { return this.nodes; }
-    public void setNodes(GetIpmiConfigNodesResult nodes) { 
+    public GetIpmiConfigNodesResult[] getNodes() { return this.nodes; }
+    public void setNodes(GetIpmiConfigNodesResult[] nodes) { 
         this.nodes = nodes;
     }
 
@@ -64,12 +64,12 @@ public class GetIpmiConfigResult implements Serializable {
         GetIpmiConfigResult that = (GetIpmiConfigResult) o;
 
         return 
-            Objects.equals(nodes, that.nodes);
+            Arrays.equals(nodes, that.nodes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodes );
+        return Objects.hash( (Object[])nodes );
     }
 
 
@@ -84,7 +84,7 @@ public class GetIpmiConfigResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(nodes).append(",");
+        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -102,7 +102,7 @@ public class GetIpmiConfigResult implements Serializable {
     }
 
     public static class Builder {
-        private GetIpmiConfigNodesResult nodes;
+        private GetIpmiConfigNodesResult[] nodes;
 
         private Builder() { }
 
@@ -117,7 +117,7 @@ public class GetIpmiConfigResult implements Serializable {
             return this;
         }
 
-        public GetIpmiConfigResult.Builder nodes(final GetIpmiConfigNodesResult nodes) {
+        public GetIpmiConfigResult.Builder nodes(final GetIpmiConfigNodesResult[] nodes) {
             this.nodes = nodes;
             return this;
         }

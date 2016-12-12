@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetIpmiConfigRequest implements Serializable {
 
     public static final long serialVersionUID = -9099686827245682514L;
-    @SerializedName("chassisType") private String chassisType;
+    @SerializedName("chassisType") private Optional<String> chassisType;
     @SerializedName("force") private Boolean force;
 
     // empty constructor
@@ -44,20 +44,20 @@ public class GetIpmiConfigRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetIpmiConfigRequest(
-        String chassisType,
+        Optional<String> chassisType,
         Boolean force
     )
     {
-        this.chassisType = chassisType;
+        this.chassisType = (chassisType == null) ? Optional.<String>empty() : chassisType;
         this.force = force;
     }
 
     /** 
      * Used to display information for each node chassis type. Valid values:all - returns sensor information for each chassis type. {chassis type} - returns sensor information for a specified chassis type.
      **/
-    public String getChassisType() { return this.chassisType; }
-    public void setChassisType(String chassisType) { 
-        this.chassisType = chassisType;
+    public Optional<String> getChassisType() { return this.chassisType; }
+    public void setChassisType(Optional<String> chassisType) { 
+        this.chassisType = (chassisType == null) ? Optional.<String>empty() : chassisType;
     }
     /** 
      **/
@@ -96,7 +96,9 @@ public class GetIpmiConfigRequest implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" chassisType : ").append(chassisType).append(",");
+        if(null != chassisType && chassisType.isPresent()){
+            sb.append(" chassisType : ").append(chassisType).append(",");
+        }
         sb.append(" force : ").append(force).append(",");
         sb.append( " }" );
 
@@ -115,7 +117,7 @@ public class GetIpmiConfigRequest implements Serializable {
     }
 
     public static class Builder {
-        private String chassisType;
+        private Optional<String> chassisType;
         private Boolean force;
 
         private Builder() { }
@@ -133,8 +135,8 @@ public class GetIpmiConfigRequest implements Serializable {
             return this;
         }
 
-        public GetIpmiConfigRequest.Builder chassisType(final String chassisType) {
-            this.chassisType = chassisType;
+        public GetIpmiConfigRequest.Builder optionalChassisType(final String chassisType) {
+            this.chassisType = (chassisType == null) ? Optional.<String>empty() : Optional.of(chassisType);
             return this;
         }
 
