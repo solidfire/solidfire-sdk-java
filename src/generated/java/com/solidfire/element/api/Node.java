@@ -48,6 +48,7 @@ public class Node implements Serializable {
     @SerializedName("sipi") private String sipi;
     @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("virtualNetworks") private Long[] virtualNetworks;
 
     // empty constructor
     @Since("7.0")
@@ -71,7 +72,8 @@ public class Node implements Serializable {
         String sip,
         String sipi,
         java.util.UUID uuid,
-        java.util.Map<String, Object> attributes
+        java.util.Map<String, Object> attributes,
+        Long[] virtualNetworks
     )
     {
         this.nodeID = nodeID;
@@ -89,6 +91,7 @@ public class Node implements Serializable {
         this.sipi = sipi;
         this.uuid = uuid;
         this.attributes = attributes;
+        this.virtualNetworks = virtualNetworks;
     }
 
     /** 
@@ -192,6 +195,12 @@ public class Node implements Serializable {
     public void setAttributes(java.util.Map<String, Object> attributes) { 
         this.attributes = attributes;
     }
+    /** 
+     **/
+    public Long[] getVirtualNetworks() { return this.virtualNetworks; }
+    public void setVirtualNetworks(Long[] virtualNetworks) { 
+        this.virtualNetworks = virtualNetworks;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -215,12 +224,13 @@ public class Node implements Serializable {
             Objects.equals(sip, that.sip) && 
             Objects.equals(sipi, that.sipi) && 
             Objects.equals(uuid, that.uuid) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Arrays.equals(virtualNetworks, that.virtualNetworks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID,associatedMasterServiceID,associatedFServiceID,fibreChannelTargetPortGroup,name,platformInfo,softwareVersion,cip,cipi,mip,mipi,sip,sipi,uuid,attributes );
+        return Objects.hash( nodeID,associatedMasterServiceID,associatedFServiceID,fibreChannelTargetPortGroup,name,platformInfo,softwareVersion,cip,cipi,mip,mipi,sip,sipi,uuid,attributes,(Object[])virtualNetworks );
     }
 
 
@@ -241,6 +251,7 @@ public class Node implements Serializable {
         map.put("sipi", sipi);
         map.put("uuid", uuid);
         map.put("attributes", attributes);
+        map.put("virtualNetworks", virtualNetworks);
         return map;
     }
 
@@ -264,6 +275,7 @@ public class Node implements Serializable {
         sb.append(" sipi : ").append(sipi).append(",");
         sb.append(" uuid : ").append(uuid).append(",");
         sb.append(" attributes : ").append(attributes).append(",");
+        sb.append(" virtualNetworks : ").append(Arrays.toString(virtualNetworks)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -296,6 +308,7 @@ public class Node implements Serializable {
         private String sipi;
         private java.util.UUID uuid;
         private java.util.Map<String, Object> attributes;
+        private Long[] virtualNetworks;
 
         private Builder() { }
 
@@ -315,7 +328,8 @@ public class Node implements Serializable {
                          this.sip,
                          this.sipi,
                          this.uuid,
-                         this.attributes);
+                         this.attributes,
+                         this.virtualNetworks);
         }
 
         private Node.Builder buildFrom(final Node req) {
@@ -334,6 +348,7 @@ public class Node implements Serializable {
             this.sipi = req.sipi;
             this.uuid = req.uuid;
             this.attributes = req.attributes;
+            this.virtualNetworks = req.virtualNetworks;
 
             return this;
         }
@@ -410,6 +425,11 @@ public class Node implements Serializable {
 
         public Node.Builder attributes(final java.util.Map<String, Object> attributes) {
             this.attributes = attributes;
+            return this;
+        }
+
+        public Node.Builder virtualNetworks(final Long[] virtualNetworks) {
+            this.virtualNetworks = virtualNetworks;
             return this;
         }
 
