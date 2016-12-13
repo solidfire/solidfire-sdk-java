@@ -4124,8 +4124,9 @@ public class SolidFireElement
     @Override
     @Since("7.0")
     @ConnectionType("Node")
+    @SuppressWarnings("unchecked")
     public java.util.Map<String, Object> restartNetworking(final RestartNetworkingRequest request) {
-        return super.sendRequest("RestartNetworking", request, RestartNetworkingRequest.class, java.util.Map<String, Object>.class);
+        return super.sendRequest("RestartNetworking", request, RestartNetworkingRequest.class, java.util.Map.class);
     }
 
     /** 
@@ -4145,8 +4146,9 @@ public class SolidFireElement
     @Override
     @Since("7.0")
     @ConnectionType("Node")
+    @SuppressWarnings("unchecked")
     public java.util.Map<String, Object> restartServices(final RestartServicesRequest request) {
-        return super.sendRequest("RestartServices", request, RestartServicesRequest.class, java.util.Map<String, Object>.class);
+        return super.sendRequest("RestartServices", request, RestartServicesRequest.class, java.util.Map.class);
     }
 
     /** 
