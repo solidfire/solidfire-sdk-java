@@ -4124,8 +4124,8 @@ public class SolidFireElement
     @Override
     @Since("7.0")
     @ConnectionType("Node")
-    public RestartNetworkingResult restartNetworking(final RestartNetworkingRequest request) {
-        return super.sendRequest("RestartNetworking", request, RestartNetworkingRequest.class, RestartNetworkingResult.class);
+    public java.util.Map<String, Object> restartNetworking(final RestartNetworkingRequest request) {
+        return super.sendRequest("RestartNetworking", request, RestartNetworkingRequest.class, java.util.Map<String, Object>.class);
     }
 
     /** 
@@ -4134,7 +4134,7 @@ public class SolidFireElement
     @Override
     @Since("7.0")
     @ConnectionType("Node")
-    public RestartNetworkingResult restartNetworking(
+    public java.util.Map<String, Object> restartNetworking(
         Boolean force
         ) {
         return this.restartNetworking(new RestartNetworkingRequest(force));
@@ -4145,8 +4145,8 @@ public class SolidFireElement
     @Override
     @Since("7.0")
     @ConnectionType("Node")
-    public RestartServicesResult restartServices(final RestartServicesRequest request) {
-        return super.sendRequest("RestartServices", request, RestartServicesRequest.class, RestartServicesResult.class);
+    public java.util.Map<String, Object> restartServices(final RestartServicesRequest request) {
+        return super.sendRequest("RestartServices", request, RestartServicesRequest.class, java.util.Map<String, Object>.class);
     }
 
     /** 
@@ -4155,7 +4155,7 @@ public class SolidFireElement
     @Override
     @Since("7.0")
     @ConnectionType("Node")
-    public RestartServicesResult restartServices(
+    public java.util.Map<String, Object> restartServices(
         Boolean force,
         Optional<String> service,
         Optional<String> action

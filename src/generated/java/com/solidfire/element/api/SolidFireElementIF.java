@@ -3441,14 +3441,14 @@ public interface SolidFireElementIF {
      **/
     @Since("7.0")
     @ConnectionType("Node")
-    public RestartNetworkingResult restartNetworking(final RestartNetworkingRequest request);
+    public java.util.Map<String, Object> restartNetworking(final RestartNetworkingRequest request);
 
     /** 
      * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Since("7.0")
     @ConnectionType("Node")
-    public RestartNetworkingResult restartNetworking(
+    public java.util.Map<String, Object> restartNetworking(
         
         Boolean force
         );
@@ -3457,14 +3457,14 @@ public interface SolidFireElementIF {
      **/
     @Since("7.0")
     @ConnectionType("Node")
-    public RestartServicesResult restartServices(final RestartServicesRequest request);
+    public java.util.Map<String, Object> restartServices(final RestartServicesRequest request);
 
     /** 
      * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
      **/
     @Since("7.0")
     @ConnectionType("Node")
-    public RestartServicesResult restartServices(
+    public java.util.Map<String, Object> restartServices(
         
         Boolean force
 , 
