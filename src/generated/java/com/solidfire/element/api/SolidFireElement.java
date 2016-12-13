@@ -2043,48 +2043,86 @@ public class SolidFireElement
         return super.sendRequest("SnmpSendTestTraps", null, null, SnmpSendTestTrapsResult.class);
     }
     /** 
-     * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
+     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
      **/
     @Override
     @Since("7.0")
-    @ConnectionType("Node")
-    public RestartNetworkingResult restartNetworking(final RestartNetworkingRequest request) {
-        return super.sendRequest("RestartNetworking", request, RestartNetworkingRequest.class, RestartNetworkingResult.class);
+    @ConnectionType("Cluster")
+    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request) {
+        return super.sendRequest("GetIpmiConfig", request, GetIpmiConfigRequest.class, GetIpmiConfigResult.class);
     }
 
     /** 
-     * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
+     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
      **/
     @Override
     @Since("7.0")
-    @ConnectionType("Node")
-    public RestartNetworkingResult restartNetworking(
+    @ConnectionType("Cluster")
+    public GetIpmiConfigResult getIpmiConfig(
+        Optional<String> chassisType,
         Boolean force
         ) {
-        return this.restartNetworking(new RestartNetworkingRequest(force));
+        return this.getIpmiConfig(new GetIpmiConfigRequest(chassisType, force));
     }
     /** 
-     * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
+     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
      **/
     @Override
     @Since("7.0")
-    @ConnectionType("Node")
-    public RestartServicesResult restartServices(final RestartServicesRequest request) {
-        return super.sendRequest("RestartServices", request, RestartServicesRequest.class, RestartServicesResult.class);
+    @ConnectionType("Cluster")
+    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request) {
+        return super.sendRequest("GetIpmiInfo", request, GetIpmiInfoRequest.class, GetIpmiInfoResult.class);
     }
 
     /** 
-     * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
+     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
      **/
     @Override
     @Since("7.0")
-    @ConnectionType("Node")
-    public RestartServicesResult restartServices(
-        Boolean force,
-        Optional<String> service,
-        Optional<String> action
+    @ConnectionType("Cluster")
+    public GetIpmiInfoResult getIpmiInfo(
+        Boolean force
         ) {
-        return this.restartServices(new RestartServicesRequest(force, service, action));
+        return this.getIpmiInfo(new GetIpmiInfoRequest(force));
+    }
+    /** 
+     * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetOriginResult getOrigin(final GetOriginRequest request) {
+        return super.sendRequest("GetOrigin", request, GetOriginRequest.class, GetOriginResult.class);
+    }
+
+    /** 
+     * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetOriginResult getOrigin(
+        Boolean force
+        ) {
+        return this.getOrigin(new GetOriginRequest(force));
+    }
+    /** 
+     * GetVolumeCount enables you to retrieve the number of volumes currently in the system.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetVolumeCountResult getVolumeCount() {
+        return super.sendRequest("GetVolumeCount", null, null, GetVolumeCountResult.class);
+    }
+    /** 
+     * ListPendingActiveNodes returns the list of nodes in the cluster that are currently in the PendingActive state, between the pending and active states. These are nodes that are currently being returned to the factory image.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListPendingActiveNodesResult listPendingActiveNodes() {
+        return super.sendRequest("ListPendingActiveNodes", null, null, ListPendingActiveNodesResult.class);
     }
     /** 
      * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
@@ -4081,85 +4119,47 @@ public class SolidFireElement
         return this.removeDrives(new RemoveDrivesRequest(drives));
     }
     /** 
-     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Override
     @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request) {
-        return super.sendRequest("GetIpmiConfig", request, GetIpmiConfigRequest.class, GetIpmiConfigResult.class);
+    @ConnectionType("Node")
+    public RestartNetworkingResult restartNetworking(final RestartNetworkingRequest request) {
+        return super.sendRequest("RestartNetworking", request, RestartNetworkingRequest.class, RestartNetworkingResult.class);
     }
 
     /** 
-     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Override
     @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(
-        Optional<String> chassisType,
+    @ConnectionType("Node")
+    public RestartNetworkingResult restartNetworking(
         Boolean force
         ) {
-        return this.getIpmiConfig(new GetIpmiConfigRequest(chassisType, force));
+        return this.restartNetworking(new RestartNetworkingRequest(force));
     }
     /** 
-     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
      **/
     @Override
     @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request) {
-        return super.sendRequest("GetIpmiInfo", request, GetIpmiInfoRequest.class, GetIpmiInfoResult.class);
+    @ConnectionType("Node")
+    public RestartServicesResult restartServices(final RestartServicesRequest request) {
+        return super.sendRequest("RestartServices", request, RestartServicesRequest.class, RestartServicesResult.class);
     }
 
     /** 
-     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
      **/
     @Override
     @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(
-        Boolean force
+    @ConnectionType("Node")
+    public RestartServicesResult restartServices(
+        Boolean force,
+        Optional<String> service,
+        Optional<String> action
         ) {
-        return this.getIpmiInfo(new GetIpmiInfoRequest(force));
-    }
-    /** 
-     * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetOriginResult getOrigin(final GetOriginRequest request) {
-        return super.sendRequest("GetOrigin", request, GetOriginRequest.class, GetOriginResult.class);
-    }
-
-    /** 
-     * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetOriginResult getOrigin(
-        Boolean force
-        ) {
-        return this.getOrigin(new GetOriginRequest(force));
-    }
-    /** 
-     * GetVolumeCount enables you to retrieve the number of volumes currently in the system.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetVolumeCountResult getVolumeCount() {
-        return super.sendRequest("GetVolumeCount", null, null, GetVolumeCountResult.class);
-    }
-    /** 
-     * ListPendingActiveNodes returns the list of nodes in the cluster that are currently in the PendingActive state, between the pending and active states. These are nodes that are currently being returned to the factory image.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListPendingActiveNodesResult listPendingActiveNodes() {
-        return super.sendRequest("ListPendingActiveNodes", null, null, ListPendingActiveNodesResult.class);
+        return this.restartServices(new RestartServicesRequest(force, service, action));
     }
 }

@@ -34,7 +34,7 @@ public class GetIpmiConfigNodesResult implements Serializable {
 
     public static final long serialVersionUID = 4146119083973416749L;
     @SerializedName("nodeID") private Long nodeID;
-    @SerializedName("result") private IpmiConfigs result;
+    @SerializedName("result") private java.util.Map<String, Object> result;
 
     // empty constructor
     @Since("7.0")
@@ -45,7 +45,7 @@ public class GetIpmiConfigNodesResult implements Serializable {
     @Since("7.0")
     public GetIpmiConfigNodesResult(
         Long nodeID,
-        IpmiConfigs result
+        java.util.Map<String, Object> result
     )
     {
         this.nodeID = nodeID;
@@ -60,8 +60,8 @@ public class GetIpmiConfigNodesResult implements Serializable {
     }
     /** 
      **/
-    public IpmiConfigs getResult() { return this.result; }
-    public void setResult(IpmiConfigs result) { 
+    public java.util.Map<String, Object> getResult() { return this.result; }
+    public void setResult(java.util.Map<String, Object> result) { 
         this.result = result;
     }
 
@@ -115,7 +115,7 @@ public class GetIpmiConfigNodesResult implements Serializable {
 
     public static class Builder {
         private Long nodeID;
-        private IpmiConfigs result;
+        private java.util.Map<String, Object> result;
 
         private Builder() { }
 
@@ -137,7 +137,7 @@ public class GetIpmiConfigNodesResult implements Serializable {
             return this;
         }
 
-        public GetIpmiConfigNodesResult.Builder result(final IpmiConfigs result) {
+        public GetIpmiConfigNodesResult.Builder result(final java.util.Map<String, Object> result) {
             this.result = result;
             return this;
         }

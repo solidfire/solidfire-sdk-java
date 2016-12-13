@@ -1712,41 +1712,67 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public SnmpSendTestTrapsResult snmpSendTestTraps();
     /** 
-     * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
+     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
      **/
     @Since("7.0")
-    @ConnectionType("Node")
-    public RestartNetworkingResult restartNetworking(final RestartNetworkingRequest request);
+    @ConnectionType("Cluster")
+    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request);
 
     /** 
-     * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
+     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
      **/
     @Since("7.0")
-    @ConnectionType("Node")
-    public RestartNetworkingResult restartNetworking(
+    @ConnectionType("Cluster")
+    public GetIpmiConfigResult getIpmiConfig(
+        
+        Optional<String> chassisType
+, 
+        Boolean force
+        );
+    /** 
+     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request);
+
+    /** 
+     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetIpmiInfoResult getIpmiInfo(
         
         Boolean force
         );
     /** 
-     * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
+     * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
      **/
     @Since("7.0")
-    @ConnectionType("Node")
-    public RestartServicesResult restartServices(final RestartServicesRequest request);
+    @ConnectionType("Cluster")
+    public GetOriginResult getOrigin(final GetOriginRequest request);
 
     /** 
-     * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
+     * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
      **/
     @Since("7.0")
-    @ConnectionType("Node")
-    public RestartServicesResult restartServices(
+    @ConnectionType("Cluster")
+    public GetOriginResult getOrigin(
         
         Boolean force
-, 
-        Optional<String> service
-, 
-        Optional<String> action
         );
+    /** 
+     * GetVolumeCount enables you to retrieve the number of volumes currently in the system.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetVolumeCountResult getVolumeCount();
+    /** 
+     * ListPendingActiveNodes returns the list of nodes in the cluster that are currently in the PendingActive state, between the pending and active states. These are nodes that are currently being returned to the factory image.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListPendingActiveNodesResult listPendingActiveNodes();
     /** 
      * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
      **/
@@ -3411,65 +3437,39 @@ public interface SolidFireElementIF {
         Long[] drives
         );
     /** 
-     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request);
+    @ConnectionType("Node")
+    public RestartNetworkingResult restartNetworking(final RestartNetworkingRequest request);
 
     /** 
-     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(
+    @ConnectionType("Node")
+    public RestartNetworkingResult restartNetworking(
         
-        Optional<String> chassisType
+        Boolean force
+        );
+    /** 
+     * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
+     **/
+    @Since("7.0")
+    @ConnectionType("Node")
+    public RestartServicesResult restartServices(final RestartServicesRequest request);
+
+    /** 
+     * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
+     **/
+    @Since("7.0")
+    @ConnectionType("Node")
+    public RestartServicesResult restartServices(
+        
+        Boolean force
 , 
-        Boolean force
+        Optional<String> service
+, 
+        Optional<String> action
         );
-    /** 
-     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request);
-
-    /** 
-     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(
-        
-        Boolean force
-        );
-    /** 
-     * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetOriginResult getOrigin(final GetOriginRequest request);
-
-    /** 
-     * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetOriginResult getOrigin(
-        
-        Boolean force
-        );
-    /** 
-     * GetVolumeCount enables you to retrieve the number of volumes currently in the system.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetVolumeCountResult getVolumeCount();
-    /** 
-     * ListPendingActiveNodes returns the list of nodes in the cluster that are currently in the PendingActive state, between the pending and active states. These are nodes that are currently being returned to the factory image.
-     **/
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListPendingActiveNodesResult listPendingActiveNodes();
 }
