@@ -29,7 +29,7 @@ public class ElementFactory extends AbstractFactory<SolidFireElement> {
     private static final Logger log = LoggerFactory.getLogger(ElementFactory.class);
 
     private static final double MIN_SDK_VERSION = 7.0;
-    private static final double MAX_SDK_VERSION = 8.4;
+    private static final double MAX_SDK_VERSION = 9.0;
 
     private ElementFactory() {
     }
