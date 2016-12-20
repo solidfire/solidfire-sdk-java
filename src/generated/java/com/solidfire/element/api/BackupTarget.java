@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * ['The object containing information about a backup target.']
+ * The object containing information about a backup target.
  **/
 
 public class BackupTarget implements Serializable {

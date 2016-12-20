@@ -27,7 +27,6 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * 
  **/
 
 public class GetAccountEfficiencyRequest implements Serializable {

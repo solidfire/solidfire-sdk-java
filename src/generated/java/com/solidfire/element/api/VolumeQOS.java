@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * ['Quality of Service (QoS) Result values are used on SolidFire volumes to provision performance expectations.']
+ * Quality of Service (QoS) Result values are used on SolidFire volumes to provision performance expectations.
  **/
 
 public class VolumeQOS implements Serializable {

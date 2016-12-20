@@ -27,7 +27,9 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * ['A node refers to an individual machine in a cluster.', 'Each active node hosts a master service, which is responsible for managing the drives and other services on its node.', 'After a node is made active, its drives will become available for addition to the cluster.']['A node refers to an individual machine in a cluster.', 'Each active node hosts a master service, which is responsible for managing the drives and other services on its node.', 'After a node is made active, its drives will become available for addition to the cluster.']['A node refers to an individual machine in a cluster.', 'Each active node hosts a master service, which is responsible for managing the drives and other services on its node.', 'After a node is made active, its drives will become available for addition to the cluster.']
+ * A node refers to an individual machine in a cluster.
+ * Each active node hosts a master service, which is responsible for managing the drives and other services on its node.
+ * After a node is made active, its drives will become available for addition to the cluster.
  **/
 
 public class Node implements Serializable {

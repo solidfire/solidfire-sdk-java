@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * ['Object containing characteristics of each initiator to modify']
+ * Object containing characteristics of each initiator to modify
  **/
 
 public class ModifyInitiator implements Serializable {

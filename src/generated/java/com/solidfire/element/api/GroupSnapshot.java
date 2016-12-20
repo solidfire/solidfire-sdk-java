@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * ['Group Snapshot object represents a point-in-time copy of a group of volumes.']
+ * Group Snapshot object represents a point-in-time copy of a group of volumes.
  **/
 
 public class GroupSnapshot implements Serializable {

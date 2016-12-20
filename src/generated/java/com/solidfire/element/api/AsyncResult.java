@@ -27,7 +27,9 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * ['The wrapped object returned by the "GetAsyncResult" API Service call.', '<br/>', '<b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.']['The wrapped object returned by the "GetAsyncResult" API Service call.', '<br/>', '<b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.']['The wrapped object returned by the "GetAsyncResult" API Service call.', '<br/>', '<b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.']
+ * The wrapped object returned by the "GetAsyncResult" API Service call.
+ * <br/>
+ * <b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.
  **/
 
 public class AsyncResult implements Serializable {

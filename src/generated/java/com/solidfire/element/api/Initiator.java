@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * ['Object containing characteristics of each initiator']
+ * Object containing characteristics of each initiator
  **/
 
 public class Initiator implements Serializable {
