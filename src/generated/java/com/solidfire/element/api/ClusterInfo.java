@@ -33,7 +33,6 @@ import java.util.Objects;
 public class ClusterInfo implements Serializable {
 
     public static final long serialVersionUID = 6937143244161912485L;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
     @SerializedName("encryptionAtRestState") private String encryptionAtRestState;
     @SerializedName("ensemble") private String[] ensemble;
     @SerializedName("mvip") private String mvip;
@@ -45,6 +44,7 @@ public class ClusterInfo implements Serializable {
     @SerializedName("svipNodeID") private Long svipNodeID;
     @SerializedName("uniqueID") private String uniqueID;
     @SerializedName("uuid") private java.util.UUID uuid;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -54,7 +54,6 @@ public class ClusterInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ClusterInfo(
-        java.util.Map<String, Object> attributes,
         String encryptionAtRestState,
         String[] ensemble,
         String mvip,
@@ -65,10 +64,10 @@ public class ClusterInfo implements Serializable {
         String svip,
         Long svipNodeID,
         String uniqueID,
-        java.util.UUID uuid
+        java.util.UUID uuid,
+        java.util.Map<String, Object> attributes
     )
     {
-        this.attributes = attributes;
         this.encryptionAtRestState = encryptionAtRestState;
         this.ensemble = ensemble;
         this.mvip = mvip;
@@ -80,15 +79,9 @@ public class ClusterInfo implements Serializable {
         this.svipNodeID = svipNodeID;
         this.uniqueID = uniqueID;
         this.uuid = uuid;
-    }
-
-    /** 
-     * List of Name/Value pairs in JSON object format.
-     **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
         this.attributes = attributes;
     }
+
     /** 
      * Encryption at rest state.
      **/
@@ -165,6 +158,13 @@ public class ClusterInfo implements Serializable {
     public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
+    /** 
+     * List of Name/Value pairs in JSON object format.
+     **/
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
+        this.attributes = attributes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -174,7 +174,6 @@ public class ClusterInfo implements Serializable {
         ClusterInfo that = (ClusterInfo) o;
 
         return 
-            Objects.equals(attributes, that.attributes) && 
             Objects.equals(encryptionAtRestState, that.encryptionAtRestState) && 
             Arrays.equals(ensemble, that.ensemble) && 
             Objects.equals(mvip, that.mvip) && 
@@ -185,18 +184,18 @@ public class ClusterInfo implements Serializable {
             Objects.equals(svip, that.svip) && 
             Objects.equals(svipNodeID, that.svipNodeID) && 
             Objects.equals(uniqueID, that.uniqueID) && 
-            Objects.equals(uuid, that.uuid);
+            Objects.equals(uuid, that.uuid) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( attributes,encryptionAtRestState,(Object[])ensemble,mvip,mvipNodeID,name,repCount,state,svip,svipNodeID,uniqueID,uuid );
+        return Objects.hash( encryptionAtRestState,(Object[])ensemble,mvip,mvipNodeID,name,repCount,state,svip,svipNodeID,uniqueID,uuid,attributes );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("attributes", attributes);
         map.put("encryptionAtRestState", encryptionAtRestState);
         map.put("ensemble", ensemble);
         map.put("mvip", mvip);
@@ -208,6 +207,7 @@ public class ClusterInfo implements Serializable {
         map.put("svipNodeID", svipNodeID);
         map.put("uniqueID", uniqueID);
         map.put("uuid", uuid);
+        map.put("attributes", attributes);
         return map;
     }
 
@@ -216,7 +216,6 @@ public class ClusterInfo implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" attributes : ").append(attributes).append(",");
         sb.append(" encryptionAtRestState : ").append(encryptionAtRestState).append(",");
         sb.append(" ensemble : ").append(Arrays.toString(ensemble)).append(",");
         sb.append(" mvip : ").append(mvip).append(",");
@@ -228,6 +227,7 @@ public class ClusterInfo implements Serializable {
         sb.append(" svipNodeID : ").append(svipNodeID).append(",");
         sb.append(" uniqueID : ").append(uniqueID).append(",");
         sb.append(" uuid : ").append(uuid).append(",");
+        sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -245,7 +245,6 @@ public class ClusterInfo implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> attributes;
         private String encryptionAtRestState;
         private String[] ensemble;
         private String mvip;
@@ -257,12 +256,12 @@ public class ClusterInfo implements Serializable {
         private Long svipNodeID;
         private String uniqueID;
         private java.util.UUID uuid;
+        private java.util.Map<String, Object> attributes;
 
         private Builder() { }
 
         public ClusterInfo build() {
             return new ClusterInfo (
-                         this.attributes,
                          this.encryptionAtRestState,
                          this.ensemble,
                          this.mvip,
@@ -273,11 +272,11 @@ public class ClusterInfo implements Serializable {
                          this.svip,
                          this.svipNodeID,
                          this.uniqueID,
-                         this.uuid);
+                         this.uuid,
+                         this.attributes);
         }
 
         private ClusterInfo.Builder buildFrom(final ClusterInfo req) {
-            this.attributes = req.attributes;
             this.encryptionAtRestState = req.encryptionAtRestState;
             this.ensemble = req.ensemble;
             this.mvip = req.mvip;
@@ -289,12 +288,8 @@ public class ClusterInfo implements Serializable {
             this.svipNodeID = req.svipNodeID;
             this.uniqueID = req.uniqueID;
             this.uuid = req.uuid;
+            this.attributes = req.attributes;
 
-            return this;
-        }
-
-        public ClusterInfo.Builder attributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = attributes;
             return this;
         }
 
@@ -350,6 +345,11 @@ public class ClusterInfo implements Serializable {
 
         public ClusterInfo.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
+            return this;
+        }
+
+        public ClusterInfo.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
             return this;
         }
 

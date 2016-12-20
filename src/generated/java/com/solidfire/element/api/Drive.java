@@ -42,9 +42,9 @@ public class Drive implements Serializable {
     @SerializedName("slot") private Optional<Long> slot;
     @SerializedName("driveStatus") private String driveStatus;
     @SerializedName("driveType") private String driveType;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
     @SerializedName("reservedSliceFileCapacity") private Optional<Long> reservedSliceFileCapacity;
     @SerializedName("customerSliceFileCapacity") private Optional<Long> customerSliceFileCapacity;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -63,9 +63,9 @@ public class Drive implements Serializable {
         Optional<Long> slot,
         String driveStatus,
         String driveType,
-        java.util.Map<String, Object> attributes,
         Optional<Long> reservedSliceFileCapacity,
-        Optional<Long> customerSliceFileCapacity
+        Optional<Long> customerSliceFileCapacity,
+        java.util.Map<String, Object> attributes
     )
     {
         this.driveID = driveID;
@@ -77,9 +77,9 @@ public class Drive implements Serializable {
         this.slot = (slot == null) ? Optional.<Long>empty() : slot;
         this.driveStatus = driveStatus;
         this.driveType = driveType;
-        this.attributes = attributes;
         this.reservedSliceFileCapacity = (reservedSliceFileCapacity == null) ? Optional.<Long>empty() : reservedSliceFileCapacity;
         this.customerSliceFileCapacity = (customerSliceFileCapacity == null) ? Optional.<Long>empty() : customerSliceFileCapacity;
+        this.attributes = attributes;
     }
 
     /** 
@@ -148,13 +148,6 @@ public class Drive implements Serializable {
         this.driveType = driveType;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
-     **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
-        this.attributes = attributes;
-    }
-    /** 
      **/
     public Optional<Long> getReservedSliceFileCapacity() { return this.reservedSliceFileCapacity; }
     public void setReservedSliceFileCapacity(Optional<Long> reservedSliceFileCapacity) { 
@@ -165,6 +158,13 @@ public class Drive implements Serializable {
     public Optional<Long> getCustomerSliceFileCapacity() { return this.customerSliceFileCapacity; }
     public void setCustomerSliceFileCapacity(Optional<Long> customerSliceFileCapacity) { 
         this.customerSliceFileCapacity = (customerSliceFileCapacity == null) ? Optional.<Long>empty() : customerSliceFileCapacity;
+    }
+    /** 
+     * List of Name/Value pairs in JSON object format.
+     **/
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
+        this.attributes = attributes;
     }
 
     @Override
@@ -184,14 +184,14 @@ public class Drive implements Serializable {
             Objects.equals(slot, that.slot) && 
             Objects.equals(driveStatus, that.driveStatus) && 
             Objects.equals(driveType, that.driveType) && 
-            Objects.equals(attributes, that.attributes) && 
             Objects.equals(reservedSliceFileCapacity, that.reservedSliceFileCapacity) && 
-            Objects.equals(customerSliceFileCapacity, that.customerSliceFileCapacity);
+            Objects.equals(customerSliceFileCapacity, that.customerSliceFileCapacity) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( driveID,nodeID,assignedService,(Object[])asyncResultIDs,capacity,serial,slot,driveStatus,driveType,attributes,reservedSliceFileCapacity,customerSliceFileCapacity );
+        return Objects.hash( driveID,nodeID,assignedService,(Object[])asyncResultIDs,capacity,serial,slot,driveStatus,driveType,reservedSliceFileCapacity,customerSliceFileCapacity,attributes );
     }
 
 
@@ -206,9 +206,9 @@ public class Drive implements Serializable {
         map.put("slot", slot);
         map.put("driveStatus", driveStatus);
         map.put("driveType", driveType);
-        map.put("attributes", attributes);
         map.put("reservedSliceFileCapacity", reservedSliceFileCapacity);
         map.put("customerSliceFileCapacity", customerSliceFileCapacity);
+        map.put("attributes", attributes);
         return map;
     }
 
@@ -230,13 +230,13 @@ public class Drive implements Serializable {
         }
         sb.append(" driveStatus : ").append(driveStatus).append(",");
         sb.append(" driveType : ").append(driveType).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
         if(null != reservedSliceFileCapacity && reservedSliceFileCapacity.isPresent()){
             sb.append(" reservedSliceFileCapacity : ").append(reservedSliceFileCapacity).append(",");
         }
         if(null != customerSliceFileCapacity && customerSliceFileCapacity.isPresent()){
             sb.append(" customerSliceFileCapacity : ").append(customerSliceFileCapacity).append(",");
         }
+        sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -263,9 +263,9 @@ public class Drive implements Serializable {
         private Optional<Long> slot;
         private String driveStatus;
         private String driveType;
-        private java.util.Map<String, Object> attributes;
         private Optional<Long> reservedSliceFileCapacity;
         private Optional<Long> customerSliceFileCapacity;
+        private java.util.Map<String, Object> attributes;
 
         private Builder() { }
 
@@ -280,9 +280,9 @@ public class Drive implements Serializable {
                          this.slot,
                          this.driveStatus,
                          this.driveType,
-                         this.attributes,
                          this.reservedSliceFileCapacity,
-                         this.customerSliceFileCapacity);
+                         this.customerSliceFileCapacity,
+                         this.attributes);
         }
 
         private Drive.Builder buildFrom(final Drive req) {
@@ -295,9 +295,9 @@ public class Drive implements Serializable {
             this.slot = req.slot;
             this.driveStatus = req.driveStatus;
             this.driveType = req.driveType;
-            this.attributes = req.attributes;
             this.reservedSliceFileCapacity = req.reservedSliceFileCapacity;
             this.customerSliceFileCapacity = req.customerSliceFileCapacity;
+            this.attributes = req.attributes;
 
             return this;
         }
@@ -347,11 +347,6 @@ public class Drive implements Serializable {
             return this;
         }
 
-        public Drive.Builder attributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = attributes;
-            return this;
-        }
-
         public Drive.Builder optionalReservedSliceFileCapacity(final Long reservedSliceFileCapacity) {
             this.reservedSliceFileCapacity = (reservedSliceFileCapacity == null) ? Optional.<Long>empty() : Optional.of(reservedSliceFileCapacity);
             return this;
@@ -359,6 +354,11 @@ public class Drive implements Serializable {
 
         public Drive.Builder optionalCustomerSliceFileCapacity(final Long customerSliceFileCapacity) {
             this.customerSliceFileCapacity = (customerSliceFileCapacity == null) ? Optional.<Long>empty() : Optional.of(customerSliceFileCapacity);
+            return this;
+        }
+
+        public Drive.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
             return this;
         }
 

@@ -36,9 +36,9 @@ public class ModifyVolumesRequest implements Serializable {
     @SerializedName("volumeIDs") private Long[] volumeIDs;
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
     @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("totalSize") private Optional<Long> totalSize;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -51,17 +51,17 @@ public class ModifyVolumesRequest implements Serializable {
         Long[] volumeIDs,
         Optional<Long> accountID,
         Optional<String> access,
-        Optional<java.util.Map<String, Object>> attributes,
         Optional<QoS> qos,
-        Optional<Long> totalSize
+        Optional<Long> totalSize,
+        Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.volumeIDs = volumeIDs;
         this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
         this.access = (access == null) ? Optional.<String>empty() : access;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     /** 
@@ -86,12 +86,6 @@ public class ModifyVolumesRequest implements Serializable {
         this.access = (access == null) ? Optional.<String>empty() : access;
     }
     /** 
-     **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-    }
-    /** 
      * New quality of service settings for this volume.If not specified, the QoS settings are not changed.
      **/
     public Optional<QoS> getQos() { return this.qos; }
@@ -105,6 +99,12 @@ public class ModifyVolumesRequest implements Serializable {
     public void setTotalSize(Optional<Long> totalSize) { 
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
     }
+    /** 
+     **/
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -117,14 +117,14 @@ public class ModifyVolumesRequest implements Serializable {
             Arrays.equals(volumeIDs, that.volumeIDs) && 
             Objects.equals(accountID, that.accountID) && 
             Objects.equals(access, that.access) && 
-            Objects.equals(attributes, that.attributes) && 
             Objects.equals(qos, that.qos) && 
-            Objects.equals(totalSize, that.totalSize);
+            Objects.equals(totalSize, that.totalSize) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])volumeIDs,accountID,access,attributes,qos,totalSize );
+        return Objects.hash( (Object[])volumeIDs,accountID,access,qos,totalSize,attributes );
     }
 
 
@@ -133,9 +133,9 @@ public class ModifyVolumesRequest implements Serializable {
         map.put("volumeIDs", volumeIDs);
         map.put("accountID", accountID);
         map.put("access", access);
-        map.put("attributes", attributes);
         map.put("qos", qos);
         map.put("totalSize", totalSize);
+        map.put("attributes", attributes);
         return map;
     }
 
@@ -151,14 +151,14 @@ public class ModifyVolumesRequest implements Serializable {
         if(null != access && access.isPresent()){
             sb.append(" access : ").append(access).append(",");
         }
-        if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
-        }
         if(null != qos && qos.isPresent()){
             sb.append(" qos : ").append(qos).append(",");
         }
         if(null != totalSize && totalSize.isPresent()){
             sb.append(" totalSize : ").append(totalSize).append(",");
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
         }
         sb.append( " }" );
 
@@ -180,9 +180,9 @@ public class ModifyVolumesRequest implements Serializable {
         private Long[] volumeIDs;
         private Optional<Long> accountID;
         private Optional<String> access;
-        private Optional<java.util.Map<String, Object>> attributes;
         private Optional<QoS> qos;
         private Optional<Long> totalSize;
+        private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
 
@@ -191,18 +191,18 @@ public class ModifyVolumesRequest implements Serializable {
                          this.volumeIDs,
                          this.accountID,
                          this.access,
-                         this.attributes,
                          this.qos,
-                         this.totalSize);
+                         this.totalSize,
+                         this.attributes);
         }
 
         private ModifyVolumesRequest.Builder buildFrom(final ModifyVolumesRequest req) {
             this.volumeIDs = req.volumeIDs;
             this.accountID = req.accountID;
             this.access = req.access;
-            this.attributes = req.attributes;
             this.qos = req.qos;
             this.totalSize = req.totalSize;
+            this.attributes = req.attributes;
 
             return this;
         }
@@ -222,11 +222,6 @@ public class ModifyVolumesRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
-            return this;
-        }
-
         public ModifyVolumesRequest.Builder optionalQos(final QoS qos) {
             this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
@@ -234,6 +229,11 @@ public class ModifyVolumesRequest implements Serializable {
 
         public ModifyVolumesRequest.Builder optionalTotalSize(final Long totalSize) {
             this.totalSize = (totalSize == null) ? Optional.<Long>empty() : Optional.of(totalSize);
+            return this;
+        }
+
+        public ModifyVolumesRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 

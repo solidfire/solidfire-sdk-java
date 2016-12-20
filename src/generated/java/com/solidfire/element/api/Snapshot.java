@@ -47,8 +47,8 @@ public class Snapshot implements Serializable {
     @SerializedName("groupID") private Optional<Long> groupID;
     @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
     @SerializedName("createTime") private String createTime;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
     @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -66,8 +66,8 @@ public class Snapshot implements Serializable {
         Long totalSize,
         Optional<Long> groupID,
         String createTime,
-        java.util.Map<String, Object> attributes,
-        java.util.UUID virtualVolumeID
+        java.util.UUID virtualVolumeID,
+        java.util.Map<String, Object> attributes
     )
     {
         this.snapshotID = snapshotID;
@@ -78,8 +78,8 @@ public class Snapshot implements Serializable {
         this.totalSize = totalSize;
         this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
         this.createTime = createTime;
-        this.attributes = attributes;
         this.virtualVolumeID = virtualVolumeID;
+        this.attributes = attributes;
     }
     // parameterized constructor
     @Since("8.0")
@@ -98,8 +98,8 @@ public class Snapshot implements Serializable {
         Optional<Long> groupID,
         java.util.UUID groupSnapshotUUID,
         String createTime,
-        java.util.Map<String, Object> attributes,
-        java.util.UUID virtualVolumeID
+        java.util.UUID virtualVolumeID,
+        java.util.Map<String, Object> attributes
     )
     {
         this.snapshotID = snapshotID;
@@ -116,8 +116,8 @@ public class Snapshot implements Serializable {
         this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
         this.groupSnapshotUUID = groupSnapshotUUID;
         this.createTime = createTime;
-        this.attributes = attributes;
         this.virtualVolumeID = virtualVolumeID;
+        this.attributes = attributes;
     }
 
     /** 
@@ -235,18 +235,18 @@ public class Snapshot implements Serializable {
         this.createTime = createTime;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
-     **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
-        this.attributes = attributes;
-    }
-    /** 
      * The ID of the virtual volume with which the snapshot is associated.
      **/
     public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
     public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
         this.virtualVolumeID = virtualVolumeID;
+    }
+    /** 
+     * List of Name/Value pairs in JSON object format.
+     **/
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
+        this.attributes = attributes;
     }
 
     @Override
@@ -271,13 +271,13 @@ public class Snapshot implements Serializable {
             Objects.equals(groupID, that.groupID) && 
             Objects.equals(groupSnapshotUUID, that.groupSnapshotUUID) && 
             Objects.equals(createTime, that.createTime) && 
-            Objects.equals(attributes, that.attributes) && 
-            Objects.equals(virtualVolumeID, that.virtualVolumeID);
+            Objects.equals(virtualVolumeID, that.virtualVolumeID) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( snapshotID,volumeID,name,checksum,enableRemoteReplication,expirationReason,expirationTime,(Object[])remoteStatuses,status,snapshotUUID,totalSize,groupID,groupSnapshotUUID,createTime,attributes,virtualVolumeID );
+        return Objects.hash( snapshotID,volumeID,name,checksum,enableRemoteReplication,expirationReason,expirationTime,(Object[])remoteStatuses,status,snapshotUUID,totalSize,groupID,groupSnapshotUUID,createTime,virtualVolumeID,attributes );
     }
 
 
@@ -297,8 +297,8 @@ public class Snapshot implements Serializable {
         map.put("groupID", groupID);
         map.put("groupSnapshotUUID", groupSnapshotUUID);
         map.put("createTime", createTime);
-        map.put("attributes", attributes);
         map.put("virtualVolumeID", virtualVolumeID);
+        map.put("attributes", attributes);
         return map;
     }
 
@@ -323,8 +323,8 @@ public class Snapshot implements Serializable {
         }
         sb.append(" groupSnapshotUUID : ").append(groupSnapshotUUID).append(",");
         sb.append(" createTime : ").append(createTime).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
         sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
+        sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -356,8 +356,8 @@ public class Snapshot implements Serializable {
         private Optional<Long> groupID;
         private java.util.UUID groupSnapshotUUID;
         private String createTime;
-        private java.util.Map<String, Object> attributes;
         private java.util.UUID virtualVolumeID;
+        private java.util.Map<String, Object> attributes;
 
         private Builder() { }
 
@@ -377,8 +377,8 @@ public class Snapshot implements Serializable {
                          this.groupID,
                          this.groupSnapshotUUID,
                          this.createTime,
-                         this.attributes,
-                         this.virtualVolumeID);
+                         this.virtualVolumeID,
+                         this.attributes);
         }
 
         private Snapshot.Builder buildFrom(final Snapshot req) {
@@ -396,8 +396,8 @@ public class Snapshot implements Serializable {
             this.groupID = req.groupID;
             this.groupSnapshotUUID = req.groupSnapshotUUID;
             this.createTime = req.createTime;
-            this.attributes = req.attributes;
             this.virtualVolumeID = req.virtualVolumeID;
+            this.attributes = req.attributes;
 
             return this;
         }
@@ -472,13 +472,13 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder attributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = attributes;
+        public Snapshot.Builder virtualVolumeID(final java.util.UUID virtualVolumeID) {
+            this.virtualVolumeID = virtualVolumeID;
             return this;
         }
 
-        public Snapshot.Builder virtualVolumeID(final java.util.UUID virtualVolumeID) {
-            this.virtualVolumeID = virtualVolumeID;
+        public Snapshot.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
             return this;
         }
 

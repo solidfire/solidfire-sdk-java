@@ -47,8 +47,8 @@ public class Node implements Serializable {
     @SerializedName("sip") private String sip;
     @SerializedName("sipi") private String sipi;
     @SerializedName("uuid") private java.util.UUID uuid;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
     @SerializedName("virtualNetworks") private Long[] virtualNetworks;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -72,8 +72,8 @@ public class Node implements Serializable {
         String sip,
         String sipi,
         java.util.UUID uuid,
-        java.util.Map<String, Object> attributes,
-        Long[] virtualNetworks
+        Long[] virtualNetworks,
+        java.util.Map<String, Object> attributes
     )
     {
         this.nodeID = nodeID;
@@ -90,8 +90,8 @@ public class Node implements Serializable {
         this.sip = sip;
         this.sipi = sipi;
         this.uuid = uuid;
-        this.attributes = attributes;
         this.virtualNetworks = virtualNetworks;
+        this.attributes = attributes;
     }
 
     /** 
@@ -191,15 +191,15 @@ public class Node implements Serializable {
     }
     /** 
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
-        this.attributes = attributes;
-    }
-    /** 
-     **/
     public Long[] getVirtualNetworks() { return this.virtualNetworks; }
     public void setVirtualNetworks(Long[] virtualNetworks) { 
         this.virtualNetworks = virtualNetworks;
+    }
+    /** 
+     **/
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
+        this.attributes = attributes;
     }
 
     @Override
@@ -224,13 +224,13 @@ public class Node implements Serializable {
             Objects.equals(sip, that.sip) && 
             Objects.equals(sipi, that.sipi) && 
             Objects.equals(uuid, that.uuid) && 
-            Objects.equals(attributes, that.attributes) && 
-            Arrays.equals(virtualNetworks, that.virtualNetworks);
+            Arrays.equals(virtualNetworks, that.virtualNetworks) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID,associatedMasterServiceID,associatedFServiceID,fibreChannelTargetPortGroup,name,platformInfo,softwareVersion,cip,cipi,mip,mipi,sip,sipi,uuid,attributes,(Object[])virtualNetworks );
+        return Objects.hash( nodeID,associatedMasterServiceID,associatedFServiceID,fibreChannelTargetPortGroup,name,platformInfo,softwareVersion,cip,cipi,mip,mipi,sip,sipi,uuid,(Object[])virtualNetworks,attributes );
     }
 
 
@@ -250,8 +250,8 @@ public class Node implements Serializable {
         map.put("sip", sip);
         map.put("sipi", sipi);
         map.put("uuid", uuid);
-        map.put("attributes", attributes);
         map.put("virtualNetworks", virtualNetworks);
+        map.put("attributes", attributes);
         return map;
     }
 
@@ -274,8 +274,8 @@ public class Node implements Serializable {
         sb.append(" sip : ").append(sip).append(",");
         sb.append(" sipi : ").append(sipi).append(",");
         sb.append(" uuid : ").append(uuid).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
         sb.append(" virtualNetworks : ").append(Arrays.toString(virtualNetworks)).append(",");
+        sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -307,8 +307,8 @@ public class Node implements Serializable {
         private String sip;
         private String sipi;
         private java.util.UUID uuid;
-        private java.util.Map<String, Object> attributes;
         private Long[] virtualNetworks;
+        private java.util.Map<String, Object> attributes;
 
         private Builder() { }
 
@@ -328,8 +328,8 @@ public class Node implements Serializable {
                          this.sip,
                          this.sipi,
                          this.uuid,
-                         this.attributes,
-                         this.virtualNetworks);
+                         this.virtualNetworks,
+                         this.attributes);
         }
 
         private Node.Builder buildFrom(final Node req) {
@@ -347,8 +347,8 @@ public class Node implements Serializable {
             this.sip = req.sip;
             this.sipi = req.sipi;
             this.uuid = req.uuid;
-            this.attributes = req.attributes;
             this.virtualNetworks = req.virtualNetworks;
+            this.attributes = req.attributes;
 
             return this;
         }
@@ -423,13 +423,13 @@ public class Node implements Serializable {
             return this;
         }
 
-        public Node.Builder attributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = attributes;
+        public Node.Builder virtualNetworks(final Long[] virtualNetworks) {
+            this.virtualNetworks = virtualNetworks;
             return this;
         }
 
-        public Node.Builder virtualNetworks(final Long[] virtualNetworks) {
-            this.virtualNetworks = virtualNetworks;
+        public Node.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
             return this;
         }
 

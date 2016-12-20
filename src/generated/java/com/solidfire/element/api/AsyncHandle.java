@@ -36,10 +36,10 @@ public class AsyncHandle implements Serializable {
     @SerializedName("asyncResultID") private Long asyncResultID;
     @SerializedName("completed") private Boolean completed;
     @SerializedName("createTime") private String createTime;
-    @SerializedName("data") private java.util.Map<String, Object> data;
     @SerializedName("lastUpdateTime") private String lastUpdateTime;
     @SerializedName("resultType") private String resultType;
     @SerializedName("success") private Boolean success;
+    @SerializedName("data") private java.util.Map<String, Object> data;
 
     // empty constructor
     @Since("7.0")
@@ -52,19 +52,19 @@ public class AsyncHandle implements Serializable {
         Long asyncResultID,
         Boolean completed,
         String createTime,
-        java.util.Map<String, Object> data,
         String lastUpdateTime,
         String resultType,
-        Boolean success
+        Boolean success,
+        java.util.Map<String, Object> data
     )
     {
         this.asyncResultID = asyncResultID;
         this.completed = completed;
         this.createTime = createTime;
-        this.data = data;
         this.lastUpdateTime = lastUpdateTime;
         this.resultType = resultType;
         this.success = success;
+        this.data = data;
     }
 
     /** 
@@ -89,13 +89,6 @@ public class AsyncHandle implements Serializable {
         this.createTime = createTime;
     }
     /** 
-     * Attributes related to the result
-     **/
-    public java.util.Map<String, Object> getData() { return this.data; }
-    public void setData(java.util.Map<String, Object> data) { 
-        this.data = data;
-    }
-    /** 
      * Time at which the result was last updated
      **/
     public String getLastUpdateTime() { return this.lastUpdateTime; }
@@ -116,6 +109,13 @@ public class AsyncHandle implements Serializable {
     public void setSuccess(Boolean success) { 
         this.success = success;
     }
+    /** 
+     * Attributes related to the result
+     **/
+    public java.util.Map<String, Object> getData() { return this.data; }
+    public void setData(java.util.Map<String, Object> data) { 
+        this.data = data;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -128,15 +128,15 @@ public class AsyncHandle implements Serializable {
             Objects.equals(asyncResultID, that.asyncResultID) && 
             Objects.equals(completed, that.completed) && 
             Objects.equals(createTime, that.createTime) && 
-            Objects.equals(data, that.data) && 
             Objects.equals(lastUpdateTime, that.lastUpdateTime) && 
             Objects.equals(resultType, that.resultType) && 
-            Objects.equals(success, that.success);
+            Objects.equals(success, that.success) && 
+            Objects.equals(data, that.data);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( asyncResultID,completed,createTime,data,lastUpdateTime,resultType,success );
+        return Objects.hash( asyncResultID,completed,createTime,lastUpdateTime,resultType,success,data );
     }
 
 
@@ -145,10 +145,10 @@ public class AsyncHandle implements Serializable {
         map.put("asyncResultID", asyncResultID);
         map.put("completed", completed);
         map.put("createTime", createTime);
-        map.put("data", data);
         map.put("lastUpdateTime", lastUpdateTime);
         map.put("resultType", resultType);
         map.put("success", success);
+        map.put("data", data);
         return map;
     }
 
@@ -160,10 +160,10 @@ public class AsyncHandle implements Serializable {
         sb.append(" asyncResultID : ").append(asyncResultID).append(",");
         sb.append(" completed : ").append(completed).append(",");
         sb.append(" createTime : ").append(createTime).append(",");
-        sb.append(" data : ").append(data).append(",");
         sb.append(" lastUpdateTime : ").append(lastUpdateTime).append(",");
         sb.append(" resultType : ").append(resultType).append(",");
         sb.append(" success : ").append(success).append(",");
+        sb.append(" data : ").append(data).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -184,10 +184,10 @@ public class AsyncHandle implements Serializable {
         private Long asyncResultID;
         private Boolean completed;
         private String createTime;
-        private java.util.Map<String, Object> data;
         private String lastUpdateTime;
         private String resultType;
         private Boolean success;
+        private java.util.Map<String, Object> data;
 
         private Builder() { }
 
@@ -196,20 +196,20 @@ public class AsyncHandle implements Serializable {
                          this.asyncResultID,
                          this.completed,
                          this.createTime,
-                         this.data,
                          this.lastUpdateTime,
                          this.resultType,
-                         this.success);
+                         this.success,
+                         this.data);
         }
 
         private AsyncHandle.Builder buildFrom(final AsyncHandle req) {
             this.asyncResultID = req.asyncResultID;
             this.completed = req.completed;
             this.createTime = req.createTime;
-            this.data = req.data;
             this.lastUpdateTime = req.lastUpdateTime;
             this.resultType = req.resultType;
             this.success = req.success;
+            this.data = req.data;
 
             return this;
         }
@@ -229,11 +229,6 @@ public class AsyncHandle implements Serializable {
             return this;
         }
 
-        public AsyncHandle.Builder data(final java.util.Map<String, Object> data) {
-            this.data = data;
-            return this;
-        }
-
         public AsyncHandle.Builder lastUpdateTime(final String lastUpdateTime) {
             this.lastUpdateTime = lastUpdateTime;
             return this;
@@ -246,6 +241,11 @@ public class AsyncHandle implements Serializable {
 
         public AsyncHandle.Builder success(final Boolean success) {
             this.success = success;
+            return this;
+        }
+
+        public AsyncHandle.Builder data(final java.util.Map<String, Object> data) {
+            this.data = data;
             return this;
         }
 

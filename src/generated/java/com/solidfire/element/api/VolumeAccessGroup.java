@@ -33,13 +33,13 @@ import java.util.Objects;
 public class VolumeAccessGroup implements Serializable {
 
     public static final long serialVersionUID = 143293271697026076L;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
     @SerializedName("deletedVolumes") private Long[] deletedVolumes;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("name") private String name;
     @SerializedName("initiatorIDs") private Long[] initiatorIDs;
     @SerializedName("initiators") private String[] initiators;
     @SerializedName("volumes") private Long[] volumes;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -49,31 +49,24 @@ public class VolumeAccessGroup implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public VolumeAccessGroup(
-        java.util.Map<String, Object> attributes,
         Long[] deletedVolumes,
         Long volumeAccessGroupID,
         String name,
         Long[] initiatorIDs,
         String[] initiators,
-        Long[] volumes
+        Long[] volumes,
+        java.util.Map<String, Object> attributes
     )
     {
-        this.attributes = attributes;
         this.deletedVolumes = deletedVolumes;
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.name = name;
         this.initiatorIDs = initiatorIDs;
         this.initiators = initiators;
         this.volumes = volumes;
-    }
-
-    /** 
-     * List of name/value pairs
-     **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
         this.attributes = attributes;
     }
+
     /** 
      * A list of deleted volumes that have yet to be purged from the VAG.
      **/
@@ -116,6 +109,13 @@ public class VolumeAccessGroup implements Serializable {
     public void setVolumes(Long[] volumes) { 
         this.volumes = volumes;
     }
+    /** 
+     * List of name/value pairs
+     **/
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
+        this.attributes = attributes;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -125,30 +125,30 @@ public class VolumeAccessGroup implements Serializable {
         VolumeAccessGroup that = (VolumeAccessGroup) o;
 
         return 
-            Objects.equals(attributes, that.attributes) && 
             Arrays.equals(deletedVolumes, that.deletedVolumes) && 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
             Objects.equals(name, that.name) && 
             Arrays.equals(initiatorIDs, that.initiatorIDs) && 
             Arrays.equals(initiators, that.initiators) && 
-            Arrays.equals(volumes, that.volumes);
+            Arrays.equals(volumes, that.volumes) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( attributes,(Object[])deletedVolumes,volumeAccessGroupID,name,(Object[])initiatorIDs,(Object[])initiators,(Object[])volumes );
+        return Objects.hash( (Object[])deletedVolumes,volumeAccessGroupID,name,(Object[])initiatorIDs,(Object[])initiators,(Object[])volumes,attributes );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("attributes", attributes);
         map.put("deletedVolumes", deletedVolumes);
         map.put("volumeAccessGroupID", volumeAccessGroupID);
         map.put("name", name);
         map.put("initiatorIDs", initiatorIDs);
         map.put("initiators", initiators);
         map.put("volumes", volumes);
+        map.put("attributes", attributes);
         return map;
     }
 
@@ -157,13 +157,13 @@ public class VolumeAccessGroup implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" attributes : ").append(attributes).append(",");
         sb.append(" deletedVolumes : ").append(Arrays.toString(deletedVolumes)).append(",");
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
         sb.append(" name : ").append(name).append(",");
         sb.append(" initiatorIDs : ").append(Arrays.toString(initiatorIDs)).append(",");
         sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
         sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
+        sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -181,41 +181,36 @@ public class VolumeAccessGroup implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> attributes;
         private Long[] deletedVolumes;
         private Long volumeAccessGroupID;
         private String name;
         private Long[] initiatorIDs;
         private String[] initiators;
         private Long[] volumes;
+        private java.util.Map<String, Object> attributes;
 
         private Builder() { }
 
         public VolumeAccessGroup build() {
             return new VolumeAccessGroup (
-                         this.attributes,
                          this.deletedVolumes,
                          this.volumeAccessGroupID,
                          this.name,
                          this.initiatorIDs,
                          this.initiators,
-                         this.volumes);
+                         this.volumes,
+                         this.attributes);
         }
 
         private VolumeAccessGroup.Builder buildFrom(final VolumeAccessGroup req) {
-            this.attributes = req.attributes;
             this.deletedVolumes = req.deletedVolumes;
             this.volumeAccessGroupID = req.volumeAccessGroupID;
             this.name = req.name;
             this.initiatorIDs = req.initiatorIDs;
             this.initiators = req.initiators;
             this.volumes = req.volumes;
+            this.attributes = req.attributes;
 
-            return this;
-        }
-
-        public VolumeAccessGroup.Builder attributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = attributes;
             return this;
         }
 
@@ -246,6 +241,11 @@ public class VolumeAccessGroup implements Serializable {
 
         public VolumeAccessGroup.Builder volumes(final Long[] volumes) {
             this.volumes = volumes;
+            return this;
+        }
+
+        public VolumeAccessGroup.Builder attributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = attributes;
             return this;
         }
 
