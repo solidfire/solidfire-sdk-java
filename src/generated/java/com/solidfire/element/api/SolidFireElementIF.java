@@ -1735,6 +1735,42 @@ public interface SolidFireElementIF {
         Optional<String> action
         );
     /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ResetNodeResult resetNode(final ResetNodeRequest request);
+
+    /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ResetNodeResult resetNode(
+        
+        String build
+, 
+        Boolean force
+, 
+        String option
+        );
+    /** 
+     * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method, login in to the MIP for the pending node and enter the "shutdown" method with either the "restart" or "halt" options in the following table.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ShutdownResult shutdown(final ShutdownRequest request);
+
+    /** 
+     * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method, login in to the MIP for the pending node and enter the "shutdown" method with either the "restart" or "halt" options in the following table.
+     **/
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ShutdownResult shutdown(
+        
+        String option
+        );
+    /** 
      * List the services in the cluster.
      **/
     @Since("1.0")

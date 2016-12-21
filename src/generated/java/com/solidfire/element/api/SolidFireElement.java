@@ -2163,6 +2163,50 @@ public class SolidFireElement
         return this.restartServices(new RestartServicesRequest(force, service, action));
     }
     /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ResetNodeResult resetNode(final ResetNodeRequest request) {
+        return super.sendRequest("ResetNode", request, ResetNodeRequest.class, ResetNodeResult.class);
+    }
+
+    /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ResetNodeResult resetNode(
+        String build,
+        Boolean force,
+        String option
+        ) {
+        return this.resetNode(new ResetNodeRequest(build, force, option));
+    }
+    /** 
+     * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method, login in to the MIP for the pending node and enter the "shutdown" method with either the "restart" or "halt" options in the following table.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ShutdownResult shutdown(final ShutdownRequest request) {
+        return super.sendRequest("Shutdown", request, ShutdownRequest.class, ShutdownResult.class);
+    }
+
+    /** 
+     * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method, login in to the MIP for the pending node and enter the "shutdown" method with either the "restart" or "halt" options in the following table.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ShutdownResult shutdown(
+        String option
+        ) {
+        return this.shutdown(new ShutdownRequest(option));
+    }
+    /** 
      * List the services in the cluster.
      **/
     @Override
