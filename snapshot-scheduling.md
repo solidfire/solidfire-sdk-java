@@ -17,7 +17,7 @@ Examples for:
 
 ### Documentation
 
-Further documentation for each method and type can be found at our [Java documentation site](http://solidfire.github.io/solidfire-sdk-java/doc/1.1.0.79). 
+Further documentation for each method and type can be found at our [Java documentation site](http://solidfire.github.io/solidfire-sdk-java/latest/api/). 
 
 ### List all Schedules
 
@@ -26,7 +26,7 @@ To list all the schedules on a cluster:
 ~~~ java
 
     // Create Connection to SF Cluster
-    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password");
     
     // send the request and gather the result
     ListSchedulesResult listSchedulesResult = sfe.listSchedules();
@@ -45,7 +45,7 @@ To get a single schedule:
 ~~~ java
 
     // Create Connection to SF Cluster
-    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password");
     
     // send the request and gather the result
     GetScheduleResult getSchedulesResult = sfe.getSchedule(56L);
@@ -128,7 +128,7 @@ Continuing on with the [Time Interval](#time-interval-schedule) example from abo
     Schedule schedule = scheduleBuilder.build();
 
     // Create Connection to SF Cluster
-    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password");
 
     // call the CreateSchedule method with the newly created schedule object
     CreateScheduleResult createScheduleResult = sfe.createSchedule(schedule);
@@ -147,7 +147,7 @@ To modify a schedule, first you must have a valid schedule object with its `Sche
 ~~~ java
 
     // Create Connection to SF Cluster
-    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password");
 
     // send the requst with the scheduleID and gather the result
     GetScheduleResult getScheduleResult = sfe.getSchedule(9L);
