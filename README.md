@@ -4,7 +4,7 @@ Java SDK library for interacting with SolidFire Element API
 
 ## Current Release
 
-Version: 1.1.0.85
+Version: 1.2.0.147
 
 ## Description
 
@@ -15,9 +15,7 @@ The SolidFire Java SDK is a collection of software modules and libraries that fa
 | Component    | Version             |
 | ------------ | ------------------- |
 | Java         | 7.0 & 8.0           |
-| SolidFire OS | Element 7.0 - 8.4\* |
-
-\*<sub><sup>_**Note**: This version of the SDK will work with versions of Element OS greater then 8.4 but some features will not be supported in the API._</sup></sub>
+| SolidFire OS | Element 7.0 - 9.0   |
 
 ## Getting Help
 
@@ -33,7 +31,7 @@ If you have any questions or comments about this product, contact <ng-sf-host-in
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>solidfire-sdk-java</artifactId>
-  <version>1.1.0.85</version>
+  <version>1.2.0.147</version>
 </dependency>
 
 ~~~
@@ -42,7 +40,7 @@ or SBT:
 
 ~~~ scala
 
-libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.1.0.85"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.2.0.147"
 
 ~~~
 
@@ -50,26 +48,24 @@ or Gradle:
 
 ~~~ groovy
 
-compile 'com.solidfire:solidfire-sdk-java:1.1.0.85'
+compile 'com.solidfire:solidfire-sdk-java:1.2.0.147'
 
 ~~~
 
 ## Assembly Jar
 
-The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.1.0.85/solidfire-sdk-assembly-1.1.0.85.jar).  
+The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.2.0.147/solidfire-sdk-assembly-1.2.0.147.jar).  
 
 ___Dependencies___:
 
 | Component           | Version |
 | ------------------- | ------- |
-| jsvcgen-client-java | 0.3.0   |
 | base64              | 2.3.9   |
-| gson                | 2.6.2   |
+| solidfire.code.gson | 2.6.2   |
 | joda-time           | 2.9.3   |
 | joda-convert        | 1.8.1   |
 | slf4j-api           | 1.6.6   |
 
-_**Note**: The SDK assembly should only be used in a standalone setting such as scripting or for prototyping.  It should not be used in a production environment as the signed components might conflict with other components that are unsigned or signed with another certificate.  See below._   
 
 ### Limitations with a Certificate Signed Assembly Jar
 
@@ -106,7 +102,7 @@ import static com.solidfire.core.javautil.Optional.*;
 
 ...
     // Use ElementFactory to get a SolidFireElement object.
-    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password");
 
 ~~~
 
@@ -120,7 +116,7 @@ import com.solidfire.core.javautil.Optional.{empty, of}
 
 ...
   // Use ElementFactory to get a SolidFireElement object.
-  val sf = ElementFactory.create( "mvip", "username", "password", "8.0" )
+  val sf = ElementFactory.create( "mvip", "username", "password" )
 
 ~~~
 
@@ -329,11 +325,11 @@ An example logback.xml:
 | ------- | ------------------ | ---------------------------------------------------------------- |
 | 1.0     | November 20, 2015  | Accounts, Volumes, Access Groups, Snapshots, and Group Snapshots |
 | 1.1     | September 20, 2016 | Additional Nitrogen & Oxygen API Coverage                        |
-| 1.2     | ___TBD___          | Complete Nitrogen, Oxygen, & Fluorine API Coverage               |
+| 1.2     | January 15, 2017   | Complete Nitrogen, Oxygen, & Fluorine API Coverage               |
 
 ## License
 
-Copyright © 2016 NetApp, Inc. All rights reserved.
+Copyright © 2016, 2017 NetApp, Inc. All rights reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
