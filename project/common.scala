@@ -62,11 +62,6 @@ object Config {
       </scm>
       <developers>
         <developer>
-          <id>jason-womack</id>
-          <name>Jason Ryan Womack</name>
-          <url>https://github.com/jason-womack</url>
-        </developer>
-        <developer>
           <id>ahaid</id>
           <name>Adam Haid</name>
           <url>https://github.com/ahaid</url>

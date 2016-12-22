@@ -33,8 +33,8 @@ rm -f ../solidfire-sdk-java.gh-pages/**/*.md-e
 # commit and push generated content to `master' branch
 # since repository was cloned in write mode with token auth - we can push there
 cd ../solidfire-sdk-java.gh-pages
-git config user.email "jason.womack@solidfire.com"
-git config user.name "Jason Ryan Womack"
+git config user.email "adam.haid@solidfire.com"
+git config user.name "Adam Haid"
 git add -A .
 git commit --allow-empty -a -m "Travis #$TRAVIS_BUILD_NUMBER"
 git push --quiet origin gh-pages > /dev/null 2>&1
