@@ -910,6 +910,43 @@ public class SolidFireElement
         return super.sendRequest("SnmpSendTestTraps", null, null, SnmpSendTestTrapsResult.class);
     }
     /** 
+     * Used to retrieve the result of asynchronous method calls.
+     * Some method calls are long running and do not complete when the initial response is sent.
+     * To obtain the result of the method call, polling with GetAsyncResult is required.
+     * <br/><br/>
+     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
+     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
+     * <br/><br/>
+     * The result for a completed asynchronous method call can only be retrieved once.
+     * Once the final result has been returned, later attempts returns an error.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetAsyncResultResult getAsyncResult(final GetAsyncResultRequest request) {
+        return super.sendRequest("GetAsyncResult", request, GetAsyncResultRequest.class, GetAsyncResultResult.class);
+    }
+
+    /** 
+     * Used to retrieve the result of asynchronous method calls.
+     * Some method calls are long running and do not complete when the initial response is sent.
+     * To obtain the result of the method call, polling with GetAsyncResult is required.
+     * <br/><br/>
+     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
+     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
+     * <br/><br/>
+     * The result for a completed asynchronous method call can only be retrieved once.
+     * Once the final result has been returned, later attempts returns an error.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public GetAsyncResultResult getAsyncResult(
+        Long asyncHandle
+        ) {
+        return this.getAsyncResult(new GetAsyncResultRequest(asyncHandle));
+    }
+    /** 
      * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
      * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
      * Use the "ListDrives" method to display drives that are "available" to be added.
@@ -1165,6 +1202,157 @@ public class SolidFireElement
         Optional<Long> minutes
         ) {
         return this.testDrives(new TestDrivesRequest(minutes));
+    }
+    /** 
+     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request) {
+        return super.sendRequest("GetIpmiConfig", request, GetIpmiConfigRequest.class, GetIpmiConfigResult.class);
+    }
+
+    /** 
+     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetIpmiConfigResult getIpmiConfig(
+        Optional<String> chassisType,
+        Boolean force
+        ) {
+        return this.getIpmiConfig(new GetIpmiConfigRequest(chassisType, force));
+    }
+    /** 
+     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request) {
+        return super.sendRequest("GetIpmiInfo", request, GetIpmiInfoRequest.class, GetIpmiInfoResult.class);
+    }
+
+    /** 
+     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetIpmiInfoResult getIpmiInfo(
+        Boolean force
+        ) {
+        return this.getIpmiInfo(new GetIpmiInfoRequest(force));
+    }
+    /** 
+     * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetOriginResult getOrigin(final GetOriginRequest request) {
+        return super.sendRequest("GetOrigin", request, GetOriginRequest.class, GetOriginResult.class);
+    }
+
+    /** 
+     * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetOriginResult getOrigin(
+        Boolean force
+        ) {
+        return this.getOrigin(new GetOriginRequest(force));
+    }
+    /** 
+     * GetVolumeCount enables you to retrieve the number of volumes currently in the system.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public GetVolumeCountResult getVolumeCount() {
+        return super.sendRequest("GetVolumeCount", null, null, GetVolumeCountResult.class);
+    }
+    /** 
+     * ListPendingActiveNodes returns the list of nodes in the cluster that are currently in the PendingActive state, between the pending and active states. These are nodes that are currently being returned to the factory image.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListPendingActiveNodesResult listPendingActiveNodes() {
+        return super.sendRequest("ListPendingActiveNodes", null, null, ListPendingActiveNodesResult.class);
+    }
+    /** 
+     * EnableFeature allows you to enable cluster features that are disabled by default.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public EnableFeatureResult enableFeature(final EnableFeatureRequest request) {
+        return super.sendRequest("EnableFeature", request, EnableFeatureRequest.class, EnableFeatureResult.class);
+    }
+
+    /** 
+     * EnableFeature allows you to enable cluster features that are disabled by default.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public EnableFeatureResult enableFeature(
+        String feature
+        ) {
+        return this.enableFeature(new EnableFeatureRequest(feature));
+    }
+    /** 
+     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public GetFeatureStatusResult getFeatureStatus(final GetFeatureStatusRequest request) {
+        return super.sendRequest("GetFeatureStatus", request, GetFeatureStatusRequest.class, GetFeatureStatusResult.class);
+    }
+
+    /** 
+     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public GetFeatureStatusResult getFeatureStatus(
+        Optional<String> feature
+        ) {
+        return this.getFeatureStatus(new GetFeatureStatusRequest(feature));
+    }
+    /** 
+     * The ListFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes.
+     **/
+    @Override
+    @Since("8.0")
+    @ConnectionType("Cluster")
+    public ListFibreChannelPortInfoResult listFibreChannelPortInfo() {
+        return super.sendRequest("ListFibreChannelPortInfo", null, null, ListFibreChannelPortInfoResult.class);
+    }
+    /** 
+     * The ListFibreChannelSessions is used to return information about the active Fibre Channel sessions on a cluster.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ListFibreChannelSessionsResult listFibreChannelSessions() {
+        return super.sendRequest("ListFibreChannelSessions", null, null, ListFibreChannelSessionsResult.class);
+    }
+    /** 
+     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Node")
+    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo() {
+        return super.sendRequest("ListNodeFibreChannelPortInfo", null, null, ListNodeFibreChannelPortInfoResult.class);
     }
     /** 
      * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
@@ -1512,42 +1700,6 @@ public class SolidFireElement
         return super.sendRequest("ListNetworkInterfaces", null, null, ListNetworkInterfacesResult.class);
     }
     /** 
-     * The ListFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes.
-     **/
-    @Override
-    @Since("8.0")
-    @ConnectionType("Cluster")
-    public ListFibreChannelPortInfoResult listFibreChannelPortInfo() {
-        return super.sendRequest("ListFibreChannelPortInfo", null, null, ListFibreChannelPortInfoResult.class);
-    }
-    /** 
-     * The ListFibreChannelSessions is used to return information about the active Fibre Channel sessions on a cluster.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListFibreChannelSessionsResult listFibreChannelSessions() {
-        return super.sendRequest("ListFibreChannelSessions", null, null, ListFibreChannelSessionsResult.class);
-    }
-    /** 
-     * ListISCSISessions is used to return iSCSI connection information for volumes in the cluster.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListISCSISessionsResult listISCSISessions() {
-        return super.sendRequest("ListISCSISessions", null, null, ListISCSISessionsResult.class);
-    }
-    /** 
-     * The ListNodeFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Node")
-    public ListNodeFibreChannelPortInfoResult listNodeFibreChannelPortInfo() {
-        return super.sendRequest("ListNodeFibreChannelPortInfo", null, null, ListNodeFibreChannelPortInfoResult.class);
-    }
-    /** 
      * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
      * <br/><br/>
      * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
@@ -1769,36 +1921,6 @@ public class SolidFireElement
         return this.setNetworkConfig(new SetNetworkConfigRequest(network));
     }
     /** 
-     * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetOriginResult getOrigin(final GetOriginRequest request) {
-        return super.sendRequest("GetOrigin", request, GetOriginRequest.class, GetOriginResult.class);
-    }
-
-    /** 
-     * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetOriginResult getOrigin(
-        Boolean force
-        ) {
-        return this.getOrigin(new GetOriginRequest(force));
-    }
-    /** 
-     * ListPendingActiveNodes returns the list of nodes in the cluster that are currently in the PendingActive state, between the pending and active states. These are nodes that are currently being returned to the factory image.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ListPendingActiveNodesResult listPendingActiveNodes() {
-        return super.sendRequest("ListPendingActiveNodes", null, null, ListPendingActiveNodesResult.class);
-    }
-    /** 
      * The CompleteClusterPairing method is the second step in the cluster pairing process.
      * Use this method with the encoded key received from the "StartClusterPairing" API method to complete the cluster pairing process.
      **/
@@ -1995,6 +2117,29 @@ public class SolidFireElement
         return this.listProtocolEndpoints(new ListProtocolEndpointsRequest(protocolEndpointIDs));
     }
     /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ResetNodeResult resetNode(final ResetNodeRequest request) {
+        return super.sendRequest("ResetNode", request, ResetNodeRequest.class, ResetNodeResult.class);
+    }
+
+    /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Cluster")
+    public ResetNodeResult resetNode(
+        String build,
+        Boolean force,
+        String option
+        ) {
+        return this.resetNode(new ResetNodeRequest(build, force, option));
+    }
+    /** 
      * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Override
@@ -2039,29 +2184,6 @@ public class SolidFireElement
         Optional<String> action
         ) {
         return this.restartServices(new RestartServicesRequest(force, service, action));
-    }
-    /** 
-     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ResetNodeResult resetNode(final ResetNodeRequest request) {
-        return super.sendRequest("ResetNode", request, ResetNodeRequest.class, ResetNodeResult.class);
-    }
-
-    /** 
-     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public ResetNodeResult resetNode(
-        String build,
-        Boolean force,
-        String option
-        ) {
-        return this.resetNode(new ResetNodeRequest(build, force, option));
     }
     /** 
      * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method, login in to the MIP for the pending node and enter the "shutdown" method with either the "restart" or "halt" options in the following table.
@@ -3020,27 +3142,6 @@ public class SolidFireElement
         return this.listVirtualVolumeHosts(new ListVirtualVolumeHostsRequest(virtualVolumeHostIDs));
     }
     /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request) {
-        return super.sendRequest("ListVirtualVolumeTasks", request, ListVirtualVolumeTasksRequest.class, ListVirtualVolumeTasksResult.class);
-    }
-
-    /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
-        Optional<java.util.UUID[]> virtualVolumeTaskIDs
-        ) {
-        return this.listVirtualVolumeTasks(new ListVirtualVolumeTasksRequest(virtualVolumeTaskIDs));
-    }
-    /** 
      * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
      **/
     @Override
@@ -3066,6 +3167,27 @@ public class SolidFireElement
         return this.listVirtualVolumes(new ListVirtualVolumesRequest(details, limit, recursive, startVirtualVolumeID, virtualVolumeIDs));
     }
     /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request) {
+        return super.sendRequest("ListVirtualVolumeTasks", request, ListVirtualVolumeTasksRequest.class, ListVirtualVolumeTasksResult.class);
+    }
+
+    /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
+        Optional<java.util.UUID[]> virtualVolumeTaskIDs
+        ) {
+        return this.listVirtualVolumeTasks(new ListVirtualVolumeTasksRequest(virtualVolumeTaskIDs));
+    }
+    /** 
      * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
      **/
     @Override
@@ -3088,48 +3210,6 @@ public class SolidFireElement
         Optional<java.util.UUID> callingVirtualVolumeHostID
         ) {
         return this.prepareVirtualSnapshot(new PrepareVirtualSnapshotRequest(virtualVolumeID, name, writableSnapshot, callingVirtualVolumeHostID));
-    }
-    /** 
-     * EnableFeature allows you to enable cluster features that are disabled by default.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public EnableFeatureResult enableFeature(final EnableFeatureRequest request) {
-        return super.sendRequest("EnableFeature", request, EnableFeatureRequest.class, EnableFeatureResult.class);
-    }
-
-    /** 
-     * EnableFeature allows you to enable cluster features that are disabled by default.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public EnableFeatureResult enableFeature(
-        String feature
-        ) {
-        return this.enableFeature(new EnableFeatureRequest(feature));
-    }
-    /** 
-     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public GetFeatureStatusResult getFeatureStatus(final GetFeatureStatusRequest request) {
-        return super.sendRequest("GetFeatureStatus", request, GetFeatureStatusRequest.class, GetFeatureStatusResult.class);
-    }
-
-    /** 
-     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public GetFeatureStatusResult getFeatureStatus(
-        Optional<String> feature
-        ) {
-        return this.getFeatureStatus(new GetFeatureStatusRequest(feature));
     }
     /** 
      * Cancels a currently running clone operation. This method does not return anything.
@@ -3490,45 +3570,13 @@ public class SolidFireElement
         return super.sendRequest("ListDeletedVolumes", null, null, ListDeletedVolumesResult.class);
     }
     /** 
-     * ListVolumeStatsByAccount returns high-level activity measurements for every account.
-     * Values are summed from all the volumes owned by the account.
+     * ListISCSISessions is used to return iSCSI connection information for volumes in the cluster.
      **/
     @Override
     @Since("1.0")
     @ConnectionType("Cluster")
-    public ListVolumeStatsByAccountResult listVolumeStatsByAccount() {
-        return super.sendRequest("ListVolumeStatsByAccount", null, null, ListVolumeStatsByAccountResult.class);
-    }
-    /** 
-     * ListVolumeStatsByVolume returns high-level activity measurements for every volume, by volume.
-     * Values are cumulative from the creation of the volume.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeResult listVolumeStatsByVolume() {
-        return super.sendRequest("ListVolumeStatsByVolume", null, null, ListVolumeStatsByVolumeResult.class);
-    }
-    /** 
-     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request) {
-        return super.sendRequest("ListVolumeStatsByVolumeAccessGroup", request, ListVolumeStatsByVolumeAccessGroupRequest.class, ListVolumeStatsByVolumeAccessGroupResult.class);
-    }
-
-    /** 
-     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
-     **/
-    @Override
-    @Since("5.0")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
-        Optional<Long[]> volumeAccessGroups
-        ) {
-        return this.listVolumeStatsByVolumeAccessGroup(new ListVolumeStatsByVolumeAccessGroupRequest(volumeAccessGroups));
+    public ListISCSISessionsResult listISCSISessions() {
+        return super.sendRequest("ListISCSISessions", null, null, ListISCSISessionsResult.class);
     }
     /** 
      * The ListVolumes method is used to return a list of volumes that are in a cluster.
@@ -3580,6 +3628,47 @@ public class SolidFireElement
         Optional<Long> limit
         ) {
         return this.listVolumesForAccount(new ListVolumesForAccountRequest(accountID, startVolumeID, limit));
+    }
+    /** 
+     * ListVolumeStatsByAccount returns high-level activity measurements for every account.
+     * Values are summed from all the volumes owned by the account.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByAccountResult listVolumeStatsByAccount() {
+        return super.sendRequest("ListVolumeStatsByAccount", null, null, ListVolumeStatsByAccountResult.class);
+    }
+    /** 
+     * ListVolumeStatsByVolume returns high-level activity measurements for every volume, by volume.
+     * Values are cumulative from the creation of the volume.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeResult listVolumeStatsByVolume() {
+        return super.sendRequest("ListVolumeStatsByVolume", null, null, ListVolumeStatsByVolumeResult.class);
+    }
+    /** 
+     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request) {
+        return super.sendRequest("ListVolumeStatsByVolumeAccessGroup", request, ListVolumeStatsByVolumeAccessGroupRequest.class, ListVolumeStatsByVolumeAccessGroupResult.class);
+    }
+
+    /** 
+     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
+     **/
+    @Override
+    @Since("5.0")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
+        Optional<Long[]> volumeAccessGroups
+        ) {
+        return this.listVolumeStatsByVolumeAccessGroup(new ListVolumeStatsByVolumeAccessGroupRequest(volumeAccessGroups));
     }
     /** 
      * ModifyVolume is used to modify settings on an existing volume.
@@ -3850,52 +3939,6 @@ public class SolidFireElement
         Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.updateBulkVolumeStatus(new UpdateBulkVolumeStatusRequest(key, status, percentComplete, message, attributes));
-    }
-    /** 
-     * Used to retrieve the result of asynchronous method calls.
-     * Some method calls are long running and do not complete when the initial response is sent.
-     * To obtain the result of the method call, polling with GetAsyncResult is required.
-     * <br/><br/>
-     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
-     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
-     * <br/><br/>
-     * The result for a completed asynchronous method call can only be retrieved once.
-     * Once the final result has been returned, later attempts returns an error.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetAsyncResultResult getAsyncResult(final GetAsyncResultRequest request) {
-        return super.sendRequest("GetAsyncResult", request, GetAsyncResultRequest.class, GetAsyncResultResult.class);
-    }
-
-    /** 
-     * Used to retrieve the result of asynchronous method calls.
-     * Some method calls are long running and do not complete when the initial response is sent.
-     * To obtain the result of the method call, polling with GetAsyncResult is required.
-     * <br/><br/>
-     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
-     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
-     * <br/><br/>
-     * The result for a completed asynchronous method call can only be retrieved once.
-     * Once the final result has been returned, later attempts returns an error.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Cluster")
-    public GetAsyncResultResult getAsyncResult(
-        Long asyncHandle
-        ) {
-        return this.getAsyncResult(new GetAsyncResultRequest(asyncHandle));
-    }
-    /** 
-     * GetVolumeCount enables you to retrieve the number of volumes currently in the system.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetVolumeCountResult getVolumeCount() {
-        return super.sendRequest("GetVolumeCount", null, null, GetVolumeCountResult.class);
     }
     /** 
      * Add initiators to a volume access group.
@@ -4182,48 +4225,5 @@ public class SolidFireElement
         Long[] volumes
         ) {
         return this.removeVolumesFromVolumeAccessGroup(new RemoveVolumesFromVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
-    }
-    /** 
-     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request) {
-        return super.sendRequest("GetIpmiConfig", request, GetIpmiConfigRequest.class, GetIpmiConfigResult.class);
-    }
-
-    /** 
-     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(
-        Optional<String> chassisType,
-        Boolean force
-        ) {
-        return this.getIpmiConfig(new GetIpmiConfigRequest(chassisType, force));
-    }
-    /** 
-     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request) {
-        return super.sendRequest("GetIpmiInfo", request, GetIpmiInfoRequest.class, GetIpmiInfoResult.class);
-    }
-
-    /** 
-     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(
-        Boolean force
-        ) {
-        return this.getIpmiInfo(new GetIpmiInfoRequest(force));
     }
 }
