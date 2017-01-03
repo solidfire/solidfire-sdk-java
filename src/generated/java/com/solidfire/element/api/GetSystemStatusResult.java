@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetSystemStatusResult implements Serializable {
 
     public static final long serialVersionUID = -4384165836130921641L;
-    @SerializedName("nodes") private NodeSystemStatus[] nodes;
+    @SerializedName("rebootRequired") private Boolean rebootRequired;
 
     // empty constructor
     @Since("7.0")
@@ -43,17 +43,17 @@ public class GetSystemStatusResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetSystemStatusResult(
-        NodeSystemStatus[] nodes
+        Boolean rebootRequired
     )
     {
-        this.nodes = nodes;
+        this.rebootRequired = rebootRequired;
     }
 
     /** 
      **/
-    public NodeSystemStatus[] getNodes() { return this.nodes; }
-    public void setNodes(NodeSystemStatus[] nodes) { 
-        this.nodes = nodes;
+    public Boolean getRebootRequired() { return this.rebootRequired; }
+    public void setRebootRequired(Boolean rebootRequired) { 
+        this.rebootRequired = rebootRequired;
     }
 
     @Override
@@ -64,18 +64,18 @@ public class GetSystemStatusResult implements Serializable {
         GetSystemStatusResult that = (GetSystemStatusResult) o;
 
         return 
-            Arrays.equals(nodes, that.nodes);
+            Objects.equals(rebootRequired, that.rebootRequired);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])nodes );
+        return Objects.hash( rebootRequired );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("nodes", nodes);
+        map.put("rebootRequired", rebootRequired);
         return map;
     }
 
@@ -84,7 +84,7 @@ public class GetSystemStatusResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        sb.append(" rebootRequired : ").append(rebootRequired).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -102,23 +102,23 @@ public class GetSystemStatusResult implements Serializable {
     }
 
     public static class Builder {
-        private NodeSystemStatus[] nodes;
+        private Boolean rebootRequired;
 
         private Builder() { }
 
         public GetSystemStatusResult build() {
             return new GetSystemStatusResult (
-                         this.nodes);
+                         this.rebootRequired);
         }
 
         private GetSystemStatusResult.Builder buildFrom(final GetSystemStatusResult req) {
-            this.nodes = req.nodes;
+            this.rebootRequired = req.rebootRequired;
 
             return this;
         }
 
-        public GetSystemStatusResult.Builder nodes(final NodeSystemStatus[] nodes) {
-            this.nodes = nodes;
+        public GetSystemStatusResult.Builder rebootRequired(final Boolean rebootRequired) {
+            this.rebootRequired = rebootRequired;
             return this;
         }
 
