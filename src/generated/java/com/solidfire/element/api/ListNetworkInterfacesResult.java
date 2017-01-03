@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListNetworkInterfacesResult  
  **/
 
 public class ListNetworkInterfacesResult implements Serializable {

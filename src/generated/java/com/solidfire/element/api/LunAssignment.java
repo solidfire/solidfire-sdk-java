@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * LunAssignment  
  * VolumeID and Lun assignment.
  **/
 

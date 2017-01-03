@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ResetNodeResult  
  **/
 
 public class ResetNodeResult implements Serializable {

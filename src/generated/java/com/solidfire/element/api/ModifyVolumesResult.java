@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ModifyVolumesResult  
  **/
 
 public class ModifyVolumesResult implements Serializable {

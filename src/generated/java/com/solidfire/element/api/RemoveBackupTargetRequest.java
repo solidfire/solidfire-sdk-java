@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * RemoveBackupTargetRequest  
  **/
 
 public class RemoveBackupTargetRequest implements Serializable {

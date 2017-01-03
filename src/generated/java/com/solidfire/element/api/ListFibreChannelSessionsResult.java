@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListFibreChannelSessionsResult  
  * Used to return information about the Fibre Channel sessions.
  **/
 

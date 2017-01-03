@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * HardwareConfig  
  **/
 
 public class HardwareConfig implements Serializable {

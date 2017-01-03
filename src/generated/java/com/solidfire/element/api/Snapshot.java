@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * Snapshot  
  * Snapshots is an object containing information about each snapshot made for a volume.
  * The return object includes information for the active snapshot as well as each snapshot created for the volume.
  **/

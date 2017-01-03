@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetBootstrapConfigResult  
  **/
 
 public class GetBootstrapConfigResult implements Serializable {

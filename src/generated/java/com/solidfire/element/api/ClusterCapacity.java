@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ClusterCapacity  
  * High level capacity measurements for the entire cluster.
  **/
 

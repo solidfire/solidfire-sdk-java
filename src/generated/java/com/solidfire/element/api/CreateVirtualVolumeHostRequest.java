@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * CreateVirtualVolumeHostRequest  
  **/
 
 public class CreateVirtualVolumeHostRequest implements Serializable {

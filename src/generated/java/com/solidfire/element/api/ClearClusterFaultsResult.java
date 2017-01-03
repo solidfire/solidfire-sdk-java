@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ClearClusterFaultsResult  
  **/
 
 public class ClearClusterFaultsResult implements Serializable {

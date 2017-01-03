@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ClusterStats  
  **/
 
 public class ClusterStats implements Serializable {

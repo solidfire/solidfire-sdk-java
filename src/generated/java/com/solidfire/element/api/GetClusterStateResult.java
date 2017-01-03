@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetClusterStateResult  
  **/
 
 public class GetClusterStateResult implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ScheduleInfo  
  **/
 
 public class ScheduleInfo implements Serializable {

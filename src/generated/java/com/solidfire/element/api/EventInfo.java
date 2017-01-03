@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * EventInfo  
  **/
 
 public class EventInfo implements Serializable {

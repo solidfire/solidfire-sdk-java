@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * RemoveAccountRequest  
  **/
 
 public class RemoveAccountRequest implements Serializable {

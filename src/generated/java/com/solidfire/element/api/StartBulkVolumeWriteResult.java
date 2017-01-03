@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * StartBulkVolumeWriteResult  
  **/
 
 public class StartBulkVolumeWriteResult implements Serializable {

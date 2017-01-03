@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * SetRemoteLoggingHostsRequest  
  **/
 
 public class SetRemoteLoggingHostsRequest implements Serializable {

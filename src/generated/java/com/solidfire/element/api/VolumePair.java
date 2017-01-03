@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * VolumePair  
  * The Volume Pair Info is an object containing information about a volume that is paired on a remote cluster.
  * If the volume is not paired, this object is null.
  **/

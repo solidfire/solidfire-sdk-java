@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetDriveHardwareInfoRequest  
  **/
 
 public class GetDriveHardwareInfoRequest implements Serializable {

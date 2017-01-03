@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListEventsResult  
  **/
 
 public class ListEventsResult implements Serializable {

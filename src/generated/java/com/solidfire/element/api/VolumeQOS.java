@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * VolumeQOS  
  * Quality of Service (QoS) Result values are used on SolidFire volumes to provision performance expectations.
  **/
 

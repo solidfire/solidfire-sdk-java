@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * RemoveClusterPairRequest  
  **/
 
 public class RemoveClusterPairRequest implements Serializable {

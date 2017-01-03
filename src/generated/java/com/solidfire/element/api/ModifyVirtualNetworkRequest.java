@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ModifyVirtualNetworkRequest  
  **/
 
 public class ModifyVirtualNetworkRequest implements Serializable {

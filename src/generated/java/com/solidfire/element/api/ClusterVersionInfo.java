@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ClusterVersionInfo  
  * Version information for a node in the cluster.
  **/
 

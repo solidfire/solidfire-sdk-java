@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * CancelCloneRequest  
  **/
 
 public class CancelCloneRequest implements Serializable {

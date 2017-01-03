@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetIpmiInfoNodesResult  
  **/
 
 public class GetIpmiInfoNodesResult implements Serializable {

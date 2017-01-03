@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ResetDriveDetails  
  **/
 
 public class ResetDriveDetails implements Serializable {

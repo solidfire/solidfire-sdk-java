@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * FibreChannelSession  
  * FibreChannelSession contains information about each Fibre Channel session that is visible to the cluster and what target ports it is visible on.
  **/
 

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetOriginRequest  
  **/
 
 public class GetOriginRequest implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ShutdownResult  
  **/
 
 public class ShutdownResult implements Serializable {

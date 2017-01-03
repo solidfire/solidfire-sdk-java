@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * RemoveNodesRequest  
  **/
 
 public class RemoveNodesRequest implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * KernelCrashDump  
  **/
 
 public class KernelCrashDump implements Serializable {

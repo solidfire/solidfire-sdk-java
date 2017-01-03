@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * FeatureObject  
  **/
 
 public class FeatureObject implements Serializable {

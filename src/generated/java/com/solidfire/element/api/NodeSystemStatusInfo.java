@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * NodeSystemStatusInfo  
  **/
 
 public class NodeSystemStatusInfo implements Serializable {

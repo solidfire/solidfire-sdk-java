@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ResetNodeRequest  
  **/
 
 public class ResetNodeRequest implements Serializable {

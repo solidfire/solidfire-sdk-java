@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetBackupTargetResult  
  **/
 
 public class GetBackupTargetResult implements Serializable {

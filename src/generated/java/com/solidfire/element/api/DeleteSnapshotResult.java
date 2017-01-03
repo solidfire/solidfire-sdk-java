@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * DeleteSnapshotResult  
  **/
 
 public class DeleteSnapshotResult implements Serializable {

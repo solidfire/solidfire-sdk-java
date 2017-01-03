@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * DeleteGroupSnapshotRequest  
  **/
 
 public class DeleteGroupSnapshotRequest implements Serializable {

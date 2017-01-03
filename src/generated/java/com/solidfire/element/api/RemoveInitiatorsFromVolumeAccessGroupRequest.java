@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * RemoveInitiatorsFromVolumeAccessGroupRequest  
  **/
 
 public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializable {

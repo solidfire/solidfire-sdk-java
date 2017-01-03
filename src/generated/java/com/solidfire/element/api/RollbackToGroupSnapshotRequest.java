@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * RollbackToGroupSnapshotRequest  
  **/
 
 public class RollbackToGroupSnapshotRequest implements Serializable {

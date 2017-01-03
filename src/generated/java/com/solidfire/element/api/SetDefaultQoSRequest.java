@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * SetDefaultQoSRequest  
  **/
 
 public class SetDefaultQoSRequest implements Serializable {

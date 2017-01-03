@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * Service  
  **/
 
 public class Service implements Serializable {

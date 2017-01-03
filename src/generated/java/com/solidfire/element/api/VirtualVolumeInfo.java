@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * VirtualVolumeInfo  
  **/
 
 public class VirtualVolumeInfo implements Serializable {

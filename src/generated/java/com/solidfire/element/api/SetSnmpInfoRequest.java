@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * SetSnmpInfoRequest  
  **/
 
 public class SetSnmpInfoRequest implements Serializable {

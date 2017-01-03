@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListNodeFibreChannelPortInfoResult  
  * List of fibre channel port info results grouped by node.
  **/
 

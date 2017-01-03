@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * CompleteClusterPairingRequest  
  **/
 
 public class CompleteClusterPairingRequest implements Serializable {

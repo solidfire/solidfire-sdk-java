@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ModifyClusterAdminRequest  
  **/
 
 public class ModifyClusterAdminRequest implements Serializable {

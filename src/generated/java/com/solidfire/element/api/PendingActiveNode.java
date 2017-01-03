@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * PendingActiveNode  
  **/
 
 public class PendingActiveNode implements Serializable {

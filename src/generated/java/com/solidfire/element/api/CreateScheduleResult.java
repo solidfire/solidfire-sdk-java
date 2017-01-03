@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * CreateScheduleResult  
  **/
 
 public class CreateScheduleResult implements Serializable {

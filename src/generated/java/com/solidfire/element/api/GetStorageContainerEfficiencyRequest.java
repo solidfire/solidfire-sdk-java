@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetStorageContainerEfficiencyRequest  
  **/
 
 public class GetStorageContainerEfficiencyRequest implements Serializable {

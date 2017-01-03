@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetSystemStatusResult  
  **/
 
 public class GetSystemStatusResult implements Serializable {

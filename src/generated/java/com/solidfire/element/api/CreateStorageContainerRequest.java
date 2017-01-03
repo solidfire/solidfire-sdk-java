@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * CreateStorageContainerRequest  
  **/
 
 public class CreateStorageContainerRequest implements Serializable {

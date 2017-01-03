@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * EnableLdapAuthenticationRequest  
  **/
 
 public class EnableLdapAuthenticationRequest implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * CreateInitiatorsRequest  
  **/
 
 public class CreateInitiatorsRequest implements Serializable {

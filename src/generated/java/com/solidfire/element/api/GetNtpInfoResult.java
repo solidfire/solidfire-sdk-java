@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetNtpInfoResult  
  **/
 
 public class GetNtpInfoResult implements Serializable {

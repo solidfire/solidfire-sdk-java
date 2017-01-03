@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * Config  
  **/
 
 public class Config implements Serializable {

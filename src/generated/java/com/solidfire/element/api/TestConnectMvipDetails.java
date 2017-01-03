@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * TestConnectMvipDetails  
  **/
 
 public class TestConnectMvipDetails implements Serializable {

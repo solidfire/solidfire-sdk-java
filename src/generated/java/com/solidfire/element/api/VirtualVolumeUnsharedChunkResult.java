@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * VirtualVolumeUnsharedChunkResult  
  **/
 
 public class VirtualVolumeUnsharedChunkResult implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * CreateSupportBundleRequest  
  **/
 
 public class CreateSupportBundleRequest implements Serializable {

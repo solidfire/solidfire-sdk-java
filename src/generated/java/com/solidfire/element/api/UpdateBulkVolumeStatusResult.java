@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * UpdateBulkVolumeStatusResult  
  **/
 
 public class UpdateBulkVolumeStatusResult implements Serializable {

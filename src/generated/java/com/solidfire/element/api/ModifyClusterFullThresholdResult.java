@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ModifyClusterFullThresholdResult  
  **/
 
 public class ModifyClusterFullThresholdResult implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * CreateSnapshotResult  
  **/
 
 public class CreateSnapshotResult implements Serializable {

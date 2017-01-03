@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListAllNodesResult  
  **/
 
 public class ListAllNodesResult implements Serializable {

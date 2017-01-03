@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GroupSnapshot  
  * Group Snapshot object represents a point-in-time copy of a group of volumes.
  **/
 

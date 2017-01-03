@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * PrepareVirtualSnapshotRequest  
  **/
 
 public class PrepareVirtualSnapshotRequest implements Serializable {

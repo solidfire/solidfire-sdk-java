@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * VolumeAccessGroupLunAssignments  
  * VolumeAccessGroup ID and Lun to be assigned to all volumes within it.
  **/
 

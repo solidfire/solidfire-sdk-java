@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * TestLdapAuthenticationResult  
  **/
 
 public class TestLdapAuthenticationResult implements Serializable {

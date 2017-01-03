@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * SyncJob  
  **/
 
 public class SyncJob implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * NodeDriveHardware  
  **/
 
 public class NodeDriveHardware implements Serializable {

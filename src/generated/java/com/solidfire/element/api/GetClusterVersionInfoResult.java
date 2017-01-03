@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetClusterVersionInfoResult  
  **/
 
 public class GetClusterVersionInfoResult implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * Network  
  **/
 
 public class Network implements Serializable {

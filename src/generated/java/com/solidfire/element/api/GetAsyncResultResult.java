@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetAsyncResultResult  
  * The object returned by the "GetAsyncResult" API Service call.
  * <br/>
  * <b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.

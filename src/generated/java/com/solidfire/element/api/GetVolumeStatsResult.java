@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetVolumeStatsResult  
  **/
 
 public class GetVolumeStatsResult implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * SolidfireDefaults  
  **/
 
 public class SolidfireDefaults implements Serializable {

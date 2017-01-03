@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * PendingOperation  
  **/
 
 public class PendingOperation implements Serializable {

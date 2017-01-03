@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * PendingNode  
  * A "pending node" is one that has not yet joined the cluster.
  * It can be added to a cluster using the AddNode method.
  **/

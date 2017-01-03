@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * RemoveVolumePairResult  
  **/
 
 public class RemoveVolumePairResult implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * NodeWaitingToJoin  
  **/
 
 public class NodeWaitingToJoin implements Serializable {

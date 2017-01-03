@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ModifyAccountResult  
  **/
 
 public class ModifyAccountResult implements Serializable {

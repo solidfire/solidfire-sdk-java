@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListISCSISessionsResult  
  **/
 
 public class ListISCSISessionsResult implements Serializable {

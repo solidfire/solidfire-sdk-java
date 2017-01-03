@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * SoftwareVersionInfo  
  **/
 
 public class SoftwareVersionInfo implements Serializable {

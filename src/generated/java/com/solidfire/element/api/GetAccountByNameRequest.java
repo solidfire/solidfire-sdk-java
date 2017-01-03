@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetAccountByNameRequest  
  **/
 
 public class GetAccountByNameRequest implements Serializable {
