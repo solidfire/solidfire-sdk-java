@@ -33,12 +33,12 @@ import java.util.Objects;
 public class CloneVolumeRequest implements Serializable {
 
     public static final long serialVersionUID = -768791333545216038L;
-    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("volumeID") private VolumeID volumeID;
     @SerializedName("name") private String name;
-    @SerializedName("newAccountID") private Optional<Long> newAccountID;
+    @SerializedName("newAccountID") private Optional<AccountID> newAccountID;
     @SerializedName("newSize") private Optional<Long> newSize;
     @SerializedName("access") private Optional<String> access;
-    @SerializedName("snapshotID") private Optional<Long> snapshotID;
+    @SerializedName("snapshotID") private Optional<SnapshotID> snapshotID;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
@@ -49,29 +49,29 @@ public class CloneVolumeRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CloneVolumeRequest(
-        Long volumeID,
+        VolumeID volumeID,
         String name,
-        Optional<Long> newAccountID,
+        Optional<AccountID> newAccountID,
         Optional<Long> newSize,
         Optional<String> access,
-        Optional<Long> snapshotID,
+        Optional<SnapshotID> snapshotID,
         Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.volumeID = volumeID;
         this.name = name;
-        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
+        this.newAccountID = (newAccountID == null) ? Optional.<AccountID>empty() : newAccountID;
         this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
         this.access = (access == null) ? Optional.<String>empty() : access;
-        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
+        this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : snapshotID;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     /** 
      * The ID of the volume to clone.
      **/
-    public Long getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Long volumeID) { 
+    public VolumeID getVolumeID() { return this.volumeID; }
+    public void setVolumeID(VolumeID volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
@@ -85,9 +85,9 @@ public class CloneVolumeRequest implements Serializable {
      * AccountID for the owner of the new volume.
      * If unspecified, the AccountID of the owner of the volume being cloned is used.
      **/
-    public Optional<Long> getNewAccountID() { return this.newAccountID; }
-    public void setNewAccountID(Optional<Long> newAccountID) { 
-        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
+    public Optional<AccountID> getNewAccountID() { return this.newAccountID; }
+    public void setNewAccountID(Optional<AccountID> newAccountID) { 
+        this.newAccountID = (newAccountID == null) ? Optional.<AccountID>empty() : newAccountID;
     }
     /** 
      * New size of the volume, in bytes.
@@ -116,9 +116,9 @@ public class CloneVolumeRequest implements Serializable {
      * ID of the snapshot to use as the source of the clone.
      * If unspecified, the clone will be created with a snapshot of the active volume.
      **/
-    public Optional<Long> getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(Optional<Long> snapshotID) { 
-        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
+    public Optional<SnapshotID> getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Optional<SnapshotID> snapshotID) { 
+        this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : snapshotID;
     }
     /** 
      * List of Name/Value pairs in JSON object format.
@@ -202,12 +202,12 @@ public class CloneVolumeRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeID;
+        private VolumeID volumeID;
         private String name;
-        private Optional<Long> newAccountID;
+        private Optional<AccountID> newAccountID;
         private Optional<Long> newSize;
         private Optional<String> access;
-        private Optional<Long> snapshotID;
+        private Optional<SnapshotID> snapshotID;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -235,7 +235,7 @@ public class CloneVolumeRequest implements Serializable {
             return this;
         }
 
-        public CloneVolumeRequest.Builder volumeID(final Long volumeID) {
+        public CloneVolumeRequest.Builder volumeID(final VolumeID volumeID) {
             this.volumeID = volumeID;
             return this;
         }
@@ -245,8 +245,8 @@ public class CloneVolumeRequest implements Serializable {
             return this;
         }
 
-        public CloneVolumeRequest.Builder optionalNewAccountID(final Long newAccountID) {
-            this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
+        public CloneVolumeRequest.Builder optionalNewAccountID(final AccountID newAccountID) {
+            this.newAccountID = (newAccountID == null) ? Optional.<AccountID>empty() : Optional.of(newAccountID);
             return this;
         }
 
@@ -260,8 +260,8 @@ public class CloneVolumeRequest implements Serializable {
             return this;
         }
 
-        public CloneVolumeRequest.Builder optionalSnapshotID(final Long snapshotID) {
-            this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
+        public CloneVolumeRequest.Builder optionalSnapshotID(final SnapshotID snapshotID) {
+            this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : Optional.of(snapshotID);
             return this;
         }
 

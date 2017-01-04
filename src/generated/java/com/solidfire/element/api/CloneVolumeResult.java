@@ -33,9 +33,9 @@ import java.util.Objects;
 public class CloneVolumeResult implements Serializable {
 
     public static final long serialVersionUID = 7651196543218505931L;
-    @SerializedName("cloneID") private Long cloneID;
-    @SerializedName("volumeID") private Long volumeID;
-    @SerializedName("asyncHandle") private Long asyncHandle;
+    @SerializedName("cloneID") private CloneID cloneID;
+    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("asyncHandle") private AsyncResultID asyncHandle;
 
     // empty constructor
     @Since("7.0")
@@ -45,9 +45,9 @@ public class CloneVolumeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CloneVolumeResult(
-        Long cloneID,
-        Long volumeID,
-        Long asyncHandle
+        CloneID cloneID,
+        VolumeID volumeID,
+        AsyncResultID asyncHandle
     )
     {
         this.cloneID = cloneID;
@@ -58,22 +58,22 @@ public class CloneVolumeResult implements Serializable {
     /** 
      * The ID of the newly-created clone.
      **/
-    public Long getCloneID() { return this.cloneID; }
-    public void setCloneID(Long cloneID) { 
+    public CloneID getCloneID() { return this.cloneID; }
+    public void setCloneID(CloneID cloneID) { 
         this.cloneID = cloneID;
     }
     /** 
      * The volume ID of the newly-created clone.
      **/
-    public Long getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Long volumeID) { 
+    public VolumeID getVolumeID() { return this.volumeID; }
+    public void setVolumeID(VolumeID volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
      * Handle value used to track the progress of the clone.
      **/
-    public Long getAsyncHandle() { return this.asyncHandle; }
-    public void setAsyncHandle(Long asyncHandle) { 
+    public AsyncResultID getAsyncHandle() { return this.asyncHandle; }
+    public void setAsyncHandle(AsyncResultID asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
 
@@ -129,9 +129,9 @@ public class CloneVolumeResult implements Serializable {
     }
 
     public static class Builder {
-        private Long cloneID;
-        private Long volumeID;
-        private Long asyncHandle;
+        private CloneID cloneID;
+        private VolumeID volumeID;
+        private AsyncResultID asyncHandle;
 
         private Builder() { }
 
@@ -150,17 +150,17 @@ public class CloneVolumeResult implements Serializable {
             return this;
         }
 
-        public CloneVolumeResult.Builder cloneID(final Long cloneID) {
+        public CloneVolumeResult.Builder cloneID(final CloneID cloneID) {
             this.cloneID = cloneID;
             return this;
         }
 
-        public CloneVolumeResult.Builder volumeID(final Long volumeID) {
+        public CloneVolumeResult.Builder volumeID(final VolumeID volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public CloneVolumeResult.Builder asyncHandle(final Long asyncHandle) {
+        public CloneVolumeResult.Builder asyncHandle(final AsyncResultID asyncHandle) {
             this.asyncHandle = asyncHandle;
             return this;
         }

@@ -34,7 +34,7 @@ import java.util.Objects;
 public class GroupSnapshot implements Serializable {
 
     public static final long serialVersionUID = 7672350438056052972L;
-    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
+    @SerializedName("groupSnapshotID") private GroupSnapshotID groupSnapshotID;
     @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
     @SerializedName("members") private GroupSnapshotMembers[] members;
     @SerializedName("name") private String name;
@@ -50,7 +50,7 @@ public class GroupSnapshot implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GroupSnapshot(
-        Long groupSnapshotID,
+        GroupSnapshotID groupSnapshotID,
         java.util.UUID groupSnapshotUUID,
         GroupSnapshotMembers[] members,
         String name,
@@ -71,8 +71,8 @@ public class GroupSnapshot implements Serializable {
     /** 
      * Unique ID of the new group snapshot.
      **/
-    public Long getGroupSnapshotID() { return this.groupSnapshotID; }
-    public void setGroupSnapshotID(Long groupSnapshotID) { 
+    public GroupSnapshotID getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(GroupSnapshotID groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
     /** 
@@ -185,7 +185,7 @@ public class GroupSnapshot implements Serializable {
     }
 
     public static class Builder {
-        private Long groupSnapshotID;
+        private GroupSnapshotID groupSnapshotID;
         private java.util.UUID groupSnapshotUUID;
         private GroupSnapshotMembers[] members;
         private String name;
@@ -218,7 +218,7 @@ public class GroupSnapshot implements Serializable {
             return this;
         }
 
-        public GroupSnapshot.Builder groupSnapshotID(final Long groupSnapshotID) {
+        public GroupSnapshot.Builder groupSnapshotID(final GroupSnapshotID groupSnapshotID) {
             this.groupSnapshotID = groupSnapshotID;
             return this;
         }

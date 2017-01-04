@@ -33,7 +33,7 @@ import java.util.Objects;
 public class RemoveBackupTargetRequest implements Serializable {
 
     public static final long serialVersionUID = -1520692591750398943L;
-    @SerializedName("backupTargetID") private Long backupTargetID;
+    @SerializedName("backupTargetID") private BackupTargetID backupTargetID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class RemoveBackupTargetRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RemoveBackupTargetRequest(
-        Long backupTargetID
+        BackupTargetID backupTargetID
     )
     {
         this.backupTargetID = backupTargetID;
@@ -52,8 +52,8 @@ public class RemoveBackupTargetRequest implements Serializable {
     /** 
      * Unique target ID of the target to remove.
      **/
-    public Long getBackupTargetID() { return this.backupTargetID; }
-    public void setBackupTargetID(Long backupTargetID) { 
+    public BackupTargetID getBackupTargetID() { return this.backupTargetID; }
+    public void setBackupTargetID(BackupTargetID backupTargetID) { 
         this.backupTargetID = backupTargetID;
     }
 
@@ -103,7 +103,7 @@ public class RemoveBackupTargetRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long backupTargetID;
+        private BackupTargetID backupTargetID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class RemoveBackupTargetRequest implements Serializable {
             return this;
         }
 
-        public RemoveBackupTargetRequest.Builder backupTargetID(final Long backupTargetID) {
+        public RemoveBackupTargetRequest.Builder backupTargetID(final BackupTargetID backupTargetID) {
             this.backupTargetID = backupTargetID;
             return this;
         }

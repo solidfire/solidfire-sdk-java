@@ -33,7 +33,7 @@ import java.util.Objects;
 public class AddClusterAdminResult implements Serializable {
 
     public static final long serialVersionUID = -6913123489772234284L;
-    @SerializedName("clusterAdminID") private Long clusterAdminID;
+    @SerializedName("clusterAdminID") private ClusterAdminID clusterAdminID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class AddClusterAdminResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddClusterAdminResult(
-        Long clusterAdminID
+        ClusterAdminID clusterAdminID
     )
     {
         this.clusterAdminID = clusterAdminID;
@@ -52,8 +52,8 @@ public class AddClusterAdminResult implements Serializable {
     /** 
      * ClusterAdminID for the newly created Cluster Admin.
      **/
-    public Long getClusterAdminID() { return this.clusterAdminID; }
-    public void setClusterAdminID(Long clusterAdminID) { 
+    public ClusterAdminID getClusterAdminID() { return this.clusterAdminID; }
+    public void setClusterAdminID(ClusterAdminID clusterAdminID) { 
         this.clusterAdminID = clusterAdminID;
     }
 
@@ -103,7 +103,7 @@ public class AddClusterAdminResult implements Serializable {
     }
 
     public static class Builder {
-        private Long clusterAdminID;
+        private ClusterAdminID clusterAdminID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class AddClusterAdminResult implements Serializable {
             return this;
         }
 
-        public AddClusterAdminResult.Builder clusterAdminID(final Long clusterAdminID) {
+        public AddClusterAdminResult.Builder clusterAdminID(final ClusterAdminID clusterAdminID) {
             this.clusterAdminID = clusterAdminID;
             return this;
         }

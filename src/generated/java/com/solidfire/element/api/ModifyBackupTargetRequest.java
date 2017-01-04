@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ModifyBackupTargetRequest implements Serializable {
 
     public static final long serialVersionUID = -2231080711756074693L;
-    @SerializedName("backupTargetID") private Long backupTargetID;
+    @SerializedName("backupTargetID") private BackupTargetID backupTargetID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
@@ -45,7 +45,7 @@ public class ModifyBackupTargetRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyBackupTargetRequest(
-        Long backupTargetID,
+        BackupTargetID backupTargetID,
         Optional<String> name,
         Optional<java.util.Map<String, Object>> attributes
     )
@@ -58,8 +58,8 @@ public class ModifyBackupTargetRequest implements Serializable {
     /** 
      * Unique identifier assigned to the backup target.
      **/
-    public Long getBackupTargetID() { return this.backupTargetID; }
-    public void setBackupTargetID(Long backupTargetID) { 
+    public BackupTargetID getBackupTargetID() { return this.backupTargetID; }
+    public void setBackupTargetID(BackupTargetID backupTargetID) { 
         this.backupTargetID = backupTargetID;
     }
     /** 
@@ -133,7 +133,7 @@ public class ModifyBackupTargetRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long backupTargetID;
+        private BackupTargetID backupTargetID;
         private Optional<String> name;
         private Optional<java.util.Map<String, Object>> attributes;
 
@@ -154,7 +154,7 @@ public class ModifyBackupTargetRequest implements Serializable {
             return this;
         }
 
-        public ModifyBackupTargetRequest.Builder backupTargetID(final Long backupTargetID) {
+        public ModifyBackupTargetRequest.Builder backupTargetID(final BackupTargetID backupTargetID) {
             this.backupTargetID = backupTargetID;
             return this;
         }

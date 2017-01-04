@@ -33,14 +33,14 @@ import java.util.Objects;
 public class Service implements Serializable {
 
     public static final long serialVersionUID = 8314892491212467718L;
-    @SerializedName("serviceID") private Long serviceID;
+    @SerializedName("serviceID") private ServiceID serviceID;
     @SerializedName("serviceType") private String serviceType;
-    @SerializedName("nodeID") private Long nodeID;
-    @SerializedName("associatedBV") private Optional<Long> associatedBV;
-    @SerializedName("associatedTS") private Optional<Long> associatedTS;
-    @SerializedName("associatedVS") private Optional<Long> associatedVS;
-    @SerializedName("asyncResultIDs") private Long[] asyncResultIDs;
-    @SerializedName("driveID") private Optional<Long> driveID;
+    @SerializedName("nodeID") private NodeID nodeID;
+    @SerializedName("associatedBV") private Optional<ServiceID> associatedBV;
+    @SerializedName("associatedTS") private Optional<ServiceID> associatedTS;
+    @SerializedName("associatedVS") private Optional<ServiceID> associatedVS;
+    @SerializedName("asyncResultIDs") private AsyncResultID[] asyncResultIDs;
+    @SerializedName("driveID") private Optional<DriveID> driveID;
     @SerializedName("firstTimeStartup") private Boolean firstTimeStartup;
     @SerializedName("ipcPort") private Long ipcPort;
     @SerializedName("iscsiPort") private Long iscsiPort;
@@ -56,14 +56,14 @@ public class Service implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public Service(
-        Long serviceID,
+        ServiceID serviceID,
         String serviceType,
-        Long nodeID,
-        Optional<Long> associatedBV,
-        Optional<Long> associatedTS,
-        Optional<Long> associatedVS,
-        Long[] asyncResultIDs,
-        Optional<Long> driveID,
+        NodeID nodeID,
+        Optional<ServiceID> associatedBV,
+        Optional<ServiceID> associatedTS,
+        Optional<ServiceID> associatedVS,
+        AsyncResultID[] asyncResultIDs,
+        Optional<DriveID> driveID,
         Boolean firstTimeStartup,
         Long ipcPort,
         Long iscsiPort,
@@ -75,11 +75,11 @@ public class Service implements Serializable {
         this.serviceID = serviceID;
         this.serviceType = serviceType;
         this.nodeID = nodeID;
-        this.associatedBV = (associatedBV == null) ? Optional.<Long>empty() : associatedBV;
-        this.associatedTS = (associatedTS == null) ? Optional.<Long>empty() : associatedTS;
-        this.associatedVS = (associatedVS == null) ? Optional.<Long>empty() : associatedVS;
+        this.associatedBV = (associatedBV == null) ? Optional.<ServiceID>empty() : associatedBV;
+        this.associatedTS = (associatedTS == null) ? Optional.<ServiceID>empty() : associatedTS;
+        this.associatedVS = (associatedVS == null) ? Optional.<ServiceID>empty() : associatedVS;
         this.asyncResultIDs = asyncResultIDs;
-        this.driveID = (driveID == null) ? Optional.<Long>empty() : driveID;
+        this.driveID = (driveID == null) ? Optional.<DriveID>empty() : driveID;
         this.firstTimeStartup = firstTimeStartup;
         this.ipcPort = ipcPort;
         this.iscsiPort = iscsiPort;
@@ -91,8 +91,8 @@ public class Service implements Serializable {
     /** 
      * Unique identifier for this service.
      **/
-    public Long getServiceID() { return this.serviceID; }
-    public void setServiceID(Long serviceID) { 
+    public ServiceID getServiceID() { return this.serviceID; }
+    public void setServiceID(ServiceID serviceID) { 
         this.serviceID = serviceID;
     }
     /** 
@@ -104,47 +104,47 @@ public class Service implements Serializable {
     /** 
      * The node this service resides on.
      **/
-    public Long getNodeID() { return this.nodeID; }
-    public void setNodeID(Long nodeID) { 
+    public NodeID getNodeID() { return this.nodeID; }
+    public void setNodeID(NodeID nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
      * This service's associated bulk volume service.
      * This will only be set if the service type is a slice service.
      **/
-    public Optional<Long> getAssociatedBV() { return this.associatedBV; }
-    public void setAssociatedBV(Optional<Long> associatedBV) { 
-        this.associatedBV = (associatedBV == null) ? Optional.<Long>empty() : associatedBV;
+    public Optional<ServiceID> getAssociatedBV() { return this.associatedBV; }
+    public void setAssociatedBV(Optional<ServiceID> associatedBV) { 
+        this.associatedBV = (associatedBV == null) ? Optional.<ServiceID>empty() : associatedBV;
     }
     /** 
      * This service's associated transport service.
      * This will only be set if the service type is a slice service.
      **/
-    public Optional<Long> getAssociatedTS() { return this.associatedTS; }
-    public void setAssociatedTS(Optional<Long> associatedTS) { 
-        this.associatedTS = (associatedTS == null) ? Optional.<Long>empty() : associatedTS;
+    public Optional<ServiceID> getAssociatedTS() { return this.associatedTS; }
+    public void setAssociatedTS(Optional<ServiceID> associatedTS) { 
+        this.associatedTS = (associatedTS == null) ? Optional.<ServiceID>empty() : associatedTS;
     }
     /** 
      * This service's associated volume service.
      * This will only be set if the service type is a slice service.
      **/
-    public Optional<Long> getAssociatedVS() { return this.associatedVS; }
-    public void setAssociatedVS(Optional<Long> associatedVS) { 
-        this.associatedVS = (associatedVS == null) ? Optional.<Long>empty() : associatedVS;
+    public Optional<ServiceID> getAssociatedVS() { return this.associatedVS; }
+    public void setAssociatedVS(Optional<ServiceID> associatedVS) { 
+        this.associatedVS = (associatedVS == null) ? Optional.<ServiceID>empty() : associatedVS;
     }
     /** 
      * The list of asynchronous jobs currently running for this service.
      **/
-    public Long[] getAsyncResultIDs() { return this.asyncResultIDs; }
-    public void setAsyncResultIDs(Long[] asyncResultIDs) { 
+    public AsyncResultID[] getAsyncResultIDs() { return this.asyncResultIDs; }
+    public void setAsyncResultIDs(AsyncResultID[] asyncResultIDs) { 
         this.asyncResultIDs = asyncResultIDs;
     }
     /** 
      * If this service resides on a drive, the ID of that drive.
      **/
-    public Optional<Long> getDriveID() { return this.driveID; }
-    public void setDriveID(Optional<Long> driveID) { 
-        this.driveID = (driveID == null) ? Optional.<Long>empty() : driveID;
+    public Optional<DriveID> getDriveID() { return this.driveID; }
+    public void setDriveID(Optional<DriveID> driveID) { 
+        this.driveID = (driveID == null) ? Optional.<DriveID>empty() : driveID;
     }
     /** 
      * Has this service started successfully?
@@ -284,14 +284,14 @@ public class Service implements Serializable {
     }
 
     public static class Builder {
-        private Long serviceID;
+        private ServiceID serviceID;
         private String serviceType;
-        private Long nodeID;
-        private Optional<Long> associatedBV;
-        private Optional<Long> associatedTS;
-        private Optional<Long> associatedVS;
-        private Long[] asyncResultIDs;
-        private Optional<Long> driveID;
+        private NodeID nodeID;
+        private Optional<ServiceID> associatedBV;
+        private Optional<ServiceID> associatedTS;
+        private Optional<ServiceID> associatedVS;
+        private AsyncResultID[] asyncResultIDs;
+        private Optional<DriveID> driveID;
         private Boolean firstTimeStartup;
         private Long ipcPort;
         private Long iscsiPort;
@@ -338,7 +338,7 @@ public class Service implements Serializable {
             return this;
         }
 
-        public Service.Builder serviceID(final Long serviceID) {
+        public Service.Builder serviceID(final ServiceID serviceID) {
             this.serviceID = serviceID;
             return this;
         }
@@ -348,33 +348,33 @@ public class Service implements Serializable {
             return this;
         }
 
-        public Service.Builder nodeID(final Long nodeID) {
+        public Service.Builder nodeID(final NodeID nodeID) {
             this.nodeID = nodeID;
             return this;
         }
 
-        public Service.Builder optionalAssociatedBV(final Long associatedBV) {
-            this.associatedBV = (associatedBV == null) ? Optional.<Long>empty() : Optional.of(associatedBV);
+        public Service.Builder optionalAssociatedBV(final ServiceID associatedBV) {
+            this.associatedBV = (associatedBV == null) ? Optional.<ServiceID>empty() : Optional.of(associatedBV);
             return this;
         }
 
-        public Service.Builder optionalAssociatedTS(final Long associatedTS) {
-            this.associatedTS = (associatedTS == null) ? Optional.<Long>empty() : Optional.of(associatedTS);
+        public Service.Builder optionalAssociatedTS(final ServiceID associatedTS) {
+            this.associatedTS = (associatedTS == null) ? Optional.<ServiceID>empty() : Optional.of(associatedTS);
             return this;
         }
 
-        public Service.Builder optionalAssociatedVS(final Long associatedVS) {
-            this.associatedVS = (associatedVS == null) ? Optional.<Long>empty() : Optional.of(associatedVS);
+        public Service.Builder optionalAssociatedVS(final ServiceID associatedVS) {
+            this.associatedVS = (associatedVS == null) ? Optional.<ServiceID>empty() : Optional.of(associatedVS);
             return this;
         }
 
-        public Service.Builder asyncResultIDs(final Long[] asyncResultIDs) {
+        public Service.Builder asyncResultIDs(final AsyncResultID[] asyncResultIDs) {
             this.asyncResultIDs = asyncResultIDs;
             return this;
         }
 
-        public Service.Builder optionalDriveID(final Long driveID) {
-            this.driveID = (driveID == null) ? Optional.<Long>empty() : Optional.of(driveID);
+        public Service.Builder optionalDriveID(final DriveID driveID) {
+            this.driveID = (driveID == null) ? Optional.<DriveID>empty() : Optional.of(driveID);
             return this;
         }
 

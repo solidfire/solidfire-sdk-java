@@ -33,7 +33,7 @@ import java.util.Objects;
 public class DeleteGroupSnapshotRequest implements Serializable {
 
     public static final long serialVersionUID = 7666156614345321835L;
-    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
+    @SerializedName("groupSnapshotID") private GroupSnapshotID groupSnapshotID;
     @SerializedName("saveMembers") private Boolean saveMembers;
 
     // empty constructor
@@ -44,7 +44,7 @@ public class DeleteGroupSnapshotRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public DeleteGroupSnapshotRequest(
-        Long groupSnapshotID,
+        GroupSnapshotID groupSnapshotID,
         Boolean saveMembers
     )
     {
@@ -55,8 +55,8 @@ public class DeleteGroupSnapshotRequest implements Serializable {
     /** 
      * Unique ID of the group snapshot.
      **/
-    public Long getGroupSnapshotID() { return this.groupSnapshotID; }
-    public void setGroupSnapshotID(Long groupSnapshotID) { 
+    public GroupSnapshotID getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(GroupSnapshotID groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
     /** 
@@ -117,7 +117,7 @@ public class DeleteGroupSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long groupSnapshotID;
+        private GroupSnapshotID groupSnapshotID;
         private Boolean saveMembers;
 
         private Builder() { }
@@ -135,7 +135,7 @@ public class DeleteGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public DeleteGroupSnapshotRequest.Builder groupSnapshotID(final Long groupSnapshotID) {
+        public DeleteGroupSnapshotRequest.Builder groupSnapshotID(final GroupSnapshotID groupSnapshotID) {
             this.groupSnapshotID = groupSnapshotID;
             return this;
         }

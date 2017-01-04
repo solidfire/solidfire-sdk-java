@@ -35,10 +35,10 @@ import java.util.Objects;
 public class Account implements Serializable {
 
     public static final long serialVersionUID = 6182745512723579970L;
-    @SerializedName("accountID") private Long accountID;
+    @SerializedName("accountID") private AccountID accountID;
     @SerializedName("username") private String username;
     @SerializedName("status") private String status;
-    @SerializedName("volumes") private Long[] volumes;
+    @SerializedName("volumes") private VolumeID[] volumes;
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
@@ -51,10 +51,10 @@ public class Account implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public Account(
-        Long accountID,
+        AccountID accountID,
         String username,
         String status,
-        Long[] volumes,
+        VolumeID[] volumes,
         Optional<CHAPSecret> initiatorSecret,
         Optional<CHAPSecret> targetSecret,
         Optional<java.util.Map<String, Object>> attributes
@@ -72,8 +72,8 @@ public class Account implements Serializable {
     /** 
      * Unique AccountID for the account.
      **/
-    public Long getAccountID() { return this.accountID; }
-    public void setAccountID(Long accountID) { 
+    public AccountID getAccountID() { return this.accountID; }
+    public void setAccountID(AccountID accountID) { 
         this.accountID = accountID;
     }
     /** 
@@ -93,8 +93,8 @@ public class Account implements Serializable {
     /** 
      * List of VolumeIDs for Volumes owned by this account.
      **/
-    public Long[] getVolumes() { return this.volumes; }
-    public void setVolumes(Long[] volumes) { 
+    public VolumeID[] getVolumes() { return this.volumes; }
+    public void setVolumes(VolumeID[] volumes) { 
         this.volumes = volumes;
     }
     /** 
@@ -189,10 +189,10 @@ public class Account implements Serializable {
     }
 
     public static class Builder {
-        private Long accountID;
+        private AccountID accountID;
         private String username;
         private String status;
-        private Long[] volumes;
+        private VolumeID[] volumes;
         private Optional<CHAPSecret> initiatorSecret;
         private Optional<CHAPSecret> targetSecret;
         private Optional<java.util.Map<String, Object>> attributes;
@@ -222,7 +222,7 @@ public class Account implements Serializable {
             return this;
         }
 
-        public Account.Builder accountID(final Long accountID) {
+        public Account.Builder accountID(final AccountID accountID) {
             this.accountID = accountID;
             return this;
         }
@@ -237,7 +237,7 @@ public class Account implements Serializable {
             return this;
         }
 
-        public Account.Builder volumes(final Long[] volumes) {
+        public Account.Builder volumes(final VolumeID[] volumes) {
             this.volumes = volumes;
             return this;
         }

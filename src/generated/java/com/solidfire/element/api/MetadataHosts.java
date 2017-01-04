@@ -34,9 +34,9 @@ import java.util.Objects;
 public class MetadataHosts implements Serializable {
 
     public static final long serialVersionUID = 2342637687735402273L;
-    @SerializedName("deadSecondaries") private Long[] deadSecondaries;
-    @SerializedName("liveSecondaries") private Long[] liveSecondaries;
-    @SerializedName("primary") private Long primary;
+    @SerializedName("deadSecondaries") private NodeID[] deadSecondaries;
+    @SerializedName("liveSecondaries") private NodeID[] liveSecondaries;
+    @SerializedName("primary") private NodeID primary;
 
     // empty constructor
     @Since("7.0")
@@ -46,9 +46,9 @@ public class MetadataHosts implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public MetadataHosts(
-        Long[] deadSecondaries,
-        Long[] liveSecondaries,
-        Long primary
+        NodeID[] deadSecondaries,
+        NodeID[] liveSecondaries,
+        NodeID primary
     )
     {
         this.deadSecondaries = deadSecondaries;
@@ -59,22 +59,22 @@ public class MetadataHosts implements Serializable {
     /** 
      * Secondary metadata (slice) services that are in a dead state.
      **/
-    public Long[] getDeadSecondaries() { return this.deadSecondaries; }
-    public void setDeadSecondaries(Long[] deadSecondaries) { 
+    public NodeID[] getDeadSecondaries() { return this.deadSecondaries; }
+    public void setDeadSecondaries(NodeID[] deadSecondaries) { 
         this.deadSecondaries = deadSecondaries;
     }
     /** 
      * Secondary metadata (slice) services that are currently in a "live" state.
      **/
-    public Long[] getLiveSecondaries() { return this.liveSecondaries; }
-    public void setLiveSecondaries(Long[] liveSecondaries) { 
+    public NodeID[] getLiveSecondaries() { return this.liveSecondaries; }
+    public void setLiveSecondaries(NodeID[] liveSecondaries) { 
         this.liveSecondaries = liveSecondaries;
     }
     /** 
      * The primary metadata (slice) services hosting the volume.
      **/
-    public Long getPrimary() { return this.primary; }
-    public void setPrimary(Long primary) { 
+    public NodeID getPrimary() { return this.primary; }
+    public void setPrimary(NodeID primary) { 
         this.primary = primary;
     }
 
@@ -130,9 +130,9 @@ public class MetadataHosts implements Serializable {
     }
 
     public static class Builder {
-        private Long[] deadSecondaries;
-        private Long[] liveSecondaries;
-        private Long primary;
+        private NodeID[] deadSecondaries;
+        private NodeID[] liveSecondaries;
+        private NodeID primary;
 
         private Builder() { }
 
@@ -151,17 +151,17 @@ public class MetadataHosts implements Serializable {
             return this;
         }
 
-        public MetadataHosts.Builder deadSecondaries(final Long[] deadSecondaries) {
+        public MetadataHosts.Builder deadSecondaries(final NodeID[] deadSecondaries) {
             this.deadSecondaries = deadSecondaries;
             return this;
         }
 
-        public MetadataHosts.Builder liveSecondaries(final Long[] liveSecondaries) {
+        public MetadataHosts.Builder liveSecondaries(final NodeID[] liveSecondaries) {
             this.liveSecondaries = liveSecondaries;
             return this;
         }
 
-        public MetadataHosts.Builder primary(final Long primary) {
+        public MetadataHosts.Builder primary(final NodeID primary) {
             this.primary = primary;
             return this;
         }

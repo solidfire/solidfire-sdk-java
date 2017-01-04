@@ -33,8 +33,8 @@ import java.util.Objects;
 public class ModifyVolumeRequest implements Serializable {
 
     public static final long serialVersionUID = -6916105554939877400L;
-    @SerializedName("volumeID") private Long volumeID;
-    @SerializedName("accountID") private Optional<Long> accountID;
+    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("accountID") private Optional<AccountID> accountID;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("totalSize") private Optional<Long> totalSize;
@@ -48,8 +48,8 @@ public class ModifyVolumeRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyVolumeRequest(
-        Long volumeID,
-        Optional<Long> accountID,
+        VolumeID volumeID,
+        Optional<AccountID> accountID,
         Optional<String> access,
         Optional<QoS> qos,
         Optional<Long> totalSize,
@@ -57,7 +57,7 @@ public class ModifyVolumeRequest implements Serializable {
     )
     {
         this.volumeID = volumeID;
-        this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
+        this.accountID = (accountID == null) ? Optional.<AccountID>empty() : accountID;
         this.access = (access == null) ? Optional.<String>empty() : access;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
@@ -67,17 +67,17 @@ public class ModifyVolumeRequest implements Serializable {
     /** 
      * VolumeID for the volume to be modified.
      **/
-    public Long getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Long volumeID) { 
+    public VolumeID getVolumeID() { return this.volumeID; }
+    public void setVolumeID(VolumeID volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
      * AccountID to which the volume is reassigned.
      * If none is specified, the previous account name is used.
      **/
-    public Optional<Long> getAccountID() { return this.accountID; }
-    public void setAccountID(Optional<Long> accountID) { 
-        this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
+    public Optional<AccountID> getAccountID() { return this.accountID; }
+    public void setAccountID(Optional<AccountID> accountID) { 
+        this.accountID = (accountID == null) ? Optional.<AccountID>empty() : accountID;
     }
     /** 
      * Access allowed for the volume.
@@ -187,8 +187,8 @@ public class ModifyVolumeRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeID;
-        private Optional<Long> accountID;
+        private VolumeID volumeID;
+        private Optional<AccountID> accountID;
         private Optional<String> access;
         private Optional<QoS> qos;
         private Optional<Long> totalSize;
@@ -217,13 +217,13 @@ public class ModifyVolumeRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumeRequest.Builder volumeID(final Long volumeID) {
+        public ModifyVolumeRequest.Builder volumeID(final VolumeID volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public ModifyVolumeRequest.Builder optionalAccountID(final Long accountID) {
-            this.accountID = (accountID == null) ? Optional.<Long>empty() : Optional.of(accountID);
+        public ModifyVolumeRequest.Builder optionalAccountID(final AccountID accountID) {
+            this.accountID = (accountID == null) ? Optional.<AccountID>empty() : Optional.of(accountID);
             return this;
         }
 

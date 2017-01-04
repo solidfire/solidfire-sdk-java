@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ListGroupSnapshotsRequest implements Serializable {
 
     public static final long serialVersionUID = 8925165299321175370L;
-    @SerializedName("volumeID") private Optional<Long> volumeID;
+    @SerializedName("volumeID") private Optional<VolumeID> volumeID;
 
     // empty constructor
     @Since("7.0")
@@ -43,19 +43,19 @@ public class ListGroupSnapshotsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListGroupSnapshotsRequest(
-        Optional<Long> volumeID
+        Optional<VolumeID> volumeID
     )
     {
-        this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
+        this.volumeID = (volumeID == null) ? Optional.<VolumeID>empty() : volumeID;
     }
 
     /** 
      * An array of unique volume IDs to query.
      * If this parameter is not specified, all group snapshots on the cluster will be included.
      **/
-    public Optional<Long> getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Optional<Long> volumeID) { 
-        this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
+    public Optional<VolumeID> getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Optional<VolumeID> volumeID) { 
+        this.volumeID = (volumeID == null) ? Optional.<VolumeID>empty() : volumeID;
     }
 
     @Override
@@ -106,7 +106,7 @@ public class ListGroupSnapshotsRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Long> volumeID;
+        private Optional<VolumeID> volumeID;
 
         private Builder() { }
 
@@ -121,8 +121,8 @@ public class ListGroupSnapshotsRequest implements Serializable {
             return this;
         }
 
-        public ListGroupSnapshotsRequest.Builder optionalVolumeID(final Long volumeID) {
-            this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
+        public ListGroupSnapshotsRequest.Builder optionalVolumeID(final VolumeID volumeID) {
+            this.volumeID = (volumeID == null) ? Optional.<VolumeID>empty() : Optional.of(volumeID);
             return this;
         }
 

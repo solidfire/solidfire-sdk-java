@@ -35,7 +35,7 @@ public class BackupTarget implements Serializable {
 
     public static final long serialVersionUID = -2195701379749552647L;
     @SerializedName("name") private String name;
-    @SerializedName("backupTargetID") private Long backupTargetID;
+    @SerializedName("backupTargetID") private BackupTargetID backupTargetID;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
@@ -47,7 +47,7 @@ public class BackupTarget implements Serializable {
     @Since("7.0")
     public BackupTarget(
         String name,
-        Long backupTargetID,
+        BackupTargetID backupTargetID,
         Optional<java.util.Map<String, Object>> attributes
     )
     {
@@ -66,8 +66,8 @@ public class BackupTarget implements Serializable {
     /** 
      * Unique identifier assigned to the backup target.
      **/
-    public Long getBackupTargetID() { return this.backupTargetID; }
-    public void setBackupTargetID(Long backupTargetID) { 
+    public BackupTargetID getBackupTargetID() { return this.backupTargetID; }
+    public void setBackupTargetID(BackupTargetID backupTargetID) { 
         this.backupTargetID = backupTargetID;
     }
     /** 
@@ -133,7 +133,7 @@ public class BackupTarget implements Serializable {
 
     public static class Builder {
         private String name;
-        private Long backupTargetID;
+        private BackupTargetID backupTargetID;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -158,7 +158,7 @@ public class BackupTarget implements Serializable {
             return this;
         }
 
-        public BackupTarget.Builder backupTargetID(final Long backupTargetID) {
+        public BackupTarget.Builder backupTargetID(final BackupTargetID backupTargetID) {
             this.backupTargetID = backupTargetID;
             return this;
         }

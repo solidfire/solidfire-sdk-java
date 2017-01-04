@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetAccountByIDRequest implements Serializable {
 
     public static final long serialVersionUID = -1679235285626842127L;
-    @SerializedName("accountID") private Long accountID;
+    @SerializedName("accountID") private AccountID accountID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class GetAccountByIDRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetAccountByIDRequest(
-        Long accountID
+        AccountID accountID
     )
     {
         this.accountID = accountID;
@@ -52,8 +52,8 @@ public class GetAccountByIDRequest implements Serializable {
     /** 
      * Specifies the account for which details are gathered.
      **/
-    public Long getAccountID() { return this.accountID; }
-    public void setAccountID(Long accountID) { 
+    public AccountID getAccountID() { return this.accountID; }
+    public void setAccountID(AccountID accountID) { 
         this.accountID = accountID;
     }
 
@@ -103,7 +103,7 @@ public class GetAccountByIDRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long accountID;
+        private AccountID accountID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class GetAccountByIDRequest implements Serializable {
             return this;
         }
 
-        public GetAccountByIDRequest.Builder accountID(final Long accountID) {
+        public GetAccountByIDRequest.Builder accountID(final AccountID accountID) {
             this.accountID = accountID;
             return this;
         }

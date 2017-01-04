@@ -35,8 +35,8 @@ import java.util.Objects;
 public class PendingNode implements Serializable {
 
     public static final long serialVersionUID = -930850330231659742L;
-    @SerializedName("pendingNodeID") private Long pendingNodeID;
-    @SerializedName("AssignedNodeID") private Long assignedNodeID;
+    @SerializedName("pendingNodeID") private PendingNodeID pendingNodeID;
+    @SerializedName("AssignedNodeID") private NodeID assignedNodeID;
     @SerializedName("name") private String name;
     @SerializedName("compatible") private Boolean compatible;
     @SerializedName("platformInfo") private Platform platformInfo;
@@ -57,8 +57,8 @@ public class PendingNode implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public PendingNode(
-        Long pendingNodeID,
-        Long assignedNodeID,
+        PendingNodeID pendingNodeID,
+        NodeID assignedNodeID,
         String name,
         Boolean compatible,
         Platform platformInfo,
@@ -89,14 +89,14 @@ public class PendingNode implements Serializable {
 
     /** 
      **/
-    public Long getPendingNodeID() { return this.pendingNodeID; }
-    public void setPendingNodeID(Long pendingNodeID) { 
+    public PendingNodeID getPendingNodeID() { return this.pendingNodeID; }
+    public void setPendingNodeID(PendingNodeID pendingNodeID) { 
         this.pendingNodeID = pendingNodeID;
     }
     /** 
      **/
-    public Long getAssignedNodeID() { return this.assignedNodeID; }
-    public void setAssignedNodeID(Long assignedNodeID) { 
+    public NodeID getAssignedNodeID() { return this.assignedNodeID; }
+    public void setAssignedNodeID(NodeID assignedNodeID) { 
         this.assignedNodeID = assignedNodeID;
     }
     /** 
@@ -258,8 +258,8 @@ public class PendingNode implements Serializable {
     }
 
     public static class Builder {
-        private Long pendingNodeID;
-        private Long assignedNodeID;
+        private PendingNodeID pendingNodeID;
+        private NodeID assignedNodeID;
         private String name;
         private Boolean compatible;
         private Platform platformInfo;
@@ -309,12 +309,12 @@ public class PendingNode implements Serializable {
             return this;
         }
 
-        public PendingNode.Builder pendingNodeID(final Long pendingNodeID) {
+        public PendingNode.Builder pendingNodeID(final PendingNodeID pendingNodeID) {
             this.pendingNodeID = pendingNodeID;
             return this;
         }
 
-        public PendingNode.Builder assignedNodeID(final Long assignedNodeID) {
+        public PendingNode.Builder assignedNodeID(final NodeID assignedNodeID) {
             this.assignedNodeID = assignedNodeID;
             return this;
         }

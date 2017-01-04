@@ -33,7 +33,7 @@ import java.util.Objects;
 public class NodeDriveHardware implements Serializable {
 
     public static final long serialVersionUID = 4433141605775576765L;
-    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("nodeID") private NodeID nodeID;
     @SerializedName("result") private DrivesHardware result;
 
     // empty constructor
@@ -44,7 +44,7 @@ public class NodeDriveHardware implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public NodeDriveHardware(
-        Long nodeID,
+        NodeID nodeID,
         DrivesHardware result
     )
     {
@@ -54,8 +54,8 @@ public class NodeDriveHardware implements Serializable {
 
     /** 
      **/
-    public Long getNodeID() { return this.nodeID; }
-    public void setNodeID(Long nodeID) { 
+    public NodeID getNodeID() { return this.nodeID; }
+    public void setNodeID(NodeID nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
@@ -114,7 +114,7 @@ public class NodeDriveHardware implements Serializable {
     }
 
     public static class Builder {
-        private Long nodeID;
+        private NodeID nodeID;
         private DrivesHardware result;
 
         private Builder() { }
@@ -132,7 +132,7 @@ public class NodeDriveHardware implements Serializable {
             return this;
         }
 
-        public NodeDriveHardware.Builder nodeID(final Long nodeID) {
+        public NodeDriveHardware.Builder nodeID(final NodeID nodeID) {
             this.nodeID = nodeID;
             return this;
         }

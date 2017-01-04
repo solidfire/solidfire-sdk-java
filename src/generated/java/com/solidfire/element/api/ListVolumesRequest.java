@@ -33,12 +33,12 @@ import java.util.Objects;
 public class ListVolumesRequest implements Serializable {
 
     public static final long serialVersionUID = -2486206820112754562L;
-    @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
+    @SerializedName("startVolumeID") private Optional<VolumeID> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("volumeStatus") private Optional<String> volumeStatus;
-    @SerializedName("accounts") private Optional<Long[]> accounts;
+    @SerializedName("accounts") private Optional<AccountID[]> accounts;
     @SerializedName("isPaired") private Optional<Boolean> isPaired;
-    @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
+    @SerializedName("volumeIDs") private Optional<VolumeID[]> volumeIDs;
 
     // empty constructor
     @Since("7.0")
@@ -48,36 +48,36 @@ public class ListVolumesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListVolumesRequest(
-        Optional<Long> startVolumeID,
+        Optional<VolumeID> startVolumeID,
         Optional<Long> limit,
         Optional<String> volumeStatus,
-        Optional<Long[]> accounts,
+        Optional<AccountID[]> accounts,
         Optional<Boolean> isPaired
     )
     {
-        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
+        this.startVolumeID = (startVolumeID == null) ? Optional.<VolumeID>empty() : startVolumeID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
         this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
-        this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
+        this.accounts = (accounts == null) ? Optional.<AccountID[]>empty() : accounts;
         this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
     }
     // parameterized constructor
     @Since("9.0")
     public ListVolumesRequest(
-        Optional<Long> startVolumeID,
+        Optional<VolumeID> startVolumeID,
         Optional<Long> limit,
         Optional<String> volumeStatus,
-        Optional<Long[]> accounts,
+        Optional<AccountID[]> accounts,
         Optional<Boolean> isPaired,
-        Optional<Long[]> volumeIDs
+        Optional<VolumeID[]> volumeIDs
     )
     {
-        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
+        this.startVolumeID = (startVolumeID == null) ? Optional.<VolumeID>empty() : startVolumeID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
         this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
-        this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
+        this.accounts = (accounts == null) ? Optional.<AccountID[]>empty() : accounts;
         this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
-        this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
+        this.volumeIDs = (volumeIDs == null) ? Optional.<VolumeID[]>empty() : volumeIDs;
     }
 
     /** 
@@ -85,9 +85,9 @@ public class ListVolumesRequest implements Serializable {
      * This can be useful for paging results.
      * By default, this starts at the lowest VolumeID.
      **/
-    public Optional<Long> getStartVolumeID() { return this.startVolumeID; }
-    public void setStartVolumeID(Optional<Long> startVolumeID) { 
-        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
+    public Optional<VolumeID> getStartVolumeID() { return this.startVolumeID; }
+    public void setStartVolumeID(Optional<VolumeID> startVolumeID) { 
+        this.startVolumeID = (startVolumeID == null) ? Optional.<VolumeID>empty() : startVolumeID;
     }
     /** 
      * The maximum number of volumes to return from the API.
@@ -108,9 +108,9 @@ public class ListVolumesRequest implements Serializable {
      * If specified, only fetch volumes which belong to the provided accounts.
      * By default, list volumes for all accounts.
      **/
-    public Optional<Long[]> getAccounts() { return this.accounts; }
-    public void setAccounts(Optional<Long[]> accounts) { 
-        this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
+    public Optional<AccountID[]> getAccounts() { return this.accounts; }
+    public void setAccounts(Optional<AccountID[]> accounts) { 
+        this.accounts = (accounts == null) ? Optional.<AccountID[]>empty() : accounts;
     }
     /** 
      * If specified, only fetch volumes which are paired (if true) or non-paired (if false).
@@ -124,9 +124,9 @@ public class ListVolumesRequest implements Serializable {
      * If specified, only fetch volumes specified in this list.
      * This option cannot be specified if startVolumeID, limit, or accounts option is specified.
      **/
-    public Optional<Long[]> getVolumeIDs() { return this.volumeIDs; }
-    public void setVolumeIDs(Optional<Long[]> volumeIDs) { 
-        this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
+    public Optional<VolumeID[]> getVolumeIDs() { return this.volumeIDs; }
+    public void setVolumeIDs(Optional<VolumeID[]> volumeIDs) { 
+        this.volumeIDs = (volumeIDs == null) ? Optional.<VolumeID[]>empty() : volumeIDs;
     }
 
     @Override
@@ -202,12 +202,12 @@ public class ListVolumesRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Long> startVolumeID;
+        private Optional<VolumeID> startVolumeID;
         private Optional<Long> limit;
         private Optional<String> volumeStatus;
-        private Optional<Long[]> accounts;
+        private Optional<AccountID[]> accounts;
         private Optional<Boolean> isPaired;
-        private Optional<Long[]> volumeIDs;
+        private Optional<VolumeID[]> volumeIDs;
 
         private Builder() { }
 
@@ -232,8 +232,8 @@ public class ListVolumesRequest implements Serializable {
             return this;
         }
 
-        public ListVolumesRequest.Builder optionalStartVolumeID(final Long startVolumeID) {
-            this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : Optional.of(startVolumeID);
+        public ListVolumesRequest.Builder optionalStartVolumeID(final VolumeID startVolumeID) {
+            this.startVolumeID = (startVolumeID == null) ? Optional.<VolumeID>empty() : Optional.of(startVolumeID);
             return this;
         }
 
@@ -247,8 +247,8 @@ public class ListVolumesRequest implements Serializable {
             return this;
         }
 
-        public ListVolumesRequest.Builder optionalAccounts(final Long[] accounts) {
-            this.accounts = (accounts == null) ? Optional.<Long[]>empty() : Optional.of(accounts);
+        public ListVolumesRequest.Builder optionalAccounts(final AccountID[] accounts) {
+            this.accounts = (accounts == null) ? Optional.<AccountID[]>empty() : Optional.of(accounts);
             return this;
         }
 
@@ -257,8 +257,8 @@ public class ListVolumesRequest implements Serializable {
             return this;
         }
 
-        public ListVolumesRequest.Builder optionalVolumeIDs(final Long[] volumeIDs) {
-            this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
+        public ListVolumesRequest.Builder optionalVolumeIDs(final VolumeID[] volumeIDs) {
+            this.volumeIDs = (volumeIDs == null) ? Optional.<VolumeID[]>empty() : Optional.of(volumeIDs);
             return this;
         }
 

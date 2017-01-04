@@ -33,8 +33,8 @@ import java.util.Objects;
 public class VirtualNetwork implements Serializable {
 
     public static final long serialVersionUID = 8407011142643317951L;
-    @SerializedName("virtualNetworkID") private Long virtualNetworkID;
-    @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
+    @SerializedName("virtualNetworkID") private VirtualNetworkID virtualNetworkID;
+    @SerializedName("virtualNetworkTag") private VirtualNetworkTag virtualNetworkTag;
     @SerializedName("addressBlocks") private AddressBlock[] addressBlocks;
     @SerializedName("name") private String name;
     @SerializedName("netmask") private String netmask;
@@ -51,8 +51,8 @@ public class VirtualNetwork implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public VirtualNetwork(
-        Long virtualNetworkID,
-        Long virtualNetworkTag,
+        VirtualNetworkID virtualNetworkID,
+        VirtualNetworkTag virtualNetworkTag,
         AddressBlock[] addressBlocks,
         String name,
         String netmask,
@@ -71,8 +71,8 @@ public class VirtualNetwork implements Serializable {
     // parameterized constructor
     @Since("9.0")
     public VirtualNetwork(
-        Long virtualNetworkID,
-        Long virtualNetworkTag,
+        VirtualNetworkID virtualNetworkID,
+        VirtualNetworkTag virtualNetworkTag,
         AddressBlock[] addressBlocks,
         String name,
         String netmask,
@@ -96,15 +96,15 @@ public class VirtualNetwork implements Serializable {
     /** 
      * SolidFire unique identifier for a virtual network.
      **/
-    public Long getVirtualNetworkID() { return this.virtualNetworkID; }
-    public void setVirtualNetworkID(Long virtualNetworkID) { 
+    public VirtualNetworkID getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(VirtualNetworkID virtualNetworkID) { 
         this.virtualNetworkID = virtualNetworkID;
     }
     /** 
      * VLAN Tag identifier.
      **/
-    public Long getVirtualNetworkTag() { return this.virtualNetworkTag; }
-    public void setVirtualNetworkTag(Long virtualNetworkTag) { 
+    public VirtualNetworkTag getVirtualNetworkTag() { return this.virtualNetworkTag; }
+    public void setVirtualNetworkTag(VirtualNetworkTag virtualNetworkTag) { 
         this.virtualNetworkTag = virtualNetworkTag;
     }
     /** 
@@ -234,8 +234,8 @@ public class VirtualNetwork implements Serializable {
     }
 
     public static class Builder {
-        private Long virtualNetworkID;
-        private Long virtualNetworkTag;
+        private VirtualNetworkID virtualNetworkID;
+        private VirtualNetworkTag virtualNetworkTag;
         private AddressBlock[] addressBlocks;
         private String name;
         private String netmask;
@@ -273,12 +273,12 @@ public class VirtualNetwork implements Serializable {
             return this;
         }
 
-        public VirtualNetwork.Builder virtualNetworkID(final Long virtualNetworkID) {
+        public VirtualNetwork.Builder virtualNetworkID(final VirtualNetworkID virtualNetworkID) {
             this.virtualNetworkID = virtualNetworkID;
             return this;
         }
 
-        public VirtualNetwork.Builder virtualNetworkTag(final Long virtualNetworkTag) {
+        public VirtualNetwork.Builder virtualNetworkTag(final VirtualNetworkTag virtualNetworkTag) {
             this.virtualNetworkTag = virtualNetworkTag;
             return this;
         }

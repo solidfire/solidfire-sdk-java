@@ -33,7 +33,7 @@ import java.util.Objects;
 public class AddVirtualNetworkRequest implements Serializable {
 
     public static final long serialVersionUID = -2607397254846725433L;
-    @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
+    @SerializedName("virtualNetworkTag") private VirtualNetworkTag virtualNetworkTag;
     @SerializedName("name") private String name;
     @SerializedName("addressBlocks") private AddressBlock[] addressBlocks;
     @SerializedName("netmask") private String netmask;
@@ -50,7 +50,7 @@ public class AddVirtualNetworkRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddVirtualNetworkRequest(
-        Long virtualNetworkTag,
+        VirtualNetworkTag virtualNetworkTag,
         String name,
         AddressBlock[] addressBlocks,
         String netmask,
@@ -68,7 +68,7 @@ public class AddVirtualNetworkRequest implements Serializable {
     // parameterized constructor
     @Since("9.0")
     public AddVirtualNetworkRequest(
-        Long virtualNetworkTag,
+        VirtualNetworkTag virtualNetworkTag,
         String name,
         AddressBlock[] addressBlocks,
         String netmask,
@@ -91,8 +91,8 @@ public class AddVirtualNetworkRequest implements Serializable {
     /** 
      * A unique virtual network (VLAN) tag. Supported values are 1 to 4095 (the number zero (0) is not supported).
      **/
-    public Long getVirtualNetworkTag() { return this.virtualNetworkTag; }
-    public void setVirtualNetworkTag(Long virtualNetworkTag) { 
+    public VirtualNetworkTag getVirtualNetworkTag() { return this.virtualNetworkTag; }
+    public void setVirtualNetworkTag(VirtualNetworkTag virtualNetworkTag) { 
         this.virtualNetworkTag = virtualNetworkTag;
     }
     /** 
@@ -221,7 +221,7 @@ public class AddVirtualNetworkRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long virtualNetworkTag;
+        private VirtualNetworkTag virtualNetworkTag;
         private String name;
         private AddressBlock[] addressBlocks;
         private String netmask;
@@ -257,7 +257,7 @@ public class AddVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public AddVirtualNetworkRequest.Builder virtualNetworkTag(final Long virtualNetworkTag) {
+        public AddVirtualNetworkRequest.Builder virtualNetworkTag(final VirtualNetworkTag virtualNetworkTag) {
             this.virtualNetworkTag = virtualNetworkTag;
             return this;
         }

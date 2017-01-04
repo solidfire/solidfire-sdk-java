@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ListAccountsRequest implements Serializable {
 
     public static final long serialVersionUID = -2105972003732958220L;
-    @SerializedName("startAccountID") private Optional<Long> startAccountID;
+    @SerializedName("startAccountID") private Optional<AccountID> startAccountID;
     @SerializedName("limit") private Optional<Long> limit;
 
     // empty constructor
@@ -44,11 +44,11 @@ public class ListAccountsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListAccountsRequest(
-        Optional<Long> startAccountID,
+        Optional<AccountID> startAccountID,
         Optional<Long> limit
     )
     {
-        this.startAccountID = (startAccountID == null) ? Optional.<Long>empty() : startAccountID;
+        this.startAccountID = (startAccountID == null) ? Optional.<AccountID>empty() : startAccountID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
@@ -58,9 +58,9 @@ public class ListAccountsRequest implements Serializable {
      * the next Account by AccountID order is used as the start of the list.
      * To page through the list, pass the AccountID of the last Account in the previous response + 1
      **/
-    public Optional<Long> getStartAccountID() { return this.startAccountID; }
-    public void setStartAccountID(Optional<Long> startAccountID) { 
-        this.startAccountID = (startAccountID == null) ? Optional.<Long>empty() : startAccountID;
+    public Optional<AccountID> getStartAccountID() { return this.startAccountID; }
+    public void setStartAccountID(Optional<AccountID> startAccountID) { 
+        this.startAccountID = (startAccountID == null) ? Optional.<AccountID>empty() : startAccountID;
     }
     /** 
      * Maximum number of AccountInfo objects to return.
@@ -123,7 +123,7 @@ public class ListAccountsRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Long> startAccountID;
+        private Optional<AccountID> startAccountID;
         private Optional<Long> limit;
 
         private Builder() { }
@@ -141,8 +141,8 @@ public class ListAccountsRequest implements Serializable {
             return this;
         }
 
-        public ListAccountsRequest.Builder optionalStartAccountID(final Long startAccountID) {
-            this.startAccountID = (startAccountID == null) ? Optional.<Long>empty() : Optional.of(startAccountID);
+        public ListAccountsRequest.Builder optionalStartAccountID(final AccountID startAccountID) {
+            this.startAccountID = (startAccountID == null) ? Optional.<AccountID>empty() : Optional.of(startAccountID);
             return this;
         }
 

@@ -33,7 +33,7 @@ import java.util.Objects;
 public class CreateVolumeResult implements Serializable {
 
     public static final long serialVersionUID = 2889880193310552919L;
-    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("volumeID") private VolumeID volumeID;
     @SerializedName("curve") private java.util.Map<String,Long> curve;
 
     // empty constructor
@@ -44,7 +44,7 @@ public class CreateVolumeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CreateVolumeResult(
-        Long volumeID,
+        VolumeID volumeID,
         java.util.Map<String,Long> curve
     )
     {
@@ -55,8 +55,8 @@ public class CreateVolumeResult implements Serializable {
     /** 
      * VolumeID for the newly created volume.
      **/
-    public Long getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Long volumeID) { 
+    public VolumeID getVolumeID() { return this.volumeID; }
+    public void setVolumeID(VolumeID volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
@@ -119,7 +119,7 @@ public class CreateVolumeResult implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeID;
+        private VolumeID volumeID;
         private java.util.Map<String,Long> curve;
 
         private Builder() { }
@@ -137,7 +137,7 @@ public class CreateVolumeResult implements Serializable {
             return this;
         }
 
-        public CreateVolumeResult.Builder volumeID(final Long volumeID) {
+        public CreateVolumeResult.Builder volumeID(final VolumeID volumeID) {
             this.volumeID = volumeID;
             return this;
         }

@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetDriveStatsRequest implements Serializable {
 
     public static final long serialVersionUID = 1640028930156644564L;
-    @SerializedName("driveID") private Long driveID;
+    @SerializedName("driveID") private DriveID driveID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class GetDriveStatsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetDriveStatsRequest(
-        Long driveID
+        DriveID driveID
     )
     {
         this.driveID = driveID;
@@ -52,8 +52,8 @@ public class GetDriveStatsRequest implements Serializable {
     /** 
      * Specifies the drive for which statistics are gathered.
      **/
-    public Long getDriveID() { return this.driveID; }
-    public void setDriveID(Long driveID) { 
+    public DriveID getDriveID() { return this.driveID; }
+    public void setDriveID(DriveID driveID) { 
         this.driveID = driveID;
     }
 
@@ -103,7 +103,7 @@ public class GetDriveStatsRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long driveID;
+        private DriveID driveID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class GetDriveStatsRequest implements Serializable {
             return this;
         }
 
-        public GetDriveStatsRequest.Builder driveID(final Long driveID) {
+        public GetDriveStatsRequest.Builder driveID(final DriveID driveID) {
             this.driveID = driveID;
             return this;
         }

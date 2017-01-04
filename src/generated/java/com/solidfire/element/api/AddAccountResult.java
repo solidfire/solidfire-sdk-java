@@ -33,7 +33,7 @@ import java.util.Objects;
 public class AddAccountResult implements Serializable {
 
     public static final long serialVersionUID = 8785573545235280037L;
-    @SerializedName("accountID") private Long accountID;
+    @SerializedName("accountID") private AccountID accountID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class AddAccountResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddAccountResult(
-        Long accountID
+        AccountID accountID
     )
     {
         this.accountID = accountID;
@@ -52,8 +52,8 @@ public class AddAccountResult implements Serializable {
     /** 
      * AccountID for the newly created Account.
      **/
-    public Long getAccountID() { return this.accountID; }
-    public void setAccountID(Long accountID) { 
+    public AccountID getAccountID() { return this.accountID; }
+    public void setAccountID(AccountID accountID) { 
         this.accountID = accountID;
     }
 
@@ -103,7 +103,7 @@ public class AddAccountResult implements Serializable {
     }
 
     public static class Builder {
-        private Long accountID;
+        private AccountID accountID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class AddAccountResult implements Serializable {
             return this;
         }
 
-        public AddAccountResult.Builder accountID(final Long accountID) {
+        public AddAccountResult.Builder accountID(final AccountID accountID) {
             this.accountID = accountID;
             return this;
         }

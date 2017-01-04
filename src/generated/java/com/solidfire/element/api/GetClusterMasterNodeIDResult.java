@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetClusterMasterNodeIDResult implements Serializable {
 
     public static final long serialVersionUID = 672762052597518736L;
-    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("nodeID") private NodeID nodeID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class GetClusterMasterNodeIDResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetClusterMasterNodeIDResult(
-        Long nodeID
+        NodeID nodeID
     )
     {
         this.nodeID = nodeID;
@@ -52,8 +52,8 @@ public class GetClusterMasterNodeIDResult implements Serializable {
     /** 
      * ID of the master node.
      **/
-    public Long getNodeID() { return this.nodeID; }
-    public void setNodeID(Long nodeID) { 
+    public NodeID getNodeID() { return this.nodeID; }
+    public void setNodeID(NodeID nodeID) { 
         this.nodeID = nodeID;
     }
 
@@ -103,7 +103,7 @@ public class GetClusterMasterNodeIDResult implements Serializable {
     }
 
     public static class Builder {
-        private Long nodeID;
+        private NodeID nodeID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class GetClusterMasterNodeIDResult implements Serializable {
             return this;
         }
 
-        public GetClusterMasterNodeIDResult.Builder nodeID(final Long nodeID) {
+        public GetClusterMasterNodeIDResult.Builder nodeID(final NodeID nodeID) {
             this.nodeID = nodeID;
             return this;
         }

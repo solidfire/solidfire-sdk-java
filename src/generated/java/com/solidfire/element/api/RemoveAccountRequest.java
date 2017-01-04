@@ -33,7 +33,7 @@ import java.util.Objects;
 public class RemoveAccountRequest implements Serializable {
 
     public static final long serialVersionUID = -6926282083277233060L;
-    @SerializedName("accountID") private Long accountID;
+    @SerializedName("accountID") private AccountID accountID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class RemoveAccountRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RemoveAccountRequest(
-        Long accountID
+        AccountID accountID
     )
     {
         this.accountID = accountID;
@@ -52,8 +52,8 @@ public class RemoveAccountRequest implements Serializable {
     /** 
      * AccountID for the account to remove.
      **/
-    public Long getAccountID() { return this.accountID; }
-    public void setAccountID(Long accountID) { 
+    public AccountID getAccountID() { return this.accountID; }
+    public void setAccountID(AccountID accountID) { 
         this.accountID = accountID;
     }
 
@@ -103,7 +103,7 @@ public class RemoveAccountRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long accountID;
+        private AccountID accountID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class RemoveAccountRequest implements Serializable {
             return this;
         }
 
-        public RemoveAccountRequest.Builder accountID(final Long accountID) {
+        public RemoveAccountRequest.Builder accountID(final AccountID accountID) {
             this.accountID = accountID;
             return this;
         }

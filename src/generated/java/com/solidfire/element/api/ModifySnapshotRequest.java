@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ModifySnapshotRequest implements Serializable {
 
     public static final long serialVersionUID = -334314395405117264L;
-    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("snapshotID") private SnapshotID snapshotID;
     @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
 
@@ -45,7 +45,7 @@ public class ModifySnapshotRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifySnapshotRequest(
-        Long snapshotID,
+        SnapshotID snapshotID,
         Optional<String> expirationTime,
         Optional<Boolean> enableRemoteReplication
     )
@@ -58,8 +58,8 @@ public class ModifySnapshotRequest implements Serializable {
     /** 
      * ID of the snapshot.
      **/
-    public Long getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(Long snapshotID) { 
+    public SnapshotID getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(SnapshotID snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
@@ -136,7 +136,7 @@ public class ModifySnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long snapshotID;
+        private SnapshotID snapshotID;
         private Optional<String> expirationTime;
         private Optional<Boolean> enableRemoteReplication;
 
@@ -157,7 +157,7 @@ public class ModifySnapshotRequest implements Serializable {
             return this;
         }
 
-        public ModifySnapshotRequest.Builder snapshotID(final Long snapshotID) {
+        public ModifySnapshotRequest.Builder snapshotID(final SnapshotID snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }

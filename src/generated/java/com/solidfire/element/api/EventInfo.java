@@ -33,13 +33,13 @@ import java.util.Objects;
 public class EventInfo implements Serializable {
 
     public static final long serialVersionUID = 848178818129099493L;
-    @SerializedName("eventID") private Long eventID;
+    @SerializedName("eventID") private EventID eventID;
     @SerializedName("severity") private Long severity;
     @SerializedName("eventInfoType") private String eventInfoType;
     @SerializedName("message") private String message;
-    @SerializedName("serviceID") private Long serviceID;
-    @SerializedName("nodeID") private Long nodeID;
-    @SerializedName("driveID") private Long driveID;
+    @SerializedName("serviceID") private ServiceID serviceID;
+    @SerializedName("nodeID") private NodeID nodeID;
+    @SerializedName("driveID") private DriveID driveID;
     @SerializedName("timeOfReport") private String timeOfReport;
     @SerializedName("timeOfPublish") private String timeOfPublish;
     @SerializedName("details") private Object details;
@@ -52,13 +52,13 @@ public class EventInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public EventInfo(
-        Long eventID,
+        EventID eventID,
         Long severity,
         String eventInfoType,
         String message,
-        Long serviceID,
-        Long nodeID,
-        Long driveID,
+        ServiceID serviceID,
+        NodeID nodeID,
+        DriveID driveID,
         String timeOfReport,
         String timeOfPublish,
         Object details
@@ -78,8 +78,8 @@ public class EventInfo implements Serializable {
 
     /** 
      **/
-    public Long getEventID() { return this.eventID; }
-    public void setEventID(Long eventID) { 
+    public EventID getEventID() { return this.eventID; }
+    public void setEventID(EventID eventID) { 
         this.eventID = eventID;
     }
     /** 
@@ -102,20 +102,20 @@ public class EventInfo implements Serializable {
     }
     /** 
      **/
-    public Long getServiceID() { return this.serviceID; }
-    public void setServiceID(Long serviceID) { 
+    public ServiceID getServiceID() { return this.serviceID; }
+    public void setServiceID(ServiceID serviceID) { 
         this.serviceID = serviceID;
     }
     /** 
      **/
-    public Long getNodeID() { return this.nodeID; }
-    public void setNodeID(Long nodeID) { 
+    public NodeID getNodeID() { return this.nodeID; }
+    public void setNodeID(NodeID nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
      **/
-    public Long getDriveID() { return this.driveID; }
-    public void setDriveID(Long driveID) { 
+    public DriveID getDriveID() { return this.driveID; }
+    public void setDriveID(DriveID driveID) { 
         this.driveID = driveID;
     }
     /** 
@@ -210,13 +210,13 @@ public class EventInfo implements Serializable {
     }
 
     public static class Builder {
-        private Long eventID;
+        private EventID eventID;
         private Long severity;
         private String eventInfoType;
         private String message;
-        private Long serviceID;
-        private Long nodeID;
-        private Long driveID;
+        private ServiceID serviceID;
+        private NodeID nodeID;
+        private DriveID driveID;
         private String timeOfReport;
         private String timeOfPublish;
         private Object details;
@@ -252,7 +252,7 @@ public class EventInfo implements Serializable {
             return this;
         }
 
-        public EventInfo.Builder eventID(final Long eventID) {
+        public EventInfo.Builder eventID(final EventID eventID) {
             this.eventID = eventID;
             return this;
         }
@@ -272,17 +272,17 @@ public class EventInfo implements Serializable {
             return this;
         }
 
-        public EventInfo.Builder serviceID(final Long serviceID) {
+        public EventInfo.Builder serviceID(final ServiceID serviceID) {
             this.serviceID = serviceID;
             return this;
         }
 
-        public EventInfo.Builder nodeID(final Long nodeID) {
+        public EventInfo.Builder nodeID(final NodeID nodeID) {
             this.nodeID = nodeID;
             return this;
         }
 
-        public EventInfo.Builder driveID(final Long driveID) {
+        public EventInfo.Builder driveID(final DriveID driveID) {
             this.driveID = driveID;
             return this;
         }

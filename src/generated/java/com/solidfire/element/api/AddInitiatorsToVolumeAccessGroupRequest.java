@@ -33,8 +33,8 @@ import java.util.Objects;
 public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
 
     public static final long serialVersionUID = 6354255713219394327L;
-    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
-    @SerializedName("initiators") private String[] initiators;
+    @SerializedName("volumeAccessGroupID") private VolumeAccessGroupID volumeAccessGroupID;
+    @SerializedName("initiators") private Iqn[] initiators;
 
     // empty constructor
     @Since("7.0")
@@ -44,8 +44,8 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddInitiatorsToVolumeAccessGroupRequest(
-        Long volumeAccessGroupID,
-        String[] initiators
+        VolumeAccessGroupID volumeAccessGroupID,
+        Iqn[] initiators
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
@@ -55,15 +55,15 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
     /** 
      * The ID of the volume access group to modify.
      **/
-    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
-    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+    public VolumeAccessGroupID getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(VolumeAccessGroupID volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
      * List of initiators to add to the volume access group.
      **/
-    public String[] getInitiators() { return this.initiators; }
-    public void setInitiators(String[] initiators) { 
+    public Iqn[] getInitiators() { return this.initiators; }
+    public void setInitiators(Iqn[] initiators) { 
         this.initiators = initiators;
     }
 
@@ -116,8 +116,8 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeAccessGroupID;
-        private String[] initiators;
+        private VolumeAccessGroupID volumeAccessGroupID;
+        private Iqn[] initiators;
 
         private Builder() { }
 
@@ -134,12 +134,12 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public AddInitiatorsToVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
+        public AddInitiatorsToVolumeAccessGroupRequest.Builder volumeAccessGroupID(final VolumeAccessGroupID volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }
 
-        public AddInitiatorsToVolumeAccessGroupRequest.Builder initiators(final String[] initiators) {
+        public AddInitiatorsToVolumeAccessGroupRequest.Builder initiators(final Iqn[] initiators) {
             this.initiators = initiators;
             return this;
         }

@@ -34,7 +34,7 @@ import java.util.Objects;
 public class VolumeStats implements Serializable {
 
     public static final long serialVersionUID = -3367989483107432160L;
-    @SerializedName("accountID") private Long accountID;
+    @SerializedName("accountID") private AccountID accountID;
     @SerializedName("actualIOPS") private Long actualIOPS;
     @SerializedName("asyncDelay") private Optional<String> asyncDelay;
     @SerializedName("averageIOPSize") private Long averageIOPSize;
@@ -52,8 +52,8 @@ public class VolumeStats implements Serializable {
     @SerializedName("totalLatencyUSec") private Long totalLatencyUSec;
     @SerializedName("unalignedReads") private Long unalignedReads;
     @SerializedName("unalignedWrites") private Long unalignedWrites;
-    @SerializedName("volumeAccessGroups") private Long[] volumeAccessGroups;
-    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("volumeAccessGroups") private VolumeAccessGroupID[] volumeAccessGroups;
+    @SerializedName("volumeID") private VolumeID volumeID;
     @SerializedName("volumeSize") private Long volumeSize;
     @SerializedName("volumeUtilization") private Double volumeUtilization;
     @SerializedName("writeBytes") private Long writeBytes;
@@ -75,7 +75,7 @@ public class VolumeStats implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public VolumeStats(
-        Long accountID,
+        AccountID accountID,
         Long actualIOPS,
         Optional<String> asyncDelay,
         Long averageIOPSize,
@@ -93,8 +93,8 @@ public class VolumeStats implements Serializable {
         Long totalLatencyUSec,
         Long unalignedReads,
         Long unalignedWrites,
-        Long[] volumeAccessGroups,
-        Long volumeID,
+        VolumeAccessGroupID[] volumeAccessGroups,
+        VolumeID volumeID,
         Long volumeSize,
         Double volumeUtilization,
         Long writeBytes,
@@ -146,8 +146,8 @@ public class VolumeStats implements Serializable {
     /** 
      * AccountID of the volume owner.
      **/
-    public Long getAccountID() { return this.accountID; }
-    public void setAccountID(Long accountID) { 
+    public AccountID getAccountID() { return this.accountID; }
+    public void setAccountID(AccountID accountID) { 
         this.accountID = accountID;
     }
     /** 
@@ -282,15 +282,15 @@ public class VolumeStats implements Serializable {
     /** 
      * List of volume access group(s) to which a volume belongs.
      **/
-    public Long[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
-    public void setVolumeAccessGroups(Long[] volumeAccessGroups) { 
+    public VolumeAccessGroupID[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
+    public void setVolumeAccessGroups(VolumeAccessGroupID[] volumeAccessGroups) { 
         this.volumeAccessGroups = volumeAccessGroups;
     }
     /** 
      * Volume ID of the volume.
      **/
-    public Long getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Long volumeID) { 
+    public VolumeID getVolumeID() { return this.volumeID; }
+    public void setVolumeID(VolumeID volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
@@ -524,7 +524,7 @@ public class VolumeStats implements Serializable {
     }
 
     public static class Builder {
-        private Long accountID;
+        private AccountID accountID;
         private Long actualIOPS;
         private Optional<String> asyncDelay;
         private Long averageIOPSize;
@@ -542,8 +542,8 @@ public class VolumeStats implements Serializable {
         private Long totalLatencyUSec;
         private Long unalignedReads;
         private Long unalignedWrites;
-        private Long[] volumeAccessGroups;
-        private Long volumeID;
+        private VolumeAccessGroupID[] volumeAccessGroups;
+        private VolumeID volumeID;
         private Long volumeSize;
         private Double volumeUtilization;
         private Long writeBytes;
@@ -632,7 +632,7 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder accountID(final Long accountID) {
+        public VolumeStats.Builder accountID(final AccountID accountID) {
             this.accountID = accountID;
             return this;
         }
@@ -722,12 +722,12 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder volumeAccessGroups(final Long[] volumeAccessGroups) {
+        public VolumeStats.Builder volumeAccessGroups(final VolumeAccessGroupID[] volumeAccessGroups) {
             this.volumeAccessGroups = volumeAccessGroups;
             return this;
         }
 
-        public VolumeStats.Builder volumeID(final Long volumeID) {
+        public VolumeStats.Builder volumeID(final VolumeID volumeID) {
             this.volumeID = volumeID;
             return this;
         }

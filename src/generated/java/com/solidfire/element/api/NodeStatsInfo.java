@@ -40,7 +40,7 @@ public class NodeStatsInfo implements Serializable {
     @SerializedName("mBytesOut") private Long mBytesOut;
     @SerializedName("networkUtilizationCluster") private Long networkUtilizationCluster;
     @SerializedName("networkUtilizationStorage") private Long networkUtilizationStorage;
-    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("nodeID") private NodeID nodeID;
     @SerializedName("sBytesIn") private Long sBytesIn;
     @SerializedName("sBytesOut") private Long sBytesOut;
     @SerializedName("timestamp") private String timestamp;
@@ -61,7 +61,7 @@ public class NodeStatsInfo implements Serializable {
         Long mBytesOut,
         Long networkUtilizationCluster,
         Long networkUtilizationStorage,
-        Long nodeID,
+        NodeID nodeID,
         Long sBytesIn,
         Long sBytesOut,
         String timestamp,
@@ -133,8 +133,8 @@ public class NodeStatsInfo implements Serializable {
     }
     /** 
      **/
-    public Long getNodeID() { return this.nodeID; }
-    public void setNodeID(Long nodeID) { 
+    public NodeID getNodeID() { return this.nodeID; }
+    public void setNodeID(NodeID nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
@@ -252,7 +252,7 @@ public class NodeStatsInfo implements Serializable {
         private Long mBytesOut;
         private Long networkUtilizationCluster;
         private Long networkUtilizationStorage;
-        private Long nodeID;
+        private NodeID nodeID;
         private Long sBytesIn;
         private Long sBytesOut;
         private String timestamp;
@@ -328,7 +328,7 @@ public class NodeStatsInfo implements Serializable {
             return this;
         }
 
-        public NodeStatsInfo.Builder nodeID(final Long nodeID) {
+        public NodeStatsInfo.Builder nodeID(final NodeID nodeID) {
             this.nodeID = nodeID;
             return this;
         }

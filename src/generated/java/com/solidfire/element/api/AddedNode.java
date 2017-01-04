@@ -33,8 +33,8 @@ import java.util.Objects;
 public class AddedNode implements Serializable {
 
     public static final long serialVersionUID = 7770473146706377395L;
-    @SerializedName("nodeID") private Long nodeID;
-    @SerializedName("pendingNodeID") private Long pendingNodeID;
+    @SerializedName("nodeID") private NodeID nodeID;
+    @SerializedName("pendingNodeID") private NodeID pendingNodeID;
 
     // empty constructor
     @Since("7.0")
@@ -44,8 +44,8 @@ public class AddedNode implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddedNode(
-        Long nodeID,
-        Long pendingNodeID
+        NodeID nodeID,
+        NodeID pendingNodeID
     )
     {
         this.nodeID = nodeID;
@@ -54,14 +54,14 @@ public class AddedNode implements Serializable {
 
     /** 
      **/
-    public Long getNodeID() { return this.nodeID; }
-    public void setNodeID(Long nodeID) { 
+    public NodeID getNodeID() { return this.nodeID; }
+    public void setNodeID(NodeID nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
      **/
-    public Long getPendingNodeID() { return this.pendingNodeID; }
-    public void setPendingNodeID(Long pendingNodeID) { 
+    public NodeID getPendingNodeID() { return this.pendingNodeID; }
+    public void setPendingNodeID(NodeID pendingNodeID) { 
         this.pendingNodeID = pendingNodeID;
     }
 
@@ -114,8 +114,8 @@ public class AddedNode implements Serializable {
     }
 
     public static class Builder {
-        private Long nodeID;
-        private Long pendingNodeID;
+        private NodeID nodeID;
+        private NodeID pendingNodeID;
 
         private Builder() { }
 
@@ -132,12 +132,12 @@ public class AddedNode implements Serializable {
             return this;
         }
 
-        public AddedNode.Builder nodeID(final Long nodeID) {
+        public AddedNode.Builder nodeID(final NodeID nodeID) {
             this.nodeID = nodeID;
             return this;
         }
 
-        public AddedNode.Builder pendingNodeID(final Long pendingNodeID) {
+        public AddedNode.Builder pendingNodeID(final NodeID pendingNodeID) {
             this.pendingNodeID = pendingNodeID;
             return this;
         }

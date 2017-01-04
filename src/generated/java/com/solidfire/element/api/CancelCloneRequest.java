@@ -33,7 +33,7 @@ import java.util.Objects;
 public class CancelCloneRequest implements Serializable {
 
     public static final long serialVersionUID = -2076980961706824878L;
-    @SerializedName("cloneID") private Long cloneID;
+    @SerializedName("cloneID") private CloneID cloneID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class CancelCloneRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CancelCloneRequest(
-        Long cloneID
+        CloneID cloneID
     )
     {
         this.cloneID = cloneID;
@@ -51,8 +51,8 @@ public class CancelCloneRequest implements Serializable {
 
     /** 
      **/
-    public Long getCloneID() { return this.cloneID; }
-    public void setCloneID(Long cloneID) { 
+    public CloneID getCloneID() { return this.cloneID; }
+    public void setCloneID(CloneID cloneID) { 
         this.cloneID = cloneID;
     }
 
@@ -102,7 +102,7 @@ public class CancelCloneRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long cloneID;
+        private CloneID cloneID;
 
         private Builder() { }
 
@@ -117,7 +117,7 @@ public class CancelCloneRequest implements Serializable {
             return this;
         }
 
-        public CancelCloneRequest.Builder cloneID(final Long cloneID) {
+        public CancelCloneRequest.Builder cloneID(final CloneID cloneID) {
             this.cloneID = cloneID;
             return this;
         }

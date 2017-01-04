@@ -33,8 +33,8 @@ import java.util.Objects;
 public class RemoveVirtualNetworkRequest implements Serializable {
 
     public static final long serialVersionUID = -7622530625529296409L;
-    @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
-    @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
+    @SerializedName("virtualNetworkID") private Optional<VirtualNetworkID> virtualNetworkID;
+    @SerializedName("virtualNetworkTag") private Optional<VirtualNetworkTag> virtualNetworkTag;
 
     // empty constructor
     @Since("7.0")
@@ -44,27 +44,27 @@ public class RemoveVirtualNetworkRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RemoveVirtualNetworkRequest(
-        Optional<Long> virtualNetworkID,
-        Optional<Long> virtualNetworkTag
+        Optional<VirtualNetworkID> virtualNetworkID,
+        Optional<VirtualNetworkTag> virtualNetworkTag
     )
     {
-        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
-        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<VirtualNetworkID>empty() : virtualNetworkID;
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<VirtualNetworkTag>empty() : virtualNetworkTag;
     }
 
     /** 
      * Network ID that identifies the virtual network to remove.
      **/
-    public Optional<Long> getVirtualNetworkID() { return this.virtualNetworkID; }
-    public void setVirtualNetworkID(Optional<Long> virtualNetworkID) { 
-        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
+    public Optional<VirtualNetworkID> getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(Optional<VirtualNetworkID> virtualNetworkID) { 
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<VirtualNetworkID>empty() : virtualNetworkID;
     }
     /** 
      * Network Tag that identifies the virtual network to remove.
      **/
-    public Optional<Long> getVirtualNetworkTag() { return this.virtualNetworkTag; }
-    public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) { 
-        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
+    public Optional<VirtualNetworkTag> getVirtualNetworkTag() { return this.virtualNetworkTag; }
+    public void setVirtualNetworkTag(Optional<VirtualNetworkTag> virtualNetworkTag) { 
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<VirtualNetworkTag>empty() : virtualNetworkTag;
     }
 
     @Override
@@ -120,8 +120,8 @@ public class RemoveVirtualNetworkRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Long> virtualNetworkID;
-        private Optional<Long> virtualNetworkTag;
+        private Optional<VirtualNetworkID> virtualNetworkID;
+        private Optional<VirtualNetworkTag> virtualNetworkTag;
 
         private Builder() { }
 
@@ -138,13 +138,13 @@ public class RemoveVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public RemoveVirtualNetworkRequest.Builder optionalVirtualNetworkID(final Long virtualNetworkID) {
-            this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
+        public RemoveVirtualNetworkRequest.Builder optionalVirtualNetworkID(final VirtualNetworkID virtualNetworkID) {
+            this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<VirtualNetworkID>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public RemoveVirtualNetworkRequest.Builder optionalVirtualNetworkTag(final Long virtualNetworkTag) {
-            this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
+        public RemoveVirtualNetworkRequest.Builder optionalVirtualNetworkTag(final VirtualNetworkTag virtualNetworkTag) {
+            this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<VirtualNetworkTag>empty() : Optional.of(virtualNetworkTag);
             return this;
         }
 

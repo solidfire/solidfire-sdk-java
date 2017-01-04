@@ -33,8 +33,8 @@ import java.util.Objects;
 public class CopyVolumeResult implements Serializable {
 
     public static final long serialVersionUID = 837371064447947130L;
-    @SerializedName("cloneID") private Long cloneID;
-    @SerializedName("asyncHandle") private Long asyncHandle;
+    @SerializedName("cloneID") private CloneID cloneID;
+    @SerializedName("asyncHandle") private AsyncResultID asyncHandle;
 
     // empty constructor
     @Since("7.0")
@@ -44,8 +44,8 @@ public class CopyVolumeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CopyVolumeResult(
-        Long cloneID,
-        Long asyncHandle
+        CloneID cloneID,
+        AsyncResultID asyncHandle
     )
     {
         this.cloneID = cloneID;
@@ -54,15 +54,15 @@ public class CopyVolumeResult implements Serializable {
 
     /** 
      **/
-    public Long getCloneID() { return this.cloneID; }
-    public void setCloneID(Long cloneID) { 
+    public CloneID getCloneID() { return this.cloneID; }
+    public void setCloneID(CloneID cloneID) { 
         this.cloneID = cloneID;
     }
     /** 
      * Handle value used to track the progress of the volume copy.
      **/
-    public Long getAsyncHandle() { return this.asyncHandle; }
-    public void setAsyncHandle(Long asyncHandle) { 
+    public AsyncResultID getAsyncHandle() { return this.asyncHandle; }
+    public void setAsyncHandle(AsyncResultID asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
 
@@ -115,8 +115,8 @@ public class CopyVolumeResult implements Serializable {
     }
 
     public static class Builder {
-        private Long cloneID;
-        private Long asyncHandle;
+        private CloneID cloneID;
+        private AsyncResultID asyncHandle;
 
         private Builder() { }
 
@@ -133,12 +133,12 @@ public class CopyVolumeResult implements Serializable {
             return this;
         }
 
-        public CopyVolumeResult.Builder cloneID(final Long cloneID) {
+        public CopyVolumeResult.Builder cloneID(final CloneID cloneID) {
             this.cloneID = cloneID;
             return this;
         }
 
-        public CopyVolumeResult.Builder asyncHandle(final Long asyncHandle) {
+        public CopyVolumeResult.Builder asyncHandle(final AsyncResultID asyncHandle) {
             this.asyncHandle = asyncHandle;
             return this;
         }

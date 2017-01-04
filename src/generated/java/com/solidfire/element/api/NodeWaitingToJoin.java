@@ -35,8 +35,8 @@ public class NodeWaitingToJoin implements Serializable {
     public static final long serialVersionUID = 4751353832656225215L;
     @SerializedName("name") private String name;
     @SerializedName("version") private String version;
-    @SerializedName("nodeID") private Long nodeID;
-    @SerializedName("pendingNodeID") private Long pendingNodeID;
+    @SerializedName("nodeID") private NodeID nodeID;
+    @SerializedName("pendingNodeID") private PendingNodeID pendingNodeID;
     @SerializedName("mip") private String mip;
     @SerializedName("cip") private String cip;
     @SerializedName("sip") private String sip;
@@ -51,8 +51,8 @@ public class NodeWaitingToJoin implements Serializable {
     public NodeWaitingToJoin(
         String name,
         String version,
-        Long nodeID,
-        Long pendingNodeID,
+        NodeID nodeID,
+        PendingNodeID pendingNodeID,
         String mip,
         String cip,
         String sip
@@ -81,14 +81,14 @@ public class NodeWaitingToJoin implements Serializable {
     }
     /** 
      **/
-    public Long getNodeID() { return this.nodeID; }
-    public void setNodeID(Long nodeID) { 
+    public NodeID getNodeID() { return this.nodeID; }
+    public void setNodeID(NodeID nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
      **/
-    public Long getPendingNodeID() { return this.pendingNodeID; }
-    public void setPendingNodeID(Long pendingNodeID) { 
+    public PendingNodeID getPendingNodeID() { return this.pendingNodeID; }
+    public void setPendingNodeID(PendingNodeID pendingNodeID) { 
         this.pendingNodeID = pendingNodeID;
     }
     /** 
@@ -176,8 +176,8 @@ public class NodeWaitingToJoin implements Serializable {
     public static class Builder {
         private String name;
         private String version;
-        private Long nodeID;
-        private Long pendingNodeID;
+        private NodeID nodeID;
+        private PendingNodeID pendingNodeID;
         private String mip;
         private String cip;
         private String sip;
@@ -217,12 +217,12 @@ public class NodeWaitingToJoin implements Serializable {
             return this;
         }
 
-        public NodeWaitingToJoin.Builder nodeID(final Long nodeID) {
+        public NodeWaitingToJoin.Builder nodeID(final NodeID nodeID) {
             this.nodeID = nodeID;
             return this;
         }
 
-        public NodeWaitingToJoin.Builder pendingNodeID(final Long pendingNodeID) {
+        public NodeWaitingToJoin.Builder pendingNodeID(final PendingNodeID pendingNodeID) {
             this.pendingNodeID = pendingNodeID;
             return this;
         }

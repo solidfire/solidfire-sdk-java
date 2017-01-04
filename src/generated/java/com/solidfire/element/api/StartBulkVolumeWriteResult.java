@@ -33,7 +33,7 @@ import java.util.Objects;
 public class StartBulkVolumeWriteResult implements Serializable {
 
     public static final long serialVersionUID = 481442423785688758L;
-    @SerializedName("asyncHandle") private Long asyncHandle;
+    @SerializedName("asyncHandle") private AsyncResultID asyncHandle;
     @SerializedName("key") private String key;
     @SerializedName("url") private String url;
 
@@ -45,7 +45,7 @@ public class StartBulkVolumeWriteResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public StartBulkVolumeWriteResult(
-        Long asyncHandle,
+        AsyncResultID asyncHandle,
         String key,
         String url
     )
@@ -58,8 +58,8 @@ public class StartBulkVolumeWriteResult implements Serializable {
     /** 
      * ID of the async process to be checked for completion.
      **/
-    public Long getAsyncHandle() { return this.asyncHandle; }
-    public void setAsyncHandle(Long asyncHandle) { 
+    public AsyncResultID getAsyncHandle() { return this.asyncHandle; }
+    public void setAsyncHandle(AsyncResultID asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
     /** 
@@ -129,7 +129,7 @@ public class StartBulkVolumeWriteResult implements Serializable {
     }
 
     public static class Builder {
-        private Long asyncHandle;
+        private AsyncResultID asyncHandle;
         private String key;
         private String url;
 
@@ -150,7 +150,7 @@ public class StartBulkVolumeWriteResult implements Serializable {
             return this;
         }
 
-        public StartBulkVolumeWriteResult.Builder asyncHandle(final Long asyncHandle) {
+        public StartBulkVolumeWriteResult.Builder asyncHandle(final AsyncResultID asyncHandle) {
             this.asyncHandle = asyncHandle;
             return this;
         }

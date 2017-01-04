@@ -33,7 +33,7 @@ import java.util.Objects;
 public class CreateGroupSnapshotResult implements Serializable {
 
     public static final long serialVersionUID = 4310382358300997611L;
-    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
+    @SerializedName("groupSnapshotID") private GroupSnapshotID groupSnapshotID;
     @SerializedName("members") private GroupSnapshotMembers[] members;
 
     // empty constructor
@@ -44,7 +44,7 @@ public class CreateGroupSnapshotResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CreateGroupSnapshotResult(
-        Long groupSnapshotID,
+        GroupSnapshotID groupSnapshotID,
         GroupSnapshotMembers[] members
     )
     {
@@ -55,8 +55,8 @@ public class CreateGroupSnapshotResult implements Serializable {
     /** 
      * Unique ID of the new group snapshot.
      **/
-    public Long getGroupSnapshotID() { return this.groupSnapshotID; }
-    public void setGroupSnapshotID(Long groupSnapshotID) { 
+    public GroupSnapshotID getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(GroupSnapshotID groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
     /** 
@@ -116,7 +116,7 @@ public class CreateGroupSnapshotResult implements Serializable {
     }
 
     public static class Builder {
-        private Long groupSnapshotID;
+        private GroupSnapshotID groupSnapshotID;
         private GroupSnapshotMembers[] members;
 
         private Builder() { }
@@ -134,7 +134,7 @@ public class CreateGroupSnapshotResult implements Serializable {
             return this;
         }
 
-        public CreateGroupSnapshotResult.Builder groupSnapshotID(final Long groupSnapshotID) {
+        public CreateGroupSnapshotResult.Builder groupSnapshotID(final GroupSnapshotID groupSnapshotID) {
             this.groupSnapshotID = groupSnapshotID;
             return this;
         }

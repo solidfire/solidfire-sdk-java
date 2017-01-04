@@ -33,7 +33,7 @@ import java.util.Objects;
 public class RollbackToGroupSnapshotRequest implements Serializable {
 
     public static final long serialVersionUID = -4169392330167642539L;
-    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
+    @SerializedName("groupSnapshotID") private GroupSnapshotID groupSnapshotID;
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
@@ -46,7 +46,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RollbackToGroupSnapshotRequest(
-        Long groupSnapshotID,
+        GroupSnapshotID groupSnapshotID,
         Boolean saveCurrentState,
         Optional<String> name,
         Optional<java.util.Map<String, Object>> attributes
@@ -61,8 +61,8 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
     /** 
      * Unique ID of the group snapshot.
      **/
-    public Long getGroupSnapshotID() { return this.groupSnapshotID; }
-    public void setGroupSnapshotID(Long groupSnapshotID) { 
+    public GroupSnapshotID getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(GroupSnapshotID groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
     /** 
@@ -148,7 +148,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long groupSnapshotID;
+        private GroupSnapshotID groupSnapshotID;
         private Boolean saveCurrentState;
         private Optional<String> name;
         private Optional<java.util.Map<String, Object>> attributes;
@@ -172,7 +172,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public RollbackToGroupSnapshotRequest.Builder groupSnapshotID(final Long groupSnapshotID) {
+        public RollbackToGroupSnapshotRequest.Builder groupSnapshotID(final GroupSnapshotID groupSnapshotID) {
             this.groupSnapshotID = groupSnapshotID;
             return this;
         }

@@ -33,7 +33,7 @@ import java.util.Objects;
 public class RemoveDrivesRequest implements Serializable {
 
     public static final long serialVersionUID = 7717335362027122969L;
-    @SerializedName("drives") private Long[] drives;
+    @SerializedName("drives") private DriveID[] drives;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class RemoveDrivesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RemoveDrivesRequest(
-        Long[] drives
+        DriveID[] drives
     )
     {
         this.drives = drives;
@@ -52,8 +52,8 @@ public class RemoveDrivesRequest implements Serializable {
     /** 
      * List of driveIDs to remove from the cluster.
      **/
-    public Long[] getDrives() { return this.drives; }
-    public void setDrives(Long[] drives) { 
+    public DriveID[] getDrives() { return this.drives; }
+    public void setDrives(DriveID[] drives) { 
         this.drives = drives;
     }
 
@@ -103,7 +103,7 @@ public class RemoveDrivesRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long[] drives;
+        private DriveID[] drives;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class RemoveDrivesRequest implements Serializable {
             return this;
         }
 
-        public RemoveDrivesRequest.Builder drives(final Long[] drives) {
+        public RemoveDrivesRequest.Builder drives(final DriveID[] drives) {
             this.drives = drives;
             return this;
         }

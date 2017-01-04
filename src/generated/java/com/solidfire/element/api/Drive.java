@@ -33,10 +33,10 @@ import java.util.Objects;
 public class Drive implements Serializable {
 
     public static final long serialVersionUID = -8553854830183823411L;
-    @SerializedName("driveID") private Long driveID;
-    @SerializedName("nodeID") private Long nodeID;
-    @SerializedName("assignedService") private Optional<Long> assignedService;
-    @SerializedName("asyncResultIDs") private Long[] asyncResultIDs;
+    @SerializedName("driveID") private DriveID driveID;
+    @SerializedName("nodeID") private NodeID nodeID;
+    @SerializedName("assignedService") private Optional<ServiceID> assignedService;
+    @SerializedName("asyncResultIDs") private AsyncResultID[] asyncResultIDs;
     @SerializedName("capacity") private Long capacity;
     @SerializedName("serial") private String serial;
     @SerializedName("slot") private Optional<Long> slot;
@@ -54,10 +54,10 @@ public class Drive implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public Drive(
-        Long driveID,
-        Long nodeID,
-        Optional<Long> assignedService,
-        Long[] asyncResultIDs,
+        DriveID driveID,
+        NodeID nodeID,
+        Optional<ServiceID> assignedService,
+        AsyncResultID[] asyncResultIDs,
         Long capacity,
         String serial,
         Optional<Long> slot,
@@ -70,7 +70,7 @@ public class Drive implements Serializable {
     {
         this.driveID = driveID;
         this.nodeID = nodeID;
-        this.assignedService = (assignedService == null) ? Optional.<Long>empty() : assignedService;
+        this.assignedService = (assignedService == null) ? Optional.<ServiceID>empty() : assignedService;
         this.asyncResultIDs = asyncResultIDs;
         this.capacity = capacity;
         this.serial = serial;
@@ -85,30 +85,30 @@ public class Drive implements Serializable {
     /** 
      * A unique identifier for this drive.
      **/
-    public Long getDriveID() { return this.driveID; }
-    public void setDriveID(Long driveID) { 
+    public DriveID getDriveID() { return this.driveID; }
+    public void setDriveID(DriveID driveID) { 
         this.driveID = driveID;
     }
     /** 
      * The node this drive is located.
      * If the drive has been physically removed from the node, this is where it was last seen.
      **/
-    public Long getNodeID() { return this.nodeID; }
-    public void setNodeID(Long nodeID) { 
+    public NodeID getNodeID() { return this.nodeID; }
+    public void setNodeID(NodeID nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
      * If this drive is hosting a service, the identifier for that service.
      **/
-    public Optional<Long> getAssignedService() { return this.assignedService; }
-    public void setAssignedService(Optional<Long> assignedService) { 
-        this.assignedService = (assignedService == null) ? Optional.<Long>empty() : assignedService;
+    public Optional<ServiceID> getAssignedService() { return this.assignedService; }
+    public void setAssignedService(Optional<ServiceID> assignedService) { 
+        this.assignedService = (assignedService == null) ? Optional.<ServiceID>empty() : assignedService;
     }
     /** 
      * The list of asynchronous jobs currently running on the drive (for example: a secure erase job).
      **/
-    public Long[] getAsyncResultIDs() { return this.asyncResultIDs; }
-    public void setAsyncResultIDs(Long[] asyncResultIDs) { 
+    public AsyncResultID[] getAsyncResultIDs() { return this.asyncResultIDs; }
+    public void setAsyncResultIDs(AsyncResultID[] asyncResultIDs) { 
         this.asyncResultIDs = asyncResultIDs;
     }
     /** 
@@ -254,10 +254,10 @@ public class Drive implements Serializable {
     }
 
     public static class Builder {
-        private Long driveID;
-        private Long nodeID;
-        private Optional<Long> assignedService;
-        private Long[] asyncResultIDs;
+        private DriveID driveID;
+        private NodeID nodeID;
+        private Optional<ServiceID> assignedService;
+        private AsyncResultID[] asyncResultIDs;
         private Long capacity;
         private String serial;
         private Optional<Long> slot;
@@ -302,22 +302,22 @@ public class Drive implements Serializable {
             return this;
         }
 
-        public Drive.Builder driveID(final Long driveID) {
+        public Drive.Builder driveID(final DriveID driveID) {
             this.driveID = driveID;
             return this;
         }
 
-        public Drive.Builder nodeID(final Long nodeID) {
+        public Drive.Builder nodeID(final NodeID nodeID) {
             this.nodeID = nodeID;
             return this;
         }
 
-        public Drive.Builder optionalAssignedService(final Long assignedService) {
-            this.assignedService = (assignedService == null) ? Optional.<Long>empty() : Optional.of(assignedService);
+        public Drive.Builder optionalAssignedService(final ServiceID assignedService) {
+            this.assignedService = (assignedService == null) ? Optional.<ServiceID>empty() : Optional.of(assignedService);
             return this;
         }
 
-        public Drive.Builder asyncResultIDs(final Long[] asyncResultIDs) {
+        public Drive.Builder asyncResultIDs(final AsyncResultID[] asyncResultIDs) {
             this.asyncResultIDs = asyncResultIDs;
             return this;
         }

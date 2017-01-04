@@ -33,8 +33,8 @@ import java.util.Objects;
 public class ListVolumesForAccountRequest implements Serializable {
 
     public static final long serialVersionUID = 245848432924198062L;
-    @SerializedName("accountID") private Long accountID;
-    @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
+    @SerializedName("accountID") private AccountID accountID;
+    @SerializedName("startVolumeID") private Optional<VolumeID> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
 
     // empty constructor
@@ -45,21 +45,21 @@ public class ListVolumesForAccountRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListVolumesForAccountRequest(
-        Long accountID,
-        Optional<Long> startVolumeID,
+        AccountID accountID,
+        Optional<VolumeID> startVolumeID,
         Optional<Long> limit
     )
     {
         this.accountID = accountID;
-        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
+        this.startVolumeID = (startVolumeID == null) ? Optional.<VolumeID>empty() : startVolumeID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
     /** 
      * The ID of the account to list the volumes for.
      **/
-    public Long getAccountID() { return this.accountID; }
-    public void setAccountID(Long accountID) { 
+    public AccountID getAccountID() { return this.accountID; }
+    public void setAccountID(AccountID accountID) { 
         this.accountID = accountID;
     }
     /** 
@@ -67,9 +67,9 @@ public class ListVolumesForAccountRequest implements Serializable {
      * This can be useful for paging results.
      * By default, this starts at the lowest VolumeID.
      **/
-    public Optional<Long> getStartVolumeID() { return this.startVolumeID; }
-    public void setStartVolumeID(Optional<Long> startVolumeID) { 
-        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
+    public Optional<VolumeID> getStartVolumeID() { return this.startVolumeID; }
+    public void setStartVolumeID(Optional<VolumeID> startVolumeID) { 
+        this.startVolumeID = (startVolumeID == null) ? Optional.<VolumeID>empty() : startVolumeID;
     }
     /** 
      * The maximum number of volumes to return from the API.
@@ -135,8 +135,8 @@ public class ListVolumesForAccountRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long accountID;
-        private Optional<Long> startVolumeID;
+        private AccountID accountID;
+        private Optional<VolumeID> startVolumeID;
         private Optional<Long> limit;
 
         private Builder() { }
@@ -156,13 +156,13 @@ public class ListVolumesForAccountRequest implements Serializable {
             return this;
         }
 
-        public ListVolumesForAccountRequest.Builder accountID(final Long accountID) {
+        public ListVolumesForAccountRequest.Builder accountID(final AccountID accountID) {
             this.accountID = accountID;
             return this;
         }
 
-        public ListVolumesForAccountRequest.Builder optionalStartVolumeID(final Long startVolumeID) {
-            this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : Optional.of(startVolumeID);
+        public ListVolumesForAccountRequest.Builder optionalStartVolumeID(final VolumeID startVolumeID) {
+            this.startVolumeID = (startVolumeID == null) ? Optional.<VolumeID>empty() : Optional.of(startVolumeID);
             return this;
         }
 

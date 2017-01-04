@@ -39,8 +39,8 @@ public class ClusterConfig implements Serializable {
     @SerializedName("ensemble") private Optional<String[]> ensemble;
     @SerializedName("mipi") private Optional<String> mipi;
     @SerializedName("name") private Optional<String> name;
-    @SerializedName("nodeID") private Optional<Long> nodeID;
-    @SerializedName("pendingNodeID") private Optional<Long> pendingNodeID;
+    @SerializedName("nodeID") private Optional<NodeID> nodeID;
+    @SerializedName("pendingNodeID") private Optional<PendingNodeID> pendingNodeID;
     @SerializedName("role") private Optional<String> role;
     @SerializedName("sipi") private Optional<String> sipi;
     @SerializedName("state") private Optional<String> state;
@@ -58,8 +58,8 @@ public class ClusterConfig implements Serializable {
         Optional<String[]> ensemble,
         Optional<String> mipi,
         Optional<String> name,
-        Optional<Long> nodeID,
-        Optional<Long> pendingNodeID,
+        Optional<NodeID> nodeID,
+        Optional<PendingNodeID> pendingNodeID,
         Optional<String> role,
         Optional<String> sipi,
         Optional<String> state
@@ -70,8 +70,8 @@ public class ClusterConfig implements Serializable {
         this.ensemble = (ensemble == null) ? Optional.<String[]>empty() : ensemble;
         this.mipi = (mipi == null) ? Optional.<String>empty() : mipi;
         this.name = (name == null) ? Optional.<String>empty() : name;
-        this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
-        this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : pendingNodeID;
+        this.nodeID = (nodeID == null) ? Optional.<NodeID>empty() : nodeID;
+        this.pendingNodeID = (pendingNodeID == null) ? Optional.<PendingNodeID>empty() : pendingNodeID;
         this.role = (role == null) ? Optional.<String>empty() : role;
         this.sipi = (sipi == null) ? Optional.<String>empty() : sipi;
         this.state = (state == null) ? Optional.<String>empty() : state;
@@ -114,15 +114,15 @@ public class ClusterConfig implements Serializable {
     }
     /** 
      **/
-    public Optional<Long> getNodeID() { return this.nodeID; }
-    public void setNodeID(Optional<Long> nodeID) { 
-        this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
+    public Optional<NodeID> getNodeID() { return this.nodeID; }
+    public void setNodeID(Optional<NodeID> nodeID) { 
+        this.nodeID = (nodeID == null) ? Optional.<NodeID>empty() : nodeID;
     }
     /** 
      **/
-    public Optional<Long> getPendingNodeID() { return this.pendingNodeID; }
-    public void setPendingNodeID(Optional<Long> pendingNodeID) { 
-        this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : pendingNodeID;
+    public Optional<PendingNodeID> getPendingNodeID() { return this.pendingNodeID; }
+    public void setPendingNodeID(Optional<PendingNodeID> pendingNodeID) { 
+        this.pendingNodeID = (pendingNodeID == null) ? Optional.<PendingNodeID>empty() : pendingNodeID;
     }
     /** 
      * Identifies the role of the node
@@ -243,8 +243,8 @@ public class ClusterConfig implements Serializable {
         private Optional<String[]> ensemble;
         private Optional<String> mipi;
         private Optional<String> name;
-        private Optional<Long> nodeID;
-        private Optional<Long> pendingNodeID;
+        private Optional<NodeID> nodeID;
+        private Optional<PendingNodeID> pendingNodeID;
         private Optional<String> role;
         private Optional<String> sipi;
         private Optional<String> state;
@@ -305,13 +305,13 @@ public class ClusterConfig implements Serializable {
             return this;
         }
 
-        public ClusterConfig.Builder optionalNodeID(final Long nodeID) {
-            this.nodeID = (nodeID == null) ? Optional.<Long>empty() : Optional.of(nodeID);
+        public ClusterConfig.Builder optionalNodeID(final NodeID nodeID) {
+            this.nodeID = (nodeID == null) ? Optional.<NodeID>empty() : Optional.of(nodeID);
             return this;
         }
 
-        public ClusterConfig.Builder optionalPendingNodeID(final Long pendingNodeID) {
-            this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : Optional.of(pendingNodeID);
+        public ClusterConfig.Builder optionalPendingNodeID(final PendingNodeID pendingNodeID) {
+            this.pendingNodeID = (pendingNodeID == null) ? Optional.<PendingNodeID>empty() : Optional.of(pendingNodeID);
             return this;
         }
 

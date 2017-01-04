@@ -34,8 +34,8 @@ import java.util.Objects;
 public class GroupSnapshotMembers implements Serializable {
 
     public static final long serialVersionUID = 4785362642461122102L;
-    @SerializedName("volumeID") private Long volumeID;
-    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("snapshotID") private SnapshotID snapshotID;
     @SerializedName("snapshotUUID") private String snapshotUUID;
     @SerializedName("checksum") private String checksum;
 
@@ -47,8 +47,8 @@ public class GroupSnapshotMembers implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GroupSnapshotMembers(
-        Long volumeID,
-        Long snapshotID,
+        VolumeID volumeID,
+        SnapshotID snapshotID,
         String checksum
     )
     {
@@ -59,8 +59,8 @@ public class GroupSnapshotMembers implements Serializable {
     // parameterized constructor
     @Since("8.0")
     public GroupSnapshotMembers(
-        Long volumeID,
-        Long snapshotID,
+        VolumeID volumeID,
+        SnapshotID snapshotID,
         String snapshotUUID,
         String checksum
     )
@@ -74,16 +74,16 @@ public class GroupSnapshotMembers implements Serializable {
     /** 
      * The source volume ID for the snapshot.
      **/
-    public Long getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Long volumeID) { 
+    public VolumeID getVolumeID() { return this.volumeID; }
+    public void setVolumeID(VolumeID volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
      * Unique ID of a snapshot from which the new snapshot is made.
      * The snapshotID passed must be a snapshot on the given volume.
      **/
-    public Long getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(Long snapshotID) { 
+    public SnapshotID getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(SnapshotID snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
@@ -157,8 +157,8 @@ public class GroupSnapshotMembers implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeID;
-        private Long snapshotID;
+        private VolumeID volumeID;
+        private SnapshotID snapshotID;
         private String snapshotUUID;
         private String checksum;
 
@@ -181,12 +181,12 @@ public class GroupSnapshotMembers implements Serializable {
             return this;
         }
 
-        public GroupSnapshotMembers.Builder volumeID(final Long volumeID) {
+        public GroupSnapshotMembers.Builder volumeID(final VolumeID volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public GroupSnapshotMembers.Builder snapshotID(final Long snapshotID) {
+        public GroupSnapshotMembers.Builder snapshotID(final SnapshotID snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }

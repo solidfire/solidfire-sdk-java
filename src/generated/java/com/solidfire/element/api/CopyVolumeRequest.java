@@ -33,9 +33,9 @@ import java.util.Objects;
 public class CopyVolumeRequest implements Serializable {
 
     public static final long serialVersionUID = -6809771567710525111L;
-    @SerializedName("volumeID") private Long volumeID;
-    @SerializedName("dstVolumeID") private Long dstVolumeID;
-    @SerializedName("snapshotID") private Optional<Long> snapshotID;
+    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("dstVolumeID") private VolumeID dstVolumeID;
+    @SerializedName("snapshotID") private Optional<SnapshotID> snapshotID;
 
     // empty constructor
     @Since("7.0")
@@ -45,36 +45,36 @@ public class CopyVolumeRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CopyVolumeRequest(
-        Long volumeID,
-        Long dstVolumeID,
-        Optional<Long> snapshotID
+        VolumeID volumeID,
+        VolumeID dstVolumeID,
+        Optional<SnapshotID> snapshotID
     )
     {
         this.volumeID = volumeID;
         this.dstVolumeID = dstVolumeID;
-        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
+        this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : snapshotID;
     }
 
     /** 
      * Source volume to copy.
      **/
-    public Long getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Long volumeID) { 
+    public VolumeID getVolumeID() { return this.volumeID; }
+    public void setVolumeID(VolumeID volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
      * Destination volume for the copy.
      **/
-    public Long getDstVolumeID() { return this.dstVolumeID; }
-    public void setDstVolumeID(Long dstVolumeID) { 
+    public VolumeID getDstVolumeID() { return this.dstVolumeID; }
+    public void setDstVolumeID(VolumeID dstVolumeID) { 
         this.dstVolumeID = dstVolumeID;
     }
     /** 
      * Snapshot ID of the source volume to create the copy from.
      **/
-    public Optional<Long> getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(Optional<Long> snapshotID) { 
-        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
+    public Optional<SnapshotID> getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Optional<SnapshotID> snapshotID) { 
+        this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : snapshotID;
     }
 
     @Override
@@ -131,9 +131,9 @@ public class CopyVolumeRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeID;
-        private Long dstVolumeID;
-        private Optional<Long> snapshotID;
+        private VolumeID volumeID;
+        private VolumeID dstVolumeID;
+        private Optional<SnapshotID> snapshotID;
 
         private Builder() { }
 
@@ -152,18 +152,18 @@ public class CopyVolumeRequest implements Serializable {
             return this;
         }
 
-        public CopyVolumeRequest.Builder volumeID(final Long volumeID) {
+        public CopyVolumeRequest.Builder volumeID(final VolumeID volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public CopyVolumeRequest.Builder dstVolumeID(final Long dstVolumeID) {
+        public CopyVolumeRequest.Builder dstVolumeID(final VolumeID dstVolumeID) {
             this.dstVolumeID = dstVolumeID;
             return this;
         }
 
-        public CopyVolumeRequest.Builder optionalSnapshotID(final Long snapshotID) {
-            this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
+        public CopyVolumeRequest.Builder optionalSnapshotID(final SnapshotID snapshotID) {
+            this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : Optional.of(snapshotID);
             return this;
         }
 

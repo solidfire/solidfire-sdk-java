@@ -33,7 +33,7 @@ import java.util.Objects;
 public class CreateVolumeAccessGroupResult implements Serializable {
 
     public static final long serialVersionUID = -3703710454092842045L;
-    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private VolumeAccessGroupID volumeAccessGroupID;
     @SerializedName("volumeAccessGroup") private VolumeAccessGroup volumeAccessGroup;
 
     // empty constructor
@@ -44,7 +44,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CreateVolumeAccessGroupResult(
-        Long volumeAccessGroupID,
+        VolumeAccessGroupID volumeAccessGroupID,
         VolumeAccessGroup volumeAccessGroup
     )
     {
@@ -55,8 +55,8 @@ public class CreateVolumeAccessGroupResult implements Serializable {
     /** 
      * The ID for the newly-created volume access group.
      **/
-    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
-    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+    public VolumeAccessGroupID getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(VolumeAccessGroupID volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
@@ -115,7 +115,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeAccessGroupID;
+        private VolumeAccessGroupID volumeAccessGroupID;
         private VolumeAccessGroup volumeAccessGroup;
 
         private Builder() { }
@@ -133,7 +133,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
             return this;
         }
 
-        public CreateVolumeAccessGroupResult.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
+        public CreateVolumeAccessGroupResult.Builder volumeAccessGroupID(final VolumeAccessGroupID volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }

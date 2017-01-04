@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetNodeStatsRequest implements Serializable {
 
     public static final long serialVersionUID = -8944306068794105553L;
-    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("nodeID") private NodeID nodeID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class GetNodeStatsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetNodeStatsRequest(
-        Long nodeID
+        NodeID nodeID
     )
     {
         this.nodeID = nodeID;
@@ -52,8 +52,8 @@ public class GetNodeStatsRequest implements Serializable {
     /** 
      * Specifies the node for which statistics are gathered.
      **/
-    public Long getNodeID() { return this.nodeID; }
-    public void setNodeID(Long nodeID) { 
+    public NodeID getNodeID() { return this.nodeID; }
+    public void setNodeID(NodeID nodeID) { 
         this.nodeID = nodeID;
     }
 
@@ -103,7 +103,7 @@ public class GetNodeStatsRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long nodeID;
+        private NodeID nodeID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class GetNodeStatsRequest implements Serializable {
             return this;
         }
 
-        public GetNodeStatsRequest.Builder nodeID(final Long nodeID) {
+        public GetNodeStatsRequest.Builder nodeID(final NodeID nodeID) {
             this.nodeID = nodeID;
             return this;
         }

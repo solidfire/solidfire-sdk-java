@@ -34,8 +34,8 @@ public class ListEventsRequest implements Serializable {
 
     public static final long serialVersionUID = -6442141863228186837L;
     @SerializedName("maxEvents") private Optional<Long> maxEvents;
-    @SerializedName("startEventID") private Optional<Long> startEventID;
-    @SerializedName("endEventID") private Optional<Long> endEventID;
+    @SerializedName("startEventID") private Optional<EventID> startEventID;
+    @SerializedName("endEventID") private Optional<EventID> endEventID;
     @SerializedName("eventQueueType") private Optional<String> eventQueueType;
 
     // empty constructor
@@ -47,26 +47,26 @@ public class ListEventsRequest implements Serializable {
     @Since("7.0")
     public ListEventsRequest(
         Optional<Long> maxEvents,
-        Optional<Long> startEventID,
-        Optional<Long> endEventID
+        Optional<EventID> startEventID,
+        Optional<EventID> endEventID
     )
     {
         this.maxEvents = (maxEvents == null) ? Optional.<Long>empty() : maxEvents;
-        this.startEventID = (startEventID == null) ? Optional.<Long>empty() : startEventID;
-        this.endEventID = (endEventID == null) ? Optional.<Long>empty() : endEventID;
+        this.startEventID = (startEventID == null) ? Optional.<EventID>empty() : startEventID;
+        this.endEventID = (endEventID == null) ? Optional.<EventID>empty() : endEventID;
     }
     // parameterized constructor
     @Since("9.0")
     public ListEventsRequest(
         Optional<Long> maxEvents,
-        Optional<Long> startEventID,
-        Optional<Long> endEventID,
+        Optional<EventID> startEventID,
+        Optional<EventID> endEventID,
         Optional<String> eventQueueType
     )
     {
         this.maxEvents = (maxEvents == null) ? Optional.<Long>empty() : maxEvents;
-        this.startEventID = (startEventID == null) ? Optional.<Long>empty() : startEventID;
-        this.endEventID = (endEventID == null) ? Optional.<Long>empty() : endEventID;
+        this.startEventID = (startEventID == null) ? Optional.<EventID>empty() : startEventID;
+        this.endEventID = (endEventID == null) ? Optional.<EventID>empty() : endEventID;
         this.eventQueueType = (eventQueueType == null) ? Optional.<String>empty() : eventQueueType;
     }
 
@@ -80,16 +80,16 @@ public class ListEventsRequest implements Serializable {
     /** 
      * Identifies the beginning of a range of events to return.
      **/
-    public Optional<Long> getStartEventID() { return this.startEventID; }
-    public void setStartEventID(Optional<Long> startEventID) { 
-        this.startEventID = (startEventID == null) ? Optional.<Long>empty() : startEventID;
+    public Optional<EventID> getStartEventID() { return this.startEventID; }
+    public void setStartEventID(Optional<EventID> startEventID) { 
+        this.startEventID = (startEventID == null) ? Optional.<EventID>empty() : startEventID;
     }
     /** 
      * Identifies the end of a range of events to return.
      **/
-    public Optional<Long> getEndEventID() { return this.endEventID; }
-    public void setEndEventID(Optional<Long> endEventID) { 
-        this.endEventID = (endEventID == null) ? Optional.<Long>empty() : endEventID;
+    public Optional<EventID> getEndEventID() { return this.endEventID; }
+    public void setEndEventID(Optional<EventID> endEventID) { 
+        this.endEventID = (endEventID == null) ? Optional.<EventID>empty() : endEventID;
     }
     /** 
      **/
@@ -162,8 +162,8 @@ public class ListEventsRequest implements Serializable {
 
     public static class Builder {
         private Optional<Long> maxEvents;
-        private Optional<Long> startEventID;
-        private Optional<Long> endEventID;
+        private Optional<EventID> startEventID;
+        private Optional<EventID> endEventID;
         private Optional<String> eventQueueType;
 
         private Builder() { }
@@ -190,13 +190,13 @@ public class ListEventsRequest implements Serializable {
             return this;
         }
 
-        public ListEventsRequest.Builder optionalStartEventID(final Long startEventID) {
-            this.startEventID = (startEventID == null) ? Optional.<Long>empty() : Optional.of(startEventID);
+        public ListEventsRequest.Builder optionalStartEventID(final EventID startEventID) {
+            this.startEventID = (startEventID == null) ? Optional.<EventID>empty() : Optional.of(startEventID);
             return this;
         }
 
-        public ListEventsRequest.Builder optionalEndEventID(final Long endEventID) {
-            this.endEventID = (endEventID == null) ? Optional.<Long>empty() : Optional.of(endEventID);
+        public ListEventsRequest.Builder optionalEndEventID(final EventID endEventID) {
+            this.endEventID = (endEventID == null) ? Optional.<EventID>empty() : Optional.of(endEventID);
             return this;
         }
 

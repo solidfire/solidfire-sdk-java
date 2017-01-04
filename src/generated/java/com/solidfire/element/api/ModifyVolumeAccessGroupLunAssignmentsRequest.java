@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializable {
 
     public static final long serialVersionUID = -2854592840284265047L;
-    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private VolumeAccessGroupID volumeAccessGroupID;
     @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
 
     // empty constructor
@@ -44,7 +44,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
     // parameterized constructor
     @Since("7.0")
     public ModifyVolumeAccessGroupLunAssignmentsRequest(
-        Long volumeAccessGroupID,
+        VolumeAccessGroupID volumeAccessGroupID,
         LunAssignment[] lunAssignments
     )
     {
@@ -55,8 +55,8 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
     /** 
      * Unique volume access group ID for which the LUN assignments will be modified.
      **/
-    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
-    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+    public VolumeAccessGroupID getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(VolumeAccessGroupID volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
@@ -116,7 +116,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
     }
 
     public static class Builder {
-        private Long volumeAccessGroupID;
+        private VolumeAccessGroupID volumeAccessGroupID;
         private LunAssignment[] lunAssignments;
 
         private Builder() { }
@@ -134,7 +134,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
             return this;
         }
 
-        public ModifyVolumeAccessGroupLunAssignmentsRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
+        public ModifyVolumeAccessGroupLunAssignmentsRequest.Builder volumeAccessGroupID(final VolumeAccessGroupID volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }

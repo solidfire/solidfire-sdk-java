@@ -34,7 +34,7 @@ import java.util.Objects;
 public class ClusterVersionInfo implements Serializable {
 
     public static final long serialVersionUID = -4232836006568542040L;
-    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("nodeID") private NodeID nodeID;
     @SerializedName("nodeVersion") private String nodeVersion;
     @SerializedName("nodeInternalRevision") private String nodeInternalRevision;
 
@@ -46,7 +46,7 @@ public class ClusterVersionInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ClusterVersionInfo(
-        Long nodeID,
+        NodeID nodeID,
         String nodeVersion,
         String nodeInternalRevision
     )
@@ -58,8 +58,8 @@ public class ClusterVersionInfo implements Serializable {
 
     /** 
      **/
-    public Long getNodeID() { return this.nodeID; }
-    public void setNodeID(Long nodeID) { 
+    public NodeID getNodeID() { return this.nodeID; }
+    public void setNodeID(NodeID nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
@@ -127,7 +127,7 @@ public class ClusterVersionInfo implements Serializable {
     }
 
     public static class Builder {
-        private Long nodeID;
+        private NodeID nodeID;
         private String nodeVersion;
         private String nodeInternalRevision;
 
@@ -148,7 +148,7 @@ public class ClusterVersionInfo implements Serializable {
             return this;
         }
 
-        public ClusterVersionInfo.Builder nodeID(final Long nodeID) {
+        public ClusterVersionInfo.Builder nodeID(final NodeID nodeID) {
             this.nodeID = nodeID;
             return this;
         }

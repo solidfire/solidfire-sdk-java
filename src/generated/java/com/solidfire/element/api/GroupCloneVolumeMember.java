@@ -34,8 +34,8 @@ import java.util.Objects;
 public class GroupCloneVolumeMember implements Serializable {
 
     public static final long serialVersionUID = 5585070868284571306L;
-    @SerializedName("volumeID") private Long volumeID;
-    @SerializedName("srcVolumeID") private Long srcVolumeID;
+    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("srcVolumeID") private VolumeID srcVolumeID;
 
     // empty constructor
     @Since("7.0")
@@ -45,8 +45,8 @@ public class GroupCloneVolumeMember implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GroupCloneVolumeMember(
-        Long volumeID,
-        Long srcVolumeID
+        VolumeID volumeID,
+        VolumeID srcVolumeID
     )
     {
         this.volumeID = volumeID;
@@ -56,15 +56,15 @@ public class GroupCloneVolumeMember implements Serializable {
     /** 
      * The VolumeID of the cloned volume.
      **/
-    public Long getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Long volumeID) { 
+    public VolumeID getVolumeID() { return this.volumeID; }
+    public void setVolumeID(VolumeID volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
      * The VolumeID of the source volume.
      **/
-    public Long getSrcVolumeID() { return this.srcVolumeID; }
-    public void setSrcVolumeID(Long srcVolumeID) { 
+    public VolumeID getSrcVolumeID() { return this.srcVolumeID; }
+    public void setSrcVolumeID(VolumeID srcVolumeID) { 
         this.srcVolumeID = srcVolumeID;
     }
 
@@ -117,8 +117,8 @@ public class GroupCloneVolumeMember implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeID;
-        private Long srcVolumeID;
+        private VolumeID volumeID;
+        private VolumeID srcVolumeID;
 
         private Builder() { }
 
@@ -135,12 +135,12 @@ public class GroupCloneVolumeMember implements Serializable {
             return this;
         }
 
-        public GroupCloneVolumeMember.Builder volumeID(final Long volumeID) {
+        public GroupCloneVolumeMember.Builder volumeID(final VolumeID volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public GroupCloneVolumeMember.Builder srcVolumeID(final Long srcVolumeID) {
+        public GroupCloneVolumeMember.Builder srcVolumeID(final VolumeID srcVolumeID) {
             this.srcVolumeID = srcVolumeID;
             return this;
         }

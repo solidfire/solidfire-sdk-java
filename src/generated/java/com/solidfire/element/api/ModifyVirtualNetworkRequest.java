@@ -33,8 +33,8 @@ import java.util.Objects;
 public class ModifyVirtualNetworkRequest implements Serializable {
 
     public static final long serialVersionUID = -8401847868102898491L;
-    @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
-    @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
+    @SerializedName("virtualNetworkID") private Optional<VirtualNetworkID> virtualNetworkID;
+    @SerializedName("virtualNetworkTag") private Optional<VirtualNetworkTag> virtualNetworkTag;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("addressBlocks") private Optional<AddressBlock[]> addressBlocks;
     @SerializedName("netmask") private Optional<String> netmask;
@@ -51,8 +51,8 @@ public class ModifyVirtualNetworkRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyVirtualNetworkRequest(
-        Optional<Long> virtualNetworkID,
-        Optional<Long> virtualNetworkTag,
+        Optional<VirtualNetworkID> virtualNetworkID,
+        Optional<VirtualNetworkTag> virtualNetworkTag,
         Optional<String> name,
         Optional<AddressBlock[]> addressBlocks,
         Optional<String> netmask,
@@ -60,8 +60,8 @@ public class ModifyVirtualNetworkRequest implements Serializable {
         Optional<java.util.Map<String, Object>> attributes
     )
     {
-        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
-        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<VirtualNetworkID>empty() : virtualNetworkID;
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<VirtualNetworkTag>empty() : virtualNetworkTag;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : addressBlocks;
         this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
@@ -71,8 +71,8 @@ public class ModifyVirtualNetworkRequest implements Serializable {
     // parameterized constructor
     @Since("9.0")
     public ModifyVirtualNetworkRequest(
-        Optional<Long> virtualNetworkID,
-        Optional<Long> virtualNetworkTag,
+        Optional<VirtualNetworkID> virtualNetworkID,
+        Optional<VirtualNetworkTag> virtualNetworkTag,
         Optional<String> name,
         Optional<AddressBlock[]> addressBlocks,
         Optional<String> netmask,
@@ -82,8 +82,8 @@ public class ModifyVirtualNetworkRequest implements Serializable {
         Optional<java.util.Map<String, Object>> attributes
     )
     {
-        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
-        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<VirtualNetworkID>empty() : virtualNetworkID;
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<VirtualNetworkTag>empty() : virtualNetworkTag;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : addressBlocks;
         this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
@@ -96,16 +96,16 @@ public class ModifyVirtualNetworkRequest implements Serializable {
     /** 
      * Unique identifier of the virtual network to modify. This is the virtual network ID assigned by the SolidFire cluster.
      **/
-    public Optional<Long> getVirtualNetworkID() { return this.virtualNetworkID; }
-    public void setVirtualNetworkID(Optional<Long> virtualNetworkID) { 
-        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
+    public Optional<VirtualNetworkID> getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(Optional<VirtualNetworkID> virtualNetworkID) { 
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<VirtualNetworkID>empty() : virtualNetworkID;
     }
     /** 
      * Network Tag that identifies the virtual network to modify.
      **/
-    public Optional<Long> getVirtualNetworkTag() { return this.virtualNetworkTag; }
-    public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) { 
-        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
+    public Optional<VirtualNetworkTag> getVirtualNetworkTag() { return this.virtualNetworkTag; }
+    public void setVirtualNetworkTag(Optional<VirtualNetworkTag> virtualNetworkTag) { 
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<VirtualNetworkTag>empty() : virtualNetworkTag;
     }
     /** 
      * New name for the virtual network.
@@ -248,8 +248,8 @@ public class ModifyVirtualNetworkRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Long> virtualNetworkID;
-        private Optional<Long> virtualNetworkTag;
+        private Optional<VirtualNetworkID> virtualNetworkID;
+        private Optional<VirtualNetworkTag> virtualNetworkTag;
         private Optional<String> name;
         private Optional<AddressBlock[]> addressBlocks;
         private Optional<String> netmask;
@@ -287,13 +287,13 @@ public class ModifyVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optionalVirtualNetworkID(final Long virtualNetworkID) {
-            this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
+        public ModifyVirtualNetworkRequest.Builder optionalVirtualNetworkID(final VirtualNetworkID virtualNetworkID) {
+            this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<VirtualNetworkID>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optionalVirtualNetworkTag(final Long virtualNetworkTag) {
-            this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
+        public ModifyVirtualNetworkRequest.Builder optionalVirtualNetworkTag(final VirtualNetworkTag virtualNetworkTag) {
+            this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<VirtualNetworkTag>empty() : Optional.of(virtualNetworkTag);
             return this;
         }
 

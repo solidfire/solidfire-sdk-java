@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
 
     public static final long serialVersionUID = -2608069424773464920L;
-    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private VolumeAccessGroupID volumeAccessGroupID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetVolumeAccessGroupEfficiencyRequest(
-        Long volumeAccessGroupID
+        VolumeAccessGroupID volumeAccessGroupID
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
@@ -52,8 +52,8 @@ public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
     /** 
      * Specifies the volume access group for which capacity is computed.
      **/
-    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
-    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+    public VolumeAccessGroupID getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(VolumeAccessGroupID volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
 
@@ -103,7 +103,7 @@ public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeAccessGroupID;
+        private VolumeAccessGroupID volumeAccessGroupID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
             return this;
         }
 
-        public GetVolumeAccessGroupEfficiencyRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
+        public GetVolumeAccessGroupEfficiencyRequest.Builder volumeAccessGroupID(final VolumeAccessGroupID volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }

@@ -33,21 +33,21 @@ import java.util.Objects;
 public class ISCSISession implements Serializable {
 
     public static final long serialVersionUID = -1637168637781139879L;
-    @SerializedName("accountID") private Long accountID;
+    @SerializedName("accountID") private AccountID accountID;
     @SerializedName("initiator") private Initiator initiator;
     @SerializedName("accountName") private String accountName;
-    @SerializedName("driveID") private Long driveID;
+    @SerializedName("driveID") private DriveID driveID;
     @SerializedName("initiatorIP") private String initiatorIP;
     @SerializedName("initiatorPortName") private String initiatorPortName;
     @SerializedName("targetPortName") private String targetPortName;
-    @SerializedName("initiatorName") private String initiatorName;
-    @SerializedName("nodeID") private Long nodeID;
-    @SerializedName("serviceID") private Long serviceID;
-    @SerializedName("sessionID") private Long sessionID;
-    @SerializedName("targetName") private String targetName;
+    @SerializedName("initiatorName") private Iqn initiatorName;
+    @SerializedName("nodeID") private NodeID nodeID;
+    @SerializedName("serviceID") private ServiceID serviceID;
+    @SerializedName("sessionID") private SessionID sessionID;
+    @SerializedName("targetName") private Iqn targetName;
     @SerializedName("targetIP") private String targetIP;
     @SerializedName("virtualNetworkID") private Long virtualNetworkID;
-    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("volumeID") private VolumeID volumeID;
     @SerializedName("createTime") private String createTime;
     @SerializedName("volumeInstance") private Long volumeInstance;
     @SerializedName("initiatorSessionID") private Long initiatorSessionID;
@@ -60,21 +60,21 @@ public class ISCSISession implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ISCSISession(
-        Long accountID,
+        AccountID accountID,
         Initiator initiator,
         String accountName,
-        Long driveID,
+        DriveID driveID,
         String initiatorIP,
         String initiatorPortName,
         String targetPortName,
-        String initiatorName,
-        Long nodeID,
-        Long serviceID,
-        Long sessionID,
-        String targetName,
+        Iqn initiatorName,
+        NodeID nodeID,
+        ServiceID serviceID,
+        SessionID sessionID,
+        Iqn targetName,
         String targetIP,
         Long virtualNetworkID,
-        Long volumeID,
+        VolumeID volumeID,
         String createTime,
         Long volumeInstance,
         Long initiatorSessionID
@@ -102,8 +102,8 @@ public class ISCSISession implements Serializable {
 
     /** 
      **/
-    public Long getAccountID() { return this.accountID; }
-    public void setAccountID(Long accountID) { 
+    public AccountID getAccountID() { return this.accountID; }
+    public void setAccountID(AccountID accountID) { 
         this.accountID = accountID;
     }
     /** 
@@ -120,8 +120,8 @@ public class ISCSISession implements Serializable {
     }
     /** 
      **/
-    public Long getDriveID() { return this.driveID; }
-    public void setDriveID(Long driveID) { 
+    public DriveID getDriveID() { return this.driveID; }
+    public void setDriveID(DriveID driveID) { 
         this.driveID = driveID;
     }
     /** 
@@ -144,32 +144,32 @@ public class ISCSISession implements Serializable {
     }
     /** 
      **/
-    public String getInitiatorName() { return this.initiatorName; }
-    public void setInitiatorName(String initiatorName) { 
+    public Iqn getInitiatorName() { return this.initiatorName; }
+    public void setInitiatorName(Iqn initiatorName) { 
         this.initiatorName = initiatorName;
     }
     /** 
      **/
-    public Long getNodeID() { return this.nodeID; }
-    public void setNodeID(Long nodeID) { 
+    public NodeID getNodeID() { return this.nodeID; }
+    public void setNodeID(NodeID nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
      **/
-    public Long getServiceID() { return this.serviceID; }
-    public void setServiceID(Long serviceID) { 
+    public ServiceID getServiceID() { return this.serviceID; }
+    public void setServiceID(ServiceID serviceID) { 
         this.serviceID = serviceID;
     }
     /** 
      **/
-    public Long getSessionID() { return this.sessionID; }
-    public void setSessionID(Long sessionID) { 
+    public SessionID getSessionID() { return this.sessionID; }
+    public void setSessionID(SessionID sessionID) { 
         this.sessionID = sessionID;
     }
     /** 
      **/
-    public String getTargetName() { return this.targetName; }
-    public void setTargetName(String targetName) { 
+    public Iqn getTargetName() { return this.targetName; }
+    public void setTargetName(Iqn targetName) { 
         this.targetName = targetName;
     }
     /** 
@@ -186,8 +186,8 @@ public class ISCSISession implements Serializable {
     }
     /** 
      **/
-    public Long getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Long volumeID) { 
+    public VolumeID getVolumeID() { return this.volumeID; }
+    public void setVolumeID(VolumeID volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
@@ -306,21 +306,21 @@ public class ISCSISession implements Serializable {
     }
 
     public static class Builder {
-        private Long accountID;
+        private AccountID accountID;
         private Initiator initiator;
         private String accountName;
-        private Long driveID;
+        private DriveID driveID;
         private String initiatorIP;
         private String initiatorPortName;
         private String targetPortName;
-        private String initiatorName;
-        private Long nodeID;
-        private Long serviceID;
-        private Long sessionID;
-        private String targetName;
+        private Iqn initiatorName;
+        private NodeID nodeID;
+        private ServiceID serviceID;
+        private SessionID sessionID;
+        private Iqn targetName;
         private String targetIP;
         private Long virtualNetworkID;
-        private Long volumeID;
+        private VolumeID volumeID;
         private String createTime;
         private Long volumeInstance;
         private Long initiatorSessionID;
@@ -372,7 +372,7 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
-        public ISCSISession.Builder accountID(final Long accountID) {
+        public ISCSISession.Builder accountID(final AccountID accountID) {
             this.accountID = accountID;
             return this;
         }
@@ -387,7 +387,7 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
-        public ISCSISession.Builder driveID(final Long driveID) {
+        public ISCSISession.Builder driveID(final DriveID driveID) {
             this.driveID = driveID;
             return this;
         }
@@ -407,27 +407,27 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
-        public ISCSISession.Builder initiatorName(final String initiatorName) {
+        public ISCSISession.Builder initiatorName(final Iqn initiatorName) {
             this.initiatorName = initiatorName;
             return this;
         }
 
-        public ISCSISession.Builder nodeID(final Long nodeID) {
+        public ISCSISession.Builder nodeID(final NodeID nodeID) {
             this.nodeID = nodeID;
             return this;
         }
 
-        public ISCSISession.Builder serviceID(final Long serviceID) {
+        public ISCSISession.Builder serviceID(final ServiceID serviceID) {
             this.serviceID = serviceID;
             return this;
         }
 
-        public ISCSISession.Builder sessionID(final Long sessionID) {
+        public ISCSISession.Builder sessionID(final SessionID sessionID) {
             this.sessionID = sessionID;
             return this;
         }
 
-        public ISCSISession.Builder targetName(final String targetName) {
+        public ISCSISession.Builder targetName(final Iqn targetName) {
             this.targetName = targetName;
             return this;
         }
@@ -442,7 +442,7 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
-        public ISCSISession.Builder volumeID(final Long volumeID) {
+        public ISCSISession.Builder volumeID(final VolumeID volumeID) {
             this.volumeID = volumeID;
             return this;
         }

@@ -33,8 +33,8 @@ import java.util.Objects;
 public class CloneMultipleVolumesResult implements Serializable {
 
     public static final long serialVersionUID = 6829236154780075849L;
-    @SerializedName("asyncHandle") private Long asyncHandle;
-    @SerializedName("groupCloneID") private Long groupCloneID;
+    @SerializedName("asyncHandle") private AsyncResultID asyncHandle;
+    @SerializedName("groupCloneID") private GroupCloneID groupCloneID;
     @SerializedName("members") private GroupCloneVolumeMember[] members;
 
     // empty constructor
@@ -45,8 +45,8 @@ public class CloneMultipleVolumesResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CloneMultipleVolumesResult(
-        Long asyncHandle,
-        Long groupCloneID,
+        AsyncResultID asyncHandle,
+        GroupCloneID groupCloneID,
         GroupCloneVolumeMember[] members
     )
     {
@@ -58,15 +58,15 @@ public class CloneMultipleVolumesResult implements Serializable {
     /** 
      * A value returned from an asynchronous method call.
      **/
-    public Long getAsyncHandle() { return this.asyncHandle; }
-    public void setAsyncHandle(Long asyncHandle) { 
+    public AsyncResultID getAsyncHandle() { return this.asyncHandle; }
+    public void setAsyncHandle(AsyncResultID asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
     /** 
      * Unique ID of the new group clone.
      **/
-    public Long getGroupCloneID() { return this.groupCloneID; }
-    public void setGroupCloneID(Long groupCloneID) { 
+    public GroupCloneID getGroupCloneID() { return this.groupCloneID; }
+    public void setGroupCloneID(GroupCloneID groupCloneID) { 
         this.groupCloneID = groupCloneID;
     }
     /** 
@@ -129,8 +129,8 @@ public class CloneMultipleVolumesResult implements Serializable {
     }
 
     public static class Builder {
-        private Long asyncHandle;
-        private Long groupCloneID;
+        private AsyncResultID asyncHandle;
+        private GroupCloneID groupCloneID;
         private GroupCloneVolumeMember[] members;
 
         private Builder() { }
@@ -150,12 +150,12 @@ public class CloneMultipleVolumesResult implements Serializable {
             return this;
         }
 
-        public CloneMultipleVolumesResult.Builder asyncHandle(final Long asyncHandle) {
+        public CloneMultipleVolumesResult.Builder asyncHandle(final AsyncResultID asyncHandle) {
             this.asyncHandle = asyncHandle;
             return this;
         }
 
-        public CloneMultipleVolumesResult.Builder groupCloneID(final Long groupCloneID) {
+        public CloneMultipleVolumesResult.Builder groupCloneID(final GroupCloneID groupCloneID) {
             this.groupCloneID = groupCloneID;
             return this;
         }

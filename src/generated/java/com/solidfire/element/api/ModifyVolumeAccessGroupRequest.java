@@ -33,12 +33,12 @@ import java.util.Objects;
 public class ModifyVolumeAccessGroupRequest implements Serializable {
 
     public static final long serialVersionUID = -6230175995726808888L;
-    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
-    @SerializedName("virtualNetworkID") private Optional<Long[]> virtualNetworkID;
-    @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
+    @SerializedName("volumeAccessGroupID") private VolumeAccessGroupID volumeAccessGroupID;
+    @SerializedName("virtualNetworkID") private Optional<VirtualNetworkID[]> virtualNetworkID;
+    @SerializedName("virtualNetworkTags") private Optional<VirtualNetworkTags[]> virtualNetworkTags;
     @SerializedName("name") private Optional<String> name;
-    @SerializedName("initiators") private Optional<String[]> initiators;
-    @SerializedName("volumes") private Optional<Long[]> volumes;
+    @SerializedName("initiators") private Optional<Iqn[]> initiators;
+    @SerializedName("volumes") private Optional<VolumeID[]> volumes;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
@@ -49,60 +49,60 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyVolumeAccessGroupRequest(
-        Long volumeAccessGroupID,
+        VolumeAccessGroupID volumeAccessGroupID,
         Optional<String> name,
-        Optional<String[]> initiators,
-        Optional<Long[]> volumes,
+        Optional<Iqn[]> initiators,
+        Optional<VolumeID[]> volumes,
         Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.name = (name == null) ? Optional.<String>empty() : name;
-        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
-        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+        this.initiators = (initiators == null) ? Optional.<Iqn[]>empty() : initiators;
+        this.volumes = (volumes == null) ? Optional.<VolumeID[]>empty() : volumes;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
     // parameterized constructor
     @Since("8.0")
     public ModifyVolumeAccessGroupRequest(
-        Long volumeAccessGroupID,
-        Optional<Long[]> virtualNetworkID,
-        Optional<Long[]> virtualNetworkTags,
+        VolumeAccessGroupID volumeAccessGroupID,
+        Optional<VirtualNetworkID[]> virtualNetworkID,
+        Optional<VirtualNetworkTags[]> virtualNetworkTags,
         Optional<String> name,
-        Optional<String[]> initiators,
-        Optional<Long[]> volumes,
+        Optional<Iqn[]> initiators,
+        Optional<VolumeID[]> volumes,
         Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
-        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
-        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<VirtualNetworkID[]>empty() : virtualNetworkID;
+        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<VirtualNetworkTags[]>empty() : virtualNetworkTags;
         this.name = (name == null) ? Optional.<String>empty() : name;
-        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
-        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+        this.initiators = (initiators == null) ? Optional.<Iqn[]>empty() : initiators;
+        this.volumes = (volumes == null) ? Optional.<VolumeID[]>empty() : volumes;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     /** 
      * The ID of the volume access group to modify.
      **/
-    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
-    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+    public VolumeAccessGroupID getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(VolumeAccessGroupID volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
      * The ID of the SolidFire Virtual Network ID to associate the volume access group with.
      **/
-    public Optional<Long[]> getVirtualNetworkID() { return this.virtualNetworkID; }
-    public void setVirtualNetworkID(Optional<Long[]> virtualNetworkID) { 
-        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
+    public Optional<VirtualNetworkID[]> getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(Optional<VirtualNetworkID[]> virtualNetworkID) { 
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<VirtualNetworkID[]>empty() : virtualNetworkID;
     }
     /** 
      * The ID of the VLAN Virtual Network Tag to associate the volume access group with.
      **/
-    public Optional<Long[]> getVirtualNetworkTags() { return this.virtualNetworkTags; }
-    public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) { 
-        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
+    public Optional<VirtualNetworkTags[]> getVirtualNetworkTags() { return this.virtualNetworkTags; }
+    public void setVirtualNetworkTags(Optional<VirtualNetworkTags[]> virtualNetworkTags) { 
+        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<VirtualNetworkTags[]>empty() : virtualNetworkTags;
     }
     /** 
      * Name of the volume access group.
@@ -116,17 +116,17 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
      * List of initiators to include in the volume access group.
      * If unspecified, the access group's configured initiators will not be modified.
      **/
-    public Optional<String[]> getInitiators() { return this.initiators; }
-    public void setInitiators(Optional<String[]> initiators) { 
-        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
+    public Optional<Iqn[]> getInitiators() { return this.initiators; }
+    public void setInitiators(Optional<Iqn[]> initiators) { 
+        this.initiators = (initiators == null) ? Optional.<Iqn[]>empty() : initiators;
     }
     /** 
      * List of volumes to initially include in the volume access group.
      * If unspecified, the access group's volumes will not be modified.
      **/
-    public Optional<Long[]> getVolumes() { return this.volumes; }
-    public void setVolumes(Optional<Long[]> volumes) { 
-        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+    public Optional<VolumeID[]> getVolumes() { return this.volumes; }
+    public void setVolumes(Optional<VolumeID[]> volumes) { 
+        this.volumes = (volumes == null) ? Optional.<VolumeID[]>empty() : volumes;
     }
     /** 
      * List of Name/Value pairs in JSON object format.
@@ -212,12 +212,12 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long volumeAccessGroupID;
-        private Optional<Long[]> virtualNetworkID;
-        private Optional<Long[]> virtualNetworkTags;
+        private VolumeAccessGroupID volumeAccessGroupID;
+        private Optional<VirtualNetworkID[]> virtualNetworkID;
+        private Optional<VirtualNetworkTags[]> virtualNetworkTags;
         private Optional<String> name;
-        private Optional<String[]> initiators;
-        private Optional<Long[]> volumes;
+        private Optional<Iqn[]> initiators;
+        private Optional<VolumeID[]> volumes;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -245,18 +245,18 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
+        public ModifyVolumeAccessGroupRequest.Builder volumeAccessGroupID(final VolumeAccessGroupID volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder optionalVirtualNetworkID(final Long[] virtualNetworkID) {
-            this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkID);
+        public ModifyVolumeAccessGroupRequest.Builder optionalVirtualNetworkID(final VirtualNetworkID[] virtualNetworkID) {
+            this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<VirtualNetworkID[]>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder optionalVirtualNetworkTags(final Long[] virtualNetworkTags) {
-            this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkTags);
+        public ModifyVolumeAccessGroupRequest.Builder optionalVirtualNetworkTags(final VirtualNetworkTags[] virtualNetworkTags) {
+            this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<VirtualNetworkTags[]>empty() : Optional.of(virtualNetworkTags);
             return this;
         }
 
@@ -265,13 +265,13 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder optionalInitiators(final String[] initiators) {
-            this.initiators = (initiators == null) ? Optional.<String[]>empty() : Optional.of(initiators);
+        public ModifyVolumeAccessGroupRequest.Builder optionalInitiators(final Iqn[] initiators) {
+            this.initiators = (initiators == null) ? Optional.<Iqn[]>empty() : Optional.of(initiators);
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder optionalVolumes(final Long[] volumes) {
-            this.volumes = (volumes == null) ? Optional.<Long[]>empty() : Optional.of(volumes);
+        public ModifyVolumeAccessGroupRequest.Builder optionalVolumes(final VolumeID[] volumes) {
+            this.volumes = (volumes == null) ? Optional.<VolumeID[]>empty() : Optional.of(volumes);
             return this;
         }
 

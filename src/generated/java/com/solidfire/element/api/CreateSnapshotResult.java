@@ -33,7 +33,7 @@ import java.util.Objects;
 public class CreateSnapshotResult implements Serializable {
 
     public static final long serialVersionUID = -6903857969883440265L;
-    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("snapshotID") private SnapshotID snapshotID;
     @SerializedName("checksum") private String checksum;
 
     // empty constructor
@@ -44,7 +44,7 @@ public class CreateSnapshotResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CreateSnapshotResult(
-        Long snapshotID,
+        SnapshotID snapshotID,
         String checksum
     )
     {
@@ -55,8 +55,8 @@ public class CreateSnapshotResult implements Serializable {
     /** 
      * ID of the newly-created snapshot.
      **/
-    public Long getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(Long snapshotID) { 
+    public SnapshotID getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(SnapshotID snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
@@ -117,7 +117,7 @@ public class CreateSnapshotResult implements Serializable {
     }
 
     public static class Builder {
-        private Long snapshotID;
+        private SnapshotID snapshotID;
         private String checksum;
 
         private Builder() { }
@@ -135,7 +135,7 @@ public class CreateSnapshotResult implements Serializable {
             return this;
         }
 
-        public CreateSnapshotResult.Builder snapshotID(final Long snapshotID) {
+        public CreateSnapshotResult.Builder snapshotID(final SnapshotID snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }

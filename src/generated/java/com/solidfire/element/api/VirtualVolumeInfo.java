@@ -37,11 +37,11 @@ public class VirtualVolumeInfo implements Serializable {
     @SerializedName("parentVirtualVolumeID") private java.util.UUID parentVirtualVolumeID;
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
     @SerializedName("storageContainer") private StorageContainer storageContainer;
-    @SerializedName("volumeID") private Long volumeID;
-    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("snapshotID") private SnapshotID snapshotID;
     @SerializedName("virtualVolumeType") private String virtualVolumeType;
     @SerializedName("status") private String status;
-    @SerializedName("bindings") private Long[] bindings;
+    @SerializedName("bindings") private VvolBindingID[] bindings;
     @SerializedName("children") private java.util.UUID[] children;
     @SerializedName("metadata") private java.util.Map<String, Object> metadata;
     @SerializedName("snapshotInfo") private Snapshot snapshotInfo;
@@ -59,11 +59,11 @@ public class VirtualVolumeInfo implements Serializable {
         java.util.UUID parentVirtualVolumeID,
         java.util.UUID storageContainerID,
         StorageContainer storageContainer,
-        Long volumeID,
-        Long snapshotID,
+        VolumeID volumeID,
+        SnapshotID snapshotID,
         String virtualVolumeType,
         String status,
-        Long[] bindings,
+        VvolBindingID[] bindings,
         java.util.UUID[] children,
         java.util.Map<String, Object> metadata,
         Snapshot snapshotInfo,
@@ -111,14 +111,14 @@ public class VirtualVolumeInfo implements Serializable {
     }
     /** 
      **/
-    public Long getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Long volumeID) { 
+    public VolumeID getVolumeID() { return this.volumeID; }
+    public void setVolumeID(VolumeID volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
      **/
-    public Long getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(Long snapshotID) { 
+    public SnapshotID getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(SnapshotID snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
@@ -135,8 +135,8 @@ public class VirtualVolumeInfo implements Serializable {
     }
     /** 
      **/
-    public Long[] getBindings() { return this.bindings; }
-    public void setBindings(Long[] bindings) { 
+    public VvolBindingID[] getBindings() { return this.bindings; }
+    public void setBindings(VvolBindingID[] bindings) { 
         this.bindings = bindings;
     }
     /** 
@@ -250,11 +250,11 @@ public class VirtualVolumeInfo implements Serializable {
         private java.util.UUID parentVirtualVolumeID;
         private java.util.UUID storageContainerID;
         private StorageContainer storageContainer;
-        private Long volumeID;
-        private Long snapshotID;
+        private VolumeID volumeID;
+        private SnapshotID snapshotID;
         private String virtualVolumeType;
         private String status;
-        private Long[] bindings;
+        private VvolBindingID[] bindings;
         private java.util.UUID[] children;
         private java.util.Map<String, Object> metadata;
         private Snapshot snapshotInfo;
@@ -317,12 +317,12 @@ public class VirtualVolumeInfo implements Serializable {
             return this;
         }
 
-        public VirtualVolumeInfo.Builder volumeID(final Long volumeID) {
+        public VirtualVolumeInfo.Builder volumeID(final VolumeID volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public VirtualVolumeInfo.Builder snapshotID(final Long snapshotID) {
+        public VirtualVolumeInfo.Builder snapshotID(final SnapshotID snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }
@@ -337,7 +337,7 @@ public class VirtualVolumeInfo implements Serializable {
             return this;
         }
 
-        public VirtualVolumeInfo.Builder bindings(final Long[] bindings) {
+        public VirtualVolumeInfo.Builder bindings(final VvolBindingID[] bindings) {
             this.bindings = bindings;
             return this;
         }

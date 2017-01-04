@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetAsyncResultRequest implements Serializable {
 
     public static final long serialVersionUID = 1004088951222936015L;
-    @SerializedName("asyncHandle") private Long asyncHandle;
+    @SerializedName("asyncHandle") private AsyncResultID asyncHandle;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class GetAsyncResultRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetAsyncResultRequest(
-        Long asyncHandle
+        AsyncResultID asyncHandle
     )
     {
         this.asyncHandle = asyncHandle;
@@ -52,8 +52,8 @@ public class GetAsyncResultRequest implements Serializable {
     /** 
      * A value that was returned from the original asynchronous method call.
      **/
-    public Long getAsyncHandle() { return this.asyncHandle; }
-    public void setAsyncHandle(Long asyncHandle) { 
+    public AsyncResultID getAsyncHandle() { return this.asyncHandle; }
+    public void setAsyncHandle(AsyncResultID asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
 
@@ -103,7 +103,7 @@ public class GetAsyncResultRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long asyncHandle;
+        private AsyncResultID asyncHandle;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class GetAsyncResultRequest implements Serializable {
             return this;
         }
 
-        public GetAsyncResultRequest.Builder asyncHandle(final Long asyncHandle) {
+        public GetAsyncResultRequest.Builder asyncHandle(final AsyncResultID asyncHandle) {
             this.asyncHandle = asyncHandle;
             return this;
         }
