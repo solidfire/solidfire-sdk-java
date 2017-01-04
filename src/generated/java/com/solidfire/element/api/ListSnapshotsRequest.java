@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ListSnapshotsRequest implements Serializable {
 
     public static final long serialVersionUID = -2283933622639350902L;
-    @SerializedName("volumeID") private Optional<VolumeID> volumeID;
+    @SerializedName("volumeID") private Optional<Long> volumeID;
 
     // empty constructor
     @Since("7.0")
@@ -43,19 +43,19 @@ public class ListSnapshotsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListSnapshotsRequest(
-        Optional<VolumeID> volumeID
+        Optional<Long> volumeID
     )
     {
-        this.volumeID = (volumeID == null) ? Optional.<VolumeID>empty() : volumeID;
+        this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
     }
 
     /** 
      * The volume to list snapshots for.
      * If not provided, all snapshots for all volumes are returned.
      **/
-    public Optional<VolumeID> getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Optional<VolumeID> volumeID) { 
-        this.volumeID = (volumeID == null) ? Optional.<VolumeID>empty() : volumeID;
+    public Optional<Long> getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Optional<Long> volumeID) { 
+        this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
     }
 
     @Override
@@ -106,7 +106,7 @@ public class ListSnapshotsRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<VolumeID> volumeID;
+        private Optional<Long> volumeID;
 
         private Builder() { }
 
@@ -121,8 +121,8 @@ public class ListSnapshotsRequest implements Serializable {
             return this;
         }
 
-        public ListSnapshotsRequest.Builder optionalVolumeID(final VolumeID volumeID) {
-            this.volumeID = (volumeID == null) ? Optional.<VolumeID>empty() : Optional.of(volumeID);
+        public ListSnapshotsRequest.Builder optionalVolumeID(final Long volumeID) {
+            this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
             return this;
         }
 

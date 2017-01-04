@@ -33,9 +33,9 @@ import java.util.Objects;
 public class StartBulkVolumeReadRequest implements Serializable {
 
     public static final long serialVersionUID = -108156352014984385L;
-    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("volumeID") private Long volumeID;
     @SerializedName("format") private String format;
-    @SerializedName("snapshotID") private Optional<SnapshotID> snapshotID;
+    @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("script") private Optional<String> script;
     @SerializedName("scriptParameters") private Optional<Object> scriptParameters;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
@@ -48,9 +48,9 @@ public class StartBulkVolumeReadRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public StartBulkVolumeReadRequest(
-        VolumeID volumeID,
+        Long volumeID,
         String format,
-        Optional<SnapshotID> snapshotID,
+        Optional<Long> snapshotID,
         Optional<String> script,
         Optional<Object> scriptParameters,
         Optional<java.util.Map<String, Object>> attributes
@@ -58,7 +58,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
     {
         this.volumeID = volumeID;
         this.format = format;
-        this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : snapshotID;
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
         this.script = (script == null) ? Optional.<String>empty() : script;
         this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : scriptParameters;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
@@ -67,8 +67,8 @@ public class StartBulkVolumeReadRequest implements Serializable {
     /** 
      * ID of the volume to be read.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
@@ -84,9 +84,9 @@ public class StartBulkVolumeReadRequest implements Serializable {
      * ID of a previously created snapshot used for bulk volume reads.
      * If no ID is entered, a snapshot of the current active volume image is made.
      **/
-    public Optional<SnapshotID> getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(Optional<SnapshotID> snapshotID) { 
-        this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : snapshotID;
+    public Optional<Long> getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Optional<Long> snapshotID) { 
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
     /** 
      * Executable name of a script.
@@ -181,9 +181,9 @@ public class StartBulkVolumeReadRequest implements Serializable {
     }
 
     public static class Builder {
-        private VolumeID volumeID;
+        private Long volumeID;
         private String format;
-        private Optional<SnapshotID> snapshotID;
+        private Optional<Long> snapshotID;
         private Optional<String> script;
         private Optional<Object> scriptParameters;
         private Optional<java.util.Map<String, Object>> attributes;
@@ -211,7 +211,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
             return this;
         }
 
-        public StartBulkVolumeReadRequest.Builder volumeID(final VolumeID volumeID) {
+        public StartBulkVolumeReadRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
@@ -221,8 +221,8 @@ public class StartBulkVolumeReadRequest implements Serializable {
             return this;
         }
 
-        public StartBulkVolumeReadRequest.Builder optionalSnapshotID(final SnapshotID snapshotID) {
-            this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : Optional.of(snapshotID);
+        public StartBulkVolumeReadRequest.Builder optionalSnapshotID(final Long snapshotID) {
+            this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }
 

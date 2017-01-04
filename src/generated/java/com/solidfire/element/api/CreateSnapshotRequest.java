@@ -33,8 +33,8 @@ import java.util.Objects;
 public class CreateSnapshotRequest implements Serializable {
 
     public static final long serialVersionUID = -1805268150014758546L;
-    @SerializedName("volumeID") private VolumeID volumeID;
-    @SerializedName("snapshotID") private Optional<SnapshotID> snapshotID;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
     @SerializedName("retention") private Optional<String> retention;
@@ -48,22 +48,22 @@ public class CreateSnapshotRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CreateSnapshotRequest(
-        VolumeID volumeID,
-        Optional<SnapshotID> snapshotID,
+        Long volumeID,
+        Optional<Long> snapshotID,
         Optional<String> name,
         Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.volumeID = volumeID;
-        this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : snapshotID;
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
     // parameterized constructor
     @Since("8.0")
     public CreateSnapshotRequest(
-        VolumeID volumeID,
-        Optional<SnapshotID> snapshotID,
+        Long volumeID,
+        Optional<Long> snapshotID,
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> retention,
@@ -71,7 +71,7 @@ public class CreateSnapshotRequest implements Serializable {
     )
     {
         this.volumeID = volumeID;
-        this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : snapshotID;
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
@@ -81,8 +81,8 @@ public class CreateSnapshotRequest implements Serializable {
     /** 
      * ID of the volume image from which to copy.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
@@ -90,9 +90,9 @@ public class CreateSnapshotRequest implements Serializable {
      * The snapshotID passed must be a snapshot on the given volume.
      * If a SnapshotID is not provided, a snapshot is created from the volume's active branch.
      **/
-    public Optional<SnapshotID> getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(Optional<SnapshotID> snapshotID) { 
-        this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : snapshotID;
+    public Optional<Long> getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Optional<Long> snapshotID) { 
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
     /** 
      * A name for the snapshot.
@@ -195,8 +195,8 @@ public class CreateSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private VolumeID volumeID;
-        private Optional<SnapshotID> snapshotID;
+        private Long volumeID;
+        private Optional<Long> snapshotID;
         private Optional<String> name;
         private Optional<Boolean> enableRemoteReplication;
         private Optional<String> retention;
@@ -225,13 +225,13 @@ public class CreateSnapshotRequest implements Serializable {
             return this;
         }
 
-        public CreateSnapshotRequest.Builder volumeID(final VolumeID volumeID) {
+        public CreateSnapshotRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public CreateSnapshotRequest.Builder optionalSnapshotID(final SnapshotID snapshotID) {
-            this.snapshotID = (snapshotID == null) ? Optional.<SnapshotID>empty() : Optional.of(snapshotID);
+        public CreateSnapshotRequest.Builder optionalSnapshotID(final Long snapshotID) {
+            this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }
 

@@ -33,7 +33,7 @@ import java.util.Objects;
 public class StartBulkVolumeWriteRequest implements Serializable {
 
     public static final long serialVersionUID = -7266294121919800595L;
-    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("volumeID") private Long volumeID;
     @SerializedName("format") private String format;
     @SerializedName("script") private Optional<String> script;
     @SerializedName("scriptParameters") private Optional<Object> scriptParameters;
@@ -47,7 +47,7 @@ public class StartBulkVolumeWriteRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public StartBulkVolumeWriteRequest(
-        VolumeID volumeID,
+        Long volumeID,
         String format,
         Optional<String> script,
         Optional<Object> scriptParameters,
@@ -64,8 +64,8 @@ public class StartBulkVolumeWriteRequest implements Serializable {
     /** 
      * ID of the volume to be written to.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
@@ -165,7 +165,7 @@ public class StartBulkVolumeWriteRequest implements Serializable {
     }
 
     public static class Builder {
-        private VolumeID volumeID;
+        private Long volumeID;
         private String format;
         private Optional<String> script;
         private Optional<Object> scriptParameters;
@@ -192,7 +192,7 @@ public class StartBulkVolumeWriteRequest implements Serializable {
             return this;
         }
 
-        public StartBulkVolumeWriteRequest.Builder volumeID(final VolumeID volumeID) {
+        public StartBulkVolumeWriteRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

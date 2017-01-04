@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetVolumeStatsRequest implements Serializable {
 
     public static final long serialVersionUID = 1223689704598366419L;
-    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("volumeID") private Long volumeID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class GetVolumeStatsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetVolumeStatsRequest(
-        VolumeID volumeID
+        Long volumeID
     )
     {
         this.volumeID = volumeID;
@@ -52,8 +52,8 @@ public class GetVolumeStatsRequest implements Serializable {
     /** 
      * Specifies the volume for which statistics is gathered.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
 
@@ -103,7 +103,7 @@ public class GetVolumeStatsRequest implements Serializable {
     }
 
     public static class Builder {
-        private VolumeID volumeID;
+        private Long volumeID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class GetVolumeStatsRequest implements Serializable {
             return this;
         }
 
-        public GetVolumeStatsRequest.Builder volumeID(final VolumeID volumeID) {
+        public GetVolumeStatsRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

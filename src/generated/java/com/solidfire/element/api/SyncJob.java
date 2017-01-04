@@ -39,15 +39,15 @@ public class SyncJob implements Serializable {
     @SerializedName("elapsedTime") private Double elapsedTime;
     @SerializedName("percentComplete") private Double percentComplete;
     @SerializedName("remainingTime") private Double remainingTime;
-    @SerializedName("sliceID") private SliceID sliceID;
-    @SerializedName("srcServiceID") private ServiceID srcServiceID;
+    @SerializedName("sliceID") private Long sliceID;
+    @SerializedName("srcServiceID") private Long srcServiceID;
     @SerializedName("totalBytes") private Long totalBytes;
     @SerializedName("type") private String type;
-    @SerializedName("cloneID") private CloneID cloneID;
-    @SerializedName("dstVolumeID") private VolumeID dstVolumeID;
-    @SerializedName("nodeID") private NodeID nodeID;
-    @SerializedName("snapshotID") private SnapshotID snapshotID;
-    @SerializedName("srcVolumeID") private VolumeID srcVolumeID;
+    @SerializedName("cloneID") private Long cloneID;
+    @SerializedName("dstVolumeID") private Long dstVolumeID;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("srcVolumeID") private Long srcVolumeID;
     @SerializedName("blocksPerSecond") private Double blocksPerSecond;
     @SerializedName("stage") private Long stage;
 
@@ -65,15 +65,15 @@ public class SyncJob implements Serializable {
         Double elapsedTime,
         Double percentComplete,
         Double remainingTime,
-        SliceID sliceID,
-        ServiceID srcServiceID,
+        Long sliceID,
+        Long srcServiceID,
         Long totalBytes,
         String type,
-        CloneID cloneID,
-        VolumeID dstVolumeID,
-        NodeID nodeID,
-        SnapshotID snapshotID,
-        VolumeID srcVolumeID,
+        Long cloneID,
+        Long dstVolumeID,
+        Long nodeID,
+        Long snapshotID,
+        Long srcVolumeID,
         Double blocksPerSecond,
         Long stage
     )
@@ -135,14 +135,14 @@ public class SyncJob implements Serializable {
     }
     /** 
      **/
-    public SliceID getSliceID() { return this.sliceID; }
-    public void setSliceID(SliceID sliceID) { 
+    public Long getSliceID() { return this.sliceID; }
+    public void setSliceID(Long sliceID) { 
         this.sliceID = sliceID;
     }
     /** 
      **/
-    public ServiceID getSrcServiceID() { return this.srcServiceID; }
-    public void setSrcServiceID(ServiceID srcServiceID) { 
+    public Long getSrcServiceID() { return this.srcServiceID; }
+    public void setSrcServiceID(Long srcServiceID) { 
         this.srcServiceID = srcServiceID;
     }
     /** 
@@ -159,32 +159,32 @@ public class SyncJob implements Serializable {
     }
     /** 
      **/
-    public CloneID getCloneID() { return this.cloneID; }
-    public void setCloneID(CloneID cloneID) { 
+    public Long getCloneID() { return this.cloneID; }
+    public void setCloneID(Long cloneID) { 
         this.cloneID = cloneID;
     }
     /** 
      **/
-    public VolumeID getDstVolumeID() { return this.dstVolumeID; }
-    public void setDstVolumeID(VolumeID dstVolumeID) { 
+    public Long getDstVolumeID() { return this.dstVolumeID; }
+    public void setDstVolumeID(Long dstVolumeID) { 
         this.dstVolumeID = dstVolumeID;
     }
     /** 
      **/
-    public NodeID getNodeID() { return this.nodeID; }
-    public void setNodeID(NodeID nodeID) { 
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
      **/
-    public SnapshotID getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(SnapshotID snapshotID) { 
+    public Long getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
      **/
-    public VolumeID getSrcVolumeID() { return this.srcVolumeID; }
-    public void setSrcVolumeID(VolumeID srcVolumeID) { 
+    public Long getSrcVolumeID() { return this.srcVolumeID; }
+    public void setSrcVolumeID(Long srcVolumeID) { 
         this.srcVolumeID = srcVolumeID;
     }
     /** 
@@ -300,15 +300,15 @@ public class SyncJob implements Serializable {
         private Double elapsedTime;
         private Double percentComplete;
         private Double remainingTime;
-        private SliceID sliceID;
-        private ServiceID srcServiceID;
+        private Long sliceID;
+        private Long srcServiceID;
         private Long totalBytes;
         private String type;
-        private CloneID cloneID;
-        private VolumeID dstVolumeID;
-        private NodeID nodeID;
-        private SnapshotID snapshotID;
-        private VolumeID srcVolumeID;
+        private Long cloneID;
+        private Long dstVolumeID;
+        private Long nodeID;
+        private Long snapshotID;
+        private Long srcVolumeID;
         private Double blocksPerSecond;
         private Long stage;
 
@@ -387,12 +387,12 @@ public class SyncJob implements Serializable {
             return this;
         }
 
-        public SyncJob.Builder sliceID(final SliceID sliceID) {
+        public SyncJob.Builder sliceID(final Long sliceID) {
             this.sliceID = sliceID;
             return this;
         }
 
-        public SyncJob.Builder srcServiceID(final ServiceID srcServiceID) {
+        public SyncJob.Builder srcServiceID(final Long srcServiceID) {
             this.srcServiceID = srcServiceID;
             return this;
         }
@@ -407,27 +407,27 @@ public class SyncJob implements Serializable {
             return this;
         }
 
-        public SyncJob.Builder cloneID(final CloneID cloneID) {
+        public SyncJob.Builder cloneID(final Long cloneID) {
             this.cloneID = cloneID;
             return this;
         }
 
-        public SyncJob.Builder dstVolumeID(final VolumeID dstVolumeID) {
+        public SyncJob.Builder dstVolumeID(final Long dstVolumeID) {
             this.dstVolumeID = dstVolumeID;
             return this;
         }
 
-        public SyncJob.Builder nodeID(final NodeID nodeID) {
+        public SyncJob.Builder nodeID(final Long nodeID) {
             this.nodeID = nodeID;
             return this;
         }
 
-        public SyncJob.Builder snapshotID(final SnapshotID snapshotID) {
+        public SyncJob.Builder snapshotID(final Long snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }
 
-        public SyncJob.Builder srcVolumeID(final VolumeID srcVolumeID) {
+        public SyncJob.Builder srcVolumeID(final Long srcVolumeID) {
             this.srcVolumeID = srcVolumeID;
             return this;
         }

@@ -33,7 +33,7 @@ import java.util.Objects;
 public class RestoreDeletedVolumeRequest implements Serializable {
 
     public static final long serialVersionUID = 5395134700613497933L;
-    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("volumeID") private Long volumeID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class RestoreDeletedVolumeRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RestoreDeletedVolumeRequest(
-        VolumeID volumeID
+        Long volumeID
     )
     {
         this.volumeID = volumeID;
@@ -52,8 +52,8 @@ public class RestoreDeletedVolumeRequest implements Serializable {
     /** 
      * VolumeID for the deleted volume to restore.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
 
@@ -103,7 +103,7 @@ public class RestoreDeletedVolumeRequest implements Serializable {
     }
 
     public static class Builder {
-        private VolumeID volumeID;
+        private Long volumeID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class RestoreDeletedVolumeRequest implements Serializable {
             return this;
         }
 
-        public RestoreDeletedVolumeRequest.Builder volumeID(final VolumeID volumeID) {
+        public RestoreDeletedVolumeRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

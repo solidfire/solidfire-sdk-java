@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ListVirtualVolumeBindingsRequest implements Serializable {
 
     public static final long serialVersionUID = 1543024419589101292L;
-    @SerializedName("virtualVolumeBindingIDs") private Optional<VvolBindingID[]> virtualVolumeBindingIDs;
+    @SerializedName("virtualVolumeBindingIDs") private Optional<Long[]> virtualVolumeBindingIDs;
 
     // empty constructor
     @Since("7.0")
@@ -43,17 +43,17 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListVirtualVolumeBindingsRequest(
-        Optional<VvolBindingID[]> virtualVolumeBindingIDs
+        Optional<Long[]> virtualVolumeBindingIDs
     )
     {
-        this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<VvolBindingID[]>empty() : virtualVolumeBindingIDs;
+        this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<Long[]>empty() : virtualVolumeBindingIDs;
     }
 
     /** 
      **/
-    public Optional<VvolBindingID[]> getVirtualVolumeBindingIDs() { return this.virtualVolumeBindingIDs; }
-    public void setVirtualVolumeBindingIDs(Optional<VvolBindingID[]> virtualVolumeBindingIDs) { 
-        this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<VvolBindingID[]>empty() : virtualVolumeBindingIDs;
+    public Optional<Long[]> getVirtualVolumeBindingIDs() { return this.virtualVolumeBindingIDs; }
+    public void setVirtualVolumeBindingIDs(Optional<Long[]> virtualVolumeBindingIDs) { 
+        this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<Long[]>empty() : virtualVolumeBindingIDs;
     }
 
     @Override
@@ -104,7 +104,7 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<VvolBindingID[]> virtualVolumeBindingIDs;
+        private Optional<Long[]> virtualVolumeBindingIDs;
 
         private Builder() { }
 
@@ -119,8 +119,8 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
             return this;
         }
 
-        public ListVirtualVolumeBindingsRequest.Builder optionalVirtualVolumeBindingIDs(final VvolBindingID[] virtualVolumeBindingIDs) {
-            this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<VvolBindingID[]>empty() : Optional.of(virtualVolumeBindingIDs);
+        public ListVirtualVolumeBindingsRequest.Builder optionalVirtualVolumeBindingIDs(final Long[] virtualVolumeBindingIDs) {
+            this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<Long[]>empty() : Optional.of(virtualVolumeBindingIDs);
             return this;
         }
 

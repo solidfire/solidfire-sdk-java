@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ModifyAccountRequest implements Serializable {
 
     public static final long serialVersionUID = 357601812538223462L;
-    @SerializedName("accountID") private AccountID accountID;
+    @SerializedName("accountID") private Long accountID;
     @SerializedName("username") private Optional<String> username;
     @SerializedName("status") private Optional<String> status;
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
@@ -48,7 +48,7 @@ public class ModifyAccountRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyAccountRequest(
-        AccountID accountID,
+        Long accountID,
         Optional<String> username,
         Optional<String> status,
         Optional<CHAPSecret> initiatorSecret,
@@ -67,8 +67,8 @@ public class ModifyAccountRequest implements Serializable {
     /** 
      * AccountID for the account to modify.
      **/
-    public AccountID getAccountID() { return this.accountID; }
-    public void setAccountID(AccountID accountID) { 
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
     /** 
@@ -180,7 +180,7 @@ public class ModifyAccountRequest implements Serializable {
     }
 
     public static class Builder {
-        private AccountID accountID;
+        private Long accountID;
         private Optional<String> username;
         private Optional<String> status;
         private Optional<CHAPSecret> initiatorSecret;
@@ -210,7 +210,7 @@ public class ModifyAccountRequest implements Serializable {
             return this;
         }
 
-        public ModifyAccountRequest.Builder accountID(final AccountID accountID) {
+        public ModifyAccountRequest.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }

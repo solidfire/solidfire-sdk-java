@@ -34,7 +34,7 @@ public class CompleteVolumePairingRequest implements Serializable {
 
     public static final long serialVersionUID = 3238767447325720472L;
     @SerializedName("volumePairingKey") private String volumePairingKey;
-    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("volumeID") private Long volumeID;
 
     // empty constructor
     @Since("7.0")
@@ -45,7 +45,7 @@ public class CompleteVolumePairingRequest implements Serializable {
     @Since("7.0")
     public CompleteVolumePairingRequest(
         String volumePairingKey,
-        VolumeID volumeID
+        Long volumeID
     )
     {
         this.volumePairingKey = volumePairingKey;
@@ -62,8 +62,8 @@ public class CompleteVolumePairingRequest implements Serializable {
     /** 
      * The ID of volume on which to complete the pairing process.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
 
@@ -117,7 +117,7 @@ public class CompleteVolumePairingRequest implements Serializable {
 
     public static class Builder {
         private String volumePairingKey;
-        private VolumeID volumeID;
+        private Long volumeID;
 
         private Builder() { }
 
@@ -139,7 +139,7 @@ public class CompleteVolumePairingRequest implements Serializable {
             return this;
         }
 
-        public CompleteVolumePairingRequest.Builder volumeID(final VolumeID volumeID) {
+        public CompleteVolumePairingRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

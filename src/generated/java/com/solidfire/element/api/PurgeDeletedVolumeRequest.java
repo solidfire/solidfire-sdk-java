@@ -33,7 +33,7 @@ import java.util.Objects;
 public class PurgeDeletedVolumeRequest implements Serializable {
 
     public static final long serialVersionUID = 6107800091718315860L;
-    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("volumeID") private Long volumeID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class PurgeDeletedVolumeRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public PurgeDeletedVolumeRequest(
-        VolumeID volumeID
+        Long volumeID
     )
     {
         this.volumeID = volumeID;
@@ -52,8 +52,8 @@ public class PurgeDeletedVolumeRequest implements Serializable {
     /** 
      * The ID of the volume to purge.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
 
@@ -103,7 +103,7 @@ public class PurgeDeletedVolumeRequest implements Serializable {
     }
 
     public static class Builder {
-        private VolumeID volumeID;
+        private Long volumeID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class PurgeDeletedVolumeRequest implements Serializable {
             return this;
         }
 
-        public PurgeDeletedVolumeRequest.Builder volumeID(final VolumeID volumeID) {
+        public PurgeDeletedVolumeRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

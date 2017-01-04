@@ -36,18 +36,18 @@ import java.util.Objects;
 public class Volume implements Serializable {
 
     public static final long serialVersionUID = -7686354995119743056L;
-    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
-    @SerializedName("accountID") private AccountID accountID;
+    @SerializedName("accountID") private Long accountID;
     @SerializedName("createTime") private String createTime;
     @SerializedName("status") private String status;
     @SerializedName("access") private String access;
     @SerializedName("enable512e") private Boolean enable512e;
-    @SerializedName("iqn") private Iqn iqn;
-    @SerializedName("scsiEUIDeviceID") private EUIDeviceID scsiEUIDeviceID;
-    @SerializedName("scsiNAADeviceID") private NAADeviceID scsiNAADeviceID;
+    @SerializedName("iqn") private String iqn;
+    @SerializedName("scsiEUIDeviceID") private String scsiEUIDeviceID;
+    @SerializedName("scsiNAADeviceID") private String scsiNAADeviceID;
     @SerializedName("qos") private VolumeQOS qos;
-    @SerializedName("volumeAccessGroups") private VolumeAccessGroupID[] volumeAccessGroups;
+    @SerializedName("volumeAccessGroups") private Long[] volumeAccessGroups;
     @SerializedName("volumePairs") private VolumePair[] volumePairs;
     @SerializedName("deleteTime") private Optional<String> deleteTime;
     @SerializedName("purgeTime") private Optional<String> purgeTime;
@@ -65,18 +65,18 @@ public class Volume implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public Volume(
-        VolumeID volumeID,
+        Long volumeID,
         String name,
-        AccountID accountID,
+        Long accountID,
         String createTime,
         String status,
         String access,
         Boolean enable512e,
-        Iqn iqn,
-        EUIDeviceID scsiEUIDeviceID,
-        NAADeviceID scsiNAADeviceID,
+        String iqn,
+        String scsiEUIDeviceID,
+        String scsiNAADeviceID,
         VolumeQOS qos,
-        VolumeAccessGroupID[] volumeAccessGroups,
+        Long[] volumeAccessGroups,
         VolumePair[] volumePairs,
         Optional<String> deleteTime,
         Optional<String> purgeTime,
@@ -109,18 +109,18 @@ public class Volume implements Serializable {
     // parameterized constructor
     @Since("8.0")
     public Volume(
-        VolumeID volumeID,
+        Long volumeID,
         String name,
-        AccountID accountID,
+        Long accountID,
         String createTime,
         String status,
         String access,
         Boolean enable512e,
-        Iqn iqn,
-        EUIDeviceID scsiEUIDeviceID,
-        NAADeviceID scsiNAADeviceID,
+        String iqn,
+        String scsiEUIDeviceID,
+        String scsiNAADeviceID,
         VolumeQOS qos,
-        VolumeAccessGroupID[] volumeAccessGroups,
+        Long[] volumeAccessGroups,
         VolumePair[] volumePairs,
         Optional<String> deleteTime,
         Optional<String> purgeTime,
@@ -156,8 +156,8 @@ public class Volume implements Serializable {
     /** 
      * Unique VolumeID for the volume.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
@@ -170,8 +170,8 @@ public class Volume implements Serializable {
     /** 
      * Unique AccountID for the account.
      **/
-    public AccountID getAccountID() { return this.accountID; }
-    public void setAccountID(AccountID accountID) { 
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
     /** 
@@ -211,22 +211,22 @@ public class Volume implements Serializable {
     /** 
      * Volume iSCSI Qualified Name.
      **/
-    public Iqn getIqn() { return this.iqn; }
-    public void setIqn(Iqn iqn) { 
+    public String getIqn() { return this.iqn; }
+    public void setIqn(String iqn) { 
         this.iqn = iqn;
     }
     /** 
      * Globally unique SCSI device identifier for the volume in EUI-64 based 16-byte format.
      **/
-    public EUIDeviceID getScsiEUIDeviceID() { return this.scsiEUIDeviceID; }
-    public void setScsiEUIDeviceID(EUIDeviceID scsiEUIDeviceID) { 
+    public String getScsiEUIDeviceID() { return this.scsiEUIDeviceID; }
+    public void setScsiEUIDeviceID(String scsiEUIDeviceID) { 
         this.scsiEUIDeviceID = scsiEUIDeviceID;
     }
     /** 
      * Globally unique SCSI device identifier for the volume in NAA IEEE Registered Extended format.
      **/
-    public NAADeviceID getScsiNAADeviceID() { return this.scsiNAADeviceID; }
-    public void setScsiNAADeviceID(NAADeviceID scsiNAADeviceID) { 
+    public String getScsiNAADeviceID() { return this.scsiNAADeviceID; }
+    public void setScsiNAADeviceID(String scsiNAADeviceID) { 
         this.scsiNAADeviceID = scsiNAADeviceID;
     }
     /** 
@@ -239,8 +239,8 @@ public class Volume implements Serializable {
     /** 
      * List of volume access groups to which a volume belongs.
      **/
-    public VolumeAccessGroupID[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
-    public void setVolumeAccessGroups(VolumeAccessGroupID[] volumeAccessGroups) { 
+    public Long[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
+    public void setVolumeAccessGroups(Long[] volumeAccessGroups) { 
         this.volumeAccessGroups = volumeAccessGroups;
     }
     /** 
@@ -412,18 +412,18 @@ public class Volume implements Serializable {
     }
 
     public static class Builder {
-        private VolumeID volumeID;
+        private Long volumeID;
         private String name;
-        private AccountID accountID;
+        private Long accountID;
         private String createTime;
         private String status;
         private String access;
         private Boolean enable512e;
-        private Iqn iqn;
-        private EUIDeviceID scsiEUIDeviceID;
-        private NAADeviceID scsiNAADeviceID;
+        private String iqn;
+        private String scsiEUIDeviceID;
+        private String scsiNAADeviceID;
         private VolumeQOS qos;
-        private VolumeAccessGroupID[] volumeAccessGroups;
+        private Long[] volumeAccessGroups;
         private VolumePair[] volumePairs;
         private Optional<String> deleteTime;
         private Optional<String> purgeTime;
@@ -484,7 +484,7 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder volumeID(final VolumeID volumeID) {
+        public Volume.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
@@ -494,7 +494,7 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder accountID(final AccountID accountID) {
+        public Volume.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }
@@ -519,17 +519,17 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder iqn(final Iqn iqn) {
+        public Volume.Builder iqn(final String iqn) {
             this.iqn = iqn;
             return this;
         }
 
-        public Volume.Builder scsiEUIDeviceID(final EUIDeviceID scsiEUIDeviceID) {
+        public Volume.Builder scsiEUIDeviceID(final String scsiEUIDeviceID) {
             this.scsiEUIDeviceID = scsiEUIDeviceID;
             return this;
         }
 
-        public Volume.Builder scsiNAADeviceID(final NAADeviceID scsiNAADeviceID) {
+        public Volume.Builder scsiNAADeviceID(final String scsiNAADeviceID) {
             this.scsiNAADeviceID = scsiNAADeviceID;
             return this;
         }
@@ -539,7 +539,7 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder volumeAccessGroups(final VolumeAccessGroupID[] volumeAccessGroups) {
+        public Volume.Builder volumeAccessGroups(final Long[] volumeAccessGroups) {
             this.volumeAccessGroups = volumeAccessGroups;
             return this;
         }

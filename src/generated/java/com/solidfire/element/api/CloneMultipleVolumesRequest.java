@@ -35,8 +35,8 @@ public class CloneMultipleVolumesRequest implements Serializable {
     public static final long serialVersionUID = -6275597178319531856L;
     @SerializedName("volumes") private CloneMultipleVolumeParams[] volumes;
     @SerializedName("access") private Optional<String> access;
-    @SerializedName("groupSnapshotID") private Optional<SnapshotID> groupSnapshotID;
-    @SerializedName("newAccountID") private Optional<AccountID> newAccountID;
+    @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
+    @SerializedName("newAccountID") private Optional<Long> newAccountID;
 
     // empty constructor
     @Since("7.0")
@@ -48,14 +48,14 @@ public class CloneMultipleVolumesRequest implements Serializable {
     public CloneMultipleVolumesRequest(
         CloneMultipleVolumeParams[] volumes,
         Optional<String> access,
-        Optional<SnapshotID> groupSnapshotID,
-        Optional<AccountID> newAccountID
+        Optional<Long> groupSnapshotID,
+        Optional<Long> newAccountID
     )
     {
         this.volumes = volumes;
         this.access = (access == null) ? Optional.<String>empty() : access;
-        this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<SnapshotID>empty() : groupSnapshotID;
-        this.newAccountID = (newAccountID == null) ? Optional.<AccountID>empty() : newAccountID;
+        this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : groupSnapshotID;
+        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
 
     /** 
@@ -81,16 +81,16 @@ public class CloneMultipleVolumesRequest implements Serializable {
     /** 
      * ID of the group snapshot to use as a basis for the clone.
      **/
-    public Optional<SnapshotID> getGroupSnapshotID() { return this.groupSnapshotID; }
-    public void setGroupSnapshotID(Optional<SnapshotID> groupSnapshotID) { 
-        this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<SnapshotID>empty() : groupSnapshotID;
+    public Optional<Long> getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(Optional<Long> groupSnapshotID) { 
+        this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : groupSnapshotID;
     }
     /** 
      * New account ID for the volumes if not overridden by information passed in the volumes array.
      **/
-    public Optional<AccountID> getNewAccountID() { return this.newAccountID; }
-    public void setNewAccountID(Optional<AccountID> newAccountID) { 
-        this.newAccountID = (newAccountID == null) ? Optional.<AccountID>empty() : newAccountID;
+    public Optional<Long> getNewAccountID() { return this.newAccountID; }
+    public void setNewAccountID(Optional<Long> newAccountID) { 
+        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
 
     @Override
@@ -156,8 +156,8 @@ public class CloneMultipleVolumesRequest implements Serializable {
     public static class Builder {
         private CloneMultipleVolumeParams[] volumes;
         private Optional<String> access;
-        private Optional<SnapshotID> groupSnapshotID;
-        private Optional<AccountID> newAccountID;
+        private Optional<Long> groupSnapshotID;
+        private Optional<Long> newAccountID;
 
         private Builder() { }
 
@@ -188,13 +188,13 @@ public class CloneMultipleVolumesRequest implements Serializable {
             return this;
         }
 
-        public CloneMultipleVolumesRequest.Builder optionalGroupSnapshotID(final SnapshotID groupSnapshotID) {
-            this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<SnapshotID>empty() : Optional.of(groupSnapshotID);
+        public CloneMultipleVolumesRequest.Builder optionalGroupSnapshotID(final Long groupSnapshotID) {
+            this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : Optional.of(groupSnapshotID);
             return this;
         }
 
-        public CloneMultipleVolumesRequest.Builder optionalNewAccountID(final AccountID newAccountID) {
-            this.newAccountID = (newAccountID == null) ? Optional.<AccountID>empty() : Optional.of(newAccountID);
+        public CloneMultipleVolumesRequest.Builder optionalNewAccountID(final Long newAccountID) {
+            this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
             return this;
         }
 

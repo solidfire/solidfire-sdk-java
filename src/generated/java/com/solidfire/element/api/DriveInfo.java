@@ -34,8 +34,8 @@ public class DriveInfo implements Serializable {
 
     public static final long serialVersionUID = 7549732089467034997L;
     @SerializedName("capacity") private Long capacity;
-    @SerializedName("driveID") private DriveID driveID;
-    @SerializedName("nodeID") private NodeID nodeID;
+    @SerializedName("driveID") private Long driveID;
+    @SerializedName("nodeID") private Long nodeID;
     @SerializedName("serial") private String serial;
     @SerializedName("slot") private Long slot;
     @SerializedName("status") private String status;
@@ -51,8 +51,8 @@ public class DriveInfo implements Serializable {
     @Since("7.0")
     public DriveInfo(
         Long capacity,
-        DriveID driveID,
-        NodeID nodeID,
+        Long driveID,
+        Long nodeID,
         String serial,
         Long slot,
         String status,
@@ -80,15 +80,15 @@ public class DriveInfo implements Serializable {
     /** 
      * DriveID for this drive.
      **/
-    public DriveID getDriveID() { return this.driveID; }
-    public void setDriveID(DriveID driveID) { 
+    public Long getDriveID() { return this.driveID; }
+    public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
     /** 
      * NodeID where this drive is located.
      **/
-    public NodeID getNodeID() { return this.nodeID; }
-    public void setNodeID(NodeID nodeID) { 
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
@@ -193,8 +193,8 @@ public class DriveInfo implements Serializable {
 
     public static class Builder {
         private Long capacity;
-        private DriveID driveID;
-        private NodeID nodeID;
+        private Long driveID;
+        private Long nodeID;
         private String serial;
         private Long slot;
         private String status;
@@ -233,12 +233,12 @@ public class DriveInfo implements Serializable {
             return this;
         }
 
-        public DriveInfo.Builder driveID(final DriveID driveID) {
+        public DriveInfo.Builder driveID(final Long driveID) {
             this.driveID = driveID;
             return this;
         }
 
-        public DriveInfo.Builder nodeID(final NodeID nodeID) {
+        public DriveInfo.Builder nodeID(final Long nodeID) {
             this.nodeID = nodeID;
             return this;
         }

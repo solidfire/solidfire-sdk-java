@@ -34,7 +34,7 @@ public class CreateVolumeRequest implements Serializable {
 
     public static final long serialVersionUID = 5050439057400185898L;
     @SerializedName("name") private String name;
-    @SerializedName("accountID") private AccountID accountID;
+    @SerializedName("accountID") private Long accountID;
     @SerializedName("totalSize") private Long totalSize;
     @SerializedName("enable512e") private Boolean enable512e;
     @SerializedName("qos") private Optional<QoS> qos;
@@ -49,7 +49,7 @@ public class CreateVolumeRequest implements Serializable {
     @Since("7.0")
     public CreateVolumeRequest(
         String name,
-        AccountID accountID,
+        Long accountID,
         Long totalSize,
         Boolean enable512e,
         Optional<QoS> qos,
@@ -76,8 +76,8 @@ public class CreateVolumeRequest implements Serializable {
     /** 
      * AccountID for the owner of this volume.
      **/
-    public AccountID getAccountID() { return this.accountID; }
-    public void setAccountID(AccountID accountID) { 
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
     /** 
@@ -178,7 +178,7 @@ public class CreateVolumeRequest implements Serializable {
 
     public static class Builder {
         private String name;
-        private AccountID accountID;
+        private Long accountID;
         private Long totalSize;
         private Boolean enable512e;
         private Optional<QoS> qos;
@@ -212,7 +212,7 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeRequest.Builder accountID(final AccountID accountID) {
+        public CreateVolumeRequest.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }

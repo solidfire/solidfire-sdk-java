@@ -33,7 +33,7 @@ import java.util.Objects;
 public class AddNodesRequest implements Serializable {
 
     public static final long serialVersionUID = 3993935760062895060L;
-    @SerializedName("pendingNodes") private PendingNodeID[] pendingNodes;
+    @SerializedName("pendingNodes") private Long[] pendingNodes;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class AddNodesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddNodesRequest(
-        PendingNodeID[] pendingNodes
+        Long[] pendingNodes
     )
     {
         this.pendingNodes = pendingNodes;
@@ -52,8 +52,8 @@ public class AddNodesRequest implements Serializable {
     /** 
      * List of PendingNodeIDs for the Nodes to be added. You can obtain the list of Pending Nodes via the ListPendingNodes method.
      **/
-    public PendingNodeID[] getPendingNodes() { return this.pendingNodes; }
-    public void setPendingNodes(PendingNodeID[] pendingNodes) { 
+    public Long[] getPendingNodes() { return this.pendingNodes; }
+    public void setPendingNodes(Long[] pendingNodes) { 
         this.pendingNodes = pendingNodes;
     }
 
@@ -103,7 +103,7 @@ public class AddNodesRequest implements Serializable {
     }
 
     public static class Builder {
-        private PendingNodeID[] pendingNodes;
+        private Long[] pendingNodes;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class AddNodesRequest implements Serializable {
             return this;
         }
 
-        public AddNodesRequest.Builder pendingNodes(final PendingNodeID[] pendingNodes) {
+        public AddNodesRequest.Builder pendingNodes(final Long[] pendingNodes) {
             this.pendingNodes = pendingNodes;
             return this;
         }

@@ -33,7 +33,7 @@ import java.util.Objects;
 public class RemoveVolumePairRequest implements Serializable {
 
     public static final long serialVersionUID = -7144939349326061750L;
-    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("volumeID") private Long volumeID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class RemoveVolumePairRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RemoveVolumePairRequest(
-        VolumeID volumeID
+        Long volumeID
     )
     {
         this.volumeID = volumeID;
@@ -52,8 +52,8 @@ public class RemoveVolumePairRequest implements Serializable {
     /** 
      * ID of the volume on which to stop the replication process.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
 
@@ -103,7 +103,7 @@ public class RemoveVolumePairRequest implements Serializable {
     }
 
     public static class Builder {
-        private VolumeID volumeID;
+        private Long volumeID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class RemoveVolumePairRequest implements Serializable {
             return this;
         }
 
-        public RemoveVolumePairRequest.Builder volumeID(final VolumeID volumeID) {
+        public RemoveVolumePairRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }

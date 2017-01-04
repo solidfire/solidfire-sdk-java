@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetDriveHardwareInfoRequest implements Serializable {
 
     public static final long serialVersionUID = -6304923488608374232L;
-    @SerializedName("driveID") private DriveID driveID;
+    @SerializedName("driveID") private Long driveID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class GetDriveHardwareInfoRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetDriveHardwareInfoRequest(
-        DriveID driveID
+        Long driveID
     )
     {
         this.driveID = driveID;
@@ -52,8 +52,8 @@ public class GetDriveHardwareInfoRequest implements Serializable {
     /** 
      * DriveID for the drive information requested. DriveIDs can be obtained via the "ListDrives" method.
      **/
-    public DriveID getDriveID() { return this.driveID; }
-    public void setDriveID(DriveID driveID) { 
+    public Long getDriveID() { return this.driveID; }
+    public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
 
@@ -103,7 +103,7 @@ public class GetDriveHardwareInfoRequest implements Serializable {
     }
 
     public static class Builder {
-        private DriveID driveID;
+        private Long driveID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class GetDriveHardwareInfoRequest implements Serializable {
             return this;
         }
 
-        public GetDriveHardwareInfoRequest.Builder driveID(final DriveID driveID) {
+        public GetDriveHardwareInfoRequest.Builder driveID(final Long driveID) {
             this.driveID = driveID;
             return this;
         }

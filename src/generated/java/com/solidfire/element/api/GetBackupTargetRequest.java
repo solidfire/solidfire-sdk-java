@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetBackupTargetRequest implements Serializable {
 
     public static final long serialVersionUID = 1799534556354182754L;
-    @SerializedName("backupTargetID") private BackupTargetID backupTargetID;
+    @SerializedName("backupTargetID") private Long backupTargetID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class GetBackupTargetRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetBackupTargetRequest(
-        BackupTargetID backupTargetID
+        Long backupTargetID
     )
     {
         this.backupTargetID = backupTargetID;
@@ -52,8 +52,8 @@ public class GetBackupTargetRequest implements Serializable {
     /** 
      * Unique identifier assigned to the backup target.
      **/
-    public BackupTargetID getBackupTargetID() { return this.backupTargetID; }
-    public void setBackupTargetID(BackupTargetID backupTargetID) { 
+    public Long getBackupTargetID() { return this.backupTargetID; }
+    public void setBackupTargetID(Long backupTargetID) { 
         this.backupTargetID = backupTargetID;
     }
 
@@ -103,7 +103,7 @@ public class GetBackupTargetRequest implements Serializable {
     }
 
     public static class Builder {
-        private BackupTargetID backupTargetID;
+        private Long backupTargetID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class GetBackupTargetRequest implements Serializable {
             return this;
         }
 
-        public GetBackupTargetRequest.Builder backupTargetID(final BackupTargetID backupTargetID) {
+        public GetBackupTargetRequest.Builder backupTargetID(final Long backupTargetID) {
             this.backupTargetID = backupTargetID;
             return this;
         }

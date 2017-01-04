@@ -33,7 +33,7 @@ import java.util.Objects;
 public class RemoveNodesRequest implements Serializable {
 
     public static final long serialVersionUID = 4755776002002165092L;
-    @SerializedName("nodes") private NodeID[] nodes;
+    @SerializedName("nodes") private Long[] nodes;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class RemoveNodesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RemoveNodesRequest(
-        NodeID[] nodes
+        Long[] nodes
     )
     {
         this.nodes = nodes;
@@ -52,8 +52,8 @@ public class RemoveNodesRequest implements Serializable {
     /** 
      * List of NodeIDs for the nodes to be removed.
      **/
-    public NodeID[] getNodes() { return this.nodes; }
-    public void setNodes(NodeID[] nodes) { 
+    public Long[] getNodes() { return this.nodes; }
+    public void setNodes(Long[] nodes) { 
         this.nodes = nodes;
     }
 
@@ -103,7 +103,7 @@ public class RemoveNodesRequest implements Serializable {
     }
 
     public static class Builder {
-        private NodeID[] nodes;
+        private Long[] nodes;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class RemoveNodesRequest implements Serializable {
             return this;
         }
 
-        public RemoveNodesRequest.Builder nodes(final NodeID[] nodes) {
+        public RemoveNodesRequest.Builder nodes(final Long[] nodes) {
             this.nodes = nodes;
             return this;
         }

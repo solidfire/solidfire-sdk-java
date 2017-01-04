@@ -33,7 +33,7 @@ import java.util.Objects;
 public class NewDrive implements Serializable {
 
     public static final long serialVersionUID = -7720744847732639554L;
-    @SerializedName("driveID") private DriveID driveID;
+    @SerializedName("driveID") private Long driveID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class NewDrive implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public NewDrive(
-        DriveID driveID
+        Long driveID
     )
     {
         this.driveID = driveID;
@@ -52,8 +52,8 @@ public class NewDrive implements Serializable {
     /** 
      * A unique identifier for this drive.
      **/
-    public DriveID getDriveID() { return this.driveID; }
-    public void setDriveID(DriveID driveID) { 
+    public Long getDriveID() { return this.driveID; }
+    public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
 
@@ -103,7 +103,7 @@ public class NewDrive implements Serializable {
     }
 
     public static class Builder {
-        private DriveID driveID;
+        private Long driveID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class NewDrive implements Serializable {
             return this;
         }
 
-        public NewDrive.Builder driveID(final DriveID driveID) {
+        public NewDrive.Builder driveID(final Long driveID) {
             this.driveID = driveID;
             return this;
         }

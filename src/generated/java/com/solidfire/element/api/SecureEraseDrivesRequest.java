@@ -33,7 +33,7 @@ import java.util.Objects;
 public class SecureEraseDrivesRequest implements Serializable {
 
     public static final long serialVersionUID = 6139230092702430435L;
-    @SerializedName("drives") private DriveID[] drives;
+    @SerializedName("drives") private Long[] drives;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class SecureEraseDrivesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public SecureEraseDrivesRequest(
-        DriveID[] drives
+        Long[] drives
     )
     {
         this.drives = drives;
@@ -52,8 +52,8 @@ public class SecureEraseDrivesRequest implements Serializable {
     /** 
      * List of driveIDs to secure erase.
      **/
-    public DriveID[] getDrives() { return this.drives; }
-    public void setDrives(DriveID[] drives) { 
+    public Long[] getDrives() { return this.drives; }
+    public void setDrives(Long[] drives) { 
         this.drives = drives;
     }
 
@@ -103,7 +103,7 @@ public class SecureEraseDrivesRequest implements Serializable {
     }
 
     public static class Builder {
-        private DriveID[] drives;
+        private Long[] drives;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class SecureEraseDrivesRequest implements Serializable {
             return this;
         }
 
-        public SecureEraseDrivesRequest.Builder drives(final DriveID[] drives) {
+        public SecureEraseDrivesRequest.Builder drives(final Long[] drives) {
             this.drives = drives;
             return this;
         }

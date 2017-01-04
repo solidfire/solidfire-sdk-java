@@ -37,12 +37,12 @@ public class ClusterFaultInfo implements Serializable {
     @SerializedName("type") private String type;
     @SerializedName("code") private String code;
     @SerializedName("details") private String details;
-    @SerializedName("nodeHardwareFaultID") private NodeHardwareFaultID nodeHardwareFaultID;
-    @SerializedName("nodeID") private NodeID nodeID;
-    @SerializedName("serviceID") private ServiceID serviceID;
-    @SerializedName("driveID") private DriveID driveID;
+    @SerializedName("nodeHardwareFaultID") private Long nodeHardwareFaultID;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("serviceID") private Long serviceID;
+    @SerializedName("driveID") private Long driveID;
     @SerializedName("resolved") private Boolean resolved;
-    @SerializedName("clusterFaultID") private ClusterFaultID clusterFaultID;
+    @SerializedName("clusterFaultID") private Long clusterFaultID;
     @SerializedName("date") private String date;
     @SerializedName("resolvedDate") private String resolvedDate;
     @SerializedName("data") private Object data;
@@ -59,12 +59,12 @@ public class ClusterFaultInfo implements Serializable {
         String type,
         String code,
         String details,
-        NodeHardwareFaultID nodeHardwareFaultID,
-        NodeID nodeID,
-        ServiceID serviceID,
-        DriveID driveID,
+        Long nodeHardwareFaultID,
+        Long nodeID,
+        Long serviceID,
+        Long driveID,
         Boolean resolved,
-        ClusterFaultID clusterFaultID,
+        Long clusterFaultID,
         String date,
         String resolvedDate,
         Object data
@@ -111,26 +111,26 @@ public class ClusterFaultInfo implements Serializable {
     }
     /** 
      **/
-    public NodeHardwareFaultID getNodeHardwareFaultID() { return this.nodeHardwareFaultID; }
-    public void setNodeHardwareFaultID(NodeHardwareFaultID nodeHardwareFaultID) { 
+    public Long getNodeHardwareFaultID() { return this.nodeHardwareFaultID; }
+    public void setNodeHardwareFaultID(Long nodeHardwareFaultID) { 
         this.nodeHardwareFaultID = nodeHardwareFaultID;
     }
     /** 
      **/
-    public NodeID getNodeID() { return this.nodeID; }
-    public void setNodeID(NodeID nodeID) { 
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
      **/
-    public ServiceID getServiceID() { return this.serviceID; }
-    public void setServiceID(ServiceID serviceID) { 
+    public Long getServiceID() { return this.serviceID; }
+    public void setServiceID(Long serviceID) { 
         this.serviceID = serviceID;
     }
     /** 
      **/
-    public DriveID getDriveID() { return this.driveID; }
-    public void setDriveID(DriveID driveID) { 
+    public Long getDriveID() { return this.driveID; }
+    public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
     /** 
@@ -141,8 +141,8 @@ public class ClusterFaultInfo implements Serializable {
     }
     /** 
      **/
-    public ClusterFaultID getClusterFaultID() { return this.clusterFaultID; }
-    public void setClusterFaultID(ClusterFaultID clusterFaultID) { 
+    public Long getClusterFaultID() { return this.clusterFaultID; }
+    public void setClusterFaultID(Long clusterFaultID) { 
         this.clusterFaultID = clusterFaultID;
     }
     /** 
@@ -250,12 +250,12 @@ public class ClusterFaultInfo implements Serializable {
         private String type;
         private String code;
         private String details;
-        private NodeHardwareFaultID nodeHardwareFaultID;
-        private NodeID nodeID;
-        private ServiceID serviceID;
-        private DriveID driveID;
+        private Long nodeHardwareFaultID;
+        private Long nodeID;
+        private Long serviceID;
+        private Long driveID;
         private Boolean resolved;
-        private ClusterFaultID clusterFaultID;
+        private Long clusterFaultID;
         private String date;
         private String resolvedDate;
         private Object data;
@@ -317,22 +317,22 @@ public class ClusterFaultInfo implements Serializable {
             return this;
         }
 
-        public ClusterFaultInfo.Builder nodeHardwareFaultID(final NodeHardwareFaultID nodeHardwareFaultID) {
+        public ClusterFaultInfo.Builder nodeHardwareFaultID(final Long nodeHardwareFaultID) {
             this.nodeHardwareFaultID = nodeHardwareFaultID;
             return this;
         }
 
-        public ClusterFaultInfo.Builder nodeID(final NodeID nodeID) {
+        public ClusterFaultInfo.Builder nodeID(final Long nodeID) {
             this.nodeID = nodeID;
             return this;
         }
 
-        public ClusterFaultInfo.Builder serviceID(final ServiceID serviceID) {
+        public ClusterFaultInfo.Builder serviceID(final Long serviceID) {
             this.serviceID = serviceID;
             return this;
         }
 
-        public ClusterFaultInfo.Builder driveID(final DriveID driveID) {
+        public ClusterFaultInfo.Builder driveID(final Long driveID) {
             this.driveID = driveID;
             return this;
         }
@@ -342,7 +342,7 @@ public class ClusterFaultInfo implements Serializable {
             return this;
         }
 
-        public ClusterFaultInfo.Builder clusterFaultID(final ClusterFaultID clusterFaultID) {
+        public ClusterFaultInfo.Builder clusterFaultID(final Long clusterFaultID) {
             this.clusterFaultID = clusterFaultID;
             return this;
         }

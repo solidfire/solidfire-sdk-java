@@ -36,9 +36,9 @@ import java.util.Objects;
 public class Node implements Serializable {
 
     public static final long serialVersionUID = -7985492147846592224L;
-    @SerializedName("nodeID") private NodeID nodeID;
-    @SerializedName("associatedMasterServiceID") private ServiceID associatedMasterServiceID;
-    @SerializedName("associatedFServiceID") private ServiceID associatedFServiceID;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("associatedMasterServiceID") private Long associatedMasterServiceID;
+    @SerializedName("associatedFServiceID") private Long associatedFServiceID;
     @SerializedName("fibreChannelTargetPortGroup") private String fibreChannelTargetPortGroup;
     @SerializedName("name") private String name;
     @SerializedName("platformInfo") private Platform platformInfo;
@@ -61,9 +61,9 @@ public class Node implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public Node(
-        NodeID nodeID,
-        ServiceID associatedMasterServiceID,
-        ServiceID associatedFServiceID,
+        Long nodeID,
+        Long associatedMasterServiceID,
+        Long associatedFServiceID,
         String fibreChannelTargetPortGroup,
         String name,
         Platform platformInfo,
@@ -100,21 +100,21 @@ public class Node implements Serializable {
     /** 
      * The unique identifier for this node.
      **/
-    public NodeID getNodeID() { return this.nodeID; }
-    public void setNodeID(NodeID nodeID) { 
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
      * The master service responsible for controlling other services on this node.
      **/
-    public ServiceID getAssociatedMasterServiceID() { return this.associatedMasterServiceID; }
-    public void setAssociatedMasterServiceID(ServiceID associatedMasterServiceID) { 
+    public Long getAssociatedMasterServiceID() { return this.associatedMasterServiceID; }
+    public void setAssociatedMasterServiceID(Long associatedMasterServiceID) { 
         this.associatedMasterServiceID = associatedMasterServiceID;
     }
     /** 
      **/
-    public ServiceID getAssociatedFServiceID() { return this.associatedFServiceID; }
-    public void setAssociatedFServiceID(ServiceID associatedFServiceID) { 
+    public Long getAssociatedFServiceID() { return this.associatedFServiceID; }
+    public void setAssociatedFServiceID(Long associatedFServiceID) { 
         this.associatedFServiceID = associatedFServiceID;
     }
     /** 
@@ -296,9 +296,9 @@ public class Node implements Serializable {
     }
 
     public static class Builder {
-        private NodeID nodeID;
-        private ServiceID associatedMasterServiceID;
-        private ServiceID associatedFServiceID;
+        private Long nodeID;
+        private Long associatedMasterServiceID;
+        private Long associatedFServiceID;
         private String fibreChannelTargetPortGroup;
         private String name;
         private Platform platformInfo;
@@ -356,17 +356,17 @@ public class Node implements Serializable {
             return this;
         }
 
-        public Node.Builder nodeID(final NodeID nodeID) {
+        public Node.Builder nodeID(final Long nodeID) {
             this.nodeID = nodeID;
             return this;
         }
 
-        public Node.Builder associatedMasterServiceID(final ServiceID associatedMasterServiceID) {
+        public Node.Builder associatedMasterServiceID(final Long associatedMasterServiceID) {
             this.associatedMasterServiceID = associatedMasterServiceID;
             return this;
         }
 
-        public Node.Builder associatedFServiceID(final ServiceID associatedFServiceID) {
+        public Node.Builder associatedFServiceID(final Long associatedFServiceID) {
             this.associatedFServiceID = associatedFServiceID;
             return this;
         }

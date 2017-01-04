@@ -36,7 +36,7 @@ public class VirtualVolumeHost implements Serializable {
     @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
     @SerializedName("clusterID") private java.util.UUID clusterID;
     @SerializedName("visibleProtocolEndpointIDs") private java.util.UUID[] visibleProtocolEndpointIDs;
-    @SerializedName("bindings") private VvolBindingID[] bindings;
+    @SerializedName("bindings") private Long[] bindings;
     @SerializedName("initiatorNames") private String[] initiatorNames;
     @SerializedName("hostAddress") private String hostAddress;
 
@@ -51,7 +51,7 @@ public class VirtualVolumeHost implements Serializable {
         java.util.UUID virtualVolumeHostID,
         java.util.UUID clusterID,
         java.util.UUID[] visibleProtocolEndpointIDs,
-        VvolBindingID[] bindings,
+        Long[] bindings,
         String[] initiatorNames,
         String hostAddress
     )
@@ -84,8 +84,8 @@ public class VirtualVolumeHost implements Serializable {
     }
     /** 
      **/
-    public VvolBindingID[] getBindings() { return this.bindings; }
-    public void setBindings(VvolBindingID[] bindings) { 
+    public Long[] getBindings() { return this.bindings; }
+    public void setBindings(Long[] bindings) { 
         this.bindings = bindings;
     }
     /** 
@@ -165,7 +165,7 @@ public class VirtualVolumeHost implements Serializable {
         private java.util.UUID virtualVolumeHostID;
         private java.util.UUID clusterID;
         private java.util.UUID[] visibleProtocolEndpointIDs;
-        private VvolBindingID[] bindings;
+        private Long[] bindings;
         private String[] initiatorNames;
         private String hostAddress;
 
@@ -207,7 +207,7 @@ public class VirtualVolumeHost implements Serializable {
             return this;
         }
 
-        public VirtualVolumeHost.Builder bindings(final VvolBindingID[] bindings) {
+        public VirtualVolumeHost.Builder bindings(final Long[] bindings) {
             this.bindings = bindings;
             return this;
         }

@@ -35,7 +35,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
     public static final long serialVersionUID = -5060321682615657329L;
     @SerializedName("compression") private Double compression;
     @SerializedName("deduplication") private Double deduplication;
-    @SerializedName("missingVolumes") private VolumeID[] missingVolumes;
+    @SerializedName("missingVolumes") private Long[] missingVolumes;
     @SerializedName("thinProvisioning") private Double thinProvisioning;
     @SerializedName("timestamp") private String timestamp;
 
@@ -63,7 +63,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
     public GetVolumeEfficiencyResult(
         Double compression,
         Double deduplication,
-        VolumeID[] missingVolumes,
+        Long[] missingVolumes,
         Double thinProvisioning,
         String timestamp
     )
@@ -95,8 +95,8 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * The volumes that could not be queried for efficiency data.
      * Missing volumes can be caused by GC being less than hour old, temporary network loss or restarted services since the GC cycle.
      **/
-    public VolumeID[] getMissingVolumes() { return this.missingVolumes; }
-    public void setMissingVolumes(VolumeID[] missingVolumes) { 
+    public Long[] getMissingVolumes() { return this.missingVolumes; }
+    public void setMissingVolumes(Long[] missingVolumes) { 
         this.missingVolumes = missingVolumes;
     }
     /** 
@@ -175,7 +175,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
     public static class Builder {
         private Double compression;
         private Double deduplication;
-        private VolumeID[] missingVolumes;
+        private Long[] missingVolumes;
         private Double thinProvisioning;
         private String timestamp;
 
@@ -210,7 +210,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
             return this;
         }
 
-        public GetVolumeEfficiencyResult.Builder missingVolumes(final VolumeID[] missingVolumes) {
+        public GetVolumeEfficiencyResult.Builder missingVolumes(final Long[] missingVolumes) {
             this.missingVolumes = missingVolumes;
             return this;
         }

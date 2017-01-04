@@ -69,7 +69,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetAccountResult getAccountByID(
         
-        AccountID accountID
+        Long accountID
         );
     /** 
      * Returns details about an account, given its Username.
@@ -101,7 +101,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetEfficiencyResult getAccountEfficiency(
         
-        AccountID accountID
+        Long accountID
         );
     /** 
      * Returns the entire list of accounts, with optional paging support.
@@ -117,7 +117,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListAccountsResult listAccounts(
         
-        Optional<AccountID> startAccountID
+        Optional<Long> startAccountID
 , 
         Optional<Long> limit
         );
@@ -141,7 +141,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ModifyAccountResult modifyAccount(
         
-        AccountID accountID
+        Long accountID
 , 
         Optional<String> username
 , 
@@ -171,7 +171,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public RemoveAccountResult removeAccount(
         
-        AccountID accountID
+        Long accountID
         );
     /** 
      * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
@@ -205,7 +205,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetBackupTargetResult getBackupTarget(
         
-        BackupTargetID backupTargetID
+        Long backupTargetID
         );
     /** 
      * You can use ListBackupTargets to retrieve information about all backup targets that have been created.
@@ -227,7 +227,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ModifyBackupTargetResult modifyBackupTarget(
         
-        BackupTargetID backupTargetID
+        Long backupTargetID
 , 
         Optional<String> name
 , 
@@ -247,7 +247,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public RemoveBackupTargetResult removeBackupTarget(
         
-        BackupTargetID backupTargetID
+        Long backupTargetID
         );
     /** 
      * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
@@ -283,7 +283,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public RemoveClusterAdminResult removeClusterAdmin(
         
-        ClusterAdminID clusterAdminID
+        Long clusterAdminID
         );
     /** 
      * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
@@ -668,9 +668,9 @@ public interface SolidFireElementIF {
         
         Optional<Long> maxEvents
 , 
-        Optional<EventID> startEventID
+        Optional<Long> startEventID
 , 
-        Optional<EventID> endEventID
+        Optional<Long> endEventID
 , 
         Optional<String> eventQueueType
         );
@@ -784,7 +784,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetDriveHardwareInfoResult getDriveHardwareInfo(
         
-        DriveID driveID
+        Long driveID
         );
     /** 
      * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
@@ -802,7 +802,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetDriveStatsResult getDriveStats(
         
-        DriveID driveID
+        Long driveID
         );
     /** 
      * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
@@ -867,7 +867,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public AsyncHandleResult removeDrives(
         
-        DriveID[] drives
+        Long[] drives
         );
     /** 
      * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
@@ -913,7 +913,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public AsyncHandleResult secureEraseDrives(
         
-        DriveID[] drives
+        Long[] drives
         );
     /** 
      * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
@@ -1281,7 +1281,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public AddNodesResult addNodes(
         
-        PendingNodeID[] pendingNodes
+        Long[] pendingNodes
         );
     /** 
      * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
@@ -1313,7 +1313,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetNodeStatsResult getNodeStats(
         
-        NodeID nodeID
+        Long nodeID
         );
     /** 
      * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
@@ -1388,7 +1388,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public RemoveNodesResult removeNodes(
         
-        NodeID[] nodes
+        Long[] nodes
         );
     /** 
      * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
@@ -1478,7 +1478,7 @@ public interface SolidFireElementIF {
         
         String volumePairingKey
 , 
-        VolumeID volumeID
+        Long volumeID
         );
     /** 
      * ListActivePairedVolumes is used to list all of the active volumes paired with a volume.
@@ -1550,7 +1550,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public RemoveVolumePairResult removeVolumePair(
         
-        VolumeID volumeID
+        Long volumeID
         );
     /** 
      * StartClusterPairing is used to create an encoded key from a cluster that is used to pair with another cluster.
@@ -1576,7 +1576,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public StartVolumePairingResult startVolumePairing(
         
-        VolumeID volumeID
+        Long volumeID
 , 
         Optional<String> mode
         );
@@ -1700,7 +1700,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public CreateGroupSnapshotResult createGroupSnapshot(
         
-        VolumeID[] volumes
+        Long[] volumes
 , 
         Optional<String> name
 , 
@@ -1756,9 +1756,9 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public CreateSnapshotResult createSnapshot(
         
-        VolumeID volumeID
+        Long volumeID
 , 
-        Optional<SnapshotID> snapshotID
+        Optional<Long> snapshotID
 , 
         Optional<String> name
 , 
@@ -1786,7 +1786,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public DeleteGroupSnapshotResult deleteGroupSnapshot(
         
-        GroupSnapshotID groupSnapshotID
+        Long groupSnapshotID
 , 
         Boolean saveMembers
         );
@@ -1810,7 +1810,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public DeleteSnapshotResult deleteSnapshot(
         
-        SnapshotID snapshotID
+        Long snapshotID
         );
     /** 
      * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
@@ -1826,7 +1826,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetScheduleResult getSchedule(
         
-        ScheduleID scheduleID
+        Long scheduleID
         );
     /** 
      * ListGroupSnapshots is used to return information about all group snapshots that have been created.
@@ -1842,7 +1842,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListGroupSnapshotsResult listGroupSnapshots(
         
-        Optional<VolumeID> volumeID
+        Optional<Long> volumeID
         );
     /** 
      * ListSchedule is used to return information about all scheduled snapshots that have been created.
@@ -1864,7 +1864,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListSnapshotsResult listSnapshots(
         
-        Optional<VolumeID> volumeID
+        Optional<Long> volumeID
         );
     /** 
      * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
@@ -1880,7 +1880,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ModifyGroupSnapshotResult modifyGroupSnapshot(
         
-        GroupSnapshotID groupSnapshotID
+        Long groupSnapshotID
 , 
         Optional<String> expirationTime
 , 
@@ -1918,7 +1918,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ModifySnapshotResult modifySnapshot(
         
-        SnapshotID snapshotID
+        Long snapshotID
 , 
         Optional<String> expirationTime
 , 
@@ -1944,7 +1944,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public CreateGroupSnapshotResult rollbackToGroupSnapshot(
         
-        GroupSnapshotID groupSnapshotID
+        Long groupSnapshotID
 , 
         Boolean saveCurrentState
 , 
@@ -1976,9 +1976,9 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public CreateSnapshotResult rollbackToSnapshot(
         
-        VolumeID volumeID
+        Long volumeID
 , 
-        SnapshotID snapshotID
+        Long snapshotID
 , 
         Boolean saveCurrentState
 , 
@@ -2252,7 +2252,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public AddVirtualNetworkResult addVirtualNetwork(
         
-        VirtualNetworkTag virtualNetworkTag
+        Long virtualNetworkTag
 , 
         String name
 , 
@@ -2286,11 +2286,11 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListVirtualNetworksResult listVirtualNetworks(
         
-        Optional<VirtualNetworkID> virtualNetworkID
+        Optional<Long> virtualNetworkID
 , 
         Optional<Long> virtualNetworkTag
 , 
-        Optional<VirtualNetworkID[]> virtualNetworkIDs
+        Optional<Long[]> virtualNetworkIDs
 , 
         Optional<Long[]> virtualNetworkTags
         );
@@ -2312,9 +2312,9 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public AddVirtualNetworkResult modifyVirtualNetwork(
         
-        Optional<VirtualNetworkID> virtualNetworkID
+        Optional<Long> virtualNetworkID
 , 
-        Optional<VirtualNetworkTag> virtualNetworkTag
+        Optional<Long> virtualNetworkTag
 , 
         Optional<String> name
 , 
@@ -2348,9 +2348,9 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public RemoveVirtualNetworkResult removeVirtualNetwork(
         
-        Optional<VirtualNetworkID> virtualNetworkID
+        Optional<Long> virtualNetworkID
 , 
-        Optional<VirtualNetworkTag> virtualNetworkTag
+        Optional<Long> virtualNetworkTag
         );
     /** 
      * CreateVirtualVolumeHost creates a new ESX host.
@@ -2482,7 +2482,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(
         
-        Optional<VvolBindingID[]> virtualVolumeBindingIDs
+        Optional<Long[]> virtualVolumeBindingIDs
         );
     /** 
      * ListVirtualVolumeHosts returns a list of known ESX hosts.
@@ -2576,7 +2576,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public CancelCloneResult cancelClone(
         
-        CloneID cloneID
+        Long cloneID
         );
     /** 
      * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
@@ -2618,9 +2618,9 @@ public interface SolidFireElementIF {
 , 
         Optional<String> access
 , 
-        Optional<SnapshotID> groupSnapshotID
+        Optional<Long> groupSnapshotID
 , 
-        Optional<AccountID> newAccountID
+        Optional<Long> newAccountID
         );
     /** 
      * CloneVolume is used to create a copy of the volume.
@@ -2654,17 +2654,17 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public CloneVolumeResult cloneVolume(
         
-        VolumeID volumeID
+        Long volumeID
 , 
         String name
 , 
-        Optional<AccountID> newAccountID
+        Optional<Long> newAccountID
 , 
         Optional<Long> newSize
 , 
         Optional<String> access
 , 
-        Optional<SnapshotID> snapshotID
+        Optional<Long> snapshotID
 , 
         Optional<java.util.Map<String, Object>> attributes
         );
@@ -2682,11 +2682,11 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public CopyVolumeResult copyVolume(
         
-        VolumeID volumeID
+        Long volumeID
 , 
-        VolumeID dstVolumeID
+        Long dstVolumeID
 , 
-        Optional<SnapshotID> snapshotID
+        Optional<Long> snapshotID
         );
     /** 
      * CreateVolume is used to create a new (empty) volume on the cluster.
@@ -2706,7 +2706,7 @@ public interface SolidFireElementIF {
         
         String name
 , 
-        AccountID accountID
+        Long accountID
 , 
         Long totalSize
 , 
@@ -2758,7 +2758,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public DeleteVolumeResult deleteVolume(
         
-        VolumeID volumeID
+        Long volumeID
         );
     /** 
      * DeleteVolumes marks multiple (up to 500) active volumes for deletion. Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.The cleanup interval can be set in the SetClusterSettings method. For more information on using this method, see SetClusterSettings on page 1. After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated and no further connections are allowed while the volumes are in this state. A marked volume is not returned in target discovery requests. Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from the system. If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or write operation is stopped. If the volumes you delete are paired with a volume, replication between the paired volumes is suspended and no data is transferred to them or from them while in a deleted state. The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state and data is no longer sent to them or from the deleted volumes. Until the deleted volumes are purged, they can be restored and data transfers resume. If the deleted volumes are purged from the system, the volumes they were paired with enter into a StoppedMisconfigured state and the volume pairing status is removed. The purged volumes become permanently unavailable.
@@ -2810,7 +2810,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetAsyncResultResult getAsyncResult(
         
-        AsyncResultID asyncHandle
+        Long asyncHandle
         );
     /** 
      * GetDefaultQoS is used to retrieve the default QoS values that are set for a volume if QoS is not supplied.
@@ -2840,7 +2840,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetVolumeEfficiencyResult getVolumeEfficiency(
         
-        VolumeID volumeID
+        Long volumeID
         );
     /** 
      * GetVolumeStats is used to retrieve high-level activity measurements for a single volume.
@@ -2858,7 +2858,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetVolumeStatsResult getVolumeStats(
         
-        VolumeID volumeID
+        Long volumeID
         );
     /** 
      * ListActiveVolumes is used to return the list of active volumes currently in the system.
@@ -2876,7 +2876,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListActiveVolumesResult listActiveVolumes(
         
-        Optional<VolumeID> startVolumeID
+        Optional<Long> startVolumeID
 , 
         Optional<Long> limit
         );
@@ -2936,7 +2936,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
         
-        Optional<VolumeAccessGroupID[]> volumeAccessGroups
+        Optional<Long[]> volumeAccessGroups
         );
     /** 
      * The ListVolumes method is used to return a list of volumes that are in a cluster.
@@ -2954,17 +2954,17 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListVolumesResult listVolumes(
         
-        Optional<VolumeID> startVolumeID
+        Optional<Long> startVolumeID
 , 
         Optional<Long> limit
 , 
         Optional<String> volumeStatus
 , 
-        Optional<AccountID[]> accounts
+        Optional<Long[]> accounts
 , 
         Optional<Boolean> isPaired
 , 
-        Optional<VolumeID[]> volumeIDs
+        Optional<Long[]> volumeIDs
         );
     /** 
      * ListVolumesForAccount returns the list of active AND (pending) deleted volumes for an account.
@@ -2980,9 +2980,9 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListVolumesForAccountResult listVolumesForAccount(
         
-        AccountID accountID
+        Long accountID
 , 
-        Optional<VolumeID> startVolumeID
+        Optional<Long> startVolumeID
 , 
         Optional<Long> limit
         );
@@ -3016,9 +3016,9 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ModifyVolumeResult modifyVolume(
         
-        VolumeID volumeID
+        Long volumeID
 , 
-        Optional<AccountID> accountID
+        Optional<Long> accountID
 , 
         Optional<String> access
 , 
@@ -3072,7 +3072,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public PurgeDeletedVolumeResult purgeDeletedVolume(
         
-        VolumeID volumeID
+        Long volumeID
         );
     /** 
      * PurgeDeletedVolumes immediately and permanently purges volumes that have been deleted; you can use this method to purge up to 500 volumes at one time. You must delete volumes using DeleteVolumes before they can be purged. Volumes are purged by the system automatically after a period of time, so usage of this method is not typically required.
@@ -3110,7 +3110,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public RestoreDeletedVolumeResult restoreDeletedVolume(
         
-        VolumeID volumeID
+        Long volumeID
         );
     /** 
      * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.
@@ -3170,11 +3170,11 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public StartBulkVolumeReadResult startBulkVolumeRead(
         
-        VolumeID volumeID
+        Long volumeID
 , 
         String format
 , 
-        Optional<SnapshotID> snapshotID
+        Optional<Long> snapshotID
 , 
         Optional<String> script
 , 
@@ -3204,7 +3204,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public StartBulkVolumeWriteResult startBulkVolumeWrite(
         
-        VolumeID volumeID
+        Long volumeID
 , 
         String format
 , 
@@ -3252,9 +3252,9 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(
         
-        VolumeAccessGroupID volumeAccessGroupID
+        Long volumeAccessGroupID
 , 
-        Iqn[] initiators
+        String[] initiators
         );
     /** 
      * Add volumes to a volume access group.
@@ -3270,9 +3270,9 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(
         
-        VolumeAccessGroupID volumeAccessGroupID
+        Long volumeAccessGroupID
 , 
-        VolumeID[] volumes
+        Long[] volumes
         );
     /** 
      * Creates a new volume access group.
@@ -3298,13 +3298,13 @@ public interface SolidFireElementIF {
         
         String name
 , 
-        Optional<Iqn[]> initiators
+        Optional<String[]> initiators
 , 
-        Optional<VolumeID[]> volumes
+        Optional<Long[]> volumes
 , 
-        Optional<VirtualNetworkID[]> virtualNetworkID
+        Optional<Long[]> virtualNetworkID
 , 
-        Optional<VirtualNetworkTags[]> virtualNetworkTags
+        Optional<Long[]> virtualNetworkTags
 , 
         Optional<java.util.Map<String, Object>> attributes
         );
@@ -3322,7 +3322,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(
         
-        VolumeAccessGroupID volumeAccessGroupID
+        Long volumeAccessGroupID
         );
     /** 
      * GetVolumeAccessGroupEfficiency is used to retrieve efficiency information about a volume access group. Only the volume access group provided as parameters in this API method is used to compute the capacity.
@@ -3338,7 +3338,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetEfficiencyResult getVolumeAccessGroupEfficiency(
         
-        VolumeAccessGroupID volumeAccessGroupID
+        Long volumeAccessGroupID
         );
     /** 
      * The GetVolumeAccessGroupLunAssignments is used to return information LUN mappings of a specified volume access group.
@@ -3354,7 +3354,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(
         
-        VolumeAccessGroupID volumeAccessGroupID
+        Long volumeAccessGroupID
         );
     /** 
      * ListVolumeAccessGroups is used to return information about the volume access groups that are currently in the system.
@@ -3370,7 +3370,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListVolumeAccessGroupsResult listVolumeAccessGroups(
         
-        Optional<VolumeAccessGroupID> startVolumeAccessGroupID
+        Optional<Long> startVolumeAccessGroupID
 , 
         Optional<Long> limit
         );
@@ -3406,17 +3406,17 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(
         
-        VolumeAccessGroupID volumeAccessGroupID
+        Long volumeAccessGroupID
 , 
-        Optional<VirtualNetworkID[]> virtualNetworkID
+        Optional<Long[]> virtualNetworkID
 , 
-        Optional<VirtualNetworkTags[]> virtualNetworkTags
+        Optional<Long[]> virtualNetworkTags
 , 
         Optional<String> name
 , 
-        Optional<Iqn[]> initiators
+        Optional<String[]> initiators
 , 
-        Optional<VolumeID[]> volumes
+        Optional<Long[]> volumes
 , 
         Optional<java.util.Map<String, Object>> attributes
         );
@@ -3446,7 +3446,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(
         
-        VolumeAccessGroupID volumeAccessGroupID
+        Long volumeAccessGroupID
 , 
         LunAssignment[] lunAssignments
         );
@@ -3464,9 +3464,9 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(
         
-        VolumeAccessGroupID volumeAccessGroupID
+        Long volumeAccessGroupID
 , 
-        Iqn[] initiators
+        String[] initiators
         );
     /** 
      * Remove volumes from a volume access group.
@@ -3482,9 +3482,9 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(
         
-        VolumeAccessGroupID volumeAccessGroupID
+        Long volumeAccessGroupID
 , 
-        VolumeID[] volumes
+        Long[] volumes
         );
     /** 
      * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.

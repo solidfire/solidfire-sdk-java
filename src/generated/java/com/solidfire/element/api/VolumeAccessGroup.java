@@ -42,11 +42,11 @@ public class VolumeAccessGroup implements Serializable {
 
     public static final long serialVersionUID = 143293271697026076L;
     @SerializedName("deletedVolumes") private Long[] deletedVolumes;
-    @SerializedName("volumeAccessGroupID") private VolumeAccessGroupID volumeAccessGroupID;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("name") private String name;
     @SerializedName("initiatorIDs") private Long[] initiatorIDs;
-    @SerializedName("initiators") private Iqn[] initiators;
-    @SerializedName("volumes") private VolumeID[] volumes;
+    @SerializedName("initiators") private String[] initiators;
+    @SerializedName("volumes") private Long[] volumes;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
@@ -58,11 +58,11 @@ public class VolumeAccessGroup implements Serializable {
     @Since("7.0")
     public VolumeAccessGroup(
         Long[] deletedVolumes,
-        VolumeAccessGroupID volumeAccessGroupID,
+        Long volumeAccessGroupID,
         String name,
         Long[] initiatorIDs,
-        Iqn[] initiators,
-        VolumeID[] volumes,
+        String[] initiators,
+        Long[] volumes,
         java.util.Map<String, Object> attributes
     )
     {
@@ -85,8 +85,8 @@ public class VolumeAccessGroup implements Serializable {
     /** 
      * Unique ID for this volume access group.
      **/
-    public VolumeAccessGroupID getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
-    public void setVolumeAccessGroupID(VolumeAccessGroupID volumeAccessGroupID) { 
+    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
@@ -106,15 +106,15 @@ public class VolumeAccessGroup implements Serializable {
     /** 
      * List of unique initiator names belonging to the volume access group.
      **/
-    public Iqn[] getInitiators() { return this.initiators; }
-    public void setInitiators(Iqn[] initiators) { 
+    public String[] getInitiators() { return this.initiators; }
+    public void setInitiators(String[] initiators) { 
         this.initiators = initiators;
     }
     /** 
      * List of volumes belonging to the volume access group.
      **/
-    public VolumeID[] getVolumes() { return this.volumes; }
-    public void setVolumes(VolumeID[] volumes) { 
+    public Long[] getVolumes() { return this.volumes; }
+    public void setVolumes(Long[] volumes) { 
         this.volumes = volumes;
     }
     /** 
@@ -190,11 +190,11 @@ public class VolumeAccessGroup implements Serializable {
 
     public static class Builder {
         private Long[] deletedVolumes;
-        private VolumeAccessGroupID volumeAccessGroupID;
+        private Long volumeAccessGroupID;
         private String name;
         private Long[] initiatorIDs;
-        private Iqn[] initiators;
-        private VolumeID[] volumes;
+        private String[] initiators;
+        private Long[] volumes;
         private java.util.Map<String, Object> attributes;
 
         private Builder() { }
@@ -227,7 +227,7 @@ public class VolumeAccessGroup implements Serializable {
             return this;
         }
 
-        public VolumeAccessGroup.Builder volumeAccessGroupID(final VolumeAccessGroupID volumeAccessGroupID) {
+        public VolumeAccessGroup.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }
@@ -242,12 +242,12 @@ public class VolumeAccessGroup implements Serializable {
             return this;
         }
 
-        public VolumeAccessGroup.Builder initiators(final Iqn[] initiators) {
+        public VolumeAccessGroup.Builder initiators(final String[] initiators) {
             this.initiators = initiators;
             return this;
         }
 
-        public VolumeAccessGroup.Builder volumes(final VolumeID[] volumes) {
+        public VolumeAccessGroup.Builder volumes(final Long[] volumes) {
             this.volumes = volumes;
             return this;
         }

@@ -34,8 +34,8 @@ import java.util.Objects;
 public class LunAssignment implements Serializable {
 
     public static final long serialVersionUID = 4843157514928145383L;
-    @SerializedName("volumeID") private VolumeID volumeID;
-    @SerializedName("lun") private Lun lun;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("lun") private Long lun;
 
     // empty constructor
     @Since("7.0")
@@ -45,8 +45,8 @@ public class LunAssignment implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public LunAssignment(
-        VolumeID volumeID,
-        Lun lun
+        Long volumeID,
+        Long lun
     )
     {
         this.volumeID = volumeID;
@@ -56,15 +56,15 @@ public class LunAssignment implements Serializable {
     /** 
      * The volume ID assigned to the Lun.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
      * Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed.
      **/
-    public Lun getLun() { return this.lun; }
-    public void setLun(Lun lun) { 
+    public Long getLun() { return this.lun; }
+    public void setLun(Long lun) { 
         this.lun = lun;
     }
 
@@ -117,8 +117,8 @@ public class LunAssignment implements Serializable {
     }
 
     public static class Builder {
-        private VolumeID volumeID;
-        private Lun lun;
+        private Long volumeID;
+        private Long lun;
 
         private Builder() { }
 
@@ -135,12 +135,12 @@ public class LunAssignment implements Serializable {
             return this;
         }
 
-        public LunAssignment.Builder volumeID(final VolumeID volumeID) {
+        public LunAssignment.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public LunAssignment.Builder lun(final Lun lun) {
+        public LunAssignment.Builder lun(final Long lun) {
             this.lun = lun;
             return this;
         }

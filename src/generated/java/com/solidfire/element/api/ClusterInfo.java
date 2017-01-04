@@ -37,12 +37,12 @@ public class ClusterInfo implements Serializable {
     @SerializedName("encryptionAtRestState") private String encryptionAtRestState;
     @SerializedName("ensemble") private String[] ensemble;
     @SerializedName("mvip") private String mvip;
-    @SerializedName("mvipNodeID") private NodeID mvipNodeID;
+    @SerializedName("mvipNodeID") private Long mvipNodeID;
     @SerializedName("name") private String name;
     @SerializedName("repCount") private Long repCount;
     @SerializedName("state") private String state;
     @SerializedName("svip") private String svip;
-    @SerializedName("svipNodeID") private NodeID svipNodeID;
+    @SerializedName("svipNodeID") private Long svipNodeID;
     @SerializedName("uniqueID") private String uniqueID;
     @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
@@ -58,12 +58,12 @@ public class ClusterInfo implements Serializable {
         String encryptionAtRestState,
         String[] ensemble,
         String mvip,
-        NodeID mvipNodeID,
+        Long mvipNodeID,
         String name,
         Long repCount,
         String state,
         String svip,
-        NodeID svipNodeID,
+        Long svipNodeID,
         String uniqueID,
         java.util.UUID uuid,
         java.util.Map<String, Object> attributes
@@ -107,8 +107,8 @@ public class ClusterInfo implements Serializable {
     /** 
      * Node holding the master MVIP address
      **/
-    public NodeID getMvipNodeID() { return this.mvipNodeID; }
-    public void setMvipNodeID(NodeID mvipNodeID) { 
+    public Long getMvipNodeID() { return this.mvipNodeID; }
+    public void setMvipNodeID(Long mvipNodeID) { 
         this.mvipNodeID = mvipNodeID;
     }
     /** 
@@ -142,8 +142,8 @@ public class ClusterInfo implements Serializable {
     /** 
      * Node holding the master SVIP address.
      **/
-    public NodeID getSvipNodeID() { return this.svipNodeID; }
-    public void setSvipNodeID(NodeID svipNodeID) { 
+    public Long getSvipNodeID() { return this.svipNodeID; }
+    public void setSvipNodeID(Long svipNodeID) { 
         this.svipNodeID = svipNodeID;
     }
     /** 
@@ -249,12 +249,12 @@ public class ClusterInfo implements Serializable {
         private String encryptionAtRestState;
         private String[] ensemble;
         private String mvip;
-        private NodeID mvipNodeID;
+        private Long mvipNodeID;
         private String name;
         private Long repCount;
         private String state;
         private String svip;
-        private NodeID svipNodeID;
+        private Long svipNodeID;
         private String uniqueID;
         private java.util.UUID uuid;
         private java.util.Map<String, Object> attributes;
@@ -309,7 +309,7 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
-        public ClusterInfo.Builder mvipNodeID(final NodeID mvipNodeID) {
+        public ClusterInfo.Builder mvipNodeID(final Long mvipNodeID) {
             this.mvipNodeID = mvipNodeID;
             return this;
         }
@@ -334,7 +334,7 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
-        public ClusterInfo.Builder svipNodeID(final NodeID svipNodeID) {
+        public ClusterInfo.Builder svipNodeID(final Long svipNodeID) {
             this.svipNodeID = svipNodeID;
             return this;
         }

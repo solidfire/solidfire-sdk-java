@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ModifyGroupSnapshotRequest implements Serializable {
 
     public static final long serialVersionUID = -3820766952241604504L;
-    @SerializedName("groupSnapshotID") private GroupSnapshotID groupSnapshotID;
+    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
 
@@ -45,7 +45,7 @@ public class ModifyGroupSnapshotRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyGroupSnapshotRequest(
-        GroupSnapshotID groupSnapshotID,
+        Long groupSnapshotID,
         Optional<String> expirationTime,
         Optional<Boolean> enableRemoteReplication
     )
@@ -58,8 +58,8 @@ public class ModifyGroupSnapshotRequest implements Serializable {
     /** 
      * ID of the snapshot.
      **/
-    public GroupSnapshotID getGroupSnapshotID() { return this.groupSnapshotID; }
-    public void setGroupSnapshotID(GroupSnapshotID groupSnapshotID) { 
+    public Long getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(Long groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
     /** 
@@ -136,7 +136,7 @@ public class ModifyGroupSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private GroupSnapshotID groupSnapshotID;
+        private Long groupSnapshotID;
         private Optional<String> expirationTime;
         private Optional<Boolean> enableRemoteReplication;
 
@@ -157,7 +157,7 @@ public class ModifyGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public ModifyGroupSnapshotRequest.Builder groupSnapshotID(final GroupSnapshotID groupSnapshotID) {
+        public ModifyGroupSnapshotRequest.Builder groupSnapshotID(final Long groupSnapshotID) {
             this.groupSnapshotID = groupSnapshotID;
             return this;
         }

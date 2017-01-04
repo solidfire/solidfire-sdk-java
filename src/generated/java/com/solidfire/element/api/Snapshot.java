@@ -35,8 +35,8 @@ import java.util.Objects;
 public class Snapshot implements Serializable {
 
     public static final long serialVersionUID = -3853847877971082924L;
-    @SerializedName("snapshotID") private SnapshotID snapshotID;
-    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("checksum") private String checksum;
     @SerializedName("enableRemoteReplication") private Boolean enableRemoteReplication;
@@ -46,7 +46,7 @@ public class Snapshot implements Serializable {
     @SerializedName("status") private String status;
     @SerializedName("snapshotUUID") private java.util.UUID snapshotUUID;
     @SerializedName("totalSize") private Long totalSize;
-    @SerializedName("groupID") private Optional<GroupSnapshotID> groupID;
+    @SerializedName("groupID") private Optional<Long> groupID;
     @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
     @SerializedName("createTime") private String createTime;
     @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
@@ -60,13 +60,13 @@ public class Snapshot implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public Snapshot(
-        SnapshotID snapshotID,
-        VolumeID volumeID,
+        Long snapshotID,
+        Long volumeID,
         String name,
         String checksum,
         String status,
         Long totalSize,
-        Optional<GroupSnapshotID> groupID,
+        Optional<Long> groupID,
         String createTime,
         java.util.UUID virtualVolumeID,
         java.util.Map<String, Object> attributes
@@ -78,7 +78,7 @@ public class Snapshot implements Serializable {
         this.checksum = checksum;
         this.status = status;
         this.totalSize = totalSize;
-        this.groupID = (groupID == null) ? Optional.<GroupSnapshotID>empty() : groupID;
+        this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
         this.createTime = createTime;
         this.virtualVolumeID = virtualVolumeID;
         this.attributes = attributes;
@@ -86,8 +86,8 @@ public class Snapshot implements Serializable {
     // parameterized constructor
     @Since("8.0")
     public Snapshot(
-        SnapshotID snapshotID,
-        VolumeID volumeID,
+        Long snapshotID,
+        Long volumeID,
         String name,
         String checksum,
         Boolean enableRemoteReplication,
@@ -97,7 +97,7 @@ public class Snapshot implements Serializable {
         String status,
         java.util.UUID snapshotUUID,
         Long totalSize,
-        Optional<GroupSnapshotID> groupID,
+        Optional<Long> groupID,
         java.util.UUID groupSnapshotUUID,
         String createTime,
         java.util.UUID virtualVolumeID,
@@ -115,7 +115,7 @@ public class Snapshot implements Serializable {
         this.status = status;
         this.snapshotUUID = snapshotUUID;
         this.totalSize = totalSize;
-        this.groupID = (groupID == null) ? Optional.<GroupSnapshotID>empty() : groupID;
+        this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
         this.groupSnapshotUUID = groupSnapshotUUID;
         this.createTime = createTime;
         this.virtualVolumeID = virtualVolumeID;
@@ -125,15 +125,15 @@ public class Snapshot implements Serializable {
     /** 
      * Unique ID for this snapshot.
      **/
-    public SnapshotID getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(SnapshotID snapshotID) { 
+    public Long getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
      * The volume this snapshot was taken of.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
@@ -217,9 +217,9 @@ public class Snapshot implements Serializable {
      * If present, the ID of the group this snapshot is a part of.
      * If not present, this snapshot is not part of a group.
      **/
-    public Optional<GroupSnapshotID> getGroupID() { return this.groupID; }
-    public void setGroupID(Optional<GroupSnapshotID> groupID) { 
-        this.groupID = (groupID == null) ? Optional.<GroupSnapshotID>empty() : groupID;
+    public Optional<Long> getGroupID() { return this.groupID; }
+    public void setGroupID(Optional<Long> groupID) { 
+        this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
     }
     /** 
      * The current "members" results contains information about each snapshot in the group.
@@ -344,8 +344,8 @@ public class Snapshot implements Serializable {
     }
 
     public static class Builder {
-        private SnapshotID snapshotID;
-        private VolumeID volumeID;
+        private Long snapshotID;
+        private Long volumeID;
         private String name;
         private String checksum;
         private Boolean enableRemoteReplication;
@@ -355,7 +355,7 @@ public class Snapshot implements Serializable {
         private String status;
         private java.util.UUID snapshotUUID;
         private Long totalSize;
-        private Optional<GroupSnapshotID> groupID;
+        private Optional<Long> groupID;
         private java.util.UUID groupSnapshotUUID;
         private String createTime;
         private java.util.UUID virtualVolumeID;
@@ -404,12 +404,12 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder snapshotID(final SnapshotID snapshotID) {
+        public Snapshot.Builder snapshotID(final Long snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }
 
-        public Snapshot.Builder volumeID(final VolumeID volumeID) {
+        public Snapshot.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
@@ -459,8 +459,8 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder optionalGroupID(final GroupSnapshotID groupID) {
-            this.groupID = (groupID == null) ? Optional.<GroupSnapshotID>empty() : Optional.of(groupID);
+        public Snapshot.Builder optionalGroupID(final Long groupID) {
+            this.groupID = (groupID == null) ? Optional.<Long>empty() : Optional.of(groupID);
             return this;
         }
 

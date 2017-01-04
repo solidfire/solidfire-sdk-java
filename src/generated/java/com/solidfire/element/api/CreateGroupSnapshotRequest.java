@@ -33,7 +33,7 @@ import java.util.Objects;
 public class CreateGroupSnapshotRequest implements Serializable {
 
     public static final long serialVersionUID = -4050530006639669222L;
-    @SerializedName("volumes") private VolumeID[] volumes;
+    @SerializedName("volumes") private Long[] volumes;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
     @SerializedName("retention") private Optional<String> retention;
@@ -47,7 +47,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CreateGroupSnapshotRequest(
-        VolumeID[] volumes,
+        Long[] volumes,
         Optional<String> name,
         Optional<java.util.Map<String, Object>> attributes
     )
@@ -59,7 +59,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
     // parameterized constructor
     @Since("8.0")
     public CreateGroupSnapshotRequest(
-        VolumeID[] volumes,
+        Long[] volumes,
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> retention,
@@ -76,8 +76,8 @@ public class CreateGroupSnapshotRequest implements Serializable {
     /** 
      * Unique ID of the volume image from which to copy.
      **/
-    public VolumeID[] getVolumes() { return this.volumes; }
-    public void setVolumes(VolumeID[] volumes) { 
+    public Long[] getVolumes() { return this.volumes; }
+    public void setVolumes(Long[] volumes) { 
         this.volumes = volumes;
     }
     /** 
@@ -176,7 +176,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private VolumeID[] volumes;
+        private Long[] volumes;
         private Optional<String> name;
         private Optional<Boolean> enableRemoteReplication;
         private Optional<String> retention;
@@ -203,7 +203,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder volumes(final VolumeID[] volumes) {
+        public CreateGroupSnapshotRequest.Builder volumes(final Long[] volumes) {
             this.volumes = volumes;
             return this;
         }

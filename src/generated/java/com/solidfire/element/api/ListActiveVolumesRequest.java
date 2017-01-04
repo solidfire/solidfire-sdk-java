@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ListActiveVolumesRequest implements Serializable {
 
     public static final long serialVersionUID = 4826675269592232446L;
-    @SerializedName("startVolumeID") private Optional<VolumeID> startVolumeID;
+    @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
 
     // empty constructor
@@ -44,11 +44,11 @@ public class ListActiveVolumesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListActiveVolumesRequest(
-        Optional<VolumeID> startVolumeID,
+        Optional<Long> startVolumeID,
         Optional<Long> limit
     )
     {
-        this.startVolumeID = (startVolumeID == null) ? Optional.<VolumeID>empty() : startVolumeID;
+        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
@@ -57,9 +57,9 @@ public class ListActiveVolumesRequest implements Serializable {
      * This can be useful for paging results.
      * By default, this starts at the lowest VolumeID.
      **/
-    public Optional<VolumeID> getStartVolumeID() { return this.startVolumeID; }
-    public void setStartVolumeID(Optional<VolumeID> startVolumeID) { 
-        this.startVolumeID = (startVolumeID == null) ? Optional.<VolumeID>empty() : startVolumeID;
+    public Optional<Long> getStartVolumeID() { return this.startVolumeID; }
+    public void setStartVolumeID(Optional<Long> startVolumeID) { 
+        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
     }
     /** 
      * The maximum number of volumes to return from the API.
@@ -122,7 +122,7 @@ public class ListActiveVolumesRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<VolumeID> startVolumeID;
+        private Optional<Long> startVolumeID;
         private Optional<Long> limit;
 
         private Builder() { }
@@ -140,8 +140,8 @@ public class ListActiveVolumesRequest implements Serializable {
             return this;
         }
 
-        public ListActiveVolumesRequest.Builder optionalStartVolumeID(final VolumeID startVolumeID) {
-            this.startVolumeID = (startVolumeID == null) ? Optional.<VolumeID>empty() : Optional.of(startVolumeID);
+        public ListActiveVolumesRequest.Builder optionalStartVolumeID(final Long startVolumeID) {
+            this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : Optional.of(startVolumeID);
             return this;
         }
 

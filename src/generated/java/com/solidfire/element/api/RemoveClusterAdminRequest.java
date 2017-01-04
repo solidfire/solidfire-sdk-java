@@ -33,7 +33,7 @@ import java.util.Objects;
 public class RemoveClusterAdminRequest implements Serializable {
 
     public static final long serialVersionUID = 8468883642750058499L;
-    @SerializedName("clusterAdminID") private ClusterAdminID clusterAdminID;
+    @SerializedName("clusterAdminID") private Long clusterAdminID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class RemoveClusterAdminRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RemoveClusterAdminRequest(
-        ClusterAdminID clusterAdminID
+        Long clusterAdminID
     )
     {
         this.clusterAdminID = clusterAdminID;
@@ -52,8 +52,8 @@ public class RemoveClusterAdminRequest implements Serializable {
     /** 
      * ClusterAdminID for the Cluster Admin to remove.
      **/
-    public ClusterAdminID getClusterAdminID() { return this.clusterAdminID; }
-    public void setClusterAdminID(ClusterAdminID clusterAdminID) { 
+    public Long getClusterAdminID() { return this.clusterAdminID; }
+    public void setClusterAdminID(Long clusterAdminID) { 
         this.clusterAdminID = clusterAdminID;
     }
 
@@ -103,7 +103,7 @@ public class RemoveClusterAdminRequest implements Serializable {
     }
 
     public static class Builder {
-        private ClusterAdminID clusterAdminID;
+        private Long clusterAdminID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class RemoveClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public RemoveClusterAdminRequest.Builder clusterAdminID(final ClusterAdminID clusterAdminID) {
+        public RemoveClusterAdminRequest.Builder clusterAdminID(final Long clusterAdminID) {
             this.clusterAdminID = clusterAdminID;
             return this;
         }

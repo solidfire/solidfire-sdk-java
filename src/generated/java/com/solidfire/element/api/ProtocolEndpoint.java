@@ -36,9 +36,9 @@ public class ProtocolEndpoint implements Serializable {
     @SerializedName("protocolEndpointID") private java.util.UUID protocolEndpointID;
     @SerializedName("protocolEndpointState") private String protocolEndpointState;
     @SerializedName("providerType") private String providerType;
-    @SerializedName("primaryProviderID") private ProtocolEndpointProviderID primaryProviderID;
-    @SerializedName("secondaryProviderID") private ProtocolEndpointProviderID secondaryProviderID;
-    @SerializedName("scsiNAADeviceID") private NAADeviceID scsiNAADeviceID;
+    @SerializedName("primaryProviderID") private Long primaryProviderID;
+    @SerializedName("secondaryProviderID") private Long secondaryProviderID;
+    @SerializedName("scsiNAADeviceID") private String scsiNAADeviceID;
 
     // empty constructor
     @Since("7.0")
@@ -51,9 +51,9 @@ public class ProtocolEndpoint implements Serializable {
         java.util.UUID protocolEndpointID,
         String protocolEndpointState,
         String providerType,
-        ProtocolEndpointProviderID primaryProviderID,
-        ProtocolEndpointProviderID secondaryProviderID,
-        NAADeviceID scsiNAADeviceID
+        Long primaryProviderID,
+        Long secondaryProviderID,
+        String scsiNAADeviceID
     )
     {
         this.protocolEndpointID = protocolEndpointID;
@@ -84,20 +84,20 @@ public class ProtocolEndpoint implements Serializable {
     }
     /** 
      **/
-    public ProtocolEndpointProviderID getPrimaryProviderID() { return this.primaryProviderID; }
-    public void setPrimaryProviderID(ProtocolEndpointProviderID primaryProviderID) { 
+    public Long getPrimaryProviderID() { return this.primaryProviderID; }
+    public void setPrimaryProviderID(Long primaryProviderID) { 
         this.primaryProviderID = primaryProviderID;
     }
     /** 
      **/
-    public ProtocolEndpointProviderID getSecondaryProviderID() { return this.secondaryProviderID; }
-    public void setSecondaryProviderID(ProtocolEndpointProviderID secondaryProviderID) { 
+    public Long getSecondaryProviderID() { return this.secondaryProviderID; }
+    public void setSecondaryProviderID(Long secondaryProviderID) { 
         this.secondaryProviderID = secondaryProviderID;
     }
     /** 
      **/
-    public NAADeviceID getScsiNAADeviceID() { return this.scsiNAADeviceID; }
-    public void setScsiNAADeviceID(NAADeviceID scsiNAADeviceID) { 
+    public String getScsiNAADeviceID() { return this.scsiNAADeviceID; }
+    public void setScsiNAADeviceID(String scsiNAADeviceID) { 
         this.scsiNAADeviceID = scsiNAADeviceID;
     }
 
@@ -165,9 +165,9 @@ public class ProtocolEndpoint implements Serializable {
         private java.util.UUID protocolEndpointID;
         private String protocolEndpointState;
         private String providerType;
-        private ProtocolEndpointProviderID primaryProviderID;
-        private ProtocolEndpointProviderID secondaryProviderID;
-        private NAADeviceID scsiNAADeviceID;
+        private Long primaryProviderID;
+        private Long secondaryProviderID;
+        private String scsiNAADeviceID;
 
         private Builder() { }
 
@@ -207,17 +207,17 @@ public class ProtocolEndpoint implements Serializable {
             return this;
         }
 
-        public ProtocolEndpoint.Builder primaryProviderID(final ProtocolEndpointProviderID primaryProviderID) {
+        public ProtocolEndpoint.Builder primaryProviderID(final Long primaryProviderID) {
             this.primaryProviderID = primaryProviderID;
             return this;
         }
 
-        public ProtocolEndpoint.Builder secondaryProviderID(final ProtocolEndpointProviderID secondaryProviderID) {
+        public ProtocolEndpoint.Builder secondaryProviderID(final Long secondaryProviderID) {
             this.secondaryProviderID = secondaryProviderID;
             return this;
         }
 
-        public ProtocolEndpoint.Builder scsiNAADeviceID(final NAADeviceID scsiNAADeviceID) {
+        public ProtocolEndpoint.Builder scsiNAADeviceID(final String scsiNAADeviceID) {
             this.scsiNAADeviceID = scsiNAADeviceID;
             return this;
         }

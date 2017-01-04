@@ -34,8 +34,8 @@ public class PrepareVirtualSnapshotResult implements Serializable {
 
     public static final long serialVersionUID = 3092376121061281453L;
     @SerializedName("virtualVolumeTaskID") private java.util.UUID virtualVolumeTaskID;
-    @SerializedName("volumeID") private VolumeID volumeID;
-    @SerializedName("snapshotID") private SnapshotID snapshotID;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
 
     // empty constructor
@@ -47,8 +47,8 @@ public class PrepareVirtualSnapshotResult implements Serializable {
     @Since("7.0")
     public PrepareVirtualSnapshotResult(
         java.util.UUID virtualVolumeTaskID,
-        VolumeID volumeID,
-        SnapshotID snapshotID,
+        Long volumeID,
+        Long snapshotID,
         java.util.UUID virtualVolumeID
     )
     {
@@ -68,15 +68,15 @@ public class PrepareVirtualSnapshotResult implements Serializable {
     /** 
      * The volume ID of the newly-created clone.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
      * snapshotID for the prepared VVol snapshot.
      **/
-    public SnapshotID getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(SnapshotID snapshotID) { 
+    public Long getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
@@ -143,8 +143,8 @@ public class PrepareVirtualSnapshotResult implements Serializable {
 
     public static class Builder {
         private java.util.UUID virtualVolumeTaskID;
-        private VolumeID volumeID;
-        private SnapshotID snapshotID;
+        private Long volumeID;
+        private Long snapshotID;
         private java.util.UUID virtualVolumeID;
 
         private Builder() { }
@@ -171,12 +171,12 @@ public class PrepareVirtualSnapshotResult implements Serializable {
             return this;
         }
 
-        public PrepareVirtualSnapshotResult.Builder volumeID(final VolumeID volumeID) {
+        public PrepareVirtualSnapshotResult.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public PrepareVirtualSnapshotResult.Builder snapshotID(final SnapshotID snapshotID) {
+        public PrepareVirtualSnapshotResult.Builder snapshotID(final Long snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }

@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
 
     public static final long serialVersionUID = -1261879009386913207L;
-    @SerializedName("volumeAccessGroups") private Optional<VolumeAccessGroupID[]> volumeAccessGroups;
+    @SerializedName("volumeAccessGroups") private Optional<Long[]> volumeAccessGroups;
 
     // empty constructor
     @Since("7.0")
@@ -43,19 +43,19 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListVolumeStatsByVolumeAccessGroupRequest(
-        Optional<VolumeAccessGroupID[]> volumeAccessGroups
+        Optional<Long[]> volumeAccessGroups
     )
     {
-        this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<VolumeAccessGroupID[]>empty() : volumeAccessGroups;
+        this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
     }
 
     /** 
      * An array of VolumeAccessGroupIDs for which volume activity is returned.
      * If no VolumeAccessGroupID is specified, stats for all volume access groups is returned.
      **/
-    public Optional<VolumeAccessGroupID[]> getVolumeAccessGroups() { return this.volumeAccessGroups; }
-    public void setVolumeAccessGroups(Optional<VolumeAccessGroupID[]> volumeAccessGroups) { 
-        this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<VolumeAccessGroupID[]>empty() : volumeAccessGroups;
+    public Optional<Long[]> getVolumeAccessGroups() { return this.volumeAccessGroups; }
+    public void setVolumeAccessGroups(Optional<Long[]> volumeAccessGroups) { 
+        this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
     }
 
     @Override
@@ -106,7 +106,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<VolumeAccessGroupID[]> volumeAccessGroups;
+        private Optional<Long[]> volumeAccessGroups;
 
         private Builder() { }
 
@@ -121,8 +121,8 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public ListVolumeStatsByVolumeAccessGroupRequest.Builder optionalVolumeAccessGroups(final VolumeAccessGroupID[] volumeAccessGroups) {
-            this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<VolumeAccessGroupID[]>empty() : Optional.of(volumeAccessGroups);
+        public ListVolumeStatsByVolumeAccessGroupRequest.Builder optionalVolumeAccessGroups(final Long[] volumeAccessGroups) {
+            this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroups);
             return this;
         }
 

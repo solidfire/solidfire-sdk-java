@@ -33,7 +33,7 @@ import java.util.Objects;
 public class GetScheduleRequest implements Serializable {
 
     public static final long serialVersionUID = 8629386455849003456L;
-    @SerializedName("scheduleID") private ScheduleID scheduleID;
+    @SerializedName("scheduleID") private Long scheduleID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class GetScheduleRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetScheduleRequest(
-        ScheduleID scheduleID
+        Long scheduleID
     )
     {
         this.scheduleID = scheduleID;
@@ -52,8 +52,8 @@ public class GetScheduleRequest implements Serializable {
     /** 
      * Unique ID of the schedule or multiple schedules to display
      **/
-    public ScheduleID getScheduleID() { return this.scheduleID; }
-    public void setScheduleID(ScheduleID scheduleID) { 
+    public Long getScheduleID() { return this.scheduleID; }
+    public void setScheduleID(Long scheduleID) { 
         this.scheduleID = scheduleID;
     }
 
@@ -103,7 +103,7 @@ public class GetScheduleRequest implements Serializable {
     }
 
     public static class Builder {
-        private ScheduleID scheduleID;
+        private Long scheduleID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class GetScheduleRequest implements Serializable {
             return this;
         }
 
-        public GetScheduleRequest.Builder scheduleID(final ScheduleID scheduleID) {
+        public GetScheduleRequest.Builder scheduleID(final Long scheduleID) {
             this.scheduleID = scheduleID;
             return this;
         }

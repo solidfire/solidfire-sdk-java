@@ -84,7 +84,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public GetAccountResult getAccountByID(
-        AccountID accountID
+        Long accountID
         ) {
         return this.getAccountByID(new GetAccountByIDRequest(accountID));
     }
@@ -126,7 +126,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public GetEfficiencyResult getAccountEfficiency(
-        AccountID accountID
+        Long accountID
         ) {
         return this.getAccountEfficiency(new GetAccountEfficiencyRequest(accountID));
     }
@@ -147,7 +147,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ListAccountsResult listAccounts(
-        Optional<AccountID> startAccountID,
+        Optional<Long> startAccountID,
         Optional<Long> limit
         ) {
         return this.listAccounts(new ListAccountsRequest(startAccountID, limit));
@@ -175,7 +175,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ModifyAccountResult modifyAccount(
-        AccountID accountID,
+        Long accountID,
         Optional<String> username,
         Optional<String> status,
         Optional<CHAPSecret> initiatorSecret,
@@ -205,7 +205,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public RemoveAccountResult removeAccount(
-        AccountID accountID
+        Long accountID
         ) {
         return this.removeAccount(new RemoveAccountRequest(accountID));
     }
@@ -248,7 +248,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public GetBackupTargetResult getBackupTarget(
-        BackupTargetID backupTargetID
+        Long backupTargetID
         ) {
         return this.getBackupTarget(new GetBackupTargetRequest(backupTargetID));
     }
@@ -278,7 +278,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ModifyBackupTargetResult modifyBackupTarget(
-        BackupTargetID backupTargetID,
+        Long backupTargetID,
         Optional<String> name,
         Optional<java.util.Map<String, Object>> attributes
         ) {
@@ -301,7 +301,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public RemoveBackupTargetResult removeBackupTarget(
-        BackupTargetID backupTargetID
+        Long backupTargetID
         ) {
         return this.removeBackupTarget(new RemoveBackupTargetRequest(backupTargetID));
     }
@@ -345,7 +345,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public RemoveClusterAdminResult removeClusterAdmin(
-        ClusterAdminID clusterAdminID
+        Long clusterAdminID
         ) {
         return this.removeClusterAdmin(new RemoveClusterAdminRequest(clusterAdminID));
     }
@@ -838,8 +838,8 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public ListEventsResult listEvents(
         Optional<Long> maxEvents,
-        Optional<EventID> startEventID,
-        Optional<EventID> endEventID,
+        Optional<Long> startEventID,
+        Optional<Long> endEventID,
         Optional<String> eventQueueType
         ) {
         return this.listEvents(new ListEventsRequest(maxEvents, startEventID, endEventID, eventQueueType));
@@ -965,7 +965,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public GetDriveHardwareInfoResult getDriveHardwareInfo(
-        DriveID driveID
+        Long driveID
         ) {
         return this.getDriveHardwareInfo(new GetDriveHardwareInfoRequest(driveID));
     }
@@ -989,7 +989,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public GetDriveStatsResult getDriveStats(
-        DriveID driveID
+        Long driveID
         ) {
         return this.getDriveStats(new GetDriveStatsRequest(driveID));
     }
@@ -1067,7 +1067,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public AsyncHandleResult removeDrives(
-        DriveID[] drives
+        Long[] drives
         ) {
         return this.removeDrives(new RemoveDrivesRequest(drives));
     }
@@ -1122,7 +1122,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public AsyncHandleResult secureEraseDrives(
-        DriveID[] drives
+        Long[] drives
         ) {
         return this.secureEraseDrives(new SecureEraseDrivesRequest(drives));
     }
@@ -1580,7 +1580,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public AddNodesResult addNodes(
-        PendingNodeID[] pendingNodes
+        Long[] pendingNodes
         ) {
         return this.addNodes(new AddNodesRequest(pendingNodes));
     }
@@ -1624,7 +1624,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public GetNodeStatsResult getNodeStats(
-        NodeID nodeID
+        Long nodeID
         ) {
         return this.getNodeStats(new GetNodeStatsRequest(nodeID));
     }
@@ -1727,7 +1727,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public RemoveNodesResult removeNodes(
-        NodeID[] nodes
+        Long[] nodes
         ) {
         return this.removeNodes(new RemoveNodesRequest(nodes));
     }
@@ -1839,7 +1839,7 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public CompleteVolumePairingResult completeVolumePairing(
         String volumePairingKey,
-        VolumeID volumeID
+        Long volumeID
         ) {
         return this.completeVolumePairing(new CompleteVolumePairingRequest(volumePairingKey, volumeID));
     }
@@ -1930,7 +1930,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public RemoveVolumePairResult removeVolumePair(
-        VolumeID volumeID
+        Long volumeID
         ) {
         return this.removeVolumePair(new RemoveVolumePairRequest(volumeID));
     }
@@ -1964,7 +1964,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public StartVolumePairingResult startVolumePairing(
-        VolumeID volumeID,
+        Long volumeID,
         Optional<String> mode
         ) {
         return this.startVolumePairing(new StartVolumePairingRequest(volumeID, mode));
@@ -2118,7 +2118,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public CreateGroupSnapshotResult createGroupSnapshot(
-        VolumeID[] volumes,
+        Long[] volumes,
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> retention,
@@ -2181,8 +2181,8 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public CreateSnapshotResult createSnapshot(
-        VolumeID volumeID,
-        Optional<SnapshotID> snapshotID,
+        Long volumeID,
+        Optional<Long> snapshotID,
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> retention,
@@ -2211,7 +2211,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public DeleteGroupSnapshotResult deleteGroupSnapshot(
-        GroupSnapshotID groupSnapshotID,
+        Long groupSnapshotID,
         Boolean saveMembers
         ) {
         return this.deleteGroupSnapshot(new DeleteGroupSnapshotRequest(groupSnapshotID, saveMembers));
@@ -2239,7 +2239,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public DeleteSnapshotResult deleteSnapshot(
-        SnapshotID snapshotID
+        Long snapshotID
         ) {
         return this.deleteSnapshot(new DeleteSnapshotRequest(snapshotID));
     }
@@ -2261,7 +2261,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public GetScheduleResult getSchedule(
-        ScheduleID scheduleID
+        Long scheduleID
         ) {
         return this.getSchedule(new GetScheduleRequest(scheduleID));
     }
@@ -2282,7 +2282,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ListGroupSnapshotsResult listGroupSnapshots(
-        Optional<VolumeID> volumeID
+        Optional<Long> volumeID
         ) {
         return this.listGroupSnapshots(new ListGroupSnapshotsRequest(volumeID));
     }
@@ -2313,7 +2313,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ListSnapshotsResult listSnapshots(
-        Optional<VolumeID> volumeID
+        Optional<Long> volumeID
         ) {
         return this.listSnapshots(new ListSnapshotsRequest(volumeID));
     }
@@ -2334,7 +2334,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ModifyGroupSnapshotResult modifyGroupSnapshot(
-        GroupSnapshotID groupSnapshotID,
+        Long groupSnapshotID,
         Optional<String> expirationTime,
         Optional<Boolean> enableRemoteReplication
         ) {
@@ -2381,7 +2381,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ModifySnapshotResult modifySnapshot(
-        SnapshotID snapshotID,
+        Long snapshotID,
         Optional<String> expirationTime,
         Optional<Boolean> enableRemoteReplication
         ) {
@@ -2410,7 +2410,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public CreateGroupSnapshotResult rollbackToGroupSnapshot(
-        GroupSnapshotID groupSnapshotID,
+        Long groupSnapshotID,
         Boolean saveCurrentState,
         Optional<String> name,
         Optional<java.util.Map<String, Object>> attributes
@@ -2444,8 +2444,8 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public CreateSnapshotResult rollbackToSnapshot(
-        VolumeID volumeID,
-        SnapshotID snapshotID,
+        Long volumeID,
+        Long snapshotID,
         Boolean saveCurrentState,
         Optional<String> name,
         Optional<java.util.Map<String, Object>> attributes
@@ -2788,7 +2788,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public AddVirtualNetworkResult addVirtualNetwork(
-        VirtualNetworkTag virtualNetworkTag,
+        Long virtualNetworkTag,
         String name,
         AddressBlock[] addressBlocks,
         String netmask,
@@ -2820,9 +2820,9 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ListVirtualNetworksResult listVirtualNetworks(
-        Optional<VirtualNetworkID> virtualNetworkID,
+        Optional<Long> virtualNetworkID,
         Optional<Long> virtualNetworkTag,
-        Optional<VirtualNetworkID[]> virtualNetworkIDs,
+        Optional<Long[]> virtualNetworkIDs,
         Optional<Long[]> virtualNetworkTags
         ) {
         return this.listVirtualNetworks(new ListVirtualNetworksRequest(virtualNetworkID, virtualNetworkTag, virtualNetworkIDs, virtualNetworkTags));
@@ -2848,8 +2848,8 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public AddVirtualNetworkResult modifyVirtualNetwork(
-        Optional<VirtualNetworkID> virtualNetworkID,
-        Optional<VirtualNetworkTag> virtualNetworkTag,
+        Optional<Long> virtualNetworkID,
+        Optional<Long> virtualNetworkTag,
         Optional<String> name,
         Optional<AddressBlock[]> addressBlocks,
         Optional<String> netmask,
@@ -2881,8 +2881,8 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public RemoveVirtualNetworkResult removeVirtualNetwork(
-        Optional<VirtualNetworkID> virtualNetworkID,
-        Optional<VirtualNetworkTag> virtualNetworkTag
+        Optional<Long> virtualNetworkID,
+        Optional<Long> virtualNetworkTag
         ) {
         return this.removeVirtualNetwork(new RemoveVirtualNetworkRequest(virtualNetworkID, virtualNetworkTag));
     }
@@ -3036,7 +3036,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(
-        Optional<VvolBindingID[]> virtualVolumeBindingIDs
+        Optional<Long[]> virtualVolumeBindingIDs
         ) {
         return this.listVirtualVolumeBindings(new ListVirtualVolumeBindingsRequest(virtualVolumeBindingIDs));
     }
@@ -3148,7 +3148,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public CancelCloneResult cancelClone(
-        CloneID cloneID
+        Long cloneID
         ) {
         return this.cancelClone(new CancelCloneRequest(cloneID));
     }
@@ -3198,8 +3198,8 @@ public class SolidFireElement
     public CloneMultipleVolumesResult cloneMultipleVolumes(
         CloneMultipleVolumeParams[] volumes,
         Optional<String> access,
-        Optional<SnapshotID> groupSnapshotID,
-        Optional<AccountID> newAccountID
+        Optional<Long> groupSnapshotID,
+        Optional<Long> newAccountID
         ) {
         return this.cloneMultipleVolumes(new CloneMultipleVolumesRequest(volumes, access, groupSnapshotID, newAccountID));
     }
@@ -3238,12 +3238,12 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public CloneVolumeResult cloneVolume(
-        VolumeID volumeID,
+        Long volumeID,
         String name,
-        Optional<AccountID> newAccountID,
+        Optional<Long> newAccountID,
         Optional<Long> newSize,
         Optional<String> access,
-        Optional<SnapshotID> snapshotID,
+        Optional<Long> snapshotID,
         Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.cloneVolume(new CloneVolumeRequest(volumeID, name, newAccountID, newSize, access, snapshotID, attributes));
@@ -3265,9 +3265,9 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public CopyVolumeResult copyVolume(
-        VolumeID volumeID,
-        VolumeID dstVolumeID,
-        Optional<SnapshotID> snapshotID
+        Long volumeID,
+        Long dstVolumeID,
+        Optional<Long> snapshotID
         ) {
         return this.copyVolume(new CopyVolumeRequest(volumeID, dstVolumeID, snapshotID));
     }
@@ -3291,7 +3291,7 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public CreateVolumeResult createVolume(
         String name,
-        AccountID accountID,
+        Long accountID,
         Long totalSize,
         Boolean enable512e,
         Optional<QoS> qos,
@@ -3344,7 +3344,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public DeleteVolumeResult deleteVolume(
-        VolumeID volumeID
+        Long volumeID
         ) {
         return this.deleteVolume(new DeleteVolumeRequest(volumeID));
     }
@@ -3404,7 +3404,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public GetAsyncResultResult getAsyncResult(
-        AsyncResultID asyncHandle
+        Long asyncHandle
         ) {
         return this.getAsyncResult(new GetAsyncResultRequest(asyncHandle));
     }
@@ -3445,7 +3445,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public GetVolumeEfficiencyResult getVolumeEfficiency(
-        VolumeID volumeID
+        Long volumeID
         ) {
         return this.getVolumeEfficiency(new GetVolumeEfficiencyRequest(volumeID));
     }
@@ -3468,7 +3468,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public GetVolumeStatsResult getVolumeStats(
-        VolumeID volumeID
+        Long volumeID
         ) {
         return this.getVolumeStats(new GetVolumeStatsRequest(volumeID));
     }
@@ -3491,7 +3491,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ListActiveVolumesResult listActiveVolumes(
-        Optional<VolumeID> startVolumeID,
+        Optional<Long> startVolumeID,
         Optional<Long> limit
         ) {
         return this.listActiveVolumes(new ListActiveVolumesRequest(startVolumeID, limit));
@@ -3572,7 +3572,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
-        Optional<VolumeAccessGroupID[]> volumeAccessGroups
+        Optional<Long[]> volumeAccessGroups
         ) {
         return this.listVolumeStatsByVolumeAccessGroup(new ListVolumeStatsByVolumeAccessGroupRequest(volumeAccessGroups));
     }
@@ -3595,12 +3595,12 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ListVolumesResult listVolumes(
-        Optional<VolumeID> startVolumeID,
+        Optional<Long> startVolumeID,
         Optional<Long> limit,
         Optional<String> volumeStatus,
-        Optional<AccountID[]> accounts,
+        Optional<Long[]> accounts,
         Optional<Boolean> isPaired,
-        Optional<VolumeID[]> volumeIDs
+        Optional<Long[]> volumeIDs
         ) {
         return this.listVolumes(new ListVolumesRequest(startVolumeID, limit, volumeStatus, accounts, isPaired, volumeIDs));
     }
@@ -3621,8 +3621,8 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ListVolumesForAccountResult listVolumesForAccount(
-        AccountID accountID,
-        Optional<VolumeID> startVolumeID,
+        Long accountID,
+        Optional<Long> startVolumeID,
         Optional<Long> limit
         ) {
         return this.listVolumesForAccount(new ListVolumesForAccountRequest(accountID, startVolumeID, limit));
@@ -3660,8 +3660,8 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ModifyVolumeResult modifyVolume(
-        VolumeID volumeID,
-        Optional<AccountID> accountID,
+        Long volumeID,
+        Optional<Long> accountID,
         Optional<String> access,
         Optional<QoS> qos,
         Optional<Long> totalSize,
@@ -3716,7 +3716,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public PurgeDeletedVolumeResult purgeDeletedVolume(
-        VolumeID volumeID
+        Long volumeID
         ) {
         return this.purgeDeletedVolume(new PurgeDeletedVolumeRequest(volumeID));
     }
@@ -3762,7 +3762,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public RestoreDeletedVolumeResult restoreDeletedVolume(
-        VolumeID volumeID
+        Long volumeID
         ) {
         return this.restoreDeletedVolume(new RestoreDeletedVolumeRequest(volumeID));
     }
@@ -3830,9 +3830,9 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public StartBulkVolumeReadResult startBulkVolumeRead(
-        VolumeID volumeID,
+        Long volumeID,
         String format,
-        Optional<SnapshotID> snapshotID,
+        Optional<Long> snapshotID,
         Optional<String> script,
         Optional<Object> scriptParameters,
         Optional<java.util.Map<String, Object>> attributes
@@ -3864,7 +3864,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public StartBulkVolumeWriteResult startBulkVolumeWrite(
-        VolumeID volumeID,
+        Long volumeID,
         String format,
         Optional<String> script,
         Optional<Object> scriptParameters,
@@ -3914,8 +3914,8 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(
-        VolumeAccessGroupID volumeAccessGroupID,
-        Iqn[] initiators
+        Long volumeAccessGroupID,
+        String[] initiators
         ) {
         return this.addInitiatorsToVolumeAccessGroup(new AddInitiatorsToVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
     }
@@ -3936,8 +3936,8 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(
-        VolumeAccessGroupID volumeAccessGroupID,
-        VolumeID[] volumes
+        Long volumeAccessGroupID,
+        Long[] volumes
         ) {
         return this.addVolumesToVolumeAccessGroup(new AddVolumesToVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
     }
@@ -3967,10 +3967,10 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public CreateVolumeAccessGroupResult createVolumeAccessGroup(
         String name,
-        Optional<Iqn[]> initiators,
-        Optional<VolumeID[]> volumes,
-        Optional<VirtualNetworkID[]> virtualNetworkID,
-        Optional<VirtualNetworkTags[]> virtualNetworkTags,
+        Optional<String[]> initiators,
+        Optional<Long[]> volumes,
+        Optional<Long[]> virtualNetworkID,
+        Optional<Long[]> virtualNetworkTags,
         Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.createVolumeAccessGroup(new CreateVolumeAccessGroupRequest(name, initiators, volumes, virtualNetworkID, virtualNetworkTags, attributes));
@@ -3992,7 +3992,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(
-        VolumeAccessGroupID volumeAccessGroupID
+        Long volumeAccessGroupID
         ) {
         return this.deleteVolumeAccessGroup(new DeleteVolumeAccessGroupRequest(volumeAccessGroupID));
     }
@@ -4013,7 +4013,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public GetEfficiencyResult getVolumeAccessGroupEfficiency(
-        VolumeAccessGroupID volumeAccessGroupID
+        Long volumeAccessGroupID
         ) {
         return this.getVolumeAccessGroupEfficiency(new GetVolumeAccessGroupEfficiencyRequest(volumeAccessGroupID));
     }
@@ -4034,7 +4034,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(
-        VolumeAccessGroupID volumeAccessGroupID
+        Long volumeAccessGroupID
         ) {
         return this.getVolumeAccessGroupLunAssignments(new GetVolumeAccessGroupLunAssignmentsRequest(volumeAccessGroupID));
     }
@@ -4055,7 +4055,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ListVolumeAccessGroupsResult listVolumeAccessGroups(
-        Optional<VolumeAccessGroupID> startVolumeAccessGroupID,
+        Optional<Long> startVolumeAccessGroupID,
         Optional<Long> limit
         ) {
         return this.listVolumeAccessGroups(new ListVolumeAccessGroupsRequest(startVolumeAccessGroupID, limit));
@@ -4095,12 +4095,12 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(
-        VolumeAccessGroupID volumeAccessGroupID,
-        Optional<VirtualNetworkID[]> virtualNetworkID,
-        Optional<VirtualNetworkTags[]> virtualNetworkTags,
+        Long volumeAccessGroupID,
+        Optional<Long[]> virtualNetworkID,
+        Optional<Long[]> virtualNetworkTags,
         Optional<String> name,
-        Optional<Iqn[]> initiators,
-        Optional<VolumeID[]> volumes,
+        Optional<String[]> initiators,
+        Optional<Long[]> volumes,
         Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.modifyVolumeAccessGroup(new ModifyVolumeAccessGroupRequest(volumeAccessGroupID, virtualNetworkID, virtualNetworkTags, name, initiators, volumes, attributes));
@@ -4134,7 +4134,7 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(
-        VolumeAccessGroupID volumeAccessGroupID,
+        Long volumeAccessGroupID,
         LunAssignment[] lunAssignments
         ) {
         return this.modifyVolumeAccessGroupLunAssignments(new ModifyVolumeAccessGroupLunAssignmentsRequest(volumeAccessGroupID, lunAssignments));
@@ -4156,8 +4156,8 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(
-        VolumeAccessGroupID volumeAccessGroupID,
-        Iqn[] initiators
+        Long volumeAccessGroupID,
+        String[] initiators
         ) {
         return this.removeInitiatorsFromVolumeAccessGroup(new RemoveInitiatorsFromVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
     }
@@ -4178,8 +4178,8 @@ public class SolidFireElement
     @Since("9")
     @ConnectionType("Cluster")
     public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(
-        VolumeAccessGroupID volumeAccessGroupID,
-        VolumeID[] volumes
+        Long volumeAccessGroupID,
+        Long[] volumes
         ) {
         return this.removeVolumesFromVolumeAccessGroup(new RemoveVolumesFromVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
     }

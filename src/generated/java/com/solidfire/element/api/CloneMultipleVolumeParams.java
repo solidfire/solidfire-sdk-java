@@ -33,10 +33,10 @@ import java.util.Objects;
 public class CloneMultipleVolumeParams implements Serializable {
 
     public static final long serialVersionUID = -5436439440207991654L;
-    @SerializedName("volumeID") private VolumeID volumeID;
+    @SerializedName("volumeID") private Long volumeID;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("name") private Optional<String> name;
-    @SerializedName("newAccountID") private Optional<AccountID> newAccountID;
+    @SerializedName("newAccountID") private Optional<Long> newAccountID;
     @SerializedName("newSize") private Optional<Long> newSize;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
@@ -48,10 +48,10 @@ public class CloneMultipleVolumeParams implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CloneMultipleVolumeParams(
-        VolumeID volumeID,
+        Long volumeID,
         Optional<String> access,
         Optional<String> name,
-        Optional<AccountID> newAccountID,
+        Optional<Long> newAccountID,
         Optional<Long> newSize,
         Optional<java.util.Map<String, Object>> attributes
     )
@@ -59,7 +59,7 @@ public class CloneMultipleVolumeParams implements Serializable {
         this.volumeID = volumeID;
         this.access = (access == null) ? Optional.<String>empty() : access;
         this.name = (name == null) ? Optional.<String>empty() : name;
-        this.newAccountID = (newAccountID == null) ? Optional.<AccountID>empty() : newAccountID;
+        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
         this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
@@ -67,8 +67,8 @@ public class CloneMultipleVolumeParams implements Serializable {
     /** 
      * Required parameter for "volumes" array: volumeID.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
@@ -94,9 +94,9 @@ public class CloneMultipleVolumeParams implements Serializable {
     /** 
      * Account ID for the new volume.
      **/
-    public Optional<AccountID> getNewAccountID() { return this.newAccountID; }
-    public void setNewAccountID(Optional<AccountID> newAccountID) { 
-        this.newAccountID = (newAccountID == null) ? Optional.<AccountID>empty() : newAccountID;
+    public Optional<Long> getNewAccountID() { return this.newAccountID; }
+    public void setNewAccountID(Optional<Long> newAccountID) { 
+        this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
     /** 
      * New size Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
@@ -184,10 +184,10 @@ public class CloneMultipleVolumeParams implements Serializable {
     }
 
     public static class Builder {
-        private VolumeID volumeID;
+        private Long volumeID;
         private Optional<String> access;
         private Optional<String> name;
-        private Optional<AccountID> newAccountID;
+        private Optional<Long> newAccountID;
         private Optional<Long> newSize;
         private Optional<java.util.Map<String, Object>> attributes;
 
@@ -214,7 +214,7 @@ public class CloneMultipleVolumeParams implements Serializable {
             return this;
         }
 
-        public CloneMultipleVolumeParams.Builder volumeID(final VolumeID volumeID) {
+        public CloneMultipleVolumeParams.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
@@ -229,8 +229,8 @@ public class CloneMultipleVolumeParams implements Serializable {
             return this;
         }
 
-        public CloneMultipleVolumeParams.Builder optionalNewAccountID(final AccountID newAccountID) {
-            this.newAccountID = (newAccountID == null) ? Optional.<AccountID>empty() : Optional.of(newAccountID);
+        public CloneMultipleVolumeParams.Builder optionalNewAccountID(final Long newAccountID) {
+            this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
             return this;
         }
 

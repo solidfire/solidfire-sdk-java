@@ -41,7 +41,7 @@ public class NetworkInterface implements Serializable {
     @SerializedName("netmask") private String netmask;
     @SerializedName("status") private String status;
     @SerializedName("type") private String type;
-    @SerializedName("virtualNetworkTag") private VirtualNetworkTag virtualNetworkTag;
+    @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
 
     // empty constructor
     @Since("7.0")
@@ -59,7 +59,7 @@ public class NetworkInterface implements Serializable {
         String netmask,
         String status,
         String type,
-        VirtualNetworkTag virtualNetworkTag
+        Long virtualNetworkTag
     )
     {
         this.address = address;
@@ -132,8 +132,8 @@ public class NetworkInterface implements Serializable {
     /** 
      * Virtual Network Tag if on virtual network.
      **/
-    public VirtualNetworkTag getVirtualNetworkTag() { return this.virtualNetworkTag; }
-    public void setVirtualNetworkTag(VirtualNetworkTag virtualNetworkTag) { 
+    public Long getVirtualNetworkTag() { return this.virtualNetworkTag; }
+    public void setVirtualNetworkTag(Long virtualNetworkTag) { 
         this.virtualNetworkTag = virtualNetworkTag;
     }
 
@@ -215,7 +215,7 @@ public class NetworkInterface implements Serializable {
         private String netmask;
         private String status;
         private String type;
-        private VirtualNetworkTag virtualNetworkTag;
+        private Long virtualNetworkTag;
 
         private Builder() { }
 
@@ -286,7 +286,7 @@ public class NetworkInterface implements Serializable {
             return this;
         }
 
-        public NetworkInterface.Builder virtualNetworkTag(final VirtualNetworkTag virtualNetworkTag) {
+        public NetworkInterface.Builder virtualNetworkTag(final Long virtualNetworkTag) {
             this.virtualNetworkTag = virtualNetworkTag;
             return this;
         }

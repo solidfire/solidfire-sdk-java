@@ -33,8 +33,8 @@ import java.util.Objects;
 public class RollbackToSnapshotRequest implements Serializable {
 
     public static final long serialVersionUID = 7387529128604457855L;
-    @SerializedName("volumeID") private VolumeID volumeID;
-    @SerializedName("snapshotID") private SnapshotID snapshotID;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
@@ -47,8 +47,8 @@ public class RollbackToSnapshotRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RollbackToSnapshotRequest(
-        VolumeID volumeID,
-        SnapshotID snapshotID,
+        Long volumeID,
+        Long snapshotID,
         Boolean saveCurrentState,
         Optional<String> name,
         Optional<java.util.Map<String, Object>> attributes
@@ -64,15 +64,15 @@ public class RollbackToSnapshotRequest implements Serializable {
     /** 
      * VolumeID for the volume.
      **/
-    public VolumeID getVolumeID() { return this.volumeID; }
-    public void setVolumeID(VolumeID volumeID) { 
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
      * ID of a previously created snapshot on the given volume.
      **/
-    public SnapshotID getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(SnapshotID snapshotID) { 
+    public Long getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
@@ -161,8 +161,8 @@ public class RollbackToSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private VolumeID volumeID;
-        private SnapshotID snapshotID;
+        private Long volumeID;
+        private Long snapshotID;
         private Boolean saveCurrentState;
         private Optional<String> name;
         private Optional<java.util.Map<String, Object>> attributes;
@@ -188,12 +188,12 @@ public class RollbackToSnapshotRequest implements Serializable {
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder volumeID(final VolumeID volumeID) {
+        public RollbackToSnapshotRequest.Builder volumeID(final Long volumeID) {
             this.volumeID = volumeID;
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder snapshotID(final SnapshotID snapshotID) {
+        public RollbackToSnapshotRequest.Builder snapshotID(final Long snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }

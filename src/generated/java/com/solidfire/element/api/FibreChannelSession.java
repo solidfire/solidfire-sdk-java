@@ -35,8 +35,8 @@ public class FibreChannelSession implements Serializable {
 
     public static final long serialVersionUID = 8264333238023851936L;
     @SerializedName("initiatorWWPN") private String initiatorWWPN;
-    @SerializedName("nodeID") private NodeID nodeID;
-    @SerializedName("serviceID") private ServiceID serviceID;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("serviceID") private Long serviceID;
     @SerializedName("targetWWPN") private String targetWWPN;
     @SerializedName("volumeAccessGroupID") private Optional<Long> volumeAccessGroupID;
 
@@ -49,8 +49,8 @@ public class FibreChannelSession implements Serializable {
     @Since("7.0")
     public FibreChannelSession(
         String initiatorWWPN,
-        NodeID nodeID,
-        ServiceID serviceID,
+        Long nodeID,
+        Long serviceID,
         String targetWWPN,
         Optional<Long> volumeAccessGroupID
     )
@@ -72,15 +72,15 @@ public class FibreChannelSession implements Serializable {
     /** 
      * The node owning the Fibre Channel session.
      **/
-    public NodeID getNodeID() { return this.nodeID; }
-    public void setNodeID(NodeID nodeID) { 
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
      * The service ID of the FService owning this Fibre Channel session
      **/
-    public ServiceID getServiceID() { return this.serviceID; }
-    public void setServiceID(ServiceID serviceID) { 
+    public Long getServiceID() { return this.serviceID; }
+    public void setServiceID(Long serviceID) { 
         this.serviceID = serviceID;
     }
     /** 
@@ -159,8 +159,8 @@ public class FibreChannelSession implements Serializable {
 
     public static class Builder {
         private String initiatorWWPN;
-        private NodeID nodeID;
-        private ServiceID serviceID;
+        private Long nodeID;
+        private Long serviceID;
         private String targetWWPN;
         private Optional<Long> volumeAccessGroupID;
 
@@ -190,12 +190,12 @@ public class FibreChannelSession implements Serializable {
             return this;
         }
 
-        public FibreChannelSession.Builder nodeID(final NodeID nodeID) {
+        public FibreChannelSession.Builder nodeID(final Long nodeID) {
             this.nodeID = nodeID;
             return this;
         }
 
-        public FibreChannelSession.Builder serviceID(final ServiceID serviceID) {
+        public FibreChannelSession.Builder serviceID(final Long serviceID) {
             this.serviceID = serviceID;
             return this;
         }

@@ -33,7 +33,7 @@ import java.util.Objects;
 public class DeleteSnapshotRequest implements Serializable {
 
     public static final long serialVersionUID = -7448163228177860503L;
-    @SerializedName("snapshotID") private SnapshotID snapshotID;
+    @SerializedName("snapshotID") private Long snapshotID;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class DeleteSnapshotRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public DeleteSnapshotRequest(
-        SnapshotID snapshotID
+        Long snapshotID
     )
     {
         this.snapshotID = snapshotID;
@@ -52,8 +52,8 @@ public class DeleteSnapshotRequest implements Serializable {
     /** 
      * The ID of the snapshot to delete.
      **/
-    public SnapshotID getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(SnapshotID snapshotID) { 
+    public Long getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
 
@@ -103,7 +103,7 @@ public class DeleteSnapshotRequest implements Serializable {
     }
 
     public static class Builder {
-        private SnapshotID snapshotID;
+        private Long snapshotID;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class DeleteSnapshotRequest implements Serializable {
             return this;
         }
 
-        public DeleteSnapshotRequest.Builder snapshotID(final SnapshotID snapshotID) {
+        public DeleteSnapshotRequest.Builder snapshotID(final Long snapshotID) {
             this.snapshotID = snapshotID;
             return this;
         }

@@ -33,8 +33,8 @@ import java.util.Objects;
 public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
 
     public static final long serialVersionUID = 1341385407033018389L;
-    @SerializedName("volumeAccessGroupID") private VolumeAccessGroupID volumeAccessGroupID;
-    @SerializedName("volumes") private VolumeID[] volumes;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("volumes") private Long[] volumes;
 
     // empty constructor
     @Since("7.0")
@@ -44,8 +44,8 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddVolumesToVolumeAccessGroupRequest(
-        VolumeAccessGroupID volumeAccessGroupID,
-        VolumeID[] volumes
+        Long volumeAccessGroupID,
+        Long[] volumes
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
@@ -55,15 +55,15 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
     /** 
      * The ID of the volume access group to modify.
      **/
-    public VolumeAccessGroupID getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
-    public void setVolumeAccessGroupID(VolumeAccessGroupID volumeAccessGroupID) { 
+    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
      * List of volumes to add to this volume access group.
      **/
-    public VolumeID[] getVolumes() { return this.volumes; }
-    public void setVolumes(VolumeID[] volumes) { 
+    public Long[] getVolumes() { return this.volumes; }
+    public void setVolumes(Long[] volumes) { 
         this.volumes = volumes;
     }
 
@@ -116,8 +116,8 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
     }
 
     public static class Builder {
-        private VolumeAccessGroupID volumeAccessGroupID;
-        private VolumeID[] volumes;
+        private Long volumeAccessGroupID;
+        private Long[] volumes;
 
         private Builder() { }
 
@@ -134,12 +134,12 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public AddVolumesToVolumeAccessGroupRequest.Builder volumeAccessGroupID(final VolumeAccessGroupID volumeAccessGroupID) {
+        public AddVolumesToVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
             return this;
         }
 
-        public AddVolumesToVolumeAccessGroupRequest.Builder volumes(final VolumeID[] volumes) {
+        public AddVolumesToVolumeAccessGroupRequest.Builder volumes(final Long[] volumes) {
             this.volumes = volumes;
             return this;
         }

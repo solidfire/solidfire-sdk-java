@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ListVolumeAccessGroupsRequest implements Serializable {
 
     public static final long serialVersionUID = -8600610168887686606L;
-    @SerializedName("startVolumeAccessGroupID") private Optional<VolumeAccessGroupID> startVolumeAccessGroupID;
+    @SerializedName("startVolumeAccessGroupID") private Optional<Long> startVolumeAccessGroupID;
     @SerializedName("limit") private Optional<Long> limit;
 
     // empty constructor
@@ -44,11 +44,11 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListVolumeAccessGroupsRequest(
-        Optional<VolumeAccessGroupID> startVolumeAccessGroupID,
+        Optional<Long> startVolumeAccessGroupID,
         Optional<Long> limit
     )
     {
-        this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<VolumeAccessGroupID>empty() : startVolumeAccessGroupID;
+        this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<Long>empty() : startVolumeAccessGroupID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
@@ -57,9 +57,9 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
      * This can be useful for paging.
      * If unspecified, there is no lower limit (implicitly 0).
      **/
-    public Optional<VolumeAccessGroupID> getStartVolumeAccessGroupID() { return this.startVolumeAccessGroupID; }
-    public void setStartVolumeAccessGroupID(Optional<VolumeAccessGroupID> startVolumeAccessGroupID) { 
-        this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<VolumeAccessGroupID>empty() : startVolumeAccessGroupID;
+    public Optional<Long> getStartVolumeAccessGroupID() { return this.startVolumeAccessGroupID; }
+    public void setStartVolumeAccessGroupID(Optional<Long> startVolumeAccessGroupID) { 
+        this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<Long>empty() : startVolumeAccessGroupID;
     }
     /** 
      * The maximum number of results to return.
@@ -123,7 +123,7 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<VolumeAccessGroupID> startVolumeAccessGroupID;
+        private Optional<Long> startVolumeAccessGroupID;
         private Optional<Long> limit;
 
         private Builder() { }
@@ -141,8 +141,8 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
             return this;
         }
 
-        public ListVolumeAccessGroupsRequest.Builder optionalStartVolumeAccessGroupID(final VolumeAccessGroupID startVolumeAccessGroupID) {
-            this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<VolumeAccessGroupID>empty() : Optional.of(startVolumeAccessGroupID);
+        public ListVolumeAccessGroupsRequest.Builder optionalStartVolumeAccessGroupID(final Long startVolumeAccessGroupID) {
+            this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<Long>empty() : Optional.of(startVolumeAccessGroupID);
             return this;
         }
 

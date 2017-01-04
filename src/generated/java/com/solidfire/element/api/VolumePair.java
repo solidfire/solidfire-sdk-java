@@ -35,9 +35,9 @@ import java.util.Objects;
 public class VolumePair implements Serializable {
 
     public static final long serialVersionUID = 4755249077071999580L;
-    @SerializedName("clusterPairID") private ClusterPairID clusterPairID;
-    @SerializedName("remoteVolumeID") private VolumeID remoteVolumeID;
-    @SerializedName("remoteSliceID") private SliceID remoteSliceID;
+    @SerializedName("clusterPairID") private Long clusterPairID;
+    @SerializedName("remoteVolumeID") private Long remoteVolumeID;
+    @SerializedName("remoteSliceID") private Long remoteSliceID;
     @SerializedName("remoteVolumeName") private String remoteVolumeName;
     @SerializedName("volumePairUUID") private java.util.UUID volumePairUUID;
     @SerializedName("remoteReplication") private RemoteReplication remoteReplication;
@@ -50,9 +50,9 @@ public class VolumePair implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public VolumePair(
-        ClusterPairID clusterPairID,
-        VolumeID remoteVolumeID,
-        SliceID remoteSliceID,
+        Long clusterPairID,
+        Long remoteVolumeID,
+        Long remoteSliceID,
         String remoteVolumeName,
         java.util.UUID volumePairUUID,
         RemoteReplication remoteReplication
@@ -69,22 +69,22 @@ public class VolumePair implements Serializable {
     /** 
      * The remote cluster a volume is paired with.
      **/
-    public ClusterPairID getClusterPairID() { return this.clusterPairID; }
-    public void setClusterPairID(ClusterPairID clusterPairID) { 
+    public Long getClusterPairID() { return this.clusterPairID; }
+    public void setClusterPairID(Long clusterPairID) { 
         this.clusterPairID = clusterPairID;
     }
     /** 
      * The VolumeID on the remote cluster a volume is paired with.
      **/
-    public VolumeID getRemoteVolumeID() { return this.remoteVolumeID; }
-    public void setRemoteVolumeID(VolumeID remoteVolumeID) { 
+    public Long getRemoteVolumeID() { return this.remoteVolumeID; }
+    public void setRemoteVolumeID(Long remoteVolumeID) { 
         this.remoteVolumeID = remoteVolumeID;
     }
     /** 
      * The SliceID on the remote cluster a volume is paired with.
      **/
-    public SliceID getRemoteSliceID() { return this.remoteSliceID; }
-    public void setRemoteSliceID(SliceID remoteSliceID) { 
+    public Long getRemoteSliceID() { return this.remoteSliceID; }
+    public void setRemoteSliceID(Long remoteSliceID) { 
         this.remoteSliceID = remoteSliceID;
     }
     /** 
@@ -170,9 +170,9 @@ public class VolumePair implements Serializable {
     }
 
     public static class Builder {
-        private ClusterPairID clusterPairID;
-        private VolumeID remoteVolumeID;
-        private SliceID remoteSliceID;
+        private Long clusterPairID;
+        private Long remoteVolumeID;
+        private Long remoteSliceID;
         private String remoteVolumeName;
         private java.util.UUID volumePairUUID;
         private RemoteReplication remoteReplication;
@@ -200,17 +200,17 @@ public class VolumePair implements Serializable {
             return this;
         }
 
-        public VolumePair.Builder clusterPairID(final ClusterPairID clusterPairID) {
+        public VolumePair.Builder clusterPairID(final Long clusterPairID) {
             this.clusterPairID = clusterPairID;
             return this;
         }
 
-        public VolumePair.Builder remoteVolumeID(final VolumeID remoteVolumeID) {
+        public VolumePair.Builder remoteVolumeID(final Long remoteVolumeID) {
             this.remoteVolumeID = remoteVolumeID;
             return this;
         }
 
-        public VolumePair.Builder remoteSliceID(final SliceID remoteSliceID) {
+        public VolumePair.Builder remoteSliceID(final Long remoteSliceID) {
             this.remoteSliceID = remoteSliceID;
             return this;
         }
