@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListGroupSnapshotsRequest  
  **/
 
 public class ListGroupSnapshotsRequest implements Serializable {

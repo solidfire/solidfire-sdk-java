@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * Platform  
  **/
 
 public class Platform implements Serializable {

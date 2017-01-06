@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * TestPingRequest  
  **/
 
 public class TestPingRequest implements Serializable {

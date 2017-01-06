@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * SnmpV3UsmUser  
  * The SNMP v3 usmUser object is used with the API method SetSnmpInfo to configure SNMP on the cluster.
  **/
 

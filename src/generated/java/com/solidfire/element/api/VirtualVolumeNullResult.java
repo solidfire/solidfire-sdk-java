@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * VirtualVolumeNullResult  
  **/
 
 public class VirtualVolumeNullResult implements Serializable {

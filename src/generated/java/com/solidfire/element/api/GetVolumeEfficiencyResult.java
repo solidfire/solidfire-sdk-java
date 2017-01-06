@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetVolumeEfficiencyResult  
  **/
 
 public class GetVolumeEfficiencyResult implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetSnmpACLResult  
  **/
 
 public class GetSnmpACLResult implements Serializable {

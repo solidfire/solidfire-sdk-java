@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * LoggingServer  
  **/
 
 public class LoggingServer implements Serializable {

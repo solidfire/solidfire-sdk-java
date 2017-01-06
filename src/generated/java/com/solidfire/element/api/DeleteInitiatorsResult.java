@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * DeleteInitiatorsResult  
  **/
 
 public class DeleteInitiatorsResult implements Serializable {

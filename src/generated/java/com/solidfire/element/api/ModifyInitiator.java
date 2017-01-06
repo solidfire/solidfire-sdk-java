@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ModifyInitiator  
  * Object containing characteristics of each initiator to modify
  **/
 

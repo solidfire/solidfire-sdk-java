@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * PhysicalAdapter  
  **/
 
 public class PhysicalAdapter implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListDriveStatsResult  
  **/
 
 public class ListDriveStatsResult implements Serializable {

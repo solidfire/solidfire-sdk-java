@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListVirtualNetworksRequest  
  **/
 
 public class ListVirtualNetworksRequest implements Serializable {

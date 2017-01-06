@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ModifyVolumeAccessGroupLunAssignmentsResult  
  **/
 
 public class ModifyVolumeAccessGroupLunAssignmentsResult implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * QoS  
  * Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.
  * Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.
  * <br/><br/>

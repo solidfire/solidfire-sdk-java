@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * VirtualVolumeBinding  
  **/
 
 public class VirtualVolumeBinding implements Serializable {

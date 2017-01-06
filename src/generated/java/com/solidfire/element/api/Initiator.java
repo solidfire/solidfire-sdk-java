@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * Initiator  
  * Object containing characteristics of each initiator
  **/
 

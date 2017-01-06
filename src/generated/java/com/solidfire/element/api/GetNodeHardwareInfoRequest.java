@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetNodeHardwareInfoRequest  
  **/
 
 public class GetNodeHardwareInfoRequest implements Serializable {

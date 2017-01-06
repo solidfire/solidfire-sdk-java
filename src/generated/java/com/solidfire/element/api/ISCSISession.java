@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ISCSISession  
  **/
 
 public class ISCSISession implements Serializable {

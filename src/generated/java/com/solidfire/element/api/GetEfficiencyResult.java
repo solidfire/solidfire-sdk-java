@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetEfficiencyResult  
  **/
 
 public class GetEfficiencyResult implements Serializable {

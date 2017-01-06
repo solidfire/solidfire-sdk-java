@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * MetadataHosts  
  * The volume services on which the volume metadata resides.
  **/
 

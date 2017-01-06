@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListPendingNodesResult  
  **/
 
 public class ListPendingNodesResult implements Serializable {

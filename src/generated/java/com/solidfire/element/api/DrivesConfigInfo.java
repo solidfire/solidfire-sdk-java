@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * DrivesConfigInfo  
  **/
 
 public class DrivesConfigInfo implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * SetLoginSessionInfoResult  
  **/
 
 public class SetLoginSessionInfoResult implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * DeleteStorageContainersRequest  
  **/
 
 public class DeleteStorageContainersRequest implements Serializable {

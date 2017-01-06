@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * CopyVolumeResult  
  **/
 
 public class CopyVolumeResult implements Serializable {

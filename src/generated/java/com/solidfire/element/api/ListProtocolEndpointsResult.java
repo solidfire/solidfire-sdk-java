@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListProtocolEndpointsResult  
  **/
 
 public class ListProtocolEndpointsResult implements Serializable {

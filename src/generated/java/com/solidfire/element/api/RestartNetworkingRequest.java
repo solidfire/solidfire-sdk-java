@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * RestartNetworkingRequest  
  **/
 
 public class RestartNetworkingRequest implements Serializable {

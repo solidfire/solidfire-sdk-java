@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * EnableEncryptionAtRestResult  
  **/
 
 public class EnableEncryptionAtRestResult implements Serializable {

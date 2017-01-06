@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetLdapConfigurationResult  
  **/
 
 public class GetLdapConfigurationResult implements Serializable {

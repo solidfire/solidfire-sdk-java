@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * StartVolumePairingResult  
  **/
 
 public class StartVolumePairingResult implements Serializable {

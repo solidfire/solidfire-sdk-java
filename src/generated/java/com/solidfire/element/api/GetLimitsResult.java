@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetLimitsResult  
  * Limits for the cluster
  **/
 

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ClusterInfo  
  * Cluster Info object returns information the node uses to communicate with the cluster.
  **/
 

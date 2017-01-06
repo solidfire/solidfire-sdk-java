@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * RemoveVirtualNetworkResult  
  **/
 
 public class RemoveVirtualNetworkResult implements Serializable {

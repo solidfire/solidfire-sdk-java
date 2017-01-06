@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * AddVirtualNetworkResult  
  **/
 
 public class AddVirtualNetworkResult implements Serializable {

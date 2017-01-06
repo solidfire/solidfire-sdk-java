@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetHardwareConfigResult  
  **/
 
 public class GetHardwareConfigResult implements Serializable {

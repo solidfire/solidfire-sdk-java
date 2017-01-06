@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GroupSnapshotMembers  
  * List of checksum, volumeIDs and snapshotIDs for each member of the group.
  **/
 

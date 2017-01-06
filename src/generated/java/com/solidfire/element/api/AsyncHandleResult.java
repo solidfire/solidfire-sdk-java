@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * AsyncHandleResult  
  **/
 
 public class AsyncHandleResult implements Serializable {

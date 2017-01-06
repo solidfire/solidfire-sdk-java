@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * AddressBlock  
  * Unique Range of IP addresses to include in the virtual network.
  **/
 

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * Account  
  * The object containing information about an account.
  * This object only includes "configured" information about the account, not any runtime or usage information.
  **/

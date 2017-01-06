@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetClusterHardwareInfoRequest  
  **/
 
 public class GetClusterHardwareInfoRequest implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * RemoveClusterAdminRequest  
  **/
 
 public class RemoveClusterAdminRequest implements Serializable {

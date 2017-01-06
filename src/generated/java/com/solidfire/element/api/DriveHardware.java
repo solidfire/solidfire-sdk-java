@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * DriveHardware  
  **/
 
 public class DriveHardware implements Serializable {

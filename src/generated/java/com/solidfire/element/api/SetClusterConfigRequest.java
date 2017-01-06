@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * SetClusterConfigRequest  
  **/
 
 public class SetClusterConfigRequest implements Serializable {

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ProtocolEndpoint  
  **/
 
 public class ProtocolEndpoint implements Serializable {

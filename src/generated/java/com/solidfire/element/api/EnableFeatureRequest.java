@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * EnableFeatureRequest  
  **/
 
 public class EnableFeatureRequest implements Serializable {

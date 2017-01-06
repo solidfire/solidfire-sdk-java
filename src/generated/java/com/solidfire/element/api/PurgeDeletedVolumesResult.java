@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * PurgeDeletedVolumesResult  
  **/
 
 public class PurgeDeletedVolumesResult implements Serializable {

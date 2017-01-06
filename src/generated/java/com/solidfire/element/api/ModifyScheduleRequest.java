@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ModifyScheduleRequest  
  **/
 
 public class ModifyScheduleRequest implements Serializable {

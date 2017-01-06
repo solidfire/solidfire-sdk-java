@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * SetNetworkConfigRequest  
  **/
 
 public class SetNetworkConfigRequest implements Serializable {

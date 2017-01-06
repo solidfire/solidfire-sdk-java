@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetNvramInfoResult  
  **/
 
 public class GetNvramInfoResult implements Serializable {

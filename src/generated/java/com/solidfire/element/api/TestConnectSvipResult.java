@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * TestConnectSvipResult  
  **/
 
 public class TestConnectSvipResult implements Serializable {

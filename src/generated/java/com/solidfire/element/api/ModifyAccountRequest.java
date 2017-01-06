@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ModifyAccountRequest  
  **/
 
 public class ModifyAccountRequest implements Serializable {

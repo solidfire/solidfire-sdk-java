@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * GetNodeStatsRequest  
  **/
 
 public class GetNodeStatsRequest implements Serializable {

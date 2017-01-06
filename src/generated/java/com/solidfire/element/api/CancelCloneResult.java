@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * CancelCloneResult  
  **/
 
 public class CancelCloneResult implements Serializable {

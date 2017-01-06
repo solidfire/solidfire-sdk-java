@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * SnapshotRemoteStatus  
  **/
 
 public class SnapshotRemoteStatus implements Serializable {

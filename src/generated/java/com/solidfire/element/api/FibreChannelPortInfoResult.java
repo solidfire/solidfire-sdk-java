@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * FibreChannelPortInfoResult  
  * Used to return information about the Fibre Channel ports.
  **/
 

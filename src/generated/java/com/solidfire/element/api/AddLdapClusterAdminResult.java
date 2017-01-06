@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * AddLdapClusterAdminResult  
  **/
 
 public class AddLdapClusterAdminResult implements Serializable {

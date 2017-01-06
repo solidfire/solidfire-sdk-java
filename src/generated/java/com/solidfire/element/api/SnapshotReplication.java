@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * SnapshotReplication  
  **/
 
 public class SnapshotReplication implements Serializable {

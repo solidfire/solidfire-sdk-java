@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * TestConnectEnsembleResult  
  **/
 
 public class TestConnectEnsembleResult implements Serializable {

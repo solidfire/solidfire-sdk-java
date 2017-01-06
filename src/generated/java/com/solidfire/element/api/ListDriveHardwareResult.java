@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListDriveHardwareResult  
  **/
 
 public class ListDriveHardwareResult implements Serializable {

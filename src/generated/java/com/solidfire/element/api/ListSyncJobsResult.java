@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * ListSyncJobsResult  
  **/
 
 public class ListSyncJobsResult implements Serializable {

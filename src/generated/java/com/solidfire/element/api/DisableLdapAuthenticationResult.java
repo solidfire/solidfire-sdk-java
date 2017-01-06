@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
+ * DisableLdapAuthenticationResult  
  **/
 
 public class DisableLdapAuthenticationResult implements Serializable {
