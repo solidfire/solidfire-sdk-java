@@ -168,7 +168,7 @@ public class ScheduleAdaptor {
 
         schedule.optionalHasError(api.getHasError())
                 .lastRunStatus(api.getLastRunStatus())
-                .lastRunTimeStart(api.getLastRunTimeStart())
+                .lastRunTimeStarted(api.getLastRunTimeStarted())
                 .name(api.getScheduleName())
                 .optionalPaused(api.getPaused())
                 .optionalRecurring(api.getRecurring())
@@ -246,7 +246,7 @@ public class ScheduleAdaptor {
 
         api.hasError(schedule.getHasError().orElse(null));
         api.lastRunStatus(schedule.getLastRunStatus());
-        api.lastRunTimeStart(schedule.getLastRunTimeStart());
+        api.lastRunTimeStart(schedule.getLastRunTimeStarted());
         api.scheduleName(schedule.getName());
         api.paused(schedule.getPaused().orElse(null));
         api.recurring(schedule.getRecurring().orElse(null));

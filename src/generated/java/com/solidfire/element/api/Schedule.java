@@ -37,7 +37,7 @@ public class Schedule implements Serializable {
     @SerializedName("frequency") private Frequency frequency;
     @SerializedName("hasError") private Optional<Boolean> hasError;
     @SerializedName("lastRunStatus") private String lastRunStatus;
-    @SerializedName("lastRunTimeStart") private String lastRunTimeStart;
+    @SerializedName("lastRunTimeStarted") private String lastRunTimeStarted;
     @SerializedName("paused") private Optional<Boolean> paused;
     @SerializedName("recurring") private Optional<Boolean> recurring;
     @SerializedName("runNextInterval") private Optional<Boolean> runNextInterval;
@@ -58,7 +58,7 @@ public class Schedule implements Serializable {
         Frequency frequency,
         Optional<Boolean> hasError,
         String lastRunStatus,
-        String lastRunTimeStart,
+        String lastRunTimeStarted,
         Optional<Boolean> paused,
         Optional<Boolean> recurring,
         Optional<Boolean> runNextInterval,
@@ -72,7 +72,7 @@ public class Schedule implements Serializable {
         this.frequency = frequency;
         this.hasError = (hasError == null) ? Optional.<Boolean>empty() : hasError;
         this.lastRunStatus = lastRunStatus;
-        this.lastRunTimeStart = lastRunTimeStart;
+        this.lastRunTimeStarted = lastRunTimeStarted;
         this.paused = (paused == null) ? Optional.<Boolean>empty() : paused;
         this.recurring = (recurring == null) ? Optional.<Boolean>empty() : recurring;
         this.runNextInterval = (runNextInterval == null) ? Optional.<Boolean>empty() : runNextInterval;
@@ -117,9 +117,9 @@ public class Schedule implements Serializable {
      * Success<br/>
      * Failed
      **/
-    public String getLastRunTimeStart() { return this.lastRunTimeStart; }
-    public void setLastRunTimeStart(String lastRunTimeStart) { 
-        this.lastRunTimeStart = lastRunTimeStart;
+    public String getLastRunTimeStarted() { return this.lastRunTimeStarted; }
+    public void setLastRunTimeStarted(String lastRunTimeStarted) { 
+        this.lastRunTimeStarted = lastRunTimeStarted;
     }
     /** 
      * Indicates whether or not the schedule is paused.
@@ -189,7 +189,7 @@ public class Schedule implements Serializable {
             Objects.equals(frequency, that.frequency) && 
             Objects.equals(hasError, that.hasError) && 
             Objects.equals(lastRunStatus, that.lastRunStatus) && 
-            Objects.equals(lastRunTimeStart, that.lastRunTimeStart) && 
+            Objects.equals(lastRunTimeStarted, that.lastRunTimeStarted) && 
             Objects.equals(paused, that.paused) && 
             Objects.equals(recurring, that.recurring) && 
             Objects.equals(runNextInterval, that.runNextInterval) && 
@@ -202,7 +202,7 @@ public class Schedule implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( frequency,hasError,lastRunStatus,lastRunTimeStart,paused,recurring,runNextInterval,scheduleID,scheduleInfo,name,startingDate,toBeDeleted );
+        return Objects.hash( frequency,hasError,lastRunStatus,lastRunTimeStarted,paused,recurring,runNextInterval,scheduleID,scheduleInfo,name,startingDate,toBeDeleted );
     }
 
 
@@ -211,7 +211,7 @@ public class Schedule implements Serializable {
         map.put("frequency", frequency);
         map.put("hasError", hasError);
         map.put("lastRunStatus", lastRunStatus);
-        map.put("lastRunTimeStart", lastRunTimeStart);
+        map.put("lastRunTimeStarted", lastRunTimeStarted);
         map.put("paused", paused);
         map.put("recurring", recurring);
         map.put("runNextInterval", runNextInterval);
@@ -233,7 +233,7 @@ public class Schedule implements Serializable {
             sb.append(" hasError : ").append(hasError).append(",");
         }
         sb.append(" lastRunStatus : ").append(lastRunStatus).append(",");
-        sb.append(" lastRunTimeStart : ").append(lastRunTimeStart).append(",");
+        sb.append(" lastRunTimeStarted : ").append(lastRunTimeStarted).append(",");
         if(null != paused && paused.isPresent()){
             sb.append(" paused : ").append(paused).append(",");
         }
@@ -272,7 +272,7 @@ public class Schedule implements Serializable {
         private Frequency frequency;
         private Optional<Boolean> hasError;
         private String lastRunStatus;
-        private String lastRunTimeStart;
+        private String lastRunTimeStarted;
         private Optional<Boolean> paused;
         private Optional<Boolean> recurring;
         private Optional<Boolean> runNextInterval;
@@ -289,7 +289,7 @@ public class Schedule implements Serializable {
                          this.frequency,
                          this.hasError,
                          this.lastRunStatus,
-                         this.lastRunTimeStart,
+                         this.lastRunTimeStarted,
                          this.paused,
                          this.recurring,
                          this.runNextInterval,
@@ -304,7 +304,7 @@ public class Schedule implements Serializable {
             this.frequency = req.frequency;
             this.hasError = req.hasError;
             this.lastRunStatus = req.lastRunStatus;
-            this.lastRunTimeStart = req.lastRunTimeStart;
+            this.lastRunTimeStarted = req.lastRunTimeStarted;
             this.paused = req.paused;
             this.recurring = req.recurring;
             this.runNextInterval = req.runNextInterval;
@@ -332,8 +332,8 @@ public class Schedule implements Serializable {
             return this;
         }
 
-        public Schedule.Builder lastRunTimeStart(final String lastRunTimeStart) {
-            this.lastRunTimeStart = lastRunTimeStart;
+        public Schedule.Builder lastRunTimeStarted(final String lastRunTimeStarted) {
+            this.lastRunTimeStarted = lastRunTimeStarted;
             return this;
         }
 

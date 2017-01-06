@@ -44,8 +44,8 @@ public class ApiSchedule implements Serializable {
     private final Long hours;
     @SerializedName("lastRunStatus")
     private final String lastRunStatus;
-    @SerializedName("lastRunTimeStart")
-    private final String lastRunTimeStart;
+    @SerializedName("lastRunTimeStarted")
+    private final String lastRunTimeStarted;
     @SerializedName("minutes")
     private final Long minutes;
     @SerializedName("monthdays")
@@ -77,29 +77,29 @@ public class ApiSchedule implements Serializable {
      * only information for that scheduleID is returned. Schedules information is returned with the API method, see
      * "ListSchedules" on the SolidFire API guide page 245.
      *
-     * @param attributes       [required] Indicates the frequency of the schedule occurrence.<br/>
-     * @param hasError         [required] Indicates whether or not the schedule has errors.
-     * @param hours            [required] Shows the hours that will elapse before the next snapshot is created.<br/>
-     * @param lastRunStatus    [required] Indicates the status of the last scheduled snapshot.<br/>
-     * @param lastRunTimeStart [required] Indicates the last time the schedule started n ISO 8601 date string.
-     * @param minutes          [required] Shows the minutes that will elapse before the next snapshot is created.
-     * @param monthdays        [required] Shows the days of the month that the next snapshot will be created on.
-     * @param paused           [required] Indicates whether or not the schedule is paused.
-     * @param recurring        [required] Indicates whether or not the schedule is recurring.
-     * @param runNextInterval  [required] Indicates whether or not the schedule will run the next time the scheduler is active.
-     *                         When set to "true", the schedule will run the next time the scheduler is active and then reset back to "false".
-     * @param scheduleID       [required] Unique ID of the schedule
-     * @param scheduleInfo     [required] Includes the unique name given to the schedule, the retention period for the snapshot that was
-     *                         created, and the volume ID of the volume from which the snapshot was created.
-     * @param scheduleName     [required] Unique name assigned to the schedule.
-     * @param scheduleType     [required] Only "snapshot" is supported at this time.
-     * @param startingDate     [required] Indicates the date the first time the schedule began of will begin. Formatted in UTC time.
-     * @param toBeDeleted      [required] Indicates if the schedule is marked for deletion.
-     * @param weekdays         [required] Indicates the days of the week that a snapshot will be made.
+     * @param attributes         [required] Indicates the frequency of the schedule occurrence.<br/>
+     * @param hasError           [required] Indicates whether or not the schedule has errors.
+     * @param hours              [required] Shows the hours that will elapse before the next snapshot is created.<br/>
+     * @param lastRunStatus      [required] Indicates the status of the last scheduled snapshot.<br/>
+     * @param lastRunTimeStarted [required] Indicates the last time the schedule started n ISO 8601 date string.
+     * @param minutes            [required] Shows the minutes that will elapse before the next snapshot is created.
+     * @param monthdays          [required] Shows the days of the month that the next snapshot will be created on.
+     * @param paused             [required] Indicates whether or not the schedule is paused.
+     * @param recurring          [required] Indicates whether or not the schedule is recurring.
+     * @param runNextInterval    [required] Indicates whether or not the schedule will run the next time the scheduler is active.
+     *                           When set to "true", the schedule will run the next time the scheduler is active and then reset back to "false".
+     * @param scheduleID         [required] Unique ID of the schedule
+     * @param scheduleInfo       [required] Includes the unique name given to the schedule, the retention period for the snapshot that was
+     *                           created, and the volume ID of the volume from which the snapshot was created.
+     * @param scheduleName       [required] Unique name assigned to the schedule.
+     * @param scheduleType       [required] Only "snapshot" is supported at this time.
+     * @param startingDate       [required] Indicates the date the first time the schedule began of will begin. Formatted in UTC time.
+     * @param toBeDeleted        [required] Indicates if the schedule is marked for deletion.
+     * @param weekdays           [required] Indicates the days of the week that a snapshot will be made.
      * @since 7.0
      **/
     @Since("7.0")
-    public ApiSchedule(java.util.Map<String, Object> attributes, Boolean hasError, Long hours, String lastRunStatus, String lastRunTimeStart,
+    public ApiSchedule(java.util.Map<String, Object> attributes, Boolean hasError, Long hours, String lastRunStatus, String lastRunTimeStarted,
                        Long minutes, Long[] monthdays, Boolean paused, Boolean recurring, Boolean runNextInterval, Long scheduleID,
                        ApiScheduleInfo scheduleInfo, String scheduleName, String scheduleType, String startingDate, Boolean toBeDeleted,
                        ApiWeekday[] weekdays) {
@@ -116,7 +116,7 @@ public class ApiSchedule implements Serializable {
         this.scheduleType = scheduleType;
         this.runNextInterval = runNextInterval;
         this.startingDate = startingDate;
-        this.lastRunTimeStart = lastRunTimeStart;
+        this.lastRunTimeStarted = lastRunTimeStarted;
         this.toBeDeleted = toBeDeleted;
         this.scheduleName = scheduleName;
         this.hasError = hasError;
@@ -165,8 +165,8 @@ public class ApiSchedule implements Serializable {
      * Success<br/>
      * Failed
      **/
-    public String getLastRunTimeStart() {
-        return this.lastRunTimeStart;
+    public String getLastRunTimeStarted() {
+        return this.lastRunTimeStarted;
     }
 
     /**
@@ -270,7 +270,7 @@ public class ApiSchedule implements Serializable {
                 && Objects.equals(hasError, that.hasError)
                 && Objects.equals(hours, that.hours)
                 && Objects.equals(lastRunStatus, that.lastRunStatus)
-                && Objects.equals(lastRunTimeStart, that.lastRunTimeStart)
+                && Objects.equals(lastRunTimeStarted, that.lastRunTimeStarted)
                 && Objects.equals(minutes, that.minutes)
                 && Objects.deepEquals(monthdays, that.monthdays)
                 && Objects.equals(paused, that.paused)
@@ -288,7 +288,7 @@ public class ApiSchedule implements Serializable {
     /** {@inheritDoc} */
     @Override
     public int hashCode() {
-        return Objects.hash(attributes, hasError, hours, lastRunStatus, lastRunTimeStart, minutes, monthdays, paused, recurring,
+        return Objects.hash(attributes, hasError, hours, lastRunStatus, lastRunTimeStarted, minutes, monthdays, paused, recurring,
                 runNextInterval, scheduleID, scheduleInfo, scheduleName, scheduleType, startingDate, toBeDeleted, weekdays);
     }
 
@@ -303,7 +303,7 @@ public class ApiSchedule implements Serializable {
         sb.append(" hasError : ").append(hasError).append(",");
         sb.append(" hours : ").append(hours).append(",");
         sb.append(" lastRunStatus : ").append(lastRunStatus).append(",");
-        sb.append(" lastRunTimeStart : ").append(lastRunTimeStart).append(",");
+        sb.append(" lastRunTimeStarted : ").append(lastRunTimeStarted).append(",");
         sb.append(" minutes : ").append(minutes).append(",");
         sb.append(" monthdays : ").append(Arrays.toString(monthdays)).append(",");
         sb.append(" paused : ").append(paused).append(",");
@@ -337,7 +337,7 @@ public class ApiSchedule implements Serializable {
         private Boolean hasError;
         private Long hours;
         private String lastRunStatus;
-        private String lastRunTimeStart;
+        private String lastRunTimeStarted;
         private Long minutes;
         private Long[] monthdays;
         private Boolean paused;
@@ -361,7 +361,7 @@ public class ApiSchedule implements Serializable {
                     this.hasError,
                     this.hours,
                     this.lastRunStatus,
-                    this.lastRunTimeStart,
+                    this.lastRunTimeStarted,
                     this.minutes,
                     this.monthdays,
                     this.paused,
@@ -381,7 +381,7 @@ public class ApiSchedule implements Serializable {
             this.hasError = req.hasError;
             this.hours = req.hours;
             this.lastRunStatus = req.lastRunStatus;
-            this.lastRunTimeStart = req.lastRunTimeStart;
+            this.lastRunTimeStarted = req.lastRunTimeStarted;
             this.minutes = req.minutes;
             this.monthdays = req.monthdays;
             this.paused = req.paused;
@@ -419,7 +419,7 @@ public class ApiSchedule implements Serializable {
         }
 
         public ApiSchedule.Builder lastRunTimeStart(final String lastRunTimeStart) {
-            this.lastRunTimeStart = lastRunTimeStart;
+            this.lastRunTimeStarted = lastRunTimeStart;
             return this;
         }
 
