@@ -294,40 +294,6 @@ public interface SolidFireElementIF {
         Optional<String> faultTypes
         );
     /** 
-     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
-     * <br/><br/>
-     * <b>Note</b>: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
-     **/
-    @Since("2")
-    @ConnectionType("Node")
-    public CreateClusterResult createCluster(final CreateClusterRequest request);
-
-    /** 
-     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
-     * <br/><br/>
-     * <b>Note</b>: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
-     **/
-    @Since("2")
-    @ConnectionType("Node")
-    public CreateClusterResult createCluster(
-        
-        Optional<Boolean> acceptEula
-, 
-        String mvip
-, 
-        String svip
-, 
-        Long repCount
-, 
-        String username
-, 
-        String password
-, 
-        String[] nodes
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
      * CreateSupportBundle is used to create a support bundle file under the node's directory. When the bundle has been successfully created, the bundle is stored on the node as a tar.gz file.
      **/
     @Since("8")
@@ -736,6 +702,40 @@ public interface SolidFireElementIF {
     @Since("6")
     @ConnectionType("Cluster")
     public SnmpSendTestTrapsResult snmpSendTestTraps();
+    /** 
+     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
+     * <br/><br/>
+     * <b>Note</b>: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
+     **/
+    @Since("7.0")
+    @ConnectionType("Both")
+    public CreateClusterResult createCluster(final CreateClusterRequest request);
+
+    /** 
+     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
+     * <br/><br/>
+     * <b>Note</b>: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
+     **/
+    @Since("7.0")
+    @ConnectionType("Both")
+    public CreateClusterResult createCluster(
+        
+        Optional<Boolean> acceptEula
+, 
+        String mvip
+, 
+        String svip
+, 
+        Long repCount
+, 
+        String username
+, 
+        String password
+, 
+        String[] nodes
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
     /** 
      * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
      * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
@@ -1284,12 +1284,6 @@ public interface SolidFireElementIF {
         Long[] pendingNodes
         );
     /** 
-     * GetBootstrapConfig returns the cluster name and node name from the bootstrap configuration file. This API method should be performed on an individual node before it has been configured into a cluster. The resulting information from this method is used in the Cluster Configuration UI when the cluster is eventually created.
-     **/
-    @Since("2")
-    @ConnectionType("Node")
-    public GetBootstrapConfigResult getBootstrapConfig();
-    /** 
      * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
      * <br/><br/>
      * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
@@ -1444,6 +1438,12 @@ public interface SolidFireElementIF {
         
         Network network
         );
+    /** 
+     * GetBootstrapConfig returns the cluster name and node name from the bootstrap configuration file. This API method should be performed on an individual node before it has been configured into a cluster. The resulting information from this method is used in the Cluster Configuration UI when the cluster is eventually created.
+     **/
+    @Since("2")
+    @ConnectionType("Both")
+    public GetBootstrapConfigResult getBootstrapConfig();
     /** 
      * The CompleteClusterPairing method is the second step in the cluster pairing process.
      * Use this method with the encoded key received from the "StartClusterPairing" API method to complete the cluster pairing process.
