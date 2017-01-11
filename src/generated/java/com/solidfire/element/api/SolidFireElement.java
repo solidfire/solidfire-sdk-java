@@ -2080,8 +2080,8 @@ public class SolidFireElement
     @Since("1")
     @ConnectionType("Cluster")
     public ShutdownResult shutdown(
-        Optional<Long[]> nodes,
-        String option
+        Long[] nodes,
+        Optional<String> option
         ) {
         return this.shutdown(new ShutdownRequest(nodes, option));
     }

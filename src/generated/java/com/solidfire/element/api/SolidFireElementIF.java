@@ -1670,9 +1670,9 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ShutdownResult shutdown(
         
-        Optional<Long[]> nodes
+        Long[] nodes
 , 
-        String option
+        Optional<String> option
         );
     /** 
      * List the services in the cluster.

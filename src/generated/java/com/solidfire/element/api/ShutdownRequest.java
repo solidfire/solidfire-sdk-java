@@ -33,8 +33,8 @@ import java.util.Objects;
 public class ShutdownRequest implements Serializable {
 
     public static final long serialVersionUID = -9028774115799936174L;
-    @SerializedName("nodes") private Optional<Long[]> nodes;
-    @SerializedName("option") private String option;
+    @SerializedName("nodes") private Long[] nodes;
+    @SerializedName("option") private Optional<String> option;
 
     // empty constructor
     @Since("7.0")
@@ -44,27 +44,27 @@ public class ShutdownRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ShutdownRequest(
-        Optional<Long[]> nodes,
-        String option
+        Long[] nodes,
+        Optional<String> option
     )
     {
-        this.nodes = (nodes == null) ? Optional.<Long[]>empty() : nodes;
-        this.option = option;
+        this.nodes = nodes;
+        this.option = (option == null) ? Optional.<String>empty() : option;
     }
 
     /** 
      * List of NodeIDs for the nodes to be shutdown.
      **/
-    public Optional<Long[]> getNodes() { return this.nodes; }
-    public void setNodes(Optional<Long[]> nodes) { 
-        this.nodes = (nodes == null) ? Optional.<Long[]>empty() : nodes;
+    public Long[] getNodes() { return this.nodes; }
+    public void setNodes(Long[] nodes) { 
+        this.nodes = nodes;
     }
     /** 
      * Action to take for the node shutdown:restart: Restarts the node.halt: Performs full power-off of the node.
      **/
-    public String getOption() { return this.option; }
-    public void setOption(String option) { 
-        this.option = option;
+    public Optional<String> getOption() { return this.option; }
+    public void setOption(Optional<String> option) { 
+        this.option = (option == null) ? Optional.<String>empty() : option;
     }
 
     @Override
@@ -75,13 +75,13 @@ public class ShutdownRequest implements Serializable {
         ShutdownRequest that = (ShutdownRequest) o;
 
         return 
-            Objects.equals(nodes, that.nodes) && 
+            Arrays.equals(nodes, that.nodes) && 
             Objects.equals(option, that.option);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodes,option );
+        return Objects.hash( (Object[])nodes,option );
     }
 
 
@@ -97,10 +97,10 @@ public class ShutdownRequest implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != nodes && nodes.isPresent()){
-            sb.append(" nodes : ").append(nodes).append(",");
+        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        if(null != option && option.isPresent()){
+            sb.append(" option : ").append(option).append(",");
         }
-        sb.append(" option : ").append(option).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,8 +118,8 @@ public class ShutdownRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Long[]> nodes;
-        private String option;
+        private Long[] nodes;
+        private Optional<String> option;
 
         private Builder() { }
 
@@ -136,13 +136,13 @@ public class ShutdownRequest implements Serializable {
             return this;
         }
 
-        public ShutdownRequest.Builder optionalNodes(final Long[] nodes) {
-            this.nodes = (nodes == null) ? Optional.<Long[]>empty() : Optional.of(nodes);
+        public ShutdownRequest.Builder nodes(final Long[] nodes) {
+            this.nodes = nodes;
             return this;
         }
 
-        public ShutdownRequest.Builder option(final String option) {
-            this.option = option;
+        public ShutdownRequest.Builder optionalOption(final String option) {
+            this.option = (option == null) ? Optional.<String>empty() : Optional.of(option);
             return this;
         }
 
