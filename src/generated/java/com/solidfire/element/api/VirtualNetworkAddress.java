@@ -34,7 +34,7 @@ public class VirtualNetworkAddress implements Serializable {
 
     public static final long serialVersionUID = -4065911921073610306L;
     @SerializedName("virtualNetworkID") private Long virtualNetworkID;
-    @SerializedName("address") private IPAddress address;
+    @SerializedName("address") private String address;
 
     // empty constructor
     @Since("7.0")
@@ -45,7 +45,7 @@ public class VirtualNetworkAddress implements Serializable {
     @Since("7.0")
     public VirtualNetworkAddress(
         Long virtualNetworkID,
-        IPAddress address
+        String address
     )
     {
         this.virtualNetworkID = virtualNetworkID;
@@ -62,8 +62,8 @@ public class VirtualNetworkAddress implements Serializable {
     /** 
      * Virtual Network Address.
      **/
-    public IPAddress getAddress() { return this.address; }
-    public void setAddress(IPAddress address) { 
+    public String getAddress() { return this.address; }
+    public void setAddress(String address) { 
         this.address = address;
     }
 
@@ -117,7 +117,7 @@ public class VirtualNetworkAddress implements Serializable {
 
     public static class Builder {
         private Long virtualNetworkID;
-        private IPAddress address;
+        private String address;
 
         private Builder() { }
 
@@ -139,7 +139,7 @@ public class VirtualNetworkAddress implements Serializable {
             return this;
         }
 
-        public VirtualNetworkAddress.Builder address(final IPAddress address) {
+        public VirtualNetworkAddress.Builder address(final String address) {
             this.address = address;
             return this;
         }
