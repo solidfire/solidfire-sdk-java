@@ -1670,6 +1670,8 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ShutdownResult shutdown(
         
+        Optional<Long[]> nodes
+, 
         String option
         );
     /** 

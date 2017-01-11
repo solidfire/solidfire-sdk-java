@@ -2080,9 +2080,10 @@ public class SolidFireElement
     @Since("1")
     @ConnectionType("Cluster")
     public ShutdownResult shutdown(
+        Optional<Long[]> nodes,
         String option
         ) {
-        return this.shutdown(new ShutdownRequest(option));
+        return this.shutdown(new ShutdownRequest(nodes, option));
     }
     /** 
      * List the services in the cluster.

@@ -33,6 +33,7 @@ import java.util.Objects;
 public class ShutdownRequest implements Serializable {
 
     public static final long serialVersionUID = -9028774115799936174L;
+    @SerializedName("nodes") private Optional<Long[]> nodes;
     @SerializedName("option") private String option;
 
     // empty constructor
@@ -43,12 +44,21 @@ public class ShutdownRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ShutdownRequest(
+        Optional<Long[]> nodes,
         String option
     )
     {
+        this.nodes = (nodes == null) ? Optional.<Long[]>empty() : nodes;
         this.option = option;
     }
 
+    /** 
+     * List of NodeIDs for the nodes to be shutdown.
+     **/
+    public Optional<Long[]> getNodes() { return this.nodes; }
+    public void setNodes(Optional<Long[]> nodes) { 
+        this.nodes = (nodes == null) ? Optional.<Long[]>empty() : nodes;
+    }
     /** 
      * Action to take for the node shutdown:restart: Restarts the node.halt: Performs full power-off of the node.
      **/
@@ -65,17 +75,19 @@ public class ShutdownRequest implements Serializable {
         ShutdownRequest that = (ShutdownRequest) o;
 
         return 
+            Objects.equals(nodes, that.nodes) && 
             Objects.equals(option, that.option);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( option );
+        return Objects.hash( nodes,option );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodes", nodes);
         map.put("option", option);
         return map;
     }
@@ -85,6 +97,9 @@ public class ShutdownRequest implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
+        if(null != nodes && nodes.isPresent()){
+            sb.append(" nodes : ").append(nodes).append(",");
+        }
         sb.append(" option : ").append(option).append(",");
         sb.append( " }" );
 
@@ -103,18 +118,26 @@ public class ShutdownRequest implements Serializable {
     }
 
     public static class Builder {
+        private Optional<Long[]> nodes;
         private String option;
 
         private Builder() { }
 
         public ShutdownRequest build() {
             return new ShutdownRequest (
+                         this.nodes,
                          this.option);
         }
 
         private ShutdownRequest.Builder buildFrom(final ShutdownRequest req) {
+            this.nodes = req.nodes;
             this.option = req.option;
 
+            return this;
+        }
+
+        public ShutdownRequest.Builder optionalNodes(final Long[] nodes) {
+            this.nodes = (nodes == null) ? Optional.<Long[]>empty() : Optional.of(nodes);
             return this;
         }
 
