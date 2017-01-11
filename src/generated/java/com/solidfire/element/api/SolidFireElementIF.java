@@ -250,6 +250,152 @@ public interface SolidFireElementIF {
         Long backupTargetID
         );
     /** 
+     * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(final ModifyClusterFullThresholdRequest request);
+
+    /** 
+     * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(
+        
+        Optional<Long> stage2AwareThreshold
+, 
+        Optional<Long> stage3BlockThresholdPercent
+, 
+        Optional<Long> maxMetadataOverProvisionFactor
+        );
+    /** 
+     * RemoveClusterAdmin is used to remove a Cluster Admin. The "admin" Cluster Admin cannot be removed.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public RemoveClusterAdminResult removeClusterAdmin(final RemoveClusterAdminRequest request);
+
+    /** 
+     * RemoveClusterAdmin is used to remove a Cluster Admin. The "admin" Cluster Admin cannot be removed.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public RemoveClusterAdminResult removeClusterAdmin(
+        
+        Long clusterAdminID
+        );
+    /** 
+     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Since("5")
+    @ConnectionType("Node")
+    public SetClusterConfigResult setClusterConfig(final SetClusterConfigRequest request);
+
+    /** 
+     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
+     * <br/><br/>
+     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Since("5")
+    @ConnectionType("Node")
+    public SetClusterConfigResult setClusterConfig(
+        
+        ClusterConfig cluster
+        );
+    /** 
+     * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public SetNtpInfoResult setNtpInfo(final SetNtpInfoRequest request);
+
+    /** 
+     * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public SetNtpInfoResult setNtpInfo(
+        
+        String[] servers
+, 
+        Optional<Boolean> broadcastclient
+        );
+    /** 
+     * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
+     **/
+    @Since("8")
+    @ConnectionType("Cluster")
+    public SetSnmpACLResult setSnmpACL(final SetSnmpACLRequest request);
+
+    /** 
+     * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
+     **/
+    @Since("8")
+    @ConnectionType("Cluster")
+    public SetSnmpACLResult setSnmpACL(
+        
+        SnmpNetwork[] networks
+, 
+        SnmpV3UsmUser[] usmUsers
+        );
+    /** 
+     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
+     * <br/><br/>
+     * <b>Note</b>: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request);
+
+    /** 
+     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
+     * <br/><br/>
+     * <b>Note</b>: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public SetSnmpInfoResult setSnmpInfo(
+        
+        Optional<SnmpNetwork[]> networks
+, 
+        Optional<Boolean> enabled
+, 
+        Optional<Boolean> snmpV3Enabled
+, 
+        Optional<SnmpV3UsmUser[]> usmUsers
+        );
+    /** 
+     * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public SetSnmpTrapInfoResult setSnmpTrapInfo(final SetSnmpTrapInfoRequest request);
+
+    /** 
+     * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public SetSnmpTrapInfoResult setSnmpTrapInfo(
+        
+        SnmpTrapRecipient[] trapRecipients
+, 
+        Boolean clusterFaultTrapsEnabled
+, 
+        Boolean clusterFaultResolvedTrapsEnabled
+, 
+        Boolean clusterEventTrapsEnabled
+        );
+    /** 
+     * SnmpSendTestTraps enables you to test SNMP functionality for a cluster. This method instructs the cluster to send test SNMP traps to the currently configured SNMP manager.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public SnmpSendTestTrapsResult snmpSendTestTraps();
+    /** 
      * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
      * <br/><br/>
      * Each Cluster Admin can be restricted to a sub-set of the API. SolidFire recommends using multiple Cluster Admins for different users and applications. Each Cluster Admin should be given the minimal permissions necessary to reduce the potential impact of credential compromise.
@@ -590,152 +736,6 @@ public interface SolidFireElementIF {
 , 
         Optional<java.util.Map<String, Object>> attributes
         );
-    /** 
-     * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(final ModifyClusterFullThresholdRequest request);
-
-    /** 
-     * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(
-        
-        Optional<Long> stage2AwareThreshold
-, 
-        Optional<Long> stage3BlockThresholdPercent
-, 
-        Optional<Long> maxMetadataOverProvisionFactor
-        );
-    /** 
-     * RemoveClusterAdmin is used to remove a Cluster Admin. The "admin" Cluster Admin cannot be removed.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public RemoveClusterAdminResult removeClusterAdmin(final RemoveClusterAdminRequest request);
-
-    /** 
-     * RemoveClusterAdmin is used to remove a Cluster Admin. The "admin" Cluster Admin cannot be removed.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public RemoveClusterAdminResult removeClusterAdmin(
-        
-        Long clusterAdminID
-        );
-    /** 
-     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Since("5")
-    @ConnectionType("Node")
-    public SetClusterConfigResult setClusterConfig(final SetClusterConfigRequest request);
-
-    /** 
-     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
-     * <br/><br/>
-     * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Since("5")
-    @ConnectionType("Node")
-    public SetClusterConfigResult setClusterConfig(
-        
-        ClusterConfig cluster
-        );
-    /** 
-     * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public SetNtpInfoResult setNtpInfo(final SetNtpInfoRequest request);
-
-    /** 
-     * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public SetNtpInfoResult setNtpInfo(
-        
-        String[] servers
-, 
-        Optional<Boolean> broadcastclient
-        );
-    /** 
-     * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
-     **/
-    @Since("8")
-    @ConnectionType("Cluster")
-    public SetSnmpACLResult setSnmpACL(final SetSnmpACLRequest request);
-
-    /** 
-     * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
-     **/
-    @Since("8")
-    @ConnectionType("Cluster")
-    public SetSnmpACLResult setSnmpACL(
-        
-        SnmpNetwork[] networks
-, 
-        SnmpV3UsmUser[] usmUsers
-        );
-    /** 
-     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
-     * <br/><br/>
-     * <b>Note</b>: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request);
-
-    /** 
-     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
-     * <br/><br/>
-     * <b>Note</b>: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public SetSnmpInfoResult setSnmpInfo(
-        
-        Optional<SnmpNetwork[]> networks
-, 
-        Optional<Boolean> enabled
-, 
-        Optional<Boolean> snmpV3Enabled
-, 
-        Optional<SnmpV3UsmUser[]> usmUsers
-        );
-    /** 
-     * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public SetSnmpTrapInfoResult setSnmpTrapInfo(final SetSnmpTrapInfoRequest request);
-
-    /** 
-     * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public SetSnmpTrapInfoResult setSnmpTrapInfo(
-        
-        SnmpTrapRecipient[] trapRecipients
-, 
-        Boolean clusterFaultTrapsEnabled
-, 
-        Boolean clusterFaultResolvedTrapsEnabled
-, 
-        Boolean clusterEventTrapsEnabled
-        );
-    /** 
-     * SnmpSendTestTraps enables you to test SNMP functionality for a cluster. This method instructs the cluster to send test SNMP traps to the currently configured SNMP manager.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public SnmpSendTestTrapsResult snmpSendTestTraps();
     /** 
      * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
      * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
@@ -1284,12 +1284,6 @@ public interface SolidFireElementIF {
         Long[] pendingNodes
         );
     /** 
-     * GetBootstrapConfig returns the cluster name and node name from the bootstrap configuration file. This API method should be performed on an individual node before it has been configured into a cluster. The resulting information from this method is used in the Cluster Configuration UI when the cluster is eventually created.
-     **/
-    @Since("2")
-    @ConnectionType("Both")
-    public GetBootstrapConfigResult getBootstrapConfig();
-    /** 
      * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
      * <br/><br/>
      * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
@@ -1444,6 +1438,12 @@ public interface SolidFireElementIF {
         
         Network network
         );
+    /** 
+     * GetBootstrapConfig returns the cluster name and node name from the bootstrap configuration file. This API method should be performed on an individual node before it has been configured into a cluster. The resulting information from this method is used in the Cluster Configuration UI when the cluster is eventually created.
+     **/
+    @Since("2")
+    @ConnectionType("Both")
+    public GetBootstrapConfigResult getBootstrapConfig();
     /** 
      * The CompleteClusterPairing method is the second step in the cluster pairing process.
      * Use this method with the encoded key received from the "StartClusterPairing" API method to complete the cluster pairing process.
@@ -1670,41 +1670,9 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ShutdownResult shutdown(
         
-        String option
-        );
-    /** 
-     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request);
-
-    /** 
-     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(
-        
-        Optional<String> chassisType
+        Long[] nodes
 , 
-        Boolean force
-        );
-    /** 
-     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request);
-
-    /** 
-     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(
-        
-        Boolean force
+        Optional<String> option
         );
     /** 
      * List the services in the cluster.
@@ -2535,6 +2503,22 @@ public interface SolidFireElementIF {
         Optional<java.util.UUID[]> virtualVolumeHostIDs
         );
     /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request);
+
+    /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
+        
+        Optional<java.util.UUID[]> virtualVolumeTaskIDs
+        );
+    /** 
      * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
      **/
     @Since("9")
@@ -2557,22 +2541,6 @@ public interface SolidFireElementIF {
         Optional<java.util.UUID> startVirtualVolumeID
 , 
         Optional<java.util.UUID[]> virtualVolumeIDs
-        );
-    /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request);
-
-    /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
-        
-        Optional<java.util.UUID[]> virtualVolumeTaskIDs
         );
     /** 
      * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
@@ -2943,6 +2911,36 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListDeletedVolumesResult listDeletedVolumes();
     /** 
+     * ListVolumeStatsByAccount returns high-level activity measurements for every account.
+     * Values are summed from all the volumes owned by the account.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByAccountResult listVolumeStatsByAccount();
+    /** 
+     * ListVolumeStatsByVolume returns high-level activity measurements for every volume, by volume.
+     * Values are cumulative from the creation of the volume.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeResult listVolumeStatsByVolume();
+    /** 
+     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request);
+
+    /** 
+     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
+        
+        Optional<Long[]> volumeAccessGroups
+        );
+    /** 
      * The ListVolumes method is used to return a list of volumes that are in a cluster.
      * You can specify the volumes you want to return in the list by using the available parameters.
      **/
@@ -2989,36 +2987,6 @@ public interface SolidFireElementIF {
         Optional<Long> startVolumeID
 , 
         Optional<Long> limit
-        );
-    /** 
-     * ListVolumeStatsByAccount returns high-level activity measurements for every account.
-     * Values are summed from all the volumes owned by the account.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByAccountResult listVolumeStatsByAccount();
-    /** 
-     * ListVolumeStatsByVolume returns high-level activity measurements for every volume, by volume.
-     * Values are cumulative from the creation of the volume.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeResult listVolumeStatsByVolume();
-    /** 
-     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request);
-
-    /** 
-     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
-        
-        Optional<Long[]> volumeAccessGroups
         );
     /** 
      * ModifyVolume is used to modify settings on an existing volume.
@@ -3519,5 +3487,39 @@ public interface SolidFireElementIF {
         Long volumeAccessGroupID
 , 
         Long[] volumes
+        );
+    /** 
+     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request);
+
+    /** 
+     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetIpmiConfigResult getIpmiConfig(
+        
+        Optional<String> chassisType
+, 
+        Boolean force
+        );
+    /** 
+     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request);
+
+    /** 
+     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetIpmiInfoResult getIpmiInfo(
+        
+        Boolean force
         );
 }

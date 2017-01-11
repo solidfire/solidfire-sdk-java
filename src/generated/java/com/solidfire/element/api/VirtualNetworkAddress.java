@@ -27,44 +27,44 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * ShutdownRequest  
+ * VirtualNetworkAddress  
  **/
 
-public class ShutdownRequest implements Serializable {
+public class VirtualNetworkAddress implements Serializable {
 
-    public static final long serialVersionUID = -9028774115799936174L;
-    @SerializedName("nodes") private Long[] nodes;
-    @SerializedName("option") private Optional<String> option;
+    public static final long serialVersionUID = -4065911921073610306L;
+    @SerializedName("virtualNetworkID") private Long virtualNetworkID;
+    @SerializedName("address") private String address;
 
     // empty constructor
     @Since("7.0")
-    public ShutdownRequest() {}
+    public VirtualNetworkAddress() {}
 
     
     // parameterized constructor
     @Since("7.0")
-    public ShutdownRequest(
-        Long[] nodes,
-        Optional<String> option
+    public VirtualNetworkAddress(
+        Long virtualNetworkID,
+        String address
     )
     {
-        this.nodes = nodes;
-        this.option = (option == null) ? Optional.<String>empty() : option;
+        this.virtualNetworkID = virtualNetworkID;
+        this.address = address;
     }
 
     /** 
-     * List of NodeIDs for the nodes to be shutdown.
+     * SolidFire unique identifier for a virtual network.
      **/
-    public Long[] getNodes() { return this.nodes; }
-    public void setNodes(Long[] nodes) { 
-        this.nodes = nodes;
+    public Long getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(Long virtualNetworkID) { 
+        this.virtualNetworkID = virtualNetworkID;
     }
     /** 
-     * Action to take for the node shutdown:restart: Restarts the node.halt: Performs full power-off of the node.
+     * Virtual Network Address.
      **/
-    public Optional<String> getOption() { return this.option; }
-    public void setOption(Optional<String> option) { 
-        this.option = (option == null) ? Optional.<String>empty() : option;
+    public String getAddress() { return this.address; }
+    public void setAddress(String address) { 
+        this.address = address;
     }
 
     @Override
@@ -72,23 +72,23 @@ public class ShutdownRequest implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ShutdownRequest that = (ShutdownRequest) o;
+        VirtualNetworkAddress that = (VirtualNetworkAddress) o;
 
         return 
-            Arrays.equals(nodes, that.nodes) && 
-            Objects.equals(option, that.option);
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
+            Objects.equals(address, that.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])nodes,option );
+        return Objects.hash( virtualNetworkID,address );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("nodes", nodes);
-        map.put("option", option);
+        map.put("virtualNetworkID", virtualNetworkID);
+        map.put("address", address);
         return map;
     }
 
@@ -97,10 +97,8 @@ public class ShutdownRequest implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
-        if(null != option && option.isPresent()){
-            sb.append(" option : ").append(option).append(",");
-        }
+        sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+        sb.append(" address : ").append(address).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,31 +116,31 @@ public class ShutdownRequest implements Serializable {
     }
 
     public static class Builder {
-        private Long[] nodes;
-        private Optional<String> option;
+        private Long virtualNetworkID;
+        private String address;
 
         private Builder() { }
 
-        public ShutdownRequest build() {
-            return new ShutdownRequest (
-                         this.nodes,
-                         this.option);
+        public VirtualNetworkAddress build() {
+            return new VirtualNetworkAddress (
+                         this.virtualNetworkID,
+                         this.address);
         }
 
-        private ShutdownRequest.Builder buildFrom(final ShutdownRequest req) {
-            this.nodes = req.nodes;
-            this.option = req.option;
+        private VirtualNetworkAddress.Builder buildFrom(final VirtualNetworkAddress req) {
+            this.virtualNetworkID = req.virtualNetworkID;
+            this.address = req.address;
 
             return this;
         }
 
-        public ShutdownRequest.Builder nodes(final Long[] nodes) {
-            this.nodes = nodes;
+        public VirtualNetworkAddress.Builder virtualNetworkID(final Long virtualNetworkID) {
+            this.virtualNetworkID = virtualNetworkID;
             return this;
         }
 
-        public ShutdownRequest.Builder optionalOption(final String option) {
-            this.option = (option == null) ? Optional.<String>empty() : Optional.of(option);
+        public VirtualNetworkAddress.Builder address(final String address) {
+            this.address = address;
             return this;
         }
 

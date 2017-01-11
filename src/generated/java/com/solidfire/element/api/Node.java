@@ -50,7 +50,7 @@ public class Node implements Serializable {
     @SerializedName("sip") private String sip;
     @SerializedName("sipi") private String sipi;
     @SerializedName("uuid") private java.util.UUID uuid;
-    @SerializedName("virtualNetworks") private Long[] virtualNetworks;
+    @SerializedName("virtualNetworks") private VirtualNetworkAddress[] virtualNetworks;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
@@ -75,7 +75,7 @@ public class Node implements Serializable {
         String sip,
         String sipi,
         java.util.UUID uuid,
-        Long[] virtualNetworks,
+        VirtualNetworkAddress[] virtualNetworks,
         java.util.Map<String, Object> attributes
     )
     {
@@ -194,8 +194,8 @@ public class Node implements Serializable {
     }
     /** 
      **/
-    public Long[] getVirtualNetworks() { return this.virtualNetworks; }
-    public void setVirtualNetworks(Long[] virtualNetworks) { 
+    public VirtualNetworkAddress[] getVirtualNetworks() { return this.virtualNetworks; }
+    public void setVirtualNetworks(VirtualNetworkAddress[] virtualNetworks) { 
         this.virtualNetworks = virtualNetworks;
     }
     /** 
@@ -310,7 +310,7 @@ public class Node implements Serializable {
         private String sip;
         private String sipi;
         private java.util.UUID uuid;
-        private Long[] virtualNetworks;
+        private VirtualNetworkAddress[] virtualNetworks;
         private java.util.Map<String, Object> attributes;
 
         private Builder() { }
@@ -426,7 +426,7 @@ public class Node implements Serializable {
             return this;
         }
 
-        public Node.Builder virtualNetworks(final Long[] virtualNetworks) {
+        public Node.Builder virtualNetworks(final VirtualNetworkAddress[] virtualNetworks) {
             this.virtualNetworks = virtualNetworks;
             return this;
         }
