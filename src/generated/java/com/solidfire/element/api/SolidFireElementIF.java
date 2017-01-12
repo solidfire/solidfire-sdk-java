@@ -1066,26 +1066,6 @@ public interface SolidFireElementIF {
         ModifyInitiator[] initiators
         );
     /** 
-     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
-     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
-     **/
-    @Since("1.0")
-    @ConnectionType("Both")
-    public Object invokeSFApi(final InvokeSFApiRequest request);
-
-    /** 
-     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
-     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
-     **/
-    @Since("1.0")
-    @ConnectionType("Both")
-    public Object invokeSFApi(
-        
-        String method
-, 
-        Optional<java.util.Map<String, Object>> parameters
-        );
-    /** 
      * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
      * <br/><br/>
      * An LDAP group that has been defined in Active Directory can also be added using this API method. The access level that is given to the group will be passed to the individual users in the LDAP group.
@@ -3521,5 +3501,25 @@ public interface SolidFireElementIF {
     public GetIpmiInfoResult getIpmiInfo(
         
         Boolean force
+        );
+    /** 
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
+     **/
+    @Since("1.0")
+    @ConnectionType("Both")
+    public Object invokeSFApi(final InvokeSFApiRequest request);
+
+    /** 
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
+     **/
+    @Since("1.0")
+    @ConnectionType("Both")
+    public Object invokeSFApi(
+        
+        String method
+, 
+        Optional<java.util.Map<String, Object>> parameters
         );
 }
