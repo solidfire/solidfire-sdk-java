@@ -63,9 +63,9 @@ public class SnmpV3UsmUser implements Serializable {
     }
 
     /** 
-     * <br/><b>rouser</b>: read-only access.*
-     * <br/><b>rwuser</b>: for read-write access.
-     * <br/><b>rosys</b>: for read-only access to a restricted set of system information
+     * rouser: read-only access.*
+     * rwuser: for read-write access.
+     * rosys: for read-only access to a restricted set of system information
      * *SolidFire recommends that all USM users be set to "rouser" access, because all SolidFire MIB objects are read-only.
      **/
     public String getAccess() { return this.access; }
@@ -94,9 +94,9 @@ public class SnmpV3UsmUser implements Serializable {
         this.passphrase = passphrase;
     }
     /** 
-     * <br/><b>noauth</b>: No password or passphrase is required.
-     * <br/><b>auth</b>: A password is required for user access.
-     * <br/><b>priv</b>: A password and passphrase is required for user access.
+     * noauth: No password or passphrase is required.
+     * auth: A password is required for user access.
+     * priv: A password and passphrase is required for user access.
      **/
     public String getSecLevel() { return this.secLevel; }
     public void setSecLevel(String secLevel) { 

@@ -173,10 +173,10 @@ public class BulkVolumeJob implements Serializable {
     }
     /** 
      * Can be one of the following:
-     * <br/><b>preparing</b>
-     * <br/><b>active</b>
-     * <br/><b>done</b>
-     * <br/><b>failed</b>
+     * preparing
+     * active
+     * done
+     * failed
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 
@@ -198,8 +198,8 @@ public class BulkVolumeJob implements Serializable {
     }
     /** 
      * Can be one of the following:
-     * <br/><b>read</b>
-     * <br/><b>write</b>
+     * read
+     * write
      **/
     public String getType() { return this.type; }
     public void setType(String type) { 

@@ -67,11 +67,11 @@ public class CloneMultipleVolumesRequest implements Serializable {
     }
     /** 
      * New default access method for the new volumes if not overridden by information passed in the volumes array.
-     * <br/><b>readOnly</b>: Only read operations are allowed.
-     * <br/><b>readWrite</b>: Reads and writes are allowed.
-     * <br/><b>locked</b>: No reads or writes are allowed.
-     * <br/><b>replicationTarget</b>: Identify a volume as the target volume for a paired set of volumes. If the volume is not paired, the access status is locked.
-     * <br/><br/>
+     * readOnly: Only read operations are allowed.
+     * readWrite: Reads and writes are allowed.
+     * locked: No reads or writes are allowed.
+     * replicationTarget: Identify a volume as the target volume for a paired set of volumes. If the volume is not paired, the access status is locked.
+     * 
      * If unspecified, the access settings of the clone will be the same as the source.
      **/
     public Optional<String> getAccess() { return this.access; }

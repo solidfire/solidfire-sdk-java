@@ -69,11 +69,11 @@ public class RemoteReplication implements Serializable {
     }
 
     /** 
-     * Volume replication mode.<br/>
-     * Possible values:<br/>
-     * <b>Async</b>: Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.<br/>
-     * <b>Sync</b>: Source acknowledges write when the data is stored locally and on the remote cluster.<br/>
-     * <b>SnapshotsOnly</b>: Only snapshots created on the source cluster will be replicated. Active writes from the source volume will not be replicated.<br/>
+     * Volume replication mode.
+     * Possible values:
+     * Async: Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.
+     * Sync: Source acknowledges write when the data is stored locally and on the remote cluster.
+     * SnapshotsOnly: Only snapshots created on the source cluster will be replicated. Active writes from the source volume will not be replicated.
      **/
     public String getMode() { return this.mode; }
     public void setMode(String mode) { 

@@ -68,11 +68,11 @@ public class StartVolumePairingRequest implements Serializable {
         this.volumeID = volumeID;
     }
     /** 
-     * The mode of the volume on which to start the pairing process. The mode can only be set if the volume is the source volume.<br/>
-     * Possible values:<br/>
-     * <b>Async</b>: (default if no mode parameter specified) Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.<br/>
-     * <b>Sync</b>: Source acknowledges write when the data is stored locally and on the remote cluster.<br/>
-     * <b>SnapshotsOnly</b>: Only snapshots created on the source cluster will be replicated. Active writes from the source volume will not be replicated.<br/>
+     * The mode of the volume on which to start the pairing process. The mode can only be set if the volume is the source volume.
+     * Possible values:
+     * Async: (default if no mode parameter specified) Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.
+     * Sync: Source acknowledges write when the data is stored locally and on the remote cluster.
+     * SnapshotsOnly: Only snapshots created on the source cluster will be replicated. Active writes from the source volume will not be replicated.
      **/
     public Optional<String> getMode() { return this.mode; }
     public void setMode(Optional<String> mode) { 

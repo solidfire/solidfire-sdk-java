@@ -50,11 +50,11 @@ public class CreateScheduleRequest implements Serializable {
     }
 
     /** 
-     * The "Schedule" object will be used to create a new schedule.<br/>
-     * Do not set ScheduleID property, it will be ignored.<br/>
-     * Frequency property must be of type that inherits from Frequency. Valid types are:<br/>
-     * DaysOfMonthFrequency<br/>
-     * DaysOrWeekFrequency<br/>
+     * The "Schedule" object will be used to create a new schedule.
+     * Do not set ScheduleID property, it will be ignored.
+     * Frequency property must be of type that inherits from Frequency. Valid types are:
+     * DaysOfMonthFrequency
+     * DaysOrWeekFrequency
      * TimeIntervalFrequency
      **/
     public Schedule getSchedule() { return this.schedule; }

@@ -117,8 +117,8 @@ public class ModifyVirtualNetworkRequest implements Serializable {
     /** 
      * New addressBlock to set for this Virtual Network object. This may contain new address blocks to add to the existing object or it may omit unused address blocks that need to be removed. Alternatively, existing address blocks may be extended or reduced in size. The size of the starting addressBlocks for a Virtual Network object can only be increased, and can never be decreased.
      * Attributes for this parameter are:
-     * <br/><b>start:</b> start of the IP address range. (String)
-     * <br/><b>size:</b> numbre of IP addresses to include in the block. (Integer)
+     * start: start of the IP address range. (String)
+     * size: numbre of IP addresses to include in the block. (Integer)
      **/
     public Optional<AddressBlock[]> getAddressBlocks() { return this.addressBlocks; }
     public void setAddressBlocks(Optional<AddressBlock[]> addressBlocks) { 

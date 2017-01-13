@@ -53,8 +53,8 @@ public class PendingOperation implements Serializable {
     }
 
     /** 
-     * <br/><b>true</b>: operation is still in progress.
-     * <br/><b>false</b>: operation is no longer in progress.
+     * true: operation is still in progress.
+     * false: operation is no longer in progress.
      **/
     public Boolean getPending() { return this.pending; }
     public void setPending(Boolean pending) { 

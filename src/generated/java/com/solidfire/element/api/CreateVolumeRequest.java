@@ -96,7 +96,7 @@ public class CreateVolumeRequest implements Serializable {
     }
     /** 
      * Initial quality of service settings for this volume.
-     * <br/><br/>
+     * 
      * Volumes created without specified QoS values are created with the default values for QoS.
      * Default values for a volume can be found by running the GetDefaultQoS method.
      **/

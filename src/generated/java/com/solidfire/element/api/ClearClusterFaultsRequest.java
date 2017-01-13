@@ -50,10 +50,10 @@ public class ClearClusterFaultsRequest implements Serializable {
     }
 
     /** 
-     * Determines the types of faults cleared:<br/>
-     * <b>current</b>: Faults that are currently detected and have not been resolved.<br/>
-     * <b>resolved</b>: Faults that were previously detected and resolved.<br/>
-     * <b>all</b>: Both current and resolved faults are cleared. The fault status can be determined by the "resolved" field of the fault object.
+     * Determines the types of faults cleared:
+     * current: Faults that are currently detected and have not been resolved.
+     * resolved: Faults that were previously detected and resolved.
+     * all: Both current and resolved faults are cleared. The fault status can be determined by the "resolved" field of the fault object.
      **/
     public Optional<String> getFaultTypes() { return this.faultTypes; }
     public void setFaultTypes(Optional<String> faultTypes) { 

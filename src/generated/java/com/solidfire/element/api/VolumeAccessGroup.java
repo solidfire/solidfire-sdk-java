@@ -29,9 +29,9 @@ import java.util.Objects;
 /**
  * VolumeAccessGroup  
  * A volume access group is a useful way of grouping volumes and initiators together for ease of management.
- * <br/><br/>
+ * 
  * Volume Access Group Limits:
- * <br/><br/>
+ * 
  * - A volume access group can contain up to sixty-four initiator IQNs.
  * - An initiator can only belong to only one volume access group.
  * - A volume access group can contain up to two thousand volumes.

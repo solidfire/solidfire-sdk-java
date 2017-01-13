@@ -63,9 +63,9 @@ public class ModifyVolumePairRequest implements Serializable {
         this.volumeID = volumeID;
     }
     /** 
-     * Valid values that can be entered:<br/>
-     * <b>true</b>: to pause volume replication.<br/>
-     * <b>false</b>: to restart volume replication.<br/>
+     * Valid values that can be entered:
+     * true: to pause volume replication.
+     * false: to restart volume replication.
      * If no value is specified, no change in replication is performed.
      **/
     public Optional<Boolean> getPausedManual() { return this.pausedManual; }
@@ -73,11 +73,11 @@ public class ModifyVolumePairRequest implements Serializable {
         this.pausedManual = (pausedManual == null) ? Optional.<Boolean>empty() : pausedManual;
     }
     /** 
-     * Volume replication mode.<br/>
-     * Possible values:<br/>
-     * <b>Async</b>: Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.<br/>
-     * <b>Sync</b>: The source acknowledges the write when the data is stored locally and on the remote cluster.<br/>
-     * <b>SnapshotsOnly</b>: Only snapshots created on the source cluster will be replicated. Active writes from the source volume are not replicated.<br/>
+     * Volume replication mode.
+     * Possible values:
+     * Async: Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.
+     * Sync: The source acknowledges the write when the data is stored locally and on the remote cluster.
+     * SnapshotsOnly: Only snapshots created on the source cluster will be replicated. Active writes from the source volume are not replicated.
      **/
     public Optional<String> getMode() { return this.mode; }
     public void setMode(Optional<String> mode) { 

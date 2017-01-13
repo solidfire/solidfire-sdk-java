@@ -69,11 +69,11 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
         this.key = key;
     }
     /** 
-     * The SolidFire system sets the status of the given bulk volume job.<br/>
-     * Possible values:<br/>
-     * <br/><b>running</b>: jobs that are still active.
-     * <br/><b>complete</b>: jobs that are done. failed - jobs that have failed.
-     * <br/><b>failed</b>: jobs that have failed.
+     * The SolidFire system sets the status of the given bulk volume job.
+     * Possible values:
+     * running: jobs that are still active.
+     * complete: jobs that are done. failed - jobs that have failed.
+     * failed: jobs that have failed.
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 

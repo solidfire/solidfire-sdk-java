@@ -104,9 +104,9 @@ public class PairedCluster implements Serializable {
     }
     /** 
      * Can be one of the following:
-     * <br/><b>Connected</b>
-     * <br/><b>Misconfigured</b>
-     * <br/><b>Disconnected</b>
+     * Connected
+     * Misconfigured
+     * Disconnected
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 

@@ -51,8 +51,8 @@ public class GetLdapConfigurationResult implements Serializable {
 
     /** 
      * List of the current LDAP configuration settings. This API call will not return the plain text of the search account password.
-     * <br/><br/>
-     * <b>Note</b>: If LDAP authentication is currently disabled, all the returned settings will be empty with the exception of "authType", and "groupSearchType" which are set to "SearchAndBind" and "ActiveDirectory" respectively.
+     * 
+     * Note: If LDAP authentication is currently disabled, all the returned settings will be empty with the exception of "authType", and "groupSearchType" which are set to "SearchAndBind" and "ActiveDirectory" respectively.
      **/
     public LdapConfiguration getLdapConfiguration() { return this.ldapConfiguration; }
     public void setLdapConfiguration(LdapConfiguration ldapConfiguration) { 

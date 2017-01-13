@@ -60,9 +60,9 @@ public class SnmpNetwork implements Serializable {
     }
 
     /** 
-     * <br/><b>ro</b>: read-only access.*
-     * <br/><b>rw</b>: for read-write access.
-     * <br/><b>rosys</b>: for read-only access to a restricted set of system information
+     * ro: read-only access.*
+     * rw: for read-write access.
+     * rosys: for read-only access to a restricted set of system information
      * *SolidFire recommends that all networks other than the default "localhost" be set to "ro" access, because all SolidFire MIB objects are read-only.
      **/
     public String getAccess() { return this.access; }

@@ -77,10 +77,10 @@ public class EnableLdapAuthenticationRequest implements Serializable {
     }
 
     /** 
-     * Identifies which user authentcation method will be used. <br/>
-     * Must be one of the following:<br/>
-     * <b>DirectBind</b><br/>
-     * <b>SearchAndBind</b> (default)
+     * Identifies which user authentcation method will be used. 
+     * Must be one of the following:
+     * DirectBind
+     * SearchAndBind (default)
      **/
     public Optional<String> getAuthType() { return this.authType; }
     public void setAuthType(Optional<String> authType) { 
@@ -94,8 +94,8 @@ public class EnableLdapAuthenticationRequest implements Serializable {
         this.groupSearchBaseDN = (groupSearchBaseDN == null) ? Optional.<String>empty() : groupSearchBaseDN;
     }
     /** 
-     * REQUIRED for CustomFilter<br/>
-     * For use with the CustomFilter search type, an LDAP filter to use to return the DNs of a user's groups.<br/>
+     * REQUIRED for CustomFilter
+     * For use with the CustomFilter search type, an LDAP filter to use to return the DNs of a user's groups.
      * The string can have placeholder text of %USERNAME% and %USERDN% to be replaced with their username and full userDN as needed.
      **/
     public Optional<String> getGroupSearchCustomFilter() { return this.groupSearchCustomFilter; }
@@ -103,17 +103,17 @@ public class EnableLdapAuthenticationRequest implements Serializable {
         this.groupSearchCustomFilter = (groupSearchCustomFilter == null) ? Optional.<String>empty() : groupSearchCustomFilter;
     }
     /** 
-     * Controls the default group search filter used, can be one of the following:<br/>
-     * <b>NoGroups</b>: No group support.<br/>
-     * <b>ActiveDirectory</b>: (default) Nested membership of all of a user's AD groups.<br/>
-     * <b>MemberDN</b>: MemberDN style groups (single-level).
+     * Controls the default group search filter used, can be one of the following:
+     * NoGroups: No group support.
+     * ActiveDirectory: (default) Nested membership of all of a user's AD groups.
+     * MemberDN: MemberDN style groups (single-level).
      **/
     public Optional<String> getGroupSearchType() { return this.groupSearchType; }
     public void setGroupSearchType(Optional<String> groupSearchType) { 
         this.groupSearchType = (groupSearchType == null) ? Optional.<String>empty() : groupSearchType;
     }
     /** 
-     * REQUIRED for SearchAndBind<br/>
+     * REQUIRED for SearchAndBind
      * A fully qualified DN to log in with to perform an LDAP search for the user (needs read access to the LDAP directory).
      **/
     public Optional<String> getSearchBindDN() { return this.searchBindDN; }
@@ -121,7 +121,7 @@ public class EnableLdapAuthenticationRequest implements Serializable {
         this.searchBindDN = (searchBindDN == null) ? Optional.<String>empty() : searchBindDN;
     }
     /** 
-     * REQUIRED for SearchAndBind<br/>
+     * REQUIRED for SearchAndBind
      * The password for the searchBindDN account used for searching.
      **/
     public Optional<String> getSearchBindPassword() { return this.searchBindPassword; }
@@ -136,8 +136,8 @@ public class EnableLdapAuthenticationRequest implements Serializable {
         this.serverURIs = serverURIs;
     }
     /** 
-     * REQUIRED for DirectBind<br/>
-     * A string that is used to form a fully qualified user DN.<br/>
+     * REQUIRED for DirectBind
+     * A string that is used to form a fully qualified user DN.
      * The string should have the placeholder text "%USERNAME%" which will be replaced with the username of the authenticating user.
      **/
     public Optional<String> getUserDNTemplate() { return this.userDNTemplate; }
@@ -153,9 +153,9 @@ public class EnableLdapAuthenticationRequest implements Serializable {
         this.userSearchBaseDN = (userSearchBaseDN == null) ? Optional.<String>empty() : userSearchBaseDN;
     }
     /** 
-     * REQUIRED for SearchAndBind.<br/>
-     * The LDAP filter to use.<br/>
-     * The string should have the placeholder text "%USERNAME%" which will be replaced with the username of the authenticating user.<br/>
+     * REQUIRED for SearchAndBind.
+     * The LDAP filter to use.
+     * The string should have the placeholder text "%USERNAME%" which will be replaced with the username of the authenticating user.
      * Example: (&(objectClass=person) (sAMAccountName=%USERNAME%)) will use the sAMAccountName field in Active Directory to match the nusername entered at cluster login.
      **/
     public Optional<String> getUserSearchFilter() { return this.userSearchFilter; }

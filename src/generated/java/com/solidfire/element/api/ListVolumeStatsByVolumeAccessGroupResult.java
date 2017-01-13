@@ -51,7 +51,7 @@ public class ListVolumeStatsByVolumeAccessGroupResult implements Serializable {
 
     /** 
      * List of account activity information.
-     * <br/><b>Note</b>: The volumeID member is 0 for each entry, as the values represent the summation of all volumes owned by the account.
+     * Note: The volumeID member is 0 for each entry, as the values represent the summation of all volumes owned by the account.
      **/
     public VolumeStats[] getVolumeStats() { return this.volumeStats; }
     public void setVolumeStats(VolumeStats[] volumeStats) { 

@@ -89,7 +89,7 @@ public class VolumeQOS implements Serializable {
     /** 
      * The length of time burst IOPS is allowed.
      * The value returned is represented in time units of seconds.
-     * <br/><b>Note</b>: this value is calculated by the system based on IOPS set for QoS.
+     * Note: this value is calculated by the system based on IOPS set for QoS.
      **/
     public Long getBurstTime() { return this.burstTime; }
     public void setBurstTime(Long burstTime) { 

@@ -50,11 +50,11 @@ public class ModifyScheduleRequest implements Serializable {
     }
 
     /** 
-     * The "Schedule" object will be used to modify an existing schedule.<br/>
-     * The ScheduleID property is required.<br/>
-     * Frequency property must be of type that inherits from Frequency. Valid types are:<br/>
-     * DaysOfMonthFrequency<br/>
-     * DaysOrWeekFrequency<br/>
+     * The "Schedule" object will be used to modify an existing schedule.
+     * The ScheduleID property is required.
+     * Frequency property must be of type that inherits from Frequency. Valid types are:
+     * DaysOfMonthFrequency
+     * DaysOrWeekFrequency
      * TimeIntervalFrequency
      **/
     public Schedule getSchedule() { return this.schedule; }

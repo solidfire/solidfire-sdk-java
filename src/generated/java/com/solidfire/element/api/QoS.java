@@ -30,13 +30,13 @@ import java.util.Objects;
  * QoS  
  * Quality of Service (QoS) values are used on SolidFire volumes to provision performance expectations.
  * Minimum, maximum and burst QoS values can be set within the ranges specified in the QoS table below.
- * <br/><br/>
+ * 
  * Volumes created without specified QoS values are created with the Default values listed below.
  * Default values can be found by running the GetDefaultQoS method.
- * <br/><br/>
- * <b>minIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000<br/>
- * <b>maxIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>
- * <b>burstIOPS</b> Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000<br/>
+ * 
+ * minIOPS Min: 100/50 (v7.0/v8.0), Default: 100, Max: 15,000
+ * maxIOPS Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000
+ * burstIOPS Min: 100/50 (v7.0/v8.0), Default: 15,000, Max: 100,000
  **/
 
 public class QoS implements Serializable {
@@ -94,7 +94,7 @@ public class QoS implements Serializable {
     /** 
      * The length of time burst IOPS is allowed.
      * The value returned is represented in time units of seconds.
-     * <br/><b>Note</b>: this value is calculated by the system based on IOPS set for QoS.
+     * Note: this value is calculated by the system based on IOPS set for QoS.
      **/
     public Optional<Long> getBurstTime() { return this.burstTime; }
     public void setBurstTime(Optional<Long> burstTime) { 

@@ -80,8 +80,8 @@ public class ListClusterFaultsRequest implements Serializable {
     }
     /** 
      * Determines the types of faults returned: current: List active, unresolved faults.
-     * <b>resolved</b>: List faults that were previously detected and resolved.
-     * <b>all</b>: (Default) List both current and resolved faults. You can see the fault status in the 'resolved' field of the Cluster Fault object.
+     * resolved: List faults that were previously detected and resolved.
+     * all: (Default) List both current and resolved faults. You can see the fault status in the 'resolved' field of the Cluster Fault object.
      **/
     public Optional<String> getFaultTypes() { return this.faultTypes; }
     public void setFaultTypes(Optional<String> faultTypes) { 
