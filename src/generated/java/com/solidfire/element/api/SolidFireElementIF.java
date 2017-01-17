@@ -294,6 +294,40 @@ public interface SolidFireElementIF {
         Optional<String> faultTypes
         );
     /** 
+     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
+     * <br/><br/>
+     * <b>Note</b>: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
+     **/
+    @Since("7.0")
+    @ConnectionType("Both")
+    public CreateClusterResult createCluster(final CreateClusterRequest request);
+
+    /** 
+     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
+     * <br/><br/>
+     * <b>Note</b>: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
+     **/
+    @Since("7.0")
+    @ConnectionType("Both")
+    public CreateClusterResult createCluster(
+        
+        Optional<Boolean> acceptEula
+, 
+        String mvip
+, 
+        String svip
+, 
+        Long repCount
+, 
+        String username
+, 
+        String password
+, 
+        String[] nodes
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
      * CreateSupportBundle is used to create a support bundle file under the node's directory. When the bundle has been successfully created, the bundle is stored on the node as a tar.gz file.
      **/
     @Since("8")
@@ -703,40 +737,6 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public SnmpSendTestTrapsResult snmpSendTestTraps();
     /** 
-     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
-     * <br/><br/>
-     * <b>Note</b>: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
-     **/
-    @Since("7.0")
-    @ConnectionType("Both")
-    public CreateClusterResult createCluster(final CreateClusterRequest request);
-
-    /** 
-     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
-     * <br/><br/>
-     * <b>Note</b>: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
-     **/
-    @Since("7.0")
-    @ConnectionType("Both")
-    public CreateClusterResult createCluster(
-        
-        Optional<Boolean> acceptEula
-, 
-        String mvip
-, 
-        String svip
-, 
-        Long repCount
-, 
-        String username
-, 
-        String password
-, 
-        String[] nodes
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
      * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
      * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
      * Use the "ListDrives" method to display drives that are "available" to be added.
@@ -1066,26 +1066,6 @@ public interface SolidFireElementIF {
         ModifyInitiator[] initiators
         );
     /** 
-     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
-     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
-     **/
-    @Since("1.0")
-    @ConnectionType("Both")
-    public Object invokeSFApi(final InvokeSFApiRequest request);
-
-    /** 
-     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
-     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
-     **/
-    @Since("1.0")
-    @ConnectionType("Both")
-    public Object invokeSFApi(
-        
-        String method
-, 
-        Optional<java.util.Map<String, Object>> parameters
-        );
-    /** 
      * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
      * <br/><br/>
      * An LDAP group that has been defined in Active Directory can also be added using this API method. The access level that is given to the group will be passed to the individual users in the LDAP group.
@@ -1284,6 +1264,12 @@ public interface SolidFireElementIF {
         Long[] pendingNodes
         );
     /** 
+     * GetBootstrapConfig returns the cluster name and node name from the bootstrap configuration file. This API method should be performed on an individual node before it has been configured into a cluster. The resulting information from this method is used in the Cluster Configuration UI when the cluster is eventually created.
+     **/
+    @Since("2")
+    @ConnectionType("Both")
+    public GetBootstrapConfigResult getBootstrapConfig();
+    /** 
      * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
      * <br/><br/>
      * <b>Note</b>: This method is available only through the per-node API endpoint 5.0 or later.
@@ -1438,12 +1424,6 @@ public interface SolidFireElementIF {
         
         Network network
         );
-    /** 
-     * GetBootstrapConfig returns the cluster name and node name from the bootstrap configuration file. This API method should be performed on an individual node before it has been configured into a cluster. The resulting information from this method is used in the Cluster Configuration UI when the cluster is eventually created.
-     **/
-    @Since("2")
-    @ConnectionType("Both")
-    public GetBootstrapConfigResult getBootstrapConfig();
     /** 
      * The CompleteClusterPairing method is the second step in the cluster pairing process.
      * Use this method with the encoded key received from the "StartClusterPairing" API method to complete the cluster pairing process.
@@ -1673,6 +1653,40 @@ public interface SolidFireElementIF {
         Long[] nodes
 , 
         Optional<String> option
+        );
+    /** 
+     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request);
+
+    /** 
+     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetIpmiConfigResult getIpmiConfig(
+        
+        Optional<String> chassisType
+, 
+        Boolean force
+        );
+    /** 
+     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request);
+
+    /** 
+     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetIpmiInfoResult getIpmiInfo(
+        
+        Boolean force
         );
     /** 
      * List the services in the cluster.
@@ -2355,6 +2369,64 @@ public interface SolidFireElementIF {
         Optional<Long> virtualNetworkTag
         );
     /** 
+     * CreateVirtualVolumeHost creates a new ESX host.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request);
+
+    /** 
+     * CreateVirtualVolumeHost creates a new ESX host.
+     **/
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult createVirtualVolumeHost(
+        
+        java.util.UUID virtualVolumeHostID
+, 
+        java.util.UUID clusterID
+, 
+        Optional<String[]> initiatorNames
+, 
+        Optional<java.util.UUID[]> visibleProtocolEndpointIDs
+, 
+        Optional<String> hostAddress
+, 
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        );
+    /** 
+     * EnableFeature allows you to enable cluster features that are disabled by default.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public EnableFeatureResult enableFeature(final EnableFeatureRequest request);
+
+    /** 
+     * EnableFeature allows you to enable cluster features that are disabled by default.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public EnableFeatureResult enableFeature(
+        
+        String feature
+        );
+    /** 
+     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetFeatureStatusResult getFeatureStatus(final GetFeatureStatusRequest request);
+
+    /** 
+     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetFeatureStatusResult getFeatureStatus(
+        
+        Optional<String> feature
+        );
+    /** 
      * Enables retrieval of the number of virtual volumes currently in the system.
      **/
     @Since("9")
@@ -2507,62 +2579,130 @@ public interface SolidFireElementIF {
         Optional<java.util.UUID> callingVirtualVolumeHostID
         );
     /** 
-     * CreateVirtualVolumeHost creates a new ESX host.
+     * Cancels a currently running clone operation. This method does not return anything.
      **/
-    @Since("9.0")
+    @Since("9")
     @ConnectionType("Cluster")
-    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request);
+    public CancelCloneResult cancelClone(final CancelCloneRequest request);
 
     /** 
-     * CreateVirtualVolumeHost creates a new ESX host.
+     * Cancels a currently running clone operation. This method does not return anything.
      **/
-    @Since("9.0")
+    @Since("9")
     @ConnectionType("Cluster")
-    public VirtualVolumeNullResult createVirtualVolumeHost(
+    public CancelCloneResult cancelClone(
         
-        java.util.UUID virtualVolumeHostID
-, 
-        java.util.UUID clusterID
-, 
-        Optional<String[]> initiatorNames
-, 
-        Optional<java.util.UUID[]> visibleProtocolEndpointIDs
-, 
-        Optional<String> hostAddress
-, 
-        Optional<java.util.UUID> callingVirtualVolumeHostID
+        Long cloneID
         );
     /** 
-     * EnableFeature allows you to enable cluster features that are disabled by default.
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
      **/
     @Since("9")
     @ConnectionType("Cluster")
-    public EnableFeatureResult enableFeature(final EnableFeatureRequest request);
+    public CancelGroupCloneResult cancelGroupClone(final CancelGroupCloneRequest request);
 
     /** 
-     * EnableFeature allows you to enable cluster features that are disabled by default.
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
      **/
     @Since("9")
     @ConnectionType("Cluster")
-    public EnableFeatureResult enableFeature(
+    public CancelGroupCloneResult cancelGroupClone(
         
-        String feature
+        Long groupCloneID
         );
     /** 
-     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
+     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
+     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
+     * <br/><br/>
+     * <b>Note</b>: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
      **/
-    @Since("9")
+    @Since("7")
     @ConnectionType("Cluster")
-    public GetFeatureStatusResult getFeatureStatus(final GetFeatureStatusRequest request);
+    public CloneMultipleVolumesResult cloneMultipleVolumes(final CloneMultipleVolumesRequest request);
 
     /** 
-     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
+     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
+     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
+     * <br/><br/>
+     * <b>Note</b>: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7")
+    @ConnectionType("Cluster")
+    public CloneMultipleVolumesResult cloneMultipleVolumes(
+        
+        CloneMultipleVolumeParams[] volumes
+, 
+        Optional<String> access
+, 
+        Optional<Long> groupSnapshotID
+, 
+        Optional<Long> newAccountID
+        );
+    /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * <br/><br/>
+     * <b>Note</b>: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * <br/><br/>
+     * <b>Note</b>: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request);
+
+    /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * <br/><br/>
+     * <b>Note</b>: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * <br/><br/>
+     * <b>Note</b>: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(
+        
+        Long volumeID
+, 
+        String name
+, 
+        Optional<Long> newAccountID
+, 
+        Optional<Long> newSize
+, 
+        Optional<String> access
+, 
+        Optional<Long> snapshotID
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * Copies one volume to another.
      **/
     @Since("9")
     @ConnectionType("Cluster")
-    public GetFeatureStatusResult getFeatureStatus(
+    public CopyVolumeResult copyVolume(final CopyVolumeRequest request);
+
+    /** 
+     * Copies one volume to another.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public CopyVolumeResult copyVolume(
         
-        Optional<String> feature
+        Long volumeID
+, 
+        Long dstVolumeID
+, 
+        Optional<Long> snapshotID
         );
     /** 
      * CreateVolume is used to create a new (empty) volume on the cluster.
@@ -3115,132 +3255,6 @@ public interface SolidFireElementIF {
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
-     * Cancels a currently running clone operation. This method does not return anything.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CancelCloneResult cancelClone(final CancelCloneRequest request);
-
-    /** 
-     * Cancels a currently running clone operation. This method does not return anything.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CancelCloneResult cancelClone(
-        
-        Long cloneID
-        );
-    /** 
-     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CancelGroupCloneResult cancelGroupClone(final CancelGroupCloneRequest request);
-
-    /** 
-     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CancelGroupCloneResult cancelGroupClone(
-        
-        Long groupCloneID
-        );
-    /** 
-     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
-     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
-     * <br/><br/>
-     * <b>Note</b>: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7")
-    @ConnectionType("Cluster")
-    public CloneMultipleVolumesResult cloneMultipleVolumes(final CloneMultipleVolumesRequest request);
-
-    /** 
-     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
-     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
-     * <br/><br/>
-     * <b>Note</b>: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7")
-    @ConnectionType("Cluster")
-    public CloneMultipleVolumesResult cloneMultipleVolumes(
-        
-        CloneMultipleVolumeParams[] volumes
-, 
-        Optional<String> access
-, 
-        Optional<Long> groupSnapshotID
-, 
-        Optional<Long> newAccountID
-        );
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * <br/><br/>
-     * <b>Note</b>: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * <br/><br/>
-     * <b>Note</b>: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request);
-
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * <br/><br/>
-     * <b>Note</b>: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * <br/><br/>
-     * <b>Note</b>: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(
-        
-        Long volumeID
-, 
-        String name
-, 
-        Optional<Long> newAccountID
-, 
-        Optional<Long> newSize
-, 
-        Optional<String> access
-, 
-        Optional<Long> snapshotID
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * Copies one volume to another.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CopyVolumeResult copyVolume(final CopyVolumeRequest request);
-
-    /** 
-     * Copies one volume to another.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CopyVolumeResult copyVolume(
-        
-        Long volumeID
-, 
-        Long dstVolumeID
-, 
-        Optional<Long> snapshotID
-        );
-    /** 
      * Add initiators to a volume access group.
      **/
     @Since("5")
@@ -3489,37 +3503,23 @@ public interface SolidFireElementIF {
         Long[] volumes
         );
     /** 
-     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
      **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request);
+    @Since("1.0")
+    @ConnectionType("Both")
+    public Object invokeSFApi(final InvokeSFApiRequest request);
 
     /** 
-     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
      **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(
+    @Since("1.0")
+    @ConnectionType("Both")
+    public Object invokeSFApi(
         
-        Optional<String> chassisType
+        String method
 , 
-        Boolean force
-        );
-    /** 
-     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request);
-
-    /** 
-     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(
-        
-        Boolean force
+        Optional<java.util.Map<String, Object>> parameters
         );
 }
