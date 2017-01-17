@@ -42,7 +42,7 @@ public class Snapshot implements Serializable {
     @SerializedName("enableRemoteReplication") private Boolean enableRemoteReplication;
     @SerializedName("expirationReason") private String expirationReason;
     @SerializedName("expirationTime") private String expirationTime;
-    @SerializedName("remoteStatuses") private SnapshotRemoteStatus[] remoteStatuses;
+    @SerializedName("remoteStatuses") private Optional<SnapshotRemoteStatus[]> remoteStatuses;
     @SerializedName("status") private String status;
     @SerializedName("snapshotUUID") private java.util.UUID snapshotUUID;
     @SerializedName("totalSize") private Long totalSize;
@@ -93,7 +93,7 @@ public class Snapshot implements Serializable {
         Boolean enableRemoteReplication,
         String expirationReason,
         String expirationTime,
-        SnapshotRemoteStatus[] remoteStatuses,
+        Optional<SnapshotRemoteStatus[]> remoteStatuses,
         String status,
         java.util.UUID snapshotUUID,
         Long totalSize,
@@ -111,7 +111,7 @@ public class Snapshot implements Serializable {
         this.enableRemoteReplication = enableRemoteReplication;
         this.expirationReason = expirationReason;
         this.expirationTime = expirationTime;
-        this.remoteStatuses = remoteStatuses;
+        this.remoteStatuses = (remoteStatuses == null) ? Optional.<SnapshotRemoteStatus[]>empty() : remoteStatuses;
         this.status = status;
         this.snapshotUUID = snapshotUUID;
         this.totalSize = totalSize;
@@ -184,9 +184,9 @@ public class Snapshot implements Serializable {
      * Deleted: This is a target cluster, the snapshot has been deleted, and it still exists on the source.
      * volumePairUUID: universal identifier of the volume pair
      **/
-    public SnapshotRemoteStatus[] getRemoteStatuses() { return this.remoteStatuses; }
-    public void setRemoteStatuses(SnapshotRemoteStatus[] remoteStatuses) { 
-        this.remoteStatuses = remoteStatuses;
+    public Optional<SnapshotRemoteStatus[]> getRemoteStatuses() { return this.remoteStatuses; }
+    public void setRemoteStatuses(Optional<SnapshotRemoteStatus[]> remoteStatuses) { 
+        this.remoteStatuses = (remoteStatuses == null) ? Optional.<SnapshotRemoteStatus[]>empty() : remoteStatuses;
     }
     /** 
      * Current status of the snapshot
@@ -266,7 +266,7 @@ public class Snapshot implements Serializable {
             Objects.equals(enableRemoteReplication, that.enableRemoteReplication) && 
             Objects.equals(expirationReason, that.expirationReason) && 
             Objects.equals(expirationTime, that.expirationTime) && 
-            Arrays.equals(remoteStatuses, that.remoteStatuses) && 
+            Objects.equals(remoteStatuses, that.remoteStatuses) && 
             Objects.equals(status, that.status) && 
             Objects.equals(snapshotUUID, that.snapshotUUID) && 
             Objects.equals(totalSize, that.totalSize) && 
@@ -279,7 +279,7 @@ public class Snapshot implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( snapshotID,volumeID,name,checksum,enableRemoteReplication,expirationReason,expirationTime,(Object[])remoteStatuses,status,snapshotUUID,totalSize,groupID,groupSnapshotUUID,createTime,virtualVolumeID,attributes );
+        return Objects.hash( snapshotID,volumeID,name,checksum,enableRemoteReplication,expirationReason,expirationTime,remoteStatuses,status,snapshotUUID,totalSize,groupID,groupSnapshotUUID,createTime,virtualVolumeID,attributes );
     }
 
 
@@ -316,7 +316,9 @@ public class Snapshot implements Serializable {
         sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
         sb.append(" expirationReason : ").append(expirationReason).append(",");
         sb.append(" expirationTime : ").append(expirationTime).append(",");
-        sb.append(" remoteStatuses : ").append(Arrays.toString(remoteStatuses)).append(",");
+        if(null != remoteStatuses && remoteStatuses.isPresent()){
+            sb.append(" remoteStatuses : ").append(remoteStatuses).append(",");
+        }
         sb.append(" status : ").append(status).append(",");
         sb.append(" snapshotUUID : ").append(snapshotUUID).append(",");
         sb.append(" totalSize : ").append(totalSize).append(",");
@@ -351,7 +353,7 @@ public class Snapshot implements Serializable {
         private Boolean enableRemoteReplication;
         private String expirationReason;
         private String expirationTime;
-        private SnapshotRemoteStatus[] remoteStatuses;
+        private Optional<SnapshotRemoteStatus[]> remoteStatuses;
         private String status;
         private java.util.UUID snapshotUUID;
         private Long totalSize;
@@ -439,8 +441,8 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder remoteStatuses(final SnapshotRemoteStatus[] remoteStatuses) {
-            this.remoteStatuses = remoteStatuses;
+        public Snapshot.Builder optionalRemoteStatuses(final SnapshotRemoteStatus[] remoteStatuses) {
+            this.remoteStatuses = (remoteStatuses == null) ? Optional.<SnapshotRemoteStatus[]>empty() : Optional.of(remoteStatuses);
             return this;
         }
 
