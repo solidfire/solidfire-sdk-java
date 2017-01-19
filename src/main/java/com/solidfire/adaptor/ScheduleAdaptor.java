@@ -287,6 +287,7 @@ public class ScheduleAdaptor {
             attributes.put(FREQUENCY, DAYS_OF_MONTH);
             api.attributes(attributes);
             api.minutes(frequency.getMinutes());
+            api.hours(frequency.getHours());
             api.monthdays(frequency.getMonthdays());
 
         } else if (schedule.getFrequency().getClass().equals(DaysOfWeekFrequency.class)) {
@@ -298,6 +299,7 @@ public class ScheduleAdaptor {
             attributes.put(FREQUENCY, DAYS_OF_WEEK);
             api.attributes(attributes);
             api.minutes(frequency.getMinutes());
+            api.hours(frequency.getHours());
 
             final List<ApiWeekday> apiWeekdays = new ArrayList<>();
 
