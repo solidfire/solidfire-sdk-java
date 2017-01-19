@@ -4,7 +4,7 @@ Java SDK library for interacting with SolidFire Element API
 
 ## Current Release
 
-Version: 1.2.0.147
+Version: 1.2.0.168
 
 ## Description
 
@@ -31,7 +31,7 @@ If you have any questions or comments about this product, contact <ng-sf-host-in
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>solidfire-sdk-java</artifactId>
-  <version>1.2.0.147</version>
+  <version>1.2.0.168</version>
 </dependency>
 
 ~~~
@@ -40,7 +40,7 @@ or SBT:
 
 ~~~ scala
 
-libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.2.0.147"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.2.0.168"
 
 ~~~
 
@@ -48,13 +48,13 @@ or Gradle:
 
 ~~~ groovy
 
-compile 'com.solidfire:solidfire-sdk-java:1.2.0.147'
+compile 'com.solidfire:solidfire-sdk-java:1.2.0.168'
 
 ~~~
 
 ## Assembly Jar
 
-The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.2.0.147/solidfire-sdk-assembly-1.2.0.147.jar).  
+The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.2.0.147/solidfire-sdk-assembly-1.2.0.168.jar).  
 
 ___Dependencies___:
 
@@ -299,7 +299,6 @@ The SDK and the Assembly leverage the [SLF4J API](http://www.slf4j.org/) for log
 An example logback.xml: 
 
 ~~~ xml
-
 <configuration debug="true">
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -310,14 +309,24 @@ An example logback.xml:
         </encoder>
     </appender>
 
-    <logger name="com.solidfire.element.api.SolidFireElement" level="DEBUG" />
+    <logger name="com.solidfire.core.client.ServiceBase" level="DEBUG" />
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>
+~~~
+
+You also need to add the appropriate SLF4J dependency. Continuing with the logback example:
 
 ~~~
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.1.3</version>
+</dependency>
+~~~
+        
 
 ## Roadmap
 
@@ -325,7 +334,7 @@ An example logback.xml:
 | ------- | ------------------ | ---------------------------------------------------------------- |
 | 1.0     | November 20, 2015  | Accounts, Volumes, Access Groups, Snapshots, and Group Snapshots |
 | 1.1     | September 20, 2016 | Additional Nitrogen & Oxygen API Coverage                        |
-| 1.2     | January 15, 2017   | Complete Nitrogen, Oxygen, & Fluorine API Coverage               |
+| 1.2     | January 24, 2017   | Complete Nitrogen, Oxygen, & Fluorine API Coverage               |
 
 ## License
 
