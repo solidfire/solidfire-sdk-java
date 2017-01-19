@@ -160,9 +160,9 @@ public class VolumeStats implements Serializable {
     /** 
      * The length of time since the volume was last synced with the remote cluster.
      * If the volume is not paired, this is null.
-     * <br/><br/>
-     * <br/><b>Note</b>: A target volume in an active replication state always has an async delay of 0 (zero).
-     * <br/>Target volumes are system-aware during replication and assume async delay is accurate at all times.
+     * 
+     * Note: A target volume in an active replication state always has an async delay of 0 (zero).
+     * Target volumes are system-aware during replication and assume async delay is accurate at all times.
      **/
     public Optional<String> getAsyncDelay() { return this.asyncDelay; }
     public void setAsyncDelay(Optional<String> asyncDelay) { 
@@ -199,7 +199,7 @@ public class VolumeStats implements Serializable {
         this.desiredMetadataHosts = desiredMetadataHosts;
     }
     /** 
-     * The observed latency time, in microseconds, to complete operations to a volume.<br/>
+     * The observed latency time, in microseconds, to complete operations to a volume.
      * A "0" (zero) value means there is no I/O to the volume.
      **/
     public Long getLatencyUSec() { return this.latencyUSec; }
@@ -302,10 +302,10 @@ public class VolumeStats implements Serializable {
     }
     /** 
      * A floating value that describes how much the client is using the volume.
-     * <br/><br/>
-     * Values:<br/>
-     *  0 = Client is not using the volume<br/>
-     * 1 = Client is using their max<br/>
+     * 
+     * Values:
+     *  0 = Client is not using the volume
+     * 1 = Client is using their max
      * >1 = Client is using their burst
      **/
     public Double getVolumeUtilization() { return this.volumeUtilization; }

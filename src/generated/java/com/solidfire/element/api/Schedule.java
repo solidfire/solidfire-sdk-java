@@ -84,10 +84,10 @@ public class Schedule implements Serializable {
     }
 
     /** 
-     * Indicates the frequency of the schedule occurrence. Set this to a type that inherits from Frequency.<br/>
-     * Valid types are:<br/>
-     * DayOfWeekFrequency<br/>
-     * DayOfMonthFrequency<br/>
+     * Indicates the frequency of the schedule occurrence. Set this to a type that inherits from Frequency.
+     * Valid types are:
+     * DayOfWeekFrequency
+     * DayOfMonthFrequency
      * TimeIntervalFrequency
      **/
     public Frequency getFrequency() { return this.frequency; }
@@ -102,9 +102,9 @@ public class Schedule implements Serializable {
         this.hasError = (hasError == null) ? Optional.<Boolean>empty() : hasError;
     }
     /** 
-     * Indicates the status of the last scheduled snapshot.<br/>
-     * Valid values are:<br/>
-     * Success<br/>
+     * Indicates the status of the last scheduled snapshot.
+     * Valid values are:
+     * Success
      * Failed
      **/
     public String getLastRunStatus() { return this.lastRunStatus; }
@@ -113,8 +113,8 @@ public class Schedule implements Serializable {
     }
     /** 
      * Indicates the last time the schedule started n ISO 8601 date string.
-     * Valid values are:<br/>
-     * Success<br/>
+     * Valid values are:
+     * Success
      * Failed
      **/
     public String getLastRunTimeStarted() { return this.lastRunTimeStarted; }

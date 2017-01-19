@@ -131,8 +131,8 @@ public class FibreChannelPortInfo implements Serializable {
     }
     /** 
      * Possible values:
-     * <br/><br/>
-     * <strong>Unknown<br/>NotPresent<br/>Online<br/>Offline<br/>Blocked<br/>Bypassed<br/>Diagnostics<br/>Linkdown<br/>Error<br/>Loopback<br/>Deleted</strong>
+     * 
+     * <strong>UnknownNotPresentOnlineOfflineBlockedBypassedDiagnosticsLinkdownErrorLoopbackDeleted</strong>
      **/
     public String getState() { return this.state; }
     public void setState(String state) { 

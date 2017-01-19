@@ -105,8 +105,8 @@ public class AddVirtualNetworkRequest implements Serializable {
     /** 
      * Unique Range of IP addresses to include in the virtual network.
      * Attributes for this parameter are:
-     * <br/><b>start:</b> start of the IP address range. (String)
-     * <br/><b>size:</b> numbre of IP addresses to include in the block. (Integer)
+     * start: start of the IP address range. (String)
+     * size: numbre of IP addresses to include in the block. (Integer)
      **/
     public AddressBlock[] getAddressBlocks() { return this.addressBlocks; }
     public void setAddressBlocks(AddressBlock[] addressBlocks) { 

@@ -106,8 +106,8 @@ public class GroupSnapshot implements Serializable {
     /** 
      * Status of the snapshot.
      * Possible values:
-     * <br/><b>Preparing</b>: A snapshot that is being prepared for use and is not yet writable.
-     * <br/><b>Done</b>: A snapshot that has finished being prepared and is now usable
+     * Preparing: A snapshot that is being prepared for use and is not yet writable.
+     * Done: A snapshot that has finished being prepared and is now usable
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 

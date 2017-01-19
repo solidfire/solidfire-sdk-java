@@ -60,8 +60,8 @@ public class DeleteGroupSnapshotRequest implements Serializable {
         this.groupSnapshotID = groupSnapshotID;
     }
     /** 
-     * <br/><b>true</b>: Snapshots are kept, but group association is removed.
-     * <br/><b>false</b>: The group and snapshots are deleted.
+     * true: Snapshots are kept, but group association is removed.
+     * false: The group and snapshots are deleted.
      **/
     public Boolean getSaveMembers() { return this.saveMembers; }
     public void setSaveMembers(Boolean saveMembers) { 

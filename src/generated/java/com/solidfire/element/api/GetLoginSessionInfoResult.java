@@ -50,9 +50,9 @@ public class GetLoginSessionInfoResult implements Serializable {
     }
 
     /** 
-     * The authentication expiration period. Formatted in H:mm:ss. For example: 1:30:00, 20:00, 5:00. All leading zeros and colons are removed regardless of the format the timeout was entered.<br/>
-     * Objects returned are:<br/>
-     * <b>timeout</b> - The time, in minutes, when this session will timeout and expire.
+     * The authentication expiration period. Formatted in H:mm:ss. For example: 1:30:00, 20:00, 5:00. All leading zeros and colons are removed regardless of the format the timeout was entered.
+     * Objects returned are:
+     * timeout - The time, in minutes, when this session will timeout and expire.
      **/
     public LoginSessionInfo getLoginSessionInfo() { return this.loginSessionInfo; }
     public void setLoginSessionInfo(LoginSessionInfo loginSessionInfo) { 

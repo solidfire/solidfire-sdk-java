@@ -192,10 +192,10 @@ public class Volume implements Serializable {
     }
     /** 
      * Access allowed for the volume
-     * <br/><b>readOnly</b>: Only read operations are allowed.
-     * <br/><b>readWrite</b>: Reads and writes are allowed.
-     * <br/><b>locked</b>: No reads or writes are allowed.
-     * <br/><b>replicationTarget</b>: Designated as a target volume in a replicated volume pair.
+     * readOnly: Only read operations are allowed.
+     * readWrite: Reads and writes are allowed.
+     * locked: No reads or writes are allowed.
+     * replicationTarget: Designated as a target volume in a replicated volume pair.
      **/
     public String getAccess() { return this.access; }
     public void setAccess(String access) { 

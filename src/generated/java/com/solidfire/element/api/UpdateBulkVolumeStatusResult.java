@@ -56,11 +56,11 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
     }
 
     /** 
-     * Status of the session requested. Returned status:<br/>
-     * <br/><b>preparing</b>
-     * <br/><b>active</b>
-     * <br/><b>done</b>
-     * <br/><b>failed</b>
+     * Status of the session requested. Returned status:
+     * preparing
+     * active
+     * done
+     * failed
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 

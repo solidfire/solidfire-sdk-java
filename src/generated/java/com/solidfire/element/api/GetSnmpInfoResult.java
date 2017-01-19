@@ -60,8 +60,8 @@ public class GetSnmpInfoResult implements Serializable {
 
     /** 
      * List of networks and access types enabled for SNMP.
-     * <br/><br/>
-     * <b>Note</b>: "networks" will only be present if SNMP V3 is disabled.
+     * 
+     * Note: "networks" will only be present if SNMP V3 is disabled.
      **/
     public SnmpNetwork[] getNetworks() { return this.networks; }
     public void setNetworks(SnmpNetwork[] networks) { 

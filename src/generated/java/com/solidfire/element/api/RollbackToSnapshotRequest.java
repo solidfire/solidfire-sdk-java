@@ -76,8 +76,8 @@ public class RollbackToSnapshotRequest implements Serializable {
         this.snapshotID = snapshotID;
     }
     /** 
-     * <br/><b>true</b>: The previous active volume image is kept.
-     * <br/><b>false</b>: (default) The previous active volume image is deleted.
+     * true: The previous active volume image is kept.
+     * false: (default) The previous active volume image is deleted.
      **/
     public Boolean getSaveCurrentState() { return this.saveCurrentState; }
     public void setSaveCurrentState(Boolean saveCurrentState) { 

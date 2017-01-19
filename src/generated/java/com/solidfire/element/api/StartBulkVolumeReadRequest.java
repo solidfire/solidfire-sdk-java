@@ -73,8 +73,8 @@ public class StartBulkVolumeReadRequest implements Serializable {
     }
     /** 
      * The format of the volume data. Can be either:
-     * <br/><b>uncompressed</b>: every byte of the volume is returned without any compression.
-     * <br/><b>native</b>: opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk volume write.
+     * uncompressed: every byte of the volume is returned without any compression.
+     * native: opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk volume write.
      **/
     public String getFormat() { return this.format; }
     public void setFormat(String format) { 

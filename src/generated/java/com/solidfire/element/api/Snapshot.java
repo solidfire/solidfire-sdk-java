@@ -161,9 +161,9 @@ public class Snapshot implements Serializable {
     }
     /** 
      * Indicates how the snapshot expiration was set. Possible values:
-     * <br/><b>api</b>: expiration time was set by using the API.
-     * <br/><b>none</b>: there is no expiration time set.
-     * <br/><b>test</b>: expiration time was set for testing.
+     * api: expiration time was set by using the API.
+     * none: there is no expiration time set.
+     * test: expiration time was set for testing.
      **/
     public String getExpirationReason() { return this.expirationReason; }
     public void setExpirationReason(String expirationReason) { 
@@ -178,11 +178,11 @@ public class Snapshot implements Serializable {
     }
     /** 
      * Current remote status of the snapshot remoteStatus: Possible values:
-     * <br/><b>Present</b>: Snapshot exists on a remote cluster
-     * <br/><b>Not Present</b>: Snapshot does not exist on remote cluster
-     * <br/><b>Syncing</b>: This is a target cluster and it is currently replicating the snapshot
-     * <br/><b>Deleted</b>: This is a target cluster, the snapshot has been deleted, and it still exists on the source.
-     * <br/><b>volumePairUUID</b>: universal identifier of the volume pair
+     * Present: Snapshot exists on a remote cluster
+     * Not Present: Snapshot does not exist on remote cluster
+     * Syncing: This is a target cluster and it is currently replicating the snapshot
+     * Deleted: This is a target cluster, the snapshot has been deleted, and it still exists on the source.
+     * volumePairUUID: universal identifier of the volume pair
      **/
     public Optional<SnapshotRemoteStatus[]> getRemoteStatuses() { return this.remoteStatuses; }
     public void setRemoteStatuses(Optional<SnapshotRemoteStatus[]> remoteStatuses) { 
@@ -190,9 +190,9 @@ public class Snapshot implements Serializable {
     }
     /** 
      * Current status of the snapshot
-     * <br/><b>Preparing</b>: A snapshot that is being prepared for use and is not yet writable.
-     * <br/><b>Done</b>: A snapshot that has finished being prepared and is now usable.
-     * <br/><b>Active</b>: This snapshot is the active branch.
+     * Preparing: A snapshot that is being prepared for use and is not yet writable.
+     * Done: A snapshot that has finished being prepared and is now usable.
+     * Active: This snapshot is the active branch.
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 

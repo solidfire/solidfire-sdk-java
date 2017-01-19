@@ -72,8 +72,8 @@ public class ModifyGroupSnapshotRequest implements Serializable {
     /** 
      * Use to enable the snapshot created to be replicated to a remote SolidFire cluster.
      * Possible values:
-     * <br/><b>true</b>: the snapshot will be replicated to remote storage.
-     * <br/><b>false</b>: Default. No replication.
+     * true: the snapshot will be replicated to remote storage.
+     * false: Default. No replication.
      **/
     public Optional<Boolean> getEnableRemoteReplication() { return this.enableRemoteReplication; }
     public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) { 

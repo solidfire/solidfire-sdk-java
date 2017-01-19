@@ -109,9 +109,9 @@ public class VirtualNetwork implements Serializable {
     }
     /** 
      * Range of address blocks currently assigned to the virtual network.
-     * <br/><b>available:</b> Binary string in "1"s and "0"s. 1 equals the IP is available and 0 equals the IP is not available. The string is read from right to left with the digit to the far right being the first IP address in the list of addressBlocks.
-     * <br/><b>size:</b> the size of this block of addresses.
-     * <br/><b>start:</b> first IP address in the block.
+     * available: Binary string in "1"s and "0"s. 1 equals the IP is available and 0 equals the IP is not available. The string is read from right to left with the digit to the far right being the first IP address in the list of addressBlocks.
+     * size: the size of this block of addresses.
+     * start: first IP address in the block.
      **/
     public AddressBlock[] getAddressBlocks() { return this.addressBlocks; }
     public void setAddressBlocks(AddressBlock[] addressBlocks) { 

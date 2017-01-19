@@ -78,20 +78,20 @@ public class LdapConfiguration implements Serializable {
     }
 
     /** 
-     * Identifies which user authentcation method will be used. <br/>
-     * Valid values:<br/>
-     * <b>DirectBind</b><br/>
-     * <b>SearchAndBind</b>
+     * Identifies which user authentcation method will be used. 
+     * Valid values:
+     * DirectBind
+     * SearchAndBind
      **/
     public String getAuthType() { return this.authType; }
     public void setAuthType(String authType) { 
         this.authType = authType;
     }
     /** 
-     * Identifies whether or not the system is enabled for LDAP. <br/>
-     * Valid values:<br/>
-     * <b>true</b><br/>
-     * <b>false</b>
+     * Identifies whether or not the system is enabled for LDAP. 
+     * Valid values:
+     * true
+     * false
      **/
     public Boolean getEnabled() { return this.enabled; }
     public void setEnabled(Boolean enabled) { 
@@ -112,10 +112,10 @@ public class LdapConfiguration implements Serializable {
         this.groupSearchCustomFilter = groupSearchCustomFilter;
     }
     /** 
-     * Controls the default group search filter used, can be one of the following:<br/>
-     * <b>NoGroups</b>: No group support.<br/>
-     * <b>ActiveDirectory</b>: Nested membership of all of a user's AD groups.<br/>
-     * <b>MemberDN</b>: MemberDN style groups (single-level).
+     * Controls the default group search filter used, can be one of the following:
+     * NoGroups: No group support.
+     * ActiveDirectory: Nested membership of all of a user's AD groups.
+     * MemberDN: MemberDN style groups (single-level).
      **/
     public String getGroupSearchType() { return this.groupSearchType; }
     public void setGroupSearchType(String groupSearchType) { 
