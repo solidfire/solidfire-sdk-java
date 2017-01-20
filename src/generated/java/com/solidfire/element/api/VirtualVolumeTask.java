@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class VirtualVolumeTask implements Serializable {
 
-    public static final long serialVersionUID = 6792984935426811173L;
+    public static final long serialVersionUID = -8665109287266895799L;
     @SerializedName("virtualVolumeTaskID") private java.util.UUID virtualVolumeTaskID;
     @SerializedName("virtualvolumeID") private java.util.UUID virtualvolumeID;
     @SerializedName("cloneVirtualVolumeID") private java.util.UUID cloneVirtualVolumeID;

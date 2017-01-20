@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateVirtualVolumeHostRequest implements Serializable {
 
-    public static final long serialVersionUID = -5873437268951260126L;
+    public static final long serialVersionUID = -1810985280628618902L;
     @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
     @SerializedName("clusterID") private java.util.UUID clusterID;
     @SerializedName("initiatorNames") private Optional<String[]> initiatorNames;

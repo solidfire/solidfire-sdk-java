@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetSystemStatusResult implements Serializable {
 
-    public static final long serialVersionUID = -4384165836130921641L;
+    public static final long serialVersionUID = -7587418980403606749L;
     @SerializedName("rebootRequired") private Boolean rebootRequired;
 
     // empty constructor

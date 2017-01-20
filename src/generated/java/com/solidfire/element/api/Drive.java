@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Drive implements Serializable {
 
-    public static final long serialVersionUID = -8553854830183823411L;
+    public static final long serialVersionUID = 1611515050254047933L;
     @SerializedName("driveID") private Long driveID;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("assignedService") private Optional<Long> assignedService;

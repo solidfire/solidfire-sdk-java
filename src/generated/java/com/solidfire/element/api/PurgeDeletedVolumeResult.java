@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class PurgeDeletedVolumeResult implements Serializable {
 
-    public static final long serialVersionUID = -7713536133728787671L;
+    public static final long serialVersionUID = 6110232325464628025L;
 
     // empty constructor
     @Since("7.0")

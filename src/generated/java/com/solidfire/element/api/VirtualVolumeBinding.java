@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class VirtualVolumeBinding implements Serializable {
 
-    public static final long serialVersionUID = 7502598809220693698L;
+    public static final long serialVersionUID = 717051042771660905L;
     @SerializedName("protocolEndpointID") private java.util.UUID protocolEndpointID;
     @SerializedName("protocolEndpointInBandID") private String protocolEndpointInBandID;
     @SerializedName("protocolEndpointType") private String protocolEndpointType;

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DeleteVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -6227406894762147471L;
+    public static final long serialVersionUID = 5875630528483772206L;
     @SerializedName("accountIDs") private Optional<Long[]> accountIDs;
     @SerializedName("volumeAccessGroupIDs") private Optional<Long[]> volumeAccessGroupIDs;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class SecureEraseDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 6139230092702430435L;
+    public static final long serialVersionUID = 6251162536984006816L;
     @SerializedName("drives") private Long[] drives;
 
     // empty constructor

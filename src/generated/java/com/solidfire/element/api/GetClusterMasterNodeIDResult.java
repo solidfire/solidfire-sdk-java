@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetClusterMasterNodeIDResult implements Serializable {
 
-    public static final long serialVersionUID = 672762052597518736L;
+    public static final long serialVersionUID = -7355047377808897728L;
     @SerializedName("nodeID") private Long nodeID;
 
     // empty constructor

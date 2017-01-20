@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class SetNetworkConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = 1163420677117762364L;
+    public static final long serialVersionUID = -1874580195350626434L;
     @SerializedName("network") private Network network;
 
     // empty constructor

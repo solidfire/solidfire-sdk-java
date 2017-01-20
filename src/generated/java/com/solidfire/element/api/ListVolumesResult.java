@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = -5301816642691385785L;
+    public static final long serialVersionUID = -9217979420221183439L;
     @SerializedName("volumes") private Volume[] volumes;
 
     // empty constructor

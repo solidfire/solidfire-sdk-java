@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class Account implements Serializable {
 
-    public static final long serialVersionUID = 6182745512723579970L;
+    public static final long serialVersionUID = -9178314499120287631L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("username") private String username;
     @SerializedName("status") private String status;

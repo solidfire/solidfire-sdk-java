@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ResetNodeResult implements Serializable {
 
-    public static final long serialVersionUID = 1741204150018515933L;
+    public static final long serialVersionUID = -4127219633384068835L;
     @SerializedName("rtfiInfo") private java.util.Map<String, Object> rtfiInfo;
 
     // empty constructor

@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class ClusterVersionInfo implements Serializable {
 
-    public static final long serialVersionUID = -4232836006568542040L;
+    public static final long serialVersionUID = -3738026569486074671L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("nodeVersion") private String nodeVersion;
     @SerializedName("nodeInternalRevision") private String nodeInternalRevision;

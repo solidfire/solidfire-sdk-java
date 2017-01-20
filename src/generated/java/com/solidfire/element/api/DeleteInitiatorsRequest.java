@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DeleteInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 1195907906738819557L;
+    public static final long serialVersionUID = -1194002836228733025L;
     @SerializedName("initiators") private Long[] initiators;
 
     // empty constructor

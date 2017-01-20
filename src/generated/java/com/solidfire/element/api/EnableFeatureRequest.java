@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class EnableFeatureRequest implements Serializable {
 
-    public static final long serialVersionUID = 8090329014016240992L;
+    public static final long serialVersionUID = 1943134208124146704L;
     @SerializedName("feature") private String feature;
 
     // empty constructor

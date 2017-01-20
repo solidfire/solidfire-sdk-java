@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifySnapshotResult implements Serializable {
 
-    public static final long serialVersionUID = -406933401919485379L;
+    public static final long serialVersionUID = -4464819496332513895L;
 
     // empty constructor
     @Since("8.0")

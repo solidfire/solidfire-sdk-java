@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ResetNodeRequest implements Serializable {
 
-    public static final long serialVersionUID = -1238993143208246416L;
+    public static final long serialVersionUID = 814378437617027731L;
     @SerializedName("build") private String build;
     @SerializedName("force") private Boolean force;
     @SerializedName("option") private String option;

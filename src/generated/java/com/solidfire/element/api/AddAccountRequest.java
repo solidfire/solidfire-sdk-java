@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class AddAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = 7556277751663032568L;
+    public static final long serialVersionUID = 8299589604513232583L;
     @SerializedName("username") private String username;
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;

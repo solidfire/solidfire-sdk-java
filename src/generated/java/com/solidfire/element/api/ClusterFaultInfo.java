@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ClusterFaultInfo implements Serializable {
 
-    public static final long serialVersionUID = -5303506460547294310L;
+    public static final long serialVersionUID = -309488001484626914L;
     @SerializedName("severity") private String severity;
     @SerializedName("type") private String type;
     @SerializedName("code") private String code;

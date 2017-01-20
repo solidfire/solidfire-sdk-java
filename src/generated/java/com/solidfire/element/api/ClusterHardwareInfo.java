@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ClusterHardwareInfo implements Serializable {
 
-    public static final long serialVersionUID = -588255729826736799L;
+    public static final long serialVersionUID = -8616988496462018087L;
     @SerializedName("drives") private java.util.Map<String,DriveHardwareInfo> drives;
     @SerializedName("nodes") private java.util.Map<String,java.util.Map<String, Object>> nodes;
 
