@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class NodeStateInfo implements Serializable {
 
-    public static final long serialVersionUID = 2807293628261595786L;
+    public static final long serialVersionUID = -4911274814703519058L;
     @SerializedName("cluster") private String cluster;
     @SerializedName("state") private String state;
 

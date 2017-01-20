@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 4065498162231051113L;
+    public static final long serialVersionUID = 9020809531737148478L;
     @SerializedName("volumeIDs") private Long[] volumeIDs;
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RemoveVirtualNetworkResult implements Serializable {
 
-    public static final long serialVersionUID = 4224751686731087510L;
+    public static final long serialVersionUID = -8403780063135781124L;
 
     // empty constructor
     @Since("7.0")

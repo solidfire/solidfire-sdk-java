@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class LunAssignment implements Serializable {
 
-    public static final long serialVersionUID = 8450980726817205162L;
+    public static final long serialVersionUID = 4843157514928145383L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("lun") private Long lun;
 

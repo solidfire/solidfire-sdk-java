@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ShutdownRequest implements Serializable {
 
-    public static final long serialVersionUID = -2680046349779784234L;
+    public static final long serialVersionUID = -9028774115799936174L;
     @SerializedName("nodes") private Long[] nodes;
     @SerializedName("option") private Optional<String> option;
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateVolumeResult implements Serializable {
 
-    public static final long serialVersionUID = 7039585208140995995L;
+    public static final long serialVersionUID = 2889880193310552919L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("curve") private java.util.Map<String,Long> curve;
 

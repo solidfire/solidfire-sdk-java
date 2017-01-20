@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 832144947324921499L;
+    public static final long serialVersionUID = -2486206820112754562L;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("volumeStatus") private Optional<String> volumeStatus;

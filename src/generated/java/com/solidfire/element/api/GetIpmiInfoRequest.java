@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetIpmiInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -4428907114879210811L;
+    public static final long serialVersionUID = 7673039517122092962L;
     @SerializedName("force") private Boolean force;
 
     // empty constructor

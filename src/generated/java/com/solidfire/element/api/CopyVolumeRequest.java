@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CopyVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 5168727560549000113L;
+    public static final long serialVersionUID = -6809771567710525111L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("dstVolumeID") private Long dstVolumeID;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;

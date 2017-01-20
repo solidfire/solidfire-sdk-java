@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class EventInfo implements Serializable {
 
-    public static final long serialVersionUID = 7062443568765177778L;
+    public static final long serialVersionUID = 848178818129099493L;
     @SerializedName("eventID") private Long eventID;
     @SerializedName("severity") private Long severity;
     @SerializedName("eventInfoType") private String eventInfoType;

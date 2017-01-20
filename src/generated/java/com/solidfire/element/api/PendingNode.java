@@ -34,7 +34,7 @@ import java.util.Objects;
 
 public class PendingNode implements Serializable {
 
-    public static final long serialVersionUID = -5009010888297865928L;
+    public static final long serialVersionUID = -930850330231659742L;
     @SerializedName("pendingNodeID") private Long pendingNodeID;
     @SerializedName("AssignedNodeID") private Long assignedNodeID;
     @SerializedName("name") private String name;

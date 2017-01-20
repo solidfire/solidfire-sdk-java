@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class StartVolumePairingResult implements Serializable {
 
-    public static final long serialVersionUID = -4401306329050226928L;
+    public static final long serialVersionUID = -597684509017173967L;
     @SerializedName("volumePairingKey") private String volumePairingKey;
 
     // empty constructor

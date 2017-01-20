@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class PendingActiveNode implements Serializable {
 
-    public static final long serialVersionUID = -8872810801138539678L;
+    public static final long serialVersionUID = 6847418537242966542L;
     @SerializedName("activeNodeKey") private String activeNodeKey;
     @SerializedName("assignedNodeID") private Long assignedNodeID;
     @SerializedName("asyncHandle") private Long asyncHandle;
