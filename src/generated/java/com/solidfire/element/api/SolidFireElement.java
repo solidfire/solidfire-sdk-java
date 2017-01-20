@@ -46,7 +46,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetAccountResult getAccountByID(final GetAccountByIDRequest request) {
+    public GetAccountResult getAccountByID(final GetAccountByIDRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, getAccountByID is not available until version 1.");
         }
@@ -70,7 +70,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetAccountResult getAccountByName(final GetAccountByNameRequest request) {
+    public GetAccountResult getAccountByName(final GetAccountByNameRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, getAccountByName is not available until version 1.");
         }
@@ -94,7 +94,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public GetEfficiencyResult getAccountEfficiency(final GetAccountEfficiencyRequest request) {
+    public GetEfficiencyResult getAccountEfficiency(final GetAccountEfficiencyRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, getAccountEfficiency is not available until version 6.");
         }
@@ -118,7 +118,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ListAccountsResult listAccounts(final ListAccountsRequest request) {
+    public ListAccountsResult listAccounts(final ListAccountsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, listAccounts is not available until version 1.");
         }
@@ -146,7 +146,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ModifyAccountResult modifyAccount(final ModifyAccountRequest request) {
+    public ModifyAccountResult modifyAccount(final ModifyAccountRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, modifyAccount is not available until version 1.");
         }
@@ -180,7 +180,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public RemoveAccountResult removeAccount(final RemoveAccountRequest request) {
+    public RemoveAccountResult removeAccount(final RemoveAccountRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, removeAccount is not available until version 1.");
         }
@@ -208,7 +208,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public AddAccountResult addAccount(final AddAccountRequest request) {
+    public AddAccountResult addAccount(final AddAccountRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, addAccount is not available until version 1.");
         }
@@ -237,7 +237,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public CreateBackupTargetResult createBackupTarget(final CreateBackupTargetRequest request) {
+    public CreateBackupTargetResult createBackupTarget(final CreateBackupTargetRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, createBackupTarget is not available until version 6.");
         }
@@ -262,7 +262,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public GetBackupTargetResult getBackupTarget(final GetBackupTargetRequest request) {
+    public GetBackupTargetResult getBackupTarget(final GetBackupTargetRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, getBackupTarget is not available until version 6.");
         }
@@ -295,7 +295,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public ModifyBackupTargetResult modifyBackupTarget(final ModifyBackupTargetRequest request) {
+    public ModifyBackupTargetResult modifyBackupTarget(final ModifyBackupTargetRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, modifyBackupTarget is not available until version 6.");
         }
@@ -321,7 +321,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public RemoveBackupTargetResult removeBackupTarget(final RemoveBackupTargetRequest request) {
+    public RemoveBackupTargetResult removeBackupTarget(final RemoveBackupTargetRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, removeBackupTarget is not available until version 6.");
         }
@@ -345,7 +345,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(final ModifyClusterFullThresholdRequest request) {
+    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(final ModifyClusterFullThresholdRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, modifyClusterFullThreshold is not available until version 1.");
         }
@@ -374,7 +374,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public RemoveClusterAdminResult removeClusterAdmin(final RemoveClusterAdminRequest request) {
+    public RemoveClusterAdminResult removeClusterAdmin(final RemoveClusterAdminRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, removeClusterAdmin is not available until version 1.");
         }
@@ -398,7 +398,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public SetNtpInfoResult setNtpInfo(final SetNtpInfoRequest request) {
+    public SetNtpInfoResult setNtpInfo(final SetNtpInfoRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, setNtpInfo is not available until version 1.");
         }
@@ -423,7 +423,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public SetSnmpACLResult setSnmpACL(final SetSnmpACLRequest request) {
+    public SetSnmpACLResult setSnmpACL(final SetSnmpACLRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
             throw new ApiException("The command, setSnmpACL is not available until version 8.");
         }
@@ -448,7 +448,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public SetSnmpTrapInfoResult setSnmpTrapInfo(final SetSnmpTrapInfoRequest request) {
+    public SetSnmpTrapInfoResult setSnmpTrapInfo(final SetSnmpTrapInfoRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, setSnmpTrapInfo is not available until version 5.");
         }
@@ -486,7 +486,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public AddClusterAdminResult addClusterAdmin(final AddClusterAdminRequest request) {
+    public AddClusterAdminResult addClusterAdmin(final AddClusterAdminRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, addClusterAdmin is not available until version 1.");
         }
@@ -516,7 +516,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request) {
+    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, clearClusterFaults is not available until version 1.");
         }
@@ -542,10 +542,7 @@ public class SolidFireElement
     @Override
     @Since("7.0")
     @ConnectionType("Both")
-    public CreateClusterResult createCluster(final CreateClusterRequest request) {
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < ) {
-            throw new ApiException("The command, createCluster is not available until version .");
-        }
+    public CreateClusterResult createCluster(final CreateClusterRequest request) { 
         return super.sendRequest("CreateCluster", request, CreateClusterRequest.class, CreateClusterResult.class);
     }
 
@@ -599,7 +596,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public SetClusterConfigResult setClusterConfig(final SetClusterConfigRequest request) {
+    public SetClusterConfigResult setClusterConfig(final SetClusterConfigRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, setClusterConfig is not available until version 5.");
         }
@@ -627,7 +624,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request) {
+    public SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, setSnmpInfo is not available until version 1.");
         }
@@ -656,7 +653,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Node")
-    public CreateSupportBundleResult createSupportBundle(final CreateSupportBundleRequest request) {
+    public CreateSupportBundleResult createSupportBundle(final CreateSupportBundleRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
             throw new ApiException("The command, createSupportBundle is not available until version 8.");
         }
@@ -711,7 +708,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public EnableSnmpResult enableSnmp(final EnableSnmpRequest request) {
+    public EnableSnmpResult enableSnmp(final EnableSnmpRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
             throw new ApiException("The command, enableSnmp is not available until version 8.");
         }
@@ -781,7 +778,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public GetClusterStateResult getClusterState(final GetClusterStateRequest request) {
+    public GetClusterStateResult getClusterState(final GetClusterStateRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, getClusterState is not available until version 5.");
         }
@@ -886,7 +883,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ListEventsResult listEvents(final ListEventsRequest request) {
+    public ListEventsResult listEvents(final ListEventsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, listEvents is not available until version 1.");
         }
@@ -925,7 +922,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request) {
+    public ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, modifyClusterAdmin is not available until version 1.");
         }
@@ -975,7 +972,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ListClusterFaultsResult listClusterFaults(final ListClusterFaultsRequest request) {
+    public ListClusterFaultsResult listClusterFaults(final ListClusterFaultsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, listClusterFaults is not available until version 1.");
         }
@@ -1003,7 +1000,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetDriveHardwareInfoResult getDriveHardwareInfo(final GetDriveHardwareInfoRequest request) {
+    public GetDriveHardwareInfoResult getDriveHardwareInfo(final GetDriveHardwareInfoRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, getDriveHardwareInfo is not available until version 1.");
         }
@@ -1028,7 +1025,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request) {
+    public GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, getDriveStats is not available until version 1.");
         }
@@ -1054,7 +1051,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public ListDriveHardwareResult listDriveHardware(final ListDriveHardwareRequest request) {
+    public ListDriveHardwareResult listDriveHardware(final ListDriveHardwareRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, listDriveHardware is not available until version 7.");
         }
@@ -1097,7 +1094,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public AddDrivesResult addDrives(final AddDrivesRequest request) {
+    public AddDrivesResult addDrives(final AddDrivesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, addDrives is not available until version 1.");
         }
@@ -1154,7 +1151,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public AsyncHandleResult removeDrives(final RemoveDrivesRequest request) {
+    public AsyncHandleResult removeDrives(final RemoveDrivesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, removeDrives is not available until version 1.");
         }
@@ -1193,7 +1190,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Node")
-    public ResetDrivesResult resetDrives(final ResetDrivesRequest request) {
+    public ResetDrivesResult resetDrives(final ResetDrivesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, resetDrives is not available until version 6.");
         }
@@ -1224,7 +1221,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public AsyncHandleResult secureEraseDrives(final SecureEraseDrivesRequest request) {
+    public AsyncHandleResult secureEraseDrives(final SecureEraseDrivesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, secureEraseDrives is not available until version 5.");
         }
@@ -1256,7 +1253,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public TestDrivesResult testDrives(final TestDrivesRequest request) {
+    public TestDrivesResult testDrives(final TestDrivesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, testDrives is not available until version 5.");
         }
@@ -1284,7 +1281,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetClusterHardwareInfoResult getClusterHardwareInfo(final GetClusterHardwareInfoRequest request) {
+    public GetClusterHardwareInfoResult getClusterHardwareInfo(final GetClusterHardwareInfoRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, getClusterHardwareInfo is not available until version 1.");
         }
@@ -1317,7 +1314,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetNodeHardwareInfoResult getNodeHardwareInfo(final GetNodeHardwareInfoRequest request) {
+    public GetNodeHardwareInfoResult getNodeHardwareInfo(final GetNodeHardwareInfoRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, getNodeHardwareInfo is not available until version 1.");
         }
@@ -1351,7 +1348,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public CreateInitiatorsResult createInitiators(final CreateInitiatorsRequest request) {
+    public CreateInitiatorsResult createInitiators(final CreateInitiatorsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, createInitiators is not available until version 9.");
         }
@@ -1377,7 +1374,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public DeleteInitiatorsResult deleteInitiators(final DeleteInitiatorsRequest request) {
+    public DeleteInitiatorsResult deleteInitiators(final DeleteInitiatorsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, deleteInitiators is not available until version 9.");
         }
@@ -1402,7 +1399,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListInitiatorsResult listInitiators(final ListInitiatorsRequest request) {
+    public ListInitiatorsResult listInitiators(final ListInitiatorsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, listInitiators is not available until version 9.");
         }
@@ -1429,7 +1426,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ModifyInitiatorsResult modifyInitiators(final ModifyInitiatorsRequest request) {
+    public ModifyInitiatorsResult modifyInitiators(final ModifyInitiatorsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, modifyInitiators is not available until version 9.");
         }
@@ -1472,7 +1469,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public TestLdapAuthenticationResult testLdapAuthentication(final TestLdapAuthenticationRequest request) {
+    public TestLdapAuthenticationResult testLdapAuthentication(final TestLdapAuthenticationRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, testLdapAuthentication is not available until version 7.");
         }
@@ -1500,7 +1497,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public AddLdapClusterAdminResult addLdapClusterAdmin(final AddLdapClusterAdminRequest request) {
+    public AddLdapClusterAdminResult addLdapClusterAdmin(final AddLdapClusterAdminRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
             throw new ApiException("The command, addLdapClusterAdmin is not available until version 8.");
         }
@@ -1529,7 +1526,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public EnableLdapAuthenticationResult enableLdapAuthentication(final EnableLdapAuthenticationRequest request) {
+    public EnableLdapAuthenticationResult enableLdapAuthentication(final EnableLdapAuthenticationRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, enableLdapAuthentication is not available until version 7.");
         }
@@ -1580,7 +1577,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public SetLoginSessionInfoResult setLoginSessionInfo(final SetLoginSessionInfoRequest request) {
+    public SetLoginSessionInfoResult setLoginSessionInfo(final SetLoginSessionInfoRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, setLoginSessionInfo is not available until version 7.");
         }
@@ -1604,7 +1601,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public SetRemoteLoggingHostsResult setRemoteLoggingHosts(final SetRemoteLoggingHostsRequest request) {
+    public SetRemoteLoggingHostsResult setRemoteLoggingHosts(final SetRemoteLoggingHostsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, setRemoteLoggingHosts is not available until version 1.");
         }
@@ -1673,7 +1670,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request) {
+    public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, getNodeStats is not available until version 1.");
         }
@@ -1698,7 +1695,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public GetOriginResult getOrigin(final GetOriginRequest request) {
+    public GetOriginResult getOrigin(final GetOriginRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, getOrigin is not available until version 9.");
         }
@@ -1785,7 +1782,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public AddNodesResult addNodes(final AddNodesRequest request) {
+    public AddNodesResult addNodes(final AddNodesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, addNodes is not available until version 1.");
         }
@@ -1852,7 +1849,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public RemoveNodesResult removeNodes(final RemoveNodesRequest request) {
+    public RemoveNodesResult removeNodes(final RemoveNodesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, removeNodes is not available until version 1.");
         }
@@ -1882,7 +1879,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public SetConfigResult setConfig(final SetConfigRequest request) {
+    public SetConfigResult setConfig(final SetConfigRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, setConfig is not available until version 5.");
         }
@@ -1914,7 +1911,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public SetNetworkConfigResult setNetworkConfig(final SetNetworkConfigRequest request) {
+    public SetNetworkConfigResult setNetworkConfig(final SetNetworkConfigRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, setNetworkConfig is not available until version 5.");
         }
@@ -1943,7 +1940,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public CompleteClusterPairingResult completeClusterPairing(final CompleteClusterPairingRequest request) {
+    public CompleteClusterPairingResult completeClusterPairing(final CompleteClusterPairingRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, completeClusterPairing is not available until version 6.");
         }
@@ -1968,7 +1965,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public CompleteVolumePairingResult completeVolumePairing(final CompleteVolumePairingRequest request) {
+    public CompleteVolumePairingResult completeVolumePairing(final CompleteVolumePairingRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, completeVolumePairing is not available until version 6.");
         }
@@ -2015,7 +2012,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public RemoveVolumePairResult removeVolumePair(final RemoveVolumePairRequest request) {
+    public RemoveVolumePairResult removeVolumePair(final RemoveVolumePairRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, removeVolumePair is not available until version 6.");
         }
@@ -2052,7 +2049,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public ModifyVolumePairResult modifyVolumePair(final ModifyVolumePairRequest request) {
+    public ModifyVolumePairResult modifyVolumePair(final ModifyVolumePairRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, modifyVolumePair is not available until version 6.");
         }
@@ -2079,7 +2076,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public RemoveClusterPairResult removeClusterPair(final RemoveClusterPairRequest request) {
+    public RemoveClusterPairResult removeClusterPair(final RemoveClusterPairRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, removeClusterPair is not available until version 6.");
         }
@@ -2105,7 +2102,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public StartVolumePairingResult startVolumePairing(final StartVolumePairingRequest request) {
+    public StartVolumePairingResult startVolumePairing(final StartVolumePairingRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, startVolumePairing is not available until version 6.");
         }
@@ -2136,7 +2133,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListProtocolEndpointsResult listProtocolEndpoints(final ListProtocolEndpointsRequest request) {
+    public ListProtocolEndpointsResult listProtocolEndpoints(final ListProtocolEndpointsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, listProtocolEndpoints is not available until version 9.");
         }
@@ -2162,7 +2159,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ResetNodeResult resetNode(final ResetNodeRequest request) {
+    public ResetNodeResult resetNode(final ResetNodeRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, resetNode is not available until version 5.");
         }
@@ -2189,7 +2186,7 @@ public class SolidFireElement
     @Since("5")
     @ConnectionType("Node")
     @SuppressWarnings("unchecked")
-    public java.util.Map<String, Object> restartNetworking(final RestartNetworkingRequest request) {
+    public java.util.Map<String, Object> restartNetworking(final RestartNetworkingRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, restartNetworking is not available until version 5.");
         }
@@ -2214,7 +2211,7 @@ public class SolidFireElement
     @Since("5")
     @ConnectionType("Node")
     @SuppressWarnings("unchecked")
-    public java.util.Map<String, Object> restartServices(final RestartServicesRequest request) {
+    public java.util.Map<String, Object> restartServices(final RestartServicesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, restartServices is not available until version 5.");
         }
@@ -2240,7 +2237,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ShutdownResult shutdown(final ShutdownRequest request) {
+    public ShutdownResult shutdown(final ShutdownRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, shutdown is not available until version 1.");
         }
@@ -2277,7 +2274,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public DeleteSnapshotResult deleteSnapshot(final DeleteSnapshotRequest request) {
+    public DeleteSnapshotResult deleteSnapshot(final DeleteSnapshotRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, deleteSnapshot is not available until version 6.");
         }
@@ -2304,7 +2301,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public GetScheduleResult getSchedule(final GetScheduleRequest request) {
+    public GetScheduleResult getSchedule(final GetScheduleRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
             throw new ApiException("The command, getSchedule is not available until version 8.");
         }
@@ -2329,7 +2326,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public ListGroupSnapshotsResult listGroupSnapshots(final ListGroupSnapshotsRequest request) {
+    public ListGroupSnapshotsResult listGroupSnapshots(final ListGroupSnapshotsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, listGroupSnapshots is not available until version 7.");
         }
@@ -2363,7 +2360,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request) {
+    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, listSnapshots is not available until version 6.");
         }
@@ -2391,7 +2388,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult createGroupSnapshot(final CreateGroupSnapshotRequest request) {
+    public CreateGroupSnapshotResult createGroupSnapshot(final CreateGroupSnapshotRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, createGroupSnapshot is not available until version 7.");
         }
@@ -2433,7 +2430,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public CreateScheduleResult createSchedule(final CreateScheduleRequest request) {
+    public CreateScheduleResult createSchedule(final CreateScheduleRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
             throw new ApiException("The command, createSchedule is not available until version 8.");
         }
@@ -2466,7 +2463,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public CreateSnapshotResult createSnapshot(final CreateSnapshotRequest request) {
+    public CreateSnapshotResult createSnapshot(final CreateSnapshotRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, createSnapshot is not available until version 6.");
         }
@@ -2507,7 +2504,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public DeleteGroupSnapshotResult deleteGroupSnapshot(final DeleteGroupSnapshotRequest request) {
+    public DeleteGroupSnapshotResult deleteGroupSnapshot(final DeleteGroupSnapshotRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, deleteGroupSnapshot is not available until version 7.");
         }
@@ -2534,7 +2531,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public ModifyGroupSnapshotResult modifyGroupSnapshot(final ModifyGroupSnapshotRequest request) {
+    public ModifyGroupSnapshotResult modifyGroupSnapshot(final ModifyGroupSnapshotRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
             throw new ApiException("The command, modifyGroupSnapshot is not available until version 8.");
         }
@@ -2560,7 +2557,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request) {
+    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
             throw new ApiException("The command, modifySchedule is not available until version 8.");
         }
@@ -2586,7 +2583,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public ModifySnapshotResult modifySnapshot(final ModifySnapshotRequest request) {
+    public ModifySnapshotResult modifySnapshot(final ModifySnapshotRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
             throw new ApiException("The command, modifySnapshot is not available until version 8.");
         }
@@ -2616,7 +2613,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request) {
+    public CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, rollbackToGroupSnapshot is not available until version 7.");
         }
@@ -2651,7 +2648,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public CreateSnapshotResult rollbackToSnapshot(final RollbackToSnapshotRequest request) {
+    public CreateSnapshotResult rollbackToSnapshot(final RollbackToSnapshotRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, rollbackToSnapshot is not available until version 6.");
         }
@@ -2713,7 +2710,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request) {
+    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, listDriveStats is not available until version 9.");
         }
@@ -2736,7 +2733,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request) {
+    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, listVolumeStats is not available until version 7.");
         }
@@ -2759,7 +2756,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request) {
+    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, listVolumeStatsByVirtualVolume is not available until version 9.");
         }
@@ -2783,7 +2780,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public CreateStorageContainerResult createStorageContainer(final CreateStorageContainerRequest request) {
+    public CreateStorageContainerResult createStorageContainer(final CreateStorageContainerRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, createStorageContainer is not available until version 9.");
         }
@@ -2809,7 +2806,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public DeleteStorageContainerResult deleteStorageContainers(final DeleteStorageContainersRequest request) {
+    public DeleteStorageContainerResult deleteStorageContainers(final DeleteStorageContainersRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, deleteStorageContainers is not available until version 9.");
         }
@@ -2833,7 +2830,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(final GetStorageContainerEfficiencyRequest request) {
+    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(final GetStorageContainerEfficiencyRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, getStorageContainerEfficiency is not available until version 9.");
         }
@@ -2857,7 +2854,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListStorageContainersResult listStorageContainers(final ListStorageContainersRequest request) {
+    public ListStorageContainersResult listStorageContainers(final ListStorageContainersRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, listStorageContainers is not available until version 9.");
         }
@@ -2881,7 +2878,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ModifyStorageContainerResult modifyStorageContainer(final ModifyStorageContainerRequest request) {
+    public ModifyStorageContainerResult modifyStorageContainer(final ModifyStorageContainerRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, modifyStorageContainer is not available until version 9.");
         }
@@ -2928,7 +2925,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public TestConnectEnsembleResult testConnectEnsemble(final TestConnectEnsembleRequest request) {
+    public TestConnectEnsembleResult testConnectEnsemble(final TestConnectEnsembleRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, testConnectEnsemble is not available until version 5.");
         }
@@ -2954,7 +2951,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public TestConnectMvipResult testConnectMvip(final TestConnectMvipRequest request) {
+    public TestConnectMvipResult testConnectMvip(final TestConnectMvipRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, testConnectMvip is not available until version 5.");
         }
@@ -2980,7 +2977,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public TestConnectSvipResult testConnectSvip(final TestConnectSvipRequest request) {
+    public TestConnectSvipResult testConnectSvip(final TestConnectSvipRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, testConnectSvip is not available until version 5.");
         }
@@ -3006,7 +3003,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public TestPingResult testPing(final TestPingRequest request) {
+    public TestPingResult testPing(final TestPingRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, testPing is not available until version 5.");
         }
@@ -3037,7 +3034,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public ListVirtualNetworksResult listVirtualNetworks(final ListVirtualNetworksRequest request) {
+    public ListVirtualNetworksResult listVirtualNetworks(final ListVirtualNetworksRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, listVirtualNetworks is not available until version 7.");
         }
@@ -3068,7 +3065,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public AddVirtualNetworkResult addVirtualNetwork(final AddVirtualNetworkRequest request) {
+    public AddVirtualNetworkResult addVirtualNetwork(final AddVirtualNetworkRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, addVirtualNetwork is not available until version 7.");
         }
@@ -3109,7 +3106,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public AddVirtualNetworkResult modifyVirtualNetwork(final ModifyVirtualNetworkRequest request) {
+    public AddVirtualNetworkResult modifyVirtualNetwork(final ModifyVirtualNetworkRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, modifyVirtualNetwork is not available until version 7.");
         }
@@ -3151,7 +3148,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public RemoveVirtualNetworkResult removeVirtualNetwork(final RemoveVirtualNetworkRequest request) {
+    public RemoveVirtualNetworkResult removeVirtualNetwork(final RemoveVirtualNetworkRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, removeVirtualNetwork is not available until version 7.");
         }
@@ -3178,7 +3175,7 @@ public class SolidFireElement
     @Override
     @Since("9.0")
     @ConnectionType("Cluster")
-    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request) {
+    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
             throw new ApiException("The command, createVirtualVolumeHost is not available until version 9.0.");
         }
@@ -3207,7 +3204,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public EnableFeatureResult enableFeature(final EnableFeatureRequest request) {
+    public EnableFeatureResult enableFeature(final EnableFeatureRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, enableFeature is not available until version 9.");
         }
@@ -3231,7 +3228,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public GetFeatureStatusResult getFeatureStatus(final GetFeatureStatusRequest request) {
+    public GetFeatureStatusResult getFeatureStatus(final GetFeatureStatusRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, getFeatureStatus is not available until version 9.");
         }
@@ -3264,7 +3261,7 @@ public class SolidFireElement
     @Override
     @Since("9.0")
     @ConnectionType("Cluster")
-    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request) {
+    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
             throw new ApiException("The command, getVirtualVolumeTaskUpdate is not available until version 9.0.");
         }
@@ -3293,7 +3290,7 @@ public class SolidFireElement
     @Override
     @Since("9.0")
     @ConnectionType("Cluster")
-    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request) {
+    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
             throw new ApiException("The command, getVirtualVolumeUnsharedChunks is not available until version 9.0.");
         }
@@ -3326,7 +3323,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(final ListVirtualVolumeBindingsRequest request) {
+    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(final ListVirtualVolumeBindingsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, listVirtualVolumeBindings is not available until version 9.");
         }
@@ -3350,7 +3347,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(final ListVirtualVolumeHostsRequest request) {
+    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(final ListVirtualVolumeHostsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, listVirtualVolumeHosts is not available until version 9.");
         }
@@ -3374,7 +3371,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request) {
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, listVirtualVolumeTasks is not available until version 9.");
         }
@@ -3398,7 +3395,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListVirtualVolumesResult listVirtualVolumes(final ListVirtualVolumesRequest request) {
+    public ListVirtualVolumesResult listVirtualVolumes(final ListVirtualVolumesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, listVirtualVolumes is not available until version 9.");
         }
@@ -3426,7 +3423,7 @@ public class SolidFireElement
     @Override
     @Since("9.0")
     @ConnectionType("Cluster")
-    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request) {
+    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
             throw new ApiException("The command, prepareVirtualSnapshot is not available until version 9.0.");
         }
@@ -3453,7 +3450,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public CancelCloneResult cancelClone(final CancelCloneRequest request) {
+    public CancelCloneResult cancelClone(final CancelCloneRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, cancelClone is not available until version 9.");
         }
@@ -3477,7 +3474,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public CancelGroupCloneResult cancelGroupClone(final CancelGroupCloneRequest request) {
+    public CancelGroupCloneResult cancelGroupClone(final CancelGroupCloneRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, cancelGroupClone is not available until version 9.");
         }
@@ -3501,7 +3498,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public CopyVolumeResult copyVolume(final CopyVolumeRequest request) {
+    public CopyVolumeResult copyVolume(final CopyVolumeRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, copyVolume is not available until version 9.");
         }
@@ -3527,7 +3524,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public DeleteVolumesResult deleteVolumes(final DeleteVolumesRequest request) {
+    public DeleteVolumesResult deleteVolumes(final DeleteVolumesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, deleteVolumes is not available until version 9.");
         }
@@ -3572,7 +3569,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public GetVolumeEfficiencyResult getVolumeEfficiency(final GetVolumeEfficiencyRequest request) {
+    public GetVolumeEfficiencyResult getVolumeEfficiency(final GetVolumeEfficiencyRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, getVolumeEfficiency is not available until version 6.");
         }
@@ -3598,7 +3595,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetVolumeStatsResult getVolumeStats(final GetVolumeStatsRequest request) {
+    public GetVolumeStatsResult getVolumeStats(final GetVolumeStatsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, getVolumeStats is not available until version 1.");
         }
@@ -3624,7 +3621,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ListActiveVolumesResult listActiveVolumes(final ListActiveVolumesRequest request) {
+    public ListActiveVolumesResult listActiveVolumes(final ListActiveVolumesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, listActiveVolumes is not available until version 1.");
         }
@@ -3650,7 +3647,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListAsyncResultsResult listAsyncResults(final ListAsyncResultsRequest request) {
+    public ListAsyncResultsResult listAsyncResults(final ListAsyncResultsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, listAsyncResults is not available until version 9.");
         }
@@ -3712,7 +3709,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request) {
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, listVolumeStatsByVolumeAccessGroup is not available until version 5.");
         }
@@ -3737,7 +3734,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public ListVolumesResult listVolumes(final ListVolumesRequest request) {
+    public ListVolumesResult listVolumes(final ListVolumesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
             throw new ApiException("The command, listVolumes is not available until version 8.");
         }
@@ -3770,7 +3767,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ListVolumesForAccountResult listVolumesForAccount(final ListVolumesForAccountRequest request) {
+    public ListVolumesForAccountResult listVolumesForAccount(final ListVolumesForAccountRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, listVolumesForAccount is not available until version 1.");
         }
@@ -3796,7 +3793,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ModifyVolumesResult modifyVolumes(final ModifyVolumesRequest request) {
+    public ModifyVolumesResult modifyVolumes(final ModifyVolumesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, modifyVolumes is not available until version 9.");
         }
@@ -3827,7 +3824,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public PurgeDeletedVolumeResult purgeDeletedVolume(final PurgeDeletedVolumeRequest request) {
+    public PurgeDeletedVolumeResult purgeDeletedVolume(final PurgeDeletedVolumeRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, purgeDeletedVolume is not available until version 1.");
         }
@@ -3853,7 +3850,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public PurgeDeletedVolumesResult purgeDeletedVolumes(final PurgeDeletedVolumesRequest request) {
+    public PurgeDeletedVolumesResult purgeDeletedVolumes(final PurgeDeletedVolumesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, purgeDeletedVolumes is not available until version 9.");
         }
@@ -3880,7 +3877,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public RestoreDeletedVolumeResult restoreDeletedVolume(final RestoreDeletedVolumeRequest request) {
+    public RestoreDeletedVolumeResult restoreDeletedVolume(final RestoreDeletedVolumeRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, restoreDeletedVolume is not available until version 1.");
         }
@@ -3905,7 +3902,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public SetDefaultQoSResult setDefaultQoS(final SetDefaultQoSRequest request) {
+    public SetDefaultQoSResult setDefaultQoS(final SetDefaultQoSRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, setDefaultQoS is not available until version 9.");
         }
@@ -3934,7 +3931,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public CloneMultipleVolumesResult cloneMultipleVolumes(final CloneMultipleVolumesRequest request) {
+    public CloneMultipleVolumesResult cloneMultipleVolumes(final CloneMultipleVolumesRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, cloneMultipleVolumes is not available until version 7.");
         }
@@ -3973,7 +3970,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request) {
+    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, cloneVolume is not available until version 1.");
         }
@@ -4013,7 +4010,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(final CreateVolumeRequest request) {
+    public CreateVolumeResult createVolume(final CreateVolumeRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, createVolume is not available until version 1.");
         }
@@ -4057,7 +4054,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public DeleteVolumeResult deleteVolume(final DeleteVolumeRequest request) {
+    public DeleteVolumeResult deleteVolume(final DeleteVolumeRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, deleteVolume is not available until version 1.");
         }
@@ -4103,7 +4100,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetAsyncResultResult getAsyncResult(final GetAsyncResultRequest request) {
+    public GetAsyncResultResult getAsyncResult(final GetAsyncResultRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, getAsyncResult is not available until version 1.");
         }
@@ -4143,7 +4140,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ModifyVolumeResult modifyVolume(final ModifyVolumeRequest request) {
+    public ModifyVolumeResult modifyVolume(final ModifyVolumeRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
             throw new ApiException("The command, modifyVolume is not available until version 1.");
         }
@@ -4192,7 +4189,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public StartBulkVolumeReadResult startBulkVolumeRead(final StartBulkVolumeReadRequest request) {
+    public StartBulkVolumeReadResult startBulkVolumeRead(final StartBulkVolumeReadRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, startBulkVolumeRead is not available until version 6.");
         }
@@ -4237,7 +4234,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public StartBulkVolumeWriteResult startBulkVolumeWrite(final StartBulkVolumeWriteRequest request) {
+    public StartBulkVolumeWriteResult startBulkVolumeWrite(final StartBulkVolumeWriteRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, startBulkVolumeWrite is not available until version 6.");
         }
@@ -4269,7 +4266,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(final UpdateBulkVolumeStatusRequest request) {
+    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(final UpdateBulkVolumeStatusRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, updateBulkVolumeStatus is not available until version 6.");
         }
@@ -4297,7 +4294,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(final AddInitiatorsToVolumeAccessGroupRequest request) {
+    public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(final AddInitiatorsToVolumeAccessGroupRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, addInitiatorsToVolumeAccessGroup is not available until version 5.");
         }
@@ -4322,7 +4319,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(final AddVolumesToVolumeAccessGroupRequest request) {
+    public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(final AddVolumesToVolumeAccessGroupRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, addVolumesToVolumeAccessGroup is not available until version 5.");
         }
@@ -4351,7 +4348,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public CreateVolumeAccessGroupResult createVolumeAccessGroup(final CreateVolumeAccessGroupRequest request) {
+    public CreateVolumeAccessGroupResult createVolumeAccessGroup(final CreateVolumeAccessGroupRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, createVolumeAccessGroup is not available until version 5.");
         }
@@ -4390,7 +4387,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(final DeleteVolumeAccessGroupRequest request) {
+    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(final DeleteVolumeAccessGroupRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, deleteVolumeAccessGroup is not available until version 5.");
         }
@@ -4414,7 +4411,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public GetEfficiencyResult getVolumeAccessGroupEfficiency(final GetVolumeAccessGroupEfficiencyRequest request) {
+    public GetEfficiencyResult getVolumeAccessGroupEfficiency(final GetVolumeAccessGroupEfficiencyRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
             throw new ApiException("The command, getVolumeAccessGroupEfficiency is not available until version 6.");
         }
@@ -4438,7 +4435,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(final GetVolumeAccessGroupLunAssignmentsRequest request) {
+    public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(final GetVolumeAccessGroupLunAssignmentsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, getVolumeAccessGroupLunAssignments is not available until version 7.");
         }
@@ -4462,7 +4459,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ListVolumeAccessGroupsResult listVolumeAccessGroups(final ListVolumeAccessGroupsRequest request) {
+    public ListVolumeAccessGroupsResult listVolumeAccessGroups(final ListVolumeAccessGroupsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, listVolumeAccessGroups is not available until version 5.");
         }
@@ -4487,7 +4484,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(final RemoveInitiatorsFromVolumeAccessGroupRequest request) {
+    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(final RemoveInitiatorsFromVolumeAccessGroupRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, removeInitiatorsFromVolumeAccessGroup is not available until version 5.");
         }
@@ -4512,7 +4509,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(final RemoveVolumesFromVolumeAccessGroupRequest request) {
+    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(final RemoveVolumesFromVolumeAccessGroupRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, removeVolumesFromVolumeAccessGroup is not available until version 5.");
         }
@@ -4546,7 +4543,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(final ModifyVolumeAccessGroupRequest request) {
+    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(final ModifyVolumeAccessGroupRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
             throw new ApiException("The command, modifyVolumeAccessGroup is not available until version 5.");
         }
@@ -4597,7 +4594,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(final ModifyVolumeAccessGroupLunAssignmentsRequest request) {
+    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(final ModifyVolumeAccessGroupLunAssignmentsRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, modifyVolumeAccessGroupLunAssignments is not available until version 7.");
         }
@@ -4628,7 +4625,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request) {
+    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, getIpmiConfig is not available until version 9.");
         }
@@ -4653,7 +4650,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request) {
+    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The command, getIpmiInfo is not available until version 9.");
         }
@@ -4678,7 +4675,7 @@ public class SolidFireElement
     @Override
     @Since("1.0")
     @ConnectionType("Both")
-    public Object invokeSFApi(final InvokeSFApiRequest request) {
+    public Object invokeSFApi(final InvokeSFApiRequest request) { 
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1.0) {
             throw new ApiException("The command, invokeSFApi is not available until version 1.0.");
         }
