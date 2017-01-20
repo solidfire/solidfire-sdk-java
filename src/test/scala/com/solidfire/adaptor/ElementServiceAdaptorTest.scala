@@ -71,17 +71,4 @@ class ElementServiceAdaptorTest extends WordSpec with BeforeAndAfterAll with Moc
       result.getDriveStats.getWriteOps should be( 0L )
     }
   }
-
-  "ModifySchedule" should {
-    "throw ApiException when scheduleID is not present" in {
-
-      val schedule = Schedule.builder().name("someName").build()
-      schedule.setScheduleID(null)
-      when (sfe.modifySchedule(schedule)).thenCallRealMethod()
-      when (sfe.modifySchedule(any[ModifyScheduleRequest]())).thenCallRealMethod()
-      the [IllegalArgumentException] thrownBy {
-        sfe.modifySchedule(schedule)
-      } should have message "ScheduleID is missing. Cannot modify a schedule without a ScheduleID"
-    }
-  }
 }
