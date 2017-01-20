@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class ClusterInfo implements Serializable {
 
-    public static final long serialVersionUID = 6937143244161912485L;
+    public static final long serialVersionUID = -6108835636273030936L;
     @SerializedName("encryptionAtRestState") private String encryptionAtRestState;
     @SerializedName("ensemble") private String[] ensemble;
     @SerializedName("mvip") private String mvip;

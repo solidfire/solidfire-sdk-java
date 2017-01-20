@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateClusterResult implements Serializable {
 
-    public static final long serialVersionUID = -527627957355062226L;
+    public static final long serialVersionUID = 286402092267269862L;
 
     // empty constructor
     @Since("7.0")

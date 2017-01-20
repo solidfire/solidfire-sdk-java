@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RemoveVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = -7622530625529296409L;
+    public static final long serialVersionUID = -6612371274635212216L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
 

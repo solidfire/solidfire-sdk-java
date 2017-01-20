@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumeTasksRequest implements Serializable {
 
-    public static final long serialVersionUID = -8824861203375597941L;
+    public static final long serialVersionUID = -2908629703343090967L;
     @SerializedName("virtualVolumeTaskIDs") private Optional<java.util.UUID[]> virtualVolumeTaskIDs;
 
     // empty constructor

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RemoveVolumePairResult implements Serializable {
 
-    public static final long serialVersionUID = 7501519287970102359L;
+    public static final long serialVersionUID = 1842125394320898782L;
 
     // empty constructor
     @Since("7.0")

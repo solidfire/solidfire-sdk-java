@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Network implements Serializable {
 
-    public static final long serialVersionUID = 8968856628286036613L;
+    public static final long serialVersionUID = 270234649463754293L;
     @SerializedName("Bond10G") private Optional<NetworkConfig> bond10G;
     @SerializedName("Bond1G") private Optional<NetworkConfig> bond1G;
     @SerializedName("eth0") private Optional<NetworkConfig> eth0;

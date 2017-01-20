@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class VirtualNetworkAddress implements Serializable {
 
-    public static final long serialVersionUID = -4065911921073610306L;
+    public static final long serialVersionUID = 7052696766800535871L;
     @SerializedName("virtualNetworkID") private Long virtualNetworkID;
     @SerializedName("address") private String address;
 

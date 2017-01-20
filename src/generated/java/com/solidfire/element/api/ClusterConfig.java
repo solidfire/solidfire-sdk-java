@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class ClusterConfig implements Serializable {
 
-    public static final long serialVersionUID = 3884387958155246889L;
+    public static final long serialVersionUID = -4630355250148397308L;
     @SerializedName("cipi") private Optional<String> cipi;
     @SerializedName("cluster") private Optional<String> cluster;
     @SerializedName("ensemble") private Optional<String[]> ensemble;

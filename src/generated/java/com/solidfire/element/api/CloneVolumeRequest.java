@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CloneVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -768791333545216038L;
+    public static final long serialVersionUID = -6864720264608683928L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("newAccountID") private Optional<Long> newAccountID;

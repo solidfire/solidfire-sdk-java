@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ScheduleInfo implements Serializable {
 
-    public static final long serialVersionUID = -2613274100562542045L;
+    public static final long serialVersionUID = 4561643340797029554L;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
     @SerializedName("snapshotName") private Optional<String> snapshotName;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;

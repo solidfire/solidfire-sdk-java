@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 5050439057400185898L;
+    public static final long serialVersionUID = -6474892105900391775L;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("totalSize") private Long totalSize;

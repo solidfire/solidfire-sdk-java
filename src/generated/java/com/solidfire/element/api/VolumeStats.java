@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class VolumeStats implements Serializable {
 
-    public static final long serialVersionUID = -3367989483107432160L;
+    public static final long serialVersionUID = -4621991736254040317L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("actualIOPS") private Long actualIOPS;
     @SerializedName("asyncDelay") private Optional<String> asyncDelay;

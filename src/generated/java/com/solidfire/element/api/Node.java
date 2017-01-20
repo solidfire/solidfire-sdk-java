@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class Node implements Serializable {
 
-    public static final long serialVersionUID = -7985492147846592224L;
+    public static final long serialVersionUID = 1525547173540827584L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("associatedMasterServiceID") private Long associatedMasterServiceID;
     @SerializedName("associatedFServiceID") private Long associatedFServiceID;

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class NodeWaitingToJoin implements Serializable {
 
-    public static final long serialVersionUID = 4751353832656225215L;
+    public static final long serialVersionUID = -3355207600302107126L;
     @SerializedName("name") private String name;
     @SerializedName("version") private String version;
     @SerializedName("nodeID") private Long nodeID;

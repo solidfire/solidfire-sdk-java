@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class NodeStatsInfo implements Serializable {
 
-    public static final long serialVersionUID = 7349711922328450412L;
+    public static final long serialVersionUID = 222240696783508192L;
     @SerializedName("cBytesIn") private Long cBytesIn;
     @SerializedName("cBytesOut") private Long cBytesOut;
     @SerializedName("cpu") private Long cpu;

@@ -27,17 +27,33 @@ final class LogSplash {
     private static final Logger log = LoggerFactory.getLogger(SolidFireElement.class);
 
     static {
-        log.info("                                   ");
-        log.info("      ______________            ___");
-        log.info("     /__/__\\__\\__\\__\\       ___/__/");
-        log.info("    /_ /__/_\\__\\__\\__\\  ___/__/__/ ");
-        log.info("   /__/__/__/\\__\\__\\__\\/__/__/__/  ");
-        log.info("  /__/__/__/  \\__\\__\\__\\_/__/__/   ");
-        log.info(" /__/__/       \\__\\__\\__\\__/__/    ");
-        log.info("/__/            \\__\\__\\__\\/__/     ");
-        log.info("                                   ");
-        log.info("        Fueled By SolidFire        ");
-        log.info("                                   ");
+
+        log.info("");
+        log.info("                                               77               ");
+        log.info("                                              7777              ");
+        log.info("                                               77               ");
+        log.info("                                               ==               ");
+        log.info("                             77IIIIIIIIIIIIIIIIII777            ");
+        log.info("                           =7                       7=          ");
+        log.info("                           7                         7          ");
+        log.info("                          =7                         7=         ");
+        log.info("                          =7                         7=         ");
+        log.info("                         =77   7777777777777777777   77=        ");
+        log.info("                        7777  777777777777777777777  7777       ");
+        log.info("                        7777   7777777777777777777   7777       ");
+        log.info("                         =77                         77=        ");
+        log.info("                          =7                         7=         ");
+        log.info("                           7                         7          ");
+        log.info("                           7=                       =7          ");
+        log.info("                            77=                   =77           ");
+        log.info("                              =7777777777777777777=             ");
+        log.info("                                                                ");
+        log.info("                               ====IIIIIIIIII=====              ");
+        log.info("                         =77777=                 =77777=        ");
+        log.info("                     =777=                             =777=    ");
+        log.info("                 =777=                                     =777=");
+        log.info("                                                                ");
+        log.info("                           Fueled by NetApp SolidFire  ");
     }
 
     public static void logo() {

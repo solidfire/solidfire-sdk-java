@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RestartServicesRequest implements Serializable {
 
-    public static final long serialVersionUID = 4336616463661009278L;
+    public static final long serialVersionUID = -9182340273452251727L;
     @SerializedName("force") private Boolean force;
     @SerializedName("service") private Optional<String> service;
     @SerializedName("action") private Optional<String> action;

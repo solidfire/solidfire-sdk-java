@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetNvramInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 8380977530507768205L;
+    public static final long serialVersionUID = -5211641472743410935L;
     @SerializedName("nvramInfo") private java.util.Map<String, Object> nvramInfo;
 
     // empty constructor

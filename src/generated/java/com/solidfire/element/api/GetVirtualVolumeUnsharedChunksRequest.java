@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetVirtualVolumeUnsharedChunksRequest implements Serializable {
 
-    public static final long serialVersionUID = -9127441186961834977L;
+    public static final long serialVersionUID = 4974042506165309202L;
     @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
     @SerializedName("baseVirtualVolumeID") private java.util.UUID baseVirtualVolumeID;
     @SerializedName("segmentStart") private Long segmentStart;

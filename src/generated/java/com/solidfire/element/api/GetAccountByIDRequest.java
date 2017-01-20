@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetAccountByIDRequest implements Serializable {
 
-    public static final long serialVersionUID = -1679235285626842127L;
+    public static final long serialVersionUID = -1696503187309382032L;
     @SerializedName("accountID") private Long accountID;
 
     // empty constructor

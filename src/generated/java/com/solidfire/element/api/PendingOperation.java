@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class PendingOperation implements Serializable {
 
-    public static final long serialVersionUID = -2914770533108540248L;
+    public static final long serialVersionUID = -2460784649205488836L;
     @SerializedName("pending") private Boolean pending;
     @SerializedName("operation") private String operation;
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetStorageContainerEfficiencyResult implements Serializable {
 
-    public static final long serialVersionUID = -666660104766808245L;
+    public static final long serialVersionUID = 6381509329491382619L;
     @SerializedName("compression") private Double compression;
     @SerializedName("deduplication") private Double deduplication;
     @SerializedName("missingVolumes") private Long[] missingVolumes;

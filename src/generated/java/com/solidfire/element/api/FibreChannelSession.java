@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class FibreChannelSession implements Serializable {
 
-    public static final long serialVersionUID = 8264333238023851936L;
+    public static final long serialVersionUID = 2083571760578169572L;
     @SerializedName("initiatorWWPN") private String initiatorWWPN;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("serviceID") private Long serviceID;

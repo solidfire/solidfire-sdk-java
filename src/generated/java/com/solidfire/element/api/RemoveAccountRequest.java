@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RemoveAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = -6926282083277233060L;
+    public static final long serialVersionUID = -5237589100752444767L;
     @SerializedName("accountID") private Long accountID;
 
     // empty constructor
