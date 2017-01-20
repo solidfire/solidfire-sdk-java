@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListProtocolEndpointsRequest implements Serializable {
 
-    public static final long serialVersionUID = 2280366146651572017L;
+    public static final long serialVersionUID = -2920233583574195328L;
     @SerializedName("protocolEndpointIDs") private Optional<java.util.UUID[]> protocolEndpointIDs;
 
     // empty constructor

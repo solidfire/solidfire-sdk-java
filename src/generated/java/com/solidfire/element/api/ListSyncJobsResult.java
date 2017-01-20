@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListSyncJobsResult implements Serializable {
 
-    public static final long serialVersionUID = 2469759160601558884L;
+    public static final long serialVersionUID = -6939112192779008439L;
     @SerializedName("syncJobs") private SyncJob[] syncJobs;
 
     // empty constructor

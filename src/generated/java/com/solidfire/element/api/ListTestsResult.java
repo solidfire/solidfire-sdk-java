@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListTestsResult implements Serializable {
 
-    public static final long serialVersionUID = 3886812087466529195L;
+    public static final long serialVersionUID = 2822718475089577941L;
     @SerializedName("tests") private String[] tests;
 
     // empty constructor

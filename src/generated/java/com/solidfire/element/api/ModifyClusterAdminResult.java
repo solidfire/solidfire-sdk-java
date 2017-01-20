@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyClusterAdminResult implements Serializable {
 
-    public static final long serialVersionUID = -3254057571493890822L;
+    public static final long serialVersionUID = -5792721938510870862L;
 
     // empty constructor
     @Since("7.0")

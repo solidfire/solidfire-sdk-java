@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class EnableFeatureResult implements Serializable {
 
-    public static final long serialVersionUID = -7281960974970759219L;
+    public static final long serialVersionUID = -3229911812472687729L;
 
     // empty constructor
     @Since("7.0")

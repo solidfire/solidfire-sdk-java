@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class ClusterCapacity implements Serializable {
 
-    public static final long serialVersionUID = -9123859184117899227L;
+    public static final long serialVersionUID = 7650974620401483360L;
     @SerializedName("activeBlockSpace") private Long activeBlockSpace;
     @SerializedName("activeSessions") private Long activeSessions;
     @SerializedName("averageIOPS") private Long averageIOPS;

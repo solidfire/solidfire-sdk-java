@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumeBindingsResult implements Serializable {
 
-    public static final long serialVersionUID = 6436663975426777641L;
+    public static final long serialVersionUID = 5960294798445498415L;
     @SerializedName("bindings") private VirtualVolumeBinding[] bindings;
 
     // empty constructor

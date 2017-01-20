@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 4779120452503850352L;
+    public static final long serialVersionUID = -1762254333877166356L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("volumes") private Long[] volumes;
 

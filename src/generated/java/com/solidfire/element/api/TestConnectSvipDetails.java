@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class TestConnectSvipDetails implements Serializable {
 
-    public static final long serialVersionUID = 3870859095519816826L;
+    public static final long serialVersionUID = -6887165386602121653L;
     @SerializedName("pingBytes") private Object pingBytes;
     @SerializedName("svip") private String svip;
     @SerializedName("connected") private Boolean connected;

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListBackupTargetsResult implements Serializable {
 
-    public static final long serialVersionUID = -674365495410620736L;
+    public static final long serialVersionUID = 3905102326862428287L;
     @SerializedName("backupTargets") private BackupTarget[] backupTargets;
 
     // empty constructor

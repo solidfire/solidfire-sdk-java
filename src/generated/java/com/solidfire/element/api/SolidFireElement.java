@@ -21,6 +21,7 @@ package com.solidfire.element.api;
 import com.solidfire.core.annotation.*;
 import com.solidfire.core.client.RequestDispatcher;
 import com.solidfire.core.javautil.Optional;
+import com.solidfire.core.client.ApiException;
 
 /**
  * The API for controlling a SolidFire cluster.
@@ -40,12 +41,40 @@ public class SolidFireElement
     }
 
     /** 
+     * Used to add a new account to the system.
+     * New volumes can be created under the new account.
+     * The CHAP settings specified for the account applies to all volumes owned by the account.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public AddAccountResult addAccount(final AddAccountRequest request) { 
+        return super.sendRequest("AddAccount", request, AddAccountRequest.class, AddAccountResult.class);
+    }
+
+    /** 
+     * Used to add a new account to the system.
+     * New volumes can be created under the new account.
+     * The CHAP settings specified for the account applies to all volumes owned by the account.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public AddAccountResult addAccount(
+        String username,
+        Optional<CHAPSecret> initiatorSecret,
+        Optional<CHAPSecret> targetSecret,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.addAccount(new AddAccountRequest(username, initiatorSecret, targetSecret, attributes));
+    }
+    /** 
      * Returns details about an account, given its AccountID.
      **/
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetAccountResult getAccountByID(final GetAccountByIDRequest request) {
+    public GetAccountResult getAccountByID(final GetAccountByIDRequest request) { 
         return super.sendRequest("GetAccountByID", request, GetAccountByIDRequest.class, GetAccountResult.class);
     }
 
@@ -66,7 +95,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetAccountResult getAccountByName(final GetAccountByNameRequest request) {
+    public GetAccountResult getAccountByName(final GetAccountByNameRequest request) { 
         return super.sendRequest("GetAccountByName", request, GetAccountByNameRequest.class, GetAccountResult.class);
     }
 
@@ -87,7 +116,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public GetEfficiencyResult getAccountEfficiency(final GetAccountEfficiencyRequest request) {
+    public GetEfficiencyResult getAccountEfficiency(final GetAccountEfficiencyRequest request) { 
         return super.sendRequest("GetAccountEfficiency", request, GetAccountEfficiencyRequest.class, GetEfficiencyResult.class);
     }
 
@@ -108,7 +137,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ListAccountsResult listAccounts(final ListAccountsRequest request) {
+    public ListAccountsResult listAccounts(final ListAccountsRequest request) { 
         return super.sendRequest("ListAccounts", request, ListAccountsRequest.class, ListAccountsResult.class);
     }
 
@@ -133,7 +162,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ModifyAccountResult modifyAccount(final ModifyAccountRequest request) {
+    public ModifyAccountResult modifyAccount(final ModifyAccountRequest request) { 
         return super.sendRequest("ModifyAccount", request, ModifyAccountRequest.class, ModifyAccountResult.class);
     }
 
@@ -164,7 +193,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public RemoveAccountResult removeAccount(final RemoveAccountRequest request) {
+    public RemoveAccountResult removeAccount(final RemoveAccountRequest request) { 
         return super.sendRequest("RemoveAccount", request, RemoveAccountRequest.class, RemoveAccountResult.class);
     }
 
@@ -182,40 +211,12 @@ public class SolidFireElement
         return this.removeAccount(new RemoveAccountRequest(accountID));
     }
     /** 
-     * Used to add a new account to the system.
-     * New volumes can be created under the new account.
-     * The CHAP settings specified for the account applies to all volumes owned by the account.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AddAccountResult addAccount(final AddAccountRequest request) {
-        return super.sendRequest("AddAccount", request, AddAccountRequest.class, AddAccountResult.class);
-    }
-
-    /** 
-     * Used to add a new account to the system.
-     * New volumes can be created under the new account.
-     * The CHAP settings specified for the account applies to all volumes owned by the account.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AddAccountResult addAccount(
-        String username,
-        Optional<CHAPSecret> initiatorSecret,
-        Optional<CHAPSecret> targetSecret,
-        Optional<java.util.Map<String, Object>> attributes
-        ) {
-        return this.addAccount(new AddAccountRequest(username, initiatorSecret, targetSecret, attributes));
-    }
-    /** 
      * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
      **/
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public CreateBackupTargetResult createBackupTarget(final CreateBackupTargetRequest request) {
+    public CreateBackupTargetResult createBackupTarget(final CreateBackupTargetRequest request) { 
         return super.sendRequest("CreateBackupTarget", request, CreateBackupTargetRequest.class, CreateBackupTargetResult.class);
     }
 
@@ -237,7 +238,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public GetBackupTargetResult getBackupTarget(final GetBackupTargetRequest request) {
+    public GetBackupTargetResult getBackupTarget(final GetBackupTargetRequest request) { 
         return super.sendRequest("GetBackupTarget", request, GetBackupTargetRequest.class, GetBackupTargetResult.class);
     }
 
@@ -267,7 +268,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public ModifyBackupTargetResult modifyBackupTarget(final ModifyBackupTargetRequest request) {
+    public ModifyBackupTargetResult modifyBackupTarget(final ModifyBackupTargetRequest request) { 
         return super.sendRequest("ModifyBackupTarget", request, ModifyBackupTargetRequest.class, ModifyBackupTargetResult.class);
     }
 
@@ -290,7 +291,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public RemoveBackupTargetResult removeBackupTarget(final RemoveBackupTargetRequest request) {
+    public RemoveBackupTargetResult removeBackupTarget(final RemoveBackupTargetRequest request) { 
         return super.sendRequest("RemoveBackupTarget", request, RemoveBackupTargetRequest.class, RemoveBackupTargetResult.class);
     }
 
@@ -306,12 +307,94 @@ public class SolidFireElement
         return this.removeBackupTarget(new RemoveBackupTargetRequest(backupTargetID));
     }
     /** 
+     * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
+     * 
+     * Each Cluster Admin can be restricted to a sub-set of the API. SolidFire recommends using multiple Cluster Admins for different users and applications. Each Cluster Admin should be given the minimal permissions necessary to reduce the potential impact of credential compromise.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public AddClusterAdminResult addClusterAdmin(final AddClusterAdminRequest request) { 
+        return super.sendRequest("AddClusterAdmin", request, AddClusterAdminRequest.class, AddClusterAdminResult.class);
+    }
+
+    /** 
+     * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
+     * 
+     * Each Cluster Admin can be restricted to a sub-set of the API. SolidFire recommends using multiple Cluster Admins for different users and applications. Each Cluster Admin should be given the minimal permissions necessary to reduce the potential impact of credential compromise.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public AddClusterAdminResult addClusterAdmin(
+        String username,
+        String password,
+        String[] access,
+        Optional<Boolean> acceptEula,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.addClusterAdmin(new AddClusterAdminRequest(username, password, access, acceptEula, attributes));
+    }
+    /** 
+     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request) { 
+        return super.sendRequest("ClearClusterFaults", request, ClearClusterFaultsRequest.class, ClearClusterFaultsResult.class);
+    }
+
+    /** 
+     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ClearClusterFaultsResult clearClusterFaults(
+        Optional<String> faultTypes
+        ) {
+        return this.clearClusterFaults(new ClearClusterFaultsRequest(faultTypes));
+    }
+    /** 
+     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
+     * 
+     * Note: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Both")
+    public CreateClusterResult createCluster(final CreateClusterRequest request) { 
+        return super.sendRequest("CreateCluster", request, CreateClusterRequest.class, CreateClusterResult.class);
+    }
+
+    /** 
+     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
+     * 
+     * Note: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
+     **/
+    @Override
+    @Since("7.0")
+    @ConnectionType("Both")
+    public CreateClusterResult createCluster(
+        Optional<Boolean> acceptEula,
+        String mvip,
+        String svip,
+        Long repCount,
+        String username,
+        String password,
+        String[] nodes,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.createCluster(new CreateClusterRequest(acceptEula, mvip, svip, repCount, username, password, nodes, attributes));
+    }
+    /** 
      * CreateSupportBundle is used to create a support bundle file under the node's directory. When the bundle has been successfully created, the bundle is stored on the node as a tar.gz file.
      **/
     @Override
     @Since("8")
     @ConnectionType("Node")
-    public CreateSupportBundleResult createSupportBundle(final CreateSupportBundleRequest request) {
+    public CreateSupportBundleResult createSupportBundle(final CreateSupportBundleRequest request) { 
         return super.sendRequest("CreateSupportBundle", request, CreateSupportBundleRequest.class, CreateSupportBundleResult.class);
     }
 
@@ -358,12 +441,23 @@ public class SolidFireElement
         return super.sendRequest("DisableSnmp", null, null, DisableSnmpResult.class);
     }
     /** 
+     * The EnableEncryptionAtRest method is used to enable the Advanced Encryption Standard (AES) 256-bit encryption at rest on the cluster so that the cluster can manage the encryption key used for the drives on each node. This feature is not enabled by default. Enabling this operation allows the cluster to automatically manage encryption keys internally for the drives on each node in the cluster. Nodes do not store the keys to unlock drives and the keys are never passed over the network. Two nodes participating in a cluster are required to access the key to disable encryption on a drive. The encryption management does not affect performance or efficiency on the cluster. If an encryption-enabled drive or node is removed from the cluster with the API, all data is secure erased and any data left on the drive cannot be read or accessed.
+     * Enabling or disabling encryption should be performed when the cluster is running and in a healthy state. Encryption can be enabled or disabled at your discretion and can be performed as often as you need.
+     * Note: This process is asynchronous and returns a response before encryption is enabled. The GetClusterInfo method can be used to poll the system to see when the process has completed.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Cluster")
+    public EnableEncryptionAtRestResult enableEncryptionAtRest() {
+        return super.sendRequest("EnableEncryptionAtRest", null, null, EnableEncryptionAtRestResult.class);
+    }
+    /** 
      * EnableSnmp is used to enable SNMP on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to EnableSnmp.
      **/
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public EnableSnmpResult enableSnmp(final EnableSnmpRequest request) {
+    public EnableSnmpResult enableSnmp(final EnableSnmpRequest request) { 
         return super.sendRequest("EnableSnmp", request, EnableSnmpRequest.class, EnableSnmpResult.class);
     }
 
@@ -398,6 +492,17 @@ public class SolidFireElement
         return super.sendRequest("GetClusterCapacity", null, null, GetClusterCapacityResult.class);
     }
     /** 
+     * The GetClusterConfig API method is used to return information about the cluster configuration this node uses to communicate with the cluster it is a part of.
+     * 
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public GetClusterConfigResult getClusterConfig() {
+        return super.sendRequest("GetClusterConfig", null, null, GetClusterConfigResult.class);
+    }
+    /** 
      * GetClusterFullThreshold is used to view the stages set for cluster fullness levels. All levels are returned when this method is entered.
      **/
     @Override
@@ -430,7 +535,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public GetClusterStateResult getClusterState(final GetClusterStateRequest request) {
+    public GetClusterStateResult getClusterState(final GetClusterStateRequest request) { 
         return super.sendRequest("GetClusterState", request, GetClusterStateRequest.class, GetClusterStateResult.class);
     }
 
@@ -501,6 +606,28 @@ public class SolidFireElement
         return super.sendRequest("GetSnmpACL", null, null, GetSnmpACLResult.class);
     }
     /** 
+     * GetSnmpInfo is used to return the current simple network management protocol (SNMP) configuration information.
+     * 
+     * Note: GetSnmpInfo will be available for Element OS 8 and prior releases. It will be deprecated after Element OS 8. There are two new SNMP API methods that you should migrate over to. They are GetSnmpState and GetSnmpACL. Please see details in this document for their descriptions and usage.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public GetSnmpInfoResult getSnmpInfo() {
+        return super.sendRequest("GetSnmpInfo", null, null, GetSnmpInfoResult.class);
+    }
+    /** 
+     * GetSnmpState is used to return the current state of the SNMP feature.
+     * 
+     * Note: GetSnmpState is new for Element OS 8. Please use this method and SetSnmpACL to migrate your SNMP functionality in the future.
+     **/
+    @Override
+    @Since("8")
+    @ConnectionType("Cluster")
+    public GetSnmpStateResult getSnmpState() {
+        return super.sendRequest("GetSnmpState", null, null, GetSnmpStateResult.class);
+    }
+    /** 
      * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
      **/
     @Override
@@ -527,12 +654,41 @@ public class SolidFireElement
         return super.sendRequest("ListClusterAdmins", null, null, ListClusterAdminsResult.class);
     }
     /** 
+     * ListClusterFaults is used to retrieve information about any faults detected on the cluster.
+     * With this method, both current and resolved faults can be retrieved. The system caches faults every 30 seconds.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ListClusterFaultsResult listClusterFaults(final ListClusterFaultsRequest request) { 
+        return super.sendRequest("ListClusterFaults", request, ListClusterFaultsRequest.class, ListClusterFaultsResult.class);
+    }
+
+    /** 
+     * ListClusterFaults is used to retrieve information about any faults detected on the cluster.
+     * With this method, both current and resolved faults can be retrieved. The system caches faults every 30 seconds.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ListClusterFaultsResult listClusterFaults(
+        Optional<Boolean> exceptions,
+        Optional<Boolean> bestPractices,
+        Optional<Boolean> update,
+        Optional<String> faultTypes
+        ) {
+        return this.listClusterFaults(new ListClusterFaultsRequest(exceptions, bestPractices, update, faultTypes));
+    }
+    /** 
      * ListEvents returns events detected on the cluster, sorted from oldest to newest.
      **/
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ListEventsResult listEvents(final ListEventsRequest request) {
+    public ListEventsResult listEvents(final ListEventsRequest request) { 
+        if(request.getEventQueueType() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("eventQueueType is not applicable to this version of the API.");
+        }
         return super.sendRequest("ListEvents", request, ListEventsRequest.class, ListEventsResult.class);
     }
 
@@ -565,7 +721,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request) {
+    public ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request) { 
         return super.sendRequest("ModifyClusterAdmin", request, ModifyClusterAdminRequest.class, ModifyClusterAdminResult.class);
     }
 
@@ -589,7 +745,10 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(final ModifyClusterFullThresholdRequest request) {
+    public ModifyClusterFullThresholdResult modifyClusterFullThreshold(final ModifyClusterFullThresholdRequest request) { 
+        if(request.getStage3BlockThresholdPercent() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
+            throw new ApiException("stage3BlockThresholdPercent is not applicable to this version of the API.");
+        }
         return super.sendRequest("ModifyClusterFullThreshold", request, ModifyClusterFullThresholdRequest.class, ModifyClusterFullThresholdResult.class);
     }
 
@@ -612,7 +771,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public RemoveClusterAdminResult removeClusterAdmin(final RemoveClusterAdminRequest request) {
+    public RemoveClusterAdminResult removeClusterAdmin(final RemoveClusterAdminRequest request) { 
         return super.sendRequest("RemoveClusterAdmin", request, RemoveClusterAdminRequest.class, RemoveClusterAdminResult.class);
     }
 
@@ -628,12 +787,37 @@ public class SolidFireElement
         return this.removeClusterAdmin(new RemoveClusterAdminRequest(clusterAdminID));
     }
     /** 
+     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
+     * 
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public SetClusterConfigResult setClusterConfig(final SetClusterConfigRequest request) { 
+        return super.sendRequest("SetClusterConfig", request, SetClusterConfigRequest.class, SetClusterConfigResult.class);
+    }
+
+    /** 
+     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
+     * 
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public SetClusterConfigResult setClusterConfig(
+        ClusterConfig cluster
+        ) {
+        return this.setClusterConfig(new SetClusterConfigRequest(cluster));
+    }
+    /** 
      * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
      **/
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public SetNtpInfoResult setNtpInfo(final SetNtpInfoRequest request) {
+    public SetNtpInfoResult setNtpInfo(final SetNtpInfoRequest request) { 
         return super.sendRequest("SetNtpInfo", request, SetNtpInfoRequest.class, SetNtpInfoResult.class);
     }
 
@@ -655,7 +839,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public SetSnmpACLResult setSnmpACL(final SetSnmpACLRequest request) {
+    public SetSnmpACLResult setSnmpACL(final SetSnmpACLRequest request) { 
         return super.sendRequest("SetSnmpACL", request, SetSnmpACLRequest.class, SetSnmpACLResult.class);
     }
 
@@ -672,12 +856,40 @@ public class SolidFireElement
         return this.setSnmpACL(new SetSnmpACLRequest(networks, usmUsers));
     }
     /** 
+     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
+     * 
+     * Note: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request) { 
+        return super.sendRequest("SetSnmpInfo", request, SetSnmpInfoRequest.class, SetSnmpInfoResult.class);
+    }
+
+    /** 
+     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
+     * 
+     * Note: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public SetSnmpInfoResult setSnmpInfo(
+        Optional<SnmpNetwork[]> networks,
+        Optional<Boolean> enabled,
+        Optional<Boolean> snmpV3Enabled,
+        Optional<SnmpV3UsmUser[]> usmUsers
+        ) {
+        return this.setSnmpInfo(new SetSnmpInfoRequest(networks, enabled, snmpV3Enabled, usmUsers));
+    }
+    /** 
      * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
      **/
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public SetSnmpTrapInfoResult setSnmpTrapInfo(final SetSnmpTrapInfoRequest request) {
+    public SetSnmpTrapInfoResult setSnmpTrapInfo(final SetSnmpTrapInfoRequest request) { 
         return super.sendRequest("SetSnmpTrapInfo", request, SetSnmpTrapInfoRequest.class, SetSnmpTrapInfoResult.class);
     }
 
@@ -705,287 +917,6 @@ public class SolidFireElement
         return super.sendRequest("SnmpSendTestTraps", null, null, SnmpSendTestTrapsResult.class);
     }
     /** 
-     * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
-     * 
-     * Each Cluster Admin can be restricted to a sub-set of the API. SolidFire recommends using multiple Cluster Admins for different users and applications. Each Cluster Admin should be given the minimal permissions necessary to reduce the potential impact of credential compromise.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AddClusterAdminResult addClusterAdmin(final AddClusterAdminRequest request) {
-        return super.sendRequest("AddClusterAdmin", request, AddClusterAdminRequest.class, AddClusterAdminResult.class);
-    }
-
-    /** 
-     * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
-     * 
-     * Each Cluster Admin can be restricted to a sub-set of the API. SolidFire recommends using multiple Cluster Admins for different users and applications. Each Cluster Admin should be given the minimal permissions necessary to reduce the potential impact of credential compromise.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AddClusterAdminResult addClusterAdmin(
-        String username,
-        String password,
-        String[] access,
-        Optional<Boolean> acceptEula,
-        Optional<java.util.Map<String, Object>> attributes
-        ) {
-        return this.addClusterAdmin(new AddClusterAdminRequest(username, password, access, acceptEula, attributes));
-    }
-    /** 
-     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request) {
-        return super.sendRequest("ClearClusterFaults", request, ClearClusterFaultsRequest.class, ClearClusterFaultsResult.class);
-    }
-
-    /** 
-     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ClearClusterFaultsResult clearClusterFaults(
-        Optional<String> faultTypes
-        ) {
-        return this.clearClusterFaults(new ClearClusterFaultsRequest(faultTypes));
-    }
-    /** 
-     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
-     * 
-     * Note: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Both")
-    public CreateClusterResult createCluster(final CreateClusterRequest request) {
-        return super.sendRequest("CreateCluster", request, CreateClusterRequest.class, CreateClusterResult.class);
-    }
-
-    /** 
-     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
-     * 
-     * Note: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
-     **/
-    @Override
-    @Since("7.0")
-    @ConnectionType("Both")
-    public CreateClusterResult createCluster(
-        Optional<Boolean> acceptEula,
-        String mvip,
-        String svip,
-        Long repCount,
-        String username,
-        String password,
-        String[] nodes,
-        Optional<java.util.Map<String, Object>> attributes
-        ) {
-        return this.createCluster(new CreateClusterRequest(acceptEula, mvip, svip, repCount, username, password, nodes, attributes));
-    }
-    /** 
-     * The EnableEncryptionAtRest method is used to enable the Advanced Encryption Standard (AES) 256-bit encryption at rest on the cluster so that the cluster can manage the encryption key used for the drives on each node. This feature is not enabled by default. Enabling this operation allows the cluster to automatically manage encryption keys internally for the drives on each node in the cluster. Nodes do not store the keys to unlock drives and the keys are never passed over the network. Two nodes participating in a cluster are required to access the key to disable encryption on a drive. The encryption management does not affect performance or efficiency on the cluster. If an encryption-enabled drive or node is removed from the cluster with the API, all data is secure erased and any data left on the drive cannot be read or accessed.
-     * Enabling or disabling encryption should be performed when the cluster is running and in a healthy state. Encryption can be enabled or disabled at your discretion and can be performed as often as you need.
-     * Note: This process is asynchronous and returns a response before encryption is enabled. The GetClusterInfo method can be used to poll the system to see when the process has completed.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public EnableEncryptionAtRestResult enableEncryptionAtRest() {
-        return super.sendRequest("EnableEncryptionAtRest", null, null, EnableEncryptionAtRestResult.class);
-    }
-    /** 
-     * The GetClusterConfig API method is used to return information about the cluster configuration this node uses to communicate with the cluster it is a part of.
-     * 
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public GetClusterConfigResult getClusterConfig() {
-        return super.sendRequest("GetClusterConfig", null, null, GetClusterConfigResult.class);
-    }
-    /** 
-     * GetSnmpInfo is used to return the current simple network management protocol (SNMP) configuration information.
-     * 
-     * Note: GetSnmpInfo will be available for Element OS 8 and prior releases. It will be deprecated after Element OS 8. There are two new SNMP API methods that you should migrate over to. They are GetSnmpState and GetSnmpACL. Please see details in this document for their descriptions and usage.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public GetSnmpInfoResult getSnmpInfo() {
-        return super.sendRequest("GetSnmpInfo", null, null, GetSnmpInfoResult.class);
-    }
-    /** 
-     * GetSnmpState is used to return the current state of the SNMP feature.
-     * 
-     * Note: GetSnmpState is new for Element OS 8. Please use this method and SetSnmpACL to migrate your SNMP functionality in the future.
-     **/
-    @Override
-    @Since("8")
-    @ConnectionType("Cluster")
-    public GetSnmpStateResult getSnmpState() {
-        return super.sendRequest("GetSnmpState", null, null, GetSnmpStateResult.class);
-    }
-    /** 
-     * ListClusterFaults is used to retrieve information about any faults detected on the cluster.
-     * With this method, both current and resolved faults can be retrieved. The system caches faults every 30 seconds.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ListClusterFaultsResult listClusterFaults(final ListClusterFaultsRequest request) {
-        return super.sendRequest("ListClusterFaults", request, ListClusterFaultsRequest.class, ListClusterFaultsResult.class);
-    }
-
-    /** 
-     * ListClusterFaults is used to retrieve information about any faults detected on the cluster.
-     * With this method, both current and resolved faults can be retrieved. The system caches faults every 30 seconds.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ListClusterFaultsResult listClusterFaults(
-        Optional<Boolean> exceptions,
-        Optional<Boolean> bestPractices,
-        Optional<Boolean> update,
-        Optional<String> faultTypes
-        ) {
-        return this.listClusterFaults(new ListClusterFaultsRequest(exceptions, bestPractices, update, faultTypes));
-    }
-    /** 
-     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
-     * 
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public SetClusterConfigResult setClusterConfig(final SetClusterConfigRequest request) {
-        return super.sendRequest("SetClusterConfig", request, SetClusterConfigRequest.class, SetClusterConfigResult.class);
-    }
-
-    /** 
-     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
-     * 
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public SetClusterConfigResult setClusterConfig(
-        ClusterConfig cluster
-        ) {
-        return this.setClusterConfig(new SetClusterConfigRequest(cluster));
-    }
-    /** 
-     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
-     * 
-     * Note: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request) {
-        return super.sendRequest("SetSnmpInfo", request, SetSnmpInfoRequest.class, SetSnmpInfoResult.class);
-    }
-
-    /** 
-     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
-     * 
-     * Note: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public SetSnmpInfoResult setSnmpInfo(
-        Optional<SnmpNetwork[]> networks,
-        Optional<Boolean> enabled,
-        Optional<Boolean> snmpV3Enabled,
-        Optional<SnmpV3UsmUser[]> usmUsers
-        ) {
-        return this.setSnmpInfo(new SetSnmpInfoRequest(networks, enabled, snmpV3Enabled, usmUsers));
-    }
-    /** 
-     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public GetDriveHardwareInfoResult getDriveHardwareInfo(final GetDriveHardwareInfoRequest request) {
-        return super.sendRequest("GetDriveHardwareInfo", request, GetDriveHardwareInfoRequest.class, GetDriveHardwareInfoResult.class);
-    }
-
-    /** 
-     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public GetDriveHardwareInfoResult getDriveHardwareInfo(
-        Long driveID
-        ) {
-        return this.getDriveHardwareInfo(new GetDriveHardwareInfoRequest(driveID));
-    }
-    /** 
-     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
-     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request) {
-        // Adaptor
-        return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStats(this, request);
-    }
-
-    /** 
-     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
-     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public GetDriveStatsResult getDriveStats(
-        Long driveID
-        ) {
-        return this.getDriveStats(new GetDriveStatsRequest(driveID));
-    }
-    /** 
-     * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public ListDriveHardwareResult listDriveHardware(final ListDriveHardwareRequest request) {
-        return super.sendRequest("ListDriveHardware", request, ListDriveHardwareRequest.class, ListDriveHardwareResult.class);
-    }
-
-    /** 
-     * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public ListDriveHardwareResult listDriveHardware(
-        Boolean force
-        ) {
-        return this.listDriveHardware(new ListDriveHardwareRequest(force));
-    }
-    /** 
-     * ListDrives allows you to retrieve the list of the drives that exist in the cluster's active nodes.
-     * This method returns drives that have been added as volume metadata or block drives as well as drives that have not been added and are available.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ListDrivesResult listDrives() {
-        return super.sendRequest("ListDrives", null, null, ListDrivesResult.class);
-    }
-    /** 
      * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
      * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
      * Use the "ListDrives" method to display drives that are "available" to be added.
@@ -1000,7 +931,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public AddDrivesResult addDrives(final AddDrivesRequest request) {
+    public AddDrivesResult addDrives(final AddDrivesRequest request) { 
         return super.sendRequest("AddDrives", request, AddDrivesRequest.class, AddDrivesResult.class);
     }
 
@@ -1036,6 +967,82 @@ public class SolidFireElement
         return super.sendRequest("GetDriveConfig", null, null, GetDriveConfigResult.class);
     }
     /** 
+     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public GetDriveHardwareInfoResult getDriveHardwareInfo(final GetDriveHardwareInfoRequest request) { 
+        return super.sendRequest("GetDriveHardwareInfo", request, GetDriveHardwareInfoRequest.class, GetDriveHardwareInfoResult.class);
+    }
+
+    /** 
+     * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public GetDriveHardwareInfoResult getDriveHardwareInfo(
+        Long driveID
+        ) {
+        return this.getDriveHardwareInfo(new GetDriveHardwareInfoRequest(driveID));
+    }
+    /** 
+     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
+     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public GetDriveStatsResult getDriveStats(final GetDriveStatsRequest request) { 
+        // Adaptor
+        return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStats(this, request);
+    }
+
+    /** 
+     * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
+     * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public GetDriveStatsResult getDriveStats(
+        Long driveID
+        ) {
+        return this.getDriveStats(new GetDriveStatsRequest(driveID));
+    }
+    /** 
+     * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public ListDriveHardwareResult listDriveHardware(final ListDriveHardwareRequest request) { 
+        return super.sendRequest("ListDriveHardware", request, ListDriveHardwareRequest.class, ListDriveHardwareResult.class);
+    }
+
+    /** 
+     * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public ListDriveHardwareResult listDriveHardware(
+        Boolean force
+        ) {
+        return this.listDriveHardware(new ListDriveHardwareRequest(force));
+    }
+    /** 
+     * ListDrives allows you to retrieve the list of the drives that exist in the cluster's active nodes.
+     * This method returns drives that have been added as volume metadata or block drives as well as drives that have not been added and are available.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ListDrivesResult listDrives() {
+        return super.sendRequest("ListDrives", null, null, ListDrivesResult.class);
+    }
+    /** 
      * You can use RemoveDrives to proactively remove drives that are part of the cluster.
      * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
      * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
@@ -1054,7 +1061,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public AsyncHandleResult removeDrives(final RemoveDrivesRequest request) {
+    public AsyncHandleResult removeDrives(final RemoveDrivesRequest request) { 
         return super.sendRequest("RemoveDrives", request, RemoveDrivesRequest.class, AsyncHandleResult.class);
     }
 
@@ -1090,7 +1097,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Node")
-    public ResetDrivesResult resetDrives(final ResetDrivesRequest request) {
+    public ResetDrivesResult resetDrives(final ResetDrivesRequest request) { 
         return super.sendRequest("ResetDrives", request, ResetDrivesRequest.class, ResetDrivesResult.class);
     }
 
@@ -1118,7 +1125,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public AsyncHandleResult secureEraseDrives(final SecureEraseDrivesRequest request) {
+    public AsyncHandleResult secureEraseDrives(final SecureEraseDrivesRequest request) { 
         return super.sendRequest("SecureEraseDrives", request, SecureEraseDrivesRequest.class, AsyncHandleResult.class);
     }
 
@@ -1147,7 +1154,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public TestDrivesResult testDrives(final TestDrivesRequest request) {
+    public TestDrivesResult testDrives(final TestDrivesRequest request) { 
         return super.sendRequest("TestDrives", request, TestDrivesRequest.class, TestDrivesResult.class);
     }
 
@@ -1172,7 +1179,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetClusterHardwareInfoResult getClusterHardwareInfo(final GetClusterHardwareInfoRequest request) {
+    public GetClusterHardwareInfoResult getClusterHardwareInfo(final GetClusterHardwareInfoRequest request) { 
         return super.sendRequest("GetClusterHardwareInfo", request, GetClusterHardwareInfoRequest.class, GetClusterHardwareInfoResult.class);
     }
 
@@ -1202,7 +1209,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetNodeHardwareInfoResult getNodeHardwareInfo(final GetNodeHardwareInfoRequest request) {
+    public GetNodeHardwareInfoResult getNodeHardwareInfo(final GetNodeHardwareInfoRequest request) { 
         return super.sendRequest("GetNodeHardwareInfo", request, GetNodeHardwareInfoRequest.class, GetNodeHardwareInfoResult.class);
     }
 
@@ -1233,7 +1240,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public CreateInitiatorsResult createInitiators(final CreateInitiatorsRequest request) {
+    public CreateInitiatorsResult createInitiators(final CreateInitiatorsRequest request) { 
         return super.sendRequest("CreateInitiators", request, CreateInitiatorsRequest.class, CreateInitiatorsResult.class);
     }
 
@@ -1256,7 +1263,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public DeleteInitiatorsResult deleteInitiators(final DeleteInitiatorsRequest request) {
+    public DeleteInitiatorsResult deleteInitiators(final DeleteInitiatorsRequest request) { 
         return super.sendRequest("DeleteInitiators", request, DeleteInitiatorsRequest.class, DeleteInitiatorsResult.class);
     }
 
@@ -1278,7 +1285,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListInitiatorsResult listInitiators(final ListInitiatorsRequest request) {
+    public ListInitiatorsResult listInitiators(final ListInitiatorsRequest request) { 
         return super.sendRequest("ListInitiators", request, ListInitiatorsRequest.class, ListInitiatorsResult.class);
     }
 
@@ -1302,7 +1309,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ModifyInitiatorsResult modifyInitiators(final ModifyInitiatorsRequest request) {
+    public ModifyInitiatorsResult modifyInitiators(final ModifyInitiatorsRequest request) { 
         return super.sendRequest("ModifyInitiators", request, ModifyInitiatorsRequest.class, ModifyInitiatorsResult.class);
     }
 
@@ -1319,47 +1326,6 @@ public class SolidFireElement
         return this.modifyInitiators(new ModifyInitiatorsRequest(initiators));
     }
     /** 
-     * The DisableLdapAuthentication method is used disable LDAP authentication and remove all LDAP configuration settings. This call will not remove any configured cluster admin accounts (user or group). However, those cluster admin accounts will no longer be able to log in.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public DisableLdapAuthenticationResult disableLdapAuthentication() {
-        return super.sendRequest("DisableLdapAuthentication", null, null, DisableLdapAuthenticationResult.class);
-    }
-    /** 
-     * The GetLdapConfiguration is used to get the LDAP configuration currently active on the cluster.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public GetLdapConfigurationResult getLdapConfiguration() {
-        return super.sendRequest("GetLdapConfiguration", null, null, GetLdapConfigurationResult.class);
-    }
-    /** 
-     * The TestLdapAuthentication is used to verify the currently enabled LDAP authentication configuration settings are correct. If the configuration settings are correct, the API call returns a list of the groups the tested user is a member of.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public TestLdapAuthenticationResult testLdapAuthentication(final TestLdapAuthenticationRequest request) {
-        return super.sendRequest("TestLdapAuthentication", request, TestLdapAuthenticationRequest.class, TestLdapAuthenticationResult.class);
-    }
-
-    /** 
-     * The TestLdapAuthentication is used to verify the currently enabled LDAP authentication configuration settings are correct. If the configuration settings are correct, the API call returns a list of the groups the tested user is a member of.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public TestLdapAuthenticationResult testLdapAuthentication(
-        String username,
-        String password,
-        Optional<LdapConfiguration> ldapConfiguration
-        ) {
-        return this.testLdapAuthentication(new TestLdapAuthenticationRequest(username, password, ldapConfiguration));
-    }
-    /** 
      * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
      * 
      * An LDAP group that has been defined in Active Directory can also be added using this API method. The access level that is given to the group will be passed to the individual users in the LDAP group.
@@ -1367,7 +1333,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public AddLdapClusterAdminResult addLdapClusterAdmin(final AddLdapClusterAdminRequest request) {
+    public AddLdapClusterAdminResult addLdapClusterAdmin(final AddLdapClusterAdminRequest request) { 
         return super.sendRequest("AddLdapClusterAdmin", request, AddLdapClusterAdminRequest.class, AddLdapClusterAdminResult.class);
     }
 
@@ -1388,12 +1354,21 @@ public class SolidFireElement
         return this.addLdapClusterAdmin(new AddLdapClusterAdminRequest(username, access, acceptEula, attributes));
     }
     /** 
+     * The DisableLdapAuthentication method is used disable LDAP authentication and remove all LDAP configuration settings. This call will not remove any configured cluster admin accounts (user or group). However, those cluster admin accounts will no longer be able to log in.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public DisableLdapAuthenticationResult disableLdapAuthentication() {
+        return super.sendRequest("DisableLdapAuthentication", null, null, DisableLdapAuthenticationResult.class);
+    }
+    /** 
      * The EnableLdapAuthentication method is used to configure an LDAP server connection to use for LDAP authentication to a SolidFire cluster. Users that are members on the LDAP server can then log in to a SolidFire storage system using their LDAP authentication userid and password.
      **/
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public EnableLdapAuthenticationResult enableLdapAuthentication(final EnableLdapAuthenticationRequest request) {
+    public EnableLdapAuthenticationResult enableLdapAuthentication(final EnableLdapAuthenticationRequest request) { 
         return super.sendRequest("EnableLdapAuthentication", request, EnableLdapAuthenticationRequest.class, EnableLdapAuthenticationResult.class);
     }
 
@@ -1416,6 +1391,38 @@ public class SolidFireElement
         Optional<String> userSearchFilter
         ) {
         return this.enableLdapAuthentication(new EnableLdapAuthenticationRequest(authType, groupSearchBaseDN, groupSearchCustomFilter, groupSearchType, searchBindDN, searchBindPassword, serverURIs, userDNTemplate, userSearchBaseDN, userSearchFilter));
+    }
+    /** 
+     * The GetLdapConfiguration is used to get the LDAP configuration currently active on the cluster.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public GetLdapConfigurationResult getLdapConfiguration() {
+        return super.sendRequest("GetLdapConfiguration", null, null, GetLdapConfigurationResult.class);
+    }
+    /** 
+     * The TestLdapAuthentication is used to verify the currently enabled LDAP authentication configuration settings are correct. If the configuration settings are correct, the API call returns a list of the groups the tested user is a member of.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public TestLdapAuthenticationResult testLdapAuthentication(final TestLdapAuthenticationRequest request) { 
+        return super.sendRequest("TestLdapAuthentication", request, TestLdapAuthenticationRequest.class, TestLdapAuthenticationResult.class);
+    }
+
+    /** 
+     * The TestLdapAuthentication is used to verify the currently enabled LDAP authentication configuration settings are correct. If the configuration settings are correct, the API call returns a list of the groups the tested user is a member of.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public TestLdapAuthenticationResult testLdapAuthentication(
+        String username,
+        String password,
+        Optional<LdapConfiguration> ldapConfiguration
+        ) {
+        return this.testLdapAuthentication(new TestLdapAuthenticationRequest(username, password, ldapConfiguration));
     }
     /** 
      * GetLoginSessionInfo is used to return the period of time a log in authentication is valid for both log in shells and the TUI.
@@ -1441,7 +1448,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public SetLoginSessionInfoResult setLoginSessionInfo(final SetLoginSessionInfoRequest request) {
+    public SetLoginSessionInfoResult setLoginSessionInfo(final SetLoginSessionInfoRequest request) { 
         return super.sendRequest("SetLoginSessionInfo", request, SetLoginSessionInfoRequest.class, SetLoginSessionInfoResult.class);
     }
 
@@ -1462,7 +1469,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public SetRemoteLoggingHostsResult setRemoteLoggingHosts(final SetRemoteLoggingHostsRequest request) {
+    public SetRemoteLoggingHostsResult setRemoteLoggingHosts(final SetRemoteLoggingHostsRequest request) { 
         return super.sendRequest("SetRemoteLoggingHosts", request, SetRemoteLoggingHostsRequest.class, SetRemoteLoggingHostsResult.class);
     }
 
@@ -1523,12 +1530,80 @@ public class SolidFireElement
         return super.sendRequest("ListNodeFibreChannelPortInfo", null, null, ListNodeFibreChannelPortInfoResult.class);
     }
     /** 
+     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
+     * 
+     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
+     * 
+     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
+     * 
+     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
+     * 
+     * Note: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public AddNodesResult addNodes(final AddNodesRequest request) { 
+        return super.sendRequest("AddNodes", request, AddNodesRequest.class, AddNodesResult.class);
+    }
+
+    /** 
+     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
+     * 
+     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
+     * 
+     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
+     * 
+     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
+     * 
+     * Note: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public AddNodesResult addNodes(
+        Long[] pendingNodes
+        ) {
+        return this.addNodes(new AddNodesRequest(pendingNodes));
+    }
+    /** 
+     * GetBootstrapConfig returns the cluster name and node name from the bootstrap configuration file. This API method should be performed on an individual node before it has been configured into a cluster. The resulting information from this method is used in the Cluster Configuration UI when the cluster is eventually created.
+     **/
+    @Override
+    @Since("2")
+    @ConnectionType("Both")
+    public GetBootstrapConfigResult getBootstrapConfig() {
+        return super.sendRequest("GetBootstrapConfig", null, null, GetBootstrapConfigResult.class);
+    }
+    /** 
+     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
+     * 
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public GetConfigResult getConfig() {
+        return super.sendRequest("GetConfig", null, null, GetConfigResult.class);
+    }
+    /** 
+     * The GetNetworkConfig API method is used to display the network configuration information for a node.
+     * 
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public GetNetworkConfigResult getNetworkConfig() {
+        return super.sendRequest("GetNetworkConfig", null, null, GetNetworkConfigResult.class);
+    }
+    /** 
      * GetNodeStats is used to return the high-level activity measurements for a single node.
      **/
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request) {
+    public GetNodeStatsResult getNodeStats(final GetNodeStatsRequest request) { 
         // Adaptor
         return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(this, request);
     }
@@ -1550,7 +1625,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public GetOriginResult getOrigin(final GetOriginRequest request) {
+    public GetOriginResult getOrigin(final GetOriginRequest request) { 
         return super.sendRequest("GetOrigin", request, GetOriginRequest.class, GetOriginResult.class);
     }
 
@@ -1564,6 +1639,17 @@ public class SolidFireElement
         Boolean force
         ) {
         return this.getOrigin(new GetOriginRequest(force));
+    }
+    /** 
+     * GetPendingOperation is used to detect an operation on a node that is currently in progress. This method can also be used to report back when an operation has completed.
+     * 
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public GetPendingOperationResult getPendingOperation() {
+        return super.sendRequest("GetPendingOperation", null, null, GetPendingOperationResult.class);
     }
     /** 
      * ListActiveNodes returns the list of currently active nodes that are in the cluster.
@@ -1612,85 +1698,6 @@ public class SolidFireElement
         return super.sendRequest("ListPendingNodes", null, null, ListPendingNodesResult.class);
     }
     /** 
-     * GetBootstrapConfig returns the cluster name and node name from the bootstrap configuration file. This API method should be performed on an individual node before it has been configured into a cluster. The resulting information from this method is used in the Cluster Configuration UI when the cluster is eventually created.
-     **/
-    @Override
-    @Since("2")
-    @ConnectionType("Both")
-    public GetBootstrapConfigResult getBootstrapConfig() {
-        return super.sendRequest("GetBootstrapConfig", null, null, GetBootstrapConfigResult.class);
-    }
-    /** 
-     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
-     * 
-     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
-     * 
-     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
-     * 
-     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
-     * 
-     * Note: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AddNodesResult addNodes(final AddNodesRequest request) {
-        return super.sendRequest("AddNodes", request, AddNodesRequest.class, AddNodesResult.class);
-    }
-
-    /** 
-     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
-     * 
-     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
-     * 
-     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
-     * 
-     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
-     * 
-     * Note: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AddNodesResult addNodes(
-        Long[] pendingNodes
-        ) {
-        return this.addNodes(new AddNodesRequest(pendingNodes));
-    }
-    /** 
-     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
-     * 
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public GetConfigResult getConfig() {
-        return super.sendRequest("GetConfig", null, null, GetConfigResult.class);
-    }
-    /** 
-     * The GetNetworkConfig API method is used to display the network configuration information for a node.
-     * 
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public GetNetworkConfigResult getNetworkConfig() {
-        return super.sendRequest("GetNetworkConfig", null, null, GetNetworkConfigResult.class);
-    }
-    /** 
-     * GetPendingOperation is used to detect an operation on a node that is currently in progress. This method can also be used to report back when an operation has completed.
-     * 
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public GetPendingOperationResult getPendingOperation() {
-        return super.sendRequest("GetPendingOperation", null, null, GetPendingOperationResult.class);
-    }
-    /** 
      * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
      * 
      * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
@@ -1698,7 +1705,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public RemoveNodesResult removeNodes(final RemoveNodesRequest request) {
+    public RemoveNodesResult removeNodes(final RemoveNodesRequest request) { 
         return super.sendRequest("RemoveNodes", request, RemoveNodesRequest.class, RemoveNodesResult.class);
     }
 
@@ -1725,7 +1732,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public SetConfigResult setConfig(final SetConfigRequest request) {
+    public SetConfigResult setConfig(final SetConfigRequest request) { 
         return super.sendRequest("SetConfig", request, SetConfigRequest.class, SetConfigResult.class);
     }
 
@@ -1754,7 +1761,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public SetNetworkConfigResult setNetworkConfig(final SetNetworkConfigRequest request) {
+    public SetNetworkConfigResult setNetworkConfig(final SetNetworkConfigRequest request) { 
         return super.sendRequest("SetNetworkConfig", request, SetNetworkConfigRequest.class, SetNetworkConfigResult.class);
     }
 
@@ -1780,7 +1787,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public CompleteClusterPairingResult completeClusterPairing(final CompleteClusterPairingRequest request) {
+    public CompleteClusterPairingResult completeClusterPairing(final CompleteClusterPairingRequest request) { 
         return super.sendRequest("CompleteClusterPairing", request, CompleteClusterPairingRequest.class, CompleteClusterPairingResult.class);
     }
 
@@ -1802,7 +1809,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public CompleteVolumePairingResult completeVolumePairing(final CompleteVolumePairingRequest request) {
+    public CompleteVolumePairingResult completeVolumePairing(final CompleteVolumePairingRequest request) { 
         return super.sendRequest("CompleteVolumePairing", request, CompleteVolumePairingRequest.class, CompleteVolumePairingResult.class);
     }
 
@@ -1839,6 +1846,52 @@ public class SolidFireElement
         return super.sendRequest("ListClusterPairs", null, null, ListClusterPairsResult.class);
     }
     /** 
+     * ModifyVolumePair is used to pause or restart replication between a pair of volumes.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ModifyVolumePairResult modifyVolumePair(final ModifyVolumePairRequest request) { 
+        return super.sendRequest("ModifyVolumePair", request, ModifyVolumePairRequest.class, ModifyVolumePairResult.class);
+    }
+
+    /** 
+     * ModifyVolumePair is used to pause or restart replication between a pair of volumes.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ModifyVolumePairResult modifyVolumePair(
+        Long volumeID,
+        Optional<Boolean> pausedManual,
+        Optional<String> mode
+        ) {
+        return this.modifyVolumePair(new ModifyVolumePairRequest(volumeID, pausedManual, mode));
+    }
+    /** 
+     * You can use the RemoveClusterPair method to close the open connections between two paired clusters.
+     * Note: Before you remove a cluster pair, you must first remove all volume pairing to the clusters with the "RemoveVolumePair" API method.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public RemoveClusterPairResult removeClusterPair(final RemoveClusterPairRequest request) { 
+        return super.sendRequest("RemoveClusterPair", request, RemoveClusterPairRequest.class, RemoveClusterPairResult.class);
+    }
+
+    /** 
+     * You can use the RemoveClusterPair method to close the open connections between two paired clusters.
+     * Note: Before you remove a cluster pair, you must first remove all volume pairing to the clusters with the "RemoveVolumePair" API method.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public RemoveClusterPairResult removeClusterPair(
+        Long clusterPairID
+        ) {
+        return this.removeClusterPair(new RemoveClusterPairRequest(clusterPairID));
+    }
+    /** 
      * RemoveVolumePair is used to remove the remote pairing between two volumes.
      * When the volume pairing information is removed, data is no longer replicated to or from the volume.
      * This method should be run on both the source and target volumes that are paired together.
@@ -1846,7 +1899,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public RemoveVolumePairResult removeVolumePair(final RemoveVolumePairRequest request) {
+    public RemoveVolumePairResult removeVolumePair(final RemoveVolumePairRequest request) { 
         return super.sendRequest("RemoveVolumePair", request, RemoveVolumePairRequest.class, RemoveVolumePairResult.class);
     }
 
@@ -1875,59 +1928,16 @@ public class SolidFireElement
         return super.sendRequest("StartClusterPairing", null, null, StartClusterPairingResult.class);
     }
     /** 
-     * ModifyVolumePair is used to pause or restart replication between a pair of volumes.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ModifyVolumePairResult modifyVolumePair(final ModifyVolumePairRequest request) {
-        return super.sendRequest("ModifyVolumePair", request, ModifyVolumePairRequest.class, ModifyVolumePairResult.class);
-    }
-
-    /** 
-     * ModifyVolumePair is used to pause or restart replication between a pair of volumes.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ModifyVolumePairResult modifyVolumePair(
-        Long volumeID,
-        Optional<Boolean> pausedManual,
-        Optional<String> mode
-        ) {
-        return this.modifyVolumePair(new ModifyVolumePairRequest(volumeID, pausedManual, mode));
-    }
-    /** 
-     * You can use the RemoveClusterPair method to close the open connections between two paired clusters.
-     * Note: Before you remove a cluster pair, you must first remove all volume pairing to the clusters with the "RemoveVolumePair" API method.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public RemoveClusterPairResult removeClusterPair(final RemoveClusterPairRequest request) {
-        return super.sendRequest("RemoveClusterPair", request, RemoveClusterPairRequest.class, RemoveClusterPairResult.class);
-    }
-
-    /** 
-     * You can use the RemoveClusterPair method to close the open connections between two paired clusters.
-     * Note: Before you remove a cluster pair, you must first remove all volume pairing to the clusters with the "RemoveVolumePair" API method.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public RemoveClusterPairResult removeClusterPair(
-        Long clusterPairID
-        ) {
-        return this.removeClusterPair(new RemoveClusterPairRequest(clusterPairID));
-    }
-    /** 
      * StartVolumePairing is used to create an encoded key from a volume that is used to pair with another volume.
      * The key that this method creates is used in the "CompleteVolumePairing" API method to establish a volume pairing.
      **/
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public StartVolumePairingResult startVolumePairing(final StartVolumePairingRequest request) {
+    public StartVolumePairingResult startVolumePairing(final StartVolumePairingRequest request) { 
+        if(request.getMode() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
+            throw new ApiException("mode is not applicable to this version of the API.");
+        }
         return super.sendRequest("StartVolumePairing", request, StartVolumePairingRequest.class, StartVolumePairingResult.class);
     }
 
@@ -1952,7 +1962,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListProtocolEndpointsResult listProtocolEndpoints(final ListProtocolEndpointsRequest request) {
+    public ListProtocolEndpointsResult listProtocolEndpoints(final ListProtocolEndpointsRequest request) { 
         return super.sendRequest("ListProtocolEndpoints", request, ListProtocolEndpointsRequest.class, ListProtocolEndpointsResult.class);
     }
 
@@ -1975,7 +1985,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ResetNodeResult resetNode(final ResetNodeRequest request) {
+    public ResetNodeResult resetNode(final ResetNodeRequest request) { 
         return super.sendRequest("ResetNode", request, ResetNodeRequest.class, ResetNodeResult.class);
     }
 
@@ -1999,7 +2009,7 @@ public class SolidFireElement
     @Since("5")
     @ConnectionType("Node")
     @SuppressWarnings("unchecked")
-    public java.util.Map<String, Object> restartNetworking(final RestartNetworkingRequest request) {
+    public java.util.Map<String, Object> restartNetworking(final RestartNetworkingRequest request) { 
         return super.sendRequest("RestartNetworking", request, RestartNetworkingRequest.class, java.util.Map.class);
     }
 
@@ -2021,7 +2031,7 @@ public class SolidFireElement
     @Since("5")
     @ConnectionType("Node")
     @SuppressWarnings("unchecked")
-    public java.util.Map<String, Object> restartServices(final RestartServicesRequest request) {
+    public java.util.Map<String, Object> restartServices(final RestartServicesRequest request) { 
         return super.sendRequest("RestartServices", request, RestartServicesRequest.class, java.util.Map.class);
     }
 
@@ -2044,7 +2054,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ShutdownResult shutdown(final ShutdownRequest request) {
+    public ShutdownResult shutdown(final ShutdownRequest request) { 
         return super.sendRequest("Shutdown", request, ShutdownRequest.class, ShutdownResult.class);
     }
 
@@ -2061,6 +2071,49 @@ public class SolidFireElement
         return this.shutdown(new ShutdownRequest(nodes, option));
     }
     /** 
+     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request) { 
+        return super.sendRequest("GetIpmiConfig", request, GetIpmiConfigRequest.class, GetIpmiConfigResult.class);
+    }
+
+    /** 
+     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetIpmiConfigResult getIpmiConfig(
+        Optional<String> chassisType,
+        Boolean force
+        ) {
+        return this.getIpmiConfig(new GetIpmiConfigRequest(chassisType, force));
+    }
+    /** 
+     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request) { 
+        return super.sendRequest("GetIpmiInfo", request, GetIpmiInfoRequest.class, GetIpmiInfoResult.class);
+    }
+
+    /** 
+     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetIpmiInfoResult getIpmiInfo(
+        Boolean force
+        ) {
+        return this.getIpmiInfo(new GetIpmiInfoRequest(force));
+    }
+    /** 
      * List the services in the cluster.
      **/
     @Override
@@ -2070,105 +2123,29 @@ public class SolidFireElement
         return super.sendRequest("ListServices", null, null, ListServicesResult.class);
     }
     /** 
-     * DeleteSnapshot is used to delete a snapshot.
-     * A snapshot that is currently the "active" snapshot cannot be deleted.
-     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
-     * To rollback a snapshot, use RollbackToSnapshot.
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
      **/
     @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public DeleteSnapshotResult deleteSnapshot(final DeleteSnapshotRequest request) {
-        return super.sendRequest("DeleteSnapshot", request, DeleteSnapshotRequest.class, DeleteSnapshotResult.class);
-    }
-
-    /** 
-     * DeleteSnapshot is used to delete a snapshot.
-     * A snapshot that is currently the "active" snapshot cannot be deleted.
-     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
-     * To rollback a snapshot, use RollbackToSnapshot.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public DeleteSnapshotResult deleteSnapshot(
-        Long snapshotID
-        ) {
-        return this.deleteSnapshot(new DeleteSnapshotRequest(snapshotID));
-    }
-    /** 
-     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
-     **/
-    @Override
-    @Since("8")
-    @ConnectionType("Cluster")
-    public GetScheduleResult getSchedule(final GetScheduleRequest request) {
+    @Since("1.0")
+    @ConnectionType("Both")
+    public Object invokeSFApi(final InvokeSFApiRequest request) { 
         // Adaptor
-        return com.solidfire.adaptor.ElementServiceAdaptor.getSchedule(this, request);
+        return com.solidfire.adaptor.ElementServiceAdaptor.invokeSFApi(this, request);
     }
 
     /** 
-     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
      **/
     @Override
-    @Since("8")
-    @ConnectionType("Cluster")
-    public GetScheduleResult getSchedule(
-        Long scheduleID
+    @Since("1.0")
+    @ConnectionType("Both")
+    public Object invokeSFApi(
+        String method,
+        Optional<java.util.Map<String, Object>> parameters
         ) {
-        return this.getSchedule(new GetScheduleRequest(scheduleID));
-    }
-    /** 
-     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public ListGroupSnapshotsResult listGroupSnapshots(final ListGroupSnapshotsRequest request) {
-        return super.sendRequest("ListGroupSnapshots", request, ListGroupSnapshotsRequest.class, ListGroupSnapshotsResult.class);
-    }
-
-    /** 
-     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public ListGroupSnapshotsResult listGroupSnapshots(
-        Optional<Long> volumeID
-        ) {
-        return this.listGroupSnapshots(new ListGroupSnapshotsRequest(volumeID));
-    }
-    /** 
-     * ListSchedule is used to return information about all scheduled snapshots that have been created.
-     **/
-    @Override
-    @Since("8")
-    @ConnectionType("Cluster")
-    public ListSchedulesResult listSchedules() {
-        // Adaptor
-        return com.solidfire.adaptor.ElementServiceAdaptor.listSchedules(this);
-    }
-    /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request) {
-        return super.sendRequest("ListSnapshots", request, ListSnapshotsRequest.class, ListSnapshotsResult.class);
-    }
-
-    /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(
-        Optional<Long> volumeID
-        ) {
-        return this.listSnapshots(new ListSnapshotsRequest(volumeID));
+        return this.invokeSFApi(new InvokeSFApiRequest(method, parameters));
     }
     /** 
      * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
@@ -2180,7 +2157,13 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult createGroupSnapshot(final CreateGroupSnapshotRequest request) {
+    public CreateGroupSnapshotResult createGroupSnapshot(final CreateGroupSnapshotRequest request) { 
+        if(request.getEnableRemoteReplication() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
+            throw new ApiException("enableRemoteReplication is not applicable to this version of the API.");
+        }
+        if(request.getRetention() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
+            throw new ApiException("retention is not applicable to this version of the API.");
+        }
         return super.sendRequest("CreateGroupSnapshot", request, CreateGroupSnapshotRequest.class, CreateGroupSnapshotResult.class);
     }
 
@@ -2213,7 +2196,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public CreateScheduleResult createSchedule(final CreateScheduleRequest request) {
+    public CreateScheduleResult createSchedule(final CreateScheduleRequest request) { 
         // Adaptor
         return com.solidfire.adaptor.ElementServiceAdaptor.createSchedule(this, request);
     }
@@ -2243,7 +2226,13 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public CreateSnapshotResult createSnapshot(final CreateSnapshotRequest request) {
+    public CreateSnapshotResult createSnapshot(final CreateSnapshotRequest request) { 
+        if(request.getEnableRemoteReplication() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
+            throw new ApiException("enableRemoteReplication is not applicable to this version of the API.");
+        }
+        if(request.getRetention() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
+            throw new ApiException("retention is not applicable to this version of the API.");
+        }
         return super.sendRequest("CreateSnapshot", request, CreateSnapshotRequest.class, CreateSnapshotResult.class);
     }
 
@@ -2275,7 +2264,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public DeleteGroupSnapshotResult deleteGroupSnapshot(final DeleteGroupSnapshotRequest request) {
+    public DeleteGroupSnapshotResult deleteGroupSnapshot(final DeleteGroupSnapshotRequest request) { 
         return super.sendRequest("DeleteGroupSnapshot", request, DeleteGroupSnapshotRequest.class, DeleteGroupSnapshotResult.class);
     }
 
@@ -2294,12 +2283,113 @@ public class SolidFireElement
         return this.deleteGroupSnapshot(new DeleteGroupSnapshotRequest(groupSnapshotID, saveMembers));
     }
     /** 
+     * DeleteSnapshot is used to delete a snapshot.
+     * A snapshot that is currently the "active" snapshot cannot be deleted.
+     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
+     * To rollback a snapshot, use RollbackToSnapshot.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public DeleteSnapshotResult deleteSnapshot(final DeleteSnapshotRequest request) { 
+        return super.sendRequest("DeleteSnapshot", request, DeleteSnapshotRequest.class, DeleteSnapshotResult.class);
+    }
+
+    /** 
+     * DeleteSnapshot is used to delete a snapshot.
+     * A snapshot that is currently the "active" snapshot cannot be deleted.
+     * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
+     * To rollback a snapshot, use RollbackToSnapshot.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public DeleteSnapshotResult deleteSnapshot(
+        Long snapshotID
+        ) {
+        return this.deleteSnapshot(new DeleteSnapshotRequest(snapshotID));
+    }
+    /** 
+     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
+     **/
+    @Override
+    @Since("8")
+    @ConnectionType("Cluster")
+    public GetScheduleResult getSchedule(final GetScheduleRequest request) { 
+        // Adaptor
+        return com.solidfire.adaptor.ElementServiceAdaptor.getSchedule(this, request);
+    }
+
+    /** 
+     * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
+     **/
+    @Override
+    @Since("8")
+    @ConnectionType("Cluster")
+    public GetScheduleResult getSchedule(
+        Long scheduleID
+        ) {
+        return this.getSchedule(new GetScheduleRequest(scheduleID));
+    }
+    /** 
+     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public ListGroupSnapshotsResult listGroupSnapshots(final ListGroupSnapshotsRequest request) { 
+        return super.sendRequest("ListGroupSnapshots", request, ListGroupSnapshotsRequest.class, ListGroupSnapshotsResult.class);
+    }
+
+    /** 
+     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public ListGroupSnapshotsResult listGroupSnapshots(
+        Optional<Long> volumeID
+        ) {
+        return this.listGroupSnapshots(new ListGroupSnapshotsRequest(volumeID));
+    }
+    /** 
+     * ListSchedule is used to return information about all scheduled snapshots that have been created.
+     **/
+    @Override
+    @Since("8")
+    @ConnectionType("Cluster")
+    public ListSchedulesResult listSchedules() {
+        // Adaptor
+        return com.solidfire.adaptor.ElementServiceAdaptor.listSchedules(this);
+    }
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request) { 
+        return super.sendRequest("ListSnapshots", request, ListSnapshotsRequest.class, ListSnapshotsResult.class);
+    }
+
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(
+        Optional<Long> volumeID
+        ) {
+        return this.listSnapshots(new ListSnapshotsRequest(volumeID));
+    }
+    /** 
      * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
      **/
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public ModifyGroupSnapshotResult modifyGroupSnapshot(final ModifyGroupSnapshotRequest request) {
+    public ModifyGroupSnapshotResult modifyGroupSnapshot(final ModifyGroupSnapshotRequest request) { 
         return super.sendRequest("ModifyGroupSnapshot", request, ModifyGroupSnapshotRequest.class, ModifyGroupSnapshotResult.class);
     }
 
@@ -2322,7 +2412,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request) {
+    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request) { 
         // Adaptor
         return com.solidfire.adaptor.ElementServiceAdaptor.modifySchedule(this, request);
     }
@@ -2345,7 +2435,7 @@ public class SolidFireElement
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public ModifySnapshotResult modifySnapshot(final ModifySnapshotRequest request) {
+    public ModifySnapshotResult modifySnapshot(final ModifySnapshotRequest request) { 
         return super.sendRequest("ModifySnapshot", request, ModifySnapshotRequest.class, ModifySnapshotResult.class);
     }
 
@@ -2372,7 +2462,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request) {
+    public CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request) { 
         return super.sendRequest("RollbackToGroupSnapshot", request, RollbackToGroupSnapshotRequest.class, CreateGroupSnapshotResult.class);
     }
 
@@ -2404,7 +2494,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public CreateSnapshotResult rollbackToSnapshot(final RollbackToSnapshotRequest request) {
+    public CreateSnapshotResult rollbackToSnapshot(final RollbackToSnapshotRequest request) { 
         return super.sendRequest("RollbackToSnapshot", request, RollbackToSnapshotRequest.class, CreateSnapshotResult.class);
     }
 
@@ -2463,7 +2553,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request) {
+    public ListDriveStatsResult listDriveStats(final ListDriveStatsRequest request) { 
         return super.sendRequest("ListDriveStats", request, ListDriveStatsRequest.class, ListDriveStatsResult.class);
     }
 
@@ -2483,7 +2573,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request) {
+    public ListVolumeStatsResult listVolumeStats(final ListVolumeStatsRequest request) { 
         return super.sendRequest("ListVolumeStats", request, ListVolumeStatsRequest.class, ListVolumeStatsResult.class);
     }
 
@@ -2503,7 +2593,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request) {
+    public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(final ListVolumeStatsByVirtualVolumeRequest request) { 
         return super.sendRequest("ListVolumeStatsByVirtualVolume", request, ListVolumeStatsByVirtualVolumeRequest.class, ListVolumeStatsByVirtualVolumeResult.class);
     }
 
@@ -2524,7 +2614,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public CreateStorageContainerResult createStorageContainer(final CreateStorageContainerRequest request) {
+    public CreateStorageContainerResult createStorageContainer(final CreateStorageContainerRequest request) { 
         return super.sendRequest("CreateStorageContainer", request, CreateStorageContainerRequest.class, CreateStorageContainerResult.class);
     }
 
@@ -2547,7 +2637,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public DeleteStorageContainerResult deleteStorageContainers(final DeleteStorageContainersRequest request) {
+    public DeleteStorageContainerResult deleteStorageContainers(final DeleteStorageContainersRequest request) { 
         return super.sendRequest("DeleteStorageContainers", request, DeleteStorageContainersRequest.class, DeleteStorageContainerResult.class);
     }
 
@@ -2568,7 +2658,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(final GetStorageContainerEfficiencyRequest request) {
+    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(final GetStorageContainerEfficiencyRequest request) { 
         return super.sendRequest("GetStorageContainerEfficiency", request, GetStorageContainerEfficiencyRequest.class, GetStorageContainerEfficiencyResult.class);
     }
 
@@ -2589,7 +2679,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListStorageContainersResult listStorageContainers(final ListStorageContainersRequest request) {
+    public ListStorageContainersResult listStorageContainers(final ListStorageContainersRequest request) { 
         return super.sendRequest("ListStorageContainers", request, ListStorageContainersRequest.class, ListStorageContainersResult.class);
     }
 
@@ -2610,7 +2700,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ModifyStorageContainerResult modifyStorageContainer(final ModifyStorageContainerRequest request) {
+    public ModifyStorageContainerResult modifyStorageContainer(final ModifyStorageContainerRequest request) { 
         return super.sendRequest("ModifyStorageContainer", request, ModifyStorageContainerRequest.class, ModifyStorageContainerResult.class);
     }
 
@@ -2654,7 +2744,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public TestConnectEnsembleResult testConnectEnsemble(final TestConnectEnsembleRequest request) {
+    public TestConnectEnsembleResult testConnectEnsemble(final TestConnectEnsembleRequest request) { 
         return super.sendRequest("TestConnectEnsemble", request, TestConnectEnsembleRequest.class, TestConnectEnsembleResult.class);
     }
 
@@ -2677,7 +2767,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public TestConnectMvipResult testConnectMvip(final TestConnectMvipRequest request) {
+    public TestConnectMvipResult testConnectMvip(final TestConnectMvipRequest request) { 
         return super.sendRequest("TestConnectMvip", request, TestConnectMvipRequest.class, TestConnectMvipResult.class);
     }
 
@@ -2700,7 +2790,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public TestConnectSvipResult testConnectSvip(final TestConnectSvipRequest request) {
+    public TestConnectSvipResult testConnectSvip(final TestConnectSvipRequest request) { 
         return super.sendRequest("TestConnectSvip", request, TestConnectSvipRequest.class, TestConnectSvipResult.class);
     }
 
@@ -2723,7 +2813,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Node")
-    public TestPingResult testPing(final TestPingRequest request) {
+    public TestPingResult testPing(final TestPingRequest request) { 
         return super.sendRequest("TestPing", request, TestPingRequest.class, TestPingResult.class);
     }
 
@@ -2744,34 +2834,6 @@ public class SolidFireElement
         return this.testPing(new TestPingRequest(attempts, hosts, totalTimeoutSec, packetSize, pingTimeoutMsec));
     }
     /** 
-     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
-     * 
-     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public ListVirtualNetworksResult listVirtualNetworks(final ListVirtualNetworksRequest request) {
-        return super.sendRequest("ListVirtualNetworks", request, ListVirtualNetworksRequest.class, ListVirtualNetworksResult.class);
-    }
-
-    /** 
-     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
-     * 
-     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public ListVirtualNetworksResult listVirtualNetworks(
-        Optional<Long> virtualNetworkID,
-        Optional<Long> virtualNetworkTag,
-        Optional<Long[]> virtualNetworkIDs,
-        Optional<Long[]> virtualNetworkTags
-        ) {
-        return this.listVirtualNetworks(new ListVirtualNetworksRequest(virtualNetworkID, virtualNetworkTag, virtualNetworkIDs, virtualNetworkTags));
-    }
-    /** 
      * AddVirtualNetwork is used to add a new virtual network to a cluster configuration. When a virtual network is added, an interface for each node is created and each will require a virtual network IP address. The number of IP addresses specified as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. Virtual network addresses are bulk provisioned by SolidFire and assigned to individual nodes automatically. Virtual network addresses do not need to be assigned to nodes manually.
      * 
      * Note: The AddVirtualNetwork method is used only to create a new virtual network. If you want to make changes to a virtual network, please use the ModifyVirtualNetwork method.
@@ -2779,7 +2841,13 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public AddVirtualNetworkResult addVirtualNetwork(final AddVirtualNetworkRequest request) {
+    public AddVirtualNetworkResult addVirtualNetwork(final AddVirtualNetworkRequest request) { 
+        if(request.getGateway() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("gateway is not applicable to this version of the API.");
+        }
+        if(request.getNamespace() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("namespace is not applicable to this version of the API.");
+        }
         return super.sendRequest("AddVirtualNetwork", request, AddVirtualNetworkRequest.class, AddVirtualNetworkResult.class);
     }
 
@@ -2804,6 +2872,34 @@ public class SolidFireElement
         return this.addVirtualNetwork(new AddVirtualNetworkRequest(virtualNetworkTag, name, addressBlocks, netmask, svip, gateway, namespace, attributes));
     }
     /** 
+     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
+     * 
+     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public ListVirtualNetworksResult listVirtualNetworks(final ListVirtualNetworksRequest request) { 
+        return super.sendRequest("ListVirtualNetworks", request, ListVirtualNetworksRequest.class, ListVirtualNetworksResult.class);
+    }
+
+    /** 
+     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
+     * 
+     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public ListVirtualNetworksResult listVirtualNetworks(
+        Optional<Long> virtualNetworkID,
+        Optional<Long> virtualNetworkTag,
+        Optional<Long[]> virtualNetworkIDs,
+        Optional<Long[]> virtualNetworkTags
+        ) {
+        return this.listVirtualNetworks(new ListVirtualNetworksRequest(virtualNetworkID, virtualNetworkTag, virtualNetworkIDs, virtualNetworkTags));
+    }
+    /** 
      * ModifyVirtualNetwork is used to change various attributes of a VirtualNetwork object. This method can be used to add or remove address blocks, change the netmask IP, or modify the name or description of the virtual network.
      * 
      * Note: This method requires either the VirtualNetworkID or the VirtualNetworkTag as a parameter, but not both.
@@ -2811,7 +2907,13 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public AddVirtualNetworkResult modifyVirtualNetwork(final ModifyVirtualNetworkRequest request) {
+    public AddVirtualNetworkResult modifyVirtualNetwork(final ModifyVirtualNetworkRequest request) { 
+        if(request.getGateway() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("gateway is not applicable to this version of the API.");
+        }
+        if(request.getNamespace() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("namespace is not applicable to this version of the API.");
+        }
         return super.sendRequest("ModifyVirtualNetwork", request, ModifyVirtualNetworkRequest.class, AddVirtualNetworkResult.class);
     }
 
@@ -2844,7 +2946,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public RemoveVirtualNetworkResult removeVirtualNetwork(final RemoveVirtualNetworkRequest request) {
+    public RemoveVirtualNetworkResult removeVirtualNetwork(final RemoveVirtualNetworkRequest request) { 
         return super.sendRequest("RemoveVirtualNetwork", request, RemoveVirtualNetworkRequest.class, RemoveVirtualNetworkResult.class);
     }
 
@@ -2863,6 +2965,74 @@ public class SolidFireElement
         return this.removeVirtualNetwork(new RemoveVirtualNetworkRequest(virtualNetworkID, virtualNetworkTag));
     }
     /** 
+     * CreateVirtualVolumeHost creates a new ESX host.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request) { 
+        return super.sendRequest("CreateVirtualVolumeHost", request, CreateVirtualVolumeHostRequest.class, VirtualVolumeNullResult.class);
+    }
+
+    /** 
+     * CreateVirtualVolumeHost creates a new ESX host.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult createVirtualVolumeHost(
+        java.util.UUID virtualVolumeHostID,
+        java.util.UUID clusterID,
+        Optional<String[]> initiatorNames,
+        Optional<java.util.UUID[]> visibleProtocolEndpointIDs,
+        Optional<String> hostAddress,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.createVirtualVolumeHost(new CreateVirtualVolumeHostRequest(virtualVolumeHostID, clusterID, initiatorNames, visibleProtocolEndpointIDs, hostAddress, callingVirtualVolumeHostID));
+    }
+    /** 
+     * EnableFeature allows you to enable cluster features that are disabled by default.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public EnableFeatureResult enableFeature(final EnableFeatureRequest request) { 
+        return super.sendRequest("EnableFeature", request, EnableFeatureRequest.class, EnableFeatureResult.class);
+    }
+
+    /** 
+     * EnableFeature allows you to enable cluster features that are disabled by default.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public EnableFeatureResult enableFeature(
+        String feature
+        ) {
+        return this.enableFeature(new EnableFeatureRequest(feature));
+    }
+    /** 
+     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetFeatureStatusResult getFeatureStatus(final GetFeatureStatusRequest request) { 
+        return super.sendRequest("GetFeatureStatus", request, GetFeatureStatusRequest.class, GetFeatureStatusResult.class);
+    }
+
+    /** 
+     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetFeatureStatusResult getFeatureStatus(
+        Optional<String> feature
+        ) {
+        return this.getFeatureStatus(new GetFeatureStatusRequest(feature));
+    }
+    /** 
      * Enables retrieval of the number of virtual volumes currently in the system.
      **/
     @Override
@@ -2877,7 +3047,7 @@ public class SolidFireElement
     @Override
     @Since("9.0")
     @ConnectionType("Cluster")
-    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request) {
+    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request) { 
         return super.sendRequest("GetVirtualVolumeTaskUpdate", request, GetVirtualVolumeTaskUpdateRequest.class, VirtualVolumeTaskResult.class);
     }
 
@@ -2903,7 +3073,7 @@ public class SolidFireElement
     @Override
     @Since("9.0")
     @ConnectionType("Cluster")
-    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request) {
+    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request) { 
         return super.sendRequest("GetVirtualVolumeUnsharedChunks", request, GetVirtualVolumeUnsharedChunksRequest.class, VirtualVolumeUnsharedChunkResult.class);
     }
 
@@ -2933,7 +3103,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(final ListVirtualVolumeBindingsRequest request) {
+    public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(final ListVirtualVolumeBindingsRequest request) { 
         return super.sendRequest("ListVirtualVolumeBindings", request, ListVirtualVolumeBindingsRequest.class, ListVirtualVolumeBindingsResult.class);
     }
 
@@ -2954,7 +3124,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(final ListVirtualVolumeHostsRequest request) {
+    public ListVirtualVolumeHostsResult listVirtualVolumeHosts(final ListVirtualVolumeHostsRequest request) { 
         return super.sendRequest("ListVirtualVolumeHosts", request, ListVirtualVolumeHostsRequest.class, ListVirtualVolumeHostsResult.class);
     }
 
@@ -2970,33 +3140,12 @@ public class SolidFireElement
         return this.listVirtualVolumeHosts(new ListVirtualVolumeHostsRequest(virtualVolumeHostIDs));
     }
     /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request) {
-        return super.sendRequest("ListVirtualVolumeTasks", request, ListVirtualVolumeTasksRequest.class, ListVirtualVolumeTasksResult.class);
-    }
-
-    /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
-        Optional<java.util.UUID[]> virtualVolumeTaskIDs
-        ) {
-        return this.listVirtualVolumeTasks(new ListVirtualVolumeTasksRequest(virtualVolumeTaskIDs));
-    }
-    /** 
      * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
      **/
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListVirtualVolumesResult listVirtualVolumes(final ListVirtualVolumesRequest request) {
+    public ListVirtualVolumesResult listVirtualVolumes(final ListVirtualVolumesRequest request) { 
         return super.sendRequest("ListVirtualVolumes", request, ListVirtualVolumesRequest.class, ListVirtualVolumesResult.class);
     }
 
@@ -3016,12 +3165,33 @@ public class SolidFireElement
         return this.listVirtualVolumes(new ListVirtualVolumesRequest(details, limit, recursive, startVirtualVolumeID, virtualVolumeIDs));
     }
     /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request) { 
+        return super.sendRequest("ListVirtualVolumeTasks", request, ListVirtualVolumeTasksRequest.class, ListVirtualVolumeTasksResult.class);
+    }
+
+    /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
+        Optional<java.util.UUID[]> virtualVolumeTaskIDs
+        ) {
+        return this.listVirtualVolumeTasks(new ListVirtualVolumeTasksRequest(virtualVolumeTaskIDs));
+    }
+    /** 
      * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
      **/
     @Override
     @Since("9.0")
     @ConnectionType("Cluster")
-    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request) {
+    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request) { 
         return super.sendRequest("PrepareVirtualSnapshot", request, PrepareVirtualSnapshotRequest.class, PrepareVirtualSnapshotResult.class);
     }
 
@@ -3040,72 +3210,221 @@ public class SolidFireElement
         return this.prepareVirtualSnapshot(new PrepareVirtualSnapshotRequest(virtualVolumeID, name, writableSnapshot, callingVirtualVolumeHostID));
     }
     /** 
-     * CreateVirtualVolumeHost creates a new ESX host.
+     * Cancels a currently running clone operation. This method does not return anything.
      **/
     @Override
-    @Since("9.0")
+    @Since("9")
     @ConnectionType("Cluster")
-    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request) {
-        return super.sendRequest("CreateVirtualVolumeHost", request, CreateVirtualVolumeHostRequest.class, VirtualVolumeNullResult.class);
+    public CancelCloneResult cancelClone(final CancelCloneRequest request) { 
+        return super.sendRequest("CancelClone", request, CancelCloneRequest.class, CancelCloneResult.class);
     }
 
     /** 
-     * CreateVirtualVolumeHost creates a new ESX host.
-     **/
-    @Override
-    @Since("9.0")
-    @ConnectionType("Cluster")
-    public VirtualVolumeNullResult createVirtualVolumeHost(
-        java.util.UUID virtualVolumeHostID,
-        java.util.UUID clusterID,
-        Optional<String[]> initiatorNames,
-        Optional<java.util.UUID[]> visibleProtocolEndpointIDs,
-        Optional<String> hostAddress,
-        Optional<java.util.UUID> callingVirtualVolumeHostID
-        ) {
-        return this.createVirtualVolumeHost(new CreateVirtualVolumeHostRequest(virtualVolumeHostID, clusterID, initiatorNames, visibleProtocolEndpointIDs, hostAddress, callingVirtualVolumeHostID));
-    }
-    /** 
-     * EnableFeature allows you to enable cluster features that are disabled by default.
+     * Cancels a currently running clone operation. This method does not return anything.
      **/
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public EnableFeatureResult enableFeature(final EnableFeatureRequest request) {
-        return super.sendRequest("EnableFeature", request, EnableFeatureRequest.class, EnableFeatureResult.class);
+    public CancelCloneResult cancelClone(
+        Long cloneID
+        ) {
+        return this.cancelClone(new CancelCloneRequest(cloneID));
+    }
+    /** 
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public CancelGroupCloneResult cancelGroupClone(final CancelGroupCloneRequest request) { 
+        return super.sendRequest("CancelGroupClone", request, CancelGroupCloneRequest.class, CancelGroupCloneResult.class);
     }
 
     /** 
-     * EnableFeature allows you to enable cluster features that are disabled by default.
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
      **/
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public EnableFeatureResult enableFeature(
-        String feature
+    public CancelGroupCloneResult cancelGroupClone(
+        Long groupCloneID
         ) {
-        return this.enableFeature(new EnableFeatureRequest(feature));
+        return this.cancelGroupClone(new CancelGroupCloneRequest(groupCloneID));
     }
     /** 
-     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
+     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
+     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
+     * 
+     * Note: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
      **/
     @Override
-    @Since("9")
+    @Since("7")
     @ConnectionType("Cluster")
-    public GetFeatureStatusResult getFeatureStatus(final GetFeatureStatusRequest request) {
-        return super.sendRequest("GetFeatureStatus", request, GetFeatureStatusRequest.class, GetFeatureStatusResult.class);
+    public CloneMultipleVolumesResult cloneMultipleVolumes(final CloneMultipleVolumesRequest request) { 
+        return super.sendRequest("CloneMultipleVolumes", request, CloneMultipleVolumesRequest.class, CloneMultipleVolumesResult.class);
     }
 
     /** 
-     * GetFeatureStatus allows you to retrieve the status of a cluster feature.
+     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
+     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
+     * 
+     * Note: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public CloneMultipleVolumesResult cloneMultipleVolumes(
+        CloneMultipleVolumeParams[] volumes,
+        Optional<String> access,
+        Optional<Long> groupSnapshotID,
+        Optional<Long> newAccountID
+        ) {
+        return this.cloneMultipleVolumes(new CloneMultipleVolumesRequest(volumes, access, groupSnapshotID, newAccountID));
+    }
+    /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * 
+     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * 
+     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request) { 
+        return super.sendRequest("CloneVolume", request, CloneVolumeRequest.class, CloneVolumeResult.class);
+    }
+
+    /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * 
+     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * 
+     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(
+        Long volumeID,
+        String name,
+        Optional<Long> newAccountID,
+        Optional<Long> newSize,
+        Optional<String> access,
+        Optional<Long> snapshotID,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.cloneVolume(new CloneVolumeRequest(volumeID, name, newAccountID, newSize, access, snapshotID, attributes));
+    }
+    /** 
+     * Copies one volume to another.
      **/
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public GetFeatureStatusResult getFeatureStatus(
-        Optional<String> feature
+    public CopyVolumeResult copyVolume(final CopyVolumeRequest request) { 
+        return super.sendRequest("CopyVolume", request, CopyVolumeRequest.class, CopyVolumeResult.class);
+    }
+
+    /** 
+     * Copies one volume to another.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public CopyVolumeResult copyVolume(
+        Long volumeID,
+        Long dstVolumeID,
+        Optional<Long> snapshotID
         ) {
-        return this.getFeatureStatus(new GetFeatureStatusRequest(feature));
+        return this.copyVolume(new CopyVolumeRequest(volumeID, dstVolumeID, snapshotID));
+    }
+    /** 
+     * CreateVolume is used to create a new (empty) volume on the cluster.
+     * When the volume is created successfully it is available for connection via iSCSI.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(final CreateVolumeRequest request) { 
+        return super.sendRequest("CreateVolume", request, CreateVolumeRequest.class, CreateVolumeResult.class);
+    }
+
+    /** 
+     * CreateVolume is used to create a new (empty) volume on the cluster.
+     * When the volume is created successfully it is available for connection via iSCSI.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(
+        String name,
+        Long accountID,
+        Long totalSize,
+        Boolean enable512e,
+        Optional<QoS> qos,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.createVolume(new CreateVolumeRequest(name, accountID, totalSize, enable512e, qos, attributes));
+    }
+    /** 
+     * DeleteVolume marks an active volume for deletion.
+     * It is purged (permanently deleted) after the cleanup interval elapses.
+     * After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.
+     * It is not returned in target discovery requests.
+     * 
+     * Any snapshots of a volume that has been marked to delete are not affected.
+     * Snapshots are kept until the volume is purged from the system.
+     * 
+     * If a volume is marked for deletion, and it has a bulk volume read or bulk volume write operation in progress, the bulk volume operation is stopped.
+     * 
+     * If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred to it or from it while in a deleted state.
+     * The remote volume the deleted volume was paired with enters into a PausedMisconfigured state and data is no longer sent to it or from the deleted volume.
+     * Until the deleted volume is purged, it can be restored and data transfers resumes.
+     * If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed.
+     * The purged volume becomes permanently unavailable.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public DeleteVolumeResult deleteVolume(final DeleteVolumeRequest request) { 
+        return super.sendRequest("DeleteVolume", request, DeleteVolumeRequest.class, DeleteVolumeResult.class);
+    }
+
+    /** 
+     * DeleteVolume marks an active volume for deletion.
+     * It is purged (permanently deleted) after the cleanup interval elapses.
+     * After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.
+     * It is not returned in target discovery requests.
+     * 
+     * Any snapshots of a volume that has been marked to delete are not affected.
+     * Snapshots are kept until the volume is purged from the system.
+     * 
+     * If a volume is marked for deletion, and it has a bulk volume read or bulk volume write operation in progress, the bulk volume operation is stopped.
+     * 
+     * If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred to it or from it while in a deleted state.
+     * The remote volume the deleted volume was paired with enters into a PausedMisconfigured state and data is no longer sent to it or from the deleted volume.
+     * Until the deleted volume is purged, it can be restored and data transfers resumes.
+     * If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed.
+     * The purged volume becomes permanently unavailable.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public DeleteVolumeResult deleteVolume(
+        Long volumeID
+        ) {
+        return this.deleteVolume(new DeleteVolumeRequest(volumeID));
     }
     /** 
      * DeleteVolumes marks multiple (up to 500) active volumes for deletion. Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.The cleanup interval can be set in the SetClusterSettings method. For more information on using this method, see SetClusterSettings on page 1. After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated and no further connections are allowed while the volumes are in this state. A marked volume is not returned in target discovery requests. Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from the system. If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or write operation is stopped. If the volumes you delete are paired with a volume, replication between the paired volumes is suspended and no data is transferred to them or from them while in a deleted state. The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state and data is no longer sent to them or from the deleted volumes. Until the deleted volumes are purged, they can be restored and data transfers resume. If the deleted volumes are purged from the system, the volumes they were paired with enter into a StoppedMisconfigured state and the volume pairing status is removed. The purged volumes become permanently unavailable.
@@ -3113,7 +3432,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public DeleteVolumesResult deleteVolumes(final DeleteVolumesRequest request) {
+    public DeleteVolumesResult deleteVolumes(final DeleteVolumesRequest request) { 
         return super.sendRequest("DeleteVolumes", request, DeleteVolumesRequest.class, DeleteVolumesResult.class);
     }
 
@@ -3129,6 +3448,43 @@ public class SolidFireElement
         Optional<Long[]> volumeIDs
         ) {
         return this.deleteVolumes(new DeleteVolumesRequest(accountIDs, volumeAccessGroupIDs, volumeIDs));
+    }
+    /** 
+     * Used to retrieve the result of asynchronous method calls.
+     * Some method calls are long running and do not complete when the initial response is sent.
+     * To obtain the result of the method call, polling with GetAsyncResult is required.
+     * 
+     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
+     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
+     * 
+     * The result for a completed asynchronous method call can only be retrieved once.
+     * Once the final result has been returned, later attempts returns an error.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public GetAsyncResultResult getAsyncResult(final GetAsyncResultRequest request) { 
+        return super.sendRequest("GetAsyncResult", request, GetAsyncResultRequest.class, GetAsyncResultResult.class);
+    }
+
+    /** 
+     * Used to retrieve the result of asynchronous method calls.
+     * Some method calls are long running and do not complete when the initial response is sent.
+     * To obtain the result of the method call, polling with GetAsyncResult is required.
+     * 
+     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
+     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
+     * 
+     * The result for a completed asynchronous method call can only be retrieved once.
+     * Once the final result has been returned, later attempts returns an error.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public GetAsyncResultResult getAsyncResult(
+        Long asyncHandle
+        ) {
+        return this.getAsyncResult(new GetAsyncResultRequest(asyncHandle));
     }
     /** 
      * GetDefaultQoS is used to retrieve the default QoS values that are set for a volume if QoS is not supplied.
@@ -3155,7 +3511,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public GetVolumeEfficiencyResult getVolumeEfficiency(final GetVolumeEfficiencyRequest request) {
+    public GetVolumeEfficiencyResult getVolumeEfficiency(final GetVolumeEfficiencyRequest request) { 
         return super.sendRequest("GetVolumeEfficiency", request, GetVolumeEfficiencyRequest.class, GetVolumeEfficiencyResult.class);
     }
 
@@ -3178,7 +3534,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public GetVolumeStatsResult getVolumeStats(final GetVolumeStatsRequest request) {
+    public GetVolumeStatsResult getVolumeStats(final GetVolumeStatsRequest request) { 
         return super.sendRequest("GetVolumeStats", request, GetVolumeStatsRequest.class, GetVolumeStatsResult.class);
     }
 
@@ -3201,7 +3557,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ListActiveVolumesResult listActiveVolumes(final ListActiveVolumesRequest request) {
+    public ListActiveVolumesResult listActiveVolumes(final ListActiveVolumesRequest request) { 
         return super.sendRequest("ListActiveVolumes", request, ListActiveVolumesRequest.class, ListActiveVolumesResult.class);
     }
 
@@ -3224,7 +3580,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ListAsyncResultsResult listAsyncResults(final ListAsyncResultsRequest request) {
+    public ListAsyncResultsResult listAsyncResults(final ListAsyncResultsRequest request) { 
         return super.sendRequest("ListAsyncResults", request, ListAsyncResultsRequest.class, ListAsyncResultsResult.class);
     }
 
@@ -3258,54 +3614,16 @@ public class SolidFireElement
         return super.sendRequest("ListDeletedVolumes", null, null, ListDeletedVolumesResult.class);
     }
     /** 
-     * ListVolumeStatsByAccount returns high-level activity measurements for every account.
-     * Values are summed from all the volumes owned by the account.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByAccountResult listVolumeStatsByAccount() {
-        return super.sendRequest("ListVolumeStatsByAccount", null, null, ListVolumeStatsByAccountResult.class);
-    }
-    /** 
-     * ListVolumeStatsByVolume returns high-level activity measurements for every volume, by volume.
-     * Values are cumulative from the creation of the volume.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeResult listVolumeStatsByVolume() {
-        return super.sendRequest("ListVolumeStatsByVolume", null, null, ListVolumeStatsByVolumeResult.class);
-    }
-    /** 
-     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request) {
-        return super.sendRequest("ListVolumeStatsByVolumeAccessGroup", request, ListVolumeStatsByVolumeAccessGroupRequest.class, ListVolumeStatsByVolumeAccessGroupResult.class);
-    }
-
-    /** 
-     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
-        Optional<Long[]> volumeAccessGroups
-        ) {
-        return this.listVolumeStatsByVolumeAccessGroup(new ListVolumeStatsByVolumeAccessGroupRequest(volumeAccessGroups));
-    }
-    /** 
      * The ListVolumes method is used to return a list of volumes that are in a cluster.
      * You can specify the volumes you want to return in the list by using the available parameters.
      **/
     @Override
     @Since("8")
     @ConnectionType("Cluster")
-    public ListVolumesResult listVolumes(final ListVolumesRequest request) {
+    public ListVolumesResult listVolumes(final ListVolumesRequest request) { 
+        if(request.getVolumeIDs() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("volumeIDs is not applicable to this version of the API.");
+        }
         return super.sendRequest("ListVolumes", request, ListVolumesRequest.class, ListVolumesResult.class);
     }
 
@@ -3332,7 +3650,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public ListVolumesForAccountResult listVolumesForAccount(final ListVolumesForAccountRequest request) {
+    public ListVolumesForAccountResult listVolumesForAccount(final ListVolumesForAccountRequest request) { 
         return super.sendRequest("ListVolumesForAccount", request, ListVolumesForAccountRequest.class, ListVolumesForAccountResult.class);
     }
 
@@ -3350,12 +3668,95 @@ public class SolidFireElement
         return this.listVolumesForAccount(new ListVolumesForAccountRequest(accountID, startVolumeID, limit));
     }
     /** 
+     * ListVolumeStatsByAccount returns high-level activity measurements for every account.
+     * Values are summed from all the volumes owned by the account.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByAccountResult listVolumeStatsByAccount() {
+        return super.sendRequest("ListVolumeStatsByAccount", null, null, ListVolumeStatsByAccountResult.class);
+    }
+    /** 
+     * ListVolumeStatsByVolume returns high-level activity measurements for every volume, by volume.
+     * Values are cumulative from the creation of the volume.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeResult listVolumeStatsByVolume() {
+        return super.sendRequest("ListVolumeStatsByVolume", null, null, ListVolumeStatsByVolumeResult.class);
+    }
+    /** 
+     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request) { 
+        return super.sendRequest("ListVolumeStatsByVolumeAccessGroup", request, ListVolumeStatsByVolumeAccessGroupRequest.class, ListVolumeStatsByVolumeAccessGroupResult.class);
+    }
+
+    /** 
+     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
+        Optional<Long[]> volumeAccessGroups
+        ) {
+        return this.listVolumeStatsByVolumeAccessGroup(new ListVolumeStatsByVolumeAccessGroupRequest(volumeAccessGroups));
+    }
+    /** 
+     * ModifyVolume is used to modify settings on an existing volume.
+     * Modifications can be made to one volume at a time and changes take place immediately.
+     * If an optional parameter is left unspecified, the value will not be changed.
+     * 
+     * Extending the size of a volume that is being replicated should be done in an order.
+     * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
+     * It is recommended that both the target and the source volumes be the same size.
+     * 
+     * Note: If you change access status to locked or target all existing iSCSI connections are terminated.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ModifyVolumeResult modifyVolume(final ModifyVolumeRequest request) { 
+        return super.sendRequest("ModifyVolume", request, ModifyVolumeRequest.class, ModifyVolumeResult.class);
+    }
+
+    /** 
+     * ModifyVolume is used to modify settings on an existing volume.
+     * Modifications can be made to one volume at a time and changes take place immediately.
+     * If an optional parameter is left unspecified, the value will not be changed.
+     * 
+     * Extending the size of a volume that is being replicated should be done in an order.
+     * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
+     * It is recommended that both the target and the source volumes be the same size.
+     * 
+     * Note: If you change access status to locked or target all existing iSCSI connections are terminated.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ModifyVolumeResult modifyVolume(
+        Long volumeID,
+        Optional<Long> accountID,
+        Optional<String> access,
+        Optional<QoS> qos,
+        Optional<Long> totalSize,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.modifyVolume(new ModifyVolumeRequest(volumeID, accountID, access, qos, totalSize, attributes));
+    }
+    /** 
      * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
      **/
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public ModifyVolumesResult modifyVolumes(final ModifyVolumesRequest request) {
+    public ModifyVolumesResult modifyVolumes(final ModifyVolumesRequest request) { 
         return super.sendRequest("ModifyVolumes", request, ModifyVolumesRequest.class, ModifyVolumesResult.class);
     }
 
@@ -3383,7 +3784,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public PurgeDeletedVolumeResult purgeDeletedVolume(final PurgeDeletedVolumeRequest request) {
+    public PurgeDeletedVolumeResult purgeDeletedVolume(final PurgeDeletedVolumeRequest request) { 
         return super.sendRequest("PurgeDeletedVolume", request, PurgeDeletedVolumeRequest.class, PurgeDeletedVolumeResult.class);
     }
 
@@ -3406,7 +3807,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public PurgeDeletedVolumesResult purgeDeletedVolumes(final PurgeDeletedVolumesRequest request) {
+    public PurgeDeletedVolumesResult purgeDeletedVolumes(final PurgeDeletedVolumesRequest request) { 
         return super.sendRequest("PurgeDeletedVolumes", request, PurgeDeletedVolumesRequest.class, PurgeDeletedVolumesResult.class);
     }
 
@@ -3430,7 +3831,7 @@ public class SolidFireElement
     @Override
     @Since("1")
     @ConnectionType("Cluster")
-    public RestoreDeletedVolumeResult restoreDeletedVolume(final RestoreDeletedVolumeRequest request) {
+    public RestoreDeletedVolumeResult restoreDeletedVolume(final RestoreDeletedVolumeRequest request) { 
         return super.sendRequest("RestoreDeletedVolume", request, RestoreDeletedVolumeRequest.class, RestoreDeletedVolumeResult.class);
     }
 
@@ -3452,7 +3853,7 @@ public class SolidFireElement
     @Override
     @Since("9")
     @ConnectionType("Cluster")
-    public SetDefaultQoSResult setDefaultQoS(final SetDefaultQoSRequest request) {
+    public SetDefaultQoSResult setDefaultQoS(final SetDefaultQoSRequest request) { 
         return super.sendRequest("SetDefaultQoS", request, SetDefaultQoSRequest.class, SetDefaultQoSResult.class);
     }
 
@@ -3468,101 +3869,6 @@ public class SolidFireElement
         Optional<Long> burstIOPS
         ) {
         return this.setDefaultQoS(new SetDefaultQoSRequest(minIOPS, maxIOPS, burstIOPS));
-    }
-    /** 
-     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
-     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
-     * 
-     * Note: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public CloneMultipleVolumesResult cloneMultipleVolumes(final CloneMultipleVolumesRequest request) {
-        return super.sendRequest("CloneMultipleVolumes", request, CloneMultipleVolumesRequest.class, CloneMultipleVolumesResult.class);
-    }
-
-    /** 
-     * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
-     * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
-     * 
-     * Note: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public CloneMultipleVolumesResult cloneMultipleVolumes(
-        CloneMultipleVolumeParams[] volumes,
-        Optional<String> access,
-        Optional<Long> groupSnapshotID,
-        Optional<Long> newAccountID
-        ) {
-        return this.cloneMultipleVolumes(new CloneMultipleVolumesRequest(volumes, access, groupSnapshotID, newAccountID));
-    }
-    /** 
-     * CreateVolume is used to create a new (empty) volume on the cluster.
-     * When the volume is created successfully it is available for connection via iSCSI.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(final CreateVolumeRequest request) {
-        return super.sendRequest("CreateVolume", request, CreateVolumeRequest.class, CreateVolumeResult.class);
-    }
-
-    /** 
-     * CreateVolume is used to create a new (empty) volume on the cluster.
-     * When the volume is created successfully it is available for connection via iSCSI.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(
-        String name,
-        Long accountID,
-        Long totalSize,
-        Boolean enable512e,
-        Optional<QoS> qos,
-        Optional<java.util.Map<String, Object>> attributes
-        ) {
-        return this.createVolume(new CreateVolumeRequest(name, accountID, totalSize, enable512e, qos, attributes));
-    }
-    /** 
-     * Used to retrieve the result of asynchronous method calls.
-     * Some method calls are long running and do not complete when the initial response is sent.
-     * To obtain the result of the method call, polling with GetAsyncResult is required.
-     * 
-     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
-     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
-     * 
-     * The result for a completed asynchronous method call can only be retrieved once.
-     * Once the final result has been returned, later attempts returns an error.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public GetAsyncResultResult getAsyncResult(final GetAsyncResultRequest request) {
-        return super.sendRequest("GetAsyncResult", request, GetAsyncResultRequest.class, GetAsyncResultResult.class);
-    }
-
-    /** 
-     * Used to retrieve the result of asynchronous method calls.
-     * Some method calls are long running and do not complete when the initial response is sent.
-     * To obtain the result of the method call, polling with GetAsyncResult is required.
-     * 
-     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
-     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
-     * 
-     * The result for a completed asynchronous method call can only be retrieved once.
-     * Once the final result has been returned, later attempts returns an error.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public GetAsyncResultResult getAsyncResult(
-        Long asyncHandle
-        ) {
-        return this.getAsyncResult(new GetAsyncResultRequest(asyncHandle));
     }
     /** 
      * StartBulkVolumeRead allows you to initialize a bulk volume read session on a specified volume.
@@ -3582,7 +3888,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public StartBulkVolumeReadResult startBulkVolumeRead(final StartBulkVolumeReadRequest request) {
+    public StartBulkVolumeReadResult startBulkVolumeRead(final StartBulkVolumeReadRequest request) { 
         return super.sendRequest("StartBulkVolumeRead", request, StartBulkVolumeReadRequest.class, StartBulkVolumeReadResult.class);
     }
 
@@ -3615,232 +3921,6 @@ public class SolidFireElement
         return this.startBulkVolumeRead(new StartBulkVolumeReadRequest(volumeID, format, snapshotID, script, scriptParameters, attributes));
     }
     /** 
-     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(final UpdateBulkVolumeStatusRequest request) {
-        return super.sendRequest("UpdateBulkVolumeStatus", request, UpdateBulkVolumeStatusRequest.class, UpdateBulkVolumeStatusResult.class);
-    }
-
-    /** 
-     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(
-        String key,
-        String status,
-        Optional<String> percentComplete,
-        Optional<String> message,
-        Optional<java.util.Map<String, Object>> attributes
-        ) {
-        return this.updateBulkVolumeStatus(new UpdateBulkVolumeStatusRequest(key, status, percentComplete, message, attributes));
-    }
-    /** 
-     * Cancels a currently running clone operation. This method does not return anything.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CancelCloneResult cancelClone(final CancelCloneRequest request) {
-        return super.sendRequest("CancelClone", request, CancelCloneRequest.class, CancelCloneResult.class);
-    }
-
-    /** 
-     * Cancels a currently running clone operation. This method does not return anything.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CancelCloneResult cancelClone(
-        Long cloneID
-        ) {
-        return this.cancelClone(new CancelCloneRequest(cloneID));
-    }
-    /** 
-     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CancelGroupCloneResult cancelGroupClone(final CancelGroupCloneRequest request) {
-        return super.sendRequest("CancelGroupClone", request, CancelGroupCloneRequest.class, CancelGroupCloneResult.class);
-    }
-
-    /** 
-     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CancelGroupCloneResult cancelGroupClone(
-        Long groupCloneID
-        ) {
-        return this.cancelGroupClone(new CancelGroupCloneRequest(groupCloneID));
-    }
-    /** 
-     * Copies one volume to another.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CopyVolumeResult copyVolume(final CopyVolumeRequest request) {
-        return super.sendRequest("CopyVolume", request, CopyVolumeRequest.class, CopyVolumeResult.class);
-    }
-
-    /** 
-     * Copies one volume to another.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CopyVolumeResult copyVolume(
-        Long volumeID,
-        Long dstVolumeID,
-        Optional<Long> snapshotID
-        ) {
-        return this.copyVolume(new CopyVolumeRequest(volumeID, dstVolumeID, snapshotID));
-    }
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * 
-     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * 
-     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request) {
-        return super.sendRequest("CloneVolume", request, CloneVolumeRequest.class, CloneVolumeResult.class);
-    }
-
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * 
-     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * 
-     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(
-        Long volumeID,
-        String name,
-        Optional<Long> newAccountID,
-        Optional<Long> newSize,
-        Optional<String> access,
-        Optional<Long> snapshotID,
-        Optional<java.util.Map<String, Object>> attributes
-        ) {
-        return this.cloneVolume(new CloneVolumeRequest(volumeID, name, newAccountID, newSize, access, snapshotID, attributes));
-    }
-    /** 
-     * DeleteVolume marks an active volume for deletion.
-     * It is purged (permanently deleted) after the cleanup interval elapses.
-     * After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.
-     * It is not returned in target discovery requests.
-     * 
-     * Any snapshots of a volume that has been marked to delete are not affected.
-     * Snapshots are kept until the volume is purged from the system.
-     * 
-     * If a volume is marked for deletion, and it has a bulk volume read or bulk volume write operation in progress, the bulk volume operation is stopped.
-     * 
-     * If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred to it or from it while in a deleted state.
-     * The remote volume the deleted volume was paired with enters into a PausedMisconfigured state and data is no longer sent to it or from the deleted volume.
-     * Until the deleted volume is purged, it can be restored and data transfers resumes.
-     * If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed.
-     * The purged volume becomes permanently unavailable.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public DeleteVolumeResult deleteVolume(final DeleteVolumeRequest request) {
-        return super.sendRequest("DeleteVolume", request, DeleteVolumeRequest.class, DeleteVolumeResult.class);
-    }
-
-    /** 
-     * DeleteVolume marks an active volume for deletion.
-     * It is purged (permanently deleted) after the cleanup interval elapses.
-     * After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.
-     * It is not returned in target discovery requests.
-     * 
-     * Any snapshots of a volume that has been marked to delete are not affected.
-     * Snapshots are kept until the volume is purged from the system.
-     * 
-     * If a volume is marked for deletion, and it has a bulk volume read or bulk volume write operation in progress, the bulk volume operation is stopped.
-     * 
-     * If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred to it or from it while in a deleted state.
-     * The remote volume the deleted volume was paired with enters into a PausedMisconfigured state and data is no longer sent to it or from the deleted volume.
-     * Until the deleted volume is purged, it can be restored and data transfers resumes.
-     * If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed.
-     * The purged volume becomes permanently unavailable.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public DeleteVolumeResult deleteVolume(
-        Long volumeID
-        ) {
-        return this.deleteVolume(new DeleteVolumeRequest(volumeID));
-    }
-    /** 
-     * ModifyVolume is used to modify settings on an existing volume.
-     * Modifications can be made to one volume at a time and changes take place immediately.
-     * If an optional parameter is left unspecified, the value will not be changed.
-     * 
-     * Extending the size of a volume that is being replicated should be done in an order.
-     * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
-     * It is recommended that both the target and the source volumes be the same size.
-     * 
-     * Note: If you change access status to locked or target all existing iSCSI connections are terminated.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ModifyVolumeResult modifyVolume(final ModifyVolumeRequest request) {
-        return super.sendRequest("ModifyVolume", request, ModifyVolumeRequest.class, ModifyVolumeResult.class);
-    }
-
-    /** 
-     * ModifyVolume is used to modify settings on an existing volume.
-     * Modifications can be made to one volume at a time and changes take place immediately.
-     * If an optional parameter is left unspecified, the value will not be changed.
-     * 
-     * Extending the size of a volume that is being replicated should be done in an order.
-     * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
-     * It is recommended that both the target and the source volumes be the same size.
-     * 
-     * Note: If you change access status to locked or target all existing iSCSI connections are terminated.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ModifyVolumeResult modifyVolume(
-        Long volumeID,
-        Optional<Long> accountID,
-        Optional<String> access,
-        Optional<QoS> qos,
-        Optional<Long> totalSize,
-        Optional<java.util.Map<String, Object>> attributes
-        ) {
-        return this.modifyVolume(new ModifyVolumeRequest(volumeID, accountID, access, qos, totalSize, attributes));
-    }
-    /** 
      * StartBulkVolumeWrite allows you to initialize a bulk volume write session on a specified volume.
      * Only two bulk volume processes can run simultaneously on a volume.
      * When the session is initialized, data can be written to a SolidFire storage volume from an external backup source.
@@ -3850,7 +3930,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public StartBulkVolumeWriteResult startBulkVolumeWrite(final StartBulkVolumeWriteRequest request) {
+    public StartBulkVolumeWriteResult startBulkVolumeWrite(final StartBulkVolumeWriteRequest request) { 
         return super.sendRequest("StartBulkVolumeWrite", request, StartBulkVolumeWriteRequest.class, StartBulkVolumeWriteResult.class);
     }
 
@@ -3874,12 +3954,37 @@ public class SolidFireElement
         return this.startBulkVolumeWrite(new StartBulkVolumeWriteRequest(volumeID, format, script, scriptParameters, attributes));
     }
     /** 
+     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(final UpdateBulkVolumeStatusRequest request) { 
+        return super.sendRequest("UpdateBulkVolumeStatus", request, UpdateBulkVolumeStatusRequest.class, UpdateBulkVolumeStatusResult.class);
+    }
+
+    /** 
+     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(
+        String key,
+        String status,
+        Optional<String> percentComplete,
+        Optional<String> message,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.updateBulkVolumeStatus(new UpdateBulkVolumeStatusRequest(key, status, percentComplete, message, attributes));
+    }
+    /** 
      * Add initiators to a volume access group.
      **/
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(final AddInitiatorsToVolumeAccessGroupRequest request) {
+    public ModifyVolumeAccessGroupResult addInitiatorsToVolumeAccessGroup(final AddInitiatorsToVolumeAccessGroupRequest request) { 
         return super.sendRequest("AddInitiatorsToVolumeAccessGroup", request, AddInitiatorsToVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
     }
 
@@ -3901,7 +4006,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(final AddVolumesToVolumeAccessGroupRequest request) {
+    public ModifyVolumeAccessGroupResult addVolumesToVolumeAccessGroup(final AddVolumesToVolumeAccessGroupRequest request) { 
         return super.sendRequest("AddVolumesToVolumeAccessGroup", request, AddVolumesToVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
     }
 
@@ -3927,7 +4032,13 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public CreateVolumeAccessGroupResult createVolumeAccessGroup(final CreateVolumeAccessGroupRequest request) {
+    public CreateVolumeAccessGroupResult createVolumeAccessGroup(final CreateVolumeAccessGroupRequest request) { 
+        if(request.getVirtualNetworkID() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
+            throw new ApiException("virtualNetworkID is not applicable to this version of the API.");
+        }
+        if(request.getVirtualNetworkTags() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
+            throw new ApiException("virtualNetworkTags is not applicable to this version of the API.");
+        }
         return super.sendRequest("CreateVolumeAccessGroup", request, CreateVolumeAccessGroupRequest.class, CreateVolumeAccessGroupResult.class);
     }
 
@@ -3957,7 +4068,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(final DeleteVolumeAccessGroupRequest request) {
+    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(final DeleteVolumeAccessGroupRequest request) { 
         return super.sendRequest("DeleteVolumeAccessGroup", request, DeleteVolumeAccessGroupRequest.class, DeleteVolumeAccessGroupResult.class);
     }
 
@@ -3978,7 +4089,7 @@ public class SolidFireElement
     @Override
     @Since("6")
     @ConnectionType("Cluster")
-    public GetEfficiencyResult getVolumeAccessGroupEfficiency(final GetVolumeAccessGroupEfficiencyRequest request) {
+    public GetEfficiencyResult getVolumeAccessGroupEfficiency(final GetVolumeAccessGroupEfficiencyRequest request) { 
         return super.sendRequest("GetVolumeAccessGroupEfficiency", request, GetVolumeAccessGroupEfficiencyRequest.class, GetEfficiencyResult.class);
     }
 
@@ -3999,7 +4110,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(final GetVolumeAccessGroupLunAssignmentsRequest request) {
+    public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(final GetVolumeAccessGroupLunAssignmentsRequest request) { 
         return super.sendRequest("GetVolumeAccessGroupLunAssignments", request, GetVolumeAccessGroupLunAssignmentsRequest.class, GetVolumeAccessGroupLunAssignmentsResult.class);
     }
 
@@ -4020,7 +4131,7 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ListVolumeAccessGroupsResult listVolumeAccessGroups(final ListVolumeAccessGroupsRequest request) {
+    public ListVolumeAccessGroupsResult listVolumeAccessGroups(final ListVolumeAccessGroupsRequest request) { 
         return super.sendRequest("ListVolumeAccessGroups", request, ListVolumeAccessGroupsRequest.class, ListVolumeAccessGroupsResult.class);
     }
 
@@ -4037,50 +4148,6 @@ public class SolidFireElement
         return this.listVolumeAccessGroups(new ListVolumeAccessGroupsRequest(startVolumeAccessGroupID, limit));
     }
     /** 
-     * Remove initiators from a volume access group.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(final RemoveInitiatorsFromVolumeAccessGroupRequest request) {
-        return super.sendRequest("RemoveInitiatorsFromVolumeAccessGroup", request, RemoveInitiatorsFromVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
-    }
-
-    /** 
-     * Remove initiators from a volume access group.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(
-        Long volumeAccessGroupID,
-        String[] initiators
-        ) {
-        return this.removeInitiatorsFromVolumeAccessGroup(new RemoveInitiatorsFromVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
-    }
-    /** 
-     * Remove volumes from a volume access group.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(final RemoveVolumesFromVolumeAccessGroupRequest request) {
-        return super.sendRequest("RemoveVolumesFromVolumeAccessGroup", request, RemoveVolumesFromVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
-    }
-
-    /** 
-     * Remove volumes from a volume access group.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(
-        Long volumeAccessGroupID,
-        Long[] volumes
-        ) {
-        return this.removeVolumesFromVolumeAccessGroup(new RemoveVolumesFromVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
-    }
-    /** 
      * Update initiators and add or remove volumes from a volume access group.
      * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
      * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
@@ -4095,7 +4162,13 @@ public class SolidFireElement
     @Override
     @Since("5")
     @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(final ModifyVolumeAccessGroupRequest request) {
+    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(final ModifyVolumeAccessGroupRequest request) { 
+        if(request.getVirtualNetworkID() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
+            throw new ApiException("virtualNetworkID is not applicable to this version of the API.");
+        }
+        if(request.getVirtualNetworkTags() != null && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
+            throw new ApiException("virtualNetworkTags is not applicable to this version of the API.");
+        }
         return super.sendRequest("ModifyVolumeAccessGroup", request, ModifyVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
     }
 
@@ -4137,7 +4210,7 @@ public class SolidFireElement
     @Override
     @Since("7")
     @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(final ModifyVolumeAccessGroupLunAssignmentsRequest request) {
+    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(final ModifyVolumeAccessGroupLunAssignmentsRequest request) { 
         return super.sendRequest("ModifyVolumeAccessGroupLunAssignments", request, ModifyVolumeAccessGroupLunAssignmentsRequest.class, ModifyVolumeAccessGroupLunAssignmentsResult.class);
     }
 
@@ -4160,71 +4233,47 @@ public class SolidFireElement
         return this.modifyVolumeAccessGroupLunAssignments(new ModifyVolumeAccessGroupLunAssignmentsRequest(volumeAccessGroupID, lunAssignments));
     }
     /** 
-     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     * Remove initiators from a volume access group.
      **/
     @Override
-    @Since("9")
+    @Since("5")
     @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(final GetIpmiConfigRequest request) {
-        return super.sendRequest("GetIpmiConfig", request, GetIpmiConfigRequest.class, GetIpmiConfigResult.class);
+    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(final RemoveInitiatorsFromVolumeAccessGroupRequest request) { 
+        return super.sendRequest("RemoveInitiatorsFromVolumeAccessGroup", request, RemoveInitiatorsFromVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
     }
 
     /** 
-     * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
+     * Remove initiators from a volume access group.
      **/
     @Override
-    @Since("9")
+    @Since("5")
     @ConnectionType("Cluster")
-    public GetIpmiConfigResult getIpmiConfig(
-        Optional<String> chassisType,
-        Boolean force
+    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(
+        Long volumeAccessGroupID,
+        String[] initiators
         ) {
-        return this.getIpmiConfig(new GetIpmiConfigRequest(chassisType, force));
+        return this.removeInitiatorsFromVolumeAccessGroup(new RemoveInitiatorsFromVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
     }
     /** 
-     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     * Remove volumes from a volume access group.
      **/
     @Override
-    @Since("9")
+    @Since("5")
     @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(final GetIpmiInfoRequest request) {
-        return super.sendRequest("GetIpmiInfo", request, GetIpmiInfoRequest.class, GetIpmiInfoResult.class);
+    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(final RemoveVolumesFromVolumeAccessGroupRequest request) { 
+        return super.sendRequest("RemoveVolumesFromVolumeAccessGroup", request, RemoveVolumesFromVolumeAccessGroupRequest.class, ModifyVolumeAccessGroupResult.class);
     }
 
     /** 
-     * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
+     * Remove volumes from a volume access group.
      **/
     @Override
-    @Since("9")
+    @Since("5")
     @ConnectionType("Cluster")
-    public GetIpmiInfoResult getIpmiInfo(
-        Boolean force
+    public ModifyVolumeAccessGroupResult removeVolumesFromVolumeAccessGroup(
+        Long volumeAccessGroupID,
+        Long[] volumes
         ) {
-        return this.getIpmiInfo(new GetIpmiInfoRequest(force));
-    }
-    /** 
-     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
-     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Both")
-    public Object invokeSFApi(final InvokeSFApiRequest request) {
-        // Adaptor
-        return com.solidfire.adaptor.ElementServiceAdaptor.invokeSFApi(this, request);
-    }
-
-    /** 
-     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
-     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Both")
-    public Object invokeSFApi(
-        String method,
-        Optional<java.util.Map<String, Object>> parameters
-        ) {
-        return this.invokeSFApi(new InvokeSFApiRequest(method, parameters));
+        return this.removeVolumesFromVolumeAccessGroup(new RemoveVolumesFromVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
     }
 }

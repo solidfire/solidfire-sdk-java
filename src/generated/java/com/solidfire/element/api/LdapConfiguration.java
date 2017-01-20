@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class LdapConfiguration implements Serializable {
 
-    public static final long serialVersionUID = -4900050528922714170L;
+    public static final long serialVersionUID = -9188578463888969728L;
     @SerializedName("authType") private String authType;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("groupSearchBaseDN") private String groupSearchBaseDN;

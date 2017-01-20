@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class VolumeQOS implements Serializable {
 
-    public static final long serialVersionUID = 677275932188527448L;
+    public static final long serialVersionUID = 8934663874459875643L;
     @SerializedName("minIOPS") private Long minIOPS;
     @SerializedName("maxIOPS") private Long maxIOPS;
     @SerializedName("burstIOPS") private Long burstIOPS;

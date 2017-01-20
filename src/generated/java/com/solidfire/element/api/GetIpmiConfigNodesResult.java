@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetIpmiConfigNodesResult implements Serializable {
 
-    public static final long serialVersionUID = 4146119083973416749L;
+    public static final long serialVersionUID = -8926331790542887074L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("result") private java.util.Map<String, Object> result;
 

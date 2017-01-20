@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyAccountResult implements Serializable {
 
-    public static final long serialVersionUID = 6449198553339380627L;
+    public static final long serialVersionUID = 6032129272691425876L;
 
     // empty constructor
     @Since("7.0")

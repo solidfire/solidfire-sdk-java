@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetVolumeStatsRequest implements Serializable {
 
-    public static final long serialVersionUID = 1223689704598366419L;
+    public static final long serialVersionUID = 3594861187581414259L;
     @SerializedName("volumeID") private Long volumeID;
 
     // empty constructor

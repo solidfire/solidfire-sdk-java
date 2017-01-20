@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class SetNtpInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 6497600226879267920L;
+    public static final long serialVersionUID = 8295196015022239405L;
     @SerializedName("servers") private String[] servers;
     @SerializedName("broadcastclient") private Optional<Boolean> broadcastclient;
 

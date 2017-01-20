@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVirtualVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = 7373707765592220409L;
+    public static final long serialVersionUID = -2542707262776714049L;
     @SerializedName("virtualVolumes") private VirtualVolumeInfo[] virtualVolumes;
     @SerializedName("nextVirtualVolumeID") private java.util.UUID nextVirtualVolumeID;
 

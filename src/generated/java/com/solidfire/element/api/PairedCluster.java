@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class PairedCluster implements Serializable {
 
-    public static final long serialVersionUID = 1324404531707214962L;
+    public static final long serialVersionUID = -1634521540469589650L;
     @SerializedName("clusterName") private String clusterName;
     @SerializedName("clusterPairID") private Long clusterPairID;
     @SerializedName("clusterPairUUID") private java.util.UUID clusterPairUUID;

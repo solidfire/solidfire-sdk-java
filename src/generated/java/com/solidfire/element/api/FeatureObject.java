@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class FeatureObject implements Serializable {
 
-    public static final long serialVersionUID = -1569252747237563646L;
+    public static final long serialVersionUID = 2192760563864851572L;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("feature") private String feature;
 

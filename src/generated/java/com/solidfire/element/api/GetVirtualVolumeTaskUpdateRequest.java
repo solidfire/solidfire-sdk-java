@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetVirtualVolumeTaskUpdateRequest implements Serializable {
 
-    public static final long serialVersionUID = -719216214284926469L;
+    public static final long serialVersionUID = 780998827763141754L;
     @SerializedName("virtualVolumeTaskID") private java.util.UUID virtualVolumeTaskID;
     @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
 

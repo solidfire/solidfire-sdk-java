@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DisableSnmpResult implements Serializable {
 
-    public static final long serialVersionUID = 5564087243898071742L;
+    public static final long serialVersionUID = 5130606981460120944L;
 
     // empty constructor
     @Since("7.0")

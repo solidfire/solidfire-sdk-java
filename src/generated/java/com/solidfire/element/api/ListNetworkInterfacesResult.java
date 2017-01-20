@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListNetworkInterfacesResult implements Serializable {
 
-    public static final long serialVersionUID = 1770094441063303506L;
+    public static final long serialVersionUID = -7133172592143142142L;
     @SerializedName("interfaces") private NetworkInterface[] interfaces;
 
     // empty constructor
