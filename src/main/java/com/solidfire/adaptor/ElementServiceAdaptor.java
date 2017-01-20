@@ -140,6 +140,9 @@ public class ElementServiceAdaptor {
         if (sfe == null) throw new IllegalArgumentException("SolidFireElement was null");
 
         if (request == null) throw new IllegalArgumentException("ModifyScheduleRequest was null");
+
+        if (request.getSchedule().getScheduleID() == null) throw new IllegalArgumentException("ScheduleID is missing. Cannot modify a schedule without a ScheduleID");
+
         return ScheduleAdaptor.modifySchedule(sfe, request);
     }
 

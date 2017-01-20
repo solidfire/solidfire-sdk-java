@@ -79,7 +79,7 @@ class ElementServiceAdaptorTest extends WordSpec with BeforeAndAfterAll with Moc
       schedule.setScheduleID(null)
       when (sfe.modifySchedule(schedule)).thenCallRealMethod()
       when (sfe.modifySchedule(any[ModifyScheduleRequest]())).thenCallRealMethod()
-      the [ApiException] thrownBy {
+      the [IllegalArgumentException] thrownBy {
         sfe.modifySchedule(schedule)
       } should have message "ScheduleID is missing. Cannot modify a schedule without a ScheduleID"
     }
