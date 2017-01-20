@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class Platform implements Serializable {
 
-    public static final long serialVersionUID = -7637050352907707736L;
+    public static final long serialVersionUID = -6612096304691711343L;
     @SerializedName("nodeType") private String nodeType;
     @SerializedName("chassisType") private String chassisType;
     @SerializedName("cpuModel") private String cpuModel;

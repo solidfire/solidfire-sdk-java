@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateSupportBundleResult implements Serializable {
 
-    public static final long serialVersionUID = 1859106603207615192L;
+    public static final long serialVersionUID = 555138840306918895L;
     @SerializedName("details") private SupportBundleDetails details;
     @SerializedName("duration") private String duration;
     @SerializedName("result") private String result;

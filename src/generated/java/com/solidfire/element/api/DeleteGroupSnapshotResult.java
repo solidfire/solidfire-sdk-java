@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DeleteGroupSnapshotResult implements Serializable {
 
-    public static final long serialVersionUID = 3363853132297726383L;
+    public static final long serialVersionUID = 8293711146703946852L;
 
     // empty constructor
     @Since("7.0")

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetHardwareConfigResult implements Serializable {
 
-    public static final long serialVersionUID = 2378567172288831544L;
+    public static final long serialVersionUID = -8177285962521123370L;
     @SerializedName("hardwareConfig") private java.util.Map<String, Object> hardwareConfig;
 
     // empty constructor

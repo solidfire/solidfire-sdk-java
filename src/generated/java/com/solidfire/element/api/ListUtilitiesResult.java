@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListUtilitiesResult implements Serializable {
 
-    public static final long serialVersionUID = -6444565855435010731L;
+    public static final long serialVersionUID = 7811487745346679708L;
     @SerializedName("utilities") private String[] utilities;
 
     // empty constructor

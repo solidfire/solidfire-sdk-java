@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class LoginSessionInfo implements Serializable {
 
-    public static final long serialVersionUID = 6497974581119932846L;
+    public static final long serialVersionUID = 9129136850650940841L;
     @SerializedName("timeout") private String timeout;
 
     // empty constructor

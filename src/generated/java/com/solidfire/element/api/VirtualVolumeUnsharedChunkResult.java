@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class VirtualVolumeUnsharedChunkResult implements Serializable {
 
-    public static final long serialVersionUID = -1551240807605857398L;
+    public static final long serialVersionUID = 8353668077409552607L;
     @SerializedName("chunks") private Long chunks;
     @SerializedName("scannedChunks") private Long scannedChunks;
     @SerializedName("chunkSize") private Long chunkSize;

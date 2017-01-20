@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListClusterFaultsRequest implements Serializable {
 
-    public static final long serialVersionUID = 1098723794716257230L;
+    public static final long serialVersionUID = -7013942156541238584L;
     @SerializedName("exceptions") private Optional<Boolean> exceptions;
     @SerializedName("bestPractices") private Optional<Boolean> bestPractices;
     @SerializedName("update") private Optional<Boolean> update;

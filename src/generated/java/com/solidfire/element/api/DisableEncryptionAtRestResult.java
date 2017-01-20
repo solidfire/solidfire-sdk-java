@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DisableEncryptionAtRestResult implements Serializable {
 
-    public static final long serialVersionUID = 959339883502980015L;
+    public static final long serialVersionUID = -2557280966689923920L;
 
     // empty constructor
     @Since("7.0")

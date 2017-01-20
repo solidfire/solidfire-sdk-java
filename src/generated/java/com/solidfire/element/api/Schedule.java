@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class Schedule implements Serializable {
 
-    public static final long serialVersionUID = 7433215228944349105L;
+    public static final long serialVersionUID = -5892117456652543449L;
     @SerializedName("frequency") private Frequency frequency;
     @SerializedName("hasError") private Optional<Boolean> hasError;
     @SerializedName("lastRunStatus") private String lastRunStatus;

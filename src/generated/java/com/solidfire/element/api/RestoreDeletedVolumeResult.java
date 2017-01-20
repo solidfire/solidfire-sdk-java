@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RestoreDeletedVolumeResult implements Serializable {
 
-    public static final long serialVersionUID = -3002824895218410472L;
+    public static final long serialVersionUID = 5951783735760995478L;
 
     // empty constructor
     @Since("7.0")

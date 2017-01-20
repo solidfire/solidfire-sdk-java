@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetBootstrapConfigResult implements Serializable {
 
-    public static final long serialVersionUID = 1504980858350331472L;
+    public static final long serialVersionUID = 7635078735348945319L;
     @SerializedName("clusterName") private String clusterName;
     @SerializedName("nodeName") private String nodeName;
     @SerializedName("nodes") private NodeWaitingToJoin[] nodes;

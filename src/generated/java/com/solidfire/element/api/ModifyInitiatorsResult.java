@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyInitiatorsResult implements Serializable {
 
-    public static final long serialVersionUID = 7360766939409254211L;
+    public static final long serialVersionUID = -43282212498702567L;
     @SerializedName("initiators") private Initiator[] initiators;
 
     // empty constructor

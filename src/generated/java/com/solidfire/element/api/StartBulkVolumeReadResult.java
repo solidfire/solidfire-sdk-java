@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class StartBulkVolumeReadResult implements Serializable {
 
-    public static final long serialVersionUID = -487371645905079407L;
+    public static final long serialVersionUID = -203576879162436176L;
     @SerializedName("asyncHandle") private Long asyncHandle;
     @SerializedName("key") private String key;
     @SerializedName("url") private String url;

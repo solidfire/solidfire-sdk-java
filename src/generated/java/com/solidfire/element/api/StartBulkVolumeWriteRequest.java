@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class StartBulkVolumeWriteRequest implements Serializable {
 
-    public static final long serialVersionUID = -5999563044204037237L;
+    public static final long serialVersionUID = -7266294121919800595L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("format") private String format;
     @SerializedName("script") private Optional<String> script;

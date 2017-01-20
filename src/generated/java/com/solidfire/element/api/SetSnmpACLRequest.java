@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class SetSnmpACLRequest implements Serializable {
 
-    public static final long serialVersionUID = 7124245935401736727L;
+    public static final long serialVersionUID = 6271612792860104518L;
     @SerializedName("networks") private SnmpNetwork[] networks;
     @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
 

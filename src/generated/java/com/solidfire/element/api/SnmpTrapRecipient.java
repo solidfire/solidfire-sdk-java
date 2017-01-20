@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class SnmpTrapRecipient implements Serializable {
 
-    public static final long serialVersionUID = -1840870288316656088L;
+    public static final long serialVersionUID = -7686465021384105517L;
     @SerializedName("host") private String host;
     @SerializedName("community") private String community;
     @SerializedName("port") private Long port;

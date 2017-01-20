@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListStorageContainersRequest implements Serializable {
 
-    public static final long serialVersionUID = 6613330688819754578L;
+    public static final long serialVersionUID = 6165115027762705922L;
     @SerializedName("storageContainerIDs") private Optional<java.util.UUID[]> storageContainerIDs;
 
     // empty constructor

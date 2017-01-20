@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CreateVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 6697206284599825105L;
+    public static final long serialVersionUID = 6824028462430624106L;
     @SerializedName("name") private String name;
     @SerializedName("initiators") private Optional<String[]> initiators;
     @SerializedName("volumes") private Optional<Long[]> volumes;

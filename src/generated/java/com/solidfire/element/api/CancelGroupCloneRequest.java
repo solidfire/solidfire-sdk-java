@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CancelGroupCloneRequest implements Serializable {
 
-    public static final long serialVersionUID = -5420400623923407096L;
+    public static final long serialVersionUID = -8150629628859692550L;
     @SerializedName("groupCloneID") private Long groupCloneID;
 
     // empty constructor

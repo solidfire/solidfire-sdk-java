@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class UpdateBulkVolumeStatusResult implements Serializable {
 
-    public static final long serialVersionUID = 2642192631544775271L;
+    public static final long serialVersionUID = -8121740230744144448L;
     @SerializedName("status") private String status;
     @SerializedName("url") private String url;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;

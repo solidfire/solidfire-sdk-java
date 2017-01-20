@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetAPIResult implements Serializable {
 
-    public static final long serialVersionUID = -1519239046995406718L;
+    public static final long serialVersionUID = -334735413474527149L;
     @SerializedName("currentVersion") private Double currentVersion;
     @SerializedName("supportedVersions") private Double[] supportedVersions;
 

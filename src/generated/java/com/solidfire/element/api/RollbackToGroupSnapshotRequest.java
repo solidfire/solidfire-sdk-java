@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class RollbackToGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -6395005178937562861L;
+    public static final long serialVersionUID = -4169392330167642539L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
     @SerializedName("name") private Optional<String> name;

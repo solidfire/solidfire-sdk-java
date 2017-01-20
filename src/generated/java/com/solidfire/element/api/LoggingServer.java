@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class LoggingServer implements Serializable {
 
-    public static final long serialVersionUID = 2074745123816065773L;
+    public static final long serialVersionUID = 225982279799440583L;
     @SerializedName("host") private String host;
     @SerializedName("port") private Long port;
 

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetClusterHardwareInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -3765519879126106869L;
+    public static final long serialVersionUID = -4943994234075066899L;
     @SerializedName("clusterHardwareInfo") private ClusterHardwareInfo clusterHardwareInfo;
 
     // empty constructor

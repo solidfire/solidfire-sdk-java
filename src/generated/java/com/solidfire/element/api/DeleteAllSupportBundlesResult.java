@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DeleteAllSupportBundlesResult implements Serializable {
 
-    public static final long serialVersionUID = -9071284049940112393L;
+    public static final long serialVersionUID = 7732374151828081164L;
 
     // empty constructor
     @Since("7.0")

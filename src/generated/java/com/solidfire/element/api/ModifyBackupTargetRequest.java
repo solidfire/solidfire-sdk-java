@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ModifyBackupTargetRequest implements Serializable {
 
-    public static final long serialVersionUID = -3193296318763467825L;
+    public static final long serialVersionUID = -2231080711756074693L;
     @SerializedName("backupTargetID") private Long backupTargetID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;

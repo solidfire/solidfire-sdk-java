@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class VirtualNetwork implements Serializable {
 
-    public static final long serialVersionUID = 4656780282826323100L;
+    public static final long serialVersionUID = 8407011142643317951L;
     @SerializedName("virtualNetworkID") private Long virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
     @SerializedName("addressBlocks") private AddressBlock[] addressBlocks;
