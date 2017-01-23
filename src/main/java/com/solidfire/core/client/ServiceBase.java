@@ -200,7 +200,6 @@ public class ServiceBase {
                 throw new ApiServerException("Not Found", "404", matcher.group(1));
             }
             // Removes the html tags from the response.
-            final Pattern htmlTag = Pattern.compile("<.*?>");
             response.replaceAll("<.*?>", "");
             throw new ApiException(format("There was a problem parsing the response from the server. ( response=%s )", response), e);
         } catch (NullPointerException | JsonParseException e) {
