@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class NetworkConfig implements Serializable {
 
-    public static final long serialVersionUID = -8600857542146660920L;
+    public static final long serialVersionUID = -6490718356259567027L;
     @SerializedName("#default") private Optional<Boolean> _default;
     @SerializedName("bond-master") private String bondMaster;
     @SerializedName("virtualNetworkTag") private String virtualNetworkTag;

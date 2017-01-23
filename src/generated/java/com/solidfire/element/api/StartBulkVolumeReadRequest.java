@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class StartBulkVolumeReadRequest implements Serializable {
 
-    public static final long serialVersionUID = -5357620405288464779L;
+    public static final long serialVersionUID = -108156352014984385L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("format") private String format;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;

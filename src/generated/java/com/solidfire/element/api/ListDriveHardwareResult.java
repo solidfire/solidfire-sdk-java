@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListDriveHardwareResult implements Serializable {
 
-    public static final long serialVersionUID = -7891743845331195404L;
+    public static final long serialVersionUID = -7565014355252238436L;
     @SerializedName("nodes") private NodeDriveHardware[] nodes;
 
     // empty constructor

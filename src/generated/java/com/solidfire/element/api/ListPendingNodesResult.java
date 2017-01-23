@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListPendingNodesResult implements Serializable {
 
-    public static final long serialVersionUID = 6981928540198155637L;
+    public static final long serialVersionUID = 3491544079989980229L;
     @SerializedName("pendingNodes") private PendingNode[] pendingNodes;
 
     // empty constructor

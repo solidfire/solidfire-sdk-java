@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class IpmiInfo implements Serializable {
 
-    public static final long serialVersionUID = 858078223242181052L;
+    public static final long serialVersionUID = 7231518305000765081L;
     @SerializedName("sensors") private java.util.Map<String, Object>[] sensors;
 
     // empty constructor

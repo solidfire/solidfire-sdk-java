@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class DeleteVolumeAccessGroupResult implements Serializable {
 
-    public static final long serialVersionUID = -8380871491874738455L;
+    public static final long serialVersionUID = -1745305645545653484L;
 
     // empty constructor
     @Since("7.0")

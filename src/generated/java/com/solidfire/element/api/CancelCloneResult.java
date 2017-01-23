@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class CancelCloneResult implements Serializable {
 
-    public static final long serialVersionUID = -7351390812502888247L;
+    public static final long serialVersionUID = 7391663878101707043L;
 
     // empty constructor
     @Since("7.0")

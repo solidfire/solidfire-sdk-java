@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class PrepareVirtualSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 1704882261346898204L;
+    public static final long serialVersionUID = -4324099540451716656L;
     @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("writableSnapshot") private Optional<Boolean> writableSnapshot;

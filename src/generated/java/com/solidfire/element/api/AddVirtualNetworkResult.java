@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class AddVirtualNetworkResult implements Serializable {
 
-    public static final long serialVersionUID = 1347504942464460597L;
+    public static final long serialVersionUID = -684462985313881144L;
     @SerializedName("virtualNetworkID") private Long virtualNetworkID;
 
     // empty constructor

@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetAsyncResultRequest implements Serializable {
 
-    public static final long serialVersionUID = -4674149418036724410L;
+    public static final long serialVersionUID = 1004088951222936015L;
     @SerializedName("asyncHandle") private Long asyncHandle;
 
     // empty constructor

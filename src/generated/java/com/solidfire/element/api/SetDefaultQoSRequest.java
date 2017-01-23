@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class SetDefaultQoSRequest implements Serializable {
 
-    public static final long serialVersionUID = -4772071902940886291L;
+    public static final long serialVersionUID = 3965487383106376781L;
     @SerializedName("minIOPS") private Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private Optional<Long> maxIOPS;
     @SerializedName("burstIOPS") private Optional<Long> burstIOPS;

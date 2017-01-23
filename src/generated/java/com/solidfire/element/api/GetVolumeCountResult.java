@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetVolumeCountResult implements Serializable {
 
-    public static final long serialVersionUID = -8091009173389028661L;
+    public static final long serialVersionUID = -1120969743003135408L;
     @SerializedName("count") private Long count;
 
     // empty constructor

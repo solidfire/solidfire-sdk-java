@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetOriginRequest implements Serializable {
 
-    public static final long serialVersionUID = 7810627240559434884L;
+    public static final long serialVersionUID = -3371910018875412983L;
     @SerializedName("force") private Boolean force;
 
     // empty constructor

@@ -33,7 +33,7 @@ import java.util.Objects;
 
 public class NodeFibreChannelPortInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 3317295481161994340L;
+    public static final long serialVersionUID = 1193456109593396917L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("result") private FibreChannelPortList result;
 

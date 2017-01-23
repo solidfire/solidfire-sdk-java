@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListSnapshotsResult implements Serializable {
 
-    public static final long serialVersionUID = -4500726855452413393L;
+    public static final long serialVersionUID = 3190994173877911303L;
     @SerializedName("snapshots") private Snapshot[] snapshots;
 
     // empty constructor

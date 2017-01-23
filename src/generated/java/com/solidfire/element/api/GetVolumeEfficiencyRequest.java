@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class GetVolumeEfficiencyRequest implements Serializable {
 
-    public static final long serialVersionUID = -8291743328758418006L;
+    public static final long serialVersionUID = 6871428855542224054L;
     @SerializedName("volumeID") private Long volumeID;
 
     // empty constructor
