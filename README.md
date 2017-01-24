@@ -73,7 +73,7 @@ If you have any questions or comments about this product, open an issue on our [
 
 ## Examples
 
-####Step 1 - Build a SolidFireElement object using the factory
+#### Step 1 - Build a SolidFireElement object using the factory
 
 This is the preferred way to construct the SolidFireElement object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
 SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the ElementFactory documentation.
@@ -107,7 +107,7 @@ import com.solidfire.core.javautil.Optional.{empty, of}
 
 ~~~
 
-####Step 2 - Call the API method and retrieve the result
+#### Step 2 - Call the API method and retrieve the result
 
 All service methods in SolidFireElement call API endpoints and they all return result objects. The naming convention is <i>[methodName]Result</i>. For example, <i>listAccounts()</i> returns a <i>ListAccountsResult</i> object which has a property called <i>getAccounts()</i> returns an array of <i>Accounts</i> that can be iterated.
 
