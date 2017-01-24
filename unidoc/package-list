@@ -1,0 +1,10 @@
+com.solidfire.adaptor
+com.solidfire.client
+com.solidfire.core.annotation
+com.solidfire.core.client
+com.solidfire.core.javautil
+com.solidfire.core.reflection
+com.solidfire.core.serialization
+com.solidfire.element.api
+com.solidfire.element.apiactual
+com.solidfire.serialization
