@@ -1,4 +1,4 @@
-#SolidFire Java SDK
+# SolidFire Java SDK
 
 ### Version 1.2 (github)
 
