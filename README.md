@@ -37,7 +37,7 @@ compile 'com.solidfire:solidfire-sdk-java:1.2.0.172'
 
 ## Assembly Jar
 
-The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.2.0.147/solidfire-sdk-assembly-1.2.0.172.jar).  
+The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.2/solidfire-sdk-assembly-1.2.0.172.jar).  
 
 ___Dependencies___:
 
@@ -65,7 +65,7 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 ## Documentation
 
-[Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/latest/api/)
+[Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/unidoc/)
 
 [1.1.0.85 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/)
 
