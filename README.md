@@ -1,37 +1,22 @@
-# <img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png" height="50" width="50" > SolidFire Java SDK
+#SolidFire Java SDK
 
-Java SDK library for interacting with SolidFire Element API
+### Version 1.2 (github)
 
-## Current Release
-
-Version: 1.2.0.168
+<img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png" height="50" width="50" >
 
 ## Description
 
 The SolidFire Java SDK is a collection of software modules and libraries that facilitate integration and orchestration between proprietary systems and third-party applications. The Java SDK allows developers to deeply integrate SolidFire system API with the Java programming language. The SolidFire Java SDK reduces the amount of additional coding time required for integration.
 
-## Compatibility
-
-| Component    | Version             |
-| ------------ | ------------------- |
-| Java         | 7.0 & 8.0           |
-| SolidFire OS | Element 7.0 - 9.0   |
-
-## Getting Help
-
-Contacting SolidFire SDK Support
-If you have any questions or comments about this product, contact <ng-sf-host-integrations-sdk@netapp.com> or reach out to the developer community at [ThePub](http://netapp.io). Your feedback helps us focus our efforts on new features and capabilities.
-
-## Download
+## Installation
 
 [Download](http://mvnrepository.com/artifact/com.solidfire) the latest JAR or grab via Maven:
 
 ~~~ xml
-
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>solidfire-sdk-java</artifactId>
-  <version>1.2.0.168</version>
+  <version>1.2.0.172</version>
 </dependency>
 
 ~~~
@@ -39,22 +24,20 @@ If you have any questions or comments about this product, contact <ng-sf-host-in
 or SBT:
 
 ~~~ scala
-
-libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.2.0.168"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.2.0.172"
 
 ~~~
 
 or Gradle:
 
 ~~~ groovy
-
-compile 'com.solidfire:solidfire-sdk-java:1.2.0.168'
+compile 'com.solidfire:solidfire-sdk-java:1.2.0.172'
 
 ~~~
 
 ## Assembly Jar
 
-The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.2.0.147/solidfire-sdk-assembly-1.2.0.168.jar).  
+The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.2.0.147/solidfire-sdk-assembly-1.2.0.172.jar).  
 
 ___Dependencies___:
 
@@ -73,6 +56,12 @@ The SDK assembly is signed with a certificate controlled by SolidFire, Inc, assu
 
 If using the SDK with a restricted version of the above listed components, e.g. logback, or in developing an enterprise solution that runs in a web application container, etc., use the publicly [hosted versions](http://mvnrepository.com/artifact/com.solidfire) of the SDK.
 
+## Compatibility
+
+| Component    | Version             |
+| ------------ | ------------------- |
+| Java         | 7.0 & 8.0           |
+| SolidFire OS | Element 7.0 - 9.0   |
 
 ## Documentation
 
@@ -82,17 +71,20 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 [1.0.0.53 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/v1.0/)
 
+## Getting Help
+
+If you have any questions or comments about this product, open an issue on our [GitHub repo](https://github.com/solidfire/solidfire-sdk-java) or reach out to the online developer community at [ThePub](http://netapp.io). Your feedback helps us focus our efforts on new features and capabilities.
+
 ## Examples
 
-Step 1 - Build a [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/element/api/SolidFireElement.html) object using the factory
----
+####Step 1 - Build a [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/element/api/SolidFireElement.html) object using the factory
+
 This is the preferred way to construct the [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/element/api/SolidFireElement.html) object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
 SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the [ElementFactory](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/client/ElementFactory.html) documentation.
 
 #### Java:
 
 ~~~ java
-
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
 import com.solidfire.core.javautil.Optional;
@@ -109,7 +101,6 @@ import static com.solidfire.core.javautil.Optional.*;
 #### Scala:
 
 ~~~ scala
-
 import com.solidfire.client.ElementFactory
 import com.solidfire.element.api._
 import com.solidfire.core.javautil.Optional.{empty, of}
@@ -120,7 +111,7 @@ import com.solidfire.core.javautil.Optional.{empty, of}
 
 ~~~
 
-## Step 2 - Call the API method and retrieve the result
+####Step 2 - Call the API method and retrieve the result
 
 All service methods in SolidFireElement call API endpoints and they all return result objects. The naming convention is <i>[methodName]Result</i>. For example, <i>listAccounts()</i> returns a <i>ListAccountsResult</i> object which has a property called <i>getAccounts()</i> returns an array of <i>Accounts</i> that can be iterated.
 
@@ -130,7 +121,6 @@ from the <i>AddAccountResult</i> object.
 #### Java:
 
 ~~~ java
-
     // Send the request and wait for the result then pull the Account
     ListAccountsResult listAccountsResult = sfe.listAccounts(ListAccountsRequest.builder().build());
     Account account = listAccountsResult.getAccounts()[0];
@@ -140,7 +130,6 @@ from the <i>AddAccountResult</i> object.
 #### Scala:
 
 ~~~ scala
-
     // Send the request and wait for the result then pull the first Account
     val listAccountsResult = sfe.listAccounts(ListAccountsRequest.builder.build)
     val account = listAccountsResult.getAccounts()(0)
@@ -150,7 +139,6 @@ from the <i>AddAccountResult</i> object.
 ### Examples of using the API (Java)
 
 ~~~ java
-
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
 import com.solidfire.core.javautil.Optional;
@@ -207,7 +195,6 @@ public class ReadmeJavaExample {
 ### Examples of using the API (Scala)
 
 ~~~ scala    
-
 import com.solidfire.client.ElementFactory
 import com.solidfire.element.api._
 import com.solidfire.core.javautil.Optional.{empty, of}
@@ -263,7 +250,6 @@ Connection timeout (useful for failing fast when a host becomes unreachable):
 #### Java:
 
 ~~~ java
-
     import com.solidfire.client.ElementFactory;
     import com.solidfire.element.api.*;
     ...
@@ -277,7 +263,6 @@ Read timeout (useful for extending time for a service call to return):
 #### Java:
 
 ~~~ java
-
     import com.solidfire.client.ElementFactory;
     import com.solidfire.element.api.*;
     ...
@@ -285,10 +270,6 @@ Read timeout (useful for extending time for a service call to return):
     sfe.getRequestDispatcher().setReadTimeout(600);
 
 ~~~
-
-## More Examples
-
-More specific examples are available [here](examples/examples.md)
 
 ## Logging and Logback
 
@@ -319,22 +300,25 @@ An example logback.xml:
 
 You also need to add the appropriate SLF4J dependency. Continuing with the logback example:
 
-~~~
+~~~ xml
 <dependency>
     <groupId>ch.qos.logback</groupId>
     <artifactId>logback-classic</artifactId>
     <version>1.1.3</version>
 </dependency>
 ~~~
-        
 
-## Roadmap
+## More Examples
 
-| Version | Release Date      | Notes                                                             |
-| ------- | ------------------ | ---------------------------------------------------------------- |
-| 1.0     | November 20, 2015  | Accounts, Volumes, Access Groups, Snapshots, and Group Snapshots |
-| 1.1     | September 20, 2016 | Additional Nitrogen & Oxygen API Coverage                        |
-| 1.2     | January 24, 2017   | Complete Nitrogen, Oxygen, & Fluorine API Coverage               |
+More specific examples are available [here](examples/examples.md)
+      
+## Release History
+
+| Version | Release Date  | Notes                                                            |
+| ------- | --------------| ---------------------------------------------------------------- |
+| 1.2     | Jan 25, 2017  | Complete Nitrogen, Oxygen, & Fluorine API Coverage               |
+| 1.1     | Sep 20, 2016  | Additional Nitrogen & Oxygen API Coverage                        |
+| 1.0     | Nov 20, 2015  | Accounts, Volumes, Access Groups, Snapshots, and Group Snapshots |
 
 ## License
 
