@@ -73,10 +73,10 @@ If you have any questions or comments about this product, open an issue on our [
 
 ## Examples
 
-####Step 1 - Build a [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/latest/api/com/solidfire/element/api/SolidFireElement.html) object using the factory
+####Step 1 - Build a SolidFireElement object using the factory
 
-This is the preferred way to construct the [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/latest/api/com/solidfire/element/api/SolidFireElement.html) object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
-SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the [ElementFactory](https://solidfire.github.io/solidfire-sdk-java/latest/api/com/solidfire/client/ElementFactory.html) documentation.
+This is the preferred way to construct the SolidFireElement object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
+SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the ElementFactory documentation.
 
 #### Java:
 
