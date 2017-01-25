@@ -67,6 +67,8 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 [Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/latest/api/)
 
+[Release Notes](https://github.com/solidfire/solidfire-sdk-java/raw/gh-pages/NetApp_SolidFire_Java_SDK_v1.2_Release_Notes.pdf)
+
 ## Getting Help
 
 If you have any questions or comments about this product, open an issue on our [GitHub repo](https://github.com/solidfire/solidfire-sdk-java) or reach out to the online developer community at [ThePub](http://netapp.io). Your feedback helps us focus our efforts on new features and capabilities.
