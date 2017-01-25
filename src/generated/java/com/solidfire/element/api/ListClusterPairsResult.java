@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListClusterPairs" API Service call.
+ * ListClusterPairsResult  
  **/
-public class ListClusterPairsResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1996808640L;
+public class ListClusterPairsResult implements Serializable {
 
-    @SerializedName("clusterPairs") private final PairedCluster[] clusterPairs;
+    public static final long serialVersionUID = -8080838636769844928L;
+    @SerializedName("clusterPairs") private PairedCluster[] clusterPairs;
 
-    /**
-     * The object returned by the "ListClusterPairs" API Service call.
-     * @param clusterPairs [required] Information about each paired cluster.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListClusterPairsResult(PairedCluster[] clusterPairs) {
+    public ListClusterPairsResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListClusterPairsResult(
+        PairedCluster[] clusterPairs
+    )
+    {
         this.clusterPairs = clusterPairs;
     }
 
-
-    /**
+    /** 
      * Information about each paired cluster.
      **/
-    public PairedCluster[] getClusterPairs() {
-        return this.clusterPairs;
+    public PairedCluster[] getClusterPairs() { return this.clusterPairs; }
+    public void setClusterPairs(PairedCluster[] clusterPairs) { 
+        this.clusterPairs = clusterPairs;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class ListClusterPairsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListClusterPairsResult that = (ListClusterPairsResult) o;
-        
 
-        return Objects.deepEquals( clusterPairs , that.clusterPairs );
+        return 
+            Arrays.equals(clusterPairs, that.clusterPairs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) clusterPairs );
+        return Objects.hash( (Object[])clusterPairs );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterPairs", clusterPairs);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" clusterPairs : ").append(Arrays.toString(clusterPairs));
+        sb.append(" clusterPairs : ").append(Arrays.toString(clusterPairs)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class ListClusterPairsResult  implements Serializable  {
 
         public ListClusterPairsResult build() {
             return new ListClusterPairsResult (
-                         this.clusterPairs            );
+                         this.clusterPairs);
         }
 
         private ListClusterPairsResult.Builder buildFrom(final ListClusterPairsResult req) {
@@ -122,5 +124,4 @@ public class ListClusterPairsResult  implements Serializable  {
         }
 
     }
-
 }

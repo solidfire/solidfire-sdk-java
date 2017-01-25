@@ -18,57 +18,53 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "RemoveInitiatorsFromVolumeAccessGroup" API Service call.
+ * RemoveInitiatorsFromVolumeAccessGroupRequest  
  **/
-public class RemoveInitiatorsFromVolumeAccessGroupRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1778422325L;
+public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializable {
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
-    @SerializedName("initiators") private final String[] initiators;
+    public static final long serialVersionUID = -973849202726659162L;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("initiators") private String[] initiators;
 
-    /**
-     * The Request object for the "RemoveInitiatorsFromVolumeAccessGroup" API Service call.
-     * @param volumeAccessGroupID [required] The ID of the volume access group to modify.
-     * @param initiators [required] List of initiators to remove from the volume access group.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public RemoveInitiatorsFromVolumeAccessGroupRequest(Long volumeAccessGroupID, String[] initiators) {
+    public RemoveInitiatorsFromVolumeAccessGroupRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public RemoveInitiatorsFromVolumeAccessGroupRequest(
+        Long volumeAccessGroupID,
+        String[] initiators
+    )
+    {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.initiators = initiators;
     }
 
-
-    /**
+    /** 
      * The ID of the volume access group to modify.
      **/
-    public Long getVolumeAccessGroupID() {
-        return this.volumeAccessGroupID;
+    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+        this.volumeAccessGroupID = volumeAccessGroupID;
     }
-
-    /**
+    /** 
      * List of initiators to remove from the volume access group.
      **/
-    public String[] getInitiators() {
-        return this.initiators;
+    public String[] getInitiators() { return this.initiators; }
+    public void setInitiators(String[] initiators) { 
+        this.initiators = initiators;
     }
 
     @Override
@@ -77,17 +73,24 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest  implements Serializab
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveInitiatorsFromVolumeAccessGroupRequest that = (RemoveInitiatorsFromVolumeAccessGroupRequest) o;
-        
 
-        return Objects.equals( volumeAccessGroupID , that.volumeAccessGroupID )
-            && Objects.deepEquals( initiators , that.initiators );
+        return 
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
+            Arrays.equals(initiators, that.initiators);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, initiators );
+        return Objects.hash( volumeAccessGroupID,(Object[])initiators );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroupID", volumeAccessGroupID);
+        map.put("initiators", initiators);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +98,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest  implements Serializab
         sb.append( "{ " );
 
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" initiators : ").append(Arrays.toString(initiators));
+        sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +124,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest  implements Serializab
         public RemoveInitiatorsFromVolumeAccessGroupRequest build() {
             return new RemoveInitiatorsFromVolumeAccessGroupRequest (
                          this.volumeAccessGroupID,
-                         this.initiators            );
+                         this.initiators);
         }
 
         private RemoveInitiatorsFromVolumeAccessGroupRequest.Builder buildFrom(final RemoveInitiatorsFromVolumeAccessGroupRequest req) {
@@ -142,5 +145,4 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest  implements Serializab
         }
 
     }
-
 }

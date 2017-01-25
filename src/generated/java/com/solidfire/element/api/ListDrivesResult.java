@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListDrives" API Service call.
+ * ListDrivesResult  
  **/
-public class ListDrivesResult  implements Serializable  {
 
-    private static final long serialVersionUID = -657498322L;
+public class ListDrivesResult implements Serializable {
 
-    @SerializedName("drives") private final DriveInfo[] drives;
+    public static final long serialVersionUID = -1202320909941738264L;
+    @SerializedName("drives") private DriveInfo[] drives;
 
-    /**
-     * The object returned by the "ListDrives" API Service call.
-     * @param drives [required] Information for the drives that are connected to the cluster.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListDrivesResult(DriveInfo[] drives) {
+    public ListDrivesResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListDrivesResult(
+        DriveInfo[] drives
+    )
+    {
         this.drives = drives;
     }
 
-
-    /**
+    /** 
      * Information for the drives that are connected to the cluster.
      **/
-    public DriveInfo[] getDrives() {
-        return this.drives;
+    public DriveInfo[] getDrives() { return this.drives; }
+    public void setDrives(DriveInfo[] drives) { 
+        this.drives = drives;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class ListDrivesResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListDrivesResult that = (ListDrivesResult) o;
-        
 
-        return Objects.deepEquals( drives , that.drives );
+        return 
+            Arrays.equals(drives, that.drives);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) drives );
+        return Objects.hash( (Object[])drives );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("drives", drives);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(Arrays.toString(drives));
+        sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class ListDrivesResult  implements Serializable  {
 
         public ListDrivesResult build() {
             return new ListDrivesResult (
-                         this.drives            );
+                         this.drives);
         }
 
         private ListDrivesResult.Builder buildFrom(final ListDrivesResult req) {
@@ -122,5 +124,4 @@ public class ListDrivesResult  implements Serializable  {
         }
 
     }
-
 }

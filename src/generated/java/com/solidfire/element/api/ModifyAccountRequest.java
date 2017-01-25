@@ -18,99 +18,95 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ModifyAccount" API Service call.
+ * ModifyAccountRequest  
  **/
-public class ModifyAccountRequest  implements Serializable , IAccountRequest {
 
-    private static final long serialVersionUID = -1770709149L;
+public class ModifyAccountRequest implements Serializable {
 
-    @SerializedName("accountID") private final Long accountID;
-    @SerializedName("username") private final Optional<String> username;
-    @SerializedName("status") private final Optional<String> status;
-    @SerializedName("initiatorSecret") private final Optional<CHAPSecret> initiatorSecret;
-    @SerializedName("targetSecret") private final Optional<CHAPSecret> targetSecret;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    public static final long serialVersionUID = 357601812538223462L;
+    @SerializedName("accountID") private Long accountID;
+    @SerializedName("username") private Optional<String> username;
+    @SerializedName("status") private Optional<String> status;
+    @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
+    @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "ModifyAccount" API Service call.
-     * @param accountID [required] AccountID for the account to modify.
-     * @param username (optional) Change the username of the account to this value.
-     * @param status (optional) Status of the account.
-     * @param initiatorSecret (optional) CHAP secret to use for the initiator.
-     * @param targetSecret (optional) CHAP secret to use for the target (mutual CHAP authentication).
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ModifyAccountRequest(Long accountID, Optional<String> username, Optional<String> status, Optional<CHAPSecret> initiatorSecret, Optional<CHAPSecret> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
-        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
-        this.username = (username == null) ? Optional.<String>empty() : username;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public ModifyAccountRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyAccountRequest(
+        Long accountID,
+        Optional<String> username,
+        Optional<String> status,
+        Optional<CHAPSecret> initiatorSecret,
+        Optional<CHAPSecret> targetSecret,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.accountID = accountID;
+        this.username = (username == null) ? Optional.<String>empty() : username;
         this.status = (status == null) ? Optional.<String>empty() : status;
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
-
-    /**
+    /** 
      * AccountID for the account to modify.
      **/
-    public Long getAccountID() {
-        return this.accountID;
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
+        this.accountID = accountID;
     }
-
-    /**
+    /** 
      * Change the username of the account to this value.
      **/
-    public Optional<String> getUsername() {
-        return this.username;
+    public Optional<String> getUsername() { return this.username; }
+    public void setUsername(Optional<String> username) { 
+        this.username = (username == null) ? Optional.<String>empty() : username;
     }
-
-    /**
+    /** 
      * Status of the account.
      **/
-    public Optional<String> getStatus() {
-        return this.status;
+    public Optional<String> getStatus() { return this.status; }
+    public void setStatus(Optional<String> status) { 
+        this.status = (status == null) ? Optional.<String>empty() : status;
     }
-
-    /**
+    /** 
      * CHAP secret to use for the initiator.
      * Should be 12-16 characters long and impenetrable.
      **/
-    public Optional<CHAPSecret> getInitiatorSecret() {
-        return this.initiatorSecret;
+    public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
+    public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) { 
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
     }
-
-    /**
+    /** 
      * CHAP secret to use for the target (mutual CHAP authentication).
      * Should be 12-16 characters long and impenetrable.
      **/
-    public Optional<CHAPSecret> getTargetSecret() {
-        return this.targetSecret;
+    public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
+    public void setTargetSecret(Optional<CHAPSecret> targetSecret) { 
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -119,21 +115,32 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyAccountRequest that = (ModifyAccountRequest) o;
-        
 
-        return Objects.equals( accountID , that.accountID )
-            && Objects.equals( username , that.username )
-            && Objects.equals( status , that.status )
-            && Objects.equals( initiatorSecret , that.initiatorSecret )
-            && Objects.equals( targetSecret , that.targetSecret )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(accountID, that.accountID) && 
+            Objects.equals(username, that.username) && 
+            Objects.equals(status, that.status) && 
+            Objects.equals(initiatorSecret, that.initiatorSecret) && 
+            Objects.equals(targetSecret, that.targetSecret) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID, username, status, initiatorSecret, targetSecret, attributes );
+        return Objects.hash( accountID,username,status,initiatorSecret,targetSecret,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("accountID", accountID);
+        map.put("username", username);
+        map.put("status", status);
+        map.put("initiatorSecret", initiatorSecret);
+        map.put("targetSecret", targetSecret);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -141,16 +148,21 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         sb.append( "{ " );
 
         sb.append(" accountID : ").append(accountID).append(",");
-        if(null != username && username.isPresent())
-            sb.append(" username : ").append(username.get()).append(",");
-        if(null != status && status.isPresent())
-            sb.append(" status : ").append(status.get()).append(",");
-        if(null != initiatorSecret && initiatorSecret.isPresent())
-            sb.append(" initiatorSecret : ").append(initiatorSecret.get()).append(",");
-        if(null != targetSecret && targetSecret.isPresent())
-            sb.append(" targetSecret : ").append(targetSecret.get()).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        if(null != username && username.isPresent()){
+            sb.append(" username : ").append(username).append(",");
+        }
+        if(null != status && status.isPresent()){
+            sb.append(" status : ").append(status).append(",");
+        }
+        if(null != initiatorSecret && initiatorSecret.isPresent()){
+            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+        }
+        if(null != targetSecret && targetSecret.isPresent()){
+            sb.append(" targetSecret : ").append(targetSecret).append(",");
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -184,7 +196,7 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
                          this.status,
                          this.initiatorSecret,
                          this.targetSecret,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private ModifyAccountRequest.Builder buildFrom(final ModifyAccountRequest req) {
@@ -229,5 +241,4 @@ public class ModifyAccountRequest  implements Serializable , IAccountRequest {
         }
 
     }
-
 }

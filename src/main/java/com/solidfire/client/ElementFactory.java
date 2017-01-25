@@ -17,19 +17,19 @@
 package com.solidfire.client;
 
 import com.solidfire.element.api.SolidFireElement;
-import com.solidfire.jsvcgen.client.RequestDispatcher;
-import com.solidfire.jsvcgen.javautil.Optional;
+import com.solidfire.core.client.RequestDispatcher;
+import com.solidfire.core.javautil.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.solidfire.jsvcgen.javautil.Optional.of;
+import static com.solidfire.core.javautil.Optional.of;
 
 public class ElementFactory extends AbstractFactory<SolidFireElement> {
 
     private static final Logger log = LoggerFactory.getLogger(ElementFactory.class);
 
     private static final double MIN_SDK_VERSION = 7.0;
-    private static final double MAX_SDK_VERSION = 8.4;
+    private static final double MAX_SDK_VERSION = 9.0;
 
     private ElementFactory() {
     }

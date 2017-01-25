@@ -18,69 +18,65 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ListVolumesForAccount" API Service call.
+ * ListVolumesForAccountRequest  
  **/
-public class ListVolumesForAccountRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1165429088L;
+public class ListVolumesForAccountRequest implements Serializable {
 
-    @SerializedName("accountID") private final Long accountID;
-    @SerializedName("startVolumeID") private final Optional<Long> startVolumeID;
-    @SerializedName("limit") private final Optional<Long> limit;
+    public static final long serialVersionUID = 245848432924198062L;
+    @SerializedName("accountID") private Long accountID;
+    @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
+    @SerializedName("limit") private Optional<Long> limit;
 
-    /**
-     * The Request object for the "ListVolumesForAccount" API Service call.
-     * @param accountID [required] The ID of the account to list the volumes for.
-     * @param startVolumeID (optional) The ID of the first volume to list.
-     * @param limit (optional) The maximum number of volumes to return from the API.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListVolumesForAccountRequest(Long accountID, Optional<Long> startVolumeID, Optional<Long> limit) {
+    public ListVolumesForAccountRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListVolumesForAccountRequest(
+        Long accountID,
+        Optional<Long> startVolumeID,
+        Optional<Long> limit
+    )
+    {
         this.accountID = accountID;
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
-
-    /**
+    /** 
      * The ID of the account to list the volumes for.
      **/
-    public Long getAccountID() {
-        return this.accountID;
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
+        this.accountID = accountID;
     }
-
-    /**
+    /** 
      * The ID of the first volume to list.
      * This can be useful for paging results.
      * By default, this starts at the lowest VolumeID.
      **/
-    public Optional<Long> getStartVolumeID() {
-        return this.startVolumeID;
+    public Optional<Long> getStartVolumeID() { return this.startVolumeID; }
+    public void setStartVolumeID(Optional<Long> startVolumeID) { 
+        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
     }
-
-    /**
+    /** 
      * The maximum number of volumes to return from the API.
      **/
-    public Optional<Long> getLimit() {
-        return this.limit;
+    public Optional<Long> getLimit() { return this.limit; }
+    public void setLimit(Optional<Long> limit) { 
+        this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
     @Override
@@ -89,18 +85,26 @@ public class ListVolumesForAccountRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumesForAccountRequest that = (ListVolumesForAccountRequest) o;
-        
 
-        return Objects.equals( accountID , that.accountID )
-            && Objects.equals( startVolumeID , that.startVolumeID )
-            && Objects.equals( limit , that.limit );
+        return 
+            Objects.equals(accountID, that.accountID) && 
+            Objects.equals(startVolumeID, that.startVolumeID) && 
+            Objects.equals(limit, that.limit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID, startVolumeID, limit );
+        return Objects.hash( accountID,startVolumeID,limit );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("accountID", accountID);
+        map.put("startVolumeID", startVolumeID);
+        map.put("limit", limit);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -108,10 +112,12 @@ public class ListVolumesForAccountRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" accountID : ").append(accountID).append(",");
-        if(null != startVolumeID && startVolumeID.isPresent())
-            sb.append(" startVolumeID : ").append(startVolumeID.get()).append(",");
-        if(null != limit && limit.isPresent())
-            sb.append(" limit : ").append(limit.get());
+        if(null != startVolumeID && startVolumeID.isPresent()){
+            sb.append(" startVolumeID : ").append(startVolumeID).append(",");
+        }
+        if(null != limit && limit.isPresent()){
+            sb.append(" limit : ").append(limit).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -139,7 +145,7 @@ public class ListVolumesForAccountRequest  implements Serializable  {
             return new ListVolumesForAccountRequest (
                          this.accountID,
                          this.startVolumeID,
-                         this.limit            );
+                         this.limit);
         }
 
         private ListVolumesForAccountRequest.Builder buildFrom(final ListVolumesForAccountRequest req) {
@@ -166,5 +172,4 @@ public class ListVolumesForAccountRequest  implements Serializable  {
         }
 
     }
-
 }

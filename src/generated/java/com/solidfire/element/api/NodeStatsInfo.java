@@ -18,153 +18,152 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * NodeStatsInfo  
  **/
-public class NodeStatsInfo  implements Serializable  {
 
-    private static final long serialVersionUID = -195709558L;
+public class NodeStatsInfo implements Serializable {
 
-    @SerializedName("cBytesIn") private final Long cBytesIn;
-    @SerializedName("cBytesOut") private final Long cBytesOut;
-    @SerializedName("cpu") private final Long cpu;
-    @SerializedName("mBytesIn") private final Long mBytesIn;
-    @SerializedName("mBytesOut") private final Long mBytesOut;
-    @SerializedName("networkUtilizationCluster") private final Long networkUtilizationCluster;
-    @SerializedName("networkUtilizationStorage") private final Long networkUtilizationStorage;
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("sBytesIn") private final Long sBytesIn;
-    @SerializedName("sBytesOut") private final Long sBytesOut;
-    @SerializedName("timestamp") private final String timestamp;
-    @SerializedName("usedMemory") private final Long usedMemory;
+    public static final long serialVersionUID = 7349711922328450412L;
+    @SerializedName("cBytesIn") private Long cBytesIn;
+    @SerializedName("cBytesOut") private Long cBytesOut;
+    @SerializedName("cpu") private Long cpu;
+    @SerializedName("mBytesIn") private Long mBytesIn;
+    @SerializedName("mBytesOut") private Long mBytesOut;
+    @SerializedName("networkUtilizationCluster") private Long networkUtilizationCluster;
+    @SerializedName("networkUtilizationStorage") private Long networkUtilizationStorage;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("sBytesIn") private Long sBytesIn;
+    @SerializedName("sBytesOut") private Long sBytesOut;
+    @SerializedName("timestamp") private String timestamp;
+    @SerializedName("usedMemory") private Long usedMemory;
 
-    /**
-     * 
-     * @param cBytesIn [required] Bytes in on the cluster interface.
-     * @param cBytesOut [required] Bytes out on the cluster interface.
-     * @param cpu [required] CPU Usage %
-     * @param mBytesIn [required] Bytes in on the management interface.
-     * @param mBytesOut [required] Bytes out on the management interface.
-     * @param networkUtilizationCluster [required] Network interface utilization (in %) for the cluster network interface.
-     * @param networkUtilizationStorage [required] Network interface utilization (in %) for the storage network interface.
-     * @param nodeID [required] 
-     * @param sBytesIn [required] Bytes in on the storage interface.
-     * @param sBytesOut [required] Bytes out on the storage interface.
-     * @param timestamp [required] Current time in UTC format ISO 8691 date string.
-     * @param usedMemory [required] Total memory usage in bytes.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public NodeStatsInfo(Long cBytesIn, Long cBytesOut, Long cpu, Long mBytesIn, Long mBytesOut, Long networkUtilizationCluster, Long networkUtilizationStorage, Long nodeID, Long sBytesIn, Long sBytesOut, String timestamp, Long usedMemory) {
+    public NodeStatsInfo() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public NodeStatsInfo(
+        Long cBytesIn,
+        Long cBytesOut,
+        Long cpu,
+        Long mBytesIn,
+        Long mBytesOut,
+        Long networkUtilizationCluster,
+        Long networkUtilizationStorage,
+        Long nodeID,
+        Long sBytesIn,
+        Long sBytesOut,
+        String timestamp,
+        Long usedMemory
+    )
+    {
+        this.cBytesIn = cBytesIn;
+        this.cBytesOut = cBytesOut;
+        this.cpu = cpu;
         this.mBytesIn = mBytesIn;
+        this.mBytesOut = mBytesOut;
         this.networkUtilizationCluster = networkUtilizationCluster;
+        this.networkUtilizationStorage = networkUtilizationStorage;
+        this.nodeID = nodeID;
+        this.sBytesIn = sBytesIn;
+        this.sBytesOut = sBytesOut;
         this.timestamp = timestamp;
         this.usedMemory = usedMemory;
-        this.sBytesIn = sBytesIn;
-        this.networkUtilizationStorage = networkUtilizationStorage;
-        this.cpu = cpu;
-        this.mBytesOut = mBytesOut;
-        this.sBytesOut = sBytesOut;
-        this.nodeID = nodeID;
-        this.cBytesOut = cBytesOut;
-        this.cBytesIn = cBytesIn;
     }
 
-
-    /**
+    /** 
      * Bytes in on the cluster interface.
      **/
-    public Long getCBytesIn() {
-        return this.cBytesIn;
+    public Long getCBytesIn() { return this.cBytesIn; }
+    public void setCBytesIn(Long cBytesIn) { 
+        this.cBytesIn = cBytesIn;
     }
-
-    /**
+    /** 
      * Bytes out on the cluster interface.
      **/
-    public Long getCBytesOut() {
-        return this.cBytesOut;
+    public Long getCBytesOut() { return this.cBytesOut; }
+    public void setCBytesOut(Long cBytesOut) { 
+        this.cBytesOut = cBytesOut;
     }
-
-    /**
+    /** 
      * CPU Usage %
      **/
-    public Long getCpu() {
-        return this.cpu;
+    public Long getCpu() { return this.cpu; }
+    public void setCpu(Long cpu) { 
+        this.cpu = cpu;
     }
-
-    /**
+    /** 
      * Bytes in on the management interface.
      **/
-    public Long getMBytesIn() {
-        return this.mBytesIn;
+    public Long getMBytesIn() { return this.mBytesIn; }
+    public void setMBytesIn(Long mBytesIn) { 
+        this.mBytesIn = mBytesIn;
     }
-
-    /**
+    /** 
      * Bytes out on the management interface.
      **/
-    public Long getMBytesOut() {
-        return this.mBytesOut;
+    public Long getMBytesOut() { return this.mBytesOut; }
+    public void setMBytesOut(Long mBytesOut) { 
+        this.mBytesOut = mBytesOut;
     }
-
-    /**
+    /** 
      * Network interface utilization (in %) for the cluster network interface.
      **/
-    public Long getNetworkUtilizationCluster() {
-        return this.networkUtilizationCluster;
+    public Long getNetworkUtilizationCluster() { return this.networkUtilizationCluster; }
+    public void setNetworkUtilizationCluster(Long networkUtilizationCluster) { 
+        this.networkUtilizationCluster = networkUtilizationCluster;
     }
-
-    /**
+    /** 
      * Network interface utilization (in %) for the storage network interface.
      **/
-    public Long getNetworkUtilizationStorage() {
-        return this.networkUtilizationStorage;
+    public Long getNetworkUtilizationStorage() { return this.networkUtilizationStorage; }
+    public void setNetworkUtilizationStorage(Long networkUtilizationStorage) { 
+        this.networkUtilizationStorage = networkUtilizationStorage;
     }
-    public Long getNodeID() {
-        return this.nodeID;
+    /** 
+     **/
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
     }
-
-    /**
+    /** 
      * Bytes in on the storage interface.
      **/
-    public Long getSBytesIn() {
-        return this.sBytesIn;
+    public Long getSBytesIn() { return this.sBytesIn; }
+    public void setSBytesIn(Long sBytesIn) { 
+        this.sBytesIn = sBytesIn;
     }
-
-    /**
+    /** 
      * Bytes out on the storage interface.
      **/
-    public Long getSBytesOut() {
-        return this.sBytesOut;
+    public Long getSBytesOut() { return this.sBytesOut; }
+    public void setSBytesOut(Long sBytesOut) { 
+        this.sBytesOut = sBytesOut;
     }
-
-    /**
+    /** 
      * Current time in UTC format ISO 8691 date string.
      **/
-    public String getTimestamp() {
-        return this.timestamp;
+    public String getTimestamp() { return this.timestamp; }
+    public void setTimestamp(String timestamp) { 
+        this.timestamp = timestamp;
     }
-
-    /**
+    /** 
      * Total memory usage in bytes.
      **/
-    public Long getUsedMemory() {
-        return this.usedMemory;
+    public Long getUsedMemory() { return this.usedMemory; }
+    public void setUsedMemory(Long usedMemory) { 
+        this.usedMemory = usedMemory;
     }
 
     @Override
@@ -173,27 +172,44 @@ public class NodeStatsInfo  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         NodeStatsInfo that = (NodeStatsInfo) o;
-        
 
-        return Objects.equals( cBytesIn , that.cBytesIn )
-            && Objects.equals( cBytesOut , that.cBytesOut )
-            && Objects.equals( cpu , that.cpu )
-            && Objects.equals( mBytesIn , that.mBytesIn )
-            && Objects.equals( mBytesOut , that.mBytesOut )
-            && Objects.equals( networkUtilizationCluster , that.networkUtilizationCluster )
-            && Objects.equals( networkUtilizationStorage , that.networkUtilizationStorage )
-            && Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( sBytesIn , that.sBytesIn )
-            && Objects.equals( sBytesOut , that.sBytesOut )
-            && Objects.equals( timestamp , that.timestamp )
-            && Objects.equals( usedMemory , that.usedMemory );
+        return 
+            Objects.equals(cBytesIn, that.cBytesIn) && 
+            Objects.equals(cBytesOut, that.cBytesOut) && 
+            Objects.equals(cpu, that.cpu) && 
+            Objects.equals(mBytesIn, that.mBytesIn) && 
+            Objects.equals(mBytesOut, that.mBytesOut) && 
+            Objects.equals(networkUtilizationCluster, that.networkUtilizationCluster) && 
+            Objects.equals(networkUtilizationStorage, that.networkUtilizationStorage) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(sBytesIn, that.sBytesIn) && 
+            Objects.equals(sBytesOut, that.sBytesOut) && 
+            Objects.equals(timestamp, that.timestamp) && 
+            Objects.equals(usedMemory, that.usedMemory);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( cBytesIn, cBytesOut, cpu, mBytesIn, mBytesOut, networkUtilizationCluster, networkUtilizationStorage, nodeID, sBytesIn, sBytesOut, timestamp, usedMemory );
+        return Objects.hash( cBytesIn,cBytesOut,cpu,mBytesIn,mBytesOut,networkUtilizationCluster,networkUtilizationStorage,nodeID,sBytesIn,sBytesOut,timestamp,usedMemory );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("cBytesIn", cBytesIn);
+        map.put("cBytesOut", cBytesOut);
+        map.put("cpu", cpu);
+        map.put("mBytesIn", mBytesIn);
+        map.put("mBytesOut", mBytesOut);
+        map.put("networkUtilizationCluster", networkUtilizationCluster);
+        map.put("networkUtilizationStorage", networkUtilizationStorage);
+        map.put("nodeID", nodeID);
+        map.put("sBytesIn", sBytesIn);
+        map.put("sBytesOut", sBytesOut);
+        map.put("timestamp", timestamp);
+        map.put("usedMemory", usedMemory);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -211,7 +227,7 @@ public class NodeStatsInfo  implements Serializable  {
         sb.append(" sBytesIn : ").append(sBytesIn).append(",");
         sb.append(" sBytesOut : ").append(sBytesOut).append(",");
         sb.append(" timestamp : ").append(timestamp).append(",");
-        sb.append(" usedMemory : ").append(usedMemory);
+        sb.append(" usedMemory : ").append(usedMemory).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -257,7 +273,7 @@ public class NodeStatsInfo  implements Serializable  {
                          this.sBytesIn,
                          this.sBytesOut,
                          this.timestamp,
-                         this.usedMemory            );
+                         this.usedMemory);
         }
 
         private NodeStatsInfo.Builder buildFrom(final NodeStatsInfo req) {
@@ -338,5 +354,4 @@ public class NodeStatsInfo  implements Serializable  {
         }
 
     }
-
 }

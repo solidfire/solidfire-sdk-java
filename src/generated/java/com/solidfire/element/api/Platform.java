@@ -18,77 +18,73 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * Platform  
  **/
-public class Platform  implements Serializable  {
 
-    private static final long serialVersionUID = -1626154017L;
+public class Platform implements Serializable {
 
-    @SerializedName("nodeType") private final String nodeType;
-    @SerializedName("chassisType") private final String chassisType;
-    @SerializedName("cpuModel") private final String cpuModel;
-    @SerializedName("nodeMemoryGB") private final Long nodeMemoryGB;
+    public static final long serialVersionUID = -6612096304691711343L;
+    @SerializedName("nodeType") private String nodeType;
+    @SerializedName("chassisType") private String chassisType;
+    @SerializedName("cpuModel") private String cpuModel;
+    @SerializedName("nodeMemoryGB") private Long nodeMemoryGB;
 
-    /**
-     * 
-     * @param nodeType [required] SolidFire's name for this platform.
-     * @param chassisType [required] Name of the chassis (example: "R620").
-     * @param cpuModel [required] The model of CPU used on this platform.
-     * @param nodeMemoryGB [required] The amount of memory on this platform in GiB.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public Platform(String nodeType, String chassisType, String cpuModel, Long nodeMemoryGB) {
+    public Platform() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public Platform(
+        String nodeType,
+        String chassisType,
+        String cpuModel,
+        Long nodeMemoryGB
+    )
+    {
         this.nodeType = nodeType;
         this.chassisType = chassisType;
         this.cpuModel = cpuModel;
         this.nodeMemoryGB = nodeMemoryGB;
     }
 
-
-    /**
+    /** 
      * SolidFire's name for this platform.
      **/
-    public String getNodeType() {
-        return this.nodeType;
+    public String getNodeType() { return this.nodeType; }
+    public void setNodeType(String nodeType) { 
+        this.nodeType = nodeType;
     }
-
-    /**
+    /** 
      * Name of the chassis (example: "R620").
      **/
-    public String getChassisType() {
-        return this.chassisType;
+    public String getChassisType() { return this.chassisType; }
+    public void setChassisType(String chassisType) { 
+        this.chassisType = chassisType;
     }
-
-    /**
+    /** 
      * The model of CPU used on this platform.
      **/
-    public String getCpuModel() {
-        return this.cpuModel;
+    public String getCpuModel() { return this.cpuModel; }
+    public void setCpuModel(String cpuModel) { 
+        this.cpuModel = cpuModel;
     }
-
-    /**
+    /** 
      * The amount of memory on this platform in GiB.
      **/
-    public Long getNodeMemoryGB() {
-        return this.nodeMemoryGB;
+    public Long getNodeMemoryGB() { return this.nodeMemoryGB; }
+    public void setNodeMemoryGB(Long nodeMemoryGB) { 
+        this.nodeMemoryGB = nodeMemoryGB;
     }
 
     @Override
@@ -97,19 +93,28 @@ public class Platform  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         Platform that = (Platform) o;
-        
 
-        return Objects.equals( nodeType , that.nodeType )
-            && Objects.equals( chassisType , that.chassisType )
-            && Objects.equals( cpuModel , that.cpuModel )
-            && Objects.equals( nodeMemoryGB , that.nodeMemoryGB );
+        return 
+            Objects.equals(nodeType, that.nodeType) && 
+            Objects.equals(chassisType, that.chassisType) && 
+            Objects.equals(cpuModel, that.cpuModel) && 
+            Objects.equals(nodeMemoryGB, that.nodeMemoryGB);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeType, chassisType, cpuModel, nodeMemoryGB );
+        return Objects.hash( nodeType,chassisType,cpuModel,nodeMemoryGB );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodeType", nodeType);
+        map.put("chassisType", chassisType);
+        map.put("cpuModel", cpuModel);
+        map.put("nodeMemoryGB", nodeMemoryGB);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -119,7 +124,7 @@ public class Platform  implements Serializable  {
         sb.append(" nodeType : ").append(nodeType).append(",");
         sb.append(" chassisType : ").append(chassisType).append(",");
         sb.append(" cpuModel : ").append(cpuModel).append(",");
-        sb.append(" nodeMemoryGB : ").append(nodeMemoryGB);
+        sb.append(" nodeMemoryGB : ").append(nodeMemoryGB).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -149,7 +154,7 @@ public class Platform  implements Serializable  {
                          this.nodeType,
                          this.chassisType,
                          this.cpuModel,
-                         this.nodeMemoryGB            );
+                         this.nodeMemoryGB);
         }
 
         private Platform.Builder buildFrom(final Platform req) {
@@ -182,5 +187,4 @@ public class Platform  implements Serializable  {
         }
 
     }
-
 }

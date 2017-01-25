@@ -18,97 +18,123 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * EventInfo  
  **/
-public class EventInfo  implements Serializable  {
 
-    private static final long serialVersionUID = -243936856L;
+public class EventInfo implements Serializable {
 
-    @SerializedName("eventID") private final Long eventID;
-    @SerializedName("severity") private final Long severity;
-    @SerializedName("eventInfoType") private final String eventInfoType;
-    @SerializedName("message") private final String message;
-    @SerializedName("serviceID") private final Long serviceID;
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("driveID") private final Long driveID;
-    @SerializedName("timeOfReport") private final String timeOfReport;
-    @SerializedName("timeOfPublish") private final String timeOfPublish;
-    @SerializedName("details") private final Object details;
+    public static final long serialVersionUID = 848178818129099493L;
+    @SerializedName("eventID") private Long eventID;
+    @SerializedName("severity") private Long severity;
+    @SerializedName("eventInfoType") private String eventInfoType;
+    @SerializedName("message") private String message;
+    @SerializedName("serviceID") private Long serviceID;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("driveID") private Long driveID;
+    @SerializedName("timeOfReport") private String timeOfReport;
+    @SerializedName("timeOfPublish") private String timeOfPublish;
+    @SerializedName("details") private Object details;
 
-    /**
-     * 
-     * @param eventID [required] 
-     * @param severity [required] 
-     * @param eventInfoType [required] 
-     * @param message [required] 
-     * @param serviceID [required] 
-     * @param nodeID [required] 
-     * @param driveID [required] 
-     * @param timeOfReport [required] 
-     * @param timeOfPublish [required] 
-     * @param details [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public EventInfo(Long eventID, Long severity, String eventInfoType, String message, Long serviceID, Long nodeID, Long driveID, String timeOfReport, String timeOfPublish, Object details) {
+    public EventInfo() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public EventInfo(
+        Long eventID,
+        Long severity,
+        String eventInfoType,
+        String message,
+        Long serviceID,
+        Long nodeID,
+        Long driveID,
+        String timeOfReport,
+        String timeOfPublish,
+        Object details
+    )
+    {
         this.eventID = eventID;
-        this.timeOfReport = timeOfReport;
-        this.details = details;
-        this.message = message;
         this.severity = severity;
-        this.timeOfPublish = timeOfPublish;
-        this.driveID = driveID;
-        this.nodeID = nodeID;
+        this.eventInfoType = eventInfoType;
+        this.message = message;
         this.serviceID = serviceID;
+        this.nodeID = nodeID;
+        this.driveID = driveID;
+        this.timeOfReport = timeOfReport;
+        this.timeOfPublish = timeOfPublish;
+        this.details = details;
+    }
+
+    /** 
+     **/
+    public Long getEventID() { return this.eventID; }
+    public void setEventID(Long eventID) { 
+        this.eventID = eventID;
+    }
+    /** 
+     **/
+    public Long getSeverity() { return this.severity; }
+    public void setSeverity(Long severity) { 
+        this.severity = severity;
+    }
+    /** 
+     **/
+    public String getEventInfoType() { return this.eventInfoType; }
+    public void setEventInfoType(String eventInfoType) { 
         this.eventInfoType = eventInfoType;
     }
-
-    public Long getEventID() {
-        return this.eventID;
+    /** 
+     **/
+    public String getMessage() { return this.message; }
+    public void setMessage(String message) { 
+        this.message = message;
     }
-    public Long getSeverity() {
-        return this.severity;
+    /** 
+     **/
+    public Long getServiceID() { return this.serviceID; }
+    public void setServiceID(Long serviceID) { 
+        this.serviceID = serviceID;
     }
-    public String getEventInfoType() {
-        return this.eventInfoType;
+    /** 
+     **/
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
     }
-    public String getMessage() {
-        return this.message;
+    /** 
+     **/
+    public Long getDriveID() { return this.driveID; }
+    public void setDriveID(Long driveID) { 
+        this.driveID = driveID;
     }
-    public Long getServiceID() {
-        return this.serviceID;
+    /** 
+     **/
+    public String getTimeOfReport() { return this.timeOfReport; }
+    public void setTimeOfReport(String timeOfReport) { 
+        this.timeOfReport = timeOfReport;
     }
-    public Long getNodeID() {
-        return this.nodeID;
+    /** 
+     **/
+    public String getTimeOfPublish() { return this.timeOfPublish; }
+    public void setTimeOfPublish(String timeOfPublish) { 
+        this.timeOfPublish = timeOfPublish;
     }
-    public Long getDriveID() {
-        return this.driveID;
-    }
-    public String getTimeOfReport() {
-        return this.timeOfReport;
-    }
-    public String getTimeOfPublish() {
-        return this.timeOfPublish;
-    }
-    public Object getDetails() {
-        return this.details;
+    /** 
+     **/
+    public Object getDetails() { return this.details; }
+    public void setDetails(Object details) { 
+        this.details = details;
     }
 
     @Override
@@ -117,25 +143,40 @@ public class EventInfo  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         EventInfo that = (EventInfo) o;
-        
 
-        return Objects.equals( eventID , that.eventID )
-            && Objects.equals( severity , that.severity )
-            && Objects.equals( eventInfoType , that.eventInfoType )
-            && Objects.equals( message , that.message )
-            && Objects.equals( serviceID , that.serviceID )
-            && Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( driveID , that.driveID )
-            && Objects.equals( timeOfReport , that.timeOfReport )
-            && Objects.equals( timeOfPublish , that.timeOfPublish )
-            && Objects.equals( details , that.details );
+        return 
+            Objects.equals(eventID, that.eventID) && 
+            Objects.equals(severity, that.severity) && 
+            Objects.equals(eventInfoType, that.eventInfoType) && 
+            Objects.equals(message, that.message) && 
+            Objects.equals(serviceID, that.serviceID) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(driveID, that.driveID) && 
+            Objects.equals(timeOfReport, that.timeOfReport) && 
+            Objects.equals(timeOfPublish, that.timeOfPublish) && 
+            Objects.equals(details, that.details);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( eventID, severity, eventInfoType, message, serviceID, nodeID, driveID, timeOfReport, timeOfPublish, details );
+        return Objects.hash( eventID,severity,eventInfoType,message,serviceID,nodeID,driveID,timeOfReport,timeOfPublish,details );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("eventID", eventID);
+        map.put("severity", severity);
+        map.put("eventInfoType", eventInfoType);
+        map.put("message", message);
+        map.put("serviceID", serviceID);
+        map.put("nodeID", nodeID);
+        map.put("driveID", driveID);
+        map.put("timeOfReport", timeOfReport);
+        map.put("timeOfPublish", timeOfPublish);
+        map.put("details", details);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -151,7 +192,7 @@ public class EventInfo  implements Serializable  {
         sb.append(" driveID : ").append(driveID).append(",");
         sb.append(" timeOfReport : ").append(timeOfReport).append(",");
         sb.append(" timeOfPublish : ").append(timeOfPublish).append(",");
-        sb.append(" details : ").append(details);
+        sb.append(" details : ").append(details).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -193,7 +234,7 @@ public class EventInfo  implements Serializable  {
                          this.driveID,
                          this.timeOfReport,
                          this.timeOfPublish,
-                         this.details            );
+                         this.details);
         }
 
         private EventInfo.Builder buildFrom(final EventInfo req) {
@@ -262,5 +303,4 @@ public class EventInfo  implements Serializable  {
         }
 
     }
-
 }

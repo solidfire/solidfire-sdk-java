@@ -13,7 +13,7 @@ Examples for:
 
 ### Documentation
 
-Further documentation for each method and type can be found at our [Java documentation site](http://solidfire.github.io/solidfire-sdk-java/doc/1.1.0.79). 
+Further documentation for each method and type can be found at our [Java documentation site](http://solidfire.github.io/solidfire-sdk-java/latest/api/). 
 
 ### List all Accounts
 
@@ -22,7 +22,7 @@ To list all accounts on a cluster:
 ~~~ java
 
     // Create connection to SF Cluster
-    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password");
     
     // create the request object but leave all properties as default
     ListAccountsRequest listAccountsRequest = ListAccountsRequest.builder().build();
@@ -44,7 +44,7 @@ To get a single account by ID:
 ~~~ java
 
     // Create connection to SF Cluster
-    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password");
 
     // send the request and gather the result
     GetAccountResult getAccountResult = sfe.getAccountByID(1L);
@@ -59,7 +59,7 @@ To get a single account by username:
 ~~~ java
 
     // Create connection to SF Cluster
-    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password");
 
     // send the request and gather the result
     GetAccountResult getAccountResult = sfe.getAccountByName("username-of-account");
@@ -79,7 +79,7 @@ First, we create an account with only a username:
 ~~~ java
 
     // Create connection to SF Cluster
-    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password");
     
     // create a request object and set the username property
     AddAccountRequest addAccountRequest = AddAccountRequest.builder()
@@ -100,7 +100,7 @@ the `IntitiatorSecret` property. The `TargetSecret` will be auto-generated durin
 ~~~ java
 
     // Create connection to SF Cluster
-    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password");
     
     // create a request object and set the username property
     AddAccountRequest addAccountRequest = AddAccountRequest.builder()
@@ -125,7 +125,7 @@ In this example, we will instruct the API to autogenerate a new `TargetSecret` v
 ~~~ java
 
     // Create connection to SF Cluster
-    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password", "8.0");
+    SolidFireElement sfe = ElementFactory.create("mvip", "username", "password");
     
     // create a request object and set the username property
     ModifyAccountRequest modifyAccountRequest = ModifyAccountRequest.builder()

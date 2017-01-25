@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "TestConnectEnsemble" API Service call.
+ * TestConnectEnsembleRequest  
  **/
-public class TestConnectEnsembleRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1350494679L;
+public class TestConnectEnsembleRequest implements Serializable {
 
-    @SerializedName("ensemble") private final Optional<String> ensemble;
+    public static final long serialVersionUID = 152307940432458740L;
+    @SerializedName("ensemble") private Optional<String> ensemble;
 
-    /**
-     * The Request object for the "TestConnectEnsemble" API Service call.
-     * @param ensemble (optional) A comma-separated list of ensemble node CIPs for connectivity testing
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public TestConnectEnsembleRequest(Optional<String> ensemble) {
+    public TestConnectEnsembleRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public TestConnectEnsembleRequest(
+        Optional<String> ensemble
+    )
+    {
         this.ensemble = (ensemble == null) ? Optional.<String>empty() : ensemble;
     }
 
-
-    /**
+    /** 
      * A comma-separated list of ensemble node CIPs for connectivity testing
      **/
-    public Optional<String> getEnsemble() {
-        return this.ensemble;
+    public Optional<String> getEnsemble() { return this.ensemble; }
+    public void setEnsemble(Optional<String> ensemble) { 
+        this.ensemble = (ensemble == null) ? Optional.<String>empty() : ensemble;
     }
 
     @Override
@@ -67,24 +63,31 @@ public class TestConnectEnsembleRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectEnsembleRequest that = (TestConnectEnsembleRequest) o;
-        
 
-        return Objects.equals( ensemble , that.ensemble );
+        return 
+            Objects.equals(ensemble, that.ensemble);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) ensemble );
+        return Objects.hash( ensemble );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("ensemble", ensemble);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != ensemble && ensemble.isPresent())
-            sb.append(" ensemble : ").append(ensemble.get());
+        if(null != ensemble && ensemble.isPresent()){
+            sb.append(" ensemble : ").append(ensemble).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -108,7 +111,7 @@ public class TestConnectEnsembleRequest  implements Serializable  {
 
         public TestConnectEnsembleRequest build() {
             return new TestConnectEnsembleRequest (
-                         this.ensemble            );
+                         this.ensemble);
         }
 
         private TestConnectEnsembleRequest.Builder buildFrom(final TestConnectEnsembleRequest req) {
@@ -123,5 +126,4 @@ public class TestConnectEnsembleRequest  implements Serializable  {
         }
 
     }
-
 }

@@ -18,302 +18,291 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * Volume  
  * Volumes Info is an object containing information about a volume.
+ * The return objects only include "configured" information about the volume and not runtime or usage information.
+ * Information about paired volumes will also be returned.
  **/
-public class Volume  implements Serializable  {
 
-    private static final long serialVersionUID = -2053684118L;
+public class Volume implements Serializable {
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("name") private final String name;
-    @SerializedName("accountID") private final Long accountID;
-    @SerializedName("createTime") private final String createTime;
-    @SerializedName("status") private final String status;
-    @SerializedName("access") private final String access;
-    @SerializedName("enable512e") private final Boolean enable512e;
-    @SerializedName("iqn") private final String iqn;
-    @SerializedName("scsiEUIDeviceID") private final String scsiEUIDeviceID;
-    @SerializedName("scsiNAADeviceID") private final String scsiNAADeviceID;
-    @SerializedName("qos") private final VolumeQOS qos;
-    @SerializedName("volumeAccessGroups") private final Long[] volumeAccessGroups;
-    @SerializedName("volumePairs") private final VolumePair[] volumePairs;
-    @SerializedName("deleteTime") private final Optional<String> deleteTime;
-    @SerializedName("purgeTime") private final Optional<String> purgeTime;
-    @SerializedName("sliceCount") private final Long sliceCount;
-    @SerializedName("totalSize") private final Long totalSize;
-    @SerializedName("blockSize") private final Long blockSize;
-    @SerializedName("virtualVolumeID") private final java.util.UUID virtualVolumeID;
-    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
+    public static final long serialVersionUID = -7686354995119743056L;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("name") private String name;
+    @SerializedName("accountID") private Long accountID;
+    @SerializedName("createTime") private String createTime;
+    @SerializedName("status") private String status;
+    @SerializedName("access") private String access;
+    @SerializedName("enable512e") private Boolean enable512e;
+    @SerializedName("iqn") private String iqn;
+    @SerializedName("scsiEUIDeviceID") private String scsiEUIDeviceID;
+    @SerializedName("scsiNAADeviceID") private String scsiNAADeviceID;
+    @SerializedName("qos") private VolumeQOS qos;
+    @SerializedName("volumeAccessGroups") private Long[] volumeAccessGroups;
+    @SerializedName("volumePairs") private VolumePair[] volumePairs;
+    @SerializedName("deleteTime") private Optional<String> deleteTime;
+    @SerializedName("purgeTime") private Optional<String> purgeTime;
+    @SerializedName("sliceCount") private Long sliceCount;
+    @SerializedName("totalSize") private Long totalSize;
+    @SerializedName("blockSize") private Long blockSize;
+    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
-    /**
-     * Volumes Info is an object containing information about a volume.
-     * The return objects only include "configured" information about the volume and not runtime or usage information.
-     * Information about paired volumes will also be returned.
-     * @param volumeID [required] Unique VolumeID for the volume.
-     * @param name [required] Name of the volume as provided at creation time.
-     * @param accountID [required] Unique AccountID for the account.
-     * @param createTime [required] UTC formatted time the volume was created.
-     * @param status [required] Current status of the volume
-     * @param access [required] Access allowed for the volume
-     * @param enable512e [required] If "true", the volume provides 512 byte sector emulation.
-     * @param iqn [required] Volume iSCSI Qualified Name.
-     * @param scsiEUIDeviceID [required] Globally unique SCSI device identifier for the volume in EUI-64 based 16-byte format.
-     * @param scsiNAADeviceID [required] Globally unique SCSI device identifier for the volume in NAA IEEE Registered Extended format.
-     * @param qos [required] Quality of service settings for this volume.
-     * @param volumeAccessGroups [required] List of volume access groups to which a volume belongs.
-     * @param volumePairs [required] Information about a paired volume.
-     * @param deleteTime (optional) The time this volume was deleted.
-     * @param purgeTime (optional) The time this volume will be purged from the system.
-     * @param sliceCount [required] The number of slices backing this volume.
-     * @param totalSize [required] Total size of this volume in bytes.
-     * @param virtualVolumeID [required] Virtual volume ID this volume backs.
-     * @param attributes [required] List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public Volume(Long volumeID, String name, Long accountID, String createTime, String status, String access, Boolean enable512e, String iqn, String scsiEUIDeviceID, String scsiNAADeviceID, VolumeQOS qos, Long[] volumeAccessGroups, VolumePair[] volumePairs, Optional<String> deleteTime, Optional<String> purgeTime, Long sliceCount, Long totalSize, java.util.UUID virtualVolumeID, java.util.Map<String, Object> attributes) {
+    public Volume() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public Volume(
+        Long volumeID,
+        String name,
+        Long accountID,
+        String createTime,
+        String status,
+        String access,
+        Boolean enable512e,
+        String iqn,
+        String scsiEUIDeviceID,
+        String scsiNAADeviceID,
+        VolumeQOS qos,
+        Long[] volumeAccessGroups,
+        VolumePair[] volumePairs,
+        Optional<String> deleteTime,
+        Optional<String> purgeTime,
+        Long sliceCount,
+        Long totalSize,
+        java.util.UUID virtualVolumeID,
+        java.util.Map<String, Object> attributes
+    )
+    {
+        this.volumeID = volumeID;
         this.name = name;
-        this.volumeAccessGroups = volumeAccessGroups;
+        this.accountID = accountID;
         this.createTime = createTime;
-        this.scsiNAADeviceID = scsiNAADeviceID;
-        this.totalSize = totalSize;
-        this.virtualVolumeID = virtualVolumeID;
+        this.status = status;
+        this.access = access;
         this.enable512e = enable512e;
         this.iqn = iqn;
-        this.blockSize = null;
-        this.attributes = attributes;
-        this.accountID = accountID;
-        this.volumePairs = volumePairs;
-        this.status = status;
-        this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : purgeTime;
-        this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : deleteTime;
-        this.volumeID = volumeID;
         this.scsiEUIDeviceID = scsiEUIDeviceID;
+        this.scsiNAADeviceID = scsiNAADeviceID;
         this.qos = qos;
+        this.volumeAccessGroups = volumeAccessGroups;
+        this.volumePairs = volumePairs;
+        this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : deleteTime;
+        this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : purgeTime;
         this.sliceCount = sliceCount;
-        this.access = access;
+        this.totalSize = totalSize;
+        this.virtualVolumeID = virtualVolumeID;
+        this.attributes = attributes;
     }
-
-    /**
-     * Volumes Info is an object containing information about a volume.
-     * The return objects only include "configured" information about the volume and not runtime or usage information.
-     * Information about paired volumes will also be returned.
-     * @param volumeID [required] Unique VolumeID for the volume.
-     * @param name [required] Name of the volume as provided at creation time.
-     * @param accountID [required] Unique AccountID for the account.
-     * @param createTime [required] UTC formatted time the volume was created.
-     * @param status [required] Current status of the volume
-     * @param access [required] Access allowed for the volume
-     * @param enable512e [required] If "true", the volume provides 512 byte sector emulation.
-     * @param iqn [required] Volume iSCSI Qualified Name.
-     * @param scsiEUIDeviceID [required] Globally unique SCSI device identifier for the volume in EUI-64 based 16-byte format.
-     * @param scsiNAADeviceID [required] Globally unique SCSI device identifier for the volume in NAA IEEE Registered Extended format.
-     * @param qos [required] Quality of service settings for this volume.
-     * @param volumeAccessGroups [required] List of volume access groups to which a volume belongs.
-     * @param volumePairs [required] Information about a paired volume.
-     * @param deleteTime (optional) The time this volume was deleted.
-     * @param purgeTime (optional) The time this volume will be purged from the system.
-     * @param sliceCount [required] The number of slices backing this volume.
-     * @param totalSize [required] Total size of this volume in bytes.
-     * @param blockSize [required] Size of the blocks on the volume.
-     * @param virtualVolumeID [required] Virtual volume ID this volume backs.
-     * @param attributes [required] List of Name/Value pairs in JSON object format.
-     * @since 8.0
-     **/
+    // parameterized constructor
     @Since("8.0")
-    public Volume(Long volumeID, String name, Long accountID, String createTime, String status, String access, Boolean enable512e, String iqn, String scsiEUIDeviceID, String scsiNAADeviceID, VolumeQOS qos, Long[] volumeAccessGroups, VolumePair[] volumePairs, Optional<String> deleteTime, Optional<String> purgeTime, Long sliceCount, Long totalSize, Long blockSize, java.util.UUID virtualVolumeID, java.util.Map<String, Object> attributes) {
+    public Volume(
+        Long volumeID,
+        String name,
+        Long accountID,
+        String createTime,
+        String status,
+        String access,
+        Boolean enable512e,
+        String iqn,
+        String scsiEUIDeviceID,
+        String scsiNAADeviceID,
+        VolumeQOS qos,
+        Long[] volumeAccessGroups,
+        VolumePair[] volumePairs,
+        Optional<String> deleteTime,
+        Optional<String> purgeTime,
+        Long sliceCount,
+        Long totalSize,
+        Long blockSize,
+        java.util.UUID virtualVolumeID,
+        java.util.Map<String, Object> attributes
+    )
+    {
+        this.volumeID = volumeID;
         this.name = name;
-        this.volumeAccessGroups = volumeAccessGroups;
+        this.accountID = accountID;
         this.createTime = createTime;
-        this.scsiNAADeviceID = scsiNAADeviceID;
-        this.totalSize = totalSize;
-        this.virtualVolumeID = virtualVolumeID;
+        this.status = status;
+        this.access = access;
         this.enable512e = enable512e;
         this.iqn = iqn;
-        this.blockSize = blockSize;
-        this.attributes = attributes;
-        this.accountID = accountID;
-        this.volumePairs = volumePairs;
-        this.status = status;
-        this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : purgeTime;
-        this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : deleteTime;
-        this.volumeID = volumeID;
         this.scsiEUIDeviceID = scsiEUIDeviceID;
+        this.scsiNAADeviceID = scsiNAADeviceID;
         this.qos = qos;
+        this.volumeAccessGroups = volumeAccessGroups;
+        this.volumePairs = volumePairs;
+        this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : deleteTime;
+        this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : purgeTime;
         this.sliceCount = sliceCount;
-        this.access = access;
+        this.totalSize = totalSize;
+        this.blockSize = blockSize;
+        this.virtualVolumeID = virtualVolumeID;
+        this.attributes = attributes;
     }
 
-
-    /**
+    /** 
      * Unique VolumeID for the volume.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
     }
-
-    /**
+    /** 
      * Name of the volume as provided at creation time.
      **/
-    public String getName() {
-        return this.name;
+    public String getName() { return this.name; }
+    public void setName(String name) { 
+        this.name = name;
     }
-
-    /**
+    /** 
      * Unique AccountID for the account.
      **/
-    public Long getAccountID() {
-        return this.accountID;
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
+        this.accountID = accountID;
     }
-
-    /**
+    /** 
      * UTC formatted time the volume was created.
      **/
-    public String getCreateTime() {
-        return this.createTime;
+    public String getCreateTime() { return this.createTime; }
+    public void setCreateTime(String createTime) { 
+        this.createTime = createTime;
     }
-
-    /**
+    /** 
      * Current status of the volume
      * init: A volume that is being initialized and is not ready for connections.
      * active: An active volume ready for connections.
      **/
-    public String getStatus() {
-        return this.status;
+    public String getStatus() { return this.status; }
+    public void setStatus(String status) { 
+        this.status = status;
     }
-
-    /**
+    /** 
      * Access allowed for the volume
-     * <br/><b>readOnly</b>: Only read operations are allowed.
-     * <br/><b>readWrite</b>: Reads and writes are allowed.
-     * <br/><b>locked</b>: No reads or writes are allowed.
-     * <br/><b>replicationTarget</b>: Designated as a target volume in a replicated volume pair.
+     * readOnly: Only read operations are allowed.
+     * readWrite: Reads and writes are allowed.
+     * locked: No reads or writes are allowed.
+     * replicationTarget: Designated as a target volume in a replicated volume pair.
      **/
-    public String getAccess() {
-        return this.access;
+    public String getAccess() { return this.access; }
+    public void setAccess(String access) { 
+        this.access = access;
     }
-
-    /**
+    /** 
      * If "true", the volume provides 512 byte sector emulation.
      **/
-    public Boolean getEnable512e() {
-        return this.enable512e;
+    public Boolean getEnable512e() { return this.enable512e; }
+    public void setEnable512e(Boolean enable512e) { 
+        this.enable512e = enable512e;
     }
-
-    /**
+    /** 
      * Volume iSCSI Qualified Name.
      **/
-    public String getIqn() {
-        return this.iqn;
+    public String getIqn() { return this.iqn; }
+    public void setIqn(String iqn) { 
+        this.iqn = iqn;
     }
-
-    /**
+    /** 
      * Globally unique SCSI device identifier for the volume in EUI-64 based 16-byte format.
      **/
-    public String getScsiEUIDeviceID() {
-        return this.scsiEUIDeviceID;
+    public String getScsiEUIDeviceID() { return this.scsiEUIDeviceID; }
+    public void setScsiEUIDeviceID(String scsiEUIDeviceID) { 
+        this.scsiEUIDeviceID = scsiEUIDeviceID;
     }
-
-    /**
+    /** 
      * Globally unique SCSI device identifier for the volume in NAA IEEE Registered Extended format.
      **/
-    public String getScsiNAADeviceID() {
-        return this.scsiNAADeviceID;
+    public String getScsiNAADeviceID() { return this.scsiNAADeviceID; }
+    public void setScsiNAADeviceID(String scsiNAADeviceID) { 
+        this.scsiNAADeviceID = scsiNAADeviceID;
     }
-
-    /**
+    /** 
      * Quality of service settings for this volume.
      **/
-    public VolumeQOS getQos() {
-        return this.qos;
+    public VolumeQOS getQos() { return this.qos; }
+    public void setQos(VolumeQOS qos) { 
+        this.qos = qos;
     }
-
-    /**
+    /** 
      * List of volume access groups to which a volume belongs.
      **/
-    public Long[] getVolumeAccessGroups() {
-        return this.volumeAccessGroups;
+    public Long[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
+    public void setVolumeAccessGroups(Long[] volumeAccessGroups) { 
+        this.volumeAccessGroups = volumeAccessGroups;
     }
-
-    /**
+    /** 
      * Information about a paired volume.
      * Available only if a volume is paired.
      * @see VolumePairs for return values.
      **/
-    public VolumePair[] getVolumePairs() {
-        return this.volumePairs;
+    public VolumePair[] getVolumePairs() { return this.volumePairs; }
+    public void setVolumePairs(VolumePair[] volumePairs) { 
+        this.volumePairs = volumePairs;
     }
-
-    /**
+    /** 
      * The time this volume was deleted.
      * If this has no value, the volume has not yet been deleted.
      **/
-    public Optional<String> getDeleteTime() {
-        return this.deleteTime;
+    public Optional<String> getDeleteTime() { return this.deleteTime; }
+    public void setDeleteTime(Optional<String> deleteTime) { 
+        this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : deleteTime;
     }
-
-    /**
+    /** 
      * The time this volume will be purged from the system.
      * If this has no value, the volume has not yet been deleted (and is not scheduled for purging).
      **/
-    public Optional<String> getPurgeTime() {
-        return this.purgeTime;
+    public Optional<String> getPurgeTime() { return this.purgeTime; }
+    public void setPurgeTime(Optional<String> purgeTime) { 
+        this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : purgeTime;
     }
-
-    /**
+    /** 
      * The number of slices backing this volume.
      * In the current software, this value will always be 1.
      **/
-    public Long getSliceCount() {
-        return this.sliceCount;
+    public Long getSliceCount() { return this.sliceCount; }
+    public void setSliceCount(Long sliceCount) { 
+        this.sliceCount = sliceCount;
     }
-
-    /**
+    /** 
      * Total size of this volume in bytes.
      **/
-    public Long getTotalSize() {
-        return this.totalSize;
+    public Long getTotalSize() { return this.totalSize; }
+    public void setTotalSize(Long totalSize) { 
+        this.totalSize = totalSize;
     }
-
-    /**
+    /** 
      * Size of the blocks on the volume.
-     * @since 8.0 
      **/
-
-    @Since("8.0")
-    public Long getBlockSize() {
-        return this.blockSize;
+    public Long getBlockSize() { return this.blockSize; }
+    public void setBlockSize(Long blockSize) { 
+        this.blockSize = blockSize;
     }
-
-    /**
+    /** 
      * Virtual volume ID this volume backs.
      **/
-    public java.util.UUID getVirtualVolumeID() {
-        return this.virtualVolumeID;
+    public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
+    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
+        this.virtualVolumeID = virtualVolumeID;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() {
-        return this.attributes;
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
+        this.attributes = attributes;
     }
 
     @Override
@@ -322,35 +311,60 @@ public class Volume  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         Volume that = (Volume) o;
-        
 
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( name , that.name )
-            && Objects.equals( accountID , that.accountID )
-            && Objects.equals( createTime , that.createTime )
-            && Objects.equals( status , that.status )
-            && Objects.equals( access , that.access )
-            && Objects.equals( enable512e , that.enable512e )
-            && Objects.equals( iqn , that.iqn )
-            && Objects.equals( scsiEUIDeviceID , that.scsiEUIDeviceID )
-            && Objects.equals( scsiNAADeviceID , that.scsiNAADeviceID )
-            && Objects.equals( qos , that.qos )
-            && Objects.deepEquals( volumeAccessGroups , that.volumeAccessGroups )
-            && Objects.deepEquals( volumePairs , that.volumePairs )
-            && Objects.equals( deleteTime , that.deleteTime )
-            && Objects.equals( purgeTime , that.purgeTime )
-            && Objects.equals( sliceCount , that.sliceCount )
-            && Objects.equals( totalSize , that.totalSize )
-            && Objects.equals( blockSize , that.blockSize )
-            && Objects.equals( virtualVolumeID , that.virtualVolumeID )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(accountID, that.accountID) && 
+            Objects.equals(createTime, that.createTime) && 
+            Objects.equals(status, that.status) && 
+            Objects.equals(access, that.access) && 
+            Objects.equals(enable512e, that.enable512e) && 
+            Objects.equals(iqn, that.iqn) && 
+            Objects.equals(scsiEUIDeviceID, that.scsiEUIDeviceID) && 
+            Objects.equals(scsiNAADeviceID, that.scsiNAADeviceID) && 
+            Objects.equals(qos, that.qos) && 
+            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) && 
+            Arrays.equals(volumePairs, that.volumePairs) && 
+            Objects.equals(deleteTime, that.deleteTime) && 
+            Objects.equals(purgeTime, that.purgeTime) && 
+            Objects.equals(sliceCount, that.sliceCount) && 
+            Objects.equals(totalSize, that.totalSize) && 
+            Objects.equals(blockSize, that.blockSize) && 
+            Objects.equals(virtualVolumeID, that.virtualVolumeID) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, name, accountID, createTime, status, access, enable512e, iqn, scsiEUIDeviceID, scsiNAADeviceID, qos, volumeAccessGroups, volumePairs, deleteTime, purgeTime, sliceCount, totalSize, blockSize, virtualVolumeID, attributes );
+        return Objects.hash( volumeID,name,accountID,createTime,status,access,enable512e,iqn,scsiEUIDeviceID,scsiNAADeviceID,qos,(Object[])volumeAccessGroups,(Object[])volumePairs,deleteTime,purgeTime,sliceCount,totalSize,blockSize,virtualVolumeID,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        map.put("name", name);
+        map.put("accountID", accountID);
+        map.put("createTime", createTime);
+        map.put("status", status);
+        map.put("access", access);
+        map.put("enable512e", enable512e);
+        map.put("iqn", iqn);
+        map.put("scsiEUIDeviceID", scsiEUIDeviceID);
+        map.put("scsiNAADeviceID", scsiNAADeviceID);
+        map.put("qos", qos);
+        map.put("volumeAccessGroups", volumeAccessGroups);
+        map.put("volumePairs", volumePairs);
+        map.put("deleteTime", deleteTime);
+        map.put("purgeTime", purgeTime);
+        map.put("sliceCount", sliceCount);
+        map.put("totalSize", totalSize);
+        map.put("blockSize", blockSize);
+        map.put("virtualVolumeID", virtualVolumeID);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -370,15 +384,17 @@ public class Volume  implements Serializable  {
         sb.append(" qos : ").append(qos).append(",");
         sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups)).append(",");
         sb.append(" volumePairs : ").append(Arrays.toString(volumePairs)).append(",");
-        if(null != deleteTime && deleteTime.isPresent())
-            sb.append(" deleteTime : ").append(deleteTime.get()).append(",");
-        if(null != purgeTime && purgeTime.isPresent())
-            sb.append(" purgeTime : ").append(purgeTime.get()).append(",");
+        if(null != deleteTime && deleteTime.isPresent()){
+            sb.append(" deleteTime : ").append(deleteTime).append(",");
+        }
+        if(null != purgeTime && purgeTime.isPresent()){
+            sb.append(" purgeTime : ").append(purgeTime).append(",");
+        }
         sb.append(" sliceCount : ").append(sliceCount).append(",");
         sb.append(" totalSize : ").append(totalSize).append(",");
         sb.append(" blockSize : ").append(blockSize).append(",");
         sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
-        sb.append(" attributes : ").append(attributes);
+        sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -440,7 +456,7 @@ public class Volume  implements Serializable  {
                          this.totalSize,
                          this.blockSize,
                          this.virtualVolumeID,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private Volume.Builder buildFrom(final Volume req) {
@@ -569,5 +585,4 @@ public class Volume  implements Serializable  {
         }
 
     }
-
 }

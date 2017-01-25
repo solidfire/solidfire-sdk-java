@@ -18,211 +18,294 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * DriveHardware  
  **/
-public class DriveHardware  implements Serializable  {
 
-    private static final long serialVersionUID = -1082137014L;
+public class DriveHardware implements Serializable {
 
-    @SerializedName("canonicalName") private final String canonicalName;
-    @SerializedName("connected") private final Boolean connected;
-    @SerializedName("dev") private final Long dev;
-    @SerializedName("devPath") private final String devPath;
-    @SerializedName("driveType") private final String driveType;
-    @SerializedName("lifeRemainingPercent") private final Long lifeRemainingPercent;
-    @SerializedName("lifetimeReadBytes") private final Long lifetimeReadBytes;
-    @SerializedName("lifetimeWriteBytes") private final Long lifetimeWriteBytes;
-    @SerializedName("name") private final String name;
-    @SerializedName("path") private final String path;
-    @SerializedName("pathLink") private final String pathLink;
-    @SerializedName("powerOnHours") private final Long powerOnHours;
-    @SerializedName("product") private final String product;
-    @SerializedName("reallocatedSectors") private final Long reallocatedSectors;
-    @SerializedName("reserveCapacityPercent") private final Long reserveCapacityPercent;
-    @SerializedName("scsiCompatId") private final String scsiCompatId;
-    @SerializedName("scsiState") private final String scsiState;
-    @SerializedName("securityAtMaximum") private final Boolean securityAtMaximum;
-    @SerializedName("securityEnabled") private final Boolean securityEnabled;
-    @SerializedName("securityFrozen") private final Boolean securityFrozen;
-    @SerializedName("securityLocked") private final Boolean securityLocked;
-    @SerializedName("securitySupported") private final Boolean securitySupported;
-    @SerializedName("serial") private final String serial;
-    @SerializedName("size") private final Long size;
-    @SerializedName("slot") private final Long slot;
-    @SerializedName("smartSsdWriteCapable") private final Optional<Boolean> smartSsdWriteCapable;
-    @SerializedName("uuid") private final java.util.UUID uuid;
-    @SerializedName("vendor") private final String vendor;
-    @SerializedName("version") private final String version;
+    public static final long serialVersionUID = -2699863894590814659L;
+    @SerializedName("canonicalName") private String canonicalName;
+    @SerializedName("connected") private Boolean connected;
+    @SerializedName("dev") private Long dev;
+    @SerializedName("devPath") private String devPath;
+    @SerializedName("driveType") private String driveType;
+    @SerializedName("lifeRemainingPercent") private Long lifeRemainingPercent;
+    @SerializedName("lifetimeReadBytes") private Long lifetimeReadBytes;
+    @SerializedName("lifetimeWriteBytes") private Long lifetimeWriteBytes;
+    @SerializedName("name") private String name;
+    @SerializedName("path") private String path;
+    @SerializedName("pathLink") private String pathLink;
+    @SerializedName("powerOnHours") private Long powerOnHours;
+    @SerializedName("product") private String product;
+    @SerializedName("reallocatedSectors") private Long reallocatedSectors;
+    @SerializedName("reserveCapacityPercent") private Long reserveCapacityPercent;
+    @SerializedName("scsiCompatId") private String scsiCompatId;
+    @SerializedName("scsiState") private String scsiState;
+    @SerializedName("securityAtMaximum") private Boolean securityAtMaximum;
+    @SerializedName("securityEnabled") private Boolean securityEnabled;
+    @SerializedName("securityFrozen") private Boolean securityFrozen;
+    @SerializedName("securityLocked") private Boolean securityLocked;
+    @SerializedName("securitySupported") private Boolean securitySupported;
+    @SerializedName("serial") private String serial;
+    @SerializedName("size") private Long size;
+    @SerializedName("slot") private Long slot;
+    @SerializedName("smartSsdWriteCapable") private Optional<Boolean> smartSsdWriteCapable;
+    @SerializedName("uuid") private java.util.UUID uuid;
+    @SerializedName("vendor") private String vendor;
+    @SerializedName("version") private String version;
 
-    /**
-     * 
-     * @param canonicalName [required] 
-     * @param connected [required] 
-     * @param dev [required] 
-     * @param devPath [required] 
-     * @param driveType [required] 
-     * @param lifeRemainingPercent [required] 
-     * @param lifetimeReadBytes [required] 
-     * @param lifetimeWriteBytes [required] 
-     * @param name [required] 
-     * @param path [required] 
-     * @param pathLink [required] 
-     * @param powerOnHours [required] 
-     * @param product [required] 
-     * @param reallocatedSectors [required] 
-     * @param reserveCapacityPercent [required] 
-     * @param scsiCompatId [required] 
-     * @param scsiState [required] 
-     * @param securityAtMaximum [required] 
-     * @param securityEnabled [required] 
-     * @param securityFrozen [required] 
-     * @param securityLocked [required] 
-     * @param securitySupported [required] 
-     * @param serial [required] 
-     * @param size [required] 
-     * @param slot [required] 
-     * @param smartSsdWriteCapable (optional) 
-     * @param uuid [required] 
-     * @param vendor [required] 
-     * @param version [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public DriveHardware(String canonicalName, Boolean connected, Long dev, String devPath, String driveType, Long lifeRemainingPercent, Long lifetimeReadBytes, Long lifetimeWriteBytes, String name, String path, String pathLink, Long powerOnHours, String product, Long reallocatedSectors, Long reserveCapacityPercent, String scsiCompatId, String scsiState, Boolean securityAtMaximum, Boolean securityEnabled, Boolean securityFrozen, Boolean securityLocked, Boolean securitySupported, String serial, Long size, Long slot, Optional<Boolean> smartSsdWriteCapable, java.util.UUID uuid, String vendor, String version) {
-        this.serial = serial;
-        this.name = name;
-        this.securityLocked = securityLocked;
-        this.path = path;
-        this.reallocatedSectors = reallocatedSectors;
-        this.size = size;
-        this.lifetimeWriteBytes = lifetimeWriteBytes;
-        this.securitySupported = securitySupported;
-        this.pathLink = pathLink;
-        this.uuid = uuid;
-        this.securityAtMaximum = securityAtMaximum;
-        this.scsiCompatId = scsiCompatId;
-        this.securityEnabled = securityEnabled;
-        this.scsiState = scsiState;
-        this.driveType = driveType;
-        this.version = version;
+    public DriveHardware() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public DriveHardware(
+        String canonicalName,
+        Boolean connected,
+        Long dev,
+        String devPath,
+        String driveType,
+        Long lifeRemainingPercent,
+        Long lifetimeReadBytes,
+        Long lifetimeWriteBytes,
+        String name,
+        String path,
+        String pathLink,
+        Long powerOnHours,
+        String product,
+        Long reallocatedSectors,
+        Long reserveCapacityPercent,
+        String scsiCompatId,
+        String scsiState,
+        Boolean securityAtMaximum,
+        Boolean securityEnabled,
+        Boolean securityFrozen,
+        Boolean securityLocked,
+        Boolean securitySupported,
+        String serial,
+        Long size,
+        Long slot,
+        Optional<Boolean> smartSsdWriteCapable,
+        java.util.UUID uuid,
+        String vendor,
+        String version
+    )
+    {
         this.canonicalName = canonicalName;
-        this.dev = dev;
-        this.securityFrozen = securityFrozen;
-        this.devPath = devPath;
-        this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : smartSsdWriteCapable;
         this.connected = connected;
-        this.reserveCapacityPercent = reserveCapacityPercent;
-        this.vendor = vendor;
-        this.slot = slot;
-        this.lifetimeReadBytes = lifetimeReadBytes;
+        this.dev = dev;
+        this.devPath = devPath;
+        this.driveType = driveType;
         this.lifeRemainingPercent = lifeRemainingPercent;
+        this.lifetimeReadBytes = lifetimeReadBytes;
+        this.lifetimeWriteBytes = lifetimeWriteBytes;
+        this.name = name;
+        this.path = path;
+        this.pathLink = pathLink;
+        this.powerOnHours = powerOnHours;
         this.product = product;
+        this.reallocatedSectors = reallocatedSectors;
+        this.reserveCapacityPercent = reserveCapacityPercent;
+        this.scsiCompatId = scsiCompatId;
+        this.scsiState = scsiState;
+        this.securityAtMaximum = securityAtMaximum;
+        this.securityEnabled = securityEnabled;
+        this.securityFrozen = securityFrozen;
+        this.securityLocked = securityLocked;
+        this.securitySupported = securitySupported;
+        this.serial = serial;
+        this.size = size;
+        this.slot = slot;
+        this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : smartSsdWriteCapable;
+        this.uuid = uuid;
+        this.vendor = vendor;
+        this.version = version;
+    }
+
+    /** 
+     **/
+    public String getCanonicalName() { return this.canonicalName; }
+    public void setCanonicalName(String canonicalName) { 
+        this.canonicalName = canonicalName;
+    }
+    /** 
+     **/
+    public Boolean getConnected() { return this.connected; }
+    public void setConnected(Boolean connected) { 
+        this.connected = connected;
+    }
+    /** 
+     **/
+    public Long getDev() { return this.dev; }
+    public void setDev(Long dev) { 
+        this.dev = dev;
+    }
+    /** 
+     **/
+    public String getDevPath() { return this.devPath; }
+    public void setDevPath(String devPath) { 
+        this.devPath = devPath;
+    }
+    /** 
+     **/
+    public String getDriveType() { return this.driveType; }
+    public void setDriveType(String driveType) { 
+        this.driveType = driveType;
+    }
+    /** 
+     **/
+    public Long getLifeRemainingPercent() { return this.lifeRemainingPercent; }
+    public void setLifeRemainingPercent(Long lifeRemainingPercent) { 
+        this.lifeRemainingPercent = lifeRemainingPercent;
+    }
+    /** 
+     **/
+    public Long getLifetimeReadBytes() { return this.lifetimeReadBytes; }
+    public void setLifetimeReadBytes(Long lifetimeReadBytes) { 
+        this.lifetimeReadBytes = lifetimeReadBytes;
+    }
+    /** 
+     **/
+    public Long getLifetimeWriteBytes() { return this.lifetimeWriteBytes; }
+    public void setLifetimeWriteBytes(Long lifetimeWriteBytes) { 
+        this.lifetimeWriteBytes = lifetimeWriteBytes;
+    }
+    /** 
+     **/
+    public String getName() { return this.name; }
+    public void setName(String name) { 
+        this.name = name;
+    }
+    /** 
+     **/
+    public String getPath() { return this.path; }
+    public void setPath(String path) { 
+        this.path = path;
+    }
+    /** 
+     **/
+    public String getPathLink() { return this.pathLink; }
+    public void setPathLink(String pathLink) { 
+        this.pathLink = pathLink;
+    }
+    /** 
+     **/
+    public Long getPowerOnHours() { return this.powerOnHours; }
+    public void setPowerOnHours(Long powerOnHours) { 
         this.powerOnHours = powerOnHours;
     }
-
-    public String getCanonicalName() {
-        return this.canonicalName;
+    /** 
+     **/
+    public String getProduct() { return this.product; }
+    public void setProduct(String product) { 
+        this.product = product;
     }
-    public Boolean getConnected() {
-        return this.connected;
+    /** 
+     **/
+    public Long getReallocatedSectors() { return this.reallocatedSectors; }
+    public void setReallocatedSectors(Long reallocatedSectors) { 
+        this.reallocatedSectors = reallocatedSectors;
     }
-    public Long getDev() {
-        return this.dev;
+    /** 
+     **/
+    public Long getReserveCapacityPercent() { return this.reserveCapacityPercent; }
+    public void setReserveCapacityPercent(Long reserveCapacityPercent) { 
+        this.reserveCapacityPercent = reserveCapacityPercent;
     }
-    public String getDevPath() {
-        return this.devPath;
+    /** 
+     **/
+    public String getScsiCompatId() { return this.scsiCompatId; }
+    public void setScsiCompatId(String scsiCompatId) { 
+        this.scsiCompatId = scsiCompatId;
     }
-    public String getDriveType() {
-        return this.driveType;
+    /** 
+     **/
+    public String getScsiState() { return this.scsiState; }
+    public void setScsiState(String scsiState) { 
+        this.scsiState = scsiState;
     }
-    public Long getLifeRemainingPercent() {
-        return this.lifeRemainingPercent;
+    /** 
+     **/
+    public Boolean getSecurityAtMaximum() { return this.securityAtMaximum; }
+    public void setSecurityAtMaximum(Boolean securityAtMaximum) { 
+        this.securityAtMaximum = securityAtMaximum;
     }
-    public Long getLifetimeReadBytes() {
-        return this.lifetimeReadBytes;
+    /** 
+     **/
+    public Boolean getSecurityEnabled() { return this.securityEnabled; }
+    public void setSecurityEnabled(Boolean securityEnabled) { 
+        this.securityEnabled = securityEnabled;
     }
-    public Long getLifetimeWriteBytes() {
-        return this.lifetimeWriteBytes;
+    /** 
+     **/
+    public Boolean getSecurityFrozen() { return this.securityFrozen; }
+    public void setSecurityFrozen(Boolean securityFrozen) { 
+        this.securityFrozen = securityFrozen;
     }
-    public String getName() {
-        return this.name;
+    /** 
+     **/
+    public Boolean getSecurityLocked() { return this.securityLocked; }
+    public void setSecurityLocked(Boolean securityLocked) { 
+        this.securityLocked = securityLocked;
     }
-    public String getPath() {
-        return this.path;
+    /** 
+     **/
+    public Boolean getSecuritySupported() { return this.securitySupported; }
+    public void setSecuritySupported(Boolean securitySupported) { 
+        this.securitySupported = securitySupported;
     }
-    public String getPathLink() {
-        return this.pathLink;
+    /** 
+     **/
+    public String getSerial() { return this.serial; }
+    public void setSerial(String serial) { 
+        this.serial = serial;
     }
-    public Long getPowerOnHours() {
-        return this.powerOnHours;
+    /** 
+     **/
+    public Long getSize() { return this.size; }
+    public void setSize(Long size) { 
+        this.size = size;
     }
-    public String getProduct() {
-        return this.product;
+    /** 
+     **/
+    public Long getSlot() { return this.slot; }
+    public void setSlot(Long slot) { 
+        this.slot = slot;
     }
-    public Long getReallocatedSectors() {
-        return this.reallocatedSectors;
+    /** 
+     **/
+    public Optional<Boolean> getSmartSsdWriteCapable() { return this.smartSsdWriteCapable; }
+    public void setSmartSsdWriteCapable(Optional<Boolean> smartSsdWriteCapable) { 
+        this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : smartSsdWriteCapable;
     }
-    public Long getReserveCapacityPercent() {
-        return this.reserveCapacityPercent;
+    /** 
+     **/
+    public java.util.UUID getUuid() { return this.uuid; }
+    public void setUuid(java.util.UUID uuid) { 
+        this.uuid = uuid;
     }
-    public String getScsiCompatId() {
-        return this.scsiCompatId;
+    /** 
+     **/
+    public String getVendor() { return this.vendor; }
+    public void setVendor(String vendor) { 
+        this.vendor = vendor;
     }
-    public String getScsiState() {
-        return this.scsiState;
-    }
-    public Boolean getSecurityAtMaximum() {
-        return this.securityAtMaximum;
-    }
-    public Boolean getSecurityEnabled() {
-        return this.securityEnabled;
-    }
-    public Boolean getSecurityFrozen() {
-        return this.securityFrozen;
-    }
-    public Boolean getSecurityLocked() {
-        return this.securityLocked;
-    }
-    public Boolean getSecuritySupported() {
-        return this.securitySupported;
-    }
-    public String getSerial() {
-        return this.serial;
-    }
-    public Long getSize() {
-        return this.size;
-    }
-    public Long getSlot() {
-        return this.slot;
-    }
-    public Optional<Boolean> getSmartSsdWriteCapable() {
-        return this.smartSsdWriteCapable;
-    }
-    public java.util.UUID getUuid() {
-        return this.uuid;
-    }
-    public String getVendor() {
-        return this.vendor;
-    }
-    public String getVersion() {
-        return this.version;
+    /** 
+     **/
+    public String getVersion() { return this.version; }
+    public void setVersion(String version) { 
+        this.version = version;
     }
 
     @Override
@@ -231,44 +314,78 @@ public class DriveHardware  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         DriveHardware that = (DriveHardware) o;
-        
 
-        return Objects.equals( canonicalName , that.canonicalName )
-            && Objects.equals( connected , that.connected )
-            && Objects.equals( dev , that.dev )
-            && Objects.equals( devPath , that.devPath )
-            && Objects.equals( driveType , that.driveType )
-            && Objects.equals( lifeRemainingPercent , that.lifeRemainingPercent )
-            && Objects.equals( lifetimeReadBytes , that.lifetimeReadBytes )
-            && Objects.equals( lifetimeWriteBytes , that.lifetimeWriteBytes )
-            && Objects.equals( name , that.name )
-            && Objects.equals( path , that.path )
-            && Objects.equals( pathLink , that.pathLink )
-            && Objects.equals( powerOnHours , that.powerOnHours )
-            && Objects.equals( product , that.product )
-            && Objects.equals( reallocatedSectors , that.reallocatedSectors )
-            && Objects.equals( reserveCapacityPercent , that.reserveCapacityPercent )
-            && Objects.equals( scsiCompatId , that.scsiCompatId )
-            && Objects.equals( scsiState , that.scsiState )
-            && Objects.equals( securityAtMaximum , that.securityAtMaximum )
-            && Objects.equals( securityEnabled , that.securityEnabled )
-            && Objects.equals( securityFrozen , that.securityFrozen )
-            && Objects.equals( securityLocked , that.securityLocked )
-            && Objects.equals( securitySupported , that.securitySupported )
-            && Objects.equals( serial , that.serial )
-            && Objects.equals( size , that.size )
-            && Objects.equals( slot , that.slot )
-            && Objects.equals( smartSsdWriteCapable , that.smartSsdWriteCapable )
-            && Objects.equals( uuid , that.uuid )
-            && Objects.equals( vendor , that.vendor )
-            && Objects.equals( version , that.version );
+        return 
+            Objects.equals(canonicalName, that.canonicalName) && 
+            Objects.equals(connected, that.connected) && 
+            Objects.equals(dev, that.dev) && 
+            Objects.equals(devPath, that.devPath) && 
+            Objects.equals(driveType, that.driveType) && 
+            Objects.equals(lifeRemainingPercent, that.lifeRemainingPercent) && 
+            Objects.equals(lifetimeReadBytes, that.lifetimeReadBytes) && 
+            Objects.equals(lifetimeWriteBytes, that.lifetimeWriteBytes) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(path, that.path) && 
+            Objects.equals(pathLink, that.pathLink) && 
+            Objects.equals(powerOnHours, that.powerOnHours) && 
+            Objects.equals(product, that.product) && 
+            Objects.equals(reallocatedSectors, that.reallocatedSectors) && 
+            Objects.equals(reserveCapacityPercent, that.reserveCapacityPercent) && 
+            Objects.equals(scsiCompatId, that.scsiCompatId) && 
+            Objects.equals(scsiState, that.scsiState) && 
+            Objects.equals(securityAtMaximum, that.securityAtMaximum) && 
+            Objects.equals(securityEnabled, that.securityEnabled) && 
+            Objects.equals(securityFrozen, that.securityFrozen) && 
+            Objects.equals(securityLocked, that.securityLocked) && 
+            Objects.equals(securitySupported, that.securitySupported) && 
+            Objects.equals(serial, that.serial) && 
+            Objects.equals(size, that.size) && 
+            Objects.equals(slot, that.slot) && 
+            Objects.equals(smartSsdWriteCapable, that.smartSsdWriteCapable) && 
+            Objects.equals(uuid, that.uuid) && 
+            Objects.equals(vendor, that.vendor) && 
+            Objects.equals(version, that.version);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( canonicalName, connected, dev, devPath, driveType, lifeRemainingPercent, lifetimeReadBytes, lifetimeWriteBytes, name, path, pathLink, powerOnHours, product, reallocatedSectors, reserveCapacityPercent, scsiCompatId, scsiState, securityAtMaximum, securityEnabled, securityFrozen, securityLocked, securitySupported, serial, size, slot, smartSsdWriteCapable, uuid, vendor, version );
+        return Objects.hash( canonicalName,connected,dev,devPath,driveType,lifeRemainingPercent,lifetimeReadBytes,lifetimeWriteBytes,name,path,pathLink,powerOnHours,product,reallocatedSectors,reserveCapacityPercent,scsiCompatId,scsiState,securityAtMaximum,securityEnabled,securityFrozen,securityLocked,securitySupported,serial,size,slot,smartSsdWriteCapable,uuid,vendor,version );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("canonicalName", canonicalName);
+        map.put("connected", connected);
+        map.put("dev", dev);
+        map.put("devPath", devPath);
+        map.put("driveType", driveType);
+        map.put("lifeRemainingPercent", lifeRemainingPercent);
+        map.put("lifetimeReadBytes", lifetimeReadBytes);
+        map.put("lifetimeWriteBytes", lifetimeWriteBytes);
+        map.put("name", name);
+        map.put("path", path);
+        map.put("pathLink", pathLink);
+        map.put("powerOnHours", powerOnHours);
+        map.put("product", product);
+        map.put("reallocatedSectors", reallocatedSectors);
+        map.put("reserveCapacityPercent", reserveCapacityPercent);
+        map.put("scsiCompatId", scsiCompatId);
+        map.put("scsiState", scsiState);
+        map.put("securityAtMaximum", securityAtMaximum);
+        map.put("securityEnabled", securityEnabled);
+        map.put("securityFrozen", securityFrozen);
+        map.put("securityLocked", securityLocked);
+        map.put("securitySupported", securitySupported);
+        map.put("serial", serial);
+        map.put("size", size);
+        map.put("slot", slot);
+        map.put("smartSsdWriteCapable", smartSsdWriteCapable);
+        map.put("uuid", uuid);
+        map.put("vendor", vendor);
+        map.put("version", version);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -300,11 +417,12 @@ public class DriveHardware  implements Serializable  {
         sb.append(" serial : ").append(serial).append(",");
         sb.append(" size : ").append(size).append(",");
         sb.append(" slot : ").append(slot).append(",");
-        if(null != smartSsdWriteCapable && smartSsdWriteCapable.isPresent())
-            sb.append(" smartSsdWriteCapable : ").append(smartSsdWriteCapable.get()).append(",");
+        if(null != smartSsdWriteCapable && smartSsdWriteCapable.isPresent()){
+            sb.append(" smartSsdWriteCapable : ").append(smartSsdWriteCapable).append(",");
+        }
         sb.append(" uuid : ").append(uuid).append(",");
         sb.append(" vendor : ").append(vendor).append(",");
-        sb.append(" version : ").append(version);
+        sb.append(" version : ").append(version).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -384,7 +502,7 @@ public class DriveHardware  implements Serializable  {
                          this.smartSsdWriteCapable,
                          this.uuid,
                          this.vendor,
-                         this.version            );
+                         this.version);
         }
 
         private DriveHardware.Builder buildFrom(final DriveHardware req) {
@@ -567,5 +685,4 @@ public class DriveHardware  implements Serializable  {
         }
 
     }
-
 }

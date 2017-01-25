@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "AddClusterAdmin" API Service call.
+ * AddClusterAdminResult  
  **/
-public class AddClusterAdminResult  implements Serializable  {
 
-    private static final long serialVersionUID = 223954745L;
+public class AddClusterAdminResult implements Serializable {
 
-    @SerializedName("clusterAdminID") private final Long clusterAdminID;
+    public static final long serialVersionUID = -6913123489772234284L;
+    @SerializedName("clusterAdminID") private Long clusterAdminID;
 
-    /**
-     * The object returned by the "AddClusterAdmin" API Service call.
-     * @param clusterAdminID [required] ClusterAdminID for the newly created Cluster Admin.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public AddClusterAdminResult(Long clusterAdminID) {
+    public AddClusterAdminResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public AddClusterAdminResult(
+        Long clusterAdminID
+    )
+    {
         this.clusterAdminID = clusterAdminID;
     }
 
-
-    /**
+    /** 
      * ClusterAdminID for the newly created Cluster Admin.
      **/
-    public Long getClusterAdminID() {
-        return this.clusterAdminID;
+    public Long getClusterAdminID() { return this.clusterAdminID; }
+    public void setClusterAdminID(Long clusterAdminID) { 
+        this.clusterAdminID = clusterAdminID;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class AddClusterAdminResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddClusterAdminResult that = (AddClusterAdminResult) o;
-        
 
-        return Objects.equals( clusterAdminID , that.clusterAdminID );
+        return 
+            Objects.equals(clusterAdminID, that.clusterAdminID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) clusterAdminID );
+        return Objects.hash( clusterAdminID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterAdminID", clusterAdminID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" clusterAdminID : ").append(clusterAdminID);
+        sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class AddClusterAdminResult  implements Serializable  {
 
         public AddClusterAdminResult build() {
             return new AddClusterAdminResult (
-                         this.clusterAdminID            );
+                         this.clusterAdminID);
         }
 
         private AddClusterAdminResult.Builder buildFrom(final AddClusterAdminResult req) {
@@ -122,5 +124,4 @@ public class AddClusterAdminResult  implements Serializable  {
         }
 
     }
-
 }

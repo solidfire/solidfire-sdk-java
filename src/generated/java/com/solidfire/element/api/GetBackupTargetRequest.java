@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetBackupTarget" API Service call.
+ * GetBackupTargetRequest  
  **/
-public class GetBackupTargetRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 522466102L;
+public class GetBackupTargetRequest implements Serializable {
 
-    @SerializedName("backupTargetID") private final Long backupTargetID;
+    public static final long serialVersionUID = 1799534556354182754L;
+    @SerializedName("backupTargetID") private Long backupTargetID;
 
-    /**
-     * The Request object for the "GetBackupTarget" API Service call.
-     * @param backupTargetID [required] Unique identifier assigned to the backup target.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetBackupTargetRequest(Long backupTargetID) {
+    public GetBackupTargetRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetBackupTargetRequest(
+        Long backupTargetID
+    )
+    {
         this.backupTargetID = backupTargetID;
     }
 
-
-    /**
+    /** 
      * Unique identifier assigned to the backup target.
      **/
-    public Long getBackupTargetID() {
-        return this.backupTargetID;
+    public Long getBackupTargetID() { return this.backupTargetID; }
+    public void setBackupTargetID(Long backupTargetID) { 
+        this.backupTargetID = backupTargetID;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class GetBackupTargetRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetBackupTargetRequest that = (GetBackupTargetRequest) o;
-        
 
-        return Objects.equals( backupTargetID , that.backupTargetID );
+        return 
+            Objects.equals(backupTargetID, that.backupTargetID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) backupTargetID );
+        return Objects.hash( backupTargetID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("backupTargetID", backupTargetID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" backupTargetID : ").append(backupTargetID);
+        sb.append(" backupTargetID : ").append(backupTargetID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class GetBackupTargetRequest  implements Serializable  {
 
         public GetBackupTargetRequest build() {
             return new GetBackupTargetRequest (
-                         this.backupTargetID            );
+                         this.backupTargetID);
         }
 
         private GetBackupTargetRequest.Builder buildFrom(final GetBackupTargetRequest req) {
@@ -122,5 +124,4 @@ public class GetBackupTargetRequest  implements Serializable  {
         }
 
     }
-
 }

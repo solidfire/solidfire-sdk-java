@@ -18,133 +18,186 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * DriveStats  
  **/
-public class DriveStats  implements Serializable  {
 
-    private static final long serialVersionUID = 471126863L;
+public class DriveStats implements Serializable {
 
-    @SerializedName("activeSessions") private final Long activeSessions;
-    @SerializedName("failedDieCount") private final Long failedDieCount;
-    @SerializedName("lifeRemainingPercent") private final Long lifeRemainingPercent;
-    @SerializedName("lifetimeReadBytes") private final Long lifetimeReadBytes;
-    @SerializedName("lifetimeWriteBytes") private final Long lifetimeWriteBytes;
-    @SerializedName("powerOnHours") private final Long powerOnHours;
-    @SerializedName("readBytes") private final Long readBytes;
-    @SerializedName("readOps") private final Long readOps;
-    @SerializedName("reallocatedSectors") private final Long reallocatedSectors;
-    @SerializedName("reserveCapacityPercent") private final Long reserveCapacityPercent;
-    @SerializedName("timestamp") private final String timestamp;
-    @SerializedName("totalCapacity") private final Long totalCapacity;
-    @SerializedName("usedCapacity") private final Optional<Long> usedCapacity;
-    @SerializedName("usedMemory") private final Long usedMemory;
-    @SerializedName("writeBytes") private final Long writeBytes;
-    @SerializedName("writeOps") private final Long writeOps;
+    public static final long serialVersionUID = 215354036034394227L;
+    @SerializedName("activeSessions") private Optional<Long> activeSessions;
+    @SerializedName("driveID") private Optional<Long> driveID;
+    @SerializedName("failedDieCount") private Long failedDieCount;
+    @SerializedName("lifeRemainingPercent") private Long lifeRemainingPercent;
+    @SerializedName("lifetimeReadBytes") private Long lifetimeReadBytes;
+    @SerializedName("lifetimeWriteBytes") private Long lifetimeWriteBytes;
+    @SerializedName("powerOnHours") private Long powerOnHours;
+    @SerializedName("readBytes") private Long readBytes;
+    @SerializedName("readOps") private Long readOps;
+    @SerializedName("reallocatedSectors") private Long reallocatedSectors;
+    @SerializedName("reserveCapacityPercent") private Long reserveCapacityPercent;
+    @SerializedName("timestamp") private String timestamp;
+    @SerializedName("totalCapacity") private Long totalCapacity;
+    @SerializedName("usedCapacity") private Optional<Long> usedCapacity;
+    @SerializedName("usedMemory") private Long usedMemory;
+    @SerializedName("writeBytes") private Long writeBytes;
+    @SerializedName("writeOps") private Long writeOps;
 
-    /**
-     * 
-     * @param activeSessions [required] 
-     * @param failedDieCount [required] 
-     * @param lifeRemainingPercent [required] 
-     * @param lifetimeReadBytes [required] 
-     * @param lifetimeWriteBytes [required] 
-     * @param powerOnHours [required] 
-     * @param readBytes [required] 
-     * @param readOps [required] 
-     * @param reallocatedSectors [required] 
-     * @param reserveCapacityPercent [required] 
-     * @param timestamp [required] 
-     * @param totalCapacity [required] 
-     * @param usedCapacity (optional) 
-     * @param usedMemory [required] 
-     * @param writeBytes [required] 
-     * @param writeOps [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public DriveStats(Long activeSessions, Long failedDieCount, Long lifeRemainingPercent, Long lifetimeReadBytes, Long lifetimeWriteBytes, Long powerOnHours, Long readBytes, Long readOps, Long reallocatedSectors, Long reserveCapacityPercent, String timestamp, Long totalCapacity, Optional<Long> usedCapacity, Long usedMemory, Long writeBytes, Long writeOps) {
-        this.writeOps = writeOps;
-        this.activeSessions = activeSessions;
-        this.reallocatedSectors = reallocatedSectors;
-        this.timestamp = timestamp;
-        this.usedMemory = usedMemory;
-        this.lifetimeWriteBytes = lifetimeWriteBytes;
-        this.readOps = readOps;
+    public DriveStats() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public DriveStats(
+        Optional<Long> activeSessions,
+        Optional<Long> driveID,
+        Long failedDieCount,
+        Long lifeRemainingPercent,
+        Long lifetimeReadBytes,
+        Long lifetimeWriteBytes,
+        Long powerOnHours,
+        Long readBytes,
+        Long readOps,
+        Long reallocatedSectors,
+        Long reserveCapacityPercent,
+        String timestamp,
+        Long totalCapacity,
+        Optional<Long> usedCapacity,
+        Long usedMemory,
+        Long writeBytes,
+        Long writeOps
+    )
+    {
+        this.activeSessions = (activeSessions == null) ? Optional.<Long>empty() : activeSessions;
+        this.driveID = (driveID == null) ? Optional.<Long>empty() : driveID;
         this.failedDieCount = failedDieCount;
-        this.writeBytes = writeBytes;
-        this.totalCapacity = totalCapacity;
-        this.readBytes = readBytes;
-        this.reserveCapacityPercent = reserveCapacityPercent;
-        this.lifetimeReadBytes = lifetimeReadBytes;
         this.lifeRemainingPercent = lifeRemainingPercent;
+        this.lifetimeReadBytes = lifetimeReadBytes;
+        this.lifetimeWriteBytes = lifetimeWriteBytes;
+        this.powerOnHours = powerOnHours;
+        this.readBytes = readBytes;
+        this.readOps = readOps;
+        this.reallocatedSectors = reallocatedSectors;
+        this.reserveCapacityPercent = reserveCapacityPercent;
+        this.timestamp = timestamp;
+        this.totalCapacity = totalCapacity;
         this.usedCapacity = (usedCapacity == null) ? Optional.<Long>empty() : usedCapacity;
+        this.usedMemory = usedMemory;
+        this.writeBytes = writeBytes;
+        this.writeOps = writeOps;
+    }
+
+    /** 
+     **/
+    public Optional<Long> getActiveSessions() { return this.activeSessions; }
+    public void setActiveSessions(Optional<Long> activeSessions) { 
+        this.activeSessions = (activeSessions == null) ? Optional.<Long>empty() : activeSessions;
+    }
+    /** 
+     **/
+    public Optional<Long> getDriveID() { return this.driveID; }
+    public void setDriveID(Optional<Long> driveID) { 
+        this.driveID = (driveID == null) ? Optional.<Long>empty() : driveID;
+    }
+    /** 
+     **/
+    public Long getFailedDieCount() { return this.failedDieCount; }
+    public void setFailedDieCount(Long failedDieCount) { 
+        this.failedDieCount = failedDieCount;
+    }
+    /** 
+     **/
+    public Long getLifeRemainingPercent() { return this.lifeRemainingPercent; }
+    public void setLifeRemainingPercent(Long lifeRemainingPercent) { 
+        this.lifeRemainingPercent = lifeRemainingPercent;
+    }
+    /** 
+     **/
+    public Long getLifetimeReadBytes() { return this.lifetimeReadBytes; }
+    public void setLifetimeReadBytes(Long lifetimeReadBytes) { 
+        this.lifetimeReadBytes = lifetimeReadBytes;
+    }
+    /** 
+     **/
+    public Long getLifetimeWriteBytes() { return this.lifetimeWriteBytes; }
+    public void setLifetimeWriteBytes(Long lifetimeWriteBytes) { 
+        this.lifetimeWriteBytes = lifetimeWriteBytes;
+    }
+    /** 
+     **/
+    public Long getPowerOnHours() { return this.powerOnHours; }
+    public void setPowerOnHours(Long powerOnHours) { 
         this.powerOnHours = powerOnHours;
     }
-
-    public Long getActiveSessions() {
-        return this.activeSessions;
+    /** 
+     **/
+    public Long getReadBytes() { return this.readBytes; }
+    public void setReadBytes(Long readBytes) { 
+        this.readBytes = readBytes;
     }
-    public Long getFailedDieCount() {
-        return this.failedDieCount;
+    /** 
+     **/
+    public Long getReadOps() { return this.readOps; }
+    public void setReadOps(Long readOps) { 
+        this.readOps = readOps;
     }
-    public Long getLifeRemainingPercent() {
-        return this.lifeRemainingPercent;
+    /** 
+     **/
+    public Long getReallocatedSectors() { return this.reallocatedSectors; }
+    public void setReallocatedSectors(Long reallocatedSectors) { 
+        this.reallocatedSectors = reallocatedSectors;
     }
-    public Long getLifetimeReadBytes() {
-        return this.lifetimeReadBytes;
+    /** 
+     **/
+    public Long getReserveCapacityPercent() { return this.reserveCapacityPercent; }
+    public void setReserveCapacityPercent(Long reserveCapacityPercent) { 
+        this.reserveCapacityPercent = reserveCapacityPercent;
     }
-    public Long getLifetimeWriteBytes() {
-        return this.lifetimeWriteBytes;
+    /** 
+     **/
+    public String getTimestamp() { return this.timestamp; }
+    public void setTimestamp(String timestamp) { 
+        this.timestamp = timestamp;
     }
-    public Long getPowerOnHours() {
-        return this.powerOnHours;
+    /** 
+     **/
+    public Long getTotalCapacity() { return this.totalCapacity; }
+    public void setTotalCapacity(Long totalCapacity) { 
+        this.totalCapacity = totalCapacity;
     }
-    public Long getReadBytes() {
-        return this.readBytes;
+    /** 
+     **/
+    public Optional<Long> getUsedCapacity() { return this.usedCapacity; }
+    public void setUsedCapacity(Optional<Long> usedCapacity) { 
+        this.usedCapacity = (usedCapacity == null) ? Optional.<Long>empty() : usedCapacity;
     }
-    public Long getReadOps() {
-        return this.readOps;
+    /** 
+     **/
+    public Long getUsedMemory() { return this.usedMemory; }
+    public void setUsedMemory(Long usedMemory) { 
+        this.usedMemory = usedMemory;
     }
-    public Long getReallocatedSectors() {
-        return this.reallocatedSectors;
+    /** 
+     **/
+    public Long getWriteBytes() { return this.writeBytes; }
+    public void setWriteBytes(Long writeBytes) { 
+        this.writeBytes = writeBytes;
     }
-    public Long getReserveCapacityPercent() {
-        return this.reserveCapacityPercent;
-    }
-    public String getTimestamp() {
-        return this.timestamp;
-    }
-    public Long getTotalCapacity() {
-        return this.totalCapacity;
-    }
-    public Optional<Long> getUsedCapacity() {
-        return this.usedCapacity;
-    }
-    public Long getUsedMemory() {
-        return this.usedMemory;
-    }
-    public Long getWriteBytes() {
-        return this.writeBytes;
-    }
-    public Long getWriteOps() {
-        return this.writeOps;
+    /** 
+     **/
+    public Long getWriteOps() { return this.writeOps; }
+    public void setWriteOps(Long writeOps) { 
+        this.writeOps = writeOps;
     }
 
     @Override
@@ -153,38 +206,66 @@ public class DriveStats  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         DriveStats that = (DriveStats) o;
-        
 
-        return Objects.equals( activeSessions , that.activeSessions )
-            && Objects.equals( failedDieCount , that.failedDieCount )
-            && Objects.equals( lifeRemainingPercent , that.lifeRemainingPercent )
-            && Objects.equals( lifetimeReadBytes , that.lifetimeReadBytes )
-            && Objects.equals( lifetimeWriteBytes , that.lifetimeWriteBytes )
-            && Objects.equals( powerOnHours , that.powerOnHours )
-            && Objects.equals( readBytes , that.readBytes )
-            && Objects.equals( readOps , that.readOps )
-            && Objects.equals( reallocatedSectors , that.reallocatedSectors )
-            && Objects.equals( reserveCapacityPercent , that.reserveCapacityPercent )
-            && Objects.equals( timestamp , that.timestamp )
-            && Objects.equals( totalCapacity , that.totalCapacity )
-            && Objects.equals( usedCapacity , that.usedCapacity )
-            && Objects.equals( usedMemory , that.usedMemory )
-            && Objects.equals( writeBytes , that.writeBytes )
-            && Objects.equals( writeOps , that.writeOps );
+        return 
+            Objects.equals(activeSessions, that.activeSessions) && 
+            Objects.equals(driveID, that.driveID) && 
+            Objects.equals(failedDieCount, that.failedDieCount) && 
+            Objects.equals(lifeRemainingPercent, that.lifeRemainingPercent) && 
+            Objects.equals(lifetimeReadBytes, that.lifetimeReadBytes) && 
+            Objects.equals(lifetimeWriteBytes, that.lifetimeWriteBytes) && 
+            Objects.equals(powerOnHours, that.powerOnHours) && 
+            Objects.equals(readBytes, that.readBytes) && 
+            Objects.equals(readOps, that.readOps) && 
+            Objects.equals(reallocatedSectors, that.reallocatedSectors) && 
+            Objects.equals(reserveCapacityPercent, that.reserveCapacityPercent) && 
+            Objects.equals(timestamp, that.timestamp) && 
+            Objects.equals(totalCapacity, that.totalCapacity) && 
+            Objects.equals(usedCapacity, that.usedCapacity) && 
+            Objects.equals(usedMemory, that.usedMemory) && 
+            Objects.equals(writeBytes, that.writeBytes) && 
+            Objects.equals(writeOps, that.writeOps);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( activeSessions, failedDieCount, lifeRemainingPercent, lifetimeReadBytes, lifetimeWriteBytes, powerOnHours, readBytes, readOps, reallocatedSectors, reserveCapacityPercent, timestamp, totalCapacity, usedCapacity, usedMemory, writeBytes, writeOps );
+        return Objects.hash( activeSessions,driveID,failedDieCount,lifeRemainingPercent,lifetimeReadBytes,lifetimeWriteBytes,powerOnHours,readBytes,readOps,reallocatedSectors,reserveCapacityPercent,timestamp,totalCapacity,usedCapacity,usedMemory,writeBytes,writeOps );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("activeSessions", activeSessions);
+        map.put("driveID", driveID);
+        map.put("failedDieCount", failedDieCount);
+        map.put("lifeRemainingPercent", lifeRemainingPercent);
+        map.put("lifetimeReadBytes", lifetimeReadBytes);
+        map.put("lifetimeWriteBytes", lifetimeWriteBytes);
+        map.put("powerOnHours", powerOnHours);
+        map.put("readBytes", readBytes);
+        map.put("readOps", readOps);
+        map.put("reallocatedSectors", reallocatedSectors);
+        map.put("reserveCapacityPercent", reserveCapacityPercent);
+        map.put("timestamp", timestamp);
+        map.put("totalCapacity", totalCapacity);
+        map.put("usedCapacity", usedCapacity);
+        map.put("usedMemory", usedMemory);
+        map.put("writeBytes", writeBytes);
+        map.put("writeOps", writeOps);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" activeSessions : ").append(activeSessions).append(",");
+        if(null != activeSessions && activeSessions.isPresent()){
+            sb.append(" activeSessions : ").append(activeSessions).append(",");
+        }
+        if(null != driveID && driveID.isPresent()){
+            sb.append(" driveID : ").append(driveID).append(",");
+        }
         sb.append(" failedDieCount : ").append(failedDieCount).append(",");
         sb.append(" lifeRemainingPercent : ").append(lifeRemainingPercent).append(",");
         sb.append(" lifetimeReadBytes : ").append(lifetimeReadBytes).append(",");
@@ -196,11 +277,12 @@ public class DriveStats  implements Serializable  {
         sb.append(" reserveCapacityPercent : ").append(reserveCapacityPercent).append(",");
         sb.append(" timestamp : ").append(timestamp).append(",");
         sb.append(" totalCapacity : ").append(totalCapacity).append(",");
-        if(null != usedCapacity && usedCapacity.isPresent())
-            sb.append(" usedCapacity : ").append(usedCapacity.get()).append(",");
+        if(null != usedCapacity && usedCapacity.isPresent()){
+            sb.append(" usedCapacity : ").append(usedCapacity).append(",");
+        }
         sb.append(" usedMemory : ").append(usedMemory).append(",");
         sb.append(" writeBytes : ").append(writeBytes).append(",");
-        sb.append(" writeOps : ").append(writeOps);
+        sb.append(" writeOps : ").append(writeOps).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -218,7 +300,8 @@ public class DriveStats  implements Serializable  {
     }
 
     public static class Builder {
-        private Long activeSessions;
+        private Optional<Long> activeSessions;
+        private Optional<Long> driveID;
         private Long failedDieCount;
         private Long lifeRemainingPercent;
         private Long lifetimeReadBytes;
@@ -240,6 +323,7 @@ public class DriveStats  implements Serializable  {
         public DriveStats build() {
             return new DriveStats (
                          this.activeSessions,
+                         this.driveID,
                          this.failedDieCount,
                          this.lifeRemainingPercent,
                          this.lifetimeReadBytes,
@@ -254,11 +338,12 @@ public class DriveStats  implements Serializable  {
                          this.usedCapacity,
                          this.usedMemory,
                          this.writeBytes,
-                         this.writeOps            );
+                         this.writeOps);
         }
 
         private DriveStats.Builder buildFrom(final DriveStats req) {
             this.activeSessions = req.activeSessions;
+            this.driveID = req.driveID;
             this.failedDieCount = req.failedDieCount;
             this.lifeRemainingPercent = req.lifeRemainingPercent;
             this.lifetimeReadBytes = req.lifetimeReadBytes;
@@ -278,8 +363,13 @@ public class DriveStats  implements Serializable  {
             return this;
         }
 
-        public DriveStats.Builder activeSessions(final Long activeSessions) {
-            this.activeSessions = activeSessions;
+        public DriveStats.Builder optionalActiveSessions(final Long activeSessions) {
+            this.activeSessions = (activeSessions == null) ? Optional.<Long>empty() : Optional.of(activeSessions);
+            return this;
+        }
+
+        public DriveStats.Builder optionalDriveID(final Long driveID) {
+            this.driveID = (driveID == null) ? Optional.<Long>empty() : Optional.of(driveID);
             return this;
         }
 
@@ -359,5 +449,4 @@ public class DriveStats  implements Serializable  {
         }
 
     }
-
 }

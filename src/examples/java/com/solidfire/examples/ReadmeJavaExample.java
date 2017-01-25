@@ -1,9 +1,11 @@
+package com.solidfire.examples;
+
 import com.solidfire.client.ElementFactory;
 import com.solidfire.element.api.*;
-import com.solidfire.jsvcgen.javautil.Optional;
+import com.solidfire.core.javautil.Optional;
 
 // Import Optional common empty types (String, Long, & Map)
-import static com.solidfire.jsvcgen.javautil.Optional.*;
+import static com.solidfire.core.javautil.Optional.*;
 public class ReadmeJavaExample {
     public static void main(String[] args) {
         // Create Connection to SF Cluster

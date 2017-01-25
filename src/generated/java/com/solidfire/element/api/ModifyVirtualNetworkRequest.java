@@ -18,160 +18,146 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ModifyVirtualNetwork" API Service call.
+ * ModifyVirtualNetworkRequest  
  **/
-public class ModifyVirtualNetworkRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1483322180L;
+public class ModifyVirtualNetworkRequest implements Serializable {
 
-    @SerializedName("virtualNetworkID") private final Optional<Long> virtualNetworkID;
-    @SerializedName("virtualNetworkTag") private final Optional<Long> virtualNetworkTag;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("addressBlocks") private final Optional<AddressBlock[]> addressBlocks;
-    @SerializedName("netmask") private final Optional<String> netmask;
-    @SerializedName("svip") private final Optional<String> svip;
-    @SerializedName("gateway") private final Optional<String> gateway;
-    @SerializedName("namespace") private final Optional<Boolean> namespace;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    public static final long serialVersionUID = -8401847868102898491L;
+    @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
+    @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("addressBlocks") private Optional<AddressBlock[]> addressBlocks;
+    @SerializedName("netmask") private Optional<String> netmask;
+    @SerializedName("svip") private Optional<String> svip;
+    @SerializedName("gateway") private Optional<String> gateway;
+    @SerializedName("namespace") private Optional<Boolean> namespace;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "ModifyVirtualNetwork" API Service call.
-     * @param virtualNetworkID (optional) Unique identifier of the virtual network to modify. This is the virtual network ID assigned by the SolidFire cluster.
-     * @param virtualNetworkTag (optional) Network Tag that identifies the virtual network to modify.
-     * @param name (optional) New name for the virtual network.
-     * @param addressBlocks (optional) New addressBlock to set for this Virtual Network object. This may contain new address blocks to add to the existing object or it may omit unused address blocks that need to be removed. Alternatively, existing address blocks may be extended or reduced in size. The size of the starting addressBlocks for a Virtual Network object can only be increased, and can never be decreased.
-     * @param netmask (optional) New netmask for this virtual network.
-     * @param svip (optional) The storage virtual IP address for this virtual network. The svip for Virtual Network cannot be changed. A new Virtual Network must be created in order to use a different svip address.
-     * @param attributes (optional) A new list of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ModifyVirtualNetworkRequest(Optional<Long> virtualNetworkID, Optional<Long> virtualNetworkTag, Optional<String> name, Optional<AddressBlock[]> addressBlocks, Optional<String> netmask, Optional<String> svip, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = (name == null) ? Optional.<String>empty() : name;
-        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
-        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
-        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
-        this.gateway = Optional.<String>empty();
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : addressBlocks;
-        this.svip = (svip == null) ? Optional.<String>empty() : svip;
-        this.namespace = Optional.<Boolean>empty();
-    }
+    public ModifyVirtualNetworkRequest() {}
 
-    /**
-     * The Request object for the "ModifyVirtualNetwork" API Service call.
-     * @param virtualNetworkID (optional) Unique identifier of the virtual network to modify. This is the virtual network ID assigned by the SolidFire cluster.
-     * @param virtualNetworkTag (optional) Network Tag that identifies the virtual network to modify.
-     * @param name (optional) New name for the virtual network.
-     * @param addressBlocks (optional) New addressBlock to set for this Virtual Network object. This may contain new address blocks to add to the existing object or it may omit unused address blocks that need to be removed. Alternatively, existing address blocks may be extended or reduced in size. The size of the starting addressBlocks for a Virtual Network object can only be increased, and can never be decreased.
-     * @param netmask (optional) New netmask for this virtual network.
-     * @param svip (optional) The storage virtual IP address for this virtual network. The svip for Virtual Network cannot be changed. A new Virtual Network must be created in order to use a different svip address.
-     * @param gateway (optional) 
-     * @param namespace (optional) 
-     * @param attributes (optional) A new list of Name/Value pairs in JSON object format.
-     * @since 9.0
-     **/
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyVirtualNetworkRequest(
+        Optional<Long> virtualNetworkID,
+        Optional<Long> virtualNetworkTag,
+        Optional<String> name,
+        Optional<AddressBlock[]> addressBlocks,
+        Optional<String> netmask,
+        Optional<String> svip,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : addressBlocks;
+        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
+        this.svip = (svip == null) ? Optional.<String>empty() : svip;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
+    // parameterized constructor
     @Since("9.0")
-    public ModifyVirtualNetworkRequest(Optional<Long> virtualNetworkID, Optional<Long> virtualNetworkTag, Optional<String> name, Optional<AddressBlock[]> addressBlocks, Optional<String> netmask, Optional<String> svip, Optional<String> gateway, Optional<Boolean> namespace, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = (name == null) ? Optional.<String>empty() : name;
-        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
-        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
+    public ModifyVirtualNetworkRequest(
+        Optional<Long> virtualNetworkID,
+        Optional<Long> virtualNetworkTag,
+        Optional<String> name,
+        Optional<AddressBlock[]> addressBlocks,
+        Optional<String> netmask,
+        Optional<String> svip,
+        Optional<String> gateway,
+        Optional<Boolean> namespace,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
-        this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
+        this.name = (name == null) ? Optional.<String>empty() : name;
         this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : addressBlocks;
+        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
         this.svip = (svip == null) ? Optional.<String>empty() : svip;
+        this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
-
-    /**
+    /** 
      * Unique identifier of the virtual network to modify. This is the virtual network ID assigned by the SolidFire cluster.
      **/
-    public Optional<Long> getVirtualNetworkID() {
-        return this.virtualNetworkID;
+    public Optional<Long> getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(Optional<Long> virtualNetworkID) { 
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
     }
-
-    /**
+    /** 
      * Network Tag that identifies the virtual network to modify.
      **/
-    public Optional<Long> getVirtualNetworkTag() {
-        return this.virtualNetworkTag;
+    public Optional<Long> getVirtualNetworkTag() { return this.virtualNetworkTag; }
+    public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) { 
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
     }
-
-    /**
+    /** 
      * New name for the virtual network.
      **/
-    public Optional<String> getName() {
-        return this.name;
+    public Optional<String> getName() { return this.name; }
+    public void setName(Optional<String> name) { 
+        this.name = (name == null) ? Optional.<String>empty() : name;
     }
-
-    /**
+    /** 
      * New addressBlock to set for this Virtual Network object. This may contain new address blocks to add to the existing object or it may omit unused address blocks that need to be removed. Alternatively, existing address blocks may be extended or reduced in size. The size of the starting addressBlocks for a Virtual Network object can only be increased, and can never be decreased.
      * Attributes for this parameter are:
-     * <br/><b>start:</b> start of the IP address range. (String)
-     * <br/><b>size:</b> numbre of IP addresses to include in the block. (Integer)
+     * start: start of the IP address range. (String)
+     * size: numbre of IP addresses to include in the block. (Integer)
      **/
-    public Optional<AddressBlock[]> getAddressBlocks() {
-        return this.addressBlocks;
+    public Optional<AddressBlock[]> getAddressBlocks() { return this.addressBlocks; }
+    public void setAddressBlocks(Optional<AddressBlock[]> addressBlocks) { 
+        this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : addressBlocks;
     }
-
-    /**
+    /** 
      * New netmask for this virtual network.
      **/
-    public Optional<String> getNetmask() {
-        return this.netmask;
+    public Optional<String> getNetmask() { return this.netmask; }
+    public void setNetmask(Optional<String> netmask) { 
+        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
     }
-
-    /**
+    /** 
      * The storage virtual IP address for this virtual network. The svip for Virtual Network cannot be changed. A new Virtual Network must be created in order to use a different svip address.
      **/
-    public Optional<String> getSvip() {
-        return this.svip;
+    public Optional<String> getSvip() { return this.svip; }
+    public void setSvip(Optional<String> svip) { 
+        this.svip = (svip == null) ? Optional.<String>empty() : svip;
     }
-
-    /**
+    /** 
      * 
-     * @since 9.0 
      **/
-
-    @Since("9.0")
-    public Optional<String> getGateway() {
-        return this.gateway;
+    public Optional<String> getGateway() { return this.gateway; }
+    public void setGateway(Optional<String> gateway) { 
+        this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
     }
-
-    /**
+    /** 
      * 
-     * @since 9.0 
      **/
-
-    @Since("9.0")
-    public Optional<Boolean> getNamespace() {
-        return this.namespace;
+    public Optional<Boolean> getNamespace() { return this.namespace; }
+    public void setNamespace(Optional<Boolean> namespace) { 
+        this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
-
-    /**
+    /** 
      * A new list of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -180,48 +166,71 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVirtualNetworkRequest that = (ModifyVirtualNetworkRequest) o;
-        
 
-        return Objects.equals( virtualNetworkID , that.virtualNetworkID )
-            && Objects.equals( virtualNetworkTag , that.virtualNetworkTag )
-            && Objects.equals( name , that.name )
-            && Objects.deepEquals( addressBlocks , that.addressBlocks )
-            && Objects.equals( netmask , that.netmask )
-            && Objects.equals( svip , that.svip )
-            && Objects.equals( gateway , that.gateway )
-            && Objects.equals( namespace , that.namespace )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(addressBlocks, that.addressBlocks) && 
+            Objects.equals(netmask, that.netmask) && 
+            Objects.equals(svip, that.svip) && 
+            Objects.equals(gateway, that.gateway) && 
+            Objects.equals(namespace, that.namespace) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualNetworkID, virtualNetworkTag, name, addressBlocks, netmask, svip, gateway, namespace, attributes );
+        return Objects.hash( virtualNetworkID,virtualNetworkTag,name,addressBlocks,netmask,svip,gateway,namespace,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("virtualNetworkID", virtualNetworkID);
+        map.put("virtualNetworkTag", virtualNetworkTag);
+        map.put("name", name);
+        map.put("addressBlocks", addressBlocks);
+        map.put("netmask", netmask);
+        map.put("svip", svip);
+        map.put("gateway", gateway);
+        map.put("namespace", namespace);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != virtualNetworkID && virtualNetworkID.isPresent())
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID.get()).append(",");
-        if(null != virtualNetworkTag && virtualNetworkTag.isPresent())
-            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag.get()).append(",");
-        if(null != name && name.isPresent())
-            sb.append(" name : ").append(name.get()).append(",");
-        if(null != addressBlocks && addressBlocks.isPresent())
-            sb.append(" addressBlocks : ").append(Arrays.toString(addressBlocks.get())).append(",");
-        if(null != netmask && netmask.isPresent())
-            sb.append(" netmask : ").append(netmask.get()).append(",");
-        if(null != svip && svip.isPresent())
-            sb.append(" svip : ").append(svip.get()).append(",");
-        if(null != gateway && gateway.isPresent())
-            sb.append(" gateway : ").append(gateway.get()).append(",");
-        if(null != namespace && namespace.isPresent())
-            sb.append(" namespace : ").append(namespace.get()).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        if(null != virtualNetworkID && virtualNetworkID.isPresent()){
+            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+        }
+        if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
+            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
+        }
+        if(null != name && name.isPresent()){
+            sb.append(" name : ").append(name).append(",");
+        }
+        if(null != addressBlocks && addressBlocks.isPresent()){
+            sb.append(" addressBlocks : ").append(addressBlocks).append(",");
+        }
+        if(null != netmask && netmask.isPresent()){
+            sb.append(" netmask : ").append(netmask).append(",");
+        }
+        if(null != svip && svip.isPresent()){
+            sb.append(" svip : ").append(svip).append(",");
+        }
+        if(null != gateway && gateway.isPresent()){
+            sb.append(" gateway : ").append(gateway).append(",");
+        }
+        if(null != namespace && namespace.isPresent()){
+            sb.append(" namespace : ").append(namespace).append(",");
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -261,7 +270,7 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
                          this.svip,
                          this.gateway,
                          this.namespace,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private ModifyVirtualNetworkRequest.Builder buildFrom(final ModifyVirtualNetworkRequest req) {
@@ -324,5 +333,4 @@ public class ModifyVirtualNetworkRequest  implements Serializable  {
         }
 
     }
-
 }

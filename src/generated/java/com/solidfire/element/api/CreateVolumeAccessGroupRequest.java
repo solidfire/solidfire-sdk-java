@@ -18,124 +18,110 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "CreateVolumeAccessGroup" API Service call.
+ * CreateVolumeAccessGroupRequest  
  **/
-public class CreateVolumeAccessGroupRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1336348327L;
+public class CreateVolumeAccessGroupRequest implements Serializable {
 
-    @SerializedName("name") private final String name;
-    @SerializedName("initiators") private final Optional<String[]> initiators;
-    @SerializedName("volumes") private final Optional<Long[]> volumes;
-    @SerializedName("virtualNetworkID") private final Optional<Long[]> virtualNetworkID;
-    @SerializedName("virtualNetworkTags") private final Optional<Long[]> virtualNetworkTags;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    public static final long serialVersionUID = 6824028462430624106L;
+    @SerializedName("name") private String name;
+    @SerializedName("initiators") private Optional<String[]> initiators;
+    @SerializedName("volumes") private Optional<Long[]> volumes;
+    @SerializedName("virtualNetworkID") private Optional<Long[]> virtualNetworkID;
+    @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "CreateVolumeAccessGroup" API Service call.
-     * @param name [required] Name of the volume access group.
-     * @param initiators (optional) List of initiators to include in the volume access group.
-     * @param volumes (optional) List of volumes to initially include in the volume access group.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public CreateVolumeAccessGroupRequest(String name, Optional<String[]> initiators, Optional<Long[]> volumes, Optional<java.util.Map<String, Object>> attributes) {
+    public CreateVolumeAccessGroupRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public CreateVolumeAccessGroupRequest(
+        String name,
+        Optional<String[]> initiators,
+        Optional<Long[]> volumes,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.name = name;
-        this.virtualNetworkTags = Optional.<Long[]>empty();
-        this.virtualNetworkID = Optional.<Long[]>empty();
+        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
     }
-
-    /**
-     * The Request object for the "CreateVolumeAccessGroup" API Service call.
-     * @param name [required] Name of the volume access group.
-     * @param initiators (optional) List of initiators to include in the volume access group.
-     * @param volumes (optional) List of volumes to initially include in the volume access group.
-     * @param virtualNetworkID (optional) The ID of the SolidFire Virtual Network ID to associate the volume access group with.
-     * @param virtualNetworkTags (optional) The ID of the VLAN Virtual Network Tag to associate the volume access group with.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 8.0
-     **/
+    // parameterized constructor
     @Since("8.0")
-    public CreateVolumeAccessGroupRequest(String name, Optional<String[]> initiators, Optional<Long[]> volumes, Optional<Long[]> virtualNetworkID, Optional<Long[]> virtualNetworkTags, Optional<java.util.Map<String, Object>> attributes) {
+    public CreateVolumeAccessGroupRequest(
+        String name,
+        Optional<String[]> initiators,
+        Optional<Long[]> volumes,
+        Optional<Long[]> virtualNetworkID,
+        Optional<Long[]> virtualNetworkTags,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.name = name;
-        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
-        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
-        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
+        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
+        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
-
-    /**
+    /** 
      * Name of the volume access group.
      * It is not required to be unique, but recommended.
      **/
-    public String getName() {
-        return this.name;
+    public String getName() { return this.name; }
+    public void setName(String name) { 
+        this.name = name;
     }
-
-    /**
+    /** 
      * List of initiators to include in the volume access group.
      * If unspecified, the access group will start out without configured initiators.
      **/
-    public Optional<String[]> getInitiators() {
-        return this.initiators;
+    public Optional<String[]> getInitiators() { return this.initiators; }
+    public void setInitiators(Optional<String[]> initiators) { 
+        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
     }
-
-    /**
+    /** 
      * List of volumes to initially include in the volume access group.
      * If unspecified, the access group will start without any volumes.
      **/
-    public Optional<Long[]> getVolumes() {
-        return this.volumes;
+    public Optional<Long[]> getVolumes() { return this.volumes; }
+    public void setVolumes(Optional<Long[]> volumes) { 
+        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
     }
-
-    /**
+    /** 
      * The ID of the SolidFire Virtual Network ID to associate the volume access group with.
-     * @since 8.0 
      **/
-
-    @Since("8.0")
-    public Optional<Long[]> getVirtualNetworkID() {
-        return this.virtualNetworkID;
+    public Optional<Long[]> getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(Optional<Long[]> virtualNetworkID) { 
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
     }
-
-    /**
+    /** 
      * The ID of the VLAN Virtual Network Tag to associate the volume access group with.
-     * @since 8.0 
      **/
-
-    @Since("8.0")
-    public Optional<Long[]> getVirtualNetworkTags() {
-        return this.virtualNetworkTags;
+    public Optional<Long[]> getVirtualNetworkTags() { return this.virtualNetworkTags; }
+    public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) { 
+        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -144,21 +130,32 @@ public class CreateVolumeAccessGroupRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateVolumeAccessGroupRequest that = (CreateVolumeAccessGroupRequest) o;
-        
 
-        return Objects.equals( name , that.name )
-            && Objects.deepEquals( initiators , that.initiators )
-            && Objects.deepEquals( volumes , that.volumes )
-            && Objects.deepEquals( virtualNetworkID , that.virtualNetworkID )
-            && Objects.deepEquals( virtualNetworkTags , that.virtualNetworkTags )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(name, that.name) && 
+            Objects.equals(initiators, that.initiators) && 
+            Objects.equals(volumes, that.volumes) && 
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
+            Objects.equals(virtualNetworkTags, that.virtualNetworkTags) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, initiators, volumes, virtualNetworkID, virtualNetworkTags, attributes );
+        return Objects.hash( name,initiators,volumes,virtualNetworkID,virtualNetworkTags,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("name", name);
+        map.put("initiators", initiators);
+        map.put("volumes", volumes);
+        map.put("virtualNetworkID", virtualNetworkID);
+        map.put("virtualNetworkTags", virtualNetworkTags);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -166,16 +163,21 @@ public class CreateVolumeAccessGroupRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" name : ").append(name).append(",");
-        if(null != initiators && initiators.isPresent())
-            sb.append(" initiators : ").append(Arrays.toString(initiators.get())).append(",");
-        if(null != volumes && volumes.isPresent())
-            sb.append(" volumes : ").append(Arrays.toString(volumes.get())).append(",");
-        if(null != virtualNetworkID && virtualNetworkID.isPresent())
-            sb.append(" virtualNetworkID : ").append(Arrays.toString(virtualNetworkID.get())).append(",");
-        if(null != virtualNetworkTags && virtualNetworkTags.isPresent())
-            sb.append(" virtualNetworkTags : ").append(Arrays.toString(virtualNetworkTags.get())).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        if(null != initiators && initiators.isPresent()){
+            sb.append(" initiators : ").append(initiators).append(",");
+        }
+        if(null != volumes && volumes.isPresent()){
+            sb.append(" volumes : ").append(volumes).append(",");
+        }
+        if(null != virtualNetworkID && virtualNetworkID.isPresent()){
+            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+        }
+        if(null != virtualNetworkTags && virtualNetworkTags.isPresent()){
+            sb.append(" virtualNetworkTags : ").append(virtualNetworkTags).append(",");
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -209,7 +211,7 @@ public class CreateVolumeAccessGroupRequest  implements Serializable  {
                          this.volumes,
                          this.virtualNetworkID,
                          this.virtualNetworkTags,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private CreateVolumeAccessGroupRequest.Builder buildFrom(final CreateVolumeAccessGroupRequest req) {
@@ -254,5 +256,4 @@ public class CreateVolumeAccessGroupRequest  implements Serializable  {
         }
 
     }
-
 }

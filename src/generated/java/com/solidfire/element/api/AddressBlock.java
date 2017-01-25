@@ -18,57 +18,54 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * AddressBlock  
  * Unique Range of IP addresses to include in the virtual network.
  **/
-public class AddressBlock  implements Serializable  {
 
-    private static final long serialVersionUID = -867125400L;
+public class AddressBlock implements Serializable {
 
-    @SerializedName("start") private final String start;
-    @SerializedName("size") private final Long size;
+    public static final long serialVersionUID = -8231638129202823513L;
+    @SerializedName("start") private String start;
+    @SerializedName("size") private Long size;
 
-    /**
-     * Unique Range of IP addresses to include in the virtual network.
-     * @param start [required] Start of the IP address range.
-     * @param size [required] Number of IP addresses to include in the block.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public AddressBlock(String start, Long size) {
+    public AddressBlock() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public AddressBlock(
+        String start,
+        Long size
+    )
+    {
         this.start = start;
         this.size = size;
     }
 
-
-    /**
+    /** 
      * Start of the IP address range.
      **/
-    public String getStart() {
-        return this.start;
+    public String getStart() { return this.start; }
+    public void setStart(String start) { 
+        this.start = start;
     }
-
-    /**
+    /** 
      * Number of IP addresses to include in the block.
      **/
-    public Long getSize() {
-        return this.size;
+    public Long getSize() { return this.size; }
+    public void setSize(Long size) { 
+        this.size = size;
     }
 
     @Override
@@ -77,17 +74,24 @@ public class AddressBlock  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddressBlock that = (AddressBlock) o;
-        
 
-        return Objects.equals( start , that.start )
-            && Objects.equals( size , that.size );
+        return 
+            Objects.equals(start, that.start) && 
+            Objects.equals(size, that.size);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( start, size );
+        return Objects.hash( start,size );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("start", start);
+        map.put("size", size);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +99,7 @@ public class AddressBlock  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" start : ").append(start).append(",");
-        sb.append(" size : ").append(size);
+        sb.append(" size : ").append(size).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +125,7 @@ public class AddressBlock  implements Serializable  {
         public AddressBlock build() {
             return new AddressBlock (
                          this.start,
-                         this.size            );
+                         this.size);
         }
 
         private AddressBlock.Builder buildFrom(final AddressBlock req) {
@@ -142,5 +146,4 @@ public class AddressBlock  implements Serializable  {
         }
 
     }
-
 }

@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "EnableSnmp" API Service call.
+ * EnableSnmpRequest  
  **/
-public class EnableSnmpRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 424594038L;
+public class EnableSnmpRequest implements Serializable {
 
-    @SerializedName("snmpV3Enabled") private final Boolean snmpV3Enabled;
+    public static final long serialVersionUID = 6198786488143236861L;
+    @SerializedName("snmpV3Enabled") private Boolean snmpV3Enabled;
 
-    /**
-     * The Request object for the "EnableSnmp" API Service call.
-     * @param snmpV3Enabled [required] If set to "true", then SNMP v3 is enabled on each node in the cluster. If set to "false", then SNMP v2 is enabled.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public EnableSnmpRequest(Boolean snmpV3Enabled) {
+    public EnableSnmpRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public EnableSnmpRequest(
+        Boolean snmpV3Enabled
+    )
+    {
         this.snmpV3Enabled = snmpV3Enabled;
     }
 
-
-    /**
+    /** 
      * If set to "true", then SNMP v3 is enabled on each node in the cluster. If set to "false", then SNMP v2 is enabled.
      **/
-    public Boolean getSnmpV3Enabled() {
-        return this.snmpV3Enabled;
+    public Boolean getSnmpV3Enabled() { return this.snmpV3Enabled; }
+    public void setSnmpV3Enabled(Boolean snmpV3Enabled) { 
+        this.snmpV3Enabled = snmpV3Enabled;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class EnableSnmpRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         EnableSnmpRequest that = (EnableSnmpRequest) o;
-        
 
-        return Objects.equals( snmpV3Enabled , that.snmpV3Enabled );
+        return 
+            Objects.equals(snmpV3Enabled, that.snmpV3Enabled);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) snmpV3Enabled );
+        return Objects.hash( snmpV3Enabled );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("snmpV3Enabled", snmpV3Enabled);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" snmpV3Enabled : ").append(snmpV3Enabled);
+        sb.append(" snmpV3Enabled : ").append(snmpV3Enabled).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class EnableSnmpRequest  implements Serializable  {
 
         public EnableSnmpRequest build() {
             return new EnableSnmpRequest (
-                         this.snmpV3Enabled            );
+                         this.snmpV3Enabled);
         }
 
         private EnableSnmpRequest.Builder buildFrom(final EnableSnmpRequest req) {
@@ -122,5 +124,4 @@ public class EnableSnmpRequest  implements Serializable  {
         }
 
     }
-
 }

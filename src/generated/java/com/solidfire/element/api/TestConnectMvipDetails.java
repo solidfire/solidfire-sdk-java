@@ -18,67 +18,63 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * TestConnectMvipDetails  
  **/
-public class TestConnectMvipDetails  implements Serializable  {
 
-    private static final long serialVersionUID = 1934079889L;
+public class TestConnectMvipDetails implements Serializable {
 
-    @SerializedName("pingBytes") private final Object pingBytes;
-    @SerializedName("mvip") private final String mvip;
-    @SerializedName("connected") private final Boolean connected;
+    public static final long serialVersionUID = 5224632538129465332L;
+    @SerializedName("pingBytes") private Object pingBytes;
+    @SerializedName("mvip") private String mvip;
+    @SerializedName("connected") private Boolean connected;
 
-    /**
-     * 
-     * @param pingBytes [required] Details of the ping tests with 56 Bytes and 1500 Bytes.
-     * @param mvip [required] The MVIP tested against.
-     * @param connected [required] Whether the test could connect to the MVIP.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public TestConnectMvipDetails(Object pingBytes, String mvip, Boolean connected) {
+    public TestConnectMvipDetails() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public TestConnectMvipDetails(
+        Object pingBytes,
+        String mvip,
+        Boolean connected
+    )
+    {
         this.pingBytes = pingBytes;
         this.mvip = mvip;
         this.connected = connected;
     }
 
-
-    /**
+    /** 
      * Details of the ping tests with 56 Bytes and 1500 Bytes.
      **/
-    public Object getPingBytes() {
-        return this.pingBytes;
+    public Object getPingBytes() { return this.pingBytes; }
+    public void setPingBytes(Object pingBytes) { 
+        this.pingBytes = pingBytes;
     }
-
-    /**
+    /** 
      * The MVIP tested against.
      **/
-    public String getMvip() {
-        return this.mvip;
+    public String getMvip() { return this.mvip; }
+    public void setMvip(String mvip) { 
+        this.mvip = mvip;
     }
-
-    /**
+    /** 
      * Whether the test could connect to the MVIP.
      **/
-    public Boolean getConnected() {
-        return this.connected;
+    public Boolean getConnected() { return this.connected; }
+    public void setConnected(Boolean connected) { 
+        this.connected = connected;
     }
 
     @Override
@@ -87,18 +83,26 @@ public class TestConnectMvipDetails  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectMvipDetails that = (TestConnectMvipDetails) o;
-        
 
-        return Objects.equals( pingBytes , that.pingBytes )
-            && Objects.equals( mvip , that.mvip )
-            && Objects.equals( connected , that.connected );
+        return 
+            Objects.equals(pingBytes, that.pingBytes) && 
+            Objects.equals(mvip, that.mvip) && 
+            Objects.equals(connected, that.connected);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( pingBytes, mvip, connected );
+        return Objects.hash( pingBytes,mvip,connected );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("pingBytes", pingBytes);
+        map.put("mvip", mvip);
+        map.put("connected", connected);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -107,7 +111,7 @@ public class TestConnectMvipDetails  implements Serializable  {
 
         sb.append(" pingBytes : ").append(pingBytes).append(",");
         sb.append(" mvip : ").append(mvip).append(",");
-        sb.append(" connected : ").append(connected);
+        sb.append(" connected : ").append(connected).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -135,7 +139,7 @@ public class TestConnectMvipDetails  implements Serializable  {
             return new TestConnectMvipDetails (
                          this.pingBytes,
                          this.mvip,
-                         this.connected            );
+                         this.connected);
         }
 
         private TestConnectMvipDetails.Builder buildFrom(final TestConnectMvipDetails req) {
@@ -162,5 +166,4 @@ public class TestConnectMvipDetails  implements Serializable  {
         }
 
     }
-
 }

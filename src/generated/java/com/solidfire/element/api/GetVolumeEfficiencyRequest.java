@@ -18,53 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetVolumeEfficiency" API Service call.
+ * GetVolumeEfficiencyRequest  
  **/
-public class GetVolumeEfficiencyRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1104503141L;
+public class GetVolumeEfficiencyRequest implements Serializable {
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("force") private final Optional<Boolean> force;
+    public static final long serialVersionUID = 6871428855542224054L;
+    @SerializedName("volumeID") private Long volumeID;
 
-    /**
-     * The Request object for the "GetVolumeEfficiency" API Service call.
-     * @param volumeID [required] Specifies the volume for which capacity is computed.
-     * @param force (optional) 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetVolumeEfficiencyRequest(Long volumeID, Optional<Boolean> force) {
+    public GetVolumeEfficiencyRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetVolumeEfficiencyRequest(
+        Long volumeID
+    )
+    {
         this.volumeID = volumeID;
-        this.force = (force == null) ? Optional.<Boolean>empty() : force;
     }
 
-
-    /**
+    /** 
      * Specifies the volume for which capacity is computed.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
-    }
-    public Optional<Boolean> getForce() {
-        return this.force;
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
     }
 
     @Override
@@ -73,17 +63,22 @@ public class GetVolumeEfficiencyRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetVolumeEfficiencyRequest that = (GetVolumeEfficiencyRequest) o;
-        
 
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( force , that.force );
+        return 
+            Objects.equals(volumeID, that.volumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, force );
+        return Objects.hash( volumeID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -91,8 +86,6 @@ public class GetVolumeEfficiencyRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" volumeID : ").append(volumeID).append(",");
-        if(null != force && force.isPresent())
-            sb.append(" force : ").append(force.get());
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -111,19 +104,16 @@ public class GetVolumeEfficiencyRequest  implements Serializable  {
 
     public static class Builder {
         private Long volumeID;
-        private Optional<Boolean> force;
 
         private Builder() { }
 
         public GetVolumeEfficiencyRequest build() {
             return new GetVolumeEfficiencyRequest (
-                         this.volumeID,
-                         this.force            );
+                         this.volumeID);
         }
 
         private GetVolumeEfficiencyRequest.Builder buildFrom(final GetVolumeEfficiencyRequest req) {
             this.volumeID = req.volumeID;
-            this.force = req.force;
 
             return this;
         }
@@ -133,11 +123,5 @@ public class GetVolumeEfficiencyRequest  implements Serializable  {
             return this;
         }
 
-        public GetVolumeEfficiencyRequest.Builder optionalForce(final Boolean force) {
-            this.force = (force == null) ? Optional.<Boolean>empty() : Optional.of(force);
-            return this;
-        }
-
     }
-
 }

@@ -18,47 +18,44 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * ListFibreChannelPortInfoResult  
  * ListFibreChannelPortInfoResult is used to return information about the Fibre Channel ports.
  **/
-public class ListFibreChannelPortInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = -201731339L;
+public class ListFibreChannelPortInfoResult implements Serializable {
 
-    @SerializedName("fibreChannelPortInfo") private final java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo;
+    public static final long serialVersionUID = -1066916759051365511L;
+    @SerializedName("fibreChannelPortInfo") private java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo;
 
-    /**
-     * ListFibreChannelPortInfoResult is used to return information about the Fibre Channel ports.
-     * @param fibreChannelPortInfo [required] Used to return information about the Fibre Channel ports.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListFibreChannelPortInfoResult(java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo) {
+    public ListFibreChannelPortInfoResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListFibreChannelPortInfoResult(
+        java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo
+    )
+    {
         this.fibreChannelPortInfo = fibreChannelPortInfo;
     }
 
-
-    /**
+    /** 
      * Used to return information about the Fibre Channel ports.
      **/
-    public java.util.Map<String,FibreChannelPortInfoResult> getFibreChannelPortInfo() {
-        return this.fibreChannelPortInfo;
+    public java.util.Map<String,FibreChannelPortInfoResult> getFibreChannelPortInfo() { return this.fibreChannelPortInfo; }
+    public void setFibreChannelPortInfo(java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo) { 
+        this.fibreChannelPortInfo = fibreChannelPortInfo;
     }
 
     @Override
@@ -67,23 +64,29 @@ public class ListFibreChannelPortInfoResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListFibreChannelPortInfoResult that = (ListFibreChannelPortInfoResult) o;
-        
 
-        return Objects.equals( fibreChannelPortInfo , that.fibreChannelPortInfo );
+        return 
+            Objects.equals(fibreChannelPortInfo, that.fibreChannelPortInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) fibreChannelPortInfo );
+        return Objects.hash( fibreChannelPortInfo );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("fibreChannelPortInfo", fibreChannelPortInfo);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" fibreChannelPortInfo : ").append(fibreChannelPortInfo);
+        sb.append(" fibreChannelPortInfo : ").append(fibreChannelPortInfo).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +110,7 @@ public class ListFibreChannelPortInfoResult  implements Serializable  {
 
         public ListFibreChannelPortInfoResult build() {
             return new ListFibreChannelPortInfoResult (
-                         this.fibreChannelPortInfo            );
+                         this.fibreChannelPortInfo);
         }
 
         private ListFibreChannelPortInfoResult.Builder buildFrom(final ListFibreChannelPortInfoResult req) {
@@ -122,5 +125,4 @@ public class ListFibreChannelPortInfoResult  implements Serializable  {
         }
 
     }
-
 }

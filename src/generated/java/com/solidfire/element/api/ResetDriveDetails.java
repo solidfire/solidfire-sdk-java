@@ -18,65 +18,70 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * ResetDriveDetails  
  **/
-public class ResetDriveDetails  implements Serializable  {
 
-    private static final long serialVersionUID = 354778296L;
+public class ResetDriveDetails implements Serializable {
 
-    @SerializedName("drive") private final String drive;
-    @SerializedName("returnCode") private final Long returnCode;
-    @SerializedName("stderr") private final String stderr;
-    @SerializedName("stdout") private final String stdout;
+    public static final long serialVersionUID = 1589571588236831286L;
+    @SerializedName("drive") private String drive;
+    @SerializedName("returnCode") private Long returnCode;
+    @SerializedName("stderr") private String stderr;
+    @SerializedName("stdout") private String stdout;
 
-    /**
-     * 
-     * @param drive [required] Drive name
-     * @param returnCode [required] 
-     * @param stderr [required] 
-     * @param stdout [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ResetDriveDetails(String drive, Long returnCode, String stderr, String stdout) {
+    public ResetDriveDetails() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ResetDriveDetails(
+        String drive,
+        Long returnCode,
+        String stderr,
+        String stdout
+    )
+    {
         this.drive = drive;
         this.returnCode = returnCode;
         this.stderr = stderr;
         this.stdout = stdout;
     }
 
-
-    /**
+    /** 
      * Drive name
      **/
-    public String getDrive() {
-        return this.drive;
+    public String getDrive() { return this.drive; }
+    public void setDrive(String drive) { 
+        this.drive = drive;
     }
-    public Long getReturnCode() {
-        return this.returnCode;
+    /** 
+     **/
+    public Long getReturnCode() { return this.returnCode; }
+    public void setReturnCode(Long returnCode) { 
+        this.returnCode = returnCode;
     }
-    public String getStderr() {
-        return this.stderr;
+    /** 
+     **/
+    public String getStderr() { return this.stderr; }
+    public void setStderr(String stderr) { 
+        this.stderr = stderr;
     }
-    public String getStdout() {
-        return this.stdout;
+    /** 
+     **/
+    public String getStdout() { return this.stdout; }
+    public void setStdout(String stdout) { 
+        this.stdout = stdout;
     }
 
     @Override
@@ -85,19 +90,28 @@ public class ResetDriveDetails  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ResetDriveDetails that = (ResetDriveDetails) o;
-        
 
-        return Objects.equals( drive , that.drive )
-            && Objects.equals( returnCode , that.returnCode )
-            && Objects.equals( stderr , that.stderr )
-            && Objects.equals( stdout , that.stdout );
+        return 
+            Objects.equals(drive, that.drive) && 
+            Objects.equals(returnCode, that.returnCode) && 
+            Objects.equals(stderr, that.stderr) && 
+            Objects.equals(stdout, that.stdout);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( drive, returnCode, stderr, stdout );
+        return Objects.hash( drive,returnCode,stderr,stdout );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("drive", drive);
+        map.put("returnCode", returnCode);
+        map.put("stderr", stderr);
+        map.put("stdout", stdout);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -107,7 +121,7 @@ public class ResetDriveDetails  implements Serializable  {
         sb.append(" drive : ").append(drive).append(",");
         sb.append(" returnCode : ").append(returnCode).append(",");
         sb.append(" stderr : ").append(stderr).append(",");
-        sb.append(" stdout : ").append(stdout);
+        sb.append(" stdout : ").append(stdout).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -137,7 +151,7 @@ public class ResetDriveDetails  implements Serializable  {
                          this.drive,
                          this.returnCode,
                          this.stderr,
-                         this.stdout            );
+                         this.stdout);
         }
 
         private ResetDriveDetails.Builder buildFrom(final ResetDriveDetails req) {
@@ -170,5 +184,4 @@ public class ResetDriveDetails  implements Serializable  {
         }
 
     }
-
 }

@@ -18,67 +18,64 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * MetadataHosts  
  * The volume services on which the volume metadata resides.
  **/
-public class MetadataHosts  implements Serializable  {
 
-    private static final long serialVersionUID = 645730861L;
+public class MetadataHosts implements Serializable {
 
-    @SerializedName("deadSecondaries") private final Long[] deadSecondaries;
-    @SerializedName("liveSecondaries") private final Long[] liveSecondaries;
-    @SerializedName("primary") private final Long primary;
+    public static final long serialVersionUID = 2342637687735402273L;
+    @SerializedName("deadSecondaries") private Long[] deadSecondaries;
+    @SerializedName("liveSecondaries") private Long[] liveSecondaries;
+    @SerializedName("primary") private Long primary;
 
-    /**
-     * The volume services on which the volume metadata resides.
-     * @param deadSecondaries [required] Secondary metadata (slice) services that are in a dead state.
-     * @param liveSecondaries [required] Secondary metadata (slice) services that are currently in a "live" state.
-     * @param primary [required] The primary metadata (slice) services hosting the volume.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public MetadataHosts(Long[] deadSecondaries, Long[] liveSecondaries, Long primary) {
+    public MetadataHosts() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public MetadataHosts(
+        Long[] deadSecondaries,
+        Long[] liveSecondaries,
+        Long primary
+    )
+    {
         this.deadSecondaries = deadSecondaries;
         this.liveSecondaries = liveSecondaries;
         this.primary = primary;
     }
 
-
-    /**
+    /** 
      * Secondary metadata (slice) services that are in a dead state.
      **/
-    public Long[] getDeadSecondaries() {
-        return this.deadSecondaries;
+    public Long[] getDeadSecondaries() { return this.deadSecondaries; }
+    public void setDeadSecondaries(Long[] deadSecondaries) { 
+        this.deadSecondaries = deadSecondaries;
     }
-
-    /**
+    /** 
      * Secondary metadata (slice) services that are currently in a "live" state.
      **/
-    public Long[] getLiveSecondaries() {
-        return this.liveSecondaries;
+    public Long[] getLiveSecondaries() { return this.liveSecondaries; }
+    public void setLiveSecondaries(Long[] liveSecondaries) { 
+        this.liveSecondaries = liveSecondaries;
     }
-
-    /**
+    /** 
      * The primary metadata (slice) services hosting the volume.
      **/
-    public Long getPrimary() {
-        return this.primary;
+    public Long getPrimary() { return this.primary; }
+    public void setPrimary(Long primary) { 
+        this.primary = primary;
     }
 
     @Override
@@ -87,18 +84,26 @@ public class MetadataHosts  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         MetadataHosts that = (MetadataHosts) o;
-        
 
-        return Objects.deepEquals( deadSecondaries , that.deadSecondaries )
-            && Objects.deepEquals( liveSecondaries , that.liveSecondaries )
-            && Objects.equals( primary , that.primary );
+        return 
+            Arrays.equals(deadSecondaries, that.deadSecondaries) && 
+            Arrays.equals(liveSecondaries, that.liveSecondaries) && 
+            Objects.equals(primary, that.primary);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( deadSecondaries, liveSecondaries, primary );
+        return Objects.hash( (Object[])deadSecondaries,(Object[])liveSecondaries,primary );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("deadSecondaries", deadSecondaries);
+        map.put("liveSecondaries", liveSecondaries);
+        map.put("primary", primary);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -107,7 +112,7 @@ public class MetadataHosts  implements Serializable  {
 
         sb.append(" deadSecondaries : ").append(Arrays.toString(deadSecondaries)).append(",");
         sb.append(" liveSecondaries : ").append(Arrays.toString(liveSecondaries)).append(",");
-        sb.append(" primary : ").append(primary);
+        sb.append(" primary : ").append(primary).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -135,7 +140,7 @@ public class MetadataHosts  implements Serializable  {
             return new MetadataHosts (
                          this.deadSecondaries,
                          this.liveSecondaries,
-                         this.primary            );
+                         this.primary);
         }
 
         private MetadataHosts.Builder buildFrom(final MetadataHosts req) {
@@ -162,5 +167,4 @@ public class MetadataHosts  implements Serializable  {
         }
 
     }
-
 }

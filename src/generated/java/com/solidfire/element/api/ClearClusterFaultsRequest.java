@@ -18,50 +18,46 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ClearClusterFaults" API Service call.
+ * ClearClusterFaultsRequest  
  **/
-public class ClearClusterFaultsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -502176780L;
+public class ClearClusterFaultsRequest implements Serializable {
 
-    @SerializedName("faultTypes") private final Optional<String> faultTypes;
+    public static final long serialVersionUID = 6178629724073244806L;
+    @SerializedName("faultTypes") private Optional<String> faultTypes;
 
-    /**
-     * The Request object for the "ClearClusterFaults" API Service call.
-     * @param faultTypes (optional) Determines the types of faults cleared:<br/>
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ClearClusterFaultsRequest(Optional<String> faultTypes) {
+    public ClearClusterFaultsRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ClearClusterFaultsRequest(
+        Optional<String> faultTypes
+    )
+    {
         this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : faultTypes;
     }
 
-
-    /**
-     * Determines the types of faults cleared:<br/>
-     * <b>current</b>: Faults that are currently detected and have not been resolved.<br/>
-     * <b>resolved</b>: Faults that were previously detected and resolved.<br/>
-     * <b>all</b>: Both current and resolved faults are cleared. The fault status can be determined by the "resolved" field of the fault object.
+    /** 
+     * Determines the types of faults cleared:
+     * current: Faults that are currently detected and have not been resolved.
+     * resolved: Faults that were previously detected and resolved.
+     * all: Both current and resolved faults are cleared. The fault status can be determined by the "resolved" field of the fault object.
      **/
-    public Optional<String> getFaultTypes() {
-        return this.faultTypes;
+    public Optional<String> getFaultTypes() { return this.faultTypes; }
+    public void setFaultTypes(Optional<String> faultTypes) { 
+        this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : faultTypes;
     }
 
     @Override
@@ -70,24 +66,31 @@ public class ClearClusterFaultsRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClearClusterFaultsRequest that = (ClearClusterFaultsRequest) o;
-        
 
-        return Objects.equals( faultTypes , that.faultTypes );
+        return 
+            Objects.equals(faultTypes, that.faultTypes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) faultTypes );
+        return Objects.hash( faultTypes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("faultTypes", faultTypes);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != faultTypes && faultTypes.isPresent())
-            sb.append(" faultTypes : ").append(faultTypes.get());
+        if(null != faultTypes && faultTypes.isPresent()){
+            sb.append(" faultTypes : ").append(faultTypes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -111,7 +114,7 @@ public class ClearClusterFaultsRequest  implements Serializable  {
 
         public ClearClusterFaultsRequest build() {
             return new ClearClusterFaultsRequest (
-                         this.faultTypes            );
+                         this.faultTypes);
         }
 
         private ClearClusterFaultsRequest.Builder buildFrom(final ClearClusterFaultsRequest req) {
@@ -126,5 +129,4 @@ public class ClearClusterFaultsRequest  implements Serializable  {
         }
 
     }
-
 }

@@ -18,57 +18,53 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "CreateBackupTarget" API Service call.
+ * CreateBackupTargetRequest  
  **/
-public class CreateBackupTargetRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1193186332L;
+public class CreateBackupTargetRequest implements Serializable {
 
-    @SerializedName("name") private final String name;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    public static final long serialVersionUID = -395631268662599707L;
+    @SerializedName("name") private String name;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "CreateBackupTarget" API Service call.
-     * @param name [required] Name for the backup target.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public CreateBackupTargetRequest(String name, Optional<java.util.Map<String, Object>> attributes) {
+    public CreateBackupTargetRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public CreateBackupTargetRequest(
+        String name,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.name = name;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
-
-    /**
+    /** 
      * Name for the backup target.
      **/
-    public String getName() {
-        return this.name;
+    public String getName() { return this.name; }
+    public void setName(String name) { 
+        this.name = name;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -77,17 +73,24 @@ public class CreateBackupTargetRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateBackupTargetRequest that = (CreateBackupTargetRequest) o;
-        
 
-        return Objects.equals( name , that.name )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(name, that.name) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, attributes );
+        return Objects.hash( name,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("name", name);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,8 +98,9 @@ public class CreateBackupTargetRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" name : ").append(name).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +126,7 @@ public class CreateBackupTargetRequest  implements Serializable  {
         public CreateBackupTargetRequest build() {
             return new CreateBackupTargetRequest (
                          this.name,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private CreateBackupTargetRequest.Builder buildFrom(final CreateBackupTargetRequest req) {
@@ -143,5 +147,4 @@ public class CreateBackupTargetRequest  implements Serializable  {
         }
 
     }
-
 }

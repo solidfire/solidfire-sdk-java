@@ -18,57 +18,53 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "StartClusterPairing" API Service call.
+ * StartClusterPairingResult  
  **/
-public class StartClusterPairingResult  implements Serializable  {
 
-    private static final long serialVersionUID = -81280284L;
+public class StartClusterPairingResult implements Serializable {
 
-    @SerializedName("clusterPairingKey") private final String clusterPairingKey;
-    @SerializedName("clusterPairID") private final Long clusterPairID;
+    public static final long serialVersionUID = 8946070231339981768L;
+    @SerializedName("clusterPairingKey") private String clusterPairingKey;
+    @SerializedName("clusterPairID") private Long clusterPairID;
 
-    /**
-     * The object returned by the "StartClusterPairing" API Service call.
-     * @param clusterPairingKey [required] A string of characters that is used by the "CompleteClusterPairing" API method.
-     * @param clusterPairID [required] Unique identifier for the cluster pair.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public StartClusterPairingResult(String clusterPairingKey, Long clusterPairID) {
+    public StartClusterPairingResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public StartClusterPairingResult(
+        String clusterPairingKey,
+        Long clusterPairID
+    )
+    {
         this.clusterPairingKey = clusterPairingKey;
         this.clusterPairID = clusterPairID;
     }
 
-
-    /**
+    /** 
      * A string of characters that is used by the "CompleteClusterPairing" API method.
      **/
-    public String getClusterPairingKey() {
-        return this.clusterPairingKey;
+    public String getClusterPairingKey() { return this.clusterPairingKey; }
+    public void setClusterPairingKey(String clusterPairingKey) { 
+        this.clusterPairingKey = clusterPairingKey;
     }
-
-    /**
+    /** 
      * Unique identifier for the cluster pair.
      **/
-    public Long getClusterPairID() {
-        return this.clusterPairID;
+    public Long getClusterPairID() { return this.clusterPairID; }
+    public void setClusterPairID(Long clusterPairID) { 
+        this.clusterPairID = clusterPairID;
     }
 
     @Override
@@ -77,17 +73,24 @@ public class StartClusterPairingResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         StartClusterPairingResult that = (StartClusterPairingResult) o;
-        
 
-        return Objects.equals( clusterPairingKey , that.clusterPairingKey )
-            && Objects.equals( clusterPairID , that.clusterPairID );
+        return 
+            Objects.equals(clusterPairingKey, that.clusterPairingKey) && 
+            Objects.equals(clusterPairID, that.clusterPairID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterPairingKey, clusterPairID );
+        return Objects.hash( clusterPairingKey,clusterPairID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterPairingKey", clusterPairingKey);
+        map.put("clusterPairID", clusterPairID);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +98,7 @@ public class StartClusterPairingResult  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" clusterPairingKey : ").append(clusterPairingKey).append(",");
-        sb.append(" clusterPairID : ").append(clusterPairID);
+        sb.append(" clusterPairID : ").append(clusterPairID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +124,7 @@ public class StartClusterPairingResult  implements Serializable  {
         public StartClusterPairingResult build() {
             return new StartClusterPairingResult (
                          this.clusterPairingKey,
-                         this.clusterPairID            );
+                         this.clusterPairID);
         }
 
         private StartClusterPairingResult.Builder buildFrom(final StartClusterPairingResult req) {
@@ -142,5 +145,4 @@ public class StartClusterPairingResult  implements Serializable  {
         }
 
     }
-
 }

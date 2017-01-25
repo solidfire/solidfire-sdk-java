@@ -18,98 +18,95 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * VolumePair  
  * The Volume Pair Info is an object containing information about a volume that is paired on a remote cluster.
+ * If the volume is not paired, this object is null.
  **/
-public class VolumePair  implements Serializable  {
 
-    private static final long serialVersionUID = -1558129361L;
+public class VolumePair implements Serializable {
 
-    @SerializedName("clusterPairID") private final Long clusterPairID;
-    @SerializedName("remoteVolumeID") private final Long remoteVolumeID;
-    @SerializedName("remoteSliceID") private final Long remoteSliceID;
-    @SerializedName("remoteVolumeName") private final String remoteVolumeName;
-    @SerializedName("volumePairUUID") private final java.util.UUID volumePairUUID;
-    @SerializedName("remoteReplication") private final RemoteReplication remoteReplication;
+    public static final long serialVersionUID = 4755249077071999580L;
+    @SerializedName("clusterPairID") private Long clusterPairID;
+    @SerializedName("remoteVolumeID") private Long remoteVolumeID;
+    @SerializedName("remoteSliceID") private Long remoteSliceID;
+    @SerializedName("remoteVolumeName") private String remoteVolumeName;
+    @SerializedName("volumePairUUID") private java.util.UUID volumePairUUID;
+    @SerializedName("remoteReplication") private RemoteReplication remoteReplication;
 
-    /**
-     * The Volume Pair Info is an object containing information about a volume that is paired on a remote cluster.
-     * If the volume is not paired, this object is null.
-     * @param clusterPairID [required] The remote cluster a volume is paired with.
-     * @param remoteVolumeID [required] The VolumeID on the remote cluster a volume is paired with.
-     * @param remoteSliceID [required] The SliceID on the remote cluster a volume is paired with.
-     * @param remoteVolumeName [required] The last-observed name of the volume on the remote cluster a volume is paired with.
-     * @param volumePairUUID [required] A UUID in canonical form.
-     * @param remoteReplication [required] Details about the replication configuration for this volume pair.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public VolumePair(Long clusterPairID, Long remoteVolumeID, Long remoteSliceID, String remoteVolumeName, java.util.UUID volumePairUUID, RemoteReplication remoteReplication) {
+    public VolumePair() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public VolumePair(
+        Long clusterPairID,
+        Long remoteVolumeID,
+        Long remoteSliceID,
+        String remoteVolumeName,
+        java.util.UUID volumePairUUID,
+        RemoteReplication remoteReplication
+    )
+    {
         this.clusterPairID = clusterPairID;
-        this.remoteVolumeName = remoteVolumeName;
         this.remoteVolumeID = remoteVolumeID;
         this.remoteSliceID = remoteSliceID;
-        this.remoteReplication = remoteReplication;
+        this.remoteVolumeName = remoteVolumeName;
         this.volumePairUUID = volumePairUUID;
+        this.remoteReplication = remoteReplication;
     }
 
-
-    /**
+    /** 
      * The remote cluster a volume is paired with.
      **/
-    public Long getClusterPairID() {
-        return this.clusterPairID;
+    public Long getClusterPairID() { return this.clusterPairID; }
+    public void setClusterPairID(Long clusterPairID) { 
+        this.clusterPairID = clusterPairID;
     }
-
-    /**
+    /** 
      * The VolumeID on the remote cluster a volume is paired with.
      **/
-    public Long getRemoteVolumeID() {
-        return this.remoteVolumeID;
+    public Long getRemoteVolumeID() { return this.remoteVolumeID; }
+    public void setRemoteVolumeID(Long remoteVolumeID) { 
+        this.remoteVolumeID = remoteVolumeID;
     }
-
-    /**
+    /** 
      * The SliceID on the remote cluster a volume is paired with.
      **/
-    public Long getRemoteSliceID() {
-        return this.remoteSliceID;
+    public Long getRemoteSliceID() { return this.remoteSliceID; }
+    public void setRemoteSliceID(Long remoteSliceID) { 
+        this.remoteSliceID = remoteSliceID;
     }
-
-    /**
+    /** 
      * The last-observed name of the volume on the remote cluster a volume is paired with.
      **/
-    public String getRemoteVolumeName() {
-        return this.remoteVolumeName;
+    public String getRemoteVolumeName() { return this.remoteVolumeName; }
+    public void setRemoteVolumeName(String remoteVolumeName) { 
+        this.remoteVolumeName = remoteVolumeName;
     }
-
-    /**
+    /** 
      * A UUID in canonical form.
      **/
-    public java.util.UUID getVolumePairUUID() {
-        return this.volumePairUUID;
+    public java.util.UUID getVolumePairUUID() { return this.volumePairUUID; }
+    public void setVolumePairUUID(java.util.UUID volumePairUUID) { 
+        this.volumePairUUID = volumePairUUID;
     }
-
-    /**
+    /** 
      * Details about the replication configuration for this volume pair.
      **/
-    public RemoteReplication getRemoteReplication() {
-        return this.remoteReplication;
+    public RemoteReplication getRemoteReplication() { return this.remoteReplication; }
+    public void setRemoteReplication(RemoteReplication remoteReplication) { 
+        this.remoteReplication = remoteReplication;
     }
 
     @Override
@@ -118,21 +115,32 @@ public class VolumePair  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         VolumePair that = (VolumePair) o;
-        
 
-        return Objects.equals( clusterPairID , that.clusterPairID )
-            && Objects.equals( remoteVolumeID , that.remoteVolumeID )
-            && Objects.equals( remoteSliceID , that.remoteSliceID )
-            && Objects.equals( remoteVolumeName , that.remoteVolumeName )
-            && Objects.equals( volumePairUUID , that.volumePairUUID )
-            && Objects.equals( remoteReplication , that.remoteReplication );
+        return 
+            Objects.equals(clusterPairID, that.clusterPairID) && 
+            Objects.equals(remoteVolumeID, that.remoteVolumeID) && 
+            Objects.equals(remoteSliceID, that.remoteSliceID) && 
+            Objects.equals(remoteVolumeName, that.remoteVolumeName) && 
+            Objects.equals(volumePairUUID, that.volumePairUUID) && 
+            Objects.equals(remoteReplication, that.remoteReplication);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterPairID, remoteVolumeID, remoteSliceID, remoteVolumeName, volumePairUUID, remoteReplication );
+        return Objects.hash( clusterPairID,remoteVolumeID,remoteSliceID,remoteVolumeName,volumePairUUID,remoteReplication );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterPairID", clusterPairID);
+        map.put("remoteVolumeID", remoteVolumeID);
+        map.put("remoteSliceID", remoteSliceID);
+        map.put("remoteVolumeName", remoteVolumeName);
+        map.put("volumePairUUID", volumePairUUID);
+        map.put("remoteReplication", remoteReplication);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -144,7 +152,7 @@ public class VolumePair  implements Serializable  {
         sb.append(" remoteSliceID : ").append(remoteSliceID).append(",");
         sb.append(" remoteVolumeName : ").append(remoteVolumeName).append(",");
         sb.append(" volumePairUUID : ").append(volumePairUUID).append(",");
-        sb.append(" remoteReplication : ").append(remoteReplication);
+        sb.append(" remoteReplication : ").append(remoteReplication).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -178,7 +186,7 @@ public class VolumePair  implements Serializable  {
                          this.remoteSliceID,
                          this.remoteVolumeName,
                          this.volumePairUUID,
-                         this.remoteReplication            );
+                         this.remoteReplication);
         }
 
         private VolumePair.Builder buildFrom(final VolumePair req) {
@@ -223,5 +231,4 @@ public class VolumePair  implements Serializable  {
         }
 
     }
-
 }

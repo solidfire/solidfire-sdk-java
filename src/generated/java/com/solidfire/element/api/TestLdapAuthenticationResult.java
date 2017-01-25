@@ -18,57 +18,53 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "TestLdapAuthentication" API Service call.
+ * TestLdapAuthenticationResult  
  **/
-public class TestLdapAuthenticationResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1122051719L;
+public class TestLdapAuthenticationResult implements Serializable {
 
-    @SerializedName("groups") private final String[] groups;
-    @SerializedName("userDN") private final String userDN;
+    public static final long serialVersionUID = -6470804113755533516L;
+    @SerializedName("groups") private String[] groups;
+    @SerializedName("userDN") private String userDN;
 
-    /**
-     * The object returned by the "TestLdapAuthentication" API Service call.
-     * @param groups [required] List of LDAP groups that the tested user is a member of.
-     * @param userDN [required] The tested user's full LDAP distinguished name.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public TestLdapAuthenticationResult(String[] groups, String userDN) {
+    public TestLdapAuthenticationResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public TestLdapAuthenticationResult(
+        String[] groups,
+        String userDN
+    )
+    {
         this.groups = groups;
         this.userDN = userDN;
     }
 
-
-    /**
+    /** 
      * List of LDAP groups that the tested user is a member of.
      **/
-    public String[] getGroups() {
-        return this.groups;
+    public String[] getGroups() { return this.groups; }
+    public void setGroups(String[] groups) { 
+        this.groups = groups;
     }
-
-    /**
+    /** 
      * The tested user's full LDAP distinguished name.
      **/
-    public String getUserDN() {
-        return this.userDN;
+    public String getUserDN() { return this.userDN; }
+    public void setUserDN(String userDN) { 
+        this.userDN = userDN;
     }
 
     @Override
@@ -77,17 +73,24 @@ public class TestLdapAuthenticationResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestLdapAuthenticationResult that = (TestLdapAuthenticationResult) o;
-        
 
-        return Objects.deepEquals( groups , that.groups )
-            && Objects.equals( userDN , that.userDN );
+        return 
+            Arrays.equals(groups, that.groups) && 
+            Objects.equals(userDN, that.userDN);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( groups, userDN );
+        return Objects.hash( (Object[])groups,userDN );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("groups", groups);
+        map.put("userDN", userDN);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +98,7 @@ public class TestLdapAuthenticationResult  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" groups : ").append(Arrays.toString(groups)).append(",");
-        sb.append(" userDN : ").append(userDN);
+        sb.append(" userDN : ").append(userDN).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +124,7 @@ public class TestLdapAuthenticationResult  implements Serializable  {
         public TestLdapAuthenticationResult build() {
             return new TestLdapAuthenticationResult (
                          this.groups,
-                         this.userDN            );
+                         this.userDN);
         }
 
         private TestLdapAuthenticationResult.Builder buildFrom(final TestLdapAuthenticationResult req) {
@@ -142,5 +145,4 @@ public class TestLdapAuthenticationResult  implements Serializable  {
         }
 
     }
-
 }

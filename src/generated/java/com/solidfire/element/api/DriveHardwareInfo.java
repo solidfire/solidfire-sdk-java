@@ -18,121 +18,168 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * DriveHardwareInfo  
  **/
-public class DriveHardwareInfo  implements Serializable  {
 
-    private static final long serialVersionUID = -2123095482L;
+public class DriveHardwareInfo implements Serializable {
 
-    @SerializedName("description") private final String description;
-    @SerializedName("dev") private final String dev;
-    @SerializedName("devpath") private final String devpath;
-    @SerializedName("driveSecurityAtMaximum") private final Boolean driveSecurityAtMaximum;
-    @SerializedName("driveSecurityFrozen") private final Boolean driveSecurityFrozen;
-    @SerializedName("driveSecurityLocked") private final Boolean driveSecurityLocked;
-    @SerializedName("logicalname") private final String logicalname;
-    @SerializedName("product") private final String product;
-    @SerializedName("securityFeatureEnabled") private final Boolean securityFeatureEnabled;
-    @SerializedName("securityFeatureSupported") private final Boolean securityFeatureSupported;
-    @SerializedName("serial") private final String serial;
-    @SerializedName("size") private final Long size;
-    @SerializedName("uuid") private final java.util.UUID uuid;
-    @SerializedName("version") private final String version;
+    public static final long serialVersionUID = -8893614935301879707L;
+    @SerializedName("description") private String description;
+    @SerializedName("dev") private String dev;
+    @SerializedName("devpath") private String devpath;
+    @SerializedName("driveSecurityAtMaximum") private Boolean driveSecurityAtMaximum;
+    @SerializedName("driveSecurityFrozen") private Boolean driveSecurityFrozen;
+    @SerializedName("driveSecurityLocked") private Boolean driveSecurityLocked;
+    @SerializedName("logicalname") private String logicalname;
+    @SerializedName("product") private String product;
+    @SerializedName("scsiCompatID") private String scsiCompatID;
+    @SerializedName("securityFeatureEnabled") private Boolean securityFeatureEnabled;
+    @SerializedName("securityFeatureSupported") private Boolean securityFeatureSupported;
+    @SerializedName("serial") private String serial;
+    @SerializedName("size") private Long size;
+    @SerializedName("uuid") private java.util.UUID uuid;
+    @SerializedName("version") private String version;
 
-    /**
-     * 
-     * @param description [required] 
-     * @param dev [required] 
-     * @param devpath [required] 
-     * @param driveSecurityAtMaximum [required] 
-     * @param driveSecurityFrozen [required] 
-     * @param driveSecurityLocked [required] 
-     * @param logicalname [required] 
-     * @param product [required] 
-     * @param securityFeatureEnabled [required] 
-     * @param securityFeatureSupported [required] 
-     * @param serial [required] 
-     * @param size [required] 
-     * @param uuid [required] 
-     * @param version [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public DriveHardwareInfo(String description, String dev, String devpath, Boolean driveSecurityAtMaximum, Boolean driveSecurityFrozen, Boolean driveSecurityLocked, String logicalname, String product, Boolean securityFeatureEnabled, Boolean securityFeatureSupported, String serial, Long size, java.util.UUID uuid, String version) {
-        this.serial = serial;
-        this.size = size;
+    public DriveHardwareInfo() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public DriveHardwareInfo(
+        String description,
+        String dev,
+        String devpath,
+        Boolean driveSecurityAtMaximum,
+        Boolean driveSecurityFrozen,
+        Boolean driveSecurityLocked,
+        String logicalname,
+        String product,
+        String scsiCompatID,
+        Boolean securityFeatureEnabled,
+        Boolean securityFeatureSupported,
+        String serial,
+        Long size,
+        java.util.UUID uuid,
+        String version
+    )
+    {
         this.description = description;
-        this.uuid = uuid;
+        this.dev = dev;
         this.devpath = devpath;
         this.driveSecurityAtMaximum = driveSecurityAtMaximum;
-        this.logicalname = logicalname;
-        this.version = version;
-        this.dev = dev;
-        this.securityFeatureSupported = securityFeatureSupported;
-        this.driveSecurityLocked = driveSecurityLocked;
-        this.securityFeatureEnabled = securityFeatureEnabled;
         this.driveSecurityFrozen = driveSecurityFrozen;
+        this.driveSecurityLocked = driveSecurityLocked;
+        this.logicalname = logicalname;
         this.product = product;
+        this.scsiCompatID = scsiCompatID;
+        this.securityFeatureEnabled = securityFeatureEnabled;
+        this.securityFeatureSupported = securityFeatureSupported;
+        this.serial = serial;
+        this.size = size;
+        this.uuid = uuid;
+        this.version = version;
     }
 
-    public String getDescription() {
-        return this.description;
+    /** 
+     **/
+    public String getDescription() { return this.description; }
+    public void setDescription(String description) { 
+        this.description = description;
     }
-    public String getDev() {
-        return this.dev;
+    /** 
+     **/
+    public String getDev() { return this.dev; }
+    public void setDev(String dev) { 
+        this.dev = dev;
     }
-    public String getDevpath() {
-        return this.devpath;
+    /** 
+     **/
+    public String getDevpath() { return this.devpath; }
+    public void setDevpath(String devpath) { 
+        this.devpath = devpath;
     }
-    public Boolean getDriveSecurityAtMaximum() {
-        return this.driveSecurityAtMaximum;
+    /** 
+     **/
+    public Boolean getDriveSecurityAtMaximum() { return this.driveSecurityAtMaximum; }
+    public void setDriveSecurityAtMaximum(Boolean driveSecurityAtMaximum) { 
+        this.driveSecurityAtMaximum = driveSecurityAtMaximum;
     }
-    public Boolean getDriveSecurityFrozen() {
-        return this.driveSecurityFrozen;
+    /** 
+     **/
+    public Boolean getDriveSecurityFrozen() { return this.driveSecurityFrozen; }
+    public void setDriveSecurityFrozen(Boolean driveSecurityFrozen) { 
+        this.driveSecurityFrozen = driveSecurityFrozen;
     }
-    public Boolean getDriveSecurityLocked() {
-        return this.driveSecurityLocked;
+    /** 
+     **/
+    public Boolean getDriveSecurityLocked() { return this.driveSecurityLocked; }
+    public void setDriveSecurityLocked(Boolean driveSecurityLocked) { 
+        this.driveSecurityLocked = driveSecurityLocked;
     }
-    public String getLogicalname() {
-        return this.logicalname;
+    /** 
+     **/
+    public String getLogicalname() { return this.logicalname; }
+    public void setLogicalname(String logicalname) { 
+        this.logicalname = logicalname;
     }
-    public String getProduct() {
-        return this.product;
+    /** 
+     **/
+    public String getProduct() { return this.product; }
+    public void setProduct(String product) { 
+        this.product = product;
     }
-    public Boolean getSecurityFeatureEnabled() {
-        return this.securityFeatureEnabled;
+    /** 
+     **/
+    public String getScsiCompatID() { return this.scsiCompatID; }
+    public void setScsiCompatID(String scsiCompatID) { 
+        this.scsiCompatID = scsiCompatID;
     }
-    public Boolean getSecurityFeatureSupported() {
-        return this.securityFeatureSupported;
+    /** 
+     **/
+    public Boolean getSecurityFeatureEnabled() { return this.securityFeatureEnabled; }
+    public void setSecurityFeatureEnabled(Boolean securityFeatureEnabled) { 
+        this.securityFeatureEnabled = securityFeatureEnabled;
     }
-    public String getSerial() {
-        return this.serial;
+    /** 
+     **/
+    public Boolean getSecurityFeatureSupported() { return this.securityFeatureSupported; }
+    public void setSecurityFeatureSupported(Boolean securityFeatureSupported) { 
+        this.securityFeatureSupported = securityFeatureSupported;
     }
-    public Long getSize() {
-        return this.size;
+    /** 
+     **/
+    public String getSerial() { return this.serial; }
+    public void setSerial(String serial) { 
+        this.serial = serial;
     }
-    public java.util.UUID getUuid() {
-        return this.uuid;
+    /** 
+     **/
+    public Long getSize() { return this.size; }
+    public void setSize(Long size) { 
+        this.size = size;
     }
-    public String getVersion() {
-        return this.version;
+    /** 
+     **/
+    public java.util.UUID getUuid() { return this.uuid; }
+    public void setUuid(java.util.UUID uuid) { 
+        this.uuid = uuid;
+    }
+    /** 
+     **/
+    public String getVersion() { return this.version; }
+    public void setVersion(String version) { 
+        this.version = version;
     }
 
     @Override
@@ -141,29 +188,50 @@ public class DriveHardwareInfo  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         DriveHardwareInfo that = (DriveHardwareInfo) o;
-        
 
-        return Objects.equals( description , that.description )
-            && Objects.equals( dev , that.dev )
-            && Objects.equals( devpath , that.devpath )
-            && Objects.equals( driveSecurityAtMaximum , that.driveSecurityAtMaximum )
-            && Objects.equals( driveSecurityFrozen , that.driveSecurityFrozen )
-            && Objects.equals( driveSecurityLocked , that.driveSecurityLocked )
-            && Objects.equals( logicalname , that.logicalname )
-            && Objects.equals( product , that.product )
-            && Objects.equals( securityFeatureEnabled , that.securityFeatureEnabled )
-            && Objects.equals( securityFeatureSupported , that.securityFeatureSupported )
-            && Objects.equals( serial , that.serial )
-            && Objects.equals( size , that.size )
-            && Objects.equals( uuid , that.uuid )
-            && Objects.equals( version , that.version );
+        return 
+            Objects.equals(description, that.description) && 
+            Objects.equals(dev, that.dev) && 
+            Objects.equals(devpath, that.devpath) && 
+            Objects.equals(driveSecurityAtMaximum, that.driveSecurityAtMaximum) && 
+            Objects.equals(driveSecurityFrozen, that.driveSecurityFrozen) && 
+            Objects.equals(driveSecurityLocked, that.driveSecurityLocked) && 
+            Objects.equals(logicalname, that.logicalname) && 
+            Objects.equals(product, that.product) && 
+            Objects.equals(scsiCompatID, that.scsiCompatID) && 
+            Objects.equals(securityFeatureEnabled, that.securityFeatureEnabled) && 
+            Objects.equals(securityFeatureSupported, that.securityFeatureSupported) && 
+            Objects.equals(serial, that.serial) && 
+            Objects.equals(size, that.size) && 
+            Objects.equals(uuid, that.uuid) && 
+            Objects.equals(version, that.version);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( description, dev, devpath, driveSecurityAtMaximum, driveSecurityFrozen, driveSecurityLocked, logicalname, product, securityFeatureEnabled, securityFeatureSupported, serial, size, uuid, version );
+        return Objects.hash( description,dev,devpath,driveSecurityAtMaximum,driveSecurityFrozen,driveSecurityLocked,logicalname,product,scsiCompatID,securityFeatureEnabled,securityFeatureSupported,serial,size,uuid,version );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("description", description);
+        map.put("dev", dev);
+        map.put("devpath", devpath);
+        map.put("driveSecurityAtMaximum", driveSecurityAtMaximum);
+        map.put("driveSecurityFrozen", driveSecurityFrozen);
+        map.put("driveSecurityLocked", driveSecurityLocked);
+        map.put("logicalname", logicalname);
+        map.put("product", product);
+        map.put("scsiCompatID", scsiCompatID);
+        map.put("securityFeatureEnabled", securityFeatureEnabled);
+        map.put("securityFeatureSupported", securityFeatureSupported);
+        map.put("serial", serial);
+        map.put("size", size);
+        map.put("uuid", uuid);
+        map.put("version", version);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -178,12 +246,13 @@ public class DriveHardwareInfo  implements Serializable  {
         sb.append(" driveSecurityLocked : ").append(driveSecurityLocked).append(",");
         sb.append(" logicalname : ").append(logicalname).append(",");
         sb.append(" product : ").append(product).append(",");
+        sb.append(" scsiCompatID : ").append(scsiCompatID).append(",");
         sb.append(" securityFeatureEnabled : ").append(securityFeatureEnabled).append(",");
         sb.append(" securityFeatureSupported : ").append(securityFeatureSupported).append(",");
         sb.append(" serial : ").append(serial).append(",");
         sb.append(" size : ").append(size).append(",");
         sb.append(" uuid : ").append(uuid).append(",");
-        sb.append(" version : ").append(version);
+        sb.append(" version : ").append(version).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -209,6 +278,7 @@ public class DriveHardwareInfo  implements Serializable  {
         private Boolean driveSecurityLocked;
         private String logicalname;
         private String product;
+        private String scsiCompatID;
         private Boolean securityFeatureEnabled;
         private Boolean securityFeatureSupported;
         private String serial;
@@ -228,12 +298,13 @@ public class DriveHardwareInfo  implements Serializable  {
                          this.driveSecurityLocked,
                          this.logicalname,
                          this.product,
+                         this.scsiCompatID,
                          this.securityFeatureEnabled,
                          this.securityFeatureSupported,
                          this.serial,
                          this.size,
                          this.uuid,
-                         this.version            );
+                         this.version);
         }
 
         private DriveHardwareInfo.Builder buildFrom(final DriveHardwareInfo req) {
@@ -245,6 +316,7 @@ public class DriveHardwareInfo  implements Serializable  {
             this.driveSecurityLocked = req.driveSecurityLocked;
             this.logicalname = req.logicalname;
             this.product = req.product;
+            this.scsiCompatID = req.scsiCompatID;
             this.securityFeatureEnabled = req.securityFeatureEnabled;
             this.securityFeatureSupported = req.securityFeatureSupported;
             this.serial = req.serial;
@@ -295,6 +367,11 @@ public class DriveHardwareInfo  implements Serializable  {
             return this;
         }
 
+        public DriveHardwareInfo.Builder scsiCompatID(final String scsiCompatID) {
+            this.scsiCompatID = scsiCompatID;
+            return this;
+        }
+
         public DriveHardwareInfo.Builder securityFeatureEnabled(final Boolean securityFeatureEnabled) {
             this.securityFeatureEnabled = securityFeatureEnabled;
             return this;
@@ -326,5 +403,4 @@ public class DriveHardwareInfo  implements Serializable  {
         }
 
     }
-
 }

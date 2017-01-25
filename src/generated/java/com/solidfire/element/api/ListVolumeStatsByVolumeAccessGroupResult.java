@@ -18,48 +18,44 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListVolumeStatsByVolumeAccessGroup" API Service call.
+ * ListVolumeStatsByVolumeAccessGroupResult  
  **/
-public class ListVolumeStatsByVolumeAccessGroupResult  implements Serializable  {
 
-    private static final long serialVersionUID = -400675872L;
+public class ListVolumeStatsByVolumeAccessGroupResult implements Serializable {
 
-    @SerializedName("volumeStats") private final VolumeStats[] volumeStats;
+    public static final long serialVersionUID = -1884566330219816710L;
+    @SerializedName("volumeStats") private VolumeStats[] volumeStats;
 
-    /**
-     * The object returned by the "ListVolumeStatsByVolumeAccessGroup" API Service call.
-     * @param volumeStats [required] List of account activity information.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListVolumeStatsByVolumeAccessGroupResult(VolumeStats[] volumeStats) {
+    public ListVolumeStatsByVolumeAccessGroupResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListVolumeStatsByVolumeAccessGroupResult(
+        VolumeStats[] volumeStats
+    )
+    {
         this.volumeStats = volumeStats;
     }
 
-
-    /**
+    /** 
      * List of account activity information.
-     * <br/><b>Note</b>: The volumeID member is 0 for each entry, as the values represent the summation of all volumes owned by the account.
+     * Note: The volumeID member is 0 for each entry, as the values represent the summation of all volumes owned by the account.
      **/
-    public VolumeStats[] getVolumeStats() {
-        return this.volumeStats;
+    public VolumeStats[] getVolumeStats() { return this.volumeStats; }
+    public void setVolumeStats(VolumeStats[] volumeStats) { 
+        this.volumeStats = volumeStats;
     }
 
     @Override
@@ -68,23 +64,29 @@ public class ListVolumeStatsByVolumeAccessGroupResult  implements Serializable  
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumeStatsByVolumeAccessGroupResult that = (ListVolumeStatsByVolumeAccessGroupResult) o;
-        
 
-        return Objects.deepEquals( volumeStats , that.volumeStats );
+        return 
+            Arrays.equals(volumeStats, that.volumeStats);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volumeStats );
+        return Objects.hash( (Object[])volumeStats );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeStats", volumeStats);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumeStats : ").append(Arrays.toString(volumeStats));
+        sb.append(" volumeStats : ").append(Arrays.toString(volumeStats)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -108,7 +110,7 @@ public class ListVolumeStatsByVolumeAccessGroupResult  implements Serializable  
 
         public ListVolumeStatsByVolumeAccessGroupResult build() {
             return new ListVolumeStatsByVolumeAccessGroupResult (
-                         this.volumeStats            );
+                         this.volumeStats);
         }
 
         private ListVolumeStatsByVolumeAccessGroupResult.Builder buildFrom(final ListVolumeStatsByVolumeAccessGroupResult req) {
@@ -123,5 +125,4 @@ public class ListVolumeStatsByVolumeAccessGroupResult  implements Serializable  
         }
 
     }
-
 }

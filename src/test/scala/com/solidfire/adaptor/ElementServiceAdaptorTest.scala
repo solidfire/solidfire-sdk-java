@@ -1,8 +1,10 @@
 package com.solidfire.adaptor
 
 import com.solidfire.adaptor.ElementServiceAdaptor._
+import com.solidfire.core.client.ApiException
 import com.solidfire.element.api._
 import org.mockito.Mockito.when
+import org.mockito.Matchers._
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
 

@@ -18,57 +18,54 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * LunAssignment  
  * VolumeID and Lun assignment.
  **/
-public class LunAssignment  implements Serializable  {
 
-    private static final long serialVersionUID = 1196457034L;
+public class LunAssignment implements Serializable {
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("lun") private final Long lun;
+    public static final long serialVersionUID = 4843157514928145383L;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("lun") private Long lun;
 
-    /**
-     * VolumeID and Lun assignment.
-     * @param volumeID [required] The volume ID assigned to the Lun.
-     * @param lun [required] Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public LunAssignment(Long volumeID, Long lun) {
+    public LunAssignment() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public LunAssignment(
+        Long volumeID,
+        Long lun
+    )
+    {
         this.volumeID = volumeID;
         this.lun = lun;
     }
 
-
-    /**
+    /** 
      * The volume ID assigned to the Lun.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
     }
-
-    /**
+    /** 
      * Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed.
      **/
-    public Long getLun() {
-        return this.lun;
+    public Long getLun() { return this.lun; }
+    public void setLun(Long lun) { 
+        this.lun = lun;
     }
 
     @Override
@@ -77,17 +74,24 @@ public class LunAssignment  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         LunAssignment that = (LunAssignment) o;
-        
 
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( lun , that.lun );
+        return 
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(lun, that.lun);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, lun );
+        return Objects.hash( volumeID,lun );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        map.put("lun", lun);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +99,7 @@ public class LunAssignment  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" lun : ").append(lun);
+        sb.append(" lun : ").append(lun).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +125,7 @@ public class LunAssignment  implements Serializable  {
         public LunAssignment build() {
             return new LunAssignment (
                          this.volumeID,
-                         this.lun            );
+                         this.lun);
         }
 
         private LunAssignment.Builder buildFrom(final LunAssignment req) {
@@ -142,5 +146,4 @@ public class LunAssignment  implements Serializable  {
         }
 
     }
-
 }

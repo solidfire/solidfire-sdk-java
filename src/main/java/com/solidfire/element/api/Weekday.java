@@ -15,7 +15,7 @@
  */
 package com.solidfire.element.api;
 
-import com.solidfire.jsvcgen.client.ApiException;
+import com.solidfire.core.client.ApiException;
 
 /**
  * An enumeration representing the days of the week.

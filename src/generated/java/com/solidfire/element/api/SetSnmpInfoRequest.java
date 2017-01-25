@@ -18,77 +18,73 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "SetSnmpInfo" API Service call.
+ * SetSnmpInfoRequest  
  **/
-public class SetSnmpInfoRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1439453455L;
+public class SetSnmpInfoRequest implements Serializable {
 
-    @SerializedName("networks") private final Optional<SnmpNetwork[]> networks;
-    @SerializedName("enabled") private final Optional<Boolean> enabled;
-    @SerializedName("snmpV3Enabled") private final Optional<Boolean> snmpV3Enabled;
-    @SerializedName("usmUsers") private final Optional<SnmpV3UsmUser[]> usmUsers;
+    public static final long serialVersionUID = 5748454860350922237L;
+    @SerializedName("networks") private Optional<SnmpNetwork[]> networks;
+    @SerializedName("enabled") private Optional<Boolean> enabled;
+    @SerializedName("snmpV3Enabled") private Optional<Boolean> snmpV3Enabled;
+    @SerializedName("usmUsers") private Optional<SnmpV3UsmUser[]> usmUsers;
 
-    /**
-     * The Request object for the "SetSnmpInfo" API Service call.
-     * @param networks (optional) List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible "networks" values. SNMP v2 only.
-     * @param enabled (optional) If set to "true", then SNMP is enabled on each node in the cluster.
-     * @param snmpV3Enabled (optional) If set to "true", then SNMP v3 is enabled on each node in the cluster.
-     * @param usmUsers (optional) If SNMP v3 is enabled, this value must be passed in place of the "networks" parameter. SNMP v3 only.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public SetSnmpInfoRequest(Optional<SnmpNetwork[]> networks, Optional<Boolean> enabled, Optional<Boolean> snmpV3Enabled, Optional<SnmpV3UsmUser[]> usmUsers) {
+    public SetSnmpInfoRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public SetSnmpInfoRequest(
+        Optional<SnmpNetwork[]> networks,
+        Optional<Boolean> enabled,
+        Optional<Boolean> snmpV3Enabled,
+        Optional<SnmpV3UsmUser[]> usmUsers
+    )
+    {
         this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : networks;
         this.enabled = (enabled == null) ? Optional.<Boolean>empty() : enabled;
         this.snmpV3Enabled = (snmpV3Enabled == null) ? Optional.<Boolean>empty() : snmpV3Enabled;
         this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : usmUsers;
     }
 
-
-    /**
+    /** 
      * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible "networks" values. SNMP v2 only.
      **/
-    public Optional<SnmpNetwork[]> getNetworks() {
-        return this.networks;
+    public Optional<SnmpNetwork[]> getNetworks() { return this.networks; }
+    public void setNetworks(Optional<SnmpNetwork[]> networks) { 
+        this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : networks;
     }
-
-    /**
+    /** 
      * If set to "true", then SNMP is enabled on each node in the cluster.
      **/
-    public Optional<Boolean> getEnabled() {
-        return this.enabled;
+    public Optional<Boolean> getEnabled() { return this.enabled; }
+    public void setEnabled(Optional<Boolean> enabled) { 
+        this.enabled = (enabled == null) ? Optional.<Boolean>empty() : enabled;
     }
-
-    /**
+    /** 
      * If set to "true", then SNMP v3 is enabled on each node in the cluster.
      **/
-    public Optional<Boolean> getSnmpV3Enabled() {
-        return this.snmpV3Enabled;
+    public Optional<Boolean> getSnmpV3Enabled() { return this.snmpV3Enabled; }
+    public void setSnmpV3Enabled(Optional<Boolean> snmpV3Enabled) { 
+        this.snmpV3Enabled = (snmpV3Enabled == null) ? Optional.<Boolean>empty() : snmpV3Enabled;
     }
-
-    /**
+    /** 
      * If SNMP v3 is enabled, this value must be passed in place of the "networks" parameter. SNMP v3 only.
      **/
-    public Optional<SnmpV3UsmUser[]> getUsmUsers() {
-        return this.usmUsers;
+    public Optional<SnmpV3UsmUser[]> getUsmUsers() { return this.usmUsers; }
+    public void setUsmUsers(Optional<SnmpV3UsmUser[]> usmUsers) { 
+        this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : usmUsers;
     }
 
     @Override
@@ -97,33 +93,46 @@ public class SetSnmpInfoRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetSnmpInfoRequest that = (SetSnmpInfoRequest) o;
-        
 
-        return Objects.deepEquals( networks , that.networks )
-            && Objects.equals( enabled , that.enabled )
-            && Objects.equals( snmpV3Enabled , that.snmpV3Enabled )
-            && Objects.deepEquals( usmUsers , that.usmUsers );
+        return 
+            Objects.equals(networks, that.networks) && 
+            Objects.equals(enabled, that.enabled) && 
+            Objects.equals(snmpV3Enabled, that.snmpV3Enabled) && 
+            Objects.equals(usmUsers, that.usmUsers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( networks, enabled, snmpV3Enabled, usmUsers );
+        return Objects.hash( networks,enabled,snmpV3Enabled,usmUsers );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("networks", networks);
+        map.put("enabled", enabled);
+        map.put("snmpV3Enabled", snmpV3Enabled);
+        map.put("usmUsers", usmUsers);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != networks && networks.isPresent())
-            sb.append(" networks : ").append(Arrays.toString(networks.get())).append(",");
-        if(null != enabled && enabled.isPresent())
-            sb.append(" enabled : ").append(enabled.get()).append(",");
-        if(null != snmpV3Enabled && snmpV3Enabled.isPresent())
-            sb.append(" snmpV3Enabled : ").append(snmpV3Enabled.get()).append(",");
-        if(null != usmUsers && usmUsers.isPresent())
-            sb.append(" usmUsers : ").append(Arrays.toString(usmUsers.get()));
+        if(null != networks && networks.isPresent()){
+            sb.append(" networks : ").append(networks).append(",");
+        }
+        if(null != enabled && enabled.isPresent()){
+            sb.append(" enabled : ").append(enabled).append(",");
+        }
+        if(null != snmpV3Enabled && snmpV3Enabled.isPresent()){
+            sb.append(" snmpV3Enabled : ").append(snmpV3Enabled).append(",");
+        }
+        if(null != usmUsers && usmUsers.isPresent()){
+            sb.append(" usmUsers : ").append(usmUsers).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -153,7 +162,7 @@ public class SetSnmpInfoRequest  implements Serializable  {
                          this.networks,
                          this.enabled,
                          this.snmpV3Enabled,
-                         this.usmUsers            );
+                         this.usmUsers);
         }
 
         private SetSnmpInfoRequest.Builder buildFrom(final SetSnmpInfoRequest req) {
@@ -186,5 +195,4 @@ public class SetSnmpInfoRequest  implements Serializable  {
         }
 
     }
-
 }

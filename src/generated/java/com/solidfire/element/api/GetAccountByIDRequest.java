@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetAccountByID" API Service call.
+ * GetAccountByIDRequest  
  **/
-public class GetAccountByIDRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1508999421L;
+public class GetAccountByIDRequest implements Serializable {
 
-    @SerializedName("accountID") private final Long accountID;
+    public static final long serialVersionUID = -1679235285626842127L;
+    @SerializedName("accountID") private Long accountID;
 
-    /**
-     * The Request object for the "GetAccountByID" API Service call.
-     * @param accountID [required] Specifies the account for which details are gathered.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetAccountByIDRequest(Long accountID) {
+    public GetAccountByIDRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetAccountByIDRequest(
+        Long accountID
+    )
+    {
         this.accountID = accountID;
     }
 
-
-    /**
+    /** 
      * Specifies the account for which details are gathered.
      **/
-    public Long getAccountID() {
-        return this.accountID;
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
+        this.accountID = accountID;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class GetAccountByIDRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetAccountByIDRequest that = (GetAccountByIDRequest) o;
-        
 
-        return Objects.equals( accountID , that.accountID );
+        return 
+            Objects.equals(accountID, that.accountID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) accountID );
+        return Objects.hash( accountID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("accountID", accountID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" accountID : ").append(accountID);
+        sb.append(" accountID : ").append(accountID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class GetAccountByIDRequest  implements Serializable  {
 
         public GetAccountByIDRequest build() {
             return new GetAccountByIDRequest (
-                         this.accountID            );
+                         this.accountID);
         }
 
         private GetAccountByIDRequest.Builder buildFrom(final GetAccountByIDRequest req) {
@@ -122,5 +124,4 @@ public class GetAccountByIDRequest  implements Serializable  {
         }
 
     }
-
 }

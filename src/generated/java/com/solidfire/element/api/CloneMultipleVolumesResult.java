@@ -18,67 +18,63 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "CloneMultipleVolumes" API Service call.
+ * CloneMultipleVolumesResult  
  **/
-public class CloneMultipleVolumesResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1442813158L;
+public class CloneMultipleVolumesResult implements Serializable {
 
-    @SerializedName("asyncHandle") private final Long asyncHandle;
-    @SerializedName("groupCloneID") private final Long groupCloneID;
-    @SerializedName("members") private final GroupCloneVolumeMember[] members;
+    public static final long serialVersionUID = 6829236154780075849L;
+    @SerializedName("asyncHandle") private Long asyncHandle;
+    @SerializedName("groupCloneID") private Long groupCloneID;
+    @SerializedName("members") private GroupCloneVolumeMember[] members;
 
-    /**
-     * The object returned by the "CloneMultipleVolumes" API Service call.
-     * @param asyncHandle [required] A value returned from an asynchronous method call.
-     * @param groupCloneID [required] Unique ID of the new group clone.
-     * @param members [required] List of volumeIDs for the source and destination volume pairs.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public CloneMultipleVolumesResult(Long asyncHandle, Long groupCloneID, GroupCloneVolumeMember[] members) {
+    public CloneMultipleVolumesResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public CloneMultipleVolumesResult(
+        Long asyncHandle,
+        Long groupCloneID,
+        GroupCloneVolumeMember[] members
+    )
+    {
         this.asyncHandle = asyncHandle;
         this.groupCloneID = groupCloneID;
         this.members = members;
     }
 
-
-    /**
+    /** 
      * A value returned from an asynchronous method call.
      **/
-    public Long getAsyncHandle() {
-        return this.asyncHandle;
+    public Long getAsyncHandle() { return this.asyncHandle; }
+    public void setAsyncHandle(Long asyncHandle) { 
+        this.asyncHandle = asyncHandle;
     }
-
-    /**
+    /** 
      * Unique ID of the new group clone.
      **/
-    public Long getGroupCloneID() {
-        return this.groupCloneID;
+    public Long getGroupCloneID() { return this.groupCloneID; }
+    public void setGroupCloneID(Long groupCloneID) { 
+        this.groupCloneID = groupCloneID;
     }
-
-    /**
+    /** 
      * List of volumeIDs for the source and destination volume pairs.
      **/
-    public GroupCloneVolumeMember[] getMembers() {
-        return this.members;
+    public GroupCloneVolumeMember[] getMembers() { return this.members; }
+    public void setMembers(GroupCloneVolumeMember[] members) { 
+        this.members = members;
     }
 
     @Override
@@ -87,18 +83,26 @@ public class CloneMultipleVolumesResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CloneMultipleVolumesResult that = (CloneMultipleVolumesResult) o;
-        
 
-        return Objects.equals( asyncHandle , that.asyncHandle )
-            && Objects.equals( groupCloneID , that.groupCloneID )
-            && Objects.deepEquals( members , that.members );
+        return 
+            Objects.equals(asyncHandle, that.asyncHandle) && 
+            Objects.equals(groupCloneID, that.groupCloneID) && 
+            Arrays.equals(members, that.members);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( asyncHandle, groupCloneID, members );
+        return Objects.hash( asyncHandle,groupCloneID,(Object[])members );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("asyncHandle", asyncHandle);
+        map.put("groupCloneID", groupCloneID);
+        map.put("members", members);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -107,7 +111,7 @@ public class CloneMultipleVolumesResult  implements Serializable  {
 
         sb.append(" asyncHandle : ").append(asyncHandle).append(",");
         sb.append(" groupCloneID : ").append(groupCloneID).append(",");
-        sb.append(" members : ").append(Arrays.toString(members));
+        sb.append(" members : ").append(Arrays.toString(members)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -135,7 +139,7 @@ public class CloneMultipleVolumesResult  implements Serializable  {
             return new CloneMultipleVolumesResult (
                          this.asyncHandle,
                          this.groupCloneID,
-                         this.members            );
+                         this.members);
         }
 
         private CloneMultipleVolumesResult.Builder buildFrom(final CloneMultipleVolumesResult req) {
@@ -162,5 +166,4 @@ public class CloneMultipleVolumesResult  implements Serializable  {
         }
 
     }
-
 }

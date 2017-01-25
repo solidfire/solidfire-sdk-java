@@ -17,7 +17,7 @@ package com.solidfire.adaptor;
 
 import com.solidfire.element.api.*;
 import com.solidfire.element.apiactual.*;
-import com.solidfire.jsvcgen.client.ApiException;
+import com.solidfire.core.client.ApiException;
 
 import java.util.*;
 
@@ -51,11 +51,10 @@ public class ScheduleAdaptor {
      * object using the Frequency classes that delineate different types of scheduling frequencies.
      *
      * @param sfe     An instance of SolidFireElement
-     * @param request The original request object.
      * @return a ListScheduleResult with the modified simple schedule objects
      */
-    public static ListSchedulesResult listSchedules(SolidFireElement sfe, ListSchedulesRequest request) {
-        final ApiListSchedulesResult result = sfe.sendRequest("ListSchedules", request, ListSchedulesRequest.class, ApiListSchedulesResult.class);
+    public static ListSchedulesResult listSchedules(SolidFireElement sfe) {
+        final ApiListSchedulesResult result = sfe.sendRequest("ListSchedules", null, null, ApiListSchedulesResult.class);
 
         final List<Schedule> schedules = new ArrayList<>();
         for (final ApiSchedule apiSchedule : result.getSchedules()) {
@@ -169,7 +168,7 @@ public class ScheduleAdaptor {
 
         schedule.optionalHasError(api.getHasError())
                 .lastRunStatus(api.getLastRunStatus())
-                .lastRunTimeStart(api.getLastRunTimeStart())
+                .lastRunTimeStarted(api.getLastRunTimeStarted())
                 .name(api.getScheduleName())
                 .optionalPaused(api.getPaused())
                 .optionalRecurring(api.getRecurring())
@@ -247,7 +246,7 @@ public class ScheduleAdaptor {
 
         api.hasError(schedule.getHasError().orElse(null));
         api.lastRunStatus(schedule.getLastRunStatus());
-        api.lastRunTimeStart(schedule.getLastRunTimeStart());
+        api.lastRunTimeStart(schedule.getLastRunTimeStarted());
         api.scheduleName(schedule.getName());
         api.paused(schedule.getPaused().orElse(null));
         api.recurring(schedule.getRecurring().orElse(null));
@@ -288,6 +287,7 @@ public class ScheduleAdaptor {
             attributes.put(FREQUENCY, DAYS_OF_MONTH);
             api.attributes(attributes);
             api.minutes(frequency.getMinutes());
+            api.hours(frequency.getHours());
             api.monthdays(frequency.getMonthdays());
 
         } else if (schedule.getFrequency().getClass().equals(DaysOfWeekFrequency.class)) {
@@ -299,6 +299,7 @@ public class ScheduleAdaptor {
             attributes.put(FREQUENCY, DAYS_OF_WEEK);
             api.attributes(attributes);
             api.minutes(frequency.getMinutes());
+            api.hours(frequency.getHours());
 
             final List<ApiWeekday> apiWeekdays = new ArrayList<>();
 

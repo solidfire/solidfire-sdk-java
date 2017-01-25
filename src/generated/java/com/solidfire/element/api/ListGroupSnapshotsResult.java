@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListGroupSnapshots" API Service call.
+ * ListGroupSnapshotsResult  
  **/
-public class ListGroupSnapshotsResult  implements Serializable  {
 
-    private static final long serialVersionUID = -504608135L;
+public class ListGroupSnapshotsResult implements Serializable {
 
-    @SerializedName("groupSnapshots") private final GroupSnapshot[] groupSnapshots;
+    public static final long serialVersionUID = 2481293034206278787L;
+    @SerializedName("groupSnapshots") private GroupSnapshot[] groupSnapshots;
 
-    /**
-     * The object returned by the "ListGroupSnapshots" API Service call.
-     * @param groupSnapshots [required] List of Group Snapshots.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListGroupSnapshotsResult(GroupSnapshot[] groupSnapshots) {
+    public ListGroupSnapshotsResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListGroupSnapshotsResult(
+        GroupSnapshot[] groupSnapshots
+    )
+    {
         this.groupSnapshots = groupSnapshots;
     }
 
-
-    /**
+    /** 
      * List of Group Snapshots.
      **/
-    public GroupSnapshot[] getGroupSnapshots() {
-        return this.groupSnapshots;
+    public GroupSnapshot[] getGroupSnapshots() { return this.groupSnapshots; }
+    public void setGroupSnapshots(GroupSnapshot[] groupSnapshots) { 
+        this.groupSnapshots = groupSnapshots;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class ListGroupSnapshotsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListGroupSnapshotsResult that = (ListGroupSnapshotsResult) o;
-        
 
-        return Objects.deepEquals( groupSnapshots , that.groupSnapshots );
+        return 
+            Arrays.equals(groupSnapshots, that.groupSnapshots);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) groupSnapshots );
+        return Objects.hash( (Object[])groupSnapshots );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("groupSnapshots", groupSnapshots);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" groupSnapshots : ").append(Arrays.toString(groupSnapshots));
+        sb.append(" groupSnapshots : ").append(Arrays.toString(groupSnapshots)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class ListGroupSnapshotsResult  implements Serializable  {
 
         public ListGroupSnapshotsResult build() {
             return new ListGroupSnapshotsResult (
-                         this.groupSnapshots            );
+                         this.groupSnapshots);
         }
 
         private ListGroupSnapshotsResult.Builder buildFrom(final ListGroupSnapshotsResult req) {
@@ -122,5 +124,4 @@ public class ListGroupSnapshotsResult  implements Serializable  {
         }
 
     }
-
 }

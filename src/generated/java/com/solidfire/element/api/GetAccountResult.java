@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetAccount" API Service call.
+ * GetAccountResult  
  **/
-public class GetAccountResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1096309178L;
+public class GetAccountResult implements Serializable {
 
-    @SerializedName("account") private final Account account;
+    public static final long serialVersionUID = -895889465820365842L;
+    @SerializedName("account") private Account account;
 
-    /**
-     * The object returned by the "GetAccount" API Service call.
-     * @param account [required] Account details.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetAccountResult(Account account) {
+    public GetAccountResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetAccountResult(
+        Account account
+    )
+    {
         this.account = account;
     }
 
-
-    /**
+    /** 
      * Account details.
      **/
-    public Account getAccount() {
-        return this.account;
+    public Account getAccount() { return this.account; }
+    public void setAccount(Account account) { 
+        this.account = account;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class GetAccountResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetAccountResult that = (GetAccountResult) o;
-        
 
-        return Objects.equals( account , that.account );
+        return 
+            Objects.equals(account, that.account);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) account );
+        return Objects.hash( account );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("account", account);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" account : ").append(account);
+        sb.append(" account : ").append(account).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class GetAccountResult  implements Serializable  {
 
         public GetAccountResult build() {
             return new GetAccountResult (
-                         this.account            );
+                         this.account);
         }
 
         private GetAccountResult.Builder buildFrom(final GetAccountResult req) {
@@ -122,5 +124,4 @@ public class GetAccountResult  implements Serializable  {
         }
 
     }
-
 }

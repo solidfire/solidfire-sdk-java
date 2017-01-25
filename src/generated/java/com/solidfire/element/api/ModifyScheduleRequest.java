@@ -18,52 +18,48 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ModifySchedule" API Service call.
+ * ModifyScheduleRequest  
  **/
-public class ModifyScheduleRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 79798341L;
+public class ModifyScheduleRequest implements Serializable {
 
-    @SerializedName("schedule") private final Schedule schedule;
+    public static final long serialVersionUID = 743621623881398457L;
+    @SerializedName("schedule") private Schedule schedule;
 
-    /**
-     * The Request object for the "ModifySchedule" API Service call.
-     * @param schedule [required] The "Schedule" object will be used to modify an existing schedule.<br/>
-     * @since 8.0
-     **/
-    @Since("8.0")
-    public ModifyScheduleRequest(Schedule schedule) {
+    // empty constructor
+    @Since("7.0")
+    public ModifyScheduleRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyScheduleRequest(
+        Schedule schedule
+    )
+    {
         this.schedule = schedule;
     }
 
-
-    /**
-     * The "Schedule" object will be used to modify an existing schedule.<br/>
-     * The ScheduleID property is required.<br/>
-     * Frequency property must be of type that inherits from Frequency. Valid types are:<br/>
-     * DaysOfMonthFrequency<br/>
-     * DaysOrWeekFrequency<br/>
+    /** 
+     * The "Schedule" object will be used to modify an existing schedule.
+     * The ScheduleID property is required.
+     * Frequency property must be of type that inherits from Frequency. Valid types are:
+     * DaysOfMonthFrequency
+     * DaysOrWeekFrequency
      * TimeIntervalFrequency
      **/
-    public Schedule getSchedule() {
-        return this.schedule;
+    public Schedule getSchedule() { return this.schedule; }
+    public void setSchedule(Schedule schedule) { 
+        this.schedule = schedule;
     }
 
     @Override
@@ -72,23 +68,29 @@ public class ModifyScheduleRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyScheduleRequest that = (ModifyScheduleRequest) o;
-        
 
-        return Objects.equals( schedule , that.schedule );
+        return 
+            Objects.equals(schedule, that.schedule);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) schedule );
+        return Objects.hash( schedule );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("schedule", schedule);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" schedule : ").append(schedule);
+        sb.append(" schedule : ").append(schedule).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -112,7 +114,7 @@ public class ModifyScheduleRequest  implements Serializable  {
 
         public ModifyScheduleRequest build() {
             return new ModifyScheduleRequest (
-                         this.schedule            );
+                         this.schedule);
         }
 
         private ModifyScheduleRequest.Builder buildFrom(final ModifyScheduleRequest req) {
@@ -127,5 +129,4 @@ public class ModifyScheduleRequest  implements Serializable  {
         }
 
     }
-
 }

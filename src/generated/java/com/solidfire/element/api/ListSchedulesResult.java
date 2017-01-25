@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListSchedules" API Service call.
+ * ListSchedulesResult  
  **/
-public class ListSchedulesResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1370282927L;
+public class ListSchedulesResult implements Serializable {
 
-    @SerializedName("schedules") private final Schedule[] schedules;
+    public static final long serialVersionUID = 8655052800213850938L;
+    @SerializedName("schedules") private Schedule[] schedules;
 
-    /**
-     * The object returned by the "ListSchedules" API Service call.
-     * @param schedules [required] The list of schedules currently on the cluster.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListSchedulesResult(Schedule[] schedules) {
+    public ListSchedulesResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListSchedulesResult(
+        Schedule[] schedules
+    )
+    {
         this.schedules = schedules;
     }
 
-
-    /**
+    /** 
      * The list of schedules currently on the cluster.
      **/
-    public Schedule[] getSchedules() {
-        return this.schedules;
+    public Schedule[] getSchedules() { return this.schedules; }
+    public void setSchedules(Schedule[] schedules) { 
+        this.schedules = schedules;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class ListSchedulesResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListSchedulesResult that = (ListSchedulesResult) o;
-        
 
-        return Objects.deepEquals( schedules , that.schedules );
+        return 
+            Arrays.equals(schedules, that.schedules);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) schedules );
+        return Objects.hash( (Object[])schedules );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("schedules", schedules);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" schedules : ").append(Arrays.toString(schedules));
+        sb.append(" schedules : ").append(Arrays.toString(schedules)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class ListSchedulesResult  implements Serializable  {
 
         public ListSchedulesResult build() {
             return new ListSchedulesResult (
-                         this.schedules            );
+                         this.schedules);
         }
 
         private ListSchedulesResult.Builder buildFrom(final ListSchedulesResult req) {
@@ -122,5 +124,4 @@ public class ListSchedulesResult  implements Serializable  {
         }
 
     }
-
 }

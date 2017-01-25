@@ -18,111 +18,108 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * RemoteReplication  
  * Details on the volume replication.
  **/
-public class RemoteReplication  implements Serializable  {
 
-    private static final long serialVersionUID = 1815989745L;
+public class RemoteReplication implements Serializable {
 
-    @SerializedName("mode") private final String mode;
-    @SerializedName("pauseLimit") private final Long pauseLimit;
-    @SerializedName("remoteServiceID") private final Long remoteServiceID;
-    @SerializedName("resumeDetails") private final String resumeDetails;
-    @SerializedName("snapshotReplication") private final SnapshotReplication snapshotReplication;
-    @SerializedName("state") private final String state;
-    @SerializedName("stateDetails") private final String stateDetails;
+    public static final long serialVersionUID = 216340797577190625L;
+    @SerializedName("mode") private String mode;
+    @SerializedName("pauseLimit") private Long pauseLimit;
+    @SerializedName("remoteServiceID") private Long remoteServiceID;
+    @SerializedName("resumeDetails") private String resumeDetails;
+    @SerializedName("snapshotReplication") private SnapshotReplication snapshotReplication;
+    @SerializedName("state") private String state;
+    @SerializedName("stateDetails") private String stateDetails;
 
-    /**
-     * Details on the volume replication.
-     * @param mode [required] Volume replication mode.<br/>
-     * @param pauseLimit [required] The number of occurring write ops before auto-pausing, on a per volume pair level.
-     * @param remoteServiceID [required] The remote slice service ID.
-     * @param resumeDetails [required] Reserved for future use.
-     * @param snapshotReplication [required] The details of snapshot replication.
-     * @param state [required] The state of the volume replication.
-     * @param stateDetails [required] Reserved for future use.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public RemoteReplication(String mode, Long pauseLimit, Long remoteServiceID, String resumeDetails, SnapshotReplication snapshotReplication, String state, String stateDetails) {
+    public RemoteReplication() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public RemoteReplication(
+        String mode,
+        Long pauseLimit,
+        Long remoteServiceID,
+        String resumeDetails,
+        SnapshotReplication snapshotReplication,
+        String state,
+        String stateDetails
+    )
+    {
+        this.mode = mode;
+        this.pauseLimit = pauseLimit;
+        this.remoteServiceID = remoteServiceID;
+        this.resumeDetails = resumeDetails;
         this.snapshotReplication = snapshotReplication;
         this.state = state;
         this.stateDetails = stateDetails;
-        this.remoteServiceID = remoteServiceID;
-        this.resumeDetails = resumeDetails;
-        this.mode = mode;
-        this.pauseLimit = pauseLimit;
     }
 
-
-    /**
-     * Volume replication mode.<br/>
-     * Possible values:<br/>
-     * <b>Async</b>: Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.<br/>
-     * <b>Sync</b>: Source acknowledges write when the data is stored locally and on the remote cluster.<br/>
-     * <b>SnapshotsOnly</b>: Only snapshots created on the source cluster will be replicated. Active writes from the source volume will not be replicated.<br/>
+    /** 
+     * Volume replication mode.
+     * Possible values:
+     * Async: Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.
+     * Sync: Source acknowledges write when the data is stored locally and on the remote cluster.
+     * SnapshotsOnly: Only snapshots created on the source cluster will be replicated. Active writes from the source volume will not be replicated.
      **/
-    public String getMode() {
-        return this.mode;
+    public String getMode() { return this.mode; }
+    public void setMode(String mode) { 
+        this.mode = mode;
     }
-
-    /**
+    /** 
      * The number of occurring write ops before auto-pausing, on a per volume pair level.
      **/
-    public Long getPauseLimit() {
-        return this.pauseLimit;
+    public Long getPauseLimit() { return this.pauseLimit; }
+    public void setPauseLimit(Long pauseLimit) { 
+        this.pauseLimit = pauseLimit;
     }
-
-    /**
+    /** 
      * The remote slice service ID.
      **/
-    public Long getRemoteServiceID() {
-        return this.remoteServiceID;
+    public Long getRemoteServiceID() { return this.remoteServiceID; }
+    public void setRemoteServiceID(Long remoteServiceID) { 
+        this.remoteServiceID = remoteServiceID;
     }
-
-    /**
+    /** 
      * Reserved for future use.
      **/
-    public String getResumeDetails() {
-        return this.resumeDetails;
+    public String getResumeDetails() { return this.resumeDetails; }
+    public void setResumeDetails(String resumeDetails) { 
+        this.resumeDetails = resumeDetails;
     }
-
-    /**
+    /** 
      * The details of snapshot replication.
      **/
-    public SnapshotReplication getSnapshotReplication() {
-        return this.snapshotReplication;
+    public SnapshotReplication getSnapshotReplication() { return this.snapshotReplication; }
+    public void setSnapshotReplication(SnapshotReplication snapshotReplication) { 
+        this.snapshotReplication = snapshotReplication;
     }
-
-    /**
+    /** 
      * The state of the volume replication.
      **/
-    public String getState() {
-        return this.state;
+    public String getState() { return this.state; }
+    public void setState(String state) { 
+        this.state = state;
     }
-
-    /**
+    /** 
      * Reserved for future use.
      **/
-    public String getStateDetails() {
-        return this.stateDetails;
+    public String getStateDetails() { return this.stateDetails; }
+    public void setStateDetails(String stateDetails) { 
+        this.stateDetails = stateDetails;
     }
 
     @Override
@@ -131,22 +128,34 @@ public class RemoteReplication  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoteReplication that = (RemoteReplication) o;
-        
 
-        return Objects.equals( mode , that.mode )
-            && Objects.equals( pauseLimit , that.pauseLimit )
-            && Objects.equals( remoteServiceID , that.remoteServiceID )
-            && Objects.equals( resumeDetails , that.resumeDetails )
-            && Objects.equals( snapshotReplication , that.snapshotReplication )
-            && Objects.equals( state , that.state )
-            && Objects.equals( stateDetails , that.stateDetails );
+        return 
+            Objects.equals(mode, that.mode) && 
+            Objects.equals(pauseLimit, that.pauseLimit) && 
+            Objects.equals(remoteServiceID, that.remoteServiceID) && 
+            Objects.equals(resumeDetails, that.resumeDetails) && 
+            Objects.equals(snapshotReplication, that.snapshotReplication) && 
+            Objects.equals(state, that.state) && 
+            Objects.equals(stateDetails, that.stateDetails);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( mode, pauseLimit, remoteServiceID, resumeDetails, snapshotReplication, state, stateDetails );
+        return Objects.hash( mode,pauseLimit,remoteServiceID,resumeDetails,snapshotReplication,state,stateDetails );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("mode", mode);
+        map.put("pauseLimit", pauseLimit);
+        map.put("remoteServiceID", remoteServiceID);
+        map.put("resumeDetails", resumeDetails);
+        map.put("snapshotReplication", snapshotReplication);
+        map.put("state", state);
+        map.put("stateDetails", stateDetails);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -159,7 +168,7 @@ public class RemoteReplication  implements Serializable  {
         sb.append(" resumeDetails : ").append(resumeDetails).append(",");
         sb.append(" snapshotReplication : ").append(snapshotReplication).append(",");
         sb.append(" state : ").append(state).append(",");
-        sb.append(" stateDetails : ").append(stateDetails);
+        sb.append(" stateDetails : ").append(stateDetails).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -195,7 +204,7 @@ public class RemoteReplication  implements Serializable  {
                          this.resumeDetails,
                          this.snapshotReplication,
                          this.state,
-                         this.stateDetails            );
+                         this.stateDetails);
         }
 
         private RemoteReplication.Builder buildFrom(final RemoteReplication req) {
@@ -246,5 +255,4 @@ public class RemoteReplication  implements Serializable  {
         }
 
     }
-
 }

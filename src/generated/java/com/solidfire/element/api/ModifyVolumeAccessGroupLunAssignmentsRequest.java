@@ -18,57 +18,53 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ModifyVolumeAccessGroupLunAssignments" API Service call.
+ * ModifyVolumeAccessGroupLunAssignmentsRequest  
  **/
-public class ModifyVolumeAccessGroupLunAssignmentsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 326091512L;
+public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializable {
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
-    @SerializedName("lunAssignments") private final LunAssignment[] lunAssignments;
+    public static final long serialVersionUID = -2854592840284265047L;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
 
-    /**
-     * The Request object for the "ModifyVolumeAccessGroupLunAssignments" API Service call.
-     * @param volumeAccessGroupID [required] Unique volume access group ID for which the LUN assignments will be modified.
-     * @param lunAssignments [required] The volume IDs with new assigned LUN values.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ModifyVolumeAccessGroupLunAssignmentsRequest(Long volumeAccessGroupID, LunAssignment[] lunAssignments) {
+    public ModifyVolumeAccessGroupLunAssignmentsRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyVolumeAccessGroupLunAssignmentsRequest(
+        Long volumeAccessGroupID,
+        LunAssignment[] lunAssignments
+    )
+    {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.lunAssignments = lunAssignments;
     }
 
-
-    /**
+    /** 
      * Unique volume access group ID for which the LUN assignments will be modified.
      **/
-    public Long getVolumeAccessGroupID() {
-        return this.volumeAccessGroupID;
+    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+        this.volumeAccessGroupID = volumeAccessGroupID;
     }
-
-    /**
+    /** 
      * The volume IDs with new assigned LUN values.
      **/
-    public LunAssignment[] getLunAssignments() {
-        return this.lunAssignments;
+    public LunAssignment[] getLunAssignments() { return this.lunAssignments; }
+    public void setLunAssignments(LunAssignment[] lunAssignments) { 
+        this.lunAssignments = lunAssignments;
     }
 
     @Override
@@ -77,17 +73,24 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest  implements Serializab
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumeAccessGroupLunAssignmentsRequest that = (ModifyVolumeAccessGroupLunAssignmentsRequest) o;
-        
 
-        return Objects.equals( volumeAccessGroupID , that.volumeAccessGroupID )
-            && Objects.deepEquals( lunAssignments , that.lunAssignments );
+        return 
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
+            Arrays.equals(lunAssignments, that.lunAssignments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, lunAssignments );
+        return Objects.hash( volumeAccessGroupID,(Object[])lunAssignments );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroupID", volumeAccessGroupID);
+        map.put("lunAssignments", lunAssignments);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +98,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest  implements Serializab
         sb.append( "{ " );
 
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" lunAssignments : ").append(Arrays.toString(lunAssignments));
+        sb.append(" lunAssignments : ").append(Arrays.toString(lunAssignments)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +124,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest  implements Serializab
         public ModifyVolumeAccessGroupLunAssignmentsRequest build() {
             return new ModifyVolumeAccessGroupLunAssignmentsRequest (
                          this.volumeAccessGroupID,
-                         this.lunAssignments            );
+                         this.lunAssignments);
         }
 
         private ModifyVolumeAccessGroupLunAssignmentsRequest.Builder buildFrom(final ModifyVolumeAccessGroupLunAssignmentsRequest req) {
@@ -142,5 +145,4 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest  implements Serializab
         }
 
     }
-
 }

@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListVirtualVolumeHosts" API Service call.
+ * ListVirtualVolumeHostsResult  
  **/
-public class ListVirtualVolumeHostsResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1920751988L;
+public class ListVirtualVolumeHostsResult implements Serializable {
 
+    public static final long serialVersionUID = -8007463979747334133L;
     @SerializedName("hosts") private VirtualVolumeHost[] hosts;
 
-    /**
-     * The object returned by the "ListVirtualVolumeHosts" API Service call.
-     * @param hosts [required] List of known ESX hosts.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListVirtualVolumeHostsResult(VirtualVolumeHost[] hosts) {
-        this.hosts = hosts;
-    }
-
-    
-    /**
-     * The object returned by the "ListVirtualVolumeHosts" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ListVirtualVolumeHostsResult() {}
 
-
-    /**
-     * List of known ESX hosts.
-     **/
-    public VirtualVolumeHost[] getHosts() {
-        return this.hosts;
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListVirtualVolumeHostsResult(
+        VirtualVolumeHost[] hosts
+    )
+    {
+        this.hosts = hosts;
     }
 
-    public void setHosts(VirtualVolumeHost[] hosts) {
+    /** 
+     * List of known ESX hosts.
+     **/
+    public VirtualVolumeHost[] getHosts() { return this.hosts; }
+    public void setHosts(VirtualVolumeHost[] hosts) { 
         this.hosts = hosts;
     }
 
@@ -80,23 +63,29 @@ public class ListVirtualVolumeHostsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualVolumeHostsResult that = (ListVirtualVolumeHostsResult) o;
-        
 
-        return Objects.deepEquals( hosts , that.hosts );
+        return 
+            Arrays.equals(hosts, that.hosts);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) hosts );
+        return Objects.hash( (Object[])hosts );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("hosts", hosts);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" hosts : ").append(Arrays.toString(hosts));
+        sb.append(" hosts : ").append(Arrays.toString(hosts)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -120,7 +109,7 @@ public class ListVirtualVolumeHostsResult  implements Serializable  {
 
         public ListVirtualVolumeHostsResult build() {
             return new ListVirtualVolumeHostsResult (
-                         this.hosts            );
+                         this.hosts);
         }
 
         private ListVirtualVolumeHostsResult.Builder buildFrom(final ListVirtualVolumeHostsResult req) {
@@ -135,5 +124,4 @@ public class ListVirtualVolumeHostsResult  implements Serializable  {
         }
 
     }
-
 }

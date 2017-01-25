@@ -18,47 +18,53 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListVolumeAccessGroups" API Service call.
+ * ListVolumeAccessGroupsResult  
  **/
-public class ListVolumeAccessGroupsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1985813315L;
+public class ListVolumeAccessGroupsResult implements Serializable {
 
-    @SerializedName("volumeAccessGroups") private final VolumeAccessGroup[] volumeAccessGroups;
+    public static final long serialVersionUID = -2843709235167971533L;
+    @SerializedName("volumeAccessGroups") private VolumeAccessGroup[] volumeAccessGroups;
+    @SerializedName("volumeAccessGroupsNotFound") private Long[] volumeAccessGroupsNotFound;
 
-    /**
-     * The object returned by the "ListVolumeAccessGroups" API Service call.
-     * @param volumeAccessGroups [required] List of volume access groups.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListVolumeAccessGroupsResult(VolumeAccessGroup[] volumeAccessGroups) {
+    public ListVolumeAccessGroupsResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListVolumeAccessGroupsResult(
+        VolumeAccessGroup[] volumeAccessGroups,
+        Long[] volumeAccessGroupsNotFound
+    )
+    {
         this.volumeAccessGroups = volumeAccessGroups;
+        this.volumeAccessGroupsNotFound = volumeAccessGroupsNotFound;
     }
 
-
-    /**
-     * List of volume access groups.
+    /** 
+     * A list of objects describing each volume access group.
      **/
-    public VolumeAccessGroup[] getVolumeAccessGroups() {
-        return this.volumeAccessGroups;
+    public VolumeAccessGroup[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
+    public void setVolumeAccessGroups(VolumeAccessGroup[] volumeAccessGroups) { 
+        this.volumeAccessGroups = volumeAccessGroups;
+    }
+    /** 
+     * A list of volume access groups not found by the system. Present if you used the "volumeAccessGroups" parameter and the system was unable to find one or more volume access groups that you specified.
+     **/
+    public Long[] getVolumeAccessGroupsNotFound() { return this.volumeAccessGroupsNotFound; }
+    public void setVolumeAccessGroupsNotFound(Long[] volumeAccessGroupsNotFound) { 
+        this.volumeAccessGroupsNotFound = volumeAccessGroupsNotFound;
     }
 
     @Override
@@ -67,23 +73,32 @@ public class ListVolumeAccessGroupsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumeAccessGroupsResult that = (ListVolumeAccessGroupsResult) o;
-        
 
-        return Objects.deepEquals( volumeAccessGroups , that.volumeAccessGroups );
+        return 
+            Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) && 
+            Arrays.equals(volumeAccessGroupsNotFound, that.volumeAccessGroupsNotFound);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volumeAccessGroups );
+        return Objects.hash( (Object[])volumeAccessGroups,(Object[])volumeAccessGroupsNotFound );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroups", volumeAccessGroups);
+        map.put("volumeAccessGroupsNotFound", volumeAccessGroupsNotFound);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups));
+        sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups)).append(",");
+        sb.append(" volumeAccessGroupsNotFound : ").append(Arrays.toString(volumeAccessGroupsNotFound)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -102,16 +117,19 @@ public class ListVolumeAccessGroupsResult  implements Serializable  {
 
     public static class Builder {
         private VolumeAccessGroup[] volumeAccessGroups;
+        private Long[] volumeAccessGroupsNotFound;
 
         private Builder() { }
 
         public ListVolumeAccessGroupsResult build() {
             return new ListVolumeAccessGroupsResult (
-                         this.volumeAccessGroups            );
+                         this.volumeAccessGroups,
+                         this.volumeAccessGroupsNotFound);
         }
 
         private ListVolumeAccessGroupsResult.Builder buildFrom(final ListVolumeAccessGroupsResult req) {
             this.volumeAccessGroups = req.volumeAccessGroups;
+            this.volumeAccessGroupsNotFound = req.volumeAccessGroupsNotFound;
 
             return this;
         }
@@ -121,6 +139,10 @@ public class ListVolumeAccessGroupsResult  implements Serializable  {
             return this;
         }
 
-    }
+        public ListVolumeAccessGroupsResult.Builder volumeAccessGroupsNotFound(final Long[] volumeAccessGroupsNotFound) {
+            this.volumeAccessGroupsNotFound = volumeAccessGroupsNotFound;
+            return this;
+        }
 
+    }
 }

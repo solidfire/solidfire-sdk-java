@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "RemoveClusterAdmin" API Service call.
+ * RemoveClusterAdminRequest  
  **/
-public class RemoveClusterAdminRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1898586412L;
+public class RemoveClusterAdminRequest implements Serializable {
 
-    @SerializedName("clusterAdminID") private final Long clusterAdminID;
+    public static final long serialVersionUID = 8468883642750058499L;
+    @SerializedName("clusterAdminID") private Long clusterAdminID;
 
-    /**
-     * The Request object for the "RemoveClusterAdmin" API Service call.
-     * @param clusterAdminID [required] ClusterAdminID for the Cluster Admin to remove.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public RemoveClusterAdminRequest(Long clusterAdminID) {
+    public RemoveClusterAdminRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public RemoveClusterAdminRequest(
+        Long clusterAdminID
+    )
+    {
         this.clusterAdminID = clusterAdminID;
     }
 
-
-    /**
+    /** 
      * ClusterAdminID for the Cluster Admin to remove.
      **/
-    public Long getClusterAdminID() {
-        return this.clusterAdminID;
+    public Long getClusterAdminID() { return this.clusterAdminID; }
+    public void setClusterAdminID(Long clusterAdminID) { 
+        this.clusterAdminID = clusterAdminID;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class RemoveClusterAdminRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveClusterAdminRequest that = (RemoveClusterAdminRequest) o;
-        
 
-        return Objects.equals( clusterAdminID , that.clusterAdminID );
+        return 
+            Objects.equals(clusterAdminID, that.clusterAdminID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) clusterAdminID );
+        return Objects.hash( clusterAdminID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterAdminID", clusterAdminID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" clusterAdminID : ").append(clusterAdminID);
+        sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class RemoveClusterAdminRequest  implements Serializable  {
 
         public RemoveClusterAdminRequest build() {
             return new RemoveClusterAdminRequest (
-                         this.clusterAdminID            );
+                         this.clusterAdminID);
         }
 
         private RemoveClusterAdminRequest.Builder buildFrom(final RemoveClusterAdminRequest req) {
@@ -122,5 +124,4 @@ public class RemoveClusterAdminRequest  implements Serializable  {
         }
 
     }
-
 }

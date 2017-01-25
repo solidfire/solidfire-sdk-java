@@ -18,57 +18,53 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "CompleteVolumePairing" API Service call.
+ * CompleteVolumePairingRequest  
  **/
-public class CompleteVolumePairingRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -978139400L;
+public class CompleteVolumePairingRequest implements Serializable {
 
-    @SerializedName("volumePairingKey") private final String volumePairingKey;
-    @SerializedName("volumeID") private final Long volumeID;
+    public static final long serialVersionUID = 3238767447325720472L;
+    @SerializedName("volumePairingKey") private String volumePairingKey;
+    @SerializedName("volumeID") private Long volumeID;
 
-    /**
-     * The Request object for the "CompleteVolumePairing" API Service call.
-     * @param volumePairingKey [required] The key returned from the "StartVolumePairing" API method.
-     * @param volumeID [required] The ID of volume on which to complete the pairing process.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public CompleteVolumePairingRequest(String volumePairingKey, Long volumeID) {
+    public CompleteVolumePairingRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public CompleteVolumePairingRequest(
+        String volumePairingKey,
+        Long volumeID
+    )
+    {
         this.volumePairingKey = volumePairingKey;
         this.volumeID = volumeID;
     }
 
-
-    /**
+    /** 
      * The key returned from the "StartVolumePairing" API method.
      **/
-    public String getVolumePairingKey() {
-        return this.volumePairingKey;
+    public String getVolumePairingKey() { return this.volumePairingKey; }
+    public void setVolumePairingKey(String volumePairingKey) { 
+        this.volumePairingKey = volumePairingKey;
     }
-
-    /**
+    /** 
      * The ID of volume on which to complete the pairing process.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
     }
 
     @Override
@@ -77,17 +73,24 @@ public class CompleteVolumePairingRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CompleteVolumePairingRequest that = (CompleteVolumePairingRequest) o;
-        
 
-        return Objects.equals( volumePairingKey , that.volumePairingKey )
-            && Objects.equals( volumeID , that.volumeID );
+        return 
+            Objects.equals(volumePairingKey, that.volumePairingKey) && 
+            Objects.equals(volumeID, that.volumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumePairingKey, volumeID );
+        return Objects.hash( volumePairingKey,volumeID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumePairingKey", volumePairingKey);
+        map.put("volumeID", volumeID);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +98,7 @@ public class CompleteVolumePairingRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" volumePairingKey : ").append(volumePairingKey).append(",");
-        sb.append(" volumeID : ").append(volumeID);
+        sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +124,7 @@ public class CompleteVolumePairingRequest  implements Serializable  {
         public CompleteVolumePairingRequest build() {
             return new CompleteVolumePairingRequest (
                          this.volumePairingKey,
-                         this.volumeID            );
+                         this.volumeID);
         }
 
         private CompleteVolumePairingRequest.Builder buildFrom(final CompleteVolumePairingRequest req) {
@@ -142,5 +145,4 @@ public class CompleteVolumePairingRequest  implements Serializable  {
         }
 
     }
-
 }

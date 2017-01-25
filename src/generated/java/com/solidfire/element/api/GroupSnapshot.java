@@ -18,110 +18,107 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * GroupSnapshot  
  * Group Snapshot object represents a point-in-time copy of a group of volumes.
  **/
-public class GroupSnapshot  implements Serializable  {
 
-    private static final long serialVersionUID = -2045239278L;
+public class GroupSnapshot implements Serializable {
 
-    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
-    @SerializedName("groupSnapshotUUID") private final java.util.UUID groupSnapshotUUID;
-    @SerializedName("members") private final GroupSnapshotMembers[] members;
-    @SerializedName("name") private final String name;
-    @SerializedName("createTime") private final String createTime;
-    @SerializedName("status") private final String status;
-    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
+    public static final long serialVersionUID = 7672350438056052972L;
+    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
+    @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
+    @SerializedName("members") private GroupSnapshotMembers[] members;
+    @SerializedName("name") private String name;
+    @SerializedName("createTime") private String createTime;
+    @SerializedName("status") private String status;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
-    /**
-     * Group Snapshot object represents a point-in-time copy of a group of volumes.
-     * @param groupSnapshotID [required] Unique ID of the new group snapshot.
-     * @param groupSnapshotUUID [required] UUID of the group snapshot.
-     * @param members [required] List of volumeIDs and snapshotIDs for each member of the group.
-     * @param name [required] Name of the group snapshot, or, if none was given, the UTC formatted day and time on which the snapshot was created.
-     * @param createTime [required] The UTC formatted day and time on which the snapshot was created.
-     * @param status [required] Status of the snapshot.
-     * @param attributes [required] List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GroupSnapshot(Long groupSnapshotID, java.util.UUID groupSnapshotUUID, GroupSnapshotMembers[] members, String name, String createTime, String status, java.util.Map<String, Object> attributes) {
+    public GroupSnapshot() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GroupSnapshot(
+        Long groupSnapshotID,
+        java.util.UUID groupSnapshotUUID,
+        GroupSnapshotMembers[] members,
+        String name,
+        String createTime,
+        String status,
+        java.util.Map<String, Object> attributes
+    )
+    {
+        this.groupSnapshotID = groupSnapshotID;
+        this.groupSnapshotUUID = groupSnapshotUUID;
+        this.members = members;
         this.name = name;
         this.createTime = createTime;
-        this.attributes = attributes;
-        this.groupSnapshotUUID = groupSnapshotUUID;
         this.status = status;
-        this.members = members;
-        this.groupSnapshotID = groupSnapshotID;
+        this.attributes = attributes;
     }
 
-
-    /**
+    /** 
      * Unique ID of the new group snapshot.
      **/
-    public Long getGroupSnapshotID() {
-        return this.groupSnapshotID;
+    public Long getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(Long groupSnapshotID) { 
+        this.groupSnapshotID = groupSnapshotID;
     }
-
-    /**
+    /** 
      * UUID of the group snapshot.
      **/
-    public java.util.UUID getGroupSnapshotUUID() {
-        return this.groupSnapshotUUID;
+    public java.util.UUID getGroupSnapshotUUID() { return this.groupSnapshotUUID; }
+    public void setGroupSnapshotUUID(java.util.UUID groupSnapshotUUID) { 
+        this.groupSnapshotUUID = groupSnapshotUUID;
     }
-
-    /**
+    /** 
      * List of volumeIDs and snapshotIDs for each member of the group.
      **/
-    public GroupSnapshotMembers[] getMembers() {
-        return this.members;
+    public GroupSnapshotMembers[] getMembers() { return this.members; }
+    public void setMembers(GroupSnapshotMembers[] members) { 
+        this.members = members;
     }
-
-    /**
+    /** 
      * Name of the group snapshot, or, if none was given, the UTC formatted day and time on which the snapshot was created.
      **/
-    public String getName() {
-        return this.name;
+    public String getName() { return this.name; }
+    public void setName(String name) { 
+        this.name = name;
     }
-
-    /**
+    /** 
      * The UTC formatted day and time on which the snapshot was created.
      **/
-    public String getCreateTime() {
-        return this.createTime;
+    public String getCreateTime() { return this.createTime; }
+    public void setCreateTime(String createTime) { 
+        this.createTime = createTime;
     }
-
-    /**
+    /** 
      * Status of the snapshot.
      * Possible values:
-     * <br/><b>Preparing</b>: A snapshot that is being prepared for use and is not yet writable.
-     * <br/><b>Done</b>: A snapshot that has finished being prepared and is now usable
+     * Preparing: A snapshot that is being prepared for use and is not yet writable.
+     * Done: A snapshot that has finished being prepared and is now usable
      **/
-    public String getStatus() {
-        return this.status;
+    public String getStatus() { return this.status; }
+    public void setStatus(String status) { 
+        this.status = status;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() {
-        return this.attributes;
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
+        this.attributes = attributes;
     }
 
     @Override
@@ -130,22 +127,34 @@ public class GroupSnapshot  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GroupSnapshot that = (GroupSnapshot) o;
-        
 
-        return Objects.equals( groupSnapshotID , that.groupSnapshotID )
-            && Objects.equals( groupSnapshotUUID , that.groupSnapshotUUID )
-            && Objects.deepEquals( members , that.members )
-            && Objects.equals( name , that.name )
-            && Objects.equals( createTime , that.createTime )
-            && Objects.equals( status , that.status )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(groupSnapshotID, that.groupSnapshotID) && 
+            Objects.equals(groupSnapshotUUID, that.groupSnapshotUUID) && 
+            Arrays.equals(members, that.members) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(createTime, that.createTime) && 
+            Objects.equals(status, that.status) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( groupSnapshotID, groupSnapshotUUID, members, name, createTime, status, attributes );
+        return Objects.hash( groupSnapshotID,groupSnapshotUUID,(Object[])members,name,createTime,status,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("groupSnapshotID", groupSnapshotID);
+        map.put("groupSnapshotUUID", groupSnapshotUUID);
+        map.put("members", members);
+        map.put("name", name);
+        map.put("createTime", createTime);
+        map.put("status", status);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -158,7 +167,7 @@ public class GroupSnapshot  implements Serializable  {
         sb.append(" name : ").append(name).append(",");
         sb.append(" createTime : ").append(createTime).append(",");
         sb.append(" status : ").append(status).append(",");
-        sb.append(" attributes : ").append(attributes);
+        sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -194,7 +203,7 @@ public class GroupSnapshot  implements Serializable  {
                          this.name,
                          this.createTime,
                          this.status,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private GroupSnapshot.Builder buildFrom(final GroupSnapshot req) {
@@ -245,5 +254,4 @@ public class GroupSnapshot  implements Serializable  {
         }
 
     }
-
 }

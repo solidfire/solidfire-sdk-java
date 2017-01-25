@@ -18,49 +18,51 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListAllNodes" API Service call.
+ * ListAllNodesResult  
  **/
-public class ListAllNodesResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1366340660L;
+public class ListAllNodesResult implements Serializable {
 
-    @SerializedName("nodes") private final Node[] nodes;
-    @SerializedName("pendingNodes") private final PendingNode[] pendingNodes;
+    public static final long serialVersionUID = 3988058806506812217L;
+    @SerializedName("nodes") private Node[] nodes;
+    @SerializedName("pendingNodes") private PendingNode[] pendingNodes;
 
-    /**
-     * The object returned by the "ListAllNodes" API Service call.
-     * @param nodes [required] 
-     * @param pendingNodes [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListAllNodesResult(Node[] nodes, PendingNode[] pendingNodes) {
+    public ListAllNodesResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListAllNodesResult(
+        Node[] nodes,
+        PendingNode[] pendingNodes
+    )
+    {
         this.nodes = nodes;
         this.pendingNodes = pendingNodes;
     }
 
-    public Node[] getNodes() {
-        return this.nodes;
+    /** 
+     **/
+    public Node[] getNodes() { return this.nodes; }
+    public void setNodes(Node[] nodes) { 
+        this.nodes = nodes;
     }
-    public PendingNode[] getPendingNodes() {
-        return this.pendingNodes;
+    /** 
+     **/
+    public PendingNode[] getPendingNodes() { return this.pendingNodes; }
+    public void setPendingNodes(PendingNode[] pendingNodes) { 
+        this.pendingNodes = pendingNodes;
     }
 
     @Override
@@ -69,17 +71,24 @@ public class ListAllNodesResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListAllNodesResult that = (ListAllNodesResult) o;
-        
 
-        return Objects.deepEquals( nodes , that.nodes )
-            && Objects.deepEquals( pendingNodes , that.pendingNodes );
+        return 
+            Arrays.equals(nodes, that.nodes) && 
+            Arrays.equals(pendingNodes, that.pendingNodes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodes, pendingNodes );
+        return Objects.hash( (Object[])nodes,(Object[])pendingNodes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodes", nodes);
+        map.put("pendingNodes", pendingNodes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -87,7 +96,7 @@ public class ListAllNodesResult  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
-        sb.append(" pendingNodes : ").append(Arrays.toString(pendingNodes));
+        sb.append(" pendingNodes : ").append(Arrays.toString(pendingNodes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -113,7 +122,7 @@ public class ListAllNodesResult  implements Serializable  {
         public ListAllNodesResult build() {
             return new ListAllNodesResult (
                          this.nodes,
-                         this.pendingNodes            );
+                         this.pendingNodes);
         }
 
         private ListAllNodesResult.Builder buildFrom(final ListAllNodesResult req) {
@@ -134,5 +143,4 @@ public class ListAllNodesResult  implements Serializable  {
         }
 
     }
-
 }

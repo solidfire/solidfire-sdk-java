@@ -18,57 +18,53 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "RemoveVolumesFromVolumeAccessGroup" API Service call.
+ * RemoveVolumesFromVolumeAccessGroupRequest  
  **/
-public class RemoveVolumesFromVolumeAccessGroupRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1521555752L;
+public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
-    @SerializedName("volumes") private final Long[] volumes;
+    public static final long serialVersionUID = 4779120452503850352L;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("volumes") private Long[] volumes;
 
-    /**
-     * The Request object for the "RemoveVolumesFromVolumeAccessGroup" API Service call.
-     * @param volumeAccessGroupID [required] The ID of the volume access group to modify.
-     * @param volumes [required] List of volumes to remove from this volume access group.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public RemoveVolumesFromVolumeAccessGroupRequest(Long volumeAccessGroupID, Long[] volumes) {
+    public RemoveVolumesFromVolumeAccessGroupRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public RemoveVolumesFromVolumeAccessGroupRequest(
+        Long volumeAccessGroupID,
+        Long[] volumes
+    )
+    {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.volumes = volumes;
     }
 
-
-    /**
+    /** 
      * The ID of the volume access group to modify.
      **/
-    public Long getVolumeAccessGroupID() {
-        return this.volumeAccessGroupID;
+    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+        this.volumeAccessGroupID = volumeAccessGroupID;
     }
-
-    /**
+    /** 
      * List of volumes to remove from this volume access group.
      **/
-    public Long[] getVolumes() {
-        return this.volumes;
+    public Long[] getVolumes() { return this.volumes; }
+    public void setVolumes(Long[] volumes) { 
+        this.volumes = volumes;
     }
 
     @Override
@@ -77,17 +73,24 @@ public class RemoveVolumesFromVolumeAccessGroupRequest  implements Serializable 
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveVolumesFromVolumeAccessGroupRequest that = (RemoveVolumesFromVolumeAccessGroupRequest) o;
-        
 
-        return Objects.equals( volumeAccessGroupID , that.volumeAccessGroupID )
-            && Objects.deepEquals( volumes , that.volumes );
+        return 
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
+            Arrays.equals(volumes, that.volumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, volumes );
+        return Objects.hash( volumeAccessGroupID,(Object[])volumes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroupID", volumeAccessGroupID);
+        map.put("volumes", volumes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +98,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest  implements Serializable 
         sb.append( "{ " );
 
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" volumes : ").append(Arrays.toString(volumes));
+        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +124,7 @@ public class RemoveVolumesFromVolumeAccessGroupRequest  implements Serializable 
         public RemoveVolumesFromVolumeAccessGroupRequest build() {
             return new RemoveVolumesFromVolumeAccessGroupRequest (
                          this.volumeAccessGroupID,
-                         this.volumes            );
+                         this.volumes);
         }
 
         private RemoveVolumesFromVolumeAccessGroupRequest.Builder buildFrom(final RemoveVolumesFromVolumeAccessGroupRequest req) {
@@ -142,5 +145,4 @@ public class RemoveVolumesFromVolumeAccessGroupRequest  implements Serializable 
         }
 
     }
-
 }

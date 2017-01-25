@@ -18,63 +18,62 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "TestConnectEnsemble" API Service call.
+ * TestConnectEnsembleResult  
  **/
-public class TestConnectEnsembleResult  implements Serializable  {
 
-    private static final long serialVersionUID = -653594735L;
+public class TestConnectEnsembleResult implements Serializable {
 
-    @SerializedName("details") private final TestConnectEnsembleDetails details;
-    @SerializedName("duration") private final String duration;
-    @SerializedName("result") private final String result;
+    public static final long serialVersionUID = 7769757648779915261L;
+    @SerializedName("details") private TestConnectEnsembleDetails details;
+    @SerializedName("duration") private String duration;
+    @SerializedName("result") private String result;
 
-    /**
-     * The object returned by the "TestConnectEnsemble" API Service call.
-     * @param details [required] 
-     * @param duration [required] The length of time required to run the test.
-     * @param result [required] The results of the entire test
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public TestConnectEnsembleResult(TestConnectEnsembleDetails details, String duration, String result) {
+    public TestConnectEnsembleResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public TestConnectEnsembleResult(
+        TestConnectEnsembleDetails details,
+        String duration,
+        String result
+    )
+    {
         this.details = details;
         this.duration = duration;
         this.result = result;
     }
 
-    public TestConnectEnsembleDetails getDetails() {
-        return this.details;
+    /** 
+     **/
+    public TestConnectEnsembleDetails getDetails() { return this.details; }
+    public void setDetails(TestConnectEnsembleDetails details) { 
+        this.details = details;
     }
-
-    /**
+    /** 
      * The length of time required to run the test.
      **/
-    public String getDuration() {
-        return this.duration;
+    public String getDuration() { return this.duration; }
+    public void setDuration(String duration) { 
+        this.duration = duration;
     }
-
-    /**
+    /** 
      * The results of the entire test
      **/
-    public String getResult() {
-        return this.result;
+    public String getResult() { return this.result; }
+    public void setResult(String result) { 
+        this.result = result;
     }
 
     @Override
@@ -83,18 +82,26 @@ public class TestConnectEnsembleResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestConnectEnsembleResult that = (TestConnectEnsembleResult) o;
-        
 
-        return Objects.equals( details , that.details )
-            && Objects.equals( duration , that.duration )
-            && Objects.equals( result , that.result );
+        return 
+            Objects.equals(details, that.details) && 
+            Objects.equals(duration, that.duration) && 
+            Objects.equals(result, that.result);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( details, duration, result );
+        return Objects.hash( details,duration,result );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("details", details);
+        map.put("duration", duration);
+        map.put("result", result);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -103,7 +110,7 @@ public class TestConnectEnsembleResult  implements Serializable  {
 
         sb.append(" details : ").append(details).append(",");
         sb.append(" duration : ").append(duration).append(",");
-        sb.append(" result : ").append(result);
+        sb.append(" result : ").append(result).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -131,7 +138,7 @@ public class TestConnectEnsembleResult  implements Serializable  {
             return new TestConnectEnsembleResult (
                          this.details,
                          this.duration,
-                         this.result            );
+                         this.result);
         }
 
         private TestConnectEnsembleResult.Builder buildFrom(final TestConnectEnsembleResult req) {
@@ -158,5 +165,4 @@ public class TestConnectEnsembleResult  implements Serializable  {
         }
 
     }
-
 }

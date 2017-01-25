@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetDriveHardwareInfo" API Service call.
+ * GetDriveHardwareInfoRequest  
  **/
-public class GetDriveHardwareInfoRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1230787692L;
+public class GetDriveHardwareInfoRequest implements Serializable {
 
-    @SerializedName("driveID") private final Long driveID;
+    public static final long serialVersionUID = -6304923488608374232L;
+    @SerializedName("driveID") private Long driveID;
 
-    /**
-     * The Request object for the "GetDriveHardwareInfo" API Service call.
-     * @param driveID [required] DriveID for the drive information requested. DriveIDs can be obtained via the "ListDrives" method.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetDriveHardwareInfoRequest(Long driveID) {
+    public GetDriveHardwareInfoRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetDriveHardwareInfoRequest(
+        Long driveID
+    )
+    {
         this.driveID = driveID;
     }
 
-
-    /**
+    /** 
      * DriveID for the drive information requested. DriveIDs can be obtained via the "ListDrives" method.
      **/
-    public Long getDriveID() {
-        return this.driveID;
+    public Long getDriveID() { return this.driveID; }
+    public void setDriveID(Long driveID) { 
+        this.driveID = driveID;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class GetDriveHardwareInfoRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetDriveHardwareInfoRequest that = (GetDriveHardwareInfoRequest) o;
-        
 
-        return Objects.equals( driveID , that.driveID );
+        return 
+            Objects.equals(driveID, that.driveID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) driveID );
+        return Objects.hash( driveID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("driveID", driveID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" driveID : ").append(driveID);
+        sb.append(" driveID : ").append(driveID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class GetDriveHardwareInfoRequest  implements Serializable  {
 
         public GetDriveHardwareInfoRequest build() {
             return new GetDriveHardwareInfoRequest (
-                         this.driveID            );
+                         this.driveID);
         }
 
         private GetDriveHardwareInfoRequest.Builder buildFrom(final GetDriveHardwareInfoRequest req) {
@@ -122,5 +124,4 @@ public class GetDriveHardwareInfoRequest  implements Serializable  {
         }
 
     }
-
 }

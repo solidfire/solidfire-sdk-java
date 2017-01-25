@@ -18,125 +18,115 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ListVolumes" API Service call.
+ * ListVolumesRequest  
  **/
-public class ListVolumesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -337491134L;
+public class ListVolumesRequest implements Serializable {
 
-    @SerializedName("startVolumeID") private final Optional<Long> startVolumeID;
-    @SerializedName("limit") private final Optional<Long> limit;
-    @SerializedName("volumeStatus") private final Optional<String> volumeStatus;
-    @SerializedName("accounts") private final Optional<Long[]> accounts;
-    @SerializedName("isPaired") private final Optional<Boolean> isPaired;
-    @SerializedName("volumeIDs") private final Optional<Long[]> volumeIDs;
+    public static final long serialVersionUID = -2486206820112754562L;
+    @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
+    @SerializedName("limit") private Optional<Long> limit;
+    @SerializedName("volumeStatus") private Optional<String> volumeStatus;
+    @SerializedName("accounts") private Optional<Long[]> accounts;
+    @SerializedName("isPaired") private Optional<Boolean> isPaired;
+    @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
 
-    /**
-     * The Request object for the "ListVolumes" API Service call.
-     * @param startVolumeID (optional) The ID of the first volume to list.
-     * @param limit (optional) The maximum number of volumes to return from the API.
-     * @param volumeStatus (optional) If specified, filter to only volumes with the provided status.
-     * @param accounts (optional) If specified, only fetch volumes which belong to the provided accounts.
-     * @param isPaired (optional) If specified, only fetch volumes which are paired (if true) or non-paired (if false).
-     * @since 8.0
-     **/
-    @Since("8.0")
-    public ListVolumesRequest(Optional<Long> startVolumeID, Optional<Long> limit, Optional<String> volumeStatus, Optional<Long[]> accounts, Optional<Boolean> isPaired) {
-        this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
-        this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
-        this.limit = (limit == null) ? Optional.<Long>empty() : limit;
-        this.volumeIDs = Optional.<Long[]>empty();
+    // empty constructor
+    @Since("7.0")
+    public ListVolumesRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListVolumesRequest(
+        Optional<Long> startVolumeID,
+        Optional<Long> limit,
+        Optional<String> volumeStatus,
+        Optional<Long[]> accounts,
+        Optional<Boolean> isPaired
+    )
+    {
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
+        this.limit = (limit == null) ? Optional.<Long>empty() : limit;
+        this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
         this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
+        this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
     }
-
-    /**
-     * The Request object for the "ListVolumes" API Service call.
-     * @param startVolumeID (optional) The ID of the first volume to list.
-     * @param limit (optional) The maximum number of volumes to return from the API.
-     * @param volumeStatus (optional) If specified, filter to only volumes with the provided status.
-     * @param accounts (optional) If specified, only fetch volumes which belong to the provided accounts.
-     * @param isPaired (optional) If specified, only fetch volumes which are paired (if true) or non-paired (if false).
-     * @param volumeIDs (optional) If specified, only fetch volumes specified in this list.
-     * @since 9.0
-     **/
+    // parameterized constructor
     @Since("9.0")
-    public ListVolumesRequest(Optional<Long> startVolumeID, Optional<Long> limit, Optional<String> volumeStatus, Optional<Long[]> accounts, Optional<Boolean> isPaired, Optional<Long[]> volumeIDs) {
-        this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
-        this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
-        this.limit = (limit == null) ? Optional.<Long>empty() : limit;
-        this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
+    public ListVolumesRequest(
+        Optional<Long> startVolumeID,
+        Optional<Long> limit,
+        Optional<String> volumeStatus,
+        Optional<Long[]> accounts,
+        Optional<Boolean> isPaired,
+        Optional<Long[]> volumeIDs
+    )
+    {
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
+        this.limit = (limit == null) ? Optional.<Long>empty() : limit;
+        this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
         this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
+        this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
+        this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
     }
 
-
-    /**
+    /** 
      * The ID of the first volume to list.
      * This can be useful for paging results.
      * By default, this starts at the lowest VolumeID.
      **/
-    public Optional<Long> getStartVolumeID() {
-        return this.startVolumeID;
+    public Optional<Long> getStartVolumeID() { return this.startVolumeID; }
+    public void setStartVolumeID(Optional<Long> startVolumeID) { 
+        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
     }
-
-    /**
+    /** 
      * The maximum number of volumes to return from the API.
      **/
-    public Optional<Long> getLimit() {
-        return this.limit;
+    public Optional<Long> getLimit() { return this.limit; }
+    public void setLimit(Optional<Long> limit) { 
+        this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
-
-    /**
+    /** 
      * If specified, filter to only volumes with the provided status.
      * By default, list all volumes.
      **/
-    public Optional<String> getVolumeStatus() {
-        return this.volumeStatus;
+    public Optional<String> getVolumeStatus() { return this.volumeStatus; }
+    public void setVolumeStatus(Optional<String> volumeStatus) { 
+        this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
     }
-
-    /**
+    /** 
      * If specified, only fetch volumes which belong to the provided accounts.
      * By default, list volumes for all accounts.
      **/
-    public Optional<Long[]> getAccounts() {
-        return this.accounts;
+    public Optional<Long[]> getAccounts() { return this.accounts; }
+    public void setAccounts(Optional<Long[]> accounts) { 
+        this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
     }
-
-    /**
+    /** 
      * If specified, only fetch volumes which are paired (if true) or non-paired (if false).
      * By default, list all volumes regardless of their pairing status.
      **/
-    public Optional<Boolean> getIsPaired() {
-        return this.isPaired;
+    public Optional<Boolean> getIsPaired() { return this.isPaired; }
+    public void setIsPaired(Optional<Boolean> isPaired) { 
+        this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
     }
-
-    /**
+    /** 
      * If specified, only fetch volumes specified in this list.
      * This option cannot be specified if startVolumeID, limit, or accounts option is specified.
-     * @since 9.0 
      **/
-
-    @Since("9.0")
-    public Optional<Long[]> getVolumeIDs() {
-        return this.volumeIDs;
+    public Optional<Long[]> getVolumeIDs() { return this.volumeIDs; }
+    public void setVolumeIDs(Optional<Long[]> volumeIDs) { 
+        this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
     }
 
     @Override
@@ -145,39 +135,56 @@ public class ListVolumesRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumesRequest that = (ListVolumesRequest) o;
-        
 
-        return Objects.equals( startVolumeID , that.startVolumeID )
-            && Objects.equals( limit , that.limit )
-            && Objects.equals( volumeStatus , that.volumeStatus )
-            && Objects.deepEquals( accounts , that.accounts )
-            && Objects.equals( isPaired , that.isPaired )
-            && Objects.deepEquals( volumeIDs , that.volumeIDs );
+        return 
+            Objects.equals(startVolumeID, that.startVolumeID) && 
+            Objects.equals(limit, that.limit) && 
+            Objects.equals(volumeStatus, that.volumeStatus) && 
+            Objects.equals(accounts, that.accounts) && 
+            Objects.equals(isPaired, that.isPaired) && 
+            Objects.equals(volumeIDs, that.volumeIDs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( startVolumeID, limit, volumeStatus, accounts, isPaired, volumeIDs );
+        return Objects.hash( startVolumeID,limit,volumeStatus,accounts,isPaired,volumeIDs );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("startVolumeID", startVolumeID);
+        map.put("limit", limit);
+        map.put("volumeStatus", volumeStatus);
+        map.put("accounts", accounts);
+        map.put("isPaired", isPaired);
+        map.put("volumeIDs", volumeIDs);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != startVolumeID && startVolumeID.isPresent())
-            sb.append(" startVolumeID : ").append(startVolumeID.get()).append(",");
-        if(null != limit && limit.isPresent())
-            sb.append(" limit : ").append(limit.get()).append(",");
-        if(null != volumeStatus && volumeStatus.isPresent())
-            sb.append(" volumeStatus : ").append(volumeStatus.get()).append(",");
-        if(null != accounts && accounts.isPresent())
-            sb.append(" accounts : ").append(Arrays.toString(accounts.get())).append(",");
-        if(null != isPaired && isPaired.isPresent())
-            sb.append(" isPaired : ").append(isPaired.get()).append(",");
-        if(null != volumeIDs && volumeIDs.isPresent())
-            sb.append(" volumeIDs : ").append(Arrays.toString(volumeIDs.get()));
+        if(null != startVolumeID && startVolumeID.isPresent()){
+            sb.append(" startVolumeID : ").append(startVolumeID).append(",");
+        }
+        if(null != limit && limit.isPresent()){
+            sb.append(" limit : ").append(limit).append(",");
+        }
+        if(null != volumeStatus && volumeStatus.isPresent()){
+            sb.append(" volumeStatus : ").append(volumeStatus).append(",");
+        }
+        if(null != accounts && accounts.isPresent()){
+            sb.append(" accounts : ").append(accounts).append(",");
+        }
+        if(null != isPaired && isPaired.isPresent()){
+            sb.append(" isPaired : ").append(isPaired).append(",");
+        }
+        if(null != volumeIDs && volumeIDs.isPresent()){
+            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -211,7 +218,7 @@ public class ListVolumesRequest  implements Serializable  {
                          this.volumeStatus,
                          this.accounts,
                          this.isPaired,
-                         this.volumeIDs            );
+                         this.volumeIDs);
         }
 
         private ListVolumesRequest.Builder buildFrom(final ListVolumesRequest req) {
@@ -256,5 +263,4 @@ public class ListVolumesRequest  implements Serializable  {
         }
 
     }
-
 }

@@ -18,43 +18,42 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetDriveStats" API Service call.
+ * GetDriveStatsResult  
  **/
-public class GetDriveStatsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1924897911L;
+public class GetDriveStatsResult implements Serializable {
 
-    @SerializedName("driveStats") private final DriveStats driveStats;
+    public static final long serialVersionUID = 8281886346697342369L;
+    @SerializedName("driveStats") private DriveStats driveStats;
 
-    /**
-     * The object returned by the "GetDriveStats" API Service call.
-     * @param driveStats [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetDriveStatsResult(DriveStats driveStats) {
+    public GetDriveStatsResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetDriveStatsResult(
+        DriveStats driveStats
+    )
+    {
         this.driveStats = driveStats;
     }
 
-    public DriveStats getDriveStats() {
-        return this.driveStats;
+    /** 
+     **/
+    public DriveStats getDriveStats() { return this.driveStats; }
+    public void setDriveStats(DriveStats driveStats) { 
+        this.driveStats = driveStats;
     }
 
     @Override
@@ -63,23 +62,29 @@ public class GetDriveStatsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetDriveStatsResult that = (GetDriveStatsResult) o;
-        
 
-        return Objects.equals( driveStats , that.driveStats );
+        return 
+            Objects.equals(driveStats, that.driveStats);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) driveStats );
+        return Objects.hash( driveStats );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("driveStats", driveStats);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" driveStats : ").append(driveStats);
+        sb.append(" driveStats : ").append(driveStats).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,7 +108,7 @@ public class GetDriveStatsResult  implements Serializable  {
 
         public GetDriveStatsResult build() {
             return new GetDriveStatsResult (
-                         this.driveStats            );
+                         this.driveStats);
         }
 
         private GetDriveStatsResult.Builder buildFrom(final GetDriveStatsResult req) {
@@ -118,5 +123,4 @@ public class GetDriveStatsResult  implements Serializable  {
         }
 
     }
-
 }

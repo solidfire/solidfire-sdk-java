@@ -18,50 +18,40 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "RemoveClusterPair" API Service call.
+ * RemoveClusterPairResult  
  **/
-public class RemoveClusterPairResult  implements Serializable  {
 
-    private static final long serialVersionUID = -64468837L;
+public class RemoveClusterPairResult implements Serializable {
 
+    public static final long serialVersionUID = 7901056567996737094L;
 
-    /**
-     * The object returned by the "RemoveClusterPair" API Service call.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public RemoveClusterPairResult() {
+    public RemoveClusterPairResult() {}
 
-    }
-
+    
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
+        
         return true;
     }
 
     @Override
     public int hashCode() {
+
         return this.getClass().hashCode();
     }
 

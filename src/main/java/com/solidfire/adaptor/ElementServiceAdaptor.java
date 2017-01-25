@@ -104,14 +104,12 @@ public class ElementServiceAdaptor {
      * object using the Frequency classes that delineate different types of scheduling frequencies.
      *
      * @param sfe     An instance of SolidFireElement
-     * @param request The original request object.
      * @return a ListScheduleResult with the modified simple schedule objects
      */
-    public static ListSchedulesResult listSchedules(final SolidFireElement sfe, final ListSchedulesRequest request) {
+    public static ListSchedulesResult listSchedules(final SolidFireElement sfe) {
         if (sfe == null) throw new IllegalArgumentException("SolidFireElement was null");
 
-        if (request == null) throw new IllegalArgumentException("ListSchedulesRequest was null");
-        return ScheduleAdaptor.listSchedules(sfe, request);
+        return ScheduleAdaptor.listSchedules(sfe);
     }
 
     /**
@@ -142,6 +140,22 @@ public class ElementServiceAdaptor {
         if (sfe == null) throw new IllegalArgumentException("SolidFireElement was null");
 
         if (request == null) throw new IllegalArgumentException("ModifyScheduleRequest was null");
+
+        if (request.getSchedule().getScheduleID() == null) throw new IllegalArgumentException("ScheduleID is missing. Cannot modify a schedule without a ScheduleID");
+
         return ScheduleAdaptor.modifySchedule(sfe, request);
+    }
+
+
+    public static Object invokeSFApi(final SolidFireElement sfe, final InvokeSFApiRequest request){
+
+        if (sfe == null) throw new IllegalArgumentException("SolidFireElement was null");
+
+        if (request == null) throw new IllegalArgumentException("InvokeSFApiRequest was null");
+
+        if (request.getMethod() == null) throw new IllegalArgumentException("InvokeSFApiRequest GetMethod was null");
+
+        return sfe.sendRequest(request.getMethod(), request.getParameters(), Object.class, Object.class);
+
     }
 }

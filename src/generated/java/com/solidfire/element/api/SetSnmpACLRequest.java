@@ -18,57 +18,53 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "SetSnmpACL" API Service call.
+ * SetSnmpACLRequest  
  **/
-public class SetSnmpACLRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1998404382L;
+public class SetSnmpACLRequest implements Serializable {
 
-    @SerializedName("networks") private final SnmpNetwork[] networks;
-    @SerializedName("usmUsers") private final SnmpV3UsmUser[] usmUsers;
+    public static final long serialVersionUID = 6271612792860104518L;
+    @SerializedName("networks") private SnmpNetwork[] networks;
+    @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
 
-    /**
-     * The Request object for the "SetSnmpACL" API Service call.
-     * @param networks [required] List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible "networks" values. REQUIRED if SNMP v# is disabled.
-     * @param usmUsers [required] List of users and the type of access they have to the SNMP servers running on the cluster nodes. REQUIRED if SNMP v3 is enabled.
-     * @since 8.0
-     **/
-    @Since("8.0")
-    public SetSnmpACLRequest(SnmpNetwork[] networks, SnmpV3UsmUser[] usmUsers) {
+    // empty constructor
+    @Since("7.0")
+    public SetSnmpACLRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public SetSnmpACLRequest(
+        SnmpNetwork[] networks,
+        SnmpV3UsmUser[] usmUsers
+    )
+    {
         this.networks = networks;
         this.usmUsers = usmUsers;
     }
 
-
-    /**
+    /** 
      * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible "networks" values. REQUIRED if SNMP v# is disabled.
      **/
-    public SnmpNetwork[] getNetworks() {
-        return this.networks;
+    public SnmpNetwork[] getNetworks() { return this.networks; }
+    public void setNetworks(SnmpNetwork[] networks) { 
+        this.networks = networks;
     }
-
-    /**
+    /** 
      * List of users and the type of access they have to the SNMP servers running on the cluster nodes. REQUIRED if SNMP v3 is enabled.
      **/
-    public SnmpV3UsmUser[] getUsmUsers() {
-        return this.usmUsers;
+    public SnmpV3UsmUser[] getUsmUsers() { return this.usmUsers; }
+    public void setUsmUsers(SnmpV3UsmUser[] usmUsers) { 
+        this.usmUsers = usmUsers;
     }
 
     @Override
@@ -77,17 +73,24 @@ public class SetSnmpACLRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetSnmpACLRequest that = (SetSnmpACLRequest) o;
-        
 
-        return Objects.deepEquals( networks , that.networks )
-            && Objects.deepEquals( usmUsers , that.usmUsers );
+        return 
+            Arrays.equals(networks, that.networks) && 
+            Arrays.equals(usmUsers, that.usmUsers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( networks, usmUsers );
+        return Objects.hash( (Object[])networks,(Object[])usmUsers );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("networks", networks);
+        map.put("usmUsers", usmUsers);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +98,7 @@ public class SetSnmpACLRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" networks : ").append(Arrays.toString(networks)).append(",");
-        sb.append(" usmUsers : ").append(Arrays.toString(usmUsers));
+        sb.append(" usmUsers : ").append(Arrays.toString(usmUsers)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +124,7 @@ public class SetSnmpACLRequest  implements Serializable  {
         public SetSnmpACLRequest build() {
             return new SetSnmpACLRequest (
                          this.networks,
-                         this.usmUsers            );
+                         this.usmUsers);
         }
 
         private SetSnmpACLRequest.Builder buildFrom(final SetSnmpACLRequest req) {
@@ -142,5 +145,4 @@ public class SetSnmpACLRequest  implements Serializable  {
         }
 
     }
-
 }

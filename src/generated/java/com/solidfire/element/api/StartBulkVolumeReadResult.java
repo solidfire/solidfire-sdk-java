@@ -18,67 +18,63 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "StartBulkVolumeRead" API Service call.
+ * StartBulkVolumeReadResult  
  **/
-public class StartBulkVolumeReadResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1212553501L;
+public class StartBulkVolumeReadResult implements Serializable {
 
-    @SerializedName("asyncHandle") private final Long asyncHandle;
-    @SerializedName("key") private final String key;
-    @SerializedName("url") private final String url;
+    public static final long serialVersionUID = -203576879162436176L;
+    @SerializedName("asyncHandle") private Long asyncHandle;
+    @SerializedName("key") private String key;
+    @SerializedName("url") private String url;
 
-    /**
-     * The object returned by the "StartBulkVolumeRead" API Service call.
-     * @param asyncHandle [required] ID of the async process to be checked for completion.
-     * @param key [required] Opaque key uniquely identifying the session.
-     * @param url [required] URL to access the node's web server
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public StartBulkVolumeReadResult(Long asyncHandle, String key, String url) {
+    public StartBulkVolumeReadResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public StartBulkVolumeReadResult(
+        Long asyncHandle,
+        String key,
+        String url
+    )
+    {
         this.asyncHandle = asyncHandle;
         this.key = key;
         this.url = url;
     }
 
-
-    /**
+    /** 
      * ID of the async process to be checked for completion.
      **/
-    public Long getAsyncHandle() {
-        return this.asyncHandle;
+    public Long getAsyncHandle() { return this.asyncHandle; }
+    public void setAsyncHandle(Long asyncHandle) { 
+        this.asyncHandle = asyncHandle;
     }
-
-    /**
+    /** 
      * Opaque key uniquely identifying the session.
      **/
-    public String getKey() {
-        return this.key;
+    public String getKey() { return this.key; }
+    public void setKey(String key) { 
+        this.key = key;
     }
-
-    /**
+    /** 
      * URL to access the node's web server
      **/
-    public String getUrl() {
-        return this.url;
+    public String getUrl() { return this.url; }
+    public void setUrl(String url) { 
+        this.url = url;
     }
 
     @Override
@@ -87,18 +83,26 @@ public class StartBulkVolumeReadResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         StartBulkVolumeReadResult that = (StartBulkVolumeReadResult) o;
-        
 
-        return Objects.equals( asyncHandle , that.asyncHandle )
-            && Objects.equals( key , that.key )
-            && Objects.equals( url , that.url );
+        return 
+            Objects.equals(asyncHandle, that.asyncHandle) && 
+            Objects.equals(key, that.key) && 
+            Objects.equals(url, that.url);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( asyncHandle, key, url );
+        return Objects.hash( asyncHandle,key,url );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("asyncHandle", asyncHandle);
+        map.put("key", key);
+        map.put("url", url);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -107,7 +111,7 @@ public class StartBulkVolumeReadResult  implements Serializable  {
 
         sb.append(" asyncHandle : ").append(asyncHandle).append(",");
         sb.append(" key : ").append(key).append(",");
-        sb.append(" url : ").append(url);
+        sb.append(" url : ").append(url).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -135,7 +139,7 @@ public class StartBulkVolumeReadResult  implements Serializable  {
             return new StartBulkVolumeReadResult (
                          this.asyncHandle,
                          this.key,
-                         this.url            );
+                         this.url);
         }
 
         private StartBulkVolumeReadResult.Builder buildFrom(final StartBulkVolumeReadResult req) {
@@ -162,5 +166,4 @@ public class StartBulkVolumeReadResult  implements Serializable  {
         }
 
     }
-
 }

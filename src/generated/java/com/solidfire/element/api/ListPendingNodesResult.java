@@ -18,43 +18,42 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListPendingNodes" API Service call.
+ * ListPendingNodesResult  
  **/
-public class ListPendingNodesResult  implements Serializable  {
 
-    private static final long serialVersionUID = 2008031949L;
+public class ListPendingNodesResult implements Serializable {
 
-    @SerializedName("pendingNodes") private final PendingNode[] pendingNodes;
+    public static final long serialVersionUID = 3491544079989980229L;
+    @SerializedName("pendingNodes") private PendingNode[] pendingNodes;
 
-    /**
-     * The object returned by the "ListPendingNodes" API Service call.
-     * @param pendingNodes [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListPendingNodesResult(PendingNode[] pendingNodes) {
+    public ListPendingNodesResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListPendingNodesResult(
+        PendingNode[] pendingNodes
+    )
+    {
         this.pendingNodes = pendingNodes;
     }
 
-    public PendingNode[] getPendingNodes() {
-        return this.pendingNodes;
+    /** 
+     **/
+    public PendingNode[] getPendingNodes() { return this.pendingNodes; }
+    public void setPendingNodes(PendingNode[] pendingNodes) { 
+        this.pendingNodes = pendingNodes;
     }
 
     @Override
@@ -63,23 +62,29 @@ public class ListPendingNodesResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListPendingNodesResult that = (ListPendingNodesResult) o;
-        
 
-        return Objects.deepEquals( pendingNodes , that.pendingNodes );
+        return 
+            Arrays.equals(pendingNodes, that.pendingNodes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) pendingNodes );
+        return Objects.hash( (Object[])pendingNodes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("pendingNodes", pendingNodes);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" pendingNodes : ").append(Arrays.toString(pendingNodes));
+        sb.append(" pendingNodes : ").append(Arrays.toString(pendingNodes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,7 +108,7 @@ public class ListPendingNodesResult  implements Serializable  {
 
         public ListPendingNodesResult build() {
             return new ListPendingNodesResult (
-                         this.pendingNodes            );
+                         this.pendingNodes);
         }
 
         private ListPendingNodesResult.Builder buildFrom(final ListPendingNodesResult req) {
@@ -118,5 +123,4 @@ public class ListPendingNodesResult  implements Serializable  {
         }
 
     }
-
 }

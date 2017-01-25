@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListUtilities" API Service call.
+ * ListUtilitiesResult  
  **/
-public class ListUtilitiesResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1625897097L;
+public class ListUtilitiesResult implements Serializable {
 
-    @SerializedName("utilities") private final String[] utilities;
+    public static final long serialVersionUID = 7811487745346679708L;
+    @SerializedName("utilities") private String[] utilities;
 
-    /**
-     * The object returned by the "ListUtilities" API Service call.
-     * @param utilities [required] List of utilities currently available to run on the node.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListUtilitiesResult(String[] utilities) {
+    public ListUtilitiesResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListUtilitiesResult(
+        String[] utilities
+    )
+    {
         this.utilities = utilities;
     }
 
-
-    /**
+    /** 
      * List of utilities currently available to run on the node.
      **/
-    public String[] getUtilities() {
-        return this.utilities;
+    public String[] getUtilities() { return this.utilities; }
+    public void setUtilities(String[] utilities) { 
+        this.utilities = utilities;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class ListUtilitiesResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListUtilitiesResult that = (ListUtilitiesResult) o;
-        
 
-        return Objects.deepEquals( utilities , that.utilities );
+        return 
+            Arrays.equals(utilities, that.utilities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) utilities );
+        return Objects.hash( (Object[])utilities );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("utilities", utilities);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" utilities : ").append(Arrays.toString(utilities));
+        sb.append(" utilities : ").append(Arrays.toString(utilities)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class ListUtilitiesResult  implements Serializable  {
 
         public ListUtilitiesResult build() {
             return new ListUtilitiesResult (
-                         this.utilities            );
+                         this.utilities);
         }
 
         private ListUtilitiesResult.Builder buildFrom(final ListUtilitiesResult req) {
@@ -122,5 +124,4 @@ public class ListUtilitiesResult  implements Serializable  {
         }
 
     }
-
 }

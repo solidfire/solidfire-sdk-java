@@ -18,48 +18,44 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ListVolumeStatsByVolumeAccessGroup" API Service call.
+ * ListVolumeStatsByVolumeAccessGroupRequest  
  **/
-public class ListVolumeStatsByVolumeAccessGroupRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -992778893L;
+public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
 
-    @SerializedName("volumeAccessGroups") private final Optional<Long[]> volumeAccessGroups;
+    public static final long serialVersionUID = -1261879009386913207L;
+    @SerializedName("volumeAccessGroups") private Optional<Long[]> volumeAccessGroups;
 
-    /**
-     * The Request object for the "ListVolumeStatsByVolumeAccessGroup" API Service call.
-     * @param volumeAccessGroups (optional) An array of VolumeAccessGroupIDs for which volume activity is returned.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListVolumeStatsByVolumeAccessGroupRequest(Optional<Long[]> volumeAccessGroups) {
+    public ListVolumeStatsByVolumeAccessGroupRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListVolumeStatsByVolumeAccessGroupRequest(
+        Optional<Long[]> volumeAccessGroups
+    )
+    {
         this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
     }
 
-
-    /**
+    /** 
      * An array of VolumeAccessGroupIDs for which volume activity is returned.
      * If no VolumeAccessGroupID is specified, stats for all volume access groups is returned.
      **/
-    public Optional<Long[]> getVolumeAccessGroups() {
-        return this.volumeAccessGroups;
+    public Optional<Long[]> getVolumeAccessGroups() { return this.volumeAccessGroups; }
+    public void setVolumeAccessGroups(Optional<Long[]> volumeAccessGroups) { 
+        this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
     }
 
     @Override
@@ -68,24 +64,31 @@ public class ListVolumeStatsByVolumeAccessGroupRequest  implements Serializable 
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumeStatsByVolumeAccessGroupRequest that = (ListVolumeStatsByVolumeAccessGroupRequest) o;
-        
 
-        return Objects.deepEquals( volumeAccessGroups , that.volumeAccessGroups );
+        return 
+            Objects.equals(volumeAccessGroups, that.volumeAccessGroups);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volumeAccessGroups );
+        return Objects.hash( volumeAccessGroups );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroups", volumeAccessGroups);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != volumeAccessGroups && volumeAccessGroups.isPresent())
-            sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups.get()));
+        if(null != volumeAccessGroups && volumeAccessGroups.isPresent()){
+            sb.append(" volumeAccessGroups : ").append(volumeAccessGroups).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -109,7 +112,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest  implements Serializable 
 
         public ListVolumeStatsByVolumeAccessGroupRequest build() {
             return new ListVolumeStatsByVolumeAccessGroupRequest (
-                         this.volumeAccessGroups            );
+                         this.volumeAccessGroups);
         }
 
         private ListVolumeStatsByVolumeAccessGroupRequest.Builder buildFrom(final ListVolumeStatsByVolumeAccessGroupRequest req) {
@@ -124,5 +127,4 @@ public class ListVolumeStatsByVolumeAccessGroupRequest  implements Serializable 
         }
 
     }
-
 }

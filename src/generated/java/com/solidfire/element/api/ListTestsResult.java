@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListTests" API Service call.
+ * ListTestsResult  
  **/
-public class ListTestsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 56906467L;
+public class ListTestsResult implements Serializable {
 
-    @SerializedName("tests") private final String[] tests;
+    public static final long serialVersionUID = 3886812087466529195L;
+    @SerializedName("tests") private String[] tests;
 
-    /**
-     * The object returned by the "ListTests" API Service call.
-     * @param tests [required] List of tests that can be performed on the node.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListTestsResult(String[] tests) {
+    public ListTestsResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListTestsResult(
+        String[] tests
+    )
+    {
         this.tests = tests;
     }
 
-
-    /**
+    /** 
      * List of tests that can be performed on the node.
      **/
-    public String[] getTests() {
-        return this.tests;
+    public String[] getTests() { return this.tests; }
+    public void setTests(String[] tests) { 
+        this.tests = tests;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class ListTestsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListTestsResult that = (ListTestsResult) o;
-        
 
-        return Objects.deepEquals( tests , that.tests );
+        return 
+            Arrays.equals(tests, that.tests);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) tests );
+        return Objects.hash( (Object[])tests );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("tests", tests);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" tests : ").append(Arrays.toString(tests));
+        sb.append(" tests : ").append(Arrays.toString(tests)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class ListTestsResult  implements Serializable  {
 
         public ListTestsResult build() {
             return new ListTestsResult (
-                         this.tests            );
+                         this.tests);
         }
 
         private ListTestsResult.Builder buildFrom(final ListTestsResult req) {
@@ -122,5 +124,4 @@ public class ListTestsResult  implements Serializable  {
         }
 
     }
-
 }

@@ -18,136 +18,122 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ModifyVolumeAccessGroup" API Service call.
+ * ModifyVolumeAccessGroupRequest  
  **/
-public class ModifyVolumeAccessGroupRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1476164933L;
+public class ModifyVolumeAccessGroupRequest implements Serializable {
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
-    @SerializedName("virtualNetworkID") private final Optional<Long[]> virtualNetworkID;
-    @SerializedName("virtualNetworkTags") private final Optional<Long[]> virtualNetworkTags;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("initiators") private final Optional<String[]> initiators;
-    @SerializedName("volumes") private final Optional<Long[]> volumes;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    public static final long serialVersionUID = -6230175995726808888L;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("virtualNetworkID") private Optional<Long[]> virtualNetworkID;
+    @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("initiators") private Optional<String[]> initiators;
+    @SerializedName("volumes") private Optional<Long[]> volumes;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "ModifyVolumeAccessGroup" API Service call.
-     * @param volumeAccessGroupID [required] The ID of the volume access group to modify.
-     * @param name (optional) Name of the volume access group.
-     * @param initiators (optional) List of initiators to include in the volume access group.
-     * @param volumes (optional) List of volumes to initially include in the volume access group.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ModifyVolumeAccessGroupRequest(Long volumeAccessGroupID, Optional<String> name, Optional<String[]> initiators, Optional<Long[]> volumes, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = (name == null) ? Optional.<String>empty() : name;
-        this.virtualNetworkTags = Optional.<Long[]>empty();
+    public ModifyVolumeAccessGroupRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyVolumeAccessGroupRequest(
+        Long volumeAccessGroupID,
+        Optional<String> name,
+        Optional<String[]> initiators,
+        Optional<Long[]> volumes,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.volumeAccessGroupID = volumeAccessGroupID;
-        this.virtualNetworkID = Optional.<Long[]>empty();
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
     }
-
-    /**
-     * The Request object for the "ModifyVolumeAccessGroup" API Service call.
-     * @param volumeAccessGroupID [required] The ID of the volume access group to modify.
-     * @param virtualNetworkID (optional) The ID of the SolidFire Virtual Network ID to associate the volume access group with.
-     * @param virtualNetworkTags (optional) The ID of the VLAN Virtual Network Tag to associate the volume access group with.
-     * @param name (optional) Name of the volume access group.
-     * @param initiators (optional) List of initiators to include in the volume access group.
-     * @param volumes (optional) List of volumes to initially include in the volume access group.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 8.0
-     **/
+    // parameterized constructor
     @Since("8.0")
-    public ModifyVolumeAccessGroupRequest(Long volumeAccessGroupID, Optional<Long[]> virtualNetworkID, Optional<Long[]> virtualNetworkTags, Optional<String> name, Optional<String[]> initiators, Optional<Long[]> volumes, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = (name == null) ? Optional.<String>empty() : name;
-        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
+    public ModifyVolumeAccessGroupRequest(
+        Long volumeAccessGroupID,
+        Optional<Long[]> virtualNetworkID,
+        Optional<Long[]> virtualNetworkTags,
+        Optional<String> name,
+        Optional<String[]> initiators,
+        Optional<Long[]> volumes,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
+        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
     }
 
-
-    /**
+    /** 
      * The ID of the volume access group to modify.
      **/
-    public Long getVolumeAccessGroupID() {
-        return this.volumeAccessGroupID;
+    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+        this.volumeAccessGroupID = volumeAccessGroupID;
     }
-
-    /**
+    /** 
      * The ID of the SolidFire Virtual Network ID to associate the volume access group with.
-     * @since 8.0 
      **/
-
-    @Since("8.0")
-    public Optional<Long[]> getVirtualNetworkID() {
-        return this.virtualNetworkID;
+    public Optional<Long[]> getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(Optional<Long[]> virtualNetworkID) { 
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
     }
-
-    /**
+    /** 
      * The ID of the VLAN Virtual Network Tag to associate the volume access group with.
-     * @since 8.0 
      **/
-
-    @Since("8.0")
-    public Optional<Long[]> getVirtualNetworkTags() {
-        return this.virtualNetworkTags;
+    public Optional<Long[]> getVirtualNetworkTags() { return this.virtualNetworkTags; }
+    public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) { 
+        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
     }
-
-    /**
+    /** 
      * Name of the volume access group.
      * It is not required to be unique, but recommended.
      **/
-    public Optional<String> getName() {
-        return this.name;
+    public Optional<String> getName() { return this.name; }
+    public void setName(Optional<String> name) { 
+        this.name = (name == null) ? Optional.<String>empty() : name;
     }
-
-    /**
+    /** 
      * List of initiators to include in the volume access group.
      * If unspecified, the access group's configured initiators will not be modified.
      **/
-    public Optional<String[]> getInitiators() {
-        return this.initiators;
+    public Optional<String[]> getInitiators() { return this.initiators; }
+    public void setInitiators(Optional<String[]> initiators) { 
+        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
     }
-
-    /**
+    /** 
      * List of volumes to initially include in the volume access group.
      * If unspecified, the access group's volumes will not be modified.
      **/
-    public Optional<Long[]> getVolumes() {
-        return this.volumes;
+    public Optional<Long[]> getVolumes() { return this.volumes; }
+    public void setVolumes(Optional<Long[]> volumes) { 
+        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -156,22 +142,34 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumeAccessGroupRequest that = (ModifyVolumeAccessGroupRequest) o;
-        
 
-        return Objects.equals( volumeAccessGroupID , that.volumeAccessGroupID )
-            && Objects.deepEquals( virtualNetworkID , that.virtualNetworkID )
-            && Objects.deepEquals( virtualNetworkTags , that.virtualNetworkTags )
-            && Objects.equals( name , that.name )
-            && Objects.deepEquals( initiators , that.initiators )
-            && Objects.deepEquals( volumes , that.volumes )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
+            Objects.equals(virtualNetworkTags, that.virtualNetworkTags) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(initiators, that.initiators) && 
+            Objects.equals(volumes, that.volumes) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, virtualNetworkID, virtualNetworkTags, name, initiators, volumes, attributes );
+        return Objects.hash( volumeAccessGroupID,virtualNetworkID,virtualNetworkTags,name,initiators,volumes,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroupID", volumeAccessGroupID);
+        map.put("virtualNetworkID", virtualNetworkID);
+        map.put("virtualNetworkTags", virtualNetworkTags);
+        map.put("name", name);
+        map.put("initiators", initiators);
+        map.put("volumes", volumes);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -179,18 +177,24 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        if(null != virtualNetworkID && virtualNetworkID.isPresent())
-            sb.append(" virtualNetworkID : ").append(Arrays.toString(virtualNetworkID.get())).append(",");
-        if(null != virtualNetworkTags && virtualNetworkTags.isPresent())
-            sb.append(" virtualNetworkTags : ").append(Arrays.toString(virtualNetworkTags.get())).append(",");
-        if(null != name && name.isPresent())
-            sb.append(" name : ").append(name.get()).append(",");
-        if(null != initiators && initiators.isPresent())
-            sb.append(" initiators : ").append(Arrays.toString(initiators.get())).append(",");
-        if(null != volumes && volumes.isPresent())
-            sb.append(" volumes : ").append(Arrays.toString(volumes.get())).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        if(null != virtualNetworkID && virtualNetworkID.isPresent()){
+            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+        }
+        if(null != virtualNetworkTags && virtualNetworkTags.isPresent()){
+            sb.append(" virtualNetworkTags : ").append(virtualNetworkTags).append(",");
+        }
+        if(null != name && name.isPresent()){
+            sb.append(" name : ").append(name).append(",");
+        }
+        if(null != initiators && initiators.isPresent()){
+            sb.append(" initiators : ").append(initiators).append(",");
+        }
+        if(null != volumes && volumes.isPresent()){
+            sb.append(" volumes : ").append(volumes).append(",");
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -226,7 +230,7 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
                          this.name,
                          this.initiators,
                          this.volumes,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private ModifyVolumeAccessGroupRequest.Builder buildFrom(final ModifyVolumeAccessGroupRequest req) {
@@ -277,5 +281,4 @@ public class ModifyVolumeAccessGroupRequest  implements Serializable  {
         }
 
     }
-
 }

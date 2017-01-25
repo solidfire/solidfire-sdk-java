@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListVirtualNetworks" API Service call.
+ * ListVirtualNetworksResult  
  **/
-public class ListVirtualNetworksResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1811344176L;
+public class ListVirtualNetworksResult implements Serializable {
 
-    @SerializedName("virtualNetworks") private final VirtualNetwork[] virtualNetworks;
+    public static final long serialVersionUID = -6359844543713889614L;
+    @SerializedName("virtualNetworks") private VirtualNetwork[] virtualNetworks;
 
-    /**
-     * The object returned by the "ListVirtualNetworks" API Service call.
-     * @param virtualNetworks [required] Object containing virtual network IP addresses.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListVirtualNetworksResult(VirtualNetwork[] virtualNetworks) {
+    public ListVirtualNetworksResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListVirtualNetworksResult(
+        VirtualNetwork[] virtualNetworks
+    )
+    {
         this.virtualNetworks = virtualNetworks;
     }
 
-
-    /**
+    /** 
      * Object containing virtual network IP addresses.
      **/
-    public VirtualNetwork[] getVirtualNetworks() {
-        return this.virtualNetworks;
+    public VirtualNetwork[] getVirtualNetworks() { return this.virtualNetworks; }
+    public void setVirtualNetworks(VirtualNetwork[] virtualNetworks) { 
+        this.virtualNetworks = virtualNetworks;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class ListVirtualNetworksResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualNetworksResult that = (ListVirtualNetworksResult) o;
-        
 
-        return Objects.deepEquals( virtualNetworks , that.virtualNetworks );
+        return 
+            Arrays.equals(virtualNetworks, that.virtualNetworks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) virtualNetworks );
+        return Objects.hash( (Object[])virtualNetworks );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("virtualNetworks", virtualNetworks);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" virtualNetworks : ").append(Arrays.toString(virtualNetworks));
+        sb.append(" virtualNetworks : ").append(Arrays.toString(virtualNetworks)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class ListVirtualNetworksResult  implements Serializable  {
 
         public ListVirtualNetworksResult build() {
             return new ListVirtualNetworksResult (
-                         this.virtualNetworks            );
+                         this.virtualNetworks);
         }
 
         private ListVirtualNetworksResult.Builder buildFrom(final ListVirtualNetworksResult req) {
@@ -122,5 +124,4 @@ public class ListVirtualNetworksResult  implements Serializable  {
         }
 
     }
-
 }

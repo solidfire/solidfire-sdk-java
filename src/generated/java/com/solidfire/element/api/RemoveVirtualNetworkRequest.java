@@ -18,57 +18,53 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "RemoveVirtualNetwork" API Service call.
+ * RemoveVirtualNetworkRequest  
  **/
-public class RemoveVirtualNetworkRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1351674028L;
+public class RemoveVirtualNetworkRequest implements Serializable {
 
-    @SerializedName("virtualNetworkID") private final Optional<Long> virtualNetworkID;
-    @SerializedName("virtualNetworkTag") private final Optional<Long> virtualNetworkTag;
+    public static final long serialVersionUID = -7622530625529296409L;
+    @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
+    @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
 
-    /**
-     * The Request object for the "RemoveVirtualNetwork" API Service call.
-     * @param virtualNetworkID (optional) Network ID that identifies the virtual network to remove.
-     * @param virtualNetworkTag (optional) Network Tag that identifies the virtual network to remove.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public RemoveVirtualNetworkRequest(Optional<Long> virtualNetworkID, Optional<Long> virtualNetworkTag) {
+    public RemoveVirtualNetworkRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public RemoveVirtualNetworkRequest(
+        Optional<Long> virtualNetworkID,
+        Optional<Long> virtualNetworkTag
+    )
+    {
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
         this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
     }
 
-
-    /**
+    /** 
      * Network ID that identifies the virtual network to remove.
      **/
-    public Optional<Long> getVirtualNetworkID() {
-        return this.virtualNetworkID;
+    public Optional<Long> getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(Optional<Long> virtualNetworkID) { 
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
     }
-
-    /**
+    /** 
      * Network Tag that identifies the virtual network to remove.
      **/
-    public Optional<Long> getVirtualNetworkTag() {
-        return this.virtualNetworkTag;
+    public Optional<Long> getVirtualNetworkTag() { return this.virtualNetworkTag; }
+    public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) { 
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
     }
 
     @Override
@@ -77,27 +73,36 @@ public class RemoveVirtualNetworkRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveVirtualNetworkRequest that = (RemoveVirtualNetworkRequest) o;
-        
 
-        return Objects.equals( virtualNetworkID , that.virtualNetworkID )
-            && Objects.equals( virtualNetworkTag , that.virtualNetworkTag );
+        return 
+            Objects.equals(virtualNetworkID, that.virtualNetworkID) && 
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualNetworkID, virtualNetworkTag );
+        return Objects.hash( virtualNetworkID,virtualNetworkTag );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("virtualNetworkID", virtualNetworkID);
+        map.put("virtualNetworkTag", virtualNetworkTag);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != virtualNetworkID && virtualNetworkID.isPresent())
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID.get()).append(",");
-        if(null != virtualNetworkTag && virtualNetworkTag.isPresent())
-            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag.get());
+        if(null != virtualNetworkID && virtualNetworkID.isPresent()){
+            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+        }
+        if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
+            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -123,7 +128,7 @@ public class RemoveVirtualNetworkRequest  implements Serializable  {
         public RemoveVirtualNetworkRequest build() {
             return new RemoveVirtualNetworkRequest (
                          this.virtualNetworkID,
-                         this.virtualNetworkTag            );
+                         this.virtualNetworkTag);
         }
 
         private RemoveVirtualNetworkRequest.Builder buildFrom(final RemoveVirtualNetworkRequest req) {
@@ -144,5 +149,4 @@ public class RemoveVirtualNetworkRequest  implements Serializable  {
         }
 
     }
-
 }

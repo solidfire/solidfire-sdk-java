@@ -18,77 +18,73 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ModifyClusterAdmin" API Service call.
+ * ModifyClusterAdminRequest  
  **/
-public class ModifyClusterAdminRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -678455022L;
+public class ModifyClusterAdminRequest implements Serializable {
 
-    @SerializedName("clusterAdminID") private final Long clusterAdminID;
-    @SerializedName("password") private final Optional<String> password;
-    @SerializedName("access") private final Optional<String[]> access;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    public static final long serialVersionUID = 8115405465052390185L;
+    @SerializedName("clusterAdminID") private Long clusterAdminID;
+    @SerializedName("password") private Optional<String> password;
+    @SerializedName("access") private Optional<String[]> access;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "ModifyClusterAdmin" API Service call.
-     * @param clusterAdminID [required] ClusterAdminID for the Cluster Admin or LDAP Cluster Admin to modify.
-     * @param password (optional) Password used to authenticate this Cluster Admin.
-     * @param access (optional) Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ModifyClusterAdminRequest(Long clusterAdminID, Optional<String> password, Optional<String[]> access, Optional<java.util.Map<String, Object>> attributes) {
+    public ModifyClusterAdminRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyClusterAdminRequest(
+        Long clusterAdminID,
+        Optional<String> password,
+        Optional<String[]> access,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.clusterAdminID = clusterAdminID;
         this.password = (password == null) ? Optional.<String>empty() : password;
         this.access = (access == null) ? Optional.<String[]>empty() : access;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
-
-    /**
+    /** 
      * ClusterAdminID for the Cluster Admin or LDAP Cluster Admin to modify.
      **/
-    public Long getClusterAdminID() {
-        return this.clusterAdminID;
+    public Long getClusterAdminID() { return this.clusterAdminID; }
+    public void setClusterAdminID(Long clusterAdminID) { 
+        this.clusterAdminID = clusterAdminID;
     }
-
-    /**
+    /** 
      * Password used to authenticate this Cluster Admin.
      **/
-    public Optional<String> getPassword() {
-        return this.password;
+    public Optional<String> getPassword() { return this.password; }
+    public void setPassword(Optional<String> password) { 
+        this.password = (password == null) ? Optional.<String>empty() : password;
     }
-
-    /**
+    /** 
      * Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
      **/
-    public Optional<String[]> getAccess() {
-        return this.access;
+    public Optional<String[]> getAccess() { return this.access; }
+    public void setAccess(Optional<String[]> access) { 
+        this.access = (access == null) ? Optional.<String[]>empty() : access;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -97,19 +93,28 @@ public class ModifyClusterAdminRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyClusterAdminRequest that = (ModifyClusterAdminRequest) o;
-        
 
-        return Objects.equals( clusterAdminID , that.clusterAdminID )
-            && Objects.equals( password , that.password )
-            && Objects.deepEquals( access , that.access )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(clusterAdminID, that.clusterAdminID) && 
+            Objects.equals(password, that.password) && 
+            Objects.equals(access, that.access) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterAdminID, password, access, attributes );
+        return Objects.hash( clusterAdminID,password,access,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterAdminID", clusterAdminID);
+        map.put("password", password);
+        map.put("access", access);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -117,12 +122,15 @@ public class ModifyClusterAdminRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
-        if(null != password && password.isPresent())
-            sb.append(" password : ").append(password.get()).append(",");
-        if(null != access && access.isPresent())
-            sb.append(" access : ").append(Arrays.toString(access.get())).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        if(null != password && password.isPresent()){
+            sb.append(" password : ").append(password).append(",");
+        }
+        if(null != access && access.isPresent()){
+            sb.append(" access : ").append(access).append(",");
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -152,7 +160,7 @@ public class ModifyClusterAdminRequest  implements Serializable  {
                          this.clusterAdminID,
                          this.password,
                          this.access,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private ModifyClusterAdminRequest.Builder buildFrom(final ModifyClusterAdminRequest req) {
@@ -185,5 +193,4 @@ public class ModifyClusterAdminRequest  implements Serializable  {
         }
 
     }
-
 }

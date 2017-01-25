@@ -18,95 +18,92 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * VolumeQOS  
  * Quality of Service (QoS) Result values are used on SolidFire volumes to provision performance expectations.
  **/
-public class VolumeQOS  implements Serializable  {
 
-    private static final long serialVersionUID = -1221769299L;
+public class VolumeQOS implements Serializable {
 
-    @SerializedName("minIOPS") private final Long minIOPS;
-    @SerializedName("maxIOPS") private final Long maxIOPS;
-    @SerializedName("burstIOPS") private final Long burstIOPS;
-    @SerializedName("burstTime") private final Long burstTime;
-    @SerializedName("curve") private final java.util.Map<String,Long> curve;
+    public static final long serialVersionUID = 677275932188527448L;
+    @SerializedName("minIOPS") private Long minIOPS;
+    @SerializedName("maxIOPS") private Long maxIOPS;
+    @SerializedName("burstIOPS") private Long burstIOPS;
+    @SerializedName("burstTime") private Long burstTime;
+    @SerializedName("curve") private java.util.Map<String,Long> curve;
 
-    /**
-     * Quality of Service (QoS) Result values are used on SolidFire volumes to provision performance expectations.
-     * @param minIOPS [required] Desired minimum 4KB IOPS to guarantee.
-     * @param maxIOPS [required] Desired maximum 4KB IOPS allowed over an extended period of time.
-     * @param burstIOPS [required] Maximum "peak" 4KB IOPS allowed for short periods of time.
-     * @param burstTime [required] The length of time burst IOPS is allowed.
-     * @param curve [required] The curve is a set of key-value pairs.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public VolumeQOS(Long minIOPS, Long maxIOPS, Long burstIOPS, Long burstTime, java.util.Map<String,Long> curve) {
-        this.curve = curve;
+    public VolumeQOS() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public VolumeQOS(
+        Long minIOPS,
+        Long maxIOPS,
+        Long burstIOPS,
+        Long burstTime,
+        java.util.Map<String,Long> curve
+    )
+    {
+        this.minIOPS = minIOPS;
+        this.maxIOPS = maxIOPS;
         this.burstIOPS = burstIOPS;
         this.burstTime = burstTime;
-        this.maxIOPS = maxIOPS;
-        this.minIOPS = minIOPS;
+        this.curve = curve;
     }
 
-
-    /**
+    /** 
      * Desired minimum 4KB IOPS to guarantee.
      * The allowed IOPS will only drop below this level if all volumes have been capped
      * at their min IOPS value and there is still insufficient performance capacity.
      **/
-    public Long getMinIOPS() {
-        return this.minIOPS;
+    public Long getMinIOPS() { return this.minIOPS; }
+    public void setMinIOPS(Long minIOPS) { 
+        this.minIOPS = minIOPS;
     }
-
-    /**
+    /** 
      * Desired maximum 4KB IOPS allowed over an extended period of time.
      **/
-    public Long getMaxIOPS() {
-        return this.maxIOPS;
+    public Long getMaxIOPS() { return this.maxIOPS; }
+    public void setMaxIOPS(Long maxIOPS) { 
+        this.maxIOPS = maxIOPS;
     }
-
-    /**
+    /** 
      * Maximum "peak" 4KB IOPS allowed for short periods of time.
      * Allows for bursts of I/O activity over the normal max IOPS value.
      **/
-    public Long getBurstIOPS() {
-        return this.burstIOPS;
+    public Long getBurstIOPS() { return this.burstIOPS; }
+    public void setBurstIOPS(Long burstIOPS) { 
+        this.burstIOPS = burstIOPS;
     }
-
-    /**
+    /** 
      * The length of time burst IOPS is allowed.
      * The value returned is represented in time units of seconds.
-     * <br/><b>Note</b>: this value is calculated by the system based on IOPS set for QoS.
+     * Note: this value is calculated by the system based on IOPS set for QoS.
      **/
-    public Long getBurstTime() {
-        return this.burstTime;
+    public Long getBurstTime() { return this.burstTime; }
+    public void setBurstTime(Long burstTime) { 
+        this.burstTime = burstTime;
     }
-
-    /**
+    /** 
      * The curve is a set of key-value pairs.
      * The keys are I/O sizes in bytes.
      * The values represent the cost performing an IOP at a specific I/O size.
      * The curve is calculated relative to a 4096 byte operation set at 100 IOPS.
      **/
-    public java.util.Map<String,Long> getCurve() {
-        return this.curve;
+    public java.util.Map<String,Long> getCurve() { return this.curve; }
+    public void setCurve(java.util.Map<String,Long> curve) { 
+        this.curve = curve;
     }
 
     @Override
@@ -115,20 +112,30 @@ public class VolumeQOS  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         VolumeQOS that = (VolumeQOS) o;
-        
 
-        return Objects.equals( minIOPS , that.minIOPS )
-            && Objects.equals( maxIOPS , that.maxIOPS )
-            && Objects.equals( burstIOPS , that.burstIOPS )
-            && Objects.equals( burstTime , that.burstTime )
-            && Objects.equals( curve , that.curve );
+        return 
+            Objects.equals(minIOPS, that.minIOPS) && 
+            Objects.equals(maxIOPS, that.maxIOPS) && 
+            Objects.equals(burstIOPS, that.burstIOPS) && 
+            Objects.equals(burstTime, that.burstTime) && 
+            Objects.equals(curve, that.curve);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( minIOPS, maxIOPS, burstIOPS, burstTime, curve );
+        return Objects.hash( minIOPS,maxIOPS,burstIOPS,burstTime,curve );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("minIOPS", minIOPS);
+        map.put("maxIOPS", maxIOPS);
+        map.put("burstIOPS", burstIOPS);
+        map.put("burstTime", burstTime);
+        map.put("curve", curve);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -139,7 +146,7 @@ public class VolumeQOS  implements Serializable  {
         sb.append(" maxIOPS : ").append(maxIOPS).append(",");
         sb.append(" burstIOPS : ").append(burstIOPS).append(",");
         sb.append(" burstTime : ").append(burstTime).append(",");
-        sb.append(" curve : ").append(curve);
+        sb.append(" curve : ").append(curve).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -171,7 +178,7 @@ public class VolumeQOS  implements Serializable  {
                          this.maxIOPS,
                          this.burstIOPS,
                          this.burstTime,
-                         this.curve            );
+                         this.curve);
         }
 
         private VolumeQOS.Builder buildFrom(final VolumeQOS req) {
@@ -210,5 +217,4 @@ public class VolumeQOS  implements Serializable  {
         }
 
     }
-
 }

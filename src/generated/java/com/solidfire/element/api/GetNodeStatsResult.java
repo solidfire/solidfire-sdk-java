@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetNodeStats" API Service call.
+ * GetNodeStatsResult  
  **/
-public class GetNodeStatsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 914759763L;
+public class GetNodeStatsResult implements Serializable {
 
-    @SerializedName("nodeStats") private final NodeStatsInfo nodeStats;
+    public static final long serialVersionUID = -5622700998994717132L;
+    @SerializedName("nodeStats") private NodeStatsInfo nodeStats;
 
-    /**
-     * The object returned by the "GetNodeStats" API Service call.
-     * @param nodeStats [required] Node activity information.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetNodeStatsResult(NodeStatsInfo nodeStats) {
+    public GetNodeStatsResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetNodeStatsResult(
+        NodeStatsInfo nodeStats
+    )
+    {
         this.nodeStats = nodeStats;
     }
 
-
-    /**
+    /** 
      * Node activity information.
      **/
-    public NodeStatsInfo getNodeStats() {
-        return this.nodeStats;
+    public NodeStatsInfo getNodeStats() { return this.nodeStats; }
+    public void setNodeStats(NodeStatsInfo nodeStats) { 
+        this.nodeStats = nodeStats;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class GetNodeStatsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetNodeStatsResult that = (GetNodeStatsResult) o;
-        
 
-        return Objects.equals( nodeStats , that.nodeStats );
+        return 
+            Objects.equals(nodeStats, that.nodeStats);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodeStats );
+        return Objects.hash( nodeStats );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodeStats", nodeStats);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodeStats : ").append(nodeStats);
+        sb.append(" nodeStats : ").append(nodeStats).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class GetNodeStatsResult  implements Serializable  {
 
         public GetNodeStatsResult build() {
             return new GetNodeStatsResult (
-                         this.nodeStats            );
+                         this.nodeStats);
         }
 
         private GetNodeStatsResult.Builder buildFrom(final GetNodeStatsResult req) {
@@ -122,5 +124,4 @@ public class GetNodeStatsResult  implements Serializable  {
         }
 
     }
-
 }

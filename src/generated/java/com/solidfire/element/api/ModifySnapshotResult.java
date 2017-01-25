@@ -18,50 +18,41 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ModifySnapshot" API Service call.
+ * ModifySnapshotResult  
  **/
-public class ModifySnapshotResult  implements Serializable  {
 
-    private static final long serialVersionUID = -93547540L;
+public class ModifySnapshotResult implements Serializable {
 
+    public static final long serialVersionUID = -406933401919485379L;
 
-    /**
-     * The object returned by the "ModifySnapshot" API Service call.
-     * @since 8.0
-     **/
+    // empty constructor
     @Since("8.0")
-    public ModifySnapshotResult() {
 
-    }
+    public ModifySnapshotResult() {}
 
+    
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
+        
         return true;
     }
 
     @Override
     public int hashCode() {
+
         return this.getClass().hashCode();
     }
 

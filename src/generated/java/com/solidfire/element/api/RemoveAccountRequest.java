@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "RemoveAccount" API Service call.
+ * RemoveAccountRequest  
  **/
-public class RemoveAccountRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1756353743L;
+public class RemoveAccountRequest implements Serializable {
 
-    @SerializedName("accountID") private final Long accountID;
+    public static final long serialVersionUID = -6926282083277233060L;
+    @SerializedName("accountID") private Long accountID;
 
-    /**
-     * The Request object for the "RemoveAccount" API Service call.
-     * @param accountID [required] AccountID for the account to remove.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public RemoveAccountRequest(Long accountID) {
+    public RemoveAccountRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public RemoveAccountRequest(
+        Long accountID
+    )
+    {
         this.accountID = accountID;
     }
 
-
-    /**
+    /** 
      * AccountID for the account to remove.
      **/
-    public Long getAccountID() {
-        return this.accountID;
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
+        this.accountID = accountID;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class RemoveAccountRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveAccountRequest that = (RemoveAccountRequest) o;
-        
 
-        return Objects.equals( accountID , that.accountID );
+        return 
+            Objects.equals(accountID, that.accountID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) accountID );
+        return Objects.hash( accountID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("accountID", accountID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" accountID : ").append(accountID);
+        sb.append(" accountID : ").append(accountID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class RemoveAccountRequest  implements Serializable  {
 
         public RemoveAccountRequest build() {
             return new RemoveAccountRequest (
-                         this.accountID            );
+                         this.accountID);
         }
 
         private RemoveAccountRequest.Builder buildFrom(final RemoveAccountRequest req) {
@@ -122,5 +124,4 @@ public class RemoveAccountRequest  implements Serializable  {
         }
 
     }
-
 }

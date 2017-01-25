@@ -18,67 +18,64 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * VolumeAccessGroupLunAssignments  
  * VolumeAccessGroup ID and Lun to be assigned to all volumes within it.
  **/
-public class VolumeAccessGroupLunAssignments  implements Serializable  {
 
-    private static final long serialVersionUID = 568929847L;
+public class VolumeAccessGroupLunAssignments implements Serializable {
 
-    @SerializedName("volumeAccessGroupID") private final Long volumeAccessGroupID;
-    @SerializedName("lunAssignments") private final LunAssignment[] lunAssignments;
-    @SerializedName("deletedLunAssignments") private final LunAssignment[] deletedLunAssignments;
+    public static final long serialVersionUID = -29908714038898689L;
+    @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
+    @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
+    @SerializedName("deletedLunAssignments") private LunAssignment[] deletedLunAssignments;
 
-    /**
-     * VolumeAccessGroup ID and Lun to be assigned to all volumes within it.
-     * @param volumeAccessGroupID [required] Unique volume access group ID for which the LUN assignments will be modified.
-     * @param lunAssignments [required] The volume IDs with assigned LUN values.
-     * @param deletedLunAssignments [required] The volume IDs with deleted LUN values.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public VolumeAccessGroupLunAssignments(Long volumeAccessGroupID, LunAssignment[] lunAssignments, LunAssignment[] deletedLunAssignments) {
+    public VolumeAccessGroupLunAssignments() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public VolumeAccessGroupLunAssignments(
+        Long volumeAccessGroupID,
+        LunAssignment[] lunAssignments,
+        LunAssignment[] deletedLunAssignments
+    )
+    {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.lunAssignments = lunAssignments;
         this.deletedLunAssignments = deletedLunAssignments;
     }
 
-
-    /**
+    /** 
      * Unique volume access group ID for which the LUN assignments will be modified.
      **/
-    public Long getVolumeAccessGroupID() {
-        return this.volumeAccessGroupID;
+    public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+    public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
+        this.volumeAccessGroupID = volumeAccessGroupID;
     }
-
-    /**
+    /** 
      * The volume IDs with assigned LUN values.
      **/
-    public LunAssignment[] getLunAssignments() {
-        return this.lunAssignments;
+    public LunAssignment[] getLunAssignments() { return this.lunAssignments; }
+    public void setLunAssignments(LunAssignment[] lunAssignments) { 
+        this.lunAssignments = lunAssignments;
     }
-
-    /**
+    /** 
      * The volume IDs with deleted LUN values.
      **/
-    public LunAssignment[] getDeletedLunAssignments() {
-        return this.deletedLunAssignments;
+    public LunAssignment[] getDeletedLunAssignments() { return this.deletedLunAssignments; }
+    public void setDeletedLunAssignments(LunAssignment[] deletedLunAssignments) { 
+        this.deletedLunAssignments = deletedLunAssignments;
     }
 
     @Override
@@ -87,18 +84,26 @@ public class VolumeAccessGroupLunAssignments  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         VolumeAccessGroupLunAssignments that = (VolumeAccessGroupLunAssignments) o;
-        
 
-        return Objects.equals( volumeAccessGroupID , that.volumeAccessGroupID )
-            && Objects.deepEquals( lunAssignments , that.lunAssignments )
-            && Objects.deepEquals( deletedLunAssignments , that.deletedLunAssignments );
+        return 
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
+            Arrays.equals(lunAssignments, that.lunAssignments) && 
+            Arrays.equals(deletedLunAssignments, that.deletedLunAssignments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID, lunAssignments, deletedLunAssignments );
+        return Objects.hash( volumeAccessGroupID,(Object[])lunAssignments,(Object[])deletedLunAssignments );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroupID", volumeAccessGroupID);
+        map.put("lunAssignments", lunAssignments);
+        map.put("deletedLunAssignments", deletedLunAssignments);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -107,7 +112,7 @@ public class VolumeAccessGroupLunAssignments  implements Serializable  {
 
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
         sb.append(" lunAssignments : ").append(Arrays.toString(lunAssignments)).append(",");
-        sb.append(" deletedLunAssignments : ").append(Arrays.toString(deletedLunAssignments));
+        sb.append(" deletedLunAssignments : ").append(Arrays.toString(deletedLunAssignments)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -135,7 +140,7 @@ public class VolumeAccessGroupLunAssignments  implements Serializable  {
             return new VolumeAccessGroupLunAssignments (
                          this.volumeAccessGroupID,
                          this.lunAssignments,
-                         this.deletedLunAssignments            );
+                         this.deletedLunAssignments);
         }
 
         private VolumeAccessGroupLunAssignments.Builder buildFrom(final VolumeAccessGroupLunAssignments req) {
@@ -162,5 +167,4 @@ public class VolumeAccessGroupLunAssignments  implements Serializable  {
         }
 
     }
-
 }

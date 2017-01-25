@@ -18,57 +18,54 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * GroupCloneVolumeMember  
  * Represents the relationship between the source Volume and cloned Volume IDs.
  **/
-public class GroupCloneVolumeMember  implements Serializable  {
 
-    private static final long serialVersionUID = -1785945131L;
+public class GroupCloneVolumeMember implements Serializable {
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("srcVolumeID") private final Long srcVolumeID;
+    public static final long serialVersionUID = 5585070868284571306L;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("srcVolumeID") private Long srcVolumeID;
 
-    /**
-     * Represents the relationship between the source Volume and cloned Volume IDs.
-     * @param volumeID [required] The VolumeID of the cloned volume.
-     * @param srcVolumeID [required] The VolumeID of the source volume.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GroupCloneVolumeMember(Long volumeID, Long srcVolumeID) {
+    public GroupCloneVolumeMember() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GroupCloneVolumeMember(
+        Long volumeID,
+        Long srcVolumeID
+    )
+    {
         this.volumeID = volumeID;
         this.srcVolumeID = srcVolumeID;
     }
 
-
-    /**
+    /** 
      * The VolumeID of the cloned volume.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
     }
-
-    /**
+    /** 
      * The VolumeID of the source volume.
      **/
-    public Long getSrcVolumeID() {
-        return this.srcVolumeID;
+    public Long getSrcVolumeID() { return this.srcVolumeID; }
+    public void setSrcVolumeID(Long srcVolumeID) { 
+        this.srcVolumeID = srcVolumeID;
     }
 
     @Override
@@ -77,17 +74,24 @@ public class GroupCloneVolumeMember  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GroupCloneVolumeMember that = (GroupCloneVolumeMember) o;
-        
 
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( srcVolumeID , that.srcVolumeID );
+        return 
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(srcVolumeID, that.srcVolumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, srcVolumeID );
+        return Objects.hash( volumeID,srcVolumeID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        map.put("srcVolumeID", srcVolumeID);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +99,7 @@ public class GroupCloneVolumeMember  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" srcVolumeID : ").append(srcVolumeID);
+        sb.append(" srcVolumeID : ").append(srcVolumeID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +125,7 @@ public class GroupCloneVolumeMember  implements Serializable  {
         public GroupCloneVolumeMember build() {
             return new GroupCloneVolumeMember (
                          this.volumeID,
-                         this.srcVolumeID            );
+                         this.srcVolumeID);
         }
 
         private GroupCloneVolumeMember.Builder buildFrom(final GroupCloneVolumeMember req) {
@@ -142,5 +146,4 @@ public class GroupCloneVolumeMember  implements Serializable  {
         }
 
     }
-
 }

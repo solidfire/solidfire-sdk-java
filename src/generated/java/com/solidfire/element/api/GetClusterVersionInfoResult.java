@@ -18,61 +18,69 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetClusterVersionInfo" API Service call.
+ * GetClusterVersionInfoResult  
  **/
-public class GetClusterVersionInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1444163647L;
+public class GetClusterVersionInfoResult implements Serializable {
 
-    @SerializedName("clusterAPIVersion") private final String clusterAPIVersion;
-    @SerializedName("clusterVersion") private final String clusterVersion;
-    @SerializedName("clusterVersionInfo") private final ClusterVersionInfo[] clusterVersionInfo;
-    @SerializedName("softwareVersionInfo") private final SoftwareVersionInfo softwareVersionInfo;
+    public static final long serialVersionUID = 7467984518886463810L;
+    @SerializedName("clusterAPIVersion") private String clusterAPIVersion;
+    @SerializedName("clusterVersion") private String clusterVersion;
+    @SerializedName("clusterVersionInfo") private ClusterVersionInfo[] clusterVersionInfo;
+    @SerializedName("softwareVersionInfo") private SoftwareVersionInfo softwareVersionInfo;
 
-    /**
-     * The object returned by the "GetClusterVersionInfo" API Service call.
-     * @param clusterAPIVersion [required] 
-     * @param clusterVersion [required] 
-     * @param clusterVersionInfo [required] 
-     * @param softwareVersionInfo [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetClusterVersionInfoResult(String clusterAPIVersion, String clusterVersion, ClusterVersionInfo[] clusterVersionInfo, SoftwareVersionInfo softwareVersionInfo) {
+    public GetClusterVersionInfoResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetClusterVersionInfoResult(
+        String clusterAPIVersion,
+        String clusterVersion,
+        ClusterVersionInfo[] clusterVersionInfo,
+        SoftwareVersionInfo softwareVersionInfo
+    )
+    {
         this.clusterAPIVersion = clusterAPIVersion;
         this.clusterVersion = clusterVersion;
         this.clusterVersionInfo = clusterVersionInfo;
         this.softwareVersionInfo = softwareVersionInfo;
     }
 
-    public String getClusterAPIVersion() {
-        return this.clusterAPIVersion;
+    /** 
+     **/
+    public String getClusterAPIVersion() { return this.clusterAPIVersion; }
+    public void setClusterAPIVersion(String clusterAPIVersion) { 
+        this.clusterAPIVersion = clusterAPIVersion;
     }
-    public String getClusterVersion() {
-        return this.clusterVersion;
+    /** 
+     **/
+    public String getClusterVersion() { return this.clusterVersion; }
+    public void setClusterVersion(String clusterVersion) { 
+        this.clusterVersion = clusterVersion;
     }
-    public ClusterVersionInfo[] getClusterVersionInfo() {
-        return this.clusterVersionInfo;
+    /** 
+     **/
+    public ClusterVersionInfo[] getClusterVersionInfo() { return this.clusterVersionInfo; }
+    public void setClusterVersionInfo(ClusterVersionInfo[] clusterVersionInfo) { 
+        this.clusterVersionInfo = clusterVersionInfo;
     }
-    public SoftwareVersionInfo getSoftwareVersionInfo() {
-        return this.softwareVersionInfo;
+    /** 
+     **/
+    public SoftwareVersionInfo getSoftwareVersionInfo() { return this.softwareVersionInfo; }
+    public void setSoftwareVersionInfo(SoftwareVersionInfo softwareVersionInfo) { 
+        this.softwareVersionInfo = softwareVersionInfo;
     }
 
     @Override
@@ -81,19 +89,28 @@ public class GetClusterVersionInfoResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterVersionInfoResult that = (GetClusterVersionInfoResult) o;
-        
 
-        return Objects.equals( clusterAPIVersion , that.clusterAPIVersion )
-            && Objects.equals( clusterVersion , that.clusterVersion )
-            && Objects.deepEquals( clusterVersionInfo , that.clusterVersionInfo )
-            && Objects.equals( softwareVersionInfo , that.softwareVersionInfo );
+        return 
+            Objects.equals(clusterAPIVersion, that.clusterAPIVersion) && 
+            Objects.equals(clusterVersion, that.clusterVersion) && 
+            Arrays.equals(clusterVersionInfo, that.clusterVersionInfo) && 
+            Objects.equals(softwareVersionInfo, that.softwareVersionInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterAPIVersion, clusterVersion, clusterVersionInfo, softwareVersionInfo );
+        return Objects.hash( clusterAPIVersion,clusterVersion,(Object[])clusterVersionInfo,softwareVersionInfo );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterAPIVersion", clusterAPIVersion);
+        map.put("clusterVersion", clusterVersion);
+        map.put("clusterVersionInfo", clusterVersionInfo);
+        map.put("softwareVersionInfo", softwareVersionInfo);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -103,7 +120,7 @@ public class GetClusterVersionInfoResult  implements Serializable  {
         sb.append(" clusterAPIVersion : ").append(clusterAPIVersion).append(",");
         sb.append(" clusterVersion : ").append(clusterVersion).append(",");
         sb.append(" clusterVersionInfo : ").append(Arrays.toString(clusterVersionInfo)).append(",");
-        sb.append(" softwareVersionInfo : ").append(softwareVersionInfo);
+        sb.append(" softwareVersionInfo : ").append(softwareVersionInfo).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -133,7 +150,7 @@ public class GetClusterVersionInfoResult  implements Serializable  {
                          this.clusterAPIVersion,
                          this.clusterVersion,
                          this.clusterVersionInfo,
-                         this.softwareVersionInfo            );
+                         this.softwareVersionInfo);
         }
 
         private GetClusterVersionInfoResult.Builder buildFrom(final GetClusterVersionInfoResult req) {
@@ -166,5 +183,4 @@ public class GetClusterVersionInfoResult  implements Serializable  {
         }
 
     }
-
 }

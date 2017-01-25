@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetVirtualVolumeCount" API Service call.
+ * GetVirtualVolumeCountResult  
  **/
-public class GetVirtualVolumeCountResult  implements Serializable  {
 
-    private static final long serialVersionUID = -876061185L;
+public class GetVirtualVolumeCountResult implements Serializable {
 
+    public static final long serialVersionUID = 4303128271536919448L;
     @SerializedName("count") private Long count;
 
-    /**
-     * The object returned by the "GetVirtualVolumeCount" API Service call.
-     * @param count [required] The number of virtual volumes currently in the system.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetVirtualVolumeCountResult(Long count) {
-        this.count = count;
-    }
-
-    
-    /**
-     * The object returned by the "GetVirtualVolumeCount" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetVirtualVolumeCountResult() {}
 
-
-    /**
-     * The number of virtual volumes currently in the system.
-     **/
-    public Long getCount() {
-        return this.count;
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetVirtualVolumeCountResult(
+        Long count
+    )
+    {
+        this.count = count;
     }
 
-    public void setCount(Long count) {
+    /** 
+     * The number of virtual volumes currently in the system.
+     **/
+    public Long getCount() { return this.count; }
+    public void setCount(Long count) { 
         this.count = count;
     }
 
@@ -80,23 +63,29 @@ public class GetVirtualVolumeCountResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetVirtualVolumeCountResult that = (GetVirtualVolumeCountResult) o;
-        
 
-        return Objects.equals( count , that.count );
+        return 
+            Objects.equals(count, that.count);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) count );
+        return Objects.hash( count );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("count", count);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" count : ").append(count);
+        sb.append(" count : ").append(count).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -120,7 +109,7 @@ public class GetVirtualVolumeCountResult  implements Serializable  {
 
         public GetVirtualVolumeCountResult build() {
             return new GetVirtualVolumeCountResult (
-                         this.count            );
+                         this.count);
         }
 
         private GetVirtualVolumeCountResult.Builder buildFrom(final GetVirtualVolumeCountResult req) {
@@ -135,5 +124,4 @@ public class GetVirtualVolumeCountResult  implements Serializable  {
         }
 
     }
-
 }

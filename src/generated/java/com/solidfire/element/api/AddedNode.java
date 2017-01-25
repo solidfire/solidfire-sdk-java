@@ -18,49 +18,51 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * AddedNode  
  **/
-public class AddedNode  implements Serializable  {
 
-    private static final long serialVersionUID = -457533113L;
+public class AddedNode implements Serializable {
 
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("pendingNodeID") private final Long pendingNodeID;
+    public static final long serialVersionUID = 7770473146706377395L;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("pendingNodeID") private Long pendingNodeID;
 
-    /**
-     * 
-     * @param nodeID [required] 
-     * @param pendingNodeID [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public AddedNode(Long nodeID, Long pendingNodeID) {
+    public AddedNode() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public AddedNode(
+        Long nodeID,
+        Long pendingNodeID
+    )
+    {
         this.nodeID = nodeID;
         this.pendingNodeID = pendingNodeID;
     }
 
-    public Long getNodeID() {
-        return this.nodeID;
+    /** 
+     **/
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
     }
-    public Long getPendingNodeID() {
-        return this.pendingNodeID;
+    /** 
+     **/
+    public Long getPendingNodeID() { return this.pendingNodeID; }
+    public void setPendingNodeID(Long pendingNodeID) { 
+        this.pendingNodeID = pendingNodeID;
     }
 
     @Override
@@ -69,17 +71,24 @@ public class AddedNode  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddedNode that = (AddedNode) o;
-        
 
-        return Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( pendingNodeID , that.pendingNodeID );
+        return 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(pendingNodeID, that.pendingNodeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID, pendingNodeID );
+        return Objects.hash( nodeID,pendingNodeID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodeID", nodeID);
+        map.put("pendingNodeID", pendingNodeID);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -87,7 +96,7 @@ public class AddedNode  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" pendingNodeID : ").append(pendingNodeID);
+        sb.append(" pendingNodeID : ").append(pendingNodeID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -113,7 +122,7 @@ public class AddedNode  implements Serializable  {
         public AddedNode build() {
             return new AddedNode (
                          this.nodeID,
-                         this.pendingNodeID            );
+                         this.pendingNodeID);
         }
 
         private AddedNode.Builder buildFrom(final AddedNode req) {
@@ -134,5 +143,4 @@ public class AddedNode  implements Serializable  {
         }
 
     }
-
 }

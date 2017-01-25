@@ -18,48 +18,44 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ListSnapshots" API Service call.
+ * ListSnapshotsRequest  
  **/
-public class ListSnapshotsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1058970254L;
+public class ListSnapshotsRequest implements Serializable {
 
-    @SerializedName("volumeID") private final Optional<Long> volumeID;
+    public static final long serialVersionUID = -2283933622639350902L;
+    @SerializedName("volumeID") private Optional<Long> volumeID;
 
-    /**
-     * The Request object for the "ListSnapshots" API Service call.
-     * @param volumeID (optional) The volume to list snapshots for.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListSnapshotsRequest(Optional<Long> volumeID) {
+    public ListSnapshotsRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListSnapshotsRequest(
+        Optional<Long> volumeID
+    )
+    {
         this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
     }
 
-
-    /**
+    /** 
      * The volume to list snapshots for.
      * If not provided, all snapshots for all volumes are returned.
      **/
-    public Optional<Long> getVolumeID() {
-        return this.volumeID;
+    public Optional<Long> getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Optional<Long> volumeID) { 
+        this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
     }
 
     @Override
@@ -68,24 +64,31 @@ public class ListSnapshotsRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListSnapshotsRequest that = (ListSnapshotsRequest) o;
-        
 
-        return Objects.equals( volumeID , that.volumeID );
+        return 
+            Objects.equals(volumeID, that.volumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volumeID );
+        return Objects.hash( volumeID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != volumeID && volumeID.isPresent())
-            sb.append(" volumeID : ").append(volumeID.get());
+        if(null != volumeID && volumeID.isPresent()){
+            sb.append(" volumeID : ").append(volumeID).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -109,7 +112,7 @@ public class ListSnapshotsRequest  implements Serializable  {
 
         public ListSnapshotsRequest build() {
             return new ListSnapshotsRequest (
-                         this.volumeID            );
+                         this.volumeID);
         }
 
         private ListSnapshotsRequest.Builder buildFrom(final ListSnapshotsRequest req) {
@@ -124,5 +127,4 @@ public class ListSnapshotsRequest  implements Serializable  {
         }
 
     }
-
 }

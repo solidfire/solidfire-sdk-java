@@ -18,148 +18,134 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "AddVirtualNetwork" API Service call.
+ * AddVirtualNetworkRequest  
  **/
-public class AddVirtualNetworkRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1016942277L;
+public class AddVirtualNetworkRequest implements Serializable {
 
-    @SerializedName("virtualNetworkTag") private final Long virtualNetworkTag;
-    @SerializedName("name") private final String name;
-    @SerializedName("addressBlocks") private final AddressBlock[] addressBlocks;
-    @SerializedName("netmask") private final String netmask;
-    @SerializedName("svip") private final String svip;
-    @SerializedName("gateway") private final Optional<String> gateway;
-    @SerializedName("namespace") private final Optional<Boolean> namespace;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    public static final long serialVersionUID = -2607397254846725433L;
+    @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
+    @SerializedName("name") private String name;
+    @SerializedName("addressBlocks") private AddressBlock[] addressBlocks;
+    @SerializedName("netmask") private String netmask;
+    @SerializedName("svip") private String svip;
+    @SerializedName("gateway") private Optional<String> gateway;
+    @SerializedName("namespace") private Optional<Boolean> namespace;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "AddVirtualNetwork" API Service call.
-     * @param virtualNetworkTag [required] A unique virtual network (VLAN) tag. Supported values are 1 to 4095 (the number zero (0) is not supported).
-     * @param name [required] User defined name for the new virtual network.
-     * @param addressBlocks [required] Unique Range of IP addresses to include in the virtual network.
-     * @param netmask [required] Unique netmask for the virtual network being created.
-     * @param svip [required] Unique storage IP address for the virtual network being created.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public AddVirtualNetworkRequest(Long virtualNetworkTag, String name, AddressBlock[] addressBlocks, String netmask, String svip, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = name;
-        this.virtualNetworkTag = virtualNetworkTag;
-        this.netmask = netmask;
-        this.gateway = Optional.<String>empty();
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.addressBlocks = addressBlocks;
-        this.svip = svip;
-        this.namespace = Optional.<Boolean>empty();
-    }
+    public AddVirtualNetworkRequest() {}
 
-    /**
-     * The Request object for the "AddVirtualNetwork" API Service call.
-     * @param virtualNetworkTag [required] A unique virtual network (VLAN) tag. Supported values are 1 to 4095 (the number zero (0) is not supported).
-     * @param name [required] User defined name for the new virtual network.
-     * @param addressBlocks [required] Unique Range of IP addresses to include in the virtual network.
-     * @param netmask [required] Unique netmask for the virtual network being created.
-     * @param svip [required] Unique storage IP address for the virtual network being created.
-     * @param gateway (optional) 
-     * @param namespace (optional) 
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 9.0
-     **/
+    
+    // parameterized constructor
+    @Since("7.0")
+    public AddVirtualNetworkRequest(
+        Long virtualNetworkTag,
+        String name,
+        AddressBlock[] addressBlocks,
+        String netmask,
+        String svip,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.virtualNetworkTag = virtualNetworkTag;
+        this.name = name;
+        this.addressBlocks = addressBlocks;
+        this.netmask = netmask;
+        this.svip = svip;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
+    // parameterized constructor
     @Since("9.0")
-    public AddVirtualNetworkRequest(Long virtualNetworkTag, String name, AddressBlock[] addressBlocks, String netmask, String svip, Optional<String> gateway, Optional<Boolean> namespace, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = name;
+    public AddVirtualNetworkRequest(
+        Long virtualNetworkTag,
+        String name,
+        AddressBlock[] addressBlocks,
+        String netmask,
+        String svip,
+        Optional<String> gateway,
+        Optional<Boolean> namespace,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.virtualNetworkTag = virtualNetworkTag;
-        this.netmask = netmask;
-        this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.name = name;
         this.addressBlocks = addressBlocks;
+        this.netmask = netmask;
         this.svip = svip;
+        this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
-
-    /**
+    /** 
      * A unique virtual network (VLAN) tag. Supported values are 1 to 4095 (the number zero (0) is not supported).
      **/
-    public Long getVirtualNetworkTag() {
-        return this.virtualNetworkTag;
+    public Long getVirtualNetworkTag() { return this.virtualNetworkTag; }
+    public void setVirtualNetworkTag(Long virtualNetworkTag) { 
+        this.virtualNetworkTag = virtualNetworkTag;
     }
-
-    /**
+    /** 
      * User defined name for the new virtual network.
      **/
-    public String getName() {
-        return this.name;
+    public String getName() { return this.name; }
+    public void setName(String name) { 
+        this.name = name;
     }
-
-    /**
+    /** 
      * Unique Range of IP addresses to include in the virtual network.
      * Attributes for this parameter are:
-     * <br/><b>start:</b> start of the IP address range. (String)
-     * <br/><b>size:</b> numbre of IP addresses to include in the block. (Integer)
+     * start: start of the IP address range. (String)
+     * size: numbre of IP addresses to include in the block. (Integer)
      **/
-    public AddressBlock[] getAddressBlocks() {
-        return this.addressBlocks;
+    public AddressBlock[] getAddressBlocks() { return this.addressBlocks; }
+    public void setAddressBlocks(AddressBlock[] addressBlocks) { 
+        this.addressBlocks = addressBlocks;
     }
-
-    /**
+    /** 
      * Unique netmask for the virtual network being created.
      **/
-    public String getNetmask() {
-        return this.netmask;
+    public String getNetmask() { return this.netmask; }
+    public void setNetmask(String netmask) { 
+        this.netmask = netmask;
     }
-
-    /**
+    /** 
      * Unique storage IP address for the virtual network being created.
      **/
-    public String getSvip() {
-        return this.svip;
+    public String getSvip() { return this.svip; }
+    public void setSvip(String svip) { 
+        this.svip = svip;
     }
-
-    /**
+    /** 
      * 
-     * @since 9.0 
      **/
-
-    @Since("9.0")
-    public Optional<String> getGateway() {
-        return this.gateway;
+    public Optional<String> getGateway() { return this.gateway; }
+    public void setGateway(Optional<String> gateway) { 
+        this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
     }
-
-    /**
+    /** 
      * 
-     * @since 9.0 
      **/
-
-    @Since("9.0")
-    public Optional<Boolean> getNamespace() {
-        return this.namespace;
+    public Optional<Boolean> getNamespace() { return this.namespace; }
+    public void setNamespace(Optional<Boolean> namespace) { 
+        this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -168,23 +154,36 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddVirtualNetworkRequest that = (AddVirtualNetworkRequest) o;
-        
 
-        return Objects.equals( virtualNetworkTag , that.virtualNetworkTag )
-            && Objects.equals( name , that.name )
-            && Objects.deepEquals( addressBlocks , that.addressBlocks )
-            && Objects.equals( netmask , that.netmask )
-            && Objects.equals( svip , that.svip )
-            && Objects.equals( gateway , that.gateway )
-            && Objects.equals( namespace , that.namespace )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) && 
+            Objects.equals(name, that.name) && 
+            Arrays.equals(addressBlocks, that.addressBlocks) && 
+            Objects.equals(netmask, that.netmask) && 
+            Objects.equals(svip, that.svip) && 
+            Objects.equals(gateway, that.gateway) && 
+            Objects.equals(namespace, that.namespace) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualNetworkTag, name, addressBlocks, netmask, svip, gateway, namespace, attributes );
+        return Objects.hash( virtualNetworkTag,name,(Object[])addressBlocks,netmask,svip,gateway,namespace,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("virtualNetworkTag", virtualNetworkTag);
+        map.put("name", name);
+        map.put("addressBlocks", addressBlocks);
+        map.put("netmask", netmask);
+        map.put("svip", svip);
+        map.put("gateway", gateway);
+        map.put("namespace", namespace);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -196,12 +195,15 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         sb.append(" addressBlocks : ").append(Arrays.toString(addressBlocks)).append(",");
         sb.append(" netmask : ").append(netmask).append(",");
         sb.append(" svip : ").append(svip).append(",");
-        if(null != gateway && gateway.isPresent())
-            sb.append(" gateway : ").append(gateway.get()).append(",");
-        if(null != namespace && namespace.isPresent())
-            sb.append(" namespace : ").append(namespace.get()).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        if(null != gateway && gateway.isPresent()){
+            sb.append(" gateway : ").append(gateway).append(",");
+        }
+        if(null != namespace && namespace.isPresent()){
+            sb.append(" namespace : ").append(namespace).append(",");
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -239,7 +241,7 @@ public class AddVirtualNetworkRequest  implements Serializable  {
                          this.svip,
                          this.gateway,
                          this.namespace,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private AddVirtualNetworkRequest.Builder buildFrom(final AddVirtualNetworkRequest req) {
@@ -296,5 +298,4 @@ public class AddVirtualNetworkRequest  implements Serializable  {
         }
 
     }
-
 }

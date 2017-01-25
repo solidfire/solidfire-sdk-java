@@ -18,125 +18,131 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * ClusterConfig  
  * Cluster Config object returns information the node uses to communicate with the cluster.
  **/
-public class ClusterConfig  implements Serializable  {
 
-    private static final long serialVersionUID = 956907419L;
+public class ClusterConfig implements Serializable {
 
-    @SerializedName("cipi") private final Optional<String> cipi;
-    @SerializedName("cluster") private final Optional<String> cluster;
-    @SerializedName("ensemble") private final Optional<String[]> ensemble;
-    @SerializedName("mipi") private final Optional<String> mipi;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("nodeID") private final Optional<Long> nodeID;
-    @SerializedName("pendingNodeID") private final Optional<Long> pendingNodeID;
-    @SerializedName("role") private final Optional<String> role;
-    @SerializedName("sipi") private final Optional<String> sipi;
-    @SerializedName("state") private final Optional<String> state;
+    public static final long serialVersionUID = 3884387958155246889L;
+    @SerializedName("cipi") private Optional<String> cipi;
+    @SerializedName("cluster") private Optional<String> cluster;
+    @SerializedName("ensemble") private Optional<String[]> ensemble;
+    @SerializedName("mipi") private Optional<String> mipi;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("nodeID") private Optional<Long> nodeID;
+    @SerializedName("pendingNodeID") private Optional<Long> pendingNodeID;
+    @SerializedName("role") private Optional<String> role;
+    @SerializedName("sipi") private Optional<String> sipi;
+    @SerializedName("state") private Optional<String> state;
 
-    /**
-     * Cluster Config object returns information the node uses to communicate with the cluster.
-     * @param cipi (optional) Network interface used for cluster communication.
-     * @param cluster (optional) Unique cluster name.
-     * @param ensemble (optional) Nodes that are participating in the cluster.
-     * @param mipi (optional) Network interface used for node management.
-     * @param name (optional) Unique cluster name.
-     * @param nodeID (optional) 
-     * @param pendingNodeID (optional) 
-     * @param role (optional) Identifies the role of the node
-     * @param sipi (optional) Network interface used for storage.
-     * @param state (optional) 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ClusterConfig(Optional<String> cipi, Optional<String> cluster, Optional<String[]> ensemble, Optional<String> mipi, Optional<String> name, Optional<Long> nodeID, Optional<Long> pendingNodeID, Optional<String> role, Optional<String> sipi, Optional<String> state) {
-        this.name = (name == null) ? Optional.<String>empty() : name;
-        this.state = (state == null) ? Optional.<String>empty() : state;
+    public ClusterConfig() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ClusterConfig(
+        Optional<String> cipi,
+        Optional<String> cluster,
+        Optional<String[]> ensemble,
+        Optional<String> mipi,
+        Optional<String> name,
+        Optional<Long> nodeID,
+        Optional<Long> pendingNodeID,
+        Optional<String> role,
+        Optional<String> sipi,
+        Optional<String> state
+    )
+    {
         this.cipi = (cipi == null) ? Optional.<String>empty() : cipi;
-        this.role = (role == null) ? Optional.<String>empty() : role;
-        this.ensemble = (ensemble == null) ? Optional.<String[]>empty() : ensemble;
-        this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : pendingNodeID;
         this.cluster = (cluster == null) ? Optional.<String>empty() : cluster;
-        this.sipi = (sipi == null) ? Optional.<String>empty() : sipi;
-        this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
+        this.ensemble = (ensemble == null) ? Optional.<String[]>empty() : ensemble;
         this.mipi = (mipi == null) ? Optional.<String>empty() : mipi;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
+        this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : pendingNodeID;
+        this.role = (role == null) ? Optional.<String>empty() : role;
+        this.sipi = (sipi == null) ? Optional.<String>empty() : sipi;
+        this.state = (state == null) ? Optional.<String>empty() : state;
     }
 
-
-    /**
+    /** 
      * Network interface used for cluster communication.
      **/
-    public Optional<String> getCipi() {
-        return this.cipi;
+    public Optional<String> getCipi() { return this.cipi; }
+    public void setCipi(Optional<String> cipi) { 
+        this.cipi = (cipi == null) ? Optional.<String>empty() : cipi;
     }
-
-    /**
+    /** 
      * Unique cluster name.
      **/
-    public Optional<String> getCluster() {
-        return this.cluster;
+    public Optional<String> getCluster() { return this.cluster; }
+    public void setCluster(Optional<String> cluster) { 
+        this.cluster = (cluster == null) ? Optional.<String>empty() : cluster;
     }
-
-    /**
+    /** 
      * Nodes that are participating in the cluster.
      **/
-    public Optional<String[]> getEnsemble() {
-        return this.ensemble;
+    public Optional<String[]> getEnsemble() { return this.ensemble; }
+    public void setEnsemble(Optional<String[]> ensemble) { 
+        this.ensemble = (ensemble == null) ? Optional.<String[]>empty() : ensemble;
     }
-
-    /**
+    /** 
      * Network interface used for node management.
      **/
-    public Optional<String> getMipi() {
-        return this.mipi;
+    public Optional<String> getMipi() { return this.mipi; }
+    public void setMipi(Optional<String> mipi) { 
+        this.mipi = (mipi == null) ? Optional.<String>empty() : mipi;
     }
-
-    /**
+    /** 
      * Unique cluster name.
      **/
-    public Optional<String> getName() {
-        return this.name;
+    public Optional<String> getName() { return this.name; }
+    public void setName(Optional<String> name) { 
+        this.name = (name == null) ? Optional.<String>empty() : name;
     }
-    public Optional<Long> getNodeID() {
-        return this.nodeID;
+    /** 
+     **/
+    public Optional<Long> getNodeID() { return this.nodeID; }
+    public void setNodeID(Optional<Long> nodeID) { 
+        this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
     }
-    public Optional<Long> getPendingNodeID() {
-        return this.pendingNodeID;
+    /** 
+     **/
+    public Optional<Long> getPendingNodeID() { return this.pendingNodeID; }
+    public void setPendingNodeID(Optional<Long> pendingNodeID) { 
+        this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : pendingNodeID;
     }
-
-    /**
+    /** 
      * Identifies the role of the node
      **/
-    public Optional<String> getRole() {
-        return this.role;
+    public Optional<String> getRole() { return this.role; }
+    public void setRole(Optional<String> role) { 
+        this.role = (role == null) ? Optional.<String>empty() : role;
     }
-
-    /**
+    /** 
      * Network interface used for storage.
      **/
-    public Optional<String> getSipi() {
-        return this.sipi;
+    public Optional<String> getSipi() { return this.sipi; }
+    public void setSipi(Optional<String> sipi) { 
+        this.sipi = (sipi == null) ? Optional.<String>empty() : sipi;
     }
-    public Optional<String> getState() {
-        return this.state;
+    /** 
+     **/
+    public Optional<String> getState() { return this.state; }
+    public void setState(Optional<String> state) { 
+        this.state = (state == null) ? Optional.<String>empty() : state;
     }
 
     @Override
@@ -145,51 +151,76 @@ public class ClusterConfig  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ClusterConfig that = (ClusterConfig) o;
-        
 
-        return Objects.equals( cipi , that.cipi )
-            && Objects.equals( cluster , that.cluster )
-            && Objects.deepEquals( ensemble , that.ensemble )
-            && Objects.equals( mipi , that.mipi )
-            && Objects.equals( name , that.name )
-            && Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( pendingNodeID , that.pendingNodeID )
-            && Objects.equals( role , that.role )
-            && Objects.equals( sipi , that.sipi )
-            && Objects.equals( state , that.state );
+        return 
+            Objects.equals(cipi, that.cipi) && 
+            Objects.equals(cluster, that.cluster) && 
+            Objects.equals(ensemble, that.ensemble) && 
+            Objects.equals(mipi, that.mipi) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(pendingNodeID, that.pendingNodeID) && 
+            Objects.equals(role, that.role) && 
+            Objects.equals(sipi, that.sipi) && 
+            Objects.equals(state, that.state);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( cipi, cluster, ensemble, mipi, name, nodeID, pendingNodeID, role, sipi, state );
+        return Objects.hash( cipi,cluster,ensemble,mipi,name,nodeID,pendingNodeID,role,sipi,state );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("cipi", cipi);
+        map.put("cluster", cluster);
+        map.put("ensemble", ensemble);
+        map.put("mipi", mipi);
+        map.put("name", name);
+        map.put("nodeID", nodeID);
+        map.put("pendingNodeID", pendingNodeID);
+        map.put("role", role);
+        map.put("sipi", sipi);
+        map.put("state", state);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != cipi && cipi.isPresent())
-            sb.append(" cipi : ").append(cipi.get()).append(",");
-        if(null != cluster && cluster.isPresent())
-            sb.append(" cluster : ").append(cluster.get()).append(",");
-        if(null != ensemble && ensemble.isPresent())
-            sb.append(" ensemble : ").append(Arrays.toString(ensemble.get())).append(",");
-        if(null != mipi && mipi.isPresent())
-            sb.append(" mipi : ").append(mipi.get()).append(",");
-        if(null != name && name.isPresent())
-            sb.append(" name : ").append(name.get()).append(",");
-        if(null != nodeID && nodeID.isPresent())
-            sb.append(" nodeID : ").append(nodeID.get()).append(",");
-        if(null != pendingNodeID && pendingNodeID.isPresent())
-            sb.append(" pendingNodeID : ").append(pendingNodeID.get()).append(",");
-        if(null != role && role.isPresent())
-            sb.append(" role : ").append(role.get()).append(",");
-        if(null != sipi && sipi.isPresent())
-            sb.append(" sipi : ").append(sipi.get()).append(",");
-        if(null != state && state.isPresent())
-            sb.append(" state : ").append(state.get());
+        if(null != cipi && cipi.isPresent()){
+            sb.append(" cipi : ").append(cipi).append(",");
+        }
+        if(null != cluster && cluster.isPresent()){
+            sb.append(" cluster : ").append(cluster).append(",");
+        }
+        if(null != ensemble && ensemble.isPresent()){
+            sb.append(" ensemble : ").append(ensemble).append(",");
+        }
+        if(null != mipi && mipi.isPresent()){
+            sb.append(" mipi : ").append(mipi).append(",");
+        }
+        if(null != name && name.isPresent()){
+            sb.append(" name : ").append(name).append(",");
+        }
+        if(null != nodeID && nodeID.isPresent()){
+            sb.append(" nodeID : ").append(nodeID).append(",");
+        }
+        if(null != pendingNodeID && pendingNodeID.isPresent()){
+            sb.append(" pendingNodeID : ").append(pendingNodeID).append(",");
+        }
+        if(null != role && role.isPresent()){
+            sb.append(" role : ").append(role).append(",");
+        }
+        if(null != sipi && sipi.isPresent()){
+            sb.append(" sipi : ").append(sipi).append(",");
+        }
+        if(null != state && state.isPresent()){
+            sb.append(" state : ").append(state).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -231,7 +262,7 @@ public class ClusterConfig  implements Serializable  {
                          this.pendingNodeID,
                          this.role,
                          this.sipi,
-                         this.state            );
+                         this.state);
         }
 
         private ClusterConfig.Builder buildFrom(final ClusterConfig req) {
@@ -300,5 +331,4 @@ public class ClusterConfig  implements Serializable  {
         }
 
     }
-
 }

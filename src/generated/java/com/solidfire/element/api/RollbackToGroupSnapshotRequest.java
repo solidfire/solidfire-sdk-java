@@ -18,79 +18,75 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "RollbackToGroupSnapshot" API Service call.
+ * RollbackToGroupSnapshotRequest  
  **/
-public class RollbackToGroupSnapshotRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1217912347L;
+public class RollbackToGroupSnapshotRequest implements Serializable {
 
-    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
-    @SerializedName("saveCurrentState") private final Boolean saveCurrentState;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    public static final long serialVersionUID = -4169392330167642539L;
+    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
+    @SerializedName("saveCurrentState") private Boolean saveCurrentState;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "RollbackToGroupSnapshot" API Service call.
-     * @param groupSnapshotID [required] Unique ID of the group snapshot.
-     * @param saveCurrentState [required] <br/><b>true</b>: The previous active volume image is kept.
-     * @param name (optional) Name for the snapshot. If no name is given, then the name of the snapshot being rolled back to is used with 
-     * @param attributes (optional) List of Name/Value pairs in JSON object format
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public RollbackToGroupSnapshotRequest(Long groupSnapshotID, Boolean saveCurrentState, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
+    public RollbackToGroupSnapshotRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public RollbackToGroupSnapshotRequest(
+        Long groupSnapshotID,
+        Boolean saveCurrentState,
+        Optional<String> name,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.groupSnapshotID = groupSnapshotID;
         this.saveCurrentState = saveCurrentState;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
-
-    /**
+    /** 
      * Unique ID of the group snapshot.
      **/
-    public Long getGroupSnapshotID() {
-        return this.groupSnapshotID;
+    public Long getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(Long groupSnapshotID) { 
+        this.groupSnapshotID = groupSnapshotID;
     }
-
-    /**
-     * <br/><b>true</b>: The previous active volume image is kept.
-     * <br/><b>false</b>: (default) The previous active volume image is deleted.
+    /** 
+     * true: The previous active volume image is kept.
+     * false: (default) The previous active volume image is deleted.
      **/
-    public Boolean getSaveCurrentState() {
-        return this.saveCurrentState;
+    public Boolean getSaveCurrentState() { return this.saveCurrentState; }
+    public void setSaveCurrentState(Boolean saveCurrentState) { 
+        this.saveCurrentState = saveCurrentState;
     }
-
-    /**
+    /** 
      * Name for the snapshot. If no name is given, then the name of the snapshot being rolled back to is used with 
      * "-copy" appended to the end of the name.
      **/
-    public Optional<String> getName() {
-        return this.name;
+    public Optional<String> getName() { return this.name; }
+    public void setName(Optional<String> name) { 
+        this.name = (name == null) ? Optional.<String>empty() : name;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -99,19 +95,28 @@ public class RollbackToGroupSnapshotRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         RollbackToGroupSnapshotRequest that = (RollbackToGroupSnapshotRequest) o;
-        
 
-        return Objects.equals( groupSnapshotID , that.groupSnapshotID )
-            && Objects.equals( saveCurrentState , that.saveCurrentState )
-            && Objects.equals( name , that.name )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(groupSnapshotID, that.groupSnapshotID) && 
+            Objects.equals(saveCurrentState, that.saveCurrentState) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( groupSnapshotID, saveCurrentState, name, attributes );
+        return Objects.hash( groupSnapshotID,saveCurrentState,name,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("groupSnapshotID", groupSnapshotID);
+        map.put("saveCurrentState", saveCurrentState);
+        map.put("name", name);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -120,10 +125,12 @@ public class RollbackToGroupSnapshotRequest  implements Serializable  {
 
         sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
         sb.append(" saveCurrentState : ").append(saveCurrentState).append(",");
-        if(null != name && name.isPresent())
-            sb.append(" name : ").append(name.get()).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        if(null != name && name.isPresent()){
+            sb.append(" name : ").append(name).append(",");
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -153,7 +160,7 @@ public class RollbackToGroupSnapshotRequest  implements Serializable  {
                          this.groupSnapshotID,
                          this.saveCurrentState,
                          this.name,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private RollbackToGroupSnapshotRequest.Builder buildFrom(final RollbackToGroupSnapshotRequest req) {
@@ -186,5 +193,4 @@ public class RollbackToGroupSnapshotRequest  implements Serializable  {
         }
 
     }
-
 }

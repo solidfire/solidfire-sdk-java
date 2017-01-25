@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "SetClusterConfig" API Service call.
+ * SetClusterConfigRequest  
  **/
-public class SetClusterConfigRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1657597185L;
+public class SetClusterConfigRequest implements Serializable {
 
-    @SerializedName("cluster") private final ClusterConfig cluster;
+    public static final long serialVersionUID = -7925735231313580112L;
+    @SerializedName("cluster") private ClusterConfig cluster;
 
-    /**
-     * The Request object for the "SetClusterConfig" API Service call.
-     * @param cluster [required] Objects that are changed for the cluster interface settings. Only the fields you want changed need to be added to this method as objects in the "cluster" parameter.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public SetClusterConfigRequest(ClusterConfig cluster) {
+    public SetClusterConfigRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public SetClusterConfigRequest(
+        ClusterConfig cluster
+    )
+    {
         this.cluster = cluster;
     }
 
-
-    /**
+    /** 
      * Objects that are changed for the cluster interface settings. Only the fields you want changed need to be added to this method as objects in the "cluster" parameter.
      **/
-    public ClusterConfig getCluster() {
-        return this.cluster;
+    public ClusterConfig getCluster() { return this.cluster; }
+    public void setCluster(ClusterConfig cluster) { 
+        this.cluster = cluster;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class SetClusterConfigRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetClusterConfigRequest that = (SetClusterConfigRequest) o;
-        
 
-        return Objects.equals( cluster , that.cluster );
+        return 
+            Objects.equals(cluster, that.cluster);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) cluster );
+        return Objects.hash( cluster );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("cluster", cluster);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" cluster : ").append(cluster);
+        sb.append(" cluster : ").append(cluster).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class SetClusterConfigRequest  implements Serializable  {
 
         public SetClusterConfigRequest build() {
             return new SetClusterConfigRequest (
-                         this.cluster            );
+                         this.cluster);
         }
 
         private SetClusterConfigRequest.Builder buildFrom(final SetClusterConfigRequest req) {
@@ -122,5 +124,4 @@ public class SetClusterConfigRequest  implements Serializable  {
         }
 
     }
-
 }

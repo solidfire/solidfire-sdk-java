@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListVirtualVolumeBindings" API Service call.
+ * ListVirtualVolumeBindingsResult  
  **/
-public class ListVirtualVolumeBindingsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 289456756L;
+public class ListVirtualVolumeBindingsResult implements Serializable {
 
+    public static final long serialVersionUID = 6436663975426777641L;
     @SerializedName("bindings") private VirtualVolumeBinding[] bindings;
 
-    /**
-     * The object returned by the "ListVirtualVolumeBindings" API Service call.
-     * @param bindings [required] Describes the VVol <-> Host binding.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public ListVirtualVolumeBindingsResult(VirtualVolumeBinding[] bindings) {
-        this.bindings = bindings;
-    }
-
-    
-    /**
-     * The object returned by the "ListVirtualVolumeBindings" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public ListVirtualVolumeBindingsResult() {}
 
-
-    /**
-     * Describes the VVol <-> Host binding.
-     **/
-    public VirtualVolumeBinding[] getBindings() {
-        return this.bindings;
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListVirtualVolumeBindingsResult(
+        VirtualVolumeBinding[] bindings
+    )
+    {
+        this.bindings = bindings;
     }
 
-    public void setBindings(VirtualVolumeBinding[] bindings) {
+    /** 
+     * Describes the VVol <-> Host binding.
+     **/
+    public VirtualVolumeBinding[] getBindings() { return this.bindings; }
+    public void setBindings(VirtualVolumeBinding[] bindings) { 
         this.bindings = bindings;
     }
 
@@ -80,23 +63,29 @@ public class ListVirtualVolumeBindingsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualVolumeBindingsResult that = (ListVirtualVolumeBindingsResult) o;
-        
 
-        return Objects.deepEquals( bindings , that.bindings );
+        return 
+            Arrays.equals(bindings, that.bindings);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) bindings );
+        return Objects.hash( (Object[])bindings );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("bindings", bindings);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" bindings : ").append(Arrays.toString(bindings));
+        sb.append(" bindings : ").append(Arrays.toString(bindings)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -120,7 +109,7 @@ public class ListVirtualVolumeBindingsResult  implements Serializable  {
 
         public ListVirtualVolumeBindingsResult build() {
             return new ListVirtualVolumeBindingsResult (
-                         this.bindings            );
+                         this.bindings);
         }
 
         private ListVirtualVolumeBindingsResult.Builder buildFrom(final ListVirtualVolumeBindingsResult req) {
@@ -135,5 +124,4 @@ public class ListVirtualVolumeBindingsResult  implements Serializable  {
         }
 
     }
-
 }

@@ -18,61 +18,65 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "StartVolumePairing" API Service call.
+ * StartVolumePairingRequest  
  **/
-public class StartVolumePairingRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1874532687L;
+public class StartVolumePairingRequest implements Serializable {
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("mode") private final Optional<String> mode;
+    public static final long serialVersionUID = 5766800825199078076L;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("mode") private Optional<String> mode;
 
-    /**
-     * The Request object for the "StartVolumePairing" API Service call.
-     * @param volumeID [required] The ID of the volume on which to start the pairing process.
-     * @param mode (optional) The mode of the volume on which to start the pairing process. The mode can only be set if the volume is the source volume.<br/>
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public StartVolumePairingRequest(Long volumeID, Optional<String> mode) {
+    public StartVolumePairingRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public StartVolumePairingRequest(
+        Long volumeID
+    )
+    {
+        this.volumeID = volumeID;
+    }
+    // parameterized constructor
+    @Since("8.0")
+    public StartVolumePairingRequest(
+        Long volumeID,
+        Optional<String> mode
+    )
+    {
         this.volumeID = volumeID;
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
     }
 
-
-    /**
+    /** 
      * The ID of the volume on which to start the pairing process.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
     }
-
-    /**
-     * The mode of the volume on which to start the pairing process. The mode can only be set if the volume is the source volume.<br/>
-     * Possible values:<br/>
-     * <b>Async</b>: (default if no mode parameter specified) Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.<br/>
-     * <b>Sync</b>: Source acknowledges write when the data is stored locally and on the remote cluster.<br/>
-     * <b>SnapshotsOnly</b>: Only snapshots created on the source cluster will be replicated. Active writes from the source volume will not be replicated.<br/>
+    /** 
+     * The mode of the volume on which to start the pairing process. The mode can only be set if the volume is the source volume.
+     * Possible values:
+     * Async: (default if no mode parameter specified) Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.
+     * Sync: Source acknowledges write when the data is stored locally and on the remote cluster.
+     * SnapshotsOnly: Only snapshots created on the source cluster will be replicated. Active writes from the source volume will not be replicated.
      **/
-    public Optional<String> getMode() {
-        return this.mode;
+    public Optional<String> getMode() { return this.mode; }
+    public void setMode(Optional<String> mode) { 
+        this.mode = (mode == null) ? Optional.<String>empty() : mode;
     }
 
     @Override
@@ -81,17 +85,24 @@ public class StartVolumePairingRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         StartVolumePairingRequest that = (StartVolumePairingRequest) o;
-        
 
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( mode , that.mode );
+        return 
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(mode, that.mode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, mode );
+        return Objects.hash( volumeID,mode );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        map.put("mode", mode);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -99,8 +110,9 @@ public class StartVolumePairingRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" volumeID : ").append(volumeID).append(",");
-        if(null != mode && mode.isPresent())
-            sb.append(" mode : ").append(mode.get());
+        if(null != mode && mode.isPresent()){
+            sb.append(" mode : ").append(mode).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -126,7 +138,7 @@ public class StartVolumePairingRequest  implements Serializable  {
         public StartVolumePairingRequest build() {
             return new StartVolumePairingRequest (
                          this.volumeID,
-                         this.mode            );
+                         this.mode);
         }
 
         private StartVolumePairingRequest.Builder buildFrom(final StartVolumePairingRequest req) {
@@ -147,5 +159,4 @@ public class StartVolumePairingRequest  implements Serializable  {
         }
 
     }
-
 }

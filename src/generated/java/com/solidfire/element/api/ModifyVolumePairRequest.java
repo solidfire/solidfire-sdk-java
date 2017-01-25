@@ -18,74 +18,70 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ModifyVolumePair" API Service call.
+ * ModifyVolumePairRequest  
  **/
-public class ModifyVolumePairRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -793453021L;
+public class ModifyVolumePairRequest implements Serializable {
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("pausedManual") private final Optional<Boolean> pausedManual;
-    @SerializedName("mode") private final Optional<String> mode;
+    public static final long serialVersionUID = 4570555575415487784L;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("pausedManual") private Optional<Boolean> pausedManual;
+    @SerializedName("mode") private Optional<String> mode;
 
-    /**
-     * The Request object for the "ModifyVolumePair" API Service call.
-     * @param volumeID [required] Identification number of the volume to be modified.
-     * @param pausedManual (optional) Valid values that can be entered:<br/>
-     * @param mode (optional) Volume replication mode.<br/>
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ModifyVolumePairRequest(Long volumeID, Optional<Boolean> pausedManual, Optional<String> mode) {
+    public ModifyVolumePairRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyVolumePairRequest(
+        Long volumeID,
+        Optional<Boolean> pausedManual,
+        Optional<String> mode
+    )
+    {
         this.volumeID = volumeID;
         this.pausedManual = (pausedManual == null) ? Optional.<Boolean>empty() : pausedManual;
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
     }
 
-
-    /**
+    /** 
      * Identification number of the volume to be modified.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
     }
-
-    /**
-     * Valid values that can be entered:<br/>
-     * <b>true</b>: to pause volume replication.<br/>
-     * <b>false</b>: to restart volume replication.<br/>
+    /** 
+     * Valid values that can be entered:
+     * true: to pause volume replication.
+     * false: to restart volume replication.
      * If no value is specified, no change in replication is performed.
      **/
-    public Optional<Boolean> getPausedManual() {
-        return this.pausedManual;
+    public Optional<Boolean> getPausedManual() { return this.pausedManual; }
+    public void setPausedManual(Optional<Boolean> pausedManual) { 
+        this.pausedManual = (pausedManual == null) ? Optional.<Boolean>empty() : pausedManual;
     }
-
-    /**
-     * Volume replication mode.<br/>
-     * Possible values:<br/>
-     * <b>Async</b>: Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.<br/>
-     * <b>Sync</b>: The source acknowledges the write when the data is stored locally and on the remote cluster.<br/>
-     * <b>SnapshotsOnly</b>: Only snapshots created on the source cluster will be replicated. Active writes from the source volume are not replicated.<br/>
+    /** 
+     * Volume replication mode.
+     * Possible values:
+     * Async: Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.
+     * Sync: The source acknowledges the write when the data is stored locally and on the remote cluster.
+     * SnapshotsOnly: Only snapshots created on the source cluster will be replicated. Active writes from the source volume are not replicated.
      **/
-    public Optional<String> getMode() {
-        return this.mode;
+    public Optional<String> getMode() { return this.mode; }
+    public void setMode(Optional<String> mode) { 
+        this.mode = (mode == null) ? Optional.<String>empty() : mode;
     }
 
     @Override
@@ -94,18 +90,26 @@ public class ModifyVolumePairRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ModifyVolumePairRequest that = (ModifyVolumePairRequest) o;
-        
 
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( pausedManual , that.pausedManual )
-            && Objects.equals( mode , that.mode );
+        return 
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(pausedManual, that.pausedManual) && 
+            Objects.equals(mode, that.mode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, pausedManual, mode );
+        return Objects.hash( volumeID,pausedManual,mode );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        map.put("pausedManual", pausedManual);
+        map.put("mode", mode);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -113,10 +117,12 @@ public class ModifyVolumePairRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" volumeID : ").append(volumeID).append(",");
-        if(null != pausedManual && pausedManual.isPresent())
-            sb.append(" pausedManual : ").append(pausedManual.get()).append(",");
-        if(null != mode && mode.isPresent())
-            sb.append(" mode : ").append(mode.get());
+        if(null != pausedManual && pausedManual.isPresent()){
+            sb.append(" pausedManual : ").append(pausedManual).append(",");
+        }
+        if(null != mode && mode.isPresent()){
+            sb.append(" mode : ").append(mode).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -144,7 +150,7 @@ public class ModifyVolumePairRequest  implements Serializable  {
             return new ModifyVolumePairRequest (
                          this.volumeID,
                          this.pausedManual,
-                         this.mode            );
+                         this.mode);
         }
 
         private ModifyVolumePairRequest.Builder buildFrom(final ModifyVolumePairRequest req) {
@@ -171,5 +177,4 @@ public class ModifyVolumePairRequest  implements Serializable  {
         }
 
     }
-
 }

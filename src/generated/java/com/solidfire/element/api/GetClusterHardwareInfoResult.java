@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetClusterHardwareInfo" API Service call.
+ * GetClusterHardwareInfoResult  
  **/
-public class GetClusterHardwareInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = -616052708L;
+public class GetClusterHardwareInfoResult implements Serializable {
 
+    public static final long serialVersionUID = -4943994234075066899L;
     @SerializedName("clusterHardwareInfo") private ClusterHardwareInfo clusterHardwareInfo;
 
-    /**
-     * The object returned by the "GetClusterHardwareInfo" API Service call.
-     * @param clusterHardwareInfo [required] Hardware information for all nodes and drives in the cluster. Each object in this output is labeled with the nodeID of the given node.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetClusterHardwareInfoResult(ClusterHardwareInfo clusterHardwareInfo) {
-        this.clusterHardwareInfo = clusterHardwareInfo;
-    }
-
-    
-    /**
-     * The object returned by the "GetClusterHardwareInfo" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetClusterHardwareInfoResult() {}
 
-
-    /**
-     * Hardware information for all nodes and drives in the cluster. Each object in this output is labeled with the nodeID of the given node.
-     **/
-    public ClusterHardwareInfo getClusterHardwareInfo() {
-        return this.clusterHardwareInfo;
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetClusterHardwareInfoResult(
+        ClusterHardwareInfo clusterHardwareInfo
+    )
+    {
+        this.clusterHardwareInfo = clusterHardwareInfo;
     }
 
-    public void setClusterHardwareInfo(ClusterHardwareInfo clusterHardwareInfo) {
+    /** 
+     * Hardware information for all nodes and drives in the cluster. Each object in this output is labeled with the nodeID of the given node.
+     **/
+    public ClusterHardwareInfo getClusterHardwareInfo() { return this.clusterHardwareInfo; }
+    public void setClusterHardwareInfo(ClusterHardwareInfo clusterHardwareInfo) { 
         this.clusterHardwareInfo = clusterHardwareInfo;
     }
 
@@ -80,23 +63,29 @@ public class GetClusterHardwareInfoResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterHardwareInfoResult that = (GetClusterHardwareInfoResult) o;
-        
 
-        return Objects.equals( clusterHardwareInfo , that.clusterHardwareInfo );
+        return 
+            Objects.equals(clusterHardwareInfo, that.clusterHardwareInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) clusterHardwareInfo );
+        return Objects.hash( clusterHardwareInfo );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterHardwareInfo", clusterHardwareInfo);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" clusterHardwareInfo : ").append(clusterHardwareInfo);
+        sb.append(" clusterHardwareInfo : ").append(clusterHardwareInfo).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -120,7 +109,7 @@ public class GetClusterHardwareInfoResult  implements Serializable  {
 
         public GetClusterHardwareInfoResult build() {
             return new GetClusterHardwareInfoResult (
-                         this.clusterHardwareInfo            );
+                         this.clusterHardwareInfo);
         }
 
         private GetClusterHardwareInfoResult.Builder buildFrom(final GetClusterHardwareInfoResult req) {
@@ -135,5 +124,4 @@ public class GetClusterHardwareInfoResult  implements Serializable  {
         }
 
     }
-
 }

@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "SetConfig" API Service call.
+ * SetConfigRequest  
  **/
-public class SetConfigRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 2073041927L;
+public class SetConfigRequest implements Serializable {
 
-    @SerializedName("config") private final Config config;
+    public static final long serialVersionUID = -2103656016970197967L;
+    @SerializedName("config") private Config config;
 
-    /**
-     * The Request object for the "SetConfig" API Service call.
-     * @param config [required] Objects that you want changed for the cluster interface settings.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public SetConfigRequest(Config config) {
+    public SetConfigRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public SetConfigRequest(
+        Config config
+    )
+    {
         this.config = config;
     }
 
-
-    /**
+    /** 
      * Objects that you want changed for the cluster interface settings.
      **/
-    public Config getConfig() {
-        return this.config;
+    public Config getConfig() { return this.config; }
+    public void setConfig(Config config) { 
+        this.config = config;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class SetConfigRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         SetConfigRequest that = (SetConfigRequest) o;
-        
 
-        return Objects.equals( config , that.config );
+        return 
+            Objects.equals(config, that.config);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) config );
+        return Objects.hash( config );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("config", config);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" config : ").append(config);
+        sb.append(" config : ").append(config).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class SetConfigRequest  implements Serializable  {
 
         public SetConfigRequest build() {
             return new SetConfigRequest (
-                         this.config            );
+                         this.config);
         }
 
         private SetConfigRequest.Builder buildFrom(final SetConfigRequest req) {
@@ -122,5 +124,4 @@ public class SetConfigRequest  implements Serializable  {
         }
 
     }
-
 }

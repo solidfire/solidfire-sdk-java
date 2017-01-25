@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetConfig" API Service call.
+ * GetConfigResult  
  **/
-public class GetConfigResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1341970238L;
+public class GetConfigResult implements Serializable {
 
-    @SerializedName("config") private final Config config;
+    public static final long serialVersionUID = -3398733762408202194L;
+    @SerializedName("config") private Config config;
 
-    /**
-     * The object returned by the "GetConfig" API Service call.
-     * @param config [required] The details of the cluster. Values returned in "config": cluster- Cluster information that identifies how the node communicates with the cluster it is associated with. (Object) network - Network information for bonding and Ethernet connections. (Object)
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetConfigResult(Config config) {
+    public GetConfigResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetConfigResult(
+        Config config
+    )
+    {
         this.config = config;
     }
 
-
-    /**
+    /** 
      * The details of the cluster. Values returned in "config": cluster- Cluster information that identifies how the node communicates with the cluster it is associated with. (Object) network - Network information for bonding and Ethernet connections. (Object)
      **/
-    public Config getConfig() {
-        return this.config;
+    public Config getConfig() { return this.config; }
+    public void setConfig(Config config) { 
+        this.config = config;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class GetConfigResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetConfigResult that = (GetConfigResult) o;
-        
 
-        return Objects.equals( config , that.config );
+        return 
+            Objects.equals(config, that.config);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) config );
+        return Objects.hash( config );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("config", config);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" config : ").append(config);
+        sb.append(" config : ").append(config).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class GetConfigResult  implements Serializable  {
 
         public GetConfigResult build() {
             return new GetConfigResult (
-                         this.config            );
+                         this.config);
         }
 
         private GetConfigResult.Builder buildFrom(final GetConfigResult req) {
@@ -122,5 +124,4 @@ public class GetConfigResult  implements Serializable  {
         }
 
     }
-
 }

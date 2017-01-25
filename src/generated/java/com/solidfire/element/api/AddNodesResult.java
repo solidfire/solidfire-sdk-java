@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "AddNodes" API Service call.
+ * AddNodesResult  
  **/
-public class AddNodesResult  implements Serializable  {
 
-    private static final long serialVersionUID = -137423564L;
+public class AddNodesResult implements Serializable {
 
-    @SerializedName("nodes") private final AddedNode[] nodes;
+    public static final long serialVersionUID = 2922145517052875853L;
+    @SerializedName("nodes") private AddedNode[] nodes;
 
-    /**
-     * The object returned by the "AddNodes" API Service call.
-     * @param nodes [required] An array of objects mapping the previous "pendingNodeID" to the "nodeID".
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public AddNodesResult(AddedNode[] nodes) {
+    public AddNodesResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public AddNodesResult(
+        AddedNode[] nodes
+    )
+    {
         this.nodes = nodes;
     }
 
-
-    /**
+    /** 
      * An array of objects mapping the previous "pendingNodeID" to the "nodeID".
      **/
-    public AddedNode[] getNodes() {
-        return this.nodes;
+    public AddedNode[] getNodes() { return this.nodes; }
+    public void setNodes(AddedNode[] nodes) { 
+        this.nodes = nodes;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class AddNodesResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddNodesResult that = (AddNodesResult) o;
-        
 
-        return Objects.deepEquals( nodes , that.nodes );
+        return 
+            Arrays.equals(nodes, that.nodes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodes );
+        return Objects.hash( (Object[])nodes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodes", nodes);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes));
+        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class AddNodesResult  implements Serializable  {
 
         public AddNodesResult build() {
             return new AddNodesResult (
-                         this.nodes            );
+                         this.nodes);
         }
 
         private AddNodesResult.Builder buildFrom(final AddNodesResult req) {
@@ -122,5 +124,4 @@ public class AddNodesResult  implements Serializable  {
         }
 
     }
-
 }

@@ -18,43 +18,42 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * DrivesHardware  
  **/
-public class DrivesHardware  implements Serializable  {
 
-    private static final long serialVersionUID = 370298901L;
+public class DrivesHardware implements Serializable {
 
-    @SerializedName("driveHardware") private final DriveHardware[] driveHardware;
+    public static final long serialVersionUID = -978078438237618111L;
+    @SerializedName("driveHardware") private DriveHardware[] driveHardware;
 
-    /**
-     * 
-     * @param driveHardware [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public DrivesHardware(DriveHardware[] driveHardware) {
+    public DrivesHardware() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public DrivesHardware(
+        DriveHardware[] driveHardware
+    )
+    {
         this.driveHardware = driveHardware;
     }
 
-    public DriveHardware[] getDriveHardware() {
-        return this.driveHardware;
+    /** 
+     **/
+    public DriveHardware[] getDriveHardware() { return this.driveHardware; }
+    public void setDriveHardware(DriveHardware[] driveHardware) { 
+        this.driveHardware = driveHardware;
     }
 
     @Override
@@ -63,23 +62,29 @@ public class DrivesHardware  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         DrivesHardware that = (DrivesHardware) o;
-        
 
-        return Objects.deepEquals( driveHardware , that.driveHardware );
+        return 
+            Arrays.equals(driveHardware, that.driveHardware);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) driveHardware );
+        return Objects.hash( (Object[])driveHardware );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("driveHardware", driveHardware);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" driveHardware : ").append(Arrays.toString(driveHardware));
+        sb.append(" driveHardware : ").append(Arrays.toString(driveHardware)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,7 +108,7 @@ public class DrivesHardware  implements Serializable  {
 
         public DrivesHardware build() {
             return new DrivesHardware (
-                         this.driveHardware            );
+                         this.driveHardware);
         }
 
         private DrivesHardware.Builder buildFrom(final DrivesHardware req) {
@@ -118,5 +123,4 @@ public class DrivesHardware  implements Serializable  {
         }
 
     }
-
 }

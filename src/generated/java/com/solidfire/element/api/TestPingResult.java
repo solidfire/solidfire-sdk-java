@@ -18,67 +18,63 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "TestPing" API Service call.
+ * TestPingResult  
  **/
-public class TestPingResult  implements Serializable  {
 
-    private static final long serialVersionUID = 2036029079L;
+public class TestPingResult implements Serializable {
 
-    @SerializedName("result") private final String result;
-    @SerializedName("duration") private final String duration;
-    @SerializedName("details") private final Object details;
+    public static final long serialVersionUID = -5573014009870116151L;
+    @SerializedName("result") private String result;
+    @SerializedName("duration") private String duration;
+    @SerializedName("details") private Object details;
 
-    /**
-     * The object returned by the "TestPing" API Service call.
-     * @param result [required] Result of the ping test.
-     * @param duration [required] The total duration of the ping test.
-     * @param details [required] List of each IP the node was able to communicate with.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public TestPingResult(String result, String duration, Object details) {
+    public TestPingResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public TestPingResult(
+        String result,
+        String duration,
+        Object details
+    )
+    {
         this.result = result;
         this.duration = duration;
         this.details = details;
     }
 
-
-    /**
+    /** 
      * Result of the ping test.
      **/
-    public String getResult() {
-        return this.result;
+    public String getResult() { return this.result; }
+    public void setResult(String result) { 
+        this.result = result;
     }
-
-    /**
+    /** 
      * The total duration of the ping test.
      **/
-    public String getDuration() {
-        return this.duration;
+    public String getDuration() { return this.duration; }
+    public void setDuration(String duration) { 
+        this.duration = duration;
     }
-
-    /**
+    /** 
      * List of each IP the node was able to communicate with.
      **/
-    public Object getDetails() {
-        return this.details;
+    public Object getDetails() { return this.details; }
+    public void setDetails(Object details) { 
+        this.details = details;
     }
 
     @Override
@@ -87,18 +83,26 @@ public class TestPingResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestPingResult that = (TestPingResult) o;
-        
 
-        return Objects.equals( result , that.result )
-            && Objects.equals( duration , that.duration )
-            && Objects.equals( details , that.details );
+        return 
+            Objects.equals(result, that.result) && 
+            Objects.equals(duration, that.duration) && 
+            Objects.equals(details, that.details);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( result, duration, details );
+        return Objects.hash( result,duration,details );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("result", result);
+        map.put("duration", duration);
+        map.put("details", details);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -107,7 +111,7 @@ public class TestPingResult  implements Serializable  {
 
         sb.append(" result : ").append(result).append(",");
         sb.append(" duration : ").append(duration).append(",");
-        sb.append(" details : ").append(details);
+        sb.append(" details : ").append(details).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -135,7 +139,7 @@ public class TestPingResult  implements Serializable  {
             return new TestPingResult (
                          this.result,
                          this.duration,
-                         this.details            );
+                         this.details);
         }
 
         private TestPingResult.Builder buildFrom(final TestPingResult req) {
@@ -162,5 +166,4 @@ public class TestPingResult  implements Serializable  {
         }
 
     }
-
 }

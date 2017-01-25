@@ -19,65 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ListVirtualVolumeBindings" API Service call.
+ * ListVirtualVolumeBindingsRequest  
  **/
-public class ListVirtualVolumeBindingsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1967617285L;
+public class ListVirtualVolumeBindingsRequest implements Serializable {
 
+    public static final long serialVersionUID = 1543024419589101292L;
     @SerializedName("virtualVolumeBindingIDs") private Optional<Long[]> virtualVolumeBindingIDs;
-    @SerializedName("callingVirtualVolumeHostID") private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
-    /**
-     * The Request object for the "ListVirtualVolumeBindings" API Service call.
-     * @param virtualVolumeBindingIDs (optional) 
-     * @param callingVirtualVolumeHostID (optional) 
-     * @since 9.0
-     **/
-    @Since("9.0")
-    public ListVirtualVolumeBindingsRequest(Optional<Long[]> virtualVolumeBindingIDs, Optional<java.util.UUID> callingVirtualVolumeHostID) {
-        this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<Long[]>empty() : virtualVolumeBindingIDs;
-        this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : callingVirtualVolumeHostID;
-    }
-
-    
-    /**
-     * The Request object for the "ListVirtualVolumeBindings" API Service call.
-     * Empty constructor to support serialization.
-     * @since 9.0
-     **/
-    @Since("9.0")
+    // empty constructor
+    @Since("7.0")
     public ListVirtualVolumeBindingsRequest() {}
 
-    public Optional<Long[]> getVirtualVolumeBindingIDs() {
-        return this.virtualVolumeBindingIDs;
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListVirtualVolumeBindingsRequest(
+        Optional<Long[]> virtualVolumeBindingIDs
+    )
+    {
+        this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<Long[]>empty() : virtualVolumeBindingIDs;
     }
 
-    public void setVirtualVolumeBindingIDs(Optional<Long[]> virtualVolumeBindingIDs) {
-        this.virtualVolumeBindingIDs = virtualVolumeBindingIDs;
-    }
-    public Optional<java.util.UUID> getCallingVirtualVolumeHostID() {
-        return this.callingVirtualVolumeHostID;
-    }
-
-    public void setCallingVirtualVolumeHostID(Optional<java.util.UUID> callingVirtualVolumeHostID) {
-        this.callingVirtualVolumeHostID = callingVirtualVolumeHostID;
+    /** 
+     **/
+    public Optional<Long[]> getVirtualVolumeBindingIDs() { return this.virtualVolumeBindingIDs; }
+    public void setVirtualVolumeBindingIDs(Optional<Long[]> virtualVolumeBindingIDs) { 
+        this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<Long[]>empty() : virtualVolumeBindingIDs;
     }
 
     @Override
@@ -86,27 +62,31 @@ public class ListVirtualVolumeBindingsRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVirtualVolumeBindingsRequest that = (ListVirtualVolumeBindingsRequest) o;
-        
 
-        return Objects.deepEquals( virtualVolumeBindingIDs , that.virtualVolumeBindingIDs )
-            && Objects.equals( callingVirtualVolumeHostID , that.callingVirtualVolumeHostID );
+        return 
+            Objects.equals(virtualVolumeBindingIDs, that.virtualVolumeBindingIDs);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualVolumeBindingIDs, callingVirtualVolumeHostID );
+        return Objects.hash( virtualVolumeBindingIDs );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("virtualVolumeBindingIDs", virtualVolumeBindingIDs);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != virtualVolumeBindingIDs && virtualVolumeBindingIDs.isPresent())
-            sb.append(" virtualVolumeBindingIDs : ").append(Arrays.toString(virtualVolumeBindingIDs.get())).append(",");
-        if(null != callingVirtualVolumeHostID && callingVirtualVolumeHostID.isPresent())
-            sb.append(" callingVirtualVolumeHostID : ").append(callingVirtualVolumeHostID.get());
+        if(null != virtualVolumeBindingIDs && virtualVolumeBindingIDs.isPresent()){
+            sb.append(" virtualVolumeBindingIDs : ").append(virtualVolumeBindingIDs).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -125,19 +105,16 @@ public class ListVirtualVolumeBindingsRequest  implements Serializable  {
 
     public static class Builder {
         private Optional<Long[]> virtualVolumeBindingIDs;
-        private Optional<java.util.UUID> callingVirtualVolumeHostID;
 
         private Builder() { }
 
         public ListVirtualVolumeBindingsRequest build() {
             return new ListVirtualVolumeBindingsRequest (
-                         this.virtualVolumeBindingIDs,
-                         this.callingVirtualVolumeHostID            );
+                         this.virtualVolumeBindingIDs);
         }
 
         private ListVirtualVolumeBindingsRequest.Builder buildFrom(final ListVirtualVolumeBindingsRequest req) {
             this.virtualVolumeBindingIDs = req.virtualVolumeBindingIDs;
-            this.callingVirtualVolumeHostID = req.callingVirtualVolumeHostID;
 
             return this;
         }
@@ -147,11 +124,5 @@ public class ListVirtualVolumeBindingsRequest  implements Serializable  {
             return this;
         }
 
-        public ListVirtualVolumeBindingsRequest.Builder optionalCallingVirtualVolumeHostID(final java.util.UUID callingVirtualVolumeHostID) {
-            this.callingVirtualVolumeHostID = (callingVirtualVolumeHostID == null) ? Optional.<java.util.UUID>empty() : Optional.of(callingVirtualVolumeHostID);
-            return this;
-        }
-
     }
-
 }

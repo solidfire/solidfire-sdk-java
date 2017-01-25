@@ -18,43 +18,42 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "SnmpSendTestTraps" API Service call.
+ * SnmpSendTestTrapsResult  
  **/
-public class SnmpSendTestTrapsResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1070312036L;
+public class SnmpSendTestTrapsResult implements Serializable {
 
-    @SerializedName("status") private final String status;
+    public static final long serialVersionUID = 8457769312045727430L;
+    @SerializedName("status") private String status;
 
-    /**
-     * The object returned by the "SnmpSendTestTraps" API Service call.
-     * @param status [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public SnmpSendTestTrapsResult(String status) {
+    public SnmpSendTestTrapsResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public SnmpSendTestTrapsResult(
+        String status
+    )
+    {
         this.status = status;
     }
 
-    public String getStatus() {
-        return this.status;
+    /** 
+     **/
+    public String getStatus() { return this.status; }
+    public void setStatus(String status) { 
+        this.status = status;
     }
 
     @Override
@@ -63,23 +62,29 @@ public class SnmpSendTestTrapsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         SnmpSendTestTrapsResult that = (SnmpSendTestTrapsResult) o;
-        
 
-        return Objects.equals( status , that.status );
+        return 
+            Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) status );
+        return Objects.hash( status );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("status", status);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" status : ").append(status);
+        sb.append(" status : ").append(status).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,7 +108,7 @@ public class SnmpSendTestTrapsResult  implements Serializable  {
 
         public SnmpSendTestTrapsResult build() {
             return new SnmpSendTestTrapsResult (
-                         this.status            );
+                         this.status);
         }
 
         private SnmpSendTestTrapsResult.Builder buildFrom(final SnmpSendTestTrapsResult req) {
@@ -118,5 +123,4 @@ public class SnmpSendTestTrapsResult  implements Serializable  {
         }
 
     }
-
 }

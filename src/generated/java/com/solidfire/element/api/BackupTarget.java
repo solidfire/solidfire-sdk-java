@@ -18,67 +18,64 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * BackupTarget  
  * The object containing information about a backup target.
  **/
-public class BackupTarget  implements Serializable  {
 
-    private static final long serialVersionUID = 283987060L;
+public class BackupTarget implements Serializable {
 
-    @SerializedName("name") private final String name;
-    @SerializedName("backupTargetID") private final Long backupTargetID;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    public static final long serialVersionUID = -2195701379749552647L;
+    @SerializedName("name") private String name;
+    @SerializedName("backupTargetID") private Long backupTargetID;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The object containing information about a backup target.
-     * @param name [required] Name for the backup target.
-     * @param backupTargetID [required] Unique identifier assigned to the backup target.
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public BackupTarget(String name, Long backupTargetID, Optional<java.util.Map<String, Object>> attributes) {
+    public BackupTarget() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public BackupTarget(
+        String name,
+        Long backupTargetID,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.name = name;
         this.backupTargetID = backupTargetID;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
-
-    /**
+    /** 
      * Name for the backup target.
      **/
-    public String getName() {
-        return this.name;
+    public String getName() { return this.name; }
+    public void setName(String name) { 
+        this.name = name;
     }
-
-    /**
+    /** 
      * Unique identifier assigned to the backup target.
      **/
-    public Long getBackupTargetID() {
-        return this.backupTargetID;
+    public Long getBackupTargetID() { return this.backupTargetID; }
+    public void setBackupTargetID(Long backupTargetID) { 
+        this.backupTargetID = backupTargetID;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -87,18 +84,26 @@ public class BackupTarget  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         BackupTarget that = (BackupTarget) o;
-        
 
-        return Objects.equals( name , that.name )
-            && Objects.equals( backupTargetID , that.backupTargetID )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(name, that.name) && 
+            Objects.equals(backupTargetID, that.backupTargetID) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, backupTargetID, attributes );
+        return Objects.hash( name,backupTargetID,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("name", name);
+        map.put("backupTargetID", backupTargetID);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -107,8 +112,9 @@ public class BackupTarget  implements Serializable  {
 
         sb.append(" name : ").append(name).append(",");
         sb.append(" backupTargetID : ").append(backupTargetID).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -136,7 +142,7 @@ public class BackupTarget  implements Serializable  {
             return new BackupTarget (
                          this.name,
                          this.backupTargetID,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private BackupTarget.Builder buildFrom(final BackupTarget req) {
@@ -163,5 +169,4 @@ public class BackupTarget  implements Serializable  {
         }
 
     }
-
 }

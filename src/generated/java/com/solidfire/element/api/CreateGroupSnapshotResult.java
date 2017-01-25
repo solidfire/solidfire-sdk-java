@@ -18,57 +18,53 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "CreateGroupSnapshot" API Service call.
+ * CreateGroupSnapshotResult  
  **/
-public class CreateGroupSnapshotResult  implements Serializable  {
 
-    private static final long serialVersionUID = 67011248L;
+public class CreateGroupSnapshotResult implements Serializable {
 
-    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
-    @SerializedName("members") private final GroupSnapshotMembers[] members;
+    public static final long serialVersionUID = 4310382358300997611L;
+    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
+    @SerializedName("members") private GroupSnapshotMembers[] members;
 
-    /**
-     * The object returned by the "CreateGroupSnapshot" API Service call.
-     * @param groupSnapshotID [required] Unique ID of the new group snapshot.
-     * @param members [required] List of checksum, volumeIDs and snapshotIDs for each member of the group.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public CreateGroupSnapshotResult(Long groupSnapshotID, GroupSnapshotMembers[] members) {
+    public CreateGroupSnapshotResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public CreateGroupSnapshotResult(
+        Long groupSnapshotID,
+        GroupSnapshotMembers[] members
+    )
+    {
         this.groupSnapshotID = groupSnapshotID;
         this.members = members;
     }
 
-
-    /**
+    /** 
      * Unique ID of the new group snapshot.
      **/
-    public Long getGroupSnapshotID() {
-        return this.groupSnapshotID;
+    public Long getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(Long groupSnapshotID) { 
+        this.groupSnapshotID = groupSnapshotID;
     }
-
-    /**
+    /** 
      * List of checksum, volumeIDs and snapshotIDs for each member of the group.
      **/
-    public GroupSnapshotMembers[] getMembers() {
-        return this.members;
+    public GroupSnapshotMembers[] getMembers() { return this.members; }
+    public void setMembers(GroupSnapshotMembers[] members) { 
+        this.members = members;
     }
 
     @Override
@@ -77,17 +73,24 @@ public class CreateGroupSnapshotResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         CreateGroupSnapshotResult that = (CreateGroupSnapshotResult) o;
-        
 
-        return Objects.equals( groupSnapshotID , that.groupSnapshotID )
-            && Objects.deepEquals( members , that.members );
+        return 
+            Objects.equals(groupSnapshotID, that.groupSnapshotID) && 
+            Arrays.equals(members, that.members);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( groupSnapshotID, members );
+        return Objects.hash( groupSnapshotID,(Object[])members );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("groupSnapshotID", groupSnapshotID);
+        map.put("members", members);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +98,7 @@ public class CreateGroupSnapshotResult  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
-        sb.append(" members : ").append(Arrays.toString(members));
+        sb.append(" members : ").append(Arrays.toString(members)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +124,7 @@ public class CreateGroupSnapshotResult  implements Serializable  {
         public CreateGroupSnapshotResult build() {
             return new CreateGroupSnapshotResult (
                          this.groupSnapshotID,
-                         this.members            );
+                         this.members);
         }
 
         private CreateGroupSnapshotResult.Builder buildFrom(final CreateGroupSnapshotResult req) {
@@ -142,5 +145,4 @@ public class CreateGroupSnapshotResult  implements Serializable  {
         }
 
     }
-
 }

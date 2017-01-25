@@ -18,61 +18,58 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * GetAsyncResultResult  
  * The object returned by the "GetAsyncResult" API Service call.
+ * 
+ * Note: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.
  **/
-public class GetAsyncResultResult  implements Serializable  {
 
-    private static final long serialVersionUID = -137673806L;
+public class GetAsyncResultResult implements Serializable {
 
-    @SerializedName("result") private final AsyncResult result;
-    @SerializedName("status") private final String status;
+    public static final long serialVersionUID = 9186461554302981980L;
+    @SerializedName("result") private AsyncResult result;
+    @SerializedName("status") private String status;
 
-    /**
-     * The object returned by the "GetAsyncResult" API Service call.
-     * <br/>
-     * <b>Note</b>: The return value of GetAsyncResult is essentially a nested version of the standard JSON response with an additional status field.
-     * @param result [required] The resulting message for the original method call if the call was completed successfully.
-     * @param status [required] Status of the asynchronous method call
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetAsyncResultResult(AsyncResult result, String status) {
+    public GetAsyncResultResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetAsyncResultResult(
+        AsyncResult result,
+        String status
+    )
+    {
         this.result = result;
         this.status = status;
     }
 
-
-    /**
+    /** 
      * The resulting message for the original method call if the call was completed successfully.
      **/
-    public AsyncResult getResult() {
-        return this.result;
+    public AsyncResult getResult() { return this.result; }
+    public void setResult(AsyncResult result) { 
+        this.result = result;
     }
-
-    /**
+    /** 
      * Status of the asynchronous method call
-     * <br/><b>running</b>: The method is still running.
-     * <br/><b>complete</b>: The method is complete and the result or error is available.
+     * running: The method is still running.
+     * complete: The method is complete and the result or error is available.
      **/
-    public String getStatus() {
-        return this.status;
+    public String getStatus() { return this.status; }
+    public void setStatus(String status) { 
+        this.status = status;
     }
 
     @Override
@@ -81,17 +78,24 @@ public class GetAsyncResultResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetAsyncResultResult that = (GetAsyncResultResult) o;
-        
 
-        return Objects.equals( result , that.result )
-            && Objects.equals( status , that.status );
+        return 
+            Objects.equals(result, that.result) && 
+            Objects.equals(status, that.status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( result, status );
+        return Objects.hash( result,status );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("result", result);
+        map.put("status", status);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -99,7 +103,7 @@ public class GetAsyncResultResult  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" result : ").append(result).append(",");
-        sb.append(" status : ").append(status);
+        sb.append(" status : ").append(status).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -125,7 +129,7 @@ public class GetAsyncResultResult  implements Serializable  {
         public GetAsyncResultResult build() {
             return new GetAsyncResultResult (
                          this.result,
-                         this.status            );
+                         this.status);
         }
 
         private GetAsyncResultResult.Builder buildFrom(final GetAsyncResultResult req) {
@@ -146,5 +150,4 @@ public class GetAsyncResultResult  implements Serializable  {
         }
 
     }
-
 }

@@ -18,49 +18,51 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * Config  
  **/
-public class Config  implements Serializable  {
 
-    private static final long serialVersionUID = -742843429L;
+public class Config implements Serializable {
 
-    @SerializedName("cluster") private final ClusterConfig cluster;
-    @SerializedName("network") private final Network network;
+    public static final long serialVersionUID = -4072360127181388004L;
+    @SerializedName("cluster") private ClusterConfig cluster;
+    @SerializedName("network") private Network network;
 
-    /**
-     * 
-     * @param cluster [required] 
-     * @param network [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public Config(ClusterConfig cluster, Network network) {
+    public Config() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public Config(
+        ClusterConfig cluster,
+        Network network
+    )
+    {
         this.cluster = cluster;
         this.network = network;
     }
 
-    public ClusterConfig getCluster() {
-        return this.cluster;
+    /** 
+     **/
+    public ClusterConfig getCluster() { return this.cluster; }
+    public void setCluster(ClusterConfig cluster) { 
+        this.cluster = cluster;
     }
-    public Network getNetwork() {
-        return this.network;
+    /** 
+     **/
+    public Network getNetwork() { return this.network; }
+    public void setNetwork(Network network) { 
+        this.network = network;
     }
 
     @Override
@@ -69,17 +71,24 @@ public class Config  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         Config that = (Config) o;
-        
 
-        return Objects.equals( cluster , that.cluster )
-            && Objects.equals( network , that.network );
+        return 
+            Objects.equals(cluster, that.cluster) && 
+            Objects.equals(network, that.network);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( cluster, network );
+        return Objects.hash( cluster,network );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("cluster", cluster);
+        map.put("network", network);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -87,7 +96,7 @@ public class Config  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" cluster : ").append(cluster).append(",");
-        sb.append(" network : ").append(network);
+        sb.append(" network : ").append(network).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -113,7 +122,7 @@ public class Config  implements Serializable  {
         public Config build() {
             return new Config (
                          this.cluster,
-                         this.network            );
+                         this.network);
         }
 
         private Config.Builder buildFrom(final Config req) {
@@ -134,5 +143,4 @@ public class Config  implements Serializable  {
         }
 
     }
-
 }

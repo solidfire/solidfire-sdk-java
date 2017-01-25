@@ -18,49 +18,51 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListEvents" API Service call.
+ * ListEventsResult  
  **/
-public class ListEventsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 428743907L;
+public class ListEventsResult implements Serializable {
 
-    @SerializedName("eventQueueType") private final String eventQueueType;
-    @SerializedName("events") private final EventInfo[] events;
+    public static final long serialVersionUID = 2761767569186265400L;
+    @SerializedName("eventQueueType") private String eventQueueType;
+    @SerializedName("events") private EventInfo[] events;
 
-    /**
-     * The object returned by the "ListEvents" API Service call.
-     * @param eventQueueType [required] 
-     * @param events [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListEventsResult(String eventQueueType, EventInfo[] events) {
+    public ListEventsResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListEventsResult(
+        String eventQueueType,
+        EventInfo[] events
+    )
+    {
         this.eventQueueType = eventQueueType;
         this.events = events;
     }
 
-    public String getEventQueueType() {
-        return this.eventQueueType;
+    /** 
+     **/
+    public String getEventQueueType() { return this.eventQueueType; }
+    public void setEventQueueType(String eventQueueType) { 
+        this.eventQueueType = eventQueueType;
     }
-    public EventInfo[] getEvents() {
-        return this.events;
+    /** 
+     **/
+    public EventInfo[] getEvents() { return this.events; }
+    public void setEvents(EventInfo[] events) { 
+        this.events = events;
     }
 
     @Override
@@ -69,17 +71,24 @@ public class ListEventsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListEventsResult that = (ListEventsResult) o;
-        
 
-        return Objects.equals( eventQueueType , that.eventQueueType )
-            && Objects.deepEquals( events , that.events );
+        return 
+            Objects.equals(eventQueueType, that.eventQueueType) && 
+            Arrays.equals(events, that.events);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( eventQueueType, events );
+        return Objects.hash( eventQueueType,(Object[])events );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("eventQueueType", eventQueueType);
+        map.put("events", events);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -87,7 +96,7 @@ public class ListEventsResult  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" eventQueueType : ").append(eventQueueType).append(",");
-        sb.append(" events : ").append(Arrays.toString(events));
+        sb.append(" events : ").append(Arrays.toString(events)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -113,7 +122,7 @@ public class ListEventsResult  implements Serializable  {
         public ListEventsResult build() {
             return new ListEventsResult (
                          this.eventQueueType,
-                         this.events            );
+                         this.events);
         }
 
         private ListEventsResult.Builder buildFrom(final ListEventsResult req) {
@@ -134,5 +143,4 @@ public class ListEventsResult  implements Serializable  {
         }
 
     }
-
 }

@@ -16,10 +16,8 @@
 
 package com.solidfire.client;
 
-import com.solidfire.element.api.GetAPIRequest;
 import com.solidfire.element.api.GetAPIResult;
-import com.solidfire.jsvcgen.client.*;
-import com.solidfire.jsvcgen.javautil.Optional;
+import com.solidfire.core.javautil.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +26,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.solidfire.jsvcgen.javautil.Optional.of;
+import static com.solidfire.core.javautil.Optional.of;
 import static java.lang.String.format;
 
 
@@ -40,7 +38,7 @@ import static java.lang.String.format;
  *
  * @see #checkVersion(String, Optional, String, String, Optional, boolean)
  */
-public abstract class AbstractFactory<T extends ServiceBase> {
+public abstract class AbstractFactory<T extends com.solidfire.core.client.ServiceBase> {
 
     private static final Logger log = LoggerFactory.getLogger(AbstractFactory.class);
 
@@ -67,7 +65,7 @@ public abstract class AbstractFactory<T extends ServiceBase> {
      * @param requestDispatcher the instantiated RequestBuilder
      * @return the initialized ServiceBase
      */
-    protected abstract T toServiceBase(final RequestDispatcher requestDispatcher);
+    protected abstract T toServiceBase(final com.solidfire.core.client.RequestDispatcher requestDispatcher);
 
     /**
      *
@@ -81,7 +79,7 @@ public abstract class AbstractFactory<T extends ServiceBase> {
      *                   when the target is an IP address.
      * @return an initialized RequestBuilder
      */
-    protected RequestDispatcher buildRequestDispatcher(String target, Optional<Integer> port, String username, String password, Optional<String> apiVersion, boolean verifySSL) {
+    protected com.solidfire.core.client.RequestDispatcher buildRequestDispatcher(String target, Optional<Integer> port, String username, String password, Optional<String> apiVersion, boolean verifySSL) {
 
         final URL endpoint;
         if (apiVersion.isPresent()) {
@@ -91,18 +89,18 @@ public abstract class AbstractFactory<T extends ServiceBase> {
                 version = Double.valueOf(apiVersion.get());
                 endpoint = toEndpoint(target, port, version);
             } catch (NullPointerException | NumberFormatException e) {
-                throw new ApiException("Unable to determine version to connect from value: " + apiVersion.get());
+                throw new com.solidfire.core.client.ApiException("Unable to determine version to connect from value: " + apiVersion.get());
             }
 
         } else {
             endpoint = toEndpoint(target, port, getMinApiVersion());
         }
-        final RequestDispatcher requestDispatcher;
+        final com.solidfire.core.client.RequestDispatcher requestDispatcher;
 
         if (verifySSL) {
-            requestDispatcher = new HttpsRequestDispatcher(endpoint, username, password);
+            requestDispatcher = new com.solidfire.core.client.HttpsRequestDispatcher(endpoint, username, password);
         } else {
-            requestDispatcher = new HttpsRequestDispatcherWithoutSSLVerification(endpoint, username, password);
+            requestDispatcher = new com.solidfire.core.client.HttpsRequestDispatcherWithoutSSLVerification(endpoint, username, password);
         }
 
         return requestDispatcher;
@@ -116,11 +114,11 @@ public abstract class AbstractFactory<T extends ServiceBase> {
      * @param verifySSL  if set to true, the target will be checked against the list of valid SSL hosts, including verification of the
      *                   validity of the Cert recorded for a given target, otherwise these validity checks are ignored, which is useful
      *                   when the target is an IP address.
-     * @throws ApiException when target is in the form of an IP address and verifySSL is true.
+     * @throws com.solidfire.core.client.ApiException when target is in the form of an IP address and verifySSL is true.
      */
     protected static void testTargetFormat(String target, boolean verifySSL) {
         if (target.matches(IP4_ADDRESS_REGEX) && verifySSL) {
-            throw new ApiException("Cannot verify SSL when target is an IP address. Set verifySSL to false or use a fully qualified domain name.");
+            throw new com.solidfire.core.client.ApiException("Cannot verify SSL when target is an IP address. Set verifySSL to false or use a fully qualified domain name.");
         }
     }
 
@@ -169,21 +167,21 @@ public abstract class AbstractFactory<T extends ServiceBase> {
     protected T checkVersion(String target, Optional<Integer> port, String username, String password, Optional<String> version, boolean verifySSL) {
         testTargetFormat(target, verifySSL);
 
-        final RequestDispatcher dispatcher;
+        final com.solidfire.core.client.RequestDispatcher dispatcher;
 
         final T element = toServiceBase(buildRequestDispatcher(target, port, username, password, of(getMinApiVersion()+""), verifySSL));
-        final GetAPIResult getAPIResult = element.sendRequest("GetAPI", new GetAPIRequest(), GetAPIRequest.class, GetAPIResult.class);
+        final GetAPIResult getAPIResult = element.sendRequest("GetAPI", null, null, GetAPIResult.class);
 
         if (version.isPresent()) {
             final double versionActual;
             try {
                 versionActual = Double.valueOf(version.get());
             } catch (NullPointerException | NumberFormatException e) {
-                throw new ApiException("Unable to determine version to connect from value: " + version.get());
+                throw new com.solidfire.core.client.ApiException("Unable to determine version to connect from value: " + version.get());
             }
 
             if (versionActual < getMinApiVersion()) {
-                throw new ApiException(format("Cannot connect to a version lower than supported by the SDK. Connect at %1$.1f or higher.", getMinApiVersion()));
+                throw new com.solidfire.core.client.ApiException(format("Cannot connect to a version lower than supported by the SDK. Connect at %1$.1f or higher.", getMinApiVersion()));
 
             }
 
@@ -198,7 +196,7 @@ public abstract class AbstractFactory<T extends ServiceBase> {
             if (supportedVersions.contains(versionActual)) {
                 dispatcher = buildRequestDispatcher(target, port, username, password, of(versionActual + ""), verifySSL);
             } else {
-                throw new ApiException(format("Invalid version to connect on this cluster. Valid versions are: %s", join(supportedVersions, ", ", "or")));
+                throw new com.solidfire.core.client.ApiException(format("Invalid version to connect on this cluster. Valid versions are: %s", join(supportedVersions, ", ", "or")));
             }
 
             if (versionActual > getMaxApiVersion()) {

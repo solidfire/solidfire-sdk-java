@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "AddVirtualNetwork" API Service call.
+ * AddVirtualNetworkResult  
  **/
-public class AddVirtualNetworkResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1368858823L;
+public class AddVirtualNetworkResult implements Serializable {
 
-    @SerializedName("virtualNetworkID") private final Long virtualNetworkID;
+    public static final long serialVersionUID = -684462985313881144L;
+    @SerializedName("virtualNetworkID") private Long virtualNetworkID;
 
-    /**
-     * The object returned by the "AddVirtualNetwork" API Service call.
-     * @param virtualNetworkID [required] The virtual network ID of the new virtual network.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public AddVirtualNetworkResult(Long virtualNetworkID) {
+    public AddVirtualNetworkResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public AddVirtualNetworkResult(
+        Long virtualNetworkID
+    )
+    {
         this.virtualNetworkID = virtualNetworkID;
     }
 
-
-    /**
+    /** 
      * The virtual network ID of the new virtual network.
      **/
-    public Long getVirtualNetworkID() {
-        return this.virtualNetworkID;
+    public Long getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(Long virtualNetworkID) { 
+        this.virtualNetworkID = virtualNetworkID;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class AddVirtualNetworkResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddVirtualNetworkResult that = (AddVirtualNetworkResult) o;
-        
 
-        return Objects.equals( virtualNetworkID , that.virtualNetworkID );
+        return 
+            Objects.equals(virtualNetworkID, that.virtualNetworkID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) virtualNetworkID );
+        return Objects.hash( virtualNetworkID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("virtualNetworkID", virtualNetworkID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" virtualNetworkID : ").append(virtualNetworkID);
+        sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class AddVirtualNetworkResult  implements Serializable  {
 
         public AddVirtualNetworkResult build() {
             return new AddVirtualNetworkResult (
-                         this.virtualNetworkID            );
+                         this.virtualNetworkID);
         }
 
         private AddVirtualNetworkResult.Builder buildFrom(final AddVirtualNetworkResult req) {
@@ -122,5 +124,4 @@ public class AddVirtualNetworkResult  implements Serializable  {
         }
 
     }
-
 }

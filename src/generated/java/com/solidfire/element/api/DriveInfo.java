@@ -18,109 +18,111 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * DriveInfo  
  **/
-public class DriveInfo  implements Serializable  {
 
-    private static final long serialVersionUID = 1302055454L;
+public class DriveInfo implements Serializable {
 
-    @SerializedName("capacity") private final Long capacity;
-    @SerializedName("driveID") private final Long driveID;
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("serial") private final String serial;
-    @SerializedName("slot") private final Long slot;
-    @SerializedName("status") private final String status;
-    @SerializedName("type") private final String type;
-    @SerializedName("attributes") private final java.util.Map<String, Object> attributes;
+    public static final long serialVersionUID = 7549732089467034997L;
+    @SerializedName("capacity") private Long capacity;
+    @SerializedName("driveID") private Long driveID;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("serial") private String serial;
+    @SerializedName("slot") private Long slot;
+    @SerializedName("status") private String status;
+    @SerializedName("type") private String type;
+    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
-    /**
-     * 
-     * @param capacity [required] Total capacity of the drive, in bytes.
-     * @param driveID [required] DriveID for this drive.
-     * @param nodeID [required] NodeID where this drive is located.
-     * @param serial [required] Drive serial number.
-     * @param slot [required] Slot number in the server chassis where this drive is located, or -1 if SATADimm used for internal metadata drive.
-     * @param status [required] 
-     * @param type [required] 
-     * @param attributes [required] List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public DriveInfo(Long capacity, Long driveID, Long nodeID, String serial, Long slot, String status, String type, java.util.Map<String, Object> attributes) {
-        this.serial = serial;
-        this.attributes = attributes;
-        this.status = status;
-        this.driveID = driveID;
-        this.type = type;
-        this.nodeID = nodeID;
-        this.slot = slot;
+    public DriveInfo() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public DriveInfo(
+        Long capacity,
+        Long driveID,
+        Long nodeID,
+        String serial,
+        Long slot,
+        String status,
+        String type,
+        java.util.Map<String, Object> attributes
+    )
+    {
         this.capacity = capacity;
+        this.driveID = driveID;
+        this.nodeID = nodeID;
+        this.serial = serial;
+        this.slot = slot;
+        this.status = status;
+        this.type = type;
+        this.attributes = attributes;
     }
 
-
-    /**
+    /** 
      * Total capacity of the drive, in bytes.
      **/
-    public Long getCapacity() {
-        return this.capacity;
+    public Long getCapacity() { return this.capacity; }
+    public void setCapacity(Long capacity) { 
+        this.capacity = capacity;
     }
-
-    /**
+    /** 
      * DriveID for this drive.
      **/
-    public Long getDriveID() {
-        return this.driveID;
+    public Long getDriveID() { return this.driveID; }
+    public void setDriveID(Long driveID) { 
+        this.driveID = driveID;
     }
-
-    /**
+    /** 
      * NodeID where this drive is located.
      **/
-    public Long getNodeID() {
-        return this.nodeID;
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
     }
-
-    /**
+    /** 
      * Drive serial number.
      **/
-    public String getSerial() {
-        return this.serial;
+    public String getSerial() { return this.serial; }
+    public void setSerial(String serial) { 
+        this.serial = serial;
     }
-
-    /**
+    /** 
      * Slot number in the server chassis where this drive is located, or -1 if SATADimm used for internal metadata drive.
      **/
-    public Long getSlot() {
-        return this.slot;
+    public Long getSlot() { return this.slot; }
+    public void setSlot(Long slot) { 
+        this.slot = slot;
     }
-    public String getStatus() {
-        return this.status;
+    /** 
+     **/
+    public String getStatus() { return this.status; }
+    public void setStatus(String status) { 
+        this.status = status;
     }
-    public String getType() {
-        return this.type;
+    /** 
+     **/
+    public String getType() { return this.type; }
+    public void setType(String type) { 
+        this.type = type;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() {
-        return this.attributes;
+    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
+    public void setAttributes(java.util.Map<String, Object> attributes) { 
+        this.attributes = attributes;
     }
 
     @Override
@@ -129,23 +131,36 @@ public class DriveInfo  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         DriveInfo that = (DriveInfo) o;
-        
 
-        return Objects.equals( capacity , that.capacity )
-            && Objects.equals( driveID , that.driveID )
-            && Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( serial , that.serial )
-            && Objects.equals( slot , that.slot )
-            && Objects.equals( status , that.status )
-            && Objects.equals( type , that.type )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(capacity, that.capacity) && 
+            Objects.equals(driveID, that.driveID) && 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(serial, that.serial) && 
+            Objects.equals(slot, that.slot) && 
+            Objects.equals(status, that.status) && 
+            Objects.equals(type, that.type) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( capacity, driveID, nodeID, serial, slot, status, type, attributes );
+        return Objects.hash( capacity,driveID,nodeID,serial,slot,status,type,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("capacity", capacity);
+        map.put("driveID", driveID);
+        map.put("nodeID", nodeID);
+        map.put("serial", serial);
+        map.put("slot", slot);
+        map.put("status", status);
+        map.put("type", type);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -159,7 +174,7 @@ public class DriveInfo  implements Serializable  {
         sb.append(" slot : ").append(slot).append(",");
         sb.append(" status : ").append(status).append(",");
         sb.append(" type : ").append(type).append(",");
-        sb.append(" attributes : ").append(attributes);
+        sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -197,7 +212,7 @@ public class DriveInfo  implements Serializable  {
                          this.slot,
                          this.status,
                          this.type,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private DriveInfo.Builder buildFrom(final DriveInfo req) {
@@ -254,5 +269,4 @@ public class DriveInfo  implements Serializable  {
         }
 
     }
-
 }

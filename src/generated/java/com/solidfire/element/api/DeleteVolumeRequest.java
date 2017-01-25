@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "DeleteVolume" API Service call.
+ * DeleteVolumeRequest  
  **/
-public class DeleteVolumeRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 824476152L;
+public class DeleteVolumeRequest implements Serializable {
 
-    @SerializedName("volumeID") private final Long volumeID;
+    public static final long serialVersionUID = 4660109936659112773L;
+    @SerializedName("volumeID") private Long volumeID;
 
-    /**
-     * The Request object for the "DeleteVolume" API Service call.
-     * @param volumeID [required] The ID of the volume to delete.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public DeleteVolumeRequest(Long volumeID) {
+    public DeleteVolumeRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public DeleteVolumeRequest(
+        Long volumeID
+    )
+    {
         this.volumeID = volumeID;
     }
 
-
-    /**
+    /** 
      * The ID of the volume to delete.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class DeleteVolumeRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         DeleteVolumeRequest that = (DeleteVolumeRequest) o;
-        
 
-        return Objects.equals( volumeID , that.volumeID );
+        return 
+            Objects.equals(volumeID, that.volumeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volumeID );
+        return Objects.hash( volumeID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID);
+        sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class DeleteVolumeRequest  implements Serializable  {
 
         public DeleteVolumeRequest build() {
             return new DeleteVolumeRequest (
-                         this.volumeID            );
+                         this.volumeID);
         }
 
         private DeleteVolumeRequest.Builder buildFrom(final DeleteVolumeRequest req) {
@@ -122,5 +124,4 @@ public class DeleteVolumeRequest  implements Serializable  {
         }
 
     }
-
 }

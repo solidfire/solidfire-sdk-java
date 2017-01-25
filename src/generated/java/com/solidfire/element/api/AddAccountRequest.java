@@ -18,86 +18,82 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "AddAccount" API Service call.
+ * AddAccountRequest  
  **/
-public class AddAccountRequest  implements Serializable , IAccountRequest {
 
-    private static final long serialVersionUID = 461883202L;
+public class AddAccountRequest implements Serializable {
 
-    @SerializedName("username") private final String username;
-    @SerializedName("initiatorSecret") private final Optional<CHAPSecret> initiatorSecret;
-    @SerializedName("targetSecret") private final Optional<CHAPSecret> targetSecret;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    public static final long serialVersionUID = 7556277751663032568L;
+    @SerializedName("username") private String username;
+    @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
+    @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "AddAccount" API Service call.
-     * @param username [required] Unique username for this account.
-     * @param initiatorSecret (optional) CHAP secret to use for the initiator.
-     * @param targetSecret (optional) CHAP secret to use for the target (mutual CHAP authentication).
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public AddAccountRequest(String username, Optional<CHAPSecret> initiatorSecret, Optional<CHAPSecret> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
+    public AddAccountRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public AddAccountRequest(
+        String username,
+        Optional<CHAPSecret> initiatorSecret,
+        Optional<CHAPSecret> targetSecret,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.username = username;
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
-
-    /**
+    /** 
      * Unique username for this account.
      * (May be 1 to 64 characters in length).
      **/
-    public String getUsername() {
-        return this.username;
+    public String getUsername() { return this.username; }
+    public void setUsername(String username) { 
+        this.username = username;
     }
-
-    /**
+    /** 
      * CHAP secret to use for the initiator.
      * Should be 12-16 characters long and impenetrable.
      * The CHAP initiator secrets must be unique and cannot be the same as the target CHAP secret.
-     * <br/><br/>
+     * 
      * If not specified, a random secret is created.
      **/
-    public Optional<CHAPSecret> getInitiatorSecret() {
-        return this.initiatorSecret;
+    public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
+    public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) { 
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
     }
-
-    /**
+    /** 
      * CHAP secret to use for the target (mutual CHAP authentication).
      * Should be 12-16 characters long and impenetrable.
      * The CHAP target secrets must be unique and cannot be the same as the initiator CHAP secret.
-     * <br/><br/>
+     * 
      * If not specified, a random secret is created.
      **/
-    public Optional<CHAPSecret> getTargetSecret() {
-        return this.targetSecret;
+    public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
+    public void setTargetSecret(Optional<CHAPSecret> targetSecret) { 
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -106,19 +102,28 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
         if (o == null || getClass() != o.getClass()) return false;
 
         AddAccountRequest that = (AddAccountRequest) o;
-        
 
-        return Objects.equals( username , that.username )
-            && Objects.equals( initiatorSecret , that.initiatorSecret )
-            && Objects.equals( targetSecret , that.targetSecret )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(username, that.username) && 
+            Objects.equals(initiatorSecret, that.initiatorSecret) && 
+            Objects.equals(targetSecret, that.targetSecret) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( username, initiatorSecret, targetSecret, attributes );
+        return Objects.hash( username,initiatorSecret,targetSecret,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("username", username);
+        map.put("initiatorSecret", initiatorSecret);
+        map.put("targetSecret", targetSecret);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -126,12 +131,15 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
         sb.append( "{ " );
 
         sb.append(" username : ").append(username).append(",");
-        if(null != initiatorSecret && initiatorSecret.isPresent())
-            sb.append(" initiatorSecret : ").append(initiatorSecret.get()).append(",");
-        if(null != targetSecret && targetSecret.isPresent())
-            sb.append(" targetSecret : ").append(targetSecret.get()).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        if(null != initiatorSecret && initiatorSecret.isPresent()){
+            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+        }
+        if(null != targetSecret && targetSecret.isPresent()){
+            sb.append(" targetSecret : ").append(targetSecret).append(",");
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -161,7 +169,7 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
                          this.username,
                          this.initiatorSecret,
                          this.targetSecret,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private AddAccountRequest.Builder buildFrom(final AddAccountRequest req) {
@@ -194,5 +202,4 @@ public class AddAccountRequest  implements Serializable , IAccountRequest {
         }
 
     }
-
 }

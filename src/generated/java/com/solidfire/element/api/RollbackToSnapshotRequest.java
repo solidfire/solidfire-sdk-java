@@ -18,89 +18,85 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "RollbackToSnapshot" API Service call.
+ * RollbackToSnapshotRequest  
  **/
-public class RollbackToSnapshotRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1191703517L;
+public class RollbackToSnapshotRequest implements Serializable {
 
-    @SerializedName("volumeID") private final Long volumeID;
-    @SerializedName("snapshotID") private final Long snapshotID;
-    @SerializedName("saveCurrentState") private final Boolean saveCurrentState;
-    @SerializedName("name") private final Optional<String> name;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    public static final long serialVersionUID = 7387529128604457855L;
+    @SerializedName("volumeID") private Long volumeID;
+    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("saveCurrentState") private Boolean saveCurrentState;
+    @SerializedName("name") private Optional<String> name;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The Request object for the "RollbackToSnapshot" API Service call.
-     * @param volumeID [required] VolumeID for the volume.
-     * @param snapshotID [required] ID of a previously created snapshot on the given volume.
-     * @param saveCurrentState [required] <br/><b>true</b>: The previous active volume image is kept.
-     * @param name (optional) Name for the snapshot. If no name is given, then the name of the snapshot being rolled back to is used with 
-     * @param attributes (optional) List of Name/Value pairs in JSON object format
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public RollbackToSnapshotRequest(Long volumeID, Long snapshotID, Boolean saveCurrentState, Optional<String> name, Optional<java.util.Map<String, Object>> attributes) {
-        this.name = (name == null) ? Optional.<String>empty() : name;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
-        this.saveCurrentState = saveCurrentState;
+    public RollbackToSnapshotRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public RollbackToSnapshotRequest(
+        Long volumeID,
+        Long snapshotID,
+        Boolean saveCurrentState,
+        Optional<String> name,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.volumeID = volumeID;
         this.snapshotID = snapshotID;
+        this.saveCurrentState = saveCurrentState;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
-
-    /**
+    /** 
      * VolumeID for the volume.
      **/
-    public Long getVolumeID() {
-        return this.volumeID;
+    public Long getVolumeID() { return this.volumeID; }
+    public void setVolumeID(Long volumeID) { 
+        this.volumeID = volumeID;
     }
-
-    /**
+    /** 
      * ID of a previously created snapshot on the given volume.
      **/
-    public Long getSnapshotID() {
-        return this.snapshotID;
+    public Long getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Long snapshotID) { 
+        this.snapshotID = snapshotID;
     }
-
-    /**
-     * <br/><b>true</b>: The previous active volume image is kept.
-     * <br/><b>false</b>: (default) The previous active volume image is deleted.
+    /** 
+     * true: The previous active volume image is kept.
+     * false: (default) The previous active volume image is deleted.
      **/
-    public Boolean getSaveCurrentState() {
-        return this.saveCurrentState;
+    public Boolean getSaveCurrentState() { return this.saveCurrentState; }
+    public void setSaveCurrentState(Boolean saveCurrentState) { 
+        this.saveCurrentState = saveCurrentState;
     }
-
-    /**
+    /** 
      * Name for the snapshot. If no name is given, then the name of the snapshot being rolled back to is used with 
      * "-copy" appended to the end of the name.
      **/
-    public Optional<String> getName() {
-        return this.name;
+    public Optional<String> getName() { return this.name; }
+    public void setName(Optional<String> name) { 
+        this.name = (name == null) ? Optional.<String>empty() : name;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -109,20 +105,30 @@ public class RollbackToSnapshotRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         RollbackToSnapshotRequest that = (RollbackToSnapshotRequest) o;
-        
 
-        return Objects.equals( volumeID , that.volumeID )
-            && Objects.equals( snapshotID , that.snapshotID )
-            && Objects.equals( saveCurrentState , that.saveCurrentState )
-            && Objects.equals( name , that.name )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(snapshotID, that.snapshotID) && 
+            Objects.equals(saveCurrentState, that.saveCurrentState) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID, snapshotID, saveCurrentState, name, attributes );
+        return Objects.hash( volumeID,snapshotID,saveCurrentState,name,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeID", volumeID);
+        map.put("snapshotID", snapshotID);
+        map.put("saveCurrentState", saveCurrentState);
+        map.put("name", name);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -132,10 +138,12 @@ public class RollbackToSnapshotRequest  implements Serializable  {
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" snapshotID : ").append(snapshotID).append(",");
         sb.append(" saveCurrentState : ").append(saveCurrentState).append(",");
-        if(null != name && name.isPresent())
-            sb.append(" name : ").append(name.get()).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        if(null != name && name.isPresent()){
+            sb.append(" name : ").append(name).append(",");
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -167,7 +175,7 @@ public class RollbackToSnapshotRequest  implements Serializable  {
                          this.snapshotID,
                          this.saveCurrentState,
                          this.name,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private RollbackToSnapshotRequest.Builder buildFrom(final RollbackToSnapshotRequest req) {
@@ -206,5 +214,4 @@ public class RollbackToSnapshotRequest  implements Serializable  {
         }
 
     }
-
 }

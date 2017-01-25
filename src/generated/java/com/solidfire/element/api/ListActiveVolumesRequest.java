@@ -18,59 +18,55 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ListActiveVolumes" API Service call.
+ * ListActiveVolumesRequest  
  **/
-public class ListActiveVolumesRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1455059609L;
+public class ListActiveVolumesRequest implements Serializable {
 
-    @SerializedName("startVolumeID") private final Optional<Long> startVolumeID;
-    @SerializedName("limit") private final Optional<Long> limit;
+    public static final long serialVersionUID = 4826675269592232446L;
+    @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
+    @SerializedName("limit") private Optional<Long> limit;
 
-    /**
-     * The Request object for the "ListActiveVolumes" API Service call.
-     * @param startVolumeID (optional) The ID of the first volume to list.
-     * @param limit (optional) The maximum number of volumes to return from the API.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListActiveVolumesRequest(Optional<Long> startVolumeID, Optional<Long> limit) {
+    public ListActiveVolumesRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListActiveVolumesRequest(
+        Optional<Long> startVolumeID,
+        Optional<Long> limit
+    )
+    {
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
-
-    /**
+    /** 
      * The ID of the first volume to list.
      * This can be useful for paging results.
      * By default, this starts at the lowest VolumeID.
      **/
-    public Optional<Long> getStartVolumeID() {
-        return this.startVolumeID;
+    public Optional<Long> getStartVolumeID() { return this.startVolumeID; }
+    public void setStartVolumeID(Optional<Long> startVolumeID) { 
+        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
     }
-
-    /**
+    /** 
      * The maximum number of volumes to return from the API.
      **/
-    public Optional<Long> getLimit() {
-        return this.limit;
+    public Optional<Long> getLimit() { return this.limit; }
+    public void setLimit(Optional<Long> limit) { 
+        this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
     @Override
@@ -79,27 +75,36 @@ public class ListActiveVolumesRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListActiveVolumesRequest that = (ListActiveVolumesRequest) o;
-        
 
-        return Objects.equals( startVolumeID , that.startVolumeID )
-            && Objects.equals( limit , that.limit );
+        return 
+            Objects.equals(startVolumeID, that.startVolumeID) && 
+            Objects.equals(limit, that.limit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( startVolumeID, limit );
+        return Objects.hash( startVolumeID,limit );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("startVolumeID", startVolumeID);
+        map.put("limit", limit);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != startVolumeID && startVolumeID.isPresent())
-            sb.append(" startVolumeID : ").append(startVolumeID.get()).append(",");
-        if(null != limit && limit.isPresent())
-            sb.append(" limit : ").append(limit.get());
+        if(null != startVolumeID && startVolumeID.isPresent()){
+            sb.append(" startVolumeID : ").append(startVolumeID).append(",");
+        }
+        if(null != limit && limit.isPresent()){
+            sb.append(" limit : ").append(limit).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -125,7 +130,7 @@ public class ListActiveVolumesRequest  implements Serializable  {
         public ListActiveVolumesRequest build() {
             return new ListActiveVolumesRequest (
                          this.startVolumeID,
-                         this.limit            );
+                         this.limit);
         }
 
         private ListActiveVolumesRequest.Builder buildFrom(final ListActiveVolumesRequest req) {
@@ -146,5 +151,4 @@ public class ListActiveVolumesRequest  implements Serializable  {
         }
 
     }
-
 }

@@ -18,79 +18,96 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * PhysicalAdapter  
  **/
-public class PhysicalAdapter  implements Serializable  {
 
-    private static final long serialVersionUID = -669387540L;
+public class PhysicalAdapter implements Serializable {
 
-    @SerializedName("address") private final Optional<String> address;
-    @SerializedName("macAddress") private final Optional<String> macAddress;
-    @SerializedName("macAddressPermanent") private final Optional<String> macAddressPermanent;
-    @SerializedName("mtu") private final Optional<String> mtu;
-    @SerializedName("netmask") private final Optional<String> netmask;
-    @SerializedName("network") private final Optional<String> network;
-    @SerializedName("upAndRunning") private final Optional<Boolean> upAndRunning;
+    public static final long serialVersionUID = -950225984887038109L;
+    @SerializedName("address") private Optional<String> address;
+    @SerializedName("macAddress") private Optional<String> macAddress;
+    @SerializedName("macAddressPermanent") private Optional<String> macAddressPermanent;
+    @SerializedName("mtu") private Optional<String> mtu;
+    @SerializedName("netmask") private Optional<String> netmask;
+    @SerializedName("network") private Optional<String> network;
+    @SerializedName("upAndRunning") private Optional<Boolean> upAndRunning;
 
-    /**
-     * 
-     * @param address (optional) 
-     * @param macAddress (optional) 
-     * @param macAddressPermanent (optional) 
-     * @param mtu (optional) 
-     * @param netmask (optional) 
-     * @param network (optional) 
-     * @param upAndRunning (optional) 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public PhysicalAdapter(Optional<String> address, Optional<String> macAddress, Optional<String> macAddressPermanent, Optional<String> mtu, Optional<String> netmask, Optional<String> network, Optional<Boolean> upAndRunning) {
-        this.network = (network == null) ? Optional.<String>empty() : network;
+    public PhysicalAdapter() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public PhysicalAdapter(
+        Optional<String> address,
+        Optional<String> macAddress,
+        Optional<String> macAddressPermanent,
+        Optional<String> mtu,
+        Optional<String> netmask,
+        Optional<String> network,
+        Optional<Boolean> upAndRunning
+    )
+    {
+        this.address = (address == null) ? Optional.<String>empty() : address;
         this.macAddress = (macAddress == null) ? Optional.<String>empty() : macAddress;
         this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : macAddressPermanent;
-        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
-        this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
         this.mtu = (mtu == null) ? Optional.<String>empty() : mtu;
-        this.address = (address == null) ? Optional.<String>empty() : address;
+        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
+        this.network = (network == null) ? Optional.<String>empty() : network;
+        this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
     }
 
-    public Optional<String> getAddress() {
-        return this.address;
+    /** 
+     **/
+    public Optional<String> getAddress() { return this.address; }
+    public void setAddress(Optional<String> address) { 
+        this.address = (address == null) ? Optional.<String>empty() : address;
     }
-    public Optional<String> getMacAddress() {
-        return this.macAddress;
+    /** 
+     **/
+    public Optional<String> getMacAddress() { return this.macAddress; }
+    public void setMacAddress(Optional<String> macAddress) { 
+        this.macAddress = (macAddress == null) ? Optional.<String>empty() : macAddress;
     }
-    public Optional<String> getMacAddressPermanent() {
-        return this.macAddressPermanent;
+    /** 
+     **/
+    public Optional<String> getMacAddressPermanent() { return this.macAddressPermanent; }
+    public void setMacAddressPermanent(Optional<String> macAddressPermanent) { 
+        this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : macAddressPermanent;
     }
-    public Optional<String> getMtu() {
-        return this.mtu;
+    /** 
+     **/
+    public Optional<String> getMtu() { return this.mtu; }
+    public void setMtu(Optional<String> mtu) { 
+        this.mtu = (mtu == null) ? Optional.<String>empty() : mtu;
     }
-    public Optional<String> getNetmask() {
-        return this.netmask;
+    /** 
+     **/
+    public Optional<String> getNetmask() { return this.netmask; }
+    public void setNetmask(Optional<String> netmask) { 
+        this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
     }
-    public Optional<String> getNetwork() {
-        return this.network;
+    /** 
+     **/
+    public Optional<String> getNetwork() { return this.network; }
+    public void setNetwork(Optional<String> network) { 
+        this.network = (network == null) ? Optional.<String>empty() : network;
     }
-    public Optional<Boolean> getUpAndRunning() {
-        return this.upAndRunning;
+    /** 
+     **/
+    public Optional<Boolean> getUpAndRunning() { return this.upAndRunning; }
+    public void setUpAndRunning(Optional<Boolean> upAndRunning) { 
+        this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
     }
 
     @Override
@@ -99,42 +116,61 @@ public class PhysicalAdapter  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         PhysicalAdapter that = (PhysicalAdapter) o;
-        
 
-        return Objects.equals( address , that.address )
-            && Objects.equals( macAddress , that.macAddress )
-            && Objects.equals( macAddressPermanent , that.macAddressPermanent )
-            && Objects.equals( mtu , that.mtu )
-            && Objects.equals( netmask , that.netmask )
-            && Objects.equals( network , that.network )
-            && Objects.equals( upAndRunning , that.upAndRunning );
+        return 
+            Objects.equals(address, that.address) && 
+            Objects.equals(macAddress, that.macAddress) && 
+            Objects.equals(macAddressPermanent, that.macAddressPermanent) && 
+            Objects.equals(mtu, that.mtu) && 
+            Objects.equals(netmask, that.netmask) && 
+            Objects.equals(network, that.network) && 
+            Objects.equals(upAndRunning, that.upAndRunning);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( address, macAddress, macAddressPermanent, mtu, netmask, network, upAndRunning );
+        return Objects.hash( address,macAddress,macAddressPermanent,mtu,netmask,network,upAndRunning );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("address", address);
+        map.put("macAddress", macAddress);
+        map.put("macAddressPermanent", macAddressPermanent);
+        map.put("mtu", mtu);
+        map.put("netmask", netmask);
+        map.put("network", network);
+        map.put("upAndRunning", upAndRunning);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != address && address.isPresent())
-            sb.append(" address : ").append(address.get()).append(",");
-        if(null != macAddress && macAddress.isPresent())
-            sb.append(" macAddress : ").append(macAddress.get()).append(",");
-        if(null != macAddressPermanent && macAddressPermanent.isPresent())
-            sb.append(" macAddressPermanent : ").append(macAddressPermanent.get()).append(",");
-        if(null != mtu && mtu.isPresent())
-            sb.append(" mtu : ").append(mtu.get()).append(",");
-        if(null != netmask && netmask.isPresent())
-            sb.append(" netmask : ").append(netmask.get()).append(",");
-        if(null != network && network.isPresent())
-            sb.append(" network : ").append(network.get()).append(",");
-        if(null != upAndRunning && upAndRunning.isPresent())
-            sb.append(" upAndRunning : ").append(upAndRunning.get());
+        if(null != address && address.isPresent()){
+            sb.append(" address : ").append(address).append(",");
+        }
+        if(null != macAddress && macAddress.isPresent()){
+            sb.append(" macAddress : ").append(macAddress).append(",");
+        }
+        if(null != macAddressPermanent && macAddressPermanent.isPresent()){
+            sb.append(" macAddressPermanent : ").append(macAddressPermanent).append(",");
+        }
+        if(null != mtu && mtu.isPresent()){
+            sb.append(" mtu : ").append(mtu).append(",");
+        }
+        if(null != netmask && netmask.isPresent()){
+            sb.append(" netmask : ").append(netmask).append(",");
+        }
+        if(null != network && network.isPresent()){
+            sb.append(" network : ").append(network).append(",");
+        }
+        if(null != upAndRunning && upAndRunning.isPresent()){
+            sb.append(" upAndRunning : ").append(upAndRunning).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -170,7 +206,7 @@ public class PhysicalAdapter  implements Serializable  {
                          this.mtu,
                          this.netmask,
                          this.network,
-                         this.upAndRunning            );
+                         this.upAndRunning);
         }
 
         private PhysicalAdapter.Builder buildFrom(final PhysicalAdapter req) {
@@ -221,5 +257,4 @@ public class PhysicalAdapter  implements Serializable  {
         }
 
     }
-
 }

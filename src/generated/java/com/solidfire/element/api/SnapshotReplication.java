@@ -18,57 +18,53 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * 
+ * SnapshotReplication  
  **/
-public class SnapshotReplication  implements Serializable  {
 
-    private static final long serialVersionUID = 2109559456L;
+public class SnapshotReplication implements Serializable {
 
-    @SerializedName("state") private final String state;
-    @SerializedName("stateDetails") private final String stateDetails;
+    public static final long serialVersionUID = 2102476646550090901L;
+    @SerializedName("state") private String state;
+    @SerializedName("stateDetails") private String stateDetails;
 
-    /**
-     * 
-     * @param state [required] The state of the snapshot replication.
-     * @param stateDetails [required] Reserved for future use.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public SnapshotReplication(String state, String stateDetails) {
+    public SnapshotReplication() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public SnapshotReplication(
+        String state,
+        String stateDetails
+    )
+    {
         this.state = state;
         this.stateDetails = stateDetails;
     }
 
-
-    /**
+    /** 
      * The state of the snapshot replication.
      **/
-    public String getState() {
-        return this.state;
+    public String getState() { return this.state; }
+    public void setState(String state) { 
+        this.state = state;
     }
-
-    /**
+    /** 
      * Reserved for future use.
      **/
-    public String getStateDetails() {
-        return this.stateDetails;
+    public String getStateDetails() { return this.stateDetails; }
+    public void setStateDetails(String stateDetails) { 
+        this.stateDetails = stateDetails;
     }
 
     @Override
@@ -77,17 +73,24 @@ public class SnapshotReplication  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         SnapshotReplication that = (SnapshotReplication) o;
-        
 
-        return Objects.equals( state , that.state )
-            && Objects.equals( stateDetails , that.stateDetails );
+        return 
+            Objects.equals(state, that.state) && 
+            Objects.equals(stateDetails, that.stateDetails);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( state, stateDetails );
+        return Objects.hash( state,stateDetails );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("state", state);
+        map.put("stateDetails", stateDetails);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +98,7 @@ public class SnapshotReplication  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" state : ").append(state).append(",");
-        sb.append(" stateDetails : ").append(stateDetails);
+        sb.append(" stateDetails : ").append(stateDetails).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +124,7 @@ public class SnapshotReplication  implements Serializable  {
         public SnapshotReplication build() {
             return new SnapshotReplication (
                          this.state,
-                         this.stateDetails            );
+                         this.stateDetails);
         }
 
         private SnapshotReplication.Builder buildFrom(final SnapshotReplication req) {
@@ -142,5 +145,4 @@ public class SnapshotReplication  implements Serializable  {
         }
 
     }
-
 }

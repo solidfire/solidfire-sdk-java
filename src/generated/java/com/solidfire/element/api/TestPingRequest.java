@@ -18,87 +18,83 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "TestPing" API Service call.
+ * TestPingRequest  
  **/
-public class TestPingRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -966237040L;
+public class TestPingRequest implements Serializable {
 
-    @SerializedName("attempts") private final Optional<Long> attempts;
-    @SerializedName("hosts") private final Optional<String> hosts;
-    @SerializedName("totalTimeoutSec") private final Optional<Long> totalTimeoutSec;
-    @SerializedName("packetSize") private final Optional<Long> packetSize;
-    @SerializedName("pingTimeoutMsec") private final Optional<Long> pingTimeoutMsec;
+    public static final long serialVersionUID = 8242775352369429256L;
+    @SerializedName("attempts") private Optional<Long> attempts;
+    @SerializedName("hosts") private Optional<String> hosts;
+    @SerializedName("totalTimeoutSec") private Optional<Long> totalTimeoutSec;
+    @SerializedName("packetSize") private Optional<Long> packetSize;
+    @SerializedName("pingTimeoutMsec") private Optional<Long> pingTimeoutMsec;
 
-    /**
-     * The Request object for the "TestPing" API Service call.
-     * @param attempts (optional) Specifies the number of times the system should repeat the test ping. Default is 5.
-     * @param hosts (optional) Specify address or hostnames of devices to ping.
-     * @param totalTimeoutSec (optional) Specifies the length of time the ping should wait for a system response before issuing the next ping attempt or ending the process.
-     * @param packetSize (optional) Specify the number of bytes to send in the ICMP packet sent to each IP. Number be less than the maximum MTU specified in the network configuration.
-     * @param pingTimeoutMsec (optional) Specify the number of milliseconds to wait for each individual ping response. Default is 500ms.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public TestPingRequest(Optional<Long> attempts, Optional<String> hosts, Optional<Long> totalTimeoutSec, Optional<Long> packetSize, Optional<Long> pingTimeoutMsec) {
+    public TestPingRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public TestPingRequest(
+        Optional<Long> attempts,
+        Optional<String> hosts,
+        Optional<Long> totalTimeoutSec,
+        Optional<Long> packetSize,
+        Optional<Long> pingTimeoutMsec
+    )
+    {
         this.attempts = (attempts == null) ? Optional.<Long>empty() : attempts;
-        this.packetSize = (packetSize == null) ? Optional.<Long>empty() : packetSize;
         this.hosts = (hosts == null) ? Optional.<String>empty() : hosts;
-        this.pingTimeoutMsec = (pingTimeoutMsec == null) ? Optional.<Long>empty() : pingTimeoutMsec;
         this.totalTimeoutSec = (totalTimeoutSec == null) ? Optional.<Long>empty() : totalTimeoutSec;
+        this.packetSize = (packetSize == null) ? Optional.<Long>empty() : packetSize;
+        this.pingTimeoutMsec = (pingTimeoutMsec == null) ? Optional.<Long>empty() : pingTimeoutMsec;
     }
 
-
-    /**
+    /** 
      * Specifies the number of times the system should repeat the test ping. Default is 5.
      **/
-    public Optional<Long> getAttempts() {
-        return this.attempts;
+    public Optional<Long> getAttempts() { return this.attempts; }
+    public void setAttempts(Optional<Long> attempts) { 
+        this.attempts = (attempts == null) ? Optional.<Long>empty() : attempts;
     }
-
-    /**
+    /** 
      * Specify address or hostnames of devices to ping.
      **/
-    public Optional<String> getHosts() {
-        return this.hosts;
+    public Optional<String> getHosts() { return this.hosts; }
+    public void setHosts(Optional<String> hosts) { 
+        this.hosts = (hosts == null) ? Optional.<String>empty() : hosts;
     }
-
-    /**
+    /** 
      * Specifies the length of time the ping should wait for a system response before issuing the next ping attempt or ending the process.
      **/
-    public Optional<Long> getTotalTimeoutSec() {
-        return this.totalTimeoutSec;
+    public Optional<Long> getTotalTimeoutSec() { return this.totalTimeoutSec; }
+    public void setTotalTimeoutSec(Optional<Long> totalTimeoutSec) { 
+        this.totalTimeoutSec = (totalTimeoutSec == null) ? Optional.<Long>empty() : totalTimeoutSec;
     }
-
-    /**
+    /** 
      * Specify the number of bytes to send in the ICMP packet sent to each IP. Number be less than the maximum MTU specified in the network configuration.
      **/
-    public Optional<Long> getPacketSize() {
-        return this.packetSize;
+    public Optional<Long> getPacketSize() { return this.packetSize; }
+    public void setPacketSize(Optional<Long> packetSize) { 
+        this.packetSize = (packetSize == null) ? Optional.<Long>empty() : packetSize;
     }
-
-    /**
+    /** 
      * Specify the number of milliseconds to wait for each individual ping response. Default is 500ms.
      **/
-    public Optional<Long> getPingTimeoutMsec() {
-        return this.pingTimeoutMsec;
+    public Optional<Long> getPingTimeoutMsec() { return this.pingTimeoutMsec; }
+    public void setPingTimeoutMsec(Optional<Long> pingTimeoutMsec) { 
+        this.pingTimeoutMsec = (pingTimeoutMsec == null) ? Optional.<Long>empty() : pingTimeoutMsec;
     }
 
     @Override
@@ -107,36 +103,51 @@ public class TestPingRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         TestPingRequest that = (TestPingRequest) o;
-        
 
-        return Objects.equals( attempts , that.attempts )
-            && Objects.equals( hosts , that.hosts )
-            && Objects.equals( totalTimeoutSec , that.totalTimeoutSec )
-            && Objects.equals( packetSize , that.packetSize )
-            && Objects.equals( pingTimeoutMsec , that.pingTimeoutMsec );
+        return 
+            Objects.equals(attempts, that.attempts) && 
+            Objects.equals(hosts, that.hosts) && 
+            Objects.equals(totalTimeoutSec, that.totalTimeoutSec) && 
+            Objects.equals(packetSize, that.packetSize) && 
+            Objects.equals(pingTimeoutMsec, that.pingTimeoutMsec);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( attempts, hosts, totalTimeoutSec, packetSize, pingTimeoutMsec );
+        return Objects.hash( attempts,hosts,totalTimeoutSec,packetSize,pingTimeoutMsec );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("attempts", attempts);
+        map.put("hosts", hosts);
+        map.put("totalTimeoutSec", totalTimeoutSec);
+        map.put("packetSize", packetSize);
+        map.put("pingTimeoutMsec", pingTimeoutMsec);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != attempts && attempts.isPresent())
-            sb.append(" attempts : ").append(attempts.get()).append(",");
-        if(null != hosts && hosts.isPresent())
-            sb.append(" hosts : ").append(hosts.get()).append(",");
-        if(null != totalTimeoutSec && totalTimeoutSec.isPresent())
-            sb.append(" totalTimeoutSec : ").append(totalTimeoutSec.get()).append(",");
-        if(null != packetSize && packetSize.isPresent())
-            sb.append(" packetSize : ").append(packetSize.get()).append(",");
-        if(null != pingTimeoutMsec && pingTimeoutMsec.isPresent())
-            sb.append(" pingTimeoutMsec : ").append(pingTimeoutMsec.get());
+        if(null != attempts && attempts.isPresent()){
+            sb.append(" attempts : ").append(attempts).append(",");
+        }
+        if(null != hosts && hosts.isPresent()){
+            sb.append(" hosts : ").append(hosts).append(",");
+        }
+        if(null != totalTimeoutSec && totalTimeoutSec.isPresent()){
+            sb.append(" totalTimeoutSec : ").append(totalTimeoutSec).append(",");
+        }
+        if(null != packetSize && packetSize.isPresent()){
+            sb.append(" packetSize : ").append(packetSize).append(",");
+        }
+        if(null != pingTimeoutMsec && pingTimeoutMsec.isPresent()){
+            sb.append(" pingTimeoutMsec : ").append(pingTimeoutMsec).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -168,7 +179,7 @@ public class TestPingRequest  implements Serializable  {
                          this.hosts,
                          this.totalTimeoutSec,
                          this.packetSize,
-                         this.pingTimeoutMsec            );
+                         this.pingTimeoutMsec);
         }
 
         private TestPingRequest.Builder buildFrom(final TestPingRequest req) {
@@ -207,5 +218,4 @@ public class TestPingRequest  implements Serializable  {
         }
 
     }
-
 }

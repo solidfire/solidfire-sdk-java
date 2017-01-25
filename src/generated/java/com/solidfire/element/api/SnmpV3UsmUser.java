@@ -18,92 +18,89 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * SnmpV3UsmUser  
  * The SNMP v3 usmUser object is used with the API method SetSnmpInfo to configure SNMP on the cluster.
  **/
-public class SnmpV3UsmUser  implements Serializable  {
 
-    private static final long serialVersionUID = -2017812210L;
+public class SnmpV3UsmUser implements Serializable {
 
-    @SerializedName("access") private final String access;
-    @SerializedName("name") private final String name;
-    @SerializedName("password") private final String password;
-    @SerializedName("passphrase") private final String passphrase;
-    @SerializedName("secLevel") private final String secLevel;
+    public static final long serialVersionUID = 4809109003511391850L;
+    @SerializedName("access") private String access;
+    @SerializedName("name") private String name;
+    @SerializedName("password") private String password;
+    @SerializedName("passphrase") private String passphrase;
+    @SerializedName("secLevel") private String secLevel;
 
-    /**
-     * The SNMP v3 usmUser object is used with the API method SetSnmpInfo to configure SNMP on the cluster.
-     * @param access [required] <br/><b>rouser</b>: read-only access.*
-     * @param name [required] The name of the user. Must contain at least one character, but no more than 32 characters. Blank spaces are not allowed.
-     * @param password [required] The password of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "auth" or "priv."
-     * @param passphrase [required] The passphrase of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "priv."
-     * @param secLevel [required] <br/><b>noauth</b>: No password or passphrase is required.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public SnmpV3UsmUser(String access, String name, String password, String passphrase, String secLevel) {
+    public SnmpV3UsmUser() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public SnmpV3UsmUser(
+        String access,
+        String name,
+        String password,
+        String passphrase,
+        String secLevel
+    )
+    {
+        this.access = access;
         this.name = name;
+        this.password = password;
         this.passphrase = passphrase;
         this.secLevel = secLevel;
-        this.access = access;
-        this.password = password;
     }
 
-
-    /**
-     * <br/><b>rouser</b>: read-only access.*
-     * <br/><b>rwuser</b>: for read-write access.
-     * <br/><b>rosys</b>: for read-only access to a restricted set of system information
+    /** 
+     * rouser: read-only access.*
+     * rwuser: for read-write access.
+     * rosys: for read-only access to a restricted set of system information
      * *SolidFire recommends that all USM users be set to "rouser" access, because all SolidFire MIB objects are read-only.
      **/
-    public String getAccess() {
-        return this.access;
+    public String getAccess() { return this.access; }
+    public void setAccess(String access) { 
+        this.access = access;
     }
-
-    /**
+    /** 
      * The name of the user. Must contain at least one character, but no more than 32 characters. Blank spaces are not allowed.
      **/
-    public String getName() {
-        return this.name;
+    public String getName() { return this.name; }
+    public void setName(String name) { 
+        this.name = name;
     }
-
-    /**
+    /** 
      * The password of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "auth" or "priv."
      **/
-    public String getPassword() {
-        return this.password;
+    public String getPassword() { return this.password; }
+    public void setPassword(String password) { 
+        this.password = password;
     }
-
-    /**
+    /** 
      * The passphrase of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "priv."
      **/
-    public String getPassphrase() {
-        return this.passphrase;
+    public String getPassphrase() { return this.passphrase; }
+    public void setPassphrase(String passphrase) { 
+        this.passphrase = passphrase;
     }
-
-    /**
-     * <br/><b>noauth</b>: No password or passphrase is required.
-     * <br/><b>auth</b>: A password is required for user access.
-     * <br/><b>priv</b>: A password and passphrase is required for user access.
+    /** 
+     * noauth: No password or passphrase is required.
+     * auth: A password is required for user access.
+     * priv: A password and passphrase is required for user access.
      **/
-    public String getSecLevel() {
-        return this.secLevel;
+    public String getSecLevel() { return this.secLevel; }
+    public void setSecLevel(String secLevel) { 
+        this.secLevel = secLevel;
     }
 
     @Override
@@ -112,20 +109,30 @@ public class SnmpV3UsmUser  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         SnmpV3UsmUser that = (SnmpV3UsmUser) o;
-        
 
-        return Objects.equals( access , that.access )
-            && Objects.equals( name , that.name )
-            && Objects.equals( password , that.password )
-            && Objects.equals( passphrase , that.passphrase )
-            && Objects.equals( secLevel , that.secLevel );
+        return 
+            Objects.equals(access, that.access) && 
+            Objects.equals(name, that.name) && 
+            Objects.equals(password, that.password) && 
+            Objects.equals(passphrase, that.passphrase) && 
+            Objects.equals(secLevel, that.secLevel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( access, name, password, passphrase, secLevel );
+        return Objects.hash( access,name,password,passphrase,secLevel );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("access", access);
+        map.put("name", name);
+        map.put("password", password);
+        map.put("passphrase", passphrase);
+        map.put("secLevel", secLevel);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -136,7 +143,7 @@ public class SnmpV3UsmUser  implements Serializable  {
         sb.append(" name : ").append(name).append(",");
         sb.append(" password : ").append(password).append(",");
         sb.append(" passphrase : ").append(passphrase).append(",");
-        sb.append(" secLevel : ").append(secLevel);
+        sb.append(" secLevel : ").append(secLevel).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -168,7 +175,7 @@ public class SnmpV3UsmUser  implements Serializable  {
                          this.name,
                          this.password,
                          this.passphrase,
-                         this.secLevel            );
+                         this.secLevel);
         }
 
         private SnmpV3UsmUser.Builder buildFrom(final SnmpV3UsmUser req) {
@@ -207,5 +214,4 @@ public class SnmpV3UsmUser  implements Serializable  {
         }
 
     }
-
 }

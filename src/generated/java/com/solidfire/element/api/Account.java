@@ -18,108 +18,105 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * Account  
  * The object containing information about an account.
+ * This object only includes "configured" information about the account, not any runtime or usage information.
  **/
-public class Account  implements Serializable  {
 
-    private static final long serialVersionUID = 2129640835L;
+public class Account implements Serializable {
 
-    @SerializedName("accountID") private final Long accountID;
-    @SerializedName("username") private final String username;
-    @SerializedName("status") private final String status;
-    @SerializedName("volumes") private final Long[] volumes;
-    @SerializedName("initiatorSecret") private final Optional<CHAPSecret> initiatorSecret;
-    @SerializedName("targetSecret") private final Optional<CHAPSecret> targetSecret;
-    @SerializedName("attributes") private final Optional<java.util.Map<String, Object>> attributes;
+    public static final long serialVersionUID = 6182745512723579970L;
+    @SerializedName("accountID") private Long accountID;
+    @SerializedName("username") private String username;
+    @SerializedName("status") private String status;
+    @SerializedName("volumes") private Long[] volumes;
+    @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
+    @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
-    /**
-     * The object containing information about an account.
-     * This object only includes "configured" information about the account, not any runtime or usage information.
-     * @param accountID [required] Unique AccountID for the account.
-     * @param username [required] User name for the account.
-     * @param status [required] Current status of the account.
-     * @param volumes [required] List of VolumeIDs for Volumes owned by this account.
-     * @param initiatorSecret (optional) CHAP secret to use for the initiator.
-     * @param targetSecret (optional) CHAP secret to use for the target (mutual CHAP authentication).
-     * @param attributes (optional) List of Name/Value pairs in JSON object format.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public Account(Long accountID, String username, String status, Long[] volumes, Optional<CHAPSecret> initiatorSecret, Optional<CHAPSecret> targetSecret, Optional<java.util.Map<String, Object>> attributes) {
-        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
-        this.username = username;
-        this.volumes = volumes;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Account() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public Account(
+        Long accountID,
+        String username,
+        String status,
+        Long[] volumes,
+        Optional<CHAPSecret> initiatorSecret,
+        Optional<CHAPSecret> targetSecret,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
         this.accountID = accountID;
+        this.username = username;
         this.status = status;
+        this.volumes = volumes;
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
-
-    /**
+    /** 
      * Unique AccountID for the account.
      **/
-    public Long getAccountID() {
-        return this.accountID;
+    public Long getAccountID() { return this.accountID; }
+    public void setAccountID(Long accountID) { 
+        this.accountID = accountID;
     }
-
-    /**
+    /** 
      * User name for the account.
      **/
-    public String getUsername() {
-        return this.username;
+    public String getUsername() { return this.username; }
+    public void setUsername(String username) { 
+        this.username = username;
     }
-
-    /**
+    /** 
      * Current status of the account.
      **/
-    public String getStatus() {
-        return this.status;
+    public String getStatus() { return this.status; }
+    public void setStatus(String status) { 
+        this.status = status;
     }
-
-    /**
+    /** 
      * List of VolumeIDs for Volumes owned by this account.
      **/
-    public Long[] getVolumes() {
-        return this.volumes;
+    public Long[] getVolumes() { return this.volumes; }
+    public void setVolumes(Long[] volumes) { 
+        this.volumes = volumes;
     }
-
-    /**
+    /** 
      * CHAP secret to use for the initiator.
      **/
-    public Optional<CHAPSecret> getInitiatorSecret() {
-        return this.initiatorSecret;
+    public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
+    public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) { 
+        this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
     }
-
-    /**
+    /** 
      * CHAP secret to use for the target (mutual CHAP authentication).
      **/
-    public Optional<CHAPSecret> getTargetSecret() {
-        return this.targetSecret;
+    public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
+    public void setTargetSecret(Optional<CHAPSecret> targetSecret) { 
+        this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
-
-    /**
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() {
-        return this.attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -128,22 +125,34 @@ public class Account  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         Account that = (Account) o;
-        
 
-        return Objects.equals( accountID , that.accountID )
-            && Objects.equals( username , that.username )
-            && Objects.equals( status , that.status )
-            && Objects.deepEquals( volumes , that.volumes )
-            && Objects.equals( initiatorSecret , that.initiatorSecret )
-            && Objects.equals( targetSecret , that.targetSecret )
-            && Objects.equals( attributes , that.attributes );
+        return 
+            Objects.equals(accountID, that.accountID) && 
+            Objects.equals(username, that.username) && 
+            Objects.equals(status, that.status) && 
+            Arrays.equals(volumes, that.volumes) && 
+            Objects.equals(initiatorSecret, that.initiatorSecret) && 
+            Objects.equals(targetSecret, that.targetSecret) && 
+            Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID, username, status, volumes, initiatorSecret, targetSecret, attributes );
+        return Objects.hash( accountID,username,status,(Object[])volumes,initiatorSecret,targetSecret,attributes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("accountID", accountID);
+        map.put("username", username);
+        map.put("status", status);
+        map.put("volumes", volumes);
+        map.put("initiatorSecret", initiatorSecret);
+        map.put("targetSecret", targetSecret);
+        map.put("attributes", attributes);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -154,12 +163,15 @@ public class Account  implements Serializable  {
         sb.append(" username : ").append(username).append(",");
         sb.append(" status : ").append(status).append(",");
         sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
-        if(null != initiatorSecret && initiatorSecret.isPresent())
-            sb.append(" initiatorSecret : ").append(initiatorSecret.get()).append(",");
-        if(null != targetSecret && targetSecret.isPresent())
-            sb.append(" targetSecret : ").append(targetSecret.get()).append(",");
-        if(null != attributes && attributes.isPresent())
-            sb.append(" attributes : ").append(attributes.get());
+        if(null != initiatorSecret && initiatorSecret.isPresent()){
+            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+        }
+        if(null != targetSecret && targetSecret.isPresent()){
+            sb.append(" targetSecret : ").append(targetSecret).append(",");
+        }
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -195,7 +207,7 @@ public class Account  implements Serializable  {
                          this.volumes,
                          this.initiatorSecret,
                          this.targetSecret,
-                         this.attributes            );
+                         this.attributes);
         }
 
         private Account.Builder buildFrom(final Account req) {
@@ -246,5 +258,4 @@ public class Account  implements Serializable  {
         }
 
     }
-
 }

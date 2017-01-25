@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListAccounts" API Service call.
+ * ListAccountsResult  
  **/
-public class ListAccountsResult  implements Serializable  {
 
-    private static final long serialVersionUID = 635177114L;
+public class ListAccountsResult implements Serializable {
 
-    @SerializedName("accounts") private final Account[] accounts;
+    public static final long serialVersionUID = 647365102596714293L;
+    @SerializedName("accounts") private Account[] accounts;
 
-    /**
-     * The object returned by the "ListAccounts" API Service call.
-     * @param accounts [required] List of accounts.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListAccountsResult(Account[] accounts) {
+    public ListAccountsResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListAccountsResult(
+        Account[] accounts
+    )
+    {
         this.accounts = accounts;
     }
 
-
-    /**
+    /** 
      * List of accounts.
      **/
-    public Account[] getAccounts() {
-        return this.accounts;
+    public Account[] getAccounts() { return this.accounts; }
+    public void setAccounts(Account[] accounts) { 
+        this.accounts = accounts;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class ListAccountsResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListAccountsResult that = (ListAccountsResult) o;
-        
 
-        return Objects.deepEquals( accounts , that.accounts );
+        return 
+            Arrays.equals(accounts, that.accounts);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) accounts );
+        return Objects.hash( (Object[])accounts );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("accounts", accounts);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" accounts : ").append(Arrays.toString(accounts));
+        sb.append(" accounts : ").append(Arrays.toString(accounts)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class ListAccountsResult  implements Serializable  {
 
         public ListAccountsResult build() {
             return new ListAccountsResult (
-                         this.accounts            );
+                         this.accounts);
         }
 
         private ListAccountsResult.Builder buildFrom(final ListAccountsResult req) {
@@ -122,5 +124,4 @@ public class ListAccountsResult  implements Serializable  {
         }
 
     }
-
 }

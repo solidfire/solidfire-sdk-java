@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "GetNodeStats" API Service call.
+ * GetNodeStatsRequest  
  **/
-public class GetNodeStatsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 219037264L;
+public class GetNodeStatsRequest implements Serializable {
 
-    @SerializedName("nodeID") private final Long nodeID;
+    public static final long serialVersionUID = -8944306068794105553L;
+    @SerializedName("nodeID") private Long nodeID;
 
-    /**
-     * The Request object for the "GetNodeStats" API Service call.
-     * @param nodeID [required] Specifies the node for which statistics are gathered.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetNodeStatsRequest(Long nodeID) {
+    public GetNodeStatsRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetNodeStatsRequest(
+        Long nodeID
+    )
+    {
         this.nodeID = nodeID;
     }
 
-
-    /**
+    /** 
      * Specifies the node for which statistics are gathered.
      **/
-    public Long getNodeID() {
-        return this.nodeID;
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class GetNodeStatsRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetNodeStatsRequest that = (GetNodeStatsRequest) o;
-        
 
-        return Objects.equals( nodeID , that.nodeID );
+        return 
+            Objects.equals(nodeID, that.nodeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodeID );
+        return Objects.hash( nodeID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodeID", nodeID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodeID : ").append(nodeID);
+        sb.append(" nodeID : ").append(nodeID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class GetNodeStatsRequest  implements Serializable  {
 
         public GetNodeStatsRequest build() {
             return new GetNodeStatsRequest (
-                         this.nodeID            );
+                         this.nodeID);
         }
 
         private GetNodeStatsRequest.Builder buildFrom(final GetNodeStatsRequest req) {
@@ -122,5 +124,4 @@ public class GetNodeStatsRequest  implements Serializable  {
         }
 
     }
-
 }

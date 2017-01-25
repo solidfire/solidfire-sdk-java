@@ -18,49 +18,45 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetLdapConfiguration" API Service call.
+ * GetLdapConfigurationResult  
  **/
-public class GetLdapConfigurationResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1970968967L;
+public class GetLdapConfigurationResult implements Serializable {
 
-    @SerializedName("ldapConfiguration") private final LdapConfiguration ldapConfiguration;
+    public static final long serialVersionUID = -1364313198500777326L;
+    @SerializedName("ldapConfiguration") private LdapConfiguration ldapConfiguration;
 
-    /**
-     * The object returned by the "GetLdapConfiguration" API Service call.
-     * @param ldapConfiguration [required] List of the current LDAP configuration settings. This API call will not return the plain text of the search account password.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetLdapConfigurationResult(LdapConfiguration ldapConfiguration) {
+    public GetLdapConfigurationResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetLdapConfigurationResult(
+        LdapConfiguration ldapConfiguration
+    )
+    {
         this.ldapConfiguration = ldapConfiguration;
     }
 
-
-    /**
+    /** 
      * List of the current LDAP configuration settings. This API call will not return the plain text of the search account password.
-     * <br/><br/>
-     * <b>Note</b>: If LDAP authentication is currently disabled, all the returned settings will be empty with the exception of "authType", and "groupSearchType" which are set to "SearchAndBind" and "ActiveDirectory" respectively.
+     * 
+     * Note: If LDAP authentication is currently disabled, all the returned settings will be empty with the exception of "authType", and "groupSearchType" which are set to "SearchAndBind" and "ActiveDirectory" respectively.
      **/
-    public LdapConfiguration getLdapConfiguration() {
-        return this.ldapConfiguration;
+    public LdapConfiguration getLdapConfiguration() { return this.ldapConfiguration; }
+    public void setLdapConfiguration(LdapConfiguration ldapConfiguration) { 
+        this.ldapConfiguration = ldapConfiguration;
     }
 
     @Override
@@ -69,23 +65,29 @@ public class GetLdapConfigurationResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetLdapConfigurationResult that = (GetLdapConfigurationResult) o;
-        
 
-        return Objects.equals( ldapConfiguration , that.ldapConfiguration );
+        return 
+            Objects.equals(ldapConfiguration, that.ldapConfiguration);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) ldapConfiguration );
+        return Objects.hash( ldapConfiguration );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("ldapConfiguration", ldapConfiguration);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" ldapConfiguration : ").append(ldapConfiguration);
+        sb.append(" ldapConfiguration : ").append(ldapConfiguration).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -109,7 +111,7 @@ public class GetLdapConfigurationResult  implements Serializable  {
 
         public GetLdapConfigurationResult build() {
             return new GetLdapConfigurationResult (
-                         this.ldapConfiguration            );
+                         this.ldapConfiguration);
         }
 
         private GetLdapConfigurationResult.Builder buildFrom(final GetLdapConfigurationResult req) {
@@ -124,5 +126,4 @@ public class GetLdapConfigurationResult  implements Serializable  {
         }
 
     }
-
 }

@@ -18,58 +18,54 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "DeleteGroupSnapshot" API Service call.
+ * DeleteGroupSnapshotRequest  
  **/
-public class DeleteGroupSnapshotRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 36937148L;
+public class DeleteGroupSnapshotRequest implements Serializable {
 
-    @SerializedName("groupSnapshotID") private final Long groupSnapshotID;
-    @SerializedName("saveMembers") private final Boolean saveMembers;
+    public static final long serialVersionUID = 7666156614345321835L;
+    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
+    @SerializedName("saveMembers") private Boolean saveMembers;
 
-    /**
-     * The Request object for the "DeleteGroupSnapshot" API Service call.
-     * @param groupSnapshotID [required] Unique ID of the group snapshot.
-     * @param saveMembers [required] <br/><b>true</b>: Snapshots are kept, but group association is removed.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public DeleteGroupSnapshotRequest(Long groupSnapshotID, Boolean saveMembers) {
+    public DeleteGroupSnapshotRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public DeleteGroupSnapshotRequest(
+        Long groupSnapshotID,
+        Boolean saveMembers
+    )
+    {
         this.groupSnapshotID = groupSnapshotID;
         this.saveMembers = saveMembers;
     }
 
-
-    /**
+    /** 
      * Unique ID of the group snapshot.
      **/
-    public Long getGroupSnapshotID() {
-        return this.groupSnapshotID;
+    public Long getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(Long groupSnapshotID) { 
+        this.groupSnapshotID = groupSnapshotID;
     }
-
-    /**
-     * <br/><b>true</b>: Snapshots are kept, but group association is removed.
-     * <br/><b>false</b>: The group and snapshots are deleted.
+    /** 
+     * true: Snapshots are kept, but group association is removed.
+     * false: The group and snapshots are deleted.
      **/
-    public Boolean getSaveMembers() {
-        return this.saveMembers;
+    public Boolean getSaveMembers() { return this.saveMembers; }
+    public void setSaveMembers(Boolean saveMembers) { 
+        this.saveMembers = saveMembers;
     }
 
     @Override
@@ -78,17 +74,24 @@ public class DeleteGroupSnapshotRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         DeleteGroupSnapshotRequest that = (DeleteGroupSnapshotRequest) o;
-        
 
-        return Objects.equals( groupSnapshotID , that.groupSnapshotID )
-            && Objects.equals( saveMembers , that.saveMembers );
+        return 
+            Objects.equals(groupSnapshotID, that.groupSnapshotID) && 
+            Objects.equals(saveMembers, that.saveMembers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( groupSnapshotID, saveMembers );
+        return Objects.hash( groupSnapshotID,saveMembers );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("groupSnapshotID", groupSnapshotID);
+        map.put("saveMembers", saveMembers);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -96,7 +99,7 @@ public class DeleteGroupSnapshotRequest  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
-        sb.append(" saveMembers : ").append(saveMembers);
+        sb.append(" saveMembers : ").append(saveMembers).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -122,7 +125,7 @@ public class DeleteGroupSnapshotRequest  implements Serializable  {
         public DeleteGroupSnapshotRequest build() {
             return new DeleteGroupSnapshotRequest (
                          this.groupSnapshotID,
-                         this.saveMembers            );
+                         this.saveMembers);
         }
 
         private DeleteGroupSnapshotRequest.Builder buildFrom(final DeleteGroupSnapshotRequest req) {
@@ -143,5 +146,4 @@ public class DeleteGroupSnapshotRequest  implements Serializable  {
         }
 
     }
-
 }

@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetClusterConfig" API Service call.
+ * GetClusterConfigResult  
  **/
-public class GetClusterConfigResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1259484778L;
+public class GetClusterConfigResult implements Serializable {
 
-    @SerializedName("cluster") private final ClusterConfig cluster;
+    public static final long serialVersionUID = 377747089365677541L;
+    @SerializedName("cluster") private ClusterConfig cluster;
 
-    /**
-     * The object returned by the "GetClusterConfig" API Service call.
-     * @param cluster [required] Cluster configuration information the node uses to communicate with the cluster.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetClusterConfigResult(ClusterConfig cluster) {
+    public GetClusterConfigResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetClusterConfigResult(
+        ClusterConfig cluster
+    )
+    {
         this.cluster = cluster;
     }
 
-
-    /**
+    /** 
      * Cluster configuration information the node uses to communicate with the cluster.
      **/
-    public ClusterConfig getCluster() {
-        return this.cluster;
+    public ClusterConfig getCluster() { return this.cluster; }
+    public void setCluster(ClusterConfig cluster) { 
+        this.cluster = cluster;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class GetClusterConfigResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetClusterConfigResult that = (GetClusterConfigResult) o;
-        
 
-        return Objects.equals( cluster , that.cluster );
+        return 
+            Objects.equals(cluster, that.cluster);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) cluster );
+        return Objects.hash( cluster );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("cluster", cluster);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" cluster : ").append(cluster);
+        sb.append(" cluster : ").append(cluster).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class GetClusterConfigResult  implements Serializable  {
 
         public GetClusterConfigResult build() {
             return new GetClusterConfigResult (
-                         this.cluster            );
+                         this.cluster);
         }
 
         private GetClusterConfigResult.Builder buildFrom(final GetClusterConfigResult req) {
@@ -122,5 +124,4 @@ public class GetClusterConfigResult  implements Serializable  {
         }
 
     }
-
 }

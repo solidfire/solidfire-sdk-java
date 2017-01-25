@@ -19,58 +19,41 @@
 package com.solidfire.element.api;
 
 import com.solidfire.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetNodeHardwareInfo" API Service call.
+ * GetNodeHardwareInfoResult  
  **/
-public class GetNodeHardwareInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = 1251875756L;
+public class GetNodeHardwareInfoResult implements Serializable {
 
+    public static final long serialVersionUID = -3553623158556209250L;
     @SerializedName("nodeHardwareInfo") private java.util.Map<String, Object> nodeHardwareInfo;
 
-    /**
-     * The object returned by the "GetNodeHardwareInfo" API Service call.
-     * @param nodeHardwareInfo [required] Hardware information for the specified nodeID.
-     * @since 7.0
-     **/
-    @Since("7.0")
-    public GetNodeHardwareInfoResult(java.util.Map<String, Object> nodeHardwareInfo) {
-        this.nodeHardwareInfo = nodeHardwareInfo;
-    }
-
-    
-    /**
-     * The object returned by the "GetNodeHardwareInfo" API Service call.
-     * Empty constructor to support serialization.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
     public GetNodeHardwareInfoResult() {}
 
-
-    /**
-     * Hardware information for the specified nodeID.
-     **/
-    public java.util.Map<String, Object> getNodeHardwareInfo() {
-        return this.nodeHardwareInfo;
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetNodeHardwareInfoResult(
+        java.util.Map<String, Object> nodeHardwareInfo
+    )
+    {
+        this.nodeHardwareInfo = nodeHardwareInfo;
     }
 
-    public void setNodeHardwareInfo(java.util.Map<String, Object> nodeHardwareInfo) {
+    /** 
+     * Hardware information for the specified nodeID.
+     **/
+    public java.util.Map<String, Object> getNodeHardwareInfo() { return this.nodeHardwareInfo; }
+    public void setNodeHardwareInfo(java.util.Map<String, Object> nodeHardwareInfo) { 
         this.nodeHardwareInfo = nodeHardwareInfo;
     }
 
@@ -80,23 +63,29 @@ public class GetNodeHardwareInfoResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetNodeHardwareInfoResult that = (GetNodeHardwareInfoResult) o;
-        
 
-        return Objects.equals( nodeHardwareInfo , that.nodeHardwareInfo );
+        return 
+            Objects.equals(nodeHardwareInfo, that.nodeHardwareInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) nodeHardwareInfo );
+        return Objects.hash( nodeHardwareInfo );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodeHardwareInfo", nodeHardwareInfo);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodeHardwareInfo : ").append(nodeHardwareInfo);
+        sb.append(" nodeHardwareInfo : ").append(nodeHardwareInfo).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -120,7 +109,7 @@ public class GetNodeHardwareInfoResult  implements Serializable  {
 
         public GetNodeHardwareInfoResult build() {
             return new GetNodeHardwareInfoResult (
-                         this.nodeHardwareInfo            );
+                         this.nodeHardwareInfo);
         }
 
         private GetNodeHardwareInfoResult.Builder buildFrom(final GetNodeHardwareInfoResult req) {
@@ -135,5 +124,4 @@ public class GetNodeHardwareInfoResult  implements Serializable  {
         }
 
     }
-
 }

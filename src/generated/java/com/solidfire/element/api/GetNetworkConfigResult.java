@@ -18,43 +18,42 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "GetNetworkConfig" API Service call.
+ * GetNetworkConfigResult  
  **/
-public class GetNetworkConfigResult  implements Serializable  {
 
-    private static final long serialVersionUID = -1353252860L;
+public class GetNetworkConfigResult implements Serializable {
 
-    @SerializedName("network") private final Network network;
+    public static final long serialVersionUID = 2684112230164911537L;
+    @SerializedName("network") private Network network;
 
-    /**
-     * The object returned by the "GetNetworkConfig" API Service call.
-     * @param network [required] 
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public GetNetworkConfigResult(Network network) {
+    public GetNetworkConfigResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public GetNetworkConfigResult(
+        Network network
+    )
+    {
         this.network = network;
     }
 
-    public Network getNetwork() {
-        return this.network;
+    /** 
+     **/
+    public Network getNetwork() { return this.network; }
+    public void setNetwork(Network network) { 
+        this.network = network;
     }
 
     @Override
@@ -63,23 +62,29 @@ public class GetNetworkConfigResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         GetNetworkConfigResult that = (GetNetworkConfigResult) o;
-        
 
-        return Objects.equals( network , that.network );
+        return 
+            Objects.equals(network, that.network);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) network );
+        return Objects.hash( network );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("network", network);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" network : ").append(network);
+        sb.append(" network : ").append(network).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,7 +108,7 @@ public class GetNetworkConfigResult  implements Serializable  {
 
         public GetNetworkConfigResult build() {
             return new GetNetworkConfigResult (
-                         this.network            );
+                         this.network);
         }
 
         private GetNetworkConfigResult.Builder buildFrom(final GetNetworkConfigResult req) {
@@ -118,5 +123,4 @@ public class GetNetworkConfigResult  implements Serializable  {
         }
 
     }
-
 }

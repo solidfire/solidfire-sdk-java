@@ -18,153 +18,149 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "EnableLdapAuthentication" API Service call.
+ * EnableLdapAuthenticationRequest  
  **/
-public class EnableLdapAuthenticationRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -2040059293L;
+public class EnableLdapAuthenticationRequest implements Serializable {
 
-    @SerializedName("authType") private final Optional<String> authType;
-    @SerializedName("groupSearchBaseDN") private final Optional<String> groupSearchBaseDN;
-    @SerializedName("groupSearchCustomFilter") private final Optional<String> groupSearchCustomFilter;
-    @SerializedName("groupSearchType") private final Optional<String> groupSearchType;
-    @SerializedName("searchBindDN") private final Optional<String> searchBindDN;
-    @SerializedName("searchBindPassword") private final Optional<String> searchBindPassword;
-    @SerializedName("serverURIs") private final String[] serverURIs;
-    @SerializedName("userDNTemplate") private final Optional<String> userDNTemplate;
-    @SerializedName("userSearchBaseDN") private final Optional<String> userSearchBaseDN;
-    @SerializedName("userSearchFilter") private final Optional<String> userSearchFilter;
+    public static final long serialVersionUID = 4288984566259899362L;
+    @SerializedName("authType") private Optional<String> authType;
+    @SerializedName("groupSearchBaseDN") private Optional<String> groupSearchBaseDN;
+    @SerializedName("groupSearchCustomFilter") private Optional<String> groupSearchCustomFilter;
+    @SerializedName("groupSearchType") private Optional<String> groupSearchType;
+    @SerializedName("searchBindDN") private Optional<String> searchBindDN;
+    @SerializedName("searchBindPassword") private Optional<String> searchBindPassword;
+    @SerializedName("serverURIs") private String[] serverURIs;
+    @SerializedName("userDNTemplate") private Optional<String> userDNTemplate;
+    @SerializedName("userSearchBaseDN") private Optional<String> userSearchBaseDN;
+    @SerializedName("userSearchFilter") private Optional<String> userSearchFilter;
 
-    /**
-     * The Request object for the "EnableLdapAuthentication" API Service call.
-     * @param authType (optional) Identifies which user authentcation method will be used. <br/>
-     * @param groupSearchBaseDN (optional) The base DN of the tree to start the group search (will do a subtree search from here).
-     * @param groupSearchCustomFilter (optional) REQUIRED for CustomFilter<br/>
-     * @param groupSearchType (optional) Controls the default group search filter used, can be one of the following:<br/>
-     * @param searchBindDN (optional) REQUIRED for SearchAndBind<br/>
-     * @param searchBindPassword (optional) REQUIRED for SearchAndBind<br/>
-     * @param serverURIs [required] A list of LDAP server URIs (examples: "ldap://1.2.3.4" and ldaps://1.2.3.4:123")
-     * @param userDNTemplate (optional) REQUIRED for DirectBind<br/>
-     * @param userSearchBaseDN (optional) REQUIRED for SearchAndBind
-     * @param userSearchFilter (optional) REQUIRED for SearchAndBind.<br/>
-     * @since 8.0
-     **/
-    @Since("8.0")
-    public EnableLdapAuthenticationRequest(Optional<String> authType, Optional<String> groupSearchBaseDN, Optional<String> groupSearchCustomFilter, Optional<String> groupSearchType, Optional<String> searchBindDN, Optional<String> searchBindPassword, String[] serverURIs, Optional<String> userDNTemplate, Optional<String> userSearchBaseDN, Optional<String> userSearchFilter) {
-        this.searchBindDN = (searchBindDN == null) ? Optional.<String>empty() : searchBindDN;
-        this.userSearchFilter = (userSearchFilter == null) ? Optional.<String>empty() : userSearchFilter;
-        this.serverURIs = serverURIs;
+    // empty constructor
+    @Since("7.0")
+    public EnableLdapAuthenticationRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public EnableLdapAuthenticationRequest(
+        Optional<String> authType,
+        Optional<String> groupSearchBaseDN,
+        Optional<String> groupSearchCustomFilter,
+        Optional<String> groupSearchType,
+        Optional<String> searchBindDN,
+        Optional<String> searchBindPassword,
+        String[] serverURIs,
+        Optional<String> userDNTemplate,
+        Optional<String> userSearchBaseDN,
+        Optional<String> userSearchFilter
+    )
+    {
+        this.authType = (authType == null) ? Optional.<String>empty() : authType;
         this.groupSearchBaseDN = (groupSearchBaseDN == null) ? Optional.<String>empty() : groupSearchBaseDN;
         this.groupSearchCustomFilter = (groupSearchCustomFilter == null) ? Optional.<String>empty() : groupSearchCustomFilter;
-        this.searchBindPassword = (searchBindPassword == null) ? Optional.<String>empty() : searchBindPassword;
-        this.authType = (authType == null) ? Optional.<String>empty() : authType;
         this.groupSearchType = (groupSearchType == null) ? Optional.<String>empty() : groupSearchType;
-        this.userSearchBaseDN = (userSearchBaseDN == null) ? Optional.<String>empty() : userSearchBaseDN;
+        this.searchBindDN = (searchBindDN == null) ? Optional.<String>empty() : searchBindDN;
+        this.searchBindPassword = (searchBindPassword == null) ? Optional.<String>empty() : searchBindPassword;
+        this.serverURIs = serverURIs;
         this.userDNTemplate = (userDNTemplate == null) ? Optional.<String>empty() : userDNTemplate;
+        this.userSearchBaseDN = (userSearchBaseDN == null) ? Optional.<String>empty() : userSearchBaseDN;
+        this.userSearchFilter = (userSearchFilter == null) ? Optional.<String>empty() : userSearchFilter;
     }
 
-
-    /**
-     * Identifies which user authentcation method will be used. <br/>
-     * Must be one of the following:<br/>
-     * <b>DirectBind</b><br/>
-     * <b>SearchAndBind</b> (default)
+    /** 
+     * Identifies which user authentcation method will be used. 
+     * Must be one of the following:
+     * DirectBind
+     * SearchAndBind (default)
      **/
-    public Optional<String> getAuthType() {
-        return this.authType;
+    public Optional<String> getAuthType() { return this.authType; }
+    public void setAuthType(Optional<String> authType) { 
+        this.authType = (authType == null) ? Optional.<String>empty() : authType;
     }
-
-    /**
+    /** 
      * The base DN of the tree to start the group search (will do a subtree search from here).
      **/
-    public Optional<String> getGroupSearchBaseDN() {
-        return this.groupSearchBaseDN;
+    public Optional<String> getGroupSearchBaseDN() { return this.groupSearchBaseDN; }
+    public void setGroupSearchBaseDN(Optional<String> groupSearchBaseDN) { 
+        this.groupSearchBaseDN = (groupSearchBaseDN == null) ? Optional.<String>empty() : groupSearchBaseDN;
     }
-
-    /**
-     * REQUIRED for CustomFilter<br/>
-     * For use with the CustomFilter search type, an LDAP filter to use to return the DNs of a user's groups.<br/>
+    /** 
+     * REQUIRED for CustomFilter
+     * For use with the CustomFilter search type, an LDAP filter to use to return the DNs of a user's groups.
      * The string can have placeholder text of %USERNAME% and %USERDN% to be replaced with their username and full userDN as needed.
      **/
-    public Optional<String> getGroupSearchCustomFilter() {
-        return this.groupSearchCustomFilter;
+    public Optional<String> getGroupSearchCustomFilter() { return this.groupSearchCustomFilter; }
+    public void setGroupSearchCustomFilter(Optional<String> groupSearchCustomFilter) { 
+        this.groupSearchCustomFilter = (groupSearchCustomFilter == null) ? Optional.<String>empty() : groupSearchCustomFilter;
     }
-
-    /**
-     * Controls the default group search filter used, can be one of the following:<br/>
-     * <b>NoGroups</b>: No group support.<br/>
-     * <b>ActiveDirectory</b>: (default) Nested membership of all of a user's AD groups.<br/>
-     * <b>MemberDN</b>: MemberDN style groups (single-level).
+    /** 
+     * Controls the default group search filter used, can be one of the following:
+     * NoGroups: No group support.
+     * ActiveDirectory: (default) Nested membership of all of a user's AD groups.
+     * MemberDN: MemberDN style groups (single-level).
      **/
-    public Optional<String> getGroupSearchType() {
-        return this.groupSearchType;
+    public Optional<String> getGroupSearchType() { return this.groupSearchType; }
+    public void setGroupSearchType(Optional<String> groupSearchType) { 
+        this.groupSearchType = (groupSearchType == null) ? Optional.<String>empty() : groupSearchType;
     }
-
-    /**
-     * REQUIRED for SearchAndBind<br/>
+    /** 
+     * REQUIRED for SearchAndBind
      * A fully qualified DN to log in with to perform an LDAP search for the user (needs read access to the LDAP directory).
      **/
-    public Optional<String> getSearchBindDN() {
-        return this.searchBindDN;
+    public Optional<String> getSearchBindDN() { return this.searchBindDN; }
+    public void setSearchBindDN(Optional<String> searchBindDN) { 
+        this.searchBindDN = (searchBindDN == null) ? Optional.<String>empty() : searchBindDN;
     }
-
-    /**
-     * REQUIRED for SearchAndBind<br/>
+    /** 
+     * REQUIRED for SearchAndBind
      * The password for the searchBindDN account used for searching.
      **/
-    public Optional<String> getSearchBindPassword() {
-        return this.searchBindPassword;
+    public Optional<String> getSearchBindPassword() { return this.searchBindPassword; }
+    public void setSearchBindPassword(Optional<String> searchBindPassword) { 
+        this.searchBindPassword = (searchBindPassword == null) ? Optional.<String>empty() : searchBindPassword;
     }
-
-    /**
+    /** 
      * A list of LDAP server URIs (examples: "ldap://1.2.3.4" and ldaps://1.2.3.4:123")
      **/
-    public String[] getServerURIs() {
-        return this.serverURIs;
+    public String[] getServerURIs() { return this.serverURIs; }
+    public void setServerURIs(String[] serverURIs) { 
+        this.serverURIs = serverURIs;
     }
-
-    /**
-     * REQUIRED for DirectBind<br/>
-     * A string that is used to form a fully qualified user DN.<br/>
+    /** 
+     * REQUIRED for DirectBind
+     * A string that is used to form a fully qualified user DN.
      * The string should have the placeholder text "%USERNAME%" which will be replaced with the username of the authenticating user.
      **/
-    public Optional<String> getUserDNTemplate() {
-        return this.userDNTemplate;
+    public Optional<String> getUserDNTemplate() { return this.userDNTemplate; }
+    public void setUserDNTemplate(Optional<String> userDNTemplate) { 
+        this.userDNTemplate = (userDNTemplate == null) ? Optional.<String>empty() : userDNTemplate;
     }
-
-    /**
+    /** 
      * REQUIRED for SearchAndBind
      * The base DN of the tree used to start the search (will do a subtree search from here).
      **/
-    public Optional<String> getUserSearchBaseDN() {
-        return this.userSearchBaseDN;
+    public Optional<String> getUserSearchBaseDN() { return this.userSearchBaseDN; }
+    public void setUserSearchBaseDN(Optional<String> userSearchBaseDN) { 
+        this.userSearchBaseDN = (userSearchBaseDN == null) ? Optional.<String>empty() : userSearchBaseDN;
     }
-
-    /**
-     * REQUIRED for SearchAndBind.<br/>
-     * The LDAP filter to use.<br/>
-     * The string should have the placeholder text "%USERNAME%" which will be replaced with the username of the authenticating user.<br/>
+    /** 
+     * REQUIRED for SearchAndBind.
+     * The LDAP filter to use.
+     * The string should have the placeholder text "%USERNAME%" which will be replaced with the username of the authenticating user.
      * Example: (&(objectClass=person) (sAMAccountName=%USERNAME%)) will use the sAMAccountName field in Active Directory to match the nusername entered at cluster login.
      **/
-    public Optional<String> getUserSearchFilter() {
-        return this.userSearchFilter;
+    public Optional<String> getUserSearchFilter() { return this.userSearchFilter; }
+    public void setUserSearchFilter(Optional<String> userSearchFilter) { 
+        this.userSearchFilter = (userSearchFilter == null) ? Optional.<String>empty() : userSearchFilter;
     }
 
     @Override
@@ -173,50 +169,74 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         EnableLdapAuthenticationRequest that = (EnableLdapAuthenticationRequest) o;
-        
 
-        return Objects.equals( authType , that.authType )
-            && Objects.equals( groupSearchBaseDN , that.groupSearchBaseDN )
-            && Objects.equals( groupSearchCustomFilter , that.groupSearchCustomFilter )
-            && Objects.equals( groupSearchType , that.groupSearchType )
-            && Objects.equals( searchBindDN , that.searchBindDN )
-            && Objects.equals( searchBindPassword , that.searchBindPassword )
-            && Objects.deepEquals( serverURIs , that.serverURIs )
-            && Objects.equals( userDNTemplate , that.userDNTemplate )
-            && Objects.equals( userSearchBaseDN , that.userSearchBaseDN )
-            && Objects.equals( userSearchFilter , that.userSearchFilter );
+        return 
+            Objects.equals(authType, that.authType) && 
+            Objects.equals(groupSearchBaseDN, that.groupSearchBaseDN) && 
+            Objects.equals(groupSearchCustomFilter, that.groupSearchCustomFilter) && 
+            Objects.equals(groupSearchType, that.groupSearchType) && 
+            Objects.equals(searchBindDN, that.searchBindDN) && 
+            Objects.equals(searchBindPassword, that.searchBindPassword) && 
+            Arrays.equals(serverURIs, that.serverURIs) && 
+            Objects.equals(userDNTemplate, that.userDNTemplate) && 
+            Objects.equals(userSearchBaseDN, that.userSearchBaseDN) && 
+            Objects.equals(userSearchFilter, that.userSearchFilter);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( authType, groupSearchBaseDN, groupSearchCustomFilter, groupSearchType, searchBindDN, searchBindPassword, serverURIs, userDNTemplate, userSearchBaseDN, userSearchFilter );
+        return Objects.hash( authType,groupSearchBaseDN,groupSearchCustomFilter,groupSearchType,searchBindDN,searchBindPassword,(Object[])serverURIs,userDNTemplate,userSearchBaseDN,userSearchFilter );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("authType", authType);
+        map.put("groupSearchBaseDN", groupSearchBaseDN);
+        map.put("groupSearchCustomFilter", groupSearchCustomFilter);
+        map.put("groupSearchType", groupSearchType);
+        map.put("searchBindDN", searchBindDN);
+        map.put("searchBindPassword", searchBindPassword);
+        map.put("serverURIs", serverURIs);
+        map.put("userDNTemplate", userDNTemplate);
+        map.put("userSearchBaseDN", userSearchBaseDN);
+        map.put("userSearchFilter", userSearchFilter);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != authType && authType.isPresent())
-            sb.append(" authType : ").append(authType.get()).append(",");
-        if(null != groupSearchBaseDN && groupSearchBaseDN.isPresent())
-            sb.append(" groupSearchBaseDN : ").append(groupSearchBaseDN.get()).append(",");
-        if(null != groupSearchCustomFilter && groupSearchCustomFilter.isPresent())
-            sb.append(" groupSearchCustomFilter : ").append(groupSearchCustomFilter.get()).append(",");
-        if(null != groupSearchType && groupSearchType.isPresent())
-            sb.append(" groupSearchType : ").append(groupSearchType.get()).append(",");
-        if(null != searchBindDN && searchBindDN.isPresent())
-            sb.append(" searchBindDN : ").append(searchBindDN.get()).append(",");
-        if(null != searchBindPassword && searchBindPassword.isPresent())
-            sb.append(" searchBindPassword : ").append(searchBindPassword.get()).append(",");
+        if(null != authType && authType.isPresent()){
+            sb.append(" authType : ").append(authType).append(",");
+        }
+        if(null != groupSearchBaseDN && groupSearchBaseDN.isPresent()){
+            sb.append(" groupSearchBaseDN : ").append(groupSearchBaseDN).append(",");
+        }
+        if(null != groupSearchCustomFilter && groupSearchCustomFilter.isPresent()){
+            sb.append(" groupSearchCustomFilter : ").append(groupSearchCustomFilter).append(",");
+        }
+        if(null != groupSearchType && groupSearchType.isPresent()){
+            sb.append(" groupSearchType : ").append(groupSearchType).append(",");
+        }
+        if(null != searchBindDN && searchBindDN.isPresent()){
+            sb.append(" searchBindDN : ").append(searchBindDN).append(",");
+        }
+        if(null != searchBindPassword && searchBindPassword.isPresent()){
+            sb.append(" searchBindPassword : ").append(searchBindPassword).append(",");
+        }
         sb.append(" serverURIs : ").append(Arrays.toString(serverURIs)).append(",");
-        if(null != userDNTemplate && userDNTemplate.isPresent())
-            sb.append(" userDNTemplate : ").append(userDNTemplate.get()).append(",");
-        if(null != userSearchBaseDN && userSearchBaseDN.isPresent())
-            sb.append(" userSearchBaseDN : ").append(userSearchBaseDN.get()).append(",");
-        if(null != userSearchFilter && userSearchFilter.isPresent())
-            sb.append(" userSearchFilter : ").append(userSearchFilter.get());
+        if(null != userDNTemplate && userDNTemplate.isPresent()){
+            sb.append(" userDNTemplate : ").append(userDNTemplate).append(",");
+        }
+        if(null != userSearchBaseDN && userSearchBaseDN.isPresent()){
+            sb.append(" userSearchBaseDN : ").append(userSearchBaseDN).append(",");
+        }
+        if(null != userSearchFilter && userSearchFilter.isPresent()){
+            sb.append(" userSearchFilter : ").append(userSearchFilter).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -258,7 +278,7 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
                          this.serverURIs,
                          this.userDNTemplate,
                          this.userSearchBaseDN,
-                         this.userSearchFilter            );
+                         this.userSearchFilter);
         }
 
         private EnableLdapAuthenticationRequest.Builder buildFrom(final EnableLdapAuthenticationRequest req) {
@@ -327,5 +347,4 @@ public class EnableLdapAuthenticationRequest  implements Serializable  {
         }
 
     }
-
 }

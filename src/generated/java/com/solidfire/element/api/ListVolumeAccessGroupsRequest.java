@@ -18,60 +18,56 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "ListVolumeAccessGroups" API Service call.
+ * ListVolumeAccessGroupsRequest  
  **/
-public class ListVolumeAccessGroupsRequest  implements Serializable  {
 
-    private static final long serialVersionUID = -1227743246L;
+public class ListVolumeAccessGroupsRequest implements Serializable {
 
-    @SerializedName("startVolumeAccessGroupID") private final Optional<Long> startVolumeAccessGroupID;
-    @SerializedName("limit") private final Optional<Long> limit;
+    public static final long serialVersionUID = -8600610168887686606L;
+    @SerializedName("startVolumeAccessGroupID") private Optional<Long> startVolumeAccessGroupID;
+    @SerializedName("limit") private Optional<Long> limit;
 
-    /**
-     * The Request object for the "ListVolumeAccessGroups" API Service call.
-     * @param startVolumeAccessGroupID (optional) The lowest VolumeAccessGroupID to return.
-     * @param limit (optional) The maximum number of results to return.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListVolumeAccessGroupsRequest(Optional<Long> startVolumeAccessGroupID, Optional<Long> limit) {
+    public ListVolumeAccessGroupsRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListVolumeAccessGroupsRequest(
+        Optional<Long> startVolumeAccessGroupID,
+        Optional<Long> limit
+    )
+    {
         this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<Long>empty() : startVolumeAccessGroupID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
-
-    /**
+    /** 
      * The lowest VolumeAccessGroupID to return.
      * This can be useful for paging.
      * If unspecified, there is no lower limit (implicitly 0).
      **/
-    public Optional<Long> getStartVolumeAccessGroupID() {
-        return this.startVolumeAccessGroupID;
+    public Optional<Long> getStartVolumeAccessGroupID() { return this.startVolumeAccessGroupID; }
+    public void setStartVolumeAccessGroupID(Optional<Long> startVolumeAccessGroupID) { 
+        this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<Long>empty() : startVolumeAccessGroupID;
     }
-
-    /**
+    /** 
      * The maximum number of results to return.
      * This can be useful for paging.
      **/
-    public Optional<Long> getLimit() {
-        return this.limit;
+    public Optional<Long> getLimit() { return this.limit; }
+    public void setLimit(Optional<Long> limit) { 
+        this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
 
     @Override
@@ -80,27 +76,36 @@ public class ListVolumeAccessGroupsRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListVolumeAccessGroupsRequest that = (ListVolumeAccessGroupsRequest) o;
-        
 
-        return Objects.equals( startVolumeAccessGroupID , that.startVolumeAccessGroupID )
-            && Objects.equals( limit , that.limit );
+        return 
+            Objects.equals(startVolumeAccessGroupID, that.startVolumeAccessGroupID) && 
+            Objects.equals(limit, that.limit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( startVolumeAccessGroupID, limit );
+        return Objects.hash( startVolumeAccessGroupID,limit );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("startVolumeAccessGroupID", startVolumeAccessGroupID);
+        map.put("limit", limit);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != startVolumeAccessGroupID && startVolumeAccessGroupID.isPresent())
-            sb.append(" startVolumeAccessGroupID : ").append(startVolumeAccessGroupID.get()).append(",");
-        if(null != limit && limit.isPresent())
-            sb.append(" limit : ").append(limit.get());
+        if(null != startVolumeAccessGroupID && startVolumeAccessGroupID.isPresent()){
+            sb.append(" startVolumeAccessGroupID : ").append(startVolumeAccessGroupID).append(",");
+        }
+        if(null != limit && limit.isPresent()){
+            sb.append(" limit : ").append(limit).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -126,7 +131,7 @@ public class ListVolumeAccessGroupsRequest  implements Serializable  {
         public ListVolumeAccessGroupsRequest build() {
             return new ListVolumeAccessGroupsRequest (
                          this.startVolumeAccessGroupID,
-                         this.limit            );
+                         this.limit);
         }
 
         private ListVolumeAccessGroupsRequest.Builder buildFrom(final ListVolumeAccessGroupsRequest req) {
@@ -147,5 +152,4 @@ public class ListVolumeAccessGroupsRequest  implements Serializable  {
         }
 
     }
-
 }

@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The object returned by the "ListActivePairedVolumes" API Service call.
+ * ListActivePairedVolumesResult  
  **/
-public class ListActivePairedVolumesResult  implements Serializable  {
 
-    private static final long serialVersionUID = 700738616L;
+public class ListActivePairedVolumesResult implements Serializable {
 
-    @SerializedName("volumes") private final Volume[] volumes;
+    public static final long serialVersionUID = 61428050774915596L;
+    @SerializedName("volumes") private Volume[] volumes;
 
-    /**
-     * The object returned by the "ListActivePairedVolumes" API Service call.
-     * @param volumes [required] Volume information for the paired volumes.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public ListActivePairedVolumesResult(Volume[] volumes) {
+    public ListActivePairedVolumesResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public ListActivePairedVolumesResult(
+        Volume[] volumes
+    )
+    {
         this.volumes = volumes;
     }
 
-
-    /**
+    /** 
      * Volume information for the paired volumes.
      **/
-    public Volume[] getVolumes() {
-        return this.volumes;
+    public Volume[] getVolumes() { return this.volumes; }
+    public void setVolumes(Volume[] volumes) { 
+        this.volumes = volumes;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class ListActivePairedVolumesResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         ListActivePairedVolumesResult that = (ListActivePairedVolumesResult) o;
-        
 
-        return Objects.deepEquals( volumes , that.volumes );
+        return 
+            Arrays.equals(volumes, that.volumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) volumes );
+        return Objects.hash( (Object[])volumes );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumes", volumes);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volumes : ").append(Arrays.toString(volumes));
+        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class ListActivePairedVolumesResult  implements Serializable  {
 
         public ListActivePairedVolumesResult build() {
             return new ListActivePairedVolumesResult (
-                         this.volumes            );
+                         this.volumes);
         }
 
         private ListActivePairedVolumesResult.Builder buildFrom(final ListActivePairedVolumesResult req) {
@@ -122,5 +124,4 @@ public class ListActivePairedVolumesResult  implements Serializable  {
         }
 
     }
-
 }

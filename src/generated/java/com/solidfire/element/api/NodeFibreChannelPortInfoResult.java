@@ -18,57 +18,54 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
+ * NodeFibreChannelPortInfoResult  
  * Fibre channel port info results for a node.
  **/
-public class NodeFibreChannelPortInfoResult  implements Serializable  {
 
-    private static final long serialVersionUID = -473622851L;
+public class NodeFibreChannelPortInfoResult implements Serializable {
 
-    @SerializedName("nodeID") private final Long nodeID;
-    @SerializedName("result") private final FibreChannelPortList result;
+    public static final long serialVersionUID = 1193456109593396917L;
+    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("result") private FibreChannelPortList result;
 
-    /**
-     * Fibre channel port info results for a node.
-     * @param nodeID [required] The ID of the Fibre Channel node.
-     * @param result [required] Contains a list of information about the Fibre Channel ports.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public NodeFibreChannelPortInfoResult(Long nodeID, FibreChannelPortList result) {
+    public NodeFibreChannelPortInfoResult() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public NodeFibreChannelPortInfoResult(
+        Long nodeID,
+        FibreChannelPortList result
+    )
+    {
         this.nodeID = nodeID;
         this.result = result;
     }
 
-
-    /**
+    /** 
      * The ID of the Fibre Channel node.
      **/
-    public Long getNodeID() {
-        return this.nodeID;
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
     }
-
-    /**
+    /** 
      * Contains a list of information about the Fibre Channel ports.
      **/
-    public FibreChannelPortList getResult() {
-        return this.result;
+    public FibreChannelPortList getResult() { return this.result; }
+    public void setResult(FibreChannelPortList result) { 
+        this.result = result;
     }
 
     @Override
@@ -77,17 +74,24 @@ public class NodeFibreChannelPortInfoResult  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         NodeFibreChannelPortInfoResult that = (NodeFibreChannelPortInfoResult) o;
-        
 
-        return Objects.equals( nodeID , that.nodeID )
-            && Objects.equals( result , that.result );
+        return 
+            Objects.equals(nodeID, that.nodeID) && 
+            Objects.equals(result, that.result);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID, result );
+        return Objects.hash( nodeID,result );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("nodeID", nodeID);
+        map.put("result", result);
+        return map;
+    }
 
     @Override
     public String toString() {
@@ -95,7 +99,7 @@ public class NodeFibreChannelPortInfoResult  implements Serializable  {
         sb.append( "{ " );
 
         sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" result : ").append(result);
+        sb.append(" result : ").append(result).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +125,7 @@ public class NodeFibreChannelPortInfoResult  implements Serializable  {
         public NodeFibreChannelPortInfoResult build() {
             return new NodeFibreChannelPortInfoResult (
                          this.nodeID,
-                         this.result            );
+                         this.result);
         }
 
         private NodeFibreChannelPortInfoResult.Builder buildFrom(final NodeFibreChannelPortInfoResult req) {
@@ -142,5 +146,4 @@ public class NodeFibreChannelPortInfoResult  implements Serializable  {
         }
 
     }
-
 }

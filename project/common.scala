@@ -62,9 +62,9 @@ object Config {
       </scm>
       <developers>
         <developer>
-          <id>jason-womack</id>
-          <name>Jason Ryan Womack</name>
-          <url>https://github.com/jason-womack</url>
+          <id>ahaid</id>
+          <name>Adam Haid</name>
+          <url>https://github.com/ahaid</url>
         </developer>
       </developers>
   }
@@ -86,11 +86,11 @@ object Config {
     unmanagedSourceDirectories in Compile += baseDirectory.value / "src/generated/scala",
     libraryDependencies ++= Seq(
       Dependencies.slf4j,
-      Dependencies.jsvcgenClient,
       Dependencies.slf4jSimple,
       Dependencies.mockito,
       Dependencies.scalatest,
-      Dependencies.scalacheck
+      Dependencies.scalacheck,
+      Dependencies.junit
     )
   )
 
@@ -108,40 +108,50 @@ object Config {
 
 object Version {
   val solidfireSdks = "1.1.0"
-
-  val javaLanguage = "1.7"
-  val javaTarget   = "1.7"
-
-  val jsvcgenClient = "0.3.0"
+  val javaLanguage  = "1.7"
+  val javaTarget    = "1.7"
   val slf4j         = "1.6.6"
-
-  val scalatest  = "2.2.6"
-  val junit      = "0.11"
-  val mockito    = "1.10.19"
-  val scalacheck = "1.13.0"
+  val scalatest     = "2.2.6"
+  val junit         = "0.11"
+  val mockito       = "1.10.19"
+  val scalacheck    = "1.13.0"
+  val solidfireGson = "2.6.2"
+  val jodaConvert     = "1.8.1"
+  val jodaTime        = "2.9.3"
+  val base64          = "2.3.9"
 }
 
 object Dependencies {
-  lazy val jsvcgenClient = "com.solidfire" % "jsvcgen-client-java" % Version.jsvcgenClient
-  lazy val slf4j         = "org.slf4j" % "slf4j-api" % Version.slf4j
-
-  lazy val slf4jSimple = "org.slf4j" % "slf4j-simple" % Version.slf4j % "test"
-  lazy val scalatest   = "org.scalatest" %% "scalatest" % Version.scalatest % "test"
-  lazy val mockito     = "org.mockito" % "mockito-all" % Version.mockito % "test"
-  lazy val scalacheck  = "org.scalacheck" %% "scalacheck" % Version.scalacheck % "test"
+  lazy val base64         = "net.iharder" %  "base64" % Version.base64
+  lazy val solidfireGson  = "com.solidfire.code.gson" % "gson" % Version.solidfireGson
+  lazy val jodaTime       = "joda-time" %  "joda-time" % Version.jodaTime
+  lazy val jodaConvert    = "org.joda"  %  "joda-convert" % Version.jodaConvert
+  lazy val slf4j          = "org.slf4j" % "slf4j-api" % Version.slf4j
+  lazy val slf4jSimple    = "org.slf4j" % "slf4j-simple" % Version.slf4j % "test"
+  lazy val scalatest      = "org.scalatest" %% "scalatest" % Version.scalatest % "test"
+  lazy val mockito        = "org.mockito" % "mockito-all" % Version.mockito % "test"
+  lazy val scalacheck     = "org.scalacheck" %% "scalacheck" % Version.scalacheck % "test"
+  lazy val junit          = "com.novocode" % "junit-interface" % Version.junit % "test"
 }
+
 
 object SDKBuild extends Build {
 
   val Examples = config( "examples" ) extend Test
 
-  lazy val elementApi = Project( id = "solidfire-java-sdk",
+  lazy val elementApi = Project( id = "solidfire-sdk-java",
     base = file( "." ),
     settings = Config.settings
   ).settings(
     version := (version in ThisBuild).value,
-    description := "OSGi bundle for interfacing with the Public SolidFire Element API.",
-    libraryDependencies += Dependencies.jsvcgenClient,
+    description := "SDK for interfacing with the Public SolidFire Element API.",
+    libraryDependencies ++= Seq(
+      Dependencies.slf4j,
+      Dependencies.solidfireGson,
+      Dependencies.jodaTime,
+      Dependencies.jodaConvert,
+      Dependencies.base64
+    ),
     OsgiKeys.exportPackage := Seq( "com.solidfire.adaptor", "com.solidfire.client", "com.solidfire.javautil", "com.solidfire.serialization", "com.solidfire.annotation", "com.solidfire.element.api" ),
     OsgiKeys.additionalHeaders := Map( Constants.NOEE -> "true", Constants.REQUIRE_CAPABILITY -> "" ),
     // Here we redefine the "package" task to generate the OSGi Bundle.

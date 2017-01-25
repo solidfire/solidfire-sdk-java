@@ -18,47 +18,43 @@
  */
 package com.solidfire.element.api;
 
-import com.google.gson.annotations.SerializedName;
-import com.solidfire.jsvcgen.annotation.Since;
-import com.solidfire.jsvcgen.client.ApiException;
-import com.solidfire.jsvcgen.javautil.Optional;
-
-import java.net.URL;
-
+import com.solidfire.gson.annotations.SerializedName;
+import com.solidfire.core.annotation.Since;
+import com.solidfire.core.javautil.Optional;
 import java.io.Serializable;
-
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Objects;
-import java.util.TreeMap;
-
-import static com.solidfire.jsvcgen.javautil.Optional.of;
-
 
 /**
- * The Request object for the "RemoveClusterPair" API Service call.
+ * RemoveClusterPairRequest  
  **/
-public class RemoveClusterPairRequest  implements Serializable  {
 
-    private static final long serialVersionUID = 1651052529L;
+public class RemoveClusterPairRequest implements Serializable {
 
-    @SerializedName("clusterPairID") private final Long clusterPairID;
+    public static final long serialVersionUID = -6696513351448610827L;
+    @SerializedName("clusterPairID") private Long clusterPairID;
 
-    /**
-     * The Request object for the "RemoveClusterPair" API Service call.
-     * @param clusterPairID [required] Unique identifier used to pair two clusters.
-     * @since 7.0
-     **/
+    // empty constructor
     @Since("7.0")
-    public RemoveClusterPairRequest(Long clusterPairID) {
+    public RemoveClusterPairRequest() {}
+
+    
+    // parameterized constructor
+    @Since("7.0")
+    public RemoveClusterPairRequest(
+        Long clusterPairID
+    )
+    {
         this.clusterPairID = clusterPairID;
     }
 
-
-    /**
+    /** 
      * Unique identifier used to pair two clusters.
      **/
-    public Long getClusterPairID() {
-        return this.clusterPairID;
+    public Long getClusterPairID() { return this.clusterPairID; }
+    public void setClusterPairID(Long clusterPairID) { 
+        this.clusterPairID = clusterPairID;
     }
 
     @Override
@@ -67,23 +63,29 @@ public class RemoveClusterPairRequest  implements Serializable  {
         if (o == null || getClass() != o.getClass()) return false;
 
         RemoveClusterPairRequest that = (RemoveClusterPairRequest) o;
-        
 
-        return Objects.equals( clusterPairID , that.clusterPairID );
+        return 
+            Objects.equals(clusterPairID, that.clusterPairID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object) clusterPairID );
+        return Objects.hash( clusterPairID );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("clusterPairID", clusterPairID);
+        return map;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" clusterPairID : ").append(clusterPairID);
+        sb.append(" clusterPairID : ").append(clusterPairID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,7 +109,7 @@ public class RemoveClusterPairRequest  implements Serializable  {
 
         public RemoveClusterPairRequest build() {
             return new RemoveClusterPairRequest (
-                         this.clusterPairID            );
+                         this.clusterPairID);
         }
 
         private RemoveClusterPairRequest.Builder buildFrom(final RemoveClusterPairRequest req) {
@@ -122,5 +124,4 @@ public class RemoveClusterPairRequest  implements Serializable  {
         }
 
     }
-
 }
