@@ -308,7 +308,7 @@ You also need to add the appropriate SLF4J dependency. Continuing with the logba
 
 ## More Examples
 
-More specific examples are available [here](https://github.com/solidfire/solidfire-sdk-java/blob/master/examples/examples.md)
+More specific examples are available [here](https://github.com/solidfire/solidfire-sdk-java/blob/master/examples.html)
       
 ## Release History
 
