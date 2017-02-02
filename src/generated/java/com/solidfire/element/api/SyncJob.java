@@ -49,7 +49,7 @@ public class SyncJob implements Serializable {
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("srcVolumeID") private Long srcVolumeID;
     @SerializedName("blocksPerSecond") private Double blocksPerSecond;
-    @SerializedName("stage") private Long stage;
+    @SerializedName("stage") private String stage;
 
     // empty constructor
     @Since("7.0")
@@ -75,7 +75,7 @@ public class SyncJob implements Serializable {
         Long snapshotID,
         Long srcVolumeID,
         Double blocksPerSecond,
-        Long stage
+        String stage
     )
     {
         this.bytesPerSecond = bytesPerSecond;
@@ -195,8 +195,8 @@ public class SyncJob implements Serializable {
     }
     /** 
      **/
-    public Long getStage() { return this.stage; }
-    public void setStage(Long stage) { 
+    public String getStage() { return this.stage; }
+    public void setStage(String stage) { 
         this.stage = stage;
     }
 
@@ -310,7 +310,7 @@ public class SyncJob implements Serializable {
         private Long snapshotID;
         private Long srcVolumeID;
         private Double blocksPerSecond;
-        private Long stage;
+        private String stage;
 
         private Builder() { }
 
@@ -437,7 +437,7 @@ public class SyncJob implements Serializable {
             return this;
         }
 
-        public SyncJob.Builder stage(final Long stage) {
+        public SyncJob.Builder stage(final String stage) {
             this.stage = stage;
             return this;
         }
