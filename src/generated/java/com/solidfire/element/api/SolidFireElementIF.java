@@ -2035,94 +2035,6 @@ public interface SolidFireElementIF {
         Optional<java.util.UUID[]> virtualVolumeIDs
         );
     /** 
-     * Creates a new VVols storage container.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CreateStorageContainerResult createStorageContainer(final CreateStorageContainerRequest request);
-
-    /** 
-     * Creates a new VVols storage container.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CreateStorageContainerResult createStorageContainer(
-        
-        String name
-, 
-        Optional<String> initiatorSecret
-, 
-        Optional<String> targetSecret
-        );
-    /** 
-     * Deletes a storage container from the system.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public DeleteStorageContainerResult deleteStorageContainers(final DeleteStorageContainersRequest request);
-
-    /** 
-     * Deletes a storage container from the system.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public DeleteStorageContainerResult deleteStorageContainers(
-        
-        java.util.UUID[] storageContainerIDs
-        );
-    /** 
-     * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(final GetStorageContainerEfficiencyRequest request);
-
-    /** 
-     * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(
-        
-        java.util.UUID storageContainerID
-        );
-    /** 
-     * Gets information for all storage containers currently in the system.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ListStorageContainersResult listStorageContainers(final ListStorageContainersRequest request);
-
-    /** 
-     * Gets information for all storage containers currently in the system.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ListStorageContainersResult listStorageContainers(
-        
-        Optional<java.util.UUID[]> storageContainerIDs
-        );
-    /** 
-     * Modifies an existing storage container.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ModifyStorageContainerResult modifyStorageContainer(final ModifyStorageContainerRequest request);
-
-    /** 
-     * Modifies an existing storage container.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ModifyStorageContainerResult modifyStorageContainer(
-        
-        java.util.UUID storageContainerID
-, 
-        Optional<String> initiatorSecret
-, 
-        Optional<String> targetSecret
-        );
-    /** 
      * The ListTests API method is used to return the tests that are available to run on a node.
      * Note: This method is available only through the per-node API endpoint 5.0 or later.
      **/
@@ -3421,5 +3333,93 @@ public interface SolidFireElementIF {
         String method
 , 
         Optional<java.util.Map<String, Object>> parameters
+        );
+    /** 
+     * Creates a new VVols storage container.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public CreateStorageContainerResult createStorageContainer(final CreateStorageContainerRequest request);
+
+    /** 
+     * Creates a new VVols storage container.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public CreateStorageContainerResult createStorageContainer(
+        
+        String name
+, 
+        Optional<String> initiatorSecret
+, 
+        Optional<String> targetSecret
+        );
+    /** 
+     * Deletes a storage container from the system.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public DeleteStorageContainerResult deleteStorageContainers(final DeleteStorageContainersRequest request);
+
+    /** 
+     * Deletes a storage container from the system.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public DeleteStorageContainerResult deleteStorageContainers(
+        
+        java.util.UUID[] storageContainerIDs
+        );
+    /** 
+     * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(final GetStorageContainerEfficiencyRequest request);
+
+    /** 
+     * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(
+        
+        java.util.UUID storageContainerID
+        );
+    /** 
+     * Gets information for all storage containers currently in the system.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ListStorageContainersResult listStorageContainers(final ListStorageContainersRequest request);
+
+    /** 
+     * Gets information for all storage containers currently in the system.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ListStorageContainersResult listStorageContainers(
+        
+        Optional<java.util.UUID[]> storageContainerIDs
+        );
+    /** 
+     * Modifies an existing storage container.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ModifyStorageContainerResult modifyStorageContainer(final ModifyStorageContainerRequest request);
+
+    /** 
+     * Modifies an existing storage container.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ModifyStorageContainerResult modifyStorageContainer(
+        
+        java.util.UUID storageContainerID
+, 
+        Optional<String> initiatorSecret
+, 
+        Optional<String> targetSecret
         );
 }

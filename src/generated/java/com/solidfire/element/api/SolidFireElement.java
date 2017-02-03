@@ -2775,130 +2775,6 @@ public class SolidFireElement
         return this.listVolumeStatsByVirtualVolume(new ListVolumeStatsByVirtualVolumeRequest(virtualVolumeIDs));
     }
     /** 
-     * Creates a new VVols storage container.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CreateStorageContainerResult createStorageContainer(final CreateStorageContainerRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
-            throw new ApiException("The command, createStorageContainer is not available until version 9.");
-        }
-        return super.sendRequest("CreateStorageContainer", request, CreateStorageContainerRequest.class, CreateStorageContainerResult.class);
-    }
-
-    /** 
-     * Creates a new VVols storage container.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CreateStorageContainerResult createStorageContainer(
-        String name,
-        Optional<String> initiatorSecret,
-        Optional<String> targetSecret
-        ) {
-        return this.createStorageContainer(new CreateStorageContainerRequest(name, initiatorSecret, targetSecret));
-    }
-    /** 
-     * Deletes a storage container from the system.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public DeleteStorageContainerResult deleteStorageContainers(final DeleteStorageContainersRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
-            throw new ApiException("The command, deleteStorageContainers is not available until version 9.");
-        }
-        return super.sendRequest("DeleteStorageContainers", request, DeleteStorageContainersRequest.class, DeleteStorageContainerResult.class);
-    }
-
-    /** 
-     * Deletes a storage container from the system.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public DeleteStorageContainerResult deleteStorageContainers(
-        java.util.UUID[] storageContainerIDs
-        ) {
-        return this.deleteStorageContainers(new DeleteStorageContainersRequest(storageContainerIDs));
-    }
-    /** 
-     * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(final GetStorageContainerEfficiencyRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
-            throw new ApiException("The command, getStorageContainerEfficiency is not available until version 9.");
-        }
-        return super.sendRequest("GetStorageContainerEfficiency", request, GetStorageContainerEfficiencyRequest.class, GetStorageContainerEfficiencyResult.class);
-    }
-
-    /** 
-     * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(
-        java.util.UUID storageContainerID
-        ) {
-        return this.getStorageContainerEfficiency(new GetStorageContainerEfficiencyRequest(storageContainerID));
-    }
-    /** 
-     * Gets information for all storage containers currently in the system.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ListStorageContainersResult listStorageContainers(final ListStorageContainersRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
-            throw new ApiException("The command, listStorageContainers is not available until version 9.");
-        }
-        return super.sendRequest("ListStorageContainers", request, ListStorageContainersRequest.class, ListStorageContainersResult.class);
-    }
-
-    /** 
-     * Gets information for all storage containers currently in the system.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ListStorageContainersResult listStorageContainers(
-        Optional<java.util.UUID[]> storageContainerIDs
-        ) {
-        return this.listStorageContainers(new ListStorageContainersRequest(storageContainerIDs));
-    }
-    /** 
-     * Modifies an existing storage container.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ModifyStorageContainerResult modifyStorageContainer(final ModifyStorageContainerRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
-            throw new ApiException("The command, modifyStorageContainer is not available until version 9.");
-        }
-        return super.sendRequest("ModifyStorageContainer", request, ModifyStorageContainerRequest.class, ModifyStorageContainerResult.class);
-    }
-
-    /** 
-     * Modifies an existing storage container.
-     **/
-    @Override
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ModifyStorageContainerResult modifyStorageContainer(
-        java.util.UUID storageContainerID,
-        Optional<String> initiatorSecret,
-        Optional<String> targetSecret
-        ) {
-        return this.modifyStorageContainer(new ModifyStorageContainerRequest(storageContainerID, initiatorSecret, targetSecret));
-    }
-    /** 
      * The ListTests API method is used to return the tests that are available to run on a node.
      * Note: This method is available only through the per-node API endpoint 5.0 or later.
      **/
@@ -4577,5 +4453,129 @@ public class SolidFireElement
         Optional<java.util.Map<String, Object>> parameters
         ) {
         return this.invokeSFApi(new InvokeSFApiRequest(method, parameters));
+    }
+    /** 
+     * Creates a new VVols storage container.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public CreateStorageContainerResult createStorageContainer(final CreateStorageContainerRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
+            throw new ApiException("The command, createStorageContainer is not available until version 9.");
+        }
+        return super.sendRequest("CreateStorageContainer", request, CreateStorageContainerRequest.class, CreateStorageContainerResult.class);
+    }
+
+    /** 
+     * Creates a new VVols storage container.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public CreateStorageContainerResult createStorageContainer(
+        String name,
+        Optional<String> initiatorSecret,
+        Optional<String> targetSecret
+        ) {
+        return this.createStorageContainer(new CreateStorageContainerRequest(name, initiatorSecret, targetSecret));
+    }
+    /** 
+     * Deletes a storage container from the system.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public DeleteStorageContainerResult deleteStorageContainers(final DeleteStorageContainersRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
+            throw new ApiException("The command, deleteStorageContainers is not available until version 9.");
+        }
+        return super.sendRequest("DeleteStorageContainers", request, DeleteStorageContainersRequest.class, DeleteStorageContainerResult.class);
+    }
+
+    /** 
+     * Deletes a storage container from the system.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public DeleteStorageContainerResult deleteStorageContainers(
+        java.util.UUID[] storageContainerIDs
+        ) {
+        return this.deleteStorageContainers(new DeleteStorageContainersRequest(storageContainerIDs));
+    }
+    /** 
+     * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(final GetStorageContainerEfficiencyRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
+            throw new ApiException("The command, getStorageContainerEfficiency is not available until version 9.");
+        }
+        return super.sendRequest("GetStorageContainerEfficiency", request, GetStorageContainerEfficiencyRequest.class, GetStorageContainerEfficiencyResult.class);
+    }
+
+    /** 
+     * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(
+        java.util.UUID storageContainerID
+        ) {
+        return this.getStorageContainerEfficiency(new GetStorageContainerEfficiencyRequest(storageContainerID));
+    }
+    /** 
+     * Gets information for all storage containers currently in the system.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ListStorageContainersResult listStorageContainers(final ListStorageContainersRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
+            throw new ApiException("The command, listStorageContainers is not available until version 9.");
+        }
+        return super.sendRequest("ListStorageContainers", request, ListStorageContainersRequest.class, ListStorageContainersResult.class);
+    }
+
+    /** 
+     * Gets information for all storage containers currently in the system.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ListStorageContainersResult listStorageContainers(
+        Optional<java.util.UUID[]> storageContainerIDs
+        ) {
+        return this.listStorageContainers(new ListStorageContainersRequest(storageContainerIDs));
+    }
+    /** 
+     * Modifies an existing storage container.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ModifyStorageContainerResult modifyStorageContainer(final ModifyStorageContainerRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
+            throw new ApiException("The command, modifyStorageContainer is not available until version 9.");
+        }
+        return super.sendRequest("ModifyStorageContainer", request, ModifyStorageContainerRequest.class, ModifyStorageContainerResult.class);
+    }
+
+    /** 
+     * Modifies an existing storage container.
+     **/
+    @Override
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ModifyStorageContainerResult modifyStorageContainer(
+        java.util.UUID storageContainerID,
+        Optional<String> initiatorSecret,
+        Optional<String> targetSecret
+        ) {
+        return this.modifyStorageContainer(new ModifyStorageContainerRequest(storageContainerID, initiatorSecret, targetSecret));
     }
 }
