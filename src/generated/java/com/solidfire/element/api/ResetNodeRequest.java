@@ -35,7 +35,7 @@ public class ResetNodeRequest implements Serializable {
     public static final long serialVersionUID = -1238993143208246416L;
     @SerializedName("build") private String build;
     @SerializedName("force") private Boolean force;
-    @SerializedName("option") private String option;
+    @SerializedName("option") private Optional<String> option;
 
     // empty constructor
     @Since("7.0")
@@ -47,12 +47,12 @@ public class ResetNodeRequest implements Serializable {
     public ResetNodeRequest(
         String build,
         Boolean force,
-        String option
+        Optional<String> option
     )
     {
         this.build = build;
         this.force = force;
-        this.option = option;
+        this.option = (option == null) ? Optional.<String>empty() : option;
     }
 
     /** 
@@ -72,9 +72,9 @@ public class ResetNodeRequest implements Serializable {
     /** 
      * Used to enter specifications for running the reset operation.
      **/
-    public String getOption() { return this.option; }
-    public void setOption(String option) { 
-        this.option = option;
+    public Optional<String> getOption() { return this.option; }
+    public void setOption(Optional<String> option) { 
+        this.option = (option == null) ? Optional.<String>empty() : option;
     }
 
     @Override
@@ -111,7 +111,9 @@ public class ResetNodeRequest implements Serializable {
 
         sb.append(" build : ").append(build).append(",");
         sb.append(" force : ").append(force).append(",");
-        sb.append(" option : ").append(option).append(",");
+        if(null != option && option.isPresent()){
+            sb.append(" option : ").append(option).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -131,7 +133,7 @@ public class ResetNodeRequest implements Serializable {
     public static class Builder {
         private String build;
         private Boolean force;
-        private String option;
+        private Optional<String> option;
 
         private Builder() { }
 
@@ -160,8 +162,8 @@ public class ResetNodeRequest implements Serializable {
             return this;
         }
 
-        public ResetNodeRequest.Builder option(final String option) {
-            this.option = option;
+        public ResetNodeRequest.Builder optionalOption(final String option) {
+            this.option = (option == null) ? Optional.<String>empty() : Optional.of(option);
             return this;
         }
 

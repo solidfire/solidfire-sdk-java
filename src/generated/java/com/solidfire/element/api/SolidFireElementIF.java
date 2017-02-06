@@ -1581,26 +1581,6 @@ public interface SolidFireElementIF {
         Optional<java.util.UUID[]> protocolEndpointIDs
         );
     /** 
-     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ResetNodeResult resetNode(final ResetNodeRequest request);
-
-    /** 
-     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ResetNodeResult resetNode(
-        
-        String build
-, 
-        Boolean force
-, 
-        String option
-        );
-    /** 
      * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Since("5")
@@ -1651,6 +1631,26 @@ public interface SolidFireElementIF {
     public ShutdownResult shutdown(
         
         Long[] nodes
+, 
+        Optional<String> option
+        );
+    /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Since("5")
+    @ConnectionType("Node")
+    public ResetNodeResult resetNode(final ResetNodeRequest request);
+
+    /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Since("5")
+    @ConnectionType("Node")
+    public ResetNodeResult resetNode(
+        
+        String build
+, 
+        Boolean force
 , 
         Optional<String> option
         );

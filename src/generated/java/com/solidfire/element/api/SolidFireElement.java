@@ -2154,32 +2154,6 @@ public class SolidFireElement
         return this.listProtocolEndpoints(new ListProtocolEndpointsRequest(protocolEndpointIDs));
     }
     /** 
-     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ResetNodeResult resetNode(final ResetNodeRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
-            throw new ApiException("The command, resetNode is not available until version 5.");
-        }
-        return super.sendRequest("ResetNode", request, ResetNodeRequest.class, ResetNodeResult.class);
-    }
-
-    /** 
-     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ResetNodeResult resetNode(
-        String build,
-        Boolean force,
-        String option
-        ) {
-        return this.resetNode(new ResetNodeRequest(build, force, option));
-    }
-    /** 
      * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Override
@@ -2255,6 +2229,32 @@ public class SolidFireElement
         Optional<String> option
         ) {
         return this.shutdown(new ShutdownRequest(nodes, option));
+    }
+    /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public ResetNodeResult resetNode(final ResetNodeRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
+            throw new ApiException("The command, resetNode is not available until version 5.");
+        }
+        return super.sendRequest("ResetNode", request, ResetNodeRequest.class, ResetNodeResult.class);
+    }
+
+    /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public ResetNodeResult resetNode(
+        String build,
+        Boolean force,
+        Optional<String> option
+        ) {
+        return this.resetNode(new ResetNodeRequest(build, force, option));
     }
     /** 
      * List the services in the cluster.
