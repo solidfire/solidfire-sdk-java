@@ -34,7 +34,7 @@ public class Config implements Serializable {
 
     public static final long serialVersionUID = -4072360127181388004L;
     @SerializedName("cluster") private ClusterConfig cluster;
-    @SerializedName("network") private Network network;
+    @SerializedName("network") private NetworkParams network;
 
     // empty constructor
     @Since("7.0")
@@ -45,7 +45,7 @@ public class Config implements Serializable {
     @Since("7.0")
     public Config(
         ClusterConfig cluster,
-        Network network
+        NetworkParams network
     )
     {
         this.cluster = cluster;
@@ -60,8 +60,8 @@ public class Config implements Serializable {
     }
     /** 
      **/
-    public Network getNetwork() { return this.network; }
-    public void setNetwork(Network network) { 
+    public NetworkParams getNetwork() { return this.network; }
+    public void setNetwork(NetworkParams network) { 
         this.network = network;
     }
 
@@ -115,7 +115,7 @@ public class Config implements Serializable {
 
     public static class Builder {
         private ClusterConfig cluster;
-        private Network network;
+        private NetworkParams network;
 
         private Builder() { }
 
@@ -137,7 +137,7 @@ public class Config implements Serializable {
             return this;
         }
 
-        public Config.Builder network(final Network network) {
+        public Config.Builder network(final NetworkParams network) {
             this.network = network;
             return this;
         }
