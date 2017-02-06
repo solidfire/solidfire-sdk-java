@@ -33,7 +33,7 @@ import java.util.Objects;
 public class SetNetworkConfigRequest implements Serializable {
 
     public static final long serialVersionUID = 1163420677117762364L;
-    @SerializedName("network") private Network network;
+    @SerializedName("network") private NetworkParams network;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class SetNetworkConfigRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public SetNetworkConfigRequest(
-        Network network
+        NetworkParams network
     )
     {
         this.network = network;
@@ -52,8 +52,8 @@ public class SetNetworkConfigRequest implements Serializable {
     /** 
      * Objects that will be changed for the node network settings.
      **/
-    public Network getNetwork() { return this.network; }
-    public void setNetwork(Network network) { 
+    public NetworkParams getNetwork() { return this.network; }
+    public void setNetwork(NetworkParams network) { 
         this.network = network;
     }
 
@@ -103,7 +103,7 @@ public class SetNetworkConfigRequest implements Serializable {
     }
 
     public static class Builder {
-        private Network network;
+        private NetworkParams network;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class SetNetworkConfigRequest implements Serializable {
             return this;
         }
 
-        public SetNetworkConfigRequest.Builder network(final Network network) {
+        public SetNetworkConfigRequest.Builder network(final NetworkParams network) {
             this.network = network;
             return this;
         }

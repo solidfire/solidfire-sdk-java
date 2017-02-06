@@ -1929,7 +1929,7 @@ public class SolidFireElement
     @Since("5")
     @ConnectionType("Node")
     public SetNetworkConfigResult setNetworkConfig(
-        Network network
+        NetworkParams network
         ) {
         return this.setNetworkConfig(new SetNetworkConfigRequest(network));
     }

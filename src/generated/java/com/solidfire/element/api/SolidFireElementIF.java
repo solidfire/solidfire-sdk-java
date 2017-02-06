@@ -1422,7 +1422,7 @@ public interface SolidFireElementIF {
     @ConnectionType("Node")
     public SetNetworkConfigResult setNetworkConfig(
         
-        Network network
+        NetworkParams network
         );
     /** 
      * The CompleteClusterPairing method is the second step in the cluster pairing process.
