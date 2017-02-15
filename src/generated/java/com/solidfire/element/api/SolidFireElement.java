@@ -2321,30 +2321,6 @@ public class SolidFireElement
         return this.getSchedule(new GetScheduleRequest(scheduleID));
     }
     /** 
-     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public ListGroupSnapshotsResult listGroupSnapshots(final ListGroupSnapshotsRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
-            throw new ApiException("The command, listGroupSnapshots is not available until version 7.");
-        }
-        return super.sendRequest("ListGroupSnapshots", request, ListGroupSnapshotsRequest.class, ListGroupSnapshotsResult.class);
-    }
-
-    /** 
-     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public ListGroupSnapshotsResult listGroupSnapshots(
-        Optional<Long> volumeID
-        ) {
-        return this.listGroupSnapshots(new ListGroupSnapshotsRequest(volumeID));
-    }
-    /** 
      * ListSchedule is used to return information about all scheduled snapshots that have been created.
      **/
     @Override
@@ -2674,6 +2650,34 @@ public class SolidFireElement
         Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.rollbackToSnapshot(new RollbackToSnapshotRequest(volumeID, snapshotID, saveCurrentState, name, attributes));
+    }
+    /** 
+     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public ListGroupSnapshotsResult listGroupSnapshots(final ListGroupSnapshotsRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
+            throw new ApiException("The command, listGroupSnapshots is not available until version 7.");
+        }
+        if(request.getGroupSnapshotID() != null && request.getGroupSnapshotID() != Optional.<>empty() && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
+            throw new ApiException("The parameter, groupSnapshotID is not applicable to this version of the API.");
+        }
+        return super.sendRequest("ListGroupSnapshots", request, ListGroupSnapshotsRequest.class, ListGroupSnapshotsResult.class);
+    }
+
+    /** 
+     * ListGroupSnapshots is used to return information about all group snapshots that have been created.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public ListGroupSnapshotsResult listGroupSnapshots(
+        Optional<Long> volumeID,
+        Long groupSnapshotID
+        ) {
+        return this.listGroupSnapshots(new ListGroupSnapshotsRequest(volumeID, groupSnapshotID));
     }
     /** 
      * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.

@@ -34,6 +34,7 @@ public class ListGroupSnapshotsRequest implements Serializable {
 
     public static final long serialVersionUID = 8925165299321175370L;
     @SerializedName("volumeID") private Optional<Long> volumeID;
+    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
 
     // empty constructor
     @Since("7.0")
@@ -48,6 +49,16 @@ public class ListGroupSnapshotsRequest implements Serializable {
     {
         this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
     }
+    // parameterized constructor
+    @Since("9.0")
+    public ListGroupSnapshotsRequest(
+        Optional<Long> volumeID,
+        Long groupSnapshotID
+    )
+    {
+        this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
+        this.groupSnapshotID = groupSnapshotID;
+    }
 
     /** 
      * An array of unique volume IDs to query.
@@ -56,6 +67,13 @@ public class ListGroupSnapshotsRequest implements Serializable {
     public Optional<Long> getVolumeID() { return this.volumeID; }
     public void setVolumeID(Optional<Long> volumeID) { 
         this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
+    }
+    /** 
+     * Get info about individual snapshot
+     **/
+    public Long getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(Long groupSnapshotID) { 
+        this.groupSnapshotID = groupSnapshotID;
     }
 
     @Override
@@ -66,18 +84,20 @@ public class ListGroupSnapshotsRequest implements Serializable {
         ListGroupSnapshotsRequest that = (ListGroupSnapshotsRequest) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID);
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(groupSnapshotID, that.groupSnapshotID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID );
+        return Objects.hash( volumeID,groupSnapshotID );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("volumeID", volumeID);
+        map.put("groupSnapshotID", groupSnapshotID);
         return map;
     }
 
@@ -89,6 +109,7 @@ public class ListGroupSnapshotsRequest implements Serializable {
         if(null != volumeID && volumeID.isPresent()){
             sb.append(" volumeID : ").append(volumeID).append(",");
         }
+        sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -107,22 +128,30 @@ public class ListGroupSnapshotsRequest implements Serializable {
 
     public static class Builder {
         private Optional<Long> volumeID;
+        private Long groupSnapshotID;
 
         private Builder() { }
 
         public ListGroupSnapshotsRequest build() {
             return new ListGroupSnapshotsRequest (
-                         this.volumeID);
+                         this.volumeID,
+                         this.groupSnapshotID);
         }
 
         private ListGroupSnapshotsRequest.Builder buildFrom(final ListGroupSnapshotsRequest req) {
             this.volumeID = req.volumeID;
+            this.groupSnapshotID = req.groupSnapshotID;
 
             return this;
         }
 
         public ListGroupSnapshotsRequest.Builder optionalVolumeID(final Long volumeID) {
             this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
+            return this;
+        }
+
+        public ListGroupSnapshotsRequest.Builder groupSnapshotID(final Long groupSnapshotID) {
+            this.groupSnapshotID = groupSnapshotID;
             return this;
         }
 
