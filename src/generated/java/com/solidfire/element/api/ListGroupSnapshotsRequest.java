@@ -34,7 +34,7 @@ public class ListGroupSnapshotsRequest implements Serializable {
 
     public static final long serialVersionUID = 8925165299321175370L;
     @SerializedName("volumeID") private Optional<Long> volumeID;
-    @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
+    @SerializedName("groupSnapshotID") private Long groupSnapshotID;
 
     // empty constructor
     @Since("7.0")
@@ -53,11 +53,11 @@ public class ListGroupSnapshotsRequest implements Serializable {
     @Since("9.0")
     public ListGroupSnapshotsRequest(
         Optional<Long> volumeID,
-        Optional<Long> groupSnapshotID
+        Long groupSnapshotID
     )
     {
         this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
-        this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : groupSnapshotID;
+        this.groupSnapshotID = groupSnapshotID;
     }
 
     /** 
@@ -71,9 +71,9 @@ public class ListGroupSnapshotsRequest implements Serializable {
     /** 
      * Get info about individual snapshot
      **/
-    public Optional<Long> getGroupSnapshotID() { return this.groupSnapshotID; }
-    public void setGroupSnapshotID(Optional<Long> groupSnapshotID) { 
-        this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : groupSnapshotID;
+    public Long getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(Long groupSnapshotID) { 
+        this.groupSnapshotID = groupSnapshotID;
     }
 
     @Override
@@ -109,9 +109,7 @@ public class ListGroupSnapshotsRequest implements Serializable {
         if(null != volumeID && volumeID.isPresent()){
             sb.append(" volumeID : ").append(volumeID).append(",");
         }
-        if(null != groupSnapshotID && groupSnapshotID.isPresent()){
-            sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
-        }
+        sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -130,7 +128,7 @@ public class ListGroupSnapshotsRequest implements Serializable {
 
     public static class Builder {
         private Optional<Long> volumeID;
-        private Optional<Long> groupSnapshotID;
+        private Long groupSnapshotID;
 
         private Builder() { }
 
@@ -152,8 +150,8 @@ public class ListGroupSnapshotsRequest implements Serializable {
             return this;
         }
 
-        public ListGroupSnapshotsRequest.Builder optionalGroupSnapshotID(final Long groupSnapshotID) {
-            this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : Optional.of(groupSnapshotID);
+        public ListGroupSnapshotsRequest.Builder groupSnapshotID(final Long groupSnapshotID) {
+            this.groupSnapshotID = groupSnapshotID;
             return this;
         }
 
