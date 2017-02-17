@@ -2661,7 +2661,7 @@ public class SolidFireElement
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
             throw new ApiException("The command, listGroupSnapshots is not available until version 7.");
         }
-        if(request.getGroupSnapshotID() != null && request.getGroupSnapshotID() != Optional.<>empty() && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
+        if(request.getGroupSnapshotID() != null && request.getGroupSnapshotID() != Optional.<Long>empty() && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9) {
             throw new ApiException("The parameter, groupSnapshotID is not applicable to this version of the API.");
         }
         return super.sendRequest("ListGroupSnapshots", request, ListGroupSnapshotsRequest.class, ListGroupSnapshotsResult.class);
@@ -2675,7 +2675,7 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public ListGroupSnapshotsResult listGroupSnapshots(
         Optional<Long> volumeID,
-        Long groupSnapshotID
+        Optional<Long> groupSnapshotID
         ) {
         return this.listGroupSnapshots(new ListGroupSnapshotsRequest(volumeID, groupSnapshotID));
     }

@@ -1968,7 +1968,7 @@ public interface SolidFireElementIF {
         
         Optional<Long> volumeID
 , 
-        Long groupSnapshotID
+        Optional<Long> groupSnapshotID
         );
     /** 
      * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
