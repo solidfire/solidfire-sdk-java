@@ -67,7 +67,7 @@ public class ServiceBase {
     /**
      * Get the communication mechanism of this service.
      */
-    public final RequestDispatcher getRequestDispatcher() {
+    public RequestDispatcher getRequestDispatcher() {
         return requestDispatcher;
     }
 
@@ -76,7 +76,7 @@ public class ServiceBase {
      *
      * @return Value for property 'gsonBuilder'.
      */
-    protected final GsonBuilder getGsonBuilder() {
+    protected GsonBuilder getGsonBuilder() {
         return gsonBuilder;
     }
 
