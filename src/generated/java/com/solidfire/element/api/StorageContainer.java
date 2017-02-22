@@ -40,7 +40,7 @@ public class StorageContainer implements Serializable {
     @SerializedName("initiatorSecret") private String initiatorSecret;
     @SerializedName("targetSecret") private String targetSecret;
     @SerializedName("status") private String status;
-    @SerializedName("virtualVolumes") private uuid[] virtualVolumes;
+    @SerializedName("virtualVolumes") private java.util.UUID[] virtualVolumes;
 
     // empty constructor
     @Since("7.0")
@@ -57,7 +57,7 @@ public class StorageContainer implements Serializable {
         String initiatorSecret,
         String targetSecret,
         String status,
-        uuid[] virtualVolumes
+        java.util.UUID[] virtualVolumes
     )
     {
         this.name = name;
@@ -114,8 +114,8 @@ public class StorageContainer implements Serializable {
     }
     /** 
      **/
-    public uuid[] getVirtualVolumes() { return this.virtualVolumes; }
-    public void setVirtualVolumes(uuid[] virtualVolumes) { 
+    public java.util.UUID[] getVirtualVolumes() { return this.virtualVolumes; }
+    public void setVirtualVolumes(java.util.UUID[] virtualVolumes) { 
         this.virtualVolumes = virtualVolumes;
     }
 
@@ -193,7 +193,7 @@ public class StorageContainer implements Serializable {
         private String initiatorSecret;
         private String targetSecret;
         private String status;
-        private uuid[] virtualVolumes;
+        private java.util.UUID[] virtualVolumes;
 
         private Builder() { }
 
@@ -257,7 +257,7 @@ public class StorageContainer implements Serializable {
             return this;
         }
 
-        public StorageContainer.Builder virtualVolumes(final uuid[] virtualVolumes) {
+        public StorageContainer.Builder virtualVolumes(final java.util.UUID[] virtualVolumes) {
             this.virtualVolumes = virtualVolumes;
             return this;
         }
