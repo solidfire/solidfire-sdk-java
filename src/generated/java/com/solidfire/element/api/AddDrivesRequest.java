@@ -34,6 +34,7 @@ public class AddDrivesRequest implements Serializable {
 
     public static final long serialVersionUID = -7918870428389618879L;
     @SerializedName("drives") private NewDrive[] drives;
+    @SerializedName("forceDuringUpgrade") private Optional<Boolean> forceDuringUpgrade;
 
     // empty constructor
     @Since("7.0")
@@ -43,10 +44,12 @@ public class AddDrivesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddDrivesRequest(
-        NewDrive[] drives
+        NewDrive[] drives,
+        Optional<Boolean> forceDuringUpgrade
     )
     {
         this.drives = drives;
+        this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
     }
 
     /** 
@@ -55,6 +58,13 @@ public class AddDrivesRequest implements Serializable {
     public NewDrive[] getDrives() { return this.drives; }
     public void setDrives(NewDrive[] drives) { 
         this.drives = drives;
+    }
+    /** 
+     * Allows the user to force the addition of drives during an upgrade.
+     **/
+    public Optional<Boolean> getForceDuringUpgrade() { return this.forceDuringUpgrade; }
+    public void setForceDuringUpgrade(Optional<Boolean> forceDuringUpgrade) { 
+        this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
     }
 
     @Override
@@ -65,18 +75,20 @@ public class AddDrivesRequest implements Serializable {
         AddDrivesRequest that = (AddDrivesRequest) o;
 
         return 
-            Arrays.equals(drives, that.drives);
+            Arrays.equals(drives, that.drives) && 
+            Objects.equals(forceDuringUpgrade, that.forceDuringUpgrade);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])drives );
+        return Objects.hash( (Object[])drives,forceDuringUpgrade );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("drives", drives);
+        map.put("forceDuringUpgrade", forceDuringUpgrade);
         return map;
     }
 
@@ -86,6 +98,9 @@ public class AddDrivesRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
+        if(null != forceDuringUpgrade && forceDuringUpgrade.isPresent()){
+            sb.append(" forceDuringUpgrade : ").append(forceDuringUpgrade).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -104,22 +119,30 @@ public class AddDrivesRequest implements Serializable {
 
     public static class Builder {
         private NewDrive[] drives;
+        private Optional<Boolean> forceDuringUpgrade;
 
         private Builder() { }
 
         public AddDrivesRequest build() {
             return new AddDrivesRequest (
-                         this.drives);
+                         this.drives,
+                         this.forceDuringUpgrade);
         }
 
         private AddDrivesRequest.Builder buildFrom(final AddDrivesRequest req) {
             this.drives = req.drives;
+            this.forceDuringUpgrade = req.forceDuringUpgrade;
 
             return this;
         }
 
         public AddDrivesRequest.Builder drives(final NewDrive[] drives) {
             this.drives = drives;
+            return this;
+        }
+
+        public AddDrivesRequest.Builder optionalForceDuringUpgrade(final Boolean forceDuringUpgrade) {
+            this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : Optional.of(forceDuringUpgrade);
             return this;
         }
 

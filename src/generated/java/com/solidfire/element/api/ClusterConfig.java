@@ -44,6 +44,9 @@ public class ClusterConfig implements Serializable {
     @SerializedName("role") private Optional<String> role;
     @SerializedName("sipi") private Optional<String> sipi;
     @SerializedName("state") private Optional<String> state;
+    @SerializedName("encryptionCapable") private Optional<Boolean> encryptionCapable;
+    @SerializedName("hasLocalAdmin") private Optional<Boolean> hasLocalAdmin;
+    @SerializedName("version") private Optional<String> version;
 
     // empty constructor
     @Since("7.0")
@@ -62,7 +65,10 @@ public class ClusterConfig implements Serializable {
         Optional<Long> pendingNodeID,
         Optional<String> role,
         Optional<String> sipi,
-        Optional<String> state
+        Optional<String> state,
+        Optional<Boolean> encryptionCapable,
+        Optional<Boolean> hasLocalAdmin,
+        Optional<String> version
     )
     {
         this.cipi = (cipi == null) ? Optional.<String>empty() : cipi;
@@ -75,6 +81,9 @@ public class ClusterConfig implements Serializable {
         this.role = (role == null) ? Optional.<String>empty() : role;
         this.sipi = (sipi == null) ? Optional.<String>empty() : sipi;
         this.state = (state == null) ? Optional.<String>empty() : state;
+        this.encryptionCapable = (encryptionCapable == null) ? Optional.<Boolean>empty() : encryptionCapable;
+        this.hasLocalAdmin = (hasLocalAdmin == null) ? Optional.<Boolean>empty() : hasLocalAdmin;
+        this.version = (version == null) ? Optional.<String>empty() : version;
     }
 
     /** 
@@ -144,6 +153,24 @@ public class ClusterConfig implements Serializable {
     public void setState(Optional<String> state) { 
         this.state = (state == null) ? Optional.<String>empty() : state;
     }
+    /** 
+     **/
+    public Optional<Boolean> getEncryptionCapable() { return this.encryptionCapable; }
+    public void setEncryptionCapable(Optional<Boolean> encryptionCapable) { 
+        this.encryptionCapable = (encryptionCapable == null) ? Optional.<Boolean>empty() : encryptionCapable;
+    }
+    /** 
+     **/
+    public Optional<Boolean> getHasLocalAdmin() { return this.hasLocalAdmin; }
+    public void setHasLocalAdmin(Optional<Boolean> hasLocalAdmin) { 
+        this.hasLocalAdmin = (hasLocalAdmin == null) ? Optional.<Boolean>empty() : hasLocalAdmin;
+    }
+    /** 
+     **/
+    public Optional<String> getVersion() { return this.version; }
+    public void setVersion(Optional<String> version) { 
+        this.version = (version == null) ? Optional.<String>empty() : version;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -162,12 +189,15 @@ public class ClusterConfig implements Serializable {
             Objects.equals(pendingNodeID, that.pendingNodeID) && 
             Objects.equals(role, that.role) && 
             Objects.equals(sipi, that.sipi) && 
-            Objects.equals(state, that.state);
+            Objects.equals(state, that.state) && 
+            Objects.equals(encryptionCapable, that.encryptionCapable) && 
+            Objects.equals(hasLocalAdmin, that.hasLocalAdmin) && 
+            Objects.equals(version, that.version);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( cipi,cluster,ensemble,mipi,name,nodeID,pendingNodeID,role,sipi,state );
+        return Objects.hash( cipi,cluster,ensemble,mipi,name,nodeID,pendingNodeID,role,sipi,state,encryptionCapable,hasLocalAdmin,version );
     }
 
 
@@ -183,6 +213,9 @@ public class ClusterConfig implements Serializable {
         map.put("role", role);
         map.put("sipi", sipi);
         map.put("state", state);
+        map.put("encryptionCapable", encryptionCapable);
+        map.put("hasLocalAdmin", hasLocalAdmin);
+        map.put("version", version);
         return map;
     }
 
@@ -221,6 +254,15 @@ public class ClusterConfig implements Serializable {
         if(null != state && state.isPresent()){
             sb.append(" state : ").append(state).append(",");
         }
+        if(null != encryptionCapable && encryptionCapable.isPresent()){
+            sb.append(" encryptionCapable : ").append(encryptionCapable).append(",");
+        }
+        if(null != hasLocalAdmin && hasLocalAdmin.isPresent()){
+            sb.append(" hasLocalAdmin : ").append(hasLocalAdmin).append(",");
+        }
+        if(null != version && version.isPresent()){
+            sb.append(" version : ").append(version).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -248,6 +290,9 @@ public class ClusterConfig implements Serializable {
         private Optional<String> role;
         private Optional<String> sipi;
         private Optional<String> state;
+        private Optional<Boolean> encryptionCapable;
+        private Optional<Boolean> hasLocalAdmin;
+        private Optional<String> version;
 
         private Builder() { }
 
@@ -262,7 +307,10 @@ public class ClusterConfig implements Serializable {
                          this.pendingNodeID,
                          this.role,
                          this.sipi,
-                         this.state);
+                         this.state,
+                         this.encryptionCapable,
+                         this.hasLocalAdmin,
+                         this.version);
         }
 
         private ClusterConfig.Builder buildFrom(final ClusterConfig req) {
@@ -276,6 +324,9 @@ public class ClusterConfig implements Serializable {
             this.role = req.role;
             this.sipi = req.sipi;
             this.state = req.state;
+            this.encryptionCapable = req.encryptionCapable;
+            this.hasLocalAdmin = req.hasLocalAdmin;
+            this.version = req.version;
 
             return this;
         }
@@ -327,6 +378,21 @@ public class ClusterConfig implements Serializable {
 
         public ClusterConfig.Builder optionalState(final String state) {
             this.state = (state == null) ? Optional.<String>empty() : Optional.of(state);
+            return this;
+        }
+
+        public ClusterConfig.Builder optionalEncryptionCapable(final Boolean encryptionCapable) {
+            this.encryptionCapable = (encryptionCapable == null) ? Optional.<Boolean>empty() : Optional.of(encryptionCapable);
+            return this;
+        }
+
+        public ClusterConfig.Builder optionalHasLocalAdmin(final Boolean hasLocalAdmin) {
+            this.hasLocalAdmin = (hasLocalAdmin == null) ? Optional.<Boolean>empty() : Optional.of(hasLocalAdmin);
+            return this;
+        }
+
+        public ClusterConfig.Builder optionalVersion(final String version) {
+            this.version = (version == null) ? Optional.<String>empty() : Optional.of(version);
             return this;
         }
 

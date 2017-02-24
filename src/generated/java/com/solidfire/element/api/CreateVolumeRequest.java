@@ -39,6 +39,7 @@ public class CreateVolumeRequest implements Serializable {
     @SerializedName("enable512e") private Boolean enable512e;
     @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("sliceCount") private Optional<Long> sliceCount;
 
     // empty constructor
     @Since("7.0")
@@ -53,7 +54,8 @@ public class CreateVolumeRequest implements Serializable {
         Long totalSize,
         Boolean enable512e,
         Optional<QoS> qos,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes,
+        Optional<Long> sliceCount
     )
     {
         this.name = name;
@@ -62,6 +64,7 @@ public class CreateVolumeRequest implements Serializable {
         this.enable512e = enable512e;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.sliceCount = (sliceCount == null) ? Optional.<Long>empty() : sliceCount;
     }
 
     /** 
@@ -111,6 +114,12 @@ public class CreateVolumeRequest implements Serializable {
     public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
+    /** 
+     **/
+    public Optional<Long> getSliceCount() { return this.sliceCount; }
+    public void setSliceCount(Optional<Long> sliceCount) { 
+        this.sliceCount = (sliceCount == null) ? Optional.<Long>empty() : sliceCount;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -125,12 +134,13 @@ public class CreateVolumeRequest implements Serializable {
             Objects.equals(totalSize, that.totalSize) && 
             Objects.equals(enable512e, that.enable512e) && 
             Objects.equals(qos, that.qos) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(sliceCount, that.sliceCount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name,accountID,totalSize,enable512e,qos,attributes );
+        return Objects.hash( name,accountID,totalSize,enable512e,qos,attributes,sliceCount );
     }
 
 
@@ -142,6 +152,7 @@ public class CreateVolumeRequest implements Serializable {
         map.put("enable512e", enable512e);
         map.put("qos", qos);
         map.put("attributes", attributes);
+        map.put("sliceCount", sliceCount);
         return map;
     }
 
@@ -159,6 +170,9 @@ public class CreateVolumeRequest implements Serializable {
         }
         if(null != attributes && attributes.isPresent()){
             sb.append(" attributes : ").append(attributes).append(",");
+        }
+        if(null != sliceCount && sliceCount.isPresent()){
+            sb.append(" sliceCount : ").append(sliceCount).append(",");
         }
         sb.append( " }" );
 
@@ -183,6 +197,7 @@ public class CreateVolumeRequest implements Serializable {
         private Boolean enable512e;
         private Optional<QoS> qos;
         private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Long> sliceCount;
 
         private Builder() { }
 
@@ -193,7 +208,8 @@ public class CreateVolumeRequest implements Serializable {
                          this.totalSize,
                          this.enable512e,
                          this.qos,
-                         this.attributes);
+                         this.attributes,
+                         this.sliceCount);
         }
 
         private CreateVolumeRequest.Builder buildFrom(final CreateVolumeRequest req) {
@@ -203,6 +219,7 @@ public class CreateVolumeRequest implements Serializable {
             this.enable512e = req.enable512e;
             this.qos = req.qos;
             this.attributes = req.attributes;
+            this.sliceCount = req.sliceCount;
 
             return this;
         }
@@ -234,6 +251,11 @@ public class CreateVolumeRequest implements Serializable {
 
         public CreateVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+            return this;
+        }
+
+        public CreateVolumeRequest.Builder optionalSliceCount(final Long sliceCount) {
+            this.sliceCount = (sliceCount == null) ? Optional.<Long>empty() : Optional.of(sliceCount);
             return this;
         }
 

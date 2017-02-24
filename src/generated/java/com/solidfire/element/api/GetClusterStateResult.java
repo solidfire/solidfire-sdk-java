@@ -34,6 +34,8 @@ public class GetClusterStateResult implements Serializable {
 
     public static final long serialVersionUID = -8089888168782582813L;
     @SerializedName("nodes") private NodeStateResult[] nodes;
+    @SerializedName("cluster") private String cluster;
+    @SerializedName("state") private String state;
 
     // empty constructor
     @Since("7.0")
@@ -43,10 +45,14 @@ public class GetClusterStateResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetClusterStateResult(
-        NodeStateResult[] nodes
+        NodeStateResult[] nodes,
+        String cluster,
+        String state
     )
     {
         this.nodes = nodes;
+        this.cluster = cluster;
+        this.state = state;
     }
 
     /** 
@@ -55,6 +61,18 @@ public class GetClusterStateResult implements Serializable {
     public NodeStateResult[] getNodes() { return this.nodes; }
     public void setNodes(NodeStateResult[] nodes) { 
         this.nodes = nodes;
+    }
+    /** 
+     **/
+    public String getCluster() { return this.cluster; }
+    public void setCluster(String cluster) { 
+        this.cluster = cluster;
+    }
+    /** 
+     **/
+    public String getState() { return this.state; }
+    public void setState(String state) { 
+        this.state = state;
     }
 
     @Override
@@ -65,18 +83,22 @@ public class GetClusterStateResult implements Serializable {
         GetClusterStateResult that = (GetClusterStateResult) o;
 
         return 
-            Arrays.equals(nodes, that.nodes);
+            Arrays.equals(nodes, that.nodes) && 
+            Objects.equals(cluster, that.cluster) && 
+            Objects.equals(state, that.state);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])nodes );
+        return Objects.hash( (Object[])nodes,cluster,state );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("nodes", nodes);
+        map.put("cluster", cluster);
+        map.put("state", state);
         return map;
     }
 
@@ -86,6 +108,8 @@ public class GetClusterStateResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        sb.append(" cluster : ").append(cluster).append(",");
+        sb.append(" state : ").append(state).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -104,22 +128,38 @@ public class GetClusterStateResult implements Serializable {
 
     public static class Builder {
         private NodeStateResult[] nodes;
+        private String cluster;
+        private String state;
 
         private Builder() { }
 
         public GetClusterStateResult build() {
             return new GetClusterStateResult (
-                         this.nodes);
+                         this.nodes,
+                         this.cluster,
+                         this.state);
         }
 
         private GetClusterStateResult.Builder buildFrom(final GetClusterStateResult req) {
             this.nodes = req.nodes;
+            this.cluster = req.cluster;
+            this.state = req.state;
 
             return this;
         }
 
         public GetClusterStateResult.Builder nodes(final NodeStateResult[] nodes) {
             this.nodes = nodes;
+            return this;
+        }
+
+        public GetClusterStateResult.Builder cluster(final String cluster) {
+            this.cluster = cluster;
+            return this;
+        }
+
+        public GetClusterStateResult.Builder state(final String state) {
+            this.state = state;
             return this;
         }
 

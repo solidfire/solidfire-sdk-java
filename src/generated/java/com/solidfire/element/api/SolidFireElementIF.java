@@ -585,22 +585,6 @@ public interface SolidFireElementIF {
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
-     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request);
-
-    /** 
-     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ClearClusterFaultsResult clearClusterFaults(
-        
-        Optional<String> faultTypes
-        );
-    /** 
      * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
      * 
      * Note: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
@@ -737,6 +721,22 @@ public interface SolidFireElementIF {
         Optional<SnmpV3UsmUser[]> usmUsers
         );
     /** 
+     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request);
+
+    /** 
+     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ClearClusterFaultsResult clearClusterFaults(
+        
+        Optional<String> faultType
+        );
+    /** 
      * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
      **/
     @Since("1")
@@ -793,40 +793,6 @@ public interface SolidFireElementIF {
     @Since("1")
     @ConnectionType("Cluster")
     public ListDrivesResult listDrives();
-    /** 
-     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
-     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
-     * Use the "ListDrives" method to display drives that are "available" to be added.
-     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
-     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
-     * 
-     * When you add a drive, the system automatically determines the "type" of drive it should be.
-     * 
-     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
-     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AddDrivesResult addDrives(final AddDrivesRequest request);
-
-    /** 
-     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
-     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
-     * Use the "ListDrives" method to display drives that are "available" to be added.
-     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
-     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
-     * 
-     * When you add a drive, the system automatically determines the "type" of drive it should be.
-     * 
-     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
-     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AddDrivesResult addDrives(
-        
-        NewDrive[] drives
-        );
     /** 
      * GetDriveConfig is used to display drive information for expected slice and block drive counts as well as the number of slices and block drives that are currently connected to the node.
      * 
@@ -946,6 +912,42 @@ public interface SolidFireElementIF {
     public TestDrivesResult testDrives(
         
         Optional<Long> minutes
+        );
+    /** 
+     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
+     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
+     * Use the "ListDrives" method to display drives that are "available" to be added.
+     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
+     * 
+     * When you add a drive, the system automatically determines the "type" of drive it should be.
+     * 
+     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
+     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public AddDrivesResult addDrives(final AddDrivesRequest request);
+
+    /** 
+     * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
+     * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
+     * Use the "ListDrives" method to display drives that are "available" to be added.
+     * When you add multiple drives, it is more efficient to add them in a single "AddDrives" method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
+     * 
+     * When you add a drive, the system automatically determines the "type" of drive it should be.
+     * 
+     * The method returns immediately. However, it may take some time for the data in the cluster to be rebalanced using the newly added drives.
+     * As the new drive(s) are syncing on the system, you can use the "ListSyncJobs" method to see how the drive(s) are being rebalanced and the progress of adding the new drive.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public AddDrivesResult addDrives(
+        
+        NewDrive[] drives
+, 
+        Optional<Boolean> forceDuringUpgrade
         );
     /** 
      * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
@@ -1777,40 +1779,6 @@ public interface SolidFireElementIF {
         Schedule schedule
         );
     /** 
-     * CreateSnapshot is used to create a point-in-time copy of a volume.
-     * A snapshot can be created from any volume or from an existing snapshot.
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public CreateSnapshotResult createSnapshot(final CreateSnapshotRequest request);
-
-    /** 
-     * CreateSnapshot is used to create a point-in-time copy of a volume.
-     * A snapshot can be created from any volume or from an existing snapshot.
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public CreateSnapshotResult createSnapshot(
-        
-        Long volumeID
-, 
-        Optional<Long> snapshotID
-, 
-        Optional<String> name
-, 
-        Optional<Boolean> enableRemoteReplication
-, 
-        Optional<String> retention
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
      * DeleteGroupSnapshot is used to delete a group snapshot.
      * The saveMembers parameter can be used to preserve all the snapshots that
      * were made for the volumes in the group but the group association will be removed.
@@ -1969,6 +1937,40 @@ public interface SolidFireElementIF {
         Optional<Long> volumeID
 , 
         Optional<Long> groupSnapshotID
+        );
+    /** 
+     * CreateSnapshot is used to create a point-in-time copy of a volume.
+     * A snapshot can be created from any volume or from an existing snapshot.
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public java.util.Map<String, Object> createSnapshot(final CreateSnapshotRequest request);
+
+    /** 
+     * CreateSnapshot is used to create a point-in-time copy of a volume.
+     * A snapshot can be created from any volume or from an existing snapshot.
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public java.util.Map<String, Object> createSnapshot(
+        
+        Long volumeID
+, 
+        Optional<Long> snapshotID
+, 
+        Optional<String> name
+, 
+        Optional<Boolean> enableRemoteReplication
+, 
+        Optional<String> retention
+, 
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
@@ -2685,66 +2687,6 @@ public interface SolidFireElementIF {
         Optional<Long> newAccountID
         );
     /** 
-     * CreateVolume is used to create a new (empty) volume on the cluster.
-     * When the volume is created successfully it is available for connection via iSCSI.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(final CreateVolumeRequest request);
-
-    /** 
-     * CreateVolume is used to create a new (empty) volume on the cluster.
-     * When the volume is created successfully it is available for connection via iSCSI.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(
-        
-        String name
-, 
-        Long accountID
-, 
-        Long totalSize
-, 
-        Boolean enable512e
-, 
-        Optional<QoS> qos
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * Used to retrieve the result of asynchronous method calls.
-     * Some method calls are long running and do not complete when the initial response is sent.
-     * To obtain the result of the method call, polling with GetAsyncResult is required.
-     * 
-     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
-     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
-     * 
-     * The result for a completed asynchronous method call can only be retrieved once.
-     * Once the final result has been returned, later attempts returns an error.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public GetAsyncResultResult getAsyncResult(final GetAsyncResultRequest request);
-
-    /** 
-     * Used to retrieve the result of asynchronous method calls.
-     * Some method calls are long running and do not complete when the initial response is sent.
-     * To obtain the result of the method call, polling with GetAsyncResult is required.
-     * 
-     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
-     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
-     * 
-     * The result for a completed asynchronous method call can only be retrieved once.
-     * Once the final result has been returned, later attempts returns an error.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public GetAsyncResultResult getAsyncResult(
-        
-        Long asyncHandle
-        );
-    /** 
      * StartBulkVolumeRead allows you to initialize a bulk volume read session on a specified volume.
      * Only two bulk volume processes can run simultaneously on a volume.
      * When you initialize the session, data is read from a SolidFire storage volume for the purposes of storing the data on an external backup source.
@@ -2817,6 +2759,38 @@ public interface SolidFireElementIF {
         Optional<String> message
 , 
         Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * Used to retrieve the result of asynchronous method calls.
+     * Some method calls are long running and do not complete when the initial response is sent.
+     * To obtain the result of the method call, polling with GetAsyncResult is required.
+     * 
+     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
+     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
+     * 
+     * The result for a completed asynchronous method call can only be retrieved once.
+     * Once the final result has been returned, later attempts returns an error.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public java.util.Map<String, Object> getAsyncResult(final GetAsyncResultRequest request);
+
+    /** 
+     * Used to retrieve the result of asynchronous method calls.
+     * Some method calls are long running and do not complete when the initial response is sent.
+     * To obtain the result of the method call, polling with GetAsyncResult is required.
+     * 
+     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
+     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
+     * 
+     * The result for a completed asynchronous method call can only be retrieved once.
+     * Once the final result has been returned, later attempts returns an error.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public java.util.Map<String, Object> getAsyncResult(
+        
+        Long asyncHandle
         );
     /** 
      * Cancels a currently running clone operation. This method does not return anything.
@@ -3033,6 +3007,36 @@ public interface SolidFireElementIF {
         Optional<Object> scriptParameters
 , 
         Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * CreateVolume is used to create a new (empty) volume on the cluster.
+     * When the volume is created successfully it is available for connection via iSCSI.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(final CreateVolumeRequest request);
+
+    /** 
+     * CreateVolume is used to create a new (empty) volume on the cluster.
+     * When the volume is created successfully it is available for connection via iSCSI.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(
+        
+        String name
+, 
+        Long accountID
+, 
+        Long totalSize
+, 
+        Boolean enable512e
+, 
+        Optional<QoS> qos
+, 
+        Optional<java.util.Map<String, Object>> attributes
+, 
+        Optional<Long> sliceCount
         );
     /** 
      * Add initiators to a volume access group.

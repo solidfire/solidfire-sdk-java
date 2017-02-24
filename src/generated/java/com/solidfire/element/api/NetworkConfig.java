@@ -62,6 +62,8 @@ public class NetworkConfig implements Serializable {
     @SerializedName("status") private Optional<String> status;
     @SerializedName("symmetricRouteRules") private Optional<String[]> symmetricRouteRules;
     @SerializedName("upAndRunning") private Optional<Boolean> upAndRunning;
+    @SerializedName("bond-xmit_hash_policy") private String bondXmitHashPolicy;
+    @SerializedName("bond-ad_num_ports") private String bondAdNumPorts;
 
     // empty constructor
     @Since("7.0")
@@ -99,7 +101,9 @@ public class NetworkConfig implements Serializable {
         Optional<String[]> routes,
         Optional<String> status,
         Optional<String[]> symmetricRouteRules,
-        Optional<Boolean> upAndRunning
+        Optional<Boolean> upAndRunning,
+        String bondXmitHashPolicy,
+        String bondAdNumPorts
     )
     {
         this._default = (_default == null) ? Optional.<Boolean>empty() : _default;
@@ -131,6 +135,8 @@ public class NetworkConfig implements Serializable {
         this.status = (status == null) ? Optional.<String>empty() : status;
         this.symmetricRouteRules = (symmetricRouteRules == null) ? Optional.<String[]>empty() : symmetricRouteRules;
         this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
+        this.bondXmitHashPolicy = bondXmitHashPolicy;
+        this.bondAdNumPorts = bondAdNumPorts;
     }
 
     /** 
@@ -307,6 +313,18 @@ public class NetworkConfig implements Serializable {
     public void setUpAndRunning(Optional<Boolean> upAndRunning) { 
         this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
     }
+    /** 
+     **/
+    public String getBondXmitHashPolicy() { return this.bondXmitHashPolicy; }
+    public void setBondXmitHashPolicy(String bondXmitHashPolicy) { 
+        this.bondXmitHashPolicy = bondXmitHashPolicy;
+    }
+    /** 
+     **/
+    public String getBondAdNumPorts() { return this.bondAdNumPorts; }
+    public void setBondAdNumPorts(String bondAdNumPorts) { 
+        this.bondAdNumPorts = bondAdNumPorts;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -344,12 +362,14 @@ public class NetworkConfig implements Serializable {
             Objects.equals(routes, that.routes) && 
             Objects.equals(status, that.status) && 
             Objects.equals(symmetricRouteRules, that.symmetricRouteRules) && 
-            Objects.equals(upAndRunning, that.upAndRunning);
+            Objects.equals(upAndRunning, that.upAndRunning) && 
+            Objects.equals(bondXmitHashPolicy, that.bondXmitHashPolicy) && 
+            Objects.equals(bondAdNumPorts, that.bondAdNumPorts);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( _default,bondMaster,virtualNetworkTag,address,auto,bondDowndelay,bondFailOverMac,bondPrimaryReselect,bondLacpRate,bondMiimon,bondMode,bondSlaves,bondUpdelay,broadcast,dnsNameservers,dnsSearch,family,gateway,macAddress,macAddressPermanent,method,mtu,netmask,network,physical,routes,status,symmetricRouteRules,upAndRunning );
+        return Objects.hash( _default,bondMaster,virtualNetworkTag,address,auto,bondDowndelay,bondFailOverMac,bondPrimaryReselect,bondLacpRate,bondMiimon,bondMode,bondSlaves,bondUpdelay,broadcast,dnsNameservers,dnsSearch,family,gateway,macAddress,macAddressPermanent,method,mtu,netmask,network,physical,routes,status,symmetricRouteRules,upAndRunning,bondXmitHashPolicy,bondAdNumPorts );
     }
 
 
@@ -384,6 +404,8 @@ public class NetworkConfig implements Serializable {
         map.put("status", status);
         map.put("symmetricRouteRules", symmetricRouteRules);
         map.put("upAndRunning", upAndRunning);
+        map.put("bondXmitHashPolicy", bondXmitHashPolicy);
+        map.put("bondAdNumPorts", bondAdNumPorts);
         return map;
     }
 
@@ -475,6 +497,8 @@ public class NetworkConfig implements Serializable {
         if(null != upAndRunning && upAndRunning.isPresent()){
             sb.append(" upAndRunning : ").append(upAndRunning).append(",");
         }
+        sb.append(" bondXmitHashPolicy : ").append(bondXmitHashPolicy).append(",");
+        sb.append(" bondAdNumPorts : ").append(bondAdNumPorts).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -521,6 +545,8 @@ public class NetworkConfig implements Serializable {
         private Optional<String> status;
         private Optional<String[]> symmetricRouteRules;
         private Optional<Boolean> upAndRunning;
+        private String bondXmitHashPolicy;
+        private String bondAdNumPorts;
 
         private Builder() { }
 
@@ -554,7 +580,9 @@ public class NetworkConfig implements Serializable {
                          this.routes,
                          this.status,
                          this.symmetricRouteRules,
-                         this.upAndRunning);
+                         this.upAndRunning,
+                         this.bondXmitHashPolicy,
+                         this.bondAdNumPorts);
         }
 
         private NetworkConfig.Builder buildFrom(final NetworkConfig req) {
@@ -587,6 +615,8 @@ public class NetworkConfig implements Serializable {
             this.status = req.status;
             this.symmetricRouteRules = req.symmetricRouteRules;
             this.upAndRunning = req.upAndRunning;
+            this.bondXmitHashPolicy = req.bondXmitHashPolicy;
+            this.bondAdNumPorts = req.bondAdNumPorts;
 
             return this;
         }
@@ -733,6 +763,16 @@ public class NetworkConfig implements Serializable {
 
         public NetworkConfig.Builder optionalUpAndRunning(final Boolean upAndRunning) {
             this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : Optional.of(upAndRunning);
+            return this;
+        }
+
+        public NetworkConfig.Builder bondXmitHashPolicy(final String bondXmitHashPolicy) {
+            this.bondXmitHashPolicy = bondXmitHashPolicy;
+            return this;
+        }
+
+        public NetworkConfig.Builder bondAdNumPorts(final String bondAdNumPorts) {
+            this.bondAdNumPorts = bondAdNumPorts;
             return this;
         }
 

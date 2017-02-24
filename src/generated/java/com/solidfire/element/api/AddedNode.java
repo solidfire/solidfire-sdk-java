@@ -35,6 +35,14 @@ public class AddedNode implements Serializable {
     public static final long serialVersionUID = 7770473146706377395L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("pendingNodeID") private Long pendingNodeID;
+    @SerializedName("activeNodeKey") private Optional<String> activeNodeKey;
+    @SerializedName("assignedNodeID") private Optional<Long> assignedNodeID;
+    @SerializedName("asyncHandle") private Optional<Long> asyncHandle;
+    @SerializedName("cip") private Optional<String> cip;
+    @SerializedName("mip") private Optional<String> mip;
+    @SerializedName("platformInfo") private Optional<Platform> platformInfo;
+    @SerializedName("sip") private Optional<String> sip;
+    @SerializedName("softwareVersion") private Optional<String> softwareVersion;
 
     // empty constructor
     @Since("7.0")
@@ -45,11 +53,27 @@ public class AddedNode implements Serializable {
     @Since("7.0")
     public AddedNode(
         Long nodeID,
-        Long pendingNodeID
+        Long pendingNodeID,
+        Optional<String> activeNodeKey,
+        Optional<Long> assignedNodeID,
+        Optional<Long> asyncHandle,
+        Optional<String> cip,
+        Optional<String> mip,
+        Optional<Platform> platformInfo,
+        Optional<String> sip,
+        Optional<String> softwareVersion
     )
     {
         this.nodeID = nodeID;
         this.pendingNodeID = pendingNodeID;
+        this.activeNodeKey = (activeNodeKey == null) ? Optional.<String>empty() : activeNodeKey;
+        this.assignedNodeID = (assignedNodeID == null) ? Optional.<Long>empty() : assignedNodeID;
+        this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : asyncHandle;
+        this.cip = (cip == null) ? Optional.<String>empty() : cip;
+        this.mip = (mip == null) ? Optional.<String>empty() : mip;
+        this.platformInfo = (platformInfo == null) ? Optional.<Platform>empty() : platformInfo;
+        this.sip = (sip == null) ? Optional.<String>empty() : sip;
+        this.softwareVersion = (softwareVersion == null) ? Optional.<String>empty() : softwareVersion;
     }
 
     /** 
@@ -64,6 +88,54 @@ public class AddedNode implements Serializable {
     public void setPendingNodeID(Long pendingNodeID) { 
         this.pendingNodeID = pendingNodeID;
     }
+    /** 
+     **/
+    public Optional<String> getActiveNodeKey() { return this.activeNodeKey; }
+    public void setActiveNodeKey(Optional<String> activeNodeKey) { 
+        this.activeNodeKey = (activeNodeKey == null) ? Optional.<String>empty() : activeNodeKey;
+    }
+    /** 
+     **/
+    public Optional<Long> getAssignedNodeID() { return this.assignedNodeID; }
+    public void setAssignedNodeID(Optional<Long> assignedNodeID) { 
+        this.assignedNodeID = (assignedNodeID == null) ? Optional.<Long>empty() : assignedNodeID;
+    }
+    /** 
+     **/
+    public Optional<Long> getAsyncHandle() { return this.asyncHandle; }
+    public void setAsyncHandle(Optional<Long> asyncHandle) { 
+        this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : asyncHandle;
+    }
+    /** 
+     **/
+    public Optional<String> getCip() { return this.cip; }
+    public void setCip(Optional<String> cip) { 
+        this.cip = (cip == null) ? Optional.<String>empty() : cip;
+    }
+    /** 
+     **/
+    public Optional<String> getMip() { return this.mip; }
+    public void setMip(Optional<String> mip) { 
+        this.mip = (mip == null) ? Optional.<String>empty() : mip;
+    }
+    /** 
+     **/
+    public Optional<Platform> getPlatformInfo() { return this.platformInfo; }
+    public void setPlatformInfo(Optional<Platform> platformInfo) { 
+        this.platformInfo = (platformInfo == null) ? Optional.<Platform>empty() : platformInfo;
+    }
+    /** 
+     **/
+    public Optional<String> getSip() { return this.sip; }
+    public void setSip(Optional<String> sip) { 
+        this.sip = (sip == null) ? Optional.<String>empty() : sip;
+    }
+    /** 
+     **/
+    public Optional<String> getSoftwareVersion() { return this.softwareVersion; }
+    public void setSoftwareVersion(Optional<String> softwareVersion) { 
+        this.softwareVersion = (softwareVersion == null) ? Optional.<String>empty() : softwareVersion;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -74,12 +146,20 @@ public class AddedNode implements Serializable {
 
         return 
             Objects.equals(nodeID, that.nodeID) && 
-            Objects.equals(pendingNodeID, that.pendingNodeID);
+            Objects.equals(pendingNodeID, that.pendingNodeID) && 
+            Objects.equals(activeNodeKey, that.activeNodeKey) && 
+            Objects.equals(assignedNodeID, that.assignedNodeID) && 
+            Objects.equals(asyncHandle, that.asyncHandle) && 
+            Objects.equals(cip, that.cip) && 
+            Objects.equals(mip, that.mip) && 
+            Objects.equals(platformInfo, that.platformInfo) && 
+            Objects.equals(sip, that.sip) && 
+            Objects.equals(softwareVersion, that.softwareVersion);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID,pendingNodeID );
+        return Objects.hash( nodeID,pendingNodeID,activeNodeKey,assignedNodeID,asyncHandle,cip,mip,platformInfo,sip,softwareVersion );
     }
 
 
@@ -87,6 +167,14 @@ public class AddedNode implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("nodeID", nodeID);
         map.put("pendingNodeID", pendingNodeID);
+        map.put("activeNodeKey", activeNodeKey);
+        map.put("assignedNodeID", assignedNodeID);
+        map.put("asyncHandle", asyncHandle);
+        map.put("cip", cip);
+        map.put("mip", mip);
+        map.put("platformInfo", platformInfo);
+        map.put("sip", sip);
+        map.put("softwareVersion", softwareVersion);
         return map;
     }
 
@@ -97,6 +185,30 @@ public class AddedNode implements Serializable {
 
         sb.append(" nodeID : ").append(nodeID).append(",");
         sb.append(" pendingNodeID : ").append(pendingNodeID).append(",");
+        if(null != activeNodeKey && activeNodeKey.isPresent()){
+            sb.append(" activeNodeKey : ").append(activeNodeKey).append(",");
+        }
+        if(null != assignedNodeID && assignedNodeID.isPresent()){
+            sb.append(" assignedNodeID : ").append(assignedNodeID).append(",");
+        }
+        if(null != asyncHandle && asyncHandle.isPresent()){
+            sb.append(" asyncHandle : ").append(asyncHandle).append(",");
+        }
+        if(null != cip && cip.isPresent()){
+            sb.append(" cip : ").append(cip).append(",");
+        }
+        if(null != mip && mip.isPresent()){
+            sb.append(" mip : ").append(mip).append(",");
+        }
+        if(null != platformInfo && platformInfo.isPresent()){
+            sb.append(" platformInfo : ").append(platformInfo).append(",");
+        }
+        if(null != sip && sip.isPresent()){
+            sb.append(" sip : ").append(sip).append(",");
+        }
+        if(null != softwareVersion && softwareVersion.isPresent()){
+            sb.append(" softwareVersion : ").append(softwareVersion).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -116,18 +228,42 @@ public class AddedNode implements Serializable {
     public static class Builder {
         private Long nodeID;
         private Long pendingNodeID;
+        private Optional<String> activeNodeKey;
+        private Optional<Long> assignedNodeID;
+        private Optional<Long> asyncHandle;
+        private Optional<String> cip;
+        private Optional<String> mip;
+        private Optional<Platform> platformInfo;
+        private Optional<String> sip;
+        private Optional<String> softwareVersion;
 
         private Builder() { }
 
         public AddedNode build() {
             return new AddedNode (
                          this.nodeID,
-                         this.pendingNodeID);
+                         this.pendingNodeID,
+                         this.activeNodeKey,
+                         this.assignedNodeID,
+                         this.asyncHandle,
+                         this.cip,
+                         this.mip,
+                         this.platformInfo,
+                         this.sip,
+                         this.softwareVersion);
         }
 
         private AddedNode.Builder buildFrom(final AddedNode req) {
             this.nodeID = req.nodeID;
             this.pendingNodeID = req.pendingNodeID;
+            this.activeNodeKey = req.activeNodeKey;
+            this.assignedNodeID = req.assignedNodeID;
+            this.asyncHandle = req.asyncHandle;
+            this.cip = req.cip;
+            this.mip = req.mip;
+            this.platformInfo = req.platformInfo;
+            this.sip = req.sip;
+            this.softwareVersion = req.softwareVersion;
 
             return this;
         }
@@ -139,6 +275,46 @@ public class AddedNode implements Serializable {
 
         public AddedNode.Builder pendingNodeID(final Long pendingNodeID) {
             this.pendingNodeID = pendingNodeID;
+            return this;
+        }
+
+        public AddedNode.Builder optionalActiveNodeKey(final String activeNodeKey) {
+            this.activeNodeKey = (activeNodeKey == null) ? Optional.<String>empty() : Optional.of(activeNodeKey);
+            return this;
+        }
+
+        public AddedNode.Builder optionalAssignedNodeID(final Long assignedNodeID) {
+            this.assignedNodeID = (assignedNodeID == null) ? Optional.<Long>empty() : Optional.of(assignedNodeID);
+            return this;
+        }
+
+        public AddedNode.Builder optionalAsyncHandle(final Long asyncHandle) {
+            this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : Optional.of(asyncHandle);
+            return this;
+        }
+
+        public AddedNode.Builder optionalCip(final String cip) {
+            this.cip = (cip == null) ? Optional.<String>empty() : Optional.of(cip);
+            return this;
+        }
+
+        public AddedNode.Builder optionalMip(final String mip) {
+            this.mip = (mip == null) ? Optional.<String>empty() : Optional.of(mip);
+            return this;
+        }
+
+        public AddedNode.Builder optionalPlatformInfo(final Platform platformInfo) {
+            this.platformInfo = (platformInfo == null) ? Optional.<Platform>empty() : Optional.of(platformInfo);
+            return this;
+        }
+
+        public AddedNode.Builder optionalSip(final String sip) {
+            this.sip = (sip == null) ? Optional.<String>empty() : Optional.of(sip);
+            return this;
+        }
+
+        public AddedNode.Builder optionalSoftwareVersion(final String softwareVersion) {
+            this.softwareVersion = (softwareVersion == null) ? Optional.<String>empty() : Optional.of(softwareVersion);
             return this;
         }
 

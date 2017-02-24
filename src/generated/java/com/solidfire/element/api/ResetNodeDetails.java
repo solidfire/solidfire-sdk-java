@@ -27,43 +27,33 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * ModifyVolumeResult  
+ * ResetNodeDetails  
  **/
 
-public class ModifyVolumeResult implements Serializable {
+public class ResetNodeDetails implements Serializable {
 
-    public static final long serialVersionUID = 7716152308587193073L;
-    @SerializedName("volume") private Volume volume;
-    @SerializedName("curve") private VolumeQOS curve;
+    public static final long serialVersionUID = 547414546765963277L;
+    @SerializedName("rtfiInfo") private RtfiInfo rtfiInfo;
 
     // empty constructor
     @Since("7.0")
-    public ModifyVolumeResult() {}
+    public ResetNodeDetails() {}
 
     
     // parameterized constructor
     @Since("7.0")
-    public ModifyVolumeResult(
-        Volume volume,
-        VolumeQOS curve
+    public ResetNodeDetails(
+        RtfiInfo rtfiInfo
     )
     {
-        this.volume = volume;
-        this.curve = curve;
+        this.rtfiInfo = rtfiInfo;
     }
 
     /** 
-     * Object containing information about the newly modified volume.
      **/
-    public Volume getVolume() { return this.volume; }
-    public void setVolume(Volume volume) { 
-        this.volume = volume;
-    }
-    /** 
-     **/
-    public VolumeQOS getCurve() { return this.curve; }
-    public void setCurve(VolumeQOS curve) { 
-        this.curve = curve;
+    public RtfiInfo getRtfiInfo() { return this.rtfiInfo; }
+    public void setRtfiInfo(RtfiInfo rtfiInfo) { 
+        this.rtfiInfo = rtfiInfo;
     }
 
     @Override
@@ -71,23 +61,21 @@ public class ModifyVolumeResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyVolumeResult that = (ModifyVolumeResult) o;
+        ResetNodeDetails that = (ResetNodeDetails) o;
 
         return 
-            Objects.equals(volume, that.volume) && 
-            Objects.equals(curve, that.curve);
+            Objects.equals(rtfiInfo, that.rtfiInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volume,curve );
+        return Objects.hash( rtfiInfo );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("volume", volume);
-        map.put("curve", curve);
+        map.put("rtfiInfo", rtfiInfo);
         return map;
     }
 
@@ -96,8 +84,7 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volume : ").append(volume).append(",");
-        sb.append(" curve : ").append(curve).append(",");
+        sb.append(" rtfiInfo : ").append(rtfiInfo).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -115,31 +102,23 @@ public class ModifyVolumeResult implements Serializable {
     }
 
     public static class Builder {
-        private Volume volume;
-        private VolumeQOS curve;
+        private RtfiInfo rtfiInfo;
 
         private Builder() { }
 
-        public ModifyVolumeResult build() {
-            return new ModifyVolumeResult (
-                         this.volume,
-                         this.curve);
+        public ResetNodeDetails build() {
+            return new ResetNodeDetails (
+                         this.rtfiInfo);
         }
 
-        private ModifyVolumeResult.Builder buildFrom(final ModifyVolumeResult req) {
-            this.volume = req.volume;
-            this.curve = req.curve;
+        private ResetNodeDetails.Builder buildFrom(final ResetNodeDetails req) {
+            this.rtfiInfo = req.rtfiInfo;
 
             return this;
         }
 
-        public ModifyVolumeResult.Builder volume(final Volume volume) {
-            this.volume = volume;
-            return this;
-        }
-
-        public ModifyVolumeResult.Builder curve(final VolumeQOS curve) {
-            this.curve = curve;
+        public ResetNodeDetails.Builder rtfiInfo(final RtfiInfo rtfiInfo) {
+            this.rtfiInfo = rtfiInfo;
             return this;
         }
 

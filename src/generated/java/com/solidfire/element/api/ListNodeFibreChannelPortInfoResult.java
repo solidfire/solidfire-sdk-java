@@ -35,6 +35,7 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
 
     public static final long serialVersionUID = -7553598877547319919L;
     @SerializedName("nodes") private NodeFibreChannelPortInfoResult[] nodes;
+    @SerializedName("fibreChannelPorts") private FibreChannelPortInfo[] fibreChannelPorts;
 
     // empty constructor
     @Since("7.0")
@@ -44,10 +45,12 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListNodeFibreChannelPortInfoResult(
-        NodeFibreChannelPortInfoResult[] nodes
+        NodeFibreChannelPortInfoResult[] nodes,
+        FibreChannelPortInfo[] fibreChannelPorts
     )
     {
         this.nodes = nodes;
+        this.fibreChannelPorts = fibreChannelPorts;
     }
 
     /** 
@@ -56,6 +59,13 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
     public NodeFibreChannelPortInfoResult[] getNodes() { return this.nodes; }
     public void setNodes(NodeFibreChannelPortInfoResult[] nodes) { 
         this.nodes = nodes;
+    }
+    /** 
+     * List of all physical Fibre Channel ports.
+     **/
+    public FibreChannelPortInfo[] getFibreChannelPorts() { return this.fibreChannelPorts; }
+    public void setFibreChannelPorts(FibreChannelPortInfo[] fibreChannelPorts) { 
+        this.fibreChannelPorts = fibreChannelPorts;
     }
 
     @Override
@@ -66,18 +76,20 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
         ListNodeFibreChannelPortInfoResult that = (ListNodeFibreChannelPortInfoResult) o;
 
         return 
-            Arrays.equals(nodes, that.nodes);
+            Arrays.equals(nodes, that.nodes) && 
+            Arrays.equals(fibreChannelPorts, that.fibreChannelPorts);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])nodes );
+        return Objects.hash( (Object[])nodes,(Object[])fibreChannelPorts );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("nodes", nodes);
+        map.put("fibreChannelPorts", fibreChannelPorts);
         return map;
     }
 
@@ -87,6 +99,7 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        sb.append(" fibreChannelPorts : ").append(Arrays.toString(fibreChannelPorts)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -105,22 +118,30 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
 
     public static class Builder {
         private NodeFibreChannelPortInfoResult[] nodes;
+        private FibreChannelPortInfo[] fibreChannelPorts;
 
         private Builder() { }
 
         public ListNodeFibreChannelPortInfoResult build() {
             return new ListNodeFibreChannelPortInfoResult (
-                         this.nodes);
+                         this.nodes,
+                         this.fibreChannelPorts);
         }
 
         private ListNodeFibreChannelPortInfoResult.Builder buildFrom(final ListNodeFibreChannelPortInfoResult req) {
             this.nodes = req.nodes;
+            this.fibreChannelPorts = req.fibreChannelPorts;
 
             return this;
         }
 
         public ListNodeFibreChannelPortInfoResult.Builder nodes(final NodeFibreChannelPortInfoResult[] nodes) {
             this.nodes = nodes;
+            return this;
+        }
+
+        public ListNodeFibreChannelPortInfoResult.Builder fibreChannelPorts(final FibreChannelPortInfo[] fibreChannelPorts) {
+            this.fibreChannelPorts = fibreChannelPorts;
             return this;
         }
 

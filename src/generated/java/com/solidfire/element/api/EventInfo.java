@@ -40,6 +40,7 @@ public class EventInfo implements Serializable {
     @SerializedName("serviceID") private Long serviceID;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("driveID") private Long driveID;
+    @SerializedName("driveIDs") private Long[] driveIDs;
     @SerializedName("timeOfReport") private String timeOfReport;
     @SerializedName("timeOfPublish") private String timeOfPublish;
     @SerializedName("details") private Object details;
@@ -59,6 +60,7 @@ public class EventInfo implements Serializable {
         Long serviceID,
         Long nodeID,
         Long driveID,
+        Long[] driveIDs,
         String timeOfReport,
         String timeOfPublish,
         Object details
@@ -71,6 +73,7 @@ public class EventInfo implements Serializable {
         this.serviceID = serviceID;
         this.nodeID = nodeID;
         this.driveID = driveID;
+        this.driveIDs = driveIDs;
         this.timeOfReport = timeOfReport;
         this.timeOfPublish = timeOfPublish;
         this.details = details;
@@ -120,6 +123,12 @@ public class EventInfo implements Serializable {
     }
     /** 
      **/
+    public Long[] getDriveIDs() { return this.driveIDs; }
+    public void setDriveIDs(Long[] driveIDs) { 
+        this.driveIDs = driveIDs;
+    }
+    /** 
+     **/
     public String getTimeOfReport() { return this.timeOfReport; }
     public void setTimeOfReport(String timeOfReport) { 
         this.timeOfReport = timeOfReport;
@@ -152,6 +161,7 @@ public class EventInfo implements Serializable {
             Objects.equals(serviceID, that.serviceID) && 
             Objects.equals(nodeID, that.nodeID) && 
             Objects.equals(driveID, that.driveID) && 
+            Arrays.equals(driveIDs, that.driveIDs) && 
             Objects.equals(timeOfReport, that.timeOfReport) && 
             Objects.equals(timeOfPublish, that.timeOfPublish) && 
             Objects.equals(details, that.details);
@@ -159,7 +169,7 @@ public class EventInfo implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( eventID,severity,eventInfoType,message,serviceID,nodeID,driveID,timeOfReport,timeOfPublish,details );
+        return Objects.hash( eventID,severity,eventInfoType,message,serviceID,nodeID,driveID,(Object[])driveIDs,timeOfReport,timeOfPublish,details );
     }
 
 
@@ -172,6 +182,7 @@ public class EventInfo implements Serializable {
         map.put("serviceID", serviceID);
         map.put("nodeID", nodeID);
         map.put("driveID", driveID);
+        map.put("driveIDs", driveIDs);
         map.put("timeOfReport", timeOfReport);
         map.put("timeOfPublish", timeOfPublish);
         map.put("details", details);
@@ -190,6 +201,7 @@ public class EventInfo implements Serializable {
         sb.append(" serviceID : ").append(serviceID).append(",");
         sb.append(" nodeID : ").append(nodeID).append(",");
         sb.append(" driveID : ").append(driveID).append(",");
+        sb.append(" driveIDs : ").append(Arrays.toString(driveIDs)).append(",");
         sb.append(" timeOfReport : ").append(timeOfReport).append(",");
         sb.append(" timeOfPublish : ").append(timeOfPublish).append(",");
         sb.append(" details : ").append(details).append(",");
@@ -217,6 +229,7 @@ public class EventInfo implements Serializable {
         private Long serviceID;
         private Long nodeID;
         private Long driveID;
+        private Long[] driveIDs;
         private String timeOfReport;
         private String timeOfPublish;
         private Object details;
@@ -232,6 +245,7 @@ public class EventInfo implements Serializable {
                          this.serviceID,
                          this.nodeID,
                          this.driveID,
+                         this.driveIDs,
                          this.timeOfReport,
                          this.timeOfPublish,
                          this.details);
@@ -245,6 +259,7 @@ public class EventInfo implements Serializable {
             this.serviceID = req.serviceID;
             this.nodeID = req.nodeID;
             this.driveID = req.driveID;
+            this.driveIDs = req.driveIDs;
             this.timeOfReport = req.timeOfReport;
             this.timeOfPublish = req.timeOfPublish;
             this.details = req.details;
@@ -284,6 +299,11 @@ public class EventInfo implements Serializable {
 
         public EventInfo.Builder driveID(final Long driveID) {
             this.driveID = driveID;
+            return this;
+        }
+
+        public EventInfo.Builder driveIDs(final Long[] driveIDs) {
+            this.driveIDs = driveIDs;
             return this;
         }
 

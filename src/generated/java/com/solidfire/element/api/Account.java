@@ -41,6 +41,7 @@ public class Account implements Serializable {
     @SerializedName("volumes") private Long[] volumes;
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
+    @SerializedName("storageContainerID") private Optional<java.util.UUID> storageContainerID;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
@@ -57,6 +58,7 @@ public class Account implements Serializable {
         Long[] volumes,
         Optional<CHAPSecret> initiatorSecret,
         Optional<CHAPSecret> targetSecret,
+        Optional<java.util.UUID> storageContainerID,
         Optional<java.util.Map<String, Object>> attributes
     )
     {
@@ -66,6 +68,7 @@ public class Account implements Serializable {
         this.volumes = volumes;
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
+        this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : storageContainerID;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
@@ -112,6 +115,13 @@ public class Account implements Serializable {
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
     /** 
+     * The id of the storage container associated with the account
+     **/
+    public Optional<java.util.UUID> getStorageContainerID() { return this.storageContainerID; }
+    public void setStorageContainerID(Optional<java.util.UUID> storageContainerID) { 
+        this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : storageContainerID;
+    }
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
@@ -133,12 +143,13 @@ public class Account implements Serializable {
             Arrays.equals(volumes, that.volumes) && 
             Objects.equals(initiatorSecret, that.initiatorSecret) && 
             Objects.equals(targetSecret, that.targetSecret) && 
+            Objects.equals(storageContainerID, that.storageContainerID) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID,username,status,(Object[])volumes,initiatorSecret,targetSecret,attributes );
+        return Objects.hash( accountID,username,status,(Object[])volumes,initiatorSecret,targetSecret,storageContainerID,attributes );
     }
 
 
@@ -150,6 +161,7 @@ public class Account implements Serializable {
         map.put("volumes", volumes);
         map.put("initiatorSecret", initiatorSecret);
         map.put("targetSecret", targetSecret);
+        map.put("storageContainerID", storageContainerID);
         map.put("attributes", attributes);
         return map;
     }
@@ -168,6 +180,9 @@ public class Account implements Serializable {
         }
         if(null != targetSecret && targetSecret.isPresent()){
             sb.append(" targetSecret : ").append(targetSecret).append(",");
+        }
+        if(null != storageContainerID && storageContainerID.isPresent()){
+            sb.append(" storageContainerID : ").append(storageContainerID).append(",");
         }
         if(null != attributes && attributes.isPresent()){
             sb.append(" attributes : ").append(attributes).append(",");
@@ -195,6 +210,7 @@ public class Account implements Serializable {
         private Long[] volumes;
         private Optional<CHAPSecret> initiatorSecret;
         private Optional<CHAPSecret> targetSecret;
+        private Optional<java.util.UUID> storageContainerID;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -207,6 +223,7 @@ public class Account implements Serializable {
                          this.volumes,
                          this.initiatorSecret,
                          this.targetSecret,
+                         this.storageContainerID,
                          this.attributes);
         }
 
@@ -217,6 +234,7 @@ public class Account implements Serializable {
             this.volumes = req.volumes;
             this.initiatorSecret = req.initiatorSecret;
             this.targetSecret = req.targetSecret;
+            this.storageContainerID = req.storageContainerID;
             this.attributes = req.attributes;
 
             return this;
@@ -249,6 +267,11 @@ public class Account implements Serializable {
 
         public Account.Builder optionalTargetSecret(final CHAPSecret targetSecret) {
             this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
+            return this;
+        }
+
+        public Account.Builder optionalStorageContainerID(final java.util.UUID storageContainerID) {
+            this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : Optional.of(storageContainerID);
             return this;
         }
 

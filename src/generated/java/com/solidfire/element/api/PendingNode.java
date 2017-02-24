@@ -48,6 +48,7 @@ public class PendingNode implements Serializable {
     @SerializedName("sipi") private String sipi;
     @SerializedName("softwareVersion") private String softwareVersion;
     @SerializedName("uuid") private java.util.UUID uuid;
+    @SerializedName("assignedNodeID") private Optional<Long> assignedNodeID;
 
     // empty constructor
     @Since("7.0")
@@ -69,7 +70,8 @@ public class PendingNode implements Serializable {
         String sip,
         String sipi,
         String softwareVersion,
-        java.util.UUID uuid
+        java.util.UUID uuid,
+        Optional<Long> assignedNodeID
     )
     {
         this.pendingNodeID = pendingNodeID;
@@ -85,6 +87,7 @@ public class PendingNode implements Serializable {
         this.sipi = sipi;
         this.softwareVersion = softwareVersion;
         this.uuid = uuid;
+        this.assignedNodeID = (assignedNodeID == null) ? Optional.<Long>empty() : assignedNodeID;
     }
 
     /** 
@@ -175,6 +178,12 @@ public class PendingNode implements Serializable {
     public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
+    /** 
+     **/
+    public Optional<Long> getAssignedNodeID() { return this.assignedNodeID; }
+    public void setAssignedNodeID(Optional<Long> assignedNodeID) { 
+        this.assignedNodeID = (assignedNodeID == null) ? Optional.<Long>empty() : assignedNodeID;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -196,12 +205,13 @@ public class PendingNode implements Serializable {
             Objects.equals(sip, that.sip) && 
             Objects.equals(sipi, that.sipi) && 
             Objects.equals(softwareVersion, that.softwareVersion) && 
-            Objects.equals(uuid, that.uuid);
+            Objects.equals(uuid, that.uuid) && 
+            Objects.equals(assignedNodeID, that.assignedNodeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( pendingNodeID,assignedNodeID,name,compatible,platformInfo,cip,cipi,mip,mipi,sip,sipi,softwareVersion,uuid );
+        return Objects.hash( pendingNodeID,assignedNodeID,name,compatible,platformInfo,cip,cipi,mip,mipi,sip,sipi,softwareVersion,uuid,assignedNodeID );
     }
 
 
@@ -220,6 +230,7 @@ public class PendingNode implements Serializable {
         map.put("sipi", sipi);
         map.put("softwareVersion", softwareVersion);
         map.put("uuid", uuid);
+        map.put("assignedNodeID", assignedNodeID);
         return map;
     }
 
@@ -241,6 +252,9 @@ public class PendingNode implements Serializable {
         sb.append(" sipi : ").append(sipi).append(",");
         sb.append(" softwareVersion : ").append(softwareVersion).append(",");
         sb.append(" uuid : ").append(uuid).append(",");
+        if(null != assignedNodeID && assignedNodeID.isPresent()){
+            sb.append(" assignedNodeID : ").append(assignedNodeID).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -271,6 +285,7 @@ public class PendingNode implements Serializable {
         private String sipi;
         private String softwareVersion;
         private java.util.UUID uuid;
+        private Optional<Long> assignedNodeID;
 
         private Builder() { }
 
@@ -288,7 +303,8 @@ public class PendingNode implements Serializable {
                          this.sip,
                          this.sipi,
                          this.softwareVersion,
-                         this.uuid);
+                         this.uuid,
+                         this.assignedNodeID);
         }
 
         private PendingNode.Builder buildFrom(final PendingNode req) {
@@ -305,6 +321,7 @@ public class PendingNode implements Serializable {
             this.sipi = req.sipi;
             this.softwareVersion = req.softwareVersion;
             this.uuid = req.uuid;
+            this.assignedNodeID = req.assignedNodeID;
 
             return this;
         }
@@ -371,6 +388,11 @@ public class PendingNode implements Serializable {
 
         public PendingNode.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
+            return this;
+        }
+
+        public PendingNode.Builder optionalAssignedNodeID(final Long assignedNodeID) {
+            this.assignedNodeID = (assignedNodeID == null) ? Optional.<Long>empty() : Optional.of(assignedNodeID);
             return this;
         }
 

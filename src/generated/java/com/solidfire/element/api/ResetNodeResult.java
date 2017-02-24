@@ -33,7 +33,10 @@ import java.util.Objects;
 public class ResetNodeResult implements Serializable {
 
     public static final long serialVersionUID = 1741204150018515933L;
-    @SerializedName("rtfiInfo") private java.util.Map<String, Object> rtfiInfo;
+    @SerializedName("details") private ResetNodeDetails details;
+    @SerializedName("duration") private String duration;
+    @SerializedName("result") private String result;
+    @SerializedName("rtfiInfo") private RtfiInfo rtfiInfo;
 
     // empty constructor
     @Since("7.0")
@@ -43,17 +46,40 @@ public class ResetNodeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ResetNodeResult(
-        java.util.Map<String, Object> rtfiInfo
+        ResetNodeDetails details,
+        String duration,
+        String result,
+        RtfiInfo rtfiInfo
     )
     {
+        this.details = details;
+        this.duration = duration;
+        this.result = result;
         this.rtfiInfo = rtfiInfo;
     }
 
     /** 
-     * Details of nodes that are being reset.
      **/
-    public java.util.Map<String, Object> getRtfiInfo() { return this.rtfiInfo; }
-    public void setRtfiInfo(java.util.Map<String, Object> rtfiInfo) { 
+    public ResetNodeDetails getDetails() { return this.details; }
+    public void setDetails(ResetNodeDetails details) { 
+        this.details = details;
+    }
+    /** 
+     **/
+    public String getDuration() { return this.duration; }
+    public void setDuration(String duration) { 
+        this.duration = duration;
+    }
+    /** 
+     **/
+    public String getResult() { return this.result; }
+    public void setResult(String result) { 
+        this.result = result;
+    }
+    /** 
+     **/
+    public RtfiInfo getRtfiInfo() { return this.rtfiInfo; }
+    public void setRtfiInfo(RtfiInfo rtfiInfo) { 
         this.rtfiInfo = rtfiInfo;
     }
 
@@ -65,17 +91,23 @@ public class ResetNodeResult implements Serializable {
         ResetNodeResult that = (ResetNodeResult) o;
 
         return 
+            Objects.equals(details, that.details) && 
+            Objects.equals(duration, that.duration) && 
+            Objects.equals(result, that.result) && 
             Objects.equals(rtfiInfo, that.rtfiInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( rtfiInfo );
+        return Objects.hash( details,duration,result,rtfiInfo );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
+        map.put("details", details);
+        map.put("duration", duration);
+        map.put("result", result);
         map.put("rtfiInfo", rtfiInfo);
         return map;
     }
@@ -85,6 +117,9 @@ public class ResetNodeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
+        sb.append(" details : ").append(details).append(",");
+        sb.append(" duration : ").append(duration).append(",");
+        sb.append(" result : ").append(result).append(",");
         sb.append(" rtfiInfo : ").append(rtfiInfo).append(",");
         sb.append( " }" );
 
@@ -103,22 +138,46 @@ public class ResetNodeResult implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> rtfiInfo;
+        private ResetNodeDetails details;
+        private String duration;
+        private String result;
+        private RtfiInfo rtfiInfo;
 
         private Builder() { }
 
         public ResetNodeResult build() {
             return new ResetNodeResult (
+                         this.details,
+                         this.duration,
+                         this.result,
                          this.rtfiInfo);
         }
 
         private ResetNodeResult.Builder buildFrom(final ResetNodeResult req) {
+            this.details = req.details;
+            this.duration = req.duration;
+            this.result = req.result;
             this.rtfiInfo = req.rtfiInfo;
 
             return this;
         }
 
-        public ResetNodeResult.Builder rtfiInfo(final java.util.Map<String, Object> rtfiInfo) {
+        public ResetNodeResult.Builder details(final ResetNodeDetails details) {
+            this.details = details;
+            return this;
+        }
+
+        public ResetNodeResult.Builder duration(final String duration) {
+            this.duration = duration;
+            return this;
+        }
+
+        public ResetNodeResult.Builder result(final String result) {
+            this.result = result;
+            return this;
+        }
+
+        public ResetNodeResult.Builder rtfiInfo(final RtfiInfo rtfiInfo) {
             this.rtfiInfo = rtfiInfo;
             return this;
         }

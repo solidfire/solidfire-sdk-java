@@ -40,6 +40,7 @@ public class NodeWaitingToJoin implements Serializable {
     @SerializedName("mip") private String mip;
     @SerializedName("cip") private String cip;
     @SerializedName("sip") private String sip;
+    @SerializedName("compatible") private Boolean compatible;
 
     // empty constructor
     @Since("7.0")
@@ -55,7 +56,8 @@ public class NodeWaitingToJoin implements Serializable {
         Long pendingNodeID,
         String mip,
         String cip,
-        String sip
+        String sip,
+        Boolean compatible
     )
     {
         this.name = name;
@@ -65,6 +67,7 @@ public class NodeWaitingToJoin implements Serializable {
         this.mip = mip;
         this.cip = cip;
         this.sip = sip;
+        this.compatible = compatible;
     }
 
     /** 
@@ -109,6 +112,12 @@ public class NodeWaitingToJoin implements Serializable {
     public void setSip(String sip) { 
         this.sip = sip;
     }
+    /** 
+     **/
+    public Boolean getCompatible() { return this.compatible; }
+    public void setCompatible(Boolean compatible) { 
+        this.compatible = compatible;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -124,12 +133,13 @@ public class NodeWaitingToJoin implements Serializable {
             Objects.equals(pendingNodeID, that.pendingNodeID) && 
             Objects.equals(mip, that.mip) && 
             Objects.equals(cip, that.cip) && 
-            Objects.equals(sip, that.sip);
+            Objects.equals(sip, that.sip) && 
+            Objects.equals(compatible, that.compatible);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name,version,nodeID,pendingNodeID,mip,cip,sip );
+        return Objects.hash( name,version,nodeID,pendingNodeID,mip,cip,sip,compatible );
     }
 
 
@@ -142,6 +152,7 @@ public class NodeWaitingToJoin implements Serializable {
         map.put("mip", mip);
         map.put("cip", cip);
         map.put("sip", sip);
+        map.put("compatible", compatible);
         return map;
     }
 
@@ -157,6 +168,7 @@ public class NodeWaitingToJoin implements Serializable {
         sb.append(" mip : ").append(mip).append(",");
         sb.append(" cip : ").append(cip).append(",");
         sb.append(" sip : ").append(sip).append(",");
+        sb.append(" compatible : ").append(compatible).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -181,6 +193,7 @@ public class NodeWaitingToJoin implements Serializable {
         private String mip;
         private String cip;
         private String sip;
+        private Boolean compatible;
 
         private Builder() { }
 
@@ -192,7 +205,8 @@ public class NodeWaitingToJoin implements Serializable {
                          this.pendingNodeID,
                          this.mip,
                          this.cip,
-                         this.sip);
+                         this.sip,
+                         this.compatible);
         }
 
         private NodeWaitingToJoin.Builder buildFrom(final NodeWaitingToJoin req) {
@@ -203,6 +217,7 @@ public class NodeWaitingToJoin implements Serializable {
             this.mip = req.mip;
             this.cip = req.cip;
             this.sip = req.sip;
+            this.compatible = req.compatible;
 
             return this;
         }
@@ -239,6 +254,11 @@ public class NodeWaitingToJoin implements Serializable {
 
         public NodeWaitingToJoin.Builder sip(final String sip) {
             this.sip = sip;
+            return this;
+        }
+
+        public NodeWaitingToJoin.Builder compatible(final Boolean compatible) {
+            this.compatible = compatible;
             return this;
         }
 
