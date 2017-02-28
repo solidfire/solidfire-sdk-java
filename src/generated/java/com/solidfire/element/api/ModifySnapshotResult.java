@@ -33,6 +33,7 @@ import java.util.Objects;
 public class ModifySnapshotResult implements Serializable {
 
     public static final long serialVersionUID = -406933401919485379L;
+    @SerializedName("snapshot") private Snapshot snapshot;
 
     // empty constructor
     @Since("8.0")
@@ -40,20 +41,87 @@ public class ModifySnapshotResult implements Serializable {
     public ModifySnapshotResult() {}
 
     
+    // parameterized constructor
+    @Since("7.0")
+    public ModifySnapshotResult(
+        Snapshot snapshot
+    )
+    {
+        this.snapshot = snapshot;
+    }
+
+    /** 
+     **/
+    public Snapshot getSnapshot() { return this.snapshot; }
+    public void setSnapshot(Snapshot snapshot) { 
+        this.snapshot = snapshot;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        
-        return true;
+        ModifySnapshotResult that = (ModifySnapshotResult) o;
+
+        return 
+            Objects.equals(snapshot, that.snapshot);
     }
 
     @Override
     public int hashCode() {
-
-        return this.getClass().hashCode();
+        return Objects.hash( snapshot );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("snapshot", snapshot);
+        return map;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append( "{ " );
+
+        sb.append(" snapshot : ").append(snapshot).append(",");
+        sb.append( " }" );
+
+        if(sb.lastIndexOf(", }") != -1)
+            sb.deleteCharAt(sb.lastIndexOf(", }"));
+
+        return sb.toString();
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Snapshot snapshot;
+
+        private Builder() { }
+
+        public ModifySnapshotResult build() {
+            return new ModifySnapshotResult (
+                         this.snapshot);
+        }
+
+        private ModifySnapshotResult.Builder buildFrom(final ModifySnapshotResult req) {
+            this.snapshot = req.snapshot;
+
+            return this;
+        }
+
+        public ModifySnapshotResult.Builder snapshot(final Snapshot snapshot) {
+            this.snapshot = snapshot;
+            return this;
+        }
+
+    }
 }

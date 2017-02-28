@@ -390,22 +390,10 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public GetSnmpACLResult getSnmpACL();
     /** 
-     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public GetSnmpTrapInfoResult getSnmpTrapInfo();
-    /** 
      **/
     @Since("5")
     @ConnectionType("Node")
     public GetSystemStatusResult getSystemStatus();
-    /** 
-     * ListClusterAdmins returns the list of all cluster administrators for the cluster. There can be several cluster administrators that have different levels of permissions. There can be only one primary cluster administrator in the system. The primary Cluster Admin is the administrator that was created when the cluster was created. LDAP administrators can also be created when setting up an LDAP system on the cluster.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ListClusterAdminsResult listClusterAdmins();
     /** 
      * ListEvents returns events detected on the cluster, sorted from oldest to newest.
      **/
@@ -737,6 +725,38 @@ public interface SolidFireElementIF {
         Optional<String> faultType
         );
     /** 
+     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public GetSnmpTrapInfoResult getSnmpTrapInfo(final GetSnmpTrapInfoRequest request);
+
+    /** 
+     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public GetSnmpTrapInfoResult getSnmpTrapInfo(
+        
+        Optional<Long> id
+        );
+    /** 
+     * ListClusterAdmins returns the list of all cluster administrators for the cluster. There can be several cluster administrators that have different levels of permissions. There can be only one primary cluster administrator in the system. The primary Cluster Admin is the administrator that was created when the cluster was created. LDAP administrators can also be created when setting up an LDAP system on the cluster.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ListClusterAdminsResult listClusterAdmins(final ListClusterAdminsRequest request);
+
+    /** 
+     * ListClusterAdmins returns the list of all cluster administrators for the cluster. There can be several cluster administrators that have different levels of permissions. There can be only one primary cluster administrator in the system. The primary Cluster Admin is the administrator that was created when the cluster was created. LDAP administrators can also be created when setting up an LDAP system on the cluster.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ListClusterAdminsResult listClusterAdmins(
+        
+        Optional<Boolean> showHidden
+        );
+    /** 
      * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
      **/
     @Since("1")
@@ -801,48 +821,6 @@ public interface SolidFireElementIF {
     @Since("2")
     @ConnectionType("Node")
     public GetDriveConfigResult getDriveConfig();
-    /** 
-     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
-     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
-     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
-     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
-     * Use the "GetAsyncResult" method to check the status of the remove operation.
-     * 
-     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
-     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
-     * 
-     * You can also remove drives with a "failed" status using "RemoveDrives".
-     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
-     * The drive is unavailable for use in the cluster.
-     * 
-     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AsyncHandleResult removeDrives(final RemoveDrivesRequest request);
-
-    /** 
-     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
-     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
-     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
-     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
-     * Use the "GetAsyncResult" method to check the status of the remove operation.
-     * 
-     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
-     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
-     * 
-     * You can also remove drives with a "failed" status using "RemoveDrives".
-     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
-     * The drive is unavailable for use in the cluster.
-     * 
-     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AsyncHandleResult removeDrives(
-        
-        Long[] drives
-        );
     /** 
      * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
      * 
@@ -946,6 +924,50 @@ public interface SolidFireElementIF {
     public AddDrivesResult addDrives(
         
         NewDrive[] drives
+, 
+        Optional<Boolean> forceDuringUpgrade
+        );
+    /** 
+     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
+     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
+     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
+     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
+     * Use the "GetAsyncResult" method to check the status of the remove operation.
+     * 
+     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
+     * 
+     * You can also remove drives with a "failed" status using "RemoveDrives".
+     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
+     * The drive is unavailable for use in the cluster.
+     * 
+     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public AsyncHandleResult removeDrives(final RemoveDrivesRequest request);
+
+    /** 
+     * You can use RemoveDrives to proactively remove drives that are part of the cluster.
+     * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
+     * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
+     * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
+     * Use the "GetAsyncResult" method to check the status of the remove operation.
+     * 
+     * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
+     * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
+     * 
+     * You can also remove drives with a "failed" status using "RemoveDrives".
+     * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
+     * The drive is unavailable for use in the cluster.
+     * 
+     * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public AsyncHandleResult removeDrives(
+        
+        Long[] drives
 , 
         Optional<Boolean> forceDuringUpgrade
         );
@@ -1303,38 +1325,6 @@ public interface SolidFireElementIF {
     @ConnectionType("Both")
     public GetBootstrapConfigResult getBootstrapConfig();
     /** 
-     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
-     * 
-     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
-     * 
-     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
-     * 
-     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
-     * 
-     * Note: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AddNodesResult addNodes(final AddNodesRequest request);
-
-    /** 
-     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
-     * 
-     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
-     * 
-     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
-     * 
-     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
-     * 
-     * Note: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AddNodesResult addNodes(
-        
-        Long[] pendingNodes
-        );
-    /** 
      * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
      * 
      * Note: This method is available only through the per-node API endpoint 5.0 or later.
@@ -1427,22 +1417,38 @@ public interface SolidFireElementIF {
         NetworkParams network
         );
     /** 
-     * The CompleteClusterPairing method is the second step in the cluster pairing process.
-     * Use this method with the encoded key received from the "StartClusterPairing" API method to complete the cluster pairing process.
+     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
+     * 
+     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
+     * 
+     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
+     * 
+     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
+     * 
+     * Note: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
      **/
-    @Since("6")
+    @Since("1")
     @ConnectionType("Cluster")
-    public CompleteClusterPairingResult completeClusterPairing(final CompleteClusterPairingRequest request);
+    public AddNodesResult addNodes(final AddNodesRequest request);
 
     /** 
-     * The CompleteClusterPairing method is the second step in the cluster pairing process.
-     * Use this method with the encoded key received from the "StartClusterPairing" API method to complete the cluster pairing process.
+     * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
+     * 
+     * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
+     * 
+     * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
+     * 
+     * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
+     * 
+     * Note: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
      **/
-    @Since("6")
+    @Since("1")
     @ConnectionType("Cluster")
-    public CompleteClusterPairingResult completeClusterPairing(
+    public AddNodesResult addNodes(
         
-        String clusterPairingKey
+        Long[] pendingNodes
+, 
+        Optional<Boolean> autoInstall
         );
     /** 
      * CompleteVolumePairing is used to complete the pairing of two volumes.
@@ -1462,13 +1468,6 @@ public interface SolidFireElementIF {
 , 
         Long volumeID
         );
-    /** 
-     * ListActivePairedVolumes is used to list all of the active volumes paired with a volume.
-     * Volumes listed in the return for this method include volumes with active and pending pairings.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ListActivePairedVolumesResult listActivePairedVolumes();
     /** 
      * ListClusterPairs is used to list all of the clusters a cluster is paired with.
      * This method returns information about active and pending cluster pairings, such as statistics about the current pairing as well as the connectivity and latency (in milliseconds) of the cluster pairing.
@@ -1504,26 +1503,6 @@ public interface SolidFireElementIF {
     @Since("6")
     @ConnectionType("Cluster")
     public StartClusterPairingResult startClusterPairing();
-    /** 
-     * ModifyVolumePair is used to pause or restart replication between a pair of volumes.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ModifyVolumePairResult modifyVolumePair(final ModifyVolumePairRequest request);
-
-    /** 
-     * ModifyVolumePair is used to pause or restart replication between a pair of volumes.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ModifyVolumePairResult modifyVolumePair(
-        
-        Long volumeID
-, 
-        Optional<Boolean> pausedManual
-, 
-        Optional<String> mode
-        );
     /** 
      * You can use the RemoveClusterPair method to close the open connections between two paired clusters.
      * Note: Before you remove a cluster pair, you must first remove all volume pairing to the clusters with the "RemoveVolumePair" API method.
@@ -1561,6 +1540,66 @@ public interface SolidFireElementIF {
         Long volumeID
 , 
         Optional<String> mode
+        );
+    /** 
+     * The CompleteClusterPairing method is the second step in the cluster pairing process.
+     * Use this method with the encoded key received from the "StartClusterPairing" API method to complete the cluster pairing process.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public CompleteClusterPairingResult completeClusterPairing(final CompleteClusterPairingRequest request);
+
+    /** 
+     * The CompleteClusterPairing method is the second step in the cluster pairing process.
+     * Use this method with the encoded key received from the "StartClusterPairing" API method to complete the cluster pairing process.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public CompleteClusterPairingResult completeClusterPairing(
+        
+        String clusterPairingKey
+        );
+    /** 
+     * ListActivePairedVolumes is used to list all of the active volumes paired with a volume.
+     * Volumes listed in the return for this method include volumes with active and pending pairings.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ListActivePairedVolumesResult listActivePairedVolumes(final ListActivePairedVolumesRequest request);
+
+    /** 
+     * ListActivePairedVolumes is used to list all of the active volumes paired with a volume.
+     * Volumes listed in the return for this method include volumes with active and pending pairings.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ListActivePairedVolumesResult listActivePairedVolumes(
+        
+        Optional<Long> startVolumeID
+, 
+        Optional<Long> limit
+        );
+    /** 
+     * ModifyVolumePair is used to pause or restart replication between a pair of volumes.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ModifyVolumePairResult modifyVolumePair(final ModifyVolumePairRequest request);
+
+    /** 
+     * ModifyVolumePair is used to pause or restart replication between a pair of volumes.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ModifyVolumePairResult modifyVolumePair(
+        
+        Long volumeID
+, 
+        Optional<Boolean> pausedManual
+, 
+        Optional<String> mode
+, 
+        Optional<Long> pauseLimit
         );
     /** 
      * Gets protocol endpoints in the system
@@ -1654,7 +1693,9 @@ public interface SolidFireElementIF {
 , 
         Boolean force
 , 
-        Optional<String> option
+        Optional<String> options
+, 
+        Optional<Boolean> reboot
         );
     /** 
      * List the services in the cluster.
@@ -1706,22 +1747,6 @@ public interface SolidFireElementIF {
     @Since("8")
     @ConnectionType("Cluster")
     public ListSchedulesResult listSchedules();
-    /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request);
-
-    /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(
-        
-        Optional<Long> volumeID
-        );
     /** 
      * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
      * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
@@ -1971,6 +1996,24 @@ public interface SolidFireElementIF {
         Optional<String> retention
 , 
         Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request);
+
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(
+        
+        Optional<Long> volumeID
+, 
+        Optional<Boolean> internal
         );
     /** 
      * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
@@ -2687,6 +2730,60 @@ public interface SolidFireElementIF {
         Optional<Long> newAccountID
         );
     /** 
+     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(final UpdateBulkVolumeStatusRequest request);
+
+    /** 
+     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(
+        
+        String key
+, 
+        String status
+, 
+        Optional<String> percentComplete
+, 
+        Optional<String> message
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * CreateVolume is used to create a new (empty) volume on the cluster.
+     * When the volume is created successfully it is available for connection via iSCSI.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(final CreateVolumeRequest request);
+
+    /** 
+     * CreateVolume is used to create a new (empty) volume on the cluster.
+     * When the volume is created successfully it is available for connection via iSCSI.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(
+        
+        String name
+, 
+        Long accountID
+, 
+        Long totalSize
+, 
+        Boolean enable512e
+, 
+        Optional<VolumeQOS> qos
+, 
+        Optional<java.util.Map<String, Object>> attributes
+, 
+        Optional<Long> sliceCount
+        );
+    /** 
      * StartBulkVolumeRead allows you to initialize a bulk volume read session on a specified volume.
      * Only two bulk volume processes can run simultaneously on a volume.
      * When you initialize the session, data is read from a SolidFire storage volume for the purposes of storing the data on an external backup source.
@@ -2732,65 +2829,9 @@ public interface SolidFireElementIF {
 , 
         Optional<String> script
 , 
-        Optional<Object> scriptParameters
+        Optional<java.util.Map<String, Object>> scriptParameters
 , 
         Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(final UpdateBulkVolumeStatusRequest request);
-
-    /** 
-     * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public UpdateBulkVolumeStatusResult updateBulkVolumeStatus(
-        
-        String key
-, 
-        String status
-, 
-        Optional<String> percentComplete
-, 
-        Optional<String> message
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * Used to retrieve the result of asynchronous method calls.
-     * Some method calls are long running and do not complete when the initial response is sent.
-     * To obtain the result of the method call, polling with GetAsyncResult is required.
-     * 
-     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
-     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
-     * 
-     * The result for a completed asynchronous method call can only be retrieved once.
-     * Once the final result has been returned, later attempts returns an error.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public java.util.Map<String, Object> getAsyncResult(final GetAsyncResultRequest request);
-
-    /** 
-     * Used to retrieve the result of asynchronous method calls.
-     * Some method calls are long running and do not complete when the initial response is sent.
-     * To obtain the result of the method call, polling with GetAsyncResult is required.
-     * 
-     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
-     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
-     * 
-     * The result for a completed asynchronous method call can only be retrieved once.
-     * Once the final result has been returned, later attempts returns an error.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public java.util.Map<String, Object> getAsyncResult(
-        
-        Long asyncHandle
         );
     /** 
      * Cancels a currently running clone operation. This method does not return anything.
@@ -2843,52 +2884,6 @@ public interface SolidFireElementIF {
         Long dstVolumeID
 , 
         Optional<Long> snapshotID
-        );
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * 
-     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * 
-     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request);
-
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * 
-     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * 
-     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(
-        
-        Long volumeID
-, 
-        String name
-, 
-        Optional<Long> newAccountID
-, 
-        Optional<Long> newSize
-, 
-        Optional<String> access
-, 
-        Optional<Long> snapshotID
-, 
-        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * DeleteVolume marks an active volume for deletion.
@@ -2977,6 +2972,88 @@ public interface SolidFireElementIF {
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * 
+     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * 
+     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request);
+
+    /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * 
+     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * 
+     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(
+        
+        Long volumeID
+, 
+        String name
+, 
+        Optional<Long> newAccountID
+, 
+        Optional<Long> newSize
+, 
+        Optional<String> access
+, 
+        Optional<Long> snapshotID
+, 
+        Optional<java.util.Map<String, Object>> attributes
+, 
+        Optional<Boolean> enable512e
+        );
+    /** 
+     * Used to retrieve the result of asynchronous method calls.
+     * Some method calls are long running and do not complete when the initial response is sent.
+     * To obtain the result of the method call, polling with GetAsyncResult is required.
+     * 
+     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
+     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
+     * 
+     * The result for a completed asynchronous method call can only be retrieved once.
+     * Once the final result has been returned, later attempts returns an error.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public java.util.Map<String, Object> getAsyncResult(final GetAsyncResultRequest request);
+
+    /** 
+     * Used to retrieve the result of asynchronous method calls.
+     * Some method calls are long running and do not complete when the initial response is sent.
+     * To obtain the result of the method call, polling with GetAsyncResult is required.
+     * 
+     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
+     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
+     * 
+     * The result for a completed asynchronous method call can only be retrieved once.
+     * Once the final result has been returned, later attempts returns an error.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public java.util.Map<String, Object> getAsyncResult(
+        
+        Long asyncHandle
+, 
+        Optional<Boolean> keepResult
+        );
+    /** 
      * StartBulkVolumeWrite allows you to initialize a bulk volume write session on a specified volume.
      * Only two bulk volume processes can run simultaneously on a volume.
      * When the session is initialized, data can be written to a SolidFire storage volume from an external backup source.
@@ -3004,39 +3081,9 @@ public interface SolidFireElementIF {
 , 
         Optional<String> script
 , 
-        Optional<Object> scriptParameters
+        Optional<java.util.Map<String, Object>> scriptParameters
 , 
         Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * CreateVolume is used to create a new (empty) volume on the cluster.
-     * When the volume is created successfully it is available for connection via iSCSI.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(final CreateVolumeRequest request);
-
-    /** 
-     * CreateVolume is used to create a new (empty) volume on the cluster.
-     * When the volume is created successfully it is available for connection via iSCSI.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(
-        
-        String name
-, 
-        Long accountID
-, 
-        Long totalSize
-, 
-        Boolean enable512e
-, 
-        Optional<QoS> qos
-, 
-        Optional<java.util.Map<String, Object>> attributes
-, 
-        Optional<Long> sliceCount
         );
     /** 
      * Add initiators to a volume access group.
@@ -3175,24 +3222,6 @@ public interface SolidFireElementIF {
         Optional<Long> limit
         );
     /** 
-     * Remove initiators from a volume access group.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(final RemoveInitiatorsFromVolumeAccessGroupRequest request);
-
-    /** 
-     * Remove initiators from a volume access group.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(
-        
-        Long volumeAccessGroupID
-, 
-        String[] initiators
-        );
-    /** 
      * Remove volumes from a volume access group.
      **/
     @Since("5")
@@ -3285,6 +3314,26 @@ public interface SolidFireElementIF {
         Long volumeAccessGroupID
 , 
         LunAssignment[] lunAssignments
+        );
+    /** 
+     * Remove initiators from a volume access group.
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(final RemoveInitiatorsFromVolumeAccessGroupRequest request);
+
+    /** 
+     * Remove initiators from a volume access group.
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult removeInitiatorsFromVolumeAccessGroup(
+        
+        Long volumeAccessGroupID
+, 
+        String[] initiators
+, 
+        Optional<Boolean> deleteOrphanInitiators
         );
     /** 
      * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.

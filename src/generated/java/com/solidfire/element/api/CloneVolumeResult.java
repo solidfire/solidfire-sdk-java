@@ -33,6 +33,7 @@ import java.util.Objects;
 public class CloneVolumeResult implements Serializable {
 
     public static final long serialVersionUID = 7651196543218505931L;
+    @SerializedName("volume") private Volume volume;
     @SerializedName("cloneID") private Long cloneID;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("asyncHandle") private Long asyncHandle;
@@ -45,16 +46,25 @@ public class CloneVolumeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CloneVolumeResult(
+        Volume volume,
         Long cloneID,
         Long volumeID,
         Long asyncHandle
     )
     {
+        this.volume = volume;
         this.cloneID = cloneID;
         this.volumeID = volumeID;
         this.asyncHandle = asyncHandle;
     }
 
+    /** 
+     * The resulting volume
+     **/
+    public Volume getVolume() { return this.volume; }
+    public void setVolume(Volume volume) { 
+        this.volume = volume;
+    }
     /** 
      * The ID of the newly-created clone.
      **/
@@ -85,6 +95,7 @@ public class CloneVolumeResult implements Serializable {
         CloneVolumeResult that = (CloneVolumeResult) o;
 
         return 
+            Objects.equals(volume, that.volume) && 
             Objects.equals(cloneID, that.cloneID) && 
             Objects.equals(volumeID, that.volumeID) && 
             Objects.equals(asyncHandle, that.asyncHandle);
@@ -92,12 +103,13 @@ public class CloneVolumeResult implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( cloneID,volumeID,asyncHandle );
+        return Objects.hash( volume,cloneID,volumeID,asyncHandle );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volume", volume);
         map.put("cloneID", cloneID);
         map.put("volumeID", volumeID);
         map.put("asyncHandle", asyncHandle);
@@ -109,6 +121,7 @@ public class CloneVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
+        sb.append(" volume : ").append(volume).append(",");
         sb.append(" cloneID : ").append(cloneID).append(",");
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" asyncHandle : ").append(asyncHandle).append(",");
@@ -129,6 +142,7 @@ public class CloneVolumeResult implements Serializable {
     }
 
     public static class Builder {
+        private Volume volume;
         private Long cloneID;
         private Long volumeID;
         private Long asyncHandle;
@@ -137,16 +151,23 @@ public class CloneVolumeResult implements Serializable {
 
         public CloneVolumeResult build() {
             return new CloneVolumeResult (
+                         this.volume,
                          this.cloneID,
                          this.volumeID,
                          this.asyncHandle);
         }
 
         private CloneVolumeResult.Builder buildFrom(final CloneVolumeResult req) {
+            this.volume = req.volume;
             this.cloneID = req.cloneID;
             this.volumeID = req.volumeID;
             this.asyncHandle = req.asyncHandle;
 
+            return this;
+        }
+
+        public CloneVolumeResult.Builder volume(final Volume volume) {
+            this.volume = volume;
             return this;
         }
 

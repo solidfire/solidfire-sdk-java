@@ -33,7 +33,7 @@ import java.util.Objects;
 public class TestConnectEnsembleDetails implements Serializable {
 
     public static final long serialVersionUID = -4998247157821783259L;
-    @SerializedName("nodes") private Object nodes;
+    @SerializedName("nodes") private java.util.Map<String, Object> nodes;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class TestConnectEnsembleDetails implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public TestConnectEnsembleDetails(
-        Object nodes
+        java.util.Map<String, Object> nodes
     )
     {
         this.nodes = nodes;
@@ -52,8 +52,8 @@ public class TestConnectEnsembleDetails implements Serializable {
     /** 
      * A list of each ensemble node in the test and the results of the tests.
      **/
-    public Object getNodes() { return this.nodes; }
-    public void setNodes(Object nodes) { 
+    public java.util.Map<String, Object> getNodes() { return this.nodes; }
+    public void setNodes(java.util.Map<String, Object> nodes) { 
         this.nodes = nodes;
     }
 
@@ -103,7 +103,7 @@ public class TestConnectEnsembleDetails implements Serializable {
     }
 
     public static class Builder {
-        private Object nodes;
+        private java.util.Map<String, Object> nodes;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class TestConnectEnsembleDetails implements Serializable {
             return this;
         }
 
-        public TestConnectEnsembleDetails.Builder nodes(final Object nodes) {
+        public TestConnectEnsembleDetails.Builder nodes(final java.util.Map<String, Object> nodes) {
             this.nodes = nodes;
             return this;
         }

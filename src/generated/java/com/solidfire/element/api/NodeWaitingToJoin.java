@@ -41,6 +41,9 @@ public class NodeWaitingToJoin implements Serializable {
     @SerializedName("cip") private String cip;
     @SerializedName("sip") private String sip;
     @SerializedName("compatible") private Boolean compatible;
+    @SerializedName("chassisType") private String chassisType;
+    @SerializedName("hostname") private String hostname;
+    @SerializedName("nodeType") private String nodeType;
 
     // empty constructor
     @Since("7.0")
@@ -57,7 +60,10 @@ public class NodeWaitingToJoin implements Serializable {
         String mip,
         String cip,
         String sip,
-        Boolean compatible
+        Boolean compatible,
+        String chassisType,
+        String hostname,
+        String nodeType
     )
     {
         this.name = name;
@@ -68,6 +74,9 @@ public class NodeWaitingToJoin implements Serializable {
         this.cip = cip;
         this.sip = sip;
         this.compatible = compatible;
+        this.chassisType = chassisType;
+        this.hostname = hostname;
+        this.nodeType = nodeType;
     }
 
     /** 
@@ -118,6 +127,24 @@ public class NodeWaitingToJoin implements Serializable {
     public void setCompatible(Boolean compatible) { 
         this.compatible = compatible;
     }
+    /** 
+     **/
+    public String getChassisType() { return this.chassisType; }
+    public void setChassisType(String chassisType) { 
+        this.chassisType = chassisType;
+    }
+    /** 
+     **/
+    public String getHostname() { return this.hostname; }
+    public void setHostname(String hostname) { 
+        this.hostname = hostname;
+    }
+    /** 
+     **/
+    public String getNodeType() { return this.nodeType; }
+    public void setNodeType(String nodeType) { 
+        this.nodeType = nodeType;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -134,12 +161,15 @@ public class NodeWaitingToJoin implements Serializable {
             Objects.equals(mip, that.mip) && 
             Objects.equals(cip, that.cip) && 
             Objects.equals(sip, that.sip) && 
-            Objects.equals(compatible, that.compatible);
+            Objects.equals(compatible, that.compatible) && 
+            Objects.equals(chassisType, that.chassisType) && 
+            Objects.equals(hostname, that.hostname) && 
+            Objects.equals(nodeType, that.nodeType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name,version,nodeID,pendingNodeID,mip,cip,sip,compatible );
+        return Objects.hash( name,version,nodeID,pendingNodeID,mip,cip,sip,compatible,chassisType,hostname,nodeType );
     }
 
 
@@ -153,6 +183,9 @@ public class NodeWaitingToJoin implements Serializable {
         map.put("cip", cip);
         map.put("sip", sip);
         map.put("compatible", compatible);
+        map.put("chassisType", chassisType);
+        map.put("hostname", hostname);
+        map.put("nodeType", nodeType);
         return map;
     }
 
@@ -169,6 +202,9 @@ public class NodeWaitingToJoin implements Serializable {
         sb.append(" cip : ").append(cip).append(",");
         sb.append(" sip : ").append(sip).append(",");
         sb.append(" compatible : ").append(compatible).append(",");
+        sb.append(" chassisType : ").append(chassisType).append(",");
+        sb.append(" hostname : ").append(hostname).append(",");
+        sb.append(" nodeType : ").append(nodeType).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -194,6 +230,9 @@ public class NodeWaitingToJoin implements Serializable {
         private String cip;
         private String sip;
         private Boolean compatible;
+        private String chassisType;
+        private String hostname;
+        private String nodeType;
 
         private Builder() { }
 
@@ -206,7 +245,10 @@ public class NodeWaitingToJoin implements Serializable {
                          this.mip,
                          this.cip,
                          this.sip,
-                         this.compatible);
+                         this.compatible,
+                         this.chassisType,
+                         this.hostname,
+                         this.nodeType);
         }
 
         private NodeWaitingToJoin.Builder buildFrom(final NodeWaitingToJoin req) {
@@ -218,6 +260,9 @@ public class NodeWaitingToJoin implements Serializable {
             this.cip = req.cip;
             this.sip = req.sip;
             this.compatible = req.compatible;
+            this.chassisType = req.chassisType;
+            this.hostname = req.hostname;
+            this.nodeType = req.nodeType;
 
             return this;
         }
@@ -259,6 +304,21 @@ public class NodeWaitingToJoin implements Serializable {
 
         public NodeWaitingToJoin.Builder compatible(final Boolean compatible) {
             this.compatible = compatible;
+            return this;
+        }
+
+        public NodeWaitingToJoin.Builder chassisType(final String chassisType) {
+            this.chassisType = chassisType;
+            return this;
+        }
+
+        public NodeWaitingToJoin.Builder hostname(final String hostname) {
+            this.hostname = hostname;
+            return this;
+        }
+
+        public NodeWaitingToJoin.Builder nodeType(final String nodeType) {
+            this.nodeType = nodeType;
             return this;
         }
 

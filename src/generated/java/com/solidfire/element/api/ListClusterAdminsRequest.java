@@ -27,34 +27,33 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * ListTestsResult  
+ * ListClusterAdminsRequest  
  **/
 
-public class ListTestsResult implements Serializable {
+public class ListClusterAdminsRequest implements Serializable {
 
-    public static final long serialVersionUID = 3886812087466529195L;
-    @SerializedName("tests") private java.util.Map<String, Object> tests;
+    public static final long serialVersionUID = -2751493233916383959L;
+    @SerializedName("showHidden") private Optional<Boolean> showHidden;
 
     // empty constructor
     @Since("7.0")
-    public ListTestsResult() {}
+    public ListClusterAdminsRequest() {}
 
     
     // parameterized constructor
     @Since("7.0")
-    public ListTestsResult(
-        java.util.Map<String, Object> tests
+    public ListClusterAdminsRequest(
+        Optional<Boolean> showHidden
     )
     {
-        this.tests = tests;
+        this.showHidden = (showHidden == null) ? Optional.<Boolean>empty() : showHidden;
     }
 
     /** 
-     * List of tests that can be performed on the node.
      **/
-    public java.util.Map<String, Object> getTests() { return this.tests; }
-    public void setTests(java.util.Map<String, Object> tests) { 
-        this.tests = tests;
+    public Optional<Boolean> getShowHidden() { return this.showHidden; }
+    public void setShowHidden(Optional<Boolean> showHidden) { 
+        this.showHidden = (showHidden == null) ? Optional.<Boolean>empty() : showHidden;
     }
 
     @Override
@@ -62,21 +61,21 @@ public class ListTestsResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ListTestsResult that = (ListTestsResult) o;
+        ListClusterAdminsRequest that = (ListClusterAdminsRequest) o;
 
         return 
-            Objects.equals(tests, that.tests);
+            Objects.equals(showHidden, that.showHidden);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( tests );
+        return Objects.hash( showHidden );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("tests", tests);
+        map.put("showHidden", showHidden);
         return map;
     }
 
@@ -85,7 +84,9 @@ public class ListTestsResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" tests : ").append(tests).append(",");
+        if(null != showHidden && showHidden.isPresent()){
+            sb.append(" showHidden : ").append(showHidden).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,23 +104,23 @@ public class ListTestsResult implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> tests;
+        private Optional<Boolean> showHidden;
 
         private Builder() { }
 
-        public ListTestsResult build() {
-            return new ListTestsResult (
-                         this.tests);
+        public ListClusterAdminsRequest build() {
+            return new ListClusterAdminsRequest (
+                         this.showHidden);
         }
 
-        private ListTestsResult.Builder buildFrom(final ListTestsResult req) {
-            this.tests = req.tests;
+        private ListClusterAdminsRequest.Builder buildFrom(final ListClusterAdminsRequest req) {
+            this.showHidden = req.showHidden;
 
             return this;
         }
 
-        public ListTestsResult.Builder tests(final java.util.Map<String, Object> tests) {
-            this.tests = tests;
+        public ListClusterAdminsRequest.Builder optionalShowHidden(final Boolean showHidden) {
+            this.showHidden = (showHidden == null) ? Optional.<Boolean>empty() : Optional.of(showHidden);
             return this;
         }
 

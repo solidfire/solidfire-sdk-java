@@ -34,6 +34,7 @@ public class GetAsyncResultRequest implements Serializable {
 
     public static final long serialVersionUID = 1004088951222936015L;
     @SerializedName("asyncHandle") private Long asyncHandle;
+    @SerializedName("keepResult") private Optional<Boolean> keepResult;
 
     // empty constructor
     @Since("7.0")
@@ -43,10 +44,12 @@ public class GetAsyncResultRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetAsyncResultRequest(
-        Long asyncHandle
+        Long asyncHandle,
+        Optional<Boolean> keepResult
     )
     {
         this.asyncHandle = asyncHandle;
+        this.keepResult = (keepResult == null) ? Optional.<Boolean>empty() : keepResult;
     }
 
     /** 
@@ -55,6 +58,13 @@ public class GetAsyncResultRequest implements Serializable {
     public Long getAsyncHandle() { return this.asyncHandle; }
     public void setAsyncHandle(Long asyncHandle) { 
         this.asyncHandle = asyncHandle;
+    }
+    /** 
+     * Should the result be kept after?
+     **/
+    public Optional<Boolean> getKeepResult() { return this.keepResult; }
+    public void setKeepResult(Optional<Boolean> keepResult) { 
+        this.keepResult = (keepResult == null) ? Optional.<Boolean>empty() : keepResult;
     }
 
     @Override
@@ -65,18 +75,20 @@ public class GetAsyncResultRequest implements Serializable {
         GetAsyncResultRequest that = (GetAsyncResultRequest) o;
 
         return 
-            Objects.equals(asyncHandle, that.asyncHandle);
+            Objects.equals(asyncHandle, that.asyncHandle) && 
+            Objects.equals(keepResult, that.keepResult);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( asyncHandle );
+        return Objects.hash( asyncHandle,keepResult );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("asyncHandle", asyncHandle);
+        map.put("keepResult", keepResult);
         return map;
     }
 
@@ -86,6 +98,9 @@ public class GetAsyncResultRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" asyncHandle : ").append(asyncHandle).append(",");
+        if(null != keepResult && keepResult.isPresent()){
+            sb.append(" keepResult : ").append(keepResult).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -104,22 +119,30 @@ public class GetAsyncResultRequest implements Serializable {
 
     public static class Builder {
         private Long asyncHandle;
+        private Optional<Boolean> keepResult;
 
         private Builder() { }
 
         public GetAsyncResultRequest build() {
             return new GetAsyncResultRequest (
-                         this.asyncHandle);
+                         this.asyncHandle,
+                         this.keepResult);
         }
 
         private GetAsyncResultRequest.Builder buildFrom(final GetAsyncResultRequest req) {
             this.asyncHandle = req.asyncHandle;
+            this.keepResult = req.keepResult;
 
             return this;
         }
 
         public GetAsyncResultRequest.Builder asyncHandle(final Long asyncHandle) {
             this.asyncHandle = asyncHandle;
+            return this;
+        }
+
+        public GetAsyncResultRequest.Builder optionalKeepResult(final Boolean keepResult) {
+            this.keepResult = (keepResult == null) ? Optional.<Boolean>empty() : Optional.of(keepResult);
             return this;
         }
 

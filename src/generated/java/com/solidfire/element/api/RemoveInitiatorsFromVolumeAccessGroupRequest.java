@@ -35,6 +35,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
     public static final long serialVersionUID = -973849202726659162L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("initiators") private String[] initiators;
+    @SerializedName("deleteOrphanInitiators") private Optional<Boolean> deleteOrphanInitiators;
 
     // empty constructor
     @Since("7.0")
@@ -45,11 +46,13 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
     @Since("7.0")
     public RemoveInitiatorsFromVolumeAccessGroupRequest(
         Long volumeAccessGroupID,
-        String[] initiators
+        String[] initiators,
+        Optional<Boolean> deleteOrphanInitiators
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.initiators = initiators;
+        this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
     }
 
     /** 
@@ -66,6 +69,12 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
     public void setInitiators(String[] initiators) { 
         this.initiators = initiators;
     }
+    /** 
+     **/
+    public Optional<Boolean> getDeleteOrphanInitiators() { return this.deleteOrphanInitiators; }
+    public void setDeleteOrphanInitiators(Optional<Boolean> deleteOrphanInitiators) { 
+        this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -76,12 +85,13 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
 
         return 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
-            Arrays.equals(initiators, that.initiators);
+            Arrays.equals(initiators, that.initiators) && 
+            Objects.equals(deleteOrphanInitiators, that.deleteOrphanInitiators);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID,(Object[])initiators );
+        return Objects.hash( volumeAccessGroupID,(Object[])initiators,deleteOrphanInitiators );
     }
 
 
@@ -89,6 +99,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("volumeAccessGroupID", volumeAccessGroupID);
         map.put("initiators", initiators);
+        map.put("deleteOrphanInitiators", deleteOrphanInitiators);
         return map;
     }
 
@@ -99,6 +110,9 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
 
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
         sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
+        if(null != deleteOrphanInitiators && deleteOrphanInitiators.isPresent()){
+            sb.append(" deleteOrphanInitiators : ").append(deleteOrphanInitiators).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,18 +132,21 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
     public static class Builder {
         private Long volumeAccessGroupID;
         private String[] initiators;
+        private Optional<Boolean> deleteOrphanInitiators;
 
         private Builder() { }
 
         public RemoveInitiatorsFromVolumeAccessGroupRequest build() {
             return new RemoveInitiatorsFromVolumeAccessGroupRequest (
                          this.volumeAccessGroupID,
-                         this.initiators);
+                         this.initiators,
+                         this.deleteOrphanInitiators);
         }
 
         private RemoveInitiatorsFromVolumeAccessGroupRequest.Builder buildFrom(final RemoveInitiatorsFromVolumeAccessGroupRequest req) {
             this.volumeAccessGroupID = req.volumeAccessGroupID;
             this.initiators = req.initiators;
+            this.deleteOrphanInitiators = req.deleteOrphanInitiators;
 
             return this;
         }
@@ -141,6 +158,11 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
 
         public RemoveInitiatorsFromVolumeAccessGroupRequest.Builder initiators(final String[] initiators) {
             this.initiators = initiators;
+            return this;
+        }
+
+        public RemoveInitiatorsFromVolumeAccessGroupRequest.Builder optionalDeleteOrphanInitiators(final Boolean deleteOrphanInitiators) {
+            this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : Optional.of(deleteOrphanInitiators);
             return this;
         }
 

@@ -34,6 +34,7 @@ public class AddNodesRequest implements Serializable {
 
     public static final long serialVersionUID = 3993935760062895060L;
     @SerializedName("pendingNodes") private Long[] pendingNodes;
+    @SerializedName("autoInstall") private Optional<Boolean> autoInstall;
 
     // empty constructor
     @Since("7.0")
@@ -43,10 +44,12 @@ public class AddNodesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddNodesRequest(
-        Long[] pendingNodes
+        Long[] pendingNodes,
+        Optional<Boolean> autoInstall
     )
     {
         this.pendingNodes = pendingNodes;
+        this.autoInstall = (autoInstall == null) ? Optional.<Boolean>empty() : autoInstall;
     }
 
     /** 
@@ -55,6 +58,13 @@ public class AddNodesRequest implements Serializable {
     public Long[] getPendingNodes() { return this.pendingNodes; }
     public void setPendingNodes(Long[] pendingNodes) { 
         this.pendingNodes = pendingNodes;
+    }
+    /** 
+     * Whether these nodes should be autoinstalled
+     **/
+    public Optional<Boolean> getAutoInstall() { return this.autoInstall; }
+    public void setAutoInstall(Optional<Boolean> autoInstall) { 
+        this.autoInstall = (autoInstall == null) ? Optional.<Boolean>empty() : autoInstall;
     }
 
     @Override
@@ -65,18 +75,20 @@ public class AddNodesRequest implements Serializable {
         AddNodesRequest that = (AddNodesRequest) o;
 
         return 
-            Arrays.equals(pendingNodes, that.pendingNodes);
+            Arrays.equals(pendingNodes, that.pendingNodes) && 
+            Objects.equals(autoInstall, that.autoInstall);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])pendingNodes );
+        return Objects.hash( (Object[])pendingNodes,autoInstall );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("pendingNodes", pendingNodes);
+        map.put("autoInstall", autoInstall);
         return map;
     }
 
@@ -86,6 +98,9 @@ public class AddNodesRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" pendingNodes : ").append(Arrays.toString(pendingNodes)).append(",");
+        if(null != autoInstall && autoInstall.isPresent()){
+            sb.append(" autoInstall : ").append(autoInstall).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -104,22 +119,30 @@ public class AddNodesRequest implements Serializable {
 
     public static class Builder {
         private Long[] pendingNodes;
+        private Optional<Boolean> autoInstall;
 
         private Builder() { }
 
         public AddNodesRequest build() {
             return new AddNodesRequest (
-                         this.pendingNodes);
+                         this.pendingNodes,
+                         this.autoInstall);
         }
 
         private AddNodesRequest.Builder buildFrom(final AddNodesRequest req) {
             this.pendingNodes = req.pendingNodes;
+            this.autoInstall = req.autoInstall;
 
             return this;
         }
 
         public AddNodesRequest.Builder pendingNodes(final Long[] pendingNodes) {
             this.pendingNodes = pendingNodes;
+            return this;
+        }
+
+        public AddNodesRequest.Builder optionalAutoInstall(final Boolean autoInstall) {
+            this.autoInstall = (autoInstall == null) ? Optional.<Boolean>empty() : Optional.of(autoInstall);
             return this;
         }
 

@@ -34,7 +34,7 @@ public class ModifyVolumeResult implements Serializable {
 
     public static final long serialVersionUID = 7716152308587193073L;
     @SerializedName("volume") private Volume volume;
-    @SerializedName("curve") private VolumeQOS curve;
+    @SerializedName("curve") private QoS curve;
 
     // empty constructor
     @Since("7.0")
@@ -45,7 +45,7 @@ public class ModifyVolumeResult implements Serializable {
     @Since("7.0")
     public ModifyVolumeResult(
         Volume volume,
-        VolumeQOS curve
+        QoS curve
     )
     {
         this.volume = volume;
@@ -61,8 +61,8 @@ public class ModifyVolumeResult implements Serializable {
     }
     /** 
      **/
-    public VolumeQOS getCurve() { return this.curve; }
-    public void setCurve(VolumeQOS curve) { 
+    public QoS getCurve() { return this.curve; }
+    public void setCurve(QoS curve) { 
         this.curve = curve;
     }
 
@@ -116,7 +116,7 @@ public class ModifyVolumeResult implements Serializable {
 
     public static class Builder {
         private Volume volume;
-        private VolumeQOS curve;
+        private QoS curve;
 
         private Builder() { }
 
@@ -138,7 +138,7 @@ public class ModifyVolumeResult implements Serializable {
             return this;
         }
 
-        public ModifyVolumeResult.Builder curve(final VolumeQOS curve) {
+        public ModifyVolumeResult.Builder curve(final QoS curve) {
             this.curve = curve;
             return this;
         }

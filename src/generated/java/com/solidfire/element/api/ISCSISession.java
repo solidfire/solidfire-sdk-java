@@ -33,6 +33,7 @@ import java.util.Objects;
 public class ISCSISession implements Serializable {
 
     public static final long serialVersionUID = -1637168637781139879L;
+    @SerializedName("driveIDs") private Long[] driveIDs;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("initiator") private Initiator initiator;
     @SerializedName("accountName") private String accountName;
@@ -60,6 +61,7 @@ public class ISCSISession implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ISCSISession(
+        Long[] driveIDs,
         Long accountID,
         Initiator initiator,
         String accountName,
@@ -80,6 +82,7 @@ public class ISCSISession implements Serializable {
         Long initiatorSessionID
     )
     {
+        this.driveIDs = driveIDs;
         this.accountID = accountID;
         this.initiator = initiator;
         this.accountName = accountName;
@@ -100,6 +103,12 @@ public class ISCSISession implements Serializable {
         this.initiatorSessionID = initiatorSessionID;
     }
 
+    /** 
+     **/
+    public Long[] getDriveIDs() { return this.driveIDs; }
+    public void setDriveIDs(Long[] driveIDs) { 
+        this.driveIDs = driveIDs;
+    }
     /** 
      **/
     public Long getAccountID() { return this.accountID; }
@@ -217,6 +226,7 @@ public class ISCSISession implements Serializable {
         ISCSISession that = (ISCSISession) o;
 
         return 
+            Arrays.equals(driveIDs, that.driveIDs) && 
             Objects.equals(accountID, that.accountID) && 
             Objects.equals(initiator, that.initiator) && 
             Objects.equals(accountName, that.accountName) && 
@@ -239,12 +249,13 @@ public class ISCSISession implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID,initiator,accountName,driveID,initiatorIP,initiatorPortName,targetPortName,initiatorName,nodeID,serviceID,sessionID,targetName,targetIP,virtualNetworkID,volumeID,createTime,volumeInstance,initiatorSessionID );
+        return Objects.hash( (Object[])driveIDs,accountID,initiator,accountName,driveID,initiatorIP,initiatorPortName,targetPortName,initiatorName,nodeID,serviceID,sessionID,targetName,targetIP,virtualNetworkID,volumeID,createTime,volumeInstance,initiatorSessionID );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
+        map.put("driveIDs", driveIDs);
         map.put("accountID", accountID);
         map.put("initiator", initiator);
         map.put("accountName", accountName);
@@ -271,6 +282,7 @@ public class ISCSISession implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
+        sb.append(" driveIDs : ").append(Arrays.toString(driveIDs)).append(",");
         sb.append(" accountID : ").append(accountID).append(",");
         sb.append(" initiator : ").append(initiator).append(",");
         sb.append(" accountName : ").append(accountName).append(",");
@@ -306,6 +318,7 @@ public class ISCSISession implements Serializable {
     }
 
     public static class Builder {
+        private Long[] driveIDs;
         private Long accountID;
         private Initiator initiator;
         private String accountName;
@@ -329,6 +342,7 @@ public class ISCSISession implements Serializable {
 
         public ISCSISession build() {
             return new ISCSISession (
+                         this.driveIDs,
                          this.accountID,
                          this.initiator,
                          this.accountName,
@@ -350,6 +364,7 @@ public class ISCSISession implements Serializable {
         }
 
         private ISCSISession.Builder buildFrom(final ISCSISession req) {
+            this.driveIDs = req.driveIDs;
             this.accountID = req.accountID;
             this.initiator = req.initiator;
             this.accountName = req.accountName;
@@ -369,6 +384,11 @@ public class ISCSISession implements Serializable {
             this.volumeInstance = req.volumeInstance;
             this.initiatorSessionID = req.initiatorSessionID;
 
+            return this;
+        }
+
+        public ISCSISession.Builder driveIDs(final Long[] driveIDs) {
+            this.driveIDs = driveIDs;
             return this;
         }
 

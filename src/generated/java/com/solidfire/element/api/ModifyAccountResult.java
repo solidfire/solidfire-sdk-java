@@ -33,26 +33,94 @@ import java.util.Objects;
 public class ModifyAccountResult implements Serializable {
 
     public static final long serialVersionUID = 6449198553339380627L;
+    @SerializedName("account") private Account account;
 
     // empty constructor
     @Since("7.0")
     public ModifyAccountResult() {}
 
     
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyAccountResult(
+        Account account
+    )
+    {
+        this.account = account;
+    }
+
+    /** 
+     **/
+    public Account getAccount() { return this.account; }
+    public void setAccount(Account account) { 
+        this.account = account;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        
-        return true;
+        ModifyAccountResult that = (ModifyAccountResult) o;
+
+        return 
+            Objects.equals(account, that.account);
     }
 
     @Override
     public int hashCode() {
-
-        return this.getClass().hashCode();
+        return Objects.hash( account );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("account", account);
+        return map;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append( "{ " );
+
+        sb.append(" account : ").append(account).append(",");
+        sb.append( " }" );
+
+        if(sb.lastIndexOf(", }") != -1)
+            sb.deleteCharAt(sb.lastIndexOf(", }"));
+
+        return sb.toString();
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Account account;
+
+        private Builder() { }
+
+        public ModifyAccountResult build() {
+            return new ModifyAccountResult (
+                         this.account);
+        }
+
+        private ModifyAccountResult.Builder buildFrom(final ModifyAccountResult req) {
+            this.account = req.account;
+
+            return this;
+        }
+
+        public ModifyAccountResult.Builder account(final Account account) {
+            this.account = account;
+            return this;
+        }
+
+    }
 }

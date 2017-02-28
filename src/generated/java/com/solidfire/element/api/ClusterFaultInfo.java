@@ -33,6 +33,8 @@ import java.util.Objects;
 public class ClusterFaultInfo implements Serializable {
 
     public static final long serialVersionUID = -5303506460547294310L;
+    @SerializedName("driveIDs") private Long[] driveIDs;
+    @SerializedName("networkInterface") private String networkInterface;
     @SerializedName("severity") private String severity;
     @SerializedName("type") private String type;
     @SerializedName("code") private String code;
@@ -45,7 +47,7 @@ public class ClusterFaultInfo implements Serializable {
     @SerializedName("clusterFaultID") private Long clusterFaultID;
     @SerializedName("date") private String date;
     @SerializedName("resolvedDate") private String resolvedDate;
-    @SerializedName("data") private Object data;
+    @SerializedName("data") private java.util.Map<String, Object> data;
 
     // empty constructor
     @Since("7.0")
@@ -55,6 +57,8 @@ public class ClusterFaultInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ClusterFaultInfo(
+        Long[] driveIDs,
+        String networkInterface,
         String severity,
         String type,
         String code,
@@ -67,9 +71,11 @@ public class ClusterFaultInfo implements Serializable {
         Long clusterFaultID,
         String date,
         String resolvedDate,
-        Object data
+        java.util.Map<String, Object> data
     )
     {
+        this.driveIDs = driveIDs;
+        this.networkInterface = networkInterface;
         this.severity = severity;
         this.type = type;
         this.code = code;
@@ -85,6 +91,18 @@ public class ClusterFaultInfo implements Serializable {
         this.data = data;
     }
 
+    /** 
+     **/
+    public Long[] getDriveIDs() { return this.driveIDs; }
+    public void setDriveIDs(Long[] driveIDs) { 
+        this.driveIDs = driveIDs;
+    }
+    /** 
+     **/
+    public String getNetworkInterface() { return this.networkInterface; }
+    public void setNetworkInterface(String networkInterface) { 
+        this.networkInterface = networkInterface;
+    }
     /** 
      **/
     public String getSeverity() { return this.severity; }
@@ -159,8 +177,8 @@ public class ClusterFaultInfo implements Serializable {
     }
     /** 
      **/
-    public Object getData() { return this.data; }
-    public void setData(Object data) { 
+    public java.util.Map<String, Object> getData() { return this.data; }
+    public void setData(java.util.Map<String, Object> data) { 
         this.data = data;
     }
 
@@ -172,6 +190,8 @@ public class ClusterFaultInfo implements Serializable {
         ClusterFaultInfo that = (ClusterFaultInfo) o;
 
         return 
+            Arrays.equals(driveIDs, that.driveIDs) && 
+            Objects.equals(networkInterface, that.networkInterface) && 
             Objects.equals(severity, that.severity) && 
             Objects.equals(type, that.type) && 
             Objects.equals(code, that.code) && 
@@ -189,12 +209,14 @@ public class ClusterFaultInfo implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( severity,type,code,details,nodeHardwareFaultID,nodeID,serviceID,driveID,resolved,clusterFaultID,date,resolvedDate,data );
+        return Objects.hash( (Object[])driveIDs,networkInterface,severity,type,code,details,nodeHardwareFaultID,nodeID,serviceID,driveID,resolved,clusterFaultID,date,resolvedDate,data );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
+        map.put("driveIDs", driveIDs);
+        map.put("networkInterface", networkInterface);
         map.put("severity", severity);
         map.put("type", type);
         map.put("code", code);
@@ -216,6 +238,8 @@ public class ClusterFaultInfo implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
+        sb.append(" driveIDs : ").append(Arrays.toString(driveIDs)).append(",");
+        sb.append(" networkInterface : ").append(networkInterface).append(",");
         sb.append(" severity : ").append(severity).append(",");
         sb.append(" type : ").append(type).append(",");
         sb.append(" code : ").append(code).append(",");
@@ -246,6 +270,8 @@ public class ClusterFaultInfo implements Serializable {
     }
 
     public static class Builder {
+        private Long[] driveIDs;
+        private String networkInterface;
         private String severity;
         private String type;
         private String code;
@@ -258,12 +284,14 @@ public class ClusterFaultInfo implements Serializable {
         private Long clusterFaultID;
         private String date;
         private String resolvedDate;
-        private Object data;
+        private java.util.Map<String, Object> data;
 
         private Builder() { }
 
         public ClusterFaultInfo build() {
             return new ClusterFaultInfo (
+                         this.driveIDs,
+                         this.networkInterface,
                          this.severity,
                          this.type,
                          this.code,
@@ -280,6 +308,8 @@ public class ClusterFaultInfo implements Serializable {
         }
 
         private ClusterFaultInfo.Builder buildFrom(final ClusterFaultInfo req) {
+            this.driveIDs = req.driveIDs;
+            this.networkInterface = req.networkInterface;
             this.severity = req.severity;
             this.type = req.type;
             this.code = req.code;
@@ -294,6 +324,16 @@ public class ClusterFaultInfo implements Serializable {
             this.resolvedDate = req.resolvedDate;
             this.data = req.data;
 
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder driveIDs(final Long[] driveIDs) {
+            this.driveIDs = driveIDs;
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder networkInterface(final String networkInterface) {
+            this.networkInterface = networkInterface;
             return this;
         }
 
@@ -357,7 +397,7 @@ public class ClusterFaultInfo implements Serializable {
             return this;
         }
 
-        public ClusterFaultInfo.Builder data(final Object data) {
+        public ClusterFaultInfo.Builder data(final java.util.Map<String, Object> data) {
             this.data = data;
             return this;
         }

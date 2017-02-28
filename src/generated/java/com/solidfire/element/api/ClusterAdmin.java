@@ -33,6 +33,7 @@ import java.util.Objects;
 public class ClusterAdmin implements Serializable {
 
     public static final long serialVersionUID = 5002497716622301063L;
+    @SerializedName("authMethod") private String authMethod;
     @SerializedName("access") private String[] access;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     @SerializedName("username") private String username;
@@ -46,18 +47,26 @@ public class ClusterAdmin implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ClusterAdmin(
+        String authMethod,
         String[] access,
         Long clusterAdminID,
         String username,
         java.util.Map<String, Object> attributes
     )
     {
+        this.authMethod = authMethod;
         this.access = access;
         this.clusterAdminID = clusterAdminID;
         this.username = username;
         this.attributes = attributes;
     }
 
+    /** 
+     **/
+    public String getAuthMethod() { return this.authMethod; }
+    public void setAuthMethod(String authMethod) { 
+        this.authMethod = authMethod;
+    }
     /** 
      **/
     public String[] getAccess() { return this.access; }
@@ -92,6 +101,7 @@ public class ClusterAdmin implements Serializable {
         ClusterAdmin that = (ClusterAdmin) o;
 
         return 
+            Objects.equals(authMethod, that.authMethod) && 
             Arrays.equals(access, that.access) && 
             Objects.equals(clusterAdminID, that.clusterAdminID) && 
             Objects.equals(username, that.username) && 
@@ -100,12 +110,13 @@ public class ClusterAdmin implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])access,clusterAdminID,username,attributes );
+        return Objects.hash( authMethod,(Object[])access,clusterAdminID,username,attributes );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
+        map.put("authMethod", authMethod);
         map.put("access", access);
         map.put("clusterAdminID", clusterAdminID);
         map.put("username", username);
@@ -118,6 +129,7 @@ public class ClusterAdmin implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
+        sb.append(" authMethod : ").append(authMethod).append(",");
         sb.append(" access : ").append(Arrays.toString(access)).append(",");
         sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
         sb.append(" username : ").append(username).append(",");
@@ -139,6 +151,7 @@ public class ClusterAdmin implements Serializable {
     }
 
     public static class Builder {
+        private String authMethod;
         private String[] access;
         private Long clusterAdminID;
         private String username;
@@ -148,6 +161,7 @@ public class ClusterAdmin implements Serializable {
 
         public ClusterAdmin build() {
             return new ClusterAdmin (
+                         this.authMethod,
                          this.access,
                          this.clusterAdminID,
                          this.username,
@@ -155,11 +169,17 @@ public class ClusterAdmin implements Serializable {
         }
 
         private ClusterAdmin.Builder buildFrom(final ClusterAdmin req) {
+            this.authMethod = req.authMethod;
             this.access = req.access;
             this.clusterAdminID = req.clusterAdminID;
             this.username = req.username;
             this.attributes = req.attributes;
 
+            return this;
+        }
+
+        public ClusterAdmin.Builder authMethod(final String authMethod) {
+            this.authMethod = authMethod;
             return this;
         }
 

@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ListUtilitiesResult implements Serializable {
 
     public static final long serialVersionUID = 7811487745346679708L;
-    @SerializedName("utilities") private String[] utilities;
+    @SerializedName("utilities") private java.util.Map<String, Object> utilities;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class ListUtilitiesResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListUtilitiesResult(
-        String[] utilities
+        java.util.Map<String, Object> utilities
     )
     {
         this.utilities = utilities;
@@ -52,8 +52,8 @@ public class ListUtilitiesResult implements Serializable {
     /** 
      * List of utilities currently available to run on the node.
      **/
-    public String[] getUtilities() { return this.utilities; }
-    public void setUtilities(String[] utilities) { 
+    public java.util.Map<String, Object> getUtilities() { return this.utilities; }
+    public void setUtilities(java.util.Map<String, Object> utilities) { 
         this.utilities = utilities;
     }
 
@@ -65,12 +65,12 @@ public class ListUtilitiesResult implements Serializable {
         ListUtilitiesResult that = (ListUtilitiesResult) o;
 
         return 
-            Arrays.equals(utilities, that.utilities);
+            Objects.equals(utilities, that.utilities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])utilities );
+        return Objects.hash( utilities );
     }
 
 
@@ -85,7 +85,7 @@ public class ListUtilitiesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" utilities : ").append(Arrays.toString(utilities)).append(",");
+        sb.append(" utilities : ").append(utilities).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,7 +103,7 @@ public class ListUtilitiesResult implements Serializable {
     }
 
     public static class Builder {
-        private String[] utilities;
+        private java.util.Map<String, Object> utilities;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class ListUtilitiesResult implements Serializable {
             return this;
         }
 
-        public ListUtilitiesResult.Builder utilities(final String[] utilities) {
+        public ListUtilitiesResult.Builder utilities(final java.util.Map<String, Object> utilities) {
             this.utilities = utilities;
             return this;
         }

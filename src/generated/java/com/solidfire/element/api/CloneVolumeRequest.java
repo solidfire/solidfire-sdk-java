@@ -40,6 +40,7 @@ public class CloneVolumeRequest implements Serializable {
     @SerializedName("access") private Optional<String> access;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("enable512e") private Optional<Boolean> enable512e;
 
     // empty constructor
     @Since("7.0")
@@ -55,7 +56,8 @@ public class CloneVolumeRequest implements Serializable {
         Optional<Long> newSize,
         Optional<String> access,
         Optional<Long> snapshotID,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<java.util.Map<String, Object>> attributes,
+        Optional<Boolean> enable512e
     )
     {
         this.volumeID = volumeID;
@@ -65,6 +67,7 @@ public class CloneVolumeRequest implements Serializable {
         this.access = (access == null) ? Optional.<String>empty() : access;
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
     }
 
     /** 
@@ -127,6 +130,13 @@ public class CloneVolumeRequest implements Serializable {
     public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
+    /** 
+     * Should the volume provide 512-byte sector emulation?
+     **/
+    public Optional<Boolean> getEnable512e() { return this.enable512e; }
+    public void setEnable512e(Optional<Boolean> enable512e) { 
+        this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -142,12 +152,13 @@ public class CloneVolumeRequest implements Serializable {
             Objects.equals(newSize, that.newSize) && 
             Objects.equals(access, that.access) && 
             Objects.equals(snapshotID, that.snapshotID) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(enable512e, that.enable512e);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID,name,newAccountID,newSize,access,snapshotID,attributes );
+        return Objects.hash( volumeID,name,newAccountID,newSize,access,snapshotID,attributes,enable512e );
     }
 
 
@@ -160,6 +171,7 @@ public class CloneVolumeRequest implements Serializable {
         map.put("access", access);
         map.put("snapshotID", snapshotID);
         map.put("attributes", attributes);
+        map.put("enable512e", enable512e);
         return map;
     }
 
@@ -185,6 +197,9 @@ public class CloneVolumeRequest implements Serializable {
         if(null != attributes && attributes.isPresent()){
             sb.append(" attributes : ").append(attributes).append(",");
         }
+        if(null != enable512e && enable512e.isPresent()){
+            sb.append(" enable512e : ").append(enable512e).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -209,6 +224,7 @@ public class CloneVolumeRequest implements Serializable {
         private Optional<String> access;
         private Optional<Long> snapshotID;
         private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Boolean> enable512e;
 
         private Builder() { }
 
@@ -220,7 +236,8 @@ public class CloneVolumeRequest implements Serializable {
                          this.newSize,
                          this.access,
                          this.snapshotID,
-                         this.attributes);
+                         this.attributes,
+                         this.enable512e);
         }
 
         private CloneVolumeRequest.Builder buildFrom(final CloneVolumeRequest req) {
@@ -231,6 +248,7 @@ public class CloneVolumeRequest implements Serializable {
             this.access = req.access;
             this.snapshotID = req.snapshotID;
             this.attributes = req.attributes;
+            this.enable512e = req.enable512e;
 
             return this;
         }
@@ -267,6 +285,11 @@ public class CloneVolumeRequest implements Serializable {
 
         public CloneVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+            return this;
+        }
+
+        public CloneVolumeRequest.Builder optionalEnable512e(final Boolean enable512e) {
+            this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : Optional.of(enable512e);
             return this;
         }
 

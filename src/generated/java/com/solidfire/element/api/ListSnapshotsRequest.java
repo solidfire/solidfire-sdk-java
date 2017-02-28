@@ -34,6 +34,7 @@ public class ListSnapshotsRequest implements Serializable {
 
     public static final long serialVersionUID = -2283933622639350902L;
     @SerializedName("volumeID") private Optional<Long> volumeID;
+    @SerializedName("internal") private Optional<Boolean> internal;
 
     // empty constructor
     @Since("7.0")
@@ -43,10 +44,12 @@ public class ListSnapshotsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListSnapshotsRequest(
-        Optional<Long> volumeID
+        Optional<Long> volumeID,
+        Optional<Boolean> internal
     )
     {
         this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
+        this.internal = (internal == null) ? Optional.<Boolean>empty() : internal;
     }
 
     /** 
@@ -57,6 +60,12 @@ public class ListSnapshotsRequest implements Serializable {
     public void setVolumeID(Optional<Long> volumeID) { 
         this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
     }
+    /** 
+     **/
+    public Optional<Boolean> getInternal() { return this.internal; }
+    public void setInternal(Optional<Boolean> internal) { 
+        this.internal = (internal == null) ? Optional.<Boolean>empty() : internal;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -66,18 +75,20 @@ public class ListSnapshotsRequest implements Serializable {
         ListSnapshotsRequest that = (ListSnapshotsRequest) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID);
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(internal, that.internal);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID );
+        return Objects.hash( volumeID,internal );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("volumeID", volumeID);
+        map.put("internal", internal);
         return map;
     }
 
@@ -88,6 +99,9 @@ public class ListSnapshotsRequest implements Serializable {
 
         if(null != volumeID && volumeID.isPresent()){
             sb.append(" volumeID : ").append(volumeID).append(",");
+        }
+        if(null != internal && internal.isPresent()){
+            sb.append(" internal : ").append(internal).append(",");
         }
         sb.append( " }" );
 
@@ -107,22 +121,30 @@ public class ListSnapshotsRequest implements Serializable {
 
     public static class Builder {
         private Optional<Long> volumeID;
+        private Optional<Boolean> internal;
 
         private Builder() { }
 
         public ListSnapshotsRequest build() {
             return new ListSnapshotsRequest (
-                         this.volumeID);
+                         this.volumeID,
+                         this.internal);
         }
 
         private ListSnapshotsRequest.Builder buildFrom(final ListSnapshotsRequest req) {
             this.volumeID = req.volumeID;
+            this.internal = req.internal;
 
             return this;
         }
 
         public ListSnapshotsRequest.Builder optionalVolumeID(final Long volumeID) {
             this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
+            return this;
+        }
+
+        public ListSnapshotsRequest.Builder optionalInternal(final Boolean internal) {
+            this.internal = (internal == null) ? Optional.<Boolean>empty() : Optional.of(internal);
             return this;
         }
 

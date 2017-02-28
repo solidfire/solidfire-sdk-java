@@ -27,34 +27,33 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * ListTestsResult  
+ * GetSnmpTrapInfoRequest  
  **/
 
-public class ListTestsResult implements Serializable {
+public class GetSnmpTrapInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 3886812087466529195L;
-    @SerializedName("tests") private java.util.Map<String, Object> tests;
+    public static final long serialVersionUID = -1092376791857252518L;
+    @SerializedName("id") private Optional<Long> id;
 
     // empty constructor
     @Since("7.0")
-    public ListTestsResult() {}
+    public GetSnmpTrapInfoRequest() {}
 
     
     // parameterized constructor
     @Since("7.0")
-    public ListTestsResult(
-        java.util.Map<String, Object> tests
+    public GetSnmpTrapInfoRequest(
+        Optional<Long> id
     )
     {
-        this.tests = tests;
+        this.id = (id == null) ? Optional.<Long>empty() : id;
     }
 
     /** 
-     * List of tests that can be performed on the node.
      **/
-    public java.util.Map<String, Object> getTests() { return this.tests; }
-    public void setTests(java.util.Map<String, Object> tests) { 
-        this.tests = tests;
+    public Optional<Long> getId() { return this.id; }
+    public void setId(Optional<Long> id) { 
+        this.id = (id == null) ? Optional.<Long>empty() : id;
     }
 
     @Override
@@ -62,21 +61,21 @@ public class ListTestsResult implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ListTestsResult that = (ListTestsResult) o;
+        GetSnmpTrapInfoRequest that = (GetSnmpTrapInfoRequest) o;
 
         return 
-            Objects.equals(tests, that.tests);
+            Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( tests );
+        return Objects.hash( id );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("tests", tests);
+        map.put("id", id);
         return map;
     }
 
@@ -85,7 +84,9 @@ public class ListTestsResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" tests : ").append(tests).append(",");
+        if(null != id && id.isPresent()){
+            sb.append(" id : ").append(id).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,23 +104,23 @@ public class ListTestsResult implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> tests;
+        private Optional<Long> id;
 
         private Builder() { }
 
-        public ListTestsResult build() {
-            return new ListTestsResult (
-                         this.tests);
+        public GetSnmpTrapInfoRequest build() {
+            return new GetSnmpTrapInfoRequest (
+                         this.id);
         }
 
-        private ListTestsResult.Builder buildFrom(final ListTestsResult req) {
-            this.tests = req.tests;
+        private GetSnmpTrapInfoRequest.Builder buildFrom(final GetSnmpTrapInfoRequest req) {
+            this.id = req.id;
 
             return this;
         }
 
-        public ListTestsResult.Builder tests(final java.util.Map<String, Object> tests) {
-            this.tests = tests;
+        public GetSnmpTrapInfoRequest.Builder optionalId(final Long id) {
+            this.id = (id == null) ? Optional.<Long>empty() : Optional.of(id);
             return this;
         }
 

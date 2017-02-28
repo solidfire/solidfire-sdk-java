@@ -36,6 +36,7 @@ public class ModifyVolumePairRequest implements Serializable {
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("pausedManual") private Optional<Boolean> pausedManual;
     @SerializedName("mode") private Optional<String> mode;
+    @SerializedName("pauseLimit") private Optional<Long> pauseLimit;
 
     // empty constructor
     @Since("7.0")
@@ -47,12 +48,14 @@ public class ModifyVolumePairRequest implements Serializable {
     public ModifyVolumePairRequest(
         Long volumeID,
         Optional<Boolean> pausedManual,
-        Optional<String> mode
+        Optional<String> mode,
+        Optional<Long> pauseLimit
     )
     {
         this.volumeID = volumeID;
         this.pausedManual = (pausedManual == null) ? Optional.<Boolean>empty() : pausedManual;
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
+        this.pauseLimit = (pauseLimit == null) ? Optional.<Long>empty() : pauseLimit;
     }
 
     /** 
@@ -83,6 +86,12 @@ public class ModifyVolumePairRequest implements Serializable {
     public void setMode(Optional<String> mode) { 
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
     }
+    /** 
+     **/
+    public Optional<Long> getPauseLimit() { return this.pauseLimit; }
+    public void setPauseLimit(Optional<Long> pauseLimit) { 
+        this.pauseLimit = (pauseLimit == null) ? Optional.<Long>empty() : pauseLimit;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -94,12 +103,13 @@ public class ModifyVolumePairRequest implements Serializable {
         return 
             Objects.equals(volumeID, that.volumeID) && 
             Objects.equals(pausedManual, that.pausedManual) && 
-            Objects.equals(mode, that.mode);
+            Objects.equals(mode, that.mode) && 
+            Objects.equals(pauseLimit, that.pauseLimit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID,pausedManual,mode );
+        return Objects.hash( volumeID,pausedManual,mode,pauseLimit );
     }
 
 
@@ -108,6 +118,7 @@ public class ModifyVolumePairRequest implements Serializable {
         map.put("volumeID", volumeID);
         map.put("pausedManual", pausedManual);
         map.put("mode", mode);
+        map.put("pauseLimit", pauseLimit);
         return map;
     }
 
@@ -122,6 +133,9 @@ public class ModifyVolumePairRequest implements Serializable {
         }
         if(null != mode && mode.isPresent()){
             sb.append(" mode : ").append(mode).append(",");
+        }
+        if(null != pauseLimit && pauseLimit.isPresent()){
+            sb.append(" pauseLimit : ").append(pauseLimit).append(",");
         }
         sb.append( " }" );
 
@@ -143,6 +157,7 @@ public class ModifyVolumePairRequest implements Serializable {
         private Long volumeID;
         private Optional<Boolean> pausedManual;
         private Optional<String> mode;
+        private Optional<Long> pauseLimit;
 
         private Builder() { }
 
@@ -150,13 +165,15 @@ public class ModifyVolumePairRequest implements Serializable {
             return new ModifyVolumePairRequest (
                          this.volumeID,
                          this.pausedManual,
-                         this.mode);
+                         this.mode,
+                         this.pauseLimit);
         }
 
         private ModifyVolumePairRequest.Builder buildFrom(final ModifyVolumePairRequest req) {
             this.volumeID = req.volumeID;
             this.pausedManual = req.pausedManual;
             this.mode = req.mode;
+            this.pauseLimit = req.pauseLimit;
 
             return this;
         }
@@ -173,6 +190,11 @@ public class ModifyVolumePairRequest implements Serializable {
 
         public ModifyVolumePairRequest.Builder optionalMode(final String mode) {
             this.mode = (mode == null) ? Optional.<String>empty() : Optional.of(mode);
+            return this;
+        }
+
+        public ModifyVolumePairRequest.Builder optionalPauseLimit(final Long pauseLimit) {
+            this.pauseLimit = (pauseLimit == null) ? Optional.<Long>empty() : Optional.of(pauseLimit);
             return this;
         }
 

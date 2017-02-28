@@ -35,7 +35,8 @@ public class ResetNodeRequest implements Serializable {
     public static final long serialVersionUID = -1238993143208246416L;
     @SerializedName("build") private String build;
     @SerializedName("force") private Boolean force;
-    @SerializedName("option") private Optional<String> option;
+    @SerializedName("options") private Optional<String> options;
+    @SerializedName("reboot") private Optional<Boolean> reboot;
 
     // empty constructor
     @Since("7.0")
@@ -47,12 +48,14 @@ public class ResetNodeRequest implements Serializable {
     public ResetNodeRequest(
         String build,
         Boolean force,
-        Optional<String> option
+        Optional<String> options,
+        Optional<Boolean> reboot
     )
     {
         this.build = build;
         this.force = force;
-        this.option = (option == null) ? Optional.<String>empty() : option;
+        this.options = (options == null) ? Optional.<String>empty() : options;
+        this.reboot = (reboot == null) ? Optional.<Boolean>empty() : reboot;
     }
 
     /** 
@@ -72,9 +75,16 @@ public class ResetNodeRequest implements Serializable {
     /** 
      * Used to enter specifications for running the reset operation.
      **/
-    public Optional<String> getOption() { return this.option; }
-    public void setOption(Optional<String> option) { 
-        this.option = (option == null) ? Optional.<String>empty() : option;
+    public Optional<String> getOptions() { return this.options; }
+    public void setOptions(Optional<String> options) { 
+        this.options = (options == null) ? Optional.<String>empty() : options;
+    }
+    /** 
+     * Should it be rebooted?
+     **/
+    public Optional<Boolean> getReboot() { return this.reboot; }
+    public void setReboot(Optional<Boolean> reboot) { 
+        this.reboot = (reboot == null) ? Optional.<Boolean>empty() : reboot;
     }
 
     @Override
@@ -87,12 +97,13 @@ public class ResetNodeRequest implements Serializable {
         return 
             Objects.equals(build, that.build) && 
             Objects.equals(force, that.force) && 
-            Objects.equals(option, that.option);
+            Objects.equals(options, that.options) && 
+            Objects.equals(reboot, that.reboot);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( build,force,option );
+        return Objects.hash( build,force,options,reboot );
     }
 
 
@@ -100,7 +111,8 @@ public class ResetNodeRequest implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("build", build);
         map.put("force", force);
-        map.put("option", option);
+        map.put("options", options);
+        map.put("reboot", reboot);
         return map;
     }
 
@@ -111,8 +123,11 @@ public class ResetNodeRequest implements Serializable {
 
         sb.append(" build : ").append(build).append(",");
         sb.append(" force : ").append(force).append(",");
-        if(null != option && option.isPresent()){
-            sb.append(" option : ").append(option).append(",");
+        if(null != options && options.isPresent()){
+            sb.append(" options : ").append(options).append(",");
+        }
+        if(null != reboot && reboot.isPresent()){
+            sb.append(" reboot : ").append(reboot).append(",");
         }
         sb.append( " }" );
 
@@ -133,7 +148,8 @@ public class ResetNodeRequest implements Serializable {
     public static class Builder {
         private String build;
         private Boolean force;
-        private Optional<String> option;
+        private Optional<String> options;
+        private Optional<Boolean> reboot;
 
         private Builder() { }
 
@@ -141,13 +157,15 @@ public class ResetNodeRequest implements Serializable {
             return new ResetNodeRequest (
                          this.build,
                          this.force,
-                         this.option);
+                         this.options,
+                         this.reboot);
         }
 
         private ResetNodeRequest.Builder buildFrom(final ResetNodeRequest req) {
             this.build = req.build;
             this.force = req.force;
-            this.option = req.option;
+            this.options = req.options;
+            this.reboot = req.reboot;
 
             return this;
         }
@@ -162,8 +180,13 @@ public class ResetNodeRequest implements Serializable {
             return this;
         }
 
-        public ResetNodeRequest.Builder optionalOption(final String option) {
-            this.option = (option == null) ? Optional.<String>empty() : Optional.of(option);
+        public ResetNodeRequest.Builder optionalOptions(final String options) {
+            this.options = (options == null) ? Optional.<String>empty() : Optional.of(options);
+            return this;
+        }
+
+        public ResetNodeRequest.Builder optionalReboot(final Boolean reboot) {
+            this.reboot = (reboot == null) ? Optional.<Boolean>empty() : Optional.of(reboot);
             return this;
         }
 

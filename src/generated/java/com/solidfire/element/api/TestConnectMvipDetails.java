@@ -33,7 +33,7 @@ import java.util.Objects;
 public class TestConnectMvipDetails implements Serializable {
 
     public static final long serialVersionUID = 5224632538129465332L;
-    @SerializedName("pingBytes") private Object pingBytes;
+    @SerializedName("pingBytes") private java.util.Map<String, Object> pingBytes;
     @SerializedName("mvip") private String mvip;
     @SerializedName("connected") private Boolean connected;
 
@@ -45,7 +45,7 @@ public class TestConnectMvipDetails implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public TestConnectMvipDetails(
-        Object pingBytes,
+        java.util.Map<String, Object> pingBytes,
         String mvip,
         Boolean connected
     )
@@ -58,8 +58,8 @@ public class TestConnectMvipDetails implements Serializable {
     /** 
      * Details of the ping tests with 56 Bytes and 1500 Bytes.
      **/
-    public Object getPingBytes() { return this.pingBytes; }
-    public void setPingBytes(Object pingBytes) { 
+    public java.util.Map<String, Object> getPingBytes() { return this.pingBytes; }
+    public void setPingBytes(java.util.Map<String, Object> pingBytes) { 
         this.pingBytes = pingBytes;
     }
     /** 
@@ -129,7 +129,7 @@ public class TestConnectMvipDetails implements Serializable {
     }
 
     public static class Builder {
-        private Object pingBytes;
+        private java.util.Map<String, Object> pingBytes;
         private String mvip;
         private Boolean connected;
 
@@ -150,7 +150,7 @@ public class TestConnectMvipDetails implements Serializable {
             return this;
         }
 
-        public TestConnectMvipDetails.Builder pingBytes(final Object pingBytes) {
+        public TestConnectMvipDetails.Builder pingBytes(final java.util.Map<String, Object> pingBytes) {
             this.pingBytes = pingBytes;
             return this;
         }
