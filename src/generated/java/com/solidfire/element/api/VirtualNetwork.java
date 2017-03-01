@@ -41,7 +41,6 @@ public class VirtualNetwork implements Serializable {
     @SerializedName("svip") private String svip;
     @SerializedName("gateway") private Optional<String> gateway;
     @SerializedName("namespace") private Optional<Boolean> namespace;
-    @SerializedName("addressBlocks") private AddressBlock[] addressBlocks;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
@@ -58,7 +57,6 @@ public class VirtualNetwork implements Serializable {
         String name,
         String netmask,
         String svip,
-        AddressBlock[] addressBlocks,
         java.util.Map<String, Object> attributes
     )
     {
@@ -68,7 +66,6 @@ public class VirtualNetwork implements Serializable {
         this.name = name;
         this.netmask = netmask;
         this.svip = svip;
-        this.addressBlocks = addressBlocks;
         this.attributes = attributes;
     }
     // parameterized constructor
@@ -82,7 +79,6 @@ public class VirtualNetwork implements Serializable {
         String svip,
         Optional<String> gateway,
         Optional<Boolean> namespace,
-        AddressBlock[] addressBlocks,
         java.util.Map<String, Object> attributes
     )
     {
@@ -94,7 +90,6 @@ public class VirtualNetwork implements Serializable {
         this.svip = svip;
         this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
-        this.addressBlocks = addressBlocks;
         this.attributes = attributes;
     }
 
@@ -158,12 +153,6 @@ public class VirtualNetwork implements Serializable {
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
     /** 
-     **/
-    public AddressBlock[] getAddressBlocks() { return this.addressBlocks; }
-    public void setAddressBlocks(AddressBlock[] addressBlocks) { 
-        this.addressBlocks = addressBlocks;
-    }
-    /** 
      * List of Name/Value pairs in JSON object format.
      **/
     public java.util.Map<String, Object> getAttributes() { return this.attributes; }
@@ -187,13 +176,12 @@ public class VirtualNetwork implements Serializable {
             Objects.equals(svip, that.svip) && 
             Objects.equals(gateway, that.gateway) && 
             Objects.equals(namespace, that.namespace) && 
-            Arrays.equals(addressBlocks, that.addressBlocks) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualNetworkID,virtualNetworkTag,(Object[])addressBlocks,name,netmask,svip,gateway,namespace,(Object[])addressBlocks,attributes );
+        return Objects.hash( virtualNetworkID,virtualNetworkTag,(Object[])addressBlocks,name,netmask,svip,gateway,namespace,attributes );
     }
 
 
@@ -207,7 +195,6 @@ public class VirtualNetwork implements Serializable {
         map.put("svip", svip);
         map.put("gateway", gateway);
         map.put("namespace", namespace);
-        map.put("addressBlocks", addressBlocks);
         map.put("attributes", attributes);
         return map;
     }
@@ -229,7 +216,6 @@ public class VirtualNetwork implements Serializable {
         if(null != namespace && namespace.isPresent()){
             sb.append(" namespace : ").append(namespace).append(",");
         }
-        sb.append(" addressBlocks : ").append(Arrays.toString(addressBlocks)).append(",");
         sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
@@ -256,7 +242,6 @@ public class VirtualNetwork implements Serializable {
         private String svip;
         private Optional<String> gateway;
         private Optional<Boolean> namespace;
-        private AddressBlock[] addressBlocks;
         private java.util.Map<String, Object> attributes;
 
         private Builder() { }
@@ -271,7 +256,6 @@ public class VirtualNetwork implements Serializable {
                          this.svip,
                          this.gateway,
                          this.namespace,
-                         this.addressBlocks,
                          this.attributes);
         }
 
@@ -284,7 +268,6 @@ public class VirtualNetwork implements Serializable {
             this.svip = req.svip;
             this.gateway = req.gateway;
             this.namespace = req.namespace;
-            this.addressBlocks = req.addressBlocks;
             this.attributes = req.attributes;
 
             return this;
@@ -327,11 +310,6 @@ public class VirtualNetwork implements Serializable {
 
         public VirtualNetwork.Builder optionalNamespace(final Boolean namespace) {
             this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
-            return this;
-        }
-
-        public VirtualNetwork.Builder addressBlocks(final AddressBlock[] addressBlocks) {
-            this.addressBlocks = addressBlocks;
             return this;
         }
 
