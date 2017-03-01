@@ -33,26 +33,94 @@ import java.util.Objects;
 public class ModifyVolumeAccessGroupLunAssignmentsResult implements Serializable {
 
     public static final long serialVersionUID = -8667012650029922654L;
+    @SerializedName("volumeAccessGroupLunAssignments") private VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments;
 
     // empty constructor
     @Since("7.0")
     public ModifyVolumeAccessGroupLunAssignmentsResult() {}
 
     
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyVolumeAccessGroupLunAssignmentsResult(
+        VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments
+    )
+    {
+        this.volumeAccessGroupLunAssignments = volumeAccessGroupLunAssignments;
+    }
+
+    /** 
+     **/
+    public VolumeAccessGroupLunAssignments getVolumeAccessGroupLunAssignments() { return this.volumeAccessGroupLunAssignments; }
+    public void setVolumeAccessGroupLunAssignments(VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments) { 
+        this.volumeAccessGroupLunAssignments = volumeAccessGroupLunAssignments;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        
-        return true;
+        ModifyVolumeAccessGroupLunAssignmentsResult that = (ModifyVolumeAccessGroupLunAssignmentsResult) o;
+
+        return 
+            Objects.equals(volumeAccessGroupLunAssignments, that.volumeAccessGroupLunAssignments);
     }
 
     @Override
     public int hashCode() {
-
-        return this.getClass().hashCode();
+        return Objects.hash( volumeAccessGroupLunAssignments );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("volumeAccessGroupLunAssignments", volumeAccessGroupLunAssignments);
+        return map;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append( "{ " );
+
+        sb.append(" volumeAccessGroupLunAssignments : ").append(volumeAccessGroupLunAssignments).append(",");
+        sb.append( " }" );
+
+        if(sb.lastIndexOf(", }") != -1)
+            sb.deleteCharAt(sb.lastIndexOf(", }"));
+
+        return sb.toString();
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments;
+
+        private Builder() { }
+
+        public ModifyVolumeAccessGroupLunAssignmentsResult build() {
+            return new ModifyVolumeAccessGroupLunAssignmentsResult (
+                         this.volumeAccessGroupLunAssignments);
+        }
+
+        private ModifyVolumeAccessGroupLunAssignmentsResult.Builder buildFrom(final ModifyVolumeAccessGroupLunAssignmentsResult req) {
+            this.volumeAccessGroupLunAssignments = req.volumeAccessGroupLunAssignments;
+
+            return this;
+        }
+
+        public ModifyVolumeAccessGroupLunAssignmentsResult.Builder volumeAccessGroupLunAssignments(final VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments) {
+            this.volumeAccessGroupLunAssignments = volumeAccessGroupLunAssignments;
+            return this;
+        }
+
+    }
 }

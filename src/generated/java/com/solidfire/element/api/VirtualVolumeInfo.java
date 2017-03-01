@@ -46,6 +46,7 @@ public class VirtualVolumeInfo implements Serializable {
     @SerializedName("metadata") private java.util.Map<String, Object> metadata;
     @SerializedName("snapshotInfo") private Snapshot snapshotInfo;
     @SerializedName("volumeInfo") private Volume volumeInfo;
+    @SerializedName("descendants") private Long[] descendants;
 
     // empty constructor
     @Since("7.0")
@@ -67,7 +68,8 @@ public class VirtualVolumeInfo implements Serializable {
         java.util.UUID[] children,
         java.util.Map<String, Object> metadata,
         Snapshot snapshotInfo,
-        Volume volumeInfo
+        Volume volumeInfo,
+        Long[] descendants
     )
     {
         this.virtualVolumeID = virtualVolumeID;
@@ -83,6 +85,7 @@ public class VirtualVolumeInfo implements Serializable {
         this.metadata = metadata;
         this.snapshotInfo = snapshotInfo;
         this.volumeInfo = volumeInfo;
+        this.descendants = descendants;
     }
 
     /** 
@@ -163,6 +166,12 @@ public class VirtualVolumeInfo implements Serializable {
     public void setVolumeInfo(Volume volumeInfo) { 
         this.volumeInfo = volumeInfo;
     }
+    /** 
+     **/
+    public Long[] getDescendants() { return this.descendants; }
+    public void setDescendants(Long[] descendants) { 
+        this.descendants = descendants;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -184,12 +193,13 @@ public class VirtualVolumeInfo implements Serializable {
             Arrays.equals(children, that.children) && 
             Objects.equals(metadata, that.metadata) && 
             Objects.equals(snapshotInfo, that.snapshotInfo) && 
-            Objects.equals(volumeInfo, that.volumeInfo);
+            Objects.equals(volumeInfo, that.volumeInfo) && 
+            Arrays.equals(descendants, that.descendants);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualVolumeID,parentVirtualVolumeID,storageContainerID,storageContainer,volumeID,snapshotID,virtualVolumeType,status,(Object[])bindings,(Object[])children,metadata,snapshotInfo,volumeInfo );
+        return Objects.hash( virtualVolumeID,parentVirtualVolumeID,storageContainerID,storageContainer,volumeID,snapshotID,virtualVolumeType,status,(Object[])bindings,(Object[])children,metadata,snapshotInfo,volumeInfo,(Object[])descendants );
     }
 
 
@@ -208,6 +218,7 @@ public class VirtualVolumeInfo implements Serializable {
         map.put("metadata", metadata);
         map.put("snapshotInfo", snapshotInfo);
         map.put("volumeInfo", volumeInfo);
+        map.put("descendants", descendants);
         return map;
     }
 
@@ -229,6 +240,7 @@ public class VirtualVolumeInfo implements Serializable {
         sb.append(" metadata : ").append(metadata).append(",");
         sb.append(" snapshotInfo : ").append(snapshotInfo).append(",");
         sb.append(" volumeInfo : ").append(volumeInfo).append(",");
+        sb.append(" descendants : ").append(Arrays.toString(descendants)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -259,6 +271,7 @@ public class VirtualVolumeInfo implements Serializable {
         private java.util.Map<String, Object> metadata;
         private Snapshot snapshotInfo;
         private Volume volumeInfo;
+        private Long[] descendants;
 
         private Builder() { }
 
@@ -276,7 +289,8 @@ public class VirtualVolumeInfo implements Serializable {
                          this.children,
                          this.metadata,
                          this.snapshotInfo,
-                         this.volumeInfo);
+                         this.volumeInfo,
+                         this.descendants);
         }
 
         private VirtualVolumeInfo.Builder buildFrom(final VirtualVolumeInfo req) {
@@ -293,6 +307,7 @@ public class VirtualVolumeInfo implements Serializable {
             this.metadata = req.metadata;
             this.snapshotInfo = req.snapshotInfo;
             this.volumeInfo = req.volumeInfo;
+            this.descendants = req.descendants;
 
             return this;
         }
@@ -359,6 +374,11 @@ public class VirtualVolumeInfo implements Serializable {
 
         public VirtualVolumeInfo.Builder volumeInfo(final Volume volumeInfo) {
             this.volumeInfo = volumeInfo;
+            return this;
+        }
+
+        public VirtualVolumeInfo.Builder descendants(final Long[] descendants) {
+            this.descendants = descendants;
             return this;
         }
 

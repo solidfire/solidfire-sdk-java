@@ -42,6 +42,7 @@ public class NetworkInterface implements Serializable {
     @SerializedName("status") private String status;
     @SerializedName("type") private String type;
     @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
+    @SerializedName("namespace") private Optional<Boolean> namespace;
 
     // empty constructor
     @Since("7.0")
@@ -59,7 +60,8 @@ public class NetworkInterface implements Serializable {
         String netmask,
         String status,
         String type,
-        Long virtualNetworkTag
+        Long virtualNetworkTag,
+        Optional<Boolean> namespace
     )
     {
         this.address = address;
@@ -71,6 +73,7 @@ public class NetworkInterface implements Serializable {
         this.status = status;
         this.type = type;
         this.virtualNetworkTag = virtualNetworkTag;
+        this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
 
     /** 
@@ -136,6 +139,12 @@ public class NetworkInterface implements Serializable {
     public void setVirtualNetworkTag(Long virtualNetworkTag) { 
         this.virtualNetworkTag = virtualNetworkTag;
     }
+    /** 
+     **/
+    public Optional<Boolean> getNamespace() { return this.namespace; }
+    public void setNamespace(Optional<Boolean> namespace) { 
+        this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -153,12 +162,13 @@ public class NetworkInterface implements Serializable {
             Objects.equals(netmask, that.netmask) && 
             Objects.equals(status, that.status) && 
             Objects.equals(type, that.type) && 
-            Objects.equals(virtualNetworkTag, that.virtualNetworkTag);
+            Objects.equals(virtualNetworkTag, that.virtualNetworkTag) && 
+            Objects.equals(namespace, that.namespace);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( address,broadcast,macAddress,mtu,name,netmask,status,type,virtualNetworkTag );
+        return Objects.hash( address,broadcast,macAddress,mtu,name,netmask,status,type,virtualNetworkTag,namespace );
     }
 
 
@@ -173,6 +183,7 @@ public class NetworkInterface implements Serializable {
         map.put("status", status);
         map.put("type", type);
         map.put("virtualNetworkTag", virtualNetworkTag);
+        map.put("namespace", namespace);
         return map;
     }
 
@@ -190,6 +201,9 @@ public class NetworkInterface implements Serializable {
         sb.append(" status : ").append(status).append(",");
         sb.append(" type : ").append(type).append(",");
         sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
+        if(null != namespace && namespace.isPresent()){
+            sb.append(" namespace : ").append(namespace).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -216,6 +230,7 @@ public class NetworkInterface implements Serializable {
         private String status;
         private String type;
         private Long virtualNetworkTag;
+        private Optional<Boolean> namespace;
 
         private Builder() { }
 
@@ -229,7 +244,8 @@ public class NetworkInterface implements Serializable {
                          this.netmask,
                          this.status,
                          this.type,
-                         this.virtualNetworkTag);
+                         this.virtualNetworkTag,
+                         this.namespace);
         }
 
         private NetworkInterface.Builder buildFrom(final NetworkInterface req) {
@@ -242,6 +258,7 @@ public class NetworkInterface implements Serializable {
             this.status = req.status;
             this.type = req.type;
             this.virtualNetworkTag = req.virtualNetworkTag;
+            this.namespace = req.namespace;
 
             return this;
         }
@@ -288,6 +305,11 @@ public class NetworkInterface implements Serializable {
 
         public NetworkInterface.Builder virtualNetworkTag(final Long virtualNetworkTag) {
             this.virtualNetworkTag = virtualNetworkTag;
+            return this;
+        }
+
+        public NetworkInterface.Builder optionalNamespace(final Boolean namespace) {
+            this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
             return this;
         }
 
