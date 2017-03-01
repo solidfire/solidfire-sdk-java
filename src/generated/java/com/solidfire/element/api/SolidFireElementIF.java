@@ -725,22 +725,6 @@ public interface SolidFireElementIF {
         Optional<String> faultType
         );
     /** 
-     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public GetSnmpTrapInfoResult getSnmpTrapInfo(final GetSnmpTrapInfoRequest request);
-
-    /** 
-     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public GetSnmpTrapInfoResult getSnmpTrapInfo(
-        
-        Optional<Long> id
-        );
-    /** 
      * ListClusterAdmins returns the list of all cluster administrators for the cluster. There can be several cluster administrators that have different levels of permissions. There can be only one primary cluster administrator in the system. The primary Cluster Admin is the administrator that was created when the cluster was created. LDAP administrators can also be created when setting up an LDAP system on the cluster.
      **/
     @Since("1")
@@ -755,6 +739,22 @@ public interface SolidFireElementIF {
     public ListClusterAdminsResult listClusterAdmins(
         
         Optional<Boolean> showHidden
+        );
+    /** 
+     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public GetSnmpTrapInfoResult getSnmpTrapInfo(final GetSnmpTrapInfoRequest request);
+
+    /** 
+     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public GetSnmpTrapInfoResult getSnmpTrapInfo(
+        
+        Optional<Long> id
         );
     /** 
      * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
@@ -2834,6 +2834,54 @@ public interface SolidFireElementIF {
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * 
+     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * 
+     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request);
+
+    /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * 
+     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * 
+     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(
+        
+        Long volumeID
+, 
+        String name
+, 
+        Optional<Long> newAccountID
+, 
+        Optional<Long> newSize
+, 
+        Optional<String> access
+, 
+        Optional<Long> snapshotID
+, 
+        Optional<java.util.Map<String, Object>> attributes
+, 
+        Optional<Boolean> enable512e
+        );
+    /** 
      * Cancels a currently running clone operation. This method does not return anything.
      **/
     @Since("9")
@@ -2970,54 +3018,6 @@ public interface SolidFireElementIF {
         Optional<Long> totalSize
 , 
         Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * 
-     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * 
-     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request);
-
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * 
-     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * 
-     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(
-        
-        Long volumeID
-, 
-        String name
-, 
-        Optional<Long> newAccountID
-, 
-        Optional<Long> newSize
-, 
-        Optional<String> access
-, 
-        Optional<Long> snapshotID
-, 
-        Optional<java.util.Map<String, Object>> attributes
-, 
-        Optional<Boolean> enable512e
         );
     /** 
      * Used to retrieve the result of asynchronous method calls.

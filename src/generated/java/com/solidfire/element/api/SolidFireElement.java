@@ -977,30 +977,6 @@ public class SolidFireElement
         return this.clearClusterFaults(new ClearClusterFaultsRequest(faultType));
     }
     /** 
-     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public GetSnmpTrapInfoResult getSnmpTrapInfo(final GetSnmpTrapInfoRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
-            throw new ApiException("The command, getSnmpTrapInfo is not available until version 5.");
-        }
-        return super.sendRequest("GetSnmpTrapInfo", request, GetSnmpTrapInfoRequest.class, GetSnmpTrapInfoResult.class);
-    }
-
-    /** 
-     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public GetSnmpTrapInfoResult getSnmpTrapInfo(
-        Optional<Long> id
-        ) {
-        return this.getSnmpTrapInfo(new GetSnmpTrapInfoRequest(id));
-    }
-    /** 
      * ListClusterAdmins returns the list of all cluster administrators for the cluster. There can be several cluster administrators that have different levels of permissions. There can be only one primary cluster administrator in the system. The primary Cluster Admin is the administrator that was created when the cluster was created. LDAP administrators can also be created when setting up an LDAP system on the cluster.
      **/
     @Override
@@ -1023,6 +999,30 @@ public class SolidFireElement
         Optional<Boolean> showHidden
         ) {
         return this.listClusterAdmins(new ListClusterAdminsRequest(showHidden));
+    }
+    /** 
+     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Cluster")
+    public GetSnmpTrapInfoResult getSnmpTrapInfo(final GetSnmpTrapInfoRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
+            throw new ApiException("The command, getSnmpTrapInfo is not available until version 5.");
+        }
+        return super.sendRequest("GetSnmpTrapInfo", request, GetSnmpTrapInfoRequest.class, GetSnmpTrapInfoResult.class);
+    }
+
+    /** 
+     * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Cluster")
+    public GetSnmpTrapInfoResult getSnmpTrapInfo(
+        Optional<Long> id
+        ) {
+        return this.getSnmpTrapInfo(new GetSnmpTrapInfoRequest(id));
     }
     /** 
      * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
@@ -3811,6 +3811,55 @@ public class SolidFireElement
         return this.startBulkVolumeRead(new StartBulkVolumeReadRequest(volumeID, format, snapshotID, script, scriptParameters, attributes));
     }
     /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * 
+     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * 
+     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
+            throw new ApiException("The command, cloneVolume is not available until version 1.");
+        }
+        return super.sendRequest("CloneVolume", request, CloneVolumeRequest.class, CloneVolumeResult.class);
+    }
+
+    /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * 
+     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * 
+     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(
+        Long volumeID,
+        String name,
+        Optional<Long> newAccountID,
+        Optional<Long> newSize,
+        Optional<String> access,
+        Optional<Long> snapshotID,
+        Optional<java.util.Map<String, Object>> attributes,
+        Optional<Boolean> enable512e
+        ) {
+        return this.cloneVolume(new CloneVolumeRequest(volumeID, name, newAccountID, newSize, access, snapshotID, attributes, enable512e));
+    }
+    /** 
      * Cancels a currently running clone operation. This method does not return anything.
      **/
     @Override
@@ -3980,55 +4029,6 @@ public class SolidFireElement
         Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.modifyVolume(new ModifyVolumeRequest(volumeID, accountID, access, qos, totalSize, attributes));
-    }
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * 
-     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * 
-     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
-            throw new ApiException("The command, cloneVolume is not available until version 1.");
-        }
-        return super.sendRequest("CloneVolume", request, CloneVolumeRequest.class, CloneVolumeResult.class);
-    }
-
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * 
-     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * 
-     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(
-        Long volumeID,
-        String name,
-        Optional<Long> newAccountID,
-        Optional<Long> newSize,
-        Optional<String> access,
-        Optional<Long> snapshotID,
-        Optional<java.util.Map<String, Object>> attributes,
-        Optional<Boolean> enable512e
-        ) {
-        return this.cloneVolume(new CloneVolumeRequest(volumeID, name, newAccountID, newSize, access, snapshotID, attributes, enable512e));
     }
     /** 
      * Used to retrieve the result of asynchronous method calls.
