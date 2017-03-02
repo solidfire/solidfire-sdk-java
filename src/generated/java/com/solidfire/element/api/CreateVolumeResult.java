@@ -33,7 +33,7 @@ import java.util.Objects;
 public class CreateVolumeResult implements Serializable {
 
     public static final long serialVersionUID = 2889880193310552919L;
-    @SerializedName("volume") private Volume volume;
+    @SerializedName("volume") private Optional<Volume> volume;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("curve") private java.util.Map<String,Long> curve;
 
@@ -45,21 +45,21 @@ public class CreateVolumeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CreateVolumeResult(
-        Volume volume,
+        Optional<Volume> volume,
         Long volumeID,
         java.util.Map<String,Long> curve
     )
     {
-        this.volume = volume;
+        this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
         this.volumeID = volumeID;
         this.curve = curve;
     }
 
     /** 
      **/
-    public Volume getVolume() { return this.volume; }
-    public void setVolume(Volume volume) { 
-        this.volume = volume;
+    public Optional<Volume> getVolume() { return this.volume; }
+    public void setVolume(Optional<Volume> volume) { 
+        this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
     }
     /** 
      * VolumeID for the newly created volume.
@@ -111,7 +111,9 @@ public class CreateVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volume : ").append(volume).append(",");
+        if(null != volume && volume.isPresent()){
+            sb.append(" volume : ").append(volume).append(",");
+        }
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" curve : ").append(curve).append(",");
         sb.append( " }" );
@@ -131,7 +133,7 @@ public class CreateVolumeResult implements Serializable {
     }
 
     public static class Builder {
-        private Volume volume;
+        private Optional<Volume> volume;
         private Long volumeID;
         private java.util.Map<String,Long> curve;
 
@@ -152,8 +154,8 @@ public class CreateVolumeResult implements Serializable {
             return this;
         }
 
-        public CreateVolumeResult.Builder volume(final Volume volume) {
-            this.volume = volume;
+        public CreateVolumeResult.Builder optionalVolume(final Volume volume) {
+            this.volume = (volume == null) ? Optional.<Volume>empty() : Optional.of(volume);
             return this;
         }
 

@@ -33,8 +33,8 @@ import java.util.Objects;
 public class ClusterFaultInfo implements Serializable {
 
     public static final long serialVersionUID = -5303506460547294310L;
-    @SerializedName("driveIDs") private Long[] driveIDs;
-    @SerializedName("networkInterface") private String networkInterface;
+    @SerializedName("driveIDs") private Optional<Long[]> driveIDs;
+    @SerializedName("networkInterface") private Optional<String> networkInterface;
     @SerializedName("severity") private String severity;
     @SerializedName("type") private String type;
     @SerializedName("code") private String code;
@@ -57,8 +57,8 @@ public class ClusterFaultInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ClusterFaultInfo(
-        Long[] driveIDs,
-        String networkInterface,
+        Optional<Long[]> driveIDs,
+        Optional<String> networkInterface,
         String severity,
         String type,
         String code,
@@ -74,8 +74,8 @@ public class ClusterFaultInfo implements Serializable {
         java.util.Map<String, Object> data
     )
     {
-        this.driveIDs = driveIDs;
-        this.networkInterface = networkInterface;
+        this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
+        this.networkInterface = (networkInterface == null) ? Optional.<String>empty() : networkInterface;
         this.severity = severity;
         this.type = type;
         this.code = code;
@@ -93,15 +93,15 @@ public class ClusterFaultInfo implements Serializable {
 
     /** 
      **/
-    public Long[] getDriveIDs() { return this.driveIDs; }
-    public void setDriveIDs(Long[] driveIDs) { 
-        this.driveIDs = driveIDs;
+    public Optional<Long[]> getDriveIDs() { return this.driveIDs; }
+    public void setDriveIDs(Optional<Long[]> driveIDs) { 
+        this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
     }
     /** 
      **/
-    public String getNetworkInterface() { return this.networkInterface; }
-    public void setNetworkInterface(String networkInterface) { 
-        this.networkInterface = networkInterface;
+    public Optional<String> getNetworkInterface() { return this.networkInterface; }
+    public void setNetworkInterface(Optional<String> networkInterface) { 
+        this.networkInterface = (networkInterface == null) ? Optional.<String>empty() : networkInterface;
     }
     /** 
      **/
@@ -190,7 +190,7 @@ public class ClusterFaultInfo implements Serializable {
         ClusterFaultInfo that = (ClusterFaultInfo) o;
 
         return 
-            Arrays.equals(driveIDs, that.driveIDs) && 
+            Objects.equals(driveIDs, that.driveIDs) && 
             Objects.equals(networkInterface, that.networkInterface) && 
             Objects.equals(severity, that.severity) && 
             Objects.equals(type, that.type) && 
@@ -209,7 +209,7 @@ public class ClusterFaultInfo implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])driveIDs,networkInterface,severity,type,code,details,nodeHardwareFaultID,nodeID,serviceID,driveID,resolved,clusterFaultID,date,resolvedDate,data );
+        return Objects.hash( driveIDs,networkInterface,severity,type,code,details,nodeHardwareFaultID,nodeID,serviceID,driveID,resolved,clusterFaultID,date,resolvedDate,data );
     }
 
 
@@ -238,8 +238,12 @@ public class ClusterFaultInfo implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" driveIDs : ").append(Arrays.toString(driveIDs)).append(",");
-        sb.append(" networkInterface : ").append(networkInterface).append(",");
+        if(null != driveIDs && driveIDs.isPresent()){
+            sb.append(" driveIDs : ").append(driveIDs).append(",");
+        }
+        if(null != networkInterface && networkInterface.isPresent()){
+            sb.append(" networkInterface : ").append(networkInterface).append(",");
+        }
         sb.append(" severity : ").append(severity).append(",");
         sb.append(" type : ").append(type).append(",");
         sb.append(" code : ").append(code).append(",");
@@ -270,8 +274,8 @@ public class ClusterFaultInfo implements Serializable {
     }
 
     public static class Builder {
-        private Long[] driveIDs;
-        private String networkInterface;
+        private Optional<Long[]> driveIDs;
+        private Optional<String> networkInterface;
         private String severity;
         private String type;
         private String code;
@@ -327,13 +331,13 @@ public class ClusterFaultInfo implements Serializable {
             return this;
         }
 
-        public ClusterFaultInfo.Builder driveIDs(final Long[] driveIDs) {
-            this.driveIDs = driveIDs;
+        public ClusterFaultInfo.Builder optionalDriveIDs(final Long[] driveIDs) {
+            this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : Optional.of(driveIDs);
             return this;
         }
 
-        public ClusterFaultInfo.Builder networkInterface(final String networkInterface) {
-            this.networkInterface = networkInterface;
+        public ClusterFaultInfo.Builder optionalNetworkInterface(final String networkInterface) {
+            this.networkInterface = (networkInterface == null) ? Optional.<String>empty() : Optional.of(networkInterface);
             return this;
         }
 

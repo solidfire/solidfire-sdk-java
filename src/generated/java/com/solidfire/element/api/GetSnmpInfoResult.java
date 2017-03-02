@@ -33,10 +33,10 @@ import java.util.Objects;
 public class GetSnmpInfoResult implements Serializable {
 
     public static final long serialVersionUID = -1945868960257895030L;
-    @SerializedName("networks") private SnmpNetwork[] networks;
+    @SerializedName("networks") private Optional<SnmpNetwork[]> networks;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("snmpV3Enabled") private Boolean snmpV3Enabled;
-    @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
+    @SerializedName("usmUsers") private Optional<SnmpV3UsmUser[]> usmUsers;
 
     // empty constructor
     @Since("7.0")
@@ -46,16 +46,16 @@ public class GetSnmpInfoResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetSnmpInfoResult(
-        SnmpNetwork[] networks,
+        Optional<SnmpNetwork[]> networks,
         Boolean enabled,
         Boolean snmpV3Enabled,
-        SnmpV3UsmUser[] usmUsers
+        Optional<SnmpV3UsmUser[]> usmUsers
     )
     {
-        this.networks = networks;
+        this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : networks;
         this.enabled = enabled;
         this.snmpV3Enabled = snmpV3Enabled;
-        this.usmUsers = usmUsers;
+        this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : usmUsers;
     }
 
     /** 
@@ -63,9 +63,9 @@ public class GetSnmpInfoResult implements Serializable {
      * 
      * Note: "networks" will only be present if SNMP V3 is disabled.
      **/
-    public SnmpNetwork[] getNetworks() { return this.networks; }
-    public void setNetworks(SnmpNetwork[] networks) { 
-        this.networks = networks;
+    public Optional<SnmpNetwork[]> getNetworks() { return this.networks; }
+    public void setNetworks(Optional<SnmpNetwork[]> networks) { 
+        this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : networks;
     }
     /** 
      * If the nodes in the cluster are configured for SNMP.
@@ -84,9 +84,9 @@ public class GetSnmpInfoResult implements Serializable {
     /** 
      * If SNMP v3 is enabled, the values returned is a list of user access parameters for SNMP information from the cluster. This will be returned instead of the "networks" parameter.
      **/
-    public SnmpV3UsmUser[] getUsmUsers() { return this.usmUsers; }
-    public void setUsmUsers(SnmpV3UsmUser[] usmUsers) { 
-        this.usmUsers = usmUsers;
+    public Optional<SnmpV3UsmUser[]> getUsmUsers() { return this.usmUsers; }
+    public void setUsmUsers(Optional<SnmpV3UsmUser[]> usmUsers) { 
+        this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : usmUsers;
     }
 
     @Override
@@ -97,15 +97,15 @@ public class GetSnmpInfoResult implements Serializable {
         GetSnmpInfoResult that = (GetSnmpInfoResult) o;
 
         return 
-            Arrays.equals(networks, that.networks) && 
+            Objects.equals(networks, that.networks) && 
             Objects.equals(enabled, that.enabled) && 
             Objects.equals(snmpV3Enabled, that.snmpV3Enabled) && 
-            Arrays.equals(usmUsers, that.usmUsers);
+            Objects.equals(usmUsers, that.usmUsers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])networks,enabled,snmpV3Enabled,(Object[])usmUsers );
+        return Objects.hash( networks,enabled,snmpV3Enabled,usmUsers );
     }
 
 
@@ -123,10 +123,14 @@ public class GetSnmpInfoResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" networks : ").append(Arrays.toString(networks)).append(",");
+        if(null != networks && networks.isPresent()){
+            sb.append(" networks : ").append(networks).append(",");
+        }
         sb.append(" enabled : ").append(enabled).append(",");
         sb.append(" snmpV3Enabled : ").append(snmpV3Enabled).append(",");
-        sb.append(" usmUsers : ").append(Arrays.toString(usmUsers)).append(",");
+        if(null != usmUsers && usmUsers.isPresent()){
+            sb.append(" usmUsers : ").append(usmUsers).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -144,10 +148,10 @@ public class GetSnmpInfoResult implements Serializable {
     }
 
     public static class Builder {
-        private SnmpNetwork[] networks;
+        private Optional<SnmpNetwork[]> networks;
         private Boolean enabled;
         private Boolean snmpV3Enabled;
-        private SnmpV3UsmUser[] usmUsers;
+        private Optional<SnmpV3UsmUser[]> usmUsers;
 
         private Builder() { }
 
@@ -168,8 +172,8 @@ public class GetSnmpInfoResult implements Serializable {
             return this;
         }
 
-        public GetSnmpInfoResult.Builder networks(final SnmpNetwork[] networks) {
-            this.networks = networks;
+        public GetSnmpInfoResult.Builder optionalNetworks(final SnmpNetwork[] networks) {
+            this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : Optional.of(networks);
             return this;
         }
 
@@ -183,8 +187,8 @@ public class GetSnmpInfoResult implements Serializable {
             return this;
         }
 
-        public GetSnmpInfoResult.Builder usmUsers(final SnmpV3UsmUser[] usmUsers) {
-            this.usmUsers = usmUsers;
+        public GetSnmpInfoResult.Builder optionalUsmUsers(final SnmpV3UsmUser[] usmUsers) {
+            this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : Optional.of(usmUsers);
             return this;
         }
 

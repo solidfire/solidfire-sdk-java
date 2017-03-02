@@ -44,7 +44,7 @@ public class ClusterInfo implements Serializable {
     @SerializedName("mvipNodeID") private Long mvipNodeID;
     @SerializedName("name") private String name;
     @SerializedName("repCount") private Long repCount;
-    @SerializedName("state") private String state;
+    @SerializedName("state") private Optional<String> state;
     @SerializedName("svip") private String svip;
     @SerializedName("svipNodeID") private Long svipNodeID;
     @SerializedName("uniqueID") private String uniqueID;
@@ -69,7 +69,7 @@ public class ClusterInfo implements Serializable {
         Long mvipNodeID,
         String name,
         Long repCount,
-        String state,
+        Optional<String> state,
         String svip,
         Long svipNodeID,
         String uniqueID,
@@ -87,7 +87,7 @@ public class ClusterInfo implements Serializable {
         this.mvipNodeID = mvipNodeID;
         this.name = name;
         this.repCount = repCount;
-        this.state = state;
+        this.state = (state == null) ? Optional.<String>empty() : state;
         this.svip = svip;
         this.svipNodeID = svipNodeID;
         this.uniqueID = uniqueID;
@@ -164,9 +164,9 @@ public class ClusterInfo implements Serializable {
     }
     /** 
      **/
-    public String getState() { return this.state; }
-    public void setState(String state) { 
-        this.state = state;
+    public Optional<String> getState() { return this.state; }
+    public void setState(Optional<String> state) { 
+        this.state = (state == null) ? Optional.<String>empty() : state;
     }
     /** 
      * Storage virtual IP
@@ -279,7 +279,9 @@ public class ClusterInfo implements Serializable {
         sb.append(" mvipNodeID : ").append(mvipNodeID).append(",");
         sb.append(" name : ").append(name).append(",");
         sb.append(" repCount : ").append(repCount).append(",");
-        sb.append(" state : ").append(state).append(",");
+        if(null != state && state.isPresent()){
+            sb.append(" state : ").append(state).append(",");
+        }
         sb.append(" svip : ").append(svip).append(",");
         sb.append(" svipNodeID : ").append(svipNodeID).append(",");
         sb.append(" uniqueID : ").append(uniqueID).append(",");
@@ -312,7 +314,7 @@ public class ClusterInfo implements Serializable {
         private Long mvipNodeID;
         private String name;
         private Long repCount;
-        private String state;
+        private Optional<String> state;
         private String svip;
         private Long svipNodeID;
         private String uniqueID;
@@ -412,8 +414,8 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
-        public ClusterInfo.Builder state(final String state) {
-            this.state = state;
+        public ClusterInfo.Builder optionalState(final String state) {
+            this.state = (state == null) ? Optional.<String>empty() : Optional.of(state);
             return this;
         }
 

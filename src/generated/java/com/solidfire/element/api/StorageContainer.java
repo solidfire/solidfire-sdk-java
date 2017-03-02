@@ -40,7 +40,7 @@ public class StorageContainer implements Serializable {
     @SerializedName("initiatorSecret") private String initiatorSecret;
     @SerializedName("targetSecret") private String targetSecret;
     @SerializedName("status") private String status;
-    @SerializedName("virtualVolumes") private java.util.UUID[] virtualVolumes;
+    @SerializedName("virtualVolumes") private Optional<java.util.UUID[]> virtualVolumes;
 
     // empty constructor
     @Since("7.0")
@@ -57,7 +57,7 @@ public class StorageContainer implements Serializable {
         String initiatorSecret,
         String targetSecret,
         String status,
-        java.util.UUID[] virtualVolumes
+        Optional<java.util.UUID[]> virtualVolumes
     )
     {
         this.name = name;
@@ -67,7 +67,7 @@ public class StorageContainer implements Serializable {
         this.initiatorSecret = initiatorSecret;
         this.targetSecret = targetSecret;
         this.status = status;
-        this.virtualVolumes = virtualVolumes;
+        this.virtualVolumes = (virtualVolumes == null) ? Optional.<java.util.UUID[]>empty() : virtualVolumes;
     }
 
     /** 
@@ -114,9 +114,9 @@ public class StorageContainer implements Serializable {
     }
     /** 
      **/
-    public java.util.UUID[] getVirtualVolumes() { return this.virtualVolumes; }
-    public void setVirtualVolumes(java.util.UUID[] virtualVolumes) { 
-        this.virtualVolumes = virtualVolumes;
+    public Optional<java.util.UUID[]> getVirtualVolumes() { return this.virtualVolumes; }
+    public void setVirtualVolumes(Optional<java.util.UUID[]> virtualVolumes) { 
+        this.virtualVolumes = (virtualVolumes == null) ? Optional.<java.util.UUID[]>empty() : virtualVolumes;
     }
 
     @Override
@@ -134,12 +134,12 @@ public class StorageContainer implements Serializable {
             Objects.equals(initiatorSecret, that.initiatorSecret) && 
             Objects.equals(targetSecret, that.targetSecret) && 
             Objects.equals(status, that.status) && 
-            Arrays.equals(virtualVolumes, that.virtualVolumes);
+            Objects.equals(virtualVolumes, that.virtualVolumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name,storageContainerID,accountID,protocolEndpointType,initiatorSecret,targetSecret,status,(Object[])virtualVolumes );
+        return Objects.hash( name,storageContainerID,accountID,protocolEndpointType,initiatorSecret,targetSecret,status,virtualVolumes );
     }
 
 
@@ -168,7 +168,9 @@ public class StorageContainer implements Serializable {
         sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
         sb.append(" targetSecret : ").append(targetSecret).append(",");
         sb.append(" status : ").append(status).append(",");
-        sb.append(" virtualVolumes : ").append(Arrays.toString(virtualVolumes)).append(",");
+        if(null != virtualVolumes && virtualVolumes.isPresent()){
+            sb.append(" virtualVolumes : ").append(virtualVolumes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -193,7 +195,7 @@ public class StorageContainer implements Serializable {
         private String initiatorSecret;
         private String targetSecret;
         private String status;
-        private java.util.UUID[] virtualVolumes;
+        private Optional<java.util.UUID[]> virtualVolumes;
 
         private Builder() { }
 
@@ -257,8 +259,8 @@ public class StorageContainer implements Serializable {
             return this;
         }
 
-        public StorageContainer.Builder virtualVolumes(final java.util.UUID[] virtualVolumes) {
-            this.virtualVolumes = virtualVolumes;
+        public StorageContainer.Builder optionalVirtualVolumes(final java.util.UUID[] virtualVolumes) {
+            this.virtualVolumes = (virtualVolumes == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(virtualVolumes);
             return this;
         }
 

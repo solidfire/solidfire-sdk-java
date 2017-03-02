@@ -62,8 +62,8 @@ public class NetworkConfig implements Serializable {
     @SerializedName("status") private Optional<String> status;
     @SerializedName("symmetricRouteRules") private Optional<String[]> symmetricRouteRules;
     @SerializedName("upAndRunning") private Optional<Boolean> upAndRunning;
-    @SerializedName("bond-xmit_hash_policy") private String bondXmitHashPolicy;
-    @SerializedName("bond-ad_num_ports") private String bondAdNumPorts;
+    @SerializedName("bond-xmit_hash_policy") private Optional<String> bondXmitHashPolicy;
+    @SerializedName("bond-ad_num_ports") private Optional<String> bondAdNumPorts;
 
     // empty constructor
     @Since("7.0")
@@ -102,8 +102,8 @@ public class NetworkConfig implements Serializable {
         Optional<String> status,
         Optional<String[]> symmetricRouteRules,
         Optional<Boolean> upAndRunning,
-        String bondXmitHashPolicy,
-        String bondAdNumPorts
+        Optional<String> bondXmitHashPolicy,
+        Optional<String> bondAdNumPorts
     )
     {
         this._default = (_default == null) ? Optional.<Boolean>empty() : _default;
@@ -135,8 +135,8 @@ public class NetworkConfig implements Serializable {
         this.status = (status == null) ? Optional.<String>empty() : status;
         this.symmetricRouteRules = (symmetricRouteRules == null) ? Optional.<String[]>empty() : symmetricRouteRules;
         this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
-        this.bondXmitHashPolicy = bondXmitHashPolicy;
-        this.bondAdNumPorts = bondAdNumPorts;
+        this.bondXmitHashPolicy = (bondXmitHashPolicy == null) ? Optional.<String>empty() : bondXmitHashPolicy;
+        this.bondAdNumPorts = (bondAdNumPorts == null) ? Optional.<String>empty() : bondAdNumPorts;
     }
 
     /** 
@@ -315,15 +315,15 @@ public class NetworkConfig implements Serializable {
     }
     /** 
      **/
-    public String getBondXmitHashPolicy() { return this.bondXmitHashPolicy; }
-    public void setBondXmitHashPolicy(String bondXmitHashPolicy) { 
-        this.bondXmitHashPolicy = bondXmitHashPolicy;
+    public Optional<String> getBondXmitHashPolicy() { return this.bondXmitHashPolicy; }
+    public void setBondXmitHashPolicy(Optional<String> bondXmitHashPolicy) { 
+        this.bondXmitHashPolicy = (bondXmitHashPolicy == null) ? Optional.<String>empty() : bondXmitHashPolicy;
     }
     /** 
      **/
-    public String getBondAdNumPorts() { return this.bondAdNumPorts; }
-    public void setBondAdNumPorts(String bondAdNumPorts) { 
-        this.bondAdNumPorts = bondAdNumPorts;
+    public Optional<String> getBondAdNumPorts() { return this.bondAdNumPorts; }
+    public void setBondAdNumPorts(Optional<String> bondAdNumPorts) { 
+        this.bondAdNumPorts = (bondAdNumPorts == null) ? Optional.<String>empty() : bondAdNumPorts;
     }
 
     @Override
@@ -497,8 +497,12 @@ public class NetworkConfig implements Serializable {
         if(null != upAndRunning && upAndRunning.isPresent()){
             sb.append(" upAndRunning : ").append(upAndRunning).append(",");
         }
-        sb.append(" bondXmitHashPolicy : ").append(bondXmitHashPolicy).append(",");
-        sb.append(" bondAdNumPorts : ").append(bondAdNumPorts).append(",");
+        if(null != bondXmitHashPolicy && bondXmitHashPolicy.isPresent()){
+            sb.append(" bondXmitHashPolicy : ").append(bondXmitHashPolicy).append(",");
+        }
+        if(null != bondAdNumPorts && bondAdNumPorts.isPresent()){
+            sb.append(" bondAdNumPorts : ").append(bondAdNumPorts).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -545,8 +549,8 @@ public class NetworkConfig implements Serializable {
         private Optional<String> status;
         private Optional<String[]> symmetricRouteRules;
         private Optional<Boolean> upAndRunning;
-        private String bondXmitHashPolicy;
-        private String bondAdNumPorts;
+        private Optional<String> bondXmitHashPolicy;
+        private Optional<String> bondAdNumPorts;
 
         private Builder() { }
 
@@ -766,13 +770,13 @@ public class NetworkConfig implements Serializable {
             return this;
         }
 
-        public NetworkConfig.Builder bondXmitHashPolicy(final String bondXmitHashPolicy) {
-            this.bondXmitHashPolicy = bondXmitHashPolicy;
+        public NetworkConfig.Builder optionalBondXmitHashPolicy(final String bondXmitHashPolicy) {
+            this.bondXmitHashPolicy = (bondXmitHashPolicy == null) ? Optional.<String>empty() : Optional.of(bondXmitHashPolicy);
             return this;
         }
 
-        public NetworkConfig.Builder bondAdNumPorts(final String bondAdNumPorts) {
-            this.bondAdNumPorts = bondAdNumPorts;
+        public NetworkConfig.Builder optionalBondAdNumPorts(final String bondAdNumPorts) {
+            this.bondAdNumPorts = (bondAdNumPorts == null) ? Optional.<String>empty() : Optional.of(bondAdNumPorts);
             return this;
         }
 

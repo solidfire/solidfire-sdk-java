@@ -33,7 +33,7 @@ import java.util.Objects;
 public class DeleteVolumeResult implements Serializable {
 
     public static final long serialVersionUID = 5981592849732004254L;
-    @SerializedName("volume") private Volume volume;
+    @SerializedName("volume") private Optional<Volume> volume;
 
     // empty constructor
     @Since("7.0")
@@ -43,17 +43,17 @@ public class DeleteVolumeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public DeleteVolumeResult(
-        Volume volume
+        Optional<Volume> volume
     )
     {
-        this.volume = volume;
+        this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
     }
 
     /** 
      **/
-    public Volume getVolume() { return this.volume; }
-    public void setVolume(Volume volume) { 
-        this.volume = volume;
+    public Optional<Volume> getVolume() { return this.volume; }
+    public void setVolume(Optional<Volume> volume) { 
+        this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
     }
 
     @Override
@@ -84,7 +84,9 @@ public class DeleteVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volume : ").append(volume).append(",");
+        if(null != volume && volume.isPresent()){
+            sb.append(" volume : ").append(volume).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -102,7 +104,7 @@ public class DeleteVolumeResult implements Serializable {
     }
 
     public static class Builder {
-        private Volume volume;
+        private Optional<Volume> volume;
 
         private Builder() { }
 
@@ -117,8 +119,8 @@ public class DeleteVolumeResult implements Serializable {
             return this;
         }
 
-        public DeleteVolumeResult.Builder volume(final Volume volume) {
-            this.volume = volume;
+        public DeleteVolumeResult.Builder optionalVolume(final Volume volume) {
+            this.volume = (volume == null) ? Optional.<Volume>empty() : Optional.of(volume);
             return this;
         }
 

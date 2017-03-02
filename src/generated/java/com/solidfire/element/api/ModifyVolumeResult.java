@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ModifyVolumeResult implements Serializable {
 
     public static final long serialVersionUID = 7716152308587193073L;
-    @SerializedName("volume") private Volume volume;
+    @SerializedName("volume") private Optional<Volume> volume;
     @SerializedName("curve") private QoS curve;
 
     // empty constructor
@@ -44,20 +44,20 @@ public class ModifyVolumeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyVolumeResult(
-        Volume volume,
+        Optional<Volume> volume,
         QoS curve
     )
     {
-        this.volume = volume;
+        this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
         this.curve = curve;
     }
 
     /** 
      * Object containing information about the newly modified volume.
      **/
-    public Volume getVolume() { return this.volume; }
-    public void setVolume(Volume volume) { 
-        this.volume = volume;
+    public Optional<Volume> getVolume() { return this.volume; }
+    public void setVolume(Optional<Volume> volume) { 
+        this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
     }
     /** 
      **/
@@ -96,7 +96,9 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volume : ").append(volume).append(",");
+        if(null != volume && volume.isPresent()){
+            sb.append(" volume : ").append(volume).append(",");
+        }
         sb.append(" curve : ").append(curve).append(",");
         sb.append( " }" );
 
@@ -115,7 +117,7 @@ public class ModifyVolumeResult implements Serializable {
     }
 
     public static class Builder {
-        private Volume volume;
+        private Optional<Volume> volume;
         private QoS curve;
 
         private Builder() { }
@@ -133,8 +135,8 @@ public class ModifyVolumeResult implements Serializable {
             return this;
         }
 
-        public ModifyVolumeResult.Builder volume(final Volume volume) {
-            this.volume = volume;
+        public ModifyVolumeResult.Builder optionalVolume(final Volume volume) {
+            this.volume = (volume == null) ? Optional.<Volume>empty() : Optional.of(volume);
             return this;
         }
 

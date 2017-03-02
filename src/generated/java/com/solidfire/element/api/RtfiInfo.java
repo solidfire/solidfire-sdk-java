@@ -33,15 +33,15 @@ import java.util.Objects;
 public class RtfiInfo implements Serializable {
 
     public static final long serialVersionUID = 2818977902491736813L;
-    @SerializedName("mipi") private String mipi;
+    @SerializedName("mipi") private Optional<String> mipi;
     @SerializedName("generation") private Long generation;
-    @SerializedName("statusUrlLogfile") private String statusUrlLogfile;
+    @SerializedName("statusUrlLogfile") private Optional<String> statusUrlLogfile;
     @SerializedName("build") private String build;
     @SerializedName("statusUrlAll") private String statusUrlAll;
-    @SerializedName("generationNext") private Long generationNext;
-    @SerializedName("mip") private String mip;
+    @SerializedName("generationNext") private Optional<Long> generationNext;
+    @SerializedName("mip") private Optional<String> mip;
     @SerializedName("statusUrlCurrent") private String statusUrlCurrent;
-    @SerializedName("options") private java.util.Map<String, Object> options;
+    @SerializedName("options") private Optional<java.util.Map<String, Object>> options;
 
     // empty constructor
     @Since("7.0")
@@ -51,33 +51,33 @@ public class RtfiInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public RtfiInfo(
-        String mipi,
+        Optional<String> mipi,
         Long generation,
-        String statusUrlLogfile,
+        Optional<String> statusUrlLogfile,
         String build,
         String statusUrlAll,
-        Long generationNext,
-        String mip,
+        Optional<Long> generationNext,
+        Optional<String> mip,
         String statusUrlCurrent,
-        java.util.Map<String, Object> options
+        Optional<java.util.Map<String, Object>> options
     )
     {
-        this.mipi = mipi;
+        this.mipi = (mipi == null) ? Optional.<String>empty() : mipi;
         this.generation = generation;
-        this.statusUrlLogfile = statusUrlLogfile;
+        this.statusUrlLogfile = (statusUrlLogfile == null) ? Optional.<String>empty() : statusUrlLogfile;
         this.build = build;
         this.statusUrlAll = statusUrlAll;
-        this.generationNext = generationNext;
-        this.mip = mip;
+        this.generationNext = (generationNext == null) ? Optional.<Long>empty() : generationNext;
+        this.mip = (mip == null) ? Optional.<String>empty() : mip;
         this.statusUrlCurrent = statusUrlCurrent;
-        this.options = options;
+        this.options = (options == null) ? Optional.<java.util.Map<String, Object>>empty() : options;
     }
 
     /** 
      **/
-    public String getMipi() { return this.mipi; }
-    public void setMipi(String mipi) { 
-        this.mipi = mipi;
+    public Optional<String> getMipi() { return this.mipi; }
+    public void setMipi(Optional<String> mipi) { 
+        this.mipi = (mipi == null) ? Optional.<String>empty() : mipi;
     }
     /** 
      **/
@@ -87,9 +87,9 @@ public class RtfiInfo implements Serializable {
     }
     /** 
      **/
-    public String getStatusUrlLogfile() { return this.statusUrlLogfile; }
-    public void setStatusUrlLogfile(String statusUrlLogfile) { 
-        this.statusUrlLogfile = statusUrlLogfile;
+    public Optional<String> getStatusUrlLogfile() { return this.statusUrlLogfile; }
+    public void setStatusUrlLogfile(Optional<String> statusUrlLogfile) { 
+        this.statusUrlLogfile = (statusUrlLogfile == null) ? Optional.<String>empty() : statusUrlLogfile;
     }
     /** 
      **/
@@ -105,15 +105,15 @@ public class RtfiInfo implements Serializable {
     }
     /** 
      **/
-    public Long getGenerationNext() { return this.generationNext; }
-    public void setGenerationNext(Long generationNext) { 
-        this.generationNext = generationNext;
+    public Optional<Long> getGenerationNext() { return this.generationNext; }
+    public void setGenerationNext(Optional<Long> generationNext) { 
+        this.generationNext = (generationNext == null) ? Optional.<Long>empty() : generationNext;
     }
     /** 
      **/
-    public String getMip() { return this.mip; }
-    public void setMip(String mip) { 
-        this.mip = mip;
+    public Optional<String> getMip() { return this.mip; }
+    public void setMip(Optional<String> mip) { 
+        this.mip = (mip == null) ? Optional.<String>empty() : mip;
     }
     /** 
      **/
@@ -123,9 +123,9 @@ public class RtfiInfo implements Serializable {
     }
     /** 
      **/
-    public java.util.Map<String, Object> getOptions() { return this.options; }
-    public void setOptions(java.util.Map<String, Object> options) { 
-        this.options = options;
+    public Optional<java.util.Map<String, Object>> getOptions() { return this.options; }
+    public void setOptions(Optional<java.util.Map<String, Object>> options) { 
+        this.options = (options == null) ? Optional.<java.util.Map<String, Object>>empty() : options;
     }
 
     @Override
@@ -172,15 +172,25 @@ public class RtfiInfo implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" mipi : ").append(mipi).append(",");
+        if(null != mipi && mipi.isPresent()){
+            sb.append(" mipi : ").append(mipi).append(",");
+        }
         sb.append(" generation : ").append(generation).append(",");
-        sb.append(" statusUrlLogfile : ").append(statusUrlLogfile).append(",");
+        if(null != statusUrlLogfile && statusUrlLogfile.isPresent()){
+            sb.append(" statusUrlLogfile : ").append(statusUrlLogfile).append(",");
+        }
         sb.append(" build : ").append(build).append(",");
         sb.append(" statusUrlAll : ").append(statusUrlAll).append(",");
-        sb.append(" generationNext : ").append(generationNext).append(",");
-        sb.append(" mip : ").append(mip).append(",");
+        if(null != generationNext && generationNext.isPresent()){
+            sb.append(" generationNext : ").append(generationNext).append(",");
+        }
+        if(null != mip && mip.isPresent()){
+            sb.append(" mip : ").append(mip).append(",");
+        }
         sb.append(" statusUrlCurrent : ").append(statusUrlCurrent).append(",");
-        sb.append(" options : ").append(options).append(",");
+        if(null != options && options.isPresent()){
+            sb.append(" options : ").append(options).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -198,15 +208,15 @@ public class RtfiInfo implements Serializable {
     }
 
     public static class Builder {
-        private String mipi;
+        private Optional<String> mipi;
         private Long generation;
-        private String statusUrlLogfile;
+        private Optional<String> statusUrlLogfile;
         private String build;
         private String statusUrlAll;
-        private Long generationNext;
-        private String mip;
+        private Optional<Long> generationNext;
+        private Optional<String> mip;
         private String statusUrlCurrent;
-        private java.util.Map<String, Object> options;
+        private Optional<java.util.Map<String, Object>> options;
 
         private Builder() { }
 
@@ -237,8 +247,8 @@ public class RtfiInfo implements Serializable {
             return this;
         }
 
-        public RtfiInfo.Builder mipi(final String mipi) {
-            this.mipi = mipi;
+        public RtfiInfo.Builder optionalMipi(final String mipi) {
+            this.mipi = (mipi == null) ? Optional.<String>empty() : Optional.of(mipi);
             return this;
         }
 
@@ -247,8 +257,8 @@ public class RtfiInfo implements Serializable {
             return this;
         }
 
-        public RtfiInfo.Builder statusUrlLogfile(final String statusUrlLogfile) {
-            this.statusUrlLogfile = statusUrlLogfile;
+        public RtfiInfo.Builder optionalStatusUrlLogfile(final String statusUrlLogfile) {
+            this.statusUrlLogfile = (statusUrlLogfile == null) ? Optional.<String>empty() : Optional.of(statusUrlLogfile);
             return this;
         }
 
@@ -262,13 +272,13 @@ public class RtfiInfo implements Serializable {
             return this;
         }
 
-        public RtfiInfo.Builder generationNext(final Long generationNext) {
-            this.generationNext = generationNext;
+        public RtfiInfo.Builder optionalGenerationNext(final Long generationNext) {
+            this.generationNext = (generationNext == null) ? Optional.<Long>empty() : Optional.of(generationNext);
             return this;
         }
 
-        public RtfiInfo.Builder mip(final String mip) {
-            this.mip = mip;
+        public RtfiInfo.Builder optionalMip(final String mip) {
+            this.mip = (mip == null) ? Optional.<String>empty() : Optional.of(mip);
             return this;
         }
 
@@ -277,8 +287,8 @@ public class RtfiInfo implements Serializable {
             return this;
         }
 
-        public RtfiInfo.Builder options(final java.util.Map<String, Object> options) {
-            this.options = options;
+        public RtfiInfo.Builder optionalOptions(final java.util.Map<String, Object> options) {
+            this.options = (options == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(options);
             return this;
         }
 

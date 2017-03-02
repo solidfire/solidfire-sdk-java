@@ -35,37 +35,37 @@ public class VolumeStats implements Serializable {
 
     public static final long serialVersionUID = -3367989483107432160L;
     @SerializedName("accountID") private Long accountID;
-    @SerializedName("actualIOPS") private Long actualIOPS;
+    @SerializedName("actualIOPS") private Optional<Long> actualIOPS;
     @SerializedName("asyncDelay") private Optional<String> asyncDelay;
-    @SerializedName("averageIOPSize") private Long averageIOPSize;
-    @SerializedName("burstIOPSCredit") private Long burstIOPSCredit;
-    @SerializedName("clientQueueDepth") private Long clientQueueDepth;
-    @SerializedName("desiredMetadataHosts") private MetadataHosts desiredMetadataHosts;
-    @SerializedName("latencyUSec") private Long latencyUSec;
-    @SerializedName("metadataHosts") private MetadataHosts metadataHosts;
+    @SerializedName("averageIOPSize") private Optional<Long> averageIOPSize;
+    @SerializedName("burstIOPSCredit") private Optional<Long> burstIOPSCredit;
+    @SerializedName("clientQueueDepth") private Optional<Long> clientQueueDepth;
+    @SerializedName("desiredMetadataHosts") private Optional<MetadataHosts> desiredMetadataHosts;
+    @SerializedName("latencyUSec") private Optional<Long> latencyUSec;
+    @SerializedName("metadataHosts") private Optional<MetadataHosts> metadataHosts;
     @SerializedName("nonZeroBlocks") private Long nonZeroBlocks;
     @SerializedName("readBytes") private Long readBytes;
-    @SerializedName("readLatencyUSec") private Long readLatencyUSec;
+    @SerializedName("readLatencyUSec") private Optional<Long> readLatencyUSec;
     @SerializedName("readOps") private Long readOps;
-    @SerializedName("throttle") private Double throttle;
+    @SerializedName("throttle") private Optional<Double> throttle;
     @SerializedName("timestamp") private String timestamp;
-    @SerializedName("totalLatencyUSec") private Long totalLatencyUSec;
+    @SerializedName("totalLatencyUSec") private Optional<Long> totalLatencyUSec;
     @SerializedName("unalignedReads") private Long unalignedReads;
     @SerializedName("unalignedWrites") private Long unalignedWrites;
     @SerializedName("volumeAccessGroups") private Long[] volumeAccessGroups;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("volumeSize") private Long volumeSize;
-    @SerializedName("volumeUtilization") private Double volumeUtilization;
+    @SerializedName("volumeUtilization") private Optional<Double> volumeUtilization;
     @SerializedName("writeBytes") private Long writeBytes;
-    @SerializedName("writeLatencyUSec") private Long writeLatencyUSec;
+    @SerializedName("writeLatencyUSec") private Optional<Long> writeLatencyUSec;
     @SerializedName("writeOps") private Long writeOps;
     @SerializedName("zeroBlocks") private Long zeroBlocks;
-    @SerializedName("writeBytesLastSample") private Long writeBytesLastSample;
-    @SerializedName("samplePeriodMSec") private Long samplePeriodMSec;
-    @SerializedName("readBytesLastSample") private Long readBytesLastSample;
-    @SerializedName("readOpsLastSample") private Long readOpsLastSample;
-    @SerializedName("writeOpsLastSample") private Long writeOpsLastSample;
-    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
+    @SerializedName("writeBytesLastSample") private Optional<Long> writeBytesLastSample;
+    @SerializedName("samplePeriodMSec") private Optional<Long> samplePeriodMSec;
+    @SerializedName("readBytesLastSample") private Optional<Long> readBytesLastSample;
+    @SerializedName("readOpsLastSample") private Optional<Long> readOpsLastSample;
+    @SerializedName("writeOpsLastSample") private Optional<Long> writeOpsLastSample;
+    @SerializedName("virtualVolumeID") private Optional<java.util.UUID> virtualVolumeID;
 
     // empty constructor
     @Since("7.0")
@@ -76,71 +76,71 @@ public class VolumeStats implements Serializable {
     @Since("7.0")
     public VolumeStats(
         Long accountID,
-        Long actualIOPS,
+        Optional<Long> actualIOPS,
         Optional<String> asyncDelay,
-        Long averageIOPSize,
-        Long burstIOPSCredit,
-        Long clientQueueDepth,
-        MetadataHosts desiredMetadataHosts,
-        Long latencyUSec,
-        MetadataHosts metadataHosts,
+        Optional<Long> averageIOPSize,
+        Optional<Long> burstIOPSCredit,
+        Optional<Long> clientQueueDepth,
+        Optional<MetadataHosts> desiredMetadataHosts,
+        Optional<Long> latencyUSec,
+        Optional<MetadataHosts> metadataHosts,
         Long nonZeroBlocks,
         Long readBytes,
-        Long readLatencyUSec,
+        Optional<Long> readLatencyUSec,
         Long readOps,
-        Double throttle,
+        Optional<Double> throttle,
         String timestamp,
-        Long totalLatencyUSec,
+        Optional<Long> totalLatencyUSec,
         Long unalignedReads,
         Long unalignedWrites,
         Long[] volumeAccessGroups,
         Long volumeID,
         Long volumeSize,
-        Double volumeUtilization,
+        Optional<Double> volumeUtilization,
         Long writeBytes,
-        Long writeLatencyUSec,
+        Optional<Long> writeLatencyUSec,
         Long writeOps,
         Long zeroBlocks,
-        Long writeBytesLastSample,
-        Long samplePeriodMSec,
-        Long readBytesLastSample,
-        Long readOpsLastSample,
-        Long writeOpsLastSample,
-        java.util.UUID virtualVolumeID
+        Optional<Long> writeBytesLastSample,
+        Optional<Long> samplePeriodMSec,
+        Optional<Long> readBytesLastSample,
+        Optional<Long> readOpsLastSample,
+        Optional<Long> writeOpsLastSample,
+        Optional<java.util.UUID> virtualVolumeID
     )
     {
         this.accountID = accountID;
-        this.actualIOPS = actualIOPS;
+        this.actualIOPS = (actualIOPS == null) ? Optional.<Long>empty() : actualIOPS;
         this.asyncDelay = (asyncDelay == null) ? Optional.<String>empty() : asyncDelay;
-        this.averageIOPSize = averageIOPSize;
-        this.burstIOPSCredit = burstIOPSCredit;
-        this.clientQueueDepth = clientQueueDepth;
-        this.desiredMetadataHosts = desiredMetadataHosts;
-        this.latencyUSec = latencyUSec;
-        this.metadataHosts = metadataHosts;
+        this.averageIOPSize = (averageIOPSize == null) ? Optional.<Long>empty() : averageIOPSize;
+        this.burstIOPSCredit = (burstIOPSCredit == null) ? Optional.<Long>empty() : burstIOPSCredit;
+        this.clientQueueDepth = (clientQueueDepth == null) ? Optional.<Long>empty() : clientQueueDepth;
+        this.desiredMetadataHosts = (desiredMetadataHosts == null) ? Optional.<MetadataHosts>empty() : desiredMetadataHosts;
+        this.latencyUSec = (latencyUSec == null) ? Optional.<Long>empty() : latencyUSec;
+        this.metadataHosts = (metadataHosts == null) ? Optional.<MetadataHosts>empty() : metadataHosts;
         this.nonZeroBlocks = nonZeroBlocks;
         this.readBytes = readBytes;
-        this.readLatencyUSec = readLatencyUSec;
+        this.readLatencyUSec = (readLatencyUSec == null) ? Optional.<Long>empty() : readLatencyUSec;
         this.readOps = readOps;
-        this.throttle = throttle;
+        this.throttle = (throttle == null) ? Optional.<Double>empty() : throttle;
         this.timestamp = timestamp;
-        this.totalLatencyUSec = totalLatencyUSec;
+        this.totalLatencyUSec = (totalLatencyUSec == null) ? Optional.<Long>empty() : totalLatencyUSec;
         this.unalignedReads = unalignedReads;
         this.unalignedWrites = unalignedWrites;
         this.volumeAccessGroups = volumeAccessGroups;
         this.volumeID = volumeID;
         this.volumeSize = volumeSize;
-        this.volumeUtilization = volumeUtilization;
+        this.volumeUtilization = (volumeUtilization == null) ? Optional.<Double>empty() : volumeUtilization;
         this.writeBytes = writeBytes;
-        this.writeLatencyUSec = writeLatencyUSec;
+        this.writeLatencyUSec = (writeLatencyUSec == null) ? Optional.<Long>empty() : writeLatencyUSec;
         this.writeOps = writeOps;
         this.zeroBlocks = zeroBlocks;
-        this.writeBytesLastSample = writeBytesLastSample;
-        this.samplePeriodMSec = samplePeriodMSec;
-        this.readBytesLastSample = readBytesLastSample;
-        this.readOpsLastSample = readOpsLastSample;
-        this.writeOpsLastSample = writeOpsLastSample;
-        this.virtualVolumeID = virtualVolumeID;
+        this.writeBytesLastSample = (writeBytesLastSample == null) ? Optional.<Long>empty() : writeBytesLastSample;
+        this.samplePeriodMSec = (samplePeriodMSec == null) ? Optional.<Long>empty() : samplePeriodMSec;
+        this.readBytesLastSample = (readBytesLastSample == null) ? Optional.<Long>empty() : readBytesLastSample;
+        this.readOpsLastSample = (readOpsLastSample == null) ? Optional.<Long>empty() : readOpsLastSample;
+        this.writeOpsLastSample = (writeOpsLastSample == null) ? Optional.<Long>empty() : writeOpsLastSample;
+        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
     }
 
     /** 
@@ -153,9 +153,9 @@ public class VolumeStats implements Serializable {
     /** 
      * Current actual IOPS to the volume in the last 500 milliseconds.
      **/
-    public Long getActualIOPS() { return this.actualIOPS; }
-    public void setActualIOPS(Long actualIOPS) { 
-        this.actualIOPS = actualIOPS;
+    public Optional<Long> getActualIOPS() { return this.actualIOPS; }
+    public void setActualIOPS(Optional<Long> actualIOPS) { 
+        this.actualIOPS = (actualIOPS == null) ? Optional.<Long>empty() : actualIOPS;
     }
     /** 
      * The length of time since the volume was last synced with the remote cluster.
@@ -171,47 +171,47 @@ public class VolumeStats implements Serializable {
     /** 
      * Average size in bytes of recent I/O to the volume in the last 500 milliseconds.
      **/
-    public Long getAverageIOPSize() { return this.averageIOPSize; }
-    public void setAverageIOPSize(Long averageIOPSize) { 
-        this.averageIOPSize = averageIOPSize;
+    public Optional<Long> getAverageIOPSize() { return this.averageIOPSize; }
+    public void setAverageIOPSize(Optional<Long> averageIOPSize) { 
+        this.averageIOPSize = (averageIOPSize == null) ? Optional.<Long>empty() : averageIOPSize;
     }
     /** 
      * The total number of IOP credits available to the user.
      * When users are not using up to the max IOPS, credits are accrued.
      **/
-    public Long getBurstIOPSCredit() { return this.burstIOPSCredit; }
-    public void setBurstIOPSCredit(Long burstIOPSCredit) { 
-        this.burstIOPSCredit = burstIOPSCredit;
+    public Optional<Long> getBurstIOPSCredit() { return this.burstIOPSCredit; }
+    public void setBurstIOPSCredit(Optional<Long> burstIOPSCredit) { 
+        this.burstIOPSCredit = (burstIOPSCredit == null) ? Optional.<Long>empty() : burstIOPSCredit;
     }
     /** 
      * The number of outstanding read and write operations to the cluster.
      **/
-    public Long getClientQueueDepth() { return this.clientQueueDepth; }
-    public void setClientQueueDepth(Long clientQueueDepth) { 
-        this.clientQueueDepth = clientQueueDepth;
+    public Optional<Long> getClientQueueDepth() { return this.clientQueueDepth; }
+    public void setClientQueueDepth(Optional<Long> clientQueueDepth) { 
+        this.clientQueueDepth = (clientQueueDepth == null) ? Optional.<Long>empty() : clientQueueDepth;
     }
     /** 
      * The volume services being migrated to if the volume metadata is getting migrated between volume services.
      * A "null" value means the volume is not migrating.
      **/
-    public MetadataHosts getDesiredMetadataHosts() { return this.desiredMetadataHosts; }
-    public void setDesiredMetadataHosts(MetadataHosts desiredMetadataHosts) { 
-        this.desiredMetadataHosts = desiredMetadataHosts;
+    public Optional<MetadataHosts> getDesiredMetadataHosts() { return this.desiredMetadataHosts; }
+    public void setDesiredMetadataHosts(Optional<MetadataHosts> desiredMetadataHosts) { 
+        this.desiredMetadataHosts = (desiredMetadataHosts == null) ? Optional.<MetadataHosts>empty() : desiredMetadataHosts;
     }
     /** 
      * The observed latency time, in microseconds, to complete operations to a volume.
      * A "0" (zero) value means there is no I/O to the volume.
      **/
-    public Long getLatencyUSec() { return this.latencyUSec; }
-    public void setLatencyUSec(Long latencyUSec) { 
-        this.latencyUSec = latencyUSec;
+    public Optional<Long> getLatencyUSec() { return this.latencyUSec; }
+    public void setLatencyUSec(Optional<Long> latencyUSec) { 
+        this.latencyUSec = (latencyUSec == null) ? Optional.<Long>empty() : latencyUSec;
     }
     /** 
      * The volume services on which the volume metadata resides.
      **/
-    public MetadataHosts getMetadataHosts() { return this.metadataHosts; }
-    public void setMetadataHosts(MetadataHosts metadataHosts) { 
-        this.metadataHosts = metadataHosts;
+    public Optional<MetadataHosts> getMetadataHosts() { return this.metadataHosts; }
+    public void setMetadataHosts(Optional<MetadataHosts> metadataHosts) { 
+        this.metadataHosts = (metadataHosts == null) ? Optional.<MetadataHosts>empty() : metadataHosts;
     }
     /** 
      * The number of 4KiB blocks with data after the last garbage collection operation has completed.
@@ -230,9 +230,9 @@ public class VolumeStats implements Serializable {
     /** 
      * The average time, in microseconds, to complete read operations.
      **/
-    public Long getReadLatencyUSec() { return this.readLatencyUSec; }
-    public void setReadLatencyUSec(Long readLatencyUSec) { 
-        this.readLatencyUSec = readLatencyUSec;
+    public Optional<Long> getReadLatencyUSec() { return this.readLatencyUSec; }
+    public void setReadLatencyUSec(Optional<Long> readLatencyUSec) { 
+        this.readLatencyUSec = (readLatencyUSec == null) ? Optional.<Long>empty() : readLatencyUSec;
     }
     /** 
      * Total read operations.
@@ -245,9 +245,9 @@ public class VolumeStats implements Serializable {
      * A floating value between 0 and 1 that represents how much the system is throttling clients
      * below their max IOPS because of re-replication of data, transient errors and snapshots taken.
      **/
-    public Double getThrottle() { return this.throttle; }
-    public void setThrottle(Double throttle) { 
-        this.throttle = throttle;
+    public Optional<Double> getThrottle() { return this.throttle; }
+    public void setThrottle(Optional<Double> throttle) { 
+        this.throttle = (throttle == null) ? Optional.<Double>empty() : throttle;
     }
     /** 
      * The current time in UTC.
@@ -259,9 +259,9 @@ public class VolumeStats implements Serializable {
     /** 
      * The average time, in microseconds, to complete read and write operations to a volume.
      **/
-    public Long getTotalLatencyUSec() { return this.totalLatencyUSec; }
-    public void setTotalLatencyUSec(Long totalLatencyUSec) { 
-        this.totalLatencyUSec = totalLatencyUSec;
+    public Optional<Long> getTotalLatencyUSec() { return this.totalLatencyUSec; }
+    public void setTotalLatencyUSec(Optional<Long> totalLatencyUSec) { 
+        this.totalLatencyUSec = (totalLatencyUSec == null) ? Optional.<Long>empty() : totalLatencyUSec;
     }
     /** 
      * For 512e volumes, the number of read operations that were not on a 4k sector boundary.
@@ -308,9 +308,9 @@ public class VolumeStats implements Serializable {
      * 1 = Client is using their max
      * >1 = Client is using their burst
      **/
-    public Double getVolumeUtilization() { return this.volumeUtilization; }
-    public void setVolumeUtilization(Double volumeUtilization) { 
-        this.volumeUtilization = volumeUtilization;
+    public Optional<Double> getVolumeUtilization() { return this.volumeUtilization; }
+    public void setVolumeUtilization(Optional<Double> volumeUtilization) { 
+        this.volumeUtilization = (volumeUtilization == null) ? Optional.<Double>empty() : volumeUtilization;
     }
     /** 
      * Total bytes written by clients.
@@ -322,9 +322,9 @@ public class VolumeStats implements Serializable {
     /** 
      * The average time, in microseconds, to complete write operations.
      **/
-    public Long getWriteLatencyUSec() { return this.writeLatencyUSec; }
-    public void setWriteLatencyUSec(Long writeLatencyUSec) { 
-        this.writeLatencyUSec = writeLatencyUSec;
+    public Optional<Long> getWriteLatencyUSec() { return this.writeLatencyUSec; }
+    public void setWriteLatencyUSec(Optional<Long> writeLatencyUSec) { 
+        this.writeLatencyUSec = (writeLatencyUSec == null) ? Optional.<Long>empty() : writeLatencyUSec;
     }
     /** 
      * Total write operations occurring on the volume.
@@ -343,44 +343,44 @@ public class VolumeStats implements Serializable {
     /** 
      * The total number of bytes written to the volume during the last sample period.
      **/
-    public Long getWriteBytesLastSample() { return this.writeBytesLastSample; }
-    public void setWriteBytesLastSample(Long writeBytesLastSample) { 
-        this.writeBytesLastSample = writeBytesLastSample;
+    public Optional<Long> getWriteBytesLastSample() { return this.writeBytesLastSample; }
+    public void setWriteBytesLastSample(Optional<Long> writeBytesLastSample) { 
+        this.writeBytesLastSample = (writeBytesLastSample == null) ? Optional.<Long>empty() : writeBytesLastSample;
     }
     /** 
      * The length of the sample period in milliseconds.
      **/
-    public Long getSamplePeriodMSec() { return this.samplePeriodMSec; }
-    public void setSamplePeriodMSec(Long samplePeriodMSec) { 
-        this.samplePeriodMSec = samplePeriodMSec;
+    public Optional<Long> getSamplePeriodMSec() { return this.samplePeriodMSec; }
+    public void setSamplePeriodMSec(Optional<Long> samplePeriodMSec) { 
+        this.samplePeriodMSec = (samplePeriodMSec == null) ? Optional.<Long>empty() : samplePeriodMSec;
     }
     /** 
      * The total number of bytes read from the volume during the last sample period.
      **/
-    public Long getReadBytesLastSample() { return this.readBytesLastSample; }
-    public void setReadBytesLastSample(Long readBytesLastSample) { 
-        this.readBytesLastSample = readBytesLastSample;
+    public Optional<Long> getReadBytesLastSample() { return this.readBytesLastSample; }
+    public void setReadBytesLastSample(Optional<Long> readBytesLastSample) { 
+        this.readBytesLastSample = (readBytesLastSample == null) ? Optional.<Long>empty() : readBytesLastSample;
     }
     /** 
      * The total number of read operations durin gth elast sample period.
      **/
-    public Long getReadOpsLastSample() { return this.readOpsLastSample; }
-    public void setReadOpsLastSample(Long readOpsLastSample) { 
-        this.readOpsLastSample = readOpsLastSample;
+    public Optional<Long> getReadOpsLastSample() { return this.readOpsLastSample; }
+    public void setReadOpsLastSample(Optional<Long> readOpsLastSample) { 
+        this.readOpsLastSample = (readOpsLastSample == null) ? Optional.<Long>empty() : readOpsLastSample;
     }
     /** 
      * The total number of write operations during the last sample period.
      **/
-    public Long getWriteOpsLastSample() { return this.writeOpsLastSample; }
-    public void setWriteOpsLastSample(Long writeOpsLastSample) { 
-        this.writeOpsLastSample = writeOpsLastSample;
+    public Optional<Long> getWriteOpsLastSample() { return this.writeOpsLastSample; }
+    public void setWriteOpsLastSample(Optional<Long> writeOpsLastSample) { 
+        this.writeOpsLastSample = (writeOpsLastSample == null) ? Optional.<Long>empty() : writeOpsLastSample;
     }
     /** 
      * If the volume of interest is associated with a virtual volume, this is the virtual volume ID.
      **/
-    public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
-    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
-        this.virtualVolumeID = virtualVolumeID;
+    public Optional<java.util.UUID> getVirtualVolumeID() { return this.virtualVolumeID; }
+    public void setVirtualVolumeID(Optional<java.util.UUID> virtualVolumeID) { 
+        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
     }
 
     @Override
@@ -474,39 +474,75 @@ public class VolumeStats implements Serializable {
         sb.append( "{ " );
 
         sb.append(" accountID : ").append(accountID).append(",");
-        sb.append(" actualIOPS : ").append(actualIOPS).append(",");
+        if(null != actualIOPS && actualIOPS.isPresent()){
+            sb.append(" actualIOPS : ").append(actualIOPS).append(",");
+        }
         if(null != asyncDelay && asyncDelay.isPresent()){
             sb.append(" asyncDelay : ").append(asyncDelay).append(",");
         }
-        sb.append(" averageIOPSize : ").append(averageIOPSize).append(",");
-        sb.append(" burstIOPSCredit : ").append(burstIOPSCredit).append(",");
-        sb.append(" clientQueueDepth : ").append(clientQueueDepth).append(",");
-        sb.append(" desiredMetadataHosts : ").append(desiredMetadataHosts).append(",");
-        sb.append(" latencyUSec : ").append(latencyUSec).append(",");
-        sb.append(" metadataHosts : ").append(metadataHosts).append(",");
+        if(null != averageIOPSize && averageIOPSize.isPresent()){
+            sb.append(" averageIOPSize : ").append(averageIOPSize).append(",");
+        }
+        if(null != burstIOPSCredit && burstIOPSCredit.isPresent()){
+            sb.append(" burstIOPSCredit : ").append(burstIOPSCredit).append(",");
+        }
+        if(null != clientQueueDepth && clientQueueDepth.isPresent()){
+            sb.append(" clientQueueDepth : ").append(clientQueueDepth).append(",");
+        }
+        if(null != desiredMetadataHosts && desiredMetadataHosts.isPresent()){
+            sb.append(" desiredMetadataHosts : ").append(desiredMetadataHosts).append(",");
+        }
+        if(null != latencyUSec && latencyUSec.isPresent()){
+            sb.append(" latencyUSec : ").append(latencyUSec).append(",");
+        }
+        if(null != metadataHosts && metadataHosts.isPresent()){
+            sb.append(" metadataHosts : ").append(metadataHosts).append(",");
+        }
         sb.append(" nonZeroBlocks : ").append(nonZeroBlocks).append(",");
         sb.append(" readBytes : ").append(readBytes).append(",");
-        sb.append(" readLatencyUSec : ").append(readLatencyUSec).append(",");
+        if(null != readLatencyUSec && readLatencyUSec.isPresent()){
+            sb.append(" readLatencyUSec : ").append(readLatencyUSec).append(",");
+        }
         sb.append(" readOps : ").append(readOps).append(",");
-        sb.append(" throttle : ").append(throttle).append(",");
+        if(null != throttle && throttle.isPresent()){
+            sb.append(" throttle : ").append(throttle).append(",");
+        }
         sb.append(" timestamp : ").append(timestamp).append(",");
-        sb.append(" totalLatencyUSec : ").append(totalLatencyUSec).append(",");
+        if(null != totalLatencyUSec && totalLatencyUSec.isPresent()){
+            sb.append(" totalLatencyUSec : ").append(totalLatencyUSec).append(",");
+        }
         sb.append(" unalignedReads : ").append(unalignedReads).append(",");
         sb.append(" unalignedWrites : ").append(unalignedWrites).append(",");
         sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups)).append(",");
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" volumeSize : ").append(volumeSize).append(",");
-        sb.append(" volumeUtilization : ").append(volumeUtilization).append(",");
+        if(null != volumeUtilization && volumeUtilization.isPresent()){
+            sb.append(" volumeUtilization : ").append(volumeUtilization).append(",");
+        }
         sb.append(" writeBytes : ").append(writeBytes).append(",");
-        sb.append(" writeLatencyUSec : ").append(writeLatencyUSec).append(",");
+        if(null != writeLatencyUSec && writeLatencyUSec.isPresent()){
+            sb.append(" writeLatencyUSec : ").append(writeLatencyUSec).append(",");
+        }
         sb.append(" writeOps : ").append(writeOps).append(",");
         sb.append(" zeroBlocks : ").append(zeroBlocks).append(",");
-        sb.append(" writeBytesLastSample : ").append(writeBytesLastSample).append(",");
-        sb.append(" samplePeriodMSec : ").append(samplePeriodMSec).append(",");
-        sb.append(" readBytesLastSample : ").append(readBytesLastSample).append(",");
-        sb.append(" readOpsLastSample : ").append(readOpsLastSample).append(",");
-        sb.append(" writeOpsLastSample : ").append(writeOpsLastSample).append(",");
-        sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
+        if(null != writeBytesLastSample && writeBytesLastSample.isPresent()){
+            sb.append(" writeBytesLastSample : ").append(writeBytesLastSample).append(",");
+        }
+        if(null != samplePeriodMSec && samplePeriodMSec.isPresent()){
+            sb.append(" samplePeriodMSec : ").append(samplePeriodMSec).append(",");
+        }
+        if(null != readBytesLastSample && readBytesLastSample.isPresent()){
+            sb.append(" readBytesLastSample : ").append(readBytesLastSample).append(",");
+        }
+        if(null != readOpsLastSample && readOpsLastSample.isPresent()){
+            sb.append(" readOpsLastSample : ").append(readOpsLastSample).append(",");
+        }
+        if(null != writeOpsLastSample && writeOpsLastSample.isPresent()){
+            sb.append(" writeOpsLastSample : ").append(writeOpsLastSample).append(",");
+        }
+        if(null != virtualVolumeID && virtualVolumeID.isPresent()){
+            sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -525,37 +561,37 @@ public class VolumeStats implements Serializable {
 
     public static class Builder {
         private Long accountID;
-        private Long actualIOPS;
+        private Optional<Long> actualIOPS;
         private Optional<String> asyncDelay;
-        private Long averageIOPSize;
-        private Long burstIOPSCredit;
-        private Long clientQueueDepth;
-        private MetadataHosts desiredMetadataHosts;
-        private Long latencyUSec;
-        private MetadataHosts metadataHosts;
+        private Optional<Long> averageIOPSize;
+        private Optional<Long> burstIOPSCredit;
+        private Optional<Long> clientQueueDepth;
+        private Optional<MetadataHosts> desiredMetadataHosts;
+        private Optional<Long> latencyUSec;
+        private Optional<MetadataHosts> metadataHosts;
         private Long nonZeroBlocks;
         private Long readBytes;
-        private Long readLatencyUSec;
+        private Optional<Long> readLatencyUSec;
         private Long readOps;
-        private Double throttle;
+        private Optional<Double> throttle;
         private String timestamp;
-        private Long totalLatencyUSec;
+        private Optional<Long> totalLatencyUSec;
         private Long unalignedReads;
         private Long unalignedWrites;
         private Long[] volumeAccessGroups;
         private Long volumeID;
         private Long volumeSize;
-        private Double volumeUtilization;
+        private Optional<Double> volumeUtilization;
         private Long writeBytes;
-        private Long writeLatencyUSec;
+        private Optional<Long> writeLatencyUSec;
         private Long writeOps;
         private Long zeroBlocks;
-        private Long writeBytesLastSample;
-        private Long samplePeriodMSec;
-        private Long readBytesLastSample;
-        private Long readOpsLastSample;
-        private Long writeOpsLastSample;
-        private java.util.UUID virtualVolumeID;
+        private Optional<Long> writeBytesLastSample;
+        private Optional<Long> samplePeriodMSec;
+        private Optional<Long> readBytesLastSample;
+        private Optional<Long> readOpsLastSample;
+        private Optional<Long> writeOpsLastSample;
+        private Optional<java.util.UUID> virtualVolumeID;
 
         private Builder() { }
 
@@ -637,8 +673,8 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder actualIOPS(final Long actualIOPS) {
-            this.actualIOPS = actualIOPS;
+        public VolumeStats.Builder optionalActualIOPS(final Long actualIOPS) {
+            this.actualIOPS = (actualIOPS == null) ? Optional.<Long>empty() : Optional.of(actualIOPS);
             return this;
         }
 
@@ -647,33 +683,33 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder averageIOPSize(final Long averageIOPSize) {
-            this.averageIOPSize = averageIOPSize;
+        public VolumeStats.Builder optionalAverageIOPSize(final Long averageIOPSize) {
+            this.averageIOPSize = (averageIOPSize == null) ? Optional.<Long>empty() : Optional.of(averageIOPSize);
             return this;
         }
 
-        public VolumeStats.Builder burstIOPSCredit(final Long burstIOPSCredit) {
-            this.burstIOPSCredit = burstIOPSCredit;
+        public VolumeStats.Builder optionalBurstIOPSCredit(final Long burstIOPSCredit) {
+            this.burstIOPSCredit = (burstIOPSCredit == null) ? Optional.<Long>empty() : Optional.of(burstIOPSCredit);
             return this;
         }
 
-        public VolumeStats.Builder clientQueueDepth(final Long clientQueueDepth) {
-            this.clientQueueDepth = clientQueueDepth;
+        public VolumeStats.Builder optionalClientQueueDepth(final Long clientQueueDepth) {
+            this.clientQueueDepth = (clientQueueDepth == null) ? Optional.<Long>empty() : Optional.of(clientQueueDepth);
             return this;
         }
 
-        public VolumeStats.Builder desiredMetadataHosts(final MetadataHosts desiredMetadataHosts) {
-            this.desiredMetadataHosts = desiredMetadataHosts;
+        public VolumeStats.Builder optionalDesiredMetadataHosts(final MetadataHosts desiredMetadataHosts) {
+            this.desiredMetadataHosts = (desiredMetadataHosts == null) ? Optional.<MetadataHosts>empty() : Optional.of(desiredMetadataHosts);
             return this;
         }
 
-        public VolumeStats.Builder latencyUSec(final Long latencyUSec) {
-            this.latencyUSec = latencyUSec;
+        public VolumeStats.Builder optionalLatencyUSec(final Long latencyUSec) {
+            this.latencyUSec = (latencyUSec == null) ? Optional.<Long>empty() : Optional.of(latencyUSec);
             return this;
         }
 
-        public VolumeStats.Builder metadataHosts(final MetadataHosts metadataHosts) {
-            this.metadataHosts = metadataHosts;
+        public VolumeStats.Builder optionalMetadataHosts(final MetadataHosts metadataHosts) {
+            this.metadataHosts = (metadataHosts == null) ? Optional.<MetadataHosts>empty() : Optional.of(metadataHosts);
             return this;
         }
 
@@ -687,8 +723,8 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder readLatencyUSec(final Long readLatencyUSec) {
-            this.readLatencyUSec = readLatencyUSec;
+        public VolumeStats.Builder optionalReadLatencyUSec(final Long readLatencyUSec) {
+            this.readLatencyUSec = (readLatencyUSec == null) ? Optional.<Long>empty() : Optional.of(readLatencyUSec);
             return this;
         }
 
@@ -697,8 +733,8 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder throttle(final Double throttle) {
-            this.throttle = throttle;
+        public VolumeStats.Builder optionalThrottle(final Double throttle) {
+            this.throttle = (throttle == null) ? Optional.<Double>empty() : Optional.of(throttle);
             return this;
         }
 
@@ -707,8 +743,8 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder totalLatencyUSec(final Long totalLatencyUSec) {
-            this.totalLatencyUSec = totalLatencyUSec;
+        public VolumeStats.Builder optionalTotalLatencyUSec(final Long totalLatencyUSec) {
+            this.totalLatencyUSec = (totalLatencyUSec == null) ? Optional.<Long>empty() : Optional.of(totalLatencyUSec);
             return this;
         }
 
@@ -737,8 +773,8 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder volumeUtilization(final Double volumeUtilization) {
-            this.volumeUtilization = volumeUtilization;
+        public VolumeStats.Builder optionalVolumeUtilization(final Double volumeUtilization) {
+            this.volumeUtilization = (volumeUtilization == null) ? Optional.<Double>empty() : Optional.of(volumeUtilization);
             return this;
         }
 
@@ -747,8 +783,8 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder writeLatencyUSec(final Long writeLatencyUSec) {
-            this.writeLatencyUSec = writeLatencyUSec;
+        public VolumeStats.Builder optionalWriteLatencyUSec(final Long writeLatencyUSec) {
+            this.writeLatencyUSec = (writeLatencyUSec == null) ? Optional.<Long>empty() : Optional.of(writeLatencyUSec);
             return this;
         }
 
@@ -762,33 +798,33 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder writeBytesLastSample(final Long writeBytesLastSample) {
-            this.writeBytesLastSample = writeBytesLastSample;
+        public VolumeStats.Builder optionalWriteBytesLastSample(final Long writeBytesLastSample) {
+            this.writeBytesLastSample = (writeBytesLastSample == null) ? Optional.<Long>empty() : Optional.of(writeBytesLastSample);
             return this;
         }
 
-        public VolumeStats.Builder samplePeriodMSec(final Long samplePeriodMSec) {
-            this.samplePeriodMSec = samplePeriodMSec;
+        public VolumeStats.Builder optionalSamplePeriodMSec(final Long samplePeriodMSec) {
+            this.samplePeriodMSec = (samplePeriodMSec == null) ? Optional.<Long>empty() : Optional.of(samplePeriodMSec);
             return this;
         }
 
-        public VolumeStats.Builder readBytesLastSample(final Long readBytesLastSample) {
-            this.readBytesLastSample = readBytesLastSample;
+        public VolumeStats.Builder optionalReadBytesLastSample(final Long readBytesLastSample) {
+            this.readBytesLastSample = (readBytesLastSample == null) ? Optional.<Long>empty() : Optional.of(readBytesLastSample);
             return this;
         }
 
-        public VolumeStats.Builder readOpsLastSample(final Long readOpsLastSample) {
-            this.readOpsLastSample = readOpsLastSample;
+        public VolumeStats.Builder optionalReadOpsLastSample(final Long readOpsLastSample) {
+            this.readOpsLastSample = (readOpsLastSample == null) ? Optional.<Long>empty() : Optional.of(readOpsLastSample);
             return this;
         }
 
-        public VolumeStats.Builder writeOpsLastSample(final Long writeOpsLastSample) {
-            this.writeOpsLastSample = writeOpsLastSample;
+        public VolumeStats.Builder optionalWriteOpsLastSample(final Long writeOpsLastSample) {
+            this.writeOpsLastSample = (writeOpsLastSample == null) ? Optional.<Long>empty() : Optional.of(writeOpsLastSample);
             return this;
         }
 
-        public VolumeStats.Builder virtualVolumeID(final java.util.UUID virtualVolumeID) {
-            this.virtualVolumeID = virtualVolumeID;
+        public VolumeStats.Builder optionalVirtualVolumeID(final java.util.UUID virtualVolumeID) {
+            this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : Optional.of(virtualVolumeID);
             return this;
         }
 

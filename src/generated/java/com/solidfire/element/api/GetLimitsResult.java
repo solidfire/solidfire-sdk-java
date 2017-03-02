@@ -70,10 +70,10 @@ public class GetLimitsResult implements Serializable {
     @SerializedName("volumesPerAccountCountMax") private Long volumesPerAccountCountMax;
     @SerializedName("volumesPerGroupSnapshotMax") private Long volumesPerGroupSnapshotMax;
     @SerializedName("volumesPerVolumeAccessGroupCountMax") private Long volumesPerVolumeAccessGroupCountMax;
-    @SerializedName("clusterAdminAccountMax") private Long clusterAdminAccountMax;
-    @SerializedName("fibreChannelVolumeAccessMax") private Long fibreChannelVolumeAccessMax;
-    @SerializedName("virtualVolumesPerAccountCountMax") private Long virtualVolumesPerAccountCountMax;
-    @SerializedName("virtualVolumeCountMax") private Long virtualVolumeCountMax;
+    @SerializedName("clusterAdminAccountMax") private Optional<Long> clusterAdminAccountMax;
+    @SerializedName("fibreChannelVolumeAccessMax") private Optional<Long> fibreChannelVolumeAccessMax;
+    @SerializedName("virtualVolumesPerAccountCountMax") private Optional<Long> virtualVolumesPerAccountCountMax;
+    @SerializedName("virtualVolumeCountMax") private Optional<Long> virtualVolumeCountMax;
 
     // empty constructor
     @Since("7.0")
@@ -119,10 +119,10 @@ public class GetLimitsResult implements Serializable {
         Long volumesPerAccountCountMax,
         Long volumesPerGroupSnapshotMax,
         Long volumesPerVolumeAccessGroupCountMax,
-        Long clusterAdminAccountMax,
-        Long fibreChannelVolumeAccessMax,
-        Long virtualVolumesPerAccountCountMax,
-        Long virtualVolumeCountMax
+        Optional<Long> clusterAdminAccountMax,
+        Optional<Long> fibreChannelVolumeAccessMax,
+        Optional<Long> virtualVolumesPerAccountCountMax,
+        Optional<Long> virtualVolumeCountMax
     )
     {
         this.accountCountMax = accountCountMax;
@@ -161,10 +161,10 @@ public class GetLimitsResult implements Serializable {
         this.volumesPerAccountCountMax = volumesPerAccountCountMax;
         this.volumesPerGroupSnapshotMax = volumesPerGroupSnapshotMax;
         this.volumesPerVolumeAccessGroupCountMax = volumesPerVolumeAccessGroupCountMax;
-        this.clusterAdminAccountMax = clusterAdminAccountMax;
-        this.fibreChannelVolumeAccessMax = fibreChannelVolumeAccessMax;
-        this.virtualVolumesPerAccountCountMax = virtualVolumesPerAccountCountMax;
-        this.virtualVolumeCountMax = virtualVolumeCountMax;
+        this.clusterAdminAccountMax = (clusterAdminAccountMax == null) ? Optional.<Long>empty() : clusterAdminAccountMax;
+        this.fibreChannelVolumeAccessMax = (fibreChannelVolumeAccessMax == null) ? Optional.<Long>empty() : fibreChannelVolumeAccessMax;
+        this.virtualVolumesPerAccountCountMax = (virtualVolumesPerAccountCountMax == null) ? Optional.<Long>empty() : virtualVolumesPerAccountCountMax;
+        this.virtualVolumeCountMax = (virtualVolumeCountMax == null) ? Optional.<Long>empty() : virtualVolumeCountMax;
     }
 
     /** 
@@ -385,27 +385,27 @@ public class GetLimitsResult implements Serializable {
     }
     /** 
      **/
-    public Long getClusterAdminAccountMax() { return this.clusterAdminAccountMax; }
-    public void setClusterAdminAccountMax(Long clusterAdminAccountMax) { 
-        this.clusterAdminAccountMax = clusterAdminAccountMax;
+    public Optional<Long> getClusterAdminAccountMax() { return this.clusterAdminAccountMax; }
+    public void setClusterAdminAccountMax(Optional<Long> clusterAdminAccountMax) { 
+        this.clusterAdminAccountMax = (clusterAdminAccountMax == null) ? Optional.<Long>empty() : clusterAdminAccountMax;
     }
     /** 
      **/
-    public Long getFibreChannelVolumeAccessMax() { return this.fibreChannelVolumeAccessMax; }
-    public void setFibreChannelVolumeAccessMax(Long fibreChannelVolumeAccessMax) { 
-        this.fibreChannelVolumeAccessMax = fibreChannelVolumeAccessMax;
+    public Optional<Long> getFibreChannelVolumeAccessMax() { return this.fibreChannelVolumeAccessMax; }
+    public void setFibreChannelVolumeAccessMax(Optional<Long> fibreChannelVolumeAccessMax) { 
+        this.fibreChannelVolumeAccessMax = (fibreChannelVolumeAccessMax == null) ? Optional.<Long>empty() : fibreChannelVolumeAccessMax;
     }
     /** 
      **/
-    public Long getVirtualVolumesPerAccountCountMax() { return this.virtualVolumesPerAccountCountMax; }
-    public void setVirtualVolumesPerAccountCountMax(Long virtualVolumesPerAccountCountMax) { 
-        this.virtualVolumesPerAccountCountMax = virtualVolumesPerAccountCountMax;
+    public Optional<Long> getVirtualVolumesPerAccountCountMax() { return this.virtualVolumesPerAccountCountMax; }
+    public void setVirtualVolumesPerAccountCountMax(Optional<Long> virtualVolumesPerAccountCountMax) { 
+        this.virtualVolumesPerAccountCountMax = (virtualVolumesPerAccountCountMax == null) ? Optional.<Long>empty() : virtualVolumesPerAccountCountMax;
     }
     /** 
      **/
-    public Long getVirtualVolumeCountMax() { return this.virtualVolumeCountMax; }
-    public void setVirtualVolumeCountMax(Long virtualVolumeCountMax) { 
-        this.virtualVolumeCountMax = virtualVolumeCountMax;
+    public Optional<Long> getVirtualVolumeCountMax() { return this.virtualVolumeCountMax; }
+    public void setVirtualVolumeCountMax(Optional<Long> virtualVolumeCountMax) { 
+        this.virtualVolumeCountMax = (virtualVolumeCountMax == null) ? Optional.<Long>empty() : virtualVolumeCountMax;
     }
 
     @Override
@@ -550,10 +550,18 @@ public class GetLimitsResult implements Serializable {
         sb.append(" volumesPerAccountCountMax : ").append(volumesPerAccountCountMax).append(",");
         sb.append(" volumesPerGroupSnapshotMax : ").append(volumesPerGroupSnapshotMax).append(",");
         sb.append(" volumesPerVolumeAccessGroupCountMax : ").append(volumesPerVolumeAccessGroupCountMax).append(",");
-        sb.append(" clusterAdminAccountMax : ").append(clusterAdminAccountMax).append(",");
-        sb.append(" fibreChannelVolumeAccessMax : ").append(fibreChannelVolumeAccessMax).append(",");
-        sb.append(" virtualVolumesPerAccountCountMax : ").append(virtualVolumesPerAccountCountMax).append(",");
-        sb.append(" virtualVolumeCountMax : ").append(virtualVolumeCountMax).append(",");
+        if(null != clusterAdminAccountMax && clusterAdminAccountMax.isPresent()){
+            sb.append(" clusterAdminAccountMax : ").append(clusterAdminAccountMax).append(",");
+        }
+        if(null != fibreChannelVolumeAccessMax && fibreChannelVolumeAccessMax.isPresent()){
+            sb.append(" fibreChannelVolumeAccessMax : ").append(fibreChannelVolumeAccessMax).append(",");
+        }
+        if(null != virtualVolumesPerAccountCountMax && virtualVolumesPerAccountCountMax.isPresent()){
+            sb.append(" virtualVolumesPerAccountCountMax : ").append(virtualVolumesPerAccountCountMax).append(",");
+        }
+        if(null != virtualVolumeCountMax && virtualVolumeCountMax.isPresent()){
+            sb.append(" virtualVolumeCountMax : ").append(virtualVolumeCountMax).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -607,10 +615,10 @@ public class GetLimitsResult implements Serializable {
         private Long volumesPerAccountCountMax;
         private Long volumesPerGroupSnapshotMax;
         private Long volumesPerVolumeAccessGroupCountMax;
-        private Long clusterAdminAccountMax;
-        private Long fibreChannelVolumeAccessMax;
-        private Long virtualVolumesPerAccountCountMax;
-        private Long virtualVolumeCountMax;
+        private Optional<Long> clusterAdminAccountMax;
+        private Optional<Long> fibreChannelVolumeAccessMax;
+        private Optional<Long> virtualVolumesPerAccountCountMax;
+        private Optional<Long> virtualVolumeCountMax;
 
         private Builder() { }
 
@@ -883,23 +891,23 @@ public class GetLimitsResult implements Serializable {
             return this;
         }
 
-        public GetLimitsResult.Builder clusterAdminAccountMax(final Long clusterAdminAccountMax) {
-            this.clusterAdminAccountMax = clusterAdminAccountMax;
+        public GetLimitsResult.Builder optionalClusterAdminAccountMax(final Long clusterAdminAccountMax) {
+            this.clusterAdminAccountMax = (clusterAdminAccountMax == null) ? Optional.<Long>empty() : Optional.of(clusterAdminAccountMax);
             return this;
         }
 
-        public GetLimitsResult.Builder fibreChannelVolumeAccessMax(final Long fibreChannelVolumeAccessMax) {
-            this.fibreChannelVolumeAccessMax = fibreChannelVolumeAccessMax;
+        public GetLimitsResult.Builder optionalFibreChannelVolumeAccessMax(final Long fibreChannelVolumeAccessMax) {
+            this.fibreChannelVolumeAccessMax = (fibreChannelVolumeAccessMax == null) ? Optional.<Long>empty() : Optional.of(fibreChannelVolumeAccessMax);
             return this;
         }
 
-        public GetLimitsResult.Builder virtualVolumesPerAccountCountMax(final Long virtualVolumesPerAccountCountMax) {
-            this.virtualVolumesPerAccountCountMax = virtualVolumesPerAccountCountMax;
+        public GetLimitsResult.Builder optionalVirtualVolumesPerAccountCountMax(final Long virtualVolumesPerAccountCountMax) {
+            this.virtualVolumesPerAccountCountMax = (virtualVolumesPerAccountCountMax == null) ? Optional.<Long>empty() : Optional.of(virtualVolumesPerAccountCountMax);
             return this;
         }
 
-        public GetLimitsResult.Builder virtualVolumeCountMax(final Long virtualVolumeCountMax) {
-            this.virtualVolumeCountMax = virtualVolumeCountMax;
+        public GetLimitsResult.Builder optionalVirtualVolumeCountMax(final Long virtualVolumeCountMax) {
+            this.virtualVolumeCountMax = (virtualVolumeCountMax == null) ? Optional.<Long>empty() : Optional.of(virtualVolumeCountMax);
             return this;
         }
 

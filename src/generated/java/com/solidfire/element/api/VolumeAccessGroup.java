@@ -44,7 +44,7 @@ public class VolumeAccessGroup implements Serializable {
     @SerializedName("deletedVolumes") private Long[] deletedVolumes;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("name") private String name;
-    @SerializedName("initiatorIDs") private Long[] initiatorIDs;
+    @SerializedName("initiatorIDs") private Optional<Long[]> initiatorIDs;
     @SerializedName("initiators") private String[] initiators;
     @SerializedName("volumes") private Long[] volumes;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
@@ -60,7 +60,7 @@ public class VolumeAccessGroup implements Serializable {
         Long[] deletedVolumes,
         Long volumeAccessGroupID,
         String name,
-        Long[] initiatorIDs,
+        Optional<Long[]> initiatorIDs,
         String[] initiators,
         Long[] volumes,
         java.util.Map<String, Object> attributes
@@ -69,7 +69,7 @@ public class VolumeAccessGroup implements Serializable {
         this.deletedVolumes = deletedVolumes;
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.name = name;
-        this.initiatorIDs = initiatorIDs;
+        this.initiatorIDs = (initiatorIDs == null) ? Optional.<Long[]>empty() : initiatorIDs;
         this.initiators = initiators;
         this.volumes = volumes;
         this.attributes = attributes;
@@ -99,9 +99,9 @@ public class VolumeAccessGroup implements Serializable {
     /** 
      * A list of IDs of initiators that are mapped to the VAG.
      **/
-    public Long[] getInitiatorIDs() { return this.initiatorIDs; }
-    public void setInitiatorIDs(Long[] initiatorIDs) { 
-        this.initiatorIDs = initiatorIDs;
+    public Optional<Long[]> getInitiatorIDs() { return this.initiatorIDs; }
+    public void setInitiatorIDs(Optional<Long[]> initiatorIDs) { 
+        this.initiatorIDs = (initiatorIDs == null) ? Optional.<Long[]>empty() : initiatorIDs;
     }
     /** 
      * List of unique initiator names belonging to the volume access group.
@@ -136,7 +136,7 @@ public class VolumeAccessGroup implements Serializable {
             Arrays.equals(deletedVolumes, that.deletedVolumes) && 
             Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
             Objects.equals(name, that.name) && 
-            Arrays.equals(initiatorIDs, that.initiatorIDs) && 
+            Objects.equals(initiatorIDs, that.initiatorIDs) && 
             Arrays.equals(initiators, that.initiators) && 
             Arrays.equals(volumes, that.volumes) && 
             Objects.equals(attributes, that.attributes);
@@ -144,7 +144,7 @@ public class VolumeAccessGroup implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])deletedVolumes,volumeAccessGroupID,name,(Object[])initiatorIDs,(Object[])initiators,(Object[])volumes,attributes );
+        return Objects.hash( (Object[])deletedVolumes,volumeAccessGroupID,name,initiatorIDs,(Object[])initiators,(Object[])volumes,attributes );
     }
 
 
@@ -168,7 +168,9 @@ public class VolumeAccessGroup implements Serializable {
         sb.append(" deletedVolumes : ").append(Arrays.toString(deletedVolumes)).append(",");
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
         sb.append(" name : ").append(name).append(",");
-        sb.append(" initiatorIDs : ").append(Arrays.toString(initiatorIDs)).append(",");
+        if(null != initiatorIDs && initiatorIDs.isPresent()){
+            sb.append(" initiatorIDs : ").append(initiatorIDs).append(",");
+        }
         sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
         sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
         sb.append(" attributes : ").append(attributes).append(",");
@@ -192,7 +194,7 @@ public class VolumeAccessGroup implements Serializable {
         private Long[] deletedVolumes;
         private Long volumeAccessGroupID;
         private String name;
-        private Long[] initiatorIDs;
+        private Optional<Long[]> initiatorIDs;
         private String[] initiators;
         private Long[] volumes;
         private java.util.Map<String, Object> attributes;
@@ -237,8 +239,8 @@ public class VolumeAccessGroup implements Serializable {
             return this;
         }
 
-        public VolumeAccessGroup.Builder initiatorIDs(final Long[] initiatorIDs) {
-            this.initiatorIDs = initiatorIDs;
+        public VolumeAccessGroup.Builder optionalInitiatorIDs(final Long[] initiatorIDs) {
+            this.initiatorIDs = (initiatorIDs == null) ? Optional.<Long[]>empty() : Optional.of(initiatorIDs);
             return this;
         }
 

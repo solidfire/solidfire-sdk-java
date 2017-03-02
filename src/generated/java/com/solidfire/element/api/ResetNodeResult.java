@@ -33,10 +33,10 @@ import java.util.Objects;
 public class ResetNodeResult implements Serializable {
 
     public static final long serialVersionUID = 1741204150018515933L;
-    @SerializedName("details") private ResetNodeDetails details;
-    @SerializedName("duration") private String duration;
-    @SerializedName("result") private String result;
-    @SerializedName("rtfiInfo") private RtfiInfo rtfiInfo;
+    @SerializedName("details") private Optional<ResetNodeDetails> details;
+    @SerializedName("duration") private Optional<String> duration;
+    @SerializedName("result") private Optional<String> result;
+    @SerializedName("rtfiInfo") private Optional<RtfiInfo> rtfiInfo;
 
     // empty constructor
     @Since("7.0")
@@ -46,41 +46,41 @@ public class ResetNodeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ResetNodeResult(
-        ResetNodeDetails details,
-        String duration,
-        String result,
-        RtfiInfo rtfiInfo
+        Optional<ResetNodeDetails> details,
+        Optional<String> duration,
+        Optional<String> result,
+        Optional<RtfiInfo> rtfiInfo
     )
     {
-        this.details = details;
-        this.duration = duration;
-        this.result = result;
-        this.rtfiInfo = rtfiInfo;
+        this.details = (details == null) ? Optional.<ResetNodeDetails>empty() : details;
+        this.duration = (duration == null) ? Optional.<String>empty() : duration;
+        this.result = (result == null) ? Optional.<String>empty() : result;
+        this.rtfiInfo = (rtfiInfo == null) ? Optional.<RtfiInfo>empty() : rtfiInfo;
     }
 
     /** 
      **/
-    public ResetNodeDetails getDetails() { return this.details; }
-    public void setDetails(ResetNodeDetails details) { 
-        this.details = details;
+    public Optional<ResetNodeDetails> getDetails() { return this.details; }
+    public void setDetails(Optional<ResetNodeDetails> details) { 
+        this.details = (details == null) ? Optional.<ResetNodeDetails>empty() : details;
     }
     /** 
      **/
-    public String getDuration() { return this.duration; }
-    public void setDuration(String duration) { 
-        this.duration = duration;
+    public Optional<String> getDuration() { return this.duration; }
+    public void setDuration(Optional<String> duration) { 
+        this.duration = (duration == null) ? Optional.<String>empty() : duration;
     }
     /** 
      **/
-    public String getResult() { return this.result; }
-    public void setResult(String result) { 
-        this.result = result;
+    public Optional<String> getResult() { return this.result; }
+    public void setResult(Optional<String> result) { 
+        this.result = (result == null) ? Optional.<String>empty() : result;
     }
     /** 
      **/
-    public RtfiInfo getRtfiInfo() { return this.rtfiInfo; }
-    public void setRtfiInfo(RtfiInfo rtfiInfo) { 
-        this.rtfiInfo = rtfiInfo;
+    public Optional<RtfiInfo> getRtfiInfo() { return this.rtfiInfo; }
+    public void setRtfiInfo(Optional<RtfiInfo> rtfiInfo) { 
+        this.rtfiInfo = (rtfiInfo == null) ? Optional.<RtfiInfo>empty() : rtfiInfo;
     }
 
     @Override
@@ -117,10 +117,18 @@ public class ResetNodeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" details : ").append(details).append(",");
-        sb.append(" duration : ").append(duration).append(",");
-        sb.append(" result : ").append(result).append(",");
-        sb.append(" rtfiInfo : ").append(rtfiInfo).append(",");
+        if(null != details && details.isPresent()){
+            sb.append(" details : ").append(details).append(",");
+        }
+        if(null != duration && duration.isPresent()){
+            sb.append(" duration : ").append(duration).append(",");
+        }
+        if(null != result && result.isPresent()){
+            sb.append(" result : ").append(result).append(",");
+        }
+        if(null != rtfiInfo && rtfiInfo.isPresent()){
+            sb.append(" rtfiInfo : ").append(rtfiInfo).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -138,10 +146,10 @@ public class ResetNodeResult implements Serializable {
     }
 
     public static class Builder {
-        private ResetNodeDetails details;
-        private String duration;
-        private String result;
-        private RtfiInfo rtfiInfo;
+        private Optional<ResetNodeDetails> details;
+        private Optional<String> duration;
+        private Optional<String> result;
+        private Optional<RtfiInfo> rtfiInfo;
 
         private Builder() { }
 
@@ -162,23 +170,23 @@ public class ResetNodeResult implements Serializable {
             return this;
         }
 
-        public ResetNodeResult.Builder details(final ResetNodeDetails details) {
-            this.details = details;
+        public ResetNodeResult.Builder optionalDetails(final ResetNodeDetails details) {
+            this.details = (details == null) ? Optional.<ResetNodeDetails>empty() : Optional.of(details);
             return this;
         }
 
-        public ResetNodeResult.Builder duration(final String duration) {
-            this.duration = duration;
+        public ResetNodeResult.Builder optionalDuration(final String duration) {
+            this.duration = (duration == null) ? Optional.<String>empty() : Optional.of(duration);
             return this;
         }
 
-        public ResetNodeResult.Builder result(final String result) {
-            this.result = result;
+        public ResetNodeResult.Builder optionalResult(final String result) {
+            this.result = (result == null) ? Optional.<String>empty() : Optional.of(result);
             return this;
         }
 
-        public ResetNodeResult.Builder rtfiInfo(final RtfiInfo rtfiInfo) {
-            this.rtfiInfo = rtfiInfo;
+        public ResetNodeResult.Builder optionalRtfiInfo(final RtfiInfo rtfiInfo) {
+            this.rtfiInfo = (rtfiInfo == null) ? Optional.<RtfiInfo>empty() : Optional.of(rtfiInfo);
             return this;
         }
 

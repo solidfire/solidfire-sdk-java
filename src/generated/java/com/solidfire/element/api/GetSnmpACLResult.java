@@ -33,8 +33,8 @@ import java.util.Objects;
 public class GetSnmpACLResult implements Serializable {
 
     public static final long serialVersionUID = 5085918780635082491L;
-    @SerializedName("networks") private SnmpNetwork[] networks;
-    @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
+    @SerializedName("networks") private Optional<SnmpNetwork[]> networks;
+    @SerializedName("usmUsers") private Optional<SnmpV3UsmUser[]> usmUsers;
 
     // empty constructor
     @Since("7.0")
@@ -44,27 +44,27 @@ public class GetSnmpACLResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetSnmpACLResult(
-        SnmpNetwork[] networks,
-        SnmpV3UsmUser[] usmUsers
+        Optional<SnmpNetwork[]> networks,
+        Optional<SnmpV3UsmUser[]> usmUsers
     )
     {
-        this.networks = networks;
-        this.usmUsers = usmUsers;
+        this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : networks;
+        this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : usmUsers;
     }
 
     /** 
      * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is disabled.
      **/
-    public SnmpNetwork[] getNetworks() { return this.networks; }
-    public void setNetworks(SnmpNetwork[] networks) { 
-        this.networks = networks;
+    public Optional<SnmpNetwork[]> getNetworks() { return this.networks; }
+    public void setNetworks(Optional<SnmpNetwork[]> networks) { 
+        this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : networks;
     }
     /** 
      * List of users and the type of access they have to the SNMP servers running on the cluster nodes. Present if SNMP v3 is enabled.
      **/
-    public SnmpV3UsmUser[] getUsmUsers() { return this.usmUsers; }
-    public void setUsmUsers(SnmpV3UsmUser[] usmUsers) { 
-        this.usmUsers = usmUsers;
+    public Optional<SnmpV3UsmUser[]> getUsmUsers() { return this.usmUsers; }
+    public void setUsmUsers(Optional<SnmpV3UsmUser[]> usmUsers) { 
+        this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : usmUsers;
     }
 
     @Override
@@ -75,13 +75,13 @@ public class GetSnmpACLResult implements Serializable {
         GetSnmpACLResult that = (GetSnmpACLResult) o;
 
         return 
-            Arrays.equals(networks, that.networks) && 
-            Arrays.equals(usmUsers, that.usmUsers);
+            Objects.equals(networks, that.networks) && 
+            Objects.equals(usmUsers, that.usmUsers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])networks,(Object[])usmUsers );
+        return Objects.hash( networks,usmUsers );
     }
 
 
@@ -97,8 +97,12 @@ public class GetSnmpACLResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" networks : ").append(Arrays.toString(networks)).append(",");
-        sb.append(" usmUsers : ").append(Arrays.toString(usmUsers)).append(",");
+        if(null != networks && networks.isPresent()){
+            sb.append(" networks : ").append(networks).append(",");
+        }
+        if(null != usmUsers && usmUsers.isPresent()){
+            sb.append(" usmUsers : ").append(usmUsers).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -116,8 +120,8 @@ public class GetSnmpACLResult implements Serializable {
     }
 
     public static class Builder {
-        private SnmpNetwork[] networks;
-        private SnmpV3UsmUser[] usmUsers;
+        private Optional<SnmpNetwork[]> networks;
+        private Optional<SnmpV3UsmUser[]> usmUsers;
 
         private Builder() { }
 
@@ -134,13 +138,13 @@ public class GetSnmpACLResult implements Serializable {
             return this;
         }
 
-        public GetSnmpACLResult.Builder networks(final SnmpNetwork[] networks) {
-            this.networks = networks;
+        public GetSnmpACLResult.Builder optionalNetworks(final SnmpNetwork[] networks) {
+            this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : Optional.of(networks);
             return this;
         }
 
-        public GetSnmpACLResult.Builder usmUsers(final SnmpV3UsmUser[] usmUsers) {
-            this.usmUsers = usmUsers;
+        public GetSnmpACLResult.Builder optionalUsmUsers(final SnmpV3UsmUser[] usmUsers) {
+            this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : Optional.of(usmUsers);
             return this;
         }
 

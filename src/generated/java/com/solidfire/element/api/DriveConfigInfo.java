@@ -56,12 +56,12 @@ public class DriveConfigInfo implements Serializable {
     @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("vendor") private String vendor;
     @SerializedName("version") private String version;
-    @SerializedName("numBlockActual") private Long numBlockActual;
-    @SerializedName("numBlockExpected") private Long numBlockExpected;
-    @SerializedName("numSliceActual") private Long numSliceActual;
-    @SerializedName("numSliceExpected") private Long numSliceExpected;
-    @SerializedName("numTotalActual") private Long numTotalActual;
-    @SerializedName("numTotalExpected") private Long numTotalExpected;
+    @SerializedName("numBlockActual") private Optional<Long> numBlockActual;
+    @SerializedName("numBlockExpected") private Optional<Long> numBlockExpected;
+    @SerializedName("numSliceActual") private Optional<Long> numSliceActual;
+    @SerializedName("numSliceExpected") private Optional<Long> numSliceExpected;
+    @SerializedName("numTotalActual") private Optional<Long> numTotalActual;
+    @SerializedName("numTotalExpected") private Optional<Long> numTotalExpected;
     @SerializedName("securityAtMaximum") private Boolean securityAtMaximum;
     @SerializedName("serial") private String serial;
     @SerializedName("scsiState") private String scsiState;
@@ -97,12 +97,12 @@ public class DriveConfigInfo implements Serializable {
         java.util.UUID uuid,
         String vendor,
         String version,
-        Long numBlockActual,
-        Long numBlockExpected,
-        Long numSliceActual,
-        Long numSliceExpected,
-        Long numTotalActual,
-        Long numTotalExpected,
+        Optional<Long> numBlockActual,
+        Optional<Long> numBlockExpected,
+        Optional<Long> numSliceActual,
+        Optional<Long> numSliceExpected,
+        Optional<Long> numTotalActual,
+        Optional<Long> numTotalExpected,
         Boolean securityAtMaximum,
         String serial,
         String scsiState
@@ -131,12 +131,12 @@ public class DriveConfigInfo implements Serializable {
         this.uuid = uuid;
         this.vendor = vendor;
         this.version = version;
-        this.numBlockActual = numBlockActual;
-        this.numBlockExpected = numBlockExpected;
-        this.numSliceActual = numSliceActual;
-        this.numSliceExpected = numSliceExpected;
-        this.numTotalActual = numTotalActual;
-        this.numTotalExpected = numTotalExpected;
+        this.numBlockActual = (numBlockActual == null) ? Optional.<Long>empty() : numBlockActual;
+        this.numBlockExpected = (numBlockExpected == null) ? Optional.<Long>empty() : numBlockExpected;
+        this.numSliceActual = (numSliceActual == null) ? Optional.<Long>empty() : numSliceActual;
+        this.numSliceExpected = (numSliceExpected == null) ? Optional.<Long>empty() : numSliceExpected;
+        this.numTotalActual = (numTotalActual == null) ? Optional.<Long>empty() : numTotalActual;
+        this.numTotalExpected = (numTotalExpected == null) ? Optional.<Long>empty() : numTotalExpected;
         this.securityAtMaximum = securityAtMaximum;
         this.serial = serial;
         this.scsiState = scsiState;
@@ -282,39 +282,39 @@ public class DriveConfigInfo implements Serializable {
     }
     /** 
      **/
-    public Long getNumBlockActual() { return this.numBlockActual; }
-    public void setNumBlockActual(Long numBlockActual) { 
-        this.numBlockActual = numBlockActual;
+    public Optional<Long> getNumBlockActual() { return this.numBlockActual; }
+    public void setNumBlockActual(Optional<Long> numBlockActual) { 
+        this.numBlockActual = (numBlockActual == null) ? Optional.<Long>empty() : numBlockActual;
     }
     /** 
      **/
-    public Long getNumBlockExpected() { return this.numBlockExpected; }
-    public void setNumBlockExpected(Long numBlockExpected) { 
-        this.numBlockExpected = numBlockExpected;
+    public Optional<Long> getNumBlockExpected() { return this.numBlockExpected; }
+    public void setNumBlockExpected(Optional<Long> numBlockExpected) { 
+        this.numBlockExpected = (numBlockExpected == null) ? Optional.<Long>empty() : numBlockExpected;
     }
     /** 
      **/
-    public Long getNumSliceActual() { return this.numSliceActual; }
-    public void setNumSliceActual(Long numSliceActual) { 
-        this.numSliceActual = numSliceActual;
+    public Optional<Long> getNumSliceActual() { return this.numSliceActual; }
+    public void setNumSliceActual(Optional<Long> numSliceActual) { 
+        this.numSliceActual = (numSliceActual == null) ? Optional.<Long>empty() : numSliceActual;
     }
     /** 
      **/
-    public Long getNumSliceExpected() { return this.numSliceExpected; }
-    public void setNumSliceExpected(Long numSliceExpected) { 
-        this.numSliceExpected = numSliceExpected;
+    public Optional<Long> getNumSliceExpected() { return this.numSliceExpected; }
+    public void setNumSliceExpected(Optional<Long> numSliceExpected) { 
+        this.numSliceExpected = (numSliceExpected == null) ? Optional.<Long>empty() : numSliceExpected;
     }
     /** 
      **/
-    public Long getNumTotalActual() { return this.numTotalActual; }
-    public void setNumTotalActual(Long numTotalActual) { 
-        this.numTotalActual = numTotalActual;
+    public Optional<Long> getNumTotalActual() { return this.numTotalActual; }
+    public void setNumTotalActual(Optional<Long> numTotalActual) { 
+        this.numTotalActual = (numTotalActual == null) ? Optional.<Long>empty() : numTotalActual;
     }
     /** 
      **/
-    public Long getNumTotalExpected() { return this.numTotalExpected; }
-    public void setNumTotalExpected(Long numTotalExpected) { 
-        this.numTotalExpected = numTotalExpected;
+    public Optional<Long> getNumTotalExpected() { return this.numTotalExpected; }
+    public void setNumTotalExpected(Optional<Long> numTotalExpected) { 
+        this.numTotalExpected = (numTotalExpected == null) ? Optional.<Long>empty() : numTotalExpected;
     }
     /** 
      **/
@@ -456,12 +456,24 @@ public class DriveConfigInfo implements Serializable {
         sb.append(" uuid : ").append(uuid).append(",");
         sb.append(" vendor : ").append(vendor).append(",");
         sb.append(" version : ").append(version).append(",");
-        sb.append(" numBlockActual : ").append(numBlockActual).append(",");
-        sb.append(" numBlockExpected : ").append(numBlockExpected).append(",");
-        sb.append(" numSliceActual : ").append(numSliceActual).append(",");
-        sb.append(" numSliceExpected : ").append(numSliceExpected).append(",");
-        sb.append(" numTotalActual : ").append(numTotalActual).append(",");
-        sb.append(" numTotalExpected : ").append(numTotalExpected).append(",");
+        if(null != numBlockActual && numBlockActual.isPresent()){
+            sb.append(" numBlockActual : ").append(numBlockActual).append(",");
+        }
+        if(null != numBlockExpected && numBlockExpected.isPresent()){
+            sb.append(" numBlockExpected : ").append(numBlockExpected).append(",");
+        }
+        if(null != numSliceActual && numSliceActual.isPresent()){
+            sb.append(" numSliceActual : ").append(numSliceActual).append(",");
+        }
+        if(null != numSliceExpected && numSliceExpected.isPresent()){
+            sb.append(" numSliceExpected : ").append(numSliceExpected).append(",");
+        }
+        if(null != numTotalActual && numTotalActual.isPresent()){
+            sb.append(" numTotalActual : ").append(numTotalActual).append(",");
+        }
+        if(null != numTotalExpected && numTotalExpected.isPresent()){
+            sb.append(" numTotalExpected : ").append(numTotalExpected).append(",");
+        }
         sb.append(" securityAtMaximum : ").append(securityAtMaximum).append(",");
         sb.append(" serial : ").append(serial).append(",");
         sb.append(" scsiState : ").append(scsiState).append(",");
@@ -505,12 +517,12 @@ public class DriveConfigInfo implements Serializable {
         private java.util.UUID uuid;
         private String vendor;
         private String version;
-        private Long numBlockActual;
-        private Long numBlockExpected;
-        private Long numSliceActual;
-        private Long numSliceExpected;
-        private Long numTotalActual;
-        private Long numTotalExpected;
+        private Optional<Long> numBlockActual;
+        private Optional<Long> numBlockExpected;
+        private Optional<Long> numSliceActual;
+        private Optional<Long> numSliceExpected;
+        private Optional<Long> numTotalActual;
+        private Optional<Long> numTotalExpected;
         private Boolean securityAtMaximum;
         private String serial;
         private String scsiState;
@@ -705,33 +717,33 @@ public class DriveConfigInfo implements Serializable {
             return this;
         }
 
-        public DriveConfigInfo.Builder numBlockActual(final Long numBlockActual) {
-            this.numBlockActual = numBlockActual;
+        public DriveConfigInfo.Builder optionalNumBlockActual(final Long numBlockActual) {
+            this.numBlockActual = (numBlockActual == null) ? Optional.<Long>empty() : Optional.of(numBlockActual);
             return this;
         }
 
-        public DriveConfigInfo.Builder numBlockExpected(final Long numBlockExpected) {
-            this.numBlockExpected = numBlockExpected;
+        public DriveConfigInfo.Builder optionalNumBlockExpected(final Long numBlockExpected) {
+            this.numBlockExpected = (numBlockExpected == null) ? Optional.<Long>empty() : Optional.of(numBlockExpected);
             return this;
         }
 
-        public DriveConfigInfo.Builder numSliceActual(final Long numSliceActual) {
-            this.numSliceActual = numSliceActual;
+        public DriveConfigInfo.Builder optionalNumSliceActual(final Long numSliceActual) {
+            this.numSliceActual = (numSliceActual == null) ? Optional.<Long>empty() : Optional.of(numSliceActual);
             return this;
         }
 
-        public DriveConfigInfo.Builder numSliceExpected(final Long numSliceExpected) {
-            this.numSliceExpected = numSliceExpected;
+        public DriveConfigInfo.Builder optionalNumSliceExpected(final Long numSliceExpected) {
+            this.numSliceExpected = (numSliceExpected == null) ? Optional.<Long>empty() : Optional.of(numSliceExpected);
             return this;
         }
 
-        public DriveConfigInfo.Builder numTotalActual(final Long numTotalActual) {
-            this.numTotalActual = numTotalActual;
+        public DriveConfigInfo.Builder optionalNumTotalActual(final Long numTotalActual) {
+            this.numTotalActual = (numTotalActual == null) ? Optional.<Long>empty() : Optional.of(numTotalActual);
             return this;
         }
 
-        public DriveConfigInfo.Builder numTotalExpected(final Long numTotalExpected) {
-            this.numTotalExpected = numTotalExpected;
+        public DriveConfigInfo.Builder optionalNumTotalExpected(final Long numTotalExpected) {
+            this.numTotalExpected = (numTotalExpected == null) ? Optional.<Long>empty() : Optional.of(numTotalExpected);
             return this;
         }
 

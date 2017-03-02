@@ -37,7 +37,7 @@ public class Platform implements Serializable {
     @SerializedName("chassisType") private String chassisType;
     @SerializedName("cpuModel") private String cpuModel;
     @SerializedName("nodeMemoryGB") private Long nodeMemoryGB;
-    @SerializedName("platformConfigVersion") private String platformConfigVersion;
+    @SerializedName("platformConfigVersion") private Optional<String> platformConfigVersion;
 
     // empty constructor
     @Since("7.0")
@@ -51,14 +51,14 @@ public class Platform implements Serializable {
         String chassisType,
         String cpuModel,
         Long nodeMemoryGB,
-        String platformConfigVersion
+        Optional<String> platformConfigVersion
     )
     {
         this.nodeType = nodeType;
         this.chassisType = chassisType;
         this.cpuModel = cpuModel;
         this.nodeMemoryGB = nodeMemoryGB;
-        this.platformConfigVersion = platformConfigVersion;
+        this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : platformConfigVersion;
     }
 
     /** 
@@ -91,9 +91,9 @@ public class Platform implements Serializable {
     }
     /** 
      **/
-    public String getPlatformConfigVersion() { return this.platformConfigVersion; }
-    public void setPlatformConfigVersion(String platformConfigVersion) { 
-        this.platformConfigVersion = platformConfigVersion;
+    public Optional<String> getPlatformConfigVersion() { return this.platformConfigVersion; }
+    public void setPlatformConfigVersion(Optional<String> platformConfigVersion) { 
+        this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : platformConfigVersion;
     }
 
     @Override
@@ -136,7 +136,9 @@ public class Platform implements Serializable {
         sb.append(" chassisType : ").append(chassisType).append(",");
         sb.append(" cpuModel : ").append(cpuModel).append(",");
         sb.append(" nodeMemoryGB : ").append(nodeMemoryGB).append(",");
-        sb.append(" platformConfigVersion : ").append(platformConfigVersion).append(",");
+        if(null != platformConfigVersion && platformConfigVersion.isPresent()){
+            sb.append(" platformConfigVersion : ").append(platformConfigVersion).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -158,7 +160,7 @@ public class Platform implements Serializable {
         private String chassisType;
         private String cpuModel;
         private Long nodeMemoryGB;
-        private String platformConfigVersion;
+        private Optional<String> platformConfigVersion;
 
         private Builder() { }
 
@@ -201,8 +203,8 @@ public class Platform implements Serializable {
             return this;
         }
 
-        public Platform.Builder platformConfigVersion(final String platformConfigVersion) {
-            this.platformConfigVersion = platformConfigVersion;
+        public Platform.Builder optionalPlatformConfigVersion(final String platformConfigVersion) {
+            this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : Optional.of(platformConfigVersion);
             return this;
         }
 
