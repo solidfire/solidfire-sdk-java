@@ -34,7 +34,7 @@ public class NetworkConfigParams implements Serializable {
 
     public static final long serialVersionUID = -7013787419633761855L;
     @SerializedName("#default") private Optional<Boolean> _default;
-    @SerializedName("bond-master") private String bondMaster;
+    @SerializedName("bond-master") private Optional<String> bondMaster;
     @SerializedName("virtualNetworkTag") private Optional<String> virtualNetworkTag;
     @SerializedName("address") private Optional<String> address;
     @SerializedName("auto") private Optional<Boolean> auto;
@@ -72,7 +72,7 @@ public class NetworkConfigParams implements Serializable {
     @Since("7.0")
     public NetworkConfigParams(
         Optional<Boolean> _default,
-        String bondMaster,
+        Optional<String> bondMaster,
         Optional<String> virtualNetworkTag,
         Optional<String> address,
         Optional<Boolean> auto,
@@ -103,7 +103,7 @@ public class NetworkConfigParams implements Serializable {
     )
     {
         this._default = (_default == null) ? Optional.<Boolean>empty() : _default;
-        this.bondMaster = bondMaster;
+        this.bondMaster = (bondMaster == null) ? Optional.<String>empty() : bondMaster;
         this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<String>empty() : virtualNetworkTag;
         this.address = (address == null) ? Optional.<String>empty() : address;
         this.auto = (auto == null) ? Optional.<Boolean>empty() : auto;
@@ -141,9 +141,9 @@ public class NetworkConfigParams implements Serializable {
     }
     /** 
      **/
-    public String getBondMaster() { return this.bondMaster; }
-    public void setBondMaster(String bondMaster) { 
-        this.bondMaster = bondMaster;
+    public Optional<String> getBondMaster() { return this.bondMaster; }
+    public void setBondMaster(Optional<String> bondMaster) { 
+        this.bondMaster = (bondMaster == null) ? Optional.<String>empty() : bondMaster;
     }
     /** 
      **/
@@ -395,7 +395,9 @@ public class NetworkConfigParams implements Serializable {
         if(null != _default && _default.isPresent()){
             sb.append(" _default : ").append(_default).append(",");
         }
-        sb.append(" bondMaster : ").append(bondMaster).append(",");
+        if(null != bondMaster && bondMaster.isPresent()){
+            sb.append(" bondMaster : ").append(bondMaster).append(",");
+        }
         if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
             sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
         }
@@ -495,7 +497,7 @@ public class NetworkConfigParams implements Serializable {
 
     public static class Builder {
         private Optional<Boolean> _default;
-        private String bondMaster;
+        private Optional<String> bondMaster;
         private Optional<String> virtualNetworkTag;
         private Optional<String> address;
         private Optional<Boolean> auto;
@@ -598,8 +600,8 @@ public class NetworkConfigParams implements Serializable {
             return this;
         }
 
-        public NetworkConfigParams.Builder bondMaster(final String bondMaster) {
-            this.bondMaster = bondMaster;
+        public NetworkConfigParams.Builder optionalBondMaster(final String bondMaster) {
+            this.bondMaster = (bondMaster == null) ? Optional.<String>empty() : Optional.of(bondMaster);
             return this;
         }
 

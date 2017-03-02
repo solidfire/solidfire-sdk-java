@@ -34,7 +34,7 @@ public class ModifyVolumeResult implements Serializable {
 
     public static final long serialVersionUID = 7716152308587193073L;
     @SerializedName("volume") private Optional<Volume> volume;
-    @SerializedName("curve") private QoS curve;
+    @SerializedName("curve") private Optional<QoS> curve;
 
     // empty constructor
     @Since("7.0")
@@ -45,11 +45,11 @@ public class ModifyVolumeResult implements Serializable {
     @Since("7.0")
     public ModifyVolumeResult(
         Optional<Volume> volume,
-        QoS curve
+        Optional<QoS> curve
     )
     {
         this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
-        this.curve = curve;
+        this.curve = (curve == null) ? Optional.<QoS>empty() : curve;
     }
 
     /** 
@@ -61,9 +61,9 @@ public class ModifyVolumeResult implements Serializable {
     }
     /** 
      **/
-    public QoS getCurve() { return this.curve; }
-    public void setCurve(QoS curve) { 
-        this.curve = curve;
+    public Optional<QoS> getCurve() { return this.curve; }
+    public void setCurve(Optional<QoS> curve) { 
+        this.curve = (curve == null) ? Optional.<QoS>empty() : curve;
     }
 
     @Override
@@ -99,7 +99,9 @@ public class ModifyVolumeResult implements Serializable {
         if(null != volume && volume.isPresent()){
             sb.append(" volume : ").append(volume).append(",");
         }
-        sb.append(" curve : ").append(curve).append(",");
+        if(null != curve && curve.isPresent()){
+            sb.append(" curve : ").append(curve).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,7 +120,7 @@ public class ModifyVolumeResult implements Serializable {
 
     public static class Builder {
         private Optional<Volume> volume;
-        private QoS curve;
+        private Optional<QoS> curve;
 
         private Builder() { }
 
@@ -140,8 +142,8 @@ public class ModifyVolumeResult implements Serializable {
             return this;
         }
 
-        public ModifyVolumeResult.Builder curve(final QoS curve) {
-            this.curve = curve;
+        public ModifyVolumeResult.Builder optionalCurve(final QoS curve) {
+            this.curve = (curve == null) ? Optional.<QoS>empty() : Optional.of(curve);
             return this;
         }
 

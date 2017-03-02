@@ -34,7 +34,7 @@ public class DeleteVolumesResult implements Serializable {
 
     public static final long serialVersionUID = 3323553014043122426L;
     @SerializedName("volumes") private Volume[] volumes;
-    @SerializedName("curve") private VolumeQOS curve;
+    @SerializedName("curve") private Optional<VolumeQOS> curve;
 
     // empty constructor
     @Since("7.0")
@@ -45,11 +45,11 @@ public class DeleteVolumesResult implements Serializable {
     @Since("7.0")
     public DeleteVolumesResult(
         Volume[] volumes,
-        VolumeQOS curve
+        Optional<VolumeQOS> curve
     )
     {
         this.volumes = volumes;
-        this.curve = curve;
+        this.curve = (curve == null) ? Optional.<VolumeQOS>empty() : curve;
     }
 
     /** 
@@ -61,9 +61,9 @@ public class DeleteVolumesResult implements Serializable {
     }
     /** 
      **/
-    public VolumeQOS getCurve() { return this.curve; }
-    public void setCurve(VolumeQOS curve) { 
-        this.curve = curve;
+    public Optional<VolumeQOS> getCurve() { return this.curve; }
+    public void setCurve(Optional<VolumeQOS> curve) { 
+        this.curve = (curve == null) ? Optional.<VolumeQOS>empty() : curve;
     }
 
     @Override
@@ -97,7 +97,9 @@ public class DeleteVolumesResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
-        sb.append(" curve : ").append(curve).append(",");
+        if(null != curve && curve.isPresent()){
+            sb.append(" curve : ").append(curve).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -116,7 +118,7 @@ public class DeleteVolumesResult implements Serializable {
 
     public static class Builder {
         private Volume[] volumes;
-        private VolumeQOS curve;
+        private Optional<VolumeQOS> curve;
 
         private Builder() { }
 
@@ -138,8 +140,8 @@ public class DeleteVolumesResult implements Serializable {
             return this;
         }
 
-        public DeleteVolumesResult.Builder curve(final VolumeQOS curve) {
-            this.curve = curve;
+        public DeleteVolumesResult.Builder optionalCurve(final VolumeQOS curve) {
+            this.curve = (curve == null) ? Optional.<VolumeQOS>empty() : Optional.of(curve);
             return this;
         }
 

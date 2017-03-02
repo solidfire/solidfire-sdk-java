@@ -33,7 +33,7 @@ import java.util.Objects;
 public class AddedNode implements Serializable {
 
     public static final long serialVersionUID = 7770473146706377395L;
-    @SerializedName("nodeID") private Long nodeID;
+    @SerializedName("nodeID") private Optional<Long> nodeID;
     @SerializedName("pendingNodeID") private Long pendingNodeID;
     @SerializedName("activeNodeKey") private Optional<String> activeNodeKey;
     @SerializedName("assignedNodeID") private Optional<Long> assignedNodeID;
@@ -52,7 +52,7 @@ public class AddedNode implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddedNode(
-        Long nodeID,
+        Optional<Long> nodeID,
         Long pendingNodeID,
         Optional<String> activeNodeKey,
         Optional<Long> assignedNodeID,
@@ -64,7 +64,7 @@ public class AddedNode implements Serializable {
         Optional<String> softwareVersion
     )
     {
-        this.nodeID = nodeID;
+        this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
         this.pendingNodeID = pendingNodeID;
         this.activeNodeKey = (activeNodeKey == null) ? Optional.<String>empty() : activeNodeKey;
         this.assignedNodeID = (assignedNodeID == null) ? Optional.<Long>empty() : assignedNodeID;
@@ -78,9 +78,9 @@ public class AddedNode implements Serializable {
 
     /** 
      **/
-    public Long getNodeID() { return this.nodeID; }
-    public void setNodeID(Long nodeID) { 
-        this.nodeID = nodeID;
+    public Optional<Long> getNodeID() { return this.nodeID; }
+    public void setNodeID(Optional<Long> nodeID) { 
+        this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
     }
     /** 
      **/
@@ -183,7 +183,9 @@ public class AddedNode implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodeID : ").append(nodeID).append(",");
+        if(null != nodeID && nodeID.isPresent()){
+            sb.append(" nodeID : ").append(nodeID).append(",");
+        }
         sb.append(" pendingNodeID : ").append(pendingNodeID).append(",");
         if(null != activeNodeKey && activeNodeKey.isPresent()){
             sb.append(" activeNodeKey : ").append(activeNodeKey).append(",");
@@ -226,7 +228,7 @@ public class AddedNode implements Serializable {
     }
 
     public static class Builder {
-        private Long nodeID;
+        private Optional<Long> nodeID;
         private Long pendingNodeID;
         private Optional<String> activeNodeKey;
         private Optional<Long> assignedNodeID;
@@ -268,8 +270,8 @@ public class AddedNode implements Serializable {
             return this;
         }
 
-        public AddedNode.Builder nodeID(final Long nodeID) {
-            this.nodeID = nodeID;
+        public AddedNode.Builder optionalNodeID(final Long nodeID) {
+            this.nodeID = (nodeID == null) ? Optional.<Long>empty() : Optional.of(nodeID);
             return this;
         }
 

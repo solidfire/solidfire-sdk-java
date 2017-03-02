@@ -33,7 +33,7 @@ import java.util.Objects;
 public class AddVirtualNetworkResult implements Serializable {
 
     public static final long serialVersionUID = -684462985313881144L;
-    @SerializedName("virtualNetworkID") private Long virtualNetworkID;
+    @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
 
     // empty constructor
     @Since("7.0")
@@ -43,18 +43,18 @@ public class AddVirtualNetworkResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddVirtualNetworkResult(
-        Long virtualNetworkID
+        Optional<Long> virtualNetworkID
     )
     {
-        this.virtualNetworkID = virtualNetworkID;
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
     }
 
     /** 
      * The virtual network ID of the new virtual network.
      **/
-    public Long getVirtualNetworkID() { return this.virtualNetworkID; }
-    public void setVirtualNetworkID(Long virtualNetworkID) { 
-        this.virtualNetworkID = virtualNetworkID;
+    public Optional<Long> getVirtualNetworkID() { return this.virtualNetworkID; }
+    public void setVirtualNetworkID(Optional<Long> virtualNetworkID) { 
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
     }
 
     @Override
@@ -85,7 +85,9 @@ public class AddVirtualNetworkResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+        if(null != virtualNetworkID && virtualNetworkID.isPresent()){
+            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,7 +105,7 @@ public class AddVirtualNetworkResult implements Serializable {
     }
 
     public static class Builder {
-        private Long virtualNetworkID;
+        private Optional<Long> virtualNetworkID;
 
         private Builder() { }
 
@@ -118,8 +120,8 @@ public class AddVirtualNetworkResult implements Serializable {
             return this;
         }
 
-        public AddVirtualNetworkResult.Builder virtualNetworkID(final Long virtualNetworkID) {
-            this.virtualNetworkID = virtualNetworkID;
+        public AddVirtualNetworkResult.Builder optionalVirtualNetworkID(final Long virtualNetworkID) {
+            this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 

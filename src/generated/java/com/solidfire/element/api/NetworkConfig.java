@@ -34,8 +34,8 @@ public class NetworkConfig implements Serializable {
 
     public static final long serialVersionUID = -6490718356259567027L;
     @SerializedName("#default") private Optional<Boolean> _default;
-    @SerializedName("bond-master") private String bondMaster;
-    @SerializedName("virtualNetworkTag") private String virtualNetworkTag;
+    @SerializedName("bond-master") private Optional<String> bondMaster;
+    @SerializedName("virtualNetworkTag") private Optional<String> virtualNetworkTag;
     @SerializedName("address") private Optional<String> address;
     @SerializedName("auto") private Optional<Boolean> auto;
     @SerializedName("bond-downdelay") private Optional<String> bondDowndelay;
@@ -74,8 +74,8 @@ public class NetworkConfig implements Serializable {
     @Since("7.0")
     public NetworkConfig(
         Optional<Boolean> _default,
-        String bondMaster,
-        String virtualNetworkTag,
+        Optional<String> bondMaster,
+        Optional<String> virtualNetworkTag,
         Optional<String> address,
         Optional<Boolean> auto,
         Optional<String> bondDowndelay,
@@ -107,8 +107,8 @@ public class NetworkConfig implements Serializable {
     )
     {
         this._default = (_default == null) ? Optional.<Boolean>empty() : _default;
-        this.bondMaster = bondMaster;
-        this.virtualNetworkTag = virtualNetworkTag;
+        this.bondMaster = (bondMaster == null) ? Optional.<String>empty() : bondMaster;
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<String>empty() : virtualNetworkTag;
         this.address = (address == null) ? Optional.<String>empty() : address;
         this.auto = (auto == null) ? Optional.<Boolean>empty() : auto;
         this.bondDowndelay = (bondDowndelay == null) ? Optional.<String>empty() : bondDowndelay;
@@ -147,15 +147,15 @@ public class NetworkConfig implements Serializable {
     }
     /** 
      **/
-    public String getBondMaster() { return this.bondMaster; }
-    public void setBondMaster(String bondMaster) { 
-        this.bondMaster = bondMaster;
+    public Optional<String> getBondMaster() { return this.bondMaster; }
+    public void setBondMaster(Optional<String> bondMaster) { 
+        this.bondMaster = (bondMaster == null) ? Optional.<String>empty() : bondMaster;
     }
     /** 
      **/
-    public String getVirtualNetworkTag() { return this.virtualNetworkTag; }
-    public void setVirtualNetworkTag(String virtualNetworkTag) { 
-        this.virtualNetworkTag = virtualNetworkTag;
+    public Optional<String> getVirtualNetworkTag() { return this.virtualNetworkTag; }
+    public void setVirtualNetworkTag(Optional<String> virtualNetworkTag) { 
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<String>empty() : virtualNetworkTag;
     }
     /** 
      **/
@@ -417,8 +417,12 @@ public class NetworkConfig implements Serializable {
         if(null != _default && _default.isPresent()){
             sb.append(" _default : ").append(_default).append(",");
         }
-        sb.append(" bondMaster : ").append(bondMaster).append(",");
-        sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
+        if(null != bondMaster && bondMaster.isPresent()){
+            sb.append(" bondMaster : ").append(bondMaster).append(",");
+        }
+        if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
+            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
+        }
         if(null != address && address.isPresent()){
             sb.append(" address : ").append(address).append(",");
         }
@@ -521,8 +525,8 @@ public class NetworkConfig implements Serializable {
 
     public static class Builder {
         private Optional<Boolean> _default;
-        private String bondMaster;
-        private String virtualNetworkTag;
+        private Optional<String> bondMaster;
+        private Optional<String> virtualNetworkTag;
         private Optional<String> address;
         private Optional<Boolean> auto;
         private Optional<String> bondDowndelay;
@@ -630,13 +634,13 @@ public class NetworkConfig implements Serializable {
             return this;
         }
 
-        public NetworkConfig.Builder bondMaster(final String bondMaster) {
-            this.bondMaster = bondMaster;
+        public NetworkConfig.Builder optionalBondMaster(final String bondMaster) {
+            this.bondMaster = (bondMaster == null) ? Optional.<String>empty() : Optional.of(bondMaster);
             return this;
         }
 
-        public NetworkConfig.Builder virtualNetworkTag(final String virtualNetworkTag) {
-            this.virtualNetworkTag = virtualNetworkTag;
+        public NetworkConfig.Builder optionalVirtualNetworkTag(final String virtualNetworkTag) {
+            this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<String>empty() : Optional.of(virtualNetworkTag);
             return this;
         }
 

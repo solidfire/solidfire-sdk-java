@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ModifyVolumesResult implements Serializable {
 
     public static final long serialVersionUID = 5469388004351442315L;
-    @SerializedName("qos") private QoS qos;
+    @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("volumes") private Volume[] volumes;
 
     // empty constructor
@@ -44,19 +44,19 @@ public class ModifyVolumesResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyVolumesResult(
-        QoS qos,
+        Optional<QoS> qos,
         Volume[] volumes
     )
     {
-        this.qos = qos;
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.volumes = volumes;
     }
 
     /** 
      **/
-    public QoS getQos() { return this.qos; }
-    public void setQos(QoS qos) { 
-        this.qos = qos;
+    public Optional<QoS> getQos() { return this.qos; }
+    public void setQos(Optional<QoS> qos) { 
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
     /** 
      **/
@@ -95,7 +95,9 @@ public class ModifyVolumesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" qos : ").append(qos).append(",");
+        if(null != qos && qos.isPresent()){
+            sb.append(" qos : ").append(qos).append(",");
+        }
         sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
         sb.append( " }" );
 
@@ -114,7 +116,7 @@ public class ModifyVolumesResult implements Serializable {
     }
 
     public static class Builder {
-        private QoS qos;
+        private Optional<QoS> qos;
         private Volume[] volumes;
 
         private Builder() { }
@@ -132,8 +134,8 @@ public class ModifyVolumesResult implements Serializable {
             return this;
         }
 
-        public ModifyVolumesResult.Builder qos(final QoS qos) {
-            this.qos = qos;
+        public ModifyVolumesResult.Builder optionalQos(final QoS qos) {
+            this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
         }
 

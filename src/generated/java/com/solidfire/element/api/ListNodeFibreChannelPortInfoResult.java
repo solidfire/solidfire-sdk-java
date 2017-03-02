@@ -34,7 +34,7 @@ import java.util.Objects;
 public class ListNodeFibreChannelPortInfoResult implements Serializable {
 
     public static final long serialVersionUID = -7553598877547319919L;
-    @SerializedName("nodes") private NodeFibreChannelPortInfoResult[] nodes;
+    @SerializedName("nodes") private Optional<NodeFibreChannelPortInfoResult[]> nodes;
     @SerializedName("fibreChannelPorts") private FibreChannelPortInfo[] fibreChannelPorts;
 
     // empty constructor
@@ -45,20 +45,20 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListNodeFibreChannelPortInfoResult(
-        NodeFibreChannelPortInfoResult[] nodes,
+        Optional<NodeFibreChannelPortInfoResult[]> nodes,
         FibreChannelPortInfo[] fibreChannelPorts
     )
     {
-        this.nodes = nodes;
+        this.nodes = (nodes == null) ? Optional.<NodeFibreChannelPortInfoResult[]>empty() : nodes;
         this.fibreChannelPorts = fibreChannelPorts;
     }
 
     /** 
      * List of fibre channel port info results grouped by node.
      **/
-    public NodeFibreChannelPortInfoResult[] getNodes() { return this.nodes; }
-    public void setNodes(NodeFibreChannelPortInfoResult[] nodes) { 
-        this.nodes = nodes;
+    public Optional<NodeFibreChannelPortInfoResult[]> getNodes() { return this.nodes; }
+    public void setNodes(Optional<NodeFibreChannelPortInfoResult[]> nodes) { 
+        this.nodes = (nodes == null) ? Optional.<NodeFibreChannelPortInfoResult[]>empty() : nodes;
     }
     /** 
      * List of all physical Fibre Channel ports.
@@ -76,13 +76,13 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
         ListNodeFibreChannelPortInfoResult that = (ListNodeFibreChannelPortInfoResult) o;
 
         return 
-            Arrays.equals(nodes, that.nodes) && 
+            Objects.equals(nodes, that.nodes) && 
             Arrays.equals(fibreChannelPorts, that.fibreChannelPorts);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])nodes,(Object[])fibreChannelPorts );
+        return Objects.hash( nodes,(Object[])fibreChannelPorts );
     }
 
 
@@ -98,7 +98,9 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        if(null != nodes && nodes.isPresent()){
+            sb.append(" nodes : ").append(nodes).append(",");
+        }
         sb.append(" fibreChannelPorts : ").append(Arrays.toString(fibreChannelPorts)).append(",");
         sb.append( " }" );
 
@@ -117,7 +119,7 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
     }
 
     public static class Builder {
-        private NodeFibreChannelPortInfoResult[] nodes;
+        private Optional<NodeFibreChannelPortInfoResult[]> nodes;
         private FibreChannelPortInfo[] fibreChannelPorts;
 
         private Builder() { }
@@ -135,8 +137,8 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
             return this;
         }
 
-        public ListNodeFibreChannelPortInfoResult.Builder nodes(final NodeFibreChannelPortInfoResult[] nodes) {
-            this.nodes = nodes;
+        public ListNodeFibreChannelPortInfoResult.Builder optionalNodes(final NodeFibreChannelPortInfoResult[] nodes) {
+            this.nodes = (nodes == null) ? Optional.<NodeFibreChannelPortInfoResult[]>empty() : Optional.of(nodes);
             return this;
         }
 

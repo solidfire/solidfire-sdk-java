@@ -33,7 +33,7 @@ import java.util.Objects;
 public class CloneVolumeResult implements Serializable {
 
     public static final long serialVersionUID = 7651196543218505931L;
-    @SerializedName("volume") private Volume volume;
+    @SerializedName("volume") private Optional<Volume> volume;
     @SerializedName("cloneID") private Long cloneID;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("asyncHandle") private Long asyncHandle;
@@ -46,13 +46,13 @@ public class CloneVolumeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CloneVolumeResult(
-        Volume volume,
+        Optional<Volume> volume,
         Long cloneID,
         Long volumeID,
         Long asyncHandle
     )
     {
-        this.volume = volume;
+        this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
         this.cloneID = cloneID;
         this.volumeID = volumeID;
         this.asyncHandle = asyncHandle;
@@ -61,9 +61,9 @@ public class CloneVolumeResult implements Serializable {
     /** 
      * The resulting volume
      **/
-    public Volume getVolume() { return this.volume; }
-    public void setVolume(Volume volume) { 
-        this.volume = volume;
+    public Optional<Volume> getVolume() { return this.volume; }
+    public void setVolume(Optional<Volume> volume) { 
+        this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
     }
     /** 
      * The ID of the newly-created clone.
@@ -121,7 +121,9 @@ public class CloneVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volume : ").append(volume).append(",");
+        if(null != volume && volume.isPresent()){
+            sb.append(" volume : ").append(volume).append(",");
+        }
         sb.append(" cloneID : ").append(cloneID).append(",");
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" asyncHandle : ").append(asyncHandle).append(",");
@@ -142,7 +144,7 @@ public class CloneVolumeResult implements Serializable {
     }
 
     public static class Builder {
-        private Volume volume;
+        private Optional<Volume> volume;
         private Long cloneID;
         private Long volumeID;
         private Long asyncHandle;
@@ -166,8 +168,8 @@ public class CloneVolumeResult implements Serializable {
             return this;
         }
 
-        public CloneVolumeResult.Builder volume(final Volume volume) {
-            this.volume = volume;
+        public CloneVolumeResult.Builder optionalVolume(final Volume volume) {
+            this.volume = (volume == null) ? Optional.<Volume>empty() : Optional.of(volume);
             return this;
         }
 

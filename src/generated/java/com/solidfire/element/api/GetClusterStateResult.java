@@ -33,9 +33,9 @@ import java.util.Objects;
 public class GetClusterStateResult implements Serializable {
 
     public static final long serialVersionUID = -8089888168782582813L;
-    @SerializedName("nodes") private NodeStateResult[] nodes;
-    @SerializedName("cluster") private String cluster;
-    @SerializedName("state") private String state;
+    @SerializedName("nodes") private Optional<NodeStateResult[]> nodes;
+    @SerializedName("cluster") private Optional<String> cluster;
+    @SerializedName("state") private Optional<String> state;
 
     // empty constructor
     @Since("7.0")
@@ -45,34 +45,34 @@ public class GetClusterStateResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetClusterStateResult(
-        NodeStateResult[] nodes,
-        String cluster,
-        String state
+        Optional<NodeStateResult[]> nodes,
+        Optional<String> cluster,
+        Optional<String> state
     )
     {
-        this.nodes = nodes;
-        this.cluster = cluster;
-        this.state = state;
+        this.nodes = (nodes == null) ? Optional.<NodeStateResult[]>empty() : nodes;
+        this.cluster = (cluster == null) ? Optional.<String>empty() : cluster;
+        this.state = (state == null) ? Optional.<String>empty() : state;
     }
 
     /** 
      * Array of NodeStateResult objects for each node in the cluster.
      **/
-    public NodeStateResult[] getNodes() { return this.nodes; }
-    public void setNodes(NodeStateResult[] nodes) { 
-        this.nodes = nodes;
+    public Optional<NodeStateResult[]> getNodes() { return this.nodes; }
+    public void setNodes(Optional<NodeStateResult[]> nodes) { 
+        this.nodes = (nodes == null) ? Optional.<NodeStateResult[]>empty() : nodes;
     }
     /** 
      **/
-    public String getCluster() { return this.cluster; }
-    public void setCluster(String cluster) { 
-        this.cluster = cluster;
+    public Optional<String> getCluster() { return this.cluster; }
+    public void setCluster(Optional<String> cluster) { 
+        this.cluster = (cluster == null) ? Optional.<String>empty() : cluster;
     }
     /** 
      **/
-    public String getState() { return this.state; }
-    public void setState(String state) { 
-        this.state = state;
+    public Optional<String> getState() { return this.state; }
+    public void setState(Optional<String> state) { 
+        this.state = (state == null) ? Optional.<String>empty() : state;
     }
 
     @Override
@@ -83,14 +83,14 @@ public class GetClusterStateResult implements Serializable {
         GetClusterStateResult that = (GetClusterStateResult) o;
 
         return 
-            Arrays.equals(nodes, that.nodes) && 
+            Objects.equals(nodes, that.nodes) && 
             Objects.equals(cluster, that.cluster) && 
             Objects.equals(state, that.state);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])nodes,cluster,state );
+        return Objects.hash( nodes,cluster,state );
     }
 
 
@@ -107,9 +107,15 @@ public class GetClusterStateResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
-        sb.append(" cluster : ").append(cluster).append(",");
-        sb.append(" state : ").append(state).append(",");
+        if(null != nodes && nodes.isPresent()){
+            sb.append(" nodes : ").append(nodes).append(",");
+        }
+        if(null != cluster && cluster.isPresent()){
+            sb.append(" cluster : ").append(cluster).append(",");
+        }
+        if(null != state && state.isPresent()){
+            sb.append(" state : ").append(state).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -127,9 +133,9 @@ public class GetClusterStateResult implements Serializable {
     }
 
     public static class Builder {
-        private NodeStateResult[] nodes;
-        private String cluster;
-        private String state;
+        private Optional<NodeStateResult[]> nodes;
+        private Optional<String> cluster;
+        private Optional<String> state;
 
         private Builder() { }
 
@@ -148,18 +154,18 @@ public class GetClusterStateResult implements Serializable {
             return this;
         }
 
-        public GetClusterStateResult.Builder nodes(final NodeStateResult[] nodes) {
-            this.nodes = nodes;
+        public GetClusterStateResult.Builder optionalNodes(final NodeStateResult[] nodes) {
+            this.nodes = (nodes == null) ? Optional.<NodeStateResult[]>empty() : Optional.of(nodes);
             return this;
         }
 
-        public GetClusterStateResult.Builder cluster(final String cluster) {
-            this.cluster = cluster;
+        public GetClusterStateResult.Builder optionalCluster(final String cluster) {
+            this.cluster = (cluster == null) ? Optional.<String>empty() : Optional.of(cluster);
             return this;
         }
 
-        public GetClusterStateResult.Builder state(final String state) {
-            this.state = state;
+        public GetClusterStateResult.Builder optionalState(final String state) {
+            this.state = (state == null) ? Optional.<String>empty() : Optional.of(state);
             return this;
         }
 

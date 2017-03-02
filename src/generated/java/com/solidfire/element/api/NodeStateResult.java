@@ -34,7 +34,7 @@ public class NodeStateResult implements Serializable {
 
     public static final long serialVersionUID = 1253365030459376831L;
     @SerializedName("nodeID") private Long nodeID;
-    @SerializedName("result") private NodeStateInfo result;
+    @SerializedName("result") private Optional<NodeStateInfo> result;
 
     // empty constructor
     @Since("7.0")
@@ -45,11 +45,11 @@ public class NodeStateResult implements Serializable {
     @Since("7.0")
     public NodeStateResult(
         Long nodeID,
-        NodeStateInfo result
+        Optional<NodeStateInfo> result
     )
     {
         this.nodeID = nodeID;
-        this.result = result;
+        this.result = (result == null) ? Optional.<NodeStateInfo>empty() : result;
     }
 
     /** 
@@ -62,9 +62,9 @@ public class NodeStateResult implements Serializable {
     /** 
      * NodeStateInfo object.
      **/
-    public NodeStateInfo getResult() { return this.result; }
-    public void setResult(NodeStateInfo result) { 
-        this.result = result;
+    public Optional<NodeStateInfo> getResult() { return this.result; }
+    public void setResult(Optional<NodeStateInfo> result) { 
+        this.result = (result == null) ? Optional.<NodeStateInfo>empty() : result;
     }
 
     @Override
@@ -98,7 +98,9 @@ public class NodeStateResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" result : ").append(result).append(",");
+        if(null != result && result.isPresent()){
+            sb.append(" result : ").append(result).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -117,7 +119,7 @@ public class NodeStateResult implements Serializable {
 
     public static class Builder {
         private Long nodeID;
-        private NodeStateInfo result;
+        private Optional<NodeStateInfo> result;
 
         private Builder() { }
 
@@ -139,8 +141,8 @@ public class NodeStateResult implements Serializable {
             return this;
         }
 
-        public NodeStateResult.Builder result(final NodeStateInfo result) {
-            this.result = result;
+        public NodeStateResult.Builder optionalResult(final NodeStateInfo result) {
+            this.result = (result == null) ? Optional.<NodeStateInfo>empty() : Optional.of(result);
             return this;
         }
 

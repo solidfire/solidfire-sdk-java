@@ -42,8 +42,8 @@ public class BulkVolumeJob implements Serializable {
     @SerializedName("remainingTime") private Long remainingTime;
     @SerializedName("srcVolumeID") private Long srcVolumeID;
     @SerializedName("status") private String status;
-    @SerializedName("script") private String script;
-    @SerializedName("snapshotID") private Long snapshotID;
+    @SerializedName("script") private Optional<String> script;
+    @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("type") private String type;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
@@ -63,8 +63,8 @@ public class BulkVolumeJob implements Serializable {
         Long remainingTime,
         Long srcVolumeID,
         String status,
-        String script,
-        Long snapshotID,
+        Optional<String> script,
+        Optional<Long> snapshotID,
         String type,
         java.util.Map<String, Object> attributes
     )
@@ -77,8 +77,8 @@ public class BulkVolumeJob implements Serializable {
         this.remainingTime = remainingTime;
         this.srcVolumeID = srcVolumeID;
         this.status = status;
-        this.script = script;
-        this.snapshotID = snapshotID;
+        this.script = (script == null) ? Optional.<String>empty() : script;
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
         this.type = type;
         this.attributes = attributes;
     }
@@ -94,8 +94,8 @@ public class BulkVolumeJob implements Serializable {
         Long remainingTime,
         Long srcVolumeID,
         String status,
-        String script,
-        Long snapshotID,
+        Optional<String> script,
+        Optional<Long> snapshotID,
         String type,
         java.util.Map<String, Object> attributes
     )
@@ -109,8 +109,8 @@ public class BulkVolumeJob implements Serializable {
         this.remainingTime = remainingTime;
         this.srcVolumeID = srcVolumeID;
         this.status = status;
-        this.script = script;
-        this.snapshotID = snapshotID;
+        this.script = (script == null) ? Optional.<String>empty() : script;
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
         this.type = type;
         this.attributes = attributes;
     }
@@ -185,16 +185,16 @@ public class BulkVolumeJob implements Serializable {
     /** 
      * The name of the script if one is provided.
      **/
-    public String getScript() { return this.script; }
-    public void setScript(String script) { 
-        this.script = script;
+    public Optional<String> getScript() { return this.script; }
+    public void setScript(Optional<String> script) { 
+        this.script = (script == null) ? Optional.<String>empty() : script;
     }
     /** 
      * ID of the snapshot if a snapshot is in the source of the bulk volume job.
      **/
-    public Long getSnapshotID() { return this.snapshotID; }
-    public void setSnapshotID(Long snapshotID) { 
-        this.snapshotID = snapshotID;
+    public Optional<Long> getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Optional<Long> snapshotID) { 
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
     /** 
      * Can be one of the following:
@@ -274,8 +274,12 @@ public class BulkVolumeJob implements Serializable {
         sb.append(" remainingTime : ").append(remainingTime).append(",");
         sb.append(" srcVolumeID : ").append(srcVolumeID).append(",");
         sb.append(" status : ").append(status).append(",");
-        sb.append(" script : ").append(script).append(",");
-        sb.append(" snapshotID : ").append(snapshotID).append(",");
+        if(null != script && script.isPresent()){
+            sb.append(" script : ").append(script).append(",");
+        }
+        if(null != snapshotID && snapshotID.isPresent()){
+            sb.append(" snapshotID : ").append(snapshotID).append(",");
+        }
         sb.append(" type : ").append(type).append(",");
         sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
@@ -304,8 +308,8 @@ public class BulkVolumeJob implements Serializable {
         private Long remainingTime;
         private Long srcVolumeID;
         private String status;
-        private String script;
-        private Long snapshotID;
+        private Optional<String> script;
+        private Optional<Long> snapshotID;
         private String type;
         private java.util.Map<String, Object> attributes;
 
@@ -391,13 +395,13 @@ public class BulkVolumeJob implements Serializable {
             return this;
         }
 
-        public BulkVolumeJob.Builder script(final String script) {
-            this.script = script;
+        public BulkVolumeJob.Builder optionalScript(final String script) {
+            this.script = (script == null) ? Optional.<String>empty() : Optional.of(script);
             return this;
         }
 
-        public BulkVolumeJob.Builder snapshotID(final Long snapshotID) {
-            this.snapshotID = snapshotID;
+        public BulkVolumeJob.Builder optionalSnapshotID(final Long snapshotID) {
+            this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }
 

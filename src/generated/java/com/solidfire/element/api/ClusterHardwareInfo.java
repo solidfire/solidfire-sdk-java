@@ -33,8 +33,8 @@ import java.util.Objects;
 public class ClusterHardwareInfo implements Serializable {
 
     public static final long serialVersionUID = -588255729826736799L;
-    @SerializedName("drives") private java.util.Map<String,DriveHardwareInfo> drives;
-    @SerializedName("nodes") private java.util.Map<String,java.util.Map<String, Object>> nodes;
+    @SerializedName("drives") private java.util.Map<String,Optional<DriveHardwareInfo>> drives;
+    @SerializedName("nodes") private java.util.Map<String,Optional<java.util.Map<String, Object>>> nodes;
 
     // empty constructor
     @Since("7.0")
@@ -44,25 +44,25 @@ public class ClusterHardwareInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ClusterHardwareInfo(
-        java.util.Map<String,DriveHardwareInfo> drives,
-        java.util.Map<String,java.util.Map<String, Object>> nodes
+        java.util.Map<String,Optional<DriveHardwareInfo>> drives,
+        java.util.Map<String,Optional<java.util.Map<String, Object>>> nodes
     )
     {
-        this.drives = drives;
-        this.nodes = nodes;
+        this.drives = (drives == null) ? Optional.<DriveHardwareInfo>empty() : drives;
+        this.nodes = (nodes == null) ? Optional.<java.util.Map<String, Object>>empty() : nodes;
     }
 
     /** 
      **/
-    public java.util.Map<String,DriveHardwareInfo> getDrives() { return this.drives; }
-    public void setDrives(java.util.Map<String,DriveHardwareInfo> drives) { 
-        this.drives = drives;
+    public java.util.Map<String,Optional<DriveHardwareInfo>> getDrives() { return this.drives; }
+    public void setDrives(java.util.Map<String,Optional<DriveHardwareInfo>> drives) { 
+        this.drives = (drives == null) ? Optional.<DriveHardwareInfo>empty() : drives;
     }
     /** 
      **/
-    public java.util.Map<String,java.util.Map<String, Object>> getNodes() { return this.nodes; }
-    public void setNodes(java.util.Map<String,java.util.Map<String, Object>> nodes) { 
-        this.nodes = nodes;
+    public java.util.Map<String,Optional<java.util.Map<String, Object>>> getNodes() { return this.nodes; }
+    public void setNodes(java.util.Map<String,Optional<java.util.Map<String, Object>>> nodes) { 
+        this.nodes = (nodes == null) ? Optional.<java.util.Map<String, Object>>empty() : nodes;
     }
 
     @Override
@@ -95,8 +95,12 @@ public class ClusterHardwareInfo implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(drives).append(",");
-        sb.append(" nodes : ").append(nodes).append(",");
+        if(null != drives && drives.isPresent()){
+            sb.append(" drives : ").append(drives).append(",");
+        }
+        if(null != nodes && nodes.isPresent()){
+            sb.append(" nodes : ").append(nodes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -114,8 +118,8 @@ public class ClusterHardwareInfo implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String,DriveHardwareInfo> drives;
-        private java.util.Map<String,java.util.Map<String, Object>> nodes;
+        private java.util.Map<String,Optional<DriveHardwareInfo>> drives;
+        private java.util.Map<String,Optional<java.util.Map<String, Object>>> nodes;
 
         private Builder() { }
 
@@ -132,13 +136,13 @@ public class ClusterHardwareInfo implements Serializable {
             return this;
         }
 
-        public ClusterHardwareInfo.Builder drives(final java.util.Map<String,DriveHardwareInfo> drives) {
-            this.drives = drives;
+        public ClusterHardwareInfo.Builder optionalDrives(final DriveHardwareInfo drives) {
+            this.drives = (drives == null) ? Optional.<DriveHardwareInfo>empty() : Optional.of(drives);
             return this;
         }
 
-        public ClusterHardwareInfo.Builder nodes(final java.util.Map<String,java.util.Map<String, Object>> nodes) {
-            this.nodes = nodes;
+        public ClusterHardwareInfo.Builder optionalNodes(final java.util.Map<String, Object> nodes) {
+            this.nodes = (nodes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(nodes);
             return this;
         }
 
