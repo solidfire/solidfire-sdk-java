@@ -40,7 +40,7 @@ public class NodeStatsInfo implements Serializable {
     @SerializedName("mBytesOut") private Long mBytesOut;
     @SerializedName("networkUtilizationCluster") private Long networkUtilizationCluster;
     @SerializedName("networkUtilizationStorage") private Long networkUtilizationStorage;
-    @SerializedName("nodeID") private Optional<Long> nodeID;
+    @SerializedName("nodeID") private Long nodeID;
     @SerializedName("sBytesIn") private Long sBytesIn;
     @SerializedName("sBytesOut") private Long sBytesOut;
     @SerializedName("timestamp") private String timestamp;
@@ -61,7 +61,7 @@ public class NodeStatsInfo implements Serializable {
         Long mBytesOut,
         Long networkUtilizationCluster,
         Long networkUtilizationStorage,
-        Optional<Long> nodeID,
+        Long nodeID,
         Long sBytesIn,
         Long sBytesOut,
         String timestamp,
@@ -75,7 +75,7 @@ public class NodeStatsInfo implements Serializable {
         this.mBytesOut = mBytesOut;
         this.networkUtilizationCluster = networkUtilizationCluster;
         this.networkUtilizationStorage = networkUtilizationStorage;
-        this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
+        this.nodeID = nodeID;
         this.sBytesIn = sBytesIn;
         this.sBytesOut = sBytesOut;
         this.timestamp = timestamp;
@@ -133,9 +133,9 @@ public class NodeStatsInfo implements Serializable {
     }
     /** 
      **/
-    public Optional<Long> getNodeID() { return this.nodeID; }
-    public void setNodeID(Optional<Long> nodeID) { 
-        this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
+    public Long getNodeID() { return this.nodeID; }
+    public void setNodeID(Long nodeID) { 
+        this.nodeID = nodeID;
     }
     /** 
      * Bytes in on the storage interface.
@@ -223,9 +223,7 @@ public class NodeStatsInfo implements Serializable {
         sb.append(" mBytesOut : ").append(mBytesOut).append(",");
         sb.append(" networkUtilizationCluster : ").append(networkUtilizationCluster).append(",");
         sb.append(" networkUtilizationStorage : ").append(networkUtilizationStorage).append(",");
-        if(null != nodeID && nodeID.isPresent()){
-            sb.append(" nodeID : ").append(nodeID).append(",");
-        }
+        sb.append(" nodeID : ").append(nodeID).append(",");
         sb.append(" sBytesIn : ").append(sBytesIn).append(",");
         sb.append(" sBytesOut : ").append(sBytesOut).append(",");
         sb.append(" timestamp : ").append(timestamp).append(",");
@@ -254,7 +252,7 @@ public class NodeStatsInfo implements Serializable {
         private Long mBytesOut;
         private Long networkUtilizationCluster;
         private Long networkUtilizationStorage;
-        private Optional<Long> nodeID;
+        private Long nodeID;
         private Long sBytesIn;
         private Long sBytesOut;
         private String timestamp;
@@ -330,8 +328,8 @@ public class NodeStatsInfo implements Serializable {
             return this;
         }
 
-        public NodeStatsInfo.Builder optionalNodeID(final Long nodeID) {
-            this.nodeID = (nodeID == null) ? Optional.<Long>empty() : Optional.of(nodeID);
+        public NodeStatsInfo.Builder nodeID(final Long nodeID) {
+            this.nodeID = nodeID;
             return this;
         }
 
