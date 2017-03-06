@@ -4,7 +4,7 @@ Java SDK library for interacting with SolidFire Element API
 
 ## Current Release
 
-Version: 1.2.0.168
+Version: 1.2.2
 
 ## Description
 
@@ -31,7 +31,7 @@ If you have any questions or comments about this product, contact <ng-sf-host-in
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>solidfire-sdk-java</artifactId>
-  <version>1.2.0.168</version>
+  <version>1.2.2.0</version>
 </dependency>
 
 ~~~
@@ -40,7 +40,7 @@ or SBT:
 
 ~~~ scala
 
-libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.2.0.168"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.2.2.0"
 
 ~~~
 
@@ -48,7 +48,7 @@ or Gradle:
 
 ~~~ groovy
 
-compile 'com.solidfire:solidfire-sdk-java:1.2.0.168'
+compile 'com.solidfire:solidfire-sdk-java:1.2.2.0'
 
 ~~~
 
