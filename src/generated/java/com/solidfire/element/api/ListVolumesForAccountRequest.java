@@ -35,7 +35,7 @@ public class ListVolumesForAccountRequest implements Serializable {
     public static final long serialVersionUID = 245848432924198062L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
-    @SerializedName("limit") private Optional<Long> limit;
+    @SerializedName("limit") private Optional<Long> limit = Optional.of(10000L);
 
     // empty constructor
     @Since("7.0")

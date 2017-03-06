@@ -573,40 +573,6 @@ public interface SolidFireElementIF {
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
-     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
-     * 
-     * Note: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
-     **/
-    @Since("7.0")
-    @ConnectionType("Both")
-    public CreateClusterResult createCluster(final CreateClusterRequest request);
-
-    /** 
-     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
-     * 
-     * Note: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
-     **/
-    @Since("7.0")
-    @ConnectionType("Both")
-    public CreateClusterResult createCluster(
-        
-        Optional<Boolean> acceptEula
-, 
-        String mvip
-, 
-        String svip
-, 
-        Long repCount
-, 
-        String username
-, 
-        String password
-, 
-        String[] nodes
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
      * The EnableEncryptionAtRest method is used to enable the Advanced Encryption Standard (AES) 256-bit encryption at rest on the cluster so that the cluster can manage the encryption key used for the drives on each node. This feature is not enabled by default. Enabling this operation allows the cluster to automatically manage encryption keys internally for the drives on each node in the cluster. Nodes do not store the keys to unlock drives and the keys are never passed over the network. Two nodes participating in a cluster are required to access the key to disable encryption on a drive. The encryption management does not affect performance or efficiency on the cluster. If an encryption-enabled drive or node is removed from the cluster with the API, all data is secure erased and any data left on the drive cannot be read or accessed.
      * Enabling or disabling encryption should be performed when the cluster is running and in a healthy state. Encryption can be enabled or disabled at your discretion and can be performed as often as you need.
      * Note: This process is asynchronous and returns a response before encryption is enabled. The GetClusterInfo method can be used to poll the system to see when the process has completed.
@@ -755,6 +721,40 @@ public interface SolidFireElementIF {
     public GetSnmpTrapInfoResult getSnmpTrapInfo(
         
         Optional<Long> id
+        );
+    /** 
+     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
+     * 
+     * Note: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
+     **/
+    @Since("7.0")
+    @ConnectionType("Both")
+    public CreateClusterResult createCluster(final CreateClusterRequest request);
+
+    /** 
+     * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
+     * 
+     * Note: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
+     **/
+    @Since("7.0")
+    @ConnectionType("Both")
+    public CreateClusterResult createCluster(
+        
+        Optional<Boolean> acceptEula
+, 
+        String mvip
+, 
+        String svip
+, 
+        Long repCount
+, 
+        String username
+, 
+        String password
+, 
+        String[] nodes
+, 
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
@@ -3156,22 +3156,6 @@ public interface SolidFireElementIF {
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
-     * Delete a volume access group from the system.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(final DeleteVolumeAccessGroupRequest request);
-
-    /** 
-     * Delete a volume access group from the system.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(
-        
-        Long volumeAccessGroupID
-        );
-    /** 
      * GetVolumeAccessGroupEfficiency is used to retrieve efficiency information about a volume access group. Only the volume access group provided as parameters in this API method is used to compute the capacity.
      **/
     @Since("6")
@@ -3240,6 +3224,54 @@ public interface SolidFireElementIF {
         Long[] volumes
         );
     /** 
+     * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
+     * 
+     * LUN assignment values must be unique for volumes in a volume access group. An exception will be seen if LUN assignments are duplicated in a volume access group. However, the same LUN values can be used again in different volume access groups.
+     * 
+     * Note: Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed. None of the specified LUN assignments will be modified if there is an exception.
+     * 
+     * Caution: If a LUN assignment is changed for a volume with active I/O, the I/O could be disrupted. Changes to the server configuration may be required in order to change volume LUN assignments.
+     **/
+    @Since("7")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(final ModifyVolumeAccessGroupLunAssignmentsRequest request);
+
+    /** 
+     * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
+     * 
+     * LUN assignment values must be unique for volumes in a volume access group. An exception will be seen if LUN assignments are duplicated in a volume access group. However, the same LUN values can be used again in different volume access groups.
+     * 
+     * Note: Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed. None of the specified LUN assignments will be modified if there is an exception.
+     * 
+     * Caution: If a LUN assignment is changed for a volume with active I/O, the I/O could be disrupted. Changes to the server configuration may be required in order to change volume LUN assignments.
+     **/
+    @Since("7")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(
+        
+        Long volumeAccessGroupID
+, 
+        LunAssignment[] lunAssignments
+        );
+    /** 
+     * Delete a volume access group from the system.
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(final DeleteVolumeAccessGroupRequest request);
+
+    /** 
+     * Delete a volume access group from the system.
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(
+        
+        Long volumeAccessGroupID
+, 
+        Boolean deleteOrphanInitiators
+        );
+    /** 
      * Update initiators and add or remove volumes from a volume access group.
      * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
      * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
@@ -3281,39 +3313,11 @@ public interface SolidFireElementIF {
 , 
         Optional<String[]> initiators
 , 
+        Boolean deleteOrphanInitiators
+, 
         Optional<Long[]> volumes
 , 
         Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
-     * 
-     * LUN assignment values must be unique for volumes in a volume access group. An exception will be seen if LUN assignments are duplicated in a volume access group. However, the same LUN values can be used again in different volume access groups.
-     * 
-     * Note: Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed. None of the specified LUN assignments will be modified if there is an exception.
-     * 
-     * Caution: If a LUN assignment is changed for a volume with active I/O, the I/O could be disrupted. Changes to the server configuration may be required in order to change volume LUN assignments.
-     **/
-    @Since("7")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(final ModifyVolumeAccessGroupLunAssignmentsRequest request);
-
-    /** 
-     * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
-     * 
-     * LUN assignment values must be unique for volumes in a volume access group. An exception will be seen if LUN assignments are duplicated in a volume access group. However, the same LUN values can be used again in different volume access groups.
-     * 
-     * Note: Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed. None of the specified LUN assignments will be modified if there is an exception.
-     * 
-     * Caution: If a LUN assignment is changed for a volume with active I/O, the I/O could be disrupted. Changes to the server configuration may be required in order to change volume LUN assignments.
-     **/
-    @Since("7")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupLunAssignmentsResult modifyVolumeAccessGroupLunAssignments(
-        
-        Long volumeAccessGroupID
-, 
-        LunAssignment[] lunAssignments
         );
     /** 
      * Remove initiators from a volume access group.
@@ -3333,7 +3337,7 @@ public interface SolidFireElementIF {
 , 
         String[] initiators
 , 
-        Optional<Boolean> deleteOrphanInitiators
+        Boolean deleteOrphanInitiators
         );
     /** 
      * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.

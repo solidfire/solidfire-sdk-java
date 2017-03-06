@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ListAccountsRequest implements Serializable {
 
     public static final long serialVersionUID = -2105972003732958220L;
-    @SerializedName("startAccountID") private Optional<Long> startAccountID;
+    @SerializedName("startAccountID") private Optional<Long> startAccountID = Optional.of(0L);
     @SerializedName("limit") private Optional<Long> limit;
 
     // empty constructor

@@ -34,7 +34,7 @@ public class ListVolumesRequest implements Serializable {
 
     public static final long serialVersionUID = -2486206820112754562L;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
-    @SerializedName("limit") private Optional<Long> limit;
+    @SerializedName("limit") private Optional<Long> limit = Optional.of(10000L);
     @SerializedName("volumeStatus") private Optional<String> volumeStatus;
     @SerializedName("accounts") private Optional<Long[]> accounts;
     @SerializedName("isPaired") private Optional<Boolean> isPaired;

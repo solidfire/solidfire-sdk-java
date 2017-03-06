@@ -34,9 +34,9 @@ public class SetSnmpTrapInfoRequest implements Serializable {
 
     public static final long serialVersionUID = -7074347406924822042L;
     @SerializedName("trapRecipients") private SnmpTrapRecipient[] trapRecipients;
-    @SerializedName("clusterFaultTrapsEnabled") private Boolean clusterFaultTrapsEnabled;
-    @SerializedName("clusterFaultResolvedTrapsEnabled") private Boolean clusterFaultResolvedTrapsEnabled;
-    @SerializedName("clusterEventTrapsEnabled") private Boolean clusterEventTrapsEnabled;
+    @SerializedName("clusterFaultTrapsEnabled") private Boolean clusterFaultTrapsEnabled = false;
+    @SerializedName("clusterFaultResolvedTrapsEnabled") private Boolean clusterFaultResolvedTrapsEnabled = false;
+    @SerializedName("clusterEventTrapsEnabled") private Boolean clusterEventTrapsEnabled = false;
 
     // empty constructor
     @Since("7.0")

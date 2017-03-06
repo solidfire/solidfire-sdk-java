@@ -36,7 +36,7 @@ public class CreateVolumeRequest implements Serializable {
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("totalSize") private Long totalSize;
-    @SerializedName("enable512e") private Boolean enable512e;
+    @SerializedName("enable512e") private Boolean enable512e = false;
     @SerializedName("qos") private Optional<VolumeQOS> qos;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
     @SerializedName("sliceCount") private Optional<Long> sliceCount;
