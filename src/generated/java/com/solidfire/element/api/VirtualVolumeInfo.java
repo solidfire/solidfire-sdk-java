@@ -35,7 +35,6 @@ public class VirtualVolumeInfo implements Serializable {
     public static final long serialVersionUID = -3100253211114290874L;
     @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
     @SerializedName("parentVirtualVolumeID") private java.util.UUID parentVirtualVolumeID;
-    @SerializedName("storageContainerID") private Optional<java.util.UUID> storageContainerID;
     @SerializedName("storageContainer") private StorageContainer storageContainer;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Long snapshotID;
@@ -58,7 +57,6 @@ public class VirtualVolumeInfo implements Serializable {
     public VirtualVolumeInfo(
         java.util.UUID virtualVolumeID,
         java.util.UUID parentVirtualVolumeID,
-        Optional<java.util.UUID> storageContainerID,
         StorageContainer storageContainer,
         Long volumeID,
         Long snapshotID,
@@ -74,7 +72,6 @@ public class VirtualVolumeInfo implements Serializable {
     {
         this.virtualVolumeID = virtualVolumeID;
         this.parentVirtualVolumeID = parentVirtualVolumeID;
-        this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : storageContainerID;
         this.storageContainer = storageContainer;
         this.volumeID = volumeID;
         this.snapshotID = snapshotID;
@@ -101,13 +98,6 @@ public class VirtualVolumeInfo implements Serializable {
     public java.util.UUID getParentVirtualVolumeID() { return this.parentVirtualVolumeID; }
     public void setParentVirtualVolumeID(java.util.UUID parentVirtualVolumeID) { 
         this.parentVirtualVolumeID = parentVirtualVolumeID;
-    }
-    /** 
-     * 
-     **/
-    public Optional<java.util.UUID> getStorageContainerID() { return this.storageContainerID; }
-    public void setStorageContainerID(Optional<java.util.UUID> storageContainerID) { 
-        this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : storageContainerID;
     }
     /** 
      * 
@@ -197,7 +187,6 @@ public class VirtualVolumeInfo implements Serializable {
         return 
             Objects.equals(virtualVolumeID, that.virtualVolumeID) && 
             Objects.equals(parentVirtualVolumeID, that.parentVirtualVolumeID) && 
-            Objects.equals(storageContainerID, that.storageContainerID) && 
             Objects.equals(storageContainer, that.storageContainer) && 
             Objects.equals(volumeID, that.volumeID) && 
             Objects.equals(snapshotID, that.snapshotID) && 
@@ -213,7 +202,7 @@ public class VirtualVolumeInfo implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( virtualVolumeID,parentVirtualVolumeID,storageContainerID,storageContainer,volumeID,snapshotID,virtualVolumeType,status,(Object[])bindings,(Object[])children,metadata,snapshotInfo,volumeInfo,descendants );
+        return Objects.hash( virtualVolumeID,parentVirtualVolumeID,storageContainer,volumeID,snapshotID,virtualVolumeType,status,(Object[])bindings,(Object[])children,metadata,snapshotInfo,volumeInfo,descendants );
     }
 
 
@@ -221,7 +210,6 @@ public class VirtualVolumeInfo implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("virtualVolumeID", virtualVolumeID);
         map.put("parentVirtualVolumeID", parentVirtualVolumeID);
-        map.put("storageContainerID", storageContainerID);
         map.put("storageContainer", storageContainer);
         map.put("volumeID", volumeID);
         map.put("snapshotID", snapshotID);
@@ -243,9 +231,6 @@ public class VirtualVolumeInfo implements Serializable {
 
         sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
         sb.append(" parentVirtualVolumeID : ").append(parentVirtualVolumeID).append(",");
-        if(null != storageContainerID && storageContainerID.isPresent()){
-            sb.append(" storageContainerID : ").append(storageContainerID).append(",");
-        }
         sb.append(" storageContainer : ").append(storageContainer).append(",");
         sb.append(" volumeID : ").append(volumeID).append(",");
         sb.append(" snapshotID : ").append(snapshotID).append(",");
@@ -278,7 +263,6 @@ public class VirtualVolumeInfo implements Serializable {
     public static class Builder {
         private java.util.UUID virtualVolumeID;
         private java.util.UUID parentVirtualVolumeID;
-        private Optional<java.util.UUID> storageContainerID;
         private StorageContainer storageContainer;
         private Long volumeID;
         private Long snapshotID;
@@ -297,7 +281,6 @@ public class VirtualVolumeInfo implements Serializable {
             return new VirtualVolumeInfo (
                          this.virtualVolumeID,
                          this.parentVirtualVolumeID,
-                         this.storageContainerID,
                          this.storageContainer,
                          this.volumeID,
                          this.snapshotID,
@@ -314,7 +297,6 @@ public class VirtualVolumeInfo implements Serializable {
         private VirtualVolumeInfo.Builder buildFrom(final VirtualVolumeInfo req) {
             this.virtualVolumeID = req.virtualVolumeID;
             this.parentVirtualVolumeID = req.parentVirtualVolumeID;
-            this.storageContainerID = req.storageContainerID;
             this.storageContainer = req.storageContainer;
             this.volumeID = req.volumeID;
             this.snapshotID = req.snapshotID;
@@ -337,11 +319,6 @@ public class VirtualVolumeInfo implements Serializable {
 
         public VirtualVolumeInfo.Builder parentVirtualVolumeID(final java.util.UUID parentVirtualVolumeID) {
             this.parentVirtualVolumeID = parentVirtualVolumeID;
-            return this;
-        }
-
-        public VirtualVolumeInfo.Builder optionalStorageContainerID(final java.util.UUID storageContainerID) {
-            this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : Optional.of(storageContainerID);
             return this;
         }
 
