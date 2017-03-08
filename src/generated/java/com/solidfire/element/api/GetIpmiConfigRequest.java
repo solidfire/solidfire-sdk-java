@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetIpmiConfigRequest  
+ * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
  **/
 
 public class GetIpmiConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = -9099686827245682514L;
+    public static final long serialVersionUID = 6742458829674675710L;
     @SerializedName("chassisType") private Optional<String> chassisType;
     @SerializedName("force") private Boolean force;
 
@@ -60,6 +61,7 @@ public class GetIpmiConfigRequest implements Serializable {
         this.chassisType = (chassisType == null) ? Optional.<String>empty() : chassisType;
     }
     /** 
+     * 
      **/
     public Boolean getForce() { return this.force; }
     public void setForce(Boolean force) { 
@@ -135,7 +137,7 @@ public class GetIpmiConfigRequest implements Serializable {
             return this;
         }
 
-        public GetIpmiConfigRequest.Builder optionalChassisType(final String chassisType) {
+        public GetIpmiConfigRequest.Builder optional(final String chassisType) {
             this.chassisType = (chassisType == null) ? Optional.<String>empty() : Optional.of(chassisType);
             return this;
         }

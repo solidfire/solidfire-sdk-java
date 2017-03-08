@@ -90,6 +90,7 @@ public class Platform implements Serializable {
         this.nodeMemoryGB = nodeMemoryGB;
     }
     /** 
+     * 
      **/
     public Optional<String> getPlatformConfigVersion() { return this.platformConfigVersion; }
     public void setPlatformConfigVersion(Optional<String> platformConfigVersion) { 
@@ -203,7 +204,7 @@ public class Platform implements Serializable {
             return this;
         }
 
-        public Platform.Builder optionalPlatformConfigVersion(final String platformConfigVersion) {
+        public Platform.Builder optional(final String platformConfigVersion) {
             this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : Optional.of(platformConfigVersion);
             return this;
         }

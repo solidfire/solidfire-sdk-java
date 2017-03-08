@@ -28,13 +28,15 @@ import java.util.Objects;
 
 /**
  * ListActiveVolumesRequest  
+ * ListActiveVolumes is used to return the list of active volumes currently in the system.
+ * The list of volumes is returned sorted in VolumeID order and can be returned in multiple parts (pages).
  **/
 
 public class ListActiveVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 4826675269592232446L;
+    public static final long serialVersionUID = -4085323662435647274L;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
-    @SerializedName("limit") private Optional<Long> limit = Optional.of(10000L);
+    @SerializedName("limit") private Optional<Long> limit;
 
     // empty constructor
     @Since("7.0")
@@ -140,12 +142,12 @@ public class ListActiveVolumesRequest implements Serializable {
             return this;
         }
 
-        public ListActiveVolumesRequest.Builder optionalStartVolumeID(final Long startVolumeID) {
+        public ListActiveVolumesRequest.Builder optional(final Long startVolumeID) {
             this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : Optional.of(startVolumeID);
             return this;
         }
 
-        public ListActiveVolumesRequest.Builder optionalLimit(final Long limit) {
+        public ListActiveVolumesRequest.Builder optional(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }

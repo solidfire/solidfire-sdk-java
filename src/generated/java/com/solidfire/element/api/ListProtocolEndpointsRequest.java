@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * ListProtocolEndpointsRequest  
+ * Gets protocol endpoints in the system
+ * If protocolEndpointIDs isn't specified all protocol endpoints
+ * are returned. Else the supplied protocolEndpointIDs are.
  **/
 
 public class ListProtocolEndpointsRequest implements Serializable {
 
-    public static final long serialVersionUID = 2280366146651572017L;
+    public static final long serialVersionUID = -3085332745445238309L;
     @SerializedName("protocolEndpointIDs") private Optional<java.util.UUID[]> protocolEndpointIDs;
 
     // empty constructor
@@ -50,6 +53,7 @@ public class ListProtocolEndpointsRequest implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<java.util.UUID[]> getProtocolEndpointIDs() { return this.protocolEndpointIDs; }
     public void setProtocolEndpointIDs(Optional<java.util.UUID[]> protocolEndpointIDs) { 
@@ -119,7 +123,7 @@ public class ListProtocolEndpointsRequest implements Serializable {
             return this;
         }
 
-        public ListProtocolEndpointsRequest.Builder optionalProtocolEndpointIDs(final java.util.UUID[] protocolEndpointIDs) {
+        public ListProtocolEndpointsRequest.Builder optional(final java.util.UUID[] protocolEndpointIDs) {
             this.protocolEndpointIDs = (protocolEndpointIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(protocolEndpointIDs);
             return this;
         }

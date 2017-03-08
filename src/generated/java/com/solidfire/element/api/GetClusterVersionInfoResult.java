@@ -59,24 +59,28 @@ public class GetClusterVersionInfoResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getClusterAPIVersion() { return this.clusterAPIVersion; }
     public void setClusterAPIVersion(String clusterAPIVersion) { 
         this.clusterAPIVersion = clusterAPIVersion;
     }
     /** 
+     * 
      **/
     public String getClusterVersion() { return this.clusterVersion; }
     public void setClusterVersion(String clusterVersion) { 
         this.clusterVersion = clusterVersion;
     }
     /** 
+     * 
      **/
     public ClusterVersionInfo[] getClusterVersionInfo() { return this.clusterVersionInfo; }
     public void setClusterVersionInfo(ClusterVersionInfo[] clusterVersionInfo) { 
         this.clusterVersionInfo = clusterVersionInfo;
     }
     /** 
+     * 
      **/
     public SoftwareVersionInfo getSoftwareVersionInfo() { return this.softwareVersionInfo; }
     public void setSoftwareVersionInfo(SoftwareVersionInfo softwareVersionInfo) { 

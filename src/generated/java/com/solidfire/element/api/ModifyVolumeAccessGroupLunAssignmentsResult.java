@@ -50,6 +50,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsResult implements Serializable
     }
 
     /** 
+     * 
      **/
     public VolumeAccessGroupLunAssignments getVolumeAccessGroupLunAssignments() { return this.volumeAccessGroupLunAssignments; }
     public void setVolumeAccessGroupLunAssignments(VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments) { 

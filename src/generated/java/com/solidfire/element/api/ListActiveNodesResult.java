@@ -50,6 +50,7 @@ public class ListActiveNodesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Node[] getNodes() { return this.nodes; }
     public void setNodes(Node[] nodes) { 

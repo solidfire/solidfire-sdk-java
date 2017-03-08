@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetAccountByNameRequest  
+ * Returns details about an account, given its Username.
  **/
 
 public class GetAccountByNameRequest implements Serializable {
 
-    public static final long serialVersionUID = -6774078436625157895L;
+    public static final long serialVersionUID = -8075543913758135473L;
     @SerializedName("username") private String username;
 
     // empty constructor

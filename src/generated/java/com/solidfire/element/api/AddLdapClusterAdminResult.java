@@ -50,6 +50,7 @@ public class AddLdapClusterAdminResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Long> getClusterAdminID() { return this.clusterAdminID; }
     public void setClusterAdminID(Optional<Long> clusterAdminID) { 
@@ -119,7 +120,7 @@ public class AddLdapClusterAdminResult implements Serializable {
             return this;
         }
 
-        public AddLdapClusterAdminResult.Builder optionalClusterAdminID(final Long clusterAdminID) {
+        public AddLdapClusterAdminResult.Builder optional(final Long clusterAdminID) {
             this.clusterAdminID = (clusterAdminID == null) ? Optional.<Long>empty() : Optional.of(clusterAdminID);
             return this;
         }

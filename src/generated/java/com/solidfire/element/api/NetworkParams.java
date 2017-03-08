@@ -68,42 +68,49 @@ public class NetworkParams implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<NetworkConfigParams> getBond10G() { return this.bond10G; }
     public void setBond10G(Optional<NetworkConfigParams> bond10G) { 
         this.bond10G = (bond10G == null) ? Optional.<NetworkConfigParams>empty() : bond10G;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfigParams> getBond1G() { return this.bond1G; }
     public void setBond1G(Optional<NetworkConfigParams> bond1G) { 
         this.bond1G = (bond1G == null) ? Optional.<NetworkConfigParams>empty() : bond1G;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfigParams> getEth0() { return this.eth0; }
     public void setEth0(Optional<NetworkConfigParams> eth0) { 
         this.eth0 = (eth0 == null) ? Optional.<NetworkConfigParams>empty() : eth0;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfigParams> getEth1() { return this.eth1; }
     public void setEth1(Optional<NetworkConfigParams> eth1) { 
         this.eth1 = (eth1 == null) ? Optional.<NetworkConfigParams>empty() : eth1;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfigParams> getEth2() { return this.eth2; }
     public void setEth2(Optional<NetworkConfigParams> eth2) { 
         this.eth2 = (eth2 == null) ? Optional.<NetworkConfigParams>empty() : eth2;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfigParams> getEth3() { return this.eth3; }
     public void setEth3(Optional<NetworkConfigParams> eth3) { 
         this.eth3 = (eth3 == null) ? Optional.<NetworkConfigParams>empty() : eth3;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfigParams> getLo() { return this.lo; }
     public void setLo(Optional<NetworkConfigParams> lo) { 
@@ -221,37 +228,37 @@ public class NetworkParams implements Serializable {
             return this;
         }
 
-        public NetworkParams.Builder optionalBond10G(final NetworkConfigParams bond10G) {
+        public NetworkParams.Builder optional(final NetworkConfigParams bond10G) {
             this.bond10G = (bond10G == null) ? Optional.<NetworkConfigParams>empty() : Optional.of(bond10G);
             return this;
         }
 
-        public NetworkParams.Builder optionalBond1G(final NetworkConfigParams bond1G) {
+        public NetworkParams.Builder optional(final NetworkConfigParams bond1G) {
             this.bond1G = (bond1G == null) ? Optional.<NetworkConfigParams>empty() : Optional.of(bond1G);
             return this;
         }
 
-        public NetworkParams.Builder optionalEth0(final NetworkConfigParams eth0) {
+        public NetworkParams.Builder optional(final NetworkConfigParams eth0) {
             this.eth0 = (eth0 == null) ? Optional.<NetworkConfigParams>empty() : Optional.of(eth0);
             return this;
         }
 
-        public NetworkParams.Builder optionalEth1(final NetworkConfigParams eth1) {
+        public NetworkParams.Builder optional(final NetworkConfigParams eth1) {
             this.eth1 = (eth1 == null) ? Optional.<NetworkConfigParams>empty() : Optional.of(eth1);
             return this;
         }
 
-        public NetworkParams.Builder optionalEth2(final NetworkConfigParams eth2) {
+        public NetworkParams.Builder optional(final NetworkConfigParams eth2) {
             this.eth2 = (eth2 == null) ? Optional.<NetworkConfigParams>empty() : Optional.of(eth2);
             return this;
         }
 
-        public NetworkParams.Builder optionalEth3(final NetworkConfigParams eth3) {
+        public NetworkParams.Builder optional(final NetworkConfigParams eth3) {
             this.eth3 = (eth3 == null) ? Optional.<NetworkConfigParams>empty() : Optional.of(eth3);
             return this;
         }
 
-        public NetworkParams.Builder optionalLo(final NetworkConfigParams lo) {
+        public NetworkParams.Builder optional(final NetworkConfigParams lo) {
             this.lo = (lo == null) ? Optional.<NetworkConfigParams>empty() : Optional.of(lo);
             return this;
         }

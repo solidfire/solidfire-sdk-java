@@ -80,66 +80,77 @@ public class NodeWaitingToJoin implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<String> getName() { return this.name; }
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
     /** 
+     * 
      **/
     public String getVersion() { return this.version; }
     public void setVersion(String version) { 
         this.version = version;
     }
     /** 
+     * 
      **/
     public Optional<Long> getNodeID() { return this.nodeID; }
     public void setNodeID(Optional<Long> nodeID) { 
         this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
     }
     /** 
+     * 
      **/
     public Optional<Long> getPendingNodeID() { return this.pendingNodeID; }
     public void setPendingNodeID(Optional<Long> pendingNodeID) { 
         this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : pendingNodeID;
     }
     /** 
+     * 
      **/
     public Optional<String> getMip() { return this.mip; }
     public void setMip(Optional<String> mip) { 
         this.mip = (mip == null) ? Optional.<String>empty() : mip;
     }
     /** 
+     * 
      **/
     public Optional<String> getCip() { return this.cip; }
     public void setCip(Optional<String> cip) { 
         this.cip = (cip == null) ? Optional.<String>empty() : cip;
     }
     /** 
+     * 
      **/
     public Optional<String> getSip() { return this.sip; }
     public void setSip(Optional<String> sip) { 
         this.sip = (sip == null) ? Optional.<String>empty() : sip;
     }
     /** 
+     * 
      **/
     public Boolean getCompatible() { return this.compatible; }
     public void setCompatible(Boolean compatible) { 
         this.compatible = compatible;
     }
     /** 
+     * 
      **/
     public Optional<String> getChassisType() { return this.chassisType; }
     public void setChassisType(Optional<String> chassisType) { 
         this.chassisType = (chassisType == null) ? Optional.<String>empty() : chassisType;
     }
     /** 
+     * 
      **/
     public Optional<String> getHostname() { return this.hostname; }
     public void setHostname(Optional<String> hostname) { 
         this.hostname = (hostname == null) ? Optional.<String>empty() : hostname;
     }
     /** 
+     * 
      **/
     public Optional<String> getNodeType() { return this.nodeType; }
     public void setNodeType(Optional<String> nodeType) { 
@@ -285,7 +296,7 @@ public class NodeWaitingToJoin implements Serializable {
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optionalName(final String name) {
+        public NodeWaitingToJoin.Builder optional(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
@@ -295,27 +306,27 @@ public class NodeWaitingToJoin implements Serializable {
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optionalNodeID(final Long nodeID) {
+        public NodeWaitingToJoin.Builder optional(final Long nodeID) {
             this.nodeID = (nodeID == null) ? Optional.<Long>empty() : Optional.of(nodeID);
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optionalPendingNodeID(final Long pendingNodeID) {
+        public NodeWaitingToJoin.Builder optional(final Long pendingNodeID) {
             this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : Optional.of(pendingNodeID);
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optionalMip(final String mip) {
+        public NodeWaitingToJoin.Builder optional(final String mip) {
             this.mip = (mip == null) ? Optional.<String>empty() : Optional.of(mip);
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optionalCip(final String cip) {
+        public NodeWaitingToJoin.Builder optional(final String cip) {
             this.cip = (cip == null) ? Optional.<String>empty() : Optional.of(cip);
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optionalSip(final String sip) {
+        public NodeWaitingToJoin.Builder optional(final String sip) {
             this.sip = (sip == null) ? Optional.<String>empty() : Optional.of(sip);
             return this;
         }
@@ -325,17 +336,17 @@ public class NodeWaitingToJoin implements Serializable {
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optionalChassisType(final String chassisType) {
+        public NodeWaitingToJoin.Builder optional(final String chassisType) {
             this.chassisType = (chassisType == null) ? Optional.<String>empty() : Optional.of(chassisType);
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optionalHostname(final String hostname) {
+        public NodeWaitingToJoin.Builder optional(final String hostname) {
             this.hostname = (hostname == null) ? Optional.<String>empty() : Optional.of(hostname);
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optionalNodeType(final String nodeType) {
+        public NodeWaitingToJoin.Builder optional(final String nodeType) {
             this.nodeType = (nodeType == null) ? Optional.<String>empty() : Optional.of(nodeType);
             return this;
         }

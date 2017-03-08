@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * AddVirtualNetworkRequest  
+ * AddVirtualNetwork is used to add a new virtual network to a cluster configuration. When a virtual network is added, an interface for each node is created and each will require a virtual network IP address. The number of IP addresses specified as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. Virtual network addresses are bulk provisioned by SolidFire and assigned to individual nodes automatically. Virtual network addresses do not need to be assigned to nodes manually.
+ * 
+ * Note: The AddVirtualNetwork method is used only to create a new virtual network. If you want to make changes to a virtual network, please use the ModifyVirtualNetwork method.
  **/
 
 public class AddVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = -2607397254846725433L;
+    public static final long serialVersionUID = -6379118305344760739L;
     @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
     @SerializedName("name") private String name;
     @SerializedName("addressBlocks") private AddressBlock[] addressBlocks;
@@ -282,17 +285,17 @@ public class AddVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public AddVirtualNetworkRequest.Builder optionalGateway(final String gateway) {
+        public AddVirtualNetworkRequest.Builder optional(final String gateway) {
             this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
             return this;
         }
 
-        public AddVirtualNetworkRequest.Builder optionalNamespace(final Boolean namespace) {
+        public AddVirtualNetworkRequest.Builder optional(final Boolean namespace) {
             this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
             return this;
         }
 
-        public AddVirtualNetworkRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public AddVirtualNetworkRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

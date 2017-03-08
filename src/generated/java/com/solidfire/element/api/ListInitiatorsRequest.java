@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListInitiatorsRequest  
+ * ListInitiators enables you to list initiator IQNs or World Wide Port Names (WWPNs).
  **/
 
 public class ListInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 3268711327032306340L;
+    public static final long serialVersionUID = -4434314446707155324L;
     @SerializedName("startInitiatorID") private Optional<Long> startInitiatorID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("initiators") private Optional<Long[]> initiators;
@@ -156,17 +157,17 @@ public class ListInitiatorsRequest implements Serializable {
             return this;
         }
 
-        public ListInitiatorsRequest.Builder optionalStartInitiatorID(final Long startInitiatorID) {
+        public ListInitiatorsRequest.Builder optional(final Long startInitiatorID) {
             this.startInitiatorID = (startInitiatorID == null) ? Optional.<Long>empty() : Optional.of(startInitiatorID);
             return this;
         }
 
-        public ListInitiatorsRequest.Builder optionalLimit(final Long limit) {
+        public ListInitiatorsRequest.Builder optional(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }
 
-        public ListInitiatorsRequest.Builder optionalInitiators(final Long[] initiators) {
+        public ListInitiatorsRequest.Builder optional(final Long[] initiators) {
             this.initiators = (initiators == null) ? Optional.<Long[]>empty() : Optional.of(initiators);
             return this;
         }

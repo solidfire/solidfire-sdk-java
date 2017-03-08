@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListStorageContainersRequest  
+ * Gets information for all storage containers currently in the system.
  **/
 
 public class ListStorageContainersRequest implements Serializable {
 
-    public static final long serialVersionUID = 6165115027762705922L;
+    public static final long serialVersionUID = -5845430743886438182L;
     @SerializedName("storageContainerIDs") private Optional<java.util.UUID[]> storageContainerIDs;
 
     // empty constructor
@@ -120,7 +121,7 @@ public class ListStorageContainersRequest implements Serializable {
             return this;
         }
 
-        public ListStorageContainersRequest.Builder optionalStorageContainerIDs(final java.util.UUID[] storageContainerIDs) {
+        public ListStorageContainersRequest.Builder optional(final java.util.UUID[] storageContainerIDs) {
             this.storageContainerIDs = (storageContainerIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(storageContainerIDs);
             return this;
         }

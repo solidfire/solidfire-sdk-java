@@ -50,6 +50,7 @@ public class GetClusterStatsResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public ClusterStats getClusterStats() { return this.clusterStats; }
     public void setClusterStats(ClusterStats clusterStats) { 

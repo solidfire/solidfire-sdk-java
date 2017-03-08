@@ -28,15 +28,16 @@ import java.util.Objects;
 
 /**
  * SetSnmpTrapInfoRequest  
+ * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
  **/
 
 public class SetSnmpTrapInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -7074347406924822042L;
+    public static final long serialVersionUID = -2775784902633889894L;
     @SerializedName("trapRecipients") private SnmpTrapRecipient[] trapRecipients;
-    @SerializedName("clusterFaultTrapsEnabled") private Boolean clusterFaultTrapsEnabled = false;
-    @SerializedName("clusterFaultResolvedTrapsEnabled") private Boolean clusterFaultResolvedTrapsEnabled = false;
-    @SerializedName("clusterEventTrapsEnabled") private Boolean clusterEventTrapsEnabled = false;
+    @SerializedName("clusterFaultTrapsEnabled") private Boolean clusterFaultTrapsEnabled;
+    @SerializedName("clusterFaultResolvedTrapsEnabled") private Boolean clusterFaultResolvedTrapsEnabled;
+    @SerializedName("clusterEventTrapsEnabled") private Boolean clusterEventTrapsEnabled;
 
     // empty constructor
     @Since("7.0")

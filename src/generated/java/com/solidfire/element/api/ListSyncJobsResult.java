@@ -50,6 +50,7 @@ public class ListSyncJobsResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public SyncJob[] getSyncJobs() { return this.syncJobs; }
     public void setSyncJobs(SyncJob[] syncJobs) { 

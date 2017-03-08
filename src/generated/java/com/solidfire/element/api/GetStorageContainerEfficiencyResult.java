@@ -62,12 +62,14 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Double getCompression() { return this.compression; }
     public void setCompression(Double compression) { 
         this.compression = compression;
     }
     /** 
+     * 
      **/
     public Double getDeduplication() { return this.deduplication; }
     public void setDeduplication(Double deduplication) { 
@@ -81,6 +83,7 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
         this.missingVolumes = missingVolumes;
     }
     /** 
+     * 
      **/
     public Double getThinProvisioning() { return this.thinProvisioning; }
     public void setThinProvisioning(Double thinProvisioning) { 

@@ -59,24 +59,28 @@ public class ResetNodeResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<ResetNodeDetails> getDetails() { return this.details; }
     public void setDetails(Optional<ResetNodeDetails> details) { 
         this.details = (details == null) ? Optional.<ResetNodeDetails>empty() : details;
     }
     /** 
+     * 
      **/
     public Optional<String> getDuration() { return this.duration; }
     public void setDuration(Optional<String> duration) { 
         this.duration = (duration == null) ? Optional.<String>empty() : duration;
     }
     /** 
+     * 
      **/
     public Optional<String> getResult() { return this.result; }
     public void setResult(Optional<String> result) { 
         this.result = (result == null) ? Optional.<String>empty() : result;
     }
     /** 
+     * 
      **/
     public Optional<RtfiInfo> getRtfiInfo() { return this.rtfiInfo; }
     public void setRtfiInfo(Optional<RtfiInfo> rtfiInfo) { 
@@ -170,22 +174,22 @@ public class ResetNodeResult implements Serializable {
             return this;
         }
 
-        public ResetNodeResult.Builder optionalDetails(final ResetNodeDetails details) {
+        public ResetNodeResult.Builder optional(final ResetNodeDetails details) {
             this.details = (details == null) ? Optional.<ResetNodeDetails>empty() : Optional.of(details);
             return this;
         }
 
-        public ResetNodeResult.Builder optionalDuration(final String duration) {
+        public ResetNodeResult.Builder optional(final String duration) {
             this.duration = (duration == null) ? Optional.<String>empty() : Optional.of(duration);
             return this;
         }
 
-        public ResetNodeResult.Builder optionalResult(final String result) {
+        public ResetNodeResult.Builder optional(final String result) {
             this.result = (result == null) ? Optional.<String>empty() : Optional.of(result);
             return this;
         }
 
-        public ResetNodeResult.Builder optionalRtfiInfo(final RtfiInfo rtfiInfo) {
+        public ResetNodeResult.Builder optional(final RtfiInfo rtfiInfo) {
             this.rtfiInfo = (rtfiInfo == null) ? Optional.<RtfiInfo>empty() : Optional.of(rtfiInfo);
             return this;
         }

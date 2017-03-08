@@ -137,7 +137,7 @@ public class ListNodeFibreChannelPortInfoResult implements Serializable {
             return this;
         }
 
-        public ListNodeFibreChannelPortInfoResult.Builder optionalNodes(final NodeFibreChannelPortInfoResult[] nodes) {
+        public ListNodeFibreChannelPortInfoResult.Builder optional(final NodeFibreChannelPortInfoResult[] nodes) {
             this.nodes = (nodes == null) ? Optional.<NodeFibreChannelPortInfoResult[]>empty() : Optional.of(nodes);
             return this;
         }

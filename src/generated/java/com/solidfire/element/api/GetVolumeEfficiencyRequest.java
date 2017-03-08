@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * GetVolumeEfficiencyRequest  
+ * GetVolumeEfficiency is used to retrieve information about a volume.
+ * Only the volume given as a parameter in this API method is used to compute the capacity.
  **/
 
 public class GetVolumeEfficiencyRequest implements Serializable {
 
-    public static final long serialVersionUID = 6871428855542224054L;
+    public static final long serialVersionUID = 7334865501296498826L;
     @SerializedName("volumeID") private Long volumeID;
 
     // empty constructor

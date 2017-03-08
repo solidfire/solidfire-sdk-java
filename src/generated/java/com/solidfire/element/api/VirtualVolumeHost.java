@@ -65,36 +65,42 @@ public class VirtualVolumeHost implements Serializable {
     }
 
     /** 
+     * 
      **/
     public java.util.UUID getVirtualVolumeHostID() { return this.virtualVolumeHostID; }
     public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) { 
         this.virtualVolumeHostID = virtualVolumeHostID;
     }
     /** 
+     * 
      **/
     public java.util.UUID getClusterID() { return this.clusterID; }
     public void setClusterID(java.util.UUID clusterID) { 
         this.clusterID = clusterID;
     }
     /** 
+     * 
      **/
     public java.util.UUID[] getVisibleProtocolEndpointIDs() { return this.visibleProtocolEndpointIDs; }
     public void setVisibleProtocolEndpointIDs(java.util.UUID[] visibleProtocolEndpointIDs) { 
         this.visibleProtocolEndpointIDs = visibleProtocolEndpointIDs;
     }
     /** 
+     * 
      **/
     public Long[] getBindings() { return this.bindings; }
     public void setBindings(Long[] bindings) { 
         this.bindings = bindings;
     }
     /** 
+     * 
      **/
     public String[] getInitiatorNames() { return this.initiatorNames; }
     public void setInitiatorNames(String[] initiatorNames) { 
         this.initiatorNames = initiatorNames;
     }
     /** 
+     * 
      **/
     public String getHostAddress() { return this.hostAddress; }
     public void setHostAddress(String hostAddress) { 

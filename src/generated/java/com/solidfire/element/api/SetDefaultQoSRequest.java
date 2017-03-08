@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * SetDefaultQoSRequest  
+ * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.
  **/
 
 public class SetDefaultQoSRequest implements Serializable {
 
-    public static final long serialVersionUID = 3965487383106376781L;
+    public static final long serialVersionUID = -7077690356195437969L;
     @SerializedName("minIOPS") private Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private Optional<Long> maxIOPS;
     @SerializedName("burstIOPS") private Optional<Long> burstIOPS;
@@ -156,17 +157,17 @@ public class SetDefaultQoSRequest implements Serializable {
             return this;
         }
 
-        public SetDefaultQoSRequest.Builder optionalMinIOPS(final Long minIOPS) {
+        public SetDefaultQoSRequest.Builder optional(final Long minIOPS) {
             this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : Optional.of(minIOPS);
             return this;
         }
 
-        public SetDefaultQoSRequest.Builder optionalMaxIOPS(final Long maxIOPS) {
+        public SetDefaultQoSRequest.Builder optional(final Long maxIOPS) {
             this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : Optional.of(maxIOPS);
             return this;
         }
 
-        public SetDefaultQoSRequest.Builder optionalBurstIOPS(final Long burstIOPS) {
+        public SetDefaultQoSRequest.Builder optional(final Long burstIOPS) {
             this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : Optional.of(burstIOPS);
             return this;
         }

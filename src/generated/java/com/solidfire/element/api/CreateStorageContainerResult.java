@@ -50,6 +50,7 @@ public class CreateStorageContainerResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public StorageContainer getStorageContainer() { return this.storageContainer; }
     public void setStorageContainer(StorageContainer storageContainer) { 

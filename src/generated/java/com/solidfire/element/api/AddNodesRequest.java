@@ -28,11 +28,20 @@ import java.util.Objects;
 
 /**
  * AddNodesRequest  
+ * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
+ * 
+ * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
+ * 
+ * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
+ * 
+ * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
+ * 
+ * Note: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
  **/
 
 public class AddNodesRequest implements Serializable {
 
-    public static final long serialVersionUID = 3993935760062895060L;
+    public static final long serialVersionUID = -3701373756118626536L;
     @SerializedName("pendingNodes") private Long[] pendingNodes;
     @SerializedName("autoInstall") private Optional<Boolean> autoInstall;
 
@@ -141,7 +150,7 @@ public class AddNodesRequest implements Serializable {
             return this;
         }
 
-        public AddNodesRequest.Builder optionalAutoInstall(final Boolean autoInstall) {
+        public AddNodesRequest.Builder optional(final Boolean autoInstall) {
             this.autoInstall = (autoInstall == null) ? Optional.<Boolean>empty() : Optional.of(autoInstall);
             return this;
         }

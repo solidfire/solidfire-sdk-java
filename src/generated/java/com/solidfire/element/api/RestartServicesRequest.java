@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * RestartServicesRequest  
+ * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
  **/
 
 public class RestartServicesRequest implements Serializable {
 
-    public static final long serialVersionUID = 4336616463661009278L;
+    public static final long serialVersionUID = 1720460094482035026L;
     @SerializedName("force") private Boolean force;
     @SerializedName("service") private Optional<String> service;
     @SerializedName("action") private Optional<String> action;
@@ -159,12 +160,12 @@ public class RestartServicesRequest implements Serializable {
             return this;
         }
 
-        public RestartServicesRequest.Builder optionalService(final String service) {
+        public RestartServicesRequest.Builder optional(final String service) {
             this.service = (service == null) ? Optional.<String>empty() : Optional.of(service);
             return this;
         }
 
-        public RestartServicesRequest.Builder optionalAction(final String action) {
+        public RestartServicesRequest.Builder optional(final String action) {
             this.action = (action == null) ? Optional.<String>empty() : Optional.of(action);
             return this;
         }

@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * RestoreDeletedVolumeRequest  
+ * RestoreDeletedVolume marks a deleted volume as active again.
+ * This action makes the volume immediately available for iSCSI connection.
  **/
 
 public class RestoreDeletedVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 5395134700613497933L;
+    public static final long serialVersionUID = -8028423778645754205L;
     @SerializedName("volumeID") private Long volumeID;
 
     // empty constructor

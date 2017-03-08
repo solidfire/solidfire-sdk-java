@@ -140,6 +140,7 @@ public class NetworkInterface implements Serializable {
         this.virtualNetworkTag = virtualNetworkTag;
     }
     /** 
+     * 
      **/
     public Optional<Boolean> getNamespace() { return this.namespace; }
     public void setNamespace(Optional<Boolean> namespace) { 
@@ -308,7 +309,7 @@ public class NetworkInterface implements Serializable {
             return this;
         }
 
-        public NetworkInterface.Builder optionalNamespace(final Boolean namespace) {
+        public NetworkInterface.Builder optional(final Boolean namespace) {
             this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
             return this;
         }

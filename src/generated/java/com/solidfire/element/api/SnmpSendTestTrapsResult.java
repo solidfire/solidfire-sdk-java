@@ -50,6 +50,7 @@ public class SnmpSendTestTrapsResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 

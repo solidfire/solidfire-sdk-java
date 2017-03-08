@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * PurgeDeletedVolumesRequest  
+ * PurgeDeletedVolumes immediately and permanently purges volumes that have been deleted; you can use this method to purge up to 500 volumes at one time. You must delete volumes using DeleteVolumes before they can be purged. Volumes are purged by the system automatically after a period of time, so usage of this method is not typically required.
  **/
 
 public class PurgeDeletedVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -291946162793185834L;
+    public static final long serialVersionUID = -1606746892961402390L;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
     @SerializedName("accountIDs") private Optional<Long[]> accountIDs;
     @SerializedName("volumeAccessGroupIDs") private Optional<Long[]> volumeAccessGroupIDs;
@@ -156,17 +157,17 @@ public class PurgeDeletedVolumesRequest implements Serializable {
             return this;
         }
 
-        public PurgeDeletedVolumesRequest.Builder optionalVolumeIDs(final Long[] volumeIDs) {
+        public PurgeDeletedVolumesRequest.Builder optional(final Long[] volumeIDs) {
             this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
             return this;
         }
 
-        public PurgeDeletedVolumesRequest.Builder optionalAccountIDs(final Long[] accountIDs) {
+        public PurgeDeletedVolumesRequest.Builder optional(final Long[] accountIDs) {
             this.accountIDs = (accountIDs == null) ? Optional.<Long[]>empty() : Optional.of(accountIDs);
             return this;
         }
 
-        public PurgeDeletedVolumesRequest.Builder optionalVolumeAccessGroupIDs(final Long[] volumeAccessGroupIDs) {
+        public PurgeDeletedVolumesRequest.Builder optional(final Long[] volumeAccessGroupIDs) {
             this.volumeAccessGroupIDs = (volumeAccessGroupIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroupIDs);
             return this;
         }

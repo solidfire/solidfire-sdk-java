@@ -28,12 +28,13 @@ import java.util.Objects;
 
 /**
  * ListAccountsRequest  
+ * Returns the entire list of accounts, with optional paging support.
  **/
 
 public class ListAccountsRequest implements Serializable {
 
-    public static final long serialVersionUID = -2105972003732958220L;
-    @SerializedName("startAccountID") private Optional<Long> startAccountID = Optional.of(0L);
+    public static final long serialVersionUID = 6374093142117098440L;
+    @SerializedName("startAccountID") private Optional<Long> startAccountID;
     @SerializedName("limit") private Optional<Long> limit;
 
     // empty constructor
@@ -141,12 +142,12 @@ public class ListAccountsRequest implements Serializable {
             return this;
         }
 
-        public ListAccountsRequest.Builder optionalStartAccountID(final Long startAccountID) {
+        public ListAccountsRequest.Builder optional(final Long startAccountID) {
             this.startAccountID = (startAccountID == null) ? Optional.<Long>empty() : Optional.of(startAccountID);
             return this;
         }
 
-        public ListAccountsRequest.Builder optionalLimit(final Long limit) {
+        public ListAccountsRequest.Builder optional(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }

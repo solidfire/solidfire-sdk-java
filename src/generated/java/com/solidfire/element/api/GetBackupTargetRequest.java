@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetBackupTargetRequest  
+ * GetBackupTarget allows you to return information about a specific backup target that has been created.
  **/
 
 public class GetBackupTargetRequest implements Serializable {
 
-    public static final long serialVersionUID = 1799534556354182754L;
+    public static final long serialVersionUID = 8900616105622903806L;
     @SerializedName("backupTargetID") private Long backupTargetID;
 
     // empty constructor

@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ClearClusterFaultsRequest  
+ * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
  **/
 
 public class ClearClusterFaultsRequest implements Serializable {
 
-    public static final long serialVersionUID = 6178629724073244806L;
+    public static final long serialVersionUID = 8304045543083765534L;
     @SerializedName("faultType") private Optional<String> faultType;
 
     // empty constructor
@@ -123,7 +124,7 @@ public class ClearClusterFaultsRequest implements Serializable {
             return this;
         }
 
-        public ClearClusterFaultsRequest.Builder optionalFaultType(final String faultType) {
+        public ClearClusterFaultsRequest.Builder optional(final String faultType) {
             this.faultType = (faultType == null) ? Optional.<String>empty() : Optional.of(faultType);
             return this;
         }

@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetVolumeAccessGroupEfficiencyRequest  
+ * GetVolumeAccessGroupEfficiency is used to retrieve efficiency information about a volume access group. Only the volume access group provided as parameters in this API method is used to compute the capacity.
  **/
 
 public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
 
-    public static final long serialVersionUID = -2608069424773464920L;
+    public static final long serialVersionUID = -7890874166847398160L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
 
     // empty constructor

@@ -132,6 +132,7 @@ public class NodeStatsInfo implements Serializable {
         this.networkUtilizationStorage = networkUtilizationStorage;
     }
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 

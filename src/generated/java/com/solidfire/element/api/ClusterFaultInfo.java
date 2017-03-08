@@ -92,90 +92,105 @@ public class ClusterFaultInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Long[]> getDriveIDs() { return this.driveIDs; }
     public void setDriveIDs(Optional<Long[]> driveIDs) { 
         this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
     }
     /** 
+     * 
      **/
     public Optional<String> getNetworkInterface() { return this.networkInterface; }
     public void setNetworkInterface(Optional<String> networkInterface) { 
         this.networkInterface = (networkInterface == null) ? Optional.<String>empty() : networkInterface;
     }
     /** 
+     * 
      **/
     public String getSeverity() { return this.severity; }
     public void setSeverity(String severity) { 
         this.severity = severity;
     }
     /** 
+     * 
      **/
     public String getType() { return this.type; }
     public void setType(String type) { 
         this.type = type;
     }
     /** 
+     * 
      **/
     public String getCode() { return this.code; }
     public void setCode(String code) { 
         this.code = code;
     }
     /** 
+     * 
      **/
     public String getDetails() { return this.details; }
     public void setDetails(String details) { 
         this.details = details;
     }
     /** 
+     * 
      **/
     public Long getNodeHardwareFaultID() { return this.nodeHardwareFaultID; }
     public void setNodeHardwareFaultID(Long nodeHardwareFaultID) { 
         this.nodeHardwareFaultID = nodeHardwareFaultID;
     }
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public Long getServiceID() { return this.serviceID; }
     public void setServiceID(Long serviceID) { 
         this.serviceID = serviceID;
     }
     /** 
+     * 
      **/
     public Long getDriveID() { return this.driveID; }
     public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
     /** 
+     * 
      **/
     public Boolean getResolved() { return this.resolved; }
     public void setResolved(Boolean resolved) { 
         this.resolved = resolved;
     }
     /** 
+     * 
      **/
     public Long getClusterFaultID() { return this.clusterFaultID; }
     public void setClusterFaultID(Long clusterFaultID) { 
         this.clusterFaultID = clusterFaultID;
     }
     /** 
+     * 
      **/
     public String getDate() { return this.date; }
     public void setDate(String date) { 
         this.date = date;
     }
     /** 
+     * 
      **/
     public String getResolvedDate() { return this.resolvedDate; }
     public void setResolvedDate(String resolvedDate) { 
         this.resolvedDate = resolvedDate;
     }
     /** 
+     * 
      **/
     public java.util.Map<String, Object> getData() { return this.data; }
     public void setData(java.util.Map<String, Object> data) { 
@@ -331,12 +346,12 @@ public class ClusterFaultInfo implements Serializable {
             return this;
         }
 
-        public ClusterFaultInfo.Builder optionalDriveIDs(final Long[] driveIDs) {
+        public ClusterFaultInfo.Builder optional(final Long[] driveIDs) {
             this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : Optional.of(driveIDs);
             return this;
         }
 
-        public ClusterFaultInfo.Builder optionalNetworkInterface(final String networkInterface) {
+        public ClusterFaultInfo.Builder optional(final String networkInterface) {
             this.networkInterface = (networkInterface == null) ? Optional.<String>empty() : Optional.of(networkInterface);
             return this;
         }

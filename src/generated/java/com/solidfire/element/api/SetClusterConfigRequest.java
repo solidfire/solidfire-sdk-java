@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * SetClusterConfigRequest  
+ * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
+ * 
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class SetClusterConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = -7925735231313580112L;
+    public static final long serialVersionUID = 3612210251242528660L;
     @SerializedName("cluster") private ClusterConfig cluster;
 
     // empty constructor

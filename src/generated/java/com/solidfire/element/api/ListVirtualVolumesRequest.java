@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListVirtualVolumesRequest  
+ * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
  **/
 
 public class ListVirtualVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -1561321066464562588L;
+    public static final long serialVersionUID = 464604941728324684L;
     @SerializedName("details") private Optional<Boolean> details;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("recursive") private Optional<Boolean> recursive;
@@ -192,27 +193,27 @@ public class ListVirtualVolumesRequest implements Serializable {
             return this;
         }
 
-        public ListVirtualVolumesRequest.Builder optionalDetails(final Boolean details) {
+        public ListVirtualVolumesRequest.Builder optional(final Boolean details) {
             this.details = (details == null) ? Optional.<Boolean>empty() : Optional.of(details);
             return this;
         }
 
-        public ListVirtualVolumesRequest.Builder optionalLimit(final Long limit) {
+        public ListVirtualVolumesRequest.Builder optional(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }
 
-        public ListVirtualVolumesRequest.Builder optionalRecursive(final Boolean recursive) {
+        public ListVirtualVolumesRequest.Builder optional(final Boolean recursive) {
             this.recursive = (recursive == null) ? Optional.<Boolean>empty() : Optional.of(recursive);
             return this;
         }
 
-        public ListVirtualVolumesRequest.Builder optionalStartVirtualVolumeID(final java.util.UUID startVirtualVolumeID) {
+        public ListVirtualVolumesRequest.Builder optional(final java.util.UUID startVirtualVolumeID) {
             this.startVirtualVolumeID = (startVirtualVolumeID == null) ? Optional.<java.util.UUID>empty() : Optional.of(startVirtualVolumeID);
             return this;
         }
 
-        public ListVirtualVolumesRequest.Builder optionalVirtualVolumeIDs(final java.util.UUID[] virtualVolumeIDs) {
+        public ListVirtualVolumesRequest.Builder optional(final java.util.UUID[] virtualVolumeIDs) {
             this.virtualVolumeIDs = (virtualVolumeIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(virtualVolumeIDs);
             return this;
         }

@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListDriveStatsRequest  
+ * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
  **/
 
 public class ListDriveStatsRequest implements Serializable {
 
-    public static final long serialVersionUID = -6463847803564234079L;
+    public static final long serialVersionUID = -8823982620292117441L;
     @SerializedName("drives") private Optional<Long[]> drives;
 
     // empty constructor
@@ -120,7 +121,7 @@ public class ListDriveStatsRequest implements Serializable {
             return this;
         }
 
-        public ListDriveStatsRequest.Builder optionalDrives(final Long[] drives) {
+        public ListDriveStatsRequest.Builder optional(final Long[] drives) {
             this.drives = (drives == null) ? Optional.<Long[]>empty() : Optional.of(drives);
             return this;
         }

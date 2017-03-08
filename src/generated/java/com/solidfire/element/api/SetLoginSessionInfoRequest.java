@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * SetLoginSessionInfoRequest  
+ * SetLoginSessionInfo is used to set the period of time a log in authentication is valid. After the log in period elapses without activity on the system the authentication will expire. New log in credentials will be required for continued access to the cluster once the timeout period has elapsed.
  **/
 
 public class SetLoginSessionInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 2195064027903533942L;
+    public static final long serialVersionUID = 1280173479845571914L;
     @SerializedName("timeout") private String timeout;
 
     // empty constructor

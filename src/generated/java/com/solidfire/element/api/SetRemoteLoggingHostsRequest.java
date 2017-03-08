@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * SetRemoteLoggingHostsRequest  
+ * RemoteLoggingHosts is used to configure remote logging from the nodes in the storage cluster to a centralized log server or servers. Remote logging is performed over TCP using the default port 514. This API does not add to the existing logging hosts. Rather, it replaces what currently exists with new values specified by this API method. You can use the GetRemoteLoggingHosts to determine what the current logging hosts are and then use the SetRemoteLoggingHosts to set the desired list of current and new logging hosts.
  **/
 
 public class SetRemoteLoggingHostsRequest implements Serializable {
 
-    public static final long serialVersionUID = -7464227586860594771L;
+    public static final long serialVersionUID = 6117895380745509791L;
     @SerializedName("remoteHosts") private LoggingServer[] remoteHosts;
 
     // empty constructor

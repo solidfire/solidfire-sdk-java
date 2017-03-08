@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetFeatureStatusRequest  
+ * GetFeatureStatus allows you to retrieve the status of a cluster feature.
  **/
 
 public class GetFeatureStatusRequest implements Serializable {
 
-    public static final long serialVersionUID = 1167517827330762920L;
+    public static final long serialVersionUID = -6557742284592325892L;
     @SerializedName("feature") private Optional<String> feature;
 
     // empty constructor
@@ -120,7 +121,7 @@ public class GetFeatureStatusRequest implements Serializable {
             return this;
         }
 
-        public GetFeatureStatusRequest.Builder optionalFeature(final String feature) {
+        public GetFeatureStatusRequest.Builder optional(final String feature) {
             this.feature = (feature == null) ? Optional.<String>empty() : Optional.of(feature);
             return this;
         }

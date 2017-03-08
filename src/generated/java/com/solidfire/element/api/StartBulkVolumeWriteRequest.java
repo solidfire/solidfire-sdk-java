@@ -28,11 +28,16 @@ import java.util.Objects;
 
 /**
  * StartBulkVolumeWriteRequest  
+ * StartBulkVolumeWrite allows you to initialize a bulk volume write session on a specified volume.
+ * Only two bulk volume processes can run simultaneously on a volume.
+ * When the session is initialized, data can be written to a SolidFire storage volume from an external backup source.
+ * The external data is accessed by a web server running on a SolidFire node.
+ * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.
  **/
 
 public class StartBulkVolumeWriteRequest implements Serializable {
 
-    public static final long serialVersionUID = -7266294121919800595L;
+    public static final long serialVersionUID = 2792844892062129155L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("format") private String format;
     @SerializedName("script") private Optional<String> script;
@@ -202,17 +207,17 @@ public class StartBulkVolumeWriteRequest implements Serializable {
             return this;
         }
 
-        public StartBulkVolumeWriteRequest.Builder optionalScript(final String script) {
+        public StartBulkVolumeWriteRequest.Builder optional(final String script) {
             this.script = (script == null) ? Optional.<String>empty() : Optional.of(script);
             return this;
         }
 
-        public StartBulkVolumeWriteRequest.Builder optionalScriptParameters(final java.util.Map<String, Object> scriptParameters) {
+        public StartBulkVolumeWriteRequest.Builder optional(final java.util.Map<String, Object> scriptParameters) {
             this.scriptParameters = (scriptParameters == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(scriptParameters);
             return this;
         }
 
-        public StartBulkVolumeWriteRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public StartBulkVolumeWriteRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

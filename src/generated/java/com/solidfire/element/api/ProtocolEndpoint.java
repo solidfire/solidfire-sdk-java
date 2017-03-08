@@ -65,36 +65,42 @@ public class ProtocolEndpoint implements Serializable {
     }
 
     /** 
+     * 
      **/
     public java.util.UUID getProtocolEndpointID() { return this.protocolEndpointID; }
     public void setProtocolEndpointID(java.util.UUID protocolEndpointID) { 
         this.protocolEndpointID = protocolEndpointID;
     }
     /** 
+     * 
      **/
     public String getProtocolEndpointState() { return this.protocolEndpointState; }
     public void setProtocolEndpointState(String protocolEndpointState) { 
         this.protocolEndpointState = protocolEndpointState;
     }
     /** 
+     * 
      **/
     public String getProviderType() { return this.providerType; }
     public void setProviderType(String providerType) { 
         this.providerType = providerType;
     }
     /** 
+     * 
      **/
     public Long getPrimaryProviderID() { return this.primaryProviderID; }
     public void setPrimaryProviderID(Long primaryProviderID) { 
         this.primaryProviderID = primaryProviderID;
     }
     /** 
+     * 
      **/
     public Long getSecondaryProviderID() { return this.secondaryProviderID; }
     public void setSecondaryProviderID(Long secondaryProviderID) { 
         this.secondaryProviderID = secondaryProviderID;
     }
     /** 
+     * 
      **/
     public String getScsiNAADeviceID() { return this.scsiNAADeviceID; }
     public void setScsiNAADeviceID(String scsiNAADeviceID) { 

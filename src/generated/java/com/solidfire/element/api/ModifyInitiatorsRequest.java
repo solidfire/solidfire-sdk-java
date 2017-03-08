@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * ModifyInitiatorsRequest  
+ * ModifyInitiators enables you to change the attributes of an existing initiator. You cannot change the name of an existing initiator. If you need to change the name of an initiator, delete the existing initiator with DeleteInitiators and create a new one with CreateInitiators.
+ * If ModifyInitiators fails to change one of the initiators provided in the parameter, the method returns an error and does not create any initiators (no partial completion is possible).
  **/
 
 public class ModifyInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 8158510246059742104L;
+    public static final long serialVersionUID = -2269498454565308820L;
     @SerializedName("initiators") private ModifyInitiator[] initiators;
 
     // empty constructor

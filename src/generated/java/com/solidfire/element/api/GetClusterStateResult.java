@@ -63,12 +63,14 @@ public class GetClusterStateResult implements Serializable {
         this.nodes = (nodes == null) ? Optional.<NodeStateResult[]>empty() : nodes;
     }
     /** 
+     * 
      **/
     public Optional<String> getCluster() { return this.cluster; }
     public void setCluster(Optional<String> cluster) { 
         this.cluster = (cluster == null) ? Optional.<String>empty() : cluster;
     }
     /** 
+     * 
      **/
     public Optional<String> getState() { return this.state; }
     public void setState(Optional<String> state) { 
@@ -154,17 +156,17 @@ public class GetClusterStateResult implements Serializable {
             return this;
         }
 
-        public GetClusterStateResult.Builder optionalNodes(final NodeStateResult[] nodes) {
+        public GetClusterStateResult.Builder optional(final NodeStateResult[] nodes) {
             this.nodes = (nodes == null) ? Optional.<NodeStateResult[]>empty() : Optional.of(nodes);
             return this;
         }
 
-        public GetClusterStateResult.Builder optionalCluster(final String cluster) {
+        public GetClusterStateResult.Builder optional(final String cluster) {
             this.cluster = (cluster == null) ? Optional.<String>empty() : Optional.of(cluster);
             return this;
         }
 
-        public GetClusterStateResult.Builder optionalState(final String state) {
+        public GetClusterStateResult.Builder optional(final String state) {
             this.state = (state == null) ? Optional.<String>empty() : Optional.of(state);
             return this;
         }

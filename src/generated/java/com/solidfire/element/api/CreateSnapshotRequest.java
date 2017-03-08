@@ -28,11 +28,16 @@ import java.util.Objects;
 
 /**
  * CreateSnapshotRequest  
+ * CreateSnapshot is used to create a point-in-time copy of a volume.
+ * A snapshot can be created from any volume or from an existing snapshot.
+ * 
+ * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+ * Snapshots are not created when cluster fullness is at stage 4 or 5.
  **/
 
 public class CreateSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -1805268150014758546L;
+    public static final long serialVersionUID = 4393987975111566974L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("name") private Optional<String> name;
@@ -230,27 +235,27 @@ public class CreateSnapshotRequest implements Serializable {
             return this;
         }
 
-        public CreateSnapshotRequest.Builder optionalSnapshotID(final Long snapshotID) {
+        public CreateSnapshotRequest.Builder optional(final Long snapshotID) {
             this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }
 
-        public CreateSnapshotRequest.Builder optionalName(final String name) {
+        public CreateSnapshotRequest.Builder optional(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public CreateSnapshotRequest.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
+        public CreateSnapshotRequest.Builder optional(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
             return this;
         }
 
-        public CreateSnapshotRequest.Builder optionalRetention(final String retention) {
+        public CreateSnapshotRequest.Builder optional(final String retention) {
             this.retention = (retention == null) ? Optional.<String>empty() : Optional.of(retention);
             return this;
         }
 
-        public CreateSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CreateSnapshotRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

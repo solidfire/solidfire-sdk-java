@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * CopyVolumeRequest  
+ * Copies one volume to another.
  **/
 
 public class CopyVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -6809771567710525111L;
+    public static final long serialVersionUID = 4384537390538905479L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("dstVolumeID") private Long dstVolumeID;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
@@ -162,7 +163,7 @@ public class CopyVolumeRequest implements Serializable {
             return this;
         }
 
-        public CopyVolumeRequest.Builder optionalSnapshotID(final Long snapshotID) {
+        public CopyVolumeRequest.Builder optional(final Long snapshotID) {
             this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }

@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListAsyncResultsRequest  
+ * You can use ListAsyncResults to list the results of all currently running and completed asynchronous methods on the system. Querying asynchronous results with ListAsyncResults does not cause completed asyncHandles to expire; you can use GetAsyncResult to query any of the asyncHandles returned by ListAsyncResults.
  **/
 
 public class ListAsyncResultsRequest implements Serializable {
 
-    public static final long serialVersionUID = 3012226367212878738L;
+    public static final long serialVersionUID = 7953440856454813158L;
     @SerializedName("asyncResultTypes") private Optional<String[]> asyncResultTypes;
 
     // empty constructor
@@ -120,7 +121,7 @@ public class ListAsyncResultsRequest implements Serializable {
             return this;
         }
 
-        public ListAsyncResultsRequest.Builder optionalAsyncResultTypes(final String[] asyncResultTypes) {
+        public ListAsyncResultsRequest.Builder optional(final String[] asyncResultTypes) {
             this.asyncResultTypes = (asyncResultTypes == null) ? Optional.<String[]>empty() : Optional.of(asyncResultTypes);
             return this;
         }

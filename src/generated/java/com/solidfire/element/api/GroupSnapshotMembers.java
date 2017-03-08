@@ -172,84 +172,98 @@ public class GroupSnapshotMembers implements Serializable {
         this.checksum = checksum;
     }
     /** 
+     * 
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
     public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
     /** 
+     * 
      **/
     public Optional<String> getCreateTime() { return this.createTime; }
     public void setCreateTime(Optional<String> createTime) { 
         this.createTime = (createTime == null) ? Optional.<String>empty() : createTime;
     }
     /** 
+     * 
      **/
     public Optional<Boolean> getEnableRemoteReplication() { return this.enableRemoteReplication; }
     public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) { 
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
     /** 
+     * 
      **/
     public Optional<String> getExpirationReason() { return this.expirationReason; }
     public void setExpirationReason(Optional<String> expirationReason) { 
         this.expirationReason = (expirationReason == null) ? Optional.<String>empty() : expirationReason;
     }
     /** 
+     * 
      **/
     public Optional<String> getExpirationTime() { return this.expirationTime; }
     public void setExpirationTime(Optional<String> expirationTime) { 
         this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
     }
     /** 
+     * 
      **/
     public Optional<Long> getGroupID() { return this.groupID; }
     public void setGroupID(Optional<Long> groupID) { 
         this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
     }
     /** 
+     * 
      **/
     public Optional<java.util.UUID> getGroupSnapshotUUID() { return this.groupSnapshotUUID; }
     public void setGroupSnapshotUUID(Optional<java.util.UUID> groupSnapshotUUID) { 
         this.groupSnapshotUUID = (groupSnapshotUUID == null) ? Optional.<java.util.UUID>empty() : groupSnapshotUUID;
     }
     /** 
+     * 
      **/
     public Optional<String> getName() { return this.name; }
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
     /** 
+     * 
      **/
     public Optional<String> getRemoteStatus() { return this.remoteStatus; }
     public void setRemoteStatus(Optional<String> remoteStatus) { 
         this.remoteStatus = (remoteStatus == null) ? Optional.<String>empty() : remoteStatus;
     }
     /** 
+     * 
      **/
     public Optional<java.util.Map<String, Object>[]> getRemoteStatuses() { return this.remoteStatuses; }
     public void setRemoteStatuses(Optional<java.util.Map<String, Object>[]> remoteStatuses) { 
         this.remoteStatuses = (remoteStatuses == null) ? Optional.<java.util.Map<String, Object>[]>empty() : remoteStatuses;
     }
     /** 
+     * 
      **/
     public Optional<String> getStatus() { return this.status; }
     public void setStatus(Optional<String> status) { 
         this.status = (status == null) ? Optional.<String>empty() : status;
     }
     /** 
+     * 
      **/
     public Optional<Long> getTotalSize() { return this.totalSize; }
     public void setTotalSize(Optional<Long> totalSize) { 
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
     }
     /** 
+     * 
      **/
     public Optional<Long> getVirtualVolumeID() { return this.virtualVolumeID; }
     public void setVirtualVolumeID(Optional<Long> virtualVolumeID) { 
         this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<Long>empty() : virtualVolumeID;
     }
     /** 
+     * 
      **/
     public Optional<java.util.UUID> getVolumePairUUID() { return this.volumePairUUID; }
     public void setVolumePairUUID(Optional<java.util.UUID> volumePairUUID) { 
@@ -467,72 +481,72 @@ public class GroupSnapshotMembers implements Serializable {
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public GroupSnapshotMembers.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalCreateTime(final String createTime) {
+        public GroupSnapshotMembers.Builder optional(final String createTime) {
             this.createTime = (createTime == null) ? Optional.<String>empty() : Optional.of(createTime);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
+        public GroupSnapshotMembers.Builder optional(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalExpirationReason(final String expirationReason) {
+        public GroupSnapshotMembers.Builder optional(final String expirationReason) {
             this.expirationReason = (expirationReason == null) ? Optional.<String>empty() : Optional.of(expirationReason);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalExpirationTime(final String expirationTime) {
+        public GroupSnapshotMembers.Builder optional(final String expirationTime) {
             this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : Optional.of(expirationTime);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalGroupID(final Long groupID) {
+        public GroupSnapshotMembers.Builder optional(final Long groupID) {
             this.groupID = (groupID == null) ? Optional.<Long>empty() : Optional.of(groupID);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalGroupSnapshotUUID(final java.util.UUID groupSnapshotUUID) {
+        public GroupSnapshotMembers.Builder optional(final java.util.UUID groupSnapshotUUID) {
             this.groupSnapshotUUID = (groupSnapshotUUID == null) ? Optional.<java.util.UUID>empty() : Optional.of(groupSnapshotUUID);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalName(final String name) {
+        public GroupSnapshotMembers.Builder optional(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalRemoteStatus(final String remoteStatus) {
+        public GroupSnapshotMembers.Builder optional(final String remoteStatus) {
             this.remoteStatus = (remoteStatus == null) ? Optional.<String>empty() : Optional.of(remoteStatus);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalRemoteStatuses(final java.util.Map<String, Object>[] remoteStatuses) {
+        public GroupSnapshotMembers.Builder optional(final java.util.Map<String, Object>[] remoteStatuses) {
             this.remoteStatuses = (remoteStatuses == null) ? Optional.<java.util.Map<String, Object>[]>empty() : Optional.of(remoteStatuses);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalStatus(final String status) {
+        public GroupSnapshotMembers.Builder optional(final String status) {
             this.status = (status == null) ? Optional.<String>empty() : Optional.of(status);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalTotalSize(final Long totalSize) {
+        public GroupSnapshotMembers.Builder optional(final Long totalSize) {
             this.totalSize = (totalSize == null) ? Optional.<Long>empty() : Optional.of(totalSize);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalVirtualVolumeID(final Long virtualVolumeID) {
+        public GroupSnapshotMembers.Builder optional(final Long virtualVolumeID) {
             this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<Long>empty() : Optional.of(virtualVolumeID);
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalVolumePairUUID(final java.util.UUID volumePairUUID) {
+        public GroupSnapshotMembers.Builder optional(final java.util.UUID volumePairUUID) {
             this.volumePairUUID = (volumePairUUID == null) ? Optional.<java.util.UUID>empty() : Optional.of(volumePairUUID);
             return this;
         }

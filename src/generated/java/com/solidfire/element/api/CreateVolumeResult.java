@@ -56,6 +56,7 @@ public class CreateVolumeResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Volume> getVolume() { return this.volume; }
     public void setVolume(Optional<Volume> volume) { 
@@ -154,7 +155,7 @@ public class CreateVolumeResult implements Serializable {
             return this;
         }
 
-        public CreateVolumeResult.Builder optionalVolume(final Volume volume) {
+        public CreateVolumeResult.Builder optional(final Volume volume) {
             this.volume = (volume == null) ? Optional.<Volume>empty() : Optional.of(volume);
             return this;
         }

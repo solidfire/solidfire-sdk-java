@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * SetNtpInfoRequest  
+ * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
  **/
 
 public class SetNtpInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 6497600226879267920L;
+    public static final long serialVersionUID = -7411371300821324016L;
     @SerializedName("servers") private String[] servers;
     @SerializedName("broadcastclient") private Optional<Boolean> broadcastclient;
 
@@ -141,7 +142,7 @@ public class SetNtpInfoRequest implements Serializable {
             return this;
         }
 
-        public SetNtpInfoRequest.Builder optionalBroadcastclient(final Boolean broadcastclient) {
+        public SetNtpInfoRequest.Builder optional(final Boolean broadcastclient) {
             this.broadcastclient = (broadcastclient == null) ? Optional.<Boolean>empty() : Optional.of(broadcastclient);
             return this;
         }

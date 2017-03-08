@@ -50,6 +50,7 @@ public class AsyncHandleResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
     public void setAsyncHandle(Long asyncHandle) { 

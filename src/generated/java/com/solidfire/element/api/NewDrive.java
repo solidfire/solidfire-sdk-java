@@ -141,7 +141,7 @@ public class NewDrive implements Serializable {
             return this;
         }
 
-        public NewDrive.Builder optionalType(final String type) {
+        public NewDrive.Builder optional(final String type) {
             this.type = (type == null) ? Optional.<String>empty() : Optional.of(type);
             return this;
         }

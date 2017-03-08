@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListVirtualVolumeTasksRequest  
+ * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
  **/
 
 public class ListVirtualVolumeTasksRequest implements Serializable {
 
-    public static final long serialVersionUID = -8824861203375597941L;
+    public static final long serialVersionUID = -6145951520781588511L;
     @SerializedName("virtualVolumeTaskIDs") private Optional<java.util.UUID[]> virtualVolumeTaskIDs;
 
     // empty constructor
@@ -50,6 +51,7 @@ public class ListVirtualVolumeTasksRequest implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<java.util.UUID[]> getVirtualVolumeTaskIDs() { return this.virtualVolumeTaskIDs; }
     public void setVirtualVolumeTaskIDs(Optional<java.util.UUID[]> virtualVolumeTaskIDs) { 
@@ -119,7 +121,7 @@ public class ListVirtualVolumeTasksRequest implements Serializable {
             return this;
         }
 
-        public ListVirtualVolumeTasksRequest.Builder optionalVirtualVolumeTaskIDs(final java.util.UUID[] virtualVolumeTaskIDs) {
+        public ListVirtualVolumeTasksRequest.Builder optional(final java.util.UUID[] virtualVolumeTaskIDs) {
             this.virtualVolumeTaskIDs = (virtualVolumeTaskIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(virtualVolumeTaskIDs);
             return this;
         }

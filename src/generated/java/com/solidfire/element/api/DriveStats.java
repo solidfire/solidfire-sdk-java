@@ -98,102 +98,119 @@ public class DriveStats implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Long> getActiveSessions() { return this.activeSessions; }
     public void setActiveSessions(Optional<Long> activeSessions) { 
         this.activeSessions = (activeSessions == null) ? Optional.<Long>empty() : activeSessions;
     }
     /** 
+     * 
      **/
     public Optional<Long> getDriveID() { return this.driveID; }
     public void setDriveID(Optional<Long> driveID) { 
         this.driveID = (driveID == null) ? Optional.<Long>empty() : driveID;
     }
     /** 
+     * 
      **/
     public Long getFailedDieCount() { return this.failedDieCount; }
     public void setFailedDieCount(Long failedDieCount) { 
         this.failedDieCount = failedDieCount;
     }
     /** 
+     * 
      **/
     public Long getLifeRemainingPercent() { return this.lifeRemainingPercent; }
     public void setLifeRemainingPercent(Long lifeRemainingPercent) { 
         this.lifeRemainingPercent = lifeRemainingPercent;
     }
     /** 
+     * 
      **/
     public Long getLifetimeReadBytes() { return this.lifetimeReadBytes; }
     public void setLifetimeReadBytes(Long lifetimeReadBytes) { 
         this.lifetimeReadBytes = lifetimeReadBytes;
     }
     /** 
+     * 
      **/
     public Long getLifetimeWriteBytes() { return this.lifetimeWriteBytes; }
     public void setLifetimeWriteBytes(Long lifetimeWriteBytes) { 
         this.lifetimeWriteBytes = lifetimeWriteBytes;
     }
     /** 
+     * 
      **/
     public Long getPowerOnHours() { return this.powerOnHours; }
     public void setPowerOnHours(Long powerOnHours) { 
         this.powerOnHours = powerOnHours;
     }
     /** 
+     * 
      **/
     public Long getReadBytes() { return this.readBytes; }
     public void setReadBytes(Long readBytes) { 
         this.readBytes = readBytes;
     }
     /** 
+     * 
      **/
     public Long getReadOps() { return this.readOps; }
     public void setReadOps(Long readOps) { 
         this.readOps = readOps;
     }
     /** 
+     * 
      **/
     public Long getReallocatedSectors() { return this.reallocatedSectors; }
     public void setReallocatedSectors(Long reallocatedSectors) { 
         this.reallocatedSectors = reallocatedSectors;
     }
     /** 
+     * 
      **/
     public Long getReserveCapacityPercent() { return this.reserveCapacityPercent; }
     public void setReserveCapacityPercent(Long reserveCapacityPercent) { 
         this.reserveCapacityPercent = reserveCapacityPercent;
     }
     /** 
+     * 
      **/
     public String getTimestamp() { return this.timestamp; }
     public void setTimestamp(String timestamp) { 
         this.timestamp = timestamp;
     }
     /** 
+     * 
      **/
     public Long getTotalCapacity() { return this.totalCapacity; }
     public void setTotalCapacity(Long totalCapacity) { 
         this.totalCapacity = totalCapacity;
     }
     /** 
+     * 
      **/
     public Optional<Long> getUsedCapacity() { return this.usedCapacity; }
     public void setUsedCapacity(Optional<Long> usedCapacity) { 
         this.usedCapacity = (usedCapacity == null) ? Optional.<Long>empty() : usedCapacity;
     }
     /** 
+     * 
      **/
     public Long getUsedMemory() { return this.usedMemory; }
     public void setUsedMemory(Long usedMemory) { 
         this.usedMemory = usedMemory;
     }
     /** 
+     * 
      **/
     public Long getWriteBytes() { return this.writeBytes; }
     public void setWriteBytes(Long writeBytes) { 
         this.writeBytes = writeBytes;
     }
     /** 
+     * 
      **/
     public Long getWriteOps() { return this.writeOps; }
     public void setWriteOps(Long writeOps) { 
@@ -363,12 +380,12 @@ public class DriveStats implements Serializable {
             return this;
         }
 
-        public DriveStats.Builder optionalActiveSessions(final Long activeSessions) {
+        public DriveStats.Builder optional(final Long activeSessions) {
             this.activeSessions = (activeSessions == null) ? Optional.<Long>empty() : Optional.of(activeSessions);
             return this;
         }
 
-        public DriveStats.Builder optionalDriveID(final Long driveID) {
+        public DriveStats.Builder optional(final Long driveID) {
             this.driveID = (driveID == null) ? Optional.<Long>empty() : Optional.of(driveID);
             return this;
         }
@@ -428,7 +445,7 @@ public class DriveStats implements Serializable {
             return this;
         }
 
-        public DriveStats.Builder optionalUsedCapacity(final Long usedCapacity) {
+        public DriveStats.Builder optional(final Long usedCapacity) {
             this.usedCapacity = (usedCapacity == null) ? Optional.<Long>empty() : Optional.of(usedCapacity);
             return this;
         }

@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * AddLdapClusterAdminRequest  
+ * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
+ * 
+ * An LDAP group that has been defined in Active Directory can also be added using this API method. The access level that is given to the group will be passed to the individual users in the LDAP group.
  **/
 
 public class AddLdapClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = -5722700464815334114L;
+    public static final long serialVersionUID = -8808109453744251950L;
     @SerializedName("username") private String username;
     @SerializedName("access") private String[] access;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
@@ -180,12 +183,12 @@ public class AddLdapClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public AddLdapClusterAdminRequest.Builder optionalAcceptEula(final Boolean acceptEula) {
+        public AddLdapClusterAdminRequest.Builder optional(final Boolean acceptEula) {
             this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : Optional.of(acceptEula);
             return this;
         }
 
-        public AddLdapClusterAdminRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public AddLdapClusterAdminRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

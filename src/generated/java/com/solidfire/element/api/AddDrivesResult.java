@@ -50,6 +50,7 @@ public class AddDrivesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Long> getAsyncHandle() { return this.asyncHandle; }
     public void setAsyncHandle(Optional<Long> asyncHandle) { 
@@ -119,7 +120,7 @@ public class AddDrivesResult implements Serializable {
             return this;
         }
 
-        public AddDrivesResult.Builder optionalAsyncHandle(final Long asyncHandle) {
+        public AddDrivesResult.Builder optional(final Long asyncHandle) {
             this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : Optional.of(asyncHandle);
             return this;
         }

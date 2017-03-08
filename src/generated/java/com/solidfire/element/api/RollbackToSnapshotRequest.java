@@ -28,11 +28,17 @@ import java.util.Objects;
 
 /**
  * RollbackToSnapshotRequest  
+ * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
+ * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
+ * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
+ * a value of "true."
+ * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+ * Snapshots are not created when cluster fullness is at stage 4 or 5.
  **/
 
 public class RollbackToSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 7387529128604457855L;
+    public static final long serialVersionUID = 9171061592688594261L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
@@ -203,12 +209,12 @@ public class RollbackToSnapshotRequest implements Serializable {
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder optionalName(final String name) {
+        public RollbackToSnapshotRequest.Builder optional(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public RollbackToSnapshotRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

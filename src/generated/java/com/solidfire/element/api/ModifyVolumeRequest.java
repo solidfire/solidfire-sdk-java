@@ -28,11 +28,20 @@ import java.util.Objects;
 
 /**
  * ModifyVolumeRequest  
+ * ModifyVolume is used to modify settings on an existing volume.
+ * Modifications can be made to one volume at a time and changes take place immediately.
+ * If an optional parameter is left unspecified, the value will not be changed.
+ * 
+ * Extending the size of a volume that is being replicated should be done in an order.
+ * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
+ * It is recommended that both the target and the source volumes be the same size.
+ * 
+ * Note: If you change access status to locked or target all existing iSCSI connections are terminated.
  **/
 
 public class ModifyVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -6916105554939877400L;
+    public static final long serialVersionUID = -7030805623366682116L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;
@@ -222,27 +231,27 @@ public class ModifyVolumeRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumeRequest.Builder optionalAccountID(final Long accountID) {
+        public ModifyVolumeRequest.Builder optional(final Long accountID) {
             this.accountID = (accountID == null) ? Optional.<Long>empty() : Optional.of(accountID);
             return this;
         }
 
-        public ModifyVolumeRequest.Builder optionalAccess(final String access) {
+        public ModifyVolumeRequest.Builder optional(final String access) {
             this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
             return this;
         }
 
-        public ModifyVolumeRequest.Builder optionalQos(final QoS qos) {
+        public ModifyVolumeRequest.Builder optional(final QoS qos) {
             this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
         }
 
-        public ModifyVolumeRequest.Builder optionalTotalSize(final Long totalSize) {
+        public ModifyVolumeRequest.Builder optional(final Long totalSize) {
             this.totalSize = (totalSize == null) ? Optional.<Long>empty() : Optional.of(totalSize);
             return this;
         }
 
-        public ModifyVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public ModifyVolumeRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

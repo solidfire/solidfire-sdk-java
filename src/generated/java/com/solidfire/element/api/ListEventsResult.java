@@ -53,12 +53,14 @@ public class ListEventsResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getEventQueueType() { return this.eventQueueType; }
     public void setEventQueueType(String eventQueueType) { 
         this.eventQueueType = eventQueueType;
     }
     /** 
+     * 
      **/
     public EventInfo[] getEvents() { return this.events; }
     public void setEvents(EventInfo[] events) { 

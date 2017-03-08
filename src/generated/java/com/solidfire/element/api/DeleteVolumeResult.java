@@ -50,6 +50,7 @@ public class DeleteVolumeResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Volume> getVolume() { return this.volume; }
     public void setVolume(Optional<Volume> volume) { 
@@ -119,7 +120,7 @@ public class DeleteVolumeResult implements Serializable {
             return this;
         }
 
-        public DeleteVolumeResult.Builder optionalVolume(final Volume volume) {
+        public DeleteVolumeResult.Builder optional(final Volume volume) {
             this.volume = (volume == null) ? Optional.<Volume>empty() : Optional.of(volume);
             return this;
         }

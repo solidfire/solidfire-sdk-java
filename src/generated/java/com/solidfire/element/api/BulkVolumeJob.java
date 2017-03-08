@@ -395,12 +395,12 @@ public class BulkVolumeJob implements Serializable {
             return this;
         }
 
-        public BulkVolumeJob.Builder optionalScript(final String script) {
+        public BulkVolumeJob.Builder optional(final String script) {
             this.script = (script == null) ? Optional.<String>empty() : Optional.of(script);
             return this;
         }
 
-        public BulkVolumeJob.Builder optionalSnapshotID(final Long snapshotID) {
+        public BulkVolumeJob.Builder optional(final Long snapshotID) {
             this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }

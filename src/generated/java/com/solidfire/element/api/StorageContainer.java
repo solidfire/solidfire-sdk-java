@@ -71,48 +71,56 @@ public class StorageContainer implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getName() { return this.name; }
     public void setName(String name) { 
         this.name = name;
     }
     /** 
+     * 
      **/
     public java.util.UUID getStorageContainerID() { return this.storageContainerID; }
     public void setStorageContainerID(java.util.UUID storageContainerID) { 
         this.storageContainerID = storageContainerID;
     }
     /** 
+     * 
      **/
     public Long getAccountID() { return this.accountID; }
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
     /** 
+     * 
      **/
     public String getProtocolEndpointType() { return this.protocolEndpointType; }
     public void setProtocolEndpointType(String protocolEndpointType) { 
         this.protocolEndpointType = protocolEndpointType;
     }
     /** 
+     * 
      **/
     public String getInitiatorSecret() { return this.initiatorSecret; }
     public void setInitiatorSecret(String initiatorSecret) { 
         this.initiatorSecret = initiatorSecret;
     }
     /** 
+     * 
      **/
     public String getTargetSecret() { return this.targetSecret; }
     public void setTargetSecret(String targetSecret) { 
         this.targetSecret = targetSecret;
     }
     /** 
+     * 
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 
         this.status = status;
     }
     /** 
+     * 
      **/
     public Optional<java.util.UUID[]> getVirtualVolumes() { return this.virtualVolumes; }
     public void setVirtualVolumes(Optional<java.util.UUID[]> virtualVolumes) { 
@@ -259,7 +267,7 @@ public class StorageContainer implements Serializable {
             return this;
         }
 
-        public StorageContainer.Builder optionalVirtualVolumes(final java.util.UUID[] virtualVolumes) {
+        public StorageContainer.Builder optional(final java.util.UUID[] virtualVolumes) {
             this.virtualVolumes = (virtualVolumes == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(virtualVolumes);
             return this;
         }

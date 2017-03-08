@@ -59,24 +59,28 @@ public class DetailedService implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Service getService() { return this.service; }
     public void setService(Service service) { 
         this.service = service;
     }
     /** 
+     * 
      **/
     public Node getNode() { return this.node; }
     public void setNode(Node node) { 
         this.node = node;
     }
     /** 
+     * 
      **/
     public Optional<Drive> getDrive() { return this.drive; }
     public void setDrive(Optional<Drive> drive) { 
         this.drive = (drive == null) ? Optional.<Drive>empty() : drive;
     }
     /** 
+     * 
      **/
     public Drive[] getDrives() { return this.drives; }
     public void setDrives(Drive[] drives) { 
@@ -174,7 +178,7 @@ public class DetailedService implements Serializable {
             return this;
         }
 
-        public DetailedService.Builder optionalDrive(final Drive drive) {
+        public DetailedService.Builder optional(final Drive drive) {
             this.drive = (drive == null) ? Optional.<Drive>empty() : Optional.of(drive);
             return this;
         }

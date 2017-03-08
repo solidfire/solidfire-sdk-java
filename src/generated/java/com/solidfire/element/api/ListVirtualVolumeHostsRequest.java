@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListVirtualVolumeHostsRequest  
+ * ListVirtualVolumeHosts returns a list of known ESX hosts.
  **/
 
 public class ListVirtualVolumeHostsRequest implements Serializable {
 
-    public static final long serialVersionUID = 4678187820435640586L;
+    public static final long serialVersionUID = -3948315934498837790L;
     @SerializedName("virtualVolumeHostIDs") private Optional<java.util.UUID[]> virtualVolumeHostIDs;
 
     // empty constructor
@@ -50,6 +51,7 @@ public class ListVirtualVolumeHostsRequest implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<java.util.UUID[]> getVirtualVolumeHostIDs() { return this.virtualVolumeHostIDs; }
     public void setVirtualVolumeHostIDs(Optional<java.util.UUID[]> virtualVolumeHostIDs) { 
@@ -119,7 +121,7 @@ public class ListVirtualVolumeHostsRequest implements Serializable {
             return this;
         }
 
-        public ListVirtualVolumeHostsRequest.Builder optionalVirtualVolumeHostIDs(final java.util.UUID[] virtualVolumeHostIDs) {
+        public ListVirtualVolumeHostsRequest.Builder optional(final java.util.UUID[] virtualVolumeHostIDs) {
             this.virtualVolumeHostIDs = (virtualVolumeHostIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(virtualVolumeHostIDs);
             return this;
         }

@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ModifyVolumePairRequest  
+ * ModifyVolumePair is used to pause or restart replication between a pair of volumes.
  **/
 
 public class ModifyVolumePairRequest implements Serializable {
 
-    public static final long serialVersionUID = 4570555575415487784L;
+    public static final long serialVersionUID = -1917779806252857220L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("pausedManual") private Optional<Boolean> pausedManual;
     @SerializedName("mode") private Optional<String> mode;
@@ -87,6 +88,7 @@ public class ModifyVolumePairRequest implements Serializable {
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
     }
     /** 
+     * 
      **/
     public Optional<Long> getPauseLimit() { return this.pauseLimit; }
     public void setPauseLimit(Optional<Long> pauseLimit) { 
@@ -183,17 +185,17 @@ public class ModifyVolumePairRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumePairRequest.Builder optionalPausedManual(final Boolean pausedManual) {
+        public ModifyVolumePairRequest.Builder optional(final Boolean pausedManual) {
             this.pausedManual = (pausedManual == null) ? Optional.<Boolean>empty() : Optional.of(pausedManual);
             return this;
         }
 
-        public ModifyVolumePairRequest.Builder optionalMode(final String mode) {
+        public ModifyVolumePairRequest.Builder optional(final String mode) {
             this.mode = (mode == null) ? Optional.<String>empty() : Optional.of(mode);
             return this;
         }
 
-        public ModifyVolumePairRequest.Builder optionalPauseLimit(final Long pauseLimit) {
+        public ModifyVolumePairRequest.Builder optional(final Long pauseLimit) {
             this.pauseLimit = (pauseLimit == null) ? Optional.<Long>empty() : Optional.of(pauseLimit);
             return this;
         }

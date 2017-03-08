@@ -260,22 +260,22 @@ public class Account implements Serializable {
             return this;
         }
 
-        public Account.Builder optionalInitiatorSecret(final CHAPSecret initiatorSecret) {
+        public Account.Builder optional(final CHAPSecret initiatorSecret) {
             this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public Account.Builder optionalTargetSecret(final CHAPSecret targetSecret) {
+        public Account.Builder optional(final CHAPSecret targetSecret) {
             this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
             return this;
         }
 
-        public Account.Builder optionalStorageContainerID(final java.util.UUID storageContainerID) {
+        public Account.Builder optional(final java.util.UUID storageContainerID) {
             this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : Optional.of(storageContainerID);
             return this;
         }
 
-        public Account.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public Account.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

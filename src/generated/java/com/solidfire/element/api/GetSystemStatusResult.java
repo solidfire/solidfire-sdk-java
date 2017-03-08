@@ -50,6 +50,7 @@ public class GetSystemStatusResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Boolean getRebootRequired() { return this.rebootRequired; }
     public void setRebootRequired(Boolean rebootRequired) { 

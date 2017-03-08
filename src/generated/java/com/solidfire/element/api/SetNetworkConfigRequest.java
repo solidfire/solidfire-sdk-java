@@ -28,11 +28,16 @@ import java.util.Objects;
 
 /**
  * SetNetworkConfigRequest  
+ * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
+ * 
+ * WARNING! Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+ * 
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class SetNetworkConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = 1163420677117762364L;
+    public static final long serialVersionUID = 3614304076097092528L;
     @SerializedName("network") private NetworkParams network;
 
     // empty constructor

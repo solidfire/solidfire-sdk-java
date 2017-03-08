@@ -28,11 +28,18 @@ import java.util.Objects;
 
 /**
  * ModifyVolumeAccessGroupLunAssignmentsRequest  
+ * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
+ * 
+ * LUN assignment values must be unique for volumes in a volume access group. An exception will be seen if LUN assignments are duplicated in a volume access group. However, the same LUN values can be used again in different volume access groups.
+ * 
+ * Note: Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed. None of the specified LUN assignments will be modified if there is an exception.
+ * 
+ * Caution: If a LUN assignment is changed for a volume with active I/O, the I/O could be disrupted. Changes to the server configuration may be required in order to change volume LUN assignments.
  **/
 
 public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializable {
 
-    public static final long serialVersionUID = -2854592840284265047L;
+    public static final long serialVersionUID = 4157486897027617747L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
 

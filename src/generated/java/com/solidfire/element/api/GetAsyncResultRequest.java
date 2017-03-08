@@ -28,11 +28,20 @@ import java.util.Objects;
 
 /**
  * GetAsyncResultRequest  
+ * Used to retrieve the result of asynchronous method calls.
+ * Some method calls are long running and do not complete when the initial response is sent.
+ * To obtain the result of the method call, polling with GetAsyncResult is required.
+ * 
+ * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
+ * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
+ * 
+ * The result for a completed asynchronous method call can only be retrieved once.
+ * Once the final result has been returned, later attempts returns an error.
  **/
 
 public class GetAsyncResultRequest implements Serializable {
 
-    public static final long serialVersionUID = 1004088951222936015L;
+    public static final long serialVersionUID = 4624708581636089693L;
     @SerializedName("asyncHandle") private Long asyncHandle;
     @SerializedName("keepResult") private Optional<Boolean> keepResult;
 
@@ -141,7 +150,7 @@ public class GetAsyncResultRequest implements Serializable {
             return this;
         }
 
-        public GetAsyncResultRequest.Builder optionalKeepResult(final Boolean keepResult) {
+        public GetAsyncResultRequest.Builder optional(final Boolean keepResult) {
             this.keepResult = (keepResult == null) ? Optional.<Boolean>empty() : Optional.of(keepResult);
             return this;
         }

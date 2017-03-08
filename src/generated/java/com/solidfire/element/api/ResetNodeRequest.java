@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ResetNodeRequest  
+ * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
  **/
 
 public class ResetNodeRequest implements Serializable {
 
-    public static final long serialVersionUID = -1238993143208246416L;
+    public static final long serialVersionUID = 7770460626963941644L;
     @SerializedName("build") private String build;
     @SerializedName("force") private Boolean force;
     @SerializedName("options") private Optional<String> options;
@@ -180,12 +181,12 @@ public class ResetNodeRequest implements Serializable {
             return this;
         }
 
-        public ResetNodeRequest.Builder optionalOptions(final String options) {
+        public ResetNodeRequest.Builder optional(final String options) {
             this.options = (options == null) ? Optional.<String>empty() : Optional.of(options);
             return this;
         }
 
-        public ResetNodeRequest.Builder optionalReboot(final Boolean reboot) {
+        public ResetNodeRequest.Builder optional(final Boolean reboot) {
             this.reboot = (reboot == null) ? Optional.<Boolean>empty() : Optional.of(reboot);
             return this;
         }

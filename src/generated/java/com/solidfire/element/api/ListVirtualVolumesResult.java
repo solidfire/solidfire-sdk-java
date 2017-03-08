@@ -53,12 +53,14 @@ public class ListVirtualVolumesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public VirtualVolumeInfo[] getVirtualVolumes() { return this.virtualVolumes; }
     public void setVirtualVolumes(VirtualVolumeInfo[] virtualVolumes) { 
         this.virtualVolumes = virtualVolumes;
     }
     /** 
+     * 
      **/
     public java.util.UUID getNextVirtualVolumeID() { return this.nextVirtualVolumeID; }
     public void setNextVirtualVolumeID(java.util.UUID nextVirtualVolumeID) { 

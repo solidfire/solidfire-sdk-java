@@ -303,17 +303,17 @@ public class VirtualVolumeBinding implements Serializable {
             return this;
         }
 
-        public VirtualVolumeBinding.Builder optionalVirtualVolume(final VirtualVolumeInfo virtualVolume) {
+        public VirtualVolumeBinding.Builder optional(final VirtualVolumeInfo virtualVolume) {
             this.virtualVolume = (virtualVolume == null) ? Optional.<VirtualVolumeInfo>empty() : Optional.of(virtualVolume);
             return this;
         }
 
-        public VirtualVolumeBinding.Builder optionalProtocolEndpoint(final java.util.UUID protocolEndpoint) {
+        public VirtualVolumeBinding.Builder optional(final java.util.UUID protocolEndpoint) {
             this.protocolEndpoint = (protocolEndpoint == null) ? Optional.<java.util.UUID>empty() : Optional.of(protocolEndpoint);
             return this;
         }
 
-        public VirtualVolumeBinding.Builder optionalVirtualVolumeHost(final VirtualVolumeHost virtualVolumeHost) {
+        public VirtualVolumeBinding.Builder optional(final VirtualVolumeHost virtualVolumeHost) {
             this.virtualVolumeHost = (virtualVolumeHost == null) ? Optional.<VirtualVolumeHost>empty() : Optional.of(virtualVolumeHost);
             return this;
         }

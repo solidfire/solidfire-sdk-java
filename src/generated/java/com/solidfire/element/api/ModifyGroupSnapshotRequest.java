@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ModifyGroupSnapshotRequest  
+ * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
  **/
 
 public class ModifyGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -3820766952241604504L;
+    public static final long serialVersionUID = 4256425839858469480L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
@@ -162,12 +163,12 @@ public class ModifyGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public ModifyGroupSnapshotRequest.Builder optionalExpirationTime(final String expirationTime) {
+        public ModifyGroupSnapshotRequest.Builder optional(final String expirationTime) {
             this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : Optional.of(expirationTime);
             return this;
         }
 
-        public ModifyGroupSnapshotRequest.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
+        public ModifyGroupSnapshotRequest.Builder optional(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
             return this;
         }

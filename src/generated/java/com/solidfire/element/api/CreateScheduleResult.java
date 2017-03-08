@@ -50,6 +50,7 @@ public class CreateScheduleResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getScheduleID() { return this.scheduleID; }
     public void setScheduleID(Long scheduleID) { 

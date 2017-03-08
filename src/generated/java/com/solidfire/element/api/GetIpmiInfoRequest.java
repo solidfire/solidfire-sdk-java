@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetIpmiInfoRequest  
+ * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
  **/
 
 public class GetIpmiInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 7673039517122092962L;
+    public static final long serialVersionUID = -7436739282389768866L;
     @SerializedName("force") private Boolean force;
 
     // empty constructor
@@ -50,6 +51,7 @@ public class GetIpmiInfoRequest implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Boolean getForce() { return this.force; }
     public void setForce(Boolean force) { 

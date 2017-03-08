@@ -56,18 +56,21 @@ public class TestDrivesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getDetails() { return this.details; }
     public void setDetails(String details) { 
         this.details = details;
     }
     /** 
+     * 
      **/
     public String getDuration() { return this.duration; }
     public void setDuration(String duration) { 
         this.duration = duration;
     }
     /** 
+     * 
      **/
     public String getResult() { return this.result; }
     public void setResult(String result) { 

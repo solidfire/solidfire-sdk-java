@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * AddAccountRequest  
+ * Used to add a new account to the system.
+ * New volumes can be created under the new account.
+ * The CHAP settings specified for the account applies to all volumes owned by the account.
  **/
 
 public class AddAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = 7556277751663032568L;
+    public static final long serialVersionUID = 1204889642362951352L;
     @SerializedName("username") private String username;
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
@@ -186,17 +189,17 @@ public class AddAccountRequest implements Serializable {
             return this;
         }
 
-        public AddAccountRequest.Builder optionalInitiatorSecret(final CHAPSecret initiatorSecret) {
+        public AddAccountRequest.Builder optional(final CHAPSecret initiatorSecret) {
             this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public AddAccountRequest.Builder optionalTargetSecret(final CHAPSecret targetSecret) {
+        public AddAccountRequest.Builder optional(final CHAPSecret targetSecret) {
             this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
             return this;
         }
 
-        public AddAccountRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public AddAccountRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

@@ -53,12 +53,14 @@ public class Config implements Serializable {
     }
 
     /** 
+     * 
      **/
     public ClusterConfig getCluster() { return this.cluster; }
     public void setCluster(ClusterConfig cluster) { 
         this.cluster = cluster;
     }
     /** 
+     * 
      **/
     public NetworkParams getNetwork() { return this.network; }
     public void setNetwork(NetworkParams network) { 

@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * CreateClusterRequest  
+ * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
+ * 
+ * Note: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
  **/
 
 public class CreateClusterRequest implements Serializable {
 
-    public static final long serialVersionUID = 4241336716885927717L;
+    public static final long serialVersionUID = 1893097687519200263L;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
     @SerializedName("mvip") private String mvip;
     @SerializedName("svip") private String svip;
@@ -234,7 +237,7 @@ public class CreateClusterRequest implements Serializable {
             return this;
         }
 
-        public CreateClusterRequest.Builder optionalAcceptEula(final Boolean acceptEula) {
+        public CreateClusterRequest.Builder optional(final Boolean acceptEula) {
             this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : Optional.of(acceptEula);
             return this;
         }
@@ -269,7 +272,7 @@ public class CreateClusterRequest implements Serializable {
             return this;
         }
 
-        public CreateClusterRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CreateClusterRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

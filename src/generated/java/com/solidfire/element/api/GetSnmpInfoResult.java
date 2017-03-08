@@ -172,7 +172,7 @@ public class GetSnmpInfoResult implements Serializable {
             return this;
         }
 
-        public GetSnmpInfoResult.Builder optionalNetworks(final SnmpNetwork[] networks) {
+        public GetSnmpInfoResult.Builder optional(final SnmpNetwork[] networks) {
             this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : Optional.of(networks);
             return this;
         }
@@ -187,7 +187,7 @@ public class GetSnmpInfoResult implements Serializable {
             return this;
         }
 
-        public GetSnmpInfoResult.Builder optionalUsmUsers(final SnmpV3UsmUser[] usmUsers) {
+        public GetSnmpInfoResult.Builder optional(final SnmpV3UsmUser[] usmUsers) {
             this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : Optional.of(usmUsers);
             return this;
         }

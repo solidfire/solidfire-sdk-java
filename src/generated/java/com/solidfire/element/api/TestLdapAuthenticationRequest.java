@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * TestLdapAuthenticationRequest  
+ * The TestLdapAuthentication is used to verify the currently enabled LDAP authentication configuration settings are correct. If the configuration settings are correct, the API call returns a list of the groups the tested user is a member of.
  **/
 
 public class TestLdapAuthenticationRequest implements Serializable {
 
-    public static final long serialVersionUID = 8032836993327776039L;
+    public static final long serialVersionUID = -3991816212743901339L;
     @SerializedName("username") private String username;
     @SerializedName("password") private String password;
     @SerializedName("ldapConfiguration") private Optional<LdapConfiguration> ldapConfiguration;
@@ -162,7 +163,7 @@ public class TestLdapAuthenticationRequest implements Serializable {
             return this;
         }
 
-        public TestLdapAuthenticationRequest.Builder optionalLdapConfiguration(final LdapConfiguration ldapConfiguration) {
+        public TestLdapAuthenticationRequest.Builder optional(final LdapConfiguration ldapConfiguration) {
             this.ldapConfiguration = (ldapConfiguration == null) ? Optional.<LdapConfiguration>empty() : Optional.of(ldapConfiguration);
             return this;
         }

@@ -50,6 +50,7 @@ public class ModifyAccountResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Account getAccount() { return this.account; }
     public void setAccount(Account account) { 

@@ -239,7 +239,7 @@ public class VolumeAccessGroup implements Serializable {
             return this;
         }
 
-        public VolumeAccessGroup.Builder optionalInitiatorIDs(final Long[] initiatorIDs) {
+        public VolumeAccessGroup.Builder optional(final Long[] initiatorIDs) {
             this.initiatorIDs = (initiatorIDs == null) ? Optional.<Long[]>empty() : Optional.of(initiatorIDs);
             return this;
         }

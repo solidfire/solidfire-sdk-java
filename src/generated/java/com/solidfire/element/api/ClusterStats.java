@@ -111,6 +111,7 @@ public class ClusterStats implements Serializable {
         this.clusterUtilization = clusterUtilization;
     }
     /** 
+     * 
      **/
     public Long getClientQueueDepth() { return this.clientQueueDepth; }
     public void setClientQueueDepth(Long clientQueueDepth) { 
@@ -152,72 +153,84 @@ public class ClusterStats implements Serializable {
         this.writeOps = writeOps;
     }
     /** 
+     * 
      **/
     public Optional<Long> getActualIOPS() { return this.actualIOPS; }
     public void setActualIOPS(Optional<Long> actualIOPS) { 
         this.actualIOPS = (actualIOPS == null) ? Optional.<Long>empty() : actualIOPS;
     }
     /** 
+     * 
      **/
     public Optional<Long> getAverageIOPSize() { return this.averageIOPSize; }
     public void setAverageIOPSize(Optional<Long> averageIOPSize) { 
         this.averageIOPSize = (averageIOPSize == null) ? Optional.<Long>empty() : averageIOPSize;
     }
     /** 
+     * 
      **/
     public Optional<Long> getLatencyUSec() { return this.latencyUSec; }
     public void setLatencyUSec(Optional<Long> latencyUSec) { 
         this.latencyUSec = (latencyUSec == null) ? Optional.<Long>empty() : latencyUSec;
     }
     /** 
+     * 
      **/
     public Optional<Long> getReadBytesLastSample() { return this.readBytesLastSample; }
     public void setReadBytesLastSample(Optional<Long> readBytesLastSample) { 
         this.readBytesLastSample = (readBytesLastSample == null) ? Optional.<Long>empty() : readBytesLastSample;
     }
     /** 
+     * 
      **/
     public Optional<Long> getReadLatencyUSec() { return this.readLatencyUSec; }
     public void setReadLatencyUSec(Optional<Long> readLatencyUSec) { 
         this.readLatencyUSec = (readLatencyUSec == null) ? Optional.<Long>empty() : readLatencyUSec;
     }
     /** 
+     * 
      **/
     public Optional<Long> getReadOpsLastSample() { return this.readOpsLastSample; }
     public void setReadOpsLastSample(Optional<Long> readOpsLastSample) { 
         this.readOpsLastSample = (readOpsLastSample == null) ? Optional.<Long>empty() : readOpsLastSample;
     }
     /** 
+     * 
      **/
     public Optional<Long> getSamplePeriodMsec() { return this.samplePeriodMsec; }
     public void setSamplePeriodMsec(Optional<Long> samplePeriodMsec) { 
         this.samplePeriodMsec = (samplePeriodMsec == null) ? Optional.<Long>empty() : samplePeriodMsec;
     }
     /** 
+     * 
      **/
     public Optional<Long> getUnalignedReads() { return this.unalignedReads; }
     public void setUnalignedReads(Optional<Long> unalignedReads) { 
         this.unalignedReads = (unalignedReads == null) ? Optional.<Long>empty() : unalignedReads;
     }
     /** 
+     * 
      **/
     public Optional<Long> getUnalignedWrites() { return this.unalignedWrites; }
     public void setUnalignedWrites(Optional<Long> unalignedWrites) { 
         this.unalignedWrites = (unalignedWrites == null) ? Optional.<Long>empty() : unalignedWrites;
     }
     /** 
+     * 
      **/
     public Optional<Long> getWriteBytesLastSample() { return this.writeBytesLastSample; }
     public void setWriteBytesLastSample(Optional<Long> writeBytesLastSample) { 
         this.writeBytesLastSample = (writeBytesLastSample == null) ? Optional.<Long>empty() : writeBytesLastSample;
     }
     /** 
+     * 
      **/
     public Optional<Long> getWriteLatencyUSec() { return this.writeLatencyUSec; }
     public void setWriteLatencyUSec(Optional<Long> writeLatencyUSec) { 
         this.writeLatencyUSec = (writeLatencyUSec == null) ? Optional.<Long>empty() : writeLatencyUSec;
     }
     /** 
+     * 
      **/
     public Optional<Long> getWriteOpsLastSample() { return this.writeOpsLastSample; }
     public void setWriteOpsLastSample(Optional<Long> writeOpsLastSample) { 
@@ -452,62 +465,62 @@ public class ClusterStats implements Serializable {
             return this;
         }
 
-        public ClusterStats.Builder optionalActualIOPS(final Long actualIOPS) {
+        public ClusterStats.Builder optional(final Long actualIOPS) {
             this.actualIOPS = (actualIOPS == null) ? Optional.<Long>empty() : Optional.of(actualIOPS);
             return this;
         }
 
-        public ClusterStats.Builder optionalAverageIOPSize(final Long averageIOPSize) {
+        public ClusterStats.Builder optional(final Long averageIOPSize) {
             this.averageIOPSize = (averageIOPSize == null) ? Optional.<Long>empty() : Optional.of(averageIOPSize);
             return this;
         }
 
-        public ClusterStats.Builder optionalLatencyUSec(final Long latencyUSec) {
+        public ClusterStats.Builder optional(final Long latencyUSec) {
             this.latencyUSec = (latencyUSec == null) ? Optional.<Long>empty() : Optional.of(latencyUSec);
             return this;
         }
 
-        public ClusterStats.Builder optionalReadBytesLastSample(final Long readBytesLastSample) {
+        public ClusterStats.Builder optional(final Long readBytesLastSample) {
             this.readBytesLastSample = (readBytesLastSample == null) ? Optional.<Long>empty() : Optional.of(readBytesLastSample);
             return this;
         }
 
-        public ClusterStats.Builder optionalReadLatencyUSec(final Long readLatencyUSec) {
+        public ClusterStats.Builder optional(final Long readLatencyUSec) {
             this.readLatencyUSec = (readLatencyUSec == null) ? Optional.<Long>empty() : Optional.of(readLatencyUSec);
             return this;
         }
 
-        public ClusterStats.Builder optionalReadOpsLastSample(final Long readOpsLastSample) {
+        public ClusterStats.Builder optional(final Long readOpsLastSample) {
             this.readOpsLastSample = (readOpsLastSample == null) ? Optional.<Long>empty() : Optional.of(readOpsLastSample);
             return this;
         }
 
-        public ClusterStats.Builder optionalSamplePeriodMsec(final Long samplePeriodMsec) {
+        public ClusterStats.Builder optional(final Long samplePeriodMsec) {
             this.samplePeriodMsec = (samplePeriodMsec == null) ? Optional.<Long>empty() : Optional.of(samplePeriodMsec);
             return this;
         }
 
-        public ClusterStats.Builder optionalUnalignedReads(final Long unalignedReads) {
+        public ClusterStats.Builder optional(final Long unalignedReads) {
             this.unalignedReads = (unalignedReads == null) ? Optional.<Long>empty() : Optional.of(unalignedReads);
             return this;
         }
 
-        public ClusterStats.Builder optionalUnalignedWrites(final Long unalignedWrites) {
+        public ClusterStats.Builder optional(final Long unalignedWrites) {
             this.unalignedWrites = (unalignedWrites == null) ? Optional.<Long>empty() : Optional.of(unalignedWrites);
             return this;
         }
 
-        public ClusterStats.Builder optionalWriteBytesLastSample(final Long writeBytesLastSample) {
+        public ClusterStats.Builder optional(final Long writeBytesLastSample) {
             this.writeBytesLastSample = (writeBytesLastSample == null) ? Optional.<Long>empty() : Optional.of(writeBytesLastSample);
             return this;
         }
 
-        public ClusterStats.Builder optionalWriteLatencyUSec(final Long writeLatencyUSec) {
+        public ClusterStats.Builder optional(final Long writeLatencyUSec) {
             this.writeLatencyUSec = (writeLatencyUSec == null) ? Optional.<Long>empty() : Optional.of(writeLatencyUSec);
             return this;
         }
 
-        public ClusterStats.Builder optionalWriteOpsLastSample(final Long writeOpsLastSample) {
+        public ClusterStats.Builder optional(final Long writeOpsLastSample) {
             this.writeOpsLastSample = (writeOpsLastSample == null) ? Optional.<Long>empty() : Optional.of(writeOpsLastSample);
             return this;
         }

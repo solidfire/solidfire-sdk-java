@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetClusterStateRequest  
+ * The GetClusterState method is used to indicate if a node is part of a cluster or not. The three states are: <br><strong>Available:</strong> Node has not been configured with a cluster name.<br><strong>Pending:</strong> Node is pending for a specific named cluster and can be added.<br><strong>Active:</strong> Node is active and a member of a cluster and may not be added to another cluster.
  **/
 
 public class GetClusterStateRequest implements Serializable {
 
-    public static final long serialVersionUID = -4583979987896002662L;
+    public static final long serialVersionUID = 7409607116677991350L;
     @SerializedName("force") private Boolean force;
 
     // empty constructor

@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * DeleteStorageContainersRequest  
+ * Deletes a storage container from the system.
  **/
 
 public class DeleteStorageContainersRequest implements Serializable {
 
-    public static final long serialVersionUID = 655860174858501057L;
+    public static final long serialVersionUID = -6842793456686063781L;
     @SerializedName("storageContainerIDs") private java.util.UUID[] storageContainerIDs;
 
     // empty constructor

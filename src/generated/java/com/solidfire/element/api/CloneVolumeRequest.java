@@ -28,11 +28,21 @@ import java.util.Objects;
 
 /**
  * CloneVolumeRequest  
+ * CloneVolume is used to create a copy of the volume.
+ * This method is asynchronous and may take a variable amount of time to complete.
+ * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+ * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+ * ListSyncJobs can be used to see the progress of creating the clone.
+ * 
+ * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+ * If different settings are required, they can be changed via ModifyVolume.
+ * 
+ * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
  **/
 
 public class CloneVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -768791333545216038L;
+    public static final long serialVersionUID = 5788489168458713078L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("newAccountID") private Optional<Long> newAccountID;
@@ -263,32 +273,32 @@ public class CloneVolumeRequest implements Serializable {
             return this;
         }
 
-        public CloneVolumeRequest.Builder optionalNewAccountID(final Long newAccountID) {
+        public CloneVolumeRequest.Builder optional(final Long newAccountID) {
             this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
             return this;
         }
 
-        public CloneVolumeRequest.Builder optionalNewSize(final Long newSize) {
+        public CloneVolumeRequest.Builder optional(final Long newSize) {
             this.newSize = (newSize == null) ? Optional.<Long>empty() : Optional.of(newSize);
             return this;
         }
 
-        public CloneVolumeRequest.Builder optionalAccess(final String access) {
+        public CloneVolumeRequest.Builder optional(final String access) {
             this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
             return this;
         }
 
-        public CloneVolumeRequest.Builder optionalSnapshotID(final Long snapshotID) {
+        public CloneVolumeRequest.Builder optional(final Long snapshotID) {
             this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }
 
-        public CloneVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CloneVolumeRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 
-        public CloneVolumeRequest.Builder optionalEnable512e(final Boolean enable512e) {
+        public CloneVolumeRequest.Builder optional(final Boolean enable512e) {
             this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : Optional.of(enable512e);
             return this;
         }

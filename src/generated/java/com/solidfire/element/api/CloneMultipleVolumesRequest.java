@@ -28,11 +28,15 @@ import java.util.Objects;
 
 /**
  * CloneMultipleVolumesRequest  
+ * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
+ * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
+ * 
+ * Note: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
  **/
 
 public class CloneMultipleVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -6275597178319531856L;
+    public static final long serialVersionUID = 2238262941096586292L;
     @SerializedName("volumes") private CloneMultipleVolumeParams[] volumes;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
@@ -183,17 +187,17 @@ public class CloneMultipleVolumesRequest implements Serializable {
             return this;
         }
 
-        public CloneMultipleVolumesRequest.Builder optionalAccess(final String access) {
+        public CloneMultipleVolumesRequest.Builder optional(final String access) {
             this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
             return this;
         }
 
-        public CloneMultipleVolumesRequest.Builder optionalGroupSnapshotID(final Long groupSnapshotID) {
+        public CloneMultipleVolumesRequest.Builder optional(final Long groupSnapshotID) {
             this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : Optional.of(groupSnapshotID);
             return this;
         }
 
-        public CloneMultipleVolumesRequest.Builder optionalNewAccountID(final Long newAccountID) {
+        public CloneMultipleVolumesRequest.Builder optional(final Long newAccountID) {
             this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
             return this;
         }

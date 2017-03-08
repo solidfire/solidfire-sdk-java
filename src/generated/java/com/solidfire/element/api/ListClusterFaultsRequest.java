@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * ListClusterFaultsRequest  
+ * ListClusterFaults is used to retrieve information about any faults detected on the cluster.
+ * With this method, both current and resolved faults can be retrieved. The system caches faults every 30 seconds.
  **/
 
 public class ListClusterFaultsRequest implements Serializable {
 
-    public static final long serialVersionUID = -7013942156541238584L;
+    public static final long serialVersionUID = 8082364318085188644L;
     @SerializedName("exceptions") private Optional<Boolean> exceptions;
     @SerializedName("bestPractices") private Optional<Boolean> bestPractices;
     @SerializedName("update") private Optional<Boolean> update;
@@ -59,6 +61,7 @@ public class ListClusterFaultsRequest implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Boolean> getExceptions() { return this.exceptions; }
     public void setExceptions(Optional<Boolean> exceptions) { 
@@ -73,6 +76,7 @@ public class ListClusterFaultsRequest implements Serializable {
         this.bestPractices = (bestPractices == null) ? Optional.<Boolean>empty() : bestPractices;
     }
     /** 
+     * 
      **/
     public Optional<Boolean> getUpdate() { return this.update; }
     public void setUpdate(Optional<Boolean> update) { 
@@ -175,22 +179,22 @@ public class ListClusterFaultsRequest implements Serializable {
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder optionalExceptions(final Boolean exceptions) {
+        public ListClusterFaultsRequest.Builder optional(final Boolean exceptions) {
             this.exceptions = (exceptions == null) ? Optional.<Boolean>empty() : Optional.of(exceptions);
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder optionalBestPractices(final Boolean bestPractices) {
+        public ListClusterFaultsRequest.Builder optional(final Boolean bestPractices) {
             this.bestPractices = (bestPractices == null) ? Optional.<Boolean>empty() : Optional.of(bestPractices);
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder optionalUpdate(final Boolean update) {
+        public ListClusterFaultsRequest.Builder optional(final Boolean update) {
             this.update = (update == null) ? Optional.<Boolean>empty() : Optional.of(update);
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder optionalFaultTypes(final String faultTypes) {
+        public ListClusterFaultsRequest.Builder optional(final String faultTypes) {
             this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : Optional.of(faultTypes);
             return this;
         }

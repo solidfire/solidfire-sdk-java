@@ -28,11 +28,16 @@ import java.util.Objects;
 
 /**
  * SetConfigRequest  
+ * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
+ * 
+ * Warning! Changing the 'bond-mode' on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
+ * 
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class SetConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = -2103656016970197967L;
+    public static final long serialVersionUID = -6082910372309011917L;
     @SerializedName("config") private Config config;
 
     // empty constructor

@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * ModifyVirtualNetworkRequest  
+ * ModifyVirtualNetwork is used to change various attributes of a VirtualNetwork object. This method can be used to add or remove address blocks, change the netmask IP, or modify the name or description of the virtual network.
+ * 
+ * Note: This method requires either the VirtualNetworkID or the VirtualNetworkTag as a parameter, but not both.
  **/
 
 public class ModifyVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = -8401847868102898491L;
+    public static final long serialVersionUID = 9179598987773624731L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
     @SerializedName("name") private Optional<String> name;
@@ -287,47 +290,47 @@ public class ModifyVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optionalVirtualNetworkID(final Long virtualNetworkID) {
+        public ModifyVirtualNetworkRequest.Builder optional(final Long virtualNetworkID) {
             this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optionalVirtualNetworkTag(final Long virtualNetworkTag) {
+        public ModifyVirtualNetworkRequest.Builder optional(final Long virtualNetworkTag) {
             this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optionalName(final String name) {
+        public ModifyVirtualNetworkRequest.Builder optional(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optionalAddressBlocks(final AddressBlock[] addressBlocks) {
+        public ModifyVirtualNetworkRequest.Builder optional(final AddressBlock[] addressBlocks) {
             this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : Optional.of(addressBlocks);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optionalNetmask(final String netmask) {
+        public ModifyVirtualNetworkRequest.Builder optional(final String netmask) {
             this.netmask = (netmask == null) ? Optional.<String>empty() : Optional.of(netmask);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optionalSvip(final String svip) {
+        public ModifyVirtualNetworkRequest.Builder optional(final String svip) {
             this.svip = (svip == null) ? Optional.<String>empty() : Optional.of(svip);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optionalGateway(final String gateway) {
+        public ModifyVirtualNetworkRequest.Builder optional(final String gateway) {
             this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optionalNamespace(final Boolean namespace) {
+        public ModifyVirtualNetworkRequest.Builder optional(final Boolean namespace) {
             this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public ModifyVirtualNetworkRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

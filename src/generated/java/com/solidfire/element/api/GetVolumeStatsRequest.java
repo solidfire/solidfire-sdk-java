@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * GetVolumeStatsRequest  
+ * GetVolumeStats is used to retrieve high-level activity measurements for a single volume.
+ * Values are cumulative from the creation of the volume.
  **/
 
 public class GetVolumeStatsRequest implements Serializable {
 
-    public static final long serialVersionUID = 1223689704598366419L;
+    public static final long serialVersionUID = -3285589957885860119L;
     @SerializedName("volumeID") private Long volumeID;
 
     // empty constructor

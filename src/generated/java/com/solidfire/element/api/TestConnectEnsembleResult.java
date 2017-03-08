@@ -56,6 +56,7 @@ public class TestConnectEnsembleResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public TestConnectEnsembleDetails getDetails() { return this.details; }
     public void setDetails(TestConnectEnsembleDetails details) { 

@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListVolumeStatsByVirtualVolumeRequest  
+ * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
  **/
 
 public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 8894287531491187419L;
+    public static final long serialVersionUID = -3973380068564934287L;
     @SerializedName("virtualVolumeIDs") private Optional<java.util.UUID[]> virtualVolumeIDs;
 
     // empty constructor
@@ -120,7 +121,7 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
             return this;
         }
 
-        public ListVolumeStatsByVirtualVolumeRequest.Builder optionalVirtualVolumeIDs(final java.util.UUID[] virtualVolumeIDs) {
+        public ListVolumeStatsByVirtualVolumeRequest.Builder optional(final java.util.UUID[] virtualVolumeIDs) {
             this.virtualVolumeIDs = (virtualVolumeIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(virtualVolumeIDs);
             return this;
         }

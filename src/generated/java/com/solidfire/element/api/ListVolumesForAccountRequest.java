@@ -28,14 +28,15 @@ import java.util.Objects;
 
 /**
  * ListVolumesForAccountRequest  
+ * ListVolumesForAccount returns the list of active AND (pending) deleted volumes for an account.
  **/
 
 public class ListVolumesForAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = 245848432924198062L;
+    public static final long serialVersionUID = -1670455153649335890L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
-    @SerializedName("limit") private Optional<Long> limit = Optional.of(10000L);
+    @SerializedName("limit") private Optional<Long> limit;
 
     // empty constructor
     @Since("7.0")
@@ -161,12 +162,12 @@ public class ListVolumesForAccountRequest implements Serializable {
             return this;
         }
 
-        public ListVolumesForAccountRequest.Builder optionalStartVolumeID(final Long startVolumeID) {
+        public ListVolumesForAccountRequest.Builder optional(final Long startVolumeID) {
             this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : Optional.of(startVolumeID);
             return this;
         }
 
-        public ListVolumesForAccountRequest.Builder optionalLimit(final Long limit) {
+        public ListVolumesForAccountRequest.Builder optional(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }

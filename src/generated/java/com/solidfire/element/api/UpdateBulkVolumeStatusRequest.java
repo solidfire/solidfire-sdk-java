@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * UpdateBulkVolumeStatusRequest  
+ * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
  **/
 
 public class UpdateBulkVolumeStatusRequest implements Serializable {
 
-    public static final long serialVersionUID = -4782595184797079493L;
+    public static final long serialVersionUID = -2248308967637649647L;
     @SerializedName("key") private String key;
     @SerializedName("status") private String status;
     @SerializedName("percentComplete") private Optional<String> percentComplete;
@@ -202,17 +203,17 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
             return this;
         }
 
-        public UpdateBulkVolumeStatusRequest.Builder optionalPercentComplete(final String percentComplete) {
+        public UpdateBulkVolumeStatusRequest.Builder optional(final String percentComplete) {
             this.percentComplete = (percentComplete == null) ? Optional.<String>empty() : Optional.of(percentComplete);
             return this;
         }
 
-        public UpdateBulkVolumeStatusRequest.Builder optionalMessage(final String message) {
+        public UpdateBulkVolumeStatusRequest.Builder optional(final String message) {
             this.message = (message == null) ? Optional.<String>empty() : Optional.of(message);
             return this;
         }
 
-        public UpdateBulkVolumeStatusRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public UpdateBulkVolumeStatusRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

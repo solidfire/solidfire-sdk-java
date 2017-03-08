@@ -53,12 +53,14 @@ public class ClusterHardwareInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public java.util.Map<String,DriveHardwareInfo> getDrives() { return this.drives; }
     public void setDrives(java.util.Map<String,DriveHardwareInfo> drives) { 
         this.drives = drives;
     }
     /** 
+     * 
      **/
     public java.util.Map<String,java.util.Map<String, Object>> getNodes() { return this.nodes; }
     public void setNodes(java.util.Map<String,java.util.Map<String, Object>> nodes) { 

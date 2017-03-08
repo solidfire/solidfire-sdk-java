@@ -50,6 +50,7 @@ public class GetIpmiInfoNodesResultObject implements Serializable {
     }
 
     /** 
+     * 
      **/
     public IpmiInfo getIpmiInfo() { return this.ipmiInfo; }
     public void setIpmiInfo(IpmiInfo ipmiInfo) { 

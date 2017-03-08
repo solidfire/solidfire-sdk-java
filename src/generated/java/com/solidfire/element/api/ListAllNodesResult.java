@@ -56,12 +56,14 @@ public class ListAllNodesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Node[] getNodes() { return this.nodes; }
     public void setNodes(Node[] nodes) { 
         this.nodes = nodes;
     }
     /** 
+     * 
      **/
     public PendingNode[] getPendingNodes() { return this.pendingNodes; }
     public void setPendingNodes(PendingNode[] pendingNodes) { 
@@ -160,7 +162,7 @@ public class ListAllNodesResult implements Serializable {
             return this;
         }
 
-        public ListAllNodesResult.Builder optionalPendingActiveNodes(final PendingActiveNode[] pendingActiveNodes) {
+        public ListAllNodesResult.Builder optional(final PendingActiveNode[] pendingActiveNodes) {
             this.pendingActiveNodes = (pendingActiveNodes == null) ? Optional.<PendingActiveNode[]>empty() : Optional.of(pendingActiveNodes);
             return this;
         }

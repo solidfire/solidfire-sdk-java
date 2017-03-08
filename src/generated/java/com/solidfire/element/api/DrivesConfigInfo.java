@@ -68,42 +68,49 @@ public class DrivesConfigInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public DriveConfigInfo[] getDrives() { return this.drives; }
     public void setDrives(DriveConfigInfo[] drives) { 
         this.drives = drives;
     }
     /** 
+     * 
      **/
     public Long getNumBlockActual() { return this.numBlockActual; }
     public void setNumBlockActual(Long numBlockActual) { 
         this.numBlockActual = numBlockActual;
     }
     /** 
+     * 
      **/
     public Long getNumBlockExpected() { return this.numBlockExpected; }
     public void setNumBlockExpected(Long numBlockExpected) { 
         this.numBlockExpected = numBlockExpected;
     }
     /** 
+     * 
      **/
     public Long getNumSliceActual() { return this.numSliceActual; }
     public void setNumSliceActual(Long numSliceActual) { 
         this.numSliceActual = numSliceActual;
     }
     /** 
+     * 
      **/
     public Long getNumSliceExpected() { return this.numSliceExpected; }
     public void setNumSliceExpected(Long numSliceExpected) { 
         this.numSliceExpected = numSliceExpected;
     }
     /** 
+     * 
      **/
     public Long getNumTotalActual() { return this.numTotalActual; }
     public void setNumTotalActual(Long numTotalActual) { 
         this.numTotalActual = numTotalActual;
     }
     /** 
+     * 
      **/
     public Long getNumTotalExpected() { return this.numTotalExpected; }
     public void setNumTotalExpected(Long numTotalExpected) { 

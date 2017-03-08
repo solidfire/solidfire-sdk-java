@@ -50,6 +50,7 @@ public class GetPendingOperationResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public PendingOperation getPendingOperation() { return this.pendingOperation; }
     public void setPendingOperation(PendingOperation pendingOperation) { 

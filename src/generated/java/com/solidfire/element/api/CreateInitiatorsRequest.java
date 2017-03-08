@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * CreateInitiatorsRequest  
+ * CreateInitiators enables you to create multiple new initiator IQNs or World Wide Port Names (WWPNs) and optionally assign them aliases and attributes. When you use CreateInitiators to create new initiators, you can also add them to volume access groups.
+ * If CreateInitiators fails to create one of the initiators provided in the parameter, the method returns an error and does not create any initiators (no partial completion is possible).
  **/
 
 public class CreateInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 4721805937496626346L;
+    public static final long serialVersionUID = 2102559985920445326L;
     @SerializedName("initiators") private CreateInitiator[] initiators;
 
     // empty constructor

@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * CompleteVolumePairingRequest  
+ * CompleteVolumePairing is used to complete the pairing of two volumes.
  **/
 
 public class CompleteVolumePairingRequest implements Serializable {
 
-    public static final long serialVersionUID = 3238767447325720472L;
+    public static final long serialVersionUID = -886574000472411308L;
     @SerializedName("volumePairingKey") private String volumePairingKey;
     @SerializedName("volumeID") private Long volumeID;
 

@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ModifyClusterAdminRequest  
+ * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
  **/
 
 public class ModifyClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 8115405465052390185L;
+    public static final long serialVersionUID = 4400919580991586247L;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     @SerializedName("password") private Optional<String> password;
     @SerializedName("access") private Optional<String[]> access;
@@ -177,17 +178,17 @@ public class ModifyClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder optionalPassword(final String password) {
+        public ModifyClusterAdminRequest.Builder optional(final String password) {
             this.password = (password == null) ? Optional.<String>empty() : Optional.of(password);
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder optionalAccess(final String[] access) {
+        public ModifyClusterAdminRequest.Builder optional(final String[] access) {
             this.access = (access == null) ? Optional.<String[]>empty() : Optional.of(access);
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public ModifyClusterAdminRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

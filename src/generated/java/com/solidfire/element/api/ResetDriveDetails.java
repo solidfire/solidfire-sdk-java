@@ -66,18 +66,21 @@ public class ResetDriveDetails implements Serializable {
         this.drive = drive;
     }
     /** 
+     * 
      **/
     public Long getReturnCode() { return this.returnCode; }
     public void setReturnCode(Long returnCode) { 
         this.returnCode = returnCode;
     }
     /** 
+     * 
      **/
     public String getStderr() { return this.stderr; }
     public void setStderr(String stderr) { 
         this.stderr = stderr;
     }
     /** 
+     * 
      **/
     public String getStdout() { return this.stdout; }
     public void setStdout(String stdout) { 

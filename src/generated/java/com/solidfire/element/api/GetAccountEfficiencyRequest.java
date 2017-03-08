@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetAccountEfficiencyRequest  
+ * GetAccountEfficiency is used to retrieve information about a volume account. Only the account given as a parameter in this API method is used to compute the capacity.
  **/
 
 public class GetAccountEfficiencyRequest implements Serializable {
 
-    public static final long serialVersionUID = 6289053675311483886L;
+    public static final long serialVersionUID = 5822006002710065522L;
     @SerializedName("accountID") private Long accountID;
 
     // empty constructor

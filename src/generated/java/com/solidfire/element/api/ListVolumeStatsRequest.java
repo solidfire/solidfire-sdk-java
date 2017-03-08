@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ListVolumeStatsRequest implements Serializable {
 
-    public static final long serialVersionUID = 3560482616143915244L;
+    public static final long serialVersionUID = -7670078818681522628L;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
 
     // empty constructor
@@ -50,6 +50,7 @@ public class ListVolumeStatsRequest implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Long[]> getVolumeIDs() { return this.volumeIDs; }
     public void setVolumeIDs(Optional<Long[]> volumeIDs) { 
@@ -119,7 +120,7 @@ public class ListVolumeStatsRequest implements Serializable {
             return this;
         }
 
-        public ListVolumeStatsRequest.Builder optionalVolumeIDs(final Long[] volumeIDs) {
+        public ListVolumeStatsRequest.Builder optional(final Long[] volumeIDs) {
             this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
             return this;
         }

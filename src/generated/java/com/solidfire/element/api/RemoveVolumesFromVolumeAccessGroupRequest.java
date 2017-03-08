@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * RemoveVolumesFromVolumeAccessGroupRequest  
+ * Remove volumes from a volume access group.
  **/
 
 public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 4779120452503850352L;
+    public static final long serialVersionUID = -2043557978124640960L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("volumes") private Long[] volumes;
 

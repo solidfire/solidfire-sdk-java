@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * RemoveClusterPairRequest  
+ * You can use the RemoveClusterPair method to close the open connections between two paired clusters.
+ * Note: Before you remove a cluster pair, you must first remove all volume pairing to the clusters with the "RemoveVolumePair" API method.
  **/
 
 public class RemoveClusterPairRequest implements Serializable {
 
-    public static final long serialVersionUID = -6696513351448610827L;
+    public static final long serialVersionUID = 7534637187207591071L;
     @SerializedName("clusterPairID") private Long clusterPairID;
 
     // empty constructor

@@ -50,6 +50,7 @@ public class LoginSessionInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getTimeout() { return this.timeout; }
     public void setTimeout(String timeout) { 

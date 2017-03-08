@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * DeleteVolumesRequest  
+ * DeleteVolumes marks multiple (up to 500) active volumes for deletion. Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.The cleanup interval can be set in the SetClusterSettings method. For more information on using this method, see SetClusterSettings on page 1. After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated and no further connections are allowed while the volumes are in this state. A marked volume is not returned in target discovery requests. Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from the system. If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or write operation is stopped. If the volumes you delete are paired with a volume, replication between the paired volumes is suspended and no data is transferred to them or from them while in a deleted state. The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state and data is no longer sent to them or from the deleted volumes. Until the deleted volumes are purged, they can be restored and data transfers resume. If the deleted volumes are purged from the system, the volumes they were paired with enter into a StoppedMisconfigured state and the volume pairing status is removed. The purged volumes become permanently unavailable.
  **/
 
 public class DeleteVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -6227406894762147471L;
+    public static final long serialVersionUID = 8467114120532745883L;
     @SerializedName("accountIDs") private Optional<Long[]> accountIDs;
     @SerializedName("volumeAccessGroupIDs") private Optional<Long[]> volumeAccessGroupIDs;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
@@ -156,17 +157,17 @@ public class DeleteVolumesRequest implements Serializable {
             return this;
         }
 
-        public DeleteVolumesRequest.Builder optionalAccountIDs(final Long[] accountIDs) {
+        public DeleteVolumesRequest.Builder optional(final Long[] accountIDs) {
             this.accountIDs = (accountIDs == null) ? Optional.<Long[]>empty() : Optional.of(accountIDs);
             return this;
         }
 
-        public DeleteVolumesRequest.Builder optionalVolumeAccessGroupIDs(final Long[] volumeAccessGroupIDs) {
+        public DeleteVolumesRequest.Builder optional(final Long[] volumeAccessGroupIDs) {
             this.volumeAccessGroupIDs = (volumeAccessGroupIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroupIDs);
             return this;
         }
 
-        public DeleteVolumesRequest.Builder optionalVolumeIDs(final Long[] volumeIDs) {
+        public DeleteVolumesRequest.Builder optional(final Long[] volumeIDs) {
             this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
             return this;
         }

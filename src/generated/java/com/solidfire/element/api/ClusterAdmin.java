@@ -62,24 +62,28 @@ public class ClusterAdmin implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getAuthMethod() { return this.authMethod; }
     public void setAuthMethod(String authMethod) { 
         this.authMethod = authMethod;
     }
     /** 
+     * 
      **/
     public String[] getAccess() { return this.access; }
     public void setAccess(String[] access) { 
         this.access = access;
     }
     /** 
+     * 
      **/
     public Long getClusterAdminID() { return this.clusterAdminID; }
     public void setClusterAdminID(Long clusterAdminID) { 
         this.clusterAdminID = clusterAdminID;
     }
     /** 
+     * 
      **/
     public String getUsername() { return this.username; }
     public void setUsername(String username) { 

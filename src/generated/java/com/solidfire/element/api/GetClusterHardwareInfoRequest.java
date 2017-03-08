@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetClusterHardwareInfoRequest  
+ * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
  **/
 
 public class GetClusterHardwareInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -945659093469045744L;
+    public static final long serialVersionUID = -12873472881062536L;
     @SerializedName("type") private Optional<String> type;
 
     // empty constructor
@@ -120,7 +121,7 @@ public class GetClusterHardwareInfoRequest implements Serializable {
             return this;
         }
 
-        public GetClusterHardwareInfoRequest.Builder optionalType(final String type) {
+        public GetClusterHardwareInfoRequest.Builder optional(final String type) {
             this.type = (type == null) ? Optional.<String>empty() : Optional.of(type);
             return this;
         }

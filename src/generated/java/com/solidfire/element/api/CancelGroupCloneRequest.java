@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * CancelGroupCloneRequest  
+ * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
  **/
 
 public class CancelGroupCloneRequest implements Serializable {
 
-    public static final long serialVersionUID = -8150629628859692550L;
+    public static final long serialVersionUID = 9021390497646602910L;
     @SerializedName("groupCloneID") private Long groupCloneID;
 
     // empty constructor

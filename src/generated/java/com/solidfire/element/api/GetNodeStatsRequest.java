@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetNodeStatsRequest  
+ * GetNodeStats is used to return the high-level activity measurements for a single node.
  **/
 
 public class GetNodeStatsRequest implements Serializable {
 
-    public static final long serialVersionUID = -8944306068794105553L;
+    public static final long serialVersionUID = -4109444980645172251L;
     @SerializedName("nodeID") private Long nodeID;
 
     // empty constructor

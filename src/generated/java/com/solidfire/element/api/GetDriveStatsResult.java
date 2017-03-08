@@ -50,6 +50,7 @@ public class GetDriveStatsResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public DriveStats getDriveStats() { return this.driveStats; }
     public void setDriveStats(DriveStats driveStats) { 

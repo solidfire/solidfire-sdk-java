@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetDriveHardwareInfoRequest  
+ * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
  **/
 
 public class GetDriveHardwareInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -6304923488608374232L;
+    public static final long serialVersionUID = 654573717298567372L;
     @SerializedName("driveID") private Long driveID;
 
     // empty constructor

@@ -98,102 +98,119 @@ public class SyncJob implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Double getBytesPerSecond() { return this.bytesPerSecond; }
     public void setBytesPerSecond(Double bytesPerSecond) { 
         this.bytesPerSecond = bytesPerSecond;
     }
     /** 
+     * 
      **/
     public Long getCurrentBytes() { return this.currentBytes; }
     public void setCurrentBytes(Long currentBytes) { 
         this.currentBytes = currentBytes;
     }
     /** 
+     * 
      **/
     public Long getDstServiceID() { return this.dstServiceID; }
     public void setDstServiceID(Long dstServiceID) { 
         this.dstServiceID = dstServiceID;
     }
     /** 
+     * 
      **/
     public Double getElapsedTime() { return this.elapsedTime; }
     public void setElapsedTime(Double elapsedTime) { 
         this.elapsedTime = elapsedTime;
     }
     /** 
+     * 
      **/
     public Double getPercentComplete() { return this.percentComplete; }
     public void setPercentComplete(Double percentComplete) { 
         this.percentComplete = percentComplete;
     }
     /** 
+     * 
      **/
     public Double getRemainingTime() { return this.remainingTime; }
     public void setRemainingTime(Double remainingTime) { 
         this.remainingTime = remainingTime;
     }
     /** 
+     * 
      **/
     public Long getSliceID() { return this.sliceID; }
     public void setSliceID(Long sliceID) { 
         this.sliceID = sliceID;
     }
     /** 
+     * 
      **/
     public Long getSrcServiceID() { return this.srcServiceID; }
     public void setSrcServiceID(Long srcServiceID) { 
         this.srcServiceID = srcServiceID;
     }
     /** 
+     * 
      **/
     public Long getTotalBytes() { return this.totalBytes; }
     public void setTotalBytes(Long totalBytes) { 
         this.totalBytes = totalBytes;
     }
     /** 
+     * 
      **/
     public String getType() { return this.type; }
     public void setType(String type) { 
         this.type = type;
     }
     /** 
+     * 
      **/
     public Long getCloneID() { return this.cloneID; }
     public void setCloneID(Long cloneID) { 
         this.cloneID = cloneID;
     }
     /** 
+     * 
      **/
     public Long getDstVolumeID() { return this.dstVolumeID; }
     public void setDstVolumeID(Long dstVolumeID) { 
         this.dstVolumeID = dstVolumeID;
     }
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public Long getSnapshotID() { return this.snapshotID; }
     public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
+     * 
      **/
     public Long getSrcVolumeID() { return this.srcVolumeID; }
     public void setSrcVolumeID(Long srcVolumeID) { 
         this.srcVolumeID = srcVolumeID;
     }
     /** 
+     * 
      **/
     public Double getBlocksPerSecond() { return this.blocksPerSecond; }
     public void setBlocksPerSecond(Double blocksPerSecond) { 
         this.blocksPerSecond = blocksPerSecond;
     }
     /** 
+     * 
      **/
     public String getStage() { return this.stage; }
     public void setStage(String stage) { 

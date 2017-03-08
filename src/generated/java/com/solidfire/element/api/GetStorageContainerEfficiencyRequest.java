@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetStorageContainerEfficiencyRequest  
+ * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
  **/
 
 public class GetStorageContainerEfficiencyRequest implements Serializable {
 
-    public static final long serialVersionUID = -6334814596262264226L;
+    public static final long serialVersionUID = -7455071277055012178L;
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
 
     // empty constructor

@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * ListActivePairedVolumesRequest  
+ * ListActivePairedVolumes is used to list all of the active volumes paired with a volume.
+ * Volumes listed in the return for this method include volumes with active and pending pairings.
  **/
 
 public class ListActivePairedVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 2332664000527943347L;
+    public static final long serialVersionUID = 8593817170530166873L;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
 
@@ -53,12 +55,14 @@ public class ListActivePairedVolumesRequest implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Long> getStartVolumeID() { return this.startVolumeID; }
     public void setStartVolumeID(Optional<Long> startVolumeID) { 
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
     }
     /** 
+     * 
      **/
     public Optional<Long> getLimit() { return this.limit; }
     public void setLimit(Optional<Long> limit) { 
@@ -136,12 +140,12 @@ public class ListActivePairedVolumesRequest implements Serializable {
             return this;
         }
 
-        public ListActivePairedVolumesRequest.Builder optionalStartVolumeID(final Long startVolumeID) {
+        public ListActivePairedVolumesRequest.Builder optional(final Long startVolumeID) {
             this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : Optional.of(startVolumeID);
             return this;
         }
 
-        public ListActivePairedVolumesRequest.Builder optionalLimit(final Long limit) {
+        public ListActivePairedVolumesRequest.Builder optional(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }

@@ -53,12 +53,14 @@ public class GetIpmiConfigNodesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public java.util.Map<String, Object> getResult() { return this.result; }
     public void setResult(java.util.Map<String, Object> result) { 

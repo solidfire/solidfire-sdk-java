@@ -28,12 +28,13 @@ import java.util.Objects;
 
 /**
  * EnableSnmpRequest  
+ * EnableSnmp is used to enable SNMP on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to EnableSnmp.
  **/
 
 public class EnableSnmpRequest implements Serializable {
 
-    public static final long serialVersionUID = 6198786488143236861L;
-    @SerializedName("snmpV3Enabled") private Boolean snmpV3Enabled = false;
+    public static final long serialVersionUID = 633938753461190611L;
+    @SerializedName("snmpV3Enabled") private Boolean snmpV3Enabled;
 
     // empty constructor
     @Since("7.0")

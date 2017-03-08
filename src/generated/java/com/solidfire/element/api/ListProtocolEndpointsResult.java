@@ -50,6 +50,7 @@ public class ListProtocolEndpointsResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public ProtocolEndpoint[] getProtocolEndpoints() { return this.protocolEndpoints; }
     public void setProtocolEndpoints(ProtocolEndpoint[] protocolEndpoints) { 

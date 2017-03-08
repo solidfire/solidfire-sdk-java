@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListDriveHardwareRequest  
+ * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
  **/
 
 public class ListDriveHardwareRequest implements Serializable {
 
-    public static final long serialVersionUID = 8026999793715868059L;
+    public static final long serialVersionUID = 8842637870193602553L;
     @SerializedName("force") private Boolean force;
 
     // empty constructor

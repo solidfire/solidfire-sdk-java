@@ -28,14 +28,15 @@ import java.util.Objects;
 
 /**
  * RemoveInitiatorsFromVolumeAccessGroupRequest  
+ * Remove initiators from a volume access group.
  **/
 
 public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = -973849202726659162L;
+    public static final long serialVersionUID = 307064900088076518L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("initiators") private String[] initiators;
-    @SerializedName("deleteOrphanInitiators") private Boolean deleteOrphanInitiators = true;
+    @SerializedName("deleteOrphanInitiators") private Optional<Boolean> deleteOrphanInitiators;
 
     // empty constructor
     @Since("7.0")
@@ -47,12 +48,12 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
     public RemoveInitiatorsFromVolumeAccessGroupRequest(
         Long volumeAccessGroupID,
         String[] initiators,
-        Boolean deleteOrphanInitiators
+        Optional<Boolean> deleteOrphanInitiators
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.initiators = initiators;
-        this.deleteOrphanInitiators = deleteOrphanInitiators;
+        this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
     }
 
     /** 
@@ -70,12 +71,11 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
         this.initiators = initiators;
     }
     /** 
-     * true: Delete initiator objects after they are removed from a volume access group.
-     * false: Do not delete initiator objects after they are removed from a volume access group.
+     * 
      **/
-    public Boolean getDeleteOrphanInitiators() { return this.deleteOrphanInitiators; }
-    public void setDeleteOrphanInitiators(Boolean deleteOrphanInitiators) { 
-        this.deleteOrphanInitiators = deleteOrphanInitiators;
+    public Optional<Boolean> getDeleteOrphanInitiators() { return this.deleteOrphanInitiators; }
+    public void setDeleteOrphanInitiators(Optional<Boolean> deleteOrphanInitiators) { 
+        this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
     }
 
     @Override
@@ -112,7 +112,9 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
 
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
         sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
-        sb.append(" deleteOrphanInitiators : ").append(deleteOrphanInitiators).append(",");
+        if(null != deleteOrphanInitiators && deleteOrphanInitiators.isPresent()){
+            sb.append(" deleteOrphanInitiators : ").append(deleteOrphanInitiators).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -132,7 +134,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
     public static class Builder {
         private Long volumeAccessGroupID;
         private String[] initiators;
-        private Boolean deleteOrphanInitiators;
+        private Optional<Boolean> deleteOrphanInitiators;
 
         private Builder() { }
 
@@ -161,8 +163,8 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
             return this;
         }
 
-        public RemoveInitiatorsFromVolumeAccessGroupRequest.Builder deleteOrphanInitiators(final Boolean deleteOrphanInitiators) {
-            this.deleteOrphanInitiators = deleteOrphanInitiators;
+        public RemoveInitiatorsFromVolumeAccessGroupRequest.Builder optional(final Boolean deleteOrphanInitiators) {
+            this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : Optional.of(deleteOrphanInitiators);
             return this;
         }
 

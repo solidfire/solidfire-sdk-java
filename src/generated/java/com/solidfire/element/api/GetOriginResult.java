@@ -50,6 +50,7 @@ public class GetOriginResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public GetOriginNode[] getNodes() { return this.nodes; }
     public void setNodes(GetOriginNode[] nodes) { 

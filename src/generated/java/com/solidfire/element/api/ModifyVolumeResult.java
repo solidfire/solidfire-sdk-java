@@ -60,6 +60,7 @@ public class ModifyVolumeResult implements Serializable {
         this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
     }
     /** 
+     * 
      **/
     public Optional<QoS> getCurve() { return this.curve; }
     public void setCurve(Optional<QoS> curve) { 
@@ -137,12 +138,12 @@ public class ModifyVolumeResult implements Serializable {
             return this;
         }
 
-        public ModifyVolumeResult.Builder optionalVolume(final Volume volume) {
+        public ModifyVolumeResult.Builder optional(final Volume volume) {
             this.volume = (volume == null) ? Optional.<Volume>empty() : Optional.of(volume);
             return this;
         }
 
-        public ModifyVolumeResult.Builder optionalCurve(final QoS curve) {
+        public ModifyVolumeResult.Builder optional(final QoS curve) {
             this.curve = (curve == null) ? Optional.<QoS>empty() : Optional.of(curve);
             return this;
         }

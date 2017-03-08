@@ -62,30 +62,35 @@ public class SoftwareVersionInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getCurrentVersion() { return this.currentVersion; }
     public void setCurrentVersion(String currentVersion) { 
         this.currentVersion = currentVersion;
     }
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public String getPackageName() { return this.packageName; }
     public void setPackageName(String packageName) { 
         this.packageName = packageName;
     }
     /** 
+     * 
      **/
     public String getPendingVersion() { return this.pendingVersion; }
     public void setPendingVersion(String pendingVersion) { 
         this.pendingVersion = pendingVersion;
     }
     /** 
+     * 
      **/
     public String getStartTime() { return this.startTime; }
     public void setStartTime(String startTime) { 

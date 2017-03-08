@@ -50,6 +50,7 @@ public class ModifyScheduleResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Schedule getSchedule() { return this.schedule; }
     public void setSchedule(Schedule schedule) { 

@@ -50,6 +50,7 @@ public class ListISCSISessionsResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public ISCSISession[] getSessions() { return this.sessions; }
     public void setSessions(ISCSISession[] sessions) { 

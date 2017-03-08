@@ -56,18 +56,21 @@ public class DeleteAllSupportBundlesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getDuration() { return this.duration; }
     public void setDuration(String duration) { 
         this.duration = duration;
     }
     /** 
+     * 
      **/
     public java.util.Map<String, Object> getDetails() { return this.details; }
     public void setDetails(java.util.Map<String, Object> details) { 
         this.details = details;
     }
     /** 
+     * 
      **/
     public String getResult() { return this.result; }
     public void setResult(String result) { 

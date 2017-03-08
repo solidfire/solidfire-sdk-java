@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * SetSnmpACLRequest  
+ * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
  **/
 
 public class SetSnmpACLRequest implements Serializable {
 
-    public static final long serialVersionUID = 6271612792860104518L;
+    public static final long serialVersionUID = 5198207276070077502L;
     @SerializedName("networks") private SnmpNetwork[] networks;
     @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
 

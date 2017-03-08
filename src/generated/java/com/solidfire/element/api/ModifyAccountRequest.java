@@ -28,11 +28,15 @@ import java.util.Objects;
 
 /**
  * ModifyAccountRequest  
+ * Used to modify an existing account.
+ * When locking an account, any existing connections from that account are immediately terminated.
+ * When changing CHAP settings, any existing connections continue to be active,
+ * and the new CHAP values are only used on subsequent connection or reconnection.
  **/
 
 public class ModifyAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = 357601812538223462L;
+    public static final long serialVersionUID = -6173216453977103498L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("username") private Optional<String> username;
     @SerializedName("status") private Optional<String> status;
@@ -215,27 +219,27 @@ public class ModifyAccountRequest implements Serializable {
             return this;
         }
 
-        public ModifyAccountRequest.Builder optionalUsername(final String username) {
+        public ModifyAccountRequest.Builder optional(final String username) {
             this.username = (username == null) ? Optional.<String>empty() : Optional.of(username);
             return this;
         }
 
-        public ModifyAccountRequest.Builder optionalStatus(final String status) {
+        public ModifyAccountRequest.Builder optional(final String status) {
             this.status = (status == null) ? Optional.<String>empty() : Optional.of(status);
             return this;
         }
 
-        public ModifyAccountRequest.Builder optionalInitiatorSecret(final CHAPSecret initiatorSecret) {
+        public ModifyAccountRequest.Builder optional(final CHAPSecret initiatorSecret) {
             this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public ModifyAccountRequest.Builder optionalTargetSecret(final CHAPSecret targetSecret) {
+        public ModifyAccountRequest.Builder optional(final CHAPSecret targetSecret) {
             this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
             return this;
         }
 
-        public ModifyAccountRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public ModifyAccountRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListClusterAdminsRequest  
+ * ListClusterAdmins returns the list of all cluster administrators for the cluster. There can be several cluster administrators that have different levels of permissions. There can be only one primary cluster administrator in the system. The primary Cluster Admin is the administrator that was created when the cluster was created. LDAP administrators can also be created when setting up an LDAP system on the cluster.
  **/
 
 public class ListClusterAdminsRequest implements Serializable {
 
-    public static final long serialVersionUID = -2751493233916383959L;
+    public static final long serialVersionUID = 8775773498631788059L;
     @SerializedName("showHidden") private Optional<Boolean> showHidden;
 
     // empty constructor
@@ -50,6 +51,7 @@ public class ListClusterAdminsRequest implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Boolean> getShowHidden() { return this.showHidden; }
     public void setShowHidden(Optional<Boolean> showHidden) { 
@@ -119,7 +121,7 @@ public class ListClusterAdminsRequest implements Serializable {
             return this;
         }
 
-        public ListClusterAdminsRequest.Builder optionalShowHidden(final Boolean showHidden) {
+        public ListClusterAdminsRequest.Builder optional(final Boolean showHidden) {
             this.showHidden = (showHidden == null) ? Optional.<Boolean>empty() : Optional.of(showHidden);
             return this;
         }

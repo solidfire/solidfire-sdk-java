@@ -141,7 +141,7 @@ public class AddAccountResult implements Serializable {
             return this;
         }
 
-        public AddAccountResult.Builder optionalAccount(final Account account) {
+        public AddAccountResult.Builder optional(final Account account) {
             this.account = (account == null) ? Optional.<Account>empty() : Optional.of(account);
             return this;
         }

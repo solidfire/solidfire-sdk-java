@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListSnapshotsRequest  
+ * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
  **/
 
 public class ListSnapshotsRequest implements Serializable {
 
-    public static final long serialVersionUID = -2283933622639350902L;
+    public static final long serialVersionUID = 7504471757588992322L;
     @SerializedName("volumeID") private Optional<Long> volumeID;
     @SerializedName("internal") private Optional<Boolean> internal;
 
@@ -61,6 +62,7 @@ public class ListSnapshotsRequest implements Serializable {
         this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
     }
     /** 
+     * 
      **/
     public Optional<Boolean> getInternal() { return this.internal; }
     public void setInternal(Optional<Boolean> internal) { 
@@ -138,12 +140,12 @@ public class ListSnapshotsRequest implements Serializable {
             return this;
         }
 
-        public ListSnapshotsRequest.Builder optionalVolumeID(final Long volumeID) {
+        public ListSnapshotsRequest.Builder optional(final Long volumeID) {
             this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
             return this;
         }
 
-        public ListSnapshotsRequest.Builder optionalInternal(final Boolean internal) {
+        public ListSnapshotsRequest.Builder optional(final Boolean internal) {
             this.internal = (internal == null) ? Optional.<Boolean>empty() : Optional.of(internal);
             return this;
         }

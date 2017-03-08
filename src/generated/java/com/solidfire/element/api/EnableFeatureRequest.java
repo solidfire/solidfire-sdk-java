@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * EnableFeatureRequest  
+ * EnableFeature allows you to enable cluster features that are disabled by default.
  **/
 
 public class EnableFeatureRequest implements Serializable {
 
-    public static final long serialVersionUID = 8090329014016240992L;
+    public static final long serialVersionUID = 7567376194938407164L;
     @SerializedName("feature") private String feature;
 
     // empty constructor

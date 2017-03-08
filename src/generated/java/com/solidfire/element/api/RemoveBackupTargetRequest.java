@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * RemoveBackupTargetRequest  
+ * RemoveBackupTarget allows you to delete backup targets.
  **/
 
 public class RemoveBackupTargetRequest implements Serializable {
 
-    public static final long serialVersionUID = -1520692591750398943L;
+    public static final long serialVersionUID = -3480382485850486209L;
     @SerializedName("backupTargetID") private Long backupTargetID;
 
     // empty constructor

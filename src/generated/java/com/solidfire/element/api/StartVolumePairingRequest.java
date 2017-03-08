@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * StartVolumePairingRequest  
+ * StartVolumePairing is used to create an encoded key from a volume that is used to pair with another volume.
+ * The key that this method creates is used in the "CompleteVolumePairing" API method to establish a volume pairing.
  **/
 
 public class StartVolumePairingRequest implements Serializable {
 
-    public static final long serialVersionUID = 5766800825199078076L;
+    public static final long serialVersionUID = -2380012139817761596L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("mode") private Optional<String> mode;
 
@@ -153,7 +155,7 @@ public class StartVolumePairingRequest implements Serializable {
             return this;
         }
 
-        public StartVolumePairingRequest.Builder optionalMode(final String mode) {
+        public StartVolumePairingRequest.Builder optional(final String mode) {
             this.mode = (mode == null) ? Optional.<String>empty() : Optional.of(mode);
             return this;
         }

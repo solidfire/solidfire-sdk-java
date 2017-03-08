@@ -53,12 +53,14 @@ public class ModifyVolumesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<QoS> getQos() { return this.qos; }
     public void setQos(Optional<QoS> qos) { 
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
     /** 
+     * 
      **/
     public Volume[] getVolumes() { return this.volumes; }
     public void setVolumes(Volume[] volumes) { 
@@ -134,7 +136,7 @@ public class ModifyVolumesResult implements Serializable {
             return this;
         }
 
-        public ModifyVolumesResult.Builder optionalQos(final QoS qos) {
+        public ModifyVolumesResult.Builder optional(final QoS qos) {
             this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
         }

@@ -50,6 +50,7 @@ public class SetNetworkConfigResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Network getNetwork() { return this.network; }
     public void setNetwork(Network network) { 

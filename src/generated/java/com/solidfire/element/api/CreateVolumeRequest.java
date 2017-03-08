@@ -28,15 +28,17 @@ import java.util.Objects;
 
 /**
  * CreateVolumeRequest  
+ * CreateVolume is used to create a new (empty) volume on the cluster.
+ * When the volume is created successfully it is available for connection via iSCSI.
  **/
 
 public class CreateVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 5050439057400185898L;
+    public static final long serialVersionUID = -2940272812178167538L;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("totalSize") private Long totalSize;
-    @SerializedName("enable512e") private Boolean enable512e = false;
+    @SerializedName("enable512e") private Boolean enable512e;
     @SerializedName("qos") private Optional<VolumeQOS> qos;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
     @SerializedName("sliceCount") private Optional<Long> sliceCount;
@@ -115,6 +117,7 @@ public class CreateVolumeRequest implements Serializable {
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
     /** 
+     * 
      **/
     public Optional<Long> getSliceCount() { return this.sliceCount; }
     public void setSliceCount(Optional<Long> sliceCount) { 
@@ -244,17 +247,17 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeRequest.Builder optionalQos(final VolumeQOS qos) {
+        public CreateVolumeRequest.Builder optional(final VolumeQOS qos) {
             this.qos = (qos == null) ? Optional.<VolumeQOS>empty() : Optional.of(qos);
             return this;
         }
 
-        public CreateVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CreateVolumeRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 
-        public CreateVolumeRequest.Builder optionalSliceCount(final Long sliceCount) {
+        public CreateVolumeRequest.Builder optional(final Long sliceCount) {
             this.sliceCount = (sliceCount == null) ? Optional.<Long>empty() : Optional.of(sliceCount);
             return this;
         }

@@ -148,12 +148,14 @@ public class Drive implements Serializable {
         this.driveType = driveType;
     }
     /** 
+     * 
      **/
     public Optional<Long> getReservedSliceFileCapacity() { return this.reservedSliceFileCapacity; }
     public void setReservedSliceFileCapacity(Optional<Long> reservedSliceFileCapacity) { 
         this.reservedSliceFileCapacity = (reservedSliceFileCapacity == null) ? Optional.<Long>empty() : reservedSliceFileCapacity;
     }
     /** 
+     * 
      **/
     public Optional<Long> getCustomerSliceFileCapacity() { return this.customerSliceFileCapacity; }
     public void setCustomerSliceFileCapacity(Optional<Long> customerSliceFileCapacity) { 
@@ -312,7 +314,7 @@ public class Drive implements Serializable {
             return this;
         }
 
-        public Drive.Builder optionalAssignedService(final Long assignedService) {
+        public Drive.Builder optional(final Long assignedService) {
             this.assignedService = (assignedService == null) ? Optional.<Long>empty() : Optional.of(assignedService);
             return this;
         }
@@ -332,7 +334,7 @@ public class Drive implements Serializable {
             return this;
         }
 
-        public Drive.Builder optionalSlot(final Long slot) {
+        public Drive.Builder optional(final Long slot) {
             this.slot = (slot == null) ? Optional.<Long>empty() : Optional.of(slot);
             return this;
         }
@@ -347,12 +349,12 @@ public class Drive implements Serializable {
             return this;
         }
 
-        public Drive.Builder optionalReservedSliceFileCapacity(final Long reservedSliceFileCapacity) {
+        public Drive.Builder optional(final Long reservedSliceFileCapacity) {
             this.reservedSliceFileCapacity = (reservedSliceFileCapacity == null) ? Optional.<Long>empty() : Optional.of(reservedSliceFileCapacity);
             return this;
         }
 
-        public Drive.Builder optionalCustomerSliceFileCapacity(final Long customerSliceFileCapacity) {
+        public Drive.Builder optional(final Long customerSliceFileCapacity) {
             this.customerSliceFileCapacity = (customerSliceFileCapacity == null) ? Optional.<Long>empty() : Optional.of(customerSliceFileCapacity);
             return this;
         }

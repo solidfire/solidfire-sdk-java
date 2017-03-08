@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetScheduleRequest  
+ * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
  **/
 
 public class GetScheduleRequest implements Serializable {
 
-    public static final long serialVersionUID = 8629386455849003456L;
+    public static final long serialVersionUID = 7033439912061223312L;
     @SerializedName("scheduleID") private Long scheduleID;
 
     // empty constructor

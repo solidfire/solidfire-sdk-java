@@ -56,18 +56,21 @@ public class Signature implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getData() { return this.data; }
     public void setData(String data) { 
         this.data = data;
     }
     /** 
+     * 
      **/
     public String getPubkey() { return this.pubkey; }
     public void setPubkey(String pubkey) { 
         this.pubkey = pubkey;
     }
     /** 
+     * 
      **/
     public Long getVersion() { return this.version; }
     public void setVersion(Long version) { 

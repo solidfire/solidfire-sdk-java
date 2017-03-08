@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetNodeHardwareInfoRequest  
+ * GetNodeHardwareInfo is used to return all the hardware info and status for the node specified. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
  **/
 
 public class GetNodeHardwareInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 3185024681412644061L;
+    public static final long serialVersionUID = 3013874737035295479L;
     @SerializedName("nodeID") private Long nodeID;
 
     // empty constructor

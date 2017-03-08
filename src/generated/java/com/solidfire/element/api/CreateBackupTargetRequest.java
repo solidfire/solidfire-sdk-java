@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * CreateBackupTargetRequest  
+ * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
  **/
 
 public class CreateBackupTargetRequest implements Serializable {
 
-    public static final long serialVersionUID = -395631268662599707L;
+    public static final long serialVersionUID = -957473874165189189L;
     @SerializedName("name") private String name;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
@@ -141,7 +142,7 @@ public class CreateBackupTargetRequest implements Serializable {
             return this;
         }
 
-        public CreateBackupTargetRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CreateBackupTargetRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

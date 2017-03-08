@@ -88,12 +88,14 @@ public class PendingNode implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getPendingNodeID() { return this.pendingNodeID; }
     public void setPendingNodeID(Long pendingNodeID) { 
         this.pendingNodeID = pendingNodeID;
     }
     /** 
+     * 
      **/
     public Long getAssignedNodeID() { return this.assignedNodeID; }
     public void setAssignedNodeID(Long assignedNodeID) { 
@@ -107,6 +109,7 @@ public class PendingNode implements Serializable {
         this.name = name;
     }
     /** 
+     * 
      **/
     public Boolean getCompatible() { return this.compatible; }
     public void setCompatible(Boolean compatible) { 

@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * ListVirtualNetworksRequest  
+ * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
+ * 
+ * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
  **/
 
 public class ListVirtualNetworksRequest implements Serializable {
 
-    public static final long serialVersionUID = 323479911027186489L;
+    public static final long serialVersionUID = -695712543085601445L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
     @SerializedName("virtualNetworkIDs") private Optional<Long[]> virtualNetworkIDs;
@@ -174,22 +177,22 @@ public class ListVirtualNetworksRequest implements Serializable {
             return this;
         }
 
-        public ListVirtualNetworksRequest.Builder optionalVirtualNetworkID(final Long virtualNetworkID) {
+        public ListVirtualNetworksRequest.Builder optional(final Long virtualNetworkID) {
             this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public ListVirtualNetworksRequest.Builder optionalVirtualNetworkTag(final Long virtualNetworkTag) {
+        public ListVirtualNetworksRequest.Builder optional(final Long virtualNetworkTag) {
             this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
             return this;
         }
 
-        public ListVirtualNetworksRequest.Builder optionalVirtualNetworkIDs(final Long[] virtualNetworkIDs) {
+        public ListVirtualNetworksRequest.Builder optional(final Long[] virtualNetworkIDs) {
             this.virtualNetworkIDs = (virtualNetworkIDs == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkIDs);
             return this;
         }
 
-        public ListVirtualNetworksRequest.Builder optionalVirtualNetworkTags(final Long[] virtualNetworkTags) {
+        public ListVirtualNetworksRequest.Builder optional(final Long[] virtualNetworkTags) {
             this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkTags);
             return this;
         }

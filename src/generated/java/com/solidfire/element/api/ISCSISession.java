@@ -104,114 +104,133 @@ public class ISCSISession implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Long[]> getDriveIDs() { return this.driveIDs; }
     public void setDriveIDs(Optional<Long[]> driveIDs) { 
         this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
     }
     /** 
+     * 
      **/
     public Long getAccountID() { return this.accountID; }
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
     /** 
+     * 
      **/
     public Initiator getInitiator() { return this.initiator; }
     public void setInitiator(Initiator initiator) { 
         this.initiator = initiator;
     }
     /** 
+     * 
      **/
     public String getAccountName() { return this.accountName; }
     public void setAccountName(String accountName) { 
         this.accountName = accountName;
     }
     /** 
+     * 
      **/
     public Long getDriveID() { return this.driveID; }
     public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
     /** 
+     * 
      **/
     public String getInitiatorIP() { return this.initiatorIP; }
     public void setInitiatorIP(String initiatorIP) { 
         this.initiatorIP = initiatorIP;
     }
     /** 
+     * 
      **/
     public String getInitiatorPortName() { return this.initiatorPortName; }
     public void setInitiatorPortName(String initiatorPortName) { 
         this.initiatorPortName = initiatorPortName;
     }
     /** 
+     * 
      **/
     public String getTargetPortName() { return this.targetPortName; }
     public void setTargetPortName(String targetPortName) { 
         this.targetPortName = targetPortName;
     }
     /** 
+     * 
      **/
     public String getInitiatorName() { return this.initiatorName; }
     public void setInitiatorName(String initiatorName) { 
         this.initiatorName = initiatorName;
     }
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public Long getServiceID() { return this.serviceID; }
     public void setServiceID(Long serviceID) { 
         this.serviceID = serviceID;
     }
     /** 
+     * 
      **/
     public Long getSessionID() { return this.sessionID; }
     public void setSessionID(Long sessionID) { 
         this.sessionID = sessionID;
     }
     /** 
+     * 
      **/
     public String getTargetName() { return this.targetName; }
     public void setTargetName(String targetName) { 
         this.targetName = targetName;
     }
     /** 
+     * 
      **/
     public String getTargetIP() { return this.targetIP; }
     public void setTargetIP(String targetIP) { 
         this.targetIP = targetIP;
     }
     /** 
+     * 
      **/
     public Long getVirtualNetworkID() { return this.virtualNetworkID; }
     public void setVirtualNetworkID(Long virtualNetworkID) { 
         this.virtualNetworkID = virtualNetworkID;
     }
     /** 
+     * 
      **/
     public Long getVolumeID() { return this.volumeID; }
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
+     * 
      **/
     public String getCreateTime() { return this.createTime; }
     public void setCreateTime(String createTime) { 
         this.createTime = createTime;
     }
     /** 
+     * 
      **/
     public Long getVolumeInstance() { return this.volumeInstance; }
     public void setVolumeInstance(Long volumeInstance) { 
         this.volumeInstance = volumeInstance;
     }
     /** 
+     * 
      **/
     public Long getInitiatorSessionID() { return this.initiatorSessionID; }
     public void setInitiatorSessionID(Long initiatorSessionID) { 
@@ -389,7 +408,7 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
-        public ISCSISession.Builder optionalDriveIDs(final Long[] driveIDs) {
+        public ISCSISession.Builder optional(final Long[] driveIDs) {
             this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : Optional.of(driveIDs);
             return this;
         }

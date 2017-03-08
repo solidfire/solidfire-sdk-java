@@ -112,18 +112,21 @@ public class Node implements Serializable {
         this.associatedMasterServiceID = associatedMasterServiceID;
     }
     /** 
+     * 
      **/
     public Long getAssociatedFServiceID() { return this.associatedFServiceID; }
     public void setAssociatedFServiceID(Long associatedFServiceID) { 
         this.associatedFServiceID = associatedFServiceID;
     }
     /** 
+     * 
      **/
     public String getFibreChannelTargetPortGroup() { return this.fibreChannelTargetPortGroup; }
     public void setFibreChannelTargetPortGroup(String fibreChannelTargetPortGroup) { 
         this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
     }
     /** 
+     * 
      **/
     public String getName() { return this.name; }
     public void setName(String name) { 
@@ -193,12 +196,14 @@ public class Node implements Serializable {
         this.uuid = uuid;
     }
     /** 
+     * 
      **/
     public VirtualNetworkAddress[] getVirtualNetworks() { return this.virtualNetworks; }
     public void setVirtualNetworks(VirtualNetworkAddress[] virtualNetworks) { 
         this.virtualNetworks = virtualNetworks;
     }
     /** 
+     * 
      **/
     public java.util.Map<String, Object> getAttributes() { return this.attributes; }
     public void setAttributes(java.util.Map<String, Object> attributes) { 

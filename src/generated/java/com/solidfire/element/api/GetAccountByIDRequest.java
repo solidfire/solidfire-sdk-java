@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetAccountByIDRequest  
+ * Returns details about an account, given its AccountID.
  **/
 
 public class GetAccountByIDRequest implements Serializable {
 
-    public static final long serialVersionUID = -1679235285626842127L;
+    public static final long serialVersionUID = -3769641951861209105L;
     @SerializedName("accountID") private Long accountID;
 
     // empty constructor

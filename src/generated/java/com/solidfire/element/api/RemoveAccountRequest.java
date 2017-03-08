@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * RemoveAccountRequest  
+ * Used to remove an existing account.
+ * All Volumes must be deleted and purged on the account before it can be removed.
+ * If volumes on the account are still pending deletion, RemoveAccount cannot be used until DeleteVolume to delete and purge the volumes.
  **/
 
 public class RemoveAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = -6926282083277233060L;
+    public static final long serialVersionUID = 5238041783915396464L;
     @SerializedName("accountID") private Long accountID;
 
     // empty constructor

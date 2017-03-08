@@ -89,84 +89,98 @@ public class VirtualVolumeInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
     public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
         this.virtualVolumeID = virtualVolumeID;
     }
     /** 
+     * 
      **/
     public java.util.UUID getParentVirtualVolumeID() { return this.parentVirtualVolumeID; }
     public void setParentVirtualVolumeID(java.util.UUID parentVirtualVolumeID) { 
         this.parentVirtualVolumeID = parentVirtualVolumeID;
     }
     /** 
+     * 
      **/
     public Optional<java.util.UUID> getStorageContainerID() { return this.storageContainerID; }
     public void setStorageContainerID(Optional<java.util.UUID> storageContainerID) { 
         this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : storageContainerID;
     }
     /** 
+     * 
      **/
     public StorageContainer getStorageContainer() { return this.storageContainer; }
     public void setStorageContainer(StorageContainer storageContainer) { 
         this.storageContainer = storageContainer;
     }
     /** 
+     * 
      **/
     public Long getVolumeID() { return this.volumeID; }
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
+     * 
      **/
     public Long getSnapshotID() { return this.snapshotID; }
     public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
+     * 
      **/
     public String getVirtualVolumeType() { return this.virtualVolumeType; }
     public void setVirtualVolumeType(String virtualVolumeType) { 
         this.virtualVolumeType = virtualVolumeType;
     }
     /** 
+     * 
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 
         this.status = status;
     }
     /** 
+     * 
      **/
     public Long[] getBindings() { return this.bindings; }
     public void setBindings(Long[] bindings) { 
         this.bindings = bindings;
     }
     /** 
+     * 
      **/
     public java.util.UUID[] getChildren() { return this.children; }
     public void setChildren(java.util.UUID[] children) { 
         this.children = children;
     }
     /** 
+     * 
      **/
     public java.util.Map<String, Object> getMetadata() { return this.metadata; }
     public void setMetadata(java.util.Map<String, Object> metadata) { 
         this.metadata = metadata;
     }
     /** 
+     * 
      **/
     public Snapshot getSnapshotInfo() { return this.snapshotInfo; }
     public void setSnapshotInfo(Snapshot snapshotInfo) { 
         this.snapshotInfo = snapshotInfo;
     }
     /** 
+     * 
      **/
     public Volume getVolumeInfo() { return this.volumeInfo; }
     public void setVolumeInfo(Volume volumeInfo) { 
         this.volumeInfo = volumeInfo;
     }
     /** 
+     * 
      **/
     public Optional<Long[]> getDescendants() { return this.descendants; }
     public void setDescendants(Optional<Long[]> descendants) { 
@@ -326,7 +340,7 @@ public class VirtualVolumeInfo implements Serializable {
             return this;
         }
 
-        public VirtualVolumeInfo.Builder optionalStorageContainerID(final java.util.UUID storageContainerID) {
+        public VirtualVolumeInfo.Builder optional(final java.util.UUID storageContainerID) {
             this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : Optional.of(storageContainerID);
             return this;
         }
@@ -381,7 +395,7 @@ public class VirtualVolumeInfo implements Serializable {
             return this;
         }
 
-        public VirtualVolumeInfo.Builder optionalDescendants(final Long[] descendants) {
+        public VirtualVolumeInfo.Builder optional(final Long[] descendants) {
             this.descendants = (descendants == null) ? Optional.<Long[]>empty() : Optional.of(descendants);
             return this;
         }

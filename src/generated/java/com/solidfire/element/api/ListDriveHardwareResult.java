@@ -50,6 +50,7 @@ public class ListDriveHardwareResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public NodeDriveHardware[] getNodes() { return this.nodes; }
     public void setNodes(NodeDriveHardware[] nodes) { 

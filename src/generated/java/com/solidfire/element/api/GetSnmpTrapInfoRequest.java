@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetSnmpTrapInfoRequest  
+ * GetSnmpTrapInfo is used to return current SNMP trap configuration information.
  **/
 
 public class GetSnmpTrapInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -1092376791857252518L;
+    public static final long serialVersionUID = -7958843330653294986L;
     @SerializedName("id") private Optional<Long> id;
 
     // empty constructor
@@ -50,6 +51,7 @@ public class GetSnmpTrapInfoRequest implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Long> getId() { return this.id; }
     public void setId(Optional<Long> id) { 
@@ -119,7 +121,7 @@ public class GetSnmpTrapInfoRequest implements Serializable {
             return this;
         }
 
-        public GetSnmpTrapInfoRequest.Builder optionalId(final Long id) {
+        public GetSnmpTrapInfoRequest.Builder optional(final Long id) {
             this.id = (id == null) ? Optional.<Long>empty() : Optional.of(id);
             return this;
         }

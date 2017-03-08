@@ -53,12 +53,14 @@ public class GetAPIResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Double getCurrentVersion() { return this.currentVersion; }
     public void setCurrentVersion(Double currentVersion) { 
         this.currentVersion = currentVersion;
     }
     /** 
+     * 
      **/
     public Double[] getSupportedVersions() { return this.supportedVersions; }
     public void setSupportedVersions(Double[] supportedVersions) { 

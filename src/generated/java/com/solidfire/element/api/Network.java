@@ -74,54 +74,63 @@ public class Network implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getBond10G() { return this.bond10G; }
     public void setBond10G(Optional<NetworkConfig> bond10G) { 
         this.bond10G = (bond10G == null) ? Optional.<NetworkConfig>empty() : bond10G;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getBond1G() { return this.bond1G; }
     public void setBond1G(Optional<NetworkConfig> bond1G) { 
         this.bond1G = (bond1G == null) ? Optional.<NetworkConfig>empty() : bond1G;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getEth0() { return this.eth0; }
     public void setEth0(Optional<NetworkConfig> eth0) { 
         this.eth0 = (eth0 == null) ? Optional.<NetworkConfig>empty() : eth0;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getEth1() { return this.eth1; }
     public void setEth1(Optional<NetworkConfig> eth1) { 
         this.eth1 = (eth1 == null) ? Optional.<NetworkConfig>empty() : eth1;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getEth2() { return this.eth2; }
     public void setEth2(Optional<NetworkConfig> eth2) { 
         this.eth2 = (eth2 == null) ? Optional.<NetworkConfig>empty() : eth2;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getEth3() { return this.eth3; }
     public void setEth3(Optional<NetworkConfig> eth3) { 
         this.eth3 = (eth3 == null) ? Optional.<NetworkConfig>empty() : eth3;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getEth4() { return this.eth4; }
     public void setEth4(Optional<NetworkConfig> eth4) { 
         this.eth4 = (eth4 == null) ? Optional.<NetworkConfig>empty() : eth4;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getEth5() { return this.eth5; }
     public void setEth5(Optional<NetworkConfig> eth5) { 
         this.eth5 = (eth5 == null) ? Optional.<NetworkConfig>empty() : eth5;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getLo() { return this.lo; }
     public void setLo(Optional<NetworkConfig> lo) { 
@@ -255,47 +264,47 @@ public class Network implements Serializable {
             return this;
         }
 
-        public Network.Builder optionalBond10G(final NetworkConfig bond10G) {
+        public Network.Builder optional(final NetworkConfig bond10G) {
             this.bond10G = (bond10G == null) ? Optional.<NetworkConfig>empty() : Optional.of(bond10G);
             return this;
         }
 
-        public Network.Builder optionalBond1G(final NetworkConfig bond1G) {
+        public Network.Builder optional(final NetworkConfig bond1G) {
             this.bond1G = (bond1G == null) ? Optional.<NetworkConfig>empty() : Optional.of(bond1G);
             return this;
         }
 
-        public Network.Builder optionalEth0(final NetworkConfig eth0) {
+        public Network.Builder optional(final NetworkConfig eth0) {
             this.eth0 = (eth0 == null) ? Optional.<NetworkConfig>empty() : Optional.of(eth0);
             return this;
         }
 
-        public Network.Builder optionalEth1(final NetworkConfig eth1) {
+        public Network.Builder optional(final NetworkConfig eth1) {
             this.eth1 = (eth1 == null) ? Optional.<NetworkConfig>empty() : Optional.of(eth1);
             return this;
         }
 
-        public Network.Builder optionalEth2(final NetworkConfig eth2) {
+        public Network.Builder optional(final NetworkConfig eth2) {
             this.eth2 = (eth2 == null) ? Optional.<NetworkConfig>empty() : Optional.of(eth2);
             return this;
         }
 
-        public Network.Builder optionalEth3(final NetworkConfig eth3) {
+        public Network.Builder optional(final NetworkConfig eth3) {
             this.eth3 = (eth3 == null) ? Optional.<NetworkConfig>empty() : Optional.of(eth3);
             return this;
         }
 
-        public Network.Builder optionalEth4(final NetworkConfig eth4) {
+        public Network.Builder optional(final NetworkConfig eth4) {
             this.eth4 = (eth4 == null) ? Optional.<NetworkConfig>empty() : Optional.of(eth4);
             return this;
         }
 
-        public Network.Builder optionalEth5(final NetworkConfig eth5) {
+        public Network.Builder optional(final NetworkConfig eth5) {
             this.eth5 = (eth5 == null) ? Optional.<NetworkConfig>empty() : Optional.of(eth5);
             return this;
         }
 
-        public Network.Builder optionalLo(final NetworkConfig lo) {
+        public Network.Builder optional(final NetworkConfig lo) {
             this.lo = (lo == null) ? Optional.<NetworkConfig>empty() : Optional.of(lo);
             return this;
         }

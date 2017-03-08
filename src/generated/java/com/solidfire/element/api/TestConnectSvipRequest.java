@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * TestConnectSvipRequest  
+ * The TestConnectSvip API method is used to test the storage connection to the cluster. The test pings the SVIP using ICMP packets and when successful connects as an iSCSI initiator.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class TestConnectSvipRequest implements Serializable {
 
-    public static final long serialVersionUID = 2243948957120107271L;
+    public static final long serialVersionUID = -7455941838727406043L;
     @SerializedName("svip") private Optional<String> svip;
 
     // empty constructor
@@ -120,7 +122,7 @@ public class TestConnectSvipRequest implements Serializable {
             return this;
         }
 
-        public TestConnectSvipRequest.Builder optionalSvip(final String svip) {
+        public TestConnectSvipRequest.Builder optional(final String svip) {
             this.svip = (svip == null) ? Optional.<String>empty() : Optional.of(svip);
             return this;
         }

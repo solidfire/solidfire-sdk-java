@@ -96,24 +96,28 @@ public class ClusterInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<String> getMvipInterface() { return this.mvipInterface; }
     public void setMvipInterface(Optional<String> mvipInterface) { 
         this.mvipInterface = (mvipInterface == null) ? Optional.<String>empty() : mvipInterface;
     }
     /** 
+     * 
      **/
     public Optional<String> getMvipVlanTag() { return this.mvipVlanTag; }
     public void setMvipVlanTag(Optional<String> mvipVlanTag) { 
         this.mvipVlanTag = (mvipVlanTag == null) ? Optional.<String>empty() : mvipVlanTag;
     }
     /** 
+     * 
      **/
     public Optional<String> getSvipInterface() { return this.svipInterface; }
     public void setSvipInterface(Optional<String> svipInterface) { 
         this.svipInterface = (svipInterface == null) ? Optional.<String>empty() : svipInterface;
     }
     /** 
+     * 
      **/
     public Optional<String> getSvipVlanTag() { return this.svipVlanTag; }
     public void setSvipVlanTag(Optional<String> svipVlanTag) { 
@@ -163,6 +167,7 @@ public class ClusterInfo implements Serializable {
         this.repCount = repCount;
     }
     /** 
+     * 
      **/
     public Optional<String> getState() { return this.state; }
     public void setState(Optional<String> state) { 
@@ -190,6 +195,7 @@ public class ClusterInfo implements Serializable {
         this.uniqueID = uniqueID;
     }
     /** 
+     * 
      **/
     public java.util.UUID getUuid() { return this.uuid; }
     public void setUuid(java.util.UUID uuid) { 
@@ -364,22 +370,22 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
-        public ClusterInfo.Builder optionalMvipInterface(final String mvipInterface) {
+        public ClusterInfo.Builder optional(final String mvipInterface) {
             this.mvipInterface = (mvipInterface == null) ? Optional.<String>empty() : Optional.of(mvipInterface);
             return this;
         }
 
-        public ClusterInfo.Builder optionalMvipVlanTag(final String mvipVlanTag) {
+        public ClusterInfo.Builder optional(final String mvipVlanTag) {
             this.mvipVlanTag = (mvipVlanTag == null) ? Optional.<String>empty() : Optional.of(mvipVlanTag);
             return this;
         }
 
-        public ClusterInfo.Builder optionalSvipInterface(final String svipInterface) {
+        public ClusterInfo.Builder optional(final String svipInterface) {
             this.svipInterface = (svipInterface == null) ? Optional.<String>empty() : Optional.of(svipInterface);
             return this;
         }
 
-        public ClusterInfo.Builder optionalSvipVlanTag(final String svipVlanTag) {
+        public ClusterInfo.Builder optional(final String svipVlanTag) {
             this.svipVlanTag = (svipVlanTag == null) ? Optional.<String>empty() : Optional.of(svipVlanTag);
             return this;
         }
@@ -414,7 +420,7 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
-        public ClusterInfo.Builder optionalState(final String state) {
+        public ClusterInfo.Builder optional(final String state) {
             this.state = (state == null) ? Optional.<String>empty() : Optional.of(state);
             return this;
         }

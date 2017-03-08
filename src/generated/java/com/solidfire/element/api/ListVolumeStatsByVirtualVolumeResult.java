@@ -50,6 +50,7 @@ public class ListVolumeStatsByVirtualVolumeResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public VolumeStats[] getVolumeStats() { return this.volumeStats; }
     public void setVolumeStats(VolumeStats[] volumeStats) { 

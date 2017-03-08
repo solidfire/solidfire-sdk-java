@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * RemoveClusterAdminRequest  
+ * RemoveClusterAdmin is used to remove a Cluster Admin. The "admin" Cluster Admin cannot be removed.
  **/
 
 public class RemoveClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 8468883642750058499L;
+    public static final long serialVersionUID = -3802184349571466111L;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
 
     // empty constructor

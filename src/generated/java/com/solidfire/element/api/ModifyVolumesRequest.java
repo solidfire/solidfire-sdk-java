@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ModifyVolumesRequest  
+ * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
  **/
 
 public class ModifyVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 9020809531737148478L;
+    public static final long serialVersionUID = 2213958253693979054L;
     @SerializedName("volumeIDs") private Long[] volumeIDs;
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;
@@ -100,6 +101,7 @@ public class ModifyVolumesRequest implements Serializable {
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
     }
     /** 
+     * 
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
     public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
@@ -212,27 +214,27 @@ public class ModifyVolumesRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optionalAccountID(final Long accountID) {
+        public ModifyVolumesRequest.Builder optional(final Long accountID) {
             this.accountID = (accountID == null) ? Optional.<Long>empty() : Optional.of(accountID);
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optionalAccess(final String access) {
+        public ModifyVolumesRequest.Builder optional(final String access) {
             this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optionalQos(final QoS qos) {
+        public ModifyVolumesRequest.Builder optional(final QoS qos) {
             this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optionalTotalSize(final Long totalSize) {
+        public ModifyVolumesRequest.Builder optional(final Long totalSize) {
             this.totalSize = (totalSize == null) ? Optional.<Long>empty() : Optional.of(totalSize);
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public ModifyVolumesRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

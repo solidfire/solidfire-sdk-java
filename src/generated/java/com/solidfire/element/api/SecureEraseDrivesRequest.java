@@ -28,11 +28,16 @@ import java.util.Objects;
 
 /**
  * SecureEraseDrivesRequest  
+ * SecureEraseDrives is used to remove any residual data from drives that have a status of "available." For example, when replacing a drive at its end-of-life that contained sensitive data.
+ * It uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. The method may take up to two minutes to complete, so it is an asynchronous method.
+ * The GetAsyncResult method can be used to check on the status of the secure erase operation.
+ * 
+ * Use the "ListDrives" method to obtain the driveIDs for the drives you want to secure erase.
  **/
 
 public class SecureEraseDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 6139230092702430435L;
+    public static final long serialVersionUID = -8066722262216785695L;
     @SerializedName("drives") private Long[] drives;
 
     // empty constructor

@@ -28,11 +28,15 @@ import java.util.Objects;
 
 /**
  * RollbackToGroupSnapshotRequest  
+ * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
+ * 
+ * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+ * Snapshots are not created when cluster fullness is at stage 4 or 5.
  **/
 
 public class RollbackToGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -4169392330167642539L;
+    public static final long serialVersionUID = -809972948513042793L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
     @SerializedName("name") private Optional<String> name;
@@ -182,12 +186,12 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public RollbackToGroupSnapshotRequest.Builder optionalName(final String name) {
+        public RollbackToGroupSnapshotRequest.Builder optional(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public RollbackToGroupSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public RollbackToGroupSnapshotRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

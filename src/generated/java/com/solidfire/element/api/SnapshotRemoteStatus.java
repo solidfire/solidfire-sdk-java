@@ -53,6 +53,7 @@ public class SnapshotRemoteStatus implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getRemoteStatus() { return this.remoteStatus; }
     public void setRemoteStatus(String remoteStatus) { 

@@ -53,12 +53,14 @@ public class NodeDriveHardware implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public DrivesHardware getResult() { return this.result; }
     public void setResult(DrivesHardware result) { 

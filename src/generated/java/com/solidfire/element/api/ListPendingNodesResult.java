@@ -50,6 +50,7 @@ public class ListPendingNodesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public PendingNode[] getPendingNodes() { return this.pendingNodes; }
     public void setPendingNodes(PendingNode[] pendingNodes) { 

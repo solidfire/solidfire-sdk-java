@@ -50,6 +50,7 @@ public class GetIpmiConfigResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public GetIpmiConfigNodesResult[] getNodes() { return this.nodes; }
     public void setNodes(GetIpmiConfigNodesResult[] nodes) { 

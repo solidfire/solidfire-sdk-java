@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ShutdownRequest  
+ * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method, login in to the MIP for the pending node and enter the "shutdown" method with either the "restart" or "halt" options in the following table.
  **/
 
 public class ShutdownRequest implements Serializable {
 
-    public static final long serialVersionUID = -9028774115799936174L;
+    public static final long serialVersionUID = -4389026748679742602L;
     @SerializedName("nodes") private Long[] nodes;
     @SerializedName("option") private Optional<String> option;
 
@@ -141,7 +142,7 @@ public class ShutdownRequest implements Serializable {
             return this;
         }
 
-        public ShutdownRequest.Builder optionalOption(final String option) {
+        public ShutdownRequest.Builder optional(final String option) {
             this.option = (option == null) ? Optional.<String>empty() : Optional.of(option);
             return this;
         }

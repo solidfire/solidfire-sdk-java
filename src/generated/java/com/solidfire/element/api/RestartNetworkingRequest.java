@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * RestartNetworkingRequest  
+ * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
  **/
 
 public class RestartNetworkingRequest implements Serializable {
 
-    public static final long serialVersionUID = -402421698351764082L;
+    public static final long serialVersionUID = 6866651779159887078L;
     @SerializedName("force") private Boolean force;
 
     // empty constructor

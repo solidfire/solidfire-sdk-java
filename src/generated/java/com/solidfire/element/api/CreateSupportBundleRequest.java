@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * CreateSupportBundleRequest  
+ * CreateSupportBundle is used to create a support bundle file under the node's directory. When the bundle has been successfully created, the bundle is stored on the node as a tar.gz file.
  **/
 
 public class CreateSupportBundleRequest implements Serializable {
 
-    public static final long serialVersionUID = 196790633413215638L;
+    public static final long serialVersionUID = -8754973164099938902L;
     @SerializedName("bundleName") private Optional<String> bundleName;
     @SerializedName("extraArgs") private Optional<String> extraArgs;
     @SerializedName("timeoutSec") private Optional<Long> timeoutSec;
@@ -156,17 +157,17 @@ public class CreateSupportBundleRequest implements Serializable {
             return this;
         }
 
-        public CreateSupportBundleRequest.Builder optionalBundleName(final String bundleName) {
+        public CreateSupportBundleRequest.Builder optional(final String bundleName) {
             this.bundleName = (bundleName == null) ? Optional.<String>empty() : Optional.of(bundleName);
             return this;
         }
 
-        public CreateSupportBundleRequest.Builder optionalExtraArgs(final String extraArgs) {
+        public CreateSupportBundleRequest.Builder optional(final String extraArgs) {
             this.extraArgs = (extraArgs == null) ? Optional.<String>empty() : Optional.of(extraArgs);
             return this;
         }
 
-        public CreateSupportBundleRequest.Builder optionalTimeoutSec(final Long timeoutSec) {
+        public CreateSupportBundleRequest.Builder optional(final Long timeoutSec) {
             this.timeoutSec = (timeoutSec == null) ? Optional.<Long>empty() : Optional.of(timeoutSec);
             return this;
         }

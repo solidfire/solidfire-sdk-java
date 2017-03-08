@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetOriginRequest  
+ * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
  **/
 
 public class GetOriginRequest implements Serializable {
 
-    public static final long serialVersionUID = -3371910018875412983L;
+    public static final long serialVersionUID = -8412853073741789397L;
     @SerializedName("force") private Boolean force;
 
     // empty constructor
@@ -50,6 +51,7 @@ public class GetOriginRequest implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Boolean getForce() { return this.force; }
     public void setForce(Boolean force) { 

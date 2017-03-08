@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * AddClusterAdminRequest  
+ * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
+ * 
+ * Each Cluster Admin can be restricted to a sub-set of the API. SolidFire recommends using multiple Cluster Admins for different users and applications. Each Cluster Admin should be given the minimal permissions necessary to reduce the potential impact of credential compromise.
  **/
 
 public class AddClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = -1519043753950193717L;
+    public static final long serialVersionUID = -198981678144562959L;
     @SerializedName("username") private String username;
     @SerializedName("password") private String password;
     @SerializedName("access") private String[] access;
@@ -201,12 +204,12 @@ public class AddClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public AddClusterAdminRequest.Builder optionalAcceptEula(final Boolean acceptEula) {
+        public AddClusterAdminRequest.Builder optional(final Boolean acceptEula) {
             this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : Optional.of(acceptEula);
             return this;
         }
 
-        public AddClusterAdminRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public AddClusterAdminRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

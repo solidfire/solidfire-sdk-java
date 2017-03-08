@@ -56,6 +56,7 @@ public class CreateSnapshotResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Snapshot getSnapshot() { return this.snapshot; }
     public void setSnapshot(Snapshot snapshot) { 

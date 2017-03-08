@@ -50,6 +50,7 @@ public class ResetNodeDetails implements Serializable {
     }
 
     /** 
+     * 
      **/
     public RtfiInfo getRtfiInfo() { return this.rtfiInfo; }
     public void setRtfiInfo(RtfiInfo rtfiInfo) { 

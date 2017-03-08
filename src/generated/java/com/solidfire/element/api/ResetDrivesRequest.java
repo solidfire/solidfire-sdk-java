@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * ResetDrivesRequest  
+ * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
+ * 
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class ResetDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 6206046925761567031L;
+    public static final long serialVersionUID = -8699379922010603427L;
     @SerializedName("drives") private String drives;
     @SerializedName("force") private Boolean force;
 

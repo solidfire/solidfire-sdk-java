@@ -53,12 +53,14 @@ public class GetOriginNode implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public GetOriginNodeResult getResult() { return this.result; }
     public void setResult(GetOriginNodeResult result) { 

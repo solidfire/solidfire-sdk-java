@@ -53,6 +53,7 @@ public class CopyVolumeResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getCloneID() { return this.cloneID; }
     public void setCloneID(Long cloneID) { 

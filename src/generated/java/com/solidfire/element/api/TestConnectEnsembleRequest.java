@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * TestConnectEnsembleRequest  
+ * The TestConnectEnsemble API method is used to verify connectivity with a sepcified database ensemble. By default it uses the ensemble for the cluster the node is associated with. Alternatively you can provide a different ensemble to test connectivity with.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class TestConnectEnsembleRequest implements Serializable {
 
-    public static final long serialVersionUID = 152307940432458740L;
+    public static final long serialVersionUID = -3782328525447605172L;
     @SerializedName("ensemble") private Optional<String> ensemble;
 
     // empty constructor
@@ -120,7 +122,7 @@ public class TestConnectEnsembleRequest implements Serializable {
             return this;
         }
 
-        public TestConnectEnsembleRequest.Builder optionalEnsemble(final String ensemble) {
+        public TestConnectEnsembleRequest.Builder optional(final String ensemble) {
             this.ensemble = (ensemble == null) ? Optional.<String>empty() : Optional.of(ensemble);
             return this;
         }

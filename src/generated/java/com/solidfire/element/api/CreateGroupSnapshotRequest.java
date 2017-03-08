@@ -28,11 +28,16 @@ import java.util.Objects;
 
 /**
  * CreateGroupSnapshotRequest  
+ * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
+ * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
+ * 
+ * Note: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
+ * Snapshots are not created when cluster fullness is at stage 4 or 5.
  **/
 
 public class CreateGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -4050530006639669222L;
+    public static final long serialVersionUID = -9118662980562098698L;
     @SerializedName("volumes") private Long[] volumes;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
@@ -208,22 +213,22 @@ public class CreateGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder optionalName(final String name) {
+        public CreateGroupSnapshotRequest.Builder optional(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
+        public CreateGroupSnapshotRequest.Builder optional(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder optionalRetention(final String retention) {
+        public CreateGroupSnapshotRequest.Builder optional(final String retention) {
             this.retention = (retention == null) ? Optional.<String>empty() : Optional.of(retention);
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CreateGroupSnapshotRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

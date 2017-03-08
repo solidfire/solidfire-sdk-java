@@ -74,54 +74,63 @@ public class Origin implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Signature getSignature() { return this.signature; }
     public void setSignature(Signature signature) { 
         this.signature = signature;
     }
     /** 
+     * 
      **/
     public String getContractDate() { return this.contractDate; }
     public void setContractDate(String contractDate) { 
         this.contractDate = contractDate;
     }
     /** 
+     * 
      **/
     public String getContractName() { return this.contractName; }
     public void setContractName(String contractName) { 
         this.contractName = contractName;
     }
     /** 
+     * 
      **/
     public Long getContractQuantity() { return this.contractQuantity; }
     public void setContractQuantity(Long contractQuantity) { 
         this.contractQuantity = contractQuantity;
     }
     /** 
+     * 
      **/
     public String getContractType() { return this.contractType; }
     public void setContractType(String contractType) { 
         this.contractType = contractType;
     }
     /** 
+     * 
      **/
     public String getIntegrator() { return this.integrator; }
     public void setIntegrator(String integrator) { 
         this.integrator = integrator;
     }
     /** 
+     * 
      **/
     public String getLocation() { return this.location; }
     public void setLocation(String location) { 
         this.location = location;
     }
     /** 
+     * 
      **/
     public String getOrganization() { return this.organization; }
     public void setOrganization(String organization) { 
         this.organization = organization;
     }
     /** 
+     * 
      **/
     public String getType() { return this.type; }
     public void setType(String type) { 

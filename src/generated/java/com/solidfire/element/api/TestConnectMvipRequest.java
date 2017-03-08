@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * TestConnectMvipRequest  
+ * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class TestConnectMvipRequest implements Serializable {
 
-    public static final long serialVersionUID = 918184488572641133L;
+    public static final long serialVersionUID = -7009267764967853953L;
     @SerializedName("mvip") private Optional<String> mvip;
 
     // empty constructor
@@ -120,7 +122,7 @@ public class TestConnectMvipRequest implements Serializable {
             return this;
         }
 
-        public TestConnectMvipRequest.Builder optionalMvip(final String mvip) {
+        public TestConnectMvipRequest.Builder optional(final String mvip) {
             this.mvip = (mvip == null) ? Optional.<String>empty() : Optional.of(mvip);
             return this;
         }

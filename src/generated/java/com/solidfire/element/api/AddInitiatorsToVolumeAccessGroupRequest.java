@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * AddInitiatorsToVolumeAccessGroupRequest  
+ * Add initiators to a volume access group.
  **/
 
 public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 6354255713219394327L;
+    public static final long serialVersionUID = 7231615367275071477L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("initiators") private String[] initiators;
 

@@ -60,6 +60,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
+     * 
      **/
     public Optional<VolumeAccessGroup> getVolumeAccessGroup() { return this.volumeAccessGroup; }
     public void setVolumeAccessGroup(Optional<VolumeAccessGroup> volumeAccessGroup) { 
@@ -140,7 +141,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
             return this;
         }
 
-        public CreateVolumeAccessGroupResult.Builder optionalVolumeAccessGroup(final VolumeAccessGroup volumeAccessGroup) {
+        public CreateVolumeAccessGroupResult.Builder optional(final VolumeAccessGroup volumeAccessGroup) {
             this.volumeAccessGroup = (volumeAccessGroup == null) ? Optional.<VolumeAccessGroup>empty() : Optional.of(volumeAccessGroup);
             return this;
         }

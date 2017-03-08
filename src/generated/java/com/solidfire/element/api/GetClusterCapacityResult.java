@@ -50,6 +50,7 @@ public class GetClusterCapacityResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public ClusterCapacity getClusterCapacity() { return this.clusterCapacity; }
     public void setClusterCapacity(ClusterCapacity clusterCapacity) { 

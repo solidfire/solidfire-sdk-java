@@ -28,11 +28,15 @@ import java.util.Objects;
 
 /**
  * DeleteSnapshotRequest  
+ * DeleteSnapshot is used to delete a snapshot.
+ * A snapshot that is currently the "active" snapshot cannot be deleted.
+ * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
+ * To rollback a snapshot, use RollbackToSnapshot.
  **/
 
 public class DeleteSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -7448163228177860503L;
+    public static final long serialVersionUID = 7262270247036120871L;
     @SerializedName("snapshotID") private Long snapshotID;
 
     // empty constructor

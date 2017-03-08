@@ -219,27 +219,27 @@ public class CloneMultipleVolumeParams implements Serializable {
             return this;
         }
 
-        public CloneMultipleVolumeParams.Builder optionalAccess(final String access) {
+        public CloneMultipleVolumeParams.Builder optional(final String access) {
             this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
             return this;
         }
 
-        public CloneMultipleVolumeParams.Builder optionalName(final String name) {
+        public CloneMultipleVolumeParams.Builder optional(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public CloneMultipleVolumeParams.Builder optionalNewAccountID(final Long newAccountID) {
+        public CloneMultipleVolumeParams.Builder optional(final Long newAccountID) {
             this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
             return this;
         }
 
-        public CloneMultipleVolumeParams.Builder optionalNewSize(final Long newSize) {
+        public CloneMultipleVolumeParams.Builder optional(final Long newSize) {
             this.newSize = (newSize == null) ? Optional.<Long>empty() : Optional.of(newSize);
             return this;
         }
 
-        public CloneMultipleVolumeParams.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CloneMultipleVolumeParams.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

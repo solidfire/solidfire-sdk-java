@@ -28,11 +28,16 @@ import java.util.Objects;
 
 /**
  * TestDrivesRequest  
+ * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
+ * 
+ * Note: This test takes approximately 10 minutes.
+ * 
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class TestDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = -5757296498888204657L;
+    public static final long serialVersionUID = -6204589446517192123L;
     @SerializedName("minutes") private Optional<Long> minutes;
 
     // empty constructor
@@ -120,7 +125,7 @@ public class TestDrivesRequest implements Serializable {
             return this;
         }
 
-        public TestDrivesRequest.Builder optionalMinutes(final Long minutes) {
+        public TestDrivesRequest.Builder optional(final Long minutes) {
             this.minutes = (minutes == null) ? Optional.<Long>empty() : Optional.of(minutes);
             return this;
         }

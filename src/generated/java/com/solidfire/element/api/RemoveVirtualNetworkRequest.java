@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * RemoveVirtualNetworkRequest  
+ * RemoveVirtualNetwork is used to remove a previously added virtual network.
+ * 
+ * Note: This method requires either the VirtualNetworkID of the VirtualNetworkTag as a parameter, but not both.
  **/
 
 public class RemoveVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = -7622530625529296409L;
+    public static final long serialVersionUID = -69827457523190851L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
 
@@ -138,12 +141,12 @@ public class RemoveVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public RemoveVirtualNetworkRequest.Builder optionalVirtualNetworkID(final Long virtualNetworkID) {
+        public RemoveVirtualNetworkRequest.Builder optional(final Long virtualNetworkID) {
             this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public RemoveVirtualNetworkRequest.Builder optionalVirtualNetworkTag(final Long virtualNetworkTag) {
+        public RemoveVirtualNetworkRequest.Builder optional(final Long virtualNetworkTag) {
             this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
             return this;
         }

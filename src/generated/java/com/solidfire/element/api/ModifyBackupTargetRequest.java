@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ModifyBackupTargetRequest  
+ * ModifyBackupTarget is used to change attributes of a backup target.
  **/
 
 public class ModifyBackupTargetRequest implements Serializable {
 
-    public static final long serialVersionUID = -2231080711756074693L;
+    public static final long serialVersionUID = -7833229859937145799L;
     @SerializedName("backupTargetID") private Long backupTargetID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
@@ -159,12 +160,12 @@ public class ModifyBackupTargetRequest implements Serializable {
             return this;
         }
 
-        public ModifyBackupTargetRequest.Builder optionalName(final String name) {
+        public ModifyBackupTargetRequest.Builder optional(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public ModifyBackupTargetRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public ModifyBackupTargetRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

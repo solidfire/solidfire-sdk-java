@@ -96,6 +96,7 @@ public class Service implements Serializable {
         this.serviceID = serviceID;
     }
     /** 
+     * 
      **/
     public String getServiceType() { return this.serviceType; }
     public void setServiceType(String serviceType) { 
@@ -173,18 +174,21 @@ public class Service implements Serializable {
         this.iscsiPort = iscsiPort;
     }
     /** 
+     * 
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 
         this.status = status;
     }
     /** 
+     * 
      **/
     public Long[] getStartedDriveIDs() { return this.startedDriveIDs; }
     public void setStartedDriveIDs(Long[] startedDriveIDs) { 
         this.startedDriveIDs = startedDriveIDs;
     }
     /** 
+     * 
      **/
     public Long[] getDriveIDs() { return this.driveIDs; }
     public void setDriveIDs(Long[] driveIDs) { 
@@ -353,17 +357,17 @@ public class Service implements Serializable {
             return this;
         }
 
-        public Service.Builder optionalAssociatedBV(final Long associatedBV) {
+        public Service.Builder optional(final Long associatedBV) {
             this.associatedBV = (associatedBV == null) ? Optional.<Long>empty() : Optional.of(associatedBV);
             return this;
         }
 
-        public Service.Builder optionalAssociatedTS(final Long associatedTS) {
+        public Service.Builder optional(final Long associatedTS) {
             this.associatedTS = (associatedTS == null) ? Optional.<Long>empty() : Optional.of(associatedTS);
             return this;
         }
 
-        public Service.Builder optionalAssociatedVS(final Long associatedVS) {
+        public Service.Builder optional(final Long associatedVS) {
             this.associatedVS = (associatedVS == null) ? Optional.<Long>empty() : Optional.of(associatedVS);
             return this;
         }
@@ -373,7 +377,7 @@ public class Service implements Serializable {
             return this;
         }
 
-        public Service.Builder optionalDriveID(final Long driveID) {
+        public Service.Builder optional(final Long driveID) {
             this.driveID = (driveID == null) ? Optional.<Long>empty() : Optional.of(driveID);
             return this;
         }

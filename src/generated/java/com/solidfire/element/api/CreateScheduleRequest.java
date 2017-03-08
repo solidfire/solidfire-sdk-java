@@ -28,11 +28,16 @@ import java.util.Objects;
 
 /**
  * CreateScheduleRequest  
+ * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
+ * 
+ * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. 
+ * 
+ * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
  **/
 
 public class CreateScheduleRequest implements Serializable {
 
-    public static final long serialVersionUID = -4373490005883377153L;
+    public static final long serialVersionUID = -3724271640606844051L;
     @SerializedName("schedule") private Schedule schedule;
 
     // empty constructor

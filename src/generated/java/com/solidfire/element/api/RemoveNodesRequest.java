@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * RemoveNodesRequest  
+ * RemoveNodes is used to remove one or more nodes that should no longer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
+ * 
+ * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
  **/
 
 public class RemoveNodesRequest implements Serializable {
 
-    public static final long serialVersionUID = 4755776002002165092L;
+    public static final long serialVersionUID = 2891888305959375772L;
     @SerializedName("nodes") private Long[] nodes;
 
     // empty constructor

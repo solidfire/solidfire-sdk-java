@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ModifyClusterFullThresholdRequest  
+ * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
  **/
 
 public class ModifyClusterFullThresholdRequest implements Serializable {
 
-    public static final long serialVersionUID = 8813417033775615946L;
+    public static final long serialVersionUID = -7464778437659417990L;
     @SerializedName("stage2AwareThreshold") private Optional<Long> stage2AwareThreshold;
     @SerializedName("stage3BlockThresholdPercent") private Optional<Long> stage3BlockThresholdPercent;
     @SerializedName("maxMetadataOverProvisionFactor") private Optional<Long> maxMetadataOverProvisionFactor;
@@ -166,17 +167,17 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
             return this;
         }
 
-        public ModifyClusterFullThresholdRequest.Builder optionalStage2AwareThreshold(final Long stage2AwareThreshold) {
+        public ModifyClusterFullThresholdRequest.Builder optional(final Long stage2AwareThreshold) {
             this.stage2AwareThreshold = (stage2AwareThreshold == null) ? Optional.<Long>empty() : Optional.of(stage2AwareThreshold);
             return this;
         }
 
-        public ModifyClusterFullThresholdRequest.Builder optionalStage3BlockThresholdPercent(final Long stage3BlockThresholdPercent) {
+        public ModifyClusterFullThresholdRequest.Builder optional(final Long stage3BlockThresholdPercent) {
             this.stage3BlockThresholdPercent = (stage3BlockThresholdPercent == null) ? Optional.<Long>empty() : Optional.of(stage3BlockThresholdPercent);
             return this;
         }
 
-        public ModifyClusterFullThresholdRequest.Builder optionalMaxMetadataOverProvisionFactor(final Long maxMetadataOverProvisionFactor) {
+        public ModifyClusterFullThresholdRequest.Builder optional(final Long maxMetadataOverProvisionFactor) {
             this.maxMetadataOverProvisionFactor = (maxMetadataOverProvisionFactor == null) ? Optional.<Long>empty() : Optional.of(maxMetadataOverProvisionFactor);
             return this;
         }

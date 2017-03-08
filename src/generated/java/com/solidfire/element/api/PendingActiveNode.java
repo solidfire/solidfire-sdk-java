@@ -74,54 +74,63 @@ public class PendingActiveNode implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getActiveNodeKey() { return this.activeNodeKey; }
     public void setActiveNodeKey(String activeNodeKey) { 
         this.activeNodeKey = activeNodeKey;
     }
     /** 
+     * 
      **/
     public Long getAssignedNodeID() { return this.assignedNodeID; }
     public void setAssignedNodeID(Long assignedNodeID) { 
         this.assignedNodeID = assignedNodeID;
     }
     /** 
+     * 
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
     public void setAsyncHandle(Long asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
     /** 
+     * 
      **/
     public String getCip() { return this.cip; }
     public void setCip(String cip) { 
         this.cip = cip;
     }
     /** 
+     * 
      **/
     public String getMip() { return this.mip; }
     public void setMip(String mip) { 
         this.mip = mip;
     }
     /** 
+     * 
      **/
     public Long getPendingNodeID() { return this.pendingNodeID; }
     public void setPendingNodeID(Long pendingNodeID) { 
         this.pendingNodeID = pendingNodeID;
     }
     /** 
+     * 
      **/
     public Platform getPlatformInfo() { return this.platformInfo; }
     public void setPlatformInfo(Platform platformInfo) { 
         this.platformInfo = platformInfo;
     }
     /** 
+     * 
      **/
     public String getSip() { return this.sip; }
     public void setSip(String sip) { 
         this.sip = sip;
     }
     /** 
+     * 
      **/
     public String getSoftwareVersion() { return this.softwareVersion; }
     public void setSoftwareVersion(String softwareVersion) { 

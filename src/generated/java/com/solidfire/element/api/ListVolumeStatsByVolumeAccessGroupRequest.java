@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListVolumeStatsByVolumeAccessGroupRequest  
+ * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
  **/
 
 public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = -1261879009386913207L;
+    public static final long serialVersionUID = 5610547891603916327L;
     @SerializedName("volumeAccessGroups") private Optional<Long[]> volumeAccessGroups;
 
     // empty constructor
@@ -121,7 +122,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public ListVolumeStatsByVolumeAccessGroupRequest.Builder optionalVolumeAccessGroups(final Long[] volumeAccessGroups) {
+        public ListVolumeStatsByVolumeAccessGroupRequest.Builder optional(final Long[] volumeAccessGroups) {
             this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroups);
             return this;
         }

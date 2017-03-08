@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * GetVolumeAccessGroupLunAssignmentsRequest  
+ * The GetVolumeAccessGroupLunAssignments is used to return information LUN mappings of a specified volume access group.
  **/
 
 public class GetVolumeAccessGroupLunAssignmentsRequest implements Serializable {
 
-    public static final long serialVersionUID = -2936880506250198818L;
+    public static final long serialVersionUID = -5760890499027616714L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
 
     // empty constructor

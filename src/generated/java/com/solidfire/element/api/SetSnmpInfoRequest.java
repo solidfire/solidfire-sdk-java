@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * SetSnmpInfoRequest  
+ * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
+ * 
+ * Note: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no longer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
  **/
 
 public class SetSnmpInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 5748454860350922237L;
+    public static final long serialVersionUID = -3822330151084949865L;
     @SerializedName("networks") private Optional<SnmpNetwork[]> networks;
     @SerializedName("enabled") private Optional<Boolean> enabled;
     @SerializedName("snmpV3Enabled") private Optional<Boolean> snmpV3Enabled;
@@ -174,22 +177,22 @@ public class SetSnmpInfoRequest implements Serializable {
             return this;
         }
 
-        public SetSnmpInfoRequest.Builder optionalNetworks(final SnmpNetwork[] networks) {
+        public SetSnmpInfoRequest.Builder optional(final SnmpNetwork[] networks) {
             this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : Optional.of(networks);
             return this;
         }
 
-        public SetSnmpInfoRequest.Builder optionalEnabled(final Boolean enabled) {
+        public SetSnmpInfoRequest.Builder optional(final Boolean enabled) {
             this.enabled = (enabled == null) ? Optional.<Boolean>empty() : Optional.of(enabled);
             return this;
         }
 
-        public SetSnmpInfoRequest.Builder optionalSnmpV3Enabled(final Boolean snmpV3Enabled) {
+        public SetSnmpInfoRequest.Builder optional(final Boolean snmpV3Enabled) {
             this.snmpV3Enabled = (snmpV3Enabled == null) ? Optional.<Boolean>empty() : Optional.of(snmpV3Enabled);
             return this;
         }
 
-        public SetSnmpInfoRequest.Builder optionalUsmUsers(final SnmpV3UsmUser[] usmUsers) {
+        public SetSnmpInfoRequest.Builder optional(final SnmpV3UsmUser[] usmUsers) {
             this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : Optional.of(usmUsers);
             return this;
         }

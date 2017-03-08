@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * TestPingRequest  
+ * The TestPing API method is used to validate the connection to all nodes in the cluster on both 1G and 10G interfaces using ICMP packets. The test uses the appropriate MTU sizes for each packet based on the MTU settings in the network configuration.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class TestPingRequest implements Serializable {
 
-    public static final long serialVersionUID = 8242775352369429256L;
+    public static final long serialVersionUID = -6798451733195067348L;
     @SerializedName("attempts") private Optional<Long> attempts;
     @SerializedName("hosts") private Optional<String> hosts;
     @SerializedName("totalTimeoutSec") private Optional<Long> totalTimeoutSec;
@@ -192,27 +194,27 @@ public class TestPingRequest implements Serializable {
             return this;
         }
 
-        public TestPingRequest.Builder optionalAttempts(final Long attempts) {
+        public TestPingRequest.Builder optional(final Long attempts) {
             this.attempts = (attempts == null) ? Optional.<Long>empty() : Optional.of(attempts);
             return this;
         }
 
-        public TestPingRequest.Builder optionalHosts(final String hosts) {
+        public TestPingRequest.Builder optional(final String hosts) {
             this.hosts = (hosts == null) ? Optional.<String>empty() : Optional.of(hosts);
             return this;
         }
 
-        public TestPingRequest.Builder optionalTotalTimeoutSec(final Long totalTimeoutSec) {
+        public TestPingRequest.Builder optional(final Long totalTimeoutSec) {
             this.totalTimeoutSec = (totalTimeoutSec == null) ? Optional.<Long>empty() : Optional.of(totalTimeoutSec);
             return this;
         }
 
-        public TestPingRequest.Builder optionalPacketSize(final Long packetSize) {
+        public TestPingRequest.Builder optional(final Long packetSize) {
             this.packetSize = (packetSize == null) ? Optional.<Long>empty() : Optional.of(packetSize);
             return this;
         }
 
-        public TestPingRequest.Builder optionalPingTimeoutMsec(final Long pingTimeoutMsec) {
+        public TestPingRequest.Builder optional(final Long pingTimeoutMsec) {
             this.pingTimeoutMsec = (pingTimeoutMsec == null) ? Optional.<Long>empty() : Optional.of(pingTimeoutMsec);
             return this;
         }

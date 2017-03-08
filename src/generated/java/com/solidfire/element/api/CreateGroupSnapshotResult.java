@@ -56,6 +56,7 @@ public class CreateGroupSnapshotResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public GroupSnapshot getGroupSnapshot() { return this.groupSnapshot; }
     public void setGroupSnapshot(GroupSnapshot groupSnapshot) { 

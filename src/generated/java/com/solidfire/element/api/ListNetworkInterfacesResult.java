@@ -50,6 +50,7 @@ public class ListNetworkInterfacesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public NetworkInterface[] getInterfaces() { return this.interfaces; }
     public void setInterfaces(NetworkInterface[] interfaces) { 

@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * EnableLdapAuthenticationRequest  
+ * The EnableLdapAuthentication method is used to configure an LDAP server connection to use for LDAP authentication to a SolidFire cluster. Users that are members on the LDAP server can then log in to a SolidFire storage system using their LDAP authentication userid and password.
  **/
 
 public class EnableLdapAuthenticationRequest implements Serializable {
 
-    public static final long serialVersionUID = 4288984566259899362L;
+    public static final long serialVersionUID = 2976054419327822022L;
     @SerializedName("authType") private Optional<String> authType;
     @SerializedName("groupSearchBaseDN") private Optional<String> groupSearchBaseDN;
     @SerializedName("groupSearchCustomFilter") private Optional<String> groupSearchCustomFilter;
@@ -296,32 +297,32 @@ public class EnableLdapAuthenticationRequest implements Serializable {
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optionalAuthType(final String authType) {
+        public EnableLdapAuthenticationRequest.Builder optional(final String authType) {
             this.authType = (authType == null) ? Optional.<String>empty() : Optional.of(authType);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optionalGroupSearchBaseDN(final String groupSearchBaseDN) {
+        public EnableLdapAuthenticationRequest.Builder optional(final String groupSearchBaseDN) {
             this.groupSearchBaseDN = (groupSearchBaseDN == null) ? Optional.<String>empty() : Optional.of(groupSearchBaseDN);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optionalGroupSearchCustomFilter(final String groupSearchCustomFilter) {
+        public EnableLdapAuthenticationRequest.Builder optional(final String groupSearchCustomFilter) {
             this.groupSearchCustomFilter = (groupSearchCustomFilter == null) ? Optional.<String>empty() : Optional.of(groupSearchCustomFilter);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optionalGroupSearchType(final String groupSearchType) {
+        public EnableLdapAuthenticationRequest.Builder optional(final String groupSearchType) {
             this.groupSearchType = (groupSearchType == null) ? Optional.<String>empty() : Optional.of(groupSearchType);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optionalSearchBindDN(final String searchBindDN) {
+        public EnableLdapAuthenticationRequest.Builder optional(final String searchBindDN) {
             this.searchBindDN = (searchBindDN == null) ? Optional.<String>empty() : Optional.of(searchBindDN);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optionalSearchBindPassword(final String searchBindPassword) {
+        public EnableLdapAuthenticationRequest.Builder optional(final String searchBindPassword) {
             this.searchBindPassword = (searchBindPassword == null) ? Optional.<String>empty() : Optional.of(searchBindPassword);
             return this;
         }
@@ -331,17 +332,17 @@ public class EnableLdapAuthenticationRequest implements Serializable {
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optionalUserDNTemplate(final String userDNTemplate) {
+        public EnableLdapAuthenticationRequest.Builder optional(final String userDNTemplate) {
             this.userDNTemplate = (userDNTemplate == null) ? Optional.<String>empty() : Optional.of(userDNTemplate);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optionalUserSearchBaseDN(final String userSearchBaseDN) {
+        public EnableLdapAuthenticationRequest.Builder optional(final String userSearchBaseDN) {
             this.userSearchBaseDN = (userSearchBaseDN == null) ? Optional.<String>empty() : Optional.of(userSearchBaseDN);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optionalUserSearchFilter(final String userSearchFilter) {
+        public EnableLdapAuthenticationRequest.Builder optional(final String userSearchFilter) {
             this.userSearchFilter = (userSearchFilter == null) ? Optional.<String>empty() : Optional.of(userSearchFilter);
             return this;
         }

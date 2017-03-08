@@ -134,174 +134,203 @@ public class DriveHardware implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getCanonicalName() { return this.canonicalName; }
     public void setCanonicalName(String canonicalName) { 
         this.canonicalName = canonicalName;
     }
     /** 
+     * 
      **/
     public Boolean getConnected() { return this.connected; }
     public void setConnected(Boolean connected) { 
         this.connected = connected;
     }
     /** 
+     * 
      **/
     public Long getDev() { return this.dev; }
     public void setDev(Long dev) { 
         this.dev = dev;
     }
     /** 
+     * 
      **/
     public String getDevPath() { return this.devPath; }
     public void setDevPath(String devPath) { 
         this.devPath = devPath;
     }
     /** 
+     * 
      **/
     public String getDriveType() { return this.driveType; }
     public void setDriveType(String driveType) { 
         this.driveType = driveType;
     }
     /** 
+     * 
      **/
     public Long getLifeRemainingPercent() { return this.lifeRemainingPercent; }
     public void setLifeRemainingPercent(Long lifeRemainingPercent) { 
         this.lifeRemainingPercent = lifeRemainingPercent;
     }
     /** 
+     * 
      **/
     public Long getLifetimeReadBytes() { return this.lifetimeReadBytes; }
     public void setLifetimeReadBytes(Long lifetimeReadBytes) { 
         this.lifetimeReadBytes = lifetimeReadBytes;
     }
     /** 
+     * 
      **/
     public Long getLifetimeWriteBytes() { return this.lifetimeWriteBytes; }
     public void setLifetimeWriteBytes(Long lifetimeWriteBytes) { 
         this.lifetimeWriteBytes = lifetimeWriteBytes;
     }
     /** 
+     * 
      **/
     public String getName() { return this.name; }
     public void setName(String name) { 
         this.name = name;
     }
     /** 
+     * 
      **/
     public String getPath() { return this.path; }
     public void setPath(String path) { 
         this.path = path;
     }
     /** 
+     * 
      **/
     public String getPathLink() { return this.pathLink; }
     public void setPathLink(String pathLink) { 
         this.pathLink = pathLink;
     }
     /** 
+     * 
      **/
     public Long getPowerOnHours() { return this.powerOnHours; }
     public void setPowerOnHours(Long powerOnHours) { 
         this.powerOnHours = powerOnHours;
     }
     /** 
+     * 
      **/
     public String getProduct() { return this.product; }
     public void setProduct(String product) { 
         this.product = product;
     }
     /** 
+     * 
      **/
     public Long getReallocatedSectors() { return this.reallocatedSectors; }
     public void setReallocatedSectors(Long reallocatedSectors) { 
         this.reallocatedSectors = reallocatedSectors;
     }
     /** 
+     * 
      **/
     public Long getReserveCapacityPercent() { return this.reserveCapacityPercent; }
     public void setReserveCapacityPercent(Long reserveCapacityPercent) { 
         this.reserveCapacityPercent = reserveCapacityPercent;
     }
     /** 
+     * 
      **/
     public String getScsiCompatId() { return this.scsiCompatId; }
     public void setScsiCompatId(String scsiCompatId) { 
         this.scsiCompatId = scsiCompatId;
     }
     /** 
+     * 
      **/
     public String getScsiState() { return this.scsiState; }
     public void setScsiState(String scsiState) { 
         this.scsiState = scsiState;
     }
     /** 
+     * 
      **/
     public Boolean getSecurityAtMaximum() { return this.securityAtMaximum; }
     public void setSecurityAtMaximum(Boolean securityAtMaximum) { 
         this.securityAtMaximum = securityAtMaximum;
     }
     /** 
+     * 
      **/
     public Boolean getSecurityEnabled() { return this.securityEnabled; }
     public void setSecurityEnabled(Boolean securityEnabled) { 
         this.securityEnabled = securityEnabled;
     }
     /** 
+     * 
      **/
     public Boolean getSecurityFrozen() { return this.securityFrozen; }
     public void setSecurityFrozen(Boolean securityFrozen) { 
         this.securityFrozen = securityFrozen;
     }
     /** 
+     * 
      **/
     public Boolean getSecurityLocked() { return this.securityLocked; }
     public void setSecurityLocked(Boolean securityLocked) { 
         this.securityLocked = securityLocked;
     }
     /** 
+     * 
      **/
     public Boolean getSecuritySupported() { return this.securitySupported; }
     public void setSecuritySupported(Boolean securitySupported) { 
         this.securitySupported = securitySupported;
     }
     /** 
+     * 
      **/
     public String getSerial() { return this.serial; }
     public void setSerial(String serial) { 
         this.serial = serial;
     }
     /** 
+     * 
      **/
     public Long getSize() { return this.size; }
     public void setSize(Long size) { 
         this.size = size;
     }
     /** 
+     * 
      **/
     public Long getSlot() { return this.slot; }
     public void setSlot(Long slot) { 
         this.slot = slot;
     }
     /** 
+     * 
      **/
     public Optional<Boolean> getSmartSsdWriteCapable() { return this.smartSsdWriteCapable; }
     public void setSmartSsdWriteCapable(Optional<Boolean> smartSsdWriteCapable) { 
         this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : smartSsdWriteCapable;
     }
     /** 
+     * 
      **/
     public java.util.UUID getUuid() { return this.uuid; }
     public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
     /** 
+     * 
      **/
     public String getVendor() { return this.vendor; }
     public void setVendor(String vendor) { 
         this.vendor = vendor;
     }
     /** 
+     * 
      **/
     public String getVersion() { return this.version; }
     public void setVersion(String version) { 
@@ -664,7 +693,7 @@ public class DriveHardware implements Serializable {
             return this;
         }
 
-        public DriveHardware.Builder optionalSmartSsdWriteCapable(final Boolean smartSsdWriteCapable) {
+        public DriveHardware.Builder optional(final Boolean smartSsdWriteCapable) {
             this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : Optional.of(smartSsdWriteCapable);
             return this;
         }

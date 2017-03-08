@@ -53,12 +53,14 @@ public class ShutdownResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long[] getFailed() { return this.failed; }
     public void setFailed(Long[] failed) { 
         this.failed = failed;
     }
     /** 
+     * 
      **/
     public Long[] getSuccessful() { return this.successful; }
     public void setSuccessful(Long[] successful) { 

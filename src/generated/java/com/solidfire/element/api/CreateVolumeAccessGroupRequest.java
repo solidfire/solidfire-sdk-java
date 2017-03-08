@@ -28,11 +28,16 @@ import java.util.Objects;
 
 /**
  * CreateVolumeAccessGroupRequest  
+ * Creates a new volume access group.
+ * The new volume access group must be given a name when it is created.
+ * Entering initiators and volumes are optional when creating a volume access group.
+ * Once the group is created volumes and initiator IQNs can be added.
+ * Any initiator IQN that is successfully added to the volume access group is able to access any volume in the group without CHAP authentication.
  **/
 
 public class CreateVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 6824028462430624106L;
+    public static final long serialVersionUID = -2025480166130283290L;
     @SerializedName("name") private String name;
     @SerializedName("initiators") private Optional<String[]> initiators;
     @SerializedName("volumes") private Optional<Long[]> volumes;
@@ -230,27 +235,27 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder optionalInitiators(final String[] initiators) {
+        public CreateVolumeAccessGroupRequest.Builder optional(final String[] initiators) {
             this.initiators = (initiators == null) ? Optional.<String[]>empty() : Optional.of(initiators);
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder optionalVolumes(final Long[] volumes) {
+        public CreateVolumeAccessGroupRequest.Builder optional(final Long[] volumes) {
             this.volumes = (volumes == null) ? Optional.<Long[]>empty() : Optional.of(volumes);
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder optionalVirtualNetworkID(final Long[] virtualNetworkID) {
+        public CreateVolumeAccessGroupRequest.Builder optional(final Long[] virtualNetworkID) {
             this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder optionalVirtualNetworkTags(final Long[] virtualNetworkTags) {
+        public CreateVolumeAccessGroupRequest.Builder optional(final Long[] virtualNetworkTags) {
             this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkTags);
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public CreateVolumeAccessGroupRequest.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

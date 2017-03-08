@@ -141,7 +141,7 @@ public class NodeStateResult implements Serializable {
             return this;
         }
 
-        public NodeStateResult.Builder optionalResult(final NodeStateInfo result) {
+        public NodeStateResult.Builder optional(final NodeStateInfo result) {
             this.result = (result == null) ? Optional.<NodeStateInfo>empty() : Optional.of(result);
             return this;
         }

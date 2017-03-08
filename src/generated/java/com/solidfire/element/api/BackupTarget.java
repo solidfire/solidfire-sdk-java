@@ -163,7 +163,7 @@ public class BackupTarget implements Serializable {
             return this;
         }
 
-        public BackupTarget.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+        public BackupTarget.Builder optional(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

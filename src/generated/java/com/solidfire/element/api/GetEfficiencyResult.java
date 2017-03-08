@@ -188,17 +188,17 @@ public class GetEfficiencyResult implements Serializable {
             return this;
         }
 
-        public GetEfficiencyResult.Builder optionalCompression(final Double compression) {
+        public GetEfficiencyResult.Builder optional(final Double compression) {
             this.compression = (compression == null) ? Optional.<Double>empty() : Optional.of(compression);
             return this;
         }
 
-        public GetEfficiencyResult.Builder optionalDeduplication(final Double deduplication) {
+        public GetEfficiencyResult.Builder optional(final Double deduplication) {
             this.deduplication = (deduplication == null) ? Optional.<Double>empty() : Optional.of(deduplication);
             return this;
         }
 
-        public GetEfficiencyResult.Builder optionalThinProvisioning(final Double thinProvisioning) {
+        public GetEfficiencyResult.Builder optional(final Double thinProvisioning) {
             this.thinProvisioning = (thinProvisioning == null) ? Optional.<Double>empty() : Optional.of(thinProvisioning);
             return this;
         }

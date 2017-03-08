@@ -328,37 +328,37 @@ public class Schedule implements Serializable {
             return this;
         }
 
-        public Schedule.Builder optionalHasError(final Boolean hasError) {
+        public Schedule.Builder optional(final Boolean hasError) {
             this.hasError = (hasError == null) ? Optional.<Boolean>empty() : Optional.of(hasError);
             return this;
         }
 
-        public Schedule.Builder optionalLastRunStatus(final String lastRunStatus) {
+        public Schedule.Builder optional(final String lastRunStatus) {
             this.lastRunStatus = (lastRunStatus == null) ? Optional.<String>empty() : Optional.of(lastRunStatus);
             return this;
         }
 
-        public Schedule.Builder optionalLastRunTimeStarted(final String lastRunTimeStarted) {
+        public Schedule.Builder optional(final String lastRunTimeStarted) {
             this.lastRunTimeStarted = (lastRunTimeStarted == null) ? Optional.<String>empty() : Optional.of(lastRunTimeStarted);
             return this;
         }
 
-        public Schedule.Builder optionalPaused(final Boolean paused) {
+        public Schedule.Builder optional(final Boolean paused) {
             this.paused = (paused == null) ? Optional.<Boolean>empty() : Optional.of(paused);
             return this;
         }
 
-        public Schedule.Builder optionalRecurring(final Boolean recurring) {
+        public Schedule.Builder optional(final Boolean recurring) {
             this.recurring = (recurring == null) ? Optional.<Boolean>empty() : Optional.of(recurring);
             return this;
         }
 
-        public Schedule.Builder optionalRunNextInterval(final Boolean runNextInterval) {
+        public Schedule.Builder optional(final Boolean runNextInterval) {
             this.runNextInterval = (runNextInterval == null) ? Optional.<Boolean>empty() : Optional.of(runNextInterval);
             return this;
         }
 
-        public Schedule.Builder optionalScheduleID(final Long scheduleID) {
+        public Schedule.Builder optional(final Long scheduleID) {
             this.scheduleID = (scheduleID == null) ? Optional.<Long>empty() : Optional.of(scheduleID);
             return this;
         }
@@ -373,12 +373,12 @@ public class Schedule implements Serializable {
             return this;
         }
 
-        public Schedule.Builder optionalStartingDate(final String startingDate) {
+        public Schedule.Builder optional(final String startingDate) {
             this.startingDate = (startingDate == null) ? Optional.<String>empty() : Optional.of(startingDate);
             return this;
         }
 
-        public Schedule.Builder optionalToBeDeleted(final Boolean toBeDeleted) {
+        public Schedule.Builder optional(final Boolean toBeDeleted) {
             this.toBeDeleted = (toBeDeleted == null) ? Optional.<Boolean>empty() : Optional.of(toBeDeleted);
             return this;
         }

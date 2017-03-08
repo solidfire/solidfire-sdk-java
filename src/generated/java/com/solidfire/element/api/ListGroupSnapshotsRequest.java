@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ListGroupSnapshotsRequest  
+ * ListGroupSnapshots is used to return information about all group snapshots that have been created.
  **/
 
 public class ListGroupSnapshotsRequest implements Serializable {
 
-    public static final long serialVersionUID = 8925165299321175370L;
+    public static final long serialVersionUID = 3471955734566932778L;
     @SerializedName("volumeID") private Optional<Long> volumeID;
     @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
 
@@ -147,12 +148,12 @@ public class ListGroupSnapshotsRequest implements Serializable {
             return this;
         }
 
-        public ListGroupSnapshotsRequest.Builder optionalVolumeID(final Long volumeID) {
+        public ListGroupSnapshotsRequest.Builder optional(final Long volumeID) {
             this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
             return this;
         }
 
-        public ListGroupSnapshotsRequest.Builder optionalGroupSnapshotID(final Long groupSnapshotID) {
+        public ListGroupSnapshotsRequest.Builder optional(final Long groupSnapshotID) {
             this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : Optional.of(groupSnapshotID);
             return this;
         }

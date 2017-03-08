@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * PurgeDeletedVolumeRequest  
+ * PurgeDeletedVolume immediately and permanently purges a volume which has been deleted.
+ * A volume must be deleted using DeleteVolume before it can be purged.
+ * Volumes are purged automatically after a period of time, so usage of this method is not typically required.
  **/
 
 public class PurgeDeletedVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 6107800091718315860L;
+    public static final long serialVersionUID = -4561351223287531332L;
     @SerializedName("volumeID") private Long volumeID;
 
     // empty constructor

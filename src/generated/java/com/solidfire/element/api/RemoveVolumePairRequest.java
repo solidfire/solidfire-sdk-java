@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * RemoveVolumePairRequest  
+ * RemoveVolumePair is used to remove the remote pairing between two volumes.
+ * When the volume pairing information is removed, data is no longer replicated to or from the volume.
+ * This method should be run on both the source and target volumes that are paired together.
  **/
 
 public class RemoveVolumePairRequest implements Serializable {
 
-    public static final long serialVersionUID = -7144939349326061750L;
+    public static final long serialVersionUID = 1918590127844654958L;
     @SerializedName("volumeID") private Long volumeID;
 
     // empty constructor

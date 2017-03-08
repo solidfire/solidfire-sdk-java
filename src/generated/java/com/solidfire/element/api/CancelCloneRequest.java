@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * CancelCloneRequest  
+ * Cancels a currently running clone operation. This method does not return anything.
  **/
 
 public class CancelCloneRequest implements Serializable {
 
-    public static final long serialVersionUID = -2076980961706824878L;
+    public static final long serialVersionUID = 3236584751816990766L;
     @SerializedName("cloneID") private Long cloneID;
 
     // empty constructor
@@ -50,6 +51,7 @@ public class CancelCloneRequest implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getCloneID() { return this.cloneID; }
     public void setCloneID(Long cloneID) { 

@@ -50,6 +50,7 @@ public class ListServicesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public DetailedService[] getServices() { return this.services; }
     public void setServices(DetailedService[] services) { 

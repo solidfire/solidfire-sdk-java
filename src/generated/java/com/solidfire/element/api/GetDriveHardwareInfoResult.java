@@ -50,6 +50,7 @@ public class GetDriveHardwareInfoResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public DriveHardwareInfo getDriveHardwareInfo() { return this.driveHardwareInfo; }
     public void setDriveHardwareInfo(DriveHardwareInfo driveHardwareInfo) { 

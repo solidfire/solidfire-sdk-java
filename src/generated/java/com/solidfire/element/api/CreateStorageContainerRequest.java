@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * CreateStorageContainerRequest  
+ * Creates a new VVols storage container.
  **/
 
 public class CreateStorageContainerRequest implements Serializable {
 
-    public static final long serialVersionUID = -7290793674015554618L;
+    public static final long serialVersionUID = 7671944159568486150L;
     @SerializedName("name") private String name;
     @SerializedName("initiatorSecret") private Optional<String> initiatorSecret;
     @SerializedName("targetSecret") private Optional<String> targetSecret;
@@ -159,12 +160,12 @@ public class CreateStorageContainerRequest implements Serializable {
             return this;
         }
 
-        public CreateStorageContainerRequest.Builder optionalInitiatorSecret(final String initiatorSecret) {
+        public CreateStorageContainerRequest.Builder optional(final String initiatorSecret) {
             this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public CreateStorageContainerRequest.Builder optionalTargetSecret(final String targetSecret) {
+        public CreateStorageContainerRequest.Builder optional(final String targetSecret) {
             this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : Optional.of(targetSecret);
             return this;
         }

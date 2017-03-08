@@ -50,6 +50,7 @@ public class IpmiInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public java.util.Map<String, Object>[] getSensors() { return this.sensors; }
     public void setSensors(java.util.Map<String, Object>[] sensors) { 

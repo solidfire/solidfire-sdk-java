@@ -28,13 +28,13 @@ import java.util.Objects;
 
 /**
  * DeleteVolumeAccessGroupRequest  
+ * Delete a volume access group from the system.
  **/
 
 public class DeleteVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 8476466628428325659L;
+    public static final long serialVersionUID = -4577487893309432735L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
-    @SerializedName("deleteOrphanInitiators") private Boolean deleteOrphanInitiators = true;
 
     // empty constructor
     @Since("7.0")
@@ -49,16 +49,6 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
-    // parameterized constructor
-    @Since("9.0")
-    public DeleteVolumeAccessGroupRequest(
-        Long volumeAccessGroupID,
-        Boolean deleteOrphanInitiators
-    )
-    {
-        this.volumeAccessGroupID = volumeAccessGroupID;
-        this.deleteOrphanInitiators = deleteOrphanInitiators;
-    }
 
     /** 
      * The ID of the volume access group to delete.
@@ -66,14 +56,6 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
-    }
-    /** 
-     * true: Delete initiator objects after they are removed from a volume access group.
-     * false: Do not delete initiator objects after they are removed from a volume access group.
-     **/
-    public Boolean getDeleteOrphanInitiators() { return this.deleteOrphanInitiators; }
-    public void setDeleteOrphanInitiators(Boolean deleteOrphanInitiators) { 
-        this.deleteOrphanInitiators = deleteOrphanInitiators;
     }
 
     @Override
@@ -84,20 +66,18 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
         DeleteVolumeAccessGroupRequest that = (DeleteVolumeAccessGroupRequest) o;
 
         return 
-            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID) && 
-            Objects.equals(deleteOrphanInitiators, that.deleteOrphanInitiators);
+            Objects.equals(volumeAccessGroupID, that.volumeAccessGroupID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID,deleteOrphanInitiators );
+        return Objects.hash( volumeAccessGroupID );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("volumeAccessGroupID", volumeAccessGroupID);
-        map.put("deleteOrphanInitiators", deleteOrphanInitiators);
         return map;
     }
 
@@ -107,7 +87,6 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" deleteOrphanInitiators : ").append(deleteOrphanInitiators).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -126,30 +105,22 @@ public class DeleteVolumeAccessGroupRequest implements Serializable {
 
     public static class Builder {
         private Long volumeAccessGroupID;
-        private Boolean deleteOrphanInitiators;
 
         private Builder() { }
 
         public DeleteVolumeAccessGroupRequest build() {
             return new DeleteVolumeAccessGroupRequest (
-                         this.volumeAccessGroupID,
-                         this.deleteOrphanInitiators);
+                         this.volumeAccessGroupID);
         }
 
         private DeleteVolumeAccessGroupRequest.Builder buildFrom(final DeleteVolumeAccessGroupRequest req) {
             this.volumeAccessGroupID = req.volumeAccessGroupID;
-            this.deleteOrphanInitiators = req.deleteOrphanInitiators;
 
             return this;
         }
 
         public DeleteVolumeAccessGroupRequest.Builder volumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = volumeAccessGroupID;
-            return this;
-        }
-
-        public DeleteVolumeAccessGroupRequest.Builder deleteOrphanInitiators(final Boolean deleteOrphanInitiators) {
-            this.deleteOrphanInitiators = deleteOrphanInitiators;
             return this;
         }
 

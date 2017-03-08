@@ -673,42 +673,42 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder optionalActualIOPS(final Long actualIOPS) {
+        public VolumeStats.Builder optional(final Long actualIOPS) {
             this.actualIOPS = (actualIOPS == null) ? Optional.<Long>empty() : Optional.of(actualIOPS);
             return this;
         }
 
-        public VolumeStats.Builder optionalAsyncDelay(final String asyncDelay) {
+        public VolumeStats.Builder optional(final String asyncDelay) {
             this.asyncDelay = (asyncDelay == null) ? Optional.<String>empty() : Optional.of(asyncDelay);
             return this;
         }
 
-        public VolumeStats.Builder optionalAverageIOPSize(final Long averageIOPSize) {
+        public VolumeStats.Builder optional(final Long averageIOPSize) {
             this.averageIOPSize = (averageIOPSize == null) ? Optional.<Long>empty() : Optional.of(averageIOPSize);
             return this;
         }
 
-        public VolumeStats.Builder optionalBurstIOPSCredit(final Long burstIOPSCredit) {
+        public VolumeStats.Builder optional(final Long burstIOPSCredit) {
             this.burstIOPSCredit = (burstIOPSCredit == null) ? Optional.<Long>empty() : Optional.of(burstIOPSCredit);
             return this;
         }
 
-        public VolumeStats.Builder optionalClientQueueDepth(final Long clientQueueDepth) {
+        public VolumeStats.Builder optional(final Long clientQueueDepth) {
             this.clientQueueDepth = (clientQueueDepth == null) ? Optional.<Long>empty() : Optional.of(clientQueueDepth);
             return this;
         }
 
-        public VolumeStats.Builder optionalDesiredMetadataHosts(final MetadataHosts desiredMetadataHosts) {
+        public VolumeStats.Builder optional(final MetadataHosts desiredMetadataHosts) {
             this.desiredMetadataHosts = (desiredMetadataHosts == null) ? Optional.<MetadataHosts>empty() : Optional.of(desiredMetadataHosts);
             return this;
         }
 
-        public VolumeStats.Builder optionalLatencyUSec(final Long latencyUSec) {
+        public VolumeStats.Builder optional(final Long latencyUSec) {
             this.latencyUSec = (latencyUSec == null) ? Optional.<Long>empty() : Optional.of(latencyUSec);
             return this;
         }
 
-        public VolumeStats.Builder optionalMetadataHosts(final MetadataHosts metadataHosts) {
+        public VolumeStats.Builder optional(final MetadataHosts metadataHosts) {
             this.metadataHosts = (metadataHosts == null) ? Optional.<MetadataHosts>empty() : Optional.of(metadataHosts);
             return this;
         }
@@ -723,7 +723,7 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder optionalReadLatencyUSec(final Long readLatencyUSec) {
+        public VolumeStats.Builder optional(final Long readLatencyUSec) {
             this.readLatencyUSec = (readLatencyUSec == null) ? Optional.<Long>empty() : Optional.of(readLatencyUSec);
             return this;
         }
@@ -733,7 +733,7 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder optionalThrottle(final Double throttle) {
+        public VolumeStats.Builder optional(final Double throttle) {
             this.throttle = (throttle == null) ? Optional.<Double>empty() : Optional.of(throttle);
             return this;
         }
@@ -743,7 +743,7 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder optionalTotalLatencyUSec(final Long totalLatencyUSec) {
+        public VolumeStats.Builder optional(final Long totalLatencyUSec) {
             this.totalLatencyUSec = (totalLatencyUSec == null) ? Optional.<Long>empty() : Optional.of(totalLatencyUSec);
             return this;
         }
@@ -773,7 +773,7 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder optionalVolumeUtilization(final Double volumeUtilization) {
+        public VolumeStats.Builder optional(final Double volumeUtilization) {
             this.volumeUtilization = (volumeUtilization == null) ? Optional.<Double>empty() : Optional.of(volumeUtilization);
             return this;
         }
@@ -783,7 +783,7 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder optionalWriteLatencyUSec(final Long writeLatencyUSec) {
+        public VolumeStats.Builder optional(final Long writeLatencyUSec) {
             this.writeLatencyUSec = (writeLatencyUSec == null) ? Optional.<Long>empty() : Optional.of(writeLatencyUSec);
             return this;
         }
@@ -798,32 +798,32 @@ public class VolumeStats implements Serializable {
             return this;
         }
 
-        public VolumeStats.Builder optionalWriteBytesLastSample(final Long writeBytesLastSample) {
+        public VolumeStats.Builder optional(final Long writeBytesLastSample) {
             this.writeBytesLastSample = (writeBytesLastSample == null) ? Optional.<Long>empty() : Optional.of(writeBytesLastSample);
             return this;
         }
 
-        public VolumeStats.Builder optionalSamplePeriodMSec(final Long samplePeriodMSec) {
+        public VolumeStats.Builder optional(final Long samplePeriodMSec) {
             this.samplePeriodMSec = (samplePeriodMSec == null) ? Optional.<Long>empty() : Optional.of(samplePeriodMSec);
             return this;
         }
 
-        public VolumeStats.Builder optionalReadBytesLastSample(final Long readBytesLastSample) {
+        public VolumeStats.Builder optional(final Long readBytesLastSample) {
             this.readBytesLastSample = (readBytesLastSample == null) ? Optional.<Long>empty() : Optional.of(readBytesLastSample);
             return this;
         }
 
-        public VolumeStats.Builder optionalReadOpsLastSample(final Long readOpsLastSample) {
+        public VolumeStats.Builder optional(final Long readOpsLastSample) {
             this.readOpsLastSample = (readOpsLastSample == null) ? Optional.<Long>empty() : Optional.of(readOpsLastSample);
             return this;
         }
 
-        public VolumeStats.Builder optionalWriteOpsLastSample(final Long writeOpsLastSample) {
+        public VolumeStats.Builder optional(final Long writeOpsLastSample) {
             this.writeOpsLastSample = (writeOpsLastSample == null) ? Optional.<Long>empty() : Optional.of(writeOpsLastSample);
             return this;
         }
 
-        public VolumeStats.Builder optionalVirtualVolumeID(final java.util.UUID virtualVolumeID) {
+        public VolumeStats.Builder optional(final java.util.UUID virtualVolumeID) {
             this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : Optional.of(virtualVolumeID);
             return this;
         }

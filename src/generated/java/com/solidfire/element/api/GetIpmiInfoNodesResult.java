@@ -53,12 +53,14 @@ public class GetIpmiInfoNodesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public GetIpmiInfoNodesResultObject getResult() { return this.result; }
     public void setResult(GetIpmiInfoNodesResultObject result) { 

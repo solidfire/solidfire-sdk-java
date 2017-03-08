@@ -28,11 +28,12 @@ import java.util.Objects;
 
 /**
  * ModifyScheduleRequest  
+ * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.
  **/
 
 public class ModifyScheduleRequest implements Serializable {
 
-    public static final long serialVersionUID = 743621623881398457L;
+    public static final long serialVersionUID = 8252246566315312279L;
     @SerializedName("schedule") private Schedule schedule;
 
     // empty constructor

@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * InvokeSFApiRequest  
+ * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+ * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
  **/
 
 public class InvokeSFApiRequest implements Serializable {
 
-    public static final long serialVersionUID = -295482890790858190L;
+    public static final long serialVersionUID = -3644984175863972914L;
     @SerializedName("method") private String method;
     @SerializedName("parameters") private Optional<java.util.Map<String, Object>> parameters;
 
@@ -141,7 +143,7 @@ public class InvokeSFApiRequest implements Serializable {
             return this;
         }
 
-        public InvokeSFApiRequest.Builder optionalParameters(final java.util.Map<String, Object> parameters) {
+        public InvokeSFApiRequest.Builder optional(final java.util.Map<String, Object> parameters) {
             this.parameters = (parameters == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(parameters);
             return this;
         }

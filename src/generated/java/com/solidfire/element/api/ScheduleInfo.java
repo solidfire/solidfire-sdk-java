@@ -174,22 +174,22 @@ public class ScheduleInfo implements Serializable {
             return this;
         }
 
-        public ScheduleInfo.Builder optionalVolumeIDs(final Long[] volumeIDs) {
+        public ScheduleInfo.Builder optional(final Long[] volumeIDs) {
             this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
             return this;
         }
 
-        public ScheduleInfo.Builder optionalSnapshotName(final String snapshotName) {
+        public ScheduleInfo.Builder optional(final String snapshotName) {
             this.snapshotName = (snapshotName == null) ? Optional.<String>empty() : Optional.of(snapshotName);
             return this;
         }
 
-        public ScheduleInfo.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
+        public ScheduleInfo.Builder optional(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
             return this;
         }
 
-        public ScheduleInfo.Builder optionalRetention(final String retention) {
+        public ScheduleInfo.Builder optional(final String retention) {
             this.retention = (retention == null) ? Optional.<String>empty() : Optional.of(retention);
             return this;
         }

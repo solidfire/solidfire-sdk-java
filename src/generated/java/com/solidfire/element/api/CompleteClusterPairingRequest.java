@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * CompleteClusterPairingRequest  
+ * The CompleteClusterPairing method is the second step in the cluster pairing process.
+ * Use this method with the encoded key received from the "StartClusterPairing" API method to complete the cluster pairing process.
  **/
 
 public class CompleteClusterPairingRequest implements Serializable {
 
-    public static final long serialVersionUID = 5752995213286539343L;
+    public static final long serialVersionUID = -7657018191660714739L;
     @SerializedName("clusterPairingKey") private String clusterPairingKey;
 
     // empty constructor

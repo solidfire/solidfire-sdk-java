@@ -28,11 +28,14 @@ import java.util.Objects;
 
 /**
  * DeleteGroupSnapshotRequest  
+ * DeleteGroupSnapshot is used to delete a group snapshot.
+ * The saveMembers parameter can be used to preserve all the snapshots that
+ * were made for the volumes in the group but the group association will be removed.
  **/
 
 public class DeleteGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 7666156614345321835L;
+    public static final long serialVersionUID = -8423630645405500327L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("saveMembers") private Boolean saveMembers;
 

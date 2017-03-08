@@ -523,7 +523,7 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder optionalIqn(final String iqn) {
+        public Volume.Builder optional(final String iqn) {
             this.iqn = (iqn == null) ? Optional.<String>empty() : Optional.of(iqn);
             return this;
         }
@@ -553,12 +553,12 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder optionalDeleteTime(final String deleteTime) {
+        public Volume.Builder optional(final String deleteTime) {
             this.deleteTime = (deleteTime == null) ? Optional.<String>empty() : Optional.of(deleteTime);
             return this;
         }
 
-        public Volume.Builder optionalPurgeTime(final String purgeTime) {
+        public Volume.Builder optional(final String purgeTime) {
             this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : Optional.of(purgeTime);
             return this;
         }
@@ -578,7 +578,7 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder optionalVirtualVolumeID(final java.util.UUID virtualVolumeID) {
+        public Volume.Builder optional(final java.util.UUID virtualVolumeID) {
             this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : Optional.of(virtualVolumeID);
             return this;
         }

@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * GetDriveStatsRequest  
+ * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
+ * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
  **/
 
 public class GetDriveStatsRequest implements Serializable {
 
-    public static final long serialVersionUID = 1640028930156644564L;
+    public static final long serialVersionUID = -4783367231060784984L;
     @SerializedName("driveID") private Long driveID;
 
     // empty constructor

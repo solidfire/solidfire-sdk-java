@@ -28,11 +28,13 @@ import java.util.Objects;
 
 /**
  * ModifySnapshotRequest  
+ * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
+ * Use this API method to enable the snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
  **/
 
 public class ModifySnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -334314395405117264L;
+    public static final long serialVersionUID = 8623027884659838680L;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
@@ -162,12 +164,12 @@ public class ModifySnapshotRequest implements Serializable {
             return this;
         }
 
-        public ModifySnapshotRequest.Builder optionalExpirationTime(final String expirationTime) {
+        public ModifySnapshotRequest.Builder optional(final String expirationTime) {
             this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : Optional.of(expirationTime);
             return this;
         }
 
-        public ModifySnapshotRequest.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
+        public ModifySnapshotRequest.Builder optional(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
             return this;
         }

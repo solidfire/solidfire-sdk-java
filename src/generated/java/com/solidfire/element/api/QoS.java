@@ -188,22 +188,22 @@ public class QoS implements Serializable {
             return this;
         }
 
-        public QoS.Builder optionalMinIOPS(final Long minIOPS) {
+        public QoS.Builder optional(final Long minIOPS) {
             this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : Optional.of(minIOPS);
             return this;
         }
 
-        public QoS.Builder optionalMaxIOPS(final Long maxIOPS) {
+        public QoS.Builder optional(final Long maxIOPS) {
             this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : Optional.of(maxIOPS);
             return this;
         }
 
-        public QoS.Builder optionalBurstIOPS(final Long burstIOPS) {
+        public QoS.Builder optional(final Long burstIOPS) {
             this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : Optional.of(burstIOPS);
             return this;
         }
 
-        public QoS.Builder optionalBurstTime(final Long burstTime) {
+        public QoS.Builder optional(final Long burstTime) {
             this.burstTime = (burstTime == null) ? Optional.<Long>empty() : Optional.of(burstTime);
             return this;
         }

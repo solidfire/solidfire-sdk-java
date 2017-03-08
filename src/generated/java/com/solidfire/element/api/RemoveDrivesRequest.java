@@ -28,11 +28,25 @@ import java.util.Objects;
 
 /**
  * RemoveDrivesRequest  
+ * You can use RemoveDrives to proactively remove drives that are part of the cluster.
+ * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
+ * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
+ * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
+ * Use the "GetAsyncResult" method to check the status of the remove operation.
+ * 
+ * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
+ * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
+ * 
+ * You can also remove drives with a "failed" status using "RemoveDrives".
+ * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
+ * The drive is unavailable for use in the cluster.
+ * 
+ * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
  **/
 
 public class RemoveDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 7717335362027122969L;
+    public static final long serialVersionUID = 131252405671668047L;
     @SerializedName("drives") private Long[] drives;
     @SerializedName("forceDuringUpgrade") private Optional<Boolean> forceDuringUpgrade;
 
@@ -141,7 +155,7 @@ public class RemoveDrivesRequest implements Serializable {
             return this;
         }
 
-        public RemoveDrivesRequest.Builder optionalForceDuringUpgrade(final Boolean forceDuringUpgrade) {
+        public RemoveDrivesRequest.Builder optional(final Boolean forceDuringUpgrade) {
             this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : Optional.of(forceDuringUpgrade);
             return this;
         }

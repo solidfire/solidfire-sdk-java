@@ -77,60 +77,70 @@ public class AddedNode implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<Long> getNodeID() { return this.nodeID; }
     public void setNodeID(Optional<Long> nodeID) { 
         this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
     }
     /** 
+     * 
      **/
     public Long getPendingNodeID() { return this.pendingNodeID; }
     public void setPendingNodeID(Long pendingNodeID) { 
         this.pendingNodeID = pendingNodeID;
     }
     /** 
+     * 
      **/
     public Optional<String> getActiveNodeKey() { return this.activeNodeKey; }
     public void setActiveNodeKey(Optional<String> activeNodeKey) { 
         this.activeNodeKey = (activeNodeKey == null) ? Optional.<String>empty() : activeNodeKey;
     }
     /** 
+     * 
      **/
     public Optional<Long> getAssignedNodeID() { return this.assignedNodeID; }
     public void setAssignedNodeID(Optional<Long> assignedNodeID) { 
         this.assignedNodeID = (assignedNodeID == null) ? Optional.<Long>empty() : assignedNodeID;
     }
     /** 
+     * 
      **/
     public Optional<Long> getAsyncHandle() { return this.asyncHandle; }
     public void setAsyncHandle(Optional<Long> asyncHandle) { 
         this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : asyncHandle;
     }
     /** 
+     * 
      **/
     public Optional<String> getCip() { return this.cip; }
     public void setCip(Optional<String> cip) { 
         this.cip = (cip == null) ? Optional.<String>empty() : cip;
     }
     /** 
+     * 
      **/
     public Optional<String> getMip() { return this.mip; }
     public void setMip(Optional<String> mip) { 
         this.mip = (mip == null) ? Optional.<String>empty() : mip;
     }
     /** 
+     * 
      **/
     public Optional<Platform> getPlatformInfo() { return this.platformInfo; }
     public void setPlatformInfo(Optional<Platform> platformInfo) { 
         this.platformInfo = (platformInfo == null) ? Optional.<Platform>empty() : platformInfo;
     }
     /** 
+     * 
      **/
     public Optional<String> getSip() { return this.sip; }
     public void setSip(Optional<String> sip) { 
         this.sip = (sip == null) ? Optional.<String>empty() : sip;
     }
     /** 
+     * 
      **/
     public Optional<String> getSoftwareVersion() { return this.softwareVersion; }
     public void setSoftwareVersion(Optional<String> softwareVersion) { 
@@ -270,7 +280,7 @@ public class AddedNode implements Serializable {
             return this;
         }
 
-        public AddedNode.Builder optionalNodeID(final Long nodeID) {
+        public AddedNode.Builder optional(final Long nodeID) {
             this.nodeID = (nodeID == null) ? Optional.<Long>empty() : Optional.of(nodeID);
             return this;
         }
@@ -280,42 +290,42 @@ public class AddedNode implements Serializable {
             return this;
         }
 
-        public AddedNode.Builder optionalActiveNodeKey(final String activeNodeKey) {
+        public AddedNode.Builder optional(final String activeNodeKey) {
             this.activeNodeKey = (activeNodeKey == null) ? Optional.<String>empty() : Optional.of(activeNodeKey);
             return this;
         }
 
-        public AddedNode.Builder optionalAssignedNodeID(final Long assignedNodeID) {
+        public AddedNode.Builder optional(final Long assignedNodeID) {
             this.assignedNodeID = (assignedNodeID == null) ? Optional.<Long>empty() : Optional.of(assignedNodeID);
             return this;
         }
 
-        public AddedNode.Builder optionalAsyncHandle(final Long asyncHandle) {
+        public AddedNode.Builder optional(final Long asyncHandle) {
             this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : Optional.of(asyncHandle);
             return this;
         }
 
-        public AddedNode.Builder optionalCip(final String cip) {
+        public AddedNode.Builder optional(final String cip) {
             this.cip = (cip == null) ? Optional.<String>empty() : Optional.of(cip);
             return this;
         }
 
-        public AddedNode.Builder optionalMip(final String mip) {
+        public AddedNode.Builder optional(final String mip) {
             this.mip = (mip == null) ? Optional.<String>empty() : Optional.of(mip);
             return this;
         }
 
-        public AddedNode.Builder optionalPlatformInfo(final Platform platformInfo) {
+        public AddedNode.Builder optional(final Platform platformInfo) {
             this.platformInfo = (platformInfo == null) ? Optional.<Platform>empty() : Optional.of(platformInfo);
             return this;
         }
 
-        public AddedNode.Builder optionalSip(final String sip) {
+        public AddedNode.Builder optional(final String sip) {
             this.sip = (sip == null) ? Optional.<String>empty() : Optional.of(sip);
             return this;
         }
 
-        public AddedNode.Builder optionalSoftwareVersion(final String softwareVersion) {
+        public AddedNode.Builder optional(final String softwareVersion) {
             this.softwareVersion = (softwareVersion == null) ? Optional.<String>empty() : Optional.of(softwareVersion);
             return this;
         }
