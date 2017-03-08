@@ -122,7 +122,7 @@ public class TestConnectEnsembleRequest implements Serializable {
             return this;
         }
 
-        public TestConnectEnsembleRequest.Builder optional(final String ensemble) {
+        public TestConnectEnsembleRequest.Builder optionalEnsemble(final String ensemble) {
             this.ensemble = (ensemble == null) ? Optional.<String>empty() : Optional.of(ensemble);
             return this;
         }

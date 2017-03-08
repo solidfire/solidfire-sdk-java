@@ -260,32 +260,32 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder optional(final Long[] virtualNetworkID) {
+        public ModifyVolumeAccessGroupRequest.Builder optionalVirtualNetworkID(final Long[] virtualNetworkID) {
             this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder optional(final Long[] virtualNetworkTags) {
+        public ModifyVolumeAccessGroupRequest.Builder optionalVirtualNetworkTags(final Long[] virtualNetworkTags) {
             this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkTags);
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder optional(final String name) {
+        public ModifyVolumeAccessGroupRequest.Builder optionalName(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder optional(final String[] initiators) {
+        public ModifyVolumeAccessGroupRequest.Builder optionalInitiators(final String[] initiators) {
             this.initiators = (initiators == null) ? Optional.<String[]>empty() : Optional.of(initiators);
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder optional(final Long[] volumes) {
+        public ModifyVolumeAccessGroupRequest.Builder optionalVolumes(final Long[] volumes) {
             this.volumes = (volumes == null) ? Optional.<Long[]>empty() : Optional.of(volumes);
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public ModifyVolumeAccessGroupRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

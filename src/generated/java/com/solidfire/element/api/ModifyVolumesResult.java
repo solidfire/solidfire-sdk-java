@@ -136,7 +136,7 @@ public class ModifyVolumesResult implements Serializable {
             return this;
         }
 
-        public ModifyVolumesResult.Builder optional(final QoS qos) {
+        public ModifyVolumesResult.Builder optionalQos(final QoS qos) {
             this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
         }

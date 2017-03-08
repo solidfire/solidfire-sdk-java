@@ -138,12 +138,12 @@ public class ModifyVolumeResult implements Serializable {
             return this;
         }
 
-        public ModifyVolumeResult.Builder optional(final Volume volume) {
+        public ModifyVolumeResult.Builder optionalVolume(final Volume volume) {
             this.volume = (volume == null) ? Optional.<Volume>empty() : Optional.of(volume);
             return this;
         }
 
-        public ModifyVolumeResult.Builder optional(final QoS curve) {
+        public ModifyVolumeResult.Builder optionalCurve(final QoS curve) {
             this.curve = (curve == null) ? Optional.<QoS>empty() : Optional.of(curve);
             return this;
         }

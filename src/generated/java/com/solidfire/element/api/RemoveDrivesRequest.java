@@ -155,7 +155,7 @@ public class RemoveDrivesRequest implements Serializable {
             return this;
         }
 
-        public RemoveDrivesRequest.Builder optional(final Boolean forceDuringUpgrade) {
+        public RemoveDrivesRequest.Builder optionalForceDuringUpgrade(final Boolean forceDuringUpgrade) {
             this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : Optional.of(forceDuringUpgrade);
             return this;
         }

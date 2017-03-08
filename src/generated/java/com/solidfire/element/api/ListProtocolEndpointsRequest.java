@@ -123,7 +123,7 @@ public class ListProtocolEndpointsRequest implements Serializable {
             return this;
         }
 
-        public ListProtocolEndpointsRequest.Builder optional(final java.util.UUID[] protocolEndpointIDs) {
+        public ListProtocolEndpointsRequest.Builder optionalProtocolEndpointIDs(final java.util.UUID[] protocolEndpointIDs) {
             this.protocolEndpointIDs = (protocolEndpointIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(protocolEndpointIDs);
             return this;
         }

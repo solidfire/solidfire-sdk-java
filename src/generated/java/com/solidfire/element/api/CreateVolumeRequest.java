@@ -247,17 +247,17 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeRequest.Builder optional(final VolumeQOS qos) {
+        public CreateVolumeRequest.Builder optionalQos(final VolumeQOS qos) {
             this.qos = (qos == null) ? Optional.<VolumeQOS>empty() : Optional.of(qos);
             return this;
         }
 
-        public CreateVolumeRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public CreateVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 
-        public CreateVolumeRequest.Builder optional(final Long sliceCount) {
+        public CreateVolumeRequest.Builder optionalSliceCount(final Long sliceCount) {
             this.sliceCount = (sliceCount == null) ? Optional.<Long>empty() : Optional.of(sliceCount);
             return this;
         }

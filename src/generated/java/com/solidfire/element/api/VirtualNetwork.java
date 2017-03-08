@@ -303,12 +303,12 @@ public class VirtualNetwork implements Serializable {
             return this;
         }
 
-        public VirtualNetwork.Builder optional(final String gateway) {
+        public VirtualNetwork.Builder optionalGateway(final String gateway) {
             this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
             return this;
         }
 
-        public VirtualNetwork.Builder optional(final Boolean namespace) {
+        public VirtualNetwork.Builder optionalNamespace(final Boolean namespace) {
             this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
             return this;
         }

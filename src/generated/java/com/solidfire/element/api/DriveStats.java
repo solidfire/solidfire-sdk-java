@@ -380,12 +380,12 @@ public class DriveStats implements Serializable {
             return this;
         }
 
-        public DriveStats.Builder optional(final Long activeSessions) {
+        public DriveStats.Builder optionalActiveSessions(final Long activeSessions) {
             this.activeSessions = (activeSessions == null) ? Optional.<Long>empty() : Optional.of(activeSessions);
             return this;
         }
 
-        public DriveStats.Builder optional(final Long driveID) {
+        public DriveStats.Builder optionalDriveID(final Long driveID) {
             this.driveID = (driveID == null) ? Optional.<Long>empty() : Optional.of(driveID);
             return this;
         }
@@ -445,7 +445,7 @@ public class DriveStats implements Serializable {
             return this;
         }
 
-        public DriveStats.Builder optional(final Long usedCapacity) {
+        public DriveStats.Builder optionalUsedCapacity(final Long usedCapacity) {
             this.usedCapacity = (usedCapacity == null) ? Optional.<Long>empty() : Optional.of(usedCapacity);
             return this;
         }

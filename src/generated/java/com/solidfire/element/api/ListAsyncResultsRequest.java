@@ -121,7 +121,7 @@ public class ListAsyncResultsRequest implements Serializable {
             return this;
         }
 
-        public ListAsyncResultsRequest.Builder optional(final String[] asyncResultTypes) {
+        public ListAsyncResultsRequest.Builder optionalAsyncResultTypes(final String[] asyncResultTypes) {
             this.asyncResultTypes = (asyncResultTypes == null) ? Optional.<String[]>empty() : Optional.of(asyncResultTypes);
             return this;
         }

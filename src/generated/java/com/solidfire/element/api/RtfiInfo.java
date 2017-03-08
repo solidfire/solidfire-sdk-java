@@ -256,7 +256,7 @@ public class RtfiInfo implements Serializable {
             return this;
         }
 
-        public RtfiInfo.Builder optional(final String mipi) {
+        public RtfiInfo.Builder optionalMipi(final String mipi) {
             this.mipi = (mipi == null) ? Optional.<String>empty() : Optional.of(mipi);
             return this;
         }
@@ -266,7 +266,7 @@ public class RtfiInfo implements Serializable {
             return this;
         }
 
-        public RtfiInfo.Builder optional(final String statusUrlLogfile) {
+        public RtfiInfo.Builder optionalStatusUrlLogfile(final String statusUrlLogfile) {
             this.statusUrlLogfile = (statusUrlLogfile == null) ? Optional.<String>empty() : Optional.of(statusUrlLogfile);
             return this;
         }
@@ -281,12 +281,12 @@ public class RtfiInfo implements Serializable {
             return this;
         }
 
-        public RtfiInfo.Builder optional(final Long generationNext) {
+        public RtfiInfo.Builder optionalGenerationNext(final Long generationNext) {
             this.generationNext = (generationNext == null) ? Optional.<Long>empty() : Optional.of(generationNext);
             return this;
         }
 
-        public RtfiInfo.Builder optional(final String mip) {
+        public RtfiInfo.Builder optionalMip(final String mip) {
             this.mip = (mip == null) ? Optional.<String>empty() : Optional.of(mip);
             return this;
         }
@@ -296,7 +296,7 @@ public class RtfiInfo implements Serializable {
             return this;
         }
 
-        public RtfiInfo.Builder optional(final java.util.Map<String, Object> options) {
+        public RtfiInfo.Builder optionalOptions(final java.util.Map<String, Object> options) {
             this.options = (options == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(options);
             return this;
         }

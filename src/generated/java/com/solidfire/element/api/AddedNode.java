@@ -280,7 +280,7 @@ public class AddedNode implements Serializable {
             return this;
         }
 
-        public AddedNode.Builder optional(final Long nodeID) {
+        public AddedNode.Builder optionalNodeID(final Long nodeID) {
             this.nodeID = (nodeID == null) ? Optional.<Long>empty() : Optional.of(nodeID);
             return this;
         }
@@ -290,42 +290,42 @@ public class AddedNode implements Serializable {
             return this;
         }
 
-        public AddedNode.Builder optional(final String activeNodeKey) {
+        public AddedNode.Builder optionalActiveNodeKey(final String activeNodeKey) {
             this.activeNodeKey = (activeNodeKey == null) ? Optional.<String>empty() : Optional.of(activeNodeKey);
             return this;
         }
 
-        public AddedNode.Builder optional(final Long assignedNodeID) {
+        public AddedNode.Builder optionalAssignedNodeID(final Long assignedNodeID) {
             this.assignedNodeID = (assignedNodeID == null) ? Optional.<Long>empty() : Optional.of(assignedNodeID);
             return this;
         }
 
-        public AddedNode.Builder optional(final Long asyncHandle) {
+        public AddedNode.Builder optionalAsyncHandle(final Long asyncHandle) {
             this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : Optional.of(asyncHandle);
             return this;
         }
 
-        public AddedNode.Builder optional(final String cip) {
+        public AddedNode.Builder optionalCip(final String cip) {
             this.cip = (cip == null) ? Optional.<String>empty() : Optional.of(cip);
             return this;
         }
 
-        public AddedNode.Builder optional(final String mip) {
+        public AddedNode.Builder optionalMip(final String mip) {
             this.mip = (mip == null) ? Optional.<String>empty() : Optional.of(mip);
             return this;
         }
 
-        public AddedNode.Builder optional(final Platform platformInfo) {
+        public AddedNode.Builder optionalPlatformInfo(final Platform platformInfo) {
             this.platformInfo = (platformInfo == null) ? Optional.<Platform>empty() : Optional.of(platformInfo);
             return this;
         }
 
-        public AddedNode.Builder optional(final String sip) {
+        public AddedNode.Builder optionalSip(final String sip) {
             this.sip = (sip == null) ? Optional.<String>empty() : Optional.of(sip);
             return this;
         }
 
-        public AddedNode.Builder optional(final String softwareVersion) {
+        public AddedNode.Builder optionalSoftwareVersion(final String softwareVersion) {
             this.softwareVersion = (softwareVersion == null) ? Optional.<String>empty() : Optional.of(softwareVersion);
             return this;
         }

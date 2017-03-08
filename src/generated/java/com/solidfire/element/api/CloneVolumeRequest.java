@@ -273,32 +273,32 @@ public class CloneVolumeRequest implements Serializable {
             return this;
         }
 
-        public CloneVolumeRequest.Builder optional(final Long newAccountID) {
+        public CloneVolumeRequest.Builder optionalNewAccountID(final Long newAccountID) {
             this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
             return this;
         }
 
-        public CloneVolumeRequest.Builder optional(final Long newSize) {
+        public CloneVolumeRequest.Builder optionalNewSize(final Long newSize) {
             this.newSize = (newSize == null) ? Optional.<Long>empty() : Optional.of(newSize);
             return this;
         }
 
-        public CloneVolumeRequest.Builder optional(final String access) {
+        public CloneVolumeRequest.Builder optionalAccess(final String access) {
             this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
             return this;
         }
 
-        public CloneVolumeRequest.Builder optional(final Long snapshotID) {
+        public CloneVolumeRequest.Builder optionalSnapshotID(final Long snapshotID) {
             this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }
 
-        public CloneVolumeRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public CloneVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 
-        public CloneVolumeRequest.Builder optional(final Boolean enable512e) {
+        public CloneVolumeRequest.Builder optionalEnable512e(final Boolean enable512e) {
             this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : Optional.of(enable512e);
             return this;
         }

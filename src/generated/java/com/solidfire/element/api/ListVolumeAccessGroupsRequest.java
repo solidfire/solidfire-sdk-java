@@ -142,12 +142,12 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
             return this;
         }
 
-        public ListVolumeAccessGroupsRequest.Builder optional(final Long startVolumeAccessGroupID) {
+        public ListVolumeAccessGroupsRequest.Builder optionalStartVolumeAccessGroupID(final Long startVolumeAccessGroupID) {
             this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<Long>empty() : Optional.of(startVolumeAccessGroupID);
             return this;
         }
 
-        public ListVolumeAccessGroupsRequest.Builder optional(final Long limit) {
+        public ListVolumeAccessGroupsRequest.Builder optionalLimit(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }

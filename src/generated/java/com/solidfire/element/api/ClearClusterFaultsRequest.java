@@ -124,7 +124,7 @@ public class ClearClusterFaultsRequest implements Serializable {
             return this;
         }
 
-        public ClearClusterFaultsRequest.Builder optional(final String faultType) {
+        public ClearClusterFaultsRequest.Builder optionalFaultType(final String faultType) {
             this.faultType = (faultType == null) ? Optional.<String>empty() : Optional.of(faultType);
             return this;
         }

@@ -187,22 +187,22 @@ public class ListEventsRequest implements Serializable {
             return this;
         }
 
-        public ListEventsRequest.Builder optional(final Long maxEvents) {
+        public ListEventsRequest.Builder optionalMaxEvents(final Long maxEvents) {
             this.maxEvents = (maxEvents == null) ? Optional.<Long>empty() : Optional.of(maxEvents);
             return this;
         }
 
-        public ListEventsRequest.Builder optional(final Long startEventID) {
+        public ListEventsRequest.Builder optionalStartEventID(final Long startEventID) {
             this.startEventID = (startEventID == null) ? Optional.<Long>empty() : Optional.of(startEventID);
             return this;
         }
 
-        public ListEventsRequest.Builder optional(final Long endEventID) {
+        public ListEventsRequest.Builder optionalEndEventID(final Long endEventID) {
             this.endEventID = (endEventID == null) ? Optional.<Long>empty() : Optional.of(endEventID);
             return this;
         }
 
-        public ListEventsRequest.Builder optional(final String eventQueueType) {
+        public ListEventsRequest.Builder optionalEventQueueType(final String eventQueueType) {
             this.eventQueueType = (eventQueueType == null) ? Optional.<String>empty() : Optional.of(eventQueueType);
             return this;
         }

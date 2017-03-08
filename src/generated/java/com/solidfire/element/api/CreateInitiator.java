@@ -178,17 +178,17 @@ public class CreateInitiator implements Serializable {
             return this;
         }
 
-        public CreateInitiator.Builder optional(final String alias) {
+        public CreateInitiator.Builder optionalAlias(final String alias) {
             this.alias = (alias == null) ? Optional.<String>empty() : Optional.of(alias);
             return this;
         }
 
-        public CreateInitiator.Builder optional(final Long volumeAccessGroupID) {
+        public CreateInitiator.Builder optionalVolumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<Long>empty() : Optional.of(volumeAccessGroupID);
             return this;
         }
 
-        public CreateInitiator.Builder optional(final java.util.Map<String, Object> attributes) {
+        public CreateInitiator.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

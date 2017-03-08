@@ -122,7 +122,7 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public ListVolumeStatsByVolumeAccessGroupRequest.Builder optional(final Long[] volumeAccessGroups) {
+        public ListVolumeStatsByVolumeAccessGroupRequest.Builder optionalVolumeAccessGroups(final Long[] volumeAccessGroups) {
             this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroups);
             return this;
         }

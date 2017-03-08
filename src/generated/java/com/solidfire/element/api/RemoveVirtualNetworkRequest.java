@@ -141,12 +141,12 @@ public class RemoveVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public RemoveVirtualNetworkRequest.Builder optional(final Long virtualNetworkID) {
+        public RemoveVirtualNetworkRequest.Builder optionalVirtualNetworkID(final Long virtualNetworkID) {
             this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public RemoveVirtualNetworkRequest.Builder optional(final Long virtualNetworkTag) {
+        public RemoveVirtualNetworkRequest.Builder optionalVirtualNetworkTag(final Long virtualNetworkTag) {
             this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
             return this;
         }

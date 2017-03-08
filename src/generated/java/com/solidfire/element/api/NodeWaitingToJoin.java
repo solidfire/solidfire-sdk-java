@@ -296,7 +296,7 @@ public class NodeWaitingToJoin implements Serializable {
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optional(final String name) {
+        public NodeWaitingToJoin.Builder optionalName(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
@@ -306,27 +306,27 @@ public class NodeWaitingToJoin implements Serializable {
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optional(final Long nodeID) {
+        public NodeWaitingToJoin.Builder optionalNodeID(final Long nodeID) {
             this.nodeID = (nodeID == null) ? Optional.<Long>empty() : Optional.of(nodeID);
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optional(final Long pendingNodeID) {
+        public NodeWaitingToJoin.Builder optionalPendingNodeID(final Long pendingNodeID) {
             this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : Optional.of(pendingNodeID);
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optional(final String mip) {
+        public NodeWaitingToJoin.Builder optionalMip(final String mip) {
             this.mip = (mip == null) ? Optional.<String>empty() : Optional.of(mip);
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optional(final String cip) {
+        public NodeWaitingToJoin.Builder optionalCip(final String cip) {
             this.cip = (cip == null) ? Optional.<String>empty() : Optional.of(cip);
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optional(final String sip) {
+        public NodeWaitingToJoin.Builder optionalSip(final String sip) {
             this.sip = (sip == null) ? Optional.<String>empty() : Optional.of(sip);
             return this;
         }
@@ -336,17 +336,17 @@ public class NodeWaitingToJoin implements Serializable {
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optional(final String chassisType) {
+        public NodeWaitingToJoin.Builder optionalChassisType(final String chassisType) {
             this.chassisType = (chassisType == null) ? Optional.<String>empty() : Optional.of(chassisType);
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optional(final String hostname) {
+        public NodeWaitingToJoin.Builder optionalHostname(final String hostname) {
             this.hostname = (hostname == null) ? Optional.<String>empty() : Optional.of(hostname);
             return this;
         }
 
-        public NodeWaitingToJoin.Builder optional(final String nodeType) {
+        public NodeWaitingToJoin.Builder optionalNodeType(final String nodeType) {
             this.nodeType = (nodeType == null) ? Optional.<String>empty() : Optional.of(nodeType);
             return this;
         }

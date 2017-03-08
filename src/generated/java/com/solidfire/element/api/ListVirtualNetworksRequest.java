@@ -177,22 +177,22 @@ public class ListVirtualNetworksRequest implements Serializable {
             return this;
         }
 
-        public ListVirtualNetworksRequest.Builder optional(final Long virtualNetworkID) {
+        public ListVirtualNetworksRequest.Builder optionalVirtualNetworkID(final Long virtualNetworkID) {
             this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public ListVirtualNetworksRequest.Builder optional(final Long virtualNetworkTag) {
+        public ListVirtualNetworksRequest.Builder optionalVirtualNetworkTag(final Long virtualNetworkTag) {
             this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
             return this;
         }
 
-        public ListVirtualNetworksRequest.Builder optional(final Long[] virtualNetworkIDs) {
+        public ListVirtualNetworksRequest.Builder optionalVirtualNetworkIDs(final Long[] virtualNetworkIDs) {
             this.virtualNetworkIDs = (virtualNetworkIDs == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkIDs);
             return this;
         }
 
-        public ListVirtualNetworksRequest.Builder optional(final Long[] virtualNetworkTags) {
+        public ListVirtualNetworksRequest.Builder optionalVirtualNetworkTags(final Long[] virtualNetworkTags) {
             this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : Optional.of(virtualNetworkTags);
             return this;
         }

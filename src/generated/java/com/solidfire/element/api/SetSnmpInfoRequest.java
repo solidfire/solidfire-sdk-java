@@ -177,22 +177,22 @@ public class SetSnmpInfoRequest implements Serializable {
             return this;
         }
 
-        public SetSnmpInfoRequest.Builder optional(final SnmpNetwork[] networks) {
+        public SetSnmpInfoRequest.Builder optionalNetworks(final SnmpNetwork[] networks) {
             this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : Optional.of(networks);
             return this;
         }
 
-        public SetSnmpInfoRequest.Builder optional(final Boolean enabled) {
+        public SetSnmpInfoRequest.Builder optionalEnabled(final Boolean enabled) {
             this.enabled = (enabled == null) ? Optional.<Boolean>empty() : Optional.of(enabled);
             return this;
         }
 
-        public SetSnmpInfoRequest.Builder optional(final Boolean snmpV3Enabled) {
+        public SetSnmpInfoRequest.Builder optionalSnmpV3Enabled(final Boolean snmpV3Enabled) {
             this.snmpV3Enabled = (snmpV3Enabled == null) ? Optional.<Boolean>empty() : Optional.of(snmpV3Enabled);
             return this;
         }
 
-        public SetSnmpInfoRequest.Builder optional(final SnmpV3UsmUser[] usmUsers) {
+        public SetSnmpInfoRequest.Builder optionalUsmUsers(final SnmpV3UsmUser[] usmUsers) {
             this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : Optional.of(usmUsers);
             return this;
         }

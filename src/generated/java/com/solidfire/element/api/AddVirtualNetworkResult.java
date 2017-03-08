@@ -120,7 +120,7 @@ public class AddVirtualNetworkResult implements Serializable {
             return this;
         }
 
-        public AddVirtualNetworkResult.Builder optional(final Long virtualNetworkID) {
+        public AddVirtualNetworkResult.Builder optionalVirtualNetworkID(final Long virtualNetworkID) {
             this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
             return this;
         }

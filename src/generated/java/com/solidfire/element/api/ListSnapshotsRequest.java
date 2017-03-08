@@ -140,12 +140,12 @@ public class ListSnapshotsRequest implements Serializable {
             return this;
         }
 
-        public ListSnapshotsRequest.Builder optional(final Long volumeID) {
+        public ListSnapshotsRequest.Builder optionalVolumeID(final Long volumeID) {
             this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
             return this;
         }
 
-        public ListSnapshotsRequest.Builder optional(final Boolean internal) {
+        public ListSnapshotsRequest.Builder optionalInternal(final Boolean internal) {
             this.internal = (internal == null) ? Optional.<Boolean>empty() : Optional.of(internal);
             return this;
         }

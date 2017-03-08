@@ -205,7 +205,7 @@ public class FibreChannelSession implements Serializable {
             return this;
         }
 
-        public FibreChannelSession.Builder optional(final Long volumeAccessGroupID) {
+        public FibreChannelSession.Builder optionalVolumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<Long>empty() : Optional.of(volumeAccessGroupID);
             return this;
         }

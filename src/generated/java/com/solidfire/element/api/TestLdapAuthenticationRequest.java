@@ -163,7 +163,7 @@ public class TestLdapAuthenticationRequest implements Serializable {
             return this;
         }
 
-        public TestLdapAuthenticationRequest.Builder optional(final LdapConfiguration ldapConfiguration) {
+        public TestLdapAuthenticationRequest.Builder optionalLdapConfiguration(final LdapConfiguration ldapConfiguration) {
             this.ldapConfiguration = (ldapConfiguration == null) ? Optional.<LdapConfiguration>empty() : Optional.of(ldapConfiguration);
             return this;
         }

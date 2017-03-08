@@ -120,7 +120,7 @@ public class ListVolumeStatsRequest implements Serializable {
             return this;
         }
 
-        public ListVolumeStatsRequest.Builder optional(final Long[] volumeIDs) {
+        public ListVolumeStatsRequest.Builder optionalVolumeIDs(final Long[] volumeIDs) {
             this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
             return this;
         }

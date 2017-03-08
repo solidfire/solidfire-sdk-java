@@ -162,12 +162,12 @@ public class ListVolumesForAccountRequest implements Serializable {
             return this;
         }
 
-        public ListVolumesForAccountRequest.Builder optional(final Long startVolumeID) {
+        public ListVolumesForAccountRequest.Builder optionalStartVolumeID(final Long startVolumeID) {
             this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : Optional.of(startVolumeID);
             return this;
         }
 
-        public ListVolumesForAccountRequest.Builder optional(final Long limit) {
+        public ListVolumesForAccountRequest.Builder optionalLimit(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }

@@ -285,17 +285,17 @@ public class AddVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public AddVirtualNetworkRequest.Builder optional(final String gateway) {
+        public AddVirtualNetworkRequest.Builder optionalGateway(final String gateway) {
             this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
             return this;
         }
 
-        public AddVirtualNetworkRequest.Builder optional(final Boolean namespace) {
+        public AddVirtualNetworkRequest.Builder optionalNamespace(final Boolean namespace) {
             this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
             return this;
         }
 
-        public AddVirtualNetworkRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public AddVirtualNetworkRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

@@ -162,7 +162,7 @@ public class ListAllNodesResult implements Serializable {
             return this;
         }
 
-        public ListAllNodesResult.Builder optional(final PendingActiveNode[] pendingActiveNodes) {
+        public ListAllNodesResult.Builder optionalPendingActiveNodes(final PendingActiveNode[] pendingActiveNodes) {
             this.pendingActiveNodes = (pendingActiveNodes == null) ? Optional.<PendingActiveNode[]>empty() : Optional.of(pendingActiveNodes);
             return this;
         }

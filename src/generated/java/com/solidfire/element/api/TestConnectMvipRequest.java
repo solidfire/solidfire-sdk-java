@@ -122,7 +122,7 @@ public class TestConnectMvipRequest implements Serializable {
             return this;
         }
 
-        public TestConnectMvipRequest.Builder optional(final String mvip) {
+        public TestConnectMvipRequest.Builder optionalMvip(final String mvip) {
             this.mvip = (mvip == null) ? Optional.<String>empty() : Optional.of(mvip);
             return this;
         }

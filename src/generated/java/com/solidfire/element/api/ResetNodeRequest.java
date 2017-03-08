@@ -181,12 +181,12 @@ public class ResetNodeRequest implements Serializable {
             return this;
         }
 
-        public ResetNodeRequest.Builder optional(final String options) {
+        public ResetNodeRequest.Builder optionalOptions(final String options) {
             this.options = (options == null) ? Optional.<String>empty() : Optional.of(options);
             return this;
         }
 
-        public ResetNodeRequest.Builder optional(final Boolean reboot) {
+        public ResetNodeRequest.Builder optionalReboot(final Boolean reboot) {
             this.reboot = (reboot == null) ? Optional.<Boolean>empty() : Optional.of(reboot);
             return this;
         }

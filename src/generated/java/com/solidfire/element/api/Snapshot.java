@@ -441,7 +441,7 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder optional(final SnapshotRemoteStatus[] remoteStatuses) {
+        public Snapshot.Builder optionalRemoteStatuses(final SnapshotRemoteStatus[] remoteStatuses) {
             this.remoteStatuses = (remoteStatuses == null) ? Optional.<SnapshotRemoteStatus[]>empty() : Optional.of(remoteStatuses);
             return this;
         }
@@ -461,7 +461,7 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder optional(final Long groupID) {
+        public Snapshot.Builder optionalGroupID(final Long groupID) {
             this.groupID = (groupID == null) ? Optional.<Long>empty() : Optional.of(groupID);
             return this;
         }

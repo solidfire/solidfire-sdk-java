@@ -157,17 +157,17 @@ public class SetDefaultQoSRequest implements Serializable {
             return this;
         }
 
-        public SetDefaultQoSRequest.Builder optional(final Long minIOPS) {
+        public SetDefaultQoSRequest.Builder optionalMinIOPS(final Long minIOPS) {
             this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : Optional.of(minIOPS);
             return this;
         }
 
-        public SetDefaultQoSRequest.Builder optional(final Long maxIOPS) {
+        public SetDefaultQoSRequest.Builder optionalMaxIOPS(final Long maxIOPS) {
             this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : Optional.of(maxIOPS);
             return this;
         }
 
-        public SetDefaultQoSRequest.Builder optional(final Long burstIOPS) {
+        public SetDefaultQoSRequest.Builder optionalBurstIOPS(final Long burstIOPS) {
             this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : Optional.of(burstIOPS);
             return this;
         }

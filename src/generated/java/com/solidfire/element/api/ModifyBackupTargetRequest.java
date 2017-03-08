@@ -160,12 +160,12 @@ public class ModifyBackupTargetRequest implements Serializable {
             return this;
         }
 
-        public ModifyBackupTargetRequest.Builder optional(final String name) {
+        public ModifyBackupTargetRequest.Builder optionalName(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public ModifyBackupTargetRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public ModifyBackupTargetRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

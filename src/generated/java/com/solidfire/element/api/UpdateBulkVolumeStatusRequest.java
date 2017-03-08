@@ -203,17 +203,17 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
             return this;
         }
 
-        public UpdateBulkVolumeStatusRequest.Builder optional(final String percentComplete) {
+        public UpdateBulkVolumeStatusRequest.Builder optionalPercentComplete(final String percentComplete) {
             this.percentComplete = (percentComplete == null) ? Optional.<String>empty() : Optional.of(percentComplete);
             return this;
         }
 
-        public UpdateBulkVolumeStatusRequest.Builder optional(final String message) {
+        public UpdateBulkVolumeStatusRequest.Builder optionalMessage(final String message) {
             this.message = (message == null) ? Optional.<String>empty() : Optional.of(message);
             return this;
         }
 
-        public UpdateBulkVolumeStatusRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public UpdateBulkVolumeStatusRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

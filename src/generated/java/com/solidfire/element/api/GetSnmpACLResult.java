@@ -138,12 +138,12 @@ public class GetSnmpACLResult implements Serializable {
             return this;
         }
 
-        public GetSnmpACLResult.Builder optional(final SnmpNetwork[] networks) {
+        public GetSnmpACLResult.Builder optionalNetworks(final SnmpNetwork[] networks) {
             this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : Optional.of(networks);
             return this;
         }
 
-        public GetSnmpACLResult.Builder optional(final SnmpV3UsmUser[] usmUsers) {
+        public GetSnmpACLResult.Builder optionalUsmUsers(final SnmpV3UsmUser[] usmUsers) {
             this.usmUsers = (usmUsers == null) ? Optional.<SnmpV3UsmUser[]>empty() : Optional.of(usmUsers);
             return this;
         }

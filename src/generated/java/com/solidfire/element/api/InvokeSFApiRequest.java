@@ -143,7 +143,7 @@ public class InvokeSFApiRequest implements Serializable {
             return this;
         }
 
-        public InvokeSFApiRequest.Builder optional(final java.util.Map<String, Object> parameters) {
+        public InvokeSFApiRequest.Builder optionalParameters(final java.util.Map<String, Object> parameters) {
             this.parameters = (parameters == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(parameters);
             return this;
         }

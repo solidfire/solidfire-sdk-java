@@ -178,7 +178,7 @@ public class DetailedService implements Serializable {
             return this;
         }
 
-        public DetailedService.Builder optional(final Drive drive) {
+        public DetailedService.Builder optionalDrive(final Drive drive) {
             this.drive = (drive == null) ? Optional.<Drive>empty() : Optional.of(drive);
             return this;
         }

@@ -228,37 +228,37 @@ public class PhysicalAdapter implements Serializable {
             return this;
         }
 
-        public PhysicalAdapter.Builder optional(final String address) {
+        public PhysicalAdapter.Builder optionalAddress(final String address) {
             this.address = (address == null) ? Optional.<String>empty() : Optional.of(address);
             return this;
         }
 
-        public PhysicalAdapter.Builder optional(final String macAddress) {
+        public PhysicalAdapter.Builder optionalMacAddress(final String macAddress) {
             this.macAddress = (macAddress == null) ? Optional.<String>empty() : Optional.of(macAddress);
             return this;
         }
 
-        public PhysicalAdapter.Builder optional(final String macAddressPermanent) {
+        public PhysicalAdapter.Builder optionalMacAddressPermanent(final String macAddressPermanent) {
             this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : Optional.of(macAddressPermanent);
             return this;
         }
 
-        public PhysicalAdapter.Builder optional(final String mtu) {
+        public PhysicalAdapter.Builder optionalMtu(final String mtu) {
             this.mtu = (mtu == null) ? Optional.<String>empty() : Optional.of(mtu);
             return this;
         }
 
-        public PhysicalAdapter.Builder optional(final String netmask) {
+        public PhysicalAdapter.Builder optionalNetmask(final String netmask) {
             this.netmask = (netmask == null) ? Optional.<String>empty() : Optional.of(netmask);
             return this;
         }
 
-        public PhysicalAdapter.Builder optional(final String network) {
+        public PhysicalAdapter.Builder optionalNetwork(final String network) {
             this.network = (network == null) ? Optional.<String>empty() : Optional.of(network);
             return this;
         }
 
-        public PhysicalAdapter.Builder optional(final Boolean upAndRunning) {
+        public PhysicalAdapter.Builder optionalUpAndRunning(final Boolean upAndRunning) {
             this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : Optional.of(upAndRunning);
             return this;
         }

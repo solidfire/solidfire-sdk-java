@@ -121,7 +121,7 @@ public class ListDriveStatsRequest implements Serializable {
             return this;
         }
 
-        public ListDriveStatsRequest.Builder optional(final Long[] drives) {
+        public ListDriveStatsRequest.Builder optionalDrives(final Long[] drives) {
             this.drives = (drives == null) ? Optional.<Long[]>empty() : Optional.of(drives);
             return this;
         }

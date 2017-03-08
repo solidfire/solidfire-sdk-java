@@ -136,7 +136,7 @@ public class AddNodesResult implements Serializable {
             return this;
         }
 
-        public AddNodesResult.Builder optional(final Boolean autoInstall) {
+        public AddNodesResult.Builder optionalAutoInstall(final Boolean autoInstall) {
             this.autoInstall = (autoInstall == null) ? Optional.<Boolean>empty() : Optional.of(autoInstall);
             return this;
         }

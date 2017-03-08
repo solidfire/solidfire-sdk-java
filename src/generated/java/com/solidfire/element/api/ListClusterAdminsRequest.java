@@ -121,7 +121,7 @@ public class ListClusterAdminsRequest implements Serializable {
             return this;
         }
 
-        public ListClusterAdminsRequest.Builder optional(final Boolean showHidden) {
+        public ListClusterAdminsRequest.Builder optionalShowHidden(final Boolean showHidden) {
             this.showHidden = (showHidden == null) ? Optional.<Boolean>empty() : Optional.of(showHidden);
             return this;
         }

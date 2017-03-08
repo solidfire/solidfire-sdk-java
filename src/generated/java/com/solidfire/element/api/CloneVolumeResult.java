@@ -168,7 +168,7 @@ public class CloneVolumeResult implements Serializable {
             return this;
         }
 
-        public CloneVolumeResult.Builder optional(final Volume volume) {
+        public CloneVolumeResult.Builder optionalVolume(final Volume volume) {
             this.volume = (volume == null) ? Optional.<Volume>empty() : Optional.of(volume);
             return this;
         }

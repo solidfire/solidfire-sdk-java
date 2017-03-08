@@ -125,7 +125,7 @@ public class TestDrivesRequest implements Serializable {
             return this;
         }
 
-        public TestDrivesRequest.Builder optional(final Long minutes) {
+        public TestDrivesRequest.Builder optionalMinutes(final Long minutes) {
             this.minutes = (minutes == null) ? Optional.<Long>empty() : Optional.of(minutes);
             return this;
         }

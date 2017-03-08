@@ -183,12 +183,12 @@ public class AddLdapClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public AddLdapClusterAdminRequest.Builder optional(final Boolean acceptEula) {
+        public AddLdapClusterAdminRequest.Builder optionalAcceptEula(final Boolean acceptEula) {
             this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : Optional.of(acceptEula);
             return this;
         }
 
-        public AddLdapClusterAdminRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public AddLdapClusterAdminRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

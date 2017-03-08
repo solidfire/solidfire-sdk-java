@@ -157,17 +157,17 @@ public class PurgeDeletedVolumesRequest implements Serializable {
             return this;
         }
 
-        public PurgeDeletedVolumesRequest.Builder optional(final Long[] volumeIDs) {
+        public PurgeDeletedVolumesRequest.Builder optionalVolumeIDs(final Long[] volumeIDs) {
             this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
             return this;
         }
 
-        public PurgeDeletedVolumesRequest.Builder optional(final Long[] accountIDs) {
+        public PurgeDeletedVolumesRequest.Builder optionalAccountIDs(final Long[] accountIDs) {
             this.accountIDs = (accountIDs == null) ? Optional.<Long[]>empty() : Optional.of(accountIDs);
             return this;
         }
 
-        public PurgeDeletedVolumesRequest.Builder optional(final Long[] volumeAccessGroupIDs) {
+        public PurgeDeletedVolumesRequest.Builder optionalVolumeAccessGroupIDs(final Long[] volumeAccessGroupIDs) {
             this.volumeAccessGroupIDs = (volumeAccessGroupIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroupIDs);
             return this;
         }

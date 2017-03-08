@@ -219,27 +219,27 @@ public class ModifyAccountRequest implements Serializable {
             return this;
         }
 
-        public ModifyAccountRequest.Builder optional(final String username) {
+        public ModifyAccountRequest.Builder optionalUsername(final String username) {
             this.username = (username == null) ? Optional.<String>empty() : Optional.of(username);
             return this;
         }
 
-        public ModifyAccountRequest.Builder optional(final String status) {
+        public ModifyAccountRequest.Builder optionalStatus(final String status) {
             this.status = (status == null) ? Optional.<String>empty() : Optional.of(status);
             return this;
         }
 
-        public ModifyAccountRequest.Builder optional(final CHAPSecret initiatorSecret) {
+        public ModifyAccountRequest.Builder optionalInitiatorSecret(final CHAPSecret initiatorSecret) {
             this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public ModifyAccountRequest.Builder optional(final CHAPSecret targetSecret) {
+        public ModifyAccountRequest.Builder optionalTargetSecret(final CHAPSecret targetSecret) {
             this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
             return this;
         }
 
-        public ModifyAccountRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public ModifyAccountRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

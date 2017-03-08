@@ -155,7 +155,7 @@ public class StartVolumePairingRequest implements Serializable {
             return this;
         }
 
-        public StartVolumePairingRequest.Builder optional(final String mode) {
+        public StartVolumePairingRequest.Builder optionalMode(final String mode) {
             this.mode = (mode == null) ? Optional.<String>empty() : Optional.of(mode);
             return this;
         }

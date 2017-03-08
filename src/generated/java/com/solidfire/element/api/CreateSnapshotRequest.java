@@ -235,27 +235,27 @@ public class CreateSnapshotRequest implements Serializable {
             return this;
         }
 
-        public CreateSnapshotRequest.Builder optional(final Long snapshotID) {
+        public CreateSnapshotRequest.Builder optionalSnapshotID(final Long snapshotID) {
             this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }
 
-        public CreateSnapshotRequest.Builder optional(final String name) {
+        public CreateSnapshotRequest.Builder optionalName(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public CreateSnapshotRequest.Builder optional(final Boolean enableRemoteReplication) {
+        public CreateSnapshotRequest.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
             return this;
         }
 
-        public CreateSnapshotRequest.Builder optional(final String retention) {
+        public CreateSnapshotRequest.Builder optionalRetention(final String retention) {
             this.retention = (retention == null) ? Optional.<String>empty() : Optional.of(retention);
             return this;
         }
 
-        public CreateSnapshotRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public CreateSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

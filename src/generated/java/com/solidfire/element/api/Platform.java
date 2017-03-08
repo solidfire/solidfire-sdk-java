@@ -204,7 +204,7 @@ public class Platform implements Serializable {
             return this;
         }
 
-        public Platform.Builder optional(final String platformConfigVersion) {
+        public Platform.Builder optionalPlatformConfigVersion(final String platformConfigVersion) {
             this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : Optional.of(platformConfigVersion);
             return this;
         }

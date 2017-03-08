@@ -194,27 +194,27 @@ public class TestPingRequest implements Serializable {
             return this;
         }
 
-        public TestPingRequest.Builder optional(final Long attempts) {
+        public TestPingRequest.Builder optionalAttempts(final Long attempts) {
             this.attempts = (attempts == null) ? Optional.<Long>empty() : Optional.of(attempts);
             return this;
         }
 
-        public TestPingRequest.Builder optional(final String hosts) {
+        public TestPingRequest.Builder optionalHosts(final String hosts) {
             this.hosts = (hosts == null) ? Optional.<String>empty() : Optional.of(hosts);
             return this;
         }
 
-        public TestPingRequest.Builder optional(final Long totalTimeoutSec) {
+        public TestPingRequest.Builder optionalTotalTimeoutSec(final Long totalTimeoutSec) {
             this.totalTimeoutSec = (totalTimeoutSec == null) ? Optional.<Long>empty() : Optional.of(totalTimeoutSec);
             return this;
         }
 
-        public TestPingRequest.Builder optional(final Long packetSize) {
+        public TestPingRequest.Builder optionalPacketSize(final Long packetSize) {
             this.packetSize = (packetSize == null) ? Optional.<Long>empty() : Optional.of(packetSize);
             return this;
         }
 
-        public TestPingRequest.Builder optional(final Long pingTimeoutMsec) {
+        public TestPingRequest.Builder optionalPingTimeoutMsec(final Long pingTimeoutMsec) {
             this.pingTimeoutMsec = (pingTimeoutMsec == null) ? Optional.<Long>empty() : Optional.of(pingTimeoutMsec);
             return this;
         }

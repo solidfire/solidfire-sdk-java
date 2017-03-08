@@ -207,17 +207,17 @@ public class StartBulkVolumeWriteRequest implements Serializable {
             return this;
         }
 
-        public StartBulkVolumeWriteRequest.Builder optional(final String script) {
+        public StartBulkVolumeWriteRequest.Builder optionalScript(final String script) {
             this.script = (script == null) ? Optional.<String>empty() : Optional.of(script);
             return this;
         }
 
-        public StartBulkVolumeWriteRequest.Builder optional(final java.util.Map<String, Object> scriptParameters) {
+        public StartBulkVolumeWriteRequest.Builder optionalScriptParameters(final java.util.Map<String, Object> scriptParameters) {
             this.scriptParameters = (scriptParameters == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(scriptParameters);
             return this;
         }
 
-        public StartBulkVolumeWriteRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public StartBulkVolumeWriteRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

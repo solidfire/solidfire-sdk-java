@@ -931,22 +931,22 @@ public class GetLimitsResult implements Serializable {
             return this;
         }
 
-        public GetLimitsResult.Builder optional(final Long clusterAdminAccountMax) {
+        public GetLimitsResult.Builder optionalClusterAdminAccountMax(final Long clusterAdminAccountMax) {
             this.clusterAdminAccountMax = (clusterAdminAccountMax == null) ? Optional.<Long>empty() : Optional.of(clusterAdminAccountMax);
             return this;
         }
 
-        public GetLimitsResult.Builder optional(final Long fibreChannelVolumeAccessMax) {
+        public GetLimitsResult.Builder optionalFibreChannelVolumeAccessMax(final Long fibreChannelVolumeAccessMax) {
             this.fibreChannelVolumeAccessMax = (fibreChannelVolumeAccessMax == null) ? Optional.<Long>empty() : Optional.of(fibreChannelVolumeAccessMax);
             return this;
         }
 
-        public GetLimitsResult.Builder optional(final Long virtualVolumesPerAccountCountMax) {
+        public GetLimitsResult.Builder optionalVirtualVolumesPerAccountCountMax(final Long virtualVolumesPerAccountCountMax) {
             this.virtualVolumesPerAccountCountMax = (virtualVolumesPerAccountCountMax == null) ? Optional.<Long>empty() : Optional.of(virtualVolumesPerAccountCountMax);
             return this;
         }
 
-        public GetLimitsResult.Builder optional(final Long virtualVolumeCountMax) {
+        public GetLimitsResult.Builder optionalVirtualVolumeCountMax(final Long virtualVolumeCountMax) {
             this.virtualVolumeCountMax = (virtualVolumeCountMax == null) ? Optional.<Long>empty() : Optional.of(virtualVolumeCountMax);
             return this;
         }

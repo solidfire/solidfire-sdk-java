@@ -137,7 +137,7 @@ public class GetIpmiConfigRequest implements Serializable {
             return this;
         }
 
-        public GetIpmiConfigRequest.Builder optional(final String chassisType) {
+        public GetIpmiConfigRequest.Builder optionalChassisType(final String chassisType) {
             this.chassisType = (chassisType == null) ? Optional.<String>empty() : Optional.of(chassisType);
             return this;
         }

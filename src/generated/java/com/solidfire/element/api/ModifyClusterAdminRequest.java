@@ -178,17 +178,17 @@ public class ModifyClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder optional(final String password) {
+        public ModifyClusterAdminRequest.Builder optionalPassword(final String password) {
             this.password = (password == null) ? Optional.<String>empty() : Optional.of(password);
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder optional(final String[] access) {
+        public ModifyClusterAdminRequest.Builder optionalAccess(final String[] access) {
             this.access = (access == null) ? Optional.<String[]>empty() : Optional.of(access);
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public ModifyClusterAdminRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

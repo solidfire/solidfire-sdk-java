@@ -157,17 +157,17 @@ public class ListInitiatorsRequest implements Serializable {
             return this;
         }
 
-        public ListInitiatorsRequest.Builder optional(final Long startInitiatorID) {
+        public ListInitiatorsRequest.Builder optionalStartInitiatorID(final Long startInitiatorID) {
             this.startInitiatorID = (startInitiatorID == null) ? Optional.<Long>empty() : Optional.of(startInitiatorID);
             return this;
         }
 
-        public ListInitiatorsRequest.Builder optional(final Long limit) {
+        public ListInitiatorsRequest.Builder optionalLimit(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }
 
-        public ListInitiatorsRequest.Builder optional(final Long[] initiators) {
+        public ListInitiatorsRequest.Builder optionalInitiators(final Long[] initiators) {
             this.initiators = (initiators == null) ? Optional.<Long[]>empty() : Optional.of(initiators);
             return this;
         }

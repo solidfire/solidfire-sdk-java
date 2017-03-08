@@ -163,7 +163,7 @@ public class CopyVolumeRequest implements Serializable {
             return this;
         }
 
-        public CopyVolumeRequest.Builder optional(final Long snapshotID) {
+        public CopyVolumeRequest.Builder optionalSnapshotID(final Long snapshotID) {
             this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }

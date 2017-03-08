@@ -142,7 +142,7 @@ public class SetNtpInfoRequest implements Serializable {
             return this;
         }
 
-        public SetNtpInfoRequest.Builder optional(final Boolean broadcastclient) {
+        public SetNtpInfoRequest.Builder optionalBroadcastclient(final Boolean broadcastclient) {
             this.broadcastclient = (broadcastclient == null) ? Optional.<Boolean>empty() : Optional.of(broadcastclient);
             return this;
         }

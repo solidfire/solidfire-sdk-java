@@ -157,17 +157,17 @@ public class DeleteVolumesRequest implements Serializable {
             return this;
         }
 
-        public DeleteVolumesRequest.Builder optional(final Long[] accountIDs) {
+        public DeleteVolumesRequest.Builder optionalAccountIDs(final Long[] accountIDs) {
             this.accountIDs = (accountIDs == null) ? Optional.<Long[]>empty() : Optional.of(accountIDs);
             return this;
         }
 
-        public DeleteVolumesRequest.Builder optional(final Long[] volumeAccessGroupIDs) {
+        public DeleteVolumesRequest.Builder optionalVolumeAccessGroupIDs(final Long[] volumeAccessGroupIDs) {
             this.volumeAccessGroupIDs = (volumeAccessGroupIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroupIDs);
             return this;
         }
 
-        public DeleteVolumesRequest.Builder optional(final Long[] volumeIDs) {
+        public DeleteVolumesRequest.Builder optionalVolumeIDs(final Long[] volumeIDs) {
             this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
             return this;
         }

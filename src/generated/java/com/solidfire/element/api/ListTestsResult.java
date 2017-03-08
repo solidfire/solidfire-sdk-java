@@ -33,7 +33,7 @@ import java.util.Objects;
 public class ListTestsResult implements Serializable {
 
     public static final long serialVersionUID = 3886812087466529195L;
-    @SerializedName("tests") private java.util.Map<String, Object> tests;
+    @SerializedName("tests") private String[] tests;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +43,7 @@ public class ListTestsResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListTestsResult(
-        java.util.Map<String, Object> tests
+        String[] tests
     )
     {
         this.tests = tests;
@@ -52,8 +52,8 @@ public class ListTestsResult implements Serializable {
     /** 
      * List of tests that can be performed on the node.
      **/
-    public java.util.Map<String, Object> getTests() { return this.tests; }
-    public void setTests(java.util.Map<String, Object> tests) { 
+    public String[] getTests() { return this.tests; }
+    public void setTests(String[] tests) { 
         this.tests = tests;
     }
 
@@ -65,12 +65,12 @@ public class ListTestsResult implements Serializable {
         ListTestsResult that = (ListTestsResult) o;
 
         return 
-            Objects.equals(tests, that.tests);
+            Arrays.equals(tests, that.tests);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( tests );
+        return Objects.hash( (Object[])tests );
     }
 
 
@@ -85,7 +85,7 @@ public class ListTestsResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" tests : ").append(tests).append(",");
+        sb.append(" tests : ").append(Arrays.toString(tests)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,7 +103,7 @@ public class ListTestsResult implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> tests;
+        private String[] tests;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class ListTestsResult implements Serializable {
             return this;
         }
 
-        public ListTestsResult.Builder tests(final java.util.Map<String, Object> tests) {
+        public ListTestsResult.Builder tests(final String[] tests) {
             this.tests = tests;
             return this;
         }

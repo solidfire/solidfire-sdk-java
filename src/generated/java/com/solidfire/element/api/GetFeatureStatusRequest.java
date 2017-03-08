@@ -121,7 +121,7 @@ public class GetFeatureStatusRequest implements Serializable {
             return this;
         }
 
-        public GetFeatureStatusRequest.Builder optional(final String feature) {
+        public GetFeatureStatusRequest.Builder optionalFeature(final String feature) {
             this.feature = (feature == null) ? Optional.<String>empty() : Optional.of(feature);
             return this;
         }

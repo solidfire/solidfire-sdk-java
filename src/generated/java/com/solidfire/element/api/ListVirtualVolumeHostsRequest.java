@@ -121,7 +121,7 @@ public class ListVirtualVolumeHostsRequest implements Serializable {
             return this;
         }
 
-        public ListVirtualVolumeHostsRequest.Builder optional(final java.util.UUID[] virtualVolumeHostIDs) {
+        public ListVirtualVolumeHostsRequest.Builder optionalVirtualVolumeHostIDs(final java.util.UUID[] virtualVolumeHostIDs) {
             this.virtualVolumeHostIDs = (virtualVolumeHostIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(virtualVolumeHostIDs);
             return this;
         }

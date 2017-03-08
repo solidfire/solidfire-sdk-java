@@ -160,12 +160,12 @@ public class RestartServicesRequest implements Serializable {
             return this;
         }
 
-        public RestartServicesRequest.Builder optional(final String service) {
+        public RestartServicesRequest.Builder optionalService(final String service) {
             this.service = (service == null) ? Optional.<String>empty() : Optional.of(service);
             return this;
         }
 
-        public RestartServicesRequest.Builder optional(final String action) {
+        public RestartServicesRequest.Builder optionalAction(final String action) {
             this.action = (action == null) ? Optional.<String>empty() : Optional.of(action);
             return this;
         }

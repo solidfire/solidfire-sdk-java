@@ -121,7 +121,7 @@ public class GetClusterHardwareInfoRequest implements Serializable {
             return this;
         }
 
-        public GetClusterHardwareInfoRequest.Builder optional(final String type) {
+        public GetClusterHardwareInfoRequest.Builder optionalType(final String type) {
             this.type = (type == null) ? Optional.<String>empty() : Optional.of(type);
             return this;
         }

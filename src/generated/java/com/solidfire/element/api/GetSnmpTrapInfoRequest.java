@@ -121,7 +121,7 @@ public class GetSnmpTrapInfoRequest implements Serializable {
             return this;
         }
 
-        public GetSnmpTrapInfoRequest.Builder optional(final Long id) {
+        public GetSnmpTrapInfoRequest.Builder optionalId(final Long id) {
             this.id = (id == null) ? Optional.<Long>empty() : Optional.of(id);
             return this;
         }

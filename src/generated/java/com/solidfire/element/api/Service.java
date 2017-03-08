@@ -357,17 +357,17 @@ public class Service implements Serializable {
             return this;
         }
 
-        public Service.Builder optional(final Long associatedBV) {
+        public Service.Builder optionalAssociatedBV(final Long associatedBV) {
             this.associatedBV = (associatedBV == null) ? Optional.<Long>empty() : Optional.of(associatedBV);
             return this;
         }
 
-        public Service.Builder optional(final Long associatedTS) {
+        public Service.Builder optionalAssociatedTS(final Long associatedTS) {
             this.associatedTS = (associatedTS == null) ? Optional.<Long>empty() : Optional.of(associatedTS);
             return this;
         }
 
-        public Service.Builder optional(final Long associatedVS) {
+        public Service.Builder optionalAssociatedVS(final Long associatedVS) {
             this.associatedVS = (associatedVS == null) ? Optional.<Long>empty() : Optional.of(associatedVS);
             return this;
         }
@@ -377,7 +377,7 @@ public class Service implements Serializable {
             return this;
         }
 
-        public Service.Builder optional(final Long driveID) {
+        public Service.Builder optionalDriveID(final Long driveID) {
             this.driveID = (driveID == null) ? Optional.<Long>empty() : Optional.of(driveID);
             return this;
         }

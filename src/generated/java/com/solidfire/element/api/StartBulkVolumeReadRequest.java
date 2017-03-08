@@ -234,22 +234,22 @@ public class StartBulkVolumeReadRequest implements Serializable {
             return this;
         }
 
-        public StartBulkVolumeReadRequest.Builder optional(final Long snapshotID) {
+        public StartBulkVolumeReadRequest.Builder optionalSnapshotID(final Long snapshotID) {
             this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }
 
-        public StartBulkVolumeReadRequest.Builder optional(final String script) {
+        public StartBulkVolumeReadRequest.Builder optionalScript(final String script) {
             this.script = (script == null) ? Optional.<String>empty() : Optional.of(script);
             return this;
         }
 
-        public StartBulkVolumeReadRequest.Builder optional(final java.util.Map<String, Object> scriptParameters) {
+        public StartBulkVolumeReadRequest.Builder optionalScriptParameters(final java.util.Map<String, Object> scriptParameters) {
             this.scriptParameters = (scriptParameters == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(scriptParameters);
             return this;
         }
 
-        public StartBulkVolumeReadRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public StartBulkVolumeReadRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

@@ -370,22 +370,22 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
-        public ClusterInfo.Builder optional(final String mvipInterface) {
+        public ClusterInfo.Builder optionalMvipInterface(final String mvipInterface) {
             this.mvipInterface = (mvipInterface == null) ? Optional.<String>empty() : Optional.of(mvipInterface);
             return this;
         }
 
-        public ClusterInfo.Builder optional(final String mvipVlanTag) {
+        public ClusterInfo.Builder optionalMvipVlanTag(final String mvipVlanTag) {
             this.mvipVlanTag = (mvipVlanTag == null) ? Optional.<String>empty() : Optional.of(mvipVlanTag);
             return this;
         }
 
-        public ClusterInfo.Builder optional(final String svipInterface) {
+        public ClusterInfo.Builder optionalSvipInterface(final String svipInterface) {
             this.svipInterface = (svipInterface == null) ? Optional.<String>empty() : Optional.of(svipInterface);
             return this;
         }
 
-        public ClusterInfo.Builder optional(final String svipVlanTag) {
+        public ClusterInfo.Builder optionalSvipVlanTag(final String svipVlanTag) {
             this.svipVlanTag = (svipVlanTag == null) ? Optional.<String>empty() : Optional.of(svipVlanTag);
             return this;
         }
@@ -420,7 +420,7 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
-        public ClusterInfo.Builder optional(final String state) {
+        public ClusterInfo.Builder optionalState(final String state) {
             this.state = (state == null) ? Optional.<String>empty() : Optional.of(state);
             return this;
         }

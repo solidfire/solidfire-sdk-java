@@ -267,7 +267,7 @@ public class StorageContainer implements Serializable {
             return this;
         }
 
-        public StorageContainer.Builder optional(final java.util.UUID[] virtualVolumes) {
+        public StorageContainer.Builder optionalVirtualVolumes(final java.util.UUID[] virtualVolumes) {
             this.virtualVolumes = (virtualVolumes == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(virtualVolumes);
             return this;
         }

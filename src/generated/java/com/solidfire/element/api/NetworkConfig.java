@@ -660,157 +660,157 @@ public class NetworkConfig implements Serializable {
             return this;
         }
 
-        public NetworkConfig.Builder optional(final Boolean _default) {
+        public NetworkConfig.Builder optional_default(final Boolean _default) {
             this._default = (_default == null) ? Optional.<Boolean>empty() : Optional.of(_default);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String bondMaster) {
+        public NetworkConfig.Builder optionalBondMaster(final String bondMaster) {
             this.bondMaster = (bondMaster == null) ? Optional.<String>empty() : Optional.of(bondMaster);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String virtualNetworkTag) {
+        public NetworkConfig.Builder optionalVirtualNetworkTag(final String virtualNetworkTag) {
             this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<String>empty() : Optional.of(virtualNetworkTag);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String address) {
+        public NetworkConfig.Builder optionalAddress(final String address) {
             this.address = (address == null) ? Optional.<String>empty() : Optional.of(address);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final Boolean auto) {
+        public NetworkConfig.Builder optionalAuto(final Boolean auto) {
             this.auto = (auto == null) ? Optional.<Boolean>empty() : Optional.of(auto);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String bondDowndelay) {
+        public NetworkConfig.Builder optionalBondDowndelay(final String bondDowndelay) {
             this.bondDowndelay = (bondDowndelay == null) ? Optional.<String>empty() : Optional.of(bondDowndelay);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String bondFailOverMac) {
+        public NetworkConfig.Builder optionalBondFailOverMac(final String bondFailOverMac) {
             this.bondFailOverMac = (bondFailOverMac == null) ? Optional.<String>empty() : Optional.of(bondFailOverMac);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String bondPrimaryReselect) {
+        public NetworkConfig.Builder optionalBondPrimaryReselect(final String bondPrimaryReselect) {
             this.bondPrimaryReselect = (bondPrimaryReselect == null) ? Optional.<String>empty() : Optional.of(bondPrimaryReselect);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String bondLacpRate) {
+        public NetworkConfig.Builder optionalBondLacpRate(final String bondLacpRate) {
             this.bondLacpRate = (bondLacpRate == null) ? Optional.<String>empty() : Optional.of(bondLacpRate);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String bondMiimon) {
+        public NetworkConfig.Builder optionalBondMiimon(final String bondMiimon) {
             this.bondMiimon = (bondMiimon == null) ? Optional.<String>empty() : Optional.of(bondMiimon);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String bondMode) {
+        public NetworkConfig.Builder optionalBondMode(final String bondMode) {
             this.bondMode = (bondMode == null) ? Optional.<String>empty() : Optional.of(bondMode);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String bondSlaves) {
+        public NetworkConfig.Builder optionalBondSlaves(final String bondSlaves) {
             this.bondSlaves = (bondSlaves == null) ? Optional.<String>empty() : Optional.of(bondSlaves);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String bondUpdelay) {
+        public NetworkConfig.Builder optionalBondUpdelay(final String bondUpdelay) {
             this.bondUpdelay = (bondUpdelay == null) ? Optional.<String>empty() : Optional.of(bondUpdelay);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String broadcast) {
+        public NetworkConfig.Builder optionalBroadcast(final String broadcast) {
             this.broadcast = (broadcast == null) ? Optional.<String>empty() : Optional.of(broadcast);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String dnsNameservers) {
+        public NetworkConfig.Builder optionalDnsNameservers(final String dnsNameservers) {
             this.dnsNameservers = (dnsNameservers == null) ? Optional.<String>empty() : Optional.of(dnsNameservers);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String dnsSearch) {
+        public NetworkConfig.Builder optionalDnsSearch(final String dnsSearch) {
             this.dnsSearch = (dnsSearch == null) ? Optional.<String>empty() : Optional.of(dnsSearch);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String family) {
+        public NetworkConfig.Builder optionalFamily(final String family) {
             this.family = (family == null) ? Optional.<String>empty() : Optional.of(family);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String gateway) {
+        public NetworkConfig.Builder optionalGateway(final String gateway) {
             this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String macAddress) {
+        public NetworkConfig.Builder optionalMacAddress(final String macAddress) {
             this.macAddress = (macAddress == null) ? Optional.<String>empty() : Optional.of(macAddress);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String macAddressPermanent) {
+        public NetworkConfig.Builder optionalMacAddressPermanent(final String macAddressPermanent) {
             this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : Optional.of(macAddressPermanent);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String method) {
+        public NetworkConfig.Builder optionalMethod(final String method) {
             this.method = (method == null) ? Optional.<String>empty() : Optional.of(method);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String mtu) {
+        public NetworkConfig.Builder optionalMtu(final String mtu) {
             this.mtu = (mtu == null) ? Optional.<String>empty() : Optional.of(mtu);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String netmask) {
+        public NetworkConfig.Builder optionalNetmask(final String netmask) {
             this.netmask = (netmask == null) ? Optional.<String>empty() : Optional.of(netmask);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String network) {
+        public NetworkConfig.Builder optionalNetwork(final String network) {
             this.network = (network == null) ? Optional.<String>empty() : Optional.of(network);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final PhysicalAdapter physical) {
+        public NetworkConfig.Builder optionalPhysical(final PhysicalAdapter physical) {
             this.physical = (physical == null) ? Optional.<PhysicalAdapter>empty() : Optional.of(physical);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final java.util.Map<String, Object>[] routes) {
+        public NetworkConfig.Builder optionalRoutes(final java.util.Map<String, Object>[] routes) {
             this.routes = (routes == null) ? Optional.<java.util.Map<String, Object>[]>empty() : Optional.of(routes);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String status) {
+        public NetworkConfig.Builder optionalStatus(final String status) {
             this.status = (status == null) ? Optional.<String>empty() : Optional.of(status);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String[] symmetricRouteRules) {
+        public NetworkConfig.Builder optionalSymmetricRouteRules(final String[] symmetricRouteRules) {
             this.symmetricRouteRules = (symmetricRouteRules == null) ? Optional.<String[]>empty() : Optional.of(symmetricRouteRules);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final Boolean upAndRunning) {
+        public NetworkConfig.Builder optionalUpAndRunning(final Boolean upAndRunning) {
             this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : Optional.of(upAndRunning);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String bondXmitHashPolicy) {
+        public NetworkConfig.Builder optionalBondXmitHashPolicy(final String bondXmitHashPolicy) {
             this.bondXmitHashPolicy = (bondXmitHashPolicy == null) ? Optional.<String>empty() : Optional.of(bondXmitHashPolicy);
             return this;
         }
 
-        public NetworkConfig.Builder optional(final String bondAdNumPorts) {
+        public NetworkConfig.Builder optionalBondAdNumPorts(final String bondAdNumPorts) {
             this.bondAdNumPorts = (bondAdNumPorts == null) ? Optional.<String>empty() : Optional.of(bondAdNumPorts);
             return this;
         }

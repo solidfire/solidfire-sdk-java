@@ -408,7 +408,7 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
-        public ISCSISession.Builder optional(final Long[] driveIDs) {
+        public ISCSISession.Builder optionalDriveIDs(final Long[] driveIDs) {
             this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : Optional.of(driveIDs);
             return this;
         }

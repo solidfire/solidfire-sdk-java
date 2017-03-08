@@ -156,17 +156,17 @@ public class GetClusterStateResult implements Serializable {
             return this;
         }
 
-        public GetClusterStateResult.Builder optional(final NodeStateResult[] nodes) {
+        public GetClusterStateResult.Builder optionalNodes(final NodeStateResult[] nodes) {
             this.nodes = (nodes == null) ? Optional.<NodeStateResult[]>empty() : Optional.of(nodes);
             return this;
         }
 
-        public GetClusterStateResult.Builder optional(final String cluster) {
+        public GetClusterStateResult.Builder optionalCluster(final String cluster) {
             this.cluster = (cluster == null) ? Optional.<String>empty() : Optional.of(cluster);
             return this;
         }
 
-        public GetClusterStateResult.Builder optional(final String state) {
+        public GetClusterStateResult.Builder optionalState(final String state) {
             this.state = (state == null) ? Optional.<String>empty() : Optional.of(state);
             return this;
         }

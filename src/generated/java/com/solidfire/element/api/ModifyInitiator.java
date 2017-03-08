@@ -178,17 +178,17 @@ public class ModifyInitiator implements Serializable {
             return this;
         }
 
-        public ModifyInitiator.Builder optional(final String alias) {
+        public ModifyInitiator.Builder optionalAlias(final String alias) {
             this.alias = (alias == null) ? Optional.<String>empty() : Optional.of(alias);
             return this;
         }
 
-        public ModifyInitiator.Builder optional(final Long volumeAccessGroupID) {
+        public ModifyInitiator.Builder optionalVolumeAccessGroupID(final Long volumeAccessGroupID) {
             this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<Long>empty() : Optional.of(volumeAccessGroupID);
             return this;
         }
 
-        public ModifyInitiator.Builder optional(final java.util.Map<String, Object> attributes) {
+        public ModifyInitiator.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

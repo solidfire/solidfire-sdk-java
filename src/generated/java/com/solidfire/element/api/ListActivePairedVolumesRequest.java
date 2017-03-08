@@ -140,12 +140,12 @@ public class ListActivePairedVolumesRequest implements Serializable {
             return this;
         }
 
-        public ListActivePairedVolumesRequest.Builder optional(final Long startVolumeID) {
+        public ListActivePairedVolumesRequest.Builder optionalStartVolumeID(final Long startVolumeID) {
             this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : Optional.of(startVolumeID);
             return this;
         }
 
-        public ListActivePairedVolumesRequest.Builder optional(final Long limit) {
+        public ListActivePairedVolumesRequest.Builder optionalLimit(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }

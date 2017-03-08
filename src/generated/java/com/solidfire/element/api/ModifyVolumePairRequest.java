@@ -185,17 +185,17 @@ public class ModifyVolumePairRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumePairRequest.Builder optional(final Boolean pausedManual) {
+        public ModifyVolumePairRequest.Builder optionalPausedManual(final Boolean pausedManual) {
             this.pausedManual = (pausedManual == null) ? Optional.<Boolean>empty() : Optional.of(pausedManual);
             return this;
         }
 
-        public ModifyVolumePairRequest.Builder optional(final String mode) {
+        public ModifyVolumePairRequest.Builder optionalMode(final String mode) {
             this.mode = (mode == null) ? Optional.<String>empty() : Optional.of(mode);
             return this;
         }
 
-        public ModifyVolumePairRequest.Builder optional(final Long pauseLimit) {
+        public ModifyVolumePairRequest.Builder optionalPauseLimit(final Long pauseLimit) {
             this.pauseLimit = (pauseLimit == null) ? Optional.<Long>empty() : Optional.of(pauseLimit);
             return this;
         }

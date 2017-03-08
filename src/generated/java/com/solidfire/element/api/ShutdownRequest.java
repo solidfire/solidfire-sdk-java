@@ -142,7 +142,7 @@ public class ShutdownRequest implements Serializable {
             return this;
         }
 
-        public ShutdownRequest.Builder optional(final String option) {
+        public ShutdownRequest.Builder optionalOption(final String option) {
             this.option = (option == null) ? Optional.<String>empty() : Optional.of(option);
             return this;
         }

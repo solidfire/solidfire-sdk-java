@@ -187,17 +187,17 @@ public class CloneMultipleVolumesRequest implements Serializable {
             return this;
         }
 
-        public CloneMultipleVolumesRequest.Builder optional(final String access) {
+        public CloneMultipleVolumesRequest.Builder optionalAccess(final String access) {
             this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
             return this;
         }
 
-        public CloneMultipleVolumesRequest.Builder optional(final Long groupSnapshotID) {
+        public CloneMultipleVolumesRequest.Builder optionalGroupSnapshotID(final Long groupSnapshotID) {
             this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : Optional.of(groupSnapshotID);
             return this;
         }
 
-        public CloneMultipleVolumesRequest.Builder optional(final Long newAccountID) {
+        public CloneMultipleVolumesRequest.Builder optionalNewAccountID(final Long newAccountID) {
             this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : Optional.of(newAccountID);
             return this;
         }

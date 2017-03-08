@@ -151,7 +151,7 @@ public class AddDrivesRequest implements Serializable {
             return this;
         }
 
-        public AddDrivesRequest.Builder optional(final Boolean forceDuringUpgrade) {
+        public AddDrivesRequest.Builder optionalForceDuringUpgrade(final Boolean forceDuringUpgrade) {
             this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : Optional.of(forceDuringUpgrade);
             return this;
         }

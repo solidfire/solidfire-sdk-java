@@ -121,7 +121,7 @@ public class ListStorageContainersRequest implements Serializable {
             return this;
         }
 
-        public ListStorageContainersRequest.Builder optional(final java.util.UUID[] storageContainerIDs) {
+        public ListStorageContainersRequest.Builder optionalStorageContainerIDs(final java.util.UUID[] storageContainerIDs) {
             this.storageContainerIDs = (storageContainerIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(storageContainerIDs);
             return this;
         }

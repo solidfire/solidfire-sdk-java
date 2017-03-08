@@ -340,7 +340,7 @@ public class VirtualVolumeInfo implements Serializable {
             return this;
         }
 
-        public VirtualVolumeInfo.Builder optional(final java.util.UUID storageContainerID) {
+        public VirtualVolumeInfo.Builder optionalStorageContainerID(final java.util.UUID storageContainerID) {
             this.storageContainerID = (storageContainerID == null) ? Optional.<java.util.UUID>empty() : Optional.of(storageContainerID);
             return this;
         }
@@ -395,7 +395,7 @@ public class VirtualVolumeInfo implements Serializable {
             return this;
         }
 
-        public VirtualVolumeInfo.Builder optional(final Long[] descendants) {
+        public VirtualVolumeInfo.Builder optionalDescendants(final Long[] descendants) {
             this.descendants = (descendants == null) ? Optional.<Long[]>empty() : Optional.of(descendants);
             return this;
         }

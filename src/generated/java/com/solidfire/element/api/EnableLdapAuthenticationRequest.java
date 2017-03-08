@@ -297,32 +297,32 @@ public class EnableLdapAuthenticationRequest implements Serializable {
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optional(final String authType) {
+        public EnableLdapAuthenticationRequest.Builder optionalAuthType(final String authType) {
             this.authType = (authType == null) ? Optional.<String>empty() : Optional.of(authType);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optional(final String groupSearchBaseDN) {
+        public EnableLdapAuthenticationRequest.Builder optionalGroupSearchBaseDN(final String groupSearchBaseDN) {
             this.groupSearchBaseDN = (groupSearchBaseDN == null) ? Optional.<String>empty() : Optional.of(groupSearchBaseDN);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optional(final String groupSearchCustomFilter) {
+        public EnableLdapAuthenticationRequest.Builder optionalGroupSearchCustomFilter(final String groupSearchCustomFilter) {
             this.groupSearchCustomFilter = (groupSearchCustomFilter == null) ? Optional.<String>empty() : Optional.of(groupSearchCustomFilter);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optional(final String groupSearchType) {
+        public EnableLdapAuthenticationRequest.Builder optionalGroupSearchType(final String groupSearchType) {
             this.groupSearchType = (groupSearchType == null) ? Optional.<String>empty() : Optional.of(groupSearchType);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optional(final String searchBindDN) {
+        public EnableLdapAuthenticationRequest.Builder optionalSearchBindDN(final String searchBindDN) {
             this.searchBindDN = (searchBindDN == null) ? Optional.<String>empty() : Optional.of(searchBindDN);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optional(final String searchBindPassword) {
+        public EnableLdapAuthenticationRequest.Builder optionalSearchBindPassword(final String searchBindPassword) {
             this.searchBindPassword = (searchBindPassword == null) ? Optional.<String>empty() : Optional.of(searchBindPassword);
             return this;
         }
@@ -332,17 +332,17 @@ public class EnableLdapAuthenticationRequest implements Serializable {
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optional(final String userDNTemplate) {
+        public EnableLdapAuthenticationRequest.Builder optionalUserDNTemplate(final String userDNTemplate) {
             this.userDNTemplate = (userDNTemplate == null) ? Optional.<String>empty() : Optional.of(userDNTemplate);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optional(final String userSearchBaseDN) {
+        public EnableLdapAuthenticationRequest.Builder optionalUserSearchBaseDN(final String userSearchBaseDN) {
             this.userSearchBaseDN = (userSearchBaseDN == null) ? Optional.<String>empty() : Optional.of(userSearchBaseDN);
             return this;
         }
 
-        public EnableLdapAuthenticationRequest.Builder optional(final String userSearchFilter) {
+        public EnableLdapAuthenticationRequest.Builder optionalUserSearchFilter(final String userSearchFilter) {
             this.userSearchFilter = (userSearchFilter == null) ? Optional.<String>empty() : Optional.of(userSearchFilter);
             return this;
         }

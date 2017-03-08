@@ -157,17 +157,17 @@ public class CreateSupportBundleRequest implements Serializable {
             return this;
         }
 
-        public CreateSupportBundleRequest.Builder optional(final String bundleName) {
+        public CreateSupportBundleRequest.Builder optionalBundleName(final String bundleName) {
             this.bundleName = (bundleName == null) ? Optional.<String>empty() : Optional.of(bundleName);
             return this;
         }
 
-        public CreateSupportBundleRequest.Builder optional(final String extraArgs) {
+        public CreateSupportBundleRequest.Builder optionalExtraArgs(final String extraArgs) {
             this.extraArgs = (extraArgs == null) ? Optional.<String>empty() : Optional.of(extraArgs);
             return this;
         }
 
-        public CreateSupportBundleRequest.Builder optional(final Long timeoutSec) {
+        public CreateSupportBundleRequest.Builder optionalTimeoutSec(final Long timeoutSec) {
             this.timeoutSec = (timeoutSec == null) ? Optional.<Long>empty() : Optional.of(timeoutSec);
             return this;
         }

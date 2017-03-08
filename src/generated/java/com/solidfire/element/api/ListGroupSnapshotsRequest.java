@@ -148,12 +148,12 @@ public class ListGroupSnapshotsRequest implements Serializable {
             return this;
         }
 
-        public ListGroupSnapshotsRequest.Builder optional(final Long volumeID) {
+        public ListGroupSnapshotsRequest.Builder optionalVolumeID(final Long volumeID) {
             this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
             return this;
         }
 
-        public ListGroupSnapshotsRequest.Builder optional(final Long groupSnapshotID) {
+        public ListGroupSnapshotsRequest.Builder optionalGroupSnapshotID(final Long groupSnapshotID) {
             this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : Optional.of(groupSnapshotID);
             return this;
         }

@@ -167,17 +167,17 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
             return this;
         }
 
-        public ModifyClusterFullThresholdRequest.Builder optional(final Long stage2AwareThreshold) {
+        public ModifyClusterFullThresholdRequest.Builder optionalStage2AwareThreshold(final Long stage2AwareThreshold) {
             this.stage2AwareThreshold = (stage2AwareThreshold == null) ? Optional.<Long>empty() : Optional.of(stage2AwareThreshold);
             return this;
         }
 
-        public ModifyClusterFullThresholdRequest.Builder optional(final Long stage3BlockThresholdPercent) {
+        public ModifyClusterFullThresholdRequest.Builder optionalStage3BlockThresholdPercent(final Long stage3BlockThresholdPercent) {
             this.stage3BlockThresholdPercent = (stage3BlockThresholdPercent == null) ? Optional.<Long>empty() : Optional.of(stage3BlockThresholdPercent);
             return this;
         }
 
-        public ModifyClusterFullThresholdRequest.Builder optional(final Long maxMetadataOverProvisionFactor) {
+        public ModifyClusterFullThresholdRequest.Builder optionalMaxMetadataOverProvisionFactor(final Long maxMetadataOverProvisionFactor) {
             this.maxMetadataOverProvisionFactor = (maxMetadataOverProvisionFactor == null) ? Optional.<Long>empty() : Optional.of(maxMetadataOverProvisionFactor);
             return this;
         }

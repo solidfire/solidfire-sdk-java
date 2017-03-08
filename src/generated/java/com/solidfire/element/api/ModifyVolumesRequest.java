@@ -214,27 +214,27 @@ public class ModifyVolumesRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optional(final Long accountID) {
+        public ModifyVolumesRequest.Builder optionalAccountID(final Long accountID) {
             this.accountID = (accountID == null) ? Optional.<Long>empty() : Optional.of(accountID);
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optional(final String access) {
+        public ModifyVolumesRequest.Builder optionalAccess(final String access) {
             this.access = (access == null) ? Optional.<String>empty() : Optional.of(access);
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optional(final QoS qos) {
+        public ModifyVolumesRequest.Builder optionalQos(final QoS qos) {
             this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optional(final Long totalSize) {
+        public ModifyVolumesRequest.Builder optionalTotalSize(final Long totalSize) {
             this.totalSize = (totalSize == null) ? Optional.<Long>empty() : Optional.of(totalSize);
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public ModifyVolumesRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

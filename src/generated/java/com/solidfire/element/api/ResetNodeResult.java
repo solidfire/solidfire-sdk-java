@@ -174,22 +174,22 @@ public class ResetNodeResult implements Serializable {
             return this;
         }
 
-        public ResetNodeResult.Builder optional(final ResetNodeDetails details) {
+        public ResetNodeResult.Builder optionalDetails(final ResetNodeDetails details) {
             this.details = (details == null) ? Optional.<ResetNodeDetails>empty() : Optional.of(details);
             return this;
         }
 
-        public ResetNodeResult.Builder optional(final String duration) {
+        public ResetNodeResult.Builder optionalDuration(final String duration) {
             this.duration = (duration == null) ? Optional.<String>empty() : Optional.of(duration);
             return this;
         }
 
-        public ResetNodeResult.Builder optional(final String result) {
+        public ResetNodeResult.Builder optionalResult(final String result) {
             this.result = (result == null) ? Optional.<String>empty() : Optional.of(result);
             return this;
         }
 
-        public ResetNodeResult.Builder optional(final RtfiInfo rtfiInfo) {
+        public ResetNodeResult.Builder optionalRtfiInfo(final RtfiInfo rtfiInfo) {
             this.rtfiInfo = (rtfiInfo == null) ? Optional.<RtfiInfo>empty() : Optional.of(rtfiInfo);
             return this;
         }

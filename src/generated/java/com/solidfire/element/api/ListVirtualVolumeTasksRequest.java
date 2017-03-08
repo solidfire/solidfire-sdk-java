@@ -121,7 +121,7 @@ public class ListVirtualVolumeTasksRequest implements Serializable {
             return this;
         }
 
-        public ListVirtualVolumeTasksRequest.Builder optional(final java.util.UUID[] virtualVolumeTaskIDs) {
+        public ListVirtualVolumeTasksRequest.Builder optionalVirtualVolumeTaskIDs(final java.util.UUID[] virtualVolumeTaskIDs) {
             this.virtualVolumeTaskIDs = (virtualVolumeTaskIDs == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(virtualVolumeTaskIDs);
             return this;
         }

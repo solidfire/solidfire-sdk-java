@@ -693,7 +693,7 @@ public class DriveHardware implements Serializable {
             return this;
         }
 
-        public DriveHardware.Builder optional(final Boolean smartSsdWriteCapable) {
+        public DriveHardware.Builder optionalSmartSsdWriteCapable(final Boolean smartSsdWriteCapable) {
             this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : Optional.of(smartSsdWriteCapable);
             return this;
         }

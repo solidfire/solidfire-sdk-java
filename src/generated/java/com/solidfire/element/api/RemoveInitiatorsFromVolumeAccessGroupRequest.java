@@ -163,7 +163,7 @@ public class RemoveInitiatorsFromVolumeAccessGroupRequest implements Serializabl
             return this;
         }
 
-        public RemoveInitiatorsFromVolumeAccessGroupRequest.Builder optional(final Boolean deleteOrphanInitiators) {
+        public RemoveInitiatorsFromVolumeAccessGroupRequest.Builder optionalDeleteOrphanInitiators(final Boolean deleteOrphanInitiators) {
             this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : Optional.of(deleteOrphanInitiators);
             return this;
         }

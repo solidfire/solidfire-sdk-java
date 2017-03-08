@@ -189,17 +189,17 @@ public class AddAccountRequest implements Serializable {
             return this;
         }
 
-        public AddAccountRequest.Builder optional(final CHAPSecret initiatorSecret) {
+        public AddAccountRequest.Builder optionalInitiatorSecret(final CHAPSecret initiatorSecret) {
             this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public AddAccountRequest.Builder optional(final CHAPSecret targetSecret) {
+        public AddAccountRequest.Builder optionalTargetSecret(final CHAPSecret targetSecret) {
             this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : Optional.of(targetSecret);
             return this;
         }
 
-        public AddAccountRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public AddAccountRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

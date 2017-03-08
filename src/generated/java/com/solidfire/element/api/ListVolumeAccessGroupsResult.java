@@ -141,7 +141,7 @@ public class ListVolumeAccessGroupsResult implements Serializable {
             return this;
         }
 
-        public ListVolumeAccessGroupsResult.Builder optional(final Long[] volumeAccessGroupsNotFound) {
+        public ListVolumeAccessGroupsResult.Builder optionalVolumeAccessGroupsNotFound(final Long[] volumeAccessGroupsNotFound) {
             this.volumeAccessGroupsNotFound = (volumeAccessGroupsNotFound == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroupsNotFound);
             return this;
         }

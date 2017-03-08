@@ -337,67 +337,67 @@ public class ClusterConfig implements Serializable {
             return this;
         }
 
-        public ClusterConfig.Builder optional(final String cipi) {
+        public ClusterConfig.Builder optionalCipi(final String cipi) {
             this.cipi = (cipi == null) ? Optional.<String>empty() : Optional.of(cipi);
             return this;
         }
 
-        public ClusterConfig.Builder optional(final String cluster) {
+        public ClusterConfig.Builder optionalCluster(final String cluster) {
             this.cluster = (cluster == null) ? Optional.<String>empty() : Optional.of(cluster);
             return this;
         }
 
-        public ClusterConfig.Builder optional(final String[] ensemble) {
+        public ClusterConfig.Builder optionalEnsemble(final String[] ensemble) {
             this.ensemble = (ensemble == null) ? Optional.<String[]>empty() : Optional.of(ensemble);
             return this;
         }
 
-        public ClusterConfig.Builder optional(final String mipi) {
+        public ClusterConfig.Builder optionalMipi(final String mipi) {
             this.mipi = (mipi == null) ? Optional.<String>empty() : Optional.of(mipi);
             return this;
         }
 
-        public ClusterConfig.Builder optional(final String name) {
+        public ClusterConfig.Builder optionalName(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public ClusterConfig.Builder optional(final Long nodeID) {
+        public ClusterConfig.Builder optionalNodeID(final Long nodeID) {
             this.nodeID = (nodeID == null) ? Optional.<Long>empty() : Optional.of(nodeID);
             return this;
         }
 
-        public ClusterConfig.Builder optional(final Long pendingNodeID) {
+        public ClusterConfig.Builder optionalPendingNodeID(final Long pendingNodeID) {
             this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : Optional.of(pendingNodeID);
             return this;
         }
 
-        public ClusterConfig.Builder optional(final String role) {
+        public ClusterConfig.Builder optionalRole(final String role) {
             this.role = (role == null) ? Optional.<String>empty() : Optional.of(role);
             return this;
         }
 
-        public ClusterConfig.Builder optional(final String sipi) {
+        public ClusterConfig.Builder optionalSipi(final String sipi) {
             this.sipi = (sipi == null) ? Optional.<String>empty() : Optional.of(sipi);
             return this;
         }
 
-        public ClusterConfig.Builder optional(final String state) {
+        public ClusterConfig.Builder optionalState(final String state) {
             this.state = (state == null) ? Optional.<String>empty() : Optional.of(state);
             return this;
         }
 
-        public ClusterConfig.Builder optional(final Boolean encryptionCapable) {
+        public ClusterConfig.Builder optionalEncryptionCapable(final Boolean encryptionCapable) {
             this.encryptionCapable = (encryptionCapable == null) ? Optional.<Boolean>empty() : Optional.of(encryptionCapable);
             return this;
         }
 
-        public ClusterConfig.Builder optional(final Boolean hasLocalAdmin) {
+        public ClusterConfig.Builder optionalHasLocalAdmin(final Boolean hasLocalAdmin) {
             this.hasLocalAdmin = (hasLocalAdmin == null) ? Optional.<Boolean>empty() : Optional.of(hasLocalAdmin);
             return this;
         }
 
-        public ClusterConfig.Builder optional(final String version) {
+        public ClusterConfig.Builder optionalVersion(final String version) {
             this.version = (version == null) ? Optional.<String>empty() : Optional.of(version);
             return this;
         }

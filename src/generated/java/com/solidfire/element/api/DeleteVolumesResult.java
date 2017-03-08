@@ -141,7 +141,7 @@ public class DeleteVolumesResult implements Serializable {
             return this;
         }
 
-        public DeleteVolumesResult.Builder optional(final VolumeQOS curve) {
+        public DeleteVolumesResult.Builder optionalCurve(final VolumeQOS curve) {
             this.curve = (curve == null) ? Optional.<VolumeQOS>empty() : Optional.of(curve);
             return this;
         }

@@ -346,12 +346,12 @@ public class ClusterFaultInfo implements Serializable {
             return this;
         }
 
-        public ClusterFaultInfo.Builder optional(final Long[] driveIDs) {
+        public ClusterFaultInfo.Builder optionalDriveIDs(final Long[] driveIDs) {
             this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : Optional.of(driveIDs);
             return this;
         }
 
-        public ClusterFaultInfo.Builder optional(final String networkInterface) {
+        public ClusterFaultInfo.Builder optionalNetworkInterface(final String networkInterface) {
             this.networkInterface = (networkInterface == null) ? Optional.<String>empty() : Optional.of(networkInterface);
             return this;
         }

@@ -122,7 +122,7 @@ public class TestConnectSvipRequest implements Serializable {
             return this;
         }
 
-        public TestConnectSvipRequest.Builder optional(final String svip) {
+        public TestConnectSvipRequest.Builder optionalSvip(final String svip) {
             this.svip = (svip == null) ? Optional.<String>empty() : Optional.of(svip);
             return this;
         }

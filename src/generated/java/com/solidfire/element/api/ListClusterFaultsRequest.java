@@ -179,22 +179,22 @@ public class ListClusterFaultsRequest implements Serializable {
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder optional(final Boolean exceptions) {
+        public ListClusterFaultsRequest.Builder optionalExceptions(final Boolean exceptions) {
             this.exceptions = (exceptions == null) ? Optional.<Boolean>empty() : Optional.of(exceptions);
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder optional(final Boolean bestPractices) {
+        public ListClusterFaultsRequest.Builder optionalBestPractices(final Boolean bestPractices) {
             this.bestPractices = (bestPractices == null) ? Optional.<Boolean>empty() : Optional.of(bestPractices);
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder optional(final Boolean update) {
+        public ListClusterFaultsRequest.Builder optionalUpdate(final Boolean update) {
             this.update = (update == null) ? Optional.<Boolean>empty() : Optional.of(update);
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder optional(final String faultTypes) {
+        public ListClusterFaultsRequest.Builder optionalFaultTypes(final String faultTypes) {
             this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : Optional.of(faultTypes);
             return this;
         }

@@ -121,7 +121,7 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
             return this;
         }
 
-        public ListVirtualVolumeBindingsRequest.Builder optional(final Long[] virtualVolumeBindingIDs) {
+        public ListVirtualVolumeBindingsRequest.Builder optionalVirtualVolumeBindingIDs(final Long[] virtualVolumeBindingIDs) {
             this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<Long[]>empty() : Optional.of(virtualVolumeBindingIDs);
             return this;
         }

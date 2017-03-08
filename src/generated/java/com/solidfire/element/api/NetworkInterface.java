@@ -309,7 +309,7 @@ public class NetworkInterface implements Serializable {
             return this;
         }
 
-        public NetworkInterface.Builder optional(final Boolean namespace) {
+        public NetworkInterface.Builder optionalNamespace(final Boolean namespace) {
             this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
             return this;
         }

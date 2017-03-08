@@ -142,12 +142,12 @@ public class ListAccountsRequest implements Serializable {
             return this;
         }
 
-        public ListAccountsRequest.Builder optional(final Long startAccountID) {
+        public ListAccountsRequest.Builder optionalStartAccountID(final Long startAccountID) {
             this.startAccountID = (startAccountID == null) ? Optional.<Long>empty() : Optional.of(startAccountID);
             return this;
         }
 
-        public ListAccountsRequest.Builder optional(final Long limit) {
+        public ListAccountsRequest.Builder optionalLimit(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
             return this;
         }

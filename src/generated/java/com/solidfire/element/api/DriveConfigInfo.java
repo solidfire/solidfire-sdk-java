@@ -659,12 +659,12 @@ public class DriveConfigInfo implements Serializable {
             return this;
         }
 
-        public DriveConfigInfo.Builder optional(final String fsType) {
+        public DriveConfigInfo.Builder optionalFsType(final String fsType) {
             this.fsType = (fsType == null) ? Optional.<String>empty() : Optional.of(fsType);
             return this;
         }
 
-        public DriveConfigInfo.Builder optional(final Boolean isMounted) {
+        public DriveConfigInfo.Builder optionalIsMounted(final Boolean isMounted) {
             this.isMounted = (isMounted == null) ? Optional.<Boolean>empty() : Optional.of(isMounted);
             return this;
         }
@@ -674,7 +674,7 @@ public class DriveConfigInfo implements Serializable {
             return this;
         }
 
-        public DriveConfigInfo.Builder optional(final String mountPoint) {
+        public DriveConfigInfo.Builder optionalMountPoint(final String mountPoint) {
             this.mountPoint = (mountPoint == null) ? Optional.<String>empty() : Optional.of(mountPoint);
             return this;
         }
@@ -699,7 +699,7 @@ public class DriveConfigInfo implements Serializable {
             return this;
         }
 
-        public DriveConfigInfo.Builder optional(final Boolean smartSsdWriteCapable) {
+        public DriveConfigInfo.Builder optionalSmartSsdWriteCapable(final Boolean smartSsdWriteCapable) {
             this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : Optional.of(smartSsdWriteCapable);
             return this;
         }
@@ -749,32 +749,32 @@ public class DriveConfigInfo implements Serializable {
             return this;
         }
 
-        public DriveConfigInfo.Builder optional(final Long numBlockActual) {
+        public DriveConfigInfo.Builder optionalNumBlockActual(final Long numBlockActual) {
             this.numBlockActual = (numBlockActual == null) ? Optional.<Long>empty() : Optional.of(numBlockActual);
             return this;
         }
 
-        public DriveConfigInfo.Builder optional(final Long numBlockExpected) {
+        public DriveConfigInfo.Builder optionalNumBlockExpected(final Long numBlockExpected) {
             this.numBlockExpected = (numBlockExpected == null) ? Optional.<Long>empty() : Optional.of(numBlockExpected);
             return this;
         }
 
-        public DriveConfigInfo.Builder optional(final Long numSliceActual) {
+        public DriveConfigInfo.Builder optionalNumSliceActual(final Long numSliceActual) {
             this.numSliceActual = (numSliceActual == null) ? Optional.<Long>empty() : Optional.of(numSliceActual);
             return this;
         }
 
-        public DriveConfigInfo.Builder optional(final Long numSliceExpected) {
+        public DriveConfigInfo.Builder optionalNumSliceExpected(final Long numSliceExpected) {
             this.numSliceExpected = (numSliceExpected == null) ? Optional.<Long>empty() : Optional.of(numSliceExpected);
             return this;
         }
 
-        public DriveConfigInfo.Builder optional(final Long numTotalActual) {
+        public DriveConfigInfo.Builder optionalNumTotalActual(final Long numTotalActual) {
             this.numTotalActual = (numTotalActual == null) ? Optional.<Long>empty() : Optional.of(numTotalActual);
             return this;
         }
 
-        public DriveConfigInfo.Builder optional(final Long numTotalExpected) {
+        public DriveConfigInfo.Builder optionalNumTotalExpected(final Long numTotalExpected) {
             this.numTotalExpected = (numTotalExpected == null) ? Optional.<Long>empty() : Optional.of(numTotalExpected);
             return this;
         }

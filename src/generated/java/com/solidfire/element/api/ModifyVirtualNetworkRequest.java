@@ -290,47 +290,47 @@ public class ModifyVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optional(final Long virtualNetworkID) {
+        public ModifyVirtualNetworkRequest.Builder optionalVirtualNetworkID(final Long virtualNetworkID) {
             this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkID);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optional(final Long virtualNetworkTag) {
+        public ModifyVirtualNetworkRequest.Builder optionalVirtualNetworkTag(final Long virtualNetworkTag) {
             this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : Optional.of(virtualNetworkTag);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optional(final String name) {
+        public ModifyVirtualNetworkRequest.Builder optionalName(final String name) {
             this.name = (name == null) ? Optional.<String>empty() : Optional.of(name);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optional(final AddressBlock[] addressBlocks) {
+        public ModifyVirtualNetworkRequest.Builder optionalAddressBlocks(final AddressBlock[] addressBlocks) {
             this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : Optional.of(addressBlocks);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optional(final String netmask) {
+        public ModifyVirtualNetworkRequest.Builder optionalNetmask(final String netmask) {
             this.netmask = (netmask == null) ? Optional.<String>empty() : Optional.of(netmask);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optional(final String svip) {
+        public ModifyVirtualNetworkRequest.Builder optionalSvip(final String svip) {
             this.svip = (svip == null) ? Optional.<String>empty() : Optional.of(svip);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optional(final String gateway) {
+        public ModifyVirtualNetworkRequest.Builder optionalGateway(final String gateway) {
             this.gateway = (gateway == null) ? Optional.<String>empty() : Optional.of(gateway);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optional(final Boolean namespace) {
+        public ModifyVirtualNetworkRequest.Builder optionalNamespace(final Boolean namespace) {
             this.namespace = (namespace == null) ? Optional.<Boolean>empty() : Optional.of(namespace);
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public ModifyVirtualNetworkRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

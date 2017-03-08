@@ -150,7 +150,7 @@ public class GetAsyncResultRequest implements Serializable {
             return this;
         }
 
-        public GetAsyncResultRequest.Builder optional(final Boolean keepResult) {
+        public GetAsyncResultRequest.Builder optionalKeepResult(final Boolean keepResult) {
             this.keepResult = (keepResult == null) ? Optional.<Boolean>empty() : Optional.of(keepResult);
             return this;
         }

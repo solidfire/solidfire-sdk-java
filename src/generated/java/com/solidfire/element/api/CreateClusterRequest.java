@@ -237,7 +237,7 @@ public class CreateClusterRequest implements Serializable {
             return this;
         }
 
-        public CreateClusterRequest.Builder optional(final Boolean acceptEula) {
+        public CreateClusterRequest.Builder optionalAcceptEula(final Boolean acceptEula) {
             this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : Optional.of(acceptEula);
             return this;
         }
@@ -272,7 +272,7 @@ public class CreateClusterRequest implements Serializable {
             return this;
         }
 
-        public CreateClusterRequest.Builder optional(final java.util.Map<String, Object> attributes) {
+        public CreateClusterRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
             this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }

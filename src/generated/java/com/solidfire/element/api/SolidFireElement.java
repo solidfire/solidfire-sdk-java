@@ -69,7 +69,7 @@ public class SolidFireElement
         Optional<CHAPSecret> targetSecret,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new AddAccountRequest(username, initiatorSecret, targetSecret, attributes));
+        return this.addAccount(new AddAccountRequest(username, initiatorSecret, targetSecret, attributes));
     }
     /** 
      * Returns details about an account, given its AccountID.
@@ -93,7 +93,7 @@ public class SolidFireElement
     public GetAccountResult getAccountByID(
         Long accountID
         ) {
-        return this.(new GetAccountByIDRequest(accountID));
+        return this.getAccountByID(new GetAccountByIDRequest(accountID));
     }
     /** 
      * Returns details about an account, given its Username.
@@ -117,7 +117,7 @@ public class SolidFireElement
     public GetAccountResult getAccountByName(
         String username
         ) {
-        return this.(new GetAccountByNameRequest(username));
+        return this.getAccountByName(new GetAccountByNameRequest(username));
     }
     /** 
      * GetAccountEfficiency is used to retrieve information about a volume account. Only the account given as a parameter in this API method is used to compute the capacity.
@@ -141,7 +141,7 @@ public class SolidFireElement
     public GetEfficiencyResult getAccountEfficiency(
         Long accountID
         ) {
-        return this.(new GetAccountEfficiencyRequest(accountID));
+        return this.getAccountEfficiency(new GetAccountEfficiencyRequest(accountID));
     }
     /** 
      * Returns the entire list of accounts, with optional paging support.
@@ -166,7 +166,7 @@ public class SolidFireElement
         Optional<Long> startAccountID,
         Optional<Long> limit
         ) {
-        return this.(new ListAccountsRequest(startAccountID, limit));
+        return this.listAccounts(new ListAccountsRequest(startAccountID, limit));
     }
     /** 
      * Used to modify an existing account.
@@ -201,7 +201,7 @@ public class SolidFireElement
         Optional<CHAPSecret> targetSecret,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new ModifyAccountRequest(accountID, username, status, initiatorSecret, targetSecret, attributes));
+        return this.modifyAccount(new ModifyAccountRequest(accountID, username, status, initiatorSecret, targetSecret, attributes));
     }
     /** 
      * Used to remove an existing account.
@@ -229,7 +229,7 @@ public class SolidFireElement
     public RemoveAccountResult removeAccount(
         Long accountID
         ) {
-        return this.(new RemoveAccountRequest(accountID));
+        return this.removeAccount(new RemoveAccountRequest(accountID));
     }
     /** 
      * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
@@ -254,7 +254,7 @@ public class SolidFireElement
         String name,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new CreateBackupTargetRequest(name, attributes));
+        return this.createBackupTarget(new CreateBackupTargetRequest(name, attributes));
     }
     /** 
      * GetBackupTarget allows you to return information about a specific backup target that has been created.
@@ -278,7 +278,7 @@ public class SolidFireElement
     public GetBackupTargetResult getBackupTarget(
         Long backupTargetID
         ) {
-        return this.(new GetBackupTargetRequest(backupTargetID));
+        return this.getBackupTarget(new GetBackupTargetRequest(backupTargetID));
     }
     /** 
      * You can use ListBackupTargets to retrieve information about all backup targets that have been created.
@@ -313,7 +313,7 @@ public class SolidFireElement
         Optional<String> name,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new ModifyBackupTargetRequest(backupTargetID, name, attributes));
+        return this.modifyBackupTarget(new ModifyBackupTargetRequest(backupTargetID, name, attributes));
     }
     /** 
      * RemoveBackupTarget allows you to delete backup targets.
@@ -337,7 +337,7 @@ public class SolidFireElement
     public RemoveBackupTargetResult removeBackupTarget(
         Long backupTargetID
         ) {
-        return this.(new RemoveBackupTargetRequest(backupTargetID));
+        return this.removeBackupTarget(new RemoveBackupTargetRequest(backupTargetID));
     }
     /** 
      * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
@@ -369,7 +369,7 @@ public class SolidFireElement
         Optional<Boolean> acceptEula,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new AddClusterAdminRequest(username, password, access, acceptEula, attributes));
+        return this.addClusterAdmin(new AddClusterAdminRequest(username, password, access, acceptEula, attributes));
     }
     /** 
      * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
@@ -393,7 +393,7 @@ public class SolidFireElement
     public ClearClusterFaultsResult clearClusterFaults(
         Optional<String> faultType
         ) {
-        return this.(new ClearClusterFaultsRequest(faultType));
+        return this.clearClusterFaults(new ClearClusterFaultsRequest(faultType));
     }
     /** 
      * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
@@ -425,7 +425,7 @@ public class SolidFireElement
         String[] nodes,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new CreateClusterRequest(acceptEula, mvip, svip, repCount, username, password, nodes, attributes));
+        return this.createCluster(new CreateClusterRequest(acceptEula, mvip, svip, repCount, username, password, nodes, attributes));
     }
     /** 
      * CreateSupportBundle is used to create a support bundle file under the node's directory. When the bundle has been successfully created, the bundle is stored on the node as a tar.gz file.
@@ -451,7 +451,7 @@ public class SolidFireElement
         Optional<String> extraArgs,
         Optional<Long> timeoutSec
         ) {
-        return this.(new CreateSupportBundleRequest(bundleName, extraArgs, timeoutSec));
+        return this.createSupportBundle(new CreateSupportBundleRequest(bundleName, extraArgs, timeoutSec));
     }
     /** 
      * DeleteAllSupportBundles is used to delete all support bundles generated with the CreateSupportBundle API method.
@@ -515,7 +515,7 @@ public class SolidFireElement
     public EnableSnmpResult enableSnmp(
         Boolean snmpV3Enabled
         ) {
-        return this.(new EnableSnmpRequest(snmpV3Enabled));
+        return this.enableSnmp(new EnableSnmpRequest(snmpV3Enabled));
     }
     /** 
      * Retrieves the current version of the API and a list of all supported versions.
@@ -596,7 +596,7 @@ public class SolidFireElement
     public GetClusterStateResult getClusterState(
         Boolean force
         ) {
-        return this.(new GetClusterStateRequest(force));
+        return this.getClusterState(new GetClusterStateRequest(force));
     }
     /** 
      * GetClusterStats is used to return high-level activity measurements for the cluster. Values returned are cumulative from the creation of the cluster.
@@ -697,7 +697,7 @@ public class SolidFireElement
     public GetSnmpTrapInfoResult getSnmpTrapInfo(
         Optional<Long> id
         ) {
-        return this.(new GetSnmpTrapInfoRequest(id));
+        return this.getSnmpTrapInfo(new GetSnmpTrapInfoRequest(id));
     }
     /** 
      **/
@@ -729,7 +729,7 @@ public class SolidFireElement
     public ListClusterAdminsResult listClusterAdmins(
         Optional<Boolean> showHidden
         ) {
-        return this.(new ListClusterAdminsRequest(showHidden));
+        return this.listClusterAdmins(new ListClusterAdminsRequest(showHidden));
     }
     /** 
      * ListClusterFaults is used to retrieve information about any faults detected on the cluster.
@@ -758,7 +758,7 @@ public class SolidFireElement
         Optional<Boolean> update,
         Optional<String> faultTypes
         ) {
-        return this.(new ListClusterFaultsRequest(exceptions, bestPractices, update, faultTypes));
+        return this.listClusterFaults(new ListClusterFaultsRequest(exceptions, bestPractices, update, faultTypes));
     }
     /** 
      * ListEvents returns events detected on the cluster, sorted from oldest to newest.
@@ -788,7 +788,7 @@ public class SolidFireElement
         Optional<Long> endEventID,
         Optional<String> eventQueueType
         ) {
-        return this.(new ListEventsRequest(maxEvents, startEventID, endEventID, eventQueueType));
+        return this.listEvents(new ListEventsRequest(maxEvents, startEventID, endEventID, eventQueueType));
     }
     /** 
      * ListSyncJobs is used to return information about synchronization jobs that are running on a SolidFire cluster. Synchronization jobs that are returned with this method are, "slice," "clone" and "remote."
@@ -824,7 +824,7 @@ public class SolidFireElement
         Optional<String[]> access,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new ModifyClusterAdminRequest(clusterAdminID, password, access, attributes));
+        return this.modifyClusterAdmin(new ModifyClusterAdminRequest(clusterAdminID, password, access, attributes));
     }
     /** 
      * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
@@ -853,7 +853,7 @@ public class SolidFireElement
         Optional<Long> stage3BlockThresholdPercent,
         Optional<Long> maxMetadataOverProvisionFactor
         ) {
-        return this.(new ModifyClusterFullThresholdRequest(stage2AwareThreshold, stage3BlockThresholdPercent, maxMetadataOverProvisionFactor));
+        return this.modifyClusterFullThreshold(new ModifyClusterFullThresholdRequest(stage2AwareThreshold, stage3BlockThresholdPercent, maxMetadataOverProvisionFactor));
     }
     /** 
      * RemoveClusterAdmin is used to remove a Cluster Admin. The "admin" Cluster Admin cannot be removed.
@@ -877,7 +877,7 @@ public class SolidFireElement
     public RemoveClusterAdminResult removeClusterAdmin(
         Long clusterAdminID
         ) {
-        return this.(new RemoveClusterAdminRequest(clusterAdminID));
+        return this.removeClusterAdmin(new RemoveClusterAdminRequest(clusterAdminID));
     }
     /** 
      * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
@@ -905,7 +905,7 @@ public class SolidFireElement
     public SetClusterConfigResult setClusterConfig(
         ClusterConfig cluster
         ) {
-        return this.(new SetClusterConfigRequest(cluster));
+        return this.setClusterConfig(new SetClusterConfigRequest(cluster));
     }
     /** 
      * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
@@ -930,7 +930,7 @@ public class SolidFireElement
         String[] servers,
         Optional<Boolean> broadcastclient
         ) {
-        return this.(new SetNtpInfoRequest(servers, broadcastclient));
+        return this.setNtpInfo(new SetNtpInfoRequest(servers, broadcastclient));
     }
     /** 
      * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
@@ -955,7 +955,7 @@ public class SolidFireElement
         SnmpNetwork[] networks,
         SnmpV3UsmUser[] usmUsers
         ) {
-        return this.(new SetSnmpACLRequest(networks, usmUsers));
+        return this.setSnmpACL(new SetSnmpACLRequest(networks, usmUsers));
     }
     /** 
      * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
@@ -986,7 +986,7 @@ public class SolidFireElement
         Optional<Boolean> snmpV3Enabled,
         Optional<SnmpV3UsmUser[]> usmUsers
         ) {
-        return this.(new SetSnmpInfoRequest(networks, enabled, snmpV3Enabled, usmUsers));
+        return this.setSnmpInfo(new SetSnmpInfoRequest(networks, enabled, snmpV3Enabled, usmUsers));
     }
     /** 
      * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
@@ -1013,7 +1013,7 @@ public class SolidFireElement
         Boolean clusterFaultResolvedTrapsEnabled,
         Boolean clusterEventTrapsEnabled
         ) {
-        return this.(new SetSnmpTrapInfoRequest(trapRecipients, clusterFaultTrapsEnabled, clusterFaultResolvedTrapsEnabled, clusterEventTrapsEnabled));
+        return this.setSnmpTrapInfo(new SetSnmpTrapInfoRequest(trapRecipients, clusterFaultTrapsEnabled, clusterFaultResolvedTrapsEnabled, clusterEventTrapsEnabled));
     }
     /** 
      * SnmpSendTestTraps enables you to test SNMP functionality for a cluster. This method instructs the cluster to send test SNMP traps to the currently configured SNMP manager.
@@ -1065,7 +1065,7 @@ public class SolidFireElement
         NewDrive[] drives,
         Optional<Boolean> forceDuringUpgrade
         ) {
-        return this.(new AddDrivesRequest(drives, forceDuringUpgrade));
+        return this.addDrives(new AddDrivesRequest(drives, forceDuringUpgrade));
     }
     /** 
      * GetDriveConfig is used to display drive information for expected slice and block drive counts as well as the number of slices and block drives that are currently connected to the node.
@@ -1100,7 +1100,7 @@ public class SolidFireElement
     public GetDriveHardwareInfoResult getDriveHardwareInfo(
         Long driveID
         ) {
-        return this.(new GetDriveHardwareInfoRequest(driveID));
+        return this.getDriveHardwareInfo(new GetDriveHardwareInfoRequest(driveID));
     }
     /** 
      * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
@@ -1114,7 +1114,7 @@ public class SolidFireElement
             throw new ApiException("The command, getDriveStats is not available until version 1.");
         }
         // Adaptor
-        return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStatsRequest(this, request);
+        return com.solidfire.adaptor.ElementServiceAdaptor.getDriveStats(this, request);
     }
 
     /** 
@@ -1127,7 +1127,7 @@ public class SolidFireElement
     public GetDriveStatsResult getDriveStats(
         Long driveID
         ) {
-        return this.(new GetDriveStatsRequest(driveID));
+        return this.getDriveStats(new GetDriveStatsRequest(driveID));
     }
     /** 
      * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
@@ -1151,7 +1151,7 @@ public class SolidFireElement
     public ListDriveHardwareResult listDriveHardware(
         Boolean force
         ) {
-        return this.(new ListDriveHardwareRequest(force));
+        return this.listDriveHardware(new ListDriveHardwareRequest(force));
     }
     /** 
      * ListDrives allows you to retrieve the list of the drives that exist in the cluster's active nodes.
@@ -1212,7 +1212,7 @@ public class SolidFireElement
         Long[] drives,
         Optional<Boolean> forceDuringUpgrade
         ) {
-        return this.(new RemoveDrivesRequest(drives, forceDuringUpgrade));
+        return this.removeDrives(new RemoveDrivesRequest(drives, forceDuringUpgrade));
     }
     /** 
      * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
@@ -1241,7 +1241,7 @@ public class SolidFireElement
         String drives,
         Boolean force
         ) {
-        return this.(new ResetDrivesRequest(drives, force));
+        return this.resetDrives(new ResetDrivesRequest(drives, force));
     }
     /** 
      * SecureEraseDrives is used to remove any residual data from drives that have a status of "available." For example, when replacing a drive at its end-of-life that contained sensitive data.
@@ -1273,7 +1273,7 @@ public class SolidFireElement
     public AsyncHandleResult secureEraseDrives(
         Long[] drives
         ) {
-        return this.(new SecureEraseDrivesRequest(drives));
+        return this.secureEraseDrives(new SecureEraseDrivesRequest(drives));
     }
     /** 
      * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
@@ -1305,7 +1305,7 @@ public class SolidFireElement
     public TestDrivesResult testDrives(
         Optional<Long> minutes
         ) {
-        return this.(new TestDrivesRequest(minutes));
+        return this.testDrives(new TestDrivesRequest(minutes));
     }
     /** 
      * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI nodes and drives in the cluster. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
@@ -1329,7 +1329,7 @@ public class SolidFireElement
     public GetClusterHardwareInfoResult getClusterHardwareInfo(
         Optional<String> type
         ) {
-        return this.(new GetClusterHardwareInfoRequest(type));
+        return this.getClusterHardwareInfo(new GetClusterHardwareInfoRequest(type));
     }
     /** 
      * GetHardwareConfig enables you to display the hardware configuration information for a node. NOTE: This method is available only through the per-node API endpoint 5.0 or later.
@@ -1362,7 +1362,7 @@ public class SolidFireElement
     public GetNodeHardwareInfoResult getNodeHardwareInfo(
         Long nodeID
         ) {
-        return this.(new GetNodeHardwareInfoRequest(nodeID));
+        return this.getNodeHardwareInfo(new GetNodeHardwareInfoRequest(nodeID));
     }
     /** 
      * GetNvramInfo allows you to retrieve information from each node about the NVRAM card.  
@@ -1397,7 +1397,7 @@ public class SolidFireElement
     public CreateInitiatorsResult createInitiators(
         CreateInitiator[] initiators
         ) {
-        return this.(new CreateInitiatorsRequest(initiators));
+        return this.createInitiators(new CreateInitiatorsRequest(initiators));
     }
     /** 
      * DeleteInitiators enables you to delete one or more initiators from the system (and from any associated volumes or volume access groups).
@@ -1423,7 +1423,7 @@ public class SolidFireElement
     public DeleteInitiatorsResult deleteInitiators(
         Long[] initiators
         ) {
-        return this.(new DeleteInitiatorsRequest(initiators));
+        return this.deleteInitiators(new DeleteInitiatorsRequest(initiators));
     }
     /** 
      * ListInitiators enables you to list initiator IQNs or World Wide Port Names (WWPNs).
@@ -1449,7 +1449,7 @@ public class SolidFireElement
         Optional<Long> limit,
         Optional<Long[]> initiators
         ) {
-        return this.(new ListInitiatorsRequest(startInitiatorID, limit, initiators));
+        return this.listInitiators(new ListInitiatorsRequest(startInitiatorID, limit, initiators));
     }
     /** 
      * ModifyInitiators enables you to change the attributes of an existing initiator. You cannot change the name of an existing initiator. If you need to change the name of an initiator, delete the existing initiator with DeleteInitiators and create a new one with CreateInitiators.
@@ -1475,7 +1475,7 @@ public class SolidFireElement
     public ModifyInitiatorsResult modifyInitiators(
         ModifyInitiator[] initiators
         ) {
-        return this.(new ModifyInitiatorsRequest(initiators));
+        return this.modifyInitiators(new ModifyInitiatorsRequest(initiators));
     }
     /** 
      * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
@@ -1506,7 +1506,7 @@ public class SolidFireElement
         Optional<Boolean> acceptEula,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new AddLdapClusterAdminRequest(username, access, acceptEula, attributes));
+        return this.addLdapClusterAdmin(new AddLdapClusterAdminRequest(username, access, acceptEula, attributes));
     }
     /** 
      * The DisableLdapAuthentication method is used disable LDAP authentication and remove all LDAP configuration settings. This call will not remove any configured cluster admin accounts (user or group). However, those cluster admin accounts will no longer be able to log in.
@@ -1548,7 +1548,7 @@ public class SolidFireElement
         Optional<String> userSearchBaseDN,
         Optional<String> userSearchFilter
         ) {
-        return this.(new EnableLdapAuthenticationRequest(authType, groupSearchBaseDN, groupSearchCustomFilter, groupSearchType, searchBindDN, searchBindPassword, serverURIs, userDNTemplate, userSearchBaseDN, userSearchFilter));
+        return this.enableLdapAuthentication(new EnableLdapAuthenticationRequest(authType, groupSearchBaseDN, groupSearchCustomFilter, groupSearchType, searchBindDN, searchBindPassword, serverURIs, userDNTemplate, userSearchBaseDN, userSearchFilter));
     }
     /** 
      * The GetLdapConfiguration is used to get the LDAP configuration currently active on the cluster.
@@ -1583,7 +1583,7 @@ public class SolidFireElement
         String password,
         Optional<LdapConfiguration> ldapConfiguration
         ) {
-        return this.(new TestLdapAuthenticationRequest(username, password, ldapConfiguration));
+        return this.testLdapAuthentication(new TestLdapAuthenticationRequest(username, password, ldapConfiguration));
     }
     /** 
      * GetLoginSessionInfo is used to return the period of time a log in authentication is valid for both log in shells and the TUI.
@@ -1625,7 +1625,7 @@ public class SolidFireElement
     public SetLoginSessionInfoResult setLoginSessionInfo(
         String timeout
         ) {
-        return this.(new SetLoginSessionInfoRequest(timeout));
+        return this.setLoginSessionInfo(new SetLoginSessionInfoRequest(timeout));
     }
     /** 
      * RemoteLoggingHosts is used to configure remote logging from the nodes in the storage cluster to a centralized log server or servers. Remote logging is performed over TCP using the default port 514. This API does not add to the existing logging hosts. Rather, it replaces what currently exists with new values specified by this API method. You can use the GetRemoteLoggingHosts to determine what the current logging hosts are and then use the SetRemoteLoggingHosts to set the desired list of current and new logging hosts.
@@ -1649,7 +1649,7 @@ public class SolidFireElement
     public SetRemoteLoggingHostsResult setRemoteLoggingHosts(
         LoggingServer[] remoteHosts
         ) {
-        return this.(new SetRemoteLoggingHostsRequest(remoteHosts));
+        return this.setRemoteLoggingHosts(new SetRemoteLoggingHostsRequest(remoteHosts));
     }
     /** 
      * The ListFibreChannelPortInfo is used to return information about the Fibre Channel ports. The API method is intended for use on individual nodes; userid and password is required for access to individual Fibre Channel nodes.
@@ -1735,7 +1735,7 @@ public class SolidFireElement
         Long[] pendingNodes,
         Optional<Boolean> autoInstall
         ) {
-        return this.(new AddNodesRequest(pendingNodes, autoInstall));
+        return this.addNodes(new AddNodesRequest(pendingNodes, autoInstall));
     }
     /** 
      * GetBootstrapConfig returns the cluster name and node name from the bootstrap configuration file. This API method should be performed on an individual node before it has been configured into a cluster. The resulting information from this method is used in the Cluster Configuration UI when the cluster is eventually created.
@@ -1779,7 +1779,7 @@ public class SolidFireElement
             throw new ApiException("The command, getNodeStats is not available until version 1.");
         }
         // Adaptor
-        return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStatsRequest(this, request);
+        return com.solidfire.adaptor.ElementServiceAdaptor.getNodeStats(this, request);
     }
 
     /** 
@@ -1791,7 +1791,7 @@ public class SolidFireElement
     public GetNodeStatsResult getNodeStats(
         Long nodeID
         ) {
-        return this.(new GetNodeStatsRequest(nodeID));
+        return this.getNodeStats(new GetNodeStatsRequest(nodeID));
     }
     /** 
      * GetOrigin enables you to retrieve the origination certificate for where the node was built.NOTE: The GetOrigin method may return "null" if there is no origination certification.
@@ -1815,7 +1815,7 @@ public class SolidFireElement
     public GetOriginResult getOrigin(
         Boolean force
         ) {
-        return this.(new GetOriginRequest(force));
+        return this.getOrigin(new GetOriginRequest(force));
     }
     /** 
      * GetPendingOperation is used to detect an operation on a node that is currently in progress. This method can also be used to report back when an operation has completed.
@@ -1900,7 +1900,7 @@ public class SolidFireElement
     public RemoveNodesResult removeNodes(
         Long[] nodes
         ) {
-        return this.(new RemoveNodesRequest(nodes));
+        return this.removeNodes(new RemoveNodesRequest(nodes));
     }
     /** 
      * The SetConfig API method is used to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method.
@@ -1932,7 +1932,7 @@ public class SolidFireElement
     public SetConfigResult setConfig(
         Config config
         ) {
-        return this.(new SetConfigRequest(config));
+        return this.setConfig(new SetConfigRequest(config));
     }
     /** 
      * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
@@ -1964,7 +1964,7 @@ public class SolidFireElement
     public SetNetworkConfigResult setNetworkConfig(
         NetworkParams network
         ) {
-        return this.(new SetNetworkConfigRequest(network));
+        return this.setNetworkConfig(new SetNetworkConfigRequest(network));
     }
     /** 
      * The CompleteClusterPairing method is the second step in the cluster pairing process.
@@ -1990,7 +1990,7 @@ public class SolidFireElement
     public CompleteClusterPairingResult completeClusterPairing(
         String clusterPairingKey
         ) {
-        return this.(new CompleteClusterPairingRequest(clusterPairingKey));
+        return this.completeClusterPairing(new CompleteClusterPairingRequest(clusterPairingKey));
     }
     /** 
      * CompleteVolumePairing is used to complete the pairing of two volumes.
@@ -2015,7 +2015,7 @@ public class SolidFireElement
         String volumePairingKey,
         Long volumeID
         ) {
-        return this.(new CompleteVolumePairingRequest(volumePairingKey, volumeID));
+        return this.completeVolumePairing(new CompleteVolumePairingRequest(volumePairingKey, volumeID));
     }
     /** 
      * ListActivePairedVolumes is used to list all of the active volumes paired with a volume.
@@ -2042,7 +2042,7 @@ public class SolidFireElement
         Optional<Long> startVolumeID,
         Optional<Long> limit
         ) {
-        return this.(new ListActivePairedVolumesRequest(startVolumeID, limit));
+        return this.listActivePairedVolumes(new ListActivePairedVolumesRequest(startVolumeID, limit));
     }
     /** 
      * ListClusterPairs is used to list all of the clusters a cluster is paired with.
@@ -2079,7 +2079,7 @@ public class SolidFireElement
         Optional<String> mode,
         Optional<Long> pauseLimit
         ) {
-        return this.(new ModifyVolumePairRequest(volumeID, pausedManual, mode, pauseLimit));
+        return this.modifyVolumePair(new ModifyVolumePairRequest(volumeID, pausedManual, mode, pauseLimit));
     }
     /** 
      * You can use the RemoveClusterPair method to close the open connections between two paired clusters.
@@ -2105,7 +2105,7 @@ public class SolidFireElement
     public RemoveClusterPairResult removeClusterPair(
         Long clusterPairID
         ) {
-        return this.(new RemoveClusterPairRequest(clusterPairID));
+        return this.removeClusterPair(new RemoveClusterPairRequest(clusterPairID));
     }
     /** 
      * RemoveVolumePair is used to remove the remote pairing between two volumes.
@@ -2133,7 +2133,7 @@ public class SolidFireElement
     public RemoveVolumePairResult removeVolumePair(
         Long volumeID
         ) {
-        return this.(new RemoveVolumePairRequest(volumeID));
+        return this.removeVolumePair(new RemoveVolumePairRequest(volumeID));
     }
     /** 
      * StartClusterPairing is used to create an encoded key from a cluster that is used to pair with another cluster.
@@ -2174,7 +2174,7 @@ public class SolidFireElement
         Long volumeID,
         Optional<String> mode
         ) {
-        return this.(new StartVolumePairingRequest(volumeID, mode));
+        return this.startVolumePairing(new StartVolumePairingRequest(volumeID, mode));
     }
     /** 
      * Gets protocol endpoints in the system
@@ -2202,7 +2202,7 @@ public class SolidFireElement
     public ListProtocolEndpointsResult listProtocolEndpoints(
         Optional<java.util.UUID[]> protocolEndpointIDs
         ) {
-        return this.(new ListProtocolEndpointsRequest(protocolEndpointIDs));
+        return this.listProtocolEndpoints(new ListProtocolEndpointsRequest(protocolEndpointIDs));
     }
     /** 
      * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
@@ -2229,7 +2229,7 @@ public class SolidFireElement
         Optional<String> options,
         Optional<Boolean> reboot
         ) {
-        return this.(new ResetNodeRequest(build, force, options, reboot));
+        return this.resetNode(new ResetNodeRequest(build, force, options, reboot));
     }
     /** 
      * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
@@ -2254,7 +2254,7 @@ public class SolidFireElement
     public java.util.Map<String, Object> restartNetworking(
         Boolean force
         ) {
-        return this.(new RestartNetworkingRequest(force));
+        return this.restartNetworking(new RestartNetworkingRequest(force));
     }
     /** 
      * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
@@ -2281,7 +2281,7 @@ public class SolidFireElement
         Optional<String> service,
         Optional<String> action
         ) {
-        return this.(new RestartServicesRequest(force, service, action));
+        return this.restartServices(new RestartServicesRequest(force, service, action));
     }
     /** 
      * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method, login in to the MIP for the pending node and enter the "shutdown" method with either the "restart" or "halt" options in the following table.
@@ -2306,7 +2306,7 @@ public class SolidFireElement
         Long[] nodes,
         Optional<String> option
         ) {
-        return this.(new ShutdownRequest(nodes, option));
+        return this.shutdown(new ShutdownRequest(nodes, option));
     }
     /** 
      * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
@@ -2320,7 +2320,7 @@ public class SolidFireElement
             throw new ApiException("The command, invokeSFApi is not available until version 1.0.");
         }
         // Adaptor
-        return com.solidfire.adaptor.ElementServiceAdaptor.invokeSFApiRequest(this, request);
+        return com.solidfire.adaptor.ElementServiceAdaptor.invokeSFApi(this, request);
     }
 
     /** 
@@ -2334,7 +2334,7 @@ public class SolidFireElement
         String method,
         Optional<java.util.Map<String, Object>> parameters
         ) {
-        return this.(new InvokeSFApiRequest(method, parameters));
+        return this.invokeSFApi(new InvokeSFApiRequest(method, parameters));
     }
     /** 
      * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
@@ -2359,7 +2359,7 @@ public class SolidFireElement
         Optional<String> chassisType,
         Boolean force
         ) {
-        return this.(new GetIpmiConfigRequest(chassisType, force));
+        return this.getIpmiConfig(new GetIpmiConfigRequest(chassisType, force));
     }
     /** 
      * GetIpmiInfo allows you to display a detailed reporting of sensors (objects) for node fans, intake and exhaust temperatures, and power supplies  that are monitored by . 
@@ -2383,7 +2383,7 @@ public class SolidFireElement
     public GetIpmiInfoResult getIpmiInfo(
         Boolean force
         ) {
-        return this.(new GetIpmiInfoRequest(force));
+        return this.getIpmiInfo(new GetIpmiInfoRequest(force));
     }
     /** 
      * List the services in the cluster.
@@ -2434,7 +2434,7 @@ public class SolidFireElement
         Optional<String> retention,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new CreateGroupSnapshotRequest(volumes, name, enableRemoteReplication, retention, attributes));
+        return this.createGroupSnapshot(new CreateGroupSnapshotRequest(volumes, name, enableRemoteReplication, retention, attributes));
     }
     /** 
      * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
@@ -2451,7 +2451,7 @@ public class SolidFireElement
             throw new ApiException("The command, createSchedule is not available until version 8.");
         }
         // Adaptor
-        return com.solidfire.adaptor.ElementServiceAdaptor.createScheduleRequest(this, request);
+        return com.solidfire.adaptor.ElementServiceAdaptor.createSchedule(this, request);
     }
 
     /** 
@@ -2467,7 +2467,7 @@ public class SolidFireElement
     public CreateScheduleResult createSchedule(
         Schedule schedule
         ) {
-        return this.(new CreateScheduleRequest(schedule));
+        return this.createSchedule(new CreateScheduleRequest(schedule));
     }
     /** 
      * CreateSnapshot is used to create a point-in-time copy of a volume.
@@ -2511,7 +2511,7 @@ public class SolidFireElement
         Optional<String> retention,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new CreateSnapshotRequest(volumeID, snapshotID, name, enableRemoteReplication, retention, attributes));
+        return this.createSnapshot(new CreateSnapshotRequest(volumeID, snapshotID, name, enableRemoteReplication, retention, attributes));
     }
     /** 
      * DeleteGroupSnapshot is used to delete a group snapshot.
@@ -2540,7 +2540,7 @@ public class SolidFireElement
         Long groupSnapshotID,
         Boolean saveMembers
         ) {
-        return this.(new DeleteGroupSnapshotRequest(groupSnapshotID, saveMembers));
+        return this.deleteGroupSnapshot(new DeleteGroupSnapshotRequest(groupSnapshotID, saveMembers));
     }
     /** 
      * DeleteSnapshot is used to delete a snapshot.
@@ -2570,7 +2570,7 @@ public class SolidFireElement
     public DeleteSnapshotResult deleteSnapshot(
         Long snapshotID
         ) {
-        return this.(new DeleteSnapshotRequest(snapshotID));
+        return this.deleteSnapshot(new DeleteSnapshotRequest(snapshotID));
     }
     /** 
      * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
@@ -2583,7 +2583,7 @@ public class SolidFireElement
             throw new ApiException("The command, getSchedule is not available until version 8.");
         }
         // Adaptor
-        return com.solidfire.adaptor.ElementServiceAdaptor.getScheduleRequest(this, request);
+        return com.solidfire.adaptor.ElementServiceAdaptor.getSchedule(this, request);
     }
 
     /** 
@@ -2595,7 +2595,7 @@ public class SolidFireElement
     public GetScheduleResult getSchedule(
         Long scheduleID
         ) {
-        return this.(new GetScheduleRequest(scheduleID));
+        return this.getSchedule(new GetScheduleRequest(scheduleID));
     }
     /** 
      * ListGroupSnapshots is used to return information about all group snapshots that have been created.
@@ -2623,7 +2623,7 @@ public class SolidFireElement
         Optional<Long> volumeID,
         Optional<Long> groupSnapshotID
         ) {
-        return this.(new ListGroupSnapshotsRequest(volumeID, groupSnapshotID));
+        return this.listGroupSnapshots(new ListGroupSnapshotsRequest(volumeID, groupSnapshotID));
     }
     /** 
      * ListSchedule is used to return information about all scheduled snapshots that have been created.
@@ -2658,7 +2658,7 @@ public class SolidFireElement
         Optional<Long> volumeID,
         Optional<Boolean> internal
         ) {
-        return this.(new ListSnapshotsRequest(volumeID, internal));
+        return this.listSnapshots(new ListSnapshotsRequest(volumeID, internal));
     }
     /** 
      * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
@@ -2684,7 +2684,7 @@ public class SolidFireElement
         Optional<String> expirationTime,
         Optional<Boolean> enableRemoteReplication
         ) {
-        return this.(new ModifyGroupSnapshotRequest(groupSnapshotID, expirationTime, enableRemoteReplication));
+        return this.modifyGroupSnapshot(new ModifyGroupSnapshotRequest(groupSnapshotID, expirationTime, enableRemoteReplication));
     }
     /** 
      * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.
@@ -2697,7 +2697,7 @@ public class SolidFireElement
             throw new ApiException("The command, modifySchedule is not available until version 8.");
         }
         // Adaptor
-        return com.solidfire.adaptor.ElementServiceAdaptor.modifyScheduleRequest(this, request);
+        return com.solidfire.adaptor.ElementServiceAdaptor.modifySchedule(this, request);
     }
 
     /** 
@@ -2709,7 +2709,7 @@ public class SolidFireElement
     public ModifyScheduleResult modifySchedule(
         Schedule schedule
         ) {
-        return this.(new ModifyScheduleRequest(schedule));
+        return this.modifySchedule(new ModifyScheduleRequest(schedule));
     }
     /** 
      * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
@@ -2737,7 +2737,7 @@ public class SolidFireElement
         Optional<String> expirationTime,
         Optional<Boolean> enableRemoteReplication
         ) {
-        return this.(new ModifySnapshotRequest(snapshotID, expirationTime, enableRemoteReplication));
+        return this.modifySnapshot(new ModifySnapshotRequest(snapshotID, expirationTime, enableRemoteReplication));
     }
     /** 
      * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
@@ -2770,7 +2770,7 @@ public class SolidFireElement
         Optional<String> name,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new RollbackToGroupSnapshotRequest(groupSnapshotID, saveCurrentState, name, attributes));
+        return this.rollbackToGroupSnapshot(new RollbackToGroupSnapshotRequest(groupSnapshotID, saveCurrentState, name, attributes));
     }
     /** 
      * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
@@ -2808,7 +2808,7 @@ public class SolidFireElement
         Optional<String> name,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new RollbackToSnapshotRequest(volumeID, snapshotID, saveCurrentState, name, attributes));
+        return this.rollbackToSnapshot(new RollbackToSnapshotRequest(volumeID, snapshotID, saveCurrentState, name, attributes));
     }
     /** 
      * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
@@ -2861,7 +2861,7 @@ public class SolidFireElement
     public ListDriveStatsResult listDriveStats(
         Optional<Long[]> drives
         ) {
-        return this.(new ListDriveStatsRequest(drives));
+        return this.listDriveStats(new ListDriveStatsRequest(drives));
     }
     /** 
      **/
@@ -2883,7 +2883,7 @@ public class SolidFireElement
     public ListVolumeStatsResult listVolumeStats(
         Optional<Long[]> volumeIDs
         ) {
-        return this.(new ListVolumeStatsRequest(volumeIDs));
+        return this.listVolumeStats(new ListVolumeStatsRequest(volumeIDs));
     }
     /** 
      * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
@@ -2907,7 +2907,7 @@ public class SolidFireElement
     public ListVolumeStatsByVirtualVolumeResult listVolumeStatsByVirtualVolume(
         Optional<java.util.UUID[]> virtualVolumeIDs
         ) {
-        return this.(new ListVolumeStatsByVirtualVolumeRequest(virtualVolumeIDs));
+        return this.listVolumeStatsByVirtualVolume(new ListVolumeStatsByVirtualVolumeRequest(virtualVolumeIDs));
     }
     /** 
      * Creates a new VVols storage container.
@@ -2933,7 +2933,7 @@ public class SolidFireElement
         Optional<String> initiatorSecret,
         Optional<String> targetSecret
         ) {
-        return this.(new CreateStorageContainerRequest(name, initiatorSecret, targetSecret));
+        return this.createStorageContainer(new CreateStorageContainerRequest(name, initiatorSecret, targetSecret));
     }
     /** 
      * Deletes a storage container from the system.
@@ -2957,7 +2957,7 @@ public class SolidFireElement
     public DeleteStorageContainerResult deleteStorageContainers(
         java.util.UUID[] storageContainerIDs
         ) {
-        return this.(new DeleteStorageContainersRequest(storageContainerIDs));
+        return this.deleteStorageContainers(new DeleteStorageContainersRequest(storageContainerIDs));
     }
     /** 
      * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
@@ -2981,7 +2981,7 @@ public class SolidFireElement
     public GetStorageContainerEfficiencyResult getStorageContainerEfficiency(
         java.util.UUID storageContainerID
         ) {
-        return this.(new GetStorageContainerEfficiencyRequest(storageContainerID));
+        return this.getStorageContainerEfficiency(new GetStorageContainerEfficiencyRequest(storageContainerID));
     }
     /** 
      * Gets information for all storage containers currently in the system.
@@ -3005,7 +3005,7 @@ public class SolidFireElement
     public ListStorageContainersResult listStorageContainers(
         Optional<java.util.UUID[]> storageContainerIDs
         ) {
-        return this.(new ListStorageContainersRequest(storageContainerIDs));
+        return this.listStorageContainers(new ListStorageContainersRequest(storageContainerIDs));
     }
     /** 
      * Modifies an existing storage container.
@@ -3031,7 +3031,7 @@ public class SolidFireElement
         Optional<String> initiatorSecret,
         Optional<String> targetSecret
         ) {
-        return this.(new ModifyStorageContainerRequest(storageContainerID, initiatorSecret, targetSecret));
+        return this.modifyStorageContainer(new ModifyStorageContainerRequest(storageContainerID, initiatorSecret, targetSecret));
     }
     /** 
      * The ListTests API method is used to return the tests that are available to run on a node.
@@ -3077,7 +3077,7 @@ public class SolidFireElement
     public TestConnectEnsembleResult testConnectEnsemble(
         Optional<String> ensemble
         ) {
-        return this.(new TestConnectEnsembleRequest(ensemble));
+        return this.testConnectEnsemble(new TestConnectEnsembleRequest(ensemble));
     }
     /** 
      * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
@@ -3103,7 +3103,7 @@ public class SolidFireElement
     public TestConnectMvipResult testConnectMvip(
         Optional<String> mvip
         ) {
-        return this.(new TestConnectMvipRequest(mvip));
+        return this.testConnectMvip(new TestConnectMvipRequest(mvip));
     }
     /** 
      * The TestConnectSvip API method is used to test the storage connection to the cluster. The test pings the SVIP using ICMP packets and when successful connects as an iSCSI initiator.
@@ -3129,7 +3129,7 @@ public class SolidFireElement
     public TestConnectSvipResult testConnectSvip(
         Optional<String> svip
         ) {
-        return this.(new TestConnectSvipRequest(svip));
+        return this.testConnectSvip(new TestConnectSvipRequest(svip));
     }
     /** 
      * The TestPing API method is used to validate the connection to all nodes in the cluster on both 1G and 10G interfaces using ICMP packets. The test uses the appropriate MTU sizes for each packet based on the MTU settings in the network configuration.
@@ -3159,7 +3159,7 @@ public class SolidFireElement
         Optional<Long> packetSize,
         Optional<Long> pingTimeoutMsec
         ) {
-        return this.(new TestPingRequest(attempts, hosts, totalTimeoutSec, packetSize, pingTimeoutMsec));
+        return this.testPing(new TestPingRequest(attempts, hosts, totalTimeoutSec, packetSize, pingTimeoutMsec));
     }
     /** 
      * AddVirtualNetwork is used to add a new virtual network to a cluster configuration. When a virtual network is added, an interface for each node is created and each will require a virtual network IP address. The number of IP addresses specified as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. Virtual network addresses are bulk provisioned by SolidFire and assigned to individual nodes automatically. Virtual network addresses do not need to be assigned to nodes manually.
@@ -3200,7 +3200,7 @@ public class SolidFireElement
         Optional<Boolean> namespace,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new AddVirtualNetworkRequest(virtualNetworkTag, name, addressBlocks, netmask, svip, gateway, namespace, attributes));
+        return this.addVirtualNetwork(new AddVirtualNetworkRequest(virtualNetworkTag, name, addressBlocks, netmask, svip, gateway, namespace, attributes));
     }
     /** 
      * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
@@ -3231,7 +3231,7 @@ public class SolidFireElement
         Optional<Long[]> virtualNetworkIDs,
         Optional<Long[]> virtualNetworkTags
         ) {
-        return this.(new ListVirtualNetworksRequest(virtualNetworkID, virtualNetworkTag, virtualNetworkIDs, virtualNetworkTags));
+        return this.listVirtualNetworks(new ListVirtualNetworksRequest(virtualNetworkID, virtualNetworkTag, virtualNetworkIDs, virtualNetworkTags));
     }
     /** 
      * ModifyVirtualNetwork is used to change various attributes of a VirtualNetwork object. This method can be used to add or remove address blocks, change the netmask IP, or modify the name or description of the virtual network.
@@ -3273,7 +3273,7 @@ public class SolidFireElement
         Optional<Boolean> namespace,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new ModifyVirtualNetworkRequest(virtualNetworkID, virtualNetworkTag, name, addressBlocks, netmask, svip, gateway, namespace, attributes));
+        return this.modifyVirtualNetwork(new ModifyVirtualNetworkRequest(virtualNetworkID, virtualNetworkTag, name, addressBlocks, netmask, svip, gateway, namespace, attributes));
     }
     /** 
      * RemoveVirtualNetwork is used to remove a previously added virtual network.
@@ -3302,7 +3302,7 @@ public class SolidFireElement
         Optional<Long> virtualNetworkID,
         Optional<Long> virtualNetworkTag
         ) {
-        return this.(new RemoveVirtualNetworkRequest(virtualNetworkID, virtualNetworkTag));
+        return this.removeVirtualNetwork(new RemoveVirtualNetworkRequest(virtualNetworkID, virtualNetworkTag));
     }
     /** 
      * EnableFeature allows you to enable cluster features that are disabled by default.
@@ -3326,7 +3326,7 @@ public class SolidFireElement
     public EnableFeatureResult enableFeature(
         String feature
         ) {
-        return this.(new EnableFeatureRequest(feature));
+        return this.enableFeature(new EnableFeatureRequest(feature));
     }
     /** 
      * GetFeatureStatus allows you to retrieve the status of a cluster feature.
@@ -3350,7 +3350,7 @@ public class SolidFireElement
     public GetFeatureStatusResult getFeatureStatus(
         Optional<String> feature
         ) {
-        return this.(new GetFeatureStatusRequest(feature));
+        return this.getFeatureStatus(new GetFeatureStatusRequest(feature));
     }
     /** 
      * Enables retrieval of the number of virtual volumes currently in the system.
@@ -3383,7 +3383,7 @@ public class SolidFireElement
     public ListVirtualVolumeBindingsResult listVirtualVolumeBindings(
         Optional<Long[]> virtualVolumeBindingIDs
         ) {
-        return this.(new ListVirtualVolumeBindingsRequest(virtualVolumeBindingIDs));
+        return this.listVirtualVolumeBindings(new ListVirtualVolumeBindingsRequest(virtualVolumeBindingIDs));
     }
     /** 
      * ListVirtualVolumeHosts returns a list of known ESX hosts.
@@ -3407,7 +3407,7 @@ public class SolidFireElement
     public ListVirtualVolumeHostsResult listVirtualVolumeHosts(
         Optional<java.util.UUID[]> virtualVolumeHostIDs
         ) {
-        return this.(new ListVirtualVolumeHostsRequest(virtualVolumeHostIDs));
+        return this.listVirtualVolumeHosts(new ListVirtualVolumeHostsRequest(virtualVolumeHostIDs));
     }
     /** 
      * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
@@ -3431,7 +3431,7 @@ public class SolidFireElement
     public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
         Optional<java.util.UUID[]> virtualVolumeTaskIDs
         ) {
-        return this.(new ListVirtualVolumeTasksRequest(virtualVolumeTaskIDs));
+        return this.listVirtualVolumeTasks(new ListVirtualVolumeTasksRequest(virtualVolumeTaskIDs));
     }
     /** 
      * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
@@ -3459,7 +3459,7 @@ public class SolidFireElement
         Optional<java.util.UUID> startVirtualVolumeID,
         Optional<java.util.UUID[]> virtualVolumeIDs
         ) {
-        return this.(new ListVirtualVolumesRequest(details, limit, recursive, startVirtualVolumeID, virtualVolumeIDs));
+        return this.listVirtualVolumes(new ListVirtualVolumesRequest(details, limit, recursive, startVirtualVolumeID, virtualVolumeIDs));
     }
     /** 
      * Cancels a currently running clone operation. This method does not return anything.
@@ -3483,7 +3483,7 @@ public class SolidFireElement
     public CancelCloneResult cancelClone(
         Long cloneID
         ) {
-        return this.(new CancelCloneRequest(cloneID));
+        return this.cancelClone(new CancelCloneRequest(cloneID));
     }
     /** 
      * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
@@ -3507,7 +3507,7 @@ public class SolidFireElement
     public CancelGroupCloneResult cancelGroupClone(
         Long groupCloneID
         ) {
-        return this.(new CancelGroupCloneRequest(groupCloneID));
+        return this.cancelGroupClone(new CancelGroupCloneRequest(groupCloneID));
     }
     /** 
      * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
@@ -3540,7 +3540,7 @@ public class SolidFireElement
         Optional<Long> groupSnapshotID,
         Optional<Long> newAccountID
         ) {
-        return this.(new CloneMultipleVolumesRequest(volumes, access, groupSnapshotID, newAccountID));
+        return this.cloneMultipleVolumes(new CloneMultipleVolumesRequest(volumes, access, groupSnapshotID, newAccountID));
     }
     /** 
      * CloneVolume is used to create a copy of the volume.
@@ -3589,7 +3589,7 @@ public class SolidFireElement
         Optional<java.util.Map<String, Object>> attributes,
         Optional<Boolean> enable512e
         ) {
-        return this.(new CloneVolumeRequest(volumeID, name, newAccountID, newSize, access, snapshotID, attributes, enable512e));
+        return this.cloneVolume(new CloneVolumeRequest(volumeID, name, newAccountID, newSize, access, snapshotID, attributes, enable512e));
     }
     /** 
      * Copies one volume to another.
@@ -3615,7 +3615,7 @@ public class SolidFireElement
         Long dstVolumeID,
         Optional<Long> snapshotID
         ) {
-        return this.(new CopyVolumeRequest(volumeID, dstVolumeID, snapshotID));
+        return this.copyVolume(new CopyVolumeRequest(volumeID, dstVolumeID, snapshotID));
     }
     /** 
      * CreateVolume is used to create a new (empty) volume on the cluster.
@@ -3647,7 +3647,7 @@ public class SolidFireElement
         Optional<java.util.Map<String, Object>> attributes,
         Optional<Long> sliceCount
         ) {
-        return this.(new CreateVolumeRequest(name, accountID, totalSize, enable512e, qos, attributes, sliceCount));
+        return this.createVolume(new CreateVolumeRequest(name, accountID, totalSize, enable512e, qos, attributes, sliceCount));
     }
     /** 
      * DeleteVolume marks an active volume for deletion.
@@ -3699,7 +3699,7 @@ public class SolidFireElement
     public DeleteVolumeResult deleteVolume(
         Long volumeID
         ) {
-        return this.(new DeleteVolumeRequest(volumeID));
+        return this.deleteVolume(new DeleteVolumeRequest(volumeID));
     }
     /** 
      * DeleteVolumes marks multiple (up to 500) active volumes for deletion. Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.The cleanup interval can be set in the SetClusterSettings method. For more information on using this method, see SetClusterSettings on page 1. After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated and no further connections are allowed while the volumes are in this state. A marked volume is not returned in target discovery requests. Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from the system. If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or write operation is stopped. If the volumes you delete are paired with a volume, replication between the paired volumes is suspended and no data is transferred to them or from them while in a deleted state. The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state and data is no longer sent to them or from the deleted volumes. Until the deleted volumes are purged, they can be restored and data transfers resume. If the deleted volumes are purged from the system, the volumes they were paired with enter into a StoppedMisconfigured state and the volume pairing status is removed. The purged volumes become permanently unavailable.
@@ -3725,7 +3725,7 @@ public class SolidFireElement
         Optional<Long[]> volumeAccessGroupIDs,
         Optional<Long[]> volumeIDs
         ) {
-        return this.(new DeleteVolumesRequest(accountIDs, volumeAccessGroupIDs, volumeIDs));
+        return this.deleteVolumes(new DeleteVolumesRequest(accountIDs, volumeAccessGroupIDs, volumeIDs));
     }
     /** 
      * Used to retrieve the result of asynchronous method calls.
@@ -3767,7 +3767,7 @@ public class SolidFireElement
         Long asyncHandle,
         Optional<Boolean> keepResult
         ) {
-        return this.(new GetAsyncResultRequest(asyncHandle, keepResult));
+        return this.getAsyncResult(new GetAsyncResultRequest(asyncHandle, keepResult));
     }
     /** 
      * GetDefaultQoS is used to retrieve the default QoS values that are set for a volume if QoS is not supplied.
@@ -3811,7 +3811,7 @@ public class SolidFireElement
     public GetVolumeEfficiencyResult getVolumeEfficiency(
         Long volumeID
         ) {
-        return this.(new GetVolumeEfficiencyRequest(volumeID));
+        return this.getVolumeEfficiency(new GetVolumeEfficiencyRequest(volumeID));
     }
     /** 
      * GetVolumeStats is used to retrieve high-level activity measurements for a single volume.
@@ -3837,7 +3837,7 @@ public class SolidFireElement
     public GetVolumeStatsResult getVolumeStats(
         Long volumeID
         ) {
-        return this.(new GetVolumeStatsRequest(volumeID));
+        return this.getVolumeStats(new GetVolumeStatsRequest(volumeID));
     }
     /** 
      * ListActiveVolumes is used to return the list of active volumes currently in the system.
@@ -3864,7 +3864,7 @@ public class SolidFireElement
         Optional<Long> startVolumeID,
         Optional<Long> limit
         ) {
-        return this.(new ListActiveVolumesRequest(startVolumeID, limit));
+        return this.listActiveVolumes(new ListActiveVolumesRequest(startVolumeID, limit));
     }
     /** 
      * You can use ListAsyncResults to list the results of all currently running and completed asynchronous methods on the system. Querying asynchronous results with ListAsyncResults does not cause completed asyncHandles to expire; you can use GetAsyncResult to query any of the asyncHandles returned by ListAsyncResults.
@@ -3888,7 +3888,7 @@ public class SolidFireElement
     public ListAsyncResultsResult listAsyncResults(
         Optional<String[]> asyncResultTypes
         ) {
-        return this.(new ListAsyncResultsRequest(asyncResultTypes));
+        return this.listAsyncResults(new ListAsyncResultsRequest(asyncResultTypes));
     }
     /** 
      * ListBulkVolumeJobs is used to return information about each bulk volume read or write operation that is occurring in the system.
@@ -3950,7 +3950,7 @@ public class SolidFireElement
     public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
         Optional<Long[]> volumeAccessGroups
         ) {
-        return this.(new ListVolumeStatsByVolumeAccessGroupRequest(volumeAccessGroups));
+        return this.listVolumeStatsByVolumeAccessGroup(new ListVolumeStatsByVolumeAccessGroupRequest(volumeAccessGroups));
     }
     /** 
      * The ListVolumes method is used to return a list of volumes that are in a cluster.
@@ -3984,7 +3984,7 @@ public class SolidFireElement
         Optional<Boolean> isPaired,
         Optional<Long[]> volumeIDs
         ) {
-        return this.(new ListVolumesRequest(startVolumeID, limit, volumeStatus, accounts, isPaired, volumeIDs));
+        return this.listVolumes(new ListVolumesRequest(startVolumeID, limit, volumeStatus, accounts, isPaired, volumeIDs));
     }
     /** 
      * ListVolumesForAccount returns the list of active AND (pending) deleted volumes for an account.
@@ -4010,7 +4010,7 @@ public class SolidFireElement
         Optional<Long> startVolumeID,
         Optional<Long> limit
         ) {
-        return this.(new ListVolumesForAccountRequest(accountID, startVolumeID, limit));
+        return this.listVolumesForAccount(new ListVolumesForAccountRequest(accountID, startVolumeID, limit));
     }
     /** 
      * ModifyVolume is used to modify settings on an existing volume.
@@ -4055,7 +4055,7 @@ public class SolidFireElement
         Optional<Long> totalSize,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new ModifyVolumeRequest(volumeID, accountID, access, qos, totalSize, attributes));
+        return this.modifyVolume(new ModifyVolumeRequest(volumeID, accountID, access, qos, totalSize, attributes));
     }
     /** 
      * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
@@ -4084,7 +4084,7 @@ public class SolidFireElement
         Optional<Long> totalSize,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new ModifyVolumesRequest(volumeIDs, accountID, access, qos, totalSize, attributes));
+        return this.modifyVolumes(new ModifyVolumesRequest(volumeIDs, accountID, access, qos, totalSize, attributes));
     }
     /** 
      * PurgeDeletedVolume immediately and permanently purges a volume which has been deleted.
@@ -4112,7 +4112,7 @@ public class SolidFireElement
     public PurgeDeletedVolumeResult purgeDeletedVolume(
         Long volumeID
         ) {
-        return this.(new PurgeDeletedVolumeRequest(volumeID));
+        return this.purgeDeletedVolume(new PurgeDeletedVolumeRequest(volumeID));
     }
     /** 
      * PurgeDeletedVolumes immediately and permanently purges volumes that have been deleted; you can use this method to purge up to 500 volumes at one time. You must delete volumes using DeleteVolumes before they can be purged. Volumes are purged by the system automatically after a period of time, so usage of this method is not typically required.
@@ -4138,7 +4138,7 @@ public class SolidFireElement
         Optional<Long[]> accountIDs,
         Optional<Long[]> volumeAccessGroupIDs
         ) {
-        return this.(new PurgeDeletedVolumesRequest(volumeIDs, accountIDs, volumeAccessGroupIDs));
+        return this.purgeDeletedVolumes(new PurgeDeletedVolumesRequest(volumeIDs, accountIDs, volumeAccessGroupIDs));
     }
     /** 
      * RestoreDeletedVolume marks a deleted volume as active again.
@@ -4164,7 +4164,7 @@ public class SolidFireElement
     public RestoreDeletedVolumeResult restoreDeletedVolume(
         Long volumeID
         ) {
-        return this.(new RestoreDeletedVolumeRequest(volumeID));
+        return this.restoreDeletedVolume(new RestoreDeletedVolumeRequest(volumeID));
     }
     /** 
      * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.
@@ -4190,7 +4190,7 @@ public class SolidFireElement
         Optional<Long> maxIOPS,
         Optional<Long> burstIOPS
         ) {
-        return this.(new SetDefaultQoSRequest(minIOPS, maxIOPS, burstIOPS));
+        return this.setDefaultQoS(new SetDefaultQoSRequest(minIOPS, maxIOPS, burstIOPS));
     }
     /** 
      * StartBulkVolumeRead allows you to initialize a bulk volume read session on a specified volume.
@@ -4243,7 +4243,7 @@ public class SolidFireElement
         Optional<java.util.Map<String, Object>> scriptParameters,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new StartBulkVolumeReadRequest(volumeID, format, snapshotID, script, scriptParameters, attributes));
+        return this.startBulkVolumeRead(new StartBulkVolumeReadRequest(volumeID, format, snapshotID, script, scriptParameters, attributes));
     }
     /** 
      * StartBulkVolumeWrite allows you to initialize a bulk volume write session on a specified volume.
@@ -4279,7 +4279,7 @@ public class SolidFireElement
         Optional<java.util.Map<String, Object>> scriptParameters,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new StartBulkVolumeWriteRequest(volumeID, format, script, scriptParameters, attributes));
+        return this.startBulkVolumeWrite(new StartBulkVolumeWriteRequest(volumeID, format, script, scriptParameters, attributes));
     }
     /** 
      * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
@@ -4307,7 +4307,7 @@ public class SolidFireElement
         Optional<String> message,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new UpdateBulkVolumeStatusRequest(key, status, percentComplete, message, attributes));
+        return this.updateBulkVolumeStatus(new UpdateBulkVolumeStatusRequest(key, status, percentComplete, message, attributes));
     }
     /** 
      * Add initiators to a volume access group.
@@ -4332,7 +4332,7 @@ public class SolidFireElement
         Long volumeAccessGroupID,
         String[] initiators
         ) {
-        return this.(new AddInitiatorsToVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
+        return this.addInitiatorsToVolumeAccessGroup(new AddInitiatorsToVolumeAccessGroupRequest(volumeAccessGroupID, initiators));
     }
     /** 
      * Add volumes to a volume access group.
@@ -4357,7 +4357,7 @@ public class SolidFireElement
         Long volumeAccessGroupID,
         Long[] volumes
         ) {
-        return this.(new AddVolumesToVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
+        return this.addVolumesToVolumeAccessGroup(new AddVolumesToVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
     }
     /** 
      * Creates a new volume access group.
@@ -4400,7 +4400,7 @@ public class SolidFireElement
         Optional<Long[]> virtualNetworkTags,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new CreateVolumeAccessGroupRequest(name, initiators, volumes, virtualNetworkID, virtualNetworkTags, attributes));
+        return this.createVolumeAccessGroup(new CreateVolumeAccessGroupRequest(name, initiators, volumes, virtualNetworkID, virtualNetworkTags, attributes));
     }
     /** 
      * Delete a volume access group from the system.
@@ -4424,7 +4424,7 @@ public class SolidFireElement
     public DeleteVolumeAccessGroupResult deleteVolumeAccessGroup(
         Long volumeAccessGroupID
         ) {
-        return this.(new DeleteVolumeAccessGroupRequest(volumeAccessGroupID));
+        return this.deleteVolumeAccessGroup(new DeleteVolumeAccessGroupRequest(volumeAccessGroupID));
     }
     /** 
      * GetVolumeAccessGroupEfficiency is used to retrieve efficiency information about a volume access group. Only the volume access group provided as parameters in this API method is used to compute the capacity.
@@ -4448,7 +4448,7 @@ public class SolidFireElement
     public GetEfficiencyResult getVolumeAccessGroupEfficiency(
         Long volumeAccessGroupID
         ) {
-        return this.(new GetVolumeAccessGroupEfficiencyRequest(volumeAccessGroupID));
+        return this.getVolumeAccessGroupEfficiency(new GetVolumeAccessGroupEfficiencyRequest(volumeAccessGroupID));
     }
     /** 
      * The GetVolumeAccessGroupLunAssignments is used to return information LUN mappings of a specified volume access group.
@@ -4472,7 +4472,7 @@ public class SolidFireElement
     public GetVolumeAccessGroupLunAssignmentsResult getVolumeAccessGroupLunAssignments(
         Long volumeAccessGroupID
         ) {
-        return this.(new GetVolumeAccessGroupLunAssignmentsRequest(volumeAccessGroupID));
+        return this.getVolumeAccessGroupLunAssignments(new GetVolumeAccessGroupLunAssignmentsRequest(volumeAccessGroupID));
     }
     /** 
      * ListVolumeAccessGroups is used to return information about the volume access groups that are currently in the system.
@@ -4497,7 +4497,7 @@ public class SolidFireElement
         Optional<Long> startVolumeAccessGroupID,
         Optional<Long> limit
         ) {
-        return this.(new ListVolumeAccessGroupsRequest(startVolumeAccessGroupID, limit));
+        return this.listVolumeAccessGroups(new ListVolumeAccessGroupsRequest(startVolumeAccessGroupID, limit));
     }
     /** 
      * Update initiators and add or remove volumes from a volume access group.
@@ -4551,7 +4551,7 @@ public class SolidFireElement
         Optional<Long[]> volumes,
         Optional<java.util.Map<String, Object>> attributes
         ) {
-        return this.(new ModifyVolumeAccessGroupRequest(volumeAccessGroupID, virtualNetworkID, virtualNetworkTags, name, initiators, volumes, attributes));
+        return this.modifyVolumeAccessGroup(new ModifyVolumeAccessGroupRequest(volumeAccessGroupID, virtualNetworkID, virtualNetworkTags, name, initiators, volumes, attributes));
     }
     /** 
      * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
@@ -4588,7 +4588,7 @@ public class SolidFireElement
         Long volumeAccessGroupID,
         LunAssignment[] lunAssignments
         ) {
-        return this.(new ModifyVolumeAccessGroupLunAssignmentsRequest(volumeAccessGroupID, lunAssignments));
+        return this.modifyVolumeAccessGroupLunAssignments(new ModifyVolumeAccessGroupLunAssignmentsRequest(volumeAccessGroupID, lunAssignments));
     }
     /** 
      * Remove initiators from a volume access group.
@@ -4614,7 +4614,7 @@ public class SolidFireElement
         String[] initiators,
         Optional<Boolean> deleteOrphanInitiators
         ) {
-        return this.(new RemoveInitiatorsFromVolumeAccessGroupRequest(volumeAccessGroupID, initiators, deleteOrphanInitiators));
+        return this.removeInitiatorsFromVolumeAccessGroup(new RemoveInitiatorsFromVolumeAccessGroupRequest(volumeAccessGroupID, initiators, deleteOrphanInitiators));
     }
     /** 
      * Remove volumes from a volume access group.
@@ -4639,6 +4639,6 @@ public class SolidFireElement
         Long volumeAccessGroupID,
         Long[] volumes
         ) {
-        return this.(new RemoveVolumesFromVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
+        return this.removeVolumesFromVolumeAccessGroup(new RemoveVolumesFromVolumeAccessGroupRequest(volumeAccessGroupID, volumes));
     }
 }

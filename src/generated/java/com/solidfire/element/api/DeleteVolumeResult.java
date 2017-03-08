@@ -120,7 +120,7 @@ public class DeleteVolumeResult implements Serializable {
             return this;
         }
 
-        public DeleteVolumeResult.Builder optional(final Volume volume) {
+        public DeleteVolumeResult.Builder optionalVolume(final Volume volume) {
             this.volume = (volume == null) ? Optional.<Volume>empty() : Optional.of(volume);
             return this;
         }

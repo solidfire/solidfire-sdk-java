@@ -160,12 +160,12 @@ public class ModifyStorageContainerRequest implements Serializable {
             return this;
         }
 
-        public ModifyStorageContainerRequest.Builder optional(final String initiatorSecret) {
+        public ModifyStorageContainerRequest.Builder optionalInitiatorSecret(final String initiatorSecret) {
             this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : Optional.of(initiatorSecret);
             return this;
         }
 
-        public ModifyStorageContainerRequest.Builder optional(final String targetSecret) {
+        public ModifyStorageContainerRequest.Builder optionalTargetSecret(final String targetSecret) {
             this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : Optional.of(targetSecret);
             return this;
         }

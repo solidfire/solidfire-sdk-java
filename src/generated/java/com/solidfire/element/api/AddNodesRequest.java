@@ -150,7 +150,7 @@ public class AddNodesRequest implements Serializable {
             return this;
         }
 
-        public AddNodesRequest.Builder optional(final Boolean autoInstall) {
+        public AddNodesRequest.Builder optionalAutoInstall(final Boolean autoInstall) {
             this.autoInstall = (autoInstall == null) ? Optional.<Boolean>empty() : Optional.of(autoInstall);
             return this;
         }

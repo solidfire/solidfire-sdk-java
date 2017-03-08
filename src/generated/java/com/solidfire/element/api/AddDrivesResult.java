@@ -120,7 +120,7 @@ public class AddDrivesResult implements Serializable {
             return this;
         }
 
-        public AddDrivesResult.Builder optional(final Long asyncHandle) {
+        public AddDrivesResult.Builder optionalAsyncHandle(final Long asyncHandle) {
             this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : Optional.of(asyncHandle);
             return this;
         }
