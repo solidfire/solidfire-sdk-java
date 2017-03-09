@@ -3462,6 +3462,551 @@ public class SolidFireElement
         return this.listVirtualVolumes(new ListVirtualVolumesRequest(details, limit, recursive, startVirtualVolumeID, virtualVolumeIDs));
     }
     /** 
+     * CancelVirtualVolumeTask attempts to cancel the VVol Async Task.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult cancelVirtualVolumeTask(final CancelVirtualVolumeTaskRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, cancelVirtualVolumeTask is not available until version 9.0.");
+        }
+        return super.sendRequest("CancelVirtualVolumeTask", request, CancelVirtualVolumeTaskRequest.class, VirtualVolumeNullResult.class);
+    }
+
+    /** 
+     * CancelVirtualVolumeTask attempts to cancel the VVol Async Task.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult cancelVirtualVolumeTask(
+        java.util.UUID virtualVolumeTaskID,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.cancelVirtualVolumeTask(new CancelVirtualVolumeTaskRequest(virtualVolumeTaskID, callingVirtualVolumeHostID));
+    }
+    /** 
+     * CloneVirtualVolume is used to execute a VMware Virtual Volume clone.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeAsyncResult cloneVirtualVolume(final CloneVirtualVolumeRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, cloneVirtualVolume is not available until version 9.0.");
+        }
+        return super.sendRequest("CloneVirtualVolume", request, CloneVirtualVolumeRequest.class, VirtualVolumeAsyncResult.class);
+    }
+
+    /** 
+     * CloneVirtualVolume is used to execute a VMware Virtual Volume clone.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeAsyncResult cloneVirtualVolume(
+        java.util.UUID virtualVolumeID,
+        Optional<String> name,
+        Optional<QoS> qos,
+        Optional<java.util.Map<String, Object>> metadata,
+        Optional<java.util.UUID> newContainerID,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.cloneVirtualVolume(new CloneVirtualVolumeRequest(virtualVolumeID, name, qos, metadata, newContainerID, callingVirtualVolumeHostID));
+    }
+    /** 
+     * CopyDiffsToVirtualVolume is a three-way merge function.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeAsyncResult copyDiffsToVirtualVolume(final CopyDiffsToVirtualVolumeRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, copyDiffsToVirtualVolume is not available until version 9.0.");
+        }
+        return super.sendRequest("CopyDiffsToVirtualVolume", request, CopyDiffsToVirtualVolumeRequest.class, VirtualVolumeAsyncResult.class);
+    }
+
+    /** 
+     * CopyDiffsToVirtualVolume is a three-way merge function.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeAsyncResult copyDiffsToVirtualVolume(
+        java.util.UUID virtualVolumeID,
+        java.util.UUID baseVirtualVolumeID,
+        java.util.UUID dstVirtualVolumeID,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.copyDiffsToVirtualVolume(new CopyDiffsToVirtualVolumeRequest(virtualVolumeID, baseVirtualVolumeID, dstVirtualVolumeID, callingVirtualVolumeHostID));
+    }
+    /** 
+     * CreateVirtualVolume is used to create a new (empty) Virtual Volume on the cluster.
+     * When the volume is created successfully it is available for connection via PE.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeSyncResult createVirtualVolume(final CreateVirtualVolumeRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, createVirtualVolume is not available until version 9.0.");
+        }
+        return super.sendRequest("CreateVirtualVolume", request, CreateVirtualVolumeRequest.class, VirtualVolumeSyncResult.class);
+    }
+
+    /** 
+     * CreateVirtualVolume is used to create a new (empty) Virtual Volume on the cluster.
+     * When the volume is created successfully it is available for connection via PE.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeSyncResult createVirtualVolume(
+        String name,
+        java.util.UUID storageContainerID,
+        String virtualVolumeType,
+        Long totalSize,
+        Optional<QoS> qos,
+        Optional<java.util.Map<String, Object>> metadata,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.createVirtualVolume(new CreateVirtualVolumeRequest(name, storageContainerID, virtualVolumeType, totalSize, qos, metadata, callingVirtualVolumeHostID));
+    }
+    /** 
+     * CreateVirtualVolumeHost creates a new ESX host.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult createVirtualVolumeHost(final CreateVirtualVolumeHostRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, createVirtualVolumeHost is not available until version 9.0.");
+        }
+        return super.sendRequest("CreateVirtualVolumeHost", request, CreateVirtualVolumeHostRequest.class, VirtualVolumeNullResult.class);
+    }
+
+    /** 
+     * CreateVirtualVolumeHost creates a new ESX host.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult createVirtualVolumeHost(
+        java.util.UUID virtualVolumeHostID,
+        java.util.UUID clusterID,
+        Optional<String[]> initiatorNames,
+        Optional<java.util.UUID[]> visibleProtocolEndpointIDs,
+        Optional<String> hostAddress,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.createVirtualVolumeHost(new CreateVirtualVolumeHostRequest(virtualVolumeHostID, clusterID, initiatorNames, visibleProtocolEndpointIDs, hostAddress, callingVirtualVolumeHostID));
+    }
+    /** 
+     * DeleteVirtualVolume marks an active volume for deletion.
+     * It is purged (permanently deleted) after the cleanup interval elapses.
+     * After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.
+     * It is not returned in target discovery requests.
+     * 
+     * Any snapshots of a volume that has been marked to delete are not affected.
+     * Snapshots are kept until the volume is purged from the system.
+     * 
+     * If a volume is marked for deletion, and it has a bulk volume read or bulk volume write operation in progress, the bulk volume operation is stopped.
+     * 
+     * If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred to it or from it while in a deleted state.
+     * The remote volume the deleted volume was paired with enters into a PausedMisconfigured state and data is no longer sent to it or from the deleted volume.
+     * Until the deleted volume is purged, it can be restored and data transfers resumes.
+     * If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed.
+     * The purged volume becomes permanently unavailable.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult deleteVirtualVolumes(final DeleteVirtualVolumesRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, deleteVirtualVolumes is not available until version 9.0.");
+        }
+        return super.sendRequest("DeleteVirtualVolumes", request, DeleteVirtualVolumesRequest.class, VirtualVolumeNullResult.class);
+    }
+
+    /** 
+     * DeleteVirtualVolume marks an active volume for deletion.
+     * It is purged (permanently deleted) after the cleanup interval elapses.
+     * After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.
+     * It is not returned in target discovery requests.
+     * 
+     * Any snapshots of a volume that has been marked to delete are not affected.
+     * Snapshots are kept until the volume is purged from the system.
+     * 
+     * If a volume is marked for deletion, and it has a bulk volume read or bulk volume write operation in progress, the bulk volume operation is stopped.
+     * 
+     * If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred to it or from it while in a deleted state.
+     * The remote volume the deleted volume was paired with enters into a PausedMisconfigured state and data is no longer sent to it or from the deleted volume.
+     * Until the deleted volume is purged, it can be restored and data transfers resumes.
+     * If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed.
+     * The purged volume becomes permanently unavailable.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult deleteVirtualVolumes(
+        java.util.UUID[] virtualVolumes,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.deleteVirtualVolumes(new DeleteVirtualVolumesRequest(virtualVolumes, callingVirtualVolumeHostID));
+    }
+    /** 
+     * FastCloneVirtualVolume is used to execute a VMware Virtual Volume fast clone.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeAsyncResult fastCloneVirtualVolume(final FastCloneVirtualVolumeRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, fastCloneVirtualVolume is not available until version 9.0.");
+        }
+        return super.sendRequest("FastCloneVirtualVolume", request, FastCloneVirtualVolumeRequest.class, VirtualVolumeAsyncResult.class);
+    }
+
+    /** 
+     * FastCloneVirtualVolume is used to execute a VMware Virtual Volume fast clone.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeAsyncResult fastCloneVirtualVolume(
+        java.util.UUID virtualVolumeID,
+        Optional<String> name,
+        Optional<QoS> qos,
+        Optional<java.util.Map<String, Object>> metadata,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.fastCloneVirtualVolume(new FastCloneVirtualVolumeRequest(virtualVolumeID, name, qos, metadata, callingVirtualVolumeHostID));
+    }
+    /** 
+     * Gets the Vasa Provider info
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VasaProviderInfoResult getVasaProviderInfo() {
+        return super.sendRequest("GetVasaProviderInfo", null, null, VasaProviderInfoResult.class);
+    }
+    /** 
+     * GetVirtualVolumeAllocatedBitmap returns a b64-encoded block of data 
+     * representing a bitmap where non-zero bits indicate the allocation of a 
+     * segment (LBA range) of the volume.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeBitmapResult getVirtualVolumeAllocatedBitmap(final GetVirtualVolumeAllocatedBitmapRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, getVirtualVolumeAllocatedBitmap is not available until version 9.0.");
+        }
+        return super.sendRequest("GetVirtualVolumeAllocatedBitmap", request, GetVirtualVolumeAllocatedBitmapRequest.class, VirtualVolumeBitmapResult.class);
+    }
+
+    /** 
+     * GetVirtualVolumeAllocatedBitmap returns a b64-encoded block of data 
+     * representing a bitmap where non-zero bits indicate the allocation of a 
+     * segment (LBA range) of the volume.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeBitmapResult getVirtualVolumeAllocatedBitmap(
+        java.util.UUID virtualVolumeID,
+        Long segmentStart,
+        Long segmentLength,
+        Long chunkSize,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.getVirtualVolumeAllocatedBitmap(new GetVirtualVolumeAllocatedBitmapRequest(virtualVolumeID, segmentStart, segmentLength, chunkSize, callingVirtualVolumeHostID));
+    }
+    /** 
+     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(final GetVirtualVolumeTaskUpdateRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, getVirtualVolumeTaskUpdate is not available until version 9.0.");
+        }
+        return super.sendRequest("GetVirtualVolumeTaskUpdate", request, GetVirtualVolumeTaskUpdateRequest.class, VirtualVolumeTaskResult.class);
+    }
+
+    /** 
+     * GetVirtualVolumeTaskUpdate checks the status of a VVol Async Task.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeTaskResult getVirtualVolumeTaskUpdate(
+        java.util.UUID virtualVolumeTaskID,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.getVirtualVolumeTaskUpdate(new GetVirtualVolumeTaskUpdateRequest(virtualVolumeTaskID, callingVirtualVolumeHostID));
+    }
+    /** 
+     * GetVirtualVolumeAllocatedBitmap returns a b64-encoded block of data 
+     * representing a bitmap where non-zero bits indicate that data is not the same 
+     * between two volumes for a common segment (LBA range) of the volumes.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeBitmapResult getVirtualVolumeUnsharedBitmap(final GetVirtualVolumeUnsharedBitmapRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, getVirtualVolumeUnsharedBitmap is not available until version 9.0.");
+        }
+        return super.sendRequest("GetVirtualVolumeUnsharedBitmap", request, GetVirtualVolumeUnsharedBitmapRequest.class, VirtualVolumeBitmapResult.class);
+    }
+
+    /** 
+     * GetVirtualVolumeAllocatedBitmap returns a b64-encoded block of data 
+     * representing a bitmap where non-zero bits indicate that data is not the same 
+     * between two volumes for a common segment (LBA range) of the volumes.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeBitmapResult getVirtualVolumeUnsharedBitmap(
+        java.util.UUID virtualVolumeID,
+        java.util.UUID baseVirtualVolumeID,
+        Long segmentStart,
+        Long segmentLength,
+        Long chunkSize,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.getVirtualVolumeUnsharedBitmap(new GetVirtualVolumeUnsharedBitmapRequest(virtualVolumeID, baseVirtualVolumeID, segmentStart, segmentLength, chunkSize, callingVirtualVolumeHostID));
+    }
+    /** 
+     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
+     * chunks not shared between two volumes. This call will return results in less 
+     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
+     * error is thrown. If the offset/length combination is invalid or out fo range 
+     * an error is thrown.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(final GetVirtualVolumeUnsharedChunksRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, getVirtualVolumeUnsharedChunks is not available until version 9.0.");
+        }
+        return super.sendRequest("GetVirtualVolumeUnsharedChunks", request, GetVirtualVolumeUnsharedChunksRequest.class, VirtualVolumeUnsharedChunkResult.class);
+    }
+
+    /** 
+     * GetVirtualVolumeAllocatedBitmap scans a VVol segment and returns the number of 
+     * chunks not shared between two volumes. This call will return results in less 
+     * than 30 seconds. If the specified VVol and the base VVil are not related, an 
+     * error is thrown. If the offset/length combination is invalid or out fo range 
+     * an error is thrown.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeUnsharedChunkResult getVirtualVolumeUnsharedChunks(
+        java.util.UUID virtualVolumeID,
+        java.util.UUID baseVirtualVolumeID,
+        Long segmentStart,
+        Long segmentLength,
+        Long chunkSize,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.getVirtualVolumeUnsharedChunks(new GetVirtualVolumeUnsharedChunksRequest(virtualVolumeID, baseVirtualVolumeID, segmentStart, segmentLength, chunkSize, callingVirtualVolumeHostID));
+    }
+    /** 
+     * Update the Vasa Provider info
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult modifyVasaProviderInfo(final ModifyVasaProviderInfoRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, modifyVasaProviderInfo is not available until version 9.0.");
+        }
+        return super.sendRequest("ModifyVasaProviderInfo", request, ModifyVasaProviderInfoRequest.class, VirtualVolumeNullResult.class);
+    }
+
+    /** 
+     * Update the Vasa Provider info
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult modifyVasaProviderInfo(
+        Optional<String> keystore,
+        Optional<java.util.UUID> vasaProviderID,
+        Optional<java.util.Map<String, Object>> options
+        ) {
+        return this.modifyVasaProviderInfo(new ModifyVasaProviderInfoRequest(keystore, vasaProviderID, options));
+    }
+    /** 
+     * ModifyVirtualVolume is used to modify settings on an existing virtual volume.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult modifyVirtualVolume(final ModifyVirtualVolumeRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, modifyVirtualVolume is not available until version 9.0.");
+        }
+        return super.sendRequest("ModifyVirtualVolume", request, ModifyVirtualVolumeRequest.class, VirtualVolumeNullResult.class);
+    }
+
+    /** 
+     * ModifyVirtualVolume is used to modify settings on an existing virtual volume.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult modifyVirtualVolume(
+        java.util.UUID virtualVolumeID,
+        Optional<QoS> qos,
+        Optional<Long> totalSize,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.modifyVirtualVolume(new ModifyVirtualVolumeRequest(virtualVolumeID, qos, totalSize, callingVirtualVolumeHostID));
+    }
+    /** 
+     * ModifyVirtualVolumeMetadata is used to selectively modify the VVol metadata.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult modifyVirtualVolumeMetadata(final ModifyVirtualVolumeMetadataRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, modifyVirtualVolumeMetadata is not available until version 9.0.");
+        }
+        return super.sendRequest("ModifyVirtualVolumeMetadata", request, ModifyVirtualVolumeMetadataRequest.class, VirtualVolumeNullResult.class);
+    }
+
+    /** 
+     * ModifyVirtualVolumeMetadata is used to selectively modify the VVol metadata.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeNullResult modifyVirtualVolumeMetadata(
+        java.util.UUID virtualVolumeID,
+        java.util.Map<String, Object> metadata,
+        String[] removeKeys,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.modifyVirtualVolumeMetadata(new ModifyVirtualVolumeMetadataRequest(virtualVolumeID, metadata, removeKeys, callingVirtualVolumeHostID));
+    }
+    /** 
+     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(final PrepareVirtualSnapshotRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, prepareVirtualSnapshot is not available until version 9.0.");
+        }
+        return super.sendRequest("PrepareVirtualSnapshot", request, PrepareVirtualSnapshotRequest.class, PrepareVirtualSnapshotResult.class);
+    }
+
+    /** 
+     * PrepareVirtualSnapshot is used to set up VMware Virtual Volume snapshot.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public PrepareVirtualSnapshotResult prepareVirtualSnapshot(
+        java.util.UUID virtualVolumeID,
+        Optional<String> name,
+        Optional<Boolean> writableSnapshot,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.prepareVirtualSnapshot(new PrepareVirtualSnapshotRequest(virtualVolumeID, name, writableSnapshot, callingVirtualVolumeHostID));
+    }
+    /** 
+     * QueryVirtualVolumeMetadata returns a list of VVols matching a metadata query.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public QueryVirtualVolumeMetadataResult queryVirtualVolumeMetadata(final QueryVirtualVolumeMetadataRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, queryVirtualVolumeMetadata is not available until version 9.0.");
+        }
+        return super.sendRequest("QueryVirtualVolumeMetadata", request, QueryVirtualVolumeMetadataRequest.class, QueryVirtualVolumeMetadataResult.class);
+    }
+
+    /** 
+     * QueryVirtualVolumeMetadata returns a list of VVols matching a metadata query.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public QueryVirtualVolumeMetadataResult queryVirtualVolumeMetadata(
+        Optional<java.util.Map<String, Object>> queryConstraints,
+        Optional<String[]> wildcardConstraints,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.queryVirtualVolumeMetadata(new QueryVirtualVolumeMetadataRequest(queryConstraints, wildcardConstraints, callingVirtualVolumeHostID));
+    }
+    /** 
+     * RollbackVirtualVolume is used to restore a VMware Virtual Volume snapshot.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeAsyncResult rollbackVirtualVolume(final RollbackVirtualVolumeRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, rollbackVirtualVolume is not available until version 9.0.");
+        }
+        return super.sendRequest("RollbackVirtualVolume", request, RollbackVirtualVolumeRequest.class, VirtualVolumeAsyncResult.class);
+    }
+
+    /** 
+     * RollbackVirtualVolume is used to restore a VMware Virtual Volume snapshot.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public VirtualVolumeAsyncResult rollbackVirtualVolume(
+        java.util.UUID srcVirtualVolumeID,
+        java.util.UUID dstVirtualVolumeID,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.rollbackVirtualVolume(new RollbackVirtualVolumeRequest(srcVirtualVolumeID, dstVirtualVolumeID, callingVirtualVolumeHostID));
+    }
+    /** 
+     * SnapshotVirtualVolume is used to take a VMware Virtual Volume snapshot.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public SnapshotVirtualVolumeResult snapshotVirtualVolume(final SnapshotVirtualVolumeRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 9.0) {
+            throw new ApiException("The command, snapshotVirtualVolume is not available until version 9.0.");
+        }
+        return super.sendRequest("SnapshotVirtualVolume", request, SnapshotVirtualVolumeRequest.class, SnapshotVirtualVolumeResult.class);
+    }
+
+    /** 
+     * SnapshotVirtualVolume is used to take a VMware Virtual Volume snapshot.
+     **/
+    @Override
+    @Since("9.0")
+    @ConnectionType("Cluster")
+    public SnapshotVirtualVolumeResult snapshotVirtualVolume(
+        java.util.UUID virtualVolumeID,
+        Long timeout,
+        Optional<java.util.Map<String, Object>> metadata,
+        Optional<java.util.UUID> callingVirtualVolumeHostID
+        ) {
+        return this.snapshotVirtualVolume(new SnapshotVirtualVolumeRequest(virtualVolumeID, timeout, metadata, callingVirtualVolumeHostID));
+    }
+    /** 
      * Cancels a currently running clone operation. This method does not return anything.
      **/
     @Override
