@@ -3643,7 +3643,7 @@ public class SolidFireElement
         Long accountID,
         Long totalSize,
         Boolean enable512e,
-        Optional<VolumeQOS> qos,
+        Optional<Qos> qos,
         Optional<java.util.Map<String, Object>> attributes,
         Optional<Long> sliceCount
         ) {

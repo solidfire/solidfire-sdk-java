@@ -2697,7 +2697,7 @@ public interface SolidFireElementIF {
 , 
         Boolean enable512e
 , 
-        Optional<VolumeQOS> qos
+        Optional<Qos> qos
 , 
         Optional<java.util.Map<String, Object>> attributes
 , 
