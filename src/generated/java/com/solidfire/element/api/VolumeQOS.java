@@ -34,9 +34,9 @@ import java.util.Objects;
 public class VolumeQOS implements Serializable {
 
     public static final long serialVersionUID = 677275932188527448L;
-    @SerializedName("minIOPS") private Optional<Long> minIOPS;
-    @SerializedName("maxIOPS") private Optional<Long> maxIOPS;
-    @SerializedName("burstIOPS") private Optional<Long> burstIOPS;
+    @SerializedName("minIOPS") private Long minIOPS;
+    @SerializedName("maxIOPS") private Long maxIOPS;
+    @SerializedName("burstIOPS") private Long burstIOPS;
     @SerializedName("burstTime") private Long burstTime;
     @SerializedName("curve") private java.util.Map<String,Long> curve;
 
@@ -48,16 +48,16 @@ public class VolumeQOS implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public VolumeQOS(
-        Optional<Long> minIOPS,
-        Optional<Long> maxIOPS,
-        Optional<Long> burstIOPS,
+        Long minIOPS,
+        Long maxIOPS,
+        Long burstIOPS,
         Long burstTime,
         java.util.Map<String,Long> curve
     )
     {
-        this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : minIOPS;
-        this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : maxIOPS;
-        this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : burstIOPS;
+        this.minIOPS = minIOPS;
+        this.maxIOPS = maxIOPS;
+        this.burstIOPS = burstIOPS;
         this.burstTime = burstTime;
         this.curve = curve;
     }
@@ -67,24 +67,24 @@ public class VolumeQOS implements Serializable {
      * The allowed IOPS will only drop below this level if all volumes have been capped
      * at their min IOPS value and there is still insufficient performance capacity.
      **/
-    public Optional<Long> getMinIOPS() { return this.minIOPS; }
-    public void setMinIOPS(Optional<Long> minIOPS) { 
-        this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : minIOPS;
+    public Long getMinIOPS() { return this.minIOPS; }
+    public void setMinIOPS(Long minIOPS) { 
+        this.minIOPS = minIOPS;
     }
     /** 
      * Desired maximum 4KB IOPS allowed over an extended period of time.
      **/
-    public Optional<Long> getMaxIOPS() { return this.maxIOPS; }
-    public void setMaxIOPS(Optional<Long> maxIOPS) { 
-        this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : maxIOPS;
+    public Long getMaxIOPS() { return this.maxIOPS; }
+    public void setMaxIOPS(Long maxIOPS) { 
+        this.maxIOPS = maxIOPS;
     }
     /** 
      * Maximum "peak" 4KB IOPS allowed for short periods of time.
      * Allows for bursts of I/O activity over the normal max IOPS value.
      **/
-    public Optional<Long> getBurstIOPS() { return this.burstIOPS; }
-    public void setBurstIOPS(Optional<Long> burstIOPS) { 
-        this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : burstIOPS;
+    public Long getBurstIOPS() { return this.burstIOPS; }
+    public void setBurstIOPS(Long burstIOPS) { 
+        this.burstIOPS = burstIOPS;
     }
     /** 
      * The length of time burst IOPS is allowed.
@@ -142,15 +142,9 @@ public class VolumeQOS implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != minIOPS && minIOPS.isPresent()){
-            sb.append(" minIOPS : ").append(minIOPS).append(",");
-        }
-        if(null != maxIOPS && maxIOPS.isPresent()){
-            sb.append(" maxIOPS : ").append(maxIOPS).append(",");
-        }
-        if(null != burstIOPS && burstIOPS.isPresent()){
-            sb.append(" burstIOPS : ").append(burstIOPS).append(",");
-        }
+        sb.append(" minIOPS : ").append(minIOPS).append(",");
+        sb.append(" maxIOPS : ").append(maxIOPS).append(",");
+        sb.append(" burstIOPS : ").append(burstIOPS).append(",");
         sb.append(" burstTime : ").append(burstTime).append(",");
         sb.append(" curve : ").append(curve).append(",");
         sb.append( " }" );
@@ -170,9 +164,9 @@ public class VolumeQOS implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Long> minIOPS;
-        private Optional<Long> maxIOPS;
-        private Optional<Long> burstIOPS;
+        private Long minIOPS;
+        private Long maxIOPS;
+        private Long burstIOPS;
         private Long burstTime;
         private java.util.Map<String,Long> curve;
 
@@ -197,18 +191,18 @@ public class VolumeQOS implements Serializable {
             return this;
         }
 
-        public VolumeQOS.Builder optionalMinIOPS(final Long minIOPS) {
-            this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : Optional.of(minIOPS);
+        public VolumeQOS.Builder minIOPS(final Long minIOPS) {
+            this.minIOPS = minIOPS;
             return this;
         }
 
-        public VolumeQOS.Builder optionalMaxIOPS(final Long maxIOPS) {
-            this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : Optional.of(maxIOPS);
+        public VolumeQOS.Builder maxIOPS(final Long maxIOPS) {
+            this.maxIOPS = maxIOPS;
             return this;
         }
 
-        public VolumeQOS.Builder optionalBurstIOPS(final Long burstIOPS) {
-            this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : Optional.of(burstIOPS);
+        public VolumeQOS.Builder burstIOPS(final Long burstIOPS) {
+            this.burstIOPS = burstIOPS;
             return this;
         }
 
