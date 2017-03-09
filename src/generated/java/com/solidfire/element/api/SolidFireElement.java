@@ -3618,38 +3618,6 @@ public class SolidFireElement
         return this.copyVolume(new CopyVolumeRequest(volumeID, dstVolumeID, snapshotID));
     }
     /** 
-     * CreateVolume is used to create a new (empty) volume on the cluster.
-     * When the volume is created successfully it is available for connection via iSCSI.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(final CreateVolumeRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
-            throw new ApiException("The command, createVolume is not available until version 1.");
-        }
-        return super.sendRequest("CreateVolume", request, CreateVolumeRequest.class, CreateVolumeResult.class);
-    }
-
-    /** 
-     * CreateVolume is used to create a new (empty) volume on the cluster.
-     * When the volume is created successfully it is available for connection via iSCSI.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(
-        String name,
-        Long accountID,
-        Long totalSize,
-        Boolean enable512e,
-        Optional<Qos> qos,
-        Optional<java.util.Map<String, Object>> attributes,
-        Optional<Long> sliceCount
-        ) {
-        return this.createVolume(new CreateVolumeRequest(name, accountID, totalSize, enable512e, qos, attributes, sliceCount));
-    }
-    /** 
      * DeleteVolume marks an active volume for deletion.
      * It is purged (permanently deleted) after the cleanup interval elapses.
      * After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.
@@ -4308,6 +4276,38 @@ public class SolidFireElement
         Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.updateBulkVolumeStatus(new UpdateBulkVolumeStatusRequest(key, status, percentComplete, message, attributes));
+    }
+    /** 
+     * CreateVolume is used to create a new (empty) volume on the cluster.
+     * When the volume is created successfully it is available for connection via iSCSI.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(final CreateVolumeRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 1) {
+            throw new ApiException("The command, createVolume is not available until version 1.");
+        }
+        return super.sendRequest("CreateVolume", request, CreateVolumeRequest.class, CreateVolumeResult.class);
+    }
+
+    /** 
+     * CreateVolume is used to create a new (empty) volume on the cluster.
+     * When the volume is created successfully it is available for connection via iSCSI.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(
+        String name,
+        Long accountID,
+        Long totalSize,
+        Boolean enable512e,
+        Optional<QoS> qos,
+        Optional<java.util.Map<String, Object>> attributes,
+        Optional<Long> sliceCount
+        ) {
+        return this.createVolume(new CreateVolumeRequest(name, accountID, totalSize, enable512e, qos, attributes, sliceCount));
     }
     /** 
      * Add initiators to a volume access group.

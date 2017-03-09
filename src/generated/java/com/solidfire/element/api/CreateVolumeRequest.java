@@ -39,7 +39,7 @@ public class CreateVolumeRequest implements Serializable {
     @SerializedName("accountID") private Long accountID;
     @SerializedName("totalSize") private Long totalSize;
     @SerializedName("enable512e") private Boolean enable512e;
-    @SerializedName("qos") private Optional<Qos> qos;
+    @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
     @SerializedName("sliceCount") private Optional<Long> sliceCount;
 
@@ -55,7 +55,7 @@ public class CreateVolumeRequest implements Serializable {
         Long accountID,
         Long totalSize,
         Boolean enable512e,
-        Optional<Qos> qos,
+        Optional<QoS> qos,
         Optional<java.util.Map<String, Object>> attributes,
         Optional<Long> sliceCount
     )
@@ -64,7 +64,7 @@ public class CreateVolumeRequest implements Serializable {
         this.accountID = accountID;
         this.totalSize = totalSize;
         this.enable512e = enable512e;
-        this.qos = (qos == null) ? Optional.<Qos>empty() : qos;
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
         this.sliceCount = (sliceCount == null) ? Optional.<Long>empty() : sliceCount;
     }
@@ -105,9 +105,9 @@ public class CreateVolumeRequest implements Serializable {
      * Volumes created without specified QoS values are created with the default values for QoS.
      * Default values for a volume can be found by running the GetDefaultQoS method.
      **/
-    public Optional<Qos> getQos() { return this.qos; }
-    public void setQos(Optional<Qos> qos) { 
-        this.qos = (qos == null) ? Optional.<Qos>empty() : qos;
+    public Optional<QoS> getQos() { return this.qos; }
+    public void setQos(Optional<QoS> qos) { 
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
     /** 
      * List of Name/Value pairs in JSON object format.
@@ -198,7 +198,7 @@ public class CreateVolumeRequest implements Serializable {
         private Long accountID;
         private Long totalSize;
         private Boolean enable512e;
-        private Optional<Qos> qos;
+        private Optional<QoS> qos;
         private Optional<java.util.Map<String, Object>> attributes;
         private Optional<Long> sliceCount;
 
@@ -247,8 +247,8 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeRequest.Builder optionalQos(final Qos qos) {
-            this.qos = (qos == null) ? Optional.<Qos>empty() : Optional.of(qos);
+        public CreateVolumeRequest.Builder optionalQos(final QoS qos) {
+            this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
         }
 
