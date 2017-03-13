@@ -43,6 +43,7 @@ public class VirtualVolumeBinding implements Serializable {
     @SerializedName("virtualVolume") private Optional<VirtualVolumeInfo> virtualVolume;
     @SerializedName("protocolEndpoint") private Optional<java.util.UUID> protocolEndpoint;
     @SerializedName("virtualVolumeHost") private Optional<VirtualVolumeHost> virtualVolumeHost;
+    @SerializedName("fault") private Optional<String> fault;
 
     // empty constructor
     @Since("7.0")
@@ -61,7 +62,8 @@ public class VirtualVolumeBinding implements Serializable {
         String virtualVolumeSecondaryID,
         Optional<VirtualVolumeInfo> virtualVolume,
         Optional<java.util.UUID> protocolEndpoint,
-        Optional<VirtualVolumeHost> virtualVolumeHost
+        Optional<VirtualVolumeHost> virtualVolumeHost,
+        Optional<String> fault
     )
     {
         this.protocolEndpointID = protocolEndpointID;
@@ -74,6 +76,7 @@ public class VirtualVolumeBinding implements Serializable {
         this.virtualVolume = (virtualVolume == null) ? Optional.<VirtualVolumeInfo>empty() : virtualVolume;
         this.protocolEndpoint = (protocolEndpoint == null) ? Optional.<java.util.UUID>empty() : protocolEndpoint;
         this.virtualVolumeHost = (virtualVolumeHost == null) ? Optional.<VirtualVolumeHost>empty() : virtualVolumeHost;
+        this.fault = (fault == null) ? Optional.<String>empty() : fault;
     }
 
     /** 
@@ -146,6 +149,12 @@ public class VirtualVolumeBinding implements Serializable {
     public void setVirtualVolumeHost(Optional<VirtualVolumeHost> virtualVolumeHost) { 
         this.virtualVolumeHost = (virtualVolumeHost == null) ? Optional.<VirtualVolumeHost>empty() : virtualVolumeHost;
     }
+    /** 
+     **/
+    public Optional<String> getFault() { return this.fault; }
+    public void setFault(Optional<String> fault) { 
+        this.fault = (fault == null) ? Optional.<String>empty() : fault;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -164,12 +173,13 @@ public class VirtualVolumeBinding implements Serializable {
             Objects.equals(virtualVolumeSecondaryID, that.virtualVolumeSecondaryID) && 
             Objects.equals(virtualVolume, that.virtualVolume) && 
             Objects.equals(protocolEndpoint, that.protocolEndpoint) && 
-            Objects.equals(virtualVolumeHost, that.virtualVolumeHost);
+            Objects.equals(virtualVolumeHost, that.virtualVolumeHost) && 
+            Objects.equals(fault, that.fault);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( protocolEndpointID,protocolEndpointInBandID,protocolEndpointType,virtualVolumeBindingID,virtualVolumeHostID,virtualVolumeID,virtualVolumeSecondaryID,virtualVolume,protocolEndpoint,virtualVolumeHost );
+        return Objects.hash( protocolEndpointID,protocolEndpointInBandID,protocolEndpointType,virtualVolumeBindingID,virtualVolumeHostID,virtualVolumeID,virtualVolumeSecondaryID,virtualVolume,protocolEndpoint,virtualVolumeHost,fault );
     }
 
 
@@ -185,6 +195,7 @@ public class VirtualVolumeBinding implements Serializable {
         map.put("virtualVolume", virtualVolume);
         map.put("protocolEndpoint", protocolEndpoint);
         map.put("virtualVolumeHost", virtualVolumeHost);
+        map.put("fault", fault);
         return map;
     }
 
@@ -208,6 +219,9 @@ public class VirtualVolumeBinding implements Serializable {
         }
         if(null != virtualVolumeHost && virtualVolumeHost.isPresent()){
             sb.append(" virtualVolumeHost : ").append(virtualVolumeHost).append(",");
+        }
+        if(null != fault && fault.isPresent()){
+            sb.append(" fault : ").append(fault).append(",");
         }
         sb.append( " }" );
 
@@ -236,6 +250,7 @@ public class VirtualVolumeBinding implements Serializable {
         private Optional<VirtualVolumeInfo> virtualVolume;
         private Optional<java.util.UUID> protocolEndpoint;
         private Optional<VirtualVolumeHost> virtualVolumeHost;
+        private Optional<String> fault;
 
         private Builder() { }
 
@@ -250,7 +265,8 @@ public class VirtualVolumeBinding implements Serializable {
                          this.virtualVolumeSecondaryID,
                          this.virtualVolume,
                          this.protocolEndpoint,
-                         this.virtualVolumeHost);
+                         this.virtualVolumeHost,
+                         this.fault);
         }
 
         private VirtualVolumeBinding.Builder buildFrom(final VirtualVolumeBinding req) {
@@ -264,6 +280,7 @@ public class VirtualVolumeBinding implements Serializable {
             this.virtualVolume = req.virtualVolume;
             this.protocolEndpoint = req.protocolEndpoint;
             this.virtualVolumeHost = req.virtualVolumeHost;
+            this.fault = req.fault;
 
             return this;
         }
@@ -315,6 +332,11 @@ public class VirtualVolumeBinding implements Serializable {
 
         public VirtualVolumeBinding.Builder optionalVirtualVolumeHost(final VirtualVolumeHost virtualVolumeHost) {
             this.virtualVolumeHost = (virtualVolumeHost == null) ? Optional.<VirtualVolumeHost>empty() : Optional.of(virtualVolumeHost);
+            return this;
+        }
+
+        public VirtualVolumeBinding.Builder optionalFault(final String fault) {
+            this.fault = (fault == null) ? Optional.<String>empty() : Optional.of(fault);
             return this;
         }
 
