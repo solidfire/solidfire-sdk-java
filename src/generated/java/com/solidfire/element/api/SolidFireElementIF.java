@@ -30,32 +30,6 @@ import com.solidfire.core.javautil.Optional;
 public interface SolidFireElementIF {
 
     /** 
-     * Used to add a new account to the system.
-     * New volumes can be created under the new account.
-     * The CHAP settings specified for the account applies to all volumes owned by the account.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AddAccountResult addAccount(final AddAccountRequest request);
-
-    /** 
-     * Used to add a new account to the system.
-     * New volumes can be created under the new account.
-     * The CHAP settings specified for the account applies to all volumes owned by the account.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public AddAccountResult addAccount(
-        
-        String username
-, 
-        Optional<CHAPSecret> initiatorSecret
-, 
-        Optional<CHAPSecret> targetSecret
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
      * Returns details about an account, given its AccountID.
      **/
     @Since("1")
@@ -122,6 +96,52 @@ public interface SolidFireElementIF {
         Optional<Long> limit
         );
     /** 
+     * Used to remove an existing account.
+     * All Volumes must be deleted and purged on the account before it can be removed.
+     * If volumes on the account are still pending deletion, RemoveAccount cannot be used until DeleteVolume to delete and purge the volumes.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public RemoveAccountResult removeAccount(final RemoveAccountRequest request);
+
+    /** 
+     * Used to remove an existing account.
+     * All Volumes must be deleted and purged on the account before it can be removed.
+     * If volumes on the account are still pending deletion, RemoveAccount cannot be used until DeleteVolume to delete and purge the volumes.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public RemoveAccountResult removeAccount(
+        
+        Long accountID
+        );
+    /** 
+     * Used to add a new account to the system.
+     * New volumes can be created under the new account.
+     * The CHAP settings specified for the account applies to all volumes owned by the account.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public AddAccountResult addAccount(final AddAccountRequest request);
+
+    /** 
+     * Used to add a new account to the system.
+     * New volumes can be created under the new account.
+     * The CHAP settings specified for the account applies to all volumes owned by the account.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public AddAccountResult addAccount(
+        
+        String username
+, 
+        Optional<CHAPSecret> initiatorSecret
+, 
+        Optional<CHAPSecret> targetSecret
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
      * Used to modify an existing account.
      * When locking an account, any existing connections from that account are immediately terminated.
      * When changing CHAP settings, any existing connections continue to be active,
@@ -154,44 +174,6 @@ public interface SolidFireElementIF {
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
-     * Used to remove an existing account.
-     * All Volumes must be deleted and purged on the account before it can be removed.
-     * If volumes on the account are still pending deletion, RemoveAccount cannot be used until DeleteVolume to delete and purge the volumes.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public RemoveAccountResult removeAccount(final RemoveAccountRequest request);
-
-    /** 
-     * Used to remove an existing account.
-     * All Volumes must be deleted and purged on the account before it can be removed.
-     * If volumes on the account are still pending deletion, RemoveAccount cannot be used until DeleteVolume to delete and purge the volumes.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public RemoveAccountResult removeAccount(
-        
-        Long accountID
-        );
-    /** 
-     * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public CreateBackupTargetResult createBackupTarget(final CreateBackupTargetRequest request);
-
-    /** 
-     * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public CreateBackupTargetResult createBackupTarget(
-        
-        String name
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
      * GetBackupTarget allows you to return information about a specific backup target that has been created.
      **/
     @Since("6")
@@ -214,6 +196,40 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListBackupTargetsResult listBackupTargets();
     /** 
+     * RemoveBackupTarget allows you to delete backup targets.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public RemoveBackupTargetResult removeBackupTarget(final RemoveBackupTargetRequest request);
+
+    /** 
+     * RemoveBackupTarget allows you to delete backup targets.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public RemoveBackupTargetResult removeBackupTarget(
+        
+        Long backupTargetID
+        );
+    /** 
+     * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public CreateBackupTargetResult createBackupTarget(final CreateBackupTargetRequest request);
+
+    /** 
+     * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public CreateBackupTargetResult createBackupTarget(
+        
+        String name
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
      * ModifyBackupTarget is used to change attributes of a backup target.
      **/
     @Since("6")
@@ -232,22 +248,6 @@ public interface SolidFireElementIF {
         Optional<String> name
 , 
         Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * RemoveBackupTarget allows you to delete backup targets.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public RemoveBackupTargetResult removeBackupTarget(final RemoveBackupTargetRequest request);
-
-    /** 
-     * RemoveBackupTarget allows you to delete backup targets.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public RemoveBackupTargetResult removeBackupTarget(
-        
-        Long backupTargetID
         );
     /** 
      * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
@@ -388,22 +388,6 @@ public interface SolidFireElementIF {
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
-     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request);
-
-    /** 
-     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ClearClusterFaultsResult clearClusterFaults(
-        
-        Optional<String> faultType
-        );
-    /** 
      * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
      * 
      * Note: You need to log into the node that is used as the master node for the cluster. Once logged in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the cluster. Then run the CreateCluster method.
@@ -436,6 +420,22 @@ public interface SolidFireElementIF {
         String[] nodes
 , 
         Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request);
+
+    /** 
+     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ClearClusterFaultsResult clearClusterFaults(
+        
+        Optional<String> faultType
         );
     /** 
      * CreateSupportBundle is used to create a support bundle file under the node's directory. When the bundle has been successfully created, the bundle is stored on the node as a tar.gz file.
@@ -699,28 +699,6 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListSyncJobsResult listSyncJobs();
     /** 
-     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request);
-
-    /** 
-     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ModifyClusterAdminResult modifyClusterAdmin(
-        
-        Long clusterAdminID
-, 
-        Optional<String> password
-, 
-        Optional<String[]> access
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
      * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
      **/
     @Since("1")
@@ -755,6 +733,28 @@ public interface SolidFireElementIF {
     public RemoveClusterAdminResult removeClusterAdmin(
         
         Long clusterAdminID
+        );
+    /** 
+     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request);
+
+    /** 
+     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ModifyClusterAdminResult modifyClusterAdmin(
+        
+        Long clusterAdminID
+, 
+        Optional<String> password
+, 
+        Optional<String[]> access
+, 
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
@@ -1090,32 +1090,6 @@ public interface SolidFireElementIF {
         ModifyInitiator[] initiators
         );
     /** 
-     * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
-     * 
-     * An LDAP group that has been defined in Active Directory can also be added using this API method. The access level that is given to the group will be passed to the individual users in the LDAP group.
-     **/
-    @Since("8")
-    @ConnectionType("Cluster")
-    public AddLdapClusterAdminResult addLdapClusterAdmin(final AddLdapClusterAdminRequest request);
-
-    /** 
-     * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
-     * 
-     * An LDAP group that has been defined in Active Directory can also be added using this API method. The access level that is given to the group will be passed to the individual users in the LDAP group.
-     **/
-    @Since("8")
-    @ConnectionType("Cluster")
-    public AddLdapClusterAdminResult addLdapClusterAdmin(
-        
-        String username
-, 
-        String[] access
-, 
-        Optional<Boolean> acceptEula
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
      * The DisableLdapAuthentication method is used disable LDAP authentication and remove all LDAP configuration settings. This call will not remove any configured cluster admin accounts (user or group). However, those cluster admin accounts will no integerer be able to log in.
      **/
     @Since("7")
@@ -1180,6 +1154,32 @@ public interface SolidFireElementIF {
         String password
 , 
         Optional<LdapConfiguration> ldapConfiguration
+        );
+    /** 
+     * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
+     * 
+     * An LDAP group that has been defined in Active Directory can also be added using this API method. The access level that is given to the group will be passed to the individual users in the LDAP group.
+     **/
+    @Since("8")
+    @ConnectionType("Cluster")
+    public AddLdapClusterAdminResult addLdapClusterAdmin(final AddLdapClusterAdminRequest request);
+
+    /** 
+     * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
+     * 
+     * An LDAP group that has been defined in Active Directory can also be added using this API method. The access level that is given to the group will be passed to the individual users in the LDAP group.
+     **/
+    @Since("8")
+    @ConnectionType("Cluster")
+    public AddLdapClusterAdminResult addLdapClusterAdmin(
+        
+        String username
+, 
+        String[] access
+, 
+        Optional<Boolean> acceptEula
+, 
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * GetLoginSessionInfo is used to return the period of time a log in authentication is valid for both log in shells and the TUI.
@@ -1644,6 +1644,24 @@ public interface SolidFireElementIF {
         Optional<Boolean> reboot
         );
     /** 
+     * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method, login in to the MIP for the pending node and enter the "shutdown" method with either the "restart" or "halt" options in the following table.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ShutdownResult shutdown(final ShutdownRequest request);
+
+    /** 
+     * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method, login in to the MIP for the pending node and enter the "shutdown" method with either the "restart" or "halt" options in the following table.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ShutdownResult shutdown(
+        
+        Long[] nodes
+, 
+        Optional<String> option
+        );
+    /** 
      * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Since("5")
@@ -1678,24 +1696,6 @@ public interface SolidFireElementIF {
         Optional<String> service
 , 
         Optional<String> action
-        );
-    /** 
-     * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method, login in to the MIP for the pending node and enter the "shutdown" method with either the "restart" or "halt" options in the following table.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ShutdownResult shutdown(final ShutdownRequest request);
-
-    /** 
-     * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method, login in to the MIP for the pending node and enter the "shutdown" method with either the "restart" or "halt" options in the following table.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ShutdownResult shutdown(
-        
-        Long[] nodes
-, 
-        Optional<String> option
         );
     /** 
      * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
@@ -1758,38 +1758,6 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListServicesResult listServices();
     /** 
-     * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
-     * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
-     * 
-     * Note: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7")
-    @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult createGroupSnapshot(final CreateGroupSnapshotRequest request);
-
-    /** 
-     * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
-     * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
-     * 
-     * Note: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("7")
-    @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult createGroupSnapshot(
-        
-        Long[] volumes
-, 
-        Optional<String> name
-, 
-        Optional<Boolean> enableRemoteReplication
-, 
-        Optional<String> retention
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
      * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
      * 
      * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. 
@@ -1812,40 +1780,6 @@ public interface SolidFireElementIF {
     public CreateScheduleResult createSchedule(
         
         Schedule schedule
-        );
-    /** 
-     * CreateSnapshot is used to create a point-in-time copy of a volume.
-     * A snapshot can be created from any volume or from an existing snapshot.
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public java.util.Map<String, Object> createSnapshot(final CreateSnapshotRequest request);
-
-    /** 
-     * CreateSnapshot is used to create a point-in-time copy of a volume.
-     * A snapshot can be created from any volume or from an existing snapshot.
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public java.util.Map<String, Object> createSnapshot(
-        
-        Long volumeID
-, 
-        Optional<Long> snapshotID
-, 
-        Optional<String> name
-, 
-        Optional<Boolean> enableRemoteReplication
-, 
-        Optional<String> retention
-, 
-        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * DeleteGroupSnapshot is used to delete a group snapshot.
@@ -2006,6 +1940,72 @@ public interface SolidFireElementIF {
         Optional<String> expirationTime
 , 
         Optional<Boolean> enableRemoteReplication
+        );
+    /** 
+     * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
+     * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
+     * 
+     * Note: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7")
+    @ConnectionType("Cluster")
+    public CreateGroupSnapshotResult createGroupSnapshot(final CreateGroupSnapshotRequest request);
+
+    /** 
+     * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
+     * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
+     * 
+     * Note: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("7")
+    @ConnectionType("Cluster")
+    public CreateGroupSnapshotResult createGroupSnapshot(
+        
+        Long[] volumes
+, 
+        Optional<String> name
+, 
+        Optional<Boolean> enableRemoteReplication
+, 
+        Optional<String> retention
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * CreateSnapshot is used to create a point-in-time copy of a volume.
+     * A snapshot can be created from any volume or from an existing snapshot.
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public java.util.Map<String, Object> createSnapshot(final CreateSnapshotRequest request);
+
+    /** 
+     * CreateSnapshot is used to create a point-in-time copy of a volume.
+     * A snapshot can be created from any volume or from an existing snapshot.
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public java.util.Map<String, Object> createSnapshot(
+        
+        Long volumeID
+, 
+        Optional<Long> snapshotID
+, 
+        Optional<String> name
+, 
+        Optional<Boolean> enableRemoteReplication
+, 
+        Optional<String> retention
+, 
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
@@ -2318,6 +2318,54 @@ public interface SolidFireElementIF {
         Optional<Long> pingTimeoutMsec
         );
     /** 
+     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
+     * 
+     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
+     **/
+    @Since("7")
+    @ConnectionType("Cluster")
+    public ListVirtualNetworksResult listVirtualNetworks(final ListVirtualNetworksRequest request);
+
+    /** 
+     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
+     * 
+     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
+     **/
+    @Since("7")
+    @ConnectionType("Cluster")
+    public ListVirtualNetworksResult listVirtualNetworks(
+        
+        Optional<Long> virtualNetworkID
+, 
+        Optional<Long> virtualNetworkTag
+, 
+        Optional<Long[]> virtualNetworkIDs
+, 
+        Optional<Long[]> virtualNetworkTags
+        );
+    /** 
+     * RemoveVirtualNetwork is used to remove a previously added virtual network.
+     * 
+     * Note: This method requires either the VirtualNetworkID of the VirtualNetworkTag as a parameter, but not both.
+     **/
+    @Since("7")
+    @ConnectionType("Cluster")
+    public RemoveVirtualNetworkResult removeVirtualNetwork(final RemoveVirtualNetworkRequest request);
+
+    /** 
+     * RemoveVirtualNetwork is used to remove a previously added virtual network.
+     * 
+     * Note: This method requires either the VirtualNetworkID of the VirtualNetworkTag as a parameter, but not both.
+     **/
+    @Since("7")
+    @ConnectionType("Cluster")
+    public RemoveVirtualNetworkResult removeVirtualNetwork(
+        
+        Optional<Long> virtualNetworkID
+, 
+        Optional<Long> virtualNetworkTag
+        );
+    /** 
      * AddVirtualNetwork is used to add a new virtual network to a cluster configuration. When a virtual network is added, an interface for each node is created and each will require a virtual network IP address. The number of IP addresses specified as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. Virtual network addresses are bulk provisioned by SolidFire and assigned to individual nodes automatically. Virtual network addresses do not need to be assigned to nodes manually.
      * 
      * Note: The AddVirtualNetwork method is used only to create a new virtual network. If you want to make changes to a virtual network, please use the ModifyVirtualNetwork method.
@@ -2350,32 +2398,6 @@ public interface SolidFireElementIF {
         Optional<Boolean> namespace
 , 
         Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
-     * 
-     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
-     **/
-    @Since("7")
-    @ConnectionType("Cluster")
-    public ListVirtualNetworksResult listVirtualNetworks(final ListVirtualNetworksRequest request);
-
-    /** 
-     * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
-     * 
-     * This method does not require any parameters to be passed. But, one or more VirtualNetworkIDs or VirtualNetworkTags can be passed in order to filter the results.
-     **/
-    @Since("7")
-    @ConnectionType("Cluster")
-    public ListVirtualNetworksResult listVirtualNetworks(
-        
-        Optional<Long> virtualNetworkID
-, 
-        Optional<Long> virtualNetworkTag
-, 
-        Optional<Long[]> virtualNetworkIDs
-, 
-        Optional<Long[]> virtualNetworkTags
         );
     /** 
      * ModifyVirtualNetwork is used to change various attributes of a VirtualNetwork object. This method can be used to add or remove address blocks, change the netmask IP, or modify the name or description of the virtual network.
@@ -2412,28 +2434,6 @@ public interface SolidFireElementIF {
         Optional<Boolean> namespace
 , 
         Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * RemoveVirtualNetwork is used to remove a previously added virtual network.
-     * 
-     * Note: This method requires either the VirtualNetworkID of the VirtualNetworkTag as a parameter, but not both.
-     **/
-    @Since("7")
-    @ConnectionType("Cluster")
-    public RemoveVirtualNetworkResult removeVirtualNetwork(final RemoveVirtualNetworkRequest request);
-
-    /** 
-     * RemoveVirtualNetwork is used to remove a previously added virtual network.
-     * 
-     * Note: This method requires either the VirtualNetworkID of the VirtualNetworkTag as a parameter, but not both.
-     **/
-    @Since("7")
-    @ConnectionType("Cluster")
-    public RemoveVirtualNetworkResult removeVirtualNetwork(
-        
-        Optional<Long> virtualNetworkID
-, 
-        Optional<Long> virtualNetworkTag
         );
     /** 
      * EnableFeature allows you to enable cluster features that are disabled by default.
@@ -2606,54 +2606,6 @@ public interface SolidFireElementIF {
         Optional<Long> newAccountID
         );
     /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * 
-     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * 
-     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request);
-
-    /** 
-     * CloneVolume is used to create a copy of the volume.
-     * This method is asynchronous and may take a variable amount of time to complete.
-     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
-     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
-     * ListSyncJobs can be used to see the progress of creating the clone.
-     * 
-     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
-     * If different settings are required, they can be changed via ModifyVolume.
-     * 
-     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CloneVolumeResult cloneVolume(
-        
-        Long volumeID
-, 
-        String name
-, 
-        Optional<Long> newAccountID
-, 
-        Optional<Long> newSize
-, 
-        Optional<String> access
-, 
-        Optional<Long> snapshotID
-, 
-        Optional<java.util.Map<String, Object>> attributes
-, 
-        Optional<Boolean> enable512e
-        );
-    /** 
      * Copies one volume to another.
      **/
     @Since("9")
@@ -2672,36 +2624,6 @@ public interface SolidFireElementIF {
         Long dstVolumeID
 , 
         Optional<Long> snapshotID
-        );
-    /** 
-     * CreateVolume is used to create a new (empty) volume on the cluster.
-     * When the volume is created successfully it is available for connection via iSCSI.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(final CreateVolumeRequest request);
-
-    /** 
-     * CreateVolume is used to create a new (empty) volume on the cluster.
-     * When the volume is created successfully it is available for connection via iSCSI.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public CreateVolumeResult createVolume(
-        
-        String name
-, 
-        Long accountID
-, 
-        Long totalSize
-, 
-        Boolean enable512e
-, 
-        Optional<QoS> qos
-, 
-        Optional<java.util.Map<String, Object>> attributes
-, 
-        Optional<Long> sliceCount
         );
     /** 
      * DeleteVolume marks an active volume for deletion.
@@ -2766,40 +2688,6 @@ public interface SolidFireElementIF {
         Optional<Long[]> volumeAccessGroupIDs
 , 
         Optional<Long[]> volumeIDs
-        );
-    /** 
-     * Used to retrieve the result of asynchronous method calls.
-     * Some method calls are integer running and do not complete when the initial response is sent.
-     * To obtain the result of the method call, polling with GetAsyncResult is required.
-     * 
-     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
-     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
-     * 
-     * The result for a completed asynchronous method call can only be retrieved once.
-     * Once the final result has been returned, later attempts returns an error.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public java.util.Map<String, Object> getAsyncResult(final GetAsyncResultRequest request);
-
-    /** 
-     * Used to retrieve the result of asynchronous method calls.
-     * Some method calls are integer running and do not complete when the initial response is sent.
-     * To obtain the result of the method call, polling with GetAsyncResult is required.
-     * 
-     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
-     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
-     * 
-     * The result for a completed asynchronous method call can only be retrieved once.
-     * Once the final result has been returned, later attempts returns an error.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public java.util.Map<String, Object> getAsyncResult(
-        
-        Long asyncHandle
-, 
-        Optional<Boolean> keepResult
         );
     /** 
      * GetDefaultQoS is used to retrieve the default QoS values that are set for a volume if QoS is not supplied.
@@ -2976,74 +2864,6 @@ public interface SolidFireElementIF {
         Optional<Long> limit
         );
     /** 
-     * ModifyVolume is used to modify settings on an existing volume.
-     * Modifications can be made to one volume at a time and changes take place immediately.
-     * If an optional parameter is left unspecified, the value will not be changed.
-     * 
-     * Extending the size of a volume that is being replicated should be done in an order.
-     * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
-     * It is recommended that both the target and the source volumes be the same size.
-     * 
-     * Note: If you change access status to locked or target all existing iSCSI connections are terminated.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ModifyVolumeResult modifyVolume(final ModifyVolumeRequest request);
-
-    /** 
-     * ModifyVolume is used to modify settings on an existing volume.
-     * Modifications can be made to one volume at a time and changes take place immediately.
-     * If an optional parameter is left unspecified, the value will not be changed.
-     * 
-     * Extending the size of a volume that is being replicated should be done in an order.
-     * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
-     * It is recommended that both the target and the source volumes be the same size.
-     * 
-     * Note: If you change access status to locked or target all existing iSCSI connections are terminated.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ModifyVolumeResult modifyVolume(
-        
-        Long volumeID
-, 
-        Optional<Long> accountID
-, 
-        Optional<String> access
-, 
-        Optional<QoS> qos
-, 
-        Optional<Long> totalSize
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ModifyVolumesResult modifyVolumes(final ModifyVolumesRequest request);
-
-    /** 
-     * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ModifyVolumesResult modifyVolumes(
-        
-        Long[] volumeIDs
-, 
-        Optional<Long> accountID
-, 
-        Optional<String> access
-, 
-        Optional<QoS> qos
-, 
-        Optional<Long> totalSize
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
      * PurgeDeletedVolume immediately and permanently purges a volume which has been deleted.
      * A volume must be deleted using DeleteVolume before it can be purged.
      * Volumes are purged automatically after a period of time, so usage of this method is not typically required.
@@ -3120,6 +2940,186 @@ public interface SolidFireElementIF {
         Optional<Long> maxIOPS
 , 
         Optional<Long> burstIOPS
+        );
+    /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * 
+     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * 
+     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(final CloneVolumeRequest request);
+
+    /** 
+     * CloneVolume is used to create a copy of the volume.
+     * This method is asynchronous and may take a variable amount of time to complete.
+     * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
+     * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
+     * ListSyncJobs can be used to see the progress of creating the clone.
+     * 
+     * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
+     * If different settings are required, they can be changed via ModifyVolume.
+     * 
+     * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CloneVolumeResult cloneVolume(
+        
+        Long volumeID
+, 
+        String name
+, 
+        Optional<Long> newAccountID
+, 
+        Optional<Long> newSize
+, 
+        Optional<String> access
+, 
+        Optional<Long> snapshotID
+, 
+        Optional<java.util.Map<String, Object>> attributes
+, 
+        Optional<Boolean> enable512e
+        );
+    /** 
+     * CreateVolume is used to create a new (empty) volume on the cluster.
+     * When the volume is created successfully it is available for connection via iSCSI.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(final CreateVolumeRequest request);
+
+    /** 
+     * CreateVolume is used to create a new (empty) volume on the cluster.
+     * When the volume is created successfully it is available for connection via iSCSI.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public CreateVolumeResult createVolume(
+        
+        String name
+, 
+        Long accountID
+, 
+        Long totalSize
+, 
+        Boolean enable512e
+, 
+        Optional<QoS> qos
+, 
+        Optional<java.util.Map<String, Object>> attributes
+, 
+        Optional<Long> sliceCount
+        );
+    /** 
+     * Used to retrieve the result of asynchronous method calls.
+     * Some method calls are integer running and do not complete when the initial response is sent.
+     * To obtain the result of the method call, polling with GetAsyncResult is required.
+     * 
+     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
+     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
+     * 
+     * The result for a completed asynchronous method call can only be retrieved once.
+     * Once the final result has been returned, later attempts returns an error.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public java.util.Map<String, Object> getAsyncResult(final GetAsyncResultRequest request);
+
+    /** 
+     * Used to retrieve the result of asynchronous method calls.
+     * Some method calls are integer running and do not complete when the initial response is sent.
+     * To obtain the result of the method call, polling with GetAsyncResult is required.
+     * 
+     * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
+     * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
+     * 
+     * The result for a completed asynchronous method call can only be retrieved once.
+     * Once the final result has been returned, later attempts returns an error.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public java.util.Map<String, Object> getAsyncResult(
+        
+        Long asyncHandle
+, 
+        Optional<Boolean> keepResult
+        );
+    /** 
+     * ModifyVolume is used to modify settings on an existing volume.
+     * Modifications can be made to one volume at a time and changes take place immediately.
+     * If an optional parameter is left unspecified, the value will not be changed.
+     * 
+     * Extending the size of a volume that is being replicated should be done in an order.
+     * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
+     * It is recommended that both the target and the source volumes be the same size.
+     * 
+     * Note: If you change access status to locked or target all existing iSCSI connections are terminated.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ModifyVolumeResult modifyVolume(final ModifyVolumeRequest request);
+
+    /** 
+     * ModifyVolume is used to modify settings on an existing volume.
+     * Modifications can be made to one volume at a time and changes take place immediately.
+     * If an optional parameter is left unspecified, the value will not be changed.
+     * 
+     * Extending the size of a volume that is being replicated should be done in an order.
+     * The target (Replication Target) volume should first be increased in size, then the source (Read/Write) volume can be resized.
+     * It is recommended that both the target and the source volumes be the same size.
+     * 
+     * Note: If you change access status to locked or target all existing iSCSI connections are terminated.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ModifyVolumeResult modifyVolume(
+        
+        Long volumeID
+, 
+        Optional<Long> accountID
+, 
+        Optional<String> access
+, 
+        Optional<QoS> qos
+, 
+        Optional<Long> totalSize
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ModifyVolumesResult modifyVolumes(final ModifyVolumesRequest request);
+
+    /** 
+     * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ModifyVolumesResult modifyVolumes(
+        
+        Long[] volumeIDs
+, 
+        Optional<Long> accountID
+, 
+        Optional<String> access
+, 
+        Optional<QoS> qos
+, 
+        Optional<Long> totalSize
+, 
+        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * StartBulkVolumeRead allows you to initialize a bulk volume read session on a specified volume.
@@ -3264,40 +3264,6 @@ public interface SolidFireElementIF {
         Long[] volumes
         );
     /** 
-     * Creates a new volume access group.
-     * The new volume access group must be given a name when it is created.
-     * Entering initiators and volumes are optional when creating a volume access group.
-     * Once the group is created volumes and initiator IQNs can be added.
-     * Any initiator IQN that is successfully added to the volume access group is able to access any volume in the group without CHAP authentication.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public CreateVolumeAccessGroupResult createVolumeAccessGroup(final CreateVolumeAccessGroupRequest request);
-
-    /** 
-     * Creates a new volume access group.
-     * The new volume access group must be given a name when it is created.
-     * Entering initiators and volumes are optional when creating a volume access group.
-     * Once the group is created volumes and initiator IQNs can be added.
-     * Any initiator IQN that is successfully added to the volume access group is able to access any volume in the group without CHAP authentication.
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public CreateVolumeAccessGroupResult createVolumeAccessGroup(
-        
-        String name
-, 
-        Optional<String[]> initiators
-, 
-        Optional<Long[]> volumes
-, 
-        Optional<Long[]> virtualNetworkID
-, 
-        Optional<Long[]> virtualNetworkTags
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
      * Delete a volume access group from the system.
      **/
     @Since("5")
@@ -3362,52 +3328,6 @@ public interface SolidFireElementIF {
         Optional<Long> startVolumeAccessGroupID
 , 
         Optional<Long> limit
-        );
-    /** 
-     * Update initiators and add or remove volumes from a volume access group.
-     * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
-     * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
-     * 
-     * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
-     * 
-     * AddInitiatorsToVolumeAccessGroup
-     * RemoveInitiatorsFromVolumeAccessGroup
-     * AddVolumesToVolumeAccessGroup
-     * RemoveVolumesFromVolumeAccessGroup
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(final ModifyVolumeAccessGroupRequest request);
-
-    /** 
-     * Update initiators and add or remove volumes from a volume access group.
-     * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
-     * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
-     * 
-     * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
-     * 
-     * AddInitiatorsToVolumeAccessGroup
-     * RemoveInitiatorsFromVolumeAccessGroup
-     * AddVolumesToVolumeAccessGroup
-     * RemoveVolumesFromVolumeAccessGroup
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(
-        
-        Long volumeAccessGroupID
-, 
-        Optional<Long[]> virtualNetworkID
-, 
-        Optional<Long[]> virtualNetworkTags
-, 
-        Optional<String> name
-, 
-        Optional<String[]> initiators
-, 
-        Optional<Long[]> volumes
-, 
-        Optional<java.util.Map<String, Object>> attributes
         );
     /** 
      * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
@@ -3476,5 +3396,85 @@ public interface SolidFireElementIF {
         Long volumeAccessGroupID
 , 
         Long[] volumes
+        );
+    /** 
+     * Creates a new volume access group.
+     * The new volume access group must be given a name when it is created.
+     * Entering initiators and volumes are optional when creating a volume access group.
+     * Once the group is created volumes and initiator IQNs can be added.
+     * Any initiator IQN that is successfully added to the volume access group is able to access any volume in the group without CHAP authentication.
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public CreateVolumeAccessGroupResult createVolumeAccessGroup(final CreateVolumeAccessGroupRequest request);
+
+    /** 
+     * Creates a new volume access group.
+     * The new volume access group must be given a name when it is created.
+     * Entering initiators and volumes are optional when creating a volume access group.
+     * Once the group is created volumes and initiator IQNs can be added.
+     * Any initiator IQN that is successfully added to the volume access group is able to access any volume in the group without CHAP authentication.
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public CreateVolumeAccessGroupResult createVolumeAccessGroup(
+        
+        String name
+, 
+        Optional<String[]> initiators
+, 
+        Optional<Long[]> volumes
+, 
+        Optional<Long[]> virtualNetworkID
+, 
+        Optional<Long[]> virtualNetworkTags
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * Update initiators and add or remove volumes from a volume access group.
+     * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
+     * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
+     * 
+     * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
+     * 
+     * AddInitiatorsToVolumeAccessGroup
+     * RemoveInitiatorsFromVolumeAccessGroup
+     * AddVolumesToVolumeAccessGroup
+     * RemoveVolumesFromVolumeAccessGroup
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(final ModifyVolumeAccessGroupRequest request);
+
+    /** 
+     * Update initiators and add or remove volumes from a volume access group.
+     * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
+     * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
+     * 
+     * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
+     * 
+     * AddInitiatorsToVolumeAccessGroup
+     * RemoveInitiatorsFromVolumeAccessGroup
+     * AddVolumesToVolumeAccessGroup
+     * RemoveVolumesFromVolumeAccessGroup
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(
+        
+        Long volumeAccessGroupID
+, 
+        Optional<Long[]> virtualNetworkID
+, 
+        Optional<Long[]> virtualNetworkTags
+, 
+        Optional<String> name
+, 
+        Optional<String[]> initiators
+, 
+        Optional<Long[]> volumes
+, 
+        Optional<java.util.Map<String, Object>> attributes
         );
 }
