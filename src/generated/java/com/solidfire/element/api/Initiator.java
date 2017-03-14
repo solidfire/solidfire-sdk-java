@@ -84,7 +84,7 @@ public class Initiator implements Serializable {
         this.initiatorName = initiatorName;
     }
     /** 
-     * A list of volumeAccessGroupIDs to which this initiator belongs. (Array of Integers)
+     * A list of volumeAccessGroupIDs to which this initiator beintegers. (Array of Integers)
      **/
     public Long[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
     public void setVolumeAccessGroups(Long[] volumeAccessGroups) { 

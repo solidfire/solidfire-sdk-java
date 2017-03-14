@@ -91,7 +91,7 @@ public class FibreChannelSession implements Serializable {
         this.targetWWPN = targetWWPN;
     }
     /** 
-     * The ID of the volume access group to which the initiatorWWPN belongs. If not in a volume access group, the value will be null.
+     * The ID of the volume access group to which the initiatorWWPN beintegers. If not in a volume access group, the value will be null.
      **/
     public Optional<Long> getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
     public void setVolumeAccessGroupID(Optional<Long> volumeAccessGroupID) { 

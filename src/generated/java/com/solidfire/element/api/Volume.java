@@ -237,7 +237,7 @@ public class Volume implements Serializable {
         this.qos = qos;
     }
     /** 
-     * List of volume access groups to which a volume belongs.
+     * List of volume access groups to which a volume beintegers.
      **/
     public Long[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
     public void setVolumeAccessGroups(Long[] volumeAccessGroups) { 

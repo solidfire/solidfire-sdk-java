@@ -280,7 +280,7 @@ public class VolumeStats implements Serializable {
         this.unalignedWrites = unalignedWrites;
     }
     /** 
-     * List of volume access group(s) to which a volume belongs.
+     * List of volume access group(s) to which a volume beintegers.
      **/
     public Long[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
     public void setVolumeAccessGroups(Long[] volumeAccessGroups) { 

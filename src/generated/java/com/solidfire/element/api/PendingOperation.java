@@ -54,7 +54,7 @@ public class PendingOperation implements Serializable {
 
     /** 
      * true: operation is still in progress.
-     * false: operation is no longer in progress.
+     * false: operation is no integerer in progress.
      **/
     public Boolean getPending() { return this.pending; }
     public void setPending(Boolean pending) { 

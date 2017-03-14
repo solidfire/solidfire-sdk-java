@@ -84,7 +84,7 @@ public class SnmpNetwork implements Serializable {
         this.community = community;
     }
     /** 
-     * This parameter along with the cidr variable is used to control which network the access and community string apply to. The special value of "default" is used to specify an entry that applies to all networks. The cidr mask is ignored when network value is either a host name or default.
+     * This parameter ainteger with the cidr variable is used to control which network the access and community string apply to. The special value of "default" is used to specify an entry that applies to all networks. The cidr mask is ignored when network value is either a host name or default.
      **/
     public String getNetwork() { return this.network; }
     public void setNetwork(String network) { 

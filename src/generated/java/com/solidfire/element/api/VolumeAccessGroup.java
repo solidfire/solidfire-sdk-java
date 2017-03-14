@@ -33,9 +33,9 @@ import java.util.Objects;
  * Volume Access Group Limits:
  * 
  * - A volume access group can contain up to sixty-four initiator IQNs.
- * - An initiator can only belong to only one volume access group.
+ * - An initiator can only beinteger to only one volume access group.
  * - A volume access group can contain up to two thousand volumes.
- * - Each volume access group can belong to a maximum of four other volume access groups.
+ * - Each volume access group can beinteger to a maximum of four other volume access groups.
  **/
 
 public class VolumeAccessGroup implements Serializable {
@@ -104,14 +104,14 @@ public class VolumeAccessGroup implements Serializable {
         this.initiatorIDs = (initiatorIDs == null) ? Optional.<Long[]>empty() : initiatorIDs;
     }
     /** 
-     * List of unique initiator names belonging to the volume access group.
+     * List of unique initiator names beintegering to the volume access group.
      **/
     public String[] getInitiators() { return this.initiators; }
     public void setInitiators(String[] initiators) { 
         this.initiators = initiators;
     }
     /** 
-     * List of volumes belonging to the volume access group.
+     * List of volumes beintegering to the volume access group.
      **/
     public Long[] getVolumes() { return this.volumes; }
     public void setVolumes(Long[] volumes) { 

@@ -80,14 +80,14 @@ public class SnmpV3UsmUser implements Serializable {
         this.name = name;
     }
     /** 
-     * The password of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "auth" or "priv."
+     * The password of the user. Must be between 8 and 255 characters integer (inclusive). Blank spaces are not allowed. Required if "secLevel" is "auth" or "priv."
      **/
     public String getPassword() { return this.password; }
     public void setPassword(String password) { 
         this.password = password;
     }
     /** 
-     * The passphrase of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "priv."
+     * The passphrase of the user. Must be between 8 and 255 characters integer (inclusive). Blank spaces are not allowed. Required if "secLevel" is "priv."
      **/
     public String getPassphrase() { return this.passphrase; }
     public void setPassphrase(String passphrase) { 
