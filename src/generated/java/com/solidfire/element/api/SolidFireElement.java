@@ -2811,16 +2811,6 @@ public class SolidFireElement
         return this.rollbackToSnapshot(new RollbackToSnapshotRequest(volumeID, snapshotID, saveCurrentState, name, attributes));
     }
     /** 
-     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public Object getCompleteStats() {
-        return super.sendRequest("GetCompleteStats", null, null, Object.class);
-    }
-    /** 
      * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
      **/
     @Override
@@ -2828,16 +2818,6 @@ public class SolidFireElement
     @ConnectionType("Node")
     public GetHardwareInfoResult getHardwareInfo() {
         return super.sendRequest("GetHardwareInfo", null, null, GetHardwareInfoResult.class);
-    }
-    /** 
-     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     **/
-    @Override
-    @Since("1")
-    @ConnectionType("Cluster")
-    public Object getRawStats() {
-        return super.sendRequest("GetRawStats", null, null, Object.class);
     }
     /** 
      * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
@@ -2908,6 +2888,26 @@ public class SolidFireElement
         Optional<java.util.UUID[]> virtualVolumeIDs
         ) {
         return this.listVolumeStatsByVirtualVolume(new ListVolumeStatsByVirtualVolumeRequest(virtualVolumeIDs));
+    }
+    /** 
+     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public Object getCompleteStats() {
+        return super.sendRequest("GetCompleteStats", null, null, Object.class);
+    }
+    /** 
+     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Override
+    @Since("1")
+    @ConnectionType("Cluster")
+    public Object getRawStats() {
+        return super.sendRequest("GetRawStats", null, null, Object.class);
     }
     /** 
      * Creates a new VVols storage container.
