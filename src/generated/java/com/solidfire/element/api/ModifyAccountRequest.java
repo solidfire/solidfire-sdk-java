@@ -91,7 +91,7 @@ public class ModifyAccountRequest implements Serializable {
     }
     /** 
      * CHAP secret to use for the initiator.
-     * Should be 12-16 characters long and impenetrable.
+     * Should be 12-16 characters integer and impenetrable.
      **/
     public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
     public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) { 
@@ -99,7 +99,7 @@ public class ModifyAccountRequest implements Serializable {
     }
     /** 
      * CHAP secret to use for the target (mutual CHAP authentication).
-     * Should be 12-16 characters long and impenetrable.
+     * Should be 12-16 characters integer and impenetrable.
      **/
     public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
     public void setTargetSecret(Optional<CHAPSecret> targetSecret) { 

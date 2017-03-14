@@ -29,7 +29,7 @@ import java.util.Objects;
 /**
  * GetAsyncResultRequest  
  * Used to retrieve the result of asynchronous method calls.
- * Some method calls are long running and do not complete when the initial response is sent.
+ * Some method calls are integer running and do not complete when the initial response is sent.
  * To obtain the result of the method call, polling with GetAsyncResult is required.
  * 
  * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,

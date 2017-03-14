@@ -71,7 +71,7 @@ public class AddAccountRequest implements Serializable {
     }
     /** 
      * CHAP secret to use for the initiator.
-     * Should be 12-16 characters long and impenetrable.
+     * Should be 12-16 characters integer and impenetrable.
      * The CHAP initiator secrets must be unique and cannot be the same as the target CHAP secret.
      * 
      * If not specified, a random secret is created.
@@ -82,7 +82,7 @@ public class AddAccountRequest implements Serializable {
     }
     /** 
      * CHAP secret to use for the target (mutual CHAP authentication).
-     * Should be 12-16 characters long and impenetrable.
+     * Should be 12-16 characters integer and impenetrable.
      * The CHAP target secrets must be unique and cannot be the same as the initiator CHAP secret.
      * 
      * If not specified, a random secret is created.

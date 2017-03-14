@@ -29,7 +29,7 @@ import java.util.Objects;
 /**
  * RemoveVolumePairRequest  
  * RemoveVolumePair is used to remove the remote pairing between two volumes.
- * When the volume pairing information is removed, data is no longer replicated to or from the volume.
+ * When the volume pairing information is removed, data is no integerer replicated to or from the volume.
  * This method should be run on both the source and target volumes that are paired together.
  **/
 

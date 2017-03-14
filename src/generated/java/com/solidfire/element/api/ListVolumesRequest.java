@@ -107,7 +107,7 @@ public class ListVolumesRequest implements Serializable {
         this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
     }
     /** 
-     * If specified, only fetch volumes which belong to the provided accounts.
+     * If specified, only fetch volumes which beinteger to the provided accounts.
      * By default, list volumes for all accounts.
      **/
     public Optional<Long[]> getAccounts() { return this.accounts; }
