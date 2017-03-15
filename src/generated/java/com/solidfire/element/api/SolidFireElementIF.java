@@ -1974,40 +1974,6 @@ public interface SolidFireElementIF {
         Optional<java.util.Map<String, Object>> attributes
         );
     /** 
-     * CreateSnapshot is used to create a point-in-time copy of a volume.
-     * A snapshot can be created from any volume or from an existing snapshot.
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public java.util.Map<String, Object> createSnapshot(final CreateSnapshotRequest request);
-
-    /** 
-     * CreateSnapshot is used to create a point-in-time copy of a volume.
-     * A snapshot can be created from any volume or from an existing snapshot.
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public java.util.Map<String, Object> createSnapshot(
-        
-        Long volumeID
-, 
-        Optional<Long> snapshotID
-, 
-        Optional<String> name
-, 
-        Optional<Boolean> enableRemoteReplication
-, 
-        Optional<String> retention
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
      * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
      * 
      * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
@@ -2066,6 +2032,40 @@ public interface SolidFireElementIF {
         Boolean saveCurrentState
 , 
         Optional<String> name
+, 
+        Optional<java.util.Map<String, Object>> attributes
+        );
+    /** 
+     * CreateSnapshot is used to create a point-in-time copy of a volume.
+     * A snapshot can be created from any volume or from an existing snapshot.
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult createSnapshot(final CreateSnapshotRequest request);
+
+    /** 
+     * CreateSnapshot is used to create a point-in-time copy of a volume.
+     * A snapshot can be created from any volume or from an existing snapshot.
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult createSnapshot(
+        
+        Long volumeID
+, 
+        Optional<Long> snapshotID
+, 
+        Optional<String> name
+, 
+        Optional<Boolean> enableRemoteReplication
+, 
+        Optional<String> retention
 , 
         Optional<java.util.Map<String, Object>> attributes
         );

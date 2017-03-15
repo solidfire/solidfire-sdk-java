@@ -2696,50 +2696,6 @@ public class SolidFireElement
         return this.createGroupSnapshot(new CreateGroupSnapshotRequest(volumes, name, enableRemoteReplication, retention, attributes));
     }
     /** 
-     * CreateSnapshot is used to create a point-in-time copy of a volume.
-     * A snapshot can be created from any volume or from an existing snapshot.
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    @SuppressWarnings("unchecked")
-    public java.util.Map<String, Object> createSnapshot(final CreateSnapshotRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
-            throw new ApiException("The command, createSnapshot is not available until version 6.");
-        }
-        if(request.getEnableRemoteReplication() != null && request.getEnableRemoteReplication() != Optional.<Boolean>empty() && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
-            throw new ApiException("The parameter, enableRemoteReplication is not applicable to this version of the API.");
-        }
-        if(request.getRetention() != null && request.getRetention() != Optional.<String>empty() && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
-            throw new ApiException("The parameter, retention is not applicable to this version of the API.");
-        }
-        return super.sendRequest("CreateSnapshot", request, CreateSnapshotRequest.class, java.util.Map.class);
-    }
-
-    /** 
-     * CreateSnapshot is used to create a point-in-time copy of a volume.
-     * A snapshot can be created from any volume or from an existing snapshot.
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public java.util.Map<String, Object> createSnapshot(
-        Long volumeID,
-        Optional<Long> snapshotID,
-        Optional<String> name,
-        Optional<Boolean> enableRemoteReplication,
-        Optional<String> retention,
-        Optional<java.util.Map<String, Object>> attributes
-        ) {
-        return this.createSnapshot(new CreateSnapshotRequest(volumeID, snapshotID, name, enableRemoteReplication, retention, attributes));
-    }
-    /** 
      * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
      * 
      * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
@@ -2809,6 +2765,49 @@ public class SolidFireElement
         Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.rollbackToSnapshot(new RollbackToSnapshotRequest(volumeID, snapshotID, saveCurrentState, name, attributes));
+    }
+    /** 
+     * CreateSnapshot is used to create a point-in-time copy of a volume.
+     * A snapshot can be created from any volume or from an existing snapshot.
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult createSnapshot(final CreateSnapshotRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
+            throw new ApiException("The command, createSnapshot is not available until version 6.");
+        }
+        if(request.getEnableRemoteReplication() != null && request.getEnableRemoteReplication() != Optional.<Boolean>empty() && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
+            throw new ApiException("The parameter, enableRemoteReplication is not applicable to this version of the API.");
+        }
+        if(request.getRetention() != null && request.getRetention() != Optional.<String>empty() && Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8.0) {
+            throw new ApiException("The parameter, retention is not applicable to this version of the API.");
+        }
+        return super.sendRequest("CreateSnapshot", request, CreateSnapshotRequest.class, CreateSnapshotResult.class);
+    }
+
+    /** 
+     * CreateSnapshot is used to create a point-in-time copy of a volume.
+     * A snapshot can be created from any volume or from an existing snapshot.
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public CreateSnapshotResult createSnapshot(
+        Long volumeID,
+        Optional<Long> snapshotID,
+        Optional<String> name,
+        Optional<Boolean> enableRemoteReplication,
+        Optional<String> retention,
+        Optional<java.util.Map<String, Object>> attributes
+        ) {
+        return this.createSnapshot(new CreateSnapshotRequest(volumeID, snapshotID, name, enableRemoteReplication, retention, attributes));
     }
     /** 
      * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
