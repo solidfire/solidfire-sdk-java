@@ -2332,7 +2332,7 @@ public class SolidFireElement
     @ConnectionType("Both")
     public Object invokeSFApi(
         String method,
-        Optional<java.util.Map<String, Object>> parameters
+        Optional<Object> parameters
         ) {
         return this.invokeSFApi(new InvokeSFApiRequest(method, parameters));
     }

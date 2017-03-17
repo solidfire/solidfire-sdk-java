@@ -1715,7 +1715,7 @@ public interface SolidFireElementIF {
         
         String method
 , 
-        Optional<java.util.Map<String, Object>> parameters
+        Optional<Object> parameters
         );
     /** 
      * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.

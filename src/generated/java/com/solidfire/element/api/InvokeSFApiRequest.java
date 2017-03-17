@@ -36,7 +36,7 @@ public class InvokeSFApiRequest implements Serializable {
 
     public static final long serialVersionUID = -3644984175863972914L;
     @SerializedName("method") private String method;
-    @SerializedName("parameters") private Optional<java.util.Map<String, Object>> parameters;
+    @SerializedName("parameters") private Optional<Object> parameters;
 
     // empty constructor
     @Since("7.0")
@@ -47,11 +47,11 @@ public class InvokeSFApiRequest implements Serializable {
     @Since("7.0")
     public InvokeSFApiRequest(
         String method,
-        Optional<java.util.Map<String, Object>> parameters
+        Optional<Object> parameters
     )
     {
         this.method = method;
-        this.parameters = (parameters == null) ? Optional.<java.util.Map<String, Object>>empty() : parameters;
+        this.parameters = (parameters == null) ? Optional.<Object>empty() : parameters;
     }
 
     /** 
@@ -64,9 +64,9 @@ public class InvokeSFApiRequest implements Serializable {
     /** 
      * An object, normally a dictionary or hashtable of the key/value pairs, to be passed as the params for the method being invoked.
      **/
-    public Optional<java.util.Map<String, Object>> getParameters() { return this.parameters; }
-    public void setParameters(Optional<java.util.Map<String, Object>> parameters) { 
-        this.parameters = (parameters == null) ? Optional.<java.util.Map<String, Object>>empty() : parameters;
+    public Optional<Object> getParameters() { return this.parameters; }
+    public void setParameters(Optional<Object> parameters) { 
+        this.parameters = (parameters == null) ? Optional.<Object>empty() : parameters;
     }
 
     @Override
@@ -121,7 +121,7 @@ public class InvokeSFApiRequest implements Serializable {
 
     public static class Builder {
         private String method;
-        private Optional<java.util.Map<String, Object>> parameters;
+        private Optional<Object> parameters;
 
         private Builder() { }
 
@@ -143,8 +143,8 @@ public class InvokeSFApiRequest implements Serializable {
             return this;
         }
 
-        public InvokeSFApiRequest.Builder optionalParameters(final java.util.Map<String, Object> parameters) {
-            this.parameters = (parameters == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(parameters);
+        public InvokeSFApiRequest.Builder optionalParameters(final Object parameters) {
+            this.parameters = (parameters == null) ? Optional.<Object>empty() : Optional.of(parameters);
             return this;
         }
 
