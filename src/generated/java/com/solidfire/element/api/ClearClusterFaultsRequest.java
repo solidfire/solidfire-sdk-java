@@ -34,7 +34,7 @@ import java.util.Objects;
 public class ClearClusterFaultsRequest implements Serializable {
 
     public static final long serialVersionUID = 8304045543083765534L;
-    @SerializedName("faultType") private Optional<String> faultType;
+    @SerializedName("faultTypes") private Optional<String> faultTypes;
 
     // empty constructor
     @Since("7.0")
@@ -44,10 +44,10 @@ public class ClearClusterFaultsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ClearClusterFaultsRequest(
-        Optional<String> faultType
+        Optional<String> faultTypes
     )
     {
-        this.faultType = (faultType == null) ? Optional.<String>empty() : faultType;
+        this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : faultTypes;
     }
 
     /** 
@@ -56,9 +56,9 @@ public class ClearClusterFaultsRequest implements Serializable {
      * resolved: Faults that were previously detected and resolved.
      * all: Both current and resolved faults are cleared. The fault status can be determined by the "resolved" field of the fault object.
      **/
-    public Optional<String> getFaultType() { return this.faultType; }
-    public void setFaultType(Optional<String> faultType) { 
-        this.faultType = (faultType == null) ? Optional.<String>empty() : faultType;
+    public Optional<String> getFaultTypes() { return this.faultTypes; }
+    public void setFaultTypes(Optional<String> faultTypes) { 
+        this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : faultTypes;
     }
 
     @Override
@@ -69,18 +69,18 @@ public class ClearClusterFaultsRequest implements Serializable {
         ClearClusterFaultsRequest that = (ClearClusterFaultsRequest) o;
 
         return 
-            Objects.equals(faultType, that.faultType);
+            Objects.equals(faultTypes, that.faultTypes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( faultType );
+        return Objects.hash( faultTypes );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("faultType", faultType);
+        map.put("faultTypes", faultTypes);
         return map;
     }
 
@@ -89,8 +89,8 @@ public class ClearClusterFaultsRequest implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != faultType && faultType.isPresent()){
-            sb.append(" faultType : ").append(faultType).append(",");
+        if(null != faultTypes && faultTypes.isPresent()){
+            sb.append(" faultTypes : ").append(faultTypes).append(",");
         }
         sb.append( " }" );
 
@@ -109,23 +109,23 @@ public class ClearClusterFaultsRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<String> faultType;
+        private Optional<String> faultTypes;
 
         private Builder() { }
 
         public ClearClusterFaultsRequest build() {
             return new ClearClusterFaultsRequest (
-                         this.faultType);
+                         this.faultTypes);
         }
 
         private ClearClusterFaultsRequest.Builder buildFrom(final ClearClusterFaultsRequest req) {
-            this.faultType = req.faultType;
+            this.faultTypes = req.faultTypes;
 
             return this;
         }
 
-        public ClearClusterFaultsRequest.Builder optionalFaultType(final String faultType) {
-            this.faultType = (faultType == null) ? Optional.<String>empty() : Optional.of(faultType);
+        public ClearClusterFaultsRequest.Builder optionalFaultTypes(final String faultTypes) {
+            this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : Optional.of(faultTypes);
             return this;
         }
 

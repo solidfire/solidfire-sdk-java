@@ -33,8 +33,8 @@ import java.util.Objects;
 public class GetAPIResult implements Serializable {
 
     public static final long serialVersionUID = -334735413474527149L;
-    @SerializedName("currentVersion") private Double currentVersion;
-    @SerializedName("supportedVersions") private Double[] supportedVersions;
+    @SerializedName("currentVersion") private String currentVersion;
+    @SerializedName("supportedVersions") private String[] supportedVersions;
 
     // empty constructor
     @Since("7.0")
@@ -44,8 +44,8 @@ public class GetAPIResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetAPIResult(
-        Double currentVersion,
-        Double[] supportedVersions
+        String currentVersion,
+        String[] supportedVersions
     )
     {
         this.currentVersion = currentVersion;
@@ -55,15 +55,15 @@ public class GetAPIResult implements Serializable {
     /** 
      * 
      **/
-    public Double getCurrentVersion() { return this.currentVersion; }
-    public void setCurrentVersion(Double currentVersion) { 
+    public String getCurrentVersion() { return this.currentVersion; }
+    public void setCurrentVersion(String currentVersion) { 
         this.currentVersion = currentVersion;
     }
     /** 
      * 
      **/
-    public Double[] getSupportedVersions() { return this.supportedVersions; }
-    public void setSupportedVersions(Double[] supportedVersions) { 
+    public String[] getSupportedVersions() { return this.supportedVersions; }
+    public void setSupportedVersions(String[] supportedVersions) { 
         this.supportedVersions = supportedVersions;
     }
 
@@ -116,8 +116,8 @@ public class GetAPIResult implements Serializable {
     }
 
     public static class Builder {
-        private Double currentVersion;
-        private Double[] supportedVersions;
+        private String currentVersion;
+        private String[] supportedVersions;
 
         private Builder() { }
 
@@ -134,12 +134,12 @@ public class GetAPIResult implements Serializable {
             return this;
         }
 
-        public GetAPIResult.Builder currentVersion(final Double currentVersion) {
+        public GetAPIResult.Builder currentVersion(final String currentVersion) {
             this.currentVersion = currentVersion;
             return this;
         }
 
-        public GetAPIResult.Builder supportedVersions(final Double[] supportedVersions) {
+        public GetAPIResult.Builder supportedVersions(final String[] supportedVersions) {
             this.supportedVersions = supportedVersions;
             return this;
         }

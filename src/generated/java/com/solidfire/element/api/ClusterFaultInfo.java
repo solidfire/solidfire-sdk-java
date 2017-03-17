@@ -47,7 +47,7 @@ public class ClusterFaultInfo implements Serializable {
     @SerializedName("clusterFaultID") private Long clusterFaultID;
     @SerializedName("date") private String date;
     @SerializedName("resolvedDate") private String resolvedDate;
-    @SerializedName("data") private java.util.Map<String, Object> data;
+    @SerializedName("data") private Optional<java.util.Map<String, Object>> data;
 
     // empty constructor
     @Since("7.0")
@@ -71,7 +71,7 @@ public class ClusterFaultInfo implements Serializable {
         Long clusterFaultID,
         String date,
         String resolvedDate,
-        java.util.Map<String, Object> data
+        Optional<java.util.Map<String, Object>> data
     )
     {
         this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
@@ -88,7 +88,7 @@ public class ClusterFaultInfo implements Serializable {
         this.clusterFaultID = clusterFaultID;
         this.date = date;
         this.resolvedDate = resolvedDate;
-        this.data = data;
+        this.data = (data == null) ? Optional.<java.util.Map<String, Object>>empty() : data;
     }
 
     /** 
@@ -192,9 +192,9 @@ public class ClusterFaultInfo implements Serializable {
     /** 
      * 
      **/
-    public java.util.Map<String, Object> getData() { return this.data; }
-    public void setData(java.util.Map<String, Object> data) { 
-        this.data = data;
+    public Optional<java.util.Map<String, Object>> getData() { return this.data; }
+    public void setData(Optional<java.util.Map<String, Object>> data) { 
+        this.data = (data == null) ? Optional.<java.util.Map<String, Object>>empty() : data;
     }
 
     @Override
@@ -271,7 +271,9 @@ public class ClusterFaultInfo implements Serializable {
         sb.append(" clusterFaultID : ").append(clusterFaultID).append(",");
         sb.append(" date : ").append(date).append(",");
         sb.append(" resolvedDate : ").append(resolvedDate).append(",");
-        sb.append(" data : ").append(data).append(",");
+        if(null != data && data.isPresent()){
+            sb.append(" data : ").append(data).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -303,7 +305,7 @@ public class ClusterFaultInfo implements Serializable {
         private Long clusterFaultID;
         private String date;
         private String resolvedDate;
-        private java.util.Map<String, Object> data;
+        private Optional<java.util.Map<String, Object>> data;
 
         private Builder() { }
 
@@ -416,8 +418,8 @@ public class ClusterFaultInfo implements Serializable {
             return this;
         }
 
-        public ClusterFaultInfo.Builder data(final java.util.Map<String, Object> data) {
-            this.data = data;
+        public ClusterFaultInfo.Builder optionalData(final java.util.Map<String, Object> data) {
+            this.data = (data == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(data);
             return this;
         }
 

@@ -43,7 +43,7 @@ public class EventInfo implements Serializable {
     @SerializedName("driveIDs") private Long[] driveIDs;
     @SerializedName("timeOfReport") private String timeOfReport;
     @SerializedName("timeOfPublish") private String timeOfPublish;
-    @SerializedName("details") private Object details;
+    @SerializedName("details") private Optional<Object> details;
 
     // empty constructor
     @Since("7.0")
@@ -63,7 +63,7 @@ public class EventInfo implements Serializable {
         Long[] driveIDs,
         String timeOfReport,
         String timeOfPublish,
-        Object details
+        Optional<Object> details
     )
     {
         this.eventID = eventID;
@@ -76,7 +76,7 @@ public class EventInfo implements Serializable {
         this.driveIDs = driveIDs;
         this.timeOfReport = timeOfReport;
         this.timeOfPublish = timeOfPublish;
-        this.details = details;
+        this.details = (details == null) ? Optional.<Object>empty() : details;
     }
 
     /** 
@@ -152,9 +152,9 @@ public class EventInfo implements Serializable {
     /** 
      * 
      **/
-    public Object getDetails() { return this.details; }
-    public void setDetails(Object details) { 
-        this.details = details;
+    public Optional<Object> getDetails() { return this.details; }
+    public void setDetails(Optional<Object> details) { 
+        this.details = (details == null) ? Optional.<Object>empty() : details;
     }
 
     @Override
@@ -215,7 +215,9 @@ public class EventInfo implements Serializable {
         sb.append(" driveIDs : ").append(Arrays.toString(driveIDs)).append(",");
         sb.append(" timeOfReport : ").append(timeOfReport).append(",");
         sb.append(" timeOfPublish : ").append(timeOfPublish).append(",");
-        sb.append(" details : ").append(details).append(",");
+        if(null != details && details.isPresent()){
+            sb.append(" details : ").append(details).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -243,7 +245,7 @@ public class EventInfo implements Serializable {
         private Long[] driveIDs;
         private String timeOfReport;
         private String timeOfPublish;
-        private Object details;
+        private Optional<Object> details;
 
         private Builder() { }
 
@@ -328,8 +330,8 @@ public class EventInfo implements Serializable {
             return this;
         }
 
-        public EventInfo.Builder details(final Object details) {
-            this.details = details;
+        public EventInfo.Builder optionalDetails(final Object details) {
+            this.details = (details == null) ? Optional.<Object>empty() : Optional.of(details);
             return this;
         }
 
