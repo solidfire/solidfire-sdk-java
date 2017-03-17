@@ -39,7 +39,7 @@ public class Node implements Serializable {
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("associatedMasterServiceID") private Long associatedMasterServiceID;
     @SerializedName("associatedFServiceID") private Long associatedFServiceID;
-    @SerializedName("fibreChannelTargetPortGroup") private String fibreChannelTargetPortGroup;
+    @SerializedName("fibreChannelTargetPortGroup") private Optional<String> fibreChannelTargetPortGroup;
     @SerializedName("name") private String name;
     @SerializedName("platformInfo") private Platform platformInfo;
     @SerializedName("softwareVersion") private String softwareVersion;
@@ -64,7 +64,7 @@ public class Node implements Serializable {
         Long nodeID,
         Long associatedMasterServiceID,
         Long associatedFServiceID,
-        String fibreChannelTargetPortGroup,
+        Optional<String> fibreChannelTargetPortGroup,
         String name,
         Platform platformInfo,
         String softwareVersion,
@@ -82,7 +82,7 @@ public class Node implements Serializable {
         this.nodeID = nodeID;
         this.associatedMasterServiceID = associatedMasterServiceID;
         this.associatedFServiceID = associatedFServiceID;
-        this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
+        this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<String>empty() : fibreChannelTargetPortGroup;
         this.name = name;
         this.platformInfo = platformInfo;
         this.softwareVersion = softwareVersion;
@@ -121,9 +121,9 @@ public class Node implements Serializable {
     /** 
      * 
      **/
-    public String getFibreChannelTargetPortGroup() { return this.fibreChannelTargetPortGroup; }
-    public void setFibreChannelTargetPortGroup(String fibreChannelTargetPortGroup) { 
-        this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
+    public Optional<String> getFibreChannelTargetPortGroup() { return this.fibreChannelTargetPortGroup; }
+    public void setFibreChannelTargetPortGroup(Optional<String> fibreChannelTargetPortGroup) { 
+        this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<String>empty() : fibreChannelTargetPortGroup;
     }
     /** 
      * 
@@ -271,7 +271,9 @@ public class Node implements Serializable {
         sb.append(" nodeID : ").append(nodeID).append(",");
         sb.append(" associatedMasterServiceID : ").append(associatedMasterServiceID).append(",");
         sb.append(" associatedFServiceID : ").append(associatedFServiceID).append(",");
-        sb.append(" fibreChannelTargetPortGroup : ").append(fibreChannelTargetPortGroup).append(",");
+        if(null != fibreChannelTargetPortGroup && fibreChannelTargetPortGroup.isPresent()){
+            sb.append(" fibreChannelTargetPortGroup : ").append(fibreChannelTargetPortGroup).append(",");
+        }
         sb.append(" name : ").append(name).append(",");
         sb.append(" platformInfo : ").append(platformInfo).append(",");
         sb.append(" softwareVersion : ").append(softwareVersion).append(",");
@@ -304,7 +306,7 @@ public class Node implements Serializable {
         private Long nodeID;
         private Long associatedMasterServiceID;
         private Long associatedFServiceID;
-        private String fibreChannelTargetPortGroup;
+        private Optional<String> fibreChannelTargetPortGroup;
         private String name;
         private Platform platformInfo;
         private String softwareVersion;
@@ -376,8 +378,8 @@ public class Node implements Serializable {
             return this;
         }
 
-        public Node.Builder fibreChannelTargetPortGroup(final String fibreChannelTargetPortGroup) {
-            this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
+        public Node.Builder optionalFibreChannelTargetPortGroup(final String fibreChannelTargetPortGroup) {
+            this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<String>empty() : Optional.of(fibreChannelTargetPortGroup);
             return this;
         }
 

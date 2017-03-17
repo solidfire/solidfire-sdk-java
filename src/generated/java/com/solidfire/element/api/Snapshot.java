@@ -41,7 +41,7 @@ public class Snapshot implements Serializable {
     @SerializedName("checksum") private String checksum;
     @SerializedName("enableRemoteReplication") private Boolean enableRemoteReplication;
     @SerializedName("expirationReason") private String expirationReason;
-    @SerializedName("expirationTime") private String expirationTime;
+    @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("remoteStatuses") private Optional<SnapshotRemoteStatus[]> remoteStatuses;
     @SerializedName("status") private String status;
     @SerializedName("snapshotUUID") private java.util.UUID snapshotUUID;
@@ -49,7 +49,7 @@ public class Snapshot implements Serializable {
     @SerializedName("groupID") private Optional<Long> groupID;
     @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
     @SerializedName("createTime") private String createTime;
-    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
+    @SerializedName("virtualVolumeID") private Optional<java.util.UUID> virtualVolumeID;
     @SerializedName("attributes") private java.util.Map<String, Object> attributes;
 
     // empty constructor
@@ -68,7 +68,7 @@ public class Snapshot implements Serializable {
         Long totalSize,
         Optional<Long> groupID,
         String createTime,
-        java.util.UUID virtualVolumeID,
+        Optional<java.util.UUID> virtualVolumeID,
         java.util.Map<String, Object> attributes
     )
     {
@@ -80,7 +80,7 @@ public class Snapshot implements Serializable {
         this.totalSize = totalSize;
         this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
         this.createTime = createTime;
-        this.virtualVolumeID = virtualVolumeID;
+        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
         this.attributes = attributes;
     }
     // parameterized constructor
@@ -92,7 +92,7 @@ public class Snapshot implements Serializable {
         String checksum,
         Boolean enableRemoteReplication,
         String expirationReason,
-        String expirationTime,
+        Optional<String> expirationTime,
         Optional<SnapshotRemoteStatus[]> remoteStatuses,
         String status,
         java.util.UUID snapshotUUID,
@@ -100,7 +100,7 @@ public class Snapshot implements Serializable {
         Optional<Long> groupID,
         java.util.UUID groupSnapshotUUID,
         String createTime,
-        java.util.UUID virtualVolumeID,
+        Optional<java.util.UUID> virtualVolumeID,
         java.util.Map<String, Object> attributes
     )
     {
@@ -110,7 +110,7 @@ public class Snapshot implements Serializable {
         this.checksum = checksum;
         this.enableRemoteReplication = enableRemoteReplication;
         this.expirationReason = expirationReason;
-        this.expirationTime = expirationTime;
+        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
         this.remoteStatuses = (remoteStatuses == null) ? Optional.<SnapshotRemoteStatus[]>empty() : remoteStatuses;
         this.status = status;
         this.snapshotUUID = snapshotUUID;
@@ -118,7 +118,7 @@ public class Snapshot implements Serializable {
         this.groupID = (groupID == null) ? Optional.<Long>empty() : groupID;
         this.groupSnapshotUUID = groupSnapshotUUID;
         this.createTime = createTime;
-        this.virtualVolumeID = virtualVolumeID;
+        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
         this.attributes = attributes;
     }
 
@@ -172,9 +172,9 @@ public class Snapshot implements Serializable {
     /** 
      * The time at which this snapshot will expire and be purged from the cluster.
      **/
-    public String getExpirationTime() { return this.expirationTime; }
-    public void setExpirationTime(String expirationTime) { 
-        this.expirationTime = expirationTime;
+    public Optional<String> getExpirationTime() { return this.expirationTime; }
+    public void setExpirationTime(Optional<String> expirationTime) { 
+        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
     }
     /** 
      * Current remote status of the snapshot remoteStatus: Possible values:
@@ -239,9 +239,9 @@ public class Snapshot implements Serializable {
     /** 
      * The ID of the virtual volume with which the snapshot is associated.
      **/
-    public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
-    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
-        this.virtualVolumeID = virtualVolumeID;
+    public Optional<java.util.UUID> getVirtualVolumeID() { return this.virtualVolumeID; }
+    public void setVirtualVolumeID(Optional<java.util.UUID> virtualVolumeID) { 
+        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
     }
     /** 
      * List of Name/Value pairs in JSON object format.
@@ -315,7 +315,9 @@ public class Snapshot implements Serializable {
         sb.append(" checksum : ").append(checksum).append(",");
         sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
         sb.append(" expirationReason : ").append(expirationReason).append(",");
-        sb.append(" expirationTime : ").append(expirationTime).append(",");
+        if(null != expirationTime && expirationTime.isPresent()){
+            sb.append(" expirationTime : ").append(expirationTime).append(",");
+        }
         if(null != remoteStatuses && remoteStatuses.isPresent()){
             sb.append(" remoteStatuses : ").append(remoteStatuses).append(",");
         }
@@ -327,7 +329,9 @@ public class Snapshot implements Serializable {
         }
         sb.append(" groupSnapshotUUID : ").append(groupSnapshotUUID).append(",");
         sb.append(" createTime : ").append(createTime).append(",");
-        sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
+        if(null != virtualVolumeID && virtualVolumeID.isPresent()){
+            sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
+        }
         sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
@@ -352,7 +356,7 @@ public class Snapshot implements Serializable {
         private String checksum;
         private Boolean enableRemoteReplication;
         private String expirationReason;
-        private String expirationTime;
+        private Optional<String> expirationTime;
         private Optional<SnapshotRemoteStatus[]> remoteStatuses;
         private String status;
         private java.util.UUID snapshotUUID;
@@ -360,7 +364,7 @@ public class Snapshot implements Serializable {
         private Optional<Long> groupID;
         private java.util.UUID groupSnapshotUUID;
         private String createTime;
-        private java.util.UUID virtualVolumeID;
+        private Optional<java.util.UUID> virtualVolumeID;
         private java.util.Map<String, Object> attributes;
 
         private Builder() { }
@@ -436,8 +440,8 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder expirationTime(final String expirationTime) {
-            this.expirationTime = expirationTime;
+        public Snapshot.Builder optionalExpirationTime(final String expirationTime) {
+            this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : Optional.of(expirationTime);
             return this;
         }
 
@@ -476,8 +480,8 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder virtualVolumeID(final java.util.UUID virtualVolumeID) {
-            this.virtualVolumeID = virtualVolumeID;
+        public Snapshot.Builder optionalVirtualVolumeID(final java.util.UUID virtualVolumeID) {
+            this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : Optional.of(virtualVolumeID);
             return this;
         }
 

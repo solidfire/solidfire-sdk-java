@@ -43,8 +43,8 @@ public class VirtualVolumeInfo implements Serializable {
     @SerializedName("bindings") private Long[] bindings;
     @SerializedName("children") private java.util.UUID[] children;
     @SerializedName("metadata") private java.util.Map<String, Object> metadata;
-    @SerializedName("snapshotInfo") private Snapshot snapshotInfo;
-    @SerializedName("volumeInfo") private Volume volumeInfo;
+    @SerializedName("snapshotInfo") private Optional<Snapshot> snapshotInfo;
+    @SerializedName("volumeInfo") private Optional<Volume> volumeInfo;
     @SerializedName("descendants") private Optional<Long[]> descendants;
 
     // empty constructor
@@ -65,8 +65,8 @@ public class VirtualVolumeInfo implements Serializable {
         Long[] bindings,
         java.util.UUID[] children,
         java.util.Map<String, Object> metadata,
-        Snapshot snapshotInfo,
-        Volume volumeInfo,
+        Optional<Snapshot> snapshotInfo,
+        Optional<Volume> volumeInfo,
         Optional<Long[]> descendants
     )
     {
@@ -80,8 +80,8 @@ public class VirtualVolumeInfo implements Serializable {
         this.bindings = bindings;
         this.children = children;
         this.metadata = metadata;
-        this.snapshotInfo = snapshotInfo;
-        this.volumeInfo = volumeInfo;
+        this.snapshotInfo = (snapshotInfo == null) ? Optional.<Snapshot>empty() : snapshotInfo;
+        this.volumeInfo = (volumeInfo == null) ? Optional.<Volume>empty() : volumeInfo;
         this.descendants = (descendants == null) ? Optional.<Long[]>empty() : descendants;
     }
 
@@ -158,16 +158,16 @@ public class VirtualVolumeInfo implements Serializable {
     /** 
      * 
      **/
-    public Snapshot getSnapshotInfo() { return this.snapshotInfo; }
-    public void setSnapshotInfo(Snapshot snapshotInfo) { 
-        this.snapshotInfo = snapshotInfo;
+    public Optional<Snapshot> getSnapshotInfo() { return this.snapshotInfo; }
+    public void setSnapshotInfo(Optional<Snapshot> snapshotInfo) { 
+        this.snapshotInfo = (snapshotInfo == null) ? Optional.<Snapshot>empty() : snapshotInfo;
     }
     /** 
      * 
      **/
-    public Volume getVolumeInfo() { return this.volumeInfo; }
-    public void setVolumeInfo(Volume volumeInfo) { 
-        this.volumeInfo = volumeInfo;
+    public Optional<Volume> getVolumeInfo() { return this.volumeInfo; }
+    public void setVolumeInfo(Optional<Volume> volumeInfo) { 
+        this.volumeInfo = (volumeInfo == null) ? Optional.<Volume>empty() : volumeInfo;
     }
     /** 
      * 
@@ -239,8 +239,12 @@ public class VirtualVolumeInfo implements Serializable {
         sb.append(" bindings : ").append(Arrays.toString(bindings)).append(",");
         sb.append(" children : ").append(Arrays.toString(children)).append(",");
         sb.append(" metadata : ").append(metadata).append(",");
-        sb.append(" snapshotInfo : ").append(snapshotInfo).append(",");
-        sb.append(" volumeInfo : ").append(volumeInfo).append(",");
+        if(null != snapshotInfo && snapshotInfo.isPresent()){
+            sb.append(" snapshotInfo : ").append(snapshotInfo).append(",");
+        }
+        if(null != volumeInfo && volumeInfo.isPresent()){
+            sb.append(" volumeInfo : ").append(volumeInfo).append(",");
+        }
         if(null != descendants && descendants.isPresent()){
             sb.append(" descendants : ").append(descendants).append(",");
         }
@@ -271,8 +275,8 @@ public class VirtualVolumeInfo implements Serializable {
         private Long[] bindings;
         private java.util.UUID[] children;
         private java.util.Map<String, Object> metadata;
-        private Snapshot snapshotInfo;
-        private Volume volumeInfo;
+        private Optional<Snapshot> snapshotInfo;
+        private Optional<Volume> volumeInfo;
         private Optional<Long[]> descendants;
 
         private Builder() { }
@@ -362,13 +366,13 @@ public class VirtualVolumeInfo implements Serializable {
             return this;
         }
 
-        public VirtualVolumeInfo.Builder snapshotInfo(final Snapshot snapshotInfo) {
-            this.snapshotInfo = snapshotInfo;
+        public VirtualVolumeInfo.Builder optionalSnapshotInfo(final Snapshot snapshotInfo) {
+            this.snapshotInfo = (snapshotInfo == null) ? Optional.<Snapshot>empty() : Optional.of(snapshotInfo);
             return this;
         }
 
-        public VirtualVolumeInfo.Builder volumeInfo(final Volume volumeInfo) {
-            this.volumeInfo = volumeInfo;
+        public VirtualVolumeInfo.Builder optionalVolumeInfo(final Volume volumeInfo) {
+            this.volumeInfo = (volumeInfo == null) ? Optional.<Volume>empty() : Optional.of(volumeInfo);
             return this;
         }
 

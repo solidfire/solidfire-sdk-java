@@ -37,7 +37,7 @@ public class ClusterAdmin implements Serializable {
     @SerializedName("access") private String[] access;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     @SerializedName("username") private String username;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -51,14 +51,14 @@ public class ClusterAdmin implements Serializable {
         String[] access,
         Long clusterAdminID,
         String username,
-        java.util.Map<String, Object> attributes
+        Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.authMethod = authMethod;
         this.access = access;
         this.clusterAdminID = clusterAdminID;
         this.username = username;
-        this.attributes = attributes;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     /** 
@@ -92,9 +92,9 @@ public class ClusterAdmin implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
-        this.attributes = attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -137,7 +137,9 @@ public class ClusterAdmin implements Serializable {
         sb.append(" access : ").append(Arrays.toString(access)).append(",");
         sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
         sb.append(" username : ").append(username).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -159,7 +161,7 @@ public class ClusterAdmin implements Serializable {
         private String[] access;
         private Long clusterAdminID;
         private String username;
-        private java.util.Map<String, Object> attributes;
+        private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
 
@@ -202,8 +204,8 @@ public class ClusterAdmin implements Serializable {
             return this;
         }
 
-        public ClusterAdmin.Builder attributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = attributes;
+        public ClusterAdmin.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 

@@ -41,7 +41,7 @@ public class VirtualNetwork implements Serializable {
     @SerializedName("svip") private String svip;
     @SerializedName("gateway") private Optional<String> gateway;
     @SerializedName("namespace") private Optional<Boolean> namespace;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -57,7 +57,7 @@ public class VirtualNetwork implements Serializable {
         String name,
         String netmask,
         String svip,
-        java.util.Map<String, Object> attributes
+        Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.virtualNetworkID = virtualNetworkID;
@@ -66,7 +66,7 @@ public class VirtualNetwork implements Serializable {
         this.name = name;
         this.netmask = netmask;
         this.svip = svip;
-        this.attributes = attributes;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
     // parameterized constructor
     @Since("9.0")
@@ -79,7 +79,7 @@ public class VirtualNetwork implements Serializable {
         String svip,
         Optional<String> gateway,
         Optional<Boolean> namespace,
-        java.util.Map<String, Object> attributes
+        Optional<java.util.Map<String, Object>> attributes
     )
     {
         this.virtualNetworkID = virtualNetworkID;
@@ -90,7 +90,7 @@ public class VirtualNetwork implements Serializable {
         this.svip = svip;
         this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
-        this.attributes = attributes;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     /** 
@@ -155,9 +155,9 @@ public class VirtualNetwork implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
-        this.attributes = attributes;
+    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
     @Override
@@ -216,7 +216,9 @@ public class VirtualNetwork implements Serializable {
         if(null != namespace && namespace.isPresent()){
             sb.append(" namespace : ").append(namespace).append(",");
         }
-        sb.append(" attributes : ").append(attributes).append(",");
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -242,7 +244,7 @@ public class VirtualNetwork implements Serializable {
         private String svip;
         private Optional<String> gateway;
         private Optional<Boolean> namespace;
-        private java.util.Map<String, Object> attributes;
+        private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
 
@@ -313,8 +315,8 @@ public class VirtualNetwork implements Serializable {
             return this;
         }
 
-        public VirtualNetwork.Builder attributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = attributes;
+        public VirtualNetwork.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
+            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
             return this;
         }
 
