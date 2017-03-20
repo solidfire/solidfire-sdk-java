@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -38,7 +39,7 @@ public class Initiator implements Serializable {
     @SerializedName("initiatorID") private Long initiatorID;
     @SerializedName("initiatorName") private String initiatorName;
     @SerializedName("volumeAccessGroups") private Long[] volumeAccessGroups;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private Attributes attributes;
 
     // empty constructor
     @Since("7.0")
@@ -52,7 +53,7 @@ public class Initiator implements Serializable {
         Long initiatorID,
         String initiatorName,
         Long[] volumeAccessGroups,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.alias = alias;
@@ -93,8 +94,8 @@ public class Initiator implements Serializable {
     /** 
      * A set of JSON attributes assigned to this initiator. (JSON Object)
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -160,7 +161,7 @@ public class Initiator implements Serializable {
         private Long initiatorID;
         private String initiatorName;
         private Long[] volumeAccessGroups;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -203,7 +204,7 @@ public class Initiator implements Serializable {
             return this;
         }
 
-        public Initiator.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public Initiator.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

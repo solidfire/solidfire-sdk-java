@@ -18,7 +18,7 @@
  */
 package com.solidfire.element.api;
 
-
+import com.solidfire.core.client.Attributes;
 import com.solidfire.core.annotation.*;
 import com.solidfire.core.javautil.Optional;
 
@@ -53,7 +53,7 @@ public interface SolidFireElementIF {
 , 
         Optional<CHAPSecret> targetSecret
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * Returns details about an account, given its AccountID.
@@ -151,7 +151,7 @@ public interface SolidFireElementIF {
 , 
         Optional<CHAPSecret> targetSecret
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * Used to remove an existing account.
@@ -189,7 +189,7 @@ public interface SolidFireElementIF {
         
         String name
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * GetBackupTarget allows you to return information about a specific backup target that has been created.
@@ -231,7 +231,7 @@ public interface SolidFireElementIF {
 , 
         Optional<String> name
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * RemoveBackupTarget allows you to delete backup targets.
@@ -275,7 +275,23 @@ public interface SolidFireElementIF {
 , 
         Optional<Boolean> acceptEula
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
+        );
+    /** 
+     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request);
+
+    /** 
+     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ClearClusterFaultsResult clearClusterFaults(
+        
+        Optional<String> faultTypes
         );
     /** 
      * The CreateCluster method is used to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the MIP of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. The method is used only once each time a new cluster is initialized.
@@ -309,7 +325,7 @@ public interface SolidFireElementIF {
 , 
         String[] nodes
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * CreateSupportBundle is used to create a support bundle file under the node's directory. When the bundle has been successfully created, the bundle is stored on the node as a tar.gz file.
@@ -573,6 +589,28 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListSyncJobsResult listSyncJobs();
     /** 
+     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request);
+
+    /** 
+     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ModifyClusterAdminResult modifyClusterAdmin(
+        
+        Long clusterAdminID
+, 
+        Optional<String> password
+, 
+        Optional<String[]> access
+, 
+        Optional<Attributes> attributes
+        );
+    /** 
      * ModifyClusterFullThreshold is used to change the level at which an event is generated when the storage cluster approaches the capacity utilization requested. The number entered in this setting is used to indicate the number of node failures the system is required to recover from. For example, on a 10 node cluster, if you want to be alerted when the system cannot recover from 3 nodes failures, enter the value of "3". When this number is reached, a message alert is sent to the Event Log in the Cluster Management Console.
      **/
     @Since("1")
@@ -629,6 +667,24 @@ public interface SolidFireElementIF {
         ClusterConfig cluster
         );
     /** 
+     * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public SetNtpInfoResult setNtpInfo(final SetNtpInfoRequest request);
+
+    /** 
+     * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public SetNtpInfoResult setNtpInfo(
+        
+        String[] servers
+, 
+        Optional<Boolean> broadcastclient
+        );
+    /** 
      * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
      **/
     @Since("8")
@@ -645,6 +701,32 @@ public interface SolidFireElementIF {
         SnmpNetwork[] networks
 , 
         SnmpV3UsmUser[] usmUsers
+        );
+    /** 
+     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
+     * 
+     * Note: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no integerer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request);
+
+    /** 
+     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
+     * 
+     * Note: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no integerer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public SetSnmpInfoResult setSnmpInfo(
+        
+        Optional<SnmpNetwork[]> networks
+, 
+        Optional<Boolean> enabled
+, 
+        Optional<Boolean> snmpV3Enabled
+, 
+        Optional<SnmpV3UsmUser[]> usmUsers
         );
     /** 
      * SetSnmpTrapInfo is used to enable and disable the generation of SolidFire SNMP notifications (traps) and to specify the set of network host computers that are to receive the notifications. The values passed with each SetSnmpTrapInfo method replaces all values set in any previous method to SetSnmpTrapInfo.
@@ -674,88 +756,6 @@ public interface SolidFireElementIF {
     @Since("6")
     @ConnectionType("Cluster")
     public SnmpSendTestTrapsResult snmpSendTestTraps();
-    /** 
-     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ModifyClusterAdminResult modifyClusterAdmin(final ModifyClusterAdminRequest request);
-
-    /** 
-     * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ModifyClusterAdminResult modifyClusterAdmin(
-        
-        Long clusterAdminID
-, 
-        Optional<String> password
-, 
-        Optional<String[]> access
-, 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public SetNtpInfoResult setNtpInfo(final SetNtpInfoRequest request);
-
-    /** 
-     * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public SetNtpInfoResult setNtpInfo(
-        
-        String[] servers
-, 
-        Optional<Boolean> broadcastclient
-        );
-    /** 
-     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
-     * 
-     * Note: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no integerer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public SetSnmpInfoResult setSnmpInfo(final SetSnmpInfoRequest request);
-
-    /** 
-     * SetSnmpInfo is used to configure SNMP v2 and v3 on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
-     * 
-     * Note: EnableSnmp and SetSnmpACL methods can be used to accomplish the same results as SetSnmpInfo. SetSnmpInfo will no integerer be available after the Element 8 release. Please use EnableSnmp and SetSnmpACL in the future.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public SetSnmpInfoResult setSnmpInfo(
-        
-        Optional<SnmpNetwork[]> networks
-, 
-        Optional<Boolean> enabled
-, 
-        Optional<Boolean> snmpV3Enabled
-, 
-        Optional<SnmpV3UsmUser[]> usmUsers
-        );
-    /** 
-     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ClearClusterFaultsResult clearClusterFaults(final ClearClusterFaultsRequest request);
-
-    /** 
-     * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ClearClusterFaultsResult clearClusterFaults(
-        
-        Optional<String> faultTypes
-        );
     /** 
      * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
      * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
@@ -1113,7 +1113,7 @@ public interface SolidFireElementIF {
 , 
         Optional<Boolean> acceptEula
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * The DisableLdapAuthentication method is used disable LDAP authentication and remove all LDAP configuration settings. This call will not remove any configured cluster admin accounts (user or group). However, those cluster admin accounts will no integerer be able to log in.
@@ -1622,18 +1622,40 @@ public interface SolidFireElementIF {
         Optional<java.util.UUID[]> protocolEndpointIDs
         );
     /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Since("5")
+    @ConnectionType("Node")
+    public ResetNodeResult resetNode(final ResetNodeRequest request);
+
+    /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Since("5")
+    @ConnectionType("Node")
+    public ResetNodeResult resetNode(
+        
+        String build
+, 
+        Boolean force
+, 
+        Optional<String> options
+, 
+        Optional<Boolean> reboot
+        );
+    /** 
      * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Since("5")
     @ConnectionType("Node")
-    public java.util.Map<String, Object> restartNetworking(final RestartNetworkingRequest request);
+    public Attributes restartNetworking(final RestartNetworkingRequest request);
 
     /** 
      * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Since("5")
     @ConnectionType("Node")
-    public java.util.Map<String, Object> restartNetworking(
+    public Attributes restartNetworking(
         
         Boolean force
         );
@@ -1642,14 +1664,14 @@ public interface SolidFireElementIF {
      **/
     @Since("5")
     @ConnectionType("Node")
-    public java.util.Map<String, Object> restartServices(final RestartServicesRequest request);
+    public Attributes restartServices(final RestartServicesRequest request);
 
     /** 
      * The RestartServices API method is used to restart the  Element services on a node.Caution: This method causes temporary node services interruption. Exercise caution when using this method.
      **/
     @Since("5")
     @ConnectionType("Node")
-    public java.util.Map<String, Object> restartServices(
+    public Attributes restartServices(
         
         Boolean force
 , 
@@ -1674,48 +1696,6 @@ public interface SolidFireElementIF {
         Long[] nodes
 , 
         Optional<String> option
-        );
-    /** 
-     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
-     **/
-    @Since("5")
-    @ConnectionType("Node")
-    public ResetNodeResult resetNode(final ResetNodeRequest request);
-
-    /** 
-     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
-     **/
-    @Since("5")
-    @ConnectionType("Node")
-    public ResetNodeResult resetNode(
-        
-        String build
-, 
-        Boolean force
-, 
-        Optional<String> options
-, 
-        Optional<Boolean> reboot
-        );
-    /** 
-     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
-     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
-     **/
-    @Since("1.0")
-    @ConnectionType("Both")
-    public java.util.Map<String, Object> invokeSFApi(final InvokeSFApiRequest request);
-
-    /** 
-     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
-     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
-     **/
-    @Since("1.0")
-    @ConnectionType("Both")
-    public java.util.Map<String, Object> invokeSFApi(
-        
-        String method
-, 
-        Optional<Object> parameters
         );
     /** 
      * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
@@ -1758,6 +1738,26 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListServicesResult listServices();
     /** 
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
+     **/
+    @Since("1.0")
+    @ConnectionType("Both")
+    public Attributes invokeSFApi(final InvokeSFApiRequest request);
+
+    /** 
+     * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+     * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
+     **/
+    @Since("1.0")
+    @ConnectionType("Both")
+    public Attributes invokeSFApi(
+        
+        String method
+, 
+        Optional<Object> parameters
+        );
+    /** 
      * CreateGroupSnapshot is used to create a point-in-time copy of a group of volumes.
      * The snapshot created can then be used later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time in which the snapshot was created.
      * 
@@ -1787,7 +1787,31 @@ public interface SolidFireElementIF {
 , 
         Optional<String> retention
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
+        );
+    /** 
+     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
+     * 
+     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. 
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("8")
+    @ConnectionType("Cluster")
+    public CreateScheduleResult createSchedule(final CreateScheduleRequest request);
+
+    /** 
+     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
+     * 
+     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. 
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Since("8")
+    @ConnectionType("Cluster")
+    public CreateScheduleResult createSchedule(
+        
+        Schedule schedule
         );
     /** 
      * CreateSnapshot is used to create a point-in-time copy of a volume.
@@ -1821,7 +1845,7 @@ public interface SolidFireElementIF {
 , 
         Optional<String> retention
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * DeleteGroupSnapshot is used to delete a group snapshot.
@@ -1908,6 +1932,22 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListSchedulesResult listSchedules();
     /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request);
+
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(
+        
+        Optional<Long> volumeID
+        );
+    /** 
      * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
      **/
     @Since("8")
@@ -1926,6 +1966,22 @@ public interface SolidFireElementIF {
         Optional<String> expirationTime
 , 
         Optional<Boolean> enableRemoteReplication
+        );
+    /** 
+     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.
+     **/
+    @Since("8")
+    @ConnectionType("Cluster")
+    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request);
+
+    /** 
+     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.
+     **/
+    @Since("8")
+    @ConnectionType("Cluster")
+    public ModifyScheduleResult modifySchedule(
+        
+        Schedule schedule
         );
     /** 
      * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
@@ -1975,7 +2031,7 @@ public interface SolidFireElementIF {
 , 
         Optional<String> name
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
@@ -2009,70 +2065,28 @@ public interface SolidFireElementIF {
 , 
         Optional<String> name
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
-     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
-     * 
-     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. 
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
      **/
-    @Since("8")
+    @Since("1")
     @ConnectionType("Cluster")
-    public CreateScheduleResult createSchedule(final CreateScheduleRequest request);
-
-    /** 
-     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
-     * 
-     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. 
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Since("8")
-    @ConnectionType("Cluster")
-    public CreateScheduleResult createSchedule(
-        
-        Schedule schedule
-        );
-    /** 
-     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.
-     **/
-    @Since("8")
-    @ConnectionType("Cluster")
-    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request);
-
-    /** 
-     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.
-     **/
-    @Since("8")
-    @ConnectionType("Cluster")
-    public ModifyScheduleResult modifySchedule(
-        
-        Schedule schedule
-        );
-    /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request);
-
-    /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(
-        
-        Optional<Long> volumeID
-        );
+    public Attributes getCompleteStats();
     /** 
      * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
      **/
     @Since("9")
     @ConnectionType("Node")
     public GetHardwareInfoResult getHardwareInfo();
+    /** 
+     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public Attributes getRawStats();
     /** 
      * ListDriveStats enables you to retrieve  high-level activity measurements for multiple drives in the cluster. By default, this method returns statistics for all drives in the cluster, and these measurements are cumulative from the addition of the drive to the cluster. Some values this method returns are specific to block drives, and some are specific to metadata drives. For more information on what data each drive type returns, see the response examples for the GetDriveStats method.
      **/
@@ -2119,20 +2133,6 @@ public interface SolidFireElementIF {
         
         Optional<java.util.UUID[]> virtualVolumeIDs
         );
-    /** 
-     * The GetCompleteStats API method is used by SolidFire engineering to troubleshoot new features. The data returned from GetCompleteStats is not documented, changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetCompleteStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetCompleteStats for collecting performance data or any other management integration with a SolidFire cluster.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public java.util.Map<String, Object> getCompleteStats();
-    /** 
-     * The GetRawStats call is used by SolidFire engineering to troubleshoot new features. The data returned from GetRawStats is not documented, it changes frequently, and is not guaranteed to be accurate. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     * The data returned from GetRawStats changes frequently, and is not guaranteed to accurately show performance from the system. It is not recommended to ever use GetRawStats for collecting performance data or any other management integration with a SolidFire cluster.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public java.util.Map<String, Object> getRawStats();
     /** 
      * Creates a new VVols storage container.
      **/
@@ -2347,7 +2347,7 @@ public interface SolidFireElementIF {
 , 
         Optional<Boolean> namespace
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * ListVirtualNetworks is used to get a list of all the configured virtual networks for the cluster. This method can be used to verify the virtual network settings in the cluster.
@@ -2409,7 +2409,7 @@ public interface SolidFireElementIF {
 , 
         Optional<Boolean> namespace
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * RemoveVirtualNetwork is used to remove a previously added virtual network.
@@ -2504,22 +2504,6 @@ public interface SolidFireElementIF {
         Optional<java.util.UUID[]> virtualVolumeHostIDs
         );
     /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request);
-
-    /** 
-     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
-        
-        Optional<java.util.UUID[]> virtualVolumeTaskIDs
-        );
-    /** 
      * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
      **/
     @Since("9")
@@ -2542,6 +2526,54 @@ public interface SolidFireElementIF {
         Optional<java.util.UUID> startVirtualVolumeID
 , 
         Optional<java.util.UUID[]> virtualVolumeIDs
+        );
+    /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(final ListVirtualVolumeTasksRequest request);
+
+    /** 
+     * ListVirtualVolumeTasks returns a list of VVol Async Tasks.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public ListVirtualVolumeTasksResult listVirtualVolumeTasks(
+        
+        Optional<java.util.UUID[]> virtualVolumeTaskIDs
+        );
+    /** 
+     * Cancels a currently running clone operation. This method does not return anything.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public CancelCloneResult cancelClone(final CancelCloneRequest request);
+
+    /** 
+     * Cancels a currently running clone operation. This method does not return anything.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public CancelCloneResult cancelClone(
+        
+        Long cloneID
+        );
+    /** 
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public CancelGroupCloneResult cancelGroupClone(final CancelGroupCloneRequest request);
+
+    /** 
+     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
+     **/
+    @Since("9")
+    @ConnectionType("Cluster")
+    public CancelGroupCloneResult cancelGroupClone(
+        
+        Long groupCloneID
         );
     /** 
      * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
@@ -2615,7 +2647,7 @@ public interface SolidFireElementIF {
 , 
         Optional<Long> snapshotID
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
 , 
         Optional<Boolean> enable512e
         );
@@ -2665,7 +2697,7 @@ public interface SolidFireElementIF {
 , 
         Optional<QoS> qos
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
 , 
         Optional<Long> sliceCount
         );
@@ -2746,7 +2778,7 @@ public interface SolidFireElementIF {
      **/
     @Since("1")
     @ConnectionType("Cluster")
-    public java.util.Map<String, Object> getAsyncResult(final GetAsyncResultRequest request);
+    public Attributes getAsyncResult(final GetAsyncResultRequest request);
 
     /** 
      * Used to retrieve the result of asynchronous method calls.
@@ -2761,7 +2793,7 @@ public interface SolidFireElementIF {
      **/
     @Since("1")
     @ConnectionType("Cluster")
-    public java.util.Map<String, Object> getAsyncResult(
+    public Attributes getAsyncResult(
         
         Long asyncHandle
 , 
@@ -2864,36 +2896,6 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListDeletedVolumesResult listDeletedVolumes();
     /** 
-     * ListVolumeStatsByAccount returns high-level activity measurements for every account.
-     * Values are summed from all the volumes owned by the account.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByAccountResult listVolumeStatsByAccount();
-    /** 
-     * ListVolumeStatsByVolume returns high-level activity measurements for every volume, by volume.
-     * Values are cumulative from the creation of the volume.
-     **/
-    @Since("1")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeResult listVolumeStatsByVolume();
-    /** 
-     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request);
-
-    /** 
-     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
-        
-        Optional<Long[]> volumeAccessGroups
-        );
-    /** 
      * The ListVolumes method is used to return a list of volumes that are in a cluster.
      * You can specify the volumes you want to return in the list by using the available parameters.
      **/
@@ -2942,6 +2944,36 @@ public interface SolidFireElementIF {
         Optional<Long> limit
         );
     /** 
+     * ListVolumeStatsByAccount returns high-level activity measurements for every account.
+     * Values are summed from all the volumes owned by the account.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByAccountResult listVolumeStatsByAccount();
+    /** 
+     * ListVolumeStatsByVolume returns high-level activity measurements for every volume, by volume.
+     * Values are cumulative from the creation of the volume.
+     **/
+    @Since("1")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeResult listVolumeStatsByVolume();
+    /** 
+     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(final ListVolumeStatsByVolumeAccessGroupRequest request);
+
+    /** 
+     * ListVolumeStatsByVolumeAccessGroup is used to get total activity measurements for all of the volumes that are a member of the specified volume access group(s).
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public ListVolumeStatsByVolumeAccessGroupResult listVolumeStatsByVolumeAccessGroup(
+        
+        Optional<Long[]> volumeAccessGroups
+        );
+    /** 
      * ModifyVolume is used to modify settings on an existing volume.
      * Modifications can be made to one volume at a time and changes take place immediately.
      * If an optional parameter is left unspecified, the value will not be changed.
@@ -2981,7 +3013,7 @@ public interface SolidFireElementIF {
 , 
         Optional<Long> totalSize
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
@@ -3007,7 +3039,7 @@ public interface SolidFireElementIF {
 , 
         Optional<Long> totalSize
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * PurgeDeletedVolume immediately and permanently purges a volume which has been deleted.
@@ -3133,9 +3165,9 @@ public interface SolidFireElementIF {
 , 
         Optional<String> script
 , 
-        Optional<java.util.Map<String, Object>> scriptParameters
+        Optional<Attributes> scriptParameters
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * StartBulkVolumeWrite allows you to initialize a bulk volume write session on a specified volume.
@@ -3165,9 +3197,9 @@ public interface SolidFireElementIF {
 , 
         Optional<String> script
 , 
-        Optional<java.util.Map<String, Object>> scriptParameters
+        Optional<Attributes> scriptParameters
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
@@ -3191,39 +3223,7 @@ public interface SolidFireElementIF {
 , 
         Optional<String> message
 , 
-        Optional<java.util.Map<String, Object>> attributes
-        );
-    /** 
-     * Cancels a currently running clone operation. This method does not return anything.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CancelCloneResult cancelClone(final CancelCloneRequest request);
-
-    /** 
-     * Cancels a currently running clone operation. This method does not return anything.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CancelCloneResult cancelClone(
-        
-        Long cloneID
-        );
-    /** 
-     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CancelGroupCloneResult cancelGroupClone(final CancelGroupCloneRequest request);
-
-    /** 
-     * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
-     **/
-    @Since("9")
-    @ConnectionType("Cluster")
-    public CancelGroupCloneResult cancelGroupClone(
-        
-        Long groupCloneID
+        Optional<Attributes> attributes
         );
     /** 
      * Add initiators to a volume access group.
@@ -3293,7 +3293,7 @@ public interface SolidFireElementIF {
 , 
         Optional<Long[]> virtualNetworkTags
 , 
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
         );
     /** 
      * Delete a volume access group from the system.
@@ -3362,6 +3362,54 @@ public interface SolidFireElementIF {
         Optional<Long> limit
         );
     /** 
+     * Update initiators and add or remove volumes from a volume access group.
+     * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
+     * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
+     * 
+     * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
+     * 
+     * AddInitiatorsToVolumeAccessGroup
+     * RemoveInitiatorsFromVolumeAccessGroup
+     * AddVolumesToVolumeAccessGroup
+     * RemoveVolumesFromVolumeAccessGroup
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(final ModifyVolumeAccessGroupRequest request);
+
+    /** 
+     * Update initiators and add or remove volumes from a volume access group.
+     * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
+     * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
+     * 
+     * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
+     * 
+     * AddInitiatorsToVolumeAccessGroup
+     * RemoveInitiatorsFromVolumeAccessGroup
+     * AddVolumesToVolumeAccessGroup
+     * RemoveVolumesFromVolumeAccessGroup
+     **/
+    @Since("5")
+    @ConnectionType("Cluster")
+    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(
+        
+        Long volumeAccessGroupID
+, 
+        Optional<Long[]> virtualNetworkID
+, 
+        Optional<Long[]> virtualNetworkTags
+, 
+        Optional<String> name
+, 
+        Optional<String[]> initiators
+, 
+        Optional<Long[]> volumes
+, 
+        Optional<Boolean> deleteOrphanInitiators
+, 
+        Optional<Attributes> attributes
+        );
+    /** 
      * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
      * 
      * LUN assignment values must be unique for volumes in a volume access group. An exception will be seen if LUN assignments are duplicated in a volume access group. However, the same LUN values can be used again in different volume access groups.
@@ -3428,53 +3476,5 @@ public interface SolidFireElementIF {
         Long volumeAccessGroupID
 , 
         Long[] volumes
-        );
-    /** 
-     * Update initiators and add or remove volumes from a volume access group.
-     * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
-     * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
-     * 
-     * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
-     * 
-     * AddInitiatorsToVolumeAccessGroup
-     * RemoveInitiatorsFromVolumeAccessGroup
-     * AddVolumesToVolumeAccessGroup
-     * RemoveVolumesFromVolumeAccessGroup
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(final ModifyVolumeAccessGroupRequest request);
-
-    /** 
-     * Update initiators and add or remove volumes from a volume access group.
-     * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
-     * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
-     * 
-     * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
-     * 
-     * AddInitiatorsToVolumeAccessGroup
-     * RemoveInitiatorsFromVolumeAccessGroup
-     * AddVolumesToVolumeAccessGroup
-     * RemoveVolumesFromVolumeAccessGroup
-     **/
-    @Since("5")
-    @ConnectionType("Cluster")
-    public ModifyVolumeAccessGroupResult modifyVolumeAccessGroup(
-        
-        Long volumeAccessGroupID
-, 
-        Optional<Long[]> virtualNetworkID
-, 
-        Optional<Long[]> virtualNetworkTags
-, 
-        Optional<String> name
-, 
-        Optional<String[]> initiators
-, 
-        Optional<Long[]> volumes
-, 
-        Optional<Boolean> deleteOrphanInitiators
-, 
-        Optional<java.util.Map<String, Object>> attributes
         );
 }

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -40,7 +41,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
     @SerializedName("name") private Optional<String> name;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -53,13 +54,13 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
         Long groupSnapshotID,
         Boolean saveCurrentState,
         Optional<String> name,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.groupSnapshotID = groupSnapshotID;
         this.saveCurrentState = saveCurrentState;
         this.name = (name == null) ? Optional.<String>empty() : name;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -88,9 +89,9 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -155,7 +156,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
         private Long groupSnapshotID;
         private Boolean saveCurrentState;
         private Optional<String> name;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -191,8 +192,8 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public RollbackToGroupSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public RollbackToGroupSnapshotRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

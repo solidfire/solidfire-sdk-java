@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -44,7 +45,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
     @SerializedName("svip") private Optional<String> svip;
     @SerializedName("gateway") private Optional<String> gateway;
     @SerializedName("namespace") private Optional<Boolean> namespace;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -60,7 +61,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
         Optional<AddressBlock[]> addressBlocks,
         Optional<String> netmask,
         Optional<String> svip,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
@@ -69,7 +70,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
         this.addressBlocks = (addressBlocks == null) ? Optional.<AddressBlock[]>empty() : addressBlocks;
         this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
         this.svip = (svip == null) ? Optional.<String>empty() : svip;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     // parameterized constructor
     @Since("9.0")
@@ -82,7 +83,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
         Optional<String> svip,
         Optional<String> gateway,
         Optional<Boolean> namespace,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
@@ -93,7 +94,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
         this.svip = (svip == null) ? Optional.<String>empty() : svip;
         this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -158,9 +159,9 @@ public class ModifyVirtualNetworkRequest implements Serializable {
     /** 
      * A new list of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -259,7 +260,7 @@ public class ModifyVirtualNetworkRequest implements Serializable {
         private Optional<String> svip;
         private Optional<String> gateway;
         private Optional<Boolean> namespace;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -330,8 +331,8 @@ public class ModifyVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public ModifyVirtualNetworkRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public ModifyVirtualNetworkRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

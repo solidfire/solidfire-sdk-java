@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -43,7 +44,7 @@ public class CreateSnapshotRequest implements Serializable {
     @SerializedName("name") private Optional<String> name;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
     @SerializedName("retention") private Optional<String> retention;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -56,13 +57,13 @@ public class CreateSnapshotRequest implements Serializable {
         Long volumeID,
         Optional<Long> snapshotID,
         Optional<String> name,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumeID = volumeID;
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
         this.name = (name == null) ? Optional.<String>empty() : name;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     // parameterized constructor
     @Since("8.0")
@@ -72,7 +73,7 @@ public class CreateSnapshotRequest implements Serializable {
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> retention,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumeID = volumeID;
@@ -80,7 +81,7 @@ public class CreateSnapshotRequest implements Serializable {
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -124,9 +125,9 @@ public class CreateSnapshotRequest implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -205,7 +206,7 @@ public class CreateSnapshotRequest implements Serializable {
         private Optional<String> name;
         private Optional<Boolean> enableRemoteReplication;
         private Optional<String> retention;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -255,8 +256,8 @@ public class CreateSnapshotRequest implements Serializable {
             return this;
         }
 
-        public CreateSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public CreateSnapshotRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

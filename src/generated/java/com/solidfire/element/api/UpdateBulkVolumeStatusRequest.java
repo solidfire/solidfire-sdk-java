@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -38,7 +39,7 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
     @SerializedName("status") private String status;
     @SerializedName("percentComplete") private Optional<String> percentComplete;
     @SerializedName("message") private Optional<String> message;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -52,14 +53,14 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
         String status,
         Optional<String> percentComplete,
         Optional<String> message,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.key = key;
         this.status = status;
         this.percentComplete = (percentComplete == null) ? Optional.<String>empty() : percentComplete;
         this.message = (message == null) ? Optional.<String>empty() : message;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -97,9 +98,9 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
     /** 
      * JSON attributes  updates what is on the bulk volume job.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -170,7 +171,7 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
         private String status;
         private Optional<String> percentComplete;
         private Optional<String> message;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -213,8 +214,8 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
             return this;
         }
 
-        public UpdateBulkVolumeStatusRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public UpdateBulkVolumeStatusRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

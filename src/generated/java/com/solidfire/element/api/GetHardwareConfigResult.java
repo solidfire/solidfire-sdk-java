@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,7 +34,7 @@ import java.util.Objects;
 public class GetHardwareConfigResult implements Serializable {
 
     public static final long serialVersionUID = -8177285962521123370L;
-    @SerializedName("hardwareConfig") private java.util.Map<String, Object> hardwareConfig;
+    @SerializedName("hardwareConfig") private Attributes hardwareConfig;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +44,7 @@ public class GetHardwareConfigResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetHardwareConfigResult(
-        java.util.Map<String, Object> hardwareConfig
+        Attributes hardwareConfig
     )
     {
         this.hardwareConfig = hardwareConfig;
@@ -52,8 +53,8 @@ public class GetHardwareConfigResult implements Serializable {
     /** 
      * List of hardware information and current settings.
      **/
-    public java.util.Map<String, Object> getHardwareConfig() { return this.hardwareConfig; }
-    public void setHardwareConfig(java.util.Map<String, Object> hardwareConfig) { 
+    public Attributes getHardwareConfig() { return this.hardwareConfig; }
+    public void setHardwareConfig(Attributes hardwareConfig) { 
         this.hardwareConfig = hardwareConfig;
     }
 
@@ -103,7 +104,7 @@ public class GetHardwareConfigResult implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> hardwareConfig;
+        private Attributes hardwareConfig;
 
         private Builder() { }
 
@@ -118,7 +119,7 @@ public class GetHardwareConfigResult implements Serializable {
             return this;
         }
 
-        public GetHardwareConfigResult.Builder hardwareConfig(final java.util.Map<String, Object> hardwareConfig) {
+        public GetHardwareConfigResult.Builder hardwareConfig(final Attributes hardwareConfig) {
             this.hardwareConfig = hardwareConfig;
             return this;
         }

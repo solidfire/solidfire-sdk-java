@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -34,7 +35,7 @@ public class GetIpmiConfigNodesResult implements Serializable {
 
     public static final long serialVersionUID = 4146119083973416749L;
     @SerializedName("nodeID") private Long nodeID;
-    @SerializedName("result") private java.util.Map<String, Object> result;
+    @SerializedName("result") private Attributes result;
 
     // empty constructor
     @Since("7.0")
@@ -45,7 +46,7 @@ public class GetIpmiConfigNodesResult implements Serializable {
     @Since("7.0")
     public GetIpmiConfigNodesResult(
         Long nodeID,
-        java.util.Map<String, Object> result
+        Attributes result
     )
     {
         this.nodeID = nodeID;
@@ -62,8 +63,8 @@ public class GetIpmiConfigNodesResult implements Serializable {
     /** 
      * 
      **/
-    public java.util.Map<String, Object> getResult() { return this.result; }
-    public void setResult(java.util.Map<String, Object> result) { 
+    public Attributes getResult() { return this.result; }
+    public void setResult(Attributes result) { 
         this.result = result;
     }
 
@@ -117,7 +118,7 @@ public class GetIpmiConfigNodesResult implements Serializable {
 
     public static class Builder {
         private Long nodeID;
-        private java.util.Map<String, Object> result;
+        private Attributes result;
 
         private Builder() { }
 
@@ -139,7 +140,7 @@ public class GetIpmiConfigNodesResult implements Serializable {
             return this;
         }
 
-        public GetIpmiConfigNodesResult.Builder result(final java.util.Map<String, Object> result) {
+        public GetIpmiConfigNodesResult.Builder result(final Attributes result) {
             this.result = result;
             return this;
         }

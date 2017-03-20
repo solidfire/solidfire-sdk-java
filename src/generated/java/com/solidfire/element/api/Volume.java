@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -55,7 +56,7 @@ public class Volume implements Serializable {
     @SerializedName("totalSize") private Long totalSize;
     @SerializedName("blockSize") private Long blockSize;
     @SerializedName("virtualVolumeID") private Optional<java.util.UUID> virtualVolumeID;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private Attributes attributes;
 
     // empty constructor
     @Since("7.0")
@@ -83,7 +84,7 @@ public class Volume implements Serializable {
         Long sliceCount,
         Long totalSize,
         Optional<java.util.UUID> virtualVolumeID,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.volumeID = volumeID;
@@ -128,7 +129,7 @@ public class Volume implements Serializable {
         Long totalSize,
         Long blockSize,
         Optional<java.util.UUID> virtualVolumeID,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.volumeID = volumeID;
@@ -300,8 +301,8 @@ public class Volume implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -435,7 +436,7 @@ public class Volume implements Serializable {
         private Long totalSize;
         private Long blockSize;
         private Optional<java.util.UUID> virtualVolumeID;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -583,7 +584,7 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public Volume.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

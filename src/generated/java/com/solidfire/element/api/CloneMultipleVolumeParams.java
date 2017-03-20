@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -38,7 +39,7 @@ public class CloneMultipleVolumeParams implements Serializable {
     @SerializedName("name") private Optional<String> name;
     @SerializedName("newAccountID") private Optional<Long> newAccountID;
     @SerializedName("newSize") private Optional<Long> newSize;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -53,7 +54,7 @@ public class CloneMultipleVolumeParams implements Serializable {
         Optional<String> name,
         Optional<Long> newAccountID,
         Optional<Long> newSize,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumeID = volumeID;
@@ -61,7 +62,7 @@ public class CloneMultipleVolumeParams implements Serializable {
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
         this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -108,9 +109,9 @@ public class CloneMultipleVolumeParams implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -189,7 +190,7 @@ public class CloneMultipleVolumeParams implements Serializable {
         private Optional<String> name;
         private Optional<Long> newAccountID;
         private Optional<Long> newSize;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -239,8 +240,8 @@ public class CloneMultipleVolumeParams implements Serializable {
             return this;
         }
 
-        public CloneMultipleVolumeParams.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public CloneMultipleVolumeParams.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

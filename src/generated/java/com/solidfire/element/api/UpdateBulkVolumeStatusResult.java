@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -35,7 +36,7 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
     public static final long serialVersionUID = -8121740230744144448L;
     @SerializedName("status") private String status;
     @SerializedName("url") private String url;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private Attributes attributes;
 
     // empty constructor
     @Since("7.0")
@@ -47,7 +48,7 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
     public UpdateBulkVolumeStatusResult(
         String status,
         String url,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.status = status;
@@ -76,8 +77,8 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
     /** 
      * Returns attributes that were specified in the BulkVolumeStatusUpdate method. Values are returned if they have changed or not.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -135,7 +136,7 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
     public static class Builder {
         private String status;
         private String url;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -164,7 +165,7 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
             return this;
         }
 
-        public UpdateBulkVolumeStatusResult.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public UpdateBulkVolumeStatusResult.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

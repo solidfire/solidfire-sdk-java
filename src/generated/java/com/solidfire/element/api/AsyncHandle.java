@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -39,7 +40,7 @@ public class AsyncHandle implements Serializable {
     @SerializedName("lastUpdateTime") private String lastUpdateTime;
     @SerializedName("resultType") private String resultType;
     @SerializedName("success") private Boolean success;
-    @SerializedName("data") private java.util.Map<String, Object> data;
+    @SerializedName("data") private Attributes data;
 
     // empty constructor
     @Since("7.0")
@@ -55,7 +56,7 @@ public class AsyncHandle implements Serializable {
         String lastUpdateTime,
         String resultType,
         Boolean success,
-        java.util.Map<String, Object> data
+        Attributes data
     )
     {
         this.asyncResultID = asyncResultID;
@@ -112,8 +113,8 @@ public class AsyncHandle implements Serializable {
     /** 
      * Attributes related to the result
      **/
-    public java.util.Map<String, Object> getData() { return this.data; }
-    public void setData(java.util.Map<String, Object> data) { 
+    public Attributes getData() { return this.data; }
+    public void setData(Attributes data) { 
         this.data = data;
     }
 
@@ -187,7 +188,7 @@ public class AsyncHandle implements Serializable {
         private String lastUpdateTime;
         private String resultType;
         private Boolean success;
-        private java.util.Map<String, Object> data;
+        private Attributes data;
 
         private Builder() { }
 
@@ -244,7 +245,7 @@ public class AsyncHandle implements Serializable {
             return this;
         }
 
-        public AsyncHandle.Builder data(final java.util.Map<String, Object> data) {
+        public AsyncHandle.Builder data(final Attributes data) {
             this.data = data;
             return this;
         }

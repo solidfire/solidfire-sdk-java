@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -58,7 +59,7 @@ public class NetworkConfigParams implements Serializable {
     @SerializedName("netmask") private Optional<String> netmask;
     @SerializedName("network") private Optional<String> network;
     @SerializedName("physical") private Optional<PhysicalAdapter> physical;
-    @SerializedName("routes") private Optional<java.util.Map<String, Object>[]> routes;
+    @SerializedName("routes") private Optional<Attributes[]> routes;
     @SerializedName("status") private Optional<String> status;
     @SerializedName("symmetricRouteRules") private Optional<String[]> symmetricRouteRules;
     @SerializedName("upAndRunning") private Optional<Boolean> upAndRunning;
@@ -96,7 +97,7 @@ public class NetworkConfigParams implements Serializable {
         Optional<String> netmask,
         Optional<String> network,
         Optional<PhysicalAdapter> physical,
-        Optional<java.util.Map<String, Object>[]> routes,
+        Optional<Attributes[]> routes,
         Optional<String> status,
         Optional<String[]> symmetricRouteRules,
         Optional<Boolean> upAndRunning
@@ -127,7 +128,7 @@ public class NetworkConfigParams implements Serializable {
         this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
         this.network = (network == null) ? Optional.<String>empty() : network;
         this.physical = (physical == null) ? Optional.<PhysicalAdapter>empty() : physical;
-        this.routes = (routes == null) ? Optional.<java.util.Map<String, Object>[]>empty() : routes;
+        this.routes = (routes == null) ? Optional.<Attributes[]>empty() : routes;
         this.status = (status == null) ? Optional.<String>empty() : status;
         this.symmetricRouteRules = (symmetricRouteRules == null) ? Optional.<String[]>empty() : symmetricRouteRules;
         this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
@@ -311,9 +312,9 @@ public class NetworkConfigParams implements Serializable {
     /** 
      * 
      **/
-    public Optional<java.util.Map<String, Object>[]> getRoutes() { return this.routes; }
-    public void setRoutes(Optional<java.util.Map<String, Object>[]> routes) { 
-        this.routes = (routes == null) ? Optional.<java.util.Map<String, Object>[]>empty() : routes;
+    public Optional<Attributes[]> getRoutes() { return this.routes; }
+    public void setRoutes(Optional<Attributes[]> routes) { 
+        this.routes = (routes == null) ? Optional.<Attributes[]>empty() : routes;
     }
     /** 
      * 
@@ -550,7 +551,7 @@ public class NetworkConfigParams implements Serializable {
         private Optional<String> netmask;
         private Optional<String> network;
         private Optional<PhysicalAdapter> physical;
-        private Optional<java.util.Map<String, Object>[]> routes;
+        private Optional<Attributes[]> routes;
         private Optional<String> status;
         private Optional<String[]> symmetricRouteRules;
         private Optional<Boolean> upAndRunning;
@@ -749,8 +750,8 @@ public class NetworkConfigParams implements Serializable {
             return this;
         }
 
-        public NetworkConfigParams.Builder optionalRoutes(final java.util.Map<String, Object>[] routes) {
-            this.routes = (routes == null) ? Optional.<java.util.Map<String, Object>[]>empty() : Optional.of(routes);
+        public NetworkConfigParams.Builder optionalRoutes(final Attributes[] routes) {
+            this.routes = (routes == null) ? Optional.<Attributes[]>empty() : Optional.of(routes);
             return this;
         }
 

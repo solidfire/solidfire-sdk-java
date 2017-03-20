@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -42,7 +43,7 @@ public class VirtualVolumeInfo implements Serializable {
     @SerializedName("status") private String status;
     @SerializedName("bindings") private Long[] bindings;
     @SerializedName("children") private java.util.UUID[] children;
-    @SerializedName("metadata") private java.util.Map<String, Object> metadata;
+    @SerializedName("metadata") private Attributes metadata;
     @SerializedName("snapshotInfo") private Optional<Snapshot> snapshotInfo;
     @SerializedName("volumeInfo") private Optional<Volume> volumeInfo;
     @SerializedName("descendants") private Optional<Long[]> descendants;
@@ -64,7 +65,7 @@ public class VirtualVolumeInfo implements Serializable {
         String status,
         Long[] bindings,
         java.util.UUID[] children,
-        java.util.Map<String, Object> metadata,
+        Attributes metadata,
         Optional<Snapshot> snapshotInfo,
         Optional<Volume> volumeInfo,
         Optional<Long[]> descendants
@@ -151,8 +152,8 @@ public class VirtualVolumeInfo implements Serializable {
     /** 
      * 
      **/
-    public java.util.Map<String, Object> getMetadata() { return this.metadata; }
-    public void setMetadata(java.util.Map<String, Object> metadata) { 
+    public Attributes getMetadata() { return this.metadata; }
+    public void setMetadata(Attributes metadata) { 
         this.metadata = metadata;
     }
     /** 
@@ -274,7 +275,7 @@ public class VirtualVolumeInfo implements Serializable {
         private String status;
         private Long[] bindings;
         private java.util.UUID[] children;
-        private java.util.Map<String, Object> metadata;
+        private Attributes metadata;
         private Optional<Snapshot> snapshotInfo;
         private Optional<Volume> volumeInfo;
         private Optional<Long[]> descendants;
@@ -361,7 +362,7 @@ public class VirtualVolumeInfo implements Serializable {
             return this;
         }
 
-        public VirtualVolumeInfo.Builder metadata(final java.util.Map<String, Object> metadata) {
+        public VirtualVolumeInfo.Builder metadata(final Attributes metadata) {
             this.metadata = metadata;
             return this;
         }

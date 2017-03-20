@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -38,7 +39,7 @@ public class GroupSnapshotMembers implements Serializable {
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("snapshotUUID") private String snapshotUUID;
     @SerializedName("checksum") private String checksum;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     @SerializedName("createTime") private Optional<String> createTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
     @SerializedName("expirationReason") private Optional<String> expirationReason;
@@ -47,7 +48,7 @@ public class GroupSnapshotMembers implements Serializable {
     @SerializedName("groupSnapshotUUID") private Optional<java.util.UUID> groupSnapshotUUID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("remoteStatus") private Optional<String> remoteStatus;
-    @SerializedName("remoteStatuses") private Optional<java.util.Map<String, Object>[]> remoteStatuses;
+    @SerializedName("remoteStatuses") private Optional<Attributes[]> remoteStatuses;
     @SerializedName("status") private Optional<String> status;
     @SerializedName("totalSize") private Optional<Long> totalSize;
     @SerializedName("virtualVolumeID") private Optional<Long> virtualVolumeID;
@@ -64,7 +65,7 @@ public class GroupSnapshotMembers implements Serializable {
         Long volumeID,
         Long snapshotID,
         String checksum,
-        Optional<java.util.Map<String, Object>> attributes,
+        Optional<Attributes> attributes,
         Optional<String> createTime,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> expirationReason,
@@ -73,7 +74,7 @@ public class GroupSnapshotMembers implements Serializable {
         Optional<java.util.UUID> groupSnapshotUUID,
         Optional<String> name,
         Optional<String> remoteStatus,
-        Optional<java.util.Map<String, Object>[]> remoteStatuses,
+        Optional<Attributes[]> remoteStatuses,
         Optional<String> status,
         Optional<Long> totalSize,
         Optional<Long> virtualVolumeID,
@@ -83,7 +84,7 @@ public class GroupSnapshotMembers implements Serializable {
         this.volumeID = volumeID;
         this.snapshotID = snapshotID;
         this.checksum = checksum;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
         this.createTime = (createTime == null) ? Optional.<String>empty() : createTime;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
         this.expirationReason = (expirationReason == null) ? Optional.<String>empty() : expirationReason;
@@ -92,7 +93,7 @@ public class GroupSnapshotMembers implements Serializable {
         this.groupSnapshotUUID = (groupSnapshotUUID == null) ? Optional.<java.util.UUID>empty() : groupSnapshotUUID;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.remoteStatus = (remoteStatus == null) ? Optional.<String>empty() : remoteStatus;
-        this.remoteStatuses = (remoteStatuses == null) ? Optional.<java.util.Map<String, Object>[]>empty() : remoteStatuses;
+        this.remoteStatuses = (remoteStatuses == null) ? Optional.<Attributes[]>empty() : remoteStatuses;
         this.status = (status == null) ? Optional.<String>empty() : status;
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
         this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<Long>empty() : virtualVolumeID;
@@ -105,7 +106,7 @@ public class GroupSnapshotMembers implements Serializable {
         Long snapshotID,
         String snapshotUUID,
         String checksum,
-        Optional<java.util.Map<String, Object>> attributes,
+        Optional<Attributes> attributes,
         Optional<String> createTime,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> expirationReason,
@@ -114,7 +115,7 @@ public class GroupSnapshotMembers implements Serializable {
         Optional<java.util.UUID> groupSnapshotUUID,
         Optional<String> name,
         Optional<String> remoteStatus,
-        Optional<java.util.Map<String, Object>[]> remoteStatuses,
+        Optional<Attributes[]> remoteStatuses,
         Optional<String> status,
         Optional<Long> totalSize,
         Optional<Long> virtualVolumeID,
@@ -125,7 +126,7 @@ public class GroupSnapshotMembers implements Serializable {
         this.snapshotID = snapshotID;
         this.snapshotUUID = snapshotUUID;
         this.checksum = checksum;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
         this.createTime = (createTime == null) ? Optional.<String>empty() : createTime;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
         this.expirationReason = (expirationReason == null) ? Optional.<String>empty() : expirationReason;
@@ -134,7 +135,7 @@ public class GroupSnapshotMembers implements Serializable {
         this.groupSnapshotUUID = (groupSnapshotUUID == null) ? Optional.<java.util.UUID>empty() : groupSnapshotUUID;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.remoteStatus = (remoteStatus == null) ? Optional.<String>empty() : remoteStatus;
-        this.remoteStatuses = (remoteStatuses == null) ? Optional.<java.util.Map<String, Object>[]>empty() : remoteStatuses;
+        this.remoteStatuses = (remoteStatuses == null) ? Optional.<Attributes[]>empty() : remoteStatuses;
         this.status = (status == null) ? Optional.<String>empty() : status;
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
         this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<Long>empty() : virtualVolumeID;
@@ -174,9 +175,9 @@ public class GroupSnapshotMembers implements Serializable {
     /** 
      * 
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     /** 
      * 
@@ -237,9 +238,9 @@ public class GroupSnapshotMembers implements Serializable {
     /** 
      * 
      **/
-    public Optional<java.util.Map<String, Object>[]> getRemoteStatuses() { return this.remoteStatuses; }
-    public void setRemoteStatuses(Optional<java.util.Map<String, Object>[]> remoteStatuses) { 
-        this.remoteStatuses = (remoteStatuses == null) ? Optional.<java.util.Map<String, Object>[]>empty() : remoteStatuses;
+    public Optional<Attributes[]> getRemoteStatuses() { return this.remoteStatuses; }
+    public void setRemoteStatuses(Optional<Attributes[]> remoteStatuses) { 
+        this.remoteStatuses = (remoteStatuses == null) ? Optional.<Attributes[]>empty() : remoteStatuses;
     }
     /** 
      * 
@@ -399,7 +400,7 @@ public class GroupSnapshotMembers implements Serializable {
         private Long snapshotID;
         private String snapshotUUID;
         private String checksum;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
         private Optional<String> createTime;
         private Optional<Boolean> enableRemoteReplication;
         private Optional<String> expirationReason;
@@ -408,7 +409,7 @@ public class GroupSnapshotMembers implements Serializable {
         private Optional<java.util.UUID> groupSnapshotUUID;
         private Optional<String> name;
         private Optional<String> remoteStatus;
-        private Optional<java.util.Map<String, Object>[]> remoteStatuses;
+        private Optional<Attributes[]> remoteStatuses;
         private Optional<String> status;
         private Optional<Long> totalSize;
         private Optional<Long> virtualVolumeID;
@@ -481,8 +482,8 @@ public class GroupSnapshotMembers implements Serializable {
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public GroupSnapshotMembers.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 
@@ -526,8 +527,8 @@ public class GroupSnapshotMembers implements Serializable {
             return this;
         }
 
-        public GroupSnapshotMembers.Builder optionalRemoteStatuses(final java.util.Map<String, Object>[] remoteStatuses) {
-            this.remoteStatuses = (remoteStatuses == null) ? Optional.<java.util.Map<String, Object>[]>empty() : Optional.of(remoteStatuses);
+        public GroupSnapshotMembers.Builder optionalRemoteStatuses(final Attributes[] remoteStatuses) {
+            this.remoteStatuses = (remoteStatuses == null) ? Optional.<Attributes[]>empty() : Optional.of(remoteStatuses);
             return this;
         }
 

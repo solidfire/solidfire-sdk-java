@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -40,7 +41,7 @@ public class DriveInfo implements Serializable {
     @SerializedName("slot") private Long slot;
     @SerializedName("status") private String status;
     @SerializedName("type") private String type;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private Attributes attributes;
 
     // empty constructor
     @Since("7.0")
@@ -57,7 +58,7 @@ public class DriveInfo implements Serializable {
         Long slot,
         String status,
         String type,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.capacity = capacity;
@@ -122,8 +123,8 @@ public class DriveInfo implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -201,7 +202,7 @@ public class DriveInfo implements Serializable {
         private Long slot;
         private String status;
         private String type;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -265,7 +266,7 @@ public class DriveInfo implements Serializable {
             return this;
         }
 
-        public DriveInfo.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public DriveInfo.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

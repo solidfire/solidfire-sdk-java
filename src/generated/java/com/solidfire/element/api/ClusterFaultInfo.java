@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -47,7 +48,7 @@ public class ClusterFaultInfo implements Serializable {
     @SerializedName("clusterFaultID") private Long clusterFaultID;
     @SerializedName("date") private String date;
     @SerializedName("resolvedDate") private String resolvedDate;
-    @SerializedName("data") private Optional<java.util.Map<String, Object>> data;
+    @SerializedName("data") private Optional<Attributes> data;
 
     // empty constructor
     @Since("7.0")
@@ -71,7 +72,7 @@ public class ClusterFaultInfo implements Serializable {
         Long clusterFaultID,
         String date,
         String resolvedDate,
-        Optional<java.util.Map<String, Object>> data
+        Optional<Attributes> data
     )
     {
         this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
@@ -88,7 +89,7 @@ public class ClusterFaultInfo implements Serializable {
         this.clusterFaultID = clusterFaultID;
         this.date = date;
         this.resolvedDate = resolvedDate;
-        this.data = (data == null) ? Optional.<java.util.Map<String, Object>>empty() : data;
+        this.data = (data == null) ? Optional.<Attributes>empty() : data;
     }
 
     /** 
@@ -192,9 +193,9 @@ public class ClusterFaultInfo implements Serializable {
     /** 
      * 
      **/
-    public Optional<java.util.Map<String, Object>> getData() { return this.data; }
-    public void setData(Optional<java.util.Map<String, Object>> data) { 
-        this.data = (data == null) ? Optional.<java.util.Map<String, Object>>empty() : data;
+    public Optional<Attributes> getData() { return this.data; }
+    public void setData(Optional<Attributes> data) { 
+        this.data = (data == null) ? Optional.<Attributes>empty() : data;
     }
 
     @Override
@@ -305,7 +306,7 @@ public class ClusterFaultInfo implements Serializable {
         private Long clusterFaultID;
         private String date;
         private String resolvedDate;
-        private Optional<java.util.Map<String, Object>> data;
+        private Optional<Attributes> data;
 
         private Builder() { }
 
@@ -418,8 +419,8 @@ public class ClusterFaultInfo implements Serializable {
             return this;
         }
 
-        public ClusterFaultInfo.Builder optionalData(final java.util.Map<String, Object> data) {
-            this.data = (data == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(data);
+        public ClusterFaultInfo.Builder optionalData(final Attributes data) {
+            this.data = (data == null) ? Optional.<Attributes>empty() : Optional.of(data);
             return this;
         }
 

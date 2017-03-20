@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -51,7 +52,7 @@ public class Node implements Serializable {
     @SerializedName("sipi") private String sipi;
     @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("virtualNetworks") private VirtualNetworkAddress[] virtualNetworks;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private Attributes attributes;
 
     // empty constructor
     @Since("7.0")
@@ -76,7 +77,7 @@ public class Node implements Serializable {
         String sipi,
         java.util.UUID uuid,
         VirtualNetworkAddress[] virtualNetworks,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.nodeID = nodeID;
@@ -205,8 +206,8 @@ public class Node implements Serializable {
     /** 
      * 
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -318,7 +319,7 @@ public class Node implements Serializable {
         private String sipi;
         private java.util.UUID uuid;
         private VirtualNetworkAddress[] virtualNetworks;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -438,7 +439,7 @@ public class Node implements Serializable {
             return this;
         }
 
-        public Node.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public Node.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

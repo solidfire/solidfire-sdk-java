@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -49,7 +50,7 @@ public class ClusterInfo implements Serializable {
     @SerializedName("svipNodeID") private Long svipNodeID;
     @SerializedName("uniqueID") private String uniqueID;
     @SerializedName("uuid") private java.util.UUID uuid;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private Attributes attributes;
 
     // empty constructor
     @Since("7.0")
@@ -74,7 +75,7 @@ public class ClusterInfo implements Serializable {
         Long svipNodeID,
         String uniqueID,
         java.util.UUID uuid,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.mvipInterface = (mvipInterface == null) ? Optional.<String>empty() : mvipInterface;
@@ -204,8 +205,8 @@ public class ClusterInfo implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -325,7 +326,7 @@ public class ClusterInfo implements Serializable {
         private Long svipNodeID;
         private String uniqueID;
         private java.util.UUID uuid;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -445,7 +446,7 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
-        public ClusterInfo.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public ClusterInfo.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

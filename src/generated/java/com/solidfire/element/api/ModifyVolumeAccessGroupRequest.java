@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -50,7 +51,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
     @SerializedName("initiators") private Optional<String[]> initiators;
     @SerializedName("volumes") private Optional<Long[]> volumes;
     @SerializedName("deleteOrphanInitiators") private Optional<Boolean> deleteOrphanInitiators;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -64,14 +65,14 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         Optional<String> name,
         Optional<String[]> initiators,
         Optional<Long[]> volumes,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     // parameterized constructor
     @Since("8.0")
@@ -82,7 +83,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         Optional<String> name,
         Optional<String[]> initiators,
         Optional<Long[]> volumes,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
@@ -91,7 +92,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     // parameterized constructor
     @Since("9.0")
@@ -103,7 +104,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         Optional<String[]> initiators,
         Optional<Long[]> volumes,
         Optional<Boolean> deleteOrphanInitiators,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
@@ -113,7 +114,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
         this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -172,9 +173,9 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -265,7 +266,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         private Optional<String[]> initiators;
         private Optional<Long[]> volumes;
         private Optional<Boolean> deleteOrphanInitiators;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -329,8 +330,8 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public ModifyVolumeAccessGroupRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -41,7 +42,7 @@ public class VirtualNetwork implements Serializable {
     @SerializedName("svip") private String svip;
     @SerializedName("gateway") private Optional<String> gateway;
     @SerializedName("namespace") private Optional<Boolean> namespace;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -57,7 +58,7 @@ public class VirtualNetwork implements Serializable {
         String name,
         String netmask,
         String svip,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.virtualNetworkID = virtualNetworkID;
@@ -66,7 +67,7 @@ public class VirtualNetwork implements Serializable {
         this.name = name;
         this.netmask = netmask;
         this.svip = svip;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     // parameterized constructor
     @Since("9.0")
@@ -79,7 +80,7 @@ public class VirtualNetwork implements Serializable {
         String svip,
         Optional<String> gateway,
         Optional<Boolean> namespace,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.virtualNetworkID = virtualNetworkID;
@@ -90,7 +91,7 @@ public class VirtualNetwork implements Serializable {
         this.svip = svip;
         this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -155,9 +156,9 @@ public class VirtualNetwork implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -244,7 +245,7 @@ public class VirtualNetwork implements Serializable {
         private String svip;
         private Optional<String> gateway;
         private Optional<Boolean> namespace;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -315,8 +316,8 @@ public class VirtualNetwork implements Serializable {
             return this;
         }
 
-        public VirtualNetwork.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public VirtualNetwork.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

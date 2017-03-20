@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -44,7 +45,7 @@ public class Drive implements Serializable {
     @SerializedName("driveType") private String driveType;
     @SerializedName("reservedSliceFileCapacity") private Optional<Long> reservedSliceFileCapacity;
     @SerializedName("customerSliceFileCapacity") private Optional<Long> customerSliceFileCapacity;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private Attributes attributes;
 
     // empty constructor
     @Since("7.0")
@@ -65,7 +66,7 @@ public class Drive implements Serializable {
         String driveType,
         Optional<Long> reservedSliceFileCapacity,
         Optional<Long> customerSliceFileCapacity,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.driveID = driveID;
@@ -164,8 +165,8 @@ public class Drive implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -267,7 +268,7 @@ public class Drive implements Serializable {
         private String driveType;
         private Optional<Long> reservedSliceFileCapacity;
         private Optional<Long> customerSliceFileCapacity;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -359,7 +360,7 @@ public class Drive implements Serializable {
             return this;
         }
 
-        public Drive.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public Drive.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

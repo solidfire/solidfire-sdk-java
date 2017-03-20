@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -43,7 +44,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
     @SerializedName("volumes") private Optional<Long[]> volumes;
     @SerializedName("virtualNetworkID") private Optional<Long[]> virtualNetworkID;
     @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -56,13 +57,13 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         String name,
         Optional<String[]> initiators,
         Optional<Long[]> volumes,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.name = name;
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     // parameterized constructor
     @Since("8.0")
@@ -72,7 +73,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         Optional<Long[]> volumes,
         Optional<Long[]> virtualNetworkID,
         Optional<Long[]> virtualNetworkTags,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.name = name;
@@ -80,7 +81,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
         this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -124,9 +125,9 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -205,7 +206,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         private Optional<Long[]> volumes;
         private Optional<Long[]> virtualNetworkID;
         private Optional<Long[]> virtualNetworkTags;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -255,8 +256,8 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public CreateVolumeAccessGroupRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

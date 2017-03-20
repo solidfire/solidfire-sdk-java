@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,7 +34,7 @@ import java.util.Objects;
 public class GetNvramInfoResult implements Serializable {
 
     public static final long serialVersionUID = 8380977530507768205L;
-    @SerializedName("nvramInfo") private java.util.Map<String, Object> nvramInfo;
+    @SerializedName("nvramInfo") private Attributes nvramInfo;
 
     // empty constructor
     @Since("7.0")
@@ -43,7 +44,7 @@ public class GetNvramInfoResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetNvramInfoResult(
-        java.util.Map<String, Object> nvramInfo
+        Attributes nvramInfo
     )
     {
         this.nvramInfo = nvramInfo;
@@ -52,8 +53,8 @@ public class GetNvramInfoResult implements Serializable {
     /** 
      * Arrays of events and errors detected on the NVRAM card.
      **/
-    public java.util.Map<String, Object> getNvramInfo() { return this.nvramInfo; }
-    public void setNvramInfo(java.util.Map<String, Object> nvramInfo) { 
+    public Attributes getNvramInfo() { return this.nvramInfo; }
+    public void setNvramInfo(Attributes nvramInfo) { 
         this.nvramInfo = nvramInfo;
     }
 
@@ -103,7 +104,7 @@ public class GetNvramInfoResult implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> nvramInfo;
+        private Attributes nvramInfo;
 
         private Builder() { }
 
@@ -118,7 +119,7 @@ public class GetNvramInfoResult implements Serializable {
             return this;
         }
 
-        public GetNvramInfoResult.Builder nvramInfo(final java.util.Map<String, Object> nvramInfo) {
+        public GetNvramInfoResult.Builder nvramInfo(final Attributes nvramInfo) {
             this.nvramInfo = nvramInfo;
             return this;
         }

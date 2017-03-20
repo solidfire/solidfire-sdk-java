@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -39,7 +40,7 @@ public class VirtualVolumeTask implements Serializable {
     @SerializedName("status") private String status;
     @SerializedName("operation") private String operation;
     @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
-    @SerializedName("parentMetadata") private java.util.Map<String, Object> parentMetadata;
+    @SerializedName("parentMetadata") private Attributes parentMetadata;
     @SerializedName("parentTotalSize") private Long parentTotalSize;
     @SerializedName("parentUsedSize") private Long parentUsedSize;
     @SerializedName("cancelled") private Boolean cancelled;
@@ -58,7 +59,7 @@ public class VirtualVolumeTask implements Serializable {
         String status,
         String operation,
         java.util.UUID virtualVolumeHostID,
-        java.util.Map<String, Object> parentMetadata,
+        Attributes parentMetadata,
         Long parentTotalSize,
         Long parentUsedSize,
         Boolean cancelled
@@ -121,8 +122,8 @@ public class VirtualVolumeTask implements Serializable {
     /** 
      * 
      **/
-    public java.util.Map<String, Object> getParentMetadata() { return this.parentMetadata; }
-    public void setParentMetadata(java.util.Map<String, Object> parentMetadata) { 
+    public Attributes getParentMetadata() { return this.parentMetadata; }
+    public void setParentMetadata(Attributes parentMetadata) { 
         this.parentMetadata = parentMetadata;
     }
     /** 
@@ -226,7 +227,7 @@ public class VirtualVolumeTask implements Serializable {
         private String status;
         private String operation;
         private java.util.UUID virtualVolumeHostID;
-        private java.util.Map<String, Object> parentMetadata;
+        private Attributes parentMetadata;
         private Long parentTotalSize;
         private Long parentUsedSize;
         private Boolean cancelled;
@@ -292,7 +293,7 @@ public class VirtualVolumeTask implements Serializable {
             return this;
         }
 
-        public VirtualVolumeTask.Builder parentMetadata(final java.util.Map<String, Object> parentMetadata) {
+        public VirtualVolumeTask.Builder parentMetadata(final Attributes parentMetadata) {
             this.parentMetadata = parentMetadata;
             return this;
         }

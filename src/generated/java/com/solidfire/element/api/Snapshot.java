@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -50,7 +51,7 @@ public class Snapshot implements Serializable {
     @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
     @SerializedName("createTime") private String createTime;
     @SerializedName("virtualVolumeID") private Optional<java.util.UUID> virtualVolumeID;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private Attributes attributes;
 
     // empty constructor
     @Since("7.0")
@@ -69,7 +70,7 @@ public class Snapshot implements Serializable {
         Optional<Long> groupID,
         String createTime,
         Optional<java.util.UUID> virtualVolumeID,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.snapshotID = snapshotID;
@@ -101,7 +102,7 @@ public class Snapshot implements Serializable {
         java.util.UUID groupSnapshotUUID,
         String createTime,
         Optional<java.util.UUID> virtualVolumeID,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.snapshotID = snapshotID;
@@ -246,8 +247,8 @@ public class Snapshot implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -365,7 +366,7 @@ public class Snapshot implements Serializable {
         private java.util.UUID groupSnapshotUUID;
         private String createTime;
         private Optional<java.util.UUID> virtualVolumeID;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -485,7 +486,7 @@ public class Snapshot implements Serializable {
             return this;
         }
 
-        public Snapshot.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public Snapshot.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

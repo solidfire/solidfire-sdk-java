@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -37,7 +38,7 @@ public class ModifyInitiator implements Serializable {
     @SerializedName("initiatorID") private Long initiatorID;
     @SerializedName("alias") private Optional<String> alias;
     @SerializedName("volumeAccessGroupID") private Optional<Long> volumeAccessGroupID;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
 
     // empty constructor
     @Since("7.0")
@@ -50,13 +51,13 @@ public class ModifyInitiator implements Serializable {
         Long initiatorID,
         Optional<String> alias,
         Optional<Long> volumeAccessGroupID,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.initiatorID = initiatorID;
         this.alias = (alias == null) ? Optional.<String>empty() : alias;
         this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<Long>empty() : volumeAccessGroupID;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -83,9 +84,9 @@ public class ModifyInitiator implements Serializable {
     /** 
      * (Optional) A new set of JSON attributes assigned to this initiator. (JSON Object)
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -152,7 +153,7 @@ public class ModifyInitiator implements Serializable {
         private Long initiatorID;
         private Optional<String> alias;
         private Optional<Long> volumeAccessGroupID;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -188,8 +189,8 @@ public class ModifyInitiator implements Serializable {
             return this;
         }
 
-        public ModifyInitiator.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public ModifyInitiator.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

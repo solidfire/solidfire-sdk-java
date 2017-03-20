@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -40,7 +41,7 @@ public class CreateVolumeRequest implements Serializable {
     @SerializedName("totalSize") private Long totalSize;
     @SerializedName("enable512e") private Boolean enable512e;
     @SerializedName("qos") private Optional<QoS> qos;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     @SerializedName("sliceCount") private Optional<Long> sliceCount;
 
     // empty constructor
@@ -56,7 +57,7 @@ public class CreateVolumeRequest implements Serializable {
         Long totalSize,
         Boolean enable512e,
         Optional<QoS> qos,
-        Optional<java.util.Map<String, Object>> attributes,
+        Optional<Attributes> attributes,
         Optional<Long> sliceCount
     )
     {
@@ -65,7 +66,7 @@ public class CreateVolumeRequest implements Serializable {
         this.totalSize = totalSize;
         this.enable512e = enable512e;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
         this.sliceCount = (sliceCount == null) ? Optional.<Long>empty() : sliceCount;
     }
 
@@ -112,9 +113,9 @@ public class CreateVolumeRequest implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     /** 
      * 
@@ -199,7 +200,7 @@ public class CreateVolumeRequest implements Serializable {
         private Long totalSize;
         private Boolean enable512e;
         private Optional<QoS> qos;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
         private Optional<Long> sliceCount;
 
         private Builder() { }
@@ -252,8 +253,8 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public CreateVolumeRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

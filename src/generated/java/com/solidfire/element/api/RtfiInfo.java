@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -41,7 +42,7 @@ public class RtfiInfo implements Serializable {
     @SerializedName("generationNext") private Optional<Long> generationNext;
     @SerializedName("mip") private Optional<String> mip;
     @SerializedName("statusUrlCurrent") private String statusUrlCurrent;
-    @SerializedName("options") private Optional<java.util.Map<String, Object>> options;
+    @SerializedName("options") private Optional<Attributes> options;
 
     // empty constructor
     @Since("7.0")
@@ -59,7 +60,7 @@ public class RtfiInfo implements Serializable {
         Optional<Long> generationNext,
         Optional<String> mip,
         String statusUrlCurrent,
-        Optional<java.util.Map<String, Object>> options
+        Optional<Attributes> options
     )
     {
         this.mipi = (mipi == null) ? Optional.<String>empty() : mipi;
@@ -70,7 +71,7 @@ public class RtfiInfo implements Serializable {
         this.generationNext = (generationNext == null) ? Optional.<Long>empty() : generationNext;
         this.mip = (mip == null) ? Optional.<String>empty() : mip;
         this.statusUrlCurrent = statusUrlCurrent;
-        this.options = (options == null) ? Optional.<java.util.Map<String, Object>>empty() : options;
+        this.options = (options == null) ? Optional.<Attributes>empty() : options;
     }
 
     /** 
@@ -132,9 +133,9 @@ public class RtfiInfo implements Serializable {
     /** 
      * 
      **/
-    public Optional<java.util.Map<String, Object>> getOptions() { return this.options; }
-    public void setOptions(Optional<java.util.Map<String, Object>> options) { 
-        this.options = (options == null) ? Optional.<java.util.Map<String, Object>>empty() : options;
+    public Optional<Attributes> getOptions() { return this.options; }
+    public void setOptions(Optional<Attributes> options) { 
+        this.options = (options == null) ? Optional.<Attributes>empty() : options;
     }
 
     @Override
@@ -225,7 +226,7 @@ public class RtfiInfo implements Serializable {
         private Optional<Long> generationNext;
         private Optional<String> mip;
         private String statusUrlCurrent;
-        private Optional<java.util.Map<String, Object>> options;
+        private Optional<Attributes> options;
 
         private Builder() { }
 
@@ -296,8 +297,8 @@ public class RtfiInfo implements Serializable {
             return this;
         }
 
-        public RtfiInfo.Builder optionalOptions(final java.util.Map<String, Object> options) {
-            this.options = (options == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(options);
+        public RtfiInfo.Builder optionalOptions(final Attributes options) {
+            this.options = (options == null) ? Optional.<Attributes>empty() : Optional.of(options);
             return this;
         }
 

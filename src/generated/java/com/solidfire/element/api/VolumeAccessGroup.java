@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -47,7 +48,7 @@ public class VolumeAccessGroup implements Serializable {
     @SerializedName("initiatorIDs") private Long[] initiatorIDs;
     @SerializedName("initiators") private String[] initiators;
     @SerializedName("volumes") private Long[] volumes;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
+    @SerializedName("attributes") private Attributes attributes;
 
     // empty constructor
     @Since("7.0")
@@ -63,7 +64,7 @@ public class VolumeAccessGroup implements Serializable {
         Long[] initiatorIDs,
         String[] initiators,
         Long[] volumes,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.deletedVolumes = deletedVolumes;
@@ -120,8 +121,8 @@ public class VolumeAccessGroup implements Serializable {
     /** 
      * List of name/value pairs
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -195,7 +196,7 @@ public class VolumeAccessGroup implements Serializable {
         private Long[] initiatorIDs;
         private String[] initiators;
         private Long[] volumes;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -252,7 +253,7 @@ public class VolumeAccessGroup implements Serializable {
             return this;
         }
 
-        public VolumeAccessGroup.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public VolumeAccessGroup.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

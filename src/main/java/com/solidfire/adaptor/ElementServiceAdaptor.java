@@ -16,6 +16,7 @@
 
 package com.solidfire.adaptor;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.element.api.*;
 
 /**
@@ -147,7 +148,7 @@ public class ElementServiceAdaptor {
     }
 
 
-    public static Object invokeSFApi(final SolidFireElement sfe, final InvokeSFApiRequest request){
+    public static Attributes invokeSFApi(final SolidFireElement sfe, final InvokeSFApiRequest request){
 
         if (sfe == null) throw new IllegalArgumentException("SolidFireElement was null");
 
@@ -155,7 +156,7 @@ public class ElementServiceAdaptor {
 
         if (request.getMethod() == null) throw new IllegalArgumentException("InvokeSFApiRequest GetMethod was null");
 
-        return sfe.sendRequest(request.getMethod(), request.getParameters(), Object.class, Object.class);
+        return sfe.sendRequest(request.getMethod(), request.getParameters(), Object.class, Attributes.class);
 
     }
 }

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -34,7 +35,7 @@ public class DeleteAllSupportBundlesResult implements Serializable {
 
     public static final long serialVersionUID = 7732374151828081164L;
     @SerializedName("duration") private String duration;
-    @SerializedName("details") private java.util.Map<String, Object> details;
+    @SerializedName("details") private Attributes details;
     @SerializedName("result") private String result;
 
     // empty constructor
@@ -46,7 +47,7 @@ public class DeleteAllSupportBundlesResult implements Serializable {
     @Since("7.0")
     public DeleteAllSupportBundlesResult(
         String duration,
-        java.util.Map<String, Object> details,
+        Attributes details,
         String result
     )
     {
@@ -65,8 +66,8 @@ public class DeleteAllSupportBundlesResult implements Serializable {
     /** 
      * 
      **/
-    public java.util.Map<String, Object> getDetails() { return this.details; }
-    public void setDetails(java.util.Map<String, Object> details) { 
+    public Attributes getDetails() { return this.details; }
+    public void setDetails(Attributes details) { 
         this.details = details;
     }
     /** 
@@ -130,7 +131,7 @@ public class DeleteAllSupportBundlesResult implements Serializable {
 
     public static class Builder {
         private String duration;
-        private java.util.Map<String, Object> details;
+        private Attributes details;
         private String result;
 
         private Builder() { }
@@ -155,7 +156,7 @@ public class DeleteAllSupportBundlesResult implements Serializable {
             return this;
         }
 
-        public DeleteAllSupportBundlesResult.Builder details(final java.util.Map<String, Object> details) {
+        public DeleteAllSupportBundlesResult.Builder details(final Attributes details) {
             this.details = details;
             return this;
         }
