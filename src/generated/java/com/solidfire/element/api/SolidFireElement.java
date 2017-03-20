@@ -2205,33 +2205,6 @@ public class SolidFireElement
         return this.listProtocolEndpoints(new ListProtocolEndpointsRequest(protocolEndpointIDs));
     }
     /** 
-     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public ResetNodeResult resetNode(final ResetNodeRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
-            throw new ApiException("The command, resetNode is not available until version 5.");
-        }
-        return super.sendRequest("ResetNode", request, ResetNodeRequest.class, ResetNodeResult.class);
-    }
-
-    /** 
-     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public ResetNodeResult resetNode(
-        String build,
-        Boolean force,
-        Optional<String> options,
-        Optional<Boolean> reboot
-        ) {
-        return this.resetNode(new ResetNodeRequest(build, force, options, reboot));
-    }
-    /** 
      * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Override
@@ -2307,6 +2280,33 @@ public class SolidFireElement
         Optional<String> option
         ) {
         return this.shutdown(new ShutdownRequest(nodes, option));
+    }
+    /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public ResetNodeResult resetNode(final ResetNodeRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
+            throw new ApiException("The command, resetNode is not available until version 5.");
+        }
+        return super.sendRequest("ResetNode", request, ResetNodeRequest.class, ResetNodeResult.class);
+    }
+
+    /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public ResetNodeResult resetNode(
+        String build,
+        Boolean force,
+        Optional<String> options,
+        Optional<Boolean> reboot
+        ) {
+        return this.resetNode(new ResetNodeRequest(build, force, options, reboot));
     }
     /** 
      * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
@@ -2603,31 +2603,6 @@ public class SolidFireElement
         return com.solidfire.adaptor.ElementServiceAdaptor.listSchedules(this);
     }
     /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
-            throw new ApiException("The command, listSnapshots is not available until version 6.");
-        }
-        return super.sendRequest("ListSnapshots", request, ListSnapshotsRequest.class, ListSnapshotsResult.class);
-    }
-
-    /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(
-        Optional<Long> volumeID,
-        Optional<Boolean> internal
-        ) {
-        return this.listSnapshots(new ListSnapshotsRequest(volumeID, internal));
-    }
-    /** 
      * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
      **/
     @Override
@@ -2807,6 +2782,30 @@ public class SolidFireElement
         Schedule schedule
         ) {
         return this.modifySchedule(new ModifyScheduleRequest(schedule));
+    }
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
+            throw new ApiException("The command, listSnapshots is not available until version 6.");
+        }
+        return super.sendRequest("ListSnapshots", request, ListSnapshotsRequest.class, ListSnapshotsResult.class);
+    }
+
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(
+        Optional<Long> volumeID
+        ) {
+        return this.listSnapshots(new ListSnapshotsRequest(volumeID));
     }
     /** 
      * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.

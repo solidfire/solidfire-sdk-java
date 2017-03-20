@@ -1622,28 +1622,6 @@ public interface SolidFireElementIF {
         Optional<java.util.UUID[]> protocolEndpointIDs
         );
     /** 
-     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
-     **/
-    @Since("5")
-    @ConnectionType("Node")
-    public ResetNodeResult resetNode(final ResetNodeRequest request);
-
-    /** 
-     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
-     **/
-    @Since("5")
-    @ConnectionType("Node")
-    public ResetNodeResult resetNode(
-        
-        String build
-, 
-        Boolean force
-, 
-        Optional<String> options
-, 
-        Optional<Boolean> reboot
-        );
-    /** 
      * The RestartNetworking API method is used to restart the networking services on a node.WARNING! This method restarts all networking services on a node, causing temporary loss of networking connectivity. Exercise caution when using this method.
      **/
     @Since("5")
@@ -1696,6 +1674,28 @@ public interface SolidFireElementIF {
         Long[] nodes
 , 
         Optional<String> option
+        );
+    /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Since("5")
+    @ConnectionType("Node")
+    public ResetNodeResult resetNode(final ResetNodeRequest request);
+
+    /** 
+     * Allows you to reset a node to the SolidFire factory settings. All data will be deleted from the node when you call this method. A node participating in a cluster cannot be reset.
+     **/
+    @Since("5")
+    @ConnectionType("Node")
+    public ResetNodeResult resetNode(
+        
+        String build
+, 
+        Boolean force
+, 
+        Optional<String> options
+, 
+        Optional<Boolean> reboot
         );
     /** 
      * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
@@ -1908,24 +1908,6 @@ public interface SolidFireElementIF {
     @ConnectionType("Cluster")
     public ListSchedulesResult listSchedules();
     /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request);
-
-    /** 
-     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
-     **/
-    @Since("6")
-    @ConnectionType("Cluster")
-    public ListSnapshotsResult listSnapshots(
-        
-        Optional<Long> volumeID
-, 
-        Optional<Boolean> internal
-        );
-    /** 
      * ModifyGroupSnapshot is used to change the attributes currently assigned to a group snapshot.
      **/
     @Since("8")
@@ -2068,6 +2050,22 @@ public interface SolidFireElementIF {
     public ModifyScheduleResult modifySchedule(
         
         Schedule schedule
+        );
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(final ListSnapshotsRequest request);
+
+    /** 
+     * ListSnapshots is used to return the attributes of each snapshot taken on the volume.
+     **/
+    @Since("6")
+    @ConnectionType("Cluster")
+    public ListSnapshotsResult listSnapshots(
+        
+        Optional<Long> volumeID
         );
     /** 
      * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
