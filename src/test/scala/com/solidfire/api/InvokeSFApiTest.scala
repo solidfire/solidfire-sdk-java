@@ -1,6 +1,7 @@
 package com.solidfire.api
 
 import com.solidfire.adaptor.ElementServiceAdaptor._
+import com.solidfire.core.client.Attributes
 import com.solidfire.core.javautil.Optional
 import com.solidfire.element.api._
 import com.solidfire.util.Utility
@@ -38,7 +39,7 @@ class InvokeSFApiTest extends WordSpec with BeforeAndAfterAll with MockitoSugar 
 
       when( sfe.sendRequest( org.mockito.Matchers.eq("GetAPI"), any(), any() ,any())  ).thenReturn( returned )
 
-      val result = invokeSFApi(sfe, request).asInstanceOf[com.solidfire.gson.internal.LinkedTreeMap[String, Object]]
+      val result = invokeSFApi(sfe, request)
       result.get("7.0") should not be null
     }
 
@@ -49,7 +50,7 @@ class InvokeSFApiTest extends WordSpec with BeforeAndAfterAll with MockitoSugar 
 
       when( sfe.sendRequest( org.mockito.Matchers.eq("GetConfig"), any(), any() ,any())  ).thenReturn( returned )
 
-      val result = invokeSFApi(sfe, request).asInstanceOf[com.solidfire.gson.internal.LinkedTreeMap[String, Object]]
+      val result = invokeSFApi(sfe, request)
       result.get("config") should not be null
     }
 
@@ -60,7 +61,7 @@ class InvokeSFApiTest extends WordSpec with BeforeAndAfterAll with MockitoSugar 
 
       when( sfe.sendRequest( org.mockito.Matchers.eq("ListAccounts"), org.mockito.Matchers.eq(Optional.of(listAccountsRequest.toMap())), any() ,any())  ).thenReturn( returned )
 
-      val result = invokeSFApi(sfe, request).asInstanceOf[com.solidfire.gson.internal.LinkedTreeMap[String, Object]]
+      val result = invokeSFApi(sfe, request)
       result.get("accounts") should not be null
     }
   }

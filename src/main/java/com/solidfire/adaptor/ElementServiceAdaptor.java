@@ -18,10 +18,8 @@ package com.solidfire.adaptor;
 
 import com.solidfire.core.client.Attributes;
 import com.solidfire.element.api.*;
+import com.solidfire.gson.internal.LinkedTreeMap;
 
-/**
- * Created by Jason Ryan Womack on 7/14/16.
- */
 public class ElementServiceAdaptor {
 
     /**
@@ -156,7 +154,8 @@ public class ElementServiceAdaptor {
 
         if (request.getMethod() == null) throw new IllegalArgumentException("InvokeSFApiRequest GetMethod was null");
 
-        return sfe.sendRequest(request.getMethod(), request.getParameters(), Object.class, Attributes.class);
+        Object result = sfe.sendRequest(request.getMethod(), request.getParameters(), Object.class, Object.class);
 
+        return new Attributes((LinkedTreeMap<String, Object>)result);
     }
 }
