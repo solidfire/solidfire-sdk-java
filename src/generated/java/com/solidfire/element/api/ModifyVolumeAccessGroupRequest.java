@@ -49,6 +49,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
     @SerializedName("name") private Optional<String> name;
     @SerializedName("initiators") private Optional<String[]> initiators;
     @SerializedName("volumes") private Optional<Long[]> volumes;
+    @SerializedName("deleteOrphanInitiators") private Optional<Boolean> deleteOrphanInitiators;
     @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
 
     // empty constructor
@@ -90,6 +91,28 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    }
+    // parameterized constructor
+    @Since("9.0")
+    public ModifyVolumeAccessGroupRequest(
+        Long volumeAccessGroupID,
+        Optional<Long[]> virtualNetworkID,
+        Optional<Long[]> virtualNetworkTags,
+        Optional<String> name,
+        Optional<String[]> initiators,
+        Optional<Long[]> volumes,
+        Optional<Boolean> deleteOrphanInitiators,
+        Optional<java.util.Map<String, Object>> attributes
+    )
+    {
+        this.volumeAccessGroupID = volumeAccessGroupID;
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
+        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
+        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+        this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
         this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
     }
 
@@ -139,6 +162,14 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
     }
     /** 
+     * true: Delete initiator objects after they are removed from a volume access group.
+     * false: Do not delete initiator objects after they are removed from a volume access group.
+     **/
+    public Optional<Boolean> getDeleteOrphanInitiators() { return this.deleteOrphanInitiators; }
+    public void setDeleteOrphanInitiators(Optional<Boolean> deleteOrphanInitiators) { 
+        this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
+    }
+    /** 
      * List of Name/Value pairs in JSON object format.
      **/
     public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
@@ -160,12 +191,13 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
             Objects.equals(name, that.name) && 
             Objects.equals(initiators, that.initiators) && 
             Objects.equals(volumes, that.volumes) && 
+            Objects.equals(deleteOrphanInitiators, that.deleteOrphanInitiators) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID,virtualNetworkID,virtualNetworkTags,name,initiators,volumes,attributes );
+        return Objects.hash( volumeAccessGroupID,virtualNetworkID,virtualNetworkTags,name,initiators,volumes,deleteOrphanInitiators,attributes );
     }
 
 
@@ -177,6 +209,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         map.put("name", name);
         map.put("initiators", initiators);
         map.put("volumes", volumes);
+        map.put("deleteOrphanInitiators", deleteOrphanInitiators);
         map.put("attributes", attributes);
         return map;
     }
@@ -201,6 +234,9 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         }
         if(null != volumes && volumes.isPresent()){
             sb.append(" volumes : ").append(volumes).append(",");
+        }
+        if(null != deleteOrphanInitiators && deleteOrphanInitiators.isPresent()){
+            sb.append(" deleteOrphanInitiators : ").append(deleteOrphanInitiators).append(",");
         }
         if(null != attributes && attributes.isPresent()){
             sb.append(" attributes : ").append(attributes).append(",");
@@ -228,6 +264,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         private Optional<String> name;
         private Optional<String[]> initiators;
         private Optional<Long[]> volumes;
+        private Optional<Boolean> deleteOrphanInitiators;
         private Optional<java.util.Map<String, Object>> attributes;
 
         private Builder() { }
@@ -240,6 +277,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
                          this.name,
                          this.initiators,
                          this.volumes,
+                         this.deleteOrphanInitiators,
                          this.attributes);
         }
 
@@ -250,6 +288,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
             this.name = req.name;
             this.initiators = req.initiators;
             this.volumes = req.volumes;
+            this.deleteOrphanInitiators = req.deleteOrphanInitiators;
             this.attributes = req.attributes;
 
             return this;
@@ -282,6 +321,11 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
 
         public ModifyVolumeAccessGroupRequest.Builder optionalVolumes(final Long[] volumes) {
             this.volumes = (volumes == null) ? Optional.<Long[]>empty() : Optional.of(volumes);
+            return this;
+        }
+
+        public ModifyVolumeAccessGroupRequest.Builder optionalDeleteOrphanInitiators(final Boolean deleteOrphanInitiators) {
+            this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : Optional.of(deleteOrphanInitiators);
             return this;
         }
 
