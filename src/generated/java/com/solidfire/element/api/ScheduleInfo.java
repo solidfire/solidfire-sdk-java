@@ -33,9 +33,9 @@ import java.util.Objects;
 public class ScheduleInfo implements Serializable {
 
     public static final long serialVersionUID = -2613274100562542045L;
-    @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
     @SerializedName("snapshotName") private Optional<String> snapshotName;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
+    @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
     @SerializedName("retention") private Optional<String> retention;
 
     // empty constructor
@@ -46,25 +46,18 @@ public class ScheduleInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ScheduleInfo(
-        Optional<Long[]> volumeIDs,
         Optional<String> snapshotName,
         Optional<Boolean> enableRemoteReplication,
+        Optional<Long[]> volumeIDs,
         Optional<String> retention
     )
     {
-        this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
         this.snapshotName = (snapshotName == null) ? Optional.<String>empty() : snapshotName;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
+        this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
     }
 
-    /** 
-     * A list of volume IDs to be included in the group snapshot.
-     **/
-    public Optional<Long[]> getVolumeIDs() { return this.volumeIDs; }
-    public void setVolumeIDs(Optional<Long[]> volumeIDs) { 
-        this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
-    }
     /** 
      * The snapshot name to be used. 
      **/
@@ -78,6 +71,13 @@ public class ScheduleInfo implements Serializable {
     public Optional<Boolean> getEnableRemoteReplication() { return this.enableRemoteReplication; }
     public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) { 
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
+    }
+    /** 
+     * A list of volume IDs to be included in the group snapshot.
+     **/
+    public Optional<Long[]> getVolumeIDs() { return this.volumeIDs; }
+    public void setVolumeIDs(Optional<Long[]> volumeIDs) { 
+        this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
     }
     /** 
      * The amount of time the snapshot will be retained in HH:mm:ss.
@@ -95,23 +95,23 @@ public class ScheduleInfo implements Serializable {
         ScheduleInfo that = (ScheduleInfo) o;
 
         return 
-            Objects.equals(volumeIDs, that.volumeIDs) && 
             Objects.equals(snapshotName, that.snapshotName) && 
             Objects.equals(enableRemoteReplication, that.enableRemoteReplication) && 
+            Objects.equals(volumeIDs, that.volumeIDs) && 
             Objects.equals(retention, that.retention);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeIDs,snapshotName,enableRemoteReplication,retention );
+        return Objects.hash( snapshotName,enableRemoteReplication,volumeIDs,retention );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("volumeIDs", volumeIDs);
         map.put("snapshotName", snapshotName);
         map.put("enableRemoteReplication", enableRemoteReplication);
+        map.put("volumeIDs", volumeIDs);
         map.put("retention", retention);
         return map;
     }
@@ -121,14 +121,14 @@ public class ScheduleInfo implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
-        }
         if(null != snapshotName && snapshotName.isPresent()){
             sb.append(" snapshotName : ").append(snapshotName).append(",");
         }
         if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
             sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
+        }
+        if(null != volumeIDs && volumeIDs.isPresent()){
+            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
         }
         if(null != retention && retention.isPresent()){
             sb.append(" retention : ").append(retention).append(",");
@@ -150,32 +150,27 @@ public class ScheduleInfo implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Long[]> volumeIDs;
         private Optional<String> snapshotName;
         private Optional<Boolean> enableRemoteReplication;
+        private Optional<Long[]> volumeIDs;
         private Optional<String> retention;
 
         private Builder() { }
 
         public ScheduleInfo build() {
             return new ScheduleInfo (
-                         this.volumeIDs,
                          this.snapshotName,
                          this.enableRemoteReplication,
+                         this.volumeIDs,
                          this.retention);
         }
 
         private ScheduleInfo.Builder buildFrom(final ScheduleInfo req) {
-            this.volumeIDs = req.volumeIDs;
             this.snapshotName = req.snapshotName;
             this.enableRemoteReplication = req.enableRemoteReplication;
+            this.volumeIDs = req.volumeIDs;
             this.retention = req.retention;
 
-            return this;
-        }
-
-        public ScheduleInfo.Builder optionalVolumeIDs(final Long[] volumeIDs) {
-            this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
             return this;
         }
 
@@ -186,6 +181,11 @@ public class ScheduleInfo implements Serializable {
 
         public ScheduleInfo.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
+            return this;
+        }
+
+        public ScheduleInfo.Builder optionalVolumeIDs(final Long[] volumeIDs) {
+            this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
             return this;
         }
 

@@ -2438,38 +2438,6 @@ public class SolidFireElement
         return this.createGroupSnapshot(new CreateGroupSnapshotRequest(volumes, name, enableRemoteReplication, retention, attributes));
     }
     /** 
-     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
-     * 
-     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. 
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Override
-    @Since("8")
-    @ConnectionType("Cluster")
-    public CreateScheduleResult createSchedule(final CreateScheduleRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
-            throw new ApiException("The command, createSchedule is not available until version 8.");
-        }
-        return super.sendRequest("CreateSchedule", request, CreateScheduleRequest.class, CreateScheduleResult.class);
-    }
-
-    /** 
-     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
-     * 
-     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. 
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Override
-    @Since("8")
-    @ConnectionType("Cluster")
-    public CreateScheduleResult createSchedule(
-        Schedule schedule
-        ) {
-        return this.createSchedule(new CreateScheduleRequest(schedule));
-    }
-    /** 
      * CreateSnapshot is used to create a point-in-time copy of a volume.
      * A snapshot can be created from any volume or from an existing snapshot.
      * 
@@ -2686,31 +2654,6 @@ public class SolidFireElement
         return this.modifyGroupSnapshot(new ModifyGroupSnapshotRequest(groupSnapshotID, expirationTime, enableRemoteReplication));
     }
     /** 
-     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.
-     **/
-    @Override
-    @Since("8")
-    @ConnectionType("Cluster")
-    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
-            throw new ApiException("The command, modifySchedule is not available until version 8.");
-        }
-        // Adaptor
-        return com.solidfire.adaptor.ElementServiceAdaptor.modifySchedule(this, request);
-    }
-
-    /** 
-     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.
-     **/
-    @Override
-    @Since("8")
-    @ConnectionType("Cluster")
-    public ModifyScheduleResult modifySchedule(
-        Schedule schedule
-        ) {
-        return this.modifySchedule(new ModifyScheduleRequest(schedule));
-    }
-    /** 
      * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
      * Use this API method to enable the snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
      **/
@@ -2808,6 +2751,62 @@ public class SolidFireElement
         Optional<java.util.Map<String, Object>> attributes
         ) {
         return this.rollbackToSnapshot(new RollbackToSnapshotRequest(volumeID, snapshotID, saveCurrentState, name, attributes));
+    }
+    /** 
+     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
+     * 
+     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. 
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Override
+    @Since("8")
+    @ConnectionType("Cluster")
+    public CreateScheduleResult createSchedule(final CreateScheduleRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
+            throw new ApiException("The command, createSchedule is not available until version 8.");
+        }
+        return super.sendRequest("CreateSchedule", request, CreateScheduleRequest.class, CreateScheduleResult.class);
+    }
+
+    /** 
+     * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
+     * 
+     * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. 
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Override
+    @Since("8")
+    @ConnectionType("Cluster")
+    public CreateScheduleResult createSchedule(
+        Schedule schedule
+        ) {
+        return this.createSchedule(new CreateScheduleRequest(schedule));
+    }
+    /** 
+     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.
+     **/
+    @Override
+    @Since("8")
+    @ConnectionType("Cluster")
+    public ModifyScheduleResult modifySchedule(final ModifyScheduleRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
+            throw new ApiException("The command, modifySchedule is not available until version 8.");
+        }
+        return super.sendRequest("ModifySchedule", request, ModifyScheduleRequest.class, ModifyScheduleResult.class);
+    }
+
+    /** 
+     * ModifySchedule is used to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.
+     **/
+    @Override
+    @Since("8")
+    @ConnectionType("Cluster")
+    public ModifyScheduleResult modifySchedule(
+        Schedule schedule
+        ) {
+        return this.modifySchedule(new ModifyScheduleRequest(schedule));
     }
     /** 
      * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.

@@ -40,16 +40,16 @@ public class DriveStats implements Serializable {
     @SerializedName("lifetimeReadBytes") private Long lifetimeReadBytes;
     @SerializedName("lifetimeWriteBytes") private Long lifetimeWriteBytes;
     @SerializedName("powerOnHours") private Long powerOnHours;
-    @SerializedName("readBytes") private Long readBytes;
-    @SerializedName("readOps") private Long readOps;
+    @SerializedName("readBytes") private Long readBytes = 0L;
+    @SerializedName("readOps") private Long readOps = 0L;
     @SerializedName("reallocatedSectors") private Long reallocatedSectors;
     @SerializedName("reserveCapacityPercent") private Long reserveCapacityPercent;
     @SerializedName("timestamp") private String timestamp;
     @SerializedName("totalCapacity") private Long totalCapacity;
     @SerializedName("usedCapacity") private Optional<Long> usedCapacity;
     @SerializedName("usedMemory") private Long usedMemory;
-    @SerializedName("writeBytes") private Long writeBytes;
-    @SerializedName("writeOps") private Long writeOps;
+    @SerializedName("writeBytes") private Long writeBytes = 0L;
+    @SerializedName("writeOps") private Long writeOps = 0L;
 
     // empty constructor
     @Since("7.0")
