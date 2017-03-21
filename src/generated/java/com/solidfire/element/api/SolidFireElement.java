@@ -532,30 +532,6 @@ public class SolidFireElement
         return super.sendRequest("GetClusterMasterNodeID", null, null, GetClusterMasterNodeIDResult.class);
     }
     /** 
-     * The GetClusterState method is used to indicate if a node is part of a cluster or not. The three states are: <br><strong>Available:</strong> Node has not been configured with a cluster name.<br><strong>Pending:</strong> Node is pending for a specific named cluster and can be added.<br><strong>Active:</strong> Node is active and a member of a cluster and may not be added to another cluster.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public GetClusterStateResult getClusterState(final GetClusterStateRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
-            throw new ApiException("The command, getClusterState is not available until version 5.");
-        }
-        return super.sendRequest("GetClusterState", request, GetClusterStateRequest.class, GetClusterStateResult.class);
-    }
-
-    /** 
-     * The GetClusterState method is used to indicate if a node is part of a cluster or not. The three states are: <br><strong>Available:</strong> Node has not been configured with a cluster name.<br><strong>Pending:</strong> Node is pending for a specific named cluster and can be added.<br><strong>Active:</strong> Node is active and a member of a cluster and may not be added to another cluster.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Cluster")
-    public GetClusterStateResult getClusterState(
-        Boolean force
-        ) {
-        return this.getClusterState(new GetClusterStateRequest(force));
-    }
-    /** 
      * GetClusterStats is used to return high-level activity measurements for the cluster. Values returned are cumulative from the creation of the cluster.
      **/
     @Override
@@ -1026,6 +1002,30 @@ public class SolidFireElement
         return super.sendRequest("GetClusterConfig", null, null, GetClusterConfigResult.class);
     }
     /** 
+     * The GetClusterState method is used to indicate if a node is part of a cluster or not. The three states are: <br><strong>Available:</strong> Node has not been configured with a cluster name.<br><strong>Pending:</strong> Node is pending for a specific named cluster and can be added.<br><strong>Active:</strong> Node is active and a member of a cluster and may not be added to another cluster.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Cluster")
+    public GetClusterStateResult getClusterState(final GetClusterStateRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
+            throw new ApiException("The command, getClusterState is not available until version 5.");
+        }
+        return super.sendRequest("GetClusterState", request, GetClusterStateRequest.class, GetClusterStateResult.class);
+    }
+
+    /** 
+     * The GetClusterState method is used to indicate if a node is part of a cluster or not. The three states are: <br><strong>Available:</strong> Node has not been configured with a cluster name.<br><strong>Pending:</strong> Node is pending for a specific named cluster and can be added.<br><strong>Active:</strong> Node is active and a member of a cluster and may not be added to another cluster.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Cluster")
+    public GetClusterStateResult getClusterState(
+        Boolean force
+        ) {
+        return this.getClusterState(new GetClusterStateRequest(force));
+    }
+    /** 
      * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
      * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be added via AddDrives before they can be utilized.
      * Use the "ListDrives" method to display drives that are "available" to be added.
@@ -1067,17 +1067,6 @@ public class SolidFireElement
         Optional<Boolean> forceDuringUpgrade
         ) {
         return this.addDrives(new AddDrivesRequest(drives, forceDuringUpgrade));
-    }
-    /** 
-     * GetDriveConfig is used to display drive information for expected slice and block drive counts as well as the number of slices and block drives that are currently connected to the node.
-     * 
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("2")
-    @ConnectionType("Node")
-    public GetDriveConfigResult getDriveConfig() {
-        return super.sendRequest("GetDriveConfig", null, null, GetDriveConfigResult.class);
     }
     /** 
      * GetDriveHardwareInfo returns all the hardware info for the given drive. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
@@ -1277,6 +1266,17 @@ public class SolidFireElement
         return this.secureEraseDrives(new SecureEraseDrivesRequest(drives));
     }
     /** 
+     * GetDriveConfig is used to display drive information for expected slice and block drive counts as well as the number of slices and block drives that are currently connected to the node.
+     * 
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("2")
+    @ConnectionType("Node")
+    public GetDriveConfigResult getDriveConfig() {
+        return super.sendRequest("GetDriveConfig", null, null, GetDriveConfigResult.class);
+    }
+    /** 
      * The TestDrives API method is used to run a hardware validation on all the drives on the node. Hardware failures on the drives are detected if present and they are reported in the results of the validation tests.
      * 
      * Note: This test takes approximately 10 minutes.
@@ -1333,15 +1333,6 @@ public class SolidFireElement
         return this.getClusterHardwareInfo(new GetClusterHardwareInfoRequest(type));
     }
     /** 
-     * GetHardwareConfig enables you to display the hardware configuration information for a node. NOTE: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public GetHardwareConfigResult getHardwareConfig() {
-        return super.sendRequest("GetHardwareConfig", null, null, GetHardwareConfigResult.class);
-    }
-    /** 
      * GetNodeHardwareInfo is used to return all the hardware info and status for the node specified. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
      **/
     @Override
@@ -1373,6 +1364,15 @@ public class SolidFireElement
     @ConnectionType("Node")
     public GetNvramInfoResult getNvramInfo() {
         return super.sendRequest("GetNvramInfo", null, null, GetNvramInfoResult.class);
+    }
+    /** 
+     * GetHardwareConfig enables you to display the hardware configuration information for a node. NOTE: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public GetHardwareConfigResult getHardwareConfig() {
+        return super.sendRequest("GetHardwareConfig", null, null, GetHardwareConfigResult.class);
     }
     /** 
      * CreateInitiators enables you to create multiple new initiator IQNs or World Wide Port Names (WWPNs) and optionally assign them aliases and attributes. When you use CreateInitiators to create new initiators, you can also add them to volume access groups.
@@ -1748,28 +1748,6 @@ public class SolidFireElement
         return super.sendRequest("GetBootstrapConfig", null, null, GetBootstrapConfigResult.class);
     }
     /** 
-     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
-     * 
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public GetConfigResult getConfig() {
-        return super.sendRequest("GetConfig", null, null, GetConfigResult.class);
-    }
-    /** 
-     * The GetNetworkConfig API method is used to display the network configuration information for a node.
-     * 
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public GetNetworkConfigResult getNetworkConfig() {
-        return super.sendRequest("GetNetworkConfig", null, null, GetNetworkConfigResult.class);
-    }
-    /** 
      * GetNodeStats is used to return the high-level activity measurements for a single node.
      **/
     @Override
@@ -1934,6 +1912,28 @@ public class SolidFireElement
         Config config
         ) {
         return this.setConfig(new SetConfigRequest(config));
+    }
+    /** 
+     * The GetConfig API method is used to retrieve all the configuration information for the node. This one API method includes the same information available in both "GetClusterConfig" and "GetNetworkConfig" methods.
+     * 
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public GetConfigResult getConfig() {
+        return super.sendRequest("GetConfig", null, null, GetConfigResult.class);
+    }
+    /** 
+     * The GetNetworkConfig API method is used to display the network configuration information for a node.
+     * 
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public GetNetworkConfigResult getNetworkConfig() {
+        return super.sendRequest("GetNetworkConfig", null, null, GetNetworkConfigResult.class);
     }
     /** 
      * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
@@ -3031,6 +3031,32 @@ public class SolidFireElement
         return this.modifyStorageContainer(new ModifyStorageContainerRequest(storageContainerID, initiatorSecret, targetSecret));
     }
     /** 
+     * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public TestConnectMvipResult testConnectMvip(final TestConnectMvipRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
+            throw new ApiException("The command, testConnectMvip is not available until version 5.");
+        }
+        return super.sendRequest("TestConnectMvip", request, TestConnectMvipRequest.class, TestConnectMvipResult.class);
+    }
+
+    /** 
+     * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public TestConnectMvipResult testConnectMvip(
+        Optional<String> mvip
+        ) {
+        return this.testConnectMvip(new TestConnectMvipRequest(mvip));
+    }
+    /** 
      * The ListTests API method is used to return the tests that are available to run on a node.
      * Note: This method is available only through the per-node API endpoint 5.0 or later.
      **/
@@ -3131,32 +3157,6 @@ public class SolidFireElement
         Optional<Long> pingTimeoutMsec
         ) {
         return this.testPing(new TestPingRequest(attempts, hosts, totalTimeoutSec, packetSize, pingTimeoutMsec));
-    }
-    /** 
-     * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public TestConnectMvipResult testConnectMvip(final TestConnectMvipRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
-            throw new ApiException("The command, testConnectMvip is not available until version 5.");
-        }
-        return super.sendRequest("TestConnectMvip", request, TestConnectMvipRequest.class, TestConnectMvipResult.class);
-    }
-
-    /** 
-     * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public TestConnectMvipResult testConnectMvip(
-        Optional<String> mvip
-        ) {
-        return this.testConnectMvip(new TestConnectMvipRequest(mvip));
     }
     /** 
      * AddVirtualNetwork is used to add a new virtual network to a cluster configuration. When a virtual network is added, an interface for each node is created and each will require a virtual network IP address. The number of IP addresses specified as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. Virtual network addresses are bulk provisioned by SolidFire and assigned to individual nodes automatically. Virtual network addresses do not need to be assigned to nodes manually.

@@ -35,7 +35,7 @@ public class RtfiInfo implements Serializable {
 
     public static final long serialVersionUID = 2818977902491736813L;
     @SerializedName("mipi") private Optional<String> mipi;
-    @SerializedName("generation") private Long generation;
+    @SerializedName("generation") private Object generation;
     @SerializedName("statusUrlLogfile") private Optional<String> statusUrlLogfile;
     @SerializedName("build") private String build;
     @SerializedName("statusUrlAll") private String statusUrlAll;
@@ -53,7 +53,7 @@ public class RtfiInfo implements Serializable {
     @Since("7.0")
     public RtfiInfo(
         Optional<String> mipi,
-        Long generation,
+        Object generation,
         Optional<String> statusUrlLogfile,
         String build,
         String statusUrlAll,
@@ -84,8 +84,8 @@ public class RtfiInfo implements Serializable {
     /** 
      * 
      **/
-    public Long getGeneration() { return this.generation; }
-    public void setGeneration(Long generation) { 
+    public Object getGeneration() { return this.generation; }
+    public void setGeneration(Object generation) { 
         this.generation = generation;
     }
     /** 
@@ -219,7 +219,7 @@ public class RtfiInfo implements Serializable {
 
     public static class Builder {
         private Optional<String> mipi;
-        private Long generation;
+        private Object generation;
         private Optional<String> statusUrlLogfile;
         private String build;
         private String statusUrlAll;
@@ -262,7 +262,7 @@ public class RtfiInfo implements Serializable {
             return this;
         }
 
-        public RtfiInfo.Builder generation(final Long generation) {
+        public RtfiInfo.Builder generation(final Object generation) {
             this.generation = generation;
             return this;
         }
