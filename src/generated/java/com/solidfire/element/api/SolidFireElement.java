@@ -495,15 +495,6 @@ public class SolidFireElement
         return this.enableSnmp(new EnableSnmpRequest(snmpV3Enabled));
     }
     /** 
-     * Retrieves the current version of the API and a list of all supported versions.
-     **/
-    @Override
-    @Since("1.0")
-    @ConnectionType("Both")
-    public GetAPIResult getAPI() {
-        return super.sendRequest("GetAPI", null, null, GetAPIResult.class);
-    }
-    /** 
      * Return the high-level capacity measurements for an entire cluster.
      * The fields returned from this method can be used to calculate the efficiency rates that are displayed in the Element User Interface.
      **/
@@ -512,17 +503,6 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public GetClusterCapacityResult getClusterCapacity() {
         return super.sendRequest("GetClusterCapacity", null, null, GetClusterCapacityResult.class);
-    }
-    /** 
-     * The GetClusterConfig API method is used to return information about the cluster configuration this node uses to communicate with the cluster it is a part of.
-     * 
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public GetClusterConfigResult getClusterConfig() {
-        return super.sendRequest("GetClusterConfig", null, null, GetClusterConfigResult.class);
     }
     /** 
      * GetClusterFullThreshold is used to view the stages set for cluster fullness levels. All levels are returned when this method is entered.
@@ -830,34 +810,6 @@ public class SolidFireElement
         return this.removeClusterAdmin(new RemoveClusterAdminRequest(clusterAdminID));
     }
     /** 
-     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
-     * 
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public SetClusterConfigResult setClusterConfig(final SetClusterConfigRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
-            throw new ApiException("The command, setClusterConfig is not available until version 5.");
-        }
-        return super.sendRequest("SetClusterConfig", request, SetClusterConfigRequest.class, SetClusterConfigResult.class);
-    }
-
-    /** 
-     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
-     * 
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public SetClusterConfigResult setClusterConfig(
-        ClusterConfig cluster
-        ) {
-        return this.setClusterConfig(new SetClusterConfigRequest(cluster));
-    }
-    /** 
      * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
      **/
     @Override
@@ -917,6 +869,43 @@ public class SolidFireElement
     @ConnectionType("Cluster")
     public SnmpSendTestTrapsResult snmpSendTestTraps() {
         return super.sendRequest("SnmpSendTestTraps", null, null, SnmpSendTestTrapsResult.class);
+    }
+    /** 
+     * Retrieves the current version of the API and a list of all supported versions.
+     **/
+    @Override
+    @Since("1.0")
+    @ConnectionType("Both")
+    public GetAPIResult getAPI() {
+        return super.sendRequest("GetAPI", null, null, GetAPIResult.class);
+    }
+    /** 
+     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
+     * 
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public SetClusterConfigResult setClusterConfig(final SetClusterConfigRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
+            throw new ApiException("The command, setClusterConfig is not available until version 5.");
+        }
+        return super.sendRequest("SetClusterConfig", request, SetClusterConfigRequest.class, SetClusterConfigResult.class);
+    }
+
+    /** 
+     * The SetClusterConfig API method is used to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified see Cluster Object on page 109. To display the current cluster interface settings for a node, run the GetClusterConfig API method.
+     * 
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public SetClusterConfigResult setClusterConfig(
+        ClusterConfig cluster
+        ) {
+        return this.setClusterConfig(new SetClusterConfigRequest(cluster));
     }
     /** 
      * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
@@ -1024,6 +1013,17 @@ public class SolidFireElement
         Optional<String> faultTypes
         ) {
         return this.clearClusterFaults(new ClearClusterFaultsRequest(faultTypes));
+    }
+    /** 
+     * The GetClusterConfig API method is used to return information about the cluster configuration this node uses to communicate with the cluster it is a part of.
+     * 
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public GetClusterConfigResult getClusterConfig() {
+        return super.sendRequest("GetClusterConfig", null, null, GetClusterConfigResult.class);
     }
     /** 
      * AddDrives is used to add one or more available drives to the cluster enabling the drives to host a portion of the cluster's data.
@@ -2655,77 +2655,6 @@ public class SolidFireElement
         return this.modifySnapshot(new ModifySnapshotRequest(snapshotID, expirationTime, enableRemoteReplication));
     }
     /** 
-     * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
-            throw new ApiException("The command, rollbackToGroupSnapshot is not available until version 7.");
-        }
-        return super.sendRequest("RollbackToGroupSnapshot", request, RollbackToGroupSnapshotRequest.class, CreateGroupSnapshotResult.class);
-    }
-
-    /** 
-     * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
-     * 
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Override
-    @Since("7")
-    @ConnectionType("Cluster")
-    public CreateGroupSnapshotResult rollbackToGroupSnapshot(
-        Long groupSnapshotID,
-        Boolean saveCurrentState,
-        Optional<String> name,
-        Optional<Attributes> attributes
-        ) {
-        return this.rollbackToGroupSnapshot(new RollbackToGroupSnapshotRequest(groupSnapshotID, saveCurrentState, name, attributes));
-    }
-    /** 
-     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
-     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
-     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
-     * a value of "true."
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public CreateSnapshotResult rollbackToSnapshot(final RollbackToSnapshotRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
-            throw new ApiException("The command, rollbackToSnapshot is not available until version 6.");
-        }
-        return super.sendRequest("RollbackToSnapshot", request, RollbackToSnapshotRequest.class, CreateSnapshotResult.class);
-    }
-
-    /** 
-     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
-     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
-     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
-     * a value of "true."
-     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
-     * Snapshots are not created when cluster fullness is at stage 4 or 5.
-     **/
-    @Override
-    @Since("6")
-    @ConnectionType("Cluster")
-    public CreateSnapshotResult rollbackToSnapshot(
-        Long volumeID,
-        Long snapshotID,
-        Boolean saveCurrentState,
-        Optional<String> name,
-        Optional<Attributes> attributes
-        ) {
-        return this.rollbackToSnapshot(new RollbackToSnapshotRequest(volumeID, snapshotID, saveCurrentState, name, attributes));
-    }
-    /** 
      * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
      * 
      * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. 
@@ -2806,6 +2735,77 @@ public class SolidFireElement
         Optional<Long> volumeID
         ) {
         return this.listSnapshots(new ListSnapshotsRequest(volumeID));
+    }
+    /** 
+     * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public RollbackToGroupSnapshotResult rollbackToGroupSnapshot(final RollbackToGroupSnapshotRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 7) {
+            throw new ApiException("The command, rollbackToGroupSnapshot is not available until version 7.");
+        }
+        return super.sendRequest("RollbackToGroupSnapshot", request, RollbackToGroupSnapshotRequest.class, RollbackToGroupSnapshotResult.class);
+    }
+
+    /** 
+     * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
+     * 
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Override
+    @Since("7")
+    @ConnectionType("Cluster")
+    public RollbackToGroupSnapshotResult rollbackToGroupSnapshot(
+        Long groupSnapshotID,
+        Boolean saveCurrentState,
+        Optional<String> name,
+        Optional<Attributes> attributes
+        ) {
+        return this.rollbackToGroupSnapshot(new RollbackToGroupSnapshotRequest(groupSnapshotID, saveCurrentState, name, attributes));
+    }
+    /** 
+     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
+     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
+     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
+     * a value of "true."
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public RollbackToSnapshotResult rollbackToSnapshot(final RollbackToSnapshotRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 6) {
+            throw new ApiException("The command, rollbackToSnapshot is not available until version 6.");
+        }
+        return super.sendRequest("RollbackToSnapshot", request, RollbackToSnapshotRequest.class, RollbackToSnapshotResult.class);
+    }
+
+    /** 
+     * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
+     * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
+     * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
+     * a value of "true."
+     * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
+     * Snapshots are not created when cluster fullness is at stage 4 or 5.
+     **/
+    @Override
+    @Since("6")
+    @ConnectionType("Cluster")
+    public RollbackToSnapshotResult rollbackToSnapshot(
+        Long volumeID,
+        Long snapshotID,
+        Boolean saveCurrentState,
+        Optional<String> name,
+        Optional<Attributes> attributes
+        ) {
+        return this.rollbackToSnapshot(new RollbackToSnapshotRequest(volumeID, snapshotID, saveCurrentState, name, attributes));
     }
     /** 
      * GetHardwareInfo allows you to return hardware information and status for a single node. This generally includes manufacturers, vendors, versions, drives, and other associated hardware identification information.
@@ -3077,32 +3077,6 @@ public class SolidFireElement
         return this.testConnectEnsemble(new TestConnectEnsembleRequest(ensemble));
     }
     /** 
-     * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public TestConnectMvipResult testConnectMvip(final TestConnectMvipRequest request) { 
-        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
-            throw new ApiException("The command, testConnectMvip is not available until version 5.");
-        }
-        return super.sendRequest("TestConnectMvip", request, TestConnectMvipRequest.class, TestConnectMvipResult.class);
-    }
-
-    /** 
-     * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
-     * Note: This method is available only through the per-node API endpoint 5.0 or later.
-     **/
-    @Override
-    @Since("5")
-    @ConnectionType("Node")
-    public TestConnectMvipResult testConnectMvip(
-        Optional<String> mvip
-        ) {
-        return this.testConnectMvip(new TestConnectMvipRequest(mvip));
-    }
-    /** 
      * The TestConnectSvip API method is used to test the storage connection to the cluster. The test pings the SVIP using ICMP packets and when successful connects as an iSCSI initiator.
      * Note: This method is available only through the per-node API endpoint 5.0 or later.
      **/
@@ -3157,6 +3131,32 @@ public class SolidFireElement
         Optional<Long> pingTimeoutMsec
         ) {
         return this.testPing(new TestPingRequest(attempts, hosts, totalTimeoutSec, packetSize, pingTimeoutMsec));
+    }
+    /** 
+     * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public TestConnectMvipResult testConnectMvip(final TestConnectMvipRequest request) { 
+        if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 5) {
+            throw new ApiException("The command, testConnectMvip is not available until version 5.");
+        }
+        return super.sendRequest("TestConnectMvip", request, TestConnectMvipRequest.class, TestConnectMvipResult.class);
+    }
+
+    /** 
+     * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
+     * Note: This method is available only through the per-node API endpoint 5.0 or later.
+     **/
+    @Override
+    @Since("5")
+    @ConnectionType("Node")
+    public TestConnectMvipResult testConnectMvip(
+        Optional<String> mvip
+        ) {
+        return this.testConnectMvip(new TestConnectMvipRequest(mvip));
     }
     /** 
      * AddVirtualNetwork is used to add a new virtual network to a cluster configuration. When a virtual network is added, an interface for each node is created and each will require a virtual network IP address. The number of IP addresses specified as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. Virtual network addresses are bulk provisioned by SolidFire and assigned to individual nodes automatically. Virtual network addresses do not need to be assigned to nodes manually.

@@ -36,7 +36,7 @@ public class ISCSISession implements Serializable {
     public static final long serialVersionUID = -1637168637781139879L;
     @SerializedName("driveIDs") private Optional<Long[]> driveIDs;
     @SerializedName("accountID") private Long accountID;
-    @SerializedName("initiator") private Initiator initiator;
+    @SerializedName("initiator") private Optional<Initiator> initiator;
     @SerializedName("accountName") private String accountName;
     @SerializedName("driveID") private Long driveID;
     @SerializedName("initiatorIP") private String initiatorIP;
@@ -64,7 +64,7 @@ public class ISCSISession implements Serializable {
     public ISCSISession(
         Optional<Long[]> driveIDs,
         Long accountID,
-        Initiator initiator,
+        Optional<Initiator> initiator,
         String accountName,
         Long driveID,
         String initiatorIP,
@@ -85,7 +85,7 @@ public class ISCSISession implements Serializable {
     {
         this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
         this.accountID = accountID;
-        this.initiator = initiator;
+        this.initiator = (initiator == null) ? Optional.<Initiator>empty() : initiator;
         this.accountName = accountName;
         this.driveID = driveID;
         this.initiatorIP = initiatorIP;
@@ -121,9 +121,9 @@ public class ISCSISession implements Serializable {
     /** 
      * 
      **/
-    public Initiator getInitiator() { return this.initiator; }
-    public void setInitiator(Initiator initiator) { 
-        this.initiator = initiator;
+    public Optional<Initiator> getInitiator() { return this.initiator; }
+    public void setInitiator(Optional<Initiator> initiator) { 
+        this.initiator = (initiator == null) ? Optional.<Initiator>empty() : initiator;
     }
     /** 
      * 
@@ -306,7 +306,9 @@ public class ISCSISession implements Serializable {
             sb.append(" driveIDs : ").append(driveIDs).append(",");
         }
         sb.append(" accountID : ").append(accountID).append(",");
-        sb.append(" initiator : ").append(initiator).append(",");
+        if(null != initiator && initiator.isPresent()){
+            sb.append(" initiator : ").append(initiator).append(",");
+        }
         sb.append(" accountName : ").append(accountName).append(",");
         sb.append(" driveID : ").append(driveID).append(",");
         sb.append(" initiatorIP : ").append(initiatorIP).append(",");
@@ -342,7 +344,7 @@ public class ISCSISession implements Serializable {
     public static class Builder {
         private Optional<Long[]> driveIDs;
         private Long accountID;
-        private Initiator initiator;
+        private Optional<Initiator> initiator;
         private String accountName;
         private Long driveID;
         private String initiatorIP;
@@ -419,8 +421,8 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
-        public ISCSISession.Builder initiator(final Initiator initiator) {
-            this.initiator = initiator;
+        public ISCSISession.Builder optionalInitiator(final Initiator initiator) {
+            this.initiator = (initiator == null) ? Optional.<Initiator>empty() : Optional.of(initiator);
             return this;
         }
 
