@@ -1,5 +1,8 @@
 package com.solidfire.api
 
+import java.util
+
+import com.solidfire.core.client.Attributes
 import com.solidfire.element.api._
 import org.scalatest.mock.MockitoSugar
 import org.scalatest.{BeforeAndAfterAll, Matchers, WordSpec}
@@ -25,4 +28,54 @@ class SolidFireElementTests extends WordSpec with BeforeAndAfterAll with Mockito
       */
     }
   }
+
+  "Attributes property" should {
+    "accept an Attributes" in {
+      val attributes = new Attributes()
+      attributes.put("this", "that")
+
+      val request = CreateVolumeRequest.builder()
+        .accountID(1l)
+        .enable512e(true)
+        .name("name")
+        .totalSize(10l)
+        .optionalAttributes(attributes)
+        .build()
+      assert(request.getAttributes.get().get("this") == "that")
+    }
+  }
+  "Attributes class" should {
+    "created by HashMap" in {
+      val hashmap = new util.HashMap[String, Object]()
+      hashmap.put("this", "that")
+      val attributes = new Attributes(hashmap)
+
+      val request = CreateVolumeRequest.builder()
+        .accountID(1l)
+        .enable512e(true)
+        .name("name")
+        .totalSize(10l)
+        .optionalAttributes(attributes)
+        .build()
+      assert(request.getAttributes.get().get("this") == "that")
+    }
+  }
+  "Attributes class" should {
+    "created by TreeMap" in {
+      val treemap = new util.TreeMap[String, Object]()
+      treemap.put("this", "that")
+      val attributes = new Attributes(treemap)
+
+      val request = CreateVolumeRequest.builder()
+        .accountID(1l)
+        .enable512e(true)
+        .name("name")
+        .totalSize(10l)
+        .optionalAttributes(attributes)
+        .build()
+
+      assert(request.getAttributes.get().get("this") == "that")
+    }
+  }
+
 }
