@@ -2739,7 +2739,8 @@ public class SolidFireElement
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
             throw new ApiException("The command, createSchedule is not available until version 8.");
         }
-        return super.sendRequest("CreateSchedule", request, CreateScheduleRequest.class, CreateScheduleResult.class);
+        // Adaptor
+        return com.solidfire.adaptor.ElementServiceAdaptor.createSchedule(this, request);
     }
 
     /** 
@@ -2767,7 +2768,8 @@ public class SolidFireElement
         if(Float.parseFloat(super.getRequestDispatcher().getVersion()) < 8) {
             throw new ApiException("The command, modifySchedule is not available until version 8.");
         }
-        return super.sendRequest("ModifySchedule", request, ModifyScheduleRequest.class, ModifyScheduleResult.class);
+        // Adaptor
+        return com.solidfire.adaptor.ElementServiceAdaptor.modifySchedule(this, request);
     }
 
     /** 
