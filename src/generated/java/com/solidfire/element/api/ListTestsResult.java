@@ -34,7 +34,7 @@ import java.util.Objects;
 public class ListTestsResult implements Serializable {
 
     public static final long serialVersionUID = 3886812087466529195L;
-    @SerializedName("tests") private Attributes tests;
+    @SerializedName("tests") private Object tests;
 
     // empty constructor
     @Since("7.0")
@@ -44,7 +44,7 @@ public class ListTestsResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListTestsResult(
-        Attributes tests
+        Object tests
     )
     {
         this.tests = tests;
@@ -53,8 +53,8 @@ public class ListTestsResult implements Serializable {
     /** 
      * List of tests that can be performed on the node.
      **/
-    public Attributes getTests() { return this.tests; }
-    public void setTests(Attributes tests) { 
+    public Object getTests() { return this.tests; }
+    public void setTests(Object tests) { 
         this.tests = tests;
     }
 
@@ -104,7 +104,7 @@ public class ListTestsResult implements Serializable {
     }
 
     public static class Builder {
-        private Attributes tests;
+        private Object tests;
 
         private Builder() { }
 
@@ -119,7 +119,7 @@ public class ListTestsResult implements Serializable {
             return this;
         }
 
-        public ListTestsResult.Builder tests(final Attributes tests) {
+        public ListTestsResult.Builder tests(final Object tests) {
             this.tests = tests;
             return this;
         }
