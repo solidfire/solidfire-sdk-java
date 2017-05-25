@@ -68,9 +68,9 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 ## Documentation
 
-[Latest JavaDoc](https://github.com/solidfire/solidfire-sdk-java/raw/master/docs/)
+[Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/latest/api/)
 
-[Release Notes](https://github.com/solidfire/solidfire-sdk-java/raw/master/NetApp_SolidFire_Java_SDK_Release_Notes.pdf)
+[Download Release Notes](https://github.com/solidfire/solidfire-sdk-java/raw/master/NetApp_SolidFire_Java_SDK_Release_Notes.pdf)
 
 ## Examples
 
