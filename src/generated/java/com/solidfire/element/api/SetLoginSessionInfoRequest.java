@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * SetLoginSessionInfoRequest  
+ * You can use SetLoginSessionInfo to set the period of time that a session's login authentication is valid. After the log in period elapses without activity on the system, the authentication expires. New login credentials are required for continued access to the cluster after the timeout period has elapsed.
  **/
 
 public class SetLoginSessionInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 2195064027903533942L;
+    public static final long serialVersionUID = -141818038586849787L;
     @SerializedName("timeout") private String timeout;
-
     // empty constructor
     @Since("7.0")
     public SetLoginSessionInfoRequest() {}
@@ -50,7 +51,9 @@ public class SetLoginSessionInfoRequest implements Serializable {
     }
 
     /** 
-     * Cluster authentication expiration period. Formatted in HH:mm:ss. For example: 01:30:00, 00:90:00, and 00:00:5400 can all be used to equal a 90 minute timeout period. Default is 30 minutes.
+     * Cluster authentication expiration period. Formatted in
+     * HH:mm:ss. For example, 01:30:00, 00:90:00, and 00:00:5400 can
+     * be used to equal a 90 minute timeout period. The default value is 30 minutes.
      **/
     public String getTimeout() { return this.timeout; }
     public void setTimeout(String timeout) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,18 @@ import java.util.Objects;
 
 /**
  * CreateScheduleRequest  
+ * CreateSchedule enables you to schedule an automatic snapshot of a volume at a defined interval.
+ * You can use the created snapshot later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for
+ * the point in time in which the snapshot was created.
+ * If you schedule a snapshot to run at a time period that is not divisible by 5 minutes, the snapshot runs at the next time period
+ * that is divisible by 5 minutes. For example, if you schedule a snapshot to run at 12:42:00 UTC, it runs at 12:45:00 UTC.
+ * Note: You can create snapshots if cluster fullness is at stage 1, 2 or 3. You cannot create snapshots after cluster fullness reaches stage 4 or 5.
  **/
 
 public class CreateScheduleRequest implements Serializable {
 
-    public static final long serialVersionUID = -4373490005883377153L;
+    public static final long serialVersionUID = 9157619673195349946L;
     @SerializedName("schedule") private Schedule schedule;
-
     // empty constructor
     @Since("7.0")
     public CreateScheduleRequest() {}

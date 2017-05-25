@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,10 @@ import java.util.Objects;
 
 public class ResetNodeResult implements Serializable {
 
-    public static final long serialVersionUID = 1741204150018515933L;
-    @SerializedName("rtfiInfo") private java.util.Map<String, Object> rtfiInfo;
-
+    public static final long serialVersionUID = 1393122486488072595L;
+    @SerializedName("details") private Optional<ResetNodeDetails> details;
+    @SerializedName("duration") private Optional<String> duration;
+    @SerializedName("result") private Optional<String> result;
     // empty constructor
     @Since("7.0")
     public ResetNodeResult() {}
@@ -43,18 +45,36 @@ public class ResetNodeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ResetNodeResult(
-        java.util.Map<String, Object> rtfiInfo
+        Optional<ResetNodeDetails> details,
+        Optional<String> duration,
+        Optional<String> result
     )
     {
-        this.rtfiInfo = rtfiInfo;
+        this.details = (details == null) ? Optional.<ResetNodeDetails>empty() : details;
+        this.duration = (duration == null) ? Optional.<String>empty() : duration;
+        this.result = (result == null) ? Optional.<String>empty() : result;
     }
 
     /** 
-     * Details of nodes that are being reset.
+     * 
      **/
-    public java.util.Map<String, Object> getRtfiInfo() { return this.rtfiInfo; }
-    public void setRtfiInfo(java.util.Map<String, Object> rtfiInfo) { 
-        this.rtfiInfo = rtfiInfo;
+    public Optional<ResetNodeDetails> getDetails() { return this.details; }
+    public void setDetails(Optional<ResetNodeDetails> details) { 
+        this.details = (details == null) ? Optional.<ResetNodeDetails>empty() : details;
+    }
+    /** 
+     * 
+     **/
+    public Optional<String> getDuration() { return this.duration; }
+    public void setDuration(Optional<String> duration) { 
+        this.duration = (duration == null) ? Optional.<String>empty() : duration;
+    }
+    /** 
+     * 
+     **/
+    public Optional<String> getResult() { return this.result; }
+    public void setResult(Optional<String> result) { 
+        this.result = (result == null) ? Optional.<String>empty() : result;
     }
 
     @Override
@@ -65,18 +85,22 @@ public class ResetNodeResult implements Serializable {
         ResetNodeResult that = (ResetNodeResult) o;
 
         return 
-            Objects.equals(rtfiInfo, that.rtfiInfo);
+            Objects.equals(details, that.details) && 
+            Objects.equals(duration, that.duration) && 
+            Objects.equals(result, that.result);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( rtfiInfo );
+        return Objects.hash( details,duration,result );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("rtfiInfo", rtfiInfo);
+        map.put("details", details);
+        map.put("duration", duration);
+        map.put("result", result);
         return map;
     }
 
@@ -85,7 +109,15 @@ public class ResetNodeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" rtfiInfo : ").append(rtfiInfo).append(",");
+        if(null != details && details.isPresent()){
+            sb.append(" details : ").append(details).append(",");
+        }
+        if(null != duration && duration.isPresent()){
+            sb.append(" duration : ").append(duration).append(",");
+        }
+        if(null != result && result.isPresent()){
+            sb.append(" result : ").append(result).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,23 +135,39 @@ public class ResetNodeResult implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> rtfiInfo;
+        private Optional<ResetNodeDetails> details;
+        private Optional<String> duration;
+        private Optional<String> result;
 
         private Builder() { }
 
         public ResetNodeResult build() {
             return new ResetNodeResult (
-                         this.rtfiInfo);
+                         this.details,
+                         this.duration,
+                         this.result);
         }
 
         private ResetNodeResult.Builder buildFrom(final ResetNodeResult req) {
-            this.rtfiInfo = req.rtfiInfo;
+            this.details = req.details;
+            this.duration = req.duration;
+            this.result = req.result;
 
             return this;
         }
 
-        public ResetNodeResult.Builder rtfiInfo(final java.util.Map<String, Object> rtfiInfo) {
-            this.rtfiInfo = rtfiInfo;
+        public ResetNodeResult.Builder optionalDetails(final ResetNodeDetails details) {
+            this.details = (details == null) ? Optional.<ResetNodeDetails>empty() : Optional.of(details);
+            return this;
+        }
+
+        public ResetNodeResult.Builder optionalDuration(final String duration) {
+            this.duration = (duration == null) ? Optional.<String>empty() : Optional.of(duration);
+            return this;
+        }
+
+        public ResetNodeResult.Builder optionalResult(final String result) {
+            this.result = (result == null) ? Optional.<String>empty() : Optional.of(result);
             return this;
         }
 

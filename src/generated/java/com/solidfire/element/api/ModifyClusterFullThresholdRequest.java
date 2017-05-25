@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,15 +29,15 @@ import java.util.Objects;
 
 /**
  * ModifyClusterFullThresholdRequest  
+ * You can use ModifyClusterFullThreshold to change the level at which the system generates an event when the storage cluster approaches a certain capacity utilization. You can use the threshold setting to indicate the acceptable amount of utilized block storage before the system generates a warning. For example, if you want to be alerted when the system reaches 3% below the "Error" level block storage utilization, enter a value of "3" for the stage3BlockThresholdPercent parameter. If this level is reached, the system sends an alert to the Event Log in the Cluster Management Console.
  **/
 
 public class ModifyClusterFullThresholdRequest implements Serializable {
 
-    public static final long serialVersionUID = 8813417033775615946L;
+    public static final long serialVersionUID = -6469390559899321814L;
     @SerializedName("stage2AwareThreshold") private Optional<Long> stage2AwareThreshold;
     @SerializedName("stage3BlockThresholdPercent") private Optional<Long> stage3BlockThresholdPercent;
     @SerializedName("maxMetadataOverProvisionFactor") private Optional<Long> maxMetadataOverProvisionFactor;
-
     // empty constructor
     @Since("7.0")
     public ModifyClusterFullThresholdRequest() {}
@@ -66,21 +67,23 @@ public class ModifyClusterFullThresholdRequest implements Serializable {
     }
 
     /** 
-     * Number of nodes worth of capacity remaining on the cluster that triggers a notification.
+     * The number of nodes of capacity remaining in the cluster before the system triggers a
+     * capacity notification.
      **/
     public Optional<Long> getStage2AwareThreshold() { return this.stage2AwareThreshold; }
     public void setStage2AwareThreshold(Optional<Long> stage2AwareThreshold) { 
         this.stage2AwareThreshold = (stage2AwareThreshold == null) ? Optional.<Long>empty() : stage2AwareThreshold;
     }
     /** 
-     * Percent below "Error" state to raise a cluster "Warning" alert.
+     * The percentage of block storage utilization below the "Error" threshold that causes the
+     * system to trigger a cluster "Warning" alert.
      **/
     public Optional<Long> getStage3BlockThresholdPercent() { return this.stage3BlockThresholdPercent; }
     public void setStage3BlockThresholdPercent(Optional<Long> stage3BlockThresholdPercent) { 
         this.stage3BlockThresholdPercent = (stage3BlockThresholdPercent == null) ? Optional.<Long>empty() : stage3BlockThresholdPercent;
     }
     /** 
-     * A value representative of the number of times metadata space can be over provisioned relative to the amount of space available. For example, if there was enough metadata space to store 100 TiB of volumes and this number was set to 5, then 500 TiB worth of volumes could be created.
+     * A value representative of the number of times metadata space can be overprovisioned relative to the amount of space available. For example, if there was enough metadata space to store 100 TiB of volumes and this number was set to 5, then 500 TiB worth of volumes can be created.
      **/
     public Optional<Long> getMaxMetadataOverProvisionFactor() { return this.maxMetadataOverProvisionFactor; }
     public void setMaxMetadataOverProvisionFactor(Optional<Long> maxMetadataOverProvisionFactor) { 

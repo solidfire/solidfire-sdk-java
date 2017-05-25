@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class GetFeatureStatusResult implements Serializable {
 
-    public static final long serialVersionUID = -7588132468976147671L;
+    public static final long serialVersionUID = 504828555054274311L;
     @SerializedName("features") private FeatureObject[] features;
-
     // empty constructor
     @Since("7.0")
     public GetFeatureStatusResult() {}

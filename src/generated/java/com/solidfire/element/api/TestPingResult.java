@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,11 +33,10 @@ import java.util.Objects;
 
 public class TestPingResult implements Serializable {
 
-    public static final long serialVersionUID = -5573014009870116151L;
+    public static final long serialVersionUID = -5451473072591964473L;
     @SerializedName("result") private String result;
     @SerializedName("duration") private String duration;
-    @SerializedName("details") private Object details;
-
+    @SerializedName("details") private Attributes details;
     // empty constructor
     @Since("7.0")
     public TestPingResult() {}
@@ -47,7 +47,7 @@ public class TestPingResult implements Serializable {
     public TestPingResult(
         String result,
         String duration,
-        Object details
+        Attributes details
     )
     {
         this.result = result;
@@ -72,8 +72,8 @@ public class TestPingResult implements Serializable {
     /** 
      * List of each IP the node was able to communicate with.
      **/
-    public Object getDetails() { return this.details; }
-    public void setDetails(Object details) { 
+    public Attributes getDetails() { return this.details; }
+    public void setDetails(Attributes details) { 
         this.details = details;
     }
 
@@ -131,7 +131,7 @@ public class TestPingResult implements Serializable {
     public static class Builder {
         private String result;
         private String duration;
-        private Object details;
+        private Attributes details;
 
         private Builder() { }
 
@@ -160,7 +160,7 @@ public class TestPingResult implements Serializable {
             return this;
         }
 
-        public TestPingResult.Builder details(final Object details) {
+        public TestPingResult.Builder details(final Attributes details) {
             this.details = details;
             return this;
         }

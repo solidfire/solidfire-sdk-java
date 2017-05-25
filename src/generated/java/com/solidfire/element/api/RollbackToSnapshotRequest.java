@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,17 +29,21 @@ import java.util.Objects;
 
 /**
  * RollbackToSnapshotRequest  
+ * RollbackToSnapshot enables you to make an existing snapshot of the "active" volume image. This method creates a new snapshot
+ * from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until you delete it.
+ * The previously "active" snapshot is deleted unless you set the parameter saveCurrentState to true.
+ * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is
+ * at stage 4 or 5.
  **/
 
 public class RollbackToSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 7387529128604457855L;
+    public static final long serialVersionUID = -8399318088873389243L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
     @SerializedName("name") private Optional<String> name;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public RollbackToSnapshotRequest() {}
@@ -51,14 +56,14 @@ public class RollbackToSnapshotRequest implements Serializable {
         Long snapshotID,
         Boolean saveCurrentState,
         Optional<String> name,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumeID = volumeID;
         this.snapshotID = snapshotID;
         this.saveCurrentState = saveCurrentState;
         this.name = (name == null) ? Optional.<String>empty() : name;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -69,13 +74,14 @@ public class RollbackToSnapshotRequest implements Serializable {
         this.volumeID = volumeID;
     }
     /** 
-     * ID of a previously created snapshot on the given volume.
+     * The ID of a previously created snapshot on the given volume.
      **/
     public Long getSnapshotID() { return this.snapshotID; }
     public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
+     * Specifies whether to save an active volume image or delete it. Values are:
      * true: The previous active volume image is kept.
      * false: (default) The previous active volume image is deleted.
      **/
@@ -84,19 +90,18 @@ public class RollbackToSnapshotRequest implements Serializable {
         this.saveCurrentState = saveCurrentState;
     }
     /** 
-     * Name for the snapshot. If no name is given, then the name of the snapshot being rolled back to is used with 
-     * "-copy" appended to the end of the name.
+     * Name for the snapshot. If unspecified, the name of the snapshot being rolled back to is used with "- copy" appended to the end of the name.
      **/
     public Optional<String> getName() { return this.name; }
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
     /** 
-     * List of Name/Value pairs in JSON object format
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -165,7 +170,7 @@ public class RollbackToSnapshotRequest implements Serializable {
         private Long snapshotID;
         private Boolean saveCurrentState;
         private Optional<String> name;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -208,8 +213,8 @@ public class RollbackToSnapshotRequest implements Serializable {
             return this;
         }
 
-        public RollbackToSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public RollbackToSnapshotRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

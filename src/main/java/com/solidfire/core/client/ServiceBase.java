@@ -67,7 +67,7 @@ public class ServiceBase {
     /**
      * Get the communication mechanism of this service.
      */
-    public final RequestDispatcher getRequestDispatcher() {
+    public RequestDispatcher getRequestDispatcher() {
         return requestDispatcher;
     }
 
@@ -76,7 +76,7 @@ public class ServiceBase {
      *
      * @return Value for property 'gsonBuilder'.
      */
-    protected final GsonBuilder getGsonBuilder() {
+    protected GsonBuilder getGsonBuilder() {
         return gsonBuilder;
     }
 
@@ -200,7 +200,6 @@ public class ServiceBase {
                 throw new ApiServerException("Not Found", "404", matcher.group(1));
             }
             // Removes the html tags from the response.
-            final Pattern htmlTag = Pattern.compile("<.*?>");
             response.replaceAll("<.*?>", "");
             throw new ApiException(format("There was a problem parsing the response from the server. ( response=%s )", response), e);
         } catch (NullPointerException | JsonParseException e) {

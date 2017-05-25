@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,15 @@ import java.util.Objects;
 
 /**
  * RemoveAccountRequest  
+ * RemoveAccount enables you to remove an existing account. You must delete and purge all volumes associated with the account
+ * using DeleteVolume before you can remove the account. If volumes on the account are still pending deletion, you cannot use
+ * RemoveAccount to remove the account.
  **/
 
 public class RemoveAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = -6926282083277233060L;
+    public static final long serialVersionUID = 1930107044860122377L;
     @SerializedName("accountID") private Long accountID;
-
     // empty constructor
     @Since("7.0")
     public RemoveAccountRequest() {}
@@ -50,7 +53,7 @@ public class RemoveAccountRequest implements Serializable {
     }
 
     /** 
-     * AccountID for the account to remove.
+     * Specifies the AccountID for the account to be removed.
      **/
     public Long getAccountID() { return this.accountID; }
     public void setAccountID(Long accountID) { 

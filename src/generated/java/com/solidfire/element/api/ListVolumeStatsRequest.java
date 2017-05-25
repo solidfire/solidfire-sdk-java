@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * ListVolumeStatsRequest  
+ * ListVolumeStats returns high-level activity measurements for a single volume, list of volumes, or all volumes (if you omit the volumeIDs parameter). Measurement values are cumulative from the creation of the volume.
  **/
 
 public class ListVolumeStatsRequest implements Serializable {
 
-    public static final long serialVersionUID = 3560482616143915244L;
+    public static final long serialVersionUID = 2209387372359973822L;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
-
     // empty constructor
     @Since("7.0")
     public ListVolumeStatsRequest() {}
@@ -50,6 +51,7 @@ public class ListVolumeStatsRequest implements Serializable {
     }
 
     /** 
+     * A list of volume IDs of volumes from which to retrieve activity information.
      **/
     public Optional<Long[]> getVolumeIDs() { return this.volumeIDs; }
     public void setVolumeIDs(Optional<Long[]> volumeIDs) { 

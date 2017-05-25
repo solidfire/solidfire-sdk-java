@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,17 @@ import java.util.Objects;
 
 /**
  * ListDriveHardwareRequest  
+ * ListDriveHardware returns all the drives connected to a node. Use this method on individual nodes to return drive hardware
+ * information or use this method on the cluster master node MVIP to see information for all the drives on all nodes.
+ * Note: The "securitySupported": true line of the method response does not imply that the drives are capable of
+ * encryption; only that the security status can be queried. If you have a node type with a model number ending in "-NE",
+ * commands to enable security features on these drives will fail. See the EnableEncryptionAtRest method for more information.
  **/
 
 public class ListDriveHardwareRequest implements Serializable {
 
-    public static final long serialVersionUID = 8026999793715868059L;
+    public static final long serialVersionUID = 2114420098229603855L;
     @SerializedName("force") private Boolean force;
-
     // empty constructor
     @Since("7.0")
     public ListDriveHardwareRequest() {}

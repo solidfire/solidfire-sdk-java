@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,10 @@ import java.util.Objects;
 
 public class CreateSnapshotResult implements Serializable {
 
-    public static final long serialVersionUID = -6903857969883440265L;
+    public static final long serialVersionUID = -2795083639557395572L;
+    @SerializedName("snapshot") private Snapshot snapshot;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("checksum") private String checksum;
-
     // empty constructor
     @Since("7.0")
     public CreateSnapshotResult() {}
@@ -44,14 +45,23 @@ public class CreateSnapshotResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CreateSnapshotResult(
+        Snapshot snapshot,
         Long snapshotID,
         String checksum
     )
     {
+        this.snapshot = snapshot;
         this.snapshotID = snapshotID;
         this.checksum = checksum;
     }
 
+    /** 
+     * 
+     **/
+    public Snapshot getSnapshot() { return this.snapshot; }
+    public void setSnapshot(Snapshot snapshot) { 
+        this.snapshot = snapshot;
+    }
     /** 
      * ID of the newly-created snapshot.
      **/
@@ -76,18 +86,20 @@ public class CreateSnapshotResult implements Serializable {
         CreateSnapshotResult that = (CreateSnapshotResult) o;
 
         return 
+            Objects.equals(snapshot, that.snapshot) && 
             Objects.equals(snapshotID, that.snapshotID) && 
             Objects.equals(checksum, that.checksum);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( snapshotID,checksum );
+        return Objects.hash( snapshot,snapshotID,checksum );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
+        map.put("snapshot", snapshot);
         map.put("snapshotID", snapshotID);
         map.put("checksum", checksum);
         return map;
@@ -98,6 +110,7 @@ public class CreateSnapshotResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
+        sb.append(" snapshot : ").append(snapshot).append(",");
         sb.append(" snapshotID : ").append(snapshotID).append(",");
         sb.append(" checksum : ").append(checksum).append(",");
         sb.append( " }" );
@@ -117,6 +130,7 @@ public class CreateSnapshotResult implements Serializable {
     }
 
     public static class Builder {
+        private Snapshot snapshot;
         private Long snapshotID;
         private String checksum;
 
@@ -124,14 +138,21 @@ public class CreateSnapshotResult implements Serializable {
 
         public CreateSnapshotResult build() {
             return new CreateSnapshotResult (
+                         this.snapshot,
                          this.snapshotID,
                          this.checksum);
         }
 
         private CreateSnapshotResult.Builder buildFrom(final CreateSnapshotResult req) {
+            this.snapshot = req.snapshot;
             this.snapshotID = req.snapshotID;
             this.checksum = req.checksum;
 
+            return this;
+        }
+
+        public CreateSnapshotResult.Builder snapshot(final Snapshot snapshot) {
+            this.snapshot = snapshot;
             return this;
         }
 

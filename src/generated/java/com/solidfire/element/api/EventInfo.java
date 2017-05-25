@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class EventInfo implements Serializable {
 
-    public static final long serialVersionUID = 848178818129099493L;
+    public static final long serialVersionUID = 4530460853307909797L;
     @SerializedName("eventID") private Long eventID;
     @SerializedName("severity") private Long severity;
     @SerializedName("eventInfoType") private String eventInfoType;
@@ -40,10 +41,10 @@ public class EventInfo implements Serializable {
     @SerializedName("serviceID") private Long serviceID;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("driveID") private Long driveID;
+    @SerializedName("driveIDs") private Long[] driveIDs;
     @SerializedName("timeOfReport") private String timeOfReport;
     @SerializedName("timeOfPublish") private String timeOfPublish;
-    @SerializedName("details") private Object details;
-
+    @SerializedName("details") private Optional<Object> details;
     // empty constructor
     @Since("7.0")
     public EventInfo() {}
@@ -59,9 +60,10 @@ public class EventInfo implements Serializable {
         Long serviceID,
         Long nodeID,
         Long driveID,
+        Long[] driveIDs,
         String timeOfReport,
         String timeOfPublish,
-        Object details
+        Optional<Object> details
     )
     {
         this.eventID = eventID;
@@ -71,70 +73,88 @@ public class EventInfo implements Serializable {
         this.serviceID = serviceID;
         this.nodeID = nodeID;
         this.driveID = driveID;
+        this.driveIDs = driveIDs;
         this.timeOfReport = timeOfReport;
         this.timeOfPublish = timeOfPublish;
-        this.details = details;
+        this.details = (details == null) ? Optional.<Object>empty() : details;
     }
 
     /** 
+     * 
      **/
     public Long getEventID() { return this.eventID; }
     public void setEventID(Long eventID) { 
         this.eventID = eventID;
     }
     /** 
+     * 
      **/
     public Long getSeverity() { return this.severity; }
     public void setSeverity(Long severity) { 
         this.severity = severity;
     }
     /** 
+     * 
      **/
     public String getEventInfoType() { return this.eventInfoType; }
     public void setEventInfoType(String eventInfoType) { 
         this.eventInfoType = eventInfoType;
     }
     /** 
+     * 
      **/
     public String getMessage() { return this.message; }
     public void setMessage(String message) { 
         this.message = message;
     }
     /** 
+     * 
      **/
     public Long getServiceID() { return this.serviceID; }
     public void setServiceID(Long serviceID) { 
         this.serviceID = serviceID;
     }
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public Long getDriveID() { return this.driveID; }
     public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
     /** 
+     * 
+     **/
+    public Long[] getDriveIDs() { return this.driveIDs; }
+    public void setDriveIDs(Long[] driveIDs) { 
+        this.driveIDs = driveIDs;
+    }
+    /** 
+     * 
      **/
     public String getTimeOfReport() { return this.timeOfReport; }
     public void setTimeOfReport(String timeOfReport) { 
         this.timeOfReport = timeOfReport;
     }
     /** 
+     * 
      **/
     public String getTimeOfPublish() { return this.timeOfPublish; }
     public void setTimeOfPublish(String timeOfPublish) { 
         this.timeOfPublish = timeOfPublish;
     }
     /** 
+     * 
      **/
-    public Object getDetails() { return this.details; }
-    public void setDetails(Object details) { 
-        this.details = details;
+    public Optional<Object> getDetails() { return this.details; }
+    public void setDetails(Optional<Object> details) { 
+        this.details = (details == null) ? Optional.<Object>empty() : details;
     }
 
     @Override
@@ -152,6 +172,7 @@ public class EventInfo implements Serializable {
             Objects.equals(serviceID, that.serviceID) && 
             Objects.equals(nodeID, that.nodeID) && 
             Objects.equals(driveID, that.driveID) && 
+            Arrays.equals(driveIDs, that.driveIDs) && 
             Objects.equals(timeOfReport, that.timeOfReport) && 
             Objects.equals(timeOfPublish, that.timeOfPublish) && 
             Objects.equals(details, that.details);
@@ -159,7 +180,7 @@ public class EventInfo implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( eventID,severity,eventInfoType,message,serviceID,nodeID,driveID,timeOfReport,timeOfPublish,details );
+        return Objects.hash( eventID,severity,eventInfoType,message,serviceID,nodeID,driveID,(Object[])driveIDs,timeOfReport,timeOfPublish,details );
     }
 
 
@@ -172,6 +193,7 @@ public class EventInfo implements Serializable {
         map.put("serviceID", serviceID);
         map.put("nodeID", nodeID);
         map.put("driveID", driveID);
+        map.put("driveIDs", driveIDs);
         map.put("timeOfReport", timeOfReport);
         map.put("timeOfPublish", timeOfPublish);
         map.put("details", details);
@@ -190,9 +212,12 @@ public class EventInfo implements Serializable {
         sb.append(" serviceID : ").append(serviceID).append(",");
         sb.append(" nodeID : ").append(nodeID).append(",");
         sb.append(" driveID : ").append(driveID).append(",");
+        sb.append(" driveIDs : ").append(Arrays.toString(driveIDs)).append(",");
         sb.append(" timeOfReport : ").append(timeOfReport).append(",");
         sb.append(" timeOfPublish : ").append(timeOfPublish).append(",");
-        sb.append(" details : ").append(details).append(",");
+        if(null != details && details.isPresent()){
+            sb.append(" details : ").append(details).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -217,9 +242,10 @@ public class EventInfo implements Serializable {
         private Long serviceID;
         private Long nodeID;
         private Long driveID;
+        private Long[] driveIDs;
         private String timeOfReport;
         private String timeOfPublish;
-        private Object details;
+        private Optional<Object> details;
 
         private Builder() { }
 
@@ -232,6 +258,7 @@ public class EventInfo implements Serializable {
                          this.serviceID,
                          this.nodeID,
                          this.driveID,
+                         this.driveIDs,
                          this.timeOfReport,
                          this.timeOfPublish,
                          this.details);
@@ -245,6 +272,7 @@ public class EventInfo implements Serializable {
             this.serviceID = req.serviceID;
             this.nodeID = req.nodeID;
             this.driveID = req.driveID;
+            this.driveIDs = req.driveIDs;
             this.timeOfReport = req.timeOfReport;
             this.timeOfPublish = req.timeOfPublish;
             this.details = req.details;
@@ -287,6 +315,11 @@ public class EventInfo implements Serializable {
             return this;
         }
 
+        public EventInfo.Builder driveIDs(final Long[] driveIDs) {
+            this.driveIDs = driveIDs;
+            return this;
+        }
+
         public EventInfo.Builder timeOfReport(final String timeOfReport) {
             this.timeOfReport = timeOfReport;
             return this;
@@ -297,8 +330,8 @@ public class EventInfo implements Serializable {
             return this;
         }
 
-        public EventInfo.Builder details(final Object details) {
-            this.details = details;
+        public EventInfo.Builder optionalDetails(final Object details) {
+            this.details = (details == null) ? Optional.<Object>empty() : Optional.of(details);
             return this;
         }
 

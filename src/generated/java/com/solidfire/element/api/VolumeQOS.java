@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,13 +34,12 @@ import java.util.Objects;
 
 public class VolumeQOS implements Serializable {
 
-    public static final long serialVersionUID = 677275932188527448L;
+    public static final long serialVersionUID = -7922666053714278168L;
     @SerializedName("minIOPS") private Long minIOPS;
     @SerializedName("maxIOPS") private Long maxIOPS;
     @SerializedName("burstIOPS") private Long burstIOPS;
     @SerializedName("burstTime") private Long burstTime;
     @SerializedName("curve") private java.util.Map<String,Long> curve;
-
     // empty constructor
     @Since("7.0")
     public VolumeQOS() {}

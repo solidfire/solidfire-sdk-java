@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * EnableFeatureRequest  
+ * You can use EnableFeature to enable cluster features that are disabled by default.
  **/
 
 public class EnableFeatureRequest implements Serializable {
 
-    public static final long serialVersionUID = 8090329014016240992L;
+    public static final long serialVersionUID = -5422064481654068621L;
     @SerializedName("feature") private String feature;
-
     // empty constructor
     @Since("7.0")
     public EnableFeatureRequest() {}
@@ -50,7 +51,8 @@ public class EnableFeatureRequest implements Serializable {
     }
 
     /** 
-     * Valid values: vvols: Enable the Virtual Volumes (VVOLs) cluster feature.
+     * Indicates which feature to enable. Valid value is:
+     * vvols: Enable the NetApp SolidFire VVols cluster feature.
      **/
     public String getFeature() { return this.feature; }
     public void setFeature(String feature) { 

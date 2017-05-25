@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class ListEventsResult implements Serializable {
 
-    public static final long serialVersionUID = 2761767569186265400L;
+    public static final long serialVersionUID = 5829657162733905754L;
     @SerializedName("eventQueueType") private String eventQueueType;
     @SerializedName("events") private EventInfo[] events;
-
     // empty constructor
     @Since("7.0")
     public ListEventsResult() {}
@@ -53,12 +53,14 @@ public class ListEventsResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getEventQueueType() { return this.eventQueueType; }
     public void setEventQueueType(String eventQueueType) { 
         this.eventQueueType = eventQueueType;
     }
     /** 
+     * 
      **/
     public EventInfo[] getEvents() { return this.events; }
     public void setEvents(EventInfo[] events) { 

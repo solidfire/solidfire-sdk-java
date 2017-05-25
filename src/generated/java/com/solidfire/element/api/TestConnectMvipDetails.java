@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,11 +33,10 @@ import java.util.Objects;
 
 public class TestConnectMvipDetails implements Serializable {
 
-    public static final long serialVersionUID = 5224632538129465332L;
-    @SerializedName("pingBytes") private Object pingBytes;
+    public static final long serialVersionUID = -7141235141386760351L;
+    @SerializedName("pingBytes") private Attributes pingBytes;
     @SerializedName("mvip") private String mvip;
     @SerializedName("connected") private Boolean connected;
-
     // empty constructor
     @Since("7.0")
     public TestConnectMvipDetails() {}
@@ -45,7 +45,7 @@ public class TestConnectMvipDetails implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public TestConnectMvipDetails(
-        Object pingBytes,
+        Attributes pingBytes,
         String mvip,
         Boolean connected
     )
@@ -58,8 +58,8 @@ public class TestConnectMvipDetails implements Serializable {
     /** 
      * Details of the ping tests with 56 Bytes and 1500 Bytes.
      **/
-    public Object getPingBytes() { return this.pingBytes; }
-    public void setPingBytes(Object pingBytes) { 
+    public Attributes getPingBytes() { return this.pingBytes; }
+    public void setPingBytes(Attributes pingBytes) { 
         this.pingBytes = pingBytes;
     }
     /** 
@@ -129,7 +129,7 @@ public class TestConnectMvipDetails implements Serializable {
     }
 
     public static class Builder {
-        private Object pingBytes;
+        private Attributes pingBytes;
         private String mvip;
         private Boolean connected;
 
@@ -150,7 +150,7 @@ public class TestConnectMvipDetails implements Serializable {
             return this;
         }
 
-        public TestConnectMvipDetails.Builder pingBytes(final Object pingBytes) {
+        public TestConnectMvipDetails.Builder pingBytes(final Attributes pingBytes) {
             this.pingBytes = pingBytes;
             return this;
         }

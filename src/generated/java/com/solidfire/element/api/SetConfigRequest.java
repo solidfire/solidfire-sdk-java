@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,15 @@ import java.util.Objects;
 
 /**
  * SetConfigRequest  
+ * The SetConfig API method enables you to set all the configuration information for the node. This includes the same information available via calls to SetClusterConfig and SetNetworkConfig in one API method. 
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
+ * Caution: Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Exercise caution when using this method.
  **/
 
 public class SetConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = -2103656016970197967L;
-    @SerializedName("config") private Config config;
-
+    public static final long serialVersionUID = -8478027765607540632L;
+    @SerializedName("config") private ConfigParams config;
     // empty constructor
     @Since("7.0")
     public SetConfigRequest() {}
@@ -43,7 +46,7 @@ public class SetConfigRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public SetConfigRequest(
-        Config config
+        ConfigParams config
     )
     {
         this.config = config;
@@ -52,8 +55,8 @@ public class SetConfigRequest implements Serializable {
     /** 
      * Objects that you want changed for the cluster interface settings.
      **/
-    public Config getConfig() { return this.config; }
-    public void setConfig(Config config) { 
+    public ConfigParams getConfig() { return this.config; }
+    public void setConfig(ConfigParams config) { 
         this.config = config;
     }
 
@@ -103,7 +106,7 @@ public class SetConfigRequest implements Serializable {
     }
 
     public static class Builder {
-        private Config config;
+        private ConfigParams config;
 
         private Builder() { }
 
@@ -118,7 +121,7 @@ public class SetConfigRequest implements Serializable {
             return this;
         }
 
-        public SetConfigRequest.Builder config(final Config config) {
+        public SetConfigRequest.Builder config(final ConfigParams config) {
             this.config = config;
             return this;
         }

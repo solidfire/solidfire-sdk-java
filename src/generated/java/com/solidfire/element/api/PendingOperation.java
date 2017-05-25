@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class PendingOperation implements Serializable {
 
-    public static final long serialVersionUID = -2914770533108540248L;
+    public static final long serialVersionUID = -5193813814227585742L;
     @SerializedName("pending") private Boolean pending;
     @SerializedName("operation") private String operation;
-
     // empty constructor
     @Since("7.0")
     public PendingOperation() {}
@@ -54,7 +54,7 @@ public class PendingOperation implements Serializable {
 
     /** 
      * true: operation is still in progress.
-     * false: operation is no longer in progress.
+     * false: operation is no integerer in progress.
      **/
     public Boolean getPending() { return this.pending; }
     public void setPending(Boolean pending) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,12 +33,11 @@ import java.util.Objects;
 
 public class DetailedService implements Serializable {
 
-    public static final long serialVersionUID = 8056035336441509510L;
+    public static final long serialVersionUID = -8478012010496456644L;
     @SerializedName("service") private Service service;
     @SerializedName("node") private Node node;
     @SerializedName("drive") private Optional<Drive> drive;
     @SerializedName("drives") private Drive[] drives;
-
     // empty constructor
     @Since("7.0")
     public DetailedService() {}
@@ -59,24 +59,28 @@ public class DetailedService implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Service getService() { return this.service; }
     public void setService(Service service) { 
         this.service = service;
     }
     /** 
+     * 
      **/
     public Node getNode() { return this.node; }
     public void setNode(Node node) { 
         this.node = node;
     }
     /** 
+     * 
      **/
     public Optional<Drive> getDrive() { return this.drive; }
     public void setDrive(Optional<Drive> drive) { 
         this.drive = (drive == null) ? Optional.<Drive>empty() : drive;
     }
     /** 
+     * 
      **/
     public Drive[] getDrives() { return this.drives; }
     public void setDrives(Drive[] drives) { 

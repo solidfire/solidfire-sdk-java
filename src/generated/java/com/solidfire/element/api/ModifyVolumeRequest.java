@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,18 +29,25 @@ import java.util.Objects;
 
 /**
  * ModifyVolumeRequest  
+ * ModifyVolume enables you to modify settings on an existing volume. You can make modifications to one volume at a time and
+ * changes take place immediately. If you do not specify QoS values when you modify a volume, they remain the same as before the modification. You can retrieve
+ * default QoS values for a newly created volume by running the GetDefaultQoS method.
+ * When you need to increase the size of a volume that is being replicated, do so in the following order to prevent replication errors:
+ * 1. Increase the size of the "Replication Target" volume.
+ * 2. Increase the size of the source or "Read / Write" volume.
+ * NetApp recommends that both the target and source volumes are the same size.
+ * Note: If you change the "access" status to locked or target, all existing iSCSI connections are terminated.
  **/
 
 public class ModifyVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -6916105554939877400L;
+    public static final long serialVersionUID = 5265431295176909841L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("totalSize") private Optional<Long> totalSize;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public ModifyVolumeRequest() {}
@@ -53,7 +61,7 @@ public class ModifyVolumeRequest implements Serializable {
         Optional<String> access,
         Optional<QoS> qos,
         Optional<Long> totalSize,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumeID = volumeID;
@@ -61,7 +69,7 @@ public class ModifyVolumeRequest implements Serializable {
         this.access = (access == null) ? Optional.<String>empty() : access;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -72,48 +80,50 @@ public class ModifyVolumeRequest implements Serializable {
         this.volumeID = volumeID;
     }
     /** 
-     * AccountID to which the volume is reassigned.
-     * If none is specified, the previous account name is used.
+     * AccountID to which the volume is reassigned. If unspecified, the previous account name is used.
      **/
     public Optional<Long> getAccountID() { return this.accountID; }
     public void setAccountID(Optional<Long> accountID) { 
         this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
     }
     /** 
-     * Access allowed for the volume.
+     * Specifies the access allowed for the volume. Possible values are:
      * readOnly: Only read operations are allowed.
      * readWrite: Reads and writes are allowed.
      * locked: No reads or writes are allowed.
-     * replicationTarget: Identify a volume as the target volume for a paired set of volumes. If the volume is not paired, the access status is locked.
-     * 
-     * If unspecified, the access settings of the clone will be the same as the source.
+     * If not specified, the access value does not change.
+     * replicationTarget: Identify a volume as the target volume
+     * for a paired set of volumes. If the volume is not paired, the
+     * access status is locked.
+     * If a value is not specified, the access value does not change.
      **/
     public Optional<String> getAccess() { return this.access; }
     public void setAccess(Optional<String> access) { 
         this.access = (access == null) ? Optional.<String>empty() : access;
     }
     /** 
-     * New quality of service settings for this volume.
+     * New QoS settings for this volume. If not specified,
+     * the QoS settings are not changed.
      **/
     public Optional<QoS> getQos() { return this.qos; }
     public void setQos(Optional<QoS> qos) { 
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
     /** 
-     * New size of the volume in bytes.
-     * Size is rounded up to the nearest 1MiB size.
-     * This parameter can only be used to *increase* the size of a volume.
+     * New size of the volume in bytes. 1000000000 is equal to 1GB.
+     * Size is rounded up to the nearest 1MB. This parameter
+     * can only be used to increase the size of a volume.
      **/
     public Optional<Long> getTotalSize() { return this.totalSize; }
     public void setTotalSize(Optional<Long> totalSize) { 
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -192,7 +202,7 @@ public class ModifyVolumeRequest implements Serializable {
         private Optional<String> access;
         private Optional<QoS> qos;
         private Optional<Long> totalSize;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -242,8 +252,8 @@ public class ModifyVolumeRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public ModifyVolumeRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

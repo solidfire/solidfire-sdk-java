@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class GetAPIResult implements Serializable {
 
-    public static final long serialVersionUID = -334735413474527149L;
+    public static final long serialVersionUID = 4813898102105271426L;
     @SerializedName("currentVersion") private Double currentVersion;
     @SerializedName("supportedVersions") private Double[] supportedVersions;
-
     // empty constructor
     @Since("7.0")
     public GetAPIResult() {}
@@ -53,12 +53,14 @@ public class GetAPIResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Double getCurrentVersion() { return this.currentVersion; }
     public void setCurrentVersion(Double currentVersion) { 
         this.currentVersion = currentVersion;
     }
     /** 
+     * 
      **/
     public Double[] getSupportedVersions() { return this.supportedVersions; }
     public void setSupportedVersions(Double[] supportedVersions) { 

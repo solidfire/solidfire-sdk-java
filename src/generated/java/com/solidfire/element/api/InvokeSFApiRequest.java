@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,15 @@ import java.util.Objects;
 
 /**
  * InvokeSFApiRequest  
+ * This will invoke any API method supported by the SolidFire API for the version and port the connection is using.
+ * Returns a nested hashtable of key/value pairs that contain the result of the invoked method.
  **/
 
 public class InvokeSFApiRequest implements Serializable {
 
-    public static final long serialVersionUID = -295482890790858190L;
+    public static final long serialVersionUID = 8109429625502559425L;
     @SerializedName("method") private String method;
-    @SerializedName("parameters") private Optional<java.util.Map<String, Object>> parameters;
-
+    @SerializedName("parameters") private Optional<Object> parameters;
     // empty constructor
     @Since("7.0")
     public InvokeSFApiRequest() {}
@@ -45,11 +47,11 @@ public class InvokeSFApiRequest implements Serializable {
     @Since("7.0")
     public InvokeSFApiRequest(
         String method,
-        Optional<java.util.Map<String, Object>> parameters
+        Optional<Object> parameters
     )
     {
         this.method = method;
-        this.parameters = (parameters == null) ? Optional.<java.util.Map<String, Object>>empty() : parameters;
+        this.parameters = (parameters == null) ? Optional.<Object>empty() : parameters;
     }
 
     /** 
@@ -62,9 +64,9 @@ public class InvokeSFApiRequest implements Serializable {
     /** 
      * An object, normally a dictionary or hashtable of the key/value pairs, to be passed as the params for the method being invoked.
      **/
-    public Optional<java.util.Map<String, Object>> getParameters() { return this.parameters; }
-    public void setParameters(Optional<java.util.Map<String, Object>> parameters) { 
-        this.parameters = (parameters == null) ? Optional.<java.util.Map<String, Object>>empty() : parameters;
+    public Optional<Object> getParameters() { return this.parameters; }
+    public void setParameters(Optional<Object> parameters) { 
+        this.parameters = (parameters == null) ? Optional.<Object>empty() : parameters;
     }
 
     @Override
@@ -119,7 +121,7 @@ public class InvokeSFApiRequest implements Serializable {
 
     public static class Builder {
         private String method;
-        private Optional<java.util.Map<String, Object>> parameters;
+        private Optional<Object> parameters;
 
         private Builder() { }
 
@@ -141,8 +143,8 @@ public class InvokeSFApiRequest implements Serializable {
             return this;
         }
 
-        public InvokeSFApiRequest.Builder optionalParameters(final java.util.Map<String, Object> parameters) {
-            this.parameters = (parameters == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(parameters);
+        public InvokeSFApiRequest.Builder optionalParameters(final Object parameters) {
+            this.parameters = (parameters == null) ? Optional.<Object>empty() : Optional.of(parameters);
             return this;
         }
 

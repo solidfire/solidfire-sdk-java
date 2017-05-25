@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class CreateVolumeAccessGroupResult implements Serializable {
 
-    public static final long serialVersionUID = -3703710454092842045L;
+    public static final long serialVersionUID = 2015284469851878532L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
-    @SerializedName("volumeAccessGroup") private VolumeAccessGroup volumeAccessGroup;
-
+    @SerializedName("volumeAccessGroup") private Optional<VolumeAccessGroup> volumeAccessGroup;
     // empty constructor
     @Since("7.0")
     public CreateVolumeAccessGroupResult() {}
@@ -45,11 +45,11 @@ public class CreateVolumeAccessGroupResult implements Serializable {
     @Since("7.0")
     public CreateVolumeAccessGroupResult(
         Long volumeAccessGroupID,
-        VolumeAccessGroup volumeAccessGroup
+        Optional<VolumeAccessGroup> volumeAccessGroup
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
-        this.volumeAccessGroup = volumeAccessGroup;
+        this.volumeAccessGroup = (volumeAccessGroup == null) ? Optional.<VolumeAccessGroup>empty() : volumeAccessGroup;
     }
 
     /** 
@@ -60,10 +60,11 @@ public class CreateVolumeAccessGroupResult implements Serializable {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
+     * 
      **/
-    public VolumeAccessGroup getVolumeAccessGroup() { return this.volumeAccessGroup; }
-    public void setVolumeAccessGroup(VolumeAccessGroup volumeAccessGroup) { 
-        this.volumeAccessGroup = volumeAccessGroup;
+    public Optional<VolumeAccessGroup> getVolumeAccessGroup() { return this.volumeAccessGroup; }
+    public void setVolumeAccessGroup(Optional<VolumeAccessGroup> volumeAccessGroup) { 
+        this.volumeAccessGroup = (volumeAccessGroup == null) ? Optional.<VolumeAccessGroup>empty() : volumeAccessGroup;
     }
 
     @Override
@@ -97,7 +98,9 @@ public class CreateVolumeAccessGroupResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" volumeAccessGroup : ").append(volumeAccessGroup).append(",");
+        if(null != volumeAccessGroup && volumeAccessGroup.isPresent()){
+            sb.append(" volumeAccessGroup : ").append(volumeAccessGroup).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -116,7 +119,7 @@ public class CreateVolumeAccessGroupResult implements Serializable {
 
     public static class Builder {
         private Long volumeAccessGroupID;
-        private VolumeAccessGroup volumeAccessGroup;
+        private Optional<VolumeAccessGroup> volumeAccessGroup;
 
         private Builder() { }
 
@@ -138,8 +141,8 @@ public class CreateVolumeAccessGroupResult implements Serializable {
             return this;
         }
 
-        public CreateVolumeAccessGroupResult.Builder volumeAccessGroup(final VolumeAccessGroup volumeAccessGroup) {
-            this.volumeAccessGroup = volumeAccessGroup;
+        public CreateVolumeAccessGroupResult.Builder optionalVolumeAccessGroup(final VolumeAccessGroup volumeAccessGroup) {
+            this.volumeAccessGroup = (volumeAccessGroup == null) ? Optional.<VolumeAccessGroup>empty() : Optional.of(volumeAccessGroup);
             return this;
         }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * RestoreDeletedVolumeRequest  
+ * RestoreDeletedVolume marks a deleted volume as active again. This action makes the volume immediately available for iSCSI connection.
  **/
 
 public class RestoreDeletedVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 5395134700613497933L;
+    public static final long serialVersionUID = -7965212706191378862L;
     @SerializedName("volumeID") private Long volumeID;
-
     // empty constructor
     @Since("7.0")
     public RestoreDeletedVolumeRequest() {}
@@ -50,7 +51,7 @@ public class RestoreDeletedVolumeRequest implements Serializable {
     }
 
     /** 
-     * VolumeID for the deleted volume to restore.
+     * VolumeID of the deleted volume to be restored.
      **/
     public Long getVolumeID() { return this.volumeID; }
     public void setVolumeID(Long volumeID) { 

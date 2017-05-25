@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,15 +34,14 @@ import java.util.Objects;
 
 public class GroupSnapshot implements Serializable {
 
-    public static final long serialVersionUID = 7672350438056052972L;
+    public static final long serialVersionUID = 6309036513359196345L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("groupSnapshotUUID") private java.util.UUID groupSnapshotUUID;
     @SerializedName("members") private GroupSnapshotMembers[] members;
     @SerializedName("name") private String name;
     @SerializedName("createTime") private String createTime;
     @SerializedName("status") private String status;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
-
+    @SerializedName("attributes") private Attributes attributes;
     // empty constructor
     @Since("7.0")
     public GroupSnapshot() {}
@@ -56,7 +56,7 @@ public class GroupSnapshot implements Serializable {
         String name,
         String createTime,
         String status,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.groupSnapshotID = groupSnapshotID;
@@ -116,8 +116,8 @@ public class GroupSnapshot implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -191,7 +191,7 @@ public class GroupSnapshot implements Serializable {
         private String name;
         private String createTime;
         private String status;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -248,7 +248,7 @@ public class GroupSnapshot implements Serializable {
             return this;
         }
 
-        public GroupSnapshot.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public GroupSnapshot.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class Network implements Serializable {
 
-    public static final long serialVersionUID = 8968856628286036613L;
+    public static final long serialVersionUID = 2082631917591370748L;
     @SerializedName("Bond10G") private Optional<NetworkConfig> bond10G;
     @SerializedName("Bond1G") private Optional<NetworkConfig> bond1G;
     @SerializedName("eth0") private Optional<NetworkConfig> eth0;
@@ -40,7 +41,6 @@ public class Network implements Serializable {
     @SerializedName("eth2") private Optional<NetworkConfig> eth2;
     @SerializedName("eth3") private Optional<NetworkConfig> eth3;
     @SerializedName("lo") private Optional<NetworkConfig> lo;
-
     // empty constructor
     @Since("7.0")
     public Network() {}
@@ -68,42 +68,49 @@ public class Network implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getBond10G() { return this.bond10G; }
     public void setBond10G(Optional<NetworkConfig> bond10G) { 
         this.bond10G = (bond10G == null) ? Optional.<NetworkConfig>empty() : bond10G;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getBond1G() { return this.bond1G; }
     public void setBond1G(Optional<NetworkConfig> bond1G) { 
         this.bond1G = (bond1G == null) ? Optional.<NetworkConfig>empty() : bond1G;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getEth0() { return this.eth0; }
     public void setEth0(Optional<NetworkConfig> eth0) { 
         this.eth0 = (eth0 == null) ? Optional.<NetworkConfig>empty() : eth0;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getEth1() { return this.eth1; }
     public void setEth1(Optional<NetworkConfig> eth1) { 
         this.eth1 = (eth1 == null) ? Optional.<NetworkConfig>empty() : eth1;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getEth2() { return this.eth2; }
     public void setEth2(Optional<NetworkConfig> eth2) { 
         this.eth2 = (eth2 == null) ? Optional.<NetworkConfig>empty() : eth2;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getEth3() { return this.eth3; }
     public void setEth3(Optional<NetworkConfig> eth3) { 
         this.eth3 = (eth3 == null) ? Optional.<NetworkConfig>empty() : eth3;
     }
     /** 
+     * 
      **/
     public Optional<NetworkConfig> getLo() { return this.lo; }
     public void setLo(Optional<NetworkConfig> lo) { 

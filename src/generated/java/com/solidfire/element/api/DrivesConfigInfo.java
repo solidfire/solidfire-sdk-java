@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class DrivesConfigInfo implements Serializable {
 
-    public static final long serialVersionUID = -5022669741868595811L;
+    public static final long serialVersionUID = -3718791849913494274L;
     @SerializedName("drives") private DriveConfigInfo[] drives;
     @SerializedName("numBlockActual") private Long numBlockActual;
     @SerializedName("numBlockExpected") private Long numBlockExpected;
@@ -40,7 +41,6 @@ public class DrivesConfigInfo implements Serializable {
     @SerializedName("numSliceExpected") private Long numSliceExpected;
     @SerializedName("numTotalActual") private Long numTotalActual;
     @SerializedName("numTotalExpected") private Long numTotalExpected;
-
     // empty constructor
     @Since("7.0")
     public DrivesConfigInfo() {}
@@ -68,42 +68,49 @@ public class DrivesConfigInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public DriveConfigInfo[] getDrives() { return this.drives; }
     public void setDrives(DriveConfigInfo[] drives) { 
         this.drives = drives;
     }
     /** 
+     * 
      **/
     public Long getNumBlockActual() { return this.numBlockActual; }
     public void setNumBlockActual(Long numBlockActual) { 
         this.numBlockActual = numBlockActual;
     }
     /** 
+     * 
      **/
     public Long getNumBlockExpected() { return this.numBlockExpected; }
     public void setNumBlockExpected(Long numBlockExpected) { 
         this.numBlockExpected = numBlockExpected;
     }
     /** 
+     * 
      **/
     public Long getNumSliceActual() { return this.numSliceActual; }
     public void setNumSliceActual(Long numSliceActual) { 
         this.numSliceActual = numSliceActual;
     }
     /** 
+     * 
      **/
     public Long getNumSliceExpected() { return this.numSliceExpected; }
     public void setNumSliceExpected(Long numSliceExpected) { 
         this.numSliceExpected = numSliceExpected;
     }
     /** 
+     * 
      **/
     public Long getNumTotalActual() { return this.numTotalActual; }
     public void setNumTotalActual(Long numTotalActual) { 
         this.numTotalActual = numTotalActual;
     }
     /** 
+     * 
      **/
     public Long getNumTotalExpected() { return this.numTotalExpected; }
     public void setNumTotalExpected(Long numTotalExpected) { 

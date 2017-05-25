@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class GetOriginNodeResult implements Serializable {
 
-    public static final long serialVersionUID = 5036944606698284938L;
-    @SerializedName("origin") private Origin origin;
-
+    public static final long serialVersionUID = -8033953680029650967L;
+    @SerializedName("origin") private Optional<Origin> origin;
     // empty constructor
     @Since("7.0")
     public GetOriginNodeResult() {}
@@ -43,17 +43,18 @@ public class GetOriginNodeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetOriginNodeResult(
-        Origin origin
+        Optional<Origin> origin
     )
     {
-        this.origin = origin;
+        this.origin = (origin == null) ? Optional.<Origin>empty() : origin;
     }
 
     /** 
+     * 
      **/
-    public Origin getOrigin() { return this.origin; }
-    public void setOrigin(Origin origin) { 
-        this.origin = origin;
+    public Optional<Origin> getOrigin() { return this.origin; }
+    public void setOrigin(Optional<Origin> origin) { 
+        this.origin = (origin == null) ? Optional.<Origin>empty() : origin;
     }
 
     @Override
@@ -84,7 +85,9 @@ public class GetOriginNodeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" origin : ").append(origin).append(",");
+        if(null != origin && origin.isPresent()){
+            sb.append(" origin : ").append(origin).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -102,7 +105,7 @@ public class GetOriginNodeResult implements Serializable {
     }
 
     public static class Builder {
-        private Origin origin;
+        private Optional<Origin> origin;
 
         private Builder() { }
 
@@ -117,8 +120,8 @@ public class GetOriginNodeResult implements Serializable {
             return this;
         }
 
-        public GetOriginNodeResult.Builder origin(final Origin origin) {
-            this.origin = origin;
+        public GetOriginNodeResult.Builder optionalOrigin(final Origin origin) {
+            this.origin = (origin == null) ? Optional.<Origin>empty() : Optional.of(origin);
             return this;
         }
 

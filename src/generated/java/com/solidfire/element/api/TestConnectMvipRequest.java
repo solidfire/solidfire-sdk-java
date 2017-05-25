@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,15 @@ import java.util.Objects;
 
 /**
  * TestConnectMvipRequest  
+ * The TestConnectMvip API method enables you to test the
+ * management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class TestConnectMvipRequest implements Serializable {
 
-    public static final long serialVersionUID = 918184488572641133L;
+    public static final long serialVersionUID = -9208118273935798362L;
     @SerializedName("mvip") private Optional<String> mvip;
-
     // empty constructor
     @Since("7.0")
     public TestConnectMvipRequest() {}
@@ -50,7 +53,7 @@ public class TestConnectMvipRequest implements Serializable {
     }
 
     /** 
-     * Optionally, use to test the management connection of a different MVIP. This is not needed to test the connection to the target cluster.
+     * If specified, tests the management connection of a different MVIP. You do not need to use this value when testing the connection to the target cluster. This parameter is optional.
      **/
     public Optional<String> getMvip() { return this.mvip; }
     public void setMvip(Optional<String> mvip) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * ListVirtualVolumeBindingsRequest  
+ * ListVirtualVolumeBindings returns a list of all virtual volumes in the cluster that are bound to protocol endpoints.
  **/
 
 public class ListVirtualVolumeBindingsRequest implements Serializable {
 
-    public static final long serialVersionUID = 1543024419589101292L;
+    public static final long serialVersionUID = -1975064857585673960L;
     @SerializedName("virtualVolumeBindingIDs") private Optional<Long[]> virtualVolumeBindingIDs;
-
     // empty constructor
     @Since("7.0")
     public ListVirtualVolumeBindingsRequest() {}
@@ -50,6 +51,7 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
     }
 
     /** 
+     * A list of virtual volume binding IDs for which to retrieve information. If you omit this parameter, the method returns information about all virtual volume bindings.
      **/
     public Optional<Long[]> getVirtualVolumeBindingIDs() { return this.virtualVolumeBindingIDs; }
     public void setVirtualVolumeBindingIDs(Optional<Long[]> virtualVolumeBindingIDs) { 

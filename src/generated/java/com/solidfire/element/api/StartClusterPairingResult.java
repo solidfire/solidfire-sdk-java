@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class StartClusterPairingResult implements Serializable {
 
-    public static final long serialVersionUID = 8946070231339981768L;
+    public static final long serialVersionUID = -2705640501454661505L;
     @SerializedName("clusterPairingKey") private String clusterPairingKey;
     @SerializedName("clusterPairID") private Long clusterPairID;
-
     // empty constructor
     @Since("7.0")
     public StartClusterPairingResult() {}

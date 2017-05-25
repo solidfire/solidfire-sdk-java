@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class GetClusterInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 6164399410616241841L;
+    public static final long serialVersionUID = -7336851802733404073L;
     @SerializedName("clusterInfo") private ClusterInfo clusterInfo;
-
     // empty constructor
     @Since("7.0")
     public GetClusterInfoResult() {}
@@ -50,6 +50,7 @@ public class GetClusterInfoResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public ClusterInfo getClusterInfo() { return this.clusterInfo; }
     public void setClusterInfo(ClusterInfo clusterInfo) { 

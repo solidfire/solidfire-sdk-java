@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class GetHardwareInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -195013475782007290L;
-    @SerializedName("hardwareInfo") private java.util.Map<String, Object> hardwareInfo;
-
+    public static final long serialVersionUID = -6498519998864875957L;
+    @SerializedName("hardwareInfo") private Attributes hardwareInfo;
     // empty constructor
     @Since("7.0")
     public GetHardwareInfoResult() {}
@@ -43,7 +43,7 @@ public class GetHardwareInfoResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetHardwareInfoResult(
-        java.util.Map<String, Object> hardwareInfo
+        Attributes hardwareInfo
     )
     {
         this.hardwareInfo = hardwareInfo;
@@ -52,8 +52,8 @@ public class GetHardwareInfoResult implements Serializable {
     /** 
      * Hardware information for this node. 
      **/
-    public java.util.Map<String, Object> getHardwareInfo() { return this.hardwareInfo; }
-    public void setHardwareInfo(java.util.Map<String, Object> hardwareInfo) { 
+    public Attributes getHardwareInfo() { return this.hardwareInfo; }
+    public void setHardwareInfo(Attributes hardwareInfo) { 
         this.hardwareInfo = hardwareInfo;
     }
 
@@ -103,7 +103,7 @@ public class GetHardwareInfoResult implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object> hardwareInfo;
+        private Attributes hardwareInfo;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class GetHardwareInfoResult implements Serializable {
             return this;
         }
 
-        public GetHardwareInfoResult.Builder hardwareInfo(final java.util.Map<String, Object> hardwareInfo) {
+        public GetHardwareInfoResult.Builder hardwareInfo(final Attributes hardwareInfo) {
             this.hardwareInfo = hardwareInfo;
             return this;
         }

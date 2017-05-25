@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class AsyncHandleResult implements Serializable {
 
-    public static final long serialVersionUID = -2932335770116448432L;
+    public static final long serialVersionUID = 6287049600591091002L;
     @SerializedName("asyncHandle") private Long asyncHandle;
-
     // empty constructor
     @Since("7.0")
     public AsyncHandleResult() {}
@@ -50,6 +50,7 @@ public class AsyncHandleResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
     public void setAsyncHandle(Long asyncHandle) { 

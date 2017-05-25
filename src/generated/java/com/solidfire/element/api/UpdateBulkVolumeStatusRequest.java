@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,17 +29,18 @@ import java.util.Objects;
 
 /**
  * UpdateBulkVolumeStatusRequest  
+ * You can use UpdateBulkVolumeStatus in a script to update the status of a bulk volume job that you started with the
+ * StartBulkVolumeRead or StartBulkVolumeWrite methods.
  **/
 
 public class UpdateBulkVolumeStatusRequest implements Serializable {
 
-    public static final long serialVersionUID = -4782595184797079493L;
+    public static final long serialVersionUID = 1031291000391983635L;
     @SerializedName("key") private String key;
     @SerializedName("status") private String status;
     @SerializedName("percentComplete") private Optional<String> percentComplete;
     @SerializedName("message") private Optional<String> message;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public UpdateBulkVolumeStatusRequest() {}
@@ -51,54 +53,55 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
         String status,
         Optional<String> percentComplete,
         Optional<String> message,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.key = key;
         this.status = status;
         this.percentComplete = (percentComplete == null) ? Optional.<String>empty() : percentComplete;
         this.message = (message == null) ? Optional.<String>empty() : message;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * The key assigned during initialization of a "StartBulkVolumeRead" or "StartBulkVolumeWrite" session.
+     * The key assigned during initialization of a
+     * StartBulkVolumeRead or StartBulkVolumeWrite session.
      **/
     public String getKey() { return this.key; }
     public void setKey(String key) { 
         this.key = key;
     }
     /** 
-     * The SolidFire system sets the status of the given bulk volume job.
-     * Possible values:
-     * running: jobs that are still active.
-     * complete: jobs that are done. failed - jobs that have failed.
-     * failed: jobs that have failed.
+     * The status of the given bulk volume job. The system sets the status. Possible values are: 
+     * running: Jobs that are still active.
+     * complete: Jobs that are done.
+     * failed: Jobs that failed.
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 
         this.status = status;
     }
     /** 
-     * The completed progress of the bulk volume job as a percentage.
+     * The completed progress of the bulk volume job as a
+     * percentage value.
      **/
     public Optional<String> getPercentComplete() { return this.percentComplete; }
     public void setPercentComplete(Optional<String> percentComplete) { 
         this.percentComplete = (percentComplete == null) ? Optional.<String>empty() : percentComplete;
     }
     /** 
-     * Returns the status of the bulk volume job when the job has completed.
+     * The message returned indicating the status of the bulk volume job after the job is complete.
      **/
     public Optional<String> getMessage() { return this.message; }
     public void setMessage(Optional<String> message) { 
         this.message = (message == null) ? Optional.<String>empty() : message;
     }
     /** 
-     * JSON attributes  updates what is on the bulk volume job.
+     * JSON attributes; updates what is on the bulk volume job.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -169,7 +172,7 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
         private String status;
         private Optional<String> percentComplete;
         private Optional<String> message;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -212,8 +215,8 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
             return this;
         }
 
-        public UpdateBulkVolumeStatusRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public UpdateBulkVolumeStatusRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

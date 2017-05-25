@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class LdapConfiguration implements Serializable {
 
-    public static final long serialVersionUID = -4900050528922714170L;
+    public static final long serialVersionUID = 8481208810608793924L;
     @SerializedName("authType") private String authType;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("groupSearchBaseDN") private String groupSearchBaseDN;
@@ -44,7 +45,6 @@ public class LdapConfiguration implements Serializable {
     @SerializedName("userDNTemplate") private String userDNTemplate;
     @SerializedName("userSearchBaseDN") private String userSearchBaseDN;
     @SerializedName("userSearchFilter") private String userSearchFilter;
-
     // empty constructor
     @Since("7.0")
     public LdapConfiguration() {}

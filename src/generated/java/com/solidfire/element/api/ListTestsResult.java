@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListTestsResult implements Serializable {
 
-    public static final long serialVersionUID = 3886812087466529195L;
-    @SerializedName("tests") private String[] tests;
-
+    public static final long serialVersionUID = -4134305168088384763L;
+    @SerializedName("tests") private Object tests;
     // empty constructor
     @Since("7.0")
     public ListTestsResult() {}
@@ -43,7 +43,7 @@ public class ListTestsResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListTestsResult(
-        String[] tests
+        Object tests
     )
     {
         this.tests = tests;
@@ -52,8 +52,8 @@ public class ListTestsResult implements Serializable {
     /** 
      * List of tests that can be performed on the node.
      **/
-    public String[] getTests() { return this.tests; }
-    public void setTests(String[] tests) { 
+    public Object getTests() { return this.tests; }
+    public void setTests(Object tests) { 
         this.tests = tests;
     }
 
@@ -65,12 +65,12 @@ public class ListTestsResult implements Serializable {
         ListTestsResult that = (ListTestsResult) o;
 
         return 
-            Arrays.equals(tests, that.tests);
+            Objects.equals(tests, that.tests);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])tests );
+        return Objects.hash( tests );
     }
 
 
@@ -85,7 +85,7 @@ public class ListTestsResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" tests : ").append(Arrays.toString(tests)).append(",");
+        sb.append(" tests : ").append(tests).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,7 +103,7 @@ public class ListTestsResult implements Serializable {
     }
 
     public static class Builder {
-        private String[] tests;
+        private Object tests;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class ListTestsResult implements Serializable {
             return this;
         }
 
-        public ListTestsResult.Builder tests(final String[] tests) {
+        public ListTestsResult.Builder tests(final Object tests) {
             this.tests = tests;
             return this;
         }

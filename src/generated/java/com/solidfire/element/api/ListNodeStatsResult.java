@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListNodeStatsResult implements Serializable {
 
-    public static final long serialVersionUID = 7526746260675146513L;
+    public static final long serialVersionUID = 4678715557643333256L;
     @SerializedName("nodeStats") private NodeStatsNodes nodeStats;
-
     // empty constructor
     @Since("7.0")
     public ListNodeStatsResult() {}

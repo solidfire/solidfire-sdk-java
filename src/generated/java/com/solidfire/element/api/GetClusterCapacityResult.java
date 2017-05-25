@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class GetClusterCapacityResult implements Serializable {
 
-    public static final long serialVersionUID = 3923025019627806089L;
+    public static final long serialVersionUID = 3740042992965786005L;
     @SerializedName("clusterCapacity") private ClusterCapacity clusterCapacity;
-
     // empty constructor
     @Since("7.0")
     public GetClusterCapacityResult() {}
@@ -50,6 +50,7 @@ public class GetClusterCapacityResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public ClusterCapacity getClusterCapacity() { return this.clusterCapacity; }
     public void setClusterCapacity(ClusterCapacity clusterCapacity) { 

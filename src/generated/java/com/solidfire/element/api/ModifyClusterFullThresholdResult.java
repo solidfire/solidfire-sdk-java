@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class ModifyClusterFullThresholdResult implements Serializable {
 
-    public static final long serialVersionUID = -5398984931028221773L;
+    public static final long serialVersionUID = -3221960589480243047L;
     @SerializedName("blockFullness") private String blockFullness;
     @SerializedName("fullness") private String fullness;
     @SerializedName("maxMetadataOverProvisionFactor") private Long maxMetadataOverProvisionFactor;
@@ -50,7 +51,6 @@ public class ModifyClusterFullThresholdResult implements Serializable {
     @SerializedName("sumTotalMetadataClusterBytes") private Long sumTotalMetadataClusterBytes;
     @SerializedName("sumUsedClusterBytes") private Long sumUsedClusterBytes;
     @SerializedName("sumUsedMetadataClusterBytes") private Long sumUsedMetadataClusterBytes;
-
     // empty constructor
     @Since("7.0")
     public ModifyClusterFullThresholdResult() {}

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,16 +29,19 @@ import java.util.Objects;
 
 /**
  * AddLdapClusterAdminRequest  
+ * AddLdapClusterAdmin enables you to add a new LDAP cluster administrator user. An LDAP cluster administrator can manage the
+ * cluster via the API and management tools. LDAP cluster admin accounts are completely separate and unrelated to standard tenant
+ * accounts.
+ * You can also use this method to add an LDAP group that has been defined in Active Directory. The access level that is given to the group is passed to the individual users in the LDAP group.
  **/
 
 public class AddLdapClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = -5722700464815334114L;
+    public static final long serialVersionUID = -1790954704553290568L;
     @SerializedName("username") private String username;
     @SerializedName("access") private String[] access;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public AddLdapClusterAdminRequest() {}
@@ -49,13 +53,13 @@ public class AddLdapClusterAdminRequest implements Serializable {
         String username,
         String[] access,
         Optional<Boolean> acceptEula,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.username = username;
         this.access = access;
         this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -73,18 +77,18 @@ public class AddLdapClusterAdminRequest implements Serializable {
         this.access = access;
     }
     /** 
-     * Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
+     * Accept the End User License Agreement. Set to true to add a cluster administrator account to the system. If omitted or set to false, the method call fails.
      **/
     public Optional<Boolean> getAcceptEula() { return this.acceptEula; }
     public void setAcceptEula(Optional<Boolean> acceptEula) { 
         this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -149,7 +153,7 @@ public class AddLdapClusterAdminRequest implements Serializable {
         private String username;
         private String[] access;
         private Optional<Boolean> acceptEula;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -185,8 +189,8 @@ public class AddLdapClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public AddLdapClusterAdminRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public AddLdapClusterAdminRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,10 @@ import java.util.Objects;
 
 public class ISCSISession implements Serializable {
 
-    public static final long serialVersionUID = -1637168637781139879L;
+    public static final long serialVersionUID = -1980121717611070539L;
+    @SerializedName("driveIDs") private Optional<Long[]> driveIDs;
     @SerializedName("accountID") private Long accountID;
-    @SerializedName("initiator") private Initiator initiator;
+    @SerializedName("initiator") private Optional<Initiator> initiator;
     @SerializedName("accountName") private String accountName;
     @SerializedName("driveID") private Long driveID;
     @SerializedName("initiatorIP") private String initiatorIP;
@@ -51,7 +53,6 @@ public class ISCSISession implements Serializable {
     @SerializedName("createTime") private String createTime;
     @SerializedName("volumeInstance") private Long volumeInstance;
     @SerializedName("initiatorSessionID") private Long initiatorSessionID;
-
     // empty constructor
     @Since("7.0")
     public ISCSISession() {}
@@ -60,8 +61,9 @@ public class ISCSISession implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ISCSISession(
+        Optional<Long[]> driveIDs,
         Long accountID,
-        Initiator initiator,
+        Optional<Initiator> initiator,
         String accountName,
         Long driveID,
         String initiatorIP,
@@ -80,8 +82,9 @@ public class ISCSISession implements Serializable {
         Long initiatorSessionID
     )
     {
+        this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
         this.accountID = accountID;
-        this.initiator = initiator;
+        this.initiator = (initiator == null) ? Optional.<Initiator>empty() : initiator;
         this.accountName = accountName;
         this.driveID = driveID;
         this.initiatorIP = initiatorIP;
@@ -101,108 +104,133 @@ public class ISCSISession implements Serializable {
     }
 
     /** 
+     * 
+     **/
+    public Optional<Long[]> getDriveIDs() { return this.driveIDs; }
+    public void setDriveIDs(Optional<Long[]> driveIDs) { 
+        this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
+    }
+    /** 
+     * 
      **/
     public Long getAccountID() { return this.accountID; }
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
     /** 
+     * 
      **/
-    public Initiator getInitiator() { return this.initiator; }
-    public void setInitiator(Initiator initiator) { 
-        this.initiator = initiator;
+    public Optional<Initiator> getInitiator() { return this.initiator; }
+    public void setInitiator(Optional<Initiator> initiator) { 
+        this.initiator = (initiator == null) ? Optional.<Initiator>empty() : initiator;
     }
     /** 
+     * 
      **/
     public String getAccountName() { return this.accountName; }
     public void setAccountName(String accountName) { 
         this.accountName = accountName;
     }
     /** 
+     * 
      **/
     public Long getDriveID() { return this.driveID; }
     public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
     /** 
+     * 
      **/
     public String getInitiatorIP() { return this.initiatorIP; }
     public void setInitiatorIP(String initiatorIP) { 
         this.initiatorIP = initiatorIP;
     }
     /** 
+     * 
      **/
     public String getInitiatorPortName() { return this.initiatorPortName; }
     public void setInitiatorPortName(String initiatorPortName) { 
         this.initiatorPortName = initiatorPortName;
     }
     /** 
+     * 
      **/
     public String getTargetPortName() { return this.targetPortName; }
     public void setTargetPortName(String targetPortName) { 
         this.targetPortName = targetPortName;
     }
     /** 
+     * 
      **/
     public String getInitiatorName() { return this.initiatorName; }
     public void setInitiatorName(String initiatorName) { 
         this.initiatorName = initiatorName;
     }
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public Long getServiceID() { return this.serviceID; }
     public void setServiceID(Long serviceID) { 
         this.serviceID = serviceID;
     }
     /** 
+     * 
      **/
     public Long getSessionID() { return this.sessionID; }
     public void setSessionID(Long sessionID) { 
         this.sessionID = sessionID;
     }
     /** 
+     * 
      **/
     public String getTargetName() { return this.targetName; }
     public void setTargetName(String targetName) { 
         this.targetName = targetName;
     }
     /** 
+     * 
      **/
     public String getTargetIP() { return this.targetIP; }
     public void setTargetIP(String targetIP) { 
         this.targetIP = targetIP;
     }
     /** 
+     * 
      **/
     public Long getVirtualNetworkID() { return this.virtualNetworkID; }
     public void setVirtualNetworkID(Long virtualNetworkID) { 
         this.virtualNetworkID = virtualNetworkID;
     }
     /** 
+     * 
      **/
     public Long getVolumeID() { return this.volumeID; }
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
+     * 
      **/
     public String getCreateTime() { return this.createTime; }
     public void setCreateTime(String createTime) { 
         this.createTime = createTime;
     }
     /** 
+     * 
      **/
     public Long getVolumeInstance() { return this.volumeInstance; }
     public void setVolumeInstance(Long volumeInstance) { 
         this.volumeInstance = volumeInstance;
     }
     /** 
+     * 
      **/
     public Long getInitiatorSessionID() { return this.initiatorSessionID; }
     public void setInitiatorSessionID(Long initiatorSessionID) { 
@@ -217,6 +245,7 @@ public class ISCSISession implements Serializable {
         ISCSISession that = (ISCSISession) o;
 
         return 
+            Objects.equals(driveIDs, that.driveIDs) && 
             Objects.equals(accountID, that.accountID) && 
             Objects.equals(initiator, that.initiator) && 
             Objects.equals(accountName, that.accountName) && 
@@ -239,12 +268,13 @@ public class ISCSISession implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID,initiator,accountName,driveID,initiatorIP,initiatorPortName,targetPortName,initiatorName,nodeID,serviceID,sessionID,targetName,targetIP,virtualNetworkID,volumeID,createTime,volumeInstance,initiatorSessionID );
+        return Objects.hash( driveIDs,accountID,initiator,accountName,driveID,initiatorIP,initiatorPortName,targetPortName,initiatorName,nodeID,serviceID,sessionID,targetName,targetIP,virtualNetworkID,volumeID,createTime,volumeInstance,initiatorSessionID );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
+        map.put("driveIDs", driveIDs);
         map.put("accountID", accountID);
         map.put("initiator", initiator);
         map.put("accountName", accountName);
@@ -271,8 +301,13 @@ public class ISCSISession implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
+        if(null != driveIDs && driveIDs.isPresent()){
+            sb.append(" driveIDs : ").append(driveIDs).append(",");
+        }
         sb.append(" accountID : ").append(accountID).append(",");
-        sb.append(" initiator : ").append(initiator).append(",");
+        if(null != initiator && initiator.isPresent()){
+            sb.append(" initiator : ").append(initiator).append(",");
+        }
         sb.append(" accountName : ").append(accountName).append(",");
         sb.append(" driveID : ").append(driveID).append(",");
         sb.append(" initiatorIP : ").append(initiatorIP).append(",");
@@ -306,8 +341,9 @@ public class ISCSISession implements Serializable {
     }
 
     public static class Builder {
+        private Optional<Long[]> driveIDs;
         private Long accountID;
-        private Initiator initiator;
+        private Optional<Initiator> initiator;
         private String accountName;
         private Long driveID;
         private String initiatorIP;
@@ -329,6 +365,7 @@ public class ISCSISession implements Serializable {
 
         public ISCSISession build() {
             return new ISCSISession (
+                         this.driveIDs,
                          this.accountID,
                          this.initiator,
                          this.accountName,
@@ -350,6 +387,7 @@ public class ISCSISession implements Serializable {
         }
 
         private ISCSISession.Builder buildFrom(final ISCSISession req) {
+            this.driveIDs = req.driveIDs;
             this.accountID = req.accountID;
             this.initiator = req.initiator;
             this.accountName = req.accountName;
@@ -372,13 +410,18 @@ public class ISCSISession implements Serializable {
             return this;
         }
 
+        public ISCSISession.Builder optionalDriveIDs(final Long[] driveIDs) {
+            this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : Optional.of(driveIDs);
+            return this;
+        }
+
         public ISCSISession.Builder accountID(final Long accountID) {
             this.accountID = accountID;
             return this;
         }
 
-        public ISCSISession.Builder initiator(final Initiator initiator) {
-            this.initiator = initiator;
+        public ISCSISession.Builder optionalInitiator(final Initiator initiator) {
+            this.initiator = (initiator == null) ? Optional.<Initiator>empty() : Optional.of(initiator);
             return this;
         }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -41,12 +42,11 @@ import java.util.Objects;
 
 public class QoS implements Serializable {
 
-    public static final long serialVersionUID = 1023223855695272644L;
+    public static final long serialVersionUID = -4041527656264070217L;
     @SerializedName("minIOPS") private Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private Optional<Long> maxIOPS;
     @SerializedName("burstIOPS") private Optional<Long> burstIOPS;
     @SerializedName("burstTime") private Optional<Long> burstTime;
-
     // empty constructor
     @Since("7.0")
     public QoS() {}

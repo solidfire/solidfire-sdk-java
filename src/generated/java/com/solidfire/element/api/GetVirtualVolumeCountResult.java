@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class GetVirtualVolumeCountResult implements Serializable {
 
-    public static final long serialVersionUID = 4303128271536919448L;
+    public static final long serialVersionUID = -2255660353327062748L;
     @SerializedName("count") private Long count;
-
     // empty constructor
     @Since("7.0")
     public GetVirtualVolumeCountResult() {}

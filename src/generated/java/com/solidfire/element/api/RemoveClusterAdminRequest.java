@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * RemoveClusterAdminRequest  
+ * You can use RemoveClusterAdmin to remove a Cluster Admin. You cannot remove the administrator cluster admin account.
  **/
 
 public class RemoveClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 8468883642750058499L;
+    public static final long serialVersionUID = 518132307708384078L;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
-
     // empty constructor
     @Since("7.0")
     public RemoveClusterAdminRequest() {}
@@ -50,7 +51,7 @@ public class RemoveClusterAdminRequest implements Serializable {
     }
 
     /** 
-     * ClusterAdminID for the Cluster Admin to remove.
+     * ClusterAdminID for the cluster admin to remove.
      **/
     public Long getClusterAdminID() { return this.clusterAdminID; }
     public void setClusterAdminID(Long clusterAdminID) { 

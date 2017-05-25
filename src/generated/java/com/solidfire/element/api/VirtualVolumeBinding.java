@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class VirtualVolumeBinding implements Serializable {
 
-    public static final long serialVersionUID = 7502598809220693698L;
+    public static final long serialVersionUID = 4771220520397997451L;
     @SerializedName("protocolEndpointID") private java.util.UUID protocolEndpointID;
     @SerializedName("protocolEndpointInBandID") private String protocolEndpointInBandID;
     @SerializedName("protocolEndpointType") private String protocolEndpointType;
@@ -40,10 +41,6 @@ public class VirtualVolumeBinding implements Serializable {
     @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
     @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
     @SerializedName("virtualVolumeSecondaryID") private String virtualVolumeSecondaryID;
-    @SerializedName("virtualVolume") private VirtualVolumeInfo virtualVolume;
-    @SerializedName("protocolEndpoint") private java.util.UUID protocolEndpoint;
-    @SerializedName("virtualVolumeHost") private VirtualVolumeHost virtualVolumeHost;
-
     // empty constructor
     @Since("7.0")
     public VirtualVolumeBinding() {}
@@ -58,10 +55,7 @@ public class VirtualVolumeBinding implements Serializable {
         Long virtualVolumeBindingID,
         java.util.UUID virtualVolumeHostID,
         java.util.UUID virtualVolumeID,
-        String virtualVolumeSecondaryID,
-        VirtualVolumeInfo virtualVolume,
-        java.util.UUID protocolEndpoint,
-        VirtualVolumeHost virtualVolumeHost
+        String virtualVolumeSecondaryID
     )
     {
         this.protocolEndpointID = protocolEndpointID;
@@ -71,9 +65,6 @@ public class VirtualVolumeBinding implements Serializable {
         this.virtualVolumeHostID = virtualVolumeHostID;
         this.virtualVolumeID = virtualVolumeID;
         this.virtualVolumeSecondaryID = virtualVolumeSecondaryID;
-        this.virtualVolume = virtualVolume;
-        this.protocolEndpoint = protocolEndpoint;
-        this.virtualVolumeHost = virtualVolumeHost;
     }
 
     /** 
@@ -125,27 +116,6 @@ public class VirtualVolumeBinding implements Serializable {
     public void setVirtualVolumeSecondaryID(String virtualVolumeSecondaryID) { 
         this.virtualVolumeSecondaryID = virtualVolumeSecondaryID;
     }
-    /** 
-     * An object describing the bound volume or snapshot.
-     **/
-    public VirtualVolumeInfo getVirtualVolume() { return this.virtualVolume; }
-    public void setVirtualVolume(VirtualVolumeInfo virtualVolume) { 
-        this.virtualVolume = virtualVolume;
-    }
-    /** 
-     * An object describing the protocol endpoint to which the virtual volume is bound.
-     **/
-    public java.util.UUID getProtocolEndpoint() { return this.protocolEndpoint; }
-    public void setProtocolEndpoint(java.util.UUID protocolEndpoint) { 
-        this.protocolEndpoint = protocolEndpoint;
-    }
-    /** 
-     * An object describing the host to which this binding corresponds.
-     **/
-    public VirtualVolumeHost getVirtualVolumeHost() { return this.virtualVolumeHost; }
-    public void setVirtualVolumeHost(VirtualVolumeHost virtualVolumeHost) { 
-        this.virtualVolumeHost = virtualVolumeHost;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -161,15 +131,12 @@ public class VirtualVolumeBinding implements Serializable {
             Objects.equals(virtualVolumeBindingID, that.virtualVolumeBindingID) && 
             Objects.equals(virtualVolumeHostID, that.virtualVolumeHostID) && 
             Objects.equals(virtualVolumeID, that.virtualVolumeID) && 
-            Objects.equals(virtualVolumeSecondaryID, that.virtualVolumeSecondaryID) && 
-            Objects.equals(virtualVolume, that.virtualVolume) && 
-            Objects.equals(protocolEndpoint, that.protocolEndpoint) && 
-            Objects.equals(virtualVolumeHost, that.virtualVolumeHost);
+            Objects.equals(virtualVolumeSecondaryID, that.virtualVolumeSecondaryID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( protocolEndpointID,protocolEndpointInBandID,protocolEndpointType,virtualVolumeBindingID,virtualVolumeHostID,virtualVolumeID,virtualVolumeSecondaryID,virtualVolume,protocolEndpoint,virtualVolumeHost );
+        return Objects.hash( protocolEndpointID,protocolEndpointInBandID,protocolEndpointType,virtualVolumeBindingID,virtualVolumeHostID,virtualVolumeID,virtualVolumeSecondaryID );
     }
 
 
@@ -182,9 +149,6 @@ public class VirtualVolumeBinding implements Serializable {
         map.put("virtualVolumeHostID", virtualVolumeHostID);
         map.put("virtualVolumeID", virtualVolumeID);
         map.put("virtualVolumeSecondaryID", virtualVolumeSecondaryID);
-        map.put("virtualVolume", virtualVolume);
-        map.put("protocolEndpoint", protocolEndpoint);
-        map.put("virtualVolumeHost", virtualVolumeHost);
         return map;
     }
 
@@ -200,9 +164,6 @@ public class VirtualVolumeBinding implements Serializable {
         sb.append(" virtualVolumeHostID : ").append(virtualVolumeHostID).append(",");
         sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
         sb.append(" virtualVolumeSecondaryID : ").append(virtualVolumeSecondaryID).append(",");
-        sb.append(" virtualVolume : ").append(virtualVolume).append(",");
-        sb.append(" protocolEndpoint : ").append(protocolEndpoint).append(",");
-        sb.append(" virtualVolumeHost : ").append(virtualVolumeHost).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -227,9 +188,6 @@ public class VirtualVolumeBinding implements Serializable {
         private java.util.UUID virtualVolumeHostID;
         private java.util.UUID virtualVolumeID;
         private String virtualVolumeSecondaryID;
-        private VirtualVolumeInfo virtualVolume;
-        private java.util.UUID protocolEndpoint;
-        private VirtualVolumeHost virtualVolumeHost;
 
         private Builder() { }
 
@@ -241,10 +199,7 @@ public class VirtualVolumeBinding implements Serializable {
                          this.virtualVolumeBindingID,
                          this.virtualVolumeHostID,
                          this.virtualVolumeID,
-                         this.virtualVolumeSecondaryID,
-                         this.virtualVolume,
-                         this.protocolEndpoint,
-                         this.virtualVolumeHost);
+                         this.virtualVolumeSecondaryID);
         }
 
         private VirtualVolumeBinding.Builder buildFrom(final VirtualVolumeBinding req) {
@@ -255,9 +210,6 @@ public class VirtualVolumeBinding implements Serializable {
             this.virtualVolumeHostID = req.virtualVolumeHostID;
             this.virtualVolumeID = req.virtualVolumeID;
             this.virtualVolumeSecondaryID = req.virtualVolumeSecondaryID;
-            this.virtualVolume = req.virtualVolume;
-            this.protocolEndpoint = req.protocolEndpoint;
-            this.virtualVolumeHost = req.virtualVolumeHost;
 
             return this;
         }
@@ -294,21 +246,6 @@ public class VirtualVolumeBinding implements Serializable {
 
         public VirtualVolumeBinding.Builder virtualVolumeSecondaryID(final String virtualVolumeSecondaryID) {
             this.virtualVolumeSecondaryID = virtualVolumeSecondaryID;
-            return this;
-        }
-
-        public VirtualVolumeBinding.Builder virtualVolume(final VirtualVolumeInfo virtualVolume) {
-            this.virtualVolume = virtualVolume;
-            return this;
-        }
-
-        public VirtualVolumeBinding.Builder protocolEndpoint(final java.util.UUID protocolEndpoint) {
-            this.protocolEndpoint = protocolEndpoint;
-            return this;
-        }
-
-        public VirtualVolumeBinding.Builder virtualVolumeHost(final VirtualVolumeHost virtualVolumeHost) {
-            this.virtualVolumeHost = virtualVolumeHost;
             return this;
         }
 

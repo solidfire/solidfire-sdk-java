@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,27 +33,97 @@ import java.util.Objects;
 
 public class AddDrivesResult implements Serializable {
 
-    public static final long serialVersionUID = -1342411912202020142L;
-
+    public static final long serialVersionUID = -8853378537794746166L;
+    @SerializedName("asyncHandle") private Optional<Long> asyncHandle;
     // empty constructor
     @Since("7.0")
     public AddDrivesResult() {}
 
     
+    // parameterized constructor
+    @Since("7.0")
+    public AddDrivesResult(
+        Optional<Long> asyncHandle
+    )
+    {
+        this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : asyncHandle;
+    }
+
+    /** 
+     * 
+     **/
+    public Optional<Long> getAsyncHandle() { return this.asyncHandle; }
+    public void setAsyncHandle(Optional<Long> asyncHandle) { 
+        this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : asyncHandle;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        
-        return true;
+        AddDrivesResult that = (AddDrivesResult) o;
+
+        return 
+            Objects.equals(asyncHandle, that.asyncHandle);
     }
 
     @Override
     public int hashCode() {
-
-        return this.getClass().hashCode();
+        return Objects.hash( asyncHandle );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("asyncHandle", asyncHandle);
+        return map;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append( "{ " );
+
+        if(null != asyncHandle && asyncHandle.isPresent()){
+            sb.append(" asyncHandle : ").append(asyncHandle).append(",");
+        }
+        sb.append( " }" );
+
+        if(sb.lastIndexOf(", }") != -1)
+            sb.deleteCharAt(sb.lastIndexOf(", }"));
+
+        return sb.toString();
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Optional<Long> asyncHandle;
+
+        private Builder() { }
+
+        public AddDrivesResult build() {
+            return new AddDrivesResult (
+                         this.asyncHandle);
+        }
+
+        private AddDrivesResult.Builder buildFrom(final AddDrivesResult req) {
+            this.asyncHandle = req.asyncHandle;
+
+            return this;
+        }
+
+        public AddDrivesResult.Builder optionalAsyncHandle(final Long asyncHandle) {
+            this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : Optional.of(asyncHandle);
+            return this;
+        }
+
+    }
 }

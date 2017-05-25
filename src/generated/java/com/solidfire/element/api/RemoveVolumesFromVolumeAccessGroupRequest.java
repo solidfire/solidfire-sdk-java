@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,14 @@ import java.util.Objects;
 
 /**
  * RemoveVolumesFromVolumeAccessGroupRequest  
+ * The RemoveVolumeFromVolumeAccessGroup method enables you to remove volumes from a volume access group.
  **/
 
 public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 4779120452503850352L;
+    public static final long serialVersionUID = -1586126254405022680L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("volumes") private Long[] volumes;
-
     // empty constructor
     @Since("7.0")
     public RemoveVolumesFromVolumeAccessGroupRequest() {}
@@ -53,14 +54,14 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
     }
 
     /** 
-     * The ID of the volume access group to modify.
+     * The ID of the volume access group to remove volumes from.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
-     * List of volumes to remove from this volume access group.
+     * The ID of the volume access group to remove volumes from.
      **/
     public Long[] getVolumes() { return this.volumes; }
     public void setVolumes(Long[] volumes) { 

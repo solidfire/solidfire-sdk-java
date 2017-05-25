@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,14 @@ import java.util.Objects;
 
 /**
  * RemoveClusterPairRequest  
+ * You can use the RemoveClusterPair method to close the open connections between two paired clusters.
+ * Note: Before you remove a cluster pair, you must first remove all volume pairing to the clusters with the "RemoveVolumePair" API method.
  **/
 
 public class RemoveClusterPairRequest implements Serializable {
 
-    public static final long serialVersionUID = -6696513351448610827L;
+    public static final long serialVersionUID = -3321723673336637215L;
     @SerializedName("clusterPairID") private Long clusterPairID;
-
     // empty constructor
     @Since("7.0")
     public RemoveClusterPairRequest() {}

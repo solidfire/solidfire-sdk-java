@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,16 +29,16 @@ import java.util.Objects;
 
 /**
  * AddAccountRequest  
+ * You can use AddAccount to add a new account to the system. You can create new volumes under the new account. The CHAP settings you specify for the account apply to all volumes owned by the account.
  **/
 
 public class AddAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = 7556277751663032568L;
+    public static final long serialVersionUID = 8874962096480555118L;
     @SerializedName("username") private String username;
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public AddAccountRequest() {}
@@ -49,51 +50,50 @@ public class AddAccountRequest implements Serializable {
         String username,
         Optional<CHAPSecret> initiatorSecret,
         Optional<CHAPSecret> targetSecret,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.username = username;
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * Unique username for this account.
-     * (May be 1 to 64 characters in length).
+     * Specifies the username for this account. (Might be 1 to 64 characters in length).
      **/
     public String getUsername() { return this.username; }
     public void setUsername(String username) { 
         this.username = username;
     }
     /** 
-     * CHAP secret to use for the initiator.
-     * Should be 12-16 characters long and impenetrable.
-     * The CHAP initiator secrets must be unique and cannot be the same as the target CHAP secret.
-     * 
-     * If not specified, a random secret is created.
+     * The CHAP secret to use for the initiator. This secret must
+     * be 12-16 characters in length and should be
+     * impenetrable. The initiator CHAP secret must be unique
+     * and cannot be the same as the target CHAP secret. If unspecified, a random secret is created.
      **/
     public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
     public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) { 
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
     }
     /** 
-     * CHAP secret to use for the target (mutual CHAP authentication).
-     * Should be 12-16 characters long and impenetrable.
-     * The CHAP target secrets must be unique and cannot be the same as the initiator CHAP secret.
-     * 
-     * If not specified, a random secret is created.
+     * The CHAP secret to use for the target (mutual CHAP
+     * authentication). This secret must be 12-16 characters in
+     * length and should be impenetrable. The target CHAP
+     * secret must be unique and cannot be the same as the
+     * initiator CHAP secret. If unspecified, a random secret is
+     * created.
      **/
     public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
     public void setTargetSecret(Optional<CHAPSecret> targetSecret) { 
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -160,7 +160,7 @@ public class AddAccountRequest implements Serializable {
         private String username;
         private Optional<CHAPSecret> initiatorSecret;
         private Optional<CHAPSecret> targetSecret;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -196,8 +196,8 @@ public class AddAccountRequest implements Serializable {
             return this;
         }
 
-        public AddAccountRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public AddAccountRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

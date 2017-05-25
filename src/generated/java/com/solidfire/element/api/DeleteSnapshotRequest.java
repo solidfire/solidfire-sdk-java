@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,14 @@ import java.util.Objects;
 
 /**
  * DeleteSnapshotRequest  
+ * DeleteSnapshot enables you to delete a snapshot. A snapshot that is currently the "active" snapshot cannot be deleted. You must
+ * rollback and make another snapshot "active" before the current snapshot can be deleted. For more details on rolling back snapshots, see RollbackToSnapshot.
  **/
 
 public class DeleteSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -7448163228177860503L;
+    public static final long serialVersionUID = -6244009209532923181L;
     @SerializedName("snapshotID") private Long snapshotID;
-
     // empty constructor
     @Since("7.0")
     public DeleteSnapshotRequest() {}
@@ -50,7 +52,7 @@ public class DeleteSnapshotRequest implements Serializable {
     }
 
     /** 
-     * The ID of the snapshot to delete.
+     * The ID of the snapshot to be deleted.
      **/
     public Long getSnapshotID() { return this.snapshotID; }
     public void setSnapshotID(Long snapshotID) { 

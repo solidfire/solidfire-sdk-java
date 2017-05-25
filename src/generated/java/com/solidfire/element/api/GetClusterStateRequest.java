@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,18 @@ import java.util.Objects;
 
 /**
  * GetClusterStateRequest  
+ * The GetClusterState API method enables you to indicate if a node is part of a cluster or not. The three states are:
+ * Available: Node has not been configured with a cluster name.
+ * Pending: Node is pending for a specific named cluster and can be added.
+ * Active: Node is an active member of a cluster and may not be added to another
+ * cluster.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class GetClusterStateRequest implements Serializable {
 
-    public static final long serialVersionUID = -4583979987896002662L;
+    public static final long serialVersionUID = 3279346864797830457L;
     @SerializedName("force") private Boolean force;
-
     // empty constructor
     @Since("7.0")
     public GetClusterStateRequest() {}

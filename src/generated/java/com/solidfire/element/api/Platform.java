@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,12 +33,12 @@ import java.util.Objects;
 
 public class Platform implements Serializable {
 
-    public static final long serialVersionUID = -6612096304691711343L;
+    public static final long serialVersionUID = -968276323282039768L;
     @SerializedName("nodeType") private String nodeType;
     @SerializedName("chassisType") private String chassisType;
     @SerializedName("cpuModel") private String cpuModel;
     @SerializedName("nodeMemoryGB") private Long nodeMemoryGB;
-
+    @SerializedName("platformConfigVersion") private Optional<String> platformConfigVersion;
     // empty constructor
     @Since("7.0")
     public Platform() {}
@@ -49,13 +50,15 @@ public class Platform implements Serializable {
         String nodeType,
         String chassisType,
         String cpuModel,
-        Long nodeMemoryGB
+        Long nodeMemoryGB,
+        Optional<String> platformConfigVersion
     )
     {
         this.nodeType = nodeType;
         this.chassisType = chassisType;
         this.cpuModel = cpuModel;
         this.nodeMemoryGB = nodeMemoryGB;
+        this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : platformConfigVersion;
     }
 
     /** 
@@ -86,6 +89,13 @@ public class Platform implements Serializable {
     public void setNodeMemoryGB(Long nodeMemoryGB) { 
         this.nodeMemoryGB = nodeMemoryGB;
     }
+    /** 
+     * 
+     **/
+    public Optional<String> getPlatformConfigVersion() { return this.platformConfigVersion; }
+    public void setPlatformConfigVersion(Optional<String> platformConfigVersion) { 
+        this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : platformConfigVersion;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -98,12 +108,13 @@ public class Platform implements Serializable {
             Objects.equals(nodeType, that.nodeType) && 
             Objects.equals(chassisType, that.chassisType) && 
             Objects.equals(cpuModel, that.cpuModel) && 
-            Objects.equals(nodeMemoryGB, that.nodeMemoryGB);
+            Objects.equals(nodeMemoryGB, that.nodeMemoryGB) && 
+            Objects.equals(platformConfigVersion, that.platformConfigVersion);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeType,chassisType,cpuModel,nodeMemoryGB );
+        return Objects.hash( nodeType,chassisType,cpuModel,nodeMemoryGB,platformConfigVersion );
     }
 
 
@@ -113,6 +124,7 @@ public class Platform implements Serializable {
         map.put("chassisType", chassisType);
         map.put("cpuModel", cpuModel);
         map.put("nodeMemoryGB", nodeMemoryGB);
+        map.put("platformConfigVersion", platformConfigVersion);
         return map;
     }
 
@@ -125,6 +137,9 @@ public class Platform implements Serializable {
         sb.append(" chassisType : ").append(chassisType).append(",");
         sb.append(" cpuModel : ").append(cpuModel).append(",");
         sb.append(" nodeMemoryGB : ").append(nodeMemoryGB).append(",");
+        if(null != platformConfigVersion && platformConfigVersion.isPresent()){
+            sb.append(" platformConfigVersion : ").append(platformConfigVersion).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -146,6 +161,7 @@ public class Platform implements Serializable {
         private String chassisType;
         private String cpuModel;
         private Long nodeMemoryGB;
+        private Optional<String> platformConfigVersion;
 
         private Builder() { }
 
@@ -154,7 +170,8 @@ public class Platform implements Serializable {
                          this.nodeType,
                          this.chassisType,
                          this.cpuModel,
-                         this.nodeMemoryGB);
+                         this.nodeMemoryGB,
+                         this.platformConfigVersion);
         }
 
         private Platform.Builder buildFrom(final Platform req) {
@@ -162,6 +179,7 @@ public class Platform implements Serializable {
             this.chassisType = req.chassisType;
             this.cpuModel = req.cpuModel;
             this.nodeMemoryGB = req.nodeMemoryGB;
+            this.platformConfigVersion = req.platformConfigVersion;
 
             return this;
         }
@@ -183,6 +201,11 @@ public class Platform implements Serializable {
 
         public Platform.Builder nodeMemoryGB(final Long nodeMemoryGB) {
             this.nodeMemoryGB = nodeMemoryGB;
+            return this;
+        }
+
+        public Platform.Builder optionalPlatformConfigVersion(final String platformConfigVersion) {
+            this.platformConfigVersion = (platformConfigVersion == null) ? Optional.<String>empty() : Optional.of(platformConfigVersion);
             return this;
         }
 

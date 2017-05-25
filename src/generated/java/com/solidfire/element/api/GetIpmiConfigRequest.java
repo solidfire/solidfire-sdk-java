@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,13 @@ import java.util.Objects;
 
 /**
  * GetIpmiConfigRequest  
+ * GetIpmiConfig enables you to retrieve hardware sensor information from sensors that are in your node.
  **/
 
 public class GetIpmiConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = -9099686827245682514L;
+    public static final long serialVersionUID = 8810486621883169482L;
     @SerializedName("chassisType") private Optional<String> chassisType;
-    @SerializedName("force") private Boolean force;
-
     // empty constructor
     @Since("7.0")
     public GetIpmiConfigRequest() {}
@@ -44,26 +44,21 @@ public class GetIpmiConfigRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetIpmiConfigRequest(
-        Optional<String> chassisType,
-        Boolean force
+        Optional<String> chassisType
     )
     {
         this.chassisType = (chassisType == null) ? Optional.<String>empty() : chassisType;
-        this.force = force;
     }
 
     /** 
-     * Used to display information for each node chassis type. Valid values:all - returns sensor information for each chassis type. {chassis type} - returns sensor information for a specified chassis type.
+     * Displays information for each node chassis type.
+     * Valid values are:
+     * all: Returns sensor information for each chassis type.
+     * {chassis type}: Returns sensor information for a specified chassis type.
      **/
     public Optional<String> getChassisType() { return this.chassisType; }
     public void setChassisType(Optional<String> chassisType) { 
         this.chassisType = (chassisType == null) ? Optional.<String>empty() : chassisType;
-    }
-    /** 
-     **/
-    public Boolean getForce() { return this.force; }
-    public void setForce(Boolean force) { 
-        this.force = force;
     }
 
     @Override
@@ -74,20 +69,18 @@ public class GetIpmiConfigRequest implements Serializable {
         GetIpmiConfigRequest that = (GetIpmiConfigRequest) o;
 
         return 
-            Objects.equals(chassisType, that.chassisType) && 
-            Objects.equals(force, that.force);
+            Objects.equals(chassisType, that.chassisType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( chassisType,force );
+        return Objects.hash( chassisType );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("chassisType", chassisType);
-        map.put("force", force);
         return map;
     }
 
@@ -99,7 +92,6 @@ public class GetIpmiConfigRequest implements Serializable {
         if(null != chassisType && chassisType.isPresent()){
             sb.append(" chassisType : ").append(chassisType).append(",");
         }
-        sb.append(" force : ").append(force).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -118,30 +110,22 @@ public class GetIpmiConfigRequest implements Serializable {
 
     public static class Builder {
         private Optional<String> chassisType;
-        private Boolean force;
 
         private Builder() { }
 
         public GetIpmiConfigRequest build() {
             return new GetIpmiConfigRequest (
-                         this.chassisType,
-                         this.force);
+                         this.chassisType);
         }
 
         private GetIpmiConfigRequest.Builder buildFrom(final GetIpmiConfigRequest req) {
             this.chassisType = req.chassisType;
-            this.force = req.force;
 
             return this;
         }
 
         public GetIpmiConfigRequest.Builder optionalChassisType(final String chassisType) {
             this.chassisType = (chassisType == null) ? Optional.<String>empty() : Optional.of(chassisType);
-            return this;
-        }
-
-        public GetIpmiConfigRequest.Builder force(final Boolean force) {
-            this.force = force;
             return this;
         }
 

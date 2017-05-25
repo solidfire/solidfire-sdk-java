@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,11 +29,14 @@ import java.util.Objects;
 
 /**
  * CreateClusterRequest  
+ * The CreateCluster method enables you to initialize the node in a cluster that has ownership of the "mvip" and "svip" addresses. Each new cluster is initialized using the management IP (MIP) of the first node in the cluster. This method also automatically adds all the nodes being configured into the cluster. You only need to use this method once each time a new cluster is initialized.
+ * Note: You need to log in to the node that is used as the master node for the cluster. After you log in, run the GetBootstrapConfig method on the node to get the IP addresses for the rest of the nodes that you want to include in the
+ * cluster. Then, run the CreateCluster method.
  **/
 
 public class CreateClusterRequest implements Serializable {
 
-    public static final long serialVersionUID = 4241336716885927717L;
+    public static final long serialVersionUID = -7671165210552926362L;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
     @SerializedName("mvip") private String mvip;
     @SerializedName("svip") private String svip;
@@ -40,8 +44,7 @@ public class CreateClusterRequest implements Serializable {
     @SerializedName("username") private String username;
     @SerializedName("password") private String password;
     @SerializedName("nodes") private String[] nodes;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public CreateClusterRequest() {}
@@ -57,7 +60,7 @@ public class CreateClusterRequest implements Serializable {
         String username,
         String password,
         String[] nodes,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
@@ -67,11 +70,13 @@ public class CreateClusterRequest implements Serializable {
         this.username = username;
         this.password = password;
         this.nodes = nodes;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * Indicate your acceptance of the End User License Agreement when creating this cluster. To accept the EULA, set this parameter to true.
+     * Required to indicate your acceptance of the End User License
+     * Agreement when creating this cluster. To accept the EULA,
+     * set this parameter to true.
      **/
     public Optional<Boolean> getAcceptEula() { return this.acceptEula; }
     public void setAcceptEula(Optional<Boolean> acceptEula) { 
@@ -99,7 +104,7 @@ public class CreateClusterRequest implements Serializable {
         this.repCount = repCount;
     }
     /** 
-     * User name for the cluster admin.
+     * Username for the cluster admin.
      **/
     public String getUsername() { return this.username; }
     public void setUsername(String username) { 
@@ -120,11 +125,11 @@ public class CreateClusterRequest implements Serializable {
         this.nodes = nodes;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -205,7 +210,7 @@ public class CreateClusterRequest implements Serializable {
         private String username;
         private String password;
         private String[] nodes;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -269,8 +274,8 @@ public class CreateClusterRequest implements Serializable {
             return this;
         }
 
-        public CreateClusterRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public CreateClusterRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

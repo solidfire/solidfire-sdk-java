@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,15 @@ import java.util.Objects;
 
 /**
  * RemoveVirtualNetworkRequest  
+ * RemoveVirtualNetwork enables you to remove a previously added virtual network.
+ * Note: This method requires either the virtualNetworkID or the virtualNetworkTag as a parameter, but not both.
  **/
 
 public class RemoveVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = -7622530625529296409L;
+    public static final long serialVersionUID = -6963569258898366506L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
-
     // empty constructor
     @Since("7.0")
     public RemoveVirtualNetworkRequest() {}
@@ -60,7 +62,7 @@ public class RemoveVirtualNetworkRequest implements Serializable {
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
     }
     /** 
-     * Network Tag that identifies the virtual network to remove.
+     * Network tag that identifies the virtual network to remove.
      **/
     public Optional<Long> getVirtualNetworkTag() { return this.virtualNetworkTag; }
     public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) { 

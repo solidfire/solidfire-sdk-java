@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class IpmiInfo implements Serializable {
 
-    public static final long serialVersionUID = 7231518305000765081L;
-    @SerializedName("sensors") private java.util.Map<String, Object>[] sensors;
-
+    public static final long serialVersionUID = -3562023109568134048L;
+    @SerializedName("sensors") private Attributes[] sensors;
     // empty constructor
     @Since("7.0")
     public IpmiInfo() {}
@@ -43,16 +43,17 @@ public class IpmiInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public IpmiInfo(
-        java.util.Map<String, Object>[] sensors
+        Attributes[] sensors
     )
     {
         this.sensors = sensors;
     }
 
     /** 
+     * 
      **/
-    public java.util.Map<String, Object>[] getSensors() { return this.sensors; }
-    public void setSensors(java.util.Map<String, Object>[] sensors) { 
+    public Attributes[] getSensors() { return this.sensors; }
+    public void setSensors(Attributes[] sensors) { 
         this.sensors = sensors;
     }
 
@@ -102,7 +103,7 @@ public class IpmiInfo implements Serializable {
     }
 
     public static class Builder {
-        private java.util.Map<String, Object>[] sensors;
+        private Attributes[] sensors;
 
         private Builder() { }
 
@@ -117,7 +118,7 @@ public class IpmiInfo implements Serializable {
             return this;
         }
 
-        public IpmiInfo.Builder sensors(final java.util.Map<String, Object>[] sensors) {
+        public IpmiInfo.Builder sensors(final Attributes[] sensors) {
             this.sensors = sensors;
             return this;
         }

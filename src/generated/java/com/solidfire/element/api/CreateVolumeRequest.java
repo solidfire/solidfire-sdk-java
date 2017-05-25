@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,18 +29,19 @@ import java.util.Objects;
 
 /**
  * CreateVolumeRequest  
+ * CreateVolume enables you to create a new (empty) volume on the cluster. As soon as the volume creation is complete, the volume is
+ * available for connection via iSCSI.
  **/
 
 public class CreateVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 5050439057400185898L;
+    public static final long serialVersionUID = 6186706673949779471L;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("totalSize") private Long totalSize;
     @SerializedName("enable512e") private Boolean enable512e;
     @SerializedName("qos") private Optional<QoS> qos;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public CreateVolumeRequest() {}
@@ -53,7 +55,7 @@ public class CreateVolumeRequest implements Serializable {
         Long totalSize,
         Boolean enable512e,
         Optional<QoS> qos,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.name = name;
@@ -61,13 +63,13 @@ public class CreateVolumeRequest implements Serializable {
         this.totalSize = totalSize;
         this.enable512e = enable512e;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * Name of the volume.
-     * Not required to be unique, but it is recommended.
-     * May be 1 to 64 characters in length.
+     * The name of the volume access group (might be user specified).
+     * Not required to be unique, but recommended.
+     * Might be 1 to 64 characters in length.
      **/
     public String getName() { return this.name; }
     public void setName(String name) { 
@@ -81,35 +83,42 @@ public class CreateVolumeRequest implements Serializable {
         this.accountID = accountID;
     }
     /** 
-     * Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
+     * Total size of the volume, in bytes. Size is rounded up to
+     * the nearest 1MB size.
      **/
     public Long getTotalSize() { return this.totalSize; }
     public void setTotalSize(Long totalSize) { 
         this.totalSize = totalSize;
     }
     /** 
-     * Should the volume provides 512-byte sector emulation?
+     * Specifies whether 512e emulation is enabled or not. Possible values are:
+     * true: The volume provides 512-byte sector emulation.
+     * false: 512e emulation is not enabled.
      **/
     public Boolean getEnable512e() { return this.enable512e; }
     public void setEnable512e(Boolean enable512e) { 
         this.enable512e = enable512e;
     }
     /** 
-     * Initial quality of service settings for this volume.
-     * 
-     * Volumes created without specified QoS values are created with the default values for QoS.
-     * Default values for a volume can be found by running the GetDefaultQoS method.
+     * Initial quality of service settings for this volume. Default
+     * values are used if none are specified. Valid settings are:
+     * minIOPS
+     * maxIOPS
+     * burstIOPS
+     * You can get the default values for a volume by using the GetDefaultQoS method.
      **/
     public Optional<QoS> getQos() { return this.qos; }
     public void setQos(Optional<QoS> qos) { 
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * The list of name-value pairs in JSON object format.
+     * Total attribute size must be less than 1000B, or 1KB,
+     * including JSON formatting characters.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -182,7 +191,7 @@ public class CreateVolumeRequest implements Serializable {
         private Long totalSize;
         private Boolean enable512e;
         private Optional<QoS> qos;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -232,8 +241,8 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public CreateVolumeRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

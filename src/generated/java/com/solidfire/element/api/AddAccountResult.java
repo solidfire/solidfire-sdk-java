@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,9 @@ import java.util.Objects;
 
 public class AddAccountResult implements Serializable {
 
-    public static final long serialVersionUID = 8785573545235280037L;
+    public static final long serialVersionUID = 8934876801704903018L;
     @SerializedName("accountID") private Long accountID;
-
+    @SerializedName("account") private Optional<Account> account;
     // empty constructor
     @Since("7.0")
     public AddAccountResult() {}
@@ -43,10 +44,12 @@ public class AddAccountResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddAccountResult(
-        Long accountID
+        Long accountID,
+        Optional<Account> account
     )
     {
         this.accountID = accountID;
+        this.account = (account == null) ? Optional.<Account>empty() : account;
     }
 
     /** 
@@ -55,6 +58,13 @@ public class AddAccountResult implements Serializable {
     public Long getAccountID() { return this.accountID; }
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
+    }
+    /** 
+     * The full account object
+     **/
+    public Optional<Account> getAccount() { return this.account; }
+    public void setAccount(Optional<Account> account) { 
+        this.account = (account == null) ? Optional.<Account>empty() : account;
     }
 
     @Override
@@ -65,18 +75,20 @@ public class AddAccountResult implements Serializable {
         AddAccountResult that = (AddAccountResult) o;
 
         return 
-            Objects.equals(accountID, that.accountID);
+            Objects.equals(accountID, that.accountID) && 
+            Objects.equals(account, that.account);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID );
+        return Objects.hash( accountID,account );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("accountID", accountID);
+        map.put("account", account);
         return map;
     }
 
@@ -86,6 +98,9 @@ public class AddAccountResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" accountID : ").append(accountID).append(",");
+        if(null != account && account.isPresent()){
+            sb.append(" account : ").append(account).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -104,22 +119,30 @@ public class AddAccountResult implements Serializable {
 
     public static class Builder {
         private Long accountID;
+        private Optional<Account> account;
 
         private Builder() { }
 
         public AddAccountResult build() {
             return new AddAccountResult (
-                         this.accountID);
+                         this.accountID,
+                         this.account);
         }
 
         private AddAccountResult.Builder buildFrom(final AddAccountResult req) {
             this.accountID = req.accountID;
+            this.account = req.account;
 
             return this;
         }
 
         public AddAccountResult.Builder accountID(final Long accountID) {
             this.accountID = accountID;
+            return this;
+        }
+
+        public AddAccountResult.Builder optionalAccount(final Account account) {
+            this.account = (account == null) ? Optional.<Account>empty() : Optional.of(account);
             return this;
         }
 

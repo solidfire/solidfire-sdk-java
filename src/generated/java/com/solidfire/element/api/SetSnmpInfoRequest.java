@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,16 +29,18 @@ import java.util.Objects;
 
 /**
  * SetSnmpInfoRequest  
+ * SetSnmpInfo enables you to configure SNMP version 2 and version 3 on cluster nodes. The values you set with this interface apply to
+ * all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpInfo.
+ * Note: SetSnmpInfo is deprecated. Use the EnableSnmp and SetSnmpACL methods instead.
  **/
 
 public class SetSnmpInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 5748454860350922237L;
+    public static final long serialVersionUID = 2734361054810888021L;
     @SerializedName("networks") private Optional<SnmpNetwork[]> networks;
     @SerializedName("enabled") private Optional<Boolean> enabled;
     @SerializedName("snmpV3Enabled") private Optional<Boolean> snmpV3Enabled;
     @SerializedName("usmUsers") private Optional<SnmpV3UsmUser[]> usmUsers;
-
     // empty constructor
     @Since("7.0")
     public SetSnmpInfoRequest() {}
@@ -59,28 +62,30 @@ public class SetSnmpInfoRequest implements Serializable {
     }
 
     /** 
-     * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible "networks" values. SNMP v2 only.
+     * List of networks and what type of access they have to the
+     * SNMP servers running on the cluster nodes. See the SNMP
+     * Network Object for possible "networks" values. This parameter is required only for SNMP v2.
      **/
     public Optional<SnmpNetwork[]> getNetworks() { return this.networks; }
     public void setNetworks(Optional<SnmpNetwork[]> networks) { 
         this.networks = (networks == null) ? Optional.<SnmpNetwork[]>empty() : networks;
     }
     /** 
-     * If set to "true", then SNMP is enabled on each node in the cluster.
+     * If set to true, SNMP is enabled on each node in the cluster.
      **/
     public Optional<Boolean> getEnabled() { return this.enabled; }
     public void setEnabled(Optional<Boolean> enabled) { 
         this.enabled = (enabled == null) ? Optional.<Boolean>empty() : enabled;
     }
     /** 
-     * If set to "true", then SNMP v3 is enabled on each node in the cluster.
+     * If set to true, SNMP v3 is enabled on each node in the cluster.
      **/
     public Optional<Boolean> getSnmpV3Enabled() { return this.snmpV3Enabled; }
     public void setSnmpV3Enabled(Optional<Boolean> snmpV3Enabled) { 
         this.snmpV3Enabled = (snmpV3Enabled == null) ? Optional.<Boolean>empty() : snmpV3Enabled;
     }
     /** 
-     * If SNMP v3 is enabled, this value must be passed in place of the "networks" parameter. SNMP v3 only.
+     * If SNMP v3 is enabled, this value must be passed in place of the networks parameter. This parameter is required only for SNMP v3.
      **/
     public Optional<SnmpV3UsmUser[]> getUsmUsers() { return this.usmUsers; }
     public void setUsmUsers(Optional<SnmpV3UsmUser[]> usmUsers) { 

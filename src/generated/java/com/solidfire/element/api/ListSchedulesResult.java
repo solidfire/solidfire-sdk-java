@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListSchedulesResult implements Serializable {
 
-    public static final long serialVersionUID = 8655052800213850938L;
+    public static final long serialVersionUID = -3087136691982177742L;
     @SerializedName("schedules") private Schedule[] schedules;
-
     // empty constructor
     @Since("7.0")
     public ListSchedulesResult() {}

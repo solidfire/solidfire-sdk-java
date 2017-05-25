@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,17 +29,18 @@ import java.util.Objects;
 
 /**
  * CreateGroupSnapshotRequest  
+ * CreateGroupSnapshot enables you to create a point-in-time copy of a group of volumes. You can use this snapshot later as a backup or rollback to ensure the data on the group of volumes is consistent for the point in time that you created the snapshot.
+ * Note: Creating a group snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
  **/
 
 public class CreateGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -4050530006639669222L;
+    public static final long serialVersionUID = 7233256714600355531L;
     @SerializedName("volumes") private Long[] volumes;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
     @SerializedName("retention") private Optional<String> retention;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public CreateGroupSnapshotRequest() {}
@@ -49,12 +51,12 @@ public class CreateGroupSnapshotRequest implements Serializable {
     public CreateGroupSnapshotRequest(
         Long[] volumes,
         Optional<String> name,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumes = volumes;
         this.name = (name == null) ? Optional.<String>empty() : name;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     // parameterized constructor
     @Since("8.0")
@@ -63,14 +65,14 @@ public class CreateGroupSnapshotRequest implements Serializable {
         Optional<String> name,
         Optional<Boolean> enableRemoteReplication,
         Optional<String> retention,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumes = volumes;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -81,33 +83,35 @@ public class CreateGroupSnapshotRequest implements Serializable {
         this.volumes = volumes;
     }
     /** 
-     * A name for the snapshot.
-     * If no name is provided, the date and time the snapshot was taken is used.
+     * Name for the group snapshot. If unspecified, the date and time the group snapshot was taken is used.
      **/
     public Optional<String> getName() { return this.name; }
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
     /** 
-     * Identifies if snapshot is enabled for remote replication.
+     * Replicates the snapshot created to remote storage.
+     * Possible values are:
+     * true: The snapshot is replicated to remote storage.
+     * false: Default. The snapshot is not replicated.
      **/
     public Optional<Boolean> getEnableRemoteReplication() { return this.enableRemoteReplication; }
     public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) { 
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
     /** 
-     * The amount of time the snapshot will be retained. Enter in HH:mm:ss
+     * Specifies the amount of time for which the snapshots are retained. The format is HH:mm:ss.
      **/
     public Optional<String> getRetention() { return this.retention; }
     public void setRetention(Optional<String> retention) { 
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -180,7 +184,7 @@ public class CreateGroupSnapshotRequest implements Serializable {
         private Optional<String> name;
         private Optional<Boolean> enableRemoteReplication;
         private Optional<String> retention;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -223,8 +227,8 @@ public class CreateGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public CreateGroupSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public CreateGroupSnapshotRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

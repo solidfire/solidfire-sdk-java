@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,16 +29,19 @@ import java.util.Objects;
 
 /**
  * ListVirtualNetworksRequest  
+ * ListVirtualNetworks enables you to list all configured virtual networks for the cluster. You can use this method to verify the virtual
+ * network settings in the cluster.
+ * There are no required parameters for this method. However, to filter the results, you can pass one or more VirtualNetworkID or
+ * VirtualNetworkTag values.
  **/
 
 public class ListVirtualNetworksRequest implements Serializable {
 
-    public static final long serialVersionUID = 323479911027186489L;
+    public static final long serialVersionUID = 7870206783219450280L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
     @SerializedName("virtualNetworkTag") private Optional<Long> virtualNetworkTag;
     @SerializedName("virtualNetworkIDs") private Optional<Long[]> virtualNetworkIDs;
     @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
-
     // empty constructor
     @Since("7.0")
     public ListVirtualNetworksRequest() {}
@@ -59,28 +63,28 @@ public class ListVirtualNetworksRequest implements Serializable {
     }
 
     /** 
-     * Network ID to filter the list for a single virtual network
+     * Network ID to filter the list for a single virtual network.
      **/
     public Optional<Long> getVirtualNetworkID() { return this.virtualNetworkID; }
     public void setVirtualNetworkID(Optional<Long> virtualNetworkID) { 
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
     }
     /** 
-     * Network Tag to filter the list for a single virtual network
+     * Network tag to filter the list for a single virtual network.
      **/
     public Optional<Long> getVirtualNetworkTag() { return this.virtualNetworkTag; }
     public void setVirtualNetworkTag(Optional<Long> virtualNetworkTag) { 
         this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<Long>empty() : virtualNetworkTag;
     }
     /** 
-     * NetworkIDs to include in the list.
+     * Network IDs to include in the list.
      **/
     public Optional<Long[]> getVirtualNetworkIDs() { return this.virtualNetworkIDs; }
     public void setVirtualNetworkIDs(Optional<Long[]> virtualNetworkIDs) { 
         this.virtualNetworkIDs = (virtualNetworkIDs == null) ? Optional.<Long[]>empty() : virtualNetworkIDs;
     }
     /** 
-     * Network Tags to include in the list.
+     * Network tag to include in the list.
      **/
     public Optional<Long[]> getVirtualNetworkTags() { return this.virtualNetworkTags; }
     public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * GetVolumeEfficiencyRequest  
+ * GetVolumeEfficiency enables you to retrieve information about a volume. Only the volume you give as a parameter in this API method is used to compute the capacity.
  **/
 
 public class GetVolumeEfficiencyRequest implements Serializable {
 
-    public static final long serialVersionUID = 6871428855542224054L;
+    public static final long serialVersionUID = 6424824404200928046L;
     @SerializedName("volumeID") private Long volumeID;
-
     // empty constructor
     @Since("7.0")
     public GetVolumeEfficiencyRequest() {}

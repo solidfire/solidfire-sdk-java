@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,17 +29,20 @@ import java.util.Objects;
 
 /**
  * TestPingRequest  
+ * You can use the TestPing API method to validate the
+ * connection to all the nodes in a cluster on both 1G and 10G interfaces by using ICMP packets. The test uses the appropriate MTU sizes for each packet based on the MTU settings in the network configuration.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class TestPingRequest implements Serializable {
 
-    public static final long serialVersionUID = 8242775352369429256L;
+    public static final long serialVersionUID = 2718706506810708959L;
     @SerializedName("attempts") private Optional<Long> attempts;
     @SerializedName("hosts") private Optional<String> hosts;
     @SerializedName("totalTimeoutSec") private Optional<Long> totalTimeoutSec;
     @SerializedName("packetSize") private Optional<Long> packetSize;
     @SerializedName("pingTimeoutMsec") private Optional<Long> pingTimeoutMsec;
-
+    @SerializedName("prohibitFragmentation") private Optional<Boolean> prohibitFragmentation;
     // empty constructor
     @Since("7.0")
     public TestPingRequest() {}
@@ -51,7 +55,8 @@ public class TestPingRequest implements Serializable {
         Optional<String> hosts,
         Optional<Long> totalTimeoutSec,
         Optional<Long> packetSize,
-        Optional<Long> pingTimeoutMsec
+        Optional<Long> pingTimeoutMsec,
+        Optional<Boolean> prohibitFragmentation
     )
     {
         this.attempts = (attempts == null) ? Optional.<Long>empty() : attempts;
@@ -59,17 +64,19 @@ public class TestPingRequest implements Serializable {
         this.totalTimeoutSec = (totalTimeoutSec == null) ? Optional.<Long>empty() : totalTimeoutSec;
         this.packetSize = (packetSize == null) ? Optional.<Long>empty() : packetSize;
         this.pingTimeoutMsec = (pingTimeoutMsec == null) ? Optional.<Long>empty() : pingTimeoutMsec;
+        this.prohibitFragmentation = (prohibitFragmentation == null) ? Optional.<Boolean>empty() : prohibitFragmentation;
     }
 
     /** 
-     * Specifies the number of times the system should repeat the test ping. Default is 5.
+     * Specifies the number of times the system
+     * should repeat the test ping. The default value is 5.
      **/
     public Optional<Long> getAttempts() { return this.attempts; }
     public void setAttempts(Optional<Long> attempts) { 
         this.attempts = (attempts == null) ? Optional.<Long>empty() : attempts;
     }
     /** 
-     * Specify address or hostnames of devices to ping.
+     * Specifies a comma-separated list of addresses or hostnames of devices to ping.
      **/
     public Optional<String> getHosts() { return this.hosts; }
     public void setHosts(Optional<String> hosts) { 
@@ -83,18 +90,25 @@ public class TestPingRequest implements Serializable {
         this.totalTimeoutSec = (totalTimeoutSec == null) ? Optional.<Long>empty() : totalTimeoutSec;
     }
     /** 
-     * Specify the number of bytes to send in the ICMP packet sent to each IP. Number be less than the maximum MTU specified in the network configuration.
+     * Specifies the number of bytes to send in the ICMP packet that is sent to each IP. The number must be less than the maximum MTU specified in the network configuration.
      **/
     public Optional<Long> getPacketSize() { return this.packetSize; }
     public void setPacketSize(Optional<Long> packetSize) { 
         this.packetSize = (packetSize == null) ? Optional.<Long>empty() : packetSize;
     }
     /** 
-     * Specify the number of milliseconds to wait for each individual ping response. Default is 500ms.
+     * Specifies the number of milliseconds to wait for each individual ping response. The default value is 500 ms.
      **/
     public Optional<Long> getPingTimeoutMsec() { return this.pingTimeoutMsec; }
     public void setPingTimeoutMsec(Optional<Long> pingTimeoutMsec) { 
         this.pingTimeoutMsec = (pingTimeoutMsec == null) ? Optional.<Long>empty() : pingTimeoutMsec;
+    }
+    /** 
+     * Specifies that the Do not Fragment (DF) flag is enabled for the ICMP packets.
+     **/
+    public Optional<Boolean> getProhibitFragmentation() { return this.prohibitFragmentation; }
+    public void setProhibitFragmentation(Optional<Boolean> prohibitFragmentation) { 
+        this.prohibitFragmentation = (prohibitFragmentation == null) ? Optional.<Boolean>empty() : prohibitFragmentation;
     }
 
     @Override
@@ -109,12 +123,13 @@ public class TestPingRequest implements Serializable {
             Objects.equals(hosts, that.hosts) && 
             Objects.equals(totalTimeoutSec, that.totalTimeoutSec) && 
             Objects.equals(packetSize, that.packetSize) && 
-            Objects.equals(pingTimeoutMsec, that.pingTimeoutMsec);
+            Objects.equals(pingTimeoutMsec, that.pingTimeoutMsec) && 
+            Objects.equals(prohibitFragmentation, that.prohibitFragmentation);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( attempts,hosts,totalTimeoutSec,packetSize,pingTimeoutMsec );
+        return Objects.hash( attempts,hosts,totalTimeoutSec,packetSize,pingTimeoutMsec,prohibitFragmentation );
     }
 
 
@@ -125,6 +140,7 @@ public class TestPingRequest implements Serializable {
         map.put("totalTimeoutSec", totalTimeoutSec);
         map.put("packetSize", packetSize);
         map.put("pingTimeoutMsec", pingTimeoutMsec);
+        map.put("prohibitFragmentation", prohibitFragmentation);
         return map;
     }
 
@@ -148,6 +164,9 @@ public class TestPingRequest implements Serializable {
         if(null != pingTimeoutMsec && pingTimeoutMsec.isPresent()){
             sb.append(" pingTimeoutMsec : ").append(pingTimeoutMsec).append(",");
         }
+        if(null != prohibitFragmentation && prohibitFragmentation.isPresent()){
+            sb.append(" prohibitFragmentation : ").append(prohibitFragmentation).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -170,6 +189,7 @@ public class TestPingRequest implements Serializable {
         private Optional<Long> totalTimeoutSec;
         private Optional<Long> packetSize;
         private Optional<Long> pingTimeoutMsec;
+        private Optional<Boolean> prohibitFragmentation;
 
         private Builder() { }
 
@@ -179,7 +199,8 @@ public class TestPingRequest implements Serializable {
                          this.hosts,
                          this.totalTimeoutSec,
                          this.packetSize,
-                         this.pingTimeoutMsec);
+                         this.pingTimeoutMsec,
+                         this.prohibitFragmentation);
         }
 
         private TestPingRequest.Builder buildFrom(final TestPingRequest req) {
@@ -188,6 +209,7 @@ public class TestPingRequest implements Serializable {
             this.totalTimeoutSec = req.totalTimeoutSec;
             this.packetSize = req.packetSize;
             this.pingTimeoutMsec = req.pingTimeoutMsec;
+            this.prohibitFragmentation = req.prohibitFragmentation;
 
             return this;
         }
@@ -214,6 +236,11 @@ public class TestPingRequest implements Serializable {
 
         public TestPingRequest.Builder optionalPingTimeoutMsec(final Long pingTimeoutMsec) {
             this.pingTimeoutMsec = (pingTimeoutMsec == null) ? Optional.<Long>empty() : Optional.of(pingTimeoutMsec);
+            return this;
+        }
+
+        public TestPingRequest.Builder optionalProhibitFragmentation(final Boolean prohibitFragmentation) {
+            this.prohibitFragmentation = (prohibitFragmentation == null) ? Optional.<Boolean>empty() : Optional.of(prohibitFragmentation);
             return this;
         }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class GetNtpInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -3054121633811647599L;
+    public static final long serialVersionUID = 9086866457059775600L;
     @SerializedName("broadcastclient") private Boolean broadcastclient;
     @SerializedName("servers") private String[] servers;
-
     // empty constructor
     @Since("7.0")
     public GetNtpInfoResult() {}

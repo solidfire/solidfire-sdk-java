@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,15 @@ import java.util.Objects;
 
 /**
  * GetClusterHardwareInfoRequest  
+ * You can use the GetClusterHardwareInfo method to retrieve the hardware status and information for all Fibre Channel nodes, iSCSI
+ * nodes and drives in the cluster. This generally includes details about manufacturers, vendors, versions, and other associated hardware
+ * identification information.
  **/
 
 public class GetClusterHardwareInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -945659093469045744L;
+    public static final long serialVersionUID = -8967023920633030751L;
     @SerializedName("type") private Optional<String> type;
-
     // empty constructor
     @Since("7.0")
     public GetClusterHardwareInfoRequest() {}
@@ -50,7 +53,13 @@ public class GetClusterHardwareInfoRequest implements Serializable {
     }
 
     /** 
-     * Include only a certain type of hardware information in the response. Can be one of the following:drives: List only drive information in the response.nodes: List only node information in the response.all: Include both drive and node information in the response.If this parameter is omitted, a type of "all" is assumed.
+     * Includes only a certain type of hardware information in
+     * the response. Possible values are:
+     * drives: List only drive information in the response.
+     * nodes: List only node information in the response.
+     * all: Include both drive and node information in the
+     * response.
+     * If this parameter is omitted, a type of "all" is assumed.
      **/
     public Optional<String> getType() { return this.type; }
     public void setType(Optional<String> type) { 

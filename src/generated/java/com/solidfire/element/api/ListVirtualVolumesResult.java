@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class ListVirtualVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = 7373707765592220409L;
+    public static final long serialVersionUID = -2591084689131596112L;
     @SerializedName("virtualVolumes") private VirtualVolumeInfo[] virtualVolumes;
-    @SerializedName("nextVirtualVolumeID") private java.util.UUID nextVirtualVolumeID;
-
+    @SerializedName("nextVirtualVolumeID") private Optional<java.util.UUID> nextVirtualVolumeID;
     // empty constructor
     @Since("7.0")
     public ListVirtualVolumesResult() {}
@@ -45,24 +45,26 @@ public class ListVirtualVolumesResult implements Serializable {
     @Since("7.0")
     public ListVirtualVolumesResult(
         VirtualVolumeInfo[] virtualVolumes,
-        java.util.UUID nextVirtualVolumeID
+        Optional<java.util.UUID> nextVirtualVolumeID
     )
     {
         this.virtualVolumes = virtualVolumes;
-        this.nextVirtualVolumeID = nextVirtualVolumeID;
+        this.nextVirtualVolumeID = (nextVirtualVolumeID == null) ? Optional.<java.util.UUID>empty() : nextVirtualVolumeID;
     }
 
     /** 
+     * 
      **/
     public VirtualVolumeInfo[] getVirtualVolumes() { return this.virtualVolumes; }
     public void setVirtualVolumes(VirtualVolumeInfo[] virtualVolumes) { 
         this.virtualVolumes = virtualVolumes;
     }
     /** 
+     * 
      **/
-    public java.util.UUID getNextVirtualVolumeID() { return this.nextVirtualVolumeID; }
-    public void setNextVirtualVolumeID(java.util.UUID nextVirtualVolumeID) { 
-        this.nextVirtualVolumeID = nextVirtualVolumeID;
+    public Optional<java.util.UUID> getNextVirtualVolumeID() { return this.nextVirtualVolumeID; }
+    public void setNextVirtualVolumeID(Optional<java.util.UUID> nextVirtualVolumeID) { 
+        this.nextVirtualVolumeID = (nextVirtualVolumeID == null) ? Optional.<java.util.UUID>empty() : nextVirtualVolumeID;
     }
 
     @Override
@@ -96,7 +98,9 @@ public class ListVirtualVolumesResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" virtualVolumes : ").append(Arrays.toString(virtualVolumes)).append(",");
-        sb.append(" nextVirtualVolumeID : ").append(nextVirtualVolumeID).append(",");
+        if(null != nextVirtualVolumeID && nextVirtualVolumeID.isPresent()){
+            sb.append(" nextVirtualVolumeID : ").append(nextVirtualVolumeID).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -115,7 +119,7 @@ public class ListVirtualVolumesResult implements Serializable {
 
     public static class Builder {
         private VirtualVolumeInfo[] virtualVolumes;
-        private java.util.UUID nextVirtualVolumeID;
+        private Optional<java.util.UUID> nextVirtualVolumeID;
 
         private Builder() { }
 
@@ -137,8 +141,8 @@ public class ListVirtualVolumesResult implements Serializable {
             return this;
         }
 
-        public ListVirtualVolumesResult.Builder nextVirtualVolumeID(final java.util.UUID nextVirtualVolumeID) {
-            this.nextVirtualVolumeID = nextVirtualVolumeID;
+        public ListVirtualVolumesResult.Builder optionalNextVirtualVolumeID(final java.util.UUID nextVirtualVolumeID) {
+            this.nextVirtualVolumeID = (nextVirtualVolumeID == null) ? Optional.<java.util.UUID>empty() : Optional.of(nextVirtualVolumeID);
             return this;
         }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,17 +29,18 @@ import java.util.Objects;
 
 /**
  * ListVirtualVolumesRequest  
+ * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes,
+ * or only list a subset.
  **/
 
 public class ListVirtualVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -1561321066464562588L;
+    public static final long serialVersionUID = 5861056278571739633L;
     @SerializedName("details") private Optional<Boolean> details;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("recursive") private Optional<Boolean> recursive;
     @SerializedName("startVirtualVolumeID") private Optional<java.util.UUID> startVirtualVolumeID;
     @SerializedName("virtualVolumeIDs") private Optional<java.util.UUID[]> virtualVolumeIDs;
-
     // empty constructor
     @Since("7.0")
     public ListVirtualVolumesRequest() {}
@@ -62,7 +64,10 @@ public class ListVirtualVolumesRequest implements Serializable {
     }
 
     /** 
-     * Possible values:true: Include more details about each VVOL in the response.false: Include the standard level of detail about each VVOL in the response.
+     * Specifies the level of detail about each virtual volume that is returned. Possible values are:
+     * true: Include more details about each virtual volume in the response.
+     * false: Include the standard level of detail about each virtual volume in
+     * the response.
      **/
     public Optional<Boolean> getDetails() { return this.details; }
     public void setDetails(Optional<Boolean> details) { 
@@ -76,7 +81,12 @@ public class ListVirtualVolumesRequest implements Serializable {
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
     /** 
-     * Possible values:true: Include information about the children of each VVOL in the response.false: Do not include information about the children of each VVOL in the response.
+     * Specifies whether to include information about the children of each virtual volume in the response.
+     * Possible values are:
+     * true: Include information about the children of each virtual volume in
+     * the response.
+     * false: Do not include information about the children of each
+     * virtual volume in the response.
      **/
     public Optional<Boolean> getRecursive() { return this.recursive; }
     public void setRecursive(Optional<Boolean> recursive) { 
@@ -90,7 +100,9 @@ public class ListVirtualVolumesRequest implements Serializable {
         this.startVirtualVolumeID = (startVirtualVolumeID == null) ? Optional.<java.util.UUID>empty() : startVirtualVolumeID;
     }
     /** 
-     * A list of virtual volume  IDs for which to retrieve information. If you specify this parameter, the method returns information about only these virtual volumes.
+     * A list of virtual volume IDs for which to retrieve information. If
+     * you specify this parameter, the method returns information
+     * about only these virtual volumes.
      **/
     public Optional<java.util.UUID[]> getVirtualVolumeIDs() { return this.virtualVolumeIDs; }
     public void setVirtualVolumeIDs(Optional<java.util.UUID[]> virtualVolumeIDs) { 

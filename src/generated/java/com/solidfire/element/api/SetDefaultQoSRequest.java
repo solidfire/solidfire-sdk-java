@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,15 +29,16 @@ import java.util.Objects;
 
 /**
  * SetDefaultQoSRequest  
+ * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or
+ * IOPS) for a volume. For more information about QoS in a SolidFire cluster, see the User Guide.
  **/
 
 public class SetDefaultQoSRequest implements Serializable {
 
-    public static final long serialVersionUID = 3965487383106376781L;
+    public static final long serialVersionUID = 1968404664146107481L;
     @SerializedName("minIOPS") private Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private Optional<Long> maxIOPS;
     @SerializedName("burstIOPS") private Optional<Long> burstIOPS;
-
     // empty constructor
     @Since("7.0")
     public SetDefaultQoSRequest() {}
@@ -56,14 +58,16 @@ public class SetDefaultQoSRequest implements Serializable {
     }
 
     /** 
-     * The minimum number of sustained IOPS that are provided by the cluster to a volume.
+     * The minimum number of sustained IOPS provided by the cluster to a
+     * volume.
      **/
     public Optional<Long> getMinIOPS() { return this.minIOPS; }
     public void setMinIOPS(Optional<Long> minIOPS) { 
         this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : minIOPS;
     }
     /** 
-     * The maximum number of sustained IOPS that are provided by the cluster to a volume.
+     * The maximum number of sustained IOPS provided by the cluster to a
+     * volume.
      **/
     public Optional<Long> getMaxIOPS() { return this.maxIOPS; }
     public void setMaxIOPS(Optional<Long> maxIOPS) { 

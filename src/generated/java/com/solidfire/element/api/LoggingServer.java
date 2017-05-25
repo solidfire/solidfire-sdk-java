@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class LoggingServer implements Serializable {
 
-    public static final long serialVersionUID = 225982279799440583L;
+    public static final long serialVersionUID = -427725397936233786L;
     @SerializedName("host") private String host;
     @SerializedName("port") private Long port;
-
     // empty constructor
     @Since("7.0")
     public LoggingServer() {}

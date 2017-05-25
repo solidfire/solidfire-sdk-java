@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,11 +34,10 @@ import java.util.Objects;
 
 public class VolumeAccessGroupLunAssignments implements Serializable {
 
-    public static final long serialVersionUID = -29908714038898689L;
+    public static final long serialVersionUID = 6012174771118788856L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
     @SerializedName("deletedLunAssignments") private LunAssignment[] deletedLunAssignments;
-
     // empty constructor
     @Since("7.0")
     public VolumeAccessGroupLunAssignments() {}

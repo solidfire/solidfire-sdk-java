@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,15 +29,20 @@ import java.util.Objects;
 
 /**
  * ResetNodeRequest  
+ * The ResetNode API method enables you to reset a node to the factory settings. All data, packages (software upgrades, and so on),
+ * configurations, and log files are deleted from the node when you call this method. However, network settings for the node are
+ * preserved during this operation. Nodes that are participating in a cluster cannot be reset to the factory settings.
+ * The ResetNode API can only be used on nodes that are in an "Available" state. It cannot be used on nodes that are "Active" in a
+ * cluster, or in a "Pending" state.
+ * Caution: This method clears any data that is on the node. Exercise caution when using this method.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class ResetNodeRequest implements Serializable {
 
-    public static final long serialVersionUID = -1238993143208246416L;
+    public static final long serialVersionUID = 7128536831319380737L;
     @SerializedName("build") private String build;
     @SerializedName("force") private Boolean force;
-    @SerializedName("option") private String option;
-
     // empty constructor
     @Since("7.0")
     public ResetNodeRequest() {}
@@ -46,35 +52,27 @@ public class ResetNodeRequest implements Serializable {
     @Since("7.0")
     public ResetNodeRequest(
         String build,
-        Boolean force,
-        String option
+        Boolean force
     )
     {
         this.build = build;
         this.force = force;
-        this.option = option;
     }
 
     /** 
-     * Used to specify the URL to a remote Element software image to which the node will be reset.
+     * Specifies the URL to a remote Element software image to which the node will
+     * be reset.
      **/
     public String getBuild() { return this.build; }
     public void setBuild(String build) { 
         this.build = build;
     }
     /** 
-     * The force parameter must be included in order to successfully reset the node.
+     * Required parameter to successfully reset the node.
      **/
     public Boolean getForce() { return this.force; }
     public void setForce(Boolean force) { 
         this.force = force;
-    }
-    /** 
-     * Used to enter specifications for running the reset operation.
-     **/
-    public String getOption() { return this.option; }
-    public void setOption(String option) { 
-        this.option = option;
     }
 
     @Override
@@ -86,13 +84,12 @@ public class ResetNodeRequest implements Serializable {
 
         return 
             Objects.equals(build, that.build) && 
-            Objects.equals(force, that.force) && 
-            Objects.equals(option, that.option);
+            Objects.equals(force, that.force);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( build,force,option );
+        return Objects.hash( build,force );
     }
 
 
@@ -100,7 +97,6 @@ public class ResetNodeRequest implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("build", build);
         map.put("force", force);
-        map.put("option", option);
         return map;
     }
 
@@ -111,7 +107,6 @@ public class ResetNodeRequest implements Serializable {
 
         sb.append(" build : ").append(build).append(",");
         sb.append(" force : ").append(force).append(",");
-        sb.append(" option : ").append(option).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -131,21 +126,18 @@ public class ResetNodeRequest implements Serializable {
     public static class Builder {
         private String build;
         private Boolean force;
-        private String option;
 
         private Builder() { }
 
         public ResetNodeRequest build() {
             return new ResetNodeRequest (
                          this.build,
-                         this.force,
-                         this.option);
+                         this.force);
         }
 
         private ResetNodeRequest.Builder buildFrom(final ResetNodeRequest req) {
             this.build = req.build;
             this.force = req.force;
-            this.option = req.option;
 
             return this;
         }
@@ -157,11 +149,6 @@ public class ResetNodeRequest implements Serializable {
 
         public ResetNodeRequest.Builder force(final Boolean force) {
             this.force = force;
-            return this;
-        }
-
-        public ResetNodeRequest.Builder option(final String option) {
-            this.option = option;
             return this;
         }
 

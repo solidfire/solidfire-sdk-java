@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,11 +34,10 @@ import java.util.Objects;
 
 public class BackupTarget implements Serializable {
 
-    public static final long serialVersionUID = -2195701379749552647L;
+    public static final long serialVersionUID = 8826238734821802472L;
     @SerializedName("name") private String name;
     @SerializedName("backupTargetID") private Long backupTargetID;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public BackupTarget() {}
@@ -48,12 +48,12 @@ public class BackupTarget implements Serializable {
     public BackupTarget(
         String name,
         Long backupTargetID,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.name = name;
         this.backupTargetID = backupTargetID;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -73,9 +73,9 @@ public class BackupTarget implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -134,7 +134,7 @@ public class BackupTarget implements Serializable {
     public static class Builder {
         private String name;
         private Long backupTargetID;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -163,8 +163,8 @@ public class BackupTarget implements Serializable {
             return this;
         }
 
-        public BackupTarget.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public BackupTarget.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

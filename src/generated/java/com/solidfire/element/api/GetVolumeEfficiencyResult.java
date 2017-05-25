@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,13 +33,12 @@ import java.util.Objects;
 
 public class GetVolumeEfficiencyResult implements Serializable {
 
-    public static final long serialVersionUID = -5060321682615657329L;
-    @SerializedName("compression") private Double compression;
+    public static final long serialVersionUID = -3120062506996354115L;
+    @SerializedName("compression") private Optional<Double> compression;
     @SerializedName("deduplication") private Double deduplication;
     @SerializedName("missingVolumes") private Long[] missingVolumes;
     @SerializedName("thinProvisioning") private Double thinProvisioning;
     @SerializedName("timestamp") private String timestamp;
-
     // empty constructor
     @Since("7.0")
     public GetVolumeEfficiencyResult() {}
@@ -47,13 +47,13 @@ public class GetVolumeEfficiencyResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetVolumeEfficiencyResult(
-        Double compression,
+        Optional<Double> compression,
         Double deduplication,
         Double thinProvisioning,
         String timestamp
     )
     {
-        this.compression = compression;
+        this.compression = (compression == null) ? Optional.<Double>empty() : compression;
         this.deduplication = deduplication;
         this.thinProvisioning = thinProvisioning;
         this.timestamp = timestamp;
@@ -61,14 +61,14 @@ public class GetVolumeEfficiencyResult implements Serializable {
     // parameterized constructor
     @Since("8.0")
     public GetVolumeEfficiencyResult(
-        Double compression,
+        Optional<Double> compression,
         Double deduplication,
         Long[] missingVolumes,
         Double thinProvisioning,
         String timestamp
     )
     {
-        this.compression = compression;
+        this.compression = (compression == null) ? Optional.<Double>empty() : compression;
         this.deduplication = deduplication;
         this.missingVolumes = missingVolumes;
         this.thinProvisioning = thinProvisioning;
@@ -79,9 +79,9 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * The amount of space being saved by compressing data on a single volume.
      * Stated as a ratio where "1" means data has been stored without being compressed.
      **/
-    public Double getCompression() { return this.compression; }
-    public void setCompression(Double compression) { 
-        this.compression = compression;
+    public Optional<Double> getCompression() { return this.compression; }
+    public void setCompression(Optional<Double> compression) { 
+        this.compression = (compression == null) ? Optional.<Double>empty() : compression;
     }
     /** 
      * The amount of space being saved on a single volume by not duplicating data.
@@ -151,7 +151,9 @@ public class GetVolumeEfficiencyResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" compression : ").append(compression).append(",");
+        if(null != compression && compression.isPresent()){
+            sb.append(" compression : ").append(compression).append(",");
+        }
         sb.append(" deduplication : ").append(deduplication).append(",");
         sb.append(" missingVolumes : ").append(Arrays.toString(missingVolumes)).append(",");
         sb.append(" thinProvisioning : ").append(thinProvisioning).append(",");
@@ -173,7 +175,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
     }
 
     public static class Builder {
-        private Double compression;
+        private Optional<Double> compression;
         private Double deduplication;
         private Long[] missingVolumes;
         private Double thinProvisioning;
@@ -200,8 +202,8 @@ public class GetVolumeEfficiencyResult implements Serializable {
             return this;
         }
 
-        public GetVolumeEfficiencyResult.Builder compression(final Double compression) {
-            this.compression = compression;
+        public GetVolumeEfficiencyResult.Builder optionalCompression(final Double compression) {
+            this.compression = (compression == null) ? Optional.<Double>empty() : Optional.of(compression);
             return this;
         }
 

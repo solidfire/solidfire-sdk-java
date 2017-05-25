@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,13 +33,12 @@ import java.util.Objects;
 
 public class GetStorageContainerEfficiencyResult implements Serializable {
 
-    public static final long serialVersionUID = -666660104766808245L;
+    public static final long serialVersionUID = 4929877465229134166L;
     @SerializedName("compression") private Double compression;
     @SerializedName("deduplication") private Double deduplication;
     @SerializedName("missingVolumes") private Long[] missingVolumes;
     @SerializedName("thinProvisioning") private Double thinProvisioning;
     @SerializedName("timestamp") private String timestamp;
-
     // empty constructor
     @Since("7.0")
     public GetStorageContainerEfficiencyResult() {}
@@ -62,12 +62,14 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Double getCompression() { return this.compression; }
     public void setCompression(Double compression) { 
         this.compression = compression;
     }
     /** 
+     * 
      **/
     public Double getDeduplication() { return this.deduplication; }
     public void setDeduplication(Double deduplication) { 
@@ -81,6 +83,7 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
         this.missingVolumes = missingVolumes;
     }
     /** 
+     * 
      **/
     public Double getThinProvisioning() { return this.thinProvisioning; }
     public void setThinProvisioning(Double thinProvisioning) { 

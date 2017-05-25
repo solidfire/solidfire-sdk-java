@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * ModifyScheduleRequest  
+ * ModifySchedule enables you to change the intervals at which a scheduled snapshot occurs. This allows for adjustment to the snapshot frequency and retention.
  **/
 
 public class ModifyScheduleRequest implements Serializable {
 
-    public static final long serialVersionUID = 743621623881398457L;
+    public static final long serialVersionUID = 1827694511318546532L;
     @SerializedName("schedule") private Schedule schedule;
-
     // empty constructor
     @Since("7.0")
     public ModifyScheduleRequest() {}

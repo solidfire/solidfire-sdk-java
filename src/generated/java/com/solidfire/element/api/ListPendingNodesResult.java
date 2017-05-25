@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListPendingNodesResult implements Serializable {
 
-    public static final long serialVersionUID = 3491544079989980229L;
+    public static final long serialVersionUID = 1534165746777288457L;
     @SerializedName("pendingNodes") private PendingNode[] pendingNodes;
-
     // empty constructor
     @Since("7.0")
     public ListPendingNodesResult() {}
@@ -50,6 +50,7 @@ public class ListPendingNodesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public PendingNode[] getPendingNodes() { return this.pendingNodes; }
     public void setPendingNodes(PendingNode[] pendingNodes) { 

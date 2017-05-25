@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * GetFeatureStatusRequest  
+ * GetFeatureStatus enables you to retrieve the status of a cluster feature.
  **/
 
 public class GetFeatureStatusRequest implements Serializable {
 
-    public static final long serialVersionUID = 1167517827330762920L;
+    public static final long serialVersionUID = -2373229916563322428L;
     @SerializedName("feature") private Optional<String> feature;
-
     // empty constructor
     @Since("7.0")
     public GetFeatureStatusRequest() {}
@@ -50,7 +51,9 @@ public class GetFeatureStatusRequest implements Serializable {
     }
 
     /** 
-     * Valid values: vvols: Find the status of the Virtual Volumes (VVOLs) cluster feature.
+     * Specifies the feature for which the status is returned. Valid value is:
+     * vvols: Retrieve status for the NetApp SolidFire VVols
+     * cluster feature.
      **/
     public Optional<String> getFeature() { return this.feature; }
     public void setFeature(Optional<String> feature) { 

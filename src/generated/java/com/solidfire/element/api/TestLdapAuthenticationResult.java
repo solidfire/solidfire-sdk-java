@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class TestLdapAuthenticationResult implements Serializable {
 
-    public static final long serialVersionUID = -6470804113755533516L;
+    public static final long serialVersionUID = 2927480401985371245L;
     @SerializedName("groups") private String[] groups;
     @SerializedName("userDN") private String userDN;
-
     // empty constructor
     @Since("7.0")
     public TestLdapAuthenticationResult() {}

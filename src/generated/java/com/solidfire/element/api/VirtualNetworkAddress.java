@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class VirtualNetworkAddress implements Serializable {
 
-    public static final long serialVersionUID = -4065911921073610306L;
+    public static final long serialVersionUID = -1840195263816924349L;
     @SerializedName("virtualNetworkID") private Long virtualNetworkID;
     @SerializedName("address") private String address;
-
     // empty constructor
     @Since("7.0")
     public VirtualNetworkAddress() {}

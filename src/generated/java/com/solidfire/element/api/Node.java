@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -35,11 +36,11 @@ import java.util.Objects;
 
 public class Node implements Serializable {
 
-    public static final long serialVersionUID = -7985492147846592224L;
+    public static final long serialVersionUID = 5398127148286562786L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("associatedMasterServiceID") private Long associatedMasterServiceID;
     @SerializedName("associatedFServiceID") private Long associatedFServiceID;
-    @SerializedName("fibreChannelTargetPortGroup") private String fibreChannelTargetPortGroup;
+    @SerializedName("fibreChannelTargetPortGroup") private Optional<String> fibreChannelTargetPortGroup;
     @SerializedName("name") private String name;
     @SerializedName("platformInfo") private Platform platformInfo;
     @SerializedName("softwareVersion") private String softwareVersion;
@@ -51,8 +52,7 @@ public class Node implements Serializable {
     @SerializedName("sipi") private String sipi;
     @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("virtualNetworks") private VirtualNetworkAddress[] virtualNetworks;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
-
+    @SerializedName("attributes") private Attributes attributes;
     // empty constructor
     @Since("7.0")
     public Node() {}
@@ -64,7 +64,7 @@ public class Node implements Serializable {
         Long nodeID,
         Long associatedMasterServiceID,
         Long associatedFServiceID,
-        String fibreChannelTargetPortGroup,
+        Optional<String> fibreChannelTargetPortGroup,
         String name,
         Platform platformInfo,
         String softwareVersion,
@@ -76,13 +76,13 @@ public class Node implements Serializable {
         String sipi,
         java.util.UUID uuid,
         VirtualNetworkAddress[] virtualNetworks,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.nodeID = nodeID;
         this.associatedMasterServiceID = associatedMasterServiceID;
         this.associatedFServiceID = associatedFServiceID;
-        this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
+        this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<String>empty() : fibreChannelTargetPortGroup;
         this.name = name;
         this.platformInfo = platformInfo;
         this.softwareVersion = softwareVersion;
@@ -112,18 +112,21 @@ public class Node implements Serializable {
         this.associatedMasterServiceID = associatedMasterServiceID;
     }
     /** 
+     * 
      **/
     public Long getAssociatedFServiceID() { return this.associatedFServiceID; }
     public void setAssociatedFServiceID(Long associatedFServiceID) { 
         this.associatedFServiceID = associatedFServiceID;
     }
     /** 
+     * 
      **/
-    public String getFibreChannelTargetPortGroup() { return this.fibreChannelTargetPortGroup; }
-    public void setFibreChannelTargetPortGroup(String fibreChannelTargetPortGroup) { 
-        this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
+    public Optional<String> getFibreChannelTargetPortGroup() { return this.fibreChannelTargetPortGroup; }
+    public void setFibreChannelTargetPortGroup(Optional<String> fibreChannelTargetPortGroup) { 
+        this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<String>empty() : fibreChannelTargetPortGroup;
     }
     /** 
+     * 
      **/
     public String getName() { return this.name; }
     public void setName(String name) { 
@@ -193,15 +196,17 @@ public class Node implements Serializable {
         this.uuid = uuid;
     }
     /** 
+     * 
      **/
     public VirtualNetworkAddress[] getVirtualNetworks() { return this.virtualNetworks; }
     public void setVirtualNetworks(VirtualNetworkAddress[] virtualNetworks) { 
         this.virtualNetworks = virtualNetworks;
     }
     /** 
+     * 
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -266,7 +271,9 @@ public class Node implements Serializable {
         sb.append(" nodeID : ").append(nodeID).append(",");
         sb.append(" associatedMasterServiceID : ").append(associatedMasterServiceID).append(",");
         sb.append(" associatedFServiceID : ").append(associatedFServiceID).append(",");
-        sb.append(" fibreChannelTargetPortGroup : ").append(fibreChannelTargetPortGroup).append(",");
+        if(null != fibreChannelTargetPortGroup && fibreChannelTargetPortGroup.isPresent()){
+            sb.append(" fibreChannelTargetPortGroup : ").append(fibreChannelTargetPortGroup).append(",");
+        }
         sb.append(" name : ").append(name).append(",");
         sb.append(" platformInfo : ").append(platformInfo).append(",");
         sb.append(" softwareVersion : ").append(softwareVersion).append(",");
@@ -299,7 +306,7 @@ public class Node implements Serializable {
         private Long nodeID;
         private Long associatedMasterServiceID;
         private Long associatedFServiceID;
-        private String fibreChannelTargetPortGroup;
+        private Optional<String> fibreChannelTargetPortGroup;
         private String name;
         private Platform platformInfo;
         private String softwareVersion;
@@ -311,7 +318,7 @@ public class Node implements Serializable {
         private String sipi;
         private java.util.UUID uuid;
         private VirtualNetworkAddress[] virtualNetworks;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -371,8 +378,8 @@ public class Node implements Serializable {
             return this;
         }
 
-        public Node.Builder fibreChannelTargetPortGroup(final String fibreChannelTargetPortGroup) {
-            this.fibreChannelTargetPortGroup = fibreChannelTargetPortGroup;
+        public Node.Builder optionalFibreChannelTargetPortGroup(final String fibreChannelTargetPortGroup) {
+            this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<String>empty() : Optional.of(fibreChannelTargetPortGroup);
             return this;
         }
 
@@ -431,7 +438,7 @@ public class Node implements Serializable {
             return this;
         }
 
-        public Node.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public Node.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

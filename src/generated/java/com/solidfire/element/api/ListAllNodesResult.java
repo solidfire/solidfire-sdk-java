@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,10 @@ import java.util.Objects;
 
 public class ListAllNodesResult implements Serializable {
 
-    public static final long serialVersionUID = 3988058806506812217L;
+    public static final long serialVersionUID = 1388275088147267632L;
     @SerializedName("nodes") private Node[] nodes;
     @SerializedName("pendingNodes") private PendingNode[] pendingNodes;
-
+    @SerializedName("pendingActiveNodes") private Optional<PendingActiveNode[]> pendingActiveNodes;
     // empty constructor
     @Since("7.0")
     public ListAllNodesResult() {}
@@ -45,24 +46,35 @@ public class ListAllNodesResult implements Serializable {
     @Since("7.0")
     public ListAllNodesResult(
         Node[] nodes,
-        PendingNode[] pendingNodes
+        PendingNode[] pendingNodes,
+        Optional<PendingActiveNode[]> pendingActiveNodes
     )
     {
         this.nodes = nodes;
         this.pendingNodes = pendingNodes;
+        this.pendingActiveNodes = (pendingActiveNodes == null) ? Optional.<PendingActiveNode[]>empty() : pendingActiveNodes;
     }
 
     /** 
+     * 
      **/
     public Node[] getNodes() { return this.nodes; }
     public void setNodes(Node[] nodes) { 
         this.nodes = nodes;
     }
     /** 
+     * 
      **/
     public PendingNode[] getPendingNodes() { return this.pendingNodes; }
     public void setPendingNodes(PendingNode[] pendingNodes) { 
         this.pendingNodes = pendingNodes;
+    }
+    /** 
+     * List of objects detailing information about all PendingActive nodes in the system.
+     **/
+    public Optional<PendingActiveNode[]> getPendingActiveNodes() { return this.pendingActiveNodes; }
+    public void setPendingActiveNodes(Optional<PendingActiveNode[]> pendingActiveNodes) { 
+        this.pendingActiveNodes = (pendingActiveNodes == null) ? Optional.<PendingActiveNode[]>empty() : pendingActiveNodes;
     }
 
     @Override
@@ -74,12 +86,13 @@ public class ListAllNodesResult implements Serializable {
 
         return 
             Arrays.equals(nodes, that.nodes) && 
-            Arrays.equals(pendingNodes, that.pendingNodes);
+            Arrays.equals(pendingNodes, that.pendingNodes) && 
+            Objects.equals(pendingActiveNodes, that.pendingActiveNodes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])nodes,(Object[])pendingNodes );
+        return Objects.hash( (Object[])nodes,(Object[])pendingNodes,pendingActiveNodes );
     }
 
 
@@ -87,6 +100,7 @@ public class ListAllNodesResult implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("nodes", nodes);
         map.put("pendingNodes", pendingNodes);
+        map.put("pendingActiveNodes", pendingActiveNodes);
         return map;
     }
 
@@ -97,6 +111,9 @@ public class ListAllNodesResult implements Serializable {
 
         sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
         sb.append(" pendingNodes : ").append(Arrays.toString(pendingNodes)).append(",");
+        if(null != pendingActiveNodes && pendingActiveNodes.isPresent()){
+            sb.append(" pendingActiveNodes : ").append(pendingActiveNodes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -116,18 +133,21 @@ public class ListAllNodesResult implements Serializable {
     public static class Builder {
         private Node[] nodes;
         private PendingNode[] pendingNodes;
+        private Optional<PendingActiveNode[]> pendingActiveNodes;
 
         private Builder() { }
 
         public ListAllNodesResult build() {
             return new ListAllNodesResult (
                          this.nodes,
-                         this.pendingNodes);
+                         this.pendingNodes,
+                         this.pendingActiveNodes);
         }
 
         private ListAllNodesResult.Builder buildFrom(final ListAllNodesResult req) {
             this.nodes = req.nodes;
             this.pendingNodes = req.pendingNodes;
+            this.pendingActiveNodes = req.pendingActiveNodes;
 
             return this;
         }
@@ -139,6 +159,11 @@ public class ListAllNodesResult implements Serializable {
 
         public ListAllNodesResult.Builder pendingNodes(final PendingNode[] pendingNodes) {
             this.pendingNodes = pendingNodes;
+            return this;
+        }
+
+        public ListAllNodesResult.Builder optionalPendingActiveNodes(final PendingActiveNode[] pendingActiveNodes) {
+            this.pendingActiveNodes = (pendingActiveNodes == null) ? Optional.<PendingActiveNode[]>empty() : Optional.of(pendingActiveNodes);
             return this;
         }
 

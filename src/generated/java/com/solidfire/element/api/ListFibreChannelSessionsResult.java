@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,9 +34,8 @@ import java.util.Objects;
 
 public class ListFibreChannelSessionsResult implements Serializable {
 
-    public static final long serialVersionUID = -122152116909046325L;
+    public static final long serialVersionUID = -8303967880548302529L;
     @SerializedName("sessions") private FibreChannelSession[] sessions;
-
     // empty constructor
     @Since("7.0")
     public ListFibreChannelSessionsResult() {}

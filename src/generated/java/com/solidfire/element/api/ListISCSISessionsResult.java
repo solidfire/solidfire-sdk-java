@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListISCSISessionsResult implements Serializable {
 
-    public static final long serialVersionUID = 3301056024020204128L;
+    public static final long serialVersionUID = -4326745115163837474L;
     @SerializedName("sessions") private ISCSISession[] sessions;
-
     // empty constructor
     @Since("7.0")
     public ListISCSISessionsResult() {}
@@ -50,6 +50,7 @@ public class ListISCSISessionsResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public ISCSISession[] getSessions() { return this.sessions; }
     public void setSessions(ISCSISession[] sessions) { 

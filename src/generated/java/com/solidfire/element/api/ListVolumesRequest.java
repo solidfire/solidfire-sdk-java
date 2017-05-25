@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,18 +29,21 @@ import java.util.Objects;
 
 /**
  * ListVolumesRequest  
+ * The ListVolumes method enables you to retrieve a list of volumes that are in a cluster. You can specify the volumes you want to
+ * return in the list by using the available parameters.
  **/
 
 public class ListVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = -2486206820112754562L;
+    public static final long serialVersionUID = 1679195579471116122L;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("volumeStatus") private Optional<String> volumeStatus;
     @SerializedName("accounts") private Optional<Long[]> accounts;
     @SerializedName("isPaired") private Optional<Boolean> isPaired;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
-
+    @SerializedName("volumeName") private Optional<String> volumeName;
+    @SerializedName("includeVirtualVolumes") private Optional<Boolean> includeVirtualVolumes;
     // empty constructor
     @Since("7.0")
     public ListVolumesRequest() {}
@@ -52,7 +56,8 @@ public class ListVolumesRequest implements Serializable {
         Optional<Long> limit,
         Optional<String> volumeStatus,
         Optional<Long[]> accounts,
-        Optional<Boolean> isPaired
+        Optional<Boolean> isPaired,
+        Optional<String> volumeName
     )
     {
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
@@ -60,6 +65,7 @@ public class ListVolumesRequest implements Serializable {
         this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
         this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
         this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
+        this.volumeName = (volumeName == null) ? Optional.<String>empty() : volumeName;
     }
     // parameterized constructor
     @Since("9.0")
@@ -69,7 +75,9 @@ public class ListVolumesRequest implements Serializable {
         Optional<String> volumeStatus,
         Optional<Long[]> accounts,
         Optional<Boolean> isPaired,
-        Optional<Long[]> volumeIDs
+        Optional<Long[]> volumeIDs,
+        Optional<String> volumeName,
+        Optional<Boolean> includeVirtualVolumes
     )
     {
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
@@ -78,55 +86,83 @@ public class ListVolumesRequest implements Serializable {
         this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
         this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
         this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
+        this.volumeName = (volumeName == null) ? Optional.<String>empty() : volumeName;
+        this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
     }
 
     /** 
-     * The ID of the first volume to list.
-     * This can be useful for paging results.
-     * By default, this starts at the lowest VolumeID.
+     * Only volumes with an ID greater than or equal to this
+     * value are returned. Mutually exclusive with the
+     * volumeIDs parameter.
      **/
     public Optional<Long> getStartVolumeID() { return this.startVolumeID; }
     public void setStartVolumeID(Optional<Long> startVolumeID) { 
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
     }
     /** 
-     * The maximum number of volumes to return from the API.
+     * Specifies the maximum number of volume
+     * results that are returned. Mutually exclusive with the
+     * volumeIDs parameter.
      **/
     public Optional<Long> getLimit() { return this.limit; }
     public void setLimit(Optional<Long> limit) { 
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
     /** 
-     * If specified, filter to only volumes with the provided status.
-     * By default, list all volumes.
+     * Only volumes with a status equal to the status value are
+     * returned.
+     * Possible values are:
+     * creating
+     * snapshotting
+     * active
+     * deleted
      **/
     public Optional<String> getVolumeStatus() { return this.volumeStatus; }
     public void setVolumeStatus(Optional<String> volumeStatus) { 
         this.volumeStatus = (volumeStatus == null) ? Optional.<String>empty() : volumeStatus;
     }
     /** 
-     * If specified, only fetch volumes which belong to the provided accounts.
-     * By default, list volumes for all accounts.
+     * Returns only the volumes owned by the accounts you specify here. Mutually exclusive with the volumeIDs parameter.
      **/
     public Optional<Long[]> getAccounts() { return this.accounts; }
     public void setAccounts(Optional<Long[]> accounts) { 
         this.accounts = (accounts == null) ? Optional.<Long[]>empty() : accounts;
     }
     /** 
-     * If specified, only fetch volumes which are paired (if true) or non-paired (if false).
-     * By default, list all volumes regardless of their pairing status.
+     * Returns volumes that are paired or not paired.
+     * Possible values are:
+     * true: Returns all paired volumes.
+     * false: Returns all volumes that are not paired.
      **/
     public Optional<Boolean> getIsPaired() { return this.isPaired; }
     public void setIsPaired(Optional<Boolean> isPaired) { 
         this.isPaired = (isPaired == null) ? Optional.<Boolean>empty() : isPaired;
     }
     /** 
-     * If specified, only fetch volumes specified in this list.
-     * This option cannot be specified if startVolumeID, limit, or accounts option is specified.
+     * A list of volume IDs. If you supply this parameter, other
+     * parameters operate only on this set of volumes. Mutually
+     * exclusive with the accounts, startVolumeID, and limit
+     * parameters.
      **/
     public Optional<Long[]> getVolumeIDs() { return this.volumeIDs; }
     public void setVolumeIDs(Optional<Long[]> volumeIDs) { 
         this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
+    }
+    /** 
+     * Only volume object information matching the volume
+     * name is returned.
+     **/
+    public Optional<String> getVolumeName() { return this.volumeName; }
+    public void setVolumeName(Optional<String> volumeName) { 
+        this.volumeName = (volumeName == null) ? Optional.<String>empty() : volumeName;
+    }
+    /** 
+     * Specifies that virtual volumes are included in the response by default.
+     * To exclude virtual volumes, set to false.
+     **/
+    public Optional<Boolean> getIncludeVirtualVolumes() { return this.includeVirtualVolumes; }
+    public void setIncludeVirtualVolumes(Optional<Boolean> includeVirtualVolumes) { 
+        this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
     }
 
     @Override
@@ -142,12 +178,14 @@ public class ListVolumesRequest implements Serializable {
             Objects.equals(volumeStatus, that.volumeStatus) && 
             Objects.equals(accounts, that.accounts) && 
             Objects.equals(isPaired, that.isPaired) && 
-            Objects.equals(volumeIDs, that.volumeIDs);
+            Objects.equals(volumeIDs, that.volumeIDs) && 
+            Objects.equals(volumeName, that.volumeName) && 
+            Objects.equals(includeVirtualVolumes, that.includeVirtualVolumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( startVolumeID,limit,volumeStatus,accounts,isPaired,volumeIDs );
+        return Objects.hash( startVolumeID,limit,volumeStatus,accounts,isPaired,volumeIDs,volumeName,includeVirtualVolumes );
     }
 
 
@@ -159,6 +197,8 @@ public class ListVolumesRequest implements Serializable {
         map.put("accounts", accounts);
         map.put("isPaired", isPaired);
         map.put("volumeIDs", volumeIDs);
+        map.put("volumeName", volumeName);
+        map.put("includeVirtualVolumes", includeVirtualVolumes);
         return map;
     }
 
@@ -185,6 +225,12 @@ public class ListVolumesRequest implements Serializable {
         if(null != volumeIDs && volumeIDs.isPresent()){
             sb.append(" volumeIDs : ").append(volumeIDs).append(",");
         }
+        if(null != volumeName && volumeName.isPresent()){
+            sb.append(" volumeName : ").append(volumeName).append(",");
+        }
+        if(null != includeVirtualVolumes && includeVirtualVolumes.isPresent()){
+            sb.append(" includeVirtualVolumes : ").append(includeVirtualVolumes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -208,6 +254,8 @@ public class ListVolumesRequest implements Serializable {
         private Optional<Long[]> accounts;
         private Optional<Boolean> isPaired;
         private Optional<Long[]> volumeIDs;
+        private Optional<String> volumeName;
+        private Optional<Boolean> includeVirtualVolumes;
 
         private Builder() { }
 
@@ -218,7 +266,9 @@ public class ListVolumesRequest implements Serializable {
                          this.volumeStatus,
                          this.accounts,
                          this.isPaired,
-                         this.volumeIDs);
+                         this.volumeIDs,
+                         this.volumeName,
+                         this.includeVirtualVolumes);
         }
 
         private ListVolumesRequest.Builder buildFrom(final ListVolumesRequest req) {
@@ -228,6 +278,8 @@ public class ListVolumesRequest implements Serializable {
             this.accounts = req.accounts;
             this.isPaired = req.isPaired;
             this.volumeIDs = req.volumeIDs;
+            this.volumeName = req.volumeName;
+            this.includeVirtualVolumes = req.includeVirtualVolumes;
 
             return this;
         }
@@ -259,6 +311,16 @@ public class ListVolumesRequest implements Serializable {
 
         public ListVolumesRequest.Builder optionalVolumeIDs(final Long[] volumeIDs) {
             this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : Optional.of(volumeIDs);
+            return this;
+        }
+
+        public ListVolumesRequest.Builder optionalVolumeName(final String volumeName) {
+            this.volumeName = (volumeName == null) ? Optional.<String>empty() : Optional.of(volumeName);
+            return this;
+        }
+
+        public ListVolumesRequest.Builder optionalIncludeVirtualVolumes(final Boolean includeVirtualVolumes) {
+            this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : Optional.of(includeVirtualVolumes);
             return this;
         }
 

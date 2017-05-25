@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class CopyVolumeResult implements Serializable {
 
-    public static final long serialVersionUID = 837371064447947130L;
+    public static final long serialVersionUID = 3029693764197794185L;
     @SerializedName("cloneID") private Long cloneID;
     @SerializedName("asyncHandle") private Long asyncHandle;
-
     // empty constructor
     @Since("7.0")
     public CopyVolumeResult() {}
@@ -53,6 +53,7 @@ public class CopyVolumeResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getCloneID() { return this.cloneID; }
     public void setCloneID(Long cloneID) { 

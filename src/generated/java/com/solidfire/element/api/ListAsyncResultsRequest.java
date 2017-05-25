@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,15 @@ import java.util.Objects;
 
 /**
  * ListAsyncResultsRequest  
+ * You can use ListAsyncResults to list the results of all currently running and completed asynchronous methods on the system.
+ * Querying asynchronous results with ListAsyncResults does not cause completed asyncHandles to expire; you can use GetAsyncResult
+ * to query any of the asyncHandles returned by ListAsyncResults.
  **/
 
 public class ListAsyncResultsRequest implements Serializable {
 
-    public static final long serialVersionUID = 3012226367212878738L;
+    public static final long serialVersionUID = 174631595997196829L;
     @SerializedName("asyncResultTypes") private Optional<String[]> asyncResultTypes;
-
     // empty constructor
     @Since("7.0")
     public ListAsyncResultsRequest() {}
@@ -50,7 +53,15 @@ public class ListAsyncResultsRequest implements Serializable {
     }
 
     /** 
-     * An optional list of types of results. You can use this list to restrict the results to only these types of operations. Possible values:BulkVolume: Copy operations between volumes, such as backups or restores.Clone: Volume cloning operations.DriveRemoval: Operations involving the system copying data from a drive in preparation to remove it from the cluster.RtfiPendingNode: Operations involving the system installing compatible software on a node before adding it to the cluster.
+     * An optional list of types of results. You can use this list to restrict the
+     * results to only these types of operations. Possible values are:
+     * BulkVolume: Copy operations between volumes, such as backups or
+     * restores.
+     * Clone: Volume cloning operations.
+     * DriveRemoval: Operations involving the system copying data from a
+     * drive in preparation to remove it from the cluster.
+     * RtfiPendingNode: Operations involving the system installing
+     * compatible software on a node before adding it to the cluster
      **/
     public Optional<String[]> getAsyncResultTypes() { return this.asyncResultTypes; }
     public void setAsyncResultTypes(Optional<String[]> asyncResultTypes) { 

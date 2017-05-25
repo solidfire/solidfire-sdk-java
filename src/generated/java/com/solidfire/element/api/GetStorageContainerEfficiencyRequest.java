@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * GetStorageContainerEfficiencyRequest  
+ * GetStorageContainerEfficiency enables you to retrieve efficiency information about a virtual volume storage container.
  **/
 
 public class GetStorageContainerEfficiencyRequest implements Serializable {
 
-    public static final long serialVersionUID = -6334814596262264226L;
+    public static final long serialVersionUID = -2147464210752945777L;
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
-
     // empty constructor
     @Since("7.0")
     public GetStorageContainerEfficiencyRequest() {}

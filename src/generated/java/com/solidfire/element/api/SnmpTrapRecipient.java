@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,11 +34,10 @@ import java.util.Objects;
 
 public class SnmpTrapRecipient implements Serializable {
 
-    public static final long serialVersionUID = -7686465021384105517L;
+    public static final long serialVersionUID = 7943618053444362598L;
     @SerializedName("host") private String host;
     @SerializedName("community") private String community;
     @SerializedName("port") private Long port;
-
     // empty constructor
     @Since("7.0")
     public SnmpTrapRecipient() {}

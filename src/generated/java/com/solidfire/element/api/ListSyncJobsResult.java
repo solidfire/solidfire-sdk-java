@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListSyncJobsResult implements Serializable {
 
-    public static final long serialVersionUID = 2469759160601558884L;
+    public static final long serialVersionUID = -6987005263163992583L;
     @SerializedName("syncJobs") private SyncJob[] syncJobs;
-
     // empty constructor
     @Since("7.0")
     public ListSyncJobsResult() {}
@@ -50,6 +50,7 @@ public class ListSyncJobsResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public SyncJob[] getSyncJobs() { return this.syncJobs; }
     public void setSyncJobs(SyncJob[] syncJobs) { 

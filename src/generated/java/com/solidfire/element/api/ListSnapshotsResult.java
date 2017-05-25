@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListSnapshotsResult implements Serializable {
 
-    public static final long serialVersionUID = 3190994173877911303L;
+    public static final long serialVersionUID = 8517691898175395201L;
     @SerializedName("snapshots") private Snapshot[] snapshots;
-
     // empty constructor
     @Since("7.0")
     public ListSnapshotsResult() {}

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,15 +29,17 @@ import java.util.Objects;
 
 /**
  * RestartServicesRequest  
+ * The RestartServices API method enables you to restart the services on a node.
+ * Caution: This method causes temporary node services interruption. Exercise caution when using this method.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class RestartServicesRequest implements Serializable {
 
-    public static final long serialVersionUID = 4336616463661009278L;
+    public static final long serialVersionUID = 3698049384203964150L;
     @SerializedName("force") private Boolean force;
     @SerializedName("service") private Optional<String> service;
     @SerializedName("action") private Optional<String> action;
-
     // empty constructor
     @Since("7.0")
     public RestartServicesRequest() {}
@@ -56,7 +59,7 @@ public class RestartServicesRequest implements Serializable {
     }
 
     /** 
-     * The "force" parameter must be included on this method to successfully restart services on a node.   
+     * Required parameter to successfully restart services on a node.
      **/
     public Boolean getForce() { return this.force; }
     public void setForce(Boolean force) { 

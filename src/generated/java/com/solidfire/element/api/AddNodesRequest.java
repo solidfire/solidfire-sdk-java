@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,15 @@ import java.util.Objects;
 
 /**
  * AddNodesRequest  
+ * AddNodes enables you to add one or more new nodes to a cluster. When a node that is not configured starts up for the first time, you are prompted to configure the node. After you configure the node, it is registered as a "pending node" with the cluster. 
+ * Note: It might take several seconds after adding a new node for it to start up and register its drives as available.
  **/
 
 public class AddNodesRequest implements Serializable {
 
-    public static final long serialVersionUID = 3993935760062895060L;
+    public static final long serialVersionUID = -6849026455094099622L;
     @SerializedName("pendingNodes") private Long[] pendingNodes;
-
+    @SerializedName("autoInstall") private Optional<Boolean> autoInstall;
     // empty constructor
     @Since("7.0")
     public AddNodesRequest() {}
@@ -43,18 +46,27 @@ public class AddNodesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddNodesRequest(
-        Long[] pendingNodes
+        Long[] pendingNodes,
+        Optional<Boolean> autoInstall
     )
     {
         this.pendingNodes = pendingNodes;
+        this.autoInstall = (autoInstall == null) ? Optional.<Boolean>empty() : autoInstall;
     }
 
     /** 
-     * List of PendingNodeIDs for the Nodes to be added. You can obtain the list of Pending Nodes via the ListPendingNodes method.
+     *  List of pending NodeIDs for the nodes to be added. You can  obtain the list of pending nodes using the ListPendingNodes method.
      **/
     public Long[] getPendingNodes() { return this.pendingNodes; }
     public void setPendingNodes(Long[] pendingNodes) { 
         this.pendingNodes = pendingNodes;
+    }
+    /** 
+     * Whether these nodes should be autoinstalled
+     **/
+    public Optional<Boolean> getAutoInstall() { return this.autoInstall; }
+    public void setAutoInstall(Optional<Boolean> autoInstall) { 
+        this.autoInstall = (autoInstall == null) ? Optional.<Boolean>empty() : autoInstall;
     }
 
     @Override
@@ -65,18 +77,20 @@ public class AddNodesRequest implements Serializable {
         AddNodesRequest that = (AddNodesRequest) o;
 
         return 
-            Arrays.equals(pendingNodes, that.pendingNodes);
+            Arrays.equals(pendingNodes, that.pendingNodes) && 
+            Objects.equals(autoInstall, that.autoInstall);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])pendingNodes );
+        return Objects.hash( (Object[])pendingNodes,autoInstall );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("pendingNodes", pendingNodes);
+        map.put("autoInstall", autoInstall);
         return map;
     }
 
@@ -86,6 +100,9 @@ public class AddNodesRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" pendingNodes : ").append(Arrays.toString(pendingNodes)).append(",");
+        if(null != autoInstall && autoInstall.isPresent()){
+            sb.append(" autoInstall : ").append(autoInstall).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -104,22 +121,30 @@ public class AddNodesRequest implements Serializable {
 
     public static class Builder {
         private Long[] pendingNodes;
+        private Optional<Boolean> autoInstall;
 
         private Builder() { }
 
         public AddNodesRequest build() {
             return new AddNodesRequest (
-                         this.pendingNodes);
+                         this.pendingNodes,
+                         this.autoInstall);
         }
 
         private AddNodesRequest.Builder buildFrom(final AddNodesRequest req) {
             this.pendingNodes = req.pendingNodes;
+            this.autoInstall = req.autoInstall;
 
             return this;
         }
 
         public AddNodesRequest.Builder pendingNodes(final Long[] pendingNodes) {
             this.pendingNodes = pendingNodes;
+            return this;
+        }
+
+        public AddNodesRequest.Builder optionalAutoInstall(final Boolean autoInstall) {
+            this.autoInstall = (autoInstall == null) ? Optional.<Boolean>empty() : Optional.of(autoInstall);
             return this;
         }
 

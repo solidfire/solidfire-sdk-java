@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class GetOriginNode implements Serializable {
 
-    public static final long serialVersionUID = -1532831057366120053L;
+    public static final long serialVersionUID = 1135445859985726251L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("result") private GetOriginNodeResult result;
-
     // empty constructor
     @Since("7.0")
     public GetOriginNode() {}
@@ -53,12 +53,14 @@ public class GetOriginNode implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public GetOriginNodeResult getResult() { return this.result; }
     public void setResult(GetOriginNodeResult result) { 

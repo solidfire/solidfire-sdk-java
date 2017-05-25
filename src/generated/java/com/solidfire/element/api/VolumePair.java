@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -34,14 +35,13 @@ import java.util.Objects;
 
 public class VolumePair implements Serializable {
 
-    public static final long serialVersionUID = 4755249077071999580L;
+    public static final long serialVersionUID = -1303128094110770559L;
     @SerializedName("clusterPairID") private Long clusterPairID;
     @SerializedName("remoteVolumeID") private Long remoteVolumeID;
     @SerializedName("remoteSliceID") private Long remoteSliceID;
     @SerializedName("remoteVolumeName") private String remoteVolumeName;
     @SerializedName("volumePairUUID") private java.util.UUID volumePairUUID;
     @SerializedName("remoteReplication") private RemoteReplication remoteReplication;
-
     // empty constructor
     @Since("7.0")
     public VolumePair() {}

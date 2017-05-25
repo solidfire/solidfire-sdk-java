@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * ListVirtualVolumeTasksRequest  
+ * ListVirtualVolumeTasks returns a list of virtual volume tasks in the system.
  **/
 
 public class ListVirtualVolumeTasksRequest implements Serializable {
 
-    public static final long serialVersionUID = -8824861203375597941L;
+    public static final long serialVersionUID = -3895420752921706990L;
     @SerializedName("virtualVolumeTaskIDs") private Optional<java.util.UUID[]> virtualVolumeTaskIDs;
-
     // empty constructor
     @Since("7.0")
     public ListVirtualVolumeTasksRequest() {}
@@ -50,6 +51,7 @@ public class ListVirtualVolumeTasksRequest implements Serializable {
     }
 
     /** 
+     * A list of virtual volume task IDs for which to retrieve information. If you omit this parameter, the method returns information about all virtual volume tasks.
      **/
     public Optional<java.util.UUID[]> getVirtualVolumeTaskIDs() { return this.virtualVolumeTaskIDs; }
     public void setVirtualVolumeTaskIDs(Optional<java.util.UUID[]> virtualVolumeTaskIDs) { 

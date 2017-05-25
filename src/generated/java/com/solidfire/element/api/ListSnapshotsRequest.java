@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,14 @@ import java.util.Objects;
 
 /**
  * ListSnapshotsRequest  
+ * ListSnapshots enables you to return the attributes of each snapshot taken on the volume. Information about snapshots that reside on the target cluster is displayed on the source cluster when this method is called from the source cluster.
  **/
 
 public class ListSnapshotsRequest implements Serializable {
 
-    public static final long serialVersionUID = -2283933622639350902L;
+    public static final long serialVersionUID = -1275273169265774642L;
     @SerializedName("volumeID") private Optional<Long> volumeID;
-
+    @SerializedName("snapshotID") private Optional<Long> snapshotID;
     // empty constructor
     @Since("7.0")
     public ListSnapshotsRequest() {}
@@ -43,19 +45,28 @@ public class ListSnapshotsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListSnapshotsRequest(
-        Optional<Long> volumeID
+        Optional<Long> volumeID,
+        Optional<Long> snapshotID
     )
     {
         this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
 
     /** 
-     * The volume to list snapshots for.
-     * If not provided, all snapshots for all volumes are returned.
+     * Retrieves snapshots for a volume. If volumeID is not provided,
+     * all snapshots for all volumes are returned.
      **/
     public Optional<Long> getVolumeID() { return this.volumeID; }
     public void setVolumeID(Optional<Long> volumeID) { 
         this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
+    }
+    /** 
+     * Retrieves information for a specific snapshot ID.
+     **/
+    public Optional<Long> getSnapshotID() { return this.snapshotID; }
+    public void setSnapshotID(Optional<Long> snapshotID) { 
+        this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
 
     @Override
@@ -66,18 +77,20 @@ public class ListSnapshotsRequest implements Serializable {
         ListSnapshotsRequest that = (ListSnapshotsRequest) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID);
+            Objects.equals(volumeID, that.volumeID) && 
+            Objects.equals(snapshotID, that.snapshotID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID );
+        return Objects.hash( volumeID,snapshotID );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("volumeID", volumeID);
+        map.put("snapshotID", snapshotID);
         return map;
     }
 
@@ -88,6 +101,9 @@ public class ListSnapshotsRequest implements Serializable {
 
         if(null != volumeID && volumeID.isPresent()){
             sb.append(" volumeID : ").append(volumeID).append(",");
+        }
+        if(null != snapshotID && snapshotID.isPresent()){
+            sb.append(" snapshotID : ").append(snapshotID).append(",");
         }
         sb.append( " }" );
 
@@ -107,22 +123,30 @@ public class ListSnapshotsRequest implements Serializable {
 
     public static class Builder {
         private Optional<Long> volumeID;
+        private Optional<Long> snapshotID;
 
         private Builder() { }
 
         public ListSnapshotsRequest build() {
             return new ListSnapshotsRequest (
-                         this.volumeID);
+                         this.volumeID,
+                         this.snapshotID);
         }
 
         private ListSnapshotsRequest.Builder buildFrom(final ListSnapshotsRequest req) {
             this.volumeID = req.volumeID;
+            this.snapshotID = req.snapshotID;
 
             return this;
         }
 
         public ListSnapshotsRequest.Builder optionalVolumeID(final Long volumeID) {
             this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
+            return this;
+        }
+
+        public ListSnapshotsRequest.Builder optionalSnapshotID(final Long snapshotID) {
+            this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : Optional.of(snapshotID);
             return this;
         }
 

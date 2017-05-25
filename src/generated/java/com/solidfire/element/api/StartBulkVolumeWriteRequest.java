@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,17 +29,18 @@ import java.util.Objects;
 
 /**
  * StartBulkVolumeWriteRequest  
+ * StartBulkVolumeWrite enables you to initialize a bulk volume write session on a specified volume. Only two bulk volume processes can run simultaneously on a volume. When you initialize the write session, data is written to a SolidFire storage volume from an external backup source. The external data is accessed by a web server running on an SF-series node. Communications and server
+ * interaction information for external data access is passed by a script running on the storage system.
  **/
 
 public class StartBulkVolumeWriteRequest implements Serializable {
 
-    public static final long serialVersionUID = -7266294121919800595L;
+    public static final long serialVersionUID = -3857758263366454429L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("format") private String format;
     @SerializedName("script") private Optional<String> script;
-    @SerializedName("scriptParameters") private Optional<Object> scriptParameters;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("scriptParameters") private Optional<Attributes> scriptParameters;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public StartBulkVolumeWriteRequest() {}
@@ -50,37 +52,40 @@ public class StartBulkVolumeWriteRequest implements Serializable {
         Long volumeID,
         String format,
         Optional<String> script,
-        Optional<Object> scriptParameters,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> scriptParameters,
+        Optional<Attributes> attributes
     )
     {
         this.volumeID = volumeID;
         this.format = format;
         this.script = (script == null) ? Optional.<String>empty() : script;
-        this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : scriptParameters;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.scriptParameters = (scriptParameters == null) ? Optional.<Attributes>empty() : scriptParameters;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * ID of the volume to be written to.
+     * The ID of the volume to be written to.
      **/
     public Long getVolumeID() { return this.volumeID; }
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
-     * The format of the volume data. Can be either:
-     * uncompressed: every byte of the volume is returned without any compression.
-     * native: opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk volume write
+     * The format of the volume data. It can be either of the following formats:
+     * uncompressed: Every byte of the volume is returned without any compression.
+     * native: Opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk
+     * volume write.
      **/
     public String getFormat() { return this.format; }
     public void setFormat(String format) { 
         this.format = format;
     }
     /** 
-     * Executable name of a script.
-     * If no script name is given then the key and URL are necessary to access SolidFire nodes.
-     * The script runs on the primary node and the key and URL is returned to the script so the local web server can be contacted.
+     * The executable name of a script. If unspecified,
+     * the key and URL are necessary to access SF-series
+     * nodes. The script runs on the primary node and the key
+     * and URL is returned to the script, so the local web server
+     * can be contacted.
      **/
     public Optional<String> getScript() { return this.script; }
     public void setScript(Optional<String> script) { 
@@ -89,16 +94,16 @@ public class StartBulkVolumeWriteRequest implements Serializable {
     /** 
      * JSON parameters to pass to the script.
      **/
-    public Optional<Object> getScriptParameters() { return this.scriptParameters; }
-    public void setScriptParameters(Optional<Object> scriptParameters) { 
-        this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : scriptParameters;
+    public Optional<Attributes> getScriptParameters() { return this.scriptParameters; }
+    public void setScriptParameters(Optional<Attributes> scriptParameters) { 
+        this.scriptParameters = (scriptParameters == null) ? Optional.<Attributes>empty() : scriptParameters;
     }
     /** 
      * JSON attributes for the bulk volume job.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -168,8 +173,8 @@ public class StartBulkVolumeWriteRequest implements Serializable {
         private Long volumeID;
         private String format;
         private Optional<String> script;
-        private Optional<Object> scriptParameters;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> scriptParameters;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -207,13 +212,13 @@ public class StartBulkVolumeWriteRequest implements Serializable {
             return this;
         }
 
-        public StartBulkVolumeWriteRequest.Builder optionalScriptParameters(final Object scriptParameters) {
-            this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : Optional.of(scriptParameters);
+        public StartBulkVolumeWriteRequest.Builder optionalScriptParameters(final Attributes scriptParameters) {
+            this.scriptParameters = (scriptParameters == null) ? Optional.<Attributes>empty() : Optional.of(scriptParameters);
             return this;
         }
 
-        public StartBulkVolumeWriteRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public StartBulkVolumeWriteRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

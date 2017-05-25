@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,27 +33,97 @@ import java.util.Objects;
 
 public class ModifyScheduleResult implements Serializable {
 
-    public static final long serialVersionUID = -6280410249936410494L;
-
+    public static final long serialVersionUID = -8867995487155199305L;
+    @SerializedName("schedule") private Optional<Schedule> schedule;
     // empty constructor
     @Since("7.0")
     public ModifyScheduleResult() {}
 
     
+    // parameterized constructor
+    @Since("7.0")
+    public ModifyScheduleResult(
+        Optional<Schedule> schedule
+    )
+    {
+        this.schedule = (schedule == null) ? Optional.<Schedule>empty() : schedule;
+    }
+
+    /** 
+     * 
+     **/
+    public Optional<Schedule> getSchedule() { return this.schedule; }
+    public void setSchedule(Optional<Schedule> schedule) { 
+        this.schedule = (schedule == null) ? Optional.<Schedule>empty() : schedule;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        
-        return true;
+        ModifyScheduleResult that = (ModifyScheduleResult) o;
+
+        return 
+            Objects.equals(schedule, that.schedule);
     }
 
     @Override
     public int hashCode() {
-
-        return this.getClass().hashCode();
+        return Objects.hash( schedule );
     }
 
+
+    public java.util.Map<String, Object> toMap() {
+        java.util.Map<String, Object> map = new HashMap<>();
+        map.put("schedule", schedule);
+        return map;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append( "{ " );
+
+        if(null != schedule && schedule.isPresent()){
+            sb.append(" schedule : ").append(schedule).append(",");
+        }
+        sb.append( " }" );
+
+        if(sb.lastIndexOf(", }") != -1)
+            sb.deleteCharAt(sb.lastIndexOf(", }"));
+
+        return sb.toString();
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public final Builder asBuilder() {
+        return new Builder().buildFrom(this);
+    }
+
+    public static class Builder {
+        private Optional<Schedule> schedule;
+
+        private Builder() { }
+
+        public ModifyScheduleResult build() {
+            return new ModifyScheduleResult (
+                         this.schedule);
+        }
+
+        private ModifyScheduleResult.Builder buildFrom(final ModifyScheduleResult req) {
+            this.schedule = req.schedule;
+
+            return this;
+        }
+
+        public ModifyScheduleResult.Builder optionalSchedule(final Schedule schedule) {
+            this.schedule = (schedule == null) ? Optional.<Schedule>empty() : Optional.of(schedule);
+            return this;
+        }
+
+    }
 }

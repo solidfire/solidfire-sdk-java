@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,18 +33,17 @@ import java.util.Objects;
 
 public class VirtualVolumeTask implements Serializable {
 
-    public static final long serialVersionUID = 6792984935426811173L;
+    public static final long serialVersionUID = 1445079886549973814L;
     @SerializedName("virtualVolumeTaskID") private java.util.UUID virtualVolumeTaskID;
     @SerializedName("virtualvolumeID") private java.util.UUID virtualvolumeID;
     @SerializedName("cloneVirtualVolumeID") private java.util.UUID cloneVirtualVolumeID;
     @SerializedName("status") private String status;
     @SerializedName("operation") private String operation;
     @SerializedName("virtualVolumeHostID") private java.util.UUID virtualVolumeHostID;
-    @SerializedName("parentMetadata") private java.util.Map<String, Object> parentMetadata;
+    @SerializedName("parentMetadata") private Attributes parentMetadata;
     @SerializedName("parentTotalSize") private Long parentTotalSize;
     @SerializedName("parentUsedSize") private Long parentUsedSize;
     @SerializedName("cancelled") private Boolean cancelled;
-
     // empty constructor
     @Since("7.0")
     public VirtualVolumeTask() {}
@@ -58,7 +58,7 @@ public class VirtualVolumeTask implements Serializable {
         String status,
         String operation,
         java.util.UUID virtualVolumeHostID,
-        java.util.Map<String, Object> parentMetadata,
+        Attributes parentMetadata,
         Long parentTotalSize,
         Long parentUsedSize,
         Boolean cancelled
@@ -77,60 +77,70 @@ public class VirtualVolumeTask implements Serializable {
     }
 
     /** 
+     * 
      **/
     public java.util.UUID getVirtualVolumeTaskID() { return this.virtualVolumeTaskID; }
     public void setVirtualVolumeTaskID(java.util.UUID virtualVolumeTaskID) { 
         this.virtualVolumeTaskID = virtualVolumeTaskID;
     }
     /** 
+     * 
      **/
     public java.util.UUID getVirtualvolumeID() { return this.virtualvolumeID; }
     public void setVirtualvolumeID(java.util.UUID virtualvolumeID) { 
         this.virtualvolumeID = virtualvolumeID;
     }
     /** 
+     * 
      **/
     public java.util.UUID getCloneVirtualVolumeID() { return this.cloneVirtualVolumeID; }
     public void setCloneVirtualVolumeID(java.util.UUID cloneVirtualVolumeID) { 
         this.cloneVirtualVolumeID = cloneVirtualVolumeID;
     }
     /** 
+     * 
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 
         this.status = status;
     }
     /** 
+     * 
      **/
     public String getOperation() { return this.operation; }
     public void setOperation(String operation) { 
         this.operation = operation;
     }
     /** 
+     * 
      **/
     public java.util.UUID getVirtualVolumeHostID() { return this.virtualVolumeHostID; }
     public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) { 
         this.virtualVolumeHostID = virtualVolumeHostID;
     }
     /** 
+     * 
      **/
-    public java.util.Map<String, Object> getParentMetadata() { return this.parentMetadata; }
-    public void setParentMetadata(java.util.Map<String, Object> parentMetadata) { 
+    public Attributes getParentMetadata() { return this.parentMetadata; }
+    public void setParentMetadata(Attributes parentMetadata) { 
         this.parentMetadata = parentMetadata;
     }
     /** 
+     * 
      **/
     public Long getParentTotalSize() { return this.parentTotalSize; }
     public void setParentTotalSize(Long parentTotalSize) { 
         this.parentTotalSize = parentTotalSize;
     }
     /** 
+     * 
      **/
     public Long getParentUsedSize() { return this.parentUsedSize; }
     public void setParentUsedSize(Long parentUsedSize) { 
         this.parentUsedSize = parentUsedSize;
     }
     /** 
+     * 
      **/
     public Boolean getCancelled() { return this.cancelled; }
     public void setCancelled(Boolean cancelled) { 
@@ -216,7 +226,7 @@ public class VirtualVolumeTask implements Serializable {
         private String status;
         private String operation;
         private java.util.UUID virtualVolumeHostID;
-        private java.util.Map<String, Object> parentMetadata;
+        private Attributes parentMetadata;
         private Long parentTotalSize;
         private Long parentUsedSize;
         private Boolean cancelled;
@@ -282,7 +292,7 @@ public class VirtualVolumeTask implements Serializable {
             return this;
         }
 
-        public VirtualVolumeTask.Builder parentMetadata(final java.util.Map<String, Object> parentMetadata) {
+        public VirtualVolumeTask.Builder parentMetadata(final Attributes parentMetadata) {
             this.parentMetadata = parentMetadata;
             return this;
         }

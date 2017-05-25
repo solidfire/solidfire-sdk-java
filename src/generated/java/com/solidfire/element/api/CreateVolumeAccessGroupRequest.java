@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,18 +29,18 @@ import java.util.Objects;
 
 /**
  * CreateVolumeAccessGroupRequest  
+ * You can use CreateVolumeAccessGroup to create a new volume access group. When you create the volume access group, you need to give it a name, and you can optionally enter initiators and volumes. After you create the group, you can add volumes and initiator IQNs. Any initiator IQN that you add to the volume access group is able to access any volume in the group without CHAP authentication.
  **/
 
 public class CreateVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 6824028462430624106L;
+    public static final long serialVersionUID = 4851506015403976112L;
     @SerializedName("name") private String name;
     @SerializedName("initiators") private Optional<String[]> initiators;
     @SerializedName("volumes") private Optional<Long[]> volumes;
     @SerializedName("virtualNetworkID") private Optional<Long[]> virtualNetworkID;
     @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public CreateVolumeAccessGroupRequest() {}
@@ -51,13 +52,13 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         String name,
         Optional<String[]> initiators,
         Optional<Long[]> volumes,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.name = name;
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     // parameterized constructor
     @Since("8.0")
@@ -67,7 +68,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         Optional<Long[]> volumes,
         Optional<Long[]> virtualNetworkID,
         Optional<Long[]> virtualNetworkTags,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.name = name;
@@ -75,53 +76,50 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
         this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * Name of the volume access group.
-     * It is not required to be unique, but recommended.
+     * The name for this volume access group. Not required to be unique, but recommended.
      **/
     public String getName() { return this.name; }
     public void setName(String name) { 
         this.name = name;
     }
     /** 
-     * List of initiators to include in the volume access group.
-     * If unspecified, the access group will start out without configured initiators.
+     * List of initiators to include in the volume access group. If unspecified, the access group's configured initiators are not modified.
      **/
     public Optional<String[]> getInitiators() { return this.initiators; }
     public void setInitiators(Optional<String[]> initiators) { 
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
     }
     /** 
-     * List of volumes to initially include in the volume access group.
-     * If unspecified, the access group will start without any volumes.
+     * List of volumes to initially include in the volume access group. If unspecified, the access group's volumes are not modified.
      **/
     public Optional<Long[]> getVolumes() { return this.volumes; }
     public void setVolumes(Optional<Long[]> volumes) { 
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
     }
     /** 
-     * The ID of the SolidFire Virtual Network ID to associate the volume access group with.
+     * The ID of the SolidFire virtual network to associate the volume access group with.
      **/
     public Optional<Long[]> getVirtualNetworkID() { return this.virtualNetworkID; }
     public void setVirtualNetworkID(Optional<Long[]> virtualNetworkID) { 
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
     }
     /** 
-     * The ID of the VLAN Virtual Network Tag to associate the volume access group with.
+     * The ID of the SolidFire virtual network to associate the volume access group with.
      **/
     public Optional<Long[]> getVirtualNetworkTags() { return this.virtualNetworkTags; }
     public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) { 
         this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -200,7 +198,7 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
         private Optional<Long[]> volumes;
         private Optional<Long[]> virtualNetworkID;
         private Optional<Long[]> virtualNetworkTags;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -250,8 +248,8 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeAccessGroupRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public CreateVolumeAccessGroupRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

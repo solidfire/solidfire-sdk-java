@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,14 +33,13 @@ import java.util.Objects;
 
 public class ProtocolEndpoint implements Serializable {
 
-    public static final long serialVersionUID = -7648465761379539641L;
+    public static final long serialVersionUID = -5555307228558907622L;
     @SerializedName("protocolEndpointID") private java.util.UUID protocolEndpointID;
     @SerializedName("protocolEndpointState") private String protocolEndpointState;
     @SerializedName("providerType") private String providerType;
     @SerializedName("primaryProviderID") private Long primaryProviderID;
     @SerializedName("secondaryProviderID") private Long secondaryProviderID;
     @SerializedName("scsiNAADeviceID") private String scsiNAADeviceID;
-
     // empty constructor
     @Since("7.0")
     public ProtocolEndpoint() {}
@@ -65,36 +65,42 @@ public class ProtocolEndpoint implements Serializable {
     }
 
     /** 
+     * 
      **/
     public java.util.UUID getProtocolEndpointID() { return this.protocolEndpointID; }
     public void setProtocolEndpointID(java.util.UUID protocolEndpointID) { 
         this.protocolEndpointID = protocolEndpointID;
     }
     /** 
+     * 
      **/
     public String getProtocolEndpointState() { return this.protocolEndpointState; }
     public void setProtocolEndpointState(String protocolEndpointState) { 
         this.protocolEndpointState = protocolEndpointState;
     }
     /** 
+     * 
      **/
     public String getProviderType() { return this.providerType; }
     public void setProviderType(String providerType) { 
         this.providerType = providerType;
     }
     /** 
+     * 
      **/
     public Long getPrimaryProviderID() { return this.primaryProviderID; }
     public void setPrimaryProviderID(Long primaryProviderID) { 
         this.primaryProviderID = primaryProviderID;
     }
     /** 
+     * 
      **/
     public Long getSecondaryProviderID() { return this.secondaryProviderID; }
     public void setSecondaryProviderID(Long secondaryProviderID) { 
         this.secondaryProviderID = secondaryProviderID;
     }
     /** 
+     * 
      **/
     public String getScsiNAADeviceID() { return this.scsiNAADeviceID; }
     public void setScsiNAADeviceID(String scsiNAADeviceID) { 

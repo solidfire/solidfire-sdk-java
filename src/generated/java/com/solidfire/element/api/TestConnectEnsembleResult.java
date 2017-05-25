@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,11 +33,10 @@ import java.util.Objects;
 
 public class TestConnectEnsembleResult implements Serializable {
 
-    public static final long serialVersionUID = 7769757648779915261L;
+    public static final long serialVersionUID = 7761169780125550528L;
     @SerializedName("details") private TestConnectEnsembleDetails details;
     @SerializedName("duration") private String duration;
     @SerializedName("result") private String result;
-
     // empty constructor
     @Since("7.0")
     public TestConnectEnsembleResult() {}
@@ -56,6 +56,7 @@ public class TestConnectEnsembleResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public TestConnectEnsembleDetails getDetails() { return this.details; }
     public void setDetails(TestConnectEnsembleDetails details) { 

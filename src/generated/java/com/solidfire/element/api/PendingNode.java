@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -34,9 +35,9 @@ import java.util.Objects;
 
 public class PendingNode implements Serializable {
 
-    public static final long serialVersionUID = -930850330231659742L;
+    public static final long serialVersionUID = -1197214875084177945L;
     @SerializedName("pendingNodeID") private Long pendingNodeID;
-    @SerializedName("AssignedNodeID") private Long assignedNodeID;
+    @SerializedName("assignedNodeID") private Long assignedNodeID;
     @SerializedName("name") private String name;
     @SerializedName("compatible") private Boolean compatible;
     @SerializedName("platformInfo") private Platform platformInfo;
@@ -48,7 +49,6 @@ public class PendingNode implements Serializable {
     @SerializedName("sipi") private String sipi;
     @SerializedName("softwareVersion") private String softwareVersion;
     @SerializedName("uuid") private java.util.UUID uuid;
-
     // empty constructor
     @Since("7.0")
     public PendingNode() {}
@@ -88,12 +88,14 @@ public class PendingNode implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getPendingNodeID() { return this.pendingNodeID; }
     public void setPendingNodeID(Long pendingNodeID) { 
         this.pendingNodeID = pendingNodeID;
     }
     /** 
+     * 
      **/
     public Long getAssignedNodeID() { return this.assignedNodeID; }
     public void setAssignedNodeID(Long assignedNodeID) { 
@@ -107,6 +109,7 @@ public class PendingNode implements Serializable {
         this.name = name;
     }
     /** 
+     * 
      **/
     public Boolean getCompatible() { return this.compatible; }
     public void setCompatible(Boolean compatible) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class Service implements Serializable {
 
-    public static final long serialVersionUID = 8314892491212467718L;
+    public static final long serialVersionUID = 2190329352332905808L;
     @SerializedName("serviceID") private Long serviceID;
     @SerializedName("serviceType") private String serviceType;
     @SerializedName("nodeID") private Long nodeID;
@@ -47,7 +48,6 @@ public class Service implements Serializable {
     @SerializedName("status") private String status;
     @SerializedName("startedDriveIDs") private Long[] startedDriveIDs;
     @SerializedName("driveIDs") private Long[] driveIDs;
-
     // empty constructor
     @Since("7.0")
     public Service() {}
@@ -96,6 +96,7 @@ public class Service implements Serializable {
         this.serviceID = serviceID;
     }
     /** 
+     * 
      **/
     public String getServiceType() { return this.serviceType; }
     public void setServiceType(String serviceType) { 
@@ -173,18 +174,21 @@ public class Service implements Serializable {
         this.iscsiPort = iscsiPort;
     }
     /** 
+     * 
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 
         this.status = status;
     }
     /** 
+     * 
      **/
     public Long[] getStartedDriveIDs() { return this.startedDriveIDs; }
     public void setStartedDriveIDs(Long[] startedDriveIDs) { 
         this.startedDriveIDs = startedDriveIDs;
     }
     /** 
+     * 
      **/
     public Long[] getDriveIDs() { return this.driveIDs; }
     public void setDriveIDs(Long[] driveIDs) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * GetBackupTargetRequest  
+ * GetBackupTarget enables you to return information about a specific backup target that you have created.
  **/
 
 public class GetBackupTargetRequest implements Serializable {
 
-    public static final long serialVersionUID = 1799534556354182754L;
+    public static final long serialVersionUID = 8952561837054054779L;
     @SerializedName("backupTargetID") private Long backupTargetID;
-
     // empty constructor
     @Since("7.0")
     public GetBackupTargetRequest() {}
@@ -50,7 +51,7 @@ public class GetBackupTargetRequest implements Serializable {
     }
 
     /** 
-     * Unique identifier assigned to the backup target.
+     * The unique identifier assigned to the backup target.
      **/
     public Long getBackupTargetID() { return this.backupTargetID; }
     public void setBackupTargetID(Long backupTargetID) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,14 @@ import java.util.Objects;
 
 /**
  * ClearClusterFaultsRequest  
+ * You can use the ClearClusterFaults method to clear information about both current and previously detected faults. Both resolved
+ * and unresolved faults can be cleared.
  **/
 
 public class ClearClusterFaultsRequest implements Serializable {
 
-    public static final long serialVersionUID = 6178629724073244806L;
+    public static final long serialVersionUID = -7716965852364914538L;
     @SerializedName("faultTypes") private Optional<String> faultTypes;
-
     // empty constructor
     @Since("7.0")
     public ClearClusterFaultsRequest() {}
@@ -50,10 +52,14 @@ public class ClearClusterFaultsRequest implements Serializable {
     }
 
     /** 
-     * Determines the types of faults cleared:
-     * current: Faults that are currently detected and have not been resolved.
-     * resolved: Faults that were previously detected and resolved.
-     * all: Both current and resolved faults are cleared. The fault status can be determined by the "resolved" field of the fault object.
+     * Determines the types of faults cleared. Possible values are:
+     * current: Faults that are currently detected and have
+     * not been resolved.
+     * resolved: (Default) Faults that were previously
+     * detected and resolved.
+     * all: Both current and resolved faults are cleared. The
+     * fault status can be determined by the resolved field of
+     * the fault object.
      **/
     public Optional<String> getFaultTypes() { return this.faultTypes; }
     public void setFaultTypes(Optional<String> faultTypes) { 

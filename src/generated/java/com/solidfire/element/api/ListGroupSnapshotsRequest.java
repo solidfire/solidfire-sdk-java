@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,14 @@ import java.util.Objects;
 
 /**
  * ListGroupSnapshotsRequest  
+ * ListGroupSnapshots enables you to get information about all group snapshots that have been created.
  **/
 
 public class ListGroupSnapshotsRequest implements Serializable {
 
-    public static final long serialVersionUID = 8925165299321175370L;
-    @SerializedName("volumeID") private Optional<Long> volumeID;
-
+    public static final long serialVersionUID = 6096544735626310926L;
+    @SerializedName("volumes") private Optional<Long[]> volumes;
+    @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
     // empty constructor
     @Since("7.0")
     public ListGroupSnapshotsRequest() {}
@@ -43,19 +45,37 @@ public class ListGroupSnapshotsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListGroupSnapshotsRequest(
-        Optional<Long> volumeID
+        Optional<Long[]> volumes
     )
     {
-        this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
+        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+    }
+    // parameterized constructor
+    @Since("9.0")
+    public ListGroupSnapshotsRequest(
+        Optional<Long[]> volumes,
+        Optional<Long> groupSnapshotID
+    )
+    {
+        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+        this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : groupSnapshotID;
     }
 
     /** 
-     * An array of unique volume IDs to query.
-     * If this parameter is not specified, all group snapshots on the cluster will be included.
+     * An array of unique volume IDs to query. If you do not
+     * specify this parameter, all group snapshots on the cluster
+     * are included.
      **/
-    public Optional<Long> getVolumeID() { return this.volumeID; }
-    public void setVolumeID(Optional<Long> volumeID) { 
-        this.volumeID = (volumeID == null) ? Optional.<Long>empty() : volumeID;
+    public Optional<Long[]> getVolumes() { return this.volumes; }
+    public void setVolumes(Optional<Long[]> volumes) { 
+        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+    }
+    /** 
+     * Retrieves information for a specific group snapshot ID.
+     **/
+    public Optional<Long> getGroupSnapshotID() { return this.groupSnapshotID; }
+    public void setGroupSnapshotID(Optional<Long> groupSnapshotID) { 
+        this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : groupSnapshotID;
     }
 
     @Override
@@ -66,18 +86,20 @@ public class ListGroupSnapshotsRequest implements Serializable {
         ListGroupSnapshotsRequest that = (ListGroupSnapshotsRequest) o;
 
         return 
-            Objects.equals(volumeID, that.volumeID);
+            Objects.equals(volumes, that.volumes) && 
+            Objects.equals(groupSnapshotID, that.groupSnapshotID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID );
+        return Objects.hash( volumes,groupSnapshotID );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("volumeID", volumeID);
+        map.put("volumes", volumes);
+        map.put("groupSnapshotID", groupSnapshotID);
         return map;
     }
 
@@ -86,8 +108,11 @@ public class ListGroupSnapshotsRequest implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        if(null != volumeID && volumeID.isPresent()){
-            sb.append(" volumeID : ").append(volumeID).append(",");
+        if(null != volumes && volumes.isPresent()){
+            sb.append(" volumes : ").append(volumes).append(",");
+        }
+        if(null != groupSnapshotID && groupSnapshotID.isPresent()){
+            sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
         }
         sb.append( " }" );
 
@@ -106,23 +131,31 @@ public class ListGroupSnapshotsRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Long> volumeID;
+        private Optional<Long[]> volumes;
+        private Optional<Long> groupSnapshotID;
 
         private Builder() { }
 
         public ListGroupSnapshotsRequest build() {
             return new ListGroupSnapshotsRequest (
-                         this.volumeID);
+                         this.volumes,
+                         this.groupSnapshotID);
         }
 
         private ListGroupSnapshotsRequest.Builder buildFrom(final ListGroupSnapshotsRequest req) {
-            this.volumeID = req.volumeID;
+            this.volumes = req.volumes;
+            this.groupSnapshotID = req.groupSnapshotID;
 
             return this;
         }
 
-        public ListGroupSnapshotsRequest.Builder optionalVolumeID(final Long volumeID) {
-            this.volumeID = (volumeID == null) ? Optional.<Long>empty() : Optional.of(volumeID);
+        public ListGroupSnapshotsRequest.Builder optionalVolumes(final Long[] volumes) {
+            this.volumes = (volumes == null) ? Optional.<Long[]>empty() : Optional.of(volumes);
+            return this;
+        }
+
+        public ListGroupSnapshotsRequest.Builder optionalGroupSnapshotID(final Long groupSnapshotID) {
+            this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : Optional.of(groupSnapshotID);
             return this;
         }
 

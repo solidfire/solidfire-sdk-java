@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,15 @@ import java.util.Objects;
 
 /**
  * ListVolumeStatsByVolumeAccessGroupRequest  
+ * ListVolumeStatsByVolumeAccessGroup enables you to get total activity measurements for all of the volumes that are a member of the
+ * specified volume access group(s).
  **/
 
 public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = -1261879009386913207L;
+    public static final long serialVersionUID = 5191351445420153189L;
     @SerializedName("volumeAccessGroups") private Optional<Long[]> volumeAccessGroups;
-
+    @SerializedName("includeVirtualVolumes") private Optional<Boolean> includeVirtualVolumes;
     // empty constructor
     @Since("7.0")
     public ListVolumeStatsByVolumeAccessGroupRequest() {}
@@ -48,14 +51,33 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
     {
         this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
     }
+    // parameterized constructor
+    @Since("9.0")
+    public ListVolumeStatsByVolumeAccessGroupRequest(
+        Optional<Long[]> volumeAccessGroups,
+        Optional<Boolean> includeVirtualVolumes
+    )
+    {
+        this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
+        this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
+    }
 
     /** 
-     * An array of VolumeAccessGroupIDs for which volume activity is returned.
-     * If no VolumeAccessGroupID is specified, stats for all volume access groups is returned.
+     * An array of VolumeAccessGroupIDs for which volume
+     * activity is returned. If omitted, statistics for all volume
+     * access groups are returned.
      **/
     public Optional<Long[]> getVolumeAccessGroups() { return this.volumeAccessGroups; }
     public void setVolumeAccessGroups(Optional<Long[]> volumeAccessGroups) { 
         this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
+    }
+    /** 
+     * Specifies that virtual volumes are included in the response by default.
+     * To exclude virtual volumes, set to false.
+     **/
+    public Optional<Boolean> getIncludeVirtualVolumes() { return this.includeVirtualVolumes; }
+    public void setIncludeVirtualVolumes(Optional<Boolean> includeVirtualVolumes) { 
+        this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
     }
 
     @Override
@@ -66,18 +88,20 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
         ListVolumeStatsByVolumeAccessGroupRequest that = (ListVolumeStatsByVolumeAccessGroupRequest) o;
 
         return 
-            Objects.equals(volumeAccessGroups, that.volumeAccessGroups);
+            Objects.equals(volumeAccessGroups, that.volumeAccessGroups) && 
+            Objects.equals(includeVirtualVolumes, that.includeVirtualVolumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroups );
+        return Objects.hash( volumeAccessGroups,includeVirtualVolumes );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("volumeAccessGroups", volumeAccessGroups);
+        map.put("includeVirtualVolumes", includeVirtualVolumes);
         return map;
     }
 
@@ -88,6 +112,9 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
 
         if(null != volumeAccessGroups && volumeAccessGroups.isPresent()){
             sb.append(" volumeAccessGroups : ").append(volumeAccessGroups).append(",");
+        }
+        if(null != includeVirtualVolumes && includeVirtualVolumes.isPresent()){
+            sb.append(" includeVirtualVolumes : ").append(includeVirtualVolumes).append(",");
         }
         sb.append( " }" );
 
@@ -107,22 +134,30 @@ public class ListVolumeStatsByVolumeAccessGroupRequest implements Serializable {
 
     public static class Builder {
         private Optional<Long[]> volumeAccessGroups;
+        private Optional<Boolean> includeVirtualVolumes;
 
         private Builder() { }
 
         public ListVolumeStatsByVolumeAccessGroupRequest build() {
             return new ListVolumeStatsByVolumeAccessGroupRequest (
-                         this.volumeAccessGroups);
+                         this.volumeAccessGroups,
+                         this.includeVirtualVolumes);
         }
 
         private ListVolumeStatsByVolumeAccessGroupRequest.Builder buildFrom(final ListVolumeStatsByVolumeAccessGroupRequest req) {
             this.volumeAccessGroups = req.volumeAccessGroups;
+            this.includeVirtualVolumes = req.includeVirtualVolumes;
 
             return this;
         }
 
         public ListVolumeStatsByVolumeAccessGroupRequest.Builder optionalVolumeAccessGroups(final Long[] volumeAccessGroups) {
             this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroups);
+            return this;
+        }
+
+        public ListVolumeStatsByVolumeAccessGroupRequest.Builder optionalIncludeVirtualVolumes(final Boolean includeVirtualVolumes) {
+            this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : Optional.of(includeVirtualVolumes);
             return this;
         }
 

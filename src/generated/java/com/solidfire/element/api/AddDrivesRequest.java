@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,23 @@ import java.util.Objects;
 
 /**
  * AddDrivesRequest  
+ * AddDrives enables you to add one or more available drives to the cluster, enabling the drives to host a portion of the cluster's data.
+ * When you add a node to the cluster or install new drives in an existing node, the new drives are marked as "available" and must be
+ * added via AddDrives before they can be utilized. Use the ListDrives method to display drives that are "available" to be added. When
+ * you add multiple drives, it is more efficient to add them in a single AddDrives method call rather than multiple individual methods
+ * with a single drive each. This reduces the amount of data balancing that must occur to stabilize the storage load on the cluster.
+ * When you add a drive, the system automatically determines the "type" of drive it should be.
+ * The method is asynchronous and returns immediately. However, it can take some time for the data in the cluster to be rebalanced
+ * using the newly added drives. As the new drives are syncing on the system, you can use the ListSyncJobs method to see how the
+ * drives are being rebalanced and the progress of adding the new drive. You can also use the GetAsyncResult method to query the
+ * method's returned asyncHandle.
  **/
 
 public class AddDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = -7918870428389618879L;
+    public static final long serialVersionUID = 8104326946027329700L;
     @SerializedName("drives") private NewDrive[] drives;
-
+    @SerializedName("forceDuringUpgrade") private Optional<Boolean> forceDuringUpgrade;
     // empty constructor
     @Since("7.0")
     public AddDrivesRequest() {}
@@ -43,18 +54,34 @@ public class AddDrivesRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public AddDrivesRequest(
-        NewDrive[] drives
+        NewDrive[] drives,
+        Optional<Boolean> forceDuringUpgrade
     )
     {
         this.drives = drives;
+        this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
     }
 
     /** 
-     * List of drives to add to the cluster.
+     * Returns information about each drive to be added to the
+     * cluster. Possible values are:
+     * driveID: The ID of the drive to
+     * add. (Integer)
+     * type: (Optional) The type of drive
+     * to add. Valid values are "slice" or "block". If
+     * omitted, the system assigns the correct
+     * type. (String)
      **/
     public NewDrive[] getDrives() { return this.drives; }
     public void setDrives(NewDrive[] drives) { 
         this.drives = drives;
+    }
+    /** 
+     * Allows the user to force the addition of drives during an upgrade.
+     **/
+    public Optional<Boolean> getForceDuringUpgrade() { return this.forceDuringUpgrade; }
+    public void setForceDuringUpgrade(Optional<Boolean> forceDuringUpgrade) { 
+        this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
     }
 
     @Override
@@ -65,18 +92,20 @@ public class AddDrivesRequest implements Serializable {
         AddDrivesRequest that = (AddDrivesRequest) o;
 
         return 
-            Arrays.equals(drives, that.drives);
+            Arrays.equals(drives, that.drives) && 
+            Objects.equals(forceDuringUpgrade, that.forceDuringUpgrade);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])drives );
+        return Objects.hash( (Object[])drives,forceDuringUpgrade );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("drives", drives);
+        map.put("forceDuringUpgrade", forceDuringUpgrade);
         return map;
     }
 
@@ -86,6 +115,9 @@ public class AddDrivesRequest implements Serializable {
         sb.append( "{ " );
 
         sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
+        if(null != forceDuringUpgrade && forceDuringUpgrade.isPresent()){
+            sb.append(" forceDuringUpgrade : ").append(forceDuringUpgrade).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -104,22 +136,30 @@ public class AddDrivesRequest implements Serializable {
 
     public static class Builder {
         private NewDrive[] drives;
+        private Optional<Boolean> forceDuringUpgrade;
 
         private Builder() { }
 
         public AddDrivesRequest build() {
             return new AddDrivesRequest (
-                         this.drives);
+                         this.drives,
+                         this.forceDuringUpgrade);
         }
 
         private AddDrivesRequest.Builder buildFrom(final AddDrivesRequest req) {
             this.drives = req.drives;
+            this.forceDuringUpgrade = req.forceDuringUpgrade;
 
             return this;
         }
 
         public AddDrivesRequest.Builder drives(final NewDrive[] drives) {
             this.drives = drives;
+            return this;
+        }
+
+        public AddDrivesRequest.Builder optionalForceDuringUpgrade(final Boolean forceDuringUpgrade) {
+            this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : Optional.of(forceDuringUpgrade);
             return this;
         }
 

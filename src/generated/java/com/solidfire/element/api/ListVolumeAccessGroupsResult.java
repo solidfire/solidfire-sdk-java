@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class ListVolumeAccessGroupsResult implements Serializable {
 
-    public static final long serialVersionUID = -2843709235167971533L;
+    public static final long serialVersionUID = 1471243356890287556L;
     @SerializedName("volumeAccessGroups") private VolumeAccessGroup[] volumeAccessGroups;
-    @SerializedName("volumeAccessGroupsNotFound") private Long[] volumeAccessGroupsNotFound;
-
+    @SerializedName("volumeAccessGroupsNotFound") private Optional<Long[]> volumeAccessGroupsNotFound;
     // empty constructor
     @Since("7.0")
     public ListVolumeAccessGroupsResult() {}
@@ -45,11 +45,11 @@ public class ListVolumeAccessGroupsResult implements Serializable {
     @Since("7.0")
     public ListVolumeAccessGroupsResult(
         VolumeAccessGroup[] volumeAccessGroups,
-        Long[] volumeAccessGroupsNotFound
+        Optional<Long[]> volumeAccessGroupsNotFound
     )
     {
         this.volumeAccessGroups = volumeAccessGroups;
-        this.volumeAccessGroupsNotFound = volumeAccessGroupsNotFound;
+        this.volumeAccessGroupsNotFound = (volumeAccessGroupsNotFound == null) ? Optional.<Long[]>empty() : volumeAccessGroupsNotFound;
     }
 
     /** 
@@ -62,9 +62,9 @@ public class ListVolumeAccessGroupsResult implements Serializable {
     /** 
      * A list of volume access groups not found by the system. Present if you used the "volumeAccessGroups" parameter and the system was unable to find one or more volume access groups that you specified.
      **/
-    public Long[] getVolumeAccessGroupsNotFound() { return this.volumeAccessGroupsNotFound; }
-    public void setVolumeAccessGroupsNotFound(Long[] volumeAccessGroupsNotFound) { 
-        this.volumeAccessGroupsNotFound = volumeAccessGroupsNotFound;
+    public Optional<Long[]> getVolumeAccessGroupsNotFound() { return this.volumeAccessGroupsNotFound; }
+    public void setVolumeAccessGroupsNotFound(Optional<Long[]> volumeAccessGroupsNotFound) { 
+        this.volumeAccessGroupsNotFound = (volumeAccessGroupsNotFound == null) ? Optional.<Long[]>empty() : volumeAccessGroupsNotFound;
     }
 
     @Override
@@ -76,12 +76,12 @@ public class ListVolumeAccessGroupsResult implements Serializable {
 
         return 
             Arrays.equals(volumeAccessGroups, that.volumeAccessGroups) && 
-            Arrays.equals(volumeAccessGroupsNotFound, that.volumeAccessGroupsNotFound);
+            Objects.equals(volumeAccessGroupsNotFound, that.volumeAccessGroupsNotFound);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])volumeAccessGroups,(Object[])volumeAccessGroupsNotFound );
+        return Objects.hash( (Object[])volumeAccessGroups,volumeAccessGroupsNotFound );
     }
 
 
@@ -98,7 +98,9 @@ public class ListVolumeAccessGroupsResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups)).append(",");
-        sb.append(" volumeAccessGroupsNotFound : ").append(Arrays.toString(volumeAccessGroupsNotFound)).append(",");
+        if(null != volumeAccessGroupsNotFound && volumeAccessGroupsNotFound.isPresent()){
+            sb.append(" volumeAccessGroupsNotFound : ").append(volumeAccessGroupsNotFound).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -117,7 +119,7 @@ public class ListVolumeAccessGroupsResult implements Serializable {
 
     public static class Builder {
         private VolumeAccessGroup[] volumeAccessGroups;
-        private Long[] volumeAccessGroupsNotFound;
+        private Optional<Long[]> volumeAccessGroupsNotFound;
 
         private Builder() { }
 
@@ -139,8 +141,8 @@ public class ListVolumeAccessGroupsResult implements Serializable {
             return this;
         }
 
-        public ListVolumeAccessGroupsResult.Builder volumeAccessGroupsNotFound(final Long[] volumeAccessGroupsNotFound) {
-            this.volumeAccessGroupsNotFound = volumeAccessGroupsNotFound;
+        public ListVolumeAccessGroupsResult.Builder optionalVolumeAccessGroupsNotFound(final Long[] volumeAccessGroupsNotFound) {
+            this.volumeAccessGroupsNotFound = (volumeAccessGroupsNotFound == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroupsNotFound);
             return this;
         }
 

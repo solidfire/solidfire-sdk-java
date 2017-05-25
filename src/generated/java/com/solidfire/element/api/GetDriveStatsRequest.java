@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,15 @@ import java.util.Objects;
 
 /**
  * GetDriveStatsRequest  
+ * GetDriveStats returns high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the
+ * cluster. Some values are specific to block drives. You might not obtain statistical data for both block and metadata drives when you
+ * run this method. 
  **/
 
 public class GetDriveStatsRequest implements Serializable {
 
-    public static final long serialVersionUID = 1640028930156644564L;
+    public static final long serialVersionUID = 4452128601912695642L;
     @SerializedName("driveID") private Long driveID;
-
     // empty constructor
     @Since("7.0")
     public GetDriveStatsRequest() {}

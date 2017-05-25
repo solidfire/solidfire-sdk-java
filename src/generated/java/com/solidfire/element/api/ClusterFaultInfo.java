@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,9 @@ import java.util.Objects;
 
 public class ClusterFaultInfo implements Serializable {
 
-    public static final long serialVersionUID = -5303506460547294310L;
+    public static final long serialVersionUID = 6039561244399655743L;
+    @SerializedName("driveIDs") private Optional<Long[]> driveIDs;
+    @SerializedName("networkInterface") private Optional<String> networkInterface;
     @SerializedName("severity") private String severity;
     @SerializedName("type") private String type;
     @SerializedName("code") private String code;
@@ -45,8 +48,7 @@ public class ClusterFaultInfo implements Serializable {
     @SerializedName("clusterFaultID") private Long clusterFaultID;
     @SerializedName("date") private String date;
     @SerializedName("resolvedDate") private String resolvedDate;
-    @SerializedName("data") private Object data;
-
+    @SerializedName("data") private Optional<Attributes> data;
     // empty constructor
     @Since("7.0")
     public ClusterFaultInfo() {}
@@ -55,6 +57,8 @@ public class ClusterFaultInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ClusterFaultInfo(
+        Optional<Long[]> driveIDs,
+        Optional<String> networkInterface,
         String severity,
         String type,
         String code,
@@ -67,9 +71,11 @@ public class ClusterFaultInfo implements Serializable {
         Long clusterFaultID,
         String date,
         String resolvedDate,
-        Object data
+        Optional<Attributes> data
     )
     {
+        this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
+        this.networkInterface = (networkInterface == null) ? Optional.<String>empty() : networkInterface;
         this.severity = severity;
         this.type = type;
         this.code = code;
@@ -82,86 +88,113 @@ public class ClusterFaultInfo implements Serializable {
         this.clusterFaultID = clusterFaultID;
         this.date = date;
         this.resolvedDate = resolvedDate;
-        this.data = data;
+        this.data = (data == null) ? Optional.<Attributes>empty() : data;
     }
 
     /** 
+     * 
+     **/
+    public Optional<Long[]> getDriveIDs() { return this.driveIDs; }
+    public void setDriveIDs(Optional<Long[]> driveIDs) { 
+        this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
+    }
+    /** 
+     * 
+     **/
+    public Optional<String> getNetworkInterface() { return this.networkInterface; }
+    public void setNetworkInterface(Optional<String> networkInterface) { 
+        this.networkInterface = (networkInterface == null) ? Optional.<String>empty() : networkInterface;
+    }
+    /** 
+     * 
      **/
     public String getSeverity() { return this.severity; }
     public void setSeverity(String severity) { 
         this.severity = severity;
     }
     /** 
+     * 
      **/
     public String getType() { return this.type; }
     public void setType(String type) { 
         this.type = type;
     }
     /** 
+     * 
      **/
     public String getCode() { return this.code; }
     public void setCode(String code) { 
         this.code = code;
     }
     /** 
+     * 
      **/
     public String getDetails() { return this.details; }
     public void setDetails(String details) { 
         this.details = details;
     }
     /** 
+     * 
      **/
     public Long getNodeHardwareFaultID() { return this.nodeHardwareFaultID; }
     public void setNodeHardwareFaultID(Long nodeHardwareFaultID) { 
         this.nodeHardwareFaultID = nodeHardwareFaultID;
     }
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public Long getServiceID() { return this.serviceID; }
     public void setServiceID(Long serviceID) { 
         this.serviceID = serviceID;
     }
     /** 
+     * 
      **/
     public Long getDriveID() { return this.driveID; }
     public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
     /** 
+     * 
      **/
     public Boolean getResolved() { return this.resolved; }
     public void setResolved(Boolean resolved) { 
         this.resolved = resolved;
     }
     /** 
+     * 
      **/
     public Long getClusterFaultID() { return this.clusterFaultID; }
     public void setClusterFaultID(Long clusterFaultID) { 
         this.clusterFaultID = clusterFaultID;
     }
     /** 
+     * 
      **/
     public String getDate() { return this.date; }
     public void setDate(String date) { 
         this.date = date;
     }
     /** 
+     * 
      **/
     public String getResolvedDate() { return this.resolvedDate; }
     public void setResolvedDate(String resolvedDate) { 
         this.resolvedDate = resolvedDate;
     }
     /** 
+     * 
      **/
-    public Object getData() { return this.data; }
-    public void setData(Object data) { 
-        this.data = data;
+    public Optional<Attributes> getData() { return this.data; }
+    public void setData(Optional<Attributes> data) { 
+        this.data = (data == null) ? Optional.<Attributes>empty() : data;
     }
 
     @Override
@@ -172,6 +205,8 @@ public class ClusterFaultInfo implements Serializable {
         ClusterFaultInfo that = (ClusterFaultInfo) o;
 
         return 
+            Objects.equals(driveIDs, that.driveIDs) && 
+            Objects.equals(networkInterface, that.networkInterface) && 
             Objects.equals(severity, that.severity) && 
             Objects.equals(type, that.type) && 
             Objects.equals(code, that.code) && 
@@ -189,12 +224,14 @@ public class ClusterFaultInfo implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( severity,type,code,details,nodeHardwareFaultID,nodeID,serviceID,driveID,resolved,clusterFaultID,date,resolvedDate,data );
+        return Objects.hash( driveIDs,networkInterface,severity,type,code,details,nodeHardwareFaultID,nodeID,serviceID,driveID,resolved,clusterFaultID,date,resolvedDate,data );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
+        map.put("driveIDs", driveIDs);
+        map.put("networkInterface", networkInterface);
         map.put("severity", severity);
         map.put("type", type);
         map.put("code", code);
@@ -216,6 +253,12 @@ public class ClusterFaultInfo implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
+        if(null != driveIDs && driveIDs.isPresent()){
+            sb.append(" driveIDs : ").append(driveIDs).append(",");
+        }
+        if(null != networkInterface && networkInterface.isPresent()){
+            sb.append(" networkInterface : ").append(networkInterface).append(",");
+        }
         sb.append(" severity : ").append(severity).append(",");
         sb.append(" type : ").append(type).append(",");
         sb.append(" code : ").append(code).append(",");
@@ -228,7 +271,9 @@ public class ClusterFaultInfo implements Serializable {
         sb.append(" clusterFaultID : ").append(clusterFaultID).append(",");
         sb.append(" date : ").append(date).append(",");
         sb.append(" resolvedDate : ").append(resolvedDate).append(",");
-        sb.append(" data : ").append(data).append(",");
+        if(null != data && data.isPresent()){
+            sb.append(" data : ").append(data).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -246,6 +291,8 @@ public class ClusterFaultInfo implements Serializable {
     }
 
     public static class Builder {
+        private Optional<Long[]> driveIDs;
+        private Optional<String> networkInterface;
         private String severity;
         private String type;
         private String code;
@@ -258,12 +305,14 @@ public class ClusterFaultInfo implements Serializable {
         private Long clusterFaultID;
         private String date;
         private String resolvedDate;
-        private Object data;
+        private Optional<Attributes> data;
 
         private Builder() { }
 
         public ClusterFaultInfo build() {
             return new ClusterFaultInfo (
+                         this.driveIDs,
+                         this.networkInterface,
                          this.severity,
                          this.type,
                          this.code,
@@ -280,6 +329,8 @@ public class ClusterFaultInfo implements Serializable {
         }
 
         private ClusterFaultInfo.Builder buildFrom(final ClusterFaultInfo req) {
+            this.driveIDs = req.driveIDs;
+            this.networkInterface = req.networkInterface;
             this.severity = req.severity;
             this.type = req.type;
             this.code = req.code;
@@ -294,6 +345,16 @@ public class ClusterFaultInfo implements Serializable {
             this.resolvedDate = req.resolvedDate;
             this.data = req.data;
 
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder optionalDriveIDs(final Long[] driveIDs) {
+            this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : Optional.of(driveIDs);
+            return this;
+        }
+
+        public ClusterFaultInfo.Builder optionalNetworkInterface(final String networkInterface) {
+            this.networkInterface = (networkInterface == null) ? Optional.<String>empty() : Optional.of(networkInterface);
             return this;
         }
 
@@ -357,8 +418,8 @@ public class ClusterFaultInfo implements Serializable {
             return this;
         }
 
-        public ClusterFaultInfo.Builder data(final Object data) {
-            this.data = data;
+        public ClusterFaultInfo.Builder optionalData(final Attributes data) {
+            this.data = (data == null) ? Optional.<Attributes>empty() : Optional.of(data);
             return this;
         }
 

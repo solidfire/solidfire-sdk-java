@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,15 +29,16 @@ import java.util.Objects;
 
 /**
  * ModifyVolumePairRequest  
+ * ModifyVolumePair enables you to pause or restart replication between a pair of volumes.
  **/
 
 public class ModifyVolumePairRequest implements Serializable {
 
-    public static final long serialVersionUID = 4570555575415487784L;
+    public static final long serialVersionUID = 5515348424178660277L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("pausedManual") private Optional<Boolean> pausedManual;
     @SerializedName("mode") private Optional<String> mode;
-
+    @SerializedName("pauseLimit") private Optional<Long> pauseLimit;
     // empty constructor
     @Since("7.0")
     public ModifyVolumePairRequest() {}
@@ -47,41 +49,48 @@ public class ModifyVolumePairRequest implements Serializable {
     public ModifyVolumePairRequest(
         Long volumeID,
         Optional<Boolean> pausedManual,
-        Optional<String> mode
+        Optional<String> mode,
+        Optional<Long> pauseLimit
     )
     {
         this.volumeID = volumeID;
         this.pausedManual = (pausedManual == null) ? Optional.<Boolean>empty() : pausedManual;
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
+        this.pauseLimit = (pauseLimit == null) ? Optional.<Long>empty() : pauseLimit;
     }
 
     /** 
-     * Identification number of the volume to be modified.
+     * The ID of the volume to be modified.
      **/
     public Long getVolumeID() { return this.volumeID; }
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
-     * Valid values that can be entered:
-     * true: to pause volume replication.
-     * false: to restart volume replication.
-     * If no value is specified, no change in replication is performed.
+     * Specifies whether to pause or restart volume replication process. Valid values are: 
+     * true: Pauses volume replication
+     * false: Restarts volume replication
      **/
     public Optional<Boolean> getPausedManual() { return this.pausedManual; }
     public void setPausedManual(Optional<Boolean> pausedManual) { 
         this.pausedManual = (pausedManual == null) ? Optional.<Boolean>empty() : pausedManual;
     }
     /** 
-     * Volume replication mode.
-     * Possible values:
+     * Specifies the volume replication mode. Possible values are:
      * Async: Writes are acknowledged when they complete locally. The cluster does not wait for writes to be replicated to the target cluster.
      * Sync: The source acknowledges the write when the data is stored locally and on the remote cluster.
-     * SnapshotsOnly: Only snapshots created on the source cluster will be replicated. Active writes from the source volume are not replicated.
+     * SnapshotsOnly: Only snapshots created on the source cluster are replicated. Active writes from the source volume are not replicated.
      **/
     public Optional<String> getMode() { return this.mode; }
     public void setMode(Optional<String> mode) { 
         this.mode = (mode == null) ? Optional.<String>empty() : mode;
+    }
+    /** 
+     * Internal use only.
+     **/
+    public Optional<Long> getPauseLimit() { return this.pauseLimit; }
+    public void setPauseLimit(Optional<Long> pauseLimit) { 
+        this.pauseLimit = (pauseLimit == null) ? Optional.<Long>empty() : pauseLimit;
     }
 
     @Override
@@ -94,12 +103,13 @@ public class ModifyVolumePairRequest implements Serializable {
         return 
             Objects.equals(volumeID, that.volumeID) && 
             Objects.equals(pausedManual, that.pausedManual) && 
-            Objects.equals(mode, that.mode);
+            Objects.equals(mode, that.mode) && 
+            Objects.equals(pauseLimit, that.pauseLimit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID,pausedManual,mode );
+        return Objects.hash( volumeID,pausedManual,mode,pauseLimit );
     }
 
 
@@ -108,6 +118,7 @@ public class ModifyVolumePairRequest implements Serializable {
         map.put("volumeID", volumeID);
         map.put("pausedManual", pausedManual);
         map.put("mode", mode);
+        map.put("pauseLimit", pauseLimit);
         return map;
     }
 
@@ -122,6 +133,9 @@ public class ModifyVolumePairRequest implements Serializable {
         }
         if(null != mode && mode.isPresent()){
             sb.append(" mode : ").append(mode).append(",");
+        }
+        if(null != pauseLimit && pauseLimit.isPresent()){
+            sb.append(" pauseLimit : ").append(pauseLimit).append(",");
         }
         sb.append( " }" );
 
@@ -143,6 +157,7 @@ public class ModifyVolumePairRequest implements Serializable {
         private Long volumeID;
         private Optional<Boolean> pausedManual;
         private Optional<String> mode;
+        private Optional<Long> pauseLimit;
 
         private Builder() { }
 
@@ -150,13 +165,15 @@ public class ModifyVolumePairRequest implements Serializable {
             return new ModifyVolumePairRequest (
                          this.volumeID,
                          this.pausedManual,
-                         this.mode);
+                         this.mode,
+                         this.pauseLimit);
         }
 
         private ModifyVolumePairRequest.Builder buildFrom(final ModifyVolumePairRequest req) {
             this.volumeID = req.volumeID;
             this.pausedManual = req.pausedManual;
             this.mode = req.mode;
+            this.pauseLimit = req.pauseLimit;
 
             return this;
         }
@@ -173,6 +190,11 @@ public class ModifyVolumePairRequest implements Serializable {
 
         public ModifyVolumePairRequest.Builder optionalMode(final String mode) {
             this.mode = (mode == null) ? Optional.<String>empty() : Optional.of(mode);
+            return this;
+        }
+
+        public ModifyVolumePairRequest.Builder optionalPauseLimit(final Long pauseLimit) {
+            this.pauseLimit = (pauseLimit == null) ? Optional.<Long>empty() : Optional.of(pauseLimit);
             return this;
         }
 

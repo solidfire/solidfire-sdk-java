@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * ListStorageContainersRequest  
+ * ListStorageContainers enables you to retrieve information about all virtual volume storage containers known to the system.
  **/
 
 public class ListStorageContainersRequest implements Serializable {
 
-    public static final long serialVersionUID = 6165115027762705922L;
+    public static final long serialVersionUID = -2051845265952348384L;
     @SerializedName("storageContainerIDs") private Optional<java.util.UUID[]> storageContainerIDs;
-
     // empty constructor
     @Since("7.0")
     public ListStorageContainersRequest() {}
@@ -50,7 +51,7 @@ public class ListStorageContainersRequest implements Serializable {
     }
 
     /** 
-     * List of storage containers to get
+     * A list of storage container IDs for which to retrieve information. If you omit this parameter, the method returns information about all storage containers in the system.
      **/
     public Optional<java.util.UUID[]> getStorageContainerIDs() { return this.storageContainerIDs; }
     public void setStorageContainerIDs(Optional<java.util.UUID[]> storageContainerIDs) { 

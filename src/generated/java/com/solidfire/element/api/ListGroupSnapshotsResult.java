@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListGroupSnapshotsResult implements Serializable {
 
-    public static final long serialVersionUID = 2481293034206278787L;
+    public static final long serialVersionUID = 2340772200218208275L;
     @SerializedName("groupSnapshots") private GroupSnapshot[] groupSnapshots;
-
     // empty constructor
     @Since("7.0")
     public ListGroupSnapshotsResult() {}

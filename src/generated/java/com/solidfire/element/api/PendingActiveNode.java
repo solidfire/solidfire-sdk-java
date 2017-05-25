@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class PendingActiveNode implements Serializable {
 
-    public static final long serialVersionUID = 6847418537242966542L;
+    public static final long serialVersionUID = 2894679253473231888L;
     @SerializedName("activeNodeKey") private String activeNodeKey;
     @SerializedName("assignedNodeID") private Long assignedNodeID;
     @SerializedName("asyncHandle") private Long asyncHandle;
@@ -42,7 +43,6 @@ public class PendingActiveNode implements Serializable {
     @SerializedName("platformInfo") private Platform platformInfo;
     @SerializedName("sip") private String sip;
     @SerializedName("softwareVersion") private String softwareVersion;
-
     // empty constructor
     @Since("7.0")
     public PendingActiveNode() {}
@@ -74,54 +74,63 @@ public class PendingActiveNode implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getActiveNodeKey() { return this.activeNodeKey; }
     public void setActiveNodeKey(String activeNodeKey) { 
         this.activeNodeKey = activeNodeKey;
     }
     /** 
+     * 
      **/
     public Long getAssignedNodeID() { return this.assignedNodeID; }
     public void setAssignedNodeID(Long assignedNodeID) { 
         this.assignedNodeID = assignedNodeID;
     }
     /** 
+     * 
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
     public void setAsyncHandle(Long asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
     /** 
+     * 
      **/
     public String getCip() { return this.cip; }
     public void setCip(String cip) { 
         this.cip = cip;
     }
     /** 
+     * 
      **/
     public String getMip() { return this.mip; }
     public void setMip(String mip) { 
         this.mip = mip;
     }
     /** 
+     * 
      **/
     public Long getPendingNodeID() { return this.pendingNodeID; }
     public void setPendingNodeID(Long pendingNodeID) { 
         this.pendingNodeID = pendingNodeID;
     }
     /** 
+     * 
      **/
     public Platform getPlatformInfo() { return this.platformInfo; }
     public void setPlatformInfo(Platform platformInfo) { 
         this.platformInfo = platformInfo;
     }
     /** 
+     * 
      **/
     public String getSip() { return this.sip; }
     public void setSip(String sip) { 
         this.sip = sip;
     }
     /** 
+     * 
      **/
     public String getSoftwareVersion() { return this.softwareVersion; }
     public void setSoftwareVersion(String softwareVersion) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * RemoveBackupTargetRequest  
+ * RemoveBackupTarget allows you to delete backup targets.
  **/
 
 public class RemoveBackupTargetRequest implements Serializable {
 
-    public static final long serialVersionUID = -1520692591750398943L;
+    public static final long serialVersionUID = -8214096458617187958L;
     @SerializedName("backupTargetID") private Long backupTargetID;
-
     // empty constructor
     @Since("7.0")
     public RemoveBackupTargetRequest() {}
@@ -50,7 +51,7 @@ public class RemoveBackupTargetRequest implements Serializable {
     }
 
     /** 
-     * Unique target ID of the target to remove.
+     * The unique target ID of the target to remove.
      **/
     public Long getBackupTargetID() { return this.backupTargetID; }
     public void setBackupTargetID(Long backupTargetID) { 

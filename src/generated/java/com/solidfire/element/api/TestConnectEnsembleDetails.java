@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class TestConnectEnsembleDetails implements Serializable {
 
-    public static final long serialVersionUID = -4998247157821783259L;
-    @SerializedName("nodes") private Object nodes;
-
+    public static final long serialVersionUID = 8868444013859001884L;
+    @SerializedName("nodes") private Attributes nodes;
     // empty constructor
     @Since("7.0")
     public TestConnectEnsembleDetails() {}
@@ -43,7 +43,7 @@ public class TestConnectEnsembleDetails implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public TestConnectEnsembleDetails(
-        Object nodes
+        Attributes nodes
     )
     {
         this.nodes = nodes;
@@ -52,8 +52,8 @@ public class TestConnectEnsembleDetails implements Serializable {
     /** 
      * A list of each ensemble node in the test and the results of the tests.
      **/
-    public Object getNodes() { return this.nodes; }
-    public void setNodes(Object nodes) { 
+    public Attributes getNodes() { return this.nodes; }
+    public void setNodes(Attributes nodes) { 
         this.nodes = nodes;
     }
 
@@ -103,7 +103,7 @@ public class TestConnectEnsembleDetails implements Serializable {
     }
 
     public static class Builder {
-        private Object nodes;
+        private Attributes nodes;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class TestConnectEnsembleDetails implements Serializable {
             return this;
         }
 
-        public TestConnectEnsembleDetails.Builder nodes(final Object nodes) {
+        public TestConnectEnsembleDetails.Builder nodes(final Attributes nodes) {
             this.nodes = nodes;
             return this;
         }

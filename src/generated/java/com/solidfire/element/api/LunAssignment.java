@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,10 +34,9 @@ import java.util.Objects;
 
 public class LunAssignment implements Serializable {
 
-    public static final long serialVersionUID = 4843157514928145383L;
+    public static final long serialVersionUID = -5753492147949514645L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("lun") private Long lun;
-
     // empty constructor
     @Since("7.0")
     public LunAssignment() {}

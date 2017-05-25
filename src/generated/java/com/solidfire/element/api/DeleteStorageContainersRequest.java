@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,14 @@ import java.util.Objects;
 
 /**
  * DeleteStorageContainersRequest  
+ * DeleteStorageContainers enables you to remove up to 2000 Virtual Volume (VVol) storage containers from the system at one time.
+ * The storage containers you remove must not contain any VVols.
  **/
 
 public class DeleteStorageContainersRequest implements Serializable {
 
-    public static final long serialVersionUID = 655860174858501057L;
+    public static final long serialVersionUID = 4179208536092168472L;
     @SerializedName("storageContainerIDs") private java.util.UUID[] storageContainerIDs;
-
     // empty constructor
     @Since("7.0")
     public DeleteStorageContainersRequest() {}
@@ -50,7 +52,7 @@ public class DeleteStorageContainersRequest implements Serializable {
     }
 
     /** 
-     * list of storageContainerID of the storage container to delete.
+     * A list of IDs of the storage containers to delete. You can specify up to 2000 IDs in the list.
      **/
     public java.util.UUID[] getStorageContainerIDs() { return this.storageContainerIDs; }
     public void setStorageContainerIDs(java.util.UUID[] storageContainerIDs) { 

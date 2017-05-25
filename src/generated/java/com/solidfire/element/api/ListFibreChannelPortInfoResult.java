@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,9 +34,8 @@ import java.util.Objects;
 
 public class ListFibreChannelPortInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -1066916759051365511L;
+    public static final long serialVersionUID = -1837140431441547256L;
     @SerializedName("fibreChannelPortInfo") private java.util.Map<String,FibreChannelPortInfoResult> fibreChannelPortInfo;
-
     // empty constructor
     @Since("7.0")
     public ListFibreChannelPortInfoResult() {}

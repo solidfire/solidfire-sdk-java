@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,10 @@ import java.util.Objects;
 
 public class GetClusterStateResult implements Serializable {
 
-    public static final long serialVersionUID = -8089888168782582813L;
-    @SerializedName("nodes") private NodeStateResult[] nodes;
-
+    public static final long serialVersionUID = -113645869669615390L;
+    @SerializedName("nodes") private Optional<NodeStateResult[]> nodes;
+    @SerializedName("cluster") private Optional<String> cluster;
+    @SerializedName("state") private Optional<String> state;
     // empty constructor
     @Since("7.0")
     public GetClusterStateResult() {}
@@ -43,18 +45,36 @@ public class GetClusterStateResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public GetClusterStateResult(
-        NodeStateResult[] nodes
+        Optional<NodeStateResult[]> nodes,
+        Optional<String> cluster,
+        Optional<String> state
     )
     {
-        this.nodes = nodes;
+        this.nodes = (nodes == null) ? Optional.<NodeStateResult[]>empty() : nodes;
+        this.cluster = (cluster == null) ? Optional.<String>empty() : cluster;
+        this.state = (state == null) ? Optional.<String>empty() : state;
     }
 
     /** 
      * Array of NodeStateResult objects for each node in the cluster.
      **/
-    public NodeStateResult[] getNodes() { return this.nodes; }
-    public void setNodes(NodeStateResult[] nodes) { 
-        this.nodes = nodes;
+    public Optional<NodeStateResult[]> getNodes() { return this.nodes; }
+    public void setNodes(Optional<NodeStateResult[]> nodes) { 
+        this.nodes = (nodes == null) ? Optional.<NodeStateResult[]>empty() : nodes;
+    }
+    /** 
+     * 
+     **/
+    public Optional<String> getCluster() { return this.cluster; }
+    public void setCluster(Optional<String> cluster) { 
+        this.cluster = (cluster == null) ? Optional.<String>empty() : cluster;
+    }
+    /** 
+     * 
+     **/
+    public Optional<String> getState() { return this.state; }
+    public void setState(Optional<String> state) { 
+        this.state = (state == null) ? Optional.<String>empty() : state;
     }
 
     @Override
@@ -65,18 +85,22 @@ public class GetClusterStateResult implements Serializable {
         GetClusterStateResult that = (GetClusterStateResult) o;
 
         return 
-            Arrays.equals(nodes, that.nodes);
+            Objects.equals(nodes, that.nodes) && 
+            Objects.equals(cluster, that.cluster) && 
+            Objects.equals(state, that.state);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])nodes );
+        return Objects.hash( nodes,cluster,state );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("nodes", nodes);
+        map.put("cluster", cluster);
+        map.put("state", state);
         return map;
     }
 
@@ -85,7 +109,15 @@ public class GetClusterStateResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        if(null != nodes && nodes.isPresent()){
+            sb.append(" nodes : ").append(nodes).append(",");
+        }
+        if(null != cluster && cluster.isPresent()){
+            sb.append(" cluster : ").append(cluster).append(",");
+        }
+        if(null != state && state.isPresent()){
+            sb.append(" state : ").append(state).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,23 +135,39 @@ public class GetClusterStateResult implements Serializable {
     }
 
     public static class Builder {
-        private NodeStateResult[] nodes;
+        private Optional<NodeStateResult[]> nodes;
+        private Optional<String> cluster;
+        private Optional<String> state;
 
         private Builder() { }
 
         public GetClusterStateResult build() {
             return new GetClusterStateResult (
-                         this.nodes);
+                         this.nodes,
+                         this.cluster,
+                         this.state);
         }
 
         private GetClusterStateResult.Builder buildFrom(final GetClusterStateResult req) {
             this.nodes = req.nodes;
+            this.cluster = req.cluster;
+            this.state = req.state;
 
             return this;
         }
 
-        public GetClusterStateResult.Builder nodes(final NodeStateResult[] nodes) {
-            this.nodes = nodes;
+        public GetClusterStateResult.Builder optionalNodes(final NodeStateResult[] nodes) {
+            this.nodes = (nodes == null) ? Optional.<NodeStateResult[]>empty() : Optional.of(nodes);
+            return this;
+        }
+
+        public GetClusterStateResult.Builder optionalCluster(final String cluster) {
+            this.cluster = (cluster == null) ? Optional.<String>empty() : Optional.of(cluster);
+            return this;
+        }
+
+        public GetClusterStateResult.Builder optionalState(final String state) {
+            this.state = (state == null) ? Optional.<String>empty() : Optional.of(state);
             return this;
         }
 

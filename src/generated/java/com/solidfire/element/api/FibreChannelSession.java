@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,13 +34,12 @@ import java.util.Objects;
 
 public class FibreChannelSession implements Serializable {
 
-    public static final long serialVersionUID = 8264333238023851936L;
+    public static final long serialVersionUID = 6416983989822085846L;
     @SerializedName("initiatorWWPN") private String initiatorWWPN;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("serviceID") private Long serviceID;
     @SerializedName("targetWWPN") private String targetWWPN;
     @SerializedName("volumeAccessGroupID") private Optional<Long> volumeAccessGroupID;
-
     // empty constructor
     @Since("7.0")
     public FibreChannelSession() {}
@@ -91,7 +91,7 @@ public class FibreChannelSession implements Serializable {
         this.targetWWPN = targetWWPN;
     }
     /** 
-     * The ID of the volume access group to which the initiatorWWPN belongs. If not in a volume access group, the value will be null.
+     * The ID of the volume access group to which the initiatorWWPN beintegers. If not in a volume access group, the value will be null.
      **/
     public Optional<Long> getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
     public void setVolumeAccessGroupID(Optional<Long> volumeAccessGroupID) { 

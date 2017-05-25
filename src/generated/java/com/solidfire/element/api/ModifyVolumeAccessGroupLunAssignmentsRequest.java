@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,21 @@ import java.util.Objects;
 
 /**
  * ModifyVolumeAccessGroupLunAssignmentsRequest  
+ * The ModifyVolumeAccessGroupLunAssignments
+ * method enables you to define custom LUN assignments
+ * for specific volumes. This method changes only LUN
+ * values set on the lunAssignments parameter in the
+ * volume access group. All other LUN assignments remain
+ * unchanged. LUN assignment values must be unique for volumes in a volume access group. You cannot define duplicate LUN values within a volume access group. However, you can use the same LUN values again in different volume access groups. 
+ * Note: Correct LUN values are 0 through 16383. The system generates an exception if you pass a LUN value outside of this range. None of the specified LUN assignments are modified if there is an exception. 
+ * Caution: If you change a LUN assignment for a volume with active I/O, the I/O can be disrupted. You might need to change the server configuration before changing volume LUN assignments.
  **/
 
 public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializable {
 
-    public static final long serialVersionUID = -2854592840284265047L;
+    public static final long serialVersionUID = 78156891417472581L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
-
     // empty constructor
     @Since("7.0")
     public ModifyVolumeAccessGroupLunAssignmentsRequest() {}
@@ -53,7 +61,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
     }
 
     /** 
-     * Unique volume access group ID for which the LUN assignments will be modified.
+     * The ID of the volume access group for which the LUN assignments will be modified.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,14 @@ import java.util.Objects;
 
 /**
  * CompleteVolumePairingRequest  
+ * You can use the CompleteVolumePairing method to complete the pairing of two volumes.
  **/
 
 public class CompleteVolumePairingRequest implements Serializable {
 
-    public static final long serialVersionUID = 3238767447325720472L;
+    public static final long serialVersionUID = -9021166971547730333L;
     @SerializedName("volumePairingKey") private String volumePairingKey;
     @SerializedName("volumeID") private Long volumeID;
-
     // empty constructor
     @Since("7.0")
     public CompleteVolumePairingRequest() {}
@@ -53,14 +54,14 @@ public class CompleteVolumePairingRequest implements Serializable {
     }
 
     /** 
-     * The key returned from the "StartVolumePairing" API method.
+     * The key returned from the StartVolumePairing method.
      **/
     public String getVolumePairingKey() { return this.volumePairingKey; }
     public void setVolumePairingKey(String volumePairingKey) { 
         this.volumePairingKey = volumePairingKey;
     }
     /** 
-     * The ID of volume on which to complete the pairing process.
+     * The ID of the volume on which to complete the pairing process.
      **/
     public Long getVolumeID() { return this.volumeID; }
     public void setVolumeID(Long volumeID) { 

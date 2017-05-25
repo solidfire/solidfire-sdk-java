@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,16 +29,16 @@ import java.util.Objects;
 
 /**
  * ModifyClusterAdminRequest  
+ * You can use ModifyClusterAdmin to change the settings for a cluster admin or LDAP cluster admin. You cannot change access for the administrator cluster admin account.
  **/
 
 public class ModifyClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = 8115405465052390185L;
+    public static final long serialVersionUID = -3786762490871412882L;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     @SerializedName("password") private Optional<String> password;
     @SerializedName("access") private Optional<String[]> access;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public ModifyClusterAdminRequest() {}
@@ -49,42 +50,42 @@ public class ModifyClusterAdminRequest implements Serializable {
         Long clusterAdminID,
         Optional<String> password,
         Optional<String[]> access,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.clusterAdminID = clusterAdminID;
         this.password = (password == null) ? Optional.<String>empty() : password;
         this.access = (access == null) ? Optional.<String[]>empty() : access;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * ClusterAdminID for the Cluster Admin or LDAP Cluster Admin to modify.
+     * ClusterAdminID for the cluster admin or LDAP cluster admin to modify.
      **/
     public Long getClusterAdminID() { return this.clusterAdminID; }
     public void setClusterAdminID(Long clusterAdminID) { 
         this.clusterAdminID = clusterAdminID;
     }
     /** 
-     * Password used to authenticate this Cluster Admin.
+     * Password used to authenticate this cluster admin.
      **/
     public Optional<String> getPassword() { return this.password; }
     public void setPassword(Optional<String> password) { 
         this.password = (password == null) ? Optional.<String>empty() : password;
     }
     /** 
-     * Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
+     * Controls which methods this cluster admin can use. For more details, see Access Control in the Element API Reference Guide.
      **/
     public Optional<String[]> getAccess() { return this.access; }
     public void setAccess(Optional<String[]> access) { 
         this.access = (access == null) ? Optional.<String[]>empty() : access;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -151,7 +152,7 @@ public class ModifyClusterAdminRequest implements Serializable {
         private Long clusterAdminID;
         private Optional<String> password;
         private Optional<String[]> access;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -187,8 +188,8 @@ public class ModifyClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public ModifyClusterAdminRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public ModifyClusterAdminRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

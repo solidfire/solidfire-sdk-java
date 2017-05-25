@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class PhysicalAdapter implements Serializable {
 
-    public static final long serialVersionUID = -950225984887038109L;
+    public static final long serialVersionUID = -4886674423075193996L;
     @SerializedName("address") private Optional<String> address;
     @SerializedName("macAddress") private Optional<String> macAddress;
     @SerializedName("macAddressPermanent") private Optional<String> macAddressPermanent;
@@ -40,7 +41,6 @@ public class PhysicalAdapter implements Serializable {
     @SerializedName("netmask") private Optional<String> netmask;
     @SerializedName("network") private Optional<String> network;
     @SerializedName("upAndRunning") private Optional<Boolean> upAndRunning;
-
     // empty constructor
     @Since("7.0")
     public PhysicalAdapter() {}
@@ -68,42 +68,49 @@ public class PhysicalAdapter implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Optional<String> getAddress() { return this.address; }
     public void setAddress(Optional<String> address) { 
         this.address = (address == null) ? Optional.<String>empty() : address;
     }
     /** 
+     * 
      **/
     public Optional<String> getMacAddress() { return this.macAddress; }
     public void setMacAddress(Optional<String> macAddress) { 
         this.macAddress = (macAddress == null) ? Optional.<String>empty() : macAddress;
     }
     /** 
+     * 
      **/
     public Optional<String> getMacAddressPermanent() { return this.macAddressPermanent; }
     public void setMacAddressPermanent(Optional<String> macAddressPermanent) { 
         this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : macAddressPermanent;
     }
     /** 
+     * 
      **/
     public Optional<String> getMtu() { return this.mtu; }
     public void setMtu(Optional<String> mtu) { 
         this.mtu = (mtu == null) ? Optional.<String>empty() : mtu;
     }
     /** 
+     * 
      **/
     public Optional<String> getNetmask() { return this.netmask; }
     public void setNetmask(Optional<String> netmask) { 
         this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
     }
     /** 
+     * 
      **/
     public Optional<String> getNetwork() { return this.network; }
     public void setNetwork(Optional<String> network) { 
         this.network = (network == null) ? Optional.<String>empty() : network;
     }
     /** 
+     * 
      **/
     public Optional<Boolean> getUpAndRunning() { return this.upAndRunning; }
     public void setUpAndRunning(Optional<Boolean> upAndRunning) { 

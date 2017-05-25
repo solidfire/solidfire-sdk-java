@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,15 @@ import java.util.Objects;
 
 /**
  * SetNtpInfoRequest  
+ * SetNtpInfo enables you to configure NTP on cluster nodes. The values you set with this interface apply to all nodes in the cluster. If an NTP broadcast server periodically broadcasts time information on your network, you can optionally configure nodes as broadcast clients.
+ * Note: NetApp recommends using NTP servers that are internal to your network, rather than the installation defaults.
  **/
 
 public class SetNtpInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 6497600226879267920L;
+    public static final long serialVersionUID = 608075483046425231L;
     @SerializedName("servers") private String[] servers;
     @SerializedName("broadcastclient") private Optional<Boolean> broadcastclient;
-
     // empty constructor
     @Since("7.0")
     public SetNtpInfoRequest() {}
@@ -53,14 +55,14 @@ public class SetNtpInfoRequest implements Serializable {
     }
 
     /** 
-     * List of NTP servers to add to each node's NTP configuration.
+     * List of NTP servers to add to each nodes NTP configuration.
      **/
     public String[] getServers() { return this.servers; }
     public void setServers(String[] servers) { 
         this.servers = servers;
     }
     /** 
-     * Enable every node in the cluster as a broadcase client.
+     * Enables every node in the cluster as a broadcast client.
      **/
     public Optional<Boolean> getBroadcastclient() { return this.broadcastclient; }
     public void setBroadcastclient(Optional<Boolean> broadcastclient) { 

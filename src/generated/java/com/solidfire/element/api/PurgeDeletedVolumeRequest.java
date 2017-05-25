@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,15 @@ import java.util.Objects;
 
 /**
  * PurgeDeletedVolumeRequest  
+ * PurgeDeletedVolume immediately and permanently purges a volume that has been deleted. You must delete a volume using
+ * DeleteVolume before it can be purged. Volumes are purged automatically after a period of time, so usage of this method is not
+ * typically required.
  **/
 
 public class PurgeDeletedVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = 6107800091718315860L;
+    public static final long serialVersionUID = -8693288254533359812L;
     @SerializedName("volumeID") private Long volumeID;
-
     // empty constructor
     @Since("7.0")
     public PurgeDeletedVolumeRequest() {}
@@ -50,7 +53,7 @@ public class PurgeDeletedVolumeRequest implements Serializable {
     }
 
     /** 
-     * The ID of the volume to purge.
+     * The ID of the volume to be purged.
      **/
     public Long getVolumeID() { return this.volumeID; }
     public void setVolumeID(Long volumeID) { 

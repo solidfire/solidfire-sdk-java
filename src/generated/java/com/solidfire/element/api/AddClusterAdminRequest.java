@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,17 +29,19 @@ import java.util.Objects;
 
 /**
  * AddClusterAdminRequest  
+ * You can use AddClusterAdmin to add a new cluster admin account. A cluster ddmin can manage the cluster using the API and management tools. Cluster admins are completely separate and unrelated to standard tenant accounts.
+ * Each cluster admin can be restricted to a subset of the API. NetApp recommends using multiple cluster admin accounts for different users and applications. You should give each cluster admin the minimal permissions necessary; this reduces the potential impact of credential compromise.
+ * You must accept the End User License Agreement (EULA) by setting the acceptEula parameter to true to add a cluster administrator account to the system.
  **/
 
 public class AddClusterAdminRequest implements Serializable {
 
-    public static final long serialVersionUID = -1519043753950193717L;
+    public static final long serialVersionUID = 1314216236753443486L;
     @SerializedName("username") private String username;
     @SerializedName("password") private String password;
     @SerializedName("access") private String[] access;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public AddClusterAdminRequest() {}
@@ -51,50 +54,52 @@ public class AddClusterAdminRequest implements Serializable {
         String password,
         String[] access,
         Optional<Boolean> acceptEula,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.username = username;
         this.password = password;
         this.access = access;
         this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * Unique username for this Cluster Admin.
+     * Unique username for this cluster admin. Must be between 1 and 1024 characters in length.
      **/
     public String getUsername() { return this.username; }
     public void setUsername(String username) { 
         this.username = username;
     }
     /** 
-     * Password used to authenticate this Cluster Admin.
+     * Password used to authenticate this cluster admin.
      **/
     public String getPassword() { return this.password; }
     public void setPassword(String password) { 
         this.password = password;
     }
     /** 
-     * Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
+     * Controls which methods this cluster admin can use. For more details on the levels of access, see Access Control in the Element API Reference Guide.
      **/
     public String[] getAccess() { return this.access; }
     public void setAccess(String[] access) { 
         this.access = access;
     }
     /** 
-     * Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
+     * Required to indicate your acceptance of the End User License
+     * Agreement when creating this cluster. To accept the EULA,
+     * set this parameter to true.
      **/
     public Optional<Boolean> getAcceptEula() { return this.acceptEula; }
     public void setAcceptEula(Optional<Boolean> acceptEula) { 
         this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -163,7 +168,7 @@ public class AddClusterAdminRequest implements Serializable {
         private String password;
         private String[] access;
         private Optional<Boolean> acceptEula;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -206,8 +211,8 @@ public class AddClusterAdminRequest implements Serializable {
             return this;
         }
 
-        public AddClusterAdminRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public AddClusterAdminRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,19 +29,20 @@ import java.util.Objects;
 
 /**
  * ModifyVolumeAccessGroupRequest  
+ * You can use ModifyVolumeAccessGroup to update initiators and add or remove volumes from a volume access group. If a specified initiator or volume is a duplicate of what currently exists, the volume access group is left as-is. If you do not specify a value for volumes or initiators, the current list of initiators and volumes is not changed.
  **/
 
 public class ModifyVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = -6230175995726808888L;
+    public static final long serialVersionUID = -7861044546940020964L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("virtualNetworkID") private Optional<Long[]> virtualNetworkID;
     @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("initiators") private Optional<String[]> initiators;
     @SerializedName("volumes") private Optional<Long[]> volumes;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("deleteOrphanInitiators") private Optional<Boolean> deleteOrphanInitiators;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public ModifyVolumeAccessGroupRequest() {}
@@ -53,14 +55,14 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         Optional<String> name,
         Optional<String[]> initiators,
         Optional<Long[]> volumes,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     // parameterized constructor
     @Since("8.0")
@@ -71,7 +73,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         Optional<String> name,
         Optional<String[]> initiators,
         Optional<Long[]> volumes,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumeAccessGroupID = volumeAccessGroupID;
@@ -80,7 +82,29 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         this.name = (name == null) ? Optional.<String>empty() : name;
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+    }
+    // parameterized constructor
+    @Since("9.0")
+    public ModifyVolumeAccessGroupRequest(
+        Long volumeAccessGroupID,
+        Optional<Long[]> virtualNetworkID,
+        Optional<Long[]> virtualNetworkTags,
+        Optional<String> name,
+        Optional<String[]> initiators,
+        Optional<Long[]> volumes,
+        Optional<Boolean> deleteOrphanInitiators,
+        Optional<Attributes> attributes
+    )
+    {
+        this.volumeAccessGroupID = volumeAccessGroupID;
+        this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
+        this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
+        this.name = (name == null) ? Optional.<String>empty() : name;
+        this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
+        this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
+        this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -91,49 +115,54 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
-     * The ID of the SolidFire Virtual Network ID to associate the volume access group with.
+     * The ID of the SolidFire virtual network to associate the volume access group with.
      **/
     public Optional<Long[]> getVirtualNetworkID() { return this.virtualNetworkID; }
     public void setVirtualNetworkID(Optional<Long[]> virtualNetworkID) { 
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
     }
     /** 
-     * The ID of the VLAN Virtual Network Tag to associate the volume access group with.
+     * The ID of the SolidFire virtual network to associate the volume access group with.
      **/
     public Optional<Long[]> getVirtualNetworkTags() { return this.virtualNetworkTags; }
     public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) { 
         this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
     }
     /** 
-     * Name of the volume access group.
-     * It is not required to be unique, but recommended.
+     * The new name for this volume access group. Not required to be unique, but recommended.
      **/
     public Optional<String> getName() { return this.name; }
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
     /** 
-     * List of initiators to include in the volume access group.
-     * If unspecified, the access group's configured initiators will not be modified.
+     * List of initiators to include in the volume access group. If unspecified, the access group's configured initiators are not modified.
      **/
     public Optional<String[]> getInitiators() { return this.initiators; }
     public void setInitiators(Optional<String[]> initiators) { 
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
     }
     /** 
-     * List of volumes to initially include in the volume access group.
-     * If unspecified, the access group's volumes will not be modified.
+     * List of volumes to initially include in the volume access group. If unspecified, the access group's volumes are not modified.
      **/
     public Optional<Long[]> getVolumes() { return this.volumes; }
     public void setVolumes(Optional<Long[]> volumes) { 
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * true: Delete initiator objects after they are removed from a volume access group.
+     * false: Do not delete initiator objects after they are removed from a volume access group.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Boolean> getDeleteOrphanInitiators() { return this.deleteOrphanInitiators; }
+    public void setDeleteOrphanInitiators(Optional<Boolean> deleteOrphanInitiators) { 
+        this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
+    }
+    /** 
+     * List of name-value pairs in JSON object format.
+     **/
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -150,12 +179,13 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
             Objects.equals(name, that.name) && 
             Objects.equals(initiators, that.initiators) && 
             Objects.equals(volumes, that.volumes) && 
+            Objects.equals(deleteOrphanInitiators, that.deleteOrphanInitiators) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeAccessGroupID,virtualNetworkID,virtualNetworkTags,name,initiators,volumes,attributes );
+        return Objects.hash( volumeAccessGroupID,virtualNetworkID,virtualNetworkTags,name,initiators,volumes,deleteOrphanInitiators,attributes );
     }
 
 
@@ -167,6 +197,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         map.put("name", name);
         map.put("initiators", initiators);
         map.put("volumes", volumes);
+        map.put("deleteOrphanInitiators", deleteOrphanInitiators);
         map.put("attributes", attributes);
         return map;
     }
@@ -191,6 +222,9 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         }
         if(null != volumes && volumes.isPresent()){
             sb.append(" volumes : ").append(volumes).append(",");
+        }
+        if(null != deleteOrphanInitiators && deleteOrphanInitiators.isPresent()){
+            sb.append(" deleteOrphanInitiators : ").append(deleteOrphanInitiators).append(",");
         }
         if(null != attributes && attributes.isPresent()){
             sb.append(" attributes : ").append(attributes).append(",");
@@ -218,7 +252,8 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
         private Optional<String> name;
         private Optional<String[]> initiators;
         private Optional<Long[]> volumes;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Boolean> deleteOrphanInitiators;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -230,6 +265,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
                          this.name,
                          this.initiators,
                          this.volumes,
+                         this.deleteOrphanInitiators,
                          this.attributes);
         }
 
@@ -240,6 +276,7 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
             this.name = req.name;
             this.initiators = req.initiators;
             this.volumes = req.volumes;
+            this.deleteOrphanInitiators = req.deleteOrphanInitiators;
             this.attributes = req.attributes;
 
             return this;
@@ -275,8 +312,13 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumeAccessGroupRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public ModifyVolumeAccessGroupRequest.Builder optionalDeleteOrphanInitiators(final Boolean deleteOrphanInitiators) {
+            this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : Optional.of(deleteOrphanInitiators);
+            return this;
+        }
+
+        public ModifyVolumeAccessGroupRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

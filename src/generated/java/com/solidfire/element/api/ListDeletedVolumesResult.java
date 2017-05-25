@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListDeletedVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = 7672085099914460039L;
+    public static final long serialVersionUID = 2878870687006584067L;
     @SerializedName("volumes") private Volume[] volumes;
-
     // empty constructor
     @Since("7.0")
     public ListDeletedVolumesResult() {}

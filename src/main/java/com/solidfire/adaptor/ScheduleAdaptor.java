@@ -15,11 +15,13 @@
  */
 package com.solidfire.adaptor;
 
+import com.solidfire.core.javautil.Optional;
 import com.solidfire.element.api.*;
 import com.solidfire.element.apiactual.*;
 import com.solidfire.core.client.ApiException;
 
 import java.util.*;
+
 
 /**
  * Created by Jason Ryan Womack on 8/11/16.
@@ -150,9 +152,13 @@ public class ScheduleAdaptor {
                                                                                     .optionalStartingDate(apiSchedule.getStartingDate())
                                                                                     .optionalWeekdays(apiSchedule.getWeekdays());
 
-        sfe.sendRequest("ModifySchedule", apiRequest.build(), ApiModifyScheduleRequest.class, ApiModifyScheduleResult.class);
+       ApiModifyScheduleResult result = sfe.sendRequest("ModifySchedule", apiRequest.build(), ApiModifyScheduleRequest.class, ApiModifyScheduleResult.class);
 
-        return new ModifyScheduleResult();
+       if (result.getSchedule() != null) {
+           return new ModifyScheduleResult(Optional.of(toSchedule(result.getSchedule())));
+       } else {
+           return new ModifyScheduleResult();
+       }
 
     }
 
@@ -167,14 +173,14 @@ public class ScheduleAdaptor {
         final Schedule.Builder schedule = Schedule.builder();
 
         schedule.optionalHasError(api.getHasError())
-                .lastRunStatus(api.getLastRunStatus())
-                .lastRunTimeStarted(api.getLastRunTimeStarted())
+                .optionalLastRunStatus(api.getLastRunStatus())
+                .optionalLastRunTimeStarted(api.getLastRunTimeStarted())
                 .name(api.getScheduleName())
                 .optionalPaused(api.getPaused())
                 .optionalRecurring(api.getRecurring())
                 .optionalRunNextInterval(api.getRunNextInterval())
                 .optionalScheduleID(api.getScheduleID())
-                .startingDate(api.getStartingDate())
+                .optionalStartingDate(api.getStartingDate())
                 .optionalToBeDeleted(api.getToBeDeleted())
                 .scheduleInfo(toScheduleInfo(api.getScheduleInfo()));
 
@@ -245,14 +251,12 @@ public class ScheduleAdaptor {
         final ApiSchedule.Builder api = ApiSchedule.builder();
 
         api.hasError(schedule.getHasError().orElse(null));
-        api.lastRunStatus(schedule.getLastRunStatus());
-        api.lastRunTimeStart(schedule.getLastRunTimeStarted());
         api.scheduleName(schedule.getName());
         api.paused(schedule.getPaused().orElse(null));
         api.recurring(schedule.getRecurring().orElse(null));
         api.runNextInterval(schedule.getRunNextInterval().orElse(null));
         api.scheduleID(schedule.getScheduleID().orElse(null));
-        api.startingDate(schedule.getStartingDate());
+        api.startingDate(schedule.getStartingDate().orElse(null));
         api.toBeDeleted(schedule.getToBeDeleted().orElse(null));
         api.scheduleType("Snapshot");
         api.attributes(new HashMap<String, Object>());

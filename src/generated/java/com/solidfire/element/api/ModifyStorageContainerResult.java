@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ModifyStorageContainerResult implements Serializable {
 
-    public static final long serialVersionUID = -1425255919470933463L;
+    public static final long serialVersionUID = -4423225914986512297L;
     @SerializedName("storageContainer") private StorageContainer storageContainer;
-
     // empty constructor
     @Since("7.0")
     public ModifyStorageContainerResult() {}
@@ -50,6 +50,7 @@ public class ModifyStorageContainerResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public StorageContainer getStorageContainer() { return this.storageContainer; }
     public void setStorageContainer(StorageContainer storageContainer) { 

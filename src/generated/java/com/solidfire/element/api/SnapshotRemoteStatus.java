@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class SnapshotRemoteStatus implements Serializable {
 
-    public static final long serialVersionUID = 6049293383257307136L;
+    public static final long serialVersionUID = 4188806031190340381L;
     @SerializedName("remoteStatus") private String remoteStatus;
     @SerializedName("volumePairUUID") private java.util.UUID volumePairUUID;
-
     // empty constructor
     @Since("7.0")
     public SnapshotRemoteStatus() {}
@@ -53,6 +53,7 @@ public class SnapshotRemoteStatus implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getRemoteStatus() { return this.remoteStatus; }
     public void setRemoteStatus(String remoteStatus) { 

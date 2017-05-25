@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,22 +34,21 @@ import java.util.Objects;
  * Volume Access Group Limits:
  * 
  * - A volume access group can contain up to sixty-four initiator IQNs.
- * - An initiator can only belong to only one volume access group.
+ * - An initiator can only beinteger to only one volume access group.
  * - A volume access group can contain up to two thousand volumes.
- * - Each volume access group can belong to a maximum of four other volume access groups.
+ * - Each volume access group can beinteger to a maximum of four other volume access groups.
  **/
 
 public class VolumeAccessGroup implements Serializable {
 
-    public static final long serialVersionUID = 143293271697026076L;
+    public static final long serialVersionUID = 4730873085369283153L;
     @SerializedName("deletedVolumes") private Long[] deletedVolumes;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("name") private String name;
     @SerializedName("initiatorIDs") private Long[] initiatorIDs;
     @SerializedName("initiators") private String[] initiators;
     @SerializedName("volumes") private Long[] volumes;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
-
+    @SerializedName("attributes") private Attributes attributes;
     // empty constructor
     @Since("7.0")
     public VolumeAccessGroup() {}
@@ -63,7 +63,7 @@ public class VolumeAccessGroup implements Serializable {
         Long[] initiatorIDs,
         String[] initiators,
         Long[] volumes,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.deletedVolumes = deletedVolumes;
@@ -104,14 +104,14 @@ public class VolumeAccessGroup implements Serializable {
         this.initiatorIDs = initiatorIDs;
     }
     /** 
-     * List of unique initiator names belonging to the volume access group.
+     * List of unique initiator names beintegering to the volume access group.
      **/
     public String[] getInitiators() { return this.initiators; }
     public void setInitiators(String[] initiators) { 
         this.initiators = initiators;
     }
     /** 
-     * List of volumes belonging to the volume access group.
+     * List of volumes beintegering to the volume access group.
      **/
     public Long[] getVolumes() { return this.volumes; }
     public void setVolumes(Long[] volumes) { 
@@ -120,8 +120,8 @@ public class VolumeAccessGroup implements Serializable {
     /** 
      * List of name/value pairs
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -195,7 +195,7 @@ public class VolumeAccessGroup implements Serializable {
         private Long[] initiatorIDs;
         private String[] initiators;
         private Long[] volumes;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -252,7 +252,7 @@ public class VolumeAccessGroup implements Serializable {
             return this;
         }
 
-        public VolumeAccessGroup.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public VolumeAccessGroup.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

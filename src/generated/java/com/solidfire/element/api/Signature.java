@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,11 +33,10 @@ import java.util.Objects;
 
 public class Signature implements Serializable {
 
-    public static final long serialVersionUID = 6006039558308474583L;
+    public static final long serialVersionUID = 4942507282318410530L;
     @SerializedName("data") private String data;
     @SerializedName("pubkey") private String pubkey;
     @SerializedName("version") private Long version;
-
     // empty constructor
     @Since("7.0")
     public Signature() {}
@@ -56,18 +56,21 @@ public class Signature implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getData() { return this.data; }
     public void setData(String data) { 
         this.data = data;
     }
     /** 
+     * 
      **/
     public String getPubkey() { return this.pubkey; }
     public void setPubkey(String pubkey) { 
         this.pubkey = pubkey;
     }
     /** 
+     * 
      **/
     public Long getVersion() { return this.version; }
     public void setVersion(Long version) { 

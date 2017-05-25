@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,10 +34,10 @@ import java.util.Objects;
 
 public class AddressBlock implements Serializable {
 
-    public static final long serialVersionUID = -8231638129202823513L;
+    public static final long serialVersionUID = 5030063350807025932L;
     @SerializedName("start") private String start;
     @SerializedName("size") private Long size;
-
+    @SerializedName("available") private String available;
     // empty constructor
     @Since("7.0")
     public AddressBlock() {}
@@ -46,11 +47,13 @@ public class AddressBlock implements Serializable {
     @Since("7.0")
     public AddressBlock(
         String start,
-        Long size
+        Long size,
+        String available
     )
     {
         this.start = start;
         this.size = size;
+        this.available = available;
     }
 
     /** 
@@ -67,6 +70,13 @@ public class AddressBlock implements Serializable {
     public void setSize(Long size) { 
         this.size = size;
     }
+    /** 
+     * Nuber of available blocks
+     **/
+    public String getAvailable() { return this.available; }
+    public void setAvailable(String available) { 
+        this.available = available;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -77,12 +87,13 @@ public class AddressBlock implements Serializable {
 
         return 
             Objects.equals(start, that.start) && 
-            Objects.equals(size, that.size);
+            Objects.equals(size, that.size) && 
+            Objects.equals(available, that.available);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( start,size );
+        return Objects.hash( start,size,available );
     }
 
 
@@ -90,6 +101,7 @@ public class AddressBlock implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("start", start);
         map.put("size", size);
+        map.put("available", available);
         return map;
     }
 
@@ -100,6 +112,7 @@ public class AddressBlock implements Serializable {
 
         sb.append(" start : ").append(start).append(",");
         sb.append(" size : ").append(size).append(",");
+        sb.append(" available : ").append(available).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -119,18 +132,21 @@ public class AddressBlock implements Serializable {
     public static class Builder {
         private String start;
         private Long size;
+        private String available;
 
         private Builder() { }
 
         public AddressBlock build() {
             return new AddressBlock (
                          this.start,
-                         this.size);
+                         this.size,
+                         this.available);
         }
 
         private AddressBlock.Builder buildFrom(final AddressBlock req) {
             this.start = req.start;
             this.size = req.size;
+            this.available = req.available;
 
             return this;
         }
@@ -142,6 +158,11 @@ public class AddressBlock implements Serializable {
 
         public AddressBlock.Builder size(final Long size) {
             this.size = size;
+            return this;
+        }
+
+        public AddressBlock.Builder available(final String available) {
+            this.available = available;
             return this;
         }
 

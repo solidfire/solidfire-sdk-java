@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,15 @@ import java.util.Objects;
 
 /**
  * ShutdownRequest  
+ * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method,
+ * log in to the MIP for the pending node, and enter the "shutdown" method with either the "restart" or "halt" options.
  **/
 
 public class ShutdownRequest implements Serializable {
 
-    public static final long serialVersionUID = -9028774115799936174L;
+    public static final long serialVersionUID = 2277911156368195135L;
     @SerializedName("nodes") private Long[] nodes;
     @SerializedName("option") private Optional<String> option;
-
     // empty constructor
     @Since("7.0")
     public ShutdownRequest() {}
@@ -60,7 +62,9 @@ public class ShutdownRequest implements Serializable {
         this.nodes = nodes;
     }
     /** 
-     * Action to take for the node shutdown:restart: Restarts the node.halt: Performs full power-off of the node.
+     * Specifies the action to take for the node shutdown. Possible values are:
+     * restart: Restarts the node.
+     * halt: Shuts down the node.
      **/
     public Optional<String> getOption() { return this.option; }
     public void setOption(Optional<String> option) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,12 +33,11 @@ import java.util.Objects;
 
 public class GetClusterVersionInfoResult implements Serializable {
 
-    public static final long serialVersionUID = 7467984518886463810L;
+    public static final long serialVersionUID = 6381184711152615764L;
     @SerializedName("clusterAPIVersion") private String clusterAPIVersion;
     @SerializedName("clusterVersion") private String clusterVersion;
     @SerializedName("clusterVersionInfo") private ClusterVersionInfo[] clusterVersionInfo;
     @SerializedName("softwareVersionInfo") private SoftwareVersionInfo softwareVersionInfo;
-
     // empty constructor
     @Since("7.0")
     public GetClusterVersionInfoResult() {}
@@ -59,24 +59,28 @@ public class GetClusterVersionInfoResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getClusterAPIVersion() { return this.clusterAPIVersion; }
     public void setClusterAPIVersion(String clusterAPIVersion) { 
         this.clusterAPIVersion = clusterAPIVersion;
     }
     /** 
+     * 
      **/
     public String getClusterVersion() { return this.clusterVersion; }
     public void setClusterVersion(String clusterVersion) { 
         this.clusterVersion = clusterVersion;
     }
     /** 
+     * 
      **/
     public ClusterVersionInfo[] getClusterVersionInfo() { return this.clusterVersionInfo; }
     public void setClusterVersionInfo(ClusterVersionInfo[] clusterVersionInfo) { 
         this.clusterVersionInfo = clusterVersionInfo;
     }
     /** 
+     * 
      **/
     public SoftwareVersionInfo getSoftwareVersionInfo() { return this.softwareVersionInfo; }
     public void setSoftwareVersionInfo(SoftwareVersionInfo softwareVersionInfo) { 

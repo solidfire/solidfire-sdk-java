@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,10 @@ import java.util.Objects;
 
 public class TestDrivesResult implements Serializable {
 
-    public static final long serialVersionUID = 7173335651099316228L;
+    public static final long serialVersionUID = -6844244032205724247L;
     @SerializedName("details") private String details;
-
+    @SerializedName("duration") private String duration;
+    @SerializedName("result") private String result;
     // empty constructor
     @Since("7.0")
     public TestDrivesResult() {}
@@ -43,17 +45,36 @@ public class TestDrivesResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public TestDrivesResult(
-        String details
+        String details,
+        String duration,
+        String result
     )
     {
         this.details = details;
+        this.duration = duration;
+        this.result = result;
     }
 
     /** 
+     * 
      **/
     public String getDetails() { return this.details; }
     public void setDetails(String details) { 
         this.details = details;
+    }
+    /** 
+     * 
+     **/
+    public String getDuration() { return this.duration; }
+    public void setDuration(String duration) { 
+        this.duration = duration;
+    }
+    /** 
+     * 
+     **/
+    public String getResult() { return this.result; }
+    public void setResult(String result) { 
+        this.result = result;
     }
 
     @Override
@@ -64,18 +85,22 @@ public class TestDrivesResult implements Serializable {
         TestDrivesResult that = (TestDrivesResult) o;
 
         return 
-            Objects.equals(details, that.details);
+            Objects.equals(details, that.details) && 
+            Objects.equals(duration, that.duration) && 
+            Objects.equals(result, that.result);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( details );
+        return Objects.hash( details,duration,result );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("details", details);
+        map.put("duration", duration);
+        map.put("result", result);
         return map;
     }
 
@@ -85,6 +110,8 @@ public class TestDrivesResult implements Serializable {
         sb.append( "{ " );
 
         sb.append(" details : ").append(details).append(",");
+        sb.append(" duration : ").append(duration).append(",");
+        sb.append(" result : ").append(result).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,22 +130,38 @@ public class TestDrivesResult implements Serializable {
 
     public static class Builder {
         private String details;
+        private String duration;
+        private String result;
 
         private Builder() { }
 
         public TestDrivesResult build() {
             return new TestDrivesResult (
-                         this.details);
+                         this.details,
+                         this.duration,
+                         this.result);
         }
 
         private TestDrivesResult.Builder buildFrom(final TestDrivesResult req) {
             this.details = req.details;
+            this.duration = req.duration;
+            this.result = req.result;
 
             return this;
         }
 
         public TestDrivesResult.Builder details(final String details) {
             this.details = details;
+            return this;
+        }
+
+        public TestDrivesResult.Builder duration(final String duration) {
+            this.duration = duration;
+            return this;
+        }
+
+        public TestDrivesResult.Builder result(final String result) {
+            this.result = result;
             return this;
         }
 

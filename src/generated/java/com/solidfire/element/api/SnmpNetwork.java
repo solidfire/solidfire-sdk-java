@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,12 +34,11 @@ import java.util.Objects;
 
 public class SnmpNetwork implements Serializable {
 
-    public static final long serialVersionUID = 867099654301027681L;
+    public static final long serialVersionUID = -8934717981643656321L;
     @SerializedName("access") private String access;
     @SerializedName("cidr") private Long cidr;
     @SerializedName("community") private String community;
     @SerializedName("network") private String network;
-
     // empty constructor
     @Since("7.0")
     public SnmpNetwork() {}
@@ -84,7 +84,7 @@ public class SnmpNetwork implements Serializable {
         this.community = community;
     }
     /** 
-     * This parameter along with the cidr variable is used to control which network the access and community string apply to. The special value of "default" is used to specify an entry that applies to all networks. The cidr mask is ignored when network value is either a host name or default.
+     * This parameter ainteger with the cidr variable is used to control which network the access and community string apply to. The special value of "default" is used to specify an entry that applies to all networks. The cidr mask is ignored when network value is either a host name or default.
      **/
     public String getNetwork() { return this.network; }
     public void setNetwork(String network) { 

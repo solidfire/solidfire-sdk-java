@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class NodeStatsInfo implements Serializable {
 
-    public static final long serialVersionUID = 7349711922328450412L;
+    public static final long serialVersionUID = -7735829937328337447L;
     @SerializedName("cBytesIn") private Long cBytesIn;
     @SerializedName("cBytesOut") private Long cBytesOut;
     @SerializedName("cpu") private Long cpu;
@@ -45,7 +46,6 @@ public class NodeStatsInfo implements Serializable {
     @SerializedName("sBytesOut") private Long sBytesOut;
     @SerializedName("timestamp") private String timestamp;
     @SerializedName("usedMemory") private Long usedMemory;
-
     // empty constructor
     @Since("7.0")
     public NodeStatsInfo() {}
@@ -132,6 +132,7 @@ public class NodeStatsInfo implements Serializable {
         this.networkUtilizationStorage = networkUtilizationStorage;
     }
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 

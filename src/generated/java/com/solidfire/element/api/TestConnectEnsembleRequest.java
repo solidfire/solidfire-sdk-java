@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,14 @@ import java.util.Objects;
 
 /**
  * TestConnectEnsembleRequest  
+ * The TestConnectEnsemble API method enables you to verify connectivity with a specified database ensemble. By default, it uses the ensemble for the cluster that the node is associated with. Alternatively, you can provide a different ensemble to test connectivity with.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class TestConnectEnsembleRequest implements Serializable {
 
-    public static final long serialVersionUID = 152307940432458740L;
+    public static final long serialVersionUID = -8687658580977541312L;
     @SerializedName("ensemble") private Optional<String> ensemble;
-
     // empty constructor
     @Since("7.0")
     public TestConnectEnsembleRequest() {}
@@ -50,7 +52,7 @@ public class TestConnectEnsembleRequest implements Serializable {
     }
 
     /** 
-     * A comma-separated list of ensemble node CIPs for connectivity testing
+     * Uses a comma-separated list of ensemble node cluster IP addresses to test connectivity. This parameter is optional.
      **/
     public Optional<String> getEnsemble() { return this.ensemble; }
     public void setEnsemble(Optional<String> ensemble) { 

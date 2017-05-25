@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,11 +33,10 @@ import java.util.Objects;
 
 public class CloneMultipleVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = 6829236154780075849L;
+    public static final long serialVersionUID = -5167493112161711037L;
     @SerializedName("asyncHandle") private Long asyncHandle;
     @SerializedName("groupCloneID") private Long groupCloneID;
     @SerializedName("members") private GroupCloneVolumeMember[] members;
-
     // empty constructor
     @Since("7.0")
     public CloneMultipleVolumesResult() {}

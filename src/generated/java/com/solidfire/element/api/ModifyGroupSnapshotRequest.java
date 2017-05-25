@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,15 +29,15 @@ import java.util.Objects;
 
 /**
  * ModifyGroupSnapshotRequest  
+ * ModifyGroupSnapshot enables you to change the attributes of a group of snapshots. You can also use this method to enable snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
  **/
 
 public class ModifyGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -3820766952241604504L;
+    public static final long serialVersionUID = 8969737621110515281L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
-
     // empty constructor
     @Since("7.0")
     public ModifyGroupSnapshotRequest() {}
@@ -56,24 +57,25 @@ public class ModifyGroupSnapshotRequest implements Serializable {
     }
 
     /** 
-     * ID of the snapshot.
+     * Specifies the ID of the group of snapshots.
      **/
     public Long getGroupSnapshotID() { return this.groupSnapshotID; }
     public void setGroupSnapshotID(Long groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
     /** 
-     * Use to set the time when the snapshot should be removed.
+     * Sets the time when the snapshot should be
+     * removed. If unspecified, the current time is used.
      **/
     public Optional<String> getExpirationTime() { return this.expirationTime; }
     public void setExpirationTime(Optional<String> expirationTime) { 
         this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
     }
     /** 
-     * Use to enable the snapshot created to be replicated to a remote SolidFire cluster.
-     * Possible values:
-     * true: the snapshot will be replicated to remote storage.
-     * false: Default. No replication.
+     * Replicates the snapshot created to a remote cluster.
+     * Possible values are:
+     * true: The snapshot is replicated to remote storage.
+     * false: Default. The snapshot is not replicated.
      **/
     public Optional<Boolean> getEnableRemoteReplication() { return this.enableRemoteReplication; }
     public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) { 

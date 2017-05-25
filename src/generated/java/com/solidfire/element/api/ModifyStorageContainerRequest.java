@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,15 +29,15 @@ import java.util.Objects;
 
 /**
  * ModifyStorageContainerRequest  
+ * ModifyStorageContainer enables you to make changes to an existing virtual volume storage container.
  **/
 
 public class ModifyStorageContainerRequest implements Serializable {
 
-    public static final long serialVersionUID = -7847052334144051852L;
+    public static final long serialVersionUID = -7702372641248209710L;
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
     @SerializedName("initiatorSecret") private Optional<String> initiatorSecret;
     @SerializedName("targetSecret") private Optional<String> targetSecret;
-
     // empty constructor
     @Since("7.0")
     public ModifyStorageContainerRequest() {}
@@ -56,18 +57,21 @@ public class ModifyStorageContainerRequest implements Serializable {
     }
 
     /** 
+     * The unique ID of the virtual volume storage container to modify.
      **/
     public java.util.UUID getStorageContainerID() { return this.storageContainerID; }
     public void setStorageContainerID(java.util.UUID storageContainerID) { 
         this.storageContainerID = storageContainerID;
     }
     /** 
+     * The new secret for CHAP authentication for the initiator.
      **/
     public Optional<String> getInitiatorSecret() { return this.initiatorSecret; }
     public void setInitiatorSecret(Optional<String> initiatorSecret) { 
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : initiatorSecret;
     }
     /** 
+     * The new secret for CHAP authentication for the target.
      **/
     public Optional<String> getTargetSecret() { return this.targetSecret; }
     public void setTargetSecret(Optional<String> targetSecret) { 

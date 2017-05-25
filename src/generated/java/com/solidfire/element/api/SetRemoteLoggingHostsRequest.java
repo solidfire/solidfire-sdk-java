@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * SetRemoteLoggingHostsRequest  
+ * SetRemoteLoggingHosts enables you to configure remote logging from the nodes in the storage cluster to a centralized log server or servers. Remote logging is performed over TCP using the default port 514. This API does not add to the existing logging hosts. Rather, it replaces what currently exists with new values specified by this API method. You can use GetRemoteLoggingHosts to determine what the current logging hosts are, and then use SetRemoteLoggingHosts to set the desired list of current and new logging hosts.
  **/
 
 public class SetRemoteLoggingHostsRequest implements Serializable {
 
-    public static final long serialVersionUID = -7464227586860594771L;
+    public static final long serialVersionUID = 5973919742185928784L;
     @SerializedName("remoteHosts") private LoggingServer[] remoteHosts;
-
     // empty constructor
     @Since("7.0")
     public SetRemoteLoggingHostsRequest() {}
@@ -50,7 +51,7 @@ public class SetRemoteLoggingHostsRequest implements Serializable {
     }
 
     /** 
-     * List of hosts to send log messages to.
+     * A list of hosts to send log messages to.
      **/
     public LoggingServer[] getRemoteHosts() { return this.remoteHosts; }
     public void setRemoteHosts(LoggingServer[] remoteHosts) { 

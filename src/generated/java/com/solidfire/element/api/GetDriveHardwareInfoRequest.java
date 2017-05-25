@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,14 @@ import java.util.Objects;
 
 /**
  * GetDriveHardwareInfoRequest  
+ * GetDriveHardwareInfo returns all the hardware information for the given drive. This generally includes details about manufacturers, vendors, versions, and
+ * other associated hardware identification information.
  **/
 
 public class GetDriveHardwareInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -6304923488608374232L;
+    public static final long serialVersionUID = -8586094268613725837L;
     @SerializedName("driveID") private Long driveID;
-
     // empty constructor
     @Since("7.0")
     public GetDriveHardwareInfoRequest() {}
@@ -50,7 +52,7 @@ public class GetDriveHardwareInfoRequest implements Serializable {
     }
 
     /** 
-     * DriveID for the drive information requested. DriveIDs can be obtained via the "ListDrives" method.
+     * DriveID for the drive information requested. You can get DriveIDs by using the ListDrives method.
      **/
     public Long getDriveID() { return this.driveID; }
     public void setDriveID(Long driveID) { 

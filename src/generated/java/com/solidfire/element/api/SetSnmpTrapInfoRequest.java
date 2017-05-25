@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,16 +29,16 @@ import java.util.Objects;
 
 /**
  * SetSnmpTrapInfoRequest  
+ * You can use SetSnmpTrapInfo to enable and disable the generation of cluster SNMP notifications (traps) and to specify the set of network host computers that receive the notifications. The values you pass with each SetSnmpTrapInfo method call replace all values set in any previous call to SetSnmpTrapInfo.
  **/
 
 public class SetSnmpTrapInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = -7074347406924822042L;
+    public static final long serialVersionUID = 3531043562067600875L;
     @SerializedName("trapRecipients") private SnmpTrapRecipient[] trapRecipients;
     @SerializedName("clusterFaultTrapsEnabled") private Boolean clusterFaultTrapsEnabled;
     @SerializedName("clusterFaultResolvedTrapsEnabled") private Boolean clusterFaultResolvedTrapsEnabled;
     @SerializedName("clusterEventTrapsEnabled") private Boolean clusterEventTrapsEnabled;
-
     // empty constructor
     @Since("7.0")
     public SetSnmpTrapInfoRequest() {}
@@ -66,21 +67,21 @@ public class SetSnmpTrapInfoRequest implements Serializable {
         this.trapRecipients = trapRecipients;
     }
     /** 
-     * If "true", when a cluster fault is logged a corresponding solidFireClusterFaultNotification is sent to the configured list of trap recipients.
+     * If the value is set to true, a corresponding solidFireClusterFaultNotification is sent to the configured list of trap recipients when a cluster fault is logged. The default value is false.
      **/
     public Boolean getClusterFaultTrapsEnabled() { return this.clusterFaultTrapsEnabled; }
     public void setClusterFaultTrapsEnabled(Boolean clusterFaultTrapsEnabled) { 
         this.clusterFaultTrapsEnabled = clusterFaultTrapsEnabled;
     }
     /** 
-     * If "true", when a cluster fault is logged a corresponding solidFireClusterFaultResolvedNotification is sent to the configured list of trap recipients.
+     * If the value is set to true, a corresponding solidFireClusterFaultResolvedNotification is sent to the configured list of trap recipients when a cluster fault is resolved. The default value is false.
      **/
     public Boolean getClusterFaultResolvedTrapsEnabled() { return this.clusterFaultResolvedTrapsEnabled; }
     public void setClusterFaultResolvedTrapsEnabled(Boolean clusterFaultResolvedTrapsEnabled) { 
         this.clusterFaultResolvedTrapsEnabled = clusterFaultResolvedTrapsEnabled;
     }
     /** 
-     * If "true", when a cluster fault is logged a corresponding solidFireClusterEventNotification is sent to the configured list of trap recipients.
+     * If the value is set to true, a corresponding solidFireClusterEventNotification is sent to the configured list of trap recipients when a cluster event is logged. The default value is false.
      **/
     public Boolean getClusterEventTrapsEnabled() { return this.clusterEventTrapsEnabled; }
     public void setClusterEventTrapsEnabled(Boolean clusterEventTrapsEnabled) { 

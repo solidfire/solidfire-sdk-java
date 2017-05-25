@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class PairedCluster implements Serializable {
 
-    public static final long serialVersionUID = 1324404531707214962L;
+    public static final long serialVersionUID = -934514038063971379L;
     @SerializedName("clusterName") private String clusterName;
     @SerializedName("clusterPairID") private Long clusterPairID;
     @SerializedName("clusterPairUUID") private java.util.UUID clusterPairUUID;
@@ -40,7 +41,6 @@ public class PairedCluster implements Serializable {
     @SerializedName("mvip") private String mvip;
     @SerializedName("status") private String status;
     @SerializedName("version") private String version;
-
     // empty constructor
     @Since("7.0")
     public PairedCluster() {}

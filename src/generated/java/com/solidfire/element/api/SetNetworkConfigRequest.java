@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,15 @@ import java.util.Objects;
 
 /**
  * SetNetworkConfigRequest  
+ * The SetNetworkConfig API method enables you to set the network configuration for a node. To display the current network settings for a node, run the GetNetworkConfig API method. 
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
+ * Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Exercise caution when using this method.
  **/
 
 public class SetNetworkConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = 1163420677117762364L;
-    @SerializedName("network") private Network network;
-
+    public static final long serialVersionUID = -6368134115010172449L;
+    @SerializedName("network") private NetworkParams network;
     // empty constructor
     @Since("7.0")
     public SetNetworkConfigRequest() {}
@@ -43,17 +46,17 @@ public class SetNetworkConfigRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public SetNetworkConfigRequest(
-        Network network
+        NetworkParams network
     )
     {
         this.network = network;
     }
 
     /** 
-     * Objects that will be changed for the node network settings.
+     * An object containing node network settings to modify.
      **/
-    public Network getNetwork() { return this.network; }
-    public void setNetwork(Network network) { 
+    public NetworkParams getNetwork() { return this.network; }
+    public void setNetwork(NetworkParams network) { 
         this.network = network;
     }
 
@@ -103,7 +106,7 @@ public class SetNetworkConfigRequest implements Serializable {
     }
 
     public static class Builder {
-        private Network network;
+        private NetworkParams network;
 
         private Builder() { }
 
@@ -118,7 +121,7 @@ public class SetNetworkConfigRequest implements Serializable {
             return this;
         }
 
-        public SetNetworkConfigRequest.Builder network(final Network network) {
+        public SetNetworkConfigRequest.Builder network(final NetworkParams network) {
             this.network = network;
             return this;
         }

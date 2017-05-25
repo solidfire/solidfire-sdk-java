@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,14 @@ import java.util.Objects;
 
 /**
  * RemoveNodesRequest  
+ * You can use RemoveNodes to remove one or more nodes that should no longer participate in the cluster. Before removing a node, you must remove all drives the node contains using the RemoveDrives method. You cannot remove a node until the RemoveDrives process has completed and all data has been migrated away from the node.
+ * After you remove a node, it registers itself as a pending node. You can add the node again or shut it down (shutting the node down removes it from the Pending Node list).
  **/
 
 public class RemoveNodesRequest implements Serializable {
 
-    public static final long serialVersionUID = 4755776002002165092L;
+    public static final long serialVersionUID = -8787537189258095093L;
     @SerializedName("nodes") private Long[] nodes;
-
     // empty constructor
     @Since("7.0")
     public RemoveNodesRequest() {}

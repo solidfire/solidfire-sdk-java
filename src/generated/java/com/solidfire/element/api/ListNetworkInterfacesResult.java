@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListNetworkInterfacesResult implements Serializable {
 
-    public static final long serialVersionUID = 1770094441063303506L;
+    public static final long serialVersionUID = 3361502774301663226L;
     @SerializedName("interfaces") private NetworkInterface[] interfaces;
-
     // empty constructor
     @Since("7.0")
     public ListNetworkInterfacesResult() {}
@@ -50,6 +50,7 @@ public class ListNetworkInterfacesResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public NetworkInterface[] getInterfaces() { return this.interfaces; }
     public void setInterfaces(NetworkInterface[] interfaces) { 

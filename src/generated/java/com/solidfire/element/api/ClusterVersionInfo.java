@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,11 +34,10 @@ import java.util.Objects;
 
 public class ClusterVersionInfo implements Serializable {
 
-    public static final long serialVersionUID = -4232836006568542040L;
+    public static final long serialVersionUID = -3149695510658571185L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("nodeVersion") private String nodeVersion;
     @SerializedName("nodeInternalRevision") private String nodeInternalRevision;
-
     // empty constructor
     @Since("7.0")
     public ClusterVersionInfo() {}
@@ -57,18 +57,21 @@ public class ClusterVersionInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public String getNodeVersion() { return this.nodeVersion; }
     public void setNodeVersion(String nodeVersion) { 
         this.nodeVersion = nodeVersion;
     }
     /** 
+     * 
      **/
     public String getNodeInternalRevision() { return this.nodeInternalRevision; }
     public void setNodeInternalRevision(String nodeInternalRevision) { 

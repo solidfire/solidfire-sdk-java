@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class RemoteReplication implements Serializable {
 
-    public static final long serialVersionUID = 216340797577190625L;
+    public static final long serialVersionUID = 4576220277714353700L;
     @SerializedName("mode") private String mode;
     @SerializedName("pauseLimit") private Long pauseLimit;
     @SerializedName("remoteServiceID") private Long remoteServiceID;
@@ -41,7 +42,6 @@ public class RemoteReplication implements Serializable {
     @SerializedName("snapshotReplication") private SnapshotReplication snapshotReplication;
     @SerializedName("state") private String state;
     @SerializedName("stateDetails") private String stateDetails;
-
     // empty constructor
     @Since("7.0")
     public RemoteReplication() {}

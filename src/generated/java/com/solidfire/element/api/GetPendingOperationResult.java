@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class GetPendingOperationResult implements Serializable {
 
-    public static final long serialVersionUID = -8676903301719004010L;
+    public static final long serialVersionUID = -461614033697170462L;
     @SerializedName("pendingOperation") private PendingOperation pendingOperation;
-
     // empty constructor
     @Since("7.0")
     public GetPendingOperationResult() {}
@@ -50,6 +50,7 @@ public class GetPendingOperationResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public PendingOperation getPendingOperation() { return this.pendingOperation; }
     public void setPendingOperation(PendingOperation pendingOperation) { 

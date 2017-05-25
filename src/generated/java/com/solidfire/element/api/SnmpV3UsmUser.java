@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,13 +34,12 @@ import java.util.Objects;
 
 public class SnmpV3UsmUser implements Serializable {
 
-    public static final long serialVersionUID = 4809109003511391850L;
+    public static final long serialVersionUID = -1483506355379750117L;
     @SerializedName("access") private String access;
     @SerializedName("name") private String name;
     @SerializedName("password") private String password;
     @SerializedName("passphrase") private String passphrase;
     @SerializedName("secLevel") private String secLevel;
-
     // empty constructor
     @Since("7.0")
     public SnmpV3UsmUser() {}
@@ -80,14 +80,14 @@ public class SnmpV3UsmUser implements Serializable {
         this.name = name;
     }
     /** 
-     * The password of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "auth" or "priv."
+     * The password of the user. Must be between 8 and 255 characters integer (inclusive). Blank spaces are not allowed. Required if "secLevel" is "auth" or "priv."
      **/
     public String getPassword() { return this.password; }
     public void setPassword(String password) { 
         this.password = password;
     }
     /** 
-     * The passphrase of the user. Must be between 8 and 255 characters long (inclusive). Blank spaces are not allowed. Required if "secLevel" is "priv."
+     * The passphrase of the user. Must be between 8 and 255 characters integer (inclusive). Blank spaces are not allowed. Required if "secLevel" is "priv."
      **/
     public String getPassphrase() { return this.passphrase; }
     public void setPassphrase(String passphrase) { 

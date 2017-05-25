@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,16 @@ import java.util.Objects;
 
 /**
  * RestartNetworkingRequest  
+ * The RestartNetworking API method enables you to restart the networking services on a node.
+ * Warning: This method restarts all networking services on a node, causing temporary loss of networking connectivity.
+ * Exercise caution when using this method.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class RestartNetworkingRequest implements Serializable {
 
-    public static final long serialVersionUID = -402421698351764082L;
+    public static final long serialVersionUID = -5042416728937770584L;
     @SerializedName("force") private Boolean force;
-
     // empty constructor
     @Since("7.0")
     public RestartNetworkingRequest() {}
@@ -50,7 +54,7 @@ public class RestartNetworkingRequest implements Serializable {
     }
 
     /** 
-     * The "force" parameter must be included on this method to successfully restart the networking.
+     * Required parameter to successfully reset the node.
      **/
     public Boolean getForce() { return this.force; }
     public void setForce(Boolean force) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,14 @@ import java.util.Objects;
 
 /**
  * GetNodeHardwareInfoRequest  
+ * GetNodeHardwareInfo enables you to return all the hardware information and status for the node specified. This generally includes details about
+ * manufacturers, vendors, versions, and other associated hardware identification information.
  **/
 
 public class GetNodeHardwareInfoRequest implements Serializable {
 
-    public static final long serialVersionUID = 3185024681412644061L;
+    public static final long serialVersionUID = -9182680037465241381L;
     @SerializedName("nodeID") private Long nodeID;
-
     // empty constructor
     @Since("7.0")
     public GetNodeHardwareInfoRequest() {}
@@ -50,7 +52,8 @@ public class GetNodeHardwareInfoRequest implements Serializable {
     }
 
     /** 
-     * The ID of the node for which hardware information is being requested.  Information about a  node is returned if a   node is specified.
+     * The ID of the node for which hardware information is being requested. Information
+     * about a Fibre Channel node is returned if a Fibre Channel node is specified.
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 

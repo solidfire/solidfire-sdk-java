@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListVolumeStatsByVirtualVolumeResult implements Serializable {
 
-    public static final long serialVersionUID = -8940883767455892272L;
-    @SerializedName("volumeStats") private VolumeStats[] volumeStats;
-
+    public static final long serialVersionUID = -6337865760158820654L;
+    @SerializedName("volumeStats") private VirtualVolumeStats[] volumeStats;
     // empty constructor
     @Since("7.0")
     public ListVolumeStatsByVirtualVolumeResult() {}
@@ -43,16 +43,17 @@ public class ListVolumeStatsByVirtualVolumeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListVolumeStatsByVirtualVolumeResult(
-        VolumeStats[] volumeStats
+        VirtualVolumeStats[] volumeStats
     )
     {
         this.volumeStats = volumeStats;
     }
 
     /** 
+     * 
      **/
-    public VolumeStats[] getVolumeStats() { return this.volumeStats; }
-    public void setVolumeStats(VolumeStats[] volumeStats) { 
+    public VirtualVolumeStats[] getVolumeStats() { return this.volumeStats; }
+    public void setVolumeStats(VirtualVolumeStats[] volumeStats) { 
         this.volumeStats = volumeStats;
     }
 
@@ -102,7 +103,7 @@ public class ListVolumeStatsByVirtualVolumeResult implements Serializable {
     }
 
     public static class Builder {
-        private VolumeStats[] volumeStats;
+        private VirtualVolumeStats[] volumeStats;
 
         private Builder() { }
 
@@ -117,7 +118,7 @@ public class ListVolumeStatsByVirtualVolumeResult implements Serializable {
             return this;
         }
 
-        public ListVolumeStatsByVirtualVolumeResult.Builder volumeStats(final VolumeStats[] volumeStats) {
+        public ListVolumeStatsByVirtualVolumeResult.Builder volumeStats(final VirtualVolumeStats[] volumeStats) {
             this.volumeStats = volumeStats;
             return this;
         }

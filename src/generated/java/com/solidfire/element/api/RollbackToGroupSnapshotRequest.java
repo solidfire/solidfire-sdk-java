@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,16 +29,18 @@ import java.util.Objects;
 
 /**
  * RollbackToGroupSnapshotRequest  
+ * RollbackToGroupSnapshot enables you to roll back all individual volumes in a snapshot group to each volume's individual snapshot.
+ * Note: Rolling back to a group snapshot creates a temporary snapshot of each volume within the group snapshot.
+ * Snapshots are allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
  **/
 
 public class RollbackToGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = -4169392330167642539L;
+    public static final long serialVersionUID = 6204224908392625168L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
     @SerializedName("name") private Optional<String> name;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public RollbackToGroupSnapshotRequest() {}
@@ -49,23 +52,24 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
         Long groupSnapshotID,
         Boolean saveCurrentState,
         Optional<String> name,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.groupSnapshotID = groupSnapshotID;
         this.saveCurrentState = saveCurrentState;
         this.name = (name == null) ? Optional.<String>empty() : name;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * Unique ID of the group snapshot.
+     * Specifies the unique ID of the group snapshot.
      **/
     public Long getGroupSnapshotID() { return this.groupSnapshotID; }
     public void setGroupSnapshotID(Long groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
     /** 
+     * Specifies whether to save an active volume image or delete it. Values are:
      * true: The previous active volume image is kept.
      * false: (default) The previous active volume image is deleted.
      **/
@@ -74,19 +78,23 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
         this.saveCurrentState = saveCurrentState;
     }
     /** 
-     * Name for the snapshot. If no name is given, then the name of the snapshot being rolled back to is used with 
-     * "-copy" appended to the end of the name.
+     * Name for the group snapshot of the volume's
+     * current state that is created if "saveCurrentState" is
+     * set to true. If you do not give a name, the
+     * name of the snapshots (group and individual
+     * volume) are set to a timestamp of the time that
+     * the rollback occurred.
      **/
     public Optional<String> getName() { return this.name; }
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
     /** 
-     * List of Name/Value pairs in JSON object format
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -151,7 +159,7 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
         private Long groupSnapshotID;
         private Boolean saveCurrentState;
         private Optional<String> name;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -187,8 +195,8 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
             return this;
         }
 
-        public RollbackToGroupSnapshotRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public RollbackToGroupSnapshotRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

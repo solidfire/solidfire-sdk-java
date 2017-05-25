@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class ClusterCapacity implements Serializable {
 
-    public static final long serialVersionUID = -9123859184117899227L;
+    public static final long serialVersionUID = 3622498463373308885L;
     @SerializedName("activeBlockSpace") private Long activeBlockSpace;
     @SerializedName("activeSessions") private Long activeSessions;
     @SerializedName("averageIOPS") private Long averageIOPS;
@@ -57,7 +58,6 @@ public class ClusterCapacity implements Serializable {
     @SerializedName("usedMetadataSpaceInSnapshots") private Long usedMetadataSpaceInSnapshots;
     @SerializedName("usedSpace") private Long usedSpace;
     @SerializedName("zeroBlocks") private Long zeroBlocks;
-
     // empty constructor
     @Since("7.0")
     public ClusterCapacity() {}

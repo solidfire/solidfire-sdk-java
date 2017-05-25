@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,20 +29,27 @@ import java.util.Objects;
 
 /**
  * AddVirtualNetworkRequest  
+ * You can use the AddVirtualNetwork method to add a new virtual network to a cluster configuration. When you add a virtual network,
+ * an interface for each node is created and each interface will require a virtual network IP address. The number of IP addresses you
+ * specify as a parameter for this API method must be equal to or greater than the number of nodes in the cluster. The system bulk
+ * provisions virtual network addresses and assigns them to individual nodes automatically. You do not need to assign virtual
+ * network addresses to nodes manually.
+ * Note: You can use AddVirtualNetwork only to create a new virtual network. If you want to make changes to an
+ * existing virtual network, use ModifyVirtualNetwork.
+ * Note: Virtual network parameters must be unique to each virtual network when setting the namespace parameter to false.
  **/
 
 public class AddVirtualNetworkRequest implements Serializable {
 
-    public static final long serialVersionUID = -2607397254846725433L;
+    public static final long serialVersionUID = -2294193974889334300L;
     @SerializedName("virtualNetworkTag") private Long virtualNetworkTag;
     @SerializedName("name") private String name;
-    @SerializedName("addressBlocks") private AddressBlock[] addressBlocks;
+    @SerializedName("addressBlocks") private AddressBlockParams[] addressBlocks;
     @SerializedName("netmask") private String netmask;
     @SerializedName("svip") private String svip;
     @SerializedName("gateway") private Optional<String> gateway;
     @SerializedName("namespace") private Optional<Boolean> namespace;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public AddVirtualNetworkRequest() {}
@@ -52,10 +60,10 @@ public class AddVirtualNetworkRequest implements Serializable {
     public AddVirtualNetworkRequest(
         Long virtualNetworkTag,
         String name,
-        AddressBlock[] addressBlocks,
+        AddressBlockParams[] addressBlocks,
         String netmask,
         String svip,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.virtualNetworkTag = virtualNetworkTag;
@@ -63,19 +71,19 @@ public class AddVirtualNetworkRequest implements Serializable {
         this.addressBlocks = addressBlocks;
         this.netmask = netmask;
         this.svip = svip;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     // parameterized constructor
     @Since("9.0")
     public AddVirtualNetworkRequest(
         Long virtualNetworkTag,
         String name,
-        AddressBlock[] addressBlocks,
+        AddressBlockParams[] addressBlocks,
         String netmask,
         String svip,
         Optional<String> gateway,
         Optional<Boolean> namespace,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.virtualNetworkTag = virtualNetworkTag;
@@ -85,35 +93,35 @@ public class AddVirtualNetworkRequest implements Serializable {
         this.svip = svip;
         this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * A unique virtual network (VLAN) tag. Supported values are 1 to 4095 (the number zero (0) is not supported).
+     * A unique virtual network (VLAN) tag. Supported values are 1 through 4094.The number zero (0) is not supported.
      **/
     public Long getVirtualNetworkTag() { return this.virtualNetworkTag; }
     public void setVirtualNetworkTag(Long virtualNetworkTag) { 
         this.virtualNetworkTag = virtualNetworkTag;
     }
     /** 
-     * User defined name for the new virtual network.
+     * A user-defined name for the new virtual network.
      **/
     public String getName() { return this.name; }
     public void setName(String name) { 
         this.name = name;
     }
     /** 
-     * Unique Range of IP addresses to include in the virtual network.
+     * Unique range of IP addresses to include in the virtual network.
      * Attributes for this parameter are:
-     * start: start of the IP address range. (String)
-     * size: numbre of IP addresses to include in the block. (Integer)
+     * start: The start of the IP address range. (String)
+     * size: The number of IP addresses to include in the block. (Integer)
      **/
-    public AddressBlock[] getAddressBlocks() { return this.addressBlocks; }
-    public void setAddressBlocks(AddressBlock[] addressBlocks) { 
+    public AddressBlockParams[] getAddressBlocks() { return this.addressBlocks; }
+    public void setAddressBlocks(AddressBlockParams[] addressBlocks) { 
         this.addressBlocks = addressBlocks;
     }
     /** 
-     * Unique netmask for the virtual network being created.
+     * Unique network mask for the virtual network being created.
      **/
     public String getNetmask() { return this.netmask; }
     public void setNetmask(String netmask) { 
@@ -127,25 +135,25 @@ public class AddVirtualNetworkRequest implements Serializable {
         this.svip = svip;
     }
     /** 
-     * 
+     * The IP address of a gateway of the virtual network. This parameter is only valid if the "namespace" parameter is set to true.
      **/
     public Optional<String> getGateway() { return this.gateway; }
     public void setGateway(Optional<String> gateway) { 
         this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
     }
     /** 
-     * 
+     * When set to true, enables the Routable Storage VLANs functionality by creating and configuring a namespace and the virtual network contained by it.
      **/
     public Optional<Boolean> getNamespace() { return this.namespace; }
     public void setNamespace(Optional<Boolean> namespace) { 
         this.namespace = (namespace == null) ? Optional.<Boolean>empty() : namespace;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -223,12 +231,12 @@ public class AddVirtualNetworkRequest implements Serializable {
     public static class Builder {
         private Long virtualNetworkTag;
         private String name;
-        private AddressBlock[] addressBlocks;
+        private AddressBlockParams[] addressBlocks;
         private String netmask;
         private String svip;
         private Optional<String> gateway;
         private Optional<Boolean> namespace;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -267,7 +275,7 @@ public class AddVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public AddVirtualNetworkRequest.Builder addressBlocks(final AddressBlock[] addressBlocks) {
+        public AddVirtualNetworkRequest.Builder addressBlocks(final AddressBlockParams[] addressBlocks) {
             this.addressBlocks = addressBlocks;
             return this;
         }
@@ -292,8 +300,8 @@ public class AddVirtualNetworkRequest implements Serializable {
             return this;
         }
 
-        public AddVirtualNetworkRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public AddVirtualNetworkRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,12 +33,11 @@ import java.util.Objects;
 
 public class GetSnmpTrapInfoResult implements Serializable {
 
-    public static final long serialVersionUID = -2022621179440695389L;
+    public static final long serialVersionUID = 8285751600395740612L;
     @SerializedName("trapRecipients") private SnmpTrapRecipient[] trapRecipients;
     @SerializedName("clusterFaultTrapsEnabled") private Boolean clusterFaultTrapsEnabled;
     @SerializedName("clusterFaultResolvedTrapsEnabled") private Boolean clusterFaultResolvedTrapsEnabled;
     @SerializedName("clusterEventTrapsEnabled") private Boolean clusterEventTrapsEnabled;
-
     // empty constructor
     @Since("7.0")
     public GetSnmpTrapInfoResult() {}

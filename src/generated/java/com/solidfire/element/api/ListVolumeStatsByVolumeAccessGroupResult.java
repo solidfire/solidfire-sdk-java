@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListVolumeStatsByVolumeAccessGroupResult implements Serializable {
 
-    public static final long serialVersionUID = -1884566330219816710L;
+    public static final long serialVersionUID = -253802812052914515L;
     @SerializedName("volumeStats") private VolumeStats[] volumeStats;
-
     // empty constructor
     @Since("7.0")
     public ListVolumeStatsByVolumeAccessGroupResult() {}

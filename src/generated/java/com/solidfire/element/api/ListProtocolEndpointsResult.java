@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListProtocolEndpointsResult implements Serializable {
 
-    public static final long serialVersionUID = -170373092149743734L;
+    public static final long serialVersionUID = 2902859808167843132L;
     @SerializedName("protocolEndpoints") private ProtocolEndpoint[] protocolEndpoints;
-
     // empty constructor
     @Since("7.0")
     public ListProtocolEndpointsResult() {}
@@ -50,6 +50,7 @@ public class ListProtocolEndpointsResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public ProtocolEndpoint[] getProtocolEndpoints() { return this.protocolEndpoints; }
     public void setProtocolEndpoints(ProtocolEndpoint[] protocolEndpoints) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,14 @@ import java.util.Objects;
 
 /**
  * ListProtocolEndpointsRequest  
+ * ListProtocolEndpoints enables you to retrieve information about all protocol endpoints in the cluster. Protocol endpoints govern
+ * access to their associated virtual volume storage containers.
  **/
 
 public class ListProtocolEndpointsRequest implements Serializable {
 
-    public static final long serialVersionUID = 2280366146651572017L;
+    public static final long serialVersionUID = 6212321835398229216L;
     @SerializedName("protocolEndpointIDs") private Optional<java.util.UUID[]> protocolEndpointIDs;
-
     // empty constructor
     @Since("7.0")
     public ListProtocolEndpointsRequest() {}
@@ -50,6 +52,7 @@ public class ListProtocolEndpointsRequest implements Serializable {
     }
 
     /** 
+     * A list of protocol endpoint IDs for which to retrieve information. If you omit this parameter, the method returns information about all protocol endpoints.
      **/
     public Optional<java.util.UUID[]> getProtocolEndpointIDs() { return this.protocolEndpointIDs; }
     public void setProtocolEndpointIDs(Optional<java.util.UUID[]> protocolEndpointIDs) { 

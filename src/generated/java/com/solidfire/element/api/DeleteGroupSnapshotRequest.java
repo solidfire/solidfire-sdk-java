@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,14 @@ import java.util.Objects;
 
 /**
  * DeleteGroupSnapshotRequest  
+ * DeleteGroupSnapshot enables you to delete a group snapshot. You can use the saveMembers parameter to preserve all the snapshots that were made for the volumes in the group, but the group association is removed.
  **/
 
 public class DeleteGroupSnapshotRequest implements Serializable {
 
-    public static final long serialVersionUID = 7666156614345321835L;
+    public static final long serialVersionUID = 103176093686436611L;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("saveMembers") private Boolean saveMembers;
-
     // empty constructor
     @Since("7.0")
     public DeleteGroupSnapshotRequest() {}
@@ -53,14 +54,15 @@ public class DeleteGroupSnapshotRequest implements Serializable {
     }
 
     /** 
-     * Unique ID of the group snapshot.
+     * Specifies the unique ID of the group snapshot.
      **/
     public Long getGroupSnapshotID() { return this.groupSnapshotID; }
     public void setGroupSnapshotID(Long groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
     /** 
-     * true: Snapshots are kept, but group association is removed.
+     * Specifies whether to preserve snapshots or delete them. Valid values are:
+     * true: Snapshots are preserved, but group association is removed.
      * false: The group and snapshots are deleted.
      **/
     public Boolean getSaveMembers() { return this.saveMembers; }

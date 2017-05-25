@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,16 @@ import java.util.Objects;
 
 /**
  * SetSnmpACLRequest  
+ * SetSnmpACL enables you to configure SNMP access permissions on the cluster nodes. The values you set with this interface apply to all
+ * nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note
+ * that the values set with this interface replace all network or usmUsers values set with the older SetSnmpInfo.
  **/
 
 public class SetSnmpACLRequest implements Serializable {
 
-    public static final long serialVersionUID = 6271612792860104518L;
+    public static final long serialVersionUID = 3157013297456196225L;
     @SerializedName("networks") private SnmpNetwork[] networks;
     @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
-
     // empty constructor
     @Since("7.0")
     public SetSnmpACLRequest() {}
@@ -53,14 +56,15 @@ public class SetSnmpACLRequest implements Serializable {
     }
 
     /** 
-     * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible "networks" values. REQUIRED if SNMP v# is disabled.
+     * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP
+     * Network Object for possible "networks" values. This parameter is required if SNMP v3 is disabled.
      **/
     public SnmpNetwork[] getNetworks() { return this.networks; }
     public void setNetworks(SnmpNetwork[] networks) { 
         this.networks = networks;
     }
     /** 
-     * List of users and the type of access they have to the SNMP servers running on the cluster nodes. REQUIRED if SNMP v3 is enabled.
+     * List of users and the type of access they have to the SNMP servers running on the cluster nodes.
      **/
     public SnmpV3UsmUser[] getUsmUsers() { return this.usmUsers; }
     public void setUsmUsers(SnmpV3UsmUser[] usmUsers) { 

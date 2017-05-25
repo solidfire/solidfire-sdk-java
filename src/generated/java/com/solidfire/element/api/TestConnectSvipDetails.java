@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,11 +33,10 @@ import java.util.Objects;
 
 public class TestConnectSvipDetails implements Serializable {
 
-    public static final long serialVersionUID = 3870859095519816826L;
-    @SerializedName("pingBytes") private Object pingBytes;
+    public static final long serialVersionUID = -560018417113599389L;
+    @SerializedName("pingBytes") private Attributes pingBytes;
     @SerializedName("svip") private String svip;
     @SerializedName("connected") private Boolean connected;
-
     // empty constructor
     @Since("7.0")
     public TestConnectSvipDetails() {}
@@ -45,7 +45,7 @@ public class TestConnectSvipDetails implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public TestConnectSvipDetails(
-        Object pingBytes,
+        Attributes pingBytes,
         String svip,
         Boolean connected
     )
@@ -58,8 +58,8 @@ public class TestConnectSvipDetails implements Serializable {
     /** 
      * Details of the ping tests with 56 Bytes and 1500 Bytes.
      **/
-    public Object getPingBytes() { return this.pingBytes; }
-    public void setPingBytes(Object pingBytes) { 
+    public Attributes getPingBytes() { return this.pingBytes; }
+    public void setPingBytes(Attributes pingBytes) { 
         this.pingBytes = pingBytes;
     }
     /** 
@@ -129,7 +129,7 @@ public class TestConnectSvipDetails implements Serializable {
     }
 
     public static class Builder {
-        private Object pingBytes;
+        private Attributes pingBytes;
         private String svip;
         private Boolean connected;
 
@@ -150,7 +150,7 @@ public class TestConnectSvipDetails implements Serializable {
             return this;
         }
 
-        public TestConnectSvipDetails.Builder pingBytes(final Object pingBytes) {
+        public TestConnectSvipDetails.Builder pingBytes(final Attributes pingBytes) {
             this.pingBytes = pingBytes;
             return this;
         }

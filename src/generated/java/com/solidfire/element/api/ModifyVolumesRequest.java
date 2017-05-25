@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,18 +29,27 @@ import java.util.Objects;
 
 /**
  * ModifyVolumesRequest  
+ * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately.
+ * If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.
+ * If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged.
+ * You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.
+ * When you need to increase the size of volumes that are being replicated, do so in the following order
+ * to prevent replication errors:
+ *    Increase the size of the "Replication Target" volume.
+ *    Increase the size of the source or "Read / Write" volume.
+ * Recommend that both the target and source volumes be the same size.
+ * NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
  **/
 
 public class ModifyVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 9020809531737148478L;
+    public static final long serialVersionUID = -4922187100138513539L;
     @SerializedName("volumeIDs") private Long[] volumeIDs;
     @SerializedName("accountID") private Optional<Long> accountID;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("totalSize") private Optional<Long> totalSize;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public ModifyVolumesRequest() {}
@@ -53,7 +63,7 @@ public class ModifyVolumesRequest implements Serializable {
         Optional<String> access,
         Optional<QoS> qos,
         Optional<Long> totalSize,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.volumeIDs = volumeIDs;
@@ -61,7 +71,7 @@ public class ModifyVolumesRequest implements Serializable {
         this.access = (access == null) ? Optional.<String>empty() : access;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
@@ -100,10 +110,11 @@ public class ModifyVolumesRequest implements Serializable {
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
     }
     /** 
+     * List of name/value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -182,7 +193,7 @@ public class ModifyVolumesRequest implements Serializable {
         private Optional<String> access;
         private Optional<QoS> qos;
         private Optional<Long> totalSize;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -232,8 +243,8 @@ public class ModifyVolumesRequest implements Serializable {
             return this;
         }
 
-        public ModifyVolumesRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public ModifyVolumesRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

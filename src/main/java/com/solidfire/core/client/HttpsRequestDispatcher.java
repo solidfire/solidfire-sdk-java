@@ -93,7 +93,7 @@ public class HttpsRequestDispatcher implements RequestDispatcher {
      */
     @Override
     public String dispatchRequest(String input) throws IOException {
-        final byte[] encodedRequest = input.getBytes();
+        final byte[] encodedRequest = input.getBytes(Charset.forName("UTF-8"));
         final HttpsURLConnection connection = (HttpsURLConnection) endpoint.openConnection();
         prepareConnection(connection);
 
@@ -147,7 +147,7 @@ public class HttpsRequestDispatcher implements RequestDispatcher {
      * @return the response as a string
      */
     protected String decodeResponse(InputStream response) throws IOException {
-        try (final Scanner s = new Scanner(response)) {
+        try (final Scanner s = new Scanner(response,"UTF-8")) {
             s.useDelimiter("\\A");
             return s.hasNext() ? s.next() : "";
         }

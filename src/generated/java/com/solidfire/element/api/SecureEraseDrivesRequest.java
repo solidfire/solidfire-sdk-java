@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,14 @@ import java.util.Objects;
 
 /**
  * SecureEraseDrivesRequest  
+ * SecureEraseDrives enables you to remove any residual data from drives that have a status of "available." You might want to use this method when replacing a drive nearing the end of its service life that contained sensitive data. This method uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. This asynchronous method might take up to two minutes to complete. You can use GetAsyncResult to check on the status of the secure erase operation.
+ * You can use the ListDrives method to obtain the driveIDs for the drives you want to secure erase.
  **/
 
 public class SecureEraseDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 6139230092702430435L;
+    public static final long serialVersionUID = -7650055306799463074L;
     @SerializedName("drives") private Long[] drives;
-
     // empty constructor
     @Since("7.0")
     public SecureEraseDrivesRequest() {}
@@ -50,7 +52,7 @@ public class SecureEraseDrivesRequest implements Serializable {
     }
 
     /** 
-     * List of driveIDs to secure erase.
+     * List of driveIDs to be secure erased.
      **/
     public Long[] getDrives() { return this.drives; }
     public void setDrives(Long[] drives) { 

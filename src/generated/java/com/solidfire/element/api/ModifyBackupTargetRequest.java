@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,15 +29,15 @@ import java.util.Objects;
 
 /**
  * ModifyBackupTargetRequest  
+ * ModifyBackupTarget enables you to change attributes of a backup target.
  **/
 
 public class ModifyBackupTargetRequest implements Serializable {
 
-    public static final long serialVersionUID = -2231080711756074693L;
+    public static final long serialVersionUID = 4811977427947684426L;
     @SerializedName("backupTargetID") private Long backupTargetID;
     @SerializedName("name") private Optional<String> name;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public ModifyBackupTargetRequest() {}
@@ -47,34 +48,34 @@ public class ModifyBackupTargetRequest implements Serializable {
     public ModifyBackupTargetRequest(
         Long backupTargetID,
         Optional<String> name,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.backupTargetID = backupTargetID;
         this.name = (name == null) ? Optional.<String>empty() : name;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * Unique identifier assigned to the backup target.
+     * The unique target ID for the target to modify.
      **/
     public Long getBackupTargetID() { return this.backupTargetID; }
     public void setBackupTargetID(Long backupTargetID) { 
         this.backupTargetID = backupTargetID;
     }
     /** 
-     * Name for the backup target.
+     * The new name for the backup target.
      **/
     public Optional<String> getName() { return this.name; }
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -135,7 +136,7 @@ public class ModifyBackupTargetRequest implements Serializable {
     public static class Builder {
         private Long backupTargetID;
         private Optional<String> name;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -164,8 +165,8 @@ public class ModifyBackupTargetRequest implements Serializable {
             return this;
         }
 
-        public ModifyBackupTargetRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public ModifyBackupTargetRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

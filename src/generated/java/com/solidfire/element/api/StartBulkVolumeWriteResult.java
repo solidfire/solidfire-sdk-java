@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,11 +33,10 @@ import java.util.Objects;
 
 public class StartBulkVolumeWriteResult implements Serializable {
 
-    public static final long serialVersionUID = 481442423785688758L;
+    public static final long serialVersionUID = 1471793544313942437L;
     @SerializedName("asyncHandle") private Long asyncHandle;
     @SerializedName("key") private String key;
     @SerializedName("url") private String url;
-
     // empty constructor
     @Since("7.0")
     public StartBulkVolumeWriteResult() {}

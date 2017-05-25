@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,14 +33,13 @@ import java.util.Objects;
 
 public class SupportBundleDetails implements Serializable {
 
-    public static final long serialVersionUID = 1248942884663418761L;
+    public static final long serialVersionUID = 9037024105388967859L;
     @SerializedName("bundleName") private String bundleName;
     @SerializedName("extraArgs") private String extraArgs;
     @SerializedName("files") private String[] files;
     @SerializedName("url") private String[] url;
     @SerializedName("output") private String output;
     @SerializedName("timeoutSec") private Long timeoutSec;
-
     // empty constructor
     @Since("7.0")
     public SupportBundleDetails() {}

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,19 +29,22 @@ import java.util.Objects;
 
 /**
  * CloneVolumeRequest  
+ * CloneVolume enables you to create a copy of a volume. This method is asynchronous and might take a variable amount of time to complete. The cloning process begins immediately when you make the CloneVolume request and is representative of the state of the volume when the API method is issued. You can use the GetAsyncResult method to determine when the cloning process is complete and the new volume is available for connections. You can use ListSyncJobs to see the progress of creating the clone.
+ * Note: The initial attributes and QoS settings for the volume are inherited from the volume being cloned. You can change these settings with ModifyVolume.
+ * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
  **/
 
 public class CloneVolumeRequest implements Serializable {
 
-    public static final long serialVersionUID = -768791333545216038L;
+    public static final long serialVersionUID = 513126381279753378L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("newAccountID") private Optional<Long> newAccountID;
     @SerializedName("newSize") private Optional<Long> newSize;
     @SerializedName("access") private Optional<String> access;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
+    @SerializedName("enable512e") private Optional<Boolean> enable512e;
     // empty constructor
     @Since("7.0")
     public CloneVolumeRequest() {}
@@ -55,7 +59,8 @@ public class CloneVolumeRequest implements Serializable {
         Optional<Long> newSize,
         Optional<String> access,
         Optional<Long> snapshotID,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes,
+        Optional<Boolean> enable512e
     )
     {
         this.volumeID = volumeID;
@@ -64,68 +69,76 @@ public class CloneVolumeRequest implements Serializable {
         this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
         this.access = (access == null) ? Optional.<String>empty() : access;
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
     }
 
     /** 
-     * The ID of the volume to clone.
+     * VolumeID for the volume to be cloned.
      **/
     public Long getVolumeID() { return this.volumeID; }
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
-     * The name for the newly-created volume.
+     * The name of the new cloned volume. Might be 1 to 64 characters in length.
      **/
     public String getName() { return this.name; }
     public void setName(String name) { 
         this.name = name;
     }
     /** 
-     * AccountID for the owner of the new volume.
-     * If unspecified, the AccountID of the owner of the volume being cloned is used.
+     * AccountID for the owner of the new volume. If unspecified, the
+     * accountID of the owner of the volume being cloned is used.
      **/
     public Optional<Long> getNewAccountID() { return this.newAccountID; }
     public void setNewAccountID(Optional<Long> newAccountID) { 
         this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
     /** 
-     * New size of the volume, in bytes.
-     * May be greater or less than the size of the volume being cloned.
-     * If unspecified, the clone's volume size will be the same as the source volume.
-     * Size is rounded up to the nearest 1 MiB.
+     * New size of the volume, in bytes. Might be greater or less than the size of
+     * the volume being cloned. If unspecified, the volume size is not
+     * changed. Size is rounded to the nearest 1MB.
      **/
     public Optional<Long> getNewSize() { return this.newSize; }
     public void setNewSize(Optional<Long> newSize) { 
         this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
     }
     /** 
-     * Access settings for the new volume.
+     * Specifies the level of access allowed for the new volume. Possible values are:
      * readOnly: Only read operations are allowed.
      * readWrite: Reads and writes are allowed.
-     * locked: No reads or writes are allowed.
-     * replicationTarget: Identify a volume as the target volume for a paired set of volumes. If the volume is not paired, the access status is locked.
-     * 
-     * If unspecified, the access settings of the clone will be the same as the source.
+     * locked: No reads or writes are allowed. If unspecified, the level of access of the volume being cloned is used.
+     * replicationTarget: Identify a volume as the target volume for a
+     * paired set of volumes. If the volume is not paired, the access status is
+     * locked.
+     * If a value is not specified, the access value does not change.
      **/
     public Optional<String> getAccess() { return this.access; }
     public void setAccess(Optional<String> access) { 
         this.access = (access == null) ? Optional.<String>empty() : access;
     }
     /** 
-     * ID of the snapshot to use as the source of the clone.
-     * If unspecified, the clone will be created with a snapshot of the active volume.
+     * ID of the snapshot that is used as the source of the clone. If no ID is
+     * provided, the current active volume is used.
      **/
     public Optional<Long> getSnapshotID() { return this.snapshotID; }
     public void setSnapshotID(Optional<Long> snapshotID) { 
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+    }
+    /** 
+     * Should the volume provide 512-byte sector emulation?
+     **/
+    public Optional<Boolean> getEnable512e() { return this.enable512e; }
+    public void setEnable512e(Optional<Boolean> enable512e) { 
+        this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
     }
 
     @Override
@@ -142,12 +155,13 @@ public class CloneVolumeRequest implements Serializable {
             Objects.equals(newSize, that.newSize) && 
             Objects.equals(access, that.access) && 
             Objects.equals(snapshotID, that.snapshotID) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(enable512e, that.enable512e);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volumeID,name,newAccountID,newSize,access,snapshotID,attributes );
+        return Objects.hash( volumeID,name,newAccountID,newSize,access,snapshotID,attributes,enable512e );
     }
 
 
@@ -160,6 +174,7 @@ public class CloneVolumeRequest implements Serializable {
         map.put("access", access);
         map.put("snapshotID", snapshotID);
         map.put("attributes", attributes);
+        map.put("enable512e", enable512e);
         return map;
     }
 
@@ -185,6 +200,9 @@ public class CloneVolumeRequest implements Serializable {
         if(null != attributes && attributes.isPresent()){
             sb.append(" attributes : ").append(attributes).append(",");
         }
+        if(null != enable512e && enable512e.isPresent()){
+            sb.append(" enable512e : ").append(enable512e).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -208,7 +226,8 @@ public class CloneVolumeRequest implements Serializable {
         private Optional<Long> newSize;
         private Optional<String> access;
         private Optional<Long> snapshotID;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
+        private Optional<Boolean> enable512e;
 
         private Builder() { }
 
@@ -220,7 +239,8 @@ public class CloneVolumeRequest implements Serializable {
                          this.newSize,
                          this.access,
                          this.snapshotID,
-                         this.attributes);
+                         this.attributes,
+                         this.enable512e);
         }
 
         private CloneVolumeRequest.Builder buildFrom(final CloneVolumeRequest req) {
@@ -231,6 +251,7 @@ public class CloneVolumeRequest implements Serializable {
             this.access = req.access;
             this.snapshotID = req.snapshotID;
             this.attributes = req.attributes;
+            this.enable512e = req.enable512e;
 
             return this;
         }
@@ -265,8 +286,13 @@ public class CloneVolumeRequest implements Serializable {
             return this;
         }
 
-        public CloneVolumeRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public CloneVolumeRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
+            return this;
+        }
+
+        public CloneVolumeRequest.Builder optionalEnable512e(final Boolean enable512e) {
+            this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : Optional.of(enable512e);
             return this;
         }
 

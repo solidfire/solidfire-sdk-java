@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class SnmpSendTestTrapsResult implements Serializable {
 
-    public static final long serialVersionUID = 8457769312045727430L;
+    public static final long serialVersionUID = 9104388791397689546L;
     @SerializedName("status") private String status;
-
     // empty constructor
     @Since("7.0")
     public SnmpSendTestTrapsResult() {}
@@ -50,6 +50,7 @@ public class SnmpSendTestTrapsResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 

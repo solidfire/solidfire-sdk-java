@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class ClusterHardwareInfo implements Serializable {
 
-    public static final long serialVersionUID = -588255729826736799L;
+    public static final long serialVersionUID = 60420060657659193L;
     @SerializedName("drives") private java.util.Map<String,DriveHardwareInfo> drives;
-    @SerializedName("nodes") private java.util.Map<String,java.util.Map<String, Object>> nodes;
-
+    @SerializedName("nodes") private java.util.Map<String,Attributes> nodes;
     // empty constructor
     @Since("7.0")
     public ClusterHardwareInfo() {}
@@ -45,7 +45,7 @@ public class ClusterHardwareInfo implements Serializable {
     @Since("7.0")
     public ClusterHardwareInfo(
         java.util.Map<String,DriveHardwareInfo> drives,
-        java.util.Map<String,java.util.Map<String, Object>> nodes
+        java.util.Map<String,Attributes> nodes
     )
     {
         this.drives = drives;
@@ -53,15 +53,17 @@ public class ClusterHardwareInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public java.util.Map<String,DriveHardwareInfo> getDrives() { return this.drives; }
     public void setDrives(java.util.Map<String,DriveHardwareInfo> drives) { 
         this.drives = drives;
     }
     /** 
+     * 
      **/
-    public java.util.Map<String,java.util.Map<String, Object>> getNodes() { return this.nodes; }
-    public void setNodes(java.util.Map<String,java.util.Map<String, Object>> nodes) { 
+    public java.util.Map<String,Attributes> getNodes() { return this.nodes; }
+    public void setNodes(java.util.Map<String,Attributes> nodes) { 
         this.nodes = nodes;
     }
 
@@ -115,7 +117,7 @@ public class ClusterHardwareInfo implements Serializable {
 
     public static class Builder {
         private java.util.Map<String,DriveHardwareInfo> drives;
-        private java.util.Map<String,java.util.Map<String, Object>> nodes;
+        private java.util.Map<String,Attributes> nodes;
 
         private Builder() { }
 
@@ -137,7 +139,7 @@ public class ClusterHardwareInfo implements Serializable {
             return this;
         }
 
-        public ClusterHardwareInfo.Builder nodes(final java.util.Map<String,java.util.Map<String, Object>> nodes) {
+        public ClusterHardwareInfo.Builder nodes(final java.util.Map<String,Attributes> nodes) {
             this.nodes = nodes;
             return this;
         }

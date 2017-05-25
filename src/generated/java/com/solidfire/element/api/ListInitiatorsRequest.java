@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,15 +29,15 @@ import java.util.Objects;
 
 /**
  * ListInitiatorsRequest  
+ * ListInitiators enables you to list initiator IQNs or World Wide Port Names (WWPNs).
  **/
 
 public class ListInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 3268711327032306340L;
+    public static final long serialVersionUID = 2196214409667326261L;
     @SerializedName("startInitiatorID") private Optional<Long> startInitiatorID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("initiators") private Optional<Long[]> initiators;
-
     // empty constructor
     @Since("7.0")
     public ListInitiatorsRequest() {}
@@ -56,7 +57,8 @@ public class ListInitiatorsRequest implements Serializable {
     }
 
     /** 
-     * The initiator ID at which to begin the listing. You can supply this parameter or the "initiators" parameter, but not both.
+     * The initiator ID at which to begin the listing. You can supply this
+     * parameter or the "initiators" parameter, but not both.
      **/
     public Optional<Long> getStartInitiatorID() { return this.startInitiatorID; }
     public void setStartInitiatorID(Optional<Long> startInitiatorID) { 
@@ -70,7 +72,8 @@ public class ListInitiatorsRequest implements Serializable {
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
     /** 
-     * A list of initiator IDs to retrieve. You can supply this parameter or the "startInitiatorID" parameter, but not both.
+     * A list of initiator IDs to retrieve. You can provide a value for this parameter or
+     * the "startInitiatorID" parameter, but not both.
      **/
     public Optional<Long[]> getInitiators() { return this.initiators; }
     public void setInitiators(Optional<Long[]> initiators) { 

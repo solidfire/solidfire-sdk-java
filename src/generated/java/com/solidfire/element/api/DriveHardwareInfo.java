@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class DriveHardwareInfo implements Serializable {
 
-    public static final long serialVersionUID = -8893614935301879707L;
+    public static final long serialVersionUID = -1376989099305421754L;
     @SerializedName("description") private String description;
     @SerializedName("dev") private String dev;
     @SerializedName("devpath") private String devpath;
@@ -48,7 +49,6 @@ public class DriveHardwareInfo implements Serializable {
     @SerializedName("size") private Long size;
     @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("version") private String version;
-
     // empty constructor
     @Since("7.0")
     public DriveHardwareInfo() {}
@@ -92,90 +92,105 @@ public class DriveHardwareInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getDescription() { return this.description; }
     public void setDescription(String description) { 
         this.description = description;
     }
     /** 
+     * 
      **/
     public String getDev() { return this.dev; }
     public void setDev(String dev) { 
         this.dev = dev;
     }
     /** 
+     * 
      **/
     public String getDevpath() { return this.devpath; }
     public void setDevpath(String devpath) { 
         this.devpath = devpath;
     }
     /** 
+     * 
      **/
     public Boolean getDriveSecurityAtMaximum() { return this.driveSecurityAtMaximum; }
     public void setDriveSecurityAtMaximum(Boolean driveSecurityAtMaximum) { 
         this.driveSecurityAtMaximum = driveSecurityAtMaximum;
     }
     /** 
+     * 
      **/
     public Boolean getDriveSecurityFrozen() { return this.driveSecurityFrozen; }
     public void setDriveSecurityFrozen(Boolean driveSecurityFrozen) { 
         this.driveSecurityFrozen = driveSecurityFrozen;
     }
     /** 
+     * 
      **/
     public Boolean getDriveSecurityLocked() { return this.driveSecurityLocked; }
     public void setDriveSecurityLocked(Boolean driveSecurityLocked) { 
         this.driveSecurityLocked = driveSecurityLocked;
     }
     /** 
+     * 
      **/
     public String getLogicalname() { return this.logicalname; }
     public void setLogicalname(String logicalname) { 
         this.logicalname = logicalname;
     }
     /** 
+     * 
      **/
     public String getProduct() { return this.product; }
     public void setProduct(String product) { 
         this.product = product;
     }
     /** 
+     * 
      **/
     public String getScsiCompatID() { return this.scsiCompatID; }
     public void setScsiCompatID(String scsiCompatID) { 
         this.scsiCompatID = scsiCompatID;
     }
     /** 
+     * 
      **/
     public Boolean getSecurityFeatureEnabled() { return this.securityFeatureEnabled; }
     public void setSecurityFeatureEnabled(Boolean securityFeatureEnabled) { 
         this.securityFeatureEnabled = securityFeatureEnabled;
     }
     /** 
+     * 
      **/
     public Boolean getSecurityFeatureSupported() { return this.securityFeatureSupported; }
     public void setSecurityFeatureSupported(Boolean securityFeatureSupported) { 
         this.securityFeatureSupported = securityFeatureSupported;
     }
     /** 
+     * 
      **/
     public String getSerial() { return this.serial; }
     public void setSerial(String serial) { 
         this.serial = serial;
     }
     /** 
+     * 
      **/
     public Long getSize() { return this.size; }
     public void setSize(Long size) { 
         this.size = size;
     }
     /** 
+     * 
      **/
     public java.util.UUID getUuid() { return this.uuid; }
     public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
     /** 
+     * 
      **/
     public String getVersion() { return this.version; }
     public void setVersion(String version) { 

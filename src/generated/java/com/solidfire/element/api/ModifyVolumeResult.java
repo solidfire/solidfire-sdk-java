@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ModifyVolumeResult implements Serializable {
 
-    public static final long serialVersionUID = 7716152308587193073L;
-    @SerializedName("volume") private Volume volume;
-
+    public static final long serialVersionUID = 9011261238582111438L;
+    @SerializedName("volume") private Optional<Volume> volume;
     // empty constructor
     @Since("7.0")
     public ModifyVolumeResult() {}
@@ -43,18 +43,18 @@ public class ModifyVolumeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyVolumeResult(
-        Volume volume
+        Optional<Volume> volume
     )
     {
-        this.volume = volume;
+        this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
     }
 
     /** 
      * Object containing information about the newly modified volume.
      **/
-    public Volume getVolume() { return this.volume; }
-    public void setVolume(Volume volume) { 
-        this.volume = volume;
+    public Optional<Volume> getVolume() { return this.volume; }
+    public void setVolume(Optional<Volume> volume) { 
+        this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
     }
 
     @Override
@@ -85,7 +85,9 @@ public class ModifyVolumeResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" volume : ").append(volume).append(",");
+        if(null != volume && volume.isPresent()){
+            sb.append(" volume : ").append(volume).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,7 +105,7 @@ public class ModifyVolumeResult implements Serializable {
     }
 
     public static class Builder {
-        private Volume volume;
+        private Optional<Volume> volume;
 
         private Builder() { }
 
@@ -118,8 +120,8 @@ public class ModifyVolumeResult implements Serializable {
             return this;
         }
 
-        public ModifyVolumeResult.Builder volume(final Volume volume) {
-            this.volume = volume;
+        public ModifyVolumeResult.Builder optionalVolume(final Volume volume) {
+            this.volume = (volume == null) ? Optional.<Volume>empty() : Optional.of(volume);
             return this;
         }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class Drive implements Serializable {
 
-    public static final long serialVersionUID = -8553854830183823411L;
+    public static final long serialVersionUID = -5875784697268139462L;
     @SerializedName("driveID") private Long driveID;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("assignedService") private Optional<Long> assignedService;
@@ -44,8 +45,7 @@ public class Drive implements Serializable {
     @SerializedName("driveType") private String driveType;
     @SerializedName("reservedSliceFileCapacity") private Optional<Long> reservedSliceFileCapacity;
     @SerializedName("customerSliceFileCapacity") private Optional<Long> customerSliceFileCapacity;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
-
+    @SerializedName("attributes") private Attributes attributes;
     // empty constructor
     @Since("7.0")
     public Drive() {}
@@ -65,7 +65,7 @@ public class Drive implements Serializable {
         String driveType,
         Optional<Long> reservedSliceFileCapacity,
         Optional<Long> customerSliceFileCapacity,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
         this.driveID = driveID;
@@ -148,12 +148,14 @@ public class Drive implements Serializable {
         this.driveType = driveType;
     }
     /** 
+     * 
      **/
     public Optional<Long> getReservedSliceFileCapacity() { return this.reservedSliceFileCapacity; }
     public void setReservedSliceFileCapacity(Optional<Long> reservedSliceFileCapacity) { 
         this.reservedSliceFileCapacity = (reservedSliceFileCapacity == null) ? Optional.<Long>empty() : reservedSliceFileCapacity;
     }
     /** 
+     * 
      **/
     public Optional<Long> getCustomerSliceFileCapacity() { return this.customerSliceFileCapacity; }
     public void setCustomerSliceFileCapacity(Optional<Long> customerSliceFileCapacity) { 
@@ -162,8 +164,8 @@ public class Drive implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -265,7 +267,7 @@ public class Drive implements Serializable {
         private String driveType;
         private Optional<Long> reservedSliceFileCapacity;
         private Optional<Long> customerSliceFileCapacity;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -357,7 +359,7 @@ public class Drive implements Serializable {
             return this;
         }
 
-        public Drive.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public Drive.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

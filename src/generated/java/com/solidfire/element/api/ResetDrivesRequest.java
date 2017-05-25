@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,15 @@ import java.util.Objects;
 
 /**
  * ResetDrivesRequest  
+ * ResetDrives enables you to proactively initialize drives and remove all data currently residing on a drive. The drive can then be reused
+ * in an existing node or used in an upgraded node. This method requires the force parameter to be included in the method call.
  **/
 
 public class ResetDrivesRequest implements Serializable {
 
-    public static final long serialVersionUID = 6206046925761567031L;
+    public static final long serialVersionUID = 9091135840559500796L;
     @SerializedName("drives") private String drives;
     @SerializedName("force") private Boolean force;
-
     // empty constructor
     @Since("7.0")
     public ResetDrivesRequest() {}
@@ -60,7 +62,7 @@ public class ResetDrivesRequest implements Serializable {
         this.drives = drives;
     }
     /** 
-     * The "force" parameter must be included on this method to successfully reset a drive.
+     * Required parameter to successfully reset a drive.
      **/
     public Boolean getForce() { return this.force; }
     public void setForce(Boolean force) { 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,10 @@ import java.util.Objects;
 
 public class NetworkConfig implements Serializable {
 
-    public static final long serialVersionUID = -6490718356259567027L;
+    public static final long serialVersionUID = -5438852913226973490L;
     @SerializedName("#default") private Optional<Boolean> _default;
-    @SerializedName("bond-master") private String bondMaster;
-    @SerializedName("virtualNetworkTag") private String virtualNetworkTag;
+    @SerializedName("bond-master") private Optional<String> bondMaster;
+    @SerializedName("virtualNetworkTag") private Optional<String> virtualNetworkTag;
     @SerializedName("address") private Optional<String> address;
     @SerializedName("auto") private Optional<Boolean> auto;
     @SerializedName("bond-downdelay") private Optional<String> bondDowndelay;
@@ -46,7 +47,6 @@ public class NetworkConfig implements Serializable {
     @SerializedName("bond-mode") private Optional<String> bondMode;
     @SerializedName("bond-slaves") private Optional<String> bondSlaves;
     @SerializedName("bond-updelay") private Optional<String> bondUpdelay;
-    @SerializedName("broadcast") private Optional<String> broadcast;
     @SerializedName("dns-nameservers") private Optional<String> dnsNameservers;
     @SerializedName("dns-search") private Optional<String> dnsSearch;
     @SerializedName("family") private Optional<String> family;
@@ -58,11 +58,12 @@ public class NetworkConfig implements Serializable {
     @SerializedName("netmask") private Optional<String> netmask;
     @SerializedName("network") private Optional<String> network;
     @SerializedName("physical") private Optional<PhysicalAdapter> physical;
-    @SerializedName("routes") private Optional<String[]> routes;
+    @SerializedName("routes") private Optional<Attributes[]> routes;
     @SerializedName("status") private Optional<String> status;
     @SerializedName("symmetricRouteRules") private Optional<String[]> symmetricRouteRules;
     @SerializedName("upAndRunning") private Optional<Boolean> upAndRunning;
-
+    @SerializedName("bond-xmit_hash_policy") private Optional<String> bondXmitHashPolicy;
+    @SerializedName("bond-ad_num_ports") private Optional<String> bondAdNumPorts;
     // empty constructor
     @Since("7.0")
     public NetworkConfig() {}
@@ -72,8 +73,8 @@ public class NetworkConfig implements Serializable {
     @Since("7.0")
     public NetworkConfig(
         Optional<Boolean> _default,
-        String bondMaster,
-        String virtualNetworkTag,
+        Optional<String> bondMaster,
+        Optional<String> virtualNetworkTag,
         Optional<String> address,
         Optional<Boolean> auto,
         Optional<String> bondDowndelay,
@@ -84,7 +85,6 @@ public class NetworkConfig implements Serializable {
         Optional<String> bondMode,
         Optional<String> bondSlaves,
         Optional<String> bondUpdelay,
-        Optional<String> broadcast,
         Optional<String> dnsNameservers,
         Optional<String> dnsSearch,
         Optional<String> family,
@@ -96,15 +96,17 @@ public class NetworkConfig implements Serializable {
         Optional<String> netmask,
         Optional<String> network,
         Optional<PhysicalAdapter> physical,
-        Optional<String[]> routes,
+        Optional<Attributes[]> routes,
         Optional<String> status,
         Optional<String[]> symmetricRouteRules,
-        Optional<Boolean> upAndRunning
+        Optional<Boolean> upAndRunning,
+        Optional<String> bondXmitHashPolicy,
+        Optional<String> bondAdNumPorts
     )
     {
         this._default = (_default == null) ? Optional.<Boolean>empty() : _default;
-        this.bondMaster = bondMaster;
-        this.virtualNetworkTag = virtualNetworkTag;
+        this.bondMaster = (bondMaster == null) ? Optional.<String>empty() : bondMaster;
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<String>empty() : virtualNetworkTag;
         this.address = (address == null) ? Optional.<String>empty() : address;
         this.auto = (auto == null) ? Optional.<Boolean>empty() : auto;
         this.bondDowndelay = (bondDowndelay == null) ? Optional.<String>empty() : bondDowndelay;
@@ -115,7 +117,6 @@ public class NetworkConfig implements Serializable {
         this.bondMode = (bondMode == null) ? Optional.<String>empty() : bondMode;
         this.bondSlaves = (bondSlaves == null) ? Optional.<String>empty() : bondSlaves;
         this.bondUpdelay = (bondUpdelay == null) ? Optional.<String>empty() : bondUpdelay;
-        this.broadcast = (broadcast == null) ? Optional.<String>empty() : broadcast;
         this.dnsNameservers = (dnsNameservers == null) ? Optional.<String>empty() : dnsNameservers;
         this.dnsSearch = (dnsSearch == null) ? Optional.<String>empty() : dnsSearch;
         this.family = (family == null) ? Optional.<String>empty() : family;
@@ -127,185 +128,223 @@ public class NetworkConfig implements Serializable {
         this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
         this.network = (network == null) ? Optional.<String>empty() : network;
         this.physical = (physical == null) ? Optional.<PhysicalAdapter>empty() : physical;
-        this.routes = (routes == null) ? Optional.<String[]>empty() : routes;
+        this.routes = (routes == null) ? Optional.<Attributes[]>empty() : routes;
         this.status = (status == null) ? Optional.<String>empty() : status;
         this.symmetricRouteRules = (symmetricRouteRules == null) ? Optional.<String[]>empty() : symmetricRouteRules;
         this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
+        this.bondXmitHashPolicy = (bondXmitHashPolicy == null) ? Optional.<String>empty() : bondXmitHashPolicy;
+        this.bondAdNumPorts = (bondAdNumPorts == null) ? Optional.<String>empty() : bondAdNumPorts;
     }
 
     /** 
+     * 
      **/
     public Optional<Boolean> get_default() { return this._default; }
     public void set_default(Optional<Boolean> _default) { 
         this._default = (_default == null) ? Optional.<Boolean>empty() : _default;
     }
     /** 
+     * 
      **/
-    public String getBondMaster() { return this.bondMaster; }
-    public void setBondMaster(String bondMaster) { 
-        this.bondMaster = bondMaster;
+    public Optional<String> getBondMaster() { return this.bondMaster; }
+    public void setBondMaster(Optional<String> bondMaster) { 
+        this.bondMaster = (bondMaster == null) ? Optional.<String>empty() : bondMaster;
     }
     /** 
+     * 
      **/
-    public String getVirtualNetworkTag() { return this.virtualNetworkTag; }
-    public void setVirtualNetworkTag(String virtualNetworkTag) { 
-        this.virtualNetworkTag = virtualNetworkTag;
+    public Optional<String> getVirtualNetworkTag() { return this.virtualNetworkTag; }
+    public void setVirtualNetworkTag(Optional<String> virtualNetworkTag) { 
+        this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<String>empty() : virtualNetworkTag;
     }
     /** 
+     * 
      **/
     public Optional<String> getAddress() { return this.address; }
     public void setAddress(Optional<String> address) { 
         this.address = (address == null) ? Optional.<String>empty() : address;
     }
     /** 
+     * 
      **/
     public Optional<Boolean> getAuto() { return this.auto; }
     public void setAuto(Optional<Boolean> auto) { 
         this.auto = (auto == null) ? Optional.<Boolean>empty() : auto;
     }
     /** 
+     * 
      **/
     public Optional<String> getBondDowndelay() { return this.bondDowndelay; }
     public void setBondDowndelay(Optional<String> bondDowndelay) { 
         this.bondDowndelay = (bondDowndelay == null) ? Optional.<String>empty() : bondDowndelay;
     }
     /** 
+     * 
      **/
     public Optional<String> getBondFailOverMac() { return this.bondFailOverMac; }
     public void setBondFailOverMac(Optional<String> bondFailOverMac) { 
         this.bondFailOverMac = (bondFailOverMac == null) ? Optional.<String>empty() : bondFailOverMac;
     }
     /** 
+     * 
      **/
     public Optional<String> getBondPrimaryReselect() { return this.bondPrimaryReselect; }
     public void setBondPrimaryReselect(Optional<String> bondPrimaryReselect) { 
         this.bondPrimaryReselect = (bondPrimaryReselect == null) ? Optional.<String>empty() : bondPrimaryReselect;
     }
     /** 
+     * 
      **/
     public Optional<String> getBondLacpRate() { return this.bondLacpRate; }
     public void setBondLacpRate(Optional<String> bondLacpRate) { 
         this.bondLacpRate = (bondLacpRate == null) ? Optional.<String>empty() : bondLacpRate;
     }
     /** 
+     * 
      **/
     public Optional<String> getBondMiimon() { return this.bondMiimon; }
     public void setBondMiimon(Optional<String> bondMiimon) { 
         this.bondMiimon = (bondMiimon == null) ? Optional.<String>empty() : bondMiimon;
     }
     /** 
+     * 
      **/
     public Optional<String> getBondMode() { return this.bondMode; }
     public void setBondMode(Optional<String> bondMode) { 
         this.bondMode = (bondMode == null) ? Optional.<String>empty() : bondMode;
     }
     /** 
+     * 
      **/
     public Optional<String> getBondSlaves() { return this.bondSlaves; }
     public void setBondSlaves(Optional<String> bondSlaves) { 
         this.bondSlaves = (bondSlaves == null) ? Optional.<String>empty() : bondSlaves;
     }
     /** 
+     * 
      **/
     public Optional<String> getBondUpdelay() { return this.bondUpdelay; }
     public void setBondUpdelay(Optional<String> bondUpdelay) { 
         this.bondUpdelay = (bondUpdelay == null) ? Optional.<String>empty() : bondUpdelay;
     }
     /** 
-     **/
-    public Optional<String> getBroadcast() { return this.broadcast; }
-    public void setBroadcast(Optional<String> broadcast) { 
-        this.broadcast = (broadcast == null) ? Optional.<String>empty() : broadcast;
-    }
-    /** 
+     * 
      **/
     public Optional<String> getDnsNameservers() { return this.dnsNameservers; }
     public void setDnsNameservers(Optional<String> dnsNameservers) { 
         this.dnsNameservers = (dnsNameservers == null) ? Optional.<String>empty() : dnsNameservers;
     }
     /** 
+     * 
      **/
     public Optional<String> getDnsSearch() { return this.dnsSearch; }
     public void setDnsSearch(Optional<String> dnsSearch) { 
         this.dnsSearch = (dnsSearch == null) ? Optional.<String>empty() : dnsSearch;
     }
     /** 
+     * 
      **/
     public Optional<String> getFamily() { return this.family; }
     public void setFamily(Optional<String> family) { 
         this.family = (family == null) ? Optional.<String>empty() : family;
     }
     /** 
+     * 
      **/
     public Optional<String> getGateway() { return this.gateway; }
     public void setGateway(Optional<String> gateway) { 
         this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
     }
     /** 
+     * 
      **/
     public Optional<String> getMacAddress() { return this.macAddress; }
     public void setMacAddress(Optional<String> macAddress) { 
         this.macAddress = (macAddress == null) ? Optional.<String>empty() : macAddress;
     }
     /** 
+     * 
      **/
     public Optional<String> getMacAddressPermanent() { return this.macAddressPermanent; }
     public void setMacAddressPermanent(Optional<String> macAddressPermanent) { 
         this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : macAddressPermanent;
     }
     /** 
+     * 
      **/
     public Optional<String> getMethod() { return this.method; }
     public void setMethod(Optional<String> method) { 
         this.method = (method == null) ? Optional.<String>empty() : method;
     }
     /** 
+     * 
      **/
     public Optional<String> getMtu() { return this.mtu; }
     public void setMtu(Optional<String> mtu) { 
         this.mtu = (mtu == null) ? Optional.<String>empty() : mtu;
     }
     /** 
+     * 
      **/
     public Optional<String> getNetmask() { return this.netmask; }
     public void setNetmask(Optional<String> netmask) { 
         this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
     }
     /** 
+     * 
      **/
     public Optional<String> getNetwork() { return this.network; }
     public void setNetwork(Optional<String> network) { 
         this.network = (network == null) ? Optional.<String>empty() : network;
     }
     /** 
+     * 
      **/
     public Optional<PhysicalAdapter> getPhysical() { return this.physical; }
     public void setPhysical(Optional<PhysicalAdapter> physical) { 
         this.physical = (physical == null) ? Optional.<PhysicalAdapter>empty() : physical;
     }
     /** 
+     * 
      **/
-    public Optional<String[]> getRoutes() { return this.routes; }
-    public void setRoutes(Optional<String[]> routes) { 
-        this.routes = (routes == null) ? Optional.<String[]>empty() : routes;
+    public Optional<Attributes[]> getRoutes() { return this.routes; }
+    public void setRoutes(Optional<Attributes[]> routes) { 
+        this.routes = (routes == null) ? Optional.<Attributes[]>empty() : routes;
     }
     /** 
+     * 
      **/
     public Optional<String> getStatus() { return this.status; }
     public void setStatus(Optional<String> status) { 
         this.status = (status == null) ? Optional.<String>empty() : status;
     }
     /** 
+     * 
      **/
     public Optional<String[]> getSymmetricRouteRules() { return this.symmetricRouteRules; }
     public void setSymmetricRouteRules(Optional<String[]> symmetricRouteRules) { 
         this.symmetricRouteRules = (symmetricRouteRules == null) ? Optional.<String[]>empty() : symmetricRouteRules;
     }
     /** 
+     * 
      **/
     public Optional<Boolean> getUpAndRunning() { return this.upAndRunning; }
     public void setUpAndRunning(Optional<Boolean> upAndRunning) { 
         this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
+    }
+    /** 
+     * 
+     **/
+    public Optional<String> getBondXmitHashPolicy() { return this.bondXmitHashPolicy; }
+    public void setBondXmitHashPolicy(Optional<String> bondXmitHashPolicy) { 
+        this.bondXmitHashPolicy = (bondXmitHashPolicy == null) ? Optional.<String>empty() : bondXmitHashPolicy;
+    }
+    /** 
+     * 
+     **/
+    public Optional<String> getBondAdNumPorts() { return this.bondAdNumPorts; }
+    public void setBondAdNumPorts(Optional<String> bondAdNumPorts) { 
+        this.bondAdNumPorts = (bondAdNumPorts == null) ? Optional.<String>empty() : bondAdNumPorts;
     }
 
     @Override
@@ -329,7 +368,6 @@ public class NetworkConfig implements Serializable {
             Objects.equals(bondMode, that.bondMode) && 
             Objects.equals(bondSlaves, that.bondSlaves) && 
             Objects.equals(bondUpdelay, that.bondUpdelay) && 
-            Objects.equals(broadcast, that.broadcast) && 
             Objects.equals(dnsNameservers, that.dnsNameservers) && 
             Objects.equals(dnsSearch, that.dnsSearch) && 
             Objects.equals(family, that.family) && 
@@ -344,12 +382,14 @@ public class NetworkConfig implements Serializable {
             Objects.equals(routes, that.routes) && 
             Objects.equals(status, that.status) && 
             Objects.equals(symmetricRouteRules, that.symmetricRouteRules) && 
-            Objects.equals(upAndRunning, that.upAndRunning);
+            Objects.equals(upAndRunning, that.upAndRunning) && 
+            Objects.equals(bondXmitHashPolicy, that.bondXmitHashPolicy) && 
+            Objects.equals(bondAdNumPorts, that.bondAdNumPorts);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( _default,bondMaster,virtualNetworkTag,address,auto,bondDowndelay,bondFailOverMac,bondPrimaryReselect,bondLacpRate,bondMiimon,bondMode,bondSlaves,bondUpdelay,broadcast,dnsNameservers,dnsSearch,family,gateway,macAddress,macAddressPermanent,method,mtu,netmask,network,physical,routes,status,symmetricRouteRules,upAndRunning );
+        return Objects.hash( _default,bondMaster,virtualNetworkTag,address,auto,bondDowndelay,bondFailOverMac,bondPrimaryReselect,bondLacpRate,bondMiimon,bondMode,bondSlaves,bondUpdelay,dnsNameservers,dnsSearch,family,gateway,macAddress,macAddressPermanent,method,mtu,netmask,network,physical,routes,status,symmetricRouteRules,upAndRunning,bondXmitHashPolicy,bondAdNumPorts );
     }
 
 
@@ -368,7 +408,6 @@ public class NetworkConfig implements Serializable {
         map.put("bondMode", bondMode);
         map.put("bondSlaves", bondSlaves);
         map.put("bondUpdelay", bondUpdelay);
-        map.put("broadcast", broadcast);
         map.put("dnsNameservers", dnsNameservers);
         map.put("dnsSearch", dnsSearch);
         map.put("family", family);
@@ -384,6 +423,8 @@ public class NetworkConfig implements Serializable {
         map.put("status", status);
         map.put("symmetricRouteRules", symmetricRouteRules);
         map.put("upAndRunning", upAndRunning);
+        map.put("bondXmitHashPolicy", bondXmitHashPolicy);
+        map.put("bondAdNumPorts", bondAdNumPorts);
         return map;
     }
 
@@ -395,8 +436,12 @@ public class NetworkConfig implements Serializable {
         if(null != _default && _default.isPresent()){
             sb.append(" _default : ").append(_default).append(",");
         }
-        sb.append(" bondMaster : ").append(bondMaster).append(",");
-        sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
+        if(null != bondMaster && bondMaster.isPresent()){
+            sb.append(" bondMaster : ").append(bondMaster).append(",");
+        }
+        if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
+            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
+        }
         if(null != address && address.isPresent()){
             sb.append(" address : ").append(address).append(",");
         }
@@ -426,9 +471,6 @@ public class NetworkConfig implements Serializable {
         }
         if(null != bondUpdelay && bondUpdelay.isPresent()){
             sb.append(" bondUpdelay : ").append(bondUpdelay).append(",");
-        }
-        if(null != broadcast && broadcast.isPresent()){
-            sb.append(" broadcast : ").append(broadcast).append(",");
         }
         if(null != dnsNameservers && dnsNameservers.isPresent()){
             sb.append(" dnsNameservers : ").append(dnsNameservers).append(",");
@@ -475,6 +517,12 @@ public class NetworkConfig implements Serializable {
         if(null != upAndRunning && upAndRunning.isPresent()){
             sb.append(" upAndRunning : ").append(upAndRunning).append(",");
         }
+        if(null != bondXmitHashPolicy && bondXmitHashPolicy.isPresent()){
+            sb.append(" bondXmitHashPolicy : ").append(bondXmitHashPolicy).append(",");
+        }
+        if(null != bondAdNumPorts && bondAdNumPorts.isPresent()){
+            sb.append(" bondAdNumPorts : ").append(bondAdNumPorts).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -493,8 +541,8 @@ public class NetworkConfig implements Serializable {
 
     public static class Builder {
         private Optional<Boolean> _default;
-        private String bondMaster;
-        private String virtualNetworkTag;
+        private Optional<String> bondMaster;
+        private Optional<String> virtualNetworkTag;
         private Optional<String> address;
         private Optional<Boolean> auto;
         private Optional<String> bondDowndelay;
@@ -505,7 +553,6 @@ public class NetworkConfig implements Serializable {
         private Optional<String> bondMode;
         private Optional<String> bondSlaves;
         private Optional<String> bondUpdelay;
-        private Optional<String> broadcast;
         private Optional<String> dnsNameservers;
         private Optional<String> dnsSearch;
         private Optional<String> family;
@@ -517,10 +564,12 @@ public class NetworkConfig implements Serializable {
         private Optional<String> netmask;
         private Optional<String> network;
         private Optional<PhysicalAdapter> physical;
-        private Optional<String[]> routes;
+        private Optional<Attributes[]> routes;
         private Optional<String> status;
         private Optional<String[]> symmetricRouteRules;
         private Optional<Boolean> upAndRunning;
+        private Optional<String> bondXmitHashPolicy;
+        private Optional<String> bondAdNumPorts;
 
         private Builder() { }
 
@@ -539,7 +588,6 @@ public class NetworkConfig implements Serializable {
                          this.bondMode,
                          this.bondSlaves,
                          this.bondUpdelay,
-                         this.broadcast,
                          this.dnsNameservers,
                          this.dnsSearch,
                          this.family,
@@ -554,7 +602,9 @@ public class NetworkConfig implements Serializable {
                          this.routes,
                          this.status,
                          this.symmetricRouteRules,
-                         this.upAndRunning);
+                         this.upAndRunning,
+                         this.bondXmitHashPolicy,
+                         this.bondAdNumPorts);
         }
 
         private NetworkConfig.Builder buildFrom(final NetworkConfig req) {
@@ -571,7 +621,6 @@ public class NetworkConfig implements Serializable {
             this.bondMode = req.bondMode;
             this.bondSlaves = req.bondSlaves;
             this.bondUpdelay = req.bondUpdelay;
-            this.broadcast = req.broadcast;
             this.dnsNameservers = req.dnsNameservers;
             this.dnsSearch = req.dnsSearch;
             this.family = req.family;
@@ -587,6 +636,8 @@ public class NetworkConfig implements Serializable {
             this.status = req.status;
             this.symmetricRouteRules = req.symmetricRouteRules;
             this.upAndRunning = req.upAndRunning;
+            this.bondXmitHashPolicy = req.bondXmitHashPolicy;
+            this.bondAdNumPorts = req.bondAdNumPorts;
 
             return this;
         }
@@ -596,13 +647,13 @@ public class NetworkConfig implements Serializable {
             return this;
         }
 
-        public NetworkConfig.Builder bondMaster(final String bondMaster) {
-            this.bondMaster = bondMaster;
+        public NetworkConfig.Builder optionalBondMaster(final String bondMaster) {
+            this.bondMaster = (bondMaster == null) ? Optional.<String>empty() : Optional.of(bondMaster);
             return this;
         }
 
-        public NetworkConfig.Builder virtualNetworkTag(final String virtualNetworkTag) {
-            this.virtualNetworkTag = virtualNetworkTag;
+        public NetworkConfig.Builder optionalVirtualNetworkTag(final String virtualNetworkTag) {
+            this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<String>empty() : Optional.of(virtualNetworkTag);
             return this;
         }
 
@@ -653,11 +704,6 @@ public class NetworkConfig implements Serializable {
 
         public NetworkConfig.Builder optionalBondUpdelay(final String bondUpdelay) {
             this.bondUpdelay = (bondUpdelay == null) ? Optional.<String>empty() : Optional.of(bondUpdelay);
-            return this;
-        }
-
-        public NetworkConfig.Builder optionalBroadcast(final String broadcast) {
-            this.broadcast = (broadcast == null) ? Optional.<String>empty() : Optional.of(broadcast);
             return this;
         }
 
@@ -716,8 +762,8 @@ public class NetworkConfig implements Serializable {
             return this;
         }
 
-        public NetworkConfig.Builder optionalRoutes(final String[] routes) {
-            this.routes = (routes == null) ? Optional.<String[]>empty() : Optional.of(routes);
+        public NetworkConfig.Builder optionalRoutes(final Attributes[] routes) {
+            this.routes = (routes == null) ? Optional.<Attributes[]>empty() : Optional.of(routes);
             return this;
         }
 
@@ -733,6 +779,16 @@ public class NetworkConfig implements Serializable {
 
         public NetworkConfig.Builder optionalUpAndRunning(final Boolean upAndRunning) {
             this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : Optional.of(upAndRunning);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalBondXmitHashPolicy(final String bondXmitHashPolicy) {
+            this.bondXmitHashPolicy = (bondXmitHashPolicy == null) ? Optional.<String>empty() : Optional.of(bondXmitHashPolicy);
+            return this;
+        }
+
+        public NetworkConfig.Builder optionalBondAdNumPorts(final String bondAdNumPorts) {
+            this.bondAdNumPorts = (bondAdNumPorts == null) ? Optional.<String>empty() : Optional.of(bondAdNumPorts);
             return this;
         }
 

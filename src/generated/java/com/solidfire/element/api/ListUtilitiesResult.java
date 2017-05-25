@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListUtilitiesResult implements Serializable {
 
-    public static final long serialVersionUID = 7811487745346679708L;
-    @SerializedName("utilities") private String[] utilities;
-
+    public static final long serialVersionUID = -4103211529632604599L;
+    @SerializedName("utilities") private Object utilities;
     // empty constructor
     @Since("7.0")
     public ListUtilitiesResult() {}
@@ -43,7 +43,7 @@ public class ListUtilitiesResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListUtilitiesResult(
-        String[] utilities
+        Object utilities
     )
     {
         this.utilities = utilities;
@@ -52,8 +52,8 @@ public class ListUtilitiesResult implements Serializable {
     /** 
      * List of utilities currently available to run on the node.
      **/
-    public String[] getUtilities() { return this.utilities; }
-    public void setUtilities(String[] utilities) { 
+    public Object getUtilities() { return this.utilities; }
+    public void setUtilities(Object utilities) { 
         this.utilities = utilities;
     }
 
@@ -65,12 +65,12 @@ public class ListUtilitiesResult implements Serializable {
         ListUtilitiesResult that = (ListUtilitiesResult) o;
 
         return 
-            Arrays.equals(utilities, that.utilities);
+            Objects.equals(utilities, that.utilities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])utilities );
+        return Objects.hash( utilities );
     }
 
 
@@ -85,7 +85,7 @@ public class ListUtilitiesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" utilities : ").append(Arrays.toString(utilities)).append(",");
+        sb.append(" utilities : ").append(utilities).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -103,7 +103,7 @@ public class ListUtilitiesResult implements Serializable {
     }
 
     public static class Builder {
-        private String[] utilities;
+        private Object utilities;
 
         private Builder() { }
 
@@ -118,7 +118,7 @@ public class ListUtilitiesResult implements Serializable {
             return this;
         }
 
-        public ListUtilitiesResult.Builder utilities(final String[] utilities) {
+        public ListUtilitiesResult.Builder utilities(final Object utilities) {
             this.utilities = utilities;
             return this;
         }

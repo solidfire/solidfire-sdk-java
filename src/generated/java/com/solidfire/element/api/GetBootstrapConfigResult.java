@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,12 +33,11 @@ import java.util.Objects;
 
 public class GetBootstrapConfigResult implements Serializable {
 
-    public static final long serialVersionUID = 7635078735348945319L;
+    public static final long serialVersionUID = -6356786835919052454L;
     @SerializedName("clusterName") private String clusterName;
     @SerializedName("nodeName") private String nodeName;
     @SerializedName("nodes") private NodeWaitingToJoin[] nodes;
     @SerializedName("version") private String version;
-
     // empty constructor
     @Since("7.0")
     public GetBootstrapConfigResult() {}

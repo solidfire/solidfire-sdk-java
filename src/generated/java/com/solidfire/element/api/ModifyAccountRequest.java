@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,18 +29,22 @@ import java.util.Objects;
 
 /**
  * ModifyAccountRequest  
+ * ModifyAccount enables you to modify an existing account.
+ * When you lock an account, any existing connections from that account are immediately terminated. When you change an account's
+ * CHAP settings, any existing connections remain active, and the new CHAP settings are used on subsequent connections or
+ * reconnections.
+ * To clear an account's attributes, specify {} for the attributes parameter.
  **/
 
 public class ModifyAccountRequest implements Serializable {
 
-    public static final long serialVersionUID = 357601812538223462L;
+    public static final long serialVersionUID = -5408277247074422434L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("username") private Optional<String> username;
     @SerializedName("status") private Optional<String> status;
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public ModifyAccountRequest() {}
@@ -53,7 +58,7 @@ public class ModifyAccountRequest implements Serializable {
         Optional<String> status,
         Optional<CHAPSecret> initiatorSecret,
         Optional<CHAPSecret> targetSecret,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> attributes
     )
     {
         this.accountID = accountID;
@@ -61,52 +66,60 @@ public class ModifyAccountRequest implements Serializable {
         this.status = (status == null) ? Optional.<String>empty() : status;
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * AccountID for the account to modify.
+     * Specifies the AccountID for the account to be modified.
      **/
     public Long getAccountID() { return this.accountID; }
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
     /** 
-     * Change the username of the account to this value.
+     * Specifies the username associated with the
+     * account. (Might be 1 to 64 characters in length).
      **/
     public Optional<String> getUsername() { return this.username; }
     public void setUsername(Optional<String> username) { 
         this.username = (username == null) ? Optional.<String>empty() : username;
     }
     /** 
-     * Status of the account.
+     * Sets the status for the account. Possible values are:
+     * active: The account is active and connections are allowed.
+     * locked: The account is locked and connections are refused.
      **/
     public Optional<String> getStatus() { return this.status; }
     public void setStatus(Optional<String> status) { 
         this.status = (status == null) ? Optional.<String>empty() : status;
     }
     /** 
-     * CHAP secret to use for the initiator.
-     * Should be 12-16 characters long and impenetrable.
+     * Specifies the CHAP secret to use for the initiator. This secret must
+     * be 12-16 characters in length and should be
+     * impenetrable. The initiator CHAP secret must be unique
+     * and cannot be the same as the target CHAP secret.
      **/
     public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
     public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) { 
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
     }
     /** 
-     * CHAP secret to use for the target (mutual CHAP authentication).
-     * Should be 12-16 characters long and impenetrable.
+     * Specifies the CHAP secret to use for the target (mutual CHAP
+     * authentication). This secret must be 12-16 characters in
+     * length and should be impenetrable. The target CHAP
+     * secret must be unique and cannot be the same as the
+     * initiator CHAP secret.
      **/
     public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
     public void setTargetSecret(Optional<CHAPSecret> targetSecret) { 
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -185,7 +198,7 @@ public class ModifyAccountRequest implements Serializable {
         private Optional<String> status;
         private Optional<CHAPSecret> initiatorSecret;
         private Optional<CHAPSecret> targetSecret;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -235,8 +248,8 @@ public class ModifyAccountRequest implements Serializable {
             return this;
         }
 
-        public ModifyAccountRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public ModifyAccountRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

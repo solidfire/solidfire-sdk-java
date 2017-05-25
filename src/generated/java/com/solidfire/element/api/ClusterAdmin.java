@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,12 +33,12 @@ import java.util.Objects;
 
 public class ClusterAdmin implements Serializable {
 
-    public static final long serialVersionUID = 5002497716622301063L;
+    public static final long serialVersionUID = -2942376997202145152L;
+    @SerializedName("authMethod") private String authMethod;
     @SerializedName("access") private String[] access;
     @SerializedName("clusterAdminID") private Long clusterAdminID;
     @SerializedName("username") private String username;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
-
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public ClusterAdmin() {}
@@ -46,31 +47,43 @@ public class ClusterAdmin implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ClusterAdmin(
+        String authMethod,
         String[] access,
         Long clusterAdminID,
         String username,
-        java.util.Map<String, Object> attributes
+        Optional<Attributes> attributes
     )
     {
+        this.authMethod = authMethod;
         this.access = access;
         this.clusterAdminID = clusterAdminID;
         this.username = username;
-        this.attributes = attributes;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
+     * 
+     **/
+    public String getAuthMethod() { return this.authMethod; }
+    public void setAuthMethod(String authMethod) { 
+        this.authMethod = authMethod;
+    }
+    /** 
+     * 
      **/
     public String[] getAccess() { return this.access; }
     public void setAccess(String[] access) { 
         this.access = access;
     }
     /** 
+     * 
      **/
     public Long getClusterAdminID() { return this.clusterAdminID; }
     public void setClusterAdminID(Long clusterAdminID) { 
         this.clusterAdminID = clusterAdminID;
     }
     /** 
+     * 
      **/
     public String getUsername() { return this.username; }
     public void setUsername(String username) { 
@@ -79,9 +92,9 @@ public class ClusterAdmin implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
-        this.attributes = attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -92,6 +105,7 @@ public class ClusterAdmin implements Serializable {
         ClusterAdmin that = (ClusterAdmin) o;
 
         return 
+            Objects.equals(authMethod, that.authMethod) && 
             Arrays.equals(access, that.access) && 
             Objects.equals(clusterAdminID, that.clusterAdminID) && 
             Objects.equals(username, that.username) && 
@@ -100,12 +114,13 @@ public class ClusterAdmin implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])access,clusterAdminID,username,attributes );
+        return Objects.hash( authMethod,(Object[])access,clusterAdminID,username,attributes );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
+        map.put("authMethod", authMethod);
         map.put("access", access);
         map.put("clusterAdminID", clusterAdminID);
         map.put("username", username);
@@ -118,10 +133,13 @@ public class ClusterAdmin implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
+        sb.append(" authMethod : ").append(authMethod).append(",");
         sb.append(" access : ").append(Arrays.toString(access)).append(",");
         sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
         sb.append(" username : ").append(username).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
+        if(null != attributes && attributes.isPresent()){
+            sb.append(" attributes : ").append(attributes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -139,15 +157,17 @@ public class ClusterAdmin implements Serializable {
     }
 
     public static class Builder {
+        private String authMethod;
         private String[] access;
         private Long clusterAdminID;
         private String username;
-        private java.util.Map<String, Object> attributes;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
         public ClusterAdmin build() {
             return new ClusterAdmin (
+                         this.authMethod,
                          this.access,
                          this.clusterAdminID,
                          this.username,
@@ -155,11 +175,17 @@ public class ClusterAdmin implements Serializable {
         }
 
         private ClusterAdmin.Builder buildFrom(final ClusterAdmin req) {
+            this.authMethod = req.authMethod;
             this.access = req.access;
             this.clusterAdminID = req.clusterAdminID;
             this.username = req.username;
             this.attributes = req.attributes;
 
+            return this;
+        }
+
+        public ClusterAdmin.Builder authMethod(final String authMethod) {
+            this.authMethod = authMethod;
             return this;
         }
 
@@ -178,8 +204,8 @@ public class ClusterAdmin implements Serializable {
             return this;
         }
 
-        public ClusterAdmin.Builder attributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = attributes;
+        public ClusterAdmin.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

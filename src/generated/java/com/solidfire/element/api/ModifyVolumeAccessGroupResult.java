@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ModifyVolumeAccessGroupResult implements Serializable {
 
-    public static final long serialVersionUID = 2646586656634627601L;
+    public static final long serialVersionUID = 2898879091933680714L;
     @SerializedName("volumeAccessGroup") private VolumeAccessGroup volumeAccessGroup;
-
     // empty constructor
     @Since("7.0")
     public ModifyVolumeAccessGroupResult() {}

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class ModifyVolumesResult implements Serializable {
 
-    public static final long serialVersionUID = 5469388004351442315L;
-    @SerializedName("qos") private QoS qos;
+    public static final long serialVersionUID = -462558436418401077L;
     @SerializedName("volumes") private Volume[] volumes;
-
+    @SerializedName("qos") private Optional<QoS> qos;
     // empty constructor
     @Since("7.0")
     public ModifyVolumesResult() {}
@@ -44,25 +44,27 @@ public class ModifyVolumesResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyVolumesResult(
-        QoS qos,
-        Volume[] volumes
+        Volume[] volumes,
+        Optional<QoS> qos
     )
     {
-        this.qos = qos;
         this.volumes = volumes;
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
 
     /** 
-     **/
-    public QoS getQos() { return this.qos; }
-    public void setQos(QoS qos) { 
-        this.qos = qos;
-    }
-    /** 
+     * 
      **/
     public Volume[] getVolumes() { return this.volumes; }
     public void setVolumes(Volume[] volumes) { 
         this.volumes = volumes;
+    }
+    /** 
+     * 
+     **/
+    public Optional<QoS> getQos() { return this.qos; }
+    public void setQos(Optional<QoS> qos) { 
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
 
     @Override
@@ -73,20 +75,20 @@ public class ModifyVolumesResult implements Serializable {
         ModifyVolumesResult that = (ModifyVolumesResult) o;
 
         return 
-            Objects.equals(qos, that.qos) && 
-            Arrays.equals(volumes, that.volumes);
+            Arrays.equals(volumes, that.volumes) && 
+            Objects.equals(qos, that.qos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( qos,(Object[])volumes );
+        return Objects.hash( (Object[])volumes,qos );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("qos", qos);
         map.put("volumes", volumes);
+        map.put("qos", qos);
         return map;
     }
 
@@ -95,8 +97,10 @@ public class ModifyVolumesResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
-        sb.append(" qos : ").append(qos).append(",");
         sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
+        if(null != qos && qos.isPresent()){
+            sb.append(" qos : ").append(qos).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -114,31 +118,31 @@ public class ModifyVolumesResult implements Serializable {
     }
 
     public static class Builder {
-        private QoS qos;
         private Volume[] volumes;
+        private Optional<QoS> qos;
 
         private Builder() { }
 
         public ModifyVolumesResult build() {
             return new ModifyVolumesResult (
-                         this.qos,
-                         this.volumes);
+                         this.volumes,
+                         this.qos);
         }
 
         private ModifyVolumesResult.Builder buildFrom(final ModifyVolumesResult req) {
-            this.qos = req.qos;
             this.volumes = req.volumes;
+            this.qos = req.qos;
 
-            return this;
-        }
-
-        public ModifyVolumesResult.Builder qos(final QoS qos) {
-            this.qos = qos;
             return this;
         }
 
         public ModifyVolumesResult.Builder volumes(final Volume[] volumes) {
             this.volumes = volumes;
+            return this;
+        }
+
+        public ModifyVolumesResult.Builder optionalQos(final QoS qos) {
+            this.qos = (qos == null) ? Optional.<QoS>empty() : Optional.of(qos);
             return this;
         }
 

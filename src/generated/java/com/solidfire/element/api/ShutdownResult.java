@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class ShutdownResult implements Serializable {
 
-    public static final long serialVersionUID = 2741035782715848783L;
+    public static final long serialVersionUID = -5035853688579079201L;
     @SerializedName("failed") private Long[] failed;
     @SerializedName("successful") private Long[] successful;
-
     // empty constructor
     @Since("7.0")
     public ShutdownResult() {}
@@ -53,12 +53,14 @@ public class ShutdownResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Long[] getFailed() { return this.failed; }
     public void setFailed(Long[] failed) { 
         this.failed = failed;
     }
     /** 
+     * 
      **/
     public Long[] getSuccessful() { return this.successful; }
     public void setSuccessful(Long[] successful) { 

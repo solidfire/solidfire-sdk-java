@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,16 @@ import java.util.Objects;
 
 /**
  * ListActiveVolumesRequest  
+ * ListActiveVolumes enables you to return the list of active volumes currently in the system. The list of volumes is returned sorted in
+ * VolumeID order and can be returned in multiple parts (pages).
  **/
 
 public class ListActiveVolumesRequest implements Serializable {
 
-    public static final long serialVersionUID = 4826675269592232446L;
+    public static final long serialVersionUID = 6841607219636189101L;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
-
+    @SerializedName("includeVirtualVolumes") private Optional<Boolean> includeVirtualVolumes;
     // empty constructor
     @Since("7.0")
     public ListActiveVolumesRequest() {}
@@ -51,22 +54,45 @@ public class ListActiveVolumesRequest implements Serializable {
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
+    // parameterized constructor
+    @Since("9.0")
+    public ListActiveVolumesRequest(
+        Optional<Long> startVolumeID,
+        Optional<Long> limit,
+        Optional<Boolean> includeVirtualVolumes
+    )
+    {
+        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
+        this.limit = (limit == null) ? Optional.<Long>empty() : limit;
+        this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
+    }
 
     /** 
-     * The ID of the first volume to list.
-     * This can be useful for paging results.
-     * By default, this starts at the lowest VolumeID.
+     * Starting VolumeID to return. If no volume exists with this
+     * VolumeID, the next volume by VolumeID order is used as
+     * the start of the list. To page through the list, pass the
+     * VolumeID of the last volume in the previous response +
+     * 1.
      **/
     public Optional<Long> getStartVolumeID() { return this.startVolumeID; }
     public void setStartVolumeID(Optional<Long> startVolumeID) { 
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
     }
     /** 
-     * The maximum number of volumes to return from the API.
+     * Maximum number of Volume Info objects to return. A value of 0
+     * (zero) returns all volumes (unlimited).
      **/
     public Optional<Long> getLimit() { return this.limit; }
     public void setLimit(Optional<Long> limit) { 
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
+    }
+    /** 
+     * Specifies that virtual volumes are included in the response by default.
+     * To exclude virtual volumes, set to false.
+     **/
+    public Optional<Boolean> getIncludeVirtualVolumes() { return this.includeVirtualVolumes; }
+    public void setIncludeVirtualVolumes(Optional<Boolean> includeVirtualVolumes) { 
+        this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
     }
 
     @Override
@@ -78,12 +104,13 @@ public class ListActiveVolumesRequest implements Serializable {
 
         return 
             Objects.equals(startVolumeID, that.startVolumeID) && 
-            Objects.equals(limit, that.limit);
+            Objects.equals(limit, that.limit) && 
+            Objects.equals(includeVirtualVolumes, that.includeVirtualVolumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( startVolumeID,limit );
+        return Objects.hash( startVolumeID,limit,includeVirtualVolumes );
     }
 
 
@@ -91,6 +118,7 @@ public class ListActiveVolumesRequest implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("startVolumeID", startVolumeID);
         map.put("limit", limit);
+        map.put("includeVirtualVolumes", includeVirtualVolumes);
         return map;
     }
 
@@ -104,6 +132,9 @@ public class ListActiveVolumesRequest implements Serializable {
         }
         if(null != limit && limit.isPresent()){
             sb.append(" limit : ").append(limit).append(",");
+        }
+        if(null != includeVirtualVolumes && includeVirtualVolumes.isPresent()){
+            sb.append(" includeVirtualVolumes : ").append(includeVirtualVolumes).append(",");
         }
         sb.append( " }" );
 
@@ -124,18 +155,21 @@ public class ListActiveVolumesRequest implements Serializable {
     public static class Builder {
         private Optional<Long> startVolumeID;
         private Optional<Long> limit;
+        private Optional<Boolean> includeVirtualVolumes;
 
         private Builder() { }
 
         public ListActiveVolumesRequest build() {
             return new ListActiveVolumesRequest (
                          this.startVolumeID,
-                         this.limit);
+                         this.limit,
+                         this.includeVirtualVolumes);
         }
 
         private ListActiveVolumesRequest.Builder buildFrom(final ListActiveVolumesRequest req) {
             this.startVolumeID = req.startVolumeID;
             this.limit = req.limit;
+            this.includeVirtualVolumes = req.includeVirtualVolumes;
 
             return this;
         }
@@ -147,6 +181,11 @@ public class ListActiveVolumesRequest implements Serializable {
 
         public ListActiveVolumesRequest.Builder optionalLimit(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
+            return this;
+        }
+
+        public ListActiveVolumesRequest.Builder optionalIncludeVirtualVolumes(final Boolean includeVirtualVolumes) {
+            this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : Optional.of(includeVirtualVolumes);
             return this;
         }
 

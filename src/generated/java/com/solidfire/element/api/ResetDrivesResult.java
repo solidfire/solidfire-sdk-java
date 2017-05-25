@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ResetDrivesResult implements Serializable {
 
-    public static final long serialVersionUID = -5931507223727898696L;
+    public static final long serialVersionUID = -7593723774346856967L;
     @SerializedName("details") private ResetDrivesDetails details;
-
     // empty constructor
     @Since("7.0")
     public ResetDrivesResult() {}

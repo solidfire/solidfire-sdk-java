@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class Origin implements Serializable {
 
-    public static final long serialVersionUID = -7308266263206371232L;
+    public static final long serialVersionUID = 7505626529098380465L;
     @SerializedName("<signature>") private Signature signature;
     @SerializedName("contract-date") private String contractDate;
     @SerializedName("contract-name") private String contractName;
@@ -42,7 +43,6 @@ public class Origin implements Serializable {
     @SerializedName("location") private String location;
     @SerializedName("organization") private String organization;
     @SerializedName("type") private String type;
-
     // empty constructor
     @Since("7.0")
     public Origin() {}
@@ -74,54 +74,63 @@ public class Origin implements Serializable {
     }
 
     /** 
+     * 
      **/
     public Signature getSignature() { return this.signature; }
     public void setSignature(Signature signature) { 
         this.signature = signature;
     }
     /** 
+     * 
      **/
     public String getContractDate() { return this.contractDate; }
     public void setContractDate(String contractDate) { 
         this.contractDate = contractDate;
     }
     /** 
+     * 
      **/
     public String getContractName() { return this.contractName; }
     public void setContractName(String contractName) { 
         this.contractName = contractName;
     }
     /** 
+     * 
      **/
     public Long getContractQuantity() { return this.contractQuantity; }
     public void setContractQuantity(Long contractQuantity) { 
         this.contractQuantity = contractQuantity;
     }
     /** 
+     * 
      **/
     public String getContractType() { return this.contractType; }
     public void setContractType(String contractType) { 
         this.contractType = contractType;
     }
     /** 
+     * 
      **/
     public String getIntegrator() { return this.integrator; }
     public void setIntegrator(String integrator) { 
         this.integrator = integrator;
     }
     /** 
+     * 
      **/
     public String getLocation() { return this.location; }
     public void setLocation(String location) { 
         this.location = location;
     }
     /** 
+     * 
      **/
     public String getOrganization() { return this.organization; }
     public void setOrganization(String organization) { 
         this.organization = organization;
     }
     /** 
+     * 
      **/
     public String getType() { return this.type; }
     public void setType(String type) { 

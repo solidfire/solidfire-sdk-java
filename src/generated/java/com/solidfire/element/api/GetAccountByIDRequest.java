@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * GetAccountByIDRequest  
+ * GetAccountByID enables you to return details about a specific account, given its accountID.
  **/
 
 public class GetAccountByIDRequest implements Serializable {
 
-    public static final long serialVersionUID = -1679235285626842127L;
+    public static final long serialVersionUID = -5835883651059107065L;
     @SerializedName("accountID") private Long accountID;
-
     // empty constructor
     @Since("7.0")
     public GetAccountByIDRequest() {}

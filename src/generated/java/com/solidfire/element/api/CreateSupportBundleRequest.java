@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,15 +29,15 @@ import java.util.Objects;
 
 /**
  * CreateSupportBundleRequest  
+ * CreateSupportBundle enables you to create a support bundle file under the node's directory. After creation, the bundle is stored on the node as a tar.gz file.
  **/
 
 public class CreateSupportBundleRequest implements Serializable {
 
-    public static final long serialVersionUID = 196790633413215638L;
+    public static final long serialVersionUID = -8962480415794390134L;
     @SerializedName("bundleName") private Optional<String> bundleName;
     @SerializedName("extraArgs") private Optional<String> extraArgs;
     @SerializedName("timeoutSec") private Optional<Long> timeoutSec;
-
     // empty constructor
     @Since("7.0")
     public CreateSupportBundleRequest() {}
@@ -56,21 +57,21 @@ public class CreateSupportBundleRequest implements Serializable {
     }
 
     /** 
-     * Unique name for each support bundle created. If no name is provided, then 'supportbundle' and the node name is used as a file name.
+     * The unique name for the support bundle. If no name is provided, "supportbundle" and the node name are used as the filename.
      **/
     public Optional<String> getBundleName() { return this.bundleName; }
     public void setBundleName(Optional<String> bundleName) { 
         this.bundleName = (bundleName == null) ? Optional.<String>empty() : bundleName;
     }
     /** 
-     * This parameter is fed to the sf_make_support_bundle script. Should be used only at the request of SolidFire Support.
+     * Passed to the sf_make_support_bundle script. You should use this parameter only at the request of NetApp SolidFire Support.
      **/
     public Optional<String> getExtraArgs() { return this.extraArgs; }
     public void setExtraArgs(Optional<String> extraArgs) { 
         this.extraArgs = (extraArgs == null) ? Optional.<String>empty() : extraArgs;
     }
     /** 
-     * The number of seconds to let the support bundle script run before timing out and stopping. Default is 1500 seconds.
+     * The number of seconds to allow the support bundle script to run before stopping. The default value is 1500 seconds.
      **/
     public Optional<Long> getTimeoutSec() { return this.timeoutSec; }
     public void setTimeoutSec(Optional<Long> timeoutSec) { 

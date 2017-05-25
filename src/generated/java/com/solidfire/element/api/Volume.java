@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -35,7 +36,7 @@ import java.util.Objects;
 
 public class Volume implements Serializable {
 
-    public static final long serialVersionUID = -7686354995119743056L;
+    public static final long serialVersionUID = 8038817091532690826L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("name") private String name;
     @SerializedName("accountID") private Long accountID;
@@ -43,7 +44,7 @@ public class Volume implements Serializable {
     @SerializedName("status") private String status;
     @SerializedName("access") private String access;
     @SerializedName("enable512e") private Boolean enable512e;
-    @SerializedName("iqn") private String iqn;
+    @SerializedName("iqn") private Optional<String> iqn;
     @SerializedName("scsiEUIDeviceID") private String scsiEUIDeviceID;
     @SerializedName("scsiNAADeviceID") private String scsiNAADeviceID;
     @SerializedName("qos") private VolumeQOS qos;
@@ -54,9 +55,8 @@ public class Volume implements Serializable {
     @SerializedName("sliceCount") private Long sliceCount;
     @SerializedName("totalSize") private Long totalSize;
     @SerializedName("blockSize") private Long blockSize;
-    @SerializedName("virtualVolumeID") private java.util.UUID virtualVolumeID;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
-
+    @SerializedName("virtualVolumeID") private Optional<java.util.UUID> virtualVolumeID;
+    @SerializedName("attributes") private Attributes attributes;
     // empty constructor
     @Since("7.0")
     public Volume() {}
@@ -72,7 +72,7 @@ public class Volume implements Serializable {
         String status,
         String access,
         Boolean enable512e,
-        String iqn,
+        Optional<String> iqn,
         String scsiEUIDeviceID,
         String scsiNAADeviceID,
         VolumeQOS qos,
@@ -82,8 +82,8 @@ public class Volume implements Serializable {
         Optional<String> purgeTime,
         Long sliceCount,
         Long totalSize,
-        java.util.UUID virtualVolumeID,
-        java.util.Map<String, Object> attributes
+        Optional<java.util.UUID> virtualVolumeID,
+        Attributes attributes
     )
     {
         this.volumeID = volumeID;
@@ -93,7 +93,7 @@ public class Volume implements Serializable {
         this.status = status;
         this.access = access;
         this.enable512e = enable512e;
-        this.iqn = iqn;
+        this.iqn = (iqn == null) ? Optional.<String>empty() : iqn;
         this.scsiEUIDeviceID = scsiEUIDeviceID;
         this.scsiNAADeviceID = scsiNAADeviceID;
         this.qos = qos;
@@ -103,7 +103,7 @@ public class Volume implements Serializable {
         this.purgeTime = (purgeTime == null) ? Optional.<String>empty() : purgeTime;
         this.sliceCount = sliceCount;
         this.totalSize = totalSize;
-        this.virtualVolumeID = virtualVolumeID;
+        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
         this.attributes = attributes;
     }
     // parameterized constructor
@@ -116,7 +116,7 @@ public class Volume implements Serializable {
         String status,
         String access,
         Boolean enable512e,
-        String iqn,
+        Optional<String> iqn,
         String scsiEUIDeviceID,
         String scsiNAADeviceID,
         VolumeQOS qos,
@@ -127,8 +127,8 @@ public class Volume implements Serializable {
         Long sliceCount,
         Long totalSize,
         Long blockSize,
-        java.util.UUID virtualVolumeID,
-        java.util.Map<String, Object> attributes
+        Optional<java.util.UUID> virtualVolumeID,
+        Attributes attributes
     )
     {
         this.volumeID = volumeID;
@@ -138,7 +138,7 @@ public class Volume implements Serializable {
         this.status = status;
         this.access = access;
         this.enable512e = enable512e;
-        this.iqn = iqn;
+        this.iqn = (iqn == null) ? Optional.<String>empty() : iqn;
         this.scsiEUIDeviceID = scsiEUIDeviceID;
         this.scsiNAADeviceID = scsiNAADeviceID;
         this.qos = qos;
@@ -149,7 +149,7 @@ public class Volume implements Serializable {
         this.sliceCount = sliceCount;
         this.totalSize = totalSize;
         this.blockSize = blockSize;
-        this.virtualVolumeID = virtualVolumeID;
+        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
         this.attributes = attributes;
     }
 
@@ -211,9 +211,9 @@ public class Volume implements Serializable {
     /** 
      * Volume iSCSI Qualified Name.
      **/
-    public String getIqn() { return this.iqn; }
-    public void setIqn(String iqn) { 
-        this.iqn = iqn;
+    public Optional<String> getIqn() { return this.iqn; }
+    public void setIqn(Optional<String> iqn) { 
+        this.iqn = (iqn == null) ? Optional.<String>empty() : iqn;
     }
     /** 
      * Globally unique SCSI device identifier for the volume in EUI-64 based 16-byte format.
@@ -237,7 +237,7 @@ public class Volume implements Serializable {
         this.qos = qos;
     }
     /** 
-     * List of volume access groups to which a volume belongs.
+     * List of volume access groups to which a volume beintegers.
      **/
     public Long[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
     public void setVolumeAccessGroups(Long[] volumeAccessGroups) { 
@@ -293,15 +293,15 @@ public class Volume implements Serializable {
     /** 
      * Virtual volume ID this volume backs.
      **/
-    public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
-    public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
-        this.virtualVolumeID = virtualVolumeID;
+    public Optional<java.util.UUID> getVirtualVolumeID() { return this.virtualVolumeID; }
+    public void setVirtualVolumeID(Optional<java.util.UUID> virtualVolumeID) { 
+        this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : virtualVolumeID;
     }
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -378,7 +378,9 @@ public class Volume implements Serializable {
         sb.append(" status : ").append(status).append(",");
         sb.append(" access : ").append(access).append(",");
         sb.append(" enable512e : ").append(enable512e).append(",");
-        sb.append(" iqn : ").append(iqn).append(",");
+        if(null != iqn && iqn.isPresent()){
+            sb.append(" iqn : ").append(iqn).append(",");
+        }
         sb.append(" scsiEUIDeviceID : ").append(scsiEUIDeviceID).append(",");
         sb.append(" scsiNAADeviceID : ").append(scsiNAADeviceID).append(",");
         sb.append(" qos : ").append(qos).append(",");
@@ -393,7 +395,9 @@ public class Volume implements Serializable {
         sb.append(" sliceCount : ").append(sliceCount).append(",");
         sb.append(" totalSize : ").append(totalSize).append(",");
         sb.append(" blockSize : ").append(blockSize).append(",");
-        sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
+        if(null != virtualVolumeID && virtualVolumeID.isPresent()){
+            sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
+        }
         sb.append(" attributes : ").append(attributes).append(",");
         sb.append( " }" );
 
@@ -419,7 +423,7 @@ public class Volume implements Serializable {
         private String status;
         private String access;
         private Boolean enable512e;
-        private String iqn;
+        private Optional<String> iqn;
         private String scsiEUIDeviceID;
         private String scsiNAADeviceID;
         private VolumeQOS qos;
@@ -430,8 +434,8 @@ public class Volume implements Serializable {
         private Long sliceCount;
         private Long totalSize;
         private Long blockSize;
-        private java.util.UUID virtualVolumeID;
-        private java.util.Map<String, Object> attributes;
+        private Optional<java.util.UUID> virtualVolumeID;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -519,8 +523,8 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder iqn(final String iqn) {
-            this.iqn = iqn;
+        public Volume.Builder optionalIqn(final String iqn) {
+            this.iqn = (iqn == null) ? Optional.<String>empty() : Optional.of(iqn);
             return this;
         }
 
@@ -574,12 +578,12 @@ public class Volume implements Serializable {
             return this;
         }
 
-        public Volume.Builder virtualVolumeID(final java.util.UUID virtualVolumeID) {
-            this.virtualVolumeID = virtualVolumeID;
+        public Volume.Builder optionalVirtualVolumeID(final java.util.UUID virtualVolumeID) {
+            this.virtualVolumeID = (virtualVolumeID == null) ? Optional.<java.util.UUID>empty() : Optional.of(virtualVolumeID);
             return this;
         }
 
-        public Volume.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public Volume.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

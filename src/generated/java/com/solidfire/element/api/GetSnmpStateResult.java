@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,9 @@ import java.util.Objects;
 
 public class GetSnmpStateResult implements Serializable {
 
-    public static final long serialVersionUID = 6113235952334962570L;
+    public static final long serialVersionUID = 430747640462138630L;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("snmpV3Enabled") private Boolean snmpV3Enabled;
-
     // empty constructor
     @Since("7.0")
     public GetSnmpStateResult() {}

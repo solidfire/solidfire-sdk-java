@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,14 +29,15 @@ import java.util.Objects;
 
 /**
  * AddVolumesToVolumeAccessGroupRequest  
+ * AddVolumesToVolumeAccessGroup enables you to add
+ * volumes to a specified volume access group.
  **/
 
 public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
 
-    public static final long serialVersionUID = 1341385407033018389L;
+    public static final long serialVersionUID = 949460952582568573L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("volumes") private Long[] volumes;
-
     // empty constructor
     @Since("7.0")
     public AddVolumesToVolumeAccessGroupRequest() {}
@@ -53,14 +55,15 @@ public class AddVolumesToVolumeAccessGroupRequest implements Serializable {
     }
 
     /** 
-     * The ID of the volume access group to modify.
+     * The ID of the volume access group to which volumes are added.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
-     * List of volumes to add to this volume access group.
+     * The list of volumes to add to the volume access
+     * group.
      **/
     public Long[] getVolumes() { return this.volumes; }
     public void setVolumes(Long[] volumes) { 

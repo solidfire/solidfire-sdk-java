@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListDriveHardwareResult implements Serializable {
 
-    public static final long serialVersionUID = -7565014355252238436L;
+    public static final long serialVersionUID = -6155775852731369296L;
     @SerializedName("nodes") private NodeDriveHardware[] nodes;
-
     // empty constructor
     @Since("7.0")
     public ListDriveHardwareResult() {}
@@ -50,6 +50,7 @@ public class ListDriveHardwareResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public NodeDriveHardware[] getNodes() { return this.nodes; }
     public void setNodes(NodeDriveHardware[] nodes) { 

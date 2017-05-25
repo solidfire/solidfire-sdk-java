@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,15 @@ import java.util.Objects;
 
 /**
  * GetScheduleRequest  
+ * You can use the GetSchedule method to retrieve information about a scheduled snapshot. You can see information about a specific
+ * schedule if there are many snapshot schedules in the system. You also retrieve information about more than one schedule with this
+ * method by specifying additional scheduleIDs in the parameter.
  **/
 
 public class GetScheduleRequest implements Serializable {
 
-    public static final long serialVersionUID = 8629386455849003456L;
+    public static final long serialVersionUID = -1517177918098752987L;
     @SerializedName("scheduleID") private Long scheduleID;
-
     // empty constructor
     @Since("7.0")
     public GetScheduleRequest() {}
@@ -50,7 +53,7 @@ public class GetScheduleRequest implements Serializable {
     }
 
     /** 
-     * Unique ID of the schedule or multiple schedules to display
+     * Specifies the unique ID of the schedule or multiple schedules to display.
      **/
     public Long getScheduleID() { return this.scheduleID; }
     public void setScheduleID(Long scheduleID) { 

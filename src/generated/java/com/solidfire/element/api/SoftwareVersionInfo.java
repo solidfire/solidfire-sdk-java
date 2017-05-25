@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,13 +33,12 @@ import java.util.Objects;
 
 public class SoftwareVersionInfo implements Serializable {
 
-    public static final long serialVersionUID = -4210356135559607214L;
+    public static final long serialVersionUID = 9031495610136000953L;
     @SerializedName("currentVersion") private String currentVersion;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("packageName") private String packageName;
     @SerializedName("pendingVersion") private String pendingVersion;
     @SerializedName("startTime") private String startTime;
-
     // empty constructor
     @Since("7.0")
     public SoftwareVersionInfo() {}
@@ -62,30 +62,35 @@ public class SoftwareVersionInfo implements Serializable {
     }
 
     /** 
+     * 
      **/
     public String getCurrentVersion() { return this.currentVersion; }
     public void setCurrentVersion(String currentVersion) { 
         this.currentVersion = currentVersion;
     }
     /** 
+     * 
      **/
     public Long getNodeID() { return this.nodeID; }
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
     /** 
+     * 
      **/
     public String getPackageName() { return this.packageName; }
     public void setPackageName(String packageName) { 
         this.packageName = packageName;
     }
     /** 
+     * 
      **/
     public String getPendingVersion() { return this.pendingVersion; }
     public void setPendingVersion(String pendingVersion) { 
         this.pendingVersion = pendingVersion;
     }
     /** 
+     * 
      **/
     public String getStartTime() { return this.startTime; }
     public void setStartTime(String startTime) { 

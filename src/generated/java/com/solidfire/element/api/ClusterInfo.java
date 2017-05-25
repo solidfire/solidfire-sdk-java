@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -33,20 +34,22 @@ import java.util.Objects;
 
 public class ClusterInfo implements Serializable {
 
-    public static final long serialVersionUID = 6937143244161912485L;
+    public static final long serialVersionUID = -4957511188625744229L;
+    @SerializedName("mvipInterface") private Optional<String> mvipInterface;
+    @SerializedName("mvipVlanTag") private Optional<String> mvipVlanTag;
+    @SerializedName("svipInterface") private Optional<String> svipInterface;
+    @SerializedName("svipVlanTag") private Optional<String> svipVlanTag;
     @SerializedName("encryptionAtRestState") private String encryptionAtRestState;
     @SerializedName("ensemble") private String[] ensemble;
     @SerializedName("mvip") private String mvip;
     @SerializedName("mvipNodeID") private Long mvipNodeID;
     @SerializedName("name") private String name;
     @SerializedName("repCount") private Long repCount;
-    @SerializedName("state") private String state;
     @SerializedName("svip") private String svip;
     @SerializedName("svipNodeID") private Long svipNodeID;
     @SerializedName("uniqueID") private String uniqueID;
     @SerializedName("uuid") private java.util.UUID uuid;
-    @SerializedName("attributes") private java.util.Map<String, Object> attributes;
-
+    @SerializedName("attributes") private Attributes attributes;
     // empty constructor
     @Since("7.0")
     public ClusterInfo() {}
@@ -55,27 +58,33 @@ public class ClusterInfo implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ClusterInfo(
+        Optional<String> mvipInterface,
+        Optional<String> mvipVlanTag,
+        Optional<String> svipInterface,
+        Optional<String> svipVlanTag,
         String encryptionAtRestState,
         String[] ensemble,
         String mvip,
         Long mvipNodeID,
         String name,
         Long repCount,
-        String state,
         String svip,
         Long svipNodeID,
         String uniqueID,
         java.util.UUID uuid,
-        java.util.Map<String, Object> attributes
+        Attributes attributes
     )
     {
+        this.mvipInterface = (mvipInterface == null) ? Optional.<String>empty() : mvipInterface;
+        this.mvipVlanTag = (mvipVlanTag == null) ? Optional.<String>empty() : mvipVlanTag;
+        this.svipInterface = (svipInterface == null) ? Optional.<String>empty() : svipInterface;
+        this.svipVlanTag = (svipVlanTag == null) ? Optional.<String>empty() : svipVlanTag;
         this.encryptionAtRestState = encryptionAtRestState;
         this.ensemble = ensemble;
         this.mvip = mvip;
         this.mvipNodeID = mvipNodeID;
         this.name = name;
         this.repCount = repCount;
-        this.state = state;
         this.svip = svip;
         this.svipNodeID = svipNodeID;
         this.uniqueID = uniqueID;
@@ -83,6 +92,34 @@ public class ClusterInfo implements Serializable {
         this.attributes = attributes;
     }
 
+    /** 
+     * 
+     **/
+    public Optional<String> getMvipInterface() { return this.mvipInterface; }
+    public void setMvipInterface(Optional<String> mvipInterface) { 
+        this.mvipInterface = (mvipInterface == null) ? Optional.<String>empty() : mvipInterface;
+    }
+    /** 
+     * 
+     **/
+    public Optional<String> getMvipVlanTag() { return this.mvipVlanTag; }
+    public void setMvipVlanTag(Optional<String> mvipVlanTag) { 
+        this.mvipVlanTag = (mvipVlanTag == null) ? Optional.<String>empty() : mvipVlanTag;
+    }
+    /** 
+     * 
+     **/
+    public Optional<String> getSvipInterface() { return this.svipInterface; }
+    public void setSvipInterface(Optional<String> svipInterface) { 
+        this.svipInterface = (svipInterface == null) ? Optional.<String>empty() : svipInterface;
+    }
+    /** 
+     * 
+     **/
+    public Optional<String> getSvipVlanTag() { return this.svipVlanTag; }
+    public void setSvipVlanTag(Optional<String> svipVlanTag) { 
+        this.svipVlanTag = (svipVlanTag == null) ? Optional.<String>empty() : svipVlanTag;
+    }
     /** 
      * Encryption at rest state.
      **/
@@ -127,12 +164,6 @@ public class ClusterInfo implements Serializable {
         this.repCount = repCount;
     }
     /** 
-     **/
-    public String getState() { return this.state; }
-    public void setState(String state) { 
-        this.state = state;
-    }
-    /** 
      * Storage virtual IP
      **/
     public String getSvip() { return this.svip; }
@@ -154,6 +185,7 @@ public class ClusterInfo implements Serializable {
         this.uniqueID = uniqueID;
     }
     /** 
+     * 
      **/
     public java.util.UUID getUuid() { return this.uuid; }
     public void setUuid(java.util.UUID uuid) { 
@@ -162,8 +194,8 @@ public class ClusterInfo implements Serializable {
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
-    public java.util.Map<String, Object> getAttributes() { return this.attributes; }
-    public void setAttributes(java.util.Map<String, Object> attributes) { 
+    public Attributes getAttributes() { return this.attributes; }
+    public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
 
@@ -175,13 +207,16 @@ public class ClusterInfo implements Serializable {
         ClusterInfo that = (ClusterInfo) o;
 
         return 
+            Objects.equals(mvipInterface, that.mvipInterface) && 
+            Objects.equals(mvipVlanTag, that.mvipVlanTag) && 
+            Objects.equals(svipInterface, that.svipInterface) && 
+            Objects.equals(svipVlanTag, that.svipVlanTag) && 
             Objects.equals(encryptionAtRestState, that.encryptionAtRestState) && 
             Arrays.equals(ensemble, that.ensemble) && 
             Objects.equals(mvip, that.mvip) && 
             Objects.equals(mvipNodeID, that.mvipNodeID) && 
             Objects.equals(name, that.name) && 
             Objects.equals(repCount, that.repCount) && 
-            Objects.equals(state, that.state) && 
             Objects.equals(svip, that.svip) && 
             Objects.equals(svipNodeID, that.svipNodeID) && 
             Objects.equals(uniqueID, that.uniqueID) && 
@@ -191,19 +226,22 @@ public class ClusterInfo implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( encryptionAtRestState,(Object[])ensemble,mvip,mvipNodeID,name,repCount,state,svip,svipNodeID,uniqueID,uuid,attributes );
+        return Objects.hash( mvipInterface,mvipVlanTag,svipInterface,svipVlanTag,encryptionAtRestState,(Object[])ensemble,mvip,mvipNodeID,name,repCount,svip,svipNodeID,uniqueID,uuid,attributes );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
+        map.put("mvipInterface", mvipInterface);
+        map.put("mvipVlanTag", mvipVlanTag);
+        map.put("svipInterface", svipInterface);
+        map.put("svipVlanTag", svipVlanTag);
         map.put("encryptionAtRestState", encryptionAtRestState);
         map.put("ensemble", ensemble);
         map.put("mvip", mvip);
         map.put("mvipNodeID", mvipNodeID);
         map.put("name", name);
         map.put("repCount", repCount);
-        map.put("state", state);
         map.put("svip", svip);
         map.put("svipNodeID", svipNodeID);
         map.put("uniqueID", uniqueID);
@@ -217,13 +255,24 @@ public class ClusterInfo implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
+        if(null != mvipInterface && mvipInterface.isPresent()){
+            sb.append(" mvipInterface : ").append(mvipInterface).append(",");
+        }
+        if(null != mvipVlanTag && mvipVlanTag.isPresent()){
+            sb.append(" mvipVlanTag : ").append(mvipVlanTag).append(",");
+        }
+        if(null != svipInterface && svipInterface.isPresent()){
+            sb.append(" svipInterface : ").append(svipInterface).append(",");
+        }
+        if(null != svipVlanTag && svipVlanTag.isPresent()){
+            sb.append(" svipVlanTag : ").append(svipVlanTag).append(",");
+        }
         sb.append(" encryptionAtRestState : ").append(encryptionAtRestState).append(",");
         sb.append(" ensemble : ").append(Arrays.toString(ensemble)).append(",");
         sb.append(" mvip : ").append(mvip).append(",");
         sb.append(" mvipNodeID : ").append(mvipNodeID).append(",");
         sb.append(" name : ").append(name).append(",");
         sb.append(" repCount : ").append(repCount).append(",");
-        sb.append(" state : ").append(state).append(",");
         sb.append(" svip : ").append(svip).append(",");
         sb.append(" svipNodeID : ").append(svipNodeID).append(",");
         sb.append(" uniqueID : ").append(uniqueID).append(",");
@@ -246,30 +295,36 @@ public class ClusterInfo implements Serializable {
     }
 
     public static class Builder {
+        private Optional<String> mvipInterface;
+        private Optional<String> mvipVlanTag;
+        private Optional<String> svipInterface;
+        private Optional<String> svipVlanTag;
         private String encryptionAtRestState;
         private String[] ensemble;
         private String mvip;
         private Long mvipNodeID;
         private String name;
         private Long repCount;
-        private String state;
         private String svip;
         private Long svipNodeID;
         private String uniqueID;
         private java.util.UUID uuid;
-        private java.util.Map<String, Object> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
         public ClusterInfo build() {
             return new ClusterInfo (
+                         this.mvipInterface,
+                         this.mvipVlanTag,
+                         this.svipInterface,
+                         this.svipVlanTag,
                          this.encryptionAtRestState,
                          this.ensemble,
                          this.mvip,
                          this.mvipNodeID,
                          this.name,
                          this.repCount,
-                         this.state,
                          this.svip,
                          this.svipNodeID,
                          this.uniqueID,
@@ -278,19 +333,42 @@ public class ClusterInfo implements Serializable {
         }
 
         private ClusterInfo.Builder buildFrom(final ClusterInfo req) {
+            this.mvipInterface = req.mvipInterface;
+            this.mvipVlanTag = req.mvipVlanTag;
+            this.svipInterface = req.svipInterface;
+            this.svipVlanTag = req.svipVlanTag;
             this.encryptionAtRestState = req.encryptionAtRestState;
             this.ensemble = req.ensemble;
             this.mvip = req.mvip;
             this.mvipNodeID = req.mvipNodeID;
             this.name = req.name;
             this.repCount = req.repCount;
-            this.state = req.state;
             this.svip = req.svip;
             this.svipNodeID = req.svipNodeID;
             this.uniqueID = req.uniqueID;
             this.uuid = req.uuid;
             this.attributes = req.attributes;
 
+            return this;
+        }
+
+        public ClusterInfo.Builder optionalMvipInterface(final String mvipInterface) {
+            this.mvipInterface = (mvipInterface == null) ? Optional.<String>empty() : Optional.of(mvipInterface);
+            return this;
+        }
+
+        public ClusterInfo.Builder optionalMvipVlanTag(final String mvipVlanTag) {
+            this.mvipVlanTag = (mvipVlanTag == null) ? Optional.<String>empty() : Optional.of(mvipVlanTag);
+            return this;
+        }
+
+        public ClusterInfo.Builder optionalSvipInterface(final String svipInterface) {
+            this.svipInterface = (svipInterface == null) ? Optional.<String>empty() : Optional.of(svipInterface);
+            return this;
+        }
+
+        public ClusterInfo.Builder optionalSvipVlanTag(final String svipVlanTag) {
+            this.svipVlanTag = (svipVlanTag == null) ? Optional.<String>empty() : Optional.of(svipVlanTag);
             return this;
         }
 
@@ -324,11 +402,6 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
-        public ClusterInfo.Builder state(final String state) {
-            this.state = state;
-            return this;
-        }
-
         public ClusterInfo.Builder svip(final String svip) {
             this.svip = svip;
             return this;
@@ -349,7 +422,7 @@ public class ClusterInfo implements Serializable {
             return this;
         }
 
-        public ClusterInfo.Builder attributes(final java.util.Map<String, Object> attributes) {
+        public ClusterInfo.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
             return this;
         }

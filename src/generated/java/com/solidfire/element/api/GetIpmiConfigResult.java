@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class GetIpmiConfigResult implements Serializable {
 
-    public static final long serialVersionUID = -2094399684237272645L;
+    public static final long serialVersionUID = 6090731883022200325L;
     @SerializedName("nodes") private GetIpmiConfigNodesResult[] nodes;
-
     // empty constructor
     @Since("7.0")
     public GetIpmiConfigResult() {}
@@ -50,6 +50,7 @@ public class GetIpmiConfigResult implements Serializable {
     }
 
     /** 
+     * 
      **/
     public GetIpmiConfigNodesResult[] getNodes() { return this.nodes; }
     public void setNodes(GetIpmiConfigNodesResult[] nodes) { 

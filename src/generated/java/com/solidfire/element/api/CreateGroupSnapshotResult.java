@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,10 +33,10 @@ import java.util.Objects;
 
 public class CreateGroupSnapshotResult implements Serializable {
 
-    public static final long serialVersionUID = 4310382358300997611L;
+    public static final long serialVersionUID = -7184223092918576110L;
+    @SerializedName("groupSnapshot") private GroupSnapshot groupSnapshot;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("members") private GroupSnapshotMembers[] members;
-
     // empty constructor
     @Since("7.0")
     public CreateGroupSnapshotResult() {}
@@ -44,14 +45,23 @@ public class CreateGroupSnapshotResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public CreateGroupSnapshotResult(
+        GroupSnapshot groupSnapshot,
         Long groupSnapshotID,
         GroupSnapshotMembers[] members
     )
     {
+        this.groupSnapshot = groupSnapshot;
         this.groupSnapshotID = groupSnapshotID;
         this.members = members;
     }
 
+    /** 
+     * 
+     **/
+    public GroupSnapshot getGroupSnapshot() { return this.groupSnapshot; }
+    public void setGroupSnapshot(GroupSnapshot groupSnapshot) { 
+        this.groupSnapshot = groupSnapshot;
+    }
     /** 
      * Unique ID of the new group snapshot.
      **/
@@ -75,18 +85,20 @@ public class CreateGroupSnapshotResult implements Serializable {
         CreateGroupSnapshotResult that = (CreateGroupSnapshotResult) o;
 
         return 
+            Objects.equals(groupSnapshot, that.groupSnapshot) && 
             Objects.equals(groupSnapshotID, that.groupSnapshotID) && 
             Arrays.equals(members, that.members);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( groupSnapshotID,(Object[])members );
+        return Objects.hash( groupSnapshot,groupSnapshotID,(Object[])members );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
+        map.put("groupSnapshot", groupSnapshot);
         map.put("groupSnapshotID", groupSnapshotID);
         map.put("members", members);
         return map;
@@ -97,6 +109,7 @@ public class CreateGroupSnapshotResult implements Serializable {
         final StringBuilder sb = new StringBuilder();
         sb.append( "{ " );
 
+        sb.append(" groupSnapshot : ").append(groupSnapshot).append(",");
         sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
         sb.append(" members : ").append(Arrays.toString(members)).append(",");
         sb.append( " }" );
@@ -116,6 +129,7 @@ public class CreateGroupSnapshotResult implements Serializable {
     }
 
     public static class Builder {
+        private GroupSnapshot groupSnapshot;
         private Long groupSnapshotID;
         private GroupSnapshotMembers[] members;
 
@@ -123,14 +137,21 @@ public class CreateGroupSnapshotResult implements Serializable {
 
         public CreateGroupSnapshotResult build() {
             return new CreateGroupSnapshotResult (
+                         this.groupSnapshot,
                          this.groupSnapshotID,
                          this.members);
         }
 
         private CreateGroupSnapshotResult.Builder buildFrom(final CreateGroupSnapshotResult req) {
+            this.groupSnapshot = req.groupSnapshot;
             this.groupSnapshotID = req.groupSnapshotID;
             this.members = req.members;
 
+            return this;
+        }
+
+        public CreateGroupSnapshotResult.Builder groupSnapshot(final GroupSnapshot groupSnapshot) {
+            this.groupSnapshot = groupSnapshot;
             return this;
         }
 

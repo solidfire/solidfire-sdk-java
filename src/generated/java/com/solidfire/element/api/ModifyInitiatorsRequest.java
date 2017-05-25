@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,17 @@ import java.util.Objects;
 
 /**
  * ModifyInitiatorsRequest  
+ * ModifyInitiators enables you to change the attributes of one or more existing initiators. You cannot change the name of an existing
+ * initiator. If you need to change the name of an initiator, delete it first with DeleteInitiators and create a new one with
+ * CreateInitiators.
+ * If ModifyInitiators fails to change one of the initiators provided in the parameter, the method returns an error and does not modify
+ * any initiators (no partial completion is possible).
  **/
 
 public class ModifyInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 8158510246059742104L;
+    public static final long serialVersionUID = 129604068641628288L;
     @SerializedName("initiators") private ModifyInitiator[] initiators;
-
     // empty constructor
     @Since("7.0")
     public ModifyInitiatorsRequest() {}
@@ -50,7 +55,18 @@ public class ModifyInitiatorsRequest implements Serializable {
     }
 
     /** 
-     * A list of Initiator objects containing characteristics of each initiator to modify.
+     * A list of objects containing characteristics of each initiator to modify. Values are:
+     * initiatorID: (Required) The ID of the initiator to modify. (Integer)
+     * alias: (Optional) A new friendly name to assign to the initiator.
+     * (String)
+     * attributes: (Optional) A new set of JSON attributes to assign to the
+     * initiator. (JSON Object)
+     * volumeAccessGroupID: (Optional) The ID of the volume access
+     * group into to which the initiator should be added. If the initiator was
+     * previously in a different volume access group, it is removed from the
+     * old volume access group. If this key is present but null, the initiator is
+     * removed from its current volume access group, but not placed in any
+     * new volume access group. (Integer)
      **/
     public ModifyInitiator[] getInitiators() { return this.initiators; }
     public void setInitiators(ModifyInitiator[] initiators) { 

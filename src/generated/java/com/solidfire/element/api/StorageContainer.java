@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,7 +33,7 @@ import java.util.Objects;
 
 public class StorageContainer implements Serializable {
 
-    public static final long serialVersionUID = -4235618932443262772L;
+    public static final long serialVersionUID = 728889534499227129L;
     @SerializedName("name") private String name;
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
     @SerializedName("accountID") private Long accountID;
@@ -40,7 +41,7 @@ public class StorageContainer implements Serializable {
     @SerializedName("initiatorSecret") private String initiatorSecret;
     @SerializedName("targetSecret") private String targetSecret;
     @SerializedName("status") private String status;
-
+    @SerializedName("virtualVolumes") private Optional<java.util.UUID[]> virtualVolumes;
     // empty constructor
     @Since("7.0")
     public StorageContainer() {}
@@ -55,7 +56,8 @@ public class StorageContainer implements Serializable {
         String protocolEndpointType,
         String initiatorSecret,
         String targetSecret,
-        String status
+        String status,
+        Optional<java.util.UUID[]> virtualVolumes
     )
     {
         this.name = name;
@@ -65,49 +67,64 @@ public class StorageContainer implements Serializable {
         this.initiatorSecret = initiatorSecret;
         this.targetSecret = targetSecret;
         this.status = status;
+        this.virtualVolumes = (virtualVolumes == null) ? Optional.<java.util.UUID[]>empty() : virtualVolumes;
     }
 
     /** 
+     * 
      **/
     public String getName() { return this.name; }
     public void setName(String name) { 
         this.name = name;
     }
     /** 
+     * 
      **/
     public java.util.UUID getStorageContainerID() { return this.storageContainerID; }
     public void setStorageContainerID(java.util.UUID storageContainerID) { 
         this.storageContainerID = storageContainerID;
     }
     /** 
+     * 
      **/
     public Long getAccountID() { return this.accountID; }
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
     /** 
+     * 
      **/
     public String getProtocolEndpointType() { return this.protocolEndpointType; }
     public void setProtocolEndpointType(String protocolEndpointType) { 
         this.protocolEndpointType = protocolEndpointType;
     }
     /** 
+     * 
      **/
     public String getInitiatorSecret() { return this.initiatorSecret; }
     public void setInitiatorSecret(String initiatorSecret) { 
         this.initiatorSecret = initiatorSecret;
     }
     /** 
+     * 
      **/
     public String getTargetSecret() { return this.targetSecret; }
     public void setTargetSecret(String targetSecret) { 
         this.targetSecret = targetSecret;
     }
     /** 
+     * 
      **/
     public String getStatus() { return this.status; }
     public void setStatus(String status) { 
         this.status = status;
+    }
+    /** 
+     * 
+     **/
+    public Optional<java.util.UUID[]> getVirtualVolumes() { return this.virtualVolumes; }
+    public void setVirtualVolumes(Optional<java.util.UUID[]> virtualVolumes) { 
+        this.virtualVolumes = (virtualVolumes == null) ? Optional.<java.util.UUID[]>empty() : virtualVolumes;
     }
 
     @Override
@@ -124,12 +141,13 @@ public class StorageContainer implements Serializable {
             Objects.equals(protocolEndpointType, that.protocolEndpointType) && 
             Objects.equals(initiatorSecret, that.initiatorSecret) && 
             Objects.equals(targetSecret, that.targetSecret) && 
-            Objects.equals(status, that.status);
+            Objects.equals(status, that.status) && 
+            Objects.equals(virtualVolumes, that.virtualVolumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name,storageContainerID,accountID,protocolEndpointType,initiatorSecret,targetSecret,status );
+        return Objects.hash( name,storageContainerID,accountID,protocolEndpointType,initiatorSecret,targetSecret,status,virtualVolumes );
     }
 
 
@@ -142,6 +160,7 @@ public class StorageContainer implements Serializable {
         map.put("initiatorSecret", initiatorSecret);
         map.put("targetSecret", targetSecret);
         map.put("status", status);
+        map.put("virtualVolumes", virtualVolumes);
         return map;
     }
 
@@ -157,6 +176,9 @@ public class StorageContainer implements Serializable {
         sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
         sb.append(" targetSecret : ").append(targetSecret).append(",");
         sb.append(" status : ").append(status).append(",");
+        if(null != virtualVolumes && virtualVolumes.isPresent()){
+            sb.append(" virtualVolumes : ").append(virtualVolumes).append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -181,6 +203,7 @@ public class StorageContainer implements Serializable {
         private String initiatorSecret;
         private String targetSecret;
         private String status;
+        private Optional<java.util.UUID[]> virtualVolumes;
 
         private Builder() { }
 
@@ -192,7 +215,8 @@ public class StorageContainer implements Serializable {
                          this.protocolEndpointType,
                          this.initiatorSecret,
                          this.targetSecret,
-                         this.status);
+                         this.status,
+                         this.virtualVolumes);
         }
 
         private StorageContainer.Builder buildFrom(final StorageContainer req) {
@@ -203,6 +227,7 @@ public class StorageContainer implements Serializable {
             this.initiatorSecret = req.initiatorSecret;
             this.targetSecret = req.targetSecret;
             this.status = req.status;
+            this.virtualVolumes = req.virtualVolumes;
 
             return this;
         }
@@ -239,6 +264,11 @@ public class StorageContainer implements Serializable {
 
         public StorageContainer.Builder status(final String status) {
             this.status = status;
+            return this;
+        }
+
+        public StorageContainer.Builder optionalVirtualVolumes(final java.util.UUID[] virtualVolumes) {
+            this.virtualVolumes = (virtualVolumes == null) ? Optional.<java.util.UUID[]>empty() : Optional.of(virtualVolumes);
             return this;
         }
 

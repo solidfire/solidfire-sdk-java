@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * GetNodeStatsRequest  
+ * GetNodeStats enables you to retrieve the high-level activity measurements for a single node.
  **/
 
 public class GetNodeStatsRequest implements Serializable {
 
-    public static final long serialVersionUID = -8944306068794105553L;
+    public static final long serialVersionUID = 3733813064569617985L;
     @SerializedName("nodeID") private Long nodeID;
-
     // empty constructor
     @Since("7.0")
     public GetNodeStatsRequest() {}

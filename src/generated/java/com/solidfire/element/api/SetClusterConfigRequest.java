@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,15 @@ import java.util.Objects;
 
 /**
  * SetClusterConfigRequest  
+ * The SetClusterConfig API method enables you to set the configuration this node uses to communicate with the cluster it is associated with. To see the states in which these objects can be modified, see Cluster Object Attributes. To display the current cluster
+ * interface settings for a node, run the GetClusterConfig API method.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class SetClusterConfigRequest implements Serializable {
 
-    public static final long serialVersionUID = -7925735231313580112L;
+    public static final long serialVersionUID = -2841138981963500104L;
     @SerializedName("cluster") private ClusterConfig cluster;
-
     // empty constructor
     @Since("7.0")
     public SetClusterConfigRequest() {}
@@ -50,7 +53,7 @@ public class SetClusterConfigRequest implements Serializable {
     }
 
     /** 
-     * Objects that are changed for the cluster interface settings. Only the fields you want changed need to be added to this method as objects in the "cluster" parameter.
+     * Objects that are changed for the cluster interface settings.
      **/
     public ClusterConfig getCluster() { return this.cluster; }
     public void setCluster(ClusterConfig cluster) { 

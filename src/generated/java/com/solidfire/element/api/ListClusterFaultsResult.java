@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListClusterFaultsResult implements Serializable {
 
-    public static final long serialVersionUID = 8263283430508705045L;
+    public static final long serialVersionUID = 7836508006131417644L;
     @SerializedName("faults") private ClusterFaultInfo[] faults;
-
     // empty constructor
     @Since("7.0")
     public ListClusterFaultsResult() {}

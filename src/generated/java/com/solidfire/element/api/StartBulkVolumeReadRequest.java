@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,18 +29,25 @@ import java.util.Objects;
 
 /**
  * StartBulkVolumeReadRequest  
+ * StartBulkVolumeRead enables you to initialize a bulk volume read session on a specified volume. Only two bulk volume processes
+ * can run simultaneously on a volume. When you initialize the session, data is read from a SolidFire storage volume for the purposes
+ * of storing the data on an external backup source. The external data is accessed by a web server running on an SF-series node.
+ * Communications and server interaction information for external data access is passed by a script running on the storage system.
+ * At the start of a bulk volume read operation, a snapshot of the volume is made and the snapshot is deleted when the read is complete. You can also read a snapshot of the volume by entering the ID of the snapshot as a parameter. When you read a
+ * previous snapshot, the system does not create a new snapshot of the volume or delete the previous snapshot when the
+ * read completes.
+ * Note: This process creates a new snapshot if the ID of an existing snapshot is not provided. Snapshots can be created if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
  **/
 
 public class StartBulkVolumeReadRequest implements Serializable {
 
-    public static final long serialVersionUID = -108156352014984385L;
+    public static final long serialVersionUID = 371997972445094346L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("format") private String format;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("script") private Optional<String> script;
-    @SerializedName("scriptParameters") private Optional<Object> scriptParameters;
-    @SerializedName("attributes") private Optional<java.util.Map<String, Object>> attributes;
-
+    @SerializedName("scriptParameters") private Optional<Attributes> scriptParameters;
+    @SerializedName("attributes") private Optional<Attributes> attributes;
     // empty constructor
     @Since("7.0")
     public StartBulkVolumeReadRequest() {}
@@ -52,46 +60,48 @@ public class StartBulkVolumeReadRequest implements Serializable {
         String format,
         Optional<Long> snapshotID,
         Optional<String> script,
-        Optional<Object> scriptParameters,
-        Optional<java.util.Map<String, Object>> attributes
+        Optional<Attributes> scriptParameters,
+        Optional<Attributes> attributes
     )
     {
         this.volumeID = volumeID;
         this.format = format;
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
         this.script = (script == null) ? Optional.<String>empty() : script;
-        this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : scriptParameters;
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+        this.scriptParameters = (scriptParameters == null) ? Optional.<Attributes>empty() : scriptParameters;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     /** 
-     * ID of the volume to be read.
+     * The ID of the volume to be read.
      **/
     public Long getVolumeID() { return this.volumeID; }
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
-     * The format of the volume data. Can be either:
-     * uncompressed: every byte of the volume is returned without any compression.
-     * native: opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk volume write.
+     * The format of the volume data. It can be either of the following formats:
+     * uncompressed: Every byte of the volume is returned without any compression.
+     * native: Opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk
+     * volume write.
      **/
     public String getFormat() { return this.format; }
     public void setFormat(String format) { 
         this.format = format;
     }
     /** 
-     * ID of a previously created snapshot used for bulk volume reads.
-     * If no ID is entered, a snapshot of the current active volume image is made.
+     * The ID of a previously created snapshot used for bulk volume
+     * reads. If no ID is entered, a snapshot of the current active
+     * volume image is made.
      **/
     public Optional<Long> getSnapshotID() { return this.snapshotID; }
     public void setSnapshotID(Optional<Long> snapshotID) { 
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
     /** 
-     * Executable name of a script.
-     * If no script name is given then the key and URL is necessary to access SolidFire nodes.
-     * The script is run on the primary node and the key and URL is returned to the script so the local web server can be contacted.
+     * The executable name of a script. If unspecified, the key and URL is necessary to access SF-series nodes. The script is run on the primary node and the key
+     * and URL is returned to the script so the local web server
+     * can be contacted.
      **/
     public Optional<String> getScript() { return this.script; }
     public void setScript(Optional<String> script) { 
@@ -100,16 +110,16 @@ public class StartBulkVolumeReadRequest implements Serializable {
     /** 
      * JSON parameters to pass to the script.
      **/
-    public Optional<Object> getScriptParameters() { return this.scriptParameters; }
-    public void setScriptParameters(Optional<Object> scriptParameters) { 
-        this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : scriptParameters;
+    public Optional<Attributes> getScriptParameters() { return this.scriptParameters; }
+    public void setScriptParameters(Optional<Attributes> scriptParameters) { 
+        this.scriptParameters = (scriptParameters == null) ? Optional.<Attributes>empty() : scriptParameters;
     }
     /** 
      * JSON attributes for the bulk volume job.
      **/
-    public Optional<java.util.Map<String, Object>> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<java.util.Map<String, Object>> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : attributes;
+    public Optional<Attributes> getAttributes() { return this.attributes; }
+    public void setAttributes(Optional<Attributes> attributes) { 
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
 
     @Override
@@ -185,8 +195,8 @@ public class StartBulkVolumeReadRequest implements Serializable {
         private String format;
         private Optional<Long> snapshotID;
         private Optional<String> script;
-        private Optional<Object> scriptParameters;
-        private Optional<java.util.Map<String, Object>> attributes;
+        private Optional<Attributes> scriptParameters;
+        private Optional<Attributes> attributes;
 
         private Builder() { }
 
@@ -231,13 +241,13 @@ public class StartBulkVolumeReadRequest implements Serializable {
             return this;
         }
 
-        public StartBulkVolumeReadRequest.Builder optionalScriptParameters(final Object scriptParameters) {
-            this.scriptParameters = (scriptParameters == null) ? Optional.<Object>empty() : Optional.of(scriptParameters);
+        public StartBulkVolumeReadRequest.Builder optionalScriptParameters(final Attributes scriptParameters) {
+            this.scriptParameters = (scriptParameters == null) ? Optional.<Attributes>empty() : Optional.of(scriptParameters);
             return this;
         }
 
-        public StartBulkVolumeReadRequest.Builder optionalAttributes(final java.util.Map<String, Object> attributes) {
-            this.attributes = (attributes == null) ? Optional.<java.util.Map<String, Object>>empty() : Optional.of(attributes);
+        public StartBulkVolumeReadRequest.Builder optionalAttributes(final Attributes attributes) {
+            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
             return this;
         }
 

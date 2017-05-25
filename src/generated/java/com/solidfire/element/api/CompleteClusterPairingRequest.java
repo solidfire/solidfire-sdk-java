@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,13 @@ import java.util.Objects;
 
 /**
  * CompleteClusterPairingRequest  
+ * You can use the CompleteClusterPairing method with the encoded key received from the  StartClusterPairing method to complete the cluster pairing process. The CompleteClusterPairing method is the second step in the cluster pairing process. 
  **/
 
 public class CompleteClusterPairingRequest implements Serializable {
 
-    public static final long serialVersionUID = 5752995213286539343L;
+    public static final long serialVersionUID = 3886676520246634572L;
     @SerializedName("clusterPairingKey") private String clusterPairingKey;
-
     // empty constructor
     @Since("7.0")
     public CompleteClusterPairingRequest() {}

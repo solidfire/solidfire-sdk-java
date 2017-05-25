@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -28,13 +29,16 @@ import java.util.Objects;
 
 /**
  * DeleteInitiatorsRequest  
+ * DeleteInitiators enables you to delete one or more initiators from the system (and from any associated volumes or volume access
+ * groups).
+ * If DeleteInitiators fails to delete one of the initiators provided in the parameter, the system returns an error and does not delete any
+ * initiators (no partial completion is possible).
  **/
 
 public class DeleteInitiatorsRequest implements Serializable {
 
-    public static final long serialVersionUID = 1195907906738819557L;
+    public static final long serialVersionUID = 4296519972846809414L;
     @SerializedName("initiators") private Long[] initiators;
-
     // empty constructor
     @Since("7.0")
     public DeleteInitiatorsRequest() {}

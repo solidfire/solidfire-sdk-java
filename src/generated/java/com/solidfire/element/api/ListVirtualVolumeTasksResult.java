@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
 import com.solidfire.core.javautil.Optional;
@@ -32,9 +33,8 @@ import java.util.Objects;
 
 public class ListVirtualVolumeTasksResult implements Serializable {
 
-    public static final long serialVersionUID = 7921986552949263824L;
+    public static final long serialVersionUID = -5966526187478839868L;
     @SerializedName("tasks") private VirtualVolumeTask[] tasks;
-
     // empty constructor
     @Since("7.0")
     public ListVirtualVolumeTasksResult() {}
