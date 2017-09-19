@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,10 +30,11 @@ import java.util.Objects;
 
 /**
  * ModifyAccountRequest  
- * Used to modify an existing account.
- * When locking an account, any existing connections from that account are immediately terminated.
- * When changing CHAP settings, any existing connections continue to be active,
- * and the new CHAP values are only used on subsequent connection or reconnection.
+ * ModifyAccount enables you to modify an existing account.
+ * When you lock an account, any existing connections from that account are immediately terminated. When you change an account's
+ * CHAP settings, any existing connections remain active, and the new CHAP settings are used on subsequent connections or
+ * reconnections.
+ * To clear an account's attributes, specify {} for the attributes parameter.
  **/
 
 public class ModifyAccountRequest implements Serializable {
@@ -44,7 +46,6 @@ public class ModifyAccountRequest implements Serializable {
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public ModifyAccountRequest() {}
@@ -70,46 +71,60 @@ public class ModifyAccountRequest implements Serializable {
     }
 
     /** 
-     * AccountID for the account to modify.
+     * Specifies the AccountID for the account to be modified.
      **/
     public Long getAccountID() { return this.accountID; }
+   
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
     /** 
-     * Change the username of the account to this value.
+     * Specifies the username associated with the
+     * account. (Might be 1 to 64 characters in length).
      **/
     public Optional<String> getUsername() { return this.username; }
+   
     public void setUsername(Optional<String> username) { 
         this.username = (username == null) ? Optional.<String>empty() : username;
     }
     /** 
-     * Status of the account.
+     * Sets the status for the account. Possible values are:
+     * active: The account is active and connections are allowed.
+     * locked: The account is locked and connections are refused.
      **/
     public Optional<String> getStatus() { return this.status; }
+   
     public void setStatus(Optional<String> status) { 
         this.status = (status == null) ? Optional.<String>empty() : status;
     }
     /** 
-     * CHAP secret to use for the initiator.
-     * Should be 12-16 characters integer and impenetrable.
+     * Specifies the CHAP secret to use for the initiator. This secret must
+     * be 12-16 characters in length and should be
+     * impenetrable. The initiator CHAP secret must be unique
+     * and cannot be the same as the target CHAP secret.
      **/
     public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
+   
     public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) { 
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
     }
     /** 
-     * CHAP secret to use for the target (mutual CHAP authentication).
-     * Should be 12-16 characters integer and impenetrable.
+     * Specifies the CHAP secret to use for the target (mutual CHAP
+     * authentication). This secret must be 12-16 characters in
+     * length and should be impenetrable. The target CHAP
+     * secret must be unique and cannot be the same as the
+     * initiator CHAP secret.
      **/
     public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
+   
     public void setTargetSecret(Optional<CHAPSecret> targetSecret) { 
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -150,23 +165,39 @@ public class ModifyAccountRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" accountID : ").append(accountID).append(",");
+        sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
         if(null != username && username.isPresent()){
-            sb.append(" username : ").append(username).append(",");
+            sb.append(" username : ").append(gson.toJson(username)).append(",");
+        }
+        else{
+            sb.append(" username : ").append("null").append(",");
         }
         if(null != status && status.isPresent()){
-            sb.append(" status : ").append(status).append(",");
+            sb.append(" status : ").append(gson.toJson(status)).append(",");
+        }
+        else{
+            sb.append(" status : ").append("null").append(",");
         }
         if(null != initiatorSecret && initiatorSecret.isPresent()){
-            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+            sb.append(" initiatorSecret : ").append(gson.toJson(initiatorSecret)).append(",");
+        }
+        else{
+            sb.append(" initiatorSecret : ").append("null").append(",");
         }
         if(null != targetSecret && targetSecret.isPresent()){
-            sb.append(" targetSecret : ").append(targetSecret).append(",");
+            sb.append(" targetSecret : ").append(gson.toJson(targetSecret)).append(",");
+        }
+        else{
+            sb.append(" targetSecret : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

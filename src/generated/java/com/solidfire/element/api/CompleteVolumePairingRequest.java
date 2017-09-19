@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,7 @@ import java.util.Objects;
 
 /**
  * CompleteVolumePairingRequest  
- * CompleteVolumePairing is used to complete the pairing of two volumes.
+ * You can use the CompleteVolumePairing method to complete the pairing of two volumes.
  **/
 
 public class CompleteVolumePairingRequest implements Serializable {
@@ -37,7 +38,6 @@ public class CompleteVolumePairingRequest implements Serializable {
     public static final long serialVersionUID = -886574000472411308L;
     @SerializedName("volumePairingKey") private String volumePairingKey;
     @SerializedName("volumeID") private Long volumeID;
-
     // empty constructor
     @Since("7.0")
     public CompleteVolumePairingRequest() {}
@@ -55,16 +55,18 @@ public class CompleteVolumePairingRequest implements Serializable {
     }
 
     /** 
-     * The key returned from the "StartVolumePairing" API method.
+     * The key returned from the StartVolumePairing method.
      **/
     public String getVolumePairingKey() { return this.volumePairingKey; }
+   
     public void setVolumePairingKey(String volumePairingKey) { 
         this.volumePairingKey = volumePairingKey;
     }
     /** 
-     * The ID of volume on which to complete the pairing process.
+     * The ID of the volume on which to complete the pairing process.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -97,10 +99,11 @@ public class CompleteVolumePairingRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumePairingKey : ").append(volumePairingKey).append(",");
-        sb.append(" volumeID : ").append(volumeID).append(",");
+        sb.append(" volumePairingKey : ").append(gson.toJson(volumePairingKey)).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

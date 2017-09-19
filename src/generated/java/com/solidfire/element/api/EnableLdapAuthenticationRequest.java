@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,7 @@ import java.util.Objects;
 
 /**
  * EnableLdapAuthenticationRequest  
- * The EnableLdapAuthentication method is used to configure an LDAP server connection to use for LDAP authentication to a SolidFire cluster. Users that are members on the LDAP server can then log in to a SolidFire storage system using their LDAP authentication userid and password.
+ * The EnableLdapAuthentication method enables you to configure an LDAP directory connection to use for LDAP authentication to a cluster. Users that are members of the LDAP directory can then log in to the storage system using their LDAP credentials.
  **/
 
 public class EnableLdapAuthenticationRequest implements Serializable {
@@ -45,7 +46,6 @@ public class EnableLdapAuthenticationRequest implements Serializable {
     @SerializedName("userDNTemplate") private Optional<String> userDNTemplate;
     @SerializedName("userSearchBaseDN") private Optional<String> userSearchBaseDN;
     @SerializedName("userSearchFilter") private Optional<String> userSearchFilter;
-
     // empty constructor
     @Since("7.0")
     public EnableLdapAuthenticationRequest() {}
@@ -79,12 +79,12 @@ public class EnableLdapAuthenticationRequest implements Serializable {
     }
 
     /** 
-     * Identifies which user authentcation method will be used. 
-     * Must be one of the following:
+     * Identifies which user authentication method to use. Must be one of the following:
      * DirectBind
-     * SearchAndBind (default)
+     * SearchAndBind
      **/
     public Optional<String> getAuthType() { return this.authType; }
+   
     public void setAuthType(Optional<String> authType) { 
         this.authType = (authType == null) ? Optional.<String>empty() : authType;
     }
@@ -92,75 +92,74 @@ public class EnableLdapAuthenticationRequest implements Serializable {
      * The base DN of the tree to start the group search (will do a subtree search from here).
      **/
     public Optional<String> getGroupSearchBaseDN() { return this.groupSearchBaseDN; }
+   
     public void setGroupSearchBaseDN(Optional<String> groupSearchBaseDN) { 
         this.groupSearchBaseDN = (groupSearchBaseDN == null) ? Optional.<String>empty() : groupSearchBaseDN;
     }
     /** 
-     * REQUIRED for CustomFilter
-     * For use with the CustomFilter search type, an LDAP filter to use to return the DNs of a user's groups.
-     * The string can have placeholder text of %USERNAME% and %USERDN% to be replaced with their username and full userDN as needed.
+     * For use with the CustomFilter search type, an LDAP filter to use to return the DNs of a users groups. The string can have placeholder text of %USERNAME% and %USERDN% to be replaced with their username and full userDN as needed.
      **/
     public Optional<String> getGroupSearchCustomFilter() { return this.groupSearchCustomFilter; }
+   
     public void setGroupSearchCustomFilter(Optional<String> groupSearchCustomFilter) { 
         this.groupSearchCustomFilter = (groupSearchCustomFilter == null) ? Optional.<String>empty() : groupSearchCustomFilter;
     }
     /** 
-     * Controls the default group search filter used, can be one of the following:
+     * Controls the default group search filter used, and must be one of the following:
      * NoGroups: No group support.
-     * ActiveDirectory: (default) Nested membership of all of a user's AD groups.
-     * MemberDN: MemberDN style groups (single-level).
+     * ActiveDirectory: Nested membership of all of a users AD groups.
+     * MemberDN: MemberDN style groups (single level).
      **/
     public Optional<String> getGroupSearchType() { return this.groupSearchType; }
+   
     public void setGroupSearchType(Optional<String> groupSearchType) { 
         this.groupSearchType = (groupSearchType == null) ? Optional.<String>empty() : groupSearchType;
     }
     /** 
-     * REQUIRED for SearchAndBind
      * A fully qualified DN to log in with to perform an LDAP search for the user (needs read access to the LDAP directory).
      **/
     public Optional<String> getSearchBindDN() { return this.searchBindDN; }
+   
     public void setSearchBindDN(Optional<String> searchBindDN) { 
         this.searchBindDN = (searchBindDN == null) ? Optional.<String>empty() : searchBindDN;
     }
     /** 
-     * REQUIRED for SearchAndBind
      * The password for the searchBindDN account used for searching.
      **/
     public Optional<String> getSearchBindPassword() { return this.searchBindPassword; }
+   
     public void setSearchBindPassword(Optional<String> searchBindPassword) { 
         this.searchBindPassword = (searchBindPassword == null) ? Optional.<String>empty() : searchBindPassword;
     }
     /** 
-     * A list of LDAP server URIs (examples: "ldap://1.2.3.4" and ldaps://1.2.3.4:123")
+     * A comma-separated list of LDAP server URIs (examples: "ldap://1.2.3.4" and ldaps://1.2.3.4:123")
      **/
     public String[] getServerURIs() { return this.serverURIs; }
+   
     public void setServerURIs(String[] serverURIs) { 
         this.serverURIs = serverURIs;
     }
     /** 
-     * REQUIRED for DirectBind
-     * A string that is used to form a fully qualified user DN.
-     * The string should have the placeholder text "%USERNAME%" which will be replaced with the username of the authenticating user.
+     * A string that is used to form a fully qualified user DN. The string should have the placeholder text %USERNAME%, which is replaced with the username of the authenticating user.
      **/
     public Optional<String> getUserDNTemplate() { return this.userDNTemplate; }
+   
     public void setUserDNTemplate(Optional<String> userDNTemplate) { 
         this.userDNTemplate = (userDNTemplate == null) ? Optional.<String>empty() : userDNTemplate;
     }
     /** 
-     * REQUIRED for SearchAndBind
-     * The base DN of the tree used to start the search (will do a subtree search from here).
+     * The base DN of the tree to start the search (will do a subtree search from here).
      **/
     public Optional<String> getUserSearchBaseDN() { return this.userSearchBaseDN; }
+   
     public void setUserSearchBaseDN(Optional<String> userSearchBaseDN) { 
         this.userSearchBaseDN = (userSearchBaseDN == null) ? Optional.<String>empty() : userSearchBaseDN;
     }
     /** 
-     * REQUIRED for SearchAndBind.
-     * The LDAP filter to use.
-     * The string should have the placeholder text "%USERNAME%" which will be replaced with the username of the authenticating user.
-     * Example: (&(objectClass=person) (sAMAccountName=%USERNAME%)) will use the sAMAccountName field in Active Directory to match the nusername entered at cluster login.
+     * The LDAP filter to use. The string should have the placeholder text %USERNAME% which is replaced with the username of the authenticating user. Example: (&(objectClass=person)(sAMAccountName=%USERNAME%)) will use the sAMAccountName field in Active Directory to match the username entered at cluster login.
      **/
     public Optional<String> getUserSearchFilter() { return this.userSearchFilter; }
+   
     public void setUserSearchFilter(Optional<String> userSearchFilter) { 
         this.userSearchFilter = (userSearchFilter == null) ? Optional.<String>empty() : userSearchFilter;
     }
@@ -209,35 +208,63 @@ public class EnableLdapAuthenticationRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != authType && authType.isPresent()){
-            sb.append(" authType : ").append(authType).append(",");
+            sb.append(" authType : ").append(gson.toJson(authType)).append(",");
+        }
+        else{
+            sb.append(" authType : ").append("null").append(",");
         }
         if(null != groupSearchBaseDN && groupSearchBaseDN.isPresent()){
-            sb.append(" groupSearchBaseDN : ").append(groupSearchBaseDN).append(",");
+            sb.append(" groupSearchBaseDN : ").append(gson.toJson(groupSearchBaseDN)).append(",");
+        }
+        else{
+            sb.append(" groupSearchBaseDN : ").append("null").append(",");
         }
         if(null != groupSearchCustomFilter && groupSearchCustomFilter.isPresent()){
-            sb.append(" groupSearchCustomFilter : ").append(groupSearchCustomFilter).append(",");
+            sb.append(" groupSearchCustomFilter : ").append(gson.toJson(groupSearchCustomFilter)).append(",");
+        }
+        else{
+            sb.append(" groupSearchCustomFilter : ").append("null").append(",");
         }
         if(null != groupSearchType && groupSearchType.isPresent()){
-            sb.append(" groupSearchType : ").append(groupSearchType).append(",");
+            sb.append(" groupSearchType : ").append(gson.toJson(groupSearchType)).append(",");
+        }
+        else{
+            sb.append(" groupSearchType : ").append("null").append(",");
         }
         if(null != searchBindDN && searchBindDN.isPresent()){
-            sb.append(" searchBindDN : ").append(searchBindDN).append(",");
+            sb.append(" searchBindDN : ").append(gson.toJson(searchBindDN)).append(",");
+        }
+        else{
+            sb.append(" searchBindDN : ").append("null").append(",");
         }
         if(null != searchBindPassword && searchBindPassword.isPresent()){
-            sb.append(" searchBindPassword : ").append(searchBindPassword).append(",");
+            sb.append(" searchBindPassword : ").append(gson.toJson(searchBindPassword)).append(",");
         }
-        sb.append(" serverURIs : ").append(Arrays.toString(serverURIs)).append(",");
+        else{
+            sb.append(" searchBindPassword : ").append("null").append(",");
+        }
+        sb.append(" serverURIs : ").append(gson.toJson(Arrays.toString(serverURIs))).append(",");
         if(null != userDNTemplate && userDNTemplate.isPresent()){
-            sb.append(" userDNTemplate : ").append(userDNTemplate).append(",");
+            sb.append(" userDNTemplate : ").append(gson.toJson(userDNTemplate)).append(",");
+        }
+        else{
+            sb.append(" userDNTemplate : ").append("null").append(",");
         }
         if(null != userSearchBaseDN && userSearchBaseDN.isPresent()){
-            sb.append(" userSearchBaseDN : ").append(userSearchBaseDN).append(",");
+            sb.append(" userSearchBaseDN : ").append(gson.toJson(userSearchBaseDN)).append(",");
+        }
+        else{
+            sb.append(" userSearchBaseDN : ").append("null").append(",");
         }
         if(null != userSearchFilter && userSearchFilter.isPresent()){
-            sb.append(" userSearchFilter : ").append(userSearchFilter).append(",");
+            sb.append(" userSearchFilter : ").append(gson.toJson(userSearchFilter)).append(",");
+        }
+        else{
+            sb.append(" userSearchFilter : ").append("null").append(",");
         }
         sb.append( " }" );
 

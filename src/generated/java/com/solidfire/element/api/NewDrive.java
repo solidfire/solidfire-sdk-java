@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class NewDrive implements Serializable {
     public static final long serialVersionUID = -7720744847732639554L;
     @SerializedName("driveID") private Long driveID;
     @SerializedName("type") private Optional<String> type;
-
     // empty constructor
     @Since("7.0")
     public NewDrive() {}
@@ -57,6 +57,7 @@ public class NewDrive implements Serializable {
      * A unique identifier for this drive.
      **/
     public Long getDriveID() { return this.driveID; }
+   
     public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
@@ -64,6 +65,7 @@ public class NewDrive implements Serializable {
      * block or slice
      **/
     public Optional<String> getType() { return this.type; }
+   
     public void setType(Optional<String> type) { 
         this.type = (type == null) ? Optional.<String>empty() : type;
     }
@@ -96,11 +98,15 @@ public class NewDrive implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" driveID : ").append(driveID).append(",");
+        sb.append(" driveID : ").append(gson.toJson(driveID)).append(",");
         if(null != type && type.isPresent()){
-            sb.append(" type : ").append(type).append(",");
+            sb.append(" type : ").append(gson.toJson(type)).append(",");
+        }
+        else{
+            sb.append(" type : ").append("null").append(",");
         }
         sb.append( " }" );
 

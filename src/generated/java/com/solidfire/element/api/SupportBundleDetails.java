@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -40,7 +41,6 @@ public class SupportBundleDetails implements Serializable {
     @SerializedName("url") private String[] url;
     @SerializedName("output") private String output;
     @SerializedName("timeoutSec") private Long timeoutSec;
-
     // empty constructor
     @Since("7.0")
     public SupportBundleDetails() {}
@@ -69,6 +69,7 @@ public class SupportBundleDetails implements Serializable {
      * The name specified in the 'CreateSupportBundle API method. If no name was specified, 'supportbundle' will be used.
      **/
     public String getBundleName() { return this.bundleName; }
+   
     public void setBundleName(String bundleName) { 
         this.bundleName = bundleName;
     }
@@ -76,6 +77,7 @@ public class SupportBundleDetails implements Serializable {
      * The arguments passed with this method.
      **/
     public String getExtraArgs() { return this.extraArgs; }
+   
     public void setExtraArgs(String extraArgs) { 
         this.extraArgs = extraArgs;
     }
@@ -83,6 +85,7 @@ public class SupportBundleDetails implements Serializable {
      * A list of the support bundle files that were created.
      **/
     public String[] getFiles() { return this.files; }
+   
     public void setFiles(String[] files) { 
         this.files = files;
     }
@@ -90,6 +93,7 @@ public class SupportBundleDetails implements Serializable {
      * The URL that you can use to download the bundle file(s). Should correspond 1:1 with files list.
      **/
     public String[] getUrl() { return this.url; }
+   
     public void setUrl(String[] url) { 
         this.url = url;
     }
@@ -97,6 +101,7 @@ public class SupportBundleDetails implements Serializable {
      * The commands that were run and their output, with newlines replaced by HTML <br> elements.
      **/
     public String getOutput() { return this.output; }
+   
     public void setOutput(String output) { 
         this.output = output;
     }
@@ -104,6 +109,7 @@ public class SupportBundleDetails implements Serializable {
      * The timeout specified for the support bundle creation process.
      **/
     public Long getTimeoutSec() { return this.timeoutSec; }
+   
     public void setTimeoutSec(Long timeoutSec) { 
         this.timeoutSec = timeoutSec;
     }
@@ -144,14 +150,15 @@ public class SupportBundleDetails implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" bundleName : ").append(bundleName).append(",");
-        sb.append(" extraArgs : ").append(extraArgs).append(",");
-        sb.append(" files : ").append(Arrays.toString(files)).append(",");
-        sb.append(" url : ").append(Arrays.toString(url)).append(",");
-        sb.append(" output : ").append(output).append(",");
-        sb.append(" timeoutSec : ").append(timeoutSec).append(",");
+        sb.append(" bundleName : ").append(gson.toJson(bundleName)).append(",");
+        sb.append(" extraArgs : ").append(gson.toJson(extraArgs)).append(",");
+        sb.append(" files : ").append(gson.toJson(Arrays.toString(files))).append(",");
+        sb.append(" url : ").append(gson.toJson(Arrays.toString(url))).append(",");
+        sb.append(" output : ").append(gson.toJson(output)).append(",");
+        sb.append(" timeoutSec : ").append(gson.toJson(timeoutSec)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,8 +38,6 @@ public class ResetNodeResult implements Serializable {
     @SerializedName("details") private Optional<ResetNodeDetails> details;
     @SerializedName("duration") private Optional<String> duration;
     @SerializedName("result") private Optional<String> result;
-    @SerializedName("rtfiInfo") private Optional<RtfiInfo> rtfiInfo;
-
     // empty constructor
     @Since("7.0")
     public ResetNodeResult() {}
@@ -49,20 +48,19 @@ public class ResetNodeResult implements Serializable {
     public ResetNodeResult(
         Optional<ResetNodeDetails> details,
         Optional<String> duration,
-        Optional<String> result,
-        Optional<RtfiInfo> rtfiInfo
+        Optional<String> result
     )
     {
         this.details = (details == null) ? Optional.<ResetNodeDetails>empty() : details;
         this.duration = (duration == null) ? Optional.<String>empty() : duration;
         this.result = (result == null) ? Optional.<String>empty() : result;
-        this.rtfiInfo = (rtfiInfo == null) ? Optional.<RtfiInfo>empty() : rtfiInfo;
     }
 
     /** 
      * 
      **/
     public Optional<ResetNodeDetails> getDetails() { return this.details; }
+   
     public void setDetails(Optional<ResetNodeDetails> details) { 
         this.details = (details == null) ? Optional.<ResetNodeDetails>empty() : details;
     }
@@ -70,6 +68,7 @@ public class ResetNodeResult implements Serializable {
      * 
      **/
     public Optional<String> getDuration() { return this.duration; }
+   
     public void setDuration(Optional<String> duration) { 
         this.duration = (duration == null) ? Optional.<String>empty() : duration;
     }
@@ -77,15 +76,9 @@ public class ResetNodeResult implements Serializable {
      * 
      **/
     public Optional<String> getResult() { return this.result; }
+   
     public void setResult(Optional<String> result) { 
         this.result = (result == null) ? Optional.<String>empty() : result;
-    }
-    /** 
-     * 
-     **/
-    public Optional<RtfiInfo> getRtfiInfo() { return this.rtfiInfo; }
-    public void setRtfiInfo(Optional<RtfiInfo> rtfiInfo) { 
-        this.rtfiInfo = (rtfiInfo == null) ? Optional.<RtfiInfo>empty() : rtfiInfo;
     }
 
     @Override
@@ -98,13 +91,12 @@ public class ResetNodeResult implements Serializable {
         return 
             Objects.equals(details, that.details) && 
             Objects.equals(duration, that.duration) && 
-            Objects.equals(result, that.result) && 
-            Objects.equals(rtfiInfo, that.rtfiInfo);
+            Objects.equals(result, that.result);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( details,duration,result,rtfiInfo );
+        return Objects.hash( details,duration,result );
     }
 
 
@@ -113,26 +105,32 @@ public class ResetNodeResult implements Serializable {
         map.put("details", details);
         map.put("duration", duration);
         map.put("result", result);
-        map.put("rtfiInfo", rtfiInfo);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != details && details.isPresent()){
-            sb.append(" details : ").append(details).append(",");
+            sb.append(" details : ").append(gson.toJson(details)).append(",");
+        }
+        else{
+            sb.append(" details : ").append("null").append(",");
         }
         if(null != duration && duration.isPresent()){
-            sb.append(" duration : ").append(duration).append(",");
+            sb.append(" duration : ").append(gson.toJson(duration)).append(",");
+        }
+        else{
+            sb.append(" duration : ").append("null").append(",");
         }
         if(null != result && result.isPresent()){
-            sb.append(" result : ").append(result).append(",");
+            sb.append(" result : ").append(gson.toJson(result)).append(",");
         }
-        if(null != rtfiInfo && rtfiInfo.isPresent()){
-            sb.append(" rtfiInfo : ").append(rtfiInfo).append(",");
+        else{
+            sb.append(" result : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -154,7 +152,6 @@ public class ResetNodeResult implements Serializable {
         private Optional<ResetNodeDetails> details;
         private Optional<String> duration;
         private Optional<String> result;
-        private Optional<RtfiInfo> rtfiInfo;
 
         private Builder() { }
 
@@ -162,15 +159,13 @@ public class ResetNodeResult implements Serializable {
             return new ResetNodeResult (
                          this.details,
                          this.duration,
-                         this.result,
-                         this.rtfiInfo);
+                         this.result);
         }
 
         private ResetNodeResult.Builder buildFrom(final ResetNodeResult req) {
             this.details = req.details;
             this.duration = req.duration;
             this.result = req.result;
-            this.rtfiInfo = req.rtfiInfo;
 
             return this;
         }
@@ -187,11 +182,6 @@ public class ResetNodeResult implements Serializable {
 
         public ResetNodeResult.Builder optionalResult(final String result) {
             this.result = (result == null) ? Optional.<String>empty() : Optional.of(result);
-            return this;
-        }
-
-        public ResetNodeResult.Builder optionalRtfiInfo(final RtfiInfo rtfiInfo) {
-            this.rtfiInfo = (rtfiInfo == null) ? Optional.<RtfiInfo>empty() : Optional.of(rtfiInfo);
             return this;
         }
 

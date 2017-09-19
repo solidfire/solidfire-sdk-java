@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -47,7 +48,6 @@ public class VirtualVolumeInfo implements Serializable {
     @SerializedName("snapshotInfo") private Optional<Snapshot> snapshotInfo;
     @SerializedName("volumeInfo") private Optional<Volume> volumeInfo;
     @SerializedName("descendants") private Optional<Long[]> descendants;
-
     // empty constructor
     @Since("7.0")
     public VirtualVolumeInfo() {}
@@ -90,6 +90,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public java.util.UUID getVirtualVolumeID() { return this.virtualVolumeID; }
+   
     public void setVirtualVolumeID(java.util.UUID virtualVolumeID) { 
         this.virtualVolumeID = virtualVolumeID;
     }
@@ -97,6 +98,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public java.util.UUID getParentVirtualVolumeID() { return this.parentVirtualVolumeID; }
+   
     public void setParentVirtualVolumeID(java.util.UUID parentVirtualVolumeID) { 
         this.parentVirtualVolumeID = parentVirtualVolumeID;
     }
@@ -104,6 +106,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public StorageContainer getStorageContainer() { return this.storageContainer; }
+   
     public void setStorageContainer(StorageContainer storageContainer) { 
         this.storageContainer = storageContainer;
     }
@@ -111,6 +114,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -118,6 +122,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public Long getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
@@ -125,6 +130,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public String getVirtualVolumeType() { return this.virtualVolumeType; }
+   
     public void setVirtualVolumeType(String virtualVolumeType) { 
         this.virtualVolumeType = virtualVolumeType;
     }
@@ -132,6 +138,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
@@ -139,6 +146,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public Long[] getBindings() { return this.bindings; }
+   
     public void setBindings(Long[] bindings) { 
         this.bindings = bindings;
     }
@@ -146,6 +154,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public java.util.UUID[] getChildren() { return this.children; }
+   
     public void setChildren(java.util.UUID[] children) { 
         this.children = children;
     }
@@ -153,6 +162,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public Attributes getMetadata() { return this.metadata; }
+   
     public void setMetadata(Attributes metadata) { 
         this.metadata = metadata;
     }
@@ -160,6 +170,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public Optional<Snapshot> getSnapshotInfo() { return this.snapshotInfo; }
+   
     public void setSnapshotInfo(Optional<Snapshot> snapshotInfo) { 
         this.snapshotInfo = (snapshotInfo == null) ? Optional.<Snapshot>empty() : snapshotInfo;
     }
@@ -167,6 +178,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public Optional<Volume> getVolumeInfo() { return this.volumeInfo; }
+   
     public void setVolumeInfo(Optional<Volume> volumeInfo) { 
         this.volumeInfo = (volumeInfo == null) ? Optional.<Volume>empty() : volumeInfo;
     }
@@ -174,6 +186,7 @@ public class VirtualVolumeInfo implements Serializable {
      * 
      **/
     public Optional<Long[]> getDescendants() { return this.descendants; }
+   
     public void setDescendants(Optional<Long[]> descendants) { 
         this.descendants = (descendants == null) ? Optional.<Long[]>empty() : descendants;
     }
@@ -228,26 +241,36 @@ public class VirtualVolumeInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" virtualVolumeID : ").append(virtualVolumeID).append(",");
-        sb.append(" parentVirtualVolumeID : ").append(parentVirtualVolumeID).append(",");
-        sb.append(" storageContainer : ").append(storageContainer).append(",");
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" snapshotID : ").append(snapshotID).append(",");
-        sb.append(" virtualVolumeType : ").append(virtualVolumeType).append(",");
-        sb.append(" status : ").append(status).append(",");
-        sb.append(" bindings : ").append(Arrays.toString(bindings)).append(",");
-        sb.append(" children : ").append(Arrays.toString(children)).append(",");
-        sb.append(" metadata : ").append(metadata).append(",");
+        sb.append(" virtualVolumeID : ").append(gson.toJson(virtualVolumeID)).append(",");
+        sb.append(" parentVirtualVolumeID : ").append(gson.toJson(parentVirtualVolumeID)).append(",");
+        sb.append(" storageContainer : ").append(gson.toJson(storageContainer)).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        sb.append(" virtualVolumeType : ").append(gson.toJson(virtualVolumeType)).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
+        sb.append(" bindings : ").append(gson.toJson(Arrays.toString(bindings))).append(",");
+        sb.append(" children : ").append(gson.toJson(Arrays.toString(children))).append(",");
+        sb.append(" metadata : ").append(gson.toJson(metadata)).append(",");
         if(null != snapshotInfo && snapshotInfo.isPresent()){
-            sb.append(" snapshotInfo : ").append(snapshotInfo).append(",");
+            sb.append(" snapshotInfo : ").append(gson.toJson(snapshotInfo)).append(",");
+        }
+        else{
+            sb.append(" snapshotInfo : ").append("null").append(",");
         }
         if(null != volumeInfo && volumeInfo.isPresent()){
-            sb.append(" volumeInfo : ").append(volumeInfo).append(",");
+            sb.append(" volumeInfo : ").append(gson.toJson(volumeInfo)).append(",");
+        }
+        else{
+            sb.append(" volumeInfo : ").append("null").append(",");
         }
         if(null != descendants && descendants.isPresent()){
-            sb.append(" descendants : ").append(descendants).append(",");
+            sb.append(" descendants : ").append(gson.toJson(descendants)).append(",");
+        }
+        else{
+            sb.append(" descendants : ").append("null").append(",");
         }
         sb.append( " }" );
 

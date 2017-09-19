@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,9 +30,9 @@ import java.util.Objects;
 
 /**
  * AddClusterAdminRequest  
- * AddClusterAdmin adds a new Cluster Admin. A Cluster Admin can be used to manage the cluster via the API and management tools. Cluster Admins are completely separate and unrelated to standard tenant accounts.
- * 
- * Each Cluster Admin can be restricted to a sub-set of the API. SolidFire recommends using multiple Cluster Admins for different users and applications. Each Cluster Admin should be given the minimal permissions necessary to reduce the potential impact of credential compromise.
+ * You can use AddClusterAdmin to add a new cluster admin account. A cluster ddmin can manage the cluster using the API and management tools. Cluster admins are completely separate and unrelated to standard tenant accounts.
+ * Each cluster admin can be restricted to a subset of the API. NetApp recommends using multiple cluster admin accounts for different users and applications. You should give each cluster admin the minimal permissions necessary; this reduces the potential impact of credential compromise.
+ * You must accept the End User License Agreement (EULA) by setting the acceptEula parameter to true to add a cluster administrator account to the system.
  **/
 
 public class AddClusterAdminRequest implements Serializable {
@@ -42,7 +43,6 @@ public class AddClusterAdminRequest implements Serializable {
     @SerializedName("access") private String[] access;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public AddClusterAdminRequest() {}
@@ -66,37 +66,44 @@ public class AddClusterAdminRequest implements Serializable {
     }
 
     /** 
-     * Unique username for this Cluster Admin.
+     * Unique username for this cluster admin. Must be between 1 and 1024 characters in length.
      **/
     public String getUsername() { return this.username; }
+   
     public void setUsername(String username) { 
         this.username = username;
     }
     /** 
-     * Password used to authenticate this Cluster Admin.
+     * Password used to authenticate this cluster admin.
      **/
     public String getPassword() { return this.password; }
+   
     public void setPassword(String password) { 
         this.password = password;
     }
     /** 
-     * Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
+     * Controls which methods this cluster admin can use. For more details on the levels of access, see Access Control in the Element API Reference Guide.
      **/
     public String[] getAccess() { return this.access; }
+   
     public void setAccess(String[] access) { 
         this.access = access;
     }
     /** 
-     * Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
+     * Required to indicate your acceptance of the End User License
+     * Agreement when creating this cluster. To accept the EULA,
+     * set this parameter to true.
      **/
     public Optional<Boolean> getAcceptEula() { return this.acceptEula; }
+   
     public void setAcceptEula(Optional<Boolean> acceptEula) { 
         this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -135,16 +142,23 @@ public class AddClusterAdminRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" username : ").append(username).append(",");
-        sb.append(" password : ").append(password).append(",");
-        sb.append(" access : ").append(Arrays.toString(access)).append(",");
+        sb.append(" username : ").append(gson.toJson(username)).append(",");
+        sb.append(" password : ").append(gson.toJson(password)).append(",");
+        sb.append(" access : ").append(gson.toJson(Arrays.toString(access))).append(",");
         if(null != acceptEula && acceptEula.isPresent()){
-            sb.append(" acceptEula : ").append(acceptEula).append(",");
+            sb.append(" acceptEula : ").append(gson.toJson(acceptEula)).append(",");
+        }
+        else{
+            sb.append(" acceptEula : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

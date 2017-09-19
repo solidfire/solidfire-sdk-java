@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,18 +30,14 @@ import java.util.Objects;
 
 /**
  * SecureEraseDrivesRequest  
- * SecureEraseDrives is used to remove any residual data from drives that have a status of "available." For example, when replacing a drive at its end-of-life that contained sensitive data.
- * It uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. The method may take up to two minutes to complete, so it is an asynchronous method.
- * The GetAsyncResult method can be used to check on the status of the secure erase operation.
- * 
- * Use the "ListDrives" method to obtain the driveIDs for the drives you want to secure erase.
+ * SecureEraseDrives enables you to remove any residual data from drives that have a status of "available." You might want to use this method when replacing a drive nearing the end of its service life that contained sensitive data. This method uses a Security Erase Unit command to write a predetermined pattern to the drive and resets the encryption key on the drive. This asynchronous method might take up to two minutes to complete. You can use GetAsyncResult to check on the status of the secure erase operation.
+ * You can use the ListDrives method to obtain the driveIDs for the drives you want to secure erase.
  **/
 
 public class SecureEraseDrivesRequest implements Serializable {
 
     public static final long serialVersionUID = -8066722262216785695L;
     @SerializedName("drives") private Long[] drives;
-
     // empty constructor
     @Since("7.0")
     public SecureEraseDrivesRequest() {}
@@ -56,9 +53,10 @@ public class SecureEraseDrivesRequest implements Serializable {
     }
 
     /** 
-     * List of driveIDs to secure erase.
+     * List of driveIDs to be secure erased.
      **/
     public Long[] getDrives() { return this.drives; }
+   
     public void setDrives(Long[] drives) { 
         this.drives = drives;
     }
@@ -89,9 +87,10 @@ public class SecureEraseDrivesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
+        sb.append(" drives : ").append(gson.toJson(Arrays.toString(drives))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

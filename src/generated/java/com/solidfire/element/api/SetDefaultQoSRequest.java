@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,8 @@ import java.util.Objects;
 
 /**
  * SetDefaultQoSRequest  
- * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or IOPS) for all volumes not yet created.
+ * SetDefaultQoS enables you to configure the default Quality of Service (QoS) values (measured in inputs and outputs per second, or
+ * IOPS) for a volume. For more information about QoS in a SolidFire cluster, see the User Guide.
  **/
 
 public class SetDefaultQoSRequest implements Serializable {
@@ -38,7 +40,6 @@ public class SetDefaultQoSRequest implements Serializable {
     @SerializedName("minIOPS") private Optional<Long> minIOPS;
     @SerializedName("maxIOPS") private Optional<Long> maxIOPS;
     @SerializedName("burstIOPS") private Optional<Long> burstIOPS;
-
     // empty constructor
     @Since("7.0")
     public SetDefaultQoSRequest() {}
@@ -58,16 +59,20 @@ public class SetDefaultQoSRequest implements Serializable {
     }
 
     /** 
-     * The minimum number of sustained IOPS that are provided by the cluster to a volume.
+     * The minimum number of sustained IOPS provided by the cluster to a
+     * volume.
      **/
     public Optional<Long> getMinIOPS() { return this.minIOPS; }
+   
     public void setMinIOPS(Optional<Long> minIOPS) { 
         this.minIOPS = (minIOPS == null) ? Optional.<Long>empty() : minIOPS;
     }
     /** 
-     * The maximum number of sustained IOPS that are provided by the cluster to a volume.
+     * The maximum number of sustained IOPS provided by the cluster to a
+     * volume.
      **/
     public Optional<Long> getMaxIOPS() { return this.maxIOPS; }
+   
     public void setMaxIOPS(Optional<Long> maxIOPS) { 
         this.maxIOPS = (maxIOPS == null) ? Optional.<Long>empty() : maxIOPS;
     }
@@ -75,6 +80,7 @@ public class SetDefaultQoSRequest implements Serializable {
      * The maximum number of IOPS allowed in a short burst scenario.
      **/
     public Optional<Long> getBurstIOPS() { return this.burstIOPS; }
+   
     public void setBurstIOPS(Optional<Long> burstIOPS) { 
         this.burstIOPS = (burstIOPS == null) ? Optional.<Long>empty() : burstIOPS;
     }
@@ -109,16 +115,26 @@ public class SetDefaultQoSRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != minIOPS && minIOPS.isPresent()){
-            sb.append(" minIOPS : ").append(minIOPS).append(",");
+            sb.append(" minIOPS : ").append(gson.toJson(minIOPS)).append(",");
+        }
+        else{
+            sb.append(" minIOPS : ").append("null").append(",");
         }
         if(null != maxIOPS && maxIOPS.isPresent()){
-            sb.append(" maxIOPS : ").append(maxIOPS).append(",");
+            sb.append(" maxIOPS : ").append(gson.toJson(maxIOPS)).append(",");
+        }
+        else{
+            sb.append(" maxIOPS : ").append("null").append(",");
         }
         if(null != burstIOPS && burstIOPS.isPresent()){
-            sb.append(" burstIOPS : ").append(burstIOPS).append(",");
+            sb.append(" burstIOPS : ").append(gson.toJson(burstIOPS)).append(",");
+        }
+        else{
+            sb.append(" burstIOPS : ").append("null").append(",");
         }
         sb.append( " }" );
 

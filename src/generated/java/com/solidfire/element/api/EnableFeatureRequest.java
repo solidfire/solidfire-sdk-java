@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,13 @@ import java.util.Objects;
 
 /**
  * EnableFeatureRequest  
- * EnableFeature allows you to enable cluster features that are disabled by default.
+ * You can use EnableFeature to enable cluster features that are disabled by default.
  **/
 
 public class EnableFeatureRequest implements Serializable {
 
     public static final long serialVersionUID = 7567376194938407164L;
     @SerializedName("feature") private String feature;
-
     // empty constructor
     @Since("7.0")
     public EnableFeatureRequest() {}
@@ -52,9 +52,11 @@ public class EnableFeatureRequest implements Serializable {
     }
 
     /** 
-     * Valid values: vvols: Enable the Virtual Volumes (VVOLs) cluster feature.
+     * Indicates which feature to enable. Valid value is:
+     * vvols: Enable the NetApp SolidFire VVols cluster feature.
      **/
     public String getFeature() { return this.feature; }
+   
     public void setFeature(String feature) { 
         this.feature = feature;
     }
@@ -85,9 +87,10 @@ public class EnableFeatureRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" feature : ").append(feature).append(",");
+        sb.append(" feature : ").append(gson.toJson(feature)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

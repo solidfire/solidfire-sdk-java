@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,15 @@ import java.util.Objects;
 
 /**
  * ListAsyncResultsRequest  
- * You can use ListAsyncResults to list the results of all currently running and completed asynchronous methods on the system. Querying asynchronous results with ListAsyncResults does not cause completed asyncHandles to expire; you can use GetAsyncResult to query any of the asyncHandles returned by ListAsyncResults.
+ * You can use ListAsyncResults to list the results of all currently running and completed asynchronous methods on the system.
+ * Querying asynchronous results with ListAsyncResults does not cause completed asyncHandles to expire; you can use GetAsyncResult
+ * to query any of the asyncHandles returned by ListAsyncResults.
  **/
 
 public class ListAsyncResultsRequest implements Serializable {
 
     public static final long serialVersionUID = 7953440856454813158L;
     @SerializedName("asyncResultTypes") private Optional<String[]> asyncResultTypes;
-
     // empty constructor
     @Since("7.0")
     public ListAsyncResultsRequest() {}
@@ -52,9 +54,18 @@ public class ListAsyncResultsRequest implements Serializable {
     }
 
     /** 
-     * An optional list of types of results. You can use this list to restrict the results to only these types of operations. Possible values:BulkVolume: Copy operations between volumes, such as backups or restores.Clone: Volume cloning operations.DriveRemoval: Operations involving the system copying data from a drive in preparation to remove it from the cluster.RtfiPendingNode: Operations involving the system installing compatible software on a node before adding it to the cluster.
+     * An optional list of types of results. You can use this list to restrict the
+     * results to only these types of operations. Possible values are:
+     * BulkVolume: Copy operations between volumes, such as backups or
+     * restores.
+     * Clone: Volume cloning operations.
+     * DriveRemoval: Operations involving the system copying data from a
+     * drive in preparation to remove it from the cluster.
+     * RtfiPendingNode: Operations involving the system installing
+     * compatible software on a node before adding it to the cluster
      **/
     public Optional<String[]> getAsyncResultTypes() { return this.asyncResultTypes; }
+   
     public void setAsyncResultTypes(Optional<String[]> asyncResultTypes) { 
         this.asyncResultTypes = (asyncResultTypes == null) ? Optional.<String[]>empty() : asyncResultTypes;
     }
@@ -85,10 +96,14 @@ public class ListAsyncResultsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != asyncResultTypes && asyncResultTypes.isPresent()){
-            sb.append(" asyncResultTypes : ").append(asyncResultTypes).append(",");
+            sb.append(" asyncResultTypes : ").append(gson.toJson(asyncResultTypes)).append(",");
+        }
+        else{
+            sb.append(" asyncResultTypes : ").append("null").append(",");
         }
         sb.append( " }" );
 

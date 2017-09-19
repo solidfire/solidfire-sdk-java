@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,16 @@ import java.util.Objects;
 
 /**
  * ModifyVolumesRequest  
- * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately. If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged. You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.When you need to increase the size of volumes that are being replicated, do so in the following order to prevent replication errors:Increase the size of the "Replication Target" volume.Increase the size of the source or "Read / Write" volume. recommends that both the target and source volumes be the same size.NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
+ * ModifyVolumes allows you to configure up to 500 existing volumes at one time. Changes take place immediately.
+ * If ModifyVolumes fails to modify any of the specified volumes, none of the specified volumes are changed.
+ * If you do not specify QoS values when you modify volumes, the QoS values for each volume remain unchanged.
+ * You can retrieve default QoS values for a newly created volume by running the GetDefaultQoS method.
+ * When you need to increase the size of volumes that are being replicated, do so in the following order
+ * to prevent replication errors:
+ *    Increase the size of the "Replication Target" volume.
+ *    Increase the size of the source or "Read / Write" volume.
+ * Recommend that both the target and source volumes be the same size.
+ * NOTE: If you change access status to locked or replicationTarget all existing iSCSI connections are terminated.
  **/
 
 public class ModifyVolumesRequest implements Serializable {
@@ -40,8 +50,9 @@ public class ModifyVolumesRequest implements Serializable {
     @SerializedName("access") private Optional<String> access;
     @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("totalSize") private Optional<Long> totalSize;
+    @SerializedName("associateWithQoSPolicy") private Optional<Boolean> associateWithQoSPolicy;
+    @SerializedName("qosPolicyID") private Optional<Long> qosPolicyID;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public ModifyVolumesRequest() {}
@@ -65,11 +76,34 @@ public class ModifyVolumesRequest implements Serializable {
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
+    // parameterized constructor
+    @Since("10.0")
+    public ModifyVolumesRequest(
+        Long[] volumeIDs,
+        Optional<Long> accountID,
+        Optional<String> access,
+        Optional<QoS> qos,
+        Optional<Long> totalSize,
+        Optional<Boolean> associateWithQoSPolicy,
+        Optional<Long> qosPolicyID,
+        Optional<Attributes> attributes
+    )
+    {
+        this.volumeIDs = volumeIDs;
+        this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
+        this.access = (access == null) ? Optional.<String>empty() : access;
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
+        this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
+        this.associateWithQoSPolicy = (associateWithQoSPolicy == null) ? Optional.<Boolean>empty() : associateWithQoSPolicy;
+        this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+    }
 
     /** 
      * A list of volumeIDs for the volumes to be modified.
      **/
     public Long[] getVolumeIDs() { return this.volumeIDs; }
+   
     public void setVolumeIDs(Long[] volumeIDs) { 
         this.volumeIDs = volumeIDs;
     }
@@ -77,6 +111,7 @@ public class ModifyVolumesRequest implements Serializable {
      * AccountID to which the volume is reassigned. If none is specified, the previous account name is used.
      **/
     public Optional<Long> getAccountID() { return this.accountID; }
+   
     public void setAccountID(Optional<Long> accountID) { 
         this.accountID = (accountID == null) ? Optional.<Long>empty() : accountID;
     }
@@ -84,6 +119,7 @@ public class ModifyVolumesRequest implements Serializable {
      * Access allowed for the volume. Possible values:readOnly: Only read operations are allowed.readWrite: Reads and writes are allowed.locked: No reads or writes are allowed.If not specified, the access value does not change.replicationTarget: Identify a volume as the target volume for a paired set of volumes. If the volume is not paired, the access status is locked.If a value is not specified, the access value does not change. 
      **/
     public Optional<String> getAccess() { return this.access; }
+   
     public void setAccess(Optional<String> access) { 
         this.access = (access == null) ? Optional.<String>empty() : access;
     }
@@ -91,6 +127,7 @@ public class ModifyVolumesRequest implements Serializable {
      * New quality of service settings for this volume.If not specified, the QoS settings are not changed.
      **/
     public Optional<QoS> getQos() { return this.qos; }
+   
     public void setQos(Optional<QoS> qos) { 
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
@@ -98,13 +135,35 @@ public class ModifyVolumesRequest implements Serializable {
      * New size of the volume in bytes. 1000000000 is equal to 1GB. Size is rounded up to the nearest 1MB in size. This parameter can only be used to increase the size of a volume.
      **/
     public Optional<Long> getTotalSize() { return this.totalSize; }
+   
     public void setTotalSize(Optional<Long> totalSize) { 
         this.totalSize = (totalSize == null) ? Optional.<Long>empty() : totalSize;
     }
     /** 
-     * 
+     * Associate the volume with the specified QoS policy.
+     * Possible values:
+     * true: Associate the volume with the QoS policy specified in the QoSPolicyID parameter.
+     * false: Do not assosciate the volume with the QoS policy specified in the QoSPolicyID parameter. When false, any existing policy association is removed regardless of whether you specify a QoS policy in the QoSPolicyID parameter.
+     **/
+    public Optional<Boolean> getAssociateWithQoSPolicy() { return this.associateWithQoSPolicy; }
+   
+    public void setAssociateWithQoSPolicy(Optional<Boolean> associateWithQoSPolicy) { 
+        this.associateWithQoSPolicy = (associateWithQoSPolicy == null) ? Optional.<Boolean>empty() : associateWithQoSPolicy;
+    }
+    /** 
+     * The ID for the policy whose QoS settings should be applied to the specified volumes.
+     * This parameter is mutually exclusive with the qos parameter.
+     **/
+    public Optional<Long> getQosPolicyID() { return this.qosPolicyID; }
+   
+    public void setQosPolicyID(Optional<Long> qosPolicyID) { 
+        this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
+    }
+    /** 
+     * List of name/value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -122,12 +181,14 @@ public class ModifyVolumesRequest implements Serializable {
             Objects.equals(access, that.access) && 
             Objects.equals(qos, that.qos) && 
             Objects.equals(totalSize, that.totalSize) && 
+            Objects.equals(associateWithQoSPolicy, that.associateWithQoSPolicy) && 
+            Objects.equals(qosPolicyID, that.qosPolicyID) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( (Object[])volumeIDs,accountID,access,qos,totalSize,attributes );
+        return Objects.hash( (Object[])volumeIDs,accountID,access,qos,totalSize,associateWithQoSPolicy,qosPolicyID,attributes );
     }
 
 
@@ -138,6 +199,8 @@ public class ModifyVolumesRequest implements Serializable {
         map.put("access", access);
         map.put("qos", qos);
         map.put("totalSize", totalSize);
+        map.put("associateWithQoSPolicy", associateWithQoSPolicy);
+        map.put("qosPolicyID", qosPolicyID);
         map.put("attributes", attributes);
         return map;
     }
@@ -145,23 +208,51 @@ public class ModifyVolumesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeIDs : ").append(Arrays.toString(volumeIDs)).append(",");
+        sb.append(" volumeIDs : ").append(gson.toJson(Arrays.toString(volumeIDs))).append(",");
         if(null != accountID && accountID.isPresent()){
-            sb.append(" accountID : ").append(accountID).append(",");
+            sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
+        }
+        else{
+            sb.append(" accountID : ").append("null").append(",");
         }
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access).append(",");
+            sb.append(" access : ").append(gson.toJson(access)).append(",");
+        }
+        else{
+            sb.append(" access : ").append("null").append(",");
         }
         if(null != qos && qos.isPresent()){
-            sb.append(" qos : ").append(qos).append(",");
+            sb.append(" qos : ").append(gson.toJson(qos)).append(",");
+        }
+        else{
+            sb.append(" qos : ").append("null").append(",");
         }
         if(null != totalSize && totalSize.isPresent()){
-            sb.append(" totalSize : ").append(totalSize).append(",");
+            sb.append(" totalSize : ").append(gson.toJson(totalSize)).append(",");
+        }
+        else{
+            sb.append(" totalSize : ").append("null").append(",");
+        }
+        if(null != associateWithQoSPolicy && associateWithQoSPolicy.isPresent()){
+            sb.append(" associateWithQoSPolicy : ").append(gson.toJson(associateWithQoSPolicy)).append(",");
+        }
+        else{
+            sb.append(" associateWithQoSPolicy : ").append("null").append(",");
+        }
+        if(null != qosPolicyID && qosPolicyID.isPresent()){
+            sb.append(" qosPolicyID : ").append(gson.toJson(qosPolicyID)).append(",");
+        }
+        else{
+            sb.append(" qosPolicyID : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -185,6 +276,8 @@ public class ModifyVolumesRequest implements Serializable {
         private Optional<String> access;
         private Optional<QoS> qos;
         private Optional<Long> totalSize;
+        private Optional<Boolean> associateWithQoSPolicy;
+        private Optional<Long> qosPolicyID;
         private Optional<Attributes> attributes;
 
         private Builder() { }
@@ -196,6 +289,8 @@ public class ModifyVolumesRequest implements Serializable {
                          this.access,
                          this.qos,
                          this.totalSize,
+                         this.associateWithQoSPolicy,
+                         this.qosPolicyID,
                          this.attributes);
         }
 
@@ -205,6 +300,8 @@ public class ModifyVolumesRequest implements Serializable {
             this.access = req.access;
             this.qos = req.qos;
             this.totalSize = req.totalSize;
+            this.associateWithQoSPolicy = req.associateWithQoSPolicy;
+            this.qosPolicyID = req.qosPolicyID;
             this.attributes = req.attributes;
 
             return this;
@@ -232,6 +329,16 @@ public class ModifyVolumesRequest implements Serializable {
 
         public ModifyVolumesRequest.Builder optionalTotalSize(final Long totalSize) {
             this.totalSize = (totalSize == null) ? Optional.<Long>empty() : Optional.of(totalSize);
+            return this;
+        }
+
+        public ModifyVolumesRequest.Builder optionalAssociateWithQoSPolicy(final Boolean associateWithQoSPolicy) {
+            this.associateWithQoSPolicy = (associateWithQoSPolicy == null) ? Optional.<Boolean>empty() : Optional.of(associateWithQoSPolicy);
+            return this;
+        }
+
+        public ModifyVolumesRequest.Builder optionalQosPolicyID(final Long qosPolicyID) {
+            this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : Optional.of(qosPolicyID);
             return this;
         }
 

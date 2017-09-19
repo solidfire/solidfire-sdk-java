@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,14 @@ import java.util.Objects;
 
 /**
  * ClearClusterFaultsRequest  
- * ClearClusterFaults is used to clear information about both current faults that are resolved as well as faults that were previously detected and resolved can be cleared.
+ * You can use the ClearClusterFaults method to clear information about both current and previously detected faults. Both resolved
+ * and unresolved faults can be cleared.
  **/
 
 public class ClearClusterFaultsRequest implements Serializable {
 
     public static final long serialVersionUID = 8304045543083765534L;
     @SerializedName("faultTypes") private Optional<String> faultTypes;
-
     // empty constructor
     @Since("7.0")
     public ClearClusterFaultsRequest() {}
@@ -52,12 +53,17 @@ public class ClearClusterFaultsRequest implements Serializable {
     }
 
     /** 
-     * Determines the types of faults cleared:
-     * current: Faults that are currently detected and have not been resolved.
-     * resolved: Faults that were previously detected and resolved.
-     * all: Both current and resolved faults are cleared. The fault status can be determined by the "resolved" field of the fault object.
+     * Determines the types of faults cleared. Possible values are:
+     * current: Faults that are currently detected and have
+     * not been resolved.
+     * resolved: (Default) Faults that were previously
+     * detected and resolved.
+     * all: Both current and resolved faults are cleared. The
+     * fault status can be determined by the resolved field of
+     * the fault object.
      **/
     public Optional<String> getFaultTypes() { return this.faultTypes; }
+   
     public void setFaultTypes(Optional<String> faultTypes) { 
         this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : faultTypes;
     }
@@ -88,10 +94,14 @@ public class ClearClusterFaultsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != faultTypes && faultTypes.isPresent()){
-            sb.append(" faultTypes : ").append(faultTypes).append(",");
+            sb.append(" faultTypes : ").append(gson.toJson(faultTypes)).append(",");
+        }
+        else{
+            sb.append(" faultTypes : ").append("null").append(",");
         }
         sb.append( " }" );
 

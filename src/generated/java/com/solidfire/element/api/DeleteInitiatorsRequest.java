@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,15 +30,16 @@ import java.util.Objects;
 
 /**
  * DeleteInitiatorsRequest  
- * DeleteInitiators enables you to delete one or more initiators from the system (and from any associated volumes or volume access groups).
- * If DeleteInitiators fails to delete one of the initiators provided in the parameter, the system returns an error and does not delete any initiators (no partial completion is possible).
+ * DeleteInitiators enables you to delete one or more initiators from the system (and from any associated volumes or volume access
+ * groups).
+ * If DeleteInitiators fails to delete one of the initiators provided in the parameter, the system returns an error and does not delete any
+ * initiators (no partial completion is possible).
  **/
 
 public class DeleteInitiatorsRequest implements Serializable {
 
     public static final long serialVersionUID = -376670804932131093L;
     @SerializedName("initiators") private Long[] initiators;
-
     // empty constructor
     @Since("7.0")
     public DeleteInitiatorsRequest() {}
@@ -56,6 +58,7 @@ public class DeleteInitiatorsRequest implements Serializable {
      * An array of IDs of initiators to delete.
      **/
     public Long[] getInitiators() { return this.initiators; }
+   
     public void setInitiators(Long[] initiators) { 
         this.initiators = initiators;
     }
@@ -86,9 +89,10 @@ public class DeleteInitiatorsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
+        sb.append(" initiators : ").append(gson.toJson(Arrays.toString(initiators))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

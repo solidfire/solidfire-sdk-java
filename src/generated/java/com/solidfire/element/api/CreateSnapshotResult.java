@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,7 +38,6 @@ public class CreateSnapshotResult implements Serializable {
     @SerializedName("snapshot") private Snapshot snapshot;
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("checksum") private String checksum;
-
     // empty constructor
     @Since("7.0")
     public CreateSnapshotResult() {}
@@ -60,6 +60,7 @@ public class CreateSnapshotResult implements Serializable {
      * 
      **/
     public Snapshot getSnapshot() { return this.snapshot; }
+   
     public void setSnapshot(Snapshot snapshot) { 
         this.snapshot = snapshot;
     }
@@ -67,6 +68,7 @@ public class CreateSnapshotResult implements Serializable {
      * ID of the newly-created snapshot.
      **/
     public Long getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
@@ -75,6 +77,7 @@ public class CreateSnapshotResult implements Serializable {
      * This checksum can be used later to compare other snapshots to detect errors in the data.
      **/
     public String getChecksum() { return this.checksum; }
+   
     public void setChecksum(String checksum) { 
         this.checksum = checksum;
     }
@@ -109,11 +112,12 @@ public class CreateSnapshotResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" snapshot : ").append(snapshot).append(",");
-        sb.append(" snapshotID : ").append(snapshotID).append(",");
-        sb.append(" checksum : ").append(checksum).append(",");
+        sb.append(" snapshot : ").append(gson.toJson(snapshot)).append(",");
+        sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        sb.append(" checksum : ").append(gson.toJson(checksum)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

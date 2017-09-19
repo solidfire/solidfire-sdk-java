@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class ListServicesResult implements Serializable {
 
     public static final long serialVersionUID = 6693760138814056121L;
     @SerializedName("services") private DetailedService[] services;
-
     // empty constructor
     @Since("7.0")
     public ListServicesResult() {}
@@ -54,6 +54,7 @@ public class ListServicesResult implements Serializable {
      * 
      **/
     public DetailedService[] getServices() { return this.services; }
+   
     public void setServices(DetailedService[] services) { 
         this.services = services;
     }
@@ -84,9 +85,10 @@ public class ListServicesResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" services : ").append(Arrays.toString(services)).append(",");
+        sb.append(" services : ").append(gson.toJson(Arrays.toString(services))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

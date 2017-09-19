@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,7 +38,6 @@ public class StartBulkVolumeWriteResult implements Serializable {
     @SerializedName("asyncHandle") private Long asyncHandle;
     @SerializedName("key") private String key;
     @SerializedName("url") private String url;
-
     // empty constructor
     @Since("7.0")
     public StartBulkVolumeWriteResult() {}
@@ -60,6 +60,7 @@ public class StartBulkVolumeWriteResult implements Serializable {
      * ID of the async process to be checked for completion.
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
+   
     public void setAsyncHandle(Long asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
@@ -67,6 +68,7 @@ public class StartBulkVolumeWriteResult implements Serializable {
      * Opaque key uniquely identifying the session.
      **/
     public String getKey() { return this.key; }
+   
     public void setKey(String key) { 
         this.key = key;
     }
@@ -74,6 +76,7 @@ public class StartBulkVolumeWriteResult implements Serializable {
      * URL to access the node's web server
      **/
     public String getUrl() { return this.url; }
+   
     public void setUrl(String url) { 
         this.url = url;
     }
@@ -108,11 +111,12 @@ public class StartBulkVolumeWriteResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" asyncHandle : ").append(asyncHandle).append(",");
-        sb.append(" key : ").append(key).append(",");
-        sb.append(" url : ").append(url).append(",");
+        sb.append(" asyncHandle : ").append(gson.toJson(asyncHandle)).append(",");
+        sb.append(" key : ").append(gson.toJson(key)).append(",");
+        sb.append(" url : ").append(gson.toJson(url)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

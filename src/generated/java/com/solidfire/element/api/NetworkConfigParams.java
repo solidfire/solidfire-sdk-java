@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -47,7 +48,6 @@ public class NetworkConfigParams implements Serializable {
     @SerializedName("bond-mode") private Optional<String> bondMode;
     @SerializedName("bond-slaves") private Optional<String> bondSlaves;
     @SerializedName("bond-updelay") private Optional<String> bondUpdelay;
-    @SerializedName("broadcast") private Optional<String> broadcast;
     @SerializedName("dns-nameservers") private Optional<String> dnsNameservers;
     @SerializedName("dns-search") private Optional<String> dnsSearch;
     @SerializedName("family") private Optional<String> family;
@@ -63,7 +63,6 @@ public class NetworkConfigParams implements Serializable {
     @SerializedName("status") private Optional<String> status;
     @SerializedName("symmetricRouteRules") private Optional<String[]> symmetricRouteRules;
     @SerializedName("upAndRunning") private Optional<Boolean> upAndRunning;
-
     // empty constructor
     @Since("7.0")
     public NetworkConfigParams() {}
@@ -85,7 +84,6 @@ public class NetworkConfigParams implements Serializable {
         Optional<String> bondMode,
         Optional<String> bondSlaves,
         Optional<String> bondUpdelay,
-        Optional<String> broadcast,
         Optional<String> dnsNameservers,
         Optional<String> dnsSearch,
         Optional<String> family,
@@ -116,7 +114,6 @@ public class NetworkConfigParams implements Serializable {
         this.bondMode = (bondMode == null) ? Optional.<String>empty() : bondMode;
         this.bondSlaves = (bondSlaves == null) ? Optional.<String>empty() : bondSlaves;
         this.bondUpdelay = (bondUpdelay == null) ? Optional.<String>empty() : bondUpdelay;
-        this.broadcast = (broadcast == null) ? Optional.<String>empty() : broadcast;
         this.dnsNameservers = (dnsNameservers == null) ? Optional.<String>empty() : dnsNameservers;
         this.dnsSearch = (dnsSearch == null) ? Optional.<String>empty() : dnsSearch;
         this.family = (family == null) ? Optional.<String>empty() : family;
@@ -138,6 +135,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<Boolean> get_default() { return this._default; }
+   
     public void set_default(Optional<Boolean> _default) { 
         this._default = (_default == null) ? Optional.<Boolean>empty() : _default;
     }
@@ -145,6 +143,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getBondMaster() { return this.bondMaster; }
+   
     public void setBondMaster(Optional<String> bondMaster) { 
         this.bondMaster = (bondMaster == null) ? Optional.<String>empty() : bondMaster;
     }
@@ -152,6 +151,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getVirtualNetworkTag() { return this.virtualNetworkTag; }
+   
     public void setVirtualNetworkTag(Optional<String> virtualNetworkTag) { 
         this.virtualNetworkTag = (virtualNetworkTag == null) ? Optional.<String>empty() : virtualNetworkTag;
     }
@@ -159,6 +159,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getAddress() { return this.address; }
+   
     public void setAddress(Optional<String> address) { 
         this.address = (address == null) ? Optional.<String>empty() : address;
     }
@@ -166,6 +167,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<Boolean> getAuto() { return this.auto; }
+   
     public void setAuto(Optional<Boolean> auto) { 
         this.auto = (auto == null) ? Optional.<Boolean>empty() : auto;
     }
@@ -173,6 +175,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getBondDowndelay() { return this.bondDowndelay; }
+   
     public void setBondDowndelay(Optional<String> bondDowndelay) { 
         this.bondDowndelay = (bondDowndelay == null) ? Optional.<String>empty() : bondDowndelay;
     }
@@ -180,6 +183,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getBondFailOverMac() { return this.bondFailOverMac; }
+   
     public void setBondFailOverMac(Optional<String> bondFailOverMac) { 
         this.bondFailOverMac = (bondFailOverMac == null) ? Optional.<String>empty() : bondFailOverMac;
     }
@@ -187,6 +191,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getBondPrimaryReselect() { return this.bondPrimaryReselect; }
+   
     public void setBondPrimaryReselect(Optional<String> bondPrimaryReselect) { 
         this.bondPrimaryReselect = (bondPrimaryReselect == null) ? Optional.<String>empty() : bondPrimaryReselect;
     }
@@ -194,6 +199,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getBondLacpRate() { return this.bondLacpRate; }
+   
     public void setBondLacpRate(Optional<String> bondLacpRate) { 
         this.bondLacpRate = (bondLacpRate == null) ? Optional.<String>empty() : bondLacpRate;
     }
@@ -201,6 +207,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getBondMiimon() { return this.bondMiimon; }
+   
     public void setBondMiimon(Optional<String> bondMiimon) { 
         this.bondMiimon = (bondMiimon == null) ? Optional.<String>empty() : bondMiimon;
     }
@@ -208,6 +215,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getBondMode() { return this.bondMode; }
+   
     public void setBondMode(Optional<String> bondMode) { 
         this.bondMode = (bondMode == null) ? Optional.<String>empty() : bondMode;
     }
@@ -215,6 +223,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getBondSlaves() { return this.bondSlaves; }
+   
     public void setBondSlaves(Optional<String> bondSlaves) { 
         this.bondSlaves = (bondSlaves == null) ? Optional.<String>empty() : bondSlaves;
     }
@@ -222,20 +231,15 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getBondUpdelay() { return this.bondUpdelay; }
+   
     public void setBondUpdelay(Optional<String> bondUpdelay) { 
         this.bondUpdelay = (bondUpdelay == null) ? Optional.<String>empty() : bondUpdelay;
     }
     /** 
      * 
      **/
-    public Optional<String> getBroadcast() { return this.broadcast; }
-    public void setBroadcast(Optional<String> broadcast) { 
-        this.broadcast = (broadcast == null) ? Optional.<String>empty() : broadcast;
-    }
-    /** 
-     * 
-     **/
     public Optional<String> getDnsNameservers() { return this.dnsNameservers; }
+   
     public void setDnsNameservers(Optional<String> dnsNameservers) { 
         this.dnsNameservers = (dnsNameservers == null) ? Optional.<String>empty() : dnsNameservers;
     }
@@ -243,6 +247,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getDnsSearch() { return this.dnsSearch; }
+   
     public void setDnsSearch(Optional<String> dnsSearch) { 
         this.dnsSearch = (dnsSearch == null) ? Optional.<String>empty() : dnsSearch;
     }
@@ -250,6 +255,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getFamily() { return this.family; }
+   
     public void setFamily(Optional<String> family) { 
         this.family = (family == null) ? Optional.<String>empty() : family;
     }
@@ -257,6 +263,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getGateway() { return this.gateway; }
+   
     public void setGateway(Optional<String> gateway) { 
         this.gateway = (gateway == null) ? Optional.<String>empty() : gateway;
     }
@@ -264,6 +271,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getMacAddress() { return this.macAddress; }
+   
     public void setMacAddress(Optional<String> macAddress) { 
         this.macAddress = (macAddress == null) ? Optional.<String>empty() : macAddress;
     }
@@ -271,6 +279,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getMacAddressPermanent() { return this.macAddressPermanent; }
+   
     public void setMacAddressPermanent(Optional<String> macAddressPermanent) { 
         this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : macAddressPermanent;
     }
@@ -278,6 +287,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getMethod() { return this.method; }
+   
     public void setMethod(Optional<String> method) { 
         this.method = (method == null) ? Optional.<String>empty() : method;
     }
@@ -285,6 +295,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getMtu() { return this.mtu; }
+   
     public void setMtu(Optional<String> mtu) { 
         this.mtu = (mtu == null) ? Optional.<String>empty() : mtu;
     }
@@ -292,6 +303,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getNetmask() { return this.netmask; }
+   
     public void setNetmask(Optional<String> netmask) { 
         this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
     }
@@ -299,6 +311,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getNetwork() { return this.network; }
+   
     public void setNetwork(Optional<String> network) { 
         this.network = (network == null) ? Optional.<String>empty() : network;
     }
@@ -306,6 +319,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<PhysicalAdapter> getPhysical() { return this.physical; }
+   
     public void setPhysical(Optional<PhysicalAdapter> physical) { 
         this.physical = (physical == null) ? Optional.<PhysicalAdapter>empty() : physical;
     }
@@ -313,6 +327,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<Attributes[]> getRoutes() { return this.routes; }
+   
     public void setRoutes(Optional<Attributes[]> routes) { 
         this.routes = (routes == null) ? Optional.<Attributes[]>empty() : routes;
     }
@@ -320,6 +335,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String> getStatus() { return this.status; }
+   
     public void setStatus(Optional<String> status) { 
         this.status = (status == null) ? Optional.<String>empty() : status;
     }
@@ -327,6 +343,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<String[]> getSymmetricRouteRules() { return this.symmetricRouteRules; }
+   
     public void setSymmetricRouteRules(Optional<String[]> symmetricRouteRules) { 
         this.symmetricRouteRules = (symmetricRouteRules == null) ? Optional.<String[]>empty() : symmetricRouteRules;
     }
@@ -334,6 +351,7 @@ public class NetworkConfigParams implements Serializable {
      * 
      **/
     public Optional<Boolean> getUpAndRunning() { return this.upAndRunning; }
+   
     public void setUpAndRunning(Optional<Boolean> upAndRunning) { 
         this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
     }
@@ -359,7 +377,6 @@ public class NetworkConfigParams implements Serializable {
             Objects.equals(bondMode, that.bondMode) && 
             Objects.equals(bondSlaves, that.bondSlaves) && 
             Objects.equals(bondUpdelay, that.bondUpdelay) && 
-            Objects.equals(broadcast, that.broadcast) && 
             Objects.equals(dnsNameservers, that.dnsNameservers) && 
             Objects.equals(dnsSearch, that.dnsSearch) && 
             Objects.equals(family, that.family) && 
@@ -379,7 +396,7 @@ public class NetworkConfigParams implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( _default,bondMaster,virtualNetworkTag,address,auto,bondDowndelay,bondFailOverMac,bondPrimaryReselect,bondLacpRate,bondMiimon,bondMode,bondSlaves,bondUpdelay,broadcast,dnsNameservers,dnsSearch,family,gateway,macAddress,macAddressPermanent,method,mtu,netmask,network,physical,routes,status,symmetricRouteRules,upAndRunning );
+        return Objects.hash( _default,bondMaster,virtualNetworkTag,address,auto,bondDowndelay,bondFailOverMac,bondPrimaryReselect,bondLacpRate,bondMiimon,bondMode,bondSlaves,bondUpdelay,dnsNameservers,dnsSearch,family,gateway,macAddress,macAddressPermanent,method,mtu,netmask,network,physical,routes,status,symmetricRouteRules,upAndRunning );
     }
 
 
@@ -398,7 +415,6 @@ public class NetworkConfigParams implements Serializable {
         map.put("bondMode", bondMode);
         map.put("bondSlaves", bondSlaves);
         map.put("bondUpdelay", bondUpdelay);
-        map.put("broadcast", broadcast);
         map.put("dnsNameservers", dnsNameservers);
         map.put("dnsSearch", dnsSearch);
         map.put("family", family);
@@ -420,94 +436,176 @@ public class NetworkConfigParams implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != _default && _default.isPresent()){
-            sb.append(" _default : ").append(_default).append(",");
+            sb.append(" _default : ").append(gson.toJson(_default)).append(",");
+        }
+        else{
+            sb.append(" _default : ").append("null").append(",");
         }
         if(null != bondMaster && bondMaster.isPresent()){
-            sb.append(" bondMaster : ").append(bondMaster).append(",");
+            sb.append(" bondMaster : ").append(gson.toJson(bondMaster)).append(",");
+        }
+        else{
+            sb.append(" bondMaster : ").append("null").append(",");
         }
         if(null != virtualNetworkTag && virtualNetworkTag.isPresent()){
-            sb.append(" virtualNetworkTag : ").append(virtualNetworkTag).append(",");
+            sb.append(" virtualNetworkTag : ").append(gson.toJson(virtualNetworkTag)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkTag : ").append("null").append(",");
         }
         if(null != address && address.isPresent()){
-            sb.append(" address : ").append(address).append(",");
+            sb.append(" address : ").append(gson.toJson(address)).append(",");
+        }
+        else{
+            sb.append(" address : ").append("null").append(",");
         }
         if(null != auto && auto.isPresent()){
-            sb.append(" auto : ").append(auto).append(",");
+            sb.append(" auto : ").append(gson.toJson(auto)).append(",");
+        }
+        else{
+            sb.append(" auto : ").append("null").append(",");
         }
         if(null != bondDowndelay && bondDowndelay.isPresent()){
-            sb.append(" bondDowndelay : ").append(bondDowndelay).append(",");
+            sb.append(" bondDowndelay : ").append(gson.toJson(bondDowndelay)).append(",");
+        }
+        else{
+            sb.append(" bondDowndelay : ").append("null").append(",");
         }
         if(null != bondFailOverMac && bondFailOverMac.isPresent()){
-            sb.append(" bondFailOverMac : ").append(bondFailOverMac).append(",");
+            sb.append(" bondFailOverMac : ").append(gson.toJson(bondFailOverMac)).append(",");
+        }
+        else{
+            sb.append(" bondFailOverMac : ").append("null").append(",");
         }
         if(null != bondPrimaryReselect && bondPrimaryReselect.isPresent()){
-            sb.append(" bondPrimaryReselect : ").append(bondPrimaryReselect).append(",");
+            sb.append(" bondPrimaryReselect : ").append(gson.toJson(bondPrimaryReselect)).append(",");
+        }
+        else{
+            sb.append(" bondPrimaryReselect : ").append("null").append(",");
         }
         if(null != bondLacpRate && bondLacpRate.isPresent()){
-            sb.append(" bondLacpRate : ").append(bondLacpRate).append(",");
+            sb.append(" bondLacpRate : ").append(gson.toJson(bondLacpRate)).append(",");
+        }
+        else{
+            sb.append(" bondLacpRate : ").append("null").append(",");
         }
         if(null != bondMiimon && bondMiimon.isPresent()){
-            sb.append(" bondMiimon : ").append(bondMiimon).append(",");
+            sb.append(" bondMiimon : ").append(gson.toJson(bondMiimon)).append(",");
+        }
+        else{
+            sb.append(" bondMiimon : ").append("null").append(",");
         }
         if(null != bondMode && bondMode.isPresent()){
-            sb.append(" bondMode : ").append(bondMode).append(",");
+            sb.append(" bondMode : ").append(gson.toJson(bondMode)).append(",");
+        }
+        else{
+            sb.append(" bondMode : ").append("null").append(",");
         }
         if(null != bondSlaves && bondSlaves.isPresent()){
-            sb.append(" bondSlaves : ").append(bondSlaves).append(",");
+            sb.append(" bondSlaves : ").append(gson.toJson(bondSlaves)).append(",");
+        }
+        else{
+            sb.append(" bondSlaves : ").append("null").append(",");
         }
         if(null != bondUpdelay && bondUpdelay.isPresent()){
-            sb.append(" bondUpdelay : ").append(bondUpdelay).append(",");
+            sb.append(" bondUpdelay : ").append(gson.toJson(bondUpdelay)).append(",");
         }
-        if(null != broadcast && broadcast.isPresent()){
-            sb.append(" broadcast : ").append(broadcast).append(",");
+        else{
+            sb.append(" bondUpdelay : ").append("null").append(",");
         }
         if(null != dnsNameservers && dnsNameservers.isPresent()){
-            sb.append(" dnsNameservers : ").append(dnsNameservers).append(",");
+            sb.append(" dnsNameservers : ").append(gson.toJson(dnsNameservers)).append(",");
+        }
+        else{
+            sb.append(" dnsNameservers : ").append("null").append(",");
         }
         if(null != dnsSearch && dnsSearch.isPresent()){
-            sb.append(" dnsSearch : ").append(dnsSearch).append(",");
+            sb.append(" dnsSearch : ").append(gson.toJson(dnsSearch)).append(",");
+        }
+        else{
+            sb.append(" dnsSearch : ").append("null").append(",");
         }
         if(null != family && family.isPresent()){
-            sb.append(" family : ").append(family).append(",");
+            sb.append(" family : ").append(gson.toJson(family)).append(",");
+        }
+        else{
+            sb.append(" family : ").append("null").append(",");
         }
         if(null != gateway && gateway.isPresent()){
-            sb.append(" gateway : ").append(gateway).append(",");
+            sb.append(" gateway : ").append(gson.toJson(gateway)).append(",");
+        }
+        else{
+            sb.append(" gateway : ").append("null").append(",");
         }
         if(null != macAddress && macAddress.isPresent()){
-            sb.append(" macAddress : ").append(macAddress).append(",");
+            sb.append(" macAddress : ").append(gson.toJson(macAddress)).append(",");
+        }
+        else{
+            sb.append(" macAddress : ").append("null").append(",");
         }
         if(null != macAddressPermanent && macAddressPermanent.isPresent()){
-            sb.append(" macAddressPermanent : ").append(macAddressPermanent).append(",");
+            sb.append(" macAddressPermanent : ").append(gson.toJson(macAddressPermanent)).append(",");
+        }
+        else{
+            sb.append(" macAddressPermanent : ").append("null").append(",");
         }
         if(null != method && method.isPresent()){
-            sb.append(" method : ").append(method).append(",");
+            sb.append(" method : ").append(gson.toJson(method)).append(",");
+        }
+        else{
+            sb.append(" method : ").append("null").append(",");
         }
         if(null != mtu && mtu.isPresent()){
-            sb.append(" mtu : ").append(mtu).append(",");
+            sb.append(" mtu : ").append(gson.toJson(mtu)).append(",");
+        }
+        else{
+            sb.append(" mtu : ").append("null").append(",");
         }
         if(null != netmask && netmask.isPresent()){
-            sb.append(" netmask : ").append(netmask).append(",");
+            sb.append(" netmask : ").append(gson.toJson(netmask)).append(",");
+        }
+        else{
+            sb.append(" netmask : ").append("null").append(",");
         }
         if(null != network && network.isPresent()){
-            sb.append(" network : ").append(network).append(",");
+            sb.append(" network : ").append(gson.toJson(network)).append(",");
+        }
+        else{
+            sb.append(" network : ").append("null").append(",");
         }
         if(null != physical && physical.isPresent()){
-            sb.append(" physical : ").append(physical).append(",");
+            sb.append(" physical : ").append(gson.toJson(physical)).append(",");
+        }
+        else{
+            sb.append(" physical : ").append("null").append(",");
         }
         if(null != routes && routes.isPresent()){
-            sb.append(" routes : ").append(routes).append(",");
+            sb.append(" routes : ").append(gson.toJson(routes)).append(",");
+        }
+        else{
+            sb.append(" routes : ").append("null").append(",");
         }
         if(null != status && status.isPresent()){
-            sb.append(" status : ").append(status).append(",");
+            sb.append(" status : ").append(gson.toJson(status)).append(",");
+        }
+        else{
+            sb.append(" status : ").append("null").append(",");
         }
         if(null != symmetricRouteRules && symmetricRouteRules.isPresent()){
-            sb.append(" symmetricRouteRules : ").append(symmetricRouteRules).append(",");
+            sb.append(" symmetricRouteRules : ").append(gson.toJson(symmetricRouteRules)).append(",");
+        }
+        else{
+            sb.append(" symmetricRouteRules : ").append("null").append(",");
         }
         if(null != upAndRunning && upAndRunning.isPresent()){
-            sb.append(" upAndRunning : ").append(upAndRunning).append(",");
+            sb.append(" upAndRunning : ").append(gson.toJson(upAndRunning)).append(",");
+        }
+        else{
+            sb.append(" upAndRunning : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -539,7 +637,6 @@ public class NetworkConfigParams implements Serializable {
         private Optional<String> bondMode;
         private Optional<String> bondSlaves;
         private Optional<String> bondUpdelay;
-        private Optional<String> broadcast;
         private Optional<String> dnsNameservers;
         private Optional<String> dnsSearch;
         private Optional<String> family;
@@ -573,7 +670,6 @@ public class NetworkConfigParams implements Serializable {
                          this.bondMode,
                          this.bondSlaves,
                          this.bondUpdelay,
-                         this.broadcast,
                          this.dnsNameservers,
                          this.dnsSearch,
                          this.family,
@@ -605,7 +701,6 @@ public class NetworkConfigParams implements Serializable {
             this.bondMode = req.bondMode;
             this.bondSlaves = req.bondSlaves;
             this.bondUpdelay = req.bondUpdelay;
-            this.broadcast = req.broadcast;
             this.dnsNameservers = req.dnsNameservers;
             this.dnsSearch = req.dnsSearch;
             this.family = req.family;
@@ -687,11 +782,6 @@ public class NetworkConfigParams implements Serializable {
 
         public NetworkConfigParams.Builder optionalBondUpdelay(final String bondUpdelay) {
             this.bondUpdelay = (bondUpdelay == null) ? Optional.<String>empty() : Optional.of(bondUpdelay);
-            return this;
-        }
-
-        public NetworkConfigParams.Builder optionalBroadcast(final String broadcast) {
-            this.broadcast = (broadcast == null) ? Optional.<String>empty() : Optional.of(broadcast);
             return this;
         }
 

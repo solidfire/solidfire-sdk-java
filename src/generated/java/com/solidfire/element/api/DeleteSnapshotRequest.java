@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,17 +30,14 @@ import java.util.Objects;
 
 /**
  * DeleteSnapshotRequest  
- * DeleteSnapshot is used to delete a snapshot.
- * A snapshot that is currently the "active" snapshot cannot be deleted.
- * You must rollback and make another snapshot "active" before the current snapshot can be deleted.
- * To rollback a snapshot, use RollbackToSnapshot.
+ * DeleteSnapshot enables you to delete a snapshot. A snapshot that is currently the "active" snapshot cannot be deleted. You must
+ * rollback and make another snapshot "active" before the current snapshot can be deleted. For more details on rolling back snapshots, see RollbackToSnapshot.
  **/
 
 public class DeleteSnapshotRequest implements Serializable {
 
     public static final long serialVersionUID = 7262270247036120871L;
     @SerializedName("snapshotID") private Long snapshotID;
-
     // empty constructor
     @Since("7.0")
     public DeleteSnapshotRequest() {}
@@ -55,9 +53,10 @@ public class DeleteSnapshotRequest implements Serializable {
     }
 
     /** 
-     * The ID of the snapshot to delete.
+     * The ID of the snapshot to be deleted.
      **/
     public Long getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
@@ -88,9 +87,10 @@ public class DeleteSnapshotRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" snapshotID : ").append(snapshotID).append(",");
+        sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

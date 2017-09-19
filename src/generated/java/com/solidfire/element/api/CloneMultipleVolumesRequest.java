@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,10 +30,12 @@ import java.util.Objects;
 
 /**
  * CloneMultipleVolumesRequest  
- * CloneMultipleVolumes is used to create a clone of a group of specified volumes. A consistent set of characteristics can be assigned to a group of multiple volume when they are cloned together.
- * If groupSnapshotID is going to be used to clone the volumes in a group snapshot, the group snapshot must be created first using the CreateGroupSnapshot API method or the SolidFire Element WebUI. Using groupSnapshotID is optional when cloning multiple volumes.
- * 
- * Note: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is at stage 4 or 5.
+ * CloneMultipleVolumes enables you to create a clone of a group of specified volumes. You can assign a consistent set of characteristics
+ * to a group of multiple volumes when they are cloned together.
+ * Before using groupSnapshotID to clone the volumes in a group snapshot, you must create the group snapshot by using the
+ * CreateGroupSnapshot API method or the Element OS Web UI. Using groupSnapshotID is optional when cloning multiple volumes.
+ * Note: Cloning multiple volumes is allowed if cluster fullness is at stage 2 or 3. Clones are not created when cluster fullness is
+ * at stage 4 or 5.
  **/
 
 public class CloneMultipleVolumesRequest implements Serializable {
@@ -42,7 +45,6 @@ public class CloneMultipleVolumesRequest implements Serializable {
     @SerializedName("access") private Optional<String> access;
     @SerializedName("groupSnapshotID") private Optional<Long> groupSnapshotID;
     @SerializedName("newAccountID") private Optional<Long> newAccountID;
-
     // empty constructor
     @Since("7.0")
     public CloneMultipleVolumesRequest() {}
@@ -64,22 +66,31 @@ public class CloneMultipleVolumesRequest implements Serializable {
     }
 
     /** 
-     * Array of Unique ID for each volume to include in the clone with optional parameters. If optional parameters are not specified, the values will be inherited from the source volumes.
+     * Unique ID for each volume to include in the clone. If
+     * optional parameters are not specified, the values are inherited from the source volumes.
+     * Required parameter for "volumes" array:
+     * volumeID
+     * Optional parameters for "volumes" array:
+     * access: Can be one of readOnly, readWrite,
+     * locked, or replicationTarget
+     * attributes: List of name-value pairs in JSON object
+     * format.
+     * name: New name for the clone.
+     * newAccountID: Account ID for the new volumes.
+     * newSize: New size Total size of the volume, in bytes.
+     * Size is rounded up to the nearest 1MB.
      **/
     public CloneMultipleVolumeParams[] getVolumes() { return this.volumes; }
+   
     public void setVolumes(CloneMultipleVolumeParams[] volumes) { 
         this.volumes = volumes;
     }
     /** 
-     * New default access method for the new volumes if not overridden by information passed in the volumes array.
-     * readOnly: Only read operations are allowed.
-     * readWrite: Reads and writes are allowed.
-     * locked: No reads or writes are allowed.
-     * replicationTarget: Identify a volume as the target volume for a paired set of volumes. If the volume is not paired, the access status is locked.
-     * 
-     * If unspecified, the access settings of the clone will be the same as the source.
+     * New default access method for the new volumes if not
+     * overridden by information passed in the volume's array.
      **/
     public Optional<String> getAccess() { return this.access; }
+   
     public void setAccess(Optional<String> access) { 
         this.access = (access == null) ? Optional.<String>empty() : access;
     }
@@ -87,13 +98,16 @@ public class CloneMultipleVolumesRequest implements Serializable {
      * ID of the group snapshot to use as a basis for the clone.
      **/
     public Optional<Long> getGroupSnapshotID() { return this.groupSnapshotID; }
+   
     public void setGroupSnapshotID(Optional<Long> groupSnapshotID) { 
         this.groupSnapshotID = (groupSnapshotID == null) ? Optional.<Long>empty() : groupSnapshotID;
     }
     /** 
-     * New account ID for the volumes if not overridden by information passed in the volumes array.
+     * New account ID for the volumes if not overridden by
+     * information passed in the volumes array.
      **/
     public Optional<Long> getNewAccountID() { return this.newAccountID; }
+   
     public void setNewAccountID(Optional<Long> newAccountID) { 
         this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
@@ -130,17 +144,27 @@ public class CloneMultipleVolumesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
+        sb.append(" volumes : ").append(gson.toJson(Arrays.toString(volumes))).append(",");
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access).append(",");
+            sb.append(" access : ").append(gson.toJson(access)).append(",");
+        }
+        else{
+            sb.append(" access : ").append("null").append(",");
         }
         if(null != groupSnapshotID && groupSnapshotID.isPresent()){
-            sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
+            sb.append(" groupSnapshotID : ").append(gson.toJson(groupSnapshotID)).append(",");
+        }
+        else{
+            sb.append(" groupSnapshotID : ").append("null").append(",");
         }
         if(null != newAccountID && newAccountID.isPresent()){
-            sb.append(" newAccountID : ").append(newAccountID).append(",");
+            sb.append(" newAccountID : ").append(gson.toJson(newAccountID)).append(",");
+        }
+        else{
+            sb.append(" newAccountID : ").append("null").append(",");
         }
         sb.append( " }" );
 

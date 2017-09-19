@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -47,7 +48,6 @@ public class Schedule implements Serializable {
     @SerializedName("frequency") private Frequency frequency;
     @SerializedName("startingDate") private Optional<String> startingDate;
     @SerializedName("recurring") private Optional<Boolean> recurring;
-
     // empty constructor
     @Since("7.0")
     public Schedule() {}
@@ -91,6 +91,7 @@ public class Schedule implements Serializable {
      * Failed
      **/
     public Optional<String> getLastRunTimeStarted() { return this.lastRunTimeStarted; }
+   
     public void setLastRunTimeStarted(Optional<String> lastRunTimeStarted) { 
         this.lastRunTimeStarted = (lastRunTimeStarted == null) ? Optional.<String>empty() : lastRunTimeStarted;
     }
@@ -98,6 +99,7 @@ public class Schedule implements Serializable {
      * Indicates whether or not the schedule has errors.
      **/
     public Optional<Boolean> getHasError() { return this.hasError; }
+   
     public void setHasError(Optional<Boolean> hasError) { 
         this.hasError = (hasError == null) ? Optional.<Boolean>empty() : hasError;
     }
@@ -105,6 +107,7 @@ public class Schedule implements Serializable {
      * Includes the unique name given to the schedule, the retention period for the snapshot that was created, and the volume ID of the volume from which the snapshot was created.
      **/
     public ScheduleInfo getScheduleInfo() { return this.scheduleInfo; }
+   
     public void setScheduleInfo(ScheduleInfo scheduleInfo) { 
         this.scheduleInfo = scheduleInfo;
     }
@@ -112,6 +115,7 @@ public class Schedule implements Serializable {
      * Indicates whether or not the schedule will run the next time the scheduler is active. When set to "true", the schedule will run the next time the scheduler is active and then reset back to "false".
      **/
     public Optional<Boolean> getRunNextInterval() { return this.runNextInterval; }
+   
     public void setRunNextInterval(Optional<Boolean> runNextInterval) { 
         this.runNextInterval = (runNextInterval == null) ? Optional.<Boolean>empty() : runNextInterval;
     }
@@ -119,6 +123,7 @@ public class Schedule implements Serializable {
      * Unique name assigned to the schedule.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -129,6 +134,7 @@ public class Schedule implements Serializable {
      * Failed
      **/
     public Optional<String> getLastRunStatus() { return this.lastRunStatus; }
+   
     public void setLastRunStatus(Optional<String> lastRunStatus) { 
         this.lastRunStatus = (lastRunStatus == null) ? Optional.<String>empty() : lastRunStatus;
     }
@@ -136,6 +142,7 @@ public class Schedule implements Serializable {
      * Unique ID of the schedule
      **/
     public Optional<Long> getScheduleID() { return this.scheduleID; }
+   
     public void setScheduleID(Optional<Long> scheduleID) { 
         this.scheduleID = (scheduleID == null) ? Optional.<Long>empty() : scheduleID;
     }
@@ -143,6 +150,7 @@ public class Schedule implements Serializable {
      * Indicates whether or not the schedule is paused.
      **/
     public Optional<Boolean> getPaused() { return this.paused; }
+   
     public void setPaused(Optional<Boolean> paused) { 
         this.paused = (paused == null) ? Optional.<Boolean>empty() : paused;
     }
@@ -150,6 +158,7 @@ public class Schedule implements Serializable {
      * Indicates if the schedule is marked for deletion.
      **/
     public Optional<Boolean> getToBeDeleted() { return this.toBeDeleted; }
+   
     public void setToBeDeleted(Optional<Boolean> toBeDeleted) { 
         this.toBeDeleted = (toBeDeleted == null) ? Optional.<Boolean>empty() : toBeDeleted;
     }
@@ -161,6 +170,7 @@ public class Schedule implements Serializable {
      * TimeIntervalFrequency
      **/
     public Frequency getFrequency() { return this.frequency; }
+   
     public void setFrequency(Frequency frequency) { 
         this.frequency = frequency;
     }
@@ -168,6 +178,7 @@ public class Schedule implements Serializable {
      * Indicates the date the first time the schedule began of will begin. Formatted in UTC time.
      **/
     public Optional<String> getStartingDate() { return this.startingDate; }
+   
     public void setStartingDate(Optional<String> startingDate) { 
         this.startingDate = (startingDate == null) ? Optional.<String>empty() : startingDate;
     }
@@ -175,6 +186,7 @@ public class Schedule implements Serializable {
      * Indicates whether or not the schedule is recurring.
      **/
     public Optional<Boolean> getRecurring() { return this.recurring; }
+   
     public void setRecurring(Optional<Boolean> recurring) { 
         this.recurring = (recurring == null) ? Optional.<Boolean>empty() : recurring;
     }
@@ -227,37 +239,65 @@ public class Schedule implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != lastRunTimeStarted && lastRunTimeStarted.isPresent()){
-            sb.append(" lastRunTimeStarted : ").append(lastRunTimeStarted).append(",");
+            sb.append(" lastRunTimeStarted : ").append(gson.toJson(lastRunTimeStarted)).append(",");
+        }
+        else{
+            sb.append(" lastRunTimeStarted : ").append("null").append(",");
         }
         if(null != hasError && hasError.isPresent()){
-            sb.append(" hasError : ").append(hasError).append(",");
+            sb.append(" hasError : ").append(gson.toJson(hasError)).append(",");
         }
-        sb.append(" scheduleInfo : ").append(scheduleInfo).append(",");
+        else{
+            sb.append(" hasError : ").append("null").append(",");
+        }
+        sb.append(" scheduleInfo : ").append(gson.toJson(scheduleInfo)).append(",");
         if(null != runNextInterval && runNextInterval.isPresent()){
-            sb.append(" runNextInterval : ").append(runNextInterval).append(",");
+            sb.append(" runNextInterval : ").append(gson.toJson(runNextInterval)).append(",");
         }
-        sb.append(" name : ").append(name).append(",");
+        else{
+            sb.append(" runNextInterval : ").append("null").append(",");
+        }
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
         if(null != lastRunStatus && lastRunStatus.isPresent()){
-            sb.append(" lastRunStatus : ").append(lastRunStatus).append(",");
+            sb.append(" lastRunStatus : ").append(gson.toJson(lastRunStatus)).append(",");
+        }
+        else{
+            sb.append(" lastRunStatus : ").append("null").append(",");
         }
         if(null != scheduleID && scheduleID.isPresent()){
-            sb.append(" scheduleID : ").append(scheduleID).append(",");
+            sb.append(" scheduleID : ").append(gson.toJson(scheduleID)).append(",");
+        }
+        else{
+            sb.append(" scheduleID : ").append("null").append(",");
         }
         if(null != paused && paused.isPresent()){
-            sb.append(" paused : ").append(paused).append(",");
+            sb.append(" paused : ").append(gson.toJson(paused)).append(",");
+        }
+        else{
+            sb.append(" paused : ").append("null").append(",");
         }
         if(null != toBeDeleted && toBeDeleted.isPresent()){
-            sb.append(" toBeDeleted : ").append(toBeDeleted).append(",");
+            sb.append(" toBeDeleted : ").append(gson.toJson(toBeDeleted)).append(",");
         }
-        sb.append(" frequency : ").append(frequency).append(",");
+        else{
+            sb.append(" toBeDeleted : ").append("null").append(",");
+        }
+        sb.append(" frequency : ").append(gson.toJson(frequency)).append(",");
         if(null != startingDate && startingDate.isPresent()){
-            sb.append(" startingDate : ").append(startingDate).append(",");
+            sb.append(" startingDate : ").append(gson.toJson(startingDate)).append(",");
+        }
+        else{
+            sb.append(" startingDate : ").append("null").append(",");
         }
         if(null != recurring && recurring.isPresent()){
-            sb.append(" recurring : ").append(recurring).append(",");
+            sb.append(" recurring : ").append(gson.toJson(recurring)).append(",");
+        }
+        else{
+            sb.append(" recurring : ").append("null").append(",");
         }
         sb.append( " }" );
 

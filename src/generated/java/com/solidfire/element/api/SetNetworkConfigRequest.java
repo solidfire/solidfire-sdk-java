@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,18 +30,15 @@ import java.util.Objects;
 
 /**
  * SetNetworkConfigRequest  
- * The "SetNetworkConfig" method is used to set the network configuration for a node. To see the states in which these objects can be modified, see "Network Object for 1G and 10G Interfaces" on page 109 of the Element API. To display the current network settings for a node, run the "GetNetworkConfig" method.
- * 
- * WARNING! Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Caution should be taken when using this method.
- * 
+ * The SetNetworkConfig API method enables you to set the network configuration for a node. To display the current network settings for a node, run the GetNetworkConfig API method. 
  * Note: This method is available only through the per-node API endpoint 5.0 or later.
+ * Changing the "bond-mode" on a node can cause a temporary loss of network connectivity. Exercise caution when using this method.
  **/
 
 public class SetNetworkConfigRequest implements Serializable {
 
     public static final long serialVersionUID = 3614304076097092528L;
     @SerializedName("network") private NetworkParams network;
-
     // empty constructor
     @Since("7.0")
     public SetNetworkConfigRequest() {}
@@ -56,9 +54,10 @@ public class SetNetworkConfigRequest implements Serializable {
     }
 
     /** 
-     * Objects that will be changed for the node network settings.
+     * An object containing node network settings to modify.
      **/
     public NetworkParams getNetwork() { return this.network; }
+   
     public void setNetwork(NetworkParams network) { 
         this.network = network;
     }
@@ -89,9 +88,10 @@ public class SetNetworkConfigRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" network : ").append(network).append(",");
+        sb.append(" network : ").append(gson.toJson(network)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

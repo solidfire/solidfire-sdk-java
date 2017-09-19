@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,8 @@ import java.util.Objects;
 
 /**
  * SetNtpInfoRequest  
- * SetNtpInfo is used to configure the NTP on cluster nodes. The values set with this interface apply to all nodes in the cluster. The nodes can only be configured as a server where a host is selected to administrate the networking and/or a broadcast client where each host sends each message to each peer.
+ * SetNtpInfo enables you to configure NTP on cluster nodes. The values you set with this interface apply to all nodes in the cluster. If an NTP broadcast server periodically broadcasts time information on your network, you can optionally configure nodes as broadcast clients.
+ * Note: NetApp recommends using NTP servers that are internal to your network, rather than the installation defaults.
  **/
 
 public class SetNtpInfoRequest implements Serializable {
@@ -37,7 +39,6 @@ public class SetNtpInfoRequest implements Serializable {
     public static final long serialVersionUID = -7411371300821324016L;
     @SerializedName("servers") private String[] servers;
     @SerializedName("broadcastclient") private Optional<Boolean> broadcastclient;
-
     // empty constructor
     @Since("7.0")
     public SetNtpInfoRequest() {}
@@ -55,16 +56,18 @@ public class SetNtpInfoRequest implements Serializable {
     }
 
     /** 
-     * List of NTP servers to add to each node's NTP configuration.
+     * List of NTP servers to add to each nodes NTP configuration.
      **/
     public String[] getServers() { return this.servers; }
+   
     public void setServers(String[] servers) { 
         this.servers = servers;
     }
     /** 
-     * Enable every node in the cluster as a broadcase client.
+     * Enables every node in the cluster as a broadcast client.
      **/
     public Optional<Boolean> getBroadcastclient() { return this.broadcastclient; }
+   
     public void setBroadcastclient(Optional<Boolean> broadcastclient) { 
         this.broadcastclient = (broadcastclient == null) ? Optional.<Boolean>empty() : broadcastclient;
     }
@@ -97,11 +100,15 @@ public class SetNtpInfoRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" servers : ").append(Arrays.toString(servers)).append(",");
+        sb.append(" servers : ").append(gson.toJson(Arrays.toString(servers))).append(",");
         if(null != broadcastclient && broadcastclient.isPresent()){
-            sb.append(" broadcastclient : ").append(broadcastclient).append(",");
+            sb.append(" broadcastclient : ").append(gson.toJson(broadcastclient)).append(",");
+        }
+        else{
+            sb.append(" broadcastclient : ").append("null").append(",");
         }
         sb.append( " }" );
 

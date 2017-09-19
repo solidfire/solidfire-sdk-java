@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -48,7 +49,6 @@ public class ClusterConfig implements Serializable {
     @SerializedName("encryptionCapable") private Optional<Boolean> encryptionCapable;
     @SerializedName("hasLocalAdmin") private Optional<Boolean> hasLocalAdmin;
     @SerializedName("version") private Optional<String> version;
-
     // empty constructor
     @Since("7.0")
     public ClusterConfig() {}
@@ -91,6 +91,7 @@ public class ClusterConfig implements Serializable {
      * Network interface used for cluster communication.
      **/
     public Optional<String> getCipi() { return this.cipi; }
+   
     public void setCipi(Optional<String> cipi) { 
         this.cipi = (cipi == null) ? Optional.<String>empty() : cipi;
     }
@@ -98,6 +99,7 @@ public class ClusterConfig implements Serializable {
      * Unique cluster name.
      **/
     public Optional<String> getCluster() { return this.cluster; }
+   
     public void setCluster(Optional<String> cluster) { 
         this.cluster = (cluster == null) ? Optional.<String>empty() : cluster;
     }
@@ -105,6 +107,7 @@ public class ClusterConfig implements Serializable {
      * Nodes that are participating in the cluster.
      **/
     public Optional<String[]> getEnsemble() { return this.ensemble; }
+   
     public void setEnsemble(Optional<String[]> ensemble) { 
         this.ensemble = (ensemble == null) ? Optional.<String[]>empty() : ensemble;
     }
@@ -112,6 +115,7 @@ public class ClusterConfig implements Serializable {
      * Network interface used for node management.
      **/
     public Optional<String> getMipi() { return this.mipi; }
+   
     public void setMipi(Optional<String> mipi) { 
         this.mipi = (mipi == null) ? Optional.<String>empty() : mipi;
     }
@@ -119,6 +123,7 @@ public class ClusterConfig implements Serializable {
      * Unique cluster name.
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
@@ -126,6 +131,7 @@ public class ClusterConfig implements Serializable {
      * 
      **/
     public Optional<Long> getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Optional<Long> nodeID) { 
         this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
     }
@@ -133,6 +139,7 @@ public class ClusterConfig implements Serializable {
      * 
      **/
     public Optional<Long> getPendingNodeID() { return this.pendingNodeID; }
+   
     public void setPendingNodeID(Optional<Long> pendingNodeID) { 
         this.pendingNodeID = (pendingNodeID == null) ? Optional.<Long>empty() : pendingNodeID;
     }
@@ -140,6 +147,7 @@ public class ClusterConfig implements Serializable {
      * Identifies the role of the node
      **/
     public Optional<String> getRole() { return this.role; }
+   
     public void setRole(Optional<String> role) { 
         this.role = (role == null) ? Optional.<String>empty() : role;
     }
@@ -147,6 +155,7 @@ public class ClusterConfig implements Serializable {
      * Network interface used for storage.
      **/
     public Optional<String> getSipi() { return this.sipi; }
+   
     public void setSipi(Optional<String> sipi) { 
         this.sipi = (sipi == null) ? Optional.<String>empty() : sipi;
     }
@@ -154,6 +163,7 @@ public class ClusterConfig implements Serializable {
      * 
      **/
     public Optional<String> getState() { return this.state; }
+   
     public void setState(Optional<String> state) { 
         this.state = (state == null) ? Optional.<String>empty() : state;
     }
@@ -161,6 +171,7 @@ public class ClusterConfig implements Serializable {
      * 
      **/
     public Optional<Boolean> getEncryptionCapable() { return this.encryptionCapable; }
+   
     public void setEncryptionCapable(Optional<Boolean> encryptionCapable) { 
         this.encryptionCapable = (encryptionCapable == null) ? Optional.<Boolean>empty() : encryptionCapable;
     }
@@ -168,6 +179,7 @@ public class ClusterConfig implements Serializable {
      * 
      **/
     public Optional<Boolean> getHasLocalAdmin() { return this.hasLocalAdmin; }
+   
     public void setHasLocalAdmin(Optional<Boolean> hasLocalAdmin) { 
         this.hasLocalAdmin = (hasLocalAdmin == null) ? Optional.<Boolean>empty() : hasLocalAdmin;
     }
@@ -175,6 +187,7 @@ public class ClusterConfig implements Serializable {
      * 
      **/
     public Optional<String> getVersion() { return this.version; }
+   
     public void setVersion(Optional<String> version) { 
         this.version = (version == null) ? Optional.<String>empty() : version;
     }
@@ -229,46 +242,86 @@ public class ClusterConfig implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != cipi && cipi.isPresent()){
-            sb.append(" cipi : ").append(cipi).append(",");
+            sb.append(" cipi : ").append(gson.toJson(cipi)).append(",");
+        }
+        else{
+            sb.append(" cipi : ").append("null").append(",");
         }
         if(null != cluster && cluster.isPresent()){
-            sb.append(" cluster : ").append(cluster).append(",");
+            sb.append(" cluster : ").append(gson.toJson(cluster)).append(",");
+        }
+        else{
+            sb.append(" cluster : ").append("null").append(",");
         }
         if(null != ensemble && ensemble.isPresent()){
-            sb.append(" ensemble : ").append(ensemble).append(",");
+            sb.append(" ensemble : ").append(gson.toJson(ensemble)).append(",");
+        }
+        else{
+            sb.append(" ensemble : ").append("null").append(",");
         }
         if(null != mipi && mipi.isPresent()){
-            sb.append(" mipi : ").append(mipi).append(",");
+            sb.append(" mipi : ").append(gson.toJson(mipi)).append(",");
+        }
+        else{
+            sb.append(" mipi : ").append("null").append(",");
         }
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
+        }
+        else{
+            sb.append(" name : ").append("null").append(",");
         }
         if(null != nodeID && nodeID.isPresent()){
-            sb.append(" nodeID : ").append(nodeID).append(",");
+            sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
+        }
+        else{
+            sb.append(" nodeID : ").append("null").append(",");
         }
         if(null != pendingNodeID && pendingNodeID.isPresent()){
-            sb.append(" pendingNodeID : ").append(pendingNodeID).append(",");
+            sb.append(" pendingNodeID : ").append(gson.toJson(pendingNodeID)).append(",");
+        }
+        else{
+            sb.append(" pendingNodeID : ").append("null").append(",");
         }
         if(null != role && role.isPresent()){
-            sb.append(" role : ").append(role).append(",");
+            sb.append(" role : ").append(gson.toJson(role)).append(",");
+        }
+        else{
+            sb.append(" role : ").append("null").append(",");
         }
         if(null != sipi && sipi.isPresent()){
-            sb.append(" sipi : ").append(sipi).append(",");
+            sb.append(" sipi : ").append(gson.toJson(sipi)).append(",");
+        }
+        else{
+            sb.append(" sipi : ").append("null").append(",");
         }
         if(null != state && state.isPresent()){
-            sb.append(" state : ").append(state).append(",");
+            sb.append(" state : ").append(gson.toJson(state)).append(",");
+        }
+        else{
+            sb.append(" state : ").append("null").append(",");
         }
         if(null != encryptionCapable && encryptionCapable.isPresent()){
-            sb.append(" encryptionCapable : ").append(encryptionCapable).append(",");
+            sb.append(" encryptionCapable : ").append(gson.toJson(encryptionCapable)).append(",");
+        }
+        else{
+            sb.append(" encryptionCapable : ").append("null").append(",");
         }
         if(null != hasLocalAdmin && hasLocalAdmin.isPresent()){
-            sb.append(" hasLocalAdmin : ").append(hasLocalAdmin).append(",");
+            sb.append(" hasLocalAdmin : ").append(gson.toJson(hasLocalAdmin)).append(",");
+        }
+        else{
+            sb.append(" hasLocalAdmin : ").append("null").append(",");
         }
         if(null != version && version.isPresent()){
-            sb.append(" version : ").append(version).append(",");
+            sb.append(" version : ").append(gson.toJson(version)).append(",");
+        }
+        else{
+            sb.append(" version : ").append("null").append(",");
         }
         sb.append( " }" );
 

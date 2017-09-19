@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,6 @@ public class ResetDriveDetails implements Serializable {
     @SerializedName("returnCode") private Long returnCode;
     @SerializedName("stderr") private String stderr;
     @SerializedName("stdout") private String stdout;
-
     // empty constructor
     @Since("7.0")
     public ResetDriveDetails() {}
@@ -63,6 +63,7 @@ public class ResetDriveDetails implements Serializable {
      * Drive name
      **/
     public String getDrive() { return this.drive; }
+   
     public void setDrive(String drive) { 
         this.drive = drive;
     }
@@ -70,6 +71,7 @@ public class ResetDriveDetails implements Serializable {
      * 
      **/
     public Long getReturnCode() { return this.returnCode; }
+   
     public void setReturnCode(Long returnCode) { 
         this.returnCode = returnCode;
     }
@@ -77,6 +79,7 @@ public class ResetDriveDetails implements Serializable {
      * 
      **/
     public String getStderr() { return this.stderr; }
+   
     public void setStderr(String stderr) { 
         this.stderr = stderr;
     }
@@ -84,6 +87,7 @@ public class ResetDriveDetails implements Serializable {
      * 
      **/
     public String getStdout() { return this.stdout; }
+   
     public void setStdout(String stdout) { 
         this.stdout = stdout;
     }
@@ -120,12 +124,13 @@ public class ResetDriveDetails implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" drive : ").append(drive).append(",");
-        sb.append(" returnCode : ").append(returnCode).append(",");
-        sb.append(" stderr : ").append(stderr).append(",");
-        sb.append(" stdout : ").append(stdout).append(",");
+        sb.append(" drive : ").append(gson.toJson(drive)).append(",");
+        sb.append(" returnCode : ").append(gson.toJson(returnCode)).append(",");
+        sb.append(" stderr : ").append(gson.toJson(stderr)).append(",");
+        sb.append(" stdout : ").append(gson.toJson(stdout)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

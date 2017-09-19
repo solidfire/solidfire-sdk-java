@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class NodeStateInfo implements Serializable {
     public static final long serialVersionUID = -4911274814703519058L;
     @SerializedName("cluster") private String cluster;
     @SerializedName("state") private String state;
-
     // empty constructor
     @Since("7.0")
     public NodeStateInfo() {}
@@ -57,6 +57,7 @@ public class NodeStateInfo implements Serializable {
      * Name of the cluster.
      **/
     public String getCluster() { return this.cluster; }
+   
     public void setCluster(String cluster) { 
         this.cluster = cluster;
     }
@@ -64,6 +65,7 @@ public class NodeStateInfo implements Serializable {
      * <strong>Available:</strong> Node has not been configured with a cluster name.<br><strong>Pending:</strong> Node is pending for a specific named cluster and can be added.<br><strong>Active:</strong> Node is active and a member of a cluster and may not be added to another cluster.
      **/
     public String getState() { return this.state; }
+   
     public void setState(String state) { 
         this.state = state;
     }
@@ -96,10 +98,11 @@ public class NodeStateInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" cluster : ").append(cluster).append(",");
-        sb.append(" state : ").append(state).append(",");
+        sb.append(" cluster : ").append(gson.toJson(cluster)).append(",");
+        sb.append(" state : ").append(gson.toJson(state)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

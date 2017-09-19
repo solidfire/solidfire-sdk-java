@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class ListDriveStatsResult implements Serializable {
     public static final long serialVersionUID = -7807466351059212790L;
     @SerializedName("driveStats") private DriveStats[] driveStats;
     @SerializedName("errors") private Attributes[] errors;
-
     // empty constructor
     @Since("7.0")
     public ListDriveStatsResult() {}
@@ -57,6 +57,7 @@ public class ListDriveStatsResult implements Serializable {
      * List of drive activity information for each drive.
      **/
     public DriveStats[] getDriveStats() { return this.driveStats; }
+   
     public void setDriveStats(DriveStats[] driveStats) { 
         this.driveStats = driveStats;
     }
@@ -64,6 +65,7 @@ public class ListDriveStatsResult implements Serializable {
      * If there are errors retrieving information about a drive, this list contains the driveID and associated error message. Always present, and empty if there are no errors.
      **/
     public Attributes[] getErrors() { return this.errors; }
+   
     public void setErrors(Attributes[] errors) { 
         this.errors = errors;
     }
@@ -96,10 +98,11 @@ public class ListDriveStatsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" driveStats : ").append(Arrays.toString(driveStats)).append(",");
-        sb.append(" errors : ").append(Arrays.toString(errors)).append(",");
+        sb.append(" driveStats : ").append(gson.toJson(Arrays.toString(driveStats))).append(",");
+        sb.append(" errors : ").append(gson.toJson(Arrays.toString(errors))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

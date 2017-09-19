@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class ModifyInitiatorsResult implements Serializable {
 
     public static final long serialVersionUID = -43282212498702567L;
     @SerializedName("initiators") private Initiator[] initiators;
-
     // empty constructor
     @Since("7.0")
     public ModifyInitiatorsResult() {}
@@ -54,6 +54,7 @@ public class ModifyInitiatorsResult implements Serializable {
      * List of objects containing details about the modified initiators
      **/
     public Initiator[] getInitiators() { return this.initiators; }
+   
     public void setInitiators(Initiator[] initiators) { 
         this.initiators = initiators;
     }
@@ -84,9 +85,10 @@ public class ModifyInitiatorsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
+        sb.append(" initiators : ").append(gson.toJson(Arrays.toString(initiators))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

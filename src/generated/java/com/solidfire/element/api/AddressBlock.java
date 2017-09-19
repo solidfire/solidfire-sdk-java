@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,6 @@ public class AddressBlock implements Serializable {
     @SerializedName("start") private String start;
     @SerializedName("size") private Long size;
     @SerializedName("available") private String available;
-
     // empty constructor
     @Since("7.0")
     public AddressBlock() {}
@@ -61,6 +61,7 @@ public class AddressBlock implements Serializable {
      * Start of the IP address range.
      **/
     public String getStart() { return this.start; }
+   
     public void setStart(String start) { 
         this.start = start;
     }
@@ -68,6 +69,7 @@ public class AddressBlock implements Serializable {
      * Number of IP addresses to include in the block.
      **/
     public Long getSize() { return this.size; }
+   
     public void setSize(Long size) { 
         this.size = size;
     }
@@ -75,6 +77,7 @@ public class AddressBlock implements Serializable {
      * Nuber of available blocks
      **/
     public String getAvailable() { return this.available; }
+   
     public void setAvailable(String available) { 
         this.available = available;
     }
@@ -109,11 +112,12 @@ public class AddressBlock implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" start : ").append(start).append(",");
-        sb.append(" size : ").append(size).append(",");
-        sb.append(" available : ").append(available).append(",");
+        sb.append(" start : ").append(gson.toJson(start)).append(",");
+        sb.append(" size : ").append(gson.toJson(size)).append(",");
+        sb.append(" available : ").append(gson.toJson(available)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

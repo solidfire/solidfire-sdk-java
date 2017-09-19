@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class ListFibreChannelSessionsResult implements Serializable {
 
     public static final long serialVersionUID = -122152116909046325L;
     @SerializedName("sessions") private FibreChannelSession[] sessions;
-
     // empty constructor
     @Since("7.0")
     public ListFibreChannelSessionsResult() {}
@@ -55,6 +55,7 @@ public class ListFibreChannelSessionsResult implements Serializable {
      * A list of FibreChannelSession objects with information about the Fibre Channel session.
      **/
     public FibreChannelSession[] getSessions() { return this.sessions; }
+   
     public void setSessions(FibreChannelSession[] sessions) { 
         this.sessions = sessions;
     }
@@ -85,9 +86,10 @@ public class ListFibreChannelSessionsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" sessions : ").append(Arrays.toString(sessions)).append(",");
+        sb.append(" sessions : ").append(gson.toJson(Arrays.toString(sessions))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,8 +30,8 @@ import java.util.Objects;
 
 /**
  * ModifySnapshotRequest  
- * ModifySnapshot is used to change the attributes currently assigned to a snapshot.
- * Use this API method to enable the snapshots created on the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
+ * ModifySnapshot enables you to change the attributes currently assigned to a snapshot. You can use this method to enable snapshots created on
+ * the Read/Write (source) volume to be remotely replicated to a target SolidFire storage system.
  **/
 
 public class ModifySnapshotRequest implements Serializable {
@@ -39,7 +40,7 @@ public class ModifySnapshotRequest implements Serializable {
     @SerializedName("snapshotID") private Long snapshotID;
     @SerializedName("expirationTime") private Optional<String> expirationTime;
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
-
+    @SerializedName("snapMirrorLabel") private Optional<String> snapMirrorLabel;
     // empty constructor
     @Since("7.0")
     public ModifySnapshotRequest() {}
@@ -57,30 +58,56 @@ public class ModifySnapshotRequest implements Serializable {
         this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
+    // parameterized constructor
+    @Since("10.0")
+    public ModifySnapshotRequest(
+        Long snapshotID,
+        Optional<String> expirationTime,
+        Optional<Boolean> enableRemoteReplication,
+        Optional<String> snapMirrorLabel
+    )
+    {
+        this.snapshotID = snapshotID;
+        this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
+        this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
+        this.snapMirrorLabel = (snapMirrorLabel == null) ? Optional.<String>empty() : snapMirrorLabel;
+    }
 
     /** 
-     * ID of the snapshot.
+     * Specifies the ID of the snapshot.
      **/
     public Long getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
-     * Use to set the time when the snapshot should be removed.
+     * Sets the time when the snapshot should be
+     * removed.
      **/
     public Optional<String> getExpirationTime() { return this.expirationTime; }
+   
     public void setExpirationTime(Optional<String> expirationTime) { 
         this.expirationTime = (expirationTime == null) ? Optional.<String>empty() : expirationTime;
     }
     /** 
-     * Use to enable the snapshot created to be replicated to a remote SolidFire cluster.
-     * Possible values:
-     * true: the snapshot will be replicated to remote storage.
-     * false: Default. No replication.
+     * Replicates the snapshot created to a remote cluster.
+     * Possible values are:
+     * true: The snapshot is replicated to remote storage.
+     * false: Default. The snapshot is not replicated.
      **/
     public Optional<Boolean> getEnableRemoteReplication() { return this.enableRemoteReplication; }
+   
     public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) { 
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
+    }
+    /** 
+     * Label used by SnapMirror software to specify snapshot retention policy on SnapMirror endpoint.
+     **/
+    public Optional<String> getSnapMirrorLabel() { return this.snapMirrorLabel; }
+   
+    public void setSnapMirrorLabel(Optional<String> snapMirrorLabel) { 
+        this.snapMirrorLabel = (snapMirrorLabel == null) ? Optional.<String>empty() : snapMirrorLabel;
     }
 
     @Override
@@ -93,12 +120,13 @@ public class ModifySnapshotRequest implements Serializable {
         return 
             Objects.equals(snapshotID, that.snapshotID) && 
             Objects.equals(expirationTime, that.expirationTime) && 
-            Objects.equals(enableRemoteReplication, that.enableRemoteReplication);
+            Objects.equals(enableRemoteReplication, that.enableRemoteReplication) && 
+            Objects.equals(snapMirrorLabel, that.snapMirrorLabel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( snapshotID,expirationTime,enableRemoteReplication );
+        return Objects.hash( snapshotID,expirationTime,enableRemoteReplication,snapMirrorLabel );
     }
 
 
@@ -107,20 +135,34 @@ public class ModifySnapshotRequest implements Serializable {
         map.put("snapshotID", snapshotID);
         map.put("expirationTime", expirationTime);
         map.put("enableRemoteReplication", enableRemoteReplication);
+        map.put("snapMirrorLabel", snapMirrorLabel);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" snapshotID : ").append(snapshotID).append(",");
+        sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
         if(null != expirationTime && expirationTime.isPresent()){
-            sb.append(" expirationTime : ").append(expirationTime).append(",");
+            sb.append(" expirationTime : ").append(gson.toJson(expirationTime)).append(",");
+        }
+        else{
+            sb.append(" expirationTime : ").append("null").append(",");
         }
         if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
-            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
+            sb.append(" enableRemoteReplication : ").append(gson.toJson(enableRemoteReplication)).append(",");
+        }
+        else{
+            sb.append(" enableRemoteReplication : ").append("null").append(",");
+        }
+        if(null != snapMirrorLabel && snapMirrorLabel.isPresent()){
+            sb.append(" snapMirrorLabel : ").append(gson.toJson(snapMirrorLabel)).append(",");
+        }
+        else{
+            sb.append(" snapMirrorLabel : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -142,6 +184,7 @@ public class ModifySnapshotRequest implements Serializable {
         private Long snapshotID;
         private Optional<String> expirationTime;
         private Optional<Boolean> enableRemoteReplication;
+        private Optional<String> snapMirrorLabel;
 
         private Builder() { }
 
@@ -149,13 +192,15 @@ public class ModifySnapshotRequest implements Serializable {
             return new ModifySnapshotRequest (
                          this.snapshotID,
                          this.expirationTime,
-                         this.enableRemoteReplication);
+                         this.enableRemoteReplication,
+                         this.snapMirrorLabel);
         }
 
         private ModifySnapshotRequest.Builder buildFrom(final ModifySnapshotRequest req) {
             this.snapshotID = req.snapshotID;
             this.expirationTime = req.expirationTime;
             this.enableRemoteReplication = req.enableRemoteReplication;
+            this.snapMirrorLabel = req.snapMirrorLabel;
 
             return this;
         }
@@ -172,6 +217,11 @@ public class ModifySnapshotRequest implements Serializable {
 
         public ModifySnapshotRequest.Builder optionalEnableRemoteReplication(final Boolean enableRemoteReplication) {
             this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : Optional.of(enableRemoteReplication);
+            return this;
+        }
+
+        public ModifySnapshotRequest.Builder optionalSnapMirrorLabel(final String snapMirrorLabel) {
+            this.snapMirrorLabel = (snapMirrorLabel == null) ? Optional.<String>empty() : Optional.of(snapMirrorLabel);
             return this;
         }
 

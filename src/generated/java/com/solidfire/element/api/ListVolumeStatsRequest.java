@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,13 +30,13 @@ import java.util.Objects;
 
 /**
  * ListVolumeStatsRequest  
+ * ListVolumeStats returns high-level activity measurements for a single volume, list of volumes, or all volumes (if you omit the volumeIDs parameter). Measurement values are cumulative from the creation of the volume.
  **/
 
 public class ListVolumeStatsRequest implements Serializable {
 
     public static final long serialVersionUID = -7670078818681522628L;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
-
     // empty constructor
     @Since("7.0")
     public ListVolumeStatsRequest() {}
@@ -51,9 +52,10 @@ public class ListVolumeStatsRequest implements Serializable {
     }
 
     /** 
-     * 
+     * A list of volume IDs of volumes from which to retrieve activity information.
      **/
     public Optional<Long[]> getVolumeIDs() { return this.volumeIDs; }
+   
     public void setVolumeIDs(Optional<Long[]> volumeIDs) { 
         this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
     }
@@ -84,10 +86,14 @@ public class ListVolumeStatsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
+            sb.append(" volumeIDs : ").append(gson.toJson(volumeIDs)).append(",");
+        }
+        else{
+            sb.append(" volumeIDs : ").append("null").append(",");
         }
         sb.append( " }" );
 

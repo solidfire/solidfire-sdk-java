@@ -8,6 +8,8 @@ import com.solidfire.gson.stream.JsonReader
 import com.solidfire.gson.{Gson, JsonObject, JsonParser}
 import com.solidfire.core.javautil.Optional
 import com.solidfire.core.serialization.GsonUtil
+import com.solidfire.element.api.ListVolumesResult
+import com.solidfire.util.Utility
 import org.mockito.Matchers.anyString
 import org.mockito.Mockito.when
 import org.scalatest.mock.MockitoSugar
@@ -169,6 +171,14 @@ class ServiceBaseSuite extends WordSpec with BeforeAndAfterAll with MockitoSugar
   }
 
   "decodeResponse" should {
+
+    "Deserialize with extra fields" in {
+      val clean = Utility.getResultFromResource[ListVolumesResult]("ListVolumes.json")
+      clean.getVolumes.length should be (6)
+
+      val dirty = Utility.getResultFromResource[ListVolumesResult]("ListVolumesWithExtraFields.json")
+      dirty.getVolumes.length should be (6)
+    }
 
     "handle simple empty map conversion" in {
       _serviceBase.decodeResponse( "{'result':{}}", classOf[FooMap] ) should be( empty )

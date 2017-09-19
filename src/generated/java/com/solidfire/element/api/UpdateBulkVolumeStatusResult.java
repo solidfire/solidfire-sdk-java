@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,7 +38,6 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
     @SerializedName("status") private String status;
     @SerializedName("url") private String url;
     @SerializedName("attributes") private Attributes attributes;
-
     // empty constructor
     @Since("7.0")
     public UpdateBulkVolumeStatusResult() {}
@@ -64,6 +64,7 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
      * failed
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
@@ -71,6 +72,7 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
      * The URL to access the node's web server provided only if the session is still active.
      **/
     public String getUrl() { return this.url; }
+   
     public void setUrl(String url) { 
         this.url = url;
     }
@@ -78,6 +80,7 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
      * Returns attributes that were specified in the BulkVolumeStatusUpdate method. Values are returned if they have changed or not.
      **/
     public Attributes getAttributes() { return this.attributes; }
+   
     public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
@@ -112,11 +115,12 @@ public class UpdateBulkVolumeStatusResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" status : ").append(status).append(",");
-        sb.append(" url : ").append(url).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
+        sb.append(" url : ").append(gson.toJson(url)).append(",");
+        sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,7 +38,6 @@ public class RollbackToSnapshotResult implements Serializable {
     @SerializedName("snapshot") private Optional<Snapshot> snapshot;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("checksum") private Optional<String> checksum;
-
     // empty constructor
     @Since("7.0")
     public RollbackToSnapshotResult() {}
@@ -60,6 +60,7 @@ public class RollbackToSnapshotResult implements Serializable {
      * 
      **/
     public Optional<Snapshot> getSnapshot() { return this.snapshot; }
+   
     public void setSnapshot(Optional<Snapshot> snapshot) { 
         this.snapshot = (snapshot == null) ? Optional.<Snapshot>empty() : snapshot;
     }
@@ -67,6 +68,7 @@ public class RollbackToSnapshotResult implements Serializable {
      * ID of the newly-created snapshot.
      **/
     public Optional<Long> getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Optional<Long> snapshotID) { 
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
@@ -75,6 +77,7 @@ public class RollbackToSnapshotResult implements Serializable {
      * This checksum can be used later to compare other snapshots to detect errors in the data.
      **/
     public Optional<String> getChecksum() { return this.checksum; }
+   
     public void setChecksum(Optional<String> checksum) { 
         this.checksum = (checksum == null) ? Optional.<String>empty() : checksum;
     }
@@ -109,16 +112,26 @@ public class RollbackToSnapshotResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != snapshot && snapshot.isPresent()){
-            sb.append(" snapshot : ").append(snapshot).append(",");
+            sb.append(" snapshot : ").append(gson.toJson(snapshot)).append(",");
+        }
+        else{
+            sb.append(" snapshot : ").append("null").append(",");
         }
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID).append(",");
+            sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        }
+        else{
+            sb.append(" snapshotID : ").append("null").append(",");
         }
         if(null != checksum && checksum.isPresent()){
-            sb.append(" checksum : ").append(checksum).append(",");
+            sb.append(" checksum : ").append(gson.toJson(checksum)).append(",");
+        }
+        else{
+            sb.append(" checksum : ").append("null").append(",");
         }
         sb.append( " }" );
 

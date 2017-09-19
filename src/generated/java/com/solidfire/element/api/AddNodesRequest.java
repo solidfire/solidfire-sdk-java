@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,15 +30,8 @@ import java.util.Objects;
 
 /**
  * AddNodesRequest  
- * AddNodes is used to add one or more new nodes to the cluster. When a node is not configured and starts up for the first time you are prompted to configure the node. Once a node is configured it is registered as a "pending node" with the cluster.
- * 
- * Adding a node to a cluster that has been set up for virtual networking will require a sufficient number of virtual storage IP addresses to allocate a virtual IP to the new node. If there are no virtual IP addresses available for the new node, the AddNode operation will not complete successfully. Use the "ModifyVirtualNetwork" method to add more storage IP addresses to your virtual network.
- * 
- * The software version on each node in a cluster must be compatible. Run the "ListAllNodes" API to see what versions of software are currently running on the cluster nodes. For an explanation of software version compatibility, see "Node Versioning and Compatibility" in the Element API guide.
- * 
- * Once a node has been added, the drives on the node are made available and can then be added via the "AddDrives" method to increase the storage capacity of the cluster.
- * 
- * Note: It may take several seconds after adding a new Node for it to start up and register the drives as being available.
+ * AddNodes enables you to add one or more new nodes to a cluster. When a node that is not configured starts up for the first time, you are prompted to configure the node. After you configure the node, it is registered as a "pending node" with the cluster. 
+ * Note: It might take several seconds after adding a new node for it to start up and register its drives as available.
  **/
 
 public class AddNodesRequest implements Serializable {
@@ -45,7 +39,6 @@ public class AddNodesRequest implements Serializable {
     public static final long serialVersionUID = -3701373756118626536L;
     @SerializedName("pendingNodes") private Long[] pendingNodes;
     @SerializedName("autoInstall") private Optional<Boolean> autoInstall;
-
     // empty constructor
     @Since("7.0")
     public AddNodesRequest() {}
@@ -63,9 +56,10 @@ public class AddNodesRequest implements Serializable {
     }
 
     /** 
-     * List of PendingNodeIDs for the Nodes to be added. You can obtain the list of Pending Nodes via the ListPendingNodes method.
+     *  List of pending NodeIDs for the nodes to be added. You can  obtain the list of pending nodes using the ListPendingNodes method.
      **/
     public Long[] getPendingNodes() { return this.pendingNodes; }
+   
     public void setPendingNodes(Long[] pendingNodes) { 
         this.pendingNodes = pendingNodes;
     }
@@ -73,6 +67,7 @@ public class AddNodesRequest implements Serializable {
      * Whether these nodes should be autoinstalled
      **/
     public Optional<Boolean> getAutoInstall() { return this.autoInstall; }
+   
     public void setAutoInstall(Optional<Boolean> autoInstall) { 
         this.autoInstall = (autoInstall == null) ? Optional.<Boolean>empty() : autoInstall;
     }
@@ -105,11 +100,15 @@ public class AddNodesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" pendingNodes : ").append(Arrays.toString(pendingNodes)).append(",");
+        sb.append(" pendingNodes : ").append(gson.toJson(Arrays.toString(pendingNodes))).append(",");
         if(null != autoInstall && autoInstall.isPresent()){
-            sb.append(" autoInstall : ").append(autoInstall).append(",");
+            sb.append(" autoInstall : ").append(gson.toJson(autoInstall)).append(",");
+        }
+        else{
+            sb.append(" autoInstall : ").append("null").append(",");
         }
         sb.append( " }" );
 

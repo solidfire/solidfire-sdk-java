@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class ListVirtualVolumeTasksResult implements Serializable {
 
     public static final long serialVersionUID = 7921986552949263824L;
     @SerializedName("tasks") private VirtualVolumeTask[] tasks;
-
     // empty constructor
     @Since("7.0")
     public ListVirtualVolumeTasksResult() {}
@@ -54,6 +54,7 @@ public class ListVirtualVolumeTasksResult implements Serializable {
      * List of VVol Async Tasks.
      **/
     public VirtualVolumeTask[] getTasks() { return this.tasks; }
+   
     public void setTasks(VirtualVolumeTask[] tasks) { 
         this.tasks = tasks;
     }
@@ -84,9 +85,10 @@ public class ListVirtualVolumeTasksResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" tasks : ").append(Arrays.toString(tasks)).append(",");
+        sb.append(" tasks : ").append(gson.toJson(Arrays.toString(tasks))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

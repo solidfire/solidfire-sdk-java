@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,9 +30,10 @@ import java.util.Objects;
 
 /**
  * AddLdapClusterAdminRequest  
- * AddLdapClusterAdmin is used to add a new LDAP Cluster Admin. An LDAP Cluster Admin can be used to manage the cluster via the API and management tools. LDAP Cluster Admins are completely separate and unrelated to standard tenant accounts.
- * 
- * An LDAP group that has been defined in Active Directory can also be added using this API method. The access level that is given to the group will be passed to the individual users in the LDAP group.
+ * AddLdapClusterAdmin enables you to add a new LDAP cluster administrator user. An LDAP cluster administrator can manage the
+ * cluster via the API and management tools. LDAP cluster admin accounts are completely separate and unrelated to standard tenant
+ * accounts.
+ * You can also use this method to add an LDAP group that has been defined in Active Directory. The access level that is given to the group is passed to the individual users in the LDAP group.
  **/
 
 public class AddLdapClusterAdminRequest implements Serializable {
@@ -41,7 +43,6 @@ public class AddLdapClusterAdminRequest implements Serializable {
     @SerializedName("access") private String[] access;
     @SerializedName("acceptEula") private Optional<Boolean> acceptEula;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public AddLdapClusterAdminRequest() {}
@@ -66,6 +67,7 @@ public class AddLdapClusterAdminRequest implements Serializable {
      * The distinguished user name for the new LDAP cluster admin.
      **/
     public String getUsername() { return this.username; }
+   
     public void setUsername(String username) { 
         this.username = username;
     }
@@ -73,20 +75,23 @@ public class AddLdapClusterAdminRequest implements Serializable {
      * Controls which methods this Cluster Admin can use. For more details on the levels of access, see the Access Control appendix in the SolidFire API Reference.
      **/
     public String[] getAccess() { return this.access; }
+   
     public void setAccess(String[] access) { 
         this.access = access;
     }
     /** 
-     * Indicate your acceptance of the End User License Agreement when creating this cluster admin. To accept the EULA, set this parameter to true.
+     * Accept the End User License Agreement. Set to true to add a cluster administrator account to the system. If omitted or set to false, the method call fails.
      **/
     public Optional<Boolean> getAcceptEula() { return this.acceptEula; }
+   
     public void setAcceptEula(Optional<Boolean> acceptEula) { 
         this.acceptEula = (acceptEula == null) ? Optional.<Boolean>empty() : acceptEula;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -123,15 +128,22 @@ public class AddLdapClusterAdminRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" username : ").append(username).append(",");
-        sb.append(" access : ").append(Arrays.toString(access)).append(",");
+        sb.append(" username : ").append(gson.toJson(username)).append(",");
+        sb.append(" access : ").append(gson.toJson(Arrays.toString(access))).append(",");
         if(null != acceptEula && acceptEula.isPresent()){
-            sb.append(" acceptEula : ").append(acceptEula).append(",");
+            sb.append(" acceptEula : ").append(gson.toJson(acceptEula)).append(",");
+        }
+        else{
+            sb.append(" acceptEula : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

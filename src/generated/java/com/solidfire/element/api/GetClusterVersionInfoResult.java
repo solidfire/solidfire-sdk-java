@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,6 @@ public class GetClusterVersionInfoResult implements Serializable {
     @SerializedName("clusterVersion") private String clusterVersion;
     @SerializedName("clusterVersionInfo") private ClusterVersionInfo[] clusterVersionInfo;
     @SerializedName("softwareVersionInfo") private SoftwareVersionInfo softwareVersionInfo;
-
     // empty constructor
     @Since("7.0")
     public GetClusterVersionInfoResult() {}
@@ -63,6 +63,7 @@ public class GetClusterVersionInfoResult implements Serializable {
      * 
      **/
     public String getClusterAPIVersion() { return this.clusterAPIVersion; }
+   
     public void setClusterAPIVersion(String clusterAPIVersion) { 
         this.clusterAPIVersion = clusterAPIVersion;
     }
@@ -70,6 +71,7 @@ public class GetClusterVersionInfoResult implements Serializable {
      * 
      **/
     public String getClusterVersion() { return this.clusterVersion; }
+   
     public void setClusterVersion(String clusterVersion) { 
         this.clusterVersion = clusterVersion;
     }
@@ -77,6 +79,7 @@ public class GetClusterVersionInfoResult implements Serializable {
      * 
      **/
     public ClusterVersionInfo[] getClusterVersionInfo() { return this.clusterVersionInfo; }
+   
     public void setClusterVersionInfo(ClusterVersionInfo[] clusterVersionInfo) { 
         this.clusterVersionInfo = clusterVersionInfo;
     }
@@ -84,6 +87,7 @@ public class GetClusterVersionInfoResult implements Serializable {
      * 
      **/
     public SoftwareVersionInfo getSoftwareVersionInfo() { return this.softwareVersionInfo; }
+   
     public void setSoftwareVersionInfo(SoftwareVersionInfo softwareVersionInfo) { 
         this.softwareVersionInfo = softwareVersionInfo;
     }
@@ -120,12 +124,13 @@ public class GetClusterVersionInfoResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterAPIVersion : ").append(clusterAPIVersion).append(",");
-        sb.append(" clusterVersion : ").append(clusterVersion).append(",");
-        sb.append(" clusterVersionInfo : ").append(Arrays.toString(clusterVersionInfo)).append(",");
-        sb.append(" softwareVersionInfo : ").append(softwareVersionInfo).append(",");
+        sb.append(" clusterAPIVersion : ").append(gson.toJson(clusterAPIVersion)).append(",");
+        sb.append(" clusterVersion : ").append(gson.toJson(clusterVersion)).append(",");
+        sb.append(" clusterVersionInfo : ").append(gson.toJson(Arrays.toString(clusterVersionInfo))).append(",");
+        sb.append(" softwareVersionInfo : ").append(gson.toJson(softwareVersionInfo)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

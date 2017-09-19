@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class GetSnmpStateResult implements Serializable {
     public static final long serialVersionUID = 6113235952334962570L;
     @SerializedName("enabled") private Boolean enabled;
     @SerializedName("snmpV3Enabled") private Boolean snmpV3Enabled;
-
     // empty constructor
     @Since("7.0")
     public GetSnmpStateResult() {}
@@ -57,6 +57,7 @@ public class GetSnmpStateResult implements Serializable {
      * If the nodes in the cluster are configured for SNMP.
      **/
     public Boolean getEnabled() { return this.enabled; }
+   
     public void setEnabled(Boolean enabled) { 
         this.enabled = enabled;
     }
@@ -64,6 +65,7 @@ public class GetSnmpStateResult implements Serializable {
      * If the node in the cluster is configured for SNMP v3.
      **/
     public Boolean getSnmpV3Enabled() { return this.snmpV3Enabled; }
+   
     public void setSnmpV3Enabled(Boolean snmpV3Enabled) { 
         this.snmpV3Enabled = snmpV3Enabled;
     }
@@ -96,10 +98,11 @@ public class GetSnmpStateResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" enabled : ").append(enabled).append(",");
-        sb.append(" snmpV3Enabled : ").append(snmpV3Enabled).append(",");
+        sb.append(" enabled : ").append(gson.toJson(enabled)).append(",");
+        sb.append(" snmpV3Enabled : ").append(gson.toJson(snmpV3Enabled)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

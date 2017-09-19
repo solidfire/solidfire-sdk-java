@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,15 @@ import java.util.Objects;
 
 /**
  * GetVolumeAccessGroupLunAssignmentsRequest  
- * The GetVolumeAccessGroupLunAssignments is used to return information LUN mappings of a specified volume access group.
+ * The GetVolumeAccessGroupLunAssignments
+ * method enables you to retrieve details on LUN mappings
+ * of a specified volume access group.
  **/
 
 public class GetVolumeAccessGroupLunAssignmentsRequest implements Serializable {
 
     public static final long serialVersionUID = -5760890499027616714L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
-
     // empty constructor
     @Since("7.0")
     public GetVolumeAccessGroupLunAssignmentsRequest() {}
@@ -52,9 +54,10 @@ public class GetVolumeAccessGroupLunAssignmentsRequest implements Serializable {
     }
 
     /** 
-     * Unique volume access group ID used to return information.
+     * The unique volume access group ID used to return information.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
@@ -85,9 +88,10 @@ public class GetVolumeAccessGroupLunAssignmentsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
+        sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

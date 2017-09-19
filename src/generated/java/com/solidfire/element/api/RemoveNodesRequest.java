@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,16 +30,14 @@ import java.util.Objects;
 
 /**
  * RemoveNodesRequest  
- * RemoveNodes is used to remove one or more nodes that should no integerer participate in the cluster. Before removing a node, all drives it contains must first be removed with "RemoveDrives" method. A node cannot be removed until the RemoveDrives process has completed and all data has been migrated away from the node.
- * 
- * Once removed, a node registers itself as a pending node and can be added again, or shut down which removes it from the "Pending Node" list.
+ * You can use RemoveNodes to remove one or more nodes that should no longer participate in the cluster. Before removing a node, you must remove all drives the node contains using the RemoveDrives method. You cannot remove a node until the RemoveDrives process has completed and all data has been migrated away from the node.
+ * After you remove a node, it registers itself as a pending node. You can add the node again or shut it down (shutting the node down removes it from the Pending Node list).
  **/
 
 public class RemoveNodesRequest implements Serializable {
 
     public static final long serialVersionUID = 2891888305959375772L;
     @SerializedName("nodes") private Long[] nodes;
-
     // empty constructor
     @Since("7.0")
     public RemoveNodesRequest() {}
@@ -57,6 +56,7 @@ public class RemoveNodesRequest implements Serializable {
      * List of NodeIDs for the nodes to be removed.
      **/
     public Long[] getNodes() { return this.nodes; }
+   
     public void setNodes(Long[] nodes) { 
         this.nodes = nodes;
     }
@@ -87,9 +87,10 @@ public class RemoveNodesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

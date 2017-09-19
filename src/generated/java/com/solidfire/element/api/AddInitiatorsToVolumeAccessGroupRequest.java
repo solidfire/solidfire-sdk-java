@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,8 @@ import java.util.Objects;
 
 /**
  * AddInitiatorsToVolumeAccessGroupRequest  
- * Add initiators to a volume access group.
+ * AddInitiatorsToVolumeAccessGroup enables you
+ * to add initiators to a specified volume access group.
  **/
 
 public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
@@ -37,7 +39,6 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
     public static final long serialVersionUID = 7231615367275071477L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("initiators") private String[] initiators;
-
     // empty constructor
     @Since("7.0")
     public AddInitiatorsToVolumeAccessGroupRequest() {}
@@ -55,16 +56,20 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
     }
 
     /** 
-     * The ID of the volume access group to modify.
+     * The ID of the volume access group
+     * to modify.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
-     * List of initiators to add to the volume access group.
+     * The list of initiators to add to the volume access
+     * group.
      **/
     public String[] getInitiators() { return this.initiators; }
+   
     public void setInitiators(String[] initiators) { 
         this.initiators = initiators;
     }
@@ -97,10 +102,11 @@ public class AddInitiatorsToVolumeAccessGroupRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
+        sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
+        sb.append(" initiators : ").append(gson.toJson(Arrays.toString(initiators))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

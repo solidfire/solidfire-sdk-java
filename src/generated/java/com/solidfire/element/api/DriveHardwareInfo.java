@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -49,7 +50,6 @@ public class DriveHardwareInfo implements Serializable {
     @SerializedName("size") private Long size;
     @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("version") private String version;
-
     // empty constructor
     @Since("7.0")
     public DriveHardwareInfo() {}
@@ -96,6 +96,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public String getDescription() { return this.description; }
+   
     public void setDescription(String description) { 
         this.description = description;
     }
@@ -103,6 +104,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public String getDev() { return this.dev; }
+   
     public void setDev(String dev) { 
         this.dev = dev;
     }
@@ -110,6 +112,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public String getDevpath() { return this.devpath; }
+   
     public void setDevpath(String devpath) { 
         this.devpath = devpath;
     }
@@ -117,6 +120,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public Boolean getDriveSecurityAtMaximum() { return this.driveSecurityAtMaximum; }
+   
     public void setDriveSecurityAtMaximum(Boolean driveSecurityAtMaximum) { 
         this.driveSecurityAtMaximum = driveSecurityAtMaximum;
     }
@@ -124,6 +128,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public Boolean getDriveSecurityFrozen() { return this.driveSecurityFrozen; }
+   
     public void setDriveSecurityFrozen(Boolean driveSecurityFrozen) { 
         this.driveSecurityFrozen = driveSecurityFrozen;
     }
@@ -131,6 +136,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public Boolean getDriveSecurityLocked() { return this.driveSecurityLocked; }
+   
     public void setDriveSecurityLocked(Boolean driveSecurityLocked) { 
         this.driveSecurityLocked = driveSecurityLocked;
     }
@@ -138,6 +144,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public String getLogicalname() { return this.logicalname; }
+   
     public void setLogicalname(String logicalname) { 
         this.logicalname = logicalname;
     }
@@ -145,6 +152,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public String getProduct() { return this.product; }
+   
     public void setProduct(String product) { 
         this.product = product;
     }
@@ -152,6 +160,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public String getScsiCompatID() { return this.scsiCompatID; }
+   
     public void setScsiCompatID(String scsiCompatID) { 
         this.scsiCompatID = scsiCompatID;
     }
@@ -159,6 +168,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public Boolean getSecurityFeatureEnabled() { return this.securityFeatureEnabled; }
+   
     public void setSecurityFeatureEnabled(Boolean securityFeatureEnabled) { 
         this.securityFeatureEnabled = securityFeatureEnabled;
     }
@@ -166,6 +176,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public Boolean getSecurityFeatureSupported() { return this.securityFeatureSupported; }
+   
     public void setSecurityFeatureSupported(Boolean securityFeatureSupported) { 
         this.securityFeatureSupported = securityFeatureSupported;
     }
@@ -173,6 +184,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public String getSerial() { return this.serial; }
+   
     public void setSerial(String serial) { 
         this.serial = serial;
     }
@@ -180,6 +192,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public Long getSize() { return this.size; }
+   
     public void setSize(Long size) { 
         this.size = size;
     }
@@ -187,6 +200,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public java.util.UUID getUuid() { return this.uuid; }
+   
     public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
@@ -194,6 +208,7 @@ public class DriveHardwareInfo implements Serializable {
      * 
      **/
     public String getVersion() { return this.version; }
+   
     public void setVersion(String version) { 
         this.version = version;
     }
@@ -252,23 +267,24 @@ public class DriveHardwareInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" description : ").append(description).append(",");
-        sb.append(" dev : ").append(dev).append(",");
-        sb.append(" devpath : ").append(devpath).append(",");
-        sb.append(" driveSecurityAtMaximum : ").append(driveSecurityAtMaximum).append(",");
-        sb.append(" driveSecurityFrozen : ").append(driveSecurityFrozen).append(",");
-        sb.append(" driveSecurityLocked : ").append(driveSecurityLocked).append(",");
-        sb.append(" logicalname : ").append(logicalname).append(",");
-        sb.append(" product : ").append(product).append(",");
-        sb.append(" scsiCompatID : ").append(scsiCompatID).append(",");
-        sb.append(" securityFeatureEnabled : ").append(securityFeatureEnabled).append(",");
-        sb.append(" securityFeatureSupported : ").append(securityFeatureSupported).append(",");
-        sb.append(" serial : ").append(serial).append(",");
-        sb.append(" size : ").append(size).append(",");
-        sb.append(" uuid : ").append(uuid).append(",");
-        sb.append(" version : ").append(version).append(",");
+        sb.append(" description : ").append(gson.toJson(description)).append(",");
+        sb.append(" dev : ").append(gson.toJson(dev)).append(",");
+        sb.append(" devpath : ").append(gson.toJson(devpath)).append(",");
+        sb.append(" driveSecurityAtMaximum : ").append(gson.toJson(driveSecurityAtMaximum)).append(",");
+        sb.append(" driveSecurityFrozen : ").append(gson.toJson(driveSecurityFrozen)).append(",");
+        sb.append(" driveSecurityLocked : ").append(gson.toJson(driveSecurityLocked)).append(",");
+        sb.append(" logicalname : ").append(gson.toJson(logicalname)).append(",");
+        sb.append(" product : ").append(gson.toJson(product)).append(",");
+        sb.append(" scsiCompatID : ").append(gson.toJson(scsiCompatID)).append(",");
+        sb.append(" securityFeatureEnabled : ").append(gson.toJson(securityFeatureEnabled)).append(",");
+        sb.append(" securityFeatureSupported : ").append(gson.toJson(securityFeatureSupported)).append(",");
+        sb.append(" serial : ").append(gson.toJson(serial)).append(",");
+        sb.append(" size : ").append(gson.toJson(size)).append(",");
+        sb.append(" uuid : ").append(gson.toJson(uuid)).append(",");
+        sb.append(" version : ").append(gson.toJson(version)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

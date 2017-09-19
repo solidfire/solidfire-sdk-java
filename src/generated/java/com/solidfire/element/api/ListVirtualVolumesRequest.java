@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,8 @@ import java.util.Objects;
 
 /**
  * ListVirtualVolumesRequest  
- * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes, or only list a subset.
+ * ListVirtualVolumes enables you to list the virtual volumes currently in the system. You can use this method to list all virtual volumes,
+ * or only list a subset.
  **/
 
 public class ListVirtualVolumesRequest implements Serializable {
@@ -40,7 +42,6 @@ public class ListVirtualVolumesRequest implements Serializable {
     @SerializedName("recursive") private Optional<Boolean> recursive;
     @SerializedName("startVirtualVolumeID") private Optional<java.util.UUID> startVirtualVolumeID;
     @SerializedName("virtualVolumeIDs") private Optional<java.util.UUID[]> virtualVolumeIDs;
-
     // empty constructor
     @Since("7.0")
     public ListVirtualVolumesRequest() {}
@@ -64,9 +65,13 @@ public class ListVirtualVolumesRequest implements Serializable {
     }
 
     /** 
-     * Possible values:true: Include more details about each VVOL in the response.false: Include the standard level of detail about each VVOL in the response.
+     * Specifies the level of detail about each virtual volume that is returned. Possible values are:
+     * true: Include more details about each virtual volume in the response.
+     * false: Include the standard level of detail about each virtual volume in
+     * the response.
      **/
     public Optional<Boolean> getDetails() { return this.details; }
+   
     public void setDetails(Optional<Boolean> details) { 
         this.details = (details == null) ? Optional.<Boolean>empty() : details;
     }
@@ -74,13 +79,20 @@ public class ListVirtualVolumesRequest implements Serializable {
      * The maximum number of virtual volumes to list.
      **/
     public Optional<Long> getLimit() { return this.limit; }
+   
     public void setLimit(Optional<Long> limit) { 
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
     /** 
-     * Possible values:true: Include information about the children of each VVOL in the response.false: Do not include information about the children of each VVOL in the response.
+     * Specifies whether to include information about the children of each virtual volume in the response.
+     * Possible values are:
+     * true: Include information about the children of each virtual volume in
+     * the response.
+     * false: Do not include information about the children of each
+     * virtual volume in the response.
      **/
     public Optional<Boolean> getRecursive() { return this.recursive; }
+   
     public void setRecursive(Optional<Boolean> recursive) { 
         this.recursive = (recursive == null) ? Optional.<Boolean>empty() : recursive;
     }
@@ -88,13 +100,17 @@ public class ListVirtualVolumesRequest implements Serializable {
      * The ID of the virtual volume at which to begin the list.
      **/
     public Optional<java.util.UUID> getStartVirtualVolumeID() { return this.startVirtualVolumeID; }
+   
     public void setStartVirtualVolumeID(Optional<java.util.UUID> startVirtualVolumeID) { 
         this.startVirtualVolumeID = (startVirtualVolumeID == null) ? Optional.<java.util.UUID>empty() : startVirtualVolumeID;
     }
     /** 
-     * A list of virtual volume  IDs for which to retrieve information. If you specify this parameter, the method returns information about only these virtual volumes.
+     * A list of virtual volume IDs for which to retrieve information. If
+     * you specify this parameter, the method returns information
+     * about only these virtual volumes.
      **/
     public Optional<java.util.UUID[]> getVirtualVolumeIDs() { return this.virtualVolumeIDs; }
+   
     public void setVirtualVolumeIDs(Optional<java.util.UUID[]> virtualVolumeIDs) { 
         this.virtualVolumeIDs = (virtualVolumeIDs == null) ? Optional.<java.util.UUID[]>empty() : virtualVolumeIDs;
     }
@@ -133,22 +149,38 @@ public class ListVirtualVolumesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != details && details.isPresent()){
-            sb.append(" details : ").append(details).append(",");
+            sb.append(" details : ").append(gson.toJson(details)).append(",");
+        }
+        else{
+            sb.append(" details : ").append("null").append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(gson.toJson(limit)).append(",");
+        }
+        else{
+            sb.append(" limit : ").append("null").append(",");
         }
         if(null != recursive && recursive.isPresent()){
-            sb.append(" recursive : ").append(recursive).append(",");
+            sb.append(" recursive : ").append(gson.toJson(recursive)).append(",");
+        }
+        else{
+            sb.append(" recursive : ").append("null").append(",");
         }
         if(null != startVirtualVolumeID && startVirtualVolumeID.isPresent()){
-            sb.append(" startVirtualVolumeID : ").append(startVirtualVolumeID).append(",");
+            sb.append(" startVirtualVolumeID : ").append(gson.toJson(startVirtualVolumeID)).append(",");
+        }
+        else{
+            sb.append(" startVirtualVolumeID : ").append("null").append(",");
         }
         if(null != virtualVolumeIDs && virtualVolumeIDs.isPresent()){
-            sb.append(" virtualVolumeIDs : ").append(virtualVolumeIDs).append(",");
+            sb.append(" virtualVolumeIDs : ").append(gson.toJson(virtualVolumeIDs)).append(",");
+        }
+        else{
+            sb.append(" virtualVolumeIDs : ").append("null").append(",");
         }
         sb.append( " }" );
 

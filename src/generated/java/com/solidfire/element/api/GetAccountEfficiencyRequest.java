@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,14 @@ import java.util.Objects;
 
 /**
  * GetAccountEfficiencyRequest  
- * GetAccountEfficiency is used to retrieve information about a volume account. Only the account given as a parameter in this API method is used to compute the capacity.
+ * GetAccountEfficiency enables you to retrieve efficiency statistics about a volume account. This method returns efficiency information
+ * only for the account you specify as a parameter.
  **/
 
 public class GetAccountEfficiencyRequest implements Serializable {
 
     public static final long serialVersionUID = 5822006002710065522L;
     @SerializedName("accountID") private Long accountID;
-
     // empty constructor
     @Since("7.0")
     public GetAccountEfficiencyRequest() {}
@@ -52,9 +53,11 @@ public class GetAccountEfficiencyRequest implements Serializable {
     }
 
     /** 
-     * Specifies the volume account for which capacity is computed.
+     * Specifies the volume account for which efficiency
+     * statistics are returned.
      **/
     public Long getAccountID() { return this.accountID; }
+   
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
@@ -85,9 +88,10 @@ public class GetAccountEfficiencyRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" accountID : ").append(accountID).append(",");
+        sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

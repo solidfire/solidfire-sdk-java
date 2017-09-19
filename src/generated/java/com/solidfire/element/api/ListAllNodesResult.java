@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,7 +38,6 @@ public class ListAllNodesResult implements Serializable {
     @SerializedName("nodes") private Node[] nodes;
     @SerializedName("pendingNodes") private PendingNode[] pendingNodes;
     @SerializedName("pendingActiveNodes") private Optional<PendingActiveNode[]> pendingActiveNodes;
-
     // empty constructor
     @Since("7.0")
     public ListAllNodesResult() {}
@@ -60,6 +60,7 @@ public class ListAllNodesResult implements Serializable {
      * 
      **/
     public Node[] getNodes() { return this.nodes; }
+   
     public void setNodes(Node[] nodes) { 
         this.nodes = nodes;
     }
@@ -67,6 +68,7 @@ public class ListAllNodesResult implements Serializable {
      * 
      **/
     public PendingNode[] getPendingNodes() { return this.pendingNodes; }
+   
     public void setPendingNodes(PendingNode[] pendingNodes) { 
         this.pendingNodes = pendingNodes;
     }
@@ -74,6 +76,7 @@ public class ListAllNodesResult implements Serializable {
      * List of objects detailing information about all PendingActive nodes in the system.
      **/
     public Optional<PendingActiveNode[]> getPendingActiveNodes() { return this.pendingActiveNodes; }
+   
     public void setPendingActiveNodes(Optional<PendingActiveNode[]> pendingActiveNodes) { 
         this.pendingActiveNodes = (pendingActiveNodes == null) ? Optional.<PendingActiveNode[]>empty() : pendingActiveNodes;
     }
@@ -108,12 +111,16 @@ public class ListAllNodesResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
-        sb.append(" pendingNodes : ").append(Arrays.toString(pendingNodes)).append(",");
+        sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
+        sb.append(" pendingNodes : ").append(gson.toJson(Arrays.toString(pendingNodes))).append(",");
         if(null != pendingActiveNodes && pendingActiveNodes.isPresent()){
-            sb.append(" pendingActiveNodes : ").append(pendingActiveNodes).append(",");
+            sb.append(" pendingActiveNodes : ").append(gson.toJson(pendingActiveNodes)).append(",");
+        }
+        else{
+            sb.append(" pendingActiveNodes : ").append("null").append(",");
         }
         sb.append( " }" );
 

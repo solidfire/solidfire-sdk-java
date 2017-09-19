@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,14 @@ import java.util.Objects;
 
 /**
  * EnableSnmpRequest  
- * EnableSnmp is used to enable SNMP on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to EnableSnmp.
+ * EnableSnmp enables you to enable SNMP on cluster nodes. When you enable SNMP, the action applies to all nodes in the cluster, and
+ * the values that are passed replace, in whole, all values set in any previous call to EnableSnmp.
  **/
 
 public class EnableSnmpRequest implements Serializable {
 
     public static final long serialVersionUID = 633938753461190611L;
     @SerializedName("snmpV3Enabled") private Boolean snmpV3Enabled;
-
     // empty constructor
     @Since("7.0")
     public EnableSnmpRequest() {}
@@ -52,9 +53,11 @@ public class EnableSnmpRequest implements Serializable {
     }
 
     /** 
-     * If set to "true", then SNMP v3 is enabled on each node in the cluster. If set to "false", then SNMP v2 is enabled.
+     * If set to "true", then SNMP v3 is enabled on each node in the
+     * cluster. If set to "false", then SNMP v2 is enabled.
      **/
     public Boolean getSnmpV3Enabled() { return this.snmpV3Enabled; }
+   
     public void setSnmpV3Enabled(Boolean snmpV3Enabled) { 
         this.snmpV3Enabled = snmpV3Enabled;
     }
@@ -85,9 +88,10 @@ public class EnableSnmpRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" snmpV3Enabled : ").append(snmpV3Enabled).append(",");
+        sb.append(" snmpV3Enabled : ").append(gson.toJson(snmpV3Enabled)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

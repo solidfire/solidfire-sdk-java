@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class GetOriginResult implements Serializable {
 
     public static final long serialVersionUID = 4350683498492694186L;
     @SerializedName("nodes") private GetOriginNode[] nodes;
-
     // empty constructor
     @Since("7.0")
     public GetOriginResult() {}
@@ -54,6 +54,7 @@ public class GetOriginResult implements Serializable {
      * 
      **/
     public GetOriginNode[] getNodes() { return this.nodes; }
+   
     public void setNodes(GetOriginNode[] nodes) { 
         this.nodes = nodes;
     }
@@ -84,9 +85,10 @@ public class GetOriginResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,13 +30,14 @@ import java.util.Objects;
 
 /**
  * ModifyVolumeAccessGroupLunAssignmentsRequest  
- * The ModifytVolumeAccessGroupLunAssignments is used to define custom LUN assignments for specific volumes. Only LUN values set on the lunAssignments parameter will be changed in the volume access group. All other LUN assignments will remain unchanged.
- * 
- * LUN assignment values must be unique for volumes in a volume access group. An exception will be seen if LUN assignments are duplicated in a volume access group. However, the same LUN values can be used again in different volume access groups.
- * 
- * Note: Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed. None of the specified LUN assignments will be modified if there is an exception.
- * 
- * Caution: If a LUN assignment is changed for a volume with active I/O, the I/O could be disrupted. Changes to the server configuration may be required in order to change volume LUN assignments.
+ * The ModifyVolumeAccessGroupLunAssignments
+ * method enables you to define custom LUN assignments
+ * for specific volumes. This method changes only LUN
+ * values set on the lunAssignments parameter in the
+ * volume access group. All other LUN assignments remain
+ * unchanged. LUN assignment values must be unique for volumes in a volume access group. You cannot define duplicate LUN values within a volume access group. However, you can use the same LUN values again in different volume access groups. 
+ * Note: Correct LUN values are 0 through 16383. The system generates an exception if you pass a LUN value outside of this range. None of the specified LUN assignments are modified if there is an exception. 
+ * Caution: If you change a LUN assignment for a volume with active I/O, the I/O can be disrupted. You might need to change the server configuration before changing volume LUN assignments.
  **/
 
 public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializable {
@@ -43,7 +45,6 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
     public static final long serialVersionUID = 4157486897027617747L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
-
     // empty constructor
     @Since("7.0")
     public ModifyVolumeAccessGroupLunAssignmentsRequest() {}
@@ -61,9 +62,10 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
     }
 
     /** 
-     * Unique volume access group ID for which the LUN assignments will be modified.
+     * The ID of the volume access group for which the LUN assignments will be modified.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
@@ -71,6 +73,7 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
      * The volume IDs with new assigned LUN values.
      **/
     public LunAssignment[] getLunAssignments() { return this.lunAssignments; }
+   
     public void setLunAssignments(LunAssignment[] lunAssignments) { 
         this.lunAssignments = lunAssignments;
     }
@@ -103,10 +106,11 @@ public class ModifyVolumeAccessGroupLunAssignmentsRequest implements Serializabl
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" lunAssignments : ").append(Arrays.toString(lunAssignments)).append(",");
+        sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
+        sb.append(" lunAssignments : ").append(gson.toJson(Arrays.toString(lunAssignments))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

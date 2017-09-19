@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,7 @@ import java.util.Objects;
 
 /**
  * ListVolumesForAccountRequest  
- * ListVolumesForAccount returns the list of active AND (pending) deleted volumes for an account.
+ * ListVolumesForAccount returns the list of active and (pending) deleted volumes for an account.
  **/
 
 public class ListVolumesForAccountRequest implements Serializable {
@@ -38,7 +39,7 @@ public class ListVolumesForAccountRequest implements Serializable {
     @SerializedName("accountID") private Long accountID;
     @SerializedName("startVolumeID") private Optional<Long> startVolumeID;
     @SerializedName("limit") private Optional<Long> limit;
-
+    @SerializedName("includeVirtualVolumes") private Optional<Boolean> includeVirtualVolumes;
     // empty constructor
     @Since("7.0")
     public ListVolumesForAccountRequest() {}
@@ -56,11 +57,26 @@ public class ListVolumesForAccountRequest implements Serializable {
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
+    // parameterized constructor
+    @Since("9.0")
+    public ListVolumesForAccountRequest(
+        Long accountID,
+        Optional<Long> startVolumeID,
+        Optional<Long> limit,
+        Optional<Boolean> includeVirtualVolumes
+    )
+    {
+        this.accountID = accountID;
+        this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
+        this.limit = (limit == null) ? Optional.<Long>empty() : limit;
+        this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
+    }
 
     /** 
-     * The ID of the account to list the volumes for.
+     * Returns all volumes owned by this AccountID.
      **/
     public Long getAccountID() { return this.accountID; }
+   
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
@@ -70,6 +86,7 @@ public class ListVolumesForAccountRequest implements Serializable {
      * By default, this starts at the lowest VolumeID.
      **/
     public Optional<Long> getStartVolumeID() { return this.startVolumeID; }
+   
     public void setStartVolumeID(Optional<Long> startVolumeID) { 
         this.startVolumeID = (startVolumeID == null) ? Optional.<Long>empty() : startVolumeID;
     }
@@ -77,8 +94,18 @@ public class ListVolumesForAccountRequest implements Serializable {
      * The maximum number of volumes to return from the API.
      **/
     public Optional<Long> getLimit() { return this.limit; }
+   
     public void setLimit(Optional<Long> limit) { 
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
+    }
+    /** 
+     * Specifies that virtual volumes are included in the response by default.
+     * To exclude virtual volumes, set to false.
+     **/
+    public Optional<Boolean> getIncludeVirtualVolumes() { return this.includeVirtualVolumes; }
+   
+    public void setIncludeVirtualVolumes(Optional<Boolean> includeVirtualVolumes) { 
+        this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : includeVirtualVolumes;
     }
 
     @Override
@@ -91,12 +118,13 @@ public class ListVolumesForAccountRequest implements Serializable {
         return 
             Objects.equals(accountID, that.accountID) && 
             Objects.equals(startVolumeID, that.startVolumeID) && 
-            Objects.equals(limit, that.limit);
+            Objects.equals(limit, that.limit) && 
+            Objects.equals(includeVirtualVolumes, that.includeVirtualVolumes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( accountID,startVolumeID,limit );
+        return Objects.hash( accountID,startVolumeID,limit,includeVirtualVolumes );
     }
 
 
@@ -105,20 +133,34 @@ public class ListVolumesForAccountRequest implements Serializable {
         map.put("accountID", accountID);
         map.put("startVolumeID", startVolumeID);
         map.put("limit", limit);
+        map.put("includeVirtualVolumes", includeVirtualVolumes);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" accountID : ").append(accountID).append(",");
+        sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
         if(null != startVolumeID && startVolumeID.isPresent()){
-            sb.append(" startVolumeID : ").append(startVolumeID).append(",");
+            sb.append(" startVolumeID : ").append(gson.toJson(startVolumeID)).append(",");
+        }
+        else{
+            sb.append(" startVolumeID : ").append("null").append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(gson.toJson(limit)).append(",");
+        }
+        else{
+            sb.append(" limit : ").append("null").append(",");
+        }
+        if(null != includeVirtualVolumes && includeVirtualVolumes.isPresent()){
+            sb.append(" includeVirtualVolumes : ").append(gson.toJson(includeVirtualVolumes)).append(",");
+        }
+        else{
+            sb.append(" includeVirtualVolumes : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -140,6 +182,7 @@ public class ListVolumesForAccountRequest implements Serializable {
         private Long accountID;
         private Optional<Long> startVolumeID;
         private Optional<Long> limit;
+        private Optional<Boolean> includeVirtualVolumes;
 
         private Builder() { }
 
@@ -147,13 +190,15 @@ public class ListVolumesForAccountRequest implements Serializable {
             return new ListVolumesForAccountRequest (
                          this.accountID,
                          this.startVolumeID,
-                         this.limit);
+                         this.limit,
+                         this.includeVirtualVolumes);
         }
 
         private ListVolumesForAccountRequest.Builder buildFrom(final ListVolumesForAccountRequest req) {
             this.accountID = req.accountID;
             this.startVolumeID = req.startVolumeID;
             this.limit = req.limit;
+            this.includeVirtualVolumes = req.includeVirtualVolumes;
 
             return this;
         }
@@ -170,6 +215,11 @@ public class ListVolumesForAccountRequest implements Serializable {
 
         public ListVolumesForAccountRequest.Builder optionalLimit(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
+            return this;
+        }
+
+        public ListVolumesForAccountRequest.Builder optionalIncludeVirtualVolumes(final Boolean includeVirtualVolumes) {
+            this.includeVirtualVolumes = (includeVirtualVolumes == null) ? Optional.<Boolean>empty() : Optional.of(includeVirtualVolumes);
             return this;
         }
 

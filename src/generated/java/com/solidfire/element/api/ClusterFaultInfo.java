@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -49,7 +50,6 @@ public class ClusterFaultInfo implements Serializable {
     @SerializedName("date") private String date;
     @SerializedName("resolvedDate") private String resolvedDate;
     @SerializedName("data") private Optional<Attributes> data;
-
     // empty constructor
     @Since("7.0")
     public ClusterFaultInfo() {}
@@ -96,6 +96,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public Optional<Long[]> getDriveIDs() { return this.driveIDs; }
+   
     public void setDriveIDs(Optional<Long[]> driveIDs) { 
         this.driveIDs = (driveIDs == null) ? Optional.<Long[]>empty() : driveIDs;
     }
@@ -103,6 +104,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public Optional<String> getNetworkInterface() { return this.networkInterface; }
+   
     public void setNetworkInterface(Optional<String> networkInterface) { 
         this.networkInterface = (networkInterface == null) ? Optional.<String>empty() : networkInterface;
     }
@@ -110,6 +112,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public String getSeverity() { return this.severity; }
+   
     public void setSeverity(String severity) { 
         this.severity = severity;
     }
@@ -117,6 +120,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public String getType() { return this.type; }
+   
     public void setType(String type) { 
         this.type = type;
     }
@@ -124,6 +128,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public String getCode() { return this.code; }
+   
     public void setCode(String code) { 
         this.code = code;
     }
@@ -131,6 +136,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public String getDetails() { return this.details; }
+   
     public void setDetails(String details) { 
         this.details = details;
     }
@@ -138,6 +144,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public Long getNodeHardwareFaultID() { return this.nodeHardwareFaultID; }
+   
     public void setNodeHardwareFaultID(Long nodeHardwareFaultID) { 
         this.nodeHardwareFaultID = nodeHardwareFaultID;
     }
@@ -145,6 +152,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -152,6 +160,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public Long getServiceID() { return this.serviceID; }
+   
     public void setServiceID(Long serviceID) { 
         this.serviceID = serviceID;
     }
@@ -159,6 +168,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public Long getDriveID() { return this.driveID; }
+   
     public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
@@ -166,6 +176,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public Boolean getResolved() { return this.resolved; }
+   
     public void setResolved(Boolean resolved) { 
         this.resolved = resolved;
     }
@@ -173,6 +184,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public Long getClusterFaultID() { return this.clusterFaultID; }
+   
     public void setClusterFaultID(Long clusterFaultID) { 
         this.clusterFaultID = clusterFaultID;
     }
@@ -180,6 +192,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public String getDate() { return this.date; }
+   
     public void setDate(String date) { 
         this.date = date;
     }
@@ -187,6 +200,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public String getResolvedDate() { return this.resolvedDate; }
+   
     public void setResolvedDate(String resolvedDate) { 
         this.resolvedDate = resolvedDate;
     }
@@ -194,6 +208,7 @@ public class ClusterFaultInfo implements Serializable {
      * 
      **/
     public Optional<Attributes> getData() { return this.data; }
+   
     public void setData(Optional<Attributes> data) { 
         this.data = (data == null) ? Optional.<Attributes>empty() : data;
     }
@@ -252,28 +267,38 @@ public class ClusterFaultInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != driveIDs && driveIDs.isPresent()){
-            sb.append(" driveIDs : ").append(driveIDs).append(",");
+            sb.append(" driveIDs : ").append(gson.toJson(driveIDs)).append(",");
+        }
+        else{
+            sb.append(" driveIDs : ").append("null").append(",");
         }
         if(null != networkInterface && networkInterface.isPresent()){
-            sb.append(" networkInterface : ").append(networkInterface).append(",");
+            sb.append(" networkInterface : ").append(gson.toJson(networkInterface)).append(",");
         }
-        sb.append(" severity : ").append(severity).append(",");
-        sb.append(" type : ").append(type).append(",");
-        sb.append(" code : ").append(code).append(",");
-        sb.append(" details : ").append(details).append(",");
-        sb.append(" nodeHardwareFaultID : ").append(nodeHardwareFaultID).append(",");
-        sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" serviceID : ").append(serviceID).append(",");
-        sb.append(" driveID : ").append(driveID).append(",");
-        sb.append(" resolved : ").append(resolved).append(",");
-        sb.append(" clusterFaultID : ").append(clusterFaultID).append(",");
-        sb.append(" date : ").append(date).append(",");
-        sb.append(" resolvedDate : ").append(resolvedDate).append(",");
+        else{
+            sb.append(" networkInterface : ").append("null").append(",");
+        }
+        sb.append(" severity : ").append(gson.toJson(severity)).append(",");
+        sb.append(" type : ").append(gson.toJson(type)).append(",");
+        sb.append(" code : ").append(gson.toJson(code)).append(",");
+        sb.append(" details : ").append(gson.toJson(details)).append(",");
+        sb.append(" nodeHardwareFaultID : ").append(gson.toJson(nodeHardwareFaultID)).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
+        sb.append(" serviceID : ").append(gson.toJson(serviceID)).append(",");
+        sb.append(" driveID : ").append(gson.toJson(driveID)).append(",");
+        sb.append(" resolved : ").append(gson.toJson(resolved)).append(",");
+        sb.append(" clusterFaultID : ").append(gson.toJson(clusterFaultID)).append(",");
+        sb.append(" date : ").append(gson.toJson(date)).append(",");
+        sb.append(" resolvedDate : ").append(gson.toJson(resolvedDate)).append(",");
         if(null != data && data.isPresent()){
-            sb.append(" data : ").append(data).append(",");
+            sb.append(" data : ").append(gson.toJson(data)).append(",");
+        }
+        else{
+            sb.append(" data : ").append("null").append(",");
         }
         sb.append( " }" );
 

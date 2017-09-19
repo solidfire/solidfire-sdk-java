@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,15 +30,11 @@ import java.util.Objects;
 
 /**
  * GetAsyncResultRequest  
- * Used to retrieve the result of asynchronous method calls.
- * Some method calls are integer running and do not complete when the initial response is sent.
- * To obtain the result of the method call, polling with GetAsyncResult is required.
- * 
- * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion,
- * but the actual data returned for the operation depends on the original method call and the return data is documented with each method.
- * 
- * The result for a completed asynchronous method call can only be retrieved once.
- * Once the final result has been returned, later attempts returns an error.
+ * You can use GetAsyncResult to retrieve the result of asynchronous method calls. Some method calls require some time to run, and
+ * might not be finished when the system sends the initial response. To obtain the status or result of the method call, use
+ * GetAsyncResult to poll the asyncHandle value returned by the method.
+ * GetAsyncResult returns the overall status of the operation (in progress, completed, or error) in a standard fashion, but the actual
+ * data returned for the operation depends on the original method call and the return data is documented with each method.
  **/
 
 public class GetAsyncResultRequest implements Serializable {
@@ -45,7 +42,6 @@ public class GetAsyncResultRequest implements Serializable {
     public static final long serialVersionUID = 4624708581636089693L;
     @SerializedName("asyncHandle") private Long asyncHandle;
     @SerializedName("keepResult") private Optional<Boolean> keepResult;
-
     // empty constructor
     @Since("7.0")
     public GetAsyncResultRequest() {}
@@ -63,16 +59,21 @@ public class GetAsyncResultRequest implements Serializable {
     }
 
     /** 
-     * A value that was returned from the original asynchronous method call.
+     * A value that was returned from the original
+     * asynchronous method call.
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
+   
     public void setAsyncHandle(Long asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
     /** 
-     * Should the result be kept after?
+     * If true, GetAsyncResult does not remove the
+     * asynchronous result upon returning it, enabling future
+     * queries to that asyncHandle.
      **/
     public Optional<Boolean> getKeepResult() { return this.keepResult; }
+   
     public void setKeepResult(Optional<Boolean> keepResult) { 
         this.keepResult = (keepResult == null) ? Optional.<Boolean>empty() : keepResult;
     }
@@ -105,11 +106,15 @@ public class GetAsyncResultRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" asyncHandle : ").append(asyncHandle).append(",");
+        sb.append(" asyncHandle : ").append(gson.toJson(asyncHandle)).append(",");
         if(null != keepResult && keepResult.isPresent()){
-            sb.append(" keepResult : ").append(keepResult).append(",");
+            sb.append(" keepResult : ").append(gson.toJson(keepResult)).append(",");
+        }
+        else{
+            sb.append(" keepResult : ").append("null").append(",");
         }
         sb.append( " }" );
 

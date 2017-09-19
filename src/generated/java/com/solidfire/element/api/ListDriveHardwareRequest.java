@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,17 @@ import java.util.Objects;
 
 /**
  * ListDriveHardwareRequest  
- * ListDriveHardware returns all the drives connected to a node. Use this method on the cluster to return drive hardware information for all the drives on all nodes.
+ * ListDriveHardware returns all the drives connected to a node. Use this method on individual nodes to return drive hardware
+ * information or use this method on the cluster master node MVIP to see information for all the drives on all nodes.
+ * Note: The "securitySupported": true line of the method response does not imply that the drives are capable of
+ * encryption; only that the security status can be queried. If you have a node type with a model number ending in "-NE",
+ * commands to enable security features on these drives will fail. See the EnableEncryptionAtRest method for more information.
  **/
 
 public class ListDriveHardwareRequest implements Serializable {
 
     public static final long serialVersionUID = 8842637870193602553L;
     @SerializedName("force") private Boolean force;
-
     // empty constructor
     @Since("7.0")
     public ListDriveHardwareRequest() {}
@@ -55,6 +59,7 @@ public class ListDriveHardwareRequest implements Serializable {
      * To run this command, the force parameter must be set to true.
      **/
     public Boolean getForce() { return this.force; }
+   
     public void setForce(Boolean force) { 
         this.force = force;
     }
@@ -85,9 +90,10 @@ public class ListDriveHardwareRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" force : ").append(force).append(",");
+        sb.append(" force : ").append(gson.toJson(force)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

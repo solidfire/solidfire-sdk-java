@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,15 +30,14 @@ import java.util.Objects;
 
 /**
  * CreateBackupTargetRequest  
- * CreateBackupTarget allows you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
+ * CreateBackupTarget enables you to create and store backup target information so that you do not need to re-enter it each time a backup is created.
  **/
 
 public class CreateBackupTargetRequest implements Serializable {
 
     public static final long serialVersionUID = -957473874165189189L;
     @SerializedName("name") private String name;
-    @SerializedName("attributes") private Optional<Attributes> attributes;
-
+    @SerializedName("attributes") private Attributes attributes;
     // empty constructor
     @Since("7.0")
     public CreateBackupTargetRequest() {}
@@ -47,26 +47,28 @@ public class CreateBackupTargetRequest implements Serializable {
     @Since("7.0")
     public CreateBackupTargetRequest(
         String name,
-        Optional<Attributes> attributes
+        Attributes attributes
     )
     {
         this.name = name;
-        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.attributes = attributes;
     }
 
     /** 
-     * Name for the backup target.
+     * The name of the backup target.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
-    public Optional<Attributes> getAttributes() { return this.attributes; }
-    public void setAttributes(Optional<Attributes> attributes) { 
-        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+    public Attributes getAttributes() { return this.attributes; }
+   
+    public void setAttributes(Attributes attributes) { 
+        this.attributes = attributes;
     }
 
     @Override
@@ -97,12 +99,11 @@ public class CreateBackupTargetRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" name : ").append(name).append(",");
-        if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
-        }
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -121,7 +122,7 @@ public class CreateBackupTargetRequest implements Serializable {
 
     public static class Builder {
         private String name;
-        private Optional<Attributes> attributes;
+        private Attributes attributes;
 
         private Builder() { }
 
@@ -143,8 +144,8 @@ public class CreateBackupTargetRequest implements Serializable {
             return this;
         }
 
-        public CreateBackupTargetRequest.Builder optionalAttributes(final Attributes attributes) {
-            this.attributes = (attributes == null) ? Optional.<Attributes>empty() : Optional.of(attributes);
+        public CreateBackupTargetRequest.Builder attributes(final Attributes attributes) {
+            this.attributes = attributes;
             return this;
         }
 

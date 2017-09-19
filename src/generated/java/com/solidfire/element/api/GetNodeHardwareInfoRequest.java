@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,14 @@ import java.util.Objects;
 
 /**
  * GetNodeHardwareInfoRequest  
- * GetNodeHardwareInfo is used to return all the hardware info and status for the node specified. This generally includes manufacturers, vendors, versions, and other associated hardware identification information.
+ * GetNodeHardwareInfo enables you to return all the hardware information and status for the node specified. This generally includes details about
+ * manufacturers, vendors, versions, and other associated hardware identification information.
  **/
 
 public class GetNodeHardwareInfoRequest implements Serializable {
 
     public static final long serialVersionUID = 3013874737035295479L;
     @SerializedName("nodeID") private Long nodeID;
-
     // empty constructor
     @Since("7.0")
     public GetNodeHardwareInfoRequest() {}
@@ -52,9 +53,11 @@ public class GetNodeHardwareInfoRequest implements Serializable {
     }
 
     /** 
-     * The ID of the node for which hardware information is being requested.  Information about a  node is returned if a   node is specified.
+     * The ID of the node for which hardware information is being requested. Information
+     * about a Fibre Channel node is returned if a Fibre Channel node is specified.
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -85,9 +88,10 @@ public class GetNodeHardwareInfoRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodeID : ").append(nodeID).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

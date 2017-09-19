@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -39,7 +40,6 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
     @SerializedName("missingVolumes") private Long[] missingVolumes;
     @SerializedName("thinProvisioning") private Double thinProvisioning;
     @SerializedName("timestamp") private String timestamp;
-
     // empty constructor
     @Since("7.0")
     public GetStorageContainerEfficiencyResult() {}
@@ -66,6 +66,7 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
      * 
      **/
     public Double getCompression() { return this.compression; }
+   
     public void setCompression(Double compression) { 
         this.compression = compression;
     }
@@ -73,6 +74,7 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
      * 
      **/
     public Double getDeduplication() { return this.deduplication; }
+   
     public void setDeduplication(Double deduplication) { 
         this.deduplication = deduplication;
     }
@@ -80,6 +82,7 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
      * The volumes that could not be queried for efficiency data. Missing volumes can be caused by the Garbage Collection (GC) cycle being less than an hour old, temporary loss of network connectivity, or restarted services since the GC cycle.
      **/
     public Long[] getMissingVolumes() { return this.missingVolumes; }
+   
     public void setMissingVolumes(Long[] missingVolumes) { 
         this.missingVolumes = missingVolumes;
     }
@@ -87,6 +90,7 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
      * 
      **/
     public Double getThinProvisioning() { return this.thinProvisioning; }
+   
     public void setThinProvisioning(Double thinProvisioning) { 
         this.thinProvisioning = thinProvisioning;
     }
@@ -94,6 +98,7 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
      * The last time efficiency data was collected after Garbage Collection (GC).
      **/
     public String getTimestamp() { return this.timestamp; }
+   
     public void setTimestamp(String timestamp) { 
         this.timestamp = timestamp;
     }
@@ -132,13 +137,14 @@ public class GetStorageContainerEfficiencyResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" compression : ").append(compression).append(",");
-        sb.append(" deduplication : ").append(deduplication).append(",");
-        sb.append(" missingVolumes : ").append(Arrays.toString(missingVolumes)).append(",");
-        sb.append(" thinProvisioning : ").append(thinProvisioning).append(",");
-        sb.append(" timestamp : ").append(timestamp).append(",");
+        sb.append(" compression : ").append(gson.toJson(compression)).append(",");
+        sb.append(" deduplication : ").append(gson.toJson(deduplication)).append(",");
+        sb.append(" missingVolumes : ").append(gson.toJson(Arrays.toString(missingVolumes))).append(",");
+        sb.append(" thinProvisioning : ").append(gson.toJson(thinProvisioning)).append(",");
+        sb.append(" timestamp : ").append(gson.toJson(timestamp)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

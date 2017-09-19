@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class ListPendingActiveNodesResult implements Serializable {
 
     public static final long serialVersionUID = -8964833105195565163L;
     @SerializedName("pendingActiveNodes") private PendingActiveNode[] pendingActiveNodes;
-
     // empty constructor
     @Since("7.0")
     public ListPendingActiveNodesResult() {}
@@ -54,6 +54,7 @@ public class ListPendingActiveNodesResult implements Serializable {
      * List of objects detailing information about all PendingActive nodes in the system.
      **/
     public PendingActiveNode[] getPendingActiveNodes() { return this.pendingActiveNodes; }
+   
     public void setPendingActiveNodes(PendingActiveNode[] pendingActiveNodes) { 
         this.pendingActiveNodes = pendingActiveNodes;
     }
@@ -84,9 +85,10 @@ public class ListPendingActiveNodesResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" pendingActiveNodes : ").append(Arrays.toString(pendingActiveNodes)).append(",");
+        sb.append(" pendingActiveNodes : ").append(gson.toJson(Arrays.toString(pendingActiveNodes))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

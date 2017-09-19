@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,7 @@ import java.util.Objects;
 
 /**
  * ModifyClusterAdminRequest  
- * ModifyClusterAdmin is used to change the settings for a Cluster Admin or LDAP Cluster Admin. Access for the administrator Cluster Admin account cannot be changed.
+ * You can use ModifyClusterAdmin to change the settings for a cluster admin or LDAP cluster admin. You cannot change access for the administrator cluster admin account.
  **/
 
 public class ModifyClusterAdminRequest implements Serializable {
@@ -39,7 +40,6 @@ public class ModifyClusterAdminRequest implements Serializable {
     @SerializedName("password") private Optional<String> password;
     @SerializedName("access") private Optional<String[]> access;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public ModifyClusterAdminRequest() {}
@@ -61,30 +61,34 @@ public class ModifyClusterAdminRequest implements Serializable {
     }
 
     /** 
-     * ClusterAdminID for the Cluster Admin or LDAP Cluster Admin to modify.
+     * ClusterAdminID for the cluster admin or LDAP cluster admin to modify.
      **/
     public Long getClusterAdminID() { return this.clusterAdminID; }
+   
     public void setClusterAdminID(Long clusterAdminID) { 
         this.clusterAdminID = clusterAdminID;
     }
     /** 
-     * Password used to authenticate this Cluster Admin.
+     * Password used to authenticate this cluster admin.
      **/
     public Optional<String> getPassword() { return this.password; }
+   
     public void setPassword(Optional<String> password) { 
         this.password = (password == null) ? Optional.<String>empty() : password;
     }
     /** 
-     * Controls which methods this Cluster Admin can use. For more details on the levels of access, see "Access Control" in the Element API Guide.
+     * Controls which methods this cluster admin can use. For more details, see Access Control in the Element API Reference Guide.
      **/
     public Optional<String[]> getAccess() { return this.access; }
+   
     public void setAccess(Optional<String[]> access) { 
         this.access = (access == null) ? Optional.<String[]>empty() : access;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -121,17 +125,27 @@ public class ModifyClusterAdminRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterAdminID : ").append(clusterAdminID).append(",");
+        sb.append(" clusterAdminID : ").append(gson.toJson(clusterAdminID)).append(",");
         if(null != password && password.isPresent()){
-            sb.append(" password : ").append(password).append(",");
+            sb.append(" password : ").append(gson.toJson(password)).append(",");
+        }
+        else{
+            sb.append(" password : ").append("null").append(",");
         }
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access).append(",");
+            sb.append(" access : ").append(gson.toJson(access)).append(",");
+        }
+        else{
+            sb.append(" access : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

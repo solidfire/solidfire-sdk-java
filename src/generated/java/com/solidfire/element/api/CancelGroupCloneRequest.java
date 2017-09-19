@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,14 @@ import java.util.Objects;
 
 /**
  * CancelGroupCloneRequest  
- * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process for a group of clones. When you cancel a group clone operation, the system completes and removes the operation's associated asyncHandle. This method does not return anything.
+ * CancelGroupClone enables you to stop an ongoing CloneMultipleVolumes process occurring on a group of volumes. When you cancel
+ * a group clone operation, the system completes and removes the operation's associated asyncHandle.
  **/
 
 public class CancelGroupCloneRequest implements Serializable {
 
     public static final long serialVersionUID = 9021390497646602910L;
     @SerializedName("groupCloneID") private Long groupCloneID;
-
     // empty constructor
     @Since("7.0")
     public CancelGroupCloneRequest() {}
@@ -52,9 +53,10 @@ public class CancelGroupCloneRequest implements Serializable {
     }
 
     /** 
-     * cloneID for the ongoing clone process.
+     * The cloneID for the ongoing clone process.
      **/
     public Long getGroupCloneID() { return this.groupCloneID; }
+   
     public void setGroupCloneID(Long groupCloneID) { 
         this.groupCloneID = groupCloneID;
     }
@@ -85,9 +87,10 @@ public class CancelGroupCloneRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" groupCloneID : ").append(groupCloneID).append(",");
+        sb.append(" groupCloneID : ").append(gson.toJson(groupCloneID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

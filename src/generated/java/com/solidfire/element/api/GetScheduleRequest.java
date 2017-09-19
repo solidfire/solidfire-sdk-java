@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,15 @@ import java.util.Objects;
 
 /**
  * GetScheduleRequest  
- * GetSchedule is used to return information about a scheduled snapshot that has been created. You can see information about a specified schedule if there are many snapshot schedules in the system. You can include more than one schedule with this method by specifying additional scheduleIDs to the parameter.
+ * You can use the GetSchedule method to retrieve information about a scheduled snapshot. You can see information about a specific
+ * schedule if there are many snapshot schedules in the system. You also retrieve information about more than one schedule with this
+ * method by specifying additional scheduleIDs in the parameter.
  **/
 
 public class GetScheduleRequest implements Serializable {
 
     public static final long serialVersionUID = 7033439912061223312L;
     @SerializedName("scheduleID") private Long scheduleID;
-
     // empty constructor
     @Since("7.0")
     public GetScheduleRequest() {}
@@ -52,9 +54,10 @@ public class GetScheduleRequest implements Serializable {
     }
 
     /** 
-     * Unique ID of the schedule or multiple schedules to display
+     * Specifies the unique ID of the schedule or multiple schedules to display.
      **/
     public Long getScheduleID() { return this.scheduleID; }
+   
     public void setScheduleID(Long scheduleID) { 
         this.scheduleID = scheduleID;
     }
@@ -85,9 +88,10 @@ public class GetScheduleRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" scheduleID : ").append(scheduleID).append(",");
+        sb.append(" scheduleID : ").append(gson.toJson(scheduleID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

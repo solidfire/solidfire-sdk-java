@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,18 +30,18 @@ import java.util.Objects;
 
 /**
  * CreateScheduleRequest  
- * CreateSchedule is used to create a schedule that will autonomously make a snapshot of a volume at a defined interval.
- * 
- * The snapshot created can be used later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for the point in time in which the snapshot was created. 
- * 
- * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
+ * CreateSchedule enables you to schedule an automatic snapshot of a volume at a defined interval.
+ * You can use the created snapshot later as a backup or rollback to ensure the data on a volume or group of volumes is consistent for
+ * the point in time in which the snapshot was created.
+ * If you schedule a snapshot to run at a time period that is not divisible by 5 minutes, the snapshot runs at the next time period
+ * that is divisible by 5 minutes. For example, if you schedule a snapshot to run at 12:42:00 UTC, it runs at 12:45:00 UTC.
+ * Note: You can create snapshots if cluster fullness is at stage 1, 2 or 3. You cannot create snapshots after cluster fullness reaches stage 4 or 5.
  **/
 
 public class CreateScheduleRequest implements Serializable {
 
     public static final long serialVersionUID = -3724271640606844051L;
     @SerializedName("schedule") private Schedule schedule;
-
     // empty constructor
     @Since("7.0")
     public CreateScheduleRequest() {}
@@ -64,6 +65,7 @@ public class CreateScheduleRequest implements Serializable {
      * TimeIntervalFrequency
      **/
     public Schedule getSchedule() { return this.schedule; }
+   
     public void setSchedule(Schedule schedule) { 
         this.schedule = schedule;
     }
@@ -94,9 +96,10 @@ public class CreateScheduleRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" schedule : ").append(schedule).append(",");
+        sb.append(" schedule : ").append(gson.toJson(schedule)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

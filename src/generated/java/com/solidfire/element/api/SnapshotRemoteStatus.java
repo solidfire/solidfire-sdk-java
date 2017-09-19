@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class SnapshotRemoteStatus implements Serializable {
     public static final long serialVersionUID = 6049293383257307136L;
     @SerializedName("remoteStatus") private String remoteStatus;
     @SerializedName("volumePairUUID") private java.util.UUID volumePairUUID;
-
     // empty constructor
     @Since("7.0")
     public SnapshotRemoteStatus() {}
@@ -57,6 +57,7 @@ public class SnapshotRemoteStatus implements Serializable {
      * 
      **/
     public String getRemoteStatus() { return this.remoteStatus; }
+   
     public void setRemoteStatus(String remoteStatus) { 
         this.remoteStatus = remoteStatus;
     }
@@ -64,6 +65,7 @@ public class SnapshotRemoteStatus implements Serializable {
      * The snapshot is done and is writable (the active branch of the slice).
      **/
     public java.util.UUID getVolumePairUUID() { return this.volumePairUUID; }
+   
     public void setVolumePairUUID(java.util.UUID volumePairUUID) { 
         this.volumePairUUID = volumePairUUID;
     }
@@ -96,10 +98,11 @@ public class SnapshotRemoteStatus implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" remoteStatus : ").append(remoteStatus).append(",");
-        sb.append(" volumePairUUID : ").append(volumePairUUID).append(",");
+        sb.append(" remoteStatus : ").append(gson.toJson(remoteStatus)).append(",");
+        sb.append(" volumePairUUID : ").append(gson.toJson(volumePairUUID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

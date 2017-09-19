@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -39,7 +40,6 @@ public class GetVolumeEfficiencyResult implements Serializable {
     @SerializedName("missingVolumes") private Long[] missingVolumes;
     @SerializedName("thinProvisioning") private Double thinProvisioning;
     @SerializedName("timestamp") private String timestamp;
-
     // empty constructor
     @Since("7.0")
     public GetVolumeEfficiencyResult() {}
@@ -81,6 +81,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * Stated as a ratio where "1" means data has been stored without being compressed.
      **/
     public Optional<Double> getCompression() { return this.compression; }
+   
     public void setCompression(Optional<Double> compression) { 
         this.compression = (compression == null) ? Optional.<Double>empty() : compression;
     }
@@ -89,6 +90,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * Stated as a ratio.
      **/
     public Double getDeduplication() { return this.deduplication; }
+   
     public void setDeduplication(Double deduplication) { 
         this.deduplication = deduplication;
     }
@@ -97,6 +99,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * Missing volumes can be caused by GC being less than hour old, temporary network loss or restarted services since the GC cycle.
      **/
     public Long[] getMissingVolumes() { return this.missingVolumes; }
+   
     public void setMissingVolumes(Long[] missingVolumes) { 
         this.missingVolumes = missingVolumes;
     }
@@ -105,6 +108,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * Stated as a ratio.
      **/
     public Double getThinProvisioning() { return this.thinProvisioning; }
+   
     public void setThinProvisioning(Double thinProvisioning) { 
         this.thinProvisioning = thinProvisioning;
     }
@@ -112,6 +116,7 @@ public class GetVolumeEfficiencyResult implements Serializable {
      * The last time efficiency data was collected after Garbage Collection (GC).
      **/
     public String getTimestamp() { return this.timestamp; }
+   
     public void setTimestamp(String timestamp) { 
         this.timestamp = timestamp;
     }
@@ -150,15 +155,19 @@ public class GetVolumeEfficiencyResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != compression && compression.isPresent()){
-            sb.append(" compression : ").append(compression).append(",");
+            sb.append(" compression : ").append(gson.toJson(compression)).append(",");
         }
-        sb.append(" deduplication : ").append(deduplication).append(",");
-        sb.append(" missingVolumes : ").append(Arrays.toString(missingVolumes)).append(",");
-        sb.append(" thinProvisioning : ").append(thinProvisioning).append(",");
-        sb.append(" timestamp : ").append(timestamp).append(",");
+        else{
+            sb.append(" compression : ").append("null").append(",");
+        }
+        sb.append(" deduplication : ").append(gson.toJson(deduplication)).append(",");
+        sb.append(" missingVolumes : ").append(gson.toJson(Arrays.toString(missingVolumes))).append(",");
+        sb.append(" thinProvisioning : ").append(gson.toJson(thinProvisioning)).append(",");
+        sb.append(" timestamp : ").append(gson.toJson(timestamp)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

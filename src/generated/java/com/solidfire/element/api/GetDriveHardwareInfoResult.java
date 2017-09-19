@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class GetDriveHardwareInfoResult implements Serializable {
 
     public static final long serialVersionUID = -2168228537840358943L;
     @SerializedName("driveHardwareInfo") private DriveHardwareInfo driveHardwareInfo;
-
     // empty constructor
     @Since("7.0")
     public GetDriveHardwareInfoResult() {}
@@ -54,6 +54,7 @@ public class GetDriveHardwareInfoResult implements Serializable {
      * 
      **/
     public DriveHardwareInfo getDriveHardwareInfo() { return this.driveHardwareInfo; }
+   
     public void setDriveHardwareInfo(DriveHardwareInfo driveHardwareInfo) { 
         this.driveHardwareInfo = driveHardwareInfo;
     }
@@ -84,9 +85,10 @@ public class GetDriveHardwareInfoResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" driveHardwareInfo : ").append(driveHardwareInfo).append(",");
+        sb.append(" driveHardwareInfo : ").append(gson.toJson(driveHardwareInfo)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

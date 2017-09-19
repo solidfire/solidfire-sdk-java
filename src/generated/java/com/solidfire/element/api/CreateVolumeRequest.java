@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,8 +30,8 @@ import java.util.Objects;
 
 /**
  * CreateVolumeRequest  
- * CreateVolume is used to create a new (empty) volume on the cluster.
- * When the volume is created successfully it is available for connection via iSCSI.
+ * CreateVolume enables you to create a new (empty) volume on the cluster. As soon as the volume creation is complete, the volume is
+ * available for connection via iSCSI.
  **/
 
 public class CreateVolumeRequest implements Serializable {
@@ -42,8 +43,8 @@ public class CreateVolumeRequest implements Serializable {
     @SerializedName("enable512e") private Boolean enable512e;
     @SerializedName("qos") private Optional<QoS> qos;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-    @SerializedName("sliceCount") private Optional<Long> sliceCount;
-
+    @SerializedName("associateWithQoSPolicy") private Optional<Boolean> associateWithQoSPolicy;
+    @SerializedName("qosPolicyID") private Optional<Long> qosPolicyID;
     // empty constructor
     @Since("7.0")
     public CreateVolumeRequest() {}
@@ -57,8 +58,7 @@ public class CreateVolumeRequest implements Serializable {
         Long totalSize,
         Boolean enable512e,
         Optional<QoS> qos,
-        Optional<Attributes> attributes,
-        Optional<Long> sliceCount
+        Optional<Attributes> attributes
     )
     {
         this.name = name;
@@ -67,15 +67,37 @@ public class CreateVolumeRequest implements Serializable {
         this.enable512e = enable512e;
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
-        this.sliceCount = (sliceCount == null) ? Optional.<Long>empty() : sliceCount;
+    }
+    // parameterized constructor
+    @Since("10.0")
+    public CreateVolumeRequest(
+        String name,
+        Long accountID,
+        Long totalSize,
+        Boolean enable512e,
+        Optional<QoS> qos,
+        Optional<Attributes> attributes,
+        Optional<Boolean> associateWithQoSPolicy,
+        Optional<Long> qosPolicyID
+    )
+    {
+        this.name = name;
+        this.accountID = accountID;
+        this.totalSize = totalSize;
+        this.enable512e = enable512e;
+        this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
+        this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
+        this.associateWithQoSPolicy = (associateWithQoSPolicy == null) ? Optional.<Boolean>empty() : associateWithQoSPolicy;
+        this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
     }
 
     /** 
-     * Name of the volume.
-     * Not required to be unique, but it is recommended.
-     * May be 1 to 64 characters in length.
+     * The name of the volume access group (might be user specified).
+     * Not required to be unique, but recommended.
+     * Might be 1 to 64 characters in length.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -83,46 +105,71 @@ public class CreateVolumeRequest implements Serializable {
      * AccountID for the owner of this volume.
      **/
     public Long getAccountID() { return this.accountID; }
+   
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
     /** 
-     * Total size of the volume, in bytes. Size is rounded up to the nearest 1MB size.
+     * Total size of the volume, in bytes. Size is rounded up to
+     * the nearest 1MB size.
      **/
     public Long getTotalSize() { return this.totalSize; }
+   
     public void setTotalSize(Long totalSize) { 
         this.totalSize = totalSize;
     }
     /** 
-     * Should the volume provides 512-byte sector emulation?
+     * Specifies whether 512e emulation is enabled or not. Possible values are:
+     * true: The volume provides 512-byte sector emulation.
+     * false: 512e emulation is not enabled.
      **/
     public Boolean getEnable512e() { return this.enable512e; }
+   
     public void setEnable512e(Boolean enable512e) { 
         this.enable512e = enable512e;
     }
     /** 
-     * Initial quality of service settings for this volume.
-     * 
-     * Volumes created without specified QoS values are created with the default values for QoS.
-     * Default values for a volume can be found by running the GetDefaultQoS method.
+     * Initial quality of service settings for this volume. Default
+     * values are used if none are specified. Valid settings are:
+     * minIOPS
+     * maxIOPS
+     * burstIOPS
+     * You can get the default values for a volume by using the GetDefaultQoS method.
      **/
     public Optional<QoS> getQos() { return this.qos; }
+   
     public void setQos(Optional<QoS> qos) { 
         this.qos = (qos == null) ? Optional.<QoS>empty() : qos;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * The list of name-value pairs in JSON object format.
+     * Total attribute size must be less than 1000B, or 1KB,
+     * including JSON formatting characters.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
     /** 
-     * 
+     * Associate the volume with the specified QoS policy.
+     * Possible values:
+     * true: Associate the volume with the QoS policy specified in the QoSPolicyID parameter.
+     * false: Do not assosciate the volume with the QoS policy specified in the QoSPolicyID parameter. When false, any existing policy association is removed regardless of whether you specify a QoS policy in the QoSPolicyID parameter.
      **/
-    public Optional<Long> getSliceCount() { return this.sliceCount; }
-    public void setSliceCount(Optional<Long> sliceCount) { 
-        this.sliceCount = (sliceCount == null) ? Optional.<Long>empty() : sliceCount;
+    public Optional<Boolean> getAssociateWithQoSPolicy() { return this.associateWithQoSPolicy; }
+   
+    public void setAssociateWithQoSPolicy(Optional<Boolean> associateWithQoSPolicy) { 
+        this.associateWithQoSPolicy = (associateWithQoSPolicy == null) ? Optional.<Boolean>empty() : associateWithQoSPolicy;
+    }
+    /** 
+     * The ID for the policy whose QoS settings should be applied to the specified volumes.
+     * This parameter is mutually exclusive with the qos parameter.
+     **/
+    public Optional<Long> getQosPolicyID() { return this.qosPolicyID; }
+   
+    public void setQosPolicyID(Optional<Long> qosPolicyID) { 
+        this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : qosPolicyID;
     }
 
     @Override
@@ -139,12 +186,13 @@ public class CreateVolumeRequest implements Serializable {
             Objects.equals(enable512e, that.enable512e) && 
             Objects.equals(qos, that.qos) && 
             Objects.equals(attributes, that.attributes) && 
-            Objects.equals(sliceCount, that.sliceCount);
+            Objects.equals(associateWithQoSPolicy, that.associateWithQoSPolicy) && 
+            Objects.equals(qosPolicyID, that.qosPolicyID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name,accountID,totalSize,enable512e,qos,attributes,sliceCount );
+        return Objects.hash( name,accountID,totalSize,enable512e,qos,attributes,associateWithQoSPolicy,qosPolicyID );
     }
 
 
@@ -156,27 +204,44 @@ public class CreateVolumeRequest implements Serializable {
         map.put("enable512e", enable512e);
         map.put("qos", qos);
         map.put("attributes", attributes);
-        map.put("sliceCount", sliceCount);
+        map.put("associateWithQoSPolicy", associateWithQoSPolicy);
+        map.put("qosPolicyID", qosPolicyID);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" accountID : ").append(accountID).append(",");
-        sb.append(" totalSize : ").append(totalSize).append(",");
-        sb.append(" enable512e : ").append(enable512e).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
+        sb.append(" totalSize : ").append(gson.toJson(totalSize)).append(",");
+        sb.append(" enable512e : ").append(gson.toJson(enable512e)).append(",");
         if(null != qos && qos.isPresent()){
-            sb.append(" qos : ").append(qos).append(",");
+            sb.append(" qos : ").append(gson.toJson(qos)).append(",");
+        }
+        else{
+            sb.append(" qos : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         }
-        if(null != sliceCount && sliceCount.isPresent()){
-            sb.append(" sliceCount : ").append(sliceCount).append(",");
+        else{
+            sb.append(" attributes : ").append("null").append(",");
+        }
+        if(null != associateWithQoSPolicy && associateWithQoSPolicy.isPresent()){
+            sb.append(" associateWithQoSPolicy : ").append(gson.toJson(associateWithQoSPolicy)).append(",");
+        }
+        else{
+            sb.append(" associateWithQoSPolicy : ").append("null").append(",");
+        }
+        if(null != qosPolicyID && qosPolicyID.isPresent()){
+            sb.append(" qosPolicyID : ").append(gson.toJson(qosPolicyID)).append(",");
+        }
+        else{
+            sb.append(" qosPolicyID : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -201,7 +266,8 @@ public class CreateVolumeRequest implements Serializable {
         private Boolean enable512e;
         private Optional<QoS> qos;
         private Optional<Attributes> attributes;
-        private Optional<Long> sliceCount;
+        private Optional<Boolean> associateWithQoSPolicy;
+        private Optional<Long> qosPolicyID;
 
         private Builder() { }
 
@@ -213,7 +279,8 @@ public class CreateVolumeRequest implements Serializable {
                          this.enable512e,
                          this.qos,
                          this.attributes,
-                         this.sliceCount);
+                         this.associateWithQoSPolicy,
+                         this.qosPolicyID);
         }
 
         private CreateVolumeRequest.Builder buildFrom(final CreateVolumeRequest req) {
@@ -223,7 +290,8 @@ public class CreateVolumeRequest implements Serializable {
             this.enable512e = req.enable512e;
             this.qos = req.qos;
             this.attributes = req.attributes;
-            this.sliceCount = req.sliceCount;
+            this.associateWithQoSPolicy = req.associateWithQoSPolicy;
+            this.qosPolicyID = req.qosPolicyID;
 
             return this;
         }
@@ -258,8 +326,13 @@ public class CreateVolumeRequest implements Serializable {
             return this;
         }
 
-        public CreateVolumeRequest.Builder optionalSliceCount(final Long sliceCount) {
-            this.sliceCount = (sliceCount == null) ? Optional.<Long>empty() : Optional.of(sliceCount);
+        public CreateVolumeRequest.Builder optionalAssociateWithQoSPolicy(final Boolean associateWithQoSPolicy) {
+            this.associateWithQoSPolicy = (associateWithQoSPolicy == null) ? Optional.<Boolean>empty() : Optional.of(associateWithQoSPolicy);
+            return this;
+        }
+
+        public CreateVolumeRequest.Builder optionalQosPolicyID(final Long qosPolicyID) {
+            this.qosPolicyID = (qosPolicyID == null) ? Optional.<Long>empty() : Optional.of(qosPolicyID);
             return this;
         }
 

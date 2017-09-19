@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -47,7 +48,6 @@ public class BulkVolumeJob implements Serializable {
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("type") private String type;
     @SerializedName("attributes") private Attributes attributes;
-
     // empty constructor
     @Since("7.0")
     public BulkVolumeJob() {}
@@ -120,6 +120,7 @@ public class BulkVolumeJob implements Serializable {
      * The internal bulk volume job ID.
      **/
     public Long getBulkVolumeID() { return this.bulkVolumeID; }
+   
     public void setBulkVolumeID(Long bulkVolumeID) { 
         this.bulkVolumeID = bulkVolumeID;
     }
@@ -127,6 +128,7 @@ public class BulkVolumeJob implements Serializable {
      * Timestamp created for the bulk volume job.
      **/
     public String getCreateTime() { return this.createTime; }
+   
     public void setCreateTime(String createTime) { 
         this.createTime = createTime;
     }
@@ -134,6 +136,7 @@ public class BulkVolumeJob implements Serializable {
      * The number of seconds since the job began.
      **/
     public Long getElapsedTime() { return this.elapsedTime; }
+   
     public void setElapsedTime(Long elapsedTime) { 
         this.elapsedTime = elapsedTime;
     }
@@ -141,6 +144,7 @@ public class BulkVolumeJob implements Serializable {
      * Format is either "compressed" or "native".
      **/
     public String getFormat() { return this.format; }
+   
     public void setFormat(String format) { 
         this.format = format;
     }
@@ -148,6 +152,7 @@ public class BulkVolumeJob implements Serializable {
      * The unique key created by the bulk volume session.
      **/
     public String getKey() { return this.key; }
+   
     public void setKey(String key) { 
         this.key = key;
     }
@@ -155,6 +160,7 @@ public class BulkVolumeJob implements Serializable {
      * The completed percentage reported by the operation.
      **/
     public Long getPercentComplete() { return this.percentComplete; }
+   
     public void setPercentComplete(Long percentComplete) { 
         this.percentComplete = percentComplete;
     }
@@ -162,6 +168,7 @@ public class BulkVolumeJob implements Serializable {
      * The estimated time remaining in seconds.
      **/
     public Long getRemainingTime() { return this.remainingTime; }
+   
     public void setRemainingTime(Long remainingTime) { 
         this.remainingTime = remainingTime;
     }
@@ -169,6 +176,7 @@ public class BulkVolumeJob implements Serializable {
      * The source volume ID.
      **/
     public Long getSrcVolumeID() { return this.srcVolumeID; }
+   
     public void setSrcVolumeID(Long srcVolumeID) { 
         this.srcVolumeID = srcVolumeID;
     }
@@ -180,6 +188,7 @@ public class BulkVolumeJob implements Serializable {
      * failed
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
@@ -187,6 +196,7 @@ public class BulkVolumeJob implements Serializable {
      * The name of the script if one is provided.
      **/
     public Optional<String> getScript() { return this.script; }
+   
     public void setScript(Optional<String> script) { 
         this.script = (script == null) ? Optional.<String>empty() : script;
     }
@@ -194,6 +204,7 @@ public class BulkVolumeJob implements Serializable {
      * ID of the snapshot if a snapshot is in the source of the bulk volume job.
      **/
     public Optional<Long> getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Optional<Long> snapshotID) { 
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
@@ -203,6 +214,7 @@ public class BulkVolumeJob implements Serializable {
      * write
      **/
     public String getType() { return this.type; }
+   
     public void setType(String type) { 
         this.type = type;
     }
@@ -210,6 +222,7 @@ public class BulkVolumeJob implements Serializable {
      * JSON attributes on the bulk volume job.
      **/
     public Attributes getAttributes() { return this.attributes; }
+   
     public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
@@ -264,25 +277,32 @@ public class BulkVolumeJob implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" bulkVolumeID : ").append(bulkVolumeID).append(",");
-        sb.append(" createTime : ").append(createTime).append(",");
-        sb.append(" elapsedTime : ").append(elapsedTime).append(",");
-        sb.append(" format : ").append(format).append(",");
-        sb.append(" key : ").append(key).append(",");
-        sb.append(" percentComplete : ").append(percentComplete).append(",");
-        sb.append(" remainingTime : ").append(remainingTime).append(",");
-        sb.append(" srcVolumeID : ").append(srcVolumeID).append(",");
-        sb.append(" status : ").append(status).append(",");
+        sb.append(" bulkVolumeID : ").append(gson.toJson(bulkVolumeID)).append(",");
+        sb.append(" createTime : ").append(gson.toJson(createTime)).append(",");
+        sb.append(" elapsedTime : ").append(gson.toJson(elapsedTime)).append(",");
+        sb.append(" format : ").append(gson.toJson(format)).append(",");
+        sb.append(" key : ").append(gson.toJson(key)).append(",");
+        sb.append(" percentComplete : ").append(gson.toJson(percentComplete)).append(",");
+        sb.append(" remainingTime : ").append(gson.toJson(remainingTime)).append(",");
+        sb.append(" srcVolumeID : ").append(gson.toJson(srcVolumeID)).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
         if(null != script && script.isPresent()){
-            sb.append(" script : ").append(script).append(",");
+            sb.append(" script : ").append(gson.toJson(script)).append(",");
+        }
+        else{
+            sb.append(" script : ").append("null").append(",");
         }
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID).append(",");
+            sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
         }
-        sb.append(" type : ").append(type).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
+        else{
+            sb.append(" snapshotID : ").append("null").append(",");
+        }
+        sb.append(" type : ").append(gson.toJson(type)).append(",");
+        sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

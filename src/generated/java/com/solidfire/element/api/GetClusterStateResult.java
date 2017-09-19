@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,7 +38,6 @@ public class GetClusterStateResult implements Serializable {
     @SerializedName("nodes") private Optional<NodeStateResult[]> nodes;
     @SerializedName("cluster") private Optional<String> cluster;
     @SerializedName("state") private Optional<String> state;
-
     // empty constructor
     @Since("7.0")
     public GetClusterStateResult() {}
@@ -60,6 +60,7 @@ public class GetClusterStateResult implements Serializable {
      * Array of NodeStateResult objects for each node in the cluster.
      **/
     public Optional<NodeStateResult[]> getNodes() { return this.nodes; }
+   
     public void setNodes(Optional<NodeStateResult[]> nodes) { 
         this.nodes = (nodes == null) ? Optional.<NodeStateResult[]>empty() : nodes;
     }
@@ -67,6 +68,7 @@ public class GetClusterStateResult implements Serializable {
      * 
      **/
     public Optional<String> getCluster() { return this.cluster; }
+   
     public void setCluster(Optional<String> cluster) { 
         this.cluster = (cluster == null) ? Optional.<String>empty() : cluster;
     }
@@ -74,6 +76,7 @@ public class GetClusterStateResult implements Serializable {
      * 
      **/
     public Optional<String> getState() { return this.state; }
+   
     public void setState(Optional<String> state) { 
         this.state = (state == null) ? Optional.<String>empty() : state;
     }
@@ -108,16 +111,26 @@ public class GetClusterStateResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != nodes && nodes.isPresent()){
-            sb.append(" nodes : ").append(nodes).append(",");
+            sb.append(" nodes : ").append(gson.toJson(nodes)).append(",");
+        }
+        else{
+            sb.append(" nodes : ").append("null").append(",");
         }
         if(null != cluster && cluster.isPresent()){
-            sb.append(" cluster : ").append(cluster).append(",");
+            sb.append(" cluster : ").append(gson.toJson(cluster)).append(",");
+        }
+        else{
+            sb.append(" cluster : ").append("null").append(",");
         }
         if(null != state && state.isPresent()){
-            sb.append(" state : ").append(state).append(",");
+            sb.append(" state : ").append(gson.toJson(state)).append(",");
+        }
+        else{
+            sb.append(" state : ").append("null").append(",");
         }
         sb.append( " }" );
 

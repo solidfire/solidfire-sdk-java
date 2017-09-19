@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -40,7 +41,6 @@ public class FibreChannelSession implements Serializable {
     @SerializedName("serviceID") private Long serviceID;
     @SerializedName("targetWWPN") private String targetWWPN;
     @SerializedName("volumeAccessGroupID") private Optional<Long> volumeAccessGroupID;
-
     // empty constructor
     @Since("7.0")
     public FibreChannelSession() {}
@@ -67,6 +67,7 @@ public class FibreChannelSession implements Serializable {
      * The WWPN of the initiator which is logged into the target port.
      **/
     public String getInitiatorWWPN() { return this.initiatorWWPN; }
+   
     public void setInitiatorWWPN(String initiatorWWPN) { 
         this.initiatorWWPN = initiatorWWPN;
     }
@@ -74,6 +75,7 @@ public class FibreChannelSession implements Serializable {
      * The node owning the Fibre Channel session.
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -81,6 +83,7 @@ public class FibreChannelSession implements Serializable {
      * The service ID of the FService owning this Fibre Channel session
      **/
     public Long getServiceID() { return this.serviceID; }
+   
     public void setServiceID(Long serviceID) { 
         this.serviceID = serviceID;
     }
@@ -88,6 +91,7 @@ public class FibreChannelSession implements Serializable {
      * The WWPN of the target port involved in this session.
      **/
     public String getTargetWWPN() { return this.targetWWPN; }
+   
     public void setTargetWWPN(String targetWWPN) { 
         this.targetWWPN = targetWWPN;
     }
@@ -95,6 +99,7 @@ public class FibreChannelSession implements Serializable {
      * The ID of the volume access group to which the initiatorWWPN beintegers. If not in a volume access group, the value will be null.
      **/
     public Optional<Long> getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Optional<Long> volumeAccessGroupID) { 
         this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<Long>empty() : volumeAccessGroupID;
     }
@@ -133,14 +138,18 @@ public class FibreChannelSession implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" initiatorWWPN : ").append(initiatorWWPN).append(",");
-        sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" serviceID : ").append(serviceID).append(",");
-        sb.append(" targetWWPN : ").append(targetWWPN).append(",");
+        sb.append(" initiatorWWPN : ").append(gson.toJson(initiatorWWPN)).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
+        sb.append(" serviceID : ").append(gson.toJson(serviceID)).append(",");
+        sb.append(" targetWWPN : ").append(gson.toJson(targetWWPN)).append(",");
         if(null != volumeAccessGroupID && volumeAccessGroupID.isPresent()){
-            sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
+            sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
+        }
+        else{
+            sb.append(" volumeAccessGroupID : ").append("null").append(",");
         }
         sb.append( " }" );
 

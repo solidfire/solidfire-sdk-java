@@ -1,6 +1,7 @@
 package com.solidfire.client
 
 import com.solidfire.core.client
+import com.solidfire.core.client.{ApiConnectionException, ApiException}
 import com.solidfire.core.javautil.Optional.{empty => Empty, of => Of}
 import org.mockito.Matchers.{any, eq => EQ}
 import org.mockito.Mockito._
@@ -108,12 +109,53 @@ class TestFactorySuite extends WordSpec with BeforeAndAfterAll with MockitoSugar
 
 }
 
+//Tests were written with hardcoded IPs for specific responses. If these are to be used in the future new IP/Hosts most likely need found.
+class ElementFactorySuite extends WordSpec with BeforeAndAfterAll with Matchers {
+  "create" should {
+    "throw a null pointer exception but catch and throw a API instead." ignore { //an host that cant even response to the request
+      val thrown = intercept[ApiException] {
+        val sf = ElementFactory.create("10.117.60.10", "admin", "admin")
+      }
+      assert(thrown.getMessage === "400 Bad Request")
+    }
+    "throw a API exception for bad IP." ignore { //Something thats not an IP
+      val thrown = intercept[ApiException] {
+        val sf = ElementFactory.create("fdsgt43fdsgfds","admin","admin")
+      }
+      assert(thrown.getMessage === "Unknown host based on target.")
+    }
+    "throw a API exception for ok IP but not SF node or cluster(timeout)." ignore { //An IP that does not have a node/cluster, timeout case
+      val thrown = intercept[ApiException] {
+        val sf = ElementFactory.create("10.117.61.132","admin","admin")
+      }
+      assert(thrown.getMessage === "Connection timed out. ")
+    }
+    "throw a API exception for ok IP but not SF node or cluster(connection refused)." ignore { //An IP that does not have a node/cluster, refused connect case
+      val thrown = intercept[ApiException] {
+        val sf = ElementFactory.create("10.117.61.133","admin","admin")
+      }
+      assert(thrown.getMessage === "Connection refused. Confirm your target is a SolidFire cluster or node.")
+    }
+    "throw a API exception for bad credentials." ignore { //Good host with cluster/node, bad credentials
+      val thrown = intercept[ApiConnectionException] {
+        val sf = ElementFactory.create("10.117.61.129","adn","admin")
+      }
+      assert(thrown.getMessage === "Bad Credentials.")
+    }
+    "API should work ok" ignore {
+      noException should be thrownBy {
+        val sf = ElementFactory.create("10.117.61.129", "admin", "admin", "9.0")
+      }
+
+    }
+  }
+}
+
 class TestElement( requestDispatcher: client.RequestDispatcher ) extends client.ServiceBase( requestDispatcher ) {}
 
 abstract class AbstractTestFactory extends AbstractFactory[TestElement] {
   override protected def getMinApiVersion: Double = 5.0
 
-  override protected def getMaxApiVersion: Double = 10.0
 }
 
 class TestFactory( mockRequestDispatcher: client.RequestDispatcher ) extends AbstractTestFactory {

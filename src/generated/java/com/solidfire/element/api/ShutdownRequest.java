@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,8 @@ import java.util.Objects;
 
 /**
  * ShutdownRequest  
- * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method, login in to the MIP for the pending node and enter the "shutdown" method with either the "restart" or "halt" options in the following table.
+ * The Shutdown API method enables you to restart or shutdown a node that has not yet been added to a cluster. To use this method,
+ * log in to the MIP for the pending node, and enter the "shutdown" method with either the "restart" or "halt" options.
  **/
 
 public class ShutdownRequest implements Serializable {
@@ -37,7 +39,6 @@ public class ShutdownRequest implements Serializable {
     public static final long serialVersionUID = -4389026748679742602L;
     @SerializedName("nodes") private Long[] nodes;
     @SerializedName("option") private Optional<String> option;
-
     // empty constructor
     @Since("7.0")
     public ShutdownRequest() {}
@@ -58,13 +59,17 @@ public class ShutdownRequest implements Serializable {
      * List of NodeIDs for the nodes to be shutdown.
      **/
     public Long[] getNodes() { return this.nodes; }
+   
     public void setNodes(Long[] nodes) { 
         this.nodes = nodes;
     }
     /** 
-     * Action to take for the node shutdown:restart: Restarts the node.halt: Performs full power-off of the node.
+     * Specifies the action to take for the node shutdown. Possible values are:
+     * restart: Restarts the node.
+     * halt: Shuts down the node.
      **/
     public Optional<String> getOption() { return this.option; }
+   
     public void setOption(Optional<String> option) { 
         this.option = (option == null) ? Optional.<String>empty() : option;
     }
@@ -97,11 +102,15 @@ public class ShutdownRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodes : ").append(Arrays.toString(nodes)).append(",");
+        sb.append(" nodes : ").append(gson.toJson(Arrays.toString(nodes))).append(",");
         if(null != option && option.isPresent()){
-            sb.append(" option : ").append(option).append(",");
+            sb.append(" option : ").append(gson.toJson(option)).append(",");
+        }
+        else{
+            sb.append(" option : ").append("null").append(",");
         }
         sb.append( " }" );
 

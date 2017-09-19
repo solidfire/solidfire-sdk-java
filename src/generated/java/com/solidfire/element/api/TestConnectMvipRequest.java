@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,8 @@ import java.util.Objects;
 
 /**
  * TestConnectMvipRequest  
- * The TestConnectMvip API method is used to test the management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
+ * The TestConnectMvip API method enables you to test the
+ * management connection to the cluster. The test pings the MVIP and executes a simple API method to verify connectivity.
  * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
@@ -37,7 +39,6 @@ public class TestConnectMvipRequest implements Serializable {
 
     public static final long serialVersionUID = -7009267764967853953L;
     @SerializedName("mvip") private Optional<String> mvip;
-
     // empty constructor
     @Since("7.0")
     public TestConnectMvipRequest() {}
@@ -53,9 +54,10 @@ public class TestConnectMvipRequest implements Serializable {
     }
 
     /** 
-     * Optionally, use to test the management connection of a different MVIP. This is not needed to test the connection to the target cluster.
+     * If specified, tests the management connection of a different MVIP. You do not need to use this value when testing the connection to the target cluster. This parameter is optional.
      **/
     public Optional<String> getMvip() { return this.mvip; }
+   
     public void setMvip(Optional<String> mvip) { 
         this.mvip = (mvip == null) ? Optional.<String>empty() : mvip;
     }
@@ -86,10 +88,14 @@ public class TestConnectMvipRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != mvip && mvip.isPresent()){
-            sb.append(" mvip : ").append(mvip).append(",");
+            sb.append(" mvip : ").append(gson.toJson(mvip)).append(",");
+        }
+        else{
+            sb.append(" mvip : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class GetNetworkConfigResult implements Serializable {
 
     public static final long serialVersionUID = 2684112230164911537L;
     @SerializedName("network") private Network network;
-
     // empty constructor
     @Since("7.0")
     public GetNetworkConfigResult() {}
@@ -54,6 +54,7 @@ public class GetNetworkConfigResult implements Serializable {
      * 
      **/
     public Network getNetwork() { return this.network; }
+   
     public void setNetwork(Network network) { 
         this.network = network;
     }
@@ -84,9 +85,10 @@ public class GetNetworkConfigResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" network : ").append(network).append(",");
+        sb.append(" network : ").append(gson.toJson(network)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

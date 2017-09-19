@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -42,7 +43,6 @@ public class StorageContainer implements Serializable {
     @SerializedName("targetSecret") private String targetSecret;
     @SerializedName("status") private String status;
     @SerializedName("virtualVolumes") private Optional<java.util.UUID[]> virtualVolumes;
-
     // empty constructor
     @Since("7.0")
     public StorageContainer() {}
@@ -75,6 +75,7 @@ public class StorageContainer implements Serializable {
      * 
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -82,6 +83,7 @@ public class StorageContainer implements Serializable {
      * 
      **/
     public java.util.UUID getStorageContainerID() { return this.storageContainerID; }
+   
     public void setStorageContainerID(java.util.UUID storageContainerID) { 
         this.storageContainerID = storageContainerID;
     }
@@ -89,6 +91,7 @@ public class StorageContainer implements Serializable {
      * 
      **/
     public Long getAccountID() { return this.accountID; }
+   
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
@@ -96,6 +99,7 @@ public class StorageContainer implements Serializable {
      * 
      **/
     public String getProtocolEndpointType() { return this.protocolEndpointType; }
+   
     public void setProtocolEndpointType(String protocolEndpointType) { 
         this.protocolEndpointType = protocolEndpointType;
     }
@@ -103,6 +107,7 @@ public class StorageContainer implements Serializable {
      * 
      **/
     public String getInitiatorSecret() { return this.initiatorSecret; }
+   
     public void setInitiatorSecret(String initiatorSecret) { 
         this.initiatorSecret = initiatorSecret;
     }
@@ -110,6 +115,7 @@ public class StorageContainer implements Serializable {
      * 
      **/
     public String getTargetSecret() { return this.targetSecret; }
+   
     public void setTargetSecret(String targetSecret) { 
         this.targetSecret = targetSecret;
     }
@@ -117,6 +123,7 @@ public class StorageContainer implements Serializable {
      * 
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
@@ -124,6 +131,7 @@ public class StorageContainer implements Serializable {
      * 
      **/
     public Optional<java.util.UUID[]> getVirtualVolumes() { return this.virtualVolumes; }
+   
     public void setVirtualVolumes(Optional<java.util.UUID[]> virtualVolumes) { 
         this.virtualVolumes = (virtualVolumes == null) ? Optional.<java.util.UUID[]>empty() : virtualVolumes;
     }
@@ -168,17 +176,21 @@ public class StorageContainer implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" storageContainerID : ").append(storageContainerID).append(",");
-        sb.append(" accountID : ").append(accountID).append(",");
-        sb.append(" protocolEndpointType : ").append(protocolEndpointType).append(",");
-        sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
-        sb.append(" targetSecret : ").append(targetSecret).append(",");
-        sb.append(" status : ").append(status).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" storageContainerID : ").append(gson.toJson(storageContainerID)).append(",");
+        sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
+        sb.append(" protocolEndpointType : ").append(gson.toJson(protocolEndpointType)).append(",");
+        sb.append(" initiatorSecret : ").append(gson.toJson(initiatorSecret)).append(",");
+        sb.append(" targetSecret : ").append(gson.toJson(targetSecret)).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
         if(null != virtualVolumes && virtualVolumes.isPresent()){
-            sb.append(" virtualVolumes : ").append(virtualVolumes).append(",");
+            sb.append(" virtualVolumes : ").append(gson.toJson(virtualVolumes)).append(",");
+        }
+        else{
+            sb.append(" virtualVolumes : ").append("null").append(",");
         }
         sb.append( " }" );
 

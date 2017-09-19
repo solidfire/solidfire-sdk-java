@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,17 @@ import java.util.Objects;
 
 /**
  * GetVolumeAccessGroupEfficiencyRequest  
- * GetVolumeAccessGroupEfficiency is used to retrieve efficiency information about a volume access group. Only the volume access group provided as parameters in this API method is used to compute the capacity.
+ * GetVolumeAccessGroupEfficiency enables you to
+ * retrieve efficiency information about a volume access
+ * group. Only the volume access group you provide as the
+ * parameter in this API method is used to compute the
+ * capacity.
  **/
 
 public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
 
     public static final long serialVersionUID = -7890874166847398160L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
-
     // empty constructor
     @Since("7.0")
     public GetVolumeAccessGroupEfficiencyRequest() {}
@@ -52,9 +56,11 @@ public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
     }
 
     /** 
-     * Specifies the volume access group for which capacity is computed.
+     * The volume access group for which
+     * capacity is computed.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
@@ -85,9 +91,10 @@ public class GetVolumeAccessGroupEfficiencyRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
+        sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

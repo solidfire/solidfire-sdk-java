@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,15 +30,15 @@ import java.util.Objects;
 
 /**
  * GetDriveStatsRequest  
- * GetDriveStats return high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the cluster. Some values are specific to Block Drives. Statistical data may not be returned for both block and metadata drives when running this method.
- * For more information on which drive type returns which data, see Response Example (Block Drive) and Response Example (Volume Metadata Drive) in the SolidFire API guide.
+ * GetDriveStats returns high-level activity measurements for a single drive. Values are cumulative from the addition of the drive to the
+ * cluster. Some values are specific to block drives. You might not obtain statistical data for both block and metadata drives when you
+ * run this method. 
  **/
 
 public class GetDriveStatsRequest implements Serializable {
 
     public static final long serialVersionUID = -4783367231060784984L;
     @SerializedName("driveID") private Long driveID;
-
     // empty constructor
     @Since("7.0")
     public GetDriveStatsRequest() {}
@@ -56,6 +57,7 @@ public class GetDriveStatsRequest implements Serializable {
      * Specifies the drive for which statistics are gathered.
      **/
     public Long getDriveID() { return this.driveID; }
+   
     public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
@@ -86,9 +88,10 @@ public class GetDriveStatsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" driveID : ").append(driveID).append(",");
+        sb.append(" driveID : ").append(gson.toJson(driveID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

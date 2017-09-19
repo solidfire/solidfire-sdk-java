@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class GetFeatureStatusResult implements Serializable {
 
     public static final long serialVersionUID = -7588132468976147671L;
     @SerializedName("features") private FeatureObject[] features;
-
     // empty constructor
     @Since("7.0")
     public GetFeatureStatusResult() {}
@@ -54,6 +54,7 @@ public class GetFeatureStatusResult implements Serializable {
      * An array of feature objects indicating the feature name and its status.
      **/
     public FeatureObject[] getFeatures() { return this.features; }
+   
     public void setFeatures(FeatureObject[] features) { 
         this.features = features;
     }
@@ -84,9 +85,10 @@ public class GetFeatureStatusResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" features : ").append(Arrays.toString(features)).append(",");
+        sb.append(" features : ").append(gson.toJson(Arrays.toString(features))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

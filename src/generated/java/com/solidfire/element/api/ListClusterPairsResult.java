@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class ListClusterPairsResult implements Serializable {
 
     public static final long serialVersionUID = -8080838636769844928L;
     @SerializedName("clusterPairs") private PairedCluster[] clusterPairs;
-
     // empty constructor
     @Since("7.0")
     public ListClusterPairsResult() {}
@@ -54,6 +54,7 @@ public class ListClusterPairsResult implements Serializable {
      * Information about each paired cluster.
      **/
     public PairedCluster[] getClusterPairs() { return this.clusterPairs; }
+   
     public void setClusterPairs(PairedCluster[] clusterPairs) { 
         this.clusterPairs = clusterPairs;
     }
@@ -84,9 +85,10 @@ public class ListClusterPairsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterPairs : ").append(Arrays.toString(clusterPairs)).append(",");
+        sb.append(" clusterPairs : ").append(gson.toJson(Arrays.toString(clusterPairs))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

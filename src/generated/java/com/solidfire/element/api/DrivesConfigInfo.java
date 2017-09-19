@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -41,7 +42,6 @@ public class DrivesConfigInfo implements Serializable {
     @SerializedName("numSliceExpected") private Long numSliceExpected;
     @SerializedName("numTotalActual") private Long numTotalActual;
     @SerializedName("numTotalExpected") private Long numTotalExpected;
-
     // empty constructor
     @Since("7.0")
     public DrivesConfigInfo() {}
@@ -72,6 +72,7 @@ public class DrivesConfigInfo implements Serializable {
      * 
      **/
     public DriveConfigInfo[] getDrives() { return this.drives; }
+   
     public void setDrives(DriveConfigInfo[] drives) { 
         this.drives = drives;
     }
@@ -79,6 +80,7 @@ public class DrivesConfigInfo implements Serializable {
      * 
      **/
     public Long getNumBlockActual() { return this.numBlockActual; }
+   
     public void setNumBlockActual(Long numBlockActual) { 
         this.numBlockActual = numBlockActual;
     }
@@ -86,6 +88,7 @@ public class DrivesConfigInfo implements Serializable {
      * 
      **/
     public Long getNumBlockExpected() { return this.numBlockExpected; }
+   
     public void setNumBlockExpected(Long numBlockExpected) { 
         this.numBlockExpected = numBlockExpected;
     }
@@ -93,6 +96,7 @@ public class DrivesConfigInfo implements Serializable {
      * 
      **/
     public Long getNumSliceActual() { return this.numSliceActual; }
+   
     public void setNumSliceActual(Long numSliceActual) { 
         this.numSliceActual = numSliceActual;
     }
@@ -100,6 +104,7 @@ public class DrivesConfigInfo implements Serializable {
      * 
      **/
     public Long getNumSliceExpected() { return this.numSliceExpected; }
+   
     public void setNumSliceExpected(Long numSliceExpected) { 
         this.numSliceExpected = numSliceExpected;
     }
@@ -107,6 +112,7 @@ public class DrivesConfigInfo implements Serializable {
      * 
      **/
     public Long getNumTotalActual() { return this.numTotalActual; }
+   
     public void setNumTotalActual(Long numTotalActual) { 
         this.numTotalActual = numTotalActual;
     }
@@ -114,6 +120,7 @@ public class DrivesConfigInfo implements Serializable {
      * 
      **/
     public Long getNumTotalExpected() { return this.numTotalExpected; }
+   
     public void setNumTotalExpected(Long numTotalExpected) { 
         this.numTotalExpected = numTotalExpected;
     }
@@ -156,15 +163,16 @@ public class DrivesConfigInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
-        sb.append(" numBlockActual : ").append(numBlockActual).append(",");
-        sb.append(" numBlockExpected : ").append(numBlockExpected).append(",");
-        sb.append(" numSliceActual : ").append(numSliceActual).append(",");
-        sb.append(" numSliceExpected : ").append(numSliceExpected).append(",");
-        sb.append(" numTotalActual : ").append(numTotalActual).append(",");
-        sb.append(" numTotalExpected : ").append(numTotalExpected).append(",");
+        sb.append(" drives : ").append(gson.toJson(Arrays.toString(drives))).append(",");
+        sb.append(" numBlockActual : ").append(gson.toJson(numBlockActual)).append(",");
+        sb.append(" numBlockExpected : ").append(gson.toJson(numBlockExpected)).append(",");
+        sb.append(" numSliceActual : ").append(gson.toJson(numSliceActual)).append(",");
+        sb.append(" numSliceExpected : ").append(gson.toJson(numSliceExpected)).append(",");
+        sb.append(" numTotalActual : ").append(gson.toJson(numTotalActual)).append(",");
+        sb.append(" numTotalExpected : ").append(gson.toJson(numTotalExpected)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

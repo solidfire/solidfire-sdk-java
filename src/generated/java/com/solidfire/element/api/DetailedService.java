@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,6 @@ public class DetailedService implements Serializable {
     @SerializedName("node") private Node node;
     @SerializedName("drive") private Optional<Drive> drive;
     @SerializedName("drives") private Drive[] drives;
-
     // empty constructor
     @Since("7.0")
     public DetailedService() {}
@@ -63,6 +63,7 @@ public class DetailedService implements Serializable {
      * 
      **/
     public Service getService() { return this.service; }
+   
     public void setService(Service service) { 
         this.service = service;
     }
@@ -70,6 +71,7 @@ public class DetailedService implements Serializable {
      * 
      **/
     public Node getNode() { return this.node; }
+   
     public void setNode(Node node) { 
         this.node = node;
     }
@@ -77,6 +79,7 @@ public class DetailedService implements Serializable {
      * 
      **/
     public Optional<Drive> getDrive() { return this.drive; }
+   
     public void setDrive(Optional<Drive> drive) { 
         this.drive = (drive == null) ? Optional.<Drive>empty() : drive;
     }
@@ -84,6 +87,7 @@ public class DetailedService implements Serializable {
      * 
      **/
     public Drive[] getDrives() { return this.drives; }
+   
     public void setDrives(Drive[] drives) { 
         this.drives = drives;
     }
@@ -120,14 +124,18 @@ public class DetailedService implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" service : ").append(service).append(",");
-        sb.append(" node : ").append(node).append(",");
+        sb.append(" service : ").append(gson.toJson(service)).append(",");
+        sb.append(" node : ").append(gson.toJson(node)).append(",");
         if(null != drive && drive.isPresent()){
-            sb.append(" drive : ").append(drive).append(",");
+            sb.append(" drive : ").append(gson.toJson(drive)).append(",");
         }
-        sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
+        else{
+            sb.append(" drive : ").append("null").append(",");
+        }
+        sb.append(" drives : ").append(gson.toJson(Arrays.toString(drives))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

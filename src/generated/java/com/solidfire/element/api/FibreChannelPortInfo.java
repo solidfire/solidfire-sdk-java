@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -46,7 +47,6 @@ public class FibreChannelPortInfo implements Serializable {
     @SerializedName("switchWwn") private String switchWwn;
     @SerializedName("wwnn") private String wwnn;
     @SerializedName("wwpn") private String wwpn;
-
     // empty constructor
     @Since("7.0")
     public FibreChannelPortInfo() {}
@@ -85,6 +85,7 @@ public class FibreChannelPortInfo implements Serializable {
      * The version of the firmware installed on the Fibre Channel port.
      **/
     public String getFirmware() { return this.firmware; }
+   
     public void setFirmware(String firmware) { 
         this.firmware = firmware;
     }
@@ -92,6 +93,7 @@ public class FibreChannelPortInfo implements Serializable {
      * The ID of the individual HBA port.
      **/
     public Long getHbaPort() { return this.hbaPort; }
+   
     public void setHbaPort(Long hbaPort) { 
         this.hbaPort = hbaPort;
     }
@@ -99,6 +101,7 @@ public class FibreChannelPortInfo implements Serializable {
      * Model of the HBA on the port.
      **/
     public String getModel() { return this.model; }
+   
     public void setModel(String model) { 
         this.model = model;
     }
@@ -106,6 +109,7 @@ public class FibreChannelPortInfo implements Serializable {
      * Unique SolidFire port node ID.
      **/
     public String getNPortID() { return this.nPortID; }
+   
     public void setNPortID(String nPortID) { 
         this.nPortID = nPortID;
     }
@@ -113,6 +117,7 @@ public class FibreChannelPortInfo implements Serializable {
      * Slot in which the pci card resides on the Fibre Channel node hardware.
      **/
     public Long getPciSlot() { return this.pciSlot; }
+   
     public void setPciSlot(Long pciSlot) { 
         this.pciSlot = pciSlot;
     }
@@ -120,6 +125,7 @@ public class FibreChannelPortInfo implements Serializable {
      * Serial number on the Fibre Channel port.
      **/
     public String getSerial() { return this.serial; }
+   
     public void setSerial(String serial) { 
         this.serial = serial;
     }
@@ -127,6 +133,7 @@ public class FibreChannelPortInfo implements Serializable {
      * Speed of the HBA on the port.
      **/
     public String getSpeed() { return this.speed; }
+   
     public void setSpeed(String speed) { 
         this.speed = speed;
     }
@@ -136,6 +143,7 @@ public class FibreChannelPortInfo implements Serializable {
      * <strong>UnknownNotPresentOnlineOfflineBlockedBypassedDiagnosticsLinkdownErrorLoopbackDeleted</strong>
      **/
     public String getState() { return this.state; }
+   
     public void setState(String state) { 
         this.state = state;
     }
@@ -143,6 +151,7 @@ public class FibreChannelPortInfo implements Serializable {
      * The World Wide Name of the Fibre Channel switch port.
      **/
     public String getSwitchWwn() { return this.switchWwn; }
+   
     public void setSwitchWwn(String switchWwn) { 
         this.switchWwn = switchWwn;
     }
@@ -150,6 +159,7 @@ public class FibreChannelPortInfo implements Serializable {
      * World Wide Node Name of the HBA node.
      **/
     public String getWwnn() { return this.wwnn; }
+   
     public void setWwnn(String wwnn) { 
         this.wwnn = wwnn;
     }
@@ -157,6 +167,7 @@ public class FibreChannelPortInfo implements Serializable {
      * World Wide Port Name assigned to the physical port of the HBA.
      **/
     public String getWwpn() { return this.wwpn; }
+   
     public void setWwpn(String wwpn) { 
         this.wwpn = wwpn;
     }
@@ -207,19 +218,20 @@ public class FibreChannelPortInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" firmware : ").append(firmware).append(",");
-        sb.append(" hbaPort : ").append(hbaPort).append(",");
-        sb.append(" model : ").append(model).append(",");
-        sb.append(" nPortID : ").append(nPortID).append(",");
-        sb.append(" pciSlot : ").append(pciSlot).append(",");
-        sb.append(" serial : ").append(serial).append(",");
-        sb.append(" speed : ").append(speed).append(",");
-        sb.append(" state : ").append(state).append(",");
-        sb.append(" switchWwn : ").append(switchWwn).append(",");
-        sb.append(" wwnn : ").append(wwnn).append(",");
-        sb.append(" wwpn : ").append(wwpn).append(",");
+        sb.append(" firmware : ").append(gson.toJson(firmware)).append(",");
+        sb.append(" hbaPort : ").append(gson.toJson(hbaPort)).append(",");
+        sb.append(" model : ").append(gson.toJson(model)).append(",");
+        sb.append(" nPortID : ").append(gson.toJson(nPortID)).append(",");
+        sb.append(" pciSlot : ").append(gson.toJson(pciSlot)).append(",");
+        sb.append(" serial : ").append(gson.toJson(serial)).append(",");
+        sb.append(" speed : ").append(gson.toJson(speed)).append(",");
+        sb.append(" state : ").append(gson.toJson(state)).append(",");
+        sb.append(" switchWwn : ").append(gson.toJson(switchWwn)).append(",");
+        sb.append(" wwnn : ").append(gson.toJson(wwnn)).append(",");
+        sb.append(" wwpn : ").append(gson.toJson(wwpn)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

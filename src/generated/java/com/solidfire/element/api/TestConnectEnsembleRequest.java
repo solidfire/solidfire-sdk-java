@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,7 @@ import java.util.Objects;
 
 /**
  * TestConnectEnsembleRequest  
- * The TestConnectEnsemble API method is used to verify connectivity with a sepcified database ensemble. By default it uses the ensemble for the cluster the node is associated with. Alternatively you can provide a different ensemble to test connectivity with.
+ * The TestConnectEnsemble API method enables you to verify connectivity with a specified database ensemble. By default, it uses the ensemble for the cluster that the node is associated with. Alternatively, you can provide a different ensemble to test connectivity with.
  * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
@@ -37,7 +38,6 @@ public class TestConnectEnsembleRequest implements Serializable {
 
     public static final long serialVersionUID = -3782328525447605172L;
     @SerializedName("ensemble") private Optional<String> ensemble;
-
     // empty constructor
     @Since("7.0")
     public TestConnectEnsembleRequest() {}
@@ -53,9 +53,10 @@ public class TestConnectEnsembleRequest implements Serializable {
     }
 
     /** 
-     * A comma-separated list of ensemble node CIPs for connectivity testing
+     * Uses a comma-separated list of ensemble node cluster IP addresses to test connectivity. This parameter is optional.
      **/
     public Optional<String> getEnsemble() { return this.ensemble; }
+   
     public void setEnsemble(Optional<String> ensemble) { 
         this.ensemble = (ensemble == null) ? Optional.<String>empty() : ensemble;
     }
@@ -86,10 +87,14 @@ public class TestConnectEnsembleRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != ensemble && ensemble.isPresent()){
-            sb.append(" ensemble : ").append(ensemble).append(",");
+            sb.append(" ensemble : ").append(gson.toJson(ensemble)).append(",");
+        }
+        else{
+            sb.append(" ensemble : ").append("null").append(",");
         }
         sb.append( " }" );
 

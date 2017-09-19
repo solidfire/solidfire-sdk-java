@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class LoggingServer implements Serializable {
     public static final long serialVersionUID = 225982279799440583L;
     @SerializedName("host") private String host;
     @SerializedName("port") private Long port;
-
     // empty constructor
     @Since("7.0")
     public LoggingServer() {}
@@ -57,6 +57,7 @@ public class LoggingServer implements Serializable {
      * Hostname or IP address of the log server.
      **/
     public String getHost() { return this.host; }
+   
     public void setHost(String host) { 
         this.host = host;
     }
@@ -64,6 +65,7 @@ public class LoggingServer implements Serializable {
      * Port number that the log server is listening on.
      **/
     public Long getPort() { return this.port; }
+   
     public void setPort(Long port) { 
         this.port = port;
     }
@@ -96,10 +98,11 @@ public class LoggingServer implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" host : ").append(host).append(",");
-        sb.append(" port : ").append(port).append(",");
+        sb.append(" host : ").append(gson.toJson(host)).append(",");
+        sb.append(" port : ").append(gson.toJson(port)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

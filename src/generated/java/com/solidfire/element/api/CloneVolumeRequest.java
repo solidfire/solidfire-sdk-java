@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,15 +30,8 @@ import java.util.Objects;
 
 /**
  * CloneVolumeRequest  
- * CloneVolume is used to create a copy of the volume.
- * This method is asynchronous and may take a variable amount of time to complete.
- * The cloning process begins immediately when the CloneVolume request is made and is representative of the state of the volume when the API method is issued.
- * GetAsyncResults can be used to determine when the cloning process is complete and the new volume is available for connections.
- * ListSyncJobs can be used to see the progress of creating the clone.
- * 
- * Note: The initial attributes and quality of service settings for the volume are inherited from the volume being cloned.
- * If different settings are required, they can be changed via ModifyVolume.
- * 
+ * CloneVolume enables you to create a copy of a volume. This method is asynchronous and might take a variable amount of time to complete. The cloning process begins immediately when you make the CloneVolume request and is representative of the state of the volume when the API method is issued. You can use the GetAsyncResult method to determine when the cloning process is complete and the new volume is available for connections. You can use ListSyncJobs to see the progress of creating the clone.
+ * Note: The initial attributes and QoS settings for the volume are inherited from the volume being cloned. You can change these settings with ModifyVolume.
  * Note: Cloned volumes do not inherit volume access group memberships from the source volume.
  **/
 
@@ -52,7 +46,6 @@ public class CloneVolumeRequest implements Serializable {
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
     @SerializedName("attributes") private Optional<Attributes> attributes;
     @SerializedName("enable512e") private Optional<Boolean> enable512e;
-
     // empty constructor
     @Since("7.0")
     public CloneVolumeRequest() {}
@@ -82,62 +75,69 @@ public class CloneVolumeRequest implements Serializable {
     }
 
     /** 
-     * The ID of the volume to clone.
+     * VolumeID for the volume to be cloned.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
-     * The name for the newly-created volume.
+     * The name of the new cloned volume. Might be 1 to 64 characters in length.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
     /** 
-     * AccountID for the owner of the new volume.
-     * If unspecified, the AccountID of the owner of the volume being cloned is used.
+     * AccountID for the owner of the new volume. If unspecified, the
+     * accountID of the owner of the volume being cloned is used.
      **/
     public Optional<Long> getNewAccountID() { return this.newAccountID; }
+   
     public void setNewAccountID(Optional<Long> newAccountID) { 
         this.newAccountID = (newAccountID == null) ? Optional.<Long>empty() : newAccountID;
     }
     /** 
-     * New size of the volume, in bytes.
-     * May be greater or less than the size of the volume being cloned.
-     * If unspecified, the clone's volume size will be the same as the source volume.
-     * Size is rounded up to the nearest 1 MiB.
+     * New size of the volume, in bytes. Might be greater or less than the size of
+     * the volume being cloned. If unspecified, the volume size is not
+     * changed. Size is rounded to the nearest 1MB.
      **/
     public Optional<Long> getNewSize() { return this.newSize; }
+   
     public void setNewSize(Optional<Long> newSize) { 
         this.newSize = (newSize == null) ? Optional.<Long>empty() : newSize;
     }
     /** 
-     * Access settings for the new volume.
+     * Specifies the level of access allowed for the new volume. Possible values are:
      * readOnly: Only read operations are allowed.
      * readWrite: Reads and writes are allowed.
-     * locked: No reads or writes are allowed.
-     * replicationTarget: Identify a volume as the target volume for a paired set of volumes. If the volume is not paired, the access status is locked.
-     * 
-     * If unspecified, the access settings of the clone will be the same as the source.
+     * locked: No reads or writes are allowed. If unspecified, the level of access of the volume being cloned is used.
+     * replicationTarget: Identify a volume as the target volume for a
+     * paired set of volumes. If the volume is not paired, the access status is
+     * locked.
+     * If a value is not specified, the access value does not change.
      **/
     public Optional<String> getAccess() { return this.access; }
+   
     public void setAccess(Optional<String> access) { 
         this.access = (access == null) ? Optional.<String>empty() : access;
     }
     /** 
-     * ID of the snapshot to use as the source of the clone.
-     * If unspecified, the clone will be created with a snapshot of the active volume.
+     * ID of the snapshot that is used as the source of the clone. If no ID is
+     * provided, the current active volume is used.
      **/
     public Optional<Long> getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Optional<Long> snapshotID) { 
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -145,6 +145,7 @@ public class CloneVolumeRequest implements Serializable {
      * Should the volume provide 512-byte sector emulation?
      **/
     public Optional<Boolean> getEnable512e() { return this.enable512e; }
+   
     public void setEnable512e(Optional<Boolean> enable512e) { 
         this.enable512e = (enable512e == null) ? Optional.<Boolean>empty() : enable512e;
     }
@@ -189,27 +190,46 @@ public class CloneVolumeRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" name : ").append(name).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
         if(null != newAccountID && newAccountID.isPresent()){
-            sb.append(" newAccountID : ").append(newAccountID).append(",");
+            sb.append(" newAccountID : ").append(gson.toJson(newAccountID)).append(",");
+        }
+        else{
+            sb.append(" newAccountID : ").append("null").append(",");
         }
         if(null != newSize && newSize.isPresent()){
-            sb.append(" newSize : ").append(newSize).append(",");
+            sb.append(" newSize : ").append(gson.toJson(newSize)).append(",");
+        }
+        else{
+            sb.append(" newSize : ").append("null").append(",");
         }
         if(null != access && access.isPresent()){
-            sb.append(" access : ").append(access).append(",");
+            sb.append(" access : ").append(gson.toJson(access)).append(",");
+        }
+        else{
+            sb.append(" access : ").append("null").append(",");
         }
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID).append(",");
+            sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        }
+        else{
+            sb.append(" snapshotID : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         if(null != enable512e && enable512e.isPresent()){
-            sb.append(" enable512e : ").append(enable512e).append(",");
+            sb.append(" enable512e : ").append(gson.toJson(enable512e)).append(",");
+        }
+        else{
+            sb.append(" enable512e : ").append("null").append(",");
         }
         sb.append( " }" );
 

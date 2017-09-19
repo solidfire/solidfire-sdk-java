@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,15 +30,13 @@ import java.util.Objects;
 
 /**
  * CompleteClusterPairingRequest  
- * The CompleteClusterPairing method is the second step in the cluster pairing process.
- * Use this method with the encoded key received from the "StartClusterPairing" API method to complete the cluster pairing process.
+ * You can use the CompleteClusterPairing method with the encoded key received from the  StartClusterPairing method to complete the cluster pairing process. The CompleteClusterPairing method is the second step in the cluster pairing process. 
  **/
 
 public class CompleteClusterPairingRequest implements Serializable {
 
     public static final long serialVersionUID = -7657018191660714739L;
     @SerializedName("clusterPairingKey") private String clusterPairingKey;
-
     // empty constructor
     @Since("7.0")
     public CompleteClusterPairingRequest() {}
@@ -56,6 +55,7 @@ public class CompleteClusterPairingRequest implements Serializable {
      * A string of characters that is returned from the "StartClusterPairing" API method.
      **/
     public String getClusterPairingKey() { return this.clusterPairingKey; }
+   
     public void setClusterPairingKey(String clusterPairingKey) { 
         this.clusterPairingKey = clusterPairingKey;
     }
@@ -86,9 +86,10 @@ public class CompleteClusterPairingRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterPairingKey : ").append(clusterPairingKey).append(",");
+        sb.append(" clusterPairingKey : ").append(gson.toJson(clusterPairingKey)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

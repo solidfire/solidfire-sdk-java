@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class GetAPIResult implements Serializable {
     public static final long serialVersionUID = -334735413474527149L;
     @SerializedName("supportedVersions") private Double[] supportedVersions;
     @SerializedName("currentVersion") private Double currentVersion;
-
     // empty constructor
     @Since("7.0")
     public GetAPIResult() {}
@@ -57,6 +57,7 @@ public class GetAPIResult implements Serializable {
      * 
      **/
     public Double[] getSupportedVersions() { return this.supportedVersions; }
+   
     public void setSupportedVersions(Double[] supportedVersions) { 
         this.supportedVersions = supportedVersions;
     }
@@ -64,6 +65,7 @@ public class GetAPIResult implements Serializable {
      * 
      **/
     public Double getCurrentVersion() { return this.currentVersion; }
+   
     public void setCurrentVersion(Double currentVersion) { 
         this.currentVersion = currentVersion;
     }
@@ -96,10 +98,11 @@ public class GetAPIResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" supportedVersions : ").append(Arrays.toString(supportedVersions)).append(",");
-        sb.append(" currentVersion : ").append(currentVersion).append(",");
+        sb.append(" supportedVersions : ").append(gson.toJson(Arrays.toString(supportedVersions))).append(",");
+        sb.append(" currentVersion : ").append(gson.toJson(currentVersion)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

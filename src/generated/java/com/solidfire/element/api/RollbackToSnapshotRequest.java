@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,12 +30,11 @@ import java.util.Objects;
 
 /**
  * RollbackToSnapshotRequest  
- * RollbackToSnapshot is used to make an existing snapshot the "active" volume image. This method creates a new 
- * snapshot from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until 
- * it is manually deleted. The previously "active" snapshot is deleted unless the parameter saveCurrentState is set with 
- * a value of "true."
- * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
- * Snapshots are not created when cluster fullness is at stage 4 or 5.
+ * RollbackToSnapshot enables you to make an existing snapshot of the "active" volume image. This method creates a new snapshot
+ * from an existing snapshot. The new snapshot becomes "active" and the existing snapshot is preserved until you delete it.
+ * The previously "active" snapshot is deleted unless you set the parameter saveCurrentState to true.
+ * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is
+ * at stage 4 or 5.
  **/
 
 public class RollbackToSnapshotRequest implements Serializable {
@@ -45,7 +45,6 @@ public class RollbackToSnapshotRequest implements Serializable {
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public RollbackToSnapshotRequest() {}
@@ -72,36 +71,41 @@ public class RollbackToSnapshotRequest implements Serializable {
      * VolumeID for the volume.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
-     * ID of a previously created snapshot on the given volume.
+     * The ID of a previously created snapshot on the given volume.
      **/
     public Long getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Long snapshotID) { 
         this.snapshotID = snapshotID;
     }
     /** 
+     * Specifies whether to save an active volume image or delete it. Values are:
      * true: The previous active volume image is kept.
      * false: (default) The previous active volume image is deleted.
      **/
     public Boolean getSaveCurrentState() { return this.saveCurrentState; }
+   
     public void setSaveCurrentState(Boolean saveCurrentState) { 
         this.saveCurrentState = saveCurrentState;
     }
     /** 
-     * Name for the snapshot. If no name is given, then the name of the snapshot being rolled back to is used with 
-     * "-copy" appended to the end of the name.
+     * Name for the snapshot. If unspecified, the name of the snapshot being rolled back to is used with "- copy" appended to the end of the name.
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
     /** 
-     * List of Name/Value pairs in JSON object format
+     * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -140,16 +144,23 @@ public class RollbackToSnapshotRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" snapshotID : ").append(snapshotID).append(",");
-        sb.append(" saveCurrentState : ").append(saveCurrentState).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        sb.append(" saveCurrentState : ").append(gson.toJson(saveCurrentState)).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
+        }
+        else{
+            sb.append(" name : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

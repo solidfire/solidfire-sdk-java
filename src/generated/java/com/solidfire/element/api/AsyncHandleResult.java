@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class AsyncHandleResult implements Serializable {
 
     public static final long serialVersionUID = -2932335770116448432L;
     @SerializedName("asyncHandle") private Long asyncHandle;
-
     // empty constructor
     @Since("7.0")
     public AsyncHandleResult() {}
@@ -54,6 +54,7 @@ public class AsyncHandleResult implements Serializable {
      * 
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
+   
     public void setAsyncHandle(Long asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
@@ -84,9 +85,10 @@ public class AsyncHandleResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" asyncHandle : ").append(asyncHandle).append(",");
+        sb.append(" asyncHandle : ").append(gson.toJson(asyncHandle)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

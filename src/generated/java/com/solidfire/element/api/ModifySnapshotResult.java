@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,8 +35,7 @@ import java.util.Objects;
 public class ModifySnapshotResult implements Serializable {
 
     public static final long serialVersionUID = -406933401919485379L;
-    @SerializedName("snapshot") private Snapshot snapshot;
-
+    @SerializedName("snapshot") private Optional<Snapshot> snapshot;
     // empty constructor
     @Since("8.0")
 
@@ -45,18 +45,19 @@ public class ModifySnapshotResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifySnapshotResult(
-        Snapshot snapshot
+        Optional<Snapshot> snapshot
     )
     {
-        this.snapshot = snapshot;
+        this.snapshot = (snapshot == null) ? Optional.<Snapshot>empty() : snapshot;
     }
 
     /** 
      * 
      **/
-    public Snapshot getSnapshot() { return this.snapshot; }
-    public void setSnapshot(Snapshot snapshot) { 
-        this.snapshot = snapshot;
+    public Optional<Snapshot> getSnapshot() { return this.snapshot; }
+   
+    public void setSnapshot(Optional<Snapshot> snapshot) { 
+        this.snapshot = (snapshot == null) ? Optional.<Snapshot>empty() : snapshot;
     }
 
     @Override
@@ -85,9 +86,15 @@ public class ModifySnapshotResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" snapshot : ").append(snapshot).append(",");
+        if(null != snapshot && snapshot.isPresent()){
+            sb.append(" snapshot : ").append(gson.toJson(snapshot)).append(",");
+        }
+        else{
+            sb.append(" snapshot : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -105,7 +112,7 @@ public class ModifySnapshotResult implements Serializable {
     }
 
     public static class Builder {
-        private Snapshot snapshot;
+        private Optional<Snapshot> snapshot;
 
         private Builder() { }
 
@@ -120,8 +127,8 @@ public class ModifySnapshotResult implements Serializable {
             return this;
         }
 
-        public ModifySnapshotResult.Builder snapshot(final Snapshot snapshot) {
-            this.snapshot = snapshot;
+        public ModifySnapshotResult.Builder optionalSnapshot(final Snapshot snapshot) {
+            this.snapshot = (snapshot == null) ? Optional.<Snapshot>empty() : Optional.of(snapshot);
             return this;
         }
 

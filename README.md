@@ -1,10 +1,6 @@
-# <img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/gh-pages/Java-SDK-Icon-RGB-02.png" height="50" width="50" > SolidFire Java SDK
+# <img src="https://raw.githubusercontent.com/solidfire/solidfire-sdk-java/master/Java-SDK-Icon-RGB-02.png" height="50" width="50" > SolidFire Java SDK
 
 Java SDK library for interacting with SolidFire Element API
-
-## Current Release
-
-Version: 1.2.2
 
 ## Description
 
@@ -15,12 +11,12 @@ The SolidFire Java SDK is a collection of software modules and libraries that fa
 | Component    | Version             |
 | ------------ | ------------------- |
 | Java         | 7.0 & 8.0           |
-| SolidFire OS | Element 7.0 - 9.0   |
+| SolidFire OS | Element 7.0 - 10.0  |
 
 ## Getting Help
 
 Contacting SolidFire SDK Support
-If you have any questions or comments about this product, contact <ng-sf-host-integrations-sdk@netapp.com> or reach out to the developer community at [ThePub](http://netapp.io). Your feedback helps us focus our efforts on new features and capabilities.
+If you have any questions or comments about this product, submit an issue on github or reach out to the developer community at [ThePub](http://netapp.io). Your feedback helps us focus our efforts on new features and capabilities.
 
 ## Download
 
@@ -31,7 +27,7 @@ If you have any questions or comments about this product, contact <ng-sf-host-in
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>solidfire-sdk-java</artifactId>
-  <version>1.2.2.0</version>
+  <version>1.5.0.89</version>
 </dependency>
 
 ~~~
@@ -40,7 +36,7 @@ or SBT:
 
 ~~~ scala
 
-libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.2.2.0"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.5"
 
 ~~~
 
@@ -48,15 +44,11 @@ or Gradle:
 
 ~~~ groovy
 
-compile 'com.solidfire:solidfire-sdk-java:1.2.2.0'
+compile 'com.solidfire:solidfire-sdk-java:1.5'
 
 ~~~
 
-## Assembly Jar
-
-The SolidFire Java SDK is also released as a Signed Assembly containing everything you need to quickly spin up a working client to interact with you SolidFire cluster.  The assembly can be downloaded [here](https://github.com/solidfire/solidfire-sdk-java/releases/download/v1.2.0.147/solidfire-sdk-assembly-1.2.0.168.jar).  
-
-___Dependencies___:
+##Dependencies
 
 | Component           | Version |
 | ------------------- | ------- |
@@ -78,16 +70,14 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 [Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/latest/api/)
 
-[1.1.0.85 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/)
-
-[1.0.0.53 JavaDoc](https://solidfire.github.io/solidfire-sdk-java/doc/v1.0/)
+[Download Release Notes](https://github.com/solidfire/solidfire-sdk-java/raw/master/NetApp_SolidFire_Java_SDK_Release_Notes.pdf)
 
 ## Examples
 
-Step 1 - Build a [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/element/api/SolidFireElement.html) object using the factory
+Step 1 - Build a *SolidFireElement* object using the factory
 ---
-This is the preferred way to construct the [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/element/api/SolidFireElement.html) object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
-SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the [ElementFactory](https://solidfire.github.io/solidfire-sdk-java/doc/v1.1/com/solidfire/client/ElementFactory.html) documentation.
+This is the preferred way to construct the *SolidFireElement* object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
+SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the *ElementFactory* documentation.
 
 #### Java:
 
@@ -256,7 +246,8 @@ class ReadmeScalaExample {
 
 ~~~
 
-## Timeouts
+## Timeout
+
 
 Connection timeout (useful for failing fast when a host becomes unreachable):
 
@@ -286,9 +277,9 @@ Read timeout (useful for extending time for a service call to return):
 
 ~~~
 
-## More Examples
+### [More Examples](examples) 
 
-More specific examples are available [here](examples/examples.md)
+For more examples check out the tutorials in the [examples folder](examples) of this repo.
 
 ## Logging and Logback
 
@@ -327,15 +318,6 @@ You also need to add the appropriate SLF4J dependency. Continuing with the logba
 </dependency>
 ~~~
         
-
-## Roadmap
-
-| Version | Release Date      | Notes                                                             |
-| ------- | ------------------ | ---------------------------------------------------------------- |
-| 1.0     | November 20, 2015  | Accounts, Volumes, Access Groups, Snapshots, and Group Snapshots |
-| 1.1     | September 20, 2016 | Additional Nitrogen & Oxygen API Coverage                        |
-| 1.2     | January 24, 2017   | Complete Nitrogen, Oxygen, & Fluorine API Coverage               |
-
 ## License
 
 Copyright © 2016, 2017 NetApp, Inc. All rights reserved.
@@ -350,3 +332,5 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions andlimitations under the License.
+
+

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -49,7 +50,6 @@ public class VolumeAccessGroup implements Serializable {
     @SerializedName("initiators") private String[] initiators;
     @SerializedName("volumes") private Long[] volumes;
     @SerializedName("attributes") private Attributes attributes;
-
     // empty constructor
     @Since("7.0")
     public VolumeAccessGroup() {}
@@ -80,6 +80,7 @@ public class VolumeAccessGroup implements Serializable {
      * A list of deleted volumes that have yet to be purged from the VAG.
      **/
     public Long[] getDeletedVolumes() { return this.deletedVolumes; }
+   
     public void setDeletedVolumes(Long[] deletedVolumes) { 
         this.deletedVolumes = deletedVolumes;
     }
@@ -87,6 +88,7 @@ public class VolumeAccessGroup implements Serializable {
      * Unique ID for this volume access group.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
@@ -94,6 +96,7 @@ public class VolumeAccessGroup implements Serializable {
      * Name of the volume access group.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -101,6 +104,7 @@ public class VolumeAccessGroup implements Serializable {
      * A list of IDs of initiators that are mapped to the VAG.
      **/
     public Long[] getInitiatorIDs() { return this.initiatorIDs; }
+   
     public void setInitiatorIDs(Long[] initiatorIDs) { 
         this.initiatorIDs = initiatorIDs;
     }
@@ -108,6 +112,7 @@ public class VolumeAccessGroup implements Serializable {
      * List of unique initiator names beintegering to the volume access group.
      **/
     public String[] getInitiators() { return this.initiators; }
+   
     public void setInitiators(String[] initiators) { 
         this.initiators = initiators;
     }
@@ -115,6 +120,7 @@ public class VolumeAccessGroup implements Serializable {
      * List of volumes beintegering to the volume access group.
      **/
     public Long[] getVolumes() { return this.volumes; }
+   
     public void setVolumes(Long[] volumes) { 
         this.volumes = volumes;
     }
@@ -122,6 +128,7 @@ public class VolumeAccessGroup implements Serializable {
      * List of name/value pairs
      **/
     public Attributes getAttributes() { return this.attributes; }
+   
     public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
@@ -164,15 +171,16 @@ public class VolumeAccessGroup implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" deletedVolumes : ").append(Arrays.toString(deletedVolumes)).append(",");
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" initiatorIDs : ").append(Arrays.toString(initiatorIDs)).append(",");
-        sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
-        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
+        sb.append(" deletedVolumes : ").append(gson.toJson(Arrays.toString(deletedVolumes))).append(",");
+        sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" initiatorIDs : ").append(gson.toJson(Arrays.toString(initiatorIDs))).append(",");
+        sb.append(" initiators : ").append(gson.toJson(Arrays.toString(initiators))).append(",");
+        sb.append(" volumes : ").append(gson.toJson(Arrays.toString(volumes))).append(",");
+        sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

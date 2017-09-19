@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class LoginSessionInfo implements Serializable {
 
     public static final long serialVersionUID = 9129136850650940841L;
     @SerializedName("timeout") private String timeout;
-
     // empty constructor
     @Since("7.0")
     public LoginSessionInfo() {}
@@ -51,9 +51,12 @@ public class LoginSessionInfo implements Serializable {
     }
 
     /** 
-     * 
+     * The time, in minutes, when this session will timeout and expire.
+     * Formatted in H:mm:ss. For example: 1:30:00, 20:00, 5:00.
+     * All leading zeros and colons are removed regardless of the format the timeout was entered.
      **/
     public String getTimeout() { return this.timeout; }
+   
     public void setTimeout(String timeout) { 
         this.timeout = timeout;
     }
@@ -84,9 +87,10 @@ public class LoginSessionInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" timeout : ").append(timeout).append(",");
+        sb.append(" timeout : ").append(gson.toJson(timeout)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

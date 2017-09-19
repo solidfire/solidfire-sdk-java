@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,9 +30,8 @@ import java.util.Objects;
 
 /**
  * ResetDrivesRequest  
- * ResetDrives is used to pro-actively initialize drives and remove all data currently residing on the drive. The drive can then be reused in an existing node or used in an upgraded SolidFire node. This method requires the force=true parameter to be included in the method call.
- * 
- * Note: This method is available only through the per-node API endpoint 5.0 or later.
+ * ResetDrives enables you to proactively initialize drives and remove all data currently residing on a drive. The drive can then be reused
+ * in an existing node or used in an upgraded node. This method requires the force parameter to be included in the method call.
  **/
 
 public class ResetDrivesRequest implements Serializable {
@@ -39,7 +39,6 @@ public class ResetDrivesRequest implements Serializable {
     public static final long serialVersionUID = -8699379922010603427L;
     @SerializedName("drives") private String drives;
     @SerializedName("force") private Boolean force;
-
     // empty constructor
     @Since("7.0")
     public ResetDrivesRequest() {}
@@ -60,13 +59,15 @@ public class ResetDrivesRequest implements Serializable {
      * List of device names (not driveIDs) to reset.
      **/
     public String getDrives() { return this.drives; }
+   
     public void setDrives(String drives) { 
         this.drives = drives;
     }
     /** 
-     * The "force" parameter must be included on this method to successfully reset a drive.
+     * Required parameter to successfully reset a drive.
      **/
     public Boolean getForce() { return this.force; }
+   
     public void setForce(Boolean force) { 
         this.force = force;
     }
@@ -99,10 +100,11 @@ public class ResetDrivesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(drives).append(",");
-        sb.append(" force : ").append(force).append(",");
+        sb.append(" drives : ").append(gson.toJson(drives)).append(",");
+        sb.append(" force : ").append(gson.toJson(force)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

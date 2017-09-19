@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,13 @@ import java.util.Objects;
 
 /**
  * CopyVolumeRequest  
- * Copies one volume to another.
+ * CopyVolume enables you to overwrite the data contents of an existing volume with the data contents of another volume (or
+ * snapshot). Attributes of the destination volume such as IQN, QoS settings, size, account, and volume access group membership are
+ * not changed. The destination volume must already exist and must be the same size as the source volume.
+ * NetApp strongly recommends that clients unmount the destination volume before the CopyVolume operation begins. If the
+ * destination volume is modified during the copy operation, the changes will be lost.
+ * This method is asynchronous and may take a variable amount of time to complete. You can use the GetAsyncResult method to
+ * determine when the process has finished, and ListSyncJobs to see the progress of the copy.
  **/
 
 public class CopyVolumeRequest implements Serializable {
@@ -38,7 +45,6 @@ public class CopyVolumeRequest implements Serializable {
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("dstVolumeID") private Long dstVolumeID;
     @SerializedName("snapshotID") private Optional<Long> snapshotID;
-
     // empty constructor
     @Since("7.0")
     public CopyVolumeRequest() {}
@@ -58,23 +64,27 @@ public class CopyVolumeRequest implements Serializable {
     }
 
     /** 
-     * Source volume to copy.
+     * VolumeID of the volume to be read from.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
-     * Destination volume for the copy.
+     * VolumeID of the volume to be overwritten.
      **/
     public Long getDstVolumeID() { return this.dstVolumeID; }
+   
     public void setDstVolumeID(Long dstVolumeID) { 
         this.dstVolumeID = dstVolumeID;
     }
     /** 
-     * Snapshot ID of the source volume to create the copy from.
+     * ID of the snapshot that is used as the source of the clone.
+     * If no ID is provided, the current active volume is used.
      **/
     public Optional<Long> getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Optional<Long> snapshotID) { 
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
@@ -109,12 +119,16 @@ public class CopyVolumeRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" dstVolumeID : ").append(dstVolumeID).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" dstVolumeID : ").append(gson.toJson(dstVolumeID)).append(",");
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID).append(",");
+            sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        }
+        else{
+            sb.append(" snapshotID : ").append("null").append(",");
         }
         sb.append( " }" );
 

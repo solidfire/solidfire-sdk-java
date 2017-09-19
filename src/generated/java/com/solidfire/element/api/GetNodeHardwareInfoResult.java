@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class GetNodeHardwareInfoResult implements Serializable {
 
     public static final long serialVersionUID = -3553623158556209250L;
     @SerializedName("nodeHardwareInfo") private Attributes nodeHardwareInfo;
-
     // empty constructor
     @Since("7.0")
     public GetNodeHardwareInfoResult() {}
@@ -54,6 +54,7 @@ public class GetNodeHardwareInfoResult implements Serializable {
      * Hardware information for the specified nodeID.
      **/
     public Attributes getNodeHardwareInfo() { return this.nodeHardwareInfo; }
+   
     public void setNodeHardwareInfo(Attributes nodeHardwareInfo) { 
         this.nodeHardwareInfo = nodeHardwareInfo;
     }
@@ -84,9 +85,10 @@ public class GetNodeHardwareInfoResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodeHardwareInfo : ").append(nodeHardwareInfo).append(",");
+        sb.append(" nodeHardwareInfo : ").append(gson.toJson(nodeHardwareInfo)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

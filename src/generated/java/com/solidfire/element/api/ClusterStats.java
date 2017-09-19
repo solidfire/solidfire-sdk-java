@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,10 +37,15 @@ public class ClusterStats implements Serializable {
     public static final long serialVersionUID = -8071979927197008409L;
     @SerializedName("clusterUtilization") private Double clusterUtilization;
     @SerializedName("clientQueueDepth") private Long clientQueueDepth;
+    @SerializedName("normalizedIOPS") private Long normalizedIOPS;
     @SerializedName("readBytes") private Long readBytes;
+    @SerializedName("readLatencyUSecTotal") private Long readLatencyUSecTotal;
     @SerializedName("readOps") private Long readOps;
+    @SerializedName("servicesCount") private Long servicesCount;
+    @SerializedName("servicesTotal") private Long servicesTotal;
     @SerializedName("timestamp") private String timestamp;
     @SerializedName("writeBytes") private Long writeBytes;
+    @SerializedName("writeLatencyUSecTotal") private Long writeLatencyUSecTotal;
     @SerializedName("writeOps") private Long writeOps;
     @SerializedName("actualIOPS") private Optional<Long> actualIOPS;
     @SerializedName("averageIOPSize") private Optional<Long> averageIOPSize;
@@ -53,7 +59,6 @@ public class ClusterStats implements Serializable {
     @SerializedName("writeBytesLastSample") private Optional<Long> writeBytesLastSample;
     @SerializedName("writeLatencyUSec") private Optional<Long> writeLatencyUSec;
     @SerializedName("writeOpsLastSample") private Optional<Long> writeOpsLastSample;
-
     // empty constructor
     @Since("7.0")
     public ClusterStats() {}
@@ -64,10 +69,15 @@ public class ClusterStats implements Serializable {
     public ClusterStats(
         Double clusterUtilization,
         Long clientQueueDepth,
+        Long normalizedIOPS,
         Long readBytes,
+        Long readLatencyUSecTotal,
         Long readOps,
+        Long servicesCount,
+        Long servicesTotal,
         String timestamp,
         Long writeBytes,
+        Long writeLatencyUSecTotal,
         Long writeOps,
         Optional<Long> actualIOPS,
         Optional<Long> averageIOPSize,
@@ -85,10 +95,15 @@ public class ClusterStats implements Serializable {
     {
         this.clusterUtilization = clusterUtilization;
         this.clientQueueDepth = clientQueueDepth;
+        this.normalizedIOPS = normalizedIOPS;
         this.readBytes = readBytes;
+        this.readLatencyUSecTotal = readLatencyUSecTotal;
         this.readOps = readOps;
+        this.servicesCount = servicesCount;
+        this.servicesTotal = servicesTotal;
         this.timestamp = timestamp;
         this.writeBytes = writeBytes;
+        this.writeLatencyUSecTotal = writeLatencyUSecTotal;
         this.writeOps = writeOps;
         this.actualIOPS = (actualIOPS == null) ? Optional.<Long>empty() : actualIOPS;
         this.averageIOPSize = (averageIOPSize == null) ? Optional.<Long>empty() : averageIOPSize;
@@ -108,6 +123,7 @@ public class ClusterStats implements Serializable {
      * The amount of cluster capacity being utilized.
      **/
     public Double getClusterUtilization() { return this.clusterUtilization; }
+   
     public void setClusterUtilization(Double clusterUtilization) { 
         this.clusterUtilization = clusterUtilization;
     }
@@ -115,27 +131,63 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Long getClientQueueDepth() { return this.clientQueueDepth; }
+   
     public void setClientQueueDepth(Long clientQueueDepth) { 
         this.clientQueueDepth = clientQueueDepth;
+    }
+    /** 
+     * 
+     **/
+    public Long getNormalizedIOPS() { return this.normalizedIOPS; }
+   
+    public void setNormalizedIOPS(Long normalizedIOPS) { 
+        this.normalizedIOPS = normalizedIOPS;
     }
     /** 
      * Total bytes read by clients.
      **/
     public Long getReadBytes() { return this.readBytes; }
+   
     public void setReadBytes(Long readBytes) { 
         this.readBytes = readBytes;
+    }
+    /** 
+     * 
+     **/
+    public Long getReadLatencyUSecTotal() { return this.readLatencyUSecTotal; }
+   
+    public void setReadLatencyUSecTotal(Long readLatencyUSecTotal) { 
+        this.readLatencyUSecTotal = readLatencyUSecTotal;
     }
     /** 
      * Total read operations.
      **/
     public Long getReadOps() { return this.readOps; }
+   
     public void setReadOps(Long readOps) { 
         this.readOps = readOps;
+    }
+    /** 
+     * Services count
+     **/
+    public Long getServicesCount() { return this.servicesCount; }
+   
+    public void setServicesCount(Long servicesCount) { 
+        this.servicesCount = servicesCount;
+    }
+    /** 
+     * Total services.
+     **/
+    public Long getServicesTotal() { return this.servicesTotal; }
+   
+    public void setServicesTotal(Long servicesTotal) { 
+        this.servicesTotal = servicesTotal;
     }
     /** 
      * Current time in UTC format. ISO 8601 date string.
      **/
     public String getTimestamp() { return this.timestamp; }
+   
     public void setTimestamp(String timestamp) { 
         this.timestamp = timestamp;
     }
@@ -143,13 +195,23 @@ public class ClusterStats implements Serializable {
      * Total bytes written by clients.
      **/
     public Long getWriteBytes() { return this.writeBytes; }
+   
     public void setWriteBytes(Long writeBytes) { 
         this.writeBytes = writeBytes;
+    }
+    /** 
+     * 
+     **/
+    public Long getWriteLatencyUSecTotal() { return this.writeLatencyUSecTotal; }
+   
+    public void setWriteLatencyUSecTotal(Long writeLatencyUSecTotal) { 
+        this.writeLatencyUSecTotal = writeLatencyUSecTotal;
     }
     /** 
      * Total write operations.
      **/
     public Long getWriteOps() { return this.writeOps; }
+   
     public void setWriteOps(Long writeOps) { 
         this.writeOps = writeOps;
     }
@@ -157,6 +219,7 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Optional<Long> getActualIOPS() { return this.actualIOPS; }
+   
     public void setActualIOPS(Optional<Long> actualIOPS) { 
         this.actualIOPS = (actualIOPS == null) ? Optional.<Long>empty() : actualIOPS;
     }
@@ -164,6 +227,7 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Optional<Long> getAverageIOPSize() { return this.averageIOPSize; }
+   
     public void setAverageIOPSize(Optional<Long> averageIOPSize) { 
         this.averageIOPSize = (averageIOPSize == null) ? Optional.<Long>empty() : averageIOPSize;
     }
@@ -171,6 +235,7 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Optional<Long> getLatencyUSec() { return this.latencyUSec; }
+   
     public void setLatencyUSec(Optional<Long> latencyUSec) { 
         this.latencyUSec = (latencyUSec == null) ? Optional.<Long>empty() : latencyUSec;
     }
@@ -178,6 +243,7 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Optional<Long> getReadBytesLastSample() { return this.readBytesLastSample; }
+   
     public void setReadBytesLastSample(Optional<Long> readBytesLastSample) { 
         this.readBytesLastSample = (readBytesLastSample == null) ? Optional.<Long>empty() : readBytesLastSample;
     }
@@ -185,6 +251,7 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Optional<Long> getReadLatencyUSec() { return this.readLatencyUSec; }
+   
     public void setReadLatencyUSec(Optional<Long> readLatencyUSec) { 
         this.readLatencyUSec = (readLatencyUSec == null) ? Optional.<Long>empty() : readLatencyUSec;
     }
@@ -192,6 +259,7 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Optional<Long> getReadOpsLastSample() { return this.readOpsLastSample; }
+   
     public void setReadOpsLastSample(Optional<Long> readOpsLastSample) { 
         this.readOpsLastSample = (readOpsLastSample == null) ? Optional.<Long>empty() : readOpsLastSample;
     }
@@ -199,6 +267,7 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Optional<Long> getSamplePeriodMsec() { return this.samplePeriodMsec; }
+   
     public void setSamplePeriodMsec(Optional<Long> samplePeriodMsec) { 
         this.samplePeriodMsec = (samplePeriodMsec == null) ? Optional.<Long>empty() : samplePeriodMsec;
     }
@@ -206,6 +275,7 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Optional<Long> getUnalignedReads() { return this.unalignedReads; }
+   
     public void setUnalignedReads(Optional<Long> unalignedReads) { 
         this.unalignedReads = (unalignedReads == null) ? Optional.<Long>empty() : unalignedReads;
     }
@@ -213,6 +283,7 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Optional<Long> getUnalignedWrites() { return this.unalignedWrites; }
+   
     public void setUnalignedWrites(Optional<Long> unalignedWrites) { 
         this.unalignedWrites = (unalignedWrites == null) ? Optional.<Long>empty() : unalignedWrites;
     }
@@ -220,6 +291,7 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Optional<Long> getWriteBytesLastSample() { return this.writeBytesLastSample; }
+   
     public void setWriteBytesLastSample(Optional<Long> writeBytesLastSample) { 
         this.writeBytesLastSample = (writeBytesLastSample == null) ? Optional.<Long>empty() : writeBytesLastSample;
     }
@@ -227,6 +299,7 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Optional<Long> getWriteLatencyUSec() { return this.writeLatencyUSec; }
+   
     public void setWriteLatencyUSec(Optional<Long> writeLatencyUSec) { 
         this.writeLatencyUSec = (writeLatencyUSec == null) ? Optional.<Long>empty() : writeLatencyUSec;
     }
@@ -234,6 +307,7 @@ public class ClusterStats implements Serializable {
      * 
      **/
     public Optional<Long> getWriteOpsLastSample() { return this.writeOpsLastSample; }
+   
     public void setWriteOpsLastSample(Optional<Long> writeOpsLastSample) { 
         this.writeOpsLastSample = (writeOpsLastSample == null) ? Optional.<Long>empty() : writeOpsLastSample;
     }
@@ -248,10 +322,15 @@ public class ClusterStats implements Serializable {
         return 
             Objects.equals(clusterUtilization, that.clusterUtilization) && 
             Objects.equals(clientQueueDepth, that.clientQueueDepth) && 
+            Objects.equals(normalizedIOPS, that.normalizedIOPS) && 
             Objects.equals(readBytes, that.readBytes) && 
+            Objects.equals(readLatencyUSecTotal, that.readLatencyUSecTotal) && 
             Objects.equals(readOps, that.readOps) && 
+            Objects.equals(servicesCount, that.servicesCount) && 
+            Objects.equals(servicesTotal, that.servicesTotal) && 
             Objects.equals(timestamp, that.timestamp) && 
             Objects.equals(writeBytes, that.writeBytes) && 
+            Objects.equals(writeLatencyUSecTotal, that.writeLatencyUSecTotal) && 
             Objects.equals(writeOps, that.writeOps) && 
             Objects.equals(actualIOPS, that.actualIOPS) && 
             Objects.equals(averageIOPSize, that.averageIOPSize) && 
@@ -269,7 +348,7 @@ public class ClusterStats implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterUtilization,clientQueueDepth,readBytes,readOps,timestamp,writeBytes,writeOps,actualIOPS,averageIOPSize,latencyUSec,readBytesLastSample,readLatencyUSec,readOpsLastSample,samplePeriodMsec,unalignedReads,unalignedWrites,writeBytesLastSample,writeLatencyUSec,writeOpsLastSample );
+        return Objects.hash( clusterUtilization,clientQueueDepth,normalizedIOPS,readBytes,readLatencyUSecTotal,readOps,servicesCount,servicesTotal,timestamp,writeBytes,writeLatencyUSecTotal,writeOps,actualIOPS,averageIOPSize,latencyUSec,readBytesLastSample,readLatencyUSec,readOpsLastSample,samplePeriodMsec,unalignedReads,unalignedWrites,writeBytesLastSample,writeLatencyUSec,writeOpsLastSample );
     }
 
 
@@ -277,10 +356,15 @@ public class ClusterStats implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("clusterUtilization", clusterUtilization);
         map.put("clientQueueDepth", clientQueueDepth);
+        map.put("normalizedIOPS", normalizedIOPS);
         map.put("readBytes", readBytes);
+        map.put("readLatencyUSecTotal", readLatencyUSecTotal);
         map.put("readOps", readOps);
+        map.put("servicesCount", servicesCount);
+        map.put("servicesTotal", servicesTotal);
         map.put("timestamp", timestamp);
         map.put("writeBytes", writeBytes);
+        map.put("writeLatencyUSecTotal", writeLatencyUSecTotal);
         map.put("writeOps", writeOps);
         map.put("actualIOPS", actualIOPS);
         map.put("averageIOPSize", averageIOPSize);
@@ -300,50 +384,92 @@ public class ClusterStats implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterUtilization : ").append(clusterUtilization).append(",");
-        sb.append(" clientQueueDepth : ").append(clientQueueDepth).append(",");
-        sb.append(" readBytes : ").append(readBytes).append(",");
-        sb.append(" readOps : ").append(readOps).append(",");
-        sb.append(" timestamp : ").append(timestamp).append(",");
-        sb.append(" writeBytes : ").append(writeBytes).append(",");
-        sb.append(" writeOps : ").append(writeOps).append(",");
+        sb.append(" clusterUtilization : ").append(gson.toJson(clusterUtilization)).append(",");
+        sb.append(" clientQueueDepth : ").append(gson.toJson(clientQueueDepth)).append(",");
+        sb.append(" normalizedIOPS : ").append(gson.toJson(normalizedIOPS)).append(",");
+        sb.append(" readBytes : ").append(gson.toJson(readBytes)).append(",");
+        sb.append(" readLatencyUSecTotal : ").append(gson.toJson(readLatencyUSecTotal)).append(",");
+        sb.append(" readOps : ").append(gson.toJson(readOps)).append(",");
+        sb.append(" servicesCount : ").append(gson.toJson(servicesCount)).append(",");
+        sb.append(" servicesTotal : ").append(gson.toJson(servicesTotal)).append(",");
+        sb.append(" timestamp : ").append(gson.toJson(timestamp)).append(",");
+        sb.append(" writeBytes : ").append(gson.toJson(writeBytes)).append(",");
+        sb.append(" writeLatencyUSecTotal : ").append(gson.toJson(writeLatencyUSecTotal)).append(",");
+        sb.append(" writeOps : ").append(gson.toJson(writeOps)).append(",");
         if(null != actualIOPS && actualIOPS.isPresent()){
-            sb.append(" actualIOPS : ").append(actualIOPS).append(",");
+            sb.append(" actualIOPS : ").append(gson.toJson(actualIOPS)).append(",");
+        }
+        else{
+            sb.append(" actualIOPS : ").append("null").append(",");
         }
         if(null != averageIOPSize && averageIOPSize.isPresent()){
-            sb.append(" averageIOPSize : ").append(averageIOPSize).append(",");
+            sb.append(" averageIOPSize : ").append(gson.toJson(averageIOPSize)).append(",");
+        }
+        else{
+            sb.append(" averageIOPSize : ").append("null").append(",");
         }
         if(null != latencyUSec && latencyUSec.isPresent()){
-            sb.append(" latencyUSec : ").append(latencyUSec).append(",");
+            sb.append(" latencyUSec : ").append(gson.toJson(latencyUSec)).append(",");
+        }
+        else{
+            sb.append(" latencyUSec : ").append("null").append(",");
         }
         if(null != readBytesLastSample && readBytesLastSample.isPresent()){
-            sb.append(" readBytesLastSample : ").append(readBytesLastSample).append(",");
+            sb.append(" readBytesLastSample : ").append(gson.toJson(readBytesLastSample)).append(",");
+        }
+        else{
+            sb.append(" readBytesLastSample : ").append("null").append(",");
         }
         if(null != readLatencyUSec && readLatencyUSec.isPresent()){
-            sb.append(" readLatencyUSec : ").append(readLatencyUSec).append(",");
+            sb.append(" readLatencyUSec : ").append(gson.toJson(readLatencyUSec)).append(",");
+        }
+        else{
+            sb.append(" readLatencyUSec : ").append("null").append(",");
         }
         if(null != readOpsLastSample && readOpsLastSample.isPresent()){
-            sb.append(" readOpsLastSample : ").append(readOpsLastSample).append(",");
+            sb.append(" readOpsLastSample : ").append(gson.toJson(readOpsLastSample)).append(",");
+        }
+        else{
+            sb.append(" readOpsLastSample : ").append("null").append(",");
         }
         if(null != samplePeriodMsec && samplePeriodMsec.isPresent()){
-            sb.append(" samplePeriodMsec : ").append(samplePeriodMsec).append(",");
+            sb.append(" samplePeriodMsec : ").append(gson.toJson(samplePeriodMsec)).append(",");
+        }
+        else{
+            sb.append(" samplePeriodMsec : ").append("null").append(",");
         }
         if(null != unalignedReads && unalignedReads.isPresent()){
-            sb.append(" unalignedReads : ").append(unalignedReads).append(",");
+            sb.append(" unalignedReads : ").append(gson.toJson(unalignedReads)).append(",");
+        }
+        else{
+            sb.append(" unalignedReads : ").append("null").append(",");
         }
         if(null != unalignedWrites && unalignedWrites.isPresent()){
-            sb.append(" unalignedWrites : ").append(unalignedWrites).append(",");
+            sb.append(" unalignedWrites : ").append(gson.toJson(unalignedWrites)).append(",");
+        }
+        else{
+            sb.append(" unalignedWrites : ").append("null").append(",");
         }
         if(null != writeBytesLastSample && writeBytesLastSample.isPresent()){
-            sb.append(" writeBytesLastSample : ").append(writeBytesLastSample).append(",");
+            sb.append(" writeBytesLastSample : ").append(gson.toJson(writeBytesLastSample)).append(",");
+        }
+        else{
+            sb.append(" writeBytesLastSample : ").append("null").append(",");
         }
         if(null != writeLatencyUSec && writeLatencyUSec.isPresent()){
-            sb.append(" writeLatencyUSec : ").append(writeLatencyUSec).append(",");
+            sb.append(" writeLatencyUSec : ").append(gson.toJson(writeLatencyUSec)).append(",");
+        }
+        else{
+            sb.append(" writeLatencyUSec : ").append("null").append(",");
         }
         if(null != writeOpsLastSample && writeOpsLastSample.isPresent()){
-            sb.append(" writeOpsLastSample : ").append(writeOpsLastSample).append(",");
+            sb.append(" writeOpsLastSample : ").append(gson.toJson(writeOpsLastSample)).append(",");
+        }
+        else{
+            sb.append(" writeOpsLastSample : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -364,10 +490,15 @@ public class ClusterStats implements Serializable {
     public static class Builder {
         private Double clusterUtilization;
         private Long clientQueueDepth;
+        private Long normalizedIOPS;
         private Long readBytes;
+        private Long readLatencyUSecTotal;
         private Long readOps;
+        private Long servicesCount;
+        private Long servicesTotal;
         private String timestamp;
         private Long writeBytes;
+        private Long writeLatencyUSecTotal;
         private Long writeOps;
         private Optional<Long> actualIOPS;
         private Optional<Long> averageIOPSize;
@@ -388,10 +519,15 @@ public class ClusterStats implements Serializable {
             return new ClusterStats (
                          this.clusterUtilization,
                          this.clientQueueDepth,
+                         this.normalizedIOPS,
                          this.readBytes,
+                         this.readLatencyUSecTotal,
                          this.readOps,
+                         this.servicesCount,
+                         this.servicesTotal,
                          this.timestamp,
                          this.writeBytes,
+                         this.writeLatencyUSecTotal,
                          this.writeOps,
                          this.actualIOPS,
                          this.averageIOPSize,
@@ -410,10 +546,15 @@ public class ClusterStats implements Serializable {
         private ClusterStats.Builder buildFrom(final ClusterStats req) {
             this.clusterUtilization = req.clusterUtilization;
             this.clientQueueDepth = req.clientQueueDepth;
+            this.normalizedIOPS = req.normalizedIOPS;
             this.readBytes = req.readBytes;
+            this.readLatencyUSecTotal = req.readLatencyUSecTotal;
             this.readOps = req.readOps;
+            this.servicesCount = req.servicesCount;
+            this.servicesTotal = req.servicesTotal;
             this.timestamp = req.timestamp;
             this.writeBytes = req.writeBytes;
+            this.writeLatencyUSecTotal = req.writeLatencyUSecTotal;
             this.writeOps = req.writeOps;
             this.actualIOPS = req.actualIOPS;
             this.averageIOPSize = req.averageIOPSize;
@@ -441,13 +582,33 @@ public class ClusterStats implements Serializable {
             return this;
         }
 
+        public ClusterStats.Builder normalizedIOPS(final Long normalizedIOPS) {
+            this.normalizedIOPS = normalizedIOPS;
+            return this;
+        }
+
         public ClusterStats.Builder readBytes(final Long readBytes) {
             this.readBytes = readBytes;
             return this;
         }
 
+        public ClusterStats.Builder readLatencyUSecTotal(final Long readLatencyUSecTotal) {
+            this.readLatencyUSecTotal = readLatencyUSecTotal;
+            return this;
+        }
+
         public ClusterStats.Builder readOps(final Long readOps) {
             this.readOps = readOps;
+            return this;
+        }
+
+        public ClusterStats.Builder servicesCount(final Long servicesCount) {
+            this.servicesCount = servicesCount;
+            return this;
+        }
+
+        public ClusterStats.Builder servicesTotal(final Long servicesTotal) {
+            this.servicesTotal = servicesTotal;
             return this;
         }
 
@@ -458,6 +619,11 @@ public class ClusterStats implements Serializable {
 
         public ClusterStats.Builder writeBytes(final Long writeBytes) {
             this.writeBytes = writeBytes;
+            return this;
+        }
+
+        public ClusterStats.Builder writeLatencyUSecTotal(final Long writeLatencyUSecTotal) {
+            this.writeLatencyUSecTotal = writeLatencyUSecTotal;
             return this;
         }
 

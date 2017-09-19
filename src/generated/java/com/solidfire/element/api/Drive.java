@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -45,8 +46,8 @@ public class Drive implements Serializable {
     @SerializedName("driveType") private String driveType;
     @SerializedName("reservedSliceFileCapacity") private Optional<Long> reservedSliceFileCapacity;
     @SerializedName("customerSliceFileCapacity") private Optional<Long> customerSliceFileCapacity;
+    @SerializedName("smartSsdWriteCapable") private Optional<Boolean> smartSsdWriteCapable;
     @SerializedName("attributes") private Attributes attributes;
-
     // empty constructor
     @Since("7.0")
     public Drive() {}
@@ -66,6 +67,7 @@ public class Drive implements Serializable {
         String driveType,
         Optional<Long> reservedSliceFileCapacity,
         Optional<Long> customerSliceFileCapacity,
+        Optional<Boolean> smartSsdWriteCapable,
         Attributes attributes
     )
     {
@@ -80,6 +82,7 @@ public class Drive implements Serializable {
         this.driveType = driveType;
         this.reservedSliceFileCapacity = (reservedSliceFileCapacity == null) ? Optional.<Long>empty() : reservedSliceFileCapacity;
         this.customerSliceFileCapacity = (customerSliceFileCapacity == null) ? Optional.<Long>empty() : customerSliceFileCapacity;
+        this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : smartSsdWriteCapable;
         this.attributes = attributes;
     }
 
@@ -87,6 +90,7 @@ public class Drive implements Serializable {
      * A unique identifier for this drive.
      **/
     public Long getDriveID() { return this.driveID; }
+   
     public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
@@ -95,6 +99,7 @@ public class Drive implements Serializable {
      * If the drive has been physically removed from the node, this is where it was last seen.
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -102,6 +107,7 @@ public class Drive implements Serializable {
      * If this drive is hosting a service, the identifier for that service.
      **/
     public Optional<Long> getAssignedService() { return this.assignedService; }
+   
     public void setAssignedService(Optional<Long> assignedService) { 
         this.assignedService = (assignedService == null) ? Optional.<Long>empty() : assignedService;
     }
@@ -109,6 +115,7 @@ public class Drive implements Serializable {
      * The list of asynchronous jobs currently running on the drive (for example: a secure erase job).
      **/
     public Long[] getAsyncResultIDs() { return this.asyncResultIDs; }
+   
     public void setAsyncResultIDs(Long[] asyncResultIDs) { 
         this.asyncResultIDs = asyncResultIDs;
     }
@@ -116,6 +123,7 @@ public class Drive implements Serializable {
      * The raw capacity of this drive in bytes.
      **/
     public Long getCapacity() { return this.capacity; }
+   
     public void setCapacity(Long capacity) { 
         this.capacity = capacity;
     }
@@ -123,6 +131,7 @@ public class Drive implements Serializable {
      * The manufacturer's serial number for this drive.
      **/
     public String getSerial() { return this.serial; }
+   
     public void setSerial(String serial) { 
         this.serial = serial;
     }
@@ -131,6 +140,7 @@ public class Drive implements Serializable {
      * If the drive has been physically removed from the node, this will not have a value.
      **/
     public Optional<Long> getSlot() { return this.slot; }
+   
     public void setSlot(Optional<Long> slot) { 
         this.slot = (slot == null) ? Optional.<Long>empty() : slot;
     }
@@ -138,6 +148,7 @@ public class Drive implements Serializable {
      * The current status of this drive.
      **/
     public String getDriveStatus() { return this.driveStatus; }
+   
     public void setDriveStatus(String driveStatus) { 
         this.driveStatus = driveStatus;
     }
@@ -145,6 +156,7 @@ public class Drive implements Serializable {
      * The type of this drive.
      **/
     public String getDriveType() { return this.driveType; }
+   
     public void setDriveType(String driveType) { 
         this.driveType = driveType;
     }
@@ -152,6 +164,7 @@ public class Drive implements Serializable {
      * 
      **/
     public Optional<Long> getReservedSliceFileCapacity() { return this.reservedSliceFileCapacity; }
+   
     public void setReservedSliceFileCapacity(Optional<Long> reservedSliceFileCapacity) { 
         this.reservedSliceFileCapacity = (reservedSliceFileCapacity == null) ? Optional.<Long>empty() : reservedSliceFileCapacity;
     }
@@ -159,13 +172,22 @@ public class Drive implements Serializable {
      * 
      **/
     public Optional<Long> getCustomerSliceFileCapacity() { return this.customerSliceFileCapacity; }
+   
     public void setCustomerSliceFileCapacity(Optional<Long> customerSliceFileCapacity) { 
         this.customerSliceFileCapacity = (customerSliceFileCapacity == null) ? Optional.<Long>empty() : customerSliceFileCapacity;
+    }
+    /** 
+     **/
+    public Optional<Boolean> getSmartSsdWriteCapable() { return this.smartSsdWriteCapable; }
+   
+    public void setSmartSsdWriteCapable(Optional<Boolean> smartSsdWriteCapable) { 
+        this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : smartSsdWriteCapable;
     }
     /** 
      * List of Name/Value pairs in JSON object format.
      **/
     public Attributes getAttributes() { return this.attributes; }
+   
     public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
@@ -189,12 +211,13 @@ public class Drive implements Serializable {
             Objects.equals(driveType, that.driveType) && 
             Objects.equals(reservedSliceFileCapacity, that.reservedSliceFileCapacity) && 
             Objects.equals(customerSliceFileCapacity, that.customerSliceFileCapacity) && 
+            Objects.equals(smartSsdWriteCapable, that.smartSsdWriteCapable) && 
             Objects.equals(attributes, that.attributes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( driveID,nodeID,assignedService,(Object[])asyncResultIDs,capacity,serial,slot,driveStatus,driveType,reservedSliceFileCapacity,customerSliceFileCapacity,attributes );
+        return Objects.hash( driveID,nodeID,assignedService,(Object[])asyncResultIDs,capacity,serial,slot,driveStatus,driveType,reservedSliceFileCapacity,customerSliceFileCapacity,smartSsdWriteCapable,attributes );
     }
 
 
@@ -211,6 +234,7 @@ public class Drive implements Serializable {
         map.put("driveType", driveType);
         map.put("reservedSliceFileCapacity", reservedSliceFileCapacity);
         map.put("customerSliceFileCapacity", customerSliceFileCapacity);
+        map.put("smartSsdWriteCapable", smartSsdWriteCapable);
         map.put("attributes", attributes);
         return map;
     }
@@ -218,28 +242,47 @@ public class Drive implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" driveID : ").append(driveID).append(",");
-        sb.append(" nodeID : ").append(nodeID).append(",");
+        sb.append(" driveID : ").append(gson.toJson(driveID)).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
         if(null != assignedService && assignedService.isPresent()){
-            sb.append(" assignedService : ").append(assignedService).append(",");
+            sb.append(" assignedService : ").append(gson.toJson(assignedService)).append(",");
         }
-        sb.append(" asyncResultIDs : ").append(Arrays.toString(asyncResultIDs)).append(",");
-        sb.append(" capacity : ").append(capacity).append(",");
-        sb.append(" serial : ").append(serial).append(",");
+        else{
+            sb.append(" assignedService : ").append("null").append(",");
+        }
+        sb.append(" asyncResultIDs : ").append(gson.toJson(Arrays.toString(asyncResultIDs))).append(",");
+        sb.append(" capacity : ").append(gson.toJson(capacity)).append(",");
+        sb.append(" serial : ").append(gson.toJson(serial)).append(",");
         if(null != slot && slot.isPresent()){
-            sb.append(" slot : ").append(slot).append(",");
+            sb.append(" slot : ").append(gson.toJson(slot)).append(",");
         }
-        sb.append(" driveStatus : ").append(driveStatus).append(",");
-        sb.append(" driveType : ").append(driveType).append(",");
+        else{
+            sb.append(" slot : ").append("null").append(",");
+        }
+        sb.append(" driveStatus : ").append(gson.toJson(driveStatus)).append(",");
+        sb.append(" driveType : ").append(gson.toJson(driveType)).append(",");
         if(null != reservedSliceFileCapacity && reservedSliceFileCapacity.isPresent()){
-            sb.append(" reservedSliceFileCapacity : ").append(reservedSliceFileCapacity).append(",");
+            sb.append(" reservedSliceFileCapacity : ").append(gson.toJson(reservedSliceFileCapacity)).append(",");
+        }
+        else{
+            sb.append(" reservedSliceFileCapacity : ").append("null").append(",");
         }
         if(null != customerSliceFileCapacity && customerSliceFileCapacity.isPresent()){
-            sb.append(" customerSliceFileCapacity : ").append(customerSliceFileCapacity).append(",");
+            sb.append(" customerSliceFileCapacity : ").append(gson.toJson(customerSliceFileCapacity)).append(",");
         }
-        sb.append(" attributes : ").append(attributes).append(",");
+        else{
+            sb.append(" customerSliceFileCapacity : ").append("null").append(",");
+        }
+        if(null != smartSsdWriteCapable && smartSsdWriteCapable.isPresent()){
+            sb.append(" smartSsdWriteCapable : ").append(gson.toJson(smartSsdWriteCapable)).append(",");
+        }
+        else{
+            sb.append(" smartSsdWriteCapable : ").append("null").append(",");
+        }
+        sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -268,6 +311,7 @@ public class Drive implements Serializable {
         private String driveType;
         private Optional<Long> reservedSliceFileCapacity;
         private Optional<Long> customerSliceFileCapacity;
+        private Optional<Boolean> smartSsdWriteCapable;
         private Attributes attributes;
 
         private Builder() { }
@@ -285,6 +329,7 @@ public class Drive implements Serializable {
                          this.driveType,
                          this.reservedSliceFileCapacity,
                          this.customerSliceFileCapacity,
+                         this.smartSsdWriteCapable,
                          this.attributes);
         }
 
@@ -300,6 +345,7 @@ public class Drive implements Serializable {
             this.driveType = req.driveType;
             this.reservedSliceFileCapacity = req.reservedSliceFileCapacity;
             this.customerSliceFileCapacity = req.customerSliceFileCapacity;
+            this.smartSsdWriteCapable = req.smartSsdWriteCapable;
             this.attributes = req.attributes;
 
             return this;
@@ -357,6 +403,11 @@ public class Drive implements Serializable {
 
         public Drive.Builder optionalCustomerSliceFileCapacity(final Long customerSliceFileCapacity) {
             this.customerSliceFileCapacity = (customerSliceFileCapacity == null) ? Optional.<Long>empty() : Optional.of(customerSliceFileCapacity);
+            return this;
+        }
+
+        public Drive.Builder optionalSmartSsdWriteCapable(final Boolean smartSsdWriteCapable) {
+            this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : Optional.of(smartSsdWriteCapable);
             return this;
         }
 

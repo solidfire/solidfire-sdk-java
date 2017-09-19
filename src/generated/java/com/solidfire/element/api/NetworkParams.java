@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -41,7 +42,6 @@ public class NetworkParams implements Serializable {
     @SerializedName("eth2") private Optional<NetworkConfigParams> eth2;
     @SerializedName("eth3") private Optional<NetworkConfigParams> eth3;
     @SerializedName("lo") private Optional<NetworkConfigParams> lo;
-
     // empty constructor
     @Since("7.0")
     public NetworkParams() {}
@@ -72,6 +72,7 @@ public class NetworkParams implements Serializable {
      * 
      **/
     public Optional<NetworkConfigParams> getBond10G() { return this.bond10G; }
+   
     public void setBond10G(Optional<NetworkConfigParams> bond10G) { 
         this.bond10G = (bond10G == null) ? Optional.<NetworkConfigParams>empty() : bond10G;
     }
@@ -79,6 +80,7 @@ public class NetworkParams implements Serializable {
      * 
      **/
     public Optional<NetworkConfigParams> getBond1G() { return this.bond1G; }
+   
     public void setBond1G(Optional<NetworkConfigParams> bond1G) { 
         this.bond1G = (bond1G == null) ? Optional.<NetworkConfigParams>empty() : bond1G;
     }
@@ -86,6 +88,7 @@ public class NetworkParams implements Serializable {
      * 
      **/
     public Optional<NetworkConfigParams> getEth0() { return this.eth0; }
+   
     public void setEth0(Optional<NetworkConfigParams> eth0) { 
         this.eth0 = (eth0 == null) ? Optional.<NetworkConfigParams>empty() : eth0;
     }
@@ -93,6 +96,7 @@ public class NetworkParams implements Serializable {
      * 
      **/
     public Optional<NetworkConfigParams> getEth1() { return this.eth1; }
+   
     public void setEth1(Optional<NetworkConfigParams> eth1) { 
         this.eth1 = (eth1 == null) ? Optional.<NetworkConfigParams>empty() : eth1;
     }
@@ -100,6 +104,7 @@ public class NetworkParams implements Serializable {
      * 
      **/
     public Optional<NetworkConfigParams> getEth2() { return this.eth2; }
+   
     public void setEth2(Optional<NetworkConfigParams> eth2) { 
         this.eth2 = (eth2 == null) ? Optional.<NetworkConfigParams>empty() : eth2;
     }
@@ -107,6 +112,7 @@ public class NetworkParams implements Serializable {
      * 
      **/
     public Optional<NetworkConfigParams> getEth3() { return this.eth3; }
+   
     public void setEth3(Optional<NetworkConfigParams> eth3) { 
         this.eth3 = (eth3 == null) ? Optional.<NetworkConfigParams>empty() : eth3;
     }
@@ -114,6 +120,7 @@ public class NetworkParams implements Serializable {
      * 
      **/
     public Optional<NetworkConfigParams> getLo() { return this.lo; }
+   
     public void setLo(Optional<NetworkConfigParams> lo) { 
         this.lo = (lo == null) ? Optional.<NetworkConfigParams>empty() : lo;
     }
@@ -156,28 +163,50 @@ public class NetworkParams implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != bond10G && bond10G.isPresent()){
-            sb.append(" bond10G : ").append(bond10G).append(",");
+            sb.append(" bond10G : ").append(gson.toJson(bond10G)).append(",");
+        }
+        else{
+            sb.append(" bond10G : ").append("null").append(",");
         }
         if(null != bond1G && bond1G.isPresent()){
-            sb.append(" bond1G : ").append(bond1G).append(",");
+            sb.append(" bond1G : ").append(gson.toJson(bond1G)).append(",");
+        }
+        else{
+            sb.append(" bond1G : ").append("null").append(",");
         }
         if(null != eth0 && eth0.isPresent()){
-            sb.append(" eth0 : ").append(eth0).append(",");
+            sb.append(" eth0 : ").append(gson.toJson(eth0)).append(",");
+        }
+        else{
+            sb.append(" eth0 : ").append("null").append(",");
         }
         if(null != eth1 && eth1.isPresent()){
-            sb.append(" eth1 : ").append(eth1).append(",");
+            sb.append(" eth1 : ").append(gson.toJson(eth1)).append(",");
+        }
+        else{
+            sb.append(" eth1 : ").append("null").append(",");
         }
         if(null != eth2 && eth2.isPresent()){
-            sb.append(" eth2 : ").append(eth2).append(",");
+            sb.append(" eth2 : ").append(gson.toJson(eth2)).append(",");
+        }
+        else{
+            sb.append(" eth2 : ").append("null").append(",");
         }
         if(null != eth3 && eth3.isPresent()){
-            sb.append(" eth3 : ").append(eth3).append(",");
+            sb.append(" eth3 : ").append(gson.toJson(eth3)).append(",");
+        }
+        else{
+            sb.append(" eth3 : ").append("null").append(",");
         }
         if(null != lo && lo.isPresent()){
-            sb.append(" lo : ").append(lo).append(",");
+            sb.append(" lo : ").append(gson.toJson(lo)).append(",");
+        }
+        else{
+            sb.append(" lo : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,7 @@ import java.util.Objects;
 
 /**
  * RemoveVolumesFromVolumeAccessGroupRequest  
- * Remove volumes from a volume access group.
+ * The RemoveVolumeFromVolumeAccessGroup method enables you to remove volumes from a volume access group.
  **/
 
 public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
@@ -37,7 +38,6 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
     public static final long serialVersionUID = -2043557978124640960L;
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("volumes") private Long[] volumes;
-
     // empty constructor
     @Since("7.0")
     public RemoveVolumesFromVolumeAccessGroupRequest() {}
@@ -55,16 +55,18 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
     }
 
     /** 
-     * The ID of the volume access group to modify.
+     * The ID of the volume access group to remove volumes from.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
-     * List of volumes to remove from this volume access group.
+     * The ID of the volume access group to remove volumes from.
      **/
     public Long[] getVolumes() { return this.volumes; }
+   
     public void setVolumes(Long[] volumes) { 
         this.volumes = volumes;
     }
@@ -97,10 +99,11 @@ public class RemoveVolumesFromVolumeAccessGroupRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" volumes : ").append(Arrays.toString(volumes)).append(",");
+        sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
+        sb.append(" volumes : ").append(gson.toJson(Arrays.toString(volumes))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

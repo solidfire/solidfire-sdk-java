@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,13 @@ import java.util.Objects;
 
 /**
  * ListVirtualVolumeBindingsRequest  
- * ListVirtualVolumeBindings returns a list of VVol bindings.
+ * ListVirtualVolumeBindings returns a list of all virtual volumes in the cluster that are bound to protocol endpoints.
  **/
 
 public class ListVirtualVolumeBindingsRequest implements Serializable {
 
     public static final long serialVersionUID = -6875082085393277728L;
     @SerializedName("virtualVolumeBindingIDs") private Optional<Long[]> virtualVolumeBindingIDs;
-
     // empty constructor
     @Since("7.0")
     public ListVirtualVolumeBindingsRequest() {}
@@ -52,9 +52,10 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
     }
 
     /** 
-     * 
+     * A list of virtual volume binding IDs for which to retrieve information. If you omit this parameter, the method returns information about all virtual volume bindings.
      **/
     public Optional<Long[]> getVirtualVolumeBindingIDs() { return this.virtualVolumeBindingIDs; }
+   
     public void setVirtualVolumeBindingIDs(Optional<Long[]> virtualVolumeBindingIDs) { 
         this.virtualVolumeBindingIDs = (virtualVolumeBindingIDs == null) ? Optional.<Long[]>empty() : virtualVolumeBindingIDs;
     }
@@ -85,10 +86,14 @@ public class ListVirtualVolumeBindingsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != virtualVolumeBindingIDs && virtualVolumeBindingIDs.isPresent()){
-            sb.append(" virtualVolumeBindingIDs : ").append(virtualVolumeBindingIDs).append(",");
+            sb.append(" virtualVolumeBindingIDs : ").append(gson.toJson(virtualVolumeBindingIDs)).append(",");
+        }
+        else{
+            sb.append(" virtualVolumeBindingIDs : ").append("null").append(",");
         }
         sb.append( " }" );
 

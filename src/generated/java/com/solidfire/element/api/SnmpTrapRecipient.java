@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,6 @@ public class SnmpTrapRecipient implements Serializable {
     @SerializedName("host") private String host;
     @SerializedName("community") private String community;
     @SerializedName("port") private Long port;
-
     // empty constructor
     @Since("7.0")
     public SnmpTrapRecipient() {}
@@ -61,6 +61,7 @@ public class SnmpTrapRecipient implements Serializable {
      * The IP address or host name of the target network management station.
      **/
     public String getHost() { return this.host; }
+   
     public void setHost(String host) { 
         this.host = host;
     }
@@ -68,6 +69,7 @@ public class SnmpTrapRecipient implements Serializable {
      * SNMP community string.
      **/
     public String getCommunity() { return this.community; }
+   
     public void setCommunity(String community) { 
         this.community = community;
     }
@@ -75,6 +77,7 @@ public class SnmpTrapRecipient implements Serializable {
      * The UDP port number on the host where the trap is to be sent. Valid range is 1 - 65535. 0 (zero) is not a valid port number. Default is 162.
      **/
     public Long getPort() { return this.port; }
+   
     public void setPort(Long port) { 
         this.port = port;
     }
@@ -109,11 +112,12 @@ public class SnmpTrapRecipient implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" host : ").append(host).append(",");
-        sb.append(" community : ").append(community).append(",");
-        sb.append(" port : ").append(port).append(",");
+        sb.append(" host : ").append(gson.toJson(host)).append(",");
+        sb.append(" community : ").append(gson.toJson(community)).append(",");
+        sb.append(" port : ").append(gson.toJson(port)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,16 +30,13 @@ import java.util.Objects;
 
 /**
  * RemoveVolumePairRequest  
- * RemoveVolumePair is used to remove the remote pairing between two volumes.
- * When the volume pairing information is removed, data is no integerer replicated to or from the volume.
- * This method should be run on both the source and target volumes that are paired together.
+ * RemoveVolumePair enables you to remove the remote pairing between two volumes. Use this method on both the source and target volumes that are paired together. When you remove the volume pairing information, data is no longer replicated to or from the volume.
  **/
 
 public class RemoveVolumePairRequest implements Serializable {
 
     public static final long serialVersionUID = 1918590127844654958L;
     @SerializedName("volumeID") private Long volumeID;
-
     // empty constructor
     @Since("7.0")
     public RemoveVolumePairRequest() {}
@@ -54,9 +52,10 @@ public class RemoveVolumePairRequest implements Serializable {
     }
 
     /** 
-     * ID of the volume on which to stop the replication process.
+     * The ID of the volume on which to stop the replication process.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -87,9 +86,10 @@ public class RemoveVolumePairRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

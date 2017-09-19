@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -41,7 +42,7 @@ public class PairedCluster implements Serializable {
     @SerializedName("mvip") private String mvip;
     @SerializedName("status") private String status;
     @SerializedName("version") private String version;
-
+    @SerializedName("clusterUUID") private Optional<String> clusterUUID;
     // empty constructor
     @Since("7.0")
     public PairedCluster() {}
@@ -56,7 +57,8 @@ public class PairedCluster implements Serializable {
         Long latency,
         String mvip,
         String status,
-        String version
+        String version,
+        Optional<String> clusterUUID
     )
     {
         this.clusterName = clusterName;
@@ -66,12 +68,14 @@ public class PairedCluster implements Serializable {
         this.mvip = mvip;
         this.status = status;
         this.version = version;
+        this.clusterUUID = (clusterUUID == null) ? Optional.<String>empty() : clusterUUID;
     }
 
     /** 
      * Name of the other cluster in the pair
      **/
     public String getClusterName() { return this.clusterName; }
+   
     public void setClusterName(String clusterName) { 
         this.clusterName = clusterName;
     }
@@ -79,6 +83,7 @@ public class PairedCluster implements Serializable {
      * Unique ID given to each cluster in the pair.
      **/
     public Long getClusterPairID() { return this.clusterPairID; }
+   
     public void setClusterPairID(Long clusterPairID) { 
         this.clusterPairID = clusterPairID;
     }
@@ -86,6 +91,7 @@ public class PairedCluster implements Serializable {
      * Universally unique identifier.
      **/
     public java.util.UUID getClusterPairUUID() { return this.clusterPairUUID; }
+   
     public void setClusterPairUUID(java.util.UUID clusterPairUUID) { 
         this.clusterPairUUID = clusterPairUUID;
     }
@@ -93,6 +99,7 @@ public class PairedCluster implements Serializable {
      * Number, in milliseconds, of latency between clusters.
      **/
     public Long getLatency() { return this.latency; }
+   
     public void setLatency(Long latency) { 
         this.latency = latency;
     }
@@ -100,6 +107,7 @@ public class PairedCluster implements Serializable {
      * IP of the management connection for paired clusters.
      **/
     public String getMvip() { return this.mvip; }
+   
     public void setMvip(String mvip) { 
         this.mvip = mvip;
     }
@@ -110,6 +118,7 @@ public class PairedCluster implements Serializable {
      * Disconnected
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
@@ -117,8 +126,17 @@ public class PairedCluster implements Serializable {
      * The Element OS version of the other cluster in the pair.
      **/
     public String getVersion() { return this.version; }
+   
     public void setVersion(String version) { 
         this.version = version;
+    }
+    /** 
+     * The cluster UUID
+     **/
+    public Optional<String> getClusterUUID() { return this.clusterUUID; }
+   
+    public void setClusterUUID(Optional<String> clusterUUID) { 
+        this.clusterUUID = (clusterUUID == null) ? Optional.<String>empty() : clusterUUID;
     }
 
     @Override
@@ -135,12 +153,13 @@ public class PairedCluster implements Serializable {
             Objects.equals(latency, that.latency) && 
             Objects.equals(mvip, that.mvip) && 
             Objects.equals(status, that.status) && 
-            Objects.equals(version, that.version);
+            Objects.equals(version, that.version) && 
+            Objects.equals(clusterUUID, that.clusterUUID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( clusterName,clusterPairID,clusterPairUUID,latency,mvip,status,version );
+        return Objects.hash( clusterName,clusterPairID,clusterPairUUID,latency,mvip,status,version,clusterUUID );
     }
 
 
@@ -153,21 +172,29 @@ public class PairedCluster implements Serializable {
         map.put("mvip", mvip);
         map.put("status", status);
         map.put("version", version);
+        map.put("clusterUUID", clusterUUID);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterName : ").append(clusterName).append(",");
-        sb.append(" clusterPairID : ").append(clusterPairID).append(",");
-        sb.append(" clusterPairUUID : ").append(clusterPairUUID).append(",");
-        sb.append(" latency : ").append(latency).append(",");
-        sb.append(" mvip : ").append(mvip).append(",");
-        sb.append(" status : ").append(status).append(",");
-        sb.append(" version : ").append(version).append(",");
+        sb.append(" clusterName : ").append(gson.toJson(clusterName)).append(",");
+        sb.append(" clusterPairID : ").append(gson.toJson(clusterPairID)).append(",");
+        sb.append(" clusterPairUUID : ").append(gson.toJson(clusterPairUUID)).append(",");
+        sb.append(" latency : ").append(gson.toJson(latency)).append(",");
+        sb.append(" mvip : ").append(gson.toJson(mvip)).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
+        sb.append(" version : ").append(gson.toJson(version)).append(",");
+        if(null != clusterUUID && clusterUUID.isPresent()){
+            sb.append(" clusterUUID : ").append(gson.toJson(clusterUUID)).append(",");
+        }
+        else{
+            sb.append(" clusterUUID : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -192,6 +219,7 @@ public class PairedCluster implements Serializable {
         private String mvip;
         private String status;
         private String version;
+        private Optional<String> clusterUUID;
 
         private Builder() { }
 
@@ -203,7 +231,8 @@ public class PairedCluster implements Serializable {
                          this.latency,
                          this.mvip,
                          this.status,
-                         this.version);
+                         this.version,
+                         this.clusterUUID);
         }
 
         private PairedCluster.Builder buildFrom(final PairedCluster req) {
@@ -214,6 +243,7 @@ public class PairedCluster implements Serializable {
             this.mvip = req.mvip;
             this.status = req.status;
             this.version = req.version;
+            this.clusterUUID = req.clusterUUID;
 
             return this;
         }
@@ -250,6 +280,11 @@ public class PairedCluster implements Serializable {
 
         public PairedCluster.Builder version(final String version) {
             this.version = version;
+            return this;
+        }
+
+        public PairedCluster.Builder optionalClusterUUID(final String clusterUUID) {
+            this.clusterUUID = (clusterUUID == null) ? Optional.<String>empty() : Optional.of(clusterUUID);
             return this;
         }
 

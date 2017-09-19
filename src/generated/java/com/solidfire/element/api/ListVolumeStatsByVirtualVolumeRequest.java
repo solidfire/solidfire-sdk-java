@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,13 @@ import java.util.Objects;
 
 /**
  * ListVolumeStatsByVirtualVolumeRequest  
- * ListVolumeStatsByVirtualVolume enables you to list statistics for volumes, sorted by virtual volumes.
+ * ListVolumeStatsByVirtualVolume enables you to list volume statistics for any volumes in the system that are associated with virtual volumes. Statistics are cumulative from the creation of the volume.
  **/
 
 public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
 
     public static final long serialVersionUID = -3973380068564934287L;
     @SerializedName("virtualVolumeIDs") private Optional<java.util.UUID[]> virtualVolumeIDs;
-
     // empty constructor
     @Since("7.0")
     public ListVolumeStatsByVirtualVolumeRequest() {}
@@ -52,9 +52,10 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
     }
 
     /** 
-     * A list of virtual volume  IDs for which to retrieve information. If you specify this parameter, the method returns information about only these virtual volumes.
+     * A list of one or more virtual volume IDs for which to retrieve information. If you specify this parameter, the method returns information about only these virtual volumes.
      **/
     public Optional<java.util.UUID[]> getVirtualVolumeIDs() { return this.virtualVolumeIDs; }
+   
     public void setVirtualVolumeIDs(Optional<java.util.UUID[]> virtualVolumeIDs) { 
         this.virtualVolumeIDs = (virtualVolumeIDs == null) ? Optional.<java.util.UUID[]>empty() : virtualVolumeIDs;
     }
@@ -85,10 +86,14 @@ public class ListVolumeStatsByVirtualVolumeRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != virtualVolumeIDs && virtualVolumeIDs.isPresent()){
-            sb.append(" virtualVolumeIDs : ").append(virtualVolumeIDs).append(",");
+            sb.append(" virtualVolumeIDs : ").append(gson.toJson(virtualVolumeIDs)).append(",");
+        }
+        else{
+            sb.append(" virtualVolumeIDs : ").append("null").append(",");
         }
         sb.append( " }" );
 

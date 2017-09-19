@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class GetRemoteLoggingHostsResult implements Serializable {
 
     public static final long serialVersionUID = 2615024065666924098L;
     @SerializedName("remoteHosts") private LoggingServer[] remoteHosts;
-
     // empty constructor
     @Since("7.0")
     public GetRemoteLoggingHostsResult() {}
@@ -54,6 +54,7 @@ public class GetRemoteLoggingHostsResult implements Serializable {
      * List of hosts to forward logging information to.
      **/
     public LoggingServer[] getRemoteHosts() { return this.remoteHosts; }
+   
     public void setRemoteHosts(LoggingServer[] remoteHosts) { 
         this.remoteHosts = remoteHosts;
     }
@@ -84,9 +85,10 @@ public class GetRemoteLoggingHostsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" remoteHosts : ").append(Arrays.toString(remoteHosts)).append(",");
+        sb.append(" remoteHosts : ").append(gson.toJson(Arrays.toString(remoteHosts))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

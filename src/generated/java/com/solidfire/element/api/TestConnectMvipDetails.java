@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,7 +38,6 @@ public class TestConnectMvipDetails implements Serializable {
     @SerializedName("pingBytes") private Attributes pingBytes;
     @SerializedName("mvip") private String mvip;
     @SerializedName("connected") private Boolean connected;
-
     // empty constructor
     @Since("7.0")
     public TestConnectMvipDetails() {}
@@ -60,6 +60,7 @@ public class TestConnectMvipDetails implements Serializable {
      * Details of the ping tests with 56 Bytes and 1500 Bytes.
      **/
     public Attributes getPingBytes() { return this.pingBytes; }
+   
     public void setPingBytes(Attributes pingBytes) { 
         this.pingBytes = pingBytes;
     }
@@ -67,6 +68,7 @@ public class TestConnectMvipDetails implements Serializable {
      * The MVIP tested against.
      **/
     public String getMvip() { return this.mvip; }
+   
     public void setMvip(String mvip) { 
         this.mvip = mvip;
     }
@@ -74,6 +76,7 @@ public class TestConnectMvipDetails implements Serializable {
      * Whether the test could connect to the MVIP.
      **/
     public Boolean getConnected() { return this.connected; }
+   
     public void setConnected(Boolean connected) { 
         this.connected = connected;
     }
@@ -108,11 +111,12 @@ public class TestConnectMvipDetails implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" pingBytes : ").append(pingBytes).append(",");
-        sb.append(" mvip : ").append(mvip).append(",");
-        sb.append(" connected : ").append(connected).append(",");
+        sb.append(" pingBytes : ").append(gson.toJson(pingBytes)).append(",");
+        sb.append(" mvip : ").append(gson.toJson(mvip)).append(",");
+        sb.append(" connected : ").append(gson.toJson(connected)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -43,7 +44,6 @@ public class Network implements Serializable {
     @SerializedName("eth4") private Optional<NetworkConfig> eth4;
     @SerializedName("eth5") private Optional<NetworkConfig> eth5;
     @SerializedName("lo") private Optional<NetworkConfig> lo;
-
     // empty constructor
     @Since("7.0")
     public Network() {}
@@ -78,6 +78,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getBond10G() { return this.bond10G; }
+   
     public void setBond10G(Optional<NetworkConfig> bond10G) { 
         this.bond10G = (bond10G == null) ? Optional.<NetworkConfig>empty() : bond10G;
     }
@@ -85,6 +86,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getBond1G() { return this.bond1G; }
+   
     public void setBond1G(Optional<NetworkConfig> bond1G) { 
         this.bond1G = (bond1G == null) ? Optional.<NetworkConfig>empty() : bond1G;
     }
@@ -92,6 +94,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getEth0() { return this.eth0; }
+   
     public void setEth0(Optional<NetworkConfig> eth0) { 
         this.eth0 = (eth0 == null) ? Optional.<NetworkConfig>empty() : eth0;
     }
@@ -99,6 +102,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getEth1() { return this.eth1; }
+   
     public void setEth1(Optional<NetworkConfig> eth1) { 
         this.eth1 = (eth1 == null) ? Optional.<NetworkConfig>empty() : eth1;
     }
@@ -106,6 +110,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getEth2() { return this.eth2; }
+   
     public void setEth2(Optional<NetworkConfig> eth2) { 
         this.eth2 = (eth2 == null) ? Optional.<NetworkConfig>empty() : eth2;
     }
@@ -113,6 +118,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getEth3() { return this.eth3; }
+   
     public void setEth3(Optional<NetworkConfig> eth3) { 
         this.eth3 = (eth3 == null) ? Optional.<NetworkConfig>empty() : eth3;
     }
@@ -120,6 +126,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getEth4() { return this.eth4; }
+   
     public void setEth4(Optional<NetworkConfig> eth4) { 
         this.eth4 = (eth4 == null) ? Optional.<NetworkConfig>empty() : eth4;
     }
@@ -127,6 +134,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getEth5() { return this.eth5; }
+   
     public void setEth5(Optional<NetworkConfig> eth5) { 
         this.eth5 = (eth5 == null) ? Optional.<NetworkConfig>empty() : eth5;
     }
@@ -134,6 +142,7 @@ public class Network implements Serializable {
      * 
      **/
     public Optional<NetworkConfig> getLo() { return this.lo; }
+   
     public void setLo(Optional<NetworkConfig> lo) { 
         this.lo = (lo == null) ? Optional.<NetworkConfig>empty() : lo;
     }
@@ -180,34 +189,62 @@ public class Network implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != bond10G && bond10G.isPresent()){
-            sb.append(" bond10G : ").append(bond10G).append(",");
+            sb.append(" bond10G : ").append(gson.toJson(bond10G)).append(",");
+        }
+        else{
+            sb.append(" bond10G : ").append("null").append(",");
         }
         if(null != bond1G && bond1G.isPresent()){
-            sb.append(" bond1G : ").append(bond1G).append(",");
+            sb.append(" bond1G : ").append(gson.toJson(bond1G)).append(",");
+        }
+        else{
+            sb.append(" bond1G : ").append("null").append(",");
         }
         if(null != eth0 && eth0.isPresent()){
-            sb.append(" eth0 : ").append(eth0).append(",");
+            sb.append(" eth0 : ").append(gson.toJson(eth0)).append(",");
+        }
+        else{
+            sb.append(" eth0 : ").append("null").append(",");
         }
         if(null != eth1 && eth1.isPresent()){
-            sb.append(" eth1 : ").append(eth1).append(",");
+            sb.append(" eth1 : ").append(gson.toJson(eth1)).append(",");
+        }
+        else{
+            sb.append(" eth1 : ").append("null").append(",");
         }
         if(null != eth2 && eth2.isPresent()){
-            sb.append(" eth2 : ").append(eth2).append(",");
+            sb.append(" eth2 : ").append(gson.toJson(eth2)).append(",");
+        }
+        else{
+            sb.append(" eth2 : ").append("null").append(",");
         }
         if(null != eth3 && eth3.isPresent()){
-            sb.append(" eth3 : ").append(eth3).append(",");
+            sb.append(" eth3 : ").append(gson.toJson(eth3)).append(",");
+        }
+        else{
+            sb.append(" eth3 : ").append("null").append(",");
         }
         if(null != eth4 && eth4.isPresent()){
-            sb.append(" eth4 : ").append(eth4).append(",");
+            sb.append(" eth4 : ").append(gson.toJson(eth4)).append(",");
+        }
+        else{
+            sb.append(" eth4 : ").append("null").append(",");
         }
         if(null != eth5 && eth5.isPresent()){
-            sb.append(" eth5 : ").append(eth5).append(",");
+            sb.append(" eth5 : ").append(gson.toJson(eth5)).append(",");
+        }
+        else{
+            sb.append(" eth5 : ").append("null").append(",");
         }
         if(null != lo && lo.isPresent()){
-            sb.append(" lo : ").append(lo).append(",");
+            sb.append(" lo : ").append(gson.toJson(lo)).append(",");
+        }
+        else{
+            sb.append(" lo : ").append("null").append(",");
         }
         sb.append( " }" );
 

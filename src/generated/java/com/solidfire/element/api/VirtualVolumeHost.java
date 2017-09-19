@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -40,7 +41,6 @@ public class VirtualVolumeHost implements Serializable {
     @SerializedName("bindings") private Long[] bindings;
     @SerializedName("initiatorNames") private String[] initiatorNames;
     @SerializedName("hostAddress") private String hostAddress;
-
     // empty constructor
     @Since("7.0")
     public VirtualVolumeHost() {}
@@ -69,6 +69,7 @@ public class VirtualVolumeHost implements Serializable {
      * 
      **/
     public java.util.UUID getVirtualVolumeHostID() { return this.virtualVolumeHostID; }
+   
     public void setVirtualVolumeHostID(java.util.UUID virtualVolumeHostID) { 
         this.virtualVolumeHostID = virtualVolumeHostID;
     }
@@ -76,6 +77,7 @@ public class VirtualVolumeHost implements Serializable {
      * 
      **/
     public java.util.UUID getClusterID() { return this.clusterID; }
+   
     public void setClusterID(java.util.UUID clusterID) { 
         this.clusterID = clusterID;
     }
@@ -83,6 +85,7 @@ public class VirtualVolumeHost implements Serializable {
      * 
      **/
     public java.util.UUID[] getVisibleProtocolEndpointIDs() { return this.visibleProtocolEndpointIDs; }
+   
     public void setVisibleProtocolEndpointIDs(java.util.UUID[] visibleProtocolEndpointIDs) { 
         this.visibleProtocolEndpointIDs = visibleProtocolEndpointIDs;
     }
@@ -90,6 +93,7 @@ public class VirtualVolumeHost implements Serializable {
      * 
      **/
     public Long[] getBindings() { return this.bindings; }
+   
     public void setBindings(Long[] bindings) { 
         this.bindings = bindings;
     }
@@ -97,6 +101,7 @@ public class VirtualVolumeHost implements Serializable {
      * 
      **/
     public String[] getInitiatorNames() { return this.initiatorNames; }
+   
     public void setInitiatorNames(String[] initiatorNames) { 
         this.initiatorNames = initiatorNames;
     }
@@ -104,6 +109,7 @@ public class VirtualVolumeHost implements Serializable {
      * 
      **/
     public String getHostAddress() { return this.hostAddress; }
+   
     public void setHostAddress(String hostAddress) { 
         this.hostAddress = hostAddress;
     }
@@ -144,14 +150,15 @@ public class VirtualVolumeHost implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" virtualVolumeHostID : ").append(virtualVolumeHostID).append(",");
-        sb.append(" clusterID : ").append(clusterID).append(",");
-        sb.append(" visibleProtocolEndpointIDs : ").append(Arrays.toString(visibleProtocolEndpointIDs)).append(",");
-        sb.append(" bindings : ").append(Arrays.toString(bindings)).append(",");
-        sb.append(" initiatorNames : ").append(Arrays.toString(initiatorNames)).append(",");
-        sb.append(" hostAddress : ").append(hostAddress).append(",");
+        sb.append(" virtualVolumeHostID : ").append(gson.toJson(virtualVolumeHostID)).append(",");
+        sb.append(" clusterID : ").append(gson.toJson(clusterID)).append(",");
+        sb.append(" visibleProtocolEndpointIDs : ").append(gson.toJson(Arrays.toString(visibleProtocolEndpointIDs))).append(",");
+        sb.append(" bindings : ").append(gson.toJson(Arrays.toString(bindings))).append(",");
+        sb.append(" initiatorNames : ").append(gson.toJson(Arrays.toString(initiatorNames))).append(",");
+        sb.append(" hostAddress : ").append(gson.toJson(hostAddress)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

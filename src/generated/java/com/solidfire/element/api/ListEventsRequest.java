@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,8 +39,7 @@ public class ListEventsRequest implements Serializable {
     @SerializedName("maxEvents") private Optional<Long> maxEvents;
     @SerializedName("startEventID") private Optional<Long> startEventID;
     @SerializedName("endEventID") private Optional<Long> endEventID;
-    @SerializedName("eventQueueType") private Optional<String> eventQueueType;
-
+    @SerializedName("eventType") private Optional<String> eventType;
     // empty constructor
     @Since("7.0")
     public ListEventsRequest() {}
@@ -58,24 +58,25 @@ public class ListEventsRequest implements Serializable {
         this.endEventID = (endEventID == null) ? Optional.<Long>empty() : endEventID;
     }
     // parameterized constructor
-    @Since("9.0")
+    @Since("10.0")
     public ListEventsRequest(
         Optional<Long> maxEvents,
         Optional<Long> startEventID,
         Optional<Long> endEventID,
-        Optional<String> eventQueueType
+        Optional<String> eventType
     )
     {
         this.maxEvents = (maxEvents == null) ? Optional.<Long>empty() : maxEvents;
         this.startEventID = (startEventID == null) ? Optional.<Long>empty() : startEventID;
         this.endEventID = (endEventID == null) ? Optional.<Long>empty() : endEventID;
-        this.eventQueueType = (eventQueueType == null) ? Optional.<String>empty() : eventQueueType;
+        this.eventType = (eventType == null) ? Optional.<String>empty() : eventType;
     }
 
     /** 
      * Specifies the maximum number of events to return.
      **/
     public Optional<Long> getMaxEvents() { return this.maxEvents; }
+   
     public void setMaxEvents(Optional<Long> maxEvents) { 
         this.maxEvents = (maxEvents == null) ? Optional.<Long>empty() : maxEvents;
     }
@@ -83,6 +84,7 @@ public class ListEventsRequest implements Serializable {
      * Identifies the beginning of a range of events to return.
      **/
     public Optional<Long> getStartEventID() { return this.startEventID; }
+   
     public void setStartEventID(Optional<Long> startEventID) { 
         this.startEventID = (startEventID == null) ? Optional.<Long>empty() : startEventID;
     }
@@ -90,15 +92,16 @@ public class ListEventsRequest implements Serializable {
      * Identifies the end of a range of events to return.
      **/
     public Optional<Long> getEndEventID() { return this.endEventID; }
+   
     public void setEndEventID(Optional<Long> endEventID) { 
         this.endEventID = (endEventID == null) ? Optional.<Long>empty() : endEventID;
     }
     /** 
-     * 
      **/
-    public Optional<String> getEventQueueType() { return this.eventQueueType; }
-    public void setEventQueueType(Optional<String> eventQueueType) { 
-        this.eventQueueType = (eventQueueType == null) ? Optional.<String>empty() : eventQueueType;
+    public Optional<String> getEventType() { return this.eventType; }
+   
+    public void setEventType(Optional<String> eventType) { 
+        this.eventType = (eventType == null) ? Optional.<String>empty() : eventType;
     }
 
     @Override
@@ -112,12 +115,12 @@ public class ListEventsRequest implements Serializable {
             Objects.equals(maxEvents, that.maxEvents) && 
             Objects.equals(startEventID, that.startEventID) && 
             Objects.equals(endEventID, that.endEventID) && 
-            Objects.equals(eventQueueType, that.eventQueueType);
+            Objects.equals(eventType, that.eventType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( maxEvents,startEventID,endEventID,eventQueueType );
+        return Objects.hash( maxEvents,startEventID,endEventID,eventType );
     }
 
 
@@ -126,26 +129,39 @@ public class ListEventsRequest implements Serializable {
         map.put("maxEvents", maxEvents);
         map.put("startEventID", startEventID);
         map.put("endEventID", endEventID);
-        map.put("eventQueueType", eventQueueType);
+        map.put("eventType", eventType);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != maxEvents && maxEvents.isPresent()){
-            sb.append(" maxEvents : ").append(maxEvents).append(",");
+            sb.append(" maxEvents : ").append(gson.toJson(maxEvents)).append(",");
+        }
+        else{
+            sb.append(" maxEvents : ").append("null").append(",");
         }
         if(null != startEventID && startEventID.isPresent()){
-            sb.append(" startEventID : ").append(startEventID).append(",");
+            sb.append(" startEventID : ").append(gson.toJson(startEventID)).append(",");
+        }
+        else{
+            sb.append(" startEventID : ").append("null").append(",");
         }
         if(null != endEventID && endEventID.isPresent()){
-            sb.append(" endEventID : ").append(endEventID).append(",");
+            sb.append(" endEventID : ").append(gson.toJson(endEventID)).append(",");
         }
-        if(null != eventQueueType && eventQueueType.isPresent()){
-            sb.append(" eventQueueType : ").append(eventQueueType).append(",");
+        else{
+            sb.append(" endEventID : ").append("null").append(",");
+        }
+        if(null != eventType && eventType.isPresent()){
+            sb.append(" eventType : ").append(gson.toJson(eventType)).append(",");
+        }
+        else{
+            sb.append(" eventType : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -167,7 +183,7 @@ public class ListEventsRequest implements Serializable {
         private Optional<Long> maxEvents;
         private Optional<Long> startEventID;
         private Optional<Long> endEventID;
-        private Optional<String> eventQueueType;
+        private Optional<String> eventType;
 
         private Builder() { }
 
@@ -176,14 +192,14 @@ public class ListEventsRequest implements Serializable {
                          this.maxEvents,
                          this.startEventID,
                          this.endEventID,
-                         this.eventQueueType);
+                         this.eventType);
         }
 
         private ListEventsRequest.Builder buildFrom(final ListEventsRequest req) {
             this.maxEvents = req.maxEvents;
             this.startEventID = req.startEventID;
             this.endEventID = req.endEventID;
-            this.eventQueueType = req.eventQueueType;
+            this.eventType = req.eventType;
 
             return this;
         }
@@ -203,8 +219,8 @@ public class ListEventsRequest implements Serializable {
             return this;
         }
 
-        public ListEventsRequest.Builder optionalEventQueueType(final String eventQueueType) {
-            this.eventQueueType = (eventQueueType == null) ? Optional.<String>empty() : Optional.of(eventQueueType);
+        public ListEventsRequest.Builder optionalEventType(final String eventType) {
+            this.eventType = (eventType == null) ? Optional.<String>empty() : Optional.of(eventType);
             return this;
         }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,11 +30,7 @@ import java.util.Objects;
 
 /**
  * CreateVolumeAccessGroupRequest  
- * Creates a new volume access group.
- * The new volume access group must be given a name when it is created.
- * Entering initiators and volumes are optional when creating a volume access group.
- * Once the group is created volumes and initiator IQNs can be added.
- * Any initiator IQN that is successfully added to the volume access group is able to access any volume in the group without CHAP authentication.
+ * You can use CreateVolumeAccessGroup to create a new volume access group. When you create the volume access group, you need to give it a name, and you can optionally enter initiators and volumes. After you create the group, you can add volumes and initiator IQNs. Any initiator IQN that you add to the volume access group is able to access any volume in the group without CHAP authentication.
  **/
 
 public class CreateVolumeAccessGroupRequest implements Serializable {
@@ -45,7 +42,6 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
     @SerializedName("virtualNetworkID") private Optional<Long[]> virtualNetworkID;
     @SerializedName("virtualNetworkTags") private Optional<Long[]> virtualNetworkTags;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public CreateVolumeAccessGroupRequest() {}
@@ -85,47 +81,50 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
     }
 
     /** 
-     * Name of the volume access group.
-     * It is not required to be unique, but recommended.
+     * The name for this volume access group. Not required to be unique, but recommended.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
     /** 
-     * List of initiators to include in the volume access group.
-     * If unspecified, the access group will start out without configured initiators.
+     * List of initiators to include in the volume access group. If unspecified, the access group's configured initiators are not modified.
      **/
     public Optional<String[]> getInitiators() { return this.initiators; }
+   
     public void setInitiators(Optional<String[]> initiators) { 
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
     }
     /** 
-     * List of volumes to initially include in the volume access group.
-     * If unspecified, the access group will start without any volumes.
+     * List of volumes to initially include in the volume access group. If unspecified, the access group's volumes are not modified.
      **/
     public Optional<Long[]> getVolumes() { return this.volumes; }
+   
     public void setVolumes(Optional<Long[]> volumes) { 
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
     }
     /** 
-     * The ID of the SolidFire Virtual Network ID to associate the volume access group with.
+     * The ID of the SolidFire virtual network to associate the volume access group with.
      **/
     public Optional<Long[]> getVirtualNetworkID() { return this.virtualNetworkID; }
+   
     public void setVirtualNetworkID(Optional<Long[]> virtualNetworkID) { 
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
     }
     /** 
-     * The ID of the VLAN Virtual Network Tag to associate the volume access group with.
+     * The ID of the SolidFire virtual network to associate the volume access group with.
      **/
     public Optional<Long[]> getVirtualNetworkTags() { return this.virtualNetworkTags; }
+   
     public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) { 
         this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -166,23 +165,39 @@ public class CreateVolumeAccessGroupRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" name : ").append(name).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
         if(null != initiators && initiators.isPresent()){
-            sb.append(" initiators : ").append(initiators).append(",");
+            sb.append(" initiators : ").append(gson.toJson(initiators)).append(",");
+        }
+        else{
+            sb.append(" initiators : ").append("null").append(",");
         }
         if(null != volumes && volumes.isPresent()){
-            sb.append(" volumes : ").append(volumes).append(",");
+            sb.append(" volumes : ").append(gson.toJson(volumes)).append(",");
+        }
+        else{
+            sb.append(" volumes : ").append("null").append(",");
         }
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+            sb.append(" virtualNetworkID : ").append(gson.toJson(virtualNetworkID)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkID : ").append("null").append(",");
         }
         if(null != virtualNetworkTags && virtualNetworkTags.isPresent()){
-            sb.append(" virtualNetworkTags : ").append(virtualNetworkTags).append(",");
+            sb.append(" virtualNetworkTags : ").append(gson.toJson(virtualNetworkTags)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkTags : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,7 +38,6 @@ public class CreateGroupSnapshotResult implements Serializable {
     @SerializedName("groupSnapshot") private GroupSnapshot groupSnapshot;
     @SerializedName("groupSnapshotID") private Long groupSnapshotID;
     @SerializedName("members") private GroupSnapshotMembers[] members;
-
     // empty constructor
     @Since("7.0")
     public CreateGroupSnapshotResult() {}
@@ -60,6 +60,7 @@ public class CreateGroupSnapshotResult implements Serializable {
      * 
      **/
     public GroupSnapshot getGroupSnapshot() { return this.groupSnapshot; }
+   
     public void setGroupSnapshot(GroupSnapshot groupSnapshot) { 
         this.groupSnapshot = groupSnapshot;
     }
@@ -67,6 +68,7 @@ public class CreateGroupSnapshotResult implements Serializable {
      * Unique ID of the new group snapshot.
      **/
     public Long getGroupSnapshotID() { return this.groupSnapshotID; }
+   
     public void setGroupSnapshotID(Long groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
@@ -74,6 +76,7 @@ public class CreateGroupSnapshotResult implements Serializable {
      * List of checksum, volumeIDs and snapshotIDs for each member of the group.
      **/
     public GroupSnapshotMembers[] getMembers() { return this.members; }
+   
     public void setMembers(GroupSnapshotMembers[] members) { 
         this.members = members;
     }
@@ -108,11 +111,12 @@ public class CreateGroupSnapshotResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" groupSnapshot : ").append(groupSnapshot).append(",");
-        sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
-        sb.append(" members : ").append(Arrays.toString(members)).append(",");
+        sb.append(" groupSnapshot : ").append(gson.toJson(groupSnapshot)).append(",");
+        sb.append(" groupSnapshotID : ").append(gson.toJson(groupSnapshotID)).append(",");
+        sb.append(" members : ").append(gson.toJson(Arrays.toString(members))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

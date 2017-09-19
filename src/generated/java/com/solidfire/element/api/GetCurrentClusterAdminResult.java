@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class GetCurrentClusterAdminResult implements Serializable {
 
     public static final long serialVersionUID = -6109185927360892441L;
     @SerializedName("clusterAdmin") private ClusterAdmin clusterAdmin;
-
     // empty constructor
     @Since("7.0")
     public GetCurrentClusterAdminResult() {}
@@ -54,6 +54,7 @@ public class GetCurrentClusterAdminResult implements Serializable {
      * Information about all cluster and LDAP administrators that exist for a cluster.
      **/
     public ClusterAdmin getClusterAdmin() { return this.clusterAdmin; }
+   
     public void setClusterAdmin(ClusterAdmin clusterAdmin) { 
         this.clusterAdmin = clusterAdmin;
     }
@@ -84,9 +85,10 @@ public class GetCurrentClusterAdminResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterAdmin : ").append(clusterAdmin).append(",");
+        sb.append(" clusterAdmin : ").append(gson.toJson(clusterAdmin)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

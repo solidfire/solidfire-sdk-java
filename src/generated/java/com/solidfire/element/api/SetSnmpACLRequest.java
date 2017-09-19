@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,9 @@ import java.util.Objects;
 
 /**
  * SetSnmpACLRequest  
- * SetSnmpACL is used to configure SNMP access permissions on the cluster nodes. The values set with this interface apply to all nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note that the values set with this interface replace all "network" or "usmUsers" values set with the older SetSnmpInfo.
+ * SetSnmpACL enables you to configure SNMP access permissions on the cluster nodes. The values you set with this interface apply to all
+ * nodes in the cluster, and the values that are passed replace, in whole, all values set in any previous call to SetSnmpACL. Also note
+ * that the values set with this interface replace all network or usmUsers values set with the older SetSnmpInfo.
  **/
 
 public class SetSnmpACLRequest implements Serializable {
@@ -37,7 +40,6 @@ public class SetSnmpACLRequest implements Serializable {
     public static final long serialVersionUID = 5198207276070077502L;
     @SerializedName("networks") private SnmpNetwork[] networks;
     @SerializedName("usmUsers") private SnmpV3UsmUser[] usmUsers;
-
     // empty constructor
     @Since("7.0")
     public SetSnmpACLRequest() {}
@@ -55,16 +57,19 @@ public class SetSnmpACLRequest implements Serializable {
     }
 
     /** 
-     * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP Network Object for possible "networks" values. REQUIRED if SNMP v# is disabled.
+     * List of networks and what type of access they have to the SNMP servers running on the cluster nodes. See SNMP
+     * Network Object for possible "networks" values. This parameter is required if SNMP v3 is disabled.
      **/
     public SnmpNetwork[] getNetworks() { return this.networks; }
+   
     public void setNetworks(SnmpNetwork[] networks) { 
         this.networks = networks;
     }
     /** 
-     * List of users and the type of access they have to the SNMP servers running on the cluster nodes. REQUIRED if SNMP v3 is enabled.
+     * List of users and the type of access they have to the SNMP servers running on the cluster nodes.
      **/
     public SnmpV3UsmUser[] getUsmUsers() { return this.usmUsers; }
+   
     public void setUsmUsers(SnmpV3UsmUser[] usmUsers) { 
         this.usmUsers = usmUsers;
     }
@@ -97,10 +102,11 @@ public class SetSnmpACLRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" networks : ").append(Arrays.toString(networks)).append(",");
-        sb.append(" usmUsers : ").append(Arrays.toString(usmUsers)).append(",");
+        sb.append(" networks : ").append(gson.toJson(Arrays.toString(networks))).append(",");
+        sb.append(" usmUsers : ").append(gson.toJson(Arrays.toString(usmUsers))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

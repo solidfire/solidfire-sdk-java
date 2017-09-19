@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,15 +30,16 @@ import java.util.Objects;
 
 /**
  * CreateInitiatorsRequest  
- * CreateInitiators enables you to create multiple new initiator IQNs or World Wide Port Names (WWPNs) and optionally assign them aliases and attributes. When you use CreateInitiators to create new initiators, you can also add them to volume access groups.
- * If CreateInitiators fails to create one of the initiators provided in the parameter, the method returns an error and does not create any initiators (no partial completion is possible).
+ * CreateInitiators enables you to create multiple new initiator IQNs or World Wide Port Names (WWPNs) and optionally assign them
+ * aliases and attributes. When you use CreateInitiators to create new initiators, you can also add them to volume access groups.
+ * If CreateInitiators fails to create one of the initiators provided in the parameter, the method returns an error and does not create
+ * any initiators (no partial completion is possible).
  **/
 
 public class CreateInitiatorsRequest implements Serializable {
 
     public static final long serialVersionUID = 2102559985920445326L;
     @SerializedName("initiators") private CreateInitiator[] initiators;
-
     // empty constructor
     @Since("7.0")
     public CreateInitiatorsRequest() {}
@@ -53,9 +55,17 @@ public class CreateInitiatorsRequest implements Serializable {
     }
 
     /** 
-     * A list of Initiator objects containing characteristics of each new initiator
+     * A list of objects containing characteristics of each new initiator. Values are:
+     * name: (Required) The name of the initiator (IQN or WWPN) to create.
+     * (String)
+     * alias: (Optional) The friendly name to assign to this initiator. (String)
+     * attributes: (Optional) A set of JSON attributes to assign to this initiator.
+     * (JSON Object)
+     * volumeAccessGroupID: (Optional) The ID of the volume access group
+     * into to which this newly created initiator will be added. (Integer)
      **/
     public CreateInitiator[] getInitiators() { return this.initiators; }
+   
     public void setInitiators(CreateInitiator[] initiators) { 
         this.initiators = initiators;
     }
@@ -86,9 +96,10 @@ public class CreateInitiatorsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" initiators : ").append(Arrays.toString(initiators)).append(",");
+        sb.append(" initiators : ").append(gson.toJson(Arrays.toString(initiators))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

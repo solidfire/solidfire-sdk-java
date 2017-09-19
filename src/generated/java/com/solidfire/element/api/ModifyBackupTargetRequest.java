@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,7 @@ import java.util.Objects;
 
 /**
  * ModifyBackupTargetRequest  
- * ModifyBackupTarget is used to change attributes of a backup target.
+ * ModifyBackupTarget enables you to change attributes of a backup target.
  **/
 
 public class ModifyBackupTargetRequest implements Serializable {
@@ -38,7 +39,6 @@ public class ModifyBackupTargetRequest implements Serializable {
     @SerializedName("backupTargetID") private Long backupTargetID;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public ModifyBackupTargetRequest() {}
@@ -58,23 +58,26 @@ public class ModifyBackupTargetRequest implements Serializable {
     }
 
     /** 
-     * Unique identifier assigned to the backup target.
+     * The unique target ID for the target to modify.
      **/
     public Long getBackupTargetID() { return this.backupTargetID; }
+   
     public void setBackupTargetID(Long backupTargetID) { 
         this.backupTargetID = backupTargetID;
     }
     /** 
-     * Name for the backup target.
+     * The new name for the backup target.
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -109,14 +112,21 @@ public class ModifyBackupTargetRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" backupTargetID : ").append(backupTargetID).append(",");
+        sb.append(" backupTargetID : ").append(gson.toJson(backupTargetID)).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
+        }
+        else{
+            sb.append(" name : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

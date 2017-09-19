@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,9 +30,7 @@ import java.util.Objects;
 
 /**
  * AddAccountRequest  
- * Used to add a new account to the system.
- * New volumes can be created under the new account.
- * The CHAP settings specified for the account applies to all volumes owned by the account.
+ * You can use AddAccount to add a new account to the system. You can create new volumes under the new account. The CHAP settings you specify for the account apply to all volumes owned by the account.
  **/
 
 public class AddAccountRequest implements Serializable {
@@ -41,7 +40,6 @@ public class AddAccountRequest implements Serializable {
     @SerializedName("initiatorSecret") private Optional<CHAPSecret> initiatorSecret;
     @SerializedName("targetSecret") private Optional<CHAPSecret> targetSecret;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public AddAccountRequest() {}
@@ -63,39 +61,42 @@ public class AddAccountRequest implements Serializable {
     }
 
     /** 
-     * Unique username for this account.
-     * (May be 1 to 64 characters in length).
+     * Specifies the username for this account. (Might be 1 to 64 characters in length).
      **/
     public String getUsername() { return this.username; }
+   
     public void setUsername(String username) { 
         this.username = username;
     }
     /** 
-     * CHAP secret to use for the initiator.
-     * Should be 12-16 characters integer and impenetrable.
-     * The CHAP initiator secrets must be unique and cannot be the same as the target CHAP secret.
-     * 
-     * If not specified, a random secret is created.
+     * The CHAP secret to use for the initiator. This secret must
+     * be 12-16 characters in length and should be
+     * impenetrable. The initiator CHAP secret must be unique
+     * and cannot be the same as the target CHAP secret. If unspecified, a random secret is created.
      **/
     public Optional<CHAPSecret> getInitiatorSecret() { return this.initiatorSecret; }
+   
     public void setInitiatorSecret(Optional<CHAPSecret> initiatorSecret) { 
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<CHAPSecret>empty() : initiatorSecret;
     }
     /** 
-     * CHAP secret to use for the target (mutual CHAP authentication).
-     * Should be 12-16 characters integer and impenetrable.
-     * The CHAP target secrets must be unique and cannot be the same as the initiator CHAP secret.
-     * 
-     * If not specified, a random secret is created.
+     * The CHAP secret to use for the target (mutual CHAP
+     * authentication). This secret must be 12-16 characters in
+     * length and should be impenetrable. The target CHAP
+     * secret must be unique and cannot be the same as the
+     * initiator CHAP secret. If unspecified, a random secret is
+     * created.
      **/
     public Optional<CHAPSecret> getTargetSecret() { return this.targetSecret; }
+   
     public void setTargetSecret(Optional<CHAPSecret> targetSecret) { 
         this.targetSecret = (targetSecret == null) ? Optional.<CHAPSecret>empty() : targetSecret;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -132,17 +133,27 @@ public class AddAccountRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" username : ").append(username).append(",");
+        sb.append(" username : ").append(gson.toJson(username)).append(",");
         if(null != initiatorSecret && initiatorSecret.isPresent()){
-            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+            sb.append(" initiatorSecret : ").append(gson.toJson(initiatorSecret)).append(",");
+        }
+        else{
+            sb.append(" initiatorSecret : ").append("null").append(",");
         }
         if(null != targetSecret && targetSecret.isPresent()){
-            sb.append(" targetSecret : ").append(targetSecret).append(",");
+            sb.append(" targetSecret : ").append(gson.toJson(targetSecret)).append(",");
+        }
+        else{
+            sb.append(" targetSecret : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

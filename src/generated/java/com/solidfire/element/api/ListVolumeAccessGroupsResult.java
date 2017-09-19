@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class ListVolumeAccessGroupsResult implements Serializable {
     public static final long serialVersionUID = -2843709235167971533L;
     @SerializedName("volumeAccessGroups") private VolumeAccessGroup[] volumeAccessGroups;
     @SerializedName("volumeAccessGroupsNotFound") private Optional<Long[]> volumeAccessGroupsNotFound;
-
     // empty constructor
     @Since("7.0")
     public ListVolumeAccessGroupsResult() {}
@@ -57,6 +57,7 @@ public class ListVolumeAccessGroupsResult implements Serializable {
      * A list of objects describing each volume access group.
      **/
     public VolumeAccessGroup[] getVolumeAccessGroups() { return this.volumeAccessGroups; }
+   
     public void setVolumeAccessGroups(VolumeAccessGroup[] volumeAccessGroups) { 
         this.volumeAccessGroups = volumeAccessGroups;
     }
@@ -64,6 +65,7 @@ public class ListVolumeAccessGroupsResult implements Serializable {
      * A list of volume access groups not found by the system. Present if you used the "volumeAccessGroups" parameter and the system was unable to find one or more volume access groups that you specified.
      **/
     public Optional<Long[]> getVolumeAccessGroupsNotFound() { return this.volumeAccessGroupsNotFound; }
+   
     public void setVolumeAccessGroupsNotFound(Optional<Long[]> volumeAccessGroupsNotFound) { 
         this.volumeAccessGroupsNotFound = (volumeAccessGroupsNotFound == null) ? Optional.<Long[]>empty() : volumeAccessGroupsNotFound;
     }
@@ -96,11 +98,15 @@ public class ListVolumeAccessGroupsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroups : ").append(Arrays.toString(volumeAccessGroups)).append(",");
+        sb.append(" volumeAccessGroups : ").append(gson.toJson(Arrays.toString(volumeAccessGroups))).append(",");
         if(null != volumeAccessGroupsNotFound && volumeAccessGroupsNotFound.isPresent()){
-            sb.append(" volumeAccessGroupsNotFound : ").append(volumeAccessGroupsNotFound).append(",");
+            sb.append(" volumeAccessGroupsNotFound : ").append(gson.toJson(volumeAccessGroupsNotFound)).append(",");
+        }
+        else{
+            sb.append(" volumeAccessGroupsNotFound : ").append("null").append(",");
         }
         sb.append( " }" );
 

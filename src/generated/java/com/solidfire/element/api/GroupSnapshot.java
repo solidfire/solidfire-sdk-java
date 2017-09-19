@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -42,7 +43,6 @@ public class GroupSnapshot implements Serializable {
     @SerializedName("createTime") private String createTime;
     @SerializedName("status") private String status;
     @SerializedName("attributes") private Attributes attributes;
-
     // empty constructor
     @Since("7.0")
     public GroupSnapshot() {}
@@ -73,6 +73,7 @@ public class GroupSnapshot implements Serializable {
      * Unique ID of the new group snapshot.
      **/
     public Long getGroupSnapshotID() { return this.groupSnapshotID; }
+   
     public void setGroupSnapshotID(Long groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
@@ -80,6 +81,7 @@ public class GroupSnapshot implements Serializable {
      * UUID of the group snapshot.
      **/
     public java.util.UUID getGroupSnapshotUUID() { return this.groupSnapshotUUID; }
+   
     public void setGroupSnapshotUUID(java.util.UUID groupSnapshotUUID) { 
         this.groupSnapshotUUID = groupSnapshotUUID;
     }
@@ -87,6 +89,7 @@ public class GroupSnapshot implements Serializable {
      * List of volumeIDs and snapshotIDs for each member of the group.
      **/
     public GroupSnapshotMembers[] getMembers() { return this.members; }
+   
     public void setMembers(GroupSnapshotMembers[] members) { 
         this.members = members;
     }
@@ -94,6 +97,7 @@ public class GroupSnapshot implements Serializable {
      * Name of the group snapshot, or, if none was given, the UTC formatted day and time on which the snapshot was created.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -101,6 +105,7 @@ public class GroupSnapshot implements Serializable {
      * The UTC formatted day and time on which the snapshot was created.
      **/
     public String getCreateTime() { return this.createTime; }
+   
     public void setCreateTime(String createTime) { 
         this.createTime = createTime;
     }
@@ -111,6 +116,7 @@ public class GroupSnapshot implements Serializable {
      * Done: A snapshot that has finished being prepared and is now usable
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
@@ -118,6 +124,7 @@ public class GroupSnapshot implements Serializable {
      * List of Name/Value pairs in JSON object format.
      **/
     public Attributes getAttributes() { return this.attributes; }
+   
     public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
@@ -160,15 +167,16 @@ public class GroupSnapshot implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
-        sb.append(" groupSnapshotUUID : ").append(groupSnapshotUUID).append(",");
-        sb.append(" members : ").append(Arrays.toString(members)).append(",");
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" createTime : ").append(createTime).append(",");
-        sb.append(" status : ").append(status).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
+        sb.append(" groupSnapshotID : ").append(gson.toJson(groupSnapshotID)).append(",");
+        sb.append(" groupSnapshotUUID : ").append(gson.toJson(groupSnapshotUUID)).append(",");
+        sb.append(" members : ").append(gson.toJson(Arrays.toString(members))).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" createTime : ").append(gson.toJson(createTime)).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
+        sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

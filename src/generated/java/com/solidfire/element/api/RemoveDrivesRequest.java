@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,20 +30,16 @@ import java.util.Objects;
 
 /**
  * RemoveDrivesRequest  
- * You can use RemoveDrives to proactively remove drives that are part of the cluster.
- * You may want to use this method when reducing cluster capacity or preparing to replace drives nearing the end of their service life.
- * Any data on the drives is removed and migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method.
- * Depending on the total capacity of the drives being removed, it may take several minutes to migrate all of the data.
- * Use the "GetAsyncResult" method to check the status of the remove operation.
- * 
- * When removing multiple drives, use a single "RemoveDrives" method call rather than multiple individual methods with a single drive each.
- * This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
- * 
- * You can also remove drives with a "failed" status using "RemoveDrives".
- * When you remove a drive with a "failed" status it is not returned to an "available" or "active" status.
- * The drive is unavailable for use in the cluster.
- * 
- * Use the "ListDrives" method to obtain the driveIDs for the drives you want to remove.
+ * You can use RemoveDrives to proactively remove drives that are part of the cluster. You might want to use this method when
+ * reducing cluster capacity or preparing to replace drives nearing the end of their service life. Any data on the drives is removed and
+ * migrated to other drives in the cluster before the drive is removed from the cluster. This is an asynchronous method. Depending on
+ * the total capacity of the drives being removed, it might take several minutes to migrate all of the data. Use the GetAsyncResult
+ * method to check the status of the remove operation.
+ * When removing multiple drives, use a single RemoveDrives method call rather than multiple individual methods with a single drive
+ * each. This reduces the amount of data balancing that must occur to even stabilize the storage load on the cluster.
+ * You can also remove drives with a "failed" status using RemoveDrives. When you remove a drive with a "failed" status it is not
+ * returned to an "available" or active status. The drive is unavailable for use in the cluster.
+ * Use the ListDrives method to obtain the driveIDs for the drives you want to remove.
  **/
 
 public class RemoveDrivesRequest implements Serializable {
@@ -50,7 +47,6 @@ public class RemoveDrivesRequest implements Serializable {
     public static final long serialVersionUID = 131252405671668047L;
     @SerializedName("drives") private Long[] drives;
     @SerializedName("forceDuringUpgrade") private Optional<Boolean> forceDuringUpgrade;
-
     // empty constructor
     @Since("7.0")
     public RemoveDrivesRequest() {}
@@ -71,6 +67,7 @@ public class RemoveDrivesRequest implements Serializable {
      * List of driveIDs to remove from the cluster.
      **/
     public Long[] getDrives() { return this.drives; }
+   
     public void setDrives(Long[] drives) { 
         this.drives = drives;
     }
@@ -78,6 +75,7 @@ public class RemoveDrivesRequest implements Serializable {
      * If you want to remove a drive during upgrade, this must be set to true.
      **/
     public Optional<Boolean> getForceDuringUpgrade() { return this.forceDuringUpgrade; }
+   
     public void setForceDuringUpgrade(Optional<Boolean> forceDuringUpgrade) { 
         this.forceDuringUpgrade = (forceDuringUpgrade == null) ? Optional.<Boolean>empty() : forceDuringUpgrade;
     }
@@ -110,11 +108,15 @@ public class RemoveDrivesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" drives : ").append(Arrays.toString(drives)).append(",");
+        sb.append(" drives : ").append(gson.toJson(Arrays.toString(drives))).append(",");
         if(null != forceDuringUpgrade && forceDuringUpgrade.isPresent()){
-            sb.append(" forceDuringUpgrade : ").append(forceDuringUpgrade).append(",");
+            sb.append(" forceDuringUpgrade : ").append(gson.toJson(forceDuringUpgrade)).append(",");
+        }
+        else{
+            sb.append(" forceDuringUpgrade : ").append("null").append(",");
         }
         sb.append( " }" );
 

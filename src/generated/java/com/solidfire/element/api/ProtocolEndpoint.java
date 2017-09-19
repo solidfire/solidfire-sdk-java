@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -40,7 +41,6 @@ public class ProtocolEndpoint implements Serializable {
     @SerializedName("primaryProviderID") private Long primaryProviderID;
     @SerializedName("secondaryProviderID") private Long secondaryProviderID;
     @SerializedName("scsiNAADeviceID") private String scsiNAADeviceID;
-
     // empty constructor
     @Since("7.0")
     public ProtocolEndpoint() {}
@@ -69,6 +69,7 @@ public class ProtocolEndpoint implements Serializable {
      * 
      **/
     public java.util.UUID getProtocolEndpointID() { return this.protocolEndpointID; }
+   
     public void setProtocolEndpointID(java.util.UUID protocolEndpointID) { 
         this.protocolEndpointID = protocolEndpointID;
     }
@@ -76,6 +77,7 @@ public class ProtocolEndpoint implements Serializable {
      * 
      **/
     public String getProtocolEndpointState() { return this.protocolEndpointState; }
+   
     public void setProtocolEndpointState(String protocolEndpointState) { 
         this.protocolEndpointState = protocolEndpointState;
     }
@@ -83,6 +85,7 @@ public class ProtocolEndpoint implements Serializable {
      * 
      **/
     public String getProviderType() { return this.providerType; }
+   
     public void setProviderType(String providerType) { 
         this.providerType = providerType;
     }
@@ -90,6 +93,7 @@ public class ProtocolEndpoint implements Serializable {
      * 
      **/
     public Long getPrimaryProviderID() { return this.primaryProviderID; }
+   
     public void setPrimaryProviderID(Long primaryProviderID) { 
         this.primaryProviderID = primaryProviderID;
     }
@@ -97,6 +101,7 @@ public class ProtocolEndpoint implements Serializable {
      * 
      **/
     public Long getSecondaryProviderID() { return this.secondaryProviderID; }
+   
     public void setSecondaryProviderID(Long secondaryProviderID) { 
         this.secondaryProviderID = secondaryProviderID;
     }
@@ -104,6 +109,7 @@ public class ProtocolEndpoint implements Serializable {
      * 
      **/
     public String getScsiNAADeviceID() { return this.scsiNAADeviceID; }
+   
     public void setScsiNAADeviceID(String scsiNAADeviceID) { 
         this.scsiNAADeviceID = scsiNAADeviceID;
     }
@@ -144,14 +150,15 @@ public class ProtocolEndpoint implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" protocolEndpointID : ").append(protocolEndpointID).append(",");
-        sb.append(" protocolEndpointState : ").append(protocolEndpointState).append(",");
-        sb.append(" providerType : ").append(providerType).append(",");
-        sb.append(" primaryProviderID : ").append(primaryProviderID).append(",");
-        sb.append(" secondaryProviderID : ").append(secondaryProviderID).append(",");
-        sb.append(" scsiNAADeviceID : ").append(scsiNAADeviceID).append(",");
+        sb.append(" protocolEndpointID : ").append(gson.toJson(protocolEndpointID)).append(",");
+        sb.append(" protocolEndpointState : ").append(gson.toJson(protocolEndpointState)).append(",");
+        sb.append(" providerType : ").append(gson.toJson(providerType)).append(",");
+        sb.append(" primaryProviderID : ").append(gson.toJson(primaryProviderID)).append(",");
+        sb.append(" secondaryProviderID : ").append(gson.toJson(secondaryProviderID)).append(",");
+        sb.append(" scsiNAADeviceID : ").append(gson.toJson(scsiNAADeviceID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

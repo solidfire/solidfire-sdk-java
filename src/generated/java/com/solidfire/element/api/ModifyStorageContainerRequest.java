@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,7 @@ import java.util.Objects;
 
 /**
  * ModifyStorageContainerRequest  
- * Modifies an existing storage container.
+ * ModifyStorageContainer enables you to make changes to an existing virtual volume storage container.
  **/
 
 public class ModifyStorageContainerRequest implements Serializable {
@@ -38,7 +39,6 @@ public class ModifyStorageContainerRequest implements Serializable {
     @SerializedName("storageContainerID") private java.util.UUID storageContainerID;
     @SerializedName("initiatorSecret") private Optional<String> initiatorSecret;
     @SerializedName("targetSecret") private Optional<String> targetSecret;
-
     // empty constructor
     @Since("7.0")
     public ModifyStorageContainerRequest() {}
@@ -58,23 +58,26 @@ public class ModifyStorageContainerRequest implements Serializable {
     }
 
     /** 
-     * 
+     * The unique ID of the virtual volume storage container to modify.
      **/
     public java.util.UUID getStorageContainerID() { return this.storageContainerID; }
+   
     public void setStorageContainerID(java.util.UUID storageContainerID) { 
         this.storageContainerID = storageContainerID;
     }
     /** 
-     * 
+     * The new secret for CHAP authentication for the initiator.
      **/
     public Optional<String> getInitiatorSecret() { return this.initiatorSecret; }
+   
     public void setInitiatorSecret(Optional<String> initiatorSecret) { 
         this.initiatorSecret = (initiatorSecret == null) ? Optional.<String>empty() : initiatorSecret;
     }
     /** 
-     * 
+     * The new secret for CHAP authentication for the target.
      **/
     public Optional<String> getTargetSecret() { return this.targetSecret; }
+   
     public void setTargetSecret(Optional<String> targetSecret) { 
         this.targetSecret = (targetSecret == null) ? Optional.<String>empty() : targetSecret;
     }
@@ -109,14 +112,21 @@ public class ModifyStorageContainerRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" storageContainerID : ").append(storageContainerID).append(",");
+        sb.append(" storageContainerID : ").append(gson.toJson(storageContainerID)).append(",");
         if(null != initiatorSecret && initiatorSecret.isPresent()){
-            sb.append(" initiatorSecret : ").append(initiatorSecret).append(",");
+            sb.append(" initiatorSecret : ").append(gson.toJson(initiatorSecret)).append(",");
+        }
+        else{
+            sb.append(" initiatorSecret : ").append("null").append(",");
         }
         if(null != targetSecret && targetSecret.isPresent()){
-            sb.append(" targetSecret : ").append(targetSecret).append(",");
+            sb.append(" targetSecret : ").append(gson.toJson(targetSecret)).append(",");
+        }
+        else{
+            sb.append(" targetSecret : ").append("null").append(",");
         }
         sb.append( " }" );
 

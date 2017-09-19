@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -44,7 +45,6 @@ public class AddedNode implements Serializable {
     @SerializedName("platformInfo") private Optional<Platform> platformInfo;
     @SerializedName("sip") private Optional<String> sip;
     @SerializedName("softwareVersion") private Optional<String> softwareVersion;
-
     // empty constructor
     @Since("7.0")
     public AddedNode() {}
@@ -81,6 +81,7 @@ public class AddedNode implements Serializable {
      * 
      **/
     public Optional<Long> getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Optional<Long> nodeID) { 
         this.nodeID = (nodeID == null) ? Optional.<Long>empty() : nodeID;
     }
@@ -88,6 +89,7 @@ public class AddedNode implements Serializable {
      * 
      **/
     public Long getPendingNodeID() { return this.pendingNodeID; }
+   
     public void setPendingNodeID(Long pendingNodeID) { 
         this.pendingNodeID = pendingNodeID;
     }
@@ -95,6 +97,7 @@ public class AddedNode implements Serializable {
      * 
      **/
     public Optional<String> getActiveNodeKey() { return this.activeNodeKey; }
+   
     public void setActiveNodeKey(Optional<String> activeNodeKey) { 
         this.activeNodeKey = (activeNodeKey == null) ? Optional.<String>empty() : activeNodeKey;
     }
@@ -102,6 +105,7 @@ public class AddedNode implements Serializable {
      * 
      **/
     public Optional<Long> getAssignedNodeID() { return this.assignedNodeID; }
+   
     public void setAssignedNodeID(Optional<Long> assignedNodeID) { 
         this.assignedNodeID = (assignedNodeID == null) ? Optional.<Long>empty() : assignedNodeID;
     }
@@ -109,6 +113,7 @@ public class AddedNode implements Serializable {
      * 
      **/
     public Optional<Long> getAsyncHandle() { return this.asyncHandle; }
+   
     public void setAsyncHandle(Optional<Long> asyncHandle) { 
         this.asyncHandle = (asyncHandle == null) ? Optional.<Long>empty() : asyncHandle;
     }
@@ -116,6 +121,7 @@ public class AddedNode implements Serializable {
      * 
      **/
     public Optional<String> getCip() { return this.cip; }
+   
     public void setCip(Optional<String> cip) { 
         this.cip = (cip == null) ? Optional.<String>empty() : cip;
     }
@@ -123,6 +129,7 @@ public class AddedNode implements Serializable {
      * 
      **/
     public Optional<String> getMip() { return this.mip; }
+   
     public void setMip(Optional<String> mip) { 
         this.mip = (mip == null) ? Optional.<String>empty() : mip;
     }
@@ -130,6 +137,7 @@ public class AddedNode implements Serializable {
      * 
      **/
     public Optional<Platform> getPlatformInfo() { return this.platformInfo; }
+   
     public void setPlatformInfo(Optional<Platform> platformInfo) { 
         this.platformInfo = (platformInfo == null) ? Optional.<Platform>empty() : platformInfo;
     }
@@ -137,6 +145,7 @@ public class AddedNode implements Serializable {
      * 
      **/
     public Optional<String> getSip() { return this.sip; }
+   
     public void setSip(Optional<String> sip) { 
         this.sip = (sip == null) ? Optional.<String>empty() : sip;
     }
@@ -144,6 +153,7 @@ public class AddedNode implements Serializable {
      * 
      **/
     public Optional<String> getSoftwareVersion() { return this.softwareVersion; }
+   
     public void setSoftwareVersion(Optional<String> softwareVersion) { 
         this.softwareVersion = (softwareVersion == null) ? Optional.<String>empty() : softwareVersion;
     }
@@ -192,35 +202,63 @@ public class AddedNode implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != nodeID && nodeID.isPresent()){
-            sb.append(" nodeID : ").append(nodeID).append(",");
+            sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
         }
-        sb.append(" pendingNodeID : ").append(pendingNodeID).append(",");
+        else{
+            sb.append(" nodeID : ").append("null").append(",");
+        }
+        sb.append(" pendingNodeID : ").append(gson.toJson(pendingNodeID)).append(",");
         if(null != activeNodeKey && activeNodeKey.isPresent()){
-            sb.append(" activeNodeKey : ").append(activeNodeKey).append(",");
+            sb.append(" activeNodeKey : ").append(gson.toJson(activeNodeKey)).append(",");
+        }
+        else{
+            sb.append(" activeNodeKey : ").append("null").append(",");
         }
         if(null != assignedNodeID && assignedNodeID.isPresent()){
-            sb.append(" assignedNodeID : ").append(assignedNodeID).append(",");
+            sb.append(" assignedNodeID : ").append(gson.toJson(assignedNodeID)).append(",");
+        }
+        else{
+            sb.append(" assignedNodeID : ").append("null").append(",");
         }
         if(null != asyncHandle && asyncHandle.isPresent()){
-            sb.append(" asyncHandle : ").append(asyncHandle).append(",");
+            sb.append(" asyncHandle : ").append(gson.toJson(asyncHandle)).append(",");
+        }
+        else{
+            sb.append(" asyncHandle : ").append("null").append(",");
         }
         if(null != cip && cip.isPresent()){
-            sb.append(" cip : ").append(cip).append(",");
+            sb.append(" cip : ").append(gson.toJson(cip)).append(",");
+        }
+        else{
+            sb.append(" cip : ").append("null").append(",");
         }
         if(null != mip && mip.isPresent()){
-            sb.append(" mip : ").append(mip).append(",");
+            sb.append(" mip : ").append(gson.toJson(mip)).append(",");
+        }
+        else{
+            sb.append(" mip : ").append("null").append(",");
         }
         if(null != platformInfo && platformInfo.isPresent()){
-            sb.append(" platformInfo : ").append(platformInfo).append(",");
+            sb.append(" platformInfo : ").append(gson.toJson(platformInfo)).append(",");
+        }
+        else{
+            sb.append(" platformInfo : ").append("null").append(",");
         }
         if(null != sip && sip.isPresent()){
-            sb.append(" sip : ").append(sip).append(",");
+            sb.append(" sip : ").append(gson.toJson(sip)).append(",");
+        }
+        else{
+            sb.append(" sip : ").append("null").append(",");
         }
         if(null != softwareVersion && softwareVersion.isPresent()){
-            sb.append(" softwareVersion : ").append(softwareVersion).append(",");
+            sb.append(" softwareVersion : ").append(gson.toJson(softwareVersion)).append(",");
+        }
+        else{
+            sb.append(" softwareVersion : ").append("null").append(",");
         }
         sb.append( " }" );
 

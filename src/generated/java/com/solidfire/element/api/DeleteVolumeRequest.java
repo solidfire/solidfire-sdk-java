@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,28 +30,22 @@ import java.util.Objects;
 
 /**
  * DeleteVolumeRequest  
- * DeleteVolume marks an active volume for deletion.
- * It is purged (permanently deleted) after the cleanup interval elapses.
- * After making a request to delete a volume, any active iSCSI connections to the volume is immediately terminated and no further connections are allowed while the volume is in this state.
- * It is not returned in target discovery requests.
- * 
- * Any snapshots of a volume that has been marked to delete are not affected.
- * Snapshots are kept until the volume is purged from the system.
- * 
- * If a volume is marked for deletion, and it has a bulk volume read or bulk volume write operation in progress, the bulk volume operation is stopped.
- * 
- * If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred to it or from it while in a deleted state.
- * The remote volume the deleted volume was paired with enters into a PausedMisconfigured state and data is no integerer sent to it or from the deleted volume.
- * Until the deleted volume is purged, it can be restored and data transfers resumes.
- * If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed.
- * The purged volume becomes permanently unavailable.
+ * DeleteVolume marks an active volume for deletion. When marked, the volume is purged (permanently deleted) after the cleanup
+ * interval elapses. After making a request to delete a volume, any active iSCSI connections to the volume are immediately terminated
+ * and no further connections are allowed while the volume is in this state. A marked volume is not returned in target discovery
+ * requests.
+ * Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from
+ * the system.
+ * If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or
+ * write operation is stopped.
+ * If the volume you delete is paired with a volume, replication between the paired volumes is suspended and no data is transferred
+ * to it or from it while in a deleted state. The remote volume that the deleted volume was paired with enters into a PausedMisconfigured state and data is no longer sent to it or from the deleted volume. Until the deleted volume is purged, it can be restored and data transfers resume. If the deleted volume gets purged from the system, the volume it was paired with enters into a StoppedMisconfigured state and the volume pairing status is removed. The purged volume becomes permanently unavailable.
  **/
 
 public class DeleteVolumeRequest implements Serializable {
 
     public static final long serialVersionUID = -5304170858071823429L;
     @SerializedName("volumeID") private Long volumeID;
-
     // empty constructor
     @Since("7.0")
     public DeleteVolumeRequest() {}
@@ -66,9 +61,10 @@ public class DeleteVolumeRequest implements Serializable {
     }
 
     /** 
-     * The ID of the volume to delete.
+     * The ID of the volume to be deleted.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -99,9 +95,10 @@ public class DeleteVolumeRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

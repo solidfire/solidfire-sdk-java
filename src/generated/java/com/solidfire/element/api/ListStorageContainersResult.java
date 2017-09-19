@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class ListStorageContainersResult implements Serializable {
 
     public static final long serialVersionUID = 3012254209072210575L;
     @SerializedName("storageContainers") private StorageContainer[] storageContainers;
-
     // empty constructor
     @Since("7.0")
     public ListStorageContainersResult() {}
@@ -54,6 +54,7 @@ public class ListStorageContainersResult implements Serializable {
      * 
      **/
     public StorageContainer[] getStorageContainers() { return this.storageContainers; }
+   
     public void setStorageContainers(StorageContainer[] storageContainers) { 
         this.storageContainers = storageContainers;
     }
@@ -84,9 +85,10 @@ public class ListStorageContainersResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" storageContainers : ").append(Arrays.toString(storageContainers)).append(",");
+        sb.append(" storageContainers : ").append(gson.toJson(Arrays.toString(storageContainers))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

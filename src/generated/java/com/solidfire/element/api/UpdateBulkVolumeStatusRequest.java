@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,8 @@ import java.util.Objects;
 
 /**
  * UpdateBulkVolumeStatusRequest  
- * You can use UpdateBulkVolumeStatus in a script to return to the SolidFire system the status of a bulk volume job that you have started with the "StartBulkVolumeRead" or "StartBulkVolumeWrite" methods.
+ * You can use UpdateBulkVolumeStatus in a script to update the status of a bulk volume job that you started with the
+ * StartBulkVolumeRead or StartBulkVolumeWrite methods.
  **/
 
 public class UpdateBulkVolumeStatusRequest implements Serializable {
@@ -40,7 +42,6 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
     @SerializedName("percentComplete") private Optional<String> percentComplete;
     @SerializedName("message") private Optional<String> message;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public UpdateBulkVolumeStatusRequest() {}
@@ -64,41 +65,47 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
     }
 
     /** 
-     * The key assigned during initialization of a "StartBulkVolumeRead" or "StartBulkVolumeWrite" session.
+     * The key assigned during initialization of a
+     * StartBulkVolumeRead or StartBulkVolumeWrite session.
      **/
     public String getKey() { return this.key; }
+   
     public void setKey(String key) { 
         this.key = key;
     }
     /** 
-     * The SolidFire system sets the status of the given bulk volume job.
-     * Possible values:
-     * running: jobs that are still active.
-     * complete: jobs that are done. failed - jobs that have failed.
-     * failed: jobs that have failed.
+     * The status of the given bulk volume job. The system sets the status. Possible values are: 
+     * running: Jobs that are still active.
+     * complete: Jobs that are done.
+     * failed: Jobs that failed.
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
     /** 
-     * The completed progress of the bulk volume job as a percentage.
+     * The completed progress of the bulk volume job as a
+     * percentage value.
      **/
     public Optional<String> getPercentComplete() { return this.percentComplete; }
+   
     public void setPercentComplete(Optional<String> percentComplete) { 
         this.percentComplete = (percentComplete == null) ? Optional.<String>empty() : percentComplete;
     }
     /** 
-     * Returns the status of the bulk volume job when the job has completed.
+     * The message returned indicating the status of the bulk volume job after the job is complete.
      **/
     public Optional<String> getMessage() { return this.message; }
+   
     public void setMessage(Optional<String> message) { 
         this.message = (message == null) ? Optional.<String>empty() : message;
     }
     /** 
-     * JSON attributes  updates what is on the bulk volume job.
+     * JSON attributes; updates what is on the bulk volume job.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -137,18 +144,28 @@ public class UpdateBulkVolumeStatusRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" key : ").append(key).append(",");
-        sb.append(" status : ").append(status).append(",");
+        sb.append(" key : ").append(gson.toJson(key)).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
         if(null != percentComplete && percentComplete.isPresent()){
-            sb.append(" percentComplete : ").append(percentComplete).append(",");
+            sb.append(" percentComplete : ").append(gson.toJson(percentComplete)).append(",");
+        }
+        else{
+            sb.append(" percentComplete : ").append("null").append(",");
         }
         if(null != message && message.isPresent()){
-            sb.append(" message : ").append(message).append(",");
+            sb.append(" message : ").append(gson.toJson(message)).append(",");
+        }
+        else{
+            sb.append(" message : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

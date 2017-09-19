@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,14 +30,18 @@ import java.util.Objects;
 
 /**
  * GetClusterStateRequest  
- * The GetClusterState method is used to indicate if a node is part of a cluster or not. The three states are: <br><strong>Available:</strong> Node has not been configured with a cluster name.<br><strong>Pending:</strong> Node is pending for a specific named cluster and can be added.<br><strong>Active:</strong> Node is active and a member of a cluster and may not be added to another cluster.
+ * The GetClusterState API method enables you to indicate if a node is part of a cluster or not. The three states are:
+ * Available: Node has not been configured with a cluster name.
+ * Pending: Node is pending for a specific named cluster and can be added.
+ * Active: Node is an active member of a cluster and may not be added to another
+ * cluster.
+ * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
 public class GetClusterStateRequest implements Serializable {
 
     public static final long serialVersionUID = 7409607116677991350L;
     @SerializedName("force") private Boolean force;
-
     // empty constructor
     @Since("7.0")
     public GetClusterStateRequest() {}
@@ -55,6 +60,7 @@ public class GetClusterStateRequest implements Serializable {
      * To run this command, the force parameter must be set to true.
      **/
     public Boolean getForce() { return this.force; }
+   
     public void setForce(Boolean force) { 
         this.force = force;
     }
@@ -85,9 +91,10 @@ public class GetClusterStateRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" force : ").append(force).append(",");
+        sb.append(" force : ").append(gson.toJson(force)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

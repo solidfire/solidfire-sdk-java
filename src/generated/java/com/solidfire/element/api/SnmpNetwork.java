@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -39,7 +40,6 @@ public class SnmpNetwork implements Serializable {
     @SerializedName("cidr") private Long cidr;
     @SerializedName("community") private String community;
     @SerializedName("network") private String network;
-
     // empty constructor
     @Since("7.0")
     public SnmpNetwork() {}
@@ -67,6 +67,7 @@ public class SnmpNetwork implements Serializable {
      * *SolidFire recommends that all networks other than the default "localhost" be set to "ro" access, because all SolidFire MIB objects are read-only.
      **/
     public String getAccess() { return this.access; }
+   
     public void setAccess(String access) { 
         this.access = access;
     }
@@ -74,6 +75,7 @@ public class SnmpNetwork implements Serializable {
      * A CIDR network mask. This network mask must be an integer greater than or equal to 0, and less than or equal to 32. It must also not be equal to 31.
      **/
     public Long getCidr() { return this.cidr; }
+   
     public void setCidr(Long cidr) { 
         this.cidr = cidr;
     }
@@ -81,6 +83,7 @@ public class SnmpNetwork implements Serializable {
      * SNMP community string.
      **/
     public String getCommunity() { return this.community; }
+   
     public void setCommunity(String community) { 
         this.community = community;
     }
@@ -88,6 +91,7 @@ public class SnmpNetwork implements Serializable {
      * This parameter ainteger with the cidr variable is used to control which network the access and community string apply to. The special value of "default" is used to specify an entry that applies to all networks. The cidr mask is ignored when network value is either a host name or default.
      **/
     public String getNetwork() { return this.network; }
+   
     public void setNetwork(String network) { 
         this.network = network;
     }
@@ -124,12 +128,13 @@ public class SnmpNetwork implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" access : ").append(access).append(",");
-        sb.append(" cidr : ").append(cidr).append(",");
-        sb.append(" community : ").append(community).append(",");
-        sb.append(" network : ").append(network).append(",");
+        sb.append(" access : ").append(gson.toJson(access)).append(",");
+        sb.append(" cidr : ").append(gson.toJson(cidr)).append(",");
+        sb.append(" community : ").append(gson.toJson(community)).append(",");
+        sb.append(" network : ").append(gson.toJson(network)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

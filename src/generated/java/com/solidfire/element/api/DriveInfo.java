@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,11 +39,11 @@ public class DriveInfo implements Serializable {
     @SerializedName("driveID") private Long driveID;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("serial") private String serial;
+    @SerializedName("chassisSlot") private String chassisSlot;
     @SerializedName("slot") private Long slot;
     @SerializedName("status") private String status;
     @SerializedName("type") private String type;
     @SerializedName("attributes") private Attributes attributes;
-
     // empty constructor
     @Since("7.0")
     public DriveInfo() {}
@@ -70,11 +71,36 @@ public class DriveInfo implements Serializable {
         this.type = type;
         this.attributes = attributes;
     }
+    // parameterized constructor
+    @Since("10.0")
+    public DriveInfo(
+        Long capacity,
+        Long driveID,
+        Long nodeID,
+        String serial,
+        String chassisSlot,
+        Long slot,
+        String status,
+        String type,
+        Attributes attributes
+    )
+    {
+        this.capacity = capacity;
+        this.driveID = driveID;
+        this.nodeID = nodeID;
+        this.serial = serial;
+        this.chassisSlot = chassisSlot;
+        this.slot = slot;
+        this.status = status;
+        this.type = type;
+        this.attributes = attributes;
+    }
 
     /** 
      * Total capacity of the drive, in bytes.
      **/
     public Long getCapacity() { return this.capacity; }
+   
     public void setCapacity(Long capacity) { 
         this.capacity = capacity;
     }
@@ -82,6 +108,7 @@ public class DriveInfo implements Serializable {
      * DriveID for this drive.
      **/
     public Long getDriveID() { return this.driveID; }
+   
     public void setDriveID(Long driveID) { 
         this.driveID = driveID;
     }
@@ -89,6 +116,7 @@ public class DriveInfo implements Serializable {
      * NodeID where this drive is located.
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -96,13 +124,24 @@ public class DriveInfo implements Serializable {
      * Drive serial number.
      **/
     public String getSerial() { return this.serial; }
+   
     public void setSerial(String serial) { 
         this.serial = serial;
+    }
+    /** 
+     * For HCI platforms, this value is the node letter and slot number in the server chassis where this drive is located.
+     * For legacy platforms, the slot number is a string representation of the 'slot' integer.
+     **/
+    public String getChassisSlot() { return this.chassisSlot; }
+   
+    public void setChassisSlot(String chassisSlot) { 
+        this.chassisSlot = chassisSlot;
     }
     /** 
      * Slot number in the server chassis where this drive is located, or -1 if SATADimm used for internal metadata drive.
      **/
     public Long getSlot() { return this.slot; }
+   
     public void setSlot(Long slot) { 
         this.slot = slot;
     }
@@ -110,6 +149,7 @@ public class DriveInfo implements Serializable {
      * 
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
@@ -117,6 +157,7 @@ public class DriveInfo implements Serializable {
      * 
      **/
     public String getType() { return this.type; }
+   
     public void setType(String type) { 
         this.type = type;
     }
@@ -124,6 +165,7 @@ public class DriveInfo implements Serializable {
      * List of Name/Value pairs in JSON object format.
      **/
     public Attributes getAttributes() { return this.attributes; }
+   
     public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
     }
@@ -140,6 +182,7 @@ public class DriveInfo implements Serializable {
             Objects.equals(driveID, that.driveID) && 
             Objects.equals(nodeID, that.nodeID) && 
             Objects.equals(serial, that.serial) && 
+            Objects.equals(chassisSlot, that.chassisSlot) && 
             Objects.equals(slot, that.slot) && 
             Objects.equals(status, that.status) && 
             Objects.equals(type, that.type) && 
@@ -148,7 +191,7 @@ public class DriveInfo implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( capacity,driveID,nodeID,serial,slot,status,type,attributes );
+        return Objects.hash( capacity,driveID,nodeID,serial,chassisSlot,slot,status,type,attributes );
     }
 
 
@@ -158,6 +201,7 @@ public class DriveInfo implements Serializable {
         map.put("driveID", driveID);
         map.put("nodeID", nodeID);
         map.put("serial", serial);
+        map.put("chassisSlot", chassisSlot);
         map.put("slot", slot);
         map.put("status", status);
         map.put("type", type);
@@ -168,16 +212,18 @@ public class DriveInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" capacity : ").append(capacity).append(",");
-        sb.append(" driveID : ").append(driveID).append(",");
-        sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" serial : ").append(serial).append(",");
-        sb.append(" slot : ").append(slot).append(",");
-        sb.append(" status : ").append(status).append(",");
-        sb.append(" type : ").append(type).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
+        sb.append(" capacity : ").append(gson.toJson(capacity)).append(",");
+        sb.append(" driveID : ").append(gson.toJson(driveID)).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
+        sb.append(" serial : ").append(gson.toJson(serial)).append(",");
+        sb.append(" chassisSlot : ").append(gson.toJson(chassisSlot)).append(",");
+        sb.append(" slot : ").append(gson.toJson(slot)).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
+        sb.append(" type : ").append(gson.toJson(type)).append(",");
+        sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -199,6 +245,7 @@ public class DriveInfo implements Serializable {
         private Long driveID;
         private Long nodeID;
         private String serial;
+        private String chassisSlot;
         private Long slot;
         private String status;
         private String type;
@@ -212,6 +259,7 @@ public class DriveInfo implements Serializable {
                          this.driveID,
                          this.nodeID,
                          this.serial,
+                         this.chassisSlot,
                          this.slot,
                          this.status,
                          this.type,
@@ -223,6 +271,7 @@ public class DriveInfo implements Serializable {
             this.driveID = req.driveID;
             this.nodeID = req.nodeID;
             this.serial = req.serial;
+            this.chassisSlot = req.chassisSlot;
             this.slot = req.slot;
             this.status = req.status;
             this.type = req.type;
@@ -248,6 +297,11 @@ public class DriveInfo implements Serializable {
 
         public DriveInfo.Builder serial(final String serial) {
             this.serial = serial;
+            return this;
+        }
+
+        public DriveInfo.Builder chassisSlot(final String chassisSlot) {
+            this.chassisSlot = chassisSlot;
             return this;
         }
 

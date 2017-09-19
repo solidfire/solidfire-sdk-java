@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class GetNvramInfoResult implements Serializable {
 
     public static final long serialVersionUID = 8380977530507768205L;
     @SerializedName("nvramInfo") private Attributes nvramInfo;
-
     // empty constructor
     @Since("7.0")
     public GetNvramInfoResult() {}
@@ -54,6 +54,7 @@ public class GetNvramInfoResult implements Serializable {
      * Arrays of events and errors detected on the NVRAM card.
      **/
     public Attributes getNvramInfo() { return this.nvramInfo; }
+   
     public void setNvramInfo(Attributes nvramInfo) { 
         this.nvramInfo = nvramInfo;
     }
@@ -84,9 +85,10 @@ public class GetNvramInfoResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nvramInfo : ").append(nvramInfo).append(",");
+        sb.append(" nvramInfo : ").append(gson.toJson(nvramInfo)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

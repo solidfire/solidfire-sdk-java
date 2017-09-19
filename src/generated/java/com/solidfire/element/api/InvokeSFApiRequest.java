@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,6 @@ public class InvokeSFApiRequest implements Serializable {
     public static final long serialVersionUID = -3644984175863972914L;
     @SerializedName("method") private String method;
     @SerializedName("parameters") private Optional<Object> parameters;
-
     // empty constructor
     @Since("7.0")
     public InvokeSFApiRequest() {}
@@ -59,6 +59,7 @@ public class InvokeSFApiRequest implements Serializable {
      * The name of the method to invoke. This is case sensitive.
      **/
     public String getMethod() { return this.method; }
+   
     public void setMethod(String method) { 
         this.method = method;
     }
@@ -66,6 +67,7 @@ public class InvokeSFApiRequest implements Serializable {
      * An object, normally a dictionary or hashtable of the key/value pairs, to be passed as the params for the method being invoked.
      **/
     public Optional<Object> getParameters() { return this.parameters; }
+   
     public void setParameters(Optional<Object> parameters) { 
         this.parameters = (parameters == null) ? Optional.<Object>empty() : parameters;
     }
@@ -98,11 +100,15 @@ public class InvokeSFApiRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" method : ").append(method).append(",");
+        sb.append(" method : ").append(gson.toJson(method)).append(",");
         if(null != parameters && parameters.isPresent()){
-            sb.append(" parameters : ").append(parameters).append(",");
+            sb.append(" parameters : ").append(gson.toJson(parameters)).append(",");
+        }
+        else{
+            sb.append(" parameters : ").append("null").append(",");
         }
         sb.append( " }" );
 

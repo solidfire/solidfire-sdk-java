@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class ListClusterFaultsResult implements Serializable {
 
     public static final long serialVersionUID = 8263283430508705045L;
     @SerializedName("faults") private ClusterFaultInfo[] faults;
-
     // empty constructor
     @Since("7.0")
     public ListClusterFaultsResult() {}
@@ -54,6 +54,7 @@ public class ListClusterFaultsResult implements Serializable {
      * The list of Cluster Fault objects.
      **/
     public ClusterFaultInfo[] getFaults() { return this.faults; }
+   
     public void setFaults(ClusterFaultInfo[] faults) { 
         this.faults = faults;
     }
@@ -84,9 +85,10 @@ public class ListClusterFaultsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" faults : ").append(Arrays.toString(faults)).append(",");
+        sb.append(" faults : ").append(gson.toJson(Arrays.toString(faults))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class GetVolumeAccessGroupLunAssignmentsResult implements Serializable {
 
     public static final long serialVersionUID = 7463507992215591007L;
     @SerializedName("volumeAccessGroupLunAssignments") private VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments;
-
     // empty constructor
     @Since("7.0")
     public GetVolumeAccessGroupLunAssignmentsResult() {}
@@ -54,6 +54,7 @@ public class GetVolumeAccessGroupLunAssignmentsResult implements Serializable {
      * List of all physical Fibre Channel ports, or a port for a single node.
      **/
     public VolumeAccessGroupLunAssignments getVolumeAccessGroupLunAssignments() { return this.volumeAccessGroupLunAssignments; }
+   
     public void setVolumeAccessGroupLunAssignments(VolumeAccessGroupLunAssignments volumeAccessGroupLunAssignments) { 
         this.volumeAccessGroupLunAssignments = volumeAccessGroupLunAssignments;
     }
@@ -84,9 +85,10 @@ public class GetVolumeAccessGroupLunAssignmentsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupLunAssignments : ").append(volumeAccessGroupLunAssignments).append(",");
+        sb.append(" volumeAccessGroupLunAssignments : ").append(gson.toJson(volumeAccessGroupLunAssignments)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

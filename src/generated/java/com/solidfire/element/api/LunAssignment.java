@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,7 +38,6 @@ public class LunAssignment implements Serializable {
     public static final long serialVersionUID = 4843157514928145383L;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("lun") private Long lun;
-
     // empty constructor
     @Since("7.0")
     public LunAssignment() {}
@@ -58,6 +58,7 @@ public class LunAssignment implements Serializable {
      * The volume ID assigned to the Lun.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -65,6 +66,7 @@ public class LunAssignment implements Serializable {
      * Correct LUN values are 0 - 16383. An exception will be seen if an incorrect LUN value is passed.
      **/
     public Long getLun() { return this.lun; }
+   
     public void setLun(Long lun) { 
         this.lun = lun;
     }
@@ -97,10 +99,11 @@ public class LunAssignment implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" lun : ").append(lun).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" lun : ").append(gson.toJson(lun)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

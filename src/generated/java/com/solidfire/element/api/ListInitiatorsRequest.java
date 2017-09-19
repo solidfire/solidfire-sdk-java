@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,6 @@ public class ListInitiatorsRequest implements Serializable {
     @SerializedName("startInitiatorID") private Optional<Long> startInitiatorID;
     @SerializedName("limit") private Optional<Long> limit;
     @SerializedName("initiators") private Optional<Long[]> initiators;
-
     // empty constructor
     @Since("7.0")
     public ListInitiatorsRequest() {}
@@ -58,9 +58,11 @@ public class ListInitiatorsRequest implements Serializable {
     }
 
     /** 
-     * The initiator ID at which to begin the listing. You can supply this parameter or the "initiators" parameter, but not both.
+     * The initiator ID at which to begin the listing. You can supply this
+     * parameter or the "initiators" parameter, but not both.
      **/
     public Optional<Long> getStartInitiatorID() { return this.startInitiatorID; }
+   
     public void setStartInitiatorID(Optional<Long> startInitiatorID) { 
         this.startInitiatorID = (startInitiatorID == null) ? Optional.<Long>empty() : startInitiatorID;
     }
@@ -68,13 +70,16 @@ public class ListInitiatorsRequest implements Serializable {
      * The maximum number of initiator objects to return.
      **/
     public Optional<Long> getLimit() { return this.limit; }
+   
     public void setLimit(Optional<Long> limit) { 
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
     }
     /** 
-     * A list of initiator IDs to retrieve. You can supply this parameter or the "startInitiatorID" parameter, but not both.
+     * A list of initiator IDs to retrieve. You can provide a value for this parameter or
+     * the "startInitiatorID" parameter, but not both.
      **/
     public Optional<Long[]> getInitiators() { return this.initiators; }
+   
     public void setInitiators(Optional<Long[]> initiators) { 
         this.initiators = (initiators == null) ? Optional.<Long[]>empty() : initiators;
     }
@@ -109,16 +114,26 @@ public class ListInitiatorsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != startInitiatorID && startInitiatorID.isPresent()){
-            sb.append(" startInitiatorID : ").append(startInitiatorID).append(",");
+            sb.append(" startInitiatorID : ").append(gson.toJson(startInitiatorID)).append(",");
+        }
+        else{
+            sb.append(" startInitiatorID : ").append("null").append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(gson.toJson(limit)).append(",");
+        }
+        else{
+            sb.append(" limit : ").append("null").append(",");
         }
         if(null != initiators && initiators.isPresent()){
-            sb.append(" initiators : ").append(initiators).append(",");
+            sb.append(" initiators : ").append(gson.toJson(initiators)).append(",");
+        }
+        else{
+            sb.append(" initiators : ").append("null").append(",");
         }
         sb.append( " }" );
 

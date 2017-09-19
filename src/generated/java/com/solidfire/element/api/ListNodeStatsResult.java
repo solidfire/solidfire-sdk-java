@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class ListNodeStatsResult implements Serializable {
 
     public static final long serialVersionUID = 7526746260675146513L;
     @SerializedName("nodeStats") private NodeStatsNodes nodeStats;
-
     // empty constructor
     @Since("7.0")
     public ListNodeStatsResult() {}
@@ -54,6 +54,7 @@ public class ListNodeStatsResult implements Serializable {
      * Node activity information for all nodes.
      **/
     public NodeStatsNodes getNodeStats() { return this.nodeStats; }
+   
     public void setNodeStats(NodeStatsNodes nodeStats) { 
         this.nodeStats = nodeStats;
     }
@@ -84,9 +85,10 @@ public class ListNodeStatsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodeStats : ").append(nodeStats).append(",");
+        sb.append(" nodeStats : ").append(gson.toJson(nodeStats)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

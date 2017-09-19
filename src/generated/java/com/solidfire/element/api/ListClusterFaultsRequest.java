@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,18 +30,14 @@ import java.util.Objects;
 
 /**
  * ListClusterFaultsRequest  
- * ListClusterFaults is used to retrieve information about any faults detected on the cluster.
- * With this method, both current and resolved faults can be retrieved. The system caches faults every 30 seconds.
+ * ListClusterFaults enables you to retrieve information about any faults detected on the cluster. With this method, you can retrieve both current faults as well as faults that have been resolved. The system caches faults every 30 seconds.
  **/
 
 public class ListClusterFaultsRequest implements Serializable {
 
     public static final long serialVersionUID = 8082364318085188644L;
-    @SerializedName("exceptions") private Optional<Boolean> exceptions;
     @SerializedName("bestPractices") private Optional<Boolean> bestPractices;
-    @SerializedName("update") private Optional<Boolean> update;
     @SerializedName("faultTypes") private Optional<String> faultTypes;
-
     // empty constructor
     @Since("7.0")
     public ListClusterFaultsRequest() {}
@@ -49,46 +46,36 @@ public class ListClusterFaultsRequest implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ListClusterFaultsRequest(
-        Optional<Boolean> exceptions,
         Optional<Boolean> bestPractices,
-        Optional<Boolean> update,
         Optional<String> faultTypes
     )
     {
-        this.exceptions = (exceptions == null) ? Optional.<Boolean>empty() : exceptions;
         this.bestPractices = (bestPractices == null) ? Optional.<Boolean>empty() : bestPractices;
-        this.update = (update == null) ? Optional.<Boolean>empty() : update;
         this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : faultTypes;
     }
 
     /** 
-     * 
-     **/
-    public Optional<Boolean> getExceptions() { return this.exceptions; }
-    public void setExceptions(Optional<Boolean> exceptions) { 
-        this.exceptions = (exceptions == null) ? Optional.<Boolean>empty() : exceptions;
-    }
-    /** 
-     * Include faults triggered by sub-optimal system configuration.
-     * Possible values: true, false
+     * Specifies whether to include faults triggered by suboptimal system configuration.
+     * Possible values are:
+     * true
+     * false
      **/
     public Optional<Boolean> getBestPractices() { return this.bestPractices; }
+   
     public void setBestPractices(Optional<Boolean> bestPractices) { 
         this.bestPractices = (bestPractices == null) ? Optional.<Boolean>empty() : bestPractices;
     }
     /** 
-     * 
-     **/
-    public Optional<Boolean> getUpdate() { return this.update; }
-    public void setUpdate(Optional<Boolean> update) { 
-        this.update = (update == null) ? Optional.<Boolean>empty() : update;
-    }
-    /** 
-     * Determines the types of faults returned: current: List active, unresolved faults.
-     * resolved: List faults that were previously detected and resolved.
-     * all: (Default) List both current and resolved faults. You can see the fault status in the 'resolved' field of the Cluster Fault object.
+     * Determines the types of faults returned. Possible values are:
+     * current: List active, unresolved faults.
+     * resolved: List faults that were previously detected and
+     * resolved.
+     * all: (Default) List both current and resolved faults. You can
+     * see the fault status in the resolved field of the Cluster Fault
+     * object.
      **/
     public Optional<String> getFaultTypes() { return this.faultTypes; }
+   
     public void setFaultTypes(Optional<String> faultTypes) { 
         this.faultTypes = (faultTypes == null) ? Optional.<String>empty() : faultTypes;
     }
@@ -101,23 +88,19 @@ public class ListClusterFaultsRequest implements Serializable {
         ListClusterFaultsRequest that = (ListClusterFaultsRequest) o;
 
         return 
-            Objects.equals(exceptions, that.exceptions) && 
             Objects.equals(bestPractices, that.bestPractices) && 
-            Objects.equals(update, that.update) && 
             Objects.equals(faultTypes, that.faultTypes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( exceptions,bestPractices,update,faultTypes );
+        return Objects.hash( bestPractices,faultTypes );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
-        map.put("exceptions", exceptions);
         map.put("bestPractices", bestPractices);
-        map.put("update", update);
         map.put("faultTypes", faultTypes);
         return map;
     }
@@ -125,19 +108,20 @@ public class ListClusterFaultsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        if(null != exceptions && exceptions.isPresent()){
-            sb.append(" exceptions : ").append(exceptions).append(",");
-        }
         if(null != bestPractices && bestPractices.isPresent()){
-            sb.append(" bestPractices : ").append(bestPractices).append(",");
+            sb.append(" bestPractices : ").append(gson.toJson(bestPractices)).append(",");
         }
-        if(null != update && update.isPresent()){
-            sb.append(" update : ").append(update).append(",");
+        else{
+            sb.append(" bestPractices : ").append("null").append(",");
         }
         if(null != faultTypes && faultTypes.isPresent()){
-            sb.append(" faultTypes : ").append(faultTypes).append(",");
+            sb.append(" faultTypes : ").append(gson.toJson(faultTypes)).append(",");
+        }
+        else{
+            sb.append(" faultTypes : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -156,42 +140,26 @@ public class ListClusterFaultsRequest implements Serializable {
     }
 
     public static class Builder {
-        private Optional<Boolean> exceptions;
         private Optional<Boolean> bestPractices;
-        private Optional<Boolean> update;
         private Optional<String> faultTypes;
 
         private Builder() { }
 
         public ListClusterFaultsRequest build() {
             return new ListClusterFaultsRequest (
-                         this.exceptions,
                          this.bestPractices,
-                         this.update,
                          this.faultTypes);
         }
 
         private ListClusterFaultsRequest.Builder buildFrom(final ListClusterFaultsRequest req) {
-            this.exceptions = req.exceptions;
             this.bestPractices = req.bestPractices;
-            this.update = req.update;
             this.faultTypes = req.faultTypes;
 
             return this;
         }
 
-        public ListClusterFaultsRequest.Builder optionalExceptions(final Boolean exceptions) {
-            this.exceptions = (exceptions == null) ? Optional.<Boolean>empty() : Optional.of(exceptions);
-            return this;
-        }
-
         public ListClusterFaultsRequest.Builder optionalBestPractices(final Boolean bestPractices) {
             this.bestPractices = (bestPractices == null) ? Optional.<Boolean>empty() : Optional.of(bestPractices);
-            return this;
-        }
-
-        public ListClusterFaultsRequest.Builder optionalUpdate(final Boolean update) {
-            this.update = (update == null) ? Optional.<Boolean>empty() : Optional.of(update);
             return this;
         }
 

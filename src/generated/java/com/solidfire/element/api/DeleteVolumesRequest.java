@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,25 @@ import java.util.Objects;
 
 /**
  * DeleteVolumesRequest  
- * DeleteVolumes marks multiple (up to 500) active volumes for deletion. Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.The cleanup interval can be set in the SetClusterSettings method. For more information on using this method, see SetClusterSettings on page 1. After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated and no further connections are allowed while the volumes are in this state. A marked volume is not returned in target discovery requests. Any snapshots of a volume that has been marked for deletion are not affected. Snapshots are kept until the volume is purged from the system. If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress, the bulk volume read or write operation is stopped. If the volumes you delete are paired with a volume, replication between the paired volumes is suspended and no data is transferred to them or from them while in a deleted state. The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state and data is no integerer sent to them or from the deleted volumes. Until the deleted volumes are purged, they can be restored and data transfers resume. If the deleted volumes are purged from the system, the volumes they were paired with enter into a StoppedMisconfigured state and the volume pairing status is removed. The purged volumes become permanently unavailable.
+ * DeleteVolumes marks multiple (up to 500) active volumes for deletion.
+ * Once marked, the volumes are purged (permanently deleted) after the cleanup interval elapses.
+ * The cleanup interval can be set in the SetClusterSettings method.
+ * For more information on using this method, see SetClusterSettings on page 1.
+ * After making a request to delete volumes, any active iSCSI connections to the volumes are immediately terminated
+ * and no further connections are allowed while the volumes are in this state.
+ * A marked volume is not returned in target discovery requests.
+ * Any snapshots of a volume that has been marked for deletion are not affected.
+ * Snapshots are kept until the volume is purged from the system.
+ * If a volume is marked for deletion and has a bulk volume read or bulk volume write operation in progress,
+ * the bulk volume read or write operation is stopped.
+ * If the volumes you delete are paired with a volume, replication between the paired volumes is suspended
+ * and no data is transferred to them or from them while in a deleted state.
+ * The remote volumes the deleted volumes were paired with enter into a PausedMisconfigured state
+ * and data is no longer sent to them or from the deleted volumes.
+ * Until the deleted volumes are purged, they can be restored and data transfers resume.
+ * If the deleted volumes are purged from the system, the volumes they were paired with enter into a
+ * StoppedMisconfigured state and the volume pairing status is removed.
+ * The purged volumes become permanently unavailable.
  **/
 
 public class DeleteVolumesRequest implements Serializable {
@@ -38,7 +57,6 @@ public class DeleteVolumesRequest implements Serializable {
     @SerializedName("accountIDs") private Optional<Long[]> accountIDs;
     @SerializedName("volumeAccessGroupIDs") private Optional<Long[]> volumeAccessGroupIDs;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
-
     // empty constructor
     @Since("7.0")
     public DeleteVolumesRequest() {}
@@ -61,6 +79,7 @@ public class DeleteVolumesRequest implements Serializable {
      * A list of account IDs. All volumes from these accounts are deleted from the system. 
      **/
     public Optional<Long[]> getAccountIDs() { return this.accountIDs; }
+   
     public void setAccountIDs(Optional<Long[]> accountIDs) { 
         this.accountIDs = (accountIDs == null) ? Optional.<Long[]>empty() : accountIDs;
     }
@@ -68,6 +87,7 @@ public class DeleteVolumesRequest implements Serializable {
      * A list of volume access group IDs. All of the volumes from all of the volume access groups you specify in this list are deleted from the system.
      **/
     public Optional<Long[]> getVolumeAccessGroupIDs() { return this.volumeAccessGroupIDs; }
+   
     public void setVolumeAccessGroupIDs(Optional<Long[]> volumeAccessGroupIDs) { 
         this.volumeAccessGroupIDs = (volumeAccessGroupIDs == null) ? Optional.<Long[]>empty() : volumeAccessGroupIDs;
     }
@@ -75,6 +95,7 @@ public class DeleteVolumesRequest implements Serializable {
      * The list of IDs of the volumes to delete from the system.
      **/
     public Optional<Long[]> getVolumeIDs() { return this.volumeIDs; }
+   
     public void setVolumeIDs(Optional<Long[]> volumeIDs) { 
         this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
     }
@@ -109,16 +130,26 @@ public class DeleteVolumesRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != accountIDs && accountIDs.isPresent()){
-            sb.append(" accountIDs : ").append(accountIDs).append(",");
+            sb.append(" accountIDs : ").append(gson.toJson(accountIDs)).append(",");
+        }
+        else{
+            sb.append(" accountIDs : ").append("null").append(",");
         }
         if(null != volumeAccessGroupIDs && volumeAccessGroupIDs.isPresent()){
-            sb.append(" volumeAccessGroupIDs : ").append(volumeAccessGroupIDs).append(",");
+            sb.append(" volumeAccessGroupIDs : ").append(gson.toJson(volumeAccessGroupIDs)).append(",");
+        }
+        else{
+            sb.append(" volumeAccessGroupIDs : ").append("null").append(",");
         }
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
+            sb.append(" volumeIDs : ").append(gson.toJson(volumeIDs)).append(",");
+        }
+        else{
+            sb.append(" volumeIDs : ").append("null").append(",");
         }
         sb.append( " }" );
 

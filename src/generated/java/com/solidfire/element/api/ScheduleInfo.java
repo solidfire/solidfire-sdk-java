@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,6 @@ public class ScheduleInfo implements Serializable {
     @SerializedName("enableRemoteReplication") private Optional<Boolean> enableRemoteReplication;
     @SerializedName("volumeIDs") private Optional<Long[]> volumeIDs;
     @SerializedName("retention") private Optional<String> retention;
-
     // empty constructor
     @Since("7.0")
     public ScheduleInfo() {}
@@ -63,6 +63,7 @@ public class ScheduleInfo implements Serializable {
      * The snapshot name to be used. 
      **/
     public Optional<String> getSnapshotName() { return this.snapshotName; }
+   
     public void setSnapshotName(Optional<String> snapshotName) { 
         this.snapshotName = (snapshotName == null) ? Optional.<String>empty() : snapshotName;
     }
@@ -70,6 +71,7 @@ public class ScheduleInfo implements Serializable {
      * Indicates if the snapshot should be included in remote replication.
      **/
     public Optional<Boolean> getEnableRemoteReplication() { return this.enableRemoteReplication; }
+   
     public void setEnableRemoteReplication(Optional<Boolean> enableRemoteReplication) { 
         this.enableRemoteReplication = (enableRemoteReplication == null) ? Optional.<Boolean>empty() : enableRemoteReplication;
     }
@@ -77,6 +79,7 @@ public class ScheduleInfo implements Serializable {
      * A list of volume IDs to be included in the group snapshot.
      **/
     public Optional<Long[]> getVolumeIDs() { return this.volumeIDs; }
+   
     public void setVolumeIDs(Optional<Long[]> volumeIDs) { 
         this.volumeIDs = (volumeIDs == null) ? Optional.<Long[]>empty() : volumeIDs;
     }
@@ -84,6 +87,7 @@ public class ScheduleInfo implements Serializable {
      * The amount of time the snapshot will be retained in HH:mm:ss.
      **/
     public Optional<String> getRetention() { return this.retention; }
+   
     public void setRetention(Optional<String> retention) { 
         this.retention = (retention == null) ? Optional.<String>empty() : retention;
     }
@@ -120,19 +124,32 @@ public class ScheduleInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != snapshotName && snapshotName.isPresent()){
-            sb.append(" snapshotName : ").append(snapshotName).append(",");
+            sb.append(" snapshotName : ").append(gson.toJson(snapshotName)).append(",");
+        }
+        else{
+            sb.append(" snapshotName : ").append("null").append(",");
         }
         if(null != enableRemoteReplication && enableRemoteReplication.isPresent()){
-            sb.append(" enableRemoteReplication : ").append(enableRemoteReplication).append(",");
+            sb.append(" enableRemoteReplication : ").append(gson.toJson(enableRemoteReplication)).append(",");
+        }
+        else{
+            sb.append(" enableRemoteReplication : ").append("null").append(",");
         }
         if(null != volumeIDs && volumeIDs.isPresent()){
-            sb.append(" volumeIDs : ").append(volumeIDs).append(",");
+            sb.append(" volumeIDs : ").append(gson.toJson(volumeIDs)).append(",");
+        }
+        else{
+            sb.append(" volumeIDs : ").append("null").append(",");
         }
         if(null != retention && retention.isPresent()){
-            sb.append(" retention : ").append(retention).append(",");
+            sb.append(" retention : ").append(gson.toJson(retention)).append(",");
+        }
+        else{
+            sb.append(" retention : ").append("null").append(",");
         }
         sb.append( " }" );
 

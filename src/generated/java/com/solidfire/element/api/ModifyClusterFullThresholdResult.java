@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -51,7 +52,6 @@ public class ModifyClusterFullThresholdResult implements Serializable {
     @SerializedName("sumTotalMetadataClusterBytes") private Long sumTotalMetadataClusterBytes;
     @SerializedName("sumUsedClusterBytes") private Long sumUsedClusterBytes;
     @SerializedName("sumUsedMetadataClusterBytes") private Long sumUsedMetadataClusterBytes;
-
     // empty constructor
     @Since("7.0")
     public ModifyClusterFullThresholdResult() {}
@@ -103,6 +103,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Possible values: stage1Happy: No alerts or error conditions. stage2Aware: 3 nodes of capacity available. stage3Low: 2 nodes of capacity available. stage4Critical: 1 node of capacity available. No new volumes or clones can be created. stage5CompletelyConsumed: Completely consumed. Cluster is read-only, iSCSI connection is maintained but all writes are suspended.
      **/
     public String getBlockFullness() { return this.blockFullness; }
+   
     public void setBlockFullness(String blockFullness) { 
         this.blockFullness = blockFullness;
     }
@@ -110,6 +111,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Reflects the highest level of fullness between "blockFullness" and "metadataFullness".
      **/
     public String getFullness() { return this.fullness; }
+   
     public void setFullness(String fullness) { 
         this.fullness = fullness;
     }
@@ -117,6 +119,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * A value representative of the number of times metadata space can be over provisioned relative to the amount of space available. For example, if there was enough metadata space to store 100 TiB of volumes and this number was set to 5, then 500 TiB worth of volumes could be created.
      **/
     public Long getMaxMetadataOverProvisionFactor() { return this.maxMetadataOverProvisionFactor; }
+   
     public void setMaxMetadataOverProvisionFactor(Long maxMetadataOverProvisionFactor) { 
         this.maxMetadataOverProvisionFactor = maxMetadataOverProvisionFactor;
     }
@@ -124,6 +127,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Current computed level of metadata fullness of the cluster.
      **/
     public String getMetadataFullness() { return this.metadataFullness; }
+   
     public void setMetadataFullness(String metadataFullness) { 
         this.metadataFullness = metadataFullness;
     }
@@ -131,6 +135,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Error condition; message sent to "Alerts" if the reserved slice utilization is greater than the sliceReserveUsedThresholdPct value returned.
      **/
     public Long getSliceReserveUsedThresholdPct() { return this.sliceReserveUsedThresholdPct; }
+   
     public void setSliceReserveUsedThresholdPct(Long sliceReserveUsedThresholdPct) { 
         this.sliceReserveUsedThresholdPct = sliceReserveUsedThresholdPct;
     }
@@ -138,6 +143,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Awareness condition: Value that is set for "Stage 2" cluster threshold level.
      **/
     public Long getStage2AwareThreshold() { return this.stage2AwareThreshold; }
+   
     public void setStage2AwareThreshold(Long stage2AwareThreshold) { 
         this.stage2AwareThreshold = stage2AwareThreshold;
     }
@@ -145,6 +151,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Number of bytes being used by the cluster at which a stage2 condition will exist.
      **/
     public Long getStage2BlockThresholdBytes() { return this.stage2BlockThresholdBytes; }
+   
     public void setStage2BlockThresholdBytes(Long stage2BlockThresholdBytes) { 
         this.stage2BlockThresholdBytes = stage2BlockThresholdBytes;
     }
@@ -152,6 +159,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Number of bytes being used by the cluster at which a stage3 condition will exist.
      **/
     public Long getStage3BlockThresholdBytes() { return this.stage3BlockThresholdBytes; }
+   
     public void setStage3BlockThresholdBytes(Long stage3BlockThresholdBytes) { 
         this.stage3BlockThresholdBytes = stage3BlockThresholdBytes;
     }
@@ -159,6 +167,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * The percent value set for stage3. At this percent full, a warning will be posted in the Alerts log.
      **/
     public Long getStage3BlockThresholdPercent() { return this.stage3BlockThresholdPercent; }
+   
     public void setStage3BlockThresholdPercent(Long stage3BlockThresholdPercent) { 
         this.stage3BlockThresholdPercent = stage3BlockThresholdPercent;
     }
@@ -166,6 +175,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Error condition; message sent to "Alerts" that capacity on a cluster is getting low.
      **/
     public Long getStage3LowThreshold() { return this.stage3LowThreshold; }
+   
     public void setStage3LowThreshold(Long stage3LowThreshold) { 
         this.stage3LowThreshold = stage3LowThreshold;
     }
@@ -173,6 +183,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Error condition; message sent to "Alerts" that capacity on a cluster is critically low.
      **/
     public Long getStage4CriticalThreshold() { return this.stage4CriticalThreshold; }
+   
     public void setStage4CriticalThreshold(Long stage4CriticalThreshold) { 
         this.stage4CriticalThreshold = stage4CriticalThreshold;
     }
@@ -180,6 +191,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Number of bytes being used by the cluster at which a stage4 condition will exist.
      **/
     public Long getStage4BlockThresholdBytes() { return this.stage4BlockThresholdBytes; }
+   
     public void setStage4BlockThresholdBytes(Long stage4BlockThresholdBytes) { 
         this.stage4BlockThresholdBytes = stage4BlockThresholdBytes;
     }
@@ -187,6 +199,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Number of bytes being used by the cluster at which a stage5 condition will exist.
      **/
     public Long getStage5BlockThresholdBytes() { return this.stage5BlockThresholdBytes; }
+   
     public void setStage5BlockThresholdBytes(Long stage5BlockThresholdBytes) { 
         this.stage5BlockThresholdBytes = stage5BlockThresholdBytes;
     }
@@ -194,6 +207,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Physical capacity of the cluster measured in bytes.
      **/
     public Long getSumTotalClusterBytes() { return this.sumTotalClusterBytes; }
+   
     public void setSumTotalClusterBytes(Long sumTotalClusterBytes) { 
         this.sumTotalClusterBytes = sumTotalClusterBytes;
     }
@@ -201,6 +215,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Total amount of space that can be used to store metadata.
      **/
     public Long getSumTotalMetadataClusterBytes() { return this.sumTotalMetadataClusterBytes; }
+   
     public void setSumTotalMetadataClusterBytes(Long sumTotalMetadataClusterBytes) { 
         this.sumTotalMetadataClusterBytes = sumTotalMetadataClusterBytes;
     }
@@ -208,6 +223,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Number of bytes used on the cluster.
      **/
     public Long getSumUsedClusterBytes() { return this.sumUsedClusterBytes; }
+   
     public void setSumUsedClusterBytes(Long sumUsedClusterBytes) { 
         this.sumUsedClusterBytes = sumUsedClusterBytes;
     }
@@ -215,6 +231,7 @@ public class ModifyClusterFullThresholdResult implements Serializable {
      * Amount of space used on volume drives to store metadata.
      **/
     public Long getSumUsedMetadataClusterBytes() { return this.sumUsedMetadataClusterBytes; }
+   
     public void setSumUsedMetadataClusterBytes(Long sumUsedMetadataClusterBytes) { 
         this.sumUsedMetadataClusterBytes = sumUsedMetadataClusterBytes;
     }
@@ -277,25 +294,26 @@ public class ModifyClusterFullThresholdResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" blockFullness : ").append(blockFullness).append(",");
-        sb.append(" fullness : ").append(fullness).append(",");
-        sb.append(" maxMetadataOverProvisionFactor : ").append(maxMetadataOverProvisionFactor).append(",");
-        sb.append(" metadataFullness : ").append(metadataFullness).append(",");
-        sb.append(" sliceReserveUsedThresholdPct : ").append(sliceReserveUsedThresholdPct).append(",");
-        sb.append(" stage2AwareThreshold : ").append(stage2AwareThreshold).append(",");
-        sb.append(" stage2BlockThresholdBytes : ").append(stage2BlockThresholdBytes).append(",");
-        sb.append(" stage3BlockThresholdBytes : ").append(stage3BlockThresholdBytes).append(",");
-        sb.append(" stage3BlockThresholdPercent : ").append(stage3BlockThresholdPercent).append(",");
-        sb.append(" stage3LowThreshold : ").append(stage3LowThreshold).append(",");
-        sb.append(" stage4CriticalThreshold : ").append(stage4CriticalThreshold).append(",");
-        sb.append(" stage4BlockThresholdBytes : ").append(stage4BlockThresholdBytes).append(",");
-        sb.append(" stage5BlockThresholdBytes : ").append(stage5BlockThresholdBytes).append(",");
-        sb.append(" sumTotalClusterBytes : ").append(sumTotalClusterBytes).append(",");
-        sb.append(" sumTotalMetadataClusterBytes : ").append(sumTotalMetadataClusterBytes).append(",");
-        sb.append(" sumUsedClusterBytes : ").append(sumUsedClusterBytes).append(",");
-        sb.append(" sumUsedMetadataClusterBytes : ").append(sumUsedMetadataClusterBytes).append(",");
+        sb.append(" blockFullness : ").append(gson.toJson(blockFullness)).append(",");
+        sb.append(" fullness : ").append(gson.toJson(fullness)).append(",");
+        sb.append(" maxMetadataOverProvisionFactor : ").append(gson.toJson(maxMetadataOverProvisionFactor)).append(",");
+        sb.append(" metadataFullness : ").append(gson.toJson(metadataFullness)).append(",");
+        sb.append(" sliceReserveUsedThresholdPct : ").append(gson.toJson(sliceReserveUsedThresholdPct)).append(",");
+        sb.append(" stage2AwareThreshold : ").append(gson.toJson(stage2AwareThreshold)).append(",");
+        sb.append(" stage2BlockThresholdBytes : ").append(gson.toJson(stage2BlockThresholdBytes)).append(",");
+        sb.append(" stage3BlockThresholdBytes : ").append(gson.toJson(stage3BlockThresholdBytes)).append(",");
+        sb.append(" stage3BlockThresholdPercent : ").append(gson.toJson(stage3BlockThresholdPercent)).append(",");
+        sb.append(" stage3LowThreshold : ").append(gson.toJson(stage3LowThreshold)).append(",");
+        sb.append(" stage4CriticalThreshold : ").append(gson.toJson(stage4CriticalThreshold)).append(",");
+        sb.append(" stage4BlockThresholdBytes : ").append(gson.toJson(stage4BlockThresholdBytes)).append(",");
+        sb.append(" stage5BlockThresholdBytes : ").append(gson.toJson(stage5BlockThresholdBytes)).append(",");
+        sb.append(" sumTotalClusterBytes : ").append(gson.toJson(sumTotalClusterBytes)).append(",");
+        sb.append(" sumTotalMetadataClusterBytes : ").append(gson.toJson(sumTotalMetadataClusterBytes)).append(",");
+        sb.append(" sumUsedClusterBytes : ").append(gson.toJson(sumUsedClusterBytes)).append(",");
+        sb.append(" sumUsedMetadataClusterBytes : ").append(gson.toJson(sumUsedMetadataClusterBytes)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

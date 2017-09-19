@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -34,8 +35,7 @@ import java.util.Objects;
 public class ModifyScheduleResult implements Serializable {
 
     public static final long serialVersionUID = -6280410249936410494L;
-    @SerializedName("schedule") private Schedule schedule;
-
+    @SerializedName("schedule") private Optional<Schedule> schedule;
     // empty constructor
     @Since("7.0")
     public ModifyScheduleResult() {}
@@ -44,18 +44,19 @@ public class ModifyScheduleResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyScheduleResult(
-        Schedule schedule
+        Optional<Schedule> schedule
     )
     {
-        this.schedule = schedule;
+        this.schedule = (schedule == null) ? Optional.<Schedule>empty() : schedule;
     }
 
     /** 
      * 
      **/
-    public Schedule getSchedule() { return this.schedule; }
-    public void setSchedule(Schedule schedule) { 
-        this.schedule = schedule;
+    public Optional<Schedule> getSchedule() { return this.schedule; }
+   
+    public void setSchedule(Optional<Schedule> schedule) { 
+        this.schedule = (schedule == null) ? Optional.<Schedule>empty() : schedule;
     }
 
     @Override
@@ -84,9 +85,15 @@ public class ModifyScheduleResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" schedule : ").append(schedule).append(",");
+        if(null != schedule && schedule.isPresent()){
+            sb.append(" schedule : ").append(gson.toJson(schedule)).append(",");
+        }
+        else{
+            sb.append(" schedule : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -104,7 +111,7 @@ public class ModifyScheduleResult implements Serializable {
     }
 
     public static class Builder {
-        private Schedule schedule;
+        private Optional<Schedule> schedule;
 
         private Builder() { }
 
@@ -119,8 +126,8 @@ public class ModifyScheduleResult implements Serializable {
             return this;
         }
 
-        public ModifyScheduleResult.Builder schedule(final Schedule schedule) {
-            this.schedule = schedule;
+        public ModifyScheduleResult.Builder optionalSchedule(final Schedule schedule) {
+            this.schedule = (schedule == null) ? Optional.<Schedule>empty() : Optional.of(schedule);
             return this;
         }
 

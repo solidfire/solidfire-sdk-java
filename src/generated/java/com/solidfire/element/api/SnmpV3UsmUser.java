@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -40,7 +41,6 @@ public class SnmpV3UsmUser implements Serializable {
     @SerializedName("password") private String password;
     @SerializedName("passphrase") private String passphrase;
     @SerializedName("secLevel") private String secLevel;
-
     // empty constructor
     @Since("7.0")
     public SnmpV3UsmUser() {}
@@ -70,6 +70,7 @@ public class SnmpV3UsmUser implements Serializable {
      * *SolidFire recommends that all USM users be set to "rouser" access, because all SolidFire MIB objects are read-only.
      **/
     public String getAccess() { return this.access; }
+   
     public void setAccess(String access) { 
         this.access = access;
     }
@@ -77,6 +78,7 @@ public class SnmpV3UsmUser implements Serializable {
      * The name of the user. Must contain at least one character, but no more than 32 characters. Blank spaces are not allowed.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -84,6 +86,7 @@ public class SnmpV3UsmUser implements Serializable {
      * The password of the user. Must be between 8 and 255 characters integer (inclusive). Blank spaces are not allowed. Required if "secLevel" is "auth" or "priv."
      **/
     public String getPassword() { return this.password; }
+   
     public void setPassword(String password) { 
         this.password = password;
     }
@@ -91,6 +94,7 @@ public class SnmpV3UsmUser implements Serializable {
      * The passphrase of the user. Must be between 8 and 255 characters integer (inclusive). Blank spaces are not allowed. Required if "secLevel" is "priv."
      **/
     public String getPassphrase() { return this.passphrase; }
+   
     public void setPassphrase(String passphrase) { 
         this.passphrase = passphrase;
     }
@@ -100,6 +104,7 @@ public class SnmpV3UsmUser implements Serializable {
      * priv: A password and passphrase is required for user access.
      **/
     public String getSecLevel() { return this.secLevel; }
+   
     public void setSecLevel(String secLevel) { 
         this.secLevel = secLevel;
     }
@@ -138,13 +143,14 @@ public class SnmpV3UsmUser implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" access : ").append(access).append(",");
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" password : ").append(password).append(",");
-        sb.append(" passphrase : ").append(passphrase).append(",");
-        sb.append(" secLevel : ").append(secLevel).append(",");
+        sb.append(" access : ").append(gson.toJson(access)).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" password : ").append(gson.toJson(password)).append(",");
+        sb.append(" passphrase : ").append(gson.toJson(passphrase)).append(",");
+        sb.append(" secLevel : ").append(gson.toJson(secLevel)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

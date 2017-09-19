@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,9 @@ import java.util.Objects;
 
 /**
  * ListVolumeAccessGroupsRequest  
- * ListVolumeAccessGroups is used to return information about the volume access groups that are currently in the system.
+ * ListVolumeAccessGroups enables you to return
+ * information about the volume access groups that are
+ * currently in the system.
  **/
 
 public class ListVolumeAccessGroupsRequest implements Serializable {
@@ -37,7 +40,7 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
     public static final long serialVersionUID = -8023811621876007990L;
     @SerializedName("startVolumeAccessGroupID") private Optional<Long> startVolumeAccessGroupID;
     @SerializedName("limit") private Optional<Long> limit;
-
+    @SerializedName("volumeAccessGroups") private Optional<Long[]> volumeAccessGroups;
     // empty constructor
     @Since("7.0")
     public ListVolumeAccessGroupsRequest() {}
@@ -47,29 +50,39 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
     @Since("7.0")
     public ListVolumeAccessGroupsRequest(
         Optional<Long> startVolumeAccessGroupID,
-        Optional<Long> limit
+        Optional<Long> limit,
+        Optional<Long[]> volumeAccessGroups
     )
     {
         this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<Long>empty() : startVolumeAccessGroupID;
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
+        this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
     }
 
     /** 
-     * The lowest VolumeAccessGroupID to return.
-     * This can be useful for paging.
-     * If unspecified, there is no lower limit (implicitly 0).
+     * The volume access group ID at which to begin the listing. If unspecified, there is no lower limit (implicitly 0).
      **/
     public Optional<Long> getStartVolumeAccessGroupID() { return this.startVolumeAccessGroupID; }
+   
     public void setStartVolumeAccessGroupID(Optional<Long> startVolumeAccessGroupID) { 
         this.startVolumeAccessGroupID = (startVolumeAccessGroupID == null) ? Optional.<Long>empty() : startVolumeAccessGroupID;
     }
     /** 
-     * The maximum number of results to return.
-     * This can be useful for paging.
+     * The maximum number of results to return. This can be
+     * useful for paging.
      **/
     public Optional<Long> getLimit() { return this.limit; }
+   
     public void setLimit(Optional<Long> limit) { 
         this.limit = (limit == null) ? Optional.<Long>empty() : limit;
+    }
+    /** 
+     * The list of ids of the volume access groups you wish to list
+     **/
+    public Optional<Long[]> getVolumeAccessGroups() { return this.volumeAccessGroups; }
+   
+    public void setVolumeAccessGroups(Optional<Long[]> volumeAccessGroups) { 
+        this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : volumeAccessGroups;
     }
 
     @Override
@@ -81,12 +94,13 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
 
         return 
             Objects.equals(startVolumeAccessGroupID, that.startVolumeAccessGroupID) && 
-            Objects.equals(limit, that.limit);
+            Objects.equals(limit, that.limit) && 
+            Objects.equals(volumeAccessGroups, that.volumeAccessGroups);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( startVolumeAccessGroupID,limit );
+        return Objects.hash( startVolumeAccessGroupID,limit,volumeAccessGroups );
     }
 
 
@@ -94,19 +108,33 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("startVolumeAccessGroupID", startVolumeAccessGroupID);
         map.put("limit", limit);
+        map.put("volumeAccessGroups", volumeAccessGroups);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != startVolumeAccessGroupID && startVolumeAccessGroupID.isPresent()){
-            sb.append(" startVolumeAccessGroupID : ").append(startVolumeAccessGroupID).append(",");
+            sb.append(" startVolumeAccessGroupID : ").append(gson.toJson(startVolumeAccessGroupID)).append(",");
+        }
+        else{
+            sb.append(" startVolumeAccessGroupID : ").append("null").append(",");
         }
         if(null != limit && limit.isPresent()){
-            sb.append(" limit : ").append(limit).append(",");
+            sb.append(" limit : ").append(gson.toJson(limit)).append(",");
+        }
+        else{
+            sb.append(" limit : ").append("null").append(",");
+        }
+        if(null != volumeAccessGroups && volumeAccessGroups.isPresent()){
+            sb.append(" volumeAccessGroups : ").append(gson.toJson(volumeAccessGroups)).append(",");
+        }
+        else{
+            sb.append(" volumeAccessGroups : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -127,18 +155,21 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
     public static class Builder {
         private Optional<Long> startVolumeAccessGroupID;
         private Optional<Long> limit;
+        private Optional<Long[]> volumeAccessGroups;
 
         private Builder() { }
 
         public ListVolumeAccessGroupsRequest build() {
             return new ListVolumeAccessGroupsRequest (
                          this.startVolumeAccessGroupID,
-                         this.limit);
+                         this.limit,
+                         this.volumeAccessGroups);
         }
 
         private ListVolumeAccessGroupsRequest.Builder buildFrom(final ListVolumeAccessGroupsRequest req) {
             this.startVolumeAccessGroupID = req.startVolumeAccessGroupID;
             this.limit = req.limit;
+            this.volumeAccessGroups = req.volumeAccessGroups;
 
             return this;
         }
@@ -150,6 +181,11 @@ public class ListVolumeAccessGroupsRequest implements Serializable {
 
         public ListVolumeAccessGroupsRequest.Builder optionalLimit(final Long limit) {
             this.limit = (limit == null) ? Optional.<Long>empty() : Optional.of(limit);
+            return this;
+        }
+
+        public ListVolumeAccessGroupsRequest.Builder optionalVolumeAccessGroups(final Long[] volumeAccessGroups) {
+            this.volumeAccessGroups = (volumeAccessGroups == null) ? Optional.<Long[]>empty() : Optional.of(volumeAccessGroups);
             return this;
         }
 

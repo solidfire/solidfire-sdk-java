@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class ListVirtualVolumeHostsResult implements Serializable {
 
     public static final long serialVersionUID = -8007463979747334133L;
     @SerializedName("hosts") private VirtualVolumeHost[] hosts;
-
     // empty constructor
     @Since("7.0")
     public ListVirtualVolumeHostsResult() {}
@@ -54,6 +54,7 @@ public class ListVirtualVolumeHostsResult implements Serializable {
      * List of known ESX hosts.
      **/
     public VirtualVolumeHost[] getHosts() { return this.hosts; }
+   
     public void setHosts(VirtualVolumeHost[] hosts) { 
         this.hosts = hosts;
     }
@@ -84,9 +85,10 @@ public class ListVirtualVolumeHostsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" hosts : ").append(Arrays.toString(hosts)).append(",");
+        sb.append(" hosts : ").append(gson.toJson(Arrays.toString(hosts))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

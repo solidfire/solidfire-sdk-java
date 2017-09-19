@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,19 +30,14 @@ import java.util.Objects;
 
 /**
  * StartBulkVolumeReadRequest  
- * StartBulkVolumeRead allows you to initialize a bulk volume read session on a specified volume.
- * Only two bulk volume processes can run simultaneously on a volume.
- * When you initialize the session, data is read from a SolidFire storage volume for the purposes of storing the data on an external backup source.
- * The external data is accessed by a web server running on a SolidFire node.
- * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.
- * 
- * At the start of a bulk volume read operation, a snapshot of the volume is made and the snapshot is deleted when the read has completed.
- * You can also read a snapshot of the volume by entering the ID of the snapshot as a parameter.
- * Reading a previous snapshot does not create a new snapshot of the volume, nor does the previous snapshot be deleted when the read completes.
- * 
- * Note: This process creates a new snapshot if the ID of an existing snapshot is not provided.
- * Snapshots can be created if cluster fullness is at stage 2 or 3.
- * Snapshots are not created when cluster fullness is at stage 4 or 5.
+ * StartBulkVolumeRead enables you to initialize a bulk volume read session on a specified volume. Only two bulk volume processes
+ * can run simultaneously on a volume. When you initialize the session, data is read from a SolidFire storage volume for the purposes
+ * of storing the data on an external backup source. The external data is accessed by a web server running on an SF-series node.
+ * Communications and server interaction information for external data access is passed by a script running on the storage system.
+ * At the start of a bulk volume read operation, a snapshot of the volume is made and the snapshot is deleted when the read is complete. You can also read a snapshot of the volume by entering the ID of the snapshot as a parameter. When you read a
+ * previous snapshot, the system does not create a new snapshot of the volume or delete the previous snapshot when the
+ * read completes.
+ * Note: This process creates a new snapshot if the ID of an existing snapshot is not provided. Snapshots can be created if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
  **/
 
 public class StartBulkVolumeReadRequest implements Serializable {
@@ -53,7 +49,6 @@ public class StartBulkVolumeReadRequest implements Serializable {
     @SerializedName("script") private Optional<String> script;
     @SerializedName("scriptParameters") private Optional<Attributes> scriptParameters;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public StartBulkVolumeReadRequest() {}
@@ -79,35 +74,41 @@ public class StartBulkVolumeReadRequest implements Serializable {
     }
 
     /** 
-     * ID of the volume to be read.
+     * The ID of the volume to be read.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
-     * The format of the volume data. Can be either:
-     * uncompressed: every byte of the volume is returned without any compression.
-     * native: opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk volume write.
+     * The format of the volume data. It can be either of the following formats:
+     * uncompressed: Every byte of the volume is returned without any compression.
+     * native: Opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk
+     * volume write.
      **/
     public String getFormat() { return this.format; }
+   
     public void setFormat(String format) { 
         this.format = format;
     }
     /** 
-     * ID of a previously created snapshot used for bulk volume reads.
-     * If no ID is entered, a snapshot of the current active volume image is made.
+     * The ID of a previously created snapshot used for bulk volume
+     * reads. If no ID is entered, a snapshot of the current active
+     * volume image is made.
      **/
     public Optional<Long> getSnapshotID() { return this.snapshotID; }
+   
     public void setSnapshotID(Optional<Long> snapshotID) { 
         this.snapshotID = (snapshotID == null) ? Optional.<Long>empty() : snapshotID;
     }
     /** 
-     * Executable name of a script.
-     * If no script name is given then the key and URL is necessary to access SolidFire nodes.
-     * The script is run on the primary node and the key and URL is returned to the script so the local web server can be contacted.
+     * The executable name of a script. If unspecified, the key and URL is necessary to access SF-series nodes. The script is run on the primary node and the key
+     * and URL is returned to the script so the local web server
+     * can be contacted.
      **/
     public Optional<String> getScript() { return this.script; }
+   
     public void setScript(Optional<String> script) { 
         this.script = (script == null) ? Optional.<String>empty() : script;
     }
@@ -115,6 +116,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
      * JSON parameters to pass to the script.
      **/
     public Optional<Attributes> getScriptParameters() { return this.scriptParameters; }
+   
     public void setScriptParameters(Optional<Attributes> scriptParameters) { 
         this.scriptParameters = (scriptParameters == null) ? Optional.<Attributes>empty() : scriptParameters;
     }
@@ -122,6 +124,7 @@ public class StartBulkVolumeReadRequest implements Serializable {
      * JSON attributes for the bulk volume job.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -162,21 +165,34 @@ public class StartBulkVolumeReadRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" format : ").append(format).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" format : ").append(gson.toJson(format)).append(",");
         if(null != snapshotID && snapshotID.isPresent()){
-            sb.append(" snapshotID : ").append(snapshotID).append(",");
+            sb.append(" snapshotID : ").append(gson.toJson(snapshotID)).append(",");
+        }
+        else{
+            sb.append(" snapshotID : ").append("null").append(",");
         }
         if(null != script && script.isPresent()){
-            sb.append(" script : ").append(script).append(",");
+            sb.append(" script : ").append(gson.toJson(script)).append(",");
+        }
+        else{
+            sb.append(" script : ").append("null").append(",");
         }
         if(null != scriptParameters && scriptParameters.isPresent()){
-            sb.append(" scriptParameters : ").append(scriptParameters).append(",");
+            sb.append(" scriptParameters : ").append(gson.toJson(scriptParameters)).append(",");
+        }
+        else{
+            sb.append(" scriptParameters : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

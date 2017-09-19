@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class CopyVolumeResult implements Serializable {
     public static final long serialVersionUID = 837371064447947130L;
     @SerializedName("cloneID") private Long cloneID;
     @SerializedName("asyncHandle") private Long asyncHandle;
-
     // empty constructor
     @Since("7.0")
     public CopyVolumeResult() {}
@@ -57,6 +57,7 @@ public class CopyVolumeResult implements Serializable {
      * 
      **/
     public Long getCloneID() { return this.cloneID; }
+   
     public void setCloneID(Long cloneID) { 
         this.cloneID = cloneID;
     }
@@ -64,6 +65,7 @@ public class CopyVolumeResult implements Serializable {
      * Handle value used to track the progress of the volume copy.
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
+   
     public void setAsyncHandle(Long asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
@@ -96,10 +98,11 @@ public class CopyVolumeResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" cloneID : ").append(cloneID).append(",");
-        sb.append(" asyncHandle : ").append(asyncHandle).append(",");
+        sb.append(" cloneID : ").append(gson.toJson(cloneID)).append(",");
+        sb.append(" asyncHandle : ").append(gson.toJson(asyncHandle)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,16 +30,14 @@ import java.util.Objects;
 
 /**
  * ListProtocolEndpointsRequest  
- * Gets protocol endpoints in the system
- * If protocolEndpointIDs isn't specified all protocol endpoints
- * are returned. Else the supplied protocolEndpointIDs are.
+ * ListProtocolEndpoints enables you to retrieve information about all protocol endpoints in the cluster. Protocol endpoints govern
+ * access to their associated virtual volume storage containers.
  **/
 
 public class ListProtocolEndpointsRequest implements Serializable {
 
     public static final long serialVersionUID = -3085332745445238309L;
     @SerializedName("protocolEndpointIDs") private Optional<java.util.UUID[]> protocolEndpointIDs;
-
     // empty constructor
     @Since("7.0")
     public ListProtocolEndpointsRequest() {}
@@ -54,9 +53,10 @@ public class ListProtocolEndpointsRequest implements Serializable {
     }
 
     /** 
-     * 
+     * A list of protocol endpoint IDs for which to retrieve information. If you omit this parameter, the method returns information about all protocol endpoints.
      **/
     public Optional<java.util.UUID[]> getProtocolEndpointIDs() { return this.protocolEndpointIDs; }
+   
     public void setProtocolEndpointIDs(Optional<java.util.UUID[]> protocolEndpointIDs) { 
         this.protocolEndpointIDs = (protocolEndpointIDs == null) ? Optional.<java.util.UUID[]>empty() : protocolEndpointIDs;
     }
@@ -87,10 +87,14 @@ public class ListProtocolEndpointsRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != protocolEndpointIDs && protocolEndpointIDs.isPresent()){
-            sb.append(" protocolEndpointIDs : ").append(protocolEndpointIDs).append(",");
+            sb.append(" protocolEndpointIDs : ").append(gson.toJson(protocolEndpointIDs)).append(",");
+        }
+        else{
+            sb.append(" protocolEndpointIDs : ").append("null").append(",");
         }
         sb.append( " }" );
 

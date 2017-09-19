@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class AddAccountResult implements Serializable {
     public static final long serialVersionUID = 8785573545235280037L;
     @SerializedName("accountID") private Long accountID;
     @SerializedName("account") private Optional<Account> account;
-
     // empty constructor
     @Since("7.0")
     public AddAccountResult() {}
@@ -57,6 +57,7 @@ public class AddAccountResult implements Serializable {
      * AccountID for the newly created Account.
      **/
     public Long getAccountID() { return this.accountID; }
+   
     public void setAccountID(Long accountID) { 
         this.accountID = accountID;
     }
@@ -64,6 +65,7 @@ public class AddAccountResult implements Serializable {
      * The full account object
      **/
     public Optional<Account> getAccount() { return this.account; }
+   
     public void setAccount(Optional<Account> account) { 
         this.account = (account == null) ? Optional.<Account>empty() : account;
     }
@@ -96,11 +98,15 @@ public class AddAccountResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" accountID : ").append(accountID).append(",");
+        sb.append(" accountID : ").append(gson.toJson(accountID)).append(",");
         if(null != account && account.isPresent()){
-            sb.append(" account : ").append(account).append(",");
+            sb.append(" account : ").append(gson.toJson(account)).append(",");
+        }
+        else{
+            sb.append(" account : ").append("null").append(",");
         }
         sb.append( " }" );
 

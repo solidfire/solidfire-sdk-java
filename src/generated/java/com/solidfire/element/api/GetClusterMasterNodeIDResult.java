@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class GetClusterMasterNodeIDResult implements Serializable {
 
     public static final long serialVersionUID = 672762052597518736L;
     @SerializedName("nodeID") private Long nodeID;
-
     // empty constructor
     @Since("7.0")
     public GetClusterMasterNodeIDResult() {}
@@ -54,6 +54,7 @@ public class GetClusterMasterNodeIDResult implements Serializable {
      * ID of the master node.
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -84,9 +85,10 @@ public class GetClusterMasterNodeIDResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodeID : ").append(nodeID).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

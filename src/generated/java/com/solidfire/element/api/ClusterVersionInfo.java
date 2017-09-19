@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,6 @@ public class ClusterVersionInfo implements Serializable {
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("nodeVersion") private String nodeVersion;
     @SerializedName("nodeInternalRevision") private String nodeInternalRevision;
-
     // empty constructor
     @Since("7.0")
     public ClusterVersionInfo() {}
@@ -61,6 +61,7 @@ public class ClusterVersionInfo implements Serializable {
      * 
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -68,6 +69,7 @@ public class ClusterVersionInfo implements Serializable {
      * 
      **/
     public String getNodeVersion() { return this.nodeVersion; }
+   
     public void setNodeVersion(String nodeVersion) { 
         this.nodeVersion = nodeVersion;
     }
@@ -75,6 +77,7 @@ public class ClusterVersionInfo implements Serializable {
      * 
      **/
     public String getNodeInternalRevision() { return this.nodeInternalRevision; }
+   
     public void setNodeInternalRevision(String nodeInternalRevision) { 
         this.nodeInternalRevision = nodeInternalRevision;
     }
@@ -109,11 +112,12 @@ public class ClusterVersionInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" nodeVersion : ").append(nodeVersion).append(",");
-        sb.append(" nodeInternalRevision : ").append(nodeInternalRevision).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
+        sb.append(" nodeVersion : ").append(gson.toJson(nodeVersion)).append(",");
+        sb.append(" nodeInternalRevision : ").append(gson.toJson(nodeInternalRevision)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

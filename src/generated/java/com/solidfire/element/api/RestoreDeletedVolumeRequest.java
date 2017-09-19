@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,15 +30,13 @@ import java.util.Objects;
 
 /**
  * RestoreDeletedVolumeRequest  
- * RestoreDeletedVolume marks a deleted volume as active again.
- * This action makes the volume immediately available for iSCSI connection.
+ * RestoreDeletedVolume marks a deleted volume as active again. This action makes the volume immediately available for iSCSI connection.
  **/
 
 public class RestoreDeletedVolumeRequest implements Serializable {
 
     public static final long serialVersionUID = -8028423778645754205L;
     @SerializedName("volumeID") private Long volumeID;
-
     // empty constructor
     @Since("7.0")
     public RestoreDeletedVolumeRequest() {}
@@ -53,9 +52,10 @@ public class RestoreDeletedVolumeRequest implements Serializable {
     }
 
     /** 
-     * VolumeID for the deleted volume to restore.
+     * VolumeID of the deleted volume to be restored.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -86,9 +86,10 @@ public class RestoreDeletedVolumeRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,7 @@ import java.util.Objects;
 
 /**
  * TestConnectSvipRequest  
- * The TestConnectSvip API method is used to test the storage connection to the cluster. The test pings the SVIP using ICMP packets and when successful connects as an iSCSI initiator.
+ * The TestConnectSvip API method enables you to test the storage connection to the cluster. The test pings the SVIP using ICMP packets, and when successful, connects as an iSCSI initiator.
  * Note: This method is available only through the per-node API endpoint 5.0 or later.
  **/
 
@@ -37,7 +38,6 @@ public class TestConnectSvipRequest implements Serializable {
 
     public static final long serialVersionUID = -7455941838727406043L;
     @SerializedName("svip") private Optional<String> svip;
-
     // empty constructor
     @Since("7.0")
     public TestConnectSvipRequest() {}
@@ -53,9 +53,12 @@ public class TestConnectSvipRequest implements Serializable {
     }
 
     /** 
-     * Optionally, use to test the storage connection of a different SVIP. This is not needed to test the connection to the target cluster.
+     * If specified, tests the storage connection of a
+     * different SVIP. You do not need to use this value when
+     * testing the connection to the target cluster. This parameter is optional.
      **/
     public Optional<String> getSvip() { return this.svip; }
+   
     public void setSvip(Optional<String> svip) { 
         this.svip = (svip == null) ? Optional.<String>empty() : svip;
     }
@@ -86,10 +89,14 @@ public class TestConnectSvipRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != svip && svip.isPresent()){
-            sb.append(" svip : ").append(svip).append(",");
+            sb.append(" svip : ").append(gson.toJson(svip)).append(",");
+        }
+        else{
+            sb.append(" svip : ").append("null").append(",");
         }
         sb.append( " }" );
 

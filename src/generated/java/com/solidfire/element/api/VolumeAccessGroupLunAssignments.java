@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,6 @@ public class VolumeAccessGroupLunAssignments implements Serializable {
     @SerializedName("volumeAccessGroupID") private Long volumeAccessGroupID;
     @SerializedName("lunAssignments") private LunAssignment[] lunAssignments;
     @SerializedName("deletedLunAssignments") private LunAssignment[] deletedLunAssignments;
-
     // empty constructor
     @Since("7.0")
     public VolumeAccessGroupLunAssignments() {}
@@ -61,6 +61,7 @@ public class VolumeAccessGroupLunAssignments implements Serializable {
      * Unique volume access group ID for which the LUN assignments will be modified.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
@@ -68,6 +69,7 @@ public class VolumeAccessGroupLunAssignments implements Serializable {
      * The volume IDs with assigned LUN values.
      **/
     public LunAssignment[] getLunAssignments() { return this.lunAssignments; }
+   
     public void setLunAssignments(LunAssignment[] lunAssignments) { 
         this.lunAssignments = lunAssignments;
     }
@@ -75,6 +77,7 @@ public class VolumeAccessGroupLunAssignments implements Serializable {
      * The volume IDs with deleted LUN values.
      **/
     public LunAssignment[] getDeletedLunAssignments() { return this.deletedLunAssignments; }
+   
     public void setDeletedLunAssignments(LunAssignment[] deletedLunAssignments) { 
         this.deletedLunAssignments = deletedLunAssignments;
     }
@@ -109,11 +112,12 @@ public class VolumeAccessGroupLunAssignments implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
-        sb.append(" lunAssignments : ").append(Arrays.toString(lunAssignments)).append(",");
-        sb.append(" deletedLunAssignments : ").append(Arrays.toString(deletedLunAssignments)).append(",");
+        sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
+        sb.append(" lunAssignments : ").append(gson.toJson(Arrays.toString(lunAssignments))).append(",");
+        sb.append(" deletedLunAssignments : ").append(gson.toJson(Arrays.toString(deletedLunAssignments))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

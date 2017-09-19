@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -40,7 +41,7 @@ public class Node implements Serializable {
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("associatedMasterServiceID") private Long associatedMasterServiceID;
     @SerializedName("associatedFServiceID") private Long associatedFServiceID;
-    @SerializedName("fibreChannelTargetPortGroup") private Optional<String> fibreChannelTargetPortGroup;
+    @SerializedName("fibreChannelTargetPortGroup") private Optional<Long> fibreChannelTargetPortGroup;
     @SerializedName("name") private String name;
     @SerializedName("platformInfo") private Platform platformInfo;
     @SerializedName("softwareVersion") private String softwareVersion;
@@ -53,7 +54,7 @@ public class Node implements Serializable {
     @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("virtualNetworks") private VirtualNetworkAddress[] virtualNetworks;
     @SerializedName("attributes") private Attributes attributes;
-
+    @SerializedName("nodeSlot") private Optional<String> nodeSlot;
     // empty constructor
     @Since("7.0")
     public Node() {}
@@ -65,7 +66,7 @@ public class Node implements Serializable {
         Long nodeID,
         Long associatedMasterServiceID,
         Long associatedFServiceID,
-        Optional<String> fibreChannelTargetPortGroup,
+        Optional<Long> fibreChannelTargetPortGroup,
         String name,
         Platform platformInfo,
         String softwareVersion,
@@ -77,13 +78,14 @@ public class Node implements Serializable {
         String sipi,
         java.util.UUID uuid,
         VirtualNetworkAddress[] virtualNetworks,
-        Attributes attributes
+        Attributes attributes,
+        Optional<String> nodeSlot
     )
     {
         this.nodeID = nodeID;
         this.associatedMasterServiceID = associatedMasterServiceID;
         this.associatedFServiceID = associatedFServiceID;
-        this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<String>empty() : fibreChannelTargetPortGroup;
+        this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<Long>empty() : fibreChannelTargetPortGroup;
         this.name = name;
         this.platformInfo = platformInfo;
         this.softwareVersion = softwareVersion;
@@ -96,12 +98,14 @@ public class Node implements Serializable {
         this.uuid = uuid;
         this.virtualNetworks = virtualNetworks;
         this.attributes = attributes;
+        this.nodeSlot = (nodeSlot == null) ? Optional.<String>empty() : nodeSlot;
     }
 
     /** 
      * The unique identifier for this node.
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -109,6 +113,7 @@ public class Node implements Serializable {
      * The master service responsible for controlling other services on this node.
      **/
     public Long getAssociatedMasterServiceID() { return this.associatedMasterServiceID; }
+   
     public void setAssociatedMasterServiceID(Long associatedMasterServiceID) { 
         this.associatedMasterServiceID = associatedMasterServiceID;
     }
@@ -116,20 +121,23 @@ public class Node implements Serializable {
      * 
      **/
     public Long getAssociatedFServiceID() { return this.associatedFServiceID; }
+   
     public void setAssociatedFServiceID(Long associatedFServiceID) { 
         this.associatedFServiceID = associatedFServiceID;
     }
     /** 
      * 
      **/
-    public Optional<String> getFibreChannelTargetPortGroup() { return this.fibreChannelTargetPortGroup; }
-    public void setFibreChannelTargetPortGroup(Optional<String> fibreChannelTargetPortGroup) { 
-        this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<String>empty() : fibreChannelTargetPortGroup;
+    public Optional<Long> getFibreChannelTargetPortGroup() { return this.fibreChannelTargetPortGroup; }
+   
+    public void setFibreChannelTargetPortGroup(Optional<Long> fibreChannelTargetPortGroup) { 
+        this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<Long>empty() : fibreChannelTargetPortGroup;
     }
     /** 
      * 
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -137,6 +145,7 @@ public class Node implements Serializable {
      * Information about the platform this node is.
      **/
     public Platform getPlatformInfo() { return this.platformInfo; }
+   
     public void setPlatformInfo(Platform platformInfo) { 
         this.platformInfo = platformInfo;
     }
@@ -144,6 +153,7 @@ public class Node implements Serializable {
      * The version of SolidFire software this node is currently running.
      **/
     public String getSoftwareVersion() { return this.softwareVersion; }
+   
     public void setSoftwareVersion(String softwareVersion) { 
         this.softwareVersion = softwareVersion;
     }
@@ -151,6 +161,7 @@ public class Node implements Serializable {
      * IP address used for both intra- and inter-cluster communication.
      **/
     public String getCip() { return this.cip; }
+   
     public void setCip(String cip) { 
         this.cip = cip;
     }
@@ -158,6 +169,7 @@ public class Node implements Serializable {
      * The machine's name for the "cip" interface.
      **/
     public String getCipi() { return this.cipi; }
+   
     public void setCipi(String cipi) { 
         this.cipi = cipi;
     }
@@ -165,6 +177,7 @@ public class Node implements Serializable {
      * IP address used for cluster management (hosting the API and web site).
      **/
     public String getMip() { return this.mip; }
+   
     public void setMip(String mip) { 
         this.mip = mip;
     }
@@ -172,6 +185,7 @@ public class Node implements Serializable {
      * The machine's name for the "mip" interface.
      **/
     public String getMipi() { return this.mipi; }
+   
     public void setMipi(String mipi) { 
         this.mipi = mipi;
     }
@@ -179,6 +193,7 @@ public class Node implements Serializable {
      * IP address used for iSCSI traffic.
      **/
     public String getSip() { return this.sip; }
+   
     public void setSip(String sip) { 
         this.sip = sip;
     }
@@ -186,6 +201,7 @@ public class Node implements Serializable {
      * The machine's name for the "sip" interface.
      **/
     public String getSipi() { return this.sipi; }
+   
     public void setSipi(String sipi) { 
         this.sipi = sipi;
     }
@@ -193,6 +209,7 @@ public class Node implements Serializable {
      * UUID of node.
      **/
     public java.util.UUID getUuid() { return this.uuid; }
+   
     public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
@@ -200,6 +217,7 @@ public class Node implements Serializable {
      * 
      **/
     public VirtualNetworkAddress[] getVirtualNetworks() { return this.virtualNetworks; }
+   
     public void setVirtualNetworks(VirtualNetworkAddress[] virtualNetworks) { 
         this.virtualNetworks = virtualNetworks;
     }
@@ -207,8 +225,17 @@ public class Node implements Serializable {
      * 
      **/
     public Attributes getAttributes() { return this.attributes; }
+   
     public void setAttributes(Attributes attributes) { 
         this.attributes = attributes;
+    }
+    /** 
+     * 
+     **/
+    public Optional<String> getNodeSlot() { return this.nodeSlot; }
+   
+    public void setNodeSlot(Optional<String> nodeSlot) { 
+        this.nodeSlot = (nodeSlot == null) ? Optional.<String>empty() : nodeSlot;
     }
 
     @Override
@@ -234,12 +261,13 @@ public class Node implements Serializable {
             Objects.equals(sipi, that.sipi) && 
             Objects.equals(uuid, that.uuid) && 
             Arrays.equals(virtualNetworks, that.virtualNetworks) && 
-            Objects.equals(attributes, that.attributes);
+            Objects.equals(attributes, that.attributes) && 
+            Objects.equals(nodeSlot, that.nodeSlot);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( nodeID,associatedMasterServiceID,associatedFServiceID,fibreChannelTargetPortGroup,name,platformInfo,softwareVersion,cip,cipi,mip,mipi,sip,sipi,uuid,(Object[])virtualNetworks,attributes );
+        return Objects.hash( nodeID,associatedMasterServiceID,associatedFServiceID,fibreChannelTargetPortGroup,name,platformInfo,softwareVersion,cip,cipi,mip,mipi,sip,sipi,uuid,(Object[])virtualNetworks,attributes,nodeSlot );
     }
 
 
@@ -261,32 +289,43 @@ public class Node implements Serializable {
         map.put("uuid", uuid);
         map.put("virtualNetworks", virtualNetworks);
         map.put("attributes", attributes);
+        map.put("nodeSlot", nodeSlot);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" associatedMasterServiceID : ").append(associatedMasterServiceID).append(",");
-        sb.append(" associatedFServiceID : ").append(associatedFServiceID).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
+        sb.append(" associatedMasterServiceID : ").append(gson.toJson(associatedMasterServiceID)).append(",");
+        sb.append(" associatedFServiceID : ").append(gson.toJson(associatedFServiceID)).append(",");
         if(null != fibreChannelTargetPortGroup && fibreChannelTargetPortGroup.isPresent()){
-            sb.append(" fibreChannelTargetPortGroup : ").append(fibreChannelTargetPortGroup).append(",");
+            sb.append(" fibreChannelTargetPortGroup : ").append(gson.toJson(fibreChannelTargetPortGroup)).append(",");
         }
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" platformInfo : ").append(platformInfo).append(",");
-        sb.append(" softwareVersion : ").append(softwareVersion).append(",");
-        sb.append(" cip : ").append(cip).append(",");
-        sb.append(" cipi : ").append(cipi).append(",");
-        sb.append(" mip : ").append(mip).append(",");
-        sb.append(" mipi : ").append(mipi).append(",");
-        sb.append(" sip : ").append(sip).append(",");
-        sb.append(" sipi : ").append(sipi).append(",");
-        sb.append(" uuid : ").append(uuid).append(",");
-        sb.append(" virtualNetworks : ").append(Arrays.toString(virtualNetworks)).append(",");
-        sb.append(" attributes : ").append(attributes).append(",");
+        else{
+            sb.append(" fibreChannelTargetPortGroup : ").append("null").append(",");
+        }
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" platformInfo : ").append(gson.toJson(platformInfo)).append(",");
+        sb.append(" softwareVersion : ").append(gson.toJson(softwareVersion)).append(",");
+        sb.append(" cip : ").append(gson.toJson(cip)).append(",");
+        sb.append(" cipi : ").append(gson.toJson(cipi)).append(",");
+        sb.append(" mip : ").append(gson.toJson(mip)).append(",");
+        sb.append(" mipi : ").append(gson.toJson(mipi)).append(",");
+        sb.append(" sip : ").append(gson.toJson(sip)).append(",");
+        sb.append(" sipi : ").append(gson.toJson(sipi)).append(",");
+        sb.append(" uuid : ").append(gson.toJson(uuid)).append(",");
+        sb.append(" virtualNetworks : ").append(gson.toJson(Arrays.toString(virtualNetworks))).append(",");
+        sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        if(null != nodeSlot && nodeSlot.isPresent()){
+            sb.append(" nodeSlot : ").append(gson.toJson(nodeSlot)).append(",");
+        }
+        else{
+            sb.append(" nodeSlot : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -307,7 +346,7 @@ public class Node implements Serializable {
         private Long nodeID;
         private Long associatedMasterServiceID;
         private Long associatedFServiceID;
-        private Optional<String> fibreChannelTargetPortGroup;
+        private Optional<Long> fibreChannelTargetPortGroup;
         private String name;
         private Platform platformInfo;
         private String softwareVersion;
@@ -320,6 +359,7 @@ public class Node implements Serializable {
         private java.util.UUID uuid;
         private VirtualNetworkAddress[] virtualNetworks;
         private Attributes attributes;
+        private Optional<String> nodeSlot;
 
         private Builder() { }
 
@@ -340,7 +380,8 @@ public class Node implements Serializable {
                          this.sipi,
                          this.uuid,
                          this.virtualNetworks,
-                         this.attributes);
+                         this.attributes,
+                         this.nodeSlot);
         }
 
         private Node.Builder buildFrom(final Node req) {
@@ -360,6 +401,7 @@ public class Node implements Serializable {
             this.uuid = req.uuid;
             this.virtualNetworks = req.virtualNetworks;
             this.attributes = req.attributes;
+            this.nodeSlot = req.nodeSlot;
 
             return this;
         }
@@ -379,8 +421,8 @@ public class Node implements Serializable {
             return this;
         }
 
-        public Node.Builder optionalFibreChannelTargetPortGroup(final String fibreChannelTargetPortGroup) {
-            this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<String>empty() : Optional.of(fibreChannelTargetPortGroup);
+        public Node.Builder optionalFibreChannelTargetPortGroup(final Long fibreChannelTargetPortGroup) {
+            this.fibreChannelTargetPortGroup = (fibreChannelTargetPortGroup == null) ? Optional.<Long>empty() : Optional.of(fibreChannelTargetPortGroup);
             return this;
         }
 
@@ -441,6 +483,11 @@ public class Node implements Serializable {
 
         public Node.Builder attributes(final Attributes attributes) {
             this.attributes = attributes;
+            return this;
+        }
+
+        public Node.Builder optionalNodeSlot(final String nodeSlot) {
+            this.nodeSlot = (nodeSlot == null) ? Optional.<String>empty() : Optional.of(nodeSlot);
             return this;
         }
 

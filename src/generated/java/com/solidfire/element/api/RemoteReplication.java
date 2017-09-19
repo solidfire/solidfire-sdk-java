@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -42,7 +43,6 @@ public class RemoteReplication implements Serializable {
     @SerializedName("snapshotReplication") private SnapshotReplication snapshotReplication;
     @SerializedName("state") private String state;
     @SerializedName("stateDetails") private String stateDetails;
-
     // empty constructor
     @Since("7.0")
     public RemoteReplication() {}
@@ -77,6 +77,7 @@ public class RemoteReplication implements Serializable {
      * SnapshotsOnly: Only snapshots created on the source cluster will be replicated. Active writes from the source volume will not be replicated.
      **/
     public String getMode() { return this.mode; }
+   
     public void setMode(String mode) { 
         this.mode = mode;
     }
@@ -84,6 +85,7 @@ public class RemoteReplication implements Serializable {
      * The number of occurring write ops before auto-pausing, on a per volume pair level.
      **/
     public Long getPauseLimit() { return this.pauseLimit; }
+   
     public void setPauseLimit(Long pauseLimit) { 
         this.pauseLimit = pauseLimit;
     }
@@ -91,6 +93,7 @@ public class RemoteReplication implements Serializable {
      * The remote slice service ID.
      **/
     public Long getRemoteServiceID() { return this.remoteServiceID; }
+   
     public void setRemoteServiceID(Long remoteServiceID) { 
         this.remoteServiceID = remoteServiceID;
     }
@@ -98,6 +101,7 @@ public class RemoteReplication implements Serializable {
      * Reserved for future use.
      **/
     public String getResumeDetails() { return this.resumeDetails; }
+   
     public void setResumeDetails(String resumeDetails) { 
         this.resumeDetails = resumeDetails;
     }
@@ -105,6 +109,7 @@ public class RemoteReplication implements Serializable {
      * The details of snapshot replication.
      **/
     public SnapshotReplication getSnapshotReplication() { return this.snapshotReplication; }
+   
     public void setSnapshotReplication(SnapshotReplication snapshotReplication) { 
         this.snapshotReplication = snapshotReplication;
     }
@@ -112,6 +117,7 @@ public class RemoteReplication implements Serializable {
      * The state of the volume replication.
      **/
     public String getState() { return this.state; }
+   
     public void setState(String state) { 
         this.state = state;
     }
@@ -119,6 +125,7 @@ public class RemoteReplication implements Serializable {
      * Reserved for future use.
      **/
     public String getStateDetails() { return this.stateDetails; }
+   
     public void setStateDetails(String stateDetails) { 
         this.stateDetails = stateDetails;
     }
@@ -161,15 +168,16 @@ public class RemoteReplication implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" mode : ").append(mode).append(",");
-        sb.append(" pauseLimit : ").append(pauseLimit).append(",");
-        sb.append(" remoteServiceID : ").append(remoteServiceID).append(",");
-        sb.append(" resumeDetails : ").append(resumeDetails).append(",");
-        sb.append(" snapshotReplication : ").append(snapshotReplication).append(",");
-        sb.append(" state : ").append(state).append(",");
-        sb.append(" stateDetails : ").append(stateDetails).append(",");
+        sb.append(" mode : ").append(gson.toJson(mode)).append(",");
+        sb.append(" pauseLimit : ").append(gson.toJson(pauseLimit)).append(",");
+        sb.append(" remoteServiceID : ").append(gson.toJson(remoteServiceID)).append(",");
+        sb.append(" resumeDetails : ").append(gson.toJson(resumeDetails)).append(",");
+        sb.append(" snapshotReplication : ").append(gson.toJson(snapshotReplication)).append(",");
+        sb.append(" state : ").append(gson.toJson(state)).append(",");
+        sb.append(" stateDetails : ").append(gson.toJson(stateDetails)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

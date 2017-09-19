@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,10 +30,9 @@ import java.util.Objects;
 
 /**
  * RollbackToGroupSnapshotRequest  
- * RollbackToGroupSnapshot is used to roll back each individual volume in a snapshot group to a copy of their individual snapshots.
- * 
- * Note: Creating a snapshot is allowed if cluster fullness is at stage 2 or 3.
- * Snapshots are not created when cluster fullness is at stage 4 or 5.
+ * RollbackToGroupSnapshot enables you to roll back all individual volumes in a snapshot group to each volume's individual snapshot.
+ * Note: Rolling back to a group snapshot creates a temporary snapshot of each volume within the group snapshot.
+ * Snapshots are allowed if cluster fullness is at stage 2 or 3. Snapshots are not created when cluster fullness is at stage 4 or 5.
  **/
 
 public class RollbackToGroupSnapshotRequest implements Serializable {
@@ -42,7 +42,6 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
     @SerializedName("saveCurrentState") private Boolean saveCurrentState;
     @SerializedName("name") private Optional<String> name;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public RollbackToGroupSnapshotRequest() {}
@@ -64,32 +63,41 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
     }
 
     /** 
-     * Unique ID of the group snapshot.
+     * Specifies the unique ID of the group snapshot.
      **/
     public Long getGroupSnapshotID() { return this.groupSnapshotID; }
+   
     public void setGroupSnapshotID(Long groupSnapshotID) { 
         this.groupSnapshotID = groupSnapshotID;
     }
     /** 
+     * Specifies whether to save an active volume image or delete it. Values are:
      * true: The previous active volume image is kept.
      * false: (default) The previous active volume image is deleted.
      **/
     public Boolean getSaveCurrentState() { return this.saveCurrentState; }
+   
     public void setSaveCurrentState(Boolean saveCurrentState) { 
         this.saveCurrentState = saveCurrentState;
     }
     /** 
-     * Name for the snapshot. If no name is given, then the name of the snapshot being rolled back to is used with 
-     * "-copy" appended to the end of the name.
+     * Name for the group snapshot of the volume's
+     * current state that is created if "saveCurrentState" is
+     * set to true. If you do not give a name, the
+     * name of the snapshots (group and individual
+     * volume) are set to a timestamp of the time that
+     * the rollback occurred.
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
     /** 
-     * List of Name/Value pairs in JSON object format
+     * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -126,15 +134,22 @@ public class RollbackToGroupSnapshotRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" groupSnapshotID : ").append(groupSnapshotID).append(",");
-        sb.append(" saveCurrentState : ").append(saveCurrentState).append(",");
+        sb.append(" groupSnapshotID : ").append(gson.toJson(groupSnapshotID)).append(",");
+        sb.append(" saveCurrentState : ").append(gson.toJson(saveCurrentState)).append(",");
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
+        }
+        else{
+            sb.append(" name : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

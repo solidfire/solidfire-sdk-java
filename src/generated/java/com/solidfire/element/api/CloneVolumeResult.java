@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,6 @@ public class CloneVolumeResult implements Serializable {
     @SerializedName("cloneID") private Long cloneID;
     @SerializedName("volumeID") private Long volumeID;
     @SerializedName("asyncHandle") private Long asyncHandle;
-
     // empty constructor
     @Since("7.0")
     public CloneVolumeResult() {}
@@ -63,6 +63,7 @@ public class CloneVolumeResult implements Serializable {
      * The resulting volume
      **/
     public Optional<Volume> getVolume() { return this.volume; }
+   
     public void setVolume(Optional<Volume> volume) { 
         this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
     }
@@ -70,6 +71,7 @@ public class CloneVolumeResult implements Serializable {
      * The ID of the newly-created clone.
      **/
     public Long getCloneID() { return this.cloneID; }
+   
     public void setCloneID(Long cloneID) { 
         this.cloneID = cloneID;
     }
@@ -77,6 +79,7 @@ public class CloneVolumeResult implements Serializable {
      * The volume ID of the newly-created clone.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
@@ -84,6 +87,7 @@ public class CloneVolumeResult implements Serializable {
      * Handle value used to track the progress of the clone.
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
+   
     public void setAsyncHandle(Long asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
@@ -120,14 +124,18 @@ public class CloneVolumeResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != volume && volume.isPresent()){
-            sb.append(" volume : ").append(volume).append(",");
+            sb.append(" volume : ").append(gson.toJson(volume)).append(",");
         }
-        sb.append(" cloneID : ").append(cloneID).append(",");
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" asyncHandle : ").append(asyncHandle).append(",");
+        else{
+            sb.append(" volume : ").append("null").append(",");
+        }
+        sb.append(" cloneID : ").append(gson.toJson(cloneID)).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" asyncHandle : ").append(gson.toJson(asyncHandle)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

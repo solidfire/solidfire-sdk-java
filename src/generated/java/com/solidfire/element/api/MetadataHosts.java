@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -38,7 +39,6 @@ public class MetadataHosts implements Serializable {
     @SerializedName("deadSecondaries") private Long[] deadSecondaries;
     @SerializedName("liveSecondaries") private Long[] liveSecondaries;
     @SerializedName("primary") private Long primary;
-
     // empty constructor
     @Since("7.0")
     public MetadataHosts() {}
@@ -61,6 +61,7 @@ public class MetadataHosts implements Serializable {
      * Secondary metadata (slice) services that are in a dead state.
      **/
     public Long[] getDeadSecondaries() { return this.deadSecondaries; }
+   
     public void setDeadSecondaries(Long[] deadSecondaries) { 
         this.deadSecondaries = deadSecondaries;
     }
@@ -68,6 +69,7 @@ public class MetadataHosts implements Serializable {
      * Secondary metadata (slice) services that are currently in a "live" state.
      **/
     public Long[] getLiveSecondaries() { return this.liveSecondaries; }
+   
     public void setLiveSecondaries(Long[] liveSecondaries) { 
         this.liveSecondaries = liveSecondaries;
     }
@@ -75,6 +77,7 @@ public class MetadataHosts implements Serializable {
      * The primary metadata (slice) services hosting the volume.
      **/
     public Long getPrimary() { return this.primary; }
+   
     public void setPrimary(Long primary) { 
         this.primary = primary;
     }
@@ -109,11 +112,12 @@ public class MetadataHosts implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" deadSecondaries : ").append(Arrays.toString(deadSecondaries)).append(",");
-        sb.append(" liveSecondaries : ").append(Arrays.toString(liveSecondaries)).append(",");
-        sb.append(" primary : ").append(primary).append(",");
+        sb.append(" deadSecondaries : ").append(gson.toJson(Arrays.toString(deadSecondaries))).append(",");
+        sb.append(" liveSecondaries : ").append(gson.toJson(Arrays.toString(liveSecondaries))).append(",");
+        sb.append(" primary : ").append(gson.toJson(primary)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

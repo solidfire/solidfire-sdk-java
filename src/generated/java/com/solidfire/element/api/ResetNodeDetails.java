@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class ResetNodeDetails implements Serializable {
 
     public static final long serialVersionUID = 547414546765963277L;
     @SerializedName("rtfiInfo") private RtfiInfo rtfiInfo;
-
     // empty constructor
     @Since("7.0")
     public ResetNodeDetails() {}
@@ -54,6 +54,7 @@ public class ResetNodeDetails implements Serializable {
      * 
      **/
     public RtfiInfo getRtfiInfo() { return this.rtfiInfo; }
+   
     public void setRtfiInfo(RtfiInfo rtfiInfo) { 
         this.rtfiInfo = rtfiInfo;
     }
@@ -84,9 +85,10 @@ public class ResetNodeDetails implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" rtfiInfo : ").append(rtfiInfo).append(",");
+        sb.append(" rtfiInfo : ").append(gson.toJson(rtfiInfo)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

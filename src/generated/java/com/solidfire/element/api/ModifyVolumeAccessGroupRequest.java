@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,16 +30,7 @@ import java.util.Objects;
 
 /**
  * ModifyVolumeAccessGroupRequest  
- * Update initiators and add or remove volumes from a volume access group.
- * A specified initiator or volume that duplicates an existing volume or initiator in a volume access group is left as-is.
- * If a value is not specified for volumes or initiators, the current list of initiators and volumes are not changed.
- * 
- * Often, it is easier to use the convenience functions to modify initiators and volumes independently:
- * 
- * AddInitiatorsToVolumeAccessGroup
- * RemoveInitiatorsFromVolumeAccessGroup
- * AddVolumesToVolumeAccessGroup
- * RemoveVolumesFromVolumeAccessGroup
+ * You can use ModifyVolumeAccessGroup to update initiators and add or remove volumes from a volume access group. If a specified initiator or volume is a duplicate of what currently exists, the volume access group is left as-is. If you do not specify a value for volumes or initiators, the current list of initiators and volumes is not changed.
  **/
 
 public class ModifyVolumeAccessGroupRequest implements Serializable {
@@ -52,7 +44,6 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
     @SerializedName("volumes") private Optional<Long[]> volumes;
     @SerializedName("deleteOrphanInitiators") private Optional<Boolean> deleteOrphanInitiators;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public ModifyVolumeAccessGroupRequest() {}
@@ -121,44 +112,47 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
      * The ID of the volume access group to modify.
      **/
     public Long getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Long volumeAccessGroupID) { 
         this.volumeAccessGroupID = volumeAccessGroupID;
     }
     /** 
-     * The ID of the SolidFire Virtual Network ID to associate the volume access group with.
+     * The ID of the SolidFire virtual network to associate the volume access group with.
      **/
     public Optional<Long[]> getVirtualNetworkID() { return this.virtualNetworkID; }
+   
     public void setVirtualNetworkID(Optional<Long[]> virtualNetworkID) { 
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long[]>empty() : virtualNetworkID;
     }
     /** 
-     * The ID of the VLAN Virtual Network Tag to associate the volume access group with.
+     * The ID of the SolidFire virtual network to associate the volume access group with.
      **/
     public Optional<Long[]> getVirtualNetworkTags() { return this.virtualNetworkTags; }
+   
     public void setVirtualNetworkTags(Optional<Long[]> virtualNetworkTags) { 
         this.virtualNetworkTags = (virtualNetworkTags == null) ? Optional.<Long[]>empty() : virtualNetworkTags;
     }
     /** 
-     * Name of the volume access group.
-     * It is not required to be unique, but recommended.
+     * The new name for this volume access group. Not required to be unique, but recommended.
      **/
     public Optional<String> getName() { return this.name; }
+   
     public void setName(Optional<String> name) { 
         this.name = (name == null) ? Optional.<String>empty() : name;
     }
     /** 
-     * List of initiators to include in the volume access group.
-     * If unspecified, the access group's configured initiators will not be modified.
+     * List of initiators to include in the volume access group. If unspecified, the access group's configured initiators are not modified.
      **/
     public Optional<String[]> getInitiators() { return this.initiators; }
+   
     public void setInitiators(Optional<String[]> initiators) { 
         this.initiators = (initiators == null) ? Optional.<String[]>empty() : initiators;
     }
     /** 
-     * List of volumes to initially include in the volume access group.
-     * If unspecified, the access group's volumes will not be modified.
+     * List of volumes to initially include in the volume access group. If unspecified, the access group's volumes are not modified.
      **/
     public Optional<Long[]> getVolumes() { return this.volumes; }
+   
     public void setVolumes(Optional<Long[]> volumes) { 
         this.volumes = (volumes == null) ? Optional.<Long[]>empty() : volumes;
     }
@@ -167,13 +161,15 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
      * false: Do not delete initiator objects after they are removed from a volume access group.
      **/
     public Optional<Boolean> getDeleteOrphanInitiators() { return this.deleteOrphanInitiators; }
+   
     public void setDeleteOrphanInitiators(Optional<Boolean> deleteOrphanInitiators) { 
         this.deleteOrphanInitiators = (deleteOrphanInitiators == null) ? Optional.<Boolean>empty() : deleteOrphanInitiators;
     }
     /** 
-     * List of Name/Value pairs in JSON object format.
+     * List of name-value pairs in JSON object format.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -218,29 +214,51 @@ public class ModifyVolumeAccessGroupRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
+        sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+            sb.append(" virtualNetworkID : ").append(gson.toJson(virtualNetworkID)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkID : ").append("null").append(",");
         }
         if(null != virtualNetworkTags && virtualNetworkTags.isPresent()){
-            sb.append(" virtualNetworkTags : ").append(virtualNetworkTags).append(",");
+            sb.append(" virtualNetworkTags : ").append(gson.toJson(virtualNetworkTags)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkTags : ").append("null").append(",");
         }
         if(null != name && name.isPresent()){
-            sb.append(" name : ").append(name).append(",");
+            sb.append(" name : ").append(gson.toJson(name)).append(",");
+        }
+        else{
+            sb.append(" name : ").append("null").append(",");
         }
         if(null != initiators && initiators.isPresent()){
-            sb.append(" initiators : ").append(initiators).append(",");
+            sb.append(" initiators : ").append(gson.toJson(initiators)).append(",");
+        }
+        else{
+            sb.append(" initiators : ").append("null").append(",");
         }
         if(null != volumes && volumes.isPresent()){
-            sb.append(" volumes : ").append(volumes).append(",");
+            sb.append(" volumes : ").append(gson.toJson(volumes)).append(",");
+        }
+        else{
+            sb.append(" volumes : ").append("null").append(",");
         }
         if(null != deleteOrphanInitiators && deleteOrphanInitiators.isPresent()){
-            sb.append(" deleteOrphanInitiators : ").append(deleteOrphanInitiators).append(",");
+            sb.append(" deleteOrphanInitiators : ").append(gson.toJson(deleteOrphanInitiators)).append(",");
+        }
+        else{
+            sb.append(" deleteOrphanInitiators : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

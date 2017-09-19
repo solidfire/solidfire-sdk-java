@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class AddVirtualNetworkResult implements Serializable {
 
     public static final long serialVersionUID = -684462985313881144L;
     @SerializedName("virtualNetworkID") private Optional<Long> virtualNetworkID;
-
     // empty constructor
     @Since("7.0")
     public AddVirtualNetworkResult() {}
@@ -54,6 +54,7 @@ public class AddVirtualNetworkResult implements Serializable {
      * The virtual network ID of the new virtual network.
      **/
     public Optional<Long> getVirtualNetworkID() { return this.virtualNetworkID; }
+   
     public void setVirtualNetworkID(Optional<Long> virtualNetworkID) { 
         this.virtualNetworkID = (virtualNetworkID == null) ? Optional.<Long>empty() : virtualNetworkID;
     }
@@ -84,10 +85,14 @@ public class AddVirtualNetworkResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != virtualNetworkID && virtualNetworkID.isPresent()){
-            sb.append(" virtualNetworkID : ").append(virtualNetworkID).append(",");
+            sb.append(" virtualNetworkID : ").append(gson.toJson(virtualNetworkID)).append(",");
+        }
+        else{
+            sb.append(" virtualNetworkID : ").append("null").append(",");
         }
         sb.append( " }" );
 

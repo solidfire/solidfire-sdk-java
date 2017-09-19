@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -43,7 +44,6 @@ public class PendingActiveNode implements Serializable {
     @SerializedName("platformInfo") private Platform platformInfo;
     @SerializedName("sip") private String sip;
     @SerializedName("softwareVersion") private String softwareVersion;
-
     // empty constructor
     @Since("7.0")
     public PendingActiveNode() {}
@@ -78,6 +78,7 @@ public class PendingActiveNode implements Serializable {
      * 
      **/
     public String getActiveNodeKey() { return this.activeNodeKey; }
+   
     public void setActiveNodeKey(String activeNodeKey) { 
         this.activeNodeKey = activeNodeKey;
     }
@@ -85,6 +86,7 @@ public class PendingActiveNode implements Serializable {
      * 
      **/
     public Long getAssignedNodeID() { return this.assignedNodeID; }
+   
     public void setAssignedNodeID(Long assignedNodeID) { 
         this.assignedNodeID = assignedNodeID;
     }
@@ -92,6 +94,7 @@ public class PendingActiveNode implements Serializable {
      * 
      **/
     public Long getAsyncHandle() { return this.asyncHandle; }
+   
     public void setAsyncHandle(Long asyncHandle) { 
         this.asyncHandle = asyncHandle;
     }
@@ -99,6 +102,7 @@ public class PendingActiveNode implements Serializable {
      * 
      **/
     public String getCip() { return this.cip; }
+   
     public void setCip(String cip) { 
         this.cip = cip;
     }
@@ -106,6 +110,7 @@ public class PendingActiveNode implements Serializable {
      * 
      **/
     public String getMip() { return this.mip; }
+   
     public void setMip(String mip) { 
         this.mip = mip;
     }
@@ -113,6 +118,7 @@ public class PendingActiveNode implements Serializable {
      * 
      **/
     public Long getPendingNodeID() { return this.pendingNodeID; }
+   
     public void setPendingNodeID(Long pendingNodeID) { 
         this.pendingNodeID = pendingNodeID;
     }
@@ -120,6 +126,7 @@ public class PendingActiveNode implements Serializable {
      * 
      **/
     public Platform getPlatformInfo() { return this.platformInfo; }
+   
     public void setPlatformInfo(Platform platformInfo) { 
         this.platformInfo = platformInfo;
     }
@@ -127,6 +134,7 @@ public class PendingActiveNode implements Serializable {
      * 
      **/
     public String getSip() { return this.sip; }
+   
     public void setSip(String sip) { 
         this.sip = sip;
     }
@@ -134,6 +142,7 @@ public class PendingActiveNode implements Serializable {
      * 
      **/
     public String getSoftwareVersion() { return this.softwareVersion; }
+   
     public void setSoftwareVersion(String softwareVersion) { 
         this.softwareVersion = softwareVersion;
     }
@@ -180,17 +189,18 @@ public class PendingActiveNode implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" activeNodeKey : ").append(activeNodeKey).append(",");
-        sb.append(" assignedNodeID : ").append(assignedNodeID).append(",");
-        sb.append(" asyncHandle : ").append(asyncHandle).append(",");
-        sb.append(" cip : ").append(cip).append(",");
-        sb.append(" mip : ").append(mip).append(",");
-        sb.append(" pendingNodeID : ").append(pendingNodeID).append(",");
-        sb.append(" platformInfo : ").append(platformInfo).append(",");
-        sb.append(" sip : ").append(sip).append(",");
-        sb.append(" softwareVersion : ").append(softwareVersion).append(",");
+        sb.append(" activeNodeKey : ").append(gson.toJson(activeNodeKey)).append(",");
+        sb.append(" assignedNodeID : ").append(gson.toJson(assignedNodeID)).append(",");
+        sb.append(" asyncHandle : ").append(gson.toJson(asyncHandle)).append(",");
+        sb.append(" cip : ").append(gson.toJson(cip)).append(",");
+        sb.append(" mip : ").append(gson.toJson(mip)).append(",");
+        sb.append(" pendingNodeID : ").append(gson.toJson(pendingNodeID)).append(",");
+        sb.append(" platformInfo : ").append(gson.toJson(platformInfo)).append(",");
+        sb.append(" sip : ").append(gson.toJson(sip)).append(",");
+        sb.append(" softwareVersion : ").append(gson.toJson(softwareVersion)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

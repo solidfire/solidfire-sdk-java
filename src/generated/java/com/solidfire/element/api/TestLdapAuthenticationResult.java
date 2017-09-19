@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class TestLdapAuthenticationResult implements Serializable {
     public static final long serialVersionUID = -6470804113755533516L;
     @SerializedName("groups") private String[] groups;
     @SerializedName("userDN") private String userDN;
-
     // empty constructor
     @Since("7.0")
     public TestLdapAuthenticationResult() {}
@@ -57,6 +57,7 @@ public class TestLdapAuthenticationResult implements Serializable {
      * List of LDAP groups that the tested user is a member of.
      **/
     public String[] getGroups() { return this.groups; }
+   
     public void setGroups(String[] groups) { 
         this.groups = groups;
     }
@@ -64,6 +65,7 @@ public class TestLdapAuthenticationResult implements Serializable {
      * The tested user's full LDAP distinguished name.
      **/
     public String getUserDN() { return this.userDN; }
+   
     public void setUserDN(String userDN) { 
         this.userDN = userDN;
     }
@@ -96,10 +98,11 @@ public class TestLdapAuthenticationResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" groups : ").append(Arrays.toString(groups)).append(",");
-        sb.append(" userDN : ").append(userDN).append(",");
+        sb.append(" groups : ").append(gson.toJson(Arrays.toString(groups))).append(",");
+        sb.append(" userDN : ").append(gson.toJson(userDN)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

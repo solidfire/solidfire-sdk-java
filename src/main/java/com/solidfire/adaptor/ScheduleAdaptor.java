@@ -15,11 +15,13 @@
  */
 package com.solidfire.adaptor;
 
+import com.solidfire.core.javautil.Optional;
 import com.solidfire.element.api.*;
 import com.solidfire.element.apiactual.*;
 import com.solidfire.core.client.ApiException;
 
 import java.util.*;
+
 
 /**
  * Created by Jason Ryan Womack on 8/11/16.
@@ -77,7 +79,7 @@ public class ScheduleAdaptor {
             throw new ApiException("Invalid Request. Request or Schedule is null or missing.");
 
         }
-        if (request.getSchedule().getScheduleID().isPresent()) {
+        if (request.getSchedule().getScheduleID() != null && request.getSchedule().getScheduleID().isPresent()) {
             throw new ApiException("ScheduleID should not be present. Do not specify ScheduleID when creating a Schedule. One will be assigned upon creation.");
         }
 
@@ -150,9 +152,13 @@ public class ScheduleAdaptor {
                                                                                     .optionalStartingDate(apiSchedule.getStartingDate())
                                                                                     .optionalWeekdays(apiSchedule.getWeekdays());
 
-        sfe.sendRequest("ModifySchedule", apiRequest.build(), ApiModifyScheduleRequest.class, ApiModifyScheduleResult.class);
+       ApiModifyScheduleResult result = sfe.sendRequest("ModifySchedule", apiRequest.build(), ApiModifyScheduleRequest.class, ApiModifyScheduleResult.class);
 
-        return new ModifyScheduleResult();
+       if (result.getSchedule() != null) {
+           return new ModifyScheduleResult(Optional.of(toSchedule(result.getSchedule())));
+       } else {
+           return new ModifyScheduleResult();
+       }
 
     }
 

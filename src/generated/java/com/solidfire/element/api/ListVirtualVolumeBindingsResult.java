@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class ListVirtualVolumeBindingsResult implements Serializable {
 
     public static final long serialVersionUID = 6436663975426777641L;
     @SerializedName("bindings") private VirtualVolumeBinding[] bindings;
-
     // empty constructor
     @Since("7.0")
     public ListVirtualVolumeBindingsResult() {}
@@ -54,6 +54,7 @@ public class ListVirtualVolumeBindingsResult implements Serializable {
      * Describes the VVol <-> Host binding.
      **/
     public VirtualVolumeBinding[] getBindings() { return this.bindings; }
+   
     public void setBindings(VirtualVolumeBinding[] bindings) { 
         this.bindings = bindings;
     }
@@ -84,9 +85,10 @@ public class ListVirtualVolumeBindingsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" bindings : ").append(Arrays.toString(bindings)).append(",");
+        sb.append(" bindings : ").append(gson.toJson(Arrays.toString(bindings))).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

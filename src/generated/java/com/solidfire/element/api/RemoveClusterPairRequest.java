@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -37,7 +38,6 @@ public class RemoveClusterPairRequest implements Serializable {
 
     public static final long serialVersionUID = 7534637187207591071L;
     @SerializedName("clusterPairID") private Long clusterPairID;
-
     // empty constructor
     @Since("7.0")
     public RemoveClusterPairRequest() {}
@@ -56,6 +56,7 @@ public class RemoveClusterPairRequest implements Serializable {
      * Unique identifier used to pair two clusters.
      **/
     public Long getClusterPairID() { return this.clusterPairID; }
+   
     public void setClusterPairID(Long clusterPairID) { 
         this.clusterPairID = clusterPairID;
     }
@@ -86,9 +87,10 @@ public class RemoveClusterPairRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" clusterPairID : ").append(clusterPairID).append(",");
+        sb.append(" clusterPairID : ").append(gson.toJson(clusterPairID)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

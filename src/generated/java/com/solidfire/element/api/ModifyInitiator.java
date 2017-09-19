@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -39,7 +40,6 @@ public class ModifyInitiator implements Serializable {
     @SerializedName("alias") private Optional<String> alias;
     @SerializedName("volumeAccessGroupID") private Optional<Long> volumeAccessGroupID;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public ModifyInitiator() {}
@@ -64,6 +64,7 @@ public class ModifyInitiator implements Serializable {
      * (Required) The numeric ID of the initiator to modify. (Integer)
      **/
     public Long getInitiatorID() { return this.initiatorID; }
+   
     public void setInitiatorID(Long initiatorID) { 
         this.initiatorID = initiatorID;
     }
@@ -71,13 +72,15 @@ public class ModifyInitiator implements Serializable {
      * (Optional) A new friendly name to assign to the initiator. (String)
      **/
     public Optional<String> getAlias() { return this.alias; }
+   
     public void setAlias(Optional<String> alias) { 
         this.alias = (alias == null) ? Optional.<String>empty() : alias;
     }
     /** 
-     * (Optional) The ID of the volume access group into to which the newly created initiator should be added. If the initiator was previously in a different volume access group, it is removed from the old volume access group. If this key is present but null, the initiator is removed from its current volume access group, but not placed in any new volume access group. (Integer)
+     * (Optional) The ID of the volume access group to which the newly created initiator should be added. If the initiator was previously in a different volume access group, it is removed from the old volume access group. If this key is present but null, the initiator is removed from its current volume access group, but not placed in any new volume access group. (Integer)
      **/
     public Optional<Long> getVolumeAccessGroupID() { return this.volumeAccessGroupID; }
+   
     public void setVolumeAccessGroupID(Optional<Long> volumeAccessGroupID) { 
         this.volumeAccessGroupID = (volumeAccessGroupID == null) ? Optional.<Long>empty() : volumeAccessGroupID;
     }
@@ -85,6 +88,7 @@ public class ModifyInitiator implements Serializable {
      * (Optional) A new set of JSON attributes assigned to this initiator. (JSON Object)
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -121,17 +125,27 @@ public class ModifyInitiator implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" initiatorID : ").append(initiatorID).append(",");
+        sb.append(" initiatorID : ").append(gson.toJson(initiatorID)).append(",");
         if(null != alias && alias.isPresent()){
-            sb.append(" alias : ").append(alias).append(",");
+            sb.append(" alias : ").append(gson.toJson(alias)).append(",");
+        }
+        else{
+            sb.append(" alias : ").append("null").append(",");
         }
         if(null != volumeAccessGroupID && volumeAccessGroupID.isPresent()){
-            sb.append(" volumeAccessGroupID : ").append(volumeAccessGroupID).append(",");
+            sb.append(" volumeAccessGroupID : ").append(gson.toJson(volumeAccessGroupID)).append(",");
+        }
+        else{
+            sb.append(" volumeAccessGroupID : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

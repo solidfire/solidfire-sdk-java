@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,7 +36,6 @@ public class GetVolumeStatsResult implements Serializable {
 
     public static final long serialVersionUID = 6971973684806659560L;
     @SerializedName("volumeStats") private VolumeStats volumeStats;
-
     // empty constructor
     @Since("7.0")
     public GetVolumeStatsResult() {}
@@ -54,6 +54,7 @@ public class GetVolumeStatsResult implements Serializable {
      * Volume activity information.
      **/
     public VolumeStats getVolumeStats() { return this.volumeStats; }
+   
     public void setVolumeStats(VolumeStats volumeStats) { 
         this.volumeStats = volumeStats;
     }
@@ -84,9 +85,10 @@ public class GetVolumeStatsResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeStats : ").append(volumeStats).append(",");
+        sb.append(" volumeStats : ").append(gson.toJson(volumeStats)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

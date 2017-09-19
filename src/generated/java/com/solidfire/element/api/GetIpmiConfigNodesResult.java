@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -36,7 +37,6 @@ public class GetIpmiConfigNodesResult implements Serializable {
     public static final long serialVersionUID = 4146119083973416749L;
     @SerializedName("nodeID") private Long nodeID;
     @SerializedName("result") private Attributes result;
-
     // empty constructor
     @Since("7.0")
     public GetIpmiConfigNodesResult() {}
@@ -57,6 +57,7 @@ public class GetIpmiConfigNodesResult implements Serializable {
      * 
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -64,6 +65,7 @@ public class GetIpmiConfigNodesResult implements Serializable {
      * 
      **/
     public Attributes getResult() { return this.result; }
+   
     public void setResult(Attributes result) { 
         this.result = result;
     }
@@ -96,10 +98,11 @@ public class GetIpmiConfigNodesResult implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" nodeID : ").append(nodeID).append(",");
-        sb.append(" result : ").append(result).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
+        sb.append(" result : ").append(gson.toJson(result)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)

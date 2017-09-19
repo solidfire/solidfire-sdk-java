@@ -55,8 +55,9 @@ class InvokeSFApiTest extends WordSpec with BeforeAndAfterAll with MockitoSugar 
     }
 
     "ListAccounts via InvokeSFApi" in {
-      val listAccountsRequest = new ListAccountsRequest(Optional.EMPTY_LONG, Optional.EMPTY_LONG)
-      val request = new InvokeSFApiRequest("ListAccounts", Optional.of(listAccountsRequest.toMap()))
+      val listAccountsRequest = new ListAccountsRequest()
+      listAccountsRequest.asBuilder().build()
+      val request = new InvokeSFApiRequest("ListAccounts", Optional.of(new Attributes(listAccountsRequest.toMap())))
       val returned = Utility.getResultFromResource[Object]("ListAccounts_v8.json")
 
       when( sfe.sendRequest( org.mockito.Matchers.eq("ListAccounts"), org.mockito.Matchers.eq(Optional.of(listAccountsRequest.toMap())), any() ,any())  ).thenReturn( returned )

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -49,7 +50,7 @@ public class PendingNode implements Serializable {
     @SerializedName("sipi") private String sipi;
     @SerializedName("softwareVersion") private String softwareVersion;
     @SerializedName("uuid") private java.util.UUID uuid;
-
+    @SerializedName("nodeSlot") private Optional<String> nodeSlot;
     // empty constructor
     @Since("7.0")
     public PendingNode() {}
@@ -70,7 +71,8 @@ public class PendingNode implements Serializable {
         String sip,
         String sipi,
         String softwareVersion,
-        java.util.UUID uuid
+        java.util.UUID uuid,
+        Optional<String> nodeSlot
     )
     {
         this.pendingNodeID = pendingNodeID;
@@ -86,12 +88,14 @@ public class PendingNode implements Serializable {
         this.sipi = sipi;
         this.softwareVersion = softwareVersion;
         this.uuid = uuid;
+        this.nodeSlot = (nodeSlot == null) ? Optional.<String>empty() : nodeSlot;
     }
 
     /** 
      * 
      **/
     public Long getPendingNodeID() { return this.pendingNodeID; }
+   
     public void setPendingNodeID(Long pendingNodeID) { 
         this.pendingNodeID = pendingNodeID;
     }
@@ -99,6 +103,7 @@ public class PendingNode implements Serializable {
      * 
      **/
     public Long getAssignedNodeID() { return this.assignedNodeID; }
+   
     public void setAssignedNodeID(Long assignedNodeID) { 
         this.assignedNodeID = assignedNodeID;
     }
@@ -106,6 +111,7 @@ public class PendingNode implements Serializable {
      * The host name for this node.
      **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -113,6 +119,7 @@ public class PendingNode implements Serializable {
      * 
      **/
     public Boolean getCompatible() { return this.compatible; }
+   
     public void setCompatible(Boolean compatible) { 
         this.compatible = compatible;
     }
@@ -120,6 +127,7 @@ public class PendingNode implements Serializable {
      * Information about the platform this node is.
      **/
     public Platform getPlatformInfo() { return this.platformInfo; }
+   
     public void setPlatformInfo(Platform platformInfo) { 
         this.platformInfo = platformInfo;
     }
@@ -127,6 +135,7 @@ public class PendingNode implements Serializable {
      * IP address used for both intra- and inter-cluster communication.
      **/
     public String getCip() { return this.cip; }
+   
     public void setCip(String cip) { 
         this.cip = cip;
     }
@@ -134,6 +143,7 @@ public class PendingNode implements Serializable {
      * The machine's name for the "cip" interface.
      **/
     public String getCipi() { return this.cipi; }
+   
     public void setCipi(String cipi) { 
         this.cipi = cipi;
     }
@@ -141,6 +151,7 @@ public class PendingNode implements Serializable {
      * IP address used for cluster management (hosting the API and web site).
      **/
     public String getMip() { return this.mip; }
+   
     public void setMip(String mip) { 
         this.mip = mip;
     }
@@ -148,6 +159,7 @@ public class PendingNode implements Serializable {
      * The machine's name for the "mip" interface.
      **/
     public String getMipi() { return this.mipi; }
+   
     public void setMipi(String mipi) { 
         this.mipi = mipi;
     }
@@ -155,6 +167,7 @@ public class PendingNode implements Serializable {
      * IP address used for iSCSI traffic.
      **/
     public String getSip() { return this.sip; }
+   
     public void setSip(String sip) { 
         this.sip = sip;
     }
@@ -162,6 +175,7 @@ public class PendingNode implements Serializable {
      * The machine's name for the "sip" interface.
      **/
     public String getSipi() { return this.sipi; }
+   
     public void setSipi(String sipi) { 
         this.sipi = sipi;
     }
@@ -169,6 +183,7 @@ public class PendingNode implements Serializable {
      * The version of SolidFire software this node is currently running.
      **/
     public String getSoftwareVersion() { return this.softwareVersion; }
+   
     public void setSoftwareVersion(String softwareVersion) { 
         this.softwareVersion = softwareVersion;
     }
@@ -176,8 +191,17 @@ public class PendingNode implements Serializable {
      * UUID of node.
      **/
     public java.util.UUID getUuid() { return this.uuid; }
+   
     public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
+    }
+    /** 
+     * UUID of node.
+     **/
+    public Optional<String> getNodeSlot() { return this.nodeSlot; }
+   
+    public void setNodeSlot(Optional<String> nodeSlot) { 
+        this.nodeSlot = (nodeSlot == null) ? Optional.<String>empty() : nodeSlot;
     }
 
     @Override
@@ -200,12 +224,13 @@ public class PendingNode implements Serializable {
             Objects.equals(sip, that.sip) && 
             Objects.equals(sipi, that.sipi) && 
             Objects.equals(softwareVersion, that.softwareVersion) && 
-            Objects.equals(uuid, that.uuid);
+            Objects.equals(uuid, that.uuid) && 
+            Objects.equals(nodeSlot, that.nodeSlot);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( pendingNodeID,assignedNodeID,name,compatible,platformInfo,cip,cipi,mip,mipi,sip,sipi,softwareVersion,uuid );
+        return Objects.hash( pendingNodeID,assignedNodeID,name,compatible,platformInfo,cip,cipi,mip,mipi,sip,sipi,softwareVersion,uuid,nodeSlot );
     }
 
 
@@ -224,27 +249,35 @@ public class PendingNode implements Serializable {
         map.put("sipi", sipi);
         map.put("softwareVersion", softwareVersion);
         map.put("uuid", uuid);
+        map.put("nodeSlot", nodeSlot);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" pendingNodeID : ").append(pendingNodeID).append(",");
-        sb.append(" assignedNodeID : ").append(assignedNodeID).append(",");
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" compatible : ").append(compatible).append(",");
-        sb.append(" platformInfo : ").append(platformInfo).append(",");
-        sb.append(" cip : ").append(cip).append(",");
-        sb.append(" cipi : ").append(cipi).append(",");
-        sb.append(" mip : ").append(mip).append(",");
-        sb.append(" mipi : ").append(mipi).append(",");
-        sb.append(" sip : ").append(sip).append(",");
-        sb.append(" sipi : ").append(sipi).append(",");
-        sb.append(" softwareVersion : ").append(softwareVersion).append(",");
-        sb.append(" uuid : ").append(uuid).append(",");
+        sb.append(" pendingNodeID : ").append(gson.toJson(pendingNodeID)).append(",");
+        sb.append(" assignedNodeID : ").append(gson.toJson(assignedNodeID)).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" compatible : ").append(gson.toJson(compatible)).append(",");
+        sb.append(" platformInfo : ").append(gson.toJson(platformInfo)).append(",");
+        sb.append(" cip : ").append(gson.toJson(cip)).append(",");
+        sb.append(" cipi : ").append(gson.toJson(cipi)).append(",");
+        sb.append(" mip : ").append(gson.toJson(mip)).append(",");
+        sb.append(" mipi : ").append(gson.toJson(mipi)).append(",");
+        sb.append(" sip : ").append(gson.toJson(sip)).append(",");
+        sb.append(" sipi : ").append(gson.toJson(sipi)).append(",");
+        sb.append(" softwareVersion : ").append(gson.toJson(softwareVersion)).append(",");
+        sb.append(" uuid : ").append(gson.toJson(uuid)).append(",");
+        if(null != nodeSlot && nodeSlot.isPresent()){
+            sb.append(" nodeSlot : ").append(gson.toJson(nodeSlot)).append(",");
+        }
+        else{
+            sb.append(" nodeSlot : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -275,6 +308,7 @@ public class PendingNode implements Serializable {
         private String sipi;
         private String softwareVersion;
         private java.util.UUID uuid;
+        private Optional<String> nodeSlot;
 
         private Builder() { }
 
@@ -292,7 +326,8 @@ public class PendingNode implements Serializable {
                          this.sip,
                          this.sipi,
                          this.softwareVersion,
-                         this.uuid);
+                         this.uuid,
+                         this.nodeSlot);
         }
 
         private PendingNode.Builder buildFrom(final PendingNode req) {
@@ -309,6 +344,7 @@ public class PendingNode implements Serializable {
             this.sipi = req.sipi;
             this.softwareVersion = req.softwareVersion;
             this.uuid = req.uuid;
+            this.nodeSlot = req.nodeSlot;
 
             return this;
         }
@@ -375,6 +411,11 @@ public class PendingNode implements Serializable {
 
         public PendingNode.Builder uuid(final java.util.UUID uuid) {
             this.uuid = uuid;
+            return this;
+        }
+
+        public PendingNode.Builder optionalNodeSlot(final String nodeSlot) {
+            this.nodeSlot = (nodeSlot == null) ? Optional.<String>empty() : Optional.of(nodeSlot);
             return this;
         }
 

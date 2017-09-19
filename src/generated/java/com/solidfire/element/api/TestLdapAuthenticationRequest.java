@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,7 +30,8 @@ import java.util.Objects;
 
 /**
  * TestLdapAuthenticationRequest  
- * The TestLdapAuthentication is used to verify the currently enabled LDAP authentication configuration settings are correct. If the configuration settings are correct, the API call returns a list of the groups the tested user is a member of.
+ * The TestLdapAuthentication method enables you to validate the currently enabled LDAP authentication settings. If the configuration is
+ * correct, the API call returns the group membership of the tested user.
  **/
 
 public class TestLdapAuthenticationRequest implements Serializable {
@@ -38,7 +40,6 @@ public class TestLdapAuthenticationRequest implements Serializable {
     @SerializedName("username") private String username;
     @SerializedName("password") private String password;
     @SerializedName("ldapConfiguration") private Optional<LdapConfiguration> ldapConfiguration;
-
     // empty constructor
     @Since("7.0")
     public TestLdapAuthenticationRequest() {}
@@ -61,20 +62,24 @@ public class TestLdapAuthenticationRequest implements Serializable {
      * The username to be tested.
      **/
     public String getUsername() { return this.username; }
+   
     public void setUsername(String username) { 
         this.username = username;
     }
     /** 
-     * The password for the username to be tester.
+     * The password for the username to be tested.
      **/
     public String getPassword() { return this.password; }
+   
     public void setPassword(String password) { 
         this.password = password;
     }
     /** 
-     * An ldapConfiguration object to be tested. If this parameter is provided, the API call will test the provided configuration even if LDAP authentication is currently disabled.
+     * An ldapConfiguration object to be tested. If specified, the API call tests the provided
+     * configuration even if LDAP authentication is disabled.
      **/
     public Optional<LdapConfiguration> getLdapConfiguration() { return this.ldapConfiguration; }
+   
     public void setLdapConfiguration(Optional<LdapConfiguration> ldapConfiguration) { 
         this.ldapConfiguration = (ldapConfiguration == null) ? Optional.<LdapConfiguration>empty() : ldapConfiguration;
     }
@@ -109,12 +114,16 @@ public class TestLdapAuthenticationRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" username : ").append(username).append(",");
-        sb.append(" password : ").append(password).append(",");
+        sb.append(" username : ").append(gson.toJson(username)).append(",");
+        sb.append(" password : ").append(gson.toJson(password)).append(",");
         if(null != ldapConfiguration && ldapConfiguration.isPresent()){
-            sb.append(" ldapConfiguration : ").append(ldapConfiguration).append(",");
+            sb.append(" ldapConfiguration : ").append(gson.toJson(ldapConfiguration)).append(",");
+        }
+        else{
+            sb.append(" ldapConfiguration : ").append("null").append(",");
         }
         sb.append( " }" );
 

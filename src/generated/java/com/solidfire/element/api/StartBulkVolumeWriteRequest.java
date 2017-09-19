@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -29,11 +30,8 @@ import java.util.Objects;
 
 /**
  * StartBulkVolumeWriteRequest  
- * StartBulkVolumeWrite allows you to initialize a bulk volume write session on a specified volume.
- * Only two bulk volume processes can run simultaneously on a volume.
- * When the session is initialized, data can be written to a SolidFire storage volume from an external backup source.
- * The external data is accessed by a web server running on a SolidFire node.
- * Communications and server interaction information for external data access is passed by a script running on the SolidFire storage system.
+ * StartBulkVolumeWrite enables you to initialize a bulk volume write session on a specified volume. Only two bulk volume processes can run simultaneously on a volume. When you initialize the write session, data is written to a SolidFire storage volume from an external backup source. The external data is accessed by a web server running on an SF-series node. Communications and server
+ * interaction information for external data access is passed by a script running on the storage system.
  **/
 
 public class StartBulkVolumeWriteRequest implements Serializable {
@@ -44,7 +42,6 @@ public class StartBulkVolumeWriteRequest implements Serializable {
     @SerializedName("script") private Optional<String> script;
     @SerializedName("scriptParameters") private Optional<Attributes> scriptParameters;
     @SerializedName("attributes") private Optional<Attributes> attributes;
-
     // empty constructor
     @Since("7.0")
     public StartBulkVolumeWriteRequest() {}
@@ -68,27 +65,33 @@ public class StartBulkVolumeWriteRequest implements Serializable {
     }
 
     /** 
-     * ID of the volume to be written to.
+     * The ID of the volume to be written to.
      **/
     public Long getVolumeID() { return this.volumeID; }
+   
     public void setVolumeID(Long volumeID) { 
         this.volumeID = volumeID;
     }
     /** 
-     * The format of the volume data. Can be either:
-     * uncompressed: every byte of the volume is returned without any compression.
-     * native: opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk volume write
+     * The format of the volume data. It can be either of the following formats:
+     * uncompressed: Every byte of the volume is returned without any compression.
+     * native: Opaque data is returned that is smaller and more efficiently stored and written on a subsequent bulk
+     * volume write.
      **/
     public String getFormat() { return this.format; }
+   
     public void setFormat(String format) { 
         this.format = format;
     }
     /** 
-     * Executable name of a script.
-     * If no script name is given then the key and URL are necessary to access SolidFire nodes.
-     * The script runs on the primary node and the key and URL is returned to the script so the local web server can be contacted.
+     * The executable name of a script. If unspecified,
+     * the key and URL are necessary to access SF-series
+     * nodes. The script runs on the primary node and the key
+     * and URL is returned to the script, so the local web server
+     * can be contacted.
      **/
     public Optional<String> getScript() { return this.script; }
+   
     public void setScript(Optional<String> script) { 
         this.script = (script == null) ? Optional.<String>empty() : script;
     }
@@ -96,6 +99,7 @@ public class StartBulkVolumeWriteRequest implements Serializable {
      * JSON parameters to pass to the script.
      **/
     public Optional<Attributes> getScriptParameters() { return this.scriptParameters; }
+   
     public void setScriptParameters(Optional<Attributes> scriptParameters) { 
         this.scriptParameters = (scriptParameters == null) ? Optional.<Attributes>empty() : scriptParameters;
     }
@@ -103,6 +107,7 @@ public class StartBulkVolumeWriteRequest implements Serializable {
      * JSON attributes for the bulk volume job.
      **/
     public Optional<Attributes> getAttributes() { return this.attributes; }
+   
     public void setAttributes(Optional<Attributes> attributes) { 
         this.attributes = (attributes == null) ? Optional.<Attributes>empty() : attributes;
     }
@@ -141,18 +146,28 @@ public class StartBulkVolumeWriteRequest implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" volumeID : ").append(volumeID).append(",");
-        sb.append(" format : ").append(format).append(",");
+        sb.append(" volumeID : ").append(gson.toJson(volumeID)).append(",");
+        sb.append(" format : ").append(gson.toJson(format)).append(",");
         if(null != script && script.isPresent()){
-            sb.append(" script : ").append(script).append(",");
+            sb.append(" script : ").append(gson.toJson(script)).append(",");
+        }
+        else{
+            sb.append(" script : ").append("null").append(",");
         }
         if(null != scriptParameters && scriptParameters.isPresent()){
-            sb.append(" scriptParameters : ").append(scriptParameters).append(",");
+            sb.append(" scriptParameters : ").append(gson.toJson(scriptParameters)).append(",");
+        }
+        else{
+            sb.append(" scriptParameters : ").append("null").append(",");
         }
         if(null != attributes && attributes.isPresent()){
-            sb.append(" attributes : ").append(attributes).append(",");
+            sb.append(" attributes : ").append(gson.toJson(attributes)).append(",");
+        }
+        else{
+            sb.append(" attributes : ").append("null").append(",");
         }
         sb.append( " }" );
 

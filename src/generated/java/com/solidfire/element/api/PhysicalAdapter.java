@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -41,7 +42,6 @@ public class PhysicalAdapter implements Serializable {
     @SerializedName("netmask") private Optional<String> netmask;
     @SerializedName("network") private Optional<String> network;
     @SerializedName("upAndRunning") private Optional<Boolean> upAndRunning;
-
     // empty constructor
     @Since("7.0")
     public PhysicalAdapter() {}
@@ -72,6 +72,7 @@ public class PhysicalAdapter implements Serializable {
      * 
      **/
     public Optional<String> getAddress() { return this.address; }
+   
     public void setAddress(Optional<String> address) { 
         this.address = (address == null) ? Optional.<String>empty() : address;
     }
@@ -79,6 +80,7 @@ public class PhysicalAdapter implements Serializable {
      * 
      **/
     public Optional<String> getMacAddress() { return this.macAddress; }
+   
     public void setMacAddress(Optional<String> macAddress) { 
         this.macAddress = (macAddress == null) ? Optional.<String>empty() : macAddress;
     }
@@ -86,6 +88,7 @@ public class PhysicalAdapter implements Serializable {
      * 
      **/
     public Optional<String> getMacAddressPermanent() { return this.macAddressPermanent; }
+   
     public void setMacAddressPermanent(Optional<String> macAddressPermanent) { 
         this.macAddressPermanent = (macAddressPermanent == null) ? Optional.<String>empty() : macAddressPermanent;
     }
@@ -93,6 +96,7 @@ public class PhysicalAdapter implements Serializable {
      * 
      **/
     public Optional<String> getMtu() { return this.mtu; }
+   
     public void setMtu(Optional<String> mtu) { 
         this.mtu = (mtu == null) ? Optional.<String>empty() : mtu;
     }
@@ -100,6 +104,7 @@ public class PhysicalAdapter implements Serializable {
      * 
      **/
     public Optional<String> getNetmask() { return this.netmask; }
+   
     public void setNetmask(Optional<String> netmask) { 
         this.netmask = (netmask == null) ? Optional.<String>empty() : netmask;
     }
@@ -107,6 +112,7 @@ public class PhysicalAdapter implements Serializable {
      * 
      **/
     public Optional<String> getNetwork() { return this.network; }
+   
     public void setNetwork(Optional<String> network) { 
         this.network = (network == null) ? Optional.<String>empty() : network;
     }
@@ -114,6 +120,7 @@ public class PhysicalAdapter implements Serializable {
      * 
      **/
     public Optional<Boolean> getUpAndRunning() { return this.upAndRunning; }
+   
     public void setUpAndRunning(Optional<Boolean> upAndRunning) { 
         this.upAndRunning = (upAndRunning == null) ? Optional.<Boolean>empty() : upAndRunning;
     }
@@ -156,28 +163,50 @@ public class PhysicalAdapter implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != address && address.isPresent()){
-            sb.append(" address : ").append(address).append(",");
+            sb.append(" address : ").append(gson.toJson(address)).append(",");
+        }
+        else{
+            sb.append(" address : ").append("null").append(",");
         }
         if(null != macAddress && macAddress.isPresent()){
-            sb.append(" macAddress : ").append(macAddress).append(",");
+            sb.append(" macAddress : ").append(gson.toJson(macAddress)).append(",");
+        }
+        else{
+            sb.append(" macAddress : ").append("null").append(",");
         }
         if(null != macAddressPermanent && macAddressPermanent.isPresent()){
-            sb.append(" macAddressPermanent : ").append(macAddressPermanent).append(",");
+            sb.append(" macAddressPermanent : ").append(gson.toJson(macAddressPermanent)).append(",");
+        }
+        else{
+            sb.append(" macAddressPermanent : ").append("null").append(",");
         }
         if(null != mtu && mtu.isPresent()){
-            sb.append(" mtu : ").append(mtu).append(",");
+            sb.append(" mtu : ").append(gson.toJson(mtu)).append(",");
+        }
+        else{
+            sb.append(" mtu : ").append("null").append(",");
         }
         if(null != netmask && netmask.isPresent()){
-            sb.append(" netmask : ").append(netmask).append(",");
+            sb.append(" netmask : ").append(gson.toJson(netmask)).append(",");
+        }
+        else{
+            sb.append(" netmask : ").append("null").append(",");
         }
         if(null != network && network.isPresent()){
-            sb.append(" network : ").append(network).append(",");
+            sb.append(" network : ").append(gson.toJson(network)).append(",");
+        }
+        else{
+            sb.append(" network : ").append("null").append(",");
         }
         if(null != upAndRunning && upAndRunning.isPresent()){
-            sb.append(" upAndRunning : ").append(upAndRunning).append(",");
+            sb.append(" upAndRunning : ").append(gson.toJson(upAndRunning)).append(",");
+        }
+        else{
+            sb.append(" upAndRunning : ").append("null").append(",");
         }
         sb.append( " }" );
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -35,8 +36,6 @@ public class ModifyVolumeResult implements Serializable {
 
     public static final long serialVersionUID = 7716152308587193073L;
     @SerializedName("volume") private Optional<Volume> volume;
-    @SerializedName("curve") private Optional<QoS> curve;
-
     // empty constructor
     @Since("7.0")
     public ModifyVolumeResult() {}
@@ -45,27 +44,19 @@ public class ModifyVolumeResult implements Serializable {
     // parameterized constructor
     @Since("7.0")
     public ModifyVolumeResult(
-        Optional<Volume> volume,
-        Optional<QoS> curve
+        Optional<Volume> volume
     )
     {
         this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
-        this.curve = (curve == null) ? Optional.<QoS>empty() : curve;
     }
 
     /** 
      * Object containing information about the newly modified volume.
      **/
     public Optional<Volume> getVolume() { return this.volume; }
+   
     public void setVolume(Optional<Volume> volume) { 
         this.volume = (volume == null) ? Optional.<Volume>empty() : volume;
-    }
-    /** 
-     * 
-     **/
-    public Optional<QoS> getCurve() { return this.curve; }
-    public void setCurve(Optional<QoS> curve) { 
-        this.curve = (curve == null) ? Optional.<QoS>empty() : curve;
     }
 
     @Override
@@ -76,33 +67,32 @@ public class ModifyVolumeResult implements Serializable {
         ModifyVolumeResult that = (ModifyVolumeResult) o;
 
         return 
-            Objects.equals(volume, that.volume) && 
-            Objects.equals(curve, that.curve);
+            Objects.equals(volume, that.volume);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( volume,curve );
+        return Objects.hash( volume );
     }
 
 
     public java.util.Map<String, Object> toMap() {
         java.util.Map<String, Object> map = new HashMap<>();
         map.put("volume", volume);
-        map.put("curve", curve);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
         if(null != volume && volume.isPresent()){
-            sb.append(" volume : ").append(volume).append(",");
+            sb.append(" volume : ").append(gson.toJson(volume)).append(",");
         }
-        if(null != curve && curve.isPresent()){
-            sb.append(" curve : ").append(curve).append(",");
+        else{
+            sb.append(" volume : ").append("null").append(",");
         }
         sb.append( " }" );
 
@@ -122,30 +112,22 @@ public class ModifyVolumeResult implements Serializable {
 
     public static class Builder {
         private Optional<Volume> volume;
-        private Optional<QoS> curve;
 
         private Builder() { }
 
         public ModifyVolumeResult build() {
             return new ModifyVolumeResult (
-                         this.volume,
-                         this.curve);
+                         this.volume);
         }
 
         private ModifyVolumeResult.Builder buildFrom(final ModifyVolumeResult req) {
             this.volume = req.volume;
-            this.curve = req.curve;
 
             return this;
         }
 
         public ModifyVolumeResult.Builder optionalVolume(final Volume volume) {
             this.volume = (volume == null) ? Optional.<Volume>empty() : Optional.of(volume);
-            return this;
-        }
-
-        public ModifyVolumeResult.Builder optionalCurve(final QoS curve) {
-            this.curve = (curve == null) ? Optional.<QoS>empty() : Optional.of(curve);
             return this;
         }
 

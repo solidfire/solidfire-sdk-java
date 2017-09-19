@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -48,7 +49,7 @@ public class Service implements Serializable {
     @SerializedName("status") private String status;
     @SerializedName("startedDriveIDs") private Long[] startedDriveIDs;
     @SerializedName("driveIDs") private Long[] driveIDs;
-
+    @SerializedName("smartSsdWriteEnabled") private Optional<Boolean> smartSsdWriteEnabled;
     // empty constructor
     @Since("7.0")
     public Service() {}
@@ -70,7 +71,8 @@ public class Service implements Serializable {
         Long iscsiPort,
         String status,
         Long[] startedDriveIDs,
-        Long[] driveIDs
+        Long[] driveIDs,
+        Optional<Boolean> smartSsdWriteEnabled
     )
     {
         this.serviceID = serviceID;
@@ -87,12 +89,14 @@ public class Service implements Serializable {
         this.status = status;
         this.startedDriveIDs = startedDriveIDs;
         this.driveIDs = driveIDs;
+        this.smartSsdWriteEnabled = (smartSsdWriteEnabled == null) ? Optional.<Boolean>empty() : smartSsdWriteEnabled;
     }
 
     /** 
      * Unique identifier for this service.
      **/
     public Long getServiceID() { return this.serviceID; }
+   
     public void setServiceID(Long serviceID) { 
         this.serviceID = serviceID;
     }
@@ -100,6 +104,7 @@ public class Service implements Serializable {
      * 
      **/
     public String getServiceType() { return this.serviceType; }
+   
     public void setServiceType(String serviceType) { 
         this.serviceType = serviceType;
     }
@@ -107,6 +112,7 @@ public class Service implements Serializable {
      * The node this service resides on.
      **/
     public Long getNodeID() { return this.nodeID; }
+   
     public void setNodeID(Long nodeID) { 
         this.nodeID = nodeID;
     }
@@ -115,6 +121,7 @@ public class Service implements Serializable {
      * This will only be set if the service type is a slice service.
      **/
     public Optional<Long> getAssociatedBV() { return this.associatedBV; }
+   
     public void setAssociatedBV(Optional<Long> associatedBV) { 
         this.associatedBV = (associatedBV == null) ? Optional.<Long>empty() : associatedBV;
     }
@@ -123,6 +130,7 @@ public class Service implements Serializable {
      * This will only be set if the service type is a slice service.
      **/
     public Optional<Long> getAssociatedTS() { return this.associatedTS; }
+   
     public void setAssociatedTS(Optional<Long> associatedTS) { 
         this.associatedTS = (associatedTS == null) ? Optional.<Long>empty() : associatedTS;
     }
@@ -131,6 +139,7 @@ public class Service implements Serializable {
      * This will only be set if the service type is a slice service.
      **/
     public Optional<Long> getAssociatedVS() { return this.associatedVS; }
+   
     public void setAssociatedVS(Optional<Long> associatedVS) { 
         this.associatedVS = (associatedVS == null) ? Optional.<Long>empty() : associatedVS;
     }
@@ -138,6 +147,7 @@ public class Service implements Serializable {
      * The list of asynchronous jobs currently running for this service.
      **/
     public Long[] getAsyncResultIDs() { return this.asyncResultIDs; }
+   
     public void setAsyncResultIDs(Long[] asyncResultIDs) { 
         this.asyncResultIDs = asyncResultIDs;
     }
@@ -145,6 +155,7 @@ public class Service implements Serializable {
      * If this service resides on a drive, the ID of that drive.
      **/
     public Optional<Long> getDriveID() { return this.driveID; }
+   
     public void setDriveID(Optional<Long> driveID) { 
         this.driveID = (driveID == null) ? Optional.<Long>empty() : driveID;
     }
@@ -155,6 +166,7 @@ public class Service implements Serializable {
      * This can be used to check if the service has ever started.
      **/
     public Boolean getFirstTimeStartup() { return this.firstTimeStartup; }
+   
     public void setFirstTimeStartup(Boolean firstTimeStartup) { 
         this.firstTimeStartup = firstTimeStartup;
     }
@@ -163,6 +175,7 @@ public class Service implements Serializable {
      * This will be in the 4000-4100 range.
      **/
     public Long getIpcPort() { return this.ipcPort; }
+   
     public void setIpcPort(Long ipcPort) { 
         this.ipcPort = ipcPort;
     }
@@ -171,6 +184,7 @@ public class Service implements Serializable {
      * This will only be set if the service type is a transport service.
      **/
     public Long getIscsiPort() { return this.iscsiPort; }
+   
     public void setIscsiPort(Long iscsiPort) { 
         this.iscsiPort = iscsiPort;
     }
@@ -178,6 +192,7 @@ public class Service implements Serializable {
      * 
      **/
     public String getStatus() { return this.status; }
+   
     public void setStatus(String status) { 
         this.status = status;
     }
@@ -185,6 +200,7 @@ public class Service implements Serializable {
      * 
      **/
     public Long[] getStartedDriveIDs() { return this.startedDriveIDs; }
+   
     public void setStartedDriveIDs(Long[] startedDriveIDs) { 
         this.startedDriveIDs = startedDriveIDs;
     }
@@ -192,8 +208,17 @@ public class Service implements Serializable {
      * 
      **/
     public Long[] getDriveIDs() { return this.driveIDs; }
+   
     public void setDriveIDs(Long[] driveIDs) { 
         this.driveIDs = driveIDs;
+    }
+    /** 
+     * 
+     **/
+    public Optional<Boolean> getSmartSsdWriteEnabled() { return this.smartSsdWriteEnabled; }
+   
+    public void setSmartSsdWriteEnabled(Optional<Boolean> smartSsdWriteEnabled) { 
+        this.smartSsdWriteEnabled = (smartSsdWriteEnabled == null) ? Optional.<Boolean>empty() : smartSsdWriteEnabled;
     }
 
     @Override
@@ -217,12 +242,13 @@ public class Service implements Serializable {
             Objects.equals(iscsiPort, that.iscsiPort) && 
             Objects.equals(status, that.status) && 
             Arrays.equals(startedDriveIDs, that.startedDriveIDs) && 
-            Arrays.equals(driveIDs, that.driveIDs);
+            Arrays.equals(driveIDs, that.driveIDs) && 
+            Objects.equals(smartSsdWriteEnabled, that.smartSsdWriteEnabled);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( serviceID,serviceType,nodeID,associatedBV,associatedTS,associatedVS,(Object[])asyncResultIDs,driveID,firstTimeStartup,ipcPort,iscsiPort,status,(Object[])startedDriveIDs,(Object[])driveIDs );
+        return Objects.hash( serviceID,serviceType,nodeID,associatedBV,associatedTS,associatedVS,(Object[])asyncResultIDs,driveID,firstTimeStartup,ipcPort,iscsiPort,status,(Object[])startedDriveIDs,(Object[])driveIDs,smartSsdWriteEnabled );
     }
 
 
@@ -242,36 +268,56 @@ public class Service implements Serializable {
         map.put("status", status);
         map.put("startedDriveIDs", startedDriveIDs);
         map.put("driveIDs", driveIDs);
+        map.put("smartSsdWriteEnabled", smartSsdWriteEnabled);
         return map;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" serviceID : ").append(serviceID).append(",");
-        sb.append(" serviceType : ").append(serviceType).append(",");
-        sb.append(" nodeID : ").append(nodeID).append(",");
+        sb.append(" serviceID : ").append(gson.toJson(serviceID)).append(",");
+        sb.append(" serviceType : ").append(gson.toJson(serviceType)).append(",");
+        sb.append(" nodeID : ").append(gson.toJson(nodeID)).append(",");
         if(null != associatedBV && associatedBV.isPresent()){
-            sb.append(" associatedBV : ").append(associatedBV).append(",");
+            sb.append(" associatedBV : ").append(gson.toJson(associatedBV)).append(",");
+        }
+        else{
+            sb.append(" associatedBV : ").append("null").append(",");
         }
         if(null != associatedTS && associatedTS.isPresent()){
-            sb.append(" associatedTS : ").append(associatedTS).append(",");
+            sb.append(" associatedTS : ").append(gson.toJson(associatedTS)).append(",");
+        }
+        else{
+            sb.append(" associatedTS : ").append("null").append(",");
         }
         if(null != associatedVS && associatedVS.isPresent()){
-            sb.append(" associatedVS : ").append(associatedVS).append(",");
+            sb.append(" associatedVS : ").append(gson.toJson(associatedVS)).append(",");
         }
-        sb.append(" asyncResultIDs : ").append(Arrays.toString(asyncResultIDs)).append(",");
+        else{
+            sb.append(" associatedVS : ").append("null").append(",");
+        }
+        sb.append(" asyncResultIDs : ").append(gson.toJson(Arrays.toString(asyncResultIDs))).append(",");
         if(null != driveID && driveID.isPresent()){
-            sb.append(" driveID : ").append(driveID).append(",");
+            sb.append(" driveID : ").append(gson.toJson(driveID)).append(",");
         }
-        sb.append(" firstTimeStartup : ").append(firstTimeStartup).append(",");
-        sb.append(" ipcPort : ").append(ipcPort).append(",");
-        sb.append(" iscsiPort : ").append(iscsiPort).append(",");
-        sb.append(" status : ").append(status).append(",");
-        sb.append(" startedDriveIDs : ").append(Arrays.toString(startedDriveIDs)).append(",");
-        sb.append(" driveIDs : ").append(Arrays.toString(driveIDs)).append(",");
+        else{
+            sb.append(" driveID : ").append("null").append(",");
+        }
+        sb.append(" firstTimeStartup : ").append(gson.toJson(firstTimeStartup)).append(",");
+        sb.append(" ipcPort : ").append(gson.toJson(ipcPort)).append(",");
+        sb.append(" iscsiPort : ").append(gson.toJson(iscsiPort)).append(",");
+        sb.append(" status : ").append(gson.toJson(status)).append(",");
+        sb.append(" startedDriveIDs : ").append(gson.toJson(Arrays.toString(startedDriveIDs))).append(",");
+        sb.append(" driveIDs : ").append(gson.toJson(Arrays.toString(driveIDs))).append(",");
+        if(null != smartSsdWriteEnabled && smartSsdWriteEnabled.isPresent()){
+            sb.append(" smartSsdWriteEnabled : ").append(gson.toJson(smartSsdWriteEnabled)).append(",");
+        }
+        else{
+            sb.append(" smartSsdWriteEnabled : ").append("null").append(",");
+        }
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -303,6 +349,7 @@ public class Service implements Serializable {
         private String status;
         private Long[] startedDriveIDs;
         private Long[] driveIDs;
+        private Optional<Boolean> smartSsdWriteEnabled;
 
         private Builder() { }
 
@@ -321,7 +368,8 @@ public class Service implements Serializable {
                          this.iscsiPort,
                          this.status,
                          this.startedDriveIDs,
-                         this.driveIDs);
+                         this.driveIDs,
+                         this.smartSsdWriteEnabled);
         }
 
         private Service.Builder buildFrom(final Service req) {
@@ -339,6 +387,7 @@ public class Service implements Serializable {
             this.status = req.status;
             this.startedDriveIDs = req.startedDriveIDs;
             this.driveIDs = req.driveIDs;
+            this.smartSsdWriteEnabled = req.smartSsdWriteEnabled;
 
             return this;
         }
@@ -410,6 +459,11 @@ public class Service implements Serializable {
 
         public Service.Builder driveIDs(final Long[] driveIDs) {
             this.driveIDs = driveIDs;
+            return this;
+        }
+
+        public Service.Builder optionalSmartSsdWriteEnabled(final Boolean smartSsdWriteEnabled) {
+            this.smartSsdWriteEnabled = (smartSsdWriteEnabled == null) ? Optional.<Boolean>empty() : Optional.of(smartSsdWriteEnabled);
             return this;
         }
 

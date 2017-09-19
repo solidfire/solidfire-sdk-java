@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -39,10 +40,7 @@ public class DriveConfigInfo implements Serializable {
     @SerializedName("dev") private Long dev;
     @SerializedName("devPath") private String devPath;
     @SerializedName("driveType") private String driveType;
-    @SerializedName("fsType") private Optional<String> fsType;
-    @SerializedName("isMounted") private Optional<Boolean> isMounted;
     @SerializedName("product") private String product;
-    @SerializedName("mountPoint") private Optional<String> mountPoint;
     @SerializedName("name") private String name;
     @SerializedName("path") private String path;
     @SerializedName("pathLink") private String pathLink;
@@ -57,16 +55,9 @@ public class DriveConfigInfo implements Serializable {
     @SerializedName("uuid") private java.util.UUID uuid;
     @SerializedName("vendor") private String vendor;
     @SerializedName("version") private String version;
-    @SerializedName("numBlockActual") private Optional<Long> numBlockActual;
-    @SerializedName("numBlockExpected") private Optional<Long> numBlockExpected;
-    @SerializedName("numSliceActual") private Optional<Long> numSliceActual;
-    @SerializedName("numSliceExpected") private Optional<Long> numSliceExpected;
-    @SerializedName("numTotalActual") private Optional<Long> numTotalActual;
-    @SerializedName("numTotalExpected") private Optional<Long> numTotalExpected;
     @SerializedName("securityAtMaximum") private Boolean securityAtMaximum;
     @SerializedName("serial") private String serial;
     @SerializedName("scsiState") private String scsiState;
-
     // empty constructor
     @Since("7.0")
     public DriveConfigInfo() {}
@@ -80,10 +71,7 @@ public class DriveConfigInfo implements Serializable {
         Long dev,
         String devPath,
         String driveType,
-        Optional<String> fsType,
-        Optional<Boolean> isMounted,
         String product,
-        Optional<String> mountPoint,
         String name,
         String path,
         String pathLink,
@@ -98,12 +86,6 @@ public class DriveConfigInfo implements Serializable {
         java.util.UUID uuid,
         String vendor,
         String version,
-        Optional<Long> numBlockActual,
-        Optional<Long> numBlockExpected,
-        Optional<Long> numSliceActual,
-        Optional<Long> numSliceExpected,
-        Optional<Long> numTotalActual,
-        Optional<Long> numTotalExpected,
         Boolean securityAtMaximum,
         String serial,
         String scsiState
@@ -114,10 +96,7 @@ public class DriveConfigInfo implements Serializable {
         this.dev = dev;
         this.devPath = devPath;
         this.driveType = driveType;
-        this.fsType = (fsType == null) ? Optional.<String>empty() : fsType;
-        this.isMounted = (isMounted == null) ? Optional.<Boolean>empty() : isMounted;
         this.product = product;
-        this.mountPoint = (mountPoint == null) ? Optional.<String>empty() : mountPoint;
         this.name = name;
         this.path = path;
         this.pathLink = pathLink;
@@ -132,12 +111,6 @@ public class DriveConfigInfo implements Serializable {
         this.uuid = uuid;
         this.vendor = vendor;
         this.version = version;
-        this.numBlockActual = (numBlockActual == null) ? Optional.<Long>empty() : numBlockActual;
-        this.numBlockExpected = (numBlockExpected == null) ? Optional.<Long>empty() : numBlockExpected;
-        this.numSliceActual = (numSliceActual == null) ? Optional.<Long>empty() : numSliceActual;
-        this.numSliceExpected = (numSliceExpected == null) ? Optional.<Long>empty() : numSliceExpected;
-        this.numTotalActual = (numTotalActual == null) ? Optional.<Long>empty() : numTotalActual;
-        this.numTotalExpected = (numTotalExpected == null) ? Optional.<Long>empty() : numTotalExpected;
         this.securityAtMaximum = securityAtMaximum;
         this.serial = serial;
         this.scsiState = scsiState;
@@ -147,6 +120,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public String getCanonicalName() { return this.canonicalName; }
+   
     public void setCanonicalName(String canonicalName) { 
         this.canonicalName = canonicalName;
     }
@@ -154,6 +128,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public Boolean getConnected() { return this.connected; }
+   
     public void setConnected(Boolean connected) { 
         this.connected = connected;
     }
@@ -161,6 +136,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public Long getDev() { return this.dev; }
+   
     public void setDev(Long dev) { 
         this.dev = dev;
     }
@@ -168,6 +144,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public String getDevPath() { return this.devPath; }
+   
     public void setDevPath(String devPath) { 
         this.devPath = devPath;
     }
@@ -175,41 +152,23 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public String getDriveType() { return this.driveType; }
+   
     public void setDriveType(String driveType) { 
         this.driveType = driveType;
     }
     /** 
      * 
      **/
-    public Optional<String> getFsType() { return this.fsType; }
-    public void setFsType(Optional<String> fsType) { 
-        this.fsType = (fsType == null) ? Optional.<String>empty() : fsType;
-    }
-    /** 
-     * 
-     **/
-    public Optional<Boolean> getIsMounted() { return this.isMounted; }
-    public void setIsMounted(Optional<Boolean> isMounted) { 
-        this.isMounted = (isMounted == null) ? Optional.<Boolean>empty() : isMounted;
-    }
-    /** 
-     * 
-     **/
     public String getProduct() { return this.product; }
+   
     public void setProduct(String product) { 
         this.product = product;
     }
     /** 
      * 
      **/
-    public Optional<String> getMountPoint() { return this.mountPoint; }
-    public void setMountPoint(Optional<String> mountPoint) { 
-        this.mountPoint = (mountPoint == null) ? Optional.<String>empty() : mountPoint;
-    }
-    /** 
-     * 
-     **/
     public String getName() { return this.name; }
+   
     public void setName(String name) { 
         this.name = name;
     }
@@ -217,6 +176,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public String getPath() { return this.path; }
+   
     public void setPath(String path) { 
         this.path = path;
     }
@@ -224,6 +184,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public String getPathLink() { return this.pathLink; }
+   
     public void setPathLink(String pathLink) { 
         this.pathLink = pathLink;
     }
@@ -231,6 +192,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public String getScsiCompatId() { return this.scsiCompatId; }
+   
     public void setScsiCompatId(String scsiCompatId) { 
         this.scsiCompatId = scsiCompatId;
     }
@@ -238,6 +200,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public Optional<Boolean> getSmartSsdWriteCapable() { return this.smartSsdWriteCapable; }
+   
     public void setSmartSsdWriteCapable(Optional<Boolean> smartSsdWriteCapable) { 
         this.smartSsdWriteCapable = (smartSsdWriteCapable == null) ? Optional.<Boolean>empty() : smartSsdWriteCapable;
     }
@@ -245,6 +208,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public Boolean getSecurityEnabled() { return this.securityEnabled; }
+   
     public void setSecurityEnabled(Boolean securityEnabled) { 
         this.securityEnabled = securityEnabled;
     }
@@ -252,6 +216,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public Boolean getSecurityFrozen() { return this.securityFrozen; }
+   
     public void setSecurityFrozen(Boolean securityFrozen) { 
         this.securityFrozen = securityFrozen;
     }
@@ -259,6 +224,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public Boolean getSecurityLocked() { return this.securityLocked; }
+   
     public void setSecurityLocked(Boolean securityLocked) { 
         this.securityLocked = securityLocked;
     }
@@ -266,6 +232,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public Boolean getSecuritySupported() { return this.securitySupported; }
+   
     public void setSecuritySupported(Boolean securitySupported) { 
         this.securitySupported = securitySupported;
     }
@@ -273,6 +240,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public Long getSize() { return this.size; }
+   
     public void setSize(Long size) { 
         this.size = size;
     }
@@ -280,6 +248,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public Long getSlot() { return this.slot; }
+   
     public void setSlot(Long slot) { 
         this.slot = slot;
     }
@@ -287,6 +256,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public java.util.UUID getUuid() { return this.uuid; }
+   
     public void setUuid(java.util.UUID uuid) { 
         this.uuid = uuid;
     }
@@ -294,6 +264,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public String getVendor() { return this.vendor; }
+   
     public void setVendor(String vendor) { 
         this.vendor = vendor;
     }
@@ -301,55 +272,15 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public String getVersion() { return this.version; }
+   
     public void setVersion(String version) { 
         this.version = version;
     }
     /** 
      * 
      **/
-    public Optional<Long> getNumBlockActual() { return this.numBlockActual; }
-    public void setNumBlockActual(Optional<Long> numBlockActual) { 
-        this.numBlockActual = (numBlockActual == null) ? Optional.<Long>empty() : numBlockActual;
-    }
-    /** 
-     * 
-     **/
-    public Optional<Long> getNumBlockExpected() { return this.numBlockExpected; }
-    public void setNumBlockExpected(Optional<Long> numBlockExpected) { 
-        this.numBlockExpected = (numBlockExpected == null) ? Optional.<Long>empty() : numBlockExpected;
-    }
-    /** 
-     * 
-     **/
-    public Optional<Long> getNumSliceActual() { return this.numSliceActual; }
-    public void setNumSliceActual(Optional<Long> numSliceActual) { 
-        this.numSliceActual = (numSliceActual == null) ? Optional.<Long>empty() : numSliceActual;
-    }
-    /** 
-     * 
-     **/
-    public Optional<Long> getNumSliceExpected() { return this.numSliceExpected; }
-    public void setNumSliceExpected(Optional<Long> numSliceExpected) { 
-        this.numSliceExpected = (numSliceExpected == null) ? Optional.<Long>empty() : numSliceExpected;
-    }
-    /** 
-     * 
-     **/
-    public Optional<Long> getNumTotalActual() { return this.numTotalActual; }
-    public void setNumTotalActual(Optional<Long> numTotalActual) { 
-        this.numTotalActual = (numTotalActual == null) ? Optional.<Long>empty() : numTotalActual;
-    }
-    /** 
-     * 
-     **/
-    public Optional<Long> getNumTotalExpected() { return this.numTotalExpected; }
-    public void setNumTotalExpected(Optional<Long> numTotalExpected) { 
-        this.numTotalExpected = (numTotalExpected == null) ? Optional.<Long>empty() : numTotalExpected;
-    }
-    /** 
-     * 
-     **/
     public Boolean getSecurityAtMaximum() { return this.securityAtMaximum; }
+   
     public void setSecurityAtMaximum(Boolean securityAtMaximum) { 
         this.securityAtMaximum = securityAtMaximum;
     }
@@ -357,6 +288,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public String getSerial() { return this.serial; }
+   
     public void setSerial(String serial) { 
         this.serial = serial;
     }
@@ -364,6 +296,7 @@ public class DriveConfigInfo implements Serializable {
      * 
      **/
     public String getScsiState() { return this.scsiState; }
+   
     public void setScsiState(String scsiState) { 
         this.scsiState = scsiState;
     }
@@ -381,10 +314,7 @@ public class DriveConfigInfo implements Serializable {
             Objects.equals(dev, that.dev) && 
             Objects.equals(devPath, that.devPath) && 
             Objects.equals(driveType, that.driveType) && 
-            Objects.equals(fsType, that.fsType) && 
-            Objects.equals(isMounted, that.isMounted) && 
             Objects.equals(product, that.product) && 
-            Objects.equals(mountPoint, that.mountPoint) && 
             Objects.equals(name, that.name) && 
             Objects.equals(path, that.path) && 
             Objects.equals(pathLink, that.pathLink) && 
@@ -399,12 +329,6 @@ public class DriveConfigInfo implements Serializable {
             Objects.equals(uuid, that.uuid) && 
             Objects.equals(vendor, that.vendor) && 
             Objects.equals(version, that.version) && 
-            Objects.equals(numBlockActual, that.numBlockActual) && 
-            Objects.equals(numBlockExpected, that.numBlockExpected) && 
-            Objects.equals(numSliceActual, that.numSliceActual) && 
-            Objects.equals(numSliceExpected, that.numSliceExpected) && 
-            Objects.equals(numTotalActual, that.numTotalActual) && 
-            Objects.equals(numTotalExpected, that.numTotalExpected) && 
             Objects.equals(securityAtMaximum, that.securityAtMaximum) && 
             Objects.equals(serial, that.serial) && 
             Objects.equals(scsiState, that.scsiState);
@@ -412,7 +336,7 @@ public class DriveConfigInfo implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash( canonicalName,connected,dev,devPath,driveType,fsType,isMounted,product,mountPoint,name,path,pathLink,scsiCompatId,smartSsdWriteCapable,securityEnabled,securityFrozen,securityLocked,securitySupported,size,slot,uuid,vendor,version,numBlockActual,numBlockExpected,numSliceActual,numSliceExpected,numTotalActual,numTotalExpected,securityAtMaximum,serial,scsiState );
+        return Objects.hash( canonicalName,connected,dev,devPath,driveType,product,name,path,pathLink,scsiCompatId,smartSsdWriteCapable,securityEnabled,securityFrozen,securityLocked,securitySupported,size,slot,uuid,vendor,version,securityAtMaximum,serial,scsiState );
     }
 
 
@@ -423,10 +347,7 @@ public class DriveConfigInfo implements Serializable {
         map.put("dev", dev);
         map.put("devPath", devPath);
         map.put("driveType", driveType);
-        map.put("fsType", fsType);
-        map.put("isMounted", isMounted);
         map.put("product", product);
-        map.put("mountPoint", mountPoint);
         map.put("name", name);
         map.put("path", path);
         map.put("pathLink", pathLink);
@@ -441,12 +362,6 @@ public class DriveConfigInfo implements Serializable {
         map.put("uuid", uuid);
         map.put("vendor", vendor);
         map.put("version", version);
-        map.put("numBlockActual", numBlockActual);
-        map.put("numBlockExpected", numBlockExpected);
-        map.put("numSliceActual", numSliceActual);
-        map.put("numSliceExpected", numSliceExpected);
-        map.put("numTotalActual", numTotalActual);
-        map.put("numTotalExpected", numTotalExpected);
         map.put("securityAtMaximum", securityAtMaximum);
         map.put("serial", serial);
         map.put("scsiState", scsiState);
@@ -456,60 +371,37 @@ public class DriveConfigInfo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" canonicalName : ").append(canonicalName).append(",");
-        sb.append(" connected : ").append(connected).append(",");
-        sb.append(" dev : ").append(dev).append(",");
-        sb.append(" devPath : ").append(devPath).append(",");
-        sb.append(" driveType : ").append(driveType).append(",");
-        if(null != fsType && fsType.isPresent()){
-            sb.append(" fsType : ").append(fsType).append(",");
-        }
-        if(null != isMounted && isMounted.isPresent()){
-            sb.append(" isMounted : ").append(isMounted).append(",");
-        }
-        sb.append(" product : ").append(product).append(",");
-        if(null != mountPoint && mountPoint.isPresent()){
-            sb.append(" mountPoint : ").append(mountPoint).append(",");
-        }
-        sb.append(" name : ").append(name).append(",");
-        sb.append(" path : ").append(path).append(",");
-        sb.append(" pathLink : ").append(pathLink).append(",");
-        sb.append(" scsiCompatId : ").append(scsiCompatId).append(",");
+        sb.append(" canonicalName : ").append(gson.toJson(canonicalName)).append(",");
+        sb.append(" connected : ").append(gson.toJson(connected)).append(",");
+        sb.append(" dev : ").append(gson.toJson(dev)).append(",");
+        sb.append(" devPath : ").append(gson.toJson(devPath)).append(",");
+        sb.append(" driveType : ").append(gson.toJson(driveType)).append(",");
+        sb.append(" product : ").append(gson.toJson(product)).append(",");
+        sb.append(" name : ").append(gson.toJson(name)).append(",");
+        sb.append(" path : ").append(gson.toJson(path)).append(",");
+        sb.append(" pathLink : ").append(gson.toJson(pathLink)).append(",");
+        sb.append(" scsiCompatId : ").append(gson.toJson(scsiCompatId)).append(",");
         if(null != smartSsdWriteCapable && smartSsdWriteCapable.isPresent()){
-            sb.append(" smartSsdWriteCapable : ").append(smartSsdWriteCapable).append(",");
+            sb.append(" smartSsdWriteCapable : ").append(gson.toJson(smartSsdWriteCapable)).append(",");
         }
-        sb.append(" securityEnabled : ").append(securityEnabled).append(",");
-        sb.append(" securityFrozen : ").append(securityFrozen).append(",");
-        sb.append(" securityLocked : ").append(securityLocked).append(",");
-        sb.append(" securitySupported : ").append(securitySupported).append(",");
-        sb.append(" size : ").append(size).append(",");
-        sb.append(" slot : ").append(slot).append(",");
-        sb.append(" uuid : ").append(uuid).append(",");
-        sb.append(" vendor : ").append(vendor).append(",");
-        sb.append(" version : ").append(version).append(",");
-        if(null != numBlockActual && numBlockActual.isPresent()){
-            sb.append(" numBlockActual : ").append(numBlockActual).append(",");
+        else{
+            sb.append(" smartSsdWriteCapable : ").append("null").append(",");
         }
-        if(null != numBlockExpected && numBlockExpected.isPresent()){
-            sb.append(" numBlockExpected : ").append(numBlockExpected).append(",");
-        }
-        if(null != numSliceActual && numSliceActual.isPresent()){
-            sb.append(" numSliceActual : ").append(numSliceActual).append(",");
-        }
-        if(null != numSliceExpected && numSliceExpected.isPresent()){
-            sb.append(" numSliceExpected : ").append(numSliceExpected).append(",");
-        }
-        if(null != numTotalActual && numTotalActual.isPresent()){
-            sb.append(" numTotalActual : ").append(numTotalActual).append(",");
-        }
-        if(null != numTotalExpected && numTotalExpected.isPresent()){
-            sb.append(" numTotalExpected : ").append(numTotalExpected).append(",");
-        }
-        sb.append(" securityAtMaximum : ").append(securityAtMaximum).append(",");
-        sb.append(" serial : ").append(serial).append(",");
-        sb.append(" scsiState : ").append(scsiState).append(",");
+        sb.append(" securityEnabled : ").append(gson.toJson(securityEnabled)).append(",");
+        sb.append(" securityFrozen : ").append(gson.toJson(securityFrozen)).append(",");
+        sb.append(" securityLocked : ").append(gson.toJson(securityLocked)).append(",");
+        sb.append(" securitySupported : ").append(gson.toJson(securitySupported)).append(",");
+        sb.append(" size : ").append(gson.toJson(size)).append(",");
+        sb.append(" slot : ").append(gson.toJson(slot)).append(",");
+        sb.append(" uuid : ").append(gson.toJson(uuid)).append(",");
+        sb.append(" vendor : ").append(gson.toJson(vendor)).append(",");
+        sb.append(" version : ").append(gson.toJson(version)).append(",");
+        sb.append(" securityAtMaximum : ").append(gson.toJson(securityAtMaximum)).append(",");
+        sb.append(" serial : ").append(gson.toJson(serial)).append(",");
+        sb.append(" scsiState : ").append(gson.toJson(scsiState)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
@@ -532,10 +424,7 @@ public class DriveConfigInfo implements Serializable {
         private Long dev;
         private String devPath;
         private String driveType;
-        private Optional<String> fsType;
-        private Optional<Boolean> isMounted;
         private String product;
-        private Optional<String> mountPoint;
         private String name;
         private String path;
         private String pathLink;
@@ -550,12 +439,6 @@ public class DriveConfigInfo implements Serializable {
         private java.util.UUID uuid;
         private String vendor;
         private String version;
-        private Optional<Long> numBlockActual;
-        private Optional<Long> numBlockExpected;
-        private Optional<Long> numSliceActual;
-        private Optional<Long> numSliceExpected;
-        private Optional<Long> numTotalActual;
-        private Optional<Long> numTotalExpected;
         private Boolean securityAtMaximum;
         private String serial;
         private String scsiState;
@@ -569,10 +452,7 @@ public class DriveConfigInfo implements Serializable {
                          this.dev,
                          this.devPath,
                          this.driveType,
-                         this.fsType,
-                         this.isMounted,
                          this.product,
-                         this.mountPoint,
                          this.name,
                          this.path,
                          this.pathLink,
@@ -587,12 +467,6 @@ public class DriveConfigInfo implements Serializable {
                          this.uuid,
                          this.vendor,
                          this.version,
-                         this.numBlockActual,
-                         this.numBlockExpected,
-                         this.numSliceActual,
-                         this.numSliceExpected,
-                         this.numTotalActual,
-                         this.numTotalExpected,
                          this.securityAtMaximum,
                          this.serial,
                          this.scsiState);
@@ -604,10 +478,7 @@ public class DriveConfigInfo implements Serializable {
             this.dev = req.dev;
             this.devPath = req.devPath;
             this.driveType = req.driveType;
-            this.fsType = req.fsType;
-            this.isMounted = req.isMounted;
             this.product = req.product;
-            this.mountPoint = req.mountPoint;
             this.name = req.name;
             this.path = req.path;
             this.pathLink = req.pathLink;
@@ -622,12 +493,6 @@ public class DriveConfigInfo implements Serializable {
             this.uuid = req.uuid;
             this.vendor = req.vendor;
             this.version = req.version;
-            this.numBlockActual = req.numBlockActual;
-            this.numBlockExpected = req.numBlockExpected;
-            this.numSliceActual = req.numSliceActual;
-            this.numSliceExpected = req.numSliceExpected;
-            this.numTotalActual = req.numTotalActual;
-            this.numTotalExpected = req.numTotalExpected;
             this.securityAtMaximum = req.securityAtMaximum;
             this.serial = req.serial;
             this.scsiState = req.scsiState;
@@ -660,23 +525,8 @@ public class DriveConfigInfo implements Serializable {
             return this;
         }
 
-        public DriveConfigInfo.Builder optionalFsType(final String fsType) {
-            this.fsType = (fsType == null) ? Optional.<String>empty() : Optional.of(fsType);
-            return this;
-        }
-
-        public DriveConfigInfo.Builder optionalIsMounted(final Boolean isMounted) {
-            this.isMounted = (isMounted == null) ? Optional.<Boolean>empty() : Optional.of(isMounted);
-            return this;
-        }
-
         public DriveConfigInfo.Builder product(final String product) {
             this.product = product;
-            return this;
-        }
-
-        public DriveConfigInfo.Builder optionalMountPoint(final String mountPoint) {
-            this.mountPoint = (mountPoint == null) ? Optional.<String>empty() : Optional.of(mountPoint);
             return this;
         }
 
@@ -747,36 +597,6 @@ public class DriveConfigInfo implements Serializable {
 
         public DriveConfigInfo.Builder version(final String version) {
             this.version = version;
-            return this;
-        }
-
-        public DriveConfigInfo.Builder optionalNumBlockActual(final Long numBlockActual) {
-            this.numBlockActual = (numBlockActual == null) ? Optional.<Long>empty() : Optional.of(numBlockActual);
-            return this;
-        }
-
-        public DriveConfigInfo.Builder optionalNumBlockExpected(final Long numBlockExpected) {
-            this.numBlockExpected = (numBlockExpected == null) ? Optional.<Long>empty() : Optional.of(numBlockExpected);
-            return this;
-        }
-
-        public DriveConfigInfo.Builder optionalNumSliceActual(final Long numSliceActual) {
-            this.numSliceActual = (numSliceActual == null) ? Optional.<Long>empty() : Optional.of(numSliceActual);
-            return this;
-        }
-
-        public DriveConfigInfo.Builder optionalNumSliceExpected(final Long numSliceExpected) {
-            this.numSliceExpected = (numSliceExpected == null) ? Optional.<Long>empty() : Optional.of(numSliceExpected);
-            return this;
-        }
-
-        public DriveConfigInfo.Builder optionalNumTotalActual(final Long numTotalActual) {
-            this.numTotalActual = (numTotalActual == null) ? Optional.<Long>empty() : Optional.of(numTotalActual);
-            return this;
-        }
-
-        public DriveConfigInfo.Builder optionalNumTotalExpected(final Long numTotalExpected) {
-            this.numTotalExpected = (numTotalExpected == null) ? Optional.<Long>empty() : Optional.of(numTotalExpected);
             return this;
         }
 

@@ -18,6 +18,7 @@
  */
 package com.solidfire.element.api;
 
+import com.solidfire.gson.Gson;
 import com.solidfire.core.client.Attributes;
 import com.solidfire.gson.annotations.SerializedName;
 import com.solidfire.core.annotation.Since;
@@ -43,7 +44,6 @@ public class Origin implements Serializable {
     @SerializedName("location") private String location;
     @SerializedName("organization") private String organization;
     @SerializedName("type") private String type;
-
     // empty constructor
     @Since("7.0")
     public Origin() {}
@@ -78,6 +78,7 @@ public class Origin implements Serializable {
      * 
      **/
     public Signature getSignature() { return this.signature; }
+   
     public void setSignature(Signature signature) { 
         this.signature = signature;
     }
@@ -85,6 +86,7 @@ public class Origin implements Serializable {
      * 
      **/
     public String getContractDate() { return this.contractDate; }
+   
     public void setContractDate(String contractDate) { 
         this.contractDate = contractDate;
     }
@@ -92,6 +94,7 @@ public class Origin implements Serializable {
      * 
      **/
     public String getContractName() { return this.contractName; }
+   
     public void setContractName(String contractName) { 
         this.contractName = contractName;
     }
@@ -99,6 +102,7 @@ public class Origin implements Serializable {
      * 
      **/
     public Long getContractQuantity() { return this.contractQuantity; }
+   
     public void setContractQuantity(Long contractQuantity) { 
         this.contractQuantity = contractQuantity;
     }
@@ -106,6 +110,7 @@ public class Origin implements Serializable {
      * 
      **/
     public String getContractType() { return this.contractType; }
+   
     public void setContractType(String contractType) { 
         this.contractType = contractType;
     }
@@ -113,6 +118,7 @@ public class Origin implements Serializable {
      * 
      **/
     public String getIntegrator() { return this.integrator; }
+   
     public void setIntegrator(String integrator) { 
         this.integrator = integrator;
     }
@@ -120,6 +126,7 @@ public class Origin implements Serializable {
      * 
      **/
     public String getLocation() { return this.location; }
+   
     public void setLocation(String location) { 
         this.location = location;
     }
@@ -127,6 +134,7 @@ public class Origin implements Serializable {
      * 
      **/
     public String getOrganization() { return this.organization; }
+   
     public void setOrganization(String organization) { 
         this.organization = organization;
     }
@@ -134,6 +142,7 @@ public class Origin implements Serializable {
      * 
      **/
     public String getType() { return this.type; }
+   
     public void setType(String type) { 
         this.type = type;
     }
@@ -180,17 +189,18 @@ public class Origin implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+        Gson gson = new Gson();
         sb.append( "{ " );
 
-        sb.append(" signature : ").append(signature).append(",");
-        sb.append(" contractDate : ").append(contractDate).append(",");
-        sb.append(" contractName : ").append(contractName).append(",");
-        sb.append(" contractQuantity : ").append(contractQuantity).append(",");
-        sb.append(" contractType : ").append(contractType).append(",");
-        sb.append(" integrator : ").append(integrator).append(",");
-        sb.append(" location : ").append(location).append(",");
-        sb.append(" organization : ").append(organization).append(",");
-        sb.append(" type : ").append(type).append(",");
+        sb.append(" signature : ").append(gson.toJson(signature)).append(",");
+        sb.append(" contractDate : ").append(gson.toJson(contractDate)).append(",");
+        sb.append(" contractName : ").append(gson.toJson(contractName)).append(",");
+        sb.append(" contractQuantity : ").append(gson.toJson(contractQuantity)).append(",");
+        sb.append(" contractType : ").append(gson.toJson(contractType)).append(",");
+        sb.append(" integrator : ").append(gson.toJson(integrator)).append(",");
+        sb.append(" location : ").append(gson.toJson(location)).append(",");
+        sb.append(" organization : ").append(gson.toJson(organization)).append(",");
+        sb.append(" type : ").append(gson.toJson(type)).append(",");
         sb.append( " }" );
 
         if(sb.lastIndexOf(", }") != -1)
