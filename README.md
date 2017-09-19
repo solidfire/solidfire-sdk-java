@@ -11,7 +11,7 @@ The SolidFire Java SDK is a collection of software modules and libraries that fa
 | Component    | Version             |
 | ------------ | ------------------- |
 | Java         | 7.0 & 8.0           |
-| SolidFire OS | Element 7.0 - 10.0  |
+| SolidFire OS | Element 7.0 - 9.1   |
 
 ## Getting Help
 
@@ -27,7 +27,7 @@ If you have any questions or comments about this product, submit an issue on git
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>solidfire-sdk-java</artifactId>
-  <version>1.5.0.89</version>
+  <version>1.4.0.212</version>
 </dependency>
 
 ~~~
@@ -36,7 +36,7 @@ or SBT:
 
 ~~~ scala
 
-libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.5"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.4"
 
 ~~~
 
@@ -44,7 +44,7 @@ or Gradle:
 
 ~~~ groovy
 
-compile 'com.solidfire:solidfire-sdk-java:1.5'
+compile 'com.solidfire:solidfire-sdk-java:1.4'
 
 ~~~
 
@@ -68,16 +68,16 @@ If using the SDK with a restricted version of the above listed components, e.g. 
 
 ## Documentation
 
-[Latest JavaDoc](https://solidfire.github.io/solidfire-sdk-java/latest/api/)
+[Latest JavaDoc](https://github.com/solidfire/solidfire-sdk-java/raw/master/docs/)
 
-[Download Release Notes](https://github.com/solidfire/solidfire-sdk-java/raw/master/NetApp_SolidFire_Java_SDK_Release_Notes.pdf)
+[Release Notes](https://github.com/solidfire/solidfire-sdk-java/raw/master/NetApp_SolidFire_Java_SDK_Release_Notes.pdf)
 
 ## Examples
 
-Step 1 - Build a *SolidFireElement* object using the factory
+Step 1 - Build a [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.4/com/solidfire/element/api/SolidFireElement.html) object using the factory
 ---
-This is the preferred way to construct the *SolidFireElement* object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
-SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the *ElementFactory* documentation.
+This is the preferred way to construct the [SolidFireElement](https://solidfire.github.io/solidfire-sdk-java/doc/v1.4/com/solidfire/element/api/SolidFireElement.html) object. The factory will make a call to the SolidFire cluster using the credentials supplied to test the connection. It will also set the version to communicate with based on the highest number supported by the
+SDK and Element OS. Optionally, you can choose to set the version manually and whether or not to verify SSL. Read more about it in the [ElementFactory](https://solidfire.github.io/solidfire-sdk-java/doc/v1.4/com/solidfire/client/ElementFactory.html) documentation.
 
 #### Java:
 
@@ -278,8 +278,14 @@ Read timeout (useful for extending time for a service call to return):
 ~~~
 
 ### [More Examples](examples) 
+<<<<<<< HEAD
+ 
+For more examples check out the tutorials in the [examples folder](examples) of this repo.^M
+
+=======
 
 For more examples check out the tutorials in the [examples folder](examples) of this repo.
+>>>>>>> develop
 
 ## Logging and Logback
 
