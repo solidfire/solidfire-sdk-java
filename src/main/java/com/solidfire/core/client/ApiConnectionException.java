@@ -18,7 +18,7 @@ package com.solidfire.core.client;
 /**
  * An exception returned any point of the interaction with the API.
  */
-public class ApiConnectionException extends RuntimeException {
+public class ApiConnectionException extends ApiException {
     private static final long serialVersionUID = 1629565553489647117L;
 
     private ApiConnectionException() {

@@ -11,7 +11,7 @@ The SolidFire Java SDK is a collection of software modules and libraries that fa
 | Component    | Version             |
 | ------------ | ------------------- |
 | Java         | 7.0 & 8.0           |
-| SolidFire OS | Element 7.0 - 9.1   |
+| SolidFire OS | Element 7.0 - 10.0  |
 
 ## Getting Help
 
@@ -27,7 +27,7 @@ If you have any questions or comments about this product, submit an issue on git
 <dependency>
   <groupId>com.solidfire</groupId>
   <artifactId>solidfire-sdk-java</artifactId>
-  <version>1.4.0.212</version>
+  <version>1.5.0.89</version>
 </dependency>
 
 ~~~
@@ -36,7 +36,7 @@ or SBT:
 
 ~~~ scala
 
-libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.4"
+libraryDependencies += "com.solidfire" % "solidfire-sdk-java" % "1.5"
 
 ~~~
 
@@ -44,7 +44,7 @@ or Gradle:
 
 ~~~ groovy
 
-compile 'com.solidfire:solidfire-sdk-java:1.4'
+compile 'com.solidfire:solidfire-sdk-java:1.5'
 
 ~~~
 
@@ -56,7 +56,7 @@ compile 'com.solidfire:solidfire-sdk-java:1.4'
 | solidfire.code.gson | 2.6.2   |
 | joda-time           | 2.9.3   |
 | joda-convert        | 1.8.1   |
-| slf4j-api           | 1.6.6   |
+| slf4j-api           | 1.7.25  |
 
 
 ### Limitations with a Certificate Signed Assembly Jar
